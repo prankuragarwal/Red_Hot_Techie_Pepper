@@ -8,6 +8,7 @@ import os
 
 from currency import curr
 from lat_lon import latlon
+from language import Lang
 
 p = pprint.PrettyPrinter()
 BOT_MAIL = "test-bot@prankuragarwal.zulipchat.com"
@@ -20,7 +21,8 @@ class ZulipBot(object):
 		#self.chatbot.train("chatterbot.corpus.english")
 		self.currency = curr()
 		self.lat_lon = latlon()
-		self.subkeys = ["currency", "latilongi"]
+		self.language = Lang()
+		self.subkeys = ["currency", "latilongi", "language"]
 
 	def urls(self, link):
 		urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', link)
@@ -84,7 +86,15 @@ class ZulipBot(object):
 					"to" : msg["display_recipient"],
 					"content" : message
 					})
-			
+			if content[1].lower() == "language":
+				message = self.language.langconvert(content)
+				#print(message)
+				self.client.send_message({
+					"type": "stream",
+					"subject" : msg["subject"],
+					"to" : msg["display_recipient"],
+					"content" : message
+					})
 			if content[1].lower() == "help" and len(content) == 2:
 				message = self.help()
 				self.client.send_message({
