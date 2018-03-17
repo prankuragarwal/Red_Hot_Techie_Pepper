@@ -10,6 +10,8 @@ from currency import curr
 from lat_lon import latlon
 from language import Lang
 from restaurants import Rest
+from bus_stations import Bus
+
 p = pprint.PrettyPrinter()
 BOT_MAIL = "test-bot@prankuragarwal.zulipchat.com"
 
@@ -23,7 +25,8 @@ class ZulipBot(object):
 		self.lat_lon = latlon()
 		self.language = Lang()
 		self.restaurants = Rest()
-		self.subkeys = ["currency", "latilongi", "language", "restaurant"]
+		self.bus_stations = Bus()
+		self.subkeys = ["currency", "latilongi", "language", "restaurant", "bus"]
 
 	def urls(self, link):
 		urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', link)
@@ -40,6 +43,7 @@ class ZulipBot(object):
 		message += "`currency` - Get Currency\n"
 		message += "`latilongi` - Get Latitude Longitude\n"
 		message += "`restaurant` - Get Restaurant\n"
+		message += "`bus` - Get Bus Stands\n"
 		message += "\nIf you're bored Talk to Omega Bot, it will supercharge you"
 		return message
 	def help_sub(self, key):
@@ -51,6 +55,8 @@ class ZulipBot(object):
 		elif key == "latilongi":
 			message += "`omega translate <phrase to be translated>` - To Get Translate from Foreign Language to English\n"
 		elif key == "restaurant":
+			message += "`omega translate <phrase to be translated>` - To Get Translate from Foreign Language to English\n"
+		elif key == "bus":
 			message += "`omega translate <phrase to be translated>` - To Get Translate from Foreign Language to English\n"
 		else:
 			message = self.help()
@@ -101,6 +107,15 @@ class ZulipBot(object):
 					})
 			if content[1].lower() == "restaurant":
 				message = self.restaurants.restfun(content)
+				#print(message)
+				self.client.send_message({
+					"type": "stream",
+					"subject" : msg["subject"],
+					"to" : msg["display_recipient"],
+					"content" : message
+					})
+			if content[1].lower() == "bus":
+				message = self.bus_stations.busfun(content)
 				#print(message)
 				self.client.send_message({
 					"type": "stream",
