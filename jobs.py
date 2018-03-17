@@ -1,5 +1,9 @@
 import requests
 import json
+import pprint
+import urllib.request
+
+p = pprint.PrettyPrinter()
 
 class Job(object):
 	def __init__(self):
@@ -12,15 +16,17 @@ class Job(object):
 		while (i < l):
 			place += content[i] + " "
 			i = i + 1
-		self.r = requests.get(self.url + place)
-		print(self.r)
-		#print(self.url + place)
-		results = self.r.text
-		re = json.loads(results)
+		#self.r = requests.get(self.url + place)
+		#print(self.r)
+		p.pprint(self.url + place)
+		ur = urllib.request.urlopen(self.url + place)
+		tem = ur.read()
+		enc = ur.info().get_content_charset('utf8')
+		re = json.loads(tem.decode(enc))
 		i = 0
 		ans = ""
-		print(re)
-		print(self.url + place)
+		p.pprint(re)
+		#print(self.url + place)
 		i = 0
 		for i in re:
 			created = i['created_at']
