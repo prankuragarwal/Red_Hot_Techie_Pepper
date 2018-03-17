@@ -12,7 +12,7 @@ from language import Lang
 from restaurants import Rest
 from bus_stations import Bus
 from tourist_places import Tour
-
+from autocorrect import spell
 p = pprint.PrettyPrinter()
 BOT_MAIL = "test-bot@prankuragarwal.zulipchat.com"
 

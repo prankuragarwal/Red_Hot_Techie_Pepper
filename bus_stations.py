@@ -26,6 +26,7 @@ class Bus(object):
 		print(temp)
 		print(results2)
 		i = 0
+		c = 0
 		ans = ""
 		for i in results2['results']:
 			name = i['name']
@@ -33,5 +34,8 @@ class Bus(object):
 			ans += "\n"
 			vicinity = i['vicinity']
 			ans += vicinity + "\n\n"
+			c = c + 1
+			if c == 3:
+				break
 		print(ans)
 		return ans
