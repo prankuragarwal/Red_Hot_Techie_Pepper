@@ -5,6 +5,7 @@ import urllib.request
 from sys import argv 
 import pprint
 from stripper import MLStripper
+import re
 #take start finish as argument in function
 
 from html.parser import HTMLParser
@@ -44,13 +45,17 @@ class Direct(object):
         #p.pprint(tem)
         enc = ur.info().get_content_charset('utf8')
         result = json.loads(tem.decode(enc))
-        p.pprint(result)
+        #p.pprint(result)
         ans = ""
-        for i in range (0, len(result['routes'][0]['legs'][0]['steps'])):
-            j = result['routes'][0]['legs'][0][i]['html_instructions']
-            p.pprint(strip_tags(j))
-            ans += strip_tags(j) + "\n"
+        #p.pprint(len(result['routes'][0]['legs'][0]['steps']))
+        #p.pprint(result['routes'][0]['legs'][0]['steps'][0])
+        for i in range (0,len(result['routes'][0]['legs'][0]['steps'])):
+            j = result['routes'][0]['legs'][0]['steps'][i]['html_instructions']
+            #p.pprint(j)
+            #p.pprint(strip_tags(j))
+            #ans += strip_tags(j) + "\n"
             #ans += strip_tags(j)
+            ans += re.sub('<[A-Za-z\/][^>]*>','', j) + "\n"
         if len(ans) == 0:
             ans = "No route found."
 
