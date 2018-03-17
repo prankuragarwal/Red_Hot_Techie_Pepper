@@ -1,4 +1,5 @@
 import requests
+import json
 
 class Job(object):
 	def __init__(self):
@@ -12,14 +13,16 @@ class Job(object):
 			place += content[i] + " "
 			i = i + 1
 		self.r = requests.get(self.url + place)
+		print(self.r)
 		#print(self.url + place)
-		results = self.r.json()
-
+		results = self.r.text
+		re = json.loads(results)
 		i = 0
 		ans = ""
-		print(results)
+		print(re)
 		print(self.url + place)
-		for i in results:
+		i = 0
+		for i in re:
 			created = i['created_at']
 			ans += created + "\n"
 			title = i['title']
