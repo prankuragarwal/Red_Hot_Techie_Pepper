@@ -5,7 +5,7 @@ import re
 import json
 import httplib2
 import os
-
+from chatterbot import ChatBot
 from currency import curr
 from lat_lon import latlon
 from language import Lang
@@ -17,7 +17,7 @@ class ZulipBot(object):
 	def __init__(self):
 		self.client = zulip.Client(site="https://prankuragarwal.zulipchat.com/api/")
 		self.subscribe_all()
-		#self.chatbot = ChatBot("Omega", trainer='chatterbot.trainers.ChatterBotCorpusTrainer')
+		self.chatbot = ChatBot("Test", trainer='chatterbot.trainers.ChatterBotCorpusTrainer')
 		#self.chatbot.train("chatterbot.corpus.english")
 		self.currency = curr()
 		self.lat_lon = latlon()
