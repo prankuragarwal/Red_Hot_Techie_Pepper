@@ -15,7 +15,8 @@ from tourist_places import Tour
 from autocorrect import spell
 from jobs import Job
 from directions import Direct
-
+from atm import Atm
+from autocorrect import spell
 p = pprint.PrettyPrinter()
 BOT_MAIL = "test-bot@prankuragarwal.zulipchat.com"
 
@@ -33,7 +34,8 @@ class ZulipBot(object):
 		self.tourist_places = Tour()
 		self.jobs = Job()
 		self.directions = Direct()
-		self.subkeys = ["currency", "latilongi", "language", "restaurant", "bus", "tourist", "job", "direction"]
+		self.atm = Atm()
+		self.subkeys = ["currency", "latilongi", "language", "restaurant", "bus", "tourist", "job", "direction","atm"]
 
 	def urls(self, link):
 		urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', link)
@@ -87,7 +89,9 @@ class ZulipBot(object):
 		stream_topic = msg['subject']
 
 		print(content)
-
+		l = len(content)
+		content[1] = spell(content[1])
+		print(content[1])
 		if sender_email == BOT_MAIL:
 			return 
 
@@ -157,6 +161,15 @@ class ZulipBot(object):
 					"to" : msg["display_recipient"],
 					"content" : message
 					})
+			if content[1].lower() == "atm":
+				message = self.atm.atmfun(content)
+				#print(message)
+				self.client.send_message({
+					"type": "stream",
+					"subject" : msg["subject"],
+					"to" : msg["display_recipient"],
+					"content" : message
+					})
 			if content[1].lower() == "direction":
 				message = self.directions.directfun(content)
 				#print(message)
@@ -183,6 +196,7 @@ class ZulipBot(object):
 					"to": msg["display_recipient"],
 					"content": message  
 					})
+            
 			if content[1] not in self.subkeys:
 				ip = content[1:]
 				ip = " ".join(ip)
@@ -193,6 +207,7 @@ class ZulipBot(object):
 					"to": msg["display_recipient"],
 					"content": message
 					})
+             
 		if self.urls(" ".join(content)):
 			summary = self.w.wiki(" ".join(content))
 			if summary:
