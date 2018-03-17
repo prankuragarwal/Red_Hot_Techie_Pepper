@@ -4,10 +4,12 @@
                               An Intelligent Bot built with Zulip and Python
                               
 INTRODUCTION
+
 This Bot deals with with various features required by a personal relocation assistant that brings superior service and unpralleled delight to the user.
 While you relocate,I(BOT) give you advice on where to go,which direction to take,what to do etc.
 
 FEATURES
+
 1.Currency Convertor
 2.Near by ATM's locator
 3.Language Translator
@@ -21,6 +23,7 @@ FEATURES
 11.AutoCorrects the queries and replies accordingly
 
 DEPLOY
+
 To deploy Jarvis bot using your local machine as server, follow following steps -
 
  1.Firstly create a zulip organisation on which you want to deploy bot. If you already have one then you may skip this step.
@@ -37,15 +40,15 @@ To deploy Jarvis bot using your local machine as server, follow following steps 
     aspell-en (For debian based system install using sudo apt-get install aspell-en)
  9.Install all required python packages, rum command pip3 install -r requirements.txt
  10.Now we are all set, to run bot enter following command zulip-run-bot <absolute path to jarvisBot.py file > --config-file <absolute path to downloaded zuliprc file>
-
-Example Usage - zulip-run-bot ~/Projects/TestBot/bot/TestsBot --config-file ~/Projects/TestsBot/bot/zuliprc
-
-  You can now finally use power of Jarvis in your organisation.
+ Example Usage - zulip-run-bot ~/Projects/TestBot/bot/TestsBot --config-file ~/Projects/TestsBot/bot/zuliprc
+ 
 
 FEEDBACK
-Feel free to message on the below mwntioned email ids.
+
+Feel free to message on the below mentioned email ids.COnstructive critism is welcome.
 
 CONTRIBUTORS
+
 Gunjan Singh         singh.gunjan72@gmail.com
 Naguboyina Sravya    sravya.munnny@gmail.com
 Prankur Agarwal      prankur.agarwal@gmail.com
