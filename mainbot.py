@@ -13,6 +13,8 @@ from restaurants import Rest
 from bus_stations import Bus
 from tourist_places import Tour
 from autocorrect import spell
+from jobs import Job
+
 p = pprint.PrettyPrinter()
 BOT_MAIL = "test-bot@prankuragarwal.zulipchat.com"
 
@@ -28,7 +30,8 @@ class ZulipBot(object):
 		self.restaurants = Rest()
 		self.bus_stations = Bus()
 		self.tourist_places = Tour()
-		self.subkeys = ["currency", "latilongi", "language", "restaurant", "bus", "tourist"]
+		self.jobs = Job()
+		self.subkeys = ["currency", "latilongi", "language", "restaurant", "bus", "tourist", "job"]
 
 	def urls(self, link):
 		urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', link)
@@ -47,6 +50,7 @@ class ZulipBot(object):
 		message += "`restaurant` - Get Restaurant\n"
 		message += "`bus` - Get Bus Stands\n"
 		message += "`tourist` - Get Tourist Places\n"
+		message += "`job` - Get Available Jobs nearby\n"
 		message += "\nIf you're bored Talk to Omega Bot, it will supercharge you"
 		return message
 	def help_sub(self, key):
@@ -62,6 +66,8 @@ class ZulipBot(object):
 		elif key == "bus":
 			message += "`omega translate <phrase to be translated>` - To Get Translate from Foreign Language to English\n"
 		elif key == "tourist":
+			message += "`omega translate <phrase to be translated>` - To Get Translate from Foreign Language to English\n"
+		elif key == "job":
 			message += "`omega translate <phrase to be translated>` - To Get Translate from Foreign Language to English\n"
 		else:
 			message = self.help()
@@ -130,6 +136,15 @@ class ZulipBot(object):
 					})
 			if content[1].lower() == "tourist":
 				message = self.tourist_places.tourfun(content)
+				#print(message)
+				self.client.send_message({
+					"type": "stream",
+					"subject" : msg["subject"],
+					"to" : msg["display_recipient"],
+					"content" : message
+					})
+			if content[1].lower() == "job":
+				message = self.jobs.jobfun(content)
 				#print(message)
 				self.client.send_message({
 					"type": "stream",
