@@ -85,5 +85,3 @@ Feel free to report issues and bugs.It will be helpful for future launches of ap
 All suggestions are welcome.   
 Fork repository and contribute.  
 
-## Acknowledgements
-Thanks to Zulip for providing Zulip API and Platform.
