@@ -1,16 +1,15 @@
-#Welcome to I-BOT 
-##An Intelligent Bot built with Python on ZulipChat 
+
+# Welcome to I-BOT
+## IAn intelligent chatbot build with python on ZulipChat
  
+## Team: Red Hot Techie Pepper - Hack in the North 2018
 
-##Team: Red Hot Techie Pepper - Hack in the North 2018 
-
-                              
-##Introduction
+## Introduction
 
 This Bot deals with with various features required by a personal relocation assistant that brings superior service and unpralleled delight to the user.
 While you relocate,I(BOT) give you advice on where to go,which direction to take,what to do etc.
 
-##Features
+## Features
 
 1.Currency Convertor
 2.Near by ATM's locator
@@ -41,11 +40,11 @@ While you relocate,I(BOT) give you advice on where to go,which direction to take
 * [Prankur Agarwal](https://github.com/prankuragarwal)  
 * [Vrinda Agarwal](https://github.com/avrinda97)    
 
-##Contribute
+## Contribute
 
 Feel free to report issues and bugs.It will be helpful for future launches of application.
 All Suggestions are welcome.
 Fork repository and Contribute.
 
-##Acknowlwdgements
+## Acknowledgements
 Thanks to Zulip for providing Zulip Api and Platform.
