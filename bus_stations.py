@@ -18,13 +18,13 @@ class Bus(object):
 		#print(results)
 		longitude = results["results"][0]["geometry"]["location"]["lat"]
 		latitude = results["results"][0]["geometry"]["location"]["lng"]
-		print(str(longitude))
-		print(str(latitude))
+		#print(str(longitude))
+		#print(str(latitude))
 		temp = self.url2 + str(longitude) + ',' + str(latitude) + '&rankby=distance&types=bus_station'
 		self.r2 = requests.get(temp)
 		results2 = self.r2.json()
-		print(temp)
-		print(results2)
+		#print(temp)
+		#print(results2)
 		i = 0
 		c = 0
 		ans = ""
@@ -37,5 +37,7 @@ class Bus(object):
 			c = c + 1
 			if c == 3:
 				break
-		print(ans)
+		if ans == "":
+			ans = "No results"
+		#print(ans)
 		return ans

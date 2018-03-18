@@ -18,13 +18,13 @@ class Rest(object):
 		#print(results)
 		longitude = results["results"][0]["geometry"]["location"]["lat"]
 		latitude = results["results"][0]["geometry"]["location"]["lng"]
-		print(str(longitude))
-		print(str(latitude))
+		#print(str(longitude))
+		#print(str(latitude))
 		temp = self.url2 + str(longitude) + ',' + str(latitude) + '&radius=5000&types=restaurant&keyword=Restaurants&key=AIzaSyDJNoEuLGP2o2PYnRWOx29AvA0kOGQJZO4'
 		self.r2 = requests.get(temp)
 		results2 = self.r2.json()
-		print(temp)
-		print(results2)
+		#print(temp)
+		#print(results2)
 		i = 0
 		ans = ""
 		for i in results2['results']:
@@ -48,5 +48,7 @@ class Rest(object):
 				pass
 			vicinity = i['vicinity']
 			ans += vicinity + "\n\n"
-		print(ans)
+		if ans == "":
+			ans = "No results"
+		#print(ans)
 		return ans

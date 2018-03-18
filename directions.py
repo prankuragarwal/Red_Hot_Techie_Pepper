@@ -35,8 +35,8 @@ class Direct(object):
             finish += content[i] + " "
             i = i + 1
         finish = finish.strip()
-        p.pprint(start)
-        p.pprint(finish)
+        #p.pprint(start)
+        #p.pprint(finish)
         newurl = 'https://maps.googleapis.com/maps/api/directions/json?%s&key=AIzaSyC33RfzIlcWI_Mq7YMNZFYJVhsrqKu1cPs' % urlencode((('origin', start), ('destination', finish)))
         #p.pprint(newurl)
         ur = urllib.request.urlopen(newurl)

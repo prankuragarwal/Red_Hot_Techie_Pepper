@@ -18,14 +18,14 @@ class Job(object):
 			i = i + 1
 		#self.r = requests.get(self.url + place)
 		#print(self.r)
-		p.pprint(self.url + place)
+		#p.pprint(self.url + place)
 		ur = urllib.request.urlopen(self.url + place)
 		tem = ur.read()
 		enc = ur.info().get_content_charset('utf8')
 		re = json.loads(tem.decode(enc))
 		i = 0
 		ans = ""
-		p.pprint(re)
+		#p.pprint(re)
 		#print(self.url + place)
 		i = 0
 		for i in re:
