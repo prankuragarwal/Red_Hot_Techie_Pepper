@@ -14,8 +14,7 @@ I-BOT is an intelligent chatbot build using python on ZulipChat that helps you d
 6. Gives nearest bus transportation service 
 7. Helps you in finding your desired job in a particular location 
 8. Tourist Spots in the city 
-9. NLP Based instatnt response 
-10. AutoCorrects the queries and replies accordingly
+9. NLP Based instant response
 
 
 
@@ -29,6 +28,55 @@ I-BOT is an intelligent chatbot build using python on ZulipChat that helps you d
 7. Head over to your created zulip realm and start using the bot.
  
 
+## How to use?
+
+### Nearby ATMs
+To get addresses of nearby ATM(s)
+`ibot atm "nearby location"`
+![](./images/atm.png)
+
+### Nearby Restaurants
+To get addresses of nearby Restaurant(s)
+`ibot restaurant "nearby location"`
+![](./images/restaurant.png)
+
+### Nearby Bus Stands
+To get addresses of nearby bus stand(s)
+`ibot bus "nearby location"`
+![](./images/bus.png)
+
+### Nearby Tourist Places
+To get addresses of nearby tourist place(s)
+`ibot tourist "nearby location"`
+![](./images/tourist.png)
+
+### Language Translation
+To translate your English sentences to other languages.
+`ibot language to "language name"`
+![](./images/language.png)
+
+### Jobs Nearby
+To get a list of jobs available nearby.
+`ibot job "nearby location"`
+![](./images/job.png)
+
+### Directions
+To get directions from one place to another.
+`ibot direction from "source" to "destination"`
+![](./images/direction.png)
+
+### Currency Convertor
+To get currency conversion rate.
+`ibot currency from "currency code - 1" to "currency code - 2"`
+![](./images/currency.png)
+
+
+
+
+
+
+
+
 ## Contributors
 * [Gunjan Singh](https://github.com/gunjansingh97)  
 * [Naguboyina Sravya](https://github.com/sravya31)  
@@ -37,9 +85,9 @@ I-BOT is an intelligent chatbot build using python on ZulipChat that helps you d
 
 ## Contribute
 
-Feel free to report issues and bugs.It will be helpful for future launches of application.
-All Suggestions are welcome.
-Fork repository and Contribute.
+Feel free to report issues and bugs.It will be helpful for future launches of application 
+All suggestions are welcome. 
+Fork repository and contribute.
 
 ## Acknowledgements
 Thanks to Zulip for providing Zulip Api and Platform.

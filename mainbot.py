@@ -16,7 +16,7 @@ from autocorrect import spell
 from jobs import Job
 from directions import Direct
 from atm import Atm
-from autocorrect import spell
+#from autocorrect import spell
 #from trainers import UbuntuCorpusTrainer
 p = pprint.PrettyPrinter()
 BOT_MAIL = "i-bot@rhtp.zulipchat.com"
@@ -40,9 +40,9 @@ class ZulipBot(object):
 		self.client = zulip.Client(site="https://rhtp.zulipchat.com/api/")
 		self.subscribe_all()
 		self.chatbot = ChatBot("Test", trainer='chatterbot.trainers.ChatterBotCorpusTrainer')
-		self.chatbot.train("chatterbot.corpus.english")
-		self.chatbot.train("chatterbot.corpus.english.greetings")
-		self.chatbot.train("chatterbot.corpus.english.conversations")
+		#self.chatbot.train("chatterbot.corpus.english")
+		#self.chatbot.train("chatterbot.corpus.english.greetings")
+		#self.chatbot.train("chatterbot.corpus.english.conversations")
 		self.currency = curr()
 		#self.lat_lon = latlon()
 		self.language = Lang()
