@@ -1,13 +1,8 @@
 
 # Welcome to I-BOT
-## An intelligent chatbot build with python on ZulipChat
- 
-## Team: Red Hot Techie Pepper - Hack in the North 2018
 
 ## Introduction
-
-This Bot deals with with various features required by a personal relocation assistant that brings superior service and unpralleled delight to the user.
-While you relocate,I(BOT) give you advice on where to go,which direction to take,what to do etc.
+I-BOT is an intelligent chatbot build using python on ZulipChat that helps you during relocation to a different city or even a country. Have any problems, just open I-BOT and chat with your interactive buddy! 
 
 ## Features
 
