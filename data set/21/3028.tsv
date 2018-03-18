@@ -1,0 +1,21 @@
+2011-01-25T16:43:00.000Z	sveinse		How can I play a sound directly to alsa without pulseaudio? aplay seems to use pulseaudio anyways
+2011-01-25T16:45:00.000Z	sacarlson	sveinse	I'm not sure but I think you can setup use of alsa in gstreamer apps with gstreamer-properties
+2012-02-29T19:06:00.000Z	sacarlson	sveinse	does this work? http://www.adamish.com/blog/archives/315
+2012-02-29T19:08:00.000Z	sveinse	sacarlson	Perhaps, yet my static network has no dns-nameserver, so I'd be lying to eth0
+2012-02-29T19:09:00.000Z	sacarlson	sveinse	normaly the gateway acts as the dns so I'm not sure what your problem is
+2012-02-29T19:10:00.000Z	sveinse	sacarlson	I need to configure eth0 as a static network on a small LAN with no default GW nor DNS. It's a special recovery mode where NM is clobbering this setup
+2012-02-29T19:11:00.000Z	sacarlson	sveinse	ok if you don't need a dns just point to yourself even if it don't work I guess that should prevent nm from messing with it
+2012-02-29T19:12:00.000Z	sacarlson	sveinse	you can just kill it after it starts, not sure how to prevent it
+2012-02-29T19:16:00.000Z	sacarlson	sveinse	I just run a script to put my system into static mode with something like this http://paste.ubuntu.com/861956/
+2012-02-29T19:18:00.000Z	sveinse	sacarlson	Yes, I tried that. But doing service network-manager stop has no effect, as upstart haven't started network-manager yet. But it's about to.
+2012-02-29T19:18:00.000Z	sacarlson	sveinse	after I complete my static operation I just put it back to dhcp mode with sudo dhclient eth0
+2012-02-29T19:19:00.000Z	sacarlson	sveinse	or add a delay in the script to make sure that network manager is already started to stop it
+2012-02-29T19:22:00.000Z	sacarlson	sveinse	you can put the script in cron as @reboot  and add a delay there
+2012-02-29T19:23:00.000Z	sacarlson	sveinse	or get dirty and just edit the script that starts network-manager
+2012-02-29T19:25:00.000Z	sacarlson	sveinse	too late?  how critical could time be at boot?  so it take 15 secounds longer to have a static address at boot. is that so bad?
+2012-02-29T19:28:00.000Z	sveinse	sacarlson	When rc/runlevel is set, then all of the user services start which is the "app mode". The recovery mode decision script is set to run before rc and before network is up. That is important for other reasons
+2012-02-29T19:30:00.000Z	sacarlson	sveinse	I'm getting stuck then, is editing the network-manager script out then also?
+2012-02-29T19:30:00.000Z	sveinse	sacarlson	I could, yet violating the ubuntu package policy manual
+2012-02-29T19:45:00.000Z	sveinse	sacarlson	I think I've got it. My early-boot script was start on (filesystem and starting network). By using start on (filesystem and starting network-manager) I can affect NM the way I want!
+2012-02-29T19:45:00.000Z	sveinse	sacarlson	Thanks for your inputs at least
+2012-02-29T19:45:00.000Z	sacarlson	sveinse	very good,  hope I didn't add more confusion than help

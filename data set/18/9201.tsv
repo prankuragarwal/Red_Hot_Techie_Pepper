@@ -1,0 +1,18 @@
+2009-02-05T08:19:00.000Z	X-tremAl_Raven		I got Ubuntu 8.10 and Intel 3945ABG wireless which is not working. Could anyone help?
+2009-02-05T08:20:00.000Z	X-tremAl_Raven		<ubottu> Read it. Still nothing.
+2009-02-05T08:20:00.000Z	Gnea	X-tremAl_Raven	perhaps you could explain the problem here, in more detail
+2009-02-05T08:31:00.000Z	Gnea	X-tremAl_Raven	nicely done. :)  what is the result of this command:  iwlist wlan0 scan
+2009-02-05T08:31:00.000Z	Gnea	X-tremAl_Raven	(you may need to run it a few times)
+2009-02-05T08:32:00.000Z	Gnea	X-tremAl_Raven	could you paste the output of the dmesg command?
+2009-02-05T08:32:00.000Z	Gnea	X-tremAl_Raven	*pastebin
+2009-02-05T08:35:00.000Z	Gnea	X-tremAl_Raven	hrmmmmm, that is not a good message.... checking
+2009-02-05T08:37:00.000Z	Gnea	X-tremAl_Raven	okay, what is the output of this command:  lshw -C network
+2009-02-05T08:39:00.000Z	Gnea	X-tremAl_Raven	okay - these may seem like really odd questions, but please bare with me. :)  is this a laptop? if so, is there an on/off switch for the wireless device on it somewhere?
+2009-02-05T08:40:00.000Z	Gnea	X-tremAl_Raven	the reason I ask: *-network DISABLED
+2009-02-05T08:44:00.000Z	Gnea	X-tremAl_Raven	okay, is linux-firmware installed?  dpkg -l | grep ^ii | grep linux-firmware
+2009-02-05T08:45:00.000Z	Gnea	X-tremAl_Raven	what kernel?  uname -r
+2009-02-05T08:49:00.000Z	Gnea	X-tremAl_Raven	can you sudo rmmod iwl3945 && sudo modprobe iwl3945 debug=0x43fff  , try again and repeat the dmesg pastebin?
+2009-02-05T08:52:00.000Z	Gnea	X-tremAl_Raven	try to scan again
+2009-02-05T08:52:00.000Z	Gnea	X-tremAl_Raven	anything different in dmesg?
+2009-02-05T08:53:00.000Z	Gnea	X-tremAl_Raven	o.O  that's new...
+2009-02-05T08:55:00.000Z	Gnea	X-tremAl_Raven	check this out and give it a whirl: https://bugs.launchpad.net/ubuntu/+source/linux/+bug/248321

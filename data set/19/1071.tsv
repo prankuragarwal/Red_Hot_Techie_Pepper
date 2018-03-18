@@ -1,0 +1,19 @@
+2011-10-19T15:55:00.000Z	Saw		btw, even though I can't find passwd, nor /sbin/passwd, nor /bin/passwd, nor /usr/bin/passwd, If I use ls -R | grep passwd it does find soemthing. I'm not expert on unix/linux though, how do I get the full path from it?
+2011-10-19T15:55:00.000Z	theadmin	Saw	https://help.ubuntu.com/community/LostPassword#The_Other_Way
+2011-10-19T15:57:00.000Z	theadmin	Saw	You could just use "which passwd" to tell the full path to the command
+2011-10-19T15:58:00.000Z	Saw	theadmin	- the system can't find the command, that is why i'm searching for it :P
+2011-10-19T15:58:00.000Z	theadmin	Saw	That means your system is pretty messed up...
+2011-10-19T15:58:00.000Z	Saw	theadmin	- yeah I know.
+2011-10-19T15:58:00.000Z	theadmin	Saw	You gotta reinstall
+2011-10-19T15:59:00.000Z	theadmin	Saw	Is your /usr on a separate partition?
+2011-10-19T15:59:00.000Z	Saw	theadmin	- it's all virtual machine one disk, so no. But from some reason it's empty. I do know the command exists though, using 'ls -R | grep passwd' find some results, I'm just not sure where..
+2011-10-19T16:03:00.000Z	Saw	theadmin	- ok, I found passwd in /etc/passwd . I can't run it though, it says permission denied.
+2011-10-19T16:04:00.000Z	theadmin	Saw	That's not an executable file...
+2011-10-19T16:04:00.000Z	theadmin	Saw	Of course you can't run it
+2011-10-19T16:13:00.000Z	theadmin	Saw	Eh, I have an idea here
+2011-10-19T16:13:00.000Z	theadmin	Saw	Try this command: mount -o remount,rw /dev/sdXY /
+2011-10-19T16:13:00.000Z	theadmin	Saw	Where X is a letter and Y is a number, something like "sda1" maybe
+2011-10-19T16:18:00.000Z	theadmin	Saw	Okay, do just this: mount -o remount,rw /
+2011-10-19T16:18:00.000Z	theadmin	Saw	That error is obviously a filesystem write eror
+2011-10-19T16:19:00.000Z	Saw	theadmin	- minute, I executed a 'find' command and ctrl-c won't stop it xD
+2011-10-19T16:23:00.000Z	Saw	theadmin	- mount -o remount, rw / works, thx :}

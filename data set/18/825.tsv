@@ -1,0 +1,18 @@
+2011-08-24T02:52:00.000Z	qin	antnash	find . -name *xyz*
+2011-08-24T02:52:00.000Z	antnash	qin	ok got that, but how do I preserve the rest of the file name?
+2011-08-24T02:53:00.000Z	qin	antnash	preserve?
+2011-08-24T02:56:00.000Z	qin	antnash	find . -name "Only" -type f -exec (here do whatever you want with your files) \;
+2011-08-24T02:58:00.000Z	qin	antnash	find . -name "Only*" -type f -exec echo {} >> ~/file_Only_list \;
+2011-08-24T03:28:00.000Z	qin	antnash	One by one (each find result separately)
+2011-08-24T03:31:00.000Z	qin	antnash	Does your script takes argument?
+2011-08-24T03:33:00.000Z	qin	antnash	But this will fail to: whites and some specials.
+2011-08-24T03:37:00.000Z	qin	antnash	Do you want tell me what is output of find and what do you mant to do with it?
+2011-08-24T03:41:00.000Z	qin	antnash	and in exec: | sed s/Only Fools // \;
+2011-08-24T03:42:00.000Z	qin	antnash	So: find . -name "Only*" -type f -exec echo {} | sed s/Only Fools // \;
+2011-08-24T03:43:00.000Z	qin	antnash	Or save result: find . -name "Only*" -type f -exec echo {} | sed s/Only Fools // >> ~/file_list \;
+2011-08-24T03:44:00.000Z	qin	antnash	He? What command?
+2011-08-24T03:47:00.000Z	antnash	qin	I had this as my move script... http://pastebin.com/eZVzMD9p
+2011-08-24T03:52:00.000Z	qin	antnash	Or save result: echo "" > ~/file_list; find . -name "Only*" -type f -exec echo {} >> ~/file_list \;; sed s/Only Fools // ~/file_list
+2011-08-24T03:53:00.000Z	qin	antnash	This have to work, and I have to go to man (or get more coffe)
+2011-08-24T04:02:00.000Z	qin	antnash	No find, nasted loop:  for i in {1..8}; do for y in {1..12}; do  echo season$i episode$y; done; done;
+2011-11-16T06:20:00.000Z	qin	antnash	sed 's/PORT=/PORT=0.0.0.0/'

@@ -1,0 +1,24 @@
+2006-09-13T07:45:00.000Z	BeShaMo		I'm having problems with the Nvidia drivers that come with ubuntu so I want to install the ones from the nvidia website, however that too is problematic since it claims that I don't seem to have the right kernel source, though I'm pretty sure I do
+2006-09-13T07:47:00.000Z	BeShaMo		geforce4 440 go
+2006-09-13T07:47:00.000Z	BeShaMo		(laptop)
+2006-09-13T07:47:00.000Z	BeShaMo		well, from the logfile the installer spit out
+2006-09-13T07:48:00.000Z	BeShaMo		both, but tv out doesn't work
+2006-09-13T07:48:00.000Z	BeShaMo		(legacy work but not with tv-out, glx doesn't work at all)
+2006-09-13T07:49:00.000Z	BeShaMo		I already did
+2006-09-13T07:50:00.000Z	BeShaMo		I uninstalled both since I wanted to try the nvidia ones
+2006-09-13T07:52:00.000Z	rambo3	BeShaMo	unpack kernel source and link it
+2006-09-13T07:53:00.000Z	BeShaMo	lupine_85	rambo3:they compile, but don't want to install
+2006-09-13T07:53:00.000Z	BeShaMo		ERROR: Unable to load the kernel module 'nvidia.ko'.  This is most likely
+2006-09-13T07:53:00.000Z	BeShaMo		       because the kernel module was built using the wrong kernel source files.
+2006-09-13T07:54:00.000Z	rambo3	BeShaMo	insmod  ? i
+2006-09-13T07:54:00.000Z	rambo3		ok
+2006-09-13T07:55:00.000Z	rambo3		sudo ln -s /usr/src/linux-src-`uname -r` /usr/src/linux
+2006-09-13T07:55:00.000Z	BeShaMo		I specified the path with the installer (only way it would allow me to compile the module) afterwards it tell me it can't load the module
+2006-09-13T07:55:00.000Z	BeShaMo		can my gcc be the wrong version?
+2006-09-13T07:55:00.000Z	rambo3		then again i dont know if you need to make oldconfig from /boot/ . i never used nvidia
+2006-09-13T07:56:00.000Z	BeShaMo		well, it does
+2006-09-13T07:56:00.000Z	BeShaMo		linux-headers-2.6.15-23      linux-source-2.6.15
+2006-09-13T07:56:00.000Z	BeShaMo		linux-headers-2.6.15-23-686  linux-source-2.6.15.tar.bz2
+2006-09-13T07:56:00.000Z	BeShaMo		content of /usr/src/
+2006-09-13T07:57:00.000Z	BeShaMo		I specified that the installer should use the linux-source dir
+2006-09-13T07:57:00.000Z	rambo3	BeShaMo	  ;sudo ln -s /usr/src/linux-source-2.6.15 /usr/src/linux

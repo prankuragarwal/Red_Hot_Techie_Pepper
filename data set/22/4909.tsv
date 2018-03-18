@@ -1,0 +1,22 @@
+2007-10-30T17:43:00.000Z	jpastore		hey I need help with getting wammu working...it's asking for the port my phone is on.  I'm doing lsusb but I can't figure out the device I should be using in /dev the one that shows up in the drop down box is: /dev/ttyACM0 when I use it it doesn't connect ...this is one of the last things I need to get rid of windows
+2007-10-30T17:44:00.000Z	jpastore		maybe someone can suggest a channel? #nokia, #wammu and #gammu all virtually empty
+2007-10-30T17:44:00.000Z	hwilde	jpastore	look in dmesg and lshw  to find your phone
+2007-10-30T17:45:00.000Z	jpastore	hwilde	I did lsusb and found my found
+2007-10-30T17:46:00.000Z	jpastore	hwilde	can't figure out how to access it. wammu says /dev/ttyAMC0 doesn't have a phone on it.  let me try lshw...
+2007-10-30T17:46:00.000Z	hwilde	jpastore	what does dmesg say is the port
+2007-10-30T17:47:00.000Z	jpastore	hwilde	Bus 004 Device 002: ID 0421:0405 Nokia Mobile Phones 9500 GSM Communicator
+2007-10-30T17:48:00.000Z	hwilde	jpastore	 if dmesg is not assigning it to that dev then I dunno
+2007-10-30T17:48:00.000Z	jpastore	hwilde	dmesg returns a lot what am I looking for?
+2007-10-30T17:49:00.000Z	jpastore	hwilde	is there something I can grep for?
+2007-10-30T17:49:00.000Z	hwilde	jpastore	you are looking for something like  Nokia Mobile Phone high speed USB on /dev/ttyAMC0
+2007-10-30T17:51:00.000Z	jpastore	hwilde	http://nopaste.com/p/aJYzchkkjb
+2007-10-30T17:51:00.000Z	hwilde	jpastore	so it is ttyACM1:
+2007-10-30T17:51:00.000Z	jpastore	hwilde	sorry hit enter prematurely =) I meant to say that http://nopaste.com/p/aJYzchkkjb is the output in dmesg from unplugging and repluggin the phone
+2007-10-30T17:51:00.000Z	hwilde	jpastore	so it is ttyACM1
+2007-10-30T17:51:00.000Z	jpastore	hwilde	ok...it was ttyACM0 before
+2007-10-30T17:52:00.000Z	jpastore	hwilde	so it claimed let me try that
+2007-10-30T17:52:00.000Z	hwilde	jpastore	when you unplug and replug it will reassign, if the driver is still locking ACM0
+2007-10-30T17:52:00.000Z	jpastore	hwilde	that makes sense
+2007-10-30T17:54:00.000Z	jpastore	hwilde	wammu still claims phone not found...I continued anyways....can't retrieve contacts or anything else
+2007-10-30T17:54:00.000Z	jpastore	hwilde	I already made a post on ubuntuforums regarding the issue...I'm going to drop a line on the nokia developers forum
+2007-10-30T17:55:00.000Z	jpastore	hwilde	thanks for the pointers....unless you have further suggestions?

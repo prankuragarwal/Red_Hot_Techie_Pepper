@@ -1,0 +1,21 @@
+2010-12-14T02:43:00.000Z	Wicked		hello all. Im using transmission to download files to a samba mount. My normal user can read/write fine to the mounted samba share....but transmission-daemon(the transmission user/group) has issues. Ive added my normal user to the transmission ground and ive added transmission to my normal users group. I then ran "chmod 770" on my mounted share...but for some reasons transmission keeps having issues.
+2010-12-14T02:44:00.000Z	Wicked		im trying to find out the permissions i need to set for both my normal user and the transmission daemon can access them
+2010-12-14T02:46:00.000Z	Wicked		yea
+2010-12-14T02:47:00.000Z	Wicked		normal user can access all the files...but the debian-transmission cannot
+2010-12-14T02:47:00.000Z	Wicked		well....thats not really ideal
+2010-12-14T02:47:00.000Z	Wicked		as downloading torrents is just one use of the drive...my normal user should(and does) get priority access. i just need transmission to have access also
+2010-12-14T02:49:00.000Z	breadcrumb	Wicked	as long as the debian-transmission group has write access to the download folder, it should work..
+2010-12-14T02:50:00.000Z	Wicked	breadcrumb	it should. ive added my normal user(mike) to the debian-transmission group. and ive added the debian-transmission user to the mike group...i then chmod'ed the folder to 770...which seems to work for a little bit..but somehow it always gets unset.
+2010-12-14T02:51:00.000Z	Wicked	breadcrumb	are you specifying the create umask on the samba server(in the smb.conf)?
+2010-12-14T02:52:00.000Z	Wicked	breadcrumb	or are you using any options to mount the drive locally(like uid or gid in the fstab)?
+2010-12-14T02:52:00.000Z	Wicked	breadcrumb	ive set my create mask to 0770
+2010-12-14T02:55:00.000Z	Wicked	breadcrumb	can you also show me your mount line in fstab?
+2010-12-14T02:56:00.000Z	breadcrumb	Wicked	in /etc/transmission-daemon/settings.json i changed the umask value to "0" - cant remember exactly why, i know it was something with permissions
+2010-12-14T02:56:00.000Z	Wicked	breadcrumb	ah let me check mine.
+2010-12-14T02:57:00.000Z	Wicked	breadcrumb	hmm my umask in settings.json is 18 by default. im gonna try to make it 0.
+2010-12-14T02:58:00.000Z	Wicked	breadcrumb	yea. thanks...i have had issues with that before...pita lol
+2010-12-14T03:01:00.000Z	Wicked	breadcrumb	whats your /etc/fstab ine look like
+2010-12-14T03:02:00.000Z	Wicked	breadcrumb	i dont see the line to mount the samba share in there
+2010-12-14T03:03:00.000Z	Wicked	breadcrumb	for instance mine looks like: //192.168.1.100/share /Server cifs  credentials=/etc/samba/server.pass,gid=USER,forcegid   0 0
+2010-12-14T03:03:00.000Z	Wicked	breadcrumb	ah gotcha.
+2010-12-14T03:05:00.000Z	Wicked	breadcrumb	welp thanks for the help anyways :)

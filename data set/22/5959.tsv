@@ -1,0 +1,22 @@
+2009-09-23T02:12:00.000Z	rlee		question: how do i set permission access on network devices? i was looking for the /dev/eth0... but obviously it's not there now...
+2009-09-23T02:14:00.000Z	unop	rlee	what do you mean "bind to the interface"?
+2009-09-23T02:14:00.000Z	unop	rlee	any user can create a socket on the ephemeral (>1024) ports -- for the lower ones, only root can.
+2009-09-23T02:15:00.000Z	unop	rlee	but then again, sockets don't really have much to do with the interfaces
+2009-09-23T02:15:00.000Z	rlee	unop	thanks, i figured that out too
+2009-09-23T02:15:00.000Z	rlee	unop	i was thinking simplist... like just setting chmod 600 on the device... but it seems that is not possible
+2009-09-23T02:16:00.000Z	unop	rlee	well, that doesn't make sense - most users on a networked computer require some sort of network connectivity
+2009-09-23T02:16:00.000Z	rlee	unop	right, but not if there are two interfaces... they just need access to one
+2009-09-23T02:17:00.000Z	rlee	unop	i want to block out the other from being accessed
+2009-09-23T02:17:00.000Z	unop	rlee	maybe, i dunno - depends on your setup
+2009-09-23T02:18:00.000Z	unop	rlee	well, do any of your users use the other interface at all? you could take the interface down if not.
+2009-09-23T02:19:00.000Z	rlee	unop	yes, local users use one interface, and subnet users use another interface
+2009-09-23T02:19:00.000Z	rlee	unop	i want to prevent local users from opening sockets on the subnet interface
+2009-09-23T02:19:00.000Z	unop	rlee	I would use iptables for this purpose
+2009-09-23T02:20:00.000Z	rlee	unop	that's the point.... if i have two seperate rule chains for local users, and one for the subnet, the local user can just bind a socket to the subnet interface and bypass the rules for the local interface
+2009-09-23T02:21:00.000Z	unop	rlee	not if you have a rule that prevents traffic from accessing opened sockets tho ..
+2009-09-23T02:21:00.000Z	rlee	unop	what do u mean?
+2009-09-23T02:22:00.000Z	unop	rlee	let's say you have a rule that drops all packets to the local address unless an outgoing connection is already established - a user may setup a socket, but it will be unusable.
+2009-09-23T02:23:00.000Z	rlee	unop	ahh ok i didn't connect that piece when i was setting up my tables... i'll try it out real quick brb
+2009-09-23T02:29:00.000Z	rlee	unop	thanks, that cleared up that part
+2009-09-23T02:30:00.000Z	rlee	unop	the socket is bound to the iface address, but no connects are accepted because of the table rule
+2009-09-23T02:30:00.000Z	unop	rlee	yea, that's the idea exactly

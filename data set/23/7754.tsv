@@ -1,0 +1,23 @@
+2006-12-10T13:54:00.000Z	air0day		i'm having a serious problem on my machine
+2006-12-10T13:55:00.000Z	air0day		i did chmod -R 0666 on a ton of files
+2006-12-10T13:55:00.000Z	air0day		and now they all seem to be deleted
+2006-12-10T13:55:00.000Z	air0day		i did it on a folder at the top level, thinking it would give everyone read/write
+2006-12-10T13:55:00.000Z	air0day		but im guessing that first 0 turned off all read
+2006-12-10T13:55:00.000Z	air0day		is there a way to get them back?
+2006-12-10T13:56:00.000Z	air0day		please. i really really need help. linux may have just deleted 500 gigs of really really important files
+2006-12-10T13:56:00.000Z	air0day		if anyone has the time to help me, i really really need it. a lot
+2006-12-10T13:57:00.000Z	air0day		kingsqueak, can you help me?
+2006-12-10T13:58:00.000Z	air0day		i think i set the read byte to zero on a ton of files and i need to get them back
+2006-12-10T13:58:00.000Z	Kingsqueak	air0day	what I just told mcscruff would also work for that, what sort of files?
+2006-12-10T13:58:00.000Z	Kingsqueak	air0day	that's a problem because some where probably executable and you'll have to hand pick them to fix that
+2006-12-10T13:59:00.000Z	Kingsqueak	air0day	I'd just back up data and reinstall myself
+2006-12-10T14:00:00.000Z	Kingsqueak	air0day	so back them up and reinstall the system
+2006-12-10T14:00:00.000Z	Kingsqueak	air0day	you said all files, in a directory or the whole system?
+2006-12-10T14:01:00.000Z	Kingsqueak	air0day	ah, that's fixable
+2006-12-10T14:01:00.000Z	Kingsqueak	air0day	 'sudo find /yourmount -type d -exec chmod 755 {} \;'
+2006-12-10T14:01:00.000Z	Kingsqueak	air0day	'sudo find /yourmount -type f -exec chmod 644 {} \;'
+2006-12-10T14:02:00.000Z	Kingsqueak	air0day	that will get the dirs and files readable, if you had executables, you'll have to chmod them 755 once you get that straight
+2006-12-10T14:08:00.000Z	Kingsqueak	air0day	any luck?
+2006-12-10T14:08:00.000Z	Kingsqueak	air0day	the top mount might not be 755
+2006-12-10T14:09:00.000Z	Kingsqueak	air0day	the commands I gave you assume the very top /yourmount is 755 already
+2006-12-10T14:09:00.000Z	Kingsqueak	air0day	just 'sudo chmod 755 /yourmount'  see if that fixes it

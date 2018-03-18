@@ -1,0 +1,23 @@
+2008-01-27T23:03:00.000Z	lettuc3		phenom - i dont have that script.
+2008-01-27T23:05:00.000Z	lettuc3		phenom it has to parse the hosts file somehow. something has to do that :(
+2008-01-27T23:07:00.000Z	lettuc3		phenom if it aint running the cache, changes should be reflected live? does it even parse the file?
+2008-01-27T23:08:00.000Z	lettuc3		damn.
+2008-01-27T23:09:00.000Z	lettuc3		phenom what you were saying was like i thought applicable for when the names are cached. that's what the service is for, so im assuming the changes have to be live, when it's not there.
+2008-01-27T23:10:00.000Z	lettuc3		but it does not seem like it's getting parsed.
+2008-01-27T23:10:00.000Z	lettuc3		i've got www.yahoo.com in hosts.deny, and its ip.
+2008-01-27T23:11:00.000Z	lettuc3		phenom from what i remember of debian sarge, editing hosts/hosts.deny used to be reflected immediately.
+2008-01-27T23:12:00.000Z	lettuc3		phenom how come i'm seeing none of it here?
+2008-01-27T23:12:00.000Z	ikonia	lettuc3	are you running a web server on your machine listening on 127.0.0.1
+2008-01-27T23:13:00.000Z	ikonia	lettuc3	thats why it won't work
+2008-01-27T23:13:00.000Z	ikonia	lettuc3	if you want to do 127.0.0.1 you have to have a webserver running on localhost
+2008-01-27T23:14:00.000Z	lettuc3	ikonia	if i don't have a webserver running, shouldn't the browser return with an error rather than point me to www.yahoo.com?
+2008-01-27T23:14:00.000Z	ikonia	lettuc3	really, thats odd
+2008-01-27T23:17:00.000Z	ikonia	lettuc3	what do you have in hosts.deny
+2008-01-27T23:17:00.000Z	lettuc3	ikonia	i have www.yahoo.com and on another line 87.248.113.14
+2008-01-27T23:17:00.000Z	ikonia	lettuc3	thats not how hosts.deny works
+2008-01-27T23:17:00.000Z	lettuc3	ikonia	oh, sorry.
+2008-01-27T23:17:00.000Z	ikonia	lettuc3	hosts.allow and hosts.deny are used by tcpd - which controls daemons
+2008-01-27T23:18:00.000Z	lettuc3	ikonia	hmm... i had assumed it would just drop requests from hosts inside there. wrong, then.
+2008-01-27T23:18:00.000Z	ikonia	lettuc3	thats for tcpd only
+2008-01-27T23:25:00.000Z	ikonia	lettuc3	httpd.conf - ServerName or Listen set it to localhost or 127.0.0.1
+2008-01-27T23:26:00.000Z	lettuc3	ikonia	ok i'll look into it.

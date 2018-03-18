@@ -1,0 +1,19 @@
+2007-10-21T02:34:00.000Z	stiv2k		help i just upgraded to 7.10 now 2 of my filesystems are not showing up after a reboot... trying to mount them says its either already mounted or busy, but its not mounted... what gives?
+2007-10-21T02:35:00.000Z	stiv2k		/dev/sda2 on / type ext3 (rw,errors=remount-ro)
+2007-10-21T02:35:00.000Z	stiv2k		thats the filesystem i need to access
+2007-10-21T02:36:00.000Z	stiv2k		but its supposed to be at /home
+2007-10-21T02:36:00.000Z	stiv2k		not /
+2007-10-21T02:36:00.000Z	stiv2k		and its not there anyway
+2007-10-21T02:36:00.000Z	stiv2k		err
+2007-10-21T02:37:00.000Z	stiv2k		mount: /dev/sda1 already mounted or /home busy
+2007-10-21T02:39:00.000Z	stiv2k		mount: /dev/sda1 already mounted or /home busy
+2007-10-21T02:39:00.000Z	stiv2k		ok
+2007-10-21T02:39:00.000Z	don-o	stiv2k	but /home is probably busy :)
+2007-10-21T02:40:00.000Z	stiv2k	don-o	how do i un-busy it?
+2007-10-21T02:40:00.000Z	don-o	stiv2k	does /dev/sda1 show up anywhere in the output of 'mount'?
+2007-10-21T02:40:00.000Z	stiv2k	don-o	no
+2007-10-21T02:41:00.000Z	don-o	stiv2k	try 'fuser /home'
+2007-10-21T02:43:00.000Z	don-o	stiv2k	okay so forget home for the moment. mkdir /tmp/test ; mount /dev/sda1 /tmp/test
+2007-10-21T02:44:00.000Z	stiv2k	don-o	steve@galatea:/$ sudo mount /dev/sda1 /tmp/test/
+2007-10-21T02:51:00.000Z	don-o	stiv2k	i hate to give a windows solution but have you tried rebooting?
+2007-10-21T02:53:00.000Z	don-o	stiv2k	also, check dmesg for recent kernel errors regarding hda1

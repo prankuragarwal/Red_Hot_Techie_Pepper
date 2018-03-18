@@ -1,0 +1,23 @@
+2011-04-23T05:17:00.000Z	dtcummin		I need some help setting up one of my nics in a Ubuntu 10.10 server to work on multiple vlans (accept a vlan trunk 802.1q). Can anyone help out?
+2011-04-23T05:18:00.000Z	schnuffle	dtcummin	have you checked http://ubuntuforums.org/showthread.php?t=703387
+2011-04-23T05:19:00.000Z	dtcummin	schnuffle	will look into it, thanks
+2011-04-23T05:38:00.000Z	dtcummin	schnuffle	when I run ifup eth0.500 I get the following error "ERROR: trying to add VLAN 500 to IF -:etho0:- error: File exists"
+2011-04-23T06:04:00.000Z	schnuffle	dtcummin	the link I gave you hasn't helped you?
+2011-04-23T06:06:00.000Z	dtcummin	schnuffle	well, I've tried everything in it, but I can't ping the server from another machine on the vlan
+2011-04-23T06:06:00.000Z	schnuffle	dtcummin	did you setup the routes so it uses the correct vlan tag?
+2011-04-23T06:07:00.000Z	dtcummin	schnuffle	on the switch?
+2011-04-23T06:10:00.000Z	dtcummin	schnuffle	or do I do that on each of the machines?
+2011-04-23T06:13:00.000Z	schnuffle	dtcummin	sorry was cut off, vlan has to be configured at least on the switch. If you use portbased tagging, not every machine has to be configured but it depends on your setup
+2011-04-23T06:14:00.000Z	dtcummin	schnuffle	are you familiar with cisco ios?
+2011-04-23T06:15:00.000Z	schnuffle	dtcummin	just a bit, enough to hate them :) So I won't be of much help
+2011-04-23T06:16:00.000Z	dtcummin	schnuffle	ok. my switch says the port the server is on is in trunking mode and will accept vlan 2, 3, and 500. a machine on vlan 2 should be able to ping the server, right?
+2011-04-23T06:16:00.000Z	schnuffle	dtcummin	Last time I wanted a Cisco core router setup I got so pissed because of  the salesmans attitude that I try to avoid them
+2011-04-23T06:17:00.000Z	schnuffle	dtcummin	yes as lonf as the machine nows that the route to your server goes over vlan 2
+2011-04-23T06:18:00.000Z	schnuffle	dtcummin	it can but when then route doesn't force a vlan tag the switch won't deliver it
+2011-04-23T06:19:00.000Z	schnuffle	dtcummin	so to start debugging you should check if the ping packets are send with a vlan tag
+2011-04-23T06:20:00.000Z	dtcummin	schnuffle	so do I have to run through that setup in that link you gave me on all the machines I want to start to use vlans?
+2011-04-23T06:21:00.000Z	schnuffle	dtcummin	no but you need to assure that the PC from which to send pings sets the vlan tag
+2011-04-23T06:25:00.000Z	schnuffle	dtcummin	route add -host <ip> dev eth0.2
+2011-04-23T06:29:00.000Z	dtcummin	schnuffle	alright, I give up for now. thanks for your help
+2011-04-23T06:29:00.000Z	schnuffle	dtcummin	I know it's hard stuff. Good luck
+2011-04-23T06:30:00.000Z	schnuffle	dtcummin	one suggestion, set one port one the cisco as debug port and use some traffic analyzer to see the packets, so you can check the vlan settings

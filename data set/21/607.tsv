@@ -1,0 +1,21 @@
+2011-09-03T21:38:00.000Z	pr0zoid		How can i remotely image by ubuntu-server.  I want to take a full backup of my remote server (all i have is command line interface).
+2011-09-03T21:39:00.000Z	edbian	pr0zoid	Do you have somewhere to store all that date?  (you can use scp or rsync to compress it all and put it somewhere)
+2011-09-03T22:28:00.000Z	pr0zoid	edbian	can i store it on the same drive or do i need to create a partition?
+2011-09-03T22:28:00.000Z	edbian	pr0zoid	You can but your backup wherever you want.  Either one will work fine :)
+2011-09-03T22:47:00.000Z	pr0zoid	edbian	it seems like there are number of options for taking an image.  rsync. tar, systemrescuecd.  What i am looking to do is take a full back up then load it in a VM on my desktop.  Later on i may want to have a mirror of the prod server but for now a backup will do.  any recommendations given the above?
+2011-09-03T22:49:00.000Z	edbian	pr0zoid	since you wanna use the backup in a vm I suggest using dd and clone the actual partitions.  (e.g. dd if=/dev/sda2 of=/some/file.vdi)
+2011-09-03T22:52:00.000Z	pr0zoid	edbian	when you say dd do you mean using one of the above tools to copy the entire device??
+2011-09-03T22:52:00.000Z	edbian	pr0zoid	no, dd is a command, a tool you did not list (or apparently know about)
+2011-09-03T22:53:00.000Z	edbian	pr0zoid	I gave an example of how to use it.  It copies data at the bit level.  It will make an EXACT copy of the partition you point it at.  This makes it useful for using the data to boot a VM
+2011-09-03T22:57:00.000Z	pr0zoid	edbian	the challenge i have is that the server only has 10GB (75% free).  From my understanding if its a bit for bit copy i would need the 10GB and i don't have another drive on the server.
+2011-09-03T22:58:00.000Z	edbian	pr0zoid	that's right.  Where CAN you put this data?
+2011-09-03T23:00:00.000Z	pr0zoid	edbian	is it possible to route the output to my desktop(win7) from the remote server
+2011-09-03T23:01:00.000Z	edbian	pr0zoid	are you logged into the ubuntu server from the windows 7 machine?
+2011-09-03T23:04:00.000Z	edbian	pr0zoid	do something like this on the windows machine: scp -r user@ubuntumachine:/ "C:\some\place"
+2011-09-03T23:34:00.000Z	pr0zoid	edbian	appreciate all the help... got winscp loaded and connected to my server.  i'm doing just a strait get from the server to my local?
+2011-09-03T23:34:00.000Z	edbian	pr0zoid	You tell me! :D
+2011-09-03T23:34:00.000Z	edbian	pr0zoid	that's what the command does :)  You're the one doing the backup though.  Is that what you want?
+2011-09-03T23:38:00.000Z	pr0zoid	edbian	i can see how this would work for data i want to back up but essentially i'm looking for a way to take a snapshot of the system (minus free space - since my server only has 1 10gb drive) and use that image to be reloaded in VM that i can boot.  my end result would be a dupe of my server in vm.
+2011-09-03T23:40:00.000Z	edbian	pr0zoid	then dd is the best tool to use.
+2011-09-03T23:40:00.000Z	edbian	pr0zoid	Problem is it isn't a remote tool.  So you'll have to have to use dd (and have enough local space for the double) then use scp or rsync or something to move it over
+2011-09-03T23:47:00.000Z	pr0zoid	edbian	i guess i could resize the partition and use dd duplicate to the new partition then copy usind scp

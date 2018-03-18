@@ -1,0 +1,18 @@
+2006-07-18T08:01:00.000Z	}btorch{		damn it I removed gcc-4.0-base and it removed aptitude, apt-utils and apt
+2006-07-18T08:01:00.000Z	}btorch{		how can i get that back since i don't have apt anymore
+2006-07-18T08:01:00.000Z	}btorch{		:-(
+2006-07-18T08:01:00.000Z	dooglus	}btorch{	you still have "dpkg"?
+2006-07-18T08:02:00.000Z	dooglus	}btorch{	you still have a bunch of .deb files in /var/cache/apt/archives/ ?
+2006-07-18T08:02:00.000Z	dooglus	}btorch{	hopefully "sudo dpkg -i /var/cache/apt/archives/apt*.deb" will sort you out
+2006-07-18T08:03:00.000Z	dooglus	}btorch{	actually, you might want to be a bit more careful about exactly which .deb files you use, but you get the idea
+2006-07-18T08:05:00.000Z	dooglus	}btorch{	you're going to have to chase down the dependencies yourself, but hopefully they'll all be in that cache dir
+2006-07-18T08:05:00.000Z	dooglus	}btorch{	if not, you can use http://packages.ubuntu.com/ to hunt them down.
+2006-07-18T08:05:00.000Z	dooglus	}btorch{	makes you appreciate apt-get doesn't it?
+2006-07-18T08:06:00.000Z	dooglus	}btorch{	I just tried removing gcc-4.0-base, and it told me: The following packages will be REMOVED cpp-4.0 g++-4.0 gcc-4.0 gcc-4.0-base libstdc++6-4.0-dev
+2006-07-18T08:06:00.000Z	dooglus	}btorch{	no idea why it took apt-get away from you
+2006-07-18T08:07:00.000Z	dooglus	}btorch{	are you sure you didn't accidentally type 'sudo apt-get remove gcc-4.0-base apt'?
+2006-07-18T08:10:00.000Z	dooglus	}btorch{	if I try that it won't let me: dpkg: dependency problems prevent removal of gcc-4.0-base:
+2006-07-18T08:10:00.000Z	dooglus	}btorch{	dpkg doesn't handle dependencies?
+2006-07-18T08:12:00.000Z	dooglus	}btorch{	yes.
+2006-07-18T08:12:00.000Z	dooglus	}btorch{	did you just run "sudo dpkg -r gcc-4.0-base", and that took lots of stuff with it?
+2006-07-18T08:12:00.000Z	dooglus	}btorch{	or did you use an extra flag to tell it to remove dependencies too?

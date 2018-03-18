@@ -1,0 +1,22 @@
+2009-01-26T10:57:00.000Z	dartagnon1234		I need some help networking.  I can see my router and whole network, but can't get online.
+2009-01-26T10:57:00.000Z	rdw200169	dartagnon1234	have you checked the dns?
+2009-01-26T10:58:00.000Z	rdw200169	dartagnon1234	are you using linux for a router?  or is it a wireless router or something/
+2009-01-26T10:59:00.000Z	rdw200169	dartagnon1234	ok, did you check dns? try 'cat /etc/resolv.conf'
+2009-01-26T11:00:00.000Z	rdw200169	dartagnon1234	is there line in there that says 'nameserver' with an IP address?
+2009-01-26T11:04:00.000Z	dartagnon1234	rdw200169	cat /etc/resolv.conf returned one line and it was commented out
+2009-01-26T11:05:00.000Z	rdw200169	dartagnon1234	yeah, you don't have a DNS server specified, did you manually assign the IP address
+2009-01-26T11:06:00.000Z	dartagnon1234	rdw200169	yeah, trying to get ssh working.  what should I do to get my DNS working?
+2009-01-26T11:06:00.000Z	rdw200169	dartagnon1234	the easiest way is to set it in System -> Administration -> Network
+2009-01-26T11:07:00.000Z	dartagnon1234	rdw200169	I tried looking in there a few times... I didn't see anything that sounded like gateway or dns
+2009-01-26T11:08:00.000Z	rdw200169	dartagnon1234	fine, just edit resolv.conf to get it working for now; make sure that's the problem
+2009-01-26T11:08:00.000Z	rdw200169	dartagnon1234	gimme a sec.
+2009-01-26T11:09:00.000Z	dartagnon1234	rdw200169	no problem
+2009-01-26T11:10:00.000Z	rdw200169	dartagnon1234	nameserver 208.67.222.222
+2009-01-26T11:10:00.000Z	rdw200169	dartagnon1234	that's opendns, it's safe
+2009-01-26T11:20:00.000Z	dartagnon1234	rdw200169	so that worked.. am I going to have to do that every time I restart?
+2009-01-26T11:21:00.000Z	rdw200169	dartagnon1234	yes, until you set it in the Gnome Network Manger thing, or in /etc/network/interfaces
+2009-01-26T11:21:00.000Z	dartagnon1234	rdw200169	what line should I add to my /etc/network/interfaces file?
+2009-01-26T11:23:00.000Z	rdw200169	dartagnon1234	use dns-nameservers
+2009-01-26T11:24:00.000Z	rdw200169	dartagnon1234	i.e. in the section for the interface for the internet, which should have been set up already w/ the address/netmask/gateway, add the line 'dns-nameservers 208.67.222.222'
+2009-01-26T11:25:00.000Z	rdw200169	dartagnon1234	here's where i found your answer, if you want to read more: http://www.debian.org/doc/manuals/reference/ch-gateway.en.html
+2009-01-26T11:26:00.000Z	dartagnon1234	rdw200169	thanks-you've been a big help.

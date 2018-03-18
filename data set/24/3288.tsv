@@ -1,0 +1,24 @@
+2009-03-12T21:31:00.000Z	macrobad	n3m3s1s	what do you mean under "root maintainance"? a recovery mode of Ubuntu?
+2009-03-12T21:32:00.000Z	macrobad	n3m3s1s	Ok, but do you have net connection? What kind of errors prevent Ubuntu from accomplishing the boot process?
+2009-03-12T21:34:00.000Z	n3m3s1s	macrobad	it used to get stuck on "starting ntp server ntpd" under the  nework configuration... now it gets stuck on network configuration because i disinstalled the ntp
+2009-03-12T21:36:00.000Z	macrobad	n3m3s1s	hm... Well, if all you need is configure network connection from the recovery mode, you just need to put in proper config in /etc/network/interfaces and /etc/resolv.conf files, and then run '/etc/init.d/networking restart' to apply the changes
+2009-03-12T21:37:00.000Z	n3m3s1s	macrobad	:S:S any online guide on how to do that?
+2009-03-12T21:38:00.000Z	macrobad	n3m3s1s	read only the "Defining physical interfaces such as eth0" section here: http://www.cyberciti.biz/faq/setting-up-an-network-interfaces-file/
+2009-03-12T21:39:00.000Z	n3m3s1s	macrobad	thanks,i wiill let you know how it goes
+2009-03-12T21:39:00.000Z	macrobad	n3m3s1s	and as for /etc/resolv.conf, you have to put DNS servers addresses there. The format is as follows: "nameserver 208.67.222.222", one nameserver per line
+2009-03-12T21:42:00.000Z	macrobad	n3m3s1s	Oh, and don't touch the "lo" interface in /etc/network/interfaces... it may have unexpected results. Better yet, backup both files before changing (I should add this advice to my signature)
+2009-03-12T22:08:00.000Z	macrobad	n3m3s1s	so, did you manage to get the connection?
+2009-03-12T22:09:00.000Z	n3m3s1s	macrobad	managed to setup internet connection to repair damaged packets,but when i restart(after having reinstalled ntp) i get blocked on "configuring network interfaces". If i skip that setup (with ctrl+alt+canc) the boot goes ahead but doesn't start the logon screen :S
+2009-03-12T22:12:00.000Z	macrobad	n3m3s1s	I guess I know what's the problem
+2009-03-12T22:13:00.000Z	n3m3s1s	macrobad	you'll be saving my life. i've got two university exams on monday and tuesday.. :S
+2009-03-12T22:15:00.000Z	macrobad	n3m3s1s	Please, check that you have following lines in your /etc/network/interfaces: "auto lo", "iface lo inet loopback", and the line "127.0.0.1 localhost" in /etc/hosts
+2009-03-12T22:16:00.000Z	n3m3s1s	macrobad	ok,anything else in case?? because i have to reboot my laptop. i have a dual boot
+2009-03-12T22:18:00.000Z	macrobad	n3m3s1s	well, where does your system freeze? After logging in, right?
+2009-03-12T22:19:00.000Z	n3m3s1s	macrobad	no,it freezes during boot,at half way of the orange bar
+2009-03-12T22:21:00.000Z	macrobad	n3m3s1s	hm, then you can 1). press Ctrl+Alt+F8 and possibly see any error messages, or 2). press Ctrl+Alt+F1 to get access to console and log in. There you may try to look what kind of error messages the system spits out. You can use 'dmesg' program for it like in 'dmesg | less', or just go to /var/log/, and try to look there for appropriate log files.
+2009-03-12T22:21:00.000Z	macrobad	n3m3s1s	In order to get back to GUI, press Ctrl+Alt+F7
+2009-03-12T22:23:00.000Z	n3m3s1s	macrobad	already tried pressing ctrl+alt+f1 but it doesn't give me the console log.. :S i'll try anyway. Let you know in 5-10 minutes
+2009-03-12T22:56:00.000Z	n3m3s1s	macrobad	well,jumping the network config got me ahead,but my GUI didn't want to start.so i restored it to default. Is it normal that it goes HYPER-slow now???
+2009-03-12T22:59:00.000Z	macrobad	n3m3s1s	No, it's not. How did you restore it to default?
+2009-03-12T23:01:00.000Z	n3m3s1s	macrobad	with the restore xserv (or something like that) from the "mantainance boot"
+2009-03-12T23:07:00.000Z	macrobad	n3m3s1s	Not sure what was that, but anyway check the log files for errors. That may give you some clue (specifically, /var/log/system.log and /var/log/Xorg.0.log)

@@ -1,0 +1,24 @@
+2008-12-15T00:08:00.000Z	Karn	n8tuser	yeah i'm booted in on the laptop (no gui - removed gnome)
+2008-12-15T00:09:00.000Z	n8tuser		Karn-> okay np,  is it connected via ethernet on your router to the isp?
+2008-12-15T00:09:00.000Z	n8tuser		Karn-> what is the ip address of your laptop?
+2008-12-15T00:10:00.000Z	Karn	n8tuser	it doesnt have one :) it was connected over wireless but after removing network-manager it doesnt have the ra0 interface
+2008-12-15T00:10:00.000Z	n8tuser		Karn-> can you not connect it using an ethernet cable? thats okay too to use ethernet,
+2008-12-15T00:11:00.000Z	Karn	n8tuser	I dont have a spare port on the router (and the router is in the loft)
+2008-12-15T00:11:00.000Z	n8tuser		Karn-> do you recall which chip your wifi uses?
+2008-12-15T00:12:00.000Z	Karn		rt2860 i think
+2008-12-15T00:12:00.000Z	Karn		its an eee 901
+2008-12-15T00:12:00.000Z	Karn		if that helps
+2008-12-15T00:13:00.000Z	n8tuser		Karn-> okay do this, can you post in pastebin the contents of  /etc/network/interfaces
+2008-12-15T00:17:00.000Z	Karn	n8tuser	http://pastebin.com/d815109a
+2008-12-15T00:18:00.000Z	n8tuser		Karn-> edit that file and add this line   iface ra0 inet dhcp;
+2008-12-15T00:18:00.000Z	n8tuser		Karn-> auto ra0
+2008-12-15T00:18:00.000Z	n8tuser	Karn	those are two lines added
+2008-12-15T00:19:00.000Z	Karn	n8tuser	ok now /etc/init.d/networking restart ?
+2008-12-15T00:19:00.000Z	n8tuser		Karn-> am assuming here rt2860  will be name ra0
+2008-12-15T00:19:00.000Z	Karn		yeah
+2008-12-15T00:19:00.000Z	n8tuser		Karn-> no, try this    sudo  ifup ra0
+2008-12-15T00:20:00.000Z	Karn	n8tuser	No such device
+2008-12-15T00:21:00.000Z	n8tuser		Karn-> do this to verify if the driver is loaded,    lshw -C network  and post results in pastebin
+2008-12-15T00:22:00.000Z	Karn	n8tuser	i just did a modprobe rt2860sta
+2008-12-15T00:23:00.000Z	n8tuser		Karn-> do this to verify if the driver is loaded,    lshw -C network  and post results in pastebin
+2008-12-15T00:23:00.000Z	Karn	n8tuser	I got it working thanks :)

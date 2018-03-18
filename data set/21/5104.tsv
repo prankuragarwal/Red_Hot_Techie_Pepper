@@ -1,0 +1,21 @@
+2007-12-24T08:27:00.000Z	wolfric2		can someone help me use fsck
+2007-12-24T08:28:00.000Z	nickrud	wolfric2	what are you trying to fsck ?
+2007-12-24T08:28:00.000Z	nickrud	wolfric2	if you intend to install to that same partition, you don't need to fsck.
+2007-12-24T08:29:00.000Z	nickrud	wolfric2	erm, from the live cd,  run sudo fdisk -l , do you get a partition listing?
+2007-12-24T08:31:00.000Z	nickrud	wolfric2	Ash_Heron yup, that's the one :)
+2007-12-24T08:31:00.000Z	wolfric2	nickrud	?
+2007-12-24T08:32:00.000Z	nickrud	wolfric2	try bazz 's suggestion, run gparted from the live cd
+2007-12-24T08:32:00.000Z	nickrud	wolfric2	there are no partitions to fsck, you need to create new ones, and yes
+2007-12-24T08:33:00.000Z	nickrud	wolfric2	if that fails, run cfdisk , it's a text one that's never failed me (unlike gparted and kin)
+2007-12-24T08:33:00.000Z	nickrud	wolfric2	create your partitions there
+2007-12-24T08:34:00.000Z	nickrud	wolfric2	but fdisk -l doesn't show them?
+2007-12-24T08:35:00.000Z	nickrud	wolfric2	then your partition table is fubar'd, run cfdisk and recreate all
+2007-12-24T08:36:00.000Z	nickrud	wolfric2	cfdisk /dev/<root disk>   , like /dev/sda
+2007-12-24T08:37:00.000Z	nickrud	wolfric2	then I think you have a hardware problem
+2007-12-24T08:37:00.000Z	nickrud	wolfric2	not hda1 , but hda
+2007-12-24T08:40:00.000Z	nickrud	wolfric2	I'm not an expert on disk drives, luckily I've never had problems so I never needed to learn more than the basics.
+2007-12-24T08:40:00.000Z	nickrud	wolfric2	keep the error that cfdisk spits out, and mention that in your requests.  Someone who knows will see it, eventually
+2007-12-24T08:41:00.000Z	nickrud	wolfric2	erm, one more thing:  sudo umount /dev/hda  ,   sudo umount /dev/sda  , whichever, and try again
+2007-12-24T08:42:00.000Z	nickrud	wolfric2	gah, I'm brain dead, each of your partition,s /dev/hdaX
+2007-12-24T08:43:00.000Z	nickrud	wolfric2	yw :)  It was another of nickrud's  doh! moments
+2007-12-24T08:47:00.000Z	nickrud	wolfric2	the ntfs is not required

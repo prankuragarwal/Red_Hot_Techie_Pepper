@@ -1,0 +1,24 @@
+2007-08-11T11:32:00.000Z	Aye|		Does anyone know what causes this problem, http://ubuntuforums.org/showthread.php?t=522223...
+2007-08-11T11:33:00.000Z	MrObvious	Aye|	Hang on.
+2007-08-11T11:33:00.000Z	MrObvious	Aye|	So you're saying it doesn't work right when you have a 6200 installed?
+2007-08-11T11:34:00.000Z	Aye|	MrObvious	if i boot with my onboard card disabled and my 6200 it will hang during the boot screen
+2007-08-11T11:35:00.000Z	Aye|	MrObvious	but if i boot with my onboard card, it will boot and then when X is loaded it will use my 6200
+2007-08-11T11:36:00.000Z	MrObvious	Aye|	So let me understand this. If you leave the onboard set, it loads the onboard vid card then goes to the 6200 when X starts?
+2007-08-11T11:36:00.000Z	MrObvious	Aye|	What is your primary display adapter set to in the BIOS?
+2007-08-11T11:37:00.000Z	MrObvious	Aye|	Find the line in /etc/X11/xorg.conf that has your graphics card section that says Driver "..."
+2007-08-11T11:37:00.000Z	MrObvious	Aye|	What does it say? nvidia?
+2007-08-11T11:38:00.000Z	Aye|	MrObvious	yeah drivers nvidia
+2007-08-11T11:38:00.000Z	MrObvious	Aye|	I wonder if you have some kind of hardware problem.
+2007-08-11T11:39:00.000Z	MrObvious	Aye|	The fact that it hangs when it's set to the vid card in the BIOS indicates something is wrong.
+2007-08-11T11:39:00.000Z	Aye|	MrObvious	windows boots fine
+2007-08-11T11:39:00.000Z	MrObvious	Aye|	Odd. Do you bench and game fine in Winblows?
+2007-08-11T11:40:00.000Z	Aye|	MrObvious	no, i bench and game fine in WinDOWs.
+2007-08-11T11:40:00.000Z	MrObvious	Aye|	Rofl.
+2007-08-11T11:40:00.000Z	Aye|	MrObvious	;')
+2007-08-11T11:41:00.000Z	MrObvious	Aye|	Hmm this is a tough one. I've never had that problem as I always set it to my AGP card with my systems.
+2007-08-11T11:41:00.000Z	Aye|	MrObvious	its just weird that once X is up everythings fine, but ubuntu seems atached to my graphics card..
+2007-08-11T11:42:00.000Z	MrObvious	Aye|	I wonder if the syslog would have anything. It might be conflicting or something.
+2007-08-11T11:42:00.000Z	MrObvious	Aye|	I'm really stabbing into the dark now :(.
+2007-08-11T11:43:00.000Z	MrObvious	Aye|	cat /var/log/syslog
+2007-08-11T11:45:00.000Z	MrObvious	Aye|	Try setting the driver to nv from nvidia. You may have to do a sudo gedit /etc/X11/xorg.conf and edit that line I asked you to find earlier. See if that helps.
+2007-08-11T11:46:00.000Z	Aye|	MrObvious	nope its just about network-manager, when i boot into recovery mode i get some errors, the ones which i wrote down ( c0103346) ( c02eec5c) (c0105350) (c0105362) work_notifysig+0x13/0x18 and error_code+0x7c/0xp0

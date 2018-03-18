@@ -1,0 +1,24 @@
+2010-06-05T14:50:00.000Z	qm7		no
+2010-06-05T14:50:00.000Z	thune3	qm7	do you have the full line where Unrecovered read error - auto reallocate failed"
+2010-06-05T14:51:00.000Z	thune3	qm7	where that appears
+2010-06-05T14:51:00.000Z	qm7	thune3	yes, do you want to see it?
+2010-06-05T14:52:00.000Z	thune3	qm7	yes, just the one full line
+2010-06-05T14:53:00.000Z	qm7	thune3	Jun  2 11:45:01 ubuntu-network kernel: [65446.460760] sd 0:0:0:0: [sda] Add. Sense: Unrecovered read error - auto reallocate failed
+2010-06-05T14:54:00.000Z	thune3	qm7	to me it looks like your hdd may be developing bad blocks
+2010-06-05T14:55:00.000Z	qm7	thune3	what does that mean? hardware damage or software error?
+2010-06-05T14:57:00.000Z	qm7	thune3	what does that mean? hardware damage or software error?
+2010-06-05T14:57:00.000Z	thune3	qm7	hard drives can develop bad blocks. you could try looking at the smart data (internal hard drive reporting): smartctl -a /dev/sda
+2010-06-05T15:09:00.000Z	thune3	qm7	can i see
+2010-06-05T15:09:00.000Z	qm7	thune3	just sent it
+2010-06-05T15:14:00.000Z	thune3	qm7	you have 10 pending "bad" sectors
+2010-06-05T15:14:00.000Z	qm7	thune3	what does that mean?
+2010-06-05T15:15:00.000Z	thune3	qm7	it means that 10 separate 512-byte blocks have thrown read errors, but cannot be auto corrected by the drive because they have unreadable data in them.
+2010-06-05T15:15:00.000Z	qm7	thune3	does that mean physical damage or something else
+2010-06-05T15:18:00.000Z	thune3	qm7	drives as they get older start to develop bad blocks. most people just get a new drive. i've corrected bad-blocks before and put a fan on the drive
+2010-06-05T15:18:00.000Z	qm7	thune3	would I be able to succesfully backup the entire drive?
+2010-06-05T15:21:00.000Z	thune3	qm7	people have been recommending ddrescue for trouble files, but only 5KB of your drive is known bad, 99.999% will copy out just fine.
+2010-06-05T15:22:00.000Z	qm7	thune3	ok
+2010-06-05T15:22:00.000Z	thune3	qm7	or gddrescue
+2010-06-05T15:22:00.000Z	qm7	thune3	do i perform ddrescue before or after the backup?
+2010-06-05T15:25:00.000Z	thune3	qm7	there are better experts than me on gddrescue, i believe that most people would recommened using it as the tool for backing up a trouble drive though
+2010-06-05T15:33:00.000Z	thune3	qm7	first, i'd just try backing up your critical data using your normal backup scheme

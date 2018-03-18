@@ -1,0 +1,24 @@
+2004-09-28T08:24:00.000Z	stoffel_	Mithrandir	negative
+2004-09-28T08:24:00.000Z	stoffel_	Mithrandir	i tried dmesg | grep 1371
+2004-09-28T08:24:00.000Z	Mithrandir	stoffel_	could you rmmod snd_ens1371 ; modprobe snd_ens1371 ?
+2004-09-28T08:25:00.000Z	stoffel_	Mithrandir	ERRO: Module snd_ens1371 is in use
+2004-09-28T08:26:00.000Z	Mithrandir	stoffel_	ah, ok.  Sorry, mea culpa, we're chasing the wrong bug.
+2004-09-28T08:26:00.000Z	Mithrandir	stoffel_	is snd_pcm_oss loaded?
+2004-09-28T08:27:00.000Z	stoffel_	Mithrandir	do i check with modprobe again?
+2004-09-28T08:28:00.000Z	Mithrandir	stoffel_	lsmod | grep snd.pcm.oss
+2004-09-28T08:28:00.000Z	Mithrandir	stoffel_	. matches anything
+2004-09-28T08:29:00.000Z	stoffel_	Mithrandir	with grep oss it finds: snd_pcm_oss, snd_mixer_oss, snd_pcm, snd
+2004-09-28T08:30:00.000Z	Mithrandir	stoffel_	hmm.. this is getting weird.  Does cat /dev/sndstat tell you that you have some audio devics?
+2004-09-28T08:31:00.000Z	stoffel_	Mithrandir	yes, it finds the devices 0 (tv card) and 1 (es1371 (duplex))
+2004-09-28T08:33:00.000Z	Mithrandir	stoffel_	and you have files named pcm* in /dev/snd?
+2004-09-28T08:33:00.000Z	stoffel_	Mithrandir	yes. several
+2004-09-28T08:34:00.000Z	Mithrandir	stoffel_	do you have a /dev/dsp file?
+2004-09-28T08:34:00.000Z	stoffel_	Mithrandir	yes
+2004-09-28T08:35:00.000Z	Mithrandir	stoffel_	ok, then it's probably just esd not running.
+2004-09-28T08:35:00.000Z	Mithrandir	stoffel_	if you run esd -nobeeps, does playing music work?
+2004-09-28T08:35:00.000Z	stoffel_	Mithrandir	when i run esd, it tells me "/dev/dsp: No such device"... strange
+2004-09-28T08:36:00.000Z	Mithrandir	stoffel_	that's weird.
+2004-09-28T08:37:00.000Z	Mithrandir	stoffel_	esd -d /dev/dsp1 ?
+2004-09-28T08:38:00.000Z	stoffel_	Mithrandir	hooray.. 
+2004-09-28T08:39:00.000Z	Mithrandir	stoffel_	ok, cool. look at the bug Tomcat_ posted; there's a workaround in there
+2004-09-28T08:39:00.000Z	Mithrandir	stoffel_	but as mdz writes in the bug, we need to fix this properly.

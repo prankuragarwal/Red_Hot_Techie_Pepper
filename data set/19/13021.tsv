@@ -1,0 +1,19 @@
+2005-05-29T06:51:00.000Z	naderman		pci
+2005-05-29T06:52:00.000Z	naderman		it worked with warty
+2005-05-29T06:52:00.000Z	naderman		but in hoary ifconfig and iwconfig don't show wlan0
+2005-05-29T06:52:00.000Z	Seveas	naderman	have you reinstalled or upgraded?
+2005-05-29T06:53:00.000Z	naderman	Seveas	yes
+2005-05-29T06:56:00.000Z	naderman	Seveas	any other idea what might be the problem?
+2005-05-29T06:57:00.000Z	naderman	Seveas	yes, did that
+2005-05-29T06:59:00.000Z	Seveas	naderman	try removing the drivers (maybe even remove the files from /etc/ndiswrapper) and reinstalling them
+2005-05-29T06:59:00.000Z	naderman	Seveas	did so two times
+2005-05-29T07:00:00.000Z	Seveas	naderman	mount -o loop /path/to/isofile /path/to/mountpoint
+2005-05-29T07:00:00.000Z	naderman	Seveas	you meant mod^ didn't you?
+2005-05-29T07:03:00.000Z	Seveas	naderman	the ndiswrapper aliases file is not somewhere under /etc/modprobe.d/arch/ is it?
+2005-05-29T07:03:00.000Z	Seveas	naderman	try a depmod -a before inserting the module and dmesg right after
+2005-05-29T07:06:00.000Z	Seveas	naderman	try: cat /proc/net/dev
+2005-05-29T07:07:00.000Z	Seveas	naderman	hmm, somehow your driver isn't loaded into the kernel
+2005-05-29T07:09:00.000Z	Seveas	naderman	i am stunned :S i'd suggest asking on the mailinglsit, since there are lots more people who can read it there
+2005-05-29T07:09:00.000Z	naderman	Seveas	which one?
+2005-05-29T07:09:00.000Z	Seveas	naderman	ubuntu-users@list.ubuntu.com
+2005-05-29T07:54:00.000Z	naderman	Seveas	yeah, I was quite surprised when dmesg suddenly said, ndiswrapper: driver bcmwl5 loaded

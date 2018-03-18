@@ -1,0 +1,21 @@
+2009-02-28T11:58:00.000Z	anilalur		Hi, how do I change DNS in network manager with DSL connection?
+2009-02-28T12:00:00.000Z	anilalur		I tried changing resolve.conf but it doesnt seem to work
+2009-02-28T12:01:00.000Z	usser	anilalur	adjust /etc/dhcp3/dhclient.conf
+2009-02-28T12:04:00.000Z	anilalur	usser	I added opendns in prepend n removed domain-name-server from request
+2009-02-28T12:04:00.000Z	usser	anilalur	you have to reconnect or rerun dhclient
+2009-02-28T12:07:00.000Z	usser	anilalur	whats in /etc/resolv.conf your opendns server?
+2009-02-28T12:08:00.000Z	anilalur	usser	prepend domain-name-servers 208.67.222.222,208.67.220.220;
+2009-02-28T12:08:00.000Z	usser	anilalur	right did those two server show up in /etc/resolv.conf?
+2009-02-28T12:09:00.000Z	anilalur	usser	http://paste.ubuntu.com/124147/
+2009-02-28T12:09:00.000Z	usser	anilalur	thats your resolv.conf?
+2009-02-28T12:10:00.000Z	anilalur	usser	no, the resolv.conf still has the old server names
+2009-02-28T12:10:00.000Z	usser	anilalur	try putting domain-name-servers back in request
+2009-02-28T12:10:00.000Z	anilalur	usser	thats my dhclient.conf
+2009-02-28T12:11:00.000Z	usser	anilalur	right, put domain-name-servers back in request. how do you connect to dsl? using networkmanager?
+2009-02-28T12:12:00.000Z	anilalur	usser	I put that back n reconnected. resolv.conf still has old DNS
+2009-02-28T12:13:00.000Z	usser	anilalur	try removing one dns server from prepend line, cause im not sure what the separator between them should be?
+2009-02-28T12:14:00.000Z	usser	anilalur	are u using network manager to connect?
+2009-02-28T12:14:00.000Z	anilalur	usser	yes I use network manager,
+2009-02-28T12:20:00.000Z	anilalur	usser	changed permission of resolv.conf, the nameserver goes blank, still connected with old DNS
+2009-02-28T12:21:00.000Z	usser	anilalur	im not sure whats going on there sorry. :(
+2009-02-28T12:21:00.000Z	anilalur	usser	OK, thanks. I will try with wicd

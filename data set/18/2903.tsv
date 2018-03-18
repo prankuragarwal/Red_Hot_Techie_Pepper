@@ -1,0 +1,18 @@
+2010-08-28T08:10:00.000Z	undecim		how can I, from the command line, mount or unmount a drive in the same way as if I had clicked it in nautilus?
+2010-08-28T08:11:00.000Z	Callum_Laptop	undecim	sudo umount <folder>
+2010-08-28T08:12:00.000Z	undecim	Callum_Laptop	I suppose that would work for unmounting. I was hoping to do it without root privs, just like nautilus does. How do I mount it though, with the automatic label detection and mount in /media?
+2010-08-28T08:14:00.000Z	Callum_Laptop	undecim	you can't do that, the X server actually runs under root, thats how its able to do some root-only things without permission
+2010-08-28T08:16:00.000Z	undecim	Callum_Laptop	Really? I thought that it dropped a lot of root privs with KMS. And I didn't think it was a function of root, but rather devicekit or in older versions hal. There used to be a command (devkit-disks --unmount, I think) in older versions for this, but that doesn't seem to be available in 10.04
+2010-08-28T08:16:00.000Z	undecim	Callum_Laptop	s/function of root/function of X/
+2010-08-28T08:18:00.000Z	Callum_Laptop	undecim	yeah, but the actual mounting/unmounting is a function that can only be performed by root, and the X server actually running as root (with the GUI account not being root) being why it can mount/umount things without permission
+2010-08-28T08:20:00.000Z	undecim	Callum_Laptop	Are you sure? Because I've done this before in the past, it just doesn't work with this version of Ubuntu. From what I understand, X should no longer have to run as root (even though it still does) because the graphics card was the last hurdle, and KMS keeps X from dealing with that. So it this going to be a problem too before someone writes something to replace devicekit, which replaced hal?
+2010-08-28T08:21:00.000Z	undecim	Callum_Laptop	Do you maybe have a link with information on this? I couldn't find anything in the Ubuntu release notes about dropping devicekit or the mounting of external media
+2010-08-28T08:22:00.000Z	Callum_Laptop	undecim	last I checked DeviceKit or HAL can't actually mount filesystems =P
+2010-08-28T08:23:00.000Z	undecim	Callum_Laptop	Then what exactly does Devicekit do? And how was I able to use devicekit-disks --mount in the past?
+2010-08-28T08:24:00.000Z	Callum_Laptop	undecim	DeviceKit sends signals to programs about hardware being inserted/removed =P
+2010-08-28T08:25:00.000Z	undecim	Callum_Laptop	So how can I get the same functionality as I had in the past with devicekit-disks?
+2010-08-28T08:25:00.000Z	undecim	Callum_Laptop	Installing the package of the same name gives me "No candidate version found for devicekit-disks"
+2010-08-28T08:26:00.000Z	undecim	Callum_Laptop	That's it! udisks --mount
+2010-08-28T08:26:00.000Z	undecim	Callum_Laptop	tyvm
+2010-08-28T08:27:00.000Z	Callum_Laptop	undecim	uhh, what did I do? lol
+2010-08-28T08:27:00.000Z	undecim	Callum_Laptop	devicekit-disks was renamed to udisks

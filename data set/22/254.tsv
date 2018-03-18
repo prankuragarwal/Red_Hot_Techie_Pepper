@@ -1,0 +1,22 @@
+2012-02-23T17:01:00.000Z	phpn00b		hi, where do I get Ubuntu One support?
+2012-02-23T17:01:00.000Z	theadmin	phpn00b	Either here or #ubuntu-one
+2012-02-23T17:02:00.000Z	theadmin	phpn00b	Nope... Ubuntu One only provides 5 for free, no more... I think it says that pretty clear
+2012-02-23T17:30:00.000Z	theadmin	phpn00b	Nothing, it won't work at all (they'll just go back to how they were), vfat doesn't support UNIX permissions.
+2012-02-23T17:31:00.000Z	phpn00b	theadmin	then how do I give another user access to these files?
+2012-02-23T17:31:00.000Z	theadmin	phpn00b	You need to mount the partition with the right umask
+2012-02-23T17:32:00.000Z	phpn00b	theadmin	I don't know how to do that with truecrypt :(
+2012-02-23T17:32:00.000Z	theadmin	phpn00b	Truecrypt desu? Okay, well. You need to tick "do not mount" when mounting the truecrypt partition (ridiculous, I know) and then mount it like you normally would, it will be located in "/dev/mapper/truecrypt1" or somesuch.
+2012-02-23T17:33:00.000Z	phpn00b	theadmin	and then what. mount that file again as usual?
+2012-02-23T17:34:00.000Z	theadmin	phpn00b	Yeah, sudo mount -t vfat -o defaults,umask=... /dev/mapper/truecrypt1 /mnt
+2012-02-23T17:38:00.000Z	theadmin	phpn00b	This might of interest you: https://wiki.archlinux.org/index.php/TrueCrypt#Mount_volumes_via_fstab
+2012-02-23T17:40:00.000Z	phpn00b	theadmin	that won't work. if I change the ownership to www-data then I can not write to it within Netbeans
+2012-02-23T17:41:00.000Z	theadmin	phpn00b	Who said anything about changing ownership?
+2012-02-23T17:45:00.000Z	phpn00b	theadmin	 what is the umask code for rwxrwxrwx?
+2012-02-23T17:48:00.000Z	theadmin	phpn00b	0
+2012-02-23T17:49:00.000Z	phpn00b	theadmin	so 0000?
+2012-02-23T17:50:00.000Z	theadmin	phpn00b	Or that.
+2012-02-23T17:51:00.000Z	phpn00b	theadmin	thanks, it works :-)
+2012-02-23T17:51:00.000Z	theadmin	phpn00b	np
+2012-02-23T17:51:00.000Z	theadmin	phpn00b	umasks are confusing lol :/
+2012-02-23T17:52:00.000Z	phpn00b	theadmin	in truecrypt->settings->mount options , I put in umask=0.  this worked :-)
+2012-02-23T17:52:00.000Z	theadmin	phpn00b	Great :) Glad you made it

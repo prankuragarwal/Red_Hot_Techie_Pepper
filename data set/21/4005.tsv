@@ -1,0 +1,21 @@
+2009-11-28T03:39:00.000Z	PMantis		Where's the best place to ask about writing upstart jobs? Can anyone here help?
+2009-11-28T03:40:00.000Z	lstarnes	PMantis	http://www.linux.com/archive/feature/125977?theme=print might be of use
+2009-11-28T03:43:00.000Z	PMantis	lstarnes	Thanks! Different than I had before. I need to run a script before networking and UFW start. Seems the only way is to have my script trigger on a networking event, then trigger ufw on my custom event - but that doesn't seem elegant. Ideas?
+2009-11-28T03:45:00.000Z	lstarnes	PMantis	you could have it trigger on the start of the system and have networking require it
+2009-11-28T03:46:00.000Z	PMantis	lstarnes	"require" it? It's even driven. do you know how to do that?
+2009-11-28T03:47:00.000Z	lstarnes	PMantis	use "start on started <jobname>"
+2009-11-28T03:47:00.000Z	lstarnes	PMantis	I'm  not sure if that would work though
+2009-11-28T03:48:00.000Z	lstarnes	PMantis	I think upstart still launches a SysV-like set of init scripts like most other linux distributions use
+2009-11-28T03:48:00.000Z	PMantis	lstarnes	I see that networking.conf in 9.10 has a start line with a parenthesis. Do you know if that means both event contitions have to be satisfied before it fires, or either?
+2009-11-28T03:48:00.000Z	lstarnes	PMantis	I don't know
+2009-11-28T03:48:00.000Z	lstarnes	PMantis	what does the line look like?
+2009-11-28T03:48:00.000Z	PMantis	lstarnes	Yes, it does... and my script is a regular init script now... but it doesn't reliably run before ufw.
+2009-11-28T03:49:00.000Z	PMantis	lstarnes	start on (local-filesystem  and stopped udevtrigger)
+2009-11-28T03:49:00.000Z	lstarnes	PMantis	it means that it starts after local-filesystem has been triggered and udevtrigger has been stopped
+2009-11-28T03:50:00.000Z	PMantis	lstarnes	Hmmmmm, maybe I can add another line there to make it require my custom event, too.
+2009-11-28T03:50:00.000Z	lstarnes	PMantis	you probably could
+2009-11-28T03:50:00.000Z	lstarnes	PMantis	there might be another way to do it by managing the init scripts
+2009-11-28T03:51:00.000Z	lstarnes	PMantis	I forget how to modify the SvsV init scripts though
+2009-11-28T03:51:00.000Z	PMantis	lstarnes	My next requirement is to unmount a dynamically mounted filesystem after stopping some services on shutdown.
+2009-11-28T03:51:00.000Z	PMantis	lstarnes	heh
+2009-11-28T03:51:00.000Z	lstarnes	PMantis	you could create a custom job for that too

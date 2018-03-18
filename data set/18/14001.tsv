@@ -1,0 +1,18 @@
+2012-09-21T23:10:00.000Z	phaphandede		network expert online?
+2012-09-21T23:10:00.000Z	phaphandede		Having a dns issue looking for a guru
+2012-09-21T23:12:00.000Z	phaphandede		Ok, here is my issue, I have a 12.04 setup has server (using zentyal). Server runs good with all services. I am not using dhcp since I have a router for it...When I dig @domain on server, i get good response. However, not on the clients
+2012-09-21T23:13:00.000Z	phaphandede		Clients can ping the IP but not the domain...what could it be?
+2012-09-21T23:13:00.000Z	phaphandede		I cannot join XP's station to PDC because of that issue...
+2012-09-21T23:13:00.000Z	usr13	phaphandede	Sounds like the dhcp server is not supplying a nameserver
+2012-09-21T23:14:00.000Z	usr13	phaphandede	Yes.  dhcp
+2012-09-21T23:17:00.000Z	usr13	phaphandede	Restate your problem.
+2012-09-21T23:17:00.000Z	usr13	phaphandede	Tell us what is really wrong.
+2012-09-21T23:19:00.000Z	usr13	phaphandede	Only if your zenthal server is running a chaching nameserver.
+2012-09-21T23:20:00.000Z	usr13	phaphandede	What is your native language?
+2012-09-21T23:22:00.000Z	usr13	phaphandede	http://doc.zentyal.org/en/
+2012-09-21T23:23:00.000Z	usr13	phaphandede	Well, I know that you've told us at least 2 times what your problem is and I do not understand.  I assume no one else does either because no one else has supplied any info for you either.
+2012-09-21T23:24:00.000Z	usr13	phaphandede	If you are not using the router to resolve domain names, you could hard code it in the /etc/resolv.conf file.  But if you have a router to do it for you, I'm not sure why you're not already using it.
+2012-09-21T23:25:00.000Z	usr13	phaphandede	If you look at the resolv.conf file and see what it says for nameserver, that would give you a clue.
+2012-09-21T23:26:00.000Z	usr13	phaphandede	https://help.ubuntu.com/12.04/serverguide/C/dns.html
+2012-09-21T23:27:00.000Z	usr13	phaphandede	The router usually acts as a caching nameserver.  It acquires DNS info from an official nameserver and passes it on to your LAN.
+2012-09-21T23:30:00.000Z	usr13	phaphandede	If, for some reason, your router's nameserver is not turned on, you can use an outside nameserver, like 8.8.8.8   In that case, you just see that the nameserver line in the /etc/resolv.conf file says:  nameserver 8.8.8.8

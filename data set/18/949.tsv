@@ -1,0 +1,18 @@
+2012-01-18T16:54:00.000Z	aum___		Hello everyone, i have manually remove gnome packages from ubuntu because i wanted a command line system, its booting fine but if have to press "Alt + Ctrl + f1" to go to command line . is there any way to do this automatically , like changing runlevel or something ?
+2012-01-18T16:54:00.000Z	LjL	aum___	removing the login manager doesn't suffice?
+2012-01-18T16:55:00.000Z	aum___	LjL	, Now the size of my desktop is "726 MB" so i think i have removed sufficient  thing ...
+2012-01-18T16:56:00.000Z	LjL	aum___	eh, if the login manager is still there, you will still get a graphical login prompt. "sudo apt-get remove lightdm" or "sudo apt-get remove gdm" depending on your Ubuntu version.
+2012-01-18T16:57:00.000Z	aum___	LjL	how can gdm can reside , i have removed every instance of X server ...
+2012-01-18T16:57:00.000Z	LjL	aum___	then if you've removed X i really don't see why you'd need to press ctrl+alt+f1 to login textually... what do you *see* before pressing ctrl+alt+f1?
+2012-01-18T16:58:00.000Z	aum___	LjL	blank screen with a blinking "_" on on the top
+2012-01-18T17:02:00.000Z	LjL	aum___	funny. i don't know, maybe it's plymouth (the boot splash) that switches to terminal 7 or 8... try removing plymouth if you don't mind not having a splash screen
+2012-01-18T17:06:00.000Z	aum___	LjL	yes i have also removed plymouth themes , but when i remove plymouth it gives me warning and also try to remove mysql and linux-generic-*
+2012-01-18T17:06:00.000Z	LjL	aum___	ugh :(
+2012-01-18T17:08:00.000Z	LjL	aum___	tried putting "nosplash" instead of "splash" in the linux options?
+2012-01-18T17:09:00.000Z	aum___	LjL	, ok let me try
+2012-01-18T17:14:00.000Z	aum___	LjL	same blank screen with a blinking "_" on on the top
+2012-01-18T17:15:00.000Z	aum___	LjL	ok just tell me how to boot to tty1 directly...
+2012-01-18T17:21:00.000Z	LjL	aum___	err, i would of course if i knew how
+2012-01-18T17:26:00.000Z	aum___	LjL	then can you please tell me who knows...
+2012-01-18T18:19:00.000Z	aum___	LjL	thanks for your support, the solution of my problem was to edit a line in grub.cfg --> " console= tty1" :)
+2012-01-18T18:20:00.000Z	LjL	aum___	oh. i grepped for "tty" in /etc/ and /boot/ but couldn't quite spot it.

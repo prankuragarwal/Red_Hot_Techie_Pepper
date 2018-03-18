@@ -1,0 +1,21 @@
+2008-07-24T04:46:00.000Z	nickrud	SealedWithAKiss	what error are you getting?
+2008-07-24T04:48:00.000Z	SealedWithAKiss	nickrud	 Reading package lists... Error!
+2008-07-24T04:49:00.000Z	nickrud	SealedWithAKiss	ah, ouch.   put a copy of /etc/apt/sources.list on paste.ubuntu.com. May have too many there, and need to make an adjustment there or in a setting
+2008-07-24T04:53:00.000Z	SealedWithAKiss	nickrud	http://paste.ubuntu.com/29789/
+2008-07-24T04:53:00.000Z	nickrud	SealedWithAKiss	ouch, you have mixed dapper and feisty sources there
+2008-07-24T04:54:00.000Z	SealedWithAKiss	nickrud	is it really that painful? ol
+2008-07-24T04:56:00.000Z	nickrud	SealedWithAKiss	can be, yes. did you try to do a dist upgrade? And mixing feisty with dapper is really bad, since they are more than one release apart
+2008-07-24T04:58:00.000Z	nickrud	SealedWithAKiss	ok, then:   grep  -r Cache-Limit /etc/apt/ , does that bring any output? Capitalization matters
+2008-07-24T05:00:00.000Z	SealedWithAKiss	nickrud	/etc/apt/apt.conf.d/70debconf:APT::Cache-Limit "8388608";
+2008-07-24T05:04:00.000Z	SealedWithAKiss	nickrud	/etc/apt/apt.conf.d/70debconf:APT::Cache-Limit "8388608";
+2008-07-24T05:07:00.000Z	nickrud	SealedWithAKiss	did you get that last?
+2008-07-24T05:07:00.000Z	SealedWithAKiss	nickrud	yes.
+2008-07-24T05:08:00.000Z	nickrud	SealedWithAKiss	I'm getting ready to head home, could you try that edit real quickly?
+2008-07-24T05:11:00.000Z	nickrud	SealedWithAKiss	gotta leave in a minute or two. If I don't hear from you, I'll be back on line in about an hour or so.
+2008-07-24T05:11:00.000Z	SealedWithAKiss	nickrud	i'm trying.
+2008-07-24T05:12:00.000Z	SealedWithAKiss	nickrud	sure.
+2008-07-24T05:12:00.000Z	SealedWithAKiss	nickrud	apt.conf is blank.
+2008-07-24T05:12:00.000Z	nickrud	SealedWithAKiss	what's the problem?   gksu gedit /etc/apt/sources.list.d/70debconf , change the number, then sudo apt-get update  && sudo synaptic
+2008-07-24T05:13:00.000Z	nickrud	SealedWithAKiss	sorry I didn't give that line earlier, typing and packing up the desk leads to brain farts
+2008-07-24T05:14:00.000Z	SealedWithAKiss	nickrud	the file is blank.
+2008-07-24T05:15:00.000Z	SealedWithAKiss	nickrud	70debconf is empty.

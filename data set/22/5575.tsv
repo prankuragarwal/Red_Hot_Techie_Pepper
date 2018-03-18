@@ -1,0 +1,22 @@
+2007-08-02T10:19:00.000Z	theonlyalt		Question... is there any way to log in to a remote computer graphically while maintaining my current gnome session? I know there's VLC for already logged in sessions, and XDMCP for logging in graphically, but can I have 2 Gnome sessions running at once?
+2007-08-02T10:19:00.000Z	Dr_willis	theonlyalt	 you mean 'VNC'
+2007-08-02T10:19:00.000Z	Dr_willis	theonlyalt	 and you can have several dozen vnc sessions that are hidden.
+2007-08-02T10:20:00.000Z	Dr_willis	theonlyalt	 vnc is a very flexiable tool. the 'shreing the current desktop' is one way of using it.
+2007-08-02T10:20:00.000Z	Dr_willis	theonlyalt	 ssh to remote box, run vncserver, use vncclient on local box. conect to remote
+2007-08-02T10:21:00.000Z	theonlyalt	Dr_willis	Thanks. I wasn't sure if that would connect me graphically or not. I'll def try it!
+2007-08-02T10:22:00.000Z	Dr_willis	theonlyalt	 been using vnc for ages./ the desktop shareing feature of gnome/kde is a very new addation. :)
+2007-08-02T10:22:00.000Z	Dr_willis	theonlyalt	 ive also had much better luck with the vnc4server package.
+2007-08-02T10:24:00.000Z	theonlyalt	Dr_willis	Awesome I really appreciate the extra info!! My VERY old CRT monitor went out on my desktop computer so I've been using it as a makeshift server/second processor.
+2007-08-02T10:25:00.000Z	Dr_willis	theonlyalt	 you can also set up xdmcp on the remote box, and spawn a X session that has all the apps running on the remote. but seen locally. Very handy.
+2007-08-02T10:26:00.000Z	theonlyalt	Dr_willis	I've had that going, but I was just in in need of being on both computers at once graphically (I'm not THAT good with the terminal yet.. :)
+2007-08-02T10:27:00.000Z	Dr_willis	theonlyalt	 ssh -Y remotebox, run stuff. it will appear on the local desktop :)
+2007-08-02T10:29:00.000Z	theonlyalt	Dr_willis	will that give me clickablity to lauch apps? I'm not entirely sure what all I have installed on the second comp.
+2007-08-02T10:29:00.000Z	Dr_willis	theonlyalt	 you ssh over, run the app. the apps display appears locally....
+2007-08-02T10:29:00.000Z	Dr_willis	theonlyalt	 if you REALLY wanted to ya could run some 'applauncherbuttonbar thing' :) i guess
+2007-08-02T10:30:00.000Z	theonlyalt	Dr_willis	I don't think I'm ready for to get that geeked out yet.. maybe later. I've been using the ssh -X option to get the same effect. Is that better or worse?
+2007-08-02T10:31:00.000Z	Dr_willis	theonlyalt	 locally -Y for ssh i thionk gives a little better preformance about the same as -X
+2007-08-02T10:54:00.000Z	theonlyalt	Dr_willis	-Y does seem to work better than -X in ssh. thanks! I can't connect to the vncserver. It says "Couldn't convert 'will-desktop' to host address.. any ideas?
+2007-08-02T10:54:00.000Z	Dr_willis	theonlyalt	 use the ip of the server. or edit your /etc/hosts to include the ip/servername
+2007-08-02T10:55:00.000Z	Dr_willis	theonlyalt	 also be sure you dont accidently start up a dozen vncservers :)
+2007-08-02T10:56:00.000Z	theonlyalt	Dr_willis	...yeah.. about that, i've accidentally started 4 already.. How do I end the others?
+2007-08-02T10:56:00.000Z	Dr_willis	theonlyalt	 vncserver --kill :1 (or was it -kill)

@@ -1,0 +1,21 @@
+2011-06-11T06:48:00.000Z	adnap		what config file specifies the modules loaded by the kernel at startup?  it doesn't seem to be /etc/rc.conf, and while i've found a file /etc/init/rc.conf, it doesn't seem to have a modules array.
+2011-06-11T06:49:00.000Z	smw	adnap	/etc/modules and /etc/modprobe.d
+2011-06-11T06:50:00.000Z	adnap	smw	can you explain the function that each serves?
+2011-06-11T06:50:00.000Z	smw	adnap	the function each what serves?
+2011-06-11T06:51:00.000Z	adnap	smw	why did you cite both a file (/etc/modules) and a directory (/etc/modprobe.d)?
+2011-06-11T06:51:00.000Z	smw	adnap	the file contains modules, the directory contains a bunch of files with the same use as the /etc/modules file
+2011-06-11T06:52:00.000Z	smw	adnap	each file in /etc/modprobe.d is treated like /etc/modules
+2011-06-11T06:52:00.000Z	adnap	smw	hm.  i looked at the files in /etc/modules and it seems like they are more complicated.  /etc/modules says to simply list names of modules on each line that should be loaded at startup
+2011-06-11T06:53:00.000Z	smw	adnap	and what do the fies in /etc/modprobe.d have?
+2011-06-11T06:53:00.000Z	smw	adnap	ah, they also have kernel options
+2011-06-11T06:53:00.000Z	adnap	smw	hm.  i looked at the files in /etc/modules and it seems like they are more complicated.  /etc/modules says to simply list names of modules on each line that should be loaded at startup'
+2011-06-11T06:54:00.000Z	adnap		whoos
+2011-06-11T06:54:00.000Z	adnap		whoops
+2011-06-11T06:54:00.000Z	adnap		many of them have things starting with
+2011-06-11T06:54:00.000Z	adnap		"option"
+2011-06-11T06:54:00.000Z	adnap	smw	yep
+2011-06-11T06:55:00.000Z	smw	adnap	do some googling to learn how options work ;-). You can put a module on each line in a file in modprobe.d
+2011-06-11T06:55:00.000Z	smw	adnap	I believe that both are treated equally. If not, I know that a file moved from /etc/modules to /etc/modeprobe.d/x will have the same effect
+2011-06-11T06:56:00.000Z	adnap	smw	okay
+2011-06-11T06:56:00.000Z	adnap	smw	i guess the commands given in these files can be quite complicated, but don't have to be, as in /etc/modules
+2011-06-11T06:57:00.000Z	smw	adnap	exactly

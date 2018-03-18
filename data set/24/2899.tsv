@@ -1,0 +1,24 @@
+2008-07-03T07:35:00.000Z	norv		I have an mp3 player which seems to build a database at bootup. Unfortunately it skips over ALL the songs I've converted to mp3 via ffmpeg
+2008-07-03T07:36:00.000Z	norv		then I looked at the file and it says: MPEG ADTS, layer II, v2,  64 kBits, 22.05 kHz, Monaural
+2008-07-03T07:36:00.000Z	norv		is there any way I can have ffmpeg convert to: Darksun - El Legado.mp3:             Audio file with ID3 version 23.0 tag, MP3 encoding
+2008-07-03T07:36:00.000Z	WebcamWonder	norv	That looks like mp2 file, not mp3
+2008-07-03T07:37:00.000Z	WebcamWonder	norv	Look at LAME encoder for mp3 encoding (provides best encoding in smallest filesize)
+2008-07-03T07:37:00.000Z	WebcamWonder	norv	Also if I am correct, mencoder and ffmpeg have LAME libraries included bydefault
+2008-07-03T07:37:00.000Z	norv	WebcamWonder	most places say you can just ffmpeg -i some.flv some.mp3
+2008-07-03T07:38:00.000Z	norv	WebcamWonder	which looks like it works, only because extension doesn't matter on Linux
+2008-07-03T07:40:00.000Z	norv	WebcamWonder	by the way, is there a good way to iterate through all *.mp3 files?
+2008-07-03T07:40:00.000Z	WebcamWonder	norv	Sorry, I do not understand what you mean by iterating
+2008-07-03T07:41:00.000Z	norv	WebcamWonder	well, I mean, convert all flv files to mp3 files
+2008-07-03T07:41:00.000Z	WebcamWonder	norv	Last time I used iterating was in C++ with STL, :), but I guess that doesn't apply here :D
+2008-07-03T07:41:00.000Z	WebcamWonder	norv	Batch processing, I *Think* ffmpeg and some do provide it
+2008-07-03T07:42:00.000Z	WebcamWonder	norv	Look at mencoder, I have had ffmpeg produce non-standard files, and you might want to up the bitrate to get better quality out of your files
+2008-07-03T07:43:00.000Z	norv	WebcamWonder	yeah I'll try that, but batch processing only works if I can return the name of something.mp3 without the mp3 extension
+2008-07-03T07:43:00.000Z	norv	WebcamWonder	does 'find' have something like that?
+2008-07-03T07:44:00.000Z	WebcamWonder	norv	Wait, let me digg up some articles
+2008-07-03T07:45:00.000Z	WebcamWonder	norv	http://www.linuxquestions.org/questions/linux-software-2/batch-script-for-mencoder-391865/
+2008-07-03T07:45:00.000Z	WebcamWonder	norv	You can use it for ffmpeg by tweaking it a little
+2008-07-03T07:45:00.000Z	norv	WebcamWonder	thanks
+2008-07-03T07:46:00.000Z	WebcamWonder	norv	Glad to help
+2008-07-03T07:46:00.000Z	WebcamWonder		!install
+2008-07-03T07:48:00.000Z	norv	WebcamWonder	if it says Layer III, is that good enough, or will it probably have to have to be "Audio file with ID3...
+2008-07-03T07:49:00.000Z	WebcamWonder	norv	Good enough, ID3 is tagging, basically stores the artist name and stuff

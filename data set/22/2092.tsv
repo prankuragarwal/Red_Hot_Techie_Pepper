@@ -1,0 +1,22 @@
+2009-11-03T01:24:00.000Z	matrix^m		hi, I am trying to mount an ext3 formatted usb flash drive; but can't write to it under ubuntu 9.04
+2009-11-03T01:25:00.000Z	matrix^m		ls -ld shows - drwxr-xr-x 3 root disk 4096 2009-11-03 02:47 /media/secureusb//
+2009-11-03T01:25:00.000Z	matrix^m		/etc/fstab entry shows /dev/secureusb /media/secureusb ext3 defaults,rw,user,auto 0 0
+2009-11-03T01:26:00.000Z	matrix^m		I am mounting as user john and want the owner set accordingly so that I can write
+2009-11-03T01:26:00.000Z	matrix^m		what am  doing wrong here? Is there anything special I need to do?
+2009-11-03T01:28:00.000Z	clausi	matrix^m	yes, only root is allowed to write to your stick. try "sudo chmod a+rwx /media/secureusb"
+2009-11-03T01:31:00.000Z	matrix^m	clausi	but that will allow anyone to read/write; I see when I remove the fstab entry and plug the device, its mounted with "john" as device owner and permission 700
+2009-11-03T01:32:00.000Z	matrix^m	clausi	I need to do the same using fstab, how?
+2009-11-03T01:33:00.000Z	clausi	matrix^m	you have to plugin the stick and set rights!
+2009-11-03T01:34:00.000Z	matrix^m	clausi	no it should automatically set owner as john, not root
+2009-11-03T01:34:00.000Z	matrix^m	clausi	doing a+rwx will give everyone write permission, which does not make sense
+2009-11-03T01:35:00.000Z	matrix^m	clausi	I see this can be easily done  with vfat uid=1000 option, but ext3 does not have any such option
+2009-11-03T01:36:00.000Z	clausi	matrix^m	i understand. and doing a chown john;chmod 700 is not an option?
+2009-11-03T01:37:00.000Z	matrix^m	clausi	that can't be done through fstab right? And not as a normal user without using sudo? also, then it has to be done by everyone?
+2009-11-03T01:38:00.000Z	matrix^m	clausi	is there anything like vfat to automatically change owner to "user" ?
+2009-11-03T01:38:00.000Z	matrix^m	clausi	or is this a bug?
+2009-11-03T01:39:00.000Z	matrix^m	clausi	the sole purpose of using rw,user in /etc/fstab is to allow users to mount and be able to r/w right?
+2009-11-03T01:39:00.000Z	clausi	matrix^m	afaik it's not possible with fstab. but it should be possible by writing an udev-script
+2009-11-03T01:41:00.000Z	clausi	matrix^m	 just one more question: do you always want to have john as the owner or do you have different users?
+2009-11-03T01:42:00.000Z	matrix^m	clausi	for now john will do, but in the end any user
+2009-11-03T01:48:00.000Z	clausi	matrix^m	as stated in http://ubuntuforums.org/showthread.php?t=283131, it should work if you set it to noauto,user,rw
+2009-11-03T01:52:00.000Z	matrix^m	clausi	nope does not work; for now I am going to set owner john:john permission to 700 of the mountpoint; not a good solution at all

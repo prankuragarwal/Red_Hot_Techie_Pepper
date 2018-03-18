@@ -1,0 +1,22 @@
+2010-01-25T05:50:00.000Z	lein		Hello, can udev safely be killed to use  a script (makedev)?
+2010-01-25T05:52:00.000Z	Billiard	lein	i think it is safe to stop it using something like "sudo service udev stop"
+2010-01-25T05:54:00.000Z	lein	Billiard	ty i'll give it a try
+2010-01-25T05:57:00.000Z	Billiard	lein	what are you trying to do with makedev?
+2010-01-25T05:58:00.000Z	lein	Billiard	make sda4 (wife deleted it on her netbook)
+2010-01-25T05:58:00.000Z	Billiard	lein	deleted it how?
+2010-01-25T05:59:00.000Z	Billiard	lein	if she deleted the partition, you need to repartion it
+2010-01-25T05:59:00.000Z	lein	Billiard	she said she just went to /dev and typed rm sda4
+2010-01-25T06:00:00.000Z	Billiard	lein	restarting should fix that i would think, does "sudo fdisk /dev/sda -l" show sda4 ?
+2010-01-25T06:00:00.000Z	lein	Billiard	the partition is still there but she messed up the partion size and  wrong fs type
+2010-01-25T06:01:00.000Z	lein	Billiard	sure dose. lol didn
+2010-01-25T06:01:00.000Z	lein	Billiard	didn't think of that
+2010-01-25T06:02:00.000Z	lein	Billiard	so reboot should fix that
+2010-01-25T06:02:00.000Z	Billiard	lein	im sure there are ways to do it without restart as well, but that should fix it
+2010-01-25T06:04:00.000Z	lein	Billiard	ty. ok now th other problem.  gpart wont let my delete the 1kb partition she made
+2010-01-25T06:04:00.000Z	Billiard	lein	what is the error?
+2010-01-25T06:06:00.000Z	lein	Billiard	error: unable to satisfy all constraints on the partition
+2010-01-25T06:07:00.000Z	Billiard	lein	is the partition mounted or somehting?
+2010-01-25T06:07:00.000Z	lein	Billiard	no
+2010-01-25T06:08:00.000Z	lein	Billiard	mtab doesn't show it at all
+2010-01-25T06:09:00.000Z	Billiard	lein	maybe try parted
+2010-01-25T06:09:00.000Z	Billiard	lein	or fdisk

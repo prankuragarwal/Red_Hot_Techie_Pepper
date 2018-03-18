@@ -1,0 +1,24 @@
+2008-12-13T00:07:00.000Z	jareth_		hi all, I get the following error when trying to play a mp3 file with mpg123 [../../../src/audio.c:267] error: Unable to set up output device! Constraints: 44100, 22050 or 11025Hz.
+2008-12-13T00:07:00.000Z	jareth_		anyone some idea where to look?
+2008-12-13T00:09:00.000Z	jareth_		I somehow messed up sound in X, fixed that but now mpg123 is broken somehow
+2008-12-13T00:10:00.000Z	jareth_		hi all, I get the following error when trying to play a mp3 file with mpg123 [../../../src/audio.c:267] error: Unable to set up output device! Constraints: 44100, 22050 or 11025Hz. anyone some idea?
+2008-12-13T00:11:00.000Z	nonix4	jareth_	use dmix as output device instead of hw?
+2008-12-13T00:11:00.000Z	jareth_	nonix4	i will try.. one mom
+2008-12-13T00:13:00.000Z	jareth_	nonix4	how do I do that?
+2008-12-13T00:13:00.000Z	nonix4	jareth_	is mpg123 actually using pulseaudio or some more direct device?
+2008-12-13T00:16:00.000Z	nonix4	jareth_	well, there're several packages providing mpg123... including mpg123-alsa, mpg123-esd and mpg123-nas. Think the base package is compiled against oss, which is rather obsolete...
+2008-12-13T00:18:00.000Z	nonix4	jareth_	mpg123-esd could be more pulseaudioish variant of it... but the -a is for selecting audiodevice
+2008-12-13T00:19:00.000Z	jareth_	nonix4	it has worked fine before. untill i installed libao-pulse, noticed it crewed up mpg123, then removed the package and after that mpg123 still doesn't work for me.
+2008-12-13T00:20:00.000Z	jareth_	nonix4	i try with -a swicth
+2008-12-13T00:21:00.000Z	jareth_	nonix4	still th esame
+2008-12-13T00:21:00.000Z	nonix4	jareth_	which audio device is it trying to use - oss, alsa, esd?
+2008-12-13T00:23:00.000Z	jareth_	nonix4	can't tell you ... : Unable to set up output device! Constraints: 44100, 22050 or 11025Hz.
+2008-12-13T00:23:00.000Z	jareth_	nonix4	seems it can't find any
+2008-12-13T00:27:00.000Z	nonix4	jareth_	mpg123 -a foo bar.mp3 # and then change the foo to somethin actually useful...
+2008-12-13T00:32:00.000Z	nonix4	jareth_	hmm... does "mpg123 -a dmix:0,0 foo.mp3" list only 48kHz s16 as available?
+2008-12-13T00:35:00.000Z	nonix4	jareth_	how about "mpg123 -a pulse foo.mp3"?
+2008-12-13T00:37:00.000Z	jareth_	nonix4	still the same
+2008-12-13T00:38:00.000Z	nonix4	jareth_	umm, add -q and read the *first* line of mpg123 output, that being the cause and not the end result :)
+2008-12-13T00:38:00.000Z	nonix4	jareth_	as in mpg123 -q -a pulse foo.mp3
+2008-12-13T00:39:00.000Z	jareth_	nonix4	compiling alsa right now...
+2008-12-13T00:39:00.000Z	nonix4	jareth_	it should differ for "-a pulse" and "-a dmix" and "-a hw"... compiling, why?

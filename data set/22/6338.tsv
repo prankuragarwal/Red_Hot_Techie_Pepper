@@ -1,0 +1,22 @@
+2006-11-08T15:48:00.000Z	BlackBird		 how would I invoke an icewm or kde session from terminal, or better yet, how would I set up the graphical login screen to autostart after kernel loadup? Right now it just loads into text login, then when I login it automatically starts gnome
+2006-11-08T15:50:00.000Z	dooglus	BlackBird	check which runlevel you are booting into: grep ^id /etc/inittab | cut -d: -f2
+2006-11-08T15:52:00.000Z	BlackBird	dooglus	it returns "2"
+2006-11-08T15:52:00.000Z	dooglus	BlackBird	right.  that's the default.  check whether you have links in place to run gdm in runlevel 2:  ls -l /etc/rc2.d/*gdm
+2006-11-08T15:53:00.000Z	BlackBird	dooglus	lrwxrwxrwx  1 root root 13 2006-11-07 18:39 /etc/rc2.d/S13gdm -> ../init.d/gdm
+2006-11-08T15:54:00.000Z	dooglus	BlackBird	the 'S' is for 'start' - ie. it should start gdm (the graphical login thing) automatically when you boot.
+2006-11-08T15:55:00.000Z	dooglus	BlackBird	what happens if you run "sudo /etc/init.,d/gdm start" after logging in to the console?
+2006-11-08T15:55:00.000Z	dooglus	BlackBird	(without the comma)
+2006-11-08T15:56:00.000Z	BlackBird	dooglus	not sure. lemme check
+2006-11-08T16:04:00.000Z	BlackBird	dooglus	nothing. It asked for my password, and then just went back to prompt. I had to run startx to get into a graphical interface, and again, it just loaded gnome
+2006-11-08T16:05:00.000Z	dooglus	BlackBird	I have this in my ~/.Xsession : http://s89213869.onlinehome.us/.Xsession  - I uncomment whichever line at the end corresponds to the desktop environment I want startx to run
+2006-11-08T16:16:00.000Z	BlackBird	dooglus	I posted that log to a pm... u got pm's blocked or something?
+2006-11-08T16:06:00.000Z	dooglus	BlackBird	was there no output at all from the 'gdm restart' command?
+2006-11-08T16:06:00.000Z	BlackBird	dooglus	no. The only indication that anything happened was that it asked for a password.
+2006-11-08T16:07:00.000Z	dooglus	BlackBird	see anything written to /var/log/gdm/*?
+2006-11-08T16:09:00.000Z	BlackBird	dooglus	just a bunch of warnings then a "cant init" messagej
+2006-11-08T16:09:00.000Z	dooglus	BlackBird	can you pastebin it?
+2006-11-08T16:13:00.000Z	BlackBird	dooglus	that's it...
+2006-11-08T16:15:00.000Z	dooglus	BlackBird	what's it?
+2006-11-08T16:16:00.000Z	dooglus	BlackBird	freenode doesn't allow pms if you're not registered with nickserv
+2006-11-08T16:17:00.000Z	dooglus	BlackBird	"/msg nickserv register pa$$word"
+2006-11-08T16:17:00.000Z	BlackBird	dooglus	ah ok.

@@ -1,0 +1,18 @@
+2005-03-15T12:13:00.000Z	Marble2		Okay, someone has to help me, this is horrible. I'm stuck on windows
+2005-03-15T12:13:00.000Z	Marble2		whenever I reboot and choose linux at my LILO options it just says Loading Linux........ and hangs there
+2005-03-15T12:13:00.000Z	Marble2		I can't think of anything to fix it
+2005-03-15T12:13:00.000Z	Marble2		I waited half an hour last night to see if I could get it to load :(
+2005-03-15T12:14:00.000Z	LinuxJones	Marble2	you installed lilo ?
+2005-03-29T16:16:00.000Z	LinuxJones	Marble2	you have a bunch of applications opening up when Gnome starts ?
+2005-03-29T16:19:00.000Z	Marble2	LinuxJones	yes
+2005-03-29T16:21:00.000Z	Marble2	LinuxJones	the mouse not working at login is the biggest thing though
+2005-04-14T08:18:00.000Z	LinuxJones	Marble2	why are you using lilo ?
+2005-04-14T08:18:00.000Z	Marble2	LinuxJones	I can't get grub working
+2005-05-24T14:58:00.000Z	LinuxJones	Marble2	thye are already logged in >> /var/log/auth.log
+2005-05-24T14:59:00.000Z	Marble2	LinuxJones	All i see is cron jobs and sudo commands
+2005-05-24T15:01:00.000Z	LinuxJones	Marble2	look for the sudo entries those others are jsut sustem level jobs being run via cron. You are using sudo and not su right ?
+2005-05-24T15:02:00.000Z	Marble2	LinuxJones	I found it. Does it log logins from gdm
+2005-05-24T15:04:00.000Z	LinuxJones	Marble2	just >> sudo cat /var/log/auth.log | grep gdm
+2005-05-24T15:04:00.000Z	Marble2	LinuxJones	No, I mean when I login via the gnome login screen, not terminal
+2005-05-24T15:05:00.000Z	LinuxJones	Marble2	gdm is the Gnome login screen those entries tell you when someone has logged in at the gnome login screen
+2005-05-24T15:07:00.000Z	LinuxJones	Marble2	yeah here as an example >> May 17 17:29:59 localhost gdm[7112] : (pam_unix) session opened for user willy by (uid=0) << that is from when I logged in 50 minutes ago

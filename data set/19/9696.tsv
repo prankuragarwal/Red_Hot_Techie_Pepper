@@ -1,0 +1,19 @@
+2006-10-01T08:55:00.000Z	MrWok		Yeah
+2006-10-01T08:55:00.000Z	MrWok		The router is fine, I'm using it with my Win XP box now.
+2006-10-01T08:55:00.000Z	MrWok		Yeah
+2006-10-01T08:55:00.000Z	MrWok		The Xubuntu has got the ip 192.168.1.3 it can access the router setup pages just not web pages
+2006-10-01T08:56:00.000Z	mneptok	MrWok	can you access web sites by IP address instead of name?
+2006-10-01T08:57:00.000Z	MrWok	mneptok	I can indeed
+2006-10-01T08:57:00.000Z	mneptok	MrWok	then your problem is DNS
+2006-10-01T08:57:00.000Z	mneptok	MrWok	in a Linux terminal, "cat /etc/resolv.conf" (no quotes)
+2006-10-01T08:57:00.000Z	mneptok	MrWok	that will tell you the DNS servers that Xubuntu knows about.
+2006-10-01T08:59:00.000Z	MrWok	mneptok	That doesn't work
+2006-10-01T08:59:00.000Z	mneptok	MrWok	define "doesn't work"
+2006-10-01T09:00:00.000Z	mneptok	MrWok	uhhh ... you don;t have a file named /etc/resolv.conf ?
+2006-10-01T09:03:00.000Z	mneptok	MrWok	sudo echo search home > /etc/resolv.conf && sudo echo 204.60.0.2 >> /etc/resolv.conf && sudo echo 204.60.0.3 >> /etc/resolv.conf
+2006-10-01T09:04:00.000Z	mneptok	MrWok	you can substitute the DNS server addresses Windows uses for the ones i gave you
+2006-10-01T09:12:00.000Z	MrWok	mneptok	None of that works.
+2006-10-01T09:13:00.000Z	mneptok	MrWok	what about "nslookup cnn.com 204.60.0.3" ?
+2006-10-01T09:15:00.000Z	MrWok	mneptok	that spits out a few IPs
+2006-10-01T09:22:00.000Z	MrWok	mneptok	That gave a bunch of IPs
+2006-10-01T09:22:00.000Z	mneptok	MrWok	you have DNS issues. look in /etc/resolv/conf and see what's there.

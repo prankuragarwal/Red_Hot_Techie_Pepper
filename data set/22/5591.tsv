@@ -1,0 +1,22 @@
+2007-08-16T06:48:00.000Z	hoarycripple		Eterm compiles properly on ubuntu feisty amd64, but then immediately segfaults upon running it.  is this amd64 specific?
+2007-08-16T06:49:00.000Z	elliotjhug	hoarycripple	don't know. if you like me to the source I can test it for you on plain old x86?
+2007-08-16T06:50:00.000Z	hoarycripple	elliotjhug	ok, the source is in cvs.  you need to compile libast as well as eterm: cvs -z3 -d:pserver:anonymous@anoncvs.enlightenment.org:/var/cvs/e co -P  eterm
+2007-08-16T06:51:00.000Z	elliotjhug	hoarycripple	libast source is where?
+2007-08-16T06:51:00.000Z	elliotjhug	hoarycripple	nm, found it
+2007-08-16T06:56:00.000Z	elliotjhug	hoarycripple	eterm doesn't compile at all. Complains about an undefined reference
+2007-08-16T06:58:00.000Z	hoarycripple	elliotjhug	this is  an autotools problem.  the versions necessary are automake 1.9.6, autoconf 2.61, libtool 1.5.22, m4 1.4.8.  also, did you compile and install libast first?
+2007-08-16T06:58:00.000Z	hoarycripple	elliotjhug	i don't expect you to change all the autofoo versions just to test this :)
+2007-08-16T06:58:00.000Z	hoarycripple	elliotjhug	thanks though
+2007-08-16T06:59:00.000Z	elliotjhug	hoarycripple	Compiled and installed libast as required. Never mind then. Thats alright, might we worth looking if theres some 64bit specific code available for it
+2007-08-16T07:01:00.000Z	hoarycripple	elliotjhug	yes, i am searching for that now.  if I see the developer in #e I'll ask also.
+2007-08-16T07:03:00.000Z	hoarycripple	elliotjhug	will try to compile with 32bit libs and see if that works.
+2007-08-16T07:06:00.000Z	hoarycripple	elliotjhug	it is a problem with compilation with 64bit libs.  if I compile with 32bit libs, everything works fine.
+2007-08-16T07:06:00.000Z	elliotjhug	hoarycripple	Glad to hear it
+2007-08-16T07:07:00.000Z	hoarycripple	elliotjhug	I just switched to 64bit.  am realizing that LDFLAGS is my friend :)
+2007-08-16T07:07:00.000Z	elliotjhug	hoarycripple	:)
+2007-08-16T07:08:00.000Z	elliotjhug	hoarycripple	Can you link me to some info on LDFLAGS? I had quite a bit of problem with 64bit a while ago
+2007-08-16T07:09:00.000Z	hoarycripple	elliotjhug	to build with all 32bit libraries, you need to pass the options: LDFLAGS="-L/lib32 -L/usr/lib32 -Wl,-rpath,/lib32 -Wl,-rpath,/usr/lib32"
+2007-08-16T07:09:00.000Z	hoarycripple	elliotjhug	and then ./autogen.sh or ./configure as usual
+2007-08-16T07:10:00.000Z	hoarycripple	elliotjhug	you'll need to apt-get all the 32bit libs
+2007-08-16T07:10:00.000Z	elliotjhug	hoarycripple	great. thanks. Maybe when I reinstall for gutsy I will use 64bit apps :)
+2007-08-16T07:11:00.000Z	hoarycripple	elliotjhug	there are a lot of detractors for 64bit, but I like it :)

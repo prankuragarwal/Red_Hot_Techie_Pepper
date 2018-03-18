@@ -1,0 +1,18 @@
+2006-03-11T15:28:00.000Z	iLee		thanks
+2006-03-11T15:29:00.000Z	iLee		how come if u do SUDO natalious, i can explore my ntfs partition. But, without doing sudo nat. i cant ?
+2006-03-11T15:29:00.000Z	iLee		says Cannot show HDA2, (unless i run with Sudo)
+2006-03-11T15:30:00.000Z	iLee		thanks for URL
+2006-03-11T15:32:00.000Z	iLee		i have changed FSTAB, so that everyone can access hda2.. what next ?
+2006-03-11T15:34:00.000Z	iLee		it still says HDA2, i dont have permission
+2006-03-11T15:35:00.000Z	iLee		/dev/hda2       /media/hda2     ntfs    ro,auto,user,fmask=0111,dmask=0000       0       0
+2006-03-11T15:35:00.000Z	iLee		thats the line in my FSTAB
+2006-03-11T15:36:00.000Z	iLee		if i change it back to Default, it has no affect
+2006-03-11T15:36:00.000Z	Healot	iLee	do you want to access the disk right, and leave it ro(ed)?
+2006-03-11T15:37:00.000Z	Healot		then umask=0022
+2006-03-11T15:37:00.000Z	iLee		i want to have it as a persistant mount
+2006-03-11T15:39:00.000Z	Healot		-ra is more verbose
+2006-03-11T15:39:00.000Z	iLee		well ive done that, and now hda2 is blank (with no error)
+2006-03-11T15:40:00.000Z	iLee		healot: well ive done that, and now hda2 is blank (with no error)
+2006-03-11T15:43:00.000Z	Healot	iLee	did you just append "umask=0022" or you remove the prior masks?
+2006-03-11T15:43:00.000Z	Healot		ro,auto,nouser,umask=0022  << mine
+2006-03-11T15:43:00.000Z	iLee	Healot	/dev/hda2       /media/hda2     ntfs    umask=0022       0       0

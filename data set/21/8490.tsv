@@ -1,0 +1,21 @@
+2006-06-19T13:37:00.000Z	Polibio		hello
+2006-06-19T13:38:00.000Z	Polibio		how can I install smbmount in Ubuntu?
+2006-06-19T13:39:00.000Z	Polibio		ok nny
+2006-06-19T13:40:00.000Z	Polibio		how can I copy network windows directories into linux partitions preserving the files timestamps?
+2006-06-19T13:42:00.000Z	ic56	Polibio	you wanna copy a single file, all the files in a single directory, or a tree containing many nested directories?
+2006-06-19T13:42:00.000Z	Polibio	ic56	many nested directories
+2006-06-19T13:43:00.000Z	ic56	Polibio	cp -Rp <pathname to root of source tree> <pathname of destination root>
+2006-06-19T13:44:00.000Z	Polibio	ic56	 I have tried that but Ubuntu does not recognise a source path that is like this: smb://servidor-d7cbfa/
+2006-06-19T13:45:00.000Z	ic56	Polibio	how do you normally access the files, to view them, on the command line?  What path do you use?
+2006-06-19T13:46:00.000Z	Polibio	ic56	 I see them on nautilus, the path is something like  smb://servidor-d7cbfa/jj  but, when I copy the nested directories, the timestamps are modified
+2006-06-19T13:47:00.000Z	Polibio	ic56	when I copy them graphically, I mean
+2006-06-19T13:50:00.000Z	ic56	Polibio	cp works on things accessible through the filesystem.  For that matter, most unix tools work that way.  Nautilus is letting you access network filesystems without mounting them.  Ask in the channel how to mount an SMB share in Ubuntu.  Once that's done, then you can use the command I gave you.
+2006-06-19T13:51:00.000Z	Polibio	ic56	thanks :)
+2006-06-19T13:52:00.000Z	ic56	Polibio	on the other hand, maybe Nautilus can be told to preserve filestamps -- Try going through its menus to see if there's anything useful.  That's the problem with GUIs: in order to stay simple, they provide few options.
+2006-06-19T13:53:00.000Z	Polibio	ic56	I tried the GUI of nautilus but didn't find anything about preserving timestamps :(
+2006-06-19T13:53:00.000Z	ic56	Polibio	bummer.  good luck.
+2006-06-19T14:07:00.000Z	ic56	Polibio	"apt-cache search smbmount" found one relevant entry: smbfs.  Read the blurb with: "apt-cache show smbfs".  Install it with "apt-get install smbfs".
+2006-06-19T14:08:00.000Z	Polibio	ic56	I'm going to try that :)
+2006-06-19T14:08:00.000Z	ic56	Polibio	good luck!
+2006-06-19T14:13:00.000Z	Polibio	ic56	it works! many thanks!
+2006-06-19T14:13:00.000Z	ic56	Polibio	yw!

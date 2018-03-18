@@ -1,0 +1,22 @@
+2012-10-24T23:02:00.000Z	lourtyp	wilee-nilee	ubuntu 12.10
+2012-10-24T22:56:00.000Z	wilee-nilee	lourtyp	Must be an error in done from the cli, pastebin them.
+2012-10-24T22:58:00.000Z	lourtyp	wilee-nilee	it gets stuck at Found kernel: /vmlinuz-3.5.0-17-generic Found kernel: /memtest86+.bin
+2012-10-24T22:59:00.000Z	wilee-nilee	lourtyp	You running grub legacy?
+2012-10-24T23:01:00.000Z	wilee-nilee	lourtyp	what does this command show. lsb_release -a
+2012-10-24T23:03:00.000Z	wilee-nilee	lourtyp	Not sure why you are having problems to be honest, or why you would run grub legeacy but the appears to be within that area, as far as what you have posted.
+2012-10-24T23:04:00.000Z	lourtyp	wilee-nilee	I want to boot from SD (which is essentially usb interface in bios). but I don't have boot option from SD. so I figured I can modify grub to do that.
+2012-10-24T23:04:00.000Z	wilee-nilee	lourtyp	Did you completely purge grub2
+2012-10-24T23:04:00.000Z	wilee-nilee	lourtyp	Having both can cause problems
+2012-10-24T23:05:00.000Z	wilee-nilee	lourtyp	I would not use grub legacy myself, I'm not certain this is your problem though.
+2012-10-24T23:11:00.000Z	lourtyp	wilee-nilee	how can I abor kexec installation? I give that up
+2012-10-24T23:20:00.000Z	wilee-nilee	lourtyp	close all install apps open a terminal and run sudo dpkg --configure -a
+2012-10-24T23:20:00.000Z	lourtyp	wilee-nilee	it goes back to stuck that way. tried that
+2012-10-24T23:21:00.000Z	wilee-nilee	lourtyp	Ah, I wish I new more here.
+2012-10-24T23:23:00.000Z	wilee-nilee	lourtyp	With all closed you can delete the lock with sudo rm /var/lib/dpkg/lock
+2012-10-24T23:23:00.000Z	lourtyp	wilee-nilee	done that. let me try install something.
+2012-10-24T23:24:00.000Z	wilee-nilee	lourtyp	You probably have broken packages, which may cause problems, you will have to remove those.
+2012-10-24T23:27:00.000Z	wilee-nilee	lourtyp	Find the packages installed in that attempt to install kexec-tools and remove them they are broken, I think that is what is going on.
+2012-10-24T23:31:00.000Z	wilee-nilee	lourtyp	Try sudo dpkg --purge kexec-tools
+2012-10-24T23:31:00.000Z	wilee-nilee	lourtyp	then sudo apt-get clean && sudo apt-get update && sudo apt-get upgrade
+2012-10-24T23:33:00.000Z	wilee-nilee	lourtyp	Cool I found a old ubuntu forums post with the exact same problem, it was very long so I just found the fix.
+2012-10-24T23:36:00.000Z	lourtyp	wilee-nilee	Errors were encountered while processing:  man-db  isc-dhcp-client E: Sub-process /usr/bin/dpkg returned an error code (1)

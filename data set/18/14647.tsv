@@ -1,0 +1,18 @@
+2007-09-23T12:02:00.000Z	whoops		uhm.. i installed opensuse on one of my partitions and happened to format my boot partition that ubuntu were using... suse didnt add my ubuntu partition in the boot loader, does anyone know if i can add my ubuntu partition to that grub or simply re-install it? (/boot is on a partition by itself so i guess the ubuntu specific vmlinuz things are gone?)
+2007-09-23T12:02:00.000Z	whoops		only solution stefg?
+2007-09-23T12:03:00.000Z	nickrud	whoops	you can use the suse disk to unpack the linux-image and copy stuff around
+2007-09-23T12:05:00.000Z	nickrud	whoops	not saying it would be easy, but the deb packages are cpio packages iirc and you could try it.
+2007-09-23T12:09:00.000Z	nickrud	whoops	do you have a live cd for ubuntu still?
+2007-09-23T12:10:00.000Z	nickrud	whoops	try dpkg --extract /var/cache/apt/archives/linux-image<aproproriate image>  .    , and copying over the stuff in the boot directory
+2007-09-23T12:13:00.000Z	nickrud	whoops	when it rains it pours :)
+2007-09-23T12:13:00.000Z	whoops	nickrud	exactly..
+2007-09-23T12:14:00.000Z	nickrud	whoops	packages.ubuntu.com , you can find the image and download it from there
+2007-09-23T12:14:00.000Z	nickrud	whoops	check /lib/modules, make sure you're getting the right one
+2007-09-23T12:16:00.000Z	whoops	nickrud	hmm.. can i create the vmlinuz file from the files in /lib/modules/2.6.20-16-generic for example?
+2007-09-23T12:16:00.000Z	nickrud	whoops	no, they are separate. You need to image deb
+2007-09-23T12:22:00.000Z	whoops	nickrud	hmm.. so when i got the deb, do i mount my boot partition in /boot and just intall it? (sounds too simple to me..)
+2007-09-23T12:23:00.000Z	nickrud	whoops	no, you do that dpkg --extract <image> .   and copy the contents of the boot directory that appears to your boot dir
+2007-09-23T12:23:00.000Z	nickrud	whoops	no problem
+2007-09-23T12:33:00.000Z	nickrud	whoops	darned good question. The time I wiped my /boot was back when initrd's weren't used. Forgot completely about it.
+2007-09-23T12:38:00.000Z	nickrud	whoops	I'm looking around at making ramfs's, it shoudl be doable
+2007-09-23T12:41:00.000Z	nickrud	whoops	chroot into the ubuntu partition then run update-initramfs -k 2.6.16-20-generic  (whatever kernel you got)

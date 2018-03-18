@@ -1,0 +1,23 @@
+2007-01-12T08:14:00.000Z	olimpico		I bought a TP-Link Wireless card, i read in internet it was automatically recognized by Ubuntu, but I had ubuntu already installed, How do i make KUbuntu to recognize my new Wireless card??? When I type lspci, it's there, but how do I configure it?
+2007-01-12T08:16:00.000Z	olimpico		Please someone help me, just give me a hint!
+2007-01-12T08:16:00.000Z	pike_	olimpico	is that a pcmcia card or pci?
+2007-01-12T08:19:00.000Z	olimpico	pike_	pcmcia
+2007-01-12T08:21:00.000Z	olimpico	pike_	Please give a small hint, where to look.
+2007-01-12T08:22:00.000Z	pike_	olimpico	if you alt-ctrl-f1 then uplug the card and plug back in youll see some info when its detected. replug the card and maybe "dmesg | tail -n 30" im not sure what info youll see but it might be helpful. are you sure its not setup already? try 'ifconfig' your ethernet card will be eth0  and loopback is lo so any other device should be the wireless. like eth1 or ath0 or wlan1
+2007-01-12T08:22:00.000Z	pike_	olimpico	alt-f7 to get back to gui if you do that
+2007-01-12T08:23:00.000Z	olimpico	pike_	I tried ifconfig, and there is only eth0, that's the problem
+2007-01-12T08:25:00.000Z	pike_	olimpico	well you might sudo apt-get install linux-restricted-modules-$(uname -r)  just in case its not installed yet.  maybe someone here can give you better info on setting up in gui im not too familiar with gnome or kde
+2007-01-12T08:25:00.000Z	olimpico	pike_	I only get pccard: CardBus card inserted into slot 0
+2007-01-12T08:26:00.000Z	pike_	olimpico	should get more than that.  anyone else able to help olimpico out? im pretty busy right now
+2007-01-12T08:26:00.000Z	olimpico	pike_	Thanks a lot! I'm trying to install now linux-restricted-modules
+2007-01-12T08:27:00.000Z	olimpico	pike_	But I believe my repositories are not valid, since it was not able to fetch
+2007-01-12T08:28:00.000Z	pike_	olimpico	just sudo apt-get update after that
+2007-01-12T08:28:00.000Z	pike_	olimpico	in dapper my restricted modules package is in  http://security.ubuntu.com dapper-security/restricted Packages
+2007-01-12T08:38:00.000Z	olimpico	pike_	Thanks a lot, you really helped me!!!!!
+2007-01-12T08:39:00.000Z	pike_	olimpico	np. hope you get it working
+2007-01-12T08:39:00.000Z	olimpico	pike_	I already installed all, so I'll restart
+2007-01-12T08:46:00.000Z	olimpico	pike_	I got wifi0 but not with ifconfig
+2007-01-12T08:47:00.000Z	olimpico	pike_	Only with dmesg
+2007-01-12T08:48:00.000Z	pike_	olimpico	does "sudo ifconfig wifi0 up"  then ifconfig again show it?
+2007-01-12T08:49:00.000Z	olimpico	pike_	Hey!!! it works, how do I make it to start automatically?
+2007-01-12T08:52:00.000Z	pike_	olimpico	i have not clue about the gui tools.  here is howto connect from command line and the file to edit for automatic:  (first thing sudo ifconfig eth0 down  because two devices at once are screwy to routing)  then 1. sudo ifconfig wifi0 up    2. iwlist wifi0 scan (youll see available networks)   3. sudo iwconfig wifi0 essid whatevernetworkname    4. dhclient wifi0  (obtains an ip and youre connected)    5. sudo nano /etc/network/interfaces  (the f

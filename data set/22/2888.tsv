@@ -1,0 +1,22 @@
+2010-11-01T09:49:00.000Z	hacker_kid		any solution to ubuntu not detecting usb drives? not even a line in dmesg when it is connected
+2010-11-01T09:50:00.000Z	phasma	hacker_kid	sounds like the kernel module is not loading. Check lspci for your USB device then you need to load the correct module
+2010-11-01T09:51:00.000Z	hacker_kid	phasma	nothing in lspci, and it all used to work fine until i upgraded to 10.x, im about to kick back to the 9.04 release
+2010-11-01T09:52:00.000Z	phasma	hacker_kid	definitely sounds like a module issue. Any way you can reboot into a live cd or something and check the make and model of your device?
+2010-11-01T09:53:00.000Z	hacker_kid	phasma	the main concern is an ectaco jetbook, i can get the model but it used to be detected
+2010-11-01T09:55:00.000Z	hacker_kid		well im going to reinstall to an old 9.04 image, hopefully the devs figure out basic usb devices by the time 11.04 is out
+2010-11-01T09:55:00.000Z	phasma	hacker_kid	I am wholly confident that a simple kernel downgrade would fix this for you should you not be happy about ascertaining and loading the module
+2010-11-01T09:56:00.000Z	hacker_kid	phasma	i have been looking for and loading modules all day
+2010-11-01T09:56:00.000Z	phasma		ouch. Gotcha
+2010-11-01T09:56:00.000Z	hacker_kid	phasma	the device shows up to all os's as a basic USB storage device
+2010-11-01T09:57:00.000Z	hacker_kid		tho I have never been successful downgrading the kernel in a ubuntu install, could I really knock all the way down to last years kernel?
+2010-11-01T09:58:00.000Z	phasma	hacker_kid	long shot, but you could try removing the device then: sudo rmmod option && sudo rmmod usb_storage - reload them and try the device again. Like I say, that is a long shot, though, as there would likely be evidence of -something- in your dmesg
+2010-11-01T09:59:00.000Z	phasma	hacker_kid	I am having similar problems with a device myself and that method described above is while tempramental, does fix it sometimes
+2010-11-01T09:59:00.000Z	hacker_kid		ERROR: Module option does not exist in /proc/modules
+2010-11-01T09:59:00.000Z	phasma		load it and try the device
+2010-11-01T10:01:00.000Z	phasma	hacker_kid	also, check that usb_storage is being loaded
+2010-11-01T10:01:00.000Z	hacker_kid		not a single line in dmesg
+2010-11-01T10:02:00.000Z	hacker_kid		and a usb flash drive is loading perfectly
+2010-11-01T10:03:00.000Z	hacker_kid	phasma	this doesnt make sense, i cant even find a single log that this device even exists
+2010-11-01T10:03:00.000Z	hacker_kid		well im off to find a USB sd card reader, if i cant fix it i can work around it
+2010-11-01T10:04:00.000Z	hacker_kid	phasma	thanks for trying
+2010-11-01T10:04:00.000Z	phasma	hacker_kid	let me know how you get on with it? I am in the process of compiling a list of such devices

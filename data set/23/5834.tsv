@@ -1,0 +1,23 @@
+2007-08-03T13:48:00.000Z	usr13		I've introduced a friend to Ubuntu and he was doing fine until today when he copied some pics to his HD only to find that he had no write privileges.  (He tried to edit one with Gimp, but could not save it.)
+2007-08-03T13:49:00.000Z	macogw	usr13	is it ntfs?
+2007-08-03T13:49:00.000Z	macogw	usr13	is it ntfs
+2007-08-03T13:50:00.000Z	macogw	usr13	is the hard drive NTFS formatted?
+2007-08-03T13:51:00.000Z	usr13	macogw	 I don't think it's ntfs, it is a standard install of Ubuntu 7.04
+2007-08-03T13:52:00.000Z	macogw	usr13	ok so its not a hard drive partition that's got windows with it?
+2008-02-21T18:46:00.000Z	usr13	macogw	If you are talking about thumb drives, it is already restrected to those that belong to plugdev
+2008-02-21T18:47:00.000Z	usr13	macogw	So just don't include anyone in group plugdev that  you don't want to access the thumb drives.
+2008-02-21T19:03:00.000Z	usr13	macogw	I think what you were looking for is this;  sudo groupadd wheel ; sudo mkdir /mnt/memstick ;  sudo chown root:wheel /mnt/memstick  and then specify wheel in fstab
+2008-02-21T19:03:00.000Z	usr13	macogw	But still dont think that'll do what  you really want.
+2008-02-21T19:04:00.000Z	macogw	usr13	chmod 775 /mnt/memstick as well so users can mount to the mountpoint...but yeah that looks about right
+2008-02-21T19:04:00.000Z	macogw	usr13	i just manually edited /etc/group when i did it
+2008-02-21T19:05:00.000Z	usr13	macogw	Well, yea, but you'll have to turn off plugdev if it's a flash memory device or it'll get mounted /media/disk
+2008-02-21T19:05:00.000Z	usr13	macogw	Right?
+2008-02-21T19:06:00.000Z	macogw	usr13	thats where i mount mine anyway
+2008-02-21T19:06:00.000Z	usr13	macogw	O
+2008-02-21T19:07:00.000Z	macogw	usr13	no gnome = no HAL automounting things for me
+2008-02-21T19:07:00.000Z	usr13	macogw	What window manager are you using?
+2008-02-21T19:07:00.000Z	macogw	usr13	so after about a week of having to sudo mount and sudo cp i went and poked fstab into shape
+2008-02-21T19:07:00.000Z	macogw	usr13	fluxbox
+2008-02-21T19:09:00.000Z	usr13	macogw	Well,  b4 plugdev we just mkdir /mnt/memstick and make entry in fstab and set to user
+2008-02-21T19:11:00.000Z	usr13	macogw	/dev/sda1 /mnt/memstick auto noauto,user 0 0
+2008-02-21T19:12:00.000Z	usr13	macogw	and just leave root:root /mnt/memstick

@@ -1,0 +1,19 @@
+2012-08-17T04:26:00.000Z	sportsfreund		anyone still there to help me out?
+2012-08-17T04:26:00.000Z	sportsfreund		I posted the "result.txt" through http://pastebin.ubuntu.com/1151726/
+2012-08-17T04:26:00.000Z	sportsfreund		and i want to boot win 7 again
+2012-08-17T04:27:00.000Z	histo	sportsfreund	do you get a grub menu when your system boots or what happens?
+2012-08-17T04:29:00.000Z	histo	sportsfreund	are you booting to the ubuntu cd still? or off the hard drive?
+2012-08-17T04:31:00.000Z	histo	sportsfreund	can you paste /etc/default/grub file please
+2012-08-17T04:32:00.000Z	histo	sportsfreund	it looks like grub isn't aware that windows is on the second hard drive is the issue
+2012-08-17T04:34:00.000Z	histo	sportsfreund	pastebin the output of sudo update-grub && cat /etc/default/grub
+2012-08-17T04:35:00.000Z	histo	sportsfreund	also you have grub installed on both sda and sdb
+2012-08-17T04:37:00.000Z	histo	sportsfreund	just pastebin the results
+2012-08-17T04:37:00.000Z	histo	sportsfreund	yea it's not seeing windows on /dev/sdb
+2012-08-17T04:39:00.000Z	histo	sportsfreund	hold up trying to find a fix
+2012-08-17T04:43:00.000Z	sportsfreund	histo	i didnt define one hard drive as master and the as slave / raid...maybe thats the problem
+2012-08-17T04:45:00.000Z	histo	sportsfreund	cna you see the windows drive in ubuntu?
+2012-08-17T04:45:00.000Z	histo	sportsfreund	and are the sata drives or ide drives?
+2012-08-17T04:50:00.000Z	histo	sportsfreund	you need to gksu /etc/grub.d/40_custom
+2012-08-17T04:50:00.000Z	histo	sportsfreund	in there put the following at the bottom
+2012-08-17T04:53:00.000Z	histo	sportsfreund	Sorry gksu gedit /etc/grub.d/40_custom  and add these contents to the bottom of the file http://pastebin.ubuntu.com/1151759/  then save and sudo update-grub and reboot
+2012-08-17T04:59:00.000Z	sportsfreund	histo	nothing changed unfortunately

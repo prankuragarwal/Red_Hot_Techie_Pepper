@@ -1,0 +1,19 @@
+2012-07-10T20:12:00.000Z	xlq	apatters	Maybe you didn't disable iptables fully.
+2012-07-10T20:13:00.000Z	xlq	apatters	try running "iptables -D" as root and try again.
+2012-07-10T20:15:00.000Z	xlq	apatters	If you still can't ping after iptables -D then I don't know what to suggest.
+2012-07-10T20:16:00.000Z	apatters	xlq	Thanks, running iptables -D gives me iptables: Bad rule (does a matching rule exist in that chain?). How can I delete all rules?
+2012-07-10T20:16:00.000Z	xlq	apatters	Sorry, iptables -F
+2012-07-10T20:17:00.000Z	apatters	xlq	Thanks, iptables -F does not resolve the problem though. :(
+2012-07-10T20:21:00.000Z	xlq	apatters	cat /proc/sys/net/ipv4/icmp_echo_ignore_all
+2012-07-10T20:21:00.000Z	xlq	apatters	I suspect it might contain 1. If it does, as root do: echo 0 > /proc/sys/net/ipv4/icmp_echo_ignore_all
+2012-07-10T20:22:00.000Z	apatters	xlq	contains 0.
+2012-07-10T20:23:00.000Z	xlq	apatters	Can you ping your own IP address?
+2012-07-10T20:27:00.000Z	xlq	apatters	Apart from trying a different OS to see if it's the OS or the network you're on, I have no idea what to try.
+2012-07-10T20:32:00.000Z	apatters	xlq	It is puzzling. I have netstat open watching for traffic to the problem machine. Just now some traffic flashed by, and I found I was able to ping the machine. 30 seconds later, ping requests once again return 'destination host unreachable.'
+2012-07-10T20:32:00.000Z	xlq	apatters	But TCP works OK?
+2012-07-10T20:33:00.000Z	apatters	xlq	Yep. Can browse the web etc. on that box. Just can't initiate a connection from some other host to it.
+2012-07-10T20:34:00.000Z	xlq	apatters	And both computers are on the same subnet?
+2012-07-10T20:35:00.000Z	apatters	xlq	Confirmed.
+2012-07-10T20:37:00.000Z	xlq	apatters	You could try ##networking or ##linux.
+2012-07-10T20:38:00.000Z	apatters	xlq	will try that, thanks.
+2012-07-10T20:44:00.000Z	apatters	xlq	noticed a message 'ipw2200: Firmware error detected. Restarting.' in dmesg. Wondering if it could be a driver problem?

@@ -1,0 +1,19 @@
+2012-10-27T09:41:00.000Z	_dd		guys i need some help
+2012-10-27T09:42:00.000Z	_dd		i have two partitions mounted at / for some reason
+2012-10-27T09:43:00.000Z	_dd		but mount -l only shows one of them
+2012-10-27T09:43:00.000Z	_dd		whereas gparted shows both as mounted
+2012-10-27T09:44:00.000Z	_dd		thing is i made a backup of my root partition before i moved it
+2012-10-27T09:45:00.000Z	kunji	_dd	are you sure you have both mounted at root?  What's the output of sudo fdisk -l  ?
+2012-10-27T09:46:00.000Z	_dd	kunji	fdisk -l shows all partitions but doesn't show where they're mounted at
+2012-10-27T09:47:00.000Z	kunji	_dd	right, how about the output of mount?
+2012-10-27T09:47:00.000Z	_dd	kunji	mount -l only shows sdb5 as mounted and doesn't show sda5 at all
+2012-10-27T09:49:00.000Z	kunji	_dd	well, then it's highly likely that you only have sdb5 mounted, so I don't think you do have 2 mounted at /
+2012-10-27T09:49:00.000Z	_dd	kunji	ok, how do i fix that
+2012-10-27T09:50:00.000Z	kunji	_dd	fix what?  I'm not sure what the issue is?
+2012-10-27T09:51:00.000Z	kunji	_dd	Ah, ok, I think what you need to do is edit your fstab file.
+2012-10-27T09:52:00.000Z	kunji	_dd	well, normally at least, but since this is root, you may also need to change GRUB... hmm
+2012-10-27T09:52:00.000Z	_dd	kunji	fstab shows the UUID of sda5 for /
+2012-10-27T09:53:00.000Z	kunji	_dd	hmm, that's interesting, do you get an error for that mount failing in a log then?  Maybe that's too early in the boot process though.
+2012-10-27T09:54:00.000Z	kunji	_dd	hmm, yeah, them having the same UUID could be a problem, the chances of 2 UUIDs being the same though is extremely slim
+2012-10-27T09:54:00.000Z	kunji	_dd	That's true
+2012-10-27T09:56:00.000Z	kunji	_dd	lol, hmm, yeah, that seems like a good route to try.

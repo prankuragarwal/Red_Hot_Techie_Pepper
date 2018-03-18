@@ -1,0 +1,23 @@
+2008-12-26T11:27:00.000Z	CaptainMorgan		can someone help me with a boot problem? I got three disks, two of which are in a raid 1 setup, /dev/sda and /dev/sdb, that runs Linux, Then I got a fresh Windows installation on /dev/sdc, and my grub selection looks like so: title  Microsoft Windows XP ProfessionaL, root  (hd2,0), savedefault, makeactive, chainloader +1, all on separate lines... I've tried hd1,0 and h2,1 both to no avail... with the current h2,0 at least the
+2008-12-26T11:27:00.000Z	CaptainMorgan		option goes to "Starting up..." but then it hangs.... any ideas?
+2008-12-26T11:28:00.000Z	Yasumoto	CaptainMorgan	have you tried "sudo update-grub" ?
+2008-12-26T11:28:00.000Z	Yasumoto	CaptainMorgan	(I think that's the command)
+2008-12-26T11:30:00.000Z	CaptainMorgan	Yasumoto	now why do I need to update it that way?
+2008-12-26T11:30:00.000Z	CaptainMorgan	Yasumoto	update-grub regenerates menu.lst... I'm not sure that's what I want...
+2008-12-26T11:30:00.000Z	CaptainMorgan		is it?
+2008-12-26T11:34:00.000Z	Yasumoto	CaptainMorgan	Do you think you've made any changes to the menu.lst file?
+2008-12-26T11:36:00.000Z	CaptainMorgan	Yasumoto	of course, as my original question says
+2008-12-26T11:36:00.000Z	CaptainMorgan		how else can I have it point to the new disk?
+2008-12-26T11:42:00.000Z	CaptainMorgan	Yasumoto	any ideas?
+2008-12-26T11:42:00.000Z	CaptainMorgan		can someone help me with a boot problem? I got three disks, two of which are in a raid 1 setup, /dev/sda and /dev/sdb, that runs Linux, Then I got a fresh Windows installation on /dev/sdc, and my grub selection looks like so: title  Microsoft Windows XP ProfessionaL, root  (hd2,0), savedefault, makeactive, chainloader +1, all on separate lines... I've tried hd1,0 and h2,1 both to no avail... with the current h2,0 at least the
+2008-12-26T11:42:00.000Z	CaptainMorgan		option goes to "Starting up..." but then it hangs.... any ideas?
+2008-12-26T11:46:00.000Z	Yasumoto	CaptainMorgan	save your old menu.lst as a backup, then run update-grub
+2008-12-26T11:47:00.000Z	Yasumoto	CaptainMorgan	that's helped me a few times before. I don't think I've set up software raid in linux before, what are you using to do that? was that default with the installer?
+2008-12-26T11:47:00.000Z	Yasumoto	CaptainMorgan	sorry to be slow btw, I'm multitasking :-/
+2008-12-26T11:48:00.000Z	CaptainMorgan	Yasumoto	raid was installed upon initial system install by alternative disk
+2008-12-26T11:48:00.000Z	CaptainMorgan		alright I'll try that and see what happens, thank you Yasumoto
+2008-12-26T12:04:00.000Z	CaptainMorgan	Yasumoto	I had some time to review update-grub... what it does is *only* searches /boot for vm* files, thus it's only useful for linux... I removed my menu.lst, and then ran it, after its creation it just output the original menu.lst, *without* any windows option
+2008-12-26T12:15:00.000Z	CaptainMorgan	Yasumoto	do you think not having anything in /etc/fstab might have something to do with this?? I figure it might but previously I thought no because the system never gets to that point... but since ubuntu is identifying it as /dev/sdc1 then why not edit fstab?
+2008-12-26T12:17:00.000Z	CaptainMorgan		actually.. no.. I don't think that will make a difference...
+2008-12-26T12:17:00.000Z	CaptainMorgan		at boot, the disks are identified by (hd*,*) when it gets to linux then they're named according to /dev
+2008-12-26T12:22:00.000Z	Yasumoto	CaptainMorgan	yeah, that's probably not a good thing

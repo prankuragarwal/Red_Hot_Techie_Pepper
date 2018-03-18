@@ -1,0 +1,21 @@
+2010-05-06T10:16:00.000Z	slxo		How do I grant sudo permission to an existing user that is lacking?
+2010-05-06T10:17:00.000Z	undecim	slxo	sudo gpasswd -a user group
+2010-05-06T10:18:00.000Z	slxo	undecim	aetaric: thanks
+2010-05-06T10:19:00.000Z	slxo	undecim	"user is not in the sudoers file. This incident will be reported"
+2010-05-06T10:19:00.000Z	undecim	slxo	You need to be logged in as and admin... it wouldn't make much sense if a user could add themselves to a group.
+2010-05-06T10:20:00.000Z	slxo	undecim	nono, I did that as root
+2010-05-06T10:20:00.000Z	slxo	undecim	but the user is still getting that error
+2010-05-06T10:20:00.000Z	slxo	undecim	i am logged in ssh as root and NX as a normal user. normal user fails sudo
+2010-05-06T10:21:00.000Z	undecim	slxo	That user will have to log in since you added them.
+2010-05-06T10:21:00.000Z	undecim	slxo	Their current login is still using the non-admin privileges
+2010-05-06T10:22:00.000Z	slxo	undecim	aetaric: relogged and still happening. trying reboot
+2010-05-06T10:22:00.000Z	undecim	slxo	Reboot won't do anything
+2010-05-06T10:22:00.000Z	undecim	slxo	Have the user run "groups" to verify s/he is in the admin grou[
+2010-05-06T10:30:00.000Z	slxo	undecim	aetaric: $ groups | asdf admin | $ sudo apt-get update | [sudo] password for asdf: | asdf is not in the sudoers file.  This incident will be reported.
+2010-05-06T10:31:00.000Z	undecim	slxo	did you have the user run "groups" to see if s/he is an admin?
+2010-05-06T10:31:00.000Z	slxo	undecim	yes, and it is
+2010-05-06T10:32:00.000Z	slxo	undecim	any other ideas?
+2010-05-06T10:32:00.000Z	undecim	slxo	Run "sudo visudo" as admin, and make sure that "%admin ALL=(ALL) ALL" is uncommented
+2010-05-06T10:34:00.000Z	slxo	undecim	no such string was in the file. added it and trying again
+2010-05-06T10:34:00.000Z	slxo	undecim	bingo. thanks a lot
+2010-05-06T10:34:00.000Z	undecim	slxo	np

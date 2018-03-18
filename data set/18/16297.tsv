@@ -1,0 +1,18 @@
+2004-10-14T10:16:00.000Z	tehmiller^2		Starting OpenBSD Secure Shell server: sshdPrivilege separation user sshd does not exist
+2004-10-14T10:17:00.000Z	Keybuk	tehmiller^2	that's very strange ... that user should have been created during the openssh-server postinst script; can you do me a favour, try running "sudo dpkg --configure -a" 
+2004-10-14T10:17:00.000Z	tehmiller^2		k
+2004-10-14T10:17:00.000Z	Keybuk		let me know if that does anything at all
+2004-10-14T10:18:00.000Z	tehmiller^2		nada Keybuk
+2004-10-14T10:18:00.000Z	Keybuk	tehmiller^2	and "getent passwd sshd" doesn't say anything?
+2004-10-14T10:18:00.000Z	tehmiller^2		nope Keybuk
+2004-10-14T10:19:00.000Z	Keybuk	tehmiller^2	ok, try "sudo dpkg-reconfigure openssh-server"
+2004-10-14T10:19:00.000Z	tehmiller^2		shall i try to reinstall the ssh server
+2004-10-14T10:19:00.000Z	tehmiller^2	Keybuk	bingo
+2004-10-14T10:20:00.000Z	tehmiller^2		now to figure what the hell that meant when it said how to enable X fowarding :\
+2004-10-14T10:20:00.000Z	Keybuk	tehmiller^2	that's very strange; I've no idea why the postinst script didn't get run properly ... dpkg certainly thinks it did (otherwise the --configure -a would've done it)
+2004-10-14T10:20:00.000Z	Keybuk	tehmiller^2	X11Forwarding option in /etc/ssh/sshd_config
+2004-10-14T10:21:00.000Z	tehmiller^2		oh, i thought it was saying something about a debian config app to pass -X to heh
+2004-10-14T10:21:00.000Z	tehmiller^2		odd..
+2004-10-14T10:21:00.000Z	tehmiller^2		its turned on in the config
+2004-10-14T10:21:00.000Z	tehmiller^2		oh well
+2004-10-14T10:22:00.000Z	Keybuk	tehmiller^2	then all you need do is pass -X on the client, or stick "ForwardX11 yes" in ~/.ssh/config for the host, etc.

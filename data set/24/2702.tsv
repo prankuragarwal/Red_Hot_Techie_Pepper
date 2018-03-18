@@ -1,0 +1,24 @@
+2011-05-14T06:51:00.000Z	papna_		I have an USB external SATA drive dock. I hooked it up and the disk has been spinning several minutes, but I have no indication the drive has actually been mounted. How should I proceed?
+2011-05-14T06:51:00.000Z	DasEi	papna_	sudo fdisk -l , is it found ?
+2011-05-14T06:52:00.000Z	papna_	DasEi	It doesn't look like it.
+2011-05-14T06:52:00.000Z	DasEi	papna_	also not under places > removable ...
+2011-05-14T06:53:00.000Z	papna_	DasEi	No.
+2011-05-14T06:54:00.000Z	DasEi	papna_	re-plug it, pastebin the output of dmesg | tail
+2011-05-14T06:56:00.000Z	papna_	DasEi	http://paste.ubuntu.com/607254/
+2011-05-14T06:56:00.000Z	DasEi	papna_	sudo fdisk -l , devicename ?
+2011-05-14T06:58:00.000Z	papna_	DasEi	http://paste.ubuntu.com/607256/
+2011-05-14T06:58:00.000Z	DasEi	papna_	is 8 G size of the usb ?
+2011-05-14T06:59:00.000Z	papna_	DasEi	500 G
+2011-05-14T07:00:00.000Z	DasEi	papna_	maybe an old raid ? sudo gparted, or is there data expected on the external drive ?
+2011-05-14T07:01:00.000Z	papna_	DasEi	It wasn't in a RAID array.
+2011-05-14T07:01:00.000Z	papna_	DasEi	There is data expected.
+2011-05-14T07:01:00.000Z	papna_	DasEi	I had it hooked up internally fine.
+2011-05-14T07:01:00.000Z	DasEi	papna_	sata.. hmm, jumpers on it ?
+2011-05-14T07:03:00.000Z	papna_	DasEi	Works when hooked up to my laptop, so I doubt that's it. I hesitate to pull it while it's ostensibly spinning.
+2011-05-14T07:04:00.000Z	papna_	DasEi	Ope, think I found something that suffices.
+2011-05-14T07:04:00.000Z	papna_	DasEi	I had tried two USB ports, both that bounced off the internal hub.
+2011-05-14T07:05:00.000Z	papna_	DasEi	Plugging in to the back of the box seems to work.
+2011-05-14T07:05:00.000Z	DasEi	papna_	just to be sure, usb-utils installed ? ah, ic
+2011-05-14T07:06:00.000Z	DasEi	papna_	look up your bios, if legacy support is on and all hubs are activated, though dmesg found it
+2011-05-14T07:22:00.000Z	papna_	DasEi	Thanks.
+2011-05-14T07:22:00.000Z	DasEi	papna_	welcome

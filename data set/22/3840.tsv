@@ -1,0 +1,22 @@
+2009-11-28T13:33:00.000Z	ct529		whenever I update the kernel, the new kernel is added on top of the list in grub .... is it possible to clean the grub menu list automatically, so that you only have one working kernel and not a list of 6 different kernels?
+2009-11-28T13:33:00.000Z	SwedeMike	ct529	apt-get autoremove should remove the no longer needed kernels
+2009-11-28T13:33:00.000Z	ct529	SwedeMike	but it attempts to remove a lot of different packages
+2009-11-28T13:34:00.000Z	SwedeMike	ct529	yes, it removes the packages no longer needed, that was automatically installed because of something else
+2009-11-28T13:35:00.000Z	ct529	SwedeMike	it is removing wine! orgh!
+2009-11-28T13:35:00.000Z	SwedeMike	ct529	well then I guess you have to remove the kernel packages manually instead
+2009-11-28T13:36:00.000Z	ct529	SwedeMike	oh £$^£$$&%!!!!! It has removed wine and the configuration .....
+2009-11-28T13:36:00.000Z	SwedeMike	ct529	are you sure it removed the configuration? try installing wine again, default is not to purge the config
+2009-11-28T13:36:00.000Z	SwedeMike		that's what I thought anyway.
+2009-11-28T13:37:00.000Z	ct529	SwedeMike	who on earth is configuring the autoremove to remove packages that are linked to existing packages?????
+2009-11-28T13:37:00.000Z	SwedeMike	ct529	I have no idea, mine doesn't do that.
+2009-11-28T13:39:00.000Z	ct529	SwedeMike	apt-get is from the repository, it is not the kind of package you want to go and modify ....
+2009-11-28T13:41:00.000Z	ct529	SwedeMike	and it did not clean up the kernels ....
+2009-11-28T13:42:00.000Z	SwedeMike	ct529	then you have to find the kernel packages and remove them with dpkg. I usually do dpkg --list | grep <kernel version> and then cut/paste the ones I want to remove into dpkg --remove
+2009-11-28T13:43:00.000Z	ct529	SwedeMike	yes, you can do it manually, but I would have thought tjere was a automatic way of doing it. Thanks a lot for your help.
+2009-11-28T13:45:00.000Z	SwedeMike	ct529	well, it's automatic on my system, I just removed the -14 kernel using autoremove
+2009-11-28T13:45:00.000Z	ct529	SwedeMike	did you install from scratch or updated automatically?
+2009-11-28T13:45:00.000Z	SwedeMike	ct529	this is an 8.10 installation updated to 9.04 and then to 9.10
+2009-11-28T13:46:00.000Z	SwedeMike	ct529	but I removed the 9.04 kernels manually.
+2009-11-28T13:46:00.000Z	ct529	SwedeMike	32 bit? 64 bit?
+2009-11-28T13:46:00.000Z	SwedeMike	ct529	32bit.
+2009-11-28T13:54:00.000Z	ct529	SwedeMike	ok .... I recovered most things

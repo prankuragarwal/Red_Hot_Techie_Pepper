@@ -1,0 +1,18 @@
+2009-10-08T03:17:00.000Z	darkenergy		i've got two hosts behind NAT and i need ssh access
+2009-10-08T03:17:00.000Z	darkenergy		the only solution that comes to mind is a server with a public IP on the net
+2009-10-08T03:17:00.000Z	darkenergy		i'm considering something like an Amazon EC2 instance as an intermediary
+2009-10-08T03:17:00.000Z	darkenergy		anyone know of a better alternative?
+2009-10-08T03:18:00.000Z	ActionParsnip	darkenergy	use portforwarding / virtual server
+2009-10-08T03:18:00.000Z	darkenergy	ActionParsnip	virtualserver?
+2009-10-08T03:19:00.000Z	ActionParsnip	darkenergy	some routers call port forwarding, virtual server
+2009-10-08T03:20:00.000Z	darkenergy	ActionParsnip	i'm not in control of the routers, both machines are being NATed different ISPs, I need to get access from one to the other
+2009-10-08T03:20:00.000Z	ActionParsnip	darkenergy	port forward port 22 on the router to port 22 on the internal system
+2009-10-08T03:21:00.000Z	ActionParsnip	darkenergy	i see, so do both systems have a WAN IP?
+2009-10-08T03:22:00.000Z	darkenergy	ActionParsnip	you mean the shared IP visible on the public internet?
+2009-10-08T03:22:00.000Z	ActionParsnip	darkenergy	do they both have a 192.168 type address or do they have a non class C address?
+2009-10-08T03:23:00.000Z	darkenergy	ActionParsnip	192.168.x.x is just right
+2009-10-08T03:25:00.000Z	ActionParsnip	darkenergy	ok then you can just ssh to the address of the other system if they are using the same address
+2009-10-08T03:26:00.000Z	darkenergy	ActionParsnip	2 different ISPs, i assume I can't ssh to 192.168.100.37 on the other side of the internet
+2009-10-08T03:27:00.000Z	ActionParsnip	darkenergy	no as its a class C network
+2009-10-08T03:27:00.000Z	ActionParsnip	darkenergy	you will need to setup port forwarding or you could use a VPN
+2009-10-08T03:34:00.000Z	darkenergy	ActionParsnip	bastid_raZor: apparently i have no choice but to pay for a server with a public IP and forward ssh from both hosts to it

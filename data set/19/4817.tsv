@@ -1,0 +1,19 @@
+2009-02-18T02:35:00.000Z	jj_galvez		when I mount a folder with sshfs and check folder properties it states 0 bytes free, I know this is wrong how can I get around this?
+2009-02-18T02:36:00.000Z	_dbd_l12	jj_galvez	this is normal behaviour ;-) it's probably in the sshfs faq somewhere
+2009-02-18T02:37:00.000Z	jj_galvez	_dbd_l12	but then when I try to move a file into the folder I get an error saying that the file can not be copies because there is no room
+2009-02-18T02:38:00.000Z	jj_galvez	_dbd_l12	I don't remember getting this error before, and now I cannot upload a file to that folder
+2009-02-18T02:40:00.000Z	_dbd_l12	jj_galvez	very strange, normally sshfs would state "1000Gb" (1Tb free) incorrectly, as "the SFTP protocol doesn't have a statfs operation this is currently not possible to display proper usage on remote partition"
+2009-02-18T02:40:00.000Z	_dbd_l12	jj_galvez	are you sure there is space left on the remote partition ?
+2009-02-18T02:40:00.000Z	jj_galvez	_dbd_l12	yes I am sure, the drive has about 30GB of free space left
+2009-02-18T02:41:00.000Z	_dbd_l12	jj_galvez	hmm, this link (http://fritzthomas.com/open-source/linux/343-no-space-left-on-device-error-with-sshfs-how-to-fix-it/) suggests this could be a bug that was introduced recently
+2009-02-18T02:43:00.000Z	jj_galvez	_dbd_l12	interesting I'll give that a try and see if it works
+2009-02-18T02:43:00.000Z	_dbd_l12	jj_galvez	you could download the deb for your architecture and then install it with sudo dpkg -i filename_xxx.deb
+2009-02-18T02:44:00.000Z	jj_galvez	_dbd_l12	doing it now, I wonder if I need the same version of sshfs on both machines?
+2009-02-18T02:45:00.000Z	_dbd_l12	jj_galvez	probably not, as the remote end only needs ssh-server
+2009-02-18T02:45:00.000Z	jj_galvez	_dbd_l12	testing it now
+2009-02-18T02:45:00.000Z	_dbd_l12	jj_galvez	you'd only need fuse and sshfs on the connecting end
+2009-02-18T02:47:00.000Z	jj_galvez	_dbd_l12	Wow that worked! thanks, and now its even reporting the correct size of the drive
+2009-02-18T02:48:00.000Z	_dbd_l12	jj_galvez	well that's better ;-) then the "1000 gb"- free space-bug was probably arlready fixed in sshfs a while ago
+2009-02-18T02:48:00.000Z	jj_galvez	_dbd_l12	I'll say!
+2009-02-18T03:02:00.000Z	jj_galvez	_dbd_l12	thanks again for hte help that worked like a charm
+2009-02-18T03:02:00.000Z	_dbd_l12	jj_galvez	np

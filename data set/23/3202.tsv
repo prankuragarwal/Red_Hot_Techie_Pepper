@@ -1,0 +1,23 @@
+2008-06-17T07:39:00.000Z	linkdeath		I've set up sshd, and my DSL modem to forward everything to my router, then set up port forwarding and DHCP reservation
+2008-06-17T07:39:00.000Z	linkdeath		but I still can't connect, I just get Connection refused
+2008-06-17T07:40:00.000Z	ace_suares	linkdeath	waht do you try to accomplish !?
+2008-06-17T07:40:00.000Z	linkdeath	ace_suares	trying to connect via ssh remotely
+2008-06-17T07:41:00.000Z	ace_suares	linkdeath	pretty vague. Describe your situation more clearly. Linux box behind a DSL router, now you want to connnect from outside to inside ?
+2008-06-17T07:42:00.000Z	linkdeath	ace_suares	linux box behind a Linksys router, that's behind a Proline DSL modem
+2008-06-17T07:42:00.000Z	linkdeath	ace_suares	canyouseeme.org gives success, but no luck actually connecting with ssh
+2008-06-17T07:42:00.000Z	ace_suares	linkdeath	first, while you are logged in to your linux box, ssh to 127.0.0.1 or ssh nameofyourbox and see what hapens
+2008-06-17T07:43:00.000Z	linkdeath	ace_suares	that works
+2008-06-17T07:44:00.000Z	ace_suares	linkdeath	now your linksys, is it portforwarding port 22 to the internal ip of your linux box ?
+2008-06-17T07:44:00.000Z	linkdeath	ace_suares	yes, as of the value ifconfig gives me (192.168.2.101) and I even set it to reserve the IP
+2008-06-17T07:45:00.000Z	ace_suares	linkdeath	now your DSL modem ,i sthat portforwarding to the internal ip of your linksys !?
+2008-06-17T07:46:00.000Z	linkdeath	ace_suares	  Static NAT enabled for 192.168.1.97
+2008-06-17T07:46:00.000Z	linkdeath	ace_suares	which is the address of the router
+2008-06-17T07:46:00.000Z	ace_suares	linkdeath	static nat ? that means that your outgoing (from INSIDE DSL to outside world) is natted !?
+2008-06-17T07:47:00.000Z	linkdeath	ace_suares	Hmm, should I just set DMZ on the DSL modem?
+2008-06-17T07:48:00.000Z	linkdeath	ace_suares	it says all unsolicited inbound traffic will be sent to that device (for the Static NAT)
+2008-06-17T07:49:00.000Z	ace_suares	linkdeath	hmmm if the DSL miodem says that, it should work i think
+2008-06-17T07:49:00.000Z	linkdeath	ace_suares	and killing it also makes canyouseeme say the port is unavailable
+2008-06-17T07:50:00.000Z	ace_suares	linkdeath	well you might setup tcpdump or ethereal on the linux box and see if anything is really reacjhing the linuxc box
+2008-06-17T07:50:00.000Z	ace_suares	linkdeath	if not maybe your linksys is not okay... thats all i can say about it.. sorry...
+2008-06-17T07:51:00.000Z	ace_suares	linkdeath	yeah how would you check that huh
+2008-06-17T07:51:00.000Z	ace_suares	linkdeath	just remove the linksys and see if it reaches the linux box ;-)

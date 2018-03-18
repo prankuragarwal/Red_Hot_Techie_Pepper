@@ -1,0 +1,21 @@
+2006-11-22T13:01:00.000Z	rellis		I have an HP DL360G4 with 2x on-board Broadcom NetXtreme BCM5704 NIC's. They're both plugged into good switch ports (i.e. I switched the cables a few times). However when I run ethtool on them eth1 has link and sets duplex/link speed whereas eth0 has no link and duplex/speed are undetermined. Any idea why this would be happening?
+2006-11-22T13:02:00.000Z	Moose_	rellis	does lspci -v show the two devices as the same hardware?
+2006-11-22T13:03:00.000Z	Moose_	rellis	same PCI IDs and everything?
+2006-11-22T13:05:00.000Z	Moose_	rellis	ok, that's a good sign. :-)
+2006-11-22T13:05:00.000Z	Moose_	rellis	sudo ifconfig eth0 up
+2006-11-22T13:05:00.000Z	Moose_	rellis	sudo ifconfig eth1 up
+2006-11-22T13:07:00.000Z	rellis	Moose_	Yes, I've had the server out of the rack on my desk a few days.
+2006-11-22T13:08:00.000Z	Moose_	rellis	hmm. If you go on the premise that you have to make it as simple as possible, then you should eliminate the switch and try a crossover cable.
+2006-11-22T13:09:00.000Z	rellis	Moose_	eth0 goes into the same switch..
+2006-11-22T13:09:00.000Z	rellis	Moose_	I can even plug eth0's cable into wth1 and it still works.
+2006-11-22T13:09:00.000Z	Moose_	rellis	so one port is happy, one isn't at all?
+2006-11-22T13:09:00.000Z	rellis	Moose_	Yes, exactly.
+2006-11-22T13:10:00.000Z	rellis	Moose_	Yet as I said I've gone through three replacement system boards, I eventually had HP swap the entire chassis. I've had the same issue with all of them.
+2006-11-22T13:10:00.000Z	Moose_	rellis	as a sanity check, have you tried booting something like knoppix?
+2006-11-22T13:11:00.000Z	rellis	Moose_	It was a RHEL 3 system.. I installed ubuntu 6.06 just to see if it was osmething weird I fubard..
+2006-11-22T13:11:00.000Z	rellis	Moose_	Exact same output as RHEL.
+2006-11-22T13:11:00.000Z	Moose_	rellis	2 CPUs? or one?
+2006-11-22T13:12:00.000Z	rellis	Moose_	Yep, 2x 3.6GHz Xeon's.
+2006-11-22T13:12:00.000Z	rellis	Moose_	Hmm..
+2006-11-22T13:14:00.000Z	Moose_	rellis	We've got probably ~200 servers up with various OSes and the best supported nics we've found are the Intel E1000's with the NForce ethernet a close second.
+2006-11-22T13:17:00.000Z	rellis	Moose_	It might not be so well supported after all

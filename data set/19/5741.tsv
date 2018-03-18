@@ -1,0 +1,19 @@
+2008-09-07T10:38:00.000Z	icedtea		sweet jesus X does not like my video card
+2008-09-07T10:39:00.000Z	icedtea		!bugs
+2008-09-07T10:39:00.000Z	icedtea		are radeon drivers stable or what?
+2008-09-07T10:40:00.000Z	icedtea		ah, I'm new to the radeon series and ubuntu did all the magic during the install
+2008-09-07T10:42:00.000Z	icedtea		according to xorg.conf, Driver "ati"
+2008-09-07T10:42:00.000Z	tj83	icedtea	"ati" is the old non 3D-accel driver
+2008-09-07T10:43:00.000Z	icedtea	tj83	really? strange it works with compiz ok. I assume there's a better one for a Radeon 1050?
+2008-09-07T10:44:00.000Z	tj83	icedtea	there is a limit to the card generation for that driver... not sure... would require some research... but if its pretty new.. i would certainly try the fglrx out.
+2008-09-07T10:44:00.000Z	icedtea	tj83	is that an open source driver or closed source?
+2008-09-07T10:45:00.000Z	tj83		its closed :( but its part of the linux-restricted-modules.. so you dont have to get it anywhere.. its available outta-box
+2008-09-07T10:45:00.000Z	tj83		its closed :( but its part of the linux-restricted-modules.. so you dont have to get it anywhere.. its available outta-box... icedtea
+2008-09-07T10:46:00.000Z	icedtea	tj83	apt-get install linux-restricted-modules?
+2008-09-07T10:46:00.000Z	icedtea	tj83	nonetheless it might be more reliabe than this ati driver thats not working so well with my x1050
+2008-09-07T10:47:00.000Z	tj83	icedtea	all you should have to do is back up your old xorg.cong (sudo cp /etc/X11/xorg.cong /etc/X11/xorg.conf.bak) and then change "ati" to "fglrx" and restart
+2008-09-07T10:47:00.000Z	icedtea	tj83	but do I have to apt-get anything? I'm on 7.x something
+2008-09-07T10:47:00.000Z	icedtea		7.10
+2008-09-07T10:49:00.000Z	tj83	icedtea	be prepared to revert back to the old file from terminal should something go wrong... from terminal do it backwards (sudo cp /etc/X11/xorg.conf.bak /etc/X11/xorg.conf).... i have only run 8.04, but i would check for updates first.. shouldnt have to apt anything
+2008-09-07T10:51:00.000Z	tj83	icedtea	apt-cache search fglrx returns this package amongst others "xorg-driver-fglrx"
+2008-09-07T10:52:00.000Z	icedtea	tj83	ahh thanks

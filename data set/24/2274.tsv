@@ -1,0 +1,24 @@
+2009-10-05T20:12:00.000Z	MyWay		hi
+2009-10-05T20:12:00.000Z	MyWay		I need move /usr on a server, is possible to do this: http://yavin4.anshul.info/2006/07/17/moving-usr-to-another-partition/comment-page-1/ without the recover console (as i can't use it)?
+2009-10-05T20:13:00.000Z	mgmuscari	MyWay	well you could do it the following way: copy all the contents of /usr to wherever you want to put them
+2009-10-05T20:14:00.000Z	mgmuscari	MyWay	then, run lsof | grep /usr/ to see which processes are using it
+2009-10-05T20:14:00.000Z	mgmuscari	MyWay	then kill them all, and remount /usr in the new location
+2009-10-05T20:15:00.000Z	MyWay		ok mgmuscari thanks, i'll try
+2009-10-05T20:15:00.000Z	mgmuscari	MyWay	disclaimer: i make no guarantees that you won't bork something
+2009-10-05T20:15:00.000Z	MyWay		ok
+2009-10-05T20:15:00.000Z	mgmuscari	MyWay	so be careful! i probably wouldn't do it without having a live cd readyu
+2009-10-05T20:15:00.000Z	mgmuscari	MyWay	if it works remember to change your fstab too...
+2009-10-05T20:15:00.000Z	MyWay	mgmuscari	the problem is that it's a server
+2009-10-05T20:15:00.000Z	MyWay		that's why i can't use the live cd
+2009-10-05T20:15:00.000Z	mgmuscari	MyWay	well before you try it, hold on
+2009-10-05T20:15:00.000Z	mgmuscari	MyWay	do you have rights to reboot the machine?
+2009-10-05T20:15:00.000Z	MyWay		yes
+2009-10-05T20:16:00.000Z	MyWay		i have / of only 5 gb and it's full
+2009-10-05T20:16:00.000Z	mgmuscari	MyWay	copy /usr to the new partition, change the fstab, and reboot
+2009-10-05T20:16:00.000Z	MyWay		that's why i need do it
+2009-10-05T20:16:00.000Z	MyWay		ok i try
+2009-10-05T20:16:00.000Z	mgmuscari	MyWay	that's probably the safest way
+2009-10-05T20:18:00.000Z	mgmuscari		if i want to accept on all ports from my local subnet, would i do:
+2009-10-05T20:18:00.000Z	mgmuscari		iptables -A INPUT -i wlan0 -p all -s 192.168.0.0/16 -j ACCEPT
+2009-10-05T20:18:00.000Z	mgmuscari		!es | rosa
+2009-10-05T20:21:00.000Z	MyWay	mgmuscari	when i do fdisk -l i get: Disk /dev/md2 doesn't contain a valid partition table, what can i do? i need resize it to make the new partition

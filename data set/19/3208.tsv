@@ -1,0 +1,19 @@
+2011-06-10T00:08:00.000Z	softcoder		I still have trouble with an auto mount at startup
+2011-06-10T00:08:00.000Z	softcoder		this is the line in fstab:
+2011-06-10T00:08:00.000Z	softcoder		 //192.168.0.101/Volume_1 /media/dlinknas  cifs defaults,rw,_netdev 0 0
+2011-06-10T00:08:00.000Z	softcoder		if i run sudo mount -afrom terminal it properly mounts
+2011-06-10T00:08:00.000Z	softcoder		anyone know why this isn't auto-mounting?
+2011-06-10T00:09:00.000Z	softcoder		what is missing?
+2011-06-10T00:09:00.000Z	softcoder		anaon is enabled on the nas
+2011-06-10T00:10:00.000Z	softcoder		anon
+2011-06-10T00:10:00.000Z	pfifo	softcoder	what version of ubuntu are you using>?
+2011-06-10T00:12:00.000Z	pfifo	softcoder	my guess is that networking is not available in time to automount it
+2011-06-10T00:26:00.000Z	pfifo	softcoder	chmod -x /etc/rc.local
+2011-06-10T00:26:00.000Z	pfifo	softcoder	chmod +x /etc/rc.local
+2011-06-10T00:29:00.000Z	pfifo	softcoder	other ubuntu users (me) use NFS
+2011-06-10T00:31:00.000Z	pfifo	softcoder	try adding 'start on net-device-up' to /etc/init/mountall.conf
+2011-06-10T00:31:00.000Z	pfifo	softcoder	thats kinda kludgy tho ;)
+2011-06-10T00:32:00.000Z	pfifo	softcoder	8+ systems with 11.04 and your using cifs as opposed to NFS?
+2011-06-10T00:34:00.000Z	pfifo	softcoder	well im certian my advice will require the network to be up and running before mountall is run
+2011-06-10T00:36:00.000Z	pfifo	softcoder	after start on startup
+2011-06-10T00:54:00.000Z	pfifo	softcoder	NFS will work for sure

@@ -1,0 +1,19 @@
+2011-01-10T03:31:00.000Z	Sephnroth		desperately trying to get this fresh server install to have any internet/network connection at all and when i browse google etc i have found several places saying to either sudo route add default gw or /sbin/route add <etc> but whenever i attempt to do it i just get "SIOCADDRT: No such process"
+2011-01-10T03:31:00.000Z	Sephnroth		any clues?
+2011-01-10T03:32:00.000Z	vlt	Sephnroth	What does `ifconfig -a` look like?
+2011-01-10T03:34:00.000Z	vlt	Sephnroth	I mean what does it look like exactly (as in paste it somewhere)
+2011-01-10T03:34:00.000Z	vlt	Sephnroth	And add /etc/network/interfaces, please
+2011-01-10T03:36:00.000Z	vlt	Sephnroth	Ok, is there a "inet address: ..." line?
+2011-01-10T03:38:00.000Z	vlt	Sephnroth	You haven't assigned an IP address to eth0
+2011-01-10T03:39:00.000Z	vlt	Sephnroth	You can do this manually in /etc/network/interfaces, with `ifconfig eth0 <ip>` or via DHCP
+2011-01-10T03:40:00.000Z	vlt	Sephnroth	It's not the router that hands out IP addresses but a DHCP server.
+2011-01-10T03:41:00.000Z	Sephnroth	vlt	thanks! just assigning it an ip got it working
+2011-01-10T03:41:00.000Z	vlt	Sephnroth	But yes, maybe the device you call "router" has one integrated ;-)
+2011-01-10T03:42:00.000Z	vlt	Sephnroth	It won't remember. You'll have to put it in /etc/network/interfaces
+2011-01-10T03:44:00.000Z	Sephnroth	vlt	what should it look like in /etc/network/interfaces ?  theres only 6 lines in the whole damn thing and nothing referencing eth0 at all, only references the loop back interface
+2011-01-10T03:45:00.000Z	vlt	Sephnroth	Example: auto eth0 \n iface eth0 inet dhcp
+2011-01-10T03:45:00.000Z	vlt	Sephnroth	\n is a line break
+2011-01-10T03:45:00.000Z	vlt	Sephnroth	That's all you need for DHCP client setup
+2011-01-10T03:47:00.000Z	vlt	Sephnroth	Using DHCP should set the default route and nameservers too.
+2011-01-10T03:48:00.000Z	vlt	Sephnroth	Just `/etc/init.d/networking restart`
+2011-01-10T03:52:00.000Z	Sephnroth	vlt	all working perfectly thanks :)  took me a while to remember how to use VI then, its been so long since i used linux at all let alone command line only --;

@@ -1,0 +1,19 @@
+2008-04-11T11:04:00.000Z	StPatrick		In KDE< If i am in a folder, I can push f4 to open a console with that path, is there a similar shortcut in Gnome?
+2008-04-11T11:06:00.000Z	StPatrick		I finally got Ubuntu to recognize my wifi, but now I cant seem to connect to any networks. Anyone have any ideas whay?
+2008-04-11T11:07:00.000Z	bwayne	StPatrick	 that's maybe a Konqueror specific shortcut (at least opening "in that path").  I'm sure someone's created a metacity script that can do the same.
+2008-04-11T12:17:00.000Z	bwayne	StPatrick	 i think you could add that command to /etc/rc.local and it'll run whenever you login as that particular user.
+2008-04-11T12:17:00.000Z	StPatrick	bwayne	 Right, thank you, that's what im lookin for.
+2008-04-11T12:17:00.000Z	StPatrick	bwayne	 any idea why when I open it, it's just a blank page?
+2008-04-11T12:18:00.000Z	bwayne	StPatrick	 that's a generally Linux wide solution, not just Ubuntu-specific.
+2008-04-11T12:18:00.000Z	StPatrick	bwayne	 but how would I add it?
+2008-04-11T12:19:00.000Z	StPatrick	bwayne	like, I have "/home/ryan/rtl8187b-modified ./wlan0up" on a line bedore exit 0, but it didnt work, did i do something wrong?
+2008-04-11T12:20:00.000Z	bwayne	StPatrick	 the addition that you make to /etc/rc.local should be the exact shell command you'd normally use.
+2008-04-11T12:21:00.000Z	bwayne	StPatrick	 IIRC,  lines in /etc/rc.local are ran as root so don't try sudo or anything.
+2008-04-11T12:21:00.000Z	StPatrick	bwayne	 right!  oh, lol i think sudo is what im missing.... cause other than that, i dunno why it would have not worked.
+2008-04-11T12:22:00.000Z	bwayne	StPatrick	 naw man don't use sudo in the rc.local file.
+2008-04-11T12:31:00.000Z	bwayne	StPatrick	 you may have to type of the full path to the executable script in rc.local.  like "/home/ryan/rtl8foo-modifield/nameofscript" in order to get it to work.
+2008-04-11T12:31:00.000Z	bwayne	StPatrick	 running ./wlan0up is different when ran as root and not a user.
+2008-04-11T12:32:00.000Z	StPatrick	bwayne	 I know I need to run it as root.
+2008-04-11T12:32:00.000Z	bwayne	StPatrick	 so you'll have to specify the FULL path to the executable.
+2008-04-11T12:33:00.000Z	bwayne	StPatrick	 so when you run your custom script from rc.local, it's ran as root in a "raw shell", so to speak.  when you run ./yourscript in a terminal while logged in as a user, the shell you use (like bash) will auto-expand your command.
+2008-04-11T12:59:00.000Z	bwayne	StPatrick	 well, the step between recognizing networks and actually associating with them can be a buggy process sometimes.  i've found it's hard to really narrow in on general wireless failures sometimes.

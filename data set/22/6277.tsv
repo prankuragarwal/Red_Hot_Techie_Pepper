@@ -1,0 +1,22 @@
+2010-02-06T19:55:00.000Z	guest1		what do i do now?  sorry i've never been in chat room before, very strange but good!
+2010-02-06T19:56:00.000Z	guest1		no, only max option is 640x480.
+2010-02-06T19:56:00.000Z	Slart	guest1	this is basically a notepad that 1300 persons can see and edit at the same time
+2010-02-06T19:57:00.000Z	Slart	guest1	if you have a question about ubuntu you just ask it.. please make sure you include information that is needed such as version of ubuntu and such
+2010-02-06T19:57:00.000Z	Slart	guest1	oh.. you have already.. nevermind me then =)
+2010-02-06T20:06:00.000Z	Slart	guest1	can you pastebin the file /var/log/Xorg.0.log
+2010-02-06T20:09:00.000Z	Slart	guest1	go to http://paste.ubuntu.com  .. you'll see a big text box.. open the file you want to pastebin in the regular text editor, select all text and copy it.. paste it into the webpage.. then press "submit" or "ok" (I can't remember which) and tell us the new url
+2010-02-06T20:13:00.000Z	Slart	guest1	ok.. I'll have a look
+2010-02-06T20:15:00.000Z	Slart	guest1	ok.. have a look at line 185
+2010-02-06T20:15:00.000Z	Slart	guest1	it says "(WW) NVIDIA(GPU-0): Unable to read EDID for display device CRT-0
+2010-02-06T20:16:00.000Z	Slart	guest1	EDID is a way for the graphics card to talk to the screen.. that way it knows what the screen can do and which resolutions it can show.. sometimes this doesn't work and then it uses some safe default values.. in this case 640x480
+2010-02-06T20:17:00.000Z	Slart	guest1	nah.. I get the same thing on my machine.. I just have to enter those values manually.. what kind of monitor do you have?
+2010-02-06T20:18:00.000Z	Slart	guest1	what's the resolution on that thing? 1024x768?
+2010-02-06T20:21:00.000Z	Slart	guest1	ok.. we've got horizontal frequency 30-75 kHz and vertical freq 30-75 Hz  .. remember those values
+2010-02-06T20:22:00.000Z	Slart	guest1	have a look at this file.. it's from my machine and the file is located at /etc/X11/xorg.conf
+2010-02-06T20:22:00.000Z	Slart	guest1	http://pastebin.com/f7adbfc17
+2010-02-06T20:23:00.000Z	Slart	guest1	the values we put in this file will override the automatic stuff.. so .. look at lines 30-37.. that's about my monitor
+2010-02-06T20:23:00.000Z	Slart	guest1	you see the values for HorizSync and VertRefresh ? thats't he place you need to put your valyes
+2010-02-06T20:25:00.000Z	Slart	guest1	so.. open a terminal and run "gksudo gedit /etc/X11/xorg.conf"    copy paste that command if you want
+2010-02-06T20:26:00.000Z	Slart	guest1	you can copy the entire file if you want.. I don't think there's anything special in there
+2010-02-06T20:27:00.000Z	Slart	guest1	when you're done editing the file you just save it.. then we'll try rebooting
+2010-02-06T20:30:00.000Z	Slart	guest1	good luck

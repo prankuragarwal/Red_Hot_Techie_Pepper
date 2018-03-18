@@ -1,0 +1,22 @@
+2006-06-06T05:05:00.000Z	abou		I'm trying to configure the samba server on my linux, I went to system>administratio>networking, in the general tab the document (settingUpSamba) Talks about ticking "Enable windows networking" I can't see such things
+2006-06-06T05:05:00.000Z	keleus	abou	i reccomend SWAT
+2006-06-06T05:06:00.000Z	abou	keleus	thanks, cheking it now
+2006-06-06T05:06:00.000Z	keleus	abou	its a web-based samba configuration utility... btw
+2006-06-06T05:08:00.000Z	abou	keleus	how do I start the server?
+2006-06-06T05:09:00.000Z	abou	keleus	nothing listening on port 901 now...!
+2006-06-06T05:10:00.000Z	keleus	abou	tell me what this says: ls /etc/* | grep swat
+2006-06-06T05:10:00.000Z	keleus	abou	in a terminal... btw
+2006-06-06T05:11:00.000Z	abou	keleus	no output
+2006-06-06T05:11:00.000Z	abou	keleus	netsta -an | grep 901 neither
+2006-06-06T05:11:00.000Z	abou	keleus	yes inet.d
+2006-06-06T05:12:00.000Z	keleus	abou	you need to edit that file and allow swat to run, and then make sure the inet daemon is restarted
+2006-06-06T05:12:00.000Z	keleus	abou	its in there now, but should be commented out
+2006-06-06T05:12:00.000Z	abou	keleus	where is inet.d located?
+2006-06-06T05:12:00.000Z	keleus	abou	not sure, don't have that stuff on my system ATM
+2006-06-06T05:12:00.000Z	keleus	abou	"locate inet.d" :D
+2006-06-06T05:13:00.000Z	keleus	abou	/etc/inetd.conf
+2006-06-06T05:13:00.000Z	abou	keleus	there is init.d but not inet.d
+2006-06-06T05:15:00.000Z	keleus	abou	did you get my last message?
+2006-06-06T05:17:00.000Z	abou	keleus	/etc/inetd.conf contains : netbios-ssn commented out, and swat (not commented)
+2006-06-06T05:18:00.000Z	keleus	abou	ok, execute "sudo /etc/init.d/inet restart" i think. not sure what the NAME of the script is...
+2006-06-06T05:18:00.000Z	abou	keleus	sure

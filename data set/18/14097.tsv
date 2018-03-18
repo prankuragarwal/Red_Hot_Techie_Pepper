@@ -1,0 +1,18 @@
+2009-07-16T13:48:00.000Z	Ileden		What's the policy on how long I should keep repeating a question here? :)
+2009-07-16T13:49:00.000Z	Flannel	Ileden	20-30 minutes is a good rate.  Gotta have new people wake up, etc.  You can peruse the forums and the wiki in the meantime (except the forums are apparently down at the moment)
+2010-04-28T12:23:00.000Z	Flannel	Ileden	click the icon next to "Does this bug affect you?" at the top
+2010-08-13T23:47:00.000Z	Flannel	Ileden	Adding that command to your sudoers (editing it with visudo) would be the way to go.  Have you seen this: https://help.ubuntu.com/community/Sudoers
+2010-08-13T23:47:00.000Z	Flannel	Ileden	Specifically, the "shutdown without a password" would be immediately relevant
+2010-08-13T23:48:00.000Z	Ileden	Flannel	I'm not sure if I've read that, I'll take a look. Thanks!
+2010-08-13T23:54:00.000Z	Ileden	Flannel	I have the NOPASSWD definition set for /usr/bin/rfcomm as the link suggests, so unfortunately no help :(
+2010-08-13T23:56:00.000Z	Flannel	Ileden	try adding this in there: ileden ALL=(ALL) NOPASSWD: /usr/bin/rfcomm
+2010-08-13T23:57:00.000Z	Flannel	Ileden	and then save it (remember to edit with visudo), and then sudo -k (to clear your cached password) and then `sudo rfcomm`
+2010-08-13T23:59:00.000Z	Ileden	Flannel	that's pretty much what I have there, but I'll try that exactly
+2010-08-14T00:01:00.000Z	Ileden	Flannel	btw, what's the deal with editing with visudo? I did accidentally edit the file with "sudo nano" once, can this cause the problem (I have rebooted since)
+2010-08-14T00:02:00.000Z	Flannel	Ileden	visudo does a syntax check on the file when you save it.  A single syntax error can render you unable to sudo, so having that extra layer of protection is a good idea :)
+2010-08-14T00:03:00.000Z	Flannel	Ileden	visudo isnt an editor, its a wrapper around your default editor that does the syntax cehcking (and calls your editor)
+2010-08-14T00:03:00.000Z	Ileden	Flannel	makes sense :)
+2010-08-14T00:06:00.000Z	Ileden	Flannel	Well, well, it seems that your line works! I apparently had some mistake. :) Thanks a lot!
+2010-08-14T00:07:00.000Z	Flannel	Ileden	If you want to give more users the ability, you'll want to substitute out your username for a group (per that page) with all of the users in it
+2010-08-14T00:08:00.000Z	Ileden	Flannel	not necessary, I'm the only user of the computer. Thanks, though.
+2011-05-20T12:57:00.000Z	Flannel	Ileden	Good enough.

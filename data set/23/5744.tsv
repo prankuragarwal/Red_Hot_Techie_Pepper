@@ -1,0 +1,23 @@
+2006-09-24T10:01:00.000Z	Schalken		how come i have a folder with 777 permissions yet when i try to open it with nautilus it says 'access was denied'?
+2006-09-24T10:01:00.000Z	ArrenLex	Schalken	you don't own it. 'sudo chown <yourusername> folder'
+2006-09-24T10:03:00.000Z	Schalken	ArrenLex	i own the file and with 777 permissions yet nautilus cant open it. i can cd into it though.
+2006-09-24T10:04:00.000Z	ArrenLex	Schalken	go to the directory where the file is and run 'ls -l <file>' and paste the result here.
+2006-09-24T10:05:00.000Z	Schalken	ArrenLex	it is a folder. i can cd into it, however nautilus can't open it.
+2006-09-24T10:05:00.000Z	ArrenLex	Schalken	ls -l <folder>
+2006-09-24T10:06:00.000Z	Schalken	ArrenLex	^ from ls -l
+2006-09-24T10:07:00.000Z	ArrenLex	Schalken	everything should work. It must be something with nautilus.
+2006-09-24T10:07:00.000Z	ArrenLex	Schalken	I use KDE so I can't help you further. Sorry.
+2006-09-24T10:07:00.000Z	Schalken	ArrenLex	why would it pick on just this little folder?
+2006-09-24T10:08:00.000Z	ArrenLex	Schalken	hell if I know. Are there any unusual circumstances surrounding it?
+2006-09-24T10:09:00.000Z	Schalken	ArrenLex	i will just copy its contents into a new folder using the terminal
+2006-09-24T10:50:00.000Z	Schalken	ArrenLex	omg Nautilus boycotted by "Visual Communication" folder again!!!
+2006-09-24T10:51:00.000Z	ArrenLex	Schalken	rename it to something with a short name with no space. i.e. in the command line, execute 'mv Visual\ Communication foobar'
+2006-09-24T10:52:00.000Z	Schalken	ArrenLex	calling it foobar fixed it :S that didnt work last time
+2006-09-24T11:04:00.000Z	ArrenLex	Schalken	yes. "sudo chmod -R <code> ."
+2006-09-24T11:04:00.000Z	ArrenLex	Schalken	wait.
+2006-09-24T11:05:00.000Z	Schalken	ArrenLex	if i give everything permissions 700 it asks if i want to open or execute every file, if i give them permissions 600 i cant open any folders, so i need folders to have 700 and files to have 600.
+2006-09-24T11:09:00.000Z	ArrenLex	Schalken	list=`file * | grep directory | awk '{ print $1 }' | sed 's/://g'` && sudo chmod 700 $list
+2006-09-24T11:10:00.000Z	Schalken	ArrenLex	lol has do be done recursively tho
+2006-09-24T11:13:00.000Z	ArrenLex	Schalken	the command I gave you will do it.
+2006-09-24T11:14:00.000Z	ArrenLex	Schalken	to make it run for files only, replace "grep" with "grep -v"
+2006-09-24T11:14:00.000Z	Schalken	ArrenLex	okay i will try

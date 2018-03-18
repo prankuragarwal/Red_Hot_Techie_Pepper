@@ -1,0 +1,22 @@
+2008-08-05T00:31:00.000Z	Simpson_2		hi all
+2008-08-05T00:32:00.000Z	Simpson_2		is there anyone that can explain me where the build in e1000 driver comes from an how to replace it ??
+2008-08-05T00:32:00.000Z	Slart	Simpson_2	I think it's a kernel module.. you can add and remove kernel modules using the command modprobe
+2008-08-05T00:33:00.000Z	Simpson_2	Slart	ack
+2008-08-05T00:33:00.000Z	Simpson_2	Slart	problem is, I can only find one e1000.ko on my disk, which is the one I need
+2008-08-05T00:33:00.000Z	Simpson_2		but after cold boot I stil have the old version ( confirmed with ethtool -i )
+2008-08-05T00:35:00.000Z	Slart	Simpson_2	try running this.. "modprobe -l e1000"
+2008-08-05T00:35:00.000Z	Slart	Simpson_2	I think it will give you the path to the kernel module
+2008-08-05T00:36:00.000Z	Simpson_2	Slart	yes it does, and thats the version I want :)
+2008-08-05T00:36:00.000Z	Simpson_2	Slart	but thats not what gets loaded
+2008-08-05T00:36:00.000Z	Slart	Simpson_2	and if you run "sudo modprobe e1000" it loads the new one? or the old one?
+2008-08-05T00:36:00.000Z	Simpson_2	Slart	then it loads the new one
+2008-08-05T00:37:00.000Z	Simpson_2	Slart	which is what i'm doing everyday
+2008-08-05T00:37:00.000Z	Slart	Simpson_2	it might be an ugly hack but can't you just put that in some kind of boot script?
+2008-08-05T00:37:00.000Z	Simpson_2	Slart	thought about that as well, but I thought there must be a more elegant solution
+2008-08-05T00:37:00.000Z	Simpson_2	Slart	related to: https://bugs.launchpad.net/ubuntu/+source/linux/+bug/42572
+2008-08-05T00:39:00.000Z	Slart	Simpson_2	I wonder if the e1000 module might be compiled into the kernel already.. but I thought the whole idea of having modules was to avoid compiling stuff into the kernel
+2008-08-05T00:40:00.000Z	Slart	Simpson_2	it might be some kind of problem that is fixed in the next kernel release.. the ugly hack might not be needed then
+2008-08-05T00:40:00.000Z	Simpson_2	Slart	well the symptoms prove otherwise
+2008-08-05T00:41:00.000Z	Simpson_2	Slart	is there a way to see what will be in the next release of the kernel ??
+2008-08-05T00:41:00.000Z	Slart	Simpson_2	and it's not some kind of special case defined in the modprobe configuration file?
+2008-08-05T00:41:00.000Z	Slart	Simpson_2	I don't know.. I supposed there might be some kind of bug list thingy for the kernel.. perhaps at kernel.org ?

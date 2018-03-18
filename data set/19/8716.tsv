@@ -1,0 +1,19 @@
+2007-03-07T11:53:00.000Z	owner_		im trying to get lamp on my desktop edition\
+2007-03-07T11:55:00.000Z	owner_		im having a lot of trouble with it
+2007-03-07T11:56:00.000Z	owner_		i am currently running desktop edition and its working fine except for lamp
+2007-03-07T11:57:00.000Z	owner_		i cant seem to configure the right files
+2007-03-07T11:57:00.000Z	owner_		i installed them
+2007-03-07T11:59:00.000Z	owner_		when i try to test a php file using http://localhost/test.php it gives me an error "Unknown: Failed opening '/var/www/test.php' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in Unknown on line 0"
+2007-03-07T11:59:00.000Z	owner_		yea
+2007-03-07T12:00:00.000Z	owner_		yea
+2007-03-07T12:02:00.000Z	owner_		i installed apache2, php5-mysql, libapache2-mod-php5, mysql-server, using synaptic
+2007-03-07T12:03:00.000Z	owner_		i got it off the ubuntu guide
+2007-03-07T12:03:00.000Z	ledbettj	owner_	what's the problem? php pages aren't parsed, it just spits out the source?
+2007-03-07T12:06:00.000Z	ledbettj	owner_	it looks like a permissions problem.  if you type "ls -lh /var/www/test.php" what does it show for the permissions/owners?
+2007-03-07T12:08:00.000Z	ledbettj	owner_	what about the "rwx" stuff?  how many "r"s are there?
+2007-03-07T12:08:00.000Z	ledbettj	owner_	that's the problem
+2007-03-07T12:09:00.000Z	ledbettj	owner_	the web server runs as a different user, and it doesn't have read access to your file
+2007-03-07T12:09:00.000Z	ledbettj	owner_	you can browse to the file in nautilus, right click on it, choose "permissions", and give all users read access
+2007-03-07T12:09:00.000Z	ledbettj	owner_	or you can type "chmod a+r /var/www/test.php"
+2007-03-07T12:12:00.000Z	ledbettj	owner_	cool, glad it helped.
+2007-03-07T12:13:00.000Z	ledbettj	owner_	you can open a nautilus window by typing "nautilus" or choosing one of the options from the "places" menu

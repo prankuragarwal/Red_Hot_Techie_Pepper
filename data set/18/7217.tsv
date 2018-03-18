@@ -1,0 +1,18 @@
+2008-01-22T06:30:00.000Z	Joel		I have a pro/wireless 3945ABG that up until today was working, but now it doesn't detect it, would anybody know what to do about this?
+2008-01-22T06:31:00.000Z	Joel		yeah
+2008-01-22T06:32:00.000Z	Joel		and when I run iwconfig it says that lo and eth0 have no extensions
+2008-01-22T06:33:00.000Z	robdig	Joel	i have same wireless, and something happened with latest update that messed mine up. it added auto eth1 to my interfaces file, so i couldn't connect (i use wpa). commented it out, when i booted today had to run sudo ifup eth1. don't know why yet...
+2008-01-22T06:35:00.000Z	Joel	robdig	then I should run sudo ifup eth1 and reboot?  / Do you think this change will be permanent?
+2008-01-22T06:36:00.000Z	robdig	Joel	don't know if it will be permanent, haven't rebooted since :). If you run the ifup, you should see it trying to get an ip address, if finishes successfully, you should be on line
+2008-01-22T06:37:00.000Z	Joel	robdig	sorry for all the questions, what is the interfaces file you edited?
+2008-01-22T06:38:00.000Z	robdig	Joel	/etc/network/interfaces. it had added an auto eth1 at the end, that is what i commented out...my normal eth1 stanza was untouched.
+2008-01-22T06:39:00.000Z	Joel	robdig	mine added an auto lo
+2008-01-22T06:40:00.000Z	robdig	Joel	that should be ok...but not that there isn't anything else
+2008-01-22T06:41:00.000Z	Joel	robdig	lol that's what I thought, is there anywhere where they have what is suppose to be in that file?
+2008-01-22T06:42:00.000Z	robdig	Joel	typically, you have a stanza for each interface...on mine lo, eth0 (wired) and eth1 (wireless)
+2008-01-22T06:42:00.000Z	Joel	robdig	ok, I'll work on it, thanks for the help, you rock!
+2008-01-22T06:42:00.000Z	robdig	Joel	if you're not doing anything special, like wep or wpa, just adding auto eth0 or 1 should help
+2008-01-22T06:43:00.000Z	Joel	robdig	should I just copy what's there for lo with eth0 or eth1?
+2008-01-22T06:43:00.000Z	robdig	Joel	its worth a try. after you do that, then run sudo ifdown and sudo ifup
+2008-01-22T06:52:00.000Z	Joel	robdig	I tried adding auto eth0 iface eth0 inet loopback into interfaces and then ifdown -a ifup -a and everything came out without error, but I do not have wireless still, what do you think I should do here?
+2008-01-22T06:56:00.000Z	robdig	Joel	not quite right. you want auto eth0 carriage return iface eth0 inet dhcp

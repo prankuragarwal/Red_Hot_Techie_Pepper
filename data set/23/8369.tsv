@@ -1,0 +1,23 @@
+2004-10-05T06:42:00.000Z	utta		Anybody get sound working?
+2004-10-05T06:42:00.000Z	LinuxJones	utta	yes my soundblaster live is running fine
+2004-10-05T06:43:00.000Z	utta	LinuxJones	Hmm.. I have an emu10k1, all modules seem loaded, but no joy. You have to do any fiddling?
+2004-10-05T06:45:00.000Z	utta	LinuxJones	so am I. I find that alsaconf is missing from my install though. Nope I did not, ubuntu set all that up for me as well
+2004-10-05T06:48:00.000Z	utta	LinuxJones	what does the alsa-base section of your /etc/modules.conf file look like?
+2004-10-05T06:49:00.000Z	LinuxJones	utta	did you select start sound server at gnome startup from Computer>>Desktop Preferences>>Sound ?
+2004-10-05T06:49:00.000Z	utta	LinuxJones	Yes I did, I also ave the sound Icon showing on top right of my display
+2004-10-05T06:51:00.000Z	LinuxJones	utta	the only thing referenced is "above snd-pcm snd-pcm-oss"
+2004-10-05T06:52:00.000Z	utta	LinuxJones	Thanks I have that as well. Ok back to fiddling then... Thanks all for the help!
+2004-10-05T06:52:00.000Z	LinuxJones	utta	rmmod emu10k1 and then modprobe snd_emu10k1
+2004-10-05T06:53:00.000Z	utta	LinuxJones	I have snd_emu10k1 loaded
+2004-10-05T06:54:00.000Z	utta	LinuxJones	No
+2004-10-05T07:36:00.000Z	utta	LinuxJones	I have solved my sound problem
+2004-10-05T07:36:00.000Z	LinuxJones	utta	what was the problem ?
+2004-10-05T07:37:00.000Z	utta	LinuxJones	the "sound" file was missing from the /etc/modprobe.d directory.
+2004-10-05T07:39:00.000Z	LinuxJones	utta	glad you got it working :D
+2004-10-05T07:40:00.000Z	utta	LinuxJones	A favor please, see if you have the alsaconf file in your usr/sbin/ dir
+2004-10-05T07:41:00.000Z	LinuxJones	utta	no I don't 
+2004-10-05T07:41:00.000Z	LinuxJones	utta	no jsut alsactl
+2004-10-05T07:42:00.000Z	utta	LinuxJones	I think I have the answer - alsaconf is required for setting up the sound file, but is missing from the alsa-utils package in ubuntu
+2004-10-05T07:45:00.000Z	LinuxJones	utta	I have alsa-base, alsa-utils, gstreamer8.0-alsa and libpt-plugins-alsa installed
+2004-10-05T07:46:00.000Z	utta	LinuxJones	I checked a stock Debian install, and alsaconf is in the alsa-utils package. Time to post a bug I think...
+2004-10-05T07:47:00.000Z	LinuxJones	utta	probably wouldn't hurt :D

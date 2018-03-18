@@ -1,0 +1,21 @@
+2007-02-23T10:30:00.000Z	EdibleEgg		can anyone help me out, trying to dual boot xp/ubuntu 6.10
+2007-02-23T10:30:00.000Z	cables	EdibleEgg	make sure Windows is booted first.
+2007-02-23T10:30:00.000Z	EdibleEgg	cables	XP is installed, and I have the live CD of ubuntu that i've been using to boot from
+2007-02-23T10:32:00.000Z	cables	EdibleEgg	at some point it should ask you what to do to your filesystem. There's an option for manually editing the partition table, and one for setting a certain percentage for Ubuntu's use and a certain for Windows XP. Make sure you back up your XP stuff first, as things sometimes do go wrong.
+2007-02-23T10:34:00.000Z	EdibleEgg	cables	yeah, when i get to manually partitioning my drives, I make the main ubuntu primary partition and I wanted to make a FAT32 partition to share files between the two OS's, but windows apparently has two other partitions(ones fat16, the other fat32) and it wont let me create another partition for swap or fat32(shared)
+2007-02-23T10:35:00.000Z	cables	EdibleEgg	you can't go over 4 partitions without an extended one
+2007-02-23T10:35:00.000Z	EdibleEgg	cables	yeah thats what it tells me
+2007-02-23T10:35:00.000Z	EdibleEgg	cables	do i extend the swap and the FAT 32 off the ubuntu main?
+2007-02-23T10:35:00.000Z	cables	EdibleEgg	add the fat sharing partition, then add an extended partition and put swap and ubuntu main in there.
+2007-02-23T10:36:00.000Z	EdibleEgg	cables	will i be able to boot ubuntu off that?
+2007-02-23T10:36:00.000Z	cables	EdibleEgg	Ubuntu can use extended partitions, windows can't.
+2007-02-23T10:37:00.000Z	cables	EdibleEgg	be VERY VERY sure that you've backed up your important windows stuff... I've never had a problem with resizing Windows partitions, but the worst can always happen
+2007-02-23T10:38:00.000Z	cables	EdibleEgg	you can't "extend" an already-created partition, so you'll have to make a new extended partition to put all your new other partitions in.
+2007-02-23T10:39:00.000Z	EdibleEgg	cables	ok im a little confused now. I've defragged my windows partition so its all nice and neat, then in the partition editor, the first step would be resize windows partition, but what do i do from there?
+2007-02-23T10:40:00.000Z	cables	EdibleEgg	how many partitions do you already have?
+2007-02-23T10:41:00.000Z	EdibleEgg	cables	well thats the weird thing, i have the main windows one, but it also shows two other partitions, one a fat16 and one a fat32 that show up as "green" in GParted
+2007-02-23T10:41:00.000Z	cables	EdibleEgg	are you on a dell?
+2007-02-23T10:41:00.000Z	EdibleEgg	cables	lol i guess thats it then eh
+2007-02-23T10:42:00.000Z	cables	EdibleEgg	Dell, right?
+2007-02-23T10:44:00.000Z	cables	EdibleEgg	ok. Bigger one is for recovery, smaller one is diagnostics. I deleted both, but you don't have to. You only have room for one more partition, so just make an extended partition, and put your shared Fat32, Ext3, and swap partitions in there.
+2007-02-23T10:45:00.000Z	EdibleEgg	cables	ok thanks a lot, been searching everywhere for an answer

@@ -1,0 +1,19 @@
+2009-03-05T02:48:00.000Z	gizmo_the_great		does any1 exactly where the Ubuntu distribution ID value is stored? Example, Ubuntu 8.10 - where is the value '8.10' actually stored? I have loo9ked at the lsb_release function but having read the code I can't work out exactly where the program is pulling the value from
+2009-03-05T02:48:00.000Z	Gnea	gizmo_the_great	/etc/lsb-release
+2009-03-05T02:49:00.000Z	gizmo_the_great	Gnea	thats the python script - I don't think the actual value is stored in it, is it?
+2009-03-05T02:49:00.000Z	Gnea	gizmo_the_great	no, it's not a script, it's a configuration file.  all configuration files are stored, in /etc, since that is the purpose of /etc.  a script that performs any function would not reside in /etc.
+2009-03-05T02:52:00.000Z	Gnea	gizmo_the_great	/etc/issue and /etc/issue.net do not do what you think they do.
+2009-03-05T02:53:00.000Z	Gnea	gizmo_the_great	as I have told you, it gets the value from the /etc/lsb-release file
+2009-03-05T02:53:00.000Z	gizmo_the_great	Gnea	if you open that file and read through it, can you tell me where you see the version number?
+2009-03-05T02:54:00.000Z	Gnea	gizmo_the_great	it's self-explanatory. if you try editing the release id, save it, then run lsb_release -a, you will see that it changes. good luck.
+2009-03-05T02:58:00.000Z	gizmo_the_great	Gnea	ZykoticK9 guntbert - OK. As I understand it, lsb-release is a script/program that, when executed, outputs the distribution data about the operating system. The values themselves are not hardcoded in that file - if you open it and look for the release ID of your OS, it is not in there. It calculates the value by running various functions.
+2009-03-05T02:59:00.000Z	Gnea	gizmo_the_great	no, it does not calculate it. you've read it completely wrong.
+2009-03-05T03:00:00.000Z	gizmo_the_great	Gnea	OK, so assuming you know where I am wrong, hopefully you can tell me where it is getting that value from?
+2009-03-05T03:01:00.000Z	gizmo_the_great	Gnea	it's not massively apparent is it.
+2009-03-05T03:02:00.000Z	Gnea	gizmo_the_great	I have already told you where it gets the value from. You have failed to follow those steps. But, I'll point it out to you again:  in the /etc/lsb-release file (which you can look at by opening a Terminal, and then typing the following command:  cat /etc/lsb-release) you can see the variables that are clearly defined (I'm not pasting them here, since pasting is against channel guidelines, plus you can read them for yourself, and everyone els
+2009-03-05T03:03:00.000Z	Gnea	gizmo_the_great	and, again, you can simple change a variable in the /etc/lsb-release file to something else, saving the file, then running this command again:  lsb_release -a  (please note the difference between the - and the _ ) and you will see that there is no calculation taking place.
+2009-03-05T03:04:00.000Z	gizmo_the_great	Gnea	I'm obviously not explaining what I am trying to do properly. I will keep looking. But what I am trying to say is that  cat /etc/lsb-release does not output something that is contained in lsb-release - it outputs something that it works out frm the OS.
+2009-03-05T03:04:00.000Z	Gnea	gizmo_the_great	oh really?  please pastebin the output of your /etc/lsb-release file and a separate pastebin of the lsb_release -a command.
+2009-03-05T03:09:00.000Z	gizmo_the_great	Gnea	It would seem someone here has to eat some humble pie. Sorry - you are totally right. I got muddle up between the lsb_release and lsb-release!
+2009-03-05T03:09:00.000Z	gizmo_the_great	Gnea	So I can now recode my app to look at /etc/lsb-release directly instead of lsb_release
+2009-03-05T03:09:00.000Z	Gnea	gizmo_the_great	excellent :)

@@ -1,0 +1,23 @@
+2009-04-10T04:35:00.000Z	DasEi		!ics | mroc
+2009-04-10T04:36:00.000Z	mroc	DasEi	thanks, i'll read through that.  I used to have it working well with firestarter but whenever i plug in the wired connection, it immediately seems to take precedence because i can no longer connect to the outside world.
+2009-04-10T04:37:00.000Z	DasEi	mroc	if the interfaces are cnfigured correctly, might have to restart network after plugging
+2009-04-10T04:44:00.000Z	mroc	DasEi	whenever i try to set the internal side settings, i get an error about things being read-only.  am i doing something wrong here?
+2009-04-10T04:44:00.000Z	DasEi	mroc	which error exyctly (use pastebin) do you get ?
+2009-04-10T04:45:00.000Z	mroc	DasEi	graphically configuring, i get the following: Updating connection failed: nm-ifupdown-connection.c.76 - connection update not supported (read-only)
+2009-04-10T04:50:00.000Z	mroc	DasEi	device eth0 not ready  (that's the internal side).   i'm getting that read-only message when using the "Edit connections" part of network manager.
+2009-04-10T04:50:00.000Z	DasEi	mroc	: in trml, what does ifconfig say ?
+2009-04-10T04:51:00.000Z	mroc	DasEi	hmm...nothing.  well clearly that's part of the problem.
+2009-04-10T04:52:00.000Z	DasEi	mroc	gedit /etc/network/interfaces                          << eth0 listed there ?
+2009-04-10T04:53:00.000Z	mroc	DasEi	yes
+2009-04-10T04:53:00.000Z	DasEi	mroc	how is it configured ?
+2009-04-10T04:54:00.000Z	mroc	DasEi	there are two blocks...the first is a static config...then there's a line below that with auto eth0
+2009-04-10T04:55:00.000Z	mroc	DasEi	it should be correct, it's the internal side, so it should be static.  my wireless interface wlan0 is connected to the internet.  eth0 is connected to client computer with crossover cable.
+2009-04-10T04:56:00.000Z	DasEi	mroc	k, then close gedit..
+2009-04-10T04:56:00.000Z	DasEi	mroc	sudo /etc/init.d/networking restart
+2009-04-10T04:57:00.000Z	mroc	DasEi	reconfiguring ... then a warning that ifup -a is disabled in favour of Network Manager.
+2009-04-10T05:02:00.000Z	DasEi	mroc	so there's sth with your networkmanager, check the options out, do they negoiate any of the other settings ?
+2009-04-10T05:03:00.000Z	mroc	DasEi	not sure what you mean by that.  network manager handles the wireless connection properly.  whenever i try to configure the wired connection as "shared to other computers" i get that read-only message i was talking about.  no idea how to begin fixing that.
+2009-04-10T05:06:00.000Z	DasEi	mroc	eth0 isn't the wireless, should be ath0 or similar
+2009-04-10T05:07:00.000Z	mroc	DasEi	wlan0 is the wireless, eth0 is the wired.   the wireless connects to the outside world, the wired connects to the computer i'd like to share the access to.
+2009-04-10T05:08:00.000Z	DasEi	mroc	I will leave now, ask for someone with wireless on, dealing the message you get at networking restart
+2009-04-10T05:08:00.000Z	mroc	DasEi	ok.  thank you for your help.

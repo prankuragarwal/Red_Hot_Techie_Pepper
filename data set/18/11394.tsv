@@ -1,0 +1,18 @@
+2006-08-01T07:11:00.000Z	Phat32		How do I find my graphics card's BusID?
+2006-08-01T07:11:00.000Z	sproingie	Phat32	lspci
+2006-08-01T07:12:00.000Z	Phat32	sproingie	I need it to show the BusID as it would in xorg.conf
+2006-08-01T07:15:00.000Z	sproingie	Phat32	should be the numbers between 0000: and the dot
+2006-08-01T07:15:00.000Z	Phat32	sproingie	there are letters in it.. that's not how it's supposed to look
+2006-08-01T07:15:00.000Z	sproingie	Phat32	it's in hex
+2006-08-01T07:16:00.000Z	Phat32	sproingie	so what should I covert it to?
+2006-08-01T07:16:00.000Z	sproingie	Phat32	don't
+2006-08-01T07:16:00.000Z	sproingie	Phat32	i've personally never had to use a busid in my xorg.conf
+2006-08-01T07:16:00.000Z	Phat32	sproingie	 xorg.conf doesn't apear to use hex
+2006-08-01T07:17:00.000Z	sproingie	Phat32	if you have an agp controller it's almost certainly 1:0:0 or 1:0:1
+2006-08-01T07:18:00.000Z	Phat32	sproingie	it's PCI
+2006-08-01T07:18:00.000Z	sproingie	Phat32	looks like the number after the dot gets used too.  just convert 0000 to PCI, and the dot to a colon
+2006-08-01T07:19:00.000Z	sproingie	Phat32	welcome to X and goofy addressing schemes.  solaris would have a /dev/pci
+2006-08-01T07:19:00.000Z	Phat32	sproingie	 0000:01:0b.0  =  PCI:1:0:0 ???
+2006-08-01T07:19:00.000Z	sproingie	Phat32	my guess would be PCI:1:b:0
+2006-08-01T07:21:00.000Z	Phat32	sproingie	david@davidh:/proc/bus/pci$ ls            00  01  devices
+2006-08-01T07:23:00.000Z	Phat32	sproingie	 What do you think

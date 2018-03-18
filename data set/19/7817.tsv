@@ -1,0 +1,19 @@
+2007-06-17T15:04:00.000Z	fury		hi, how do i get ubuntu to recognize my USB stuff? i'm running 7.04 now, i plodded through the install with just the keyboard thinking it probably didn't have the right usb drivers in the livecd...but it's fully installed now and still none of my USB devices work
+2007-06-17T15:04:00.000Z	fury		mouse, hard drive, and hub
+2007-06-17T15:04:00.000Z	fury		the hard drive is connected via the hub, and the mouse used to be, but i tried connecting the mouse directly to a usb port on the back of the puter
+2007-06-17T15:05:00.000Z	yknott	fury	plug one of them into the computer, then us know what lsusb gives
+2007-06-17T15:11:00.000Z	fury	yknott	whether i plug or unplug the hub, or plug th emouse into the hub, or directly to the puter, lsusb output is the same - Bus 003 Device 001: ID 0000:0000 / Bus 001 Device 001: ID 0000:0000 / Bus 002 Device 001: ID 0000:0000
+2007-06-17T15:11:00.000Z	yknott	fury	anything more with lsusb -n
+2007-06-17T15:12:00.000Z	yknott	fury	ah that was for lspci, well you could try verbose but i am guess nothing
+2007-06-17T15:15:00.000Z	yknott	fury	have you checked http://www.linux-usb.org/FAQ.html
+2007-06-17T15:16:00.000Z	yknott	fury	specifically http://www.linux-usb.org/FAQ.html#ts6
+2007-06-17T15:20:00.000Z	fury	yknott	"rmmod ehci-hcd" is this command reversible if it makes things worse?
+2007-06-17T15:20:00.000Z	yknott	fury	that just unloads that module
+2007-06-17T15:20:00.000Z	yknott	fury	so modprobe ehci-hcd would put it back
+2007-06-17T15:21:00.000Z	yknott	fury	but i am guessing that is the module for 2.0 usb, removing it would put you back to 1.1
+2007-06-17T15:27:00.000Z	yknott	fury	there were some other suggestions at http://www.linux-usb.org/notAcceptFeedback.html   including using either pci-noacpi or acpi=off as a boot option
+2007-06-17T15:29:00.000Z	yknott	fury	try the irq thing, it may not break windows, worth a shot anyway
+2007-06-17T15:45:00.000Z	yknott	fury	you can edit the boot menu or you can just try it once by pressing esc when prompted then entering it as kernel parameters
+2007-06-18T12:47:00.000Z	yknott	fury	yes?
+2007-06-18T12:49:00.000Z	yknott	fury	on my machine windows is more responsive in a virtualized environment, linux host, than it is directly on the machine; never tried it the other way - windows host + linux guest
+2007-06-18T12:50:00.000Z	fury	yknott	I tried putting VMware on my x64 install of Windows, Ubuntu was unbearably slow... hell even its clock would take 10 minutes to advance by 1 minute

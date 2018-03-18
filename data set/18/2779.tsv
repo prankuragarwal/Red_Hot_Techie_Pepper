@@ -1,0 +1,18 @@
+2010-03-23T13:24:00.000Z	DasEi	wedo	if you want the uuid, sudo blkid will tell you correct uuid of new swap, but can use /dev/sd**, too
+2010-03-23T13:25:00.000Z	wedo	DasEi	I will try it now
+2010-03-23T13:26:00.000Z	DasEi	wedo	sudo fdisk -l to list your partitioons, figure out /dev for swap ..
+2010-03-23T13:30:00.000Z	wedo	DasEi	fstab has the same uuid of the blkid
+2010-03-23T13:31:00.000Z	DasEi	wedo	after resizing swap ?
+2010-03-23T13:32:00.000Z	DasEi	wedo	then sth. went wrong, if you resize a partition, it's uuid will change
+2010-03-23T13:32:00.000Z	DasEi	wedo	you did the resize from a live cd btw. least unmounted swap for resizing ?
+2010-03-23T13:33:00.000Z	wedo	DasEi	I resized it by Gparted and I did unmounted it before resizing
+2010-03-23T13:36:00.000Z	DasEi	wedo	that's strange, least if fstab is equal to blkid, you're fine, try a reboot, worst thing is a stuck > live-cd, comment swap, sys will start without swap for debugging then
+2010-03-23T13:39:00.000Z	wedo	DasEi	can u check that plz http://pastebin.com/JCUf67ER
+2010-03-23T13:41:00.000Z	DasEi	wedo	looks correct so far, strange if resising worked and you called no other function
+2010-03-23T13:42:00.000Z	DasEi	wedo	you wouldn't have been able to resize, unles unmmounted, afterwards it'll have changed uuid at re-mount
+2010-03-23T13:43:00.000Z	DasEi	wedo	see, resizing wasn't done then, there you go, got to do it again
+2010-03-23T13:43:00.000Z	wedo	DasEi	the System monitor shows the old capacity and actually I do not know if the system works with new capacity or uses only the capacity shown in the system monitor
+2010-03-23T13:43:00.000Z	DasEi	wedo	see, resizing wasn't done then, there you go, got to do it again
+2010-03-23T13:43:00.000Z	DasEi	wedo	sudo gparted
+2010-03-23T13:43:00.000Z	wedo	DasEi	GParted show that the swap is at the new size
+2010-03-23T14:35:00.000Z	wedo	DasEi	the swap size problem solved, I disabled it on the fstab then restarted then i make mkswap and everything is going ok now

@@ -1,0 +1,21 @@
+2011-08-04T16:32:00.000Z	Quantum_Ion		I have question for you how can I get power-top in Ubuntu Linux to run at start up, this is powertop it manages low power consumption mode in Ubuntu Linux -> https://help.ubuntu.com/community/PowerManagement/ReducedPower
+2011-08-04T16:33:00.000Z	Quantum_Ion		My laptop usually heats up hot in Ubuntu Linux that is why I use low power mode
+2011-08-04T16:34:00.000Z	Quantum_Ion		How would you get this command to run at startup everytime you boot up into Ubuntu Linux->sudo -i pm-powersave true
+2011-08-04T16:35:00.000Z	Quantum_Ion		http://www.lesswatts.org
+2011-08-04T16:35:00.000Z	usr13	Quantum_Ion	You could put it in /etc/rc.local
+2011-08-04T16:35:00.000Z	usr13	Quantum_Ion	Only drop the sudo part
+2011-08-04T16:35:00.000Z	Quantum_Ion	usr13	okay let me try that and see it workd
+2011-08-04T16:36:00.000Z	usr13	Quantum_Ion	The command does not look right
+2011-08-04T16:52:00.000Z	Quantum_Ion	usr13	I am working off of this document - >https://help.ubuntu.com/community/PowerManagement/ReducedPower
+2011-08-04T16:53:00.000Z	Quantum_Ion	usr13	My question is I cannot get this command to run at startup boot - >pm-powersave true
+2011-08-04T16:53:00.000Z	usr13	Quantum_Ion	what happens when you run it from command line?
+2011-08-04T16:53:00.000Z	Quantum_Ion	usr13	I entered this in /etc/rc.local ->pm-powersave true
+2011-08-04T16:54:00.000Z	Quantum_Ion	usr13	Without being root I get this response -> We do not own /var/log/pm-powersave.log, refusing to overwrite.
+2011-08-04T16:54:00.000Z	usr13	Quantum_Ion	service --status-all   #See if it shows up in that list.
+2011-08-04T16:55:00.000Z	Quantum_Ion	usr13	Nope only works when I run sudo -i pm-powersave true
+2011-08-04T16:56:00.000Z	usr13	Quantum_Ion	did you put   pm-powesave true   in /etc/rc.local  ?
+2011-08-04T16:56:00.000Z	Quantum_Ion	usr13	Use and I rebooted and it didn't start
+2011-08-04T16:57:00.000Z	usr13	Quantum_Ion	did you install laptop-mode-tools ?
+2011-08-04T16:58:00.000Z	usr13	Quantum_Ion	ls -l /etc/rc.local   #See if the executable bit is enabled.
+2011-08-04T16:59:00.000Z	usr13	Quantum_Ion	see my pm
+2011-08-04T17:01:00.000Z	Quantum_Ion	usr13	Going to try this http://kenjiru.ro/blog/lucid-lynx

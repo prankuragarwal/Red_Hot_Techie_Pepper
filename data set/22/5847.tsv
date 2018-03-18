@@ -1,0 +1,22 @@
+2007-11-06T23:39:00.000Z	rob3r		I can't figure out how to mount this damn USB drive, it appears when I do lsusb but I can't figure out how to mount it
+2007-11-06T23:39:00.000Z	Dr_willis	rob3r	 what does 'sudo fdisk -l' show the device as?
+2007-11-06T23:40:00.000Z	rob3r	Dr_willis	sdb1
+2007-11-06T23:41:00.000Z	Dr_willis	rob3r	 'sudo mkdir /media/sdb1 '   'sudo mount -t FILESYSTEM /dev/sdb1 /media/sdb1'    :) is the basics of it.
+2007-11-06T23:41:00.000Z	Dr_willis	rob3r	 unless you are having more specific issues...
+2007-11-06T23:41:00.000Z	rob3r	Dr_willis	no, let me try that... I am still very new to Linux, hold on a sec
+2007-11-06T23:43:00.000Z	Dr_willis	rob3r	 could also check the ' media: ' location in the gnome filemanager. (or was it media:/ or media://)
+2007-11-06T23:43:00.000Z	rob3r	Dr_willis	that worked like a charm! Do I have to worry about unmounting and then remounting it every time I plug it in?
+2007-11-06T23:44:00.000Z	Dr_willis	rob3r	 its Supposed to auto mount.. but that system has a few issues here and there.
+2007-11-06T23:44:00.000Z	Dr_willis	rob3r	 Unmount it  (sudo umount /media/sdb1) befor unplugging it
+2007-11-06T23:46:00.000Z	rob3r	Dr_willis	okay, thank you very much!
+2007-11-06T23:53:00.000Z	rob3r	Dr_willis	how do I change permissions so I can write to the folder?
+2007-11-06T23:57:00.000Z	rob3r	Dr_willis	How do I change the permissions on that USB drive? This drive is pissing me off, all my other ones have worked fine...
+2007-11-06T23:58:00.000Z	Dr_willis	rob3r	 thats wekrd.. ONE vfat drive is not getting automounted properly? but the others are?
+2007-11-06T23:58:00.000Z	rob3r	Dr_willis	correct, I have a couple other smaller USB vfat drives that auto mount no problem
+2007-11-06T23:58:00.000Z	Dr_willis	rob3r	 Hmm. I got no clue there.
+2007-11-06T23:59:00.000Z	rob3r	Dr_willis	I just got this drive yesterday and am just testing it out, it is a Simpletech Bonzai Xpress. They don't support linux, but I didn't think that would be a problem. Is there a way to set permissions on the drive, it won't let me read it currently
+2007-11-07T00:00:00.000Z	Dr_willis	rob3r	 you can use the fstab entryies and make a manual mount point for it. and set the uid/gid/umask options
+2007-11-07T00:01:00.000Z	rob3r	Dr_willis	Thanks for your help, I'll look into that
+2007-11-07T00:01:00.000Z	Dr_willis	rob3r	 mounting Vfat r/w for all users is allover the web. :)  /dev/hda1 /mnt/ntfs ntfs uid=1000,gid=100 0 0         willbe SIMILER to your fstab entry you need.
+2007-12-16T23:10:00.000Z	Dr_willis	rob3r	 play the file in a player from the terminal, and check the output, or check the properties obn the file as to what codecs its using.
+2007-12-16T23:11:00.000Z	Dr_willis	rob3r	 you may want to look at the mediabuntu repos and install the various codec packs they got.

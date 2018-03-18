@@ -1,0 +1,24 @@
+2008-05-08T10:16:00.000Z	OSUKid7		hey, I'm running keychain to add my ssh keys, but when I ssh out, it doesn't seem to use them... this is new in hardy. it worked fine in gutsy :\ any idea how to make it work?
+2008-05-08T10:16:00.000Z	OSUKid7		!keychain
+2008-05-08T10:17:00.000Z	OSUKid7		hmm :\
+2008-05-08T10:17:00.000Z	dessnr	OSUKid7	Have you had any luck getting the right mouse button encryption going?
+2008-05-08T10:17:00.000Z	OSUKid7	dessnr	not sure what you mean
+2008-05-08T10:17:00.000Z	dessnr		in 8.04 Ubuntu, hardy, you can right mouse on a file and there is an "encrypt" option.
+2008-05-08T10:18:00.000Z	dessnr	OSUKid7	in 8.04 Ubuntu, hardy, you can right mouse on a file and there is an "encrypt" option.
+2008-05-08T10:19:00.000Z	OSUKid7	dessnr	oh... haven't tried that. that's not what I'm asking about at all... I'm trying to use `keychain` to login to my keys once, not each time I need to use them
+2008-05-08T10:21:00.000Z	dessnr	OSUKid7	there are two options to have a look at.  preferences > encryption and keys & administration > authorizations....  have a look at those and see if they help you with that.
+2008-05-08T10:23:00.000Z	OSUKid7	dessnr	doesn't look like it's in prefs > encryption & keys... and I have no idea what setting to look under in administration > authorizations. one thing I noticed is when I run a command like ssh -N the.host & it responds saying "Enter passphrase for key..." and "Permission denied (publickey,gssapi-with-mic,password)."
+2008-05-08T10:24:00.000Z	OSUKid7	dessnr	and that's after I correctly logged in with `keychain`
+2008-05-08T10:24:00.000Z	dessnr	OSUKid7	let me have a quick look at authorisations for a min.
+2008-05-08T10:24:00.000Z	OSUKid7	dessnr	ok, thanks for your help
+2008-05-08T10:26:00.000Z	OSUKid7	dessnr	it's possible that the first time I tried to ssh using this key on hardy, gnome prompted me for my key passphrase and I may have typed it incorrectly... I figured it would ask me again though, but it definitely seems to be ignoring the keychain/ssh-add passphrase
+2008-05-08T10:27:00.000Z	dessnr	OSUKid7	yeah there doesn't seem to be anything that will help you in admin > authorisations...  But have you had a look at this?  http://www.funnestra.org/ubuntu/hardy/#ssh-public-key-authentication
+2008-05-08T10:29:00.000Z	OSUKid7	dessnr	oh very weird. when I run ssh-add .ssh/my_key, it then lets me ssh to that host correctly/no prompts... yet when running keychain .ssh/that_key, as I did in gutsy, it fails
+2008-05-08T10:29:00.000Z	dessnr	OSUKid7	It even goes on to explain how you can set it up later, so that you only have to type it once.
+2008-05-08T10:30:00.000Z	dessnr	OSUKid7	yeah it can get confusing between distributions...
+2008-05-08T10:30:00.000Z	OSUKid7	dessnr	right, that's what I had setup with keychain... keychain is nice since it uses ssh-ask-pass to ask you via gnome... but I suppose I'll switch to using ssh-add for now
+2008-05-08T10:31:00.000Z	dessnr	OSUKid7	it can't hurt.  make side notes on some paper to get used to the changes, thats what i tend to do.  it embeds the differences between distributions into my mind.
+2008-05-08T10:32:00.000Z	OSUKid7	dessnr	yeah, doesn't really make sense to me why it broke in hardy though... only think I can think is I mistyped my passphrase into that gnome prompt, but it's clearly using the ssh-add list and not keychain, which doesn't make any sense to me
+2008-05-08T10:33:00.000Z	dessnr	OSUKid7	nor i.
+2008-05-08T10:33:00.000Z	OSUKid7	dessnr	alright... maybe I'll look into that possible bug more later then. for now I'll just use ssh-add... thanks for your help!
+2008-05-08T10:34:00.000Z	dessnr	OSUKid7	you're welcome.

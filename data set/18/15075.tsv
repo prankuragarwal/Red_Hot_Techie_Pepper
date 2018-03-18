@@ -1,0 +1,18 @@
+2005-05-12T16:28:00.000Z	rafael		I got a huge problem with Hoary. I just did a fresh install and I can't get sound to work. I can listen to myself on the mic, but I get no system/muziek working :(
+2005-05-12T16:30:00.000Z	rafael		Ubuntu recognizes it , I can even hear the mic, but no sound
+2005-05-12T16:30:00.000Z	rafael		KIngArthur imma try that trick now ..
+2005-05-12T16:31:00.000Z	rafael		I'm sure nothing is muted..
+2005-05-12T16:32:00.000Z	rafael		beepmediaplayer on esd , gaim, rhythmbox ; killall esd  didn't work
+2005-05-12T16:32:00.000Z	rafael		vlc, xmms, everything
+2005-05-12T16:32:00.000Z	rafael		I only hear myself through the mic. No other sound
+2005-05-12T16:33:00.000Z	MightyF	rafael	i have a solution for you, let me check something
+2005-05-12T16:33:00.000Z	MightyF	rafael	First, there's this wiki: http://www.ubuntulinux.org/wiki/DebuggingSoundProblems
+2005-05-12T16:34:00.000Z	MightyF	rafael	second, there's this site, it helps you get esd to stop hogging the sound: http://www.ubuntulinux.org/wiki/RestrictedFormats
+2005-05-12T16:34:00.000Z	MightyF	rafael	hope it helps
+2005-05-12T16:35:00.000Z	MightyF	rafael	no need to stop ESD, you can just get it to stop hogging the sound card.
+2005-05-12T16:35:00.000Z	MightyF	rafael	but alsa and oss are the likely ones
+2005-05-12T16:36:00.000Z	MightyF	rafael	what KingArthur is referring to is the tendency of linux games to use oss, which uses /dev/dsp
+2005-05-12T16:36:00.000Z	MightyF	rafael	esd hogs /dev/dsp so oss can't use it
+2005-05-12T16:36:00.000Z	MightyF	rafael	so you kill esd and the game can use oss to use /dev/dsp
+2005-05-12T16:37:00.000Z	MightyF	rafael	check out the first link and see if you can gather information on the problem
+2005-05-12T16:41:00.000Z	rafael	MightyF	and y'all thanks, I'm trying this thingy r`now

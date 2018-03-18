@@ -1,0 +1,21 @@
+2008-05-12T21:09:00.000Z	Alex_Gaynor		I'm having a problem where nvidia-settings won't let me set my monitor to a resolution higher than 640*480, however it can handle up to 1280*1024, I have 2 monitors and the main one is fine, I'm running TwinView
+2008-05-12T21:10:00.000Z	Jupp	Alex_Gaynor	have you tried editing xorg.conf by hand?
+2008-05-12T21:10:00.000Z	Alex_Gaynor	Jupp	No, I don't know enough about it, I looked at it and in my second Monitor Entry it appears to be more or less blank, wI'm guessing I need to readd some resolutions(this all started after I disabled that monitor for a while)
+2008-05-12T21:12:00.000Z	Alex_Gaynor	Jupp	Hrm, it actually looks like it got mangled at some point, it's very bland now: http://dpaste.com/49489/
+2008-05-12T21:13:00.000Z	Jupp	Alex_Gaynor	here's what I have for the metamode:
+2008-05-12T21:13:00.000Z	Jupp	Alex_Gaynor	    Option         "metamodes" "CRT: 1024x768 +1280+0, DFP: 1280x1024 +0+0; CRT: NULL, DFP: 1280x1024 +0+0"
+2008-05-12T21:14:00.000Z	Jupp	Alex_Gaynor	sorry let me paste the whole thing, give me sec and I'll give you the link
+2008-05-12T21:16:00.000Z	Jupp	Alex_Gaynor	http://dpaste.com/49492/
+2008-05-12T21:16:00.000Z	Jupp	Alex_Gaynor	look at the "metamodes" see how I assign the respective resolution to each monitor?
+2008-05-12T21:18:00.000Z	Jupp	Alex_Gaynor	instead of the "nvidia-auto-select" just write the desired resolution
+2008-05-12T21:18:00.000Z	Alex_Gaynor	Jupp	Ok, saving and restarting X now
+2008-05-12T21:19:00.000Z	Alex_Gaynor	Jupp	Hrm, after restarting X the second monitor is disabled
+2008-05-12T21:21:00.000Z	Jupp	Alex_Gaynor	it got disabled by adding the resolution by hand?
+2008-05-12T21:21:00.000Z	Alex_Gaynor	Jupp	I guess, I didn't change anything else
+2008-05-12T21:22:00.000Z	Jupp	Alex_Gaynor	the only thing that comes to mind is that the monitor can't handle that resolution. are both the same make/model?
+2008-05-12T21:22:00.000Z	Alex_Gaynor	Jupp	No, one is a 21" Widescreen LCD and the other is a 17" CRT
+2008-05-12T21:24:00.000Z	Jupp	Alex_Gaynor	double check that the monitor can handle the resolution you're trying to give it. that's the only thing I can think of right now
+2008-05-12T21:24:00.000Z	Alex_Gaynor	Jupp	It deffinately can, is there any tool I'm missing for autodetecting the monitor(I remember doing that when I originally set it up under gutsy)?
+2008-05-12T21:26:00.000Z	Jupp	Alex_Gaynor	do you mind pasting your xorg.conf again?
+2008-05-12T21:27:00.000Z	Alex_Gaynor	Jupp	http://dpaste.com/49494/
+2008-05-12T21:30:00.000Z	Jupp	Alex_Gaynor	I might be steering you into the wrong direction (doing everything by hand vs. an autodetect tool), but I would add "Modes" to each monitor (look at my xorg.conf and see how I declared the "modes" that my monitors can handle).

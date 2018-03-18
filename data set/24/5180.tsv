@@ -1,0 +1,24 @@
+2007-03-12T10:07:00.000Z	craigbass1976		I've mounted up a floppy.  Now, when I change disks do I have to unmount/remount it?  Since asking this the first time, I've written a script that unmounts it (if it's mounted at all) the remounts it and made a desktop icon that launches the script.  Is there a better way?
+2007-03-12T10:07:00.000Z	eck	craigbass1976	i would imagine that it is unmounted when you eject the floppy
+2007-03-12T10:07:00.000Z	craigbass1976	eck	no
+2007-03-12T10:08:00.000Z	craigbass1976	eck	ok, I've done it the right way I guess, just wondered if there were a "righter" way
+2007-04-25T07:03:00.000Z	eck	craigbass1976	by default there aren't any netfilter rules loaded
+2007-04-25T07:03:00.000Z	craigbass1976	eck	I want to make sure it's not causing trouble.
+2007-04-25T07:04:00.000Z	eck	craigbass1976	you can check if there are any rules loaded with iptables-save, but there shouldn't be any unless you added them
+2007-04-28T12:34:00.000Z	eck	craigbass1976	he's reading the libata wiki article (which is what I imagine the problem is)
+2007-04-28T12:34:00.000Z	craigbass1976	eck	what do you knwo about grub?
+2007-04-28T12:35:00.000Z	eck	craigbass1976	i don't know? i think a fair amount
+2007-04-28T12:35:00.000Z	craigbass1976	eck	ok.  I have ubuntu on the second drive, and the kernel is on the second partition.  grub numbers funny compared to fstab, and I'm not sure how that entry would look
+2007-04-28T12:36:00.000Z	eck	craigbass1976	probably (hd1,1)
+2007-04-28T12:56:00.000Z	craigbass1976	eck	http://rafb.net/p/6yLwZY21.html.  What do you think?  Do I need to have boot at the end of the centos grub file?
+2007-04-28T12:57:00.000Z	eck	craigbass1976	i think it should be (hd1,1)
+2007-04-28T12:57:00.000Z	craigbass1976	eck	that wasn't working either
+2007-04-28T12:57:00.000Z	craigbass1976	eck	what about the boot part?
+2007-04-28T12:58:00.000Z	eck	craigbass1976	oh, do you have a separate /boot ?
+2007-04-28T12:58:00.000Z	craigbass1976	eck	yes
+2007-04-28T12:58:00.000Z	eck	craigbass1976	remove the /boot from the kernel and initrd lines and change it to root=/dev/hda2
+2007-04-28T13:02:00.000Z	eck	craigbass1976	i think this might work: http://rafb.net/p/PPAogw54.html
+2007-04-28T13:02:00.000Z	eck	craigbass1976	you might just want to mount by UUID though
+2007-04-28T13:03:00.000Z	craigbass1976	eck	 and change the hda1 to hdb1?  Ubuntu is on the second drive now.
+2007-04-28T13:04:00.000Z	craigbass1976	eck	or is it relative, and needs to be hda?
+2007-04-28T13:04:00.000Z	eck	craigbass1976	i'm not sure what the kernel will detect it as, so you have to try both hda and hdb (which is why mounting by UUID is a better idea)

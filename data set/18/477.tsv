@@ -1,0 +1,18 @@
+2012-02-01T12:34:00.000Z	eigar		err. -b
+2012-02-01T12:35:00.000Z	ritz	eigar	sorry, late to the party. which app is this ? which audio card ? are you using pulseaudio ?
+2012-02-01T12:36:00.000Z	eigar	ritz	yes, mpg123, mplayer etc. And using pulseaudio,
+2012-02-01T12:36:00.000Z	ritz	eigar	out of curiosity,  does uninstall pulseaudio help her ? do we see any logs from pa in syslog ?
+2012-02-01T12:38:00.000Z	ritz	eigar	if I understand this correctly, this is an issue with pa
+2012-02-01T12:38:00.000Z	eigar	ritz	yes
+2012-02-01T12:38:00.000Z	ritz	eigar	which audio card are you using ?
+2012-02-01T12:39:00.000Z	eigar	ritz	currently a hdmi thisngy. Have tested with a couple of others to.
+2012-02-01T12:39:00.000Z	ritz	eigar	high cpu load ? did you try http://fedoraproject.org/wiki/How_to_debug_PulseAudio_problems#Playback_problems.2C_crackling_or_skipping ?
+2012-02-01T12:40:00.000Z	ritz	eigar	okay, this is limited to hdmi o/p, and not an issue with internal speaker/jack o/p ?
+2012-02-01T12:43:00.000Z	ritz	eigar	have you tried this http://pulseaudio.org/wiki/CannedResponses ?
+2012-02-01T12:43:00.000Z	ritz	eigar	try running pa under debug mode
+2012-02-01T12:45:00.000Z	eigar	ritz	yes, i have done so. I have alos hacked in the code of pulseqaudio, recompiled and hacked in mplayer code to log what is happening. The problem is partially described above. Pulseaudio philosopy: 1. Open ana audio stream 2. deliver song after song to this stream. Mplayer: 1. Open an audio stream 2. deliver 1 track. 3. close audio stream 4. open new deliver next.
+2012-02-01T12:46:00.000Z	ritz	eigar	interesting. pa does not see the close stream request
+2012-02-01T12:47:00.000Z	eigar	ritz	yes, even after close is sent it keeps checking for data. This kreates the lag/pause/silence between tracks.
+2012-02-01T12:47:00.000Z	ritz	eigar	in your setup, mplayer->pa->alsa ( with pa plugin ) ?
+2012-02-01T12:48:00.000Z	eigar	ritz	ok. I'll check some more. Now I have to send an urgent e-mail. For now. Thanks.
+2012-02-01T12:48:00.000Z	ritz	eigar	:)

@@ -1,0 +1,22 @@
+2010-10-06T01:28:00.000Z	jags		hey, I just put ubuntu studio 10.10 beta on my notebook, how in the world do I connect to my open wireless g network?  Does ubuntu require you run @ least wep or wpa?
+2010-10-06T01:30:00.000Z	el_seano	jags	I had a similar issue in not being able to connect to open networks.  Turned out to be the driver I was using for my Wireless NIC.  Do you know what card you're using?
+2010-10-06T01:31:00.000Z	jags	el_seano	not sure on the card, shouldn't I beable to bring up the wlan0 interface and use iwlist to find an open network?
+2010-10-06T01:32:00.000Z	el_seano	jags	In theory, yes.  But your ability to do so depends on the driver your card is using.
+2010-10-06T01:32:00.000Z	el_seano	jags	Just a sec.
+2010-10-06T01:32:00.000Z	jags		anyone know the command to bring up a network device offhand?
+2010-10-06T01:33:00.000Z	el_seano	jags	type 'lspci | grep Network'
+2010-10-06T01:33:00.000Z	jags	el_seano	Broadcom Corporation BCM4312 802.11b/g LP-PHY (rev 01)
+2010-10-06T01:34:00.000Z	el_seano		ha!  perfect, that's exactly my card.
+2010-10-06T01:34:00.000Z	jags		lol
+2010-10-06T01:34:00.000Z	el_seano		go to system->administration->hardware drivers
+2010-10-06T01:35:00.000Z	el_seano	jags	deactivate the b43 driver and use the STL driver, I think
+2010-10-06T01:35:00.000Z	el_seano	jags	sorry, the STA driver
+2010-10-06T01:36:00.000Z	jags	el_seano	I don't have 'hardware drivers' in ubuntu studio, there is 'additional drivers' but I need a wan connection to use it apparently
+2010-10-06T01:36:00.000Z	el_seano		gah, obnoxious.
+2010-10-06T01:36:00.000Z	el_seano		you'll have to do it from the terminal.
+2010-10-06T01:36:00.000Z	el_seano		first, confirm the b43 driver is being used.
+2010-10-06T01:37:00.000Z	el_seano	jags	type 'lsmod | grep b43' and see if anything comes up.
+2010-10-06T01:37:00.000Z	jags	el_seano	4 lines, b43 being first
+2010-10-06T01:38:00.000Z	el_seano	jags	My laptop battery is running dry so I'm gonna point you to a site with the instructions, just a sec.
+2010-10-06T01:38:00.000Z	jags	el_seano	thank you
+2010-10-06T01:39:00.000Z	el_seano	jags	http://linuxwireless.org/en/users/Drivers/b43

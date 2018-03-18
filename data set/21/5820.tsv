@@ -1,0 +1,21 @@
+2007-11-19T04:03:00.000Z	xdcdx		how can I update the /dev/sda? files after deleting and creating new partitions with fdisk ?
+2007-11-19T04:04:00.000Z	sethk	xdcdx	you don't need to
+2007-11-19T04:04:00.000Z	xdcdx	sethk	why not? I can't see new partitions there
+2007-11-19T04:04:00.000Z	sethk	xdcdx	the device pseudo-files don't care about partition deletion or creation
+2007-11-19T04:04:00.000Z	sethk	xdcdx	not how it works.  What tool are you using to try to see the partitions?
+2007-11-19T04:05:00.000Z	xdcdx	sethk	ls
+2007-11-19T04:05:00.000Z	sethk	xdcdx	try:   sudo fdisk -l /dev/sda
+2007-11-19T04:06:00.000Z	xdcdx	sethk	fdisk -l shows them, but then I cannot mount them with 'mount'
+2007-11-19T04:07:00.000Z	sethk	xdcdx	(1) you need to use sudo with mount (in case you tried without sudo), and, (2) either you enter all the parameters correctly on the mount command line, or the correct parameters must be in /etc/fstab
+2007-11-19T04:11:00.000Z	xdcdx	sethk	fdisk -l /dev/sda shows '... /dev/sda8 2435 2435 8001 83 Linux'. But neither mkfs.ext3 nor mount can access /dev/sda8. mke2fs says: 'Could not stat /dev/sda8 -- No such file or directory'. I am running everything as root, and I can mount and umount other partitions.
+2007-11-19T04:12:00.000Z	sethk	xdcdx	do you get the same error message when you try to mount?
+2007-11-19T04:12:00.000Z	sethk	xdcdx	wait, if you can't make the file system, you can't mount it  :)
+2007-11-19T04:13:00.000Z	sethk	xdcdx	which program did you use to create the partition?
+2007-11-19T04:13:00.000Z	xdcdx	sethk	cfdisk
+2007-11-19T04:15:00.000Z	sethk	xdcdx	I'm groping here, but you might try deleting it and recreating it with fdisk instead of cfdisk.  That's not particularly logical but I've seen it work a few times.
+2007-11-19T04:16:00.000Z	xdcdx	sethk	I found the problem: Re-reading the partition table by the kernel fails, it is instructing me to reboot
+2007-11-19T04:17:00.000Z	sethk	xdcdx	rebooting won't fix it
+2007-11-19T04:17:00.000Z	sethk	xdcdx	try fdisk or sfdisk
+2007-11-19T04:19:00.000Z	xdcdx	sethk	I found the solution, running 'partprobe' after cfdisk did the trick
+2007-11-19T04:19:00.000Z	sethk	xdcdx	ok, weird though.  :)
+2007-11-19T04:20:00.000Z	xdcdx	sethk	the kernel couldn't reload the partition table it said 'resource busy'. I found this error message using fdisk, rather than cfdisk. partprobe (from the 'parted' package) allowed the reread

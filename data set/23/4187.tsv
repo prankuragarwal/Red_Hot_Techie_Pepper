@@ -1,0 +1,23 @@
+2007-10-18T01:11:00.000Z	frijolie		hey all
+2007-10-18T01:11:00.000Z	frijolie		i'm trying to format an external USB HDD and having trouble
+2007-10-18T01:12:00.000Z	frijolie		if i want to share it between Gutsy and a Windows box what's the best filesystem? NTFS, ext3?
+2007-10-18T01:14:00.000Z	frijolie		what's the best filesystem to share between windows and linux? nTFS or ext3?
+2007-10-18T01:14:00.000Z	ColonelPanic45	frijolie	FAT32 is, AFAIK, the only 'universal' filesystem right now
+2007-10-18T01:14:00.000Z	ColonelPanic45	frijolie	most modern linux distros can read/write ntfs..
+2007-10-18T01:15:00.000Z	ColonelPanic45	frijolie	I format all of my external drives as FAT32 so I can access them under win, mac, linux
+2007-10-18T01:16:00.000Z	frijolie	ColonelPanic45	FAT32, didn't think about that
+2007-10-18T01:16:00.000Z	ColonelPanic45	frijolie	however long filepaths will crap on you, and windows doesn't like creating large partions (over 32GB), but linux will.
+2007-10-18T01:17:00.000Z	ColonelPanic45	frijolie	oh, 8+ is fine, I think that the limit might be like 128chars in the path (or something)
+2007-10-18T01:18:00.000Z	frijolie	ColonelPanic45	ah..so go with FAT32? does it matter which OS does the formatting?
+2007-10-18T01:18:00.000Z	ColonelPanic45	frijolie	http://en.wikipedia.org/wiki/Fat32#Long_file_names
+2007-10-18T01:18:00.000Z	ColonelPanic45	frijolie	looks like 255 chars max in the filename
+2007-10-18T01:19:00.000Z	ColonelPanic45	frijolie	fdisk will work;  try GParted if you're running a modern distro
+2007-10-18T01:22:00.000Z	ColonelPanic45	frijolie	if you're formatting an external usb drive (say), just plug it in, fire up GParted, and partition just that one drive.  Double-check to make sure you're formatting the _external_ drive :-)
+2007-10-18T01:23:00.000Z	frijolie	ColonelPanic45	how do you know which is the external drive? hda, hdb, sda, sdb. Isn't that what Linux calls them?
+2007-10-18T01:25:00.000Z	ColonelPanic45	frijolie	I usually look at the size of the drives as well as the existing partitions to determine which one is the external and which is external
+2007-10-18T01:25:00.000Z	frijolie	ColonelPanic45	yeah, that may work. My external drive is 320GB. Should I do it as all one large partition?
+2007-10-18T01:27:00.000Z	ColonelPanic45	frijolie	the max partition size is 8TiB (much bigger than 320GB)
+2007-10-18T01:38:00.000Z	frijolie	ColonelPanic45	Just erased and reformatted HDD to FAT32. However, It partitioned it as 298GB instead of 320GB
+2007-10-18T01:39:00.000Z	ColonelPanic45	frijolie	that's probably a Gibibyte/ Gigabyte difference
+2007-10-18T01:40:00.000Z	frijolie	ColonelPanic45	but a 20GB difference?
+2007-10-18T01:43:00.000Z	ColonelPanic45	frijolie	298 * 1024 *1024*1024 = 319,975,063,552

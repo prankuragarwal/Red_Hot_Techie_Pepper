@@ -1,0 +1,21 @@
+2011-01-13T17:40:00.000Z	oolon		Hey, I'm having a weird problem with my sound.  My sound works with headphones plugged in, but i can't get it to work through my laptop speakers.  Can anyone help?
+2011-01-13T17:40:00.000Z	ignus	oolon	do you have intel audio?
+2011-01-13T17:41:00.000Z	oolon	ignus	yes i think i do
+2011-01-13T17:41:00.000Z	oolon		00:1b.0 Audio device: Intel Corporation 5 Series/3400 Series Chipset High Definition Audio (rev 06)
+2011-01-13T17:42:00.000Z	ignus		I've got the same problem with both 10.04 and 10.10. And what laptop type?
+2011-01-13T17:43:00.000Z	oolon	ignus	it's an asus g53jw
+2011-01-13T17:45:00.000Z	ignus		The following partially fixed my problem, but still sometimes I don't have sound.
+2011-01-13T17:46:00.000Z	ignus		sudo gedit /etc/modprobe.d/alsa-base.conf
+2011-01-13T17:46:00.000Z	ignus		and at the bottom:
+2011-01-13T17:47:00.000Z	ignus		addthis line: options snd-intel8x0 model=laptop
+2011-01-13T17:47:00.000Z	ignus		and this: options snd-intel8x0 position_fix=1 enable=yes
+2011-01-13T17:48:00.000Z	ignus		ok sorry. so then gksudo or gksu
+2011-01-13T17:49:00.000Z	oolon	ignus	do i have to restart after that?
+2011-01-13T17:49:00.000Z	ignus		yes, but its possible a logout-login will do it. I restarted
+2011-01-13T17:50:00.000Z	oolon	ignus	all right, i'll give it a try. Thank you.
+2011-01-13T17:50:00.000Z	ignus		Hope it will help :)
+2011-01-13T17:55:00.000Z	oolon	ignus	no luck :(
+2011-01-13T17:57:00.000Z	ignus	oolon	ok then theres a lot more option you can try adding to the bottom, just have to search for the forum I found it myself...
+2011-01-13T18:00:00.000Z	ignus	oolon	It doesn't work for me too properly still, but if I don't have sound at startup, I suspend my laptop and after waking it up I have sound
+2011-01-13T18:04:00.000Z	oolon	ignus	gonna try playing with the model options some more. If I find something that fixes it, I'll let you know.
+2011-01-13T18:06:00.000Z	ignus	oolon	yes the model options, I know I didn't found an option for my msi laptop :(

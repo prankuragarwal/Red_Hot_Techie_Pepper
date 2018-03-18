@@ -1,0 +1,19 @@
+2009-04-27T22:49:00.000Z	pepperjack	xirov	you could blacklist the module and then use ndiswrapper if you wished instead. blacklist will prevent it from being loaded at startup
+2009-04-27T22:50:00.000Z	xirov	pepperjack	Thanks.. but how do i know what module it is? Isn't it the name of the driver or something?
+2009-04-27T22:52:00.000Z	pepperjack	xirov	easiest way may be to do a lsmod and compare the chipset/drivers about halfway down page https://help.ubuntu.com/community/WifiDocs/WirelessCardsSupported
+2009-04-27T22:53:00.000Z	pepperjack	xirov	note that by 'easy' i do not mean 'convenient' :)
+2009-04-27T22:54:00.000Z	xirov	pepperjack	okay :) Thanks a lot! A last question.. the blacklist i named blacklist.conf, right? because there is more files named something with 'blacklist' in the folder
+2009-04-27T22:55:00.000Z	pepperjack	xirov	should be /etc/modprobe.d/blacklist  file may have a .conf in certain versions
+2009-04-27T22:56:00.000Z	xirov	pepperjack	okay.. :) how do i find out what the name of my wireless card is?
+2009-04-27T22:57:00.000Z	pepperjack	xirov	lspci -v will list all devices youll need to scroll through em to find your wireless card
+2009-04-27T22:57:00.000Z	xirov	pepperjack	oh.. you wanted me to compare to find out.. i see :)
+2009-04-27T22:59:00.000Z	xirov	pepperjack	oh well.. i guess i didn't understand after all..
+2009-04-27T23:02:00.000Z	xirov	pepperjack	or maybe i did.. let me use my brain a bit :) Thanks a lot
+2009-04-27T23:08:00.000Z	xirov	pepperjack	i don't think i understand dude... but i got somekind of idea that the "module" is ath5k .. is that possible? it was just a thought, since my wireless card is a Atheros .
+2009-04-27T23:10:00.000Z	pepperjack	xirov	yeah if you see ath5k that is it
+2009-04-27T23:11:00.000Z	xirov	pepperjack	so i should just blacklist that one, restart, and install ndiswrapper?
+2009-04-27T23:12:00.000Z	pepperjack	xirov	basically.  you dont need to reboot though just sudo rmmod <module>
+2009-04-27T23:12:00.000Z	xirov	pepperjack	so i shouldn't blacklist it? just rmmod?
+2009-04-27T23:14:00.000Z	pepperjack	xirov	blacklist to make it stick but until you reboot you can just rmmod
+2009-04-27T23:15:00.000Z	xirov	pepperjack	kk :) thanks again
+2009-04-27T23:31:00.000Z	xirov	pepperjack	This is really weird.. i did it.. and i'm using ndiswrapper now.. but for some reason i still can't see any available wireless networks.. (And yes, I'm 1000% sure that there is wireless networks available)

@@ -1,0 +1,22 @@
+2010-08-05T13:54:00.000Z	NightKhaos	PythonPup	*sigh* Same old agruement. The security model in Vista and above does not "encourage" users, in fact it's the best it's ever been. The majority of virues on Windows are now PEBKAC type errors, i.e. phishing and trojans.
+2010-08-05T13:56:00.000Z	PythonPup	NightKhaos	I was being a little metaphorical.  Saying Vista is the most secure Windows is not a very high standard.  They still include IE, so they are not serious about security.
+2010-08-05T13:57:00.000Z	NightKhaos	PythonPup	I'll grant you that, however IEs security model is improving.
+2010-08-05T13:58:00.000Z	NightKhaos	PythonPup	still got more holes in it than swish cheese, but IE8 can throw punches in terms of security with Firefox. However, there are other reasons (rendering) that mean I discourage the use of IE anyways. It could be the most perfectly secured, sandbooked browser out there, however if they don't fix their rendering engine... meh.
+2010-08-05T13:58:00.000Z	NightKhaos	PythonPup	however, Offtopic... aliases, any ideas?
+2010-08-05T13:59:00.000Z	PythonPup	NightKhaos	I am sorry.  I missed the first part about aliases.  I am in favor of them, but that is not your problem, I bet.
+2010-08-05T14:01:00.000Z	PythonPup	NightKhaos	So, could you repeat the original question?
+2010-08-05T14:02:00.000Z	NightKhaos	PythonPup	multiple alasies... I have two precompiled twochains on different machines, one of which I don't have admin access too so I can't update the toolchain. On one they are called arm-none-eabi-, however on the other they are called arm-elf-. I don't want to have to create a whole lot of symlinks in /usr/local/bin if I can avoid it, but I want to make sure that when I execute arm-elf-gcc it points to arm-none-eabi-
+2010-08-05T14:02:00.000Z	NightKhaos	PythonPup	sed s/twochains/toolchains/ ... some typo.
+2010-08-05T14:06:00.000Z	PythonPup	NightKhaos	The only thing I would suggest is to write a script to create the symlinks for you.  Then, it is not much effort to keep it up to date.  Have the script inspect the  arm-none-eabi list to be sure it creates all the needed symlinks.
+2010-08-05T14:08:00.000Z	NightKhaos	PythonPup	for bin in /usr/local/arm/bin/arm-none-eabi*i; do ln -s $bin /usr/local/bin/${bin:-none-eabi-=-elf-}; done ?
+2010-08-05T14:10:00.000Z	PythonPup	NightKhaos	Something like that.  I don't know your need or how the list changes to know if you need to remove the existing symlinks first.  Are items likely to disappear from the list?
+2010-08-05T14:10:00.000Z	NightKhaos	PythonPup	fairly unlikely to change. I'll know if/when I upgrade the toolkit, so I can redo the links and delete the broken symlinks.
+2010-08-05T14:41:00.000Z	NightKhaos	PythonPup	lrwxrwxrwx 1 root root     36 2010-08-05 19:36 arm-elf-gcc -> /usr/local/arm/bin/arm-none-eabi-gcc ... got it work via for file in /usr/local/arm/bin/*; do sudo ln -s $file /usr/local/bin/arm-elf-${file#/usr/local/arm/bin/arm-none-eabi-}; done
+2010-08-05T14:42:00.000Z	NightKhaos	PythonPup	took me a while to find # operator. :(
+2010-08-05T14:42:00.000Z	PythonPup	NightKhaos	If I understood that right, then good.
+2010-08-05T14:42:00.000Z	PythonPup	NightKhaos	I usually write Python scripts, not bash scripts, so I did not notice the error.
+2010-08-05T14:43:00.000Z	NightKhaos	PythonPup	figures, with the name and all.
+2010-08-05T14:43:00.000Z	PythonPup	NightKhaos	That is a pretty good clue.  I was putting together a spin of Puppy Linux with Python added.  Thence, this nickname.
+2010-08-05T14:47:00.000Z	NightKhaos	PythonPup	hehe, I'm getting quite good at doing inline for loops. It freaks a couple of people out cause they tend to be like "wtf did you just do?"... to quote a friend of mine "my shell foo is strong"
+2010-08-05T14:47:00.000Z	PythonPup	NightKhaos	That is a handy skill.
+2010-08-05T14:49:00.000Z	NightKhaos	PythonPup	my freakest one to date was: for file in *.s; do mv $file ${file}.old; sed s/';'/@/ ${file.old} > $file; done

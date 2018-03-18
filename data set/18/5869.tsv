@@ -1,0 +1,18 @@
+2009-04-06T17:17:00.000Z	milligan_		How can I check what compileoptions a repoinstalled packaged had ?
+2009-04-06T17:17:00.000Z	jrib	milligan_	read debian/rules
+2009-04-06T17:23:00.000Z	milligan_	jrib	I have the source .. but how does that help me determine what compileoptions the package I currently have installed had ?
+2009-04-06T17:23:00.000Z	jrib	milligan_	read debian/rules
+2009-04-06T17:27:00.000Z	milligan_	jrib	I don't understand.
+2009-04-06T17:27:00.000Z	jrib	milligan_	you have a directory with files in it after running « apt-get source PACKAGE » right?
+2009-04-06T17:28:00.000Z	milligan_	jrib	correct
+2009-04-06T17:29:00.000Z	jrib	milligan_	inside you have a directory called "debian".  Inside that you have a file called "rules".  If you read the contents of that file, you will know how it is compiled
+2009-04-06T17:30:00.000Z	jrib	milligan_	:)
+2009-04-06T17:30:00.000Z	milligan_	jrib	so, basicly, I can add any compile option to that rules file, do a ./configure, make && make install, and I'll have an equal install, only with the extra setting enabled ?
+2009-04-06T17:31:00.000Z	jrib	milligan_	nope, you want to build the package the debian way
+2009-04-06T17:32:00.000Z	jrib	milligan_	but if you read the earlier link about grabbing the source, it tells you the command to run to rebuild the package
+2009-04-06T17:33:00.000Z	jrib	milligan_	erm, you also want to make sure you increment the version and append something like ~milligan to the end of the version string.  That way apt doesn't keep bugging you about upgrading the package
+2009-04-06T17:34:00.000Z	milligan_	jrib	thanks mate. Lots of nice info :)
+2009-04-06T17:34:00.000Z	jrib	milligan_	« dch -i » to increment version
+2009-04-06T17:35:00.000Z	milligan_	jrib	I suppose I'm better of making some sort of workaround for my problem, since upgrading packages is going to be hell if I change them.
+2009-04-06T17:35:00.000Z	milligan_	jrib	or point a gun at a dev member to fix the package so it can support all options.
+2009-04-06T17:36:00.000Z	jrib	milligan_	well once you do it one time, it shouldn't be too bad.  The package isn't going to get updated every week

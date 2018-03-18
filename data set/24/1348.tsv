@@ -1,0 +1,24 @@
+2010-06-04T09:29:00.000Z	codebrainz	jdeloach	what do want to do?  just skip fsck on boot?
+2010-06-04T09:29:00.000Z	jdeloach	codebrainz	Anything to just get to regular operation would be great. If that's whats needs to be done that would be good
+2010-06-04T09:32:00.000Z	jdeloach	codebrainz	I am not sure if I have GRUB on my server box. It doesn't show up... like it does on my main desktop.
+2010-06-04T09:32:00.000Z	codebrainz	jdeloach	maybe you're using the hiddenmenu option in grub, you should be able to press Esc to access the grub menu
+2010-06-04T09:34:00.000Z	jdeloach	codebrainz	By some miracle I got to root shell, how do I roll back last updates?
+2010-06-04T09:34:00.000Z	codebrainz	jdeloach	not sure, but I bet google or someone here does
+2010-06-04T09:35:00.000Z	codebrainz	jdeloach	i think it's more a matter of finding the offending package and removing it rather than a "rollback" per se
+2010-06-04T09:36:00.000Z	jdeloach	codebrainz	theadmin: how would i find the package causing the problem?
+2010-06-04T09:36:00.000Z	codebrainz	jdeloach	check the logs i guess
+2010-06-04T09:37:00.000Z	codebrainz	jdeloach	does fsck fail or just take a long time
+2010-06-04T09:37:00.000Z	jdeloach	codebrainz	fail I would assume, unless it takes more than 30 or so minutes.
+2010-06-04T09:37:00.000Z	jdeloach	codebrainz	it gives a LOT of errors.
+2010-06-04T09:38:00.000Z	codebrainz	jdeloach	it could take quite a while if it's a huge drive with lots of errors.
+2010-06-04T09:38:00.000Z	jdeloach	codebrainz	The mount was a 250 gb it was small.
+2010-06-04T09:39:00.000Z	jdeloach	codebrainz	theadmin: hitting ESC during the failed fsck gets me out of there, into a semi-gui environment where I can drop to root shell. Can you normall esc out of fsck?
+2010-06-04T09:40:00.000Z	codebrainz	jdeloach	what is the filesystem type on that drive?
+2010-06-04T09:40:00.000Z	jdeloach	codebrainz	Network is NTFS.
+2010-06-04T09:40:00.000Z	codebrainz	jdeloach	network?
+2010-06-04T09:41:00.000Z	jdeloach	codebrainz	My server isn't even hooked up to the network right now, but it had the error even when it was connected.
+2010-06-04T09:41:00.000Z	codebrainz	jdeloach	if it's doing a fsck on a network mount, you probably have the last field for that mount in /etc/fstab with something other than 0
+2010-06-04T09:42:00.000Z	jdeloach	codebrainz	I'll try to get back to fstab and look
+2010-06-04T09:43:00.000Z	jdeloach	codebrainz	before even fsck loads, there is an error with "no command terminal" or something
+2010-06-04T09:44:00.000Z	codebrainz	jdeloach	that sounds like something entirely different
+2010-06-04T09:45:00.000Z	jdeloach	codebrainz	Okay, I removed the network share from my fstab, server booted with that error, but eventually got to regular stuff.

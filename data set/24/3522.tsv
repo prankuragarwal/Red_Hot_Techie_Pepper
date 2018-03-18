@@ -1,0 +1,24 @@
+2008-01-10T09:58:00.000Z	noonan		hiya, anyone have time for a mystery keyboard question?
+2008-01-10T09:59:00.000Z	noonan		ok, it's after I installed nvidia driver that my alt+tab and alt+F1 and who knows what others stopped working
+2008-01-10T10:00:00.000Z	noonan		well, it's odd, they're grayed out, even when I select 'default' (using xubuntu)
+2008-01-10T10:01:00.000Z	noonan		yeah, but i had to reconfigure xorg because i chose the wrong driver and it asked a bunch of keyboard questions
+2008-01-10T10:02:00.000Z	noonan		oh, i suppose, :\
+2008-01-10T10:02:00.000Z	nickrud	noonan	you can get back to a default config with sudo dpkg-reconfigure -pcritical xserver-xorg , it'll make a backup and you can compare
+2008-01-10T10:03:00.000Z	nickrud	noonan	no, just replace nv with nvidia in xorg.conf . Compare the files to see the driver config
+2008-01-10T10:04:00.000Z	nickrud	noonan	you won't need to worry about the actual nvidia driver installation until you get a new kernel
+2008-01-10T10:05:00.000Z	nickrud	noonan	if you have any fears, just   cp /etc/X11/xorg.conf ~/Desktop , you'll have your original xorg.conf safely on your desktop
+2008-01-10T10:10:00.000Z	noonan	nickrud	ok, thanks
+2008-01-10T10:13:00.000Z	noonan	nickrud	both files say the same thing
+2008-01-10T10:18:00.000Z	noonan	nickrud	xorg.conf and xorg.conf made with that -pcritical -xserver-xorg command are exactly the same
+2008-01-10T10:18:00.000Z	nickrud	noonan	then X is not the problem
+2008-01-10T10:20:00.000Z	noonan	nickrud	what else could it be dya think? i've stumped google
+2008-01-10T10:21:00.000Z	nickrud	noonan	what window manager are you using?
+2008-01-10T10:21:00.000Z	noonan	nickrud	xfce? i'm a newb
+2008-01-10T10:22:00.000Z	nickrud	noonan	ah, I don't know xfce at all.  You might try asking about it on #xubuntu
+2008-01-10T10:22:00.000Z	noonan	nickrud	hey thanks
+2008-01-10T10:33:00.000Z	noonan	nickrud	did you say that my driver wouldn't make a difference until something about the kernal?
+2008-01-10T10:34:00.000Z	noonan	nickrud	er, the nvidia one?
+2008-01-10T10:34:00.000Z	nickrud	noonan	if you used the nvidia driver from their site (I was assuming that) you only made kernel modules for the running kernel. When you upgrade to a new kernel, you will have to build the modules again
+2008-01-10T10:35:00.000Z	noonan	nickrud	ok, but if I did it through synaptic, then same?
+2008-01-10T10:36:00.000Z	nickrud	noonan	no, then you can ignore me, you'll get new drivers with the new kernel from ubuntu
+2008-01-10T10:38:00.000Z	noonan	nickrud	ah, gracias

@@ -1,0 +1,18 @@
+2011-08-22T13:34:00.000Z	MrNthDegree		you need to do the following:
+2011-08-22T13:35:00.000Z	MrNthDegree		drop to a command line
+2011-08-22T13:35:00.000Z	MrNthDegree		you need to delete all of /tmp, including the directory itself as root
+2011-08-22T13:35:00.000Z	MrNthDegree		(to become root do: sudo -i)
+2011-08-22T13:35:00.000Z	MrNthDegree		to delete /tmp and all it's contents do: rm -r /tmp
+2011-08-22T13:36:00.000Z	MrNthDegree		be *very* careful when using this command and ensure you have not typoed before running it
+2011-08-22T13:36:00.000Z	MrNthDegree		mkdir /tmp && chown root:root /tmp && chmod 1777 /tmp
+2011-08-22T13:37:00.000Z	kwtm	MrNthDegree	Why does he need to delete all of /tmp first?
+2011-08-22T13:37:00.000Z	MrNthDegree	kwtm	because there are hidden files which can interfere with write processes
+2011-08-22T13:38:00.000Z	kwtm	MrNthDegree	?? Not sure what that means.  What are the negative consequences of doing   sudo chown --recursive root:root /tmp   ?  What write processes would be interfered with?
+2011-08-22T13:38:00.000Z	MrNthDegree	kwtm	how about every pipe related to the GUI apps the user is running?
+2011-08-22T13:38:00.000Z	MrNthDegree	kwtm	and when the user reboots they may not be able to even login that way
+2011-08-22T13:40:00.000Z	kwtm	MrNthDegree	Still not sure how pipe would be affected, especially if it's made all writeable first before chowning, but what do I know, I'm just a noob.  Anyway, sounds like problem's been found.
+2011-08-22T13:41:00.000Z	MrNthDegree	kwtm	orbit-<username> is a good example
+2011-08-22T13:41:00.000Z	MrNthDegree	kwtm	that directory contains pipes which GNOME apps use a lot
+2011-08-22T13:42:00.000Z	MrNthDegree	kwtm	the directory is only accessible by the one user (the owner)
+2011-08-22T13:42:00.000Z	MrNthDegree	kwtm	if that gets changed to root ownership, things are almost guaranteed to start breaking
+2011-08-22T13:43:00.000Z	kwtm	MrNthDegree	Okay, I will take your word on that.  I don't use GNOME -- it sounds like it breaks pretty easily.  Anyway, carry on, then.

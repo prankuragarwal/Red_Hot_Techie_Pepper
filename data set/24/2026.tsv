@@ -1,0 +1,24 @@
+2009-05-13T22:11:00.000Z	calwig		hello I have a strange loading failure on 8.04
+2009-05-13T22:11:00.000Z	calwig		it seems "Failure to load HAL" shows up
+2009-05-13T22:12:00.000Z	calwig		and upon booting, the mDNS seems to fail
+2009-05-13T22:12:00.000Z	mhall119|work	calwig	sounds like it sees your network card, but failed trying to load the driver for it
+2009-05-13T22:12:00.000Z	calwig	mhall119|work	heh? my  network card, are all HAL errors directed to network cards?
+2009-05-13T22:12:00.000Z	mhall119|work	calwig	no, not all
+2009-05-13T22:13:00.000Z	calwig	mhall119|work	ok i havent even mentioned my network card, so how did you get to this specific assumption :)
+2009-05-13T22:13:00.000Z	calwig	mhall119|work	where can i see the boot log? i cant find it anywhere its not in the /var/logs
+2009-05-13T22:13:00.000Z	mhall119|work	calwig	sorry, was confusing you with someone talking about ifconfig and iwconfig
+2009-05-13T22:14:00.000Z	calwig	mhall119|work	noticed
+2009-05-13T22:14:00.000Z	mhall119|work	calwig	where are you seeing the HAL error message?
+2009-05-13T22:14:00.000Z	calwig	mhall119|work	well its a long story, its upon logging in, on the left top side
+2009-05-13T22:15:00.000Z	mhall119|work	calwig	did you check dmesg?
+2009-05-13T22:16:00.000Z	calwig	mhall119|work	yesterday i got an error on the system because it froze and just rebooted, but prior to doing that, i clicked off dbus from the services, so the next session didnt start properly, so i assumed it was because of that. so i turned it back on and then restarted gdm and it all worked fine. but now... upon normal cold boot, i get that error as if one or two services are not starting properly. I havent checked dmesg let me check
+2009-05-13T22:17:00.000Z	mhall119|work	calwig	yeah, you kind of need dbus running for desktop sessions
+2009-05-13T22:18:00.000Z	calwig	mhall119|work	well the thing is dbus starts, but fails, because when i go into the desktop HAL shows failed. However, when i go into services, dbus is on
+2009-05-13T22:19:00.000Z	mhall119|work	calwig	do you see a dbus process running?  The services dialog just tells you if it is going to start when the session starts, not if it's currently running
+2009-05-13T22:20:00.000Z	calwig	mhall119|work	well now everything is running, but i have to intercept the system upon bootup to finish booting up properly, here let me explain
+2009-05-13T22:22:00.000Z	calwig	mhall119|work	system loads, and i see dbus failing (not mDNS sorry) then gdm starts and I log in, once i hit desktop i see Failure to load HAL. So then i stop gdm, stop dbus, start dbus (starts successfully, OKs in all) then start gdm and the session begins again. I log into the desktop and HAL doesnt fail, all devices and controls are there. So I dont get it
+2009-05-13T22:22:00.000Z	mhall119|work	calwig	that is strange, I'm not sure why dbus would fail during the first login, but succeed when manually started
+2009-05-13T22:23:00.000Z	calwig	mhall119|work	exactly
+2009-05-13T22:23:00.000Z	calwig	mhall119|work	do you thnk dpkg-reconfigure dbus would fix it?
+2009-05-13T22:23:00.000Z	mhall119|work	calwig	at this point, I have no idea.  But it's unlikely to hurt
+2009-05-13T22:24:00.000Z	calwig	mhall119|work	ok, ill check that, i also checked dmesg and i see stuff, but it isnt the loading segments from bootup. or is it? I see no [OK] sections with the specific service or application

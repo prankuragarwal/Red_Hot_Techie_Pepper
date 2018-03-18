@@ -1,0 +1,22 @@
+2011-07-28T06:37:00.000Z	joshlegs		it says "DHCPDISCOVER on eth0 to 255.255.255.255 on port 67 interval (random numbers)
+2011-07-28T06:39:00.000Z	dli	joshlegs	if you don't get IP, you can not ping
+2011-07-28T06:41:00.000Z	dli	joshlegs	if your NIC/router's port has signal lights, try to verify the connection is fine
+2011-07-28T06:42:00.000Z	dli	joshlegs	do you see change in lights, if you disconnection/reconnect
+2011-07-28T06:44:00.000Z	joshlegs	dli	i dont see nic card light, just the light at the end of the cable (in the see through portion of the connector, the clear plastic) that lights up
+2011-07-28T06:45:00.000Z	dli	joshlegs	if you connect/disconnect, any change in flashing/lights?
+2011-07-28T06:46:00.000Z	joshlegs	dli	no. i only have one light on my router, and it stays green. no lights flashing on the back of my box
+2011-07-28T06:46:00.000Z	dli	joshlegs	unplug the cable, what do you see?
+2011-07-28T06:48:00.000Z	joshlegs	dli	i unplug it, then plug it back in. always after replugging it, the green light (actually right NEXT to the ethernet cable on the back of my tower) flashes for a second
+2011-07-28T06:49:00.000Z	dli	joshlegs	so, you can not figure out whether cable is plugged in based on the lights only :(
+2011-07-28T06:49:00.000Z	joshlegs	dli	was that a question?
+2011-07-28T06:51:00.000Z	dli	joshlegs	if you can not, it might be a cable/socket problem, not software/configure
+2011-07-28T06:52:00.000Z	dli	joshlegs	so, you can be sure the cable connection is fine, right?
+2011-07-28T06:53:00.000Z	joshlegs	dli	yeah the cable is fine.
+2011-07-28T06:54:00.000Z	dli	joshlegs	now, verify linux sees the connection, if your NIC is eth0: sudo ip link show eth0
+2011-07-28T06:58:00.000Z	dli	joshlegs	try static IP, since you know the subnet
+2011-07-28T06:58:00.000Z	dli	joshlegs	include the MAC in router's static IP list
+2011-07-28T06:59:00.000Z	dli	joshlegs	most router DHCP supports static IP for known MACs
+2011-07-28T06:59:00.000Z	joshlegs	dli	i dont know how to set all that
+2011-07-28T06:59:00.000Z	dli	joshlegs	for example, if your router IP is 192.168.2.1/24, set your local IP 192.168.2.31/24
+2011-07-28T07:02:00.000Z	dli	joshlegs	you can use /etc/network/interfaces to set static IPs
+2011-07-28T07:48:00.000Z	dli	joshlegs	the easiest to test the card is to try on another computer

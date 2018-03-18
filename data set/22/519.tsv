@@ -1,0 +1,22 @@
+2011-10-15T07:14:00.000Z	__machine		how do i configure a new service to start at boot and stop at shutdown etc? this is sickbeard, couchpotato, tvheadend etc… they come with an init script that i copied to /etc/init.d and that works manually but it doesnt start on boot
+2011-10-15T07:15:00.000Z	__machine		caseymcg:
+2011-10-15T07:15:00.000Z	arghx	__machine	I dunno about upstart, but you can put symlinks for them into /etc/rc2.d/ to start and /etc/rc6.d/ to stop them
+2011-10-15T07:16:00.000Z	__machine	arghx	is there a helper tool to create the relevant rc?.d symlinks etc?
+2011-10-15T07:17:00.000Z	arghx	__machine	rcconf and update-rc.d mainly. check if you can install rcconf
+2011-10-15T07:17:00.000Z	__machine	arghx	looking at another service that was installed from a package (sabnzbd) it has symlinks in rc0.d, rc1.d and rc6.d
+2011-10-15T08:40:00.000Z	arghx	__machine	and enabled it at what point in the boot process? e.g. in the linkname "S??tvheadend" what number is "??" ?
+2011-10-15T08:42:00.000Z	__machine	arghx	20 for both dvbhdhomerun-utils and tvheadend
+2011-10-15T08:42:00.000Z	arghx	__machine	and the one you want to start later needs a higher number than the other
+2011-10-15T08:43:00.000Z	__machine	arghx	what update-rc.d command do i use for that? is it wrong to use update-rc.d servicename defaults to auto start services like this?
+2011-10-15T08:45:00.000Z	arghx	__machine	man update-rc.d  see the line "update-rc.d [-n] name defaults [NN | SS KK]"  it should be self explanatory what to use there
+2011-10-15T08:46:00.000Z	__machine	arghx	thanks
+2011-10-15T08:57:00.000Z	__machine	arghx	i changed dvbhdhomerun to start at 10, sickbeard and couchpotato at 20, and tvheadend at 30… but dvbhdhomerun is still not ready by the time tvheadend starts? are the services started sequentially?
+2011-10-15T08:57:00.000Z	arghx	__machine	that's a bad idea
+2011-10-15T08:58:00.000Z	__machine	arghx	whats a bad idea?
+2011-10-15T08:58:00.000Z	arghx	__machine	starting anything at 10
+2011-10-15T08:59:00.000Z	__machine	arghx	why? sabnzbd starts at K02 which is setup by the package installer… and the others that i setup are K10 K20 K30 … vmware tools is K38 … ?
+2011-10-15T08:59:00.000Z	arghx	__machine	K02 doesn't start anything, it "K" stops things
+2011-10-15T09:00:00.000Z	__machine	arghx	sorry i must have been looking in the wrong runlevel folder
+2011-10-15T09:01:00.000Z	arghx	__machine	personally I would use S40 S41 S42... if I were you. but your choice
+2011-10-15T09:01:00.000Z	__machine	arghx	i will change it… but still… hdhomerun doesnt seem to be ready by the time that tvheadend starts?
+2011-10-15T09:02:00.000Z	arghx	__machine	normally it is started sequentially. if it doesn't work like you want, I suggest you write some upstart jobs for it

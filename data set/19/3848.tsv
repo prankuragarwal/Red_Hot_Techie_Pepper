@@ -1,0 +1,19 @@
+2009-05-17T02:00:00.000Z	grkgeek		Is it viable to block all incoming connections in iptables ?
+2009-05-17T02:00:00.000Z	ewsubach	grkgeek	no, but you can have it only accept ESTABLISHED connections
+2009-05-17T02:02:00.000Z	grkgeek	ewsubach	how would i go about doing that, the only programs i use are msn, skype, update, browsers
+2009-05-17T02:03:00.000Z	ewsubach	grkgeek	honestly I am still learning about it. type "man iptables" in a terminal to learn about it. or find someone else more knowledgeable.
+2009-05-17T02:04:00.000Z	grkgeek	ewsubach	no problem m8, thanx for the information
+2009-05-17T02:04:00.000Z	ewsubach	grkgeek	alternatively, try installing gufw. it is a GUI frontend to ufw, which deals with iptables
+2009-05-17T02:05:00.000Z	grkgeek	ewsubach	already using firestarter seems similar
+2009-05-17T02:06:00.000Z	ewsubach	grkgeek	cool, that one is good as well. unless you use ssh or apache server...some service to remotely access files, I wouldn't worry too much about airtight security
+2009-05-17T02:08:00.000Z	grkgeek	ewsubach	nah not using ssh or apache, only trying to get rid of pesky port scanning traffic from local ethernet
+2009-05-17T02:09:00.000Z	ewsubach	grkgeek	yeah, I know what you mean. everyone gets it. you can learn a few simple commands about iptables and drop all packets from certain range of ips
+2009-05-17T02:09:00.000Z	ewsubach	grkgeek	the site I am using to learn right now is really in depth, but you can skip to the section you need: http://iptables-tutorial.frozentux.net/iptables-tutorial.html
+2009-05-17T02:11:00.000Z	grkgeek	ewsubach	thank you m8, tried : ' ALL:10.3.*.*' in iptables not quite sure if its effective will have a look at the site you mentioned
+2009-05-17T02:12:00.000Z	ewsubach	grkgeek	yeah give it a quick look through. just be aware that it resets when you shut down, so you have to write a script to restore settings at start up. good luck!
+2009-05-17T02:13:00.000Z	grkgeek	ewsubach	ouch that means im walking in unchartered territories was hoping it was a one off change
+2009-05-17T02:14:00.000Z	ewsubach	grkgeek	you mean startup script? it's easy...first of all iptables has a command like iptables-save and iptables-restore. its just up to the user to run that command
+2009-05-17T02:15:00.000Z	grkgeek	ewsubach	seems not m8 /etc/hosts.deny still kept the rule i added after rest
+2009-05-17T02:15:00.000Z	ewsubach	grkgeek	did you hand edit hosts.deny?
+2009-05-17T02:15:00.000Z	grkgeek	ewsubach	yes
+2009-05-17T02:16:00.000Z	ewsubach	grkgeek	oh, that is seperate from iptables completely...yes, any changes to that file will stay there as long as you have it there

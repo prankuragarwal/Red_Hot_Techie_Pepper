@@ -1,0 +1,21 @@
+2009-05-12T21:00:00.000Z	RaverWild		guys need some help. just installed apache2 on jaunty. /var/www was owned by root. i changed this to www-data and added group+w permission. added my user secondary group to be www-data. verified everything. now as i test it i cant create a file into /var/www - no permissions it says. where am i wrong? :(( damn it
+2009-05-12T21:01:00.000Z	dooner	RaverWild	did you re login to get new group info
+2009-05-12T21:01:00.000Z	RaverWild	dooner	should i relogin?
+2009-05-12T21:02:00.000Z	dooner	RaverWild	 well if id /groups says you are part of that group you should be ok
+2009-05-12T21:02:00.000Z	dooner	RaverWild	show the perms on /var/www
+2009-05-12T21:03:00.000Z	dooner	RaverWild	are they 775?
+2009-05-12T21:04:00.000Z	RaverWild	dooner	see: http://paste.ubuntu.com/170722/
+2009-05-12T21:06:00.000Z	dooner	RaverWild	 unless I missing something I don't see you a member of www-data?
+2009-05-12T21:06:00.000Z	RaverWild	dooner	i dont get it. i just saw it too. but before relogging i used to sudo usermod -a -G www-data eantonoff .... hm. then it showed i was member of www-data. or i did it wrong?
+2009-05-12T21:07:00.000Z	dooner	RaverWild	 RaverWild that won't be carried between open shells,
+2009-05-12T21:07:00.000Z	RaverWild	dooner	do u mean it's sort of temporary?
+2009-05-12T21:08:00.000Z	dooner	RaverWild	no, I meant if you had other shells open at the time it wouldn't carry over
+2009-05-12T21:08:00.000Z	dooner	RaverWild	did you log out after your user?
+2009-05-12T21:09:00.000Z	RaverWild	dooner	i closed the shell in which i issued the usermod. then opened new shell. so guess it should work. i ha vent logged out of the gnome. hope this is not the problem
+2009-05-12T21:09:00.000Z	dooner	RaverWild	unless your new shell is a login shell, it won't pick up the changes
+2009-05-12T21:09:00.000Z	dooner	RaverWild	it will just inherit the groups from the shell it is spawned from
+2009-05-12T21:09:00.000Z	RaverWild	dooner	how then should i force it?
+2009-05-12T21:10:00.000Z	dooner	RaverWild	either login / logout of gnome
+2009-05-12T21:10:00.000Z	RaverWild	dooner	argh...ok. will do :)
+2009-05-12T21:10:00.000Z	dooner	RaverWild	 or try bash --login
+2009-05-12T21:11:00.000Z	dooner	RaverWild	there is in option in gnome-terminal to make shell a login shell as well

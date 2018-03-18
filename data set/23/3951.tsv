@@ -1,0 +1,23 @@
+2008-01-04T08:27:00.000Z	ottothecow		how can I check if /bin/sh is linked to something of if it is actually there
+2008-01-04T08:28:00.000Z	truna	ottothecow	ls -la would show it if its symlinked or not
+2008-01-04T09:38:00.000Z	truna	ottothecow	i advised you earlier of using /etc/network/interfaces to set static ip address...did you do it?
+2008-01-04T09:39:00.000Z	ottothecow	truna	I want to do it from the installer not after the install
+2008-01-04T09:39:00.000Z	truna	ottothecow	then you have to modify the iso config file ..same /etc/network/interfaces
+2008-01-04T09:40:00.000Z	ottothecow	truna	so you have to modify the iso then...no way to do it with a vanilla install disk?
+2008-01-04T09:41:00.000Z	truna	ottothecow	the vanilla install uses dhcp, you can verify by loading the ..hang on..let me check
+2008-01-04T09:46:00.000Z	truna	ottothecow	do you have a linux now? you can mount that iso and look at the config file on it
+2008-01-04T09:46:00.000Z	ottothecow	truna	If it take's a custom ISO, it isnt right for what I am trying to do
+2008-01-04T09:47:00.000Z	truna	ottothecow	the ubuntu install cd? its not really customized, but it can be mounted and look inside it
+2008-01-04T09:47:00.000Z	ottothecow	truna	I am trying to write instructoins for someone else to get a base server install ready and then use a custom script to install some software
+2008-01-04T09:48:00.000Z	truna	ottothecow	you dont need to have the server access the internet at install time anyways..so one can modify the network right after the 1st boot
+2008-01-04T09:48:00.000Z	ottothecow	truna	so these people won't be making custom disks...I guess I will just have to write them instructions to set it up after install if there is no other way
+2008-01-04T09:49:00.000Z	truna	ottothecow	the only other way is again to modify the iso file
+2008-01-04T09:50:00.000Z	truna	ottothecow	a simple script to put a static ip address on that interfaces file should be easy as part of your install script
+2008-01-04T09:51:00.000Z	ottothecow	truna	ah but that script is fetched with wget after install :)  no internet, no script
+2008-01-04T09:52:00.000Z	truna	ottothecow	but even if it has internet and wget a script, i dont know if you can get and execute in same wget command..so you have an extra step anyways
+2008-01-04T09:53:00.000Z	ottothecow	truna	but it's easy to tell someone to type 'wget ...' './script.sh'...people will get more confused when they have to setup the network in a text file
+2008-01-04T09:55:00.000Z	truna	ottothecow	again, thats just getting the script, you still have to tell the installer to run the script.. :)
+2008-01-04T09:55:00.000Z	ottothecow	truna	I did... "./script.sh" ...but that part is tested to work fine
+2008-01-04T09:56:00.000Z	truna	ottothecow	oh yeah have it all in one larger script, 1st line to set the network and then to wget in the next line
+2008-01-04T09:57:00.000Z	ottothecow	truna	how are they going to get that script without network?
+2008-01-04T09:58:00.000Z	truna	ottothecow	oh well, since ip address (static) has to be doled out by an admin, i will assume the installer have some smartness :)

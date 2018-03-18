@@ -1,0 +1,21 @@
+2012-08-08T22:48:00.000Z	dylan		VirtualBlackness:jazzkovsky:I guess?  It's whatever the default is.
+2012-08-08T22:49:00.000Z	L3top	dylan	what did you do that casued this change?
+2012-08-16T02:22:00.000Z	L3top	dylan	what desktop?
+2012-08-16T02:22:00.000Z	L3top	dylan	sudo service lightdm stop    for unity for example
+2012-10-03T06:07:00.000Z	L3top	dylan	sudo dpkg --configure -a
+2012-10-03T06:08:00.000Z	dylan	L3top	http://pastebin.com/d9ZjMcBr
+2012-10-03T06:09:00.000Z	L3top	dylan	this is typically because of a PPA... does ls /etc/apt/sources.list.d produce a result?
+2012-10-03T06:09:00.000Z	dylan	L3top	google-chrome.list  google-chrome.list.save  local-repository.list  local-repository.list.save
+2012-10-03T06:10:00.000Z	L3top	dylan	for the time being, please move the contents of that folder somewhere else, and run apt-get update
+2012-10-03T06:11:00.000Z	L3top	dylan	then please run dpkg --configure -a again, and follow with apt-get -f install
+2012-10-03T06:11:00.000Z	L3top	dylan	sorry, run both as sudo
+2012-10-03T06:16:00.000Z	L3top	dylan	ok... I see what is happening
+2012-10-03T06:18:00.000Z	L3top	dylan	you have an amd64 install of a package and something wants the i386 version...
+2012-10-03T06:19:00.000Z	L3top	dylan	what you SHOULD do, is move the files back to /etc/apt/sources.list.d and then...
+2012-10-03T06:23:00.000Z	L3top	dylan	sudo apt-get remove libssl and see the things it will take away with it before agreeing
+2012-10-03T06:29:00.000Z	L3top	dylan	to use the dpkg force remove we need a HUGE list of depends to ignore... he is trying to spare you that. Ignore it for now
+2012-10-03T06:42:00.000Z	L3top	dylan	for the record... the praise goes to muelli... I was gonna walk you through a dangerous and painful fix.
+2012-10-03T06:43:00.000Z	L3top	dylan	at some point you added a (wrong) chrome ppa...
+2012-10-03T06:45:00.000Z	dylan	L3top	what do I do now that I have ppa-purge installed?
+2012-10-03T06:49:00.000Z	dylan	L3top	what do I do with this ppa-purge thingy?
+2012-10-03T06:50:00.000Z	L3top	dylan	I don't actually know... I don't use ppas and I gave you the bot link... lol.

@@ -1,0 +1,22 @@
+2008-02-08T19:56:00.000Z	pale-yafa		hi, when I go to manage users I dont see the www-data group
+2008-02-08T19:56:00.000Z	jrib	pale-yafa	why do you want it?
+2008-02-08T19:57:00.000Z	pale-yafa	jrib	I want to add the www-data user to my group so it can write to /home/myname/public_html
+2008-02-08T19:58:00.000Z	jrib	pale-yafa	adduser myname www-data    but only things that apache needs to write to should be owned by that group, not all web stuff
+2008-02-08T20:12:00.000Z	jrib	pale-yafa	what script?  what are you trying to do?
+2008-02-08T20:13:00.000Z	pale-yafa	jrib	I have a site in /home/myname/public_html the site allows visitors to upload images, but the owner of public_html is myname so its not allowing the upload because of the permission
+2008-02-08T20:13:00.000Z	jrib	pale-yafa	what are the permissions?
+2008-02-08T20:15:00.000Z	pale-yafa	jrib	chmod 755 /home/myname/public_html
+2008-02-08T20:16:00.000Z	jrib	pale-yafa	what does 'ls -ld /home/myname/public_html' return?
+2008-02-08T20:17:00.000Z	pale-yafa	jrib	drwxr-xr-x 41 myname www-data 4096 2008-02-06 12:01 /home/myname/public_html
+2008-02-08T20:20:00.000Z	jrib	pale-yafa	so give www-data write permissions.  Your web server runs as www-data right?
+2008-02-08T20:21:00.000Z	pale-yafa	jrib	yes, it does, another question, is it bad if I make www-data owner for public_html, that would save me lots of problems
+2008-02-08T20:21:00.000Z	jrib	pale-yafa	why do you not just do chmod g+w ~/public_html/  ?
+2008-02-08T20:22:00.000Z	pale-yafa	jrib	want to know that in general, would it be ok if I make www-data owner of public_html all the time? any security problems with that?
+2008-02-08T20:22:00.000Z	jrib	pale-yafa	no security problems, but then your user won't have write permissions...
+2008-02-08T20:24:00.000Z	pale-yafa	jrib	thats exactly what I want, I want the user not to have any control over the public_html because my script structure is a little complicated, and it allows creating files and filders in the public_html, just want to know if there is ANY security issues if www-data is the owner
+2008-02-08T20:24:00.000Z	jrib	pale-yafa	no, your web server needs to write to it anyway
+2008-02-08T20:25:00.000Z	pale-yafa	jrib	same thing with fedora and sentos I suppose, right?
+2008-02-08T20:26:00.000Z	jrib	pale-yafa	yes, none of this is distro-specific
+2008-02-08T20:27:00.000Z	pale-yafa	jrib	thank you so so much, I have been asking around in #apache #centos #security #fedora #linux and the guys there said that there is a security risk if apache owns public_html
+2008-02-08T20:27:00.000Z	pale-yafa	jrib	and when I asked what is the risk no one knew
+2008-02-08T20:28:00.000Z	jrib	pale-yafa	you aren't supposed to give www-data write permissions on files it does not need to write to.  Obviously, if you have a script that the webserver runs and needs to write to it, you *need* to take the associated risk

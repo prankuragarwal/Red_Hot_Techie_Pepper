@@ -1,0 +1,19 @@
+2006-02-27T11:48:00.000Z	Breezy-CA	kurt	- you can ping both sides of your def gateway? .1 *and* .2 ?
+2006-02-27T11:48:00.000Z	kurt	Breezy-CA	yes.
+2006-02-27T11:48:00.000Z	Breezy-CA	kurt	- is .2 connected to the Internet? or to what?
+2006-02-27T11:49:00.000Z	kurt	Breezy-CA	 p2p t1 connection to a remote office
+2006-02-27T11:49:00.000Z	Breezy-CA	kurt	- the remote office's interface is 10.x.y.z?
+2006-02-27T11:50:00.000Z	kurt	Breezy-CA	close 10.0.1.x
+2006-02-27T11:51:00.000Z	Breezy-CA	kurt	- is the network link between you and the remote office on 176 or on 10 ?
+2006-02-27T11:51:00.000Z	Breezy-CA	kurt	- sorry on 172 not 176
+2006-02-27T11:52:00.000Z	kurt	Breezy-CA	route add -net 10.0.1.0/24 gw 172.16.100.3 dev eth1 is the exact command
+2006-02-27T11:53:00.000Z	Breezy-CA	kurt	- in other words, it looks like this? 172.16.100.1/24 -- 172.16.100.2/24 <--  T1 -- > 172.16.100.3/24 -- 10.0.1.0/24 ?
+2006-02-27T11:55:00.000Z	kurt	Breezy-CA	wastrel: I'll try to describe this a little better.  System in question has two nics, one connected to the private lan on the 172.16.100.0/24 network.  Other nic is on internet with default gw set to internet firewall.  10.0.1.0/24 is at a remote site connected with p2p t1.  local side is set to ip 172.16.100.3 and remote side is 10.0.1.1
+2006-02-27T12:02:00.000Z	Breezy-CA	kurt	- what is the network that connects you and the remote site?
+2006-02-27T12:03:00.000Z	kurt	Breezy-CA	the net between the two serial ports?
+2006-02-27T12:06:00.000Z	Breezy-CA	kurt	- yes - if I'm understanding you properly, your LAN is 172.16.100/24 and the remote LAN is 10.0.1/24. What is the network ID of the link between you ?
+2006-02-27T12:09:00.000Z	kurt	Breezy-CA	192.168.2.1 and 192.168.2.2.  I can route traffic correctly there.  It just seems to be this one box that has a public and private nic.  If I ping a remote host on the remote lan, traffic is going out the public nic instead of the private.  That is shown in the route cache.  Hence, I'm trying to set a route to the remote network and force traffic destined for a specific network through my internal network and hop across with the ro
+2006-02-27T12:10:00.000Z	Breezy-CA	kurt	- gotcha
+2006-02-27T12:11:00.000Z	Breezy-CA	kurt	- you'll need to route add 192.168.2/24 via whatever interface is on 172.16.100/24
+2006-02-27T12:12:00.000Z	Breezy-CA	kurt	- I'm getting too tired to think clearly; I meant you'll need to add 10.0.1/24, not 192.168.2/24
+2006-02-27T12:15:00.000Z	kurt	Breezy-CA	I agree.  route add -net 10.0.1.0/24 gw 172.16.100.3 dev eth0 should be the command, correct?

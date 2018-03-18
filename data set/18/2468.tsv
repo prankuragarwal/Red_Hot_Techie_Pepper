@@ -1,0 +1,18 @@
+2011-02-26T01:32:00.000Z	Jon--		My cron job isn't running? crontab -l has: */10 * * * * /home/bin/[mybinaryhere].sh > /dev/null   It's been 10 minutes with no run? Is there a way to echo when the next cron job will run?
+2011-02-26T01:33:00.000Z	Jon--		My cron job isn't running? crontab -l has: */10 * * * * /home/bin/[mybinaryhere].sh > /dev/null   It's been 10 minutes with no run? Is there a way to echo when the next cron job will run? I followed https://help.ubuntu.com/community/CronHowto
+2011-02-26T01:34:00.000Z	llutz	Jon--	what does [mybinaryhere].sh do?
+2011-02-26T01:34:00.000Z	Jon--	llutz	creates a zip file and moves it to a different folder
+2011-02-26T01:35:00.000Z	Jon--	llutz	Does the following: cd, zip -ur, mv.
+2011-02-26T01:35:00.000Z	llutz	Jon--	using full pathes?
+2011-02-26T01:35:00.000Z	Jon--	llutz	I used ~ in a spot. Uhoh, that might be it.
+2011-02-26T01:37:00.000Z	Jon--	llutz	Would that have been my issue? Using ~ for /home/user ?
+2011-02-26T01:38:00.000Z	llutz	Jon--	change it, test it
+2011-02-26T01:39:00.000Z	Jon--	llutz	Is there a way to force current cron jobs to run now, or at least see when they will run? Is it based on $date?
+2011-02-26T01:41:00.000Z	Jon--	llutz	Is there a way to force current cron jobs to run now, or at least see when they will run? Is it based on $date? I still think it's failing.
+2011-02-26T01:42:00.000Z	llutz	Jon--	you can only force cronjobs from /etc/cron.daily (weekly, hourly....)
+2011-02-26T01:43:00.000Z	llutz	Jon--	" /home/bin/[mybinaryhere].sh " <- sure the path is correct?
+2011-02-26T01:43:00.000Z	Jon--	llutz	lawl. thanks.
+2011-03-13T00:30:00.000Z	llutz	Jon--	$?
+2011-03-13T00:32:00.000Z	llutz	Jon--	http://tldp.org/LDP/abs/html/exitcodes.html
+2011-03-13T00:32:00.000Z	Jon--	llutz	I know what the exit code should be I just needed to know how to check it in a bash script.
+2011-03-13T00:34:00.000Z	llutz	Jon--	if [ $? = 0 ]  then do something else do something different fi

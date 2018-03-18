@@ -1,0 +1,24 @@
+2012-09-25T23:48:00.000Z	Advocated		Hi there, i'm doing an rsync on a server, ive just looked at it remotely and its showing as 3 occurences of it running(via ps aux | grep rsync)  is that normal?
+2012-09-25T23:49:00.000Z	FlipShaw	Advocated	Do they all look exactly the same or is there any destinguealbe difference
+2012-09-25T23:50:00.000Z	Advocated	FlipShaw	all look exactly the same :s
+2012-09-25T23:53:00.000Z	Advocated	FlipShaw	whats that mean then?
+2012-09-25T23:53:00.000Z	FlipShaw	Advocated	Can you show me the output for the processes
+2012-09-25T23:54:00.000Z	Advocated	FlipShaw	http://pastebin.com/vLexEPbg
+2012-09-25T23:56:00.000Z	FlipShaw	Advocated	This doesn't look right, I believe those are all copies
+2012-09-25T23:57:00.000Z	Advocated	FlipShaw	yeah i;m thinking so too, i might kill them all and start them from here. I have a query though. i started that rsync at work, im cancelling it from home and will start it again from home, will it be slower?
+2012-09-25T23:59:00.000Z	FlipShaw	Advocated	It should not be noticably slower.  But refer to this article quickly, I've used it to my benefit many times http://sun3.org/archives/280
+2012-09-26T00:00:00.000Z	Advocated	FlipShaw	thanks ill look. you know for bwlimit=whatever  how do i know what I can use as a max?
+2012-09-26T00:03:00.000Z	FlipShaw	Advocated	You could check the man page, but let me see what I get on mine really quick
+2012-09-26T00:05:00.000Z	Advocated	FlipShaw	so if i don't specify anything, its not going to kill my server is it?
+2012-09-26T00:08:00.000Z	FlipShaw	Advocated	No, but if you are worried about it, just pass the command with --bwlimit={how ever much bandwith you can afford to give to it}
+2012-09-26T00:09:00.000Z	Advocated	FlipShaw	i need to rsync 200gb, it was at 500kb but it wasnt doing a lot very fast lol, but i dont wanna set it too much
+2012-09-26T00:10:00.000Z	FlipShaw	Advocated	For me to make a good decision I need to know what both Internet connection speeds run at and what the speed of both networks is; but if you don't want to type all that, just try 256, that's not alot for todays netoworks
+2012-09-26T00:11:00.000Z	FlipShaw	Advocated	Sorry, I mean 128
+2012-09-26T00:12:00.000Z	Advocated	FlipShaw	128KB?
+2012-09-26T00:13:00.000Z	FlipShaw	Advocated	That's what I would do with my network specs, that's why it is hard to give you a good estimate, alot of variables; but yest.  Just pass rsync saying --bwlimit=128
+2012-09-26T00:13:00.000Z	Advocated	FlipShaw	but 128kbps surely for 200GB is going to take weeks?
+2012-09-26T00:15:00.000Z	FlipShaw	Advocated	My mistake, very sorry.  You're best bet is to just leave it default, default is no limit
+2012-09-26T00:18:00.000Z	FlipShaw	Advocated	It would be 6.5 MBytes per second
+2012-09-26T00:19:00.000Z	Advocated	FlipShaw	how u calculating that?
+2012-09-26T00:23:00.000Z	FlipShaw	Advocated	I just divided the total data needed to copy by the amount of hours you wanted to copy it, divided by minutes than by seconds
+2012-09-26T00:24:00.000Z	FlipShaw	Advocated	I did it all in bytes too, so I might have gotten messed up, but it should be fine! :) Math can be one of my fallys

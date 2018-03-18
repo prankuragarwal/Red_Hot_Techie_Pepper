@@ -1,0 +1,23 @@
+2008-02-11T14:51:00.000Z	sobczyk		hi, I have a problem with writing partition table to a 160Gb seagate disk, fdisk seemsto work fine, though no partition table is created
+2008-02-11T14:52:00.000Z	sobczyk		Ihe found this thread http://ubuntuforums.org/archive/index.php/t-91538.html , but no solution there
+2008-02-11T14:52:00.000Z	sobczyk		anyone have dealt with this problem before?
+2008-02-11T14:53:00.000Z	JangMunho	sobczyk	You tried only fdisk?
+2008-02-11T14:54:00.000Z	sobczyk		parted cfdisk qtparted
+2008-02-11T14:54:00.000Z	sobczyk	JangMunho	and different machines with or withoud a raid controller
+2008-02-11T14:55:00.000Z	JangMunho	sobczyk	Then have you tried Windows installed in that hdd?
+2008-02-11T14:56:00.000Z	sobczyk	JangMunho	no but my friends PC (with XP) seems to deal with it just fine
+2008-02-11T14:56:00.000Z	sobczyk		can partition it etc.
+2008-02-11T14:57:00.000Z	JangMunho	sobczyk	You should first check the jumper on your hdd.
+2008-02-11T14:57:00.000Z	sobczyk	JangMunho	tried master/slave/cable select...
+2008-02-11T14:58:00.000Z	JangMunho	sobczyk	you've tried that?
+2008-02-11T14:59:00.000Z	sobczyk	JangMunho	yes, Its like the drive is ignoring linux :)
+2008-02-11T15:00:00.000Z	JangMunho	sobczyk	So you even put the drive into different machines, but no help, right?
+2008-02-11T15:00:00.000Z	sobczyk		no help at all
+2008-02-11T15:03:00.000Z	JangMunho	sobczyk	I've read about someone had a st hdd, and he found it was noising, but never did he know why until one day he found his hdd was working under sata1 capable mode... There should be another jumper if the hdd is a sata2 one.
+2008-02-11T15:03:00.000Z	sobczyk	JangMunho	it is an ata 100
+2008-02-11T15:04:00.000Z	JangMunho	sobczyk	it's quite an old one...
+2008-02-11T15:05:00.000Z	JangMunho	sobczyk	use command "dd if=/dev/zero of=/dev/sda" to write zeros to your disk. and use gparted to build the partition table again.
+2008-02-11T15:05:00.000Z	sobczyk	JangMunho	http://www.seagate.com/ww/v/index.jsp?vgnextoid=eb8b9be7238b0110VgnVCM100000f5ee0a0aRCRD&locale=en-US
+2008-02-11T15:06:00.000Z	sobczyk		if it wont work ill try the limited capacity
+2008-02-11T15:07:00.000Z	JangMunho	sobczyk	be careful to use that command, you will lose all your data
+2008-02-11T15:07:00.000Z	sobczyk	JangMunho	i know dd, I used it to backup partitions

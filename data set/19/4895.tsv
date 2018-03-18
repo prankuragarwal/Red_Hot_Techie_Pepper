@@ -1,0 +1,19 @@
+2008-10-21T22:06:00.000Z	TJ-42		if I want to give a php application the ability to create, write, and read files in a directory, is "www-data" the user I need to give read and write permissions to for the directory?
+2008-10-21T22:06:00.000Z	dulak	TJ-42	if that's the user apache is running as, yes
+2008-10-21T22:07:00.000Z	TJ-42	dulak	that's the default, right? and there shouldn't be anything else to do, right?
+2008-10-21T22:07:00.000Z	dulak	TJ-42	and on ubuntu that's the user apache runs as, so yes
+2008-10-21T22:07:00.000Z	dulak	TJ-42	you want rwx on directory, rw on files
+2008-10-21T22:08:00.000Z	dulak	TJ-42	you can just sudo chown -R www-data:www-data /path/to/directory
+2008-10-21T22:14:00.000Z	TJ-42	dulak	well there's something strange going on.  I set 777 umask to the cache directory and give it to www-data:www-data.  but new files created in it have username:group as TJ:TJ (my regular user's name, not www-data)
+2008-10-21T22:15:00.000Z	dulak	TJ-42	the files are created by php?
+2008-10-21T22:15:00.000Z	TJ-42	dulak	yes.
+2008-10-21T22:17:00.000Z	dulak	TJ-42	you didn't chown the directory to www-data or you did?
+2008-10-21T22:19:00.000Z	TJ-42	dulak	yes, it is chowned to www-data as user and group.  but I can even only create files if permissions are set to 777 rather than 770, suggesting to me that for some reason php or apache is not accessing the directory as www-data  -- does that make sense?
+2008-10-21T22:19:00.000Z	TJ-42	dulak	the directory definitely shows www-data owns it: drwxrwxrwx 2 www-data www-data  4096 2008-10-21 13:17 cache
+2008-10-21T22:19:00.000Z	dulak	TJ-42	yes apache has a suid ability, so it can run sub processes as your normal user instead of www-data
+2008-10-21T22:20:00.000Z	dulak	TJ-42	best way to test is to chown that dir back to your normal user and put 770 permissions on it and see
+2008-10-21T22:20:00.000Z	dulak	TJ-42	if that's the case that's actually more secure than having apache user own it
+2008-10-21T22:22:00.000Z	TJ-42	dulak	except that then is_writable returns false.... (whereas before it returned true, apparently, even when it clearly could not write to the directory)
+2008-10-21T22:23:00.000Z	dulak	TJ-42	that's weird, you could check your apache config and see how it's set to run as that user for that virtual host, maybe disable that on that vhost and then chowning to www-data would work
+2008-10-21T22:23:00.000Z	dulak	TJ-42	but that's not default setup afaik, you have to do a lot of work to get apache to run stuff as a normal user
+2008-10-21T22:24:00.000Z	TJ-42	dulak	you're right it's got to be something with apache I guess.  which is strange since I have really not changed the setup.  I'm going to ask in apache rooms

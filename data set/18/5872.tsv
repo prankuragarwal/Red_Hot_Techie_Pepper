@@ -1,0 +1,18 @@
+2008-10-08T20:18:00.000Z	Tundrayeti311		I have a USB sound card not being properly detected, and I'm not sure what step to take next for troubleshooting, can anyone help?
+2008-10-08T20:20:00.000Z	BlueEagle	Tundrayeti311	Which sound card are we talking about?
+2008-10-08T20:20:00.000Z	Tundrayeti311	BlueEagle	Lexicon Omega, it's supposed to be plug and play, and has worked before
+2008-10-08T20:20:00.000Z	BlueEagle	Tundrayeti311	Do you know which module handles that card?
+2008-10-08T20:21:00.000Z	Tundrayeti311	BlueEagle	yeah soundcore
+2008-10-08T20:22:00.000Z	BlueEagle	Tundrayeti311	Have you confirmed that soundcore is loaded?
+2008-10-08T20:22:00.000Z	BlueEagle	Tundrayeti311	lsmod|grep soundcore
+2008-10-08T20:23:00.000Z	Tundrayeti311	BlueEagle	yes its loaded
+2008-10-08T20:26:00.000Z	BlueEagle	Tundrayeti311	Is it listed in /proc/asound/cards
+2008-10-08T20:27:00.000Z	Tundrayeti311	BlueEagle	no, lsusb shows it as "Texas Instrument" whichi find weird
+2008-10-08T20:28:00.000Z	BlueEagle	Tundrayeti311	Would you mind trying to unload and reload the kernel module?
+2008-10-08T20:29:00.000Z	BlueEagle	Tundrayeti311	modprobe -r soundcore && modprobe soundcore
+2008-10-08T20:31:00.000Z	Tundrayeti311	BlueEagle	Unfortunately I'm at work atm, so I can't, but I'll try that when I get home... ty for your help :)
+2008-10-08T20:32:00.000Z	BlueEagle	Tundrayeti311	Also tail your /var/log/messages and grab what happens when you unplug and replug it.
+2008-10-08T20:35:00.000Z	Tundrayeti311	BlueEagle	I can tell you that this happens from syslog: Oct  1 19:56:51 user-desktop kernel: [  165.080770] usb 1-4: new full speed USB device using ohci_hcd and address 5 Oct  1 19:56:52 user-desktop kernel: [  165.292689] usb 1-4: configuration #1 chosen from 1 choice Oct  1 19:56:52 user-desktop NetworkManager: <debug> [1222909012.179232] nm_hal_device_added(): New device added (hal udi is '/org/freedesktop/Hal/devi
+2008-10-08T20:38:00.000Z	BlueEagle	Tundrayeti311	Sorry. I'm drawing blank on that log. :/
+2008-10-08T20:39:00.000Z	Tundrayeti311	BlueEagle	np :) ty for help
+2008-10-08T20:39:00.000Z	BlueEagle	Tundrayeti311	Wasn't much. :/

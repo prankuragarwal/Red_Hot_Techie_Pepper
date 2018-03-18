@@ -1,0 +1,18 @@
+2008-09-19T03:45:00.000Z	plytheman		who wants to help me figure out the networking between my XP and Heron? =D
+2008-09-19T03:47:00.000Z	plytheman		does anyone have any idea why I can't find my windows box over my network?
+2008-09-19T03:48:00.000Z	dr_willis	plytheman	 miss configured samba/shares or firewall on windows box. You could try the samba smbclient command to scan for shares, or some other tools.  - also be sure you try to access it by ip, in case the hostname is not seen/in etc/hosts file
+2008-09-19T03:49:00.000Z	dr_willis	plytheman	 the 'samba doc' package has several html books on samba confiuring and troubleshooting also. Worth a read. :)
+2008-09-19T03:50:00.000Z	dr_willis	plytheman	 for starters see if the 2 box's can ping each other. :)  Then perhaps try ssh/winscp see if that gets through.
+2008-09-19T03:52:00.000Z	dr_willis	plytheman	 theres 'network' issues.. then theres  'services' issues. :) Your machines seem to be networked.  just not configured for samba/smb correctly
+2008-09-19T03:52:00.000Z	dr_willis	plytheman	 if you are not doing a lot of file transfers, I find winscp works decently well for the occasional file transfer to/from  the linux machines
+2008-09-19T03:52:00.000Z	dr_willis	plytheman	 samba is what gives linux the 'network neighborhood' stuff :)
+2008-09-19T03:53:00.000Z	dr_willis	plytheman	 the samba-doc package has html books on the topic.   One of those things thats worth reading if you plan on using  it a lot.
+2008-09-19T03:54:00.000Z	dr_willis	plytheman	 check the workgroup names also. also try entering the  share name //machinename/share   and so on.. it can be annoying finding whats going on.
+2008-09-19T03:54:00.000Z	dr_willis	plytheman	 im not sure what the default workgroup for linux box is. it may be 'workgroup' :)
+2008-09-19T03:54:00.000Z	dr_willis	plytheman	 i also tend to install the full samba packages on ubuntu, and set up the homes directory to be shared.
+2008-09-19T03:56:00.000Z	dr_willis	plytheman	 if this is a new ubuntu isntall. you may want to update/upgrade also - be sure you are up to date.. the earlier releases had a few bugs in the samba stuff i recall
+2008-09-19T03:57:00.000Z	dr_willis	plytheman	 theres also other tools that browse/scan the windows-share-network  You are using the gnome-file manager to do it. :)  Theres 'smbclient'  (cli tool) and other gui tools as well
+2008-09-19T04:37:00.000Z	dr_willis	plytheman	 a gui to do what exactly?
+2008-09-19T04:44:00.000Z	dr_willis	plytheman	 ive seen some issues where the gnome file browser just dosent see/show windows shares. ive used other tools and they saw the shares, or i mounted the shares manually and they worked.. just gnomes file manager had isues.. (and i dont know why) :)
+2008-09-19T04:45:00.000Z	dr_willis	plytheman	 thats a start. :) at least.
+2008-09-19T04:46:00.000Z	dr_willis	plytheman	 i tend to use fusesmb to access the windows shares -> https://help.ubuntu.com/community/FuseSmb   i just like how it works better then the way the filemanagers do it.

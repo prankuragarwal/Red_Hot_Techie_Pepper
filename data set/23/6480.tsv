@@ -1,0 +1,23 @@
+2006-04-29T11:23:00.000Z	gymsmoke		anyone here skilled at configuring apache2 ?
+2006-04-29T11:23:00.000Z	polpak	gymsmoke	what's up?
+2006-04-29T11:24:00.000Z	gymsmoke	polpak	i've gotten the server up and running ok, but, after spending the last two days going through the apache2 docs, i'm a little confused on config issues
+2006-04-29T11:25:00.000Z	polpak	gymsmoke	what are you trying to config?
+2006-04-29T11:25:00.000Z	gymsmoke	polpak	for starters, the default site... i have a directory for / and a directory for /var/www/apache2-default...
+2006-04-29T11:25:00.000Z	gymsmoke	polpak	the docroot here is /var/www ... when i access the default site, i get 403 ...
+2006-04-29T11:26:00.000Z	polpak	gymsmoke	ok, well that's generally a permission problem
+2006-04-29T11:28:00.000Z	polpak	gymsmoke	what's the permissions on /var and /var/www and do you have a DirectoryIndex directive, or an index.html file in that directory?
+2006-04-29T11:30:00.000Z	gymsmoke	polpak	/var = 755 , /var/www = 755. apache2-default definitely has indexes in it.  /var/www (Directory /) has no index, but /var/www/apache2-default (Directory /var/www/apache2-default) does
+2006-04-29T11:31:00.000Z	polpak	gymsmoke	well if the DocumentRoot is /var/www then you'll need either an index.html file in there, or you'll need a DirectoryIndex directive
+2006-04-29T11:31:00.000Z	gymsmoke	polpak	i don't want to allow access to /var/www, only /var/www/apache2-default
+2006-04-29T11:32:00.000Z	polpak	gymsmoke	then change your DocumentRoot
+2006-04-29T11:32:00.000Z	gymsmoke	polpak	oh!
+2006-04-29T11:32:00.000Z	gymsmoke	polpak	i wasn't aware that each site could have a different DocRoot ...
+2006-04-29T11:32:00.000Z	polpak	gymsmoke	and make sure that /var/www/apache2-default is set 755
+2006-04-29T11:32:00.000Z	gymsmoke	polpak	ok
+2006-04-29T11:34:00.000Z	gymsmoke	polpak	that worked!
+2006-04-29T11:35:00.000Z	polpak	gymsmoke	=)
+2006-04-29T11:35:00.000Z	gymsmoke	polpak	thanks...
+2006-04-29T11:35:00.000Z	polpak	gymsmoke	sure thing
+2006-04-29T11:38:00.000Z	gymsmoke	polpak	i'm going to give the ssl docs at apache2 a readthrough before thwrowing out frivolous questions, but thanks alot for the help... i didn't realize that each site could have a different doc root... i thought that the doc root was for all of apache2...
+2006-04-29T11:39:00.000Z	polpak	gymsmoke	there is a document root for the server, but each site can also have a document root
+2006-04-29T11:39:00.000Z	polpak	gymsmoke	let me know if you have other questions =)

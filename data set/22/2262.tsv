@@ -1,0 +1,22 @@
+2009-10-19T21:06:00.000Z	savid		I just removed the /etc/postgresql conf because I wanted to restore the default,  and I uninstalled postgresql and re-installed it,  but now it's not re-creating the /etc/postgresql dir?
+2009-10-19T21:07:00.000Z	trism	savid	did you purge it?
+2009-10-19T21:08:00.000Z	savid	trism	 yes, I did apt-get remove --purge postgresql
+2009-10-19T21:13:00.000Z	savid	trism	any ideas?  I can't seem to figure out how to get the missing conf files back
+2009-10-19T21:16:00.000Z	trism	savid	not sure yet, trying to find out
+2009-10-19T21:21:00.000Z	trism	savid	figured it out, sudo apt-get purge postgresql postgresql-8.3 postgresql-common; sudo rm -rf /etc/postgresql /etc/postgresql-common; then sudo apt-get install postgresql; that regenerated all the config for me
+2009-10-19T21:25:00.000Z	savid	trism	 looks like the only mention of /etc/postgresql/ is in the postrm file?
+2009-10-19T21:32:00.000Z	trism	savid	yeah, I don't know, it is strange
+2011-06-07T03:24:00.000Z	trism	savid	Ubuntu Software Center/Edit/Software Sources...
+2011-11-21T22:47:00.000Z	trism	savid	probably need zlib1g-dev (although PIL is in the repos, python-imaging package)
+2011-11-21T22:48:00.000Z	savid	trism	 I'm installing PIL within a virtualenv,  which is why I need the dev packages.  I have zlib1g-dev installed.  Any ideas why it wouldn't be working?
+2011-11-21T22:48:00.000Z	savid	trism	this is ubuntu Natty, btw
+2011-11-21T22:49:00.000Z	trism	savid	if you pastebin the output with the errors, I'll take a look, but otherwise I don't know
+2011-11-21T22:50:00.000Z	trism	savid	you could also try: sudo apt-get build-dep python-imaging;
+2011-11-21T22:50:00.000Z	trism	savid	although probably gets you more than you need
+2011-11-21T22:55:00.000Z	savid	trism	http://pastie.org/2899033
+2011-11-21T22:56:00.000Z	savid	trism	 I have setup_site.py in the virtualenv's site-packages directory,  which has the following contents:  http://pastie.org/2899037
+2011-11-21T22:56:00.000Z	savid	trism	also, the file  /usr/lib/x86_64-linux-gnu/libz.so   exists.
+2011-11-21T23:02:00.000Z	trism	savid	you should probably mention you're installing it with pip, since zlib1g-dev is the correct package, so the problem is actually that pip isn't finding it it seems
+2011-11-21T23:09:00.000Z	trism	savid	there is a thread about it in the forums, couple workarounds: http://ubuntuforums.org/showthread.php?t=1751455
+2011-11-21T23:09:00.000Z	savid	trism	 found a project called "Pillow" which is a fork of PIP.  That seemed to work better.
+2011-11-21T23:15:00.000Z	trism	savid	glad you found a workaround. If you find you need PIL later, get the python-imaging source and debian/patches/01_multiarch_support.patch should be the fix you need to build zlib support (I should have looked closer earlier)

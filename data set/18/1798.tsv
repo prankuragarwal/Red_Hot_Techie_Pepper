@@ -1,0 +1,18 @@
+2011-07-30T10:12:00.000Z	overrider_		I cloned my /sda1 (my 10.04  / partition) to /sda2 - how can i teach grub about this so it lets me choose which system to boot into when i start my PC?
+2011-07-30T10:13:00.000Z	nit-wit	overrider_	do you have a bootable OS wth grub2 now?
+2011-07-30T10:13:00.000Z	overrider_	nit-wit	yes sure, i boot standardly into 10.04 which sits on sda1
+2011-07-30T10:14:00.000Z	overrider_	nit-wit	and i used gparted to clone sda1 to sda2, so basically would like to get a multi boot system
+2011-07-30T10:15:00.000Z	nit-wit	overrider_	if you still want sda1 and access to sda2 run sudo update-grub in sda1, if you want to remove sda1 the you can get in after the update and install grub to the mbr from sda2.
+2011-07-30T10:16:00.000Z	overrider_	nit-wit	yes, i want them both to be available as seperate systems that live on sda1 and sda2, and i can choose which one to boot into when booting the computer. will look into update-grub - thanks
+2011-07-30T10:16:00.000Z	nit-wit	overrider_	no prblem, it is easy to load grub to the mbr from the OS if needed one command.
+2011-07-30T11:22:00.000Z	nit-wit	overrider_	actually the problem is the UUID is the same for both from the clone, not sure of a fix really.
+2011-07-30T11:28:00.000Z	overrider_	nit-wit	tune-fs can be used to assign a new uuid to a partition thankfully
+2011-07-30T11:28:00.000Z	nit-wit	overrider_	cool I wasn't thinking about the UID on the grub issue my bad.
+2011-07-30T11:29:00.000Z	nit-wit	overrider_	you know how to find the UUID right?
+2011-07-30T11:29:00.000Z	overrider_	nit-wit	yes
+2011-07-30T11:30:00.000Z	nit-wit	overrider_	cool, sounds like you will have it fixed pronto.
+2011-07-30T11:31:00.000Z	nit-wit	overrider_	ou have to run a update-grub when you change stuff like you have, as of now sda1 has the boot persay.
+2011-07-30T11:33:00.000Z	nit-wit	overrider_	if you want sda2 to control the boot from sda2 run sudo grub-install /dev/sda  then update-grub
+2011-07-30T11:35:00.000Z	overrider_	nit-wit	i did, and it says correctly that it found a 10.04 installation on sda1 and sda2, but then doesnt add it to the list of choices one gets when the computer first starts. Do i need to manually add boot entries to the grub configuration, or should grub automatically pick available os installed into my different partitions?
+2011-07-30T11:36:00.000Z	nit-wit	overrider_	you could but I have to wonder why you want identical OS ?
+2011-07-30T11:39:00.000Z	overrider_	nit-wit	basically i want to setup sda1 the way i want with all my customizations. then clone it to sda2. When i then for some reason bork the System on sda1, i can still boot into sda2 and maybe fix my sda1 system.

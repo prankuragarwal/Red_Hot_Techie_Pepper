@@ -1,0 +1,18 @@
+2006-03-24T17:01:00.000Z	fluxt		/var/log/messages ?
+2006-03-24T17:02:00.000Z	dango	fluxt	nothing there regarding vnc or xinetd, some msgs from boot and aome xml:readonly things, not related
+2006-03-24T17:06:00.000Z	fluxt	dango	is the vnc process running?
+2006-03-24T17:15:00.000Z	fluxt	dango	is the process listed in ps -A ?
+2006-03-24T17:16:00.000Z	dango	fluxt	yes, also on netstat -an , listening on 5901 (as expected)
+2006-03-24T17:17:00.000Z	fluxt	dango	well.. does Xvnc setup a working server if you start it from the command line with no parameters?
+2006-03-24T17:17:00.000Z	dango	fluxt	no, it whines about missing fontpath, but the -fp argument fixes that. There is allready running a server on :0
+2006-03-24T17:18:00.000Z	fluxt	dango	so that way it won't listen at all?
+2006-03-24T17:19:00.000Z	fluxt	dango	my train of thought here is perhaps the parameters aren't getting passed in the way you configured xinetd to start Xvnc, but it's just a thought
+2006-03-24T17:20:00.000Z	dango	fluxt	im thinking the same, but i cant find any logging from it , var/log/mesages is blank,and even if i specify -log:/tmp/mylog, nothing happens there
+2006-03-24T17:20:00.000Z	fluxt	dango	that's why it might be a good idea to kill xinetd and see if Xvnc functions without params (to connect and such)
+2006-03-24T17:21:00.000Z	dango	fluxt	i can do that, by starting Xvnc :1 -fp /myfontpath , i can connect from the other maching
+2006-03-24T17:22:00.000Z	fluxt	dango	also, at the end of man page for xvnc or xinetd it may list under 'files' the log
+2006-03-24T17:22:00.000Z	fluxt	dango	and with no params?
+2006-03-24T17:23:00.000Z	fluxt	dango	with no params does it start the listening service but not function or does it just die
+2006-03-24T17:24:00.000Z	fluxt	dango	does it function?
+2006-03-24T17:25:00.000Z	dango	fluxt	yes
+2006-03-24T17:26:00.000Z	fluxt	dango	i'm assuming you tried to connect to it and all

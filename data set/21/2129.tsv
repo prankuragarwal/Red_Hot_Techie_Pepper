@@ -1,0 +1,21 @@
+2010-02-20T21:20:00.000Z	umang		Hi, I installed vim recently and now my default editor changed from nano to vim. However, the editor env variable has not been set. (And grep's for vim and nano both fail). So what makes vim my editor now?
+2010-02-20T21:21:00.000Z	guntbert	umang	in the command line or with nautilus?
+2010-02-20T21:21:00.000Z	umang	guntbert	Command line (specifically for bzr ci's)
+2010-02-20T21:23:00.000Z	guntbert	umang	ah, I guess my question was a bit silly: how does the choice of "default" affect you in CLI? why not just type nano ... ?
+2010-02-20T21:24:00.000Z	umang	guntbert	Uh, bzr automatically chooses vim now, but I want to know why (I know how to change it back to nano by adding a line to .bashrc).
+2010-02-20T21:24:00.000Z	guntbert	umang	sorry, I am a bit slow today ...  understood
+2010-02-20T21:26:00.000Z	umang	guntbert	(like I asked VCoolio) is there a pecking order in bzr that selects vim before nano and I don't have a default editor? printenv | grep "vim" returns nothing.
+2010-02-20T21:29:00.000Z	guntbert	umang	I'm searching...
+2010-02-20T21:29:00.000Z	umang	guntbert	ok. :)
+2010-02-20T21:31:00.000Z	umang	guntbert	VCoolio:  http://ubuntu.pastebin.com/d774cd05
+2010-02-20T21:33:00.000Z	umang	guntbert	VCoolio So, for curiosity's sake, what controls this? (i.e how did update-alternatives decide to change it to vim after I installed vim?)
+2010-02-20T21:35:00.000Z	guntbert	umang	no idea about that - sorry - do you already know how to change it? but please be aware of http://dc.ubuntu-us.org/tutorials/bzr-intro.html (search for default editor on that page, there is a note)
+2010-02-20T21:38:00.000Z	umang	guntbert	Yes. I can change it from update-alternatives (which now shows vim as default). My only question is, how did update-alternatives change the default to vim without me asking it to?
+2010-02-20T21:39:00.000Z	umang	guntbert	I just checked the bazaar files and there is no mention of any editor, so the only setting that was change was with update-alternatives. Do you think dpkg ran update-alternatives while I installed vim?
+2010-02-20T21:40:00.000Z	guntbert	umang	without looking into the packages - difficult guesswork. but the note I sent you implies that brz "expects" to work with vi/vim
+2010-02-20T21:40:00.000Z	guntbert	umang	I'sure several packages do that
+2010-02-20T21:42:00.000Z	umang	guntbert	OK. So vim set itself as default. I don't like that, because I never asked it to, but I'll investigate a little more later (see what the package does, etc). Thanks for you help! Thank you too, VCoolio!
+2010-02-20T21:43:00.000Z	guntbert	umang	np and have fun
+2010-02-20T21:48:00.000Z	umang	guntbert	Sorry, all this would be done by debian/postinst right (vim changing my settings)?
+2010-02-20T21:49:00.000Z	guntbert	umang	sorry, I don't even know where I could ask for this info - never handled packaging myself
+2010-02-20T21:49:00.000Z	umang	guntbert	OK. Thanks anyway. :)

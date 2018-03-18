@@ -1,0 +1,23 @@
+2009-12-24T23:46:00.000Z	ganymede		hello, i'm running ubuntu 9.10 but when pinging seems to be very slow as well as traceroute. when i ping, the ping times are very low (17 ms to google.com) but there's a large amount of time between pings, which is unusual. traceroutes also occur very slowly---it's about five seconds in between each line. on other computers, pings have 1 second in between and traceroutes are almost instantaneous, as expected. i've tried two different
+2009-12-24T23:46:00.000Z	ganymede		 NICs on this comp and both show slow traceroutes and slow pings
+2009-12-24T23:47:00.000Z	jtaji	ganymede	1 second is supposed to be default, what if you do: ping -i 1
+2009-12-24T23:48:00.000Z	ganymede	jtaji	yes, but how does knowing that help me?
+2009-12-24T23:48:00.000Z	jtaji	ganymede	umm.. did you try ping -i 1
+2009-12-24T23:49:00.000Z	ganymede	jtaji	oh sorry, i misread what you said. yeah, when i do ping -i 1, there is still a 5 second delay between pings
+2009-12-24T23:49:00.000Z	jtaji	ganymede	that's odd
+2009-12-24T23:49:00.000Z	ganymede	jtaji	6 packets transmitted, 6 received, 0% packet loss, time 25141ms rtt min/avg/max/mdev = 14.717/15.372/15.806/0.443 ms
+2009-12-24T23:50:00.000Z	ganymede	jtaji	you can see the average ping time is 15 ms but the total time for 6 packets is over 25 seconds
+2009-12-24T23:50:00.000Z	jtaji	ganymede	how about: sudo ping
+2009-12-24T23:50:00.000Z	jtaji	ganymede	and/or sudo ping -i 1
+2009-12-24T23:51:00.000Z	ganymede	jtaji	the problem is still there. and AFAIK, ping is install and suid anyway since you need to be root to send raw ICMP packets
+2009-12-24T23:51:00.000Z	ganymede	jtaji	ping is installed as suid*
+2009-12-24T23:52:00.000Z	jtaji	ganymede	^^
+2009-12-24T23:52:00.000Z	jtaji	ganymede	I can't say I've ever encountered this problem
+2009-12-24T23:53:00.000Z	ganymede	jtaji	with ping -i .2, it's still 5 seconds between pings
+2009-12-24T23:53:00.000Z	ganymede	jtaji	actually, let me try changing the port on my router. maybe this port is bad
+2009-12-24T23:53:00.000Z	ganymede	jtaji	so brb
+2009-12-24T23:53:00.000Z	jtaji	ganymede	could someone have setup an alias?
+2009-12-24T23:53:00.000Z	ganymede	jtaji	but traceroutes are slow as well
+2009-12-24T23:53:00.000Z	ganymede	jtaji	and i'm the admin user here and i never set up any alias
+2009-12-24T23:57:00.000Z	ganymede	jtaji	yes, i can confirm it's not the router port. i switched the ports on a router with another computer but this computer is still slow with ping and traceroute and the other pings and traceroutes fine
+2009-12-24T23:59:00.000Z	jtaji	ganymede	doh... I recently started using google's dns servers

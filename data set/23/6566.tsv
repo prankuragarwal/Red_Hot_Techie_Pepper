@@ -1,0 +1,23 @@
+2011-04-06T21:25:00.000Z	ubuntu		i was in here earlier asking about my install that was broke with the packages not being configured and i think i figure out what it was
+2011-04-06T21:26:00.000Z	ubuntu		i cant updte things that are part of the original ISO on the flash drive (linux kernel, initramfs-tools, etc). however, this leaves me with a problem as i have done an `apt-get update` and now i have 17 packages i cant do anything with
+2011-04-06T21:27:00.000Z	ubuntu		so I need to remove these packages from the apt so it doesn't try to process these busted packages everytime I add something. anyone have any idea how i can acheive this?
+2011-04-06T21:27:00.000Z	milamber	ubuntu	sudo apt-get -f install
+2011-04-06T21:28:00.000Z	ubuntu	milamber	that doesn't work. I can't install these 17 packages. I just want to remove them and not update the 17 that will fail
+2011-04-06T21:29:00.000Z	ubuntu		so can i do something that will delete and clear the dpkg cache of things that need updating?
+2011-04-06T21:29:00.000Z	milamber	ubuntu	i wasn't around when you originally brought up the problem you are having. can you be more specific when you say can't?
+2011-04-06T21:30:00.000Z	ubuntu		blueskaj, i cant fix packages that are broken due to other packages not being configured (and no, dpkg --configure -a / dpkg-reconfigure <package_name> doesn't work either)
+2011-04-06T21:31:00.000Z	ubuntu	milamber	i have 17 different packages from a linux kernel upgrade, to fuse, to gdm, to xserver-xorg that rely on other packages in the same family that aren't configured
+2011-04-06T21:32:00.000Z	ubuntu		blueskaj, yes. synaptic and apt and the update manager. all fail
+2011-04-06T21:32:00.000Z	milamber	ubuntu	sudo apt-get clean && sudo fuser -vki /var/lib/dpkg/lock;sudo dpkg --configure -a
+2011-04-06T21:33:00.000Z	ubuntu		ok, i will try that milamber
+2011-04-06T21:33:00.000Z	milamber		!info debsig-verify | eoss
+2011-04-06T21:33:00.000Z	ubuntu		blueskaj, have all of them enabled already
+2011-04-06T21:39:00.000Z	ubuntu	milamber	that didn't work. here is what i see: http://pastebin.com/uKKN3ivi
+2011-04-06T21:41:00.000Z	ubuntu	milamber	I changed the command (missed the &&) but it's the same result with the same errors.
+2011-04-06T21:41:00.000Z	milamber	ubuntu	you did the sudo apt-get clean?
+2011-04-06T21:41:00.000Z	ubuntu		yes
+2011-04-06T21:42:00.000Z	ubuntu		i just dont think i can update these on the flash drive, which is ok. i just want to get rid of them so everytime i install something, it doesn't complain about these that wont update
+2011-04-06T21:42:00.000Z	milamber	ubuntu	is this a persistent usb install?
+2011-04-06T21:42:00.000Z	milamber	ubuntu	then try sudo apt-get remove <eachpackage>
+2011-04-06T21:43:00.000Z	milamber		!ask | nyuszika7h
+2011-04-06T21:43:00.000Z	ubuntu	milamber	ok, thank you

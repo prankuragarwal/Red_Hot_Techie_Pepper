@@ -1,0 +1,18 @@
+2011-05-20T17:15:00.000Z	Ileden		Question: If I'm connected to the internet via two connections, how does Ubuntu determine which connection is used when I e.g. open a web page to make an ssh connection?
+2011-05-20T17:16:00.000Z	ferengee	Ileden	depending on which routes are configured for the destination ip address
+2011-05-20T17:18:00.000Z	ferengee	Ileden	i use route -n
+2011-05-20T17:19:00.000Z	ferengee	Ileden	depending on the most specific rule for the netmask and destination a gateway is chosen
+2011-05-20T17:19:00.000Z	Ileden	ferengee	I don't understand how to read that table.
+2011-05-20T17:19:00.000Z	Ileden	ferengee	ah, ok. that helps.
+2011-05-20T17:20:00.000Z	ferengee	Ileden	check the examples in the route man page
+2011-05-20T17:20:00.000Z	ferengee	Ileden	to add a specific route for a specific range or destination
+2011-05-20T17:20:00.000Z	Ileden	ferengee	so it reads it in order of specificity of netmask. hm. so when one of my connections has mask of "255.255.255.255" it would always use that, but since it's so specific, it only matches one IP address (it's own)
+2011-05-20T17:20:00.000Z	Ileden	ferengee	or the other way around? ah ok, I'll read the man page.
+2011-05-20T17:21:00.000Z	ferengee	Ileden	see the  route add -net 192.57.66.0 netmask 255.255.255.0 gw ipx4 specific example
+2011-05-20T17:24:00.000Z	Ileden	ferengee	ok, it's starting to make bit more sense now. Is there a (simple) way to force an application to use a specific connection instead of those provided by route table?
+2011-05-20T17:24:00.000Z	ferengee	Ileden	not that I know off
+2011-05-20T17:25:00.000Z	ferengee	Ileden	if the application use specific ports or packet tags you could let your firewall handle the routing
+2011-05-20T17:26:00.000Z	Ileden	ferengee	ok, thanks!
+2011-05-20T17:43:00.000Z	ferengee	Ileden	you should have said that your program was ssh
+2011-05-20T17:43:00.000Z	ferengee	Ileden	ssh can bind on a specific address
+2011-05-20T17:43:00.000Z	ferengee	Ileden	see the ssh manpage

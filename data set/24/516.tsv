@@ -1,0 +1,24 @@
+2012-02-05T01:54:00.000Z	superdave_		I'm having trouble booting. unreadable text displays and stops before gui is up. any ideas?
+2012-02-05T01:56:00.000Z	superdave_		I'm having trouble booting. unreadable text displays and stops boot process before gui is up. any ideas?
+2012-02-05T01:58:00.000Z	superdave_		I'm having trouble booting. unreadable text displays and stops before gui is up. any ideas?
+2012-02-05T01:58:00.000Z	zykotick9	superdave_	wait more then 2 minutes between repeating your question
+2012-02-05T02:04:00.000Z	superdave_	zykotick9	ratcheer it would be whatever is standard install... I'll try it.
+2012-02-05T12:53:00.000Z	zykotick9	superdave_	you'd first need to chroot into your HD install (see !grub2 for info on that) then use apt-get to uninstall it.
+2012-02-05T12:54:00.000Z	superdave_	zykotick9	thanks!
+2012-02-05T12:55:00.000Z	superdave_	zykotick9	about the grub2 topic... how do I get to that info?
+2012-02-05T12:55:00.000Z	zykotick9	superdave_	the link provided there has the steps for chrooting into you HD install
+2012-02-05T12:56:00.000Z	superdave_	zykotick9	Hey, thanks :)
+2012-02-05T13:08:00.000Z	zykotick9	superdave_	1) what graphics card 2) how did you install them?
+2012-02-05T13:09:00.000Z	superdave_	zykotick9	stock nvidia on Dell Demension 8300 and through ubuntu update manager.
+2012-02-05T13:10:00.000Z	zykotick9	superdave_	"apt-cache policy nvidia-current" does it show installed?
+2012-02-05T13:11:00.000Z	superdave_	zykotick9	nvidia-current:   Installed: (none)   Candidate: 270.41.06-0ubuntu1   Version table:      270.41.06-0ubuntu1 0         500 http://us.archive.ubuntu.com/ubuntu/ natty/restricted i386 Packages
+2012-02-05T13:11:00.000Z	zykotick9	superdave_	so nvidia-current is not installed, do you see the Installed: (none).  I'm not sure what version you need though.  "lspci | grep -i vga" will give card model.
+2012-02-05T13:14:00.000Z	superdave_	zykotick9	output: "01:00.0 VGA compatible controller: nVidia Corporation NV34 [GeForce FX 5200] (rev a1)"
+2012-02-05T13:16:00.000Z	zykotick9	superdave_	from my very brief search, looks like you need the nvidia 173 driver.  I've never had much luck with the non-current nvidia stuff, so hopefully if you run into issues someone else can help.  I'd also suggest you do an internet search to see if you can confirm/deny that 173 is the correct version.
+2012-02-05T13:18:00.000Z	superdave_	zykotick9	Awesome! Thanks! How should I word that so apt-get install will fetch that for me?
+2012-02-05T13:18:00.000Z	zykotick9	superdave_	i'm unable to verify, but "sudo apt-get install nvidia-<TAB>" should list the options.
+2012-02-05T13:20:00.000Z	superdave_	zykotick9	Ok. Thanks for all the help!!
+2012-02-05T13:21:00.000Z	zykotick9	superdave_	glad to help, good luck!
+2012-02-05T13:24:00.000Z	superdave_	zykotick9	"nvidia-173" did the trick. now to reboot to find out if it worked!
+2012-02-07T10:08:00.000Z	zykotick9	superdave_	if it's USB, you might want to unplug it (wait a couple of seconds) plug it back in and in a terminal run "dmesg | tail -25" to find more info on the device.
+2012-02-07T10:09:00.000Z	zykotick9	superdave_	oh, ndiswrapper... sorry, AP gave you the info already.

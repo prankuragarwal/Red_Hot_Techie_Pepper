@@ -1,0 +1,18 @@
+2011-01-29T15:06:00.000Z	novitololo		Is it normal that /var/www has just write permission for root?
+2011-01-29T15:07:00.000Z	novitololo		so everytime I wanna write something in there, I have to identify myself as sudo ...
+2011-01-29T15:07:00.000Z	novitololo		?
+2011-01-29T15:08:00.000Z	novitololo		mmmm, and if I wanna write files from eclipse and save them to the folder? Should I change the permisions?
+2011-01-29T15:09:00.000Z	novitololo		thanks mate
+2011-01-29T15:11:00.000Z	brontoeee	novitololo	you can chmod the entire folder to www user and add your user to www group, at least thats what i'am reading on the web, still not sure whats the correct approach
+2011-01-29T15:11:00.000Z	brontoeee	novitololo	let me google a bit
+2011-01-29T15:14:00.000Z	brontoeee	novitololo	http://serverfault.com/questions/124800/how-to-setup-linux-permissions-for-the-www-folder < scroll down to 1st answer, that seems resonable for dev machine i think
+2011-01-29T18:58:00.000Z	brontoeee	novitololo	you may want to : a . chown /var/www to www-data user , b. add your user to www-data group
+2011-01-29T18:59:00.000Z	brontoeee	novitololo	if you need exact command lines, let me know
+2011-01-29T19:36:00.000Z	novitololo	brontoeee	I don't have clear the /var/www permission setting :).  The owner, before I did anything was root:root, why www-data is involved here?
+2011-01-29T19:37:00.000Z	brontoeee	novitololo	the apache and friends (php) will run under www-data usually
+2011-01-29T19:39:00.000Z	brontoeee	novitololo	so you can actually write to /var/www ?
+2011-01-29T19:41:00.000Z	brontoeee	novitololo	just one way of doing it, your way seems to be working as well
+2011-01-29T19:41:00.000Z	brontoeee	novitololo	it will tell you
+2011-01-29T19:43:00.000Z	brontoeee	novitololo	i dont understand that part
+2011-01-29T19:50:00.000Z	novitololo	brontoeee	what would be de difference for a production server?
+2011-01-29T19:50:00.000Z	brontoeee	novitololo	tightened security, only alow server+php to write to specific folder or change specific files

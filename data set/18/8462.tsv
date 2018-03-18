@@ -1,0 +1,18 @@
+2008-01-21T10:07:00.000Z	narothepharoh		how do i change permissions to my dvd drives to read and write?
+2008-01-21T10:08:00.000Z	skwashd	narothepharoh	sudo adduser <your-username> cdrom
+2008-01-21T10:08:00.000Z	skwashd	narothepharoh	reboot and try again :)
+2008-01-21T10:13:00.000Z	narothepharoh	skwashd	first it said i am already a user then i did it for the other one and it said,sudo adduser narothepharoh CD-RW/DVD±RW Drive
+2008-01-21T10:13:00.000Z	narothepharoh		adduser: Only one or two names allowed.
+2008-01-21T10:14:00.000Z	skwashd	narothepharoh	adduser <username> cdrom ... not  CD-RW/DVD±RW Drive
+2008-01-21T10:14:00.000Z	narothepharoh	skwashd	i did cdrom first and it said i am already a member
+2008-01-21T10:15:00.000Z	skwashd	narothepharoh	ls /dev/cdrom -l
+2008-01-21T10:16:00.000Z	narothepharoh	skwashd	lrwxrwxrwx 1 root root 3 2008-01-20 21:40 /dev/cdrom -> hdc
+2008-01-21T10:16:00.000Z	narothepharoh		????
+2008-01-21T10:16:00.000Z	skwashd	narothepharoh	ls -l /dev/hdc
+2008-01-21T10:17:00.000Z	narothepharoh	skwashd	brw-rw---- 1 root cdrom 22, 0 2008-01-20 21:40 /dev/hdc
+2008-01-21T10:18:00.000Z	skwashd	narothepharoh	so if you are in the cdrom group you should have read and write access to the device
+2008-01-21T10:18:00.000Z	narothepharoh	skwashd	it wont let me change any access it says permission denied
+2008-01-21T10:19:00.000Z	skwashd	narothepharoh	what is "it" ? :)
+2008-01-21T10:19:00.000Z	narothepharoh	skwashd	brw-rw---- 1 root cdrom 22, 0 2008-01-20 21:40 /dev/hdc
+2008-01-21T10:19:00.000Z	narothepharoh		,Sorry, couldn't change the permissions of "CD-RW/DVD±RW Drive".
+2008-01-21T10:19:00.000Z	skwashd	narothepharoh	any changes will be lost of reboot

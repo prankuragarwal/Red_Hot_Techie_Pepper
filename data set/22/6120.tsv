@@ -1,0 +1,22 @@
+2006-12-18T07:11:00.000Z	henning		Can anybody help me with this? I cannot log into my Gnome Desktop. My mistake was to send the command "sudo chmod -r *". Aftert this I wasn't able to login again. By logging in I got the error message ".dmrc has to have 644 rights and the home folder has to by owned by this user..." After doing the 644 chmod and chown commands I can login but the Gnome Desktop doesn't start. Pressing Alt+Ctrl+F1 works for getting into console.
+2006-12-18T07:12:00.000Z	mneptok	henning	boot to a console and fix the permissions of your drive.
+2006-12-18T07:14:00.000Z	henning	mneptok	permission of which drive?
+2006-12-18T07:14:00.000Z	mneptok	henning	the drive/partition you ran chmod on
+2006-12-18T07:14:00.000Z	mneptok	henning	basically, that chmod command you gave removed the read permission on *every file*. not good.
+2006-12-18T07:16:00.000Z	henning	mneptok	so whats the right command to change the permissions for the whole partition? chmod -R 644 * ?
+2006-12-18T07:17:00.000Z	mneptok	henning	you don't *want* every file to have read permissions. that's the problem. there's no easy way to undo what you did.
+2006-12-18T07:19:00.000Z	henning	mneptok	can u propose me the right mode for system folders and whats the right chmod for /tmp/ & /var/ ?
+2006-12-18T07:20:00.000Z	mneptok	henning	no, i cannot tell you the correct permissions for the hundreds of files in those directories.
+2006-12-18T07:20:00.000Z	mneptok	henning	"I just burned my house to the ground. How can I use water and a copy of 'The Grapes Of Wrath' to rebuild my house from the ashes?"  <-- same question ;)
+2006-12-18T07:21:00.000Z	mneptok	henning	a re-install is, without a doubt, the path of least resistance
+2006-12-18T07:24:00.000Z	mneptok	henning	no -R ?
+2006-12-18T07:25:00.000Z	mneptok	henning	"sudo chmod -R -r *" is really, REALLY bad. "sudo chmod -r *" is far less so.
+2006-12-18T07:28:00.000Z	mneptok	henning	which command was it? big -R there or no?
+2006-12-18T07:28:00.000Z	mneptok	henning	cd / && sudo chmod +r *
+2006-12-18T07:29:00.000Z	mneptok	henning	if so, that should in no way affect your ability to login
+2006-12-18T07:30:00.000Z	mneptok	henning	then the comamnd was not run from that directory, or was not the command you said you typed.
+2006-12-18T07:31:00.000Z	mneptok	henning	did you just open a terminal and type that command?
+2006-12-18T07:31:00.000Z	mneptok	henning	then you ran it in your home dir, not in ~/stuff
+2006-12-18T07:31:00.000Z	mneptok	henning	cd ~/ && sudo chmod +r *
+2006-12-18T07:33:00.000Z	mneptok	henning	just note that command i gave you. you should be fine.
+2006-12-18T07:33:00.000Z	mneptok	henning	don't worry about irssi right now. it's corollary.

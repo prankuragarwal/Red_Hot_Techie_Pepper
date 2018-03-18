@@ -1,0 +1,19 @@
+2011-06-30T22:39:00.000Z	_pHI_		hmm, how can i find out what graphics driver is currently being used by ubuntu?
+2011-06-30T22:40:00.000Z	escott	_pHI_	glxinfo will tell you what glxdriver is in use, you can also look through /var/log/Xorg.0.log
+2011-06-30T22:40:00.000Z	_pHI_	escott	hmm, it complains about extension "GLX" missing on display ":0.0".
+2011-06-30T22:41:00.000Z	escott	_pHI_	sandybridge is probably too new. try a newer kernel/gem combo or just wait for 11.10
+2011-06-30T22:41:00.000Z	_pHI_	escott	darn :(
+2011-06-30T22:41:00.000Z	_pHI_	escott	let me look at /var/log/Xorg.0.log
+2011-06-30T22:42:00.000Z	escott	_pHI_	intel is reasonably well supported, but they don't give the engineering samples to the gem team soon enough for the drivers to make it into mesa/gem by launch date
+2011-06-30T22:42:00.000Z	escott	_pHI_	you could see if there is some kind of gem/mesa ppa out there to get you a bit more "bleeding edge"
+2011-06-30T22:43:00.000Z	_pHI_	escott	i found one and am on these drivers (+mesa) update from phoronix...
+2011-06-30T22:44:00.000Z	escott	_pHI_	for intel you need to update the entire stack kernel + gem + mesa maybe even xorg
+2012-04-15T03:06:00.000Z	escott	_pHI_	you should just use dvi. you dont know what the lcd is doing, can the panel actually support a 75Hz refresh?
+2012-04-15T03:07:00.000Z	_pHI_	escott	xrandr is reporting 75 on vga (and i'm using that) and 60hz on dvi....
+2012-04-15T03:07:00.000Z	escott	_pHI_	but the vga signal could be downconverted. going vga means you are converting digital->analog->digital. and you dont know what is happening in that last conversion
+2012-04-15T03:08:00.000Z	_pHI_	escott	i guess i don't know...
+2012-04-15T03:08:00.000Z	_pHI_	escott	but my laptop only has vga out
+2012-04-15T03:08:00.000Z	_pHI_	escott	the panel is advertized as supporting 75hz on vga
+2012-04-15T03:09:00.000Z	escott	_pHI_	send the best analog signal you can send, just know there is a converter going back to digital before it gets displayed. just because you send 75Hz doesn't mean it will display 75Hz is my point
+2012-04-15T03:10:00.000Z	_pHI_	escott	ah ok! good to know. thanks!
+2012-04-15T03:11:00.000Z	escott	_pHI_	i thought you were deciding between using a dvi cable which advertised 60Hz and an analog advertising 75Hz and I would say pick the digital, but if its analog vs analog go for the highest numbers

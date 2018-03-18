@@ -1,0 +1,18 @@
+2010-09-12T00:18:00.000Z	theixle		I am having trouble ssh'ing into my machine. I have openssh-server and client installed, sshd is listening on port 22, the sshd_config file has 'Port 22', and I think I have good rsa/dsa keys. But using 'ssh -l <username> localhost' won't work. Port 22 is blocked by something.
+2010-09-12T00:19:00.000Z	xiaclo	theixle	is ssh listening on all interfaces?  sometimes it's not configured to listen on the loopback, trying using your eth0/wlan0 IP instead of localhost
+2010-09-12T00:21:00.000Z	theixle	xiaclo	ifconfig says wlan0 ip is 192.168.0.2, i used ssh -l <username> 192.168.0.2 and still got ssh: connect to host 192.168.0.2 port 22: Connection refused
+2010-09-12T00:22:00.000Z	xiaclo	theixle	'sudo netstat -an | grep 22'
+2010-09-12T00:22:00.000Z	theixle	xiaclo	tcp6       0      0 :::22                   :::*                    LISTEN
+2010-09-12T00:23:00.000Z	xiaclo	theixle	that's it?
+2010-09-12T00:23:00.000Z	xiaclo	theixle	that's listening over ipv6 ... there should be another one with just tcp instead of tcp6
+2010-09-12T00:23:00.000Z	theixle	xiaclo	there isn't
+2010-09-12T00:24:00.000Z	xiaclo	theixle	'sudo /etc/init.d/sshd restart'
+2010-09-12T00:24:00.000Z	theixle	xiaclo	you mean ssh restart?
+2010-09-12T00:25:00.000Z	xiaclo	theixle	possibly, if ubuntu mangled the naming again ... it's sshd on my system ...
+2010-09-12T00:26:00.000Z	xiaclo	theixle	and try 'netstat -an | grep 22' again ... should be a tcp service and tcp6
+2010-09-12T00:26:00.000Z	theixle	xiaclo	nope, just the tcp6 one
+2010-09-12T00:28:00.000Z	xiaclo	theixle	i'm not seeing an option to disable ipv4 in the sshd_config ... can you check what the ListenAddress is in that file?  should be /etc/sshd/sshd_config
+2010-09-12T00:30:00.000Z	xiaclo	theixle	that will do it, comment the first line, uncomment the second line
+2010-09-12T00:31:00.000Z	theixle	xiaclo	Woot! Yep that was it.
+2010-09-12T00:31:00.000Z	xiaclo	theixle	happy to help =)
+2010-09-12T00:31:00.000Z	theixle	xiaclo	(After 3 days of searching the web...)

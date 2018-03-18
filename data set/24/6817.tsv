@@ -1,0 +1,24 @@
+2005-07-09T16:38:00.000Z	mig`		can anyone help me?
+2005-07-09T16:38:00.000Z	mig`		hmm, let me google it
+2005-07-09T16:38:00.000Z	mig`		what is the command to switch into the environment of the installed system from the livecd, is it: chroot ?
+2005-07-09T16:39:00.000Z	mig`		ok
+2005-07-09T16:39:00.000Z	mig`		i guess i'll just read up
+2005-07-09T16:39:00.000Z	mig`		on it... thanks
+2005-07-09T06:33:00.000Z	mig`		hmm, the initrd that ubuntu default install makes available loads usb-storage (which technically should load a usb hdd right?)
+2005-07-09T06:33:00.000Z	mig`		but its still not loading
+2005-07-09T06:34:00.000Z	crimsun	mig`	well, usb mass storage, yes
+2005-07-09T06:34:00.000Z	crimsun	mig`	are you trying to use a usb thumbdrive?
+2005-07-09T06:37:00.000Z	mig`	crimsun	i'm trying to use a usb hard drive
+2005-07-09T06:37:00.000Z	mig`	crimsun	i completed step1 of installation on a usb hdd
+2005-07-09T06:38:00.000Z	crimsun	mig`	ok, and is scsi_mod loaded?
+2005-07-09T06:47:00.000Z	mig`	crimsun	right now, i'm trying to call mkinitrd (while chroot'd into the usb hdd from this livecd), it tells me to mount procfs which i do, and then when i call mkinitrd (the call is: mkinitrd -k -o /boot/initrd.mig -r /dev/sda1) and it gives me the following error:
+2005-07-09T06:49:00.000Z	crimsun	mig`	does /lib/modules/2.6.10-5-386/ exist?
+2005-07-09T07:26:00.000Z	mig`	crimsun	i'm doing everythign like it should be done, but mkinitrd gives that error
+2005-07-09T07:28:00.000Z	crimsun	mig`	I'm sorry, but initrds are not my expertise. Someone else here may know. Have you checked tldp.org?
+2005-07-09T07:29:00.000Z	crimsun	mig`	if that's too general, try looking in other distros' forums. Fedora and Gentoo both have great resources.
+2005-07-09T07:29:00.000Z	crimsun	mig`	echo $SOMETHING
+2005-07-10T10:22:00.000Z	crimsun	mig`	excellent
+2005-07-10T10:22:00.000Z	mig`	crimsun	the livecd uses the 386 kernel, ubuntu installs the 686 kernel
+2005-07-10T10:23:00.000Z	crimsun	mig`	it has installed the -386 in my experience
+2005-07-10T10:23:00.000Z	mig`	crimsun	i meant in my particular case
+2005-07-10T10:24:00.000Z	crimsun	mig`	dpkg -i foo.deb

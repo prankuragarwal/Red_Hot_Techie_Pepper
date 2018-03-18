@@ -1,0 +1,23 @@
+2007-08-21T12:53:00.000Z	btorio		i got all the way to the testing part and it screwed up
+2007-08-21T12:53:00.000Z	btorio		wouldn't work
+2007-08-21T12:53:00.000Z	btorio		and some of the commands they wrote don't work
+2007-08-21T12:54:00.000Z	btorio		i don't know what wouldn't work....
+2007-08-21T12:54:00.000Z	btorio		that's the issue
+2007-08-21T12:54:00.000Z	btorio		the whole telnet thing did not say anything
+2007-08-21T12:54:00.000Z	btorio		when i did it
+2007-08-21T12:55:00.000Z	btorio		wait... no there was one...
+2007-08-21T12:55:00.000Z	btorio		echo 'pwcheck_method: saslauthd' >> /etc/postfix/sasl/smtpd.conf gave me a permission denied
+2007-08-21T12:55:00.000Z	btorio		even as superuser
+2007-08-21T12:56:00.000Z	jrib	btorio	how did you execute it as superuser?
+2007-08-21T12:56:00.000Z	jrib	btorio	that won't work.  Do 'sudo -i' first to get a root shell, then do the commands
+2007-08-21T12:58:00.000Z	jrib	btorio	you need to do two things so people can help you better in this channel: 1) stop pressing enter to break up your responses  2) prefix what you say with the name of the person you are addressing
+2007-08-21T12:59:00.000Z	btorio	jrib	sorry...
+2007-08-24T05:50:00.000Z	jrib	btorio	adduser    and then add him to the "admin" group
+2007-08-24T05:58:00.000Z	jrib	btorio	copy them and then chown all the files
+2007-08-24T05:58:00.000Z	btorio	jrib	if i copy them over and then delete the old account, then recreate the old account and move the files back over, will i have to chown all the files
+2007-08-24T06:00:00.000Z	jrib	btorio	I don't really see the point of that.  The files should be owned by whatever user the files are  for
+2007-08-24T06:00:00.000Z	btorio	jrib	the user account is corrupt i want to ckeep the same user name
+2007-08-24T06:00:00.000Z	jrib	btorio	warning about Pelo's command though, it won't copy any files taht start with a .
+2007-08-24T06:01:00.000Z	jrib	btorio	if you copy the same files then nothing will change
+2007-08-24T06:01:00.000Z	btorio	jrib	can i copy files with .
+2007-08-24T06:02:00.000Z	jrib	btorio	you would do something like (Pelo, please check me on this): sudo cp /home/firstuser/* /home/firstuser/.* /home/seconduser/

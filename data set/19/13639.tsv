@@ -1,0 +1,19 @@
+2008-02-19T07:04:00.000Z	thechitowncubs		I just configured LDAP authentication for my home network and it takes forever for me to login, are there any known tweaks for this problem?
+2008-02-19T07:04:00.000Z	SuperQ	thechitowncubs	what is the ldap server?
+2008-02-19T07:04:00.000Z	thechitowncubs	SuperQ	it is linux
+2008-02-19T07:04:00.000Z	SuperQ	thechitowncubs	you may need to install nscd, but unless it's a busy ldap server it shouldn't be that slow
+2008-02-19T07:04:00.000Z	thechitowncubs	SuperQ	 its Ubuntu 7.10
+2008-02-19T07:05:00.000Z	SuperQ	thechitowncubs	what's in /etc/nsswitch.conf on the client for passwd
+2008-02-19T07:06:00.000Z	thechitowncubs	SuperQ	compat ldap
+2008-02-19T07:07:00.000Z	SuperQ	thechitowncubs	try "files ldap"
+2008-02-19T07:07:00.000Z	SuperQ	thechitowncubs	I find it works better
+2008-02-19T07:09:00.000Z	SuperQ	thechitowncubs	try apt-get install nscd
+2008-02-19T07:16:00.000Z	thechitowncubs	SuperQ	probably fine for my small home network, right?
+2008-02-19T07:16:00.000Z	SuperQ	thechitowncubs	yea, probably fine
+2008-02-19T07:16:00.000Z	SuperQ	thechitowncubs	nscd is prone to wedging in stupid stupid ways due to the way it was written
+2008-02-19T07:17:00.000Z	SuperQ	thechitowncubs	and the glibc maintainers refuse to fix it
+2008-02-19T07:17:00.000Z	SuperQ	thechitowncubs	http://code.google.com/p/gnscd/
+2008-02-19T07:17:00.000Z	SuperQ	thechitowncubs	some people at Google wrote a new one from scratch
+2008-02-19T07:18:00.000Z	thechitowncubs	SuperQ	interesting, thanks
+2008-02-19T07:22:00.000Z	thechitowncubs	SuperQ	another basic LDAP question, if i assign my LDAP user a string of GIDs and my nsswitch is set up to look at files also, will it assign the groups in real time during login?
+2008-02-19T07:29:00.000Z	thechitowncubs	SuperQ	any tips on mapping my ldap users to local groups?

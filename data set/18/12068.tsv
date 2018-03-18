@@ -1,0 +1,18 @@
+2006-06-08T05:45:00.000Z	Hawkins		I can't make fglrx work, did it like https://wiki.ubuntu.com/BinaryDriverHowto/ATI#head-5ead174a0b3294527486cd4d71ded66b40003f25 said, but fglrxinfo says I have Mesa ?
+2006-06-08T05:45:00.000Z	ccooke	Hawkins	have you checked that the fglrx kernel module is loaded? 'lsmod | grep fglrx'
+2006-06-08T05:46:00.000Z	Hawkins	ccooke	, no fglrx listed there
+2006-06-08T05:47:00.000Z	ccooke	Hawkins	Right. 'sudo gedit /etc/modules' - add fglrx to that
+2006-06-08T05:48:00.000Z	Hawkins	ccooke	, done, CTRL + ALT + backspace to restart X ?
+2006-06-08T05:48:00.000Z	ccooke	Hawkins	That'll make sure it's loaded next reboot. To load it *this* time only, do: 'sudo modprobe fglrx' and hit Ctrl-Alt-Backspace to kill your X server - it may take a minute or so to reload.
+2006-06-08T05:48:00.000Z	Hawkins	ccooke	, roger
+2006-06-08T05:49:00.000Z	Hawkins	ccooke	, modproble gave me FATAL: Error inserting fglrx (/lib/modules/2.6.15-23-386/volatile/fglrx.ko): Operation not permitted
+2006-06-08T05:49:00.000Z	ccooke	Hawkins	did you run it with sudo?
+2006-06-08T05:49:00.000Z	Hawkins		Yes, but it didn't ask password
+2006-06-08T05:50:00.000Z	ccooke	Hawkins	Try: 'sudo -s' to get a root prompt, then modprobe fglrx
+2006-06-08T05:51:00.000Z	Hawkins	ccooke	, got into root, but still giving same error
+2006-06-08T05:54:00.000Z	ccooke	Hawkins	Okay. Try rebooting - it's just possible it's an ordering problem.
+2006-06-08T05:54:00.000Z	Hawkins	ccooke	, rebooting X or the system ?
+2006-06-08T05:55:00.000Z	ccooke	Hawkins	the system.
+2006-06-08T05:55:00.000Z	Hawkins	ccooke	, understood booting
+2006-06-08T06:00:00.000Z	Hawkins	ccooke	, thank you now fglrx is working :)
+2006-06-08T06:01:00.000Z	Hawkins	ccooke	, but on this boot my network card wasn't active before I fiddled with it :(

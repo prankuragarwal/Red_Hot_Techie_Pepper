@@ -1,0 +1,19 @@
+2009-11-04T19:49:00.000Z	bosky101		 how to i explicitly see my dns entries on the system. and tell them to refresh from a nameserver explicitly?
+2009-11-04T19:50:00.000Z	ActionParsnip	bosky101	you can set them in /etc/resolv.conf   but network manager will overwrite it if its used next boot
+2009-11-04T19:50:00.000Z	bosky101	ActionParsnip	 is it possible to which dns server i'm pinging for "ping <website>"
+2009-11-04T19:50:00.000Z	bosky101	ActionParsnip	 or which nameserver
+2009-11-04T19:52:00.000Z	bosky101	ActionParsnip	resolv.conf gives my routers ip. is there some way i can explicitly ask it to refresh / repopulate the dns entries
+2009-11-04T19:53:00.000Z	ActionParsnip	bosky101	thats because your router is providing a proxy DNS
+2009-11-04T19:53:00.000Z	ActionParsnip	bosky101	you can restart networking but you will just get the same DNS due to the DHCP
+2009-11-04T19:54:00.000Z	bosky101	ActionParsnip	will resolv.conf take multilines eg nameserver \t ip1 \n nameserver \t ip2
+2009-11-04T19:55:00.000Z	ActionParsnip	bosky101	sure, you can add as many as you like, if you run dnsmasq you will need to add localhost as a nameserver too
+2009-11-04T19:56:00.000Z	ActionParsnip	bosky101	dnsmasq will give you a local dns and reduce the need the system to ask the web for name resolution
+2009-11-04T20:00:00.000Z	bosky101	ActionParsnip	when i replaced nameserver with a newone ,it just took longer to show page not found in firefox. ping timedout as well
+2009-11-04T20:08:00.000Z	bosky101	ActionParsnip	ha thanks, i just opened the same page
+2009-11-04T20:01:00.000Z	ActionParsnip	bosky101	keep the original, just add the name servers you wanna use. Make sure you add them by IP
+2009-11-04T20:01:00.000Z	bosky101	ActionParsnip	if dig <website> @nameserver works, but dig <website> says ServFail , what does that mean
+2009-11-04T20:03:00.000Z	ActionParsnip	bosky101	if you use network manager, it will change it back
+2009-11-04T20:07:00.000Z	ActionParsnip	bosky101	if you install and configure dnsmasq your resolutions will be instantaneous
+2009-11-04T20:07:00.000Z	ActionParsnip	bosky101	rather than querying the web which takes tiiiime
+2009-11-04T20:08:00.000Z	ActionParsnip	bosky101	http://embraceubuntu.com/2006/08/02/local-dns-cache-for-faster-browsing/
+2009-11-04T20:08:00.000Z	ActionParsnip	bosky101	its badass

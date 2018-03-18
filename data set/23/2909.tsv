@@ -1,0 +1,23 @@
+2008-11-26T11:45:00.000Z	ddgoose	paul68	are you able to ssh with that script?
+2008-11-26T11:58:00.000Z	paul68	ddgoose	not able to do ssh
+2008-11-26T12:00:00.000Z	ddgoose	paul68	where did you get that script?
+2008-11-26T12:01:00.000Z	paul68	ddgoose	I made it with a little help
+2008-11-26T12:01:00.000Z	ddgoose	paul68	so INT_NET and EXT_NET are set proper?
+2008-11-26T12:01:00.000Z	paul68	ddgoose	yes they are
+2008-11-26T12:02:00.000Z	ddgoose	paul68	This box is a nat router?
+2008-11-26T12:03:00.000Z	paul68	ddgoose	yes it is my lan is behind eth1 and my wan is at eth0
+2008-11-26T12:10:00.000Z	ddgoose	paul68	it looks right, I would have to setup a vmware lab to to test it though.
+2008-11-26T12:13:00.000Z	paul68	ddgoose	I thought so to but its complaining about the ssh and the dns
+2008-11-26T12:29:00.000Z	paul68	ddgoose	could dns be the reason that also my ssh isn't working? in my opinion it should not interfear however I am not that familliar with linux security
+2008-11-26T12:34:00.000Z	ddgoose	paul68	what is the dns server ip you are using?
+2008-11-26T12:34:00.000Z	paul68	ddgoose	is on the same box
+2008-11-26T12:36:00.000Z	ddgoose	paul68	do you really need a nat rule for dns then if you are pointing your internal boxes to that internal interface and not traversing the nat?
+2008-11-26T12:38:00.000Z	paul68	ddgoose	yes I do need a nat rule otherwhise it wont pass through towards the internal network and for that reason I can't get out on the internet either
+2008-11-26T12:45:00.000Z	ddgoose	paul68	did you mean to mix tcp and udp in your rules?
+2008-11-26T12:45:00.000Z	ddgoose	paul68	you need both tcp and udp port 53 for the dns rules
+2008-11-26T12:46:00.000Z	ddgoose	paul68	one has tcp other has udp
+2008-11-26T12:46:00.000Z	ddgoose	paul68	that may be the issue
+2008-11-26T12:46:00.000Z	paul68	ddgoose	I thought dns had only udp and not tcp
+2008-11-26T12:46:00.000Z	paul68	ddgoose	will look into it
+2008-11-26T12:46:00.000Z	ddgoose	paul68	it listens on both, but still you have those 2 rules and one has udp the other has tcp
+2008-11-26T12:47:00.000Z	paul68	ddgoose	ok understood

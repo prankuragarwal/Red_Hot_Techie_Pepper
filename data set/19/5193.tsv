@@ -1,0 +1,19 @@
+2008-10-24T22:42:00.000Z	blip-		hi all,  i'm using a linux server that has apache2 installed,  ubuntu 8.04....  after deleting old website files and uploading new ones,  i still get the old website.  i have restarted apache2 with "apache2ctl graceful" as well as with the stop/start.     I'm still seeing the old site.  hell i tried accessing from a different machine.  what's happening ?    thanks
+2008-10-24T22:42:00.000Z	erki	blip-	Are you sure you replaced files in the correct folder?
+2008-10-24T22:44:00.000Z	blip-	erki	kitche:  it's a very simple site with 1 CSS and 3 htmls.  all in the directory /var/www/mysite  ....  i re-erased everything and reuploaded my new files twice,  i opened and checked the file contents with ssh vim and they are indeed the new ones... infact,  if i specify  URL/mysite/index.html i get the newsite but when i say URL/mysite/ i get the old one.
+2008-10-24T22:45:00.000Z	erki	blip-	httpd.conf might have some strange directory entries for that folder, you might want to check itt.
+2008-10-24T22:47:00.000Z	blip-	erki	Codedrunk_work: i think you are refering to "/etc/apache2/apache2.conf" right ?  Because httpd is on Fedora,CentOS only according to apache2 docs
+2008-10-24T22:49:00.000Z	erki	blip-	You're probably correct, I've only administered apache on windows *ashamed*
+2008-10-24T23:02:00.000Z	blip-	erki	i checked the apache2 config file, there are some other directories defined in there for other websites, but nothing relating to my directory at all.  this is driving me crazy,  it took me 1 hour to make the site.  and now 2 hours and counting and i can't get it to show up on the server.  do you have any other recommendations please ?
+2008-10-24T23:03:00.000Z	erki	blip-	Oh, are you sure it's not your browser showing you old files? Try pressing ctrl+f5
+2008-10-24T23:04:00.000Z	blip-	erki	yes i deleted all the chache and restarted ff3.  i even loaded from a different machine :)       Someone mentioned /etc/apache2/sites-available/default  to me but it also doesn't seem to have any pointer to /var/www/mysite/
+2008-10-24T23:04:00.000Z	erki	blip-	That's just ... wierd...
+2008-10-24T23:05:00.000Z	erki	blip-	And there are no other files called index.something in the folder?
+2008-10-24T23:06:00.000Z	blip-	erki	no :(
+2008-10-24T23:06:00.000Z	blip-	erki	omg wait.  there are backup files. ie index.html~
+2008-10-24T23:08:00.000Z	blip-	erki	no effect. i feel like nuking apache completely and reinstalling.
+2008-10-24T23:09:00.000Z	erki	blip-	That sucks. It seems really wierd, and sounds like it must be because something is stuck in a cache somewhere, but where?
+2008-10-24T23:10:00.000Z	blip-	erki	actually yes i believe something is stuck in apache cache...i checked out the log files and when i access the site,  the CSS fails to reference some image files which aren't there... this means it's still using the old CSS not my new one.  anyway i've taken enough of your time. thank you for all the input :)
+2008-10-24T23:11:00.000Z	erki	blip-	np, sorry I couldn't be of any help. Feel free to share the solution if/when you find one!
+2008-10-24T23:13:00.000Z	blip-	erki	 i just verified it... i put the files in a different location /var/www/mysite2  and now everything works fine :)      So i'll stick with this until i figure out how to flush the old stuff from /var/www/mysite.     thanks again.  take care
+2008-10-24T23:13:00.000Z	erki	blip-	Good on you mate!

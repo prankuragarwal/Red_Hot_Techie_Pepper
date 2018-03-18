@@ -1,0 +1,18 @@
+2010-08-23T17:52:00.000Z	minty		Hi to all : ) Can someone guide me how to make ethernet to load at start-up. I have 3 NICs, 1 build onboard and 2 PCI. The Build-in is autostart, but the PCI not. I need to manually "ifconfig ethX up" everytime. thankx.
+2010-08-23T17:54:00.000Z	minty		My PCI nic is DLink 530TX Gigabit and DLink 528TX 100Mbit. The on board NIC is nForce MCP61 Gigabit.
+2010-08-23T17:56:00.000Z	erUSUL	minty	set up the three intrfaces in /etc/network/interfaces. make sure the three have an auto ethn line
+2010-08-23T18:14:00.000Z	erUSUL	minty	paste.ubuntu.com
+2010-08-23T18:19:00.000Z	erUSUL	minty	go to paste.ubuntu.com website. paste the file there and press the button paste. give us here the url
+2010-08-23T18:24:00.000Z	erUSUL	minty	where are the entries for eth0 and eth2 ?
+2010-08-23T18:30:00.000Z	erUSUL	minty	maybe the driver is not loaded in time ? tried listing the nic drivers explicity in /etc/modules ?
+2010-08-23T18:31:00.000Z	minty	erUSUL	how to do that
+2010-08-23T18:33:00.000Z	erUSUL	minty	find out what drivers the nic use ( for nvidia integrated is forcedeth ) and add it to the file « echo "forcedeth" | sudo tee -a /etc/modules »
+2010-08-23T18:36:00.000Z	minty	erUSUL	i got return as "forcedeth"
+2010-08-23T18:36:00.000Z	erUSUL	minty	that's expected
+2010-08-23T18:59:00.000Z	minty	erUSUL	what does this mean "In order to enable or disable this script just change the execution bits" found it in the rc.local test
+2010-08-23T19:00:00.000Z	erUSUL	minty	it means that if you want the script to not run on boot just disable the execute permissions
+2010-08-23T19:00:00.000Z	erUSUL	minty	sudo chmod -x /etc/rc.local
+2010-08-23T19:00:00.000Z	erUSUL	minty	this restores the eXecutable perm. --> sudo chmod +x /etc/rc.local
+2010-08-23T19:01:00.000Z	minty	erUSUL	ic.. thankx
+2010-08-23T19:13:00.000Z	minty	erUSUL	stefan33 and sipior.... thankx guys... my ethernet start-up as expected. thankx again :)
+2010-08-23T19:13:00.000Z	erUSUL	minty	no problem

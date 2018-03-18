@@ -1,0 +1,18 @@
+2011-06-06T22:09:00.000Z	ejo		Help!  "ubi-partman failed with exit code 141" while I'm trying to install 11.04 from a USB stick to a second hard drive.  Following instructions for dual-booting Windows and Ubuntu, planning to install Grub on linux drive and use EasyBCD to adjust the primary drive's Windows boot loader.
+2011-06-06T22:10:00.000Z	ejo		I saw ubuntu bug reports regarding this "ubi-partman failed with exit code 141" issue on the tracker, but reported in april and apparently fixed.  So I don't know why my freshly downloaded 11.04 ISO would have this problem...
+2011-06-06T22:12:00.000Z	ejo		Is this the wrong place to look for help with 11.04 installation issues?  I'm sure they're at least not a favorite type of question
+2011-06-06T22:13:00.000Z	ejo		On my previous try, I somehow got around that install problem, but after using my successful 11.04 install for a couple of days I got boot errors where my /boot partition could not be mounted, and I don't really understand that either.  The physical drive checks out OK with various tools.
+2011-06-06T22:14:00.000Z	brown_fern	ejo	What did the "issue" concern? Would it be that installing from USB is sometimes problematic, I would then install from a CD/DVD then.
+2011-06-06T22:15:00.000Z	ejo	brown_fern	is that just a known issue with USB installs?  you must have missed my description only a couple of lines earlier: "ubi-partman failed with exit code 141" at the beginning of the install attempt.
+2011-06-06T22:16:00.000Z	brown_fern	ejo	I don't know if that is a known issue with USB, I almost always install from DVD and hardly ever have problems.
+2011-06-06T22:17:00.000Z	ejo	brown_fern	I see.  Thanks for the suggestion.  Any comment on my other question?  Where after I did successfully install 11.04 one time, a day later I had boot trouble, the /boot partition could not be loaded?
+2011-06-06T22:21:00.000Z	brown_fern	ejo	I also make /boot partitions with my installs, I make them larger than they need to be, at least 500 MB or more, and in a native Linux file system, but an older version of that file system so that the FS does not take up too much space...
+2011-06-06T22:21:00.000Z	brown_fern	ejo	I don't think that in your case that is helpful information.
+2011-06-06T22:22:00.000Z	ejo	brown_fern	I've seen posts while researching this issue, which indicated that a /boot partition of 500MB or more would solve this.  But the author of the dual-boot instructions I was following, which are only ten days old, said that wasn't important.  Incidentally I used ext2 for /boot.
+2011-06-06T22:23:00.000Z	brown_fern	ejo	I almost always use ext2 for /boot, too.
+2011-06-06T22:23:00.000Z	ejo	brown_fern	The one lead I've gotten so far is that I should install GRUB to the MBR, not to /boot (which I apparently must have done).  How do I move GRUB?
+2011-06-06T22:26:00.000Z	brown_fern	ejo	I'm no expert, but it was my understanding that modern boot loaders, such as Grub, are too big for the MBR alone and that they install to the hard disk drive for this reason. It may also be the case with Windows 7, for instance, that the 100 MB mandatory partition it installs is for its boot loader, too.
+2011-06-06T22:27:00.000Z	ejo		Ah.
+2011-06-06T22:29:00.000Z	brown_fern	ejo	So, Grub in fact installs itself, at least by default, to the MBR and the /boot partition. I personally know nothing about getting Grub to install just to the small MBR.
+2011-06-06T22:30:00.000Z	ejo	brown_fern	 OK, thanks again... I'll just figure out whether to reinstall or what.
+2011-06-06T22:32:00.000Z	brown_fern	ejo	I wish I could have helped, good luck with it.

@@ -1,0 +1,24 @@
+2004-11-13T11:51:00.000Z	ophie		is anyone having problems using Sound Juicer to rip audio CDs?  I get a "No CD-ROM drives found error".
+2004-11-13T11:52:00.000Z	TheMuso	ophie	Have you cheecked the preferences in sj to see if the drive is there, or does it give you that error and exit?
+2004-11-13T11:53:00.000Z	ophie	TheMuso	I can't get into SJ's preferences menu, because once it shows me the error and I click ok, it just exits.
+2004-11-13T11:54:00.000Z	TheMuso		Are you able to mount Data CDs in it all right?
+2004-11-13T11:54:00.000Z	ophie	TheMuso	yes, I can read the install CD and other data CDs with no problem.
+2004-11-13T11:55:00.000Z	TheMuso	ophie	Have you checked the permissions of the device?
+2004-11-13T11:55:00.000Z	ophie	TheMuso	how do i check the permissions of the device?  sorry, i'm a newbie.
+2004-11-13T11:56:00.000Z	TheMuso	ophie	Thats fine. Is the drive an IDE drive?
+2004-11-13T11:57:00.000Z	ophie	TheMuso	It is a USB2 external DVD/CDRW.
+2004-11-13T11:58:00.000Z	TheMuso	ophie	Ah ok. Run this: sudo modprobe sg
+2004-11-13T11:58:00.000Z	ophie	TheMuso	ok, i did that.
+2004-11-13T11:59:00.000Z	TheMuso	ophie	Now try and run sound-juicer again
+2004-11-13T11:59:00.000Z	ophie	TheMuso	you are a genius, it worked!!!
+2004-11-13T12:00:00.000Z	TheMuso	ophie	Glad to hear it.
+2004-11-13T12:00:00.000Z	ophie	TheMuso	do i need to do that everytime I log in?
+2004-11-13T12:00:00.000Z	TheMuso	ophie	No I was just about to suggest how to take care of that. Open up the /etc/modules file and add sg to the end on a separate line.
+2004-11-13T12:00:00.000Z	TheMuso	ophie	You need to do that with sudo.
+2004-11-13T12:01:00.000Z	ophie	TheMuso	done!
+2004-11-13T12:01:00.000Z	ophie	TheMuso	thanks...you've been a terrific help!
+2004-11-13T12:02:00.000Z	TheMuso	ophie	You are welcome.
+2004-11-13T12:02:00.000Z	ophie	TheMuso	just out of curiousity, what is the module sg for?
+2004-11-13T12:03:00.000Z	TheMuso	ophie	It is SCSI generic support. Since you are using a USB drive, all USB drives use the SCSi subsystem in Linux. For some reason sound-juicer needs this loaded in order to work with SCSI CD drives.
+2004-11-13T12:04:00.000Z	ophie	TheMuso	thanks for that fix.  i will post that in ubuntuforums.org for others to discover.
+2004-11-13T12:04:00.000Z	TheMuso	ophie	Sounds like a good idea.

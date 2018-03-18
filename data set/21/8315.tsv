@@ -1,0 +1,21 @@
+2006-05-21T12:20:00.000Z	PORDO		is there anything i can look at under hal-device-manager to see what a usb device is named under /dev, so i can mount it?
+2006-05-21T12:20:00.000Z	PORDO		i have no audio in dapper, so i'm going to save my voice mail to my pmp and listen to it...if i can figure out how to mount it, now that nautilus is sucking.
+2006-05-21T12:21:00.000Z	PORDO		then again, why would anyone want to play a proprietary format.
+2006-05-21T12:21:00.000Z	pitti	PORDO	your device isn't mounted automatically? Can you please file a bug?
+2006-05-21T12:21:00.000Z	PORDO	pitti	ehh...okay.  where?
+2006-05-21T12:21:00.000Z	pitti	PORDO	also, the 'block.device' property in h-d-m shows you the device
+2006-05-21T12:21:00.000Z	PORDO	pitti	could you also tell me how to mount it?
+2006-05-21T12:22:00.000Z	pitti	PORDO	sure
+2006-05-21T12:22:00.000Z	pitti	PORDO	but first I'm surprised that it isn't mounted automatically; https://launchpad.net/distros/ubuntu/+source/gnome-volume-manager/+filebug is a head-start for filing a bug
+2006-05-21T12:22:00.000Z	pitti	PORDO	the full name *is* block.device'
+2006-05-21T12:23:00.000Z	pitti	PORDO	just do 'dmesg' and look at the last few lines; it should be something like /dev/sda1 or /dev/sdb1
+2006-05-21T12:23:00.000Z	pitti	PORDO	and 'pmount-hal /dev/sda1' (or whatever) will mount it
+2006-05-21T12:23:00.000Z	PORDO	pitti	i already did that and saw nothing like that
+2006-05-21T12:24:00.000Z	pitti	PORDO	you mean, the kernel does not even recognize your device? that's baad
+2006-05-21T12:25:00.000Z	PORDO	pitti	i don't know what the device is called.
+2006-05-21T12:25:00.000Z	pitti	PORDO	well, this is just the USB bus driver, but there's no mesage about the storage device on it
+2006-05-21T12:25:00.000Z	pitti	PORDO	can you please pastebin your full dmesg?
+2006-05-21T12:28:00.000Z	pitti	PORDO	that looks horribly incomplete :/
+2006-05-21T12:29:00.000Z	pitti	PORDO	are you sure that there is a standard partition table on it?
+2006-05-21T12:30:00.000Z	PORDO	pitti	??
+2006-05-21T12:30:00.000Z	pitti	PORDO	yes, I know, but there's no sign of the kernel finding a partition table, let alone partitions

@@ -1,0 +1,22 @@
+2011-06-12T14:34:00.000Z	Ryan_Macy		how would I go about linking a command to a file
+2011-06-12T14:34:00.000Z	Ryan_Macy		ex I have a file called foo, I want to run foo by typing foo in the console
+2011-06-12T14:35:00.000Z	theadmin	Ryan_Macy	sudo mv foo /usr/local/bin
+2011-06-12T14:35:00.000Z	Ryan_Macy	theadmin	would I be able to create a sym link instead of moving it?
+2011-06-12T14:36:00.000Z	theadmin	Ryan_Macy	Yeah, that'd work too. Or you can just add the folder where it currently is to $PATH
+2011-06-12T14:39:00.000Z	Ryan_Macy	theadmin	I made a sym link with
+2011-06-12T14:39:00.000Z	theadmin	Ryan_Macy	Just in case, the command to create a symlink would be: sudo ln -s $PWD/foo /usr/local/bin/foo
+2011-06-12T14:39:00.000Z	Ryan_Macy		ln -s ./var/www/Symfony/app/console ./usr/local/bin/Symfony
+2011-06-12T14:39:00.000Z	Ryan_Macy		but when I ran Symfony
+2011-06-12T14:39:00.000Z	Ryan_Macy		i got command not found
+2011-06-12T14:40:00.000Z	theadmin	Ryan_Macy	That's weird.
+2011-06-12T14:40:00.000Z	theadmin	Ryan_Macy	My way is to write a small shellscript which will cd to the app's directory and then launch the app, and place the script in /usr/local/bin
+2011-06-12T14:41:00.000Z	theadmin		Hey, ubuntuisawesome
+2011-06-12T14:41:00.000Z	Ryan_Macy	theadmin	would me trying to do this on ubuntu server make a difference
+2011-06-12T14:41:00.000Z	theadmin	Ryan_Macy	Meh, not really, except... Isn't Symfony a GUI app?
+2011-06-12T14:41:00.000Z	Ryan_Macy		its a php framework
+2011-06-12T14:41:00.000Z	theadmin	Ryan_Macy	Oh okay
+2011-06-12T14:44:00.000Z	Ryan_Macy	theadmin	the issue was that I had ./blah/foo
+2011-06-12T14:44:00.000Z	Ryan_Macy		and not /blah/foo
+2011-06-12T14:45:00.000Z	theadmin	Ryan_Macy	Ah
+2011-06-12T14:45:00.000Z	Ryan_Macy		plus I did the sym link in the /bin dir
+2011-06-12T14:45:00.000Z	theadmin	Ryan_Macy	Well glad you got it working

@@ -1,0 +1,22 @@
+2007-12-20T08:02:00.000Z	Geekomancer1		Hello, I was wondering if anyone could help me with figuring out a screen resolution problem
+2007-12-20T08:03:00.000Z	nickrud	Geekomancer1	if it's simple
+2007-12-20T08:04:00.000Z	nickrud	Geekomancer1	if you could put 3 things up on http://paste.ubuntu-nl.org : /etc/X11/xorg.conf , /var/log/Xorg.0.log , and the output of  lspci | grep -i vga
+2007-12-20T08:15:00.000Z	nickrud	Geekomancer1	I have no idea where you got that xorg.conf from. That's definitely not an ubuntu generated one :)
+2007-12-20T08:16:00.000Z	nickrud	Geekomancer1	what I would do is sudo dpkg-reconfigure -pcritical xserver-xorg , make sure that was giving me my correct res first
+2007-12-20T08:18:00.000Z	Geekomancer1	nickrud	buh... it was at 1280x768.... O_o
+2007-12-20T08:18:00.000Z	nickrud	Geekomancer1	first things first, get a simple xorg , build from it
+2007-12-20T08:19:00.000Z	Geekomancer1	nickrud	okay, how would I go about that?
+2007-12-20T08:19:00.000Z	nickrud	Geekomancer1	with that   sudo dpkg-reconfigure -pcritical xserver-xorg
+2007-12-20T08:19:00.000Z	Geekomancer1	nickrud	Oh, okay. Did that.
+2007-12-20T08:20:00.000Z	nickrud	Geekomancer1	ok, now log out and back in, so X will restart and use the new xorg.conf
+2007-12-20T08:20:00.000Z	Geekomancer1	nickrud	okay, thanks, brb
+2007-12-20T08:22:00.000Z	Geekomancer1	nickrud	okay. Back.
+2007-12-20T08:22:00.000Z	nickrud	Geekomancer1	what's your res?
+2007-12-20T08:24:00.000Z	Geekomancer1	nickrud	1440x900
+2007-12-20T08:24:00.000Z	nickrud	Geekomancer1	is that what you want?
+2007-12-20T08:24:00.000Z	Geekomancer1	nickrud	I think so :) Before I could only get up to 1280x800 :)
+2007-12-20T08:25:00.000Z	nickrud	Geekomancer1	if the res is good, now   sudo nano /etc/X11/xorg.conf  , and look for the line  Driver "nv" , change that to nvidia and log out and back in
+2007-12-20T08:27:00.000Z	Geekomancer1	nickrud	Okay, logging out, thanks brb
+2007-12-20T08:29:00.000Z	Geekomancer1	nickrud	okay, back. Things are definatly sharper. Smaller, but sharper :)
+2007-12-20T08:29:00.000Z	nickrud	Geekomancer1	good, you should be able to enable compiz, system->prefs->appearance , last tab
+2007-12-20T08:30:00.000Z	Geekomancer1	nickrud	yeah, got compiz going now

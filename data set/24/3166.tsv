@@ -1,0 +1,24 @@
+2008-12-12T04:32:00.000Z	russK		anyone know how make installer put grub onto raid1 partition?
+2008-12-12T04:33:00.000Z	russK		i want /boot partition on raid1
+2008-12-12T04:35:00.000Z	russK		can /boot partition be on RAID1 device?
+2008-12-12T04:36:00.000Z	un_dave	russK	is raid1 mirror or stripe? i forget
+2008-12-12T04:36:00.000Z	russK		raid1 is mirror (i believe - that's my intent)
+2008-12-12T04:36:00.000Z	un_dave	russK	in theory, you can boot off mirror, because it just sees one instance of the drive, and uses that.
+2008-12-12T04:37:00.000Z	un_dave	russK	i attempted to setup that with my current system. 100mb partitions on each drive, mirrored, and then the remaining in a raid5 array.
+2008-12-12T04:37:00.000Z	russK		﻿un_dave: thanks, i think it's possible but i don't see how to convince installer to see the device
+2008-12-12T04:38:00.000Z	un_dave	russK	i think i managed to get it to boot from the mirror, but never managed to get it to mount the rest of the raid 5, to start the rest of the system.
+2008-12-12T04:38:00.000Z	russK	un_dave	 also, grub docs don't say much about it
+2008-12-12T04:39:00.000Z	un_dave	russK	yeah. on topics like that, i found the documentation very very sparse
+2008-12-12T04:39:00.000Z	russK	un_dave	 did you use ubuntu installer?  I had this working with gentoo - they have a good guide
+2008-12-12T04:39:00.000Z	un_dave	russK	i was assured it could be done, but no one was sure how
+2008-12-12T04:40:00.000Z	un_dave	russK	hang on and i'll find my ubuntu post about it.
+2008-12-12T04:40:00.000Z	russK	un_dave	the gentoo guide for software raid with lvm2 is nice, but i can't convince ubuntu installer to do the same
+2008-12-12T04:41:00.000Z	un_dave	russK	i think i used that gentoo guide as well, but here's my forum links anyway
+2008-12-12T04:41:00.000Z	un_dave		http://ubuntuforums.org/showthread.php?t=552093
+2008-12-12T04:42:00.000Z	un_dave		http://ubuntuforums.org/showthread.php?t=616497
+2008-12-12T04:42:00.000Z	russK		thanks un_dave
+2008-12-12T04:43:00.000Z	un_dave	russK	i never did get it to work the way i wanted. :( ended up with an unraided system drive, and raid 5 for my home directory.
+2008-12-12T04:43:00.000Z	un_dave	russK	i'd be curious to know what you think about the way i did it.
+2008-12-12T04:45:00.000Z	russK		ok, un_dave, but i'm not real experienced with raid ... i'm just kindof experimenting ... first time with LVM too which i really like
+2008-12-12T04:48:00.000Z	un_dave	russK	well that was my first attempt at it, and it was about a year ago. i actually revisited the whole topic over the last week, because i added another 1tb drive into the raid5 array, and had to grow it.
+2008-12-12T04:48:00.000Z	un_dave	russK	that was interesting :S

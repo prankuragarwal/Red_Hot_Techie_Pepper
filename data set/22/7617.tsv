@@ -1,0 +1,22 @@
+2007-03-25T16:12:00.000Z	Jowi	TomaszD	"pidof programname" will give you its PIDnumber
+2007-03-25T16:13:00.000Z	Jowi	TomaszD	so you have 3 players open. "killall mpd" and then restart it.
+2007-03-25T16:14:00.000Z	TomaszD	Jowi	I killed it, started it and it still shows three numbers, but different
+2007-03-25T16:15:00.000Z	Jowi	TomaszD	maybe. i've never used that prog... :-/
+2007-03-25T16:16:00.000Z	TomaszD	Jowi	is there a file I could put some commands on root permissions that gets processed every boot, preferably sometime at the end of booting?
+2007-03-25T16:16:00.000Z	Jowi	TomaszD	but that is usually how I resolve that problem. It can happen from time to time.
+2007-03-25T16:16:00.000Z	Jowi	TomaszD	/etc/init.d and /etc/rc2.d
+2007-03-25T16:17:00.000Z	TomaszD	Jowi	yes, well, so maybe I could modify the /etc/init.d/mpd and /etc/init.d/icecast2 to start later or in different order. Is there a gui for this?
+2007-03-25T16:19:00.000Z	Jowi	TomaszD	to explain. /etc/init.d contains scripts to be executed at boot. /etc/rc2.d contain symlinks to the programs in /etc/init.d. each symlink has got a letter S or K (Start or Kill), a number 0-99 (priority) and the name of the script. creating a symlink to mpd with the name S99mpd would Start mpd last (0 is first, 99 is last)
+2007-03-25T16:19:00.000Z	Jowi	TomaszD	no gui as far as I know but the principle is simple.
+2007-03-25T16:20:00.000Z	TomaszD	Jowi	wow, that's... that explains some things I've been wondering about
+2007-03-25T16:22:00.000Z	Jowi	TomaszD	if you already have a symlink for mpd and icecast in /etc/rc2.d you can simply rename them to change the start order :)
+2007-03-25T16:22:00.000Z	TomaszD	Jowi	yes yes I see! S20icecast2 and S30mpd
+2007-03-25T16:24:00.000Z	TomaszD	Jowi	thank you! I've actually learned something today! I'll restart the machine and see if this solution helped
+2007-03-25T16:29:00.000Z	TomaszD	Jowi	problems with icecast2 gone, but mpd still doesn't start at boot at all.
+2007-03-25T16:31:00.000Z	Jowi	TomaszD	you should look into the documentation for mpd then. you might need to configure it.
+2007-03-25T16:32:00.000Z	TomaszD	Jowi	I'm doing this now, there's one change I can make ... bbl
+2007-03-25T16:36:00.000Z	TomaszD	Jowi	sorry, is there a logfile I could look into in order to check why is this thing not starting? it *should* be starting, it'd enabled and starts fine manually, it has all the predispositions of a fine deamon...
+2007-03-25T16:37:00.000Z	Jowi	TomaszD	I don't know. most logs are in /var/log
+2007-03-25T16:38:00.000Z	TomaszD	Jowi	ok
+2007-03-25T05:08:00.000Z	TomaszD	Jowi	solved it by adding the start command to rc.local, ugly I know, but it works
+2007-03-25T05:09:00.000Z	TomaszD	Jowi	had a crash course on runlevels lol

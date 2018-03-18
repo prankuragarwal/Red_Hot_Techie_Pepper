@@ -1,0 +1,22 @@
+2009-12-29T20:31:00.000Z	RiotingPacifist		checking validity of the OpenSSL headers in /usr... configure: error: bad. Check config.log for details
+2009-12-29T20:32:00.000Z	RiotingPacifist		i keep getting "checking validity of the OpenSSL headers in /usr... configure: error: bad. Check config.log for details" when trying to compile something but libssl-dev is installed
+2009-12-29T20:33:00.000Z	alankila	RiotingPacifist	so check the config.log for what failed
+2009-12-29T20:33:00.000Z	RiotingPacifist	alankila	there isn't anything obvious in that file
+2009-12-29T20:36:00.000Z	alankila	RiotingPacifist	well, you have to learn to read it. It's definitely complaining about something. Alternatively, you can read the configure script to figure out what it's doing.
+2009-12-29T20:40:00.000Z	RiotingPacifist	alankila	here is a pastebin http://pastebin.com/d66036dcb but there is "failed program was:" a whole bunch of stuff then "configure:23495: error: bad. Check config.log for details", nothing saying what is wrong
+2009-12-29T20:41:00.000Z	alankila	RiotingPacifist	ok. I sort of expected to see the STDERR output somewhere
+2009-12-29T20:43:00.000Z	alankila	RiotingPacifist	ok, copypaste the failed program to a file and try to build it with the gcc -c -g -O2 etc. line
+2009-12-29T20:43:00.000Z	alankila	RiotingPacifist	configure is hiding the actual error for some reason
+2009-12-29T20:43:00.000Z	alankila	RiotingPacifist	the program starts on line 4444 on your paste and ends on line 4492
+2009-12-29T20:44:00.000Z	alankila	RiotingPacifist	the line 4303 contains the gcc command used to try & build it, which failed. configure stores its build test programs under name conftest.c.
+2009-12-29T20:50:00.000Z	RiotingPacifist	alankila	i can't see a conftest.c and running the file as gcc -c -g -O2   -DOPENSSL_NO_KRB5 filename gives "linker input file unused because linking not done", im not sure what i'm doing at this point tbh
+2009-12-29T20:53:00.000Z	alankila	RiotingPacifist	well... err... there shouldn't be a message such as "linker input file unused".
+2009-12-29T20:57:00.000Z	alankila	RiotingPacifist	I have no idea why it failed to work for you. I just built the program and run it and it returned 0, indicating all is ok
+2009-12-29T20:57:00.000Z	alankila	RiotingPacifist	I used a line like: gcc -lssl conftest.c -o test, and then I did ./test and echo $?.
+2009-12-29T20:58:00.000Z	alankila	RiotingPacifist	however, there were some unusual warnings spit out by gcc, such as: /usr/include/stdio.h:339: note: expected 'const char * __restrict__' but argument is of type 'struct _IO_FILE *'
+2009-12-29T20:59:00.000Z	alankila	RiotingPacifist	these are likely some subtle incompatibilities between openssl headers and the standard C library headers. I don't know what to make of these, but it's not good.
+2009-12-29T21:00:00.000Z	RiotingPacifist	alankila	when i run gcc -lssl conftest.c -o test i get gcc: conftest.c: No such file or directory
+2009-12-29T21:00:00.000Z	alankila	RiotingPacifist	yes, well, I stored the program used by configure under name conftest.c
+2009-12-29T21:01:00.000Z	alankila	RiotingPacifist	I made conftest.c by downloading your configure log and removing the | character on each line of the program, so I got pure C source. I have no idea why configure adds such an annoying extra "| " at start of every line, but it does.
+2009-12-29T21:09:00.000Z	RiotingPacifist	alankila	hmm i just got a disk full error, i'll try moving everything to a larger partition thx for the help and sorry about wasting your time i didn't think of the obvious
+2009-12-29T21:10:00.000Z	alankila	RiotingPacifist	heh, okay

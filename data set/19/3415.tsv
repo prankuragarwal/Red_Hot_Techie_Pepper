@@ -1,0 +1,19 @@
+2010-03-04T16:47:00.000Z	dehqan		 how to get list of packges that are in http://pastebin.com/EEcE6bc9
+2010-03-04T16:48:00.000Z	jimlovell777	dehqan	You want a list of just the installed packages?
+2010-03-04T16:49:00.000Z	dehqan	jimlovell777	all
+2010-03-04T16:54:00.000Z	jimlovell777	dehqan	You mean you want to strip that list down to just the package names?
+2010-03-04T16:54:00.000Z	dehqan	jimlovell777	 yes
+2010-03-04T16:55:00.000Z	jimlovell777	dehqan	Any experience with regex?
+2010-03-04T16:55:00.000Z	dehqan	jimlovell777	no
+2010-03-04T16:57:00.000Z	jimlovell777	dehqan	you could try polity asking someone in #awk to create a regular expression that would parse out the package names
+2010-03-04T18:34:00.000Z	jimlovell777	dehqan	cat (http://pastebin.com/bZJywtKa this list) | xargs sudo aptitude install
+2010-03-04T19:22:00.000Z	jimlovell777	dehqan	dpkg --get-selections > file  then  cat file > dpkg --set-selections  then sudo apt-get dselect-upgrade
+2010-03-04T19:23:00.000Z	dehqan	jimlovell777	what will that command do exactly ? will it reinstall packages that are installed ?
+2010-03-04T19:23:00.000Z	jimlovell777	dehqan	Yes, it's supposed to
+2010-03-04T19:24:00.000Z	dehqan	jimlovell777	and will install those packages that are not installed ?
+2010-03-04T19:24:00.000Z	jimlovell777	dehqan	nope
+2010-03-04T19:25:00.000Z	dehqan	jimlovell777	this  sudo apt-get dselect-upgrade only upgrade packages ?
+2010-03-04T19:26:00.000Z	jimlovell777	dehqan	That should install the selections that are not currently installed.
+2010-03-04T19:26:00.000Z	dehqan	jimlovell777	so why do you say nope ?
+2010-03-04T19:32:00.000Z	dehqan	jimlovell777	you said ; That should install the selections that are not currently installed. how about selections that are currently installed or purged or ... will reinstall them ?
+2010-03-04T19:38:00.000Z	jimlovell777	dehqan	I don't believe so.

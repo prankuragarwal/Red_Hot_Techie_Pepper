@@ -1,0 +1,19 @@
+2008-02-29T10:01:00.000Z	jetsaredim		is it possible to reconstruct a raid setup without having the raidtab file?
+2008-02-29T10:01:00.000Z	xtknight	jetsaredim	yup
+2008-02-29T10:01:00.000Z	xtknight	jetsaredim	just add the drives to a device with mdadm
+2008-02-29T10:01:00.000Z	jetsaredim	xtknight	do you know where I'd be able to find some docs on that?
+2008-02-29T10:01:00.000Z	xtknight	jetsaredim	i wish i could tell ya..
+2008-02-29T10:01:00.000Z	xtknight	jetsaredim	i dont remember exactly the cmd
+2008-02-29T10:02:00.000Z	xtknight	jetsaredim	but i do know you need to update your kernel intird afterwards.  sudo update-initramfs i belive...that will at least save you some frustration
+2008-02-29T10:02:00.000Z	xtknight	jetsaredim	after you do mdadm create on the two hard disks
+2008-02-29T10:03:00.000Z	jetsaredim	xtknight	I'm not using it as a boot device - and I think that when you install mdadm it runs mkinitramfs
+2008-02-29T10:03:00.000Z	xtknight	jetsaredim	not after you add a device to raidtab it doesnt automatically
+2008-02-29T10:03:00.000Z	xtknight	jetsaredim	i had that trouble
+2008-02-29T10:03:00.000Z	xtknight	jetsaredim	i think you mdadm create and then the two partitions, then /dev/md0 or the MDx device... i just dont remember the exact syntax
+2008-02-29T10:10:00.000Z	jetsaredim	xtknight	I was able to use mdadm --assemble to get the setup back
+2008-02-29T10:10:00.000Z	xtknight	jetsaredim	ahh ya assemble
+2008-02-29T10:10:00.000Z	xtknight	jetsaredim	good to know
+2008-02-29T10:11:00.000Z	jetsaredim	xtknight	do i need to re-create the raidtab?
+2008-02-29T10:11:00.000Z	xtknight	jetsaredim	not sure.  i thought assemble did that automatically
+2008-02-29T10:11:00.000Z	xtknight	jetsaredim	do update initramfs after assemble i think?  i dont know
+2008-02-29T10:12:00.000Z	xtknight	jetsaredim	i think initramfs needs something in raidtab

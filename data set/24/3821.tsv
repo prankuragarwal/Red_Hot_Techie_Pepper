@@ -1,0 +1,24 @@
+2009-11-02T07:08:00.000Z	CommonClone		I upgraded to grub2, and everything worked fine until I did the upgrade-grub-from-legacy command.  Now grub gives me an error 15./  I assume that something is misconfigured.  I am using a livecd right now.  Can someone please help me configure grub so that I can boot from my hd?
+2009-11-02T07:08:00.000Z	Jordan_U	CommonClone	When you upgraded to grub2 was there any prompt?
+2009-11-02T07:10:00.000Z	Jordan_U	CommonClone	You needed to select your hard drive so that grub2 would be installed to the master boot record, you can do that from the LiveCD to fix it
+2009-11-02T07:13:00.000Z	Jordan_U	CommonClone	Boot into a liveCD, mount your Ubuntu partition to /mnt ( or replace /mnt with whatever your mountpoint is ) and then run: "sudo mount -o bind /dev /mnt/dev && sudo mount -o bind /proc /mnt/proc && sudo mount -o bind /sys /mnt/sys && sudo chroot /mnt dpkg-reconfigure grub-pc"
+2009-11-02T07:14:00.000Z	CommonClone	Jordan_U	ok, thanks.  I'll give that a try.
+2009-11-02T07:16:00.000Z	CommonClone	Jordan_U	ok, I tried and I get "chroot: cannot run command 'dpkg-reconfigure': Exec format error"
+2009-11-02T07:17:00.000Z	Jordan_U	CommonClone	You have 64 bit Ubuntu installed but 32 bit liveCD
+2009-11-02T07:17:00.000Z	CommonClone	Jordan_U	so I need to try using a 64 bit live cd?  or is there no other way?
+2009-11-02T07:18:00.000Z	Jordan_U	CommonClone	To fix grub instead run "sudo grub install /dev/sda1 --root-directory=/mnt" then be sure to run "sudo dpkg-reconfigure grub-pc" once you are booted into your system
+2009-11-02T07:18:00.000Z	Jordan_U	CommonClone	Sorry, typo
+2009-11-02T07:19:00.000Z	Jordan_U	CommonClone	Should be "sudo grub-install /dev/sda --root-directory=/mnt"
+2009-11-02T07:20:00.000Z	CommonClone	Jordan_U	ok, where /dev/sda should be my 9.10 partition?  in my case, sda5 right?
+2009-11-02T07:20:00.000Z	Jordan_U	CommonClone	No, it's referring to the entire drive, not a single partition
+2009-11-02T07:20:00.000Z	CommonClone	Jordan_U	ok
+2009-11-02T07:35:00.000Z	CommonClone	Jordan_U	ok, I was able to boot into my 9.10 partition.  so far so good, not I ran dpkg-reconfigure grub-pc and it is asking me to confirm the parameters.  is there anything I should be concerned with here?
+2009-11-02T07:35:00.000Z	Jordan_U	CommonClone	Press space bar to select your drive
+2009-11-02T07:38:00.000Z	CommonClone	Jordan_U	the parameters it is asking me for are "vga=795" and "quiet splash".  after I confirm these, the screen exits and I get an error: "mktemp: failed to create file via template `/tmp/grub.XXXXXXXXXX': Invalid argument"
+2009-11-02T07:39:00.000Z	Jordan_U	CommonClone	If you run "echo $?" right after the dpkg-reconfigure command what does it output?
+2009-11-02T07:40:00.000Z	CommonClone	Jordan_U	ok, I ran echo $? and it just displays "1"
+2009-11-02T07:42:00.000Z	Jordan_U	CommonClone	Try running "sudo dpkg --configure -a"
+2009-11-02T07:43:00.000Z	CommonClone	Jordan_U	ok, now should I try "sudo dpkg-reconfigure grub-pc"?
+2009-11-02T07:44:00.000Z	Jordan_U	CommonClone	No, now you're done
+2009-11-02T07:44:00.000Z	CommonClone	Jordan_U	oh, ok.  thanks very much for your help
+2009-11-02T07:45:00.000Z	Jordan_U	CommonClone	np

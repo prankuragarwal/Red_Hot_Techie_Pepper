@@ -1,0 +1,21 @@
+2010-05-17T03:15:00.000Z	bhartman		Hi, everyone.  I'm having a weird problem.  I'm getting a "cannot directory: no such file or directory" when I try to run the mkdir command.  Why would it say "no such file or directory"?  I *know* there's no such directory.  That's why I'm trying to create it...
+2010-05-17T03:16:00.000Z	kjele	bhartman	try with -p flag
+2010-05-17T03:17:00.000Z	bhartman		craigbass1976,:  Yes.  I'm running the command w/ sudo.  And -p doesn't seem to help.
+2010-05-17T03:18:00.000Z	kjele	bhartman	could you pastebin the command with the result?
+2010-05-17T03:18:00.000Z	bhartman		This all started because I was trying to install the gspca driver, but I'm not having any luck.  I can't get it to build.
+2010-05-17T03:18:00.000Z	bhartman		ok, kjele
+2010-05-17T03:19:00.000Z	bhartman		http://pastebin.com/eqKUGiGR
+2010-05-17T03:22:00.000Z	kjele	bhartman	is that module folder read only?
+2010-05-17T03:24:00.000Z	kjele	bhartman	It looks like that folder is locked for normal creation
+2010-05-17T03:25:00.000Z	bhartman	kjele	 Shouldn't I be able to write in there in sudo mode, though?
+2010-05-17T03:25:00.000Z	kjele	bhartman	That folder is used by the kernel to write stuff to it. Even if you create a new folde it will be deleted.
+2010-05-17T03:27:00.000Z	bhartman	kjele	 Okay, thanks. :)  I guess that leads to my next problem.  I can't build the gspca driver for some reason.  I just want to be able to use my QuickCam E2500.  I was able to use it before, but I had to reinstall Ubuntu.
+2010-05-17T03:28:00.000Z	kjele	bhartman	Where can I get a copy of that driver and what error message when you compile it?
+2010-05-17T03:29:00.000Z	bhartman	kjele	 Here's the link I wget'ed from:  http://mxhaard.free.fr/spca50x/Download/gspcav1-20071224.tar.gz
+2010-05-17T03:31:00.000Z	kjele	bhartman	And what error you get?
+2010-05-17T03:31:00.000Z	bhartman	kjele	 http://pastebin.com/qA2DVpf1
+2010-05-17T03:33:00.000Z	bhartman		It looks like it's looking for asm/semaphore.h, whatever that is.
+2010-05-17T03:34:00.000Z	kjele	bhartman	gonna see if I can compile
+2010-05-17T03:34:00.000Z	bhartman		Ok, thanks, kjele. :)
+2010-05-17T03:37:00.000Z	kjele	bhartman	If you read the READ_AND_INSTALL file the kernel that is supported is from 2.6.11 so there are some files that are missing. Which is what you see.
+2010-05-17T03:38:00.000Z	bhartman	kjele	 Okay, thanks.  Dammit.  Sorry. :(

@@ -1,0 +1,19 @@
+2007-07-23T07:55:00.000Z	MFen		can anyone recommend a good way to back up *a remote server* to *a local filesystem*
+2007-07-23T07:55:00.000Z	MFen		i know about sbackup. it only goes the other direction afaict
+2007-07-23T07:56:00.000Z	MFen		i want to back up my website to a local hard drive please. :)
+2007-07-23T07:56:00.000Z	PenguinistaKC	MFen	-- Do you have shell access to your web server?
+2007-07-23T07:57:00.000Z	MFen	PenguinistaKC	i have root
+2007-07-23T07:57:00.000Z	PenguinistaKC	MFen	-- man tar
+2007-07-23T07:57:00.000Z	MFen	PenguinistaKC	i need something a bit more sophisticated than that
+2007-07-23T07:58:00.000Z	PenguinistaKC	MFen	What are your requirements?
+2007-07-23T08:00:00.000Z	MFen	PenguinistaKC	glad you asked. :)  i want daily incrementals and weekly fulls, on a schedule.  deletions should also be tracked.
+2007-07-23T08:01:00.000Z	MFen	PenguinistaKC	actually i think i want "differentials" not "incrementals", but anyway
+2007-07-23T08:02:00.000Z	PenguinistaKC	MFen	One way to do that is with rsync, but there are some backup systems out there. AMANDA comes to mind at the moment
+2007-07-23T08:03:00.000Z	MFen	PenguinistaKC	i'll check that out. thanks
+2007-07-23T08:03:00.000Z	PenguinistaKC	MFen	No problem
+2007-07-23T08:04:00.000Z	PenguinistaKC	MFen	If you aren't afraid of a little scripting, a combination of tar and rsync will probably do the job for you with a little less memory overhead
+2007-07-23T08:04:00.000Z	MFen	PenguinistaKC	quick question. i see client and server. it stands to reason that one goes on the source of the files, and one goes on the destination. would you happen to know which is which?
+2007-07-23T08:04:00.000Z	MFen	PenguinistaKC	i'm definitely not afraid of a little shell scripting, but i'm opposed to maintaining the code myself. :)
+2007-07-23T08:05:00.000Z	PenguinistaKC	MFen	It has been awhile since I used AMANDA, but as I recall, the server is the centralized backup point (the place where the files will be archived) and the client is the original location of the files.
+2007-07-23T08:06:00.000Z	PenguinistaKC	MFen	So in your case, the web server is the client, your machine is the server
+2007-07-23T08:06:00.000Z	MFen	PenguinistaKC	sounds reasonable

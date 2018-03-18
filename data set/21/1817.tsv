@@ -1,0 +1,21 @@
+2010-05-14T02:42:00.000Z	deposito		Hello, i need help with and xp and ubuntu samba configuration in the ubuntu desktop. Could someone help me? Thanks in advance.
+2010-05-14T02:43:00.000Z	hmw	deposito	what exactly is not working?
+2010-05-14T02:45:00.000Z	deposito		I first have mounted the xp disk drive in ubuntu with cifs. From samba i select my mount point as shared (so xp machine can write here too). But when i see the permissons it is not writable for group or all only for owner. Like its a mounted folder root its the owner and i cant modify files from xp into ubuntu.
+2010-05-14T02:47:00.000Z	deposito	hmw	i put my problem a few lines up :D
+2010-05-14T02:48:00.000Z	hmw	deposito	in the options window, while creating the share on your ubuntu, there should be a check box for letting others write to the share. Did you check this?
+2010-05-14T02:49:00.000Z	deposito	hmw	yes. and i try setting writable = yes and write list = @group in the smb.conf
+2010-05-14T02:49:00.000Z	deposito	hmw	but if i do a ls -l to the folder i see that only root have rights to write :S
+2010-05-14T02:49:00.000Z	hmw	deposito	check permissions of the mount point itself
+2010-05-14T02:50:00.000Z	deposito	hmw	how can i do that? i select rwx when mounted :S
+2010-05-14T02:50:00.000Z	hmw		something like mkdir mountpoint ; mount //some/share mountpoint ; chmod 0777 mountpoint
+2010-05-14T02:50:00.000Z	deposito	hmw	i use this commead mount -t cifs -o ip=192.168.1.11,username=pc/user,noserverino,noperm,rwx //shared /mount
+2010-05-14T02:51:00.000Z	hmw	deposito	this looks wrong: noserverino (i am not used to use cifs, btw)
+2010-05-14T02:51:00.000Z	deposito	hmw	if i try to change the permissons i got a access denied ... even if i do it from root command line
+2010-05-14T02:52:00.000Z	deposito	hmw	if i dont use that i cant run  DOS program xD
+2010-05-14T02:52:00.000Z	hmw	deposito	i mean noserverino looks like it should read serverinfo
+2010-05-14T02:53:00.000Z	deposito	hmw	i checked it. its ok :D
+2010-05-14T02:53:00.000Z	deposito	hmw	deposito@ubuntu:/$ sudo chmod 0777 /farmatronic/
+2010-05-14T02:53:00.000Z	deposito		[sudo] password for deposito:
+2010-05-14T02:53:00.000Z	deposito		chmod: cambiando los permisos de «/farmatronic/»: Permiso denegado
+2010-05-14T02:54:00.000Z	deposito	hmw	ill back i one minute
+2010-05-14T02:55:00.000Z	deposito	hmw	here

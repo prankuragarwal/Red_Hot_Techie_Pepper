@@ -1,0 +1,24 @@
+2007-08-15T06:26:00.000Z	JohnFlux2		I'm trying to umount /home  but it says the filesystem is busy
+2007-08-15T06:27:00.000Z	JohnFlux2		anyone know how to see what is using /home?   I've tried fuser  but it shows nothing
+2007-08-15T06:28:00.000Z	JohnFlux2		sSiroSoriSs:)
+2007-08-15T06:28:00.000Z	Frogzoo	JohnFlux2	fuser -m /home
+2007-08-15T06:28:00.000Z	JohnFlux2	Frogzoo	I tried that. it shows nothing
+2007-08-15T06:29:00.000Z	Frogzoo	JohnFlux2	so nothing is using home
+2007-08-15T06:29:00.000Z	JohnFlux2	Frogzoo	yet I cannot umount it :/
+2007-08-15T06:30:00.000Z	Frogzoo	JohnFlux2	if it resits, it's probly with good reason
+2007-08-15T06:30:00.000Z	JohnFlux2	Frogzoo	don't care :-D
+2007-08-15T06:30:00.000Z	Frogzoo	JohnFlux2	is /home on its own partition???
+2007-08-15T06:30:00.000Z	JohnFlux2	Frogzoo	yes
+2007-08-15T06:30:00.000Z	Frogzoo	JohnFlux2	what's it say on the attempt?
+2007-08-15T06:31:00.000Z	Frogzoo	JohnFlux2	"device is busy" ?
+2007-08-15T06:31:00.000Z	JohnFlux2	Frogzoo	 umount: /home: device is busy
+2007-08-15T06:32:00.000Z	Frogzoo	JohnFlux2	lsof +d /home
+2007-08-15T06:37:00.000Z	Frogzoo	JohnFlux2	lsof +d /home  ??
+2007-08-15T06:38:00.000Z	JohnFlux2	Frogzoo	sorry
+2007-08-15T06:38:00.000Z	JohnFlux2	Frogzoo	shows nothing
+2007-08-15T06:38:00.000Z	Frogzoo	JohnFlux2	bizarre..
+2007-08-15T06:38:00.000Z	Frogzoo	JohnFlux2	try it as root 'sudo lsof +d /home'
+2007-08-15T06:40:00.000Z	JohnFlux2	Frogzoo	sorted it out.  turns out that it was NFS that was locking it down.  it doesn't show up because nfs runs in the kernel
+2007-08-15T06:41:00.000Z	JohnFlux2	Frogzoo	I found a hint from google :)
+2007-08-15T06:41:00.000Z	JohnFlux2	Frogzoo	stopping nfsserver fixed it
+2007-08-15T06:42:00.000Z	Frogzoo	JohnFlux2	cool

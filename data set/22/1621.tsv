@@ -1,0 +1,22 @@
+2012-06-19T21:57:00.000Z	Mathuin		[repost due to disconnect] I have four or five Ubuntu boxes running precise behind a slow link.  I'd like to download stuff like nvidia-current only once if possible.  What's the best way to do this in an automated fashion?
+2012-06-19T21:57:00.000Z	ikonia	Mathuin	download the packages to a local machine, and setup your own repo
+2012-06-19T21:58:00.000Z	Mathuin	ikonia	is there an automated way to do that?
+2012-06-19T21:59:00.000Z	ikonia	Mathuin	not really no
+2012-06-19T21:59:00.000Z	ikonia	Mathuin	you just download the packages you want from repository you are using (its just a http server)
+2012-06-19T22:01:00.000Z	Mathuin	ikonia	okay, so there's no automated solution.  I find that really surprising, as what I want to do is just the junior version of what a large site admin would do.
+2012-06-19T22:01:00.000Z	ikonia	Mathuin	why would it be automated
+2012-06-19T22:01:00.000Z	ikonia	Mathuin	it's just download the packages you want, and share them to the other machines
+2012-06-19T22:01:00.000Z	ikonia	Mathuin	it's not exactly a tough task or concept to grasp,
+2012-06-19T22:02:00.000Z	Mathuin	ikonia	I've been a sysadmin for a while, the difficulty here is not in grasping the concept, it's in desiring that the process run unattended.
+2012-06-19T22:03:00.000Z	ikonia	Mathuin	it is unattended
+2012-06-19T22:03:00.000Z	ikonia	Mathuin	you do it once, and it's done
+2012-06-19T22:03:00.000Z	ikonia	Mathuin	then just cron it
+2012-06-19T22:04:00.000Z	ikonia	Mathuin	for a sys admin of "a while" this is bread and butter stuff
+2012-06-19T22:04:00.000Z	Mathuin	ikonia	It's distro-specific stuff.  When you start with System V Release 2.0 and VMS 5.5 and Novell, the newer stuff blends together if you don't use it.
+2012-06-19T22:05:00.000Z	ikonia	Mathuin	the concept of downloading the files from the repo and pointing the other machiens at the downloaded server is not new or modern technology
+2012-06-19T22:05:00.000Z	Mathuin	ikonia	again, yes, I agree, and I have agreed with you there.  I do not want to download them by hand, that's all I am saying.
+2012-06-19T22:05:00.000Z	ikonia	Mathuin	just download the files you want, cron it if you want it to be automated/unattended, then setup your other machines (clients) to point at that central downloaded package list
+2012-06-19T22:06:00.000Z	ikonia	Mathuin	you have a choice 1.) download by hand 2.) write a script using something like rsync to download the whole repo -exlucind what you don't want 3.) use apt-mirror to mirror the whole 60GB repo to your local machine
+2012-06-19T22:06:00.000Z	Mathuin	ikonia	so far, apt-cacher looks like a fourth option which is wayyyy better than what you're suggesting.
+2012-06-19T22:06:00.000Z	ikonia	Mathuin	if you think so, use it
+2012-06-19T22:07:00.000Z	Mathuin	ikonia	I'm trying to finish the docs. :-)

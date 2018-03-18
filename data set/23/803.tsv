@@ -1,0 +1,23 @@
+2011-03-08T01:01:00.000Z	MichaelDobrovits		how to check usb device node permissions?
+2011-03-08T01:03:00.000Z	MichaelDobrovits		how to check usb device node permissions?
+2011-03-08T01:04:00.000Z	erUSUL	MichaelDobrovits	depends on the usb device... network devices wont even have a device node
+2011-03-08T01:05:00.000Z	MichaelDobrovits	erUSUL	k, but what about all other devices like scanners and usb-hdds?
+2011-03-08T01:06:00.000Z	MichaelDobrovits	erUSUL	k, but what about all other devices like scanners and usb-hdds nodes?
+2011-03-08T01:07:00.000Z	erUSUL	MichaelDobrovits	again depends... webcams create /dev/videoN devices a usb_to_serial creates a /dev/ttyUSBN device etc ...
+2011-03-08T01:09:00.000Z	MichaelDobrovits	erUSUL	ok. lets say i have an issue with xsane, it recognize my scanner only when i invoke xsane with elevated privliges otherwise it doesn't
+2011-03-08T01:11:00.000Z	erUSUL	MichaelDobrovits	ok from what i gather you have to be in the scanner group
+2011-03-08T01:11:00.000Z	erUSUL	MichaelDobrovits	do « sudo adduser $USER scanner » and log out; log in again
+2011-03-08T01:13:00.000Z	MichaelDobrovits	erUSUL	ok. does adduser adds a group in /etc/group?
+2011-03-08T01:13:00.000Z	erUSUL	MichaelDobrovits	yes
+2011-03-08T01:14:00.000Z	MichaelDobrovits	erUSUL	The group scanner does not exists
+2011-03-08T01:17:00.000Z	MichaelDobrovits	erUSUL	you should addgroup before adduser to group
+2011-03-08T01:17:00.000Z	erUSUL	MichaelDobrovits	the sane packages should have added the group afaik
+2011-03-08T01:18:00.000Z	MichaelDobrovits	erUSUL	ok thx.
+2011-03-08T01:18:00.000Z	erUSUL	MichaelDobrovits	i do have the group here in my 10.04 install
+2011-03-08T01:19:00.000Z	MichaelDobrovits	erUSUL	i don't have it in karmic
+2011-03-08T01:19:00.000Z	MichaelDobrovits	erUSUL	anyway i've added the group and the user i'll see if it works
+2011-03-08T01:21:00.000Z	MichaelDobrovits	erUSUL	btw do you know why virtualbox recognizes my usb device only when i invoke it with elevated privliges? i'm in vboxusers group, but it seems theres somekind of usb permission issue that only root can use usb device in vbox
+2011-03-08T01:21:00.000Z	erUSUL	MichaelDobrovits	sorry dunno
+2011-03-08T01:22:00.000Z	erUSUL	MichaelDobrovits	/join #vbox ?
+2011-03-08T01:23:00.000Z	MichaelDobrovits	erUSUL	what manages permissions in ubuntu, point me to the correct lib or bin. channle #vbox admins are dorment or something and it seems that users there don't know what their talking about
+2011-03-08T01:24:00.000Z	erUSUL	MichaelDobrovits	there is no single lib or bin that does that...

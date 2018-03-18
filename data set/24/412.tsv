@@ -1,0 +1,24 @@
+2011-09-27T04:19:00.000Z	JamJams		Hi I've got a question regarding ifconfig if a normal users runs it gets the responce "Warning: cannot open /proc/net/dev (No such file or directory). Limited output." -- But if I run it as sudo it displays fine :/
+2011-09-27T04:19:00.000Z	JamJams		Is there anyway to allow normal users access to it?
+2011-09-27T04:20:00.000Z	ikonia	JamJams	setuid on it
+2011-09-27T04:21:00.000Z	JamJams	ikonia	how does one do that?
+2011-09-27T04:21:00.000Z	ikonia	JamJams	chmod http://en.wikipedia.org/wiki/Setuid
+2011-09-27T04:22:00.000Z	JamJams		I tried a chmod 777 -R /proc/net/dev ikonia it did nothing
+2011-09-27T04:22:00.000Z	ikonia	JamJams	no, that's not setting the setuid bit
+2011-09-27T04:22:00.000Z	ikonia	JamJams	and you need to do it on the ifconfig binary
+2011-09-27T04:23:00.000Z	ikonia	JamJams	proc is a dynamic file system that gets re-created everytime the system boots, so it's pointless modifying that
+2011-09-27T04:23:00.000Z	JamJams		Ah
+2011-09-27T04:23:00.000Z	JamJams		I still don't understand how setuid works tbh
+2011-09-27T04:24:00.000Z	ikonia	JamJams	have a read of that page.
+2011-09-27T04:26:00.000Z	JamJams	ikonia	I still don't follow
+2011-09-27T04:26:00.000Z	ikonia	JamJams	what's not clear ?
+2011-09-27T04:27:00.000Z	JamJams		How I apply that to allowing normal users to view ifconfig
+2011-09-27T04:27:00.000Z	ikonia	JamJams	so if you set the setuid on the binary, users can use it as "root"
+2011-09-27T04:27:00.000Z	ikonia	JamJams	it executes as the user, but assume certain root privileges
+2011-09-27T04:27:00.000Z	ikonia	JamJams	so you just set it on the binary, not for one user, just set it on the binary.
+2011-09-27T04:27:00.000Z	JamJams		So how do I do that, I don't even know we're the binary is :/
+2011-09-27T04:28:00.000Z	ikonia	JamJams	"which ifconfig"
+2011-09-27T04:28:00.000Z	ikonia	JamJams	that will tell you where it is
+2011-09-27T04:28:00.000Z	JamJams		That fixed it thanks :_
+2011-09-27T04:28:00.000Z	JamJams		;)
+2011-09-27T04:28:00.000Z	ikonia	JamJams	well done

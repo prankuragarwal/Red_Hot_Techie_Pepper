@@ -1,0 +1,22 @@
+2007-07-21T10:15:00.000Z	Jopie		I'm using Ubuntu server, and I'm having issues with my wlan setup... ath0 is defined in the /etc/network/interfaces but after boot I get "No Such device if I do iwconfig on it... Setup tho detected ath0 and it configured it there
+2007-07-21T10:16:00.000Z	rausb0	Jopie	is the ath_pci module loaded?
+2007-07-21T10:16:00.000Z	Jopie		rausb: how do I check / where is it configured to load?
+2007-07-21T10:17:00.000Z	rausb0	Jopie	it should load automatically on system boot (as long as you didn't blacklist the module)
+2007-07-21T10:17:00.000Z	rausb0	Jopie	check if it is loaded with:  lsmod | grep ath_pci
+2007-07-21T10:18:00.000Z	Jopie		rausb: I've changed nothing since the install... lsmod|grep ath_pci returns nothing
+2007-07-21T10:19:00.000Z	rausb0	Jopie	do you see the atheros card in the output of "lspci"?
+2007-07-21T10:20:00.000Z	Jopie	rausb0	yep it's listed - AR500G
+2007-07-21T10:20:00.000Z	rausb0	Jopie	and does   modinfo ath_pci  return anything?
+2007-07-21T10:21:00.000Z	Jopie	rausb0	couldn't find module
+2007-07-21T10:22:00.000Z	rausb0	Jopie	thats the problem
+2007-07-21T10:22:00.000Z	Jopie		rausb: yeah, sounds like it... but why did setup load it then, that means it must be either on the cd or somehwhere in the filesystem... is there an easy way to install it...
+2007-07-21T10:23:00.000Z	rausb0	Jopie	check if you have the linux-restricted-modules-YOURKERNELVERSION package installed
+2007-07-21T10:23:00.000Z	rausb0	Jopie	the ath_pci (madwifi) driver is not fully open source
+2007-07-21T10:23:00.000Z	rausb0	Jopie	therefore it is in restricted-modules
+2007-07-21T10:25:00.000Z	Jopie	rausb0	but is the package on the server install cd? and how do I check if it's installed (and yes, I realise I'm a noob...)
+2007-07-21T10:26:00.000Z	rausb0	Jopie	dpkg -l | grep restricted
+2007-07-21T10:28:00.000Z	Jopie	rausb0	is the restricted-modules package on the install cd?
+2007-07-21T10:28:00.000Z	rausb0	Jopie	i think so
+2007-07-21T10:28:00.000Z	rausb0	Jopie	if you have internet access, you can also tell apt to fetch packages from the net
+2007-07-21T10:29:00.000Z	Jopie	rausb0	I realize, but that wifi is my internet connection on that pc
+2007-07-21T10:30:00.000Z	rausb0	Jopie	i see

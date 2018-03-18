@@ -1,0 +1,23 @@
+2007-07-28T08:08:00.000Z	blackalex		yeah; i have a raid 3114 setup with vista as the original primary; i wanted to eventually to migrate to linux by starting out on a debian os
+2007-07-28T08:08:00.000Z	blackalex		ubuntu
+2007-07-28T08:08:00.000Z	blackalex		but... i have first gotten a grub startup error number 18, did some tweaking in partitions
+2007-07-28T08:08:00.000Z	blackalex		now im getting error 17
+2007-07-28T08:08:00.000Z	blackalex		and these numbers arent meaning a whole lot to me
+2007-07-28T08:10:00.000Z	blackalex		i guess hoping for someone to PM me is too much to ask for for 1 on 1 help...
+2007-07-28T08:10:00.000Z	blackalex		donnu if i joined the right channel
+2007-07-28T08:11:00.000Z	blackalex		i just need a good irc chat
+2007-07-28T08:11:00.000Z	blackalex		i have a gut feeling ubuntu is fine
+2007-07-28T08:12:00.000Z	blackalex		just i need 1 on 1 help for installing grub on my raid so that it works
+2007-07-28T08:12:00.000Z	choudesh	blackalex	just a note. Grub will not boot from RAID 1
+2007-07-28T08:12:00.000Z	choudesh	blackalex	software RAID 1 that is.
+2007-07-28T08:12:00.000Z	blackalex		i have a theory but i dont know how to do it
+2007-07-28T08:12:00.000Z	choudesh	blackalex	software raid or hardware?
+2007-07-28T08:12:00.000Z	blackalex		cant i like install the boot partition to only ONE harddrive?
+2007-07-28T08:13:00.000Z	blackalex		its a silicon software raid
+2007-07-28T08:13:00.000Z	choudesh	blackalex	ooo have fun. ;-) The best thing I can say is with using a software raid and it having the boot partition is to place grub on both hds
+2007-07-28T08:14:00.000Z	blackalex	choudesh	i used the alternate cd and read the logs
+2007-07-28T08:14:00.000Z	blackalex		and supposably it set things up for me
+2007-07-28T08:14:00.000Z	choudesh	blackalex	I understand. But grub itself cannot boot from a software raid. Well, not easily for that matter.
+2007-07-28T08:14:00.000Z	blackalex		but i got the error 17 on startup into grub and i dont know how to edit the lst file or anything to see if everything is setup right
+2007-07-28T08:15:00.000Z	choudesh	blackalex	you should just make a 10M partition on the booting HD and make the software raid on the rest of the HD and duplicate it on the other. That way, grub will be booting from the HD instead of the SRAID
+2007-07-28T08:16:00.000Z	choudesh	blackalex	The easist way to read the logs is to use the UbunutuLive CD and mount your HD then look in /var/logs

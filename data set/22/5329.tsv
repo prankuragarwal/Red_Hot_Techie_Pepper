@@ -1,0 +1,22 @@
+2008-10-15T03:12:00.000Z	der|kunstler		hi, how do I upgrade my vlc from 0.8 to 0.9 ?
+2008-10-15T03:14:00.000Z	soundray	der|kunstler	wait 16 days and then upgrade to intrepid
+2008-10-15T03:14:00.000Z	der|kunstler	soundray	:D
+2008-10-15T03:14:00.000Z	soundray	der|kunstler	upgrade to intrepid beta then (not if it's a production machine of course)
+2008-12-23T00:36:00.000Z	soundray	der|kunstler	I think something in /etc/acpi.d/
+2008-12-23T00:37:00.000Z	der|kunstler	soundray	ziroday got it... I'll go to sleep and come back w/results
+2008-12-23T00:39:00.000Z	der|kunstler	soundray	ziroday back... it worked
+2008-12-23T00:41:00.000Z	der|kunstler	soundray	ok, now we have scripts that run pre-wake and post-wake in /etc/acpi.d ?
+2008-12-23T00:41:00.000Z	soundray	der|kunstler	sorry, it's /etc/acpi/ and I think the script that runs afterwards is resume.sh
+2008-12-23T00:42:00.000Z	der|kunstler	soundray	yeah, /etc/acpi/suspend.d ?
+2008-12-23T00:42:00.000Z	der|kunstler	soundray	it contains 70-modules-unload.sh, which unloads all the modules.. .that's run when suspending correct ?
+2008-12-23T00:43:00.000Z	soundray	der|kunstler	probably. I'm not claiming expertise.
+2008-12-23T00:43:00.000Z	der|kunstler	soundray	I think I know what's going on... there's $MODULES_WHITELIST, apparently the forcedeth module is not unloaded
+2008-12-23T00:44:00.000Z	der|kunstler	soundray	heh!... I'll hack it a little to unload and load, I can play with those scripts, thanks a lot! :D
+2008-12-23T00:47:00.000Z	soundray	der|kunstler	it might be more appropriate to make those settings in /etc/default/acpi-support
+2008-12-23T00:47:00.000Z	der|kunstler	soundray	lemme check that file, I don't like hacking and breaking things :/
+2008-12-23T00:48:00.000Z	der|kunstler	soundray	MODULES_WHITELIST is on that config, but it's empty, apparently the module is unloaded ?... maybe
+2008-12-23T00:49:00.000Z	der|kunstler	soundray	actually, there's something really neat on that config:  "Add modules to this list to have them removed before suspend and reloaded"
+2008-12-23T00:50:00.000Z	soundray	der|kunstler	:)
+2008-12-23T00:50:00.000Z	der|kunstler	soundray	heh! :P
+2008-12-23T00:50:00.000Z	der|kunstler	soundray	I think the only thing that is not already thought on ubuntu, is the key to understand women :P
+2008-12-23T00:51:00.000Z	der|kunstler	soundray	heh! must be in the docs someday :P

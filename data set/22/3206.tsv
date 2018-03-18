@@ -1,0 +1,22 @@
+2009-04-12T03:26:00.000Z	Roasted		In XP, you can ping other computers by hostname just fine. In Linux, I'm trying to ping another Linux computer on the network I cannot, yet pinging by IP works. Does Linux not support pinging by hostname or something???
+2009-04-12T03:28:00.000Z	fx3	Roasted	in windows you are pinging by NetBIOS name, or something, so linux uses only propper DNS resolving. Computer names wont work in linux unless you run a DNS server
+2009-04-12T03:29:00.000Z	fx3	Roasted	a quick fix would be to add the hosts you want to /etc/resolv.conf
+2009-04-12T03:36:00.000Z	fx3	Roasted	XP uses a proprietary name resolution protocol on top of DNS, it is both slow and buggy, implementing it in linux would be a waste, Choose DNS
+2009-04-12T03:38:00.000Z	fx3	Roasted	if you want this kind of functionality out of the box you should look at something like mDNS responder, or something alike. ZeroConf DNS or something
+2009-04-12T03:40:00.000Z	fx3	Roasted	i believe this is what you want: https://help.ubuntu.com/community/HowToZeroconf
+2009-04-12T03:45:00.000Z	fx3	Roasted	did you read the link i posted to you? mdns is installed by default and just needs enabling. please see if this is what you require
+2009-04-12T03:59:00.000Z	fx3	Roasted	add a search domain in /etc/resolv.conf and see if it works
+2009-04-12T04:01:00.000Z	Roasted	fx3	- The thing is, I keep looking at this as a global thing. If I would have more Ubuntu machines, to have to edit each one seems cumbersome. I just feel like there's an easier way to do this.
+2009-04-12T04:02:00.000Z	fx3	Roasted	yes, set up a bloody DNS server !
+2009-04-12T04:02:00.000Z	Roasted	fx3	- If I needed a DNS server, I'd set one up. But I'm failing to see how I need a standalone DNS server int his situation when I have a simple lan with a router.
+2009-04-12T04:03:00.000Z	fx3	Roasted	XPs and Macs both use zeroconf, thats enabled by default, unfortunately it causes lots of broadcast traffic and other nasty stuff. If you want it you will need to enable it
+2009-04-12T04:07:00.000Z	fx3	Roasted	if you have 2 machines you could simply edit resolv.conf on both of them...
+2009-04-12T04:07:00.000Z	Roasted	fx3	- I understand, but I'm trying to understand the nature of the problem versus just using a quick patch to fix it. Iw ork in IT so it's important I understand how things work.
+2009-04-12T04:08:00.000Z	fx3	Roasted	youll find that you can access your samba server via its name if you set hostname = skynet in your samba.conf
+2009-04-12T04:09:00.000Z	Roasted	fx3	- ah hah! EXCEPT, skynet is not found in my smb.conf. Which confuses me why it works...
+2009-04-12T04:09:00.000Z	fx3	Roasted	sometimes smb might take it from your existing hostname
+2009-04-12T04:10:00.000Z	Roasted	fx3	- Then why wouldn't my secondary samba computer pick up that host name? I can only connect to that samba computer with an XP computer if I use the IP. If I use the secondary samba computers computer name (as I do with my primary) it doesnt work.
+2009-04-12T04:10:00.000Z	fx3	Roasted	smb runs some sort of a WINS server on its own, or its like an SMB name resolution. This exact problem bugged me at work for months
+2009-04-12T04:12:00.000Z	fx3	Roasted	i dont know, its iffy like that. If you want a bulletproof setup you need to set up a DNS server with a DHCP server on one of the computers, that way *all* of your machines will resolve names using your local DNS names always, even if WINS or SMB fails
+2009-04-12T04:13:00.000Z	Roasted	fx3	- So you ran into the same issue I did? I just can't see how one samba computer works with the hostname while the other doesn't work. In both computers, I checked the smb.conf and their respective hostnames were NOT in the smb.conf, I thought maybe I would have had to put it in the smb.conf for it to work but its not in either samba config file. So I know that's not the issue.
+2009-04-12T04:13:00.000Z	fx3	Roasted	i would advice to put them in, also im not sure if two samba servers can play nice on the network

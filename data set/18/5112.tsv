@@ -1,0 +1,18 @@
+2010-02-16T13:00:00.000Z	almark		hello I'm trying to get grub 2 to boot my xp drive my linux drive is the Master while the xp drive is the slave when I go to type update-grub I get this grub-probe: error: Cannot find a GRUB drive for /dev/sdb1.  Check your device.map.
+2010-02-16T13:01:00.000Z	Jordan_U	almark	Are you running update-grub from a LiveCD?
+2010-02-16T13:01:00.000Z	Jordan_U		\
+2010-02-16T13:01:00.000Z	almark	Jordan_U	nope, but I install this system from one
+2010-02-16T13:01:00.000Z	almark	Jordan_U	pure:dyne
+2010-02-16T13:02:00.000Z	almark	Jordan_U	I'm using Ubuntu 9.10 and its fully installed to my hard drive so its a full system
+2010-02-16T13:02:00.000Z	Jordan_U	almark	Try renaming /boot/grub/device.map so that grub creates one on the fly, like "sudo mv /boot/grub/device.map /boot/grub/device.map-bak"
+2010-02-16T13:03:00.000Z	almark	Jordan_U	hmm I didn't see a device map in there let me check
+2010-02-16T13:03:00.000Z	almark	Jordan_U	too many files so little time lol
+2010-02-16T13:03:00.000Z	almark	Jordan_U	I see it
+2010-02-16T13:04:00.000Z	almark	Jordan_U	ohhhhh lol
+2010-02-16T13:05:00.000Z	almark		Jordan_U_ its set to use sda but its on sdb its actually suppose to be on (hd1) /dev/sdb its showing (hd0) /dev/sda
+2010-02-16T13:06:00.000Z	Jordan_U	almark	Then renaming the file should work, device.map won't even be created by default in the next version of Ubuntu since it's not really needed any more.
+2010-02-16T13:06:00.000Z	almark		Jordan_U_  I got it!
+2010-02-16T13:06:00.000Z	Jordan_U		!boot | FirstSgt2
+2010-02-16T13:07:00.000Z	almark		Jordan_U_  thanks here let me share what I did I added (hd1) /dev/sdb to the file as well as the (hd0) /dev/sda and it worked and updated
+2010-02-16T13:08:00.000Z	almark		Jordan_U_  Ok thanks again I'm going to see if this puppy will reboot to windows
+2010-02-16T13:08:00.000Z	Jordan_U	almark	np

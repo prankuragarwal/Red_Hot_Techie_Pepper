@@ -1,0 +1,22 @@
+2008-11-07T02:32:00.000Z	neil_d		I have a problem with cron :(  The cron.daily scripts are meant to run at 3.25am but are running at 7.30-8.00am why ?
+2008-11-07T02:33:00.000Z	karsten	neil_d	UTC?
+2008-11-07T02:34:00.000Z	neil_d	karsten	I don't know, the 'date' program gives the correct time.
+2008-11-07T02:41:00.000Z	karsten	neil_d	... modulo s/self/<PID>/ there as that looks at the calling process.
+2008-11-07T02:36:00.000Z	karsten	neil_d	What's your TZ offset?  'date -R' gives that in RFC 2822 (mail) format
+2008-11-07T02:37:00.000Z	neil_d	karsten	sydney/australia = +11 atm
+2008-11-07T02:38:00.000Z	karsten	neil_d	Nope, it's not that then.  You have cron or anacron installed?
+2008-11-07T02:38:00.000Z	neil_d	karsten	by my calculations, that would mean an 2pm if it was using UTC.
+2008-11-07T02:39:00.000Z	neil_d	karsten	it appears to have both.
+2008-11-07T02:40:00.000Z	karsten	neil_d	anacron can result in jobs not running when scheduled.  You also want to check TZ values for cron and such.  You can examine a running cron process's environment in /proc/<PID>/env
+2008-11-07T02:40:00.000Z	neil_d	karsten	maybe I should stop anacron
+2008-11-07T02:40:00.000Z	karsten	neil_d	It's an ascii-nul terminated string, so you'll need to unpack it....
+2008-11-07T02:41:00.000Z	karsten	neil_d	tr -s '\000' '\n' < /proc/self/environ | grep ^TZ=
+2008-11-07T02:42:00.000Z	karsten	neil_d	... otoh you could schedule that as a cronjob to see what's happening.
+2008-11-07T02:42:00.000Z	karsten	neil_d	root to read another user's process, natch.
+2008-11-07T02:46:00.000Z	neil_d	karsten	this computer is a server, and spends most of it time on, shouldn't it be ok to disable anacron ?
+2008-11-07T02:46:00.000Z	karsten	neil_d	Yes.  I'd purge it frankly.
+2008-11-07T03:00:00.000Z	neil_d	karsten	when I go to purge anacron apt-get asks to  remove "anacron* ubuntu-desktop*" !!  is this safe ?
+2008-11-07T03:03:00.000Z	neil_d	karsten	thanks for the help.
+2008-11-07T03:04:00.000Z	karsten	neil_d	I'm not sure.  ubuntu-desktop may be virtual and not actually remove anything.
+2008-11-07T03:06:00.000Z	neil_d	karsten	it is a 'meta package', I purged anacron this should fix the problem.
+2008-11-07T03:08:00.000Z	karsten	neil_d	Cool.

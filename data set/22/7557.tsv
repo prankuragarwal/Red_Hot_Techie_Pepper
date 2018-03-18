@@ -1,0 +1,22 @@
+2006-03-02T15:57:00.000Z	jerware		can some one help me add a route to my routing table?
+2006-03-02T15:57:00.000Z	jerware		route 192.168.1.107 255.255.255.0 192.168.3.1   doesent work
+2006-03-02T15:57:00.000Z	jerware		nor does  route 192.168.1.107 192.168.3.1
+2006-03-02T15:57:00.000Z	jerware		im lookint at an example in my book
+2006-03-02T15:58:00.000Z	kronoz	jerware	are you trying to connect to a router
+2006-03-02T15:58:00.000Z	jerware		yes my laptop is connected to a cisco router, but i need to beable to log innto a server no another subnet
+2006-03-02T15:58:00.000Z	kronoz		route add default gw 192.168.1.*
+2006-03-02T15:58:00.000Z	jerware		route <dest>  <next hop>  correct?
+2006-03-02T15:58:00.000Z	jerware		oh add
+2006-03-02T15:59:00.000Z	jerware		no not a devault gateway
+2006-03-02T15:59:00.000Z	jerware		that goes to the internet
+2006-03-02T15:59:00.000Z	jerware		i have a defuault gateway that points to the internet
+2006-03-02T15:59:00.000Z	jerware		i need one that points to the server
+2006-03-02T15:59:00.000Z	jerware		a static router
+2006-03-02T15:59:00.000Z	jerware		route
+2006-03-02T15:59:00.000Z	kronoz	jerware	then i think it should be just route add gw 192.168.1.*
+2006-03-02T16:00:00.000Z	kronoz	jerware	assuming it is a gateway
+2006-03-02T16:01:00.000Z	kronoz		borsoiz: what keeps editing you resolv.conf?
+2006-03-02T16:01:00.000Z	jerware		i guess i dont need a route if i can already ping.  strange, i cant ssh tho
+2006-03-02T16:01:00.000Z	jerware	nm	i cant ping
+2006-03-02T16:01:00.000Z	jerware		grrrr
+2006-03-02T16:02:00.000Z	kronoz	jerware	if the machine you are trying to ssh into is on the subnet behind the router you should set up port forwarding on the router to forward ssh traffic to the box you are trying to ssh intp

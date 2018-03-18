@@ -1,0 +1,18 @@
+2006-09-02T09:42:00.000Z	no_dog		How do I restart alsa?
+2006-09-02T09:42:00.000Z	crimsun	no_dog	what do you mean by "restart"?
+2006-09-02T09:43:00.000Z	no_dog	crimsun	Well, I made the fatal mistake of trying to use two different applications that produce sound at the same time, and now I have no sound at all.
+2006-09-02T09:43:00.000Z	no_dog		crumsun: I thought that if I could somehow restart alsa, all would be well in the kingdom.
+2006-09-02T09:43:00.000Z	crimsun	no_dog	specifically, what did you attempt?
+2006-09-02T09:43:00.000Z	no_dog	crimsun	I had mp3s playing in Rhythmbox, and I tried to watch a flash video in Firefox.
+2006-09-02T09:44:00.000Z	crimsun	no_dog	have you closed both Firefox and Rhythmbox?
+2006-09-02T09:44:00.000Z	no_dog	crimsun	No, would that help?
+2006-09-02T09:44:00.000Z	crimsun	no_dog	it's the best place to start debugging
+2006-09-02T09:46:00.000Z	no_dog	crimsun	I closed both apps, but still no sound
+2006-09-02T09:46:00.000Z	crimsun	no_dog	lsof /dev/dsp* /dev/snd/*
+2006-09-02T09:46:00.000Z	crimsun	no_dog	pastebin the output from the above command
+2006-09-02T09:47:00.000Z	no_dog	crimsun	http://pastebin.com/781787
+2006-09-02T09:51:00.000Z	crimsun	no_dog	interesting, esd is running. Close it by unchecking (in GNOME) System> Preferences> Sound> Enable software sound mixing
+2006-09-02T09:52:00.000Z	no_dog	crimsun	Done. Now what?
+2006-09-02T09:53:00.000Z	crimsun	no_dog	now test: aplay /usr/share/sounds/startup.wav
+2006-09-02T09:55:00.000Z	no_dog	crimsun	Seems to work now. That was easy :)
+2006-09-02T09:55:00.000Z	no_dog	crimsun	Thanks!

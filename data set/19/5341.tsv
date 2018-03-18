@@ -1,0 +1,19 @@
+2008-08-13T11:04:00.000Z	unop	CutMeOwnThroat	the setuid bit has no effect on scripts
+2008-08-13T11:05:00.000Z	CutMeOwnThroat	unop	definitely not true for perl
+2008-08-13T11:05:00.000Z	unop	CutMeOwnThroat	even for perl
+2008-08-13T11:06:00.000Z	CutMeOwnThroat	unop	wrong suidperl takes care of it if the bit itself doesnt have an effect
+2008-08-13T11:07:00.000Z	CutMeOwnThroat	unop	but you're right for bash scripts... wasn't aware this was switched on
+2008-08-13T11:10:00.000Z	unop	CutMeOwnThroat	try it out.  echo -e '#!/usr/bin/perl \n print "$>"' \n print `whoami`' > /tmp/setuid_test;  sudo chown root.root /tmp/setuid_test; sudo chmod +sx /tmp/setuid_test; /tmp/setuid_test
+2008-08-13T11:11:00.000Z	CutMeOwnThroat	unop	hm - I have a script "sd" on my laptop that lets a normal user execute "shutdown -hf now" as root ...
+2008-08-13T11:12:00.000Z	CutMeOwnThroat	unop	might not be possible to run suid-stuff from /tmp, , though
+2008-08-13T11:13:00.000Z	unop	CutMeOwnThroat	well, if the perl 'executable'  (note, i don't say script) - uses a setreuid call, then the setuid bit has effect .. but perl cheats then .. it's making a system call which is not the norm for scripts
+2008-08-13T11:15:00.000Z	CutMeOwnThroat	unop	fixing up your script takes longer than writing one myself :)
+2008-08-13T11:15:00.000Z	unop	CutMeOwnThroat	my script is two lines long :)
+2008-08-13T11:16:00.000Z	CutMeOwnThroat	unop	that's why - there was an additional "'" in the line that was hard to find
+2008-08-13T11:18:00.000Z	CutMeOwnThroat	unop	add $ENV{PATH}='/usr/bin/'; as 1st line to the script
+2008-08-13T11:19:00.000Z	CutMeOwnThroat	unop	so why did *I* have to try this? I knew I was right
+2008-08-13T11:23:00.000Z	unop	CutMeOwnThroat	 heh.  Can't do setuid (cannot exec sperl)
+2008-08-13T11:24:00.000Z	CutMeOwnThroat	unop	pft, your buggy perl is not my problem :)
+2008-08-13T11:26:00.000Z	unop	CutMeOwnThroat	you make an assumption that everyone has perl-suid installed :)
+2008-08-13T11:26:00.000Z	CutMeOwnThroat	unop	as they should
+2008-08-13T11:27:00.000Z	unop	CutMeOwnThroat	i'll beg to differ

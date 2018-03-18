@@ -1,0 +1,21 @@
+2011-01-19T01:47:00.000Z	mbrigdan		So, I have a problem. I'm trying to migrate to an encrypted home directory, and I've almost succeeded, but it doesn't always auto-mount when I login, which causes problems. Anyone know what I can do?
+2011-01-19T01:48:00.000Z	undecim	mbrigdan	What have you done thus far in order to migrate to an encrypted home directory?
+2011-01-19T01:49:00.000Z	mbrigdan	undecim	This, pretty much: http://blog.dustinkirkland.com/2009/06/migrating-to-encrypted-home-directory.html
+2011-01-19T01:50:00.000Z	undecim	mbrigdan	Okay, that howto is needlessly complex and looks like it will be problematic...
+2011-01-19T01:50:00.000Z	undecim	mbrigdan	There is a much easier way to migrate over...
+2011-01-19T01:50:00.000Z	mbrigdan	undecim	Well, I followed it without too many problems
+2011-01-19T01:51:00.000Z	undecim	mbrigdan	Usually, all you need to do is go into recovery mode and rune "ecryptfs-migrate-home -u username" where username is your username
+2011-01-19T01:51:00.000Z	mbrigdan	undecim	I tried that, and it didn't work. I sort-of had this problem when it was just a private directory too, it often didn't automatically mount when I logged in.
+2011-01-19T01:51:00.000Z	undecim	mbrigdan	Though it is highly recommended that you make a backup of your data before doing so
+2011-01-19T01:52:00.000Z	undecim	mbrigdan	What happened that the migration script didn't work?
+2011-01-19T01:54:00.000Z	mbrigdan	undecim	It said that my home was already encrypted. (I am EXTREMELY sure it wasn't, given that there was no mounted ecryptfs under mount, I could access me files when I logged in as root, etc.) Thats irrelevant now though, because my problem is that it won't auto-mount.
+2011-01-19T01:55:00.000Z	undecim	mbrigdan	Okay, let me read through that howto you linked so I can see what state your home folder is in...
+2011-01-19T01:56:00.000Z	undecim	mbrigdan	You have automatic login disabled, correct?
+2011-01-19T01:56:00.000Z	mbrigdan	undecim	That's correct
+2011-01-19T02:05:00.000Z	mbrigdan	undecim	Oh sorry, I didn't see your second question. Yes, ut does exist
+2011-01-19T02:05:00.000Z	undecim	mbrigdan	Okay, make sure some folders are properly symlinked....
+2011-01-19T02:06:00.000Z	undecim	mbrigdan	~/.ecryptfs -> /home/.ecryptfs/user/.ecrypts
+2011-01-19T02:07:00.000Z	undecim	mbrigdan	/home/.ecryptfs/user/.Private/.ecryptfs -> /home/.ecryptfs/user/.ecryptfs
+2011-01-19T02:07:00.000Z	undecim	mbrigdan	and ~/.ecryptfs should also link when the folder is not mounted
+2011-01-19T02:09:00.000Z	mbrigdan	undecim	Hmm, that may have been the problem, let me logout/in and see if it works
+2011-01-19T02:25:00.000Z	mbrigdan	undecim	Tried fixing it, it still doesn't work. I pretty sure this was happening to me with my encrypted directory before I migrated too, so it could be some strange configuration quirk

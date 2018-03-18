@@ -1,0 +1,21 @@
+2008-11-06T02:14:00.000Z	arrrghhh		so i swapped my mobo, and now i have no network devices.  i thought linux didn't care what hardware i had installed.
+2008-11-06T02:15:00.000Z	karsten	arrrghhh	/etc/udev/rules.d/70-persistent-net-rules
+2008-11-06T02:14:00.000Z	karsten	arrrghhh	udev tracks NICs by MAC and will renumber devices.
+2008-11-06T02:15:00.000Z	arrrghhh	karsten	que?
+2008-11-06T02:16:00.000Z	karsten	arrrghhh	/sbin/ifconfig -a should list all known network devices.  If you see say, eth2, eth3, eth4, rather than starting w/ eth0, you've had devices renumbered.  Or you have a diffeent problem.
+2008-11-06T02:16:00.000Z	karsten	arrrghhh	One sec.
+2008-11-06T02:17:00.000Z	karsten	arrrghhh	I think you can just manually edit the file and renumber the high-numbered interfaces to 0, 1, etc.  Or delete the file and it's regenerated at boot when the udev scripts are run.
+2008-11-06T02:19:00.000Z	arrrghhh	karsten	genii, i think you both hit the nail on the head.  there was an entry for eth0 w/my old via crap and a new entry for eth1.  i'm rebooting now.
+2008-11-06T02:19:00.000Z	karsten	arrrghhh	Ok.  I think that reboot helps sort things out faster though it shouldn't be strictly necessary.
+2008-11-06T02:20:00.000Z	arrrghhh	karsten	yea i just decided to blast out the file and reboot.  didn't feel like editing it, and the old entry didn't need to be there.
+2008-11-06T02:20:00.000Z	karsten	arrrghhh	renaming is usually better than deleting.
+2008-11-06T02:21:00.000Z	arrrghhh	karsten	true, i probably should've renamed the file.  but it's workin and i'm happy.  now to learn how to partition my 1tb hdd at the command prompt!
+2008-11-06T02:22:00.000Z	karsten	arrrghhh	mv file file.bak or mv file file.$( date +%Y%m%d-%H%M%S )
+2008-11-06T02:22:00.000Z	karsten	arrrghhh	echo $( date +%Y%m%d-%H%M%S ) to see what that does.
+2008-11-06T02:22:00.000Z	arrrghhh	karsten	yes i know how to rename files.  i know that's what i should've done in case i needed to reinstate, but it's no biggie.
+2008-11-06T02:23:00.000Z	karsten	arrrghhh	it's the date string substitution to create a timestamp for the backup fi.e
+2008-11-06T02:23:00.000Z	arrrghhh	karsten	20081105-142309 - why?
+2008-11-06T02:24:00.000Z	karsten	arrrghhh	That's a datestamp in YYYYMMDD-HHMMSS format.  I find it useful for remembering *when* I created a particular backup file.
+2008-11-06T02:24:00.000Z	arrrghhh	karsten	don't sweat it.  server's already rebooted, and i'm sshed into it now.
+2008-11-06T02:24:00.000Z	karsten	arrrghhh	Yeah, just sharing the Wisdom.
+2008-11-06T02:25:00.000Z	arrrghhh	karsten	ha, thanks.  i've been very careful about backing up configs to the "cloud" - just in case.

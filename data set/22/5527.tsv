@@ -1,0 +1,22 @@
+2008-03-24T07:22:00.000Z	zachwlewis		I've been trying to install cnet (a network simulator), but every time I try to run make, I get the same error: warning: cast from pointer to integer of different size. What should I look for in changing the default int size to match the one on my 64-bit machine?
+2008-03-24T07:22:00.000Z	calc	zachwlewis	good luck with that
+2008-03-24T07:22:00.000Z	calc	zachwlewis	its probably not 64bit clean
+2008-03-24T07:23:00.000Z	zachwlewis	calc	The way it's set up, it treats all warning as errors and fails to compile.
+2008-03-24T07:23:00.000Z	calc	zachwlewis	its probably not really a warning for a 64bit machine
+2008-03-24T07:23:00.000Z	zachwlewis	calc	I've not got a 64-bit version of Ubuntu installed.
+2008-03-24T07:23:00.000Z	calc	zachwlewis	an int and a pointer are different sizes on 64bit systems
+2008-03-24T07:23:00.000Z	calc	zachwlewis	oh i see
+2008-03-24T07:23:00.000Z	calc	zachwlewis	so you are running ubuntu i386 then?
+2008-03-24T07:24:00.000Z	zachwlewis	calc	How can I check that? I'm actually not 100%.
+2008-03-24T07:24:00.000Z	calc	zachwlewis	assuming you are running the 32bit verison of Ubuntu then removing the -werror from the compiler options should let it compile
+2008-03-24T07:25:00.000Z	calc	zachwlewis	you are using the 64bit version
+2008-03-24T07:25:00.000Z	zachwlewis	calc	Okay, I see.
+2008-03-24T07:25:00.000Z	calc	zachwlewis	so you can't make that code work as is, because its not written properly and won't work on 64bit
+2008-03-24T07:26:00.000Z	zachwlewis	calc	Any way to force it to run in 32-bit mode, or run a 32-bit emulator on my machine?
+2008-03-24T07:26:00.000Z	calc	zachwlewis	not easily
+2008-03-24T07:28:00.000Z	zachwlewis	calc	I've got an install of Ubuntu on a vmWare machine on Windows. Do you think it would work there?
+2008-03-24T07:28:00.000Z	calc	zachwlewis	you could setup vmware or something like that to run a 32bit version of Ubuntu
+2008-03-24T07:28:00.000Z	zachwlewis	calc	hivemind.
+2008-03-24T07:29:00.000Z	calc	zachwlewis	yes that might work, the code is buggy though in general so it might have other issues
+2008-03-24T07:29:00.000Z	zachwlewis	calc	What code is buggy in general?
+2008-03-24T07:29:00.000Z	calc	zachwlewis	casting int to pointer is a bad thing to do and shows that the person who wrote the code didn't know what they were doing

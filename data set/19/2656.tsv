@@ -1,0 +1,19 @@
+2011-03-29T18:10:00.000Z	ChogyDan		anyone know about kernel tunables?
+2011-03-29T18:10:00.000Z	ohsix	ChogyDan	which ones, they're all documented in Documentation/ in your typical kernel tree
+2011-03-29T18:11:00.000Z	ChogyDan	ohsix	specifically, Im trying to find out about sampling_down_factor.  I'll look for that Documentation folder
+2011-03-29T18:12:00.000Z	ohsix	ChogyDan	cpu-freq/governors.txt
+2011-03-29T18:12:00.000Z	ohsix	ChogyDan	considering this is what you're interested in, what are you actually trying to do?
+2011-03-29T18:13:00.000Z	ChogyDan	ohsix	test it  :)   see how much it boosts performance
+2011-03-29T18:14:00.000Z	ohsix	ChogyDan	you can turn off the governor and run the cpus at 100% too; default values are pretty good to follow "Average" workloads
+2011-03-29T18:15:00.000Z	ohsix	ChogyDan	you're pretty much just trading off for power, too; and if power isn't a concern you could just disable it and it'll go all fast, all the time; wasting all the energy in the world ;]
+2011-03-29T18:15:00.000Z	ChogyDan	ohsix	fwiw, the ondemand governor saps about %30 of my cpu strength
+2011-03-29T18:16:00.000Z	ohsix	ChogyDan	if thats the case you want to adjust the tunable that picks transitioning to higher power/speed states,  not transition down
+2011-03-29T18:22:00.000Z	ChogyDan	ohsix	up_threshold?    I dunno.  The sampling_down_factor was supposed to prevent the cpu from changing frequencies as much, which I think was my prob.  It would bump up to a higher freq, than drop down, bouncing between 2 cores.  Anyway, I really don't know.  I don't even see the documentation  for that tunable :(
+2011-03-29T18:22:00.000Z	ohsix	ChogyDan	it's in Documentation/cpu-freq/governors.txt
+2011-03-29T18:22:00.000Z	ChogyDan	ohsix	what version of the kernel?
+2011-03-29T18:25:00.000Z	ChogyDan	ohsix	I'm pretty sure the sampling_down_factor was added 3 months ago
+2011-03-29T18:25:00.000Z	ohsix	ChogyDan	ok
+2011-03-29T18:25:00.000Z	ohsix	ChogyDan	Date:   Tue Jan 25 20:12:41 2011 +0530
+2011-03-29T18:26:00.000Z	ohsix	ChogyDan	but it says documentation was added, not the parameter
+2011-03-29T18:27:00.000Z	ChogyDan	ohsix	and on google, it says that it and the documentation have been removed, even though I still see the tunable on my machine  (which is 2.6.38 atm)     o well, Im confused   :)
+2011-03-29T18:28:00.000Z	ohsix	ChogyDan	my tree is current, theres no removal in the log

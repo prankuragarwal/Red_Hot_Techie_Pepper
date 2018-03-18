@@ -1,0 +1,21 @@
+2009-12-04T22:46:00.000Z	maxagaz_		how to create a wifi network and make my iphone connect to it ?
+2009-12-04T22:47:00.000Z	llutz	maxagaz_	use ad-hoc connection, if iPhone supports that.
+2009-12-04T22:48:00.000Z	maxagaz_	llutz	that's what i did, the iphone can connect to the network, but my computer doesn't give it an ip
+2009-12-04T22:49:00.000Z	llutz	maxagaz_	you need static ips or something like dnsmasq running
+2009-12-04T22:49:00.000Z	llutz	maxagaz_	or dhcpd (overkill)
+2009-12-04T22:50:00.000Z	maxagaz_	llutz	dnsmasq is already running
+2009-12-04T22:51:00.000Z	llutz	maxagaz_	configured for acting as dhcp-server too?
+2009-12-04T22:52:00.000Z	maxagaz_	llutz	that I don't know
+2009-12-04T22:52:00.000Z	llutz	maxagaz_	check config
+2009-12-04T22:52:00.000Z	maxagaz_	llutz	/usr/sbin/dnsmasq --no-hosts --keep-in-foreground --bind-interfaces --no-poll --except-interface=lo --listen-address=10.42.43.1 --dhcp-range=10.42.43.10,10.42.43.100,60m --dhcp-option=option:router,10.42.43.1 --dhcp-lease-max=50 --pid-file=/var/run/nm-dnsmasq-eth1.pid
+2009-12-04T22:53:00.000Z	maxagaz_	llutz	that's what ps aux prints
+2009-12-04T22:53:00.000Z	llutz	maxagaz_	looks ok, check logs for errors (/var/log/....)
+2009-12-04T22:55:00.000Z	maxagaz_	llutz	what makes the link between the ad hoc dhcp wifi network i created with network manager and dnsmasq ?
+2009-12-04T22:55:00.000Z	llutz	maxagaz_	you have to establish the connection manually
+2009-12-04T22:55:00.000Z	maxagaz_	llutz	from the iphone ?
+2009-12-04T22:58:00.000Z	llutz	maxagaz_	set linux to ad-hoc, then your iphone too, it should connect then
+2009-12-04T23:00:00.000Z	llutz	maxagaz_	"sudo iwconfig ethX mode Ad-Hoc essid "myadhocnet" enc off"
+2009-12-04T23:00:00.000Z	llutz	maxagaz_	on iphone try to connect "myadhocnet"
+2009-12-04T23:07:00.000Z	maxagaz_	llutz	whi this command => sudo iwconfig eth1 mode Ad-Hoc essid "myadhocnet" enc off, I can't see the network from my iphone, not connect to it by just giving its name
+2009-12-04T23:13:00.000Z	llutz	maxagaz_	how did you configure your ad-hoc network before? iwconfig ... does that
+2009-12-04T23:14:00.000Z	maxagaz_	llutz	i used network-manager, but i removed what n-m created before using iwconfig

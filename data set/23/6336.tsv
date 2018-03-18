@@ -1,0 +1,23 @@
+2008-02-14T19:38:00.000Z	Wirwing		How can i enable direct rendering? heres my xorg.conf http://paste.ubuntu-nl.org/55964/ I have aixgl enabled, dri, etc.
+2008-02-14T19:39:00.000Z	nickrud	Wirwing	try removing the Group 0 in your dri config, that limits direct rendering to root
+2008-02-14T19:40:00.000Z	Wirwing	nickrud	remove all the section "DRI",  or just the "group 0" text?
+2008-02-14T19:40:00.000Z	nickrud	Wirwing	just the group 0
+2008-02-14T19:48:00.000Z	nickrud	Wirwing	put a copy of /var/log/Xorg.0.log on http://paste.ubuntu-nl.org
+2008-02-14T19:51:00.000Z	Wirwing	nickrud	Heres my /var/xorg.0.log http://paste.ubuntu-nl.org/55968/
+2008-02-14T19:53:00.000Z	Wirwing	nickrud	and heres my grep -i aiglx /var/log/Xorg.0.log http://paste.ubuntu-nl.org/55969/
+2008-02-14T19:55:00.000Z	nickrud	Wirwing	everything I read in there says dri is enabled, what does glxinfo | grep direct say?
+2008-02-14T19:56:00.000Z	Wirwing	nickrud	direct rendering: No (If you want to find out why, try setting LIBGL_DEBUG=verbose)
+2008-02-14T19:56:00.000Z	nickrud	Wirwing	are you running xserver-xgl?
+2008-02-14T19:57:00.000Z	nickrud	Wirwing	just wanted to be sure
+2008-02-14T19:57:00.000Z	Wirwing	nickrud	ok, i have installed it, and then?
+2008-02-14T19:58:00.000Z	nickrud	Wirwing	this stumps me, since line 773 and 774 say dri is good. And you don't want xserver-xgl , it will cause glxinfo to say no to direct rendering
+2008-02-14T19:59:00.000Z	nickrud	Wirwing	a stupid question, you did restart X after removing that group line?
+2008-02-14T19:59:00.000Z	Wirwing	nickrud	i really dont care about direct rendering, but if i run compiz, it call that process at the beginning, saying something like: Direct rendering =no, and all the other stuff doesnt start.
+2008-02-14T20:00:00.000Z	Wirwing	nickrud	of course.
+2008-02-14T20:00:00.000Z	Wirwing	nickrud	let me restart the pc and tell you what happened.
+2008-02-14T20:01:00.000Z	nickrud	Wirwing	then lets take a look at LIBGL_DUG=verbose  glxinfo
+2008-02-14T20:09:00.000Z	Wirwing	nickrud	Hi, im back, and all my desktop is a mess. I think than install xserver it wasnt a good idea :S
+2008-02-14T20:10:00.000Z	nickrud	Wirwing	you missed the part where I said you weren't supposed to install it :)
+2008-02-14T20:11:00.000Z	Wirwing	nickrud	lol, i missed that. Im gonna unninstall it and think about doing next. :(
+2008-02-14T20:18:00.000Z	Wirwing	nickrud	Hi, again. xserver uninstalled, and all the stuff fixed again... but without direct rendering and compiz :(
+2008-02-14T20:21:00.000Z	Wirwing	nickrud	upps, i close the windows. Did you or anyone say something?

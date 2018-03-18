@@ -1,0 +1,18 @@
+2006-09-08T11:08:00.000Z	medic30420		hello, having issues mounting my windoze partition... everything else mounts fine
+2006-09-08T11:09:00.000Z	dragonriot	medic30420	mount /dev/hda1 /media/windows
+2006-09-08T11:10:00.000Z	medic30420	dragonriot	that gives me an error
+2006-09-08T11:10:00.000Z	dragonriot	medic30420	what error?
+2006-09-08T11:11:00.000Z	dragonriot	medic30420	is it a separate drive?
+2006-09-08T11:21:00.000Z	dragonriot	medic30420	ok what will work?
+2006-09-08T11:22:00.000Z	dragonriot	medic30420	I wasn't telling you to symlink anything... and it's a bad idea for what you want to do.
+2006-09-08T11:23:00.000Z	dragonriot	medic30420	can I suggest something?
+2006-09-08T11:23:00.000Z	medic30420	dragonriot	sure
+2006-09-08T11:25:00.000Z	dragonriot	medic30420	wipe the drive... boot with windows 98, fdisk /mbr, fdisk, wipe all your partitions, create a primary partition of 15GB, extended partition of 25GB... don't make any new partitions in the extended...
+2006-09-08T11:28:00.000Z	medic30420	dragonriot	i am listening
+2006-09-08T11:31:00.000Z	dragonriot	medic30420	install Windows XP first - on NTFS, do your updates, and install Partition Magic.  Leave C: at 15GB or resize to 10GB, your choice.  create 10-50mb ext3 partition at the beginning of the extended drive, then /(root) 2gb, /usr 4gb, /tmp 1gb, /var 200mb, remaining(/home), 1-2gb swap, 10GB FAT32  (don't label anything, just make them all ext3 with Partition Magic... after it's done, THEN install Ubuntu, and all your
+2006-09-08T11:32:00.000Z	dragonriot	medic30420	the 10-50mb was for /boot, in case you were wondering...
+2006-09-08T11:33:00.000Z	dragonriot	medic30420	/dev/hda1       /media/windows-c fat32    defaults,nls=utf8,umask=007,gid=46 0       1
+2006-09-08T11:33:00.000Z	dragonriot	medic30420	does that work in your fstab?
+2006-09-08T12:21:00.000Z	medic30420	dragonriot	my fstab WAS screwed up
+2006-09-08T12:21:00.000Z	medic30420	dragonriot	i had the wrong hda# listed, fixed it and now all is well
+2006-09-08T12:23:00.000Z	dragonriot	medic30420	congrats... glad you got it fixed...

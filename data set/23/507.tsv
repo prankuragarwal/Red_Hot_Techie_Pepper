@@ -1,0 +1,23 @@
+2012-10-08T07:24:00.000Z	BlackWeb		Just wondering I've been using SSH, & my main concern is that say I ssh into a remote server and start a file transfer to the remote system, but if i close the ssh window on my local machine it will stop the transfer, Is there anyway to start a task on a remote server using ssh and not have to leave the current system up and running?
+2012-10-08T07:25:00.000Z	somsip	BlackWeb	so you start screen on the server, connect to it through ssh, run commands on it, and detach from it. It carries on
+2012-10-08T07:25:00.000Z	somsip	BlackWeb	also, byobu and tmux
+2012-10-08T07:25:00.000Z	somsip	BlackWeb	np
+2012-10-08T07:51:00.000Z	BlackWeb	somsip	are you still on
+2012-10-08T07:52:00.000Z	somsip	BlackWeb	yes
+2012-10-08T07:58:00.000Z	somsip	BlackWeb	first, I don't use screen. I can only give advice in the context of tmux. With tmux, it's always running on my servers. I connect to the servers with  something like 'autossh {ssh-alias} -t tmux a' so it reattaches to the running tmux session automatically. If I run a long script, like a DB dump, I detach from tmux with CTRL-B D, and that drops to my terminal. If I connect again, it reattaches to the same session so I can s
+2012-10-08T08:00:00.000Z	somsip	BlackWeb	in short, you need to reattach the to running session of screen. I'd use 'tmux a'. Screen will have something similar
+2012-10-08T08:01:00.000Z	somsip	BlackWeb	you might have created a new session instead of reattching to an existing one.
+2012-10-08T08:01:00.000Z	somsip	BlackWeb	And I wouldn't say tmux is bette.r IT's just the one I decided on for reasons lost in memory...
+2012-10-08T08:04:00.000Z	somsip	BlackWeb	it shiould just show like a terminal window. But kiwi_3063 seems to knwo about screen so maybe he can take over with help?
+2012-10-08T08:04:00.000Z	somsip	BlackWeb	any chance you have two sessions running and connected to the wrong one?
+2012-10-08T08:06:00.000Z	somsip	BlackWeb	it should look like a normal ssh/terminal. The same as it was when you detached
+2012-10-08T08:06:00.000Z	somsip	BlackWeb	but it should show the last commands you enetered, which I guess should include the scp
+2012-10-08T08:09:00.000Z	somsip	BlackWeb	the only other thing I suggest is detach from screen and screen -ls to make sure you just have one running. Kill the other if there is one, or connect to the one that was running scp using the screen -r command suggested by kiwi_3063
+2012-10-08T08:10:00.000Z	somsip	BlackWeb	np.
+2012-10-08T09:54:00.000Z	somsip	BlackWeb	So you ssh to C. You run screen. You issue 'scp B:file C:' and it shows you the progress. You detach from screen and you drop to the ssh to C. You close that, you're back at A. You ssh to C again, you reconnect to screen again, and it should show you the scp progress
+2012-10-08T09:54:00.000Z	BlackWeb	somsip	thats the thing when I do that then it Executes the SCP and it doesnt show any progress but the Transfer is taking place though
+2012-10-08T09:58:00.000Z	somsip	BlackWeb	does the progress bar show when you just ssh and scp from that without screen?
+2012-10-08T09:58:00.000Z	somsip	BlackWeb	http://askubuntu.com/questions/44059/progress-bar-in-scp-command
+2012-10-08T09:59:00.000Z	somsip	BlackWeb	so there isn't a progress bar with scp and it's not a problem with screen?
+2012-10-08T10:00:00.000Z	somsip	BlackWeb	nope. I don't get what you're doing here. Sorry.
+2012-10-08T10:05:00.000Z	somsip	BlackWeb	cool- glad you got it in the end

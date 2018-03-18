@@ -1,0 +1,22 @@
+2008-10-24T07:35:00.000Z	Joker_-_		IS that possible to copy over an installation of ubuntu? I have a server that is setup well, with datas and all but I installed 2 new drives in it in order to make raid mirroring. I re-ran the install and setup raid and everything is functionnal. Can I just copy over all the datas on my older drive? I guess the kernel has to have some different modules or something in order to load the software raid... any idea?
+2008-10-24T07:36:00.000Z	Joker_-_		let me reformulate: How do I copy all a server's data that was on a single hard drive to an array?
+2008-10-24T07:37:00.000Z	Joker_-_		Server.Datas.ToArray() ?
+2008-10-24T07:37:00.000Z	Joker_-_		hence my presence here
+2008-10-24T07:38:00.000Z	mneptok	Joker_-_	dd or rsync
+2008-10-24T07:38:00.000Z	Joker_-_	mneptok	rsync and/or dd will overwrite all the kernel's modules and so on. then the system wont boot
+2008-10-24T07:39:00.000Z	Joker_-_	mneptok	either be more specific or forget the whole idea
+2008-10-24T07:39:00.000Z	mneptok	Joker_-_	"try using the applications dd or rsync"
+2008-10-24T07:39:00.000Z	Joker_-_	mneptok	havent you just read what i said? What about the kernel and grub and all. System just wont boot.
+2008-10-24T07:40:00.000Z	mneptok	Joker_-_	did you even look at dd?
+2008-10-24T07:40:00.000Z	mneptok	Joker_-_	no, dd creates a bit-perfect copy of one volume to stdout
+2008-10-24T07:41:00.000Z	Joker_-_	mneptok	I know it copies EVERYTHING, including MASTER BOOT RECORD. and THATS part of the problem as I will be using a software raid and I was using a single drive.
+2008-10-24T07:41:00.000Z	mneptok	Joker_-_	then it sounds like you want rsync
+2008-10-24T07:41:00.000Z	Joker_-_	mneptok	rsync will work around the kernel and all?
+2008-10-24T07:42:00.000Z	mneptok	Joker_-_	rsync will sync what is on one drive (as presented by the filesystem) to what is on another.
+2008-10-24T07:42:00.000Z	Joker_-_	mneptok	right now I tryed a full system backup with something like that: tar cvpzf backup.tgz --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys --exclude=/var/run --exclude=/tmp --exclude=/var/cache/ /
+2008-10-24T07:44:00.000Z	Joker_-_	mneptok	I did a full backup with the given command while chrooted to the old drive, then exited the chroot and unpacked the archive on the new /
+2008-10-24T07:44:00.000Z	Joker_-_	mneptok	to me, it sounds pretty much like what rsync would to
+2010-04-03T23:30:00.000Z	Joker_-_	mneptok	it doest give the error in dmesg anymore, but it doesnt work either...
+2010-04-03T23:30:00.000Z	Joker_-_	mneptok	it works for like, 1 or 2 files (pictures, 2mb each) and then it hangs
+2010-04-03T23:31:00.000Z	Joker_-_	mneptok	the laptop doesnt hag, the transfert does
+2010-04-03T23:32:00.000Z	Joker_-_	mneptok	imma try with the -noacpi

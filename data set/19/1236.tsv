@@ -1,0 +1,19 @@
+2012-01-12T11:06:00.000Z	cpgo		where am I supposed to put a script to run at either login or startup
+2012-01-12T11:06:00.000Z	cpgo		I tied ~/.bash_login but that didnt work
+2012-01-12T11:08:00.000Z	prince_jammys	cpgo	do you have a file ~/.profile ? if so, there.
+2012-01-12T11:08:00.000Z	cpgo	prince_jammys	ok
+2012-01-12T11:09:00.000Z	prince_jammys	cpgo	depends on how you log in. try .profile
+2012-01-12T11:15:00.000Z	cpgo	prince_jammys	that didnt work. do I need /bin/bash _then_my_script ?
+2012-01-12T11:15:00.000Z	prince_jammys	cpgo	how do you log in? through a gui?
+2012-01-12T11:17:00.000Z	prince_jammys	cpgo	is your script in a directory in your PATH? how did you invoke your script?
+2012-01-12T11:18:00.000Z	prince_jammys	cpgo	that's curious. do you have a file called ~/.bash_profile ?
+2012-01-12T11:19:00.000Z	cpgo	prince_jammys	no, theres history, login (which I created), logout and rc
+2012-01-12T11:19:00.000Z	prince_jammys	cpgo	donput something like '' echo Hello > ~/test_file ''  at the end of .profile, log in and out, and see if the test file is created.
+2012-01-12T11:19:00.000Z	prince_jammys	cpgo	err, don't create .bash_profile and remove .bash_login that you created. Try what i said with .profile.
+2012-01-12T11:20:00.000Z	prince_jammys	cpgo	'donput' was a typo. I meant 'put'
+2012-01-12T11:20:00.000Z	prince_jammys	cpgo	if the test file is created, the issue is with your prog.
+2012-01-12T11:21:00.000Z	cpgo	prince_jammys	well I have other stuff in .profile that work. I export a var and I see that its set. Im going to do that file creating in my script and see if the script itself is being called and what I have it doing in there is failing
+2012-01-12T11:21:00.000Z	prince_jammys	cpgo	sounds like the issue is with your script, then.
+2012-01-12T11:28:00.000Z	cpgo	prince_jammys	looks like I had to replace a sudo with a gksu
+2012-01-12T11:29:00.000Z	prince_jammys	cpgo	you should wrap your code in :  if [[ $DISPLAY ]]; then .... ; fi   # for when you happen to log in outside of X (say through ssh)
+2012-01-12T11:29:00.000Z	prince_jammys	cpgo	or maybe use gnome's startup directory for scripts, if you run gnome.

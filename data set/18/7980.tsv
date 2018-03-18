@@ -1,0 +1,18 @@
+2010-06-10T23:35:00.000Z	spezticle		what kind of link does ln -s /file /path/file make? and would a proper symbolic link be ln -sf /target /path/destination ? i can't tell the difference?
+2010-06-10T23:35:00.000Z	llutz	spezticle	symbolic links, both. -sf means just "force". read "man ln"
+2010-06-10T23:37:00.000Z	spezticle	llutz	i did read it i was using that exact command but it wasn't making symbolic links. modification to /source didn't reflect changes in /path
+2010-06-10T23:38:00.000Z	llutz	spezticle	what kind of modification?
+2010-06-10T23:41:00.000Z	spezticle	llutz	it's apache stuff /etc/apache2/sites-enabled to /etc/apache2/sites-available , when i do the command and edit /sites-enabled files and go back to /sites-available, the available file is original, where enabled file has the modifications
+2010-06-10T23:42:00.000Z	spezticle	llutz	which tells me i'm not making the symbolic link correctly because it's not linked to the orig file it's making a new file
+2010-06-10T23:42:00.000Z	llutz	spezticle	then you did the command wrong and haven't created a link. "ls -l /etc/apache2/sites-enabled"
+2010-06-10T23:42:00.000Z	spezticle	llutz	ah, ls not ln? that would be why lol
+2010-06-10T23:43:00.000Z	llutz	spezticle	nope, paste the output of that command please
+2010-06-10T23:43:00.000Z	llutz	spezticle	to create the links, use "sudo ln -s /etc/apache2/sites-available/site1  /etc/apache2/sites-enabled/"
+2010-06-10T23:44:00.000Z	spezticle	llutz	lrwxrwxrwx 1 root root 26 2010-06-10 05:03 000-default -> ../sites-available/default
+2010-06-10T23:48:00.000Z	spezticle	llutz	unop: thanks :)
+2010-06-10T23:48:00.000Z	llutz	spezticle	but anyways, any change to /etc/apache2/sites-enabled/000-default  will apply to   ../sites-available/default  too(its the same file)
+2010-06-10T23:49:00.000Z	spezticle	llutz	yeah, i know that part, i'm backtracking now to figure out how i did it to make them individual files. i missed proper syntax somewhere
+2010-06-10T23:50:00.000Z	llutz	spezticle	but " lrwxrwxrwx 1 root root 26 2010-06-10 05:03 000-default -> ../sites-available/default" is a correct symlink
+2010-06-10T23:53:00.000Z	spezticle	llutz	i'm thinking then i DID do the command right, i made the error by pointing to a wrong file and naming the files wrong
+2010-06-10T23:54:00.000Z	spezticle	llutz	thanks again though i got it working right now
+2010-06-10T23:54:00.000Z	llutz	spezticle	so remove the link and use that command mentioned by unop

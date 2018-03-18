@@ -1,0 +1,24 @@
+2007-12-16T23:49:00.000Z	admin_		I'm trying to mount a SD card, mount: /dev/sdc: can't read superblock
+2007-12-16T23:50:00.000Z	sethk	admin_	most likely you need to use /dev/sdc1
+2007-12-16T23:50:00.000Z	sethk	admin_	try fdisk -l /dev/sdc.  If it shows a partition table, then use sdc1
+2007-12-16T23:51:00.000Z	sethk	admin_	what does   sudo fdisk -l /dev/sdc     do?
+2007-12-16T23:52:00.000Z	sethk	admin_	that's not possible.  It can give you an error, or it can display something, but it can't do nothing.
+2007-12-16T23:52:00.000Z	sethk	admin_	try with -v
+2007-12-16T23:53:00.000Z	sethk	admin_	yes, sorry, that's not right.  Let me check the flags ...
+2007-12-16T23:53:00.000Z	sethk	admin_	try    sfdisk -l /dev/sdc
+2007-12-16T23:53:00.000Z	sethk	admin_	see if it says "can't open for reading"
+2007-12-16T23:54:00.000Z	sethk	admin_	try this (to see if the thing can be accessed at all):   sudo dd if=/dev/sdc of=/dev/null bs=512 count=1
+2007-12-16T23:57:00.000Z	admin_	sethk	so what should i do?
+2007-12-16T23:57:00.000Z	sethk	admin_	did you try the dd command?  There's so much traffic I'm not sure whether you responded to that suggestion.
+2007-12-16T23:57:00.000Z	admin_	sethk	^
+2007-12-16T23:58:00.000Z	sethk	admin_	when you connect the thing, do you see messages at the end of  dmesg showing the USB port and then which sdX is used?
+2007-12-16T23:58:00.000Z	admin_	sethk	it does a continuous error loop
+2007-12-16T23:58:00.000Z	sethk	admin_	ok, well, nothing good will happen until that gets fixed.
+2007-12-16T23:59:00.000Z	sethk	admin_	the write cache message is normal, but READ CAPACITY failed is not normal.
+2007-12-17T00:00:00.000Z	sethk	admin_	the first thing I'd try is checking the kernel configuration, make sure the modules are loaded for your box's USB hardware.
+2007-12-17T00:00:00.000Z	sethk	admin_	if you are using a card reader, try a different card reader.
+2007-12-17T00:01:00.000Z	admin_	sethk	I've used SD cards on here before ,just bought this card, I've lways had problems like these with the cards (it's a laptop, internal reader)
+2007-12-17T00:02:00.000Z	sethk	admin_	I would try an external reader, that will at least tell us if it's the reader or the card.
+2007-12-17T00:02:00.000Z	admin_	sethk	it's without a doubt the card.
+2007-12-17T00:02:00.000Z	admin_	sethk	^
+2007-12-17T00:03:00.000Z	sethk	admin_	obviously if it's the card there isn't anything you can do except get another card (which I realize isn't terribly helpful but is true).

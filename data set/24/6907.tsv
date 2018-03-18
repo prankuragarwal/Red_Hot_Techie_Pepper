@@ -1,0 +1,24 @@
+2005-06-19T14:00:00.000Z	newbie01		where do i get additional info when qtparted says "there was a problem with mkfs.ext3 ?
+2005-06-19T14:01:00.000Z	yaaar	newbie01	what are you trying to do?
+2005-06-19T14:01:00.000Z	newbie01	yaaar	i am trying to format a 160 gb ide disk with ext3
+2005-06-19T14:02:00.000Z	yaaar	newbie01	and you've already fdisked it?
+2005-06-19T14:02:00.000Z	yaaar	newbie01	or, more to the point, there's a partition available for your mkfs operation?
+2005-06-19T14:02:00.000Z	newbie01	yaaar	one partition is ok for me. do i still need anything "fdisk" (?)
+2005-06-19T14:03:00.000Z	newbie01	yaaar	i hve to give you some more information sorry :
+2005-06-19T14:03:00.000Z	yaaar	newbie01	so this isn't a dual-boot setup or anything like that?
+2005-06-19T14:05:00.000Z	newbie01	yaaar	the disk is running as hdc and its only a data harddisk so one partition with ext3 would be ok. the disk has got a bit screwed up history since i used gpart and testdisk (to recover a partition / successfully)
+2005-06-19T14:05:00.000Z	yaaar	newbie01	ok, so there's nothing on the drive you want?
+2005-06-19T14:06:00.000Z	newbie01	yaaar	i backuped anything so we can kill it
+2005-06-19T14:06:00.000Z	yaaar	newbie01	ok, as root, run 'fdisk /dev/hdc'
+2005-06-19T14:06:00.000Z	yaaar	newbie01	then type 'p<enter>'
+2005-06-19T14:08:00.000Z	newbie01	yaaar	fdisk says " The number of cylinders for this disk is set to 19929......" something wrong with the geometry ?
+2005-06-19T14:09:00.000Z	newbie01	yaaar	p returns : " /dev/hdc1   *           1       19929   160079661   83  Linux"
+2005-06-19T14:09:00.000Z	yaaar	newbie01	ok that sounds fine
+2005-06-19T14:09:00.000Z	yaaar	newbie01	run (as root) mke2fs -j /dev/hdc1
+2005-06-19T14:10:00.000Z	newbie01	yaaar	is working
+2005-06-19T14:10:00.000Z	yaaar	newbie01	i've never used qparted, so i figured best to just use the raw stuff
+2005-06-19T14:13:00.000Z	newbie01	yaaar	"df -h : /dev/hdc              151G   33M  143G   1% /mnt/hdc" its a 160 gb. pretty much gone
+2005-06-19T14:13:00.000Z	yaaar	newbie01	so, does it mount now? can u do stuff w/ it?
+2005-06-19T14:14:00.000Z	newbie01	yaaar	i mounted it and could wirte to it. but 151 is not its size. instead it should be 160 gb
+2005-06-19T14:15:00.000Z	yaaar	newbie01	160GB is prolly in "salesman's GB" ....1GB==1000MB. Linux is showing you real GB....1GB==1024MB
+2005-06-19T14:19:00.000Z	yaaar	newbie01	look, this is real straightforward. 1024*1024*1024*151==162135015424

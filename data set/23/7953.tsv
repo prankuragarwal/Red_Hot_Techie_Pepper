@@ -1,0 +1,23 @@
+2005-04-21T14:55:00.000Z	Xgates		Error: Unknown target kernel_image-2.6.10-01
+2005-04-21T14:55:00.000Z	Xgates		crap
+2005-04-21T14:56:00.000Z	Xgates		hmm maybe I need to remove the word "kernel_image" and just make it 2.6.10-01 instead
+2005-04-21T14:57:00.000Z	ermo	Xgates	like so: make-kpkg --revision 1 kernel_image <- in your kernel source directory
+2005-04-21T14:57:00.000Z	ermo	Xgates	'kernel_image' is your 'target' definition. It will build the kernel, the modules and package it for you in a .deb file in /usr/src
+2005-04-21T14:58:00.000Z	Xgates	ermo	I'm in the /usr/src/linux path
+2005-04-21T14:59:00.000Z	Xgates	ermo	ok sorry 'kernel_image' is what I'm lost on here, do I change that to something?
+2005-04-21T14:59:00.000Z	Xgates	ermo	this is what I ran in /usr/src/linux ---->  make-kpkg --revision=custom.1.0 kernel_image-2.6.10-01
+2005-04-21T15:00:00.000Z	ermo	Xgates	try writing 'make-kpkg --targets' <- that should give you an understanding of what kind of argument 'kernel_image' is
+2005-04-21T15:00:00.000Z	Xgates	ermo	ok
+2005-04-21T15:00:00.000Z	ermo	Xgates	drop the '=' (equals) sign
+2005-04-21T15:00:00.000Z	ermo	Xgates	replace it with a ' ' (blank)
+2005-04-21T15:01:00.000Z	Xgates	ermo	I was reading that from here --> http://www.ubuntulinux.org/wiki/KernelCompileHowto
+2005-04-21T15:02:00.000Z	Xgates	ermo	you mean run it as --> make-kpkg --revision''custom.1.0 2.6.10-01
+2005-04-21T15:02:00.000Z	ermo	Xgates	make-kpkg --revision 1 kernel_image
+2005-04-21T15:03:00.000Z	Xgates	ermo	ok
+2005-04-21T15:03:00.000Z	ermo	Xgates	or, rather, do a 'make-kpkg clean' first
+2005-04-21T15:07:00.000Z	Xgates	ermo	I did the make-kpkg clean already :-)
+2005-04-21T15:11:00.000Z	ermo	Xgates	any luck?
+2005-04-21T15:17:00.000Z	Xgates	ermo	---> root@ubuntu:/usr/src# ls
+2005-04-21T15:18:00.000Z	ermo	Xgates	congrats!
+2005-04-21T15:19:00.000Z	Xgates	ermo	NOW one more, LOL, I thought running make-kpkg was going to do -->  mkinitrd
+2005-04-21T15:20:00.000Z	Xgates	ermo	but in /boot its still the same .img file, do you know how to run 'mkinitrd' I'm not sure of the cmds

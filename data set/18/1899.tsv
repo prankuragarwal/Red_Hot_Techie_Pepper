@@ -1,0 +1,18 @@
+2011-02-20T08:38:00.000Z	agreimann		Hello. I'm trying to restore a disk on another computer with dd, but I don't want the partition to get smaller.
+2011-02-20T08:38:00.000Z	agreimann		How do I do this?
+2011-02-20T08:38:00.000Z	agreimann		Anyone have any ideas?
+2011-02-20T08:39:00.000Z	kitty_	agreimann	ever use gparted ?
+2011-02-20T08:40:00.000Z	kitty_	agreimann	you can always just dd from your backup file to your new partition, then ust gparted to fix whatever errors are gonna be introduced into your file system if the structure didn't perfectly match
+2011-02-20T08:41:00.000Z	kitty_	agreimann	did you dd /dev/sda or did you actually point it at a partition?
+2011-02-20T08:43:00.000Z	kitty_	agreimann	try doing your /dev/sda1 or whatever your partition is instead of the whole disk
+2011-02-20T08:50:00.000Z	kitty_	agreimann	also if you need to copy the mbr over, there are plenty of example on how to do that (so you can use yaboot) in the grub or lilo boot manager how to pages
+2011-02-20T08:51:00.000Z	agreimann	kitty_	thank you, but I'm trying to repair a PowerPC. :)
+2011-02-20T08:55:00.000Z	kitty_	agreimann	uncap dd how?
+2011-02-20T08:56:00.000Z	kitty_	agreimann	as i said before, when you point dd at the actual device not a partition, its going to copy everything to the new destination and if you HAD a partition table with a 40gb entry on it, it will be gone and you will now have an EXACT copy of your source device
+2011-02-20T08:56:00.000Z	kitty_	agreimann	hence why you always end up with a 8gb partition table on a 40gb hd
+2011-02-20T08:57:00.000Z	kitty_	agreimann	can you pastebin the output for "fdisk -l" ?
+2011-02-20T09:02:00.000Z	kitty_	agreimann	no it would not, as when you point DD to the DEVICE it will copy the DATA from exactly, starting with the 8gb partition table
+2011-02-20T09:04:00.000Z	kitty_	agreimann	what command are you using to copy from your flash install?
+2011-02-20T09:09:00.000Z	agreimann	kitty_	when I do that, it breaks Tiger from booting.
+2011-02-20T09:14:00.000Z	kitty_	agreimann	http://mac.linux.be/content/yaboot
+2011-02-20T09:26:00.000Z	agreimann	kitty_	flash drives aren't supported on this model.

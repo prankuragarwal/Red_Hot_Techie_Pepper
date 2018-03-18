@@ -1,0 +1,21 @@
+2008-02-25T06:26:00.000Z	Kira		How do I check if proftpd is running?
+2008-02-25T06:27:00.000Z	nickrud	Kira	sudo netstat -tlpn , shows your listening ports.
+2008-02-25T06:28:00.000Z	Kira	nickrud	I see. Thanks.
+2008-03-08T08:37:00.000Z	nickrud	Kira	it was designed to allow apache2 to write to /var/www without running as root
+2008-03-08T08:38:00.000Z	Kira	nickrud	I see. In which file is the running user of apache2 decided?
+2008-03-08T08:39:00.000Z	nickrud	Kira	/etc/apach2/apache2.conf
+2008-03-08T08:41:00.000Z	Kira	nickrud	I'm sharing a Gutsy box with a bunch of friends and I'm the admin (I'm no linux or ubuntu guru, but I'm the one with the most unix and general computer admin knowledge already). I'm thinking of isolating each human user's websites by only allowing them to put their website scripts and files in their ~/Websites folders
+2008-03-08T08:44:00.000Z	nickrud	Kira	you can do that with   sudo a2enmod userdir , then they can put their stuff in ~/public_html
+2008-03-08T08:44:00.000Z	Kira	nickrud	heh, I was wondering where the public_html convention came from.
+2008-03-08T08:46:00.000Z	Kira	nickrud	I see a similar public_ftp directory on the shared hosting that I used to use. Where does that one come from? not the apache2 mod_userdir, right?
+2008-03-08T08:47:00.000Z	nickrud	Kira	I don't think so. Not familiar with that dir
+2008-03-08T08:50:00.000Z	Kira	nickrud	I think Taso means navigating the menus using only the keyboard.
+2008-05-24T10:14:00.000Z	nickrud	Kira	because otherwise they won't run. That's how unix/linux knows it's executable at all
+2008-05-24T10:15:00.000Z	Kira	nickrud	exactly my concern
+2008-05-24T10:16:00.000Z	nickrud	Kira	it's like with bash scripts, the same idea. Or any executable.
+2008-05-24T10:16:00.000Z	Kira	nickrud	ya, that's what got me even more confused afterwards
+2008-05-24T10:17:00.000Z	nickrud	Kira	marking it as executable lets bash know to look at the first line of the file to know what to run. #!/bin/bash, or /usr/bin/php, or perl, or whatever
+2008-05-24T10:19:00.000Z	Kira	nickrud	doesn't it make the whole permission thing rather arbitrary? In fact, I could modify bash to just look for read permission or, to make it even more non-sensical, write permission.
+2008-05-24T10:19:00.000Z	nickrud	Kira	if you like to be non-standard, yes. But it makes as much (or more) as executing based on an extension
+2008-05-24T10:20:00.000Z	nickrud	Kira	conventions is exactly that, something that everyone uses
+2008-05-24T10:22:00.000Z	Kira	nickrud	I know. I'm just surprised this question has escaped me for so long. I always thought that the whole permission thing is covered by some strict interpretation by the kernel and not in an arbitrary way by other executables.

@@ -1,0 +1,19 @@
+2011-01-27T05:43:00.000Z	root___	sacarlson	you lost me.
+2011-01-27T05:34:00.000Z	sacarlson	root___	did you try ssh?
+2011-01-27T05:35:00.000Z	sacarlson	root___	 did you try sudo apt-get install ssh  to see if you can at least ssh in and posibly use that for file transfer?
+2011-01-27T05:36:00.000Z	root___	sacarlson	im on ssh to the box now
+2011-01-27T05:36:00.000Z	sacarlson	root___	 is that not an option then to move files?
+2011-01-27T05:37:00.000Z	root___	sacarlson	oh no, i need to setup ftp in a DMZ.
+2011-01-27T05:38:00.000Z	sacarlson	root___	I've played a bit with proftp the config is complicated
+2011-01-27T05:41:00.000Z	sacarlson	root___	I think part of the complexity was it also uses apparmor so that may need to be configured also
+2011-01-27T05:43:00.000Z	sacarlson	root___	 check sudo apparmor_status  see if your proftp is in the list
+2011-01-27T05:44:00.000Z	root___	sacarlson	oh thanks i willtry
+2011-01-27T05:45:00.000Z	root___	sacarlson	apparmor_status doesn't show proftpd at all
+2011-01-27T05:45:00.000Z	root___	sacarlson	what should i do?  Or what did i do wrong?
+2011-01-27T05:46:00.000Z	sacarlson	root___	cool then don't have to worry about that
+2011-01-27T05:46:00.000Z	root___	sacarlson	oh that is good it not being listed?
+2011-01-27T05:47:00.000Z	sacarlson	root___	well yes it adds more security that would have to be configured,  if it's not setup then nothing to configure
+2011-01-27T05:49:00.000Z	sacarlson	root___	I'm on the side of low security so I say that's a good thing
+2011-01-27T06:02:00.000Z	sacarlson	root___	I just installed proftp-basic  and was able to ftp localhost  and login to my present user account,  I selected inetd install option at install
+2011-01-27T06:02:00.000Z	root___	sacarlson	ya, jhansonxi hit it on the head.  I had installed another ftp packge with out purge and now im left with this mess
+2011-01-27T06:04:00.000Z	sacarlson	root___	ya not sure how to fix that,  I think the problem would be in the inetd config then if you just delete all the lines after a purge of proftp and reinstall maybe that will fix it

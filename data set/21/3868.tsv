@@ -1,0 +1,21 @@
+2008-10-20T06:49:00.000Z	zeelot		hey guys, I cant seem to install/update anything I get message saying I need to run 'dpkg --configure -a' but that command freezes my machine, anyone know what I can do?
+2008-10-20T06:50:00.000Z	zeelot		=(
+2008-10-20T06:50:00.000Z	danbh_intrepid	zeelot	can you pastebin any error msgs you are getting?
+2008-10-20T06:51:00.000Z	danbh_intrepid	zeelot	maybe try this: dpkg -l | grep ^ii               I think thats it
+2008-10-20T06:52:00.000Z	zeelot	danbh_intrepid	what then? I get a bunch of info
+2008-10-20T06:52:00.000Z	danbh_intrepid	zeelot	I got the command wrong... hold on
+2008-10-20T06:53:00.000Z	danbh_intrepid	zeelot	dpkg -l | grep -v ^ii
+2008-10-20T06:54:00.000Z	danbh_intrepid	zeelot	I forgot the -v I think
+2008-10-20T06:54:00.000Z	zeelot	danbh_intrepid	what do I do with the output
+2008-10-20T06:54:00.000Z	danbh_intrepid	zeelot	pastebin it
+2008-10-20T06:55:00.000Z	zeelot	danbh_intrepid	http://paste.ubuntu.com/59954/
+2008-10-20T06:57:00.000Z	danbh_intrepid	zeelot	so, its mysql thats causing the problem
+2008-10-20T06:57:00.000Z	zeelot	danbh_intrepid	how do I solve it? my mysql server seems to be running fine though...
+2008-10-20T06:59:00.000Z	danbh_intrepid	zeelot	maybe remove mysql, and try to reinstall?  I dunno..
+2008-10-20T06:59:00.000Z	zeelot	danbh_intrepid	how do I remove it? I can't use dpkg for anything
+2008-10-20T07:00:00.000Z	danbh_intrepid	zeelot	sudo dpkg --force-depends --purge (or --remove) mysql-server-5.0
+2008-10-20T07:07:00.000Z	danbh_intrepid	zeelot	have you gotten things working?
+2008-10-20T07:08:00.000Z	zeelot	danbh_intrepid	yea seems fine thanks a lot
+2008-10-20T07:09:00.000Z	danbh_intrepid	zeelot	did you just reinstall mysql?
+2008-10-20T07:12:00.000Z	zeelot	danbh_intrepid	yea seemed to do the trick
+2008-10-20T07:13:00.000Z	danbh_intrepid	zeelot	cool

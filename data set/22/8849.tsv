@@ -1,0 +1,22 @@
+2006-11-02T11:21:00.000Z	CppIsWeird		i've been doing some reading about a remote desktoping solution for linux. And i've gathered that there is some way to get X11 to output to a remote location the instance for a user. Kinda like RDP for windows.
+2006-11-02T11:22:00.000Z	CppIsWeird		can anyone tell me more about this to point me in the right direction?
+2006-11-02T11:22:00.000Z	CppIsWeird		im a heavy windows user and im a bit lost
+2006-11-02T11:24:00.000Z	CppIsWeird		i toyed with VNC a bit, but we have a strong need for mutiple instances of users logged into the box at the same time.
+2006-11-02T11:24:00.000Z	CppIsWeird		is that achieveable with this X11 approach?
+2006-11-02T11:25:00.000Z	Kingsqueak	CppIsWeird	basically you run Cygwin on windows as the X server, then run the X session or app on the remote linux box and display it back to the X server on the Win box
+2006-11-02T11:26:00.000Z	Kingsqueak	CppIsWeird	or use Hummingbird Xceed on the Win boxes, but that has licensing costs
+2006-11-02T11:27:00.000Z	Kingsqueak	CppIsWeird	http://www.hummingbird.com/products/nc/exceed/
+2006-11-02T11:29:00.000Z	Kingsqueak	CppIsWeird	over the internet, you would really only want to run one app at a time, not a full desktop session
+2006-11-02T11:29:00.000Z	Kingsqueak	CppIsWeird	using X forwarding via ssh to the remote is better, you still need a local X server running/installed though on the Win client
+2006-11-02T11:29:00.000Z	Kingsqueak	CppIsWeird	what is the specific application need, maybe I can help with better suggestions
+2006-11-02T11:31:00.000Z	Kingsqueak	CppIsWeird	basically, what are they actually doing once logged in?
+2006-11-02T11:36:00.000Z	Kingsqueak	CppIsWeird	ohhh, have you tried 'rdesktop' ?
+2006-11-02T11:36:00.000Z	Kingsqueak	CppIsWeird	o.k. so you want an alternative to Win
+2006-11-02T11:36:00.000Z	Kingsqueak	CppIsWeird	you realize that most linux tasks don't need GUI right?
+2006-11-02T11:37:00.000Z	Kingsqueak	CppIsWeird	meaning all you need is ssh access to a system
+2006-11-02T11:37:00.000Z	Kingsqueak	CppIsWeird	if you had to fire up a GUI app, run an X server on the client end, and use ssh X forwarding
+2006-11-02T11:37:00.000Z	Kingsqueak	CppIsWeird	a full desktop in linux is just unnecessary is all
+2006-11-02T11:38:00.000Z	Kingsqueak	CppIsWeird	so cygwin/x is the free way to a Win X server
+2006-11-02T11:38:00.000Z	Kingsqueak	CppIsWeird	then enable X forwarding in sshd_config on the server end and when you ssh -X to that server, you can run any GUI app and it will display back if your ports are open
+2006-11-02T11:39:00.000Z	Kingsqueak	CppIsWeird	use the cygwin ssh too, it will likely handle the forwarding better
+2006-11-02T11:39:00.000Z	Kingsqueak	CppIsWeird	quick test is fire up cygwin x , ssh -X to the server, and run 'xterm'

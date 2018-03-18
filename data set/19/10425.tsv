@@ -1,0 +1,19 @@
+2006-06-23T06:33:00.000Z	pjw		hi, all. I have written a simple script, for example: #!/bin/bash export SERVER_ROOT="path" and it doesn't work. Why? Doesn't Ubuntu allow to run scripts?
+2006-06-23T06:33:00.000Z	pjw		yes
+2006-06-23T06:34:00.000Z	pjw		chmod +x - It have also
+2006-06-23T06:34:00.000Z	pjw		it has*
+2006-06-23T06:35:00.000Z	pjw		english language isnt my first language, i'm sorry for mistakes
+2006-06-23T06:36:00.000Z	jrib	pjw	are you sure it doesn't work?  (your script loads a new bash and exports the variable there)  To see this, add the line: echo SERVER_ROOT             in your script
+2006-06-23T06:36:00.000Z	jrib	pjw	tat should be: echo $SERVER_ROOT
+2006-06-23T06:36:00.000Z	pjw	jrib	I check it by echo
+2006-06-23T06:37:00.000Z	jrib	pjw	the echo line is in your script?
+2006-06-23T06:37:00.000Z	jrib	pjw	try that, you will see what is happening
+2006-06-23T06:40:00.000Z	jrib	pjw	try this: #!/bin/bash  export SERVER_ROOT="path"; echo $SERVER_ROOT
+2006-06-23T06:41:00.000Z	jrib	pjw	and then run your command like this: echo $SERVER_ROOT; ./script.sh ; echo $SERVER_ROOT
+2006-06-23T06:41:00.000Z	jrib	pjw	your script works, but it doesn't do what you want it to :)
+2006-06-23T06:46:00.000Z	jrib	pjw	to run your script and get it to do what you want, you can do this: . ./script.sh    OR    source script.sh
+2006-06-23T06:46:00.000Z	pjw	jrib	SERVER_ROOT="path"; echo $SERVER_ROOT - It works inside the script, but it doesn't work out of the script
+2006-06-23T06:47:00.000Z	jrib	pjw	yes, because when you just run the script like that, it starts a new instance of bash and changes it there.  If you do    . ./script.sh     OR     source script.sh      it should work I think
+2006-06-23T06:47:00.000Z	jrib	pjw	that's the same way stuff in your ~/.bashrc does it
+2006-06-23T06:50:00.000Z	pjw	jrib	I have done it, it works!, thank you very much
+2006-06-23T06:51:00.000Z	jrib	pjw	np

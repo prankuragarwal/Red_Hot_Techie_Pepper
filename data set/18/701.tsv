@@ -1,0 +1,18 @@
+2011-10-20T04:47:00.000Z	henkye		hello,using wake on alarm in bios. is there any utility to set it from ubuntu directly without reboot ? sry for little OT
+2011-10-20T04:48:00.000Z	e20100633	henkye	you mean rtc?
+2011-10-20T04:49:00.000Z	henkye	e20100633	power on pc in selected time
+2011-10-20T04:49:00.000Z	e20100633	henkye	oh, ok, I misunderstood then, sorry
+2011-10-20T04:49:00.000Z	henkye	e20100633	np .-)
+2011-10-20T04:50:00.000Z	henkye		my personal gues it's not, since it would be highly vendor dependant ...
+2011-10-20T04:50:00.000Z	henkye		but who knows ?
+2011-10-20T04:52:00.000Z	e20100633	henkye	well, if your computer is suspended to RAM, you can use /sys/class/rtc/rtc0/wakealarm to set the time; but if it's totally switch off I don't know
+2011-10-20T04:53:00.000Z	henkye	e20100633	well    it sounds interesting     worth try it out   thx for pointing me
+2011-10-20T04:54:00.000Z	e20100633		note that your computer have to support rtc, but if you already have powerup on time in your bios, it might be good
+2011-10-20T04:54:00.000Z	henkye	e20100633	no big difference for me if suspend or shutdown
+2011-10-20T04:55:00.000Z	e20100633	henkye	you just have to echo 0 > /sys/class/rtc/rtc0/wakealarm
+2011-10-20T04:56:00.000Z	e20100633	henkye	then echo $(date '+%s' -d '$TIME') > /sys/class/rtc/rtc0/wakealarm where $TIME is written is a good way (see man date for that)
+2011-10-20T04:56:00.000Z	e20100633		just grep alrm_date /proc/driver/rtc |cut -d ' ' -f2 and grep alrm_time /proc/driver/rtc |cut -d ' ' -f2 to see the results
+2011-10-20T04:56:00.000Z	e20100633		you might make you some sh script to handle this automaticaly
+2011-10-20T04:57:00.000Z	e20100633		s/written is/written in/
+2011-10-20T04:57:00.000Z	henkye	e20100633	wow, didnt expected such complex answer, ill copy & paste it and try later   thank u very much sir .-)
+2011-10-20T04:58:00.000Z	henkye	e20100633	good night

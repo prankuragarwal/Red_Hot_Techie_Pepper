@@ -1,0 +1,21 @@
+2006-12-13T08:46:00.000Z	AlexC_		Anyone know why Ubuntu will refuse to boot with an IDE Drive connected? Ubuntu is installed on a SATA Hard drive.
+2006-12-13T08:46:00.000Z	AlexC_		I'd be so happy if someone could help me fix it, I just wanna get off windows lol
+2006-12-13T08:47:00.000Z	Toma-	AlexC_	run it in recovery mode and see what dmesg has to say?
+2006-12-13T08:47:00.000Z	AlexC_	Toma-	how do I do that?
+2006-12-13T08:47:00.000Z	Toma-	AlexC_	can you get to a grub boot screen?
+2006-12-13T08:48:00.000Z	AlexC_	Toma-	oh yes, it loads grub fine - just when it goes to the Ubuntu boot splash it just locks up
+2006-12-13T08:48:00.000Z	Toma-	AlexC_	ok, there should be an option in grub for recovery mode
+2006-12-13T08:48:00.000Z	AlexC_	Toma-	ahhhh yes, I know now!
+2006-12-13T08:48:00.000Z	Toma-	AlexC_	ok :) give it a spin, much easier to debug from there
+2006-12-13T08:48:00.000Z	AlexC_	Toma-	let me go try that, be back in a min
+2006-12-13T08:58:00.000Z	AlexC_	Toma-	end_request: I/O error, dev sda, sector 8     Buffer I/O error on device sda, sector 24  - I get a load of them
+2006-12-13T08:59:00.000Z	Toma-	AlexC_	congradulations, you have a groken drive
+2006-12-13T08:59:00.000Z	Toma-	AlexC_	run an fsck on it
+2006-12-13T08:59:00.000Z	AlexC_	Toma-	but Windows can read and write to it perfectly
+2006-12-13T09:00:00.000Z	AlexC_	Toma-	how would I do that? I get no chance to run any commands, it just tries to load the OS
+2006-12-13T09:00:00.000Z	Toma-	AlexC_	from the recovery console. also try running fdisk on it and just check to see if its readable
+2006-12-13T09:07:00.000Z	AlexC_	Toma-	I'm confused, where do I enter the command fsck?
+2006-12-13T09:07:00.000Z	AlexC_	Toma-	yeah but where is that?
+2006-12-13T09:08:00.000Z	Toma-	AlexC_	im sorry, i gotta go. its the little root@ubuntu# that pops up when you enter recovery mode
+2006-12-13T09:08:00.000Z	AlexC_	Toma-	ok tahnks for your help
+2006-12-13T09:09:00.000Z	Toma-	AlexC_	no. just try to diagnose the drive, then if worst comes to worse, disable it at boot with the "blacklist"

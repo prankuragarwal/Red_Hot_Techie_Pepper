@@ -1,0 +1,21 @@
+2012-08-23T19:42:00.000Z	MoTec		Does NFS allow unix style permissions?  I mean, if I use a NFS share on a remote server as my users home folders can I set appropriate permissions?  I know I can't with samba/cifs
+2012-08-23T19:44:00.000Z	MoTec		It's a Windows Storage Server 2008.. I guess I experiement and find out.. :)
+2012-08-23T19:46:00.000Z	MoTec		NTFS is POSIX complaint.. Oh ,maybe not for ACLS, tho.
+2012-08-23T19:46:00.000Z	MoTec		just naming, links, and timestamps
+2012-08-23T19:46:00.000Z	iceroot	MoTec	yes, the acls will not mapped on ntfs
+2012-08-23T19:44:00.000Z	iceroot	MoTec	if i am correct samba/cifs is not the reason but the filesystem itself the file is stored
+2012-08-23T19:44:00.000Z	iceroot	MoTec	windows will use ntfs which cant hold posix acls
+2012-08-23T19:45:00.000Z	iceroot	MoTec	doesnt matter if you use nfs, cifs or something else
+2012-08-23T19:47:00.000Z	iceroot	MoTec	and hardlinks are also not supported if i am correct
+2012-08-23T19:47:00.000Z	iceroot	MoTec	then it was fat which cant hold hardlinks
+2012-08-23T19:51:00.000Z	iceroot	MoTec	1. /home does not have POSIX ACLS by default 2. /home with nfs is a bad idea (mostly because nfs is doing a lot of locking)
+2012-08-23T19:53:00.000Z	iceroot	MoTec	remove windows and place GNU/Linux there for a real storage system
+2012-08-23T19:53:00.000Z	MoTec	iceroot	thank you for your useless suggestion.
+2012-08-23T19:55:00.000Z	iceroot	MoTec	on windows i guess you only can use ntfs, everything else is not stable
+2012-08-23T19:55:00.000Z	iceroot	MoTec	but maybe the server has buildin ext drivers which are stable?
+2012-08-23T19:56:00.000Z	MoTec	iceroot	I think I'm just going to do it 'backwards' from what I originally wanted.. And install full samba on the ubuntu server.  And then authenticate it against my active directory.. And share the appropriate home directroies so they can be accessed from windows workstations.
+2012-08-23T19:57:00.000Z	iceroot	MoTec	samba4?
+2012-08-23T19:57:00.000Z	iceroot	MoTec	because samba4 can auth against AD (and also be an AD itself)
+2012-08-23T19:58:00.000Z	MoTec	iceroot	and yeah, samba4.
+2012-08-23T19:58:00.000Z	iceroot	MoTec	hmmm samba4 in a production system... i dont know if that is a good idea
+2012-08-23T19:59:00.000Z	iceroot	MoTec	use a local /home and mount in /home/username/storage  the specific partition you want

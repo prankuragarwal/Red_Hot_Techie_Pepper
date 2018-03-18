@@ -1,0 +1,19 @@
+2011-02-24T12:27:00.000Z	amh345		hi guys. my wireless keeps disconnecting and i cant figure out why.  ubuntu server 10.10.  i also just installed ubuntu-desktop as i read this sometimes helps.... no dice :(
+2011-02-24T12:28:00.000Z	amh345		it's perpetually connecting and disconnecting..  and moving very very slow.
+2011-02-24T12:30:00.000Z	amh345		anyone?
+2011-02-24T12:31:00.000Z	heron_Marked	amh345	what's your setup?
+2011-02-24T12:32:00.000Z	amh345	heron_Marked	10.10 server.  just installed ubuntu-dekstop hoping it would help. same result as terminal though.   connections are made and dropped. huge packet loss.  what else.  wpa2.. ive got wpa_supplicant configured... although im not sure it's totally correct.
+2011-02-24T12:33:00.000Z	amh345	heron_Marked	also, it's a sony vaio laptop.  i had this working perfectly the otherday.. then i did a reformat and havent been able to get it working since.
+2011-02-24T12:34:00.000Z	heron_Marked	amh345	did you check to ensure your wireless card is on the list of compatible cards.
+2011-02-24T12:34:00.000Z	amh345	heron_Marked	i havent checked. but it does work.
+2011-02-24T12:35:00.000Z	heron_Marked	amh345	are you sure it's your card?  How's the access point?
+2011-02-24T12:36:00.000Z	amh345	heron_Marked	iwconfig shows the macaddress for the router.
+2011-02-24T12:37:00.000Z	heron_Marked	amh345	you can try shutting down your networking card and booting it back up again "/etc/init.d/networking stop | start" and "/etc/init.d/wicd start | stop
+2011-02-24T12:37:00.000Z	amh345	heron_Marked	link quality is only 47/70.. but that shouldnt make this kind of diference
+2011-02-24T12:39:00.000Z	amh345	heron_Marked	sudo /etc/init.d/networking stop returned the following.. "postconf: fatal: .etc.postfix/main.cfg no suck file dir along with RTNETLINK answers :No such process and SIODELRT :no such process
+2011-02-24T12:41:00.000Z	heron_Marked	amh345	can you try "/etc/init.d/networking restart"
+2011-02-24T12:43:00.000Z	amh345	heron_Marked	/restart/ gave the same errors as before.. but also adding ssh stop/waiting and ssh start/running, process 6029    then ssh/stop/start shows again with process 6114    and wireless is still dropping in and out.
+2011-02-24T12:43:00.000Z	heron_Marked	amh345	you're getting an error.  I don't know what that means.  A similar problem had the solution to do "sudo dpkg-reconfigure postfix" and that apparently fixed it.  You want to give that a try?
+2011-02-24T12:43:00.000Z	heron_Marked	amh345	I got that from http://ubuntuforums.org/showthread.php?t=1519519
+2011-02-24T12:45:00.000Z	amh345	heron_Marked	same error re: postfix.    i tihnk im jsut going to reinstall this thing. this is too much.  but i have a question.  is there a way i can backup the pkgs i've downloaded so i dont have to download them again?  wpa_supplicant  and ubuntu-desktop are what i'd like to throw on a key
+2011-02-24T12:46:00.000Z	heron_Marked	amh345	I don't know of something direct.  Someone mentioned a program called "Remaster" or similar earlier, but I don't know if that would do it or not.

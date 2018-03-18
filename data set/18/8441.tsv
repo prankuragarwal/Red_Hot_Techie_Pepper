@@ -1,0 +1,18 @@
+2007-08-19T08:12:00.000Z	iamplasma		don't suppose anyone here runs a large raid5 share on a network here, do they?  I'm having problems in that while everything works great, and local transfers occur at obscene speeds, as do network reads, network writes to the RAID run *really* slowly.  The network is fine, it's just the moment it tries to write to the drives, they thrash like mad.  Seems NFS/Samba/et al are (presumably) writing in tiny chunks, creating huge numbers of parity rewrites.
+2007-08-19T08:12:00.000Z	iamplasma		Anyone had this before?
+2007-08-19T08:13:00.000Z	Zylogue	iamplasma	yes...
+2007-08-19T08:13:00.000Z	iamplasma	Zylogue	ever come up with a solution?  Insane amounts of googling have got me nowhere
+2007-08-19T08:13:00.000Z	Zylogue	iamplasma	look into modifying your TCP/IP sizes
+2007-08-19T08:15:00.000Z	iamplasma	Zylogue	that doesn't seem to be the problem.  Tweaking the tcp buffers up or down makes no difference.  And in fact, the transfer runs at 100% speed for at least a few seconds before the RAID box tries to write to the disks, at which point everything goes to hell.  So it's in fact buffered *way* ahead, yet seems to still refuse to write full stripes
+2007-08-19T08:17:00.000Z	Zylogue	iamplasma	if the local copy process is working correctly, then the issue must be in your network/network configuration
+2007-08-19T08:18:00.000Z	Zylogue	iamplasma	what about testing the sending machine?
+2007-08-19T08:21:00.000Z	Zylogue	iamplasma	it is odd that your stripe would be so dramatically slower over the network than local, yet work at speed for the same files to the RAID0
+2007-08-19T08:24:00.000Z	iamplasma	Zylogue	that's what I thought at first, but there's clearly a lot of caching occurring, since it doesn't even start trying to write to the raid until after 50MB or so has actually gone over the network
+2007-08-19T08:25:00.000Z	Zylogue	iamplasma	is this a Dell system with a PERC in it?
+2007-08-19T08:26:00.000Z	Zylogue	iamplasma	I work for Dell in US Server Support...PERC is the Dell Raid Controller
+2007-08-19T08:28:00.000Z	iamplasma	Zylogue	well, I'm quite confident the softraid isn't the problem though, given it works fine under other circumstances.  I'm quite convinced the problem lies in the interplay between smb/nfs and the RAID
+2007-08-19T08:28:00.000Z	Zylogue	iamplasma	wha tis yoru network crc count like?
+2007-08-19T08:28:00.000Z	Zylogue	iamplasma	there is no interplay between the md and the protocols
+2007-08-19T08:30:00.000Z	Zylogue	iamplasma	OK, looking into something...
+2007-08-19T08:32:00.000Z	Zylogue	iamplasma	not sure if this will help, but it may....   http://www.smallnetbuilder.com/content/view/27840/77/
+2007-08-19T08:33:00.000Z	iamplasma	Zylogue	will have a read.  Thanks for the help man, I'll see how I go!

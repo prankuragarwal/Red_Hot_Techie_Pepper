@@ -1,0 +1,24 @@
+2007-03-06T15:02:00.000Z	american		I know what to do.   I already seem to have the list of all of them.  I just need to add "cp" in front of it and the destination at the end with a semi-colon.  Then copy the whole thing into a terminal.   Yeah, brute force method.   But it would work.   Wish I had the elegant way of doing it.
+2007-03-06T15:03:00.000Z	eck	american	there are like 100 ways to do this :-)
+2007-03-06T15:03:00.000Z	american		I bet
+2007-03-06T15:03:00.000Z	eck	american	the easiest way is just to use globbing in the shell
+2007-03-06T15:04:00.000Z	eck		or else find
+2007-03-06T15:04:00.000Z	eck		off the top of my head, something like this: find . -name "*.doc" -exec cp {} /somewhere/else\;
+2007-03-06T15:05:00.000Z	american		I'll try that
+2007-03-06T15:05:00.000Z	eck		this executes cp (filename) /somewhere/else for each *.doc file find comes across
+2007-03-06T15:05:00.000Z	american		Wish I knew all the elegent ways.
+2007-03-06T15:05:00.000Z	american		thanks
+2007-03-06T15:07:00.000Z	eck		find is one of the most powerful commands in unix/linux, but it is also one of the least user friendly :-(
+2007-03-06T15:07:00.000Z	eck		the man page is like 1000 lines
+2007-03-06T15:08:00.000Z	american	eck	says there is an error in exec.  missing argument
+2007-03-06T15:09:00.000Z	eck	american	try quoting the {}
+2007-03-06T15:09:00.000Z	american		ok
+2007-03-06T15:09:00.000Z	american		trying that
+2007-03-06T15:09:00.000Z	eck		e.g. 'find . *.doc -exec cp {} /somewhere/else ;'
+2007-03-06T15:09:00.000Z	eck		err, you need the -name thing
+2007-03-06T15:12:00.000Z	american		fine seems to be fine.  the '-exec' is missing an argument it says.
+2007-03-06T15:13:00.000Z	american		wait.  The connection between find and 'exec' is the problem.
+2007-03-06T15:17:00.000Z	american		find outputs the files, but not the whole path.
+2007-03-06T15:17:00.000Z	american		I think exec cp on locate.
+2007-03-06T15:18:00.000Z	eck	american	the full path is replaced in {}
+2007-03-06T15:18:00.000Z	eck	american	look at xargs

@@ -1,0 +1,18 @@
+2010-06-18T02:43:00.000Z	Heebie		Actually, to host a mail server you can just register a domain name and set the MX records to the IP address you have at home.. but that IP will probably change often, and most places will reject mail coming from any type of broadband address.. so you're better off with a hosted mail service (in my data centre would be my preference..but I'm not here to advertise.).. unless you can get your ISP to give you a static IP address, and reverse-DNS (PTR) records.
+2010-06-18T02:43:00.000Z	profxavier	Heebie	that is -not- what I am attempting to do
+2010-06-18T02:46:00.000Z	Heebie	profxavier	Do you have enough control over the RECEIVING mail server to make sure that it doesn't reject the mails sent by yours?
+2010-06-18T02:49:00.000Z	Heebie	profxavier	The actual send is easy.. make sure mailx is installed, and pipe the content you want into the mail command with -s "subject line" <address@fqdn>
+2010-06-18T02:49:00.000Z	profxavier	Heebie	I do not believe this to be -easy-
+2010-06-18T02:51:00.000Z	Heebie	profxavier	Sending the mail is easy... setting up a mail server is easy.  Making the content to PUT in that mail.. I have no idea how complicated your content is.. so I can't comment... and making sure you mail actually gets through to it's intended recipient can be problematic if you don't have a static IP address and a reverse-DNS record.. or at least a reliable mail relay to gateway your outbound mail through.
+2010-06-18T02:51:00.000Z	profxavier	Heebie	if this is -easy-, tell me 'exactly' how to do it
+2010-06-18T02:52:00.000Z	Heebie	profxavier	I can't tell you how to create your content.. and you haven't told me if you have control over the RECEIVING mail server yet.
+2010-06-18T02:53:00.000Z	profxavier	Heebie	you beginning to understand, its not as -easy- as you believe/say
+2010-06-18T02:53:00.000Z	Heebie	profxavier	Sending the mail is incredibly easy.  cat <content file> | mail -s 'subject' email-address
+2010-06-18T02:54:00.000Z	profxavier	Heebie	thats not the issue, the issue is not 'sending an email'
+2010-06-18T02:54:00.000Z	Heebie	profxavier	To make sure the mail is delivered reliably.. you NEED to have access to a mail server that has forward and reverse DNS.. or you need to have complete control over the receiving mail server.
+2010-06-18T02:55:00.000Z	Heebie	profxavier	If sending the mail is not the issue..than what is?
+2010-06-18T02:56:00.000Z	profxavier	Heebie	read above, I don't think reposting is a good idea
+2010-06-18T02:56:00.000Z	Heebie	profxavier	I've read everything you've said.. and I don't see anything that leads me to think that your problem isn't "sending a mail" :/
+2010-06-18T02:59:00.000Z	Heebie	profxavier	I don't think there's a "real" MTA installed in ubuntu by default. (although I'd expect a LAMP server install to have it.)
+2010-06-18T02:59:00.000Z	Heebie	profxavier	Do you also have mailx installed?
+2010-06-18T03:03:00.000Z	Heebie	profxavier	If you have your MTA installed.. it will probably try to send mail by default.. but most ISP's will block it if you're on a broadband connection.. if your ISP gives you a mail-relay to use.. you should be able to relay through it..  Look for relay server settings in the configuration for your MTA. (exim4?)

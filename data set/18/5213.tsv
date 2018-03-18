@@ -1,0 +1,18 @@
+2008-11-26T06:49:00.000Z	innovate2000		I have successfully joined several Hardy servers (eight) to Windows domain. Am now trying to add an additional server and am using Intrepid on a fresh install before I upgrade my other servers from Hardy to Intrepid. The commands "kinit", "klist" and "net ads info" as well as pinging the GC(PDC) all are successful. When I try to join the box to the AD network ("net ads join") the server...
+2008-11-26T06:49:00.000Z	innovate2000		...returns "failed to join domain: failed to find DC for domain [MYDOMAIN]" - I have been trying to resolve this for several days and could use some help.
+2008-11-26T06:50:00.000Z	linxeh	innovate2000	dns, hosts etc all configured correctly ?
+2008-11-26T06:51:00.000Z	linxeh	innovate2000	and /etc/nsswitch.conf and /etc/resolv.conf are consistent on all machines ?
+2008-11-26T06:55:00.000Z	innovate2000	linxeh	thanks but yes - aside from using the same instructions that I used to set up teh Hardy servers I have referred to the config files of the other servers as I set this box up - like I said, I can "kinit" and "klist" fine. "net ads info" returns info expected (FYI server time offset=0) - but when I try to "net ads join" the error shows up.
+2008-11-26T06:57:00.000Z	innovate2000	linxeh	one thing I noticed though - when I try to ping domain.local - this fails (but box.domain.local pings fine) I've checked resolv.conf and hosts and all appears to be in order
+2008-11-26T07:11:00.000Z	innovate2000	linxeh	any idea why ping to domain.local would fail if resolve.conf has "search domain.local" and "nameserver 123.123.123.123" (not real IP) exist? I CAN ping box.domain.local fine (FYI - I've disabled Avahi - so the .local tld should not be an issue)
+2008-11-26T07:23:00.000Z	linxeh	innovate2000	anything in /etc/hosts that shouldnt be?
+2008-11-26T07:36:00.000Z	innovate2000	linxeh	/etc/hosts: 127.0.0.1 localhost      127.0.1.1 box.domain.local box             and below that is IPv6 stuff
+2008-11-26T07:36:00.000Z	linxeh	innovate2000	hm :/
+2008-11-26T07:38:00.000Z	innovate2000	linxeh	pinging domain.local results in "unknown host domain.local" - I think (my gut) that this is the root cause of my issue
+2008-11-26T07:38:00.000Z	linxeh	innovate2000	well, you know that AD domains arent DNS right ?
+2008-11-26T07:38:00.000Z	linxeh	innovate2000	two completely different concepts with confusingly similar terminology
+2008-11-26T07:38:00.000Z	innovate2000	linxeh	I can however ping box.domain.local with positive results
+2008-11-26T07:40:00.000Z	innovate2000	linxeh	I understand - but if the "net ads join" cannot see the domain (it throws "failed to join domain: failed to find DC for domain DOMAIN.LOCAL")
+2008-11-26T07:58:00.000Z	innovate2000	linxeh	Sorry I got wrapped up in trying to put out the flames (although I found it interesting that no one flamed lavacano and he/she said essentially what I did) - ANYWAY - regarding why winbind cannot see my GC - the command "net ads join" cannot see the domain (it throws "failed to join domain: failed to find DC for domain DOMAIN.LOCAL") - so that's why I thought understanding why...
+2008-11-26T08:00:00.000Z	linxeh	innovate2000	its been some time since I tried to do that. presumably you created a new entry in the active directory for the server ?
+2008-11-26T08:05:00.000Z	innovate2000	linxeh	yes - the server entry exists on the GC (I did it to eliminate the question - usually never have to pre-enter as Win servers add auto if done by auth user) - i've replaced 8 win servers with Kubuntu (Hardy 8.04) and all went without a hitch - 8.10 introduces these issues

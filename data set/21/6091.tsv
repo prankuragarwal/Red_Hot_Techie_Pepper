@@ -1,0 +1,21 @@
+2009-11-20T10:35:00.000Z	noir		Anyone have any idea about the images Brasero creates? This is weird and annoying
+2009-11-20T10:35:00.000Z	Billiard	noir	whats anoying?
+2009-11-20T10:36:00.000Z	noir	Billiard	I can't tell what kind of filesystem it used to make the image. It makes a small .toc file and a large disk image with no extension. "file" command just returns "data" on it
+2009-11-20T10:36:00.000Z	noir	Billiard	and Googling around got me nowhere. Tried mounting it as a .bin and an ISO9660
+2009-11-20T10:37:00.000Z	Billiard	noir	its probably just a byte for byte copy of the image, so an iso if the cd was in iso format
+2009-11-20T10:37:00.000Z	Billiard	noir	you try mounting without specifying the fstype?
+2009-11-20T10:38:00.000Z	noir	Billiard	yup, and "auto" mode. Says "you must specify the filesystem type."
+2009-11-20T10:44:00.000Z	Billiard	noir	is it maybe a format to be opened by brasero?
+2009-11-20T10:45:00.000Z	noir	Billiard	that's what I need to find out. I mean obviously the .toc files are meant to be burned by Brasero, yes. I just want to avoid wasting discs on each one of these images (I have 6 or 7)
+2009-11-20T10:46:00.000Z	Billiard	noir	audio cds arent mounted
+2009-11-20T10:46:00.000Z	noir	Billiard	alright...but is there any way I can rip the audio data from the images without burning them to physical discs?
+2009-11-20T10:47:00.000Z	Billiard	noir	probably, witch tool do you use? just setup a loop and tell the ripping software that is your cd device
+2009-11-20T10:48:00.000Z	noir	Billiard	That is exactly my plan, but first I need to have the image mounted
+2009-11-20T10:48:00.000Z	Billiard	noir	no you dont mount it
+2009-11-20T10:48:00.000Z	noir	Billiard	so just point a ripping tool at the file?
+2009-11-20T10:48:00.000Z	Billiard	noir	yeah or if the tool doesnt like a file use losetup or w/e its called
+2009-11-20T11:01:00.000Z	Billiard	noir	what program do you normally use to rip your audio cds?
+2009-11-20T11:02:00.000Z	noir	Billiard	Rubyripper, now. Used to use sound-juicer and various stuff. But like I said I had none of those options when I made these images.
+2009-11-20T11:21:00.000Z	noir	Billiard	Geistanon: Thanks very much for your help! Finally figured it out. Needed to use bin2iso to convert the .toc file to .cue, and then bchunk to convert the .bin and .cue directly to WAVs with the "-w" switch
+2009-11-20T11:29:00.000Z	Billiard	noir	you could try one of the cd ripping tools you said you have used before using your file as the cd device
+2009-11-20T11:29:00.000Z	noir	Billiard	I can try that I suppose...

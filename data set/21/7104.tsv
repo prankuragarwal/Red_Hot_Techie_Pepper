@@ -1,0 +1,21 @@
+2007-02-13T15:13:00.000Z	alicen68		why is it when i type the cd command in terminal it tells me "rbash: cd: restricted"?
+2007-02-13T15:15:00.000Z	alicen68		why is it when i type the cd command in terminal it tells me "rbash: cd: restricted"?
+2007-02-13T15:17:00.000Z	alicen68		why is it when i type the cd command in terminal it tells me "rbash: cd: restricted"?
+2007-02-13T15:18:00.000Z	Lunar_Lamp	alicen68	you're using the rbash envirconment which is really strict security-wise on what you can and can't do.  cd is something you aren't allowed to do evidently (or at least, not to that dir)
+2007-02-13T15:19:00.000Z	alicen68	Lunar_Lamp	how do i get rid of rbash and just go back to bash?
+2007-02-13T15:19:00.000Z	Lunar_Lamp	alicen68	are you an administrator on your box?
+2007-02-13T15:20:00.000Z	alicen68	Lunar_Lamp	through sudo, yes
+2007-02-13T15:20:00.000Z	Lunar_Lamp	alicen68	hmm, did you set rbash up yourself?
+2007-02-13T15:20:00.000Z	Lunar_Lamp	alicen68	does it happen every time you open up a terminal, or just this one time?
+2007-02-13T15:21:00.000Z	alicen68	Lunar_Lamp	i'm a friend of this user trying to figure out what's wrong with this pc, i had never even heard of rbash
+2007-02-13T15:21:00.000Z	alicen68	Lunar_Lamp	it's every time i load up terminal
+2007-02-13T15:21:00.000Z	Lunar_Lamp	alicen68	ok, then the default shell is probably set to rbash in /etc/passwd - you can edit that file for the user to set it as bash.
+2007-02-13T15:22:00.000Z	Lunar_Lamp	alicen68	however, if you don't know the file, it can be dangerous to edit.
+2007-02-13T15:23:00.000Z	alicen68	Lunar_Lamp	root:x:0:0:root:/root:/bin/bash
+2007-02-13T15:24:00.000Z	Lunar_Lamp	alicen68	the root user there has their default shell set as bash.  Try pasting the whole contents of the file to pastebin
+2007-02-13T15:25:00.000Z	alicen68	Lunar_Lamp	http://paste.ubuntu-nl.org/5613/
+2007-02-13T15:27:00.000Z	alicen68	Lunar_Lamp	still saying restricted
+2007-02-13T15:28:00.000Z	Lunar_Lamp	alicen68	hmm, the user may need to login and logout - at the very least start a new session.
+2007-02-13T15:28:00.000Z	Lunar_Lamp	alicen68	did the file save correctly? You will need to use "sudo" to edit the file.
+2007-02-13T15:28:00.000Z	alicen68	Lunar_Lamp	let me double-check the file, but it should work
+2007-02-13T15:29:00.000Z	Lunar_Lamp	alicen68	it's also possible that the bashrc file also is wanting to load up as rbash rather than normal bash :-)

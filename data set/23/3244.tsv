@@ -1,0 +1,23 @@
+2009-06-01T12:07:00.000Z	Severian	bluewook	tell me more about your setup.  The nas box is behind a router, I assume.
+2009-06-01T12:06:00.000Z	bluewook	Severian	i have a similar problem that sup3rs3nior had. I have an NAS with ftp/smb running, i have installed ssh, i have dyndns setup for my ip but i need to know how to connect to my NAS through the dyndns address
+2009-06-01T12:07:00.000Z	bluewook	Severian	yes
+2009-06-01T12:08:00.000Z	bluewook	Severian	i'm looking to be able to FTP through ssh so i can access it out of network, like from a coffee shop
+2009-06-01T12:09:00.000Z	Severian	bluewook	The dyndns server is equating a dns name for the world to your ip address on the router.  What is it you want to have connected to the outside world?  Is it the ftp?
+2009-06-01T12:09:00.000Z	bluewook	Severian	yes i want to be able to access my NAS over FTP from the dyndns
+2009-06-01T12:10:00.000Z	bluewook	Severian	and through ssh
+2009-06-01T12:11:00.000Z	Severian	bluewook	We'll start with ftp.  Do you want to use the standard ports for ftp?  I'll assume yes for the moment.  You need to go into your router and setup forwarding rules for ports 20 and 21.
+2009-06-01T12:12:00.000Z	bluewook	Severian	you assume correctly. i have them forwarded now.
+2009-06-01T12:13:00.000Z	Severian	bluewook	If you want to forward ssh, it is similar.  If you use the standard ports, it is port 22.
+2009-06-01T12:14:00.000Z	bluewook	Severian	i want to forward my current computer's ip or the NAS ip
+2009-06-01T12:14:00.000Z	Severian	bluewook	I don't know what ftp server you are using.  Some are vulnerable to hacking.  vsftpd is pretty safe.  If you are not using a good one, I would not leave those ftp ports open all the time.
+2009-06-01T12:15:00.000Z	bluewook	Severian	i don't know either haha
+2009-06-01T12:16:00.000Z	bluewook	Severian	it's just the server that came with the NAS box
+2009-06-01T12:16:00.000Z	Severian	bluewook	You have to pick one to forward to.  But, each port can be different.  You can forwart port 8124 on the external port of your router to port 22 on your machine and port 8125 to port 22 of the NAS.
+2009-06-01T12:17:00.000Z	Severian	bluewook	Then, I would assume it is pretty hackable.
+2009-06-01T12:19:00.000Z	bluewook	Severian	so i wouldn't want to do this or what
+2009-06-01T12:22:00.000Z	Severian	bluewook	I would not leave a relatively insecure ftp server exposed to the internet all the time.  Leave it set up and just turn on the forwarding rules for a brief time when a friend needs to upload.  Or, use a better ftp daemon on another machine.  Or configure port knocking on your router(not for beginners)
+2009-06-01T12:27:00.000Z	bluewook	Severian	well it can only be seen from inside the network i just want a way to connect to it via ftp securely. i would have to do those things if i wanted to do that?
+2009-06-01T12:29:00.000Z	Severian	bluewook	I don't understand.  If you mean, you don't need port forward rules for use inside the LAN, then you are correct.
+2009-06-01T12:29:00.000Z	bluewook	Severian	right, but i can set the FTP port on the NAS so wouldn't that narrow my chances of being hacked
+2009-06-01T12:30:00.000Z	Severian	bluewook	It helps a little.  A good port scanner will still find it.
+2009-06-01T12:31:00.000Z	bluewook	Severian	and passwords don't do anything to stop them either

@@ -1,0 +1,21 @@
+2009-05-05T20:24:00.000Z	glitsj16	teapot	"sudo rmmod ath5k_pci" first, add "blacklist ath5k_pci" to /etc/modprobe.d/blacklist (to keep it from reappearing on reboot) ... "sudo modprobe ath_pci" and again, to keep that in the future, add "ath_pci" to /etc/modules (this is untested but the logic should be ok)
+2009-05-05T20:25:00.000Z	teapot	glitsj16	Yep, thanks. Just managed to find a guide telling me that :)
+2009-05-05T20:26:00.000Z	glitsj16	teapot	np :)
+2009-05-05T20:29:00.000Z	teapot	glitsj16	Unfortunately, that didn't work...
+2009-05-05T20:29:00.000Z	teapot		Any other ideas?
+2009-05-05T20:29:00.000Z	glitsj16	teapot	any error messages to start debugging the issue ?
+2009-05-05T20:30:00.000Z	teapot	glitsj16	FATAL: Module ath5k_pci not found.
+2009-05-05T20:30:00.000Z	teapot	glitsj16	BUT connection information says clearly "Driver: ath5k_pci"
+2009-05-05T20:31:00.000Z	glitsj16	teapot	i see, i thought you had that module loaded, try lsmod | grep ath to check what you have running right now
+2009-05-05T20:31:00.000Z	teapot	glitsj16	Oh, it's actually ath5k not ath5k_pci
+2009-05-05T20:32:00.000Z	glitsj16	teapot	well that should clear things up
+2009-05-05T20:32:00.000Z	teapot	glitsj16	Thanks very much. We'll see how this goes. :)
+2009-05-05T20:32:00.000Z	glitsj16	teapot	you're welcome, hope it works this time around
+2009-05-05T20:36:00.000Z	teapot	glitsj16	Unfortunately, that didn't work. Wireless was not an option after loading the ath_pci driver, but I'm sure I loaded that driver in Arch Linux so I'm quite sure it works.
+2009-05-05T20:37:00.000Z	teapot	glitsj16	I'm trying to get this working because Arch Linux had a much better connection to the wireless than Ubuntu so I'm assuming it's a driver issue.
+2009-05-05T20:38:00.000Z	glitsj16	teapot	too bad indeed, out of ideas on this one i'm afraid
+2009-05-05T20:38:00.000Z	teapot	glitsj16	Alrighty. Thanks all the same. :)
+2009-05-05T20:41:00.000Z	teapot	glitsj16	Nevermind! Forgot to do modprobe -r ath5k before modprobe ath_pci!
+2009-05-05T20:41:00.000Z	teapot	glitsj16	My connection looks a lot faster now. :D
+2009-05-05T20:41:00.000Z	teapot	glitsj16	Thank you very much! :D
+2009-05-05T20:41:00.000Z	glitsj16	teapot	nice catch heh

@@ -1,0 +1,22 @@
+2011-07-30T03:26:00.000Z	fakingfantastic		how do you check the cron is on and running?
+2011-07-30T03:26:00.000Z	th0r	fakingfantastic	if there is a cronjob running. crontab -l will show all scheduled jobs
+2011-07-30T03:27:00.000Z	fakingfantastic	th0r	ok, so since my line shows up - that means it's gonna run?
+2011-07-30T03:28:00.000Z	th0r	fakingfantastic	it means it will be executed. Whether it runs or not depends on how good the command is <smile>
+2011-07-30T03:28:00.000Z	fakingfantastic	th0r	touche, thanks
+2011-07-30T03:34:00.000Z	fakingfantastic	th0r	i set up this:   1 * * * * /usr/bin/touch /tmp/test    -- didn't work, ran the command manually, it did. Any idea?
+2011-07-30T03:35:00.000Z	th0r	fakingfantastic	/tmp is owned by root. Are you running the cron as root?
+2011-07-30T03:35:00.000Z	fakingfantastic	th0r	how do i know?
+2011-07-30T03:36:00.000Z	th0r	fakingfantastic	each user has his/her own crontab. If you run crontab -l as <username> you only see the jobs that user has scheduled
+2011-07-30T03:36:00.000Z	th0r	fakingfantastic	and I am not sure, there may be some problem running something like that as root
+2011-07-30T03:36:00.000Z	fakingfantastic	th0r	ahh ok yeah im doing crontab -e as root
+2011-07-30T03:37:00.000Z	th0r	fakingfantastic	I have never tried to run a crontab as root....so not sure. I do know you cannot use ~ in crontab, you have to use the full path name (unless there is some ubuntu specific mod going on)
+2011-07-30T03:46:00.000Z	fakingfantastic	th0r	so i just created a new account, did crontab -e, for 1 * * * * /usr/bin/touch /home/web/testing, did a crontab -l ... saw it there, but still not running
+2011-07-30T03:47:00.000Z	th0r	fakingfantastic	not sure, but try putting the entire command inside 'single quotes'
+2011-07-30T03:52:00.000Z	th0r	fakingfantastic	a suggestion about cron. Put the cron lines in the file ~/cron.txt. Then if you schedule two or more cron jobs you don't have to keep reentering them. Edit the file, then load it in with crontab /home/user/cron.txt
+2011-07-30T03:52:00.000Z	fakingfantastic	th0r	i may do this, once i can get this way to work
+2011-07-30T04:01:00.000Z	th0r	fakingfantastic	you still around?
+2011-07-30T04:01:00.000Z	fakingfantastic	th0r	yup
+2011-07-30T04:01:00.000Z	th0r	fakingfantastic	I couldn't get that command to work in cron. But I created a script with just that command in it, and cron executed that without problems
+2011-07-30T04:02:00.000Z	th0r	fakingfantastic	it appears cron cannot handle parameters passed to the command in the command line
+2011-07-30T04:03:00.000Z	th0r	fakingfantastic	not quite. Create a 'touchme' script with the touch <filename> command, and then schedule cron to execute touchme
+2011-07-30T04:07:00.000Z	fakingfantastic	th0r	yea that worked thanks

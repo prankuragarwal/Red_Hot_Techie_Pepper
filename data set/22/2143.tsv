@@ -1,0 +1,22 @@
+2009-09-16T19:57:00.000Z	mo0nykit		I try to mount a CD, but I get the following error: 'mount: unknown filesystem 'iso9660''. What could be wrong here? Should filesystem support be compiled into the kernel?
+2009-09-16T19:58:00.000Z	hwilde	mo0nykit	what is the exact command you are using
+2009-09-16T20:00:00.000Z	mo0nykit	hwilde	mount /dev/cdrom /media/cdrom (This is actually a debootstrap installation, meant for diskless node boot-up using TFTP and NFS. Anyway, the point is this is just a base system install, so I think there is no support for iso9660 yet. How do I get it?)
+2009-09-16T20:01:00.000Z	hwilde	mo0nykit	so you're not using ubuntu?
+2009-09-16T20:02:00.000Z	mo0nykit	hwilde	I'm using ubuntu (I forgot to mention that. It's an ubuntu base system)
+2009-09-16T20:02:00.000Z	hwilde	mo0nykit	ubuntu supports iso9660
+2009-09-16T20:03:00.000Z	mo0nykit	hwilde	I'm doing it in a VirtualBox. Will it make a difference over doing it with a real PC?
+2009-09-16T20:04:00.000Z	hwilde	mo0nykit	 mount -V      what version do you have
+2009-09-16T20:08:00.000Z	mo0nykit	hwilde	mount from util-linux-ng 2.14.2 (with libvolume_id and selinux support)
+2009-09-16T20:08:00.000Z	hwilde	mo0nykit	that should support iso9660
+2009-09-16T20:11:00.000Z	mo0nykit	hwilde	mount: unknown filesystem type 'iso9660'        let me try another approach, does filesystem support have something to do with the kernel? or with mount? if it is with the kernel, how do I see which filesystems it supports (config files, etc)?
+2009-09-16T20:12:00.000Z	hwilde	mo0nykit	type "man mount"  scroll down to the part about types.  it should list a bunch, including iso9660
+2009-09-16T20:18:00.000Z	mo0nykit	hwilde	i saw iso9660 in the man pages, still fail. here are commands which i have tried http://paste.ubuntu.com/272181/
+2009-09-16T20:19:00.000Z	hwilde	mo0nykit	try   mount -t udf,iso9660 /dev/cdrom /media/cdrom
+2009-09-16T20:20:00.000Z	mo0nykit	hwilde	okay i'll try that
+2009-09-16T20:21:00.000Z	mo0nykit	hwilde	still the same error
+2009-09-16T20:23:00.000Z	hwilde	mo0nykit	sudo modprobe iso9660
+2009-09-16T20:24:00.000Z	mo0nykit	hwilde	FATAL: module iso9660 not found.
+2009-09-16T20:25:00.000Z	hwilde	mo0nykit	hmmm very strange brb
+2009-09-16T20:26:00.000Z	mo0nykit	hwilde	sure np
+2009-09-16T20:41:00.000Z	hwilde	mo0nykit	I can't find any solution but lots of other posts with the same problem
+2009-09-16T20:42:00.000Z	mo0nykit	hwilde	thanks for the help. i learned something new. that's modprobe :)

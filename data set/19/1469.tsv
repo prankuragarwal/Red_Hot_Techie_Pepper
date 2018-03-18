@@ -1,0 +1,19 @@
+2011-03-04T03:29:00.000Z	filthpig		hi, I'm having trouble getting a Realtek 2560 pci chipset in a Packard Bell EasyNote R1984 laptop. The card is detected and ubuntu loads both rt2500pci and rt2x00pci.. But I can't connect to any networks. I can't scan for networks either. It just says "disconnected" in the network-indicator
+2011-03-04T03:30:00.000Z	Chipzzz	filthpig	what does iwconfig say?
+2011-03-04T03:31:00.000Z	filthpig	Chipzzz	hang on, I'll pastebin it
+2011-03-04T03:31:00.000Z	Chipzzz	filthpig	ty
+2011-03-04T03:32:00.000Z	filthpig	Chipzzz	http://pastebin.com/mXBnyHNE I only took the relevant dev.
+2011-03-04T03:34:00.000Z	Chipzzz	filthpig	how about dmesg | grep wlan
+2011-03-04T03:35:00.000Z	filthpig	Chipzzz	that only lists my usb device that I'm using to get online now.. aka wlan1.. nothing about wlan0
+2011-03-04T03:35:00.000Z	filthpig		ifup wlan0 says "unknown device, ignoring wlan0=wlan0"
+2011-03-04T03:37:00.000Z	Chipzzz	filthpig	does lspci see it?
+2011-03-04T03:37:00.000Z	filthpig	Chipzzz	yep: 00:06.0 Network controller: RaLink RT2500 802.11g (rev 01)
+2011-03-04T03:41:00.000Z	Chipzzz	filthpig	but it's missing from "lsmod | grep rt25", even when the usb device is unplugged?
+2011-03-04T03:41:00.000Z	filthpig	Chipzzz	can't check that now as I'll be disconnected :o
+2011-03-04T03:41:00.000Z	filthpig		:p
+2011-03-04T03:42:00.000Z	Chipzzz	filthpig	you may have to do that to find out why it is't seen...
+2011-03-04T03:43:00.000Z	filthpig	Chipzzz	hm, check this: http://pastebin.com/jJesiL4t My USB stick uses the rt73, so it doesn't appear with grep rt25..
+2011-03-04T03:44:00.000Z	filthpig	Chipzzz	seems liek it has some IRQ issues.. How do I do what it tells me to try? :)
+2011-03-04T03:46:00.000Z	Chipzzz	filthpig	you could try adding "pci=biosirq" to your grub boot line
+2011-03-04T03:47:00.000Z	filthpig	Chipzzz	okay, thanks! I'll write it down and take a look at it tomorrow. Gotta run ;) ktnxbye!
+2011-03-04T03:47:00.000Z	Chipzzz	filthpig	gl :)

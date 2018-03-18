@@ -1,0 +1,18 @@
+2010-10-25T15:08:00.000Z	rypervenche		In this line of code, "glc-play [stream file] -o - -a NUM | lame -hV2 - audio.mp3" what do the lone "-" mean?
+2010-10-25T15:09:00.000Z	llutz_	rypervenche	stdout (read from, write to)
+2010-10-25T15:09:00.000Z	llutz_	rypervenche	read from stdin  sry
+2011-04-20T13:07:00.000Z	llutz_	rypervenche	5% root-reserved?
+2011-04-20T13:09:00.000Z	llutz_	rypervenche	sudo dumpe2fs -h /dev/sdXY | grep Reserved          change sdXY to your drive
+2011-04-20T13:11:00.000Z	rypervenche	llutz_	http://pastebin.com/T88bSzc7
+2011-04-20T13:12:00.000Z	llutz_	rypervenche	if that fs just contains data, set reserved space to 0 (tune2fs -m0)
+2011-04-20T13:14:00.000Z	rypervenche	llutz_	Do I need to input my /dev/sdb1 in the command as well?
+2011-04-20T13:14:00.000Z	llutz_	rypervenche	sure
+2011-04-20T13:17:00.000Z	rypervenche	llutz_	That fixed it! Thank you :D
+2011-04-20T13:22:00.000Z	llutz_	rypervenche	that happens whenever you create a ext2/3/4 fs, since those stupid 5% are reserved by default. you can use mkfs.ext4 -m0 to prevent it (or tune2fs later). that reserved space makes only sense for / or /tmp + /var
+2011-04-20T13:22:00.000Z	rypervenche	llutz_	Ahh, I see. Good to know :)
+2011-04-20T13:24:00.000Z	rypervenche	llutz_	Thank you again. Very very good to know. :)
+2011-04-20T14:24:00.000Z	llutz_	rypervenche	you can
+2011-04-20T14:24:00.000Z	rypervenche	llutz_	Is there any special command to erase what exists on it or do I just do as I would to put a new one on there?
+2011-04-20T14:25:00.000Z	llutz_	rypervenche	if you create a new filesystem, all old stuff will be erased
+2011-04-20T14:25:00.000Z	llutz_	rypervenche	sudo mkfs.ext4 -m0 /dev/sdXY
+2011-04-20T14:25:00.000Z	rypervenche	llutz_	Great, thank you :)

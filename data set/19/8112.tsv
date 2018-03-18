@@ -1,0 +1,19 @@
+2007-07-20T14:35:00.000Z	heskethj		Hello... Where should I ask about starting an X session in a window and executing a shell script in it automatically?
+2007-07-20T14:36:00.000Z	Jordan_U	heskethj	What do you mean by starting an x session in a window?
+2007-07-20T14:37:00.000Z	heskethj	Jordan_U	I need to start an X session in a window. Xnest does this fine, however I am not sure how to then execute a shell script inside it. The shell scrip will execute GDM but must perform a few other tasks first
+2007-07-20T14:38:00.000Z	Jordan_U	heskethj	Is there any reason you can't just use an xterm?
+2007-07-20T14:39:00.000Z	heskethj	Jordan_U	Xnest is to be launched from another shell script and I can't get it to open xterm, I don't seem to be able to do anything in Xnest.
+2007-07-20T14:39:00.000Z	heskethj	Jordan_U	If I do "Xnest :22" and then "glxgears -display :22" it works, but I'm not sure how I can send a shell script to run inside there... I can't even send xterm into there
+2007-07-20T14:40:00.000Z	Jordan_U	heskethj	I think you need to change the $DISPLAY environment variable
+2007-07-20T14:41:00.000Z	heskethj	Jordan_U	thanks, I'll give it a go
+2007-07-20T14:42:00.000Z	Jordan_U	heskethj	Tell me if/how you get it working, I am curious :)
+2007-07-20T14:43:00.000Z	heskethj	Jordan_U	no luck. xterm has a parameter (-display) which sets the display. I get the same result with that parameter as I did with setting DISPLAY: "Xlib: connection to ":5.0" refused by server
+2007-07-20T14:50:00.000Z	Jordan_U	heskethj	Depending on what you are trying to do you might be able to use xoo
+2007-07-20T14:50:00.000Z	heskethj	Jordan_U	what does it do (apt-getting it)_
+2007-07-20T14:51:00.000Z	heskethj	Jordan_U	never mind, I'm having a look at it... I'll let you know
+2007-07-20T14:52:00.000Z	heskethj	Jordan_U	does not look like what I need. It basically just puts an image around an X session so you can make it look like a palm or something
+2007-07-20T14:53:00.000Z	Jordan_U	heskethj	But it let's you run a command at startup
+2007-07-20T14:54:00.000Z	heskethj	Jordan_U	does it? I can't find any good documentation on the internet or man pages etc
+2007-07-20T14:57:00.000Z	Jordan_U	heskethj	Device -> Preferences
+2007-07-20T14:57:00.000Z	heskethj	Jordan_U	heh, nice...
+2007-07-20T15:16:00.000Z	heskethj	Jordan_U	turns out I can use "xterm -display :3" when I start Xnest with -ac

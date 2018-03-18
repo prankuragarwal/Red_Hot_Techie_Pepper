@@ -1,0 +1,24 @@
+2007-04-04T16:43:00.000Z	Zues_62		no iit does not show up
+2007-04-04T16:45:00.000Z	Zues_62		its not showing up whn i used that comand
+2007-04-04T16:45:00.000Z	Zues_62		preeeeeeeeee???????????????
+2007-04-04T16:46:00.000Z	Zues_62		ok maybe soeone else can help me
+2007-04-04T16:46:00.000Z	Zues_62		i cant mount a device
+2007-04-04T16:46:00.000Z	Zues_62		a hard drive it jsut wont mount and it doesnt show up in the device list
+2007-04-04T16:46:00.000Z	Zues_62		what do i do
+2007-04-04T16:47:00.000Z	Zues_62		does anoyone know how to recover a disk or not
+2007-04-04T16:48:00.000Z	mwe	Zues_62	You would probably look in dmesg if linux sees the drive at all or not
+2007-04-04T16:49:00.000Z	mwe	Zues_62	type dmesg|less after you boot
+2007-04-04T16:50:00.000Z	mwe	Zues_62	buy a new disk I guess
+2007-04-04T16:50:00.000Z	mwe	Zues_62	it does if you type it correctly
+2007-04-04T16:51:00.000Z	mwe	Zues_62	dmesg|less
+2007-04-04T16:51:00.000Z	mwe	Zues_62	type that in a terminal. it wiil work
+2007-04-04T16:52:00.000Z	mwe	Zues_62	info about your drive ;)
+2007-04-04T16:52:00.000Z	mwe	Zues_62	you can use page up/down to browse
+2007-04-04T05:02:00.000Z	mwe	Zues_62	no journal? is ist ext3? if so that message sounds bad
+2007-04-04T05:03:00.000Z	mwe	Zues_62	it means it can't see a journal for the file system. that effectively means its ext2
+2007-04-04T05:04:00.000Z	mwe	Zues_62	you can't if the journal is lost
+2007-04-04T05:05:00.000Z	mwe	Zues_62	if the journal is lost your only option is to recreate the file system, loosing all data on the partition
+2007-04-04T05:06:00.000Z	mwe	Zues_62	sudo mke2fs -j /dev/whateverthedevnameis
+2007-04-04T05:07:00.000Z	mwe	Zues_62	ext3 is ext2 with a journal
+2007-04-04T05:08:00.000Z	mwe	Zues_62	so if only the journal is lost you could probably save your data
+2007-04-04T05:10:00.000Z	mwe	Zues_62	make sure it's unmounted then typ fsck.ext2 /dev/whatever

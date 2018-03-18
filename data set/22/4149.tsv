@@ -1,0 +1,22 @@
+2008-03-04T06:34:00.000Z	MasterRat		got a ps2/n64 to usb converter... and it's bein a finicky sort. got it to respond in jstest ONCE and recognized in PCSX2 once... now it's poofed again, tho js1 is still there.... any ideas?
+2008-03-04T06:36:00.000Z	thinkpaduser	MasterRat	 it might appear as /dev/input/jsx
+2008-03-04T06:36:00.000Z	thinkpaduser	MasterRat	 or /dev/jsx
+2008-03-04T06:36:00.000Z	MasterRat	thinkpaduser	it's definitely showin up as /dev/input/js1 currently, but I have seen it on js0 also
+2008-03-04T06:38:00.000Z	thinkpaduser	MasterRat	 i've never tried that converter.  however, a lot of progs look for /dev/jsx by default
+2008-03-04T06:39:00.000Z	thinkpaduser	MasterRat	 you can do a 'sudo lsusb' to see if the device is detected
+2008-03-04T06:39:00.000Z	MasterRat	thinkpaduser	jstest tho allows you to specify the device... currently it shows *all* the buttons/axis of the joypad, but pushing buttons does not get a response
+2008-03-04T06:39:00.000Z	MasterRat	thinkpaduser	it shows up in hardware profiles of XFCE
+2008-03-04T06:39:00.000Z	thinkpaduser	MasterRat	 hmmm...
+2008-03-04T06:39:00.000Z	MasterRat	thinkpaduser	and lsusb (Bus 003 Device 006: ID 6666:0667 Prototype product Vendor ID Smart Joy PSX, PS-PC Smart JoyPad)
+2008-03-04T06:40:00.000Z	thinkpaduser	MasterRat	 so it is there just not functioning...
+2008-03-04T06:40:00.000Z	MasterRat	thinkpaduser	yup... it worked once... not sure why it stopped. unplug/replug and dmesg picks it up, but no workie.
+2008-03-04T06:40:00.000Z	thinkpaduser	MasterRat	 dunno then
+2008-03-04T06:42:00.000Z	thinkpaduser	MasterRat	 is the joydev module loaded?
+2008-03-04T06:42:00.000Z	MasterRat	thinkpaduser	it appears to be loaded into the kernel as I cannot modprobe -r it
+2008-03-04T06:42:00.000Z	thinkpaduser	MasterRat	 ok...
+2008-03-04T06:43:00.000Z	MasterRat	thinkpaduser	scratch that... it just let me remove it
+2008-03-04T06:44:00.000Z	thinkpaduser	MasterRat	 i think it is a module by default
+2008-03-04T06:45:00.000Z	MasterRat	thinkpaduser	re modprobe'd joydev and unplugged and plugged the usb back in... no change... cept its back on js0. heh
+2008-03-04T06:45:00.000Z	thinkpaduser	MasterRat	 and by pointing a prog at /dev/input/js0 you get no response?
+2008-03-04T06:45:00.000Z	MasterRat	thinkpaduser	that's correct. even if I cat it
+2008-03-04T06:46:00.000Z	thinkpaduser	MasterRat	 i don't know then

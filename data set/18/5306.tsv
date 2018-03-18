@@ -1,0 +1,18 @@
+2008-11-11T13:04:00.000Z	giacomo_c		i've been having this problem with everything gnome since upgrading to 8.10
+2008-11-11T13:05:00.000Z	giacomo_c		and it seems to be something with gconf
+2008-11-11T13:05:00.000Z	giacomo_c		like, gnome leaves me with a black screen when i try to login with the gnome session
+2008-11-11T13:05:00.000Z	rww	giacomo_c	please ask your question all on one line and concisely
+2008-11-11T13:07:00.000Z	rww	giacomo_c	try issuing sudo rm -rf .dbus/ from the command line
+2008-11-11T13:07:00.000Z	giacomo_c	rww	what will that do?
+2008-11-11T13:08:00.000Z	rww	giacomo_c	remove the .dbus directory from your home folder. Line 6 of your pastebin has an error about being unable to create a file in there
+2008-11-11T13:08:00.000Z	rww	giacomo_c	try logging in again and see if it still doesn't work
+2008-11-11T13:09:00.000Z	rww	giacomo_c	my theory is that dbus couldn't start because of some weirdness in that folder, so deleting it will fix the weirdness (the folder gets auto recreated), then gconf should work properly
+2008-11-11T13:09:00.000Z	rww	giacomo_c	not sure. you could just restart, to be sure :)
+2008-11-11T13:13:00.000Z	rww	giacomo_c	damn. same errors in the log file?
+2008-11-11T13:14:00.000Z	giacomo_c	rww	do you have that pastebin link?
+2008-11-11T13:14:00.000Z	rww	giacomo_c	http://pastebin.com/d93bfb1d
+2008-11-11T13:15:00.000Z	giacomo_c	rww	im going to try reinstalling gconf and see if that helps
+2008-11-11T13:15:00.000Z	rww	giacomo_c	lol, I just googled that error message, and the only result was your forum thread >.>
+2008-11-11T13:24:00.000Z	rww	giacomo_c	are you still getting that "Unable to create /home/giacomo/.dbus/session-bus" error in your log files?
+2008-11-11T13:26:00.000Z	rww	giacomo_c	still getting those gconf errors, though? hmm, looks like my guess was wrong
+2008-11-11T13:27:00.000Z	rww	giacomo_c	then that still points to a dbus problem. Throw the new log file, and also the firefox errors, into pastebin

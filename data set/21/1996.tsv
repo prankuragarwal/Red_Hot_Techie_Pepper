@@ -1,0 +1,21 @@
+2010-02-21T07:55:00.000Z	stevebuntu		what does the arow aboc=ve a folder mean ?
+2010-02-21T07:55:00.000Z	stevebuntu		above
+2010-02-21T07:57:00.000Z	arand	stevebuntu	it's a link?
+2010-02-21T07:58:00.000Z	arand	stevebuntu	define "arrow"..
+2010-02-21T08:01:00.000Z	arand	stevebuntu	For example, the "build" directory is a link (symlink), if you do  ls -l /lib/modules/2.6.31-17-generic/build you'll see whare the link leads to..
+2010-02-21T08:02:00.000Z	arand	stevebuntu	substituting the version number for the one relevant in your case (that was a command in terminal.
+2010-02-21T08:02:00.000Z	arand	stevebuntu	or simply look at the properties of it in the file browser, and it should say that it's a link and where it leads
+2010-02-21T08:04:00.000Z	arand	stevebuntu	do you have the corresponding "link-target" in /usr/src ?
+2010-02-21T08:07:00.000Z	arand	stevebuntu	I'm not quite sure how to go about fixing it though, that seems like the kernel hasn't been installed properly, in what way did you install it?
+2010-02-21T08:20:00.000Z	arand	stevebuntu	hold down shift when booting and you'll get to the menu to choose kernel version, provided you have it installed.
+2010-02-21T08:24:00.000Z	stevebuntu	arand	that worked will it now always boot using this kernel ?
+2010-02-21T08:35:00.000Z	arand	stevebuntu	Where from did you install it?
+2010-02-21T08:26:00.000Z	arand	stevebuntu	no, you can either uninstall the new one if you don't want it or set a default boot entry number in /etc/default/grub
+2010-02-21T08:29:00.000Z	arand	stevebuntu	what was the exact name of the package you installed
+2010-02-21T08:45:00.000Z	arand	stevebuntu	Was it something like here you got it from: http://kernel.ubuntu.com/~kernel-ppa/mainline/v2.6.32/
+2010-02-21T08:52:00.000Z	stevebuntu	arand	nope
+2010-02-21T08:54:00.000Z	arand	stevebuntu	and which of the packages there did you install?
+2010-02-21T09:07:00.000Z	stevebuntu	arand	http://kernel.ubuntu.com/~kernel-ppa/mainline/v2.6.32/linux-source-2.6.32_2.6.32-020632_all.deb
+2010-02-21T09:10:00.000Z	arand	stevebuntu	ok, that is the source code  you've installed, not the actual bootable images, you want the -image and -headers packages instead (i386 for 32bit and amd64 for 64bit)
+2010-02-21T09:20:00.000Z	arand	stevebuntu	installing those 3 packages should update the boot list and set the new version as the default boot entry, if you want you could uninstall the source package since I think you won't be using it (unless you want to start coding on the kernel code....)
+2010-02-21T09:21:00.000Z	arand	stevebuntu	2xheaders 1ximage two of which are 32bit/64bit specific.

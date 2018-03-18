@@ -1,0 +1,22 @@
+2010-01-25T22:39:00.000Z	Izinucs		Suddenly I've lost all audio playback.. been working for several releases including 9.10 then it just stopped.  even aplay won't play anything.. Any diagnostic advice?
+2010-01-25T22:40:00.000Z	Kinetic|work	Izinucs	alsaplay , make sure nothing is muted by default ...also trying killing pulseaudio
+2010-01-25T22:42:00.000Z	Izinucs	Kinetic|work	Switch10 been there done all that.. including killing pulse.. all levels are fine and worked day before yesterday.. no changes other than some updates to the system.. alsaplay is actually aplay from cli .. and no go with that either.
+2010-01-25T22:44:00.000Z	Izinucs	Kinetic|work	analog but there is a digital option.. when I choose that the system reports that it won't work
+2010-01-25T22:45:00.000Z	Izinucs	Kinetic|work	at any rate .. I'm using analog lines.
+2010-01-25T22:46:00.000Z	Izinucs	Kinetic|work	driving me nuts..
+2010-01-25T22:46:00.000Z	Izinucs	Kinetic|work	not sure .. how do I check for what's loaded and what shouldn't be?
+2010-01-25T22:47:00.000Z	Izinucs	Kinetic|work	lsmod | simply gives me a > symbol
+2010-01-25T22:48:00.000Z	Izinucs	Kinetic|work	ah
+2010-01-25T22:49:00.000Z	Izinucs	Kinetic|work	lsmod | grep snd | pastebinit results in http://pastebin.com/f43e5b937
+2010-01-25T22:55:00.000Z	Izinucs	Kinetic|work	gforce 8200 on an XFX board
+2010-01-25T22:57:00.000Z	Izinucs	Kinetic|work	hummmm... I wonder how that happened.. let me check the board specs and see which one it should be..
+2010-01-25T23:06:00.000Z	Izinucs	Kinetic|work	looks like sound is Realtek ALC 888 codec 8 channel HD audio..
+2010-01-25T23:07:00.000Z	Izinucs	Kinetic|work	how do I  remove the offending driver?
+2010-01-25T23:08:00.000Z	Kinetic|work	Izinucs	rmmod
+2010-01-25T23:08:00.000Z	Kinetic|work	Izinucs	rmmod *nameofmodule
+2010-01-25T23:09:00.000Z	Izinucs	Kinetic|work	would it be "sudo rmmod snd_hda_intel" ??
+2010-01-25T23:09:00.000Z	Kinetic|work	Izinucs	correct
+2010-01-25T23:09:00.000Z	Izinucs	Kinetic|work	with sudo?
+2010-01-25T23:09:00.000Z	Kinetic|work	Izinucs	will more than likely have to use sudo
+2010-01-25T23:09:00.000Z	Kinetic|work	Izinucs	^^what erSUL said
+2010-01-25T23:11:00.000Z	Izinucs	Kinetic|work	says the module is in use.. killall pulseaudio?

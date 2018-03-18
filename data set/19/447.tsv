@@ -1,0 +1,19 @@
+2012-02-20T17:59:00.000Z	gkasi		Need help with Grub2 Rescue prompt. I get an unknown filesystem when insmod (hd0,1)/boot/grub/linux.mod
+2012-02-20T18:00:00.000Z	gkasi		Hey kippi
+2012-02-20T18:01:00.000Z	escott	gkasi	thats not grub2. thats grub1
+2012-02-20T18:03:00.000Z	escott	gkasi	the syntax you are using (hd0,1) is grub1 syntax. for grub 2 one generally uses (hd0,msdos1) or (hd0,gpt1) depending upon the partition table.
+2012-02-20T18:05:00.000Z	gkasi	escott	I dont have msdos or windows on the box. It is a pure ubuntu experience. I get the following when I 'ls'. (hd0) (hd0,msdos3) (hd0, msdos2) (hd0, msdos1)
+2012-02-20T18:07:00.000Z	escott	gkasi	msdos just means you have an msdos partition table (normal mbr partition table) as opposed to a gpt table
+2012-02-20T18:08:00.000Z	escott	gkasi	try set root='(hd0,msdos#)'
+2012-02-20T18:08:00.000Z	gkasi	escott	thanks for that. But I m not familiar with gpt table. Because I dont have that, can you advise which of the three msdos1, 2, 3 I need as a combo to boot up?
+2012-02-20T18:08:00.000Z	escott	gkasi	i dont know. probably msdos1
+2012-02-20T18:14:00.000Z	gkasi	escott	tried all combo (msdos1, 2 and 3) with set prefix=(hd0,msdos#)/boot/grub and set root=.. and insmod (hd0,msdos#)/boot/grub/linux.mod. For msdos3 I get file not found. Other combos I get unknown filesystem
+2012-02-20T18:15:00.000Z	escott	gkasi	are you in a livecd right now?
+2012-02-20T18:17:00.000Z	escott	gkasi	its hard to say what is wrong without knowing what your layout is
+2012-02-20T18:17:00.000Z	escott	gkasi	but you are assuming you don't have a /boot partition (by your use of /boot/grub)
+2012-02-20T18:18:00.000Z	gkasi	escott	I used to have a boot partition till this morning when I decided to restart the box. Since the restart I'm stuck with this error. Whilst I dont know what those commands mean, I m following http://karuppuswamy.com/wordpress/2011/09/09/how-to-fix-grub-rescue-prompt-without-live-cd-for-grub2/
+2012-02-20T18:20:00.000Z	escott	gkasi	there are two main reasons why you would get a sudden boot failure. (a) a corrupted partition in which case you need a livecd to fsck the filesystem (b) a change to your partition tables which would not happen without your knowing about it
+2012-02-20T18:21:00.000Z	gkasi	escott	yeah corrupted partition seems like a candidate. I m downloading the Ubuntu 10.10 iso at the moment. Could you tell me the fsck command to fix the partition?
+2012-02-20T18:21:00.000Z	escott	gkasi	sudo fsck /dev/sda#
+2012-02-20T18:23:00.000Z	gkasi	escott	just found another disk labelled ubuntu installation. I m not sure what version and if the disk works. But I m going to try it in just now
+2012-02-20T18:35:00.000Z	gkasi	escott	thanks for your help so far. My *other* live cd is a no go as well. Hafta wait an hour or so for the 10.10 iso to download and try again. Thanks anyway!

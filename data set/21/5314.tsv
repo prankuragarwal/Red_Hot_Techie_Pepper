@@ -1,0 +1,21 @@
+2007-11-17T02:48:00.000Z	friedrich		Hi. How can I disable precompiled driver during the load?
+2007-11-17T02:49:00.000Z	nickrud	friedrich	blacklist it in a file in /etc/modprobe.d , see blacklist in that file for the syntax
+2007-11-17T02:50:00.000Z	friedrich	nickrud	it doesn't work
+2007-11-17T02:51:00.000Z	nickrud	friedrich	is it listed in /etc/modules ?
+2007-11-17T02:51:00.000Z	friedrich	nickrud	no
+2007-11-17T02:52:00.000Z	friedrich	nickrud	it's an skge network driver which I want to replace with marvell's one
+2007-11-17T02:52:00.000Z	nickrud	friedrich	that's worked for me, for example I added blacklist-bcm43xx to that dir, with blacklist bcm43xx as the only line in it, Worked For Me™
+2007-11-17T02:58:00.000Z	friedrich	nickrud	I did exactly as you said... Both are loaded, skge is used inetead of sk98lin. I need to reload it manually. May be precompiled drivers should be disabled in other way?
+2007-11-17T02:59:00.000Z	nickrud	friedrich	if there's another way, I'm not aware of it. I'm not familiar with those modules, either
+2007-11-17T03:02:00.000Z	friedrich	nickrud	I can't delete it, it's in kernel
+2007-11-17T03:03:00.000Z	nickrud	friedrich	in the kernel, or a module that's loaded by the kernel?
+2007-11-17T03:03:00.000Z	friedrich	nickrud	in the kernel
+2007-11-17T03:03:00.000Z	nickrud	friedrich	blacklist only works on modules, not stuff compiled into the kernel
+2007-11-17T03:04:00.000Z	friedrich	nickrud	I can unload it with rmmod. Is it possible for kernel drivers?
+2007-11-17T03:04:00.000Z	nickrud	friedrich	ok, that
+2007-11-17T03:04:00.000Z	friedrich	nickrud	there is no skge.ko
+2007-11-17T03:05:00.000Z	nickrud	friedrich	it's /lib/modules/2.6.22-14-generic/kernel/drivers/net/skge.ko on my machine.
+2007-11-17T03:06:00.000Z	friedrich	nickrud	I use xen kernel
+2007-11-17T03:06:00.000Z	nickrud	friedrich	ah, I have no experience with xen kernels, so I think I'll just have to shut up. Sorry
+2007-11-17T03:19:00.000Z	friedrich	nickrud	something tells me that new driver presented as both skge and sk98lin, if it's possible
+2007-11-17T03:19:00.000Z	nickrud	friedrich	no clue, but it's not impossible I guess

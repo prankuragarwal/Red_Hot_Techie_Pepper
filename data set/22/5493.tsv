@@ -1,0 +1,22 @@
+2007-04-27T10:34:00.000Z	tholme		hey
+2007-04-27T10:34:00.000Z	tholme		Im having trouble installing programs on my ubuntu
+2007-04-27T10:35:00.000Z	tholme		Whenever I download a program it wont install, only way it will is through the 'sudo apt-get' command.
+2007-04-27T10:35:00.000Z	LjL	tholme	that's because "sudo apt-get" *is* the good, safe and reasonable way to install programs.
+2007-04-27T10:36:00.000Z	tholme	LjL	yes I like apt-get very much:) But there is a program that doesnt work through that installation method; Tor
+2007-04-27T10:37:00.000Z	LjL	tholme	you're kidding? tor is available from universe, and it'll even install privoxy and get configured to work with it
+2007-04-27T10:37:00.000Z	LjL		!info tor > tholme
+2007-04-27T10:37:00.000Z	tholme	LjL	when it is installed it says that Im not the correct user. It says that the user should be 'debian-tor'
+2007-04-27T10:38:00.000Z	tholme	LjL	[warn]  /var/lib/tor is not owned by this user (tholme, 1000) but by debian-tor (112). Perhaps you are running Tor as the wrong user?
+2007-04-27T10:38:00.000Z	tholme		Apr 27 18:38:26.941 [warn]  Failed to parse/validate config: Couldn't access/create private data directory "/var/lib/tor"
+2007-04-27T10:39:00.000Z	LjL	tholme	it didn't do that for me on edgy, but that doesn't seem like a good reason for not installing something like that (a *service*, not even an application!) manually...
+2007-04-27T10:39:00.000Z	LjL	tholme	how are you trying to start tor?
+2007-04-27T10:39:00.000Z	tholme	LjL	I installed it, and typed 'tor'
+2007-04-27T10:40:00.000Z	LjL	tholme	bad idea... tor is a service, you're not supposed to just run the program. type  sudo invoke-rc.d tor start  (which will probably tell it it's already started, since it normally gets auto-started on installation and on boot)
+2007-04-27T10:41:00.000Z	tholme	LjL	trying it now
+2007-04-27T10:41:00.000Z	tholme	LjL	Raising maximum number of filedescriptors (ulimit -n) to 8192.
+2007-04-27T10:41:00.000Z	tholme		Starting tor daemon: tor...
+2007-04-27T10:41:00.000Z	tholme		done.
+2007-04-27T10:42:00.000Z	LjL	tholme	it started. you should now be able to connect apps to it. you probably want to also do  sudo invoke-rc.d privoxy start , in order to point proxy-able apps (like web browser) to privoxy (which will then use tor)
+2007-04-27T10:42:00.000Z	tholme	LjL	Never heard of those commands...lol
+2007-04-27T10:43:00.000Z	tholme	LjL	Need to do some reading I think
+2007-04-27T10:43:00.000Z	LjL	tholme	they work for all services.  sudo invoke-rc.d <servicename> start|stop|restart . do  ls /etc/init.d  to see all the services you have currently available (but don't try stopping random ones ;)

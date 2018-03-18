@@ -1,0 +1,22 @@
+2010-10-06T20:19:00.000Z	brendan-		are you getting an error?
+2010-10-06T20:20:00.000Z	brendan-		do ls -al on the directory
+2010-10-06T20:20:00.000Z	brendan-		and paste
+2010-10-06T20:20:00.000Z	brendan-		also do an ls -al inside the directory and paste if its not like 1000 files
+2010-10-06T20:20:00.000Z	plouffe	brendan-	ls -al gets stuck/freezes without output
+2010-10-06T20:21:00.000Z	plouffe	brendan-	no, just inside this directory
+2010-10-06T20:27:00.000Z	plouffe	brendan-	yes it's the directory with the html files
+2010-10-06T20:27:00.000Z	plouffe	brendan-	yes, I should have cleaned it out probably
+2010-10-06T20:28:00.000Z	plouffe	brendan-	will try
+2010-10-06T20:29:00.000Z	plouffe	brendan-	 it's 300MB, but even now, running rm -rf ,cache/*html it is not shrinking while I am waiting it out
+2010-10-06T20:30:00.000Z	plouffe	brendan-	ls -al still shows the same size consistently
+2010-10-06T20:32:00.000Z	plouffe	brendan-	but shouldn't ls -al show at least some progress in terms of the directory size decreasing somewhat?
+2010-10-06T20:37:00.000Z	brendan-	plouffe	any luck?
+2010-10-06T20:38:00.000Z	plouffe	brendan-	directory size is still unchanged
+2010-10-06T20:39:00.000Z	plouffe	brendan-	I am reading up on maximum # files in ext3. It's 2^13, correct?
+2010-10-06T20:42:00.000Z	plouffe	brendan-	it says here http://stackoverflow.com/questions/466521/how-many-files-in-a-directory-is-too-many the limitation is Maximum number of files: number of bytes in volume/2¹³ . Which seems weird. So if I add more bytes to my HDD, I could increase the number of files I can store in the directory?
+2010-10-06T20:48:00.000Z	plouffe	brendan-	the command aborted with "bash: /bin/rm: Argument list too long"
+2010-10-06T20:50:00.000Z	brendan-	plouffe	not good
+2010-10-06T20:51:00.000Z	brendan-	plouffe	im thinking your best bet is maybe a shell script that deletes files older than like a week or 2 or more and slowly slice down the # of files
+2010-10-06T20:52:00.000Z	plouffe	brendan-	gftp?
+2010-10-06T20:57:00.000Z	plouffe	brendan-	I tried running a for loop over the files before and that also got stuck. Maybe I need to resize the partition, so that ext3 allows more files per directory? Do you think that could work? (btw gftp got stuck also)
+2010-10-06T20:59:00.000Z	plouffe	brendan-	I'm trying this solution now http://blog.hbcom.info/archives/4

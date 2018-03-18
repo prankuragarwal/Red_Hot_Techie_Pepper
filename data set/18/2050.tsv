@@ -1,0 +1,18 @@
+2010-08-31T12:32:00.000Z	nukme		NEED HELP i have a problem with x11 forwarding under lucid server. $DISPLAY and $HOST variable are empty and i get error :  cant open display -because its not set, sshd_config :x11 forwarding enabled
+2010-08-31T12:33:00.000Z	ikonia	nukme	did you use ssh -X to ssh into the machine ?
+2010-08-31T12:33:00.000Z	ikonia	nukme	what do you mean "no problem"
+2010-08-31T12:35:00.000Z	ikonia	nukme	so when you do echo $DISPLAY it returns null
+2010-08-31T12:35:00.000Z	nukme	ikonia	debug1: Authentications that can continue: publickey
+2010-08-31T12:38:00.000Z	ikonia	nukme	have you restarted sshd after configuring X forwardig onthe server, have you also made sure X11 forwarding is enabled in ssh_config
+2010-08-31T12:40:00.000Z	ikonia	nukme	that's interesting, I'd certainly not expect DISPLAY to be empty on that
+2010-08-31T12:41:00.000Z	ikonia	nukme	what happens if you manually set DISPLAY
+2010-08-31T12:42:00.000Z	ikonia	nukme	well, having an X environment is pretty important to X11 forwarding, so thats a good thing to do
+2010-08-31T12:43:00.000Z	ikonia	nukme	you'll need to run xhost + on the machine before that can work
+2010-08-31T12:44:00.000Z	ikonia	nukme	on the client ?
+2010-08-31T12:45:00.000Z	ikonia	nukme	but if you do xhost on the client that you're connected to the "broken" server on, does it work ?
+2010-08-31T12:46:00.000Z	ikonia	nukme	it looks like X is broke some how on that server that question is how to take it fofrward
+2010-08-31T12:47:00.000Z	ikonia	nukme	is there any chance you can actually start an X environmnet on that server ?
+2010-08-31T12:47:00.000Z	ikonia	nukme	the X server is broken down into multiple components, there isn't such a thing as a "full" xserver these days
+2010-08-31T12:48:00.000Z	ikonia	nukme	that's not a concern (unless you want to configure it to test it)
+2010-08-31T12:49:00.000Z	ikonia	nukme	correct, I was just suggesting testing it to make sure you had the X11 components you need
+2010-08-31T12:53:00.000Z	ikonia	nukme	it sounds like just this one server has a non-complete X11 install

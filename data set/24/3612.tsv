@@ -1,0 +1,24 @@
+2008-05-13T04:28:00.000Z	bluefoxx		whears the magical hidden trash folder gone to now? uit used to be /home/<user>/.trash but its changed locations and now i cant delete corrupted items from the command line[sudo rm -R /home/bluefoxx/.trash/*] as my computer decided to freeze while i was moving a folder between disk drives
+2008-05-13T04:28:00.000Z	bluefoxx		speaking of which, my computer has been completely freezing a lot lately
+2008-05-13T04:28:00.000Z	bluefoxx		when im doing not much on it[only burning a disk or browsing the web/files]
+2008-05-13T04:29:00.000Z	bluefoxx		even reisub stops working
+2008-05-13T04:29:00.000Z	beli	bluefoxx	check your ram
+2008-05-13T04:29:00.000Z	bluefoxx	beli	i did that all night >. >
+2008-05-13T04:30:00.000Z	bluefoxx	beli	it came up with nothing <. <
+2008-05-13T04:31:00.000Z	beli	bluefoxx	increase your debug level and make a sync mounted partition and put your log files there
+2008-05-13T04:33:00.000Z	bluefoxx	beli	hows that?[for a first time, that was a little over my head]
+2008-05-13T04:35:00.000Z	beli	bluefoxx	well....i do that to see what is the last thing that has been logged via syslog daemon before failure happens....in common you use async mounted partitions....and async logging. means that syslogd writes data to disc when some buffer has been filled. if you use sync mounting and sync logging.....it MAY log the thing that caused your crash...
+2008-05-13T04:36:00.000Z	bluefoxx	beli	so which files/folders do i look at?
+2008-05-13T04:37:00.000Z	beli	bluefoxx	man syslogd.conf
+2008-05-13T04:38:00.000Z	bluefoxx	beli	ty ^^
+2008-05-13T04:38:00.000Z	beli	bluefoxx	and read howto mount a partition sync
+2008-05-13T04:38:00.000Z	beli	bluefoxx	man mount, cat /etc/fstab
+2008-05-13T04:39:00.000Z	bluefoxx	beli	i have no trouble mounting drives XP i run three extra hards plus a raid5 array for music files ^^
+2008-05-13T04:39:00.000Z	beli	bluefoxx	yeah, but you should read about sync/async mounts
+2008-05-13T04:40:00.000Z	bluefoxx	beli	ok, i will learn the difference : \
+2008-05-13T04:40:00.000Z	bluefoxx	beli	thanks
+2008-05-13T04:41:00.000Z	bluefoxx	beli	going by name, im deducing so far though, that a sync mount writes the data ASAP while a asinc waits to be unmounted, for the buffer to fill or some other event to happen right/
+2008-05-13T04:43:00.000Z	beli	bluefoxx	thats it...and thats why there is the sync command. and guess what happens if your box crashes? it does not write tha buffered data to log files ;)
+2008-05-13T04:43:00.000Z	bluefoxx	beli	ahh...i see. so how do i find out which my drives are using?
+2008-05-13T04:43:00.000Z	beli	bluefoxx	in common async mode is better, because of the i/o load...but in debug case...
+2008-05-13T04:44:00.000Z	beli	bluefoxx	it has nothing todo with your drives, but with how you mount them... --> fstab

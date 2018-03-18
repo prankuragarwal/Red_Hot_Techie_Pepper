@@ -1,0 +1,22 @@
+2012-02-14T23:10:00.000Z	raevol		ok, now when i run dkpg --configre -a i am getting a ton of out of space errors still, but i see they are all having to do with mkinitramfs
+2012-02-14T23:10:00.000Z	theadmin	raevol	Are there old kernels under /boot ?
+2012-02-14T23:10:00.000Z	raevol	theadmin	yes, lots
+2012-02-14T23:10:00.000Z	theadmin	raevol	Might want to get rid of those (normally via apt, but if you can't then just rm them for now)
+2012-02-14T23:12:00.000Z	raevol	theadmin	what in here can is afely remove? http://paste.ubuntu.com/842009/
+2012-02-14T23:12:00.000Z	theadmin	raevol	Anything that doesn't relate to your current kernel
+2012-02-14T23:13:00.000Z	theadmin	raevol	Well, don't touch the grub directory though
+2012-02-14T23:15:00.000Z	raevol	theadmin	still can't run dpkg --configure -a, i am thinking this is a mkinitramfs issue?
+2012-02-14T23:15:00.000Z	theadmin	raevol	Might be. Can you pastebin the errors?
+2012-02-14T23:18:00.000Z	raevol	theadmin	my damn terminal isn't letting me scroll up... how would i output the messages to a file? > doesn't seem to work
+2012-02-14T23:19:00.000Z	theadmin	raevol	Uh, if > doesn't work I think something's extremely wrong with your shell...
+2012-02-14T23:21:00.000Z	raevol	theadmin	trying a restart..
+2012-02-14T23:33:00.000Z	raevol	theadmin	i can't seem to send my output to a file, i only ever get one line in the file. using: "dpkg --configure -a > /home/raevol/Desktop/err.txt"
+2012-02-14T23:33:00.000Z	theadmin	raevol	Well, that's not supposed to happen, but if your drive is full it might
+2012-02-14T23:33:00.000Z	raevol	theadmin	thunar is now reporting that i have 548 megs of free space on my /
+2012-02-14T23:34:00.000Z	theadmin	raevol	Hm, well, /home is on a separate partition, is it not?
+2012-02-14T23:34:00.000Z	raevol	theadmin	yes
+2012-02-14T23:34:00.000Z	theadmin	raevol	Err, actually...\
+2012-02-14T23:34:00.000Z	theadmin	raevol	That ain't gonna work -- the command (dpkg one) needs sudo
+2012-02-14T23:35:00.000Z	theadmin	raevol	sudo dpkg --configure -a | tee $HOME/Desktop/err.txt
+2012-02-14T23:35:00.000Z	raevol	theadmin	sorry, i was using sudo, just forgot to type it in here
+2012-02-14T23:36:00.000Z	raevol	theadmin	with the "tee" in there it gave me no file

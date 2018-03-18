@@ -1,0 +1,18 @@
+2012-04-28T07:08:00.000Z	ztag100		ok
+2012-04-28T07:09:00.000Z	ztag100		It says I can't hardlink accross file systems
+2012-04-28T07:10:00.000Z	escott	ztag100	thats normal. what are you doing that is causing you to try and hardlink across fs
+2012-04-28T07:12:00.000Z	escott	ztag100	just having a subdirectory on another partition should not cause hardlinks across fses
+2012-04-28T07:15:00.000Z	escott	ztag100	you should not be able to
+2012-04-28T07:16:00.000Z	escott	ztag100	the bind mount should not fix your hardlink problem either
+2012-04-28T07:16:00.000Z	ztag100	escott	if that works, I won't need to hardlink
+2012-04-28T07:16:00.000Z	escott	ztag100	why not just mount directly to the desired path instead of bind mounting
+2012-04-28T07:19:00.000Z	escott	ztag100	so symlink the folders (like ~/Desktop or ~/Music) to the appropriate folder in the desired partition. but dont hardlink
+2012-04-28T07:25:00.000Z	escott	ztag100	wrong ownership on that file, perhaps because of your weird mounting tricks
+2012-04-28T07:34:00.000Z	escott	ztag100	i would disagree with athetius on that. having /home on anything that does not support unix permissions is a bad idea and WILL break applications
+2012-04-28T07:38:00.000Z	escott	ztag100	its a bad idea. you may be able to get away with it, but its a bad idea
+2012-04-28T07:53:00.000Z	escott	ztag100	symbol for what
+2012-04-28T07:53:00.000Z	escott	ztag100	you can just type "cd" and it takes you to $HOME
+2012-04-28T07:54:00.000Z	escott	ztag100	and you can define aliases in .bashrc so that cmu takes you to ~/Music
+2012-04-28T07:55:00.000Z	ztag100	escott	that's what I'm looking to do
+2012-04-28T07:56:00.000Z	escott	ztag100	except it has to be a command. its usually for things like "alias ll="ls -l"
+2012-05-12T04:29:00.000Z	escott	ztag100	that may not be safe. a lot of laptops are speced to a particular thermal profile which assumes the lid is up

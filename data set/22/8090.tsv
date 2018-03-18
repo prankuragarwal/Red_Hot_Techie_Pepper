@@ -1,0 +1,22 @@
+2007-12-02T22:25:00.000Z	r00723r0		hi, i have a list of files in a read-only directory
+2007-12-02T22:25:00.000Z	r00723r0		i need to link to them
+2007-12-02T22:25:00.000Z	r00723r0		how would i do this?
+2007-12-02T22:26:00.000Z	tonyyarusso	r00723r0	You shouldn't have to do anything different - a link only needs read privlidges anyway
+2007-12-02T22:27:00.000Z	r00723r0	tonyyarusso	yes, but the folder is read-only as well
+2007-12-02T22:27:00.000Z	r00723r0		so if i right click and select Make Links it won't do anything
+2007-12-02T22:28:00.000Z	tonyyarusso	r00723r0	err, I'm not even sure how to make links graphically, to be honest.  I've only done it with ln.
+2007-12-02T22:29:00.000Z	r00723r0	tonyyarusso	aye, how would i choose all folders in a directory (all those that don't end with for example *.txt) and link them to my desktop?
+2007-12-02T22:30:00.000Z	tonyyarusso	r00723r0	As in you want links on the desktop _to_ them I assume?
+2007-12-02T22:30:00.000Z	r00723r0		yes
+2007-12-02T22:32:00.000Z	tonyyarusso	r00723r0	a sec - I need to test some guesses
+2007-12-02T22:33:00.000Z	r00723r0	tonyyarusso	ok, thank you very much :)
+2007-12-02T22:35:00.000Z	tonyyarusso	r00723r0	Do any of the filenames contain spaces or other characters that need escaping?
+2007-12-02T22:35:00.000Z	r00723r0	tonyyarusso	yes
+2007-12-02T22:36:00.000Z	r00723r0		most all of them
+2007-12-02T22:36:00.000Z	tonyyarusso	r00723r0	bummer.  /me keeps trying
+2007-12-02T22:36:00.000Z	r00723r0		haha thanks a lot man
+2007-12-02T22:47:00.000Z	tonyyarusso	r00723r0	This is stretching my bash skills, but I think I'm getting somewhere :P
+2007-12-02T22:47:00.000Z	r00723r0		haha ok
+2007-12-02T23:02:00.000Z	tonyyarusso	r00723r0	mmkay, here we go: for i in /path/to/some/directory/!(*.txt); do ln -s "$i" ~/Desktop/; done
+2007-12-02T23:03:00.000Z	r00723r0	tonyyarusso	wow, thanks man
+2007-12-02T23:03:00.000Z	tonyyarusso	r00723r0	Thank #bash instead :P

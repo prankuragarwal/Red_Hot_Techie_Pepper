@@ -1,0 +1,21 @@
+2009-12-20T01:39:00.000Z	terlop		help, i'm drowning
+2009-12-20T01:39:00.000Z	terlop		what exactly do i have to type into .bashrc file?
+2009-12-20T01:39:00.000Z	terlop		to add an environment variable to Ubuntu 9.10
+2009-12-20T01:40:00.000Z	ardnew	terlop	if you want an environment variable set, you probably dont want it done in .bashrc as thats only used by bash
+2009-12-20T01:40:00.000Z	ardnew	terlop	but you would type 'export var="whatever"'
+2009-12-20T01:40:00.000Z	ardnew		or type man export
+2009-12-20T01:41:00.000Z	terlop	ardnew	please guide me to set an environment variable PYTHONPATH and set it the path to the desktop, so to ~/Desktop
+2009-12-20T01:41:00.000Z	ardnew	terlop	export PYTHONPATH="$HOME/Desktop" maybe
+2009-12-20T01:43:00.000Z	terlop	ardnew	your proposal sets PYTHONPATH for the current terminal session only
+2009-12-20T01:43:00.000Z	terlop		when bash is restarted, I loose that variable
+2009-12-20T01:43:00.000Z	ardnew	terlop	then you are not doing it right
+2009-12-20T01:44:00.000Z	terlop		how come?
+2009-12-20T01:44:00.000Z	terlop		i typed (actually copy&pasted) exactly as you typed
+2009-12-20T01:45:00.000Z	ardnew	terlop	I recommend you place the line in the file "~/.bash_profile"
+2009-12-20T01:45:00.000Z	ardnew		and instead of using the relative path, use the line export PYTHONPATH="/home/youruser/Desktop"
+2009-12-20T01:45:00.000Z	ardnew		@ terlop
+2009-12-20T01:46:00.000Z	terlop		in what file does the variable PYTHONPATH go when i do  export PYTHONPATH="$HOME/Desktop"  ??
+2009-12-20T01:47:00.000Z	ardnew	terlop	it can go in several different files. placing it in .bashrc  is fine and will continue working for every new instance of bash you start
+2009-12-20T01:48:00.000Z	terlop	ardnew	i don't know how to edit .bashrc
+2009-12-20T01:48:00.000Z	terlop		i am affraid i'll break anything
+2009-12-20T01:50:00.000Z	ardnew	terlop	type this at a command line: echo 'export PYTHONPATH="$HOME/Desktop"' >> ~/.bashrc

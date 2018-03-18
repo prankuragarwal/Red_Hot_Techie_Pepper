@@ -1,0 +1,23 @@
+2007-02-22T17:25:00.000Z	MrPrimate		Does nayone know how I can burn a CD on the same drive that I'm running a LiveCD on ?
+2007-02-22T07:30:00.000Z	MrPrimate		anyone have a tip on how to recursively delete hidden dirs?  (without wiping the entire drive)
+2007-02-22T07:32:00.000Z	soundray	MrPrimate	find . -name \.\* | xargs rm -rf
+2007-02-22T07:32:00.000Z	soundray	MrPrimate	dangerous!
+2007-02-22T07:32:00.000Z	MrPrimate	soundray	ouch,.. that's the easiest way that you know of ?
+2007-02-22T07:34:00.000Z	soundray	MrPrimate	what's difficult about the command I suggested?
+2007-02-22T07:34:00.000Z	MrPrimate	soundray	it's not actually difficult, it just seems a bit tedious for a simple operation,
+2007-02-22T07:34:00.000Z	MrPrimate	soundray	let me poke at it for a moment and see if there's anything questionable
+2007-02-22T07:35:00.000Z	soundray	MrPrimate	try 'find . -name \.\* | xargs ls' for playing
+2007-02-22T07:35:00.000Z	MrPrimate	soundray	is this going to run   rm -rf     on every file in every subdirectory, or just the dirs ?
+2007-02-22T07:36:00.000Z	MrPrimate	soundray	it's not really so bad, it just looked a bit long for something simple
+2007-02-22T07:38:00.000Z	soundray	MrPrimate	'find . -type d -name \.\*' will find only directories beginning with a dot
+2007-02-22T07:39:00.000Z	MrPrimate	soundray	wait isn't that going to match .. too, leaving me in the same position as if i just rm -rf .* (!!!!!)
+2007-02-22T07:40:00.000Z	soundray	MrPrimate	strange -- it seems to match . but not ..
+2007-02-22T07:40:00.000Z	soundray	MrPrimate	still, that is a problem!
+2007-02-22T07:42:00.000Z	soundray	MrPrimate	can you reproduce that behaviour, though?
+2007-02-22T07:43:00.000Z	MrPrimate	soundray	what are you referring to?  it seems to match . but not .. , every single time
+2007-02-22T07:43:00.000Z	soundray	MrPrimate	thanks, that's what I wanted to hear
+2007-02-22T07:44:00.000Z	MrPrimate	soundray	I suppose it's intentional, to prevent find from crawling endlessly,
+2007-02-22T07:45:00.000Z	MrPrimate	soundray	but it really does expose a filesystem flaw with the . and .. shared with the hidden directory bit,.. personally, i think there should be a sort of hidden flag that is not a part of the filename, which could be referenced by a character or some new key, right ?
+2007-02-22T07:47:00.000Z	soundray	MrPrimate	I think your argument is valid. The thing about conventions, though, is that once they are 20 or 30 years old, it'll need more than a convincing argument to change them...
+2007-02-22T07:49:00.000Z	MrPrimate	soundray	right,... but whoever is writing the next great operating system , will make sure to change this we hope :)
+2007-02-22T07:52:00.000Z	soundray	MrPrimate	I'm pretty certain that I will stick with unix. Although I am sometimes attracted by interface concepts like Aqua or Symphony OS, there is rarely a reason to change the underlying system. I'll stop offtopic now, sorry

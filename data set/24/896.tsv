@@ -1,0 +1,24 @@
+2010-11-13T20:58:00.000Z	Theta		hello
+2010-11-13T20:58:00.000Z	Theta		I'm having problems with my display driver on a fresh installation.
+2010-11-13T20:59:00.000Z	Theta		I get a garbled screen on startup.
+2010-11-13T20:59:00.000Z	Theta		I'm not sure which version of ubuntu I'm running.
+2010-11-13T20:59:00.000Z	Theta		any idea how I can fix this?
+2010-11-13T21:01:00.000Z	Theta		I tried a a different combinations of boot options, but nothing seemed to work.
+2010-11-13T21:01:00.000Z	Theta		nomemset xforcevesa vga=xxx, etc..
+2010-11-13T21:02:00.000Z	alkisg	Theta	it's "nomodeset". Is that installed on the hard disk?
+2010-11-13T21:03:00.000Z	alkisg	Theta	do you get a grub menu?
+2010-11-13T21:03:00.000Z	alkisg	Theta	it should say the ubuntu version there afaik. And you can use the recovery mode to boot it to cli and further troubleshoot it (e.g. see what vga you have)
+2010-11-13T21:04:00.000Z	alkisg	Theta	Ubuntu 7.04 or 7.10 are too old, you should upgrade. The recovery mode didn't give you a text menu with some options?
+2010-11-13T21:06:00.000Z	alkisg	Theta	well if it doesn't boot at all and you don't have a live CD, there's only little you can do (e.g. pass init=/bin/sh in the kernel params). Better wait for the download to finish.
+2010-11-13T21:07:00.000Z	alkisg	Theta	that's the busybox shell, it's not your real system. You could run "chroot /root" to see the live system from there.
+2010-11-13T21:11:00.000Z	Theta	alkisg	still can't find xorg.conf, but anyway, now that I have a proper shell, is there nothing I can do to fix my display driver?
+2010-11-13T21:11:00.000Z	alkisg	Theta	I don't think it's a display driver problem, since you're not even getting the recovery menu which is before X
+2010-11-13T21:12:00.000Z	Theta	alkisg	then what could it be?!
+2010-11-13T21:12:00.000Z	alkisg	Theta	what graphics card do you have? lspci -nn -k | grep -A 2 VGA
+2010-11-13T21:14:00.000Z	Theta	alkisg	Silicon Integrated Systmes [SiS] 771/671 PCIE VGA Display Adapter
+2010-11-13T21:16:00.000Z	alkisg	Theta	I think your problem is not display related, but I don't know what it could be, too little info and probably isn't worth troubleshooting it since you're installing 10.10 anyway...
+2010-11-13T21:18:00.000Z	Theta	alkisg	FF crashed, and I'm restarting the download. I have limited time to fix this. I have 8.04 on a CD, do you think I should try installing it?
+2010-11-13T21:19:00.000Z	alkisg	Theta	sure you can do that, I think it'll be the fastest way
+2010-11-13T21:20:00.000Z	Theta	alkisg	ok, thanks!
+2010-11-13T21:28:00.000Z	Theta	alkisg	ok, it seems the number in grub was misleading. I tried to cat /etc/issue, and it syas I'm running 10.04.
+2010-11-13T21:29:00.000Z	alkisg	Theta	ah. I'd suggest booting from the hardy cd, chroot'ing into your lucid and doing some apt-get dist-upgrade in case it solves any problems

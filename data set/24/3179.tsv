@@ -1,0 +1,24 @@
+2008-04-08T23:00:00.000Z	linux60284		anyone know why i can't bind any programs to ANY ports (+ or - 1026)
+2008-04-08T23:00:00.000Z	linux60284		anyone know why i can't bind any programs to ANY ports (+ or - 1026)???
+2008-04-08T23:02:00.000Z	linux60284		anyone know why i can't bind any programs to ANY ports (+ or - 1026)?
+2008-04-08T23:02:00.000Z	unop__	linux60284	you should be able to >=1024, how are you trying?
+2008-04-08T23:05:00.000Z	unop__	linux60284	hmm, i would go through these files to see if anything's out of order - /var/log/{dmesg,debug,syslog}
+2008-04-08T23:06:00.000Z	linux60284	unop__	everything looks fine in the logs
+2008-04-08T23:07:00.000Z	linux60284	unop__	any other suggestions?
+2008-04-08T23:07:00.000Z	unop__	linux60284	it takes time trawling through those files and you need to put on your 'scrutiny' goggles before examining them .. small things do count, apart from that all i can suggest is having a look on launchpad if someone else might have experienced the same thing
+2008-04-08T23:08:00.000Z	linux60284	unop__	its on a server, so its a bad thing if its down for long
+2008-04-08T23:08:00.000Z	linux60284	unop__	i guess i'll have to reinstall the OS when i get the time, i wish ubuntu was a little more stable, i would hate to go back to debian
+2008-04-08T23:09:00.000Z	unop__	linux60284	have you got any iptables rules in place?
+2008-04-08T23:09:00.000Z	linux60284	unop__	i was thinking it was a networking problem
+2008-04-08T23:10:00.000Z	unop__	linux60284	how did this condition come to be? i'm assuming it was all working fine at some point .
+2008-04-08T23:10:00.000Z	linux60284	unop__	the sudo /etc/init.d/networking start fails to start
+2008-04-08T23:10:00.000Z	linux60284	unop__	yes, i restart my computer
+2008-04-08T23:10:00.000Z	unop__	linux60284	what happens when you manually try and bring the interfaces up?
+2008-04-08T23:11:00.000Z	linux60284	unop__	the error in the /etc/init.d/networking start gives me errors with ifup and ifdown
+2008-04-08T23:11:00.000Z	linux60284	unop__	so i am assuming i can't start/stop them manually (atheros at ath0)
+2008-04-08T23:11:00.000Z	unop__	linux60284	you make too many assumptions -- try it manually .. and pastebin the errors you get
+2008-04-08T23:14:00.000Z	linux60284	unop__	does that error message give you any ideas what could cause that problem?
+2008-04-08T23:14:00.000Z	unop__	linux60284	looks like you have a malformatted or missing interfaces file? check if it exists and if you can .. please put it in a pastebin for us to see
+2008-04-08T23:17:00.000Z	linux60284	unop__	there we go, i fixed it by removing my bluetooth network
+2008-04-08T23:17:00.000Z	linux60284	unop__	let me see if i can bind now
+2008-04-08T23:17:00.000Z	linux60284	unop__	no, i still can't bind, but at least i can /etc/init.d/network restart successfully

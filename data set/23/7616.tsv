@@ -1,0 +1,23 @@
+2008-06-13T11:37:00.000Z	vy		I'm neither allowed to logon via root (using GDM), nor alloweded to run anything from System > Administration menu as a normal user. So how should I run System > Administration menu programs?
+2008-06-13T11:38:00.000Z	nickrud	vy	you should be able to run them using sudo on your original user account
+2008-06-13T11:39:00.000Z	nickrud	vy	when you start an app from the menu, you should get a window asking for the password
+2008-06-13T11:40:00.000Z	nickrud	vy	if you don't, run  gksu ls  from a terminal
+2008-06-13T11:42:00.000Z	nickrud	vy	did you get a window, or an error?
+2008-06-13T11:43:00.000Z	vy	nickrud	I typed my password to the windows raised, but it gave another error. One sec...
+2008-06-13T11:45:00.000Z	vy	nickrud	Failed to run ls as user root. The underlying auth mechanism (sudo) does not allow you to run this program.
+2008-06-13T11:45:00.000Z	nickrud	vy	are you in the admin group?
+2008-06-13T11:46:00.000Z	nickrud	vy	and is this the original user you created during the install?
+2008-06-13T11:46:00.000Z	vy	nickrud	In wheel an my own group, not in admin. Must I be?
+2008-06-13T11:46:00.000Z	nickrud	vy	yes, admin is the group that has sudo privs. And where in the world did you come up with wheel, it's not used in ubuntu
+2008-06-13T11:47:00.000Z	vy	nickrud	I installed ubuntu-desktop after system installation. Actually, this is a server machine and I never thought to have an X. But I needed to run Windows XP using qemu/kvm.
+2008-06-13T11:48:00.000Z	vy	nickrud	wheel group is for my su users.
+2008-06-13T11:48:00.000Z	nickrud	vy	ah. Don't know if the server install does admin group. Worst case, boot into recovery mode and do  adduser <youruser> admin, then type exit. Should be fine then
+2008-06-13T11:48:00.000Z	vy	nickrud	Heh! I think I can manage to add myself to admin group. ;-)
+2008-06-13T11:49:00.000Z	nickrud	vy	also,  adm dialout cdrom floppy audio dip video plugdev fuse lpadmin admin are the groups you need to be in for full functionality
+2008-06-13T11:50:00.000Z	vy	nickrud	I won't need that functionality. I just need a working VNC session to see how Windows XP does.
+2008-06-13T11:50:00.000Z	nickrud	vy	then you should be fine. At least you know ;)
+2008-06-13T11:51:00.000Z	vy	nickrud	Thanks so much for your help. I need to get used to that gksu stuff.
+2008-06-13T11:51:00.000Z	nickrud	vy	personally, I used sudo long before ubuntu, after an encounter with romeo echo in the wrong terminal
+2008-06-13T11:53:00.000Z	vy	nickrud	I used to use "su -"ed screen session for my administration stuff. I restrict su capability to wheel group, and restrict access of those users via ssh and that's all.
+2008-06-13T11:57:00.000Z	vy	nickrud	Despite I added vy to admin group, gksu ls still complains.
+2008-06-13T11:58:00.000Z	nickrud	vy	hm. A silly question: did you log out and back in?

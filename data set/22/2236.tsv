@@ -1,0 +1,22 @@
+2009-08-13T19:32:00.000Z	crocd_work		hi guys i need some advice on mounting a drive on a lappy i am reparing/ I cannot mount the /dev/sda1 drive. its not seeing it
+2009-08-13T19:33:00.000Z	mzz	crocd_work	is /dev/sda itself there? Anything interesting in dmesg?
+2009-08-13T19:34:00.000Z	crocd_work	mzz	it is there when I use fdisk -lu it shows as being ther but mounting it using ntfs-3g throws up error not valid ntfs
+2009-08-13T19:35:00.000Z	mzz	crocd_work	ah. So are you sure the partition itself is still healthy? Iirc there's a limited fsck in ntfsutils
+2009-08-13T19:35:00.000Z	mzz	crocd_work	sorry, ntfsprogs
+2009-08-13T19:40:00.000Z	crocd_work	mzz	i dont think it is the ntfs partition it his having problems with I dont think ubuntu is actually seeing the drive/ I can get the cd rom to work fine but the internal hard drive is not showing up. dmesg shows the drive is ther
+2009-08-13T19:41:00.000Z	mzz	crocd_work	I don't follow. If you see the correct partition layout in dmesg the drive is there. Anythinc scary in dmesg?
+2009-08-13T19:41:00.000Z	mzz	crocd_work	have you run smartctl -a over the drive yet?
+2009-08-13T19:41:00.000Z	mzz	crocd_work	err, the correct partition layout in *fdisk*, of course
+2009-08-13T19:42:00.000Z	crocd_work	mzz	will correcting the partition in fdisk not corrupt it
+2009-08-13T19:42:00.000Z	mzz	crocd_work	what? Don't write anything in fdisk! I didn't mean for you to do that!
+2009-08-13T19:43:00.000Z	mzz	crocd_work	I just meant that if "fdisk -l /dev/sda" lists the right partition layout that means your drive is there, and if the partition still won't mount I'd blame the filesystem first (so fsck it and all that)
+2009-08-13T19:46:00.000Z	crocd_work	mzz	fsdk -l /dev/sda1 error out with does not contain valid partition table
+2009-08-13T19:46:00.000Z	mzz	crocd_work	yes. Try it on sda, not sda1.
+2009-08-13T19:47:00.000Z	crocd_work	mzz	it shows the partitions, there are 2 on i is flagged as bootable and it sees it as ntfs/hpfs
+2009-08-13T19:48:00.000Z	mzz	crocd_work	does that match the layout you expect?
+2009-08-13T19:49:00.000Z	crocd_work	mzz	yes
+2009-08-13T19:49:00.000Z	mzz	crocd_work	then I still suspect the filesystem, not the drive (assuming you're mounting the right partition out of the two)
+2009-08-13T19:50:00.000Z	crocd_work	mzz	the first on is the larger partition the second one is the restore partition for lenovo
+2009-08-13T20:12:00.000Z	crocd_work	mzz	i think i know why i cannot get access to the drive, it has truecrypt on it and it is preventing me from accessing the drive
+2009-08-13T20:12:00.000Z	mzz	crocd_work	that makes perfect sense
+2009-08-13T20:13:00.000Z	crocd_work	mzz	thankos for your help

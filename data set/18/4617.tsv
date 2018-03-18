@@ -1,0 +1,18 @@
+2010-10-15T02:31:00.000Z	AHemlocksLie		I'm trying to install ndiswrapper, and I'm trying to compile from source. The install file says when I run ls /lib/modules/`uname -r`/build, I need to see .config and include, but I don't have .config. How can I get it?
+2010-10-15T02:31:00.000Z	acicula	AHemlocksLie	installing the ndiswrapper module from source?
+2010-10-15T02:32:00.000Z	AHemlocksLie	acicula	yeah, installing ndisgtk from repositories isn't working right, can't find ndiswrapper module, so I'm trying to install from source to hopefully fix it
+2010-10-15T02:33:00.000Z	acicula	AHemlocksLie	ndiswrapper is part of your kernel as a module
+2010-10-15T02:33:00.000Z	acicula	AHemlocksLie	modprobe ndiswrapper should load it for you?
+2010-10-15T02:33:00.000Z	AHemlocksLie	acicula	it's not working. It says FATAL: Module ndiswrapper not found
+2010-10-15T02:34:00.000Z	acicula	AHemlocksLie	what ubuntu version are you using?
+2010-10-15T02:34:00.000Z	AHemlocksLie	acicula	10.10
+2010-10-15T02:35:00.000Z	acicula	AHemlocksLie	odd, its part of the standard kernel image
+2010-10-15T02:35:00.000Z	AHemlocksLie	acicula	originally, it couldn't find ndiswrapper.ko, then I fixed that with depmod -a, then it started the module not found stuff
+2010-10-15T02:36:00.000Z	AHemlocksLie	acicula	yeah, I have it now that I tried to install it from source after tracking down a kernel patch, but it's still not working, so I'm trying to get .config
+2010-10-15T02:37:00.000Z	AHemlocksLie	acicula	...but locate ndiswrapper.ko still doesn't return anything, which is odd, I've seen it in a folder before, so I know it exists
+2010-10-15T02:37:00.000Z	acicula	AHemlocksLie	the kernel config you mean?
+2010-10-15T02:37:00.000Z	acicula	AHemlocksLie	err, dpkg-query -S ndiswrapper.ko gives ?
+2010-10-15T02:37:00.000Z	AHemlocksLie	acicula	I guess, the install file says running ls /lib/modules/`uname -r`/build needs to have at least .config and uh... something else it has now
+2010-10-15T02:38:00.000Z	AHemlocksLie	acicula	er, had already
+2010-10-15T02:39:00.000Z	AHemlocksLie	acicula	the dpkg command shows it in /kernel/ubuntu/ndiswrapper/ndiswrapper.ko, but that's only because I saw something somewhere while it was still giving errors about it that it needed it there. Actually, I need to reboot now that I've copied it into the kernel folder, don't I?
+2010-10-15T02:39:00.000Z	AHemlocksLie	acicula	originally, it was in /lib/modules/misc, but I put a copy of it where I thought it needed to go

@@ -1,0 +1,19 @@
+2008-10-24T21:35:00.000Z	mabus		how can I boot /dev/sda1 from grub command line
+2008-10-24T21:36:00.000Z	mabus		zeco: no, the kernl would be on sda1
+2008-10-24T21:36:00.000Z	mabus		where hd0,0 does not point to that
+2008-10-24T21:37:00.000Z	mabus		well I don
+2008-10-24T21:37:00.000Z	mabus		t see anything other than hd0 when I hit h-tab
+2008-10-24T21:38:00.000Z	mabus		the drive grub booted off is hd0
+2008-10-24T21:40:00.000Z	mabus		I have a usb cdrom and a usb hdd that are both plugged in and work when booted, but not in grub
+2008-10-24T21:40:00.000Z	mabus		I have a broken install and no bootable media
+2008-10-24T21:42:00.000Z	erki	mabus	Is there anything in BIOS that prevents the USB stuff during bootup?
+2008-10-24T21:43:00.000Z	mabus	erki	I dont believe so, I dont think it has direct support to boot off of it, like in the bios
+2008-10-24T21:43:00.000Z	mabus		but shouldnt grub be able toboot it if it's loaded off of the bootable ide?
+2008-10-24T21:43:00.000Z	erki	mabus	The boot sector might be fine even though the root partition is not.
+2008-10-24T21:45:00.000Z	mabus	erki	the root partition of my hd with an install is messed, but it can at least boot
+2008-10-24T21:45:00.000Z	mabus		to grub
+2008-10-24T21:45:00.000Z	mabus		what I'm trying to do is boot off of my usb hdd
+2008-10-24T21:46:00.000Z	erki	mabus	Yes, and USB is loaded by the kernel, which runs after GRUB. I'm fairly sure GRUB itself has no way to do USB stuff unless BIOS supports it.
+2008-10-24T21:47:00.000Z	mabus	erki	doh, I think its because it's not on the motherboard usb
+2008-10-24T21:47:00.000Z	mabus		its in a pci card
+2008-10-24T21:48:00.000Z	erki	mabus	That might make a difference, but I still suspect you might need to change some BIOS settings. No harm in trying though.

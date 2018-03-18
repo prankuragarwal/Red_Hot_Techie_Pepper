@@ -1,0 +1,23 @@
+2007-12-28T03:52:00.000Z	rubax		my laptop takes 2-3 minutes to boot
+2007-12-28T03:52:00.000Z	rubax		I reinstalled and keeps doing it
+2007-12-28T03:52:00.000Z	rubax		does anybody know how to speed the boot time?
+2007-12-28T03:53:00.000Z	rubax		works ok, but it is kinda annoying
+2007-12-28T03:53:00.000Z	jauru	rubax	do you have much memory in the machine?
+2007-12-28T03:53:00.000Z	rubax	jauru	not much, 512mb 60gb hd
+2007-12-28T03:54:00.000Z	jauru	rubax	should run okay with that... hmmm don't know sorry...
+2007-12-28T03:55:00.000Z	jauru	rubax	what does your /etc/nsswitch.conf file say?
+2007-12-28T03:55:00.000Z	rubax		lemme check :)
+2007-12-28T03:56:00.000Z	jauru	rubax	specifically, look for this line:
+2007-12-28T03:56:00.000Z	jauru		hosts:          files dns mdns4
+2007-12-28T03:58:00.000Z	rubax	jauru	hosts:    filesfiles mdns4_minimal [NOTFOUND=return] dns mdns4
+2007-12-28T03:58:00.000Z	jauru	rubax	do you use .local addresses on your local network?
+2007-12-28T03:59:00.000Z	rubax	jauru	I have no idea
+2007-12-28T03:59:00.000Z	rubax	jauru	How can I check that?
+2007-12-28T04:00:00.000Z	jauru	rubax	I suggest putting a has in front of the existing hosts: line and adding this:
+2007-12-28T04:00:00.000Z	jauru		hosts:          files dns mdns4
+2007-12-28T04:01:00.000Z	jauru	rubax	that's a '#' hash... sorry.
+2007-12-28T04:01:00.000Z	rubax		lets check it
+2007-12-28T04:03:00.000Z	jauru	rubax	just put the hash in front of the existing line, and add the new one - hosts:          files dns mdns4
+2007-12-28T04:03:00.000Z	jauru		if you don't have any luck with that, then you can just undo that change.
+2007-12-28T04:04:00.000Z	rubax	jauru	Thanks man, didnt worked though, its still booting up.
+2007-12-28T04:07:00.000Z	jauru	rubax	sorry to hear that. I've had issues with slow booting caused by name lookups timing out (using .local addresses). The replacement line should make it check with DNS which seems to solve that issue...

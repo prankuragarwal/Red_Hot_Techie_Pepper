@@ -1,0 +1,18 @@
+2010-10-17T04:41:00.000Z	CardinalFang	Xpistos	"it won't look inside the folders because of the charcters"?  What?
+2010-10-17T04:42:00.000Z	Xpistos	CardinalFang	I litteraly have thousands of files to rename so a windows partition can read them. they have ":" and "/" in the file names that windows can't read. So I need to go through one dir and all is subs and rename the files.
+2010-10-17T04:42:00.000Z	Xpistos	CardinalFang	I have a command that will rename the files in the current dir and all subs
+2010-10-17T04:43:00.000Z	Xpistos	CardinalFang	But it will not do it in a dir that has "(" in its name. They all do because they are dates ie "(2009)"
+2010-10-17T04:45:00.000Z	CardinalFang	Xpistos	so, from any of those directories, does   rename s/\:/--/ *:*   do what you want?
+2010-10-17T04:45:00.000Z	Xpistos	CardinalFang	Yes
+2010-10-17T04:46:00.000Z	Xpistos	CardinalFang	When i try to use the loop it says unexpected "(" or something to that affect
+2010-10-17T04:46:00.000Z	CardinalFang	Xpistos	so, it appears as though your "sh -c  SomethingWithAParen" is the problem?
+2010-10-17T04:46:00.000Z	Xpistos	CardinalFang	YES
+2010-10-17T04:46:00.000Z	Xpistos	CardinalFang	Sorry
+2010-10-17T04:46:00.000Z	Xpistos	CardinalFang	Yes
+2010-10-17T04:46:00.000Z	CardinalFang	Xpistos	then, don't use "sh" there.
+2010-10-17T04:48:00.000Z	CardinalFang	Xpistos	what does  "rename s/\:/--/  /path/to/a/file/with:colon"  do?  Something wrong?
+2010-10-17T04:49:00.000Z	Xpistos	CardinalFang	just get rid of "sh -c" in the command then -- find . -xdev -type d -exec sh -c 'cd {} ; pwd ; rename s/\:/--/ *:* ' \;
+2010-10-17T04:49:00.000Z	CardinalFang	Xpistos	I suspect you should    find -type f -exec rename s/\:/--/ {} \;   or something like that.
+2010-10-17T04:51:00.000Z	CardinalFang	Xpistos	better, only run that for files with colon in the name:   find -type f -name \*:\* -exec rename s/\:/--/ {} \;   or something like that.
+2010-10-17T04:53:00.000Z	CardinalFang	Xpistos	I'm going AFK in 30 seconds.
+2010-10-17T04:53:00.000Z	Xpistos	CardinalFang	thanks for the help

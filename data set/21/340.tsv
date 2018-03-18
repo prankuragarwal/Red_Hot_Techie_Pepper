@@ -1,0 +1,21 @@
+2012-02-23T03:08:00.000Z	trism	timg	https://launchpad.net/ubuntu/+source/php5/5.3.8.0-1ubuntu3
+2012-02-23T03:08:00.000Z	timg	trism	thanks, checking it out.
+2012-02-23T03:09:00.000Z	timg	trism	that just might be what I am looking for. Testing now.
+2012-02-23T03:12:00.000Z	timg	trism	eh, its still missing some bits. If for example I do `apt-get source php5` it pulls down the sources, but there is a debian directory inside the source dir which contains the change log, patches etc..
+2012-02-23T03:12:00.000Z	timg	trism	without that directory I get this tail: cannot open `debian/changelog' for reading: No such file or directory
+2012-02-23T03:12:00.000Z	trism	timg	you download the *.gz *.dsc from that page and: dpkg-source -x *.dsc;
+2012-02-23T03:13:00.000Z	timg	trism	correct
+2012-02-23T03:13:00.000Z	timg	trism	mind if I link you a screenshot?
+2012-02-23T03:13:00.000Z	trism	timg	I will check it out, one second
+2012-02-23T03:18:00.000Z	trism	timg	extracts alright here, are you sure you grabbed the 1ubuntu3.diff.gz as well?
+2012-02-23T03:18:00.000Z	timg	trism	yep
+2012-02-23T03:19:00.000Z	timg	trism	maybe this will help http://pastebin.com/Ym3XYRUy
+2012-02-23T03:22:00.000Z	trism	timg	ls -l debian/;
+2012-02-23T03:22:00.000Z	timg	trism	ack; 1 sec
+2012-02-23T03:23:00.000Z	timg	trism	was going to pastebin it, but that directory does not exist
+2012-02-23T03:23:00.000Z	timg	trism	per `file debian` debian: ERROR: cannot open `debian' (No such file or directory)
+2012-02-23T03:24:00.000Z	trism	timg	alright, delete the php-5.3.8 directory, and then run: dpkg-source -x php5_5.3.8.0-1ubuntu3.dsc;
+2012-02-23T03:24:00.000Z	timg	trism	ack
+2012-02-23T03:24:00.000Z	trism	timg	then you should be able to build it, although it may need patches since it is from precise
+2012-02-23T03:25:00.000Z	timg	trism	that was it
+2012-02-23T03:25:00.000Z	trism	timg	you're welcome

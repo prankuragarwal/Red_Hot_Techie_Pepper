@@ -1,0 +1,18 @@
+2011-02-24T01:13:00.000Z	palhmbs	maco	is downgrading broken on sun-java6-jdk?
+2011-02-24T01:13:00.000Z	maco	palhmbs	uh, downgrading is in general not supported...
+2011-02-24T01:14:00.000Z	maco	palhmbs	but i mean, if its just one package, purging the current one then using dpkg -i --force-downgrade foo.deb     should work
+2011-02-24T01:14:00.000Z	palhmbs	maco	so I can't apt-get install sun-java6-jdk=6.22-0ubuntu1~10.10 ??
+2011-02-24T01:14:00.000Z	maco	palhmbs	i think you need to remove the currently installed one first
+2011-02-24T01:15:00.000Z	palhmbs		right great - so purge first then use force-downgrade, thanks!
+2011-02-24T01:20:00.000Z	palhmbs	maco	so dpkg -r might work best in this case... hopefully
+2011-02-24T01:23:00.000Z	palhmbs	maco	is there not a apt-get / aptitude way to force downgrade?
+2011-02-24T01:23:00.000Z	maco	palhmbs	no
+2011-02-24T01:24:00.000Z	palhmbs		so --- just to clarify, I dpkg -r sun-java-jdk -- then dpkg -i --force-downgrade sun-java-jdk ??
+2011-02-24T01:25:00.000Z	palhmbs	maco	so --- just to clarify, I dpkg -r sun-java-jdk -- then dpkg -i --force-downgrade sun-java-jdk ??
+2011-02-24T01:25:00.000Z	maco	palhmbs	id add --purge to the dpkg -r
+2011-02-24T01:26:00.000Z	palhmbs	maco	do I need the actual package deb name?
+2011-02-24T01:26:00.000Z	palhmbs	maco	let me rephrase that, do I need the actual .deb file... ?
+2011-02-24T01:26:00.000Z	maco	palhmbs	for dpkg -r, no. for dpkg -i, yes
+2011-02-24T01:30:00.000Z	palhmbs	maco	right - so I can use apt-get to download just the package - but not install it with apt, then run dpkg -i --force-downgrade sun-java-jdk_blah_.deb?
+2011-02-24T01:30:00.000Z	maco	palhmbs	yeah
+2011-02-24T01:30:00.000Z	palhmbs	maco	 sorry for picking on you - thanks, you've been a great help!

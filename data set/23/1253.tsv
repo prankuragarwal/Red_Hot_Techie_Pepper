@@ -1,0 +1,23 @@
+2010-08-25T00:26:00.000Z	utkanos		can someone please help with an update-initramfs bug in which it runs but never does anything?
+2010-08-25T00:27:00.000Z	minimec	utkanos	sudo dpkg-reconfigure grub
+2010-08-25T00:28:00.000Z	minimec	utkanos	then sudo update-grub
+2010-08-25T00:28:00.000Z	utkanos	minimec	update-initramfs runs but never finishes, never throws an error
+2010-08-25T00:29:00.000Z	minimec	utkanos	try these two commands. I cannot damage anything. It just reconfigures and updates. Let's see the result...
+2010-08-25T00:29:00.000Z	utkanos	minimec	thats the first thing I tried
+2010-08-25T00:30:00.000Z	minimec	utkanos	Do you have some special /boot partition. Is it full? How many kernel versions are installed?
+2010-08-25T00:31:00.000Z	minimec	utkanos	So you want your new kernel to be recognized...
+2010-08-25T00:31:00.000Z	utkanos	minimec	when i install it via apt, it calls dpkg to do the post install config
+2010-08-25T00:32:00.000Z	utkanos	minimec	this is what happens, it gets stuck in a loop with dpkg running but not doing anything
+2010-08-25T00:32:00.000Z	minimec	utkanos	I am not really the kernel compile guru, but check your compilation and install process...
+2010-08-25T00:32:00.000Z	minimec	utkanos	It looks like the kernel package is not built correctly.
+2010-08-25T00:35:00.000Z	minimec	utkanos	we have to be clear about 'generate kernel'. What exact kernel package you want to install?
+2010-08-25T00:35:00.000Z	utkanos	minimec	ok
+2010-08-25T00:36:00.000Z	minimec	utkanos	What kernel is installed?
+2010-08-25T00:37:00.000Z	minimec	utkanos	uanme -a in a console
+2010-08-25T00:38:00.000Z	utkanos	minimec	Linux hostname 2.6.32-22-generic #41-Ubuntu SMP
+2010-08-25T00:39:00.000Z	utkanos	minimec	the only way to fix apt is to purge the package from dpkg
+2010-08-25T00:40:00.000Z	minimec	utkanos	Hmmm... Does this look familliar? https://bugs.launchpad.net/ubuntu/+source/linux/+bug/617454
+2010-08-25T00:40:00.000Z	utkanos	minimec	no, i dont get an exit status
+2010-08-25T00:41:00.000Z	minimec	utkanos	Maybe lucitu has a good idea, because I don't ;)
+2010-08-25T00:41:00.000Z	utkanos	minimec	thanks for trying
+2010-08-25T00:42:00.000Z	minimec	utkanos	my plesure

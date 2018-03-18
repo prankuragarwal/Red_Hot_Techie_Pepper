@@ -1,0 +1,22 @@
+2006-06-25T09:10:00.000Z	ocr		how do I install apt (base system?) through commandline?
+2006-06-25T09:10:00.000Z	LjL	ocr	uh? the APT system is installed with ubuntu
+2006-06-25T09:11:00.000Z	ocr	LjL	obviously it isn't in my case, hence I wish to reinstall it
+2006-06-25T09:12:00.000Z	LjL	ocr	well, what happened exactly? if APT isn't there, it means something is very wrong
+2006-06-25T09:12:00.000Z	ocr	LjL	I don't know if the previous admin deleted it or never installed it, dpkg-* and debconf-* seem to be installed, its Ubuntu 5.04, and the only thig running is a stupid webmin insterface and some cPanel scripts in /scripts
+2006-06-25T09:13:00.000Z	LjL	ocr	well if you have dpkg, you can install apt-get
+2006-06-25T09:13:00.000Z	ocr	LjL	ok, thats good news, how? :)
+2006-06-25T09:13:00.000Z	LjL	ocr	hold on one second
+2006-06-25T09:14:00.000Z	LjL	ocr	hmm well, i'd need to know what *version* of APT you need, since you're using 5.04
+2006-06-25T09:14:00.000Z	LjL	ocr	hold on a couple more seconds
+2006-06-25T09:15:00.000Z	LjL	ocr	ok download this http://it.archive.ubuntu.com/ubuntu/pool/main/a/apt/apt_0.6.35ubuntu2_i386.deb
+2006-06-25T09:16:00.000Z	LjL	ocr	then run "sudo dpkg -i apt_0.6.35ubuntu2_i386.deb"
+2006-06-25T09:17:00.000Z	ocr	LjL	accually bad news ;) find /usr -name dpkg* only reports dpkg-reconfigure and dpkg-preconfigure
+2006-06-25T09:17:00.000Z	LjL	ocr	then you really do have a problem i'm afraid...
+2006-06-25T09:19:00.000Z	LjL	ocr	here's the dpkg packages --> http://it.archive.ubuntu.com/ubuntu/pool/main/d/dpkg/
+2006-06-25T09:19:00.000Z	LjL	ocr	you could probably try installing them manually. i wouldn't do that with a gun pointed to my head, though
+2006-06-25T09:20:00.000Z	LjL	ocr	for hoary, you'd need version 1.10.27ubuntu1
+2006-06-25T09:21:00.000Z	LjL	ocr	do you know how to extract a .deb manually?
+2006-06-25T09:51:00.000Z	ocr	LjL	thanks for the help, but I cant even unpack .debs, and there's no CC installed so I can't compile them manually
+2006-06-25T09:52:00.000Z	LjL	ocr	if you have no ar and no gunzip, then you're really a bit stuck... a reinstall would be best imho
+2006-06-25T09:54:00.000Z	ocr	LjL	i have gunzip and tar, but tar xzfv file.deb didnt work (even when i renamed to .tar.gz)
+2006-06-25T09:55:00.000Z	LjL	ocr	no, no, you must use *ar* first.   "ar x filename.deb"

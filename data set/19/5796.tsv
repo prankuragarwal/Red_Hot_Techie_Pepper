@@ -1,0 +1,19 @@
+2008-06-18T12:36:00.000Z	strawks		Hi all, does ubuntu have a special way of managing memory? http://rafb.net/p/XxSINL44.html <-- 2Gb total, 77MB free, 5MB buffers, 83MB cache, 330MB total RSS and 640MB swap !
+2008-06-18T12:37:00.000Z	ikonia	strawks	what's the issue with that ?
+2008-06-18T12:38:00.000Z	strawks	ikonia	330MB resident used by progs, but only 165MB free (counting buffers and cache), who is using the other 1.5GB ?
+2008-06-18T12:39:00.000Z	ikonia	strawks	I think the word "used" is miss-leading in the current kernel (not just ubuntu) think of it free as "controlled by the kernel" and free as "not allocated by the kernel"
+2008-06-18T12:40:00.000Z	ikonia	strawks	sorry, think of "used" as "controlled by the kernel" and "free" as "not allocated by the kernel"
+2008-06-18T12:40:00.000Z	ikonia	strawks	does that make more sense ?
+2008-06-18T12:41:00.000Z	strawks	ikonia	I still don't understand why this system is swapping so much nor who is using that much ram
+2008-06-18T12:41:00.000Z	strawks	ikonia	I can't even malloc 200Mb without swapping
+2008-06-18T12:41:00.000Z	ikonia	strawks	the system will swap out "unused" processes to disk
+2008-06-18T12:42:00.000Z	ikonia	strawks	ooh, really, you can't malloc 200mb, thats not right
+2008-06-18T12:42:00.000Z	ikonia	strawks	I'm paying more attention to what you've got running now
+2008-06-18T12:43:00.000Z	strawks	ikonia	I'll try closing all apps and see what happen, but I doubt I'll see more than 400MB free or cached
+2008-06-18T12:44:00.000Z	ikonia	strawks	just adding up what you've got running (not residial foot print, but in use memory)
+2008-06-18T12:48:00.000Z	strawks	ikonia	much better : Mem:       2062792     257420    1805372          0       5500      73124
+2008-06-18T12:48:00.000Z	ikonia	strawks	ooh, I didn't think you'd get that much back
+2008-06-18T12:48:00.000Z	ikonia	strawks	looks like something was hogging
+2008-06-18T12:48:00.000Z	strawks	ikonia	I don't know which process was doing that, maybe gvfsd
+2008-06-18T12:49:00.000Z	strawks	ikonia	or another, I killed some of my user process
+2008-06-18T12:50:00.000Z	strawks	ikonia	actually I think cache+buffers+free+total rss should be >= total memory-kernel memory

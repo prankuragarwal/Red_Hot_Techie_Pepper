@@ -1,0 +1,18 @@
+2010-10-28T00:57:00.000Z	BlaDe^		can anyone help me with the symbolic link for php ?
+2010-10-28T00:57:00.000Z	BlaDe^		I created the link to /usr/local/bin/php but the php command still doesn't work --- what else should I do?
+2010-10-28T00:57:00.000Z	LjL	BlaDe^	uuh, you compiled your own PHP?
+2010-10-28T00:57:00.000Z	BlaDe^		yeah LjL
+2010-10-28T00:58:00.000Z	LjL	BlaDe^	... why?
+2010-10-28T00:58:00.000Z	BlaDe^		I needed to make some changes to the core
+2010-10-28T00:59:00.000Z	LjL	BlaDe^	uhm, you could always "apt-get source php", make the changes and then dpkg-build. anyway... so you created a symlink from what to /usr/local/bin/php?
+2010-10-28T00:59:00.000Z	BlaDe^	LjL	 from /usr/local/php/bin/php-5.3.3
+2010-10-28T01:00:00.000Z	LjL	BlaDe^	what happens exactly when you run "php"?
+2010-10-28T01:00:00.000Z	BlaDe^		it says to get it from apt
+2010-10-28T01:00:00.000Z	LjL	BlaDe^	is /usr/local/bin in the PATH? type "echo $PATH"
+2010-10-28T01:00:00.000Z	LjL		!usage > Sean93    (Sean93, see the private message from ubottu)
+2010-10-28T01:00:00.000Z	BlaDe^	LjL	 blade@spooshi:/usr/local/php/bin$ ./php-5.3.3 -v
+2010-10-28T01:00:00.000Z	BlaDe^		that works
+2010-10-28T01:01:00.000Z	LjL	BlaDe^	ok, that doesn't mean it's in the path though
+2010-10-28T01:01:00.000Z	BlaDe^	LjL	-bash: echo /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games: No such file or directory
+2010-10-28T01:01:00.000Z	BlaDe^	LjL	 lrwxrwxrwx  1 root root   29 2010-10-27 14:32 php -> /usr/local/php5/bin/php-5.3.3
+2010-10-28T01:02:00.000Z	LjL	BlaDe^	that's weird. but wait, the "ls" output you just gave says /usr/local/php5/bin/php-5.3.3, but earlier you were doing /usr/local/php/bin/php-5.3.3 (without the "5") - maybe it's that? is /usr/local/php5 actually there?

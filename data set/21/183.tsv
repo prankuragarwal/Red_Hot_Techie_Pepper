@@ -1,0 +1,21 @@
+2012-06-22T22:39:00.000Z	samster34		I'm trying to hook my computer running ubuntu up with the one running win7 which has the internet connection...IPs are 192.168.3.1 for the win7 one, 192.168.3.2 for the ubuntu one, gateways set to the respective other one, win7 one is set as the dns server...but both computer list the other's IP as unreachable
+2012-06-22T22:40:00.000Z	dnovosel	samster34	Physicall they are connected directly together, or through a switch?
+2012-06-22T22:41:00.000Z	samster34	dnovosel	directly
+2012-06-22T22:41:00.000Z	dnovosel	samster34	The gateway thing is technically wrong, but since they are on the same subnet, it won't matter.  Neither system will try and use the gateway to communicate with each other.
+2012-06-22T22:42:00.000Z	dnovosel	samster34	What did you use for subnet masks
+2012-06-22T22:43:00.000Z	dnovosel	samster34	You shouldn't need a gateway at all if they are only going to talk to only each other.
+2012-06-22T22:44:00.000Z	dnovosel	samster34	What are you trying to accomplish?  Just having the two machines talk to one another?
+2012-06-22T22:46:00.000Z	dnovosel	samster34	Okay, so in this case the windows 7 machine will use it's own default gateway on the internet connection.  The ubuntu machine should use the windows 7 machine for its gateway and possibly dns as well.
+2012-06-22T22:49:00.000Z	dnovosel	samster34	On windows 7 you don't need to add a default gateway on that connection.  You only need to set the IP and subnet mask.
+2012-06-22T22:57:00.000Z	dnovosel	samster34	Sorry, I'm running two conversations now. Maybe check the routing table on both sides, and it's possible windows 7 is blocking pings.
+2012-06-22T22:58:00.000Z	samster34	dnovosel	windows can't ping the ubuntu host either, and connecting to other windows hosts works
+2012-06-22T23:03:00.000Z	dnovosel	samster34	Under windows 7 can you pull up CMD and do "route print"  You should see the network to ubuntu, and the interface used.  Can you confirm that lines up?
+2012-06-22T23:03:00.000Z	samster34	dnovosel	resolved the issue...I have been configuring the wrong LAN connection in windows. I don't know why I have 3 all of a sudden...
+2012-06-22T23:04:00.000Z	dnovosel	samster34	Okay, that's good.
+2012-06-22T23:11:00.000Z	dnovosel	samster34	So it was working, and now has stopped working?
+2012-06-22T23:16:00.000Z	samster34	dnovosel	apparently, if I DISable the windows firewall, the connection stops working
+2012-06-22T23:16:00.000Z	dnovosel	samster34	If you disable the firewall it stops working?
+2012-06-22T23:16:00.000Z	dnovosel	samster34	That's wild.
+2012-06-22T23:17:00.000Z	samster34	dnovosel	yeah..
+2012-06-22T23:18:00.000Z	dnovosel	samster34	To be clear, if the windows firewall is operationally, everything is working?
+2012-06-22T23:18:00.000Z	samster34	dnovosel	yes

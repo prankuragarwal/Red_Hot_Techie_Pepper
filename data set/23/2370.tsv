@@ -1,0 +1,23 @@
+2011-02-18T04:12:00.000Z	Dj-Toast		anyone have a way to make the sata detection static for use in linux raid?
+2011-02-18T04:12:00.000Z	Kyle__	Dj-Toast	You can list your drives by UUID instead of sd
+2011-02-18T04:14:00.000Z	Kyle__	Dj-Toast	I think /dev/disk/by-id/<UUID>
+2011-02-18T04:14:00.000Z	Kyle__	Dj-Toast	ls /dev/disk/by-id/
+2011-02-18T04:15:00.000Z	Dj-Toast	Kyle__	Ok i guess ill drop my array and recreate using those instead.  Just sucks i was planning to use WEBMIN to manage the raid :(
+2011-02-18T04:15:00.000Z	Kyle__	Dj-Toast	Ah.  Sorry.
+2011-02-18T04:31:00.000Z	Kyle__	Dj-Toast	Errr...that's odd.
+2011-02-18T04:32:00.000Z	Kyle__	Dj-Toast	They all show up as different UUIDs in my array...
+2011-02-18T04:33:00.000Z	Kyle__	Dj-Toast	maybe I meant /dev/disk/by-uuid
+2011-02-18T04:38:00.000Z	Kyle__	Dj-Toast	Odly not, it's only showing me ones that are currently in use.
+2011-02-18T04:39:00.000Z	Kyle__	Dj-Toast	I know I've done this, let me think....
+2011-02-18T04:41:00.000Z	Kyle__	Dj-Toast	If you move the old conf out of the way, you can autoscan to the conf file.  I know that works.
+2011-02-18T04:42:00.000Z	Kyle__	Dj-Toast	yup.
+2011-02-18T04:43:00.000Z	Kyle__	Dj-Toast	I think its just mdadm --examine --scan >& mdadm.conf but I don't do that daily :) so check it first of course.
+2011-02-18T04:46:00.000Z	Kyle__	Dj-Toast	Ugh.  Does it change _every_ time?
+2011-02-18T04:47:00.000Z	Kyle__	Dj-Toast	Damn.  That's just... weird.  I _know_ you can do this by UUID.  Maybe you can find a howto :/  Sorry.
+2011-02-18T04:48:00.000Z	Kyle__	Dj-Toast	it's ugly, but maybe /dev/disks/by-path/ will work?  I mean, it shouldnt change which SATA/scsi id it shows up as... I think.
+2011-02-18T04:49:00.000Z	Kyle__	Dj-Toast	Oh, quick thing to remember, if you at all can, use the whole device, not a partition for your md device.
+2011-02-18T04:50:00.000Z	Kyle__	Dj-Toast	That way you dont' have to worry about alignment issues.  I had a day to play with an external 4-bay sata array before I had to put data on it a week or two ago.
+2011-02-18T04:50:00.000Z	Kyle__	Dj-Toast	Putting the MD device on partitions was a huge performance hit.
+2011-02-18T04:52:00.000Z	Dj-Toast	Kyle__	oh.. so instead of doing a LINUXRAID partition spaning the full size you just target the /dev/sda rather than /dev/sda1?
+2011-02-18T04:52:00.000Z	Kyle__	Dj-Toast	Yes.
+2011-02-18T04:52:00.000Z	Kyle__	Dj-Toast	I mean, if you manually align the partition, then it's moot, but if you didn't, or don't want to bother, use /dev/sda rather than /dev/sda1

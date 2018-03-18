@@ -1,0 +1,18 @@
+2006-05-06T05:21:00.000Z	hartz		Hello Pleople.  I've just tried to compile and install a new kernel (2.6.16.11).  When I try to load it I get an error like this: http://i72.photobucket.com/albums/i199/jhartzen/kernel_err.jpg
+2006-05-06T05:21:00.000Z	hartz		Any help!?
+2006-05-06T05:22:00.000Z	hartz		Anybody!?
+2006-05-06T05:22:00.000Z	soundray	hartz	this is a wild guess: if you have SATA, change your hd device entries from hda to sda or vice versa.
+2006-05-06T05:22:00.000Z	soundray	hartz	in grub
+2006-05-06T05:23:00.000Z	hartz	soundray	.... I jsut copied the entry for the currently working kernel, and change the file name to point to the new image
+2006-05-06T05:24:00.000Z	soundray	hartz	do you use a root= parameter?
+2006-05-06T05:24:00.000Z	hartz	soundray	yes indeed, it looks liek this: kernel          /boot/vmlinuz-2.6.16.11 root=/dev/sda1 ro quiet splash
+2006-05-06T05:25:00.000Z	soundray	hartz	SATA or scsi?
+2006-05-06T05:25:00.000Z	hartz	soundray	> SATA
+2006-05-06T05:26:00.000Z	soundray	hartz	change it to root=/dev/hda1 and try again.
+2006-05-06T05:27:00.000Z	hartz	soundray	> I am willing to try that but like I said:  This is a copy of the entry for my current kernel, with only the image file name different, so it doesn't make a whole lot of sense to me.
+2006-05-06T05:31:00.000Z	soundray	hartz	take my advice or leave it. It's up to you.
+2006-05-06T05:31:00.000Z	hartz	soundray	back in a sec....
+2006-05-06T05:34:00.000Z	soundray	hartz	why hdb1?
+2006-05-06T05:37:00.000Z	soundray	hartz	okay, then it could be the SATA driver module missing from your initrd.
+2006-05-06T05:38:00.000Z	hartz	soundray	How do I add it?  I just ran mkinitrd -o /boot/initrd.img.2.6.16.11-K8
+2006-05-06T05:39:00.000Z	soundray	hartz	sorry, I haven't got up-to-date knowledge on compiling kernels. Last I did it was three years ago...

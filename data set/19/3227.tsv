@@ -1,0 +1,19 @@
+2011-03-03T01:28:00.000Z	chronos		I'm trying to install libapache2-mod-wsgi on ubuntu server but ubuntu try to install python 3 while we are using python 2.6 yet.... exist a way to force python dependecy to be 2.6.x?
+2011-03-03T01:30:00.000Z	ChogyDan	chronos	what version of ubuntu?
+2011-03-03T01:30:00.000Z	chronos		maverick
+2011-03-03T01:31:00.000Z	chronos	ChogyDan	doesn't exist some conf that force to ignore python >= 2.7?
+2011-03-03T01:31:00.000Z	ChogyDan	chronos	I'm on maverick, and mine doesn't have that, it is python >= 2.6
+2011-03-03T01:32:00.000Z	chronos		ouch
+2011-03-03T01:32:00.000Z	ChogyDan	chronos	I imagine that you could use pinning to force what you want, but... I think it is worth trying to figure out why your install is the way it is
+2011-03-03T01:33:00.000Z	chronos		I have no idea...I'm using a default install of last ubuntu server 10.10
+2011-03-03T01:36:00.000Z	ChogyDan	chronos	what does apt-cache policy libapache2-mod-wsgi say?
+2011-03-03T01:37:00.000Z	chronos		hm, ChogyDan here is ubuntu version, what happen whe I try to install mod-wsgi and apt-cache policy: http://dpaste.de/OWgW/
+2011-03-03T01:38:00.000Z	chronos	ChogyDan	here is my sources.list http://dpaste.de/oi13/
+2011-03-03T01:38:00.000Z	chronos		I'm a Gentoo guy, have no idea of details in ubutu stuff
+2011-03-03T01:41:00.000Z	chronos	ChogyDan	when I do a apt-cache showpkg it says that py 2.6 is in deps
+2011-03-03T01:43:00.000Z	ChogyDan	chronos	oh!, I think it is the libpython3.1 dependency
+2011-03-03T01:43:00.000Z	chronos	ChogyDan	https://bugs.launchpad.net/ubuntu/+source/mod-wsgi/+bug/672901
+2011-03-03T01:44:00.000Z	chronos	ChogyDan	ya, I guess
+2011-03-03T01:45:00.000Z	chronos		I'll do the workaround related in bug
+2011-03-03T01:45:00.000Z	chronos		thx ChogyDan
+2011-03-03T01:45:00.000Z	ChogyDan	chronos	yw, gl

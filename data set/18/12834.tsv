@@ -1,0 +1,18 @@
+2006-03-05T14:58:00.000Z	Rob_Dude		Can someone help me...I want to be able to access my linux box from work, so I can play around with it instead of...ya know...doing work :)
+2006-03-05T14:58:00.000Z	Rob_Dude		At work, we have a firewall that only allows outgoing connections from the web proxy server
+2006-03-05T14:59:00.000Z	Rob_Dude		So I can use IE to surf the net, but I can't ssh to my computer
+2006-03-05T14:59:00.000Z	Rob_Dude		Can someone help me come up with a solution that would let me, at least, get ssh/telnet access to my box remotely
+2006-03-05T14:59:00.000Z	LjL	Rob_Dude	uh... "sudo aptitude install openssh-server"?
+2006-03-05T15:00:00.000Z	LjL	Rob_Dude	what's the problem then?
+2006-03-05T15:00:00.000Z	LjL	Rob_Dude	oh. then you're in trouble :)
+2006-03-05T15:02:00.000Z	LjL	Rob_Dude	you're getting something backwards... if you're only allowed web acess through a proxy, you *won't* be able to use SSH *at all*
+2006-03-05T15:03:00.000Z	LjL	Rob_Dude	the only way would be to have a fake web site that is actually a connection to your terminal.
+2006-03-05T15:03:00.000Z	LjL	Rob_Dude	means roughly "humanity towards others"
+2006-03-05T15:05:00.000Z	LjL	Rob_Dude	how would you pass plain text via telnet, if all you have is an HTTP proxy?
+2006-03-05T15:06:00.000Z	LjL	Rob_Dude	oh, yeah, that would work
+2006-03-05T15:06:00.000Z	LjL	Rob_Dude	but then you don't really need ssh or telnet, do you?
+2006-03-05T15:07:00.000Z	Rob_Dude	LjL	 Do you know of any like 'pre-configured' web packages or something that would do that though?
+2006-03-05T15:07:00.000Z	LjL	Rob_Dude	i see no need for that kind of intermediate passage -- just have your own computer act as a web server, no?
+2006-03-05T15:07:00.000Z	LjL	Rob_Dude	no, i don't, and i even doubt you'll find any
+2006-03-05T15:08:00.000Z	LjL	Rob_Dude	well it would actually be quite simple to do with either apache or some simpler web server - but i'm not much into that kind of thing. still, all you need is a perl/php/whatever script that calls a system command (the system command being passed as a GET or POST parameter in the URL)
+2006-03-05T15:09:00.000Z	LjL	Rob_Dude	a security wormhole, though

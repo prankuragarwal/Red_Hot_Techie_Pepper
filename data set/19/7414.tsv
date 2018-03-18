@@ -1,0 +1,19 @@
+2008-04-26T23:20:00.000Z	pixelmonkey		I'm observing horrible X.org performance in Hardy, using the nvidia-glx driver.  This is a clear regression from prior versions, and already has some bug reports.  Does anyone know what's causing this?
+2008-04-26T23:21:00.000Z	Exteris	pixelmonkey	same here, 90% cpu when playing a video
+2008-04-26T23:22:00.000Z	pixelmonkey	Exteris	what the heck is going on?
+2008-04-26T23:22:00.000Z	Exteris	pixelmonkey	no ideo, but i'm playing a video, and i just had 90% cpu for xorg, i'm going to check some logs now
+2008-04-26T23:23:00.000Z	Exteris	pixelmonkey	i do have a lot of setgrabkeysstate, perhaps that's because of my window manager
+2008-04-26T23:26:00.000Z	pixelmonkey	Exteris	I just switched to the nv driver in /etc/X11/xorg.conf, and I'm getting better performance.  I think there is some regression in the nvidia driver + X.org + possibly GNOME stuff like cairo.
+2008-04-26T23:26:00.000Z	pixelmonkey	Exteris	I don't get 3D with the nv driver, but I can live without that for now.
+2008-04-26T23:27:00.000Z	Exteris	pixelmonkey	is it much faster? how did you measure performance? because i might switch back too then
+2008-04-26T23:28:00.000Z	pixelmonkey	Exteris	well, my measurements are informal right now, just based on using things.
+2008-04-26T23:28:00.000Z	Exteris	pixelmonkey	can you think of a good benchmark then?
+2008-04-26T23:28:00.000Z	pixelmonkey	Exteris	but basically, with the nvidia driver, Evolution uses about 50% CPU during normal usage (e.g., selecting/reading e-mails) and with nv, it's back down to 0-5% where it should be.
+2008-04-26T23:29:00.000Z	pixelmonkey	Exteris	another benchmark people have been using on launchpad/bugzilla is the "Resources" tab in the gnome-system-monitor.  That tab runs at like 80% cpu for me with nvidia.
+2008-04-26T23:29:00.000Z	pixelmonkey	Exteris	in any event, there's clearly something wrong with nvidia + x.org in hardy
+2008-04-26T23:29:00.000Z	Exteris	pixelmonkey	i'm going to check that now
+2008-04-26T23:30:00.000Z	Exteris	pixelmonkey	it's 80/90% cpu now
+2008-04-26T23:32:00.000Z	pixelmonkey	Exteris	it's 80-90% on the Resources tab?
+2008-04-26T23:32:00.000Z	Exteris	pixelmonkey	yes it is, i'm now turning on nv drivers
+2008-04-26T23:33:00.000Z	pixelmonkey	Exteris	yea, the resources tab is using cairo, which is pretty demanding on X.org
+2008-04-26T23:38:00.000Z	Exteris	pixelmonkey	it is faster, but my screen position is botched and gdm is low resolution

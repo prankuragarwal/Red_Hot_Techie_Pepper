@@ -1,0 +1,22 @@
+2007-03-03T15:37:00.000Z	ALL4N		what are the common practices for synchronizing files between laptop and desktop?
+2007-03-03T15:37:00.000Z	eck	ALL4N	is this just syncrhonizing email or what?
+2007-03-03T15:38:00.000Z	ALL4N	eck	synchronising files, such as documents/pictures
+2007-03-03T15:38:00.000Z	eck	ALL4N	i would just go with rsync
+2007-03-03T15:38:00.000Z	eck	ALL4N	or maybe put them on a server and use nfs
+2007-03-03T15:38:00.000Z	ALL4N	eck	hmm.. the problem is that rsync is not two-way
+2007-03-03T15:39:00.000Z	eck	ALL4N	you run it twice then
+2007-03-03T15:39:00.000Z	ALL4N	eck	problem with server is that it requires the laptop to be on network to use those files
+2007-03-03T15:40:00.000Z	eck	ALL4N	it will be sort of a pain, but i don't really know of a great solution
+2007-03-03T15:40:00.000Z	eck	ALL4N	also, cvs/svn/whatever is an option
+2007-03-03T15:41:00.000Z	ALL4N	eck	I think there might be some issues with runnning rsync twice, if you delete files on one of the machines..  besides, I want it to be automatic, so I don't have to run script all the time. I have been thinking about making a script that checks for the presence of the laptop on the network every 5 minutes or so and then syncrhonise if it does.. but I am still in doubt about two-way sync with rsync
+2007-03-03T15:42:00.000Z	eck	ALL4N	it is possible to do two way rsync, but it is sort of complicated because there are a a few weird corner cases to work out
+2007-03-03T15:43:00.000Z	ALL4N	eck	yeah, thats my concern.. the reason I need it to be automatic is because the laptop is my wive's, and she is running windows on it, so it needs to be automatic
+2007-03-03T15:44:00.000Z	ALL4N	eck	particularly for pictures.. because I use my digital cam, and she has cam on her phone, so both of us would add pictures every once in a while, on both systems
+2007-03-03T15:46:00.000Z	eck	ALL4N	i think without a third computer you are going to have to hack together a solution with shell scripts
+2007-03-03T15:47:00.000Z	ALL4N	eck	hmm, was afraid that would be the case, its a shame though that there are no good solutions for this, soo many ppl have primary/secondary computers these days
+2007-03-03T15:47:00.000Z	eck	ALL4N	is ifolder a webdav solution?
+2007-03-03T15:48:00.000Z	ALL4N	eck	not sure, its a server/client solution from novell. You build a server, and then your clients all synchronise to this every once in a while. its open source, but there are no packages for ubuntu at this time..
+2007-03-03T15:49:00.000Z	eck	ALL4N	ok, well if it is what i think it is, it is a lot like using cvs/svn
+2007-03-03T15:49:00.000Z	ALL4N	eck	not really, because the synchronisation is totally automatic
+2007-03-03T15:50:00.000Z	ALL4N	eck	what you do is to set up a folder on server using a config tool, and then point this folder to a local folder.. everything you drop in local folder is automatically synced with that folder on server
+2007-03-03T15:50:00.000Z	ALL4N	eck	and then you share that folder with others..

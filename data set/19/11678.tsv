@@ -1,0 +1,19 @@
+2005-12-08T12:58:00.000Z	_kismet_		Hi All! I have to use SUN JDK 1.3.1 and when I run javah and javac I get :  error while loading shared libraries: libstdc++-libc6.1-1.so.2
+2005-12-08T12:59:00.000Z	_kismet_		Hi All! I have to use SUN JDK 1.3.1 and when I run javah and javac I get :  error while loading shared libraries: libstdc++-libc6.1-1.so.2 any tips?
+2005-12-08T13:00:00.000Z	HappyFool	_kismet_	maybe use a newer jdk ?
+2005-12-08T13:01:00.000Z	_kismet_	HappyFool	I cann't use a new one :(
+2005-12-08T13:02:00.000Z	HappyFool	_kismet_	ah, i missed the 'have to use'
+2005-12-08T13:02:00.000Z	HappyFool	_kismet_	paste the output of 'ldd $(which javac)' (or whatever java app) on the pastebin (paste.ubuntulinux.nl)
+2005-12-08T13:06:00.000Z	_kismet_	HappyFool	I found that both javac and javah are symbolic links to a bash script that then excute: bin/i386/native_threads/javac
+2005-12-08T13:07:00.000Z	HappyFool	_kismet_	ok, any clues if you run ldd on that?
+2005-12-08T13:08:00.000Z	_kismet_	HappyFool	so the ldd on bin/i386/native_threads/javac is the following:http://paste.ubuntulinux.nl/5343
+2005-12-08T13:10:00.000Z	HappyFool	_kismet_	does 'locate libjvm.so' reveal anything?
+2005-12-08T13:12:00.000Z	_kismet_	HappyFool	I have several version of Java installaed on my system  so I'm able to find more the on libjvm.so
+2005-12-08T13:13:00.000Z	HappyFool	_kismet_	do the bash scripts set the LD_LIBRARY_PATH environment variable ?
+2005-12-08T13:13:00.000Z	_kismet_	HappyFool	anyway the founed libjvm relate to jdk 1.3.1 are: /opt/java/jdk1.3.1_16/jre/lib/i386/client/libjvm.so
+2005-12-08T13:15:00.000Z	HappyFool	_kismet_	ok, how about this: LD_LIBRARY_PATH=/opt/java/jdk1.3.1_16/jre/lib/i386/client ldd /usr/bin/i386/native_threads/javac
+2005-12-08T13:15:00.000Z	HappyFool	_kismet_	(adapt path to javac as necessary)
+2005-12-08T13:24:00.000Z	_kismet_	HappyFool	maybe now worked
+2005-12-08T13:24:00.000Z	_kismet_	HappyFool	I installaed the packages libstdc++2.10-glibc2.2 and then I had to execute  sudo ln -s /usr/lib/libstdc++-libc6.2-2.so.3 /usr/lib/libstdc++-libc6.1-1.so.2
+2005-12-08T13:25:00.000Z	HappyFool	_kismet_	ok. well done ;)
+2005-12-08T13:25:00.000Z	_kismet_	HappyFool	 at least now I do not get the error and also no segmentation foult so I think that it's working :)

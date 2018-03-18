@@ -1,0 +1,23 @@
+2011-09-16T13:38:00.000Z	hroi		hi
+2011-09-16T13:38:00.000Z	hroi		Im a little unhappy with hom much space apt takes unde /var/cache/apt
+2011-09-16T13:38:00.000Z	hroi		Im wondering if I can have apt run more economically on space
+2011-09-16T13:39:00.000Z	jpds	hroi	Then, tweak /etc/cron.daily/apt ?
+2011-09-16T13:39:00.000Z	hroi	jpds	ah, ok...
+2011-09-16T13:40:00.000Z	jpds	hroi	And /etc/apt/apt.conf.d/20archive
+2011-09-16T13:41:00.000Z	hroi	jpds	ok, ehm presumably I need to run /etc/cron.daily/apt more often than daily?
+2011-09-16T13:41:00.000Z	jpds	hroi	Actually, don't change the cron script, just change the variable in apt.conf.d as the header suggests.
+2011-09-16T13:41:00.000Z	hroi		however, i cant think how apt can be doing anything when and taking up more space, when I am not running it daily
+2011-09-16T13:41:00.000Z	hroi	jpds	ok,
+2011-09-16T13:42:00.000Z	hroi	jpds	what are the disadvantages to doing this?
+2011-09-16T13:42:00.000Z	jpds	hroi	None that I can think of?
+2011-09-16T13:44:00.000Z	jpds	hroi	If you just want to purge the packages, do: sudo apt-get clean.
+2011-09-16T13:45:00.000Z	hroi	jpds	I think just for now, yes, somehow remove all excess waist lying around
+2011-09-16T13:46:00.000Z	hroi	jpds	apt-get clean  removes all downloaded packages right, doesnt remove anything I have isntalled?
+2011-09-16T13:46:00.000Z	jpds	hroi	Exactly.
+2011-09-16T13:46:00.000Z	hroi		wow
+2011-09-16T13:46:00.000Z	hroi		that freed up a lot of space
+2011-09-16T13:47:00.000Z	hroi	jpds	I dont see the point in apt-get holding on to installed packages...
+2011-09-16T13:47:00.000Z	hroi	jpds	can take up GB's of space, without ever being removed it seems
+2011-09-16T13:47:00.000Z	jpds	hroi	The cron script should delete them, depends on how your system is configured.
+2011-09-16T13:50:00.000Z	hroi	jpds	actually Im running debian in this case - maybe they dont clean up their apt-get mess
+2011-09-16T13:51:00.000Z	hroi	jpds	non-sensical I think

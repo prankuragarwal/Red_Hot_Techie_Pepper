@@ -1,0 +1,22 @@
+2007-08-21T11:39:00.000Z	AlgorthmicContro		Anyone know how to GRUB back in default state?
+2007-08-21T11:40:00.000Z	AlgorthmicContro		hey stdin, could you help me out?
+2007-08-21T11:40:00.000Z	stdin	AlgorthmicContro	depends in the question
+2007-08-21T11:42:00.000Z	AlgorthmicContro	stdin	I was messing with usplash screens, usually they'd work sucessfuly, I messed up grub, Whenever I boot natively to ubuntu ,usplash is not visble, and nothing happens, and I can't access terminal, I get kernel panics  and it can't mount the disk
+2007-08-21T11:44:00.000Z	stdin	AlgorthmicContro	if it's a grub problem, then you can just (re)move the /boot/grub/menu.lst file then run "sudo update-grub" to remake the file. you may also need to set the usplash file back to default with "sudo update-alternatives --config usplash-artwork.so"
+2007-08-21T11:45:00.000Z	AlgorthmicContro	stdin	I can't access terminal or root
+2007-08-21T11:45:00.000Z	stdin	AlgorthmicContro	at boot, do you see the grub menu?
+2007-08-21T11:45:00.000Z	AlgorthmicContro	stdin	Because of that problem, I can't do anything.....I would do say you said, but =.
+2007-08-21T11:45:00.000Z	AlgorthmicContro	stdin	I do
+2007-08-21T11:46:00.000Z	AlgorthmicContro	stdin	I just can't boot from anything, I'm doing a live session right now
+2007-08-21T11:47:00.000Z	stdin	AlgorthmicContro	try pressing "e" on the menu, then move down to the line starting with "kernel" and pressing "e" again. then move to the end of the line and remove the "splash" word. then press enter and then "b". if that lets you boot, then it is a usplash problem
+2007-08-21T11:48:00.000Z	AlgorthmicContro	stdin	I might've tried that, anything else ?
+2007-08-21T11:49:00.000Z	AlgorthmicContro	stdin	If it is a usplash problem, what is your first suggestion?
+2007-08-21T11:49:00.000Z	stdin	AlgorthmicContro	I'd say to reset it back to the default or disable it all together
+2007-08-21T11:49:00.000Z	AlgorthmicContro	stdin	how do I do that?
+2007-08-21T11:51:00.000Z	stdin	AlgorthmicContro	with "sudo update-alternatives --config usplash-artwork.so" and selecting ubuntu one, then you'll have to run "sudo update-initramfs -u" to apply iy
+2007-08-21T11:51:00.000Z	AlgorthmicContro	stdin	That is if I can get access to terminal...which I can't....but I'll try what you said....
+2007-08-21T11:52:00.000Z	AlgorthmicContro	stdin	thanks in advance
+2007-08-21T11:52:00.000Z	stdin	AlgorthmicContro	there is a way to do it from the CD if that fails
+2007-08-21T12:09:00.000Z	AlgorthmicContro	stdin	No success,and I can't access terminal
+2007-08-21T12:10:00.000Z	stdin	AlgorthmicContro	if you mount your root partition, then you can "chroot" into it
+2007-08-21T12:11:00.000Z	stdin	AlgorthmicContro	eg "sudo mount /dev/hda1 /mnt ; sudo -i" then "chroot /mnt" then you will have access to the installed version

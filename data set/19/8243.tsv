@@ -1,0 +1,19 @@
+2010-06-07T14:57:00.000Z	zauber		Is anyone using rsync to backup maildir folders from a remote server? And if so, how do you give rsync permission to read those folders (... besides enabling root logins over ssh... don't want to do that)
+2010-06-07T14:57:00.000Z	llutz	zauber	use ssh-keys
+2010-06-07T14:58:00.000Z	zauber	llutz	That's done already. Rsync talks to my remote server nicely. Its the permissions on the maildirs that's the problem
+2010-06-07T14:58:00.000Z	llutz	zauber	"PermitRootlogin forced-commands-only" or "nopassword" and then rsync as root
+2010-06-07T14:59:00.000Z	llutz		without-password *
+2010-06-07T14:59:00.000Z	zauber	llutz	ah... could be an option. I was kind of hoping there's a way to give group-read access on maildir folders through some postfix config option.
+2010-06-07T15:00:00.000Z	llutz	zauber	just allow that key only to perform the rsync, there are  examples on the net how to do it. its imho the best way
+2010-06-07T15:03:00.000Z	zauber	llutz	I see what you're getting at, but setting up ssh to allow root logins, forced commands and other such restrictions is not going to fly. I really need some way of rsyncing with a non-root account, and setting up the remote server to allow that non-root account to read the maildir folders
+2010-06-07T15:03:00.000Z	llutz	zauber	http://troy.jdmz.net/rsync/index.html
+2010-06-07T15:05:00.000Z	zauber	llutz	thanks for the link, but I'm not sure you see what I'm getting at. I have rsync all set up, talking fine with the server. No problemo. But I don't want to log in with a root account -- configured restrictions notwithstanding.
+2010-06-07T15:05:00.000Z	zauber	llutz	my problem is configuring the server to allow the account I DO log in with, to read from the maildir folders
+2010-06-07T15:06:00.000Z	llutz	zauber	so your user has to be in the mda-group to have access
+2010-06-07T15:16:00.000Z	llutz	zauber	may i ask how you backup using rsync as non-root without messing up the permissions of the files?
+2010-06-07T15:17:00.000Z	zauber	llutz	sorry for dissapearing a while. Yes you may ask. I use the -a flag (archive mode) which preserves permissions on the files.
+2010-06-07T15:19:00.000Z	zauber		lluts: and to answer your previous question, yes, my user needs to be int the group of the process owning the virtual mailboxes. Which it is. (In my setup, that group is called "mail"). However, all the folders and files are created with 700 permissions. So I can't read them even being in their group.
+2010-06-07T15:19:00.000Z	zauber	llutz	se above, misspelt your name
+2010-06-07T15:20:00.000Z	llutz	zauber	that works as user? user cannot change ownership of files, so how do you write them/to what filesystem?
+2010-06-07T15:21:00.000Z	zauber	llutz	on my local filesystem, the uid and gid are preserved (so it's whatever the uid/gid was on the remote server). Since my local operating system doesnt care about remote users, that works just fine as far as I can tell
+2010-06-07T15:22:00.000Z	zauber	llutz	again, it works without problems with all other folders I want to back up, because I can give the backup-user read access. But since I can't control the maildir permissions, I can't back up the email.

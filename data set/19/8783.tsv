@@ -1,0 +1,19 @@
+2007-02-08T12:06:00.000Z	jzlP		what's the command to rename a directory?
+2007-02-08T12:06:00.000Z	unop	jzlP	 mv it -- mv -R oldname newname
+2007-02-08T12:07:00.000Z	jzlP	unop	its within my /media/ directory (a shared ntfs-3g mount).. does that matter
+2007-02-08T12:07:00.000Z	unop	jzlP	 in that case - mv -R /media/oldname /media/newname
+2007-02-08T12:09:00.000Z	jzlP	unop	 "mv: invalid option -- R
+2007-02-08T12:10:00.000Z	unop	jzlP	 hmm -- try without the -R then
+2007-02-08T12:10:00.000Z	jzlP	unop	can I PM you?
+2007-02-08T12:11:00.000Z	unop	jzlP	 you could, i dunno if you'll get a reply -- in any case, its better to ask it in here, others could help
+2007-02-08T12:12:00.000Z	unop	jzlP	does this not work? mv /media/oldname /media/newname
+2007-02-08T12:13:00.000Z	jzlP	unop	ok.. here is the isssue.  I installed ntfs-config and it automatically created the directories to mount the 2 NTFS drives.  they were named "Media 1" and "Media 2" in the windows 2003 install.  Well ntfs-config created the directories with the space in there and now I am trying to share them via samba...
+2007-02-08T12:14:00.000Z	jzlP	unop	... and now having a fun time deciding if I need to share them as "Media\0401", "Media 1" or "media1"
+2007-02-08T12:14:00.000Z	unop	jzlP	 ahh, better to avoid spaces -- but i have a feeling this is more than just a simple issue of renaming the folders -- you probably need to edit the /etc/fstab file too
+2007-02-08T12:14:00.000Z	jzlP	unop	exactly.... that is what I am trying to do
+2007-02-08T12:15:00.000Z	unop	jzlP	 you should be able to share them as "media 1" ..
+2007-02-08T12:16:00.000Z	unop	jzlP	 i gotta go, will be back in about 10 minutes -- the others in here will be able to help
+2007-02-08T12:16:00.000Z	jzlP	unop	even with the NTFS name being "Media 1" and the directory in /media?
+2007-02-08T12:16:00.000Z	jzlP	unop	thanks for trying :)
+2007-02-08T12:17:00.000Z	unop	jzlP	 ahh, quick suggestion -- you could create a "spaceless" directory in /media that is a link to "Media 1" and share that .. so you dont have to go through this hassle :)
+2007-02-08T12:17:00.000Z	unop	jzlP	 sudo ln -s "/media/Media 1" /media/media1  ... for example

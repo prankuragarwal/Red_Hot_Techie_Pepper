@@ -1,0 +1,18 @@
+2008-03-21T10:37:00.000Z	bobbo85		I can't mount my new drive without using sudo...  when I try, I get this:  "Error opening partition device: Perission denied"
+2008-03-21T10:37:00.000Z	bobbo85		Any ideas?
+2008-03-21T10:38:00.000Z	bobbo85		Strange thing is, if I mount with sudo mount -a, then go back to the user, I can unmount the drive... I just can't mount it back!  help plz:-(
+2008-03-21T10:38:00.000Z	nikrud	bobbo85	that's correct
+2008-03-21T10:40:00.000Z	bobbo85	nikrud	what do you think I should do?
+2008-03-21T10:42:00.000Z	nikrud	bobbo85	what's in your fstab line?
+2008-03-21T10:44:00.000Z	bobbo85	nikrud	there are two lines:    # /dev/hdb1   (new line)     UUID=384C059C4C055652 /media/hdb1    ntfs  defaults,umask=007,gid=46,users          0       0
+2008-03-21T10:45:00.000Z	bobbo85	nikrud	I originally didn't have that UUID in there, just the /dev/hdb1 part, but I saw that all the other entries had that pattern of commenting out the location so I went with it
+2008-03-21T10:46:00.000Z	nikrud	bobbo85	that's correct. users only allows people to unmount. you need to add user to allow anyone to mount
+2008-03-21T10:48:00.000Z	bobbo85	nikrud	do you think that the reason the other drive works is that maybe the first person who mounted it was a user and not the root?
+2008-03-21T10:50:00.000Z	nikrud	bobbo85	I refreshed my memory from man mount , I typed /user which searched for the relevant stuff
+2008-03-21T10:56:00.000Z	bobbo85	nikrud	i think i have an idea - i just tried unmounting the other drive and don't have permission to do so... I'm thinking that the gid=46 or maybe something in defaults are keeping me from mounting/unmounting
+2008-03-21T10:57:00.000Z	nikrud	bobbo85	that simply determines what is listed as the group after it's mounted
+2008-03-21T11:00:00.000Z	bobbo85	nikrud	the group in permissions is "plugdev" which I can't even find in my "user settings" window, think that's what it could be?  Should I a)make a group called "plugdev" and add my user to it,  or b)change the ownership of the drive with chown root:users (instead of root:plugdev)?
+2008-03-21T11:01:00.000Z	nikrud	bobbo85	try   groups   in a terminal, the first user created by the installer is in that group by default
+2008-03-21T11:02:00.000Z	bobbo85	nikrud	that's wild - why can i see plugdev in the terminal but not the "user settings" window?
+2008-03-21T11:03:00.000Z	nikrud	bobbo85	you're right, it's not there. I'd never looked
+2008-03-21T11:05:00.000Z	nikrud	bobbo85	I'm sorry, but I've got to go, it's midnight here and I work tomorrow.

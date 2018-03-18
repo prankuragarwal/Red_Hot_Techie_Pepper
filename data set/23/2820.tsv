@@ -1,0 +1,23 @@
+2008-11-04T23:33:00.000Z	ebcl		I am trying to find a way to execute a script every time a particular user logs out [public library terminal setup]. Running 8.04 fresh install.
+2008-11-04T23:34:00.000Z	stdin	ebcl	put commands in ~/.bash_logout
+2008-11-04T23:34:00.000Z	ebcl	stdin	thank you.
+2008-11-04T23:35:00.000Z	ebcl	stdin	hm. that seems to want to run the script whenever a console is closed, not strictly upon logout.
+2008-11-04T23:36:00.000Z	stdin	ebcl	it should be ran by bash when the shell exits
+2008-11-04T23:37:00.000Z	ebcl	stdin	just tested it to confirm. It runs whenever a terminal is closed as well.
+2008-11-04T23:38:00.000Z	stdin	ebcl	use "if [ $SHLVL = 0 ]; then .... ;fi"
+2008-11-04T23:39:00.000Z	stdin	ebcl	only the 1st shell run should have a SHLVL of 0
+2008-11-04T23:53:00.000Z	ebcl	stdin	added to /home/patron/.bash_logout: "if [ $SHLVL = 0 ]; then  tar -xjf /home/patron.tar.bz2 /home/patron/&& touch /home/patron/success  fi"; does not work - neither tar nor touch
+2008-11-04T23:54:00.000Z	stdin	ebcl	you're missing a ';'
+2008-11-04T23:55:00.000Z	stdin	ebcl	"if [ $SHLVL = 0 ]; then tar -xjf /home/patron.tar.bz2 /home/patron/&& touch /home/patron/success; fi"
+2008-11-04T23:56:00.000Z	ebcl	stdin	whoops. thanks again.
+2008-11-05T00:10:00.000Z	ebcl	stdin	still not working - I fixed my tar command so it no longer fails [d'oh!];
+2008-11-05T00:10:00.000Z	ebcl	stdin	"if [ $SHLVL = 0 ]; then tar -xjf /home/patron.tar.bz2 --overwrite -C / && touch /home/patron/success fi"
+2008-11-05T00:11:00.000Z	stdin	ebcl	does it run at all?
+2008-11-05T00:11:00.000Z	ebcl	stdin	if I run the command directly, yes.
+2008-11-05T00:12:00.000Z	ebcl	stdin	Perhaps the issue is that the command is successfully run as root, but fails as user upon logout?
+2008-11-05T00:12:00.000Z	stdin	ebcl	well the command will be ran as the user loggin out
+2008-11-05T00:12:00.000Z	ebcl	stdin	user "patron" is a severely limited user - no sudo
+2008-11-05T00:13:00.000Z	ebcl	stdin	Is there another way to run that command upon logout
+2008-11-05T00:15:00.000Z	stdin	ebcl	I don't think so, maybe you could add a cron script that runs every minute and checks the output of "who" to see if the user has logged out
+2008-11-05T00:16:00.000Z	ebcl	stdin	with the rapidity with which users come and go on these systems, I doubt that would be sufficient to provide a fresh - and private - session for each new user.
+2008-11-05T00:20:00.000Z	stdin	ebcl	maybe using something like pessulus. then create a list of files somewhere and running find on the home dir and removing all the found files that aren't in the list. not exactly a elegant solution though

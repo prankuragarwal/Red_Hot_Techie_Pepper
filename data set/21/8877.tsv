@@ -1,0 +1,21 @@
+2007-06-08T07:48:00.000Z	Eleaf		hello, how can I set a kernel set (low-latency) to boot every time in grub?
+2007-06-08T07:49:00.000Z	ekimus	Eleaf	in /boot/grub/menu.lst set "default <number of your conf>" iirc
+2007-06-08T07:49:00.000Z	Eleaf	ekimus	but what about kernel updates?
+2007-06-08T07:50:00.000Z	ekimus	Eleaf	yes you would have to modify that but isn't that the whole point of manually setting a specific kernel?
+2007-06-08T07:53:00.000Z	Eleaf	ekimus	I'm not specifying a manual kernel
+2007-06-08T07:53:00.000Z	Eleaf	ekimus	it's a kernel installed through ubuntu, it's the kernel-low-latency package, which automatically installs the latest low-latency kernel.  Right now it's defaulting to the normal -i386 one though.
+2007-06-08T07:54:00.000Z	ekimus	Eleaf	can you paste your grub config somewhere? don't have one handy but i think ubuntu uses savedefault so it will use the last kernel booted upon reboot
+2007-06-08T08:39:00.000Z	Eleaf	ekimus	sorry about that:  here is my menu.lst if you are still available.  http://pastebin.ca/549329
+2007-06-08T08:40:00.000Z	ekimus	Eleaf	change "default 0" on line 14 to "default saved" that way you will always boot the last used kernel
+2007-06-08T08:41:00.000Z	ekimus	Eleaf	which makes sense in your case since you have to reboot on kernel updates anyway and this boot on subsequent reboots always the newest one
+2007-06-08T08:42:00.000Z	ekimus	Eleaf	not newest but just the last used one, it's up to you to at least one time choose the right one in the menu
+2007-06-08T08:42:00.000Z	ekimus	Eleaf	i'm not aware of more automation than that...
+2007-06-08T08:42:00.000Z	Eleaf	ekimus	normally whenever a new kernel is installed, ubuntu automatically boots that one, always has.
+2007-06-08T08:43:00.000Z	Eleaf	ekimus	thanks, I'll give this a try.
+2007-06-08T08:44:00.000Z	ekimus	Eleaf	that's because other kernels are appended to the end of the config by debcons and "default 0" says boot the first kernel in the list i think "default saved" is the closest you can get
+2007-06-08T08:46:00.000Z	Eleaf	ekimus	but ubuntu is automatically adding the kernels in menu.lst
+2007-06-08T08:47:00.000Z	ekimus	Eleaf	yup i just think it's adding them at the end of the config, and "default 0" which is now there says "boot the first one"
+2007-06-08T08:48:00.000Z	Eleaf	ekimus	lol, why would it add at the end?
+2007-06-08T08:49:00.000Z	ekimus	Eleaf	guess programmatically it's easier to just append to a file. maybe someone was lazy (but i'm just guessing here i didn't care about that as i use custom kernels)
+2007-06-08T08:50:00.000Z	Eleaf	ekimus	I see; maybe it's just a bug in the -low-latency kernel or something.
+2007-06-08T08:50:00.000Z	Eleaf	ekimus	no it's not adding it to the end, it's just adding it under the i-386 one.

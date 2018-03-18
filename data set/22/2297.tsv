@@ -1,0 +1,22 @@
+2011-12-25T01:28:00.000Z	sedeki		Having problems with my built in soundcard. When inserting headphones, the speakers wont mute. Im using "snd-hda-intel" and ACL888 (laptop LG X110)
+2011-12-25T01:30:00.000Z	philpem	sedeki	what motherboard?
+2011-12-25T01:30:00.000Z	sedeki	philpem	how can i see that?
+2011-12-25T01:30:00.000Z	philpem	sedeki	try: sudo dmidecode | less
+2011-12-25T01:33:00.000Z	philpem	sedeki	how about we try another way?
+2011-12-25T01:33:00.000Z	philpem	sedeki	sudo dmidecode > /tmp/dmi-info
+2011-12-25T01:34:00.000Z	philpem	sedeki	then open that file (/tmp/dmi-info) in a text editor and copy it into http://paste.ubuntu.com
+2011-12-25T01:34:00.000Z	sedeki	philpem	fine, ill post it wait
+2011-12-25T01:35:00.000Z	philpem	sedeki	forget what I just said, do what Seveas suggested :)
+2011-12-25T01:35:00.000Z	sedeki	philpem	http://paste.ubuntu.com/781455/
+2011-12-25T01:36:00.000Z	philpem	sedeki	you have an LG X110-G.A7HBV
+2011-12-25T01:36:00.000Z	philpem	sedeki	10.2in screen netbook?
+2011-12-25T01:38:00.000Z	sedeki	philpem	do you mean a flag to the module in alsa_base.conf?
+2011-12-25T01:38:00.000Z	philpem	sedeki	yes. see https://help.ubuntu.com/community/HdaIntelSoundHowto
+2011-12-25T01:38:00.000Z	sedeki	philpem	i looked at that earlier today
+2011-12-25T01:39:00.000Z	sedeki	philpem	anything particularly interesting?
+2011-12-25T01:39:00.000Z	philpem	sedeki	look at the list of HD-Audio model IDs for the ALC888, and try them all in turn is really all I can suggest :(
+2011-12-25T01:40:00.000Z	sedeki	philpem	what about the jack configuration?
+2011-12-25T01:40:00.000Z	philpem	sedeki	that's what i was talking about -- card model ('model' parameter to the module) is the jack configuration
+2011-12-25T01:42:00.000Z	sedeki	philpem	ah i see. how about the enable=1 flag?
+2011-12-25T01:43:00.000Z	philpem	sedeki	no, you can do 'rmmod snd-intel-hda; modprobe snd-intel-hda model=xyz'
+2011-12-25T01:46:00.000Z	philpem	sedeki	count to ten after you do that, it'll take a minute for PulseAudio to restart

@@ -1,0 +1,22 @@
+2011-01-15T13:48:00.000Z	illuminaris		Anyone willing to troubleshoot WOW + ATI Radeon 9800 Pro issues with me?
+2011-01-15T13:49:00.000Z	illuminaris		Also, is it possible to install windows as a dual boot within Ubuntu or do you have to install windows first?
+2011-01-15T13:49:00.000Z	soreau	illuminaris	You want xorg-edgers to get gallium
+2011-01-15T13:50:00.000Z	illuminaris	soreau	you're speaking a foreign language, how do i find this stuff?
+2011-01-15T13:50:00.000Z	soreau	illuminaris	Which version of ubuntu are you using?
+2011-01-15T13:51:00.000Z	illuminaris	soreau	I am using Ubuntu 11.04
+2011-01-15T13:52:00.000Z	soreau	illuminaris	Then you should be asking in #ubuntu+1 or #radeon
+2011-01-15T13:52:00.000Z	soreau	illuminaris	What is the output of 'glxinfo|grep renderer'?
+2011-01-15T13:53:00.000Z	illuminaris	soreau	OpenGL renderer string: Mesa DRI R300 (R350 4E48) 20090101 x86/MMX+/3DNow!+/SSE TCL DRI2
+2011-01-15T13:54:00.000Z	soreau	illuminaris	You don't have gallium. Try installing libgl1-mesa-dri-experimental (and re-logging in)
+2011-01-15T13:55:00.000Z	illuminaris	soreau	so sudo apt-get install libgl1-mesa-dri-experimental ?? what will this do?
+2011-01-15T13:56:00.000Z	soreau	illuminaris	Hopefully it will install the gallium driver which will allow for opengl 2.1
+2011-01-15T13:56:00.000Z	illuminaris	soreau	so that should fix the problem or there are more steps?
+2011-01-15T13:57:00.000Z	soreau		illusionz: First you want to get gallium working. If installing the experimental package doesn't work, you may need to install xorg-edgers repo first
+2011-01-15T14:00:00.000Z	illuminaris	soreau	i just installed what you told me to, restart and log back in?
+2011-01-15T14:00:00.000Z	soreau	illuminaris	Yea just log out and back in then show the output of 'glxinfo|grep renderer' again
+2011-01-15T14:02:00.000Z	illuminaris	soreau	ok I logged out and back in, here is the result : OpenGL renderer string: Mesa DRI R300 (R350 4E48) 20090101 x86/MMX+/3DNow!+/SSE TCL DRI2
+2011-01-15T14:02:00.000Z	soreau	illuminaris	You still don't have gallium. Try this: sudo add-apt-repository ppa:xorg-edgers/ppa && sudo apt-get update && && sudo apt-get upgrade
+2011-01-15T14:07:00.000Z	illuminaris	soreau	please stand by, still upgrading....
+2011-01-15T14:09:00.000Z	soreau	illuminaris	If it installs a kernel (which is likely), reboot the machine after it's finished
+2011-01-15T14:15:00.000Z	illuminaris	soreau	ok i restarted this is the output now: OpenGL renderer string: Gallium 0.4 on ATI R350
+2011-01-15T14:21:00.000Z	illuminaris	soreau	are you still here? it appears we were successful, is there another step required?

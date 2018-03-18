@@ -1,0 +1,23 @@
+2010-01-01T11:18:00.000Z	fiber		hello... i just transfered my ubuntu install to another harddrive but now when i boot it says "grub harddisk failure".  What i did (in order) was a) use cpio to make a direct copy of hd a to hd b b) installed grub on the other hd by doing "grub-install /dev/sdb" c) changed the uuid's in /etc/fstab and /boot/grub/menu.lst.  did i miss anything?  any ideas?
+2010-01-01T11:20:00.000Z	kmyst	fiber	unique approach, but why not just dd the drive? i haven't tried it precisely your way but it'd "seem" that you did what i would have done...harddisk failure is all it says?
+2010-01-01T11:21:00.000Z	fiber	kmyst	i didn't dd because the drives are different (one is 300GB the other is 1.5TB)... and all it says it HD failure right before getting to the menu, nothing else
+2010-01-01T11:21:00.000Z	kmyst	fiber	yeah but you could dd then expand the partition to take up the extra space
+2010-01-01T11:22:00.000Z	kmyst	fiber	tis what i did with my 160 to 500gb drive in the laptop
+2010-01-01T11:22:00.000Z	fiber	kmyst	i had thought about that... but in the end it's just as far out there as my approach! the UUID's would have had to be modified anyways right?
+2010-01-01T11:23:00.000Z	kmyst	fiber	actually come to thnk of it i didn't mod my uuid's
+2010-01-01T11:24:00.000Z	fiber	kmyst	strange... i was under the impression that UUID depended on the actual HD not the any modifiable data
+2010-01-01T11:24:00.000Z	kmyst	fiber	try specifying the /dev instead of using uuid's
+2010-01-01T11:25:00.000Z	kmyst	fiber	iirc i just went from a gutsy install, did the dd/resize then upgraded to hardy then intrepid and that was it
+2010-01-01T11:25:00.000Z	fiber	kmyst	i just may do that... luckily i still have the original
+2010-01-01T11:26:00.000Z	kmyst	fiber	in the fstab and most likely grub's menu.lst
+2010-01-01T11:27:00.000Z	fiber	kmyst	ok, i may have found some other clue... when trying to grub-install it again i get "Could not find device for /boot: Not found or not a block device."
+2010-01-01T11:27:00.000Z	kmyst	fiber	good clue
+2010-01-01T11:30:00.000Z	kmyst	fiber	did you cpio /boot when you did all that?
+2010-01-01T11:31:00.000Z	fiber	kmyst	yessir.... and stage1 is safe and in its correct place (/boot/grub/stage1)
+2010-01-01T11:31:00.000Z	kmyst	fiber	out of curiousity what options did you feed cpio?
+2010-01-01T11:35:00.000Z	fiber	kmyst	i cannot find it... i found the exact command online on some blog
+2010-01-01T11:37:00.000Z	kmyst	fiber	hmm well i suppose since the data is there the stumble point was installing grub as you said right?
+2010-01-01T11:37:00.000Z	fiber	kmyst	correct
+2010-01-01T11:37:00.000Z	kmyst	fiber	what was the error?
+2010-01-01T11:44:00.000Z	fiber	kmyst	ok, i'm gonna restart and test something.... brb
+2010-01-01T11:44:00.000Z	kmyst	fiber	k good luck

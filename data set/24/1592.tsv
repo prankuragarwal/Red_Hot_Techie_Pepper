@@ -1,0 +1,24 @@
+2010-05-11T11:10:00.000Z	tim__		I have seamonkey and it does the same thing
+2010-05-11T11:10:00.000Z	greezmunkey	tim__	Try this in a terminal: dig AAAA www.google.com
+2010-05-11T11:10:00.000Z	greezmunkey	tim__	Do you get any output?
+2010-05-11T11:11:00.000Z	tim__	greezmunkey	it worked fine
+2010-05-11T11:11:00.000Z	greezmunkey	tim__	ok, it's not ipv6, or a dns issue then
+2010-05-11T11:14:00.000Z	greezmunkey	tim__	ok, try this: telnet www.google.com 80 - (if it connects it will tell you, ctrl+c to excape)
+2010-05-11T11:15:00.000Z	greezmunkey	tim__	there's your problem, port 80 (possibly more) are being blocked
+2010-05-11T11:16:00.000Z	greezmunkey	tim__	can you do this: ping google.com
+2010-05-11T11:17:00.000Z	tim__	greezmunkey	how do I unblock it?  I cannot ping google.com, but I can ping my internet service provider, I am in Honduras
+2010-05-11T11:18:00.000Z	greezmunkey	tim__	try this: ping 72.14.213.147
+2010-05-11T11:19:00.000Z	tim__	greezmunkey	no
+2010-05-11T11:20:00.000Z	greezmunkey	tim__	do you know someone else near you that has Internet via the same isp, that maybe you can call and have them run similar tests - even if on windows?
+2010-05-11T11:21:00.000Z	tim__	greezmunkey	 I have a windows laptop sitting right here
+2010-05-11T11:21:00.000Z	greezmunkey	tim__	try the same tests with it (the dig tests wont work, but the others will)
+2010-05-11T11:22:00.000Z	greezmunkey	tim__	brb while you test...
+2010-05-11T11:30:00.000Z	tim__	greezmunkey	I can still ping my provider here in Honduras but no where else but have never been able to do this successfully but the internet is working without problem on the other computer and my voip phone is working great also
+2010-05-11T11:31:00.000Z	greezmunkey	tim__	I guess that narrows it down to the ubox...are you running any kind od firewall?
+2010-05-11T11:34:00.000Z	greezmunkey	tim__	can you paste the result of: sudo iptables -L  -to http://paste.ubuntu.com
+2010-05-11T11:35:00.000Z	greezmunkey	tim__	can you paste the result of: 'sudo iptables -L'  -to http://paste.ubuntu.com
+2010-05-11T11:35:00.000Z	greezmunkey	tim__	the quotes are not needed, I was just trying to clarify...
+2010-05-11T11:37:00.000Z	tim__	greezmunkey	 Chain INPUT (policy ACCEPT)
+2010-05-11T11:37:00.000Z	greezmunkey	tim__	dude
+2010-05-11T11:40:00.000Z	greezmunkey	tim__	heh, good point - regardless, from what I saw f/w isn't the issue.
+2010-05-11T11:43:00.000Z	tim__	greezmunkey	 I am burning a new install cd and going to go that route, thanks for the help!

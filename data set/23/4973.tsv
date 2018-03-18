@@ -1,0 +1,23 @@
+2007-12-05T23:46:00.000Z	mikebeecham		Hi guys...I could do with some help...I've just rebooted my machine to discover that all my shared folders have disappeared....there is no indication of them in 'places' etc....but I dont know what caused this?
+2007-12-05T23:48:00.000Z	mikebeecham		Hi guys...I could do with some help...I've just rebooted my machine to discover that all my shared folders have disappeared....there is no indication of them in 'places' etc....but I dont know what caused this?
+2007-12-05T23:48:00.000Z	mikebeecham		can anyone help?
+2007-12-05T23:49:00.000Z	bluefox83	mikebeecham	are the directories still there physically? just cus they are gone from places doesn't mean they are necassarily gone
+2007-12-05T23:50:00.000Z	mikebeecham	bluefox83	all references to the shared folders are gone, with the exception of 'shared folders'.  The path is still there, but tells me it is inaccessible
+2007-12-05T23:50:00.000Z	bluefox83	mikebeecham	try sudo mount -a
+2007-12-05T23:51:00.000Z	bluefox83	mikebeecham	samba shared or nfs?
+2007-12-05T23:51:00.000Z	mikebeecham	bluefox83	samba
+2007-12-05T23:51:00.000Z	bluefox83	mikebeecham	you might want to check your samba config file and make sure it didn't somehow get erased...
+2007-12-05T23:52:00.000Z	mikebeecham	bluefox83	neither of my mounted drives are visible..
+2007-12-05T23:52:00.000Z	mikebeecham	bluefox83	http://paste.ubuntu-nl.org/46992/
+2007-12-05T23:53:00.000Z	bluefox83	mikebeecham	is it at all possible that you had a second partition with ubuntu installed on it?
+2007-12-05T23:53:00.000Z	mikebeecham	bluefox83	..setup as follows: primary HDD =- two partitions - windows and linux 7.10
+2007-12-05T23:53:00.000Z	mikebeecham	bluefox83	secondary HDD called 'media' with all my shares
+2007-12-05T23:54:00.000Z	mikebeecham	bluefox83	samba.conf is still there
+2007-12-05T23:54:00.000Z	bluefox83	mikebeecham	ok, well it sounded like you discovered a second ubuntu partition or something...cus samba and fstab don't just suddenly lose their config files...
+2007-12-05T23:55:00.000Z	bluefox83	mikebeecham	check /etc/fstab
+2007-12-05T23:55:00.000Z	bluefox83	mikebeecham	once you make sure it's all sorted, just sudo mount -a and then i think just restart samba...
+2007-12-05T23:55:00.000Z	mikebeecham	bluefox83	there is no /fstab
+2007-12-05T23:56:00.000Z	bluefox83	mikebeecham	you have no idea how bad it woulda been to nto have an /etc/fstab :X
+2007-12-05T23:56:00.000Z	mikebeecham	bluefox83	http://paste.ubuntu-nl.org/46993
+2007-12-05T23:58:00.000Z	bluefox83	mikebeecham	i forget how samba handles shares...i don't remember you mount them, or you just restart the samba client...
+2007-12-05T23:59:00.000Z	mikebeecham	bluefox83	brb

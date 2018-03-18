@@ -1,0 +1,22 @@
+2009-06-07T19:22:00.000Z	Jack_Sparrow	boscop	Widws will lock down after unclean shutdown. reboot windows or force it from linux.  restarting windows is a better way
+2009-06-07T19:24:00.000Z	boscop	Jack_Sparrow	ok, thanks
+2009-06-07T19:24:00.000Z	Jack_Sparrow	boscop	that is not for you fyi
+2009-06-07T19:26:00.000Z	Jack_Sparrow	boscop	what does sudo fdisk -l  last letter L show
+2009-06-07T19:27:00.000Z	Jack_Sparrow	boscop	sudo apt-get install pastebinit  && cp /etc/fstab ~/Desktop/Partition_Layout.txt && sudo fdisk -l >> ~/Desktop/Partition_Layout.txt && lsb_release -a >> ~/Desktop/Partition_Layout.txt && cat /home/$USER/Desktop/Partition_Layout.txt | pastebinit  (Provide Pastebin link in channel)
+2009-06-07T19:32:00.000Z	boscop	Jack_Sparrow	   Device Boot      Start         End      Blocks   Id  System|/dev/sda1               1        9728    78140128+  83  Linux|/dev/sda2   *        9729       19457    78148192+   7  HPFS/NTFS|
+2009-06-07T19:32:00.000Z	boscop	Jack_Sparrow	so there it shows up
+2009-06-07T19:35:00.000Z	boscop	Jack_Sparrow	so why is it found by fdisk and not by mount?
+2009-06-07T19:35:00.000Z	Jack_Sparrow	boscop	one sec
+2009-06-07T19:38:00.000Z	Jack_Sparrow	boscop	Try a force mount on sda2.. one sec for an example
+2009-06-07T19:41:00.000Z	boscop	Jack_Sparrow	now I can see it in nautilus
+2009-06-07T19:41:00.000Z	Jack_Sparrow	boscop	cool
+2009-06-07T19:42:00.000Z	boscop	Jack_Sparrow	but it is named locked-drive. can I just rename it?
+2009-06-07T19:42:00.000Z	Jack_Sparrow	boscop	that goes back to an unclean shutdown
+2009-06-07T19:43:00.000Z	boscop	Jack_Sparrow	renaming doesn't work :(
+2009-06-07T19:45:00.000Z	Jack_Sparrow	boscop	 one sec...
+2009-06-07T19:46:00.000Z	Jack_Sparrow	boscop	My example gives the drive the name locked-drive, but it isnt locked.  that was just a temp mopunt point we used
+2009-06-07T19:52:00.000Z	boscop	Jack_Sparrow	mv: cannot move `/media/locked-drive' to `/media/windows': Device or resource busy
+2009-06-07T19:52:00.000Z	Jack_Sparrow	boscop	wrong..
+2009-06-07T19:53:00.000Z	Jack_Sparrow	boscop	`/media/locked-drive    are just mount points
+2009-06-07T19:53:00.000Z	boscop	Jack_Sparrow	so how can I rename it?
+2009-06-07T19:53:00.000Z	Jack_Sparrow	boscop	log out and back in and see if things are back to normal now that you have forced the mount

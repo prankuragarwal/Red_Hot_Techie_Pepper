@@ -1,0 +1,21 @@
+2008-04-08T12:28:00.000Z	Xawas		Yesterday I changed my network driver fram rt61pci to rt61 and works great now. But now I do not get Mongrel to work. No brower respond to the http://0.0.0.0:3000 anymore.. Anyone knows why?
+2008-04-08T12:29:00.000Z	unop__	Xawas	http://0.0.0.0:3000 should never have worked in the first place, does http://127.0.0.1:3000 work?
+2008-04-08T12:30:00.000Z	Xawas	unop__	nope
+2008-04-08T12:31:00.000Z	Xawas	unop__	it says that: ** Starting Mongrel listening at 0.0.0.0:3000, so it should work.. It did work..
+2008-04-08T12:31:00.000Z	unop__	Xawas	i'm assuming mongrel is a network service here .. is it even running? do you have anything listening on port 3000?
+2008-04-08T12:32:00.000Z	Xawas	unop__	kinda new to linux world, but is there a cmd to check what is listening on diffrent ports?
+2008-04-08T12:32:00.000Z	unop__	Xawas	ps aux | grep -i mongrel; netstat -antp | grep -i :3000
+2008-04-08T12:32:00.000Z	Xawas	unop__	tcp        0      0 0.0.0.0:3000            0.0.0.0:*               LISTEN     6762/ruby
+2008-04-08T12:34:00.000Z	unop__	Xawas	hmm, looks good so far .. what does this give you?  http://localhost:3000
+2008-04-08T12:34:00.000Z	Xawas	unop__	it just hangs...
+2008-04-08T12:35:00.000Z	unop__	Xawas	it could be that mongrel or ruby have a problem .. does mongrel have any logfiles you can examine?
+2008-04-08T12:35:00.000Z	unop__	Xawas	 you could also try this?   wget http://localhost:3000
+2008-04-08T12:36:00.000Z	Xawas	unop__	 ok two secs
+2008-04-08T12:37:00.000Z	Xawas	unop__	Connecting to localhost|127.0.0.1|:3000...  (just hangs there)
+2008-04-08T12:37:00.000Z	Xawas	unop__	doesnt seem to be anything in the log file either
+2008-04-08T12:37:00.000Z	unop__	Xawas	try restarting mongrel (i don't know how that is done) .. see if that helps somehow
+2008-04-08T12:38:00.000Z	Xawas	unop__	nope.. hehe nothing works.. so wierd.. all this happend after i changed the network driver..
+2008-04-08T12:40:00.000Z	unop__	Xawas	i'm not sure this is a problem with the network driver but i also don't know enough about mongrel (first time i am hearing of it) to troubleshoot the service ..
+2008-04-08T12:40:00.000Z	Xawas	unop__	mongrel is another webserver like webrick, if you ever heard of that?
+2008-04-08T12:41:00.000Z	unop__	Xawas	not really :) not much into ruby and it's extensions, i gathered it was a webserver
+2008-04-08T12:42:00.000Z	Xawas	unop__	hehe ok ;-) hmm well thx anyway =)

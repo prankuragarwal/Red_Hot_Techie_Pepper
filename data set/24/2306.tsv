@@ -1,0 +1,24 @@
+2009-02-04T22:25:00.000Z	janisozaur		hi! i'm updating my home server to ubuntu 8.10 (desktop) and i'm having some problems with my network card. it's an old SFF compaq with integrated NIC that worked perfectly fine in my previous installation (i think it was ubuntu 7.04) and even after first boot with new system. however now i have to issue a manual start for this interface (that's not good, my parents can't handle linux and it's our home gateway). Pastes: dmesg (filtered f
+2009-02-04T22:26:00.000Z	Torikun	janisozaur	you can add the module to /etc/modules
+2009-02-04T22:26:00.000Z	janisozaur	Torikun	e100?
+2009-02-04T22:27:00.000Z	Torikun		not sure the drive name
+2009-02-04T22:27:00.000Z	janisozaur	Torikun	according to dmesg it should be this one
+2009-02-04T22:27:00.000Z	Torikun		add that
+2009-02-04T22:28:00.000Z	janisozaur		ok, be back soon, have to restart
+2009-02-04T22:34:00.000Z	janisozaur	Torikun	i didn't help. this interface didn't start, even though the module is now loaded (without manually settig iface up)
+2009-02-04T22:34:00.000Z	Torikun		janisozaur:
+2009-02-04T22:34:00.000Z	Torikun		hmm
+2009-02-04T22:34:00.000Z	Torikun		how would you start the interface now to make it work>
+2009-02-04T22:34:00.000Z	janisozaur	Torikun	ifconfig eth0 up 192.168.0.1 netmask 255.255.255.0
+2009-02-04T22:35:00.000Z	Torikun	janisozaur	add it to /etc/rc.local
+2009-02-04T22:35:00.000Z	janisozaur	Torikun	/etc/network/interfaces contains entry that should start it
+2009-02-04T22:35:00.000Z	Torikun		and it will do it at boot
+2009-02-04T22:36:00.000Z	janisozaur	Torikun	when does this script execute? i have a firewall and dhcpd depending on that interface, so i would like it to start prior to them
+2009-02-04T22:39:00.000Z	Torikun	janisozaur	that is your system startup script
+2009-02-04T22:39:00.000Z	Torikun	janisozaur	put any special commands in there and it will be executed at boot
+2009-02-04T22:40:00.000Z	janisozaur	Torikun	i know, but will it start before or after /etc/rc0.d/K89shorewall and /etc/rc1.d/K40dhcp3-server ?
+2009-02-04T22:41:00.000Z	Torikun	janisozaur	 Not sure, I think after. You can always tell /etc/rc.local to turn on service instead of the standard way
+2009-02-04T22:42:00.000Z	janisozaur	Torikun	are rcX.d files ran in alphabetical order? if so i could put a symlink there, because starting firewall is a bit lenghty process
+2009-02-04T22:43:00.000Z	Torikun	janisozaur	Ubuntu has a funky way of managing services, disable it with the GUI and tel /etc/rc.local to turn it on
+2009-02-04T22:44:00.000Z	Torikun	janisozaur	X wil stil load before /etc/rc.local is done
+2009-02-04T22:46:00.000Z	janisozaur	Torikun	weird, this service manager says that shorewall firewall is already turned off. Could it be because it's not running currently?

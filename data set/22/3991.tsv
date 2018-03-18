@@ -1,0 +1,22 @@
+2008-06-14T11:41:00.000Z	chmac		Simple question, if you choose TLS security in Evolution, is mail still sent on port 25? Or does it use another port for TLS encrypted connections?
+2008-06-14T11:42:00.000Z	nonix4	chmac	does your outgoing email even use any form of authentication?
+2008-06-14T11:42:00.000Z	chmac	nonix4	Yeah, it supports TLS encryption, but I'm not sure what port TLS encrypted mail is supposed to be sent on
+2008-06-14T11:43:00.000Z	chmac	nonix4	I maintain the mail server, so I might need to open some extra ports on the firewall :)
+2008-06-14T11:45:00.000Z	nonix4	chmac	usually most email encryption things deal only with first hop & authentication for that - rest goes unencrypted
+2008-06-14T11:46:00.000Z	chmac	nonix4	I understand that. Do you know if email sent via SMTP + TLS is sent on port 25 or a different port? Like http is 80 but https is not...
+2008-06-14T11:47:00.000Z	nonix4	chmac	the answer is: it depends - after http people decided it would be better to just use the same port...
+2008-06-14T11:48:00.000Z	nonix4	chmac	but there are ports that are used for several ssl email protocols, some of the time - check /etc/services
+2008-06-14T11:48:00.000Z	chmac	nonix4	Ok, cool, so it can work on the same port, that's probably why my mail can't send, ISP blocks port 25, bah :(
+2008-06-14T11:49:00.000Z	nonix4	chmac	well when ISP blocks port 25 they usually supply an smtp server you're supposed to use as the first hop...
+2008-06-14T11:50:00.000Z	chmac	nonix4	I know, I travel a lot though, so I prefer to use my own smtp server, authenticated
+2008-06-14T11:50:00.000Z	chmac	nonix4	Which also matches my SPF record, etc
+2008-06-14T11:50:00.000Z	chmac	nonix4	I typically wrap evolution in a tsocks tunnel, but I'm looking at alternatives to that, looks like the port 25 issue won't go away any time soon :)
+2008-06-14T11:50:00.000Z	nonix4	chmac	the percentage of ISPs blocking port 25 is high - your best bet is proper hosting service
+2008-06-14T11:51:00.000Z	chmac	nonix4	What do you mean by "proper hosting service" ?
+2008-06-14T11:52:00.000Z	nonix4	chmac	have an email server running at a hosting service, tunnel to that way or another
+2008-06-14T11:53:00.000Z	nonix4	chmac	but you said you already have such a server somewhere? Try port 465?
+2008-06-14T11:54:00.000Z	chmac	nonix4	I admin my own mailserver. Postfix is running but doesn't respond on port 465
+2008-06-14T11:56:00.000Z	nonix4	chmac	Hmm... you could check which ports you're listening to... also check out the ssmtp package
+2008-06-14T11:57:00.000Z	chmac	nonix4	How do I check which ports I'm listening to?
+2008-06-14T12:02:00.000Z	nonix4	chmac	netstat -an; lsof -i  # you might want to check out postfix TLS docs, http://www.postfix.org/TLS_README.html
+2008-06-14T12:07:00.000Z	chmac	nonix4	Sweet, thanks for that link :)

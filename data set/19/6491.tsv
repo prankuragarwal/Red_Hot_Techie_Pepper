@@ -1,0 +1,19 @@
+2011-04-12T23:48:00.000Z	orin		Anyone?
+2011-04-12T23:48:00.000Z	orin		Today's system update broke my main box. :(
+2011-04-12T23:49:00.000Z	orin		I asked it politely to do that, it yelled at me about "Failed to load module "nvidia" (module does not exist, 0)
+2011-04-12T23:49:00.000Z	orin		Also, it mentioned (EE) No drivers available
+2011-04-12T23:50:00.000Z	orin		Nope.
+2011-04-12T23:50:00.000Z	ActionParsnip	orin	try:  sudo dpkg-reconfigure dkms
+2011-04-12T23:51:00.000Z	orin	ActionParsnip	did that. Accomplished nothing.
+2011-04-12T23:51:00.000Z	ActionParsnip	orin	try:  sudo apt-get --reinstall install dkms
+2011-04-12T23:52:00.000Z	orin	ActionParsnip	I have no internets, as I mentioned.
+2011-04-12T23:53:00.000Z	ActionParsnip	orin	ok then add:    blacklist nvidia    to /etc/modprobe.d/blacklist.conf     then reboot
+2011-04-12T23:53:00.000Z	ActionParsnip	orin	then reinstall dkms and it should be ok
+2011-04-13T00:03:00.000Z	orin	ActionParsnip	can't reinstall dkms, given that I have no internets.
+2011-04-13T00:04:00.000Z	ActionParsnip	orin	blacklist nvidia as I said and reboot and it won't load, you will then use the open driver
+2011-04-13T00:04:00.000Z	orin	ActionParsnip	did that. Blacklisted nvidia, rebooted, still got thrown into command prompt, with no X-y goodness.
+2011-04-13T00:05:00.000Z	ActionParsnip	orin	ok then blacklist nouveau too, you will use the nv driver then, failing that, blacklist nv and you will use vesa
+2011-04-13T00:06:00.000Z	ActionParsnip	orin	if you made an xorg.conf file then rename it
+2011-04-13T00:11:00.000Z	orin	ActionParsnip	you have saved the day. More or less...now I have X, but I am still shy internet.
+2011-04-13T00:11:00.000Z	ActionParsnip	orin	how do you connect, wired or wirelessly?
+2011-04-13T00:12:00.000Z	ActionParsnip	orin	ok if you run:  sudo lshw -C network     read the product line for the wired connection and websearch for that to find guides

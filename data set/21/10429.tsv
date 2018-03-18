@@ -1,0 +1,21 @@
+2012-01-27T00:44:00.000Z	auk		Is it normal for your system to tell you that you're running out of disk space when using an encrypted (DM Crypt) LVM  file system   and knowing the facts you've never used much disk space?
+2012-01-27T00:45:00.000Z	bean	auk	pastebin the output of df-h
+2012-01-27T00:47:00.000Z	auk	bean	http://pastebin.com/raw.php?i=i02UCyXH
+2012-01-27T00:48:00.000Z	bean	auk	that tells me that you're using ~ 100% of your LVM.
+2012-01-27T00:48:00.000Z	bean	auk	113 GB of 119 GB used.
+2012-01-27T00:49:00.000Z	bean	auk	I'm aware.  You're using almost 100% of it
+2012-01-27T00:51:00.000Z	bean	auk	I would doubt it.
+2012-01-27T00:52:00.000Z	auk	bean	Alrighties, I'll just wait until the system says it's using up all disk space and wait to see if this is really accurate or not,.
+2012-01-27T00:52:00.000Z	bean	auk	you can do a du -sh / to get the real number
+2012-01-27T00:54:00.000Z	auk	bean	Lol, permission is denied, even with sudo.
+2012-01-27T00:54:00.000Z	bean	auk	then you really are using 112 G on /
+2012-01-27T00:55:00.000Z	auk	bean	I do not understand if this will lead to consequences                 OR     what could be eating up the space on my SSD.
+2012-01-27T00:56:00.000Z	bean	auk	I'd imagine you have downloaded a lot of stuff, movies, music etc?
+2012-01-27T00:56:00.000Z	auk	bean	Nothing, I don't do much on this machine.       Installed a few apps, but they are not even 30GBs worth.
+2012-01-27T01:03:00.000Z	auk	bean	I think I found the file on my system creating problems.         /proc/kcore     <---- 140.7 TB (140,737,486,266,368 bytes)                 I only have a 128GB SSD (which is really a 119GB).
+2012-01-27T01:09:00.000Z	bean	auk	what is the output of du -sh /home/
+2012-01-27T01:12:00.000Z	bean	auk	you might need to restart to make the file actually be removed.
+2012-01-27T01:12:00.000Z	bean	auk	since it's probably open with X
+2012-01-27T01:12:00.000Z	bean	auk	want a quick hack to make that file not writeable?
+2012-01-27T01:13:00.000Z	auk	bean	Permissions? :P
+2012-01-27T01:13:00.000Z	bean	auk	or chattr +i

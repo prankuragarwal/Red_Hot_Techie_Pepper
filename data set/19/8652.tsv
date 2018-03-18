@@ -1,0 +1,19 @@
+2007-04-07T09:45:00.000Z	kingcobra		can somebody tell me how to reset the mounting settings of my external hard drive so that it auto mounts when i connect it
+2007-04-07T09:45:00.000Z	birdmun	kingcobra	you will likely need to edit your /etc/fstab file
+2007-04-07T09:46:00.000Z	kingcobra	birdmun	what should it be
+2007-04-07T09:47:00.000Z	birdmun	kingcobra	I would guess you would need to add automount in about the same position in the lineup that it appears for your cdrom
+2007-04-07T09:47:00.000Z	kingcobra	birdmun	ill try that, do ya know what is the default for an external hd partition
+2007-04-07T09:48:00.000Z	birdmun	kingcobra	do you have it mounted currently?
+2007-04-07T09:49:00.000Z	kingcobra	birdmun	yes, i did it thru gparted
+2007-04-07T09:50:00.000Z	birdmun	kingcobra	at console type cat /etc/mtab and look for it in the list you see
+2007-04-07T09:50:00.000Z	kingcobra	birdmun	thats my cd line /dev/hdc        /media/cdrom0   udf,iso9660 user,noauto     0       0
+2007-04-07T09:51:00.000Z	birdmun	kingcobra	what is the line that mentions your external hard drive?
+2007-04-07T09:51:00.000Z	kingcobra	birdmun	this is line from cat mtab /dev/sda3 /media/external vfat rw 0 0
+2007-04-07T09:52:00.000Z	birdmun	kingcobra	there you go ... you would be adding that line to your /etc/fstab then
+2007-04-07T09:53:00.000Z	kingcobra	birdmun	will that mount it so that i will hav full permissions and not just root
+2007-04-07T09:54:00.000Z	birdmun	kingcobra	although i'm a poor excuse for an expert here ... most of what i have said will work :)
+2007-04-07T09:54:00.000Z	birdmun	kingcobra	i know the
+2007-04-07T09:55:00.000Z	birdmun	kingcobra	i know the 'user' tag in your line for your cdrom should give you access
+2007-04-07T09:56:00.000Z	birdmun	kingcobra	i would look up fstab either the man page or look for it online to run down the different options you can add but i want to say that if you add automount to the , separated list that it should? automount
+2007-04-07T09:57:00.000Z	kingcobra	birdmun	ok ill try that and reboot thanks very much
+2007-04-07T09:57:00.000Z	birdmun	kingcobra	np

@@ -1,0 +1,19 @@
+2010-03-17T16:57:00.000Z	itai		hi, i need a command that will copy all my mp3 folders to another directory, but not my .doc folders. basically the command will select only folders with mp3 in them and move them to another dir. is that possible?
+2010-03-17T16:58:00.000Z	gce	itai	from a terminal do "  man rsync "
+2010-03-17T17:01:00.000Z	itai	gce	are you sure that rsync can do what i want, i would think that i would need at least two command, one to locate the folders and the other (rsync) to copy them, am i wrong?
+2010-03-17T17:05:00.000Z	gce	itai	nah rsync won't be able to do it by itself
+2010-03-17T17:06:00.000Z	gce	itai	you'd need to do something like find / -name "*mp3" -print -exec mv {} new_mp3 ;   but it would have to be something more creative to move entires folders especially if it contains mp3s and docs
+2010-03-17T17:08:00.000Z	itai	gce	trying that now
+2010-03-17T17:10:00.000Z	itai	gce	the find command moves the mp3 files themslevs to a new dir but not the folders, can you think of a solution ?
+2010-03-17T17:21:00.000Z	gce	itai	have write a script.  first use find command to find all mp3's and dump results to a text file, the read in each line doing the command: basename on it, then perform an rsync on the results of basename to directory
+2010-03-17T17:31:00.000Z	itai	gce	thanks i will work on that
+2010-03-17T17:34:00.000Z	gce	itai	np
+2010-03-17T17:35:00.000Z	itai	gce	the problem is that find only writes the mp3 themselves but does write the folder name
+2010-03-17T17:40:00.000Z	itai	gce	do you think i can do that with konqueror ? i heard it has many functions'
+2010-03-17T17:43:00.000Z	gce	itai	dunno I use mostly command line
+2010-03-17T17:44:00.000Z	itai	gce	the problem with find is that it only writes the mp3 and not the folders, perhaps i misunderstood your instructions?
+2010-03-17T17:46:00.000Z	gce	itai	if you do find / -name "*mp3" -print   it will print out the complete path of each mp3.
+2010-03-17T17:47:00.000Z	itai	gce	yes, i wrote that to a file in my home dir, how do i get rsync to recognise the folders within that file?
+2010-03-17T17:49:00.000Z	gce	itai	you need to write a script. have something like the following it it  for eachline in `cat filelist.txt` do THEBASE=`basename $eachline` ; rsync -av $THEBASE /newdir/
+2010-03-17T17:49:00.000Z	gce	itai	correction subsitute dirname for basename
+2010-03-17T17:52:00.000Z	itai	gce	all my folders are located in a dir called /data so, THEBASE=`/data $eachline ?

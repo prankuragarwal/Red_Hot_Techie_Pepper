@@ -1,0 +1,22 @@
+2007-12-14T16:15:00.000Z	BlackFoxTR		 apache server doesn't worked after i update 7.04 now php not working. how to fix it?
+2007-12-14T16:16:00.000Z	ikonia	BlackFoxTR	please define not working
+2007-12-14T16:16:00.000Z	ikonia	BlackFoxTR	ok, so apache does not have the php module in
+2007-12-14T16:17:00.000Z	ikonia	BlackFoxTR	where did you update from ?
+2007-12-14T16:17:00.000Z	ikonia	BlackFoxTR	an earlier 7.04 package or from an earlier ubuntu release
+2007-12-14T16:17:00.000Z	ikonia	BlackFoxTR	updated 7.04 or updated to 7.10
+2007-12-14T16:18:00.000Z	ikonia	BlackFoxTR	perfect
+2007-12-14T16:19:00.000Z	ikonia	BlackFoxTR	please enter /etc/apache/modules-enabled
+2007-12-14T16:20:00.000Z	ikonia	BlackFoxTR	/etc/apache2/mods-enabled sorry
+2007-12-14T16:20:00.000Z	ikonia	BlackFoxTR	do you see php5.load and php5.conf in thre ?
+2007-12-14T16:21:00.000Z	ikonia	BlackFoxTR	dpkg -l | grep php5
+2007-12-14T16:22:00.000Z	ikonia	BlackFoxTR	how many lines ?
+2007-12-14T16:22:00.000Z	ikonia	BlackFoxTR	pastebin
+2007-12-14T16:23:00.000Z	ikonia	BlackFoxTR	I said poastebin
+2007-12-14T16:23:00.000Z	ikonia	BlackFoxTR	pastebin
+2007-12-14T16:26:00.000Z	ikonia	BlackFoxTR	please look in /etc/apache2/mods-available for the php5 files I mentioned
+2007-12-14T16:27:00.000Z	ikonia	BlackFoxTR	you have deleted the symlinks then
+2007-12-14T16:27:00.000Z	ikonia	BlackFoxTR	you need to create a symlink from the avilable file to a file of the same name in the enabled dir
+2007-12-14T16:28:00.000Z	ikonia	BlackFoxTR	ln -s
+2007-12-14T16:32:00.000Z	BlackFoxTR	ikonia	 etc/apache2# ln -s mods-available/php5.conf mods-enabled/   << i did
+2007-12-14T16:32:00.000Z	ikonia	BlackFoxTR	does the files appear in mods-enabled ?
+2007-12-14T16:33:00.000Z	ikonia	BlackFoxTR	restart apache and you should be fine

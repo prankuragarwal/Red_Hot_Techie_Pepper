@@ -1,0 +1,24 @@
+2006-11-01T13:42:00.000Z	vik		I've just tried moving up to flash 9 beta, but about:plugins in firefox still says I have version 7 installed. I put libplashplayer.so in /usr/lib/mozilla-firefox/plugins
+2006-11-01T13:43:00.000Z	fnf	vik	Not everyone has root permission, it's more natural to put it under your .mozilla/plugins/
+2006-11-01T13:43:00.000Z	vik	fnf	that's where is was before, and should work from there for all users, no?
+2006-11-01T13:43:00.000Z	fnf	vik	And make sure the flash 7 plugin is uninstalled, this sometimes cause problem.
+2006-11-01T13:44:00.000Z	vik	fnf	yeah did that
+2006-11-01T13:44:00.000Z	fnf	vik	Yes, but if you're the only user in the system, it makes more sense to put it in your home folder.
+2006-11-01T13:44:00.000Z	vik	fnf	not the only user
+2006-11-01T13:45:00.000Z	fnf	vik	If you insist, try putting it in /usr/lib/firefox/plugins/, this is not guaranteed to work though.
+2006-11-01T13:46:00.000Z	fnf	vik	The difference is that we never know what the binary flash 7 package did to our system without a monitor.
+2006-11-01T13:47:00.000Z	vik	fnf	huh? the install script is quite simple.
+2006-11-01T13:49:00.000Z	fnf	vik	Ahh, I forgot there's a downloadable package, of course. You may put it under /usr/lib/firefox/plugins/ to see if it works, I'd recommend to work within your home though.
+2006-11-01T13:50:00.000Z	vik	fnf	put it in home as well, but now about:plugins shows both 9 and 7 installed. I can't work out where version 7 is coming from. Is there a search path for firefox plugins somwhere/
+2006-11-01T13:50:00.000Z	fnf	vik	What did you install flash 7 with ?.
+2006-11-01T13:51:00.000Z	vik	fnf	flashplugin-nonfree package. But have uninstalled that now. AFAIK it just downloads the plugin, extracts it into the plugins directory
+2006-11-01T13:52:00.000Z	fnf	vik	is 'ls -la /usr/lib/mozilla-firefox' shows that a symlink ?
+2006-11-01T13:52:00.000Z	fnf	vik	to /usr/lib/firefox ?
+2006-11-01T13:53:00.000Z	vik	fnf	yep
+2006-11-01T13:54:00.000Z	fnf	vik	Does '/usr/lib/firefox/plugins/' contain a copy of flash 7 ? I guess it doesn't though, either way, try removing the plugin in your home dir first then accessing a flash site to see if Fx works normally.
+2006-11-01T13:56:00.000Z	vik	fnf	it has a copy of flash 9. Will try removing it from there to see if firefox still thinks it has flash 7
+2006-11-01T13:57:00.000Z	fnf	vik	go on, you may delete both of them (/usr/lib and ~/.mozilla), perhaps firefox went crazy after the installation.
+2006-11-01T13:57:00.000Z	vik	fnf	just got rid of the one in /usr/lib, and it no longer thinks it has flash 7.
+2006-11-01T13:58:00.000Z	fnf	vik	That's sort of the problem, if you have flash 7 installed via aptitude and put flash 9 plugin in your home, /sometimes/ firefox insists on running the 7 version, that's weird but a minor issue.
+2006-11-01T13:59:00.000Z	vik	fnf	now I got rid of it from ~/.mozilla, and put it back in /usr/lib, and firefox tells me I'm running version 7 again. Wierd
+2006-11-01T14:00:00.000Z	fnf	vik	It's likely to be some orphan configuration stays put after flash 7 removal, another good idea to mess with your own home directory rather than root's btw. ;)

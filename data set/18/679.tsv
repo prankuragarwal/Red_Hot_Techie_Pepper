@@ -1,0 +1,18 @@
+2011-10-27T03:59:00.000Z	douglas-web-dev		I migrated from Debian tonight. Then I copied lots of folders from old /home/user. I only could do this as superuser. Now all my folders belong to root. How can I make all of them, including subfolders, belong to me, a normal user?
+2011-10-27T03:59:00.000Z	douglas-web-dev		Someone help me please?
+2011-10-27T04:00:00.000Z	escott	douglas-web-dev	chown -R username:username BUT since you didn't do the original copy correctly most likely all the permissions are wrong, so things like .ssh will have the wrong permissions if you do this
+2011-10-27T04:02:00.000Z	douglas-web-dev	escott	thank you. So I get on the folder via terminal and type chown -R username:username (same username twice, right?)
+2011-10-27T04:04:00.000Z	escott	douglas-web-dev	chown -R u:u /home/u. yes. the u after the : is the group. most files are owned by you and the group is your group. however the permissions on things like .ssh/id_rsa may be wrong
+2011-10-27T04:05:00.000Z	douglas-web-dev	escott	thank you. I'm doing it
+2011-10-27T04:14:00.000Z	douglas-web-dev	escott	it worked! I'd never do it that fast, thanks a lot! :)
+2011-10-27T04:15:00.000Z	escott	douglas-web-dev	id still be worried about your permissions. if you dont tell cp to preserve the owner permissions they could be all wrong
+2011-10-27T04:16:00.000Z	douglas-web-dev	escott	even not having .ssh files?
+2011-10-27T04:16:00.000Z	escott	douglas-web-dev	i would audit your permissions. you'll want to use find to figure out how things are permissioned
+2011-10-27T04:17:00.000Z	escott	douglas-web-dev	when you cped and lost your ownership you probably changed the rwx bits. so you need to verify that nothing secret has been exposed
+2011-10-27T04:20:00.000Z	douglas-web-dev	escott	It's only my wife and I that use this computer. She has hers own, so almost never she uses mine. I don't have anything here to hide from her. You mean exposure for local users or the internet?
+2011-10-27T04:22:00.000Z	escott	douglas-web-dev	for local users mostly, but you should be sure to use cp -a next time
+2011-10-27T04:23:00.000Z	escott	douglas-web-dev	also some programs will refuse to work if secret data is not permissioned correctly. examples would be the .ssh/authorized_keys file will be ignored if it is not permissioned correctly
+2011-10-27T04:24:00.000Z	douglas-web-dev	escott	is there some simple document on the web explaining these terminal command lines? And about Ubuntu, do you know some webpage to increase productivity?
+2011-10-27T04:25:00.000Z	escott	douglas-web-dev	and the most useful book is probably unix in a nutshell
+2011-10-27T04:25:00.000Z	douglas-web-dev	escott	thank you for the advices
+2011-10-27T04:26:00.000Z	douglas-web-dev	escott	Cool! I saved the book name :)

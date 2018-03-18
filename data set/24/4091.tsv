@@ -1,0 +1,24 @@
+2009-07-03T22:29:00.000Z	Dulak	mbeierl	System->Preferences-Startup Applications
+2009-07-03T22:28:00.000Z	Dulak	mbeierl	you can add it to your startup applications to run at login
+2009-07-03T22:29:00.000Z	mbeierl	Dulak	I have 40 users... I don't want to have to log in as each and every user to perform that action
+2009-07-03T22:35:00.000Z	Dulak	mbeierl	well if all the users are using gdm/kdm/xdm you could modify the sessions to run your script whenever the session is run
+2009-07-03T22:36:00.000Z	mbeierl	Dulak	I only have gdm, how do I do that? - modify the sessions?
+2009-07-03T22:37:00.000Z	Dulak	mbeierl	have a look in /etc/X11/Xsession.d
+2009-07-03T22:38:00.000Z	mbeierl	Dulak	that could very well be it!!!
+2009-07-03T22:41:00.000Z	Dulak	mbeierl	Xsession.d does a source not an exec, so if you are gonna add a file or chagne one, be sure you use exec to execute your script, otherwise it won't get run
+2009-07-03T22:42:00.000Z	mbeierl	Dulak	thanks for the tip on that...!
+2009-07-03T22:52:00.000Z	mbeierl	Dulak	when answering your question ...
+2009-07-03T22:50:00.000Z	mbeierl	Dulak	dangit.   when I use the nxclient for remote login - that does not run the xsession.d stuff... I'm back to gnome-session.  This is tough... I suppose if I explained it better it might help...
+2009-07-03T22:51:00.000Z	Dulak	mbeierl	that's why I said if the users are using gdm/kdm/xdm, which nxclient does not
+2009-07-03T22:52:00.000Z	mbeierl	Dulak	I was looking at the "sitting in front of the computer" case... and mistook the "GNOME" sesssion for GDM :(
+2009-07-03T22:52:00.000Z	Dulak	mbeierl	it's ok, I'm looking for a solution for nxclient
+2009-07-03T22:53:00.000Z	mbeierl	Dulak	thanks so much.  Here's the scenario: I'm using likewise open to allow authentication for arbitrary users in the Windows domain to this computer, either in front of it, or remotely using nxclient.
+2009-07-03T22:53:00.000Z	Dulak	mbeierl	nxclient runs gnome-wm right?
+2009-07-03T22:54:00.000Z	mbeierl	Dulak	logging in and checking...
+2009-07-03T22:55:00.000Z	mbeierl	Dulak	I only see gnome-session running, not gnome-wm - would it show in the process list?
+2009-07-03T22:56:00.000Z	Dulak	mbeierl	no, it's just a script, would run at login and then exit after starting the windowmanager
+2009-07-03T22:56:00.000Z	mbeierl	Dulak	ok - lemme try a test of putting something into it to ensure that it's run.
+2009-07-03T22:56:00.000Z	Dulak	mbeierl	if it does run you can easily add an exec line to run your script before the window manager
+2009-07-03T22:58:00.000Z	mbeierl	Dulak	shame... I was hoping for a generic solution that would not get trounced if there was an update, but this is what it is, and if it works....
+2009-07-03T22:59:00.000Z	Dulak	mbeierl	as nice as nxclient is, it can be a real pain in the butt sometimes
+2009-07-03T23:03:00.000Z	mbeierl	Dulak	that did it... I just had to nohup script& or the nxclient session would not start

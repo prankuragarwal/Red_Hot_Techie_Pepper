@@ -1,0 +1,22 @@
+2008-09-15T23:43:00.000Z	unop	opt1k	#bash isn't limited to linux
+2008-09-15T23:44:00.000Z	opt1k	unop	but it has to do with linux, and even if it doesn't, they could at least answer politely, not start trashing ppl asap
+2008-09-15T23:45:00.000Z	unop	opt1k	well, complaining about it elsewhere doesn't help you or anyone else - just focus on getting your questions answered and you're likely to source a solution.
+2008-09-15T23:46:00.000Z	opt1k	unop	true.
+2008-09-16T02:33:00.000Z	unop	opt1k	it probably means /var/mail/opt1k is a symlink to another symlink (and so on) - you have a couple of options.  1) this file shouldn't normally be a symlink - so you can delete it and recreate a new blank file (with touch)  2) find out where the symlinks eventually take you, then symlink directly to that target.
+2008-09-16T02:34:00.000Z	opt1k	unop	i'll go with the first option, too tired for anything else =) thx!
+2008-09-16T02:37:00.000Z	opt1k	unop	 cannot remove `/var/mail/opt1k': Too many levels of symbolic links
+2008-09-16T02:37:00.000Z	unop	opt1k	tried  rm -f ... ?
+2008-09-16T02:38:00.000Z	unop	opt1k	what does ls -l /var/mail/opt1k give you?
+2008-09-16T02:38:00.000Z	opt1k	unop	ls: cannot access /var/mail/opt1k: Too many levels of symbolic links
+2008-09-16T02:39:00.000Z	unop	opt1k	sheesh.  ls -l /var/mail/*
+2008-09-16T02:39:00.000Z	opt1k	unop	lrwxrwxrwx 1 root root 10 2008-09-15 22:49 /var/mail -> spool/mail
+2008-09-16T02:40:00.000Z	unop	opt1k	ls -l /var/mail/spool/*
+2008-09-16T02:40:00.000Z	opt1k	unop	ls: cannot access /var/mail/spool*: Too many levels of symbolic links
+2008-09-16T02:41:00.000Z	unop	opt1k	heh, how'd you get yourself into this mess? :)
+2008-09-16T02:41:00.000Z	opt1k	unop	btw it says that /var/mail is a broken link
+2008-09-16T02:41:00.000Z	opt1k	unop	don't know.. i've just installed sendmail
+2008-09-16T02:41:00.000Z	unop	opt1k	try this.  rm -f /var/mail
+2008-09-16T02:42:00.000Z	opt1k	unop	but now i have other problem: /var/mail/opt1k: No such file or directory (errno = 2)
+2008-09-16T02:43:00.000Z	unop	opt1k	now.  sudo mkdir -p /var/mail;  sudo touch /var/mail/$USER;  sudo chown $USER.$USER /var/mail/$USER;
+2008-09-16T02:44:00.000Z	opt1k	unop	ur the best
+2008-09-16T03:50:00.000Z	unop	opt1k	caution, he might not want just that

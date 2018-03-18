@@ -1,0 +1,21 @@
+2010-04-16T19:47:00.000Z	Guest93540		hey... im trying to get data from a HD i made unbootable while trying to get mac osx snow leopard installed ... gparted displays the partitions but i cant mount
+2010-04-16T19:48:00.000Z	sipior	Guest93540	what error dies it give when you try to mount the partition?
+2010-04-16T19:50:00.000Z	Guest93540	sipior	wrong fs type, bad option, bad superblock on /dev/sdb
+2010-04-16T19:51:00.000Z	sipior	Guest93540	how did you attempt to mount the volume?
+2010-04-16T19:51:00.000Z	Guest93540	sipior	mount -t hfsplus /dev/sdb /media/martin
+2010-04-16T19:52:00.000Z	sipior	Guest93540	you want to specify a partition, not a whole disk, right?
+2010-04-16T19:52:00.000Z	Guest93540	sipior	maybe useful: gparted displays 3 partitions but i only have sdb1 in /dev
+2010-04-16T19:53:00.000Z	Guest93540	sipior	the partition i want to use is not listed in /dev
+2010-04-16T19:53:00.000Z	sipior	Guest93540	and if you specify it manually? also, what does fdisk say?
+2010-04-16T19:54:00.000Z	Guest93540	sipior	fdisk -l ?
+2010-04-16T19:54:00.000Z	Guest93540	sipior	(i dont want to format my disk accidentially)
+2010-04-16T19:54:00.000Z	sipior	Guest93540	yes indeed
+2010-04-16T19:58:00.000Z	Guest93540	sipior	it says /dev/sdb is GPT and that fdisk doesnt support GPT
+2010-04-16T19:58:00.000Z	Guest93540	sipior	(GUID Partition Table)
+2010-04-16T20:00:00.000Z	sipior	Guest93540	what happens when you try to mount the device you do get in /dev?
+2010-04-16T20:01:00.000Z	Guest93540	sipior	i tried sdb and sdb1 - same error
+2010-04-16T20:07:00.000Z	Guest93540	sipior	any ideas?
+2010-04-16T20:08:00.000Z	sipior	Guest93540	might be easiest trying to access the device from OS X, and copy the data from there.
+2010-04-16T20:10:00.000Z	Guest93540	sipior	unfortunately thats not possible since i dont have access to any osx comp
+2010-04-16T20:12:00.000Z	sipior	Guest93540	this might be of some use to you: http://www.haiku-os.org/articles/2009-11-18_multiboot_installation_gpt_disk
+2010-04-16T20:13:00.000Z	sipior	Guest93540	in particular, have a look at gptsync. never used it myself, but maybe it can get you out of your difficulty.

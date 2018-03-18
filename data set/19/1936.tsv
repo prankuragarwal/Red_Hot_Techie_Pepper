@@ -1,0 +1,19 @@
+2010-08-28T10:52:00.000Z	meditator	dougb_freebsd	i added -vvv to the command line and also changed the "ssh -i" to  "ssh -i -v"
+2010-08-28T10:57:00.000Z	meditator	dougb_freebsd	 should it run as x application or just "default behaviour" ?
+2010-08-28T10:57:00.000Z	dougb_freebsd	meditator	when I say "command line" what do you think I mean? :)
+2010-08-28T11:00:00.000Z	dougb_freebsd	meditator	ok, so the next step is to try running the script on the command line and see if you get errors
+2010-08-28T11:21:00.000Z	meditator	dougb_freebsd	sorry.. was away.. somebody called me for some help.. yes .. i tried running the script from command .. it works alright.. it didnt ask me for any password
+2010-08-28T11:22:00.000Z	dougb_freebsd	meditator	that sounds to me like you're using ssh-agent, is that right?
+2010-08-28T11:23:00.000Z	meditator	dougb_freebsd	thats right
+2010-08-28T11:23:00.000Z	dougb_freebsd	meditator	so what does that suggest to you as a possible source of  your error when your script is run from cron?
+2010-08-28T11:25:00.000Z	meditator	dougb_freebsd	 i have tried to run it through cron as root as well as myself.. but either ways it doesnt work.. so i'm not sure it it is an authentication problem...
+2010-08-28T11:26:00.000Z	dougb_freebsd	meditator	when you ssh to the host as yourself ssh-agent is providing the authentication credentials to the remote host
+2010-08-28T11:28:00.000Z	meditator	dougb_freebsd	 so doesnt ssh-agent provide the credentials when cron is run as myself?
+2010-08-28T11:28:00.000Z	dougb_freebsd	meditator	because ssh-agent is tied to a login session
+2010-08-28T11:30:00.000Z	dougb_freebsd	meditator	you need to learn about setting up access for an unattended process ... the usual way to do that is with a restricted account on the target system and a passwordless ssh key
+2010-08-28T11:32:00.000Z	dougb_freebsd	meditator	it's not hard to do, you should be able to find docs on it if you search, I vaguely recall a how-to on how to do it with rsync in fact, but it's been years since I've looked at it
+2010-08-28T11:32:00.000Z	meditator	dougb_freebsd	for example http://troy.jdmz.net/rsync/index.html
+2010-08-28T11:33:00.000Z	dougb_freebsd	meditator	for rsync ssh is just the transport layer, a way to establish the connection between systems so that the bits can flow
+2010-08-28T11:33:00.000Z	dougb_freebsd	meditator	yes, that looks like the right stuff
+2010-08-28T11:34:00.000Z	meditator	dougb_freebsd	thanks.. let me have a good read into it.. thanks for ur help..
+2010-08-28T11:35:00.000Z	dougb_freebsd	meditator	no worries, just walk through all the steps and you should be fine

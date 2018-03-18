@@ -1,0 +1,23 @@
+2004-11-28T09:48:00.000Z	GotD0t		does anybody know how to reload ALSA?
+2004-11-28T09:48:00.000Z	lemsx1	GotD0t	what do you mean by "reload"
+2004-11-28T09:49:00.000Z	lemsx1	GotD0t	sudo /etc/init.d/alsa stop && sudo /etc/init.d/alsa start ?
+2004-11-28T10:15:00.000Z	lemsx1	GotD0t	using usb audio devices? i had a problem before that i couldn't get alsa to use the built-in audio-card on a system (if the usb microphone, which was seen as a sound-card, was plugged in...) i never found the solution to this problem... i simply unplugged the darng thing and rebooted. go figure. perhaps the beers had something to do with it ;-)
+2004-11-28T10:15:00.000Z	GotD0t	lemsx1	no... pci audigy
+2004-11-28T10:16:00.000Z	lemsx1	GotD0t	use lsmod to see what modules are attached to your kernel... unload some (or all) the snd* ones. and make sure your /etc/modules.conf file is correct (as well as /etc/modules and whatever you are using from: discover, discover2, hotplug)
+2004-11-28T10:16:00.000Z	lemsx1	GotD0t	talk about confusing newbies :-)
+2004-11-28T10:24:00.000Z	lemsx1	GotD0t	but do you ever use the built-in one? if not, just disable it at the BIOS level :-) that's what I did :-)
+2004-11-28T10:24:00.000Z	GotD0t	lemsx1	why would i use the default one? its only stereo, when my audigy is 5.1.... and my BIOS is crappy... wont let me disable onboard sound
+2004-11-28T10:34:00.000Z	lemsx1	GotD0t	what do you have for /etc/modutils/alsa ?
+2004-11-28T10:35:00.000Z	lemsx1	GotD0t	 you might need to unload the drivers force-fully :-)
+2004-11-28T10:35:00.000Z	lemsx1	GotD0t	dpkg-reconfigure alsa-base
+2004-11-28T10:35:00.000Z	GotD0t	lemsx1	well thats fine... as long as it works
+2004-11-28T10:35:00.000Z	lemsx1	GotD0t	say yes when asked about force drivers to unload, or edit /etc/default/alsa
+2004-11-28T10:36:00.000Z	lemsx1	GotD0t	you can't have emu10k1 and snd-card-emu10k1 at the same time... either OSS or ALSA, not both
+2004-11-28T10:36:00.000Z	lemsx1	GotD0t	snd_emu10k1 i mean...
+2004-11-28T10:37:00.000Z	lemsx1	GotD0t	what about emu10k1 ?
+2004-11-28T10:39:00.000Z	lemsx1	GotD0t	edit /etc/modutils/aliases (or make /etc/modutils/local) and put: alias snd_intel8x0 off
+2004-11-28T10:41:00.000Z	lemsx1	GotD0t	you might need to change local for 000local so that it gets parsed first by update-modules ;-)
+2004-11-28T10:41:00.000Z	lemsx1	GotD0t	and of course, you will need to reboot your system... or go the long way: unload all modules, kill all procs holding the modules in the kernel, etc... etc...
+2004-11-28T10:58:00.000Z	lemsx1	GotD0t	drastic solutions uh
+2004-11-28T11:25:00.000Z	lemsx1	GotD0t	got new mobo?
+2004-11-28T11:25:00.000Z	lemsx1	GotD0t	much better

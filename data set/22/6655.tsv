@@ -1,0 +1,22 @@
+2009-01-16T22:03:00.000Z	catmando		hey all
+2009-01-16T22:03:00.000Z	catmando		i've got a very strange problem
+2009-01-16T22:04:00.000Z	catmando		i've set up a dhcp/tftp-hpa server to allow me to do a PXE install
+2009-01-16T22:04:00.000Z	catmando		testing went fine
+2009-01-16T22:04:00.000Z	catmando		i.e. i can get files using tftp
+2009-01-16T22:04:00.000Z	catmando		but the syslog keeps saying that the client is searching for a file that doesn't exist
+2009-01-16T22:04:00.000Z	catmando		the file most definitely exists
+2009-01-16T22:05:00.000Z	catmando		i've even set 777 on it and its parent
+2009-01-16T22:05:00.000Z	Solver	catmando	tftp is often chrooted
+2009-01-16T22:05:00.000Z	Solver	catmando	so you need to take into account the path a the file is called
+2009-01-16T22:07:00.000Z	catmando	Solver	yeah
+2009-01-16T22:09:00.000Z	catmando	Solver	let me run a couple tests and provide a pastebin
+2009-01-16T22:09:00.000Z	Solver	catmando	cool
+2009-01-16T22:24:00.000Z	catmando	Solver	i think I know what it is
+2009-01-16T22:24:00.000Z	Solver	catmando	cool
+2009-01-16T22:24:00.000Z	catmando	Solver	it seems that tftp-hpa can't handle symlinks
+2009-01-16T22:24:00.000Z	catmando	Solver	which is a new bug :(
+2009-01-16T22:25:00.000Z	catmando	Solver	since all the tutorials use tftp-hpa and a symlink for the configuration folder
+2009-01-16T22:25:00.000Z	Solver	catmando	ah.  I wonder if it is for security
+2009-01-16T22:26:00.000Z	Solver	catmando	check the man page to see if there is a way to allow symlinks
+2009-01-16T22:40:00.000Z	catmando	Solver	nah, it's a bug
+2009-01-16T22:40:00.000Z	catmando	Solver	thanks for the guidance

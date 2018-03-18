@@ -1,0 +1,22 @@
+2005-05-13T16:39:00.000Z	nevyn		ok i"m having wierd problems with a ubuntu system acting as a gateway i can telnet out to a remote webserver from an internal host and do a GET  and have it work but web browsers all hang and there"s nothing useful in the kernel log> any ideas?
+2005-05-13T16:40:00.000Z	bwb	nevyn	are you telneting using the hostname or ip addr?
+2005-05-13T16:42:00.000Z	nevyn	bwb	checked that.
+2005-05-13T16:42:00.000Z	bwb	nevyn	and it works, you can get packets back?
+2005-05-13T16:42:00.000Z	bwb	nevyn	also is the gateway doing any NATing or just acting as a router?
+2005-05-13T16:43:00.000Z	nevyn	bwb	the box is NATing using hoary with the ipmasq package from universe
+2005-05-13T16:44:00.000Z	bwb	nevyn	hrm
+2005-05-13T16:45:00.000Z	bwb	nevyn	timeouts you said... can it determine the hostname? is it "waiting for a reply"? etc?
+2005-05-13T16:45:00.000Z	nevyn	bwb	hostname lookups work for ping.
+2005-05-13T16:45:00.000Z	bwb	nevyn	right right,  i'm trying to think of how the browser could be failing tho
+2005-05-13T16:46:00.000Z	nevyn	bwb	that's what's gotten me stumped too.
+2005-05-13T16:47:00.000Z	nevyn	bwb	no.
+2005-05-13T16:57:00.000Z	nevyn	bwb	any more thoughts. this is driving me insane.
+2005-05-13T16:57:00.000Z	bwb	nevyn	nah i'm sorry man... can't think of anything
+2005-05-13T16:58:00.000Z	bwb	nevyn	hrm that odder in my opinion
+2005-05-13T16:59:00.000Z	nevyn	bwb	I'd expect unable to contact proxy server.
+2005-05-13T05:30:00.000Z	nevyn	bwb	found it.
+2005-05-13T05:30:00.000Z	nevyn	bwb	linux won't fragment a packet by default.
+2005-05-13T05:30:00.000Z	nevyn	bwb	it drops it.
+2005-05-13T05:31:00.000Z	bwb	nevyn	hrm ahhhhhhhh
+2005-05-13T05:31:00.000Z	bwb	nevyn	interesting
+2005-05-13T05:32:00.000Z	nevyn	bwb	it was working I forgot I twiddled ppp options to make ssh better.

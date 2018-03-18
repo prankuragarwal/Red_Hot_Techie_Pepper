@@ -1,0 +1,18 @@
+2010-09-01T11:15:00.000Z	turt1e	bnixy7	the files probably just got copied over as read only,  do you just want to know how to change the permissions on them?
+2010-09-01T11:18:00.000Z	turt1e	bnixy7	if you right click a file and select properties what are the owner permissions set to?
+2010-09-01T11:22:00.000Z	turt1e	bnixy7	 yeah...  how exactly where these files transfered?
+2010-09-01T11:27:00.000Z	turt1e	bnixy7	Ahh.. that's probably why they have been set to nobody.   Did the permissions tab allow you to change the file to read/write?  If not you will have to make the change as root
+2010-09-01T11:33:00.000Z	turt1e	bnixy7	 well, I don't think you want to always run as root.  but in a terminal window you can run "sudo chown username:username filename" to change it's ownership to your username
+2010-09-01T11:38:00.000Z	turt1e	bnixy7	that part I'm not real clear on.  can you explain again the setup
+2010-09-01T11:41:00.000Z	turt1e	bnixy7	can you tell me what the "writable" line in your /etc/samba/smb.conf file says?
+2010-09-01T11:43:00.000Z	turt1e	bnixy7	what about the "creat mask" and "directory mask" lines?
+2010-09-01T11:47:00.000Z	turt1e	bnixy7	 sudo gedit /etc/samba/smb.conf
+2010-09-01T11:48:00.000Z	turt1e	bnixy7	 change  create mask to 0666 and directory mask to 0777,  but make a backup of the original file with sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bak first
+2010-09-01T11:50:00.000Z	turt1e	bnixy7	oh and make sure you are making the changes under the "[shared_local] setting for your share
+2010-09-01T11:56:00.000Z	turt1e	bnixy7	  actually that may be ok.  It's been a while since I've messed with samba shares.  Just looked at my current one also and don't see that either.  you can either try the value I gave or go with the 0755 values now given in the comments of the smb.conf.  I'd actually try 0775 first, reboot and see if that fixes it
+2010-09-01T12:01:00.000Z	turt1e	bnixy7	  I do, but by default it seems to be commented out
+2010-09-01T12:08:00.000Z	turt1e	bnixy7	 you mean you tried the settings change and the files are still getting copied over as read only after a reboot?
+2010-09-01T12:19:00.000Z	turt1e	bnixy7	you said you checked EVERYTHING in the samba settings?  you may want to double check that you didn't check off a setting for requiring a valid user
+2010-09-01T12:27:00.000Z	turt1e	bnixy7	 can you back out the changes you made?  I'm at a lose at this point.
+2010-09-01T12:29:00.000Z	turt1e	bnixy7	and the only lines you modiefied in smb.conf were the two mask entries?
+2010-09-01T12:30:00.000Z	turt1e	bnixy7	sure

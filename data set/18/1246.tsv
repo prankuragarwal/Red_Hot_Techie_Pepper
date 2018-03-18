@@ -1,0 +1,18 @@
+2011-04-22T06:21:00.000Z	cab938_dt		I've got an application that's pretty sensitive to kernel and package changes, but need to deploy it over time to a range of machines.  Is there a way I can "snapshot" or create some automated log so that when I install on newer machines it doesn't grab the wrong updates?  I need particular versions of the kernel etc
+2011-04-22T06:23:00.000Z	ohsix	cab938_dt	what application? and why is it so dependent on the kernel version (most dependencies on kernel versions are >=, not =)
+2011-04-22T06:25:00.000Z	ohsix	cab938_dt	given the circumstances you should probably package your drivers and the kernel to go with them for your deployments
+2011-04-22T06:26:00.000Z	cab938_dt	ohsix	so just write a script to downgrade the kernel to the right level?
+2011-04-22T06:26:00.000Z	ohsix	cab938_dt	what device is it?
+2011-04-22T06:26:00.000Z	ohsix	cab938_dt	no, build a debian package with the kernel you need
+2011-04-22T06:27:00.000Z	cab938_dt	ohsix	ok, I'll look into what it takes to build a deb file, never gone it
+2011-04-22T06:28:00.000Z	ohsix	cab938_dt	ahh it just uses an analog devices ADC, the rest is in software
+2011-04-22T06:28:00.000Z	ohsix	cab938_dt	at least the pci version is :P
+2011-04-22T06:28:00.000Z	cab938_dt	ohsix	I imagine they're all the same, they seem to be good at repackaging for different form factors
+2011-04-22T06:31:00.000Z	ohsix	cab938_dt	you should see if you can get them to split it up and open source it, it's not really remarkable, the hard part is done in dumb hardware
+2011-04-22T06:31:00.000Z	cab938_dt	ohsix	we've been asking and asking, I have a dev heading over there next week where I hope we can ask some more
+2011-04-22T06:49:00.000Z	cab938_dt	ohsix	does the package linux-image exist anymore?  This might be useful enough for me to just install it instead of a custom kernel
+2011-04-22T06:49:00.000Z	ohsix	cab938_dt	linux-image is a skeleton package that depends on others
+2011-04-22T06:50:00.000Z	ohsix	cab938_dt	you can crib the old debdiff to build the kernel version you want to stick with; i only suggested building your own because eventually ubuntu will stop building that version, if they haven't already; it'd just be like using the version in the archive
+2011-04-22T06:51:00.000Z	cab938_dt	ohsix	they just don't keep the old kernel version packages around?
+2011-04-22T06:51:00.000Z	ohsix	cab938_dt	the same goes for any package really
+2011-04-22T06:52:00.000Z	cab938_dt	ohsix	yea, fair enough, I thought they might be different for kernels

@@ -1,0 +1,19 @@
+2007-09-09T08:20:00.000Z	Korvak		I forgot both my username and password for Ubuntu. What should I do? Booting in recovery mode simply asks for a password too.
+2007-09-09T08:21:00.000Z	Korvak		Can someone help me figure out my Ubuntu username and/or reset it and my password?
+2007-09-09T08:23:00.000Z	andresj	Korvak	boot to a livecd (the ubuntu livecd is just fine), mount the partition, 'sudo chroot /path/to/partition', and then do 'passwd <youruser>'
+2007-09-09T08:24:00.000Z	Korvak	andresj	I'm not sure what the partiion is called. Is there a way to figure it out? it's a SATA drive.
+2007-09-09T08:26:00.000Z	andresj	Korvak	you can start gparted (maybe you'll need to install it in the livecd: 'sudo apt-get install gparted' in the console) and see which partition is the one you use
+2007-09-09T08:27:00.000Z	andresj	Korvak	you can also do 'echo /dev/hd* /dev/sd*', and that will give you another list (though less comprensible)
+2007-09-09T08:29:00.000Z	Korvak	andresj	I have a ton of them. It says /dev/sda /dev/sda1 /dev/sda2 /dev/sdb /dev/sdb2 /dev/sdb5 /dev/sdb6 and many others.
+2007-09-09T08:36:00.000Z	andresj	Korvak	create a directory: 'sudo mkdir /mnt/linux'; then 'sudo mount /dev/sdXX /mnt/linux'
+2007-09-09T08:38:00.000Z	Korvak	andresj	Thanks. I mounted that and found my username in the /etc/passwd file. now, how do I reset it?
+2007-09-09T08:38:00.000Z	Korvak	andresj	Reset the password that is.
+2007-09-09T08:38:00.000Z	andresj	Korvak	'passwd <user>'
+2007-09-09T08:39:00.000Z	Korvak	andresj	Even though the username I entered is in the passwd file.
+2007-09-09T08:39:00.000Z	andresj	Korvak	without the <>
+2007-09-09T08:39:00.000Z	Korvak	andresj	I typed it without the <>
+2007-09-09T08:40:00.000Z	andresj	Korvak	mm... I am not sure then... did you do it from within the chroot?
+2007-09-09T08:40:00.000Z	Korvak	andresj	No, how do I do that?
+2007-09-09T08:41:00.000Z	andresj	Korvak	'sudo chroot /mnt/linux' (replace /mnt/linux if you mounted it in another dir)
+2007-09-09T08:41:00.000Z	Korvak	andresj	I was able to reset the password. Now rebooting and testing. Thanks!
+2007-09-09T08:41:00.000Z	andresj	Korvak	no prob

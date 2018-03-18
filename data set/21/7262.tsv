@@ -1,0 +1,21 @@
+2006-11-04T16:51:00.000Z	xSUSHi		anyone know how i can use my new hard drive for like /usr and /home
+2006-11-04T16:51:00.000Z	georgeb	xSUSHi	to resize a partition, you need to have free space on the hard drive after that partition
+2006-11-04T16:52:00.000Z	xSUSHi	georgeb	i have free space.  I can re-size it ???
+2006-11-04T16:52:00.000Z	xSUSHi	georgeb	i thought ext3 cant be resized/moved
+2006-11-04T16:52:00.000Z	georgeb	xSUSHi	you need to have free space exactly after that partition
+2006-11-04T16:52:00.000Z	xSUSHi	georgeb	is that a feature in fdisk?  i didnt even check
+2006-11-04T16:52:00.000Z	xSUSHi	georgeb	no my windows partition is in between
+2006-11-04T16:52:00.000Z	xSUSHi	georgeb	but i can use a windows partition editor to move the data
+2006-11-04T16:53:00.000Z	georgeb	xSUSHi	in this case you can't resize
+2006-11-04T16:53:00.000Z	xSUSHi	georgeb	ok then I will just move the partitions so that i can resize
+2006-11-04T16:53:00.000Z	georgeb	xSUSHi	let me look for a guide, I know one way using fdisk :)
+2006-11-04T16:53:00.000Z	xSUSHi	georgeb	yes i will lnow =]       i didnt even think about resizing my main ext3
+2006-11-04T16:54:00.000Z	georgeb	xSUSHi	http://gparted.sourceforge.net/larry/resize/resizing.htm
+2006-11-04T16:55:00.000Z	xSUSHi	georgeb	thanks!
+2006-11-04T16:57:00.000Z	georgeb	xSUSHi	the fdisk way would be something like this: using fdisk: delete the windows partition, delete the ext3 partition, recreate the ext3 partition using the same start cylinder as the original ext3 partition, and the end cylinder the one from the old windows partition; write the new partition table; then resize2fs /dev/hda to update the ext3 to the new size of the physical partition
+2006-11-04T16:57:00.000Z	georgeb	xSUSHi	but gparted looks much easier :)
+2006-11-04T16:58:00.000Z	xSUSHi	georgeb	on gparted, the "resize" function is greyed out     - and there is unallocated space next to it -   does it have to be un-mounted?
+2006-11-04T16:59:00.000Z	georgeb	xSUSHi	yes; you have to boot with the live cd; or; from what I know there is a livecd distro with gparted made expecially for resizing partitions
+2006-11-04T16:59:00.000Z	georgeb	xSUSHi	http://distrowatch.com/table.php?distribution=gparted
+2006-11-05T17:00:00.000Z	xSUSHi	georgeb	thanks a lot i'll just boot from the live cd
+2006-11-05T17:02:00.000Z	xSUSHi	georgeb	actually i will check out that gparted live cd -- on a business card cdrom

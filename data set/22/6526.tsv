@@ -1,0 +1,22 @@
+2006-12-13T17:58:00.000Z	FunnyMan3595		Agifws: You can't usually mount in user mode, you have to be able to enter root mode.
+2006-12-13T17:59:00.000Z	FunnyMan3595		Agifws: Unless that's been granted by root.  The classic example of that is mounting a cdrom or other removable media.
+2006-12-13T17:59:00.000Z	Agiofws	FunnyMan3595	  ths is what has happened  mount: special device /dev/disk/by-uuid/00ECF459ECF44A84 does not exist
+2006-12-13T06:00:00.000Z	FunnyMan3595	Agiofws	Try: ls /dev/disk/by-uuid
+2006-12-13T06:03:00.000Z	Agiofws	FunnyMan3595	 07548e20-a2d3-4ec6-806f-0e4c0e78a0eb  ab82ab50-e6ba-4580-92b4-0ed4b4890b5d  457F-37F1  whats that
+2006-12-13T06:06:00.000Z	Agiofws	FunnyMan3595	 let me see
+2006-12-13T06:12:00.000Z	Agiofws	FunnyMan3595	  yes there is a dir /media/hdb5 now how do i mount ?
+2006-12-13T06:13:00.000Z	FunnyMan3595	Agiofws	You misunderstood.
+2006-12-13T06:13:00.000Z	FunnyMan3595	Agiofws	You need a blank directory somewhere to mount to.  Just create a directory wherever you want it to be.
+2006-12-13T06:14:00.000Z	FunnyMan3595	Agiofws	Right, if I'm reading that right...
+2006-12-13T06:15:00.000Z	FunnyMan3595	Agiofws	Which isn't guaranteed.
+2006-12-13T06:15:00.000Z	FunnyMan3595	Agiofws	It'd be the other way around in that case, with the device as /dev/hdb5.
+2006-12-13T06:16:00.000Z	FunnyMan3595	Agiofws	Try: sudo mount -t fat32 /dev/hdb5 /media/hdb5
+2006-12-13T06:25:00.000Z	Agiofws	FunnyMan3595	 it worked
+2006-12-13T06:26:00.000Z	Agiofws	FunnyMan3595	 now  when i try to copy files  to it   it says permison dinied can you help me on this one ?
+2006-12-13T06:28:00.000Z	FunnyMan3595	Agiofws	Sorry, two conversations...
+2006-12-13T06:29:00.000Z	FunnyMan3595	Agiofws	You'll need an extra tag in the mount line.
+2006-12-13T06:29:00.000Z	FunnyMan3595	Agiofws	Start off by doing umount on the directory you just mounted to.
+2006-12-13T06:30:00.000Z	FunnyMan3595	Agiofws	And then use the same mount command as before, but make it start out: mount -w -f ...
+2006-12-13T06:32:00.000Z	FunnyMan3595	Agiofws	Try it.
+2006-12-13T06:32:00.000Z	FunnyMan3595	Agiofws	You'll probably need to sudo umount /media/hdb5 first, though.
+2006-12-13T06:35:00.000Z	Agiofws	FunnyMan3595	 still not letting me

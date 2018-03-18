@@ -1,0 +1,21 @@
+2008-05-02T07:32:00.000Z	dmakalsky		Hi, I just upgraded my RAM to 4GB and Hardy only reports 3GB
+2008-05-02T07:32:00.000Z	dmakalsky		how to fix?
+2008-05-02T07:33:00.000Z	cwillu	dmakalsky	install the server kernel, (and linux-restricted-modules-2.6.24-16-server by hand, it doesn't have a meta package for the -server kernels)
+2008-05-02T07:33:00.000Z	dmakalsky	cwillu	can I do it with apt-get?
+2008-05-02T07:33:00.000Z	cwillu	dmakalsky	only the server kernel has -pae installed, which is required to use more than 4g
+2008-05-02T07:34:00.000Z	cwillu	dmakalsky	apt-get install linux-server linux-restricted-modules-2.6.24-16-server
+2008-05-02T07:34:00.000Z	cwillu	dmakalsky	you'll have to install the newer restricted modules each time the kernel is updated (unless they fix the meta-package thing)
+2008-05-02T07:35:00.000Z	dmakalsky	cwillu	ok, thanks a lot
+2008-05-02T07:35:00.000Z	dmakalsky	cwillu	is there a conceptual reason why non servers are restricted to 3GB of RAM?
+2008-05-02T07:36:00.000Z	cwillu	dmakalsky	32bit processors can only address 4gb (and that's still a limitation with the 32-bit server kernel*_
+2008-05-02T07:36:00.000Z	dmakalsky	cwillu	so then whats the deal with the 3GB limit?
+2008-05-02T07:37:00.000Z	cwillu	dmakalsky	the -server kernel has pae enabled, which lets the kernel address more memory, but any given process is still limited to 4gb of address space (which isn't exactly the same thing as memory, but it's close)
+2008-05-02T07:37:00.000Z	cwillu	dmakalsky	pae however does have a slight performance overhead, so you (or rather, I) don't want it unless you actually have more memory
+2008-05-02T07:38:00.000Z	dmakalsky	cwillu	I hope the extra gig of RAM is worth the hit :)
+2008-05-02T07:38:00.000Z	cwillu	dmakalsky	probably;  avoiding swap is almost always a win
+2008-05-02T07:46:00.000Z	dmakalsky	cwillu	ok... rebooted now it says I am running Kernel 2.6.24-16-server but RAM is still 3GB.  Please note the BIOS says 4GB (I am not insane)
+2008-05-02T07:46:00.000Z	cwillu	dmakalsky	where are you checking?
+2008-05-02T07:47:00.000Z	dmakalsky	cwillu	where should I check?
+2008-05-02T07:48:00.000Z	dmakalsky	cwillu	free -m still shows 3033
+2008-05-02T08:01:00.000Z	cwillu	dmakalsky	sorry, got called away;  under the server kernel, any given process will still only see 3gb (there's another option to get around that, but I don't think it's compiled in)
+2008-05-02T08:01:00.000Z	cwillu	dmakalsky	--> https://bugs.launchpad.net/ubuntu/+bug/116842

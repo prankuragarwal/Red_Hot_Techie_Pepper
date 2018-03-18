@@ -1,0 +1,22 @@
+2009-08-05T03:52:00.000Z	Mango		hi folks, I have Ubuntu 8.10 and I wanted to test Mandriva. So I installed it on another partition and during the installation process it asked me if I want to install the Boot Loader. I chose No, then after installation GRUB gave me error 15. So I booted from Ubuntu Live CD and reinstalled GRUB. Now I can only see Ubunut and WinXP in GRUB. How can I add Mandriva to GRUB so I can boot it?
+2009-08-05T03:53:00.000Z	georgefrs	Mango	you need to edit /boot/grub/menu.lst
+2009-08-05T03:53:00.000Z	Mango	georgefrs	how to do that?
+2009-08-05T03:53:00.000Z	georgefrs	Mango	Open it with a text editor like nano or gedit...
+2009-08-05T03:54:00.000Z	georgefrs	Mango	then copy the entry for Ubutnu and change the relevant bits to point to the Mandriva parition and rename it
+2009-08-05T03:57:00.000Z	Mango	georgefrs	how can I know the "relevant" bits for Mandriva?
+2009-08-05T03:58:00.000Z	georgefrs	Mango	You need to know which disk and partition it is installed to
+2009-08-05T03:59:00.000Z	Mango	georgefrs	it's on the same disk
+2009-08-05T03:59:00.000Z	Mango	georgefrs	but different partition
+2009-08-05T03:59:00.000Z	Mango	georgefrs	is there any tutorial on this topic?
+2009-08-05T03:59:00.000Z	georgefrs	Mango	For instance, if its installed to the third parition of the first disk, then you need the following line:
+2009-08-05T03:59:00.000Z	georgefrs	Mango	root    (hd0,2)
+2009-08-05T04:00:00.000Z	georgefrs	Mango	this might help, http://dlc.sun.com/osol/docs/content/dev/getstart/linuxgrub.html
+2009-08-05T04:01:00.000Z	Mango	georgefrs	I can't access the page: "Your client is not allowed to access the requested object. "
+2009-08-05T04:01:00.000Z	Mango	georgefrs	do you work for sun or what?
+2009-08-05T04:02:00.000Z	Mango	georgefrs	I can access it now O_o!
+2009-08-05T04:03:00.000Z	georgefrs	Mango	Nope, don't work for sun :D
+2009-08-05T04:05:00.000Z	Mango	georgefrs	Mandriva is installed on this partition: /dev/sda5 so it's in root (hd0, 5)
+2009-08-05T04:05:00.000Z	Mango	georgefrs	right?
+2009-08-05T04:05:00.000Z	georgefrs	Mango	Odd you can't access the page, works for me. Try this one instead: https://help.ubuntu.com/community/GrubHowto
+2009-08-05T04:06:00.000Z	georgefrs	Mango	(hd0,4)
+2009-08-05T04:06:00.000Z	georgefrs	Mango	grub inconveniently begins counting paritions from 0, not 1

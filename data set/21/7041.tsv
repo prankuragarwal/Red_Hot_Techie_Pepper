@@ -1,0 +1,21 @@
+2006-12-10T15:27:00.000Z	stork		where can i place a script that will be executed when my computer starts up (before x server loads)
+2006-12-10T15:28:00.000Z	ColonelZarkawi	stork	in /etc/init.d and then use use update-rc.d to start the script on a given runlevel
+2006-12-10T15:28:00.000Z	ColonelZarkawi		I mean to configure the system to start the script on a given runlevel
+2006-12-10T15:29:00.000Z	stork		i figured out my problem with nvidia drivers.. each time i reboot, the nvidia kernel is disposed of and the ubuntu nvidia kernel is used instead, which isn't compatible with my drivers... so i need to run the nvidia installer at boot time to place the kernel module where it should be
+2006-12-10T15:30:00.000Z	ColonelZarkawi	stork	you can remove the module instead
+2006-12-10T15:30:00.000Z	stork	ColonelZarkawi	how would i do that?
+2006-12-10T15:30:00.000Z	ColonelZarkawi	stork	with rmmod
+2006-12-10T15:30:00.000Z	ColonelZarkawi		rmmod removes modules (if the kernel supports removal of modules)
+2006-12-10T15:30:00.000Z	ColonelZarkawi		with modprobe you can then load the module you want
+2006-12-10T15:31:00.000Z	stork	ColonelZarkawi	as far as i know, both modules are called nvidia
+2006-12-10T15:31:00.000Z	ColonelZarkawi	stork	there must be a different files in the filesystem if they are different modules
+2006-12-10T15:31:00.000Z	ColonelZarkawi	stork	you can search in the /lib/modules directory for all nvidia modules
+2006-12-10T15:32:00.000Z	ColonelZarkawi	stork	if there is a name conflict probably you need to remove the "wrong" module
+2006-12-10T15:32:00.000Z	stork	ColonelZarkawi	would it be possible to remove the nvidia kernel module package ? (there must be one, right?)
+2006-12-10T15:33:00.000Z	ColonelZarkawi	stork	sure, if you are using a stock kernel it should be safe to remove that package... I haven't done it (I use kernel.org kernels) so be careful when removing it
+2006-12-10T15:33:00.000Z	stork		hmm
+2006-12-10T15:33:00.000Z	stork		there are dependencies
+2006-12-10T15:34:00.000Z	stork	ColonelZarkawi	what are the linux-restricted-modules packages used for?
+2006-12-10T15:35:00.000Z	ColonelZarkawi	stork	I think they contain non-free modules
+2006-12-10T15:35:00.000Z	ColonelZarkawi	stork	not sure if they include nvidia modules though
+2006-12-10T15:36:00.000Z	stork	ColonelZarkawi	they seem to depend on the package 'nvidia-kernel-common'...

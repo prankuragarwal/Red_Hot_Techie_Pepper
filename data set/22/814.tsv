@@ -1,0 +1,22 @@
+2012-10-05T22:25:00.000Z	bobweaver	Westz	 do you have internet connection at all ?
+2012-10-05T22:26:00.000Z	Westz	bobweaver	not through the default hardware, i have a USB card from my neighbor attached for downloading packages, but that's it
+2012-10-05T22:27:00.000Z	bobweaver	Westz	 Ok cool please open your terminal and enter in     lspci -vnn  && lsmod       then PASTEBIN that  you can use paste.ubuntu.com plz the bot will tell you more
+2012-10-05T22:33:00.000Z	Westz	bobweaver	pastebin.com/76BNSsT1
+2012-10-05T22:36:00.000Z	bobweaver	Westz	 I can not see that paste just tries to load but does not. Please use Paste.ubuntu.com
+2012-10-05T22:46:00.000Z	bobweaver	Westz	 can we see    rfkill list all  && uname -r \
+2012-10-05T22:47:00.000Z	bobweaver	Westz	 can we see    rfkill list all  && uname -r
+2012-10-05T22:50:00.000Z	bobweaver	Westz	 what is  the output of     uname -r
+2012-10-05T22:56:00.000Z	bobweaver	Westz	 now open a new tab in the terminal  shift+ctrl+t    then enter in  cd ~/Desktop/  &&  wget http://www.orbit-lab.org/kernel/compat-wireless-2.6-stable/v2.6.32/compat-wireless-2.6.32.16.tar.bz2
+2012-10-05T23:03:00.000Z	bobweaver	Westz	 cd Desktop  && tar -xf compat-wireless-2.6.32.16.tar.bz2 && cd  compat-wireless-2.6.32.16   &&  ./scripts/driver-select           then      make    then   sudo make install
+2012-10-05T23:03:00.000Z	bobweaver	Westz	 that should take care of you ethernet
+2012-10-05T23:11:00.000Z	bobweaver	Westz	 after compat is done you can try this for your wireless  sudo rmmod rtl8187    && sudo ifconfig wlan0 down &&  sudo modprobe iwlagn 11n_disable=1  sudo ifconfig wlan0 up    If wlan0 is the correct thing  check with ifconfig
+2012-10-05T23:16:00.000Z	bobweaver	Westz	 reboot
+2012-10-05T23:16:00.000Z	bobweaver	Westz	 then come back here for more de-bugging
+2012-10-05T23:17:00.000Z	bobweaver	Westz	 pastebinit will auto paste stuff for you on paste.ubuntu.com
+2012-10-05T23:22:00.000Z	bobweaver	Westz	 try this   sudo rmmod rtl8187     && sudo modprobe iwlagn    then please run ifconfig    to see if wlan0 or ra0 or whatever wireless is. Is it there now ?
+2012-10-05T23:31:00.000Z	Westz	bobweaver	"module rtl8187 does not exist in /proc/modules"
+2012-10-05T23:36:00.000Z	Westz	bobweaver	pastebin.com/JpyMCPAZ
+2012-10-05T23:37:00.000Z	bobweaver	Westz	 lets see lsmod again maybe now is a good time to tell you what is going on or in other words what we are doing.  In linux we use model aka "drivers" in other worlds.   so the mod(driver) that you have loaded is the wrong one ! aka rtl8187 you need the iwlagn    when we do the command lsmod this means ls = list  and mod = models or drivers.  so ls+mod = list all mods (drivers) running.  sudo rmmod  removes the mod  sudo modprobe  adds
+2012-10-05T23:39:00.000Z	bobweaver	Westz	 what I am unsure of is in you paste of lspci -nn it says that your cards are not authenticated I have never seen this before
+2012-10-05T23:53:00.000Z	bobweaver	Westz	 that was my next question that is a older kerenl when was the last time you upgraded ?  sudo apt-get update && sudo apt-get upgrade
+2012-10-06T00:58:00.000Z	Westz	bobweaver	still here?

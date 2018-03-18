@@ -1,0 +1,24 @@
+2007-04-01T11:42:00.000Z	Jowi		apt-cache policy show me the current and previous version of a package. is there a way to go back to that older version?
+2007-04-01T11:43:00.000Z	jrib	Jowi	sudo apt-get install PACKAGE=VERSION
+2007-04-01T11:45:00.000Z	Jowi	jrib	the package seem to be a metapackage and only the metapackage seem to get downgraded. do you know if there is a way to resolve that as well?
+2007-04-01T11:45:00.000Z	jrib	Jowi	nope
+2007-04-01T11:45:00.000Z	jrib	Jowi	(I don't know, there may be a way)
+2007-04-01T11:46:00.000Z	Jowi	jrib	well, i try to find the depends and see if apt will be kind to me
+2007-05-14T16:58:00.000Z	jrib	Jowi	you can disable if you disable the dialog grabbing focus somewhere in gconf-editor
+2007-05-14T16:58:00.000Z	Jowi	jrib	I don't want to disable the grabbing (which is a security feature). only the fade.
+2007-05-14T05:02:00.000Z	jrib	Jowi	https://launchpad.net/ubuntu/+source/gksu/+bug/43148 (see comments on hacking the code)
+2008-10-20T03:07:00.000Z	jrib	Jowi	xorg.conf?
+2008-10-20T03:08:00.000Z	Jowi	jrib	only one screen section in there
+2008-10-20T03:09:00.000Z	Jowi	jrib	and everything in xorg.conf looks a bit off. no specifics is in it - only "Configured Video Device", "Configured Monitor" etc. not even a driver is specified - is that normal for the new xorg version?
+2008-10-20T03:09:00.000Z	jrib	Jowi	8.04?
+2008-10-20T03:09:00.000Z	Jowi	jrib	yeah
+2008-10-20T03:10:00.000Z	jrib	Jowi	create a xorg.conf and make sure it knows you only have one screen
+2008-10-20T03:10:00.000Z	jrib	Jowi	hotplug is messing up I guess
+2008-10-20T03:10:00.000Z	Jowi	jrib	ok. will do. is -phigh recommended?
+2008-10-20T03:11:00.000Z	jrib	Jowi	sure, try with that first
+2008-10-20T03:12:00.000Z	Jowi	jrib	-phigh created the exact same copy of xorg.conf. trying the normal way now.
+2008-10-20T03:13:00.000Z	jrib	Jowi	k, resort to writing your own if you have to
+2008-10-20T03:13:00.000Z	jrib	Jowi	also /var/log/Xorg.0.log may give some hints about what Xorg is thingk
+2008-10-20T03:15:00.000Z	Jowi	jrib	dpkg-reconfigure only let me specify keyboard. i never get the gpu driver option nor the monitor one... strange
+2008-10-20T03:16:00.000Z	jrib	Jowi	k, I would just write an xorg.conf then
+2008-10-20T03:18:00.000Z	Jowi	jrib	Xorg.0.log is a text-book success story. oh well... need to get my hands dirty it seems.

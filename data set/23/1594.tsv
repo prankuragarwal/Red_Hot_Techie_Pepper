@@ -1,0 +1,23 @@
+2011-02-24T11:49:00.000Z	Alestan	nixjr	I'd start with baobab.
+2011-02-24T11:53:00.000Z	nixjr	Alestan	whne using that du -h --max-dept=1 /i got a wall of permission denied errors for proc, and a handful of other locations
+2011-02-24T11:56:00.000Z	Alestan	nixjr	run it as root if you can.
+2011-02-24T12:04:00.000Z	nixjr	Alestan	these two readings dont seem to be adding up, one is your command, the other is gparted screenshot http://paste.ubuntu.com/571562/  http://img340.imageshack.us/img340/4683/70219482.jpg
+2011-02-24T12:06:00.000Z	nixjr	Alestan	ignoreing /mnt, the others dont add upto anywhere near 69gb
+2011-02-24T12:10:00.000Z	Alestan	nixjr	i'm actually fighting the same issue right now on a server, where du shows far less space used than df.  run baobab as root and see what it says
+2011-02-24T12:14:00.000Z	nixjr	Alestan	i deselected all other devices in the preferences except the /, baobab is showing it as 93% full
+2011-02-24T12:15:00.000Z	nixjr	Alestan	just realsied it can be sxpanded when i scan, runign scan now
+2011-02-24T12:21:00.000Z	nixjr	Alestan	heres a SS incase youre curious, note the "used: 67.9 GB" and the total / size "8.6 GB" http://img594.imageshack.us/img594/2830/baobab.jpg
+2011-02-24T12:21:00.000Z	Alestan	nixjr	do you have postgres installed by any chance?
+2011-02-24T12:23:00.000Z	nixjr	Alestan	forgive my very newbish comments, i dont belive i have it installed but according to synaptic i do have somehting called libpq5
+2011-02-24T12:25:00.000Z	nixjr	Alestan	its gone down about 50mb since i started talking to you lol
+2011-02-24T12:29:00.000Z	Alestan	nixjr	you might try rebooting and see what the disk space used says
+2011-02-24T12:30:00.000Z	nixjr	Alestan	how long has your system been up? i ask because i wonder if that mysterious figure of 128tb for /proc is related, my system has been up 28 days
+2011-02-24T12:34:00.000Z	nixjr	Alestan	i hate resorting to a restart >.<
+2011-02-24T12:37:00.000Z	Alestan	nixjr	if you're running an ext4 filesystem you might try a defrag, if you're running ext3 i've got a shake program you could try
+2011-02-24T12:38:00.000Z	nixjr	Alestan	i didnt think modern filesystems needed defragging
+2011-02-24T12:58:00.000Z	nixjr	Alestan	ill give that reboot a try
+2011-02-24T13:12:00.000Z	nixjr	Alestan	hey, positive news, after reboot i miraculously have 60gb extra free
+2011-02-24T13:23:00.000Z	Alestan	nixjr	okay, I'd try running a fsck read only and see what it finds for filesystem errors
+2011-02-24T13:29:00.000Z	nixjr	Alestan	i cant because its / and its mounted
+2011-02-24T13:31:00.000Z	Alestan	nixjr	running it with -n will prevent it from making changes, so it won't break anything.
+2011-02-24T13:58:00.000Z	Alestan	nixjr	if you download them by hand, you can sudo dpkg -i --force <package name> and it will install it.

@@ -1,0 +1,21 @@
+2009-03-23T23:59:00.000Z	marek__		hi i have two coputers, one is on my desk at work - and it has access to ftp server, and i also have one in my home, it has a different IP and has no access for that specific server. How can i "tunnel" the connection between them? i already installed ssh server on my work PC
+2009-03-24T00:01:00.000Z	tj83	marek__	can you be more specific as to what you want to accomplish? i use FTP, VNC, SSH, and PPTPD-VPN from work to home... might be able to help
+2009-03-24T00:02:00.000Z	marek__	tj83	any type of tunneling that is easy :)
+2009-03-24T00:02:00.000Z	marek__		i thought about vpn but i remember that one i used simple CLI for that
+2009-03-24T00:03:00.000Z	tj83	marek__	tunnel for what? tunnel would to me be described as a carrier for another service.. for example to tunnel VNC over SSH... your trying to access file shares? desktop?
+2009-03-24T00:04:00.000Z	tj83	marek__	is it the FTP you want to tunnel over ssh?
+2009-03-24T00:04:00.000Z	marek__	tj83	i mean this: i need to upload soe files, and edit some scripts on a server, that is only accesible from y work, i would like to do it from my home with my other PC
+2009-03-24T00:04:00.000Z	marek__		i have ssh access from work
+2009-03-24T00:05:00.000Z	tj83	marek__	then that needs to be configured in the work router to forward specific ports to your work machine. making access from home possible.
+2009-03-24T00:05:00.000Z	marek__	tj83	i addedd 22 port fowarding to that work PC before
+2009-03-24T00:05:00.000Z	marek__		i can access to it via ssh
+2009-03-24T00:06:00.000Z	tj83	marek__	ok, so if you can ssh into your work PC from home, then you need to set up the same kind of forward for your server that you need to access... only cant use 22, will have to use another port... which is safer anyways
+2009-03-24T00:07:00.000Z	marek__	tj83	yup, i addedd 2000 port fowarding
+2009-03-24T00:08:00.000Z	tj83	marek__	you forwarded it in the router in addition to the sshd : /etc/ssh/ssh_config ?
+2009-03-24T00:09:00.000Z	marek__	tj83	i dont know
+2009-03-24T00:09:00.000Z	tj83	marek__	you will need to make the server "listen" for port 2000 in /etc/ssh/ssh_config file by uncommenting the line that has #port 22  to port 2000 (without #)
+2009-03-24T00:10:00.000Z	marek__	tj83	but i also would have to connect from my home to port 2000?
+2009-03-24T00:11:00.000Z	tj83	marek__	yes of course... you would instead of "ssh user@ip" it will be "ssh user@ip::2000"
+2009-03-24T00:11:00.000Z	marek__		ok what next tj83?
+2009-03-24T00:12:00.000Z	tj83	marek__	thats it... you should be able to ssh to either your desktop box with port 22 or the server with port 2000
+2009-03-24T00:13:00.000Z	tj83	marek__	i have to run for a moment /join #seaphor if you dont have success brb

@@ -1,0 +1,22 @@
+2009-07-25T14:52:00.000Z	philipp__		how can i overwrite a data with 0000000000000000000000000000000000000000...
+2009-07-25T14:53:00.000Z	stefg	philipp__	man dd
+2009-07-25T14:53:00.000Z	philipp__	stefg	come on
+2009-07-25T14:54:00.000Z	stefg	philipp__	dd if=dev/zero of=/file/to/nuke
+2009-07-25T14:54:00.000Z	philipp__	stefg	the police is knocking on my door and i wanna delite all evidence of my downloads
+2009-07-25T14:54:00.000Z	stefg	philipp__	dd if=/dev/zero of=/file/to/nuke ... note the slash
+2009-07-25T14:55:00.000Z	philipp__	stefg	thx
+2009-07-25T14:55:00.000Z	stefg	philipp__	but read about count and bs parameters
+2009-07-25T14:58:00.000Z	philipp__	stefg	after that i have a file who are the 0s right?
+2009-07-25T14:59:00.000Z	stefg	philipp__	yes, but limit the size by count=xxx and speed up things by using a bs=xxx paramter
+2009-07-25T15:00:00.000Z	stefg	philipp__	dd if=/dev/zero of=zerofile count=10 bs=1M will give you a 10M file of zeros
+2009-07-25T15:02:00.000Z	stefg	philipp__	a simple delete is sufficient on an ext3 filesystem :-)
+2009-07-25T15:03:00.000Z	philipp__	stefg	if i simply delite them... the poppos could recover them.... couldn't they?
+2009-07-25T15:05:00.000Z	stefg	philipp__	http://www.xs4all.nl/~carlo17/howto/undelete_ext3.html
+2009-07-25T15:10:00.000Z	philipp__	stefg	so its possible to recover
+2009-07-25T15:11:00.000Z	philipp__	stefg	unless i overwrite the free space with zeros
+2009-07-25T15:12:00.000Z	stefg	philipp__	what I'm trying to tell you is: there is no way you can be sure that athe same blocks are used on a ext3 filesystem... you might rwrite the file, but /different/ blocks could be used, so you're not overwriting it, you just chnage the associated blocks
+2009-07-25T15:16:00.000Z	philipp__	stefg	but if i delite it and overwrite the free space after that all blocks are delited
+2009-07-25T15:16:00.000Z	stefg	philipp__	right
+2009-07-25T15:18:00.000Z	philipp__	stefg	and to do that i have to replace of=/file/to/nuk ?
+2009-07-25T15:19:00.000Z	stefg	philipp__	http://lambda-diode.com/software/wipe
+2009-07-25T15:33:00.000Z	philipp__	stefg	thats the stuff

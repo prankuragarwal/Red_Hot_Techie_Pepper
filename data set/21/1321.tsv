@@ -1,0 +1,21 @@
+2010-10-26T04:18:00.000Z	goltoof		any idea what bkl-orbiter, bkl-investigator  would be used for?
+2010-10-26T04:18:00.000Z	goltoof		i know what it is, but what is it used for and how do i get rid of it?
+2010-10-26T04:18:00.000Z	goltoof		no man entries, or any info on how to remove bkl-orbiter/bkl-investigator
+2010-10-26T04:20:00.000Z	MagusOTB	goltoof	looks like it has something to do with watching the FS for changes. I just googled it.
+2010-10-26T04:21:00.000Z	goltoof	MagusOTB	not installed by default, i'd like to remove it but it might break something else
+2010-10-26T04:21:00.000Z	goltoof	MagusOTB	 tried sudo apt-get remove bkl-orbiter ... can't figure out command to get rid of it
+2010-10-26T04:21:00.000Z	MagusOTB	goltoof	try dpkg -S bkl-orbiter
+2010-10-26T04:23:00.000Z	goltoof	MagusOTB	 yes, i see but what to do with this information? :)
+2010-10-26T04:25:00.000Z	goltoof	MagusOTB	 i think it has to do with the wacom drivers i installed, which probably use it to keep it up to date?  all i know is it installed when i installed the drivers, i want to reinstall wacom anyway, so..
+2010-10-26T04:25:00.000Z	MagusOTB	goltoof	how did you install them?
+2010-10-26T04:27:00.000Z	goltoof	MagusOTB	need to backtrack.. there are different ways people go about setting up wacoms
+2010-10-26T04:28:00.000Z	MagusOTB	goltoof	yeah, and I've never used one, so it just apt-get removing whatever you used to install them then apt-get autoremove not doing it?
+2010-10-26T04:29:00.000Z	goltoof	MagusOTB	 bkl-orbiter i think triggers bkl-investigator.. which occasionally eats up tons of cpu
+2010-10-26T04:30:00.000Z	goltoof	MagusOTB	 sudo apt-get remove works on neither
+2010-10-26T04:31:00.000Z	MagusOTB	goltoof	yeah, you want to dpkg -S `which bkl-investigator`, it'll tell you what package its part of, then you can apt-get remove that.
+2010-10-26T04:31:00.000Z	MagusOTB	goltoof	but it's probably a better idea to remove whatever installed it as a dep and then apt-get autoremove.
+2010-10-26T04:31:00.000Z	goltoof	MagusOTB	 it also indexes thumbnails, just like ~/.thumbnails ... i really don't think need this extra service
+2010-10-26T04:32:00.000Z	MagusOTB	goltoof	regardless, most things don't like it when you rip dependencies out from under them. I'd suggest disabling whatever it does in whatever package installed it. I don't know how to display deptrees with apt, but I bet somebody in here does.
+2010-10-26T04:33:00.000Z	MagusOTB	goltoof	so apt-get remove libbickley will get rid of it.
+2010-10-26T04:33:00.000Z	MagusOTB	goltoof	if that's what you want to do
+2010-10-26T04:34:00.000Z	goltoof	MagusOTB	 sudo apt-get remove libbickley  does not compute

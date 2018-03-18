@@ -1,0 +1,24 @@
+2012-01-25T20:11:00.000Z	hexbase		hi, when i start squid3, 2 process start, one from proxy user and the other is from root user. i've compiled squid3 myself
+2012-01-25T20:11:00.000Z	ikonia	hexbase	that's normal
+2012-01-25T20:11:00.000Z	ikonia	hexbase	why did you compile squid instead of using the one from the repo ?
+2012-01-25T20:12:00.000Z	hexbase	ikonia	i needed a special option. well, if it's normal, why when i want it to close the init script doesnt work?
+2012-01-25T20:12:00.000Z	ikonia	hexbase	did you write the init script or are you using the ubuntu init script ?
+2012-01-25T20:13:00.000Z	hexbase	ikonia	ubuntu init script
+2012-01-25T20:13:00.000Z	hexbase	ikonia	it starts well, but it doesnt stop
+2012-01-25T20:13:00.000Z	ikonia	hexbase	ok, so that's why, that's upstart managed,
+2012-01-25T20:13:00.000Z	ikonia	hexbase	you've probably not laid out the custom squid build in the same style so it can't get the status correctly (just guessing)
+2012-01-25T20:14:00.000Z	hexbase	ikonia	then how do i fix it?
+2012-01-25T20:14:00.000Z	hexbase	ikonia	any workaround?
+2012-01-25T20:14:00.000Z	ikonia	hexbase	you need to make your service upstart complient/configured
+2012-01-25T20:14:00.000Z	ikonia	hexbase	or write your own init script
+2012-01-25T20:15:00.000Z	hexbase	ikonia	are you sure it's normal to have 2 squid process?
+2012-01-25T20:15:00.000Z	ikonia	hexbase	yes
+2012-01-25T20:15:00.000Z	ikonia	hexbase	I'm surprised you've not read up on this before making a custom compile
+2012-01-25T20:15:00.000Z	hexbase	ikonia	no i've not. squid wiki doesnt say anything
+2012-01-25T20:16:00.000Z	ikonia	hexbase	wiki != reading up about the software you are trying to build
+2012-01-25T20:16:00.000Z	hexbase	ikonia	whoever makes the squid build for ubuntu, should add the --enable-http-violations.
+2012-01-25T20:16:00.000Z	hexbase	ikonia	i know, i thought i've read enough
+2012-01-25T20:18:00.000Z	hexbase	ikonia	then i'll have to make a custom stop script
+2012-01-25T20:44:00.000Z	hexbase	ikonia	i fixed it
+2012-01-25T20:44:00.000Z	hexbase	ikonia	it was a wrong pid filename the problem
+2012-01-25T20:44:00.000Z	hexbase	ikonia	thanks and bye

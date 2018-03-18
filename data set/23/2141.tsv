@@ -1,0 +1,23 @@
+2009-06-17T20:22:00.000Z	JohnQ_		V1RR
+2009-06-17T20:22:00.000Z	JohnQ_		sudo apt-get install network-manager-vpnc vpnc
+2009-06-17T20:23:00.000Z	JohnQ_		and it should then allow you to add a vpn profile to ubuntu
+2009-06-17T20:23:00.000Z	JohnQ_		YESSIR
+2009-06-17T20:23:00.000Z	JohnQ_		TYPE ALL YOU SHALL
+2009-06-17T20:25:00.000Z	JohnQ_		Hello, I use a vpn and route all my traffic through it, I want to use iptables -nat function to route all my web browsing traffic through eth0 and not the vpn tunnel, i cant find much about it online anyone decent with iptables awake?
+2009-06-17T20:26:00.000Z	JohnQ_		the bit torrent client?
+2009-06-17T20:28:00.000Z	JohnQ_		Hello, I use a vpn and route all my traffic through it, I want to use iptables -nat function to route all my web browsing traffic through eth0 and not the vpn tunnel, i cant find much about it online anyone decent with iptables awake?
+2009-06-17T20:29:00.000Z	ux	JohnQ_	use separate route for inet and local traffic
+2009-06-17T20:29:00.000Z	ux	JohnQ_	why iptables?
+2009-06-17T20:29:00.000Z	JohnQ_	ux	how so?
+2009-06-17T20:30:00.000Z	ux	JohnQ_	vpn on server or client?
+2009-06-17T20:30:00.000Z	JohnQ_	ux	client
+2009-06-17T20:32:00.000Z	ux	JohnQ_	 route add -net 192.56.76.0 netmask 255.255.255.0 dev vpn
+2009-06-17T20:32:00.000Z	ux	JohnQ_	route add -net 0.0.0.0 netmask 0.0.0.0 dev eth0
+2009-06-17T20:32:00.000Z	JohnQ_	ux	?
+2009-06-17T20:34:00.000Z	ux	JohnQ_	first command route ur traffic to vpn and second on eth0 iface
+2009-06-17T20:34:00.000Z	JohnQ_	ux	: i understand route add
+2009-06-17T20:34:00.000Z	ux	JohnQ_	u need only change networks
+2009-06-17T20:40:00.000Z	ux	JohnQ_	iptables --table nat --append POSTROUTING --out-interface eth0 --sport 80 -j MASQUERADE
+2009-06-17T20:41:00.000Z	ux	JohnQ_	something like that
+2009-06-17T20:42:00.000Z	ux	JohnQ_	?
+2009-06-17T20:48:00.000Z	JohnQ_	ux	it doesnt like the sport switch notsure why

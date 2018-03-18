@@ -1,0 +1,18 @@
+2008-11-15T04:59:00.000Z	Grant931		I am trying to change the permissions of a folder on a separate partition, but the konsole won't let me do it
+2008-11-15T04:59:00.000Z	Grant931		when I run this command, I get this output:
+2008-11-15T05:00:00.000Z	Grant931		grant@monster:~$ sudo chown grant /home/grant/docs
+2008-11-15T05:00:00.000Z	Grant931		chown: changing ownership of `/home/grant/docs': Operation not permitted
+2008-11-15T05:00:00.000Z	Grant931		I did
+2008-11-15T05:00:00.000Z	Grant931		sudo su didn't even work for it
+2008-11-15T05:01:00.000Z	Grant931		still didn't work
+2008-11-15T05:01:00.000Z	Grant931		it's a fat32 partition
+2008-11-15T05:01:00.000Z	Guest96693	Grant931	can't own/mod non-*nix filesystems
+2008-11-15T05:01:00.000Z	Grant931		so then why can't I modify it?
+2008-11-15T05:02:00.000Z	Grant931	kdogg	that won't help, it's not ntfs
+2008-11-15T05:02:00.000Z	Guest96693	Grant931	can't own/mod non-*nix filesystems   there is no permissions/ownership bits.
+2008-11-15T05:02:00.000Z	Grant931		...I own /home/grant...
+2008-11-15T05:02:00.000Z	Grant931		well, I can't
+2008-11-15T05:03:00.000Z	Grant931		...
+2008-11-15T05:03:00.000Z	Guest96693	Grant931	man moune has all the details.   i'll give you the short form.    use psyudo ownership/permissions on the entire fs with mount options.    sudo mount -o remount,umask=000 /mount/point
+2008-11-15T05:03:00.000Z	Grant931		fstab
+2008-11-15T05:05:00.000Z	Guest96693	Grant931	can't own/mod non-*nix filesystems,   man mount     man fstab     use umask= fmask= dmask=  options.

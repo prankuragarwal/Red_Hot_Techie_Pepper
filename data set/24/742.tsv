@@ -1,0 +1,24 @@
+2012-03-09T12:08:00.000Z	onoez_omg		i'm completely lost trying to set up wireless ap on ar9285
+2012-03-09T12:08:00.000Z	onoez_omg		anyone?
+2012-03-09T12:10:00.000Z	soreau	onoez_omg	What do you mean by set up wireless ap?
+2012-03-09T12:10:00.000Z	onoez_omg	soreau	runnining hostapd daemon instance...
+2012-03-09T12:11:00.000Z	soreau	onoez_omg	Why don't you just use nm-applet to create wireless ap?
+2012-03-09T12:11:00.000Z	onoez_omg	soreau	because i don't have any device to display nm-applet as well as anything at all on my router
+2012-03-09T12:13:00.000Z	soreau	onoez_omg	You have to setup a hostapd.conf file then start hostapd telling it to use that config file
+2012-03-09T12:14:00.000Z	onoez_omg	soreau	i've met some problem, but not with writing config, here are technical details of this problem http://pastebin.com/MJvkcNs6
+2012-03-09T12:15:00.000Z	onoez_omg	soreau	lines #168 and #169
+2012-03-09T12:16:00.000Z	soreau	onoez_omg	looks like it's working but something else may be using the card already. Does 'ps ax|grep NetworkManager' show it's running?
+2012-03-09T12:17:00.000Z	onoez_omg	soreau	daemon instance keeps breathing, but obviously without reaching the end goal and i don't have network manager there
+2012-03-09T12:17:00.000Z	onoez_omg	soreau	ubuntu server is not shipped with it by default
+2012-03-09T12:17:00.000Z	onoez_omg		sorry for my english btw (if matters)
+2012-03-09T12:17:00.000Z	soreau	onoez_omg	So you can see the AP you created from other clients? (and just can't connect?)
+2012-03-09T12:18:00.000Z	onoez_omg	soreau	obviously no, because it was unable to set the channel ap will be running at
+2012-03-09T12:18:00.000Z	soreau	onoez_omg	Does it work if you try 'sudo iwconfig wlan0 channel 1' first?
+2012-03-09T12:19:00.000Z	onoez_omg		nowadays it should be done with iw
+2012-03-09T12:19:00.000Z	onoez_omg	soreau	lines #58 and #59
+2012-03-09T12:21:00.000Z	soreau	onoez_omg	I guess you're just doing it wrong
+2012-03-09T12:21:00.000Z	onoez_omg	soreau	what exactly am i doing wrong?
+2012-03-09T12:21:00.000Z	soreau	onoez_omg	hostapd works on ath9k fine here
+2012-03-09T12:21:00.000Z	onoez_omg		good news, but not here
+2012-03-09T12:21:00.000Z	onoez_omg		that is the problem
+2012-03-09T12:23:00.000Z	onoez_omg	soreau	and yeah setting up channels manually in managed mode works fine

@@ -1,0 +1,19 @@
+2006-10-06T16:54:00.000Z	jmerlin		anyone got any suggestions on closing those open ports on my machine?
+2006-10-06T16:55:00.000Z	jmerlin		how can i get rid of that though..
+2006-10-06T16:56:00.000Z	jmerlin		doesn't cups open that port, and if so i can't print without cups?
+2006-10-06T16:56:00.000Z	jmerlin		do i need to run the cups service to print?
+2006-10-06T16:56:00.000Z	cafuego	jmerlin	Yes.
+2006-10-06T16:57:00.000Z	cafuego	jmerlin	Note that cups doesn't open that port. it only listens on it, on the 127.0.0.1 address.
+2006-10-06T16:58:00.000Z	cafuego	jmerlin	'netstat -nap'
+2006-10-06T16:58:00.000Z	cafuego	jmerlin	By default, NOTHING is available from the outside.
+2006-10-06T16:59:00.000Z	cafuego	jmerlin	way up there where?
+2006-10-06T05:00:00.000Z	cafuego	jmerlin	What does netstat say they are?
+2006-10-06T05:00:00.000Z	cafuego	jmerlin	'sudo netstat -nap | grep 33440'
+2006-10-06T05:01:00.000Z	cafuego	jmerlin	Do you notice the 127.0.0.1 ?
+2006-10-06T05:01:00.000Z	cafuego	jmerlin	*local* only
+2006-10-06T05:02:00.000Z	cafuego	jmerlin	Ask them via strace :-)
+2006-10-06T05:03:00.000Z	cafuego	jmerlin	'strace' can connect to a process and trace exactly what calls it makes (and their params)
+2006-10-06T05:04:00.000Z	cafuego	jmerlin	probably more trouble than its worth. Suffice to say, unless you explicitly install say ssh, apache or a mail server, the system will not be listening on outside networks.
+2006-10-06T05:08:00.000Z	cafuego	jmerlin	It's installed by default, coz lots of people are. You're free to remove or disable it.
+2006-10-06T05:08:00.000Z	cafuego	jmerlin	If you think it's worth it.
+2006-10-06T05:08:00.000Z	cafuego	jmerlin	'sudo update-r.c d-f hplip remove'

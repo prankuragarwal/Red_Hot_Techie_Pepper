@@ -1,0 +1,24 @@
+2009-08-15T05:57:00.000Z	Laibsch		Can somebody explain to me why the hardy samba source does not compile in karmic?  I wouldn't be surprised if karmic -> hardy wouldn't work.  But this is kind of new to me.
+2009-08-15T05:57:00.000Z	Laibsch		I'm trying to pinpoint a regression
+2009-08-15T05:58:00.000Z	Laibsch		failure log is at https://launchpad.net/~r0lf/+archive/ppa/+build/1164451
+2009-08-15T05:58:00.000Z	bucky	Laibsch	did you get all the dev files... did you apt-get build-dep samba ?
+2009-08-15T05:59:00.000Z	Laibsch	bucky	I tried this in a pbuilder chroot.  The same goes for the PPA.
+2009-08-15T05:59:00.000Z	Laibsch		The build-time deps are automatically fulfilled
+2009-08-15T06:00:00.000Z	bucky	Laibsch	maybe a compiler change.. you know that karmic has a newer gcc   any errors?
+2009-08-15T06:00:00.000Z	Laibsch		https://launchpad.net/~r0lf/+archive/ppa/+build/1164451
+2009-08-15T06:07:00.000Z	bucky	Laibsch	it's saying you don't have apt-utils installed.. i don't know if that's the problem BUT... it looks like a linker problem similar to this one http://www.nabble.com/samba-3.2.6-link-error-td21018825.html
+2009-08-15T06:13:00.000Z	Laibsch	bucky	Thank you for taking a look.  But I don't really see any connection between either apt-utils nor the linker failure you posted the URL.
+2009-08-15T06:13:00.000Z	Laibsch		But I don't really see any connection between either apt-utils nor the linker failure you posted the URL on the one hand and the compile failure I saw on the other.
+2009-08-15T06:15:00.000Z	bucky	Laibsch	you can try to do a fresh build (autogen / configure / make everything) like the link said.. may even install apt-utils or  .,...just try nothing
+2009-08-15T06:15:00.000Z	Laibsch	bucky	Have you ever compiled something in pbuilder?
+2009-08-15T06:15:00.000Z	bucky	Laibsch	i'd try an autogen in the directory first
+2009-08-15T06:16:00.000Z	Laibsch	bucky	Have you ever compiled something in pbuilder?
+2009-08-15T06:16:00.000Z	bucky	Laibsch	yes i have and it doesn't give you the opportunity to do much... are you crosscompiling? is that why you need pbuilder?
+2009-08-15T06:16:00.000Z	Laibsch		no
+2009-08-15T06:17:00.000Z	Laibsch		What does cross-compiling have to do with it?
+2009-08-15T06:17:00.000Z	bucky	Laibsch	do you have something against dpkg-buildpackage or dhmake or friends?
+2009-08-15T06:19:00.000Z	Laibsch	bucky	pbuilder usually protects me from a lot of PEBKAC
+2009-08-15T06:19:00.000Z	Laibsch	bucky	Trying debuild instead of pdebuild seems like a step backwards in this case
+2009-08-15T06:19:00.000Z	Laibsch	bucky	And I can't see how it should help any.
+2009-08-15T06:20:00.000Z	Laibsch		but I'll give it a shot
+2009-08-15T06:21:00.000Z	Laibsch	bucky	That won't help much.   My build host is running hardy, too.

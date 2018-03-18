@@ -1,0 +1,24 @@
+2010-01-08T06:31:00.000Z	spacitymedic		Ok i typed in sudo gedit /boot/gru/menu.lst and nothing is in the window that popped up...
+2010-01-08T06:31:00.000Z	spacitymedic		how do I delete the other unneeded OS options on my boot screen??
+2010-01-08T06:32:00.000Z	spacitymedic		huh? oh well that was what an user here told me to type in...
+2010-01-08T06:32:00.000Z	spacitymedic		 then how do I edit the menu?
+2010-01-08T06:32:00.000Z	spacitymedic		Ok... so gksudo .. what?
+2010-01-08T06:33:00.000Z	trism	spacitymedic	if you want to remove old kernels from the list, uninstall the linux-image packages for them
+2010-01-08T06:35:00.000Z	trism	spacitymedic	dpkg -l linux-image* will list your kernels, you can uninstall them with sudo apt-get remove package_name; just make sure you don't remove your current kernel, or you won't have anything to boot (uname -a lists your current kernel)
+2010-01-08T06:36:00.000Z	trism	spacitymedic	if you want to remove memtest86+ you can either uninstall it or sudo chmod -x /etc/grub.d/20_memtest86+; sudo update-grub;
+2010-01-08T06:37:00.000Z	trism	spacitymedic	it is not straightforward to edit them individually in grub2, it is probably best not to mess with it if you want to do anything more complicated than the previous two things I mentioned
+2010-01-08T06:40:00.000Z	trism	spacitymedic	the kernels are automatically probed by grub2, if you want to edit them individually you will either need to know a bit of bash and edit the prober or manually edit /boot/grub/grub.cfg, in which case you will need to manually edit it again every kernel/grub update
+2010-01-08T06:44:00.000Z	spacitymedic	trism	would you be able to help me edit the prober? could you walk me through it?
+2010-01-08T06:48:00.000Z	trism	spacitymedic	not really sure what you want to do, and I'm really not sure I'd want to mess with it (I did find an option to disable the recovery entries, but I think that is a really bad idea)
+2010-01-08T06:50:00.000Z	trism	spacitymedic	I'm not sure what those are
+2010-01-08T06:52:00.000Z	trism	spacitymedic	I'm not sure what you mean by 14-bit/16-bit
+2010-01-08T06:53:00.000Z	trism	spacitymedic	as for the other entries, you can disable the os_prober and copy them to /etc/grub.d/40_custom and set any options you want (then run sudo update-grub;)
+2010-01-08T06:55:00.000Z	trism	spacitymedic	you could do the same with the ubuntu kernel entries if you really wanted, it would it be a pain to add new kernels manually every update (for me anyway)
+2010-01-08T06:56:00.000Z	trism	spacitymedic	you can pastebin /boot/grub/grub.cfg, that is what generates your boot screen
+2010-01-08T06:57:00.000Z	trism	spacitymedic	if it is working, I wouldn't mess with it, just set the one you want to boot normally as the default and ignore the others until you need them
+2010-01-08T07:01:00.000Z	trism	spacitymedic	all the ubuntus are likely the same, just different kernels (2.6.31-17 is the newest, you can really uninstall all the older ones if you want, and they will be gone from the grub menu)
+2010-01-08T07:02:00.000Z	trism	spacitymedic	as an example, to uninstall the oldest karmic kernel would be: sudo apt-get remove linux-image-2.6.31-14-generic;
+2010-01-08T07:03:00.000Z	trism	spacitymedic	dpkg -l linux-image* will list them all, the important thing is not to uninstall your current kernel
+2010-01-08T07:03:00.000Z	trism	spacitymedic	which is either 2.6.31-16 or -17 depending on if you updated recently or not
+2010-01-08T07:05:00.000Z	trism	spacitymedic	you can also use Synaptic, which may be easier for you System/Administration/Synaptic Package Manager; search for linux-image in the quick search
+2010-01-08T07:09:00.000Z	trism	spacitymedic	the first ubuntu entry will be the newest, which is what you want

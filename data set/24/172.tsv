@@ -1,0 +1,24 @@
+2012-04-21T11:42:00.000Z	Lipu		Hi all
+2012-04-21T11:42:00.000Z	Lipu		good morning
+2012-04-21T11:43:00.000Z	Lipu		I need help, I am using Ubuntu 10.04 and my machine cannot resolve the DNS configuration means resolv.conf remain blank
+2012-04-21T11:44:00.000Z	Lipu		any one can help me
+2012-04-21T11:44:00.000Z	Lipu		I am using office wireless network
+2012-04-21T11:45:00.000Z	meganerd	Lipu	you should be able to write "nameserver 8.8.8.8" to the /etc/resolve.conf
+2012-04-21T11:46:00.000Z	meganerd	Lipu	chances are there is something wrong with DHCP, or you have done some customizing (either in Network Manager or dhclient.conf), or you are not in fact successfully connected.
+2012-04-21T11:47:00.000Z	meganerd	Lipu	easy test is to ping or trace to 8.8.8.8 (one of Google's DNS servers that you can use)
+2012-04-21T11:49:00.000Z	Lipu	meganerd	it cannot ping any name server(eg. google.com) but works when I use the IP Address(eg. 192.168.1.1 office network IP)
+2012-04-21T11:51:00.000Z	Lipu	meganerd	yes I can ping 8.8.8.8 but not google.com
+2012-04-21T11:52:00.000Z	Lipu	meganerd	ping google.com
+2012-04-21T11:52:00.000Z	meganerd	Lipu	then put "nameserver 8.8.8.8" without the quotes into your /etc/resolv.conf
+2012-04-21T11:53:00.000Z	meganerd	Lipu	if that works you need to figure out why it is not working automatically which depends on how you are connecting (wicd, Network Manager, some random script etc.)
+2012-04-21T11:54:00.000Z	meganerd	Lipu	see my previous response
+2012-04-21T11:54:00.000Z	Lipu	meganerd	I am using /etc/network/interfaces as like auto eth0
+2012-04-21T11:55:00.000Z	meganerd	Lipu	is this wireless?
+2012-04-21T11:55:00.000Z	Lipu	meganerd	yes
+2012-04-21T11:55:00.000Z	meganerd	Lipu	you probably have an error in there somewhere
+2012-04-21T11:56:00.000Z	meganerd	Lipu	you can always manually specify DNS settings in the interfaces file (dns-nameservers and dns-search options)
+2012-04-21T11:57:00.000Z	meganerd	Lipu	otherwise figure out what is going wrong with your dhcp client (dhclient, network manager, pump etc.)
+2012-04-21T11:58:00.000Z	Lipu	meganerd	I am actually need to know the cause for that problem. And it is not a fact for me to use the manual conf
+2012-04-21T11:59:00.000Z	meganerd	Lipu	well knowing which dhcp client is a good start, also check /var/log/syslog
+2012-04-21T12:06:00.000Z	Lipu	meganerd	this is /var/log/syslog nameserver 192.168.1.1
+2012-04-21T12:09:00.000Z	Lipu	meganerd	http://paste.ubuntu.com/939361/

@@ -1,0 +1,21 @@
+2012-08-04T02:05:00.000Z	W4sp	popsch	To simplify things I would suggest to use CLI to control the audio settings. If you are satisfied with one profile of audio settings (head set) use the CLI to obtain all parameters and settings and write it to a file, then proceed with the second choice in the same way with a different file name. Make the script(s) easy to remember. You can create menu items for it if they wish. The downside is that at least once you yourself need to configure the aud
+2012-08-04T02:06:00.000Z	popsch	W4sp	I was thinking about that. Is there a command like 'alsa store' for pavucontrol?
+2012-08-04T02:12:00.000Z	W4sp	popsch	I can not comment on pavucontrol. Unfortunately I cannot give you firm advice as I have OpenBSD under my finger tips. Otherwise I would be able to provide you with detailed suggestions. I would, however, look into the alsa options. For the mission you are about to embark it would be good to configure the device(s) with a GUI but fetch the audio parameters with a CLI tool and divert the output to a file.
+2012-08-04T02:13:00.000Z	popsch	W4sp	alsa will work with 'alsa store' and 'alsa load', but that doesn't help me with pulseaudio
+2012-08-04T02:13:00.000Z	W4sp		I can only hope that someone looks over my shoulder here and gives you the correct tool name. In OBSD it would be mixerctl and audioctl, for which you need to find the equivalent. :-(
+2012-08-04T02:14:00.000Z	W4sp	popsch	pacmd and pactl would be a good candidate though.
+2012-08-04T02:23:00.000Z	W4sp	popsch	The second part of your question would be to prevent Skype et. al. to modify (and subsequently screw up) the settings again. I would chmod and chown the config files, requireing root.root to amend those.
+2012-08-04T02:25:00.000Z	popsch	W4sp	chown won't work, because Skype modifies the setting through the API and not through the config files
+2012-08-04T02:25:00.000Z	W4sp	popsch	You parents would need to sudo though.
+2012-08-04T02:26:00.000Z	W4sp	popsch	That'll be a hack to remove the SUID flags, something I do not wont to suggest on this channel to be honest.
+2012-08-04T02:28:00.000Z	popsch	W4sp	skype doesn't run with SUID
+2012-08-04T02:30:00.000Z	W4sp	popsch	Well then, that's good news. It will be the pacmd/pactl then?
+2012-08-04T02:30:00.000Z	popsch	W4sp	I'll look into it. pacmd and pactl are already a good start. I can simply periodically load a working configuration as a workaround
+2012-08-04T02:32:00.000Z	W4sp	popsch	That'll be awkward for them. They would only know soemthing went wrong once the can't hear anything is Skype. :-(
+2012-08-04T02:35:00.000Z	W4sp	popsch	I understand however, that you get the idea, including chown/chmod, the scripts and the menu item integration into their wm. It will require some fiddling though as the mixer controls and Skype will normally be run by the same user. An undiscovered area is how SKype and others will respond should those programs no longer have full access rights to the hardware.
+2012-08-04T02:38:00.000Z	W4sp	popsch	On a side note just a reminder that you cannot SUID scripts.
+2012-08-04T02:38:00.000Z	popsch	W4sp	well, I just SUID /bin/bash                          (not seriously ;)
+2012-08-04T02:44:00.000Z	W4sp	popsch	Don't suid shells, mate.
+2012-08-04T02:46:00.000Z	W4sp	popsch	Will you get on with fighting the odds? As said I have OpenBSD and would need to swap my HDDs to get Ubuntu up. What wm do they use?
+2012-08-04T02:49:00.000Z	popsch	W4sp	don't worry, I won't neither suid the shell nor give up. they use stock ubuntu, and I'll make them two nice little scripts with big buttons on the desktop to reset the audio system. thanks for the pointers to pactl and pamd
+2012-08-04T02:54:00.000Z	W4sp	popsch	<sigh> :-) Very welcome.

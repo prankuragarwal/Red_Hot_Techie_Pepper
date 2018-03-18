@@ -1,0 +1,22 @@
+2005-12-06T16:53:00.000Z	germancito		Help
+2005-12-06T16:53:00.000Z	germancito		I can't use sudo now!!
+2005-12-06T16:54:00.000Z	germancito		what can I do
+2005-12-06T16:55:00.000Z	germancito		I edited /etc/host and changed my host name
+2005-12-06T16:55:00.000Z	germancito		and now i can't use sudo
+2005-12-06T16:56:00.000Z	germancito		and I need sudo to configure etc/hosts so I can use sudo again ?
+2005-12-06T16:57:00.000Z	germancito		yes
+2005-12-06T16:59:00.000Z	germancito		but the thing id, trappist that I can't edit /etc/hosts without sudo
+2005-12-06T16:59:00.000Z	Xamusk	germancito	check your groups (and the sudoers file)
+2005-12-06T16:59:00.000Z	germancito	Xamusk	where do i check it
+2005-12-06T17:00:00.000Z	Xamusk	germancito	$ id
+2005-12-07T17:00:00.000Z	Xamusk	germancito	see if you are in the admin group
+2005-12-07T17:00:00.000Z	Xamusk	germancito	if not, use your favorite user administration tool
+2005-12-07T17:01:00.000Z	Xamusk	germancito	then check the sudoers file and see if the authentication is bound to the machine name
+2005-12-07T17:02:00.000Z	germancito	Xamusk	I'm new to ubuntu and linux, and i don't really undestand everithing you tell me :P
+2005-12-07T17:05:00.000Z	Xamusk	germancito	# visudo -> see if there is a line like "%admin  ALL=(ALL) ALL", if your machine's name is there, change to the current one
+2005-12-07T17:06:00.000Z	germancito	Xamusk	I can't run visudo
+2005-12-07T17:06:00.000Z	germancito	Xamusk	visudo: /etc/sudoers: Permission denied
+2005-12-07T17:06:00.000Z	Xamusk	germancito	that may explain a lot
+2005-12-07T17:07:00.000Z	Xamusk	germancito	did you execute it as root?
+2005-12-07T17:07:00.000Z	Xamusk	germancito	$ su
+2005-12-07T17:11:00.000Z	Xamusk	germancito	did you try to logoff or reboot?

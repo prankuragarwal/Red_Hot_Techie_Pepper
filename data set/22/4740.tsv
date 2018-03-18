@@ -1,0 +1,22 @@
+2007-10-21T15:06:00.000Z	zxcv24		hi, i have some problems with the new gutsy-release. on one of my computers i installed it on firefox hangs when i start it after an upgrade. on the other computer the internet doesn't work, the connection is wired. anyone know how to sole any of these things?
+2007-10-21T15:06:00.000Z	rbs-tito	zxcv24	Let's start with the connection
+2007-10-21T15:07:00.000Z	rbs-tito	zxcv24	What does network manager applet say about the connection?
+2007-10-21T15:08:00.000Z	zxcv24	rbs-tito	it just say ip: 0.0.0.0
+2007-10-21T15:09:00.000Z	rbs-tito	zxcv24	Could it be the router giving it the wrong address?
+2007-10-21T15:11:00.000Z	zxcv24	rbs-tito	i'm not sure but don't think so because i get a connection when i switch to windows that i have installed on the same computer, and on my laptop with ubuntu it works
+2007-10-21T15:13:00.000Z	rbs-tito	zxcv24	OK, try going to system > administration > networking
+2007-10-21T15:14:00.000Z	rbs-tito	zxcv24	Open the properties of your wired connection and disable roaming mode
+2007-10-21T15:14:00.000Z	rbs-tito	zxcv24	It should work then, but you won't be able to use the network-manager applet.
+2007-10-21T15:16:00.000Z	zxcv24	rbs-tito	done
+2007-10-21T15:16:00.000Z	rbs-tito	zxcv24	OK, is the device eth0 ?
+2007-10-21T15:20:00.000Z	zxcv24	rbs-tito	sorry, got disconnected so i didint see what you wrote
+2007-10-21T15:20:00.000Z	rbs-tito	zxcv24	I asked if the device you are having problems with is eth0
+2007-10-21T15:20:00.000Z	zxcv24	rbs-tito	thats right its eth0
+2007-10-21T15:21:00.000Z	rbs-tito	zxcv24	OK, open a terminal and run the command "sudo ifdown eth0"
+2007-10-21T15:22:00.000Z	zxcv24	rbs-tito	ifdown: interface eth0 not configured it says
+2007-10-21T15:23:00.000Z	rbs-tito	zxcv24	OK now run "sudo ifup eth0"
+2007-10-21T15:23:00.000Z	rbs-tito	zxcv24	It will give you some output, just check if it binds you to a good IP.
+2007-10-21T15:24:00.000Z	zxcv24	rbs-tito	hmm, it seems my internet is working now, i got an ipadress
+2007-10-21T15:24:00.000Z	rbs-tito	zxcv24	There we go, it should just work from now on
+2007-10-21T15:25:00.000Z	zxcv24	rbs-tito	ahh, thanks :)
+2007-10-21T15:25:00.000Z	rbs-tito	zxcv24	But we have set it to manually configured, so network-manager wont work. This will be fine if you don't intend to swap your network often

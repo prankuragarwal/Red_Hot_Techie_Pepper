@@ -1,0 +1,19 @@
+2009-11-09T10:32:00.000Z	hereiam		ok  im putting  sudo su postgres -c psql
+2009-11-09T10:32:00.000Z	hereiam		and i tried sudo -u mylogin postgres -c psql
+2009-11-09T10:33:00.000Z	hereiam		psql: FATAL:  Ident authentication failed for user "login"
+2009-11-09T10:35:00.000Z	hereiam		sudo -u posgtres psql
+2009-11-09T10:35:00.000Z	hereiam		says sudo: unknown user: posgtres
+2009-11-09T10:35:00.000Z	hereiam		so i changed it to my login right?
+2009-11-09T10:35:00.000Z	hereiam		psql: FATAL:  Ident authentication failed for user "root"
+2009-11-09T10:36:00.000Z	epinky	hereiam	did you modify the IDENT thing on pg_hba.conf?
+2009-11-09T10:38:00.000Z	epinky	hereiam	sudo gedit /var/lib/pgsql/data/pg_hba.conf
+2009-11-09T10:39:00.000Z	epinky	hereiam	find the file pg_hba.conf
+2009-11-09T10:41:00.000Z	epinky	hereiam	cd /etc/postgresql/
+2009-11-09T10:42:00.000Z	epinky	hereiam	then "ls -ltr"
+2009-11-09T10:42:00.000Z	epinky	hereiam	what version?
+2009-11-09T10:43:00.000Z	epinky	hereiam	then "cd 8.4/main"
+2009-11-09T10:44:00.000Z	epinky	hereiam	"ls -l" , pg_hba.conf  is there?
+2009-11-09T10:44:00.000Z	epinky	hereiam	sudo gedit pg_hba.conf
+2009-11-09T10:45:00.000Z	epinky	hereiam	and add this at the end of the file: http://pastebin.com/m751cc7e9
+2009-11-09T10:48:00.000Z	epinky	hereiam	save and quit and post your pg_hba.conf
+2009-11-09T10:48:00.000Z	epinky	hereiam	jus to check it :)

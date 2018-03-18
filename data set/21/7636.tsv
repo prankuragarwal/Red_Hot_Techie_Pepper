@@ -1,0 +1,21 @@
+2007-01-11T17:29:00.000Z	pebblestone		Hi, I have a question. I need to rebuild apache2 because Virtualmin needs suexec builded with homedir=/home. I downloaded apache 2.2.4 and used "./configure --with-suexec-docroot=/home && make && make install". but the problem is, after I restart apache2, it's still the old version. What's wrong with my process?
+2007-01-11T17:30:00.000Z	mnoir	pebblestone	and use checkinstall to make easier to manage
+2007-01-11T17:50:00.000Z	mnoir	pebblestone	that is cuz when you install an alternate release to /opt, the normal scripts do not work for you
+2007-01-11T17:51:00.000Z	pebblestone	mnoir	then what should I do?
+2007-01-11T17:51:00.000Z	mnoir	pebblestone	several possibilities:  alter the init.d scripts, install in the normal place, manual start/stop
+2007-01-11T17:52:00.000Z	mnoir	pebblestone	the location of configs could be an issue too
+2007-01-11T17:52:00.000Z	mnoir	pebblestone	i like ny second alternative best...
+2007-01-11T17:53:00.000Z	mnoir	pebblestone	with waht kjaer  says, my first option is better
+2007-01-11T17:54:00.000Z	pebblestone	mnoir	Ok, I'll look into init.d script.
+2007-01-11T17:54:00.000Z	mnoir	pebblestone	init.d is a dir and you will need to do a little more than replace the script there
+2007-01-11T17:55:00.000Z	pebblestone	mnoir	do you mean that I need to change some script besides apache2?
+2007-01-11T17:56:00.000Z	mnoir	pebblestone	no - i mean that the way the init scripts work, you may need to change some things in rcX.d directories
+2007-01-11T17:56:00.000Z	pebblestone	mnoir	i see.
+2007-01-11T17:57:00.000Z	mnoir	pebblestone	it aint hard but requires some care
+2007-01-11T17:57:00.000Z	mnoir	pebblestone	otherwise apache will not behave the way you want
+2007-01-11T17:58:00.000Z	mnoir	pebblestone	the new init script should conform to standards for parameters
+2007-01-11T17:59:00.000Z	pebblestone	mnoir	i see.
+2007-01-11T17:59:00.000Z	mnoir	pebblestone	if anything is unclear, ask!
+2007-01-11T17:59:00.000Z	pebblestone	mnoir	Ok
+2007-01-11T06:00:00.000Z	pebblestone	mnoir	actually. I have no idea how to edit the scripts but I'll see the apache2 docs first. Thank you.
+2007-01-11T06:02:00.000Z	mnoir	pebblestone	just a warning - the #apache channel can be helpful but they hate the debian config, so be prepared for some razzing if you go there

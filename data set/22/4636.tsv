@@ -1,0 +1,22 @@
+2007-12-29T18:27:00.000Z	Optyk		Hi again
+2007-12-29T18:27:00.000Z	Optyk		Anyone could help me configure apache? I have two users - regular and chrooted. When I open http://nexiu.homeftp.org/~optyk can I list files. On chrooted user (http://nexiu.homeftp.org/~kele) I get an 403 error, but I can access http://nexiu.homeftp.org/~kele/index
+2007-12-29T18:29:00.000Z	ifireball	Optyk	try #apache
+2007-12-29T18:29:00.000Z	Optyk	ifireball	I tried:  < DustyBin> Apache/2.2.4 (Ubuntu)<-- heres the problem
+2007-12-29T18:31:00.000Z	ifireball	Optyk	he's full of it, the Ubuntu Apache is perfectly standard afaik, the config is modular in /etc/apache/conf.d but that's it.
+2007-12-29T18:32:00.000Z	ifireball	Optyk	but check of perhaps you need to install some kind of an additional Apache module
+2007-12-29T18:40:00.000Z	Optyk	ifireball	solved, thanks :)
+2007-12-29T18:40:00.000Z	ifireball	Optyk	care to share what it was?
+2007-12-29T18:41:00.000Z	ifireball	Optyk	k.
+2007-12-29T18:43:00.000Z	Optyk	ifireball	http://cpaste.com/4538
+2007-12-29T18:45:00.000Z	ifireball	Optyk	if you didn't add any directive to tell Apache to actually chroot, then no, I don't think mod_chroot does anything
+2007-12-29T18:47:00.000Z	ifireball	Optyk	anyway read about Ubuntu's (Debian's) way of handling Apache in /etc/apache2/README; your config could be made a little more elegant (and potentially apt-maintainable)
+2007-12-29T18:50:00.000Z	Optyk	ifireball	Soon I will write how to create chroot with ssh, ftp and http, but first I must solve soe problems. I looking for any how to but I couldn't find it.
+2007-12-29T18:50:00.000Z	ifireball	Optyk	why are you trying to use chroot there anyway?
+2007-12-29T18:52:00.000Z	Optyk	ifireball	I want create few accounts for my friends, but I dont want to allow they leave home
+2007-12-29T18:52:00.000Z	ifireball	Optyk	I hope you're not thinking its gonna be more secure in any way, because it isn't. (BSD's chroot is different in that respect)
+2007-12-29T18:52:00.000Z	ifireball	Optyk	if you really want then constrained you should use something like OpenVZ or UML or Vserver
+2007-12-29T18:53:00.000Z	ifireball	Optyk	otherwise chroot will not provide any additional security over setting file permissions and not giving the root password...
+2007-12-29T18:54:00.000Z	ifireball	Optyk	I don't know what Vbox is
+2007-12-29T18:55:00.000Z	ifireball	Optyk	it is similar in some respects, but its an OS-lever virtualizer rather then a virtual machine
+2007-12-29T18:56:00.000Z	Optyk	ifireball	thanks for your advice, I will check out this vserver
+2007-12-29T18:56:00.000Z	ifireball	Optyk	if find OpenVZ to be more mature, do check it out

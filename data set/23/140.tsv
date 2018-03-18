@@ -1,0 +1,23 @@
+2012-06-06T09:24:00.000Z	Goshen		I am trying to use NX over Hamachi, I have NXserver isntalled and I can log in localhost, and over the LAN, but when I try to log in over hamachi it refuses the connection.  I can use normal SSH over Hamachi.  Any Ideas? Is there a config I need to edit to get NXserver to allow logins from the Hamachi ip?
+2012-06-06T09:25:00.000Z	sacarlson	Goshen	what application or port is it you are failing to access over hamachi?
+2012-06-06T09:26:00.000Z	sacarlson	Goshen	apache?  port 80?
+2012-06-06T09:26:00.000Z	Goshen	sacarlson	Nomachine NX port 22
+2012-06-06T09:26:00.000Z	sacarlson	Goshen	you just stated that ssh works that's 22 so can't be that
+2012-06-06T09:27:00.000Z	Goshen	sacarlson	right, SSH works over hamachi, but I get login denied using NX client
+2012-06-06T09:27:00.000Z	sacarlson	Goshen	I don't know what an NX client is, what port it uses?
+2012-06-06T09:28:00.000Z	Goshen	sacarlson	port 22 - ssh: connect to host 5.3.**.*** port 22: Connection refused
+2012-06-06T09:28:00.000Z	sacarlson	Goshen	oh maybe all remote ssh fails?
+2012-06-06T09:28:00.000Z	Goshen	sacarlson	I can log in using putty on SSH no problem
+2012-06-06T09:28:00.000Z	sacarlson	Goshen	see that ssh-server is listening on your 5.*.*.* address
+2012-06-06T09:29:00.000Z	sacarlson	Goshen	putty from remote?
+2012-06-06T09:29:00.000Z	Goshen	sacarlson	yes, I am logged in to SSH remotely over hamachi
+2012-06-06T09:30:00.000Z	Goshen	sacarlson	It seems to be something to do with NXSERVER not listening or allowing connections on the hamachi ip
+2012-06-06T09:30:00.000Z	sacarlson	Goshen	so I guess the problem is on your client side of ??  system remote
+2012-06-06T09:31:00.000Z	sacarlson	Goshen	I assumed that ubuntu was the ssh-server,  so I'm reversed?  you can't as a client from ubuntu login to the ssh-server on hamachi?
+2012-06-06T09:32:00.000Z	sacarlson	Goshen	do you use a dns name or an ip address?
+2012-06-06T09:33:00.000Z	Goshen	sacarlson	ubuntu is the SSH-server, it is also the NXSERVER, running hamachi, the client is windows, NXclient, over hamachi.....I am using the hamachi ip address
+2012-06-06T09:33:00.000Z	Goshen	sacarlson	NX is a remote desktop app, like VNC but much faster
+2012-06-06T09:34:00.000Z	Goshen	sacarlson	it tunnels over SSH
+2012-06-06T09:38:00.000Z	sacarlson	Goshen	I don't see any nxserver in the ubuntu repository so I guess it's not supported,  but sounds like your network must be setup correct as ssh works
+2012-06-06T09:40:00.000Z	sacarlson	Goshen	might check sudo netstat -pant ; to see that your nxserver is listening unless it uses udp then skip the -pant
+2012-06-06T09:43:00.000Z	Goshen	sacarlson	I don't think nxserver watches directly for a connection, I think the connection is made after the ssh session for user nx starts using keys

@@ -1,0 +1,19 @@
+2010-05-05T23:53:00.000Z	hedin		I have installed 10.04 x86_64 on a intel SSD... i can't find any howto etc. on how to optimize ubuntu for SSD... any help is appreciated
+2010-05-05T23:54:00.000Z	ActionParsnip	hedin	set vm.swappiness low (assuming you have > 1Gb RAM. This will reduce writes to /swap
+2010-05-05T23:55:00.000Z	hedin	ActionParsnip	i got 8GB
+2010-05-05T23:55:00.000Z	ActionParsnip	hedin	you can use vm.swappiness of 0 then
+2010-05-05T23:55:00.000Z	hedin	ActionParsnip	do i just have to write it in a shell?
+2010-05-05T23:55:00.000Z	ActionParsnip	hedin	no, its a setting in /etc/sysctl.conf
+2010-05-05T23:57:00.000Z	ActionParsnip	hedin	run: gksudo gedit /etc/sysctl.conf    and  add these lines. http://pastebin.com/8UJuGsKA
+2010-05-05T23:58:00.000Z	ActionParsnip	hedin	just change the swappiness to 0, the swappiness keeps the apps in ram and makes the OS not use swap unless you have exhausted RAM (not going to happen)
+2010-05-05T23:59:00.000Z	hedin	ActionParsnip	okay :)
+2010-05-05T23:59:00.000Z	ActionParsnip	hedin	the other fluff makes your web access faster
+2010-05-05T23:59:00.000Z	hedin	ActionParsnip	everything in sysctl.conf was outcommented...
+2010-05-05T23:59:00.000Z	hedin	ActionParsnip	nice
+2010-05-06T00:00:00.000Z	ActionParsnip	hedin	some of it isn't, just paste the text and next boot you should be ok. I hope you used ext2 for the SSD, it reduces writes as ext3 and ext4 use a journal
+2010-05-06T00:00:00.000Z	hedin	ActionParsnip	do i need to reload some services or even reboot for it to take effect?
+2010-05-06T00:01:00.000Z	hedin	ActionParsnip	i used ext4
+2010-05-06T00:01:00.000Z	ActionParsnip	hedin	sudo sysctl -p 
+2010-05-06T00:02:00.000Z	ActionParsnip	hedin	ext4 writes quite a lot to the journal, using ext2 makes it write a LOT less so will prolong the SSDs life
+2010-05-06T00:03:00.000Z	ActionParsnip		!fixapt | Tom22
+2010-05-06T00:06:00.000Z	hedin	ActionParsnip	thanks for the help :)

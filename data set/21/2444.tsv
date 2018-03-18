@@ -1,0 +1,21 @@
+2009-10-10T21:48:00.000Z	wes32		so no one has heard of any method of using a webcam through terminal, then? :(
+2009-10-10T21:49:00.000Z	usser_	wes32	sure thing
+2009-10-10T21:49:00.000Z	usser_	wes32	use mplayer with framebuffer output
+2009-10-10T21:51:00.000Z	usser_	wes32	like mplayer -vo fbdev /dev/video0
+2009-10-10T21:52:00.000Z	wes32	usser_	interesting. don't I need to enable the webcam first, though?
+2009-10-10T21:52:00.000Z	usser_	wes32	framebuffer has to be enabled in /boot/grub/menu.lst which i believe is not the case for ubuntu
+2009-10-10T21:53:00.000Z	usser_	wes32	if the webcam is detected properly it will create a /dev/video file
+2009-10-10T21:53:00.000Z	usser_	wes32	https://wiki.ubuntu.com/FrameBuffer
+2009-10-10T21:57:00.000Z	wes32	usser_	seems to work a bit differently in GRUB2 ;(
+2009-10-10T21:58:00.000Z	usser_	wes32	oh grub2, hm
+2009-10-10T21:59:00.000Z	usser_	wes32	i think its the same thing, just instead of menu.lst theres grub.cfg file in /boot/grub
+2009-10-10T21:59:00.000Z	wes32	usser_	yea, but it's formatted differently, new scripting language
+2009-10-10T22:01:00.000Z	usser_	wes32	menuentry sections look pretty much the same. anyhow mplayer -vo fbdev will only work in a true console, the one you get with ctrl+alt+f2 wont work in a terminal emulator like xterm or gnome-terminal
+2009-10-10T22:01:00.000Z	wes32	usser_	I was afraid you'd say something like that!
+2009-10-10T22:02:00.000Z	usser_	wes32	hehe
+2009-10-10T22:03:00.000Z	wes32	usser_	i'm trying to make a snapshot of everyone who logs in from GDM with my webcam automatically, as a sort of facial log for this system - any idea what the best method of accomplishing this would be? I was hoping to just run a bash script, but that'd be tricky then
+2009-10-10T22:04:00.000Z	usser_	wes32	oh should have said so, ffmpeg is capable of taking simple snapshots using /dev/video
+2009-10-10T22:04:00.000Z	usser_	wes32	so can mencoder
+2009-10-10T22:04:00.000Z	wes32	usser_	well then!
+2009-10-10T22:05:00.000Z	wes32	usser_	I probably should've known that - time to man them up :) ty
+2009-10-10T22:05:00.000Z	usser_	wes32	from ffmpeg man page ffmpeg -f video4linux2 -i /dev/video0 /tmp/out.mpg

@@ -1,0 +1,18 @@
+2009-11-21T11:05:00.000Z	kain		hi, i was wondering how my second hd can automatically mount everytime i login?
+2009-11-21T11:05:00.000Z	kain		i've done it before, but i don't remember how i did it
+2009-11-21T11:06:00.000Z	jongbergs	kain	add entries to your /etc/fstab
+2009-11-21T11:07:00.000Z	jongbergs	kain	you need to know the device name of your hd you wish to automatically mount
+2009-11-21T11:07:00.000Z	kain	jongbergs	: i used a program last time to do it
+2009-11-21T11:08:00.000Z	kain	jongbergs	i got "Disk Utility", "NTFS configuration tool" and "Storage device manager"
+2009-11-21T11:10:00.000Z	jongbergs	kain	what filesystem does your drive is?
+2009-11-21T11:11:00.000Z	kain	jongbergs	the one i want to automatically mount is Linux Ext4
+2009-11-21T11:12:00.000Z	jongbergs	kain	where do you want to mount it?
+2009-11-21T11:13:00.000Z	kain	jongbergs	well i usually just double click and it mounts or right click on the disk and mount it
+2009-11-21T11:13:00.000Z	jongbergs	kain	/mnt? Desktop? home folder?
+2009-11-21T11:14:00.000Z	jongbergs	kain	mine is i used to mount my two ntfs partitions in Desktop
+2009-11-21T11:14:00.000Z	kain	jongbergs	hmmmm
+2009-11-21T11:14:00.000Z	kain	jongbergs	i want mine in /media/
+2009-11-21T11:15:00.000Z	jongbergs	kain	then edit your /etc/fstab
+2009-11-21T11:15:00.000Z	jongbergs	kain	first we need to know the device name of your hd by sudo fdisk -l
+2009-11-21T11:16:00.000Z	kain	jongbergs	sdb1
+2009-11-21T11:18:00.000Z	jongbergs	kain	add this below the the fstab, /dev/sdb1 /media/mylinuxpartition  ext4   relatime     0    0

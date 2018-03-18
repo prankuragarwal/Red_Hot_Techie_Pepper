@@ -1,0 +1,22 @@
+2006-06-27T13:10:00.000Z	leboff		i'm using the find to execute a command (lets say renaming the file) and it will put the new file in my home folder (or whatever folder i'm running the command from) is there a way to get it to save right where it is?
+2006-06-27T13:11:00.000Z	dooglus	leboff	yes
+2006-06-27T13:11:00.000Z	dooglus	leboff	what are you running exactly?
+2006-06-27T13:12:00.000Z	leboff	dooglus	its to convert a bunch of jpegs i have in folders to bitmap and resize them..
+2006-06-27T13:12:00.000Z	dooglus	leboff	ok
+2006-06-27T13:12:00.000Z	leboff	dooglus	here is the command
+2006-06-27T13:12:00.000Z	dooglus	leboff	let'ssee it :)
+2006-06-27T13:12:00.000Z	leboff	dooglus	convert is from imagemagick
+2006-06-27T13:13:00.000Z	dooglus	leboff	that 'cover.bmp' is the output filename, right?
+2006-06-27T13:13:00.000Z	leboff	dooglus	correct, and that keeps overwriting itself in my home folder
+2006-06-27T13:14:00.000Z	dooglus	leboff	so do this instead: find /media/ipod -name folder.jpg -exec convert {} -resize 125x125 125.{} \;
+2006-06-27T13:15:00.000Z	leboff	dooglus	see the thing is, when i had album art they are all as folder.jpg , in about 800 different folders i want to save them back where they are.. as cover.bmp
+2006-06-27T13:17:00.000Z	dooglus	leboff	ok, in that case, do this: find /media/ipod -name folder.jpg | while read x; do convert "$x" -resize 125x125 "$(dirname "$x")/cover.bmp"; done
+2006-06-27T13:17:00.000Z	dooglus	leboff	try it on a small test directory first!
+2006-06-27T13:17:00.000Z	leboff	dooglus	done is not included right
+2006-06-27T13:18:00.000Z	dooglus	leboff	done closes the 'do'
+2006-06-27T13:18:00.000Z	dooglus	leboff	ie. it's needed
+2006-06-27T13:18:00.000Z	leboff	dooglus	oohh ok good thing i asked
+2006-06-27T13:20:00.000Z	leboff	dooglus	works in the test dir! here goes the real thing! thanks
+2006-06-27T13:20:00.000Z	dooglus	leboff	it'll even work for files/dirs with spaces in their names, unlike your -exec line
+2006-06-27T13:21:00.000Z	leboff	dooglus	ooh nice catch, thanks.. wouldve been stuck on that for hours :(
+2006-06-27T13:21:00.000Z	dooglus	leboff	that's what all the double quotes are for...

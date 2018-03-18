@@ -1,0 +1,24 @@
+2011-04-14T02:57:00.000Z	recurse_		chmod
+2011-04-14T02:59:00.000Z	recurse_		hi all - have been searching all over the web to try to find the answer to this, but am still stuck. I have an issue with apache on 10.10 where I add a umask 022 to the envvars, but it has no effect. I've seen some others post with this issue, but haven't been able to find a solution
+2011-04-14T03:01:00.000Z	acicula	recurse_	files created with the wrong permissions?
+2011-04-14T03:01:00.000Z	recurse_	acicula	yes, they're created with rw - -
+2011-04-14T03:01:00.000Z	acicula	recurse_	where are you setting your ENV variable
+2011-04-14T03:02:00.000Z	recurse_	acicula	at the end of /etc/apache2/envvars
+2011-04-14T03:02:00.000Z	recurse_	acicula	I just have one line: "umask 022"
+2011-04-14T03:04:00.000Z	acicula	recurse_	is that how apache expects umask to be set?
+2011-04-14T03:05:00.000Z	recurse_	acicula	that's what I've read is the suggested solution. Oddly, 10.04 didn't have this problem - only happened after I upgraded to 10.10
+2011-04-14T03:05:00.000Z	acicula	recurse_	and are you sure the script that creates the files does not change them?
+2011-04-14T03:06:00.000Z	recurse_	acicula	yes, this all worked fine until upgrading to 10.10, now created files have permissions that are too restrictive and www_data can't read them
+2011-04-14T03:06:00.000Z	acicula	recurse_	the user did not change?
+2011-04-14T03:08:00.000Z	recurse_	acicula	no, the user is the same, just the permissions changed. I assume something changed with 10.10 as a security enhancement, but now I'm stuck trying to figure out how to get rw- r - r permissions back
+2011-04-14T03:08:00.000Z	acicula	recurse_	err maybe apparmor is affecting it?
+2011-04-14T03:09:00.000Z	recurse_	acicula	oh? interesting, I don't know anything about apparmor, I'll investigate, thanks!
+2011-04-14T03:19:00.000Z	recurse_	acicula	looks like there is no apparmor profile set up for apache by default in 10.10, so I don't think that's the issue, thanks for the suggestion though
+2011-04-14T03:21:00.000Z	recurse_	acicula	no, there is no change at all. It is as if the umask is being completely ignored by apache. Others are having this issue as well, but no solutions yet.
+2011-04-14T03:22:00.000Z	acicula	recurse_	is config file read by apache or by the script that starts apache?
+2011-04-14T03:26:00.000Z	recurse_	acicula	I'll try adding the umask to the apache2 startup script, though others have reported that this doesn't work. I see envvars being set and read in /etc/init.d/apache2
+2011-04-14T03:27:00.000Z	acicula	recurse_	umask 022 is not a variable its a shell command right
+2011-04-14T03:27:00.000Z	recurse_	acicula	correct, it is a shell command
+2011-04-14T03:27:00.000Z	acicula	recurse_	so is it just sourcing the variables or executing that script?
+2011-04-14T03:30:00.000Z	recurse_	acicula	unfortunately adding umask 022 to the beginning of the /etc/init.d/apache2 script did not work, but it was a great suggestion.
+2011-04-14T03:40:00.000Z	recurse_	acicula	thanks for all your help, there doesn't seem to be a good solution, unfortunately. I have a work-around - adding os.umask(022) to the python script that executes fixes the problem, but that really seems like a hack. Apache should honor the umask set in envvars, if not the one in /etc/profile

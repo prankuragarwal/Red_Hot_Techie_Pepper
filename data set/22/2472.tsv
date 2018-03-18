@@ -1,0 +1,22 @@
+2009-06-05T18:09:00.000Z	KnightBaron		I mean server didn't send back ACK packet
+2009-06-05T18:10:00.000Z	KnightBaron		btw, I use WRT54GL with Tomato
+2009-06-05T18:10:00.000Z	KnightBaron		with QoS, TCP Vagas enabled
+2009-06-05T18:10:00.000Z	KnightBaron		And yes, I forward all port to may main PC
+2009-06-05T18:10:00.000Z	KnightBaron		But I've try disable all those things and the problem still occur.
+2009-06-05T18:11:00.000Z	KnightBaron		Anything else I should try?
+2009-06-05T18:12:00.000Z	KnightBaron		[anodesni]: Yes, but I don't know how to do that with Ubuntu
+2009-06-05T18:13:00.000Z	KnightBaron		back to my question. Since my problem occur on fresh install Ubuntu 9.04 32bit. Do I need to set special settings for ubuntu in my Tomato?
+2009-06-05T18:14:00.000Z	KnightBaron		btw, I've check the installation disk. Notthing wrong.
+2009-06-05T18:14:00.000Z	KnightBaron		*I've checked
+2009-06-05T18:16:00.000Z	rob_p	KnightBaron	Can you take the router out of the picture and reproduce the timeouts?
+2009-06-05T18:17:00.000Z	KnightBaron	rob_p	I havn't try that. Wait a min....
+2009-06-05T18:18:00.000Z	rob_p	KnightBaron	I wonder if you've discoveded a bug in the Tomato firmware...  Like maybe the ip_conntrack_ftp module being unloaded for whatever reason...
+2009-06-05T18:19:00.000Z	rob_p	KnightBaron	Just a possibility, albeit somewhat unlikely.
+2009-06-05T18:19:00.000Z	rob_p	KnightBaron	But taking Tomato out of the picture will help isolate the issue to the router.
+2009-06-05T18:27:00.000Z	rob_p	KnightBaron	How did the upload tests go?
+2009-06-05T18:28:00.000Z	rob_p	KnightBaron	Ok so now we know it's not Tomato's fault!  :-)
+2009-06-05T18:29:00.000Z	rob_p	KnightBaron	Are you running a host-based firewall on your Ubuntu box?
+2009-06-05T18:29:00.000Z	KnightBaron	rob_p	So what now?
+2009-06-05T18:31:00.000Z	rob_p	KnightBaron	What does, "sudo iptables -L -nv" give you?  It should show the default policies set to ACCEPT and no rules loaded for any of the chains (INPUT, OUTPUT, FORWARD).
+2009-06-05T18:31:00.000Z	rob_p	KnightBaron	Ok then.  It shouldn't have a firewall active then.
+2009-06-05T18:33:00.000Z	rob_p	KnightBaron	I'm starting to think it's something wrong with your ISP.

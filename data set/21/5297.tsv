@@ -1,0 +1,21 @@
+2010-06-24T23:45:00.000Z	dajhorn	candyban	You're on the right track with stateless redundancy.  Also look at the heartbeat packages.  Doing stateful redundancy on Linux is difficult.  If you need stateful redundancy, then look at something like PF.
+2010-06-24T23:46:00.000Z	candyban	dajhorn	I also installed conntrackd
+2010-06-24T23:46:00.000Z	candyban	dajhorn	I tried openbsd, but I get the same problem there ... I can't hide behind the carp interface
+2010-06-24T23:47:00.000Z	candyban	dajhorn	I'm much more experienced with linux anyways
+2010-06-24T23:48:00.000Z	dajhorn	candyban	PF is easy and elegant compared to the same things in Linux.  If PF was incompatible in your environment, then you're probably screwed.
+2010-06-24T23:49:00.000Z	dajhorn	candyban	MASQing in Linux requires stateful innards.  You may get a better answer if you describe why you need to do this.
+2010-06-24T23:49:00.000Z	candyban	dajhorn	I am not familiar with pf ... and I was able to hide behind the carp interface, (outgoing traffic was correctly natted, but the way back didn't work)
+2010-06-24T23:49:00.000Z	candyban	dajhorn	I just want a fully redundant firewall setup ... so that if I want to upgrade/reboot a firewall, it has no impact whatsoever on the "users"
+2010-06-24T23:50:00.000Z	dajhorn	candyban	Is your upstream ISP cooperative, or do you just have something like a plain DSL or Cable connection?
+2010-06-24T23:51:00.000Z	candyban	dajhorn	I rent half a rack in a datacenter ... and when I log in via vpn, I want my default route to go there (and masq my traffic)
+2010-06-24T23:52:00.000Z	dajhorn	candyban	You're asking for something difficult to implement on Ubuntu.  Try another IRC channel that specializes in things like iptables.
+2010-06-24T23:52:00.000Z	candyban	dajhorn	I have 3 other people who log in remotely + I have a few servers behind it ... so I just want to make sure that when I reboot the firewall, I can do it without interruption
+2010-06-24T23:53:00.000Z	candyban	dajhorn	why would this be difficult? In my opinion it should be implemented in any self respecting organisation
+2010-06-24T23:53:00.000Z	dajhorn	candyban	Stateful firewall redundancy is difficult to do in Ubuntu.  The best that you're likely to get is a Heartbeat-style IP takeover and dropped connections.
+2010-06-24T23:54:00.000Z	candyban	dajhorn	conntrackd and ucarp should take care of both
+2010-06-24T23:55:00.000Z	dajhorn	candyban	"Should" is far away from "easily".  Try asking in a more specific IRC channel.  You're not likely to get another answer here after making a crack like "self respecting organisation".
+2010-06-24T23:57:00.000Z	candyban	dajhorn	my point is that it should be common problem ... and for common problems, there are usually common solutions
+2010-06-24T23:59:00.000Z	candyban	dajhorn	so if a certain solution is a an order of magnitude more difficult to implement, then perhaps I'm looking at a wrong solution
+2010-06-24T23:59:00.000Z	candyban		anyways, I'll try #netfilter
+2010-06-24T23:59:00.000Z	candyban	dajhorn	thanks for your time and advice :)
+2010-06-24T23:59:00.000Z	dajhorn	candyban	Np.

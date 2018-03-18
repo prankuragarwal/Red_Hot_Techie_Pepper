@@ -1,0 +1,21 @@
+2011-10-14T09:31:00.000Z	glitch-mod		what does sudo -s do
+2011-10-14T09:32:00.000Z	yagoo	glitch-mod	-s is for sweetness
+2011-10-14T09:33:00.000Z	glitch-mod	yagoo	ಠ_ಠ
+2011-10-14T10:07:00.000Z	yagoo	glitch-mod	lol
+2011-10-14T10:07:00.000Z	yagoo	glitch-mod	if that was anything but dummy output that was the one :)
+2011-10-14T10:08:00.000Z	glitch-mod	yagoo	There is nothing else to pick
+2011-10-14T10:08:00.000Z	yagoo	glitch-mod	see if soundcore is load (lsmod |grep -i sound)
+2011-10-14T10:09:00.000Z	glitch-mod	yagoo	it returned a value so I guess its loaded
+2011-10-14T10:10:00.000Z	glitch-mod	yagoo	its telling me I'm using snd-hda-intel
+2011-10-14T10:10:00.000Z	yagoo	glitch-mod	thats good news..
+2011-10-14T10:12:00.000Z	glitch-mod	yagoo	Think this could help me? https://bugs.launchpad.net/ubuntu/+source/alsa-driver/+bug/873132
+2011-10-14T10:13:00.000Z	yagoo	glitch-mod	absolutely try that.. often laptops with linux -- have this issue with the sound chipsets
+2011-10-14T10:19:00.000Z	glitch-mod	yagoo	added this 'options snd-hda-intel model=auto' to '/etc/modprobe.d/alsa-base.conf' but no dice, anything else I can try?
+2011-10-14T10:20:00.000Z	yagoo	glitch-mod	modinfo <*-intel> may list the other type of laptop models u can try..
+2011-10-14T10:20:00.000Z	yagoo	glitch-mod	the name of that hdasndintel module
+2011-10-14T10:21:00.000Z	glitch-mod	yagoo	snd-hda-intel
+2011-10-14T10:21:00.000Z	glitch-mod	yagoo	thats not what you were asking for right...
+2011-10-14T10:22:00.000Z	yagoo	glitch-mod	as a regular user, u can try /etc/init.d/alsa-utils reset 0
+2011-10-14T10:23:00.000Z	glitch-mod	yagoo	alsa-utils doesn't exist! could this be the answer to my problem :D
+2011-10-14T10:25:00.000Z	glitch-mod	yagoo	only thing under /etc/init.d/alsa-  is 'store' and 'restore'
+2011-10-14T10:25:00.000Z	yagoo	glitch-mod	maybe it's one of those.. they may have changed the name (perhaps a wiki can give a hint on this)

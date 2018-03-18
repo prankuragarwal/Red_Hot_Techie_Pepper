@@ -1,0 +1,24 @@
+2010-07-28T18:13:00.000Z	econdudeawesome		Anyone know how to add root to a user/group? I'd like to do something with both root and the main admin account without adding the main admin account to "root" group
+2010-07-28T18:14:00.000Z	erUSUL	econdudeawesome	root does not need to be on any group. and we do not support an enabled root account
+2010-07-28T18:14:00.000Z	econdudeawesome	erUSUL	so not my question at all
+2010-07-28T18:15:00.000Z	econdudeawesome	erUSUL	do you support editing fstab?
+2010-07-28T18:15:00.000Z	erUSUL	econdudeawesome	yes
+2010-07-28T18:17:00.000Z	erUSUL	econdudeawesome	show us the fstab line that is giving problems. tell us what type of fileystem you are mounting
+2010-07-28T18:17:00.000Z	econdudeawesome	erUSUL	two of them:
+2010-07-28T18:17:00.000Z	econdudeawesome	erUSUL	/dev/sdb1 /mount/storage-backup ext4 auto,user,rw,uid=1000 0 0
+2010-07-28T18:18:00.000Z	erUSUL	econdudeawesome	the first one is wrong. ext4 does not support uid option
+2010-07-28T18:19:00.000Z	econdudeawesome	erUSUL	what do I need to do then to make it writable
+2010-07-28T18:19:00.000Z	erUSUL	econdudeawesome	so put just "defaults,user" as options
+2010-07-28T18:19:00.000Z	econdudeawesome	erUSUL	I'll give it a shot
+2010-07-28T18:19:00.000Z	erUSUL	econdudeawesome	set up correct permissions
+2010-07-28T18:19:00.000Z	econdudeawesome	erUSUL	how do I do that
+2010-07-28T18:20:00.000Z	erUSUL	econdudeawesome	you either mount it in amount point where you can writte or you make dirs inside the filesystem where you can writte
+2010-07-28T18:20:00.000Z	erUSUL	econdudeawesome	the vfat paritrion does support uid i also recommend to put a liberal mask in it
+2010-07-28T18:23:00.000Z	econdudeawesome	erUSUL	what does a liberal mask do
+2010-07-28T18:23:00.000Z	erUSUL	econdudeawesome	umask=0000 makes all files in the partiton accessible by anyone
+2010-07-28T18:23:00.000Z	erUSUL	econdudeawesome	uid guid umask and all that options are only supported by vfat
+2010-07-28T18:36:00.000Z	econdudeawesome	erUSUL	worked like a charm, thanks!
+2010-07-28T18:37:00.000Z	erUSUL	econdudeawesome	no problem
+2010-10-23T03:49:00.000Z	erUSUL	econdudeawesome	i guess that in a laptop that can be "easily" lost/stolen it helps protect your data
+2011-02-19T22:08:00.000Z	econdudeawesome	erUSUL	GeekMan: lol
+2011-02-19T22:18:00.000Z	erUSUL	econdudeawesome	hard reboot after crash

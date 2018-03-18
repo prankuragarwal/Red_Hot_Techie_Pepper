@@ -1,0 +1,24 @@
+2010-01-13T17:56:00.000Z	Umeaboy		Does anyone know what I can do to activate and use Atheros-card in 9.10?
+2010-01-13T17:56:00.000Z	Umeaboy		It didn't get installed by default.
+2010-01-13T17:56:00.000Z	ae86-drifter	Umeaboy	did you install the driver?
+2010-01-13T17:57:00.000Z	Umeaboy	ae86-drifter	From where?
+2010-01-13T17:58:00.000Z	ae86-drifter	Umeaboy	run grep -r "ath5k" /etc/modprobe.d/
+2010-01-13T17:58:00.000Z	Umeaboy	ae86-drifter	Before I do this, will this disconnect me?
+2010-01-13T17:59:00.000Z	ae86-drifter	Umeaboy	nah just checks for the driver
+2010-01-13T18:00:00.000Z	Umeaboy	ae86-drifter	/etc/modprobe.d/blacklist-ath_pci.conf:# which ath5k cannot recover. To prevent this condition, stop
+2010-01-13T18:01:00.000Z	ae86-drifter	Umeaboy	edit /etc/modprobe.d and tell me if it is blacklisted ath5k
+2010-01-13T18:04:00.000Z	Umeaboy	ae86-drifter	Edit it with WHAT? Gedit doesn't have the rights to open it even if I open it with sudo.
+2010-01-13T18:04:00.000Z	ae86-drifter	Umeaboy	umm there should be a blacklist.conf file in that folder
+2010-01-13T18:05:00.000Z	ae86-drifter	Umeaboy	wait just type in ifconfig and see if you have wlan0 or wifi0 etc
+2010-01-13T18:07:00.000Z	Umeaboy	ae86-drifter	http://paste.ubuntu.com/356035/
+2010-01-13T18:08:00.000Z	ae86-drifter	Umeaboy	type in ifconfig and press enter
+2010-01-13T18:08:00.000Z	Umeaboy	ae86-drifter	THEN what?
+2010-01-13T18:09:00.000Z	Umeaboy	ae86-drifter	http://paste.ubuntu.com/356037/
+2010-01-13T18:10:00.000Z	ae86-drifter	Umeaboy	notice the lines wlan1     Link encap:Ethernet  HWaddr 00:18:f8:2c:17:56    AND        inet addr:192.168.1.33  Bcast:192.168.1.255  Mask:255.255.255.0 ? this means your connected to a wireless network
+2010-01-13T18:12:00.000Z	ae86-drifter	Umeaboy	you do not have two wireless adapters by any chance?
+2010-01-13T18:12:00.000Z	Umeaboy	ae86-drifter	Yes, via a USB-connected wireless stick yes.
+2010-01-13T18:13:00.000Z	ae86-drifter	Umeaboy	okay, well both seems to be installed and working okay, but only one is configured (wlan1, not wlan0) download Wicd network manager to configure them in GUI or through CLI use iwconfig
+2010-01-13T18:17:00.000Z	Umeaboy	ae86-drifter	07:00.0 Ethernet controller: Atheros Communications Inc. AR5001 Wireless Network Adapter (rev 01)
+2010-01-13T18:18:00.000Z	ae86-drifter	Umeaboy	like i said its already installed, but not configured, that card would have mac address 00:26:5e:04:31:00 if i am correct, and the one youre using now would have : 00:18:f8:2c:17:56
+2010-01-13T18:19:00.000Z	ae86-drifter	Umeaboy	to make it "active" you HAVE to configure it! i suggest using Wicd Network manager.
+2010-01-13T18:20:00.000Z	ae86-drifter	Umeaboy	it will help you switch between the two without disconnecting etc

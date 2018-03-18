@@ -1,0 +1,21 @@
+2010-06-15T20:53:00.000Z	shoopdawoop	cdcdcdc	maybe you have faulty ram. you could test it with memtest86
+2010-06-15T20:54:00.000Z	cdcdcdc	shoopdawoop	thing is, i made some changes to partitions and changed swap in fstab, so i feel like i could have messed up something - this is a brand new machine so i don't know - but i will try
+2010-06-15T21:00:00.000Z	cdcdcdc	shoopdawoop	low means...lots of swap or little swap
+2010-06-15T21:06:00.000Z	shoopdawoop	cdcdcdc	sorry got disconnected. in case you missed my answer check https://help.ubuntu.com/community/SwapFaq
+2010-06-15T21:06:00.000Z	cdcdcdc	shoopdawoop	thanks. just got there and was reading it. thnx
+2010-06-15T21:10:00.000Z	shoopdawoop	cdcdcdc	you could use a tmpfs (which is a ramdisk) for your /tmp/ folder. it will increase your system perfomance and you can very easily fill up your ram by copying files into /tmp/ :)
+2010-06-15T21:12:00.000Z	cdcdcdc	shoopdawoop	ooh, that sounds like more fun than opening every program in my applications menu, but i'm not sure if i know how
+2010-06-15T21:13:00.000Z	shoopdawoop	cdcdcdc	http://brainstorm.ubuntu.com/idea/1624 - solution #2
+2010-06-15T21:13:00.000Z	shoopdawoop	cdcdcdc	also you need to log out of your desktop and rm -rf /tmp/ then reboot
+2010-06-15T21:19:00.000Z	cdcdcdc	shoopdawoop	i'll try that next. for now i'm editing in pititvi with every app i have open. i think i can see what is happening as pititiv adds a couple mb to ram (free -m) every time  i do something
+2010-06-15T21:20:00.000Z	shoopdawoop	cdcdcdc	good luck :) but even if you figure out the problem, I would still create the tmpfs for /tmp/, it just makes so much sense if you got the ram and it's a pitty ubuntu doesn't do it by default
+2010-06-15T21:21:00.000Z	cdcdcdc	shoopdawoop	thanks! i have bookmarked and will definitely give that a try although i don't understand it at the moment
+2010-06-15T21:33:00.000Z	cdcdcdc	shoopdawoop	swappiness at 10, maxed out ram minus 30 mb, still swap used at zero - something's wrong eh?
+2010-06-15T21:35:00.000Z	shoopdawoop	cdcdcdc	what happens if you do #sudo sysctl vm.swappiness=100
+2010-06-15T21:36:00.000Z	cdcdcdc	shoopdawoop	still zero - how long should i have to wait for that to work?
+2010-06-15T21:37:00.000Z	shoopdawoop	cdcdcdc	not sure. I would guess the effect should be more or less instantly
+2010-06-15T21:46:00.000Z	cdcdcdc	shoopdawoop	yeah, it's working now - up to 7. still i wonder if this wasn't the problem. pitivi is behaving OK now, and with 50 other programs open. could changing swappiness from 0 to 10 have done it?
+2010-06-15T21:46:00.000Z	cdcdcdc	shoopdawoop	(that is swap usage is at 7 mb now)
+2010-06-15T21:51:00.000Z	shoopdawoop	cdcdcdc	I dunno. maybe the real problem is actually faulty ram like I suggested. then problems will only occur sporadically when an application uses the faulty ram segment
+2010-06-15T21:52:00.000Z	cdcdcdc	shoopdawoop	are you saying i should have taken your first tip? i'll do it now :)
+2010-06-15T21:53:00.000Z	shoopdawoop	cdcdcdc	haha no. just saying that changing swappiness probably didn't fix it (as even with a value of 0 it should still use swap when necessary)

@@ -1,0 +1,19 @@
+2008-07-30T21:28:00.000Z	travelhun		﻿I had to reformat my 7.04 partition and then installed 8.04 on a multiboot system. Now it doesn't boot: I get a Kernal Panic - not syncing: VFS: Unable to mount root fs in unknown-block(0,0). This is odd because the fs is on hd1,1 and it says so in menu.lst. Also, /dev is devoid of the harddisks that are there. Anyone? Please?
+2008-07-30T21:28:00.000Z	wols	travelhun	more infor about partition layout needed
+2008-07-30T21:30:00.000Z	travelhun	wols	| I have a Maxtor 60GB as primary master. On it are the mbr and four Windows partitons. As primary slave I have a Seagate 80GB with sdb1: Swap, sdb2: root, sdb3: home
+2008-07-30T21:31:00.000Z	wols	travelhun	file -s /dev/sdb2
+2008-07-30T21:34:00.000Z	travelhun	wols	"﻿file -s /dev/sdb2" returns "/dev/sdb2: writable, no read permission" when I look from the live cd, or should I chroot is before?
+2008-07-30T21:36:00.000Z	travelhun	wols	Sorry I was dumb, forgot to sudo: /dev/sdb2: Linux rev 1.0 ext3 filesystem data (large files)
+2008-07-30T21:41:00.000Z	wols	travelhun	sudo
+2008-07-30T21:46:00.000Z	wols	travelhun	I wanted the output of file -s
+2008-07-30T21:47:00.000Z	travelhun	wols	I posted it but no prob: root@ubuntu:/# "file -s /dev/sdb2" returns "/dev/sdb2: ERROR: cannot open `/dev/sdb2' (No such file or directory)"
+2008-07-30T21:47:00.000Z	wols	travelhun	and I responded with sudo
+2008-07-30T21:49:00.000Z	travelhun	wols	Sorry didn't sapot that. My mistake. "sudo file -s /dev/sdb2"/dev/sdb2: ERROR: cannot open `/dev/sdb2' (No such file or directory)" again. This is vrom a chroot environment.
+2008-07-30T21:49:00.000Z	wols	travelhun	then install it back again
+2008-07-30T21:49:00.000Z	wols	travelhun	what device file is your root partition then?
+2008-07-30T21:49:00.000Z	wols	travelhun	and where did I tell you to use a chroot?
+2008-07-30T21:50:00.000Z	wols	travelhun	if you want to give up, fine. good bye
+2008-07-30T21:51:00.000Z	wols	travelhun	initrd working? grep ext /boot/config*
+2008-07-30T21:53:00.000Z	travelhun	wols	I am sorry. All hose status messages ake it hard for me to spot what you said. I need to reboot this live cd, then I will be back and post the result from ﻿grep ext /boot/config*. BRB
+2008-07-30T21:54:00.000Z	wols	travelhun	don't bother anymore. goodbye
+2008-07-30T22:03:00.000Z	travelhun	wols	sorry. I did not intend to give up and reinstall the sys, I misunderstood an earlier instruction from you. I do appreciate your assistance, I really do. "grep ext /dev/sdb2" returns "accordance in binary file /dev/sdb"

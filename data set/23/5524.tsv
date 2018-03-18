@@ -1,0 +1,23 @@
+2007-09-18T13:52:00.000Z	xaxxon		how do I boot ubuntu so the graphics work on an nforce 680i system with sli?  I did the install with vga=77(something).. I could at least see the screen, but it was all messed up
+2007-09-18T13:52:00.000Z	xaxxon		when I do a normal boot, I see the initial screen where it loads the kernel.. then blank
+2007-09-18T13:52:00.000Z	xaxxon		I can wait a bit and hit ctrl-alt-del and it reboots, so I know it's booting.. I just don't see anything
+2007-09-18T13:54:00.000Z	h1st0	xaxxon	What type of video card do you ahve?
+2007-09-18T13:55:00.000Z	h1st0	xaxxon	Is this a fresh install?
+2007-09-18T13:55:00.000Z	h1st0	xaxxon	when you get to grub menu hit esc and select recovery mode.
+2007-09-18T13:56:00.000Z	h1st0	xaxxon	Okay now we need to figure out what drivers you need to fix X
+2007-09-18T13:57:00.000Z	h1st0	xaxxon	yeah you need to select the proper driver in /etc/X11/xorg.conf You should be able to boot X with vesa drivers.  try dpkg-reconfigure xserver-xorg and select the vesa driver.
+2007-09-18T13:58:00.000Z	h1st0	xaxxon	X is working now?
+2007-09-18T13:58:00.000Z	h1st0	xaxxon	yeah it doens't hav ea background set if you use start x.
+2007-09-18T13:58:00.000Z	h1st0	xaxxon	oh thats interesting.
+2007-09-18T13:58:00.000Z	h1st0	xaxxon	well enable the nvidia restricted driver and reboot.  Let it boot normally you should get back in X
+2007-09-18T13:59:00.000Z	h1st0	xaxxon	that vga=  line in grub just tells it what resolution to run the terminals in.
+2007-09-18T13:59:00.000Z	h1st0	xaxxon	well if you boot to recovery mode and nano /boot/grub/menu.1st you can delete the vga= line
+2007-09-18T14:00:00.000Z	h1st0	xaxxon	yes
+2007-09-18T14:00:00.000Z	h1st0	xaxxon	when you get a root prompt type in nano /boot/grub/menu.lst
+2007-09-18T14:01:00.000Z	h1st0	xaxxon	then you can delete the vga=775 or whatever from the end of your kernel line
+2007-09-18T14:03:00.000Z	h1st0	xaxxon	ahh maybe its a problem with splash then.  Get rid of that.
+2007-09-18T14:03:00.000Z	h1st0	xaxxon	you can take out splash and quiet from your main kernel line.
+2007-09-18T14:04:00.000Z	h1st0	xaxxon	wait what comment line is it in #defoptions   ?
+2007-09-18T14:04:00.000Z	h1st0	xaxxon	cuz thats default options  for the first kernel.
+2007-09-18T14:04:00.000Z	h1st0	xaxxon	brb going for a smoke.
+2007-09-18T14:11:00.000Z	h1st0	xaxxon	you can change were its at if you dpkg-reconfigure xserver-xorg

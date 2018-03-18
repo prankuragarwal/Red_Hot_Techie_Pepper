@@ -1,0 +1,18 @@
+2009-10-17T22:13:00.000Z	saftsack		how can i modify my /etc/hosts regarding of an ip from an eth device?
+2009-10-17T22:13:00.000Z	saftsack		background: i want my own hostname to be connected with the ip which was assigned by dhcp
+2009-10-17T22:14:00.000Z	grawity	saftsack	The format of /etc/hosts is: "ipaddress hostname"
+2009-10-17T22:14:00.000Z	saftsack	grawity	yes but i get my ip from a dhcp. so it isnt static
+2009-10-17T22:14:00.000Z	grawity	saftsack	Why don't you just use 127.0.0.1 for it? /etc/hosts won't affect any other computers, only your own
+2009-10-17T22:15:00.000Z	saftsack	grawity	i need it for ipsec.conf. there i entered my hostname so that i can use my ipsec tunnel on every generic lan which has dhcp
+2009-10-17T22:15:00.000Z	saftsack	grawity	so 127.0.0.1 would be bad
+2009-10-17T22:16:00.000Z	grawity	saftsack	I guess you'll have to edit the config of dhclient, to auto-modify /etc/hosts
+2009-10-17T22:17:00.000Z	saftsack	grawity	supersede host-name, thanks ;)
+2009-10-17T22:18:00.000Z	grawity	saftsack	No, 'supersede' only makes it use the one in /etc/hostname instead of the one from DHCP.
+2009-10-17T22:18:00.000Z	grawity	saftsack	But doesn't affect /etc/hosts in any way.
+2009-10-17T22:19:00.000Z	grawity	saftsack	But dunno, maybe you'll find a way to make it work... In any case, sed -i "s/^\\([0-9.]\\+\\) \\(foohost #dhcp\\)$/$NEW_IP \2/" /etc/hosts, if you're gonna script it.
+2009-10-17T22:22:00.000Z	saftsack	grawity	thanks ;)
+2009-10-17T22:22:00.000Z	saftsack	grawity	what means #dhcp in your script?
+2009-10-17T22:23:00.000Z	grawity	saftsack	It's just a comment, to avoid changing the wrong line in /etc/hosts (in case there are two lines with the same hostname)
+2009-10-17T22:23:00.000Z	saftsack	grawity	$NEW_IP is this a variable from dhclient?
+2009-10-17T22:24:00.000Z	grawity	saftsack	It's a variable from your script. (I don't have dhclient, so I don't know how do you actually script dhclient...)
+2009-10-17T22:25:00.000Z	saftsack	grawity	ah ok but thanks for the sed line :)

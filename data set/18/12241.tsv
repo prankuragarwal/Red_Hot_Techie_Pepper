@@ -1,0 +1,18 @@
+2010-06-15T01:58:00.000Z	Epik		Im having trouble getting my network card to use 100mbit full duplex. My network card is ( 00:19.0 Ethernet controller: Intel Corporation 82566DC-2 Gigabit Network Connection (rev 02) ) and im using e1000e drivers. I've downloaded the latest driver from Intel, and tried setting my link speed with ethtool. None of this has provided any success. Anyone have any suggestions on how i can achieve at least 100mbit ?
+2010-06-15T01:59:00.000Z	Epik		when i change the settings with ethtool, it simply drops the connection until i revert back to 10mbit
+2010-06-15T01:59:00.000Z	ikonia	Epik	sounds like your switch is a problem then more than your network card
+2010-06-15T02:00:00.000Z	Epik	ikonia	there is no issue with the switch. I have anther PC running plugged into the same switch, using the same NIC on however running windows and it works fine
+2010-06-15T02:00:00.000Z	ikonia	Epik	that doesn't mean there is no issue with the switch
+2010-06-15T02:01:00.000Z	Epik	ikonia	lets assume the issue is not with the switch
+2010-06-15T02:01:00.000Z	ikonia	Epik	why ? why assume that
+2010-06-15T02:01:00.000Z	ikonia	Epik	the card is a sound and well supported card, you have tried to force it to correct speed and the switch drops it off the network, so therefore either a.) you are not configuring it right b.) the switch does not want to run at that speed on that port
+2010-06-15T02:02:00.000Z	ikonia	Epik	setting auto neg and then you forcing the card at your end won't work
+2010-06-15T02:02:00.000Z	ikonia	Epik	you need to force it at the switch end too for that port
+2010-06-15T02:21:00.000Z	Epik	ikonia	I've verified that the port is correctly functioning by directly connecting a laptop running an inferior OS and performing a speed test. The results were allowing for 100mbit. The problem has been defined as localized to my workstation. The command im using to set my linkspeed it "sudo ethtool -s eth0 speed 100 duplex full autoneg off" do you have any further solutions that could help identify the issue?
+2010-06-15T02:22:00.000Z	ikonia	Epik	is autoneg on that switch port
+2010-06-15T02:22:00.000Z	Epik	ikonia	i've tried with it both on and off
+2010-06-15T02:22:00.000Z	Epik	ikonia	currently it is back on
+2010-06-15T02:23:00.000Z	ikonia	Epik	disable it you can't have auto neg at one ned
+2010-06-15T02:23:00.000Z	Epik	ikonia	I have tried both variations and it just wont seem to budge from 10
+2010-06-15T02:24:00.000Z	ikonia	Epik	I understand that but you've got to keep it consistant. Have you looked at the syslog (while autoneg is on at both ends) to see what happens when the network is brought up
+2010-06-15T02:25:00.000Z	Epik	ikonia	I guess i should have been watching the syslogs instead of the GUI notification

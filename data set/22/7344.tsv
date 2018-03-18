@@ -1,0 +1,22 @@
+2009-05-10T10:10:00.000Z	office	ohzie	what do you want do ?
+2009-05-10T10:10:00.000Z	ohzie	office	I want to be able to automount my usb hard drive and give it read/write access to the entire system.
+2009-05-10T10:14:00.000Z	ohzie	office	Nope, still read only.
+2009-05-10T10:14:00.000Z	office	ohzie	what filesystem are in this partition
+2009-05-10T10:15:00.000Z	office	ohzie	are you umount first ?
+2009-05-10T10:15:00.000Z	ohzie	office	yes
+2009-05-10T10:15:00.000Z	ohzie	office	fat32
+2009-05-10T10:17:00.000Z	office	ohzie	mount /dev/sdd1 /mnt/usbfs -o remount,rw,user -t vfat
+2009-05-10T10:19:00.000Z	ohzie	office	mount: /mnt/usbfs/ not mounted already, or bad option
+2009-05-10T10:19:00.000Z	ohzie	office	I mounted it and then retried that and it worked, checking rw.
+2009-05-10T10:20:00.000Z	ohzie	office	still read only.
+2009-05-10T10:21:00.000Z	ohzie	office	I tried to chmod them and it wouldn't let me.
+2009-05-10T10:21:00.000Z	ohzie	office	chmod: changing permissions of `/mnt/usbfs/': Read-only file system
+2009-05-10T10:21:00.000Z	office	ohzie	no no no no
+2009-05-10T10:22:00.000Z	office	ohzie	umount this
+2009-05-10T10:22:00.000Z	ohzie	office	now the device is busy. How can it be busy if it won't let me do anything?
+2009-05-10T10:22:00.000Z	ohzie	office	I don't want to format it, it has stuff on it!
+2009-05-10T10:24:00.000Z	office	ohzie	sudo mkdir /1
+2009-05-10T10:24:00.000Z	office	ohzie	sudo mount -t vfat /dev/sdd1 /1
+2009-05-10T10:25:00.000Z	office	ohzie	if still is ro
+2009-05-10T10:25:00.000Z	ohzie	office	Even with the mountpoint being a+rw it still is mounting as read only. -_-
+2009-05-10T10:25:00.000Z	office	ohzie	then you must create partiotion new

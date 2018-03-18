@@ -1,0 +1,23 @@
+2008-07-19T05:19:00.000Z	yao_ziyuan		in upgrading from 7.10 to 8.04, the upgrader stalls at "About 4 minutes remaining" and the last console text is "Generating locales... en_AU.UTF-8..."
+2008-07-19T05:20:00.000Z	yao_ziyuan		it seems the console will not roll out new text anymore (it has been staying there for hours)
+2008-07-19T05:20:00.000Z	yao_ziyuan		how do i rescue this upgrade?
+2008-07-19T05:21:00.000Z	yao_ziyuan		help!
+2008-07-19T05:23:00.000Z	Baughn	yao_ziyuan	At this point.. it would be best if you don't. Install from scratch if you can - you did have a backup of /home, right?
+2008-07-19T05:23:00.000Z	Baughn	yao_ziyuan	(If you don't, it's not to late to make one now)
+2008-07-19T05:25:00.000Z	yao_ziyuan	Baughn	it seems some packages still need setting up. can i close the upgrader and manually run something to continue/redo package setting up?
+2008-07-19T05:25:00.000Z	Baughn	yao_ziyuan	Yes. But I can't tell you over irc what, and since you're asking, you won't manage either. :/
+2008-07-19T05:26:00.000Z	Baughn	yao_ziyuan	You can certainly /try/, but it's likely to break things even worse
+2008-07-19T05:26:00.000Z	Baughn	yao_ziyuan	(Of course, at this point, that won'T really hurt you. Have fun.)
+2008-07-19T05:27:00.000Z	yao_ziyuan	Baughn	man, how could this be... i was upgrading from a fresh 7.10 to 8.04...
+2008-07-19T05:27:00.000Z	yao_ziyuan	Baughn	i think the ugrader is waiting for something to close
+2008-07-19T05:27:00.000Z	Baughn	yao_ziyuan	Computer software sucks. And I'm saying this as a CS student.
+2008-07-19T05:27:00.000Z	yao_ziyuan	Baughn	i'm talking to you as a cs dropout :)
+2008-07-19T05:27:00.000Z	Baughn	yao_ziyuan	Perhaps, but forcibly killing whatever it is is unlikely to do you any favors
+2008-07-19T05:28:00.000Z	yao_ziyuan	Baughn	there is a Power Manager tray icon running which can't normally be closed which i highly suspect caused the endless delay
+2008-07-19T05:37:00.000Z	yao_ziyuan	Baughn	i started system monitor and killed a single process responsible for setting up new locales and the upgrader now continues.
+2008-07-19T05:39:00.000Z	yao_ziyuan	Baughn	and the upgrader reported a message (which does not prevent it from continuing):  The upgrade will continue but the 'locales' package may be in a not working state. Please consider submitting a bugreport about it.
+2008-07-19T05:40:00.000Z	yao_ziyuan	Baughn	now the question is how do i manually install/setup the "locales" package?
+2008-07-19T05:45:00.000Z	Baughn	yao_ziyuan	dpkg-reconfigure lcoales
+2008-07-19T05:45:00.000Z	yao_ziyuan	Baughn	nice!
+2008-07-19T05:49:00.000Z	yao_ziyuan	Baughn	/usr/sbin/dpkg-reconfigure: locales is broken or not fully installed
+2008-07-19T05:49:00.000Z	Baughn	yao_ziyuan	apt-get -f install, then

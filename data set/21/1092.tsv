@@ -1,0 +1,21 @@
+2011-02-07T06:31:00.000Z	realubot		Why does this settings in httpd.conf file not work to only allow one ip to connect: http://paste.ubuntu.com/563637/
+2011-02-07T06:32:00.000Z	realubot		I'm usinf Apache in Ubuntu Server 10.04.
+2011-02-07T06:32:00.000Z	realubot		*using
+2011-02-07T06:33:00.000Z	thorbj0rn	realubot	change order to allow,deny
+2011-02-07T06:34:00.000Z	thorbj0rn	realubot	it is reading those instructions as "check address against deny list, then allow list" and the deny list says "all"
+2011-02-07T06:34:00.000Z	realubot	thorbj0rn	I have tried allow,deny but it didn't work either.
+2011-02-07T06:35:00.000Z	realubot	thorbj0rn	No girst it denies all access then it allows one ip.
+2011-02-07T06:36:00.000Z	realubot	thorbj0rn	It doesn't work the other way either.
+2011-02-07T06:36:00.000Z	realubot	thorbj0rn	I don't think the settings is active att all actually. :S
+2011-02-07T06:43:00.000Z	thorbj0rn	realubot	i think i am losing it.. s/Allow 12.345.678.90/Allow from 12.345.678.90
+2011-02-07T06:43:00.000Z	thorbj0rn	realubot	missing "from"
+2011-02-07T06:45:00.000Z	realubot	thorbj0rn	I don't think you need the from when having a single ip. The problem is that the deny rule doesn't work at all. I get full access to the server all the time independent of the deny/allow rule.
+2011-02-07T06:45:00.000Z	realubot	thorbj0rn	Apache doesn't seem to care at all about the settings in the httpd.conf file. :(
+2011-02-07T06:46:00.000Z	realubot	thorbj0rn	I have followed the steps in this guide (look at the bottom of the page): http://www.linux.com/archive/feature/113744
+2011-02-07T06:47:00.000Z	realubot	thorbj0rn	Look at: "Files and directories".
+2011-02-07T06:47:00.000Z	realubot	thorbj0rn	I have done exactly like that but it doesn't work.
+2011-02-07T07:38:00.000Z	realubot	thorbj0rn	The solution of my problem was to edit the avaiable-sites/default file instead of the httpd.conf file. :S The httpd.conf file was not the right file to edit using Debian system.
+2011-02-07T07:38:00.000Z	realubot	thorbj0rn	The allow,deny problem you know.
+2011-02-07T07:39:00.000Z	thorbj0rn	realubot	ahh.. i was looking into htaccess as a solution as well.. live and learn.
+2011-02-07T07:39:00.000Z	thorbj0rn	realubot	thanks for letting me know how it got solved.
+2011-02-07T07:41:00.000Z	realubot	thorbj0rn	Thanks trying to help me out on this.

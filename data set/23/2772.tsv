@@ -1,0 +1,23 @@
+2009-01-23T22:12:00.000Z	madadam		Server requested plaintext password but 'client plaintext auth' is disabled  tree connect failed: SUCCESS - 0. How can I enable "client plaintext auth"?
+2009-01-23T22:13:00.000Z	unomi	madadam	did you look in smb.conf ?
+2009-01-23T22:13:00.000Z	madadam	unomi	yes I added this line "client plaintext auth = yes"
+2009-01-23T22:14:00.000Z	unomi	madadam	and is that what the line should look like ?
+2009-01-23T22:15:00.000Z	madadam	unomi	unluckely it doesn't seem so
+2009-01-23T22:16:00.000Z	madadam	unomi	I'll see
+2009-01-23T22:21:00.000Z	madadam	unomi	great! I've added the line "client lanman auth = yes", now i'm gonna try
+2009-01-23T22:22:00.000Z	unomi	madadam	let me know how you go
+2009-01-23T22:23:00.000Z	madadam	unomi	nothing it doesn't work, same error
+2009-01-23T22:24:00.000Z	madadam	unomi	yes
+2009-01-23T22:24:00.000Z	unomi	madadam	what is the client machine?
+2009-01-23T22:26:00.000Z	madadam	unomi	the ip?
+2009-01-23T22:26:00.000Z	unomi	madadam	try adding this to smb.conf global : client ntlmv2 auth = no
+2009-01-23T22:28:00.000Z	madadam	unomi	why?
+2009-01-23T22:28:00.000Z	unomi	madadam	http://lists.samba.org/archive/samba/2003-September/073540.html
+2009-01-23T22:29:00.000Z	madadam	unomi	I'm doing
+2009-01-23T22:34:00.000Z	madadam	unomi	it doesn't work. But when samba asks the root pwd I have to write the one of the root user? Haven't I?
+2009-01-23T22:35:00.000Z	unomi	madadam	im not sure what you are asking
+2009-01-23T22:35:00.000Z	madadam	unomi	I simply give this command "smbclient .L 192.168.1.100"
+2009-01-23T22:37:00.000Z	madadam	unomi	sudo smbclient -L 192.168.1.100
+2009-01-23T22:37:00.000Z	unomi	madadam	sorry, you might want to see what you can do about making the server use something more secure
+2009-01-23T22:40:00.000Z	unomi	madadam	http://support.microsoft.com/default.aspx?scid=http://support.microsoft.com:80/support/kb/articles/Q239/8/69.ASP&NoWebContent=1
+2009-01-23T22:56:00.000Z	madadam	unomi	is it possible to reset the smb.conf file to default?

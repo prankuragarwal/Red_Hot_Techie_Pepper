@@ -1,0 +1,19 @@
+2008-11-06T09:45:00.000Z	Rev		hello
+2008-11-06T09:46:00.000Z	Rev		is it possible to launch the system update and tell the computer to shutdown automatically as soon as the update is finished?
+2008-11-06T09:46:00.000Z	Samus_Aran	Rev	apt-get upgrade && shutdown -h now
+2008-11-06T09:47:00.000Z	Samus_Aran	Rev	you could stick it in a launcher icon
+2008-11-06T09:48:00.000Z	Rev	Samus_Aran	thanks for the command
+2008-11-06T09:49:00.000Z	Samus_Aran	Rev	the && tells it to only shutdown if the other command was successfull -- so if there were errors, it wouldn't shut down
+2008-11-06T09:50:00.000Z	Rev	Samus_Aran	ok perfect, that was exactly what i wanted!
+2008-11-06T09:50:00.000Z	Samus_Aran	Rev	you will also want to add these options to apt-get, if you run it from an icon without a terminal: apt-get --quiet --assume-yes upgrade
+2008-11-06T09:51:00.000Z	Rev	Samus_Aran	yeah but i always run it from the term
+2008-11-06T09:51:00.000Z	Samus_Aran	Rev	and add sudo's as appropriate.  =)
+2008-11-06T09:52:00.000Z	Rev	Samus_Aran	btw, i was also looking for changing permissions on a folder AND all the folders and files contained inside it. I modified it as root, so its totally locked for my regular user. whats the command to let myself write/read it?
+2008-11-06T09:52:00.000Z	Rev	Samus_Aran	im lost between chmode, chown and so on
+2008-11-06T09:53:00.000Z	Samus_Aran	Rev	sudo chown -R your_username /some/folder/here
+2008-11-06T09:54:00.000Z	Samus_Aran	Rev	theirs was more confusing than my command, and did a few extra things, possibly incorrectly.  the command I gave you changed the owner of all the files, nothing else
+2008-11-06T09:55:00.000Z	Samus_Aran	Rev	theirs set the owner and group for all the files, then changed the permissions on every file
+2008-11-06T09:55:00.000Z	Rev	Samus_Aran	oh ok, thanks for the explanation
+2008-11-06T09:56:00.000Z	Samus_Aran	Rev	also, theirs used the variable $USERNAME which won't exist.  it would be $USER
+2008-11-06T09:57:00.000Z	Samus_Aran	Rev	most likely all you wanted to do was change the owner from root to your own user.  just replace the "your_username" in my example with your actual username
+2008-11-06T09:59:00.000Z	Rev	Samus_Aran	i tried it, and it worked like a charm, perfect, thanks again !

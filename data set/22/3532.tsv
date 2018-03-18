@@ -1,0 +1,22 @@
+2009-06-30T22:14:00.000Z	guntbert	hemanth	you can also try fuser -m <path/where/cd/is/mounted>
+2009-06-30T22:15:00.000Z	hemanth	guntbert	/media or /dev ?
+2009-06-30T22:15:00.000Z	guntbert	hemanth	/media
+2009-06-30T22:16:00.000Z	hemanth	guntbert	fuser -m /media/cdrom
+2009-06-30T22:16:00.000Z	hemanth	guntbert	result was /media/cdrom:         3266c
+2009-06-30T22:16:00.000Z	hemanth	guntbert	but unable to eject
+2009-06-30T22:17:00.000Z	guntbert	hemanth	c means "current directory", try ps aux|grep 3266
+2009-06-30T22:18:00.000Z	hemanth	guntbert	did sudo umount /media/cdrom then h/w eject it worked :)
+2009-06-30T22:18:00.000Z	guntbert	hemanth	ok :)
+2009-06-30T22:18:00.000Z	hemanth	guntbert	was it fuser or unmount lol
+2009-06-30T22:19:00.000Z	hemanth	guntbert	fuser is for ?
+2009-06-30T22:19:00.000Z	hemanth	guntbert	getting the socket number is it ?
+2009-06-30T22:19:00.000Z	guntbert	hemanth	no, fuser -m only tells you, what process has "something" open under that directory
+2009-06-30T22:20:00.000Z	hemanth	guntbert	o so i should kill the process by getting the number
+2009-06-30T22:20:00.000Z	guntbert	hemanth	yes
+2009-06-30T22:20:00.000Z	hemanth	guntbert	Dulak: can i do it with a single command ? getting the pid and killing ?
+2009-06-30T22:21:00.000Z	hemanth	guntbert	Dulak: xargs is it ?
+2009-06-30T22:22:00.000Z	guntbert	hemanth	not sure, have a look at man fuser, xargs would require a little "fussing", because of the letter after the pid
+2009-06-30T22:23:00.000Z	guntbert	hemanth	you'll need both, as Dulak said
+2009-06-30T22:24:00.000Z	hemanth	guntbert	Dulak: o ok :) , can that be used to kill any proc , can it b used instead of ps ?
+2009-06-30T22:25:00.000Z	guntbert	hemanth	I suggested using ps only so you know what you are killing
+2009-06-30T22:25:00.000Z	hemanth	guntbert	ok

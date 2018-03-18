@@ -1,0 +1,19 @@
+2010-09-17T11:31:00.000Z	genewitch		i am trying to make an init.d script, and when start-stop-daemon tries to start the program it barfs "can't find config file" but when i type /path/to/program it works fine. everything is owned by root. should i change something else? note: the server says it can't find its config file, not start-stop-daemon.
+2010-09-17T11:33:00.000Z	masen	genewitch	i'd bet that the PATH variable that includes your config file normally isn't present in the daemon environment
+2010-09-17T11:33:00.000Z	genewitch	masen	i edited that line in the init.d script, though, i used /etc/init.d/skeleton
+2010-09-17T11:33:00.000Z	genewitch	masen	how do i do the export path thing again
+2010-09-17T11:34:00.000Z	masen	genewitch	i'm not sure in init.d scripts
+2010-09-17T11:34:00.000Z	masen		i've just had similar issues with cron jobs
+2010-09-17T11:34:00.000Z	genewitch	masen	just in general?
+2010-09-17T11:34:00.000Z	masen		gemewitch: you could replace your normal binary with something like /usr/bin/env > /tmp/environment_vars
+2010-09-17T11:34:00.000Z	masen		to get a dump of the daemon environment
+2010-09-17T11:35:00.000Z	masen	genewitch	or possibly specify an absolute path to the config file in the line, if the binary supports that on the command line
+2010-09-17T11:35:00.000Z	genewitch	masen	how do i edit permanently the environment variables
+2010-09-17T11:36:00.000Z	masen	genewitch	you could try this: http://ubuntuforums.org/showthread.php?t=872881
+2010-09-17T11:37:00.000Z	genewitch		cue: there's a way to type export $PATH and have it append
+2010-09-17T11:37:00.000Z	genewitch		export $1 $PATH or something
+2010-09-17T11:38:00.000Z	masen		export PATH="$PATH:/etc:/usr/local/etc"
+2010-09-17T11:38:00.000Z	masen	genewitch	you should really take a look at my link, it's your exact problem
+2010-09-17T11:38:00.000Z	genewitch	masen	i did, but the server is already running as the user it needs
+2010-09-17T11:39:00.000Z	masen	genewitch	try something like this in your script itself: PATH="$PATH:/path/to/config_file"
+2010-09-17T11:40:00.000Z	genewitch	masen	i did that i will test it later. thanks a ton :-)

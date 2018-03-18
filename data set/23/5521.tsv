@@ -1,0 +1,23 @@
+2009-06-23T04:07:00.000Z	usr13		!usb | hipitihop
+2009-06-23T04:07:00.000Z	hipitihop	usr13	reading, thanks
+2009-06-23T04:19:00.000Z	hipitihop	usr13	your links refer to using syslinux not grub. maybe some clarification is needed, I have a fully working usb flash stick with full ubuntu installation on it that works. I have copied the partions from the stick to a new usb HDD. I just want to setup the new usb attach hdd with grub
+2009-11-07T17:53:00.000Z	usr13	hipitihop	Are you sure that usbhid is a "driver"?
+2009-11-07T17:55:00.000Z	hipitihop	usr13	absolutely..... see http://paste.ubuntu.com/311999/
+2009-11-07T17:56:00.000Z	hipitihop	usr13	both if0 and 1 seem to be taken by usbhid
+2009-11-07T17:57:00.000Z	usr13	hipitihop	Ok, well to answer your question, it is HAL that loads usb and other hot-plugable devices and their correpsonding drivers.
+2009-11-07T17:57:00.000Z	hipitihop	usr13	I need to force it to use 'lirc_imon' instead
+2009-11-07T18:00:00.000Z	usr13	hipitihop	Actually, it's udev
+2009-11-07T18:01:00.000Z	hipitihop	usr13	I have added an .fdi file to get hal to ignore and hence the first part of the pasbin... but it does not seem to be enough.. so how do I get udev to do the right thing ?
+2009-11-07T18:02:00.000Z	usr13	hipitihop	udev Searches the devpath upwards for a matching device driver name
+2009-11-07T18:03:00.000Z	hipitihop	usr13	also see dmesg | grep 0043
+2009-11-07T18:04:00.000Z	usr13	hipitihop	I suppose you could change [switch] the names of the driver modules.
+2009-11-07T18:04:00.000Z	usr13	hipitihop	But that would be a particularly nasty work-around.
+2009-11-07T18:05:00.000Z	hipitihop	usr13	there must be some rule it uses or better still, can't we tell udev to ignore the specific devices ?
+2009-11-07T18:05:00.000Z	hipitihop	usr13	or would that stop any driver being lodaded.
+2009-11-07T18:06:00.000Z	hipitihop	usr13	sorry for the questions but this is a little out of my depth
+2009-11-07T18:07:00.000Z	usr13	hipitihop	googling:  http://siliconbased.wordpress.com/2009/03/03/ignoring-devices-with-udev-rules/
+2009-11-07T18:08:00.000Z	usr13	hipitihop	& http://ubuntuforums.org/archive/index.php/t-1197550.html
+2009-11-07T18:09:00.000Z	hipitihop	usr13	reading... btw, I have already tried adding a xxx.rules into /etc/udev/rules.d with the following but seems to not have effect ATTRS{idVendor}=="15c2", ATTRS{idProduct}=="0043", OPTIONS=="ignore_device"
+2009-11-07T18:09:00.000Z	hipitihop	usr13	but reading those links.. thanks.
+2009-11-07T18:32:00.000Z	hipitihop	usr13	so that is suggesting a kernel bug is causing my udev rule not to fire ?
+2009-11-07T18:35:00.000Z	hipitihop	usr13	another relaed question.. since it seems there are two related devices, I guess I also need two sperate rules files

@@ -1,0 +1,19 @@
+2010-09-09T00:50:00.000Z	kevinSJ		I have a major problem. I've bought a set of CD-R disks and want to burn Xubuntu on them. The problem is I havn't been able to do that since a few hours back. I've tried wodim, brasero, k3D, Gnome baker but all software give the same error. OPC failed. Any ideas?
+2010-09-09T00:51:00.000Z	Hopsa	kevinSJ	Some brands of cd's are using odd methods. One of those brands is "SKC" i think.
+2010-09-09T00:52:00.000Z	Hopsa	kevinSJ	Whats your cd's brand ?
+2010-09-09T00:53:00.000Z	kevinSJ	Hopsa	The CD's I bought has the following brand: "Verbatim"
+2010-09-09T00:55:00.000Z	Hopsa	kevinSJ	Should be ok. I couldnt burn the latest debian cd using gnome-baker or nautilus-burn or k3b or... Maybe wodim is hosed ?
+2010-09-09T00:57:00.000Z	kevinSJ	Hopsa	Hmm maybe. Any solutions out there? I tried brasero to. Got the following error log http://gist.github.com/570729
+2010-09-09T00:58:00.000Z	kevinSJ	Hopsa	Line 67 is interesting: "BraseroWodim stderr: Errno: 5 (Input/output error), test unit ready scsi sendcmd: fatal error"
+2010-09-09T00:58:00.000Z	Hopsa	kevinSJ	BraseroWodim stderr: wodim: Operation not permitted. Warning: Cannot raise RLIMIT_MEMLOCK limits. // BraseroWodim stderr: Errno: 5 (Input/output error), test unit ready scsi sendcmd: fatal error
+2010-09-09T00:59:00.000Z	kevinSJ	Hopsa	Noticed that to.
+2010-09-09T00:59:00.000Z	Hopsa	kevinSJ	Yep... wodim has been a bit destroyed it seems.
+2010-09-09T00:59:00.000Z	Hopsa	kevinSJ	Or its because of a kernel change
+2010-09-09T01:00:00.000Z	kevinSJ	Hopsa	Okey so I'm lost then?
+2010-09-09T01:00:00.000Z	Hopsa	kevinSJ	A new wodim could work..
+2010-09-09T01:01:00.000Z	Hopsa	kevinSJ	This isnt good i think. Someone should investigate why wodim isnt burning cd's correctly or at all.
+2010-09-09T01:01:00.000Z	kevinSJ	Hopsa	Indeed
+2010-09-09T01:02:00.000Z	Hopsa		I will go thru some changelogs
+2010-09-09T01:04:00.000Z	Hopsa	kevinSJ	Doesnt work on Fedora either so it could be a kernel change causing a required wodim update.
+2010-09-09T01:17:00.000Z	Hopsa	kevinSJ	It can be interresting to see if growisofs works..
+2010-09-09T01:50:00.000Z	Hopsa	kevinSJ	There seems to be some kind of argument about wodim/cdrkit/cdrtools here: https://bugzilla.redhat.com/show_bug.cgi?id=507108 (Maybe that has something to do with it) Itd be uncool if it was, but i understand Joerg as well.

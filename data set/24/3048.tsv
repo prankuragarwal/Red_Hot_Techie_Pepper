@@ -1,0 +1,24 @@
+2008-05-12T18:07:00.000Z	lys		hi@all. i just tried to install the b43 driver on ubuntu 8.04. followed all the instructions, but after rebooting my 4311rev2 is still not listed in iwconfig. do i have to activate the driver or sth like that?
+2008-05-12T18:08:00.000Z	lys		oh by the way, im trying to install my broadcom wireless card
+2008-05-12T18:08:00.000Z	lys		can someon help me pls`
+2008-05-12T18:08:00.000Z	HymnToLife	lys	you mean bcm43xx ?
+2008-05-12T18:09:00.000Z	lys	HymnToLife	i used the one from linuxwireless.org, not ndiswrapper (because i need monitor mode)
+2008-05-12T18:09:00.000Z	HymnToLife	lys	then do a   ndiswrapper -l
+2008-05-12T18:11:00.000Z	lys	HymnToLife	it doesnt list anything, not even an error
+2008-05-12T18:11:00.000Z	HymnToLife	lys	then load the module :    sudo modprobe bcm43xx
+2008-05-12T18:13:00.000Z	HymnToLife	lys	then  dmesg | tail
+2008-05-12T18:14:00.000Z	HymnToLife	lys	could you pastebin it ?
+2008-05-12T18:17:00.000Z	HymnToLife	lys	is that all you have ?
+2008-05-12T18:20:00.000Z	lys	HymnToLife	does that say more?
+2008-05-12T18:20:00.000Z	HymnToLife	lys	we need more output, do   dmesg | tail -n 100
+2008-05-12T18:21:00.000Z	lys	HymnToLife	http://paste.ubuntu.com/11658/
+2008-05-12T18:23:00.000Z	HymnToLife	lys	hmm, it says try booting with irqpoll, I guess you could try it
+2008-05-12T18:24:00.000Z	HymnToLife	lys	in GRUB, press e twice to edit the kernel boot command
+2008-05-12T18:27:00.000Z	lys	HymnToLife	after reboot and modprobe bcm43xx still no device in iwconfig =(
+2008-05-12T18:28:00.000Z	HymnToLife	lys	still those message in the dmesg ?
+2008-05-12T18:29:00.000Z	HymnToLife	lys	dmesg | tail
+2008-05-12T18:31:00.000Z	HymnToLife	lys	wait a bit and see if you have the same messages as before appearing
+2008-05-12T18:33:00.000Z	HymnToLife	lys	not really a wonde, Broadcom won't give out the specs of the hardware, so those drives are reverse-engineered
+2008-05-12T18:36:00.000Z	HymnToLife	lys	yes, that should be right
+2008-05-12T18:37:00.000Z	lys	HymnToLife	does that mean i'll have to use ndiswrapper again?
+2008-05-12T18:38:00.000Z	HymnToLife	lys	I guess so, or gat another wifi adapter made by a nicer company

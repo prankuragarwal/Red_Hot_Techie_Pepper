@@ -1,0 +1,24 @@
+2007-07-19T15:36:00.000Z	IntuitiveNipple	kagemaro	What is the output from the command: cat /proc/asound/card0/codec#0 | grep 'Default Amp-Out'
+2007-07-19T15:38:00.000Z	kagemaro	IntuitiveNipple	Default Amp-Out caps: ofs=0x00, nsteps=0x00, stepsize=0x00, mute=1
+2007-07-19T15:38:00.000Z	IntuitiveNipple	kagemaro	haha! Houston, you have a problem :p
+2007-07-19T15:39:00.000Z	kagemaro	IntuitiveNipple	I don't understand how it can be muted, but the sound still plays?
+2007-07-19T15:39:00.000Z	IntuitiveNipple	kagemaro	It isn't, thats the capability, but, all those zero's mean the default amp-out is the *wrong* one
+2007-07-19T15:39:00.000Z	IntuitiveNipple	kagemaro	So, we need to work out which is the correct one and how to select it
+2007-07-19T15:39:00.000Z	kagemaro	IntuitiveNipple	Right... so how do I sort that out? x.x
+2007-07-19T15:40:00.000Z	kagemaro	IntuitiveNipple	I'm on a Toshiba Satellite A100-225 laptop
+2007-07-19T15:40:00.000Z	IntuitiveNipple	kagemaro	You ask all the easy questions :D
+2007-07-19T15:42:00.000Z	IntuitiveNipple	kagemaro	Capture the output from the following command and put in in a pastebin at http://paste.ubuntu-nl.org for me: "cat /proc/asound/card0/codec#0"
+2007-07-19T15:44:00.000Z	kagemaro	IntuitiveNipple	- brb
+2007-07-19T15:48:00.000Z	kagemaro	IntuitiveNipple	- Sorry about that, pasted at http://paste.ubuntu-nl.org/30422
+2007-07-19T15:51:00.000Z	IntuitiveNipple	kagemaro	give me a couple of minutes to analyse it
+2007-07-19T15:51:00.000Z	kagemaro	IntuitiveNipple	- Sure
+2007-07-19T15:56:00.000Z	IntuitiveNipple	kagemaro	See this bug https://launchpad.net/ubuntu/+source/linux-source-2.6.20/+bug/93859 and then check out the link in comment #6 to the HdaIntelSoundHowTo
+2007-07-19T15:57:00.000Z	IntuitiveNipple	kagemaro	"this is the entry that I appended to /etc/modprobe.d/alsa-base to get the sound to work properly: options snd-hda-intel model=auto"
+2007-07-19T15:58:00.000Z	IntuitiveNipple	kagemaro	If you stop things using sound (e.g. close firefox) you can unload the snd-hda-intel module and reload it after setting the option
+2007-07-19T15:59:00.000Z	IntuitiveNipple	kagemaro	After stopping any apps using audio, try this from a console: "sudo modprobe -r snd-hda-intel" - if it comes back *without* reporting an error, you've managed to unload the module, then you can try "sudo modprobe snd-hda-intel model=auto" before making changes to the config files
+2007-07-19T16:00:00.000Z	IntuitiveNipple	kagemaro	What I have just detailed is the *manual* way of doing things... if that works, then make the change to the configuration files so it is done every time your PC starts
+2007-07-19T16:21:00.000Z	IntuitiveNipple	kagemaro	Was it the model=auto option?
+2007-07-19T16:21:00.000Z	IntuitiveNipple	kagemaro	cool... nice when a bug report has a solution too
+2007-07-19T16:24:00.000Z	kagemaro	IntuitiveNipple	- yeah it's good, because it's a great soundcard for onboard/laptop
+2007-07-19T16:25:00.000Z	IntuitiveNipple	kagemaro	Yeah... I just fixed another bug with it and Feisty that causes looping of sound after resume from suspend... turned out to be a bug in the mainline kernel with late boot of non-boot CPUs
+2007-07-19T06:13:00.000Z	kagemaro	IntuitiveNipple	- sometimes it's easier just to tell people the answer, instead of sending them trawling through libraries

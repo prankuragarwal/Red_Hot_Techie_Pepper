@@ -1,0 +1,18 @@
+2008-09-22T23:33:00.000Z	CzarAlex		How can I grep the contents of every file on my entire system for the string "moobackup.sh" ?
+2008-09-22T23:34:00.000Z	IntuitiveNipple	CzarAlex	grep -rn  'moobackup.sh' /*
+2008-09-22T23:34:00.000Z	IntuitiveNipple	CzarAlex	or more accurately: grep -rn  'moobackup\.sh' /*
+2008-09-22T23:39:00.000Z	CzarAlex	IntuitiveNipple	hmm didn't find what I was looking for. I started a cron job over a year ago and i'm not sure where to find it. I'm migrating to a new system and would like to carry that task over. the script that is run is moobackup.sh . I can't find it listed in crontab or cron.weekly (as it runs every friday). Anywhere else I can search?
+2008-09-22T23:39:00.000Z	IntuitiveNipple	CzarAlex	check in /etc/anacrontab
+2008-09-22T23:40:00.000Z	IntuitiveNipple	CzarAlex	also, check in /etc/cron.weekly
+2008-09-22T23:41:00.000Z	CzarAlex	IntuitiveNipple	not in either. Would it matter if I was running ubuntu 5.10?
+2008-09-22T23:42:00.000Z	IntuitiveNipple	CzarAlex	it might mean some things are in a different location... how about trying this:
+2008-09-22T23:43:00.000Z	IntuitiveNipple	CzarAlex	sudo find / -type f -iname 'moo*'
+2008-09-22T23:44:00.000Z	CzarAlex	IntuitiveNipple	just some other references to MOO stuff i have on the box. but nothing cron/task related.
+2008-09-22T23:44:00.000Z	CzarAlex	IntuitiveNipple	back when I set this up, i do recall having to fiddle with the 0 * * 1 stuff though. So I know its cron related.
+2008-09-22T23:44:00.000Z	IntuitiveNipple	CzarAlex	well, if the fine had that name you suggested, that find command should locate the script
+2008-09-22T23:45:00.000Z	IntuitiveNipple	CzarAlex	Is it a system task or a user one?
+2008-09-22T23:45:00.000Z	CzarAlex	IntuitiveNipple	user perhaps.
+2008-09-22T23:46:00.000Z	IntuitiveNipple	CzarAlex	go into /etc/cron.* directories and check all contents for something that looks familiar
+2008-09-22T23:46:00.000Z	IntuitiveNipple	CzarAlex	read the contents of the files to locate the job
+2008-09-22T23:47:00.000Z	CzarAlex	IntuitiveNipple	if it was a system task or a user task, would that change things?
+2008-09-22T23:47:00.000Z	IntuitiveNipple	CzarAlex	not markedly no

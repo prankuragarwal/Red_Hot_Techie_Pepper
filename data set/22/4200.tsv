@@ -1,0 +1,22 @@
+2008-10-06T02:32:00.000Z	salamandyr		ok i really am lost.  wifi is showing as ath0, and in network mgr... i can config ip, but not connecting to network (though it can see all avail SSIDs)
+2008-10-06T02:33:00.000Z	ichbinesderelch	salamandyr	what module are you using?
+2008-10-06T02:33:00.000Z	salamandyr	ichbinesderelch	 how can i tell?  :)
+2008-10-06T02:34:00.000Z	ichbinesderelch	salamandyr	lsmod | grep ath
+2008-10-06T02:34:00.000Z	salamandyr	ichbinesderelch	 oh - see in Hardware Drivers it's using Atheros HAL
+2008-10-06T02:34:00.000Z	ichbinesderelch	salamandyr	past the output of lsmod | grep ath pls :)
+2008-10-06T02:35:00.000Z	salamandyr	ichbinesderelch	 that gives me 4 items... ath_rate_sample, ath_pci, wlan, and ath_hal
+2008-10-06T02:35:00.000Z	ichbinesderelch	salamandyr	does iwlist ath0 scan find anything?
+2008-10-06T02:36:00.000Z	salamandyr	ichbinesderelch	yes, iwlist shows lots
+2008-10-06T02:37:00.000Z	ichbinesderelch	salamandyr	what encryption are you using?
+2008-10-06T02:37:00.000Z	salamandyr	ichbinesderelch	 WEP
+2008-10-06T02:38:00.000Z	ichbinesderelch	salamandyr	try to connect with "sudo iwconfig ath0 essid (networkname) key (key) and if you use dhcp than run sudo dhclient afterwards
+2008-10-06T02:40:00.000Z	salamandyr	ichbinesderelch	thanks - that worked!  but why not working in network mgr with same settings?
+2008-10-06T02:40:00.000Z	ichbinesderelch	salamandyr	you're using the gnome-network manager?
+2008-10-06T02:41:00.000Z	ichbinesderelch	salamandyr	i never managed to set a static ip and connect to my wlan with that one  ;)
+2008-10-06T02:41:00.000Z	ichbinesderelch	salamandyr	maybe try some other network manager like wicd owr wifi-radar
+2008-10-06T02:41:00.000Z	salamandyr	ichbinesderelch	maybe it's wrong WEP?  my key is just numbers like: 3109755877
+2008-10-06T02:42:00.000Z	ichbinesderelch	salamandyr	if you entered the same in konsole now it should be the right one
+2008-10-06T02:45:00.000Z	salamandyr	ichbinesderelch	thanks - where can i find other network manager?
+2008-10-06T02:45:00.000Z	ichbinesderelch	salamandyr	i guess wicd and wifi-radar are in the repositories, i personally would recommend wicd, but just try both of them
+2008-10-06T02:46:00.000Z	salamandyr	ichbinesderelch	thanks very much for your attention :)
+2008-10-06T02:46:00.000Z	ichbinesderelch	salamandyr	you're welcome ;)

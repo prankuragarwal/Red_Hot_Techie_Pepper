@@ -1,0 +1,22 @@
+2011-11-27T12:03:00.000Z	tensorpudding	zjhui	looks like a problem with the nginx source version, not with ubuntu
+2011-11-27T12:04:00.000Z	tensorpudding	zjhui	the Makefile has the option -Werror in the CFLAGS, which makes make fail on warnings, and the compiler emitted a warning
+2011-11-27T12:04:00.000Z	tensorpudding	zjhui	this is an issue with the version of nginx you used, or a bug in the compiler, and i lean towards the former
+2011-11-27T12:05:00.000Z	tensorpudding	zjhui	you should consider using the version of nginx that is packaged for ubuntu
+2011-11-27T12:06:00.000Z	zjhui	tensorpudding	yes , i also thought that , but i have google for a long time , and can't figure out the problem
+2011-11-27T12:07:00.000Z	zjhui	tensorpudding	the Makefile don't have the werror option
+2011-11-27T12:08:00.000Z	tensorpudding	zjhui	are you sure
+2011-11-27T12:09:00.000Z	zjhui	tensorpudding	yes http://paste.ubuntu.com/751148/
+2011-11-27T12:10:00.000Z	zjhui	tensorpudding	that is my Makefile
+2011-11-27T12:12:00.000Z	zjhui	tensorpudding	because i follow the tutorials which use that version
+2011-11-27T12:13:00.000Z	zjhui	tensorpudding	yes , i just want to complie it from the source
+2011-11-27T12:14:00.000Z	zjhui	tensorpudding	let me try the new version
+2011-11-27T12:16:00.000Z	zjhui	tensorpudding	i have found this http://www.serverphorums.com/read.php?5,308712 , but when i use that patch , it didn't work
+2011-11-27T12:18:00.000Z	zjhui	tensorpudding	and i also didn't know the what's the acutually reason that cause the problem
+2011-11-27T12:20:00.000Z	tensorpudding	zjhui	the actual reason is is right there in the error, a variable was defined but not used
+2011-11-27T12:21:00.000Z	tensorpudding	zjhui	the c compiler emitted a warning because of that, and because -Werror was in place, the compilation ended in error
+2011-11-27T12:30:00.000Z	zjhui	tensorpudding	so , i should find the -Werror option in the Makefile and delete it
+2011-11-27T12:31:00.000Z	tensorpudding	zjhui	that's the more immediate solution
+2011-11-27T12:31:00.000Z	tensorpudding	zjhui	the longer-term solution is to notify the nginx people about this issue so that they'll patch their code
+2011-11-27T12:31:00.000Z	zjhui	tensorpudding	i have find a patch , and it didn't work
+2011-11-27T12:32:00.000Z	zjhui	tensorpudding	i will report the bug to nginx
+2011-11-27T12:39:00.000Z	zjhui	tensorpudding	: thank you , i have solved it by change the nginx to version 1.0.10

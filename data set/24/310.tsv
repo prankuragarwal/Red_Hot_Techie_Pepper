@@ -1,0 +1,24 @@
+2012-02-23T04:58:00.000Z	ztag100		Ok, I am now convinced... mint is bs... reinstalling xubuntu
+2012-02-23T04:58:00.000Z	pxc	ztag100	what's your complaint about Mint? I haven't used it in a while
+2012-02-23T05:01:00.000Z	pxc	ztag100	I'm kind of curious about your problem. Is it resolved, or did you abandon Mint without solving it?
+2012-02-23T05:01:00.000Z	ztag100	pxc	I haven't found a solution to fix it
+2012-02-23T05:02:00.000Z	ztag100	pxc	I really just wanted to give mint a spin... but it isn't proving worth it
+2012-02-23T05:02:00.000Z	pxc	ztag100	let's try it one last time. What's the problem?
+2012-02-23T05:03:00.000Z	pxc	ztag100	have you tried editing the grub command line before boot, so that you can see what's happening?
+2012-02-23T05:04:00.000Z	ztag100	pxc	no how can I do that?
+2012-02-23T05:04:00.000Z	pxc	ztag100	just remove the ‘quiet’ and ‘splash’ parameters from the kernel line on boot. I don't remember the keyboard combination to edit the command line on grub, but it tells you on the screen
+2012-02-23T05:04:00.000Z	pxc	ztag100	aye
+2012-02-23T05:06:00.000Z	pxc	ztag100	bizarre. Maybe it's a quirk of the video drivers, and disabling the splash fixes it
+2012-02-23T05:07:00.000Z	ztag100	pxc	Thanks
+2012-02-23T05:08:00.000Z	pxc	ztag100	/etc/default/grub
+2012-02-23T05:10:00.000Z	ztag100	pxc	just edited the file
+2012-02-23T05:11:00.000Z	pxc	ztag100	all you needed to change was the $GRUB_CMDLINE_DEFAULT, right?
+2012-02-23T05:12:00.000Z	pxc	ztag100	by which you mean you deleted those words from the string?
+2012-02-23T05:14:00.000Z	pxc	ztag100	there's one more thing you'll have to do on Mint, which is call /sbin/grub-mkconfig to generate a new /boot/grub/grub.cfg from your /etc/default/grub file
+2012-02-23T05:21:00.000Z	ztag100	pxc	after rebooting, now I boot into terminal
+2012-02-23T05:23:00.000Z	ztag100	pxc	after rebooting, now I boot into terminal
+2012-02-23T05:24:00.000Z	pxc	ztag100	X isn't starting anymore?
+2012-02-23T05:25:00.000Z	pxc	ztag100	You're running gnome/gdm, right?
+2012-02-23T05:27:00.000Z	pxc	ztag100	shut down lightdm, whatever the command is for that. Do they have lightdm on upstart yet, or is it still /etc/init.d?
+2012-02-23T05:31:00.000Z	ztag100	pxc	Sorry, what do you want me to do?
+2012-02-23T05:33:00.000Z	pxc	ztag100	‘sudo service lightdm stop’, and then ‘startx’, I think. Then you can watch X crash

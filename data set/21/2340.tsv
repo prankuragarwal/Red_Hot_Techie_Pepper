@@ -1,0 +1,21 @@
+2009-11-04T05:07:00.000Z	mirc-drifter		GRUB, doesnt accept input from my usb keyboard so i cannot choose windows xp from my menu anymore, any ideas?
+2009-11-04T05:08:00.000Z	Jordan_U	mirc-drifter	If you are using GRUB2 you can try the usbkeyboard module, if you are using grub legacy I don't think anything like that exists
+2009-11-04T05:11:00.000Z	Jordan_U	mirc-drifter	If you want to try usb keyboard support in grub2 add two lines to /etc/grub.d/40_custom "insmod usb.mod" and "insmod usb_keyboard.mod"
+2009-11-04T05:11:00.000Z	Jordan_U	mirc-drifter	If you decide to do that please tell me how it goes
+2009-11-04T05:12:00.000Z	mirc-drifter	Jordan_U	hw do i know if i have grub 2?
+2009-11-04T05:13:00.000Z	Jordan_U	mirc-drifter	If you have the file /etc/grub.d/40_custom then you have grub2
+2009-11-04T05:13:00.000Z	mirc-drifter		ok
+2009-11-04T05:18:00.000Z	Jordan_U	mirc-drifter	I'm not sure how stable usb keyboard support in grub is but I assume that it's fairly stable since it's included ( though not used ) by default
+2009-11-04T05:18:00.000Z	mirc-drifter	Jordan_U	i do not have /etc/grub.d/40_custom, i only have the one file in there called 20_memtest86+
+2009-11-04T05:19:00.000Z	Jordan_U	mirc-drifter	That's odd, what is the output of "apt-cache policy grub-pc"?
+2009-11-04T05:19:00.000Z	mirc-drifter		its version 1.96
+2009-11-04T05:20:00.000Z	mirc-drifter	Jordan_U	grub-pc installed: (none)
+2009-11-04T05:20:00.000Z	Jordan_U	mirc-drifter	Or maybe not so odd as that file is included in the memtest package whether you have grub2 installed or not
+2009-11-04T05:20:00.000Z	mirc-drifter		then it says version 1.96
+2009-11-04T05:20:00.000Z	mirc-drifter		oh ok, do you know how i can use my keyboard in grub
+2009-11-04T05:21:00.000Z	Jordan_U	mirc-drifter	You would have to upgrade to grub2 AFAIK
+2009-11-04T05:22:00.000Z	Jordan_U		!grub2 | mirc-drifter There are upgrade instructions here
+2009-11-04T05:34:00.000Z	Jordan_U	mirc-drifter	I can give you a CD image to test grub2's usb keyboard support with if you want to try it before upgrading
+2009-11-04T05:35:00.000Z	mirc-drifter		I am using ubuntu 9.04, surely there is a way to anable USB keyboard support without installing, grub2, anyone know how to please?
+2009-11-04T05:37:00.000Z	Jordan_U	mirc-drifter	I am fairly sure there isn't, you can switch to windows by running "sudo grub-reboot <number>" where number is the title number for windows to boot once into windows
+2009-11-04T05:40:00.000Z	Jordan_U	mirc-drifter	Would you like an iso to test with?

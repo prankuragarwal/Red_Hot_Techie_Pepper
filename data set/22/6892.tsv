@@ -1,0 +1,22 @@
+2006-11-18T17:35:00.000Z	eetfunk		Kaot: yeah, everything i find is for the command line i think... i dont know jack about iptables :)
+2006-11-18T17:36:00.000Z	kaot	eetfunk	you should be able to just load your tables as normal, minus the port-forward, then run the command I gave you, then iptables-save >iptables.rules
+2006-11-18T17:40:00.000Z	eetfunk	kaot	thanks!
+2006-11-18T17:46:00.000Z	eetfunk	kaot	For whhatever reason, the port is not forwarded... any idea?
+2006-11-18T17:47:00.000Z	kaot	eetfunk	paste your current iptables rules please
+2006-11-18T17:48:00.000Z	kaot		window 2
+2006-11-18T17:48:00.000Z	eetfunk	kaot	http://pastie.caboo.se/23357  i don't even see 2525 in there although i ran the line you sent me
+2006-11-18T17:49:00.000Z	eetfunk	kaot	huh... its at the top, sorry :)
+2006-11-18T17:49:00.000Z	kaot		\
+2006-11-18T17:51:00.000Z	kaot	eetfunk	erm.  that's wayyyy to many lines.  edit that file to remove all the prerouting rules except the middle one, and then iptables-restore your ruleset
+2006-11-18T17:54:00.000Z	eetfunk	kaot	ok thats what i have now (but still doesnt work):  http://pastie.caboo.se/23358
+2006-11-18T17:58:00.000Z	kaot	eetfunk	looks like you've got a DROP rule for all traffic destined for 127.0.0.0/8....
+2006-11-18T17:58:00.000Z	kaot	eetfunk	but aprior rule to accept all on loopback... guh.  what generated these rules?
+2006-11-18T17:58:00.000Z	eetfunk		Kaot: a wizard i found online...
+2006-11-18T06:00:00.000Z	kaot	eetfunk	experimental telnetting to your 63.99.9.66 suggests that traffic is in fact getting DROP'd for some reason, I suspect the LINWIZ-INPUT ruleset...
+2006-11-18T06:00:00.000Z	kaot	eetfunk	you might try something like iptables -I INPUT -d 127.0.0.1 -p tcp --dport 25 -j ACCEPT
+2006-11-18T06:07:00.000Z	eetfunk	kaot	I got it.  I forward 2525 to  externalip:25 instead.  is there a reason why i would NOT want to do that?
+2006-11-18T06:08:00.000Z	kaot	eetfunk	eetfunk not really.  I imagine the idea here is to get around a port 25 block by your isp or similar.  Either way should work.
+2006-11-18T06:08:00.000Z	eetfunk	kaot	thanks! it sure did the trick :)
+2006-11-18T06:08:00.000Z	kaot	eetfunk	I just noticed it working, I tried to drop you a line but your anti-spam blacklist doenst' like my IP  :\
+2006-11-18T06:09:00.000Z	eetfunk	kaot	that's how you know i'm doing it right :D
+2006-11-18T06:09:00.000Z	kaot	eetfunk	lol... I'm bummed by that sort of thing, I used to run my own mailserver, then of course spammers wrecked it for everybody.  Oh well.

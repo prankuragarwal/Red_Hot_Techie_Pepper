@@ -1,0 +1,21 @@
+2011-03-23T03:38:00.000Z	jt13		ok i was in here a few ago with the problem with my grub. someone posted a tutorial and it isn't working. I am told to input "sudo grub-install --root-directory=/media/Ubuntu /dev/sda3" into terminal and yes the "Ubuntu" is my ubuntu partition as well as the "/dev/sda3" can someone help me?
+2011-03-23T03:40:00.000Z	Jordan_U	jt13	You almost never want to install grub to a partition like /dev/sda3, always /dev/sda. And I prefer this guide using chroot: http://grub.enbug.org/Grub2LiveCdInstallGuide
+2011-03-23T03:41:00.000Z	jt13	Jordan_U	 whats the difference? and I thought I was supposed to install it to the sda3 since thats my ubuntu partition?
+2011-03-23T03:42:00.000Z	jt13	Jordan_U	 thats what the guide i was given said nyway
+2011-03-23T03:42:00.000Z	Jordan_U	jt13	The practical difference is that http://grub.enbug.org/Grub2LiveCdInstallGuide is harder to get wrong accidentily. No, you need grub's boot sector to be in the mbr, the first sector of the disk, which is where the BIOS will look for it.
+2011-03-23T03:43:00.000Z	Jordan_U	jt13	The guide you were given was wrong.
+2011-03-23T03:43:00.000Z	jt13	Jordan_U	ok I am reading the link you gave me now. Thank you for your assistance. it was much needed
+2011-03-23T03:44:00.000Z	Jordan_U	jt13	You're welcome.
+2011-03-23T03:51:00.000Z	jt13	Jordan_U	ok I'm having trouble. It tells me to "fdisk" and find my linux partition which is /dev/sda3 and then to "sudo mount/dev/sda3/mnt" but I keep getting a command not fount error.
+2011-03-23T03:55:00.000Z	Jordan_U	jt13	As I think you figured out, the spaces between arguments in a command are important.
+2011-03-23T03:56:00.000Z	jt13	Jordan_U	 yea i got it. in the tutorial it doesn't appear to be spaces but I tried it anyway and bam. thanks
+2011-03-23T03:58:00.000Z	jt13	Jordan_U	 ok but i'm still getting the same "cannot find a device for / (is /dev mounted?) and I mounted /dev
+2011-03-23T04:01:00.000Z	Jordan_U	jt13	Did you run grub-install / grub-mkconfig from within the chroot?
+2011-03-23T04:03:00.000Z	jt13	Jordan_U	 I mounted my /dev/sda3 "the one that says linux" i mounted the /proc and /sys as instructed and sudo apt-get installe grub-pc when I attempt the mkconfig I get the error.
+2011-03-23T04:03:00.000Z	Jordan_U	jt13	Did you run "sudo chroot /mnt/"?
+2011-03-23T04:05:00.000Z	Jordan_U	jt13	What guide are you following?
+2011-03-23T04:06:00.000Z	jt13	Jordan_U	 see pm it is the ne you sent
+2011-03-23T04:07:00.000Z	jt13	Jordan_U	 anyway. I am following the link you posted. and nowhere does it say to chroot
+2011-03-23T04:07:00.000Z	Jordan_U	jt13	And if you read the link (and what you PMd me) you will see: Your system should be ready to be chroot'd into, sudo chroot /mnt
+2011-03-23T04:11:00.000Z	jt13	Jordan_U	 Ok i don't know how i missed that. HOWEVER. after chrooting i still get the error  "sudo: unable to reslove host ubuntu/usr/sbin/grub-prob: error: cannot find a device for / (is /dev mounted?)
+2011-03-23T04:12:00.000Z	Jordan_U	jt13	The commands after "sudo chroot /mnt/" need to be run in the same terminal. Follow the guide carefully and it will work.

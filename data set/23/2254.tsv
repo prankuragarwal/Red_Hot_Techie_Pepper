@@ -1,0 +1,23 @@
+2010-01-02T10:06:00.000Z	Some_Person		something's wrong -- my whole file system is suddenly read-only. I tried to install the "devscripts" package, but something horribly went wrong. http://paste.ubuntu.com/350246/
+2010-01-02T10:07:00.000Z	Some_Person		During the installation, I got a prompts (blue thing with things to select). It said something about how do you get your mail, and I chose the default option, which was website or something like that
+2010-01-02T10:09:00.000Z	Some_Person		anyone know how to fix this?
+2010-01-02T10:10:00.000Z	pure_hate	Some_Person	I fail to see any reason why your files are read only in this paste
+2010-01-02T10:11:00.000Z	Some_Person	pure_hate	well, for one thing, I can't create a file in my home directory
+2010-01-02T10:11:00.000Z	Some_Person	pure_hate	and xchat is complaining that it's read only
+2010-01-02T10:11:00.000Z	pure_hate	Some_Person	Have you checked the permissions
+2010-01-02T10:12:00.000Z	Some_Person	pure_hate	furthermore, "dpkg: unable to access dpkg status area: Read-only file system"
+2010-01-02T10:15:00.000Z	pure_hate	Some_Person	can you write a file a s root?
+2010-01-02T10:16:00.000Z	Some_Person	pure_hate	No, I can't
+2010-01-02T10:16:00.000Z	pure_hate	Some_Person	Best thing to do is chroot in with a live disc and clean up the mess that way
+2010-01-02T10:35:00.000Z	Some_Person	pure_hate	nope :( http://paste.ubuntu.com/350255/
+2010-01-02T10:36:00.000Z	pure_hate	Some_Person	dpkg --configure libio-stringy-perl you try that
+2010-01-02T10:37:00.000Z	Some_Person	pure_hate	syockit: http://paste.ubuntu.com/350256/
+2010-01-02T10:39:00.000Z	Some_Person	pure_hate	any other ideas?
+2010-01-02T10:39:00.000Z	pure_hate	Some_Person	Not alot let to try except sudo dpkg --force all --remove
+2010-01-02T10:40:00.000Z	Some_Person	pure_hate	which package(s)?
+2010-01-02T10:44:00.000Z	pure_hate	Some_Person	sudo rm /var/lib/dpkg/info/libio-stringy-perl.*
+2010-01-02T10:45:00.000Z	Some_Person	pure_hate	ok, now i was able to remove libio-stringy-perl
+2010-01-02T10:49:00.000Z	Some_Person	pure_hate	can you repost the first pastebin I linked to? I need to remove all the dependencies manually of devscripts and don't know what they are
+2010-01-02T10:55:00.000Z	Some_Person	pure_hate	now what? http://paste.ubuntu.com/350262/
+2010-01-02T10:57:00.000Z	pure_hate	Some_Person	you nedd to dpkg reconfigure postfix now
+2010-01-02T11:02:00.000Z	Some_Person	pure_hate	well, it wouldn't reconfigure, so I removed it, but all seems well now :) http://paste.ubuntu.com/350264/

@@ -1,0 +1,24 @@
+2011-04-01T01:51:00.000Z	myrmidette		ok
+2011-04-01T01:51:00.000Z	myrmidette		but it's still configured
+2011-04-01T01:52:00.000Z	myrmidette		I am
+2011-04-01T01:53:00.000Z	myrmidette		oh wait, there is a cable, but it's not connected to anything
+2011-04-01T01:53:00.000Z	myrmidette		btw I'm using 10.10
+2011-04-01T01:53:00.000Z	myrmidette		pretty damn good
+2011-04-01T01:54:00.000Z	myrmidette		yes
+2011-04-01T01:56:00.000Z	myrmidette		but the cable is not connected to a modem or router, there's no circuit
+2011-04-01T01:56:00.000Z	myrmidette		how can it detect anything?
+2011-04-01T01:57:00.000Z	meganerdca	myrmidette	bad driver
+2011-04-01T01:57:00.000Z	myrmidette	meganerdca	good driver
+2011-04-01T01:57:00.000Z	meganerdca	myrmidette	what do you get when you type "ip addr"
+2011-04-01T02:01:00.000Z	meganerdca	myrmidette	it is saying that there the link is down on eth0
+2011-04-01T02:01:00.000Z	myrmidette	meganerdca	yes. there's no cable in the ethernet port
+2011-04-01T02:03:00.000Z	meganerdca	myrmidette	so you can't connect via wifi?  Did I understand the problem correctly?
+2011-04-01T02:04:00.000Z	myrmidette	meganerdca	 but it seems to prefer the (nonexistent) eth0 connection to the working wifi connection
+2011-04-01T02:06:00.000Z	meganerdca	myrmidette	any rougue routing entries?  "ip route" will show the routes, more than one default is bad unless you specifically set it up
+2011-04-01T02:07:00.000Z	meganerdca	myrmidette	are they on the same subnet, with different devices?
+2011-04-01T02:07:00.000Z	meganerdca	myrmidette	well, without sudo this is going to be a problem, but normally "sudo ip route del default via dev eth0"
+2011-04-01T02:08:00.000Z	meganerdca	myrmidette	I don't suppose there is a root account enabled on this machine that you have a password for?
+2011-04-01T02:09:00.000Z	meganerdca	myrmidette	you will need need root or sudo access to remove the offending route
+2011-04-01T02:09:00.000Z	meganerdca	myrmidette	"sudo ip route del default via dev eth0"
+2011-04-01T02:09:00.000Z	meganerdca	myrmidette	this will leave only the route for device wlan0 in the routing table
+2011-04-01T02:10:00.000Z	meganerdca	myrmidette	your welcome

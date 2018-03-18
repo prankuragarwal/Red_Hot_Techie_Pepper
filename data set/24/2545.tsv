@@ -1,0 +1,24 @@
+2010-10-23T05:12:00.000Z	Roasted		how can I change the default perms of a directory? For example, it seems that 755 is popular with new files/folders in linux. But I dont want that, I want 775 so ANYTHING created in that dir gets 775 perms. How can I do this?
+2010-10-23T05:12:00.000Z	Roasted		changes permissions via terminal
+2010-10-23T05:12:00.000Z	Roasted		sudo chmod 770 etc
+2010-10-23T05:13:00.000Z	Roasted		not sure what's wrong with sudo
+2010-10-23T05:14:00.000Z	Roasted		I dont want system wide. I just want it for 1 folder.
+2010-10-23T05:14:00.000Z	Roasted		I guess I need windows-style openness with this share and it sucks when stuff is created in 755, requires me to have to reset perms just to keep working.
+2010-10-23T05:14:00.000Z	dli	Roasted	you want all current files/subfolder be 775 or the default permissions for future creating
+2010-10-23T05:17:00.000Z	dli	Roasted	I think you want ' chmod 2775 /path/to/foo'
+2010-10-23T05:18:00.000Z	dli	Roasted	if you only cares about the current files/subfolders, 'chmod -R 0775 /path/to/foo'
+2010-10-23T05:18:00.000Z	Roasted	dli	I don't understand - why are the perms you're giving me 4 digit instead of 3. why 0775, 2775, etc??
+2010-10-23T05:20:00.000Z	dli	Roasted	the '2' in '2775' means setgid for folder, you can set '4775' to setuid, and '1775' to set sticky, the system default /tmp should be 1777, for example
+2010-10-23T05:20:00.000Z	dli	Roasted	'man chmod' for more
+2010-10-23T05:21:00.000Z	Roasted	dli	are you saying with chmod 2775 I can sticky the 775 for ALL new files/folders created as 775? Or would that not do it?
+2010-10-23T05:22:00.000Z	dli	Roasted	yes, '2775' will do it for gid, if want uid be kept as well set it '6775', or even '7775'
+2010-10-23T05:22:00.000Z	Roasted	dli	going to test this now...
+2010-10-23T05:23:00.000Z	dli	Roasted	for example, the system /usr/src is set to '2775' by default
+2010-10-23T05:23:00.000Z	Roasted	dli	didnt work
+2010-10-23T05:25:00.000Z	dli	Roasted	because system default /etc/profile already sets 'umask 022', set 'umask 002' in your ~/.bashrc
+2010-10-23T05:25:00.000Z	dli	Roasted	it's simple, but probably not the way of simpleness you thought
+2010-10-23T05:27:00.000Z	dli	Roasted	have you tried 'umask 002'?
+2010-10-23T05:27:00.000Z	Roasted	dli	umask changes the entire system though, right
+2010-10-23T05:37:00.000Z	dli	Roasted	if you don't want security, make 'umask 000' globally in /etc/profile, and 'chmod 2775 /path/to/foo'
+2010-10-23T05:37:00.000Z	Roasted	dli	I want security of course...
+2010-10-23T05:38:00.000Z	dli	Roasted	if you want security, don't change /etc/profile, make it '~/.bash_profile'

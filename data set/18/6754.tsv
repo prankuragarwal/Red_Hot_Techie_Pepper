@@ -1,0 +1,18 @@
+2008-11-18T08:18:00.000Z	Peddy		Once installed, where are Linux kernels stored?
+2008-11-18T08:20:00.000Z	Peddy		thanks Flannel
+2008-11-18T08:21:00.000Z	Peddy		is there a command that says where the running kernel is stored?
+2008-11-18T08:22:00.000Z	jamesish	Peddy	ls /boot , I guess.
+2008-11-18T08:23:00.000Z	Peddy	jamesish	what if it isn't installed in /boot (if that's even possible), because I have a 7.10 (lol) kernel installed somewhere, and my computer randomly boots into it sometimes.
+2008-11-18T08:24:00.000Z	jamesish	Peddy	I'm not gonna put too fine a point on this. If you think your system is randomly booting different kernels, you're in a world of pain. You can do stuff like fix /boot/grub/menu.lst, but something that fundamental pretty much screams to me that either someone's screwing with you or you hosed your own system.
+2008-11-18T08:27:00.000Z	Peddy	jamesish	it happens more often when I have removable media in. I'm pretty sure it's loading another GRUB, not the one I have right now. It's a completely ridiculous problem; I changed my password when upgrading Ubuntu, and my OLD passwords work, but my new ones don't. :/
+2008-11-18T08:28:00.000Z	jamesish	Peddy	you're not loading another grub, then. I have an inkling what's happening, though.
+2008-11-18T08:29:00.000Z	jamesish	Peddy	it sounds like you've got an old installation of ubuntu somewhere on the same hard drive. When you're entering removable media, your computer is bringing your hard drives up in a different order. So when grub tries to find the boot loader, it's finding one on a different device than your normal default partition.
+2008-11-18T08:31:00.000Z	Peddy	jamesish	aha, thanks. I'll have a look through my partitions.
+2008-11-18T08:31:00.000Z	jamesish	Peddy	I'm not sure what the solution is for you, is the thing. The problem isn't having two copies of ubuntu, it's that your devices are being renumbered when you leave a removable device in.
+2008-11-18T08:33:00.000Z	Peddy	jamesish	It's not 2 *full* copies, more like just the kernel. It can't even load properly, because glibc and the old version of gdm is missing. Do you know of a quick way to scan for multiple installs?
+2008-11-18T08:34:00.000Z	jamesish	Peddy	Probably the *fastest* way is to boot from knoppix.
+2008-11-18T08:34:00.000Z	jamesish	Peddy	I think the ubuntu live CD can also automount volumes as it finds them,though.
+2008-11-18T08:35:00.000Z	Peddy	jamesish	So after I boot from the live CD, I look for /boot partitions?
+2008-11-18T08:36:00.000Z	jamesish	Peddy	I'm not sure. You'll have to investigate. Sounds like a good start, but I don't think that's really the core issue. The real core issue is that your devices are being renumbered.
+2008-11-18T08:38:00.000Z	Peddy	jamesish	Grub reads the renumbered (false) partitions then, correct? So the renumbering is an OS-level issue?
+2008-11-18T08:40:00.000Z	jamesish	Peddy	no, they're hardware level.

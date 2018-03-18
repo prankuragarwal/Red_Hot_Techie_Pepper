@@ -1,0 +1,23 @@
+2012-07-25T16:07:00.000Z	aman__		Hi there
+2012-07-25T16:07:00.000Z	aman__		may i know how to set ip in ubuntu 12.04 as static
+2012-07-25T16:07:00.000Z	aman__		?
+2012-07-25T16:07:00.000Z	aman__		everytime i set,and reboot the system,it doesnot get any ip.?
+2012-07-25T16:09:00.000Z	aman__		i have went through this document
+2012-07-25T16:10:00.000Z	aman__		everytime i make changes to /etc/network/interfaces file and restart networking ,system doesnot get any ip and loses connection with internet too
+2012-07-25T16:10:00.000Z	aman__		and if i try ifup eth0 then it shows ignoring unknown eth0=eth0
+2012-07-25T16:10:00.000Z	ActionParsnip	aman__	can you pastebin the interfaces file please
+2012-07-25T16:12:00.000Z	ActionParsnip	aman__	it doesn't need changing, you are only reading the file
+2012-07-25T16:13:00.000Z	ActionParsnip	aman__	inet eth0 inet static     will set the interface to static IP, the next lines define the addressing
+2012-07-25T16:13:00.000Z	ActionParsnip	aman__	then you can use:  iface eth0 inet dhcp
+2012-07-25T16:14:00.000Z	ActionParsnip	aman__	you get the idea. Be sure to add:  auto eth0   so it comes up automatically
+2012-07-25T16:14:00.000Z	ActionParsnip	aman__	yes
+2012-07-25T16:16:00.000Z	ActionParsnip	aman__	sudo service networking restart   should do it
+2012-07-25T16:26:00.000Z	ActionParsnip	aman__	if the network is defined in /etc/network/interfaces then network manager won't be able to manage the interface
+2012-07-25T16:36:00.000Z	ActionParsnip	aman__	thats the default file...
+2012-07-25T16:36:00.000Z	ActionParsnip	aman__	i thought you were adding stuff
+2012-07-25T16:44:00.000Z	ActionParsnip	aman__	let me make a new pastebin for you
+2012-07-25T16:45:00.000Z	ActionParsnip	aman__	what is the output of:  lsb_release -sc
+2012-07-25T16:47:00.000Z	ActionParsnip	aman__	http://fpaste.org/pPMU/
+2012-07-25T16:51:00.000Z	ActionParsnip	aman__	sure, or reboot
+2012-07-25T16:52:00.000Z	ActionParsnip	aman__	then just reboot
+2012-07-25T16:56:00.000Z	ActionParsnip	aman__	yes, did you try my suggestion?

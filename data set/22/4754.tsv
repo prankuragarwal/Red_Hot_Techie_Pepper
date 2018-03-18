@@ -1,0 +1,22 @@
+2009-09-26T11:37:00.000Z	Schmitty		scripts in rc.local never get executed.... do you know why?
+2009-09-26T11:38:00.000Z	joeb3_	Schmitty	did you put your script above the "exit 0" ?
+2009-09-26T11:39:00.000Z	Schmitty		joeb3 let me check
+2009-09-26T11:40:00.000Z	Schmitty		joeb3 I have no exit 0
+2009-09-26T11:41:00.000Z	joeb3_	Schmitty	is /etc/rc.local executable? ls -al /etc/rc.local.  Should see r-x or rwx
+2009-09-26T11:41:00.000Z	Schmitty		yes
+2009-09-26T11:41:00.000Z	Schmitty		joeb3 yes
+2009-09-26T11:42:00.000Z	Schmitty	eminor	yup
+2009-09-26T11:43:00.000Z	Schmitty		it's like it just doesn't execute rc.local at all
+2009-09-26T11:43:00.000Z	Schmitty		wierd
+2009-09-26T11:43:00.000Z	joeb3_	Schmitty	does /etc/rc2.d/S99rc.local exist?
+2009-09-26T11:43:00.000Z	Schmitty		1 moment
+2009-09-26T11:44:00.000Z	joeb3_	Schmitty	should be a link to /etc/init.d/rc.local
+2009-09-26T11:44:00.000Z	Schmitty		joeb3 NO!
+2009-09-26T11:44:00.000Z	Schmitty		it's not there
+2009-09-26T11:44:00.000Z	joeb3_	Schmitty	that's why it does not run.
+2009-09-26T11:45:00.000Z	joeb3_	Schmitty	ln -s /etc/rc2.d/S99rc.local /etc/init.d/rc.local
+2009-09-26T11:45:00.000Z	joeb3_	Schmitty	sudo of course
+2009-09-26T11:45:00.000Z	Schmitty		joeb3 I have command I need to run in rc.local that require networking to already be up. Should I place S99rc.local in rc3 or rc4 ?
+2009-09-26T11:46:00.000Z	joeb3_	Schmitty	usually rc2.d.  who -r will show the runlevel to put it in.
+2009-09-26T11:48:00.000Z	Schmitty		ln: creating symbolic link `/etc/init.d/rc.local' to `/etc/rc5.d/S99rc.local': File exists
+2009-09-26T11:48:00.000Z	joeb3_	Schmitty	rc2.d

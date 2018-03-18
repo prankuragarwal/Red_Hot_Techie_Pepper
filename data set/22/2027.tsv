@@ -1,0 +1,22 @@
+2010-07-14T06:50:00.000Z	euxneks		for the ubuntu 10.04 liveCD, how do I change the boot options?
+2010-07-14T06:51:00.000Z	euxneks		liveCD won't start though, I need to set some VGA options or something, I need to make sure I can get to something into which I can change parameter
+2010-07-14T06:51:00.000Z	euxneks		I tried pressing F6
+2010-07-14T06:52:00.000Z	euxneks		for instance, I cannot get to the screen as detailed here: https://help.ubuntu.com/community/BootParameters
+2010-07-14T06:53:00.000Z	euxneks		I _do_ get a screen that shows a keyboard and a little man
+2010-07-14T06:53:00.000Z	euxneks		but then it blacks out
+2010-07-14T06:55:00.000Z	thune3	euxneks	do you know what graphics chip you have? (or computer model?)
+2010-07-14T06:56:00.000Z	euxneks	thune3	it's an ATI HD 3***
+2010-07-14T07:02:00.000Z	thune3	euxneks	you get the grub screen by hitting escape as soon as the little man shows. Then F6 and then escape again give you grub line. You could try "xforcevesa" "xdriver=vesa" or "noapic" options
+2010-07-14T07:02:00.000Z	euxneks	thune3	will try that
+2010-07-14T07:14:00.000Z	euxneks	thune3	removed silent and splash options, and liveCD hangs on "Console: switching to colour frame buffer device 210x65"
+2010-07-14T07:17:00.000Z	thune3	euxneks	i'm trying to find and option for you
+2010-07-14T07:25:00.000Z	thune3	euxneks	maybe "uvesafb" option? i'm having trouble finding options list. is this a notebook with an external graphics port (if so graphics might be switching to that)
+2010-07-14T07:27:00.000Z	euxneks	thune3	this is a desktop, the original nvidia card died on me, I'm borrowing an ATI card to try and see if it's just a video card problem
+2010-07-14T07:27:00.000Z	euxneks	thune3	I think there may be other problems too.
+2010-07-14T07:27:00.000Z	thune3	euxneks	does this computer also have integrated graphic?
+2010-07-14T07:28:00.000Z	euxneks	thune3	no it does not
+2010-07-14T07:29:00.000Z	euxneks	thune3	trying "uvesafb" option
+2010-07-14T07:29:00.000Z	euxneks	thune3	I suspect my motherboard may now be faulty
+2010-07-14T07:34:00.000Z	thune3	euxneks	 https://bugs.launchpad.net/ubuntu/+source/xserver-xorg-video-ati/+bug/560306 suggests trying 'nomodeset' and 'radeon.modeset=0' or trying other DVI video port if your card has two.
+2010-07-14T07:35:00.000Z	thune3	euxneks	ah just saw that. you are a step ahead of me. The solution also recommends using that workaround and then installing proprietary drivers for a system install. (if you were planning to do system install)
+2010-07-14T07:55:00.000Z	euxneks	thune3	yeah it worked, I need to figure out how to repair my installation now :P

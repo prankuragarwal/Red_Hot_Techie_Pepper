@@ -1,0 +1,18 @@
+2006-03-13T08:33:00.000Z	i3dmaster		got erros during the upgrade today. "Could not find platform dependent libraries <exec_prefix> Traceback (most recent call last): File "/usr/sbin/gconf-schemas", line 8, in ? import sys,os,os.path,shutil,tempfile ImportError: No module named tempfile
+2006-03-13T08:34:00.000Z	i3dmaster		anyone also has the problem or does anyone know how to fix?
+2006-03-13T08:35:00.000Z	pestilence	i3dmaster	did you run "sudo apt-get update && sudo aptitude dist-upgrade"
+2006-03-13T08:36:00.000Z	pestilence	i3dmaster	is this dapper?
+2006-03-13T08:36:00.000Z	pestilence	i3dmaster	so if i were you, i'd try again.
+2006-03-13T08:36:00.000Z	pestilence	i3dmaster	dapper is not released, so it changes all the time.
+2006-03-13T08:37:00.000Z	pestilence	i3dmaster	in my experience, things can go from ok -> broken as hell -> ok in a matter of hours
+2006-03-13T08:38:00.000Z	pestilence	i3dmaster	what package is broken?
+2006-03-13T08:38:00.000Z	pestilence	i3dmaster	you might try downloading the deb and installing it manually with dpkg -i
+2006-03-13T08:39:00.000Z	pestilence	i3dmaster	well, if it was broken the first time you tried to install it, it makes sense that it would be broken on subsequent attempts
+2006-03-13T08:40:00.000Z	pestilence	i3dmaster	what i am saying is, maybe the package has been updated, so it might make sense to reinstall over the network
+2006-03-13T08:41:00.000Z	pestilence	i3dmaster	for instance, you could do apt-get clean
+2006-03-13T08:41:00.000Z	pestilence	i3dmaster	then apt-get update && aptitude dist-upgrade
+2006-03-13T08:42:00.000Z	pestilence	i3dmaster	but shouldn't  a dpkg -i install of the package re-do the configuration?
+2006-03-13T08:43:00.000Z	pestilence	i3dmaster	that is, if you get a non-broken version of the package
+2006-03-13T08:46:00.000Z	pestilence	i3dmaster	intelikey is suggesting you run apt-get remove --purge on the broken packages
+2006-03-13T09:01:00.000Z	i3dmaster	pestilence	I got the problem solved. Its weird that the tempfile.py module from python2.4-minimal pkg somehow got removed, so the pkg is actually broken and this file is needed everything gconf-schemes calls... I force removed python2.4-minimal and reinstall it and then problem solved.
+2006-03-13T09:02:00.000Z	pestilence	i3dmaster	cool

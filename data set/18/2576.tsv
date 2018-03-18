@@ -1,0 +1,18 @@
+2010-04-16T08:45:00.000Z	hunahpu	chris7894	dis you install system-config-samba package?
+2010-04-16T08:46:00.000Z	chris7894	hunahpu	yes i installed that package
+2010-04-16T08:46:00.000Z	hunahpu	chris7894	open it, go to preferences and make sure your user is on the users list
+2010-04-16T08:47:00.000Z	chris7894	hunahpu	the user (me) is in the list
+2010-04-16T08:47:00.000Z	hunahpu	chris7894	make sure it starts on boot, open a terminal and type "ls -l /etc/rc2.d/*samba
+2010-04-16T08:49:00.000Z	chris7894	hunahpu	what does that command do?
+2010-04-16T08:49:00.000Z	hunahpu	chris7894	ls stands for list, the -l will show you permissions and more importantly where the symlink points to
+2010-04-16T08:50:00.000Z	hunahpu	chris7894	if you feel unsure, type "man ls" on your terminal so you can read the manual; to exit press Q
+2010-04-16T08:51:00.000Z	hunahpu	chris7894	does it points to ../init.d/samba??
+2010-04-16T08:51:00.000Z	chris7894	hunahpu	yes it does
+2010-04-16T08:52:00.000Z	hunahpu	chris7894	just to make sure the samba script is really there, type "gedit /etc/init.d/samba" (no quotes) it will open the samba script in gedit, don't worry without using sudo you won't be able to save changes, just check you read the word "daemon" on the first 20 lines
+2010-04-16T08:54:00.000Z	chris7894	hunahpu	lots of script in that file....#defaults; run_mode=daemons
+2010-04-16T08:55:00.000Z	hunahpu	chris7894	OK then the script is right and it is launching at start; the problem must be in your configurations
+2010-04-16T08:57:00.000Z	hunahpu	chris7894	you can use GUI tools to configure it, if you want to configure it manually edit the /etc/samba/smb.conf file with super user powers, this link will give you the basics: http://samba.org/samba/docs/man/manpages-3/smb.conf.5.html
+2010-04-16T09:03:00.000Z	chris7894	hunahpu	ill go through the GUI again, thanks for the assistance
+2010-04-16T09:03:00.000Z	hunahpu	chris7894	no problem, good luck
+2010-04-16T09:05:00.000Z	chris7894	hunahpu	what security settings and other config should i be using
+2010-04-16T09:06:00.000Z	hunahpu	chris7894	that's up to you, it depends on how harsh your environment is, as you increase security usability will decrease

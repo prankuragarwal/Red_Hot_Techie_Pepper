@@ -1,0 +1,23 @@
+2007-02-15T07:21:00.000Z	nexousNET		Hi, How would I go about making ubuntu 6.10 run the command 'opt/lampp/lampp start' on startup?
+2007-02-15T07:23:00.000Z	mwe	nexousNET	put it in /etc/rc.local then
+2007-02-15T07:24:00.000Z	mwe	nexousNET	you can put various commands to run at boot time in /etc/rc.local
+2007-02-15T07:24:00.000Z	mwe	nexousNET	you don't need a script to just run a command at boot
+2007-02-15T07:25:00.000Z	nexousNET	mwe	well, I'm doing it this way now, if it works, it's fine with me.
+2007-02-15T07:28:00.000Z	mwe	nexousNET	feel free to complicate things of course, but just sudo su -c 'echo opt/lampp/lampp start' >> /etc/rc.local would solve it for you
+2007-02-15T07:28:00.000Z	mwe	nexousNET	sudo su -c 'echo opt/lampp/lampp start >> /etc/rc.local' that is
+2007-02-15T07:29:00.000Z	mwe	nexousNET	it's a command that puts the line in /etc/rc.local
+2007-02-15T07:32:00.000Z	mwe	nexousNET	oh. before
+2007-02-15T07:32:00.000Z	nexousNET	mwe	okay thanks.
+2007-02-15T07:32:00.000Z	mwe	nexousNET	you need to gksudo gedit /etc/rc.local if you want to be able to save the file
+2007-02-15T07:33:00.000Z	nexousNET	mwe	okay.
+2007-02-15T07:33:00.000Z	mwe	nexousNET	normal users are not allowed to tamper with system files in linux
+2007-02-15T07:33:00.000Z	nexousNET	mwe	even the admin? not root.
+2007-02-15T07:34:00.000Z	nexousNET	mwe	(gksudo:12764): Gtk-WARNING **: cannot open display: is what i get now
+2007-02-15T07:34:00.000Z	mwe	nexousNET	sudo/gksudo is a command to run commands as root
+2007-02-15T07:34:00.000Z	mwe	nexousNET	are you i X window?
+2007-02-15T07:34:00.000Z	mwe	nexousNET	try sudo nano /etc/rc.local
+2007-02-15T07:34:00.000Z	nexousNET	mwe	I'm using Konsole as Super user, is that why?
+2007-02-15T07:34:00.000Z	mwe	nexousNET	yeah. sudo nano /etc/rc.local will work
+2007-02-15T07:36:00.000Z	mwe	nexousNET	root and normal users
+2007-02-15T07:37:00.000Z	mwe	nexousNET	normal users can be configured to be able to use sudo on a per user basis, though
+2007-02-15T07:37:00.000Z	mwe	nexousNET	by default users who are in the admin group can use sudo

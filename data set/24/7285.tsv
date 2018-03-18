@@ -1,0 +1,24 @@
+2005-02-19T16:12:00.000Z	cavedive1		I'm trying to install firefox 1 in warty. I changed my sources to hoary and did a apt-get install mozilla-firefox and got this:  mozilla-firefox: Depends: libgnomevfs2-0 (>= 2.9.90) but 2.8.2-0ubuntu1 is to be installe
+2005-02-19T16:12:00.000Z	cavedive1		Worked fine with Thunderbird
+2005-02-19T16:12:00.000Z	zerokarmaleft	cavedive1	use warty backports instead of hoary sources
+2005-02-19T16:12:00.000Z	cavedive1	zerokarmaleft	don'twork with amd64 arch !
+2005-02-19T16:13:00.000Z	cavedive1		Seems like hoary ff package os the only way to get FF 1.0 in AMD64 warty
+2005-02-19T16:14:00.000Z	zerokarmaleft	cavedive1	well it sounds like you can either make the full leap to hoary, use mozilla's binary installer, or build from source yourself
+2005-02-19T16:15:00.000Z	cavedive1	zerokarmaleft	ok.
+2005-02-19T16:15:00.000Z	cavedive1	zerokarmaleft	the mozilla installer don't work either.
+2005-02-19T16:15:00.000Z	cavedive1		unfortunately
+2005-02-19T16:15:00.000Z	cavedive1		something is missing and i don't know how to install it. Some library.
+2005-02-19T16:16:00.000Z	zerokarmaleft	cavedive1	what library?
+2005-02-19T16:16:00.000Z	cavedive1		I'll check
+2005-02-19T16:16:00.000Z	cavedive1	zerokarmaleft	./firefox-installer-bin: error while loading shared libraries: libgtk-x11-2.0.so.0: cannot open shared object file: No such file or directory
+2005-02-19T16:18:00.000Z	zerokarmaleft	cavedive1	that's odd
+2005-02-19T16:18:00.000Z	cavedive1	zerokarmaleft	 i know :/
+2005-02-19T16:18:00.000Z	zerokarmaleft	cavedive1	that shared lib is in libgtk
+2005-02-19T16:19:00.000Z	cavedive1		oh ok. let's try install that
+2005-02-19T16:19:00.000Z	zerokarmaleft	cavedive1	it should already be installed
+2005-02-19T16:19:00.000Z	cavedive1	zerokarmaleft	ok, i'll do a dpkg -l|grep libgtk then
+2005-02-19T16:19:00.000Z	cavedive1		see what comes up
+2005-02-19T16:20:00.000Z	cavedive1		Well, it did return a bunch of stuff.
+2005-02-19T16:20:00.000Z	cavedive1	zerokarmaleft	I had a fair bit of libgtk stuff installed.
+2005-02-19T16:22:00.000Z	zerokarmaleft	cavedive1	ls /usr/lib | grep libgtk-x11 anything?
+2005-02-19T16:23:00.000Z	cavedive1	zerokarmaleft	yes. libgtk-x11-2.0.so.0

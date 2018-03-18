@@ -1,0 +1,19 @@
+2009-12-14T09:58:00.000Z	felixn		could someone help me remove a package?  I'm getting this error: http://pastebin.com/d241f7d48
+2009-12-14T09:58:00.000Z	felixn		I kind of just let it alone, but now I can't install a new package without first removing that
+2009-12-14T09:59:00.000Z	felixn		nope
+2009-12-14T09:59:00.000Z	losha	felixn	so is /boot/System.map-2.6.27-14-generic there or not?
+2009-12-14T10:00:00.000Z	losha	felixn	what about other 2.6.27-14-generic files in /boot. Are there any?
+2009-12-14T10:02:00.000Z	losha	felixn	ok, you can edit /var/lib/dpkg/status and remove the paragraph talking about 2.6.27-14-generic. Make a copy of the file *first*. THat should make dpkg forget all about it....
+2009-12-14T10:05:00.000Z	losha	felixn	heh, waddaya know?
+2009-12-15T05:37:00.000Z	losha	felixn	I think you'll need to reinstall grub2, and maybe a kernel, via the live-cd
+2009-12-15T05:48:00.000Z	felixn	losha	i'm chrooted into my root partition
+2009-12-15T05:48:00.000Z	losha	felixn	well what does it say to do next?
+2009-12-15T06:09:00.000Z	felixn	losha	hey I rebuilt my initrd.img and sort of my grub folder, but how do I make vmlinux and system.map?
+2009-12-15T06:10:00.000Z	losha	felixn	I thought they come when you install a kernel?
+2009-12-15T06:11:00.000Z	felixn	losha	I would think that too but they're not there :/
+2009-12-15T06:13:00.000Z	losha	felixn	dpkg -S /boot/vmlinuz-2.6.31-16-generic-pae on my system says it came from package linux-image-2.6.31-16-generic-pae
+2009-12-15T06:17:00.000Z	felixn	losha	woo I just completely removed the kernel and rebuilt it, now I have to fix things in the grub folder... says there's no stage1
+2009-12-15T06:17:00.000Z	felixn	losha	could you use dpkg on your system to see what package /boot/grub/stage1 is in?
+2009-12-15T06:18:00.000Z	losha	felixn	I can't, I have grub2, it doesn't use stage files. Someone else will have to oblige you or you can maybe web search it....
+2009-12-15T06:23:00.000Z	felixn	losha	I just installed grub2, it looked like it worked.. well cya later! thanks
+2009-12-15T06:23:00.000Z	losha	felixn	cool!

@@ -1,0 +1,21 @@
+2008-08-20T03:49:00.000Z	Jagoo		how do I add a new directory to a system-wide PATH in Ubuntu? I guess its not via ld.so.conf...
+2008-08-20T03:50:00.000Z	unop	Jagoo	echo 'PATH="$PATH:/new/dir"' >> ~/.bashrc  # and log out and log back in
+2008-08-20T03:50:00.000Z	Jagoo	unop	thats not system-wide
+2008-08-20T03:51:00.000Z	unop	Jagoo	don't know why you'd want to make this system wide .. but /etc/bash.bashrc or /etc/profile
+2008-08-20T03:54:00.000Z	Jagoo	unop	adding the same thing to /etc/profile seems to have no effect
+2008-08-20T03:55:00.000Z	unop	Jagoo	did you log out and log back in?
+2008-08-20T03:55:00.000Z	Jagoo	unop	yep
+2008-08-20T03:55:00.000Z	unop	Jagoo	perhaps export is needed. and put it in /etc/bash.bashrc
+2008-08-20T03:55:00.000Z	Jagoo	unop	I have 'PATH="$PATH:/home/ut3server/ut3-dedicated/Binaries"' at the end of my /etc/profile
+2008-08-20T03:57:00.000Z	unop	Jagoo	echo 'export PATH="$PATH:/home/ut3server/ut3-dedicated/Binaries"' | sudo tee -a /etc/bash.bashrc
+2008-08-20T04:01:00.000Z	Jagoo	unop	must be in a typo in there somewhere, says: -bash: export PATH="$PATH:/home/ut3server/ut3-dedicated/Binaries": No such file or directory
+2008-08-20T04:01:00.000Z	Jagoo	unop	the directory does in fact exist, copy pasted the path and cded to it
+2008-08-20T04:01:00.000Z	unop	Jagoo	you missing an echo from the command.
+2008-08-20T04:01:00.000Z	unop	Jagoo	echo 'export PATH="$PATH:/home/ut3server/ut3-dedicated/Binaries"' | sudo tee -a /etc/bash.bashrc
+2008-08-20T04:03:00.000Z	Jagoo	unop	thanks, that worked, you have me quite puzzled tho, the resulting appending line from your command looked the same as the one I simply copy/pasted into the config
+2008-08-20T04:04:00.000Z	unop	Jagoo	so where exactly did you get this error then?  i assumed it was at the shell?
+2008-08-20T04:05:00.000Z	Jagoo	unop	I had that error on the shell upon relogon
+2008-08-20T04:07:00.000Z	unop	Jagoo	let's see the output of this then.   tail -n 1 /etc/bash.bashrc
+2008-08-20T04:08:00.000Z	Jagoo	unop	nevermind, copy/pasting your exact suggestion did work, I am just puzzled why copypasting it into bash.bashrc didnt
+2008-08-20T04:08:00.000Z	Jagoo	unop	and I mean copypasting the export command with path
+2008-08-20T04:09:00.000Z	unop	Jagoo	you could have had quotes around the text you pasted - a side effect of some irc clients .. or just some general syntax error

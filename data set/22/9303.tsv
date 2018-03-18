@@ -1,0 +1,22 @@
+2004-12-27T08:13:00.000Z	theine		is there an ``official'' Debian/Ubuntu way of changing the default window manager in Gnome 2.8?
+2004-12-27T08:14:00.000Z	mart	theine	update-alternatives
+2004-12-27T08:15:00.000Z	theine	mart	that alone doesn't do it I'm afraid, as /etc/alternatives/x-window-manager already points to /usr/bin/openbox
+2004-12-27T08:15:00.000Z	theine	mart	but Gnome doesn't seem to be affected by that yet
+2004-12-27T08:18:00.000Z	mart	theine	what does your x-session-manager point to?
+2004-12-27T08:19:00.000Z	theine		I tried to change the gconf key /desktop/gnome/applications/window_manager/default to x-window-manager (which should do the trick according to /usr/bin/gnome-wm) but when Gnome starts up, it hangs at initializing the window manager
+2004-12-27T08:19:00.000Z	theine	mart	/usr/bin/gnome-session
+2004-12-27T08:19:00.000Z	mart	theine	am looking at /etc/X11/Xsession.d/50xorg*
+2004-12-27T08:20:00.000Z	mart	theine	see the second 'paragraph'
+2004-12-27T08:20:00.000Z	theine	mart	I want back to Warty...
+2004-12-27T08:21:00.000Z	theine	mart	the one with ``if [ -z "$STARTUP" ] ; then''?
+2004-12-27T08:22:00.000Z	mart	theine	yes, it tries to set the session manager first, so if that's pointing to gnome (and presumably the gnome session manager will start the gnome wm)
+2004-12-27T08:23:00.000Z	theine	mart	But are you sure that STARTUP isn't already set at that point?
+2004-12-27T08:24:00.000Z	theine	mart	Oh, perhaps I didn't mention that I still want to run gnome, i.e. just replace metacity with openbox
+2004-12-27T08:24:00.000Z	mart	theine	I don't think it is unless you have a $HOME/.xsession
+2004-12-27T08:26:00.000Z	theine	mart	the standard way is ``killall metacity && openbox'' inside Gnome and then save the session at logout
+2004-12-27T08:27:00.000Z	mart	theine	:) then I am stumpted
+2004-12-27T08:27:00.000Z	theine	mart	but that's so ugly...
+2004-12-27T08:29:00.000Z	theine	mart	I mean, if metacity wouldn't be so featureless I'd excuse to not provide an easy way of changing the window manager, but unfortunately it is...
+2004-12-27T08:29:00.000Z	theine		s/to\ not\ provide/not\ providing/
+2004-12-27T08:30:00.000Z	mart	theine	I have just build kde3.4 if you want features (clank, grind, chug)
+2004-12-27T08:31:00.000Z	theine	mart	sure, but if I wanted to go for KDE, I head back to Debian :)

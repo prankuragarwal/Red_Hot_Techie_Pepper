@@ -1,0 +1,18 @@
+2008-04-21T01:25:00.000Z	zionpsyfer		Just make sure you do the workaround..  I waited a few months before remembering that bug and racked up >100000 on my load cycle count
+2008-04-21T01:26:00.000Z	Speedy	zionpsyfer	 doesnt the workaround casue excessive heat though?
+2008-04-21T01:26:00.000Z	zionpsyfer	Speedy	we may be talking about different workarounds.  I just run hdparm -B 255
+2008-04-21T01:27:00.000Z	Speedy	zionpsyfer	 what exactly did that do for you?
+2008-04-21T01:28:00.000Z	zionpsyfer	Speedy	My hdd no longer cycles off and my load_cycle_count has stopped climbing like a rocket.  It hasn't really hurt my battery life either as the hdd could never really stay in the PS mode
+2008-04-21T01:30:00.000Z	Speedy	zionpsyfer	 sounds interesting, i am yet to implement a fix to the problem, i have had this laptop for 4 days and already the load cyle  count is at 5739
+2008-04-21T01:30:00.000Z	zionpsyfer	Speedy	ouch. :/
+2008-04-21T01:31:00.000Z	Speedy	zionpsyfer	 run that command by me again
+2008-04-21T01:31:00.000Z	zionpsyfer	Speedy	I just make a shell script in /etc/init.d that runs hdparm -B 255 /dev/sda
+2008-04-21T01:31:00.000Z	Speedy	zionpsyfer	 does the script have to run at boot time every time
+2008-04-21T01:31:00.000Z	Speedy	zionpsyfer	 does the script have to run at boot time every time?
+2008-04-21T01:32:00.000Z	zionpsyfer	Speedy	 Then I just symlinked it to /etc/rc2.d/S99hd-fix.  Yes, my understanding is that it needs to run each boot.
+2008-04-21T01:33:00.000Z	Speedy	zionpsyfer	 thanks for the tip, I'm hoping this won't melt my hdd by keeping it running for large amounts of time
+2008-04-21T01:34:00.000Z	zionpsyfer	Speedy	Nah, you're still way good on the cycle count.  Try unops method, probably easier than my method.  :P
+2008-04-21T01:34:00.000Z	Speedy	zionpsyfer	thanks for the tip
+2008-04-21T01:48:00.000Z	zionpsyfer	Speedy	smartctl -a provides that data at the top of its output
+2008-04-21T01:52:00.000Z	Speedy	zionpsyfer	Please keep in mind that this can do more harm than good,   i dont like the sound of that in the work around section of the link you posted
+2008-04-21T01:59:00.000Z	zionpsyfer	Speedy	Indeed. if you're unsure, use 254 instead.  This doesn't disable powersave on the drive but sets it at a less aggressive setting.  255 has worked well with my drive but they're all different.

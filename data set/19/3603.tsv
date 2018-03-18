@@ -1,0 +1,19 @@
+2012-05-02T07:42:00.000Z	yaboo		trying to setup passwordless ssh, follow the way I did before, one user works, no setup another user and it does not work, using 12.04
+2012-05-02T07:42:00.000Z	yaboo		has something changed
+2012-05-02T07:43:00.000Z	cheako	yaboo	Seams like you must be making a simple mistake.
+2012-05-02T07:44:00.000Z	cheako	yaboo	Try talking us through exactly what you are up to.
+2012-05-02T07:44:00.000Z	yaboo	cheako	if I am, I do not know where
+2012-05-02T07:44:00.000Z	yaboo	cheako	ssh-keygen -t rsa
+2012-05-02T07:44:00.000Z	yaboo		press return afterwards with no paraphase
+2012-05-02T07:44:00.000Z	yaboo		then copy the id_rsa.pub to the remote machine
+2012-05-02T07:45:00.000Z	yaboo		then cat id_rsa.pub > authorized_keys2
+2012-05-02T07:45:00.000Z	yaboo		thats all cheako
+2012-05-02T07:45:00.000Z	cheako		I think you should look at http://www.mkssoftware.com/docs/man4/rhosts.4.asp for an alternative method.
+2012-05-02T07:47:00.000Z	cheako	yaboo	Ensure perms on .ssh are correct.  Also seams like you missed an mkdir and perhaps cd in your instructions...  Like cat id_rsa.pub > .ssh/authorized_keys2
+2012-05-02T07:47:00.000Z	cheako		Why not use .ssh/authorized_keys?
+2012-05-02T07:47:00.000Z	yaboo	cheako	I do make the .ssh dir
+2012-05-02T07:48:00.000Z	yaboo	cheako	tried both, bot fail and still ask me for a password
+2012-05-02T07:48:00.000Z	cheako	yaboo	Are you sure the correct id_rsa.pub is making it to the correct .ssh/authorized_keys?
+2012-05-02T07:48:00.000Z	yaboo		yes
+2012-05-02T07:49:00.000Z	cheako		Ahh, I mean these instructions: http://www.akadia.com/services/ssh_scp_without_password.html
+2012-05-02T07:50:00.000Z	cheako	yaboo	^^

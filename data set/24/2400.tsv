@@ -1,0 +1,24 @@
+2009-01-05T08:25:00.000Z	unop	HellFire-Au	you cannot operate on an interface while it is part of a bridge and expect it to do something meaningful
+2009-01-05T08:25:00.000Z	unop	HellFire-Au	maybe you meant to   dhclient br0 ??
+2009-01-05T08:26:00.000Z	HellFire-Au	unop	Yeah, i tried dhclient br0 but the problem was it was requesting on the interface that was connected to other devices, not the interface that was connected to my router
+2009-01-05T08:26:00.000Z	HellFire-Au	unop	So i figured might as well try and see if it does anything
+2009-01-05T08:26:00.000Z	unop	HellFire-Au	and is there another DHCP server on the other interface?
+2009-01-05T08:27:00.000Z	HellFire-Au	unop	The only DHCP server in my network is my router, which ra0 a wireless usb dongle connects to. The eth0 is connected to an xbox 360
+2009-01-05T08:29:00.000Z	unop	HellFire-Au	then it shouldn't matter if you did a  dhclient br0  -- as long as your wireless driver allows your wireless interface to be put in a bridged mode, it should pick up an address - but that's something to look out for, not all wireless devices can successfully be part of a bridge
+2009-01-05T08:30:00.000Z	HellFire-Au	unop	Guess that makes sence, i'll have a search around. I have a ralink rt2870 chipset in my wireless usb dongle
+2009-01-05T08:31:00.000Z	unop	HellFire-Au	mine is a rt73 (which used to have problems)
+2009-01-05T08:31:00.000Z	HellFire-Au	unop	Did you get yours working?
+2009-01-05T08:31:00.000Z	unop	HellFire-Au	for a bridge no - i setup the machine as a router instead
+2009-01-05T08:33:00.000Z	HellFire-Au	unop	Maybe there's an alternative way to get what im acheiving then, i want my xbox 360 and my linux box to get seperate ip addresses to my router. Can that be possible setting up my box as a router? (While retaining internet connectivity with my linux box)
+2009-01-05T08:33:00.000Z	unop	HellFire-Au	 'box' is what here? a pc or the xbox?
+2009-01-05T08:34:00.000Z	HellFire-Au	unop	Should've clarified, linux htpc box
+2009-01-05T08:34:00.000Z	unop	HellFire-Au	sure, you'll have to setup ip masquerading on it -- there's a howto on tldp
+2009-01-05T08:35:00.000Z	HellFire-Au	unop	Awesome, so that will give my xbox and my linux htpc seperate ip addresses while retaining internet connectivity to both?
+2009-01-05T08:36:00.000Z	unop	HellFire-Au	right - but those ip addresses cannot be on the same ip network as your router - they'll have to be on a separate ip network
+2009-01-05T08:37:00.000Z	HellFire-Au	unop	I'll still be able to access them from a different ip network though right? And would the xbox 360 show up in the Network view of a windows vista computer on a different ip network to the xbox?
+2009-01-05T08:39:00.000Z	unop	HellFire-Au	errm, not really - as your box will become a NAT router in the process - but you can setup your box as a samba master browser and bi-directional NAT to help
+2009-01-05T08:40:00.000Z	HellFire-Au	unop	How would i go about doing that?
+2009-01-05T08:41:00.000Z	unop	HellFire-Au	http://www.centos.org/docs/4/html/rhel-rg-en-4/s1-samba-network-browsing.html
+2009-01-05T08:44:00.000Z	HellFire-Au	unop	Cheers, also is this the correct guide to setup ip masquerade: http://tldp.org/HOWTO/IP-Masquerade-HOWTO/index.html ? And just one last thing, how would i go about setting up the bi-directional NAT?
+2009-01-05T08:45:00.000Z	unop	HellFire-Au	well, the howto should set you up for NAT in one direction (atleast) - it's just a matter of reciprocating that the other way
+2009-01-05T08:46:00.000Z	HellFire-Au	unop	Thanks for the help, i'll try it out and see how it goes : )

@@ -1,0 +1,21 @@
+2007-03-22T14:10:00.000Z	vikingr		I just switched from Debian to Ubuntu and got a problem with mounting my encrypted (cryptsetup luks) external hard drive. i get prompted for my password and type it in, but i get the message "Could not mount encrypted device. Did you supply a wrong passphrase?" (the password is correct, of course)
+2007-03-22T14:11:00.000Z	redwyrm	vikingr	are you supplying it a filename or an actual block device?
+2007-03-22T14:13:00.000Z	vikingr	redwyrm	uhm.. i actually don't know - i only installed crpytsetup and plugged the usb-hd in
+2007-03-22T14:14:00.000Z	redwyrm	vikingr	I would suggest trying it on the command line
+2007-03-22T14:14:00.000Z	vikingr	redwyrm	ok, i'll do that. thanks
+2007-03-22T14:14:00.000Z	redwyrm	vikingr	I'm not saying you won't get the same error message...
+2007-03-22T14:19:00.000Z	vikingr	redwyrm	this is what i get :/ http://paste.ubuntu-nl.org/11566/
+2007-03-22T14:22:00.000Z	redwyrm	vikingr	I think you're missing kernel modules. try sudo modprobe aes sha256. and if that works, add those modules to /etc/modules
+2007-03-22T14:26:00.000Z	vikingr	redwyrm	unfortunately loading these modules didn't do the trick
+2007-03-22T14:27:00.000Z	redwyrm	vikingr	are you sure you have the right device?
+2007-03-22T14:27:00.000Z	vikingr	redwyrm	yes
+2007-03-22T14:29:00.000Z	redwyrm	vikingr	try sudo modprobe dm_mod dm_crypt
+2007-03-22T14:30:00.000Z	redwyrm	vikingr	and this guy seems to have the same problem: http://article.gmane.org/gmane.linux.kernel.device-mapper.dm-crypt/2134
+2007-03-22T14:30:00.000Z	vikingr	redwyrm	FATAL: Error inserting dm_mod (/lib/modules/2.6.17-11-generic/kernel/drivers/md/dm-mod.ko): Unknown symbol in module, or unknown parameter - dmesg says: "dm_mod: Unknown parameter `dm_crypt'"
+2007-03-22T14:31:00.000Z	vikingr	redwyrm	maybe this does also help: http://paste.ubuntu-nl.org/11568/ - thanks for your help btw
+2007-03-22T14:31:00.000Z	redwyrm	vikingr	oops. try sudo modprobe dm_mod; sudo modprobe dm_crypt
+2007-03-22T14:32:00.000Z	vikingr	redwyrm	IT WORKS! :) THANKS A LOT!
+2007-03-22T14:32:00.000Z	redwyrm		:)
+2007-03-22T14:32:00.000Z	vikingr		(sorry for the capslock) ^
+2007-03-22T14:32:00.000Z	redwyrm	vikingr	don't forget to add those 4 modules to /etc/modules so it will work after you reboot
+2007-03-22T14:33:00.000Z	vikingr	redwyrm	i will. thanks a lot again :)

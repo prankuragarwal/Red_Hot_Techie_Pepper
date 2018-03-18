@@ -1,0 +1,22 @@
+2009-12-02T19:33:00.000Z	luist		does anyone know? a command to update an specific package IF AND ONLY IF this package is already installed? (if its not installed already, i dont want it to be installed)
+2009-12-02T19:33:00.000Z	egonw	luist	apt-get safe-upgrade ?
+2009-12-02T19:33:00.000Z	egonw	luist	umm... aptitude safe-upgrade ?
+2009-12-02T19:34:00.000Z	luist	egonw	thanks ill give it a try
+2009-12-02T19:34:00.000Z	egonw	luist	make sure to do first: aptitude update
+2009-12-02T19:34:00.000Z	luist	egonw	ya thanks
+2009-12-02T19:36:00.000Z	luist	egonw	cant safe-upgrade on jaunty?
+2009-12-02T19:36:00.000Z	egonw	luist	ah... try instead: upgrade or dist-upgrade
+2009-12-02T19:37:00.000Z	luist	egonw	oh it wants to upgrade many packages... not just the one i need -.-
+2009-12-02T19:37:00.000Z	egonw	luist	then try: aptitude install <package-you-want-to-upgrade>
+2009-12-02T19:38:00.000Z	luist	egonw	but that will install the package when its not already installed...
+2009-12-02T19:38:00.000Z	egonw	luist	true
+2009-12-02T19:39:00.000Z	egonw	luist	so, you have a list of packages, and if one of that is installed, upgrade it... ic...
+2009-12-02T19:39:00.000Z	egonw	luist	you can see if a package is installed with: dpkg -l <package> and see is the line starts with 'ii'
+2009-12-02T19:40:00.000Z	egonw	luist	but I guess you some shell script glue with a for loop
+2009-12-02T19:40:00.000Z	luist	egonw	-.-
+2009-12-02T19:43:00.000Z	egonw	luist	is the list of packages in a file?
+2009-12-02T19:44:00.000Z	egonw	luist	you could play with: dpkg -l * | grep -i "^ii" | xargs aptitude install
+2009-12-02T19:45:00.000Z	egonw	luist	the first bits gives you a list of installed ("^ii") packages, which are then 'install'-ed
+2009-12-02T19:45:00.000Z	egonw	luist	that might come close to your needs
+2009-12-02T19:46:00.000Z	luist	egonw	ya im looking for a way to parse that and just run apt-get install package when not isntalled
+2009-12-02T20:14:00.000Z	luist	egonw	hey i did it take a look: sudo echo "deb myurl jaunty multiverse" | sudo tee -a /etc/apt/sources.list && sudo aptitude update && dpkg -l mypackage | sed -n /^ii/p | grep ii && sudo apt-get install mypacakge

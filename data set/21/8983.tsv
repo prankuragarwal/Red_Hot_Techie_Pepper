@@ -1,0 +1,21 @@
+2005-12-04T14:46:00.000Z	csb		bluefox: it looks like there is a bunch of config stuff in my home dir under .gconf
+2005-12-04T14:46:00.000Z	csb		just fyi
+2005-12-04T14:46:00.000Z	topyli	csb	good :)
+2005-12-04T14:47:00.000Z	topyli	csb	no worries there
+2005-12-04T14:48:00.000Z	topyli	csb	.gnome is for old gnome-1 apps. modern gnome keeps its settings in .gnome2
+2005-12-04T14:49:00.000Z	topyli	csb	everything should work, it doesn't which desktop you happen to be using
+2005-12-04T14:50:00.000Z	topyli	csb	settings are all over the place. there's .nautilus, and many apps keep their settings in their own dot-files. just look at your home directory
+2005-12-04T14:51:00.000Z	csb	topyli	so if i were to blow away ubuntu and re-install...if i were to backup my ENTIRE /home dir and replace it after re-install, could i expect things to be like they were before the re-install?
+2005-12-04T14:53:00.000Z	topyli	csb	well speaking for myself, i've gotten pretty much comfortable recoveries. i backup /home, /etc, and the installed package list as reported from dpkg
+2005-12-04T14:54:00.000Z	topyli	csb	dpkg --get-selections
+2005-12-04T14:55:00.000Z	topyli	csb	dump the output to a text file and save it. then, on a new install, you can say dpkg --get-selections < file.text
+2005-12-04T15:06:00.000Z	csb	topyli	ok, so that dpkg stuff...so i can keep installing stuff, and as long as i kick it out to a file name, after i re-installed i can just do that second command and all of the packages would be re-installed?
+2005-12-04T15:06:00.000Z	csb	topyli	including kde, xcfe, gnomebaker, games, etc...
+2005-12-04T15:08:00.000Z	topyli	csb	yeah. you do dpkg --get-selections and then apt-get dist-upgrade or something. let me find you the link to my own notes
+2005-12-04T15:09:00.000Z	csb	topyli	so then, theoretically i could install Ubuntu on a totally different machine, and as long as i copied my /home dir and /etc...and then did the dpkg --get-selections command...theoretically i would have a clone of my current machine?
+2005-12-04T15:09:00.000Z	topyli	csb	http://siltala.net/comp/tips.html#Downgrading_Packages_in_Debian
+2005-12-04T15:10:00.000Z	topyli	csb	yes
+2005-12-04T15:10:00.000Z	topyli	csb	of course, if you have a server, a lot of stuff will be in /var too
+2005-12-04T15:11:00.000Z	topyli	csb	plus all the stuff you compiled yourself (but never bothered to package) are in /usr/local. and perhaps your Quake3 is in /opt...
+2005-12-04T15:12:00.000Z	csb	topyli	i noticed in the file i created on my system that there are a lot of packages that were intalled with ubuntu. is there any danger in running that command if the package already exists?
+2005-12-04T15:13:00.000Z	topyli	csb	no. if the package is already installed, dpkg will just be happy

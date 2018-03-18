@@ -1,0 +1,24 @@
+2008-01-28T16:32:00.000Z	user_		Hello, I do not get any network access to my router or the WAN following a hard crash last night.. I get assigned an IP address via DHCP but ping is not possible etc.. any ideas?
+2008-01-28T16:33:00.000Z	ChrisGibbs	user_	are you running any firewalls?
+2008-01-28T16:35:00.000Z	user_	ChrisGibbs	I havent got firestarter installed, i didnt change iptables rules or anything
+2008-01-28T16:36:00.000Z	ChrisGibbs	user_	what kind of response do you get back from pinging your router?
+2008-01-28T16:37:00.000Z	user_	ChrisGibbs	ping: sendmsg: Operation not permitted
+2008-01-28T16:38:00.000Z	user_	ChrisGibbs	Everything was workign fine until laptop ran out of battery last night (hardcrash). Now it seems upset.. eth1 and eth0 both display this behaviour, other LAN clients working fine. IP address is assigned by router, but DNS servers are not fed through properly
+2008-01-28T16:40:00.000Z	ChrisGibbs	user_	 what is in your /etc/network/interfaces file?
+2008-01-28T16:40:00.000Z	user_	ChrisGibbs	I checked it after googling web forums.. it looks nearly empty,"auto Io iface Io inet loopback"
+2008-01-28T16:41:00.000Z	ChrisGibbs	user_	seems like your eth0 and eth1 are missing
+2008-01-28T16:42:00.000Z	user_	ChrisGibbs	I see, the network
+2008-01-28T16:43:00.000Z	ChrisGibbs	user_	I seemed to think that nm was just a front for interfaces file
+2008-01-28T16:43:00.000Z	ChrisGibbs	user_	maybe i am mistaken
+2008-01-28T16:44:00.000Z	user_	ChrisGibbs	baschule: I would think so too, hence the surprise - nm-applet "connection information" shows  fixed IP for machine applied correctly, but primary DNS stays on router IP
+2008-01-28T16:44:00.000Z	user_	ChrisGibbs	ifconfig also shows ip address as assigned by router
+2008-01-28T16:45:00.000Z	ChrisGibbs	user_	maybe try editing /etc/network/interfaces by hand and restarting networking (lets rule out nm for sure)
+2008-01-28T16:48:00.000Z	user_	ChrisGibbs	maybe i should do the interfaces manually, do I have to deactivate nm-applet
+2008-01-28T16:49:00.000Z	ChrisGibbs	user_	you can kill the nm if you want and manually config the interfaces if you want
+2008-01-28T16:49:00.000Z	user_	ChrisGibbs	i shall try that
+2008-01-28T16:53:00.000Z	user_	ChrisGibbs	killed nm-app, defined wlan using network-manager, now interfaces file shows "iface eth1 inet dhcp, wpa....auto eth1" ping still says operation not permitted
+2008-01-28T16:55:00.000Z	ChrisGibbs	user_	are you trying to ping by host name or dns? can the router ping you? (provided iptables is disabled)
+2008-01-28T17:05:00.000Z	ChrisGibbs	user_	bascule so it was a firewall issue all along? I thought that was off ages ago...... lol
+2008-01-28T17:08:00.000Z	ChrisGibbs	user_	bascule would it be worth considering firestater (or similar) ??
+2008-01-28T17:09:00.000Z	user_	ChrisGibbs	sorry, didnt copy you in, I just used the firestarter wizard to create a config
+2008-01-28T17:13:00.000Z	ChrisGibbs	user_	bascule ah. I havent used iptables for a while now... looks like im going rusty...... time to replace my Cisco 837 with iptables :)

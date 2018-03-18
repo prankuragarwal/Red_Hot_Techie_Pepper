@@ -1,0 +1,19 @@
+2010-09-21T20:01:00.000Z	swiftarrow		Hi everyone!  I have a bug report for Lucid, but I have no idea where to report it.  It goes like this: When I shut down with a USB HDD mounted, it's mount folder (/media/LABEL) persists on next boot.  Therefore, when I boot up, the USBHDD is mounted to /media/LABEL_.  This is quite a problem.  Any solutions / where can I post this?  Thanks!
+2010-09-21T20:02:00.000Z	andycc	swiftarrow	somewhere on Launchpad. Dunno which package this pertains to, probably nautilus or something related.
+2010-09-21T20:02:00.000Z	swiftarrow	andycc	exactly... was hoping someone here would know something more specific :)
+2010-09-21T20:03:00.000Z	swiftarrow	andycc	my guess would be the shutdown system?
+2010-09-21T20:04:00.000Z	andycc	swiftarrow	report against nautilus, closest I can find.
+2010-09-21T20:05:00.000Z	swiftarrow	andycc	I'll see if I can find anything closer first
+2010-09-21T20:05:00.000Z	andycc	swiftarrow	it all makes sense now.
+2010-09-21T20:08:00.000Z	andycc	swiftarrow	"umount /media/* && rm /media/*"
+2010-09-21T20:09:00.000Z	andycc	swiftarrow	put it in /etc/rc6.d or something, so it runs on shutdown.
+2010-09-21T20:09:00.000Z	swiftarrow	andycc	^^
+2010-09-21T20:09:00.000Z	andycc	swiftarrow	oh, I have another idea.
+2010-09-21T20:10:00.000Z	andycc	swiftarrow	hmm, no. That would require the USB HDD to be permanently plugged in.
+2010-09-21T20:10:00.000Z	swiftarrow	andycc	I think that this should/could be dealt with by gnome-volume-manager.  Since it removes the mountpoints automatically, it ought to just unmount all the drives that it's handling on shutdown...
+2010-09-21T20:11:00.000Z	andycc	swiftarrow	but Ubuntu does use the drive's label as folder name in /media/, right? So you can selectively umount your USB HDD if it's there.
+2010-09-21T22:01:00.000Z	swiftarrow	andycc	thanks for your help... still looking for a solution.  I'm thinking that gnome-volume-manager should be made to unmount and remove mount points for all volumes that it mounted at shutdown.
+2010-09-21T22:01:00.000Z	andycc	swiftarrow	file a bug against gnome-volume-manager then.
+2010-09-21T22:02:00.000Z	swiftarrow	andycc	wanted to bounce the idea off you to see what you thought
+2010-09-21T22:36:00.000Z	swiftarrow	andycc	filed bug at gnome-volume-manager :)  Hope it gets taken care of.
+2010-09-21T22:37:00.000Z	andycc	swiftarrow	hopefully.

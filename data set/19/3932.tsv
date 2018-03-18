@@ -1,0 +1,19 @@
+2009-12-16T00:42:00.000Z	xiong		$ sudo du -hs /home tells me: 'du: cannot access `/home/xiong/.gvfs': Permission denied'; then it proceeds to tell me the total usage of the directory (=partition). Do you suppose that this thing, ~/.gvfs, which cannot be accessed even by su, is the cause of disk usage discrepancies? What can this thing be?
+2009-12-16T00:44:00.000Z	grawity	xiong	~/.gvfs/ is a FUSE mountpoint. And FUSE disallows other users to access it.
+2009-12-16T00:44:00.000Z	grawity	xiong	(That includes root.)
+2009-12-16T00:45:00.000Z	grawity	xiong	~/.gvfs/ is where GNOME puts its network drive connections, for compatibility with programs that don't support GVFS.
+2009-12-16T00:45:00.000Z	xiong	grawity	So I gather from a short study. But this doesn't explain how it came to be there, since it's not clear to me what the practical use of it is, in user terms. Nor do I understand if it can account for 37 missing Gb of disk space.
+2009-12-16T00:46:00.000Z	grawity	xiong	How it came to be here - A GNOME application auto-created it when you connected to a network drive.
+2009-12-16T00:46:00.000Z	xiong	grawity	I need to study 'network drive'. That construction doesn't immediately parse.
+2009-12-16T00:47:00.000Z	grawity	xiong	Eh, things such as FTP, and NAS, and such. Even if you have never used one, the ~/.gvfs/ mountpoint is still auto-created.
+2009-12-16T00:48:00.000Z	xiong	grawity	I get enough from the quick gloss to think this has nothing to do with my disk usage woes.
+2009-12-16T00:48:00.000Z	grawity	xiong	The practical use - if you connect to a network drive (well, maybe "network directory") using GNOME, ~/.gvfs/ allows you to access that connection from non-GNOME programs.
+2009-12-16T00:48:00.000Z	grawity	xiong	And yes, it's really not related to disk usage. In reality, ~/.gvfs/ is empty, all contents are virtual.
+2009-12-16T00:48:00.000Z	xiong	grawity	Let's say it probably came up because I did some FTP; fine.
+2009-12-16T01:13:00.000Z	grawity	xiong	~/.Trash-*/ and in newer Ubuntu releases, ~/.local/share/Trash/ are the "trash" directories used by Nautilus (GNOME's graphical file manager).
+2009-12-16T01:17:00.000Z	xiong	grawity	I have emptied Trash -- believe me, when I saw tens of gigs missing, it's the first thing I tried. This is actually /home/.Trash-0/, not ~/Trash-0/. I need to be su to fool with it. In any case, the sticky fingers of the utility, 'backintime', are everywhere.
+2009-12-16T01:17:00.000Z	grawity	xiong	The '0' means that trash directory is owned by root :| You can nuke the entire thing safely, anyway.
+2009-12-16T01:18:00.000Z	xiong	grawity	Which leads to the question of how all that stuff got there in the first place?
+2009-12-16T01:19:00.000Z	xiong	grawity	'Safely' may be subject to interpretation. I wonder if my hamfisted setup of backintime has got my backups going there, or if (more likely and better) these are just all the old *expired* backups.
+2009-12-16T01:19:00.000Z	grawity	xiong	A program that stores backups in ~/.Trash? Seriously?
+2009-12-16T01:21:00.000Z	xiong	grawity	It's all coming into focus, now. ~/.backups is 10 Gb all on its own. The rest of the 'missing' free space is, presumably, trashed, expired backups; backintime is throwing them out without throwing them away.

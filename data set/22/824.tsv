@@ -1,0 +1,22 @@
+2011-03-01T15:07:00.000Z	SealedWithAKisss	Jordan_U	things didn't go too well. I'm not on a Live USB. I can't boot into either Windows or Ubuntu now.
+2011-03-01T15:09:00.000Z	SealedWithAKisss	Jordan_U	is there a way to 'undo' the MBR commands I issued?
+2011-03-01T15:09:00.000Z	SealedWithAKisss	Jordan_U	by perhaps mounting the file sytem and chrooting into it?
+2011-03-01T15:09:00.000Z	Jordan_U	SealedWithAKisss	http://grub.enbug.org/Grub2LiveCdInstallGuide
+2011-03-01T15:13:00.000Z	SealedWithAKisss	Jordan_U	how I identify my boot partition from the fdisk -l list?
+2011-03-01T15:13:00.000Z	SealedWithAKisss	Jordan_U	the one with an asterisk in the boot column?
+2011-03-01T15:14:00.000Z	SealedWithAKisss	Jordan_U	I cannot mount the boot partition. It's also the partition containing Windows. I receive an error when mounting.
+2011-03-01T15:15:00.000Z	Jordan_U	SealedWithAKisss	You don't have a separate /boot partition.
+2011-03-01T15:15:00.000Z	SealedWithAKisss	Jordan_U	ah. Thanks.
+2011-03-01T15:16:00.000Z	Jordan_U	SealedWithAKisss	You're welcome.
+2011-03-01T15:18:00.000Z	SealedWithAKisss	Jordan_U	I encounter a problem with "sudo chroot /mnt" - chroot: cannot run command `/bin/bash': No such file or directory
+2011-03-01T15:19:00.000Z	Jordan_U	SealedWithAKisss	Then you mounted the wrong partition.
+2011-03-01T15:20:00.000Z	SealedWithAKisss	Jordan_U	spot on. I mounted dev/sda2 rather than dev/sda7.
+2011-03-01T15:24:00.000Z	SealedWithAKisss	Jordan_U	"sudo umount /dev/sda2" causes a device is busy error.
+2011-03-01T15:25:00.000Z	SealedWithAKisss	Jordan_U	similarly does "sudo umount /mnt"
+2011-03-01T15:27:00.000Z	Jordan_U	SealedWithAKisss	fuser /mnt/ to see what process is using files on that filesystem.
+2011-03-01T15:27:00.000Z	SealedWithAKisss	Jordan_U	no ouput.
+2011-03-01T15:35:00.000Z	SealedWithAKisss	Jordan_U	I gave up trying to umount /mnt and mounted the actual partition (/dev/sda7) to /mnt1. Again I issued "sudo chroot /mnt1" and received the same 'bin/bash' error.
+2011-03-01T15:35:00.000Z	Jordan_U	SealedWithAKisss	If the partition doesn't have /bin/bash then it's not the partition you want.
+2011-03-01T15:35:00.000Z	SealedWithAKisss	Jordan_U	http://pastebin.com/H5Ktn9PF
+2011-03-01T15:36:00.000Z	SealedWithAKisss	Jordan_U	I have tried /dev/sda2 and /dev/sda7. Where else could it be?
+2011-03-01T15:38:00.000Z	Jordan_U	SealedWithAKisss	I don't know, sorry. I'm going to sleep now.

@@ -1,0 +1,21 @@
+2009-05-09T08:20:00.000Z	SoylentYellow	mzz	thanks for the info
+2009-05-09T08:19:00.000Z	mzz	SoylentYellow	yes, if you run it on the drive, not a particular partition
+2009-05-09T08:19:00.000Z	mzz	SoylentYellow	(so if you run it on /dev/sda, not /dev/sda1)
+2009-05-09T08:20:00.000Z	SoylentYellow	mzz	oh ok. I can also use dd to copy drive to file and then use dd to image a drive out of that file, correct?
+2009-05-09T08:20:00.000Z	mzz	SoylentYellow	yes, as long as you make sure things fit size-wise
+2009-05-09T08:23:00.000Z	SoylentYellow	mzz	I am trying to image/backup a two-disk RAID0 array. But I am going about it by cloning each disk seperately, since my chipset/fakeRAID is not recoginzed and only single drives are visible.
+2009-05-09T08:25:00.000Z	SoylentYellow	mzz	this is more of a hardware question, but I can restore these backup images made by dd once proper drives are available? (usually people backup arrays in whole, but I can't since array is not visible as such)
+2009-05-09T08:25:00.000Z	mzz	SoylentYellow	normally I'd say yes, unless you have some convoluted setup going
+2009-05-09T08:27:00.000Z	mzz	SoylentYellow	if /dev/sda1 is something you can mount then I'd expect dd-ing around /dev/sda1 or all of /dev/sda to work (as long as you do it while the partition is not mounted readwrite)
+2009-05-09T08:28:00.000Z	SoylentYellow	mzz	nothing unusual. Just two small disks in RAID0. My idea is to back them up as files via dd (two large files representing each disk) and then restore the images at a later date. I was just affraid that dd would skip some sectors.
+2009-05-09T08:29:00.000Z	mzz	SoylentYellow	it'll work, but you'll have to reconfigure the raid the exact same way, and run the dd while the array isn't being written to, obviously
+2009-05-09T08:30:00.000Z	SoylentYellow	mzz	to be safe I will disconnect one drive, and image each via dd one at a time.
+2009-05-09T08:31:00.000Z	SoylentYellow	mzz	I just hope once I restore the images later on that the partitions are visible. (I have no idea how RAID stores partition data or where mbr data is put, especially in RAID0 when stuff is split evenly)
+2009-05-09T08:32:00.000Z	mzz	SoylentYellow	is this software or some form of hardware raid?
+2009-05-09T08:33:00.000Z	SoylentYellow	mzz	just software RAID via intel ICH10R. I have no idea how stuff is done in RAID0 except that data/files are split evenly on per drive basis. Not sure where partition stuff is held.
+2009-05-09T08:34:00.000Z	mzz	SoylentYellow	are you actually booting off that array? I don't know how that works either, unless there's some bios support for it
+2009-05-09T08:34:00.000Z	mzz	SoylentYellow	as far as linux is concerned block devices are block devices, and you can nest various things in more than one way depending on your needs
+2009-05-09T08:35:00.000Z	SoylentYellow	mzz	not booting from it. I don't think (I hope at least) that partition tables for RAID arrays are held in BIOS. That would pretty much lock any RAID array to a machine it was created on.
+2009-05-09T08:35:00.000Z	mzz	SoylentYellow	(so you can for example have two regular partitions on both drives, one tiny boot partition, one huge partition that is used for raid, and then run (for example) lvm in the raid space)
+2009-05-09T08:35:00.000Z	mzz	SoylentYellow	(or you can omit the partitioning completely and use the entire drive for raid)
+2009-05-09T08:37:00.000Z	mzz	SoylentYellow	see http://tldp.org/HOWTO/Software-RAID-HOWTO-11.html (assuming that's current, haven't checked)

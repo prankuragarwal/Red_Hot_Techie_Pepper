@@ -1,0 +1,18 @@
+2012-06-23T00:26:00.000Z	samster34		so, does anyone have an idea how after hours of writing 0xff to the disk, it can be full of random gibberish?!
+2012-06-23T00:28:00.000Z	lxz6516	samster34	how excactly did you write to the disk?
+2012-06-23T00:29:00.000Z	samster34	lxz6516	sudo dcfldd pattern=FF pf=/dev/sda bs=4k
+2012-06-23T00:29:00.000Z	lxz6516	samster34	i don't know dcfldd but i guess it's a pimped version of dd
+2012-06-23T00:30:00.000Z	lxz6516	samster34	and /dev/sda is the correct block device?
+2012-06-23T00:30:00.000Z	lxz6516	samster34	so you are running a live system from cd?
+2012-06-23T00:31:00.000Z	lxz6516	samster34	if you run the live system from USB stick or disk, there must be /dev/sdb or something
+2012-06-23T00:31:00.000Z	lxz6516	samster34	or is it a USB cdrom?
+2012-06-23T00:32:00.000Z	lxz6516	samster34	/dev/loop0 is just a loop device, it must be connected to something
+2012-06-23T00:33:00.000Z	lxz6516	samster34	see output of   losetup /dev/loop0
+2012-06-23T00:33:00.000Z	lxz6516	samster34	okay
+2012-06-23T00:33:00.000Z	lxz6516	samster34	and how do you read the disk?
+2012-06-23T00:35:00.000Z	lxz6516	samster34	i'd suggest using hexdump -Cv since it doesn't leave out the null bytes
+2012-06-23T00:35:00.000Z	samster34	lxz6516	ok
+2012-06-23T00:35:00.000Z	lxz6516	samster34	but that doesn't explain reading non-ff bytes
+2012-06-23T00:36:00.000Z	lxz6516	samster34	maybe this pimped version of dd is buggy?
+2012-06-23T00:37:00.000Z	samster34	lxz6516	I don't think it's THAT buggy, as I said I tested it for a few GB before, and just now again, at I see the expected values on the disk
+2012-06-23T00:37:00.000Z	lxz6516	samster34	hmm

@@ -1,0 +1,19 @@
+2007-01-25T06:17:00.000Z	EnsignRedshirt		Does anyone know what options to put in fstab so that a mount point appears to by just a subdirectory of a user's home directory, and the user automatically has r/w access to the disk?
+2007-01-25T06:17:00.000Z	EnsignRedshirt		s/by just/be just/
+2007-01-25T06:17:00.000Z	MrElendig	EnsignRedshirt	man fstab
+2007-01-25T06:18:00.000Z	EnsignRedshirt	MrElendig	Yes, yes, I know.  Can you point to the specific section that answers the question? This is not #debian :)
+2007-01-25T06:19:00.000Z	MrElendig	EnsignRedshirt	just read the man page, and the actualy fstab and you will understand what to do
+2007-01-25T06:20:00.000Z	EnsignRedshirt	MrElendig	Yes, but it might be more efficient if someone already knows the correct options. If you don't, or you don't want to say, well, that's fine.
+2007-01-25T06:20:00.000Z	MrElendig	EnsignRedshirt	/dev/something /somewhere filesystem mountoption
+2007-01-25T06:22:00.000Z	EnsignRedshirt	MrElendig	It is ext3
+2007-01-25T06:23:00.000Z	MrElendig	EnsignRedshirt	then use user as option
+2007-01-25T06:24:00.000Z	MrElendig	EnsignRedshirt	change defaults to user if you want the user to be allowed to mount/umount
+2007-01-25T06:25:00.000Z	MrElendig	EnsignRedshirt	and sue chown to give the use ownership of the data
+2007-01-25T06:25:00.000Z	EnsignRedshirt	MrElendig	What we want is for the disk to be mounted at boot, and to be owned by the user, as if it were a regular subdirectory of his home directory.
+2007-01-25T06:26:00.000Z	MrElendig	EnsignRedshirt	I know
+2007-01-25T06:26:00.000Z	EnsignRedshirt	MrElendig	So, when you say use chown, would that be on the mount point?
+2007-01-25T06:26:00.000Z	MrElendig	EnsignRedshirt	/dev/something /home/someuser/somefolder ext3 defaults 0 0
+2007-01-25T06:38:00.000Z	EnsignRedshirt	MrElendig	That
+2007-01-25T06:41:00.000Z	EnsignRedshirt	MrElendig	Thank you.
+2007-01-25T06:42:00.000Z	EnsignRedshirt	MrElendig	The options for Ha1's disk in fstab is still 'defaults', and the owner of the mount point was changed from root to the user (halhorn).  Will he still have the correct permissions when he reboots?
+2007-01-25T06:43:00.000Z	EnsignRedshirt	MrElendig	Groovy, thanks again.

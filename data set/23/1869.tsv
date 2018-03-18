@@ -1,0 +1,23 @@
+2011-05-27T17:39:00.000Z	purplefool		when attempting to start gdm i get the following message:  /usr/sbin/gdm-binary: error while loading shared libraries: /usr/lb/libgmodule-2.0.so.0: invalid ELF header
+2011-05-27T17:39:00.000Z	purplefool		what does this mean?
+2011-05-27T17:41:00.000Z	sipior	purplefool	what does "file /usr/lib/libgmodule-2.0.so.0" report?
+2011-05-27T17:42:00.000Z	purplefool	sipior	i have no idea...got the command while googling.  didn't even know there was such a file.
+2011-05-27T17:43:00.000Z	sipior	purplefool	no, i mean run the command "file" on the library mentioned.
+2011-05-27T17:43:00.000Z	purplefool	sipior	ok...give me a sec...
+2011-05-27T17:45:00.000Z	purplefool	sipior	evidentally it is a symbolic link to another file...should i do the same the the other file?
+2011-05-27T17:45:00.000Z	sipior	purplefool	please.
+2011-05-27T17:47:00.000Z	purplefool	sipior	i get the following:  /usr/lib/libgmodule-2.0.so.0.220.3:  ERROR: cannot open '/usr/lib/libgmodule-2.0.so.0.220.3' (no such firle or directory)
+2011-05-27T17:48:00.000Z	sipior	purplefool	and the file is indeed missing?
+2011-05-27T17:49:00.000Z	purplefool	sipior	yes, looks like it is missing...can i get it from somewhere or must it be complied from something?
+2011-05-27T17:50:00.000Z	sipior	purplefool	easiest just to reinstall the package, i would imagine.
+2011-05-27T17:50:00.000Z	purplefool	sipior	how do i do that?
+2011-05-27T17:51:00.000Z	sipior	purplefool	try "sudo apt-get install --reinstall libglib2.0 libglib2.0-dev"
+2011-05-27T17:52:00.000Z	sipior	purplefool	sorry, that should be libglib2.0-0
+2011-05-27T17:59:00.000Z	purplefool	sipior	ok, did what you said but forgot to mention that i am using ubuntu9.10 because it is an old computer...what you sent is for the newest i think.  what would the name of the older file be?
+2011-05-27T18:00:00.000Z	sipior	purplefool	try "dpkg -S /usr/lib/libgmodule-2.0.so.0" to find the relevant package.
+2011-05-27T18:03:00.000Z	purplefool	sipior	well, that command caused the harddrive to act up a bit but nothing appeared on the screen...just back to the normal prompt.
+2011-05-27T18:04:00.000Z	sipior	purplefool	dpkg -l | grep -i libglib
+2011-05-27T18:07:00.000Z	purplefool	sipior	not sure what that command did, but there is def stuff on the screen that is new.  'binding' and 'interface' from 4 different packages i think
+2011-05-27T18:08:00.000Z	sipior	purplefool	those list all the packages you have installed that contain "libglib" in the name. reinstall them.
+2011-05-27T18:10:00.000Z	purplefool	sipior	how do i do that? apt-get and the package? or do i need to specify where the packages go?
+2011-05-27T18:10:00.000Z	sipior	purplefool	apt-get install --reinstall <packagename>

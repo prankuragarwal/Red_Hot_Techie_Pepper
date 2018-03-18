@@ -1,0 +1,19 @@
+2006-05-23T12:22:00.000Z	hastesaver	vladuz976	you want to convert <80>c to {\em c} (where c is a single character) -- is that it?
+2006-05-23T12:22:00.000Z	hastesaver	vladuz976	make sure you retain your original file (i.e, back it up)
+2006-05-23T12:24:00.000Z	vladuz976	hastesaver	that is correct except for this. let's say the word "nucleus" is written in italics then it appears as "<80>n<80>u<80>c<80>l<80>e<80>u<80>s"
+2006-05-23T12:24:00.000Z	hastesaver	vladuz976	yes, but it's easier to convert each character individually -- it will make a mess of your latex file, though :)
+2006-05-23T12:25:00.000Z	hastesaver	vladuz976	you can do that (convert it to italics, char by char) using sed (except that I don't know sed enough). I could probably do it in Emacs, though...
+2006-05-23T12:26:00.000Z	vladuz976	hastesaver	basically anything that does the job would be ok, it's just 23 chapters and i don't wanna do it by hand
+2006-05-23T12:27:00.000Z	hastesaver	vladuz976	do you really want the italics? I don't see why nucleus should be italicized there ;) And what are all the ^T1^T.^T2  characters at the top?
+2006-05-23T12:27:00.000Z	vladuz976	hastesaver	i don't know either, but that is just an example, mostly it's like "e" for electron so it stands out
+2006-05-23T12:30:00.000Z	hastesaver	vladuz976	in general, there's no way out. You can't create structure where there is no structure, etc. LaTeX will possibly choke on 10^F-^G^G, etc
+2006-05-23T12:31:00.000Z	vladuz976	hastesaver	yes, that and other math i have to do by hand, but ther is just so much italics that i want to get rid off.
+2006-05-23T12:31:00.000Z	vladuz976	hastesaver	from there it's easy to just make every single "e" italic
+2006-05-23T12:31:00.000Z	hastesaver	vladuz976	then you can just remove all the <80> characters
+2006-05-23T12:32:00.000Z	vladuz976	hastesaver	don't know how, it seems to be a single characer
+2006-05-23T12:32:00.000Z	hastesaver	vladuz976	open the file in an editor (Emacs, say), copy that character. Do replace (paste that character) with (blank) .
+2006-05-23T12:33:00.000Z	vladuz976	hastesaver	good idea, thanks
+2006-05-23T12:33:00.000Z	vladuz976	hastesaver	i get pattern not found for it
+2006-05-23T12:34:00.000Z	hastesaver	vladuz976	make sure you copy paste the character, instead of typing <80> by hand. And you'll probably have to be at the top of the file, some editors only replace ahead of the point in the file.
+2006-05-23T12:37:00.000Z	vladuz976	hastesaver	no, it can't find it
+2006-05-23T12:38:00.000Z	hastesaver	vladuz976	oh, try escaping the backlashes or something. Or type C-q before pasting the character (if it's Emacs)... something, you should be able to :)

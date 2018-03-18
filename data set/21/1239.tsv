@@ -1,0 +1,21 @@
+2010-12-15T12:36:00.000Z	DerSeppel		Hi there! I rebooted a machine yesterday and I suddently cannot login anymore. The ssh session freezes right after successful authentication.
+2010-12-15T12:37:00.000Z	spinningcompass	DerSeppel	Is it a netbook?
+2010-12-15T12:37:00.000Z	DerSeppel	spinningcompass	no, a server.
+2010-12-15T12:37:00.000Z	spinningcompass	DerSeppel	Did you recently update the kernel?
+2010-12-15T12:38:00.000Z	DerSeppel	spinningcompass	yes.
+2010-12-15T12:38:00.000Z	spinningcompass	DerSeppel	Try adding 'nohz=off' to the command-line params to the kernel & see if that fixes the problem.
+2010-12-15T12:39:00.000Z	DerSeppel	spinningcompass	i cant login via ssh, remember? only thing working is opening a scp connection and then starting a shell from winscp. Its not real ssh shell thoug
+2010-12-15T12:40:00.000Z	DerSeppel	spinningcompass	i cant use any editors on that shell
+2010-12-15T12:42:00.000Z	DerSeppel	spinningcompass	you were kind of quick with a possible answer, is that a "known problem" ?
+2010-12-15T12:43:00.000Z	spinningcompass	DerSeppel	It is with the right combination of hardware and software. Certain motherboards (esp. those in certain netbooks) don't like the advanced power-saving code in the latest kernels. "nohz=off" disables it, at the expense of power savings.
+2010-12-15T12:44:00.000Z	DerSeppel	spinningcompass	its a root machine that has been running a while now. real server hardware.
+2010-12-15T12:46:00.000Z	DerSeppel	spinningcompass	the machine is running fine, apart from the login issue. is there a way to verify the issue before addin the kernel parameter?
+2010-12-15T12:47:00.000Z	spinningcompass	DerSeppel	If it's the login issue alone, it's unlikely to be the issue I'm talking about. I've made a mistake.
+2010-12-15T12:48:00.000Z	spinningcompass	DerSeppel	If it freezes at authentication, could there be a problem w/ file permissions, domain name resolution. ...?
+2010-12-15T12:48:00.000Z	DerSeppel	spinningcompass	file permission problems should be visible in the auth.log dont they?
+2010-12-15T12:49:00.000Z	spinningcompass	DerSeppel	I would say so. Do you have access to auth.log?
+2010-12-15T12:49:00.000Z	DerSeppel	spinningcompass	yes, as SFTP via ssh2 is working ... strangely
+2010-12-15T12:52:00.000Z	DerSeppel	spinningcompass	i cant see any problems in auth.log, another strange thing is, the sessions are open and kept alive. "who" shows me that there are even sessions left open from yesterday.
+2010-12-15T12:55:00.000Z	DerSeppel	spinningcompass	name resolution seems to be working too ...
+2010-12-15T12:56:00.000Z	DerSeppel	spinningcompass	ans since the "unix like" shell from WinSCP is working, i'd say it is a sshd problem ... just dont know where to look at right now ...
+2010-12-15T13:00:00.000Z	DerSeppel	spinningcompass	no idea?

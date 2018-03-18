@@ -1,0 +1,21 @@
+2008-09-09T21:16:00.000Z	macvr		hi, guys....i was having a GDM error:<server authorization directory (deamon/servauthdir) is set to   /var/lib/gdm but this does not exist. Please correct gdm configuration and restart gdm                             <ok>>
+2008-09-09T21:17:00.000Z	macvr		i tired doin this<sudo -i    mkdir /mnt/linux    mount /dev/sda5 /mnt/linux   find /mnt/linux -type d -exec chmod 755 '{}' \;   find /mnt/linux -type f -exec chmod 644 '{}' \;   umount /mnt/linux  exit> but now my system gets Stuck at BusyBoX... how do i get past this?
+2008-09-09T21:17:00.000Z	macvr		the permission change was suggested in one of the forums
+2008-09-09T21:17:00.000Z	macvr		i KNOW!
+2008-09-09T21:17:00.000Z	macvr		now how do i revert?
+2008-09-09T21:18:00.000Z	soundray	macvr	restore from backup is the only real option
+2008-09-09T21:19:00.000Z	soundray	macvr	there is a slim chance that you can fix most things by applying the permissions from the live system to your installed one
+2008-09-09T21:20:00.000Z	soundray	macvr	no
+2008-09-09T21:21:00.000Z	soundray	macvr	check this carefully, I'm making this up as we speak (unop, please check, too): find / -xdev -print0 | xargs -0 -i chmod /mnt/linux/'{}' --reference '{}'
+2008-09-09T21:25:00.000Z	soundray	macvr	no, sorry
+2008-09-09T21:25:00.000Z	soundray	macvr	here's a better one
+2008-09-09T21:27:00.000Z	soundray	macvr	find / -xdev -print0 -exec chmod /mnt/linux/'{}' --reference '{}' ';'
+2008-09-09T21:31:00.000Z	soundray	macvr	unop: I'm still here
+2008-09-09T21:32:00.000Z	soundray	macvr	okay, if it was my system, and I didn't have much too lose, as everything looks pretty bleak anyway, I'd do this
+2008-09-09T21:32:00.000Z	soundray	macvr	... what unop said :)
+2008-09-09T21:33:00.000Z	soundray	macvr	run this from a root shell, ie. after sudo -i
+2008-09-09T21:34:00.000Z	soundray	macvr	back up your home directory at least. Maybe also /etc/ for reference, and /var/cache/apt/archives/*.deb to save download time if (when) you have to reinstall.
+2008-09-09T21:37:00.000Z	soundray	macvr	I really have to go now, I'm not just cowardly :)  Hope it works, I may be back in 3 or 4 hours. Good luck.
+2008-09-09T21:39:00.000Z	soundray	macvr	unop is of course highly trustworthy, should you run into more trouble.
+2008-09-10T02:04:00.000Z	soundray	macvr	would you mind feeding me back the final version?
+2008-09-10T02:08:00.000Z	soundray	macvr	unop: thanks -- I'm glad you managed to avoid a full reinstallation

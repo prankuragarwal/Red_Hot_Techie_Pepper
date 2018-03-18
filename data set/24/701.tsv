@@ -1,0 +1,24 @@
+2011-03-31T00:36:00.000Z	Polah		I have a file in my system root named vmlinuz, would this be a remnant of my attempting to install GRUB? I don't recall seeing at before.
+2011-03-31T00:37:00.000Z	TvL	Polah	it's probably a symlink and it should be there
+2011-03-31T00:43:00.000Z	Polah	TvL	He doesn't need to sudo -i unless he'll be running multiple commands. Just prepending sudo would do
+2011-03-31T00:43:00.000Z	TvL	Polah	I see, but he's using a pipe
+2011-03-31T00:44:00.000Z	TvL	Polah	I don't think the command after the pipe will have root rights...
+2011-03-31T00:45:00.000Z	Polah	TvL	He doesn't need to sudo -i unless he'll be running multiple commands. Just prepending sudo would do
+2011-03-31T00:46:00.000Z	TvL	Polah	llutz nope... :D
+2011-03-31T00:46:00.000Z	TvL	Polah	llutz wrong assumption :P
+2011-03-31T00:49:00.000Z	Polah	TvL	||arifaX : 700 would make it inaccessible to anyone apart from the owner
+2011-03-31T00:50:00.000Z	TvL	Polah	||arifaX exactly what I would like!!!!
+2011-03-31T00:51:00.000Z	Polah	TvL	Certainly good if you don't want anyone finding your stuff. I don't store anything in my home directory anyway, so it'd be a waste for me to do that (apart from settings which go there)
+2011-03-31T00:51:00.000Z	TvL	Polah	why don't you store anything in your homedir?
+2011-03-31T00:52:00.000Z	TvL	Polah	that's it purpose right! Always handy to know: if I backup my homedir, I've got all my stuff :-)
+2011-03-31T00:52:00.000Z	Polah	TvL	I have a secondary hard drive for all my data stuff; downloads, schoolwork, music and so on.
+2011-03-31T00:53:00.000Z	TvL	Polah	I see! I must admit I have a secondary filesystem as well, mounted on /data, owned by tvl:tvl and chmod 700 :P
+2011-03-31T00:54:00.000Z	Polah	TvL	I could set myself as just the owner of that drive, I suppose, as no one else actually has to access this computer.
+2011-03-31T00:55:00.000Z	TvL	Polah	that's a good practice if you ask me... sooner or later you will give someone an ftp account, and all stuff will be visible...
+2011-03-31T00:56:00.000Z	Polah	TvL	I don't need FTP to my personal computer. Although I've set up FTP on a VPS I own and taken the precaution of making the account they use unable to use sudo and the FTP is locked into their home directory.
+2011-03-31T00:58:00.000Z	TvL	Polah	that's good, also good to set the shell: /bin/false. Only thing I wanted to say was: requirements change. You can't predict the future... If you make it as tight as possible from the beginning, you will most likely run into less problems in the future :-)
+2011-03-31T00:58:00.000Z	Polah	TvL	What's would setting it to /bin/false do?
+2011-03-31T00:59:00.000Z	TvL	Polah	you're ftp user cannot logon using ssh
+2011-03-31T00:59:00.000Z	Polah	TvL	Oh, thought it might be that. I need them to be able to though to restart certain things if the server is rebooted for whatever reason and I'm not available. Is there an option to lock their shell into their home directory as well?
+2011-03-31T00:59:00.000Z	TvL	Polah	because it will not get a shell. I've even put the 'AllowUsers tvl' on my private server
+2011-03-31T01:01:00.000Z	TvL	Polah	AllowUsers is from ssh.... I have no experience of chrooting users to their homedir using ssh, but a quick google showed that there are a lot of posts/howto's about it

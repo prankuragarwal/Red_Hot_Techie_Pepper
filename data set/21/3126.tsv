@@ -1,0 +1,21 @@
+2009-04-08T23:07:00.000Z	pixelmonkey		trying to build evolution from scratch, but when I run apt-get build-dep evolution, it says, "E: Build-dependencies for evolution could not be satisfied."  How do I debug that problem with apt?
+2009-04-08T23:09:00.000Z	Job	pixelmonkey	check the build log and you will find the missing dependencies that you need to install first, allow me to ask you why install from source?
+2009-04-08T23:09:00.000Z	pixelmonkey	Job	there are major regressions in Evolution in Intrepid, and I'm trying to help the developers find solutions for these serious bugs.
+2009-04-08T23:10:00.000Z	pixelmonkey	Job	what build log?
+2009-04-08T23:13:00.000Z	Job	pixelmonkey	okay, every time you build a file config.log is created with all the configuration settings met or even unmet, just check whether there's one it might give you a hint
+2009-04-08T23:14:00.000Z	pixelmonkey	Job	you mean when I try to build the package?  But shouldn't I run apt-get build-dep *before* I build a package?
+2009-04-08T23:18:00.000Z	Job	pixelmonkey	exactly, but remember it must be able to see those dependecies you are told are not satisfied, it's like when you are compiling a program source code, one must define where the library and other dependent files are located
+2009-04-08T23:18:00.000Z	pixelmonkey	Job	ok, I think I see the deps that are broken
+2009-04-08T23:19:00.000Z	pixelmonkey	Job	 libsqlite3-dev: Depends: libsqlite3-0 (= 3.5.9-3ubuntu1) but 3.6.10-1 is to be installed
+2009-04-08T23:19:00.000Z	pixelmonkey	Job	it can't install libsqlite3-dev... how do I resolve that?
+2009-04-08T23:19:00.000Z	Job	pixelmonkey	which error msg do you get?
+2009-04-08T23:20:00.000Z	pixelmonkey	Job	E: Broken packages
+2009-04-08T23:22:00.000Z	Job	pixelmonkey	try apt-get -f install
+2009-04-08T23:23:00.000Z	pixelmonkey	Job	nope, still broken packages
+2009-04-08T23:25:00.000Z	Job	pixelmonkey	try removing the broken packages, type apt-get update and then re-install them
+2009-04-08T23:25:00.000Z	pixelmonkey	Job	a little tricky, libsqlite3-0 has like a gazillion dependencies
+2009-04-08T23:26:00.000Z	Job	pixelmonkey	you will have to do it, coz the error means there's some conflicts within those packages
+2009-04-08T23:30:00.000Z	pixelmonkey	Job	found a solution
+2009-04-08T23:30:00.000Z	Job	pixelmonkey	That's good
+2009-04-08T23:30:00.000Z	pixelmonkey	Job	ran  sudo aptitude remove -f libsqlite3-0 -- this caused a package downgrade
+2009-04-08T23:31:00.000Z	pixelmonkey	Job	now everything is working beautifully.  I didn't know aptitude could be so clever!

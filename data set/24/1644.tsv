@@ -1,0 +1,24 @@
+2010-11-24T20:31:00.000Z	dajhorn	tck9	Hardy is still supported, so it is still getting patched.  If you need it early, then look at enabling the hardy-proposed section.
+2010-11-24T20:34:00.000Z	tck9	dajhorn	are there any docs for updating glibc with hardy-proposed? since glibc is really critical and can break the system if not done properly, i'm trying to be really careful with this
+2010-11-24T20:34:00.000Z	dajhorn		First, do you mean the AVX bug?  LP #662511
+2010-11-24T20:34:00.000Z	dajhorn	tck9	Do you mean the AVX bug?  LP #662511   It might not apply to the older glibc.
+2010-11-24T20:35:00.000Z	tck9		http://freshmeat.net/articles/ubuntu-new-gnu-c-library-packages-fix-security-vulnerability
+2010-11-24T20:35:00.000Z	tck9		that's the one i'm talking about
+2010-11-24T20:35:00.000Z	tck9		i tested it out and it's vulnerable
+2010-11-24T20:36:00.000Z	dajhorn	tck9	Double-check that you have hardy-security enabled.
+2010-11-24T20:36:00.000Z	tck9	dajhorn	how do i check that?
+2010-11-24T20:37:00.000Z	dajhorn	tck9	 Look at your /etc/apt/sources.list file.  Or run something like `apt-cache policy glibc`.
+2010-11-24T20:39:00.000Z	tck9		"unable to locate policy glibc"
+2010-11-24T20:39:00.000Z	tck9		isn't it called libc6?
+2010-11-24T20:39:00.000Z	tck9		libc6: Installed: 2.7-10ubuntu6 Candidate: 2.7-10ubuntu7
+2010-11-24T20:41:00.000Z	dajhorn	tck9	That version is current in hardy-updates and blurbed in the vulnerability email, so it seems that you're updated.
+2010-11-24T20:41:00.000Z	tck9		i think i'm still on 2.7-10ubuntu6 though
+2010-11-24T20:41:00.000Z	tck9		apt-cache poliy libc6 shows Installed: 2.7-10ubuntu6 Candidate: 2.7-10ubuntu7
+2010-11-24T20:41:00.000Z	dajhorn	tck9	Right.  Sorry.  You need to do an apt-get upgrade.
+2010-11-24T20:42:00.000Z	dajhorn	tck9	 APT is telling you that you have the unpatched version installed.
+2010-11-24T20:42:00.000Z	tck9		so just apt-get upgrade libc6 ?
+2010-11-24T20:43:00.000Z	dajhorn	tck9	Just `apt-get upgrade` unless you have a reason not to do a fully security upgrade.
+2010-11-24T20:43:00.000Z	tck9		i don't want to upgrade everything at once.. would just rather do glibc for now ..
+2010-11-24T20:43:00.000Z	tck9		does apt-get have a pretend flag? so that i can see what it's going to upgrade
+2010-11-24T20:44:00.000Z	dajhorn	tck9	I don't think that upgrade will take a package name.  Try `apt-get install libc6`.
+2010-11-24T20:44:00.000Z	dajhorn	tck9	You'll be given an opportunity to refuse if more packages will be installed.

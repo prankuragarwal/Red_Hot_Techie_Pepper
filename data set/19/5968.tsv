@@ -1,0 +1,19 @@
+2008-04-07T03:18:00.000Z	Sponty		synaptic will tell me the location in my file system where KDE 4 is installed to?
+2008-04-07T03:19:00.000Z	Sponty		using apt get
+2008-04-07T03:20:00.000Z	Sponty		i'm running kde 4 right this second
+2008-04-07T03:20:00.000Z	Sponty		i need to know where kde base is installed in
+2008-04-07T03:20:00.000Z	Sponty		it's not in /opt, it's not in /sbin
+2008-04-07T03:21:00.000Z	unop	Sponty	you can use dpkg to list files part of the KDE4 package, is that is what you want?
+2008-04-07T03:22:00.000Z	Sponty	unop	how do i use dpkg to list files part of KDE4 packages?
+2008-04-07T03:23:00.000Z	unop	Sponty	dpkg -L packagename
+2008-04-07T03:23:00.000Z	Sponty	unop	ty ty, that's exactly what I needed
+2008-04-07T03:24:00.000Z	Sponty		=D
+2008-04-07T03:24:00.000Z	unop	Sponty	for all kde packages - for i in $(dpkg -l | grep -i kde4 | cut -c 3-30); do dpkg -L $i; done
+2008-04-07T03:24:00.000Z	Sponty		yeah, i just did $ dpkg -L kdebase[auto complete]
+2008-04-07T03:25:00.000Z	unop	Sponty	well, that only lists files of that one package tho, which is what i was getting at.
+2008-04-07T03:25:00.000Z	unop		!hardy | johnsky
+2008-04-07T03:26:00.000Z	Sponty		kde[autocomplete] shows all the packages that begin with kde
+2008-04-07T03:26:00.000Z	Sponty		that's all i needed
+2008-04-07T03:27:00.000Z	Sponty		dpkg -l | grep -i kde4 | cut -c 3-30 is pretty sophisticated, more than i need
+2008-04-07T03:27:00.000Z	Sponty		thanks tho unop =D\
+2008-04-07T03:27:00.000Z	unop	Sponty	yw

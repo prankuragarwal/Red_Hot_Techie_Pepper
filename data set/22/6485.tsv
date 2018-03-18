@@ -1,0 +1,22 @@
+2006-12-04T13:01:00.000Z	kunee		hi i have configured a second display as extended desktop with xinerama (intel chipset). works good so far but i'm not able to move the windows fully to the second screen. app. 50 px left on the first one, it is also displaced when maximized. does anyone has an idea?
+2006-12-04T13:01:00.000Z	DARKGuy	kunee	could you please paste your xorg.conf file in http://www.pastebin.cl please ?
+2006-12-04T13:02:00.000Z	DARKGuy	kunee	that one also works, the one ubotu says
+2006-12-04T13:04:00.000Z	DARKGuy	kunee	lemme check
+2006-12-04T13:07:00.000Z	DARKGuy	kunee	your xorg.conf is slightly different than mine. Lemme put mine up to explain something
+2006-12-04T13:07:00.000Z	kunee	DARKGuy	okay
+2006-12-04T13:08:00.000Z	DARKGuy	kunee	http://paste.ubuntu-nl.org/35316/
+2006-12-04T13:08:00.000Z	kunee	DARKGuy	can you join ()myprob to discuss it
+2006-12-04T13:08:00.000Z	DARKGuy	kunee	I'll try
+2006-12-04T13:18:00.000Z	kunee	DARKGuy	the problem is still there :-S
+2006-12-04T13:19:00.000Z	DARKGuy	kunee	:/ try removing the Screen 0 and 1 in the Device sections ?
+2006-12-04T13:19:00.000Z	DARKGuy	kunee	then restart X as usual
+2006-12-04T13:32:00.000Z	kunee	DARKGuy	thank you so far. when i remove the screen numbers, only the local screen starts
+2006-12-04T13:32:00.000Z	DARKGuy	kunee	I see, give me a sec
+2006-12-04T13:35:00.000Z	DARKGuy	kunee	what about commenting the MonitorLayout in the Device options? (add a # at the beginning of those)
+2006-12-04T13:35:00.000Z	kunee	DARKGuy	this option is needed by the intel graphics.
+2006-12-04T13:36:00.000Z	DARKGuy	kunee	ah, sorry then, lemme see :/
+2006-12-04T13:36:00.000Z	DARKGuy	kunee	it is xD - try moving the Option "Xinerama" True to the ServerLayout section and remove the ServerFlags one ?
+2006-12-04T13:37:00.000Z	DARKGuy	kunee	modelines are used to set or force screen resolutions and refresh rates :P
+2006-12-04T13:39:00.000Z	kunee	DARKGuy	nice try but not the solution :D
+2006-12-04T13:40:00.000Z	DARKGuy	kunee	dangit >.<
+2006-12-04T13:41:00.000Z	DARKGuy	kunee	Okay, let's try something else... if in ServerLayout, you comment the LFP Screen and DFP screen, and add a new line that says "Screen 0    "DFP Screen"   then restart X, does that turns on the secondary monitor?

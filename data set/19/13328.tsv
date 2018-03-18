@@ -1,0 +1,19 @@
+2005-04-17T06:41:00.000Z	airco		what chan are linux newbies supposed to go to for a question?
+2005-04-17T06:41:00.000Z	airco		k, i'm trying to mount my windows hd under ubunto
+2005-04-17T06:41:00.000Z	airco		*ubuntu
+2005-04-17T06:42:00.000Z	airco		but i'm getting a "device already mounted or directory busy" error
+2005-04-17T06:42:00.000Z	airco		while neither is the case
+2005-04-17T06:42:00.000Z	airco		anyone have any bright ideas? :)
+2005-04-17T06:42:00.000Z	sommers	airco	you typed mount and it does'nt list the partition as mounted?
+2005-04-17T06:43:00.000Z	airco	sommers	no
+2005-04-17T06:43:00.000Z	airco	sommers	as in, yes i typed it, no it doesn't show up
+2005-04-17T06:44:00.000Z	sommers	airco	i have this line in /etc/fstab /dev/hda1       /windows        vfat    defaults        0       0
+2005-04-17T06:45:00.000Z	sommers	airco	but you need to create a /windows under root, and then type sudo mount -a
+2005-04-17T06:46:00.000Z	airco	sommers	yeah, it's in my fstab as well (friend of mine put it there) and it used to work
+2005-04-17T06:55:00.000Z	airco	sommers	concerning those lines in /etc/fstab
+2005-04-17T06:55:00.000Z	sommers	airco	yeah?
+2005-04-17T06:58:00.000Z	sommers	airco	try /dev/hda1       /var/windows    ntfs ro,users,uid=500 0 0
+2005-04-17T06:59:00.000Z	sommers	airco	try /dev/hda1       /var/windows    ntfs ro,users,uid=1000 0 0
+2005-04-17T06:59:00.000Z	sommers	airco	try those lines.
+2005-04-17T07:00:00.000Z	sommers	airco	but as lunatik said, it is better to have /mnt/windows and /mnt/archive instaed of in var.
+2005-04-17T07:02:00.000Z	airco	sommers	mount /dev/hda1

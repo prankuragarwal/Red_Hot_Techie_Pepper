@@ -1,0 +1,23 @@
+2011-04-15T19:58:00.000Z	ravana		hi, I'm trying to mount my usb stick via terminal.But when I mount it, I get a warning that says:   "/mnt/usb seems to be mounted read-only." And, I can't write anything to it. even with sudo
+2011-04-15T19:58:00.000Z	ravana		can anybody help me please?
+2011-04-15T19:59:00.000Z	erUSUL	ravana	what command do you use to mount it?
+2011-04-15T20:00:00.000Z	erUSUL	ravana	try with « udisks --mount /dev/sdb1 »
+2011-04-15T20:03:00.000Z	ravana	erUSUL	thanks for the suggestion. I tried with it. but I get a warning saying something like: couldn't connect to system bus!
+2011-04-15T20:03:00.000Z	erUSUL	ravana	is server version?
+2011-04-15T20:04:00.000Z	ravana	erUSUL	what do you mean?
+2011-04-15T20:05:00.000Z	erUSUL	ravana	if you are running the server version of ubuntu. or normal ( gnome ) one
+2011-04-15T20:05:00.000Z	ravana	erUSUL	normal xfce. sorry.
+2011-04-15T20:06:00.000Z	erUSUL	ravana	ahh ok. not sure if xubuntu supports udisks or not...
+2011-04-15T20:07:00.000Z	ravana	erUSUL	I see. can't I get it working with mount command?
+2011-04-15T20:07:00.000Z	erUSUL	ravana	what filesystem does the usb drive use?
+2011-04-15T20:07:00.000Z	ravana	erUSUL	sadly, ntfs!
+2011-04-15T20:12:00.000Z	erUSUL	ravana	sudo mount -t ntfs-3g -o uid=1000,umask=000 /dev/sdb1 /mnt/usb
+2011-04-15T20:16:00.000Z	ravana	erUSUL	now we are ticking. this doesn't know what ntfs-3g file system is!
+2011-04-15T20:16:00.000Z	erUSUL	ravana	not installed?
+2011-04-15T20:17:00.000Z	erUSUL	ravana	install  ntfs-3g
+2011-04-15T20:18:00.000Z	ravana	erUSUL	great. installing. hopefully it'll be OK. thanks.
+2011-04-15T20:18:00.000Z	erUSUL	ravana	are you sure you have full xubuntu-desktop ? i am surprised it does not include ntfs-3g
+2011-04-15T20:21:00.000Z	ravana	erUSUL	I played with the system a lot. so probably uninstalled it somewhere along the line! I'm new to this.
+2011-04-15T20:21:00.000Z	erUSUL	ravana	ok; do « sudo apt-get install xubuntu-desktop » ? to make sure everything is as it should be?
+2011-04-15T20:23:00.000Z	ravana	erUSUL	sure.
+2011-04-15T20:29:00.000Z	ravana	erUSUL	with the installation of ntfs-3g, it's now working correctly. thanks for the command and the pointers. just updating.

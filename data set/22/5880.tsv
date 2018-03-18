@@ -1,0 +1,22 @@
+2008-03-18T01:30:00.000Z	rainwalker		with openoffice, what's the difference between using the java runtime environment and not using it?
+2008-03-18T01:31:00.000Z	LjL	rainwalker	5 minutes in loading time? :)
+2008-03-18T01:31:00.000Z	rainwalker	LjL	as in disabling it will make it load faster or slower?
+2009-03-10T02:52:00.000Z	LjL	rainwalker	bursts? that's weird
+2009-03-10T02:53:00.000Z	rainwalker	LjL	I read somewhere that it does it to preserve write cycles?
+2009-03-10T02:53:00.000Z	LjL	rainwalker	err, not sure. i mean, it will certainly try and write several blocks at a time, but why would it stop between one and the other? (i guess that's what "bursts" means)
+2009-03-10T02:54:00.000Z	rainwalker	LjL	that's what I'm wondering, too...but that's what it seems to be doing, at least when writing to this external hard drive I have. it doesn't seem to be as apparent with my USB drive, though
+2009-03-10T02:56:00.000Z	LjL	rainwalker	maybe it's just the *source* it's copying data *from* that's slower than the destination?
+2009-03-10T02:56:00.000Z	rainwalker	LjL	I don't think so. it happens whether I'm copying from my USB drive (like right now) or from my computer's hard drive
+2009-03-10T02:57:00.000Z	LjL	rainwalker	your internal HD might be slower than your external - especially if the files you're copying are fragmented all over the drive
+2009-03-10T02:57:00.000Z	LjL	rainwalker	try doing a test copy from, say, /dev/zero
+2009-03-10T02:57:00.000Z	LjL	rainwalker	see if that's done in bursts too
+2009-03-10T02:57:00.000Z	rainwalker	LjL	/dev/zero? I'm not sure what you mean
+2009-03-10T02:58:00.000Z	LjL	rainwalker	/dev/zero is a "virtual" device that just generates zeroes, as many as you want (until you stop it), and as quickly possible
+2009-03-10T02:58:00.000Z	LjL	rainwalker	if you cp /dev/zero to /mnt/whatever (perhaps use "time" to see how long it takes too), you should see just how the external drive is doing unrelated to the drive you're copying from
+2009-03-10T02:59:00.000Z	LjL	rainwalker	as normal - cp /dev/zero <destinationfile>. just ctrl+c it when you think you've had enough of it.
+2009-03-10T03:01:00.000Z	LjL	rainwalker	you definitely should
+2009-03-10T03:01:00.000Z	LjL	rainwalker	do it when your computer is as idle as possible
+2009-03-10T03:16:00.000Z	rainwalker	LjL	I did what you said, but I'm not sure what to look for. the file appaears, but I have no way to guage the progress. normallly the "copying files" window pops up, and that's how I know it does things in bursts
+2009-03-10T03:17:00.000Z	LjL	rainwalker	i thought you could look at the HD icon. well, i guess you could always try navigating to /dev/ in Nautilus, and then copying "zero" from there. not sure whether that works.
+2009-03-10T03:17:00.000Z	rainwalker	LjL	on a related note, when I stopped copying from /dev/zero and chose to delete the file I had made, it took about 10 seconds for it to get around to deleting it...even though it was only about 142 MB, and then it deleted it in a flash
+2009-03-10T03:24:00.000Z	rainwalker	LjL	copying /dev/zero through Nautilus did indeed bring up the "Copying Files" window, and it went FAST

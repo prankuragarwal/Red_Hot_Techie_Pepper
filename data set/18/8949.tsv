@@ -1,0 +1,18 @@
+2008-03-03T18:09:00.000Z	openros		 Running "install /boot/grub/stage1 (hd0) (hd0)1+17 p (hd0,8)/boot/grub/stage2
+2008-03-03T18:09:00.000Z	openros		/boot/grub/menu.lst"... failed
+2008-03-03T18:09:00.000Z	openros		How to install grub
+2008-03-03T18:09:00.000Z	openros		iam getting this error
+2008-03-03T18:10:00.000Z	openros		Running "install /boot/grub/stage1 (hd0) (hd0)1+17 p (hd0,8)/boot/grub/stage2 /boot/grub/menu.lst"... failed     Error 12: Invalid device requested.
+2008-03-03T18:10:00.000Z	openros		How to clear that error
+2008-03-03T18:11:00.000Z	ManuP	openros	what are you doing?
+2008-03-03T18:12:00.000Z	ManuP	openros	do you want to reinstall grub from rescue-system?
+2008-03-03T18:13:00.000Z	ManuP	openros	you booted from cd?
+2008-03-03T18:13:00.000Z	ManuP	openros	okay.
+2008-03-03T18:14:00.000Z	ManuP	openros	do you have a terminal/konsole open? if not, open one
+2008-03-03T18:15:00.000Z	ManuP	openros	is the /mnt/ dir empty?
+2008-03-03T18:16:00.000Z	ManuP	openros	good. do the following: sudo mount /dev/sdaX /mnt   /dev/sdaX is your Drive on which grup should install
+2008-03-03T18:17:00.000Z	ManuP	openros	do mount -o bind /dev /mnt/dev
+2008-03-03T18:18:00.000Z	ManuP	openros	sorry, sudo mount...
+2008-03-03T18:18:00.000Z	ManuP	openros	sudo mount -o bind -t proc /proc /mnt/proc
+2008-03-03T18:19:00.000Z	ManuP	openros	now do sudo chroot /mnt  you chrooted now into /mnt. here you can install grub, likly with grub-install /dev/sda  (or which device you have..)
+2008-03-03T18:20:00.000Z	ManuP	openros	that works for me always fine :)

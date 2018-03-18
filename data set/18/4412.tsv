@@ -1,0 +1,18 @@
+2009-04-17T20:44:00.000Z	ienorand		How do I do a "boot from local harddisk in grub menu.lst"? I boot grub from usb an want to pass it on to local hd boot.
+2009-04-17T20:45:00.000Z	bbeecher2	ienorand	can't you see the local disks in your grub menu?
+2009-04-17T20:47:00.000Z	ienorand	bbeecher2	Well it's picked up the bcd boot loader but refuses to boot it, and I'm guessing this is probably since grub is on a different disk (usb) than it... can I just use rootnoverify (hd0) to do a localboot?
+2009-04-17T20:50:00.000Z	bbeecher2	ienorand	hmmm.. the different disks shoudn't matter as long as the boot images are correctly configured - the boot loader has an entry for your hd, but won't accept it?
+2009-04-17T20:50:00.000Z	bbeecher2	ienorand	I think rootnoverify wouldn't screw anything up, but I'm not sure thats the problem
+2009-04-17T20:51:00.000Z	bbeecher2	ienorand	can you paste in the bootline config?
+2009-04-17T20:53:00.000Z	ienorand	bbeecher2	As in menu-lst? : http://www.mibbit.com/pb/bQvH7Z  ( I have edited (hd0,0) to (hd0) and removed savedefault, which I was going to try just now, makeactive I added before and made no diff.
+2009-04-17T20:55:00.000Z	ienorand	bbeecher2	Hang on... If grub boots from a disk, it would think that disk is hd0 right?
+2009-04-17T20:55:00.000Z	bbeecher2	ienorand	aha - you're trying to boot a windows partition... this looks good to me - the chainloader is the part that should be telling grub to pass on control to the windows box...
+2009-04-17T20:55:00.000Z	bbeecher2	ienorand	not necessarily
+2009-04-17T20:56:00.000Z	ienorand	bbeecher2	How can I find out what kind of naming grub has?
+2009-04-17T20:56:00.000Z	bbeecher2	ienorand	can you boot into a shell and run df
+2009-04-17T20:56:00.000Z	bbeecher2	ienorand	that should give you a listing of the different disks that are loaded, and where they're mounted
+2009-04-17T20:57:00.000Z	ienorand	bbeecher2	And does grub follow ubuntu's naming so that sda1 > hd0,0 ?
+2009-04-17T20:58:00.000Z	bbeecher2	ienorand	I think so...
+2009-04-17T20:59:00.000Z	ienorand	bbeecher2	Hmm, seems like windows is hibernated... should probably try without that first...
+2009-04-17T21:00:00.000Z	bbeecher2	ienorand	yeah that coudn't hurt things.... you might want to try asking for answers at #grub as well, since you seem to be hitting some questions on that
+2009-04-17T21:15:00.000Z	ienorand	bbeecher2	Ah, turns out that grub was just seing the main hd as hd1 rather than hd0, since it was booted from usb stick... Not following the ubuntu naming...

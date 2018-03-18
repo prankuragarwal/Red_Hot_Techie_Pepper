@@ -1,0 +1,22 @@
+2007-10-23T07:40:00.000Z	danny3793		How can i backup my data using 7.10 LiveCD, I tried 'sudo mount /dev/sda1 /folder" and it still is not giving me owner permissions...
+2007-10-23T07:42:00.000Z	danny3793		XJonnyx134: try pressing F6 when it goes to the boot menu, then before the --'s put pci=noacpi and it should work
+2007-10-23T07:43:00.000Z	danny3793		64 bit does not have flash??
+2007-10-23T07:43:00.000Z	guru	danny3793	no, but there are work-arounds
+2007-10-23T07:48:00.000Z	guru	danny3793	man mount
+2007-10-23T07:48:00.000Z	danny3793	guru	man mount?
+2007-10-23T07:48:00.000Z	guru	danny3793	yes. 'man' is the command used to view manual pages
+2007-10-23T07:49:00.000Z	guru	danny3793	try mounting it somewhere under the /mnt hierarchy first and see if that works
+2007-10-23T07:49:00.000Z	danny3793	guru	ok, ill try that, thanks, brb
+2007-10-23T07:59:00.000Z	danny3793	guru	i cant get it working, its an ext3 hard drive, i tried mounting it with 'sudo mount -o nomand,nosuid,rw,user,remount /dev/sda1 /mnt' and that still does not let me access folders that contain the data i need
+2007-10-23T07:59:00.000Z	guru	danny3793	as sudo do ls -ltr /path/to/mounted/volume and see if the owner is listed as root or some arbitrary user id (e.g., 1002, etc)
+2007-10-23T08:00:00.000Z	danny3793	guru	its a user id (1000 to be exact)
+2007-10-23T08:00:00.000Z	guru	danny3793	and what user are you attempting to access it as?
+2007-10-23T08:00:00.000Z	danny3793	guru	im trying to access it as root on LiveCD
+2007-10-23T08:01:00.000Z	guru	danny3793	you should be able to access it as root then
+2007-10-23T08:01:00.000Z	danny3793	guru	i know =\, i dont understand why it wont let me access the data, i try to go to the folder and it tells me im not the owner of it..
+2007-10-23T08:02:00.000Z	guru	danny3793	try using cd in a terminal as root
+2007-10-23T08:02:00.000Z	danny3793	guru	yes, it lets me in them then
+2007-10-23T08:02:00.000Z	guru	danny3793	sudo su ; cd /path/to/mounted/volume ; ls -l
+2007-10-23T08:02:00.000Z	guru	danny3793	then the x session you are running is logged in as a different user other than root (as you should be(
+2007-10-23T08:05:00.000Z	danny3793	guru	hahah great, 7.10 64 bit just froze, took it awhile..
+2007-10-23T08:07:00.000Z	guru	danny3793	the kernel locked or firefox locked?

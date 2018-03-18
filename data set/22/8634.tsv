@@ -1,0 +1,22 @@
+2007-01-23T09:45:00.000Z	finlaylabs	wastrel	I *sort of* understand :)
+2007-01-23T09:46:00.000Z	finlaylabs	wastrel	still looking up the sript lang available - net is very slow from china right now (my present loc)
+2007-01-23T09:46:00.000Z	finlaylabs	wastrel	do you use vncviewer much? I can log on to myslef via vncviewer using the WAN-asigned IP address using 'vncviewer 129.168.1.101:strider:0' but vncviewer 61.51.121.199:strider:0 doesnt work.
+2007-01-23T09:47:00.000Z	wastrel	finlaylabs	 i don't use vnc
+2007-01-23T09:50:00.000Z	wastrel	finlaylabs	 192.168.* are not internet IP's they're only for LANs
+2007-01-23T09:51:00.000Z	finlaylabs	wastrel	ok thats why it would work internally. but i thought tghen that vncviewer 61.51.121.199:strider:0 should work (using my true IP address... or I guess more truly thats the IP of the router...
+2007-01-23T09:52:00.000Z	wastrel	finlaylabs	 that would work if 1. you were outside the LAN connecting in.  and 2. the router was forwarding VNC connections to your computer's LAN address.
+2007-01-23T09:53:00.000Z	finlaylabs	wastrel	so there is a need to allow vnc connections on the router admin page somehow?
+2007-01-23T09:54:00.000Z	wastrel	finlaylabs	 yes you'd have to configure port forwarding on the router to point to your computer's LAN address.
+2007-01-23T09:54:00.000Z	wastrel	finlaylabs	 or put your computer in the DMZ but then you have no firewall (set up firewall on ubuntu mebby :)
+2007-01-23T09:55:00.000Z	finlaylabs	wastrel	networking aint for the faint-hearted!
+2007-01-23T09:56:00.000Z	finlaylabs	wastrel	will have a look at the router setup, see if its blindingly obvious.
+2007-01-23T09:57:00.000Z	wastrel	finlaylabs	 it takes a while to figure out.  your router is using NAT to provide your LAN with internet access.  this provides a basic kind of firewall but means your LAN computers aren't visible from the internet.  in order to connect to a LAN computer your router needs to be told to forward connections to it.
+2007-01-23T09:59:00.000Z	finlaylabs	wastrel	oh I do have options to enable/disable dynamic or static routing... is that it? which one?
+2007-01-23T09:59:00.000Z	finlaylabs	wastrel	and NAT
+2007-01-23T09:59:00.000Z	wastrel	finlaylabs	 i'm not sure.  see anything like "port forwarding" or "virtual server"
+2007-01-23T10:00:00.000Z	finlaylabs	wastrel	'local DNS server'?
+2007-01-23T10:01:00.000Z	wastrel	finlaylabs	 not likely
+2007-01-23T10:02:00.000Z	finlaylabs	wastrel	oh I have a page on 'port range forwarding'. Has fields for: Application Start End Protocol IP Address Enabled
+2007-01-23T10:02:00.000Z	wastrel	finlaylabs	 that's it
+2007-01-23T10:03:00.000Z	finlaylabs	wastrel	so, can I bother u for what mioght go in those fields? I have no idea sorry.
+2007-01-23T10:06:00.000Z	wastrel	finlaylabs	 is there a help page in your router interface?  :]     application: not sure   start/end  probably the TCP port ranges  (what port or ports does VNC use?  I dunno) protocol: probably TCP or UDP, probably TCP  IP addy: your computer's LAN IP.  enabled : yes

@@ -1,0 +1,22 @@
+2006-03-27T13:06:00.000Z	espresso		help! I can't get php to run on the apache server now
+2006-03-27T13:06:00.000Z	espresso		(at least apache is running... for now)
+2006-03-27T13:07:00.000Z	espresso		when I try to load a .php page from my browser, it doesn't parse
+2006-03-27T13:07:00.000Z	espresso		it tries to download it
+2006-03-27T13:08:00.000Z	_jason	espresso	did you install apache and php from the repositories?
+2006-03-27T13:08:00.000Z	espresso	_jason	yes
+2006-03-27T13:08:00.000Z	_jason	espresso	which packages?
+2006-03-27T13:09:00.000Z	espresso	_jason	from apt-get, I did install mysqld and apache2
+2006-03-27T13:10:00.000Z	_jason	espresso	php5 from the repos seems to set it up fine.  I think because it pulls in libapache2-mod-php5
+2006-03-27T13:10:00.000Z	espresso	_jason	repos?
+2006-03-27T13:10:00.000Z	_jason	espresso	repositories
+2006-03-27T13:14:00.000Z	espresso	_jason	I apt-got libapache2-mod-php5 and nothing
+2006-03-27T13:14:00.000Z	_jason	espresso	did you restart apache?
+2006-03-27T13:15:00.000Z	espresso	_jason	yes
+2006-03-27T13:16:00.000Z	espresso	_jason	apt-get restarted apache during the install
+2006-03-27T13:16:00.000Z	_jason	espresso	don't know then
+2006-03-27T13:17:00.000Z	_jason	espresso	check that /etc/apache2/mods-enabled/php5.conf exists
+2006-03-27T13:17:00.000Z	espresso	_jason	nooooo it don't
+2006-03-27T13:18:00.000Z	_jason	espresso	ok well that's what enables php for me... I assume it's because you installed from php.net that you don't have it.  I do however believe that if you grep /etc/apache2/apache2.conf for php, you will find two lines that begin with ``Addtype'' that you need to uncomment
+2006-03-27T13:19:00.000Z	espresso	_jason	just nwo a matter of "where are the files"
+2006-03-27T13:24:00.000Z	espresso	_jason	edited... restarted... still nothing :(
+2006-03-27T13:25:00.000Z	_jason	espresso	all i can think of is installing php5 from the repos then.  Otherwise you may want to try #php

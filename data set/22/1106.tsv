@@ -1,0 +1,22 @@
+2010-10-06T04:55:00.000Z	neil_d		I am currently logged into a computer remotely... can I get a screen shot of what is currently displayed on the monitory?
+2010-10-06T04:56:00.000Z	uhu01	neil_d	have a look at xwd, it might be able to do what you need
+2010-10-06T04:56:00.000Z	neil_d	uhu01	ok I will look
+2010-10-06T04:57:00.000Z	uhu01	neil_d	you'll have to set the correct display variable, and I'm not sure if it will work on a session that is not yours...
+2010-10-06T04:59:00.000Z	uhu01	neil_d	if you need the identity of a windows, you can use xwininfo
+2010-10-06T05:00:00.000Z	neil_d	uhu01	this is looking less likely.. As I would like to see if the gdm login screen is being displayed...
+2010-10-06T05:01:00.000Z	uhu01	neil_d	try xwd -out screenshot.xwd -root -display :0.0
+2010-10-06T05:03:00.000Z	neil_d	uhu01	error "xwd:  unable to open display ':0.0'"
+2010-10-06T05:06:00.000Z	uhu01	neil_d	you'll have to find the correct X display for the session you are trying to make the screenshot of
+2010-10-06T05:06:00.000Z	uhu01	neil_d	otherwise it should work
+2010-10-06T05:07:00.000Z	neil_d	uhu01	do you know how to a list of all the x displays current open?
+2010-10-06T05:10:00.000Z	uhu01	neil_d	no, sorry...
+2010-10-06T05:10:00.000Z	neil_d	uhu01	oh rats.....
+2010-10-06T05:13:00.000Z	uhu01	neil_d	you could try ps aux | grep X
+2010-10-06T05:14:00.000Z	neil_d	uhu01	"ps -aux | grep X" didn't show anything (except the grep command)
+2010-10-06T05:14:00.000Z	uhu01	neil_d	are you sure your X server is running?
+2010-10-06T05:15:00.000Z	neil_d	uhu01	no!
+2010-10-06T05:15:00.000Z	uhu01	neil_d	I think you just prove that it is not running...
+2010-10-06T05:16:00.000Z	neil_d	uhu01	oh... if it wasn't running would I be able to log in via the terminal on <ctrl><atl><f1> etc.
+2010-10-06T05:18:00.000Z	uhu01	neil_d	but then it should show up in the process list
+2010-10-06T05:23:00.000Z	neil_d	uhu01	I think there is something screwy here "service gdm reload" get me an error "reload: Unknown instance:"
+2010-10-06T05:26:00.000Z	uhu01	neil_d	sorry, not my knowledge is really at the end, I normally use gentoo... But if I had to guess: at the start the script should save PID or display variable to a file, which should match the currently running instance of the X server, did you maybe restart the X server without the apropriate start/stop script?

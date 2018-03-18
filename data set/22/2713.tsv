@@ -1,0 +1,22 @@
+2009-08-01T19:58:00.000Z	PerryArmstrong		any idea which is the best server whether it is LDAP or DNS or any other type...The requirements are: 1. Manage internet connection to clients  2. Block certain websites   3. Provide easy package updations from server to clients   4. file transfers    5. if possible secure every users files, which is one of the features of LDAP...but LDAP is in development stage
+2009-08-01T19:59:00.000Z	grawity	PerryArmstrong	"LDAP is in development stage"? Where did you find that?
+2009-08-01T20:01:00.000Z	grawity	PerryArmstrong	LDAP is very widely used - even Microsoft's Active Directory is based on LDAP and Kerberos standards.
+2009-08-01T20:02:00.000Z	grawity	PerryArmstrong	First, what do you mean by "all this"?
+2009-10-13T20:09:00.000Z	grawity	PerryArmstrong	What is the output of 'grep KINGSTON /etc/mtab' ?
+2009-10-13T20:10:00.000Z	grawity	PerryArmstrong	Oh, one more thing. Your previous paste lists a few files - and all of them I recognize as instances of a Windows virus which spreads by USB drives. So while it is _not_ related to your problem, I still wanted to point that out.
+2009-10-13T20:11:00.000Z	grawity	PerryArmstrong	Hm. Does the drive have a physical readonly switch? Some do.
+2009-10-13T20:12:00.000Z	grawity	PerryArmstrong	Are there any other files, besides the viruses?
+2009-10-13T20:12:00.000Z	grawity	PerryArmstrong	You could try recreating the filesystem.
+2009-10-13T20:12:00.000Z	grawity	PerryArmstrong	As in, umount /media/KINGSTON; mkfs.vfat /dev/sdb1
+2009-10-13T20:15:00.000Z	grawity	PerryArmstrong	um
+2009-10-13T20:16:00.000Z	grawity	PerryArmstrong	Try cd /; !!;
+2009-10-13T20:16:00.000Z	grawity	PerryArmstrong	You're cd'd to /media/KINGSTON, so it cannot umount it.
+2009-10-13T20:35:00.000Z	grawity	PerryArmstrong	Did you run mkfs?
+2009-10-13T20:37:00.000Z	grawity	PerryArmstrong	Well, I already told you that one - mkfs.vfat /dev/sdb1 (assuming sdb1 is the bad drive)
+2009-10-13T20:38:00.000Z	grawity	PerryArmstrong	Now mount /dev/sdb1 /media/KINGSTON
+2009-10-13T20:44:00.000Z	grawity	PerryArmstrong	Either a corrupted filesystem, or  ... how did you mount it the first time, anyway?
+2009-10-13T20:44:00.000Z	PerryArmstrong	grawity	Out_Cold; thx for helping ,e
+2009-10-13T20:45:00.000Z	grawity	PerryArmstrong	Using what exactly? GNOME's Nautilus? Xfce's thing? Something else?
+2009-10-13T20:49:00.000Z	grawity	PerryArmstrong	Try this now. umount it again, unplug, plug back in, wait for it to automount, see if it's readonly or not.
+2009-10-13T20:52:00.000Z	grawity	PerryArmstrong	If it keeps working fine, then it was a corrupted filesystem. (FAT filesystems, including FAT32, are very unreliable. However, they're often used for speed and because they're easy to implement, as long as you don't annoy Micros~1 lawyers)
+2009-10-13T20:53:00.000Z	grawity	PerryArmstrong	a) umount before unplugging, or b) use NTFS _and_ umount before unplugging.

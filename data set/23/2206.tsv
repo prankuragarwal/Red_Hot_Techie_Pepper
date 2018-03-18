@@ -1,0 +1,23 @@
+2009-06-28T17:49:00.000Z	CoUrPsE_CoLlEcTo		My FF disapeared, and when i go to open another one, it says theres already one there, i type killall -9 firefox in terminal, and when i grep firefox ps x its still there, :/
+2009-06-28T17:49:00.000Z	CoUrPsE_CoLlEcTo		Any suggestions?
+2009-06-28T17:49:00.000Z	oskar-	CoUrPsE_CoLlEcTo	 try: killall SIGCONT firefox
+2009-06-28T17:50:00.000Z	CoUrPsE_CoLlEcTo	oskar-	says no process killed.
+2009-06-28T17:50:00.000Z	oskar-	CoUrPsE_CoLlEcTo	 firefox-bin (?)
+2009-06-28T17:51:00.000Z	CoUrPsE_CoLlEcTo	oskar-	Same thing.
+2009-06-28T17:57:00.000Z	oskar-	CoUrPsE_CoLlEcTo	 ps -el | grep firefox
+2009-06-28T17:57:00.000Z	oskar-	CoUrPsE_CoLlEcTo	 what is in the second field?
+2009-06-28T17:57:00.000Z	CoUrPsE_CoLlEcTo	oskar-	D
+2009-06-28T17:58:00.000Z	oskar-	CoUrPsE_CoLlEcTo	 uninterruptible sleep
+2009-06-28T17:58:00.000Z	oskar-	CoUrPsE_CoLlEcTo	 i don't know ;)
+2009-06-28T17:59:00.000Z	oskar-	CoUrPsE_CoLlEcTo	 look at the output of "lsof -p 6146" and see, if you can help it return ;-)
+2009-06-28T18:06:00.000Z	oskar-	CoUrPsE_CoLlEcTo	 hm, i don't know. it will likely trying to read or write something, and that call cannot complete and the moment. you could try to turn off and on the network interfaces. rebooting should also work...
+2009-06-28T18:06:00.000Z	CoUrPsE_CoLlEcTo	oskar-	Thanks.
+2009-06-28T18:06:00.000Z	oskar-	CoUrPsE_CoLlEcTo	 http://linuxgazette.net/issue83/tag/6.html
+2009-06-28T18:07:00.000Z	CoUrPsE_CoLlEcTo	oskar-	Um, the problem is with ff, i cant open links to fix the problem, :/
+2009-06-28T18:07:00.000Z	oskar-	CoUrPsE_CoLlEcTo	 do you have epiphany, lynx or links? ;-)
+2009-06-28T18:12:00.000Z	oskar-	CoUrPsE_CoLlEcTo	 you could also try "netstat -an" or something and see, what other processes are "connected" to the same sockets as firefox (?)
+2009-06-28T18:15:00.000Z	CoUrPsE_CoLlEcTo	oskar-	Yeah, i dont really understand all that to much, i think the reboot is the best idea.
+2009-06-28T18:16:00.000Z	oskar-	CoUrPsE_CoLlEcTo	 yes, it will work. if it hangs at shutdown, use the magic sysrq key with "reisub": ctrl+alt+r,e,i,s,u,b
+2009-06-28T18:18:00.000Z	oskar-	CoUrPsE_CoLlEcTo	 "print screen" key
+2009-06-28T18:20:00.000Z	oskar-	CoUrPsE_CoLlEcTo	 you only need this combination in the case it hangs, but in your case it is likely to hang at umount because of the opened files of the firefox process
+2009-06-28T18:23:00.000Z	oskar-	CoUrPsE_CoLlEcTo	 you can of course try only r,e,i,s and see, if the process goes away with that... maybe you do not need to reboot at all then

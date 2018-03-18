@@ -1,0 +1,22 @@
+2008-01-17T11:25:00.000Z	kaboombob		anybody know how to tell what filesystem an usb device is?
+2008-01-17T11:26:00.000Z	unop	kaboombob	anything you want it to be .. usually they are FATXX by convention
+2008-01-17T11:29:00.000Z	unop	kaboombob	that looks like a corrupt disk to me
+2008-01-17T11:29:00.000Z	kaboombob	unop	it works still tho, its my mp3 player and it works fine under xp
+2008-01-17T11:30:00.000Z	unop	kaboombob	yea, windows is notorious for skimming over errors and not paying enough attention -- have you tried mounting the disk like this -- sudo mount -t vfat /dev/sdb1 /mnt/sdb1
+2008-01-17T11:31:00.000Z	kaboombob	unop	mount point does not exist
+2008-01-17T11:32:00.000Z	unop	kaboombob	ok -- make it then -- sudo mkdir /mnt/sdb1
+2008-01-17T11:33:00.000Z	kaboombob	unop	operation not permitted
+2008-01-17T11:33:00.000Z	unop	kaboombob	on which command tho?
+2008-01-17T11:33:00.000Z	kaboombob	unop	mkdir: cannot create directory `/mnt/sdb1': Operation not permitted
+2008-01-17T11:34:00.000Z	unop	kaboombob	are you sure you used sudo with mkdir there
+2008-01-17T11:34:00.000Z	unop	kaboombob	sudo mkdir /mnt/sdb1
+2008-01-17T11:37:00.000Z	unop	kaboombob	fdisk reports it as /dev/sdb ...
+2008-01-17T11:38:00.000Z	unop	kaboombob	you can try this -- sudo sh -c "mkdir /mnt/sdb1; mount -t vfat /dev/sdb1 /mnt/sdb1"
+2008-01-17T11:38:00.000Z	unop	kaboombob	you've already checked -- you pasted it here - http://paste.ubuntu-nl.org/52233/
+2008-01-17T11:39:00.000Z	kaboombob	unop	that didnt work mkdir again
+2008-01-17T11:39:00.000Z	unop	kaboombob	ok, try this then - sudo sh -c "mkdir /media/sdb1; mount -t vfat /dev/sdb1 /media/sdb1"
+2008-01-17T11:49:00.000Z	unop	kaboombob	usually you dont have to mess with mount on the command line, your device should automatically mount
+2008-01-17T11:49:00.000Z	kaboombob	unop	i know but both of my usb things i have connected have had some major issues
+2008-01-17T11:50:00.000Z	unop	kaboombob	in this case, it probably failed to mount because of the invalid parition table on the device which is why we had to resort to the command line
+2008-01-17T11:52:00.000Z	kaboombob	unop	yeah thats what you were saying and i saw that in there thank you for the help i can now listen to something other than sandstorm again
+2008-01-17T11:53:00.000Z	unop	kaboombob	yw

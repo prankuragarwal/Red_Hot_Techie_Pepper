@@ -1,0 +1,24 @@
+2011-11-28T21:34:00.000Z	jelly		IppatsuMan: can you pastebin the output of "apt-cache policy libavutil-extra-51 libavutil51"
+2011-11-28T21:35:00.000Z	IppatsuMan	jelly	http://paste.ubuntu.com/752631/ . The output of aptitude after using "r <id>" is like: "Remove the following packages: 1)   R   audacity 2)       ffmpeg" and stays pretty much similar even if I add al the packages using "r <id>"
+2011-11-28T21:36:00.000Z	jelly	IppatsuMan	yes, that's just the refresh for you to see what you chose.  Next you tell it "n" to try harder
+2011-11-28T21:38:00.000Z	jelly	IppatsuMan	there is also a syntax to tell aptitude to install a package and remove another one in the command line.
+2011-11-28T21:38:00.000Z	IppatsuMan	jelly	pressing "n" just gives me the same list, with more "R"s
+2011-11-28T21:38:00.000Z	jelly	IppatsuMan	can you pastebin that output?
+2011-11-28T21:39:00.000Z	IppatsuMan	jelly	http://paste.ubuntu.com/752636/ (just a sample, it does not change much)
+2011-11-28T21:40:00.000Z	jelly	IppatsuMan	ah, end of the line: *** No more solutions available ***
+2011-11-28T21:41:00.000Z	IppatsuMan	jelly	I don't want to waste your time, I was just curious because I thought aptitude was the smart one. I'll look for a way to tell it to remove a package and substitute with another one
+2011-11-28T21:42:00.000Z	jelly	IppatsuMan	it's smart with well made packages
+2011-11-28T21:42:00.000Z	jelly	IppatsuMan	these two... are not well made.
+2011-11-28T21:43:00.000Z	jelly	IppatsuMan	there is also a syntax to tell aptitude to install a package and remove another one in the command line, what happens with: aptitude install libavutil51 libavutil-extra-51-
+2011-11-28T21:43:00.000Z	jelly	IppatsuMan	note the tailing -
+2011-11-28T21:44:00.000Z	IppatsuMan	jelly	bingo. It works. I have to use "aptitude -s install libavutil51 libavcodec53 libavutil-extra-51- libavcodec-extra-53-" due to extra dependencies, but it works
+2011-11-28T21:45:00.000Z	jelly	IppatsuMan	you may or may not notify the "medibuntu" people their package dependencies need improvement
+2011-11-28T21:46:00.000Z	IppatsuMan	jelly	however, I don't know how I would make it work if dependencies were more complicated than that
+2011-11-28T21:46:00.000Z	jelly	IppatsuMan	a dirtier workaround is to first dpkg --remove --force-depends the current package, and then let "apt-get -f install" or "aptitude -f install" autofix the dependencies
+2011-11-28T21:47:00.000Z	jelly		this would need to be done carefully
+2011-11-28T21:47:00.000Z	IppatsuMan	jelly	however, is not a problem of medibuntu packages. It is broken with ubuntu official repositories too
+2011-11-28T21:48:00.000Z	IppatsuMan		(I knew about dpkg, but I didn't want to mess up my system)
+2011-11-28T21:48:00.000Z	jelly	IppatsuMan	it's not, because libavutil-extra-51 doesn't seem to exist in oneiric AT ALL
+2011-11-28T21:48:00.000Z	jelly		based on your policy paste
+2011-11-28T21:48:00.000Z	jelly		I didn't check the actual repos
+2011-11-28T21:51:00.000Z	jelly	IppatsuMan	arlight then, I'll take your work for it being broken in ubuntu as well. :-)

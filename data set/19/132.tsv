@@ -1,0 +1,19 @@
+2012-08-23T05:35:00.000Z	omn		is there anyway to force chmod to follow symlinks?
+2012-08-23T05:35:00.000Z	omn		I see there is in BSD, but I don't see any option for it in the man page
+2012-08-23T05:36:00.000Z	jrib	omn	umm, did you try just using it...?
+2012-08-23T05:37:00.000Z	jrib	omn	yes
+2012-08-23T05:37:00.000Z	jrib	omn	however, if you list a symlink, chmod will act on the target
+2012-08-23T05:39:00.000Z	jrib	omn	what is it that you want to accomplish exactly?
+2012-08-23T05:39:00.000Z	omn	jrib	I'm trying to set permissions for a symfony project
+2012-08-23T05:40:00.000Z	omn	jrib	there are symlinks in the web folder that point to the web resources folders for the various symfony plugins
+2012-08-23T05:40:00.000Z	jrib	omn	I would just use find probably
+2012-08-23T05:41:00.000Z	omn	jrib	how do you mean?
+2012-08-23T05:42:00.000Z	jrib	omn	something like: find /path/to/directory -exec chmod 755 '{}'  (you probably don't want to do exactly this since all your files would become executable)
+2012-08-23T05:44:00.000Z	omn	jrib	awesome, I've never used -exec on find before, what does the '{}' in the command do?
+2012-08-23T05:44:00.000Z	jrib	omn	the result from find is placed there
+2012-08-23T05:44:00.000Z	jrib	omn	umm, actually you need a \; at the end too.  See the man page, but ask if it's not clear
+2012-08-23T05:44:00.000Z	omn	jrib	gotcha, that's really, really useful and I'm gonna use that for all kinds of things
+2012-08-23T05:45:00.000Z	jrib	omn	yes, very useful
+2012-08-23T05:49:00.000Z	omn	jrib	thank very much for you help. I'll answer my own question on the forums.
+2012-08-23T05:49:00.000Z	jrib	omn	no problem
+2012-08-23T05:58:00.000Z	omn	jrib	thanks, FYI the -L flag needs to be set on the find command to allow it to traverse the symlinks. After adding that it worked perfectly.

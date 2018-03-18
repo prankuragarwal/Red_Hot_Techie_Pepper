@@ -1,0 +1,18 @@
+2009-02-07T04:16:00.000Z	_dbd_l12	Syzothermy	have you perhaps set your network configuration manually in /etc/network/interfaces? I remember a bug with dhclient which in some scenario's could result in a gnome-network-manager related problem. Do you have more info as to when your problem started
+2009-02-07T04:17:00.000Z	Syzothermy	_dbd_l12	: I haven't, and it's always been like this, I just never bothered until now to ask
+2009-02-07T04:18:00.000Z	_dbd_l12	Syzothermy	is this wireless or wired network?
+2009-02-07T04:19:00.000Z	_dbd_l12	Syzothermy	WEP/WAP ?  Are you using ndiswrapper/don't know (it worked out of the box)
+2009-02-07T04:24:00.000Z	_dbd_l12	Syzothermy	well id' try to put the wireless config into the /etc/network/interfaces file (make a backup file first, as always) --> http://ubuntuforums.org/showthread.php?p=1884945&mode=threaded#post1884945
+2009-02-07T04:43:00.000Z	Syzothermy	_dbd_l12	it looks like http://ubuntuforums.org/showthread.php?p=1884945&mode=threaded#post1884945 is for wpa, i'm using wep
+2009-02-07T04:46:00.000Z	_dbd_l12	Syzothermy	well wep configuration in /etc/network/interfaces is even more simple. This is (basically what needs to be added): http://paste.pocoo.org/show/103020/ Fill in your essid and password
+2009-02-07T04:49:00.000Z	_dbd_l12	Syzothermy	does your wireless AP publish it essid (you can find prob. find this in the router config...))
+2009-02-07T04:51:00.000Z	_dbd_l12	Syzothermy	ok, then, if your wep-key is ASCII, you may need to append the "-s" switch to the wireless-key line. This should connect you via dhcp. You can restart your network by issuing sudo /etc/init.d/networking restart
+2009-02-07T05:06:00.000Z	_dbd_l12	Syzothermy	what does iwconfig give (you can paste at http://paste.pocoo.org)? Can you do a iwlist wlan0 scan ?
+2009-02-07T05:07:00.000Z	_dbd_l12	Syzothermy	yes
+2009-02-07T05:25:00.000Z	Syzothermy	_dbd_l12	: http://paste.pocoo.org/show/V4TOuU5zSgkesbSuQwwB/ <-- network-manager completely doesnt work with it being edited
+2009-02-07T05:27:00.000Z	_dbd_l12	Syzothermy	could you try sudo ifup wlan0 to see what that gives
+2009-02-07T05:28:00.000Z	Syzothermy	_dbd_l12	: anything else while I edit it again and reboot yet again? (the restart command doesnt seem to do anything)
+2009-02-07T05:29:00.000Z	_dbd_l12	Syzothermy	hang on for a while, could you try "ps -el | grep dhcp" after booting ?
+2009-02-07T05:39:00.000Z	Syzothermy	_dbd_l12	: I just realised that although the network-manager icon says i'm not connected to anything, I do indeed get a connection
+2009-02-07T05:39:00.000Z	_dbd_l12	Syzothermy	with the new /etc/network/interfaces of without ;-)
+2009-02-07T05:40:00.000Z	_dbd_l12	Syzothermy	well you can check that in the future with "ifconfig" in the terminal

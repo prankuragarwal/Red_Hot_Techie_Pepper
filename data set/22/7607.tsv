@@ -1,0 +1,22 @@
+2011-04-08T03:09:00.000Z	asadeddin_		anyone with any experience setting up openerp?  thanks :)
+2011-04-08T03:10:00.000Z	asadeddin_		well... basically i installed postgresql and it works, and i installed openerp-server, then the client, but the client tells me that it could not connect to server
+2011-04-08T03:11:00.000Z	asadeddin_		which one postgre or openerp server?
+2011-04-08T03:12:00.000Z	asadeddin_		yeah
+2011-04-08T03:13:00.000Z	asadeddin_		mmm... how do i check if openerp-server is running?
+2011-04-08T03:13:00.000Z	asadeddin_		just did ;)
+2011-04-08T03:14:00.000Z	Combatjuan	asadeddin_	$ ps -Af | grep postgres | grep bin
+2011-04-08T03:14:00.000Z	Combatjuan	asadeddin_	(That's for postgres, you'll have to do similar for open-erpg or whatever it is.  I have no idea what it is)
+2011-04-08T03:15:00.000Z	Combatjuan	asadeddin_	Ok good.  That means postgres is probably running just fine.
+2011-04-08T03:17:00.000Z	Combatjuan	asadeddin_	A configuration error seems likely.  Perhaps something like postgres wasn't setup when openerp was installed so openerp couldn't create it's database and now it's mad.
+2011-04-08T03:18:00.000Z	Combatjuan	asadeddin_	Try and find the error logs for openerp.  Hopefully it has a more specific error.
+2011-04-08T03:19:00.000Z	Combatjuan	asadeddin_	Here's another thought.  I think the default postgres might not allow local connections.  You should make sure that you can access it locally.  "$ psql"  Then "=$ SELECT NOW();" and Ctrl-D to exit.
+2011-04-08T03:22:00.000Z	Combatjuan	asadeddin_	Did it ask you for a password?  Or did you specify one on the command line with "--password"?
+2011-04-08T03:23:00.000Z	Combatjuan	asadeddin_	For user 'postgres'?
+2011-04-08T03:23:00.000Z	Combatjuan	asadeddin_	That's the default user.  Did you create another?
+2011-04-08T03:24:00.000Z	Combatjuan	asadeddin_	That's a simple command to test and make sure postgres is responding.  Enter that in the psql prompt.
+2011-04-08T03:24:00.000Z	Combatjuan	asadeddin_	(Just the "SELECT NOW();" part)
+2011-04-08T03:26:00.000Z	Combatjuan	asadeddin_	Ok.  That's good.  The prompt should be "<username>=#".  What does it have for username?
+2011-04-08T03:27:00.000Z	Combatjuan	asadeddin_	I thought you said that 'password authentication failed'.  Did you fix that?
+2011-04-08T03:28:00.000Z	Combatjuan	asadeddin_	You typed the password incorrectly you mean?
+2011-04-08T03:28:00.000Z	Combatjuan	asadeddin_	Ah.  Ok.
+2011-04-08T03:29:00.000Z	Combatjuan	asadeddin_	You got the private message?

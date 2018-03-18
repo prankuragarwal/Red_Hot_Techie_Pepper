@@ -1,0 +1,22 @@
+2007-03-14T11:53:00.000Z	theknownunsoldie		does anyone know of a text editor that allows multiple file find and replace options?
+2007-03-14T11:54:00.000Z	Ferret	theknownunsoldie	That would be confusing having them all on the screen at the same time. o.o  Most people probably use 'sed' for that, from the command line
+2007-03-14T11:56:00.000Z	theknownunsoldie	Ferret	will sed have a desired outcome? can it edit let's say 140 .asx files at once?
+2007-03-14T11:58:00.000Z	Ferret	theknownunsoldie	Sure.  It takes a bit of a while to learn, though, if you're not familiar with regexs
+2007-03-14T11:58:00.000Z	Ferret	theknownunsoldie	You *can* just about use it to edit binary files, but I'd write a perl script rather than take that effort.
+2007-03-14T12:00:00.000Z	theknownunsoldie	Ferret	i'm not really familiar with regexs. i know there is a software for windows called editpad pro that does what i'm trying to do. i'm surprised that there isn't anything for linux.
+2007-03-14T12:01:00.000Z	Ferret	theknownunsoldie	I wouldn't see the point of doing something to 140 files in a text editor... you'd need to have 140 files open at once?  Insane. ;p
+2007-03-14T12:01:00.000Z	Ferret	theknownunsoldie	Regexs are *well worth* learning if you're going to use Linux a lot, you can do a huge amount with them
+2007-03-14T12:02:00.000Z	theknownunsoldie	Ferret	I'm definitely going to look into it. It's just i guess i'm looking for the quick, easy fix that doesn't help you learn anything. laziness i suppose.
+2007-03-14T12:03:00.000Z	Ferret	theknownunsoldie	Well, is there a specific task you want to do now?  I could tell you the command and you could try and work out how it works. ;)
+2007-03-14T12:07:00.000Z	Ferret	theknownunsoldie	sed -i -e 's/123\.123\.123\.123/example.com/g' */*.asx
+2007-03-14T12:07:00.000Z	Ferret	theknownunsoldie	Although first try 'ls */*.asx' to see if all the files get captured
+2007-03-14T12:08:00.000Z	theknownunsoldie	Ferret	how does sed know where to find what i want to replace, and replace what i want it to find?
+2007-03-14T12:09:00.000Z	theknownunsoldie	Ferret	or is that just the first step?
+2007-03-14T12:09:00.000Z	Ferret	theknownunsoldie	It just takes a list of files at the end.  The bash shell generates that list of files from '*/*.asx'
+2007-03-14T12:10:00.000Z	Ferret	theknownunsoldie	If there's a list of specific files you want to do this with then the process is slightly different, I was assuming that from the courses/ directory, all .asx files in each subdirectory would be included
+2007-03-14T12:10:00.000Z	Ferret	theknownunsoldie	To see what I mean, try cd /course; ls */*.asx
+2007-03-14T12:10:00.000Z	Ferret	theknownunsoldie	It's not ls generating the list... you can replace the 'ls' command with 'echo' and it should be the same (although less readable)
+2007-03-14T12:13:00.000Z	theknownunsoldie	Ferret	ok i got the ls to work fine...thats pretty handy!
+2007-03-14T12:15:00.000Z	Ferret	theknownunsoldie	Almost all the commands in linux just take a plain list of files and expect you to use the shell or another command to choose them... so it's a more consistent interface
+2007-03-14T12:15:00.000Z	theknownunsoldie	Ferret	the possibilities finally seem worth the headaches of learning...
+2007-03-14T12:15:00.000Z	theknownunsoldie	Ferret	I'm going to fiddle with the sed command now, thanks alot for your help!

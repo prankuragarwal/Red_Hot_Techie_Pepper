@@ -1,0 +1,19 @@
+2005-07-12T05:00:00.000Z	nomed		hi
+2005-07-12T05:00:00.000Z	nomed		is there anyone that could explain why pbuilder doesn't work? pdebuild and then i receive some errors about packages auth.
+2005-07-12T05:01:00.000Z	seth_k	nomed	sure
+2005-07-12T05:01:00.000Z	seth_k	nomed	there's a file you need to create
+2005-07-12T05:01:00.000Z	nomed	seth_k	how?
+2005-07-12T05:01:00.000Z	seth_k	nomed	create a file in /etc/pbuilder/apt.config/apt.conf.d called allow-unauthenticated
+2005-07-12T05:02:00.000Z	seth_k	nomed	inside this file, put:
+2005-07-12T05:02:00.000Z	seth_k	nomed	then save and update your base.tgz
+2005-07-12T05:03:00.000Z	nomed	seth_k	i have that file .. and also an updated db .. :/
+2005-07-12T05:05:00.000Z	seth_k	nomed	maybe try rebuilding your base.tgz?
+2005-07-12T05:08:00.000Z	seth_k	nomed	i'm sorry that I don't have any other suggestions. what's the exact error?
+2005-07-12T05:12:00.000Z	nomed	seth_k	http://phpfi.com/68655
+2005-07-12T05:13:00.000Z	seth_k	nomed	that's exactly right. How about this, did you edit /etc/pbuilderrc and set up your apt config directory?
+2005-07-12T05:14:00.000Z	seth_k	nomed	(exactly right as in exactly the error I got when my authentication was wrong)
+2005-07-12T05:14:00.000Z	seth_k	nomed	permissions on the file allow-unauthenticated? you're doing everything right so far :/
+2005-07-12T05:17:00.000Z	nomed	seth_k	doesn't metter .. i changed it for a try
+2005-07-12T05:19:00.000Z	nomed	seth_k	just a Q more ... don't i need to chroot anywhere true? pbuilder create generate the chroot env and then i just need to call pdebuild for ex ..
+2005-07-12T05:19:00.000Z	seth_k	nomed	that's right. Here's my pdebuild line:
+2005-07-12T05:19:00.000Z	seth_k	nomed	pdebuild --auto-debsign --buildresult ../

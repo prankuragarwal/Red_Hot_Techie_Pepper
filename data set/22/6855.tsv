@@ -1,0 +1,22 @@
+2006-08-13T12:51:00.000Z	stopher		you just have to unlock sudo
+2006-08-13T12:52:00.000Z	stopher		sorry i meant root not sudo
+2006-08-13T12:54:00.000Z	stopher		Ubuntu protects itself that way
+2006-08-13T12:55:00.000Z	stopher		use the sudo command
+2006-08-13T12:56:00.000Z	stopher		can you add files to apache without being at the server? do it thru a network?
+2006-08-13T12:57:00.000Z	gdb	stopher	scp / ftp / etc them to /var/www or $HOME/public_html, yes.
+2006-08-13T12:57:00.000Z	gdb	stopher	You can also use an SMB mount and use the Windows file manager to access your pages without logging into the server itself.
+2006-08-13T12:57:00.000Z	gdb	stopher	Are you on your windows now?
+2006-08-13T12:59:00.000Z	gdb	stopher	Ah, well, doing that is going to be problematic.  You may want to make those files owned by your normal user account.  Then you'll want to use System -> Administration -> Shared Folders to share /var/www.  Then you will need to run "smbpasswd -a username" to add yourself to the smbpasswd file.  After you're done, you can mount the folder as a disk with Windows using \\server\name_used_in_the_control_panel
+2006-08-13T12:59:00.000Z	gdb	stopher	Like "net use w: \\my.server.com\web"
+2006-08-13T13:00:00.000Z	gdb	stopher	then you'll need to manually edit your /etc/samba/smb.conf file.  There are a number of examples in there to use.
+2006-08-13T13:03:00.000Z	stopher	gdb	is there a apache2 conf file i need to edit?
+2006-08-13T13:03:00.000Z	gdb	stopher	Not with regards to this samba share, no.
+2006-08-13T13:03:00.000Z	stopher	gdb	I mean to ftp into the server and add web files
+2006-08-13T13:04:00.000Z	gdb	stopher	Ah, the default apache2 install uses /var/www so if you're using the default installation, then there is no further apache configuration to do.
+2006-08-13T13:04:00.000Z	stopher	gdb	yeah i did the default UBUNTU LAMP
+2006-08-13T13:05:00.000Z	gdb	stopher	Then you should be good as far as apache is concerned.
+2006-08-13T13:06:00.000Z	gdb	stopher	ftp?  how are you trying to mount this on your windows machine?
+2006-08-13T13:07:00.000Z	gdb	stopher	that has nothing to do with samba.  So you're trying to access ftp://servername/web from WIndows?
+2006-08-13T13:08:00.000Z	gdb	stopher	in that case samba is not the answer and you'll need to install an ftp server.  I don't know what the default one is in Ubuntu.  Let me see if I can find out.
+2006-08-13T13:09:00.000Z	gdb	stopher	It would be ftp://192.168.1.101/var/www
+2006-08-13T13:11:00.000Z	gdb	stopher	well, an ftp server needs to be installed first, that would be proftpd -- as for configuring it to allow access to /var/www, I don't know how to do that.

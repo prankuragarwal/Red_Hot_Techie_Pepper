@@ -1,0 +1,24 @@
+2006-05-27T12:27:00.000Z	vars		how do i create a static ip addres?
+2006-05-27T12:28:00.000Z	slackern	vars	i have a headless router running with one static and one dhcp nic in it if you want the interfaces file
+2006-05-27T12:29:00.000Z	vars	slackern	yeah
+2006-05-27T12:29:00.000Z	slackern	vars	http://peterj1978.no-ip.com:8080/interfaces
+2006-05-27T12:30:00.000Z	slackern	vars	i had some problems setting it up first too but that one is running on the machine now.
+2006-05-27T12:31:00.000Z	slackern	vars	you could just wget the file and edit it
+2006-05-27T12:31:00.000Z	slackern	vars	otherwise you have links and lynx for cli http browsing.
+2006-05-27T12:31:00.000Z	vars	slackern	wow htat is easy
+2006-05-27T12:41:00.000Z	slackern	vars	not quite sure what you mean
+2006-05-27T12:43:00.000Z	slackern	vars	i can recommend smoothwall for routing/firewalling
+2006-05-27T12:43:00.000Z	slackern	vars	ahh you want a iptables portforwarding rule?
+2006-05-27T12:46:00.000Z	slackern	vars	1st row '/sbin/iptables -t nat -A PREROUTING -p tcp -i <EXTERNALINTERFACE> --destination-port 22000 -j DNAT --to-destination 192.168.0.1:22'
+2006-05-27T12:47:00.000Z	slackern	vars	'/sbin/iptables/ -A FORWARD -p tcp -i EXTERNALINTERFACE --destination-port 22 --destination 192.168.0.1 -j ACCEPT
+2006-05-27T12:48:00.000Z	slackern	vars	you needed firewall rules for a portforward?
+2006-05-27T12:48:00.000Z	slackern	vars	i just pasted 2 rows for you but you missed it.
+2006-05-27T12:51:00.000Z	slackern	vars	you need to change 'EXTERNALINTERFACE' to your external eth0 or eth1
+2006-05-27T12:52:00.000Z	slackern	vars	ahh what is the external interface of the firewall eth0 or eth1?
+2006-05-27T12:52:00.000Z	slackern	vars	and what is the destination ip of the machine that should get port 80 and 447 connections
+2006-05-27T12:53:00.000Z	slackern	vars	i could really recommend using shorewall and learning that, so much nicer to configure and maintain.
+2006-05-27T12:54:00.000Z	slackern	vars	and adress of machine that should get the port 80 and 447 connectiongs?
+2006-05-27T12:54:00.000Z	slackern	vars	No
+2006-05-27T12:55:00.000Z	slackern	vars	but it has a much smarter/easier way of setting up rules in config files to make it easy to view and edit.
+2006-05-27T12:55:00.000Z	slackern	vars	209.blah.blah.blah the adress i should use?
+2006-05-27T13:00:00.000Z	slackern	vars	http://peterj1978.no-ip.com:8080/ubuntu/iptables_script

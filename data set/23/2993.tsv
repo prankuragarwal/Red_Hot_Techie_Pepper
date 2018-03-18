@@ -1,0 +1,23 @@
+2008-09-11T03:33:00.000Z	tabakhase_		First i solve "error 18: selected cylinder exceeds maximum supported by bios" on my existing system, than i could use "ide=nodma" and MAYBE my system will work then like before...
+2008-09-11T03:35:00.000Z	tabakhase_		How to say "Hey grub, please install yourselv to /dev/hda1 witch should be mounted to /boot while starting"
+2008-09-11T03:36:00.000Z	soundray	tabakhase_	you want grub in a partition? What boot loader are you going to put in the master boot record?
+2008-09-11T03:37:00.000Z	tabakhase_	soundray	grub
+2008-09-11T03:37:00.000Z	soundray	tabakhase_	so you want to use MBR grub to chainload another grub in the partition?
+2008-09-11T03:37:00.000Z	tabakhase_	soundray	no -.-
+2008-09-11T03:38:00.000Z	soundray	tabakhase_	you want a bog-standard setup where grub goes to the MBR and boots a system with a separate boot partition?
+2008-09-11T03:38:00.000Z	tabakhase_	soundray	scrool up and read what i have written before, than you will understand
+2008-09-11T03:39:00.000Z	soundray	tabakhase_	no, I don't understand your problem from what you've written before, otherwise I wouldn't be asking.
+2008-09-11T03:41:00.000Z	tabakhase_	soundray	Errors: 1) DMA Fails - 2) Want to disable via pci=nodma - 3) get Error 18, to solve kernel must be at the beginning of my HDD - 4) for this i had to move /boot
+2008-09-11T03:41:00.000Z	soundray	tabakhase_	are you running off a live CD at the moment?
+2008-09-11T03:42:00.000Z	tabakhase_	soundray	no, old system sill works, but with damn lags and "I/O Wait" at 100%
+2008-09-11T03:43:00.000Z	soundray	tabakhase_	so you've booted the old system where /boot is on the /root partition
+2008-09-11T03:51:00.000Z	soundray	tabakhase_	okay, we have to take a little detour and copy your kernels and grub files to the new /boot. Run 'sudo umount /boot' to start
+2008-09-11T03:44:00.000Z	tabakhase_	soundray	jeps, on /dev/hda7
+2008-09-11T03:46:00.000Z	soundray	tabakhase_	can you do a 'mount /dev/hda1 /boot' and tell me what 'df -h /boot' says
+2008-09-11T03:46:00.000Z	soundray	tabakhase_	I mean sudo mount of course
+2008-09-11T03:48:00.000Z	tabakhase_	soundray	/dev/hda1 1020M 34M... 4% used, mounted to /boot
+2008-09-11T03:49:00.000Z	soundray	tabakhase_	good, it's mounted alright then. Is /boot/grub/ populated?
+2008-09-11T03:50:00.000Z	tabakhase_	soundray	dont realy understand you, but /boot is empty (just lost+found)
+2008-09-11T03:52:00.000Z	soundray	tabakhase_	then 'sudo mount /dev/hda1 /mnt'
+2008-09-11T03:52:00.000Z	tabakhase_	soundray	could we private message? its easyer for both =)
+2008-09-11T03:53:00.000Z	soundray	tabakhase_	#ubuntu-classroom is free, let's meet there

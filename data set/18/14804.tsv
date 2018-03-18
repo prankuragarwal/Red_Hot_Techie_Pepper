@@ -1,0 +1,18 @@
+2006-12-14T09:05:00.000Z	vanberge		hmm... has anybody disabled ip6 in 6.10?
+2006-12-14T09:05:00.000Z	vanberge		i tried what it says in the wiki and its still enabled.
+2006-12-14T09:06:00.000Z	cafuego_	vanberge	Not, it's not. it's making dns lookups slow because it tries AAAA entries first.
+2006-12-14T09:07:00.000Z	vanberge		cafuego, well thank you.... but that does also = slow internet browsing.
+2006-12-14T09:07:00.000Z	cafuego_	vanberge	Slow lookups yes, but it doesn't affect data transfer speeds at all.
+2006-12-14T09:07:00.000Z	cafuego_	vanberge	Did you search for 'v6' in the firefox about:config ?
+2006-12-14T09:08:00.000Z	vanberge		yes that part is already disabled / false
+2006-12-14T09:08:00.000Z	cafuego_		Um,
+2006-12-14T09:08:00.000Z	cafuego_		network.dns.disableIPv6 should be TRUE
+2006-12-14T09:08:00.000Z	vanberge		but when i do the ip a | grep inet6 i still get output
+2006-12-14T09:08:00.000Z	cafuego_	vanberge	Yes, whether the ipv6 kernel module is loaded bears no relation to whether firefox uses it or not
+2006-12-14T09:09:00.000Z	vanberge		cafuego, well i'd like to disable it across the board as it affects email, irc, etc.
+2006-12-14T09:09:00.000Z	vanberge		firefox is actually working well
+2006-12-14T09:09:00.000Z	cafuego_	vanberge	it just has ipv6 entries for localhost and somesuch on the interface; that's fine - they don't interfere at all
+2006-12-14T09:10:00.000Z	vanberge	cafuego_	the wiki says that you shouldnt get any output when doing the grep.  so, i guess i'm trying to understand why what i did has not disabled the kernel module?
+2006-12-14T09:11:00.000Z	cafuego_	vanberge	You blacklisted the ipv6 module?
+2006-12-14T09:11:00.000Z	cafuego_	vanberge	... and then rebooted?
+2006-12-14T09:12:00.000Z	vanberge	cafuego_	i did the first three steps and then rebooted.  the blacklist part says 'for dapper'

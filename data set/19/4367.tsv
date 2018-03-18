@@ -1,0 +1,19 @@
+2009-06-24T22:13:00.000Z	talcite_		Hi guys. What are the filesystem options in ubuntu server?
+2009-06-24T22:13:00.000Z	talcite_		I don't know what version is installed, it's a 2.6.24 kernel though
+2009-06-24T22:14:00.000Z	talcite_		I'm asking because I have a 6TB array which regularly uses over 32000 subdirectories, so ext3 is a poor choice at best
+2009-06-24T22:14:00.000Z	mdm	talcite_	what is stored on it?
+2009-06-24T22:15:00.000Z	talcite_	mdm	files in RDF format
+2009-06-24T22:15:00.000Z	talcite_	mdm	essentially xml files, but billions of them
+2009-06-24T22:16:00.000Z	mdm	talcite_	you basicly have little choice.  Lots of small IS is the worst thing you can do to a filesystem.  That beind said look into xfs, altho unlink ext it does require maintinance
+2009-06-24T22:17:00.000Z	talcite_	mdm	I see. I'll give XFS a read-over
+2009-06-24T22:17:00.000Z	mdm	talcite_	my second choice would be ext4, but I personnly am shy of it still
+2009-06-24T22:17:00.000Z	mdm	talcite_	but small random io is about the worst thing you can do to a fs
+2009-06-24T22:17:00.000Z	talcite_	mdm	I didn't think ext4 was available in 2.6.24
+2009-06-24T22:18:00.000Z	mdm	talcite_	hence the reason I suggested xfs first :)
+2009-06-24T22:20:00.000Z	talcite_	mdm	what did you mean when you said XFS requires maintenance?
+2009-06-24T22:22:00.000Z	mdm	talcite_	its requires defragmenting for one.  and should be evaulted for tuning.  Then again so should ext, which is why it suggests tunefs on creation
+2009-06-24T22:22:00.000Z	talcite_	mdm	I see... Hmm I need to to more reading. Thanks
+2009-06-24T23:26:00.000Z	mdm	talcite_	they dont even persist after you bring down the interface they are on, you need to script it, or put it in the network startup if you want it to persist.  Normally its done in /etc/network/interfaces
+2009-06-24T23:27:00.000Z	talcite_	mdm	ahh ok. Thanks. Btw, I ended up using reiserFS. It's supposed to have great performance on small files
+2009-06-24T23:28:00.000Z	mdm	talcite_	be carefull with it, I hear it takes seats out of your car and makes your girlfrind disaper under questionable circumstances
+2009-06-24T23:28:00.000Z	talcite_	mdm	=P I was just about to say it makes for a great story back at the la

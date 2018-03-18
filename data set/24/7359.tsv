@@ -1,0 +1,24 @@
+2005-07-26T13:45:00.000Z	HappyFool	ulisse	what do you want to know?
+2005-07-26T13:45:00.000Z	ulisse	HappyFool	what should be the correct fstab entry to mount a cifs at startup?
+2005-07-26T13:46:00.000Z	ulisse	HappyFool	I already can mount the cifs, but at startup i get an error
+2005-07-26T13:46:00.000Z	HappyFool	ulisse	what mount command do you use ? (remove any passwords, if necessary)
+2005-07-26T13:47:00.000Z	ulisse	HappyFool	mount -t cifs //192.168.0.1/data /mnt/mountpoint user=XXX pass=XXX  (I'm not sure about the double slash, at this moment...)
+2005-07-26T13:48:00.000Z	HappyFool	ulisse	hmm. ok, and what's your fstab line?
+2005-07-26T13:50:00.000Z	ulisse	HappyFool	i don't recall exactly (I'm not on that machine now) but something like //192.168.0.1/data /mnt/mountpoint cifs defaults,user=XX,pass=XXX 0 0
+2005-07-26T13:50:00.000Z	HappyFool	ulisse	let me see if i can get samba going here
+2005-07-26T13:55:00.000Z	HappyFool	ulisse	hmm. i presume your original command was supposed to look something like this: sudo mount -t cifs -o user=guest,pass= //127.0.0.1/public mnt  ?
+2005-07-26T13:56:00.000Z	ulisse	HappyFool	yes, it could be...
+2005-07-26T13:56:00.000Z	HappyFool	ulisse	although that's not working. bah
+2005-07-26T13:58:00.000Z	HappyFool	ulisse	do you have the smbfs module installed?
+2005-07-26T13:58:00.000Z	HappyFool	ulisse	i meant, package. as in, ubuntu package
+2005-07-26T13:59:00.000Z	ulisse		let me check, HappyFool
+2005-07-26T13:59:00.000Z	ulisse	HappyFool	yes, it is installed
+2005-07-26T14:03:00.000Z	HappyFool	ulisse	ok. I'm having no luck with '-t cifs', but '-t smbfs' is working
+2005-07-26T14:04:00.000Z	ulisse	HappyFool	it should be the same, cifs is the new smbfs, with support for encryption
+2005-07-26T14:04:00.000Z	ulisse	HappyFool	but I can't get the *fs mounted at startup...
+2005-07-26T14:05:00.000Z	HappyFool	ulisse	this line in fstab works for me :     '//127.0.0.1/public   /mnt/share smbfs   guest,rw        0       0'
+2005-07-26T14:05:00.000Z	HappyFool	ulisse	maybe cifs isn't working because of some smb.conf issue; hopefully not relevant
+2005-07-26T14:05:00.000Z	HappyFool	ulisse	anyway, as far as i can tell, your /etc/fstab line ought to work
+2005-07-26T14:06:00.000Z	HappyFool	ulisse	what error do you get?
+2005-07-26T14:06:00.000Z	ulisse	HappyFool	tomorrow I'll be on that machine, if you'll be online I'l tell you further informations...
+2005-07-26T14:07:00.000Z	HappyFool	ulisse	maybe tomorrow night ( ~ 18h00 onwards, GMT time, though i might be out)

@@ -1,0 +1,24 @@
+2008-06-22T17:35:00.000Z	milaks		anyone please?
+2008-06-22T17:36:00.000Z	glitsj16	milaks	did you verify your fstab points to the correct UUID of that hda9 drive ? "sudo blkid" will give you the numbers .. if they don't match, you will have to adjust /etc/fstab (take the verify step first and we'll see what needs/can be done)
+2008-06-22T17:37:00.000Z	milaks	glitsj16	thanks for responding. Well /etc/fstab/ is the same as before since I didnt mess with creating/deleting partitions till reboot and still not
+2008-06-22T17:38:00.000Z	milaks	glitsj16	I'll post fstab file for trying command I need to reboot into Linux, since I cant use net there I'm in Windows now
+2008-06-22T17:38:00.000Z	glitsj16	milaks	okay
+2008-06-22T17:39:00.000Z	milaks	glitsj16	this is my /etc/fstab : http://paste.ubuntu.com/22107/
+2008-06-22T17:39:00.000Z	glitsj16	milaks	i'll have a look and report back, hang on
+2008-06-22T17:39:00.000Z	milaks	glitsj16	thanks
+2008-06-22T17:42:00.000Z	glitsj16	milaks	looks ok (although refering to the partitons via UUID is considered a safer option) .. from what i can read in the first paste, it states that it can't find the resume image .. do you have resume=/dev/hda9 added to your kernel in grub ? check /boot/grub/menu.lst
+2008-06-22T17:44:00.000Z	milaks	glitsj16	I'll paste /boot/grub/menu.lst in a sec...
+2008-06-22T17:44:00.000Z	glitsj16	milaks	ok, no rush
+2008-06-22T17:45:00.000Z	glitsj16	milaks	ok checking ..
+2008-06-22T17:49:00.000Z	glitsj16	milaks	try adding "resume=/dev/hda9" at the end of line 132, that adds the swap partition as resume location (also usefull for hibernation btw) .. you seem to have memtest as default (line 14 --> default 7) .. is this the behaviour you want ?
+2008-06-22T17:50:00.000Z	milaks	glitsj16	default boot option is Windows atm
+2008-06-22T17:50:00.000Z	milaks	glitsj16	I'm going to try what you proposed me about resume now, and get back to tell you results, thanks for effort glitsj
+2008-06-22T17:51:00.000Z	glitsj16	milaks	line 14 oints to default 7, the entrees start counting from 0
+2008-06-22T17:51:00.000Z	glitsj16	milaks	so windows is default 8 i think in your case
+2008-06-22T17:52:00.000Z	milaks	glitsj16	no, when I reboot I get windows as default, here let me check again...
+2008-06-22T17:52:00.000Z	glitsj16	milaks	correction: my mistake, it's set to boot the wiondows one indeed
+2008-06-22T17:53:00.000Z	glitsj16	milaks	ok, depending on the size of your swap it could still be unable to resume the image (no clue how big that is) .. see you later
+2008-06-22T18:03:00.000Z	milaks	glitsj16	I addedd "resume=/dev/hda9" but it's the same... should I try making root to point to real root partition and not to swap?
+2008-06-22T18:03:00.000Z	milaks	glitsj16	/var is on root partition, so maybe that "resume image" is on it
+2008-06-22T18:04:00.000Z	glitsj16	milaks	that's worth a try yes
+2008-06-22T18:04:00.000Z	milaks	glitsj16	thanks glitsj16

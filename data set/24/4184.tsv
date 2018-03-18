@@ -1,0 +1,24 @@
+2007-08-14T14:48:00.000Z	wers		how do I make my Ubuntu feisty use the DNS of OpenDNS permanently?
+2007-08-14T14:49:00.000Z	wers		I will have to regularly change my DNS
+2007-08-14T14:50:00.000Z	wers		I do not know if I am getting my dns from dhcp because I am not familiar with this but what i know is that my connection to my router is set to dhcp
+2007-08-14T14:52:00.000Z	wers		actually, I already edited my prepend line
+2007-08-14T14:52:00.000Z	wers		here it is
+2007-08-14T14:53:00.000Z	wers		#prepend domain-name-servers 208.67.222.222, 208.67.220.220;
+2007-08-14T14:53:00.000Z	wers		my prepend line looks like that
+2007-08-14T14:54:00.000Z	wers		okay.. so all I have to do is to remove #?
+2007-08-14T14:56:00.000Z	wers		I have already removed the #. By the way, what does # do in configuraiton files?
+2007-08-14T14:57:00.000Z	wers		Oohh.. Thanks fyrestrtr! I presume, my dns would be permanently opendns' this way :)
+2007-08-14T14:57:00.000Z	fyrestrtr	wers	yes.
+2007-08-14T14:49:00.000Z	fyrestrtr	wers	system > administration > networking
+2007-08-14T14:49:00.000Z	wers	fyrestrtr	the problem is that, Ubuntu renews my DNS
+2007-08-14T14:49:00.000Z	fyrestrtr	wers	ah, you are getting dns from dhcp then.
+2007-08-14T14:51:00.000Z	fyrestrtr	wers	hit alt+f2, type gksudo gedit /etc/dhcp3/dhclient.conf and hit enter
+2007-08-14T14:52:00.000Z	wers	fyrestrtr	I'm on the dhclient file already
+2007-08-14T14:53:00.000Z	fyrestrtr	wers	when that file opens up you should see a line (commented out, means there is a # in front of it) goes like this > prepend domain-name-servers 127.0.0.1; -- uncomment it (remove the first #) and replace 127.0.0.1; with your dns server, for example 192.168.1.1;192.168.1.23; etc.
+2007-08-14T14:54:00.000Z	fyrestrtr	wers	this will make it so whatever information you get from dhcp, these servers are always on top of the resolve order. You can also disable the option to get dns information from dhcp, but that might cause you problems down the road.
+2007-08-14T14:54:00.000Z	fyrestrtr	wers	remove the #
+2007-08-14T14:54:00.000Z	fyrestrtr	wers	and then save the file.
+2007-08-14T14:56:00.000Z	fyrestrtr	wers	it turns a line into a comment, meaning the program will ignore it.
+2008-06-06T03:28:00.000Z	fyrestrtr	wers	what does this line say in your list? # howmany=
+2008-06-06T03:29:00.000Z	wers	fyrestrtr	all
+2008-06-06T03:29:00.000Z	fyrestrtr	wers	or, you can just do update-grub :P

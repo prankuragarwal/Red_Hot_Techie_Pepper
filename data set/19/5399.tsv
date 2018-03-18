@@ -1,0 +1,19 @@
+2008-10-31T09:36:00.000Z	trupheenix		i'm trying to develop device drivers on Ubuntu using the Linux device drivers book. However I cannot find some of the required headers as mentioned in the book. Can anyone help me out?
+2008-10-31T09:37:00.000Z	therealnanotube	trupheenix	what headers?
+2008-10-31T09:44:00.000Z	therealnanotube	trupheenix	looking at this: http://www.xml.com/ldd/chapter/book/ch03.html it doesn't seem that they refer to a "modules.h" at all.
+2008-10-31T10:00:00.000Z	trupheenix	therealnanotube	i tried the very first hello world module in the book. my compiler says cannot find linux/module.h and indeed it isn't there in /usr/include/linux what am i doing wrong?
+2008-10-31T10:00:00.000Z	therealnanotube	trupheenix	aha, linux/module.h is a lot different than just "module.h". you need the linux kernel headers.
+2008-10-31T10:01:00.000Z	trupheenix	therealnanotube	ok
+2008-10-31T10:01:00.000Z	trupheenix	therealnanotube	so where do i get them from?
+2008-10-31T10:01:00.000Z	trupheenix	therealnanotube	i'm guessing it's already in /usr/src ?
+2008-10-31T10:01:00.000Z	therealnanotube	trupheenix	apt-get install linux-headers-generic
+2008-10-31T10:02:00.000Z	therealnanotube	trupheenix	with sudo, of course
+2008-10-31T10:02:00.000Z	trupheenix	therealnanotube	i already have it
+2008-10-31T10:03:00.000Z	trupheenix	therealnanotube	i already have that package installed
+2008-10-31T10:04:00.000Z	trupheenix	therealnanotube	how ever when i checked under /usr/src/linux..../include/linux i found module.h over there
+2008-10-31T10:05:00.000Z	therealnanotube	trupheenix	hrm... you need some symlinks, but i don't recall which ones. :)
+2008-10-31T10:06:00.000Z	trupheenix	therealnanotube	:(
+2008-10-31T10:07:00.000Z	therealnanotube	trupheenix	maybe a symlink /usr/src/linux to /usr/src/linux-VERSIONNUMBER/include
+2008-10-31T10:07:00.000Z	therealnanotube	trupheenix	or just /usr/src/linux to /usr/src/linux-VERSIONNUMBER/
+2008-10-31T10:08:00.000Z	trupheenix	therealnanotube	yes yes.. sounds like a good idea
+2008-10-31T10:08:00.000Z	therealnanotube	trupheenix	try it, see what happens :)

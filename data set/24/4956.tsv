@@ -1,0 +1,24 @@
+2006-12-03T13:35:00.000Z	storkme		how do i check if a filesystem has errors on linux?
+2006-12-03T13:35:00.000Z	ArrenLex	storkme	fsck
+2006-12-03T13:36:00.000Z	storkme	ArrenLex	fsck with which args
+2006-12-03T13:36:00.000Z	ArrenLex	storkme	fsck /dev/<whatever>, as long as your filesystem is unmounted or mounted read-only.
+2006-12-03T13:37:00.000Z	storkme	ArrenLex	it wouldn't work - 'The superblock could not be read or does not describe a correct ext2 filesystem' :|
+2006-12-03T13:37:00.000Z	ArrenLex	storkme	what type of filesystem is it?
+2006-12-03T13:37:00.000Z	storkme	ArrenLex	it was ext3 when i made it
+2006-12-03T13:38:00.000Z	ArrenLex	storkme	Should work. Try running "sudo fsck.ext3 /dev/<whatever>" directly
+2006-12-03T13:39:00.000Z	storkme	ArrenLex	same error.. does it make a difference that i'm on a live cd ?
+2006-12-03T13:39:00.000Z	ArrenLex	storkme	You're trying to check a system on your hard drive from a live-cd? There shouldn't be any problems with that. Run "sudo fdisk -l" to make sure you're trying to check the correct filesystem, though.
+2006-12-03T13:40:00.000Z	storkme	ArrenLex	apparently /dev/sda doesn't contain a valid partition table which is my bad i think.. i guess that means i need to create one?
+2006-12-03T13:41:00.000Z	ArrenLex	storkme	o_O if it doesn't have a valid partition table, then there are no filesystems on it you can possibly check.
+2006-12-03T13:42:00.000Z	storkme	ArrenLex	i used to use a 10gb hd for my OS but i just removed it.. so presumably i need to reformat the larger hd and include a partition table so it can be a valid filesystem?
+2006-12-03T13:42:00.000Z	ArrenLex	storkme	Oh. I would guess yes, then.
+2006-12-03T13:42:00.000Z	storkme	ArrenLex	do you know if it's possible to do that without formatting the hard drive?
+2006-12-03T13:43:00.000Z	ArrenLex	storkme	how do you mean "without formatting the hard drive"? Do you mean there's information on it you want to keep, despite there being no partition table?
+2006-12-03T13:45:00.000Z	ArrenLex	storkme	explain to me again how you managed to put information onto a drive with no partition table?
+2006-12-03T13:45:00.000Z	storkme	ArrenLex	no idea, ArrenLex.. i just used mkfs.ext3 on it when i bought it
+2006-12-03T13:45:00.000Z	ArrenLex	storkme	That would make a partition table.
+2006-12-03T13:46:00.000Z	storkme	ArrenLex	how come fdisk doesn't think i have one
+2006-12-03T13:46:00.000Z	ArrenLex	storkme	I have no idea.
+2006-12-03T13:47:00.000Z	ArrenLex	storkme	OHH, pavoo has a good point. Can you please pastebin the output of sudo fdisk -l?
+2006-12-03T13:48:00.000Z	storkme	ArrenLex	Paavo, one second
+2006-12-03T13:50:00.000Z	storkme	ArrenLex	Paavo, http://rafb.net/paste/results/5ufBwt35.html

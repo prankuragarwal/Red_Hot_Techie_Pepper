@@ -1,0 +1,19 @@
+2007-11-17T00:42:00.000Z	LuitvD		how can I get something like a list of installed packages (not necessarily versions and all) and use that on another installation of ubuntu?
+2007-11-17T00:42:00.000Z	nickrud	LuitvD	dpkg --get-selections > mypackagelist
+2007-11-17T00:42:00.000Z	nickrud	LuitvD	on the other machine, dpkg --set-selections < mypackagelist && apt-get dselect-upgrade
+2007-11-17T00:51:00.000Z	nickrud	LuitvD	yes, it will use the list from the chrooted root
+2007-11-17T00:51:00.000Z	LuitvD	nickrud	cool, thanks
+2007-11-17T00:56:00.000Z	nickrud	LuitvD	you missed the last part, sudo apt-get dselect-upgrade
+2007-11-17T00:56:00.000Z	LuitvD	nickrud	doesn't do anything...
+2007-11-17T00:57:00.000Z	nickrud	LuitvD	I've done it several times, are you sure you have the right package list?
+2007-11-17T00:57:00.000Z	LuitvD	nickrud	not sure
+2007-11-17T00:58:00.000Z	LuitvD	nickrud	apt-get update won't work after chroot
+2007-11-17T01:05:00.000Z	nickrud	LuitvD	you don't really need to update, since you only want a list of packages that are already there.
+2007-11-17T01:05:00.000Z	LuitvD	nickrud	I want to install them now...
+2007-11-17T01:06:00.000Z	nickrud	LuitvD	in the chroot?
+2007-11-17T01:06:00.000Z	LuitvD	nickrud	yes
+2007-11-17T01:08:00.000Z	nickrud	LuitvD	what was the error? you need both dev and proc mounted for that, i believe
+2007-11-17T01:09:00.000Z	LuitvD	nickrud	I just did that... but it won't work... I'll doublecheck now...
+2007-11-17T01:15:00.000Z	LuitvD	nickrud	indeed, though I realized DNS was the defunct part just before he said I needed resolv.conf
+2007-11-17T02:07:00.000Z	nickrud	LuitvD	see topic
+2007-11-17T02:08:00.000Z	LuitvD	nickrud	where?

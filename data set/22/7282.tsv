@@ -1,0 +1,22 @@
+2006-10-28T16:39:00.000Z	profoX`		when you have a primary partition (/dev/hda1) and you create a logical partition, would it create the extended partition on /dev/hda2, or would it always create it on /dev/hda4 ?
+2006-10-28T16:40:00.000Z	Jowi	profoX`	normally you create a logical partition *inside* an extended one
+2006-10-28T16:41:00.000Z	profoX`	Jowi	yes.. let me rephrase.. when you have a primary partition (/dev/hda1) and you create an extended partition, would it create the extended partition on /dev/hda2, or would it always create it on /dev/hda4 ?
+2006-10-28T16:43:00.000Z	Jowi	profoX`	it will be set up in the order you create it. if you have only hda1 and the rest is empty space then the extended partition will be hda2 and the logical from hda3 and forward. if you have hda1 and hda2 as primary then the extended will be hda3. you chose yourself.
+2006-10-28T16:45:00.000Z	Jowi	profoX`	you can create hda1, hda2 as primary. hda3 as extended with hda4 and hda5 as logical inside it. then add hda6 as a fourth primary partition (the extended partition count as a primary partition)
+2006-10-28T16:45:00.000Z	profoX`	Jowi	yes that was what I thought, so that means that if you have /dev/hda1 and /dev/hda5, you also hve to have everything inbetween somewhere on your system, right?
+2006-10-28T16:45:00.000Z	Jowi	profoX`	yes. "sudo fdisk -l" will tell you the layout
+2006-10-28T16:46:00.000Z	Jowi	profoX`	the order itself is irrelevant. the only rule is 4 primary partitions. normally this means 3 normal primary and one extended one with more partitions in it.
+2006-10-28T16:47:00.000Z	profoX`	Jowi	yep i know, just needed to know that for sure because someone is claiming it was possible to have /dev/hda1 and then skip 2, 3 and just create 4 as extended and logical partitions inside of the extended one.. but thats not possible then.. because there's a gap where 2 and 3 should be
+2006-10-28T16:48:00.000Z	profoX`	Jowi	thanks for confirming :)
+2006-10-28T16:48:00.000Z	Jowi	profoX`	you can predifine 2 empty partitions in between if you want and set them up later without problem if you want. be careful that your order will not change when you alter them afterwards though (/etc/fstab is a bit childish that way hehe)
+2006-10-28T16:48:00.000Z	Jowi	profoX`	no probs
+2006-10-28T16:51:00.000Z	profoX`	Jowi	alright.. makes sense.. but 2 empty partitions..? you mean already formatted partitions without data, or partitions that are really unformatted ?
+2006-10-28T16:51:00.000Z	Jowi	profoX`	empty partitions. does not need to have a formatted filesystem on them
+2006-10-28T16:52:00.000Z	profoX`	Jowi	okay, good to know. how would that look like in fdisk -l ? anyway.. i thought unformatted space was always 1 big block of data, didnt know you could seperate 2 pieces of unformatted space next to eachother
+2006-10-28T16:53:00.000Z	Jowi	profoX`	for example (before bedtime): primary 1 ext3, primary 2 empty, primary 3 empty, primary 4 extended, logical (will be hda5) swap, logical (hda6) fat32.
+2006-10-28T16:53:00.000Z	Jowi	profoX`	it is quite easy. use gparted :)
+2006-10-28T16:53:00.000Z	Jowi	profoX`	experiment without applying the changes
+2006-10-28T16:54:00.000Z	profoX`	Jowi	hehe thanks, but, i was just asking to know a little more about some details about the structure of the partitions :) dont really have any practical need for it
+2006-10-28T16:54:00.000Z	profoX`	Jowi	but thanks for the support
+2006-10-28T16:55:00.000Z	Jowi	profoX`	good luck. 'night!
+2006-10-28T16:55:00.000Z	profoX`	Jowi	goodnight :)

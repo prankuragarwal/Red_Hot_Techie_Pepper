@@ -1,0 +1,21 @@
+2007-10-27T22:15:00.000Z	Blama		Hi all. I have a problem with Ubuntu. Whenever I boot into the non recovery mode the screen goes blank and my monitor looses signal and it never comes back. But If I boot into recovery mode all I have to do to get the login screen is type GDM and I can log in and everything is fine. Is there something I can do?
+2007-10-27T22:17:00.000Z	timbobsteve	Blama	sounds like the resolution for your normal boot mode is too high for your monitor.   Try editing /etc/X11/xorg.conf and putting a different resolution at the front.... something safe like 800x600.... if that works then you can go higher.... but start small
+2007-10-27T22:17:00.000Z	timbobsteve	Blama	sing out if you need a hand editing xorg.conf
+2007-10-27T22:17:00.000Z	Blama	timbobsteve	Is there an option I can put that would lower only the boot resolution? Or maybe remove the boot splash altoether and replace it?
+2007-10-27T22:18:00.000Z	timbobsteve	Blama	yeh.... edit /boot/grub/menu.lst..... there is an option in there called defoptions= ..... it usually says "defoptions=quiet splash".... remove the splash from there and usplash goes away.
+2007-10-27T22:23:00.000Z	Blama	timbobsteve	Thanks man. Do you have any idea what this error means as well? "Internal error failed to initialize HAL!" It comes up whenever I log on and it seems to take away the Hardware Viewer.
+2007-10-27T22:24:00.000Z	timbobsteve	Blama	that is not a good sign.... it means that you may have corrupted you group listings.... not cool I did it too... it i a bug with the current build of gnome-user-config. Have you modified any users or added groups/users lately?
+2007-10-27T22:25:00.000Z	Blama	timbobsteve	Well I don't know. A fresh install of Gutsy gave me the error "The configuration could not be loaded. You are not allowed to access the system configuration." To fix that I did aptitude reinstall dbus.
+2007-10-27T22:27:00.000Z	timbobsteve	Blama	that isn't good :/ ..... it happened to me too..... you have to manually edit /etc/group and readd the user "haldaemon" to a few groups.... that will get rid of the HAL failed messages at startup
+2007-10-27T22:28:00.000Z	timbobsteve	Blama	sing out if you need a hand with doing that
+2007-10-27T22:28:00.000Z	Blama	timbobsteve	Do you have a list of the groups or a website with them?
+2007-10-27T22:28:00.000Z	timbobsteve	Blama	2 seconds and I will get a list for you :D
+2007-10-27T22:30:00.000Z	timbobsteve	Blama	haldaemon is a member of "cdrom + floppy + audio + video + plugdev + powerdev"..... make sure haldaemon is in each of those (don't use the user config tool, it will only make it worse....)..... really canonical/ubuntu-devs should be all over this bug.... it has the potential to cripple heaps of systems....
+2007-10-27T22:31:00.000Z	Blama	timbobsteve	Should I make a bug report thingy?
+2007-10-27T22:33:00.000Z	Blama	timbobsteve	Thanks a lot man, you managed to do in ten minutes what I have been asking for a week.
+2007-10-27T22:33:00.000Z	timbobsteve	Blama	I only knew because it happned to me too :P glad I could help though
+2007-10-27T22:33:00.000Z	timbobsteve	Blama	don't forget to log out and log back in to make sure it worked...
+2007-10-27T22:34:00.000Z	Blama	timbobsteve	Yeah I have to boot into Ubuntu first. I wish mIRC worked on Ubuntu
+2007-10-27T22:34:00.000Z	timbobsteve	Blama	if you are into masochism then you can try running it through WINE :P hahahah.... I prefer Xchat and Pidgin for iRC though
+2007-10-27T22:35:00.000Z	Blama	timbobsteve	I love the theme I have for mIRC, and all the settings I have
+2007-10-27T23:09:00.000Z	Blama	timbobsteve	you still here?

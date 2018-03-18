@@ -1,0 +1,18 @@
+2009-10-21T08:29:00.000Z	queso_		I'd like to run a 64bit virtual machine, how can I find out if my mother board supports 64-bit virtualization? I looked in the BIOS and couldn't find anything about it.
+2009-10-21T08:31:00.000Z	ZykoticK9	queso_	to check if your CPU has virtualization (64bit virtualization?) "$ cat /proc/cpuinfo" (Intel verify "vmx" is present, for AMD verify "svm" is present)
+2009-10-21T08:32:00.000Z	queso_	ZykoticK9	will "vmx" be present if it supports it, or if it is enabled?
+2009-10-21T08:33:00.000Z	ZykoticK9	queso_	if it shows up in cpuinfo - that means your cpu supports it - enable in whatever Virtualization software you are using.
+2009-10-21T08:34:00.000Z	queso_	ZykoticK9	oh, I don't enable it in the bios if it's supported?
+2009-10-21T08:35:00.000Z	ZykoticK9	queso_	bios? doubt it - but in say VirtualBox there is an option to enable that support for each VM.
+2009-10-21T08:36:00.000Z	ZykoticK9	queso_	fyi kvm (linux kenel virtual machine sw) requires that your cpu have that support (qemu, which kvm is sorta based on does not)
+2009-10-21T08:37:00.000Z	queso_	ZykoticK9	 `cat /proc/cpuinfo|grep vmx` gives me nothing, guess my mb doesn't support it :(
+2009-10-21T08:38:00.000Z	ZykoticK9	queso_	you are running "cat /proc/cpuinfo | grep vmx" with the spaces right?  did you also try "cat /proc/cpuinfo | grep svm"?
+2009-10-21T08:39:00.000Z	ZykoticK9	queso_	actually looks like the spaces don't matter ;)
+2009-10-21T08:39:00.000Z	queso_	ZykoticK9	yeah, I tried both . . don't get anything back. :( pooh.
+2009-10-21T08:40:00.000Z	ZykoticK9	queso_	that is unfortunate.  CPU Virtualization is VERY cool.
+2009-10-21T08:40:00.000Z	queso_	ZykoticK9	but, like, I can still do virtualization, right? just without 64 bit?
+2009-10-21T08:41:00.000Z	ZykoticK9	queso_	yes but not kvm!  VMware or Virtualbox or Qemu will work fine - just not at full speed :(  & some OSs/systems won't work
+2009-10-21T08:41:00.000Z	queso_	ZykoticK9	awe, man! why'd I get this mb then?  ugh, this totally stinks!
+2009-10-21T08:42:00.000Z	queso_	ZykoticK9	I use kvm at work . . but here at home I'm trying virtualbox.  but man, I just built this system.  wonder why my friends recommended this mb if it doesn't support virtualization.
+2009-10-21T08:42:00.000Z	ZykoticK9	queso_	you "might" even be able to run 64bit in VBox?  probably does require the virtualization but not sure - i know you can run 64bit on 32bit hosts
+2009-10-21T08:45:00.000Z	queso_	ZykoticK9	well, thanks for your help, even if I found out something I'm totally upset about now :( lol

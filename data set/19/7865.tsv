@@ -1,0 +1,19 @@
+2007-06-15T15:52:00.000Z	themod		Can someone help me with an ext3 partition that won't let me write to it?
+2007-06-15T15:54:00.000Z	themod		 Can someone help me with an ext3 partition that won't let me write to it?
+2007-06-15T15:54:00.000Z	nickrud	themod	could you post the output of fdisk -l   and the contents of /etc/fstab on a pastebin
+2007-06-15T15:54:00.000Z	themod	nickrud	sure, one second
+2007-06-15T15:56:00.000Z	themod	nickrud	http://pastebin.com/929970
+2007-06-15T15:58:00.000Z	nickrud	themod	and you can't write to sda2 i take it?
+2007-06-15T15:58:00.000Z	themod	nickrud	correct
+2007-06-15T15:59:00.000Z	nickrud	themod	what permissions do you have on /media/sda2 ?
+2007-06-15T16:00:00.000Z	nickrud	themod	and who's the owner?
+2007-06-15T16:00:00.000Z	themod	nickrud	drwxr-xr-x 3 root root     4096 2007-06-15 17:47 sda2
+2007-06-15T16:00:00.000Z	nickrud	themod	does sudo touch /media/sda2/testfile work?
+2007-06-16T16:01:00.000Z	themod		yes
+2007-06-16T16:01:00.000Z	themod	nickrud	yes
+2007-06-16T16:02:00.000Z	nickrud	themod	then you have several choices: give yourself ownership of the directory, or change the write permissions for other users
+2007-06-16T16:02:00.000Z	nickrud	themod	there's one more, group stuff, but it's probably overkill
+2007-06-16T16:02:00.000Z	themod	nickrud	is one option better than another?
+2007-06-16T16:03:00.000Z	nickrud	themod	if it's only you on the machine, give yourself ownership
+2007-06-16T16:03:00.000Z	themod	nickrud	lol yeah, i was just gonna say that I only want my user to have access to write
+2007-06-16T16:03:00.000Z	nickrud	themod	there you go :)

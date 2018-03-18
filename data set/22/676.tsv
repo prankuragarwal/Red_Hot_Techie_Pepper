@@ -1,0 +1,22 @@
+2011-05-16T20:05:00.000Z	apoage		hi have just litle problem with sound ,, just have no sound since yesterday(it were work for last year) .. no idea why .. have alc887 by lshw and manufacturer of my motherboard .. lspci and lshw -c sound (with sudo) says this http://www.pasteall.org/21672 and  in sound properties i see no hardware ..  anyone some idea
+2011-05-16T20:07:00.000Z	Lateralis	apoage	it doesn't look like your sound kernel module has been loaded
+2011-05-16T20:08:00.000Z	apoage	Lateralis	emm ok triing google again ..
+2011-05-16T20:09:00.000Z	apoage	Lateralis	thanks
+2011-05-16T20:09:00.000Z	Lateralis	apoage	If the module is properly loaded it will appear on the "configuration" line as "driver = <something>"
+2011-05-16T20:10:00.000Z	Lateralis	apoage	If it is an Intel sound card, then you could probably modprobe it with snd_hda_intel
+2011-05-16T20:14:00.000Z	apoage	Lateralis	ok thanks
+2011-05-16T20:14:00.000Z	Lateralis	apoage	No worries.  I just had a quick google myself.  Looks like the snd_hda_intel module will work with your hardware
+2011-05-16T20:18:00.000Z	apoage	Lateralis	well it worked somehow for long time sometimes failed to load(or crashed sound system) but this time i just cant load it ..  .. i just trying to find core of my problem ..
+2011-05-16T20:19:00.000Z	Lateralis	apoage	Strange.  Did you do a dist upgrade, and that broke your sound?  Or was it working, and now not?
+2011-05-16T20:24:00.000Z	apoage	Lateralis	well for now it absolutely don't work .. before this issue i did not nothing special just compiles newest wine it   shud not nothing to do with audio system maybe some update in packages no idea ill check log
+2011-05-16T20:27:00.000Z	Lateralis	apoage	Did you just try to add snd_hda_intel using modprobe?
+2011-05-16T20:31:00.000Z	apoage	Lateralis	omg white it looks like ti works ..
+2011-05-16T20:35:00.000Z	Lateralis	apoage	Excellent.  it might be that asla-base is borked and needs correcting.  But just to confirm: your sound is now working again after you used modprobe?
+2011-05-16T20:38:00.000Z	apoage	Lateralis	so it works now but have no idea how to get it to work.. any way thanks .. and sorry for my bad eng.  .. probably yes but im not sure about alsa-base.conf ill have to check it later .. for now im going to enjoy that sound :)
+2011-05-16T20:39:00.000Z	Lateralis	apoage	Glad it is working again.  What you can now do is check alsa-base.conf for an obvious error, you can modprobe every time you boot up, or add the modules to /etc/modules
+2011-05-16T20:41:00.000Z	apoage	Lateralis	about that modules it looks like workaround abit .. .. anz waz thanks alot ill have to go ..
+2011-05-16T20:41:00.000Z	Lateralis	apoage	well that module is the driver for your hardware
+2011-05-16T20:42:00.000Z	Lateralis	apoage	the fact that it isn't loaded properly at boot is strange.  But you're right, it is a bit of a work around.  There's a reason why alsa-base.conf isn't correct and that will need a bit of investigation
+2011-05-16T20:43:00.000Z	Lateralis	apoage	This though will help -- wget http://www.alsa-project.org/alsa-info.sh -O alsa-info.sh && bash alsa-info.sh
+2011-05-16T20:45:00.000Z	apoage	Lateralis	ok im planing to rewrite that conf sometimes soon .. ok anz waz thanks ..
+2011-05-16T20:45:00.000Z	Lateralis	apoage	 Cool.  Glad your sound is working again!

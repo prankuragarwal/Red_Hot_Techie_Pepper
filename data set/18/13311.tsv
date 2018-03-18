@@ -1,0 +1,18 @@
+2006-05-06T05:53:00.000Z	jml		what's the canonical way to reconfigure networking options (static vs dhcp etc) on an ubuntu server?
+2006-05-06T05:53:00.000Z	jml		something seems to be ignoring my /etc/network/interfaces file and changing the IP at 6:25am :\
+2006-05-06T05:54:00.000Z	jml		not that I can recall.
+2006-05-06T05:55:00.000Z	jml		me either
+2006-05-06T05:56:00.000Z	dli	jml	it could be on dhcp, "ps fx -A|grep dhclient", "ps fx -A|grep dhcpcd", "ps fx -A|grep pump"
+2006-05-06T05:56:00.000Z	jml	dli	yeah right. dhclient is running
+2006-05-06T05:57:00.000Z	dli	jml	find out why
+2006-05-06T05:57:00.000Z	jml		I'm on it.
+2006-05-06T06:03:00.000Z	jml	dli	something in cron.daily is triggering it, I'll wager
+2006-05-06T06:06:00.000Z	dli	jml	that's very bad
+2006-05-06T06:07:00.000Z	jml	dli	yes.
+2006-05-06T06:08:00.000Z	jml	dli	I honestly have no clue what's doing it. I've killed the process, and I'll test the cron job now to see if it triggers the same ip change.
+2006-05-06T06:09:00.000Z	dli	jml	make sure you are not rooted, if a weird cron job shows up
+2006-05-06T06:09:00.000Z	jml	dli	good call.
+2006-05-06T06:10:00.000Z	dli	jml	rkhunter , chkrootkit
+2006-05-06T06:11:00.000Z	jml	dli	yeah, I reckon I'd better
+2006-05-06T06:11:00.000Z	jml	dli	I think it might just be that the dhclient process was running, and something in the cron job sent it a sighup.
+2006-05-06T06:11:00.000Z	jml	dli	but a little paranoia is healthy.

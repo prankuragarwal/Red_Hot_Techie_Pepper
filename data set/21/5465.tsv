@@ -1,0 +1,21 @@
+2012-10-08T12:41:00.000Z	geirha	mhr	better to set PATH than using full paths though, but redirect all output from your cronjob to a file and see what it fails on. 1 2 * * * thescript >/tmp/thescriptoutput 2>&1
+2012-10-08T12:45:00.000Z	geirha	mhr	sounds like the files you want to add are not in the directory you expect
+2012-10-08T13:01:00.000Z	geirha	mhr	don't do GREP=`which grep` etc. That's completely pointless
+2012-10-08T13:02:00.000Z	geirha	mhr	And always test the exit status of cd. In your case. cd /root/Test/ || exit    especially when one of the following commands is an rm
+2012-10-08T13:03:00.000Z	geirha	mhr	append 2>&1 at the end there so we also see the error output
+2012-10-08T13:04:00.000Z	mhr	geirha	ok
+2012-10-08T13:06:00.000Z	geirha	mhr	Then possibly the cd command failed
+2012-10-08T13:09:00.000Z	geirha	mhr	Possibly. The error output should help identify the problem ...
+2012-10-08T13:18:00.000Z	geirha	mhr	any reason why you don't just use keys instead of doing crazy hacks with expect?
+2012-10-08T13:22:00.000Z	geirha	mhr	Anyway, for the nth time, redirect stderr to the some file so we can see what error messages it gives
+2012-10-08T13:23:00.000Z	mhr	geirha	ok i am now getting error messages from cron. and it is while copying new files.
+2012-10-08T13:25:00.000Z	geirha	mhr	Hard to say without knowing what it tries to do exactly
+2012-10-08T13:30:00.000Z	geirha	mhr	the interact at the end might be expecting a terminal
+2012-10-08T13:31:00.000Z	mhr	geirha	oh ok, i got the script from google.
+2012-10-08T13:31:00.000Z	geirha	mhr	Really really onsider using public key authentication instead.
+2012-10-08T13:34:00.000Z	geirha	mhr	your bash script is using a lot of bad practices btw. The kind of bad things you learn from the Advanced Bash-Scripting Guide. See /topic #bash  for some better resources and help in writing more robust scripts.
+2012-10-08T13:39:00.000Z	mhr	geirha	can you please point some, so that I can improve the script.
+2012-10-08T13:40:00.000Z	geirha	mhr	point out some weaknesses of the script you mean?
+2012-10-08T13:41:00.000Z	mhr	geirha	yeah. Some that i now got is to use absolute paths.
+2012-10-08T13:41:00.000Z	geirha	mhr	That's not really good advice
+2012-10-08T13:42:00.000Z	geirha	mhr	Anyway /join #bash  and I'll trigger some factoids for you

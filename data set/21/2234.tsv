@@ -1,0 +1,21 @@
+2011-12-20T01:12:00.000Z	bf4648		Alright, I give up....I can't get my command line to work...I'm trying to remove every zip except the file that I find using the following command line: find /var/www/its/tmp/ -maxdepth 0 -name test_mp4s.zip -prune -exec rm -f /var/www/its/*.zip '{}' ';'
+2011-12-20T01:12:00.000Z	bf4648		This just removes every .zip file
+2011-12-20T01:13:00.000Z	ssta	bf4648	there's a lot of ways to do it.  Maybe the easiest to follow: ls /path | grep -v test.zip | xargs rm
+2011-12-20T01:15:00.000Z	ssta	bf4648	umm, ls /path/*.zip
+2011-12-20T01:19:00.000Z	ssta	bf4648	do each part of the pipe seperately.  Start with: ls /path/*.zip.  Does that list all the zips?
+2011-12-20T01:20:00.000Z	ssta	bf4648	okay, now ls /path/*.zip | grep -v oneToKeep.zip (the -v says "print everything EXCEPT that one")
+2011-12-20T01:21:00.000Z	ssta	bf4648	including the one you want to keep?
+2011-12-20T01:23:00.000Z	ssta	bf4648	okay, so add "|xargs rm" to the command, and that should delete the rest of them
+2011-12-20T01:27:00.000Z	ssta	bf4648	ls -l /var/www/its/tmp/ | pastebinit
+2011-12-20T01:32:00.000Z	ssta	bf4648	oh, the filenames have spaces in?
+2011-12-20T01:32:00.000Z	ssta	bf4648	spaces in filenames are *evil*!
+2011-12-20T01:34:00.000Z	ssta	bf4648	FOO=$(ls /path/*.zip|grep -v onetokeep.zip); for filename in "${FOO}"; do ls "${filename}; done
+2011-12-20T01:34:00.000Z	ssta	bf4648	run that, make sure it outputs the right filenames, if it does then replace the second ls with rm
+2011-12-20T01:35:00.000Z	ssta	bf4648	FOO=$(ls /path/*.zip|grep -v onetokeep.zip); for filename in "${FOO}"; do ls "${filename}"; done
+2011-12-20T01:35:00.000Z	ssta	bf4648	but seriously...save yourself a LOT of pain.  Avoid spaces in filenames (if you can)
+2011-12-20T01:36:00.000Z	ssta	bf4648	awesome, well done
+2011-12-20T01:37:00.000Z	ssta	bf4648	remember, spaces in filenames are evil :)
+2011-12-20T01:37:00.000Z	ssta	bf4648	it's pretty loigical, if I'd known there were spaces to start with we could have gond straight there :)
+2011-12-20T01:38:00.000Z	ssta	bf4648	FOO=$(...) says "assign the output of the command in $(...) to the variable FOO.  for file in "${FOO}"...the "" around "${FOO}" stops bash from splitting words around spaces.  The rest shiould be self explanatory (but ask if you don't understand it)
+2011-12-20T01:41:00.000Z	ssta	bf4648	then they're gone.  Sorry
+2011-12-20T01:44:00.000Z	ssta	bf4648	and use /tmp for testing stuff.  mkdir /tmp/somewheretotest and then test in there

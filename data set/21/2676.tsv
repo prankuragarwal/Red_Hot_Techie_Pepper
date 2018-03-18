@@ -1,0 +1,21 @@
+2009-07-29T23:54:00.000Z	sangandongo		I think my question was lost in the mix
+2009-07-29T23:55:00.000Z	sangandongo		I installed the linux-virtual metapackage and upon reboot, i lost all networking
+2009-07-29T23:55:00.000Z	sangandongo		i noticed this wasn't isolated to the virtual package
+2009-07-29T23:55:00.000Z	sangandongo		it had to do with the -server kernel
+2009-07-29T23:55:00.000Z	sangandongo		anyone else notice this or know whether this is a reported bug?
+2009-07-29T23:56:00.000Z	sangandongo		i've done searching for a few days but have been unable to find an answer
+2009-07-29T23:58:00.000Z	stefg	sangandongo	the server kernel might support a different set of network hardware. what does <lspci | grep net> tell you ?
+2009-07-29T23:58:00.000Z	sangandongo	stefg	it does not
+2009-07-30T00:07:00.000Z	sangandongo	stefg	i'm a bit rusty, how do i go about adding support for those network drivers in the -server kernel? i will have to compile a custom?
+2009-07-30T00:11:00.000Z	stefg	sangandongo	first find out what hardware you have, then you'll see what you have to do to get it working (usually soemone has paved the way already)
+2009-07-30T00:12:00.000Z	sangandongo	stefg	one moment.
+2009-07-30T00:13:00.000Z	sangandongo	stefg	Broadcom NetXtreme BCM5752M Gig Eth and Atheros Comm AR5121 Wireless 802.11abg
+2009-07-30T00:15:00.000Z	stefg	sangandongo	that's wireless network... the -server kernel surely does not deal with these in depth. Any particular reason you need the -server kernel ?
+2009-07-30T00:16:00.000Z	sangandongo	stefg	because it gets installed by default when installing the linux-virtual metapackage
+2009-07-30T00:16:00.000Z	stefg	sangandongo	what are you doing?  set up a virtual machine?
+2009-07-30T00:16:00.000Z	sangandongo	stefg	yes.
+2009-07-30T00:18:00.000Z	sangandongo	stefg	KVM/QEMU load fine, I get all the hardware support, but was getting issues after the installation point. I am now attempting other paths to get the vm to work successfully.
+2009-07-30T00:18:00.000Z	stefg	sangandongo	the virtual guest machine does only see some virtualized interfaces ... how come that you see physical hardware fom inside the virtual machine ?
+2009-07-30T00:18:00.000Z	sangandongo	stefg	i think the matter is getting a bit muddled.
+2009-07-30T00:19:00.000Z	sangandongo	stefg	I think you've pointed me in a better direction anyhow
+2009-07-30T00:19:00.000Z	sangandongo	stefg	i'll see if i can figure out another way to deal with this.

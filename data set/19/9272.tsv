@@ -1,0 +1,19 @@
+2007-02-03T11:39:00.000Z	klypso		How do I reset or change the root password without screwing everything up?
+2007-02-03T11:40:00.000Z	daviey	klypso	sudo passwd
+2007-02-03T11:41:00.000Z	klypso	daviey	ah, but I messed with permissions and cannot sudo properly
+2007-02-03T11:41:00.000Z	daviey	klypso	do you have a user that can sudo (the original user)?
+2007-02-03T11:42:00.000Z	daviey	klypso	huh?
+2007-02-03T11:42:00.000Z	daviey	klypso	root password from default is disabled.  sudo passwd" enables it
+2007-02-03T11:43:00.000Z	klypso	daviey	I changed permissions so that a seperate password would be used for my user account and the root, and now I cannot sudo and also cannot use the root password I set
+2007-02-03T11:44:00.000Z	daviey	klypso	you need to edit /etc/group and allow sudo access to create a root passwd
+2007-02-03T11:45:00.000Z	klypso	daviey	read-only file
+2007-02-03T11:45:00.000Z	daviey	klypso	if you have already set a root password then kill it with "sudo passwd -l root"  then recreate it with "sudo passwd".  To access root use the command "su" *not* sudo
+2007-02-03T11:45:00.000Z	klypso	daviey	also, the root password I set does not seem to work.  Can I reset it without root permissions?
+2007-02-03T11:46:00.000Z	daviey	klypso	no you *need* sudo access
+2007-02-03T11:46:00.000Z	klypso	daviey	but I need a password to sudo
+2007-02-03T11:48:00.000Z	daviey	klypso	I think if you load up the livecd you could mount the partition then edit /etc/groups
+2007-02-03T11:48:00.000Z	klypso	daviey	that would let me use my user password to sudo things?
+2007-02-03T11:49:00.000Z	klypso	daviey	as opposed to the unknown root password
+2007-02-03T11:49:00.000Z	daviey	klypso	yes, need to make the user an 'admin' i believe
+2007-02-03T11:49:00.000Z	klypso	daviey	thank you.  I will try that.
+2007-02-03T11:49:00.000Z	daviey	klypso	that would give you sudo access back.  then with sudo access you can enable the root account.  Remember you can't (default) login as root over ssh

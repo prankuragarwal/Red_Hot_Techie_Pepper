@@ -1,0 +1,21 @@
+2009-06-05T19:25:00.000Z	slestak		how do i set the domainname for a jaunty desktop that uses NetworkManager?  It usually just works for me, but this one laptop is not.  hostname -f only returns hostname, and /etc/hosts does not have the domainname on the 127.0.1.1. line
+2009-06-05T19:25:00.000Z	slestak		i am using a wired nic
+2009-06-05T19:26:00.000Z	mdm	slestak	edit /etc/name
+2009-06-05T19:26:00.000Z	slestak	mdm	thix, i will look at that.
+2009-06-05T19:29:00.000Z	mdm	slestak	your going about it the wrong way.  Host name is simply a file read on init.  As for AD integration you need samba and ldap, bit not NIS
+2009-06-05T19:30:00.000Z	slestak	mdm	yes, for previous installe likewise open depends on winbn (at least until v5).,  this is the 1st jaunty install that hasnt "Just Worked"
+2009-06-05T19:31:00.000Z	slestak	mdm	/etc/name does not exist on my sysem, should I jus tmake it, lemme look at my other desktop
+2009-06-05T19:32:00.000Z	mdm	slestak	if you want nis you will need to setup yp services.  It is a competing technology to AD that predates it by about 20 years.  This means setting up maps to share amongst multiple unix and unix like systems.  But if you want to integrate a linux box to AD samba is what you want
+2009-06-05T19:32:00.000Z	slestak	mdm	nope, doesnt exist on a desktop that does work for ad auth
+2009-06-05T19:32:00.000Z	mdm	slestak	/etc/hostname
+2009-06-05T19:34:00.000Z	slestak	mdm	yueah, samba-common is there, and smbclient.
+2009-06-05T19:34:00.000Z	mdm	slestak	do you mean /etc/hostname only has its host name and it does not have its fully qualified domain name?  That is normal.
+2009-06-05T19:35:00.000Z	slestak	mdm	yes, but executing "hostname -f" is still only producing the hostname, which is an error
+2009-06-05T19:35:00.000Z	mdm	slestak	welcome to ubutnu and why people tell you its not really unix :)
+2009-06-05T19:36:00.000Z	slestak	mdm	did u say ubutnu, dang, im in the wroong room
+2009-06-05T19:36:00.000Z	mdm	slestak	the only thing worse then my spelling is my typing
+2009-06-05T19:39:00.000Z	slestak	mdm	so is there anythign else you can think of for the storage location for the domainname?
+2009-06-05T19:39:00.000Z	mdm	slestak	add it to the hosts file
+2009-06-05T19:40:00.000Z	slestak	mdm	doh, it is there for the machine that is working.  ty
+2009-06-05T19:41:00.000Z	mdm	slestak	other then that you really do not need a domainname on a lan.  You need to add it to certain services and that is done in the configuraiton of those services.  The two I can think of off the top of my head are apache2 and sendmail.
+2009-06-05T19:42:00.000Z	mdm	slestak	I take it you understand unix?  if so I can warn you try not to confuse them.  My solaris box refuses to run some linux commands and vice versa.  It really dosnt like it much

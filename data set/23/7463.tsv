@@ -1,0 +1,23 @@
+2006-07-05T11:33:00.000Z	redguy		how can I enable debud output from the network init scripts?
+2006-07-05T11:33:00.000Z	redguy		sdebud/debug/
+2006-07-05T11:34:00.000Z	redguy		!ops
+2006-07-05T11:34:00.000Z	redguy		djgagga,
+2006-07-05T11:36:00.000Z	erUSUL	redguy	it is an 'auto iface' line in /etc/network/interfaces?
+2006-07-05T11:36:00.000Z	redguy	erUSUL	yup
+2006-07-05T11:37:00.000Z	redguy	erUSUL	I wasn't quite correct there, the interface does come up, but it is not associated witha any AP
+2006-07-05T11:37:00.000Z	redguy	erUSUL	wanna see my interfaces?
+2006-07-05T11:37:00.000Z	redguy	erUSUL	file that is.. ;-)
+2006-07-05T11:38:00.000Z	erUSUL	redguy	i can take a look but i do not know if i can help...
+2006-07-05T11:41:00.000Z	redguy	erUSUL	http://paste.ubuntu-nl.org/17271
+2006-07-05T11:42:00.000Z	redguy	erUSUL	I suspect that some kind of timeout occurs when bringing up the interface. It would be helpful if I knew how to see the output of the networking initscript...
+2006-07-05T11:44:00.000Z	erUSUL	redguy	you can add a line 'pre-up sleep <n seconds>' in the stanza and see if it helps
+2006-07-05T11:47:00.000Z	redguy	erUSUL	been there, done that... I suspect the timeout occurs when wpa_supplicant is being run.. the odd thing is I can't see any error messages, everything seems to go fine, dhclient is being started
+2006-07-05T11:47:00.000Z	erUSUL	redguy	and in /var/log/messages? any errors there
+2006-07-05T11:48:00.000Z	redguy	erUSUL	isn't there a script <command> stanza? maybe that would help...
+2006-07-05T11:49:00.000Z	erUSUL	redguy	pre-up will execute anything (i use it with ralink driver to set all the parameters of the connection)
+2006-07-05T11:49:00.000Z	redguy	erUSUL	no nothing in there as well
+2006-07-05T11:50:00.000Z	redguy	erUSUL	but pre-up will be run before the wpa- stuff, right?
+2006-07-05T11:50:00.000Z	erUSUL	redguy	i supose but not sure
+2006-07-05T11:50:00.000Z	redguy	erUSUL	I would like to run something between wpa- stuff and the start of dhclient
+2006-07-05T11:53:00.000Z	redguy	erUSUL	well thanks... I guess I have to ask in the mailing lists...
+2006-07-05T11:53:00.000Z	redguy	erUSUL	maybe someone there has had similar problems

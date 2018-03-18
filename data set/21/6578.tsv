@@ -1,0 +1,21 @@
+2007-06-23T16:35:00.000Z	Brendan1		hey, so I used make to compile a kernel module rt61.ko
+2007-06-23T16:35:00.000Z	Brendan1		how do I install it now?
+2007-06-23T16:35:00.000Z	Brendan1		do I have to do something with modprobe?
+2007-06-23T16:35:00.000Z	Brendan1		or like copy it someplace?
+2007-06-23T16:36:00.000Z	rausb0	Brendan1	first copy it to /lib/modules/$(uname -r)/kernel/drivers/net/wireless/ then do depmod -a and then modprobe rt61
+2007-06-23T16:37:00.000Z	Brendan1	rausb0	thanks. What should I do with the old rt61.ko module I want to replace?
+2007-06-23T16:38:00.000Z	rausb0	Brendan1	yeah, rename it
+2007-06-23T16:38:00.000Z	rausb0	Brendan1	depmod / modprobe only search for files with .ko extension
+2007-06-23T16:43:00.000Z	Brendan1	rausb0	ok, I think I did it. is there any way to check the version of the driver that's currently running?
+2007-06-23T16:43:00.000Z	rausb0	Brendan1	which driver?
+2007-06-23T16:45:00.000Z	Brendan1	rausb0	the rt61 wireless driver. It should've replaced the default ones with the nightly build from CVS.
+2007-06-23T16:45:00.000Z	rausb0	Brendan1	check the output of "dmesg"
+2007-06-23T16:47:00.000Z	rausb0	Brendan1	then you still have the old driver running
+2007-06-23T16:48:00.000Z	rausb0	Brendan1	i didnt know the old driver was still loaded
+2007-06-23T16:48:00.000Z	rausb0	Brendan1	you have to set down the ra0 interface, rmmod rt61 and then modprobe rt61
+2007-06-23T16:49:00.000Z	Brendan1	rausb0	should I reboot then? dmseg does include output related to the CVS version
+2007-06-23T16:49:00.000Z	rausb0	Brendan1	no need for reboot
+2007-06-23T16:50:00.000Z	Brendan1	rausb0	how should I switch it to the new driver then? ifup/down?
+2007-06-23T16:50:00.000Z	rausb0	Brendan1	ifconfig ra0 down ; rmmod rt61 ; modprobe rt61
+2007-06-23T16:54:00.000Z	Brendan1	rausb0	ok, now it works. For some reason it's wlan0 now instead of ra0, but I don't suppose that makes any difference
+2007-06-23T16:55:00.000Z	rausb0	Brendan1	i think thats how the new driver is naming the interface

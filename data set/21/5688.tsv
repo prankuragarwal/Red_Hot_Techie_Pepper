@@ -1,0 +1,21 @@
+2009-04-07T17:03:00.000Z	adac		How are the passwords saved in ubuntu? are they somehow encrypted?
+2009-04-07T17:03:00.000Z	simplexio	adac	/etc/shadow
+2009-04-07T17:04:00.000Z	simplexio	adac	and yes, they are. but best defense is that users cant read it
+2009-04-07T17:04:00.000Z	adac	simplexio	oh i see! so noone is able read them out if he gets my hard drive?
+2009-04-07T17:12:00.000Z	simplexio	adac	yes.. game is lost every time if someone get physical access to your computer, offcourse you can use long 8+ char long password to increase time to bruteforce your password
+2009-04-07T17:13:00.000Z	adac	simplexio	ActionParsnip ok i see. Is the hash algortim that is used for the account passwords md5?
+2009-04-07T17:13:00.000Z	simplexio	adac	if you feel paranoid, goog about dmcrypt and root crypt :). its pretty hard to crack those open
+2009-04-07T17:15:00.000Z	adac	simplexio	ActionParsnip  I'm currently thinking of encrypting the whole partition. But I think if those passwords are md5 hashs and pretty long it should be enough to encrypt only the home partition. What do you think?
+2009-04-07T17:16:00.000Z	simplexio	adac	actually if you feel paranoid you want crypt /home/ /var /tmp and swap partition. if you odnt feel so paranoid just crypt /home/ and /var
+2009-04-07T17:17:00.000Z	simplexio	adac	oretty much all other dirs like /usr /boot etc.. have only stuff form distro, so no personal stuff
+2009-04-07T17:18:00.000Z	adac	simplexio	yes that is the point
+2009-04-07T17:19:00.000Z	simplexio	adac	google  dmcrypt. im currently running 4xhd on software raid5+dmcrypt 256bit-sha crypt  i think. dont recall anymore what was the default crypt
+2009-04-07T17:19:00.000Z	adac	simplexio	actually we want to use truecrypt which seems fine for just encrypt home partition
+2009-04-07T17:19:00.000Z	simplexio	adac	its not that hard, just crypt /home/ and use long password for user and use long password for crypted partition. and long as 20 chars or like
+2009-04-07T17:20:00.000Z	simplexio	adac	that cool too. not sure how fast it is. dmcrypt has bonus that its in vanilla kernels
+2009-12-05T20:14:00.000Z	simplexio	adac	hit esc when grub start and select recovery mode
+2009-12-05T20:15:00.000Z	adac	simplexio	well I wanted to boot console on every reboot automatically
+2009-12-05T20:16:00.000Z	simplexio	adac	ah.. then remove gdm from /etc/rcS.d/ i think,
+2009-12-05T20:16:00.000Z	adac	simplexio	Can you may tell me how to do that?
+2009-12-05T20:17:00.000Z	simplexio	adac	i think "right" way is to use upgrade-rc.d, but i just usually just rm init.d scripts from rcX.d
+2009-12-05T20:17:00.000Z	adac	simplexio	hmm actually gdm isn't even in /etc/rcS.d/

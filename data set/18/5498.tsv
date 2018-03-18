@@ -1,0 +1,18 @@
+2008-10-14T11:12:00.000Z	apathadeus		has anyone here ever played around with the files in /dev/?
+2008-10-14T11:12:00.000Z	Agent_bob	apathadeus	yep
+2008-10-14T11:13:00.000Z	apathadeus		i see
+2008-10-14T11:13:00.000Z	Agent_bob	apathadeus	they are mostly device nodes and some symlinks to device nodes.
+2008-10-14T11:14:00.000Z	apathadeus		how come when i play a song, and capture the data from /dev/audio, and pipe it back again, it won't play?
+2008-10-14T11:14:00.000Z	Agent_bob	apathadeus	what can you do with a device node ???    access it. change it's perms and ownership, delete it, write to it, rename/move it...  that's about it.
+2008-10-14T11:15:00.000Z	apathadeus		why cat /dev/audio > file, then cat file > /dev/audio, won't play the same thing?
+2008-10-14T11:16:00.000Z	apathadeus		anyone?
+2008-10-14T11:17:00.000Z	Agent_bob	apathadeus	heh. i made a symlink like this.  ln -s /dev/fd0 ~/floppy_disk.tgz     and access it with "mc"  and "tar" dirrectly.   i have some floppy disks that have tarballs writen dirrectly to them now.   :)))         and as to the Q cat////  use /dev/dsp and see what happens.
+2008-10-14T11:18:00.000Z	apathadeus		yea, i tried the same thing with dsp
+2008-10-14T11:18:00.000Z	apathadeus	Agent_bob	it won't work with dsp either
+2008-10-14T11:18:00.000Z	Agent_bob	apathadeus	does here.   permissions issue ?
+2008-10-14T11:19:00.000Z	apathadeus		not permissions, i just don't get the audio that i captured in the file
+2008-10-14T11:21:00.000Z	Agent_bob	apathadeus	you sure it's not perms ?   ls -l `readlink -f /dev/dsp`
+2008-10-14T11:21:00.000Z	apathadeus	Agent_bob	nope, nothing in the terminal is restricting me from piping stuff around
+2008-10-14T11:22:00.000Z	apathadeus	Agent_bob	when I pipe back the data i captured, i either get garbled crap or silence depending if I use audio or dsp
+2008-10-14T11:22:00.000Z	Agent_bob	apathadeus	odd.  must have something to do with pulse audio    i'm using alsa here.
+2008-10-14T11:23:00.000Z	apathadeus	Agent_bob	i use alsa also

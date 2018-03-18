@@ -1,0 +1,21 @@
+2011-04-06T19:26:00.000Z	uhon		hi. I'm setting up a testing-Server (maverick) for our web-project. For testing with phpunit i need the php-cli version 5.2.6 to have the same preconditions as on our production-server (debian-lenny). Can you tell me the easiest way to install php-5.2.6-cli. is there any apt-channel?
+2011-04-06T19:28:00.000Z	tensorpudding	uhon	probably you have to install from source to get the exact version, but even then it won't be totally exact because the debian package is surely slightly patched
+2011-04-06T19:29:00.000Z	uhon	tensorpudding	is there any chance to get the debian package running?
+2011-04-06T19:29:00.000Z	tensorpudding	uhon	probably not, since it was built against debian package versions
+2011-04-06T19:29:00.000Z	uhon	tensorpudding	ok, so i would have to compile the cli-version myself?
+2011-04-06T19:29:00.000Z	tensorpudding	uhon	if you require that level of similarity in your test environment you might consider using debian for it
+2011-04-06T19:30:00.000Z	uhon	tensorpudding	actually i'd be happy if i could at least go with any php5.2 version
+2011-04-06T19:30:00.000Z	tensorpudding	uhon	you'd probably want to do 'apt-get source --build-deps php5-cli' or whatever the name of the package is
+2011-04-06T19:31:00.000Z	uhon	tensorpudding	i'm not familliar with this command. what do i get from that? and should i run it on the debian machine?
+2011-04-06T19:33:00.000Z	tensorpudding	uhon	why would you want to run it on the debian machine?
+2011-04-06T19:33:00.000Z	tensorpudding	uhon	aren't you building php on the ubuntu one?
+2011-04-06T19:34:00.000Z	uhon	tensorpudding	sure i am, but when i do the command above, i'd fetch the sources for the actual ubuntu php5-cli version which is 5.3.3. or did i get something wrong?=
+2011-04-06T19:35:00.000Z	tensorpudding	uhon	that command i gave you should install the packages needed to build th 5.3.3 source package, which are what you probably need to install the source you want
+2011-04-06T19:36:00.000Z	tensorpudding	uhon	oh whoops!
+2011-04-06T19:36:00.000Z	uhon	tensorpudding	allright, so that command resolves all the packages i need to build my own version of php? but the source which i actually compile should be 5.2?
+2011-04-06T19:36:00.000Z	tensorpudding	uhon	you want apt-get build-dep
+2011-04-06T19:36:00.000Z	tensorpudding	uhon	you are right, that one compiles a source package...
+2011-04-06T19:37:00.000Z	tensorpudding	uhon	yes
+2011-04-06T19:38:00.000Z	tensorpudding	uhon	you want to get the source from the debian source package, and build that (but by hand insteading of using the dpkg tools since that's going to not work since it assumes that you're using debian)
+2011-04-06T19:39:00.000Z	uhon	tensorpudding	allright i will try that. never compiled php myself. let's try ;)
+2011-04-06T19:41:00.000Z	uhon	tensorpudding	this will take me some time, thanks for your help

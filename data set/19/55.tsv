@@ -1,0 +1,19 @@
+2012-10-28T23:41:00.000Z	PP80		Hi, I have put '0 */6 * * * rsync -aq --delete rsync/rsync.torproject.org/tor/ /srv/www/mirror.gb.com/tor' in a crontab to start running a mirror for a website. Although after 24 hours nothing is located in that folder. What should I check first?
+2012-10-28T23:42:00.000Z	PP80		Hi, I have put '0 */6 * * * rsync -aq --delete rsync/rsync.torproject.org/tor/ /srv/www/mirror.gb.com/tor' in a crontab to start running a mirror for a website. Although after 24 hours nothing is located in that folder. What should I check first?
+2012-10-28T23:43:00.000Z	wols	PP80	your mail
+2012-10-28T23:43:00.000Z	PP80	wols	my mail?
+2012-10-28T23:44:00.000Z	wols	PP80	yes
+2012-10-28T23:44:00.000Z	PP80	wols	what do you mean? I don't have e-mail on this server
+2012-10-28T23:44:00.000Z	wols	PP80	then your server is broken.
+2012-10-28T23:44:00.000Z	PP80	wols	huh? I have a rsync problem not mail problem
+2012-10-28T23:45:00.000Z	wols	PP80	no you have most probably a cron problem. and guess what cron does when it encounters a problem: it MAILS!
+2012-10-28T23:45:00.000Z	PP80	wols	so where would it mail? do i just type '$ mail?
+2012-10-28T23:45:00.000Z	wols	PP80	for example. yes. dunno how and if you have set up local mail
+2012-10-28T23:46:00.000Z	PP80	wols	-bash: mail: command not found :|
+2012-10-28T23:46:00.000Z	wols	PP80	/var/mail/
+2012-10-28T23:47:00.000Z	PP80	wols	empty :(
+2012-10-28T23:47:00.000Z	wols	PP80	do a dummy cronjob to check if the job runs as intended. then put your command inside a script which also does something you know that it ran
+2012-10-28T23:48:00.000Z	PP80	wols	omg. -bash: rsync: command not found
+2012-10-28T23:49:00.000Z	wols	PP80	if your mail system had worked, cron would have sent you the error message, alerting you to the problem
+2012-10-28T23:50:00.000Z	PP80	wols	how should I just install a basic mail system, where processes can e-mail me locally?
+2012-10-28T23:52:00.000Z	wols	PP80	just install a SMTP server yes. should be configured like this out of the box. don't let port 25 from outside reach you. if you are behind a NAT no config necessary

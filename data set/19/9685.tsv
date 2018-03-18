@@ -1,0 +1,19 @@
+2008-09-07T17:57:00.000Z	lestat		hi all
+2008-09-07T17:59:00.000Z	lestat		an idea what could be responsible for my /tmp not being emptied anymore ?
+2008-09-07T18:00:00.000Z	MrKennie	lestat	type df -h and see if you have tmpfs
+2008-09-07T18:01:00.000Z	lestat	MrKennie	you're right I don't have it anymore :o
+2008-09-07T18:01:00.000Z	lestat		but why ?
+2008-09-07T18:01:00.000Z	MrKennie	lestat	check fstab
+2008-09-07T18:01:00.000Z	MrKennie		oh wait, I don't think it's done in there
+2008-09-07T18:02:00.000Z	lestat	MrKennie	I don't have tmpfs in fstab
+2008-09-07T18:02:00.000Z	MrKennie		no, I don't think it's setup in there
+2008-09-07T18:04:00.000Z	lestat	MrKennie	the only thing I changed is to switch from gdm to xdm
+2008-09-07T18:04:00.000Z	MrKennie	lestat	I can't imagine that causing it
+2008-09-07T18:05:00.000Z	MrKennie	lestat	I'm not actually sure where tmpfs is initially setup
+2008-09-07T18:05:00.000Z	lestat	MrKennie	if I set a line in fstab you think it will be ok ?
+2008-09-07T18:07:00.000Z	MrKennie	lestat	it shouldn't hurt but I would try and find out why it's not mounting in the first place
+2008-09-07T18:07:00.000Z	lestat		ok youre right
+2008-09-07T18:14:00.000Z	lestat	MrKennie	/etc/init.d/bootclean seems involved
+2008-09-07T18:14:00.000Z	MrKennie	lestat	there are various mount scripts that are involved too
+2008-09-07T18:15:00.000Z	MrKennie	lestat	try searching through dmesg output see if you get any clues.
+2008-09-07T18:17:00.000Z	lestat	MrKennie	dmesg | grep -i tmp returns nothing

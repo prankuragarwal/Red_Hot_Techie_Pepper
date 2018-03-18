@@ -1,0 +1,23 @@
+2008-01-31T05:46:00.000Z	zed_		hi, I screwed up and removed udev instead of rewriting it with the apt-get remove command
+2008-01-31T05:47:00.000Z	zed_		anyone know how I can reload it from the disk?
+2008-01-31T05:49:00.000Z	zed_		anyone know how to reload the kernel from the disk without having to re-install?
+2008-01-31T05:50:00.000Z	soundray	zed_	you want to reinstall the kernel .deb package?
+2008-01-31T05:51:00.000Z	soundray	zed_	did you uninstall udev?
+2008-01-31T05:52:00.000Z	soundray	zed_	can you boot from a live CD?
+2008-01-31T05:52:00.000Z	soundray	zed_	can you mount the root partition?
+2008-01-31T05:53:00.000Z	soundray	zed_	is that grub error 15?
+2008-01-31T06:00:00.000Z	zed_	soundray	can I copy a initrd from the disk to the hd?
+2008-01-31T06:01:00.000Z	soundray	zed_	no, but you can regenerate it -- hold on
+2008-01-31T06:12:00.000Z	soundray	zed_	look into the update-initramfs command. You can run it in a chroot
+2008-01-31T06:15:00.000Z	soundray	zed_	do a 'sudo -i' followed by 'chroot /mnt bash' (assuming that you've mounted your partition to /mnt). The run update-initramfs
+2008-01-31T06:16:00.000Z	soundray	zed_	did you get me?
+2008-01-31T06:17:00.000Z	zed_	soundray	no, sun I want to avoid that
+2008-01-31T06:17:00.000Z	soundray	zed_	do a 'sudo -i' followed by 'chroot /mnt bash' (assuming that you've mounted your partition to /mnt). The run update-initramfs
+2008-01-31T06:19:00.000Z	soundray	zed_	it seems that there is more amiss than just your initrd. Can't see how you'll get around a reinstall.
+2008-01-31T06:19:00.000Z	soundray	zed_	sorry, I'm logging off in a minute
+2008-01-31T06:20:00.000Z	soundray	zed_	you can always rescue your /home and /etc directories to save yourself some work after the reinstall
+2008-01-31T06:21:00.000Z	soundray	zed_	also save your package cache /var/cache/apt/archives if you have updated online
+2008-02-02T00:56:00.000Z	soundray	zed_	one possibility is to install the packages that are still in the cache /var/cache/apt/archives
+2008-02-02T00:57:00.000Z	soundray	zed_	I see you haven't given up. You'd be back up and running now if you had reinstalled ;)
+2008-02-02T01:06:00.000Z	zed_	soundray	can I do a reinstall without formating? it keeps telling my no root format defined
+2008-02-02T01:07:00.000Z	soundray	zed_	where do you get that error?

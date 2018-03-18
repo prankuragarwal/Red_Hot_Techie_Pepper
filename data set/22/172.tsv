@@ -1,0 +1,22 @@
+2012-05-06T19:12:00.000Z	Lolostudio	escott	that's the point; i can't! I can take the little bloc of 1,5 go to enlarge my /home, but i can't use at all the 25go bloc of free space remaining!
+2012-05-06T19:10:00.000Z	escott	Lolostudio	move/resize the partitions as necessary to get what you want?
+2012-05-06T19:13:00.000Z	escott	Lolostudio	why dont you paste the output of /proc/partitions so that we can know what you are seeing
+2012-05-06T19:14:00.000Z	escott	Lolostudio	or sudo parted -l /dev/sda
+2012-05-06T19:15:00.000Z	Lolostudio	escott	Modèle: ATA ST3250310AS (scsi) - Disque /dev/sda : 250GB - Taille des secteurs (logiques/physiques): 512B/512B
+2012-05-06T19:17:00.000Z	Lolostudio	escott	http://paste.ubuntu.com/971579/
+2012-05-06T19:18:00.000Z	escott	Lolostudio	so you should have about 40 gigs space between 143GB and 184GB for a primary partition, and maybe a gig or less between 249GB and the end of the disk
+2012-05-06T19:21:00.000Z	Lolostudio	escott	but i can't do it, i can't change what's remaining...the 1 is my windows, which is 143gb, the number 3 is my /home, so I have 40 gb remlaining as you pointed out, but I can only use these 40 go to make the swap and the /, i can't take them as /home.
+2012-05-06T19:22:00.000Z	escott	Lolostudio	so move or resize the partition. you keep saying you cant, but the problem is evidently you dont know how. so use gparted which is on the livecd and select the partition then from the menu there should be an option to move or resize
+2012-05-06T19:23:00.000Z	escott	Lolostudio	http://gparted.sourceforge.net/larry/resize/resizing.htm
+2012-05-06T19:23:00.000Z	Lolostudio	escott	I know how to do this...but when I do it, it says that "Maximum partition size" is my actual size + 1,3 gb maximum
+2012-05-06T19:24:00.000Z	escott	Lolostudio	you have to move it first
+2012-05-06T19:24:00.000Z	escott	Lolostudio	resizing is ONLY to grow at the end. you cannot grow the front of a partition. you need to move it to where you want it to start and then grow it
+2012-05-06T19:25:00.000Z	Lolostudio	escott	oh...so if i want to resize my /home i need to put it before the big block of 25go free space, right?
+2012-05-06T19:26:00.000Z	escott	Lolostudio	you need to move it forward to make it so that you can grow from the end until it is as big as you need
+2012-05-06T19:27:00.000Z	escott	Lolostudio	if you want a 50GB home it needs to start at 200GB so that 200-250 can all be /home
+2012-05-06T19:32:00.000Z	Lolostudio	escott	oh, i tried something else in gparted; i can now resize it from backward anf from forward, i think it's what i wanted...thanks :)
+2012-05-06T19:33:00.000Z	Lolostudio	escott	(but i hadn't to move it, seems i can resize in any sense directly O_o)
+2012-05-06T19:39:00.000Z	escott	Lolostudio	the boot flag doesnt matter to linux
+2012-05-06T19:40:00.000Z	Lolostudio	escott	 oh...so what do i have to do if i want to resize it? was it just a bot message, or will i really break something if i continue? :s
+2012-05-06T19:41:00.000Z	escott	Lolostudio	you just moved a /home partition. so it doesn't have a /boot. its just a reminder to those who move / or /boot and forget to reinstall their bootloader
+2012-05-06T19:42:00.000Z	Lolostudio	escott	oh, great. I'm applying changes and i'll try to install, thansk a lot escott and ThinkT510 :)

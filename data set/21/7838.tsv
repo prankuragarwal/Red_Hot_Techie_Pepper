@@ -1,0 +1,21 @@
+2007-03-05T12:05:00.000Z	gyaresu	Hudson	Did you read the part down the page about the 'fstab'. That's what you want.
+2007-03-05T12:10:00.000Z	gyaresu	Hudson	Is this in regards to your external usb ntfs drive?
+2007-03-05T12:10:00.000Z	Hudson	gyaresu	yes
+2007-03-05T12:10:00.000Z	Hudson	gyaresu	I just want it auto mounted with the ntfs3g driver instead of the standard ntfs driver. (so i can have write support)
+2007-03-05T12:11:00.000Z	gyaresu	Hudson	Re-read the page http://ubuntuforums.org/showthread.php?t=217009/ If you want it to automount you will need to change the line in your /etc/fstab file.
+2007-03-05T12:12:00.000Z	Hudson	gyaresu	uhm, I asked this a few minutes ago, there is no entry for it in fstab, is there another file that deals with usb drives or do I have to make a new entry in fstab
+2007-03-05T12:13:00.000Z	gyaresu	Hudson	New entry. Have you installed the ntfs-3g package etc. Where are you up to.
+2007-03-05T12:14:00.000Z	gyaresu	Hudson	Have you figured out how to tell what device name your usb drive is?
+2007-03-05T12:15:00.000Z	Hudson	gyaresu	It already automounts with the standard ntfs driver. I know its name, its mount point everything
+2007-03-05T12:15:00.000Z	Hudson	gyaresu	all i want is the file that mounts it so I can tell it to mount with the ntfs3g driver instead of the standard ntfs driver
+2007-03-05T12:15:00.000Z	gyaresu	Hudson	can you post the line from running the command 'mount' that lists the device and where it mounts to please?
+2007-03-05T12:17:00.000Z	gyaresu	Hudson	the full line please.
+2007-03-05T12:17:00.000Z	Hudson	gyaresu	 /dev/sdc1 on /media/External type ntfs (rw,nosuid,nodev,uid=1000,gid=1000,umask=077,iocharset=utf8)
+2007-03-05T12:19:00.000Z	gyaresu	Hudson	Did you not see this line on that website page: /dev/<your partition>     /media/<mount point>     ntfs-3g     defaults,locale=en_US.utf8   0    0
+2007-03-05T12:19:00.000Z	Hudson	gyaresu	What file tells the system to mount the usb drive
+2007-03-05T12:19:00.000Z	gyaresu	Hudson	You can probably add 'auto' to the options line: auto,defaults,locale=en_US.utf8
+2007-03-05T12:20:00.000Z	gyaresu	Hudson	/etc/fstab
+2007-03-05T12:20:00.000Z	Hudson	gyaresu	I saw the line, but fstab is not the file that mounts that drive. There is no mention of sdc1 in fstab
+2007-03-05T12:21:00.000Z	Hudson	gyaresu	And i don't know what would happen if my computer tried to mount the same drive twice, Which driver would get used
+2007-03-05T12:22:00.000Z	gyaresu	Hudson	Have a look at this page: http://danielnouri.org/blog/linux/persistent-usb-disk-naming-in-ubuntu.html?showcomments=yes
+2007-03-05T12:24:00.000Z	gyaresu	Hudson	Probably Gnome Disk Mounter is doing something wacky. (I don't use the gui stuff)

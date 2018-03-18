@@ -1,0 +1,19 @@
+2005-11-01T16:09:00.000Z	kresten		How do I mount a cd-drive from the teminal?
+2005-11-01T16:11:00.000Z	kresten		I installed from the drive, but it doesn't auto mount
+2005-11-01T16:11:00.000Z	boogieman	kresten	cat /etc/fstab and find your cdrom device (if it's detected; it should be there)
+2005-11-01T16:12:00.000Z	kresten		Does it make any difference that it is a usb drive?
+2005-11-01T16:13:00.000Z	boogieman	kresten	tail -f /var/log/messages and plug the USB, it'll show you the device, if not; try tail -f /var/log/dmesg
+2005-11-01T16:14:00.000Z	kresten		It shows up under "cat /etc/fstab"
+2005-11-01T16:14:00.000Z	kresten		But under options it says " noauto"???
+2005-11-01T16:14:00.000Z	boogieman	kresten	if it's a CDROM, you can mount it: mount /media/cdrom
+2005-11-01T16:15:00.000Z	kresten	boogieman	"/dev/scd0 does not exist"
+2005-11-01T16:15:00.000Z	kresten	boogieman	it says...
+2005-11-01T16:16:00.000Z	boogieman	kresten	tell me, are you trying to mount a IDE CDROM or something else
+2005-11-01T16:18:00.000Z	kresten	boogieman	tail gives "localhost kernel: [4367323.146000]  usb 4-3: new high speed USB device using ehci_hcd and address 24"
+2005-11-01T16:18:00.000Z	boogieman	kresten	vi the file and check that message block; it should give you the device name
+2005-11-01T16:19:00.000Z	kresten	boogieman	sorry, I don't understand? (noob)
+2005-11-01T16:21:00.000Z	boogieman	kresten	edit (vi) your log files (/var/log/messages,dmesg) and search for the device name
+2005-11-01T16:21:00.000Z	kresten	boogieman	ok, will do.
+2005-11-01T16:22:00.000Z	boogieman	kresten	do this; tail -f /var/log/messages /var/log/dmesg; plug out the USB, and plug it back in .. it should show you the device
+2005-11-01T16:23:00.000Z	boogieman		Hello all, i'm still trying to get my nc6120 (AGP : Intel 915GM / 5.04 Hoary) to go beyond 1024x768 resolution.. I have tried 915resolution/855resolution tools, played with xorg.conf, but still nothing worked; can someone please help me?
+2005-11-01T16:24:00.000Z	kresten	boogieman	Will try it out later! Thanks for your help.

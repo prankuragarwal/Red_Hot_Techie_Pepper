@@ -1,0 +1,24 @@
+2012-06-21T08:39:00.000Z	nibbler_		inferiorHuman:  i thought  gigabit can only be done by autonegotiation, but i might be wrong
+2012-06-21T08:40:00.000Z	roasted_	nibbler_	!!!!!!!
+2012-06-21T08:40:00.000Z	roasted_	nibbler_	you dont use davfs2 by any random weird strange out of this world chance, do you?
+2012-06-21T08:40:00.000Z	nibbler_	roasted_	morning - hows your webdav doing?
+2012-06-21T08:40:00.000Z	nibbler_	roasted_	use it from time to time, yes
+2012-06-21T08:41:00.000Z	roasted_	nibbler_	Nautilus/.gvfs has a bug, where it absorbs the file you're uploading into RAM just prior to sending it to the server. Well, if you send big files, guess what, your RAM maxes out and the connection tanks.
+2012-06-21T08:42:00.000Z	roasted_	nibbler_	so I looked at davfs2 which utilizes the sudo mount -t blah blah command, and I can get it working, but only as read only. So now I'm struggling to find how to use sudo mount -t davfs as read/write for a non root user.
+2012-06-21T08:42:00.000Z	nibbler_	roasted_	hehe - just make a standard mount, automount at boot time... use nautilus on this mountpoint then
+2012-06-21T08:42:00.000Z	roasted_	nibbler_	I'm trying to get it tow ork manually first, as I don't want my work laptop to consistently auto mount it. My desktop however, that's fine.
+2012-06-21T08:42:00.000Z	roasted_	nibbler_	I figured I'd just create a bash script with the entire mount -t blah blah command in it so I can run, say, sudo ./webdav and connect manually
+2012-06-21T08:43:00.000Z	roasted_	nibbler_	but it's all useless if everything is read only
+2012-06-21T08:47:00.000Z	nibbler_	roasted_	http://nopaste.dk/p5552 - strangely the call does not return, but in another shell i can read and write - and things shwo up on oc
+2012-06-21T08:48:00.000Z	roasted_	nibbler_	I just won the prize
+2012-06-21T08:50:00.000Z	roasted_	nibbler_	what's funny is, when I right click, theres still options grayed out. create new folder is gryaed out. but if I click it... I create a new folder anyway....
+2012-06-21T08:52:00.000Z	nibbler_	roasted_	you use a different way than me, i c
+2012-06-21T08:52:00.000Z	roasted_	nibbler_	how different?
+2012-06-21T08:53:00.000Z	nibbler_	roasted_	i mounted as a user witht he fusefs tool - there you don't need this user stuff. your way is nicer - if you are/have root
+2012-06-21T08:54:00.000Z	roasted_	nibbler_	how is my wya nicer if I require root???
+2012-06-21T08:54:00.000Z	nibbler_	roasted_	as you can put it in /etc/fstab and won'thave to worry about stuff anymore
+2012-06-21T08:56:00.000Z	roasted_	nibbler_	I see. It struck me as being a little messy with having to have the file set, dir set, and user listed, but I suppose it works.
+2012-06-21T08:56:00.000Z	roasted_	nibbler_	it'll be easy enough to put this in a bash script and call on the bash script when needed
+2012-06-21T08:57:00.000Z	nibbler_	roasted_	good ;-)
+2012-06-21T08:58:00.000Z	roasted_	nibbler_	I'm creating a 5GB bogus file now to send tot he server just as a test to see if it ramps up my memory instantly and maxes it out like nautilus did
+2012-06-21T08:59:00.000Z	nibbler_	roasted_	its another implementation so i hope it'd work

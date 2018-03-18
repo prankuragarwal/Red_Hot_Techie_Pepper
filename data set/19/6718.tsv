@@ -1,0 +1,19 @@
+2008-04-19T02:06:00.000Z	TheMusicGuy		is it possible to record sound output to a file?
+2008-04-19T02:06:00.000Z	mark7	TheMusicGuy	Yes
+2008-04-19T02:06:00.000Z	mark7	TheMusicGuy	For a quick-and-dirty, cat /dev/dsp >file
+2008-04-19T02:07:00.000Z	mark7	TheMusicGuy	There are also plenty of programs to record audio -- Audacity is a GUI program, sox a command-line one.
+2008-04-19T02:07:00.000Z	mark7	TheMusicGuy	Oh, not input...I see what you mean
+2008-04-19T02:08:00.000Z	mark7	TheMusicGuy	Try this --
+2008-04-19T02:08:00.000Z	mark7	TheMusicGuy	If you're recording, run alsamixer
+2008-04-19T02:08:00.000Z	mark7	TheMusicGuy	Try going through those and turning them up.
+2008-04-19T02:09:00.000Z	mark7	TheMusicGuy	One of them may be how much of the input should come from the output
+2008-04-19T02:13:00.000Z	TheMusicGuy	mark7	nothing recorded...the wav file is full of silence
+2008-04-19T02:14:00.000Z	mark7	TheMusicGuy	did you run alsamixer, hit "tab" to go to the capture screen, and bump all the volumes up?
+2008-04-19T02:14:00.000Z	mark7	TheMusicGuy	Okay, that's not going to work, then :-)
+2008-04-19T02:18:00.000Z	mark7	TheMusicGuy	So, hardware solution -- get 1/8 inch stereo male-male, plug line out into line in
+2008-04-19T02:18:00.000Z	mark7	TheMusicGuy	If whatever software you're using is outputting to JACK (if it is, you'll probably know that it is), I know that JACK allows redirecting whatever to whatever
+2008-04-19T02:20:00.000Z	mark7	TheMusicGuy	If this uses the OSS interface, http://debaday.livejournal.com/36958.html says that vsound should work
+2008-04-19T02:21:00.000Z	mark7	TheMusicGuy	If the program says anything like "/dev/dsp" in its audio preferences, that's what it's using.
+2008-04-19T02:21:00.000Z	TheMusicGuy	mark7	crimsun, abbe: ok, thanks...I'm going to read through those pages
+2008-04-19T02:23:00.000Z	mark7	TheMusicGuy	http://www.linuxquestions.org/questions/linux-general-1/how-to-record-alsa-mixed-output-similar-to-whatuhear-475801/ describes someone doing this with alsa, says that audacity can do this.
+2008-04-19T02:24:00.000Z	mark7	TheMusicGuy	More detailed description of ALSA output recording with Audacity: http://liquidat.wordpress.com/2007/05/07/howto-record-soundcard-output-with-audacity-in-kde/

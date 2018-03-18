@@ -1,0 +1,23 @@
+2005-01-23T12:29:00.000Z	Necrosan_	crimsun	how do I make it do ALSA?
+2005-01-23T12:31:00.000Z	crimsun	Necrosan_	in your /etc/modules, are you loading cs4232 at all?
+2005-01-23T12:32:00.000Z	Necrosan_	crimsun	yeah, HrdwrBoB told me to put it in there
+2005-01-23T12:33:00.000Z	crimsun	Necrosan_	well, you have two choices: you can struggle to make ALSA work, or you can modify your system to use the loaded OSS/Free drivers.
+2005-01-23T12:33:00.000Z	crimsun	Necrosan_	which do you choose?
+2005-01-23T12:34:00.000Z	crimsun	Necrosan_	ALSA is the direction to pursue, yes.
+2005-01-23T12:34:00.000Z	Necrosan_	crimsun	could you possibly guide me to making this work? (at least through the steps I have no idea with?)
+2005-01-23T12:36:00.000Z	crimsun	Necrosan_	first you'll need to make sure no applications are using /dev/dsp*
+2005-01-23T12:36:00.000Z	Necrosan_	crimsun	I don't think anythings using em.
+2005-01-23T12:38:00.000Z	crimsun	Necrosan_	lsof /dev/dsp*
+2005-01-23T12:39:00.000Z	crimsun	Necrosan_	sudo modprobe -r opl3 cs4232 ad1848 uart401 sound
+2005-01-23T12:42:00.000Z	crimsun	Necrosan_	it would be prudent to comment them out, yes.
+2005-01-23T12:42:00.000Z	crimsun	Necrosan_	sudo modprobe snd-cs4232 && sudo modprobe snd-pcm-oss
+2005-01-23T12:46:00.000Z	crimsun	Necrosan_	sudo modprobe snd-cs4232 port=0x530 irq=5 dma1=1 dma2=0 mpu_irq=5 mpu_port=0x330
+2005-01-23T12:47:00.000Z	crimsun	Necrosan_	you also need isapnp=0
+2005-01-23T12:49:00.000Z	crimsun	Necrosan_	try using snd-4236
+2005-01-23T12:50:00.000Z	crimsun	Necrosan_	is "ThinkPad Simple Boot" (aka "Quick Boot") disabled? Ensure it is.
+2005-01-23T13:10:00.000Z	crimsun	Necrosan_	snd-4232, correct?
+2005-01-23T13:10:00.000Z	crimsun	Necrosan_	so snd-cs4231, gotcha.
+2005-01-23T13:10:00.000Z	crimsun	Necrosan_	good to see it's resolved.
+2005-01-23T13:13:00.000Z	crimsun	Necrosan_	the "isapnp" parameter is not valid for snd-cs4231.ko
+2005-01-23T13:14:00.000Z	crimsun	Necrosan_	no
+2005-01-23T13:14:00.000Z	crimsun	Necrosan_	you only need to add snd-cs4231

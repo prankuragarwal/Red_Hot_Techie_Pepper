@@ -1,0 +1,21 @@
+2011-07-29T12:18:00.000Z	KSHawkEye		Hello, I'm running a linux server and running into issues with directory permissions. Are directories like temp/ required to have 777 permission to allow the server to write to them? I always though 777 was very unsecured
+2011-07-29T12:19:00.000Z	llutz	KSHawkEye	/tmp has 1777 (sticky bit set) which is ok, other shouldn't need 777
+2011-07-29T12:20:00.000Z	KSHawkEye	llutz	Alright, what about logs/?
+2011-07-29T12:20:00.000Z	llutz	KSHawkEye	no way
+2011-07-29T12:20:00.000Z	KSHawkEye	llutz	How could I get around "not writeable for the webserver" then?
+2011-07-29T12:21:00.000Z	KSHawkEye	llutz	For logs/ that is
+2011-07-29T12:21:00.000Z	llutz	KSHawkEye	chgrp the dir to www-data, 775 is fine then
+2011-07-29T12:21:00.000Z	llutz	KSHawkEye	ah, you don't speak about /var/log?
+2011-07-29T12:22:00.000Z	KSHawkEye	llutz	No, its a directory within the software I'm trying to run on the server (roundcube) and it keeps throwing errors for both /temp and /logs
+2011-07-29T12:22:00.000Z	llutz	KSHawkEye	and only make those really needed dirs writeable, all other 755
+2011-07-29T12:22:00.000Z	KSHawkEye	llutz	Right, I knew that much
+2011-07-29T12:24:00.000Z	llutz	KSHawkEye	i misread you, thought you talk about /tmp etc...  give www-data limited write-access to those dirs it really needs to write. that should be fine
+2011-07-29T12:25:00.000Z	KSHawkEye	llutz	Alright, so I'll just chmod 777 those two directories then, I just wasn't sure if that was the solution, thanks.
+2011-07-29T12:25:00.000Z	llutz	KSHawkEye	not 777, chown all the stuff user:www-data   with 755   and chmod 775 those dirs
+2011-07-29T12:26:00.000Z	llutz	KSHawkEye	you don't want to have your webserver have writeaccess to all dirs/files
+2011-07-29T12:31:00.000Z	KSHawkEye	llutz	I understand what your saying, I'm just not sure how to actually do it... if I add a new group, doesn't httpd then need to run under that group so that it has the same permissions?
+2011-07-29T12:32:00.000Z	llutz	KSHawkEye	www-data IS the group apache/httpd runs as
+2011-07-29T12:32:00.000Z	KSHawkEye	llutz	Ah
+2011-07-29T12:34:00.000Z	KSHawkEye	llutz	Is the group made by default because I had to add it for it to recognize it?
+2011-07-29T12:35:00.000Z	llutz	KSHawkEye	its a systemgroup, created when installing apache or other webservers
+2011-07-29T12:38:00.000Z	KSHawkEye	llutz	Hmm, my httpd is actually running as root it shows, with the sub processes running as "apache" user

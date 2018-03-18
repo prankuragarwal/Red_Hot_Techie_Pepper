@@ -1,0 +1,24 @@
+2006-05-01T15:45:00.000Z	DBO		Im confused now
+2006-05-01T15:47:00.000Z	newstnih	DBO	it's not showing in network places
+2006-05-01T15:48:00.000Z	DBO	newstnih	you mean for samba?
+2006-05-01T15:49:00.000Z	DBO	newstnih	on the windows machine, open explorer and type \\ipofsambamachine\sharename
+2006-05-01T15:51:00.000Z	DBO	newstnih	yep, you havent set up Samba users yet, we havent done that
+2006-05-01T15:52:00.000Z	DBO	newstnih	now back on the ubuntu machine type in terminal "smbpasswd" and give it a password for your user (NOT THE SAME PASSWORD PLEASE)
+2006-05-01T15:54:00.000Z	newstnih	DBO	it gave a error: account dissabled
+2006-05-01T15:54:00.000Z	DBO	newstnih	when did it give that error?
+2006-05-01T15:54:00.000Z	DBO	newstnih	you didnt sudo it did you, dont use sudo =P
+2006-05-01T15:56:00.000Z	DBO	newstnih	are you logged in as root?
+2006-05-01T15:56:00.000Z	DBO	newstnih	it wont work if you are using root...
+2006-05-01T15:57:00.000Z	DBO	newstnih	yes, hold on, let me make you a command to do it all in one pass
+2006-05-01T15:59:00.000Z	DBO	newstnih	"sudo useradd remsamba -s /bin/false" then "sudo passwd remsamba" then "sudo smbpasswd remsamba"
+2006-05-01T15:59:00.000Z	DBO	newstnih	yes, but we want to give a fake shell
+2006-05-01T16:01:00.000Z	newstnih	DBO	Failed to find entry for user remsamba.
+2006-05-01T16:03:00.000Z	DBO	newstnih	when does it give that error?
+2006-05-01T16:04:00.000Z	DBO	newstnih	cat /etc/passwd | tail -1
+2006-05-01T16:08:00.000Z	DBO	newstnih	im looking, hold up...
+2006-05-01T16:09:00.000Z	DBO	newstnih	doh, dumb me, I forgot to give you the -a "sudo smbpasswd -a remsamba"
+2006-05-01T16:11:00.000Z	DBO	newstnih	now use "sudo smbpasswd remsamba" to change the password (if it didnt prompt you to do it already)
+2006-05-01T16:12:00.000Z	DBO	newstnih	ok, you should be able to log in with remsamba as the user and the password you just made
+2006-05-01T16:27:00.000Z	newstnih	DBO	you know how u said to use \\ipofsambamachine\sharename to get my files, is there some way i can include the username/password in that so i don't have to type it in?
+2006-05-01T16:27:00.000Z	DBO	newstnih	no
+2006-05-01T16:27:00.000Z	DBO	newstnih	you can have windows remember the password an username however

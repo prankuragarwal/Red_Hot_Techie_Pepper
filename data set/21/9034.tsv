@@ -1,0 +1,21 @@
+2005-11-22T06:16:00.000Z	shigs		hi
+2005-11-22T06:16:00.000Z	shigs		mount -t smbfs \\\\smb2.aber.ac.uk\\advisory /mnt/advisory
+2005-11-22T06:16:00.000Z	shigs		waht is wrong with that?
+2005-11-22T06:16:00.000Z	shigs		all ive done is install samba before that
+2005-11-22T06:16:00.000Z	shigs		i get wrongfs type
+2005-11-22T06:16:00.000Z	shigs		mount: wrong fs type, bad option, bad superblock on \\smb2.aber.ac.uk\advisory,
+2005-11-22T06:16:00.000Z	shigs		:(
+2005-11-22T06:16:00.000Z	shigs		can anybody help?
+2005-11-22T06:16:00.000Z	dooglus	shigs	you need to install smbfs to get that to work
+2005-11-22T06:17:00.000Z	dooglus	shigs	but, smb has a 2gig filesize limit.  you're better off using "cifs" instead of "smbfs"
+2005-11-22T06:20:00.000Z	dooglus	shigs	what if you use "-t cifs" instead?
+2005-11-22T06:21:00.000Z	shigs	dooglus	: same error mate
+2005-11-22T06:21:00.000Z	dooglus	shigs	I use this: mount -t cifs -o password=,uid=chris //server/dokumenty ~/smb/server/dokumenty
+2005-11-22T06:21:00.000Z	dooglus	shigs	note forward slashes, not back
+2005-11-22T10:23:00.000Z	dooglus	shigs	no
+2005-11-22T10:23:00.000Z	shigs	dooglus	heh
+2005-11-22T10:23:00.000Z	dooglus	shigs	what does apt-get tell you?
+2005-11-22T10:24:00.000Z	dooglus	shigs	do you use a proxy server?
+2005-11-22T10:24:00.000Z	dooglus	shigs	that's why then.  synaptics knows about the proxy, and apt-get doesn't
+2005-11-22T10:25:00.000Z	dooglus	shigs	put export http_proxy="http://user:pass@proxy.host:port/" in your ~/.gnomerc
+2005-11-22T10:26:00.000Z	dooglus	shigs	(fill in user, pass, proxy.host and port)

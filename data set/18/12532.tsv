@@ -1,0 +1,18 @@
+2006-04-20T07:41:00.000Z	reiki		is PKG_CONFIG_PATH environment variable a standard variable? Or is it figured out and/or set up when you ./configure
+2006-04-20T07:42:00.000Z	roryy	reiki	i think it has a default value (probably /usr/lib/pkgconfig)
+2006-04-20T07:42:00.000Z	roryy	reiki	if you're getting errors, i'd suspect you're missing a -dev package
+2006-04-20T07:43:00.000Z	reiki	roryy	yeah I have a configure script that tells me I'm missing libraries that I have installed. It also looks for libraries older than some I have installed and I'm not sure how to handle that part
+2006-04-20T07:44:00.000Z	roryy	reiki	hmm. you're sure you have the -dev versions of the packages ?
+2006-04-20T07:44:00.000Z	reiki	roryy	I'm trying to fix 3 errors and they all look like this: checking for libgnomeui-2.0 libglade-2.0 gtk+-2.0 gconf-2.0... Package libgnomeui-2.0 was not found in the pkg-config search path. Perhaps you should add the directory containing `libgnomeui-2.0.pc' to the PKG_CONFIG_PATH environment variable
+2006-04-20T07:45:00.000Z	reiki	roryy	I have libgnome02.0 installed but I don't find a file ending in ".pc" anywhere
+2006-04-20T07:45:00.000Z	roryy	reiki	do you have the package libgnomeui-dev installed ?
+2006-04-20T07:46:00.000Z	reiki	roryy	libgnome2-dev is installed
+2006-04-20T07:47:00.000Z	roryy	reiki	no, libgnomeui-dev -- not the same
+2006-04-20T07:47:00.000Z	roryy	reiki	http://packages.ubuntu.com/cgi-bin/search_contents.pl?word=libgnomeui-2.0.pc&searchmode=searchfiles&case=insensitive&version=breezy&arch=i386
+2006-04-20T07:48:00.000Z	reiki	roryy	sorry... yes I have libgnomeui-dev installed as well
+2006-04-20T07:48:00.000Z	roryy	reiki	then you should have /usr/lib/pkgconfig/libgnomeui-2.0.pc, according to pacakges.ubuntu.com
+2006-04-20T07:48:00.000Z	roryy	reiki	are you running breezy ?
+2006-04-20T07:48:00.000Z	reiki	roryy	nope... dapper
+2006-04-20T07:48:00.000Z	roryy	reiki	ah. that may be the problem, i'm not sure.  Maybe ask in #ubuntu+1
+2006-04-20T07:49:00.000Z	reiki	roryy	oops... and just noticed I'm typing in the wrong window... I hate when I do that
+2006-04-20T08:03:00.000Z	roryy	reiki	maybe something like 'pkg-config --list-all' will help ?

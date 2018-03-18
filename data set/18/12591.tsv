@@ -1,0 +1,18 @@
+2006-10-18T10:17:00.000Z	Metalcore		I'm trying to configure the QT JACK control interface, and whenever i try to start the server, it says it can not connect to the Jack server as a client
+2006-10-18T10:18:00.000Z	crimsun	Metalcore	you need to install jackd, too.
+2006-10-18T10:18:00.000Z	Metalcore	crimsun	I already have.
+2006-10-18T10:19:00.000Z	crimsun	Metalcore	dpkg -l jackd|grep ^ii|awk '{print $3}'
+2006-10-18T10:20:00.000Z	Metalcore	crimsun	0.100.0-4
+2006-10-18T10:21:00.000Z	crimsun	Metalcore	pidof jackd
+2006-10-18T10:23:00.000Z	Metalcore	crimsun	15062
+2006-10-18T10:25:00.000Z	crimsun	Metalcore	was jackd started by qjackctl, or did you start it prior (by hand)?
+2006-10-18T10:30:00.000Z	Metalcore	crimsun	it was started by qtjackctl
+2006-10-18T10:31:00.000Z	crimsun	Metalcore	I need verbose debug spew pastebinned.
+2006-10-18T10:50:00.000Z	Metalcore	crimsun	http://pastebin.com/808797
+2006-10-18T10:54:00.000Z	crimsun	Metalcore	pastebin.com is taking abnormally long to load
+2006-10-18T10:56:00.000Z	Metalcore	crimsun	well, here: http://pastebin.ca/207737
+2006-10-18T10:58:00.000Z	crimsun	Metalcore	what app are you attempting to connect?
+2006-10-18T11:00:00.000Z	crimsun	Metalcore	I would try doing it from a Terminal instead of through qjackctl just to test that jackd's not at fault.
+2006-10-18T11:01:00.000Z	Metalcore	crimsun	is that not just qtjackctl trying to connect to the jack server?
+2006-10-18T11:01:00.000Z	crimsun	Metalcore	qjackctl doesn't need to.
+2006-10-18T11:02:00.000Z	crimsun	Metalcore	and you can connect your jack-aware app to the running jackd instance?

@@ -1,0 +1,18 @@
+2009-09-27T19:34:00.000Z	Gratz474		might sount stupid but is there any way i can just revet my system back to base
+2009-09-27T19:34:00.000Z	Gratz474		i really messed something up
+2009-09-27T19:35:00.000Z	Gratz474		i did something stupid and really i dont thin i am going to fox it without doinng a revert
+2009-09-27T19:35:00.000Z	Gratz474		anyone got any ideas?
+2009-09-27T19:37:00.000Z	arand	Gratz474	What's the problem?
+2009-09-27T19:37:00.000Z	Gratz474		is there any way i can just revert everything to a base system arand ?
+2009-09-27T19:38:00.000Z	arand	Gratz474	In which way? How should it be different from a reinstall?
+2009-09-27T19:40:00.000Z	arand	Gratz474	if you specified the issue a bit more I think people might better be able to figure out what kind of "reversion" might be appropriate, if possible.
+2009-09-27T19:45:00.000Z	Gratz474	arand	are you familiar iwth ruby programming, there is something called rubygems which the great peopl at debian figured it should not be used and completely owned the hwole gem update --system aspect, but if you want to use rails you want a new version not some old version
+2009-09-27T19:46:00.000Z	arand	Gratz474	I have not used ruby, sorry.
+2009-09-27T19:46:00.000Z	Gratz474		so i installed that one first then installed the auto install script for mthe project website and they are all intermixed and just a mess if i remove it
+2009-09-27T19:46:00.000Z	Gratz474		its still there but the command does not work if i re install it in the apt it says the wrong version the one i attmpeted ot install manually
+2009-09-27T19:46:00.000Z	Gratz474		heh
+2009-09-27T19:46:00.000Z	Gratz474		bull crap
+2009-09-27T20:04:00.000Z	arand	Gratz474	if you do just ruby setup.rb --destdir=~/tempdir/ You'll be able to look in there exactly what files the script pulls in, an presumably remove them automatically?
+2009-09-27T20:05:00.000Z	arand	Gratz474	s/automatically/manually/
+2009-09-27T20:07:00.000Z	arand	Gratz474	and for the package version you could do either "dpkg -L packagename", to get all contents there, or do "aptitude download packagename && dpkg-deb -x packagename ~/packagename_directory"
+2009-09-27T20:08:00.000Z	arand	Gratz474	and look in that dir to check the stuff the package pulls in.

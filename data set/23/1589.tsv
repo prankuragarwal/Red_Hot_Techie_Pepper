@@ -1,0 +1,23 @@
+2010-02-06T18:56:00.000Z	norbi905		Hello, I have installed World of Warcraft through wine.  When I want to start the game, or even switch to that folder it gives me permission denied.  If I do chmod 777 on the directory it works and I can launch the application.  But everytime I restart the computer the changes revert back and I have to do it again.  Is there a way around this?  I though chmod would keep the settings until changed?
+2010-02-06T18:57:00.000Z	xiong	norbi905	Normally, chmod is a permanent change. The question is, What is changing it back?
+2010-02-06T19:00:00.000Z	xiong	norbi905	What happens when you chmod and change the owner to root?
+2010-02-06T19:00:00.000Z	xiong	norbi905	Or create a dummy user and change owner to that?
+2010-02-06T19:01:00.000Z	norbi905	xiong	geirha:  when I do chmod 777 that gives permission to all does it not?  And this does not only happen after an update, this is everytime I restart the system.
+2010-02-06T19:03:00.000Z	xiong	norbi905	chmod 777 gives permission; chown changes who can give (or withhold) that permission. If something is changing permissions on X, then it (may be) the owner of X.
+2010-02-06T19:05:00.000Z	norbi905	xiong	 after doing ls -l the World of Warcraft folder shows the owner as being me
+2010-02-06T19:05:00.000Z	norbi905	xiong	 I just exited the game, and now I can't access the folder again.  Permission denied.  I now have to again chmod 777 to access it.  Really weird.
+2010-02-06T19:06:00.000Z	xiong	norbi905	Who did you chown to?
+2010-02-06T19:07:00.000Z	norbi905	xiong	 I did not chown to anyone, I installed it by default under norbi, which is the user.  And when doing ls -l it shows that it is in fact owned by norbi.  Could have I installed it under root, and maybe root is changing back the permission ?
+2010-02-06T19:10:00.000Z	xiong	norbi905	I'm suggesting that you chown the folder to somebody else -- root, a dummy user, anybody but you. *Something* is chmod the folder to another permissions mask (What, by the way?) I'm guessing, randomly, that this Someone is you -- or rather, some process running under your UID. Therefore, if you chown the folder to another user, it's possible that the Someone-as-you will not be able to chmod it 'back'.
+2010-02-06T19:11:00.000Z	xiong	norbi905	This is a pretty random approach; I don't pretend it's authoritative; I don't guarantee it will work. Rather, it's a test.
+2010-02-06T19:12:00.000Z	norbi905	xiong	 I have chown the directory to root.  Now I can access it without having to chmod.
+2010-02-06T19:12:00.000Z	norbi905	xiong	 Will have to restart the computer to see if the changes still be in place.  Be back in a few :)
+2010-02-06T19:12:00.000Z	xiong	norbi905	I'd suggest you chmod 777 the folder, then see if the problem still exists.
+2010-02-06T19:12:00.000Z	xiong	norbi905	I still want to know what *other* permissions get 'reset' on you.
+2010-02-06T19:12:00.000Z	norbi905	xiong	 You mean chmod it now as it belongs to root, and then change the ownership back to user norbi?
+2010-02-06T19:13:00.000Z	xiong	norbi905	Please don't confuse chmod and chown. I suggest you chown to root; chmod 777. This will allow anybody to do anything with that folder (theoretically unwise) but only root to change that allowance.
+2010-02-06T19:37:00.000Z	norbi905	xiong	 Ok back, well by changing the ownership to root, it now kept the permission and I can launch WoW with user norbi.  Thanks, still not sure what would keep changing it back though :(
+2010-02-06T19:38:00.000Z	xiong	norbi905	I'm not an expert and whatever I say is pure conjecture. OTOH, I guessed right, so perhaps I'm on a streak.
+2010-02-06T19:39:00.000Z	norbi905	xiong	 Good for you, thanks again :)
+2010-02-06T19:39:00.000Z	xiong	norbi905	My thinking is that some process running under your UID (very likely WoW itself) is doing the unfavorable chmod. Why, I can't imagine. It's a commercial game, so any weirdness is possible.
+2010-02-06T19:40:00.000Z	xiong	norbi905	Thank you for allowing me to help.

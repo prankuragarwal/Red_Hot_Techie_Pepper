@@ -1,0 +1,23 @@
+2008-07-01T07:03:00.000Z	AndrewGearhart		hey folks... I'm trying to get to a windows share on my home network... I'm lost. With no luck, I tried: sudo smbmount -t smbfs //vikki-pc/$cdrive /mnt -o rw,username=XXXXXX,password=XXXXXX
+2008-07-01T07:03:00.000Z	Fryguy--	AndrewGearhart	address the machine by IP, not by hostname
+2008-07-01T07:03:00.000Z	AndrewGearhart	Fryguy--	ah /me tries
+2008-07-01T07:10:00.000Z	AndrewGearhart	Fryguy--	says "wrong fs type, bad option, bad superblock on //192.168.1.100/, missing codepage or helper program, or other error (for several filesystems (e.g. nfs, cifs) you might need a /sbin/mount.<type> helper program) In some cases useful info is found in syslog - try dmesg | tail or so"
+2008-07-01T07:11:00.000Z	Fryguy--	AndrewGearhart	so then specify a valid share
+2008-07-01T07:20:00.000Z	AndrewGearhart	Fryguy--	hm. I'm puzzled... the fileshare appears to be correct... anything else that I could be doing wrong there?
+2008-07-01T07:21:00.000Z	Fryguy--	AndrewGearhart	no
+2008-07-01T07:31:00.000Z	AndrewGearhart	Fryguy--	I'm so confused... the share is correct... do I need to install anything else... or should a default 8.04 ubuntu just be able to do this?
+2008-07-01T07:31:00.000Z	Fryguy--	AndrewGearhart	need to install samba stuff
+2008-07-01T07:31:00.000Z	Fryguy--	AndrewGearhart	what happens if you navigate to \\192.168.1.100 or whatever in nautilius
+2008-07-01T07:33:00.000Z	AndrewGearhart	Fryguy--	couldn't find //192.168.1.100
+2008-07-01T07:33:00.000Z	Fryguy--	AndrewGearhart	you sure that machine exists
+2008-07-01T07:34:00.000Z	AndrewGearhart	Fryguy--	I'm sitting next to it... and I can ping it
+2008-07-01T07:35:00.000Z	Fryguy--	AndrewGearhart	then make sure that samba stuff is installed and that there's actually a share set up
+2008-07-01T07:43:00.000Z	AndrewGearhart	Fryguy--	you're referring to the share on windows being setup... right? I've setup the share with RW access for everyone... which should allow anonymous access... and I still get that message.
+2008-07-01T07:43:00.000Z	Fryguy--	AndrewGearhart	and are you going to the share, or are you going to the root directory
+2008-07-01T07:44:00.000Z	Fryguy--	AndrewGearhart	vista security for shares requires a tweak to group policy, google for details
+2008-07-01T08:13:00.000Z	AndrewGearhart	Fryguy--	okay... I've done the changes with respect to the group policy editor... on the vista box... (despite the fact that most of the documentation that I found seemed to pertain to vista being able to connect to a samba share and not vice versa) ... and still the same message is received when I do sudo mount -t smbfs //192.168.1.100/a /mnt -o rw
+2008-07-01T08:14:00.000Z	Fryguy--	AndrewGearhart	don't know what to tell you
+2008-07-01T08:14:00.000Z	AndrewGearhart	Fryguy--	*sob*
+2008-07-08T07:26:00.000Z	Fryguy--	AndrewGearhart	pretty sure it does use 127.0.0.1
+2008-07-08T07:29:00.000Z	AndrewGearhart	Fryguy--	in my hosts file... (which I've never changed manually) is an entry for 127.0.0.1 for localhost... when I try to visit http://localhost or http://127.0.0.1 ... things don't work properly (the system prompts me to download a file "~" ... while when I visit http://127.0.1.1 or http://andrew (my hostname which is mapped in my hosts file to 127.0.1.1) ... it serves the html file correctly
+2008-07-08T07:29:00.000Z	Fryguy--	AndrewGearhart	probably related to your apache settings somehow

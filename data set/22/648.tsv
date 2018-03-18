@@ -1,0 +1,22 @@
+2011-05-31T03:34:00.000Z	squireboy		Ddpbf> Yea, I think I need to uninstall the nvidia driver and reinstall
+2011-05-31T03:35:00.000Z	squireboy		Ddpbf> https://wiki.ubuntu.com/X/Troubleshooting/FglrxInteferesWithRadeonDriver
+2011-05-31T03:35:00.000Z	squireboy		Ddpbf> ?  You mean try that?
+2011-05-31T03:36:00.000Z	squireboy		Ddpbf> yes
+2011-05-31T03:36:00.000Z	squireboy		Ddpbf> Look down toward botton
+2011-05-31T03:36:00.000Z	squireboy		Ddpbf> Worth a try?
+2011-05-31T03:37:00.000Z	Githzerai	squireboy	how exactlly did you install nvidia driver?
+2011-05-31T03:38:00.000Z	Githzerai	squireboy	sudo lspci -vnn |grep VGA
+2011-05-31T03:39:00.000Z	Githzerai	squireboy	that points to graphics driver issue
+2011-05-31T03:42:00.000Z	Githzerai	squireboy	oh, boy. So noonet told you that Nvidia 173 driver, that your card requires, doesn't work with Xorg in Natty?
+2011-05-31T03:44:00.000Z	Githzerai	squireboy	not 100% sure. There is a newr 173 driver, just not that sure that it is in repoes right now.
+2011-05-31T03:44:00.000Z	Githzerai	squireboy	You may try with nouveau
+2011-05-31T03:45:00.000Z	Githzerai	squireboy	it's the default nvidia driver in Ubuntu, free, but a lot less powerfull
+2011-05-31T03:45:00.000Z	Githzerai	squireboy	you need to remove your current nvidia driver
+2011-05-31T03:46:00.000Z	Githzerai	squireboy	sudo apt-get autoremove nvida-173 nvidia-kernel-common
+2011-05-31T03:48:00.000Z	Githzerai	squireboy	sudo lsmod  |grep nvidia
+2011-05-31T03:50:00.000Z	Githzerai	squireboy	let it finish, then reboot
+2011-05-31T03:52:00.000Z	Githzerai	squireboy	no GUI ?
+2011-05-31T03:53:00.000Z	Githzerai	squireboy	ther must be some residual config file that was left after removing nvidia driver
+2011-05-31T03:54:00.000Z	Githzerai	squireboy	sudo lspci -knn |grep VGA
+2011-05-31T03:54:00.000Z	Githzerai	squireboy	please use pastebin for output
+2011-05-31T03:58:00.000Z	Githzerai	squireboy	sorry, needed a few more lines. please, sudo lspci -vnn |grep -A 10 VGA

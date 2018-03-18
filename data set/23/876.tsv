@@ -1,0 +1,23 @@
+2011-06-24T15:49:00.000Z	fa_effekt		trying to run a command, afterwards the output says Permission denied, " sudo name.of.command
+2011-06-24T15:50:00.000Z	ikonia	fa_effekt	what is name.of.command
+2011-06-24T15:50:00.000Z	fa_effekt	ikonia	path: /usr/lib/evolution/2.24
+2011-06-24T15:51:00.000Z	ikonia	fa_effekt	ls -la evolution-addressbook-export
+2011-06-24T15:52:00.000Z	fa_effekt	ikonia	-rwxr-xr-x 1 root root 23432 2009-01-14 06:15 evolution-addressbook-export
+2011-06-24T15:52:00.000Z	ikonia	fa_effekt	so what is the exact command you are using, exactly, word for word
+2011-06-24T15:52:00.000Z	fa_effekt	ikonia	 sudo evolution-addressbook-export --format=csv > contacts.csv
+2011-06-24T15:53:00.000Z	ikonia	fa_effekt	ok /usr/lib/evolution isn't in your path (or the root sudo path) use the full path as the command
+2011-06-24T15:53:00.000Z	ikonia	fa_effekt	also you shouldn't be doing that as root, as root won't have an address book, your local user will
+2011-06-24T15:53:00.000Z	fa_effekt	ikonia	 sudo /usr/lib/evolution/evolution-addressbook-export --format=csv > contacts.csv <- correct?
+2011-06-24T15:54:00.000Z	ikonia	fa_effekt	no - you shouldn't need to use sudo, as "root" won't have an addres book
+2011-06-24T15:58:00.000Z	fa_effekt	ikonia	sorry but didn't quite get the meaning "you shouldn't need to use sudo, as "root" won't have an addres book"
+2011-06-24T16:00:00.000Z	ikonia	fa_effekt	when you use "sudo" you are running a command as the root user, the user "root" won't have an evolution address book, so there will be nothing to do, as you can see that command has execute for every one permissions, so if you run it as yourself, it will work, and it will also export your address book
+2011-06-24T16:00:00.000Z	fa_effekt	ikonia	 ok
+2011-06-24T16:00:00.000Z	ikonia	fa_effekt	does that make sense ?
+2011-06-24T16:07:00.000Z	fa_effekt	ikonia	the explanation was clear, the new question is how does one export contacts from evolution into a .csv? every instruction online states it's located in the /usr/lib/evolution path
+2011-06-24T16:08:00.000Z	ikonia	fa_effekt	what's teh problem with the command you're trying without sudo ?
+2011-06-24T16:08:00.000Z	fa_effekt	ikonia	(evolution-addressbook-export:9964): evolution-addressbook-tools-WARNING **: Couldn't load addressbook NULL
+2011-06-24T16:09:00.000Z	ikonia	fa_effekt	do you have an addressbook defined ?
+2011-06-24T16:09:00.000Z	fa_effekt	ikonia	(evolution-addressbook-export:9964): evolution-addressbook-tools-WARNING **: Couldn't load addressbook NULL
+2011-06-24T16:09:00.000Z	ikonia	fa_effekt	it's looking like you have an empty addressbook
+2011-06-24T16:09:00.000Z	fa_effekt	ikonia	it has contacts in it
+2011-06-24T16:10:00.000Z	ikonia	fa_effekt	check the syntax, do you have to speifcy where your address book is ?

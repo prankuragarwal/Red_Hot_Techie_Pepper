@@ -1,0 +1,19 @@
+2012-09-05T23:59:00.000Z	makezan		ssh-copy-id -p PORT USER@IP
+2012-09-05T23:59:00.000Z	makezan		Bad port 'umask 077; test -d ~/.ssh || mkdir ~/.ssh ; cat >> ~/.ssh/authorized_keys'
+2012-09-06T00:00:00.000Z	guntbert	makezan	did you actually type PORT?
+2012-09-06T00:03:00.000Z	guntbert	makezan	according to man ssh-copy-id there is no option -p
+2012-09-06T00:05:00.000Z	guntbert	makezan	so you found it? all well?
+2012-09-06T00:16:00.000Z	makezan	guntbert	i still get Permission denied (publickey).
+2012-09-06T00:17:00.000Z	guntbert	makezan	did you set the sshd to acccept public key auth?
+2012-09-06T00:18:00.000Z	makezan	guntbert	I think so. isn't it PubkeyAuthentication yes
+2012-09-06T00:19:00.000Z	guntbert	makezan	yes, correct - next step ssh into the system normally and check the permissions and contents of .ssh/authorized_keys
+2012-09-06T00:20:00.000Z	makezan	guntbert	it was a security of 740 is that too restricted?
+2012-09-06T00:21:00.000Z	guntbert	makezan	no, too open, it needs 700  if I remember correctly
+2012-09-06T00:21:00.000Z	guntbert	makezan	not the id file!
+2012-09-06T00:22:00.000Z	makezan	guntbert	the folder?
+2012-09-06T00:23:00.000Z	guntbert	makezan	no the file authorized_keys
+2012-09-06T00:23:00.000Z	guntbert	makezan	actually it needs 400
+2012-09-06T00:26:00.000Z	guntbert	makezan	is that on the remoote machine? then its fine, check the contents of that file
+2012-09-06T00:27:00.000Z	guntbert	makezan	you need to be able to log in to that account in the first place
+2012-09-06T00:34:00.000Z	guntbert	makezan	thats a sound plan - Good luck!
+2012-09-06T00:34:00.000Z	makezan	guntbert	thanks. it should work I think

@@ -1,0 +1,22 @@
+2010-03-21T06:02:00.000Z	Losha	dominickpastore	ssh is normally interactive, Have you tried adding '-n' to the arguments?
+2010-03-21T06:08:00.000Z	Losha	dominickpastore	anything in the log?
+2010-03-21T06:12:00.000Z	dominickpastore	Losha	mcphail: there is a lot of "Mar 20 21:12:01 dcp-server sshd[16593]: Failed password for remoteuser from 10.10.10.25 port 41786 ssh2" but with differen ports
+2010-03-21T06:13:00.000Z	Losha	dominickpastore	'failed password for remoteuser'. That's a clue, no?
+2010-03-21T06:14:00.000Z	dominickpastore	Losha	well, i would think, although i'm still not sure what's causing it since it works when i don't use cron
+2010-03-21T06:14:00.000Z	Losha	dominickpastore	does it ask for a password when you run it by hand?
+2010-03-21T06:15:00.000Z	dominickpastore	Losha	no, it just works silently.
+2010-03-21T06:16:00.000Z	Losha	dominickpastore	so it's using public key access to login?
+2010-03-21T06:16:00.000Z	dominickpastore	Losha	yes
+2010-03-21T06:17:00.000Z	Losha	dominickpastore	the environment is different when running from cron. I bet it's something to do with accessing the private key when running from cron. Try using -i to explicitly state the path to the users key...
+2010-03-21T06:22:00.000Z	dominickpastore	Losha	mcphail: i'll try mcphails idea first, and in the meantime, where might i find the private key? it's not in .ssh
+2010-03-21T06:24:00.000Z	Losha	dominickpastore	what files *are* in ~/.ssh ?
+2010-03-21T06:28:00.000Z	dominickpastore	Losha	mcphail: known_hosts is all that's there. although i think i found the private key. and i'm not sure but the script *is* running, because i made xeyes run on my display in the script to be sure.
+2010-03-21T06:28:00.000Z	Losha	dominickpastore	so *where* is the private key?
+2010-03-21T06:32:00.000Z	dominickpastore	Losha	i have the private key on the jump drive i copied it from (i generated it on a different comp), and used ssh-add to set it up. so i'm not sure where ssh-add put it, but i do know it put it somewhere else.
+2010-03-21T06:34:00.000Z	Losha	dominickpastore	ok, that explains it. ssh-add copies a private key into *memory* for use by the current process and its children. I believe the cron job will *not* have access to it. You will need to tell ssh which private key to use via the -i flag. ...My theory, by Anne Elk (Miss)...
+2010-03-21T06:35:00.000Z	dominickpastore	Losha	aaaah. that sounds like the problem. let me see if that fixes it.
+2010-03-21T06:45:00.000Z	dominickpastore	Losha	unfortunately, that didn't solve the problem... i'm thoroughly confused. although, the fact that auth.log said nothing about failed public key authentication does seem to suggest it's having problems finding the key.
+2010-03-21T06:46:00.000Z	Losha	dominickpastore	dunno if it works from cron, but try adding -v and see if you can get verbose debugging from ssh...
+2010-03-21T06:47:00.000Z	dominickpastore	Losha	i got it. i had to set 600 permissions on the private key file for ssh to accept it
+2010-03-21T06:48:00.000Z	dominickpastore	Losha	thanks for all the help
+2010-03-21T06:49:00.000Z	Losha	dominickpastore	glad it got solved...

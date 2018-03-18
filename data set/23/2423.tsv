@@ -1,0 +1,23 @@
+2009-03-20T01:36:00.000Z	jason_co		hi folks -- im having trouble with pidentd -- ive installed it and configured the identd.conf per http://ubuntuforums.org/showthread.php?t=227857 when i start it, it says that it is starting identd but when i ps aux |grep identd nothing comes up except grep identd
+2009-03-20T01:37:00.000Z	LjL	jason_co	just guessing, perhaps you need to enable it in something like /etc/default/pidentd?
+2009-03-20T01:38:00.000Z	jason_co	LjL	theres no file like that in /etc/default - -how do i create it
+2009-03-20T01:39:00.000Z	LjL	jason_co	you don't. as i said, i was just guessing. some server packages need to be enabled from a file in /etc/default first. what happens if you just type "pidentd"?
+2009-03-20T01:40:00.000Z	LjL	jason_co	that "tutorial" is crap, by the way.
+2009-03-20T01:41:00.000Z	LjL	jason_co	i don't know, but manually adding a link in  /etc/rc3.d/S99identd  is just such a terrible idea. please remove that, and instead type "sudo update-rc.d identd default"
+2009-03-20T01:41:00.000Z	LjL	jason_co	sorry, i meant "sudo update-rc.d identd defaults"
+2009-03-20T01:46:00.000Z	LjL	jason_co	good, now it should simply start when you boot, if it works. now try starting it manually with "sudo invoke-rc.d identd start"
+2009-03-20T01:47:00.000Z	jason_co	LjL	it says it started but ps aux
+2009-03-20T01:48:00.000Z	LjL	jason_co	type "identd -d"
+2009-03-20T01:48:00.000Z	LjL	jason_co	actually, "sudo identd -d"
+2009-03-20T01:49:00.000Z	LjL	jason_co	that's the same thing i get here. let me investigate that
+2009-03-20T01:50:00.000Z	LjL	jason_co	uhm, that means the port is already being used by something. i'm not entirely sure what, though
+2009-03-20T01:51:00.000Z	LjL	jason_co	i usually use "netstat -l -p -n" for that, but it isn't being of much help here. i'm trying with lsof
+2009-03-20T01:52:00.000Z	LjL	jason_co	oh, it's just inetd using it
+2009-03-20T01:52:00.000Z	LjL	jason_co	so that tutorial is even more wrong, because inetd is *already* configured to start identd
+2009-03-20T01:53:00.000Z	LjL	jason_co	is your identd supposed to run on the machine you're connected from right now, and is that behind a router?
+2009-03-20T01:53:00.000Z	LjL	jason_co	what does "nmap -p 113 localhost" tell you?
+2009-03-20T01:53:00.000Z	LjL	jason_co	then your identd is working
+2009-03-20T01:54:00.000Z	LjL	jason_co	you don't see it in "ps aux" merely because it gets started automatically (and briefly) by inetd when an ident request is made
+2009-03-20T01:54:00.000Z	LjL	jason_co	of course though, your identd won't be very useful to you, generally speaking, if your router doesn't have 113 forwarding to your computer
+2009-03-20T01:57:00.000Z	LjL	jason_co	"grep 113 /etc/services" will tell you
+2009-03-20T01:58:00.000Z	LjL	jason_co	(it's TCP, but i prefer to teach a man to fish)

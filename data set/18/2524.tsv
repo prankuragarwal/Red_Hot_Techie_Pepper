@@ -1,0 +1,18 @@
+2012-07-09T09:22:00.000Z	duckx		i edited /etc/ssh/ssh_config and changed my port # and then i did a /etc/init.d/ssh reload ... but it doesnt work it seems.. amy doing something wrong? I'm on version 12.04
+2012-07-09T09:23:00.000Z	duckx		i dont get any error
+2012-07-09T09:23:00.000Z	duckx		i am still able to login via port 22
+2012-07-09T09:23:00.000Z	duckx		i changed it to 9999
+2012-07-09T09:23:00.000Z	Loshki	duckx	did you edit ssh_config or sshd_config? Two different files, one for the server, one for the client?
+2012-07-09T09:25:00.000Z	Loshki	duckx	d is for daemon, another word for "server", so sshd_config is for the server, ssh_config is for the client. Now that I have to explain it, I realise that having them differ only in one letter is rather bad design...
+2012-07-09T09:27:00.000Z	Loshki	duckx	both client and server have to agree on which port they're using. You need to edit both files, or at least sshd_config and then use -p 9999 with the client
+2012-07-09T09:27:00.000Z	Loshki	duckx	set them both, restart the server, and then retest...
+2012-07-09T09:31:00.000Z	duckx	Loshki	i edited the sshd_config file
+2012-07-09T09:34:00.000Z	Loshki	duckx	edit the daemon and restart it. It should now be listening on port 9999. You should be able to connect by doing ssh -v -p 9999 foo@bar.com
+2012-07-09T09:36:00.000Z	Loshki	duckx	then ironically, you've done something wrong, since the client should try port 22 by default, while the server should be listening on port 9999.
+2012-07-09T09:38:00.000Z	Loshki	duckx	ok, that sounds right. If you run ssh with "-v" you should be able to verify which port its using from the debug output.
+2012-07-09T09:39:00.000Z	Loshki	duckx	look for a line like: Connecting to localhost [127.0.0.1] port 22. Of course, your host and port should be different to mine
+2012-07-09T09:43:00.000Z	Loshki	duckx	were you able to confirm the port?
+2012-07-09T09:44:00.000Z	Loshki	duckx	is your ssh server accessible from the internet? If so, you may need to take additional security precautions...
+2012-07-09T09:45:00.000Z	duckx	Loshki	yea its a server i just signed up for on linode
+2012-07-09T09:49:00.000Z	Loshki	duckx	ideally, disallow user/password logins and only allow access via ssh keys. You'll need to do some reading to set it up. Until you can manage that, then at least use strong passwords, and disallow root logins...
+2012-07-09T09:54:00.000Z	Loshki	duckx	no logins via username+password, which can be guessed/stolen. Allow logins only if you have the correct ssh key (which can be stolen, but not guessed). Also, use a less obvious port than 9999. Pick a more random port, and don't tell me (or anyone else) what it is...

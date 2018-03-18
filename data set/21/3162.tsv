@@ -1,0 +1,21 @@
+2009-03-22T00:28:00.000Z	erUSUL	jerrysun	a /dev/loop* ?? file ?
+2009-03-22T00:28:00.000Z	jerrysun		yeah
+2009-03-22T00:28:00.000Z	jerrysun		there is no loop* file in /dev
+2009-03-22T00:29:00.000Z	jerrysun	erUSUL	there is no loop* file in /dev
+2009-03-22T00:29:00.000Z	erUSUL	jerrysun	man loosetup ? but the devices should be creted automatically when you mount an image file over loop
+2009-03-22T00:30:00.000Z	erUSUL	jerrysun	you do not have to create them upfront in most cases
+2009-03-22T00:32:00.000Z	jerrysun	erUSUL	but when i typed "sudo mount -o loop /mnt /file.iso /media" ,it shows that there is no loop files
+2009-03-22T00:32:00.000Z	erUSUL	jerrysun	o.0! can you show me the exact error ?
+2009-03-22T00:33:00.000Z	jerrysun	erUSUL	ok, wait a minute
+2009-03-22T00:34:00.000Z	jerrysun	erUSUL	mount: could not find any device /dev/loop#
+2009-03-22T00:34:00.000Z	erUSUL	jerrysun	« lsmod | grep loop » returns anything ?
+2009-03-22T00:35:00.000Z	jerrysun	erUSUL	nothing returned
+2009-03-22T00:36:00.000Z	erUSUL	jerrysun	weird do « sudo modprobe loop »
+2009-03-22T00:37:00.000Z	jerrysun	erUSUL	no result
+2009-03-22T00:37:00.000Z	erUSUL	jerrysun	try again to mount the iso file
+2009-03-22T00:38:00.000Z	jerrysun	erUSUL	it works!
+2009-03-22T00:39:00.000Z	erUSUL	jerrysun	it is very weird that the loop module is not loaded at boot in you installation. it should
+2009-03-22T00:39:00.000Z	jerrysun		erUSUL:hehe
+2009-03-22T00:39:00.000Z	erUSUL	jerrysun	anyway do this « echo loop | sudo tee -a /etc/modules »
+2009-03-22T00:39:00.000Z	jerrysun	erUSUL	thank u so much!
+2009-03-22T00:40:00.000Z	erUSUL	jerrysun	no problem

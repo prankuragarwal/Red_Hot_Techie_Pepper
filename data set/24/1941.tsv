@@ -1,0 +1,24 @@
+2009-11-30T04:42:00.000Z	mark__		I've just added a hard drive to my ubuntu-server - How do I view the files within the terminal?
+2009-11-30T04:43:00.000Z	mazda01	mark__	did you mount the hdd yet?
+2009-11-30T04:43:00.000Z	mazda01	mark__	you need to mount it first, then you just run an ls command on the folder you mounted it to.
+2009-11-30T04:43:00.000Z	mark__		I typed mount sda5 -- but its already mounted. I'm not sure whats on the drive. I just want to view the root.
+2009-11-30T04:45:00.000Z	mark__	mazda01	: It's already mounted (sda5) but unsure on how I can view the files. is it something like ls /sda5?
+2009-11-30T04:45:00.000Z	mazda01	mark__	it got mounted to just /sda5? i doubt it. what does the mount command show?
+2009-11-30T04:46:00.000Z	mark__	mazda01	: oh wait, it says "it's already mounted on /boot
+2009-11-30T04:47:00.000Z	mark__	mazda01	: but unsure on how I access it? how do I find what it is mounted as?
+2009-11-30T04:47:00.000Z	mazda01	mark__	 are you sure it got mounted to /boot? that sounds very weird!!
+2009-11-30T04:48:00.000Z	mark__	mazda01	: I think it means it was mounted at boot.
+2009-11-30T04:48:00.000Z	mazda01	mark__	then in the mount command, tell me what folder /dev/sda5 is mounted to.
+2009-11-30T04:49:00.000Z	mazda01	mark__	if it were mounted it would say something like this: /dev/sda1 on / type ext3 (rw,relatime,errors=remount-ro) BUT NOT WITH THESE SETTINGS
+2009-11-30T04:49:00.000Z	mark__	mazda01	: /dev/sda5 on /boot type ext2
+2009-11-30T04:52:00.000Z	mazda01	mark__	then you would just do ls /boot/
+2009-11-30T04:53:00.000Z	mark__	mazda01	- it can't be that drive then. That seems to be the boot partition. I've just done "sudo blkid" and have a /dev/sda1/ could that be it?
+2009-11-30T04:54:00.000Z	mark__	mazda01	: mount - /dev/sda1 = sda1 is not listed in tstab
+2009-11-30T04:56:00.000Z	mazda01	mark__	you all over the place. you jsut said you added a hdd to your computer. you obviously need to know what device it's seen as. what size is the disk? determine size, tehn run sudo fdisk -l and you'll see the device name for the partition you want to view.
+2009-11-30T04:57:00.000Z	mark__	mazda01	: ok, i was mistaken, as I thought it was sda5, this seems to be boot drive. I can confirm the drive is sda1 now. Sorry for confusion.
+2009-11-30T04:59:00.000Z	mazda01	mark__	 so you just added this hdd and it's /dev/sda1? that seems weird also but ok. now issue the mount command and see if it's mounted anywhere.
+2009-11-30T05:02:00.000Z	mark__	mazda01	: Just run it. It's sdb1. Sorry mate :-)
+2009-11-30T05:03:00.000Z	mazda01	mark__	and where is /dev/sdb1 mounted?
+2009-11-30T05:06:00.000Z	mazda01	mark__	sudo mount /dev/sdb1/ /mnt/, then issue ls -la /mnt/. that's all i got for you
+2009-11-30T05:06:00.000Z	mark__	mazda01	: It says under the /dev/sdb :250Gb bit, "This does not look like a partition table, you probably selected the wrong device /DEV/SDB1/
+2009-11-30T05:06:00.000Z	mark__	mazda01	: thanks mate.

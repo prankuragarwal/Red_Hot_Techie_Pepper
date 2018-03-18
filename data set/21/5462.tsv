@@ -1,0 +1,21 @@
+2009-06-06T06:04:00.000Z	geirha	ganymede	I think you can add and remove packages at the same time with aptitude's curses interface.
+2009-06-06T06:06:00.000Z	geirha	ganymede	Try running "sudo aptitude" (with no install or remove arguments). You'll find documentation on how to navigate it in /usr/share/doc/aptitude/
+2009-06-06T06:14:00.000Z	ganymede	geirha	thanks for the advice
+2010-01-26T04:30:00.000Z	geirha	ganymede	To be on the safe side, prepend it with a relative path, ./, like you do when executing something in the current dir.
+2010-01-26T04:32:00.000Z	ganymede	geirha	except that the python source that's firing off this source command likes to update itself and thus reset whatever workarounds i write into it
+2010-01-26T04:33:00.000Z	geirha	ganymede	Huh? You're trying to source a sh script in python?
+2010-01-26T04:33:00.000Z	ganymede	geirha	yeah, it's not my python code, it's from sidefx for houdini 10.0 hqueue client, and that's what they do
+2010-01-26T04:34:00.000Z	geirha	ganymede	Why source it then? Why not just execute it?
+2010-01-26T04:35:00.000Z	geirha	ganymede	Well, the proper thing to do in any case is to file a bug on it.
+2010-01-26T04:36:00.000Z	ganymede	geirha	and in all honestly, i don't know what the difference between sourcing and executing a script is, but i want to get this work for now rather than waiting for sidefx to release their next version of houdini (which is probably not address this issue anyway)
+2010-01-26T04:37:00.000Z	geirha	ganymede	Does it specify bash as shell? If not, it'll use sh, which does not understand «source», posix sh only has «.»
+2010-01-26T04:38:00.000Z	geirha	ganymede	If it does specify bash, it should work if you add the dir containing houdini_setup to PATH
+2010-01-26T04:39:00.000Z	ganymede	geirha	when it fails because the script to source isn't in the PATH, it prints out a line that says something like: "sh: 1: source: file not found" which led me to believe it was sh, but yeah, you're right, sh doesn't understand source
+2010-01-26T04:39:00.000Z	ganymede	geirha	however, if i append . to path with the python line: os.environ["PATH"] = os.environ["PATH"] + ":.", then it all of a sudden works, so i wanted to make this change permanent
+2010-01-26T04:41:00.000Z	ganymede	geirha	when executing commands from the shell, it doesn't search PATH recursively, right?
+2010-01-26T04:42:00.000Z	geirha	ganymede	That's dangerous, I'd rather just add a ./ infront of houdini_setup
+2010-01-26T04:42:00.000Z	geirha	ganymede	Not recursive, that's correct
+2010-01-26T04:42:00.000Z	ganymede	geirha	but where would i add that? if i add it in the python source, it will reset when it auto-updates
+2010-01-26T04:42:00.000Z	geirha	ganymede	Btw, the coders of that script has commited «bashism». You can read about that here: https://wiki.ubuntu.com/DashAsBinSh
+2010-01-26T04:43:00.000Z	geirha	ganymede	Then change it, and submit a patch to the developers, so it will auto-update "right" next time ;)
+2010-01-26T04:45:00.000Z	ganymede	geirha	yep, i'll do that since we apparently have premium-level support...until then, gotta add "." to path or "/opt/HFS" (probably the option)

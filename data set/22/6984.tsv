@@ -1,0 +1,22 @@
+2011-05-06T04:43:00.000Z	Trel		If I run a command and while it's running want to put it in the background, how can I do that?
+2011-05-06T04:43:00.000Z	jrib	Trel	ctrl-z followed by "bg"
+2011-05-06T04:45:00.000Z	Trel	jrib	two other questions then, if I want to send a command to it while it's still in the background, how can I do that (And also how can I bring it back? fg?)
+2012-05-07T00:08:00.000Z	jrib	Trel	because digicam is the user who made presumably
+2012-05-07T00:08:00.000Z	jrib	Trel	made it*
+2012-05-07T00:09:00.000Z	Trel	jrib	yes, but I have u+s set on the directory
+2012-05-07T00:09:00.000Z	jrib	Trel	that doesn't do anything
+2012-05-07T00:10:00.000Z	jrib	Trel	by design
+2012-05-07T00:10:00.000Z	Trel	jrib	is it because the owner is root, or would it do that no matter the owner?
+2012-05-07T00:10:00.000Z	jrib	Trel	if you say what you want to accomplish, then maybe there isnother way
+2012-05-07T00:10:00.000Z	jrib	Trel	u+s is ignored on directories (in linux)
+2012-05-07T00:12:00.000Z	Trel	jrib	I want all files created in a directory to be owned by the same owner as the directory itself, regardless of what user creates them
+2012-05-07T00:12:00.000Z	jrib	Trel	use Access Control Lists
+2012-05-07T00:13:00.000Z	jrib	Trel	man setfacl, man getfacl, man mount (you need to add the acl option to the partition you want to use ACLs on)
+2012-05-07T00:13:00.000Z	jrib	Trel	ok?
+2012-05-07T00:14:00.000Z	jrib	Trel	yeah, ACLs
+2012-05-07T00:15:00.000Z	jrib	Trel	surely you could ask the admin?
+2012-05-07T00:17:00.000Z	Trel	jrib	not somethign he'll do. Let me ask this then. If a directory denies write permisssions, but a file inside allows it, will I be allowed to delete it or no?
+2012-05-07T00:18:00.000Z	jrib	Trel	try and see :)  I don't think so
+2012-05-07T00:19:00.000Z	jrib	Trel	user could always just zero out the file though
+2012-05-07T00:20:00.000Z	jrib	Trel	if you explain what your end-goal is then maybe we can suggest an alternative to ACLs
+2012-05-07T00:20:00.000Z	Trel	jrib	I'm trying to get a work around to windows being a pain in the ass caching network permissions

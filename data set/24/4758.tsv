@@ -1,0 +1,24 @@
+2008-08-31T21:23:00.000Z	SherlawkDragon		ActionParsnip> you should be fine.
+2008-08-31T21:23:00.000Z	SherlawkDragon		it will complain, maybe, but it will install.
+2008-08-31T21:24:00.000Z	SherlawkDragon		(Stop me if I'm wrong here)
+2008-08-31T21:24:00.000Z	SherlawkDragon		so, does anyone have an answer to my partition problem?
+2008-08-31T21:26:00.000Z	SherlawkDragon		I've got a disk here that was running XP, but was destroyed by a virus, and I'm trying to install Ubuntu on it without destroying my files, but the registry is slightly corrupted, and the installer refuses to take a 30GB part of it I know is empty.  Anyone know a way to Bypass this?
+2008-08-31T21:26:00.000Z	SherlawkDragon		WDC> ...that's what I'm doing
+2008-08-31T21:26:00.000Z	SherlawkDragon		Repartition
+2008-08-31T21:28:00.000Z	SherlawkDragon		I'm trying to take 30GB, which I know is empty, off of the NTFS partition
+2008-08-31T21:30:00.000Z	SherlawkDragon		hmm...
+2008-08-31T21:31:00.000Z	SherlawkDragon		so, no one knows how to bypass a frivilous error when partitioning to install?
+2008-08-31T21:31:00.000Z	unop	SherlawkDragon	what error ?
+2008-08-31T21:33:00.000Z	unop	SherlawkDragon	what does the error message say exactly?
+2008-08-31T21:35:00.000Z	unop	SherlawkDragon	well, i would say this. if you really care about the contents of the NTFS partition - you should really be using windows tools to check it for integrity .. can you not boot up into windows safe mode ?
+2008-08-31T21:37:00.000Z	unop	SherlawkDragon	well, if you can boot up into safe mode -- do that and run these. chkdsk /f /v drive_letter:     and   defrag -f -v drive_letter:
+2008-08-31T21:38:00.000Z	unop	SherlawkDragon	you could use some linux tools to force the operation - but it is not worth it if you value the content of the NTFS volume.
+2008-08-31T21:38:00.000Z	unop	SherlawkDragon	in safe mode too?
+2008-08-31T21:40:00.000Z	unop	SherlawkDragon	then you ought to be formatting the partition .. do you have any freespace around on another harddrive perhaps wherre you can temporarily place your data?
+2008-08-31T21:42:00.000Z	unop	SherlawkDragon	so you do have some freespace on another partition/drive ?
+2008-08-31T21:43:00.000Z	unop	SherlawkDragon	you should be able to mount them simply by clicking the volume in nautilus under  Places > Computer
+2008-08-31T21:59:00.000Z	unop	SherlawkDragon	mount it via the command line then.
+2008-08-31T22:00:00.000Z	unop	SherlawkDragon	 try this.   pmount /dev/sdXX  (sdXX being the device you want to mount)
+2008-08-31T22:00:00.000Z	unop	SherlawkDragon	pmount does not need sudo
+2008-08-31T22:00:00.000Z	unop	SherlawkDragon	usually atleast, but it will let you know
+2008-08-31T22:01:00.000Z	unop	SherlawkDragon	you can find out with  sudo fdisk -l

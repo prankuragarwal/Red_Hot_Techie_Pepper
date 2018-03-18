@@ -1,0 +1,24 @@
+2012-08-13T19:48:00.000Z	abyss42		Hi guys, I have a verisign cert and i just updated nginx.conf. Now i can access my site with https://ip address..but it says • Server's certificate does not match the URL. I changed server_name to the domain name..but i cannot go to my https://domain_name.com
+2012-08-13T19:48:00.000Z	abyss42		any ideas?
+2012-08-13T19:49:00.000Z	candrea	abyss42	when you use the ip, you get the error because the certificate is associated to the host name, not the ip
+2012-08-13T19:49:00.000Z	candrea	abyss42	what do you mean with "i cannot go to my ..."?
+2012-08-13T19:54:00.000Z	candrea	abyss42	does your-domain-name.com resolve to your ip address? is nginx listening on port 443?
+2012-08-13T19:55:00.000Z	abyss42	candrea	no i cannot  access your_domain_name.com :( yes nginx is listening to 443. But i can accessing https://ip on 443
+2012-08-13T19:56:00.000Z	candrea	abyss42	if you type "host your-domain.com" in a terminal, what's the output? is it your ip address or do you get an error?
+2012-08-13T19:58:00.000Z	abyss42	candrea	in my local terminal or in the terminal where my site is hosted?
+2012-08-13T19:58:00.000Z	candrea	abyss42	from where you are running your web browser
+2012-08-13T19:59:00.000Z	abyss42	candrea	you mean ping it?
+2012-08-13T20:00:00.000Z	candrea	abyss42	"host" actually gives more information, however if you prefer "ping", fell free to use it
+2012-08-13T20:00:00.000Z	candrea	abyss42	whatever you use, remember to type the domain name, not the ip
+2012-08-13T20:00:00.000Z	abyss42	candrea	Host not found :(
+2012-08-13T20:01:00.000Z	candrea	abyss42	here's the problem :)
+2012-08-13T20:01:00.000Z	abyss42	candrea	how do i fix it?
+2012-08-13T20:02:00.000Z	candrea	abyss42	so... I don't know what's the situation, so, first of all: are you hosting the server yourself?
+2012-08-13T20:03:00.000Z	candrea	abyss42	can the server be accessed throught Internet or just in a local network? (probably Internet, but I prefer asking)
+2012-08-13T20:05:00.000Z	abyss42	candrea	the server can be accessed just fine with an ip address. I was using a self sign cert up until now and it was working great. Now i have a real verisign cert and i updated my nginx.conf.. they told me common name for the cert is my-domain.com and i updated server_name in nginx.conf with the same..it didnt work.
+2012-08-13T20:06:00.000Z	candrea	abyss42	owning a certificate is not enough to have dns resolution
+2012-08-13T20:07:00.000Z	candrea	abyss42	you should either purchase a domain or edit your /etc/hosts (however note that editing /etc/hosts will make your domain accessible just by you)
+2012-08-13T20:08:00.000Z	candrea	abyss42	there may be other solutions that best fit your needs, but I have to know what you want to achive
+2012-08-13T20:23:00.000Z	abyss42	candrea	I think the DNS name servers are not updated yet. But when i go to https://ipaddress.  https:// is still in red color and not green. WHen i click on it, it says i got a valid certificate but it also says Server's certificate does not match the URL.. How can i fix this?
+2012-08-13T20:24:00.000Z	candrea	abyss42	if you use the IP address, it must give you an error. The certificate is for the domain, not for the IP
+2012-08-13T20:25:00.000Z	candrea	abyss42	if you want a certificate associated to the IP, you need to ask your authority

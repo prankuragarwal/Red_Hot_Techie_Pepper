@@ -1,0 +1,18 @@
+2007-03-25T16:04:00.000Z	TomaszD		anyone knows how to check why mpd isn't starting on bootup? I'm using icecast2 + mpd
+2007-03-25T16:05:00.000Z	Flannel	TomaszD	did you reconfigure mpd?
+2007-03-25T16:05:00.000Z	TomaszD	Flannel	well yes, but when I reboot it doesn't start - Stopping Music Player Daemon: not running or no pid_file set.
+2007-03-25T16:06:00.000Z	TomaszD	Flannel	any experience with icecast2 + mpd? it seems mpd needs to start first, and then icecast2
+2007-03-25T16:06:00.000Z	Flannel	TomaszD	so, you do have /etc/mpd.conf?
+2007-03-25T16:08:00.000Z	TomaszD	Flannel	of course, configured to output a shoutcast stream, I'm listening to it now. The thing is, mpd doesn't start on boot up which makes it a little less usable for remote listening
+2007-03-25T16:08:00.000Z	Flannel	TomaszD	what does `sudo /etc/init.d/mpd restart` give you?
+2007-03-25T16:08:00.000Z	TomaszD		ie. begging my brother to start mpd, and then restart icecast2, or doing it by myself via vnc, no fun Flannel
+2007-03-25T16:09:00.000Z	TomaszD	Flannel	Stopping Music Player Daemon: not running or no pid_file set. Starting Music Player Daemon: mpd.
+2007-03-25T16:09:00.000Z	TomaszD	Flannel	that's after a reboot
+2007-03-25T16:09:00.000Z	Flannel	TomaszD	you don't need to restart icecast.  It'll stream regardless of whether it has a source client.
+2007-03-25T16:10:00.000Z	TomaszD	Flannel	thing is, it wouldn't work. strange.
+2007-03-25T16:10:00.000Z	Flannel	TomaszD	seems like you should give it a pid ;)
+2007-03-25T16:10:00.000Z	TomaszD	Flannel	I restarted mpd, but it had problems with opening the audio device. So I restarted icecast2 and it's running fine
+2007-03-25T16:11:00.000Z	Flannel	TomaszD	believe that's because, without a PID, it doesn't stop the old mpd.  Or, something like that.
+2007-03-25T16:11:00.000Z	TomaszD	Flannel	I want to just workaround this, is there a file I could put just put both restart commands into that get processed every boot?
+2007-03-25T16:12:00.000Z	Flannel	TomaszD	Give it a PID file.
+2007-03-25T16:12:00.000Z	TomaszD	Flannel	what is this PID file you speak of? Teach me about it.

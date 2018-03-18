@@ -1,0 +1,23 @@
+2012-07-23T13:12:00.000Z	progre55		hi guys! I'm trying to write an init.d script. The thing is, my deamon needs to be able to restart itself from time to time, and it issues a command like "service mydeamon restart". However, the restart doesnt work, because it dies after the "stop" phase :) any suggestions, please? I'm using the start-stop-deamon btw
+2012-07-23T13:13:00.000Z	geirha	progre55	Have the daemon exec() itself instead
+2012-07-23T13:14:00.000Z	geirha	progre55	Or fix the bug that requires it to restart in the first place
+2012-07-23T13:14:00.000Z	progre55	geirha	how should it exec() itself? the restart function just stops it and starts it again
+2012-07-23T13:15:00.000Z	geirha	progre55	What language is it written in?
+2012-07-23T13:15:00.000Z	geirha	progre55	You certainly don't want the daemon to do anything with the init script
+2012-07-23T13:16:00.000Z	progre55	geirha	the deamon itself is a matlab compiled executable. the script is written in sh (or shell?)
+2012-07-23T13:18:00.000Z	geirha	progre55	Ok, can't your matlab program just reset all its variables and such, then restart?
+2012-07-23T13:18:00.000Z	geirha	progre55	I mean, start over, without actually replacing itself or stopping and starting a new instance
+2012-07-23T13:18:00.000Z	progre55	geirha	it probably could, but I'm not responsible for the matlab code, and our matlab developer is a little stubborn =)
+2012-07-23T13:19:00.000Z	geirha	progre55	your matlab developer is a sysadmin's nightmare
+2012-07-23T13:20:00.000Z	progre55	geirha	I know :) he just runs a bash command saying "service script_name restart" and doesnt want to change his code anymore..
+2012-07-23T13:20:00.000Z	geirha	progre55	Well, you've already discovered why that won't work...
+2012-07-23T13:22:00.000Z	progre55	geirha	couldn't I start a new thread or something on a restart, so that when the matlab deamon is killed, the thread is still running and starts it back? I'm not really a sysadmin myself, just a java developer doing a sysadmin's work :)
+2012-07-23T13:23:00.000Z	geirha	progre55	You can background and disown it, but it may still randomly fail
+2012-07-23T13:24:00.000Z	progre55	geirha	so I could write another script (a wrapper script around the deamon), and on restart, background it, right?
+2012-07-23T13:27:00.000Z	geirha	progre55	He even hardcoded that command in the code?
+2012-07-23T13:30:00.000Z	progre55	geirha	yep :)
+2012-07-23T13:30:00.000Z	progre55	geirha	but I could talk him into changing it a little, if necessary. But not into resetting all the matlab variables, etc.
+2012-07-23T13:32:00.000Z	geirha	progre55	Most languages has a wrapper for the exec system call. I don't know if matlab has that, but if it does, that'll be a much saner thing to do.
+2012-07-23T13:32:00.000Z	progre55	geirha	arright, let me try googling to see if there's anything like that for matlab
+2012-07-23T17:14:00.000Z	progre55	geirha	so I solved the problem I was having with a script being killed by a self-restarting deamon in the following way:  told the matlab guy to issue the restart command by an extra argument "fork", and in the script itself, if it has the fork argument, I just re-run the same script with no "fork" and with nohup, which means it's deattached from the matlab process before being restarted :)
+2012-07-23T17:14:00.000Z	progre55	geirha	thanks for all your help btw, appreciate :)

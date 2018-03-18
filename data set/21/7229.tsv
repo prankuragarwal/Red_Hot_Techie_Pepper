@@ -1,0 +1,21 @@
+2010-09-17T12:38:00.000Z	Jordan_U	ptman	Yes, pass the parameter "iso/scan-filename=/path/to/iso/file" to the kernel parameters.
+2010-09-17T12:39:00.000Z	ptman	Jordan_U	and what should the parameter be, since no filesystems are mounted while in the bootloader?
+2010-09-17T12:39:00.000Z	Jordan_U	ptman	The initramfs will mount all partitions on all devices and check each for a file matching the path you give.
+2010-09-17T12:43:00.000Z	Jordan_U	ptman	If you want to install to that same hard drive, and you have more than 1 GIG of RAM, you'll want to also add the "toram" kernel parameter. toram will load the ISO completely into RAM so that the parition containing the iso doesn't need to stay mounted during the install process.
+2010-09-17T12:53:00.000Z	ptman	Jordan_U	that alone didn't seem to do it, it still tries to load from the cdrom (which I use to boot)
+2010-09-17T12:55:00.000Z	Jordan_U	ptman	It might only look for the iso if it doesn't find an Ubuntu CD in the drive (this option is normally used without a burned CD at all).
+2010-09-17T12:56:00.000Z	ptman	Jordan_U	would you happen to know where the installer mounts the iso? I could just do that by hand from the terminal
+2010-09-17T12:56:00.000Z	Jordan_U	ptman	You could boot with Super GRUB2 Disk instead. If you put the iso file in a directory named "/boot-isos" (in the root of the partition) then it will even detect it and set it up to boot automatically (though you'll need to add "toram" if you want to use that).
+2010-09-17T12:58:00.000Z	Jordan_U	ptman	It mounts the iso to /cdrom, then mounts the squashfs within /cdrom to /rofs, then mounts a tmpfs (can't remember what mount point) and then mounts a unionfs of /rofs and the tmpfs as the root filesystem.
+2010-09-17T12:59:00.000Z	ptman	Jordan_U	argh, better try super grub2 disk then
+2010-09-17T14:04:00.000Z	ptman	Jordan_U	thanks for the help, the desktop iso starts booting using the grub2 super disk, but is there any way to give it parameters?
+2010-09-17T14:04:00.000Z	ptman	Jordan_U	the alternate iso doesn't seem to be grub2 bootable
+2010-09-17T14:05:00.000Z	Jordan_U	ptman	Yes, you can press "e" to edit the menu entry then ctrl+X to boot the modified entry.
+2010-09-17T14:11:00.000Z	Jordan_U	ptman	The alternate iso unfortunatly doesn't support loop booting. The netboot iso does (and uses the same installer as the alternate install CD) but I haven't added support for the netboot iso to Super GRUB2 Disk yet.
+2010-09-17T14:12:00.000Z	ptman	Jordan_U	I couldn't find a ubuntu netboot iso, that would probably have solved my problem (the broken cdrom drive) directly
+2010-09-17T14:13:00.000Z	Jordan_U	ptman	http://cdimage.ubuntu.com/netboot/
+2010-09-17T14:14:00.000Z	ptman	Jordan_U	oh, right, sorry, I'm confusing netboot with netinst (from debian)
+2010-09-17T14:14:00.000Z	Jordan_U	ptman	Either way it's not easy to find if you don't already know where to look :)
+2010-09-17T14:17:00.000Z	Jordan_U	ptman	Ubuntu's netinst is just called the mininal CD. With a bad CD drive you probably want to load the least amount possible though, and the netinstall is smaller (even if you don't decide to netboot bypassing the CD entirely).
+2010-09-17T14:19:00.000Z	Jordan_U	ptman	Now that I check it may be exactly the same size (maybe they are one in the same even:)
+2010-09-17T14:20:00.000Z	Jordan_U	ptman	Yup, I was mistaken and the netinstall and minimal install isos are indeed one and the same, just named differently in different references.

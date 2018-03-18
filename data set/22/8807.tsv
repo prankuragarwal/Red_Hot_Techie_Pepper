@@ -1,0 +1,22 @@
+2005-05-18T12:32:00.000Z	jon273		yeah, i created index.html and i just get the "Seeing this instead of the website you expected..."
+2005-05-18T12:34:00.000Z	jon273		documentroot is set to right dir with index file in. http://server just gets the apache page, http://server/index.html gets right page
+2005-05-18T12:36:00.000Z	goofrider	jon273	http://httpd.apache.org/docs-2.0/mod/mod_dir.html#directoryindex
+2005-05-18T12:39:00.000Z	goofrider	jon273	 index.html should be in /var/www
+2005-05-18T12:41:00.000Z	goofrider	jon273	: well, add a DirectoryIndex in your config justin case
+2005-05-18T12:44:00.000Z	goofrider	jon273	u changed the DocumentRoot though
+2005-05-18T12:45:00.000Z	goofrider	jon273	move your index,html out of apache2-default
+2005-05-18T12:46:00.000Z	jon273	goofrider	to /var/www ?
+2005-05-18T12:48:00.000Z	goofrider	jon273	yes to /var/www
+2005-05-18T12:48:00.000Z	goofrider	jon273	did u change your documentroot too?
+2005-05-18T12:50:00.000Z	jon273	goofrider	yeah, just treid that
+2005-05-18T12:51:00.000Z	goofrider	jon273	DirectoryIndex index.html... is ALREADY in your conf
+2005-05-18T12:53:00.000Z	jon273	goofrider	ok. Wot else could it be?
+2005-05-18T12:55:00.000Z	goofrider	jon273	 did u move index.html to /var/www, chnage the conf, and restarted apache?
+2005-05-18T12:56:00.000Z	jon273	goofrider	yeah, moved it, changed documentroot to /var/www and dd a restart - still the same
+2005-05-18T12:58:00.000Z	goofrider	jon273	but it shouldn't go to apache2-default
+2005-05-18T12:59:00.000Z	jon273	goofrider	the documentroot for the dfault virtualhost should be /var/www ?
+2005-05-18T12:59:00.000Z	goofrider	jon273	u sure there isn't any other conf parts in conf.d or sites-enabled that might be there, like a backup??
+2005-05-18T13:00:00.000Z	goofrider	jon273	yes. I changed your conf file
+2005-05-18T13:01:00.000Z	goofrider	jon273	but like I said,     "#RedirectMatch ^/$ /apache2-default/"  <--- you had it commented out
+2005-05-18T13:01:00.000Z	jon273	goofrider	firefox had cached the old apache page and wasn't giving me the ew one
+2005-05-18T13:12:00.000Z	goofrider	jon273	: I link u to it b4

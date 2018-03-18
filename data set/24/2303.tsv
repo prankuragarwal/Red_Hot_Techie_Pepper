@@ -1,0 +1,24 @@
+2009-02-06T00:15:00.000Z	rakudave	flem0114	samba shares are per default unix-password protected. window$ doesn't understand this, so you need to change the accesspermissions in /etc/samba/smb.conf to "share"
+2009-02-06T00:16:00.000Z	flem0114	rakudave	does that mean adding line "security = share" under global?
+2009-02-06T00:17:00.000Z	rakudave	flem0114	yes that should do the trick, if I remeber correctly
+2009-02-06T00:17:00.000Z	flem0114		great, I'll give it a try,  Thanks!
+2009-02-06T00:26:00.000Z	flem0114	rakudave	it didn't seem to change anything, woud you mind taking a look at my smb.conf to see if there are any mistakes that could cause this?
+2009-02-06T00:27:00.000Z	rakudave	flem0114	sure, use the pastebin at paste.ubuntu.com... ah, have you tried reloading samba? (sudo /etc/init.d/samba restart)
+2009-02-06T00:30:00.000Z	flem0114	rakudave	ya, I've made sure to restart samba after changes and re map my network drive on windows.  I also just pasted smb.conf file
+2009-02-06T00:30:00.000Z	rakudave	flem0114	i need the link :-)
+2009-02-06T00:31:00.000Z	flem0114		rakudave:http://paste.ubuntu.com/114136/
+2009-02-06T00:34:00.000Z	rakudave	flem0114	looks ok from here, but you might consider using "guest ok = Yes" for the [Shares] as well
+2009-02-06T00:34:00.000Z	flem0114	rakudave	I'll give it a shot
+2009-02-06T00:36:00.000Z	rakudave	flem0114	ah, just came to my mind, if you use "valid users = flem0114, nicwitt", I think you need to set those up first using "smbpasswd", as they do not correspond to normal user accounts
+2009-02-06T00:38:00.000Z	flem0114	rakudave	 I tried it and it still doesn't work.  When I check the permissions of the usb disk I am unable to change them.  Is there a way to do this as sudo?
+2009-02-06T00:39:00.000Z	rakudave	flem0114	hmpf... strange. you could change them using "sudo chmod 777 /media/device"
+2009-02-06T00:42:00.000Z	flem0114	rakudave	i ran the command and it didn't seem to do anything.  The GUI also didn't change.  The "others" folder access is labeled as "none"  whenever I try to change this it reverts back to none.  What do you think?
+2009-02-06T00:45:00.000Z	rakudave	flem0114	I just tried it on my own machine and it worked fine... I'm starting to run out of ideas ^^
+2009-02-06T00:46:00.000Z	flem0114	rakudave	 does it have anything to do with file format?  Could I be missing packages?  I'm really new to linux and servers so I really don't know how to begin to troubleshoot the problem?
+2009-02-06T00:50:00.000Z	rakudave	flem0114	you could give "system-config-samba" a shot, it's a GUI for samba shares.
+2009-02-06T00:51:00.000Z	flem0114	rakudave	is that an apt-get install?
+2009-02-06T00:52:00.000Z	rakudave	flem0114	yes. there is also a package called "nautilus-share" which allows you to create shares using the right-click menu in the file browser. thisone also ensures you have all the necessary packages installed
+2009-02-06T00:54:00.000Z	flem0114	rakudave	I'll try that.  Also I've read a couple of threads around that say I cannot change permissions of FAT systems.   The suggestion is to set the permissions at the mount point.  I don't really understand what that means?  Does it make any sense to you?
+2009-02-06T01:00:00.000Z	rakudave	flem0114	ah I see, I didn't know you were talking about a FAT drive. Then it makes sense that a "chmod" doesn't work. the mount permissions are used in /etc/fstab to describe the permissions for internal harddrives. you can add you external there and define new permissions. there is a thread on fstab at http://ubuntuforums.org/showthread.php?t=283131
+2009-02-06T01:01:00.000Z	flem0114	rakudave	great, that GUI Samba config tool is great!  I'll read through those forums, I have direction now.  Thanks for all of your help!
+2009-02-06T01:03:00.000Z	rakudave	flem0114	no problem :-)

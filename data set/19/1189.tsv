@@ -1,0 +1,19 @@
+2012-06-09T23:14:00.000Z	Ansikt		Hey, I got a computer with a hardware RAID.  Will it be possible to install linux and preserve the current RAID setup?
+2012-06-09T23:15:00.000Z	jemark	Ansikt	why not?
+2012-06-09T23:15:00.000Z	Ansikt	jemark	 I've never done it, and so don't know if it can be done.  Is it involved?
+2012-06-09T23:15:00.000Z	jemark	Ansikt	the OS will just see the disk space as once disk.
+2012-06-09T23:15:00.000Z	Ansikt	jemark	 Sexxxy
+2012-06-09T23:16:00.000Z	jemark	Ansikt	yes, since the controller created a virtual disk from more physical disks the OS will see the disk space as once disk, you just need to make the partitions and format the disk
+2012-06-09T23:18:00.000Z	Ansikt	jemark	 Badass, will do.  I had an old opensuse livecd that I used to test if the thing turned on, and it wouldn't mount any of the raid disks.
+2012-06-09T23:19:00.000Z	jemark	Ansikt	you would need to partition and format it first. So, live CD won't do, just install the OS and during the OS install you can partition and it will format the disk.
+2012-06-09T23:20:00.000Z	Ansikt	jemark	 So, I can't see the data on the disks?  I have to reformat them?  Bummer.  Why doesn't the liveCD see RAID?
+2012-06-09T23:21:00.000Z	jemark	Ansikt	let me see
+2012-06-09T23:34:00.000Z	jemark	Ansikt	are you still here?
+2012-06-09T23:35:00.000Z	Ansikt	jemark	yeah, just also talking to people IRL.  No lspci, it seems.
+2012-06-09T23:35:00.000Z	jemark	Ansikt	where did you type that command?
+2012-06-09T23:39:00.000Z	Ansikt	jemark	escott:  Oh, I'm dumb.  lspci wasn't in my PATH.  The controllers are a Promise Technology PDC20378, and a VIA Technology VIA VT6420
+2012-06-09T23:41:00.000Z	jemark	Ansikt	it's a Sata raid contoller as far I can read that on in the internet
+2012-06-09T23:43:00.000Z	Ansikt	jemark	escott:  Seems to be using sata_via and sata_promise, as well as sata1
+2012-06-09T23:48:00.000Z	jemark	Ansikt	there is software in the controller... better to use the software raid in linux than a software raid controller because if the controller breaks, you can't recover the data easily.
+2012-06-09T23:50:00.000Z	jemark	Ansikt	for a hardware raid controller you would pay a bit more...
+2012-06-09T23:52:00.000Z	jemark	Ansikt	when I googled, I saw a thread in a gentoo forum from 2005

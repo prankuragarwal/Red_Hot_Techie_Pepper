@@ -1,0 +1,24 @@
+2006-05-28T10:24:00.000Z	joshdoe		I keep setting up the array and it shows up as 2 drives under linux when it boots, do I need to load a linux driver?
+2006-05-28T10:26:00.000Z	joshdoe		I keep setting up the array and it shows up as 2 drives under linux when it boots, do I need to load a linux driver?
+2006-05-28T10:27:00.000Z	joshdoe		Is there another forum for noobs?
+2006-05-28T10:27:00.000Z	BlueEagle	joshdoe	I am assuming  you're talking about a raid array and a "hardware" raid array at that. Which raid chipset have you got?
+2006-05-28T10:30:00.000Z	BlueEagle	joshdoe	" Intel has informed me that they are working on a Linux RAID driver for this chipset but had no specifics on a time table. Hopefully this won't take too long to complete and you will be able to add this board to the list of other "soft RAID" solutions that now work with Linux." from http://www.linuxhardware.org/article.pl?sid=03/04/16/1610236&mode=thread
+2006-05-28T10:30:00.000Z	BlueEagle	joshdoe	Found that link by googling IBM ICH5R raid linux
+2006-05-28T10:32:00.000Z	BlueEagle	joshdoe	Well I didn't read it _that_ cloesly. But the thing is that many of these "hardware" raid controllers (especially integrated) are really only semi-hardware. That being said, setting up software raid in linux isn't that much slower afaik.
+2006-05-28T10:32:00.000Z	BlueEagle	joshdoe	did you try: sudo fdisk -l
+2006-05-28T10:33:00.000Z	BlueEagle	joshdoe	did that give you any references to /dev/md0 or the like?
+2006-05-28T10:34:00.000Z	BlueEagle	joshdoe	Well sudo is how you get root access and "fdisk -l" lists all drives that the kernel knows about. /dev/md* are where linux puts the nodes for raid arrays (atleast the software ones)
+2006-05-28T10:35:00.000Z	BlueEagle	joshdoe	ie. when i run fdisk -l and I've got a software raid array I get: "Disk /dev/md0 doesn't contain a valid partition table" which isn't so strange as /dev/md0 isn't partitioned it's just got a filesystem on it. That confuses fdisk a bit. :)
+2006-05-28T10:36:00.000Z	BlueEagle	joshdoe	I really do not know. I've never set up a hardware raid system so I couldn't tell you. :) But if linux detects the raid array as such I am guessing it would put it as /dev/md0
+2006-05-28T10:37:00.000Z	BlueEagle	joshdoe	You can ofcourse try this: sudo mount /dev/md0 /mnt/
+2006-05-28T10:37:00.000Z	BlueEagle	joshdoe	If that works the raid array is initialized and ready to go already.
+2006-05-28T10:39:00.000Z	BlueEagle	joshdoe	I don't think so as linux drivers are often kernel modules and kernel modules are often buildt to spesific kernels. However I could be wrong about that.
+2006-05-28T10:41:00.000Z	BlueEagle	joshdoe	If the raid controller had been a _real_ raid controller you would only have seen the one drive that was set up by the raid controller and not the parts that make up the array.
+2006-05-28T10:42:00.000Z	BlueEagle	joshdoe	That also goes for the promise raid card. You should need no special software (bar the kernel module ofcourse) to make it work.
+2006-05-28T10:42:00.000Z	BlueEagle	joshdoe	Also the promise card may already be supported.
+2006-05-28T10:42:00.000Z	BlueEagle	joshdoe	Have you tried it?
+2006-05-28T10:43:00.000Z	BlueEagle	joshdoe	is the promise raid card for sATA drives?
+2006-05-28T10:45:00.000Z	BlueEagle	joshdoe	I see. Because I've got a promise_sata driver installed by default with my kernel. I would assume that it would give you the raid drive set up in the bios of the promise card and not two drives.
+2006-05-28T10:45:00.000Z	BlueEagle	joshdoe	Then again I've never done hw raid. :)
+2006-05-28T10:48:00.000Z	BlueEagle	joshdoe	I really do not know. Sorry.
+2006-05-28T10:48:00.000Z	BlueEagle	joshdoe	but LVM is not raid

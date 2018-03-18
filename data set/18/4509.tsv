@@ -1,0 +1,18 @@
+2009-03-30T11:04:00.000Z	jenkem_pusher		How do I permanently change my wired ethernet nic's mac address in Intrepid? Should I create a system-v script to run the series of commands or is there a way I can do this in the /etc/network/interfaces file?
+2009-03-30T11:04:00.000Z	Arkenklo	jenkem_pusher	sudo ifconfig ethX hw ether 12:34:56:78:90
+2009-03-30T11:05:00.000Z	jenkem_pusher	Arkenklo	thanks -- I know this already, but it wasn't my question actually
+2009-03-30T11:05:00.000Z	Arkenklo		oh, permanently
+2009-03-30T11:05:00.000Z	Arkenklo		hang on, I know this one
+2009-03-30T11:05:00.000Z	jenkem_pusher		I need this to persist @reboot
+2009-03-30T11:05:00.000Z	jenkem_pusher		kk
+2009-03-30T11:07:00.000Z	jenkem_pusher		appending hwaddress .... to the interfaces file doesn't work with 8.x
+2009-03-30T11:09:00.000Z	jenkem_pusher	Arkenklo	actully I figured an easy way
+2009-03-30T11:09:00.000Z	Arkenklo	jenkem_pusher	make a file in /etc/udev/ called 010_whatever.rules
+2009-03-30T11:10:00.000Z	jenkem_pusher		ahh through udev..yea that would work too
+2009-03-30T11:10:00.000Z	Arkenklo		how did you do?
+2009-03-30T11:10:00.000Z	jenkem_pusher		edited the system-v script for networking directly
+2009-03-30T11:11:00.000Z	jenkem_pusher		but I think I may create a udev rule instead
+2009-03-30T11:11:00.000Z	Arkenklo		Do you know the syntax, I can give it to you
+2009-03-30T11:12:00.000Z	jenkem_pusher		i got it ;)
+2009-03-30T11:15:00.000Z	jenkem_pusher	Arkenklo	actually if you have the udev syntax handy, that would save me a few mins
+2009-03-30T11:18:00.000Z	Arkenklo	jenkem_pusher	I was incorrect, I have the syntax to set a static name to a certain mac

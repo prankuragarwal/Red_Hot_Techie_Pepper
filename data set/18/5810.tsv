@@ -1,0 +1,18 @@
+2011-02-07T13:36:00.000Z	seangrove		Hey all, fairly simple question I think - I'd like to grant a user permissions to 1.) create groups and 2.) create users, without invoking sudo and without making them root. What's the way to do this?
+2011-02-07T13:38:00.000Z	seangrove		Do I have to make /etc/passwd writable by the user?
+2011-02-07T13:38:00.000Z	histo	seangrove	what are you trying to do?
+2011-02-07T13:39:00.000Z	seangrove	histo	I have an application that's should be programmatically creating a group and user per application that's running
+2011-02-07T13:40:00.000Z	histo	seangrove	you're probably going to have to add the user to a group then visudo and give that group admin permisions without a passwd required etc...
+2011-02-07T13:40:00.000Z	seangrove	histo	That's totally reasonable - which permissions would I need to give them?
+2011-02-07T13:42:00.000Z	histo	seangrove	pretty much
+2011-02-07T13:43:00.000Z	histo	seangrove	is there a reason you need to do this?
+2011-02-07T13:43:00.000Z	histo	seangrove	sound more like a problem on the way you are trying to impliment something else.
+2011-02-07T13:43:00.000Z	seangrove	histo	Yeah, it's part of an application I'm developing. I deploy an app, a new user for that app is created, a server process is kicked off that then changes process owner/group down to a specified target
+2011-02-07T13:44:00.000Z	histo	seangrove	what are you trying to create a sandboxed environment for the app?
+2011-02-07T13:44:00.000Z	seangrove	histo	Essentially, yeah
+2011-02-07T13:44:00.000Z	histo	seangrove	maybe look at chroot jailing etc...
+2011-02-07T13:45:00.000Z	histo	seangrove	so the app is sandboxed rather than givign that much power to a user that doesn't need to exist.
+2011-02-07T13:45:00.000Z	seangrove	histo	That might be a good idea, yes
+2011-02-07T13:46:00.000Z	histo	seangrove	that wasn't what I was talking about. Adding them to the admin group wouldn't help.
+2011-02-07T13:47:00.000Z	histo	seangrove	If you wanted to do it the dirty way you could create a new group then give that group certain sudo permissions with visudo. But I think you should search on chroot and jailing
+2011-02-07T13:47:00.000Z	seangrove	histo	Yeah, I'll look into chroot

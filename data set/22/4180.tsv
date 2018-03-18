@@ -1,0 +1,22 @@
+2010-01-15T09:00:00.000Z	Suhail		How do you fgrep just files that end with *.py
+2010-01-15T09:00:00.000Z	joshua__	Suhail	usually fgrep pattern *.py
+2010-01-15T09:01:00.000Z	Suhail	joshua__	doesn't work for me
+2010-01-15T09:01:00.000Z	joshua__	Suhail	works for me
+2010-01-15T09:01:00.000Z	Suhail	joshua__	hmmm
+2010-01-15T09:02:00.000Z	Suhail	joshua__	yes
+2010-01-15T09:02:00.000Z	Suhail	joshua__	doing fgrep -ir 'ab_testing' *.py
+2010-01-15T09:03:00.000Z	joshua__	Suhail	find . -name '*.py' -print0 | xargs -0 fgrep -i /dev/null 'ab_testing'
+2010-01-15T09:03:00.000Z	Suhail	joshua__	holy crap
+2010-01-15T09:04:00.000Z	Suhail	joshua__	there has to be something easier than that
+2010-01-15T09:05:00.000Z	joshua__	Suhail	well if you don't have any spaces in filenames:
+2010-01-15T09:06:00.000Z	Suhail	joshua__	can just regular grep do it easier?
+2010-01-15T09:11:00.000Z	joshua__	Suhail	the best thing for commands like the first version I gave you is to put it in a script
+2010-01-15T09:13:00.000Z	Suhail	joshua__	yeah, kind of. It just seemed like something that didn't need to be so complicated i guess
+2010-01-15T09:13:00.000Z	joshua__	Suhail	you see, on ancient unix systems you didn't frequently distinguish file types by extension
+2010-01-15T09:14:00.000Z	Suhail	joshua__	so change it!
+2010-01-15T09:14:00.000Z	Suhail	joshua__	jk--i understand
+2010-01-15T09:14:00.000Z	joshua__	Suhail	hense my recommendation about script. Small scripts is what drives unix
+2010-01-15T09:18:00.000Z	joshua__	Suhail	you know I sometmes used to do it like so: fgrep -i 'ab_pattern' *.py */*.py */*.py */*/*.py
+2010-01-15T09:18:00.000Z	joshua__	Suhail	but that depends on knowning how deep your tree is
+2010-01-15T09:19:00.000Z	Suhail	joshua__	gross*
+2010-01-15T09:25:00.000Z	Suhail	joshua__	I made a supergrep function in my bash_profile

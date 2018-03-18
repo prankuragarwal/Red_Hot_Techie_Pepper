@@ -1,0 +1,18 @@
+2008-09-11T10:32:00.000Z	Gnuyen		is there a way to make cp make all the directories
+2008-09-11T10:32:00.000Z	Gnuyen		in a path
+2008-09-11T10:32:00.000Z	Gnuyen		like if i do cp testfile /someplace/someotherplace/testfile
+2008-09-11T10:32:00.000Z	Jordan_U	Gnuyen	You can use mkdir -p first
+2008-09-11T10:32:00.000Z	Gnuyen		and have it make the directories /someplace/someotherplace
+2008-09-11T10:33:00.000Z	Gnuyen	Jordan_U	but no way to do it with cp or some other thing?
+2008-09-11T10:34:00.000Z	Jordan_U	Gnuyen	What do you mean "or some other thing"?
+2008-09-11T10:34:00.000Z	Gnuyen	Jordan_U	a different command
+2008-09-11T10:34:00.000Z	Gnuyen		basically I have a list of files and I don't want to have to parse out the path and pass it into mkdir
+2008-09-11T10:34:00.000Z	Gnuyen		and then do the copy
+2008-09-11T10:35:00.000Z	Gnuyen		i want to do it with one command if possible
+2008-09-11T10:35:00.000Z	Jordan_U	Gnuyen	It would be a simple script using the "dirname" command
+2008-09-11T10:36:00.000Z	Gnuyen		hrm
+2008-09-11T10:36:00.000Z	Gnuyen		that'll work
+2008-09-11T10:36:00.000Z	Gnuyen		thanks
+2008-09-11T10:37:00.000Z	Jordan_U	Gnuyen	mkdir $( dirname $DESTINATION ) && cp $SOURCE $DESTINATION
+2008-09-11T10:37:00.000Z	Gnuyen		mkdir -p /backup/`dirname $filename`; cp $filename /backup$filename
+2008-09-11T10:37:00.000Z	Gnuyen	Jordan_U	or like that too

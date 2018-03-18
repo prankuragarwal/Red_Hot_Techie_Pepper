@@ -1,0 +1,23 @@
+2011-06-18T02:23:00.000Z	edgy		Hi, how can I know whether I need to reboot my server after a kernel update?
+2011-06-18T02:23:00.000Z	edgy		uname -a shows the new version
+2011-06-18T02:24:00.000Z	beli	edgy	after a kernel update a reboot is needed
+2011-06-18T02:25:00.000Z	edgy	beli	then how can I tell what's the kernel I am running or whether an update is installed
+2011-06-18T02:25:00.000Z	beli	edgy	i dont think your running system has the new kernel version already...something has changed...even if there were just changes to modules......best is to reboot
+2011-06-18T02:25:00.000Z	beli	edgy	what does you make feel a new kernel has been installed?
+2011-06-18T02:27:00.000Z	edgy	beli	rypervenche: I think my question is not clear. I will set my system to always do unattended upgrades, so I need to know whether an updated kernel is installed without recording this info manually
+2011-06-18T02:28:00.000Z	beli	edgy	that sounds really different :)  edit /etc/apt/apt.conf.d/50unattended-upgrades
+2011-06-18T02:29:00.000Z	beli	edgy	specify what packages NOT to upgrade automagically
+2011-06-18T02:29:00.000Z	edgy	beli	aha! that file can reboot the system automatically after a certain update! fantastic
+2011-06-18T02:32:00.000Z	beli	edgy	no, you just can define there what packages NOT to upgrade unattanded
+2011-06-18T02:32:00.000Z	beli	edgy	i dont recommend to do kernel upgrades automagically
+2011-06-18T02:35:00.000Z	edgy	beli	there is a line there: Unattended-Upgrade::Automatic-Reboot "false";
+2011-06-18T02:35:00.000Z	edgy	beli	I guess this would reboot the system automatically, no?
+2011-06-18T02:36:00.000Z	beli	edgy	didnt know..but i still do not recommend to do that
+2011-06-18T02:36:00.000Z	edgy	beli	I can understand your point but it's there for a reason, some cases require that
+2011-06-18T02:37:00.000Z	beli	edgy	kernel upgrades may brake things....users might be logged in while you are going to reboot...and and and
+2011-06-18T02:38:00.000Z	edgy	beli	I know but in my case the server is a backup server and no users are logged in and it's better to fix something after broken that to have someone hacking the server becasue of late upgrade/patch
+2011-06-18T02:42:00.000Z	beli	edgy	there are kernel upgrades with no security reason....and guess you are doing backups.....and your auto-reboot ist running while you are doing them ;)
+2011-06-18T02:43:00.000Z	edgy	beli	rebooting in the middle of a backup won't cause problems for me. it's incremental so it would continue later anyway
+2011-06-18T02:43:00.000Z	beli	edgy	if the system isnt hanging cause of the new kernel ;)
+2011-06-18T02:43:00.000Z	beli	edgy	just points to think about...its your decision
+2011-06-18T02:44:00.000Z	edgy	beli	I can really understand your points, thanks for your  care

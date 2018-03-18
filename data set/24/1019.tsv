@@ -1,0 +1,24 @@
+2010-09-09T22:09:00.000Z	kandarpk		hi all
+2010-09-09T22:09:00.000Z	kandarpk		I am facing problem while boot up
+2010-09-09T22:10:00.000Z	kandarpk		it says "Gnome power manager not installed properly"
+2010-09-09T22:10:00.000Z	dpac_	kandarpk	Thats a known bug.
+2010-09-09T22:10:00.000Z	kandarpk		across 3 different linux installations
+2010-09-09T22:10:00.000Z	dpac_	kandarpk	It happens when your root partition is full. There are other reasons too
+2010-09-09T22:10:00.000Z	kandarpk	dpac_	I am facing the same issue while booting up debian, ubuntu and fedora
+2010-09-09T22:11:00.000Z	dpac_	kandarpk	do they share home directory?
+2010-09-09T22:11:00.000Z	kandarpk	dpac_	no.
+2010-09-09T22:12:00.000Z	kandarpk	dpac_	they are installed on same hard disk
+2010-09-09T22:13:00.000Z	kandarpk	dpac_	restarting after sometime solves the issue temporarily.
+2010-09-09T22:14:00.000Z	dpac_	kandarpk	are they sharing /tmp? Sometimes permission issues with /tmp causes this error.
+2010-09-09T22:14:00.000Z	kandarpk	dpac_	no. they are installed in separate partitions.
+2010-09-09T22:14:00.000Z	dpac_	kandarpk	Is there anything these all installations are sharing apart from hard disk? Can you paste the output of df -h in pastebin?
+2010-09-09T22:16:00.000Z	kandarpk	dpac_	applications( including terminal ) are failing to get started, only the window appears
+2010-09-09T22:16:00.000Z	dpac_	kandarpk	Ctrl+Alt+f1
+2010-09-09T22:20:00.000Z	kandarpk	dpac_	it has used 5.0 GB and available 5.5 GB
+2010-09-09T22:21:00.000Z	dpac_	kandarpk	This might help: http://goo.gl/bPtB
+2010-09-09T22:21:00.000Z	kandarpk	dpac_	I am not able to change file permissions, or create files
+2010-09-09T22:22:00.000Z	kandarpk	dpac_	it says "read only file system"
+2010-09-09T22:23:00.000Z	dpac_	kandarpk	you should e2fsck your hard drive.
+2010-09-09T22:23:00.000Z	kandarpk	dpac_	ok, thanks.
+2010-09-09T22:24:00.000Z	dpac_	kandarpk	sudo touch /forcefsck && sudo reboot
+2010-09-09T22:27:00.000Z	kandarpk	dpac_	cannot touch /forcefsck, read only file system

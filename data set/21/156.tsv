@@ -1,0 +1,21 @@
+2012-07-26T02:44:00.000Z	VanKush		please folks, what is the config file that stores X session profiles passed on to KDM and/or GDM?
+2012-07-26T02:44:00.000Z	Dr_willis	VanKush	 you mean .dmrc ?
+2012-07-26T02:46:00.000Z	VanKush	Dr_willis	i am not knowledgeable in session managers. I was running KDM comfortably until I installed lubunu-desktop meta package. After that, some weird session profiles were introduced and "standard" default session was set to gnome-openbox, despite me not having gnome installed :(
+2012-07-26T02:47:00.000Z	VanKush	Dr_willis	regardless on what session I select, after reboot gnome-openbox is standard again, and I hit an error for an invalid session profile unless I manually change to kde or lxde
+2012-07-26T02:48:00.000Z	Dr_willis	VanKush	 the default session is saved to .dmrc perhaps remove that file., or check its ownership
+2012-07-26T02:48:00.000Z	Dr_willis	VanKush	 i belive theres some system setting to select the default sesion for all users.. but ive never changed it. I recall the askubuntu.com site having info on how to change it.
+2012-07-26T02:51:00.000Z	VanKush	Dr_willis	it says [desktop] session=kde-plasma   ... it is what i need, but this conf gets obviousli overriden somehow
+2012-07-26T02:51:00.000Z	VanKush	Dr_willis	please, where are x session profiles stored?
+2012-07-26T02:52:00.000Z	Dr_willis	VanKush	 they are defined by various .desktop files  do a 'locate kde.desktop' or whatever session you like. as for what one is the DEFAULT. i dont recall where thats set at.. but ive seen the question asked at the askubuntu.com site on how to change the default session for all users.
+2012-07-26T02:52:00.000Z	Dr_willis	VanKush	 check the permissions of thjat .dmrc file. or try just remove/renameing it.. and let it get remade
+2012-07-26T02:58:00.000Z	VanKush	Dr_willis	it seems the lubuntu install has created some broke openbox-something.desktop files in /usr/share/xsessions;   do you think it is sane to move those and try?
+2012-07-26T02:59:00.000Z	VanKush	Dr_willis	indeed
+2012-07-26T03:02:00.000Z	Dr_willis	VanKush	 possible fixs to it not rembering what you selected -> http://askubuntu.com/questions/62833/how-do-i-change-the-default-session-for-when-using-auto-logins
+2012-07-26T03:02:00.000Z	VanKush	Dr_willis	I'm negative on auto logins
+2012-07-26T03:03:00.000Z	Dr_willis	VanKush	 the fixs would still apply..........
+2012-07-26T03:16:00.000Z	VanKush	Dr_willis	I can't extrapolate to kdm though... in /etc/kde4/kdm/ there is nothing suspicious
+2012-07-26T03:25:00.000Z	VanKush	Dr_willis	moving openbox-gnome.desktop has removed it from KDM; there is however no gnome.desktop file in /usr/share/xsessions despite this is the broke default profile
+2012-07-26T03:27:00.000Z	VanKush	Dr_willis	and ~/.dmrc has been restored, and still says session=kde-plasma, despite this being overriden
+2012-07-26T03:27:00.000Z	Dr_willis	VanKush	 copy the seesion you want to gnome.desktop perhaps if you want a quick fix.
+2012-07-26T03:37:00.000Z	VanKush	Dr_willis	I don't really want to give in that way, this wo will get busted upon next X or kdm upgrade
+2012-07-26T03:42:00.000Z	Dr_willis	VanKush	 perhaps just rename it and see..

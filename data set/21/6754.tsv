@@ -1,0 +1,21 @@
+2007-05-29T09:07:00.000Z	tonyy		I need help resizing LVM partitions.  Can't even get started, sadly.
+2007-05-29T09:07:00.000Z	RAOF	tonyy	It's nice and easy.  You go "sudo lvextend" :)
+2007-05-29T09:08:00.000Z	tonyy	RAOF	"No program "lvextend" found for your current version of LVM"
+2007-05-29T09:08:00.000Z	RAOF	tonyy	If you want to extend the underlying LVM system, that's slightly different.  What exactly are you trying to do.
+2007-05-29T09:08:00.000Z	tonyy	RAOF	I have sda2 as a pile of disk space, subdivided to become my /home, /, /multimedia, etc.  I need to steal space from one and give it to another within that.
+2007-05-29T09:09:00.000Z	RAOF	tonyy	So, where is the LVM in that?
+2007-05-29T09:12:00.000Z	tonyy	RAOF	Well, let's see if I can remember this right...  I have one actual disk, split into two partitions by normal means - I believe that would be two "physical volumes" then.  Only one of those has any lvm stuff then.  Under that, there is one volume group, and numerous logical volumes.  I need to shrink one logical volume and increase another to fill the space.
+2007-05-29T09:13:00.000Z	RAOF	tonyy	Ah, that makes more sense.  So, since you need to shrink at least one of your LVs, you'll need to have that volume unmounted.
+2007-05-29T09:13:00.000Z	tonyy	RAOF	I'm on a Live CD atm, so everything is.
+2007-05-29T09:13:00.000Z	RAOF	tonyy	Awesome.  However, the livecd doesn't start LVM :)
+2007-05-29T09:13:00.000Z	RAOF	tonyy	So, I *belive* you'll need to install the lvm2 package, then run "sudo /etc/init.d/lvm-common start", or something like that.
+2007-05-29T09:15:00.000Z	RAOF	tonyy	Then you want to shrink the filesystem on the LV.  That'll need to be either "resize2fs" or "resize_reiserfs", depending on the filesystem (ext2/3 or reiser).  If it's not one of those two, then I'm not sure how you can resize the fs :)
+2007-05-29T09:16:00.000Z	tonyy	RAOF	Ah, the init start was the step I was missing I think.
+2007-05-29T09:16:00.000Z	tonyy	RAOF	resize2fs works for ext3, ya?
+2007-05-29T09:16:00.000Z	RAOF	tonyy	Yes.  At least, that's what the man page says :)
+2007-05-29T09:18:00.000Z	tonyy	RAOF	Do you know how to calculate sizes in blocks?
+2007-05-29T09:19:00.000Z	RAOF	tonyy	Uurgh.  No.  Doesn't resize2fs support using something sane, like GB?
+2007-05-29T09:19:00.000Z	tonyy	RAOF	Maybe it does - the tutorial I'm reading could well be outdated.  Time for some man page reading.
+2007-05-29T09:24:00.000Z	tonyy	RAOF	How can I list their current sizes without mounting to get an idea of what to resize to?
+2007-05-29T09:24:00.000Z	RAOF	tonyy	I don't know.  I think you'll have to mount.
+2007-05-29T09:24:00.000Z	tonyy	RAOF	'k

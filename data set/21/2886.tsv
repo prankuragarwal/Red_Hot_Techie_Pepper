@@ -1,0 +1,21 @@
+2009-11-17T01:51:00.000Z	Arsin		I'm getting this error http://www.ubuntu.pastebin.com/d16eeb5b2 while trying to mount my XP Partition
+2009-11-17T01:52:00.000Z	mbeierl	Arsin	is the disk part of a Windows volume set?
+2009-11-17T01:53:00.000Z	Arsin	mbeierl	Volume set?
+2009-11-17T01:53:00.000Z	mbeierl	Arsin	Windows can use two disks or partitions and make them into one logical drive letter.  So two disks are seen as one C: drive
+2009-11-17T01:53:00.000Z	mbeierl	Arsin	that /could/ be the cause of the message you are seeing...
+2009-11-17T01:54:00.000Z	Arsin	mbeierl	How would I fix this, I can't boot into XP
+2009-11-17T01:56:00.000Z	mbeierl	Arsin	oh - sorry I did not know you could not boot into that partition at all.  I think it might actually be as Linux described it: failed to read...  The disk might be bad
+2009-11-17T01:57:00.000Z	mbeierl	Arsin	did this just start one day?  or is this the result of a drive re-size attempt?
+2009-11-17T01:58:00.000Z	Arsin	mbeierl	Re-size, installing Ubuntu on a windows drive, made a partiton and it died
+2009-11-17T01:59:00.000Z	mbeierl	Arsin	ok.  so what we have here is a boo boo in resize.  The meaningful part of the error message is "partition is smaller than NTFS".  The partition was resized, but the NTFS file system did not get updated
+2009-11-17T02:00:00.000Z	Arsin	mbeierl	Updated? Wasn't told that the sector was not NTFS anymore?
+2009-11-17T02:00:00.000Z	mbeierl	Arsin	um... think of it this way: the house is smaller but the room inside thinks it's bigger than the house
+2009-11-17T02:00:00.000Z	mbeierl	Arsin	the partition was resized to be smalled, but the filesystem resize operation failed
+2009-11-17T02:01:00.000Z	Arsin	mbeierl	Ok cool, how would I go about doing this?
+2009-11-17T02:01:00.000Z	mbeierl	Arsin	I'm not an expert in this area, but I do believe it is possible to get the partition (the house) size back to be bigger than the file system (the room) without destroying any data
+2009-11-17T02:02:00.000Z	Arsin	mbeierl	Thanks anyways, helped me understand what is going on
+2009-11-17T02:03:00.000Z	mbeierl	Arsin	you will need a "live cd" of some sort to boot so that you can modify the filesystem without having to run on it.  Something like Ubuntu Live CD or gparted Live CD.  are you familiar with them?
+2009-11-17T02:04:00.000Z	Arsin	mbeierl	I'm on Ubuntu on my computer, I just plugged his hard drive into my computer, so right now the drive is just idleing
+2009-11-17T02:05:00.000Z	mbeierl	Arsin	ok, that explains the /dev/sdc from your pastebin.  just for a test: what's the output of "sfdisk -l /dev/sdc" (list partition tables) (probably needs to be run as sudo)
+2009-11-17T02:07:00.000Z	Arsin	mbeierl	http://www.ubuntu.pastebin.com/d41554a73
+2009-11-17T02:09:00.000Z	mbeierl	Arsin	ok, here is where I stop.  I am concerned that there are actual partitions defined after the NTFS partition.  To your knowledge, were they formatted or just defined

@@ -1,0 +1,18 @@
+2011-07-26T04:36:00.000Z	matlock		anyone know how I can fix my SDHC so i can partition it??   >> related http://pastebin.com/FgBg2XeG
+2011-07-26T04:38:00.000Z	matlock		no one knows how to fix ubuntu's issue reading dirty sdhc cards?
+2011-07-26T04:39:00.000Z	matlock		or can someone tell me how to pass my sdhc card to virtualbox so i can try formatting it in windows?
+2011-07-26T04:40:00.000Z	rww	matlock	in line 9, you hosed the filesystem on /dev/mmcblk0p1. run mkfs.ext4.
+2011-07-26T04:40:00.000Z	rww	matlock	(which will make a new one)
+2011-07-26T04:40:00.000Z	rww	matlock	(I'm hoping you didn't have data on there you're fond of)
+2011-07-26T04:40:00.000Z	matlock		/dev/mmcblk1: Read-only file system while setting up superblock
+2011-07-26T04:40:00.000Z	matlock		no
+2011-07-26T04:41:00.000Z	matlock		i was trying to fdisk it and it said i can't write to the disk
+2011-07-26T04:41:00.000Z	matlock		which is why i fsck while it was open
+2011-07-26T04:41:00.000Z	rww	matlock	Obvious question: is the write-protect tab on the SD card set?
+2011-07-26T04:41:00.000Z	matlock		so it would mark it clean and ubuntu would quit marking it as dirty
+2011-07-26T04:41:00.000Z	matlock	rww	you read my pastebin?
+2011-07-26T04:41:00.000Z	rww	matlock	yes
+2011-07-26T04:41:00.000Z	matlock	rww	figure for yourself whether or not the write protect is on or not
+2011-07-26T04:42:00.000Z	matlock	rww	if write protect was On i wouldn't be able to copy that file to the sdhc in the last few steps
+2011-07-26T04:42:00.000Z	matlock		again  /dev/mmcblk1: Read-only file system while setting up superblock
+2011-07-26T04:42:00.000Z	rww	matlock	ah, true.

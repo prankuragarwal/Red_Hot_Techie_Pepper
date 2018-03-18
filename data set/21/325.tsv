@@ -1,0 +1,21 @@
+2012-03-01T20:21:00.000Z	dorong		hey guys
+2012-03-01T20:22:00.000Z	dorong		I'm trying to understand what do I need to to create a RAID10 array for mongodb.
+2012-03-01T20:22:00.000Z	dorong		I've created the array itself (mdadm --create....)
+2012-03-01T20:22:00.000Z	ikonia	dorong	so what is the question then ?
+2012-03-01T20:27:00.000Z	dorong	ikonia	any advice ?
+2012-03-01T20:27:00.000Z	ikonia	dorong	it's up to you, you can just use the raw meta device, or you can put LVM on top of it
+2012-03-01T20:28:00.000Z	dorong	ikonia	can you please elaborate about the cons/pros for each of them ?
+2012-03-01T20:28:00.000Z	ikonia	dorong	lvm is more flexible if you want to change sizings, but it also has an admin overhead, that's it
+2012-03-01T20:29:00.000Z	dorong	ikonia	did you had any experience with using mongodb on such a volume ?
+2012-03-01T20:29:00.000Z	ikonia	dorong	I've used many applications on raw devices or lvm, never mongodb though
+2012-03-01T20:31:00.000Z	dorong	ikonia	ok thanks you. last thing - if I do decide to use lvm on top of it, are all of the commands I wrote required (first "pvcreate /dev/md0" than "vgcreate -s 64M mongodb_vg /dev/md0" than "lvcreate -l $num_extents -nmongodb_lv mongodb_vg") ?
+2012-03-01T20:32:00.000Z	ikonia	dorong	yes you will need those commands, and you'll need to put a file system on the logical volume
+2012-03-01T20:32:00.000Z	dorong	ikonia	ok thank you very much for the help
+2012-03-01T20:32:00.000Z	ikonia	dorong	welcome
+2012-03-01T20:36:00.000Z	dorong	ikonia	sorry for the bombardment, but I've setup the array on /dev/md0, and after a restart it got renamed to /dev/md127. any idea why ?
+2012-03-02T19:57:00.000Z	ikonia	dorong	it's probably running in a split mode, (didn't assemble properly when you booted)
+2012-03-02T20:05:00.000Z	dorong	ikonia	this is the command I used to create it - mdadm /dev/md0 --create --level=10 --raid-devices=4 /dev/xvdh1 /dev/xvdh2 /dev/xvdh3 /dev/xvdh4
+2012-03-02T20:05:00.000Z	ikonia	dorong	looks solid
+2012-03-02T20:05:00.000Z	ikonia	dorong	what is the output of cat /proc/mdstat
+2012-03-02T20:07:00.000Z	dorong	ikonia	http://paste.ubuntu.com/865212/
+2012-03-02T20:07:00.000Z	ikonia	dorong	ok, so that all looks in sync

@@ -1,0 +1,23 @@
+2007-06-21T05:33:00.000Z	johso		I am deleting a lot of stuff, but it doesn't free up disk space at all. What is wrong? (I'm using the rm command from a shell)
+2007-06-21T05:34:00.000Z	MarcN	johso	what are you removing?  df doesn't change?
+2007-06-21T05:37:00.000Z	johso	MarcN	I had some random stuff lying around, not too much in size, textfiles/webfiles, etc. there was 26kb available for a few moents, then 0% again
+2007-06-21T05:38:00.000Z	johso	MarcN	it's like the stuff is not removed - you just can't list it anymore. which is weird, considering that I used rm
+2007-06-21T05:38:00.000Z	MarcN	johso	is your /home on the / partition?  Could be something filling up /var/log or somewhere else
+2007-06-21T05:38:00.000Z	johso	MarcN	yes, it is. I backed up /var/log and deleted it - no luck
+2007-06-21T05:39:00.000Z	johso	MarcN	do you know some kind of way to force a purge of the harddisk?
+2007-06-21T05:39:00.000Z	MarcN	johso	sync will flush cache to disk, but I'm sure that isn't it (unless you are on some usb disk)
+2007-06-21T05:40:00.000Z	johso	MarcN	okay. I am thoroughly lost on this one. Worse is, it happened to me a few days ago on my desktop computer - but it solved itself, weirdly enough. This doesn't seem to fix itself though :/
+2007-06-21T05:41:00.000Z	MarcN	johso	nothing in /var/log?  Check /tmp too.
+2007-06-21T05:41:00.000Z	johso	MarcN	empty and empty - btw, /proc is taking up the most disk space. is this usual?
+2007-06-21T05:42:00.000Z	MarcN	johso	/proc is just a virtual file system.  Nothing really there.
+2007-06-21T05:42:00.000Z	MarcN	johso	where do you remove files from?  Did you remove something you shouldn't have?
+2007-06-21T05:43:00.000Z	johso	MarcN	I removed whatever was in my home folder, then /var/log and as a last resort /tmp
+2007-06-21T05:44:00.000Z	MarcN	johso	how big is your / partition?  is /home or others separate?
+2007-06-21T05:46:00.000Z	johso	MarcN	they're not, and it's about 1.5Gb - which used to be plenty, since it's a server. and there really isn't anything that would take up the space
+2007-06-21T05:47:00.000Z	MarcN	johso	apt-cache clean maybe to remove old .debs?  Check /var/cache and /var/www
+2007-06-21T05:49:00.000Z	johso	MarcN	apt-get clean? tried that too. /var/cache and www are 41mb and 47mb - sounds reasonable. this is seriously bugging me out.
+2007-06-21T05:51:00.000Z	MarcN	johso	I have a feisty-server running in a xen dom taking up less than 400M
+2007-06-21T05:52:00.000Z	MarcN	johso	1.5G for / should be plenty
+2007-06-21T05:55:00.000Z	johso	MarcN	yeah, it really should. but as I said, it really does seem like some invisible force is taking up the space :/
+2007-06-21T05:56:00.000Z	MarcN	johso	 check for .Trash-* directories if you used nautilus to remove files.
+2007-06-21T05:56:00.000Z	johso	MarcN	I only have the command line :)

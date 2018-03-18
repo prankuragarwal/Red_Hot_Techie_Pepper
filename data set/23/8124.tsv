@@ -1,0 +1,23 @@
+2005-01-27T09:05:00.000Z	brk3		does anyone know how to get midi files to play in ubuntu? ive tried installing timidity but it says no configuration available or something like that
+2005-01-27T09:06:00.000Z	brk3		does anyone know how to get midi files to play in ubuntu? ive tried installing timidity but it says no configuration available or something like that
+2005-01-27T09:08:00.000Z	sladen	brk3	not sure actually.  Does timidity depend on an sample collection?
+2005-01-27T09:09:00.000Z	brk3	sladen	im not really sure, just on mandrake, installing timidity was all i had to do to get it working. so when thats not working now, im sure what to do
+2005-01-27T09:09:00.000Z	sladen	brk3	what's the error message you get?
+2005-01-27T09:12:00.000Z	brk3	sladen	well, the reason im trying to get them working is that i just installed doom and it works great :) except the music. it gives this: open /dev/sequencer: No such file or directory
+2005-01-27T09:12:00.000Z	brk3	sladen	and when i try to play a midi file i get this: /etc/timidity.cfg: No such file or directory
+2005-01-27T09:13:00.000Z	sladen	brk3	 dpkg -L timidity | grep cfg
+2005-01-27T09:13:00.000Z	brk3	sladen	/usr/share/man/man5/timidity.cfg.5.gz
+2005-01-27T09:13:00.000Z	sladen	brk3	only that?
+2005-01-27T09:13:00.000Z	sladen	brk3	 dpkg -L timidity | grep etc
+2005-01-27T09:13:00.000Z	brk3	sladen	ya
+2005-01-27T09:14:00.000Z	brk3	sladen	/etc
+2005-01-27T09:15:00.000Z	sladen	brk3	ls -l /etc/timidity.cfg /etc/timidity/
+2005-01-27T09:15:00.000Z	brk3	sladen	those files dont exist
+2005-01-27T09:16:00.000Z	sladen	brk3	okay, as a kludge, try   sudo ln -s /etc/default/timidity /etc/timidity.cfg
+2005-01-27T09:17:00.000Z	brk3	sladen	/etc/timidity.cfg: line 14: syntax error
+2005-01-27T09:18:00.000Z	brk3	sladen	ok, that doesnt work, but im reading the guide now so gimmie a few mins and il see if it helps
+2005-01-27T09:22:00.000Z	brk3	sladen	i think i see the problem. ubuntu doesnt provide a config file in its package. i just made one there and now i need to get a soundfont.(whatever that is :))
+2005-01-27T09:23:00.000Z	sladen	brk3	okay so two bugs.  one is no default config, the other is a missing dependancy on soundfont.  Can you file a Ubuntu on Bugzilla.ubuntu.com once you've figured about a solution
+2005-01-27T09:23:00.000Z	brk3	sladen	ok, thanks for the help
+2005-01-27T09:27:00.000Z	brk3	sladen	oh ffs. the soundfonts package is over 20mb. theres no way i can download that on dialup. there must be another way, frankly ubuntu should have this sorted itself
+2005-01-27T09:31:00.000Z	sladen	brk3	the sound fonts are the actual sounds---MIDI is just what notes to play

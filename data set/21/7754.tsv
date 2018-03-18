@@ -1,0 +1,21 @@
+2006-12-17T12:50:00.000Z	minerale		Does anyone know how to read strace? -- all the apt-* utilities are choking on the newly downloaded package lists -- I delted them, did apt-get update and they choke: heres a strace of apt-cache search test: http://www.cc.gatech.edu/~achille/apt-cache-strace.txt
+2006-12-17T12:52:00.000Z	dfcarney	minerale	is that strace output with the "follow forks" option enabled?
+2006-12-17T12:53:00.000Z	minerale	dfcarney	i simply did `strace apt-cache search test &> output.txt`
+2006-12-17T12:53:00.000Z	dfcarney	minerale	use the -FF option (I believe) in the strace call to follow execution into forks
+2006-12-17T12:54:00.000Z	dfcarney	minerale	actually, it may just be -f
+2006-12-17T12:54:00.000Z	dfcarney	minerale	(I had to boot back into Windows, so I can't check at my prompt)
+2006-12-17T12:55:00.000Z	minerale	dfcarney	it's -F, hold on while I upload it
+2006-12-17T12:56:00.000Z	minerale	dfcarney	http://www.cc.gatech.edu/~achille/strace2.txt
+2006-12-17T12:56:00.000Z	dfcarney	minerale	ugh -- not much more help there.
+2006-12-17T12:57:00.000Z	dfcarney	minerale	have you looked at "var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_edgy_main_binary-i386_Packages" ?
+2006-12-17T12:57:00.000Z	dfcarney	minerale	are any filesystem errors reported in 'dmesg'?
+2006-12-17T12:58:00.000Z	minerale	dfcarney	I deleted that file, apt-get update re downloads it and then it chokes on it again
+2006-12-17T12:58:00.000Z	minerale	dfcarney	nothing serious on dmesg
+2006-12-17T12:59:00.000Z	dfcarney	minerale	I dunno.  I mean, if you've run 'apt-get clean' and you're still getting the crash then I suggest that you escalate it to a developer in #ubuntu-devel
+2006-12-17T13:00:00.000Z	dfcarney	minerale	simply put, it's a SIGSEGV...which could be due to file/data corruption, disk errors, mismatching libraries (doubtful), etc...
+2006-12-17T13:02:00.000Z	dfcarney	minerale	have you tried using a different sources.list?  Maybe the downloaded file itself is corrupt and when it's parsed it causes an error.
+2006-12-17T13:02:00.000Z	minerale	dfcarney	how would I run a fsck? it tells me it's dangerous to do it on a mounted volume -- should I ignore that error ?
+2006-12-17T13:03:00.000Z	dfcarney	minerale	no, don't ignore it.
+2006-12-17T13:03:00.000Z	dfcarney		!fsck | minerale
+2006-12-17T13:03:00.000Z	minerale		I'll try that, thanks
+2006-12-17T13:03:00.000Z	dfcarney	minerale	odds are that you don't have filesystem corruption.  I suggest that you start by changing your sources.list file to download everything from a different server, run "apt-get clean", and try again.

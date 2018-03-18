@@ -1,0 +1,24 @@
+2006-03-19T11:10:00.000Z	obli		hey, can I get some newbie ubuntu support here?
+2006-03-19T11:12:00.000Z	obli		I went into the disk manager, converted it, but when I go back it still says NTFS
+2006-03-19T11:12:00.000Z	obli		I don't care about the data, all my mp3s can be recovered from my ipod, and the movies were already watched :)
+2006-03-19T11:13:00.000Z	obli		well, I want to use the disk, as mounting an ntfs drive apparently didn't work very well
+2006-03-19T11:13:00.000Z	obli		it had UTF characters in it
+2006-03-19T11:13:00.000Z	obli		()
+2006-03-19T11:14:00.000Z	psycho_oreos	obli	you can temporarily copy the data elsewhere and then format that partition/disk. Once done, you copy the data back
+2006-03-19T11:14:00.000Z	obli	psycho_oreos	will try, thanks
+2006-03-19T11:15:00.000Z	psycho_oreos	obli	you should have the disk unmounted before any conversion is taking place, etc
+2006-03-19T11:29:00.000Z	psycho_oreos	obli	what did you convert from and to?
+2006-03-19T11:31:00.000Z	psycho_oreos	obli	you first unmount the partition/disk, use fdisk and change the partition/disk type. Use mkfs.ext3 or mkfs.vfat to make it readable and mountable under windows/linux. Mount it, and you are set
+2006-03-19T11:32:00.000Z	psycho_oreos	obli	under linux?
+2006-03-19T11:33:00.000Z	psycho_oreos	obli	set the mount option to include 'iocharset=utf8' (save it into /etc/fstab), unmount it and remount it
+2006-03-19T11:35:00.000Z	obli	psycho_oreos	this may seem like a stupid question, but how do I edit it, I can't get into the root account
+2006-03-19T11:36:00.000Z	psycho_oreos	obli	yes
+2006-03-19T11:37:00.000Z	psycho_oreos	obli	umount <dev> && mount <dev>
+2006-03-19T11:41:00.000Z	obli	psycho_oreos	It says "special device /dev/hdd5 does not exist" =\
+2006-03-19T11:42:00.000Z	psycho_oreos	obli	paste your fdisk -l /dev/hdd5 on pastebin's site
+2006-03-19T11:43:00.000Z	obli	psycho_oreos	where?
+2006-03-19T11:44:00.000Z	obli	psycho_oreos	http://paste.ubuntu-nl.org/10229
+2006-03-19T11:46:00.000Z	psycho_oreos	obli	looks like your partition is stuffed, there is nothing listed in /dev/hdd
+2006-03-19T11:48:00.000Z	psycho_oreos	obli	well, I kinda doubt rebooting back to windows is possible again
+2006-03-19T11:49:00.000Z	psycho_oreos	obli	well, get into cfdisk, recreate a linux partition, make the partition into a type that you want. If you want windows compatibility, there is the option of ex2/ext3, fat32, reiserfs(read only on windows)
+2006-03-19T13:06:00.000Z	obli	psycho_oreos	I'm back, the installer didn't manage to nume the NTFS drive...

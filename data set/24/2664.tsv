@@ -1,0 +1,24 @@
+2008-09-28T20:20:00.000Z	htang		hi. I want to share with windows, but when I use "sudomount//172.16.73.88/kelsenshare/media/sharename/-ousername=xk,password=kaikai,dmask=777,fmask=777", i can't mount windows share file? why?
+2008-09-28T20:20:00.000Z	htang		sudo mount smb:/192.168.1.100/TangHui的备份 /mnt/win -o username=user,password=123,file_mode=777,dir_mode=777
+2008-09-28T20:21:00.000Z	htang		above can't work property.
+2008-09-28T20:22:00.000Z	htang		sorry...I am...
+2008-09-28T20:22:00.000Z	fx3	htang	what kind of error message do you get?
+2008-09-28T20:23:00.000Z	htang		it got the below error message:
+2008-09-28T20:23:00.000Z	htang		htang@ubuntu:~$ sudo mount //192.168.1.100/TangHui的备份 /mnt/win -o username=user,password=123,file_mode=777,dir_mode=777
+2008-09-28T20:23:00.000Z	htang		WARNING: 'file_mode' not expressed in octal.
+2008-09-28T20:23:00.000Z	htang		WARNING: 'dir_mode' not expressed in octal.
+2008-09-28T20:23:00.000Z	htang		mount error 6 = No such device or address
+2008-09-28T20:23:00.000Z	htang		Refer to the mount.cifs(8) manual page (e.g.man mount.cifs)
+2008-09-28T20:23:00.000Z	fx3	htang	also try sudo mount -t smbfs "//192.168.1.100/TangHui的备份" /mnt/win -o username=user,password=123,file_mode=777,dir_mode=777
+2008-09-28T20:24:00.000Z	htang	fx3	i did that. but I got :WARNING: 'file_mode' not expressed in octal.
+2008-09-28T20:24:00.000Z	htang		WARNING: 'dir_mode' not expressed in octal.
+2008-09-28T20:24:00.000Z	htang		mount error 6 = No such device or address
+2008-09-28T20:24:00.000Z	htang		Refer to the mount.cifs(8) manual page (e.g.man mount.cifs)
+2008-09-28T20:25:00.000Z	fx3	htang	well the first two errors are self explanatory, is the host address correct? can you ping it? does the strange chars in username cause issue
+2008-09-28T20:26:00.000Z	fx3	htang	you could aslo try sudo apt-get install smbfs, and do smbmount
+2008-09-28T20:27:00.000Z	fx3	htang	smbmount "//host/share" -U user -c 'mount /mnt/win -u 500 -g 100'
+2008-09-28T20:28:00.000Z	fx3	htang	try this:
+2008-09-28T20:28:00.000Z	fx3		sudo mount -t smbfs -o username=user,password=123 //192.168.1.100/TangHui的备份 /mnt/win
+2008-09-28T20:28:00.000Z	fx3	htang	^^^
+2008-09-28T20:29:00.000Z	htang		the IP is correct, I can sure. but if is the strange chars cause the problem , i don't know. well, I will try the follow.
+2008-09-28T20:29:00.000Z	fx3	htang	if the chars are causing the problem you need to create a credentials file, read up on google its all there

@@ -1,0 +1,24 @@
+2008-12-27T17:19:00.000Z	mib_o3fuu7		hello
+2008-12-27T17:20:00.000Z	mib_o3fuu7		recently I've seem to have lost my wlan0 inteface - have the madwifi drivers but wlan0 isn't showing up in ifconfig or iwconfig
+2008-12-27T17:20:00.000Z	unop_	mib_o3fuu7	did you recently do a kernel upgrade? :)
+2008-12-27T17:20:00.000Z	mib_o3fuu7		ar5007EG NIC
+2008-12-27T17:20:00.000Z	mib_o3fuu7	unop_	unop_ i decided it wasnt necessary
+2008-12-27T17:21:00.000Z	mib_o3fuu7		this is for my frien
+2008-12-27T17:21:00.000Z	mib_o3fuu7		its for my friends computer so im trying to get through this as fast as possible because i have a lot of coding to do
+2008-12-27T17:22:00.000Z	unop_	mib_o3fuu7	well, did your friend do a kernel upgrade??  also, is the interface listed in  ifconfig -a ?
+2008-12-27T17:23:00.000Z	mib_o3fuu7	unop_	i was going to do a kernel upgrade but i changed my mind - ifconfig -a is only showing eth0 and lo
+2008-12-27T17:23:00.000Z	unop_	mib_o3fuu7	try this.   sudo modprobe ath_pci
+2008-12-27T17:23:00.000Z	unop_	mib_o3fuu7	then check if the interface is visible?
+2008-12-27T17:24:00.000Z	mib_o3fuu7	unop_	yes its loaded
+2008-12-27T17:24:00.000Z	unop_	mib_o3fuu7	looks like you don't have the module loading at boot .. make sure it has an entry in /etc/modules
+2008-12-27T17:24:00.000Z	mib_o3fuu7	unop_	bash: cd: /etc/modules: Not a directory
+2008-12-27T17:25:00.000Z	unop_		!best > imaginen1
+2008-12-27T17:25:00.000Z	unop_	mib_o3fuu7	it's a file not a directory
+2008-12-27T17:25:00.000Z	mib_o3fuu7	unop_	oh right, ath_pci is in it though
+2008-12-27T17:26:00.000Z	unop_	mib_o3fuu7	odd, what does this give you?    lsmod | grep -i ath
+2008-12-27T17:27:00.000Z	mib_o3fuu7		honda@honda-laptop:/etc$ lsmod | grep -i ath ath_pci               101024  0  wlan                  207728  1 ath_pci ath_hal               192592  1 ath_pci
+2008-12-27T17:27:00.000Z	unop_	mib_o3fuu7	hmm, everything seems alright - does the interface not come up after every boot? or was this just a one off?
+2008-12-27T17:28:00.000Z	mib_o3fuu7	unop_	unop_ every time
+2008-12-27T17:28:00.000Z	mib_o3fuu7		im going to reboot and check with ifconfig -a again
+2008-12-27T17:28:00.000Z	mib_o3fuu7		brb
+2008-12-27T17:28:00.000Z	unop_	mib_o3fuu7	is there anything relating to it in /etc/modprobe.d/blacklist ?

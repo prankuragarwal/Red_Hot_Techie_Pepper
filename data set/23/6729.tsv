@@ -1,0 +1,23 @@
+2006-01-22T08:25:00.000Z	nbound		if i can transfer files to my PSP in win but not linux whats the problem, linux automounts and shows the filesystem and it will look like it works till i try to play them and they dont exist, when i reconnect the psp they still dont exist? anyone??? ='( (i think its a problem with the VFAT file system the PSP uses)
+2006-01-22T08:27:00.000Z	timfrost	nbound	what mount options are shown for the PSP?  Most likely, the user and umask need to be reset.
+2006-01-22T08:27:00.000Z	nbound	timfrost	ive tryed as root and it still didnt work... what is umask?
+2006-01-22T08:29:00.000Z	timfrost	nbound	umask is a mask that forces certain permission bits off.  Try 'mount -oremount,rw,umask=000,user=<your ID> <PSP dev>'
+2006-01-22T08:29:00.000Z	nbound	timfrost	it automounts
+2006-01-22T08:30:00.000Z	nbound	timfrost	its read like a mem stick or card reader
+2006-01-22T08:31:00.000Z	timfrost	nbound	I know.  The command I typed is for atfer it has mounted, to see if those options make a difference.  If it does make a difference, then we update the settings for the automounter
+2006-01-22T08:31:00.000Z	nbound	timfrost	oh ok
+2006-01-22T08:32:00.000Z	nbound	timfrost	what goes in the psp dev bit of Try 'mount -oremount,rw,umask=000,user=<your ID> <PSP dev>'
+2006-01-22T08:33:00.000Z	timfrost	nbound	either the device name or the mount point (/media/PSP or similar)
+2006-01-22T08:33:00.000Z	nbound	timfrost	ohhh ok
+2006-01-22T08:35:00.000Z	nbound	timfrost	nope =(
+2006-01-22T08:36:00.000Z	timfrost	nbound	that didn't work at all?
+2006-01-22T08:36:00.000Z	nbound	timfrost	it work, but its exactly the same prob as before
+2006-01-22T08:37:00.000Z	timfrost	nbound	in that case, I am stumped:(
+2006-01-22T08:37:00.000Z	nbound	timfrost	it mounts and seems to write to it, but doesnt (the writing bit is far to wuick on psp screen)
+2006-01-22T08:37:00.000Z	nbound		quick*
+2006-01-22T08:38:00.000Z	nbound		/dev/sdb1 on /media/usbdisk type vfat (rw,nosuid,nodev,quiet,shortname=winnt,uid=1000,gid=1000,umask=077,iocharset=utf8)
+2006-01-22T08:38:00.000Z	nbound		thats what i get
+2006-01-22T08:38:00.000Z	nbound		if i juts type mount
+2006-01-22T08:40:00.000Z	nbound		u sex then u sulk =/
+2006-01-22T08:40:00.000Z	timfrost	nbound	if your uid is 1000, that *should* be correct.
+2006-01-22T08:41:00.000Z	nbound	timfrost	well it looks like ive found something where i have to use a windows box for still =(

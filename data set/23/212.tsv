@@ -1,0 +1,23 @@
+2012-11-24T03:04:00.000Z	usr13	angs	If so, that may be the problem.
+2012-11-24T03:03:00.000Z	usr13	angs	Do you have network-manager installed and running?
+2012-11-24T02:53:00.000Z	usr13	angs	wlan3?
+2012-11-24T02:54:00.000Z	angs	usr13	it is the wifi module  that I have, system assign wlan3 for it
+2012-11-24T02:55:00.000Z	usr13	angs	iwconfig wlan3 |pastebinit
+2012-11-24T02:56:00.000Z	angs	usr13	http://paste.ubuntu.com/1380591/
+2012-11-24T03:02:00.000Z	usr13	angs	In /etc/network/interfaces  Delete line: "auto wlan3"
+2012-11-24T03:03:00.000Z	usr13	angs	Wait, scratch that.
+2012-11-24T03:04:00.000Z	angs	usr13	I am using ubuntu-server, I am not sure if network-manager is installed.
+2012-11-24T03:04:00.000Z	usr13	angs	Shouldn't be
+2012-11-24T03:05:00.000Z	usr13	angs	ifconfig wlan3  | pastebinit
+2012-11-24T03:06:00.000Z	angs	usr13	http://paste.ubuntu.com/1380622/    however, I assigned the IP address by ifconfig -a wlan3 10.0.0.1 netmask 255.255.255.0
+2012-11-24T03:08:00.000Z	usr13	angs	what was it before?
+2012-11-24T03:08:00.000Z	angs	usr13	I run the wpa_supplicant configuration on two ubuntu server and they get the same cell ID, however when I assign the IP addresses by " ifconfig -a wlan3 10.0.0.1 netmask 255.255.255" and "10.0.02" they cannot ping each other. I get Destination Host Unreachable error. do you know how I can ping them?
+2012-11-24T03:08:00.000Z	usr13	angs	Something from a dhcp pool somewhere on your LAN
+2012-11-24T03:09:00.000Z	angs	usr13	 it is an ad-hoc network, it did not get any IP since there is no dhcp
+2012-11-24T03:09:00.000Z	usr13	angs	"netmask 255.255.255"?
+2012-11-24T03:10:00.000Z	usr13	angs	you mean 255.255.255.0 ?
+2012-11-24T03:11:00.000Z	usr13	angs	They both have the same essid?
+2012-11-24T03:11:00.000Z	angs	usr13	yes, the same essid and cell id
+2012-11-24T03:12:00.000Z	usr13	angs	You should skip the encryption part.
+2012-11-24T03:13:00.000Z	angs	usr13	but I need to use wpa, isn't it possible to use it with encryption?
+2012-11-24T03:20:00.000Z	usr13	angs	I meant that you should skip the encryption part until you get the connection esbablished.  In other words, turn off encryption, get the connection up and working, then you can turn it back on.  (I'm thinkinking it will simplify things for you.)

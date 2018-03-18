@@ -1,0 +1,18 @@
+2012-01-27T15:10:00.000Z	or4n9e		hi community. where would be a good place on IRC to ask a question about ubuntu's bluez implementation?
+2012-01-27T15:10:00.000Z	or4n9e		may you point me to the right IRC channel
+2012-01-27T15:10:00.000Z	or4n9e		?
+2012-01-27T15:11:00.000Z	popey	or4n9e	what's the question?
+2012-01-27T15:12:00.000Z	or4n9e	popey	I'm looking for an opportunity to provide a default PIN for every outgoing connection attempt (e.g. obexftp, dun, whatever) without getting prompted for the PIN while pairing with the handset
+2012-01-27T15:13:00.000Z	popey	or4n9e	interesting, i think you can set a default pin can't you?
+2012-01-27T15:13:00.000Z	or4n9e	popey	I read about /etc/bluetooth/pin with /etc/bluetooth/hcid.conf but none of these exist in ubuntu 11.10
+2012-01-27T15:13:00.000Z	popey	or4n9e	i wonder if they moved or you need some other bluetooth app like blueman?
+2012-01-27T15:14:00.000Z	popey	or4n9e	sorry, I don't know any more without looking at the source
+2012-01-27T15:14:00.000Z	or4n9e	popey	blueman ceratinly would do but I need a non-interactive way of doing it (no user interaction) as I need to script something
+2012-01-27T15:15:00.000Z	or4n9e	popey	I see. maybe someone else experience with that particular problem?
+2012-01-27T15:19:00.000Z	or4n9e	popey	as it seems bluez people really screwed up (especially without any documentation) ... hcid.conf isn't even existent in ubuntu
+2012-01-27T15:55:00.000Z	or4n9e	popey	just in case you're interested. I just found /var/lib/bluetooth/<hci-id>/... and I hope that this is the place where the magic happens
+2012-01-27T15:57:00.000Z	or4n9e	popey	haven't really checked HOW but I THINK this directory could be a good place to start testing. as it seems bluez 4.x got rid of plaintext PINs in conf-files and instead does anything through dbus-foo and stores encrypted keys
+2012-01-27T15:57:00.000Z	or4n9e	popey	I'm far from having the solution but I thought I provide this info as a follow-up
+2012-01-27T16:30:00.000Z	or4n9e	popey	you need to introduce "remote-bdaddr PIN" to /var/lib/bluetooth/"local-bdaddr"/pincodes
+2012-01-27T16:31:00.000Z	or4n9e	popey	then you wont get a prompt and /var/lib/bluetooth/"local-bdaddr"/linkkeys gets populated with an entry for "remote-bdaddr"
+2012-01-27T16:31:00.000Z	or4n9e	popey	problem solved. thanks for your help

@@ -1,0 +1,18 @@
+2009-03-17T14:09:00.000Z	JabberWokky		Okay, this is driving me nuts.  Symlinks to directories on manually mounted drives are disappearing randomly since 8.10.  Possibly some kind of daemon watching mounts?
+2009-03-17T14:09:00.000Z	ActionParsnip1	JabberWokky	they should remain but be broken
+2009-03-17T14:10:00.000Z	JabberWokky	ActionParsnip1	Why would they be broken?  The drive is still connected.
+2009-03-17T14:10:00.000Z	ActionParsnip1	JabberWokky	are you using ln -s /path/to/folder  to create the link?
+2009-03-17T14:10:00.000Z	JabberWokky	ActionParsnip1	I have 28 years of *nix experience.  This is not a "I don't understand the filesystem" problem.
+2009-03-17T14:11:00.000Z	JabberWokky	ActionParsnip1	The symlinks are being deleted by some process, often while the drive still has files open.
+2009-03-17T14:11:00.000Z	ActionParsnip1	JabberWokky	a hard link would vanish when the device was unmounted, ln -s would create a softlink and would stay
+2009-03-17T14:11:00.000Z	ActionParsnip1	JabberWokky	sounds like a bug
+2009-03-17T14:11:00.000Z	JabberWokky	ActionParsnip1	I know that.  I am very familiar with ln.
+2009-03-17T14:12:00.000Z	ActionParsnip1	JabberWokky	a process watching the whole drive like that sounds a little unnecessary to me so i cant see it being implemented
+2009-03-17T14:12:00.000Z	JabberWokky	ActionParsnip1	It appeared right after I (fairly recently) upgraded my desktop to 8.10.  Something is "helpfully" cleaning up links, is my guess...
+2009-03-17T14:13:00.000Z	JabberWokky	ActionParsnip1	Yeah, I thought that too.  I just can't think of anything else that might be doing this.  A sshfs mountpoint is doing the game.
+2009-03-17T14:14:00.000Z	JabberWokky	ActionParsnip1	s/doing the game/doing the same.
+2009-03-17T14:15:00.000Z	ActionParsnip1	JabberWokky	i'd log a bug or see if this is a new "feature"
+2009-03-17T14:17:00.000Z	JabberWokky	ActionParsnip1	Thanks for trying to assist anyway; it's just hard to search for, as people are constantly asking "why don't links in /dev survive a reboot?" and being responded to, so it's hard to find a good search term for my issue.  :)
+2009-03-17T14:17:00.000Z	ActionParsnip1	JabberWokky	do hard links stay?
+2009-03-17T14:17:00.000Z	JabberWokky	ActionParsnip1	Can't hardlink across mountpoints.
+2009-03-17T14:17:00.000Z	ActionParsnip1	JabberWokky	bah

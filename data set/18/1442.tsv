@@ -1,0 +1,18 @@
+2011-02-18T16:59:00.000Z	Gernoz		good morning. i booted from liveCD and tried to write on my fast partition. when i try to chmod folders on that partition it says it does, but actually permissions stay the same. whats wrong there?
+2011-02-18T17:00:00.000Z	Gernoz		s/fast/FAT
+2011-02-18T17:00:00.000Z	mgedmin	Gernoz	FAT has little support for permissions
+2011-02-18T17:00:00.000Z	Gernoz	mgedmin	how to write there then?
+2011-02-18T17:02:00.000Z	mgedmin	Gernoz	are you root?
+2011-02-18T17:03:00.000Z	mgedmin	Gernoz	there are mount options for setting the uid/gid for all files and folders that will then allow you to write as non-root
+2011-02-18T17:09:00.000Z	Gernoz	mgedmin	doesnt work either
+2011-02-18T17:10:00.000Z	mgedmin	Gernoz	please pastebin the output of 'mount /tmp/fat' and the output of 'id'
+2011-02-18T17:12:00.000Z	mgedmin	Gernoz	and you can't write to it?
+2011-02-18T17:12:00.000Z	mgedmin	Gernoz	can you pastebin the output of 'touch /tmp/fat/test.txt'?
+2011-02-18T17:14:00.000Z	Gernoz	mgedmin	cannot touch, Permission denied
+2011-02-18T17:14:00.000Z	mgedmin	Gernoz	last question
+2011-02-18T17:16:00.000Z	mgedmin	Gernoz	try mount /tmp/fat -o remount,fmask=011,dmask=0
+2011-02-18T17:18:00.000Z	Gernoz	mgedmin	works now. what was the problem?
+2011-02-18T17:19:00.000Z	mgedmin	Gernoz	since vfat itself doesn't store ownership/permission information, mount options are used for those -- and by default make vfat systems writable only by root
+2011-02-18T17:20:00.000Z	mgedmin	Gernoz	if I were you, I'd double-click on the disk icon in Nautilus to mount it
+2011-02-18T17:21:00.000Z	Gernoz	mgedmin	this is xubuntu liveCD, no nautilus here :-)
+2011-02-18T17:24:00.000Z	Gernoz	mgedmin	thanks a lot, have a nice weekend

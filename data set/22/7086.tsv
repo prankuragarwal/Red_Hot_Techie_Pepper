@@ -1,0 +1,22 @@
+2007-04-22T07:14:00.000Z	tom1502		hi, i upgraded edgy to feisty, but the new 2.6.20 kernel doesnt completely boot. it always hangs here:  Uniform CD-ROM driver Revision: 3.20
+2007-04-22T07:15:00.000Z	tom1502		can anyone help me with this?
+2007-04-22T07:15:00.000Z	stefg	tom1502	this could be of interest https://bugs.launchpad.net/bugs/98670
+2007-04-22T07:16:00.000Z	tom1502	stefg	its a toshiba laptop and toshiba dvd drive
+2007-04-22T07:17:00.000Z	stefg	tom1502	the released kernel in feisty is a mess... write a bug report, try to play with boot options
+2007-04-22T07:17:00.000Z	tom1502	stefg	i already did
+2007-04-22T07:18:00.000Z	tom1502	stefg	play with the options...
+2007-04-22T07:19:00.000Z	stefg	tom1502	so Feisty is holding the 'Just won't work' (tm) tradititon of rushed ubuntu releases since Dapper :-(
+2007-04-22T07:19:00.000Z	tom1502	stefg	the 20 kernel also says sth about a sda device i dont have with "17"
+2007-04-22T07:20:00.000Z	stefg	tom1502	the kernel dev's couldn't decide up to last minute wether to use libata or not... that means your devices g back and forth from /s/ da to /h/ da.... so everything is UUID based now
+2007-04-22T07:21:00.000Z	tom1502	stefg	well but grub always uses the wrong uuid's...
+2007-04-22T07:22:00.000Z	tom1502	stefg	from hd(0,2) instead of hd(0,3)
+2007-04-22T07:22:00.000Z	tom1502	stefg	i know
+2007-04-22T07:23:00.000Z	tom1502	stefg	but as i dont know the uuid of my /dev/hda4 by heart, i used the grub "word"
+2007-04-22T07:29:00.000Z	tom1502	stefg	do you think the problem might be that i use "root=/dev/hda4" instead of the uuid?
+2007-04-22T07:30:00.000Z	stefg	tom1502	yeak, that's the problem
+2007-04-22T07:30:00.000Z	tom1502	stefg	how can i find out the correct uuid?
+2007-04-22T07:31:00.000Z	tom1502	stefg	i dont know udev wery well
+2007-04-22T07:32:00.000Z	tom1502	stefg	do you know why the "whatever" creates the menu.lst takes the wrong partition?
+2007-04-22T07:33:00.000Z	stefg	tom1502	you shifted partitions around, didn't you?
+2007-04-22T07:34:00.000Z	tom1502	stefg	not at all, i have this since edgy
+2007-04-22T07:35:00.000Z	stefg	tom1502	hard to track... but in menu.lst are certain 'keywors' which control the update-grub procedure... read it carefully, it's well commented

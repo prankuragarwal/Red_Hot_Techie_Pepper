@@ -1,0 +1,21 @@
+2008-02-04T05:05:00.000Z	Geezle		Sorry to re-ask, but I need a hand getting my sound back.  I think I lost it during an update? and didn't notice right away, so I don't know what happened.  I've tried rebuilding ALSA and following the debugging sound problems page with no luck.  I've got an onboard Ensoniq sound device that aplay sees, and all my audio controls are intact.  Don't know what else to try.
+2008-02-04T05:07:00.000Z	gilda	Geezle	you ran the amixer ?
+2008-02-04T05:07:00.000Z	Geezle	gilda	yup
+2008-02-04T05:09:00.000Z	gilda	Geezle	the modules obviously loading correctly since its detected correctly yes ?
+2008-02-04T05:10:00.000Z	Geezle	gilda	it looks like they are as far as I can tell
+2008-02-04T05:10:00.000Z	Geezle	gilda	hang on, I'll take a look
+2008-02-04T05:11:00.000Z	gilda	Geezle	what is the lspci on the esonique sound card ?
+2008-02-04T05:13:00.000Z	Geezle	gilda	well I see my sound card plastered all over my lsmod output. where do I find the lspci?
+2008-02-04T05:14:00.000Z	gilda	Geezle	just type sudo lspci
+2008-02-04T05:15:00.000Z	Geezle	gilda	I'm a tard, I just figured that out.  I've got a different number showing for that than I have listed in lsmod.  I think this may have been something I did when rebuilding ALSA?  It was the closest to my device.  Still an Ensoniq module, but a different number
+2008-02-04T05:16:00.000Z	gilda	Geezle	sounds like it - need to make sure the modules for alsa are the correct ones
+2008-02-04T05:16:00.000Z	gilda	Geezle	http://www.alsa-project.org/main/index.php/Matrix:Vendor-Ensoniq
+2008-02-04T05:18:00.000Z	Geezle	gilda	according to that page, it still uses the same driver
+2008-02-04T05:51:00.000Z	Geezle	gilda	I'm trying to reinstall my sound module following the alsa project instructions andi5 posted for me, but I get a error when I try to install the alsa-driver package
+2008-02-04T05:52:00.000Z	Geezle	gilda	I may have run into this problem when I initially installed it and didn't notice it?
+2008-02-04T05:54:00.000Z	gilda	Geezle	if you dust alsa all together you wont have gnome boot
+2008-02-04T05:58:00.000Z	gilda	Geezle	if you are receiving errors plz use the pastebin so we can know whats going on
+2008-02-04T05:58:00.000Z	Geezle	gilda	Pastebin?
+2008-02-04T05:59:00.000Z	Geezle	gilda	Thanks :)
+2008-02-04T06:03:00.000Z	gilda	Geezle	did you install the linux-kernel-headers ?
+2008-02-04T06:04:00.000Z	gilda	Geezle	sudo apt-get install linux-headers-generic linux-source

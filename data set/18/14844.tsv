@@ -1,0 +1,18 @@
+2005-10-16T06:11:00.000Z	nihao		hello, how to know if I have swap partition or not?
+2005-10-16T06:13:00.000Z	slept	nihao	cat /proc/swaps
+2005-10-16T06:21:00.000Z	nihao	slept	cat /proc/swaps give me no output --> does this mean there is no swap (or not enabled)?
+2005-10-16T06:21:00.000Z	slept	nihao	do you have a swap partition ? if so do swapon /dev/hd..
+2005-10-16T06:27:00.000Z	slept	nihao	do fdisk -l
+2005-10-16T06:27:00.000Z	slept	nihao	if the line would be right you have swap
+2005-10-16T06:28:00.000Z	nihao	slept	'fdisk -l' prints nothing. what does this mean?
+2005-10-16T06:28:00.000Z	slept	nihao	to make a partition swap do mkswap /dev/hd8
+2005-10-16T06:29:00.000Z	slept	nihao	sudo
+2005-10-16T06:29:00.000Z	slept	nihao	for fdisk
+2005-10-16T06:33:00.000Z	nihao	slept	yes, i see it in fdisk -l /dev/hda now. "/dev/hda8            8455        8511      457821   82  Linux swap / Solaris"
+2005-10-16T06:33:00.000Z	nihao	slept	this is the output of "top" --> "Swap:        0k total,        0k used,        0k free,    97780k cached
+2005-10-16T06:34:00.000Z	nihao	slept	anything wrong? does this mean that swap partition is not used?
+2005-10-16T06:34:00.000Z	slept	nihao	do swapon /dev/hda8  to test if it works if not do what intelikey said. forget about top
+2005-10-16T06:36:00.000Z	nihao	slept	intelikey : yes, I see the swap now. thanks!
+2005-10-16T06:37:00.000Z	slept	nihao	256 should be enough and swap is always a goos idea
+2005-10-16T06:39:00.000Z	nihao	slept	intelikey : ok, I will test the memory. but my windows in the same box seems don't have problem.
+2005-10-16T06:54:00.000Z	slept	nihao	with the fstab entry you allready have, should work now , try with reboot

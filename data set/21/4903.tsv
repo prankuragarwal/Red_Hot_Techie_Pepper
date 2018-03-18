@@ -1,0 +1,21 @@
+2010-05-17T19:31:00.000Z	[tla]		Hi.  Installed Lucid with LVM.  I have a logical volume "data" (ext4).  Have added a blank HD (/dev/sdb) and now want to extend the logical volume "data" to include the extra space.  Think I am missing a step as the volume size has not increased.  Help please!  I ran: dd if=/dev/zero of=/dev/sdb bs=512 count=1 (to trash the partition table), pvcreate /dev/sdb (add the disk to LVM), vgextend...
+2010-05-17T19:31:00.000Z	[tla]		...s3 /dev/sdb (add the disk to the logical volume), lvextend /dev/s3/data /dev/sdb (extend the logical volume)
+2010-05-17T19:33:00.000Z	dancek	[tla]	you've only resized the partition that the filesystem lies on, not the actual filesystem yet
+2010-05-17T19:34:00.000Z	[tla]	dancek	ok, clue please ;)
+2010-05-17T19:34:00.000Z	dancek	[tla]	i'm not on linux right now so can't check but theres something like e2fsresize
+2010-05-17T19:35:00.000Z	[tla]	dancek	ah, i thought lvextend did that magic
+2010-05-17T19:35:00.000Z	[tla]	dancek	resize2fs is a command
+2010-05-17T19:36:00.000Z	dancek	[tla]	yep... they're separate entities, which really is a little unintuitive
+2010-05-17T19:36:00.000Z	[tla]	dancek	what is the device i run that command on?
+2010-05-17T19:37:00.000Z	dancek	[tla]	iirc the logical volume, but you're definitely better reading a howto (it'se been 2 years since i last did this)
+2010-05-17T19:38:00.000Z	[tla]	dancek	ok.  i have read quite a few and many seems to be out of date / inconsistent :(
+2010-05-17T19:38:00.000Z	dancek	[tla]	i think i've used this as reference: http://tldp.org/HOWTO/LVM-HOWTO/extendlv.html
+2010-05-17T19:40:00.000Z	dancek	[tla]	just in case i wanna mention that the filesystem _must_ be unmounted
+2010-05-17T19:40:00.000Z	dancek	[tla]	(reiserfs could be resized while mounted, but i'm not sure how safe it is either)
+2010-05-17T19:41:00.000Z	[tla]	dancek	Resizing the filesystem on /dev/s3/data to 580887552 (4k) blocks. :)
+2010-05-17T19:42:00.000Z	dancek	[tla]	good! :)
+2010-05-17T19:42:00.000Z	[tla]	dancek	had to run 'e2fsck -f /dev/s3/data' first.
+2010-05-17T19:44:00.000Z	dancek	[tla]	if you feel there was no good documentation on how to do this, you might consider writing what you learned to ubuntu wiki (just a thought, and i dunno about wiki policy)
+2010-05-17T19:45:00.000Z	[tla]	dancek	good idea.  Looks good anyway: /dev/mapper/s3-data   2.2T  241G  1.8T  12% /data
+2010-05-17T19:46:00.000Z	[tla]	dancek	thx 4 help
+2010-05-17T19:46:00.000Z	dancek	[tla]	glad i could help :)

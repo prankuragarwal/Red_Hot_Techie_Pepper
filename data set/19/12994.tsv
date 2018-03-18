@@ -1,0 +1,19 @@
+2005-06-11T08:42:00.000Z	BockBilbo		i have 2 question
+2005-06-11T08:42:00.000Z	BockBilbo		s
+2005-06-11T08:42:00.000Z	BockBilbo		the first one is...
+2005-06-11T08:42:00.000Z	BockBilbo		see... ive done the script
+2005-06-11T08:43:00.000Z	BockBilbo		but it happens that it executes the program stoping the init of the system
+2005-06-11T08:43:00.000Z	BockBilbo		cause its an overnet server
+2005-06-11T08:44:00.000Z	BockBilbo		is there a command to start a program in background?
+2005-06-11T08:44:00.000Z	dooglus	BockBilbo	just put a & at the end of the command.  or hit Alt-F2
+2005-06-11T08:45:00.000Z	dooglus	BockBilbo	alternatively, "program > logfile & root-tail logfile" will really run it in the background - the desktop background
+2005-06-11T08:46:00.000Z	dooglus	BockBilbo	overnetclc -g &
+2005-06-11T08:47:00.000Z	dooglus	BockBilbo	the output will still go to the terminal, possibly getting in the way of whatever you do next in that terminal
+2005-06-11T08:47:00.000Z	BockBilbo	dooglus	perhaps thats what im afraid of
+2005-06-11T08:48:00.000Z	dooglus	BockBilbo	there are 2 types of output too - you might want to redirect the errors as well, like this:   overnetclc -g > logfile.txt 2>&1 &
+2005-06-11T08:48:00.000Z	dooglus	BockBilbo	then you'll not be bothered by any output at all
+2005-06-11T08:49:00.000Z	dooglus	BockBilbo	the command I typed will put all the output into a file called logfile.txt in the current directory
+2005-06-11T08:51:00.000Z	BockBilbo	dooglus	perhaps, i think i should use that command... cause now the program went to the background
+2005-06-11T08:52:00.000Z	dooglus	BockBilbo	if you don't want the output at all, not even in a file, replace logfile.txt with /dev/null in the command
+2005-06-11T08:55:00.000Z	BockBilbo	dooglus	welll cause im not feeling in the mod of changing of run level
+2005-12-18T07:01:00.000Z	dooglus	BockBilbo	or a chroot would do

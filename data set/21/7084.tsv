@@ -1,0 +1,21 @@
+2006-12-30T15:42:00.000Z	noelferreira_		i installed RADEON open drivers from ATI but i can't get direct render working. if i run beryl the logo appears a few second but then my X is restarted. any idea?
+2006-12-30T15:43:00.000Z	kitche	noelferreira_	you mean radeon? those aren't from ATI they are just reverse engieered drivers
+2006-12-30T15:43:00.000Z	kitche	noelferreira_	at least the open source ones
+2006-12-30T15:44:00.000Z	noelferreira_	kitche	https://help.ubuntu.com/community/RadeonDriver
+2006-12-30T15:45:00.000Z	kitche	noelferreira_	what does glxinfo|grep rendering say?
+2006-12-30T15:46:00.000Z	noelferreira_	kitche	no
+2006-12-30T15:47:00.000Z	kitche	noelferreira_	see what your openGL vender says should sya mesa
+2006-12-30T15:47:00.000Z	kitche	noelferreira_	well those drivers don't support direct rendering anyways
+2006-12-30T15:48:00.000Z	noelferreira_	kitche	my grahic card is Radeon Xpress 200M
+2006-12-30T15:48:00.000Z	kitche	noelferreira_	check your X logs /var/log/X.0.log
+2006-12-30T15:49:00.000Z	kitche	noelferreira_	Xorg.0.log
+2006-12-30T15:49:00.000Z	noelferreira_	kitche	what should i look for?
+2006-12-30T15:49:00.000Z	kitche	noelferreira_	see if it says aiglx enabled or close to that
+2006-12-30T15:50:00.000Z	noelferreira_	kitche	(**) Option "AIGLX" "true"
+2006-12-30T15:51:00.000Z	noelferreira_	kitche	(EE) AIGLX: Screen 0 is not DRI capable
+2006-12-30T15:52:00.000Z	kitche	noelferreira_	ok you have to enable DRI then
+2006-12-30T15:54:00.000Z	kitche	noelferreira_	it might be enabled but let see anyways
+2006-12-30T15:55:00.000Z	kitche	noelferreira_	go to /etc/X11 and pastebing your xorg.conf
+2006-12-30T15:56:00.000Z	noelferreira_	kitche	http://pastebin.ca/297153
+2006-12-30T15:58:00.000Z	kitche	noelferreira_	can I see your xorg.conf now want to make sure that it is setup correctly sicne I see it loads the dri
+2006-12-30T16:25:00.000Z	noelferreira_	kitche	same problem with radeon.dri not capable

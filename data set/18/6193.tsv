@@ -1,0 +1,18 @@
+2008-06-09T23:16:00.000Z	aRahim	floppyears	do you get any o/p of sudo fdisk -l
+2008-06-09T23:17:00.000Z	aRahim	floppyears	take a look at /media to see if your mount point is still there
+2008-06-09T23:19:00.000Z	floppyears	aRahim	fdisk -l shows my hda hard drive, but instead it's using sdb
+2008-06-09T23:20:00.000Z	aRahim	floppyears	you have 2 disks?
+2008-06-09T23:20:00.000Z	aRahim		right
+2008-06-09T23:21:00.000Z	floppyears	aRahim	yes
+2008-06-09T23:21:00.000Z	aRahim	floppyears	ubuntu is installed on sdb, right?
+2008-06-09T23:21:00.000Z	floppyears	aRahim	no, it's installed in sda1
+2008-06-09T23:22:00.000Z	aRahim	floppyears	look at /etc/fstab file
+2008-06-09T23:23:00.000Z	floppyears	aRahim	the problem is that this is an old ide hard drive, and before I upgrade cfdisk -l was showing it as /dev/hda*
+2008-06-09T23:23:00.000Z	aRahim	floppyears	"shows my hda hard drive, but instead it's using sdb" - explain this
+2008-06-09T23:23:00.000Z	floppyears		now it's showing it as /dev/sda*
+2008-06-09T23:24:00.000Z	floppyears	aRahim	this is an old ide hard drive which ubuntu used hda# to represent
+2008-06-09T23:24:00.000Z	floppyears		after upgrading the hard drive is showing up as sdb#
+2008-06-09T23:25:00.000Z	floppyears	aRahim	I see my problem http://kernelnewbies.org/Linux_2_6_19#head-cdcbaa9c1b476decdc064e0a75d23d1328b1ddce
+2008-06-09T23:27:00.000Z	aRahim	floppyears	di that solve the problem?
+2008-06-09T23:27:00.000Z	floppyears	aRahim	yeah, I just wanted to know why the rename, and I see that it is because of a new kernel driver
+2008-06-09T23:28:00.000Z	aRahim	floppyears	ok

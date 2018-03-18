@@ -1,0 +1,18 @@
+2010-10-08T01:33:00.000Z	Sterist		anyone know how to format the "virtual CD" drive in western digital external hard drives?
+2010-10-08T01:33:00.000Z	jangell	Sterist	blast the first 512 bytes of the hard drive,  recreate the partion table,  and reformat it?
+2010-10-08T01:33:00.000Z	jangell	Sterist	you'll lose any data but it'll wokr
+2010-10-08T01:34:00.000Z	jangell	Sterist	dd if=/dev/zero of=/dev/EXTERNAL_HARDDRIVE_DEVICE bs=512 count=1   .. then repartition with cfdisk ..then format
+2010-10-08T01:34:00.000Z	Sterist	jangell	i remember reading that "dd" can be dangerous, are you familiar with that?
+2010-10-08T01:35:00.000Z	jangell	Sterist	if you don't care about any data on the drive..and are positive that you're pointing it at the right device it's not going to break anything.
+2010-10-08T01:36:00.000Z	jangell	Sterist	basically you're writing zeros over the mbr and partition table..then you're creating a new partition table..then you're creating your filesystem
+2010-10-08T01:36:00.000Z	jangell	Sterist	all data on drive will be lost
+2010-10-08T01:36:00.000Z	jangell	Sterist	point DD at the wrong device and  you'll have a bad day
+2010-10-08T01:36:00.000Z	Sterist	jangell	data won't be an issue as everything on it is about 5% of my internal HDD size so that won't be a problem. however, the Disk Utility in ubuntu doesn't see the virtual-CD as a partition
+2010-10-08T01:38:00.000Z	jangell	Sterist	well it's either on th drive..or its another device built into the hard drive.
+2010-10-08T01:38:00.000Z	jangell	Sterist	I'm not familiar with it.  Maybe they have some kind of flash device that shows up
+2010-10-08T01:39:00.000Z	Sterist	jangell	that's what i've suspected
+2010-10-08T01:39:00.000Z	jangell		in that case you're probably hosed unless you rip it apart and remove it :)
+2010-10-08T01:39:00.000Z	Sterist	jangell	well, flash is rarely if ever Read-Only, right? :)
+2010-10-08T01:40:00.000Z	jangell	Sterist	well.  what does it show up as in Linux?  A physical cd device?
+2010-10-08T01:41:00.000Z	Sterist	jangell	when i connect it, 2 windows pop up... 1 for virtual-CD (installs proprietary windows driver to assist data back-up) and the other is the main volume
+2010-10-08T01:42:00.000Z	Sterist	jangell	the data back-up program is garbage, i hope to rip it, burn it, then remove from ext hdd

@@ -1,0 +1,23 @@
+2008-03-22T20:45:00.000Z	Lainy	unop__	Hello again. I can ssh to compA from compB with ssh -XY compA'sname@compA'sIPAddress. After adding 'compA'sIPAddress test' in /etc/hosts, I cannot ssh to compA from compB with ssh -XY compA'sname@test'. What am I doing wrong? Thanks.
+2008-03-22T20:46:00.000Z	unop__	Lainy	in compB's /etc/hosts -- make sure you have the right IP address for compA
+2008-03-22T20:46:00.000Z	Lainy	unop__	I don't have sudo access in compB.
+2008-03-22T20:47:00.000Z	unop__	Lainy	then there's little you can do -- why don't you have sudo access?
+2008-03-22T20:47:00.000Z	Lainy	unop__	CompB is a school computer. I am trying to connect to my laptop (compA) from school, that's all.
+2008-03-22T20:48:00.000Z	unop__	Lainy	hmm -- is your laptop on the same network as the school comp?
+2008-03-22T20:48:00.000Z	Lainy	unop__	Yes it is.
+2008-03-22T20:49:00.000Z	Lainy	unop__	Isn't host > ip translation done on client, not server?
+2008-03-22T20:50:00.000Z	unop__	Lainy	the host needs to query a server -- the DNS server on the network -- it's possible that your laptop's name is registered on the DNS server (via DHCP) (but that depends on whether the sysadmin set it up) .. try using the full hostname of your laptop   i.e.  ssh user@laptop.domain
+2008-03-22T20:51:00.000Z	Lainy	unop__	How do I find the full hostname of my laptop?
+2008-03-22T20:52:00.000Z	unop__	Lainy	the hostname is what you gave it -- the full hostname is that name + the domain name of the local network -- that can usually be found by issuing hostname (on compB in this instance)
+2008-03-22T20:53:00.000Z	Lainy	unop__	Hm, still doesn't work.
+2008-03-22T20:53:00.000Z	Lainy	unop__	I'm just confused why I can use the ip address and not translate that to a name to use instead.
+2008-03-22T20:54:00.000Z	unop__	Lainy	i dont think the network is setup for all this -- you might need to stick with with IP addresses
+2008-03-22T20:54:00.000Z	Lainy	unop__	Alright, thanks againfor your help.
+2008-03-22T20:54:00.000Z	unop__	Lainy	well, you can use a name provided that name is registered in one of two ways -- the /etc/hosts of the local machine or on a DNS server
+2008-03-22T20:54:00.000Z	Lainy	unop__	I see
+2008-03-22T20:55:00.000Z	unop__	Lainy	in this case - you dont have sudo access to modify /etc/hosts and the DNS server isnt setup for Dynamic DNS
+2008-03-22T20:56:00.000Z	Lainy	unop__	I see
+2008-03-22T20:56:00.000Z	unop__	Lainy	you could use a shell trick like this --  alias my_laptop='ssh user@ip.add.re.ss'  .. then all you need to do is type out my_laptop
+2008-03-22T20:57:00.000Z	Lainy	unop__	Cool, thanks
+2008-03-28T02:49:00.000Z	unop__	Lainy	xkill
+2008-03-28T02:49:00.000Z	Lainy	unop__	Thanks.

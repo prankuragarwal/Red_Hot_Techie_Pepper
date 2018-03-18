@@ -1,0 +1,23 @@
+2008-05-04T22:27:00.000Z	matthew_		amun: 192.168.1.1
+2008-05-04T22:27:00.000Z	matthew_		most of the time
+2008-05-04T22:29:00.000Z	matthew_		anyone know how to find the PID of a process bound to a certain port then to kill it by that PID?
+2008-05-04T22:31:00.000Z	matthew_		anyone know how to find the PID of a process bound to a certain port then to kill it by that PID?
+2008-05-04T22:32:00.000Z	stbain	matthew_	netstat -naltp | grep ':[port]'
+2008-05-04T22:33:00.000Z	matthew_	stbain	thanks, now how do I pipe that to 'sudo kill <PID>' ?
+2008-05-04T22:33:00.000Z	stbain	matthew_	you don't... once you see hte pid, then you can 'sudo kill -9 [type in the pid]'
+2008-05-04T22:33:00.000Z	matthew_	stbain	I need to get a script to do it, so thats not really an option...
+2008-05-04T22:34:00.000Z	stbain	matthew_	you could pipe in the pid with some regex matching
+2008-05-04T22:37:00.000Z	stbain	matthew_	also try 'lsof -i tcp:[port]'
+2008-05-04T22:37:00.000Z	matthew_	stbain	whats that do?
+2008-05-04T22:37:00.000Z	stbain	matthew_	same thing, but without the | grep
+2008-05-04T22:38:00.000Z	matthew_	stbain	that dosn't return anything...
+2008-05-04T22:38:00.000Z	stbain	matthew_	then there's nothing listening on that [port]
+2008-05-04T22:39:00.000Z	matthew_	stbain	sry, I forgot to run it with sudo
+2008-05-04T22:39:00.000Z	stbain	matthew_	eureka
+2008-05-04T22:39:00.000Z	stbain	matthew_	look at hte man page for the command, 'fuser'. It only outputs the PID to stdout, so you can use it to script and pipe to the kill command
+2008-05-04T22:40:00.000Z	matthew_	stbain	I hate man pages, but I'll do that
+2008-05-04T22:45:00.000Z	matthew_	stbain	fuser has a -k option to kill the program using the spceified  port, i'm going to use that
+2008-05-04T22:45:00.000Z	stbain	matthew_	sweet... I'll have to remember that one myself. Does it let you specify the kill type (e.g. -9)?
+2008-05-04T22:46:00.000Z	matthew_	stbain	using --signal it lets you chose the signal it sends, by default it's SIGKILL
+2008-05-04T22:47:00.000Z	stbain	matthew_	very nice... I'll have to add that to my arsenal
+2008-05-04T22:47:00.000Z	matthew_	stbain	yes, it is, i'm making a server restart thing for a bunch of server apps, and I need to run it from php, so this should be perfect

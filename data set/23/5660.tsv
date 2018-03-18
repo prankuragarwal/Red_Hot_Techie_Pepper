@@ -1,0 +1,23 @@
+2006-10-15T14:12:00.000Z	NiteFears		hey
+2006-10-15T14:13:00.000Z	NiteFears		problem: after installing daily ubuntu (with driver fixes), I started getting continuous beep on system start up that lasts until I manually turn it off from the console (very unpleasant). Simple ways of turning pc speaker off (such as "setterm -blength 0") didn't help. How can I turn the speaker off for the duration of boot-up without recompiling the kernel and physically switching off the cord?
+2006-10-15T14:14:00.000Z	soundray	NiteFears	if "daily ubuntu" means edgy, you should ask in #ubuntu+1
+2006-10-15T14:14:00.000Z	NiteFears	soundray	ok, thanks
+2006-10-15T14:20:00.000Z	soundray	NiteFears	you can blacklist it in /etc/hotplug
+2006-10-15T14:20:00.000Z	NiteFears	soundray	there's no such file in my system currently. any manual for that?
+2006-10-15T14:21:00.000Z	soundray	NiteFears	well, that's why I asked you to ask in #ubuntu+1. Dapper still had hotplug remnants, edgy doesn't.
+2006-10-15T14:22:00.000Z	NiteFears	soundray	yikes
+2006-10-15T14:22:00.000Z	NiteFears	soundray	actually, I asked there, no answer. but I'll repeat the second question there, as well, thanks
+2006-10-15T14:31:00.000Z	NiteFears	soundray	I'm afraid no one's answering there. You don't happen to know how to handle it, do you?
+2006-10-15T14:32:00.000Z	soundray	NiteFears	no, but try a 'find /etc -name blacklist' to see if that turns up anything
+2006-10-15T14:33:00.000Z	NiteFears	soundray	/etc/modprobe.d/blacklist
+2006-10-15T14:34:00.000Z	soundray	NiteFears	have a look at that, see if you can make an entry for your unwanted module
+2006-10-15T14:34:00.000Z	NiteFears	soundray	thanks, will try
+2006-10-15T14:38:00.000Z	NiteFears	soundray	where would then be an appropriate place to put "modprobe pcspkr", so it gets loaded on a later stage of the start-up?
+2006-10-15T14:40:00.000Z	soundray	NiteFears	/etc/modules (again, that's a dapper answer that doesn't necessarily apply to edgy)
+2006-10-15T14:40:00.000Z	soundray	NiteFears	just add the module name, not modprobe
+2006-10-15T14:41:00.000Z	NiteFears	soundray	thanks a lot, I'll reboot now :)
+2006-10-15T14:52:00.000Z	NiteFears	soundray	it didn't work. I first tried to boot with "blacklist" and "modules" files modified exactly as we said, it didn't work. afterwards I commented out the entry in the "modules", and it didn't work, too. the beeping sound was there when I booted, but this time I wasn't even able to stop it, until I issued "modprobe pcspkr" and pressed tab key in the console (which is how I stop the thing)
+2006-10-15T14:53:00.000Z	soundray	NiteFears	this is weird stuff -- I'd report a bug.
+2006-10-15T14:55:00.000Z	NiteFears	soundray	I've searched google - no one seems to have seen this besides myself =( and as this is my first experience with Ubuntu, I don't hurry to get into bug tracking. but looks like I don't have any choice
+2006-10-15T14:56:00.000Z	soundray	NiteFears	also, try the other channel again. I know it's less busy and less responsive, but you have a better chance of running into the guy that knows something about these things.
+2006-10-15T14:57:00.000Z	NiteFears	soundray	thanks for your help

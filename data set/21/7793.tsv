@@ -1,0 +1,21 @@
+2006-11-06T16:27:00.000Z	bilss_		hi
+2006-11-06T16:28:00.000Z	bilss_		what is the command line to see how much spave you have used on a partition?
+2006-11-06T16:29:00.000Z	bilss_		i think Xen comes with the new install of ubuntu
+2006-11-06T16:30:00.000Z	bilss_		or else try howtoforge.com plenty of howtos and help
+2006-11-06T16:32:00.000Z	TLE	bilss_	yeah sure
+2006-11-06T16:32:00.000Z	bilss_	TLE	; ok
+2006-11-06T16:34:00.000Z	TLE	bilss_	btw I just recently made a small script to modify df. So I have a partition called data. So I can do "DF data" and then it highlights the line containing the data partition
+2006-11-06T16:36:00.000Z	bilss_	TLE	just a simple explaination would be fine  http://pastebin.ca/241583   - ok can you pastebin the script please
+2006-11-06T16:41:00.000Z	TLE	bilss_	Well I can only explain some of it. The hda1 is the only HD partition. I don't actually know why all the other ones are listed here. So but anyway you have this partition hda1, it is mounted as / meaning that it is the absolute root of your filesystem and your entire ubuntu system is if that partition. And as you can see you have used 6% of the 36Gb on that partition
+2006-11-06T16:44:00.000Z	bilss_	TLE	ok thanks can you paste the script you have please
+2006-11-06T16:47:00.000Z	TLE	bilss_	But actually in your case since you only have one partition is might not be that usefull for you. Instead if you only want to see that one partition you can do something smarter. First do "df -T" to figure out which filesystem type your partion uses. Maybe ext3. And then if it is ext3 you can do like this "df -h -t ext3"
+2006-11-06T16:48:00.000Z	TLE	bilss_	If that is good for you we can make a alias instead it is easier
+2006-11-06T16:49:00.000Z	bilss_		TLE:Filesystem            Size Used Avail Use% Mounted on
+2006-11-06T16:49:00.000Z	bilss_		/dev/hda1              36G  2.0G   32G   6% /
+2006-11-06T16:49:00.000Z	bilss_		 yes it is ext3
+2006-11-06T16:51:00.000Z	bilss_	TLE	thanks for that command it is useful you see i am thinking of installing Xen on dapper i have a mail server with mimimal X
+2006-11-06T16:53:00.000Z	TLE	bilss_	ok if you want to make a alias, you can give that command a name, say DF. The open ~/.bash_aliases and paste this line: alias DF="df -h -t ext3"
+2006-11-06T16:54:00.000Z	bilss_	TLE	ok thanks I will do that
+2006-11-06T16:54:00.000Z	TLE	bilss_	then open ~/.bashrc and make sure the 3 line starting with "if [ -f ~/.bash_aliases ] ; then" is uncommented, meaning that there is no # in front
+2006-11-06T16:55:00.000Z	bilss_	TLE	thanks it will be useful
+2006-11-06T16:56:00.000Z	TLE	bilss_	you're welcome

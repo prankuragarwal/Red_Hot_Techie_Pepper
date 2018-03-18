@@ -1,0 +1,23 @@
+2010-03-04T14:43:00.000Z	indietrash		where do you change the colour depth in Ubuntu?
+2010-03-04T14:44:00.000Z	indietrash		I have the newest one, whatever version that is.
+2010-03-04T14:45:00.000Z	Jordan_U	indietrash	Why do you want to change the colour depth?
+2010-03-04T14:45:00.000Z	indietrash	Jordan_U	because it's set at 16 but I need it to be 24 ("32").
+2010-03-04T14:46:00.000Z	Jordan_U	indietrash	If you are only getting 16 bit colour it's most likely a driver problem. What GPU?
+2010-03-04T14:46:00.000Z	indietrash	Jordan_U	VBox.
+2010-03-04T14:47:00.000Z	Jordan_U	indietrash	You shouldn't be getting 16 bit colour in VirtualBox, are you sure?
+2010-03-04T14:48:00.000Z	indietrash	Jordan_U	I've seen a lot of complaints about this on forums, so it's not that uncommon.
+2010-03-04T14:52:00.000Z	Jordan_U	indietrash	Are you sure it's not just complaining during usplash ( before X starts )?
+2010-03-04T14:53:00.000Z	indietrash	Jordan_U	I'm not sure if it is using 24-bit depth, but VBox complains when I start the vm, and it's horrible to use because it doesn't refresh properly. if I move away to another workspace, and then move back to the workspace containing the vm - it won't refresh the window. I'll see my web browser or whatever in that window, until I e.g. mark something on the desktop (in the vm) with the mouse, or move some windows around and so forth.
+2010-03-04T14:58:00.000Z	Jordan_U	indietrash	Consider the possibility that the two are not related.
+2010-03-04T14:58:00.000Z	indietrash	Jordan_U	so how do you check what colour depth you are utilizing in this Ubuntu thing?
+2010-03-04T14:59:00.000Z	Jordan_U	indietrash	/var/log/Xorg.0.log should have it if you can't find it anywhere else.
+2010-03-04T15:02:00.000Z	indietrash	Jordan_U	k. it's 24-bit. any ideas why the window doesn't refresh properly though?
+2010-03-04T15:02:00.000Z	Jordan_U	indietrash	No. You can probably work around it by enabling compiz though.
+2010-03-04T15:03:00.000Z	indietrash	Jordan_U	I just removed the horrible "visible effects" crap that the wm or whatever provides. vóila.
+2010-03-04T15:03:00.000Z	Jordan_U	indietrash	( the virtual desktop switch problem, not the overall slowness )
+2010-03-04T15:03:00.000Z	indietrash	Jordan_U	actually turning off the effects made it much more responsive, thankfully.
+2010-03-04T15:04:00.000Z	Jordan_U	indietrash	I think I know what's happening. Do you have an ATI card?
+2010-03-04T15:04:00.000Z	indietrash	Jordan_U	no.
+2010-03-04T15:04:00.000Z	Jordan_U	indietrash	Ok, then I have no idea, but I'm glad it's working for you now :)
+2010-03-04T15:05:00.000Z	indietrash	Jordan_U	vbox only gets 128mb memory though. might be that. but that's still strange because I've run e.g. Yoper with KDE 4 and all the visual effects with no trouble.
+2010-03-04T15:07:00.000Z	Jordan_U	indietrash	If your graphics driver doesn't support redirected direct rendering that would explain some of the symptoms. But the only driver I can think of in 9.10 that doesn't would be the open source radeon driver ( and in 10.04 that will have it too )

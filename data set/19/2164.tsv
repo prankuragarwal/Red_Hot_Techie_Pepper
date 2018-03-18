@@ -1,0 +1,19 @@
+2010-11-13T00:59:00.000Z	ntr0py		Is there a way to mount a remote filesystem via SCP (NOT SFPT) in Ubuntu?
+2010-11-13T01:00:00.000Z	planttt	ntr0py	sshfs
+2010-11-13T01:00:00.000Z	ntr0py	planttt	sshfs uses sftp asfaik, but i need scp...
+2010-11-13T01:01:00.000Z	planttt	ntr0py	same same
+2010-11-13T01:03:00.000Z	ntr0py	planttt	i dont think scp and sftp is the same protocol
+2010-11-13T01:04:00.000Z	planttt	ntr0py	okay, maybe not, but are you sure the SCP host you try to connect to doesn't work woth sshfs?
+2010-11-13T01:06:00.000Z	ntr0py	planttt	yes i am, because its dropbear server on a router which i cant get working with sshfs because dropbear doesnt support sftp... Using winscp with scp protocol works fine, but i need a linux mount option for dropbear (using scp).
+2010-11-13T01:07:00.000Z	planttt	ntr0py	have you looked into rcp with encryption, as scp is based on rcp ?
+2010-11-13T01:10:00.000Z	planttt	ntr0py	i am just guessing trying to give you pointers. Google is your friend for the details.
+2010-11-13T01:10:00.000Z	planttt	ntr0py	look into FUSE also, if you have some programming experience in C, it is almost trivially easy to create your own filesystem
+2010-11-13T01:12:00.000Z	ntr0py	planttt	thx, i am googling already, but it told me rcp is the predecessor to scp which works for copying single files to the server, but im searching a mount option for the remote filesystem...
+2010-11-13T01:13:00.000Z	planttt	ntr0py	you really need a mount, no possibility for scripts?
+2010-11-13T01:13:00.000Z	planttt	ntr0py	or other mount options? rcp, nfs, cifs, etc?
+2010-11-13T01:15:00.000Z	ntr0py	planttt	yes i need to mount option, and i prefer not to run an extra server for it because i have very limited memory on my remote host. As winscp works fine with my configuration and scp comes from *nix bg i thought it cant be too difficult to mount it...
+2010-11-13T01:16:00.000Z	planttt	ntr0py	what do you offer to create a scpfs ?
+2010-11-13T01:17:00.000Z	ntr0py	planttt	i am not sure what you mean by offer, my remote box runs uclibc openwrt and my local desktop box ubuntu x64
+2010-11-13T01:18:00.000Z	planttt	ntr0py	i meant you pay me money to create it :P.
+2010-11-13T01:20:00.000Z	ntr0py	planttt	u mean there is no other option than writing fuse module for mounting it? i heard of shfs, but it seems abandoned...
+2010-11-13T01:21:00.000Z	planttt	ntr0py	i don't know. I'd reckon there is a scpfs module out there somewhere. Or maybe sshfs has scp options.

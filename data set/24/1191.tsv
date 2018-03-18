@@ -1,0 +1,24 @@
+2010-11-05T04:59:00.000Z	coxn		I'm hoping somebody can help me identify the package I should file a bug against
+2010-11-05T04:59:00.000Z	coxn		I'm deploying a fleet of laptops and using pxe boot & preseed
+2010-11-05T04:59:00.000Z	coxn		in the process I'm creating an admin user and setting a root password
+2010-11-05T05:00:00.000Z	coxn		when I deploy laptops, I create new accounts and give them sudo privileges
+2010-11-05T05:00:00.000Z	coxn		these new user accounts can use sudo or gksudo just fine
+2010-11-05T05:00:00.000Z	coxn		what they cannot do is successfully get things like the automatic prompts for password when updates are available to work
+2010-11-05T05:01:00.000Z	coxn		or, for example, when firefox prompts for the install of flash
+2010-11-05T05:01:00.000Z	id10t	coxn	is your sudoers file default still?
+2010-11-05T05:01:00.000Z	coxn	id10t	yes. no change there.
+2010-11-05T05:02:00.000Z	id10t	coxn	what groups are they in? or are they exactly like the default first user created during setup?
+2010-11-05T05:05:00.000Z	coxn	id10t	all the boxes under the "User Privileges" tab after "Advanced Settings" button in the GUI interface
+2010-11-05T05:05:00.000Z	coxn	id10t	they are in all the groups as the initial user, plus a few more
+2010-11-05T05:07:00.000Z	id10t	coxn	what about startup in the background processes?  some gnome/kde utility...
+2010-11-05T05:10:00.000Z	coxn	id10t	I'm not sure I understand the question
+2010-11-05T05:11:00.000Z	id10t	coxn	i would think so
+2010-11-05T05:11:00.000Z	id10t	coxn	i was thinking it was an issue of the popup for updates not appearing at all, so the user is never prompted for them
+2010-11-05T05:12:00.000Z	coxn	id10t	nono, the user is definitely prompted for updates, which is the main time when we see this bug.
+2010-11-05T05:12:00.000Z	id10t	coxn	ah
+2010-11-05T05:13:00.000Z	id10t	coxn	mebbe i shouldn't have had that second beer :)
+2010-11-05T05:14:00.000Z	id10t	coxn	but pulling something out of my butt, can you write a wrapper shell script that calls gksudo manually to start update-manager?
+2010-11-05T05:15:00.000Z	coxn	id10t	I don't need to if people are going to initiate things; they can just use gksudo
+2010-11-05T05:15:00.000Z	coxn	id10t	the issue is that when they are prompted by any interface to elevate their privs where they didn't start explicitly with gksudo
+2010-11-05T05:16:00.000Z	coxn	id10t	for example, when they are prompted for updates. Or when they click on the software center from the application menu
+2010-11-05T05:16:00.000Z	id10t	coxn	ah...

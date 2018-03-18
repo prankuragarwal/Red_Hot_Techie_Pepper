@@ -1,0 +1,24 @@
+2008-11-27T14:53:00.000Z	robf		I mounted an ntfs share earlier,   and now trying to access the mount point results in this "ls: cannot open directory .: Transport endpoint is not connected"
+2008-11-27T14:53:00.000Z	robf		how can I rectify this as I cannot umount it nor remount it
+2008-11-27T14:54:00.000Z	hmw_pidgin	robf	there is some "force" switch to mount. RTFM. or reboot
+2008-11-27T14:54:00.000Z	robf	hmw_pidgin	remounting it with --force does not work
+2008-11-27T14:54:00.000Z	hmw_pidgin	robf	unmounting also?
+2008-11-27T14:55:00.000Z	robf	hmw_pidgin	 though oddly when using -f ,   the resulting error instead of two umount: /home/robf/mnt: device is busy errors,  one has umount2 in place...which is just strange but
+2008-11-27T14:57:00.000Z	hmw_pidgin	robf	i dont know umount2?  - maybe some shell is in this dir or a window showing its (deprecated) contents or there is really a
+2008-11-27T14:57:00.000Z	hmw_pidgin	robf	file opened, or a lock is left over by accident. a reboot should fix it, but thats not a pretty solution. i had a similar problem once
+2008-11-27T14:58:00.000Z	robf	hmw_pidgin	exactly,  I don't like messy solutions
+2008-11-27T14:58:00.000Z	hmw_pidgin	robf	find out, how you can look which process is locking the dir. or kill what looks like it might be accessing
+2008-11-27T15:00:00.000Z	robf	hmw_pidgin	 it looks to be something wonky with fuse though
+2008-11-27T15:00:00.000Z	robf	hmw_pidgin	is there a list of the most recently updated files
+2008-11-27T15:03:00.000Z	robf	hmw_pidgin	 here's something crazy
+2008-11-27T15:05:00.000Z	robf	hmw_pidgin	did ya see the ls -l of mnt?
+2008-11-27T15:06:00.000Z	hmw_pidgin	robf	no?
+2008-11-27T15:06:00.000Z	hmw_pidgin	robf	i see only question marks
+2008-11-27T15:06:00.000Z	robf	hmw_pidgin	exactly
+2008-11-27T15:06:00.000Z	hmw_pidgin	robf	wow
+2008-11-27T15:07:00.000Z	hmw_pidgin	robf	either something in the filesystem broken or another glitch. i would reboot now. still not the most pretty solution
+2008-11-27T15:07:00.000Z	robf	hmw_pidgin	yeh :(
+2008-11-27T15:08:00.000Z	hmw_pidgin	robf	remember not to flood - lol
+2008-11-27T15:08:00.000Z	robf	hmw_pidgin	 I know... heh
+2008-11-27T15:08:00.000Z	robf	hmw_pidgin	nah I just hit enter a bit too often ....
+2008-11-27T15:33:00.000Z	hmw_pidgin	robf	tbh, i have no clue, but that sounds reasonable. it looks like someone forgot to delete a lock file.

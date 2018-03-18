@@ -1,0 +1,19 @@
+2012-08-24T04:25:00.000Z	i7c		why would my ubuntu server be the only computer in the network whose hostname is not resolved by my router?
+2012-08-24T04:26:00.000Z	TJ-	i7c	because your server has a static IP allocation ?
+2012-08-24T04:27:00.000Z	i7c	TJ-	it doesnt. got the ip via dhcp
+2012-08-24T04:28:00.000Z	TJ-	i7c	What DHCP server is in use?
+2012-08-24T04:28:00.000Z	i7c	TJ-	my router is dhcp server ;)  idk what they are using exactly
+2012-08-24T04:32:00.000Z	TJ-	i7c	when you say the server's name won't resolve. How are you attempting to resolve it? what are you using?
+2012-08-24T04:34:00.000Z	i7c	TJ-	nslookup says  " server can't find ***-uls: NXDOMAIN"
+2012-08-24T04:35:00.000Z	TJ-	i7c	Are you postfixing the local domain onto the hostname for nslookup?
+2012-08-24T04:36:00.000Z	i7c	TJ-	sry, dunno what that means, so i guess not? ;)
+2012-08-24T04:37:00.000Z	TJ-	i7c	usually a network has a domain part and a hostname for each device. E.g. myserver.lan.mydomain.net (myserver is the hostname) so you have to lookup the hostname.domain
+2012-08-24T04:40:00.000Z	i7c	TJ-	mhm ok, dnsdomainname -A  just shows an empty line... could that be the problem?
+2012-08-24T04:43:00.000Z	TJ-	i7c	On my network I do something like "dig mypc.lan.iam.tj" (or "nslookup mypc.lan.iam.tj")
+2012-08-24T04:43:00.000Z	TJ-	i7c	It depends on how you've configured the local DHCP/DNS server - what domain you've told it is local
+2012-08-24T04:46:00.000Z	i7c	TJ-	yeh i understand. weird thing is just that it works with other computers (also ubuntu)
+2012-08-24T04:47:00.000Z	TJ-	i7c	It could be that the server isn't sending its hostname to the DHCP server
+2012-08-24T04:48:00.000Z	TJ-	i7c	Have you got any static assignments in the DHCP router?
+2012-08-24T04:48:00.000Z	i7c	TJ-	no, it's all dynamically allocated
+2012-08-24T04:49:00.000Z	i7c	TJ-	i think i might have found the problem
+2012-08-24T04:54:00.000Z	i7c	TJ-	might have been an error in the resolv.conf ... thx for your help anyways!

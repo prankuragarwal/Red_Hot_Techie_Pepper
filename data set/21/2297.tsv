@@ -1,0 +1,21 @@
+2009-11-12T19:45:00.000Z	Deriativewerks		Why do I have no sound in 9.10?
+2009-11-12T19:45:00.000Z	Deriativewerks		No
+2009-11-12T19:46:00.000Z	Deriativewerks		ICE1712 [Envy24] PCI Multi-Channel I/O Controller
+2009-11-12T19:46:00.000Z	Deriativewerks		there
+2009-11-12T19:47:00.000Z	mezquitale	Deriativewerks	turn the volume up, choose the correct soundcard in "sound" applet under "preferences"
+2009-11-12T19:47:00.000Z	Deriativewerks	mezquitale	I have already done so
+2009-11-12T19:47:00.000Z	mezquitale	Deriativewerks	is it a desktop or laptop?  are you trying to hear sound from speakers or headphones?
+2009-11-12T19:48:00.000Z	Deriativewerks	mezquitale	Desktop and speakers
+2009-11-12T19:50:00.000Z	mezquitale	Deriativewerks	make sure the speakers are connected to the desktop, turned on, volume up and post the results of this:  " cat /proc/asound/cards"
+2009-11-12T19:51:00.000Z	Deriativewerks	mezquitale	http://pastebin.org/53033
+2009-11-12T19:53:00.000Z	mezquitale	Deriativewerks	the speakrers in your desktop, are they hooked up to the usb or MAudio sound card?
+2009-11-12T19:53:00.000Z	Deriativewerks	mezquitale	sound card
+2009-11-12T19:53:00.000Z	mezquitale	Deriativewerks	what is the first line of this: "cat /proc/asound/modules"
+2009-11-12T19:54:00.000Z	Deriativewerks	mezquitale	 0 snd_ice1712
+2009-11-12T19:55:00.000Z	mezquitale	Deriativewerks	what does the second line say?  The 3rd line that starts with #2 says "alsa", right?  youre using karmic?
+2009-11-12T19:55:00.000Z	Deriativewerks	mezquitale	And that's it
+2009-11-12T19:57:00.000Z	mezquitale	Deriativewerks	type this and let me know if you hear anything:  "speaker-test -c2 -D default -t wav"
+2009-11-12T19:57:00.000Z	Deriativewerks	mezquitale	I hear nothing.
+2009-11-12T19:58:00.000Z	mezquitale	Deriativewerks	go to a console and type "alsamixer"  raise the volume  in "Master"  and try raising the volume on headphones and "front"
+2009-11-12T19:59:00.000Z	Deriativewerks	mezquitale	there are no master or headphone or front channels
+2009-11-12T20:05:00.000Z	mezquitale	Deriativewerks	you need to configure the drivers and the device so that it works with ALSA, it  looks like the sound card is not even configured, I cant make out what drivers youre using, the hardware is detected but the modules driving it dont seem correct, I suggest you go to #alsa and ask for help there

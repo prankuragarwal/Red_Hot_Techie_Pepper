@@ -1,0 +1,24 @@
+2007-09-13T12:59:00.000Z	furenku		I have an application that i want to be able to run as normal user, not having to do it as root; how can i do this?
+2007-09-13T12:59:00.000Z	sauvin	furenku	what's the application?
+2007-09-13T12:59:00.000Z	furenku	sauvin	puredata
+2007-09-13T13:00:00.000Z	furenku	sauvin	an app for realtime audio and video sinthesis; i know it works as normal user cos i have it in other computer
+2007-09-13T13:01:00.000Z	sauvin	furenku	how did you install it?
+2007-09-13T13:01:00.000Z	furenku	sauvin	it was a .deb package
+2007-09-13T13:01:00.000Z	sauvin	furenku	and you have to su to use it?
+2007-09-13T13:02:00.000Z	furenku	sauvin	: first sudo -i
+2007-09-13T13:02:00.000Z	furenku	sauvin	then pd
+2007-09-13T13:03:00.000Z	sauvin	furenku	where is pd installed?
+2007-09-13T13:04:00.000Z	furenku	sauvin	/usr/local
+2007-09-13T13:05:00.000Z	sauvin	furenku	do you know about unix permissions?
+2007-09-13T13:05:00.000Z	furenku	sauvin	a bit
+2007-09-13T13:06:00.000Z	sauvin	furenku	i have a suspicion you may need to change either pd's permissions or its ownership. In a shell, navigate to the directory where pd resides and do an ls -l on it, see what it says.
+2007-09-13T13:17:00.000Z	furenku	sauvin	i solved it
+2007-09-13T13:17:00.000Z	sauvin	furenku	what file did you need to rename?
+2007-09-13T13:18:00.000Z	furenku	sauvin	it was called .pdsettings, i needed to rename it so the program wouldnt find it
+2007-09-13T13:20:00.000Z	sauvin	furenku	I didn't bother erasing mine. I just clobbered it.
+2007-09-13T13:21:00.000Z	furenku	sauvin	clobbered?
+2007-09-13T13:22:00.000Z	sauvin	furenku	yes, I simply umounted it and did an mkfs on it.
+2007-09-13T13:22:00.000Z	furenku	sauvin	the thing theres a bunch of gigabytes i kept there i now want for linux
+2007-09-13T13:23:00.000Z	sauvin	furenku	you might want to move all that stuff temporarily to another drive while you clobber. I'm not aware of any way to convert an ntfs volume to ext3 without losing everything.
+2007-09-13T13:23:00.000Z	furenku	sauvin	i wouldnt bother losing everything, theres nothing there, actually
+2007-09-13T13:24:00.000Z	furenku	sauvin	i installed ubuntu when the computer was new

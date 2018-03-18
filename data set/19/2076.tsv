@@ -1,0 +1,19 @@
+2011-03-08T02:21:00.000Z	figure002		how do i send stdout from a command (e.g. ls) to the stdin of another app? a tried "app < ls", but it doesn't work.
+2011-03-08T02:21:00.000Z	Jordan_U	figure002	ls | other_command
+2011-03-08T02:21:00.000Z	Jordan_U	figure002	But it should almost never actually be used with "ls".
+2011-03-08T02:22:00.000Z	figure002	Jordan_U	i need to send a list of files to some command
+2011-03-08T02:23:00.000Z	Jordan_U	figure002	What command? What is your end goal?
+2011-03-08T02:23:00.000Z	figure002	Jordan_U	the command is 'wallpaper', it returns a list of files which are suitable as wallpaper.
+2011-03-08T02:24:00.000Z	Jordan_U	figure002	What is the *end* goal? Is wallpaper a command you wrote yourself?
+2011-03-08T02:25:00.000Z	figure002	Jordan_U	nope, it's in the ubuntu repo; the end goal is to know which files are suitable as wallpapers.
+2011-03-08T02:29:00.000Z	Jordan_U	figure002	wallpaper doesn't appear to accept filenames on stdin.
+2011-03-08T02:30:00.000Z	figure002	Jordan_U	it accepts filenames as arguments, that's not the same as stdin?
+2011-03-08T02:32:00.000Z	Jordan_U	figure002	No, it's not. Arguments are normally specified after the command name, like "wallpaper /path/to/foo.png", and must be specified before the command is even executed. stdin, by default, is input from the keyboard which can be given while the program is running.
+2011-03-08T02:34:00.000Z	figure002	Jordan_U	oh i see; thanks for the explanation
+2011-03-08T02:35:00.000Z	Jordan_U	figure002	You're welcome. I'm not sure how usefull this script will be though, it doesn't think that the default desktop background for Ubuntu 10.10 is a wallpaper.
+2011-03-08T02:36:00.000Z	Jordan_U	figure002	You still haven't told me your end goal. What is it that you hope to accomplish?
+2011-03-08T02:39:00.000Z	figure002	Jordan_U	ohh u mean the end end goal. i'm writing a little python script which sets wallpapers for the gnome desktop. i was thinking about an extra feature which only picks images that are close enough to a wallpaper (e.g. ignore pics with portrait ratio).
+2011-03-08T02:45:00.000Z	figure002	Jordan_U	did you copy?
+2011-03-08T02:45:00.000Z	Jordan_U	figure002	Yes.
+2011-03-08T02:50:00.000Z	Jordan_U	figure002	You should probably use wallpaper one file at a time, calling the command from python directly. Make sure to pass explicit values for the desired aspect ratio and other values as the defaults of the script probably won't match the needs of many users and should be configurable.
+2011-03-08T02:53:00.000Z	figure002	Jordan_U	you are right; i was already playing around with the settings to get the right result.

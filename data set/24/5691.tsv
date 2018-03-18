@@ -1,0 +1,24 @@
+2008-01-22T03:33:00.000Z	larryone		is there a different channel dedicated to ubuntu installs?
+2008-01-22T03:33:00.000Z	larryone		!channels
+2008-01-22T03:33:00.000Z	larryone		ok
+2008-01-22T03:33:00.000Z	larryone		no3 is huge
+2008-01-22T03:34:00.000Z	larryone		can I resize it and put in ubintu there?
+2008-01-22T03:34:00.000Z	larryone		can I resize it and put in ubintu there?
+2008-01-22T03:34:00.000Z	ikonia	larryone	sure, but just be aware that resizing partitions is not without risk
+2008-01-22T03:35:00.000Z	ikonia	larryone	thats fine
+2008-01-22T03:38:00.000Z	ikonia	larryone	partition 4 won't exist because partition 5 is your extended partition
+2008-01-22T03:39:00.000Z	larryone	ikonia	does that mean I can creats a 4th partition after no3?
+2008-01-22T03:39:00.000Z	ikonia	larryone	no - don't worry about it, let the installer deal with it
+2008-10-10T14:08:00.000Z	ikonia	larryone	sure, no problem, what happened to make the users / groups go ?
+2008-10-10T14:08:00.000Z	ikonia	larryone	just trying to understand what happened before I expalin how to fix
+2008-10-10T14:10:00.000Z	larryone	ikonia	I opened users and groups, put in my passwd, the list that came up was blank, not even me on it. I clicked add user, added a new user, and the list refreshed to show only root. I closed the tool and re-ran it, adding another user, same experience. now only root, me, and the second added user exist - auth log shows that root removed everything else....
+2008-10-10T14:12:00.000Z	ikonia	larryone	no problem, boot into "recovery" mode from the boot option and select a recovery shell, then do "usermod -G admin $username" replacing username with your user, when you reboot your user will be back in the sudouers list and you can use the gui to re-set thigns back up
+2008-10-10T14:13:00.000Z	larryone	ikonia	thanks, i'll give it a go
+2008-10-10T14:45:00.000Z	larryone	ikonia	I went a step further. found out all of the users like daemon and stuff were gone also. booted the install disk, copied the bulk of /etc/passwd /etc/shadow /etc/group back into my systems /etc/ dir - preserving the 3 remaining logins.
+2008-10-10T14:46:00.000Z	ikonia	larryone	sounds fine
+2008-10-10T14:46:00.000Z	larryone	ikonia	so now i'm booted properly, and have the real root passwd incase this happens again
+2008-10-10T14:47:00.000Z	larryone	ikonia	made backups incase it happens when i open the users and groups manager again.... I really want to try to find out why this happened.  Do I have all thhe files I need? passwd, shadow, group, sudoers.  ??
+2008-10-10T14:47:00.000Z	ikonia	larryone	prety much
+2008-10-10T14:50:00.000Z	larryone	ikonia	I opened the users and groups tool again, only root was listed there... not me, not any other account. closed it again, and checked my passwd files and all. they're ok. Why would the tool list only the root user???
+2008-10-10T14:50:00.000Z	ikonia	larryone	thats a very good question
+2008-10-10T15:01:00.000Z	ikonia	larryone	certainly sounds worth reporting

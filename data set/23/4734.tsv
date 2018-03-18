@@ -1,0 +1,23 @@
+2007-08-21T09:18:00.000Z	Budwaa		im getting the error fusermount: failed to open /dev/fuse: Permission denied.    I can fix this with sudo chmod 777 /dev/fuse. What is thebest way to fix this permanently?
+2007-08-21T09:18:00.000Z	NET||abuse	Budwaa	what group / uid does your instance/vhost run under? if so , chmod 775
+2007-08-21T09:18:00.000Z	Budwaa	NET||abuse	what do you mean by my instance/vhost?
+2007-08-21T09:19:00.000Z	NET||abuse	Budwaa	ok, is the account your run under a Vhosted websiet on that server, or is this the root website? or what's the situation?
+2007-08-21T09:19:00.000Z	NET||abuse		!backports
+2007-08-21T09:20:00.000Z	Budwaa	NET||abuse	this is on my personal machine not a webserver of any kind
+2007-08-21T09:20:00.000Z	NET||abuse	Budwaa	oh.. ok.
+2007-08-21T09:20:00.000Z	NET||abuse	Budwaa	well then your apache is probably running as unprivilidged user,,
+2007-08-21T09:20:00.000Z	NET||abuse	Budwaa	and since this is only on your local laptop or whatever,, don't worry, just chmod 777
+2007-08-21T09:20:00.000Z	Budwaa	NET||abuse	what does apache haveto do with this?
+2007-08-21T09:21:00.000Z	NET||abuse	Budwaa	Oh crap, I missread your question
+2007-08-21T09:21:00.000Z	NET||abuse	Budwaa	fusermount.. riiight.
+2007-08-21T09:21:00.000Z	Budwaa	NET||abuse	yeah thats the one.
+2007-08-21T09:22:00.000Z	NET||abuse	Budwaa	bleh... emm, usually you have to just figure out how to give your personal user access to the device,, the best way is to add yourself to the group with such permissions..
+2007-08-21T09:22:00.000Z	NET||abuse	Budwaa	what was the error again
+2007-08-21T09:22:00.000Z	Budwaa		fusermount: failed to open /dev/fuse: Permission denied
+2007-08-21T09:23:00.000Z	NET||abuse	Budwaa	do ls -l /dev/fuse
+2007-08-21T09:23:00.000Z	NET||abuse	Budwaa	tell me what the groups name for it are?
+2007-08-21T09:23:00.000Z	NET||abuse	Budwaa	and what the current permissions are
+2007-08-21T09:24:00.000Z	Budwaa		NEsT||abuse: just going to add myself to the fuse group
+2007-08-21T09:24:00.000Z	NET||abuse	Budwaa	that'll more than likely resolve the issue :)
+2007-08-21T09:30:00.000Z	NET||abuse	Budwaa	that do any good for you?
+2007-08-21T09:30:00.000Z	Budwaa	NET||abuse	just had to login again and thats fixed it, thx

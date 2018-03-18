@@ -1,0 +1,19 @@
+2011-10-03T05:43:00.000Z	bkfitz		any ufw/iptables experts around... for some reason after running sudo ufw allow 5432 (for postgres), the port is still showing closed when i run nmap
+2011-10-03T05:45:00.000Z	bkfitz		slow night eh
+2011-10-03T05:46:00.000Z	Corey	bkfitz	What does netstat -ant |grep 5432 say?
+2011-10-03T05:47:00.000Z	bkfitz	Corey	three listings one says LISTEN, other two say ESTABLISHED
+2011-10-03T05:47:00.000Z	Corey	bkfitz	HUmor me, pastebin it please.
+2011-10-03T05:49:00.000Z	bkfitz	Corey	ip is 66.228.57.208
+2011-10-03T05:50:00.000Z	bkfitz	Corey	here is the ufw status as well: http://pastebin.com/YwamxaYm
+2011-10-03T05:50:00.000Z	Corey	bkfitz	You're only binding to localhost.
+2011-10-03T05:51:00.000Z	bkfitz	Corey	   :| what does that mean
+2011-10-03T05:51:00.000Z	Corey	bkfitz	Postgres isn't listening to external interfaces.
+2011-10-03T05:52:00.000Z	bkfitz	Corey	you mean in my pg_hba
+2011-10-03T05:52:00.000Z	Corey	bkfitz	I mean postgres isn't configured to bind to any external IPs, only localhost.
+2011-10-03T05:53:00.000Z	bkfitz	Corey	is that something I can set in hba conf
+2011-10-03T05:54:00.000Z	Corey	bkfitz	http://www.gentoo-wiki.info/PostgreSQL/Install#Settings_External_Connections
+2011-10-03T05:54:00.000Z	bkfitz	Corey	i have      local all all trust in the pg_hba... but I think that only applies to permissions to connect, not bindings yes
+2011-10-03T05:55:00.000Z	bkfitz	Corey	ahh... thx.  didn't realize there was such a setting.
+2011-10-03T05:57:00.000Z	bkfitz	Corey	so my "listen_addresses" was commented out... default must be localhost or local subnet or something
+2011-10-03T05:59:00.000Z	bkfitz	Corey	thx again.  learn something everyday.  Now in netstat I see :::*    :)
+2011-10-03T05:59:00.000Z	bkfitz	Corey	and the port is open from the outside

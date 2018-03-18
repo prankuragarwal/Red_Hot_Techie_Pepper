@@ -1,0 +1,24 @@
+2010-02-17T12:32:00.000Z	xjkx		i'm running ubuntu 9.10 and only root can play sound, i added my user to "audio" group and nothing happened. my user can't run alsamixer also
+2010-02-17T12:33:00.000Z	Jordan_U	xjkx	What error do you get when you run alsamixer?
+2010-02-17T12:34:00.000Z	xjkx	Jordan_U	file not found, but root can run it, lol
+2010-02-17T12:34:00.000Z	xjkx	Jordan_U	cannot open mixer: Arquivo ou diretório não encontrado (that means file not found)
+2010-02-17T12:34:00.000Z	Jordan_U	xjkx	What happens if you run /usr/bin/alsamixer ?
+2010-02-17T12:35:00.000Z	xjkx	Jordan_U	same error. i can "ls" it. i think it's saying file not found to something alsamixer is trying to load, not alsamixer itself. well, thats my guess, message doesn't say that
+2010-02-17T12:35:00.000Z	Jordan_U	xjkx	Is this a 64 bit system?
+2010-02-17T12:35:00.000Z	xjkx	Jordan_U	no
+2010-02-17T12:36:00.000Z	Jordan_U	xjkx	can you run "strace alsamixer" and pastebin the output? ( do NOT paste it into the channel directly )
+2010-02-17T12:37:00.000Z	xjkx	Jordan_U	strace alsamixer > out didnt work, why :o
+2010-02-17T12:38:00.000Z	Jordan_U	xjkx	It outputs to stderr, not stdout, try "strace alsamixer 2> strace.log"
+2010-02-17T12:40:00.000Z	xjkx	Jordan_U	http://pastebin.ca/1799626
+2010-02-17T12:45:00.000Z	xjkx	Jordan_U	did you see my output ?
+2010-02-17T12:45:00.000Z	Jordan_U	xjkx	Yes
+2010-02-17T12:46:00.000Z	xjkx	Jordan_U	what was your conclusion ? I found that .pulse-cookie is owned by root, lol. i changed that, now i can run alsamixer but audio still doesn't work. and alsamixer runs funny, i mean crazy, it doesn't give me all the control of volumes, just one option, never seen it before
+2010-02-17T12:48:00.000Z	Jordan_U	xjkx	That one option actually controls the pulseaudio volume meter, you can use "alsamixer -c 0" to access the hardware mixer directly
+2010-02-17T12:48:00.000Z	xjkx	Jordan_U	invalid card index: 0
+2010-02-17T12:49:00.000Z	Jordan_U	xjkx	Did you ever actually log in as root?
+2010-02-17T12:49:00.000Z	xjkx	Jordan_U	from my output: open("/dev/snd/controlC0", O_RDONLY)    = -1 EACCES (Permission denied) and open("/dev/aloadC0", O_RDONLY)          = -1 ENOENT (No such file or directory) should i do something about it ?
+2010-02-17T12:49:00.000Z	xjkx	Jordan_U	not sure, maybe i did :P
+2010-02-17T12:50:00.000Z	Jordan_U	xjkx	There is a reason why it is discouraged, as you may have just found out :)
+2010-02-17T12:51:00.000Z	xjkx	Jordan_U	:s isn't there a way to fix it ?
+2010-02-17T12:58:00.000Z	xjkx	Jordan_U	will i have to reinsall ? :s i'm trying everything here. i removed .pulse* and re-run sudo alsaconf and it created again ~/.pulse-cookie owned by root, lol
+2010-04-30T10:39:00.000Z	Jordan_U	xjkx	No

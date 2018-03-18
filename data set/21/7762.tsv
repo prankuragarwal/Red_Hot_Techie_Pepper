@@ -1,0 +1,21 @@
+2006-07-23T13:14:00.000Z	^Manu		hello people.
+2006-07-23T13:14:00.000Z	^Manu		i'm wondering if anyone can help me with a problem i'm having with ubuntu's bootloader.
+2006-07-23T13:15:00.000Z	^Manu		i installed ubuntu using its installer. appeared to work fine.. installed the bootloader on the MBR, and then my PC wouldnt boot..
+2006-07-23T13:15:00.000Z	^Manu		i'm thinking this may be because i have windows installed in an ATA drive, and i installed linux on a SATA drive.
+2006-07-23T13:15:00.000Z	^Manu		and the bootloader couldnt deal with that.
+2006-07-23T13:16:00.000Z	^Manu		i found a win9x cd and restored the MBR, but i dont wanna try it again until i know it'll work, i have too much on this PC to be fucking my partition table.
+2006-07-23T13:16:00.000Z	frogzoo	^Manu	it should be able to actually - cat /boot/grub/device.map
+2006-07-23T13:17:00.000Z	frogzoo	^Manu	s'cool - just if people don't watch the swearing, it soon gets out of control
+2006-07-23T13:29:00.000Z	frogzoo	^Manu	you probly want to install grub to the mbr on the disk that the bios looks at first - but which that is depends on the bios & bios settings
+2006-07-23T13:30:00.000Z	frogzoo	^Manu	if the bios & grub can't agree on which disk is which, you need to change /boot/grub/device.map
+2006-07-23T13:32:00.000Z	frogzoo	^Manu	if you've got a grub  prompt, you can enter the grub settings manually to get the system up
+2006-07-23T13:33:00.000Z	frogzoo	^Manu	from the grub prompt, enter 'find /boot'  & you'll see which hd it thinks grub is on
+2006-07-23T13:34:00.000Z	frogzoo	^Manu	then just update the settings to match
+2006-07-23T13:34:00.000Z	^Manu	frogzoo	i have no grub prompt, the bios gives me the same message as if there is no hard drive attached at all.
+2006-07-23T13:35:00.000Z	frogzoo	^Manu	oh, sometimes bioses are wierd - need more info about your setup - you have 1 pata drive/1sata drive, but which os on which drives?
+2006-07-23T13:40:00.000Z	frogzoo	^Manu	one approach might be to d/l a cd with grub on it, & get into linux from there - then fix the device.map & 'sudo update-grub'
+2006-07-23T13:40:00.000Z	^Manu	frogzoo	okay i'll try and install it again, and if i run into trouble i'll do that.
+2006-07-23T13:42:00.000Z	frogzoo	^Manu	or another approach is read the grub docs, it's a bit confusing, but once you understand grub, it comes in handy regularly
+2006-07-23T13:43:00.000Z	^Manu	frogzoo	yes i should, i've jsut never spent the time since i dont spend enough time with linux in general.
+2006-07-23T13:43:00.000Z	frogzoo	^Manu	another thing to bear in mind is that bioses sometimes behave oddly when partitions are set 'active' expecting that's where the mbr is, so disabling the active flag sometimes helps, or is the cause of the problem
+2006-07-23T13:44:00.000Z	^Manu	frogzoo	okay cool, i've always wondered what that was about.

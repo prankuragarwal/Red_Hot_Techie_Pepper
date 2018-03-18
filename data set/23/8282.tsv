@@ -1,0 +1,23 @@
+2010-08-03T22:39:00.000Z	vonguard		my ethernet port is not working, and the only thing in my /etc/network/interfaces is loopback and eth0 dhcp
+2010-08-03T22:39:00.000Z	vonguard		eee HA1005 asus netbook
+2010-08-03T22:39:00.000Z	vonguard		aanyone got any idea why my interfaces config is empty
+2010-08-03T22:40:00.000Z	vonguard		anyone got any idea on why my ethernet port isnt working/
+2010-08-03T22:40:00.000Z	vonguard		the lights are on on the hub
+2010-08-03T22:41:00.000Z	vonguard		but the os won't authenticate on ethernet
+2010-08-03T22:41:00.000Z	vonguard		and wireless works fine
+2010-08-03T22:41:00.000Z	vonguard		dead ethernet? anyone?
+2010-08-03T22:43:00.000Z	MarcN	vonguard	what does sudo mii-tool say?
+2010-08-03T22:44:00.000Z	MarcN	vonguard	so the kernel sees the NIC and thinks it is okay.  has a link (ie cable is plugged in)
+2010-08-03T22:45:00.000Z	MarcN	vonguard	sing on? to what?
+2010-08-03T22:46:00.000Z	MarcN	vonguard	ok, there is no authentication going on.  DHCP is just a broadcast request
+2010-08-03T22:46:00.000Z	MarcN	vonguard	try:   sudo ifup eth0
+2010-08-03T22:47:00.000Z	MarcN	vonguard	take a look at /var/log/daemon.log   what does the dhclinet say?
+2010-08-03T22:49:00.000Z	MarcN	vonguard	in one window do    sudo tail -f /var/log/daemon.log and in another sudo /etc/init.d/networking restart
+2010-08-03T22:52:00.000Z	MarcN	vonguard	should see lines about dhclinent -- bound to, DHCPACK, DHCPREQUEST
+2010-08-03T22:52:00.000Z	MarcN	vonguard	using network manager?
+2010-08-03T22:54:00.000Z	MarcN	vonguard	avahi is some adhoc network naming, not a problem.
+2010-08-03T22:55:00.000Z	MarcN	vonguard	and that IP is not showing up on eht0?
+2010-08-03T22:55:00.000Z	MarcN	vonguard	what kind ow hw?
+2010-08-03T22:56:00.000Z	MarcN	vonguard	strange.  try turning off the wifi from network manager.  by default network manager should switch to the writed connection if it sees both wifi and wired.  assumption is it is faster
+2010-08-03T22:57:00.000Z	MarcN	vonguard	does it support PXE? maybe try booting and ask for PXE/network boot.  if you get an IP you knwo the hw is working.
+2010-08-03T22:58:00.000Z	MarcN	vonguard	that is why they pay me the big bucks ;-)

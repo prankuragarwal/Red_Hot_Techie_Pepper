@@ -1,0 +1,24 @@
+2009-08-29T07:24:00.000Z	Jooder492		Why does Ubuntu make my access my internet very slow and any other OS runs the internet fast?
+2009-08-29T07:25:00.000Z	Jooder492		Why does Ubuntu make my access my internet very slow and any other OS runs the internet fast?
+2009-08-29T07:26:00.000Z	bankix	Jooder492	GIgabit ethernet or 100MBit/s?
+2009-08-29T07:32:00.000Z	bankix	Jooder492	Gigabit or 100MBIt/s ethernet?
+2009-08-29T07:32:00.000Z	bankix	Jooder492	Okay.
+2009-08-29T07:33:00.000Z	bankix	Jooder492	Which is you network device? wlan0? something different?
+2009-08-29T07:33:00.000Z	bankix	Jooder492	I did get that. What is you network device for wlan?
+2009-08-29T07:35:00.000Z	bankix	Jooder492	Okay, a linksys. But what I need to know is the networking device name in Ubuntu.
+2009-08-29T07:35:00.000Z	bankix	Jooder492	You get a list of them (and their settings) when calling "ifconfig" on the comman line.
+2009-08-29T07:37:00.000Z	bankix	Jooder492	No problem. Just open a terminal, then enter "ifconfig"
+2009-08-29T07:37:00.000Z	bankix	Jooder492	THis will produce a list. In the first column, there are names like "eth0" or "lan0" or "ath0".
+2009-08-29T07:37:00.000Z	bankix	Jooder492	In the second column is a block with the settings of the device listed on the left.
+2009-08-29T07:38:00.000Z	bankix	Jooder492	I need the contents of the left column, so eth0, wlan0, lo, whatever shows up there.
+2009-08-29T07:39:00.000Z	bankix	Jooder492	Okay, eth0 and lo.
+2009-08-29T07:40:00.000Z	bankix	Jooder492	Below etho, is there some "inet address" followed by an IP address?
+2009-08-29T07:41:00.000Z	bankix	Jooder492	Great. Is that your wireless IP adress?
+2009-08-29T07:42:00.000Z	bankix	Jooder492	In that block, below the IP adress, there is a "MTU:" followed by a number. Which number? Probably 1500.
+2009-08-29T07:43:00.000Z	bankix	Jooder492	Okay. Then try "sudo ifconfig eth0 mtu 999" Please no typing errors.
+2009-08-29T07:43:00.000Z	bankix	Jooder492	This will lower your MTU (maximum transfer unit) to 999 bytes, which is a number guessed by random.
+2009-08-29T07:44:00.000Z	bankix	Jooder492	So ubuntu will sen smaller packages.
+2009-08-29T07:44:00.000Z	bankix	Jooder492	If this helps a bit, you can increase the number, close to 1500, till you get a good performance.
+2009-08-29T07:45:00.000Z	bankix	Jooder492	Some routers wil create empty packages when ubuntu sends 1500 bytes packages, which will slow down the transfer a lot.
+2009-08-29T07:47:00.000Z	bankix	Jooder492	If you did find the best value for your router, edit your connections via network manager (the signal strength symbol in the upper right panel) via right-click, in the first register card there is the setting "MTU".
+2009-08-29T07:48:00.000Z	bankix	Jooder492	Then the MTU will be restored after the next reboot.

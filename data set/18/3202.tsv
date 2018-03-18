@@ -1,0 +1,18 @@
+2009-11-22T22:16:00.000Z	trothigar		Is there a way to mv files matching a regex pattern while recursively going through a directory tree?
+2009-11-22T22:17:00.000Z	knuthy	trothigar	use find
+2009-11-22T22:25:00.000Z	trothigar	knuthy	thanks, is there any way I can make mv take the source_file direct from standard input?
+2009-11-22T22:26:00.000Z	knuthy	trothigar	what do you mean? :)
+2009-11-22T22:27:00.000Z	knuthy	trothigar	you mean the mv from the find command?
+2009-11-22T22:27:00.000Z	trothigar	knuthy	I can use find to locate the paths of all the files I want to move, but is there a way to pipe them directly accross as source_file_paths for mv to use?
+2009-11-22T22:27:00.000Z	knuthy	trothigar	yes
+2009-11-22T22:27:00.000Z	knuthy	trothigar	find . -iname "...." -dir mv {} dest_path \;
+2009-11-22T22:27:00.000Z	knuthy	trothigar	the {} is a way to replace the results
+2009-11-22T22:27:00.000Z	knuthy	trothigar	check man find
+2009-11-22T22:28:00.000Z	trothigar	knuthy	thanks
+2009-11-22T22:28:00.000Z	knuthy	trothigar	yw
+2009-11-22T22:29:00.000Z	trothigar	knuthy	are you sure that commands right, I get the error "find: unknown predicate `-dir'"
+2009-11-22T22:30:00.000Z	knuthy	trothigar	sry, it's -exec
+2009-11-22T22:32:00.000Z	knuthy	trothigar	use an absolute path on your destination folder for the move
+2009-11-22T22:32:00.000Z	knuthy	trothigar	if you want a move relative to your result folder, use -execdir
+2009-11-22T22:37:00.000Z	trothigar	knuthy	thanks a lot, problem solved
+2009-11-22T22:37:00.000Z	knuthy	trothigar	you're welcome

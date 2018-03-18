@@ -1,0 +1,18 @@
+2009-09-01T15:52:00.000Z	new2Linux		please find output of 'sudo lshw -C network' here: http://pastebin.com/m1ff4da13
+2009-09-01T15:54:00.000Z	new2Linux		it is connected to one of the USB ports, but isn't recognising it. i read on some forums about using ndiswrapper to wrap the windows driver for it?
+2009-09-01T15:55:00.000Z	new2Linux		what can i do then?
+2009-09-01T15:55:00.000Z	Radtoo	new2Linux	ndiswrapper is a last resort, it does frequently not work nicely. I'd start by seeing what hardware that usb device acutally is, first, to see if it is supported under linux
+2009-09-01T16:28:00.000Z	new2Linux	Radtoo	find my output for 'sudo hwinfo --network': http://pastebin.com/d103a037c
+2009-09-01T16:29:00.000Z	Radtoo	new2Linux	the entire hwinfo or at least including usb...?
+2009-09-01T16:29:00.000Z	Radtoo	new2Linux	problem is, it only counts as networking device once it is recognized
+2009-09-01T16:34:00.000Z	new2Linux	Radtoo	sorry about that - new output at: http://pastebin.com/d1c1534f1. I think the adaptor info is shown on line line 5483
+2009-09-01T16:43:00.000Z	Radtoo	new2Linux	reading... :)
+2009-09-01T16:45:00.000Z	new2Linux	Radtoo	lol, sorry about all the lines!
+2009-09-01T16:47:00.000Z	Radtoo	new2Linux	no, its great. all the hw info in one go :P
+2009-09-01T16:49:00.000Z	Radtoo	new2Linux	anyhow you're right, that's certainly your wlan adapter on that line. I guess that model doesn't have native linux drivers either (that's not from hwinfo but google btw).
+2009-09-01T16:49:00.000Z	Radtoo	new2Linux	So... i guess you have to use ndiswrapper :/
+2009-09-01T16:50:00.000Z	new2Linux	Radtoo	what is the process I need to follow to use ndiswrapper for this device?
+2009-09-01T16:52:00.000Z	Radtoo	new2Linux	detailed guide here: https://help.ubuntu.com/community/WifiDocs/Driver/Ndiswrapper . though it is quite simple (although it usually doesn't work without pains)... 1. Install ndiswrapper. 2. Get a few versions of the windows drivers, extract them. 3. use "sudo ndiswrapper -i" on the windows drivers .inf file.
+2009-09-01T16:54:00.000Z	new2Linux	Radtoo	thanks. How do you mean 'extract' the drivers? From the archive? The Netgear website only seems to offer the full software install package (no driver only) - what do you suggest, installing under Wine?
+2009-09-01T16:54:00.000Z	Radtoo	new2Linux	yep. install under wine or in windows... there may also be ways to unpack the exe depending on what it is.
+2009-09-01T16:56:00.000Z	Radtoo	new2Linux	if for instance "file setup.exe" indicates it is in fact a rar / zip or somesuch that can be extracted without wine.

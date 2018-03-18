@@ -1,0 +1,24 @@
+2011-11-30T20:19:00.000Z	escott	diatomaceous	you should be able to
+2011-11-30T20:19:00.000Z	diatomaceous	escott	What would be the appropriate command?  In the 'disk tool', it says "not enough devices to start this array"
+2011-11-30T20:20:00.000Z	diatomaceous	escott	I'm very nervous to just run commands.. last time I did this with my big RAID6 array I accidentally 'recreated' a NEW array.. which of course destroyed all my data :(
+2011-11-30T20:21:00.000Z	escott	diatomaceous	how many functional disks do you have
+2011-11-30T20:22:00.000Z	diatomaceous	escott	2
+2011-11-30T20:23:00.000Z	escott	diatomaceous	well then you dont have enough disks. standard raid5 is a 4 disk system which is resilient to 1 failure
+2011-11-30T20:23:00.000Z	diatomaceous	escott	You can do RAID5 with 3
+2011-11-30T20:27:00.000Z	escott	diatomaceous	check mdadm --status or /proc/mdstat.
+2011-11-30T20:29:00.000Z	escott	diatomaceous	if you created it as a 3 disk array and are only down one disk you should be able to start it in degraded mode
+2011-11-30T20:29:00.000Z	diatomaceous	escott	Thanks, that's what I thought - But I don't know how.
+2011-11-30T20:32:00.000Z	escott	diatomaceous	it should just be an mdadm --assemble --run command to get the array started
+2011-12-08T02:00:00.000Z	escott	diatomaceous	you can look at bumblebee/vgaswitcheroo if you have a builtin graphics card as well
+2011-12-08T01:51:00.000Z	escott	diatomaceous	not likely to be that helpful. people usually go the other way, and convert a radeon into a firepro (for support with things like AutoCAD)
+2011-12-08T02:00:00.000Z	diatomaceous	escott	don't they only support nvida?
+2011-12-08T02:00:00.000Z	diatomaceous	escott	this laptop does have the on-board intel graphics though
+2011-12-08T02:01:00.000Z	escott	diatomaceous	there are projects for both ati and nvidia, one is bumblebee the other is vgaswitcheroo
+2011-12-08T02:03:00.000Z	diatomaceous	escott	 Is there an easy way to try bumblebee or vgaswitcheroo?  They both sound daunting with kernel recompiling and all :|
+2011-12-08T02:05:00.000Z	escott	diatomaceous	they are. you could look for a ppa, but they are both in very early development stages
+2011-12-08T02:05:00.000Z	diatomaceous	escott	Understood.  Sounds like I just need to wait patiently :)
+2011-12-08T02:06:00.000Z	diatomaceous	escott	In the meantime, rebooting into windows for the commute isn't THAT painful, but I think it's embarrassing for the linux community that battery life can be up to 5x greater in windows right now than ubuntu
+2011-12-08T02:08:00.000Z	escott	diatomaceous	there isn't much that can be done. the manufacturers just shovel whatever the cheapest circuitry they can into the device, and then sign NDAs to get access to the docs so they can write drivers. if you are willing to pay more for a laptop with well supported open hardware you can get good battery performance
+2011-12-08T02:08:00.000Z	diatomaceous	escott	Didn't AMD's release of their driver source code mean an end to this though?
+2011-12-08T02:10:00.000Z	escott	diatomaceous	yes, but your problem is in the interaction between the intel CPU and the AMD chipset. so although we finally have open docs for ATI (and even those have problems), and we have good support from intel, we don't know everything that is going on between the two
+2011-12-08T02:11:00.000Z	diatomaceous	escott	that's a really good explanation

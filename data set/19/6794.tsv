@@ -1,0 +1,19 @@
+2009-01-01T10:27:00.000Z	pidus		yesterday while i had an external HDD connected, and data being transferred without any problems there was a power failure. Since then whenever i connect the HDD the hotplugin(automount) point to the local HDD and when i try to manually mount /dev/sdb1 the prompt shows up I/O error, even though the disk is getting mounted perfectly on a mac machine.
+2009-01-01T10:27:00.000Z	pidus		this is the error message that shows up when trying to mount using sudo mount -t ntfs /dev/sdb1 external/ http://paste.ubuntu.com/97365/
+2009-01-01T10:28:00.000Z	pidus		is there no way to fix this problem..without going to windows?
+2009-01-01T10:29:00.000Z	maco	pidus	you can force it to mount, but it's possible you'll lose data because you didnt unmount it properly in windows
+2009-01-01T10:29:00.000Z	pidus	maco	i tried doing that...but http://paste.ubuntu.com/97365/ is what it shows
+2009-01-01T10:31:00.000Z	maco	pidus	you should never ever just unplug a disk without cleanly unmounting it. there is always a chance that doing so will lose or corrupt some or all of the data.
+2009-01-01T10:31:00.000Z	maco	pidus	it's not guaranteed to happen, but it's a chance not worth taking
+2009-01-01T10:31:00.000Z	pidus	maco	i understand that...but it happened inadvertently
+2009-01-01T10:32:00.000Z	pidus	maco	but then what should i try to do?
+2009-01-01T10:32:00.000Z	maco	pidus	and that happens even after you use "-o force" in your mount command?
+2009-01-01T10:33:00.000Z	pidus	maco	yup
+2009-01-01T10:36:00.000Z	maco	pidus	doesnt need a format
+2009-01-01T10:36:00.000Z	maco	pidus	just needs checkdisk
+2009-01-01T10:37:00.000Z	pidus	maco	umm ok..
+2009-01-01T10:37:00.000Z	maco	pidus	you know when you shut down windows wrong and it does that thing when it checks the whole disk to make sure nothing's lost? you just need to do that.
+2009-01-01T10:37:00.000Z	pidus	maco	:-) yeah i know
+2009-01-01T10:38:00.000Z	pidus	maco	but i thought, there's some way in linux as well, to fix it..without going to windows, i.e. linux equivalent of chkdisk or something
+2009-01-01T10:38:00.000Z	maco	pidus	we have fsck but it's for linux filesystems, not for windows ones
+2009-01-01T10:39:00.000Z	pidus	maco	oh ok

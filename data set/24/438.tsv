@@ -1,0 +1,24 @@
+2011-09-03T21:30:00.000Z	hallman		Anyone know why xorg sucks up 25-100% of my cpu? Seems to be a common problem, yet the many suggested solutions doesn't seem to work for me.
+2011-09-03T21:30:00.000Z	hallman		I've also looked through the ubuntu wiki on X troubleshooting, HighCPU in particular.. I find it hard to believe that it's a client application. It's not software rasterizing. I've tried various drivers. Logs seem fine.
+2011-09-03T21:31:00.000Z	ActionParsnip	hallman	what video chip do you use?
+2011-09-03T21:31:00.000Z	hallman	ActionParsnip	I got an Nvidia 8800GT card
+2011-09-03T21:31:00.000Z	ActionParsnip	hallman	have you installed the nvidia proprietary driver?
+2011-09-03T21:32:00.000Z	hallman	ActionParsnip	I've tried a few different ones.. I think the proprietary drivers were the original ones? I'll check
+2011-09-03T21:33:00.000Z	hallman	ActionParsnip	right now I got in my xorg.conf under Section "Device", Driver "nvidia".. so that's the proprietary ones, yes? Package installed, nvidia-173 I believe
+2011-09-03T21:36:00.000Z	ActionParsnip	hallman	can you pastebin your xorg.conf please
+2011-09-03T21:37:00.000Z	hallman	ActionParsnip	http://pastebin.com/73gBvRGr .. what if I install nvidia-current instead maybe? Anything I should think of to make sure it gets used rather than the old nvidia-173?
+2011-09-03T21:52:00.000Z	ActionParsnip	hallman	that's all I know then, maybe others can help
+2011-09-03T21:42:00.000Z	ActionParsnip	hallman	you may want to add the resolution you use in the screen section in the display subsection
+2011-09-03T21:42:00.000Z	hallman	ActionParsnip	I'll do that. You think it might speed things up..?
+2011-09-03T21:43:00.000Z	ActionParsnip	hallman	does nvidia-settings    show an error when you run it?
+2011-09-03T21:43:00.000Z	hallman	ActionParsnip	no
+2011-09-03T21:44:00.000Z	ActionParsnip	hallman	ok then run:  gksudo nvidia-settings      setup the display (even set the refresh rate) and then click "Save to X config file"   may help
+2011-09-03T21:48:00.000Z	hallman	ActionParsnip	xorg is still gobbling up all my cpu :/
+2011-09-03T21:48:00.000Z	ActionParsnip	hallman	are there any bugs reported?
+2011-09-03T21:49:00.000Z	hallman	ActionParsnip	to the developers? Yes, plenty. Since many years back. They don't seem to give a fuck.
+2011-09-03T21:50:00.000Z	ActionParsnip	hallman	could try the 185 driver to test
+2011-09-03T21:50:00.000Z	hallman	ActionParsnip	I don't find the 185 drivers in kpackagekit
+2011-09-03T21:51:00.000Z	ActionParsnip	hallman	could try removing 173 and install nvidia-current
+2011-09-03T21:51:00.000Z	hallman	ActionParsnip	did that
+2011-09-03T21:53:00.000Z	hallman	ActionParsnip	Yeah.. Thanks, you've been most helpful. Considering just switching back to arch instead..
+2011-09-03T21:53:00.000Z	ActionParsnip	hallman	I use a 6150 and use nouveau + kwin   works really well

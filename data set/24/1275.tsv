@@ -1,0 +1,24 @@
+2010-05-18T16:22:00.000Z	_-XPERT-_		does anyone know about route add problems?
+2010-05-18T16:22:00.000Z	_-XPERT-_		and yes man was red
+2010-05-18T16:22:00.000Z	akashv	_-XPERT-_	whats the problem?
+2010-05-18T16:23:00.000Z	_-XPERT-_	akashv	i cant create a route to a different gateway
+2010-05-18T16:24:00.000Z	akashv	_-XPERT-_	what command did you use?
+2010-05-18T16:24:00.000Z	_-XPERT-_	akashv	route add host gw gateway
+2010-05-18T16:24:00.000Z	_-XPERT-_	akashv	ip route gives same issue
+2010-05-18T16:25:00.000Z	akashv	_-XPERT-_	try "route add default gw GW dev DEVICE". GW is the ip address of the gateway and DEVICE is the name of the interface
+2010-05-18T16:26:00.000Z	_-XPERT-_	akashv	Default route is present
+2010-05-18T16:26:00.000Z	akashv	_-XPERT-_	are you trying to add another default route?
+2010-05-18T16:27:00.000Z	_-XPERT-_	akashv	no i am trying to reach a ip thru another gw wich can be reached thru my default gw
+2010-05-18T16:27:00.000Z	akashv	_-XPERT-_	alright, just add the "dev DEVICE" argument and it should work
+2010-05-18T16:29:00.000Z	_-XPERT-_	akashv	Did this also but still No Such Process
+2010-05-18T16:30:00.000Z	akashv	_-XPERT-_	paste the output for "netstat -r" in the pastebin
+2010-05-18T17:13:00.000Z	akashv	_-XPERT-_	yeah
+2010-05-18T17:14:00.000Z	_-XPERT-_	akashv	It seems that i can add route's but only when i use my default gw as gw
+2010-05-18T17:15:00.000Z	_-XPERT-_	akashv	It is strange that i cant use a diferent GW
+2010-05-18T17:21:00.000Z	akashv	_-XPERT-_	suppose you have the device eth0 with ip 192.168.1.2 netmask 255.255.255.0, you can add a route to say 192.168.4.1 by doing this: "sudo route add -net 192.168.4.0 netmask 255.255.255.0 gw 192.168.1.1 dev eth0", where 192.168.1.1 is the next hop
+2010-05-18T17:22:00.000Z	_-XPERT-_	akashv	but when i want to use a diferent gw then it doesn't work
+2010-05-18T17:23:00.000Z	_-XPERT-_	akashv	1 default but behind this one there a 3 more
+2010-05-18T17:25:00.000Z	akashv	_-XPERT-_	ok so you have this computer connected to the internet, and you want 3 more computers under this to connect to the network?
+2010-05-18T17:26:00.000Z	_-XPERT-_	akashv	I have got more subnets behind this computer and want to redirect trafic to a certain IP adres thru a diferent route
+2010-05-18T17:31:00.000Z	akashv	_-XPERT-_	it would help you paste the output for "netstat -r" and the tell subnet addresses
+2010-05-18T17:33:00.000Z	_-XPERT-_	akashv	Back in 5

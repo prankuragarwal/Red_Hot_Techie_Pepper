@@ -1,0 +1,23 @@
+2010-07-28T13:08:00.000Z	YankDownUnder	cipherz	Um...I don't suppose you can be slightly more descriptive?
+2010-07-28T13:09:00.000Z	cipherz	YankDownUnder	what do you want to know ?
+2010-07-28T13:10:00.000Z	YankDownUnder	cipherz	Describe, in order, what exactly happened; what changed from the time it was working properly, how your disk layout is - simple things.
+2010-07-28T13:10:00.000Z	cipherz	YankDownUnder	gimme a sec writing up the story + partition scheme in a pastebin
+2010-07-28T13:11:00.000Z	YankDownUnder	cipherz	Roger
+2010-07-28T13:14:00.000Z	cipherz	YankDownUnder	http://ubuntu.pastebin.com/Jwe7X0Uf - sorry the partition table is not fdisk -l but I am in windows right now
+2010-07-28T13:16:00.000Z	YankDownUnder	cipherz	I believe in this situation you're going to have to do the "Windows Boot Recovery" prior to doing the grub2 stuff...
+2010-07-28T13:16:00.000Z	cipherz	YankDownUnder	''windows boot recovery'', just to make sure I understand you, ''re-run generation of windows boot menu'' ?
+2010-07-28T13:17:00.000Z	YankDownUnder	cipherz	When booting with the Win7 disk, you can do a recovery => I personally use a "Vista Recovery Disk" that I downloaded for assistance with that kinda crap...
+2010-07-28T13:18:00.000Z	cipherz	YankDownUnder	ahh I cannot do that :) if I do that my lenovo mbr is trashed..
+2010-07-28T13:18:00.000Z	YankDownUnder	cipherz	As well, once I'm done, I boot a liveCD, then mount/chroot the partitions, THEN re-run grub
+2010-07-28T13:18:00.000Z	YankDownUnder	cipherz	Well, then you can try what I just said - boot to a liveCD, chroot, then re-run grub2 matey
+2010-07-28T13:19:00.000Z	cipherz	YankDownUnder	I did that already :) doesnt help :/
+2010-07-28T13:22:00.000Z	YankDownUnder	cipherz	Have you double-checked your /etc/default/grub and also your /etc/grub.d configs?
+2010-07-28T13:24:00.000Z	cipherz	YankDownUnder	have to admit I havent browsed through /etc/grub.d but I have been through /etc/default/grub (mainly to disable splash,quiet and make sure i had a timeout) but did look it over
+2010-07-28T13:25:00.000Z	cipherz	YankDownUnder	gonna try and boot with my easybcd changes, if nothing else I'll be online from the livecd and able to do a better detailed description
+2010-07-28T13:25:00.000Z	YankDownUnder	cipherz	When you initially set this up - since you don't want to touch the Lenovo MBR, did you set it up to boot into linux through the Windows boot mangler, or through grub?
+2010-07-28T13:30:00.000Z	cipherz	YankDownUnder	so I have been using grub-legacy from easybcd since my original 10.04 lts install.. and its been working.. but i decided to try, just for the fun of it, if their grub2 worked
+2010-07-28T13:30:00.000Z	cipherz	YankDownUnder	and the grub-legacy didnt .. but grub2 did.. hmm
+2010-07-28T13:30:00.000Z	YankDownUnder	cipherz	Mate, I've been sticking to grub2 - or lilo (for some of my client's boxen)
+2010-07-28T13:32:00.000Z	cipherz	YankDownUnder	well I didnt really choose anything in the install, and as far as I know grub2 is default in ubuntu.. but didnt know that earlier.. (so used easybcd's legacy support .. without problems until last kernel upgrade hmm something else besides the kernel must have been installed :) )
+2010-07-28T13:33:00.000Z	YankDownUnder	cipherz	I'd use what is packaged - which is grub2 by default - using the easybcd is fine and dandy, but I'd say you're going to have more ease by re-installing grub2 from the liveCD - doing the re-mount and chroot prior
+2010-07-28T13:34:00.000Z	cipherz	YankDownUnder	I think I am really poor at expressing myself, because when I read your replies it doesnt make sense according to what I have done.. sorry :) one last time: I tried what you just did, without luck, changed my windows boot menu options and voila.. dont know how it worked before as grub2 always have been default in ubuntu 10.04 .. but thanks a lot for your time and have a nice day :)

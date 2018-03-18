@@ -1,0 +1,18 @@
+2010-02-23T21:09:00.000Z	wasutton3_		is there a relatively easy way to turn a logfile into a webpage?
+2010-02-23T21:10:00.000Z	jonzbcc	wasutton3_	you could just serve that file. or if you're not too huge on security (maybe its an intranet) you can just symlink to the file from inside of your webroot
+2010-02-23T21:11:00.000Z	wasutton3_	jonzbcc	will it constantly update? or will it just be a static page that i will have to reload?
+2010-02-23T21:12:00.000Z	jonzbcc	wasutton3_	well, I suggestd two separate options. which one are you talking about?
+2010-02-23T21:12:00.000Z	wasutton3_	jonzbcc	i think i would encounter the same problem with either
+2010-02-23T21:14:00.000Z	jonzbcc	wasutton3_	(i was testing if the bot could tell you about symlinks) -- sym links are like shortcuts to the actual file. so you if you add a symlink inside of your webroot (that points to the actual log file) then its the _actual_ file -- there is not updating it.
+2010-02-23T21:14:00.000Z	wasutton3_	jonzbcc	i know, but what i want is like a live feed on the web page without having to reboot
+2010-02-23T21:16:00.000Z	jonzbcc	wasutton3_	that's an ajaxy-ish sounding feature. (not really -- i take that back) -- you'd simply need a (and this is my hack -- maybe there's a better way) - a tiny bit of javascript on page to reload the particular section in the html document every x-seconds (10/15 w/e)
+2010-02-23T21:17:00.000Z	wasutton3_	jonzbcc	thats what i was thinking too, seems to be a little bit easier to manage than a completely different program
+2010-02-23T21:19:00.000Z	jonzbcc	wasutton3_	you should read up on symlinking though -- its fairly unsafe. a better way would be to have a "tmp_copy_log" sitting in side the web root, and that tmp file would be overwritten frequently by a cronned script (a _very_ simple script) that just cats the contents of the original log into the temp
+2010-02-23T21:22:00.000Z	wasutton3_	jonzbcc	i was instead planning on just having a cron job copy/ overwrite the file every minute or so
+2010-02-23T21:22:00.000Z	jonzbcc	wasutton3_	right, that's what I just said
+2010-02-23T21:23:00.000Z	wasutton3_	jonzbcc	i see. i got about a billion lines flying past me here
+2010-02-23T21:27:00.000Z	jonzbcc	wasutton3_	actually, new thought: instead of burdening your machine with a constant cron (when people might not even be visiting the web page) -- you can make a plain html doc, with a frame inside of it -- have the frame inside be an actual php doc in the same directory. Now, the outter frame will have javscript that will reload the php doc inside the frame every x seconds. this way all the fetching/copying/pasting is done by a php doc -- a
+2010-02-23T21:29:00.000Z	wasutton3_	jonzbcc	its only going to be me viewing it (my school has an ultra restrictive firewall which i cant even vnc with)
+2010-02-23T21:30:00.000Z	jonzbcc	wasutton3_	right, so -- only you, why have a cron constantly running for one viewer
+2010-02-23T21:30:00.000Z	wasutton3_	jonzbcc	that sounds significantly easier. my coworkers ought to be able to help
+2010-02-23T21:30:00.000Z	wasutton3_	jonzbcc	true

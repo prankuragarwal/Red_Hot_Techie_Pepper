@@ -1,0 +1,22 @@
+2007-09-16T05:57:00.000Z	FusionMan		If a DVDRW drive shows up in BIOs, and nowhere in  Ubuntu...is it safe to assume it's an unsupported hardware?
+2007-09-16T05:58:00.000Z	FusionMan		Is there special instructions in existence to working with DVDRW drives?
+2007-09-16T05:58:00.000Z	FusionMan		irish_njr, you have to shrink the existing, then add one.
+2007-09-16T05:59:00.000Z	FusionMan		SlimeyPete; if not, it's unsupported?
+2007-09-16T05:59:00.000Z	Wyzard	FusionMan	The command-line tools are in a separate package, dvd+rw-tools I think, but you can burn DVDs with Nautilus or Brasero
+2007-09-16T05:59:00.000Z	FusionMan	Wyzard	it doesn't recognize the existence of the drive at all.
+2007-09-16T06:00:00.000Z	FusionMan		The brand of it is actually "Generic" according to bio.
+2007-09-16T06:00:00.000Z	Wyzard	FusionMan	"bio" ?
+2007-09-16T06:00:00.000Z	FusionMan		BIOS
+2007-09-16T06:00:00.000Z	Wyzard	FusionMan	If your BIOS doesn't recognize your drive, that sounds like a bad cable or broken drive
+2007-09-16T06:01:00.000Z	FusionMan		The BIOS does recognize it as "Generic"
+2007-09-16T06:01:00.000Z	Wyzard	FusionMan	There definitely aren't any special settings needed at the BIOS level...  a DVD burner is just a CD drive with some extra features
+2007-09-16T06:01:00.000Z	Wyzard	FusionMan	still, sounds like it isn't being properly detected
+2007-09-16T06:01:00.000Z	Wyzard	FusionMan	Try it in a different computer
+2007-09-16T06:01:00.000Z	FusionMan		I know all this.  The issue is strictly driver support.
+2007-09-16T06:02:00.000Z	Wyzard	FusionMan	As far as Linux support is concerned, DVD drives speak ATAPI just like CD-ROM drives, and they use the same drivers
+2007-09-16T06:02:00.000Z	Wyzard	FusionMan	(assuming it's PATA or SATA; if it's SCSI, naturally it speaks SCSI)
+2007-09-16T06:02:00.000Z	FusionMan	Wyzard	oh.  Would it be in /dev/scd01  ?
+2007-09-16T06:02:00.000Z	FusionMan		or something similar?
+2007-09-16T06:03:00.000Z	Wyzard	FusionMan	/dev/scd0 most likely, with symlinks from /dev/cdrom, /dev/cdrw, /dev/dvd, and /dev/dvdrw
+2007-09-16T06:04:00.000Z	FusionMan		In dev/  is a single drive saved in both CDRW and CDrom?
+2007-09-16T06:05:00.000Z	Wyzard	FusionMan	They're symlinks to the actual device file

@@ -1,0 +1,22 @@
+2009-04-02T02:29:00.000Z	joakimk		What do I have to do to be able to play video (avi, mpg, etc) in Ubuntu 8?
+2009-04-02T02:31:00.000Z	joakimk		I have it installed
+2009-04-02T02:32:00.000Z	crdlb	joakimk	run gstreamer-properties, go to the video tab and click Test under Default Output
+2009-04-02T02:33:00.000Z	joakimk	crdlb	http://paste.ubuntu.com/142355/ is the error message I get
+2009-04-02T02:34:00.000Z	crdlb	joakimk	ok, it is an XVideo problem :)
+2009-04-02T02:34:00.000Z	crdlb	joakimk	what video card?
+2009-04-02T02:34:00.000Z	joakimk	crdlb	Radeon X1300
+2009-04-02T02:34:00.000Z	crdlb	joakimk	using fglrx or radeon?
+2009-04-02T02:34:00.000Z	joakimk	crdlb	uh... radeon? I think? Do you mean driver, or hardware?
+2009-04-02T02:35:00.000Z	crdlb	joakimk	driver (have you enabled the restricted driver?)
+2009-04-02T02:35:00.000Z	crdlb	joakimk	if you're using radeon, then you can just switch to EXA
+2009-04-02T02:35:00.000Z	joakimk	crdlb	no, I don't think I've enabled any restricted driver
+2009-04-02T02:35:00.000Z	joakimk	crdlb	EXA?
+2009-04-02T02:35:00.000Z	crdlb	joakimk	the old mode (XAA) cannot support textured video with a compositing manager, so you need to switch to the new one (EXA)
+2009-04-02T02:36:00.000Z	crdlb	joakimk	edit your /etc/X11/xorg.conf and put Option "AccelMethod" "EXA" in Section "Device"
+2009-04-02T02:36:00.000Z	joakimk	crdlb	So that's still Radeon drivers, then?
+2009-04-02T02:37:00.000Z	crdlb	joakimk	yep, and jaunty will use EXA by default
+2009-04-02T02:38:00.000Z	joakimk	crdlb	Right now, I only have one line in my Device section: "Identifier      "Configured Video Device" Just add a new line here?
+2009-04-02T02:38:00.000Z	crdlb	joakimk	yep
+2009-04-02T02:38:00.000Z	joakimk	crdlb	...and restart X?
+2009-04-02T02:38:00.000Z	crdlb	joakimk	yes
+2009-04-02T02:38:00.000Z	joakimk	crdlb	OK, thanks! See you on the other side ;)

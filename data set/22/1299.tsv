@@ -1,0 +1,22 @@
+2010-07-19T18:12:00.000Z	Synthead		there isn't a way to search for a file in the directory that you're in without full paths or bash tricks?
+2010-07-19T18:13:00.000Z	Synthead		locate will just tell me where the file is in my filesystem
+2010-07-19T18:13:00.000Z	Synthead		if I am in directory /a/b/c/d/e/f/g
+2010-07-19T18:13:00.000Z	Synthead		and e exists in g
+2010-07-19T18:13:00.000Z	Synthead		I want to be able to command -flags g
+2010-07-19T18:14:00.000Z	Synthead		and get [package]
+2010-07-19T18:14:00.000Z	Synthead		for the locally installed packages
+2010-07-19T18:14:00.000Z	Synthead		sorry, command -flags e
+2010-07-19T18:14:00.000Z	Synthead		gah
+2010-07-19T18:14:00.000Z	Synthead		man
+2010-07-19T18:14:00.000Z	Pici	Synthead	dpkg -S `pwd`/rest/of/path/file
+2010-07-19T18:16:00.000Z	Pici	Synthead	I'm not sure how else you are planning to get the full path of the file. You need that if you don't want a huge list to spit out of dpkg -S
+2010-08-09T23:35:00.000Z	Pici	Synthead	service whatever restart
+2010-08-09T23:35:00.000Z	Synthead	Pici	it's not in /etc/init.d, it's in /etc/init and is a .conf file
+2010-08-09T23:38:00.000Z	Pici	Synthead	Have you looked at initctl's manpage?
+2010-08-09T23:40:00.000Z	Pici	Synthead	Are you expecting it to restart jobs? reload-configuration says that it won't do that.
+2010-08-09T23:41:00.000Z	Synthead	Pici	it also states that they should be started automatically based on inotify changes
+2010-08-09T23:41:00.000Z	Synthead	Pici	I created a .conf that I would like to run now, but I can't reboot
+2010-08-09T23:42:00.000Z	Pici	Synthead	After issuing reload-configuration, can does initctl yourjob start   work?
+2010-08-09T23:46:00.000Z	Synthead	Pici	oCean_: after running initctrl reload-configuration, my .conf file doesn't show up as a job. Doing initctl start [job] reports it as an unknown job
+2010-08-09T23:51:00.000Z	Pici	Synthead	Perhaps #upstart could provide some help.
+2010-08-09T23:51:00.000Z	Synthead	Pici	ah, thank you

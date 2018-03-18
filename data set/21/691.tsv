@@ -1,0 +1,21 @@
+2011-07-29T09:41:00.000Z	default__		Update Manager gives a "Requires installation f untrusted packages" error fr some recommended updates. It doesn't give me any options to fix it.
+2011-07-29T09:41:00.000Z	default__		of*
+2011-07-29T09:42:00.000Z	default__		details: dbus dbus-x11 libdbus-1-3 libfreetype6 libpng12-0 libsndfile1 update-manager update-manager-core
+2011-07-29T09:43:00.000Z	default__		I have checked all sources in settings
+2011-07-29T09:44:00.000Z	ActionParsnip	default__	can you give the output of:  sudo apt-get update; lsb_release -a
+2011-07-29T09:44:00.000Z	ActionParsnip	default__	use a pastebin to hold the output so you don't scrol the channel :)
+2011-07-29T09:45:00.000Z	ActionParsnip	default__	be sure that software centre etc is closed
+2011-07-29T09:48:00.000Z	default__	ActionParsnip	http://paste.ubuntu.com/654221/
+2011-07-29T09:50:00.000Z	default__	ActionParsnip	I remember having this error before, but I think i fixed it by changing from UAE's server to main server
+2011-07-29T09:52:00.000Z	ActionParsnip	default__	worth a try
+2011-07-29T09:53:00.000Z	ActionParsnip	default__	if its still making the same noise, pastebin the text I requested and we can fix
+2011-07-29T09:53:00.000Z	default__	ActionParsnip	I already did, http://paste.ubuntu.com/654221/
+2011-07-29T09:55:00.000Z	ActionParsnip	default__	sorry, let me review
+2011-07-29T09:56:00.000Z	ActionParsnip	default__	sudo apt-key adv --recv-key --keyserver keyserver.ubuntu.com 40976EAF437D05B5
+2011-07-29T09:58:00.000Z	default__	ActionParsnip	I executed that line, output included "gpg: key 437D05B5: "Ubuntu Archive Automatic Signing Key <ftpmaster@ubuntu.com>" not changed"
+2011-07-29T09:58:00.000Z	default__	ActionParsnip	I get the same error when updating
+2011-07-29T09:59:00.000Z	default__	ActionParsnip	here's the full output http://paste.ubuntu.com/654229/
+2011-07-29T10:01:00.000Z	ActionParsnip	default__	try: sudo apt-get -o Acquire::http::No-Cache=True -o Acquire::BrokenProxy=true update
+2011-07-29T10:04:00.000Z	default__	ActionParsnip	the output is similar to 'sudo apt-get update', it ends with "The following signatures were invalid: BADSIG 40976EAF437D05B5 Ubuntu Archive Automatic Signing Key <ftpmaster@ubuntu.com>"
+2011-07-29T10:08:00.000Z	default__	ActionParsnip	 after I executed that last command, I see more updates in the update manager
+2011-07-29T10:10:00.000Z	default__	ActionParsnip	in settings, there's a tab for 'Authentication' with an option to 'Import Key FIle...' , can I not download the key file instead of doing it from command lin?

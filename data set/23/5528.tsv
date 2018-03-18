@@ -1,0 +1,23 @@
+2009-05-01T07:55:00.000Z	traskbt		How long is 8.10 supported for?
+2009-05-01T07:55:00.000Z	traskbt		I'd like to use 9.04 but my graphics drivers aren't available for it.
+2009-05-01T07:56:00.000Z	traskbt		8.04 was the last LTS, correct?
+2009-05-01T07:56:00.000Z	jbmigel	traskbt	youbetcha
+2009-05-01T08:10:00.000Z	jbmigel	traskbt	what ati card do you have?
+2009-05-01T08:10:00.000Z	jbmigel	traskbt	that card should be supported by the default free drivers... dont bother with fglrx
+2009-05-01T08:10:00.000Z	traskbt	jbmigel	I can't play my 3D games.
+2009-05-01T08:11:00.000Z	jbmigel	traskbt	what is the result of the command glxinfo | grep direct
+2009-05-01T08:11:00.000Z	jbmigel	traskbt	do you know what driver you have configured in your xorg.conf?
+2009-05-01T08:12:00.000Z	traskbt	jbmigel	my literal /etc/X11/xorg.conf file hardly has anything in it, where do I go to see what is being used?
+2009-05-01T08:13:00.000Z	jbmigel	traskbt	there should be a Device section there that says something about radeon and then a driver line with like "ati" or "radeon" or something
+2009-05-01T08:13:00.000Z	traskbt	jbmigel	it only says the "Defaults" no *actual* information. I know what a xorg.conf is supposed to look like, heh.
+2009-05-01T08:14:00.000Z	jbmigel	traskbt	this is in /etc/X11/xorg.conf?
+2009-05-01T08:14:00.000Z	traskbt	jbmigel	correct.
+2009-05-01T08:15:00.000Z	jbmigel	traskbt	thats pretty weird eh... um... are you really really sure?
+2009-05-01T08:15:00.000Z	traskbt	jbmigel	http://pastebin.ca/1409126
+2009-05-01T08:17:00.000Z	jbmigel	traskbt	i see in the comment section a command to rebuild that file to defaults
+2009-05-01T08:17:00.000Z	traskbt	jbmigel	I haven't actually touched it.
+2009-05-01T08:18:00.000Z	jbmigel	traskbt	well back up that one then run the rebuild command: sudo dpkg-reconfigure -phigh xserver-xorg
+2009-05-01T08:18:00.000Z	traskbt	jbmigel	that *is* the default. I just ran it.
+2009-05-01T08:23:00.000Z	jbmigel	traskbt	are you running off the livecd or something?
+2009-05-01T08:23:00.000Z	traskbt	jbmigel	no..
+2009-05-01T08:24:00.000Z	jbmigel	traskbt	you can see in that file that you're loading the radeon driver...

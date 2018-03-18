@@ -1,0 +1,18 @@
+2009-11-06T17:01:00.000Z	geomi		Hi all. I would like to know if Ubuntu 9.10 creates partitions the right way, with an offset that is a power of 2, to avoid misalignment issues with SSDs and RAID arrays.
+2009-11-06T17:02:00.000Z	ActionParsnip	geomi	i'd imagine it does whatever is needed
+2009-11-06T17:02:00.000Z	ActionParsnip	geomi	you could always use manual partitioning if you want to be 100% sure
+2009-11-06T17:02:00.000Z	geomi	ActionParsnip	what does that even mean? it either does, or it doesnt... XP creates partitions at 31.5KiB thats BAD; Vista and higher at 1024KiB; this is still wrong for RAID5/SSDs with 640KiB erase blocks
+2009-11-06T17:03:00.000Z	ActionParsnip	geomi	i'd imgine if something is needed in that way then ubuntu will do it, if you dont want to let the automatic stuff do its thing or want to be sure of it, you can set it up yourself so then you know its good
+2009-11-06T17:05:00.000Z	geomi	ActionParsnip	how can i set the offset myself then? The manual partitioner doesn't let me choose an offset
+2009-11-06T17:06:00.000Z	geomi	ActionParsnip	only "beginning" or "end" which still doesnt tell if i will end up with a misalignment or not
+2009-11-06T17:07:00.000Z	geomi	ActionParsnip	as you may know, RAIDs and SSDs require partitions/filesystems to be properly aligned; without this filesystem blocks may cover two flash erase blocks; leading to lower performance and higher wear on the flash cells
+2009-11-06T17:07:00.000Z	ActionParsnip	geomi	you'd have to calculate the space with the offset andmake the partitions as needed
+2009-11-06T17:07:00.000Z	geomi	ActionParsnip	as said, i cannot enter an offset; and the only ubuntu forums thread i found did not have any answers
+2009-11-06T17:07:00.000Z	ActionParsnip	geomi	for the start, you'd have to create a dummy partition, then delete it at the end to create te gaps
+2009-11-06T17:10:00.000Z	ActionParsnip	geomi	maybe there is a different partitioning to which permits offsets, i'd check cfdisk and fdisk to see what they can do, the look into others
+2009-11-06T17:12:00.000Z	geomi	ActionParsnip	alright well thanks for your answers.. ill try fiddling with fdisk instead
+2009-11-06T17:20:00.000Z	geomi	ActionParsnip	it appears Ubuntu's fdisk creates partitions at 63 sector offset or 31.5KiB - this is the worst possible way of creating partitions and should be considered a bug. i will file a bug report. Just FYI :)
+2009-11-06T17:21:00.000Z	ActionParsnip	geomi	nice
+2009-11-06T18:20:00.000Z	geomi	ActionParsnip	shouldn't it be -t cifs?
+2009-11-06T18:21:00.000Z	ActionParsnip	geomi	should be smbfs if its a samba mount
+2009-11-06T18:21:00.000Z	ActionParsnip	geomi	i think cifs is the newer way as Dr_Willis says

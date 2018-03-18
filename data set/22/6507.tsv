@@ -1,0 +1,22 @@
+2006-10-09T11:55:00.000Z	ArrenLex		!blender
+2006-10-09T11:56:00.000Z	ArrenLex		Yes, yes.
+2006-10-09T11:57:00.000Z	cschauer	ArrenLex	do you know what would cause my ubuntu to fail to load the gui?
+2006-10-09T11:58:00.000Z	ArrenLex	cschauer	uh, lots of things? Does it give you an error message?
+2006-10-09T11:58:00.000Z	ArrenLex	cschauer	so it gives you the CLI rather than a display manager?
+2006-10-09T12:00:00.000Z	ArrenLex	cschauer	log in from the command line. Then, run "startx". Pastebin whatever errors it gives you.
+2006-10-09T12:11:00.000Z	cschauer	ArrenLex	XIO: Fatal IO error 104 ( Connection reset by peer) on X server ":0.0" after 0 requests (0 known processed) with 0 events remaining
+2006-10-09T12:12:00.000Z	ArrenLex	cschauer	"no screens found" seems to indicate you're using the wrong driver for your card, or trying to use options your card does not support. Are you sure you're using the correct driver?
+2006-10-09T12:12:00.000Z	ArrenLex	cschauer	do you at least know what card you have?
+2006-10-09T12:13:00.000Z	ArrenLex	cschauer	okay, run "sudo dpkg-reconfigure xserver-xorg" and make sure to specify radeon driver.
+2006-10-09T12:21:00.000Z	cschauer	ArrenLex	should I do Startx again after the configuration or?
+2006-10-09T12:22:00.000Z	ArrenLex	cschauer	of course, if you want to try starting X. =P
+2006-10-09T12:23:00.000Z	ArrenLex	cschauer	what's the output of "cat /var/log/Xorg.0.log | grep EE"?
+2006-10-09T12:25:00.000Z	cschauer	ArrenLex	the output is (II) Loading extension MIT-SCREEN-SAVER then (EE) No devices detected
+2006-10-09T12:26:00.000Z	ArrenLex	cschauer	I hate to doubt you, but are you sure you have the right card? Please post the output of "lspci" and also "cat /etc/X11/xorg.conf | grep Driver"
+2006-10-09T12:28:00.000Z	ArrenLex	cschauer	that's your problem. Your sound card is not detected by the kernel. It's unsupported.
+2006-10-09T12:28:00.000Z	ArrenLex	cschauer	unless you're running a really old kernel, I would say for at least a few months to a year, that machine ain't running any Linux.
+2006-10-09T12:29:00.000Z	ArrenLex	cschauer	is it a brand new video card?
+2006-10-09T12:29:00.000Z	ArrenLex	cschauer	firstly, upgrade to ubuntu dapper
+2006-10-09T12:30:00.000Z	ArrenLex	cschauer	secondly, try the fglrx drivers from ATI.
+2006-10-09T12:30:00.000Z	ArrenLex	cschauer	to do that, apt-cache search fglrx and install all which looks relevant.
+2006-10-09T12:31:00.000Z	ArrenLex	cschauer	"all which looks relevant" = linux-restricted-modules-`uname -r` and xorg-driver-fglrx

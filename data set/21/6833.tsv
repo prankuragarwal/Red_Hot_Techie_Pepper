@@ -1,0 +1,21 @@
+2007-02-09T13:01:00.000Z	duckdown		Hi all.. Are there any people that know 'iptables' here?  I keep getting random probes and weird connection attempts from certain IP's, many from CHINA especially.. My router is a Linux one, with full iptables, but I haven't a clue on how to go about doing this.  Does anyone know a basic syntax I can use to drop/ignore ALL packets from an IP address?  Also, if I get packeted by someone, and I see their IP address coming up in my rout
+2007-02-09T13:01:00.000Z	duckdown		er logs, is there a syntax I can use to lessen the attack? (IE: Block these packets once I grab their IP?)
+2007-02-09T13:02:00.000Z	duckdown		thanks all
+2007-02-09T13:03:00.000Z	unop	duckdown	 use a deny rule  -- something like - iptables -A input -s 198.211.65.0/24 -j DENY  (chaning the ipaddress range to accomodate the chinese ip addresses)
+2007-02-09T13:05:00.000Z	duckdown	unop	I will try that, thanks alot :D
+2007-02-09T13:06:00.000Z	unop	duckdown	 ahh, then you have to change nothing -- those are just warnings
+2007-02-09T13:06:00.000Z	duckdown	unop	cool, but what if that same IP finally compromises something eventually, it would be easier to just completely block that IP from ever trying
+2007-02-09T13:07:00.000Z	unop	duckdown	 well, if you have configured iptables right -- that ip address should have no access at all
+2007-02-09T13:08:00.000Z	unop	duckdown	 meaning -- allow access to IP addresses or services you need and then have a catch-all deny rule .. that should suffice
+2007-02-09T13:12:00.000Z	unop	duckdown	it looks like you already have a rule there denying access to that ip address -- you are just warned about it thats all
+2007-02-09T13:13:00.000Z	duckdown	unop	yeah, default is every port closed, but there are a few obscure ports i do allow public access to, like a BNC for my friends and a web interface and what not, I want to block that source IP from EVERYTHING forever, so he cant even connect to the open ports
+2007-02-09T13:14:00.000Z	unop	duckdown	well, if i were you -- i would install the knockd daemon and configure it so that your friends have to knock on a few port numbers for iptables to open up and allow just their ip addresses access
+2007-02-09T13:19:00.000Z	unop	duckdown	 1720 corresponds to voice-over-ip calls (h.323)
+2007-02-09T13:20:00.000Z	unop	duckdown	 only if you run a h.323 server .. something like gnome-meeting or ekiga
+2007-02-09T13:20:00.000Z	duckdown	unop	does a VNC qualify as that?
+2007-02-09T13:21:00.000Z	unop	duckdown	 VNC does not qualify as a VoIP server, no :)
+2007-02-09T13:26:00.000Z	unop	duckdown	just a majority of moron script kiddies living on the continent of asia :) china being the biggest country on it and hence a bigger proportion of idiots from china noticed
+2007-02-09T13:37:00.000Z	unop	duckdown	 you'll need to create a table by that name -- but its better if you just use the default
+2007-02-09T13:39:00.000Z	unop	duckdown	what model router is this?
+2007-02-09T13:40:00.000Z	unop	duckdown	 i see .. i thought it was one that came pre-installed with linux
+2007-02-09T13:40:00.000Z	duckdown	unop	it uses iptables i am not sure

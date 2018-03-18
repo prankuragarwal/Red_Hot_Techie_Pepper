@@ -1,0 +1,24 @@
+2010-01-17T21:20:00.000Z	Akkernight		I'm trying to get LAN network working between my Win7 and my Ubuntu, I have got smbfs, but the computers only find each other through wireless, why?
+2010-01-17T21:21:00.000Z	lethliel	Akkernight	have you tried a ping in both ways?
+2010-01-17T21:24:00.000Z	Akkernight	lethliel	how do I check the ipaddress on ubuntu, like ipconfig on windows?
+2010-01-17T21:24:00.000Z	lethliel	Akkernight	open a terminal. Type "sudo ifconfig"
+2010-01-17T21:26:00.000Z	Akkernight	lethliel	ok, eth0 shows some stuff, but I noticed only IPvP6 is there not IPvP4...
+2010-01-17T21:27:00.000Z	lethliel	Akkernight	there is no entry in the inet Adress Part of the ifconfig output?
+2010-01-17T21:27:00.000Z	Akkernight	lethliel	there's inet6
+2010-01-17T21:29:00.000Z	lethliel	Akkernight	then you have to set a IP Adress yourself: "ifconfig eth0 ip.ip.ip.ip mask mask.mask.mask"
+2010-01-17T21:30:00.000Z	Akkernight	lethliel	it said "SIOCSIFADDR_ Invalid argument"
+2010-01-17T21:30:00.000Z	Akkernight	lethliel	replace _ with :
+2010-01-17T21:30:00.000Z	lethliel	Akkernight	what was the command you entered? You have to run it as root or with sudo
+2010-01-17T21:31:00.000Z	Akkernight	lethliel	sudo ifconfig eth0 192.168.0.99 255.255.255.0
+2010-01-17T21:31:00.000Z	lethliel	Akkernight	sudo ifconfig eth0 192.168.0.99 mask 255.255.255.0
+2010-01-17T21:32:00.000Z	Akkernight	lethliel	now it says "mask: Unknown host"
+2010-01-17T21:33:00.000Z	lethliel	Akkernight	sorry netmask not mask :)
+2010-01-17T21:37:00.000Z	Akkernight	lethliel	still only inet6
+2010-01-17T21:38:00.000Z	lethliel	Akkernight	can you pastebin the output of ifconfig?
+2010-01-17T21:41:00.000Z	Akkernight	lethliel	no :S my linux has no internet
+2010-01-17T21:41:00.000Z	lethliel	Akkernight	ok but the ifconfig eth0 command was successfull? No Error messages?
+2010-01-17T21:41:00.000Z	Akkernight	lethliel	aha! now I fixed it
+2010-01-17T21:42:00.000Z	lethliel	Akkernight	Great :) What was the problem?
+2010-01-17T21:42:00.000Z	Akkernight	lethliel	so now ifconfig shows inet, but I still don't find the Win7 computer on the network...
+2010-01-17T21:42:00.000Z	Akkernight	lethliel	oh wait, I did :D
+2010-01-17T21:44:00.000Z	lethliel	Akkernight	:) great. if you want to save the configuration permanently you have to edit /etc/network/interfaces. Here is doc: http://www.ubuntugeek.com/ubuntu-networking-configuration-using-command-line.html

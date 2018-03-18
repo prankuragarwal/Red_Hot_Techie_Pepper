@@ -1,0 +1,24 @@
+2007-04-19T10:07:00.000Z	zaggynl		Anyone knows why feisty won't automount my usbstick?
+2007-04-19T10:07:00.000Z	zaggynl		works fine manuall :(
+2007-04-19T10:08:00.000Z	zaggynl		some info on it: http://ubuntuforums.org/showthread.php?p=2483310#post2483310
+2007-04-19T10:08:00.000Z	disasm	zaggynl	days like today, I'm glad penn state has the carroll repository on campus ;-)
+2007-04-19T10:09:00.000Z	disasm	zaggynl	are you in the plugdev group?
+2007-04-19T10:09:00.000Z	zaggynl	disasm	how should I check?
+2007-04-19T10:10:00.000Z	zaggynl	disasm	'groups' right? well that claims I'm in the group
+2007-04-19T10:10:00.000Z	disasm	zaggynl	vi /etc/group, go to line with plugdev, look for your username, if it's not in there adduser username plugdev
+2007-04-19T10:10:00.000Z	disasm	zaggynl	errr, Use an editor, not necessarily vi, just kneejerk reaction
+2007-04-19T10:11:00.000Z	zaggynl	disasm	'plugdev:x:46:haldaemon,zaggynl'
+2007-04-19T10:11:00.000Z	disasm	zaggynl	looks good
+2007-04-19T10:11:00.000Z	disasm	zaggynl	tail -f /var/log/syslog (you may need root) unplug/plug usb stick
+2007-04-19T10:13:00.000Z	zaggynl	disasm	http://www.pastebin.ca/448335 <= that's the output which I get
+2007-04-19T10:15:00.000Z	disasm	zaggynl	hmmm... appears to be something with gnomevfs then, your kernel is pulling it up fine, can you do sudo mount /dev/sdc1 /mnt/?
+2007-04-19T10:16:00.000Z	zaggynl	disasm	http://ubuntuforums.org/showthread.php?t=413689 <= manual mount works fine, automount doesn't
+2007-04-19T10:17:00.000Z	disasm	zaggynl	if you don't have anything valuable on it (or can back it up) you could try formatting the fs, ie. mkfs.vfat -F32 /dev/sdc1 I think
+2007-04-19T10:18:00.000Z	zaggynl	disasm	why would I? works fine on winxp/ubuntu dapper/ubuntu feisty with manual mount
+2007-04-19T10:20:00.000Z	disasm	zaggynl	I usually format them when I get them because sometimes from the factory there's something weird about them, like one I had could only have a max of 83 files in a given directory. It could also just be the gnome automount daemon stuff having problems, but if one usb mass storage device works and another doesn't, I'd blame the device over the daemon
+2007-04-19T10:20:00.000Z	disasm	zaggynl	would be interesting if you tried a different usb disk if you have one
+2007-04-19T10:21:00.000Z	zaggynl	disasm	that's funny, other one won't mount either
+2007-04-19T10:21:00.000Z	zaggynl	disasm	by hand it just works
+2007-04-19T10:22:00.000Z	disasm	zaggynl	hmmm... did you reboot after upgrade? could be a new version of the daemon and it needs restarted (I'm not suggesting rebooting, but killing off gnome*, but for most people where uptime isn't crucial, rebooting is easier)
+2007-04-19T10:23:00.000Z	zaggynl	disasm	hm I haven't rebooted in a while indeed
+2007-04-19T10:29:00.000Z	zaggynl	disasm	I rebooted, that fixed it, weirdness

@@ -1,0 +1,19 @@
+2011-10-03T07:16:00.000Z	wendell_dhcp		My ubuntu 11.4 system won't conntect the network card to the router either manual settings or dhcp.
+2011-10-03T07:16:00.000Z	wendell_dhcp		It used to, but it won't after I needed to reboot it.
+2011-10-03T07:17:00.000Z	wendell_dhcp		I've looked in tons of docs, and the diagnostics I've found seem to suggest that card is up.
+2011-10-03T07:18:00.000Z	wendell_dhcp		I have other Ubuntu boxes (and non-U) on network working fine. Problem is recent--box has been working for months.
+2011-10-03T07:19:00.000Z	wendell_dhcp		In logs, DCHP timeout.  Continual log about eth0: link up--many times a minute
+2011-10-03T07:20:00.000Z	wendell_dhcp		Any dchp troubleshooting manuals?  I haven't found them yet.  Any help appreciated...thanks!
+2011-10-03T07:21:00.000Z	ActionParsnip	wendell_dhcp	what is your issue?
+2011-10-03T07:25:00.000Z	wendell_dhcp	ActionParsnip	networking won't come up. my box won't connect. diagnostics say card is OK.  Router hasn't changed
+2011-10-03T07:27:00.000Z	ActionParsnip	wendell_dhcp	has the interface worked in ubuntu before?
+2011-10-03T07:27:00.000Z	wendell_dhcp	ActionParsnip	yes.  Worked for months until about 2 days ago.
+2011-10-03T07:28:00.000Z	ActionParsnip	wendell_dhcp	I suggest you reboot, then get logged in and run:  dmesg | less    and read through, some of it will relate to the network and you can diagnose
+2011-10-03T07:28:00.000Z	wendell_dhcp	ActionParsnip	rebooting (again....)  :-)
+2011-10-03T07:40:00.000Z	wendell_dhcp	ActionParsnip	I am confused by the messages.  I see "ADDRCONF(NETDEV_UP): eht0: link is not ready", then a bunch of "r8169 0000:04:00.0 eth0: link down" ...
+2011-10-03T07:41:00.000Z	wendell_dhcp	ActionParsnip	then a tremendous number of "r8169 0000:04:00.0 eth0: link up"
+2011-10-03T07:41:00.000Z	wendell_dhcp	ActionParsnip	after one line "ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready"
+2011-10-03T07:43:00.000Z	wendell_dhcp	ActionParsnip	This seems to mean the card took longer than expected to come up, but it did, and then it did again (thousands of times).  The "link up" message continues to fill kernel and syslog
+2011-10-03T07:51:00.000Z	wendell_dhcp	ActionParsnip	Do see something strange when the card first loads:  (unregistered net_device): unknown MAC using family default.   I think this seems OK though.  Two lines later it gives the mac address that it had been using.
+2011-10-03T07:53:00.000Z	ActionParsnip	wendell_dhcp	anyone else reporting the same message on any forums etc?
+2011-10-03T08:26:00.000Z	wendell_dhcp	ActionParsnip	The best lead I can find so far looks like the messages that I am getting during the actual attempt to authenticate DHCP.  NetworkManager[690]: <info> (eth0): device state change: 7 -> 9 (reason 5).  Couldn't find the list of these codes and reasons.  Any help here?

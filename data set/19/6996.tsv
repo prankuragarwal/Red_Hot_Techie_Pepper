@@ -1,0 +1,19 @@
+2008-03-13T18:35:00.000Z	genii	chlorone	Please use pastebin to post contents of files:  /etc/default/tftpd-hpa  /etc/dhcp3/dhcpd.conf
+2008-03-13T18:36:00.000Z	chlorone	genii	pastebin ?
+2008-03-13T18:39:00.000Z	chlorone	genii	here : http://paste.ubuntu-nl.org/59479/
+2008-03-13T18:40:00.000Z	genii	chlorone	OK, returned and reading
+2008-03-13T18:40:00.000Z	chlorone	genii	thank for help :)
+2008-03-13T18:44:00.000Z	genii	chlorone	The dhcpd.conf file needs some changes. The range should be in same network segment as the adapter on server has.If server eth0 is 192.168.0.100 for instance, range should be something like 192.168.0.101-192.168.0.150 (example) also router entry with eth0 IP needed
+2008-03-13T18:44:00.000Z	genii	chlorone	I'll post mine for an example, 1 minute
+2008-03-13T18:44:00.000Z	chlorone	genii	ok thank a lot:)
+2008-03-13T18:50:00.000Z	genii	chlorone	My adapter is eth1 for the pxe boot and has IP 192.168.0.100    http://paste.ubuntu-nl.org/59481/
+2008-03-13T18:51:00.000Z	chlorone	genii	i'll test it and i'll tell you if it works thanks for your help
+2008-03-13T18:51:00.000Z	genii	chlorone	I'll be around
+2008-03-13T19:02:00.000Z	chlorone	genii	the pxe client told me this : CLIENT IP : 192.168.0.2 MASK 0.0.0.0 DHCP IP : 169.254.10.10 but i did this : ifconfig eth0 192.168.0.100
+2008-03-13T19:03:00.000Z	genii	chlorone	Please pastebin your new dhcpd.conf file
+2008-03-13T19:03:00.000Z	chlorone	genii	i put your example in my dhcpd.conf
+2008-03-13T19:04:00.000Z	genii	chlorone	Did you comment out your old entries then which had 169.254.x.x entries? Seems not :)
+2008-03-13T19:05:00.000Z	genii	chlorone	Did you then do: sudo /etc/init.d/dhcp3-server restart ?
+2008-03-13T19:06:00.000Z	genii	chlorone	You may need then to make an entry in /etcnetwork/interfaces for static settings of eth0 which has proper gateway and broadcast settings
+2008-03-13T19:07:00.000Z	genii	chlorone	OK, nvm then :)
+2008-03-13T19:07:00.000Z	genii	chlorone	nvm = NeVer Mind

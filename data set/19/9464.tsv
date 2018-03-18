@@ -1,0 +1,19 @@
+2008-07-06T07:50:00.000Z	aib		i see a cron job for slocate in cron.daily but it's not being run. anyone know why?
+2008-07-06T07:51:00.000Z	aib		`slocate test' : slocate: fatal error: Could not find user database '/var/lib/slocate/slocate.db'
+2008-07-06T07:51:00.000Z	aib		`ls /etc/cron.daily/` : ... slocate ...
+2008-07-06T07:51:00.000Z	nickrud	aib	it should be run by anacron, when you boot or at 7:30 am
+2008-07-06T07:51:00.000Z	aib	nickrud	its not happening.
+2008-07-06T07:52:00.000Z	nickrud	aib	do you have an anacron crontab fragment in /etc/cron.d ?
+2008-07-06T07:52:00.000Z	nickrud	aib	is crond running?
+2008-07-06T07:53:00.000Z	aib	nickrud	should i see crond in ps ax | grep crond?
+2008-07-06T07:53:00.000Z	nickrud	aib	cron , not crond sorry
+2008-07-06T07:54:00.000Z	nickrud	aib	and to answer the question, yes you should see cron running
+2008-07-06T07:54:00.000Z	aib	nickrud	/usr/sbin/cron is running
+2008-07-06T07:55:00.000Z	nickrud	aib	try running /etc/init.d/anacron , and check the /var/log/syslog
+2008-07-06T07:55:00.000Z	aib	nickrud	Jul  5 22:55:22 mist anacron[7183]: Anacron 2.3 started on 2008-07-05       \n            Jul  5 22:55:22 mist anacron[7183]: Normal exit (0 jobs run
+2008-07-06T07:57:00.000Z	nickrud	aib	strange, I get: Jul  5 19:57:02 aias anacron[19129]: Anacron 2.3 started on 2008-07-05 /n Jul  5 19:57:02 aias anacron[19129]: Will run job `cron.daily' in 5 min. /n Jul  5 19:57:02 aias anacron[19129]: Jobs will be executed sequentially
+2008-07-06T07:58:00.000Z	aib	nickrud	that is strange. i'll ask our sysadmin to take a look at the system, thanks.
+2008-07-06T08:00:00.000Z	nickrud	aib	take a look at /etc/anacrontab, what do you have there?
+2008-07-06T08:00:00.000Z	aib	nickrud	http://paste.ubuntu.com/25327/
+2008-07-06T08:01:00.000Z	nickrud	aib	same as mine. It's been a while since I tracked anacron & cron, I'm not sure why it would be ignoring that tab
+2008-07-06T08:03:00.000Z	aib	nickrud	I'll sleep on it, maybe it will come to me. thanks for showing me the places to look

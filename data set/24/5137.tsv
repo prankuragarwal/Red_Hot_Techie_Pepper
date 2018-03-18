@@ -1,0 +1,24 @@
+2008-01-06T09:38:00.000Z	allobjects		Can someone please tell me what the default run level on a gutsy desktop is ?
+2008-01-06T09:39:00.000Z	bulmer	allobjects	2-5 is same so 2
+2008-01-07T13:16:00.000Z	bulmer	allobjects	you can play with /etc/network/interfaces file
+2008-01-07T13:18:00.000Z	allobjects	bulmer	after having trouble with my wireless card to initialize after reboot, someone suggested to compile the RT61 driver specifically.... the readme says "choose ra0 for first RT61 WLAN card" to load at bootup but I have no idea where to set that, so I would like to undo if possible
+2008-01-07T13:19:00.000Z	allobjects	bulmer	my wirless card does not even appear in network manager now, but lspci show it
+2008-01-07T13:20:00.000Z	bulmer	allobjects	wireless drivers are normally found in /lib/firmware/`uname -r`
+2008-01-07T13:22:00.000Z	allobjects	bulmer	I can see a couple of related bin files there, what next ?
+2008-01-07T13:24:00.000Z	allobjects	bulmer	e.g. rt2561.bin and rt2561s.bin Do I delete these ?
+2008-01-07T13:24:00.000Z	bulmer	allobjects	did the README file instruct you to put it on that dir or its subdirs? or symlinks if not put there permanently?
+2008-01-07T13:26:00.000Z	allobjects	bulmer	I'll pastebin the readme if that is ok ?
+2008-01-07T13:26:00.000Z	bulmer	allobjects	i dont want to really read the full text, what does it basically say?
+2008-01-07T13:30:00.000Z	bulmer	allobjects	or they may have put the modules in  /lib/modules/`uname -r`/ubuntu/wireless
+2008-01-07T13:30:00.000Z	allobjects	bulmer	it asked me to make all, install, and cp .bin files to /etc/Wireless/RT61STA/ which I had to mkdir. It does not mention /lib/firmware but the make/install may have done something
+2008-01-07T13:31:00.000Z	allobjects	bulmer	at the risk of wasting your time, the readme is here: http://pastebin.ubuntu.com/3337/
+2008-01-07T13:32:00.000Z	bulmer	allobjects	possibly, look in those two dirs i mentioned and see if the date matches the time you installed or at least gives you an idea that the drivers are in those directories
+2008-01-07T13:38:00.000Z	allobjects	bulmer	I found a lib/modules/2.6.22-14-generic/extra.rt61.ko but hard for me to tell where else. A few files ahve been touched in there e.g. many modules.*
+2008-01-07T13:39:00.000Z	bulmer	allobjects	what about at  /lib/firmware/`uname -r` ?
+2008-01-07T13:44:00.000Z	allobjects	bulmer	what does the `uname -r`mean. sorry to be a newbie
+2008-01-07T13:44:00.000Z	allobjects	bulmer	but no files in /lib/firmware/2.6.22-14-generic/ changed or added
+2008-01-07T13:45:00.000Z	bulmer	allobjects	man uname
+2008-01-07T13:47:00.000Z	allobjects	bulmer	thank you I assumed something like that, ta
+2008-01-07T13:47:00.000Z	allobjects	bulmer	btw, something seems to have taken with the compile/make/install as my restricted drivers manager lists it
+2008-01-07T13:48:00.000Z	bulmer	allobjects	its getting late for me..sorry..am off now..
+2008-01-07T13:48:00.000Z	allobjects	bulmer	thanks for trying

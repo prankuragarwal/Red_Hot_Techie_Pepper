@@ -1,0 +1,21 @@
+2010-05-04T04:50:00.000Z	Josie		So I have this weird issue with my internal dns server, I was wondering if anyone could help? It appears if I try to ping/resolve any hostnames that the internal dns provides, it takes _forever_, but external dns works fine.
+2010-05-04T04:50:00.000Z	Dmole	Josie	how long for dig?
+2010-05-04T04:50:00.000Z	Josie		2msecs on one client
+2010-05-04T04:51:00.000Z	Dmole	Josie	and ms of ping?
+2010-05-04T04:51:00.000Z	Josie	Dmole	Excuse me, that's wrong. 909 msecs for dig
+2010-05-04T04:52:00.000Z	Dmole	Josie	wow
+2010-05-04T04:52:00.000Z	Josie	Dmole	Amazing, ping _reports_ accurate statistics, but it takes _forever_ to actually ping.
+2010-05-04T04:52:00.000Z	Josie		luis_: Live cd?
+2010-05-04T04:53:00.000Z	Dmole	Josie	accurate statistics like what?
+2010-05-04T04:53:00.000Z	Josie	Dmole	I have  zywall router that's on this network, only my ubuntu machines seem to have trouble with it.
+2010-05-04T04:54:00.000Z	Josie	Dmole	like the same as directly pinging the ip, < 1.5ms.
+2010-05-04T04:54:00.000Z	Josie	Dmole	It just moves in extra-slow motion, like it takes forever to send the packet, but it comes back immediately
+2010-05-04T04:55:00.000Z	Dmole	Josie	pastbin some stuff... did you ntpdate
+2010-05-04T04:56:00.000Z	Josie	Dmole	I'll give you anything you wanna know. Just tell me what you need?
+2010-05-04T04:58:00.000Z	Dmole	Josie	do you have >1 dns server listed?
+2010-05-04T04:58:00.000Z	Josie	Dmole	No, just one, my zywall 10.1.10.1
+2010-05-04T05:00:00.000Z	Josie	Dmole	The Zywall's DNS is setup to contact comcast's dns servers if it doesn't know an address.
+2010-05-04T05:01:00.000Z	Dmole	Josie	and dig taks a long time for local and foreign lookups?
+2010-05-04T05:02:00.000Z	Dmole	Josie	dig @10.1.10.1 -x 10.1.10.1
+2010-05-04T05:03:00.000Z	Dmole	Josie	gtg eat good luck, you could test with a second dns server (just install it on an ubuntu box) and see if you get the same thing
+2010-05-04T05:03:00.000Z	Josie	Dmole	Thanks. I'm getting around it by adding certain things in the hosts file. lol

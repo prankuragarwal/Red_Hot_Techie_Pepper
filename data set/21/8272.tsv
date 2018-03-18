@@ -1,0 +1,21 @@
+2006-05-12T07:40:00.000Z	jtd_		can I get some help configuring Postfix to work for sending mail from Thunderbird?  it keeps asking for my password over and over.  there are some error messages in my /var/log/mail.info about SASL authentication failing.
+2006-05-12T07:40:00.000Z	sethk	jtd_	you want to use sasl authentication for mail?
+2006-05-12T07:41:00.000Z	jtd_	sethk	I just followed the wiki.  I actually don't want to use any crazy authentication or super encryption, but I have no idea how to configure it otherwise.
+2006-05-12T07:42:00.000Z	sethk	jtd_	the default for postfix should be ordinary password authentication.  First thing I would do is check the postfix configuration and see what it is expecting as far as passwords.  I use the webmin plugin for postfix, it is quite good for a web interface to the postfix server
+2006-05-12T07:43:00.000Z	jtd_	sethk	the funny thing is it works for IMAP but not for sending email.
+2006-05-12T07:45:00.000Z	jtd_	sethk	I disabled SASL authentication and now it tells me "relay access denied"
+2006-05-12T07:48:00.000Z	sethk	jtd_	you have to give it a list of either machines or networks allowed to send using that mail server
+2006-05-12T07:48:00.000Z	sethk	jtd_	because of email relaying problems, the default configurations for all the mail servers disallow mail from any machine other than the host on which the server is running
+2006-05-12T07:48:00.000Z	sethk	jtd_	usually you just need to tell it to allow mail sending from the same subnet as the server runs on.
+2006-05-12T07:49:00.000Z	jtd_	sethk	well, I want it to allow mail sending from the whole internet, but authenticate with a username and password.
+2006-05-12T07:50:00.000Z	sethk	jtd_	then you'll have to set the config to allow sending from anywhere.  doing that without using password encryption is not usually a good idea
+2006-05-12T07:51:00.000Z	sethk	jtd_	that's fine, any password encryption method is acceptable
+2006-05-12T07:52:00.000Z	sethk	jtd_	well, any of the standard methods are acceptable, and ssl is certainly an acceptable way to do it.
+2006-05-12T07:53:00.000Z	jtd_	sethk	do you know how to do this, or where to find a guide for it?  the Ubuntu wiki uses only TLS and is very paranoid about using encryption
+2006-05-12T07:54:00.000Z	sethk	jtd_	sorry, I don't know of any docs for it.  It's one of the choices you'll see in webmin.
+2006-05-12T07:55:00.000Z	jtd_	sethk	how did you install webmin?
+2006-05-12T07:56:00.000Z	sethk	jtd_	I think there is a package for it
+2006-05-12T07:56:00.000Z	sethk	jtd_	no, I just fired up the postfix plug in and it was very easy
+2006-05-12T08:12:00.000Z	sethk	jtd_	yes, isn't it?
+2006-05-12T08:14:00.000Z	jtd_	sethk	I'm not finding those SSL and TLS options though
+2006-05-12T08:15:00.000Z	sethk	jtd_	I know there are options for handling different connection types.  Keep looking.  There are several screens and it isn't always obvious which one you need to be using.

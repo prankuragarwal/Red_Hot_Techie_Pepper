@@ -1,0 +1,22 @@
+2011-03-19T11:16:00.000Z	rypervenche		If I am running screen and irssi, if I don't detach the window using ^A d will irssi close? For example if my computer freezes and abruptly shuts down.
+2011-03-19T11:17:00.000Z	SwedeMike	rypervenche	if your network connection is lost screen will keep running, it'll automatically detach.
+2011-03-19T11:27:00.000Z	rypervenche	SwedeMike	Ok, thank you.
+2011-04-02T11:11:00.000Z	SwedeMike	rypervenche	you can't. you can protect OTHER /home dirs, but you can't disallow him access from reading system files.
+2011-04-02T11:12:00.000Z	SwedeMike	rypervenche	if you "chmod og-rwx <dirname>" the other /home dirs, you'll get what you need.
+2011-04-02T11:13:00.000Z	rypervenche	SwedeMike	Are there any negative consequences to changing the chmod of my home folder like that?
+2011-04-02T11:14:00.000Z	SwedeMike	rypervenche	well, it means nobody but you have access, so if that's what you want, then it's exactly what to do.
+2011-04-02T11:18:00.000Z	rypervenche	SwedeMike	Would that person be able to sudo and access my stuff?
+2011-04-02T11:19:00.000Z	SwedeMike	rypervenche	yes.
+2011-04-02T11:19:00.000Z	SwedeMike	rypervenche	root can always access all files.
+2011-04-02T11:21:00.000Z	rypervenche	SwedeMike	So if he used sudo, he would just have to use his password to have access to everything, right?
+2011-04-02T11:22:00.000Z	SwedeMike	rypervenche	yes. if you don't want him to access everything, don't give him sudo rights.
+2011-04-02T11:27:00.000Z	rypervenche	SwedeMike	So to give him sudo rights, he has to belong to the admin group, correct? And my home folder is chmod 755 right now, so that means he can look at my stuff, but he can't change it, right?
+2011-04-02T11:27:00.000Z	SwedeMike	rypervenche	dude, with sudo he can do ANYTHING.
+2011-04-02T11:28:00.000Z	SwedeMike	rypervenche	if you don't give him sudo and have 755, he can read but not write it.
+2011-04-02T11:29:00.000Z	rypervenche	SwedeMike	Ok, but how do I make sure that I do not give him sudo when I make the account? I'm not sure what activates sudo powers.
+2011-04-02T11:34:00.000Z	SwedeMike	rypervenche	he gets sudo by you entering his account name in /etc/sudoers
+2011-04-02T11:34:00.000Z	SwedeMike	rypervenche	"man sudo" for more information
+2011-04-02T11:35:00.000Z	rypervenche	SwedeMike	SwedeMike Great! Thank you very much :)
+2011-04-02T11:42:00.000Z	rypervenche	SwedeMike	Oh, quick question. If I changed my home folder's permissions so the person cannot read, say 700, do I have to do it recursively, or would it not even matter since they cannot access the folder?
+2011-04-02T11:55:00.000Z	SwedeMike	rypervenche	no, you only have to change your actual home dir.
+2011-04-02T11:57:00.000Z	rypervenche	SwedeMike	Ah ok, great. I was afraid I was going to have to change the chmod of all of my files, that will be no problem then :) Thanks again and sorry for being so bothersome.

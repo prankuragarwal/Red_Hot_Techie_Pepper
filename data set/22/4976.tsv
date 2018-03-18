@@ -1,0 +1,22 @@
+2007-08-25T12:27:00.000Z	CodemasterMM		i need a bit of NFS help - i have a directory mounted from one machine (machine 'A') across to another machine (machine 'B') as /home/, but it seems that whenever i ssh into machine 'B' as a new user, it fails to create the user's home directory - this might be due to the fact that the home folder (on machine 'A') is owned by root and is chmod'd to 755... anyone have any idea how i can solve this?
+2007-08-25T12:28:00.000Z	supoib	CodemasterMM	do these new users have accounts on machine B?
+2007-08-25T12:29:00.000Z	CodemasterMM	supoib	yes
+2007-08-25T12:29:00.000Z	CodemasterMM	supoib	they are accounts pulled from LDAP
+2007-08-25T12:29:00.000Z	supoib		ahh
+2007-08-25T12:29:00.000Z	supoib		ok
+2007-08-25T12:30:00.000Z	CodemasterMM	supoib	I'd make the directories myself, but i'm trying to stay in the mindset of "what if my LDAP had 6,000 people in it ;)"
+2007-08-25T12:30:00.000Z	supoib	CodemasterMM	i understand
+2007-08-25T12:30:00.000Z	supoib	CodemasterMM	scalability is key
+2007-08-25T12:30:00.000Z	CodemasterMM		yup
+2007-08-25T12:30:00.000Z	CodemasterMM		i know why i am getting the error, i just am unsure how to get around it :)
+2007-08-25T12:30:00.000Z	CodemasterMM		without compromising security
+2007-08-25T12:32:00.000Z	supoib	CodemasterMM	to be honest, i'm not really all that well versed in LDAP
+2007-08-25T12:32:00.000Z	CodemasterMM		no problem
+2007-08-25T12:32:00.000Z	supoib		so i don't think i'd be much help to you
+2007-08-25T12:32:00.000Z	supoib		but, one question
+2007-08-25T12:32:00.000Z	CodemasterMM	supoib	it's not really an LDAP problem, more of an NFS problem
+2007-08-25T12:33:00.000Z	CodemasterMM		because i've seen people "sharing" their home directories,
+2007-08-25T12:33:00.000Z	CodemasterMM		but i am unsure how to make them highly dynamic
+2007-08-25T12:33:00.000Z	supoib	CodemasterMM	i was just wondering, the daemon that creates these accounts on this box, does it have write access to the /home directory?
+2007-08-25T12:34:00.000Z	CodemasterMM	supoib	ah, you're right, it might be that.
+2007-08-25T12:34:00.000Z	CodemasterMM	supoib	i'm unsure what deamon account it uses, do you know how i would check that?

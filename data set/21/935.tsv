@@ -1,0 +1,21 @@
+2011-04-07T01:02:00.000Z	Spoog		Hi, .. I'm running 10.10 x64. I'm having issues getting ub to recognize my network card (mobo nic). Any suggestions? lshal > shows my nic though?
+2011-04-07T01:03:00.000Z	leg3nd	Spoog	is it listed under iwconfig?
+2011-04-07T01:03:00.000Z	Spoog	leg3nd	: Nope
+2011-04-07T01:04:00.000Z	leg3nd	Spoog	does anything come up from $ lsmod | grep rtl
+2011-04-07T01:05:00.000Z	Spoog	leg3nd	: Nope
+2011-04-07T01:06:00.000Z	leg3nd	Spoog	can you pastebin the output of your lshw -C network?
+2011-04-07T01:07:00.000Z	Spoog	leg3nd	: is there something specific in that command output your looking for?.. It's on another box i'm sitting next too.
+2011-04-07T01:08:00.000Z	leg3nd	Spoog	the driver for the NIC
+2011-04-07T01:08:00.000Z	leg3nd	Spoog	something like driver=BLAH
+2011-04-07T01:09:00.000Z	Spoog	leg3nd	:  it just gives the output being > description of the nic (realtek ..bus info.. size, ..serial.. clock speed) ..It doesn't actually mention anything about a driver
+2011-04-07T01:10:00.000Z	leg3nd	Spoog	try    $ sudo rmmod r8187 && sudo modprobe r8168
+2011-04-07T01:11:00.000Z	leg3nd	Spoog	then see if its listed under iwconfig
+2011-04-07T01:11:00.000Z	Spoog	leg3nd	: should I be including the "$" infront of my command?
+2011-04-07T01:11:00.000Z	leg3nd	Spoog	no
+2011-04-07T01:11:00.000Z	Spoog	leg3nd	: ok 1 second
+2011-04-07T01:13:00.000Z	Spoog	leg3nd	: The following error occured >>> Module r8187 does not exist in /proc/modules
+2011-04-07T01:14:00.000Z	Spoog	leg3nd	: I'm assuming this means the driver isn't installed on the system.. However, I was working fine on this machine connected to the internet for the past 3 weeks.. today this problem just came up
+2011-04-07T01:14:00.000Z	leg3nd	Spoog	Did you upgrade or change anything?
+2011-04-07T01:15:00.000Z	Spoog	leg3nd	: Onlything I updated was the security package from the updater this morning. ..But it WAS working just fine after that.. \
+2011-04-07T01:17:00.000Z	leg3nd	Spoog	are you dual booting?
+2011-04-07T01:18:00.000Z	Spoog	leg3nd	: Nope

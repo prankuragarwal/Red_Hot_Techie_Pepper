@@ -1,0 +1,18 @@
+2008-09-07T07:08:00.000Z	Yamakiri		How do I remove sudo from a user when running root?
+2008-09-07T07:10:00.000Z	bobertdos	Yamakiri	Well, where Ubuntu is concerned, you usually remove the user from the admin group.
+2008-09-07T07:10:00.000Z	Yamakiri	bobertdos	how do I do that?
+2008-09-07T07:17:00.000Z	bobertdos	Yamakiri	There are command line commands for this too, but I'd just do it graphically. System->Administration->Users and Groups. Unlock it, Manage Groups, open the admin group, and uncheck the user.
+2008-09-07T07:17:00.000Z	Yamakiri	bobertdos	if I only have SSH access?
+2008-09-07T07:18:00.000Z	bobertdos	Yamakiri	Then one of us is going to have to look up the commands :p
+2008-09-07T07:49:00.000Z	bobertdos	Yamakiri	Actually, you can also just disable the user's admin privileges in the user menu.
+2008-09-07T07:50:00.000Z	Yamakiri	bobertdos	how do I get to the user menu from the terminal?
+2008-09-07T07:50:00.000Z	Yamakiri	bobertdos	the PC in question is 600 miles away :p
+2008-09-07T07:51:00.000Z	bobertdos	Yamakiri	Oh wait, forget I said that. So, the command you'll need is usermod using the -G argument. Be careful though, you have to list every group you still want the user to be in. It will be removed from any groups you don't list that it is already a member of........
+2008-09-07T07:52:00.000Z	Yamakiri	bobertdos	Um, I don't know all of the usergroups
+2008-09-07T07:53:00.000Z	Yamakiri	bobertdos	Anywhere I can see a list of all of these?  And could you give an example?
+2008-09-07T07:55:00.000Z	bobertdos	Yamakiri	Oh yeah. First, you can use: groups NameOfUser to see what groups the user is in. Then, an example of usermod would be like..........
+2008-09-07T07:58:00.000Z	bobertdos	Yamakiri	Let's say the user is a member of group 2 and you don't want him/her to be...........then it'd be like: usermod -G group1,group3,group4......... NameOfUser
+2008-09-07T07:59:00.000Z	Yamakiri	bobertdos	so the user looses all groups but group1,2,3,and 4 in that scenario?
+2008-09-07T08:00:00.000Z	bobertdos	Yamakiri	Yeah (if they were originally a member of other groups, of course)
+2008-09-07T08:04:00.000Z	Yamakiri	bobertdos	what should be the output of that?
+2008-09-07T08:05:00.000Z	bobertdos	Yamakiri	They literally have to be separated by commas, with no space between them.

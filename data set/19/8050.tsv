@@ -1,0 +1,19 @@
+2007-08-28T06:49:00.000Z	m0u5e		im dpkg reconfiguring xorg.conf, anyone know how to find my "video card bus identifier" info?
+2007-08-28T06:50:00.000Z	kdub	m0u5e	you try lspci?
+2007-08-28T06:54:00.000Z	m0u5e	kdub	yeah, but it doesnt seem to want to give me my PCI bus information, I tried -x and -G :/
+2007-08-28T06:55:00.000Z	m0u5e	kdub	I get this: $ lspci -G | grep -i "vga\|display"
+2007-08-28T06:57:00.000Z	kdub	m0u5e	0:2 would make sense, thats what my intel card is on my laptop at home, if i recall. your machine should be able to easily (and with less room for error) be able to identify the bus...
+2007-08-28T06:57:00.000Z	m0u5e	kdub	isnt it in a 3 number format though? xx:xx:xx?
+2007-08-28T06:58:00.000Z	m0u5e	kdub	so for my dkpg reconfigure xorg, do i just type in "PCI:0:2:0 then?
+2007-08-28T06:58:00.000Z	kdub	m0u5e	yeah, i'm sorry, i forgot. I wish i had my laptop here, but that should work
+2007-08-28T06:59:00.000Z	kdub	m0u5e	there needs to be an intel graphics channel....
+2007-08-28T06:59:00.000Z	m0u5e	kdub	T_T i know
+2007-08-28T06:59:00.000Z	m0u5e	kdub	aw crap, do i need to specify ram too?
+2007-08-28T06:59:00.000Z	m0u5e	kdub	how do i tell what my system currently has set for ram for my i845?
+2007-08-28T07:02:00.000Z	kdub	m0u5e	i never had any problems with the default allocation, but run 'man intel' and scroll through until you see the something about "Option VideoRam [size] "
+2007-08-28T07:04:00.000Z	kdub	m0u5e	glxinfo may also be helpful in finding that out
+2007-08-28T07:06:00.000Z	m0u5e	kdub	do you recommend upgrading from the i810 to the intel ubuntu drivers?
+2007-08-28T07:08:00.000Z	kdub	m0u5e	it wouldn't hurt, but probably won't add any functionality you don't already have. I have to use the intel drivers, (with a 2.6.22 kernel) because I have a GMA965.
+2007-08-28T07:08:00.000Z	m0u5e	kdub	any performance increase / stability issues you know about? :D
+2007-08-28T07:09:00.000Z	kdub	m0u5e	I had difficulties with agpgart (the name for the allocated shared video ram) with the intel drivers and a 2.6.18 kernel, but other than that, not really
+2007-08-28T07:11:00.000Z	m0u5e	kdub	okay thx :)

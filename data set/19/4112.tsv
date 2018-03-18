@@ -1,0 +1,19 @@
+2010-09-06T03:12:00.000Z	oberon		hi
+2010-09-06T03:12:00.000Z	oberon		how do I make a router know about a secondary ip address I added to an ethN ?
+2010-09-06T03:12:00.000Z	oberon		(using "ip addr add ... ")
+2010-09-06T03:13:00.000Z	iceroot	oberon	in another network?
+2010-09-06T03:13:00.000Z	iceroot	oberon	or is the ip in the same network?
+2010-09-06T03:13:00.000Z	oberon		same network
+2010-09-06T03:13:00.000Z	iceroot	oberon	dhcp?
+2010-09-06T03:13:00.000Z	oberon		192.168.1.4/24 + 192.168.1.5/24
+2010-09-06T03:14:00.000Z	iceroot	oberon	add the ip to the router (read the manuek from the router) or use dhcp
+2010-09-06T03:14:00.000Z	oberon		I mean that I did "ip addr add .. " twice
+2010-09-06T03:14:00.000Z	oberon		with both these ip addresses
+2010-09-06T03:14:00.000Z	oberon		, but I can only ping one
+2010-09-06T03:14:00.000Z	oberon		the primary
+2010-09-06T03:14:00.000Z	oberon		when I add the other first .. I can ping it instead of the other
+2010-09-06T03:15:00.000Z	iceroot	oberon	ifconfig is showing eth0 and eth1 (or eth0:1)?
+2010-09-06T03:16:00.000Z	oberon	iceroot	I'm not using ifconfig
+2010-09-06T03:16:00.000Z	iceroot	oberon	ifconfig eth0 192.168.1.4 netmask 255.255.255.0 && ifconfig eth0:1 192.168.1.5 netmask 255.255.255.0
+2010-09-06T03:16:00.000Z	oberon		I'm using ip from iproute2
+2010-09-06T03:16:00.000Z	iceroot	oberon	that should do the job

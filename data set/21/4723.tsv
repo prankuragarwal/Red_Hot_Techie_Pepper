@@ -1,0 +1,21 @@
+2008-04-12T20:27:00.000Z	matt444		what is the command to allow my user "matthew" to read all files in a directory, including files that doesn't exist yet?  I do this chmod +r matthew /directory  doesn't work though
+2008-04-12T20:28:00.000Z	LjL	matt444	any file on UNIX has permissions for: its owner, its group, and everyone else. you can't tell chmod that "matthew" specifically has some different permissions.
+2008-04-12T20:29:00.000Z	matt444	LjL	 ok, then i want whatever group matthew belongs to to have read permissions for all files in this directory, current and future
+2008-04-12T20:30:00.000Z	LjL	matt444	what is the current group the directory belongs to? should it be changed?
+2008-04-12T20:30:00.000Z	matt444	LjL	 pretty sure a process owns the group.  I DO NOT want to change ownership
+2008-04-12T20:30:00.000Z	matt444	LjL	 owns the directory i mean
+2008-04-12T20:30:00.000Z	LjL	matt444	processes don't own directories
+2008-04-12T20:31:00.000Z	matt444	LjL	 then sudo owns it or whoever.  The point is, I don't want to own it, just to read it
+2008-04-12T20:31:00.000Z	LjL	matt444	look, perhaps if you explain which directory that is and why you need to read it, a decent solution can be worked out
+2008-04-12T20:32:00.000Z	matt444	LjL	 fine.  the directory is /var/log/postgresql .  I need to read it because it contains log messages that are important to me.
+2008-04-12T20:32:00.000Z	LjL	matt444	on my system, it's owned by user root and group root, is it the same on yours? (ls -l -d /var/log/postgresql)
+2008-04-12T20:33:00.000Z	matt444	LjL	 drwxrwxr-t 2 root postgres 4096 2008-04-12 11:22 /var/log/postgresql
+2008-04-12T20:33:00.000Z	LjL	matt444	then i'd probably make yourself a member of the postgres group (short of using root privileges to look at the log contents... which is what i'd *actually* do myself)
+2008-04-12T20:35:00.000Z	matt444	LjL	 how do i make myself a member of the postgres grou
+2008-04-12T20:35:00.000Z	LjL	matt444	sudo adduser $USER postgres
+2008-04-12T20:43:00.000Z	matt444	LjL	 i ran that statement.  it gave me read permissions for EXISTING files.  new files create since then are not readable by me
+2008-04-12T20:44:00.000Z	LjL	matt444	uhm, do files in that directory all have postgres as group? (ls -l /var/log/postgresql)
+2008-04-12T20:44:00.000Z	matt444	LjL	yes, all of them
+2008-04-12T20:45:00.000Z	LjL	matt444	and what do their permissions look like?
+2008-04-12T20:46:00.000Z	matt444	LjL	 here's one of the files i can't read -rw-r----- 1 postgres postgres     62 2008-04-12 11:40 postgresql-2008-04-12_114057.log
+2008-04-12T20:47:00.000Z	LjL	matt444	try typing « group postgrep » and then reading the files (type « group $USER » when you're finished)

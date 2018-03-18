@@ -1,0 +1,24 @@
+2009-10-21T00:09:00.000Z	trism	Kirsch	you should need to add a script to /etc/udev/rules.d with the line KERNEL=="null" MODE="0666"
+2009-10-21T00:10:00.000Z	trism	Kirsch	or fix it if it is already there with 0600
+2009-10-21T00:17:00.000Z	trism	Kirsch	do you have any udev links in /etc/rc2.d?
+2009-10-21T00:19:00.000Z	trism	Kirsch	I found https://bugs.launchpad.net/ubuntu/+source/udev/+bug/69516, which seems to have the same problem, which seems to stem from multiple links to udev on boot, they deleted the extra one and were getting the correct permissions on /dev/null
+2009-10-21T00:19:00.000Z	trism	Kirsch	might be a better idea, good luck
+2009-10-21T00:20:00.000Z	Kirsch	trism	for some reason, deleting that file seems weird no?
+2009-10-21T00:20:00.000Z	Kirsch	trism	i don't even have that file
+2009-10-21T00:21:00.000Z	trism	Kirsch	alright, well, I'm out of ideas
+2009-10-21T00:23:00.000Z	Kirsch	trism	lol thx, i appreciate the help, gonna ask server folks
+2009-10-21T00:26:00.000Z	Kirsch	trism	boo, not getting responses in #ubuntu-server
+2009-10-21T00:27:00.000Z	trism	Kirsch	*shrugs*, you could always just add a chmod to rc.local, not exactly the nicest solution though
+2009-10-21T00:28:00.000Z	Kirsch	trism	thats what i'm going to do for now, i just wanted to poke around here to see if i can find out why it happened
+2009-10-21T00:28:00.000Z	trism	Kirsch	someone else was having the same problem the other day with a VPS, wonder if it is the same host
+2009-10-21T00:28:00.000Z	Kirsch	trism	its VPSLink
+2009-10-21T00:29:00.000Z	trism	Kirsch	do they have prebuilt images or do you install it yourself? you might want to contact your provider about it if they are prebuilt
+2009-10-21T00:30:00.000Z	Kirsch	trism	they do and one of the things i recently changed was the path to the repos, it referenced a local VPSLink repository
+2009-10-21T00:30:00.000Z	Kirsch	trism	i wonder if they tamper with packages, but everything else is perfect, except this.
+2009-10-21T00:31:00.000Z	trism	Kirsch	that could be the case, i would email support about it
+2009-10-21T00:31:00.000Z	Kirsch	trism	they don't have suppport and they'll tell me to change it back, i honestly don't want to cause theyremove a lot of packages i needed, like perlmagick
+2009-10-21T00:32:00.000Z	trism	Kirsch	ahh
+2009-10-21T00:34:00.000Z	Kirsch	trism	when does rc.local load?
+2009-10-21T00:34:00.000Z	trism	Kirsch	loads last I believe
+2009-10-21T00:34:00.000Z	Kirsch	trism	i use simplifymedia, dunno if u know what it is
+2009-10-21T00:35:00.000Z	Kirsch	trism	 and i wanan start that service at boot also, but it doesn't have an init script, i just need to run a command, can i put it in this file too?

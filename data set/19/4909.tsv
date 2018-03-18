@@ -1,0 +1,19 @@
+2008-10-20T13:23:00.000Z	whatvn		hi, everyone! I write a simple script called script.sh, how can I use crontab to run it every 30 minunutes?
+2008-10-20T13:25:00.000Z	koshari	whatvn	you will need a cron entry,
+2008-10-20T13:26:00.000Z	whatvn	koshari	I want that script run after every 30 minutes, I wrote a cronjob like :15 1 * * * /usr/local/sbin/script.sh? is it ok?
+2008-10-20T13:27:00.000Z	koshari	whatvn	i use gnome-schedule to add my crontabs,
+2008-10-20T13:27:00.000Z	whatvn	koshari	where is it on my ubuntu?:(
+2008-10-20T13:29:00.000Z	koshari		you would need to install it, but i found it makes the cron syntax easier, sudo apt-get install gnome-schedule and run gnome-schedule
+2008-10-20T13:30:00.000Z	whatvn	koshari	please help me, i cant find it:(
+2008-10-20T13:31:00.000Z	koshari	whatvn	you will need to install it can you cut and paste this in a terminal, ﻿sudo apt-get install gnome-schedule
+2008-10-20T13:31:00.000Z	whatvn		@koshari:is there an way to do a cron job using only terminal?
+2008-10-20T13:34:00.000Z	koshari	whatvn	the way you are doing it should be fine, it looks to me that your cron job ﻿15 1 * * * will run the app only in the first hour at 15 minutes, i think you want 15 * * * *
+2008-10-20T13:35:00.000Z	koshari	whatvn	however i dont think you can run at 15 minute intervals continuousely
+2008-10-20T13:36:00.000Z	whatvn		@koshari:so if I want to run this script every 2 hours? what should I add to cron job?
+2008-10-20T13:37:00.000Z	whatvn		@Koshari: I add 120 * * * * , i get error :|
+2008-10-20T13:38:00.000Z	whatvn		Ikonia:cron can't run a script every 2 hours?
+2008-10-20T13:39:00.000Z	koshari	whatvn	IMO you cannot have 120, the minute field has to be between i and 59
+2008-10-20T13:39:00.000Z	koshari		1 and 59
+2008-10-20T13:39:00.000Z	whatvn		Ikonia:if I want this script run after every 2 hours?
+2008-10-20T13:40:00.000Z	koshari		* 2 * * * is every minute between 2.00 and 2.59
+2008-10-20T13:41:00.000Z	koshari	whatvn	afaik you can have every 2 hours, howevet you could have multiple entrys of the same job to cover it if they dont clash

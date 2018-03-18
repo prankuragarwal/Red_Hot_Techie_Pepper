@@ -1,0 +1,21 @@
+2007-03-30T07:17:00.000Z	LjL	kynes	then please be more specific about what fails when you try to build from the tar
+2007-03-30T07:17:00.000Z	kynes	LjL	: okay.. the installation is normally like this
+2007-03-30T07:17:00.000Z	kynes	LjL	: you extract the contents to someplace
+2007-03-30T07:18:00.000Z	kynes	LjL	: then you have to execute "xulrunner --register-global" to register with the system
+2007-03-30T07:20:00.000Z	LjL	kynes	but?
+2007-03-30T07:27:00.000Z	kynes	LjL	: The program 'xulrunner' is currently not installed.  You can install it by typing:
+2007-03-30T07:27:00.000Z	kynes	LjL	: when I do "xulrunner --register-global" it says this
+2007-03-30T07:28:00.000Z	LjL	kynes	if it's not yet installed - and you merely extracted the .tar - typing "xulrunner --whatever" cannot work. perhaps (just guessing) you want to type "./xulrunner --whatever" while inside the directory where you extracted the tar
+2007-03-30T07:29:00.000Z	LjL	kynes	can you give me a link to the tarball you're using?
+2007-03-30T07:30:00.000Z	kynes	LjL	: tried "./xulrunner --register-global" too.. it says "/xulrunner --register-global ./run-mozilla.sh: 424: ./xulrunner-bin: not found
+2007-03-30T07:30:00.000Z	kynes	LjL	: ftp://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/1.8.1.3/contrib/linux-i686
+2007-03-30T07:31:00.000Z	LjL	kynes	let me try it
+2007-03-30T07:31:00.000Z	kynes	LjL	: ftp://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/1.8.1.3/contrib/linux-i686/xulrunner-1.8.1.3.en-US.linux-i686.tar.gz
+2007-03-30T07:32:00.000Z	LjL	kynes	uhm, not sure, when i extracted the tarball, went into the xulrunner directory and then typed  ./xulrunner --register-globals , it just worked (well, i mean, it gave no errors)
+2007-03-30T07:34:00.000Z	kynes	LjL	: I have the "xulrunner-bin" file.. but the system says it can't find it
+2007-03-30T07:35:00.000Z	LjL	kynes	indeed, it's in the same directory as "xulrunner"...
+2007-03-30T07:36:00.000Z	kynes	LjL	: yes.. I see the file.. but the system can't find! so absurf
+2007-03-30T07:37:00.000Z	LjL	kynes	edit "run-mozilla.sh", and go to line 424. add the command "pwd" before the "moz_run_program" line
+2007-03-30T07:37:00.000Z	LjL	kynes	then try again ./xulrunner --register-globals -- it should mention a directory name. is that the correct directory? (i.e. the one you extracted the tarball to, and the directory you're currently in)
+2007-03-30T07:39:00.000Z	kynes	LjL	: it is the correct directory.. I checked
+2007-03-30T07:40:00.000Z	kynes	LjL	: I'm very confused here.. I have an "xulrunner-bin" but it says I don't have

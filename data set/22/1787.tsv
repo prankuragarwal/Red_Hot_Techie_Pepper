@@ -1,0 +1,22 @@
+2010-04-27T09:29:00.000Z	azlon		will mke2fs format a drive?
+2010-04-27T09:30:00.000Z	azlon		!mke2fs
+2010-04-27T09:30:00.000Z	Losha	azlon	yes, rather, it will format a partition. Be careful with it or you could lose data if you format the wrong partition!
+2010-04-27T09:31:00.000Z	azlon	Losha	been there done that (2 days ago). i was installing 9.10 over my 10.04 due to bugs and i f'n installed on the wrong drive.
+2010-04-27T09:31:00.000Z	Losha	azlon	we've *all* done that at least once....
+2010-04-27T09:33:00.000Z	azlon	Losha	i am currently building a RAID and i made it an ext3, but now after reading about ext2,3,4 i think i want ext2 because it doens't have any journaling. now i need to mke2fs the raid instead of mke2fs -j... does this sound about right?
+2010-04-27T09:34:00.000Z	Losha	azlon	the mke2fs part sounds right. I don't know enough about raid to advise you on the rest...
+2010-04-27T09:34:00.000Z	azlon	Losha	thanks
+2010-04-27T09:55:00.000Z	Losha	azlon	see the -printf option to find, using a format of %h
+2010-04-27T09:56:00.000Z	azlon	Losha	thanks
+2010-04-27T10:06:00.000Z	azlon	Losha	i think im doing something wrong. im reading the man for find, but my command isnt working right. this is what i typed: find /mnt/ArchiveStorage/Movies/ -name "*.avi" -a -size 700M -printf %h
+2010-04-27T10:06:00.000Z	Losha	azlon	try: ....  -printf "%h\n"
+2010-04-27T10:09:00.000Z	azlon	Losha	http://www.pastebin.org/183949
+2010-04-27T10:11:00.000Z	azlon	Losha	i tried adding \r also but it still outputs all results in a single string
+2010-04-27T10:13:00.000Z	Losha	azlon	let me try it here...
+2010-04-27T10:14:00.000Z	Losha	azlon	-printf "%h\n"   <--- the double quotes are necessary for \n to be turned into newline
+2010-04-27T10:14:00.000Z	azlon	Losha	awesome! thanks!
+2010-04-27T10:15:00.000Z	azlon	Losha	the only problem is that it still returns the whole path. the man says %h should just show the last folder before the filename
+2010-04-27T10:16:00.000Z	azlon	Losha	oh wait, i read it wrong... it shows just the path, not the file name... thanks!
+2010-04-27T10:16:00.000Z	Losha	azlon	cool. Otherwise we'd need to postprocess it thru sed or some such...
+2010-04-27T10:27:00.000Z	azlon	Losha	how can i run a regex on a file? i output my find results to movies.txt but i want to convert the filesize (in kb) to a standard form like Mb... is there an easy way to loop through the file and replace [S:12345] with 12M?
+2010-04-28T10:34:00.000Z	Losha	azlon	wait until it stabilizes. A month or so...

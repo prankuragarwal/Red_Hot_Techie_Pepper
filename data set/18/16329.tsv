@@ -1,0 +1,18 @@
+2004-10-06T10:33:00.000Z	Deft	lothario	what is your kernel command line?
+2004-10-06T10:33:00.000Z	lothario		I run into that error message, it all began after I did an upgrade
+2004-10-06T10:34:00.000Z	lothario	Deft	I'm sorry I don't know what that means
+2004-10-06T10:34:00.000Z	Deft		from the grub menu, you can press e to edit the config; the line starting "kernel..." is the line that selects the kernel and passes it arguments
+2004-10-06T10:35:00.000Z	lothario		kernel   /boot/vmlinuz-2.6.8.1-2-386.dpkg-tmp root=/dev/hdb1 ro quiet splash
+2004-10-06T10:36:00.000Z	Deft		and what's the root line?
+2004-10-06T10:36:00.000Z	lothario		(hd1,0)
+2004-10-06T10:37:00.000Z	Deft	lothario	the only thing I can think of then is that you device.map isn't correct; can you boot into linux from another install/livecd?
+2004-10-06T10:38:00.000Z	lothario	Deft	I'm operating on a different distro at the moment
+2004-10-06T10:38:00.000Z	Deft		then try mounting your ubuntu root, and checking its /boot/grub/device.map
+2004-10-06T10:40:00.000Z	lothario		It says: (hd0) /dev/hda   (hd1) /dev/hdb   (hd2) /dev/hdc
+2004-10-06T10:40:00.000Z	Deft	lothario	or are you installing grub from the other distro? sorry, should have checked that before
+2004-10-06T10:41:00.000Z	lothario		the other distro uses lilo
+2004-10-06T10:41:00.000Z	lothario		the failed reboot was using the grub bootloader
+2004-10-06T10:42:00.000Z	Deft	lothario	so you boot from grub to lilo for your other distro?
+2004-10-06T10:42:00.000Z	lothario		No, the grub has this distro as an other OS entry
+2004-10-06T10:43:00.000Z	lothario		lilo isn't being used, though I'm thinking about reconfiguring it to point at the Ubuntu install 
+2004-10-06T10:43:00.000Z	Deft	lothario	uh, ok, it sounds fine in the config files then; you shouldn't need to do any more than reinstall grub (grub-install)

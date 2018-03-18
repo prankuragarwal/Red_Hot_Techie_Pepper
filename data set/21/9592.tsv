@@ -1,0 +1,21 @@
+2005-08-26T12:16:00.000Z	La_PaRCa		Hello. Someone is having trouble with apache2 + php4. He has libapache2-mod-php4 installed with all the deps and still php pages dont parse. Any ideaS?
+2005-08-26T12:17:00.000Z	rhelmer	La_PaRCa	what's the error message exactly?
+2005-08-26T12:17:00.000Z	La_PaRCa	rhelmer	no error message. When I try to load the php page in firefox it tells me if I want to download it. When I do, I get the php code.
+2005-08-26T12:18:00.000Z	rhelmer	La_PaRCa	what does the download dialog say that the mime type is?
+2005-08-26T12:19:00.000Z	La_PaRCa	rhelmer	php Script.
+2005-08-26T12:19:00.000Z	rhelmer	La_PaRCa	is the filename .php or .phps ?
+2005-08-26T12:19:00.000Z	La_PaRCa	rhelmer	php
+2005-08-26T12:20:00.000Z	rhelmer	La_PaRCa	look in /etc/apache2/apache2.conf
+2005-08-26T12:20:00.000Z	La_PaRCa	rhelmer	the page is: http://mrpetah.homelinux.org/
+2005-08-26T12:20:00.000Z	rhelmer	La_PaRCa	#AddType application/x-httpd-php .php
+2005-08-26T12:20:00.000Z	rhelmer	La_PaRCa	if that's commented out, uncommented it and reload apache2
+2005-08-26T12:30:00.000Z	rhelmer	La_PaRCa	did you uncomment that AddType line in apache2.conf?
+2005-08-26T12:31:00.000Z	La_PaRCa	rhelmer	its not in the apache2.conf its in the mods-enabled php4.load file, and its uncommented
+2005-08-26T12:31:00.000Z	rhelmer	La_PaRCa	odd looks different on my system.
+2005-08-26T12:31:00.000Z	rhelmer	La_PaRCa	this is from ubuntu pkgs not source?
+2005-08-26T12:31:00.000Z	La_PaRCa	rhelmer	yeah, ubuntu packages
+2005-08-26T12:32:00.000Z	rhelmer	La_PaRCa	ok i just installed the php pkg on my laptop, going to see if i can reproduce :)
+2005-08-26T12:33:00.000Z	rhelmer	La_PaRCa	hmm i didn't even have to uncomment that line; php worked right away for me.
+2005-08-26T12:34:00.000Z	rhelmer	La_PaRCa	you are right the AddType in modes-enabled/php4.conf does override (as it should)
+2005-08-26T12:34:00.000Z	rhelmer	La_PaRCa	hmm well that could be related eh?
+2005-08-26T12:34:00.000Z	La_PaRCa	rhelmer	marginally ;P

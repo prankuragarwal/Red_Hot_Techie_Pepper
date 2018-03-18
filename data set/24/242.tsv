@@ -1,0 +1,24 @@
+2012-02-12T05:44:00.000Z	federated_life		Hi Guys, whenever I ssh to a remote box it takes like 10 seconds for the password prompt to appear...before when I was using puttycm/putty, it was immediate, is there a delay that can be disabled?
+2012-02-12T05:46:00.000Z	federated_life		nope, all network connections are the same
+2012-02-12T05:46:00.000Z	federated_life		yep, wired
+2012-02-12T05:46:00.000Z	federated_life		the user prompt comes up immediately
+2012-02-12T05:48:00.000Z	switchtech	federated_life	are you connecting through terminal?
+2012-02-12T05:54:00.000Z	federated_life	switchtech	already have the newest per apt-get of both server and client openssh
+2012-02-12T05:56:00.000Z	switchtech	federated_life	Try this http://www.cyberciti.biz/tips/howto-linux-kill-and-logout-users.html
+2012-02-12T05:56:00.000Z	federated_life	switchtech	not sure why I would need to kill sessions, looking to decrease wait in handshake for password prompt
+2012-02-12T05:57:00.000Z	switchtech	federated_life	it was a miss paste. check the second link..
+2012-02-12T05:58:00.000Z	federated_life	switchtech	this one looks promising, http://superuser.com/questions/62060/why-does-the-password-prompt-take-forever-when-i-ssh-into-my-ubuntu-9-05-serve
+2012-02-12T06:00:00.000Z	switchtech	federated_life	disable gssapi-with-mic authentication in /etc/ssh/sshd_config:
+2012-02-12T06:02:00.000Z	switchtech	federated_life	that work better for ya?
+2012-02-12T06:03:00.000Z	federated_life	switchtech	nope, restart ssh and set the value in sshd_config ( GSSAPIAuthentication no )
+2012-02-12T06:04:00.000Z	switchtech	federated_life	nuts... thought that had it, will leyt you know if I find anything
+2012-02-12T06:06:00.000Z	federated_life	switchtech	its get stuck at determining realm for numeric host...maybe its my dns or smth ( http://codepad.org/YTPXeNqs )
+2012-02-12T06:07:00.000Z	switchtech	federated_life	do you have a static ip set on the SSH server?
+2012-02-12T06:10:00.000Z	switchtech	federated_life	try adding the server to the hosts file
+2012-02-12T06:10:00.000Z	switchtech	federated_life	/etc/hosts
+2012-02-12T06:11:00.000Z	federated_life	switchtech	yes, its much faster when adding the ip to the hosts file, however I have like 200 servers to connect to
+2012-02-12T06:12:00.000Z	switchtech	federated_life	dedicated DNS server?
+2012-02-12T06:13:00.000Z	switchtech	federated_life	update the A records?
+2012-02-12T06:16:00.000Z	switchtech	federated_life	I think the terminal uses an additional check to "verify" the server it is connecting to...
+2012-02-12T06:17:00.000Z	federated_life	switchtech	ok I got it...adding GSSAPIAuthentication no to the local ~/.ssh/config file does it
+2012-02-12T06:17:00.000Z	switchtech	federated_life	wunderbar!~

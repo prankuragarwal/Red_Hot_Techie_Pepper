@@ -1,0 +1,21 @@
+2009-07-09T06:03:00.000Z	oakmac		my Sansa is not automatically mounting; how can I mount it manually?
+2009-07-09T06:04:00.000Z	gartral	oakmac	what kind of sansa?
+2009-07-09T06:05:00.000Z	gartral	oakmac	were seeing same issue, ok, one sec, let me figure out where the file is
+2009-07-09T06:08:00.000Z	gartral	oakmac	ok in termial put locate 20-libgphoto2.fdi
+2009-07-09T06:09:00.000Z	gartral	oakmac	ok, gksu gedit /usr/share/hal/fdi/preprobe/10osvendor/20-libgphoto2.fdi
+2009-07-09T06:11:00.000Z	gartral	oakmac	ctl-f and find Sansa E200
+2009-07-09T06:11:00.000Z	oakmac	gartral	found it
+2009-07-09T06:12:00.000Z	gartral	oakmac	delete the blovk
+2009-07-09T06:13:00.000Z	oakmac	gartral	ok
+2009-07-09T06:14:00.000Z	gartral	oakmac	ok, now you can save and close the file, and restart your comp (the easy way) or run /ect/init.d/hal restart and replug your sansa
+2009-07-09T06:16:00.000Z	oakmac	gartral	i saved the file, restarted hal, and reconnected, still not mounting
+2009-07-09T06:16:00.000Z	oakmac	gartral	do i need to restart X for some reason?
+2009-07-09T06:16:00.000Z	gartral	oakmac	no, it wasn't hal, sorry...
+2009-07-09T06:17:00.000Z	gartral	oakmac	just reboot, i cant remember the command to restart gphoto's detection service right at the moment
+2009-07-09T06:17:00.000Z	oakmac	gartral	ok, rebooting
+2009-07-09T06:18:00.000Z	gartral	oakmac	it somehow thinks it's part HAL...
+2009-07-09T06:30:00.000Z	oakmac	gartral	i removed /usr/share/hal/fdi/preprobe/10osvendor/20-libgphoto2.fdi and it works now
+2009-07-09T06:31:00.000Z	oakmac	gartral	thank you for your help :)
+2009-07-09T06:31:00.000Z	gartral	oakmac	ok, just dont expect some cameras to work now :)
+2009-07-09T06:31:00.000Z	oakmac	gartral	i don't even own a camera ;)
+2009-07-09T06:32:00.000Z	gartral	oakmac	i have one of the Kodak Easyshare crap cams

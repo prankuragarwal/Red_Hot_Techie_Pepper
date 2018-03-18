@@ -1,0 +1,23 @@
+2009-10-29T14:51:00.000Z	xt28	khannz	My guess is that eth0 and eth1 have existed at some previous point. During the boot sequence, maybe?
+2009-10-29T14:52:00.000Z	khannz	xt28	can you please tell me how i can figure it out?
+2009-10-29T15:08:00.000Z	xt28	khannz	Is this the same question as before? Otherwise, please clarify.
+2009-10-29T15:11:00.000Z	khannz	xt28	yup - it's the same. mroe details: my system is virtual ubuntu-server-9.04 on ms cluster & cluster admins in 2 last days reconfigured some architecture so my ubu system have changed MACs twice. I suppose that system have some kind of autoconf because of that & this *auto* was wrong. i don't want to store my old MACs, i just need to use the current as eth0
+2009-10-29T15:13:00.000Z	xt28	khannz	At the risk of sounding like a Windows user: Have you tried rebooting?
+2009-10-29T15:14:00.000Z	khannz	xt28	sure ))) (in fact i'm doing this winmagic regulary) but let me try again.
+2009-10-29T15:14:00.000Z	xt28	khannz	Which version of Ubuntu are you using?
+2009-10-29T15:15:00.000Z	khannz	xt28	9.04
+2009-10-29T15:17:00.000Z	xt28	khannz	Maybe /etc/network/interfaces is misconfigured?
+2009-10-29T15:19:00.000Z	khannz	xt28	nope - it's quite right (worked perfect before). I think it's because of /etc/udev/rules.d/70-persistent-net.rules - i have all my old MACs and eth* there + current one. I'll try to comment wrong lines & restart again
+2009-10-29T15:20:00.000Z	xt28	khannz	That sounds good.
+2009-10-29T15:21:00.000Z	khannz	xt28	strange that i didn't googled it in english inet... only 1 russian blog. usually it's tottaly different )
+2009-10-29T15:23:00.000Z	xt28	khannz	I didnt't even remember that file... Do you know when and how it is created/updated?
+2009-10-29T15:24:00.000Z	khannz	xt28	i suppose it was created during system start when device-searching-scripts working
+2009-10-29T15:26:00.000Z	xt28	khannz	Or just once during system install. I'll try to figure it out...
+2009-10-29T15:27:00.000Z	khannz	xt28	well... i'll be glad to be sure where this file come from
+2009-10-29T15:27:00.000Z	xt28	khannz	You might have to hang around for the answer, though. I don't think I'll get to it right away.
+2009-10-29T15:28:00.000Z	khannz	xt28	oh, i didnt's said but my system on-air now )) it was right file
+2009-10-29T15:31:00.000Z	xt28	khannz	Oops, I should have taken a better look at that file. The first comment states how it is generated...
+2009-10-29T15:34:00.000Z	khannz	xt28	oops yeah ^_^ i was too busy with configuring to read the header
+2009-10-29T15:36:00.000Z	xt28	khannz	Then again, do you have that file (75-persistent-net-generator.rules)? I don't seem to. (Currently using a live CD, though. Maybe that's why.)
+2009-10-29T15:37:00.000Z	khannz	xt28	no or it's somwhere else on FS. it's not in that dir
+2009-10-29T15:40:00.000Z	xt28	khannz	Here it is: /lib/udev/rules.d/75-persistent-net-generator.rules

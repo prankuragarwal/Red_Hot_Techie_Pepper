@@ -1,0 +1,23 @@
+2010-07-26T02:19:00.000Z	randomguy		In 9.10 I cannot access any network as non-root. Not in gnome ($ firefox) nor on tty ($ ping). As root it works in gnome (e.g. sudo firefox) and tty (sudo ping). In the gnome user admin program, I checked all boxes including networking permissions for the ubuntu user. Still they can't connect. Any clue? Is this possibly related to kernel .config option that prohibits non-root network usage ?
+2010-07-26T02:20:00.000Z	ilovefairuz	randomguy	what error do you get when you try to ping for example?
+2010-07-26T02:22:00.000Z	randomguy	ilovefairuz	let me check
+2010-07-26T02:27:00.000Z	randomguy	ilovefairuz	I need to setup something before I can test. 1sec
+2010-07-26T02:57:00.000Z	randomguy	ilovefairuz	ping www.google.com: unknwon host (with non-root)
+2010-07-26T02:58:00.000Z	randomguy	ilovefairuz	this is happening with any network interface (I tried 3 different devices)
+2010-07-26T02:59:00.000Z	ilovefairuz	randomguy	try: dig google.com
+2010-07-26T03:00:00.000Z	randomguy	ilovefairuz	& dig google.com\net.c:142 socket() failed: Permission denied\same line again\dig: can't find either v4 or v6 networking.
+2010-07-26T03:12:00.000Z	randomguy	ilovefairuz	& dig google.com\net.c:142 socket() failed: Permission denied\same line again\dig: can't find either v4 or v6 networking.
+2010-07-26T03:15:00.000Z	ilovefairuz	randomguy	when did you start getting this error? did you install anything ?
+2010-07-26T03:16:00.000Z	randomguy	ilovefairuz	since I installed ubuntu
+2010-07-26T03:16:00.000Z	randomguy	ilovefairuz	it never worked. I really suspect it is kernel related for that and other reasons...
+2010-07-26T03:16:00.000Z	ilovefairuz	randomguy	did you tweak anything ?
+2010-07-26T03:17:00.000Z	randomguy	ilovefairuz	yes I have an entirely different kernel configuration vs ubuntu kernel config
+2010-07-26T03:17:00.000Z	randomguy	ilovefairuz	I am using the arm rootfs of 10.04 generated using rootstock program
+2010-07-26T03:28:00.000Z	randomguy	ilovefairuz	so I actually have millions of things that are different from stock x86 ubuntu - but. if you assume that people test the rootstock generated ARM rootfilesystem I doubt the problem is on ubuntu side. I rather think my kernel config is messed up
+2010-07-26T03:28:00.000Z	randomguy	ilovefairuz	the thing is I can perform all other stuff just normal. it is just the network that can't be accessed by non root
+2010-07-26T03:29:00.000Z	ilovefairuz	randomguy	you'd probably have more luck in #kernel
+2010-07-26T03:31:00.000Z	randomguy	ilovefairuz	ok thank you very much.
+2010-07-26T03:32:00.000Z	ilovefairuz	randomguy	good luck
+2010-07-26T04:39:00.000Z	randomguy	ilovefairuz	no activity there. assuming it is not the kernel, any idea what to check ?
+2010-07-26T04:39:00.000Z	randomguy	ilovefairuz	some user/group thing or so?
+2010-07-26T04:40:00.000Z	ilovefairuz	randomguy	try #kernelnewbies

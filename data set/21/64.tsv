@@ -1,0 +1,21 @@
+2012-10-25T09:22:00.000Z	Jordan_U	Karlo_	Have you tried simply running "sudo apt-get -f install"? It may in fact propose to remove packages rather than install them (or may propose to install packages which are already in the package cache).
+2012-10-25T09:29:00.000Z	Karlo_	Jordan_U	Yes, I've tried it.  That command produces the error list.
+2012-10-25T09:30:00.000Z	Karlo_	Jordan_U	I can't try it from multi-user mode because it refuses to boot, *possibly* because the database is bad.
+2012-10-25T09:30:00.000Z	Jordan_U	Karlo_	Can you pastebin the exact error message? Both using pastebin, and fixing this, might be easier if you booted from a LiveCD/USB and chrooted in to run commands.
+2012-10-25T09:32:00.000Z	Karlo_	Jordan_U	I had just updated to 12.04 -- on reboot I got "The disk drive for / is not ready yet or not present".
+2012-10-25T09:34:00.000Z	Jordan_U	Karlo_	Try adding the "rootwait" kernel parameter (though that's most likely to just cause an indefinite hang, it might allow you to boot if for some reason the root FS is taking a long time to become available).
+2012-11-12T04:27:00.000Z	Jordan_U	Karlo_	No, and why are you using grub legacy?
+2012-11-12T04:29:00.000Z	Karlo_	Jordan_U	that's what's on my system -- and I can't easily install anything newer until I can get the network up!
+2012-11-12T04:32:00.000Z	Jordan_U	Karlo_	Did you install the "grub" package?
+2012-11-12T04:36:00.000Z	Jordan_U	Karlo_	What happens when you try to boot? Have you done anything to try to fix it yet?
+2012-11-12T04:52:00.000Z	Jordan_U	Karlo_	Do you have a USB drive or blank CD available?
+2012-11-12T04:53:00.000Z	Karlo_	Jordan_U	yes
+2012-11-12T04:57:00.000Z	Jordan_U	Karlo_	Do you have another Ubuntu machine that's functioning better, or a LiveCD/USB (of any kind) you can use? (while you can make a bootable USB from here, it's easier to do from a more sane environment).
+2012-11-12T04:59:00.000Z	Jordan_U	Karlo_	So you don't have another GNU/Linux system of any sort yourself, correct?
+2012-11-12T05:02:00.000Z	Jordan_U	Karlo_	If you have a spare USB drive which you don't completely wiping, you can fairly easily dd the Ubuntu iso to the drive to make it bootable.
+2012-11-12T05:03:00.000Z	Jordan_U	Karlo_	Well that makes things more interesting :)
+2012-11-12T05:08:00.000Z	Jordan_U	Karlo_	Well, if you want to throw some interestingness of your own into the mix, you should be able to mount the iso file, chroot into it, and run grub-install (for grub2) from there. At which point you can configure grub to boot from an iso stored on a USB drive, from which you can install Ubuntu.
+2012-11-12T05:09:00.000Z	Jordan_U	Karlo_	How much RAM does this machine have? Can you take this machine's hard drive out and put it into another machine?
+2012-11-12T07:07:00.000Z	Jordan_U	Karlo_	Did you upgrade from a pre 9.10 version of Ubuntu?
+2012-11-12T07:09:00.000Z	Jordan_U	Karlo_	The other common reason is that someone reads a really old guide, tries to run "grub" (which is a command in grub legacy, but not grub2), thinks that the problem is that grub isn't installed and so they run "sudo apt-get install grub" (when they really should have just used a newer guide, and "grub-install").
+2012-11-12T07:14:00.000Z	Jordan_U	Karlo_	Are you still trying to upgrade to Ubuntu 12.04?

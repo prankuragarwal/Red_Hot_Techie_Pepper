@@ -1,0 +1,22 @@
+2012-07-24T06:40:00.000Z	cjs		So nobody's got any thoughts on my swap size issue, where the swap partition size reported by swapon -s is less than the size of the swap partition I created?
+2012-07-24T06:42:00.000Z	edgy	cjs	what's your problem?
+2012-07-24T06:43:00.000Z	edgy	cjs	paste the outputs of the commands you used
+2012-07-24T06:43:00.000Z	cjs	edgy	I installed a system with a large partition, encryption on that, lvm on the encryption, an 8400000kb swap volume in the lvm, and the rest root in the lvm. My swap came out, after boot, to about 8200000kb, which prevents me from hibernating because that's smaller than my RAM. I'm trying to figure out the easiest way to fix this.
+2012-07-24T06:44:00.000Z	cjs	edgy	I didn't use particular commands, I used the alternate installer in manual partitioning mode.
+2012-07-24T06:45:00.000Z	edgy	cjs	who told you that to hybernate you need the swap to be the size of the RAM?
+2012-07-24T06:46:00.000Z	cjs	edgy	Someone here, though I'd assumed that before being told. Hibernate saves RAM to swap, right? So if swap's too small, where does the RAM go?
+2012-07-24T06:46:00.000Z	edgy	cjs	my guess is hibernation is not like ghosting the RAM, it will take the used bits and save it in disk so the swap could be much less
+2012-07-24T06:48:00.000Z	edgy	cjs	I don't think that is the reason, not for 200M difference of course
+2012-07-24T06:51:00.000Z	edgy	cjs	I will reboot now and be back to discuss this more
+2012-07-24T06:51:00.000Z	cjs	edgy	thanks.
+2012-07-24T06:56:00.000Z	edgy	cjs	ok back
+2012-07-24T06:56:00.000Z	edgy	cjs	now what Flannel is saying is not true because I have 16G RAM and 8G swap and can still hibernate
+2012-07-24T06:57:00.000Z	edgy	cjs	try sudo pm-hibernate
+2012-07-24T06:57:00.000Z	cjs	edgy	Hm. Interesting!
+2012-07-24T06:58:00.000Z	cjs	edgy	I'm re-installing with a 10G swap partition. I'll try when I'm back up.
+2012-07-24T06:58:00.000Z	edgy	cjs	which GUI are you using?
+2012-07-24T06:58:00.000Z	cjs	edgy	I use fvwm and the XFCE session manager.
+2012-07-24T06:59:00.000Z	edgy	cjs	I haven't tried the command line myself but check this: http://askubuntu.com/questions/111669/hibernate-missing-from-power-menu-and-when-i-press-laptop-power-button
+2012-07-24T07:01:00.000Z	edgy	cjs	actually this: http://askubuntu.com/questions/94754/how-to-enable-hibernation-in-12-04
+2012-07-24T07:06:00.000Z	cjs	edgy	Ah! Thanks.
+2012-07-24T07:07:00.000Z	edgy	cjs	you are welcome

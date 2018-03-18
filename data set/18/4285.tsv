@@ -1,0 +1,18 @@
+2010-03-29T00:44:00.000Z	Ganymede		wait...are people giving out root logins to get help...and exchanging log-in info via PM?
+2010-03-29T00:46:00.000Z	Ganymede		if people gave me root access to their boxes...i would offer a lot more help in this channel
+2010-03-29T00:48:00.000Z	psusi	Ganymede	think you are confused... write trough means the cache immediately sends writes to the disk instead of holding them in the cache... write-back is the default behavior for pretty much all filesystems unless you mount with -o sync
+2010-03-29T00:49:00.000Z	Ganymede	psusi	was that statement direct at me? i don't recalling saying anything about sync'd and async writes
+2010-03-29T00:50:00.000Z	Ganymede	psusi	yeah, i don't thin that statement was related to...write/through write/back
+2010-03-29T00:51:00.000Z	Ganymede	psusi	in fact, i have no experience wwith ext4, just making an example that a filesystem developer can claim release status for their work...but it may still have bugs
+2010-03-29T00:51:00.000Z	psusi	Ganymede	the last thing he said was "Latest ntfs-3g claims it supports writes though =|?"
+2010-03-29T00:51:00.000Z	Ganymede	psusi	"writes though", not "write-through"
+2010-03-29T00:52:00.000Z	Ganymede	psusi	in other words, he said, "but i thought they claimed ntfs-3g supported writes"
+2010-03-29T00:55:00.000Z	Ganymede	psusi	i've had tons of trouble with it...another issue is that it lets you use all the meta-characters that windows doesn't like in filenames...if you make a file with : in ntfs-3g, boot into windows, windows will not be able to read or delete that file
+2010-03-29T00:56:00.000Z	psusi	Ganymede	you can do that from within windows too.. it's just explorer being retarded
+2010-03-29T00:56:00.000Z	Ganymede	psusi	i believe i tried deleting the file from cmd.exe and it still failed
+2010-03-29T00:57:00.000Z	psusi	Ganymede	iirc explorer chokes on a lot of characters.... all win32 apps will choke if the file name has a null character in it since the win32 api uses null to terminate the string... the NT native api uses counted strings so they can contain nulls
+2010-03-29T00:58:00.000Z	Ganymede	psusi	way to go, windows
+2010-03-29T00:58:00.000Z	psusi	Ganymede	yea... one of the ways root kits hide files... use the native api to set the name to something with a null in it
+2010-03-29T00:58:00.000Z	Ganymede	psusi	so maybe this "problem" with ntfs-3g is actually a problem with NTFS itself
+2010-03-29T00:58:00.000Z	psusi	Ganymede	naw.... filesystem doesn't give a crap what name you use... it's a problem in the win32 apis
+2010-03-29T01:02:00.000Z	psusi	Ganymede	iirc there are some other special characters that the win32 apis process and also can't handle > 255 char names... you can disable the processing and get around that limit by using the name "\\?\full\path\to\file" as the name

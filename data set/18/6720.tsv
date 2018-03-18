@@ -1,0 +1,18 @@
+2008-07-11T06:47:00.000Z	Bob_Sagot		quick question
+2008-07-11T06:48:00.000Z	Bob_Sagot		I am having troubles with hard drives on my system
+2008-07-11T06:48:00.000Z	Bob_Sagot		I just installed the Ubuntu 7.10 today and for some reason my account cannot mount or umount the drives
+2008-07-11T06:49:00.000Z	Bob_Sagot		and I have done a lot but the most I can do right now is create and delete files
+2008-07-11T06:49:00.000Z	Bob_Sagot		so what do I need to change to let this account be able to mount and umount the drives?
+2008-07-11T06:50:00.000Z	tech0007	Bob_Sagot	sudo
+2008-07-11T06:51:00.000Z	tech0007	Bob_Sagot	use 'gksu' in gui
+2008-07-11T06:53:00.000Z	tech0007	Bob_Sagot	when u attempt to mount, it will prompt u for a password, ryt?
+2008-07-11T06:54:00.000Z	tech0007	Bob_Sagot	its fstab....edit fstab to mount them auto on boot and r/w by users
+2008-07-11T06:56:00.000Z	tech0007	Bob_Sagot	add 'user' in fstab so users can unmount them
+2008-07-11T06:59:00.000Z	tech0007	Bob_Sagot	paste the output of 'sudo fdisk -l /dev/sda'
+2008-07-11T07:00:00.000Z	tech0007	Bob_Sagot	whichever drive ur having problem w/
+2008-07-11T07:02:00.000Z	tech0007	Bob_Sagot	use pastebin.ubuntu.com to post ur '/etc/fstab'
+2008-07-11T07:04:00.000Z	tech0007	Bob_Sagot	is it sdb1 that you want to mount/umount as user?
+2008-07-11T07:06:00.000Z	tech0007	Bob_Sagot	open terminal, backup fstab w/ 'sudo cp /etc/fstab /etc/fstab.bak', then 'sudo nano /etc/fstab'
+2008-07-11T07:08:00.000Z	Bob_Sagot	tech0007	What am I editing in the fstab?
+2008-07-11T07:10:00.000Z	tech0007	Bob_Sagot	change defaults to 'noauto,rw,user'
+2008-07-11T07:12:00.000Z	Bob_Sagot	tech0007	no to remount the drives I need to type 'mount /media/sdb1 -O remount' right?

@@ -1,0 +1,22 @@
+2008-06-06T00:10:00.000Z	PCcertified		ok here goes, I was trying to set up my modem, I found a ubuntu precompiled driver so I installed it.   It appears to have created 2.6.24-19, uname -r stated 2.6.24-18 .   I dug a little deeper and noticed the only file in the 19 folder is the driver.   Can I just copy the driver to 18 and delete 19 ?
+2008-06-06T00:11:00.000Z	psyke83	PCcertified	you can't copy kernel modules from one version of a kernel to another like that
+2008-06-06T00:13:00.000Z	PCcertified	psyke83	are you sure?  one is 2.6.24-18 and the other is 2.6.24-19 , uname -r shows 2.6.24-18  and and also all my other drivers are in -18 .   the only thing in -19 is the modem driver
+2008-06-06T00:14:00.000Z	psyke83	PCcertified	what's the brand/model of your modem, and where did you get the precompiled driver?
+2008-06-06T00:16:00.000Z	PCcertified	psyke83	 the driver came form http://ubuntuforums.org/showthread.php?t=471503  , the first post and my modem is Intel536ep.   I found out about this preconfiled driver on https://help.ubuntu.com/community/DialupModemHowto/Intel536EP#head-e726fc2d5f8541346dfd964f6d66c9ca0f061cc6
+2008-06-06T00:20:00.000Z	psyke83	PCcertified	that package looks a little suspicious, did you install the deb with dpkg?
+2008-06-06T00:26:00.000Z	PCcertified	psyke83	 did you check the source of the driver?  they were the ones who pointed me to the compiled version
+2008-06-06T00:27:00.000Z	psyke83	PCcertified	if you install the deb package and then try "sudo modprobe Intel536", it should work...
+2008-06-06T00:27:00.000Z	psyke83	PCcertified	check your dmesg log to see if there's any output (don't paste here)
+2008-06-06T00:28:00.000Z	PCcertified	psyke83	 does it matter if it's not in the same kernel folder ?  as I mentioned uname reports 2.6.24-18  and the driver is located in 2.6.24-19
+2008-06-06T00:30:00.000Z	psyke83	PCcertified	no, you must be looking at the wrong instructions. Download the deb here: http://www.mediafire.com/?gyw21am21wm then install it with dpkg
+2008-06-06T00:34:00.000Z	PCcertified	psyke83	I am not looking at any instructions... I already downloaded and installed the driver but the driver was not loaded.  so I looked around and noticed the multiple kernel versions.  Do you see what I'm getting at.  If in install it again, won't it just create a 2.6.24-20
+2008-06-06T00:35:00.000Z	psyke83	PCcertified	the deb file creates the folders 17,18,19,20 with the driver, but in reality they are all symlinked to one driver
+2008-06-06T00:36:00.000Z	PCcertified	psyke83	so you're saying I don't have to copy the file into -18 since uname states I am using -18 and the driver does not appear in -18
+2008-06-06T00:37:00.000Z	psyke83	PCcertified	unless you deleted something, the driver should be in the 18 folder, you need to manually load it: "sudo modprobe Intel536"
+2008-06-06T00:38:00.000Z	PCcertified	psyke83	read above
+2008-06-06T00:38:00.000Z	psyke83	PCcertified	you don't need to copy, it's symlinked, I already answered your question
+2008-06-06T00:40:00.000Z	PCcertified	psyke83	there is no link in -18 for my modem, no symlinks, no regular links none. the only links for my modem are in -19 and now -20 since I reinstalled the driver per your earlier suggestion
+2008-06-06T00:41:00.000Z	psyke83	PCcertified	I tried to install that package and it gave an error
+2008-06-06T00:41:00.000Z	PCcertified	psyke83	 for me I did not get an error
+2008-06-06T00:43:00.000Z	psyke83	PCcertified	the deb package uses faulty logic and I had to --force-depends to install, and even then it refused to load the kernel module for me. Sorry, but I can't help. All I can suggest is that you try to reinstall the deb package if you have upgraded your kernel since the first time you installed the package
+2008-06-06T00:44:00.000Z	PCcertified	psyke83	 thanks for your help

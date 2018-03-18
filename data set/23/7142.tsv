@@ -1,0 +1,23 @@
+2005-10-12T13:55:00.000Z	weiers		thanks joe_alf  will quickly do that.
+2005-10-12T13:57:00.000Z	claes	weiers	mount -o remount /wcwi
+2005-10-12T14:07:00.000Z	claes	weiers	mount -o remount /wcwin
+2005-10-12T14:09:00.000Z	weiers	claes	I typed mount -o remount /wcwin. I did not get any error message, but my files still open up into OOO2 writer as read only.
+2005-10-12T14:10:00.000Z	claes	weiers	whats the output of mount
+2005-10-12T14:11:00.000Z	weiers	claes	I think the relevant one is:    /dev/hda6 on /wcwin type vfat (rw,noexec,nosuid,nodev)
+2005-10-12T14:12:00.000Z	claes	weiers	The owner of /wcwin is?
+2005-10-12T14:13:00.000Z	weiers	claes	I should be the owner: that is: weiers
+2005-10-12T14:13:00.000Z	claes	weiers	is it so on the filesystem to? ls -ld /wcwin
+2005-10-12T14:15:00.000Z	weiers	claes	the output of ls -ld /wcwin is: drwxr-xr-x  18 root root 8192 1970-01-01 02:00 /wcwin
+2005-10-12T14:16:00.000Z	claes	weiers	There you have it. weiers user dont have any permissions.
+2005-10-12T14:16:00.000Z	weiers	claes	how do I change that?
+2005-10-12T14:17:00.000Z	claes	weiers	Is it only you that should have access to the files?
+2005-10-12T14:18:00.000Z	weiers	claes	at the moment, but I am not too worried about security, and there might be a time in the future that I would love to access the files from the computer in my other room, but by that time I would have installed Breezy Badger.
+2005-10-12T14:18:00.000Z	claes	weiers	check what uid you have with: id
+2005-10-12T14:19:00.000Z	claes	weiers	and add to your /etc/fstab in the field that says users to say users,uid=gid=1000
+2005-10-12T14:20:00.000Z	claes	weiers	and remount it with: mount -o remount /wcwin
+2005-10-12T14:22:00.000Z	weiers	claes	it is still opening my files as read-only (after adding the uid=gid=1000, then saving, and remounting with the mount -o remount/wcwin command
+2005-10-12T14:23:00.000Z	claes	weiers	and now what does ls -ld /wcwin say?
+2005-10-12T14:24:00.000Z	weiers	claes	    drwxr-xr-x  18 root root 8192 1970-01-01 02:00 /wcwin
+2005-10-12T14:25:00.000Z	claes	weiers	try then sudo chown weiers.weiers /wcwin -R
+2005-10-12T14:27:00.000Z	weiers	claes	it is running through my whole hard drive, (partition), but it seems to be saying: operation not permitted after each attempt.
+2005-10-12T14:28:00.000Z	claes	weiers	Sorry I'm out of ideas.

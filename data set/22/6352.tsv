@@ -1,0 +1,22 @@
+2007-08-13T12:28:00.000Z	mrk		If someone could please help me with this, I've just installed Ubuntu desktop edition, then I installed Nvidia latest drivers from their website, now after I rebooted it says "Failed to load Xserver", and the reason has something to do with "Nvidia module", I get a blue screen then it takes me back to the console mode, please any ideas?
+2007-08-13T12:28:00.000Z	Jordan_U	mrk	Have you had a kernel update recently? And did restricted manager not work for your card?
+2007-08-13T12:29:00.000Z	mrk	Jordan_U	I just installed ubuntu for the first time I don't think so then, I am pretty new to linux but damn I need help now :{ don't want to format again
+2007-08-13T12:30:00.000Z	Jordan_U	mrk	Installing from nvidia.com is the hardest and least supported way, there is a built in tool in Ubuntu to do it for you correctly
+2007-08-13T12:30:00.000Z	mrk	Jordan_U	how do I get myself back to the GUI at least?
+2007-08-13T12:32:00.000Z	Jordan_U	mrk	But to get you back into a GUI, press ctrl+alt+f1 and then run this "sudo dpkg-reconfigure xserver-xorg -phigh && sudo /etc/init.d/gdm restart" choose "nv" when asked what driver to use ( not "nvidia" )
+2007-08-13T12:37:00.000Z	Jordan_U	mrk	Are you back in X ( the GUI ) ?
+2007-08-13T12:38:00.000Z	mrk	Jordan_U	thank you it got me back into the GUI, now what is the safest way to install nvidia drivers please?
+2007-08-13T12:40:00.000Z	Jordan_U	mrk	First remove the ones installed from nvidia.com ( I think you can do that from synaptic / apt but I don't remember ) then once they are removed go to System -> Administration -> Restricted Driver Manager
+2007-08-13T12:47:00.000Z	mrk	Jordan_U	I uninstalled, then installed from the "restricted drivers", it asked me to reboot, i did, but getting the same message :/ "Nvidia kernel module" file was not found...
+2007-08-13T12:48:00.000Z	Jordan_U	mrk	Try running "sudo apt-get install --reinstall nvidia-glx"
+2007-08-13T12:55:00.000Z	mrk	Jordan_U	i think it helped, i rebooted and it's ok now... the question is, are my drivers installed now? becuase i don't seem to be able to get a higher resolution than 1024-1080 while i have a 22" screen that supports 1680*1050 and my gts 8800 supports it as well
+2007-08-13T12:57:00.000Z	Jordan_U	mrk	To check if it is installed correctly run "glxinfo | grep direct" If it says yes then it is installed correctly
+2007-08-13T12:59:00.000Z	Jordan_U	mrk	When you ran "sudo dpkg-reconfigure xserver-xorg -phigh" did you select the resolution of your screen?
+2007-08-13T13:02:00.000Z	Jordan_U	mrk	Did you see my earlier comments?
+2007-08-13T13:03:00.000Z	mrk	Jordan_U	yeah sorry it's just that my linux pc is not in the same room with this one.
+2007-08-13T13:03:00.000Z	mrk	Jordan_U	it says missing, i guess not installed
+2007-08-13T13:03:00.000Z	Jordan_U	mrk	What says missing, "glxinfo | grep direct" ?
+2007-08-13T13:04:00.000Z	Jordan_U	mrk	Does it really say missing or just "direct rendering = no" ?
+2007-08-13T13:04:00.000Z	mrk	Jordan_U	it says "missing 0"
+2007-08-13T13:04:00.000Z	Jordan_U	mrk	Can you pastebin the output of "glxinfo" ?
+2007-08-13T13:05:00.000Z	mrk	Jordan_U	yeah sec

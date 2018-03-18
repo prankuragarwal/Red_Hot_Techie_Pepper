@@ -1,0 +1,23 @@
+2007-05-23T06:47:00.000Z	aleka		What is the correct format to put an ip range "xx.xx.x.xx" on ban in iptables?? (I am trying iptables -A xx.xx.x.xx -j DROP and it is not working)
+2007-05-23T06:48:00.000Z	saschahl	aleka	about iptables -A TABLE -s x.x.x.x/yy -j DROP
+2007-05-23T06:49:00.000Z	aleka	saschahl	What if I don't have a specific TABLE or CHAIN formed to put these ips in?
+2007-05-23T06:50:00.000Z	saschahl	aleka	you have. at least the INPUT chain
+2007-05-23T06:51:00.000Z	aleka	saschahl	so doing  iptables -A INPUT -s x.x.x.x/yy -j DROP would work even if I am using xx.xx.x.x without a /yy netmask?
+2007-05-23T06:51:00.000Z	saschahl	aleka	without a netmask you'll ban one host, yes. or you can use x.x.x.x/32
+2007-05-23T06:52:00.000Z	aleka	saschahl	Thank you Sir
+2007-05-23T06:52:00.000Z	saschahl		no problem
+2007-05-23T06:53:00.000Z	aleka		I want to ban a greater range of the ip that is "attacking" my apache server but loks like we share the same isp, not sure if that would jepordize my connectivity
+2007-05-23T06:54:00.000Z	saschahl	aleka	you might get problems to connect to those hosts then, if you just drop every package from them
+2007-05-23T06:55:00.000Z	saschahl	aleka	you should only drop port 80 and only requests from outside, not answers from outside.
+2007-05-23T06:55:00.000Z	aleka	saschahl	how would I go about doing that?
+2007-05-23T06:56:00.000Z	saschahl	aleka	I don't know about your current rules. usually you want to accept every package with state RELATED,ESTABLISHED
+2007-05-23T06:56:00.000Z	aleka	saschahl	here's what I have now <<  DROP       all  --  c-71-63-36-160.hsd1.va.comcast.net  anywhere
+2007-05-23T06:56:00.000Z	aleka		DROP       all  --  c-71-63-151-40.hsd1.mn.comcast.net  anywhere
+2007-05-23T06:56:00.000Z	aleka		>> and my ISp is comcast as well
+2007-05-23T06:57:00.000Z	aleka		I would be happier banning 71.63* if I knew it wouldn't affect me
+2007-05-23T06:57:00.000Z	saschahl	aleka	to the drop rules command you probably want to add: -p tcp --dport 80
+2007-05-23T06:58:00.000Z	aleka	saschahl	would this be updatable with the -p argument the the already existing rule or would I have to delete them and re-add?
+2007-05-23T06:58:00.000Z	saschahl	aleka	delete the rules first, then readd
+2007-05-23T06:59:00.000Z	aleka		and that argument is done with --delete TABLE xx.xx.xx.x DROP correct
+2007-05-23T07:00:00.000Z	saschahl	aleka	I usually use iptables -L, and then iptables -D INPUT number, to delete rule number number (beginning with 1)
+2007-05-23T07:00:00.000Z	aleka	saschahl	gotcha -- Thanks

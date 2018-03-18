@@ -1,0 +1,18 @@
+2006-06-18T15:48:00.000Z	N9URK		Anyone else have any idea as to why I can run "sudo firefox" and it opens but "firefox" will not?  perms are set to 777
+2006-06-18T15:48:00.000Z	dooglus	N9URK	does "mozilla-firefox" work?
+2006-06-18T15:49:00.000Z	N9URK	dooglus	no, it does not
+2006-06-18T15:49:00.000Z	dooglus	N9URK	my guess is that your profile was created by root, not your user.  try making a new profile
+2006-06-18T15:50:00.000Z	dooglus	N9URK	run "firefox -ProfileManager"
+2006-06-18T15:50:00.000Z	N9URK	dooglus	tnx will try
+2006-06-18T15:50:00.000Z	N9URK	dooglus	nothing
+2006-06-18T15:51:00.000Z	dooglus	N9URK	you don't see any errors either?
+2006-06-18T15:51:00.000Z	N9URK	dooglus	no errors it just brings the next command line
+2006-06-18T15:51:00.000Z	N9URK	dooglus	"sudo firefox -ProfileManager" works
+2006-06-18T15:52:00.000Z	dooglus	N9URK	what if you "mv ~/.mozilla ~/.mozilla.broken" and try "firefox" again?
+2006-06-18T15:53:00.000Z	N9URK	dooglus	Bingo
+2006-06-18T15:53:00.000Z	N9URK	dooglus	It works - THANKS
+2006-06-18T15:54:00.000Z	dooglus	N9URK	you'll have lost your bookmarks, cache, history, plugins, and anything else firefox-related.  it's all in ~/.mozilla.broken - but there's something bad in there too.  blow it away if you don't care for bookmarks, etc.
+2006-06-18T15:54:00.000Z	N9URK	dooglus	not a problem as I have not used firefox yet (just installed ubu yesterday)
+2006-06-18T15:55:00.000Z	dooglus	N9URK	so: "sudo /bin/rm -fr ~/.mozilla.broken" (be careful how you type that!)
+2006-06-18T15:55:00.000Z	dooglus	N9URK	in particular, there's no space after the ~
+2006-06-18T15:56:00.000Z	N9URK	dooglus	thanks for the help.  It seems to work

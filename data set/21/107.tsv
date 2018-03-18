@@ -1,0 +1,21 @@
+2012-09-02T20:23:00.000Z	_LCN_		does someone know if theres issues with compatibility on using a e350 apu with nvidia gt520 pcie card on hdmi i cant make it work any way
+2012-09-02T20:24:00.000Z	pepperjack	_LCN_	you mean using the onboard and nvidia video at the same time?  I'd probably just disable onboard in bios unless youre trying to do some multi monitor setup
+2012-09-02T20:25:00.000Z	_LCN_	pepperjack	it is disabled in the bios
+2012-09-02T20:26:00.000Z	pepperjack	_LCN_	are you using the nvidia closed source drivers?  if you lsmod |grep nv  what is the result?
+2012-09-02T20:31:00.000Z	_LCN_	pepperjack	it says nvidia           11257276 26
+2012-09-02T20:32:00.000Z	pepperjack	_LCN_	so when you say something isnt working.  does that mean you just cant use hdmi port for video?
+2012-09-02T20:33:00.000Z	_LCN_	pepperjack	it wont enter lightdm tried on ubuntu / lubuntu / xbmcbuntu they all do the same i get a green like interlaced box on half the screen when i loads into lightdm and hangs
+2012-09-02T20:34:00.000Z	pepperjack	_LCN_	did you have an xorg.conf file before?  if you "ls /etc/X11/xorg.conf" in a terminal does it respond with a file?
+2012-09-02T20:37:00.000Z	pepperjack	_LCN_	temporarily move that so "sudo mv /etc/X11/xorg.conf /etc/X11/xorg.conf-bak"  you can reverse those two to move it back but do that then try restarting or however youve been relaunching x
+2012-09-02T20:38:00.000Z	pepperjack	_LCN_	just wondering if X autodetects and it works a bit better than with the file
+2012-09-02T20:40:00.000Z	_LCN_	pepperjack	gonna try again thought i have tried without using the xorg.conf file
+2012-09-02T20:41:00.000Z	pepperjack	_LCN_	ah ok.  that nomodeset that ThinkT510 mentinoed might be worth a shot as well
+2012-09-02T20:41:00.000Z	pepperjack	_LCN_	could also be the wrong nvidia drivers installed
+2012-09-02T20:42:00.000Z	_LCN_	pepperjack	what is nomodeset im quite a newbie here and i tried from nvidia homepage to download the driver for my card as well and install it as a run file
+2012-09-02T20:42:00.000Z	pepperjack	_LCN_	if you can pastebin your /var/log/Xorg.0.log that might be helpful
+2012-09-02T20:46:00.000Z	_LCN_	pepperjack	working on it though im just wondering how i copy it to usb
+2012-09-02T20:46:00.000Z	pepperjack	_LCN_	if you reboot and hold down shift key it will let you see your grub bootloader menu.  you can then hit 'e' to edit the first entry which is the default one.  and at the line that starts with 'linux'  go to the end of the line and add the nomodeset option   then ctrl-x to boot.  this doesn't actually change your config it just lets you test with this parameter to see if it will fix it.  only works for that boot
+2012-09-02T20:47:00.000Z	pepperjack	_LCN_	at the line that contains like /boot/vmlinuz... etc.  I mean do the edit
+2012-09-02T20:48:00.000Z	pepperjack	_LCN_	if that magically works then you can change it permantently.  I dont think thats the problem but worth a shot maybe
+2012-09-02T20:56:00.000Z	pepperjack	_LCN_	do you have much invested in this install yet?  I'm wondering if you ran the livecd and just let it install restricted drivers when prompted if it would work
+2012-09-02T20:57:00.000Z	pepperjack	_LCN_	I'm sorry looking at your log I don't see anything offhand. I'm sure someone else here might be able to help more

@@ -1,0 +1,24 @@
+2008-11-08T23:24:00.000Z	yme		Hi, could somebody help with ssh external access pls?
+2008-11-08T23:24:00.000Z	outbackwifi	yme	go ahead
+2008-11-08T23:26:00.000Z	yme	outbackwifi	I want to grant ssh access to a friend of mine to my linux server. I created a user, I open my ssh port, I copied his public key under his ~/.ssh and cat >> into authorized_keys. When he tries to login, he can see my welcome message but then he gets permission denied
+2008-11-08T23:27:00.000Z	outbackwifi	yme	what shell have you given him? you can check in /etc/passwd
+2008-11-08T23:27:00.000Z	yme	outbackwifi	let me check
+2008-11-08T23:28:00.000Z	yme	outbackwifi	I gave him /bin/bash
+2008-11-08T23:28:00.000Z	outbackwifi	yme	can you ssh in from your machine as that user? ssh user@localhost
+2008-11-08T23:30:00.000Z	yme	outbackwifi	I guess I should login as him?
+2008-11-08T23:30:00.000Z	outbackwifi	yme	no just run the ssh command as your currently logged in user
+2008-11-08T23:30:00.000Z	yme	outbackwifi	I get permission denied
+2008-11-08T23:30:00.000Z	yme	outbackwifi	I get Permission denied (publickey)
+2008-11-08T23:31:00.000Z	outbackwifi	yme	you might want to check if you enabled public key authentication in your sshd config
+2008-11-08T23:33:00.000Z	yme	outbackwifi	my file has got PubkeyAuthentication yes
+2008-11-08T23:34:00.000Z	outbackwifi	yme	like herb says check if the .ssh folder has the right permissions usually
+2008-11-08T23:35:00.000Z	outbackwifi	yme	do a ssh -vv and see if you get any additional clues
+2008-11-08T23:35:00.000Z	yme	outbackwifi	the .ssh folder is owned by the user and the permissions are drwx
+2008-11-08T23:35:00.000Z	outbackwifi	yme	as also the authorized_keys file
+2008-11-08T23:37:00.000Z	yme	outbackwifi	whoops, it appears authorized_keys was owned by me :-)
+2008-11-08T23:37:00.000Z	outbackwifi	yme	there you go :)
+2008-11-08T23:38:00.000Z	yme	outbackwifi	thanks, he can connect now
+2008-11-08T23:38:00.000Z	outbackwifi	yme	you would do well to disable passphrase auth in the config
+2008-11-08T23:40:00.000Z	outbackwifi	yme	#PasswordAuthentication yes to No
+2008-11-08T23:41:00.000Z	yme	outbackwifi	that's already set to no :-)
+2008-11-08T23:41:00.000Z	outbackwifi	yme	great

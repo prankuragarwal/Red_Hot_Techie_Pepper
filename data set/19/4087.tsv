@@ -1,0 +1,19 @@
+2009-09-01T21:46:00.000Z	grawity	quantum	dpaste.com, pastebin.ca, pastie.org
+2009-09-01T21:46:00.000Z	grawity	quantum	Pick one ^
+2009-09-30T21:24:00.000Z	grawity	quantum	Have you checked /var/log/mail.log? Have you tried connecting manually to the smtpd?
+2009-09-30T21:24:00.000Z	quantum	grawity	can telnet to port 25 and port 110
+2009-09-30T21:24:00.000Z	grawity	quantum	110 is only for retrieving mail, it's unrelated.
+2009-09-30T21:25:00.000Z	quantum	grawity	will look at mail.log again, but can't remember anything interesting
+2009-09-30T21:26:00.000Z	grawity	quantum	Connect to port 25 from a _different_ PC (_not_ localhost). Type 'ehlo current-servers-hostname', then 'mail from:<your@address>', then 'rcpt to:<root@your-broken-server>', then 'data', then 'Subject: test', then just a single dot, and finally 'quit'
+2009-09-30T21:27:00.000Z	quantum	grawity	ok, sec
+2009-09-30T22:06:00.000Z	quantum	grawity	(sorry for the delay) i can send myself an email from the inside
+2009-09-30T22:07:00.000Z	grawity	quantum	And from the outside?
+2009-09-30T22:07:00.000Z	grawity	quantum	Does the log say anything about gmail.com?
+2009-09-30T22:08:00.000Z	quantum	grawity	 /var/mail.log right?
+2009-09-30T22:08:00.000Z	grawity	quantum	/var/log/mail.log
+2009-09-30T22:10:00.000Z	quantum	grawity	Sep 30 19:10:01 quantum postfix/smtpd[15565]: disconnect from localhost.localdomain[127.0.0.1] <-- could this be it, that it listens to the loopback?
+2009-09-30T22:10:00.000Z	grawity	quantum	No, it should listen on all interfaces ([::] or 0.0.0.0) -- it's just you connecting to localhost.
+2009-09-30T22:10:00.000Z	grawity	quantum	Is the mail server accessible from the outside Internet? Can you PM me its address?
+2009-09-30T22:10:00.000Z	quantum	grawity	nothing about gmail
+2009-09-30T22:11:00.000Z	quantum	grawity	i can email you ...
+2009-09-30T22:12:00.000Z	grawity	quantum	Okay, try.

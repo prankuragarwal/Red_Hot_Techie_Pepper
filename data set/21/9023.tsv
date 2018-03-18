@@ -1,0 +1,21 @@
+2007-01-02T17:51:00.000Z	Q_Continuum		Running "sudo nvidia-glx-config enable" returns "Error! Unable to load nvidia kernel driver! Be sure to have installed the nvidia driver for your kernel." - Kernel is 2.6.17.10, whereas linux-restricted & nvidia-glx is 2.6.17.6 - how can I get this working?
+2007-01-02T07:44:00.000Z	Q_Continuum		Device Manager only shows 1 Processor, I'm running a dual-core system, and the Live CD (prior to install) registered 2 - what do I need to do to get the second CPU enabled?
+2007-01-02T07:45:00.000Z	Q_Continuum		I ran with the default kernel
+2007-01-02T07:47:00.000Z	Q_Continuum		I ran the update, but didn't switch kernel versions/types
+2007-01-02T07:47:00.000Z	nolimitsoya	Q_Continuum	what does 'uname -r' give you?
+2007-01-02T07:48:00.000Z	nolimitsoya	Q_Continuum	the -generic kernel might not be the generic kernel, if that makes sense :P
+2007-01-02T07:48:00.000Z	nolimitsoya	Q_Continuum	then you are not running the -generic kenrel :)
+2007-01-02T07:49:00.000Z	nolimitsoya	Q_Continuum	just do the 'sudo apt-get install linux-image-generic' and reboot
+2007-01-02T07:50:00.000Z	nolimitsoya	Q_Continuum	yes, the depends for the nvidia-glx package are broken
+2007-01-02T07:51:00.000Z	nolimitsoya	Q_Continuum	before you do anything else, you must install linux-restricted-modules-generic, or you wont be able to start x with the default kernel
+2007-01-02T07:51:00.000Z	nolimitsoya	Q_Continuum	when thats done, you can just uninstall all the -386 or -686 kernels
+2007-01-02T07:53:00.000Z	nolimitsoya	Q_Continuum	then you should be fine
+2007-01-02T07:54:00.000Z	nolimitsoya	Q_Continuum	no it shouldnt. before you reboot, you could remove the kernels you dont want :)
+2007-01-02T07:54:00.000Z	nolimitsoya	Q_Continuum	its usualy no problem to remove even the running kernel, since youll be rebooting anyway :)
+2007-01-02T07:58:00.000Z	nolimitsoya	Q_Continuum	the easies way it to remove the kernels you dont want :P
+2007-01-02T08:00:00.000Z	nolimitsoya	Q_Continuum	id like to know as well. highlight me if you find out, please? :)
+2007-01-02T08:01:00.000Z	Q_Continuum	nolimitsoya	will do
+2007-01-02T08:01:00.000Z	nolimitsoya	Q_Continuum	thanks :)
+2007-01-02T08:23:00.000Z	Q_Continuum	nolimitsoya	https://help.ubuntu.com/community/ChangeTTYResolution - change terminal resolution.  I was only able to change my 20" LCD (native 1600x1200) to 1280x1024, any higher and grub pukes so far
+2007-01-02T08:24:00.000Z	nolimitsoya	Q_Continuum	thank you. :) whats up with grub?
+2007-01-02T08:24:00.000Z	Q_Continuum	nolimitsoya	I think its more a VESA/VGA issue than grub, some cards/monitors don't support higher res until the OS kicks in it seems :-/

@@ -1,0 +1,24 @@
+2007-11-08T11:03:00.000Z	biouser		I was just listening to something a little while ago, I installed updates that I didn't really look at.  Now I have no sound
+2007-11-08T11:03:00.000Z	biouser		after rebooting
+2007-11-08T11:03:00.000Z	biouser		and rebooting again
+2007-11-08T11:04:00.000Z	biouser		I am running an older kernel b/c the ACPI wasn't working out in the newer ones (I think I am running edgy)
+2007-11-08T11:05:00.000Z	biouser		my laptop loved ubuntu for a bout a year until a couple of minutes ago
+2007-11-08T11:07:00.000Z	biouser		You can remove the volume control from the panel by right-clicking the speaker icon on the panel and selecting "Remove From Panel" from the menu.
+2007-11-08T11:07:00.000Z	biouser		is there anyway I can see what I just installed?
+2007-11-08T11:09:00.000Z	biouser		that's funny, never seen that
+2007-11-08T11:10:00.000Z	biouser		cat: write error: No space left on device
+2007-11-08T11:10:00.000Z	biouser		Pogonip, sudo -i
+2007-11-08T11:10:00.000Z	bovoid	biouser	or your /dev/dsp has the wrong device type
+2007-11-08T11:11:00.000Z	biouser		 sudo aptitude show linux-restricted-modules-`uname -r` | grep State
+2007-11-08T11:11:00.000Z	biouser		State: installed
+2007-11-08T11:11:00.000Z	biouser		this is an old P4 Toshiba Satellite
+2007-11-08T11:12:00.000Z	bovoid	biouser	what does (ls -l /dev/dsp) say?
+2007-11-08T11:12:00.000Z	biouser		-rw-r--r-- 1 root root 10350592 2007-11-08 01:09 /dev/dsp
+2007-11-08T11:13:00.000Z	bovoid	biouser	that first dash on the line should be a "c"
+2007-11-08T11:13:00.000Z	biouser	bovoid	-rw-r--r-- 1 root root 10350592 2007-11-08 01:09 /dev/dsp
+2007-11-08T11:14:00.000Z	bovoid	biouser	, Pogonip_ : it should be something like crw-rw---- 1 root audio 14, 3 2007-11-07 20:53 /dev/dsp
+2007-11-08T11:14:00.000Z	biouser	bovoid	maybe it will be okay in a while with a few reboots, this laptop is pretty solid, but known for anomalies
+2007-11-08T11:14:00.000Z	biouser	bovoid	how can I change it?
+2007-11-08T11:15:00.000Z	bovoid		so how does one change one's /dev/dsp back to a character device when it's become a file???
+2007-11-08T11:15:00.000Z	biouser	bovoid	I give up, how?
+2007-11-08T11:15:00.000Z	bovoid	biouser	I am not sure, I think you have to run mknod but hold on

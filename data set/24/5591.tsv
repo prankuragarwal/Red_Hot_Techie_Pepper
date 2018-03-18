@@ -1,0 +1,24 @@
+2006-06-19T06:43:00.000Z	Bassetts		this cron will not run
+2006-06-19T06:44:00.000Z	Bassetts		is there a way to see that output of a cron?
+2006-06-19T06:44:00.000Z	Bassetts		ok Kyral
+2006-06-19T06:46:00.000Z	Bassetts		ok
+2006-06-19T06:48:00.000Z	Bassetts		just empty text file
+2006-06-19T06:48:00.000Z	ic56	Bassetts	wastrel: that crontab line is fine, though specifying /1 is silly -- it's implied.
+2006-06-19T06:49:00.000Z	Bassetts	ic56	what to you mean /1??
+2006-06-19T06:50:00.000Z	ic56	Bassetts	your first field is "*/1".  The "/1" is unnecessary.  Also using absolute paths is generally a good idea in crontabs, so replace sh with /bin/sh
+2006-06-19T06:50:00.000Z	Bassetts	ic56	done that
+2006-06-19T06:51:00.000Z	Bassetts	ic56	can i get it to output everything??
+2006-06-19T06:52:00.000Z	Bassetts	ic56	e.g the .sh says run pisg, and pisg outputs some text
+2006-06-19T06:53:00.000Z	ic56	Bassetts	yes, when you redirect a program, all its children inherit the redirection.  So all commands run by the script are also redirected.  I note that you didn't redirect STDERR, though.  You probably should.  Do it like this: ... >>/home/bassetts/myfile  2>&1
+2006-06-19T06:54:00.000Z	Bassetts	ic56	i am very confused now
+2006-06-19T06:54:00.000Z	Bassetts	ic56	cron.txt says not connected many times
+2006-06-19T06:55:00.000Z	ic56	Bassetts	good. the crontab is being run once a minute and the script is outputing errors to your log file.  Did you write the script?
+2006-06-19T06:55:00.000Z	Bassetts	ic56	i wrote the ftp.sh that runs a script then sends a file over ftp
+2006-06-19T06:56:00.000Z	ic56	Bassetts	ok, pastebin ftp.sh I'll take a look.
+2006-06-19T06:58:00.000Z	Bassetts	ic56	http://rafb.net/paste/results/1pHRA479.html
+2006-06-19T07:00:00.000Z	ic56	Bassetts	I presume pisg generates index.html?
+2006-06-19T07:01:00.000Z	ic56	Bassetts	have you tried running that script from the command line? did it work?
+2006-06-19T07:01:00.000Z	Bassetts	ic56	ftp.sh works
+2006-06-19T07:07:00.000Z	ic56	Bassetts	well, I'm still not sure why this is happening, but I can tell you that the "no connected" message is probably being displayed when the ftp put command is reached -- because logging-in failed.
+2006-06-19T07:08:00.000Z	Bassetts	ic56	ill just stick with running ftp.sh manually
+2006-06-19T07:15:00.000Z	ic56	Bassetts	I tried your script under crontab on my box and it worked the same way as on the command line (index.html: No such file or directory).  I think the problem is that the ftp server is sometimes not accepting your login.  Overloaded at times maybe?

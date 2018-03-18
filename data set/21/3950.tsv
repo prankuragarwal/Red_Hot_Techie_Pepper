@@ -1,0 +1,21 @@
+2010-01-07T18:11:00.000Z	zeitsofa		hello :) i have a problem with LUKS LVM and ubuntu 9.10. i has installed a new ubuntu 9.10. after the installation i like to use my crypted LUKS/LVM partitions for home/$user. so i edit my cryptotab ( http://pastebin.com/f32ca6447 ) the fstab ( http://pastebin.com/f4e4968ee ) run update-initramfs -u -k all und reboot the system. after grub2 prompt the i have to enter the encrypt password. i wrote 3-5 signs (it isn't the complete password) and sys
+2010-01-07T18:12:00.000Z	SwedeMike	zeitsofa	for me to get it to work on my crypted /home on a 9.04 machine upgraded to 9.10, I have to boot with nosplash and without quiet, then I have to type it 2-3 times before it works.
+2010-01-07T18:13:00.000Z	SwedeMike	zeitsofa	basically, it's just broken, they broke it when they tried to make things boot faster.
+2010-01-07T18:14:00.000Z	zeitsofa	SwedeMike	i have disable splash and quiet. but is very hard to enter the the passphrase 3 times parallel the boot process output is printed :/
+2010-01-07T18:14:00.000Z	zeitsofa	SwedeMike	no better solutions to fix this?
+2010-01-07T18:15:00.000Z	SwedeMike	zeitsofa	well, I enter it when it's halting to ask for it. if I don't enter it fast enough (multiple times) I get dropped to recovery shell and have to cryptsetup luksOpen and mount from there
+2010-01-07T18:17:00.000Z	zeitsofa	SwedeMike	bad bug :D so i replace my system with the 9.04 backup and try ubuntu 9.10 later :D thx for your help
+2010-01-07T18:20:00.000Z	zeitsofa	SwedeMike	google is my friend - i have found a bad trick to fix it. most text are german but i hope u can fix it, too.
+2010-01-07T18:20:00.000Z	zeitsofa	SwedeMike	http://blog.biotecs.org/index.php/2009/12/ubuntu-910-workaround-fur-problem-mit-verschlusselten-festplatten-dm-crypt-crypttab/
+2010-01-07T20:38:00.000Z	zeitsofa	SwedeMike	did u try the workaround?
+2010-01-07T20:39:00.000Z	SwedeMike	zeitsofa	what workaround?
+2010-01-07T20:40:00.000Z	zeitsofa	SwedeMike	to fix the password prompt at bootime
+2010-01-07T20:41:00.000Z	SwedeMike	zeitsofa	and what would that workaround be?
+2010-01-07T20:44:00.000Z	zeitsofa	SwedeMike	the workaround stop at password prompt on boottime. befor mounting the devices the password prompt was occurred and the boot process will stop. you cann enter your password and press enter and the system come up normally.
+2010-01-07T20:44:00.000Z	SwedeMike	zeitsofa	I thought that was what I did when I was running without splash and quiet, which I told you. How is your proposal different?
+2010-01-07T20:45:00.000Z	zeitsofa	SwedeMike	it work with splash and quiet ;)
+2010-01-07T20:46:00.000Z	SwedeMike	zeitsofa	so how do you "stop" it?
+2010-01-07T20:46:00.000Z	SwedeMike		"stop at password prompt"
+2010-01-07T20:49:00.000Z	zeitsofa	SwedeMike	there is missing a part in /etc/init/mountall.conf The pre-script part is missing. insert the missing part und 9.10 works normally. the ubuntu default /etc/init/mountall.conf > http://pastebin.com/m56be2be7 my modified /etc/init/mountall.conf > http://pastebin.com/m620269f. u know i mean?
+2010-01-07T20:51:00.000Z	SwedeMike	zeitsofa	have you reported this bug to ubuntu via launchpad? if not, you should.
+2010-01-07T21:04:00.000Z	zeitsofa	SwedeMike	i think - i have to test this first :) https://bugs.launchpad.net/ubuntu/+source/cryptsetup/+bug/445888/comments/3 This sounds good.

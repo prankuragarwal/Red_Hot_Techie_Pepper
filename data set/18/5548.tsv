@@ -1,0 +1,18 @@
+2008-09-30T22:26:00.000Z	migm2		Hi -- i mounted a jumpdrive (mount -t vfat /dev/sdb /media/jumpdrive -o rw) but i cannot create any files or anything on it unless i use sudo
+2008-09-30T22:26:00.000Z	migm2		otherwise i get permissions errors.. but the directory is chmod 777
+2008-09-30T22:26:00.000Z	migm2		ideas?
+2008-09-30T22:26:00.000Z	carandraug	migm2	the directory is 777? Shouldn't you make it -R 777?
+2008-09-30T22:27:00.000Z	migm2	carandraug	thats correct, it is chmod -R 777
+2008-09-30T22:28:00.000Z	carandraug	migm2	is the partition ext3? You can't do that 777 thing in ntfs partitions
+2008-09-30T22:29:00.000Z	carandraug	migm2	I'm not sure if fat partitions would also take care of permissions the same way ext3
+2008-09-30T22:30:00.000Z	migm2	carandraug	this can't be the first time someone has mounted a vfat jumpdrive
+2008-09-30T22:32:00.000Z	carandraug	migm2	yes. I have one myself. But I can't for example, put a link on my http server pointing for a folder on that partition. It doesn't work. People who try to access get the no permissions error
+2008-09-30T22:37:00.000Z	carandraug	migm2	shouldn't you be mounting /dev/sdbX instead of just sdb?
+2008-09-30T22:37:00.000Z	migm2	carandraug	/dev/sdb is what shows up on kern.log when i plug the usb drive in
+2008-09-30T22:38:00.000Z	carandraug	migm2	run "sudo fdisk -l" (lowercase L not uppercase i) and mount the sdbX that appears
+2008-09-30T22:39:00.000Z	carandraug	migm2	can you pastebin that?
+2008-09-30T22:40:00.000Z	migm2	carandraug	leslieviljoen http://paste.ubuntu.com/52545/
+2008-09-30T22:41:00.000Z	carandraug	migm2	you're screwed. I had a mp3 player that looked like that and I could never mount it
+2008-09-30T22:42:00.000Z	carandraug	migm2	maybe I can in Ubuntu, I didn't figure how to do it in another distro
+2008-09-30T22:43:00.000Z	carandraug	migm2	maybe I can in Ubuntu, I didn't figure how to do it in another distro
+2008-09-30T22:44:00.000Z	carandraug	migm2	yes. The partition table is a mess. Try format it if you can

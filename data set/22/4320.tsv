@@ -1,0 +1,22 @@
+2008-06-22T11:02:00.000Z	Zoem		I have an nvidia 9600gt and need to install the nvidia binary driver. when I run the installer, though, it does not seem to work. any suggestions?
+2008-06-22T11:03:00.000Z	cabrioleur	Zoem	do you mean installer from nvidia.com?
+2008-06-22T11:03:00.000Z	Zoem	cabrioleur	yes
+2008-06-22T11:04:00.000Z	cabrioleur	Zoem	you know it's recommended to use ubuntu tool for that, or synaptic. But make sure you are not in a graphical interface. Do you have any errors?
+2008-06-22T11:05:00.000Z	Zoem	cabrioleur	is there an ubuntu tool which installs the nvidia 173.08 or higher drivers? and there are no errors, when I restart x afterwards, the screen refresh rate is wrong and the failsafe dialog pops up
+2008-06-22T11:07:00.000Z	cabrioleur	Zoem	did you do nvidia-xconfig?
+2008-06-22T11:08:00.000Z	Zoem	cabrioleur	that tends to load the xorg.conf with really bad stuff (I have it working on another comp). I manually changed the xorg.conf driver to "nvidia"
+2008-06-22T11:09:00.000Z	cabrioleur	Zoem	if there is an error, it will be somewhere in your log. Check /var/log/Xorg.0.log
+2008-06-22T11:09:00.000Z	Zoem	cabrioleur	thank you, will do
+2008-06-22T11:10:00.000Z	cabrioleur	Zoem	you can change your graphical setup with nvidia-settings (if the drivers are loaded properly)
+2008-06-22T11:10:00.000Z	Zoem	cabrioleur	usually the nvidia splash screen shows up if the drivers are loaded, and I have yet to see it
+2008-06-22T11:12:00.000Z	cabrioleur	Zoem	you can check it with glxinfo | grep 'server glx vendor'
+2008-06-22T11:13:00.000Z	Zoem	cabrioleur	one second please
+2008-06-22T11:22:00.000Z	Zoem	cabrioleur	failed to initialize GLX extension (compatible NVIDIA X driver not found)
+2008-06-22T11:22:00.000Z	Zoem	cabrioleur	it seems the driver is just not being installed for some reason
+2008-06-22T11:23:00.000Z	cabrioleur	Zoem	kernel driver? Try "sudo lsmod | nvidia" to see if it's loaded.
+2008-06-22T11:24:00.000Z	Zoem	cabrioleur	it's not there
+2008-06-22T11:24:00.000Z	cabrioleur	Zoem	sudo modprobe nvidia
+2008-06-22T11:25:00.000Z	cabrioleur	Zoem	then log out and log in again. Should be o.k.
+2008-06-22T11:26:00.000Z	Zoem	cabrioleur	Error running install command for nvidia.
+2008-06-22T11:28:00.000Z	Zoem	cabrioleur	lsmod says /sbin/lrm-video: not found
+2008-06-22T11:28:00.000Z	Zoem	cabrioleur	sorry, modprobe says that

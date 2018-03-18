@@ -1,0 +1,22 @@
+2008-09-07T06:59:00.000Z	xork		Hello! a question - i have an exteral firewire drive that disappears randomly - a reboot of my machine will always bring it back.. is there anyway to execute whatever is happening in the reboot process to bring it back....without rebooting?
+2008-09-07T07:01:00.000Z	ScheissDroge1	xork	: automount it in fstab ?
+2008-09-07T07:06:00.000Z	ScheissDroge1	xork	: filesystem ? put the directory /blah on first ?
+2008-09-07T07:07:00.000Z	xork	ScheissDroge1	ext3... what do you mean put it on first?
+2008-09-07T07:07:00.000Z	ScheissDroge1	xork	: sudo mkdir /mnt/blah                                      ,e.g
+2008-09-07T07:09:00.000Z	ScheissDroge1	xork	: paste output from : fdisk -l
+2008-09-07T07:09:00.000Z	ScheissDroge1	xork	: paste output from : sudo fdisk -l
+2008-09-07T07:09:00.000Z	xork	ScheissDroge1	 here's the important part Disk /dev/sdd: 400.0 GB, 400088457216 bytes
+2008-09-07T07:13:00.000Z	ScheissDroge1	xork	did you "hot" unplugged the drive ?
+2008-09-07T07:13:00.000Z	xork	ScheissDroge1	nope, i didn't.. this just happens at random
+2008-09-07T07:13:00.000Z	xork	ScheissDroge1	it happens in windows too? i think it's an issue w/ my firewire card maybe
+2008-09-07T07:14:00.000Z	xork	ScheissDroge1	but surely there's something in the boot process that initializes it... that i can run without actually rebooting?
+2008-09-07T07:14:00.000Z	ScheissDroge1	xork	no further idea then, sry,  I would try to have it listed in fstab
+2008-09-07T07:15:00.000Z	xork	ScheissDroge1	i do have it there ;\ it's just strange it's still listed in fdisk -l
+2008-09-07T07:15:00.000Z	ScheissDroge1	xork	a simple: sudo  mount -a             ??
+2008-09-07T07:16:00.000Z	xork	ScheissDroge1	nope :(\
+2008-09-07T07:17:00.000Z	ScheissDroge1	xork	sudo apt-get install pastebinit && pastebinit /etc/fstab
+2008-09-07T07:18:00.000Z	xork	ScheissDroge1	/dev/vds400 /vds400  ext3 defaults 0 0 is the important line
+2008-09-07T07:18:00.000Z	xork	ScheissDroge1	i have a udev rule setup to create /dev/vds400 based on the firewire id
+2008-09-07T07:19:00.000Z	xork	ScheissDroge1	solution is this - sudo mount /dev/vds400 /vds400 ;)
+2008-09-07T07:19:00.000Z	xork	ScheissDroge1	lol thanks for your help
+2008-09-07T07:19:00.000Z	ScheissDroge1	xork	see, ever tried directly ? or as a changeable via uuid ?

@@ -1,0 +1,22 @@
+2010-09-24T07:23:00.000Z	kbutler		can anyone think of a reason why a filesystem would -appear- to be mounted rw, but would actually be ro? Ubuntu 8.10.
+2010-09-24T07:23:00.000Z	kbutler		I tried remountinng already
+2010-09-24T07:23:00.000Z	thune3	kbutler	a filesystem that encounters errors may be remounted read-only. check dmesg, you may need an fsck
+2010-09-24T07:24:00.000Z	kbutler	thune3	when I umounted the partition and ran fdisk, I got this: /sbin/fdisk: Input/output error
+2010-09-24T07:24:00.000Z	kbutler		any suggestions? :/
+2010-09-24T07:28:00.000Z	thune3	kbutler	dmesg | grep sdc (or whatever device)
+2010-09-24T07:29:00.000Z	kbutler	thune3	/bin/dmesg: Input/output error
+2010-09-24T07:30:00.000Z	thune3	kbutler	you force unmounted your root partition?
+2010-09-24T07:30:00.000Z	kbutler		I have not (yet). Should I?
+2010-09-24T07:30:00.000Z	thune3	kbutler	no, i'm trying to understand your error.
+2010-09-24T07:31:00.000Z	kbutler		yeah, lots of commands just return that input/output error >___<;;
+2010-09-24T07:31:00.000Z	kbutler		very worrisome
+2010-09-24T07:32:00.000Z	kbutler	thune3	btw, this is on an amazon ec2 server. So I don't think it's the hardware
+2010-09-24T07:34:00.000Z	thune3	kbutler	oh ok. sounds your mount to / got severed. sounds like a restart is in order, i don't know what else to recommend.
+2010-09-24T07:34:00.000Z	kbutler		hmmm
+2010-09-24T07:35:00.000Z	thune3	kbutler	before i knew ec2, i was going to recommend shutting down forcibly, booting livecd, and checking your filesystems
+2010-09-24T07:36:00.000Z	kbutler		hm
+2010-09-24T07:36:00.000Z	kbutler		is there a more foolproof way to restart than telinit 6? it didn't error, but it also didn't restart
+2010-09-24T07:36:00.000Z	kbutler		/sbin/reboot returned a input/output error >__<;
+2010-09-24T07:37:00.000Z	kbutler		those are the two ways I do things
+2010-09-24T07:37:00.000Z	thune3	kbutler	did you *do* something significant to the system before it started to fall apart?
+2010-09-24T07:37:00.000Z	kbutler	thune3	nope

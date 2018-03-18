@@ -1,0 +1,21 @@
+2012-06-27T12:47:00.000Z	Lartza		I can dd from a drive /dev/sdd to a .img?
+2012-06-27T12:47:00.000Z	Lartza		Though will that make an image the size of the drive or the contents there?
+2012-06-27T12:48:00.000Z	Lartza		Damn
+2012-06-27T12:48:00.000Z	Lartza		Well then
+2012-06-27T12:48:00.000Z	Lartza		Not going to do that :)
+2012-06-27T12:48:00.000Z	Lartza		2GB of files 30B drive
+2012-06-27T12:48:00.000Z	Lartza		*GB
+2012-06-27T12:48:00.000Z	Lartza		I'll just sudo cp -a the contents
+2012-06-27T12:49:00.000Z	Hyperbyte	Lartza	rsync.
+2012-06-27T12:50:00.000Z	Lartza	Hyperbyte	rsync -p ? This is a / so I need to preserve permissions but does that do it all?
+2012-06-27T12:50:00.000Z	Hyperbyte	Lartza	man rsync. :-)  You'll probably want rsync -a --delete, maybe --progress in there for your viewing pleasure.
+2012-06-27T12:51:00.000Z	Lartza	Hyperbyte	Oh nice yeah I looked at the man just searchwed for permissions :)
+2012-06-27T12:52:00.000Z	Hyperbyte	Lartza	either way rsync is probably way to go if you want to copy large amounts of data and make sure symlinks stay symlinks, permissions stay correct, etc....
+2012-06-27T12:52:00.000Z	Lartza	Hyperbyte	Yes probably :) Although cp -a worked twice for me already since I always don't think of rsync :)
+2012-06-27T12:53:00.000Z	Hyperbyte	Lartza	plus rsync can resume if somehow you need to pause/cancel the copy instruction.
+2012-06-27T12:53:00.000Z	Lartza	Hyperbyte	And by it's name it can sync to the backup I now make if I want to bring the same files but like after a system update it won't copy everything?
+2012-06-27T12:54:00.000Z	Hyperbyte	Lartza	it only copies what it needs to.
+2012-06-27T13:01:00.000Z	Lartza	Hyperbyte	--progress doesn't tell you almost anything ;D
+2012-06-27T13:01:00.000Z	Hyperbyte	Lartza	it shows the progress.
+2012-06-27T13:03:00.000Z	Hyperbyte	Lartza	I'm not sure rsync determines total process before it starts.  I think it determines which files it needs to transfer while it's transferring.
+2012-06-27T13:04:00.000Z	Lartza	Hyperbyte	It probably checks a subfolder structure at a time since the count always goes up by around 1 or 2 thousand

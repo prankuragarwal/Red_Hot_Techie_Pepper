@@ -1,0 +1,22 @@
+2007-07-28T11:52:00.000Z	lietu		I thought samba was damn easy to install on ubuntu
+2007-07-28T11:53:00.000Z	lietu		sudo apt-get install samba smbfs, share folders in the system->administration->shared folders and do smbpasswd -a user
+2007-07-28T11:53:00.000Z	lietu		that was all I had to do
+2007-07-28T11:54:00.000Z	lietu		winscp ;)
+2007-07-28T11:54:00.000Z	lietu		samba aint THAT bad after you've been working with samba-related problems for years and know most of them ;)
+2007-07-28T11:55:00.000Z	lietu		what the heck is get-int? ;)
+2007-07-28T11:57:00.000Z	JBandP	lietu	your suggestion wrked!
+2007-07-28T11:58:00.000Z	lietu	JBandP	glad to be of assistance
+2007-07-28T11:58:00.000Z	lietu	JBandP	define access ;)
+2007-07-28T11:59:00.000Z	lietu	JBandP	I guess generally you'd want an interface to configure etc them, webmin is quite good at the job
+2007-07-28T12:00:00.000Z	JBandP	lietu	well, start apache for one i guess. apache is apache. i just need to know if and where it's installed.   same goes for mysql i guess. aparently hp is installed as well. god knows where :)
+2007-07-28T12:01:00.000Z	lietu	JBandP	are you sure they're not already installed? generally you should be able to run them by locating the few scripts in /etc/init.d and running /etc/init.d/apache(might be httpd) start and /etc/init.d/mysql* start ... to make them start automatically, you need to make a symbolic link with "ln -s" from /etc/init.d/scriptname to /etc/rcX.d/S??scriptname
+2007-07-28T12:02:00.000Z	lietu	JBandP	where X is the number outputted by the command "runlevel" and ?? is based on the priority you want to start them
+2007-07-28T12:05:00.000Z	lietu	JBandP	well, apache's configuration is usually in /etc/apache/
+2007-07-28T12:05:00.000Z	lietu	JBandP	well, apache's configuration is usually in /etc/apache/ or apache2
+2007-07-28T12:06:00.000Z	lietu	JBandP	but I do suggest you get that webmin if you want to fiddle with anything ;)
+2007-07-29T13:06:00.000Z	lietu	JBandP	"sudo dpkg-reconfigure xserver-xorg" should recreate your xorg.conf
+2007-07-29T13:06:00.000Z	lietu	JBandP	depends, do you use dhcp?
+2007-07-29T13:14:00.000Z	lietu	JBandP	I asked you, do you use dhcp?
+2007-07-29T13:15:00.000Z	lietu	JBandP	then "sudo ifconfig eth0 up; sudo dhclient eth0" should do it
+2007-07-29T13:16:00.000Z	lietu	JBandP	or, /etc/init.d/network* restart (cannot remember if it's called network or networking)
+2007-07-29T13:16:00.000Z	lietu	JBandP	assuming you have the necessary modules loaded for your network card

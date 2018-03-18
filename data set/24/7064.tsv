@@ -1,0 +1,24 @@
+2005-05-01T16:04:00.000Z	Atholas		I have created a 250MB swap partition when I install Ubuntu, but df shows that the swap partition mounted is only 5MB in size. Why is this?
+2005-05-01T16:05:00.000Z	dwd	Atholas	df shouldn't show a swap partition at all...
+2005-05-01T16:06:00.000Z	dwd	Atholas	You sure you're not confusing swap with tmpfs? What does "free -m" say?
+2005-05-01T16:06:00.000Z	Atholas	dwd	266MB
+2005-05-01T16:06:00.000Z	dwd	Atholas	What, free -m says you have 266M swap? Then you do. :-)
+2005-05-01T16:07:00.000Z	Atholas	dwd	but why is it that the mount point of my swap partition is "none", and df shows that none is 5MB?
+2005-05-01T16:08:00.000Z	dwd	Atholas	df doesn;t show swap. Swap isn't mounted, as such. df *does* show tmpfs, however, which you might be using. That'll just grow or shrink depending on what's used.
+2005-05-01T16:10:00.000Z	dwd	Atholas	But tmpfs isn't swap, in case that's not clear. tmpfs is a scratch filesystem held in memory, used for things like lock files, POSIX shared memory, and other things you needn't care about much.
+2005-05-01T16:10:00.000Z	Atholas	dwd	This is quite strange. I got tmpfs, but also something called none in df.
+2005-05-01T16:11:00.000Z	dwd	Atholas	Yep, that's normal. WHere's it mounted? (The last column)
+2005-05-01T16:12:00.000Z	Atholas	dwd	/dev. But /dev in turn is mounted on /.dev according to df.
+2005-05-01T16:12:00.000Z	dwd	Atholas	Oh, and do "df -Th", which'll print the filesystem type.
+2005-05-01T16:13:00.000Z	dwd	Atholas	/dev is where the "special device files" live. Basically they're pretend files that just exist to make things like disks, memory, etc all look like files.
+2005-05-01T16:14:00.000Z	dwd	Atholas	If you have something mounted there, it's probably devfs or some other magic filesystem. Technically a "virtual filesystem", meaning it doesn't exist on a disk anywhere.
+2005-05-01T16:14:00.000Z	Atholas	dwd	Ahh.. it is a tmpfs :) thanks a lot. It's just that totem doesn't want to run totally because I'm supposedly out of ram, and what I saw in df kind of make me suspect that the harddrive is partitioned incorrectly, which I simply let Ubuntu to take care of my harddrive.
+2005-05-01T16:15:00.000Z	dwd	Atholas	Okay. free -m tells you about ram. You need to look at the second number in the second line, generally.
+2005-05-01T16:16:00.000Z	dwd	Atholas	The second number in the third line is how many M of swap you're using - that should be low.
+2005-05-01T16:16:00.000Z	Atholas	dwd	Thanks a lot dwd, you are great.
+2005-05-01T16:16:00.000Z	dwd	Atholas	I know. ;-)
+2005-05-01T16:17:00.000Z	Atholas	dwd	:) Just one more thing, what is this -/+ buffers/cache thing right underneath Mem?
+2005-05-01T16:17:00.000Z	dwd	Atholas	What's the error in Totem, exactly?
+2005-05-01T16:18:00.000Z	Atholas	dwd	I ran it and it closes immediately. So I ran it under console to catch the error message and it says something like "insufficient resources" or something like that. Naturally I assume that it is because I'm running low on memory.
+2005-05-01T16:19:00.000Z	dwd	Atholas	"insufficient resources" is a little vague... What's the actual text it prints? (Run it in a terminal window, highlight the text it prints, and middle-click on the IRC client.)
+2005-05-01T16:26:00.000Z	Atholas	dwd	I can't reproduce it again now. But I remember it said something about "BadAloc"

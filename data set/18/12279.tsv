@@ -1,0 +1,18 @@
+2007-02-04T12:25:00.000Z	cius		anyone have an idea as to why firefox would not launch after a fresh dapper install
+2007-02-04T12:25:00.000Z	cius		?
+2007-02-04T12:27:00.000Z	ikonia	cius	do a "which firefox" then do a "file" against that file
+2007-02-04T12:29:00.000Z	cius	ikonia	/usr/bin/firefox: symbolic link to `../lib/firefox/firefox'
+2007-02-04T12:29:00.000Z	ikonia	cius	run it against the links target
+2007-02-04T12:30:00.000Z	cius	ikonia	it spat the same file back out at me, I'll try executing it directly
+2007-02-04T12:31:00.000Z	ikonia	cius	how can a links target spit the same file out
+2007-02-04T12:31:00.000Z	ikonia	cius	follow the links through to the real file
+2007-02-04T12:31:00.000Z	cius	ikonia	/usr/lib/firefox/firefox must be the real file, when I did a which on it, it spat that same file back at me
+2007-02-04T12:32:00.000Z	ikonia	cius	run file against it
+2007-02-04T12:32:00.000Z	cius	ikonia	ah, ok, file tells me its a shell script executable
+2007-02-04T12:32:00.000Z	ikonia	cius	view the script and see what its trying to launch
+2007-02-04T12:37:00.000Z	cius	ikonia	it looks like the script is running /usr/lib/firefox/firefox-bin
+2007-02-04T12:37:00.000Z	ikonia	cius	so execute that file from a terminal
+2007-02-04T12:38:00.000Z	cius	ikonia	that did it, gave me an error I can work with :-)
+2007-02-04T12:38:00.000Z	ikonia	cius	good man
+2007-02-04T12:38:00.000Z	ikonia	cius	did you get firefox from the ubuntu repo ?
+2007-02-04T12:39:00.000Z	cius	ikonia	kep the install that came on the dapper desktop install, even tried reinstalling through synaptic, still no dice

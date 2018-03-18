@@ -1,0 +1,24 @@
+2012-08-06T06:47:00.000Z	IntuitiveNipple	pr0ndigy	Does it not also list "Previous Linux versions" ?
+2012-08-06T06:47:00.000Z	IntuitiveNipple	pr0ndigy	if so, choose that - it is a sub-menu to the older kernel installs
+2012-08-06T06:48:00.000Z	IntuitiveNipple	pr0ndigy	Have you tried the recovery option? If so, does it show boot messages before it fails?
+2012-08-06T06:49:00.000Z	pr0ndigy	IntuitiveNipple	yes, it shows messages before it fails and the caps lock starts flashing
+2012-08-06T06:50:00.000Z	IntuitiveNipple	pr0ndigy	Well that's a good thing ... at least the kernel is being started... does the screen freeze and leave the messages visible (so you could photograph it) or does it reset too fast for that?
+2012-08-06T06:52:00.000Z	pr0ndigy	IntuitiveNipple	yes it keeps the messages up.
+2012-08-06T06:53:00.000Z	IntuitiveNipple	pr0ndigy	On the GRUB menu, highlight the recovery option then press 'e' to edit it. You'll see a few lines including one starting "linux..." and including the word "recovery".  move the cursor to that location, delete "recovery" then replace it with "single init=/bin/bash" and then press Ctrl+X to boot the edited config... you may be lucky and reach a shell prompt. If so, that at least tells us its an init-script issue
+2012-08-06T06:55:00.000Z	IntuitiveNipple	pr0ndigy	If you can take a photo of the screen when it locks up... you can upload it to http://imagebin.org
+2012-08-06T06:55:00.000Z	pr0ndigy	IntuitiveNipple	do i delete "nomodeset" also?
+2012-08-06T06:55:00.000Z	IntuitiveNipple	pr0ndigy	You don't need to but can... it won't affect things
+2012-08-06T07:09:00.000Z	pr0ndigy	IntuitiveNipple	got the image of the screen when it fails
+2012-08-06T07:09:00.000Z	IntuitiveNipple	pr0ndigy	fab... can you post it to http://imagebin.org ?
+2012-08-06T07:09:00.000Z	pr0ndigy	IntuitiveNipple	http://imagebin.org/223477
+2012-08-06T07:10:00.000Z	IntuitiveNipple	pr0ndigy	Could be 2 bits of good news there. I have a question. Was that error caused when you booted using the edited "linux" line which included "init=/bin/bash"  ?
+2012-08-06T07:11:00.000Z	pr0ndigy	IntuitiveNipple	yes, that is including the changes you asked me to make
+2012-08-06T07:12:00.000Z	IntuitiveNipple	pr0ndigy	OK, just making sure... I didn't expect to see the line "Begin: Running /scripts/init-bottom ..." but I see bash is mentioned... give me a few minutes to research that for you
+2012-08-06T07:12:00.000Z	pr0ndigy	IntuitiveNipple	ok thx
+2012-08-06T07:18:00.000Z	IntuitiveNipple	pr0ndigy	Could you try again... repeat all the same steps but this time put the "init=/bin/bash" at the very end of the "linux..." line after nomodeset and anything else?
+2012-08-06T07:19:00.000Z	pr0ndigy	IntuitiveNipple	remove the recovery text too?
+2012-08-06T07:20:00.000Z	IntuitiveNipple	pr0ndigy	Yes please... the reason being, I realised that when bash was started with arguments... it tried to launch those arguments (nomodeset) as a program and then exited... so it WOULD crash!
+2012-08-06T07:20:00.000Z	IntuitiveNipple	pr0ndigy	So do the same... replace recovery with single
+2012-08-06T07:23:00.000Z	pr0ndigy	IntuitiveNipple	ok trying now. here is what my GRUB looks like http://imagebin.org/223479
+2012-08-06T07:24:00.000Z	IntuitiveNipple	pr0ndigy	That looks good
+2012-08-06T07:26:00.000Z	pr0ndigy	IntuitiveNipple	it seems stuck, no flashing capslock light, but it's not doing anything else

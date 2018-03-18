@@ -1,0 +1,23 @@
+2009-03-27T12:22:00.000Z	zimnyx		I have badblocks on disk (200 or above) found by `badblocks <device>`. While googling I've found information that badblock -w (write-mode) will force harddrive to internally fix badblocks using special free area of disk left for that purpose. Has anybody done that?
+2009-03-27T12:22:00.000Z	ziroday	zimnyx	isn't fsck meant to fix badblocks?
+2009-03-27T12:23:00.000Z	zimnyx	ziroday	i'm using ext3
+2009-03-27T12:24:00.000Z	ziroday	zimnyx	then why not use fsck?
+2009-03-27T12:24:00.000Z	ziroday	zimnyx	that's the recommended way to go around fixing bad blocks/drives playing up
+2009-03-27T12:24:00.000Z	zimnyx	ziroday	but e2fsck -c will mark damaged area, and I'm talking about disk-internal-fixing.
+2009-03-27T12:25:00.000Z	ziroday	zimnyx	that should all be in fsck, reboot into the recovery area, or from a livecd and just fsck the entire drive, it should repair bad blocks as well
+2009-03-27T12:26:00.000Z	zimnyx	ziroday	it's not root partiotion, no need of livecd
+2009-03-27T12:27:00.000Z	zimnyx	ziroday	so you don't know the answer to my initial question, do you?
+2009-03-27T12:27:00.000Z	ziroday	zimnyx	then just run sudo fsck /dev/whatever
+2009-03-27T12:27:00.000Z	zimnyx	ziroday	does it check for badblock without -c option?
+2009-03-27T12:27:00.000Z	ziroday	zimnyx	it should do
+2009-03-27T12:28:00.000Z	zimnyx	ziroday	are you guessing?
+2009-03-27T12:28:00.000Z	ziroday	zimnyx	well I did this procedure a couple of days ago and it worked :)
+2009-03-27T12:29:00.000Z	ziroday	zimnyx	and from what I can interpret from man fsck it will fix bad blocks
+2009-03-27T12:29:00.000Z	zimnyx	ziroday	have you badblocks on this device?
+2009-03-27T12:29:00.000Z	ziroday	zimnyx	yes
+2009-03-27T12:30:00.000Z	ziroday	zimnyx	just make sure you do fsck /dev/whatever instead of e2fsck /dev/whatever
+2009-03-27T12:30:00.000Z	ziroday	zimnyx	the -c option is used when you don't want the bad blocks to be repaired, just recorded
+2009-03-27T12:35:00.000Z	zimnyx	ziroday	thanks for your help (btw I have't know that e2fsck and fsck are different commands)
+2009-03-27T12:42:00.000Z	zimnyx	ziroday	btw, what number of badsectors have you found?
+2009-03-27T12:43:00.000Z	ziroday	zimnyx	I honestly can't remember. I know it was after a failed gparted edit and I just ran fsck /path/to/drive and it fixed it all up
+2009-03-27T12:48:00.000Z	zimnyx	ziroday	thanks for your time

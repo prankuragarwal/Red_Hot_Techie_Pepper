@@ -1,0 +1,18 @@
+2008-01-12T04:05:00.000Z	francesco		Hello, guys. I have a problem. When I restart my PC in recovery mode, the person who uses the computer, automatically, has root rights. How can I avoid this?
+2008-01-12T04:06:00.000Z	francesco		Hello, guys. I have a problem. When I restart my PC in recovery mode, the person who uses the computer, automatically, has root rights. How can I avoid this?
+2008-01-12T04:07:00.000Z	nickrud	francesco	if you're concerned about someone having root access to your machine while at the keyboard, you should use a bios password and put a lock on the case. If they can boot or access the hard drive having recovery mode unprotected is irrelevant
+2008-01-12T04:10:00.000Z	nickrud	francesco	find #alternative=true and change it to #alternative=false in /boot/grub/menu.lst , then run sudo update-grub . This will make sure you don't get the recovery option back with a kernel upgrade
+2008-01-12T04:11:00.000Z	nickrud	francesco	use a bios password. lock the case. If they can boot a cd or get to your hard drive, they can get your data
+2008-01-12T04:13:00.000Z	nickrud	francesco	but either Jowi's or mine suggestion will disable the recovery mode during boot
+2008-01-12T04:13:00.000Z	francesco	nickrud	Ok, I'll take a look.
+2008-01-12T04:14:00.000Z	nickrud	francesco	and one more thing, everyone can read everyone
+2008-01-12T04:14:00.000Z	francesco	nickrud	No, if the directory in which the data is is private. Right?
+2008-01-12T04:14:00.000Z	nickrud	francesco	if it's not readable by others, true. But by default the home dirs can be read by anyone
+2008-01-12T04:15:00.000Z	francesco	nickrud	If the user accesses as root, he can read everything. Right?
+2008-01-12T04:15:00.000Z	nickrud	francesco	yes.
+2008-01-12T04:18:00.000Z	nickrud	francesco	ultimately anyone who has physical access to the machine can do anything to it. Just a sad fact
+2008-01-12T04:19:00.000Z	francesco	nickrud	But, if I set a password, the other users can't access the system.
+2008-01-12T04:22:00.000Z	nickrud	francesco	Remove the recovery mode, but be prepared to have to jump thru some hoops if you need to fix something critical. change the umask in /etc/profile to 026 , that way any files a user creates will not be readable by others. Those two things will give you essentially what you want, unless a cracker takes a whack at it
+2008-01-12T04:28:00.000Z	nickrud	francesco	you just want to let other people share this machine, and get basic privacy for each, right?
+2008-01-12T04:29:00.000Z	francesco	nickrud	I think I'll take recovery mode option from GRUB and use a live CD if something goes wrong.
+2008-01-12T04:29:00.000Z	nickrud	francesco	and if you have more than one user on the machine, just make that umask 026 change in /etc/profile, for practical purposes it will give them some privacy

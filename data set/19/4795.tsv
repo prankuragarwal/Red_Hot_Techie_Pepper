@@ -1,0 +1,19 @@
+2010-07-19T11:04:00.000Z	Tniffoc		How would I get set permissions so that ALL USERS in group x can do nothing except for R/W files in their home directory?
+2010-07-19T11:05:00.000Z	lhx	Tniffoc	each user to r/w only their home directory, or each group user r/w each group user's home dir
+2010-07-19T11:06:00.000Z	Tniffoc	lhx	I want them only to be able to r/w to THEIR OWN home directory. I'm running a family web server. I don't want "sally" editing /home/mark/public_html etc... etc...
+2010-07-19T11:08:00.000Z	lhx	Tniffoc	isn't that the default behavior?
+2010-07-19T11:09:00.000Z	Tniffoc	lhx	well I'm running debian
+2010-07-19T11:09:00.000Z	lhx	Tniffoc	i mean, they'll be able to r/w any other files out there that have the Y in the XXY of permissions set to where they can read
+2010-07-19T11:09:00.000Z	lhx	Tniffoc	i mean r/w
+2010-07-19T11:10:00.000Z	lhx	Tniffoc	i'd just go read about chmod, chgrp, chown using the 'man' command
+2010-07-19T11:13:00.000Z	lhx	Tniffoc	then you need a script that runs a "chmod ~/ 750"
+2010-07-19T11:13:00.000Z	lhx	Tniffoc	or something like that
+2010-07-19T11:17:00.000Z	lhx	Tniffoc	use a recurseive chmod command on all of "/home/*"
+2010-07-19T11:18:00.000Z	Tniffoc	lhx	but then what if the user runs say /etc/init.d/apache2 stop
+2010-07-19T11:18:00.000Z	lhx	Tniffoc	that will reset EVERY file and directory to whatever you tell it to in the home directory
+2010-07-19T11:18:00.000Z	lhx	Tniffoc	go to init.d and do a "ls -l" and then tell us what the permissions are on it
+2010-07-19T11:19:00.000Z	lhx	Tniffoc	i seriously doubt that anyone can execute in init.d
+2010-07-19T11:19:00.000Z	lhx	Tniffoc	remember first number = root, 2nd number = group, 3rd number = anyone
+2010-07-19T11:19:00.000Z	lhx	Tniffoc	for chmod commands
+2010-07-19T11:19:00.000Z	Tniffoc	lhx	yes. by default. but I'm retarded. and did "chmod +rwx" on some stuff while installing
+2010-07-19T11:20:00.000Z	lhx	Tniffoc	if you've borked your permissions that much, why not backup your home dirs and reinstall?

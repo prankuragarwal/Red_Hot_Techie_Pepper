@@ -1,0 +1,23 @@
+2010-04-17T17:26:00.000Z	lubse		hello, I wish to set up a 1gb ram disk, can someone help me understand what these commands do?
+2010-04-17T17:27:00.000Z	lubse		sudo mkfs -t ext3 -q /dev/ram1 65536
+2010-04-17T17:27:00.000Z	lubse		sudo mkdir -p /ramdisk
+2010-04-17T17:27:00.000Z	lubse		sudo mount /dev/ram1 /ramdisk -o defaults,rw
+2010-04-17T17:27:00.000Z	icarus-c	lubse	ramdisk? why are you making ext3 on it?
+2010-04-17T17:27:00.000Z	icarus-c	lubse	read about Linux  tmpfs & ramfs  infrastructure
+2010-04-17T17:28:00.000Z	icarus-c	lubse	 mount -t tmpfs -o rw,size=1024M none /mnt/tmp
+2010-04-17T17:28:00.000Z	icarus-c	lubse	that's all about it
+2010-04-17T17:29:00.000Z	icarus-c	lubse	OR, by default configuration, there is "ramdisk" of 50% of you total ram on /dev/shm
+2010-04-17T17:29:00.000Z	icarus-c	lubse	you could simply mount -o bind /dev/shm /mnt/ramdisk
+2010-04-17T17:30:00.000Z	icarus-c	lubse	dataset?
+2010-04-17T17:30:00.000Z	icarus-c	lubse	if i got 12GB, i would load my whole system into ram on boot :P
+2010-04-17T17:31:00.000Z	icarus-c	lubse	you do the math
+2010-04-17T17:32:00.000Z	icarus-c	lubse	it takes 25 seconds to load 1GB of stuff from hard disk to ram.  but < 1 second from ram to ram
+2010-04-17T17:32:00.000Z	icarus-c	lubse	that would result in instant application startup
+2010-04-17T17:35:00.000Z	icarus-c	lubse	you guess
+2010-04-17T17:36:00.000Z	icarus-c	lubse	correct
+2010-04-17T17:38:00.000Z	icarus-c	lubse	mkdir /mnt/tmp && mount -t tmpfs -o rw,size=1024M none /mnt/tmp
+2010-04-17T17:39:00.000Z	icarus-c	lubse	that's why i put it in /mnt/tmp
+2010-04-17T17:41:00.000Z	icarus-c	lubse	type "mount" command, if it shows something like /mnt/tmp mounted on tmpfs. it is
+2010-04-17T17:42:00.000Z	icarus-c	lubse	that uses dynamic allocation mechanism, and that the used memory goes into cache
+2010-04-17T17:42:00.000Z	icarus-c	lubse	yea that's right
+2010-04-17T17:43:00.000Z	icarus-c	lubse	between, i bind /tmp  to /dev/shm (which is a ramdisk in your terminology)    /tmp is the place where most UNIX applications store temporary files

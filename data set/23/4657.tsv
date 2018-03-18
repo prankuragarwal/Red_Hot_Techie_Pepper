@@ -1,0 +1,23 @@
+2012-04-30T03:32:00.000Z	lousygarua		how do i use the nouveau driver instead of the nvidia one that doesn't work as of now?
+2012-04-30T03:32:00.000Z	lousygarua		on 12.04
+2012-04-30T03:33:00.000Z	minimec	lousygarua	disable the nvidia driver in 'Additional drivers'
+2012-04-30T03:33:00.000Z	lousygarua	minimec	there's no nvidia driver there. that's the problem in the first place
+2012-04-30T03:34:00.000Z	lousygarua	minimec	there's some problem with nvidia and their driver for the current x server version as i understood
+2012-04-30T03:34:00.000Z	minimec	lousygarua	So you are probably using the nouveau driver. You can check that typing 'lsmod |grep nouveau' in a console.
+2012-04-30T03:35:00.000Z	lousygarua	minimec	btw, on the live cd (usb for me) it did run the nouveau driver and it did get listed with lsmod
+2012-04-30T03:35:00.000Z	lousygarua	minimec	it's not listed with lsmod. hmm maybe it's because my laptop falls back to the regular graphics card?
+2012-04-30T03:36:00.000Z	minimec	lousygarua	regular would be intel? in that case 'lsmod |grep i915'
+2012-04-30T03:37:00.000Z	lousygarua	minimec	yes, that's the one. so my ubuntu falls back to the intel card after it cannot find the nvidia one? wait a sec. maybe i need to remove all the other nvidia packages that i don't know how got installed in the first place
+2012-04-30T03:44:00.000Z	lousygarua	minimec	ok, something happened, i got the nice effects i had on the live usb like that beautiful alt-tab window, but lsmod still shows i915 and no nouveau
+2012-04-30T03:46:00.000Z	minimec	lousygarua	Well I guess the intel GPU is a Intel GMA HD, used in the first intel iX series. They are running quiet good with linux.
+2012-04-30T03:50:00.000Z	lousygarua	minimec	so ubuntu is now using the intel graphics card, and not the nvidia one. will i feel anything differnet if i use the nvidia with the nouveau? for now i only need simple eyecandy effects for the desktop, no 3d games or whatever (at least for now before nvidia releases the nice cat)
+2012-04-30T03:52:00.000Z	minimec	lousygarua	No. You will be ok with the intel GPU. It works quiet well.
+2012-04-30T03:52:00.000Z	lousygarua	minimec	L3top: thanks
+2012-05-01T00:24:00.000Z	minimec	lousygarua	there is a tool called rcconf. You should be able disable apache2 on boot with that.
+2012-05-01T00:26:00.000Z	minimec	lousygarua	Nope. rcconf is not working with upstart. Forget what i said.. initctl should do.
+2012-05-01T00:35:00.000Z	lousygarua	minimec	initctl seem to be controlling the services to run/stop/whatever, didn't see smt related to bootup
+2012-05-01T00:39:00.000Z	minimec	lousygarua	I never used that tool. I read something about initctl replacing rcconf. Do you have a apache2.conf or so in /etc/init?
+2012-05-01T00:40:00.000Z	lousygarua	minimec	there's an /etc/init.d/apache2, i think i need to sudo update-rc.d -f apache2 remove as I read on the update-rc.d manpage
+2012-05-01T00:41:00.000Z	lousygarua	minimec	i'll restart now :) so brb. thanks for the help now and before
+2012-05-01T00:45:00.000Z	lousygarua	minimec	YAY unable to connect. all is good ;)
+2012-05-01T00:46:00.000Z	minimec	lousygarua	cool. I have to write that down myself ;)

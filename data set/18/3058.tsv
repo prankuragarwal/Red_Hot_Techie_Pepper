@@ -1,0 +1,18 @@
+2009-12-23T05:07:00.000Z	dath_		back again
+2009-12-23T05:07:00.000Z	dath_		empathy blows
+2009-12-23T05:08:00.000Z	dath_		how can i create a persistent mountpoint with mount -o ro,bind after boot?
+2009-12-23T05:10:00.000Z	dath_		for mount --bind
+2009-12-23T05:12:00.000Z	VCoolio	dath_	seems this should work: /old/folder  /new/folder  none  bind 0 0
+2009-12-23T05:13:00.000Z	dath_	VCoolio	/media/stuff/media/games /home/cgboard/games none bind,ro 0 0 <-- like this?
+2009-12-23T05:14:00.000Z	VCoolio	dath_	the examples I found don't mention the ,ro part; try it, else set that on the source disk
+2009-12-23T05:14:00.000Z	dath_	VCoolio	i need rw on the source disk
+2009-12-23T05:14:00.000Z	dath_		coz there are other dirs
+2009-12-23T05:15:00.000Z	dath_		i only want the mounted folder to be ro
+2009-12-23T05:15:00.000Z	VCoolio	dath_	I don't use bind, but doesn't it just copy the permissions of the source folder it refers to? don't know, sorry
+2009-12-23T05:16:00.000Z	dath_	VCoolio	you can combine both options bind and ro when using the mount command
+2009-12-23T05:16:00.000Z	dath_		i tested it
+2009-12-23T05:16:00.000Z	dath_	VCoolio	 i just wonder if that works in fstab
+2009-12-23T05:17:00.000Z	dath_	VCoolio	testing the hard way with a reboot now ;)
+2009-12-23T05:19:00.000Z	VCoolio	dath_	ok, but searching google doesn't give a solution / workaround for fstab for me; good luck
+2009-12-23T05:23:00.000Z	dath_	VCoolio	it works like a charm :D i mounted an ntfs partition in fstab with ntfs-3g and from that partition i mounted a folder with read only to a ftp user home dir. it even works while the user is connected via ftp :] great!
+2009-12-23T05:24:00.000Z	VCoolio	dath_	cool, something added the last year I think; some threads I read from 2008 mentioned it wasn't possible (yet); congrats

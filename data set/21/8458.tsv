@@ -1,0 +1,21 @@
+2006-03-31T14:06:00.000Z	Alexiel		Is there any reason why i wouldn't be able to access the files on partitions ubuntu mounts in /media? I can see them all but i can't manipulate them at all. I need unrestricted access
+2006-03-31T14:06:00.000Z	_jason	Alexiel	what filesystem?
+2006-03-31T14:07:00.000Z	_jason	Alexiel	change the permissions
+2006-03-31T14:07:00.000Z	_jason	Alexiel	using chown and/or chmod
+2006-03-31T14:07:00.000Z	_jason	Alexiel	if you want unrestricted access: chmod 777 /media/foo
+2006-03-31T14:08:00.000Z	Alexiel	_jason	thanks
+2006-03-31T14:08:00.000Z	_jason	Alexiel	np, you'll probably need to use sudo too
+2006-03-31T14:13:00.000Z	Alexiel	_jason	sorry to bother you again, but that command doesn't work even with sudo. I get a lock icon on all files, but when i have nautilus open with sudo i can access them. apparently it's already 777
+2006-03-31T14:13:00.000Z	_jason	Alexiel	well that command only gives you access to the main folder
+2006-03-31T14:13:00.000Z	Alexiel	_jason	is there a command to set all files and fiolders underneath that?
+2006-03-31T14:14:00.000Z	_jason	Alexiel	yes, but you generally don't want everything to have 777 permissions.  For example, a text file shouldn't be readable
+2006-03-31T14:15:00.000Z	_jason	Alexiel	I am going to eat, there is something you can do using ``find'' to change only directories and only files.  Someone else can probably show you how.  I'll be back in about 10 minutes
+2006-03-31T14:17:00.000Z	_jason	Alexiel	do you have more than one user that needs to access the drive?  it may be easier to just chown everything
+2006-03-31T14:17:00.000Z	Alexiel	_jason	it's a media server, so i need everyone to be able to read it
+2006-03-31T14:19:00.000Z	_jason	Alexiel	ok here, this will affect all the directories (remember, you must cd /media/foo first).  find . -type d -exec sudo chmod 777 '{}' \;             you may want to change the chmod to echo first just so you make sure it works right
+2006-03-31T14:20:00.000Z	Alexiel	_jason	thanks, and thanks for your patience too :)
+2006-03-31T14:21:00.000Z	_jason	Alexiel	we have to do files next, that would be 'find . -type f -exec sudo chmod 666 '{}' \;              that would give everyone read and write permissions to all the files.  If you want them to just be able to read them, you would use 444
+2006-03-31T14:21:00.000Z	_jason	Alexiel	ignore the initial ' before find
+2006-03-31T14:22:00.000Z	Alexiel	_jason	that's excellent, i'll give that a go
+2006-03-31T14:22:00.000Z	_jason	Alexiel	please remember to cd to the right directory first or you will screw stuff up :)
+2006-03-31T14:22:00.000Z	Alexiel	_jason	don't worry, i will

@@ -1,0 +1,19 @@
+2010-02-15T21:51:00.000Z	lotus		hey I'm running ubuntu server 9.04 and installed it without beingconnected to the lan.  Now I'm trying to get it online.  I've plugged in the ethernet cable and added "auto eth0" and "iface eth0 inet dhcp" to /etc/network/interfaces" but when I run /etc/init.d/networking restart it gets no "DHCPOFFERS"
+2010-02-15T21:51:00.000Z	lotus		every other computer on my network is setup to use dhcp and my router has plenty of ip's left in the pool
+2010-02-15T21:52:00.000Z	lotus		how can I troubleshoot this?
+2010-02-15T21:52:00.000Z	vlt	lotus	`ifconfig -a`?
+2010-02-15T21:52:00.000Z	lotus	vlt	ifconfig -a shows eth0 listed with no associated info other than the mac address
+2010-02-15T21:52:00.000Z	vlt	lotus	ok, `ethtool eth0`
+2010-02-15T21:53:00.000Z	vlt	lotus	last line
+2010-02-15T21:53:00.000Z	lotus	vlt	ethtool is not currently installed
+2010-02-15T21:54:00.000Z	vlt	lotus	hmm, try to assign an IP address manually: `ifconfig eth0 192.168.x.y`
+2010-02-15T21:55:00.000Z	lotus	vlt	the command didn't brick, but I can't ping google?
+2010-02-15T21:56:00.000Z	vlt	lotus	Try a machine in your local network first
+2010-02-15T21:56:00.000Z	lotus	vlt	my router is unreachable
+2010-02-15T21:56:00.000Z	vlt	lotus	(same subnet)
+2010-02-15T21:56:00.000Z	vlt	lotus	look at the traffic LEDs on your switch. Flashing while pibging?
+2010-02-15T21:56:00.000Z	vlt	lotus	*pinging
+2010-02-15T21:57:00.000Z	lotus	vlt	actually, pinging 192.168.1.1 says "FROM 192.168.1.2 ... unreachable"
+2010-02-15T21:57:00.000Z	lotus	vlt	I'll check, but I think they'l be flashing cause i'm on IRC too
+2010-02-15T22:01:00.000Z	lotus	vlt	didn't see a change on the router's light patterns
+2010-02-15T22:03:00.000Z	lotus	vlt	actually I think the light does blink when I run the dhcp requests

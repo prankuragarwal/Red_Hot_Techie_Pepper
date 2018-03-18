@@ -1,0 +1,19 @@
+2011-03-08T23:19:00.000Z	atpa8a		hm
+2011-03-08T23:19:00.000Z	atpa8a		have a networking problem...
+2011-03-08T23:19:00.000Z	atpa8a		2 NICs in a computer, 2 different IPs, 2 different MAC addresses, 2 physical cables to the router... why would the router see only one MAC for both addresses?
+2011-03-08T23:21:00.000Z	atpa8a		on the router both IPs resolve to the same MAC
+2011-03-08T23:22:00.000Z	atpa8a		yeah :P
+2011-03-08T23:22:00.000Z	sipior	atpa8a	does the mac correspond to the interface which holds the default route?
+2011-03-08T23:24:00.000Z	atpa8a	sipior	more like to the one that doesn't have the gateway setting... i tried all combinations tho and it seems sometimes that i could arp resolve to two MACs on external boxes but it'll always be the same MAC on the router
+2011-03-08T23:27:00.000Z	sipior	atpa8a	flush the arp cache on the router and try again. all else fails, use tcpdump and follow the "WHO HAS" transactions.
+2011-03-08T23:31:00.000Z	sipior	atpa8a	yep, working as intended.
+2011-03-08T23:32:00.000Z	sipior	atpa8a	you want to bond these interfaces?
+2011-03-08T23:32:00.000Z	sipior	atpa8a	right, but the traffic is being sent along the default route.
+2011-03-08T23:32:00.000Z	sipior	atpa8a	think about what happens at the packet level.
+2011-03-08T23:33:00.000Z	atpa8a	sipior	i see, i tried to set the gateway for both too
+2011-03-08T23:33:00.000Z	sipior	atpa8a	multiple gateways in linux is possible, but not obvious. see here: http://kindlund.wordpress.com/2007/11/19/configuring-multiple-default-routes-in-linux/
+2011-03-08T23:34:00.000Z	atpa8a	sipior	the box itself works without problem
+2011-03-08T23:34:00.000Z	sipior	atpa8a	sure, i don't doubt it.
+2011-03-08T23:34:00.000Z	sipior	atpa8a	were you planning to bond these interfaces?
+2011-03-08T23:35:00.000Z	atpa8a	sipior	wasn't planning to do bonding
+2011-03-08T23:36:00.000Z	atpa8a	sipior	right now, one NIC is used for a kvm bridge

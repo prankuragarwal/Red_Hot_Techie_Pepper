@@ -1,0 +1,24 @@
+2009-04-03T05:25:00.000Z	raylu	Sylphid	aptitude search '~i' | grep -v 'i A'
+2009-04-03T05:15:00.000Z	raylu	Sylphid	dpkg -l, i think
+2009-04-03T05:15:00.000Z	raylu	Sylphid	though i'd try "dpkg -l | grep -v ii" on the newer system
+2009-04-03T05:16:00.000Z	raylu	Sylphid	that's a list of not automatically installed packages... i think. this also means that it doesn't include additionally installed dependencies
+2009-04-03T05:17:00.000Z	Sylphid	raylu	thanks ... so grep ii should show me packages i have installed that are not defaults
+2009-04-03T05:17:00.000Z	raylu	Sylphid	grep -v ii
+2009-04-03T05:18:00.000Z	raylu	Sylphid	i can't really understand what's going on, but it seems 'ii' marks an automatically installed package
+2009-04-03T05:20:00.000Z	Sylphid	raylu	this seems to explain the 1st column  https://lists.ubuntu.com/archives/kubuntu-users/2006-July/006993.html
+2009-04-03T05:22:00.000Z	raylu	Sylphid	oh. hrm
+2009-04-03T05:25:00.000Z	raylu	Sylphid	from http://www.wezm.net/2009/01/20/determining-non-automatically-installed-debian-packages/
+2009-04-03T05:31:00.000Z	Sylphid	raylu	hmm that doesnt seem to work either as it is grabbing mrxvt (my terminal emulator) that i know is not a standard package
+2009-04-03T05:32:00.000Z	Sylphid	raylu	im thinking i may have to pop in a live cd and do a list comparison
+2009-04-03T05:33:00.000Z	raylu	Sylphid	um, that's what it should do then
+2009-04-03T05:33:00.000Z	raylu	Sylphid	the  -v means 'not'
+2009-04-03T05:33:00.000Z	Sylphid	raylu	understood
+2009-04-03T05:35:00.000Z	Sylphid	raylu	maybe my explanation was unclear .... im looking to generate a list of packages that are installed in a clean ubuntu install
+2009-04-03T05:38:00.000Z	raylu	Sylphid	oh, then take off the -v
+2009-04-03T05:38:00.000Z	raylu	Sylphid	except that's not quite what you want
+2009-04-03T05:39:00.000Z	raylu	Sylphid	that's a list of automatically installed packages. so when you installed something on top of the base system, any dependencies it pulled in are in that list
+2009-04-03T05:39:00.000Z	Sylphid	raylu	right because it doesnt include packages i may have removed
+2009-04-03T05:39:00.000Z	raylu	Sylphid	oh...
+2009-04-03T05:39:00.000Z	raylu	Sylphid	i think ubuntu-desktop depends on
+2009-04-03T05:39:00.000Z	raylu	Sylphid	everything in the base system. maybe.
+2009-04-03T05:40:00.000Z	Sylphid	raylu	so do i need to reinstall ubuntu-desktop to get the list or is there a way to determine the entire dependancy tree without installing?

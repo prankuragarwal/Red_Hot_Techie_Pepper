@@ -1,0 +1,21 @@
+2010-07-16T01:56:00.000Z	brack10		Hi
+2010-07-16T01:57:00.000Z	brack10		I'm trying to setup a syslog server on Ubundu for my Cisco devices.  I've installed syslogd, and in syslogd.conf I've added "local7.*                        /var/log/cisco.log".  I enabled logging on my cisco device and when I tcpdump I see local7 packets coming through on my eth0 interface OK.  However they're not showing up in cisco.log
+2010-07-16T01:57:00.000Z	brack10		Anyone know why?
+2010-07-16T01:57:00.000Z	brack10		or how I can begin to troubleshoot?
+2010-07-16T01:59:00.000Z	oCean_	brack10	might sound silly, but after changing syslog, you restarted syslogd, right?
+2010-07-16T02:00:00.000Z	brack10	oCean_	Yeah I did
+2010-07-16T02:00:00.000Z	oCean_	brack10	ok, and syslogd is enabled to listen -r ?
+2010-07-16T02:01:00.000Z	brack10	oCean_	Yeah
+2010-07-16T02:02:00.000Z	oCean_	brack10	ok. Using 'logger' you could do some testing. Like "logger -p local7.info this is a test"
+2010-07-16T02:04:00.000Z	brack10	oCean_	That worked...
+2010-07-16T02:04:00.000Z	oCean_	brack10	hmm.. but not from the cisco equipment? That's strange
+2010-07-16T02:04:00.000Z	brack10	oCean_	Yeah.  I see the packets hitting clear as day
+2010-07-16T02:06:00.000Z	oCean_	brack10	thinking here... how to trace where those packets end up :s
+2010-07-16T02:06:00.000Z	brack10	oCean_	I can dump the whole packet and load it up in wireshark I guess
+2010-07-16T02:08:00.000Z	oCean_	brack10	Indeed. Also, could you test from a non-cisco client? e.g. an ubuntu box, you could try the logger tool there
+2010-07-16T02:09:00.000Z	brack10	oCean_	alright I'll try
+2010-07-16T02:13:00.000Z	brack10	oCean_	How do you use logger to send to another host?
+2010-07-16T02:14:00.000Z	oCean_	brack10	you would have to change the /etc/syslog.conf on that client. Where /var/log/messages is, you have to write @hostname
+2010-07-16T02:26:00.000Z	brack10	oCean_	So I did local7.*                                @X.X.X.X for the IP of the syslogd computer, but they're not showing up in tcpdump.  Did I do that right?
+2010-07-16T02:28:00.000Z	oCean_	brack10	don't think so. I tried the same: on the client in /etc/syslog.conf, around line 39 or 40 there is /var/log/messages ("Some catch-all logfiles"). I changed /var/log/messages to @mysysloghost, restarted syslog, and my testmessages shows up in tcpdump *and* in the file specified for local7.*
+2010-07-16T02:30:00.000Z	brack10	oCean_	oh ok I'm doing it too lwo

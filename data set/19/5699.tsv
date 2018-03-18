@@ -1,0 +1,19 @@
+2008-05-25T01:25:00.000Z	stopgo		Hi, I just reinstalled ubuntu.  I backed up my home directory, formatted my partition, reinstalled the distro, and overwrote the installed home directory with the one I had backed up.  Sound was working before I copied over my new home directory, but after I overwrote the old one, sound had stopped working.  Does anyone have any suggestions as to what user settings I could have that may have killed sound?
+2008-05-25T01:27:00.000Z	stopgo		(sound hadn't been working under my previous install either)
+2008-05-25T01:27:00.000Z	Steve-cal	stopgo	Do you by chance have an ".asoundrc" file in that home directory?
+2008-05-25T01:27:00.000Z	stopgo	Steve-cal	nope
+2008-05-25T01:30:00.000Z	Steve-cal	stopgo	Be sure you're still using "ALSA" as your sound driver--go the System > Prefs/Admin (don't remember which) > Sound
+2008-05-25T01:34:00.000Z	stopgo	Steve-cal	 Hmm,  I have a number of choices, but none of them seem to work.  The two most promising seem to be HDA Intel (ALSA mixer) and Playback: ALSA PCM on front:0 (STAC92xx Analog)
+2008-05-25T01:35:00.000Z	Steve-cal	stopgo	I think you want the ALSA Mixer option because that will hopefully use "dmix", ALSA's way of allowing many apps to use the sound at one time.
+2008-05-25T01:36:00.000Z	stopgo	Steve-cal	 OK, that was the default setting.  It looks like the card is detected and using the right driver and such, it's just that no sound comes out :(
+2008-05-25T01:37:00.000Z	Steve-cal	stopgo	Have you checked your sound levels? Be sure to set PCM volume <= 74% and then adjust master volume to see if you get anything. Make they aren't muted.
+2008-05-25T01:39:00.000Z	stopgo	Steve-cal	 nope, they're not muted
+2008-05-25T01:41:00.000Z	Steve-cal	stopgo	Well you could move all your .directories and .files out of your home directory, reboot, and Ubuntu/Gnome will go back to defaults. Then add them back one at a time to find which is causing the problems. This will prove also whether it really is a problem with something in your home directory.
+2008-05-25T01:42:00.000Z	stopgo	Steve-cal	 that sounds like a good plan, I'll give that a shot
+2008-05-25T01:43:00.000Z	stopgo	Steve-cal	brb
+2008-05-25T01:47:00.000Z	Steve-cal	stopgo	That's exactly what I was afraid of. That's why I figured we should try that...
+2008-05-25T01:47:00.000Z	Steve-cal	stopgo	You had sound working before you copied over your home directory?
+2008-05-25T01:48:00.000Z	stopgo	Steve-cal	 yes
+2008-05-25T01:49:00.000Z	Steve-cal	stopgo	Maybe another way of getting a clue would be to create a new user, log in as them, and see if the sound is a problem.
+2008-05-25T02:02:00.000Z	Steve-cal	stopgo	Yes, I was afraid that wasn't going to get sound working. Well good luck then with the reinstall. :)
+2008-05-25T02:04:00.000Z	Steve-cal	stopgo	Your welcome, and I would strongly encourage you to write down and keep track of any system changes you do. It will make troubleshooting things easier in the future.

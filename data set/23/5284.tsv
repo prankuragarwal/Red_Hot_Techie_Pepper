@@ -1,0 +1,23 @@
+2009-03-26T11:20:00.000Z	jason		Section "Monitor"
+2009-03-26T11:20:00.000Z	jason		 Identifier "Configured Monitor"
+2009-03-26T11:21:00.000Z	jason		and i cant get the driver for it
+2009-03-26T11:21:00.000Z	jason		they took it out of this version
+2009-03-26T11:21:00.000Z	jason		my screen resolution
+2009-03-26T11:22:00.000Z	jason		and video driver
+2009-03-26T11:22:00.000Z	jason		dell
+2009-03-26T11:22:00.000Z	jason		its and old computer
+2009-03-26T11:22:00.000Z	jason		8.04 worked fine
+2009-03-26T11:23:00.000Z	jason		i use to install the i945 driver in Synapatic but its not there
+2009-03-26T11:23:00.000Z	IntuitiveNipple	jason	I *thought* the 'intel' driver handled that chipset?
+2009-03-26T11:24:00.000Z	IntuitiveNipple	jason	I've just checked. The 'intel' driver does support the 845G
+2009-03-26T11:26:00.000Z	jason	IntuitiveNipple	what driver night that b ur talking about
+2009-03-26T11:26:00.000Z	IntuitiveNipple	jason	Have you tried it? Did X fail to start using it? Or just start in a lower resolution (800x600 is the default if the monitor doesn't support EDID)
+2009-03-26T11:29:00.000Z	IntuitiveNipple	jason	When the X server fails it is supposed to save the log file to Xorg.0.log.old, then restart X using a 'fail-safe' configuration. You should then be able to look at /var/log/Xorg.0.log.old for the reason the session didn't start.
+2009-03-26T11:31:00.000Z	IntuitiveNipple	jason	It says it on the tin: /var/log/Xorg.0.log.old
+2009-03-26T11:37:00.000Z	IntuitiveNipple	jason	That log is from a successful start-up using the vesa driver. You'll need to change /etc/X11/xorg.conf and remove the 'driver' line so the operating system detects the correct video driver. If that then fails, the resulting log will help us know why.
+2009-03-26T11:38:00.000Z	IntuitiveNipple	jason	How much RAM does that PC have?
+2009-03-26T11:38:00.000Z	jason	IntuitiveNipple	i post me /etc/X11/xorg.conf ok
+2009-03-26T11:40:00.000Z	IntuitiveNipple	jason	I'd comment out or remove the "Driver" line so the server can detect the best driver to use. It should then try the 'intel' driver
+2009-03-26T11:41:00.000Z	IntuitiveNipple	jason	The reason for the 800x600 resolution is as I said originally. The monitor does *not* support EDID - thats how a monitor tells a video adaptor what resolutions it can support - so the driver selected a safe resolution
+2009-03-26T11:44:00.000Z	IntuitiveNipple	jason	In 8.04 resolutions weren't auto detected. From 8.10 they are. hardware that doesn't support EDID (anything after 2001 should) causes the issue
+2009-03-26T11:46:00.000Z	IntuitiveNipple	jason	If it'll make you any happier, it is a known issue and we would like to solve it. It was not a good idea to add auto-detect and at the same time remove the old manual monitor selection option.

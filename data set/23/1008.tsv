@@ -1,0 +1,23 @@
+2010-10-14T03:30:00.000Z	domcod	debbie	you've disabled the external volume control for everything, _except_ mplayer??
+2010-10-14T03:30:00.000Z	debbie	domcod	I've disabled the 'volume up' and 'volume down' shortcuts in the keyboard shortcuts dialog, so it no longer affects the 'master' volume, but mplayer is still affected by the volume wheel
+2010-10-14T03:31:00.000Z	domcod	debbie	just tape the wheel. do you know whether the hardware is doing the volume change all by itself, or if the change request is routed through the kernel?
+2010-10-14T03:32:00.000Z	debbie	domcod	I know the wheel is only affecting mplayer, not totem, xine, etc.  I don't know more.
+2010-10-14T03:32:00.000Z	debbie	domcod	taping it is a good idea.  so it WAS a hardware problem after all!  :)
+2010-10-14T03:34:00.000Z	domcod	debbie	the wheel is not affecting xine. did you do something to xine to make it so?
+2010-10-14T03:35:00.000Z	debbie	domcod	I may have lied about xine.  Sorry.  I know it doesn't affect totem though.  I don't even have xine installed.  I don't know what came over me,.
+2010-10-14T03:35:00.000Z	domcod	debbie	did you do something to totem to make it so?
+2010-10-14T03:36:00.000Z	debbie	domcod	nope, other than clearing out the 'keyboard shortcuts' for "volume up" and "volume down" in the system keyboard shortcut dialog
+2010-10-14T03:38:00.000Z	domcod	debbie	can you devise an experiment to determine whether this is what disabled the volume wheel for totem? maybe the volume wheel is just a fancy keyboard add-on and the system sees it as keyboard events?
+2010-10-14T03:39:00.000Z	debbie	domcod	the system sees the wheel as "XF86AudioRaiseVolume" and "XF86AudioLowerVolume" events
+2010-10-14T03:39:00.000Z	domcod	debbie	are those x11 events, visible with, say, xev?
+2010-10-14T03:40:00.000Z	debbie	domcod	do you have buttons on your keyboard to turn the volume up and down?  like dedicated multimedia keys?
+2010-10-14T03:41:00.000Z	debbie	domcod	xev shows this: http://paste.ubuntu.com/512712/
+2010-10-14T03:48:00.000Z	domcod	debbie	xmodmap seems to be the right tool here, but i've never used it. pase the output of xmodmap -pk
+2010-10-14T03:48:00.000Z	domcod	debbie	*paste
+2010-10-14T03:50:00.000Z	debbie	domcod	xmodmap -pk output: http://paste.ubuntu.com/512726/
+2010-10-14T03:54:00.000Z	domcod	debbie	echo 'keycode 122 =' | xmodmap -; echo 'keycode 123 =' | xmodmap -
+2010-10-14T03:58:00.000Z	domcod	debbie	did it work
+2010-10-14T04:01:00.000Z	debbie	domcod	I was trying to find xmodmap commands that worked for myself and didn't notice you.
+2010-10-14T04:02:00.000Z	debbie	domcod	it works, thanks.  I think this is a little tidier, but is really the same thing: xmodmap -e "keycode 122 ="; xmodmap -e "keycode 123 =";
+2010-10-14T04:03:00.000Z	domcod	debbie	nice :)
+2010-10-14T04:04:00.000Z	debbie	domcod	thanks so much.  now I can go watch House and not have to worry about what my belly is doing.

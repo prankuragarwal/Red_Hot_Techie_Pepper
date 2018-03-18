@@ -1,0 +1,23 @@
+2008-01-07T22:43:00.000Z	robdeman		pici: how come mi imap-ssl on port 993 still works? it should be closed with this configuration right
+2008-01-07T22:45:00.000Z	bulmer	robdeman	with that rules you pasted you dont have any DROPped ?
+2008-01-07T22:45:00.000Z	robdeman	bulmer	I guess not?
+2008-01-07T22:47:00.000Z	robdeman	bulmer	Im using the webmin configuration gui. default action drop obox says 'drop'
+2008-01-07T22:48:00.000Z	bulmer	robdeman	but it doesnt show in the rules when you check it right? so it is missing the DROP policy or rules
+2008-01-07T22:49:00.000Z	robdeman	bulmer	should I add a DROP rule then?
+2008-01-07T22:49:00.000Z	bulmer	robdeman	if you want to drop things yeah
+2008-01-07T22:49:00.000Z	robdeman	bulmer	I want to drop anythingb that I did not explicitly allow to come in
+2008-01-07T22:50:00.000Z	robdeman	bulmer	I have all thes Incoming packets (INPUT) accept rules and then default action: drop
+2008-01-07T22:50:00.000Z	robdeman	bulmer	should I also do something fo Forwarded packets (FORWARD) ? there are none yet
+2008-01-07T22:50:00.000Z	bulmer	robdeman	well your rule has a hole then if it does allow one to go through..comb it good
+2008-01-07T22:51:00.000Z	robdeman	bulmer	what do you make o fthe pastebin? should drop ?
+2008-01-07T22:52:00.000Z	bulmer	robdeman	i cant work with an output of iptables -L like that, i like to see the full rules written in iptables
+2008-01-07T22:55:00.000Z	robdeman	bulmer	what is the difference between Incoming packets (INPUT) and Forwarded packets (FORWARD)? b/c Forwarded packets (FORWARD) has no rules but a default 'accept'
+2008-01-07T22:56:00.000Z	bulmer	robdeman	they are different chains
+2008-01-07T22:56:00.000Z	robdeman	bulmer	forwarded packets... mm ok so default accepts is allright then
+2008-01-07T22:57:00.000Z	bulmer	robdeman	if thats what you wanted, its acceptable to you?
+2008-01-07T22:57:00.000Z	robdeman	bulmer	well I just dont feel the firewall is doing anything.. why is that port 993 open I dont understand
+2008-01-07T22:57:00.000Z	bulmer	robdeman	because you dont have a DROP rule
+2008-01-07T22:58:00.000Z	robdeman	bulmer	How o I add it? what should it look like?
+2008-01-07T22:59:00.000Z	bulmer	robdeman	you have to google for iptables tutorial, the one i like is by gandalf..hang on let me see if I have a link
+2008-01-07T23:02:00.000Z	robdeman	bulmer	ok... I should be able to add one generic drop rule that says: If not allowed by any accept rule, then drop?
+2008-01-07T23:03:00.000Z	bulmer	robdeman	possibly, no guarantee it will work or no holes on it

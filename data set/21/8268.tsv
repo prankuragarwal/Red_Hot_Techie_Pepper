@@ -1,0 +1,21 @@
+2007-02-26T14:17:00.000Z	docta_v		i'm having some trouble with an upgrade of mysql
+2007-02-26T14:17:00.000Z	docta_v		the init script is failing to start which is causing the package to fail to install cleanly
+2007-02-26T14:18:00.000Z	docta_v		how can i tell what init script the package is trying to run?
+2007-02-26T14:18:00.000Z	ikonia	docta_v	it tell you at startup whats running
+2007-02-26T14:19:00.000Z	docta_v	ikonia	the only thing i can find is this: "invoke-rc.d: initscript mysql, action "start" failed."
+2007-02-26T14:19:00.000Z	ikonia	docta_v	so the mysql startup script is failing
+2007-02-26T14:20:00.000Z	ikonia	docta_v	mysql.server
+2007-02-26T14:20:00.000Z	docta_v	ikonia	cool thanks... i'll start with that one
+2008-05-02T21:44:00.000Z	ikonia	docta_v	#ubuntu-offtopic
+2008-05-02T21:44:00.000Z	ikonia	docta_v	sorry
+2008-10-15T03:45:00.000Z	docta_v	ikonia	supposedly you can use the raid10 personality in a two disk setup... i wonder if there's a performance increase
+2008-10-15T03:45:00.000Z	ikonia	docta_v	personal experience, no
+2008-10-15T03:47:00.000Z	ikonia	docta_v	what modules what options
+2008-10-15T03:47:00.000Z	docta_v	ikonia	options forcedeth optimization_mode=1 poll_interval=500 max_interrupt_work=10
+2008-10-15T03:48:00.000Z	ikonia	docta_v	doing it at boot time, or /etc/modules.conf
+2008-10-15T03:48:00.000Z	ikonia	docta_v	is it just ignoring it,
+2008-10-15T03:50:00.000Z	ikonia	docta_v	out of interest, if you unload the module and re-load it with modprobe, do the options take effect or give any warnings ?
+2008-10-15T03:50:00.000Z	docta_v	ikonia	hmm don't think i have a way of doing that at the moment
+2008-10-15T03:51:00.000Z	ikonia	docta_v	blacklist the module, boot, unblacklist, modprobe it
+2008-10-15T03:51:00.000Z	ikonia	docta_v	just for interest
+2008-10-15T03:52:00.000Z	ikonia	docta_v	ahh, now I see

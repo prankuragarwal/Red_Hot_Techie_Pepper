@@ -1,0 +1,19 @@
+2004-12-23T14:06:00.000Z	defunkt		hey ribs can you help me out in a pm?
+2004-12-23T14:08:00.000Z	defunkt		well
+2004-12-23T14:08:00.000Z	defunkt		i am going to go back to windows
+2004-12-23T14:08:00.000Z	defunkt		too much stuff that won't work in linux
+2004-12-23T14:09:00.000Z	sladen	defunkt	if you tell us what you're finding isn't working, we'd love to try and fix/help you
+2004-12-23T14:10:00.000Z	sladen	defunkt	you still haven't mentioned what you think the problem is...
+2004-12-23T14:12:00.000Z	sladen	defunkt	1st.  Can you get any other program to play sound?
+2004-12-23T14:15:00.000Z	sladen	defunkt	what errors does Quake 3 give when you load it up?  Does it mention sound.
+2004-12-23T14:15:00.000Z	sladen	defunkt	try running:   esddsp q3demo
+2004-12-23T14:16:00.000Z	defunkt	sladen	command not found
+2004-12-23T14:17:00.000Z	defunkt	sladen	it mentions no errors
+2004-12-23T14:18:00.000Z	sladen	defunkt	sudo apt-get install esound-clients
+2004-12-23T14:18:00.000Z	sladen	defunkt	befor that can you do a quick  sudo ps aux | grep [e] sd  and check that the problem is ESD holding the sound device open
+2004-12-23T14:18:00.000Z	defunkt	sladen	still nothing
+2004-12-23T14:20:00.000Z	sladen	defunkt	esd is a program that shares the 1 sound card between the many programs that want to use the sound card at once
+2004-12-23T14:21:00.000Z	sladen	defunkt	most GNOME applications know how to talk to esd directly
+2004-12-23T14:22:00.000Z	defunkt	sladen	this is an onboard nvmax card
+2004-12-23T14:22:00.000Z	sladen	defunkt	Quake3 doesn't.  Either you need to give it full control of the sound card by stopping esd (killall esd), or you need to teach Quake3 to use ESD by running it with  esddsp
+2004-12-23T14:23:00.000Z	sladen	defunkt	esddsp  can be found in  esound-clients  which you can install with 'sudo apt-get install esound-clients'

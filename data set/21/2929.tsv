@@ -1,0 +1,21 @@
+2011-01-12T03:38:00.000Z	MrUnagi		is it possible to grep or otherwise take an ip that is in a text file and put it in a new txt file?
+2011-01-12T03:39:00.000Z	pure_hate	MrUnagi	grep '^[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}$'  file.txt > newfile.txt
+2011-01-12T03:40:00.000Z	MrUnagi	pure_hate	i thought it would be something like that
+2011-01-12T03:40:00.000Z	MrUnagi	pure_hate	is that perl?
+2011-01-12T03:40:00.000Z	pure_hate	MrUnagi	no
+2011-01-12T03:40:00.000Z	MrUnagi	pure_hate	so that info is in the man?
+2011-01-12T03:40:00.000Z	pure_hate	MrUnagi	yup
+2011-01-12T03:41:00.000Z	MrUnagi	pure_hate	i apologize
+2011-01-12T03:41:00.000Z	pure_hate	MrUnagi	It can be done many ways, thats just the first one I thought off, sed and awk can do it too
+2011-01-12T03:41:00.000Z	pure_hate	MrUnagi	Why in the world are you apologizing
+2011-01-12T03:42:00.000Z	MrUnagi	pure_hate	because i didnt read the man and i know that is annoying
+2011-01-12T03:42:00.000Z	pure_hate	MrUnagi	Thats pretty advanced grep so not anoying. Took me many years of doing it wrong to get there
+2011-01-12T03:49:00.000Z	MrUnagi	pure_hate	i must be doing something wrong because the txt it makes is empty
+2011-01-12T04:07:00.000Z	MrUnagi	pure_hate	i got it to work, but the man is confusing, would it be a bother if i asked you if it is possible to limit the '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' to find only one instance of each????? '{[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}2\}' didn't work
+2011-01-12T04:08:00.000Z	pure_hate	MrUnagi	^^
+2011-01-12T04:25:00.000Z	MrUnagi	pure_hate	cat /var/log/auth.log | grep "password for root" > ~/roothack.txt && cat roothack.txt | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' | sort -u > banlist.txt && for line in $(cat banlist.txt); do iptables -I INPUT -s "$line" -j DROP; done
+2011-01-12T04:26:00.000Z	pure_hate	MrUnagi	Awesome, glad you got it workig
+2011-01-12T04:26:00.000Z	MrUnagi	pure_hate	do you like it?
+2011-01-12T04:27:00.000Z	pure_hate	MrUnagi	yeah
+2011-01-12T04:29:00.000Z	pure_hate	MrUnagi	you could shorten it a little by not using cat
+2011-01-12T04:30:00.000Z	MrUnagi	pure_hate	using instead?

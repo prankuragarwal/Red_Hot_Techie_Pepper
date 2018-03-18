@@ -1,0 +1,19 @@
+2007-10-05T16:05:00.000Z	Meroigo		.... 3D acceleration on my ATI Radeon 8500LE card just stopped working after I had configured X to use two monitors. The monitor things works great, but now my 3D doesn't work.. =/ anyone know what to do?
+2007-10-05T09:33:00.000Z	Meroigo		hardware 3D acceleration brokes with my ati card if I have two monitors with xinerama in xorg.conf. If I only have one monitor, 3D works fine. How can i fix it?
+2007-10-05T09:34:00.000Z	xsacha	Meroigo	with the method of getting 2 screens you are using, the second screen probably doesnt have Direct Rendering meaning no 3d
+2007-10-05T09:35:00.000Z	Meroigo	xsacha	yeah... does 3D break on the whole system then?
+2007-10-05T09:36:00.000Z	xsacha	Meroigo	just the second monitor
+2007-10-05T09:36:00.000Z	xsacha	Meroigo	some 3d things may try to work on both monitors though and stop if they cant get on to the second monitor
+2007-10-05T09:37:00.000Z	Meroigo	xsacha	well, it's broken everywhere. If i run glxgears it doesn't turn smoothly,and yes, if i take that window to the extra screen, it's black. but still, hardware 3D are broken after installing another screen
+2007-10-05T09:38:00.000Z	xsacha	Meroigo	work still being done in that area.. im lucky i only have one screen hehee
+2007-10-05T09:38:00.000Z	xsacha	Meroigo	if you have nvidia, you should be able to get it working perfect
+2007-10-05T09:41:00.000Z	Meroigo	xsacha	i don't. i just have ati. :) gona try mergedfb and see if that works.
+2007-10-05T09:43:00.000Z	xsacha	Meroigo	ok the thing is that your ati card will have a maximum texture size of 2048x2048
+2007-10-05T09:43:00.000Z	xsacha	Meroigo	so it wont work if your resolutions are above 1024
+2007-10-05T09:44:00.000Z	xsacha	Meroigo	if you can cope with 2x 1024x768, you can have dual monitor 3d working fine
+2007-10-05T09:44:00.000Z	Meroigo	xsacha	bleh, i don't want that =/ i want 1280x1024 on each..
+2007-10-05T10:02:00.000Z	xsacha	Meroigo	yeah i know
+2007-10-05T10:03:00.000Z	xsacha	Meroigo	the texture size is only 2048, so everything over that (the extra 512 pixels on the right hand side) wont be 3d
+2007-10-05T10:03:00.000Z	xsacha	Meroigo	that makes compiz go whacky
+2007-10-05T10:04:00.000Z	Meroigo	xsacha	so it will be impossible for me to use desktop effects while using mergedFB?
+2007-10-05T10:04:00.000Z	xsacha	Meroigo	not if you use 1024x768

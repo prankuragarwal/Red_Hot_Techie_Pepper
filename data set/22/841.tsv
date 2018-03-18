@@ -1,0 +1,22 @@
+2011-02-26T08:50:00.000Z	kothaguy_Ubuntu1		When i boot my Acer,it is showing an message"the media point /sdb1 is not mounted,if you want to mount it now"and the below it shows,press S to skip,if i press S,it will be skipped,and normal login page will come,every time i shut down and on the netbook,same problem occuring for me,on the previous day,i without knowing i went to gcong editor,apps,nautilus,properties and i changed something there,i forgot what i did,please can any one tell me,w
+2011-02-26T08:50:00.000Z	kothaguy_Ubuntu1		hat to do to avoid this mounting on booting startup
+2011-02-26T08:52:00.000Z	kothaguy_Ubuntu1		i tried everything in gconf editor,nautilus,apps,properties,but i cant avoid that message on booting
+2011-02-26T08:53:00.000Z	nsd	kothaguy_Ubuntu1	Don't go screwing around with gconf-editor like that, it's not what you need to work on. Open up /etc/fstab (press alt+f2 and type in "gedit /etc/fstab" without the quotes then click run) to the ubuntu pastebin: http://paste.ubuntu.com/
+2011-02-26T09:03:00.000Z	kothaguy_Ubuntu1	nsd	bullgard  http://paste.ubuntu.com/572468/
+2011-02-26T09:04:00.000Z	kothaguy_Ubuntu1	nsd	bullgard :please find the above link from gedit /etc/fstab
+2011-02-26T09:04:00.000Z	nsd	kothaguy_Ubuntu1	Be patient, I'm typing what you need to do (it's not very hard)
+2011-02-26T09:05:00.000Z	nsd	kothaguy_Ubuntu1	Okay, so each line in that file is a device that was found during installation that was added to the file so that it's automatically mounted (made so that you can open it) when you power on your computer. You can also add lines to make it so that it's easier to mount drives (i.e., so they're not automatically mounted) but in this case, it looks like it tries to mount that one entry when it shouldn't
+2011-02-26T09:06:00.000Z	nsd	kothaguy_Ubuntu1	Press alt+f2, type "gksu gedit /etc/fstab" without the quotes, then put a # in front of the last line in the file
+2011-02-26T09:06:00.000Z	nsd	kothaguy_Ubuntu1	Then save the file and close it, and you shouldn't get that message any more.
+2011-02-26T09:09:00.000Z	kothaguy_Ubuntu1	nsd	: i did,what you said,is there any way to check it without restarting?
+2011-02-26T09:10:00.000Z	nsd	kothaguy_Ubuntu1	Not that I can think of, but before you do, pastebin the file now so I can make sure you did it correctly; if done wrong, you won't be able to boot
+2011-02-26T09:11:00.000Z	kothaguy_Ubuntu1	nsd	http://paste.ubuntu.com/572470/
+2011-02-26T09:12:00.000Z	nsd	kothaguy_Ubuntu1	No, put the # at the start of the last line, not the end of it
+2011-02-26T09:12:00.000Z	nsd	kothaguy_Ubuntu1	Like this: http://paste.ubuntu.com/572471/
+2011-02-26T09:13:00.000Z	nsd	kothaguy_Ubuntu1	Yes.
+2011-02-26T09:14:00.000Z	kothaguy_Ubuntu1	nsd	http://paste.ubuntu.com/572472/
+2011-02-26T09:17:00.000Z	nsd	kothaguy_Ubuntu1	Delete the letter 'a' at the start of the line. You just want a singular '#' at the start of the line. I wasn't clear enough, I guess. Alternatively, close the file (discarding any changes), then do alt-f2 and copy and paste this in: gksu sed "s/^.*vfat/#&/" /etc/fstab
+2011-02-26T09:21:00.000Z	kothaguy_Ubuntu1	nsd	 http://paste.ubuntu.com/572473/
+2011-02-26T09:21:00.000Z	nsd	kothaguy_Ubuntu1	Yep, that's fine. Try rebooting now.
+2011-02-26T09:23:00.000Z	kothaguy_Ubuntu1	nsd	: Thank you,i will do it and i will be back in few minutes if everything is good,Thank you
+2011-02-26T09:23:00.000Z	nsd	kothaguy_Ubuntu1	No problem.

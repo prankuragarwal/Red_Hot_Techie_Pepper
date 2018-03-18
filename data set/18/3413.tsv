@@ -1,0 +1,18 @@
+2012-06-02T20:38:00.000Z	bobo123		i try to connect my laptop directly to the WAN port but somehow i can't get an IP address from the router, how can i solve this problem? i tried this on windows i somehow get an IP address from the router
+2012-06-02T20:39:00.000Z	bobo123		the DHCP server on the router is started
+2012-06-02T20:40:00.000Z	smerz	bobo123	ubuntu behaves like windows in this regard. you connect the cable, and then it will try to get an IP via dhcp
+2012-06-02T20:41:00.000Z	bobo123	smerz	i tried that but i don't get an IP address from the router, and in windows my laptop gets an IP address, that's the problem
+2012-06-02T20:41:00.000Z	smerz	bobo123	are you sure the network port you're using will receive a dhcp response. and did you configure eth0 (lan) to use dhcp (or perhaps a static config)
+2012-06-02T20:41:00.000Z	smerz	bobo123	it's not configure to use some sort of static configuration?
+2012-06-02T20:42:00.000Z	bobo123	smerz	from the NetworkManager it is per default Automatic DHCP
+2012-06-02T20:42:00.000Z	smerz		yup
+2012-06-02T20:42:00.000Z	bobo123	smerz	in windows i see that the router has gave me an IP address
+2012-06-02T20:43:00.000Z	smerz	bobo123	can you run ifconfig. and private message me (or use nopaste) the data for eth0 ?
+2012-06-02T20:44:00.000Z	smerz	bobo123	this is the ifconfig data, that my wireless has right now (for example) http://nopaste.info/f858e0d19c.html
+2012-06-02T20:45:00.000Z	bobo123	smerz	just a sec
+2012-06-02T20:48:00.000Z	bobo123	smerz	i can't copy the ifconfig result because i can't manage now to get internet on the laptop, but i don't have an "inet4 addr" line in the result, there is only "inet6 addr" in the result with an MAC address after it
+2012-06-02T20:48:00.000Z	bobo123	smerz	it also says UP BROADCAST RUNNING MULTICAST...
+2012-06-02T20:49:00.000Z	smerz	bobo123	i just wanted to check that it infact did not have a good ipv4 addr ;-)
+2012-06-02T20:51:00.000Z	smerz	bobo123	just check that the lan cable actually get's a link active light (on pc/laptop or router).
+2012-06-02T20:51:00.000Z	smerz	bobo123	also maybe try "sudo dhclient -r"   (it's supposed to check for dhcp). it that doesn't work try "sudo /etc/init.d/network restart"
+2012-06-02T20:52:00.000Z	smerz	bobo123	and you doo see your network interface in the ifconfig list right? i.e. the kernel did detect and install your network card right? ;-)

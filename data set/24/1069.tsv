@@ -1,0 +1,24 @@
+2010-08-03T05:47:00.000Z	FliesLikeScreen		can anyone point me to where I can configure upstart's relationships/dependencies for services starting at boot?
+2010-08-03T05:48:00.000Z	Docteh	FliesLikeScreen	look in /etc/init
+2010-08-03T05:48:00.000Z	FliesLikeScreen		thanks Docteh
+2010-08-03T05:49:00.000Z	FliesLikeScreen	Docteh	the problem is that dhcpd is trying to start before the bridge interface is up.  I don't see a config file in that folder for dhcpd.  is there a way to create one or somewhere else I need to lok?
+2010-08-03T05:49:00.000Z	FliesLikeScreen		look*
+2010-08-03T05:49:00.000Z	Docteh	FliesLikeScreen	where did you set up your bridge? usually thats done in /etc/networking/interfaces
+2010-08-03T05:50:00.000Z	Docteh	FliesLikeScreen	do the create commands as a pre-up for the bridge
+2010-08-03T05:50:00.000Z	FliesLikeScreen	Docteh	it's in /etc/network/interfaces.  it looks like this issue is described by this bug: https://bugs.launchpad.net/ubuntu/+source/dhcp3/+bug/580319
+2010-08-03T05:50:00.000Z	Docteh		oh
+2010-08-03T05:50:00.000Z	FliesLikeScreen	Docteh	the bridge comes up fine, the problem is that dhcp is being started before the interfaces are up
+2010-08-03T05:50:00.000Z	Docteh		whoopsies
+2010-08-03T05:51:00.000Z	FliesLikeScreen	Docteh	I'm looking for a way to say " don't start dhcp until interfaces are all up"
+2010-08-03T05:51:00.000Z	Docteh		who is running dhcp then?
+2010-08-03T05:51:00.000Z	FliesLikeScreen	Docteh	I'm not sure what you mean
+2010-08-03T05:51:00.000Z	FliesLikeScreen	Docteh	it's this box running dhcp too.  dhcpd tries to start at boot, but the interfaces aren't up yet.  so dhcpd fails.  a few seconds later the bridge interface finishes coming up, but dhcpd never comes up
+2010-08-03T05:52:00.000Z	FliesLikeScreen	Docteh	(because it had already failed to start)
+2010-08-03T05:52:00.000Z	Docteh	FliesLikeScreen	whats firing up the dhcpd, is there a script in /etc/init.d/ for your dhcpd?
+2010-08-03T05:52:00.000Z	FliesLikeScreen		yes Docteh the default init script in init.d for dhcpd3-server
+2010-08-03T05:53:00.000Z	Docteh	FliesLikeScreen	what is its priority number in like /etc/rc3.d?
+2010-08-03T05:54:00.000Z	FliesLikeScreen	Docteh	40
+2010-08-03T05:54:00.000Z	FliesLikeScreen	Docteh	I suppose making that 99 will help
+2010-08-03T05:56:00.000Z	Docteh	FliesLikeScreen	rc3.d might be wrong dir just fyi
+2010-08-03T05:57:00.000Z	FliesLikeScreen	Docteh	I've got another workaround I'll put in for now (putting /etc/init.d/dhcp3-server restart in rc.local).  I'll be adding to that bug report shortly and raising this issue
+2010-08-03T05:58:00.000Z	Docteh	FliesLikeScreen	I'm using dnsmasq and its working for me with a bridge, its only 15 but i guess its listening on 0.0.0.0

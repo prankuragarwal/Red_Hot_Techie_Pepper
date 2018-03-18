@@ -1,0 +1,18 @@
+2012-11-15T16:36:00.000Z	uovobw		hi all, i have a problem with an init script. I have ubuntu server 12.04.1 configured to have, in /etc/event/tty6.conf i commented the last line and replaced with exec /sbin/agetty --autologin ale tty6 . I then added, to my profile in bash, the famous if that checks if $DISPLAY is NOT defined and if i am in the tty6 (via $(tty) ) and then starts x with exec startx . I am _sure_ i go inside the correct if (i touch some debug files around and they
+2012-11-15T16:36:00.000Z	uovobw		i have removed all login managers, i have dpkg-reconfigure'd x11-common to let all users startx
+2012-11-15T16:36:00.000Z	uovobw		any suggestions? thanks in advance
+2012-11-15T16:38:00.000Z	jrib	uovobw	your message was truncated at "debug files around and they ..."
+2012-11-15T16:38:00.000Z	uovobw	jrib	following: debug files around and they get created upon boot) but i _always_ get an x error about the server already being active for display 0.
+2012-11-15T16:39:00.000Z	uovobw		i have been looking at this for a couple of hours now, i am testing with env to see if DISPLAY was already set (it's not) i have checked all the possible *getty programs and they all log me in successfully on tty6
+2012-11-15T16:39:00.000Z	uovobw		and the if is _always_ executed , but startx (or xinit itself) always error out
+2012-11-15T16:39:00.000Z	jrib	uovobw	I suggest pastebinning the full script and your bash file
+2012-11-15T16:40:00.000Z	uovobw	jrib	the problem is i have the script on a remote machine that i can atm access only via VNC and then putty from there, so it would be hard for me to do
+2012-11-15T16:40:00.000Z	jrib	uovobw	the machine does not have internet access?
+2012-11-15T16:41:00.000Z	uovobw	jrib	it does not, i am VNC-ing to a windows machine that acts as a router, then ssh via putty from there
+2012-11-15T16:41:00.000Z	jrib	uovobw	can't you use winscp on the machine where you use putty to copy the files over to the windows machine and then pastebin there?
+2012-11-15T16:42:00.000Z	jrib	uovobw	also, I would save the full output you're getting on the tty somewhere and pastebin that too
+2012-11-15T16:43:00.000Z	uovobw	jrib	the problem is i cannot install new stuff on the windows machine... but that script is not the problem, i am sure i always get in the correct if in the .profile file end execute the right commands, but both startx and xinit behave as if another X was already running (when there arre none)
+2012-11-15T16:43:00.000Z	uovobw		note that if i run startx or xinit by hand via ssh, it works perfectly
+2012-11-15T16:44:00.000Z	jrib	uovobw	there's some putty-related program that will let you copy files too.  pscp or sftp perhaps
+2012-11-15T16:44:00.000Z	uovobw	jrib	i see,i'll check what i can do, thanks for your time
+2012-11-15T16:45:00.000Z	jrib	uovobw	I don't see any reason for what you describe not to work, thus why I ask for more details :)

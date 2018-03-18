@@ -1,0 +1,21 @@
+2010-11-21T22:14:00.000Z	mikeTheNewbe_		Lost my connection: I have a fubared LVM issue: All drives are present and working (according to blkid) but LVM won't find them. Please help?
+2010-11-21T22:15:00.000Z	Flannel	mikeTheNewbe_	Is this a new install? reinstall? or did something happen? or what?
+2010-11-21T22:16:00.000Z	mikeTheNewbe_	Flannel	Thanks! I swapped motherboards.
+2010-11-21T22:16:00.000Z	Flannel	mikeTheNewbe_	Hmm.  Alright.  How many HDDs are we talking?  Are they all SATA? PATA? half and half?
+2010-11-21T22:18:00.000Z	mikeTheNewbe_	Flannel	I've got six drives - 1 IDE volume that hosts my system, and 5 storage volumes. (1 IDE, 4 sata)
+2010-11-21T22:18:00.000Z	Flannel	mikeTheNewbe_	And they're all on LVM? or just the storage drives?
+2010-11-21T22:18:00.000Z	mikeTheNewbe_	Flannel	LVM finds the IDE's ok, but the satas are all missing
+2010-11-21T22:19:00.000Z	mikeTheNewbe_	Flannel	just the storage drives.
+2010-11-21T22:19:00.000Z	Flannel	mikeTheNewbe_	Interesting.  Alright.  I assume you've got a working system then?  (you can run commands, packages, etc)
+2010-11-21T22:19:00.000Z	mikeTheNewbe_	Flannel	Yes, Ubuntu is running, I just can see all my storage
+2010-11-21T22:19:00.000Z	Flannel	mikeTheNewbe_	Good, that makes this easier.  Check to make sure you have the 'lvm2' package installed (sudo apt-get install lvm2), and then we'll take a look and see what we can see.
+2010-11-21T22:19:00.000Z	mikeTheNewbe_	Flannel	thanks, just a sec
+2010-11-21T22:21:00.000Z	mikeTheNewbe_	Flannel	LVM2 is installed and up to date
+2010-11-21T22:22:00.000Z	Flannel	mikeTheNewbe_	alright, first thing to do is 'pvscan' to scan all of your physical volumes (this should see and list everything, even the SATA ones)
+2010-11-21T22:23:00.000Z	Flannel	mikeTheNewbe_	Mmm, that almost certainly requires sudo.
+2010-11-21T22:24:00.000Z	mikeTheNewbe_	Flannel	It throws a large list of "Input/Ouput" errors, and says it can't find various UUID's. the final list shows my IDE drive, but the three PV's that refer to the sata are listed as "Unkown device"
+2010-11-21T22:25:00.000Z	Flannel	mikeTheNewbe_	Ah.  I believe there's some communication issue with those SATA drives then.  Do they only support one speed of SATA, and the mobo is trying to talk another (faster, usually) one?  (This is usually solved by jumpers, of all things) or something like that?
+2010-11-21T22:25:00.000Z	Flannel	mikeTheNewbe_	That issue is just a wild guess, but if those throw I/O issues, I don't think it's a LVM issue, but a lower level one
+2010-11-21T22:26:00.000Z	mikeTheNewbe_	Flannel	could be, I have no idea. I don't think there are any jumpers on the satas themselves, but I've still got my motherboard documentation kicking around somewhere...
+2010-11-21T22:27:00.000Z	mikeTheNewbe_	Flannel	Thanks for the suggestion, I'm gonna go do some research
+2010-11-21T22:28:00.000Z	Flannel	mikeTheNewbe_	http://linuxwave.blogspot.com/2007/11/mounting-lvm-disk-using-ubuntu-livecd.html walks you through the LVM steps (well, pvscan, vgscan, etc) if yu need to manually activate your storage drive (although with the IDE drive working, I think once you figure whatever else out, the rest of the drives will show up automatically)

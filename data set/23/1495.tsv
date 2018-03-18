@@ -1,0 +1,23 @@
+2010-07-16T23:47:00.000Z	ottermaton		 I'm trying to put together a little script that I'll cron daily to backup (most of) ~/ . What I've got so far is at http://paste.ubuntu.com/464657/
+2010-07-16T23:47:00.000Z	ottermaton		 What I have so far works fine. What I'd like to add is the ability to delete a backup after it is, say, 5 days old.
+2010-07-16T23:49:00.000Z	erUSUL	ottermaton	find /backupdir -type f -mtime +5 -delete ?
+2010-07-16T23:52:00.000Z	erUSUL	ottermaton	you do not need eval to run date; eval is evil
+2010-07-16T23:52:00.000Z	ottermaton	erUSUL	that would delete all older files (I think) which I don't want to do
+2010-07-16T23:52:00.000Z	erUSUL	ottermaton	filename="backup-`eval date +%Y%m%d`.tar"
+2010-07-16T23:53:00.000Z	erUSUL	ottermaton	filename="backup-$(date +%Y%m%d).tar"
+2010-07-16T23:53:00.000Z	ottermaton	erUSUL	what is a better way to get the date in the file
+2010-07-16T23:53:00.000Z	ottermaton	erUSUL	oh. OK
+2010-07-16T23:53:00.000Z	erUSUL	ottermaton	quote all variables
+2010-07-16T23:54:00.000Z	erUSUL	ottermaton	stat
+2010-07-16T23:55:00.000Z	ottermaton	erUSUL	stat?
+2010-07-16T23:56:00.000Z	erUSUL	ottermaton	man stat
+2010-07-16T23:57:00.000Z	erUSUL	ottermaton	make the find command search only backup files ( add -name 'backup-*' )
+2010-07-16T23:58:00.000Z	erUSUL	ottermaton	also if you add -j to tar -cf tar will bzip the file for you
+2010-07-17T00:07:00.000Z	ottermaton	erUSUL	I made the changes you suggested and pasted at http://paste.ubuntu.com/464665/
+2010-07-17T00:07:00.000Z	ottermaton	erUSUL	if you could take a sec to check it out
+2010-07-17T00:08:00.000Z	erUSUL	ottermaton	if tar bazips the file line 4 is superflous ( wrong ) also in line 1 put tar.bz2 as extension ( tar wont do it for you )
+2010-07-17T00:10:00.000Z	ottermaton	erUSUL	oops, I forgot to delete that line. I thought bzip added the bz2 extension
+2010-07-17T00:10:00.000Z	erUSUL	ottermaton	also instead of /backupdir put the actual folder where you store the backups ... ( /home/mark/Ubuntu\ One
+2010-07-17T00:10:00.000Z	erUSUL	ottermaton	bzip does; but tar does not
+2010-07-17T00:12:00.000Z	ottermaton	erUSUL	I figured since tar was calling bzip it would add the extension.
+2010-07-17T00:12:00.000Z	ottermaton	erUSUL	I was wondering why it was taking so long too. That redundant line explains it

@@ -1,0 +1,22 @@
+2006-08-21T09:38:00.000Z	pluma		Question: Is there a way to set up a local POP mail server, which downloads e-mail regularly from other POP servers? I have mailboxes on about four different servers and I'd like to be able to access the mail from everywhere without having to leave them on the respective servers. My Linux box should be on the net 24/7, so having it act as a single-user mailserver would be neat.
+2006-08-21T09:38:00.000Z	enyc	pluma	yes... use  fetchmail
+2006-08-21T09:38:00.000Z	enyc	pluma	you will nood a local SMTP service (mta) but you dont need port-25 in from outside world  necessarially
+2006-08-21T09:38:00.000Z	enyc	pluma	you can use  pop3 daemons that exist already....
+2006-08-21T09:39:00.000Z	enyc	pluma	you can use  fetchmali to fetch remonte pop boxes and deliver into local smtp queue
+2006-08-21T09:39:00.000Z	pluma	enyc	Why would I need a SMTP service? Isn't SMTP mail-out only?
+2006-08-21T09:40:00.000Z	enyc	pluma	you need it ofor the local mail deliveries
+2006-08-21T09:40:00.000Z	enyc	pluma	into which fetchmail hands its mails
+2006-08-21T09:41:00.000Z	enyc	pluma	eg.g   delivers to   username@my.local.computer   based on fetchamil config
+2006-08-21T09:41:00.000Z	enyc	pluma	you wouldnt need  remotely accessible  smtp for that as-such....
+2006-08-21T09:41:00.000Z	enyc	pluma	but you have to think about reply addressess and soforth
+2006-08-21T09:42:00.000Z	pluma	enyc	I can still use the SMTP servers of the other mail servers for that. They don't really care where the mail comes from, they just send it (heck, half of them don't seem to care whether the sender e-mail and username match).
+2006-08-21T09:43:00.000Z	enyc	pluma	fine
+2006-08-21T09:43:00.000Z	enyc	pluma	but you need SMTP accessible to localhost on the box... in order for fetchmail to deliver its mails
+2006-08-21T09:43:00.000Z	enyc	pluma	and you need to run a pop3 server
+2006-08-21T09:44:00.000Z	enyc	pluma	sumlp way is to use ubuntu's postfix  and install courier-pop3d  and use UNIX login usernames/passwords ...
+2006-08-21T09:44:00.000Z	enyc	pluma	err... Simple  way   even
+2006-08-21T09:46:00.000Z	pluma	enyc	So what packages then? courier-pop3d and postfix?
+2006-08-21T09:46:00.000Z	enyc	pluma	id try them...  im a fraim im busy and cant tell you a lot more... sorry
+2006-08-21T09:46:00.000Z	enyc	pluma	fetchmail too
+2006-08-21T09:47:00.000Z	pluma	enyc	No problem at all. Happy about any advice I can get.
+2006-08-21T09:50:00.000Z	pluma	enyc	courier-pop = courier-pop3d?

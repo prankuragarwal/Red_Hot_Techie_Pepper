@@ -1,0 +1,24 @@
+2007-09-29T14:54:00.000Z	ckrough		Anyone know why ubuntu puts 127.0.1.1 in the /etc/hosts file, and what I can do to stop dnsmasq from using it?
+2007-09-29T14:55:00.000Z	usser	ckrough	otherwise your network wont work ))
+2007-09-29T14:55:00.000Z	ckrough	usser	right your are, but I cant find documentation on it's purpose
+2007-09-29T14:56:00.000Z	usser	ckrough	127.0.0.1 is your own comp address, and usually all network apps use it
+2007-09-29T14:56:00.000Z	usser	ckrough	servers etc by default
+2007-09-29T14:56:00.000Z	ckrough	usser	127.0.1.1 is the one I am referring to. ubuntu 6.06lts puts it in /etc/hosts
+2007-09-29T14:56:00.000Z	usser	ckrough	yes that is supposed to be there )
+2007-09-29T14:56:00.000Z	usser	ckrough	do u have some problems with it or what?
+2007-09-29T14:57:00.000Z	ckrough	usser	do you what it's for? yes, dnsmasq returns it when resolving the servers short name
+2007-09-29T14:58:00.000Z	usser	ckrough	heh, it a way for your machine to refer to itself even when it has no network connection it always knows what its called, sort of like. who am i?
+2007-09-29T14:59:00.000Z	ckrough	usser	ubuntu is the first distro I've seen do that, I removed it once but then sudo/logins break. I just need the dnsmasq to ignore that 127.0.1.1 address somehow so that it returns the proper one
+2007-09-29T15:00:00.000Z	usser	ckrough	wow strange to hear it, even windows uses loopback/127.0.0.1 address its like a cornerstone of tcp/ip
+2007-09-29T15:00:00.000Z	ckrough	usser	its 127.0.1.1
+2007-09-29T15:00:00.000Z	ckrough	usser	in addition to 127.0.0.1. 127.0.0.1 isnt causes any issues, it's the 1.1 that creeping me out
+2007-09-29T15:01:00.000Z	ckrough	usser	I just removed it and left the static IP entry for that serve rin there... see what happends
+2007-09-29T15:02:00.000Z	usser	ckrough	wow hm my bad, hm strange i never noticed it, heh dunno what is it )
+2007-09-29T15:03:00.000Z	ckrough	usser	hmm, it's working fine with 127.0.1.1 removed. Maybe it's only necessary if you have no other IP listed for the servers name... so: localhost 127.0.0.1 and servername x.x.x.x, or servername 127.0.1.1 if it has no network card. It's working now, so Im rolling with it
+2007-09-29T15:07:00.000Z	usser	ckrough	i dunno i see no reason for 127.0.1.1 to be there
+2007-09-29T15:08:00.000Z	ckrough	usser	I removed it. Last time I removed it I couldn't log in, had to boot from live and replace it, we'll see... I rarely log into the console on that one so I'm not gonna bother testing it now
+2007-09-29T15:09:00.000Z	usser	ckrough	did u also put your host name on the line with 127.0.0.1
+2007-09-29T15:09:00.000Z	ckrough	usser	no sir
+2007-09-29T15:09:00.000Z	usser	ckrough	i think it really belongs there
+2007-09-29T15:09:00.000Z	ckrough	usser	ahh
+2007-09-29T15:10:00.000Z	ckrough	usser	done. and dnsmasq must be smart enough to ignore the 127 entry. problem solved. thankx

@@ -1,0 +1,24 @@
+2009-05-11T09:13:00.000Z	Demerzel		anyone? :)
+2009-05-11T09:14:00.000Z	Guest92469	Demerzel	from grub you can hit "e" to edit
+2009-05-11T09:14:00.000Z	Guest92469	Demerzel	and then change the kernel command line to specify "root=hda" for example
+2009-05-11T09:14:00.000Z	Demerzel	Guest92469	yeah i've done that to add "break=top" to the kernel line
+2009-05-11T09:15:00.000Z	Demerzel	Guest92469	root is already specified as a UUID
+2009-05-11T09:15:00.000Z	Guest92469	Demerzel	if you know what partition that actually is, try specifying it (root=hda3)
+2009-05-11T09:16:00.000Z	Guest92469	Demerzel	skip the UUID stuff for this test.
+2009-05-11T09:17:00.000Z	Guest92469	Demerzel	if merely specifying the root doesn't work, you may also have to delete the initramfs spec on the kernel command line.
+2009-05-11T09:18:00.000Z	Demerzel	Guest92469	as in remove that line from grub?
+2009-05-11T09:19:00.000Z	Guest92469	Demerzel	I think so, but now you're getting beyond where I have explored.  Some distros need their ramfs, others don't.
+2009-05-11T09:19:00.000Z	Guest92469	Demerzel	panic'd because it couldn't find the root?
+2009-05-11T09:20:00.000Z	Guest92469	Demerzel	ok, give it a try.  If the driver for the root disk is a module in the initrd, tho, you'll need it...
+2009-05-11T09:20:00.000Z	Guest92469	Demerzel	the uuid crap is because disk drives get different names when you plug in I/O cards (or sometimes just USB drives).
+2009-05-11T09:22:00.000Z	Guest92469	Demerzel	if your filesystems are labeled, you can maybe specify root=LABEL=[its label]
+2009-05-11T09:23:00.000Z	Demerzel	Guest92469	i think the key issue now is that my root is jfs => i need the jfs module that's part of initrd
+2009-05-11T09:23:00.000Z	Demerzel	Guest92469	however, when i look at the initrd before its contents are executed ... conf/initramfs.conf says BOOT=nfs
+2009-05-11T09:24:00.000Z	Guest92469	Demerzel	yow, you made your root jfs?
+2009-05-11T09:24:00.000Z	Guest92469	Demerzel	So when you make the sed change, it boots?  But it doesn't keep it as a permanent change?
+2009-05-11T09:24:00.000Z	Demerzel	Guest92469	it still doesn't boot ... it keeps trying to mount NFS
+2009-05-11T09:25:00.000Z	Guest92469	Demerzel	Do you have a way to boot from somewhere else, e.g. a live CD or DVD?  You can do that, and whack on the initram file from there.
+2009-05-11T09:26:00.000Z	Demerzel	Guest92469	the BOOT flag seems to control which scripts in the /scripts directory get executed.  Somehow during the time that /init processes the config file and actually starts executing perhaps the value of the BOOT variable changes?
+2009-05-11T09:27:00.000Z	Guest92469	Demerzel	good luck, I've been there with an unbootable system (just last night), but I don't know how to solve your problem.
+2009-05-11T09:28:00.000Z	Demerzel	Guest92469	thanks much man ... i appreciate the help!
+2009-05-11T10:19:00.000Z	Demerzel	Guest92469	so check it out ... i removed the nfs-related scripts from /scripts within the initrd after it booted and symlinked the "local" scripts to the nfs ones ... voila it went past and actually booted ... it stopped with a fsck error but i can work with that

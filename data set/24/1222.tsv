@@ -1,0 +1,24 @@
+2010-05-11T11:43:00.000Z	shadow-wolf		question: does wget use http_proxy varible?
+2010-05-11T11:43:00.000Z	bigbrovar	shadow-wolf	yes it does
+2010-05-11T11:45:00.000Z	bigbrovar	shadow-wolf	what is the output of echo $http_proxy
+2010-05-11T11:48:00.000Z	shadow-wolf	bigbrovar	http://ubuntu.pastebin.com/TcaSJnSh
+2010-05-11T11:50:00.000Z	bigbrovar	shadow-wolf	everything seems fine to me.. anyway to be really show try
+2010-05-11T11:50:00.000Z	bigbrovar	shadow-wolf	export http_proxy=http://proxy.ct:3128/
+2010-05-11T11:51:00.000Z	bigbrovar	shadow-wolf	also make your the parameters are correct cus wget falls back to port 80 if the parameters are wrong
+2010-05-11T11:57:00.000Z	shadow-wolf	bigbrovar	ok but why when i change default proxy in /etc/wgetrc does it only use the proxy when i sudo wget :/ and not only wget
+2010-05-11T11:59:00.000Z	bigbrovar	shadow-wolf	I didnt get you there.. can you try rephrasing. Is it working now?
+2010-05-11T12:02:00.000Z	shadow-wolf	bigbrovar	: http://ubuntu.pastebin.com/Z1YhvUBC
+2010-05-11T12:05:00.000Z	bigbrovar	shadow-wolf	oh so it works when u add proxy parameters to /etc/wgetrc? but you have to do it with sudo?
+2010-05-11T12:06:00.000Z	shadow-wolf	bigbrovar	yea :/ and when i ssh into the box it works perfectly no sudo needed
+2010-05-11T12:06:00.000Z	shadow-wolf	bigbrovar	using only export http_proxy
+2010-05-11T12:06:00.000Z	bigbrovar	shadow-wolf	well its because u are using the systemwide config for wget which is in /etc
+2010-05-11T12:07:00.000Z	shadow-wolf	bigbrovar	ok but why does wget work fine through ssh using export http_proxy but not on the actual machine
+2010-05-11T12:07:00.000Z	bigbrovar	shadow-wolf	the settings in /etc/wgetrc is probably not readable to a normal user
+2010-05-11T12:09:00.000Z	bigbrovar	shadow-wolf	well your first lesson.. when u change your proxy settings you have to tell bash to use the new proxy settings. and the way to do that is to either source it by doing source .bashrc (if the proxy is added to your bashrc file in your homedir) or just log out and log in again
+2010-05-11T12:10:00.000Z	bigbrovar	shadow-wolf	the reason it works with ssh is because ssh starts a new bash session which uses the proxy parameter
+2010-05-11T12:12:00.000Z	shadow-wolf	bigbrovar	ok tried that same result
+2010-05-11T12:14:00.000Z	bigbrovar	shadow-wolf	tried what? sourcing? restarting?
+2010-05-11T12:15:00.000Z	shadow-wolf	bigbrovar	yea added export http_proxy=http://proxy.ct:3128 to .bashrc, sourced .bashrc and restarted, wget still doesn't use proxy
+2010-05-11T12:18:00.000Z	bigbrovar	shadow-wolf	but it does via ssh? try adding proxy varable to /etc/profile /etc/bash.bashrc and /etc/environment and restart and see if that works
+2010-05-11T12:18:00.000Z	shadow-wolf	bigbrovar	yea that what confusing me :/ ok adding it now will brb with results
+2010-05-11T12:26:00.000Z	shadow-wolf	bigbrovar	i think it a bug in ubuntu somewere :/ cause that didn't fix either

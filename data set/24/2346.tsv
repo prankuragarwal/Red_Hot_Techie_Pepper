@@ -1,0 +1,24 @@
+2009-01-17T11:32:00.000Z	torrancew		sorry if i'm being a bother, but this is a rather odd problem - i have sound modules loaded, lspci returns my proper sound card, but alsa just isn't seeing it
+2009-01-17T11:33:00.000Z	torrancew		qubits - command not found, and couldn't find it with apt either
+2009-01-17T11:35:00.000Z	gnutron	torrancew	use asoundconf in a terminal and set default sound card, should be in your menu also
+2009-01-17T11:35:00.000Z	torrancew	gnutron	- what's the parameter for the card?
+2009-01-17T11:36:00.000Z	gnutron	torrancew	try asoundconf -list
+2009-01-17T11:37:00.000Z	torrancew	gnutron	- done that - the command is "asoundconf set-default-card PARAMETER"
+2009-01-17T11:37:00.000Z	gnutron	torrancew	try system/preferences/set default sound card, its easier
+2009-01-17T11:38:00.000Z	torrancew	gnutron	there is no "set default sound card", but the sound menu only lets me select the software backend (alsa/pulse/oss/etc)
+2009-01-17T11:39:00.000Z	gnutron	torrancew	try asoundconf list   drop the hyphen you'll see the devices
+2009-01-17T11:39:00.000Z	torrancew	gnutron	- returns none
+2009-01-17T11:39:00.000Z	gnutron	torrancew	 lspci   does it show up
+2009-01-17T11:39:00.000Z	torrancew	gnutron	sure does
+2009-01-17T11:40:00.000Z	torrancew	gnutron	it was working after install, but it disappeared after i upgraded video drivers
+2009-01-17T11:40:00.000Z	gnutron	torrancew	asoundconf list  shows nothing!?
+2009-01-17T11:41:00.000Z	gnutron	torrancew	dmesg |less  look for it there or reboot
+2009-01-17T11:42:00.000Z	gnutron	torrancew	freaking video drivers!!  [expletives galore here]
+2009-01-17T11:42:00.000Z	torrancew	gnutron	indeed
+2009-01-17T11:42:00.000Z	torrancew	gnutron	i've found that others have had similar problems, but haven't found a solution that works for me. on a side note, 64 bit intrepid is much.... wonkier than 32
+2009-01-17T11:43:00.000Z	gnutron	torrancew	i wont put 8.10 on my 64 bit box anytime soon it works too good to break.
+2009-01-17T11:44:00.000Z	torrancew	gnutron	what version are you running?
+2009-01-17T11:44:00.000Z	gnutron	torrancew	on this box, 8.10, been dist upgrading it since buntu was invented
+2009-01-17T11:45:00.000Z	torrancew	gnutron	and your 64 bit?
+2009-01-17T11:46:00.000Z	gnutron	torrancew	the 64 bit is still 8.04 hardy and java/flash ff-64 work great with sound, dvd et al
+2009-01-17T12:09:00.000Z	gnutron	torrancew	yes you can modprobe module  good to go

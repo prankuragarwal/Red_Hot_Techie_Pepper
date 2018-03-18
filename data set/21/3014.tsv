@@ -1,0 +1,21 @@
+2009-04-25T05:44:00.000Z	evantandersen		i'm having trouble with a shell script. I need to take this string "+XX.0C" (Where , turn it into
+2009-04-25T05:44:00.000Z	evantandersen		oops
+2009-04-25T05:45:00.000Z	evantandersen		 i'm having trouble with a shell script. I need to take this string "+XX.0C" (Where X is a number) , turn it into a pure number so i can add it to a sum
+2009-04-25T05:45:00.000Z	mysphyt	evantandersen	Have you tried sed?
+2009-04-25T05:45:00.000Z	evantandersen	mysphyt	no
+2009-04-25T05:45:00.000Z	mysphyt	evantandersen	Can you pastebin the script?
+2009-04-25T05:48:00.000Z	evantandersen	mysphyt	http://ubuntu.pastebin.com/m5d679817
+2009-04-25T05:52:00.000Z	mysphyt	evantandersen	I'm installing lm-sensors so I can see what your input's like.  :P
+2009-04-25T05:54:00.000Z	evantandersen	mysphyt	well that grep command gives me +66.0*C +67.0*C (Degrees sign, i can't do it) I have a dual core macbook
+2009-04-25T05:56:00.000Z	mysphyt	evantandersen	So are you trying to get an integer, or just trying to get rid of the + and the degrees celsius?
+2009-04-25T05:57:00.000Z	evantandersen	mysphyt	yes i want an interger. The number after decimal place is always a 0, so yeah an interger
+2009-04-25T06:02:00.000Z	mysphyt	evantandersen	Try the updated version here: http://ubuntu.pastebin.com/m1478d00d
+2009-04-25T06:04:00.000Z	mysphyt	evantandersen	All I've futzed with is the loop itself; the sed command strips it down to just the integer.  There are more elegant ways to do it, but that regexp should work as long as the input doesn't change.
+2009-04-25T06:05:00.000Z	evantandersen	mysphyt	it says /usr/bin/temp: line 17: syntax error near unexpected token `done'
+2009-04-25T06:06:00.000Z	mysphyt	evantandersen	Ah.  Get rid of the " ; done" at the end of the line I edited; it's redundant in the script.  In any case, the sed command should do what youw ant.
+2009-04-25T06:08:00.000Z	evantandersen	mysphyt	now it says Unexpected end of file
+2009-04-25T06:09:00.000Z	mysphyt	evantandersen	Again, I was working on the line by itself, rather than the whole script.  The thing to pay attention to is the sed command I added--it'll do the processing you want.
+2009-04-25T06:09:00.000Z	evantandersen	mysphyt	yeah thanks
+2009-04-25T06:13:00.000Z	evantandersen	mysphyt	no matter where i place the "done"(s) i can't get it to work
+2009-04-25T06:16:00.000Z	mysphyt	evantandersen	I'm sorry to say that's a logic problem.  I wish I had time to debug the whole script for you, but unfortunately I have to leave--just make sure you've got all your loops correctly matched (that is, a "do" for each "done" and likewise).
+2009-04-25T06:16:00.000Z	evantandersen	mysphyt	thanks alot

@@ -1,0 +1,18 @@
+2005-11-23T16:52:00.000Z	spencer		Im trying to run this command: the /proc/asound/card0/pcm0p/oss file, but the permissions are wrong. I change the permissions and edit it, but when I reboot the oss file gets set back to default with nothing in it and no write permissions for anyone. How can I fix this?
+2005-11-23T16:52:00.000Z	spencer		Sorry, im trying to edit that file
+2005-11-23T16:53:00.000Z	Blissex	spencer	I am not so sure you should _edit_ that file. It is a virtual file, not a real file. it is a settings file.
+2005-11-23T16:54:00.000Z	spencer	Blissex	I need to edit it to get sound to work in a game.
+2005-11-23T16:54:00.000Z	Blissex	spencer	no, you don't, you need to _write_ to it.
+2005-11-23T16:54:00.000Z	Blissex	spencer	consider reading the OSS compatibility section of http://tinyurl.com/4ogk2
+2005-11-23T16:54:00.000Z	spencer	Blissex	Yes, but everytime i reboot it gets set back to read only
+2005-11-23T16:55:00.000Z	Blissex	spencer	it is a virtual file, not a real file. It is under '/proc'.
+2005-11-23T16:55:00.000Z	spencer	Blissex	Well how do I get my sound to work with this file?
+2005-11-23T16:56:00.000Z	Blissex	spencer	you 'echo' the value to the file in an initialization script.
+2005-11-23T16:56:00.000Z	Blissex	spencer	consider reading the OSS compatibility section of http://tinyurl.com/4ogk2
+2005-11-23T16:56:00.000Z	spencer	Blissex	I do use the echo command, but I get permission denied
+2005-11-23T16:56:00.000Z	Blissex	spencer	you have to do it as 'root'.
+2005-11-23T16:57:00.000Z	spencer	Blissex	I use sudo, too. Which startup script do you recommend?
+2005-11-23T16:57:00.000Z	Blissex	spencer	there is a subtle difficulty with 'sudo' and redirection... if you say 'sudo echo xxxx > yyy', the file "yyy" is opened by the current shell, not by 'sudo'.
+2005-11-23T16:58:00.000Z	Blissex	spencer	try 'sudo bash' and then 'echo .....' at the prompt that appears.
+2005-11-23T16:58:00.000Z	spencer	Blissex	Is there a config file I may edit to get this command to run at startup?
+2005-11-23T16:59:00.000Z	Blissex	spencer	/etc/init.d/bootmisc.sh

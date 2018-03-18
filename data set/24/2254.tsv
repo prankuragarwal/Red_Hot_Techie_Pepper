@@ -1,0 +1,24 @@
+2009-03-02T11:45:00.000Z	hmw		My motd has been replaced with the original text. I am trying to figure out, which program did it. Someone got an idea, where to look?
+2009-03-02T11:47:00.000Z	Myst	hmw	sometimes a newly installed program will overwrite files, but it generally asks you
+2009-03-02T11:47:00.000Z	hmw	Myst	thanks. I suspect the normal updates to be the bad guy. Google is not a big help, or I am searching with the wrong terms. I am going to grep my whole file system now. *annoyed*
+2009-03-02T11:48:00.000Z	hmw	Myst	They took away my wonderful colored ASCII art *g*
+2009-03-02T11:48:00.000Z	Myst	hmw	if you redo a good one i wouldnt mind seeing it...
+2009-03-02T11:49:00.000Z	hmw	Myst	No, I am not that good *G* It's just a 'figlet <hostname>' in rainbow colors
+2009-03-02T11:50:00.000Z	hmw	Myst	If you don't know already, check out mplayer's ASCII video out filter.
+2009-03-02T11:52:00.000Z	Myst	hmw	i havent seen it... ill take a look... one thing you could do is write protect the /etc/motd file so it can't be overwritten...
+2009-03-02T11:53:00.000Z	hmw	Myst	I thought of write protection already, but feared some problems might occur. I might just have found the script. (/etc/{init.d/bootmisc.sh,rcS.d/S55bootmisc.sh}
+2009-03-02T11:54:00.000Z	hmw	Myst	If I only would remember grep and find syntax. Always gotta read the man pages
+2009-03-02T11:55:00.000Z	Myst	hmw	HAHA same here... you could always copy the motd you make into your home directory and then add a cron job to restore it once a day...
+2009-03-02T11:56:00.000Z	hmw	Myst	No way LOL. I want to resolve this once and for all at the root of the evil. The scripts I found, do a cat >> /var/run/motd, so I keep looking
+2009-03-02T11:57:00.000Z	hmw	Myst	I guess, the least people use Ubuntu at the console reguraily?
+2009-03-02T11:59:00.000Z	hmw	Myst	How sure are you about making motd read only causing no harm later? (The updater might crash or whatever?)
+2009-03-02T11:59:00.000Z	Myst	hmw	yeah most people are gui nowadays... it just doesnt seem like linux with a gui...
+2009-03-02T11:59:00.000Z	hmw	Myst	But it would be a cheap solution...
+2009-03-02T11:59:00.000Z	Myst	hmw	the updater *should* write an error to the log file about overwriting that file...
+2009-03-02T12:00:00.000Z	Myst	hmw	and then just continue
+2009-03-02T12:05:00.000Z	hmw	Myst	dpkg could be it, right?
+2009-03-02T12:08:00.000Z	Myst	hmw	you know its possible... but i cant seem to recall anything that updates those files...
+2009-03-02T12:09:00.000Z	hmw	Myst	grep "motd" /var/lib/dpkg/info/base-files.postinst
+2009-03-02T12:10:00.000Z	Myst	hmw	looks like that is the culprit and it looks like it overwrote my motd file as well... time to turn off updates
+2009-03-02T12:11:00.000Z	Myst	hmw	mine was moved to /etc/motd.old
+2009-03-02T12:12:00.000Z	hmw	Myst	i have no .old ... odd. I turned off autoupdates, but I should keep updating, i guess. Changed the template motd and will wait, so I will known, when it happens again.

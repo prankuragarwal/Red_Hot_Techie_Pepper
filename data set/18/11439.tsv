@@ -1,0 +1,18 @@
+2006-08-30T05:11:00.000Z	Gecko		Hey, can anyone tell me how to generate ssl certificates for virtual hosts on apache?
+2006-08-30T05:11:00.000Z	longwave	Gecko	you can't run ssl on vhosts because of the way secure HTTP works
+2006-08-30T05:11:00.000Z	longwave	Gecko	you need one IP address per SSL host, no way around it
+2006-08-30T05:12:00.000Z	Gecko	longwave	when I examine the host that I now administer, each of the vertual host have their own .pem file... So is what you say true?
+2006-08-30T05:13:00.000Z	longwave	Gecko	well, apache can listen on multiple IPs, so you can do vhosts that way, but you can't do it from just a single IP
+2006-08-30T05:14:00.000Z	Gecko	longwave	each vhost have their own SSLCertificateFile option...
+2006-08-30T05:14:00.000Z	longwave	Gecko	read http://en.wikipedia.org/wiki/https - the last paragraph in the limitations section
+2006-08-30T05:15:00.000Z	Gecko	longwave	yes, I understand that. So I can just copy one of the certificates for this particular ssl host?
+2006-08-30T05:15:00.000Z	longwave	Gecko	yes, as long as the domain name matches the SSL certificate of course, you should just be able to specify it in the apache config
+2006-08-30T05:16:00.000Z	Gecko	longwave	well, the domain name doesn't match, that's why I wanted to generate a new one
+2006-08-30T05:16:00.000Z	longwave	Gecko	you may need a chain certificate or something as well depending on how the original vhost was configured, if you have the same apache config file though it should work fine
+2006-08-30T05:16:00.000Z	longwave	Gecko	to get a valid one that is accepted by web browsers, you have to pay
+2006-08-30T05:16:00.000Z	Gecko	longwave	I just want one that identifies itself as the host that is accessed
+2006-08-30T05:16:00.000Z	longwave	Gecko	or you can generate your own CA and generate a cert from that, but it will give a warning in any web browser where the CA cert is not installed
+2006-08-30T05:17:00.000Z	Gecko	longwave	if I wanted to do that, how would I do it?
+2006-08-30T05:18:00.000Z	longwave	Gecko	there is a quick method here: http://www.rpatrick.com/tech/makecert/
+2006-08-30T05:18:00.000Z	longwave	Gecko	i am sure there is more info about this in the apache documentation
+2006-08-30T05:18:00.000Z	longwave	Gecko	also try http://www.modssl.org/docs/2.8/ssl_faq.html#cert-real

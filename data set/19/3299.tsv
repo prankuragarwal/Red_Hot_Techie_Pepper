@@ -1,0 +1,19 @@
+2010-06-22T04:50:00.000Z	Joelito		hi all
+2010-06-22T04:50:00.000Z	Joelito		I have a question about setting /home to a new partition
+2010-06-22T04:50:00.000Z	Joelito		I follow the steps like in here: http://www.psychocats.net/ubuntu/separatehome
+2010-06-22T04:50:00.000Z	Joelito		but when It starts the X crash about can not open /home when using "/."
+2010-06-22T04:51:00.000Z	Joelito		my paste: http://pastebin.com/GU0ggu85
+2010-06-22T04:51:00.000Z	Joelito		any ideas?
+2010-06-22T04:52:00.000Z	Cynthia	Joelito	The /dev/sda2 line in your pasted fstab file is commented out. Remove the #.
+2010-06-22T04:53:00.000Z	Cynthia	Joelito	Make sure you've moved all of the files from the older root (/)'s /home into your new /home partition first
+2010-06-22T04:55:00.000Z	Joelito	Cynthia	hi I commented because I needed to return back to normal state
+2010-06-22T04:55:00.000Z	Joelito	Cynthia	and I did move, well copy all the files
+2010-06-22T04:56:00.000Z	Cynthia	Joelito	you probably forgot some of the files in your /home directory, namely the hidden ones (.filename). What command/program/method did you use to recopy your files to the old root's /home^
+2010-06-22T04:58:00.000Z	Joelito	Cynthia	I used # sudo cp -r * /media/new_partition
+2010-06-22T04:59:00.000Z	Cynthia	Joelito	that command omits .files from the current directory, but preserves .files from subdirectories. If you still have access to your old /home partition, issue this additional command: cp .* /media/new_partition
+2010-06-22T04:59:00.000Z	Joelito	Cynthia	yeah, just confirmed  it didn't copy the hidden files
+2010-06-22T04:59:00.000Z	Cynthia	Joelito	wait, no, cp -r .* /media/new_partition
+2010-06-22T05:00:00.000Z	Joelito	Cynthia	ok, is there a single line which will copy both hidden and normal files
+2010-06-22T05:01:00.000Z	Cynthia	Joelito	cp -ar . /media/new_partition
+2010-06-22T05:02:00.000Z	Cynthia	Joelito	(+) The dot on its own refers to the current directory, and 'cp' correctly grabs the list of all files without exception if you use the dot
+2010-06-22T05:04:00.000Z	Joelito	Cynthia	Thanks =(

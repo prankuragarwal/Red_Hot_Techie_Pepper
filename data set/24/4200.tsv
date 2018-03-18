@@ -1,0 +1,24 @@
+2008-03-18T15:58:00.000Z	MM2		I had LVM installed in this server, but now I want install whole server from stratch. How I remove any existing LVM data? I don't need to save data.
+2008-03-18T15:59:00.000Z	pajamian	MM2	manually partition and delete all the partitions, then start over.
+2008-03-18T16:00:00.000Z	MM2	pajamian	install program still founds old LVM data and won't reinstall
+2008-03-18T16:00:00.000Z	pajamian	MM2	using the alternate install disk?
+2008-03-18T16:00:00.000Z	MM2	pajamian	No, server install CD
+2008-03-18T16:01:00.000Z	pajamian	MM2	ok, I don't have experience with the server install, but it should work just fine.  I would manually partition everything, though.
+2008-03-18T16:03:00.000Z	pajamian	MM2	you can always wipe the boot sector and partition table with DD, that should trash anything that's there.
+2008-03-18T16:04:00.000Z	MM2	pajamian	I tried that...
+2008-03-18T16:04:00.000Z	pajamian	MM2	errr: dd (lowercase)
+2008-03-18T16:05:00.000Z	MM2	pajamian	I tried this: "dd if=/dev/zero of=/dev/sda bs=1k count=10"
+2008-03-18T16:08:00.000Z	pajamian	MM2	the correct command is something like: dd if=/dev/zero of=/dev/hda bs=512 count=1
+2008-03-18T16:08:00.000Z	pajamian	MM2	your command should have done it, though, it's just overkill
+2008-03-18T16:08:00.000Z	MM2	pajamian	Nope, I have raid
+2008-03-18T16:09:00.000Z	pajamian	MM2	I cut and pasted that line, change hda to whatever is appropriate.
+2008-03-18T16:09:00.000Z	MM2	pajamian	which partition holds LVM information?
+2008-03-18T16:10:00.000Z	pajamian	MM2	whatever partition you designate for LVM.  If you wipe the master partition it shouldn't matter.
+2008-03-18T16:10:00.000Z	pajamian	MM2	I mean the primary partition table
+2008-03-18T16:12:00.000Z	pajamian	MM2	the command you used should have worked, you need to do it as root (or sudo) and not have the drive mounted at the time, though (boot to live cd)
+2008-03-18T16:12:00.000Z	MM2	pajamian	I just want to wipe LVM out and start over
+2008-03-18T16:13:00.000Z	pajamian	MM2	yep, to be honest it should work to just select manual partitioning and wipe everything, then add the partitions the way you want during install.
+2008-03-18T16:13:00.000Z	pajamian	MM2	dd should not even be necessary.
+2008-03-18T16:14:00.000Z	MM2	pajamian	It is not that easy. Install process hangs if it founds about old LVM
+2008-03-18T16:14:00.000Z	MM2	pajamian	Actually this is ubuntu+1 server, but I think it is the same for ubuntu
+2008-03-18T16:15:00.000Z	pajamian	MM2	#ubuntu+1

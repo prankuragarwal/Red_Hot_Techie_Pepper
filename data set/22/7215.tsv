@@ -1,0 +1,22 @@
+2006-06-17T16:56:00.000Z	Drake_		I have persistent of logs on the 17th minute of every hour every day that seems to be done by cron but I am not sure where the cron job is and why it is neccesary of if it is neccessary ...Jun 16 16:17:01 drake CRON[21986] : (pam_unix) session opened for user root by (uid=0) Jun 16 16:17:01 drake CRON[21986] : (pam_unix) session closed for user root
+2006-06-17T16:56:00.000Z	Drake_		how could I track down where that cron job is being called from and what is the reason for it?
+2006-06-17T05:00:00.000Z	green_earz	Drake_	have a look at cat /etc/crontab and ls -l /etc | grep cron  to if you can track the cron job down
+2006-06-17T05:03:00.000Z	Drake_	green_earz	I have four entries in /etc/crontab the first one is 17 *    * * *   root    run-parts --report /etc/cron.hourly though I don't see what would cause it to spawn something that would create a Jun 16 18:17:01 drake CRON[21994] : (pam_unix) session opened for user root by (uid=0) in /var/log/auth.log
+2006-06-17T05:12:00.000Z	green_earz	Drake_	   cd /etc/cron.hourly   and have look in, there may be a clue ?
+2006-06-17T05:13:00.000Z	Drake_	green_earz	there is nothing in /etc/cron.hourly except a file called .placeholder
+2006-06-17T05:15:00.000Z	Drake_	green_earz	there is an entry in /etc/crontable 17 *    * * *   root    run-parts --report /etc/cron.hourly that seems to do something on the 17th minute of the each hour though I don't see anything in /etc/cron.hourly that it could be doing
+2006-06-17T05:22:00.000Z	Drake_	green_earz	any clue to find out what is causing that in the /var/log/auth.log?
+2006-06-17T05:23:00.000Z	green_earz	Drake_	  http://www.linuxforums.org/forum/linux-security/43305-my-machine-risk.html
+2006-06-17T05:25:00.000Z	Drake_	green_earz	thanks for the link that is good that it is not a risk though still is bugging me why it is being called and where exactly is the cron job that is calling it
+2006-06-17T05:28:00.000Z	green_earz	Drake_	i look at my cat /var/log/auth.log  and the same thing, and its now bugging me to . some thing some doing it. where ?
+2006-06-17T05:30:00.000Z	Drake_	green_earz	I am not sure which cron job is calling it though I do know that there is a entry in crontab that I am assuming is being called  on the 17th minute of every hour 17 *    * * *   root    run-parts --report /etc/cron.hourly
+2006-06-17T05:35:00.000Z	green_earz	Drake_	 its calling cron every hourly but there no job to do, so its makes a log of the call but no job to do
+2006-06-17T05:36:00.000Z	Drake_	green_earz	you are saying that because it is calling a cron every hour at a certain minute of the hour it is making a log of it in /var/log/auth.log? That seems like a strange place to be logging a cron job that is actually doing nothing
+2006-06-17T05:36:00.000Z	green_earz	Drake_	the calls are at 17 pass the hour
+2006-06-17T05:40:00.000Z	Drake_	green_earz	I am guessing that those entries in crontab are there by default the hourly one is on the 17th minute the daily cron is 6 hour and 25 minute the weekly cron is the 6 hour and 47th minute and 7th day of week and the monthly cron is 1st day of the month there 52 minute of the 6th hour....wtf...where did those off the cuff times come from?
+2006-06-17T05:41:00.000Z	green_earz	Drake_	cat /etc/crontab  and 17 *    * * *   root    run-parts --report /etc/cron.hourly  then > Jun 17 00:17:01 localhost CRON[16358] : (pam_unix) session opened for user root
+2006-06-17T05:44:00.000Z	Drake_	green_earz	I get the same entry it is very strange times that are set for hourly, daily, weekly and monthly cronjobs
+2006-06-17T05:44:00.000Z	green_earz	Drake_	some like 6 oclock in the morning for the cron jobs, its the business world, before peaple get to work the server clean the log jobs
+2006-06-17T05:47:00.000Z	Drake_	green_earz	yes I would figure that but why by default 6:25 daily, 6:47 on the 7th day of the week for weekly cron, 6:25 on the first day of the month
+2006-06-17T05:51:00.000Z	green_earz	Drake_	on debian sarge its 17mins cron.hourly | 25mins 6 cron.daily | 47mins  6 cron.weekly | 52mins  6 cron.monthly
+2006-06-17T05:53:00.000Z	Drake_	green_earz	ahhh those are such "weird" pseudo random times

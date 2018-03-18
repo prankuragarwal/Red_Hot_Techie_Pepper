@@ -1,0 +1,21 @@
+2008-08-13T02:35:00.000Z	unop	Kernel	not really sure what the problem is from your question there? does changing the mac address prohibit you from connecting, or do you lose connection once you change the mac address?
+2008-08-13T02:36:00.000Z	Kernel	unop	yea. i lose connection and it wont reconnect. ive checked my router and i see no mac filtering.
+2008-08-13T02:36:00.000Z	Kernel	unop	using ifconfig i see that the mac addy is changed.
+2008-08-13T02:37:00.000Z	unop	Kernel	hmm, can you ping the interface itself after the mac address change?
+2008-08-13T02:38:00.000Z	Kernel	unop	nope. no traffic. cant ping the gateway or anything.
+2008-08-13T02:38:00.000Z	unop	Kernel	forget any other hosts on the network for the timebeing, can you ping the interface itself?
+2008-08-13T02:38:00.000Z	Kernel	unop	....in theory i should just be able to ifdown ath0;change mac;ifup ath0 and it would work?....
+2008-08-13T02:39:00.000Z	Kernel	unop	are u saying to ping the machines own ip adress?
+2008-08-13T02:39:00.000Z	unop	Kernel	in theory yes .. but it also depends on the driver module, it has to support a soft change
+2008-08-13T02:40:00.000Z	unop	Kernel	yes, though your maching might have many interfaces and therefore many ip addresses, we are bothered with the wireless device in particular
+2008-08-13T02:40:00.000Z	Kernel	unop	let me see if i can ping the ip once i change the mac. i am going to close irc for a sec so i dont create a ghost of my nic. i *will* be right back
+2008-08-13T02:44:00.000Z	Kernel	unop	heres the all what i did: http://pastebin.com/m31ae74c4
+2008-08-13T02:44:00.000Z	Kernel	unop	i can ping the ip of this machine. but no others
+2008-08-13T02:46:00.000Z	unop	Kernel	hmm, how about the output of these?   iwlist ath0 scan; iwconfig ath0; arp -a
+2008-08-13T02:47:00.000Z	Kernel	unop	run them with spoofed mac? or without?
+2008-08-13T02:47:00.000Z	unop	Kernel	with
+2008-08-13T02:51:00.000Z	Kernel	unop	heres the output of those 3 commands http://pastebin.com/m1b855888
+2008-08-13T02:54:00.000Z	unop	Kernel	hmm, does  sudo dhclient ath0  have an effect now?
+2008-08-13T02:55:00.000Z	Kernel	unop	i also just had a realization...when i change the mac adress. i noticed it says: Encryption key:off under iwconfig.....could it be when i change the mac...it doesnt want to use the encryption key?
+2008-08-13T02:55:00.000Z	Kernel	unop	but in /etc/network/interfaces where i set up this interface...i dont see anything related to my mac address
+2008-08-13T02:56:00.000Z	unop	Kernel	well, the key depends on the MAC address, if you change it, you upset authentication and encryption . try using iwconfig to set the right key again

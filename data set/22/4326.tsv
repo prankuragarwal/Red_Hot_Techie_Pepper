@@ -1,0 +1,22 @@
+2008-02-01T22:32:00.000Z	Jay955		being new to this i must be missing something..... i'm trying to setup ubunto as a file server where i can store files (pic mp3 and doc file) on it, in order to free up my other systems (xp)
+2008-02-01T22:33:00.000Z	Jay955		my problem is that i can't access my secondary harddrive on ubunto
+2008-02-01T22:35:00.000Z	Jay955		i tryed throw my xp network or map but nothing
+2008-02-01T22:35:00.000Z	Jay955		i see both drives on utunto
+2008-02-01T22:36:00.000Z	Jay955		i have it mounted no problem i created folders to use
+2008-02-01T22:37:00.000Z	Jay955		i just can't see them on the xp side
+2008-02-01T22:37:00.000Z	danand	Jay955	- are you trying to set up your ubuntu box as a file server for windows??
+2008-02-01T22:38:00.000Z	danand	Jay955	- ok have you tried to set up a samba server on your ubuntu box?
+2008-02-01T22:39:00.000Z	danand	Jay955	- do you have a firewall running on ubuntu
+2008-02-01T22:42:00.000Z	danand	Jay955	- ok, did you edit your /etc/samba/samba.conf file and update the samba password data base??
+2008-02-01T22:45:00.000Z	danand	Jay955	- this may be your problem (we hope ;)) - after samba is installed you need to edit your /etc/samba/smb.conf file - then (and this is the bit I overlooked first time :) ) you need to update the samba password file
+2008-02-01T22:47:00.000Z	danand	Jay955	- do this in a terminal with the command - sudo smbpasswd -a [username] - this will prompt you to enter a password for the user
+2008-02-01T22:48:00.000Z	danand	Jay955	XLV - I need to type quicker - look at man smbpasswd for more help if need be!
+2008-02-01T22:52:00.000Z	danand	Jay955	- Fingers crossed :D
+2008-02-01T22:53:00.000Z	danand	Jay955	- Ok so you've logged into your ubuntu machine from windows??
+2008-02-01T22:55:00.000Z	danand	Jay955	- did you set up your /etc/samba/smb.conf to allow access to that folder for the user you are logged in as??
+2008-02-01T22:57:00.000Z	danand	Jay955	- would you like me to pastebin my smb.conf file??
+2008-02-01T22:58:00.000Z	danand	Jay955	- Give me 5mins - I'm a little slow!! - what is the pastebin for ubuntu?
+2008-02-01T23:02:00.000Z	danand	Jay955	- Ok, this file works for me. See - http://paste.ubuntu-nl.org/54364/
+2008-02-01T23:15:00.000Z	danand	Jay955	- Is the folder you are trying to access "owned" by the user you logged in as??
+2008-02-01T23:19:00.000Z	danand	Jay955	- that would be the problem! You can make your folder 'browse-able' but i wouldn't recommend - when you 'map network drive' in windows enter the username and password of the users folder you are trying to access in ubuntu
+2008-02-01T23:28:00.000Z	danand	Jay955	- Got to go - hope you got sorted :) with samba!

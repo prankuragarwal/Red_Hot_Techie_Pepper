@@ -1,0 +1,22 @@
+2010-10-07T14:57:00.000Z	hardik		Anyone ? No networking of any sort on U10.04 Studio on a  Dell 1525
+2010-10-07T14:57:00.000Z	ilovefairuz	hardik	pastebin: sudo lshw -C network
+2010-10-07T15:01:00.000Z	ilovefairuz	hardik	plug the wire and type: sudo mii-tool
+2010-10-07T15:01:00.000Z	ilovefairuz	hardik	ifconfig -a
+2010-10-07T15:03:00.000Z	ilovefairuz	hardik	does it show any interfaces? eth0 or so
+2010-10-07T15:04:00.000Z	ilovefairuz	hardik	sudo ifconfig eth0 up && killall dhclient && sudo dhclient eth0
+2010-10-07T15:05:00.000Z	ilovefairuz	hardik	ok just: sudo dhclient eth0
+2010-10-07T15:06:00.000Z	ilovefairuz	hardik	the last line is what matters, wait for it
+2010-10-07T15:08:00.000Z	ilovefairuz	hardik	check the cable and do this again: sudo mii-tool
+2010-10-07T15:10:00.000Z	ilovefairuz	hardik	seems there was something wrong with your cable, try again: sudo dhclient eth0 .. if it didn't work then the issue is with your route r
+2010-10-07T15:13:00.000Z	ilovefairuz	hardik	ping google.com
+2010-10-07T15:13:00.000Z	ilovefairuz	hardik	it was a cable problem then
+2010-10-07T15:15:00.000Z	ilovefairuz	hardik	sudo ifconfig wlan0 up && iwlist scan
+2010-10-07T15:15:00.000Z	ilovefairuz	hardik	and check if wlan  is blocked in: rfkill list
+2010-10-07T15:19:00.000Z	ilovefairuz	hardik	in sudo lshw -C network.. does wlan0 exist? and is it unclaimed or is there a driver?
+2010-10-07T15:20:00.000Z	ilovefairuz	hardik	try flipping the wireless kill switch on your laptop
+2010-10-07T15:22:00.000Z	ilovefairuz	hardik	what ubuntu version are you running? and paste the card line from: lspci
+2010-10-07T15:24:00.000Z	ilovefairuz	hardik	sudo apt-get install bcmwl-kernel-source
+2010-10-07T15:24:00.000Z	ilovefairuz	hardik	and reboot
+2010-10-07T15:26:00.000Z	ilovefairuz	hardik	in system > administration > hardware drivers  .. turn it on
+2010-10-07T15:28:00.000Z	ilovefairuz	hardik	in Software Sources, make sure that all sources are checked
+2010-10-07T15:30:00.000Z	ilovefairuz	hardik	open it from a terminal and check if there are any errors

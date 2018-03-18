@@ -1,0 +1,21 @@
+2008-04-28T03:48:00.000Z	Wyzard	Zacaa	I'm pretty sure that your problem is not related to X configuration; it's that the nVidia kernel module isn't being loaded
+2008-04-28T03:48:00.000Z	Wyzard	Zacaa	However, I'm unable to test this, because when I rename my copy of the nVidia module (so it can't be loaded, to try to duplicate your problem) and reboot, something puts it back  :-/
+2008-04-28T03:49:00.000Z	Wyzard	Zacaa	You said earlier that your Driver line in xorg.conf says "nvidia", right?
+2008-04-28T03:50:00.000Z	Wyzard	Zacaa	no, I didn't
+2008-04-28T03:50:00.000Z	Wyzard	Zacaa	Does /usr/lib/xorg/modules/drivers/nvidia_drv.so exist?
+2008-04-28T03:55:00.000Z	Wyzard	Zacaa	Open a terminal and run "apt-cache show nvidia-glx" -- do you get any output?
+2008-04-28T03:51:00.000Z	Wyzard	Zacaa	When you "install nvidia", what exactly do you do?
+2008-04-28T03:53:00.000Z	Wyzard	Zacaa	Using nVidia's .run file is wrong on Ubuntu, and envy probably is too
+2008-04-28T03:53:00.000Z	Wyzard	Zacaa	On the System->Administration menu, choose "Hardware Drivers"
+2008-04-28T03:53:00.000Z	Wyzard	Zacaa	What do you see in that window?
+2008-04-28T03:54:00.000Z	Wyzard	Zacaa	OK, close that window for a moment
+2008-04-28T03:56:00.000Z	Wyzard	Zacaa	OK, you're encountering a bug that I found yesterday:  for some reason the package lists didn't get downloaded during installation, and the Hardware Drivers window doesn't work right without them
+2008-04-28T03:56:00.000Z	Wyzard	Zacaa	Fom that terminal window, run "sudo apt-get update", and when it's done, open the Hardware Drivers window again
+2008-04-28T03:58:00.000Z	Zacaa	Wyzard	I actually can't access the internet to download at this very moment but I will be able to later. Would it be all right if we spoke later about this when I am able to download?
+2008-04-28T03:59:00.000Z	Wyzard	Zacaa	I should be around, though I can't make any guarantees
+2008-04-28T03:59:00.000Z	Wyzard	Zacaa	but basically, once you do "apt-get update", the Hardware Drivers window should work correctly
+2008-04-28T03:59:00.000Z	Wyzard	Zacaa	In particular, the "enabled" checkbox will be unchecked, and when you check it, it'll install the necessary software and tell you to reboot
+2008-04-28T03:59:00.000Z	Wyzard	Zacaa	and then it should work  :-)
+2008-04-28T04:01:00.000Z	Wyzard	Zacaa	I'd expect that installing nvidia-glx through synaptic *should* work too, but the Hardware Drivers window is the "official" way to do it
+2008-04-28T04:01:00.000Z	Wyzard	Zacaa	and you may actually need nvidia-glx-new rather than plain nvidia-glx
+2008-04-28T04:01:00.000Z	Wyzard	Zacaa	to go with the "nvidia-new" kernel module that you saw mentioned earlier...  I'm not sure what the difference is though

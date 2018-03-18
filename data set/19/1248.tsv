@@ -1,0 +1,19 @@
+2012-06-20T05:14:00.000Z	NeedSomeHelp		seq: I have installed latest versions and I have checked /var/log/apache2/error.log...
+2012-06-20T05:16:00.000Z	NeedSomeHelp		seq: dunno, i dont know all my config settings by heart...
+2012-06-20T05:16:00.000Z	SolarisBoy	NeedSomeHelp	apache issues?
+2012-06-20T05:16:00.000Z	NeedSomeHelp	SolarisBoy	apache or php. POST issues.
+2012-06-20T05:17:00.000Z	SolarisBoy	NeedSomeHelp	ok. whats the issue?
+2012-06-20T05:20:00.000Z	SolarisBoy	NeedSomeHelp	what is the error you get on POST verb?
+2012-06-20T05:21:00.000Z	NeedSomeHelp	SolarisBoy	there are no messages at all. Page just refreshes. I have tried login forms and search forms that used to work just fine.
+2012-06-20T05:22:00.000Z	SolarisBoy	NeedSomeHelp	are you checking the access log?
+2012-06-20T05:25:00.000Z	NeedSomeHelp	SolarisBoy	last lines from access.log http://pastie.org/4117825
+2012-06-20T05:26:00.000Z	SolarisBoy	NeedSomeHelp	it says 200 returned. are they php pages that are blank? can you resolve a simple info.php file?
+2012-06-20T05:31:00.000Z	NeedSomeHelp	SolarisBoy	pages arent blank. When I click any of the submit buttons, then the current page just refreshes and nothing happens. I just tried a test php file with a minimal form. The value does not submit and print_r($_POST)=Array ( )
+2012-06-20T05:31:00.000Z	SolarisBoy	NeedSomeHelp	can you resolve an info.php file?
+2012-06-20T05:32:00.000Z	NeedSomeHelp	SolarisBoy	not quite sure what you mean
+2012-06-20T05:33:00.000Z	SolarisBoy	NeedSomeHelp	create a file called php under your web root where it will be accessible and put '<?php phpinfo(); ?>' (without qoutes) save it as info.php and open it in the browser - what occurs?
+2012-06-20T05:34:00.000Z	NeedSomeHelp	SolarisBoy	phpinfo occurs. What should I look for?
+2012-06-20T05:36:00.000Z	NeedSomeHelp	SolarisBoy	phpinfo() works fine
+2012-06-20T05:40:00.000Z	SolarisBoy	NeedSomeHelp	ok || try to turn on php error logging and check your apache configuration then
+2012-06-20T05:45:00.000Z	NeedSomeHelp	SolarisBoy	from php.ini: error_reporting  =  E_ALL & ~E_NOTICE, display_errors = On. I just discovered this only happens for php files that are within one of my project dirs!
+2012-06-20T05:46:00.000Z	NeedSomeHelp	SolarisBoy	f.ex. when I move the test.php to a different dir (project), it works fine

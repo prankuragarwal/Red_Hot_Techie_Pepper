@@ -1,0 +1,23 @@
+2006-12-13T08:20:00.000Z	markeib		hey, i've got a problem!
+2006-12-13T08:22:00.000Z	markeib		when i boot and my webcam is plugged in, my soundcard doesn't work. however if i boot without the webcam plugged in, everything works fine. if i plug the cam afterwards it works too.
+2006-12-13T08:23:00.000Z	mjr	markeib	your webcam apparently becomes the default audio device if it's plugged in at boot
+2006-12-13T08:24:00.000Z	mjr	markeib	see if you can determine from lsmod output which driver drives the webcam audio
+2006-12-13T08:24:00.000Z	mjr	markeib	then, in /etc/modprobe.d/alsa-base , at the end, add "options snd-whatever index=-2" as is done there for a number of drivers
+2006-12-13T08:25:00.000Z	mjr	markeib	curious though, I'd imagine that the webcam would show as an usb audio device and those are already taken care of by default in said file...
+2006-12-13T08:27:00.000Z	markeib	mjr	in that file
+2006-12-13T08:29:00.000Z	mjr	markeib	yes. But apparently your webcam isn't covered by them, so you need to add a similar one for its driver (and preferrably report the driver to Ubuntu)
+2006-12-13T08:29:00.000Z	mjr	markeib	-2 is just a "magic" index that says that grab the first available index, but _not_ the default one (0)
+2006-12-13T08:30:00.000Z	mjr	markeib	make sure your camera is plugged in, then lsmod and put the output to pastebin.ca or something, and maybe we'll figure it out
+2006-12-13T08:34:00.000Z	mjr	markeib	hmh, cat /dev/sndstat and paste that too
+2006-12-13T08:35:00.000Z	markeib	mjr	http://pastebin.ca/277705
+2006-12-13T08:36:00.000Z	mjr	markeib	umm, do you really have the camera plugged in?
+2006-12-13T08:38:00.000Z	markeib	mjr	http://pastebin.ca/277709 ... this is embarassing
+2006-12-13T08:39:00.000Z	mjr	markeib	weird though, still can't see why that would happen, since apparently your webcam _does_ use the usb-audio driver, and that's already handled in /etc/modprobe.d/alsa-base, right (you know, the line "options snd-usb-audio index=-2" is there?)
+2006-12-13T08:41:00.000Z	mjr	markeib	yeah. Well, that should prevent what you're saying from happening. Sorry, don't know why it doesn't.
+2006-12-13T08:42:00.000Z	mjr	markeib	an ugly way to fix the symtom would be to add "blacklist snd-usb-audio" to /etc/modprobe.d/blacklist , in which case no usb audio device would get used ever
+2006-12-13T08:44:00.000Z	mjr	markeib	if you're talking about a portable player, yeah, it wouldn't affect your ability to upload songs there
+2006-12-13T08:47:00.000Z	mjr	markeib	of course, you might want to report your problem as a bug of the alsa-base package, maybe the maintainer will know what's wrong...
+2006-12-13T08:47:00.000Z	markeib	mjr	 how and where do i do that?
+2006-12-13T08:50:00.000Z	mjr	markeib	http://www.ubuntu.com/support/bugs , and well, at least in principle; sudo rmmod snd-usb-audio while the camera isn't attached, and then reattach, and see if the usb audio device is present in /dev/sndstat
+2006-12-13T10:59:00.000Z	markeib	mjr	hey, it's me again, with the webcam and the soundcard, i rebooted and now even with the webcam not plugged in the sound doesn't work O.O
+2006-12-13T11:19:00.000Z	markeib	mjr	still there?

@@ -1,0 +1,19 @@
+2010-07-12T07:21:00.000Z	Ross____		ok im back i got disconnected
+2010-07-12T07:21:00.000Z	Ross____		so
+2010-07-12T07:22:00.000Z	maco	Ross____	no wait go back to the one that starts with a 1
+2010-07-12T07:21:00.000Z	maco	Ross____	egrep "1[0-9]{3}" /etc/passwd | cut -f 1 -d :
+2010-07-12T07:22:00.000Z	maco	Ross____	egrep "[0-9]{4}" /etc/passwd | cut -f 1 -d :
+2010-07-12T07:22:00.000Z	maco	Ross____	egrep ":[0-9]{4}:" /etc/passwd | cut -f 1 -d :
+2010-07-12T07:22:00.000Z	maco	Ross____	thatll do it
+2010-07-12T07:23:00.000Z	maco	Ross____	human users have user id's greater than 1000 so theyd be 4 digits
+2010-07-12T07:23:00.000Z	maco	Ross____	that is searching for 4-digit numbers
+2010-07-12T07:23:00.000Z	maco	Ross____	though the awk one someone suggested above may be smarter
+2010-07-12T07:27:00.000Z	Ross____	maco	what did the numbers do exactly in that command? the 0-9 4 and such
+2010-07-12T07:27:00.000Z	maco	Ross____	looks for 4 instances of digits
+2010-07-12T07:28:00.000Z	maco	Ross____	in a row, between two :'s
+2010-07-12T07:28:00.000Z	Ross____	maco	ok but why does that list all the human users?
+2010-07-12T07:28:00.000Z	Ross____	maco	i'm just trying to understand it a little better
+2010-07-12T07:30:00.000Z	maco	Ross____	it should. it finds everything that has a 4-digit number, and user ids for humans are 4-digits
+2010-07-12T07:31:00.000Z	maco	Ross____	unless of course you copy over from a fedora system.they start humans at 500 and we start at 1000
+2010-07-12T07:32:00.000Z	Ross____	maco	ah i see it's like a relational database kinda thing , right?
+2010-07-12T07:32:00.000Z	maco	Ross____	/etc/passwd is a text file. between the UIDs in it and /etc/shadow and /etc/group they sort of approximate one

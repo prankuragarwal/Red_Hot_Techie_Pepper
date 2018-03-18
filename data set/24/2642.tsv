@@ -1,0 +1,24 @@
+2009-07-24T11:24:00.000Z	losher	akSeya	ubuntu kind of made a mess of the runlevel stuff. What are you trying to do exactly?
+2009-07-24T11:25:00.000Z	akSeya	losher	I have my NIC cards configured in /etc/network/interfaces , but nothing loads it on boot ... also did a iptables.rules on /etc but cant get it loaded
+2009-07-24T11:26:00.000Z	akSeya	losher	and want to echo 1 > /proc/sys/net/ipv4/ip_forward
+2009-07-24T11:27:00.000Z	losher	akSeya	which version OS and what runlevel are you at?
+2009-07-24T11:27:00.000Z	akSeya	losher	ubuntu 9.04 Runlevel 2
+2009-07-24T11:28:00.000Z	losher	akSeya	the echo 1 > /proc/sys/net/ipv4/ip_forward is probably easiest done by putting it into /etc/rc.local
+2009-07-24T11:28:00.000Z	akSeya	losher	ok.. already there now
+2009-07-24T11:29:00.000Z	losher	akSeya	re: the nic stuff, are you sure nothing loads it. A syntax error in your interfaces file will make it look like it's not loading. What happens when you run sudo /etc/init.d/networking restart by hand?
+2009-07-24T11:29:00.000Z	akSeya	losher	iptables-restore < /etc/iptables.rules        there too or is there a "beautifull" way?
+2009-07-24T11:30:00.000Z	akSeya	losher	nothing happens.. leme check again
+2009-07-24T11:30:00.000Z	losher	akSeya	running it from rc.local is beautiful enough for me...
+2009-07-24T11:32:00.000Z	akSeya	losher	my eth0 just do not goes up
+2009-07-24T11:32:00.000Z	losher	akSeya	well, if it doesn't work by hand, it certainly won't work at boot time. Any relevant-looking error messages in /var/log ?
+2009-07-24T11:33:00.000Z	akSeya	losher	got it.. it was my mistake all the time...
+2009-07-24T11:34:00.000Z	akSeya	losher	I was missing auto eth0 on interfaces file
+2009-07-24T11:34:00.000Z	losher	akSeya	cool...
+2009-07-24T11:34:00.000Z	akSeya	losher	thanks for your help ;)
+2009-07-24T11:34:00.000Z	losher	akSeya	a pleasure
+2009-07-24T11:35:00.000Z	akSeya	losher	anyway.. if I want to check what services are starting at boot, so I can disable unused ones..
+2009-07-24T11:35:00.000Z	akSeya	losher	isn't it possible from command line?
+2009-07-24T11:36:00.000Z	losher	akSeya	basically I think everything in runlevel 2 is started from /etc/rc2.d...
+2009-07-24T11:38:00.000Z	akSeya	losher	how about that update-rc.d ? does it plays with this symlinks?
+2009-07-24T11:46:00.000Z	losher	akSeya	sorry, my attention wandered. Yes, update-rc.d changes the symlinks. You used to have to set them by hand. Check the man page
+2009-07-24T11:46:00.000Z	akSeya	losher	well.. thanks again ;)

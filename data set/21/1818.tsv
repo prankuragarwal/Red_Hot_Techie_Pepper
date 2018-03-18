@@ -1,0 +1,21 @@
+2011-04-17T14:19:00.000Z	quuxman		so the error I get when I boot:
+2011-04-17T14:19:00.000Z	quuxman		init: mounted-dev main process (324) terminated with status 1
+2011-04-17T14:19:00.000Z	quuxman		Event: mount-all failed
+2011-04-17T14:20:00.000Z	quuxman		pretty much all I see. When I hit ctrl+alt+del, I see it stopping several services, so it's sucessfully switched to runlevel 2, but I don't see a login prompt
+2011-04-17T14:21:00.000Z	quuxman		so my machine is pretty worthless. Probably should just reinstall, but that's a pain
+2011-04-17T14:22:00.000Z	cryptk	quuxman	I came in late, can you give a brief rundown of the issue?
+2011-04-17T14:22:00.000Z	quuxman		I installed some packages, and when I rebooted, I no longer get a login prompt
+2011-04-17T14:22:00.000Z	quuxman		I see that error instead. Note that I don't have X11 or gdm start on boot
+2011-04-17T14:23:00.000Z	cryptk	quuxman	what is the error though?
+2011-04-17T14:23:00.000Z	quuxman	cryptk	init: mounted-dev main process (324) terminated with status 1
+2011-04-17T14:23:00.000Z	quuxman	cryptk	Event: mount-all failed
+2011-04-17T14:24:00.000Z	quuxman		I must admit, that I typed "Yes, do as I say!" when apt prompted, which I know is a really bad idea. The last time I did that was many years ago and it caused a similarly terrible situation
+2011-04-17T14:25:00.000Z	cryptk	quuxman	have you tried adding --verbose to the kernel command line in grub before you boot?
+2011-04-17T14:25:00.000Z	quuxman		but I figured it couldn't be too serious, because I had just asked to install mysql-server, so I don't understand how that broke my entire system
+2011-04-17T14:25:00.000Z	cryptk		to see if you can get further clues
+2011-04-17T14:25:00.000Z	quuxman	cryptk	yeah, and it doesn't show any other errors
+2011-04-17T14:25:00.000Z	cryptk		or booting into recovery mode and seeing if you can resolve any kind of broken packages
+2011-04-17T14:25:00.000Z	quuxman	cryptk	well, I mean I just removed "quiet". I have not actually tried --verbose
+2011-04-17T14:26:00.000Z	cryptk		removing quiet and --verbose are definitely different
+2011-04-17T14:26:00.000Z	quuxman	cryptk	I'm chrooted in to the system now. procps was failing to configure because it couldn't connect to upstart, but I commented that out, and now all packages are fine
+2011-04-17T14:27:00.000Z	quuxman	cryptk	I will reboot and try --verbose. thanks for the tip

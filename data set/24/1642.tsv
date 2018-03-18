@@ -1,0 +1,24 @@
+2010-06-16T18:11:00.000Z	nikolam		Half of freakin applications stops responding if I copy some files
+2010-06-16T18:11:00.000Z	nikolam		and use disk intensively or something
+2010-06-16T18:12:00.000Z	nikolam		Is it multitasking or i basically get iphone in a place for 64bit linux I am thinking I am using
+2010-06-16T18:14:00.000Z	thune3	nikolam	a specific example might provide some insight
+2010-06-16T18:17:00.000Z	nikolam	thune3	copying about 7Gig of files (user profle) from sdb2 ext3 to md1 raid1 (sda6, sdb6) on ext4 and seamonkey, firefox, system windows, anything that would be nice to response with less lag then 6 seconds, needs 10 seconds. Like every stupid window, windows of programs do not refresh etc..
+2010-06-16T18:21:00.000Z	thune3	nikolam	those programs choke because they are trying to access disk. firefox does a lot of osync, and hangs until data is written. i/o scheduling is not up to the level of the process scheduler. you could use "ionice" to set your large copy jobs at low priority.
+2010-06-16T18:22:00.000Z	nikolam	thune3	its just default desktop install. And it behaves like a pig. Thanks i will see what good ionice cam do and where it can be set.
+2010-06-16T18:22:00.000Z	nikolam	thune3	its not problem on priprity. I want my user experience to have highest priority. not damn server thing i dont need
+2010-06-16T18:24:00.000Z	thune3	nikolam	what do you mean "server thing i don't need"?
+2010-06-16T18:25:00.000Z	nikolam	thune3	well, if background copying process gets priority by default over my need to actually see response from application i am currently working with, then there is something terribly wrong with default priority settings.
+2010-06-16T18:31:00.000Z	thune3	nikolam	to you do all your copying using nautilus? or command line?
+2010-06-16T18:35:00.000Z	thune3	nikolam	i agree it is a problem and an annoyance. as a workaround you could try ionicing thunar :  ionice -c3 -p `pidof thunar`  : i'm not sure if thunar is right name
+2010-09-28T15:09:00.000Z	thune3	nikolam	ubuntu maintains /vmlinuz and /initrd.img links in /, that would be handy when hand setting grub1 to boot ubuntu. These links get updated with kernel upgrades, so you wouldn't have to update grub after every ubuntu kernel upgrade.
+2010-09-28T15:11:00.000Z	nikolam	thune3	so if I understand.. It is better NOT to use separate /boot partition? But to directly boot from / partition and/or using GRUB1 ?
+2010-09-28T15:13:00.000Z	thune3	nikolam	are you trying to pile all your kernels into a single /boot from various OS? that's not necessary. I thought you already have grub1 from other OS, and simply wish to edit the menu.lst to boot ubuntu.
+2010-09-28T15:15:00.000Z	nikolam	thune3	well, that is good option. I might install ubuntu-s grub2 inside / of ubuntu and use other system's GRUB1 to do what you are saying.
+2010-09-28T15:15:00.000Z	thune3	nikolam	exactly, if you leave grub2 and /boot under ubuntu's /, then you could just use the links from grub1 to boot, as you suggest.
+2010-09-28T15:17:00.000Z	nikolam	thune3	Maybe I could only copy now used ubuntu /boot to / /boot and then install grub2 on / before putting another system.
+2010-09-28T15:20:00.000Z	thune3	nikolam	i'm not sure i followed that one. on a system that has multiple OS and is working great with grub1 from other OS, i'd be inclined to keep it and remove grub1/2 from ubuntu.
+2010-09-28T15:26:00.000Z	nikolam	thune3	ok I see. I will do something like that. I am also not sure if updates to Ubuntu will do OK if GRUB is from other system and it is GRUB1. Ok, If understood everything, Ubuntu's Grub2 will stay on Its / and will live happily fo himself.
+2010-09-28T15:29:00.000Z	thune3	nikolam	that's fine. if you use the /vmlinux etc links for your grub1 line, it should not need to be changed for kernel upgrades. (set and forget)
+2010-09-28T15:29:00.000Z	thune3	nikolam	s/grub1 line/grub1 entry/
+2010-09-28T15:30:00.000Z	nikolam	thune3	yes, that's it. Great :) taht way I could use Grub1 for other os'es. great :)
+2010-09-28T15:30:00.000Z	nikolam	thune3	thanks for support :)

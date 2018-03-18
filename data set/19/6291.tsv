@@ -1,0 +1,19 @@
+2009-10-01T02:42:00.000Z	vge		hello, simple bash problem :) "echo 0x0166f9c7 | wmctrl -i -c", why don't wmctrl accept the the string as paramter?
+2009-10-01T02:42:00.000Z	prince_jammys	vge	you
+2009-10-01T02:42:00.000Z	prince_jammys	vge	you're not supplying it as parameter.
+2009-10-01T02:43:00.000Z	vge	prince_jammys	how do i do it?
+2009-10-01T02:43:00.000Z	prince_jammys	vge	if it's supposed to be a param, then don't provide it as input.  In ''ls -l'', '-l' is a param.
+2009-10-01T02:44:00.000Z	vge	prince_jammys	do i need to make a bash script out of it to make it work?
+2009-10-01T02:45:00.000Z	prince_jammys	vge	i don't know how wmctrl works. I don't have it installed.
+2009-10-01T02:46:00.000Z	prince_jammys	vge	wmctrl -i 0xblahblah -c
+2009-10-01T02:47:00.000Z	vge	prince_jammys	but how i give my pipe output to that particular spot?
+2009-10-01T02:48:00.000Z	prince_jammys	vge	you don't, unless the prog reads from stdin.
+2009-10-01T02:48:00.000Z	prince_jammys	vge	where does the string come from.
+2009-10-01T02:48:00.000Z	vge	prince_jammys	k, ty
+2009-10-01T02:48:00.000Z	prince_jammys	vge	i.e. where do you get the '0x...' from ?
+2009-10-01T02:48:00.000Z	vge		wmctrl -l|grep "Source of:" |sed 's/\(...........\)\(.*\)/\1/'| wmctrl -i -c
+2009-10-01T02:49:00.000Z	vge	prince_jammys	closing all firefox source windows ;)
+2009-10-01T02:49:00.000Z	prince_jammys	vge	string=$(somecommand);  wmctrl -i "$string"
+2009-10-01T02:50:00.000Z	prince_jammys	vge	OR: wmctrl -i "$(somecommand that produces the string)"
+2009-10-01T02:51:00.000Z	vge	prince_jammys	ty, works like a charm, i wish id come here sooner :D
+2009-10-01T02:51:00.000Z	prince_jammys	vge	go to #bash for shell questions.

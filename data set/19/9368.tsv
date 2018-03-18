@@ -1,0 +1,19 @@
+2006-11-18T09:39:00.000Z	grimboy		My WLAN card was working until I installed network-manager. I can't connect to wireless networks any more (wired still works)
+2006-11-18T09:39:00.000Z	grimboy		My WLAN card was working until I installed network-manager. Now I can't connect to wireless networks any more (wired still works). Is there anything I ought to do to get network-manger working?
+2006-11-18T09:40:00.000Z	grimboy		Oh, I did the same message twice. Oops.
+2006-11-18T09:40:00.000Z	flox	grimboy	i guess u need to clean ur '/etc/network/interfaces'
+2006-11-18T09:41:00.000Z	grimboy	flox	Thanks, I'll have a look at that.
+2006-11-18T09:41:00.000Z	flox	grimboy	when u switch to network-manager, u hv to remove all 'wireless' related things from the 'interfaces' file
+2006-11-18T09:42:00.000Z	grimboy	flox	Ah, so that it can all be done dynamically, ok. Is # a comment in /etc/network/interfaces?
+2006-11-18T09:42:00.000Z	flox	grimboy	yes
+2006-11-18T09:43:00.000Z	flox	grimboy	the line should look:
+2006-11-18T09:43:00.000Z	flox		auto eth1
+2006-11-18T09:43:00.000Z	flox		iface eth1 inet dhcp
+2006-11-18T09:43:00.000Z	flox	grimboy	or sth like that
+2006-11-18T09:43:00.000Z	grimboy	flox	thanks, I think it's eth0 for me.
+2006-11-18T09:46:00.000Z	grimboy	flox	Ok, before it was showing me wireless networks now it doesn't do anything.
+2006-11-18T09:46:00.000Z	grimboy		s/do/show
+2006-11-18T09:47:00.000Z	flox	grimboy	i've done this thing yesterday. wit, i try to figure out what i've done just after
+2006-11-18T09:47:00.000Z	flox		s/wit/wait
+2006-11-18T09:50:00.000Z	flox	grimboy	i guess u need to kill NetworkManager
+2006-11-18T09:51:00.000Z	flox	grimboy	or reboot...

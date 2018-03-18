@@ -1,0 +1,22 @@
+2008-11-09T00:36:00.000Z	MTeck		I'm trying to bring a cli system to just enough to have openbox running using xdm login... I installed xdm, xinit, and startx. When I try to use startx I'm getting the error exec: 5: /usr/bin/X11/X: not found - what else do I need to install?
+2008-11-09T00:37:00.000Z	NTAuthority	MTeck	xserver-xorg, and xfonts-75dpi to get X to start, at least
+2008-11-09T00:37:00.000Z	MTeck	NTAuthority	thanks
+2008-11-09T00:37:00.000Z	NTAuthority	MTeck	heh, I have hacked a lot with minimal debian systems
+2008-11-09T00:40:00.000Z	MTeck	NTAuthority	Now I'm getting an error about xrdb command not found - package doesn't exist
+2008-11-09T00:41:00.000Z	NTAuthority	MTeck	that command should not be neccesary to get X itself running, only xserver-xorg and xfonts-75dpi are what I usually need
+2008-11-09T00:41:00.000Z	MTeck	NTAuthority	alrighty - what about getting xdm to launch when I login?
+2008-11-09T00:42:00.000Z	NTAuthority	MTeck	display managers usually launch on boot from init.d, you would manually startx if you want a terminal logon
+2008-11-09T00:42:00.000Z	MTeck	NTAuthority	I want to login with xdm
+2008-11-09T00:42:00.000Z	MTeck	NTAuthority	am I misunderstanding? is gdm not meant for logins?
+2008-11-09T00:43:00.000Z	NTAuthority	MTeck	that's normally done, as it creates an initscript
+2008-11-09T00:43:00.000Z	MTeck	NTAuthority	ya lost me
+2008-11-09T00:43:00.000Z	NTAuthority	MTeck	*dm is for logging on graphically, startx is for testing/starting from a terminal
+2008-11-09T00:43:00.000Z	MTeck	NTAuthority	so - I installed xdm... I'll reboot and see if I can login?
+2008-11-09T00:44:00.000Z	NTAuthority	MTeck	you should only need to use /etc/init.d/*dm, or xdm is some strange package
+2008-11-09T00:44:00.000Z	NTAuthority	MTeck	yep, /etc/init.d/xdm start, as always
+2008-11-09T00:45:00.000Z	MTeck	NTAuthority	it's still freaking out about that command not being found
+2008-11-09T00:46:00.000Z	NTAuthority	MTeck	seems strange, let's walk through dependencies :)
+2008-11-09T00:46:00.000Z	MTeck	NTAuthority	just xrdb - idk if it matters really, but I don't like errors
+2008-11-09T00:47:00.000Z	NTAuthority	MTeck	x11-xserver-utils contains the package, usually some application should have that as dependency if it's needed
+2008-11-09T00:49:00.000Z	MTeck	NTAuthority	hurray :D - thanks much
+2008-11-09T00:49:00.000Z	MTeck	NTAuthority	I'm gonna reboot and see if it comes up right away

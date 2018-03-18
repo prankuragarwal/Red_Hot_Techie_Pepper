@@ -1,0 +1,19 @@
+2006-12-30T06:17:00.000Z	Asc		I need to sudo chroot [folder] , but when I try it says that /bin/bash is not found.  Anybody know why?
+2006-12-30T06:18:00.000Z	w3ccv	Asc	after you chroot'd that'swhere the new root is, and /usr probably isn't in it.
+2006-12-30T06:19:00.000Z	w3ccv	Asc	basiclly you've cut yourself off from the rest of the system
+2006-12-30T06:19:00.000Z	Asc	w3ccv	Well, it has bash in folder/bin.  Hmm....
+2006-12-30T06:20:00.000Z	w3ccv	Asc	what is your $PATH and what did you chroot to?
+2006-12-30T06:22:00.000Z	Asc	w3ccv	$PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games:/usr/X11R6/bin.  The folder is /home/asc/folder.
+2006-12-30T06:22:00.000Z	w3ccv	Asc	you changed root to /home/asc/folder  right?  is there a bin/bash in folder
+2006-12-30T06:22:00.000Z	Asc	w3ccv	I'd think that having /bin in the path before chrooting would make the folder/bin programs work.
+2006-12-30T06:23:00.000Z	Asc	w3ccv	yes, there is.
+2006-12-30T06:25:00.000Z	w3ccv	Asc	 a bunch of Qs does folder/lib exist - with a full compliment of libraries.  Is bash a link? is it a statuc copy?
+2006-12-30T06:26:00.000Z	w3ccv	Asc	I don't have Ubuntu running right now so I can't see what my os looks like.  in you can't find bash, then something is missing (you already know that.)
+2006-12-30T06:26:00.000Z	Asc	w3ccv	yes, there are libraries in folder/lib.  Bash is a static copy.
+2006-12-30T06:28:00.000Z	w3ccv	Asc	the commands 'cd' then ls show bin and lib, and more - looks like the system root (sort of)
+2006-12-30T06:29:00.000Z	Asc	w3ccv	yes.  The contents of /home/asc/folder seem to be identical to a clean ubuntu install
+2006-12-30T06:30:00.000Z	Asc	w3ccv	uh, hmm.  If folder/bin/bash was owned by asc instead of by root, would that cause a problem?
+2006-12-30T06:31:00.000Z	w3ccv	Asc	could be, or the rest of the permissions were wrong, same with bin/  it should be executable
+2006-12-30T06:32:00.000Z	Asc	w3ccv	It won't let me change the permissions on anything.  Maybe trying this on a FAT filesystem isn't a good idea
+2006-12-30T06:33:00.000Z	w3ccv	Asc	yup, working on FAT system is tricky at best - there are no real 'permissions'  think DOS
+2006-12-30T06:33:00.000Z	w3ccv	Asc	nix_ferret after chrooting - the old root does not exist! and ther is no way back

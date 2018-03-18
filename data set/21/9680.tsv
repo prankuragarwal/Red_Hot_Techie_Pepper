@@ -1,0 +1,21 @@
+2010-10-06T16:43:00.000Z	mitsuhiko		no config created
+2010-10-06T16:43:00.000Z	mitsuhiko		things i tried was Xorg -configure from a rootshell, but because there is no framebuffer it crashes
+2010-10-06T16:44:00.000Z	mitsuhiko		it used to work with older versions, but on 10.10 it does nothing
+2010-10-06T16:46:00.000Z	mitsuhiko		i also straced the process to see what it does, but it does not appear to write anythign of value to the filesystem
+2010-10-06T16:47:00.000Z	Dr_Willis	mitsuhiko	 what is your video chipset anyway?
+2010-10-06T16:47:00.000Z	mitsuhiko	Dr_Willis	virtual box graphics device
+2010-10-06T16:48:00.000Z	Dr_Willis	mitsuhiko	 so why are you needing to do this in virtualbox? it should be automatically detected..
+2010-10-06T16:48:00.000Z	mitsuhiko	Dr_Willis	well, it's not
+2010-10-06T16:49:00.000Z	Dr_Willis	mitsuhiko	 sounds like there may be some deeper issues going on.  Virtualbox has always auto detected for me.  You could boot some other disrto that makes a xorg.conf in virtualbox and copy that somewhere for a 'virtualbox xorg.conf' I guessand copy th
+2010-10-06T16:50:00.000Z	mitsuhiko	Dr_Willis	that works, and now "Xorg -configure" segfaults
+2010-10-06T16:50:00.000Z	Dr_Willis	mitsuhiko	 this is 10.10? or 10.04 or what exactly?  whats the Host OS also?
+2010-10-06T16:51:00.000Z	mitsuhiko	Dr_Willis	there are two versions of virtualbox graphic devices. the one that is autodetected and does not properly support Xrandr, and the one i always had to specify :)
+2010-10-06T16:52:00.000Z	Dr_Willis	mitsuhiko	 theres also a 'text' option to boot ubuntu, that would disable the framebuffer. that may or may not help. Ive never used vbox on a Mac. Just Pc's
+2010-10-06T16:52:00.000Z	mitsuhiko	Dr_Willis	as mentioned, Xorg -configure segfaults
+2010-10-06T16:52:00.000Z	Dr_Willis	mitsuhiko	 and Xorg shouldent be needing a framebuffer device.
+2010-10-06T16:52:00.000Z	Dr_Willis	mitsuhiko	 was this a 10.10 daily build? or RC?
+2010-10-06T16:53:00.000Z	mitsuhiko	Dr_Willis	not sure what it initially was, right now it's updated to latest packages
+2010-10-06T16:53:00.000Z	Dr_Willis	mitsuhiko	 could be some ongoing bug also.. hard to tell.. You may want to check the forums. ive not used 10.10 in vbox yet.
+2010-10-06T17:01:00.000Z	mitsuhiko	Dr_Willis	seems like ubuntu forgot to pull a debian fix
+2010-10-06T17:06:00.000Z	mitsuhiko	Dr_Willis	that package actually works. thanks
+2010-10-06T17:07:00.000Z	Dr_Willis	mitsuhiko	 its aparently had to get 'rebuilt' for 10.10 and  vbox had to be updated..

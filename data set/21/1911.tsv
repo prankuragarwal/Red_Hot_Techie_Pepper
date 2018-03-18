@@ -1,0 +1,21 @@
+2010-07-11T23:02:00.000Z	blacksunseven		anyone here familiar with nomachine nx? i want to know how/if i can simply resume the original gnome session instead of creating one when i connect through nx
+2010-07-11T23:04:00.000Z	blacksunseven		on a related issue: is there any cli or gui method to monitor user sessions?
+2010-07-11T23:04:00.000Z	Vroomfondle	blacksunseven	monitor in what way? Just typing "who" will tell you who's logged in
+2010-07-11T23:05:00.000Z	blacksunseven	Vroomfondle	i've used that before, but i'm a little confused by the results
+2010-07-11T23:06:00.000Z	blacksunseven	Vroomfondle	it shows 3 user sessions:
+2010-07-11T23:06:00.000Z	blacksunseven		user tty7         2010-07-01 19:54 (:0)
+2010-07-11T23:06:00.000Z	blacksunseven		user pts/0        2010-07-09 00:39 (:1022.0)
+2010-07-11T23:06:00.000Z	blacksunseven		user pts/1        2010-07-10 09:40 (:1022.0)
+2010-07-11T23:06:00.000Z	Vroomfondle	blacksunseven	that's ony real tty (console login - probably the main login shell) and two virtual terminal sessions (probably gnome-terminal or similar)
+2010-07-11T23:06:00.000Z	Vroomfondle		*one real
+2010-07-11T23:07:00.000Z	Vroomfondle	blacksunseven	all of those sessions belong to the same user, who appears to be called "user" on your system
+2010-07-11T23:08:00.000Z	blacksunseven	Vroomfondle	i guess the stem of my question is i want to ensure there arent mult. gnome sessions running and bogging down my machine
+2010-07-11T23:08:00.000Z	blacksunseven		since nx creates one and there's already the default one running locally
+2010-07-11T23:08:00.000Z	Vroomfondle		oh... hm
+2010-07-11T23:09:00.000Z	Vroomfondle	blacksunseven	you'd need to pipe "ps -aux" into grep and search for the right thing, I think
+2010-07-11T23:09:00.000Z	Vroomfondle	blacksunseven	"ps -aux | grep gnome-session" might do what you want
+2010-07-11T23:09:00.000Z	Vroomfondle		I *think* two running copies of gnome will require two running copies of gnome-session, but not sure
+2010-07-11T23:10:00.000Z	blacksunseven		one minute
+2010-07-11T23:11:00.000Z	blacksunseven		http://paste.ubuntu.com/462169/
+2010-07-11T23:12:00.000Z	Vroomfondle	blacksunseven	two gnome-sessions, thus two running gnomes.
+2010-07-11T23:12:00.000Z	blacksunseven	Vroomfondle	right. i guess that's good enough

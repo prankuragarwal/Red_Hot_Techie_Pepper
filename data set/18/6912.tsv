@@ -1,0 +1,18 @@
+2008-03-05T04:30:00.000Z	No1CaNTeL		hello, I was hoping I could get a hand with a prob I just ran into, I left my pc running today and when I got home my keyring password wasnt working so I rebooted and now, without any reason I am running into an error msg thst says: user's $HOME/.dmrc file is being ignored it prevents the session & lang. from being saved.
+2008-03-05T04:30:00.000Z	No1CaNTeL		file should be owned by user and have perms of 644
+2008-03-05T04:30:00.000Z	No1CaNTeL		and that my home dir should be owned by my user, which it should be
+2008-03-05T04:31:00.000Z	soundray	No1CaNTeL	this can be a symptom of having used graphical programs with sudo
+2008-03-05T04:32:00.000Z	soundray	No1CaNTeL	no, don't
+2008-03-05T04:53:00.000Z	soundray	No1CaNTeL	normally, all you need to do is add your user to the cdrom group
+2008-03-05T04:53:00.000Z	soundray	No1CaNTeL	i.e. 'sudo adduser no1 cdrom'
+2008-03-05T05:20:00.000Z	soundray	No1CaNTeL	http://www.soundray.org/ubuntu-2008-03-05-00h18.log   (hope it contains what you need)
+2008-03-05T05:33:00.000Z	No1CaNTeL	soundray	going through the log to jot down all the stuff from before, I just notice I missed this post:
+2008-03-05T05:34:00.000Z	soundray	No1CaNTeL	what does /dev/cdrom link to (find out with ls -l /dev/cdrom )
+2008-03-05T05:35:00.000Z	soundray	No1CaNTeL	who's the group owner of /dev/scd0 (find out with ls -l /dev/scd0 )?
+2008-03-05T05:36:00.000Z	soundray	No1CaNTeL	notice the subtle difference in the new command
+2008-03-05T05:36:00.000Z	soundray	No1CaNTeL	who's the group owner of /dev/scd0 (find out with ls -l /dev/scd0 )?
+2008-03-05T05:36:00.000Z	soundray	No1CaNTeL	no
+2008-03-05T05:37:00.000Z	soundray	No1CaNTeL	just tell me what 'ls -l /dev/scd0' gives you
+2008-03-05T05:37:00.000Z	soundray	No1CaNTeL	and what does it say after root?
+2008-03-05T05:39:00.000Z	soundray	No1CaNTeL	see, the group cdrom has read and write access to the device. So all you need to do is 'sudo adduser no1 cdrom'
+2008-03-05T05:40:00.000Z	soundray	No1CaNTeL	from the next login, you will be able to view DVDs without resorting to trickery

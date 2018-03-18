@@ -1,0 +1,18 @@
+2009-07-13T19:13:00.000Z	frostburn	Xubuntnoob	background the process, so you'll get your shell back
+2009-07-13T19:14:00.000Z	frostburn	Xubuntnoob	check out $man bash
+2009-07-13T19:15:00.000Z	frostburn	Xubuntnoob	what's the issue?
+2009-07-13T19:16:00.000Z	Xubuntnoob	frostburn	when i run a script http://pastebin.com/dad9efbd , my output doesn't go into a log, it stays in terminal
+2009-07-13T19:17:00.000Z	frostburn	Xubuntnoob	redirect to your log, then background it      command > to_file &
+2009-07-13T19:20:00.000Z	Xubuntnoob	frostburn	http://pastebin.com/d146002f9 gets me the same results?
+2009-07-13T19:21:00.000Z	frostburn	Xubuntnoob	what's the output you're seeing? are you sure that it's stdout and not stderr?
+2009-07-13T19:21:00.000Z	frostburn	Xubuntnoob	check out this guide here: http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-3.html
+2009-07-13T19:22:00.000Z	Xubuntnoob	frostburn	http://pastebin.com/d46ede235 is the output i get in terminal with the script
+2009-07-13T19:22:00.000Z	Xubuntnoob	frostburn	to be clear ** the program actually runs just fine
+2009-07-13T19:23:00.000Z	frostburn	Xubuntnoob	that looks like stderr, if you want to redirect that as well, use the guide i pasted and redirect stderr
+2009-07-13T19:24:00.000Z	Xubuntnoob	frostburn	thanks i'll have a look
+2009-07-13T19:30:00.000Z	Xubuntnoob	frostburn	thanks. this works fantastic.  i'm trying to troubleshoot another problem i have with similar issues, can i create filters to separate the different error messages?
+2009-07-13T19:31:00.000Z	frostburn	Xubuntnoob	sure, you can use grep,   some command |grep -i "text your're searching for
+2009-07-13T19:32:00.000Z	Xubuntnoob	frostburn	sorry, what's -i?
+2009-07-13T19:33:00.000Z	frostburn	Xubuntnoob	ignore case
+2009-07-13T19:36:00.000Z	Xubuntnoob	frostburn	would this work?  wine eve.exe | grep -i "fixme" > /home/logs/eve.log   if i want to ignore the fixme errors and have everything else goto the log?
+2009-07-13T19:37:00.000Z	frostburn	Xubuntnoob	if you want to ignore "fix me"  use grep -v "fixme"

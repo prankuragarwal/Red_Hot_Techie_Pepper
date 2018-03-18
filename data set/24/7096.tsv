@@ -1,0 +1,24 @@
+2007-07-08T07:57:00.000Z	matt__		Hi, I installed ubuntu on /dev/sba, then connected my xp drive, /dev/sda.   My bios is set to boot to grub, how do I add a section to enable grub to boot to XP ?
+2007-07-08T07:58:00.000Z	nickrud	matt__	you mean that ubuntu is now sdb?
+2007-07-08T07:59:00.000Z	matt__	nickrud	yes, sorry, sdb
+2007-07-08T07:59:00.000Z	nickrud	matt__	no, my misunderstanding, you're further along than I read
+2007-07-08T07:59:00.000Z	nickrud	matt__	you can add a stanza to /boot/grub/menu.lst by hand, a sec
+2007-07-08T08:01:00.000Z	nickrud	matt__	http://paste.ubuntu-nl.org/29057/ that should work for you
+2007-07-08T08:02:00.000Z	matt__	nickrud	thanks, but ubunto is hd(0,0), so surely I'll need something other for xp.
+2007-07-08T08:04:00.000Z	nickrud	matt__	I could have swore you said ubuntu was sdb, but no never mind:  change that to hd(1,0) , and grub> map (hd0) (hd1) grub map (hd1) (hd0)
+2007-11-02T01:36:00.000Z	nickrud	matt__	what do you mean, 'switch shell'?
+2007-11-02T01:41:00.000Z	nickrud	matt__	you can make that permanent with system->admin->users & groups, choose the account and look at the advanced tab
+2007-11-02T01:41:00.000Z	nickrud	matt__	bad joke,
+2007-11-02T01:41:00.000Z	nickrud	matt__	yes, so it's your normal shell instead of bash
+2008-01-28T04:01:00.000Z	nickrud	matt__	boot in the live cd, mount the root file system, and edit /boot/grub/menu.lst . Try removing the   splash   word from the kernel line. Not a pure fix, but might get you past that problem
+2008-01-28T04:02:00.000Z	matt__	nickrud	that's just it, i can't seem to boot the live disk, after selecting the "boot from live cd", it doesn't work.
+2008-01-28T04:02:00.000Z	nickrud	matt__	oh, have you run the check disk on the startup menu yet?
+2008-01-28T04:03:00.000Z	matt__	nickrud	not tried it..never had to, but i may
+2008-01-28T04:03:00.000Z	nickrud	matt__	you've used this disk before, on other installs?
+2008-01-28T04:03:00.000Z	matt__	nickrud	never...
+2008-01-28T04:03:00.000Z	matt__	nickrud	so that may be the case
+2008-01-28T04:03:00.000Z	nickrud	matt__	run the disk check then
+2008-01-28T04:03:00.000Z	matt__	nickrud	i'll try
+2008-02-01T10:34:00.000Z	nickrud	matt__	add   deb http://archive.canonical.com/ubuntu gutsy partner   to your sources.list, sudo apt-get update && sudo apt-get  install vmware-server
+2008-04-08T08:39:00.000Z	nickrud	matt__	this works properly:  system->admin->restricted driver , enable ati restricted. reboot. log in, run fglrxinfo and make sure it's using ati 8.37.6 driver. install xserver-xgl compizconfig-settings-manager , then log out and back in. Go to system->prefs->appearance effects tab
+2008-11-14T08:50:00.000Z	nickrud	matt__	try asking on #ubuntu-offtopic

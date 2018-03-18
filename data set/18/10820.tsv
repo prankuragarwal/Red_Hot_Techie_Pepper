@@ -1,0 +1,18 @@
+2008-02-20T02:42:00.000Z	kbrooks		i have two questions
+2008-02-20T02:42:00.000Z	kbrooks		a) how to setup encrypted swap
+2008-02-20T02:43:00.000Z	cosmodad	kbrooks	a) use dm-crypt.
+2008-02-20T02:44:00.000Z	kbrooks	cosmodad	how? i tried by using crypttab and saying "/dev/mapper/swap        none    swap    sw      0       0"
+2008-02-20T02:44:00.000Z	kbrooks	cosmodad	in /etc/fstab
+2008-02-20T02:44:00.000Z	cosmodad	kbrooks	you need another entry in /etc/crypttab
+2008-02-20T02:45:00.000Z	kbrooks	cosmodad	is this the proper way to setup encrypted swap?
+2008-02-20T02:45:00.000Z	kbrooks	cosmodad	i did
+2008-02-20T02:45:00.000Z	kbrooks	cosmodad	"swap /dev/hda2 /dev/urandom swap"
+2008-02-20T02:45:00.000Z	cosmodad	kbrooks	yeah should work.
+2008-02-20T02:45:00.000Z	kbrooks	cosmodad	how do i test?
+2008-02-20T02:45:00.000Z	cosmodad	kbrooks	what makes you think it's not working?
+2008-02-20T02:46:00.000Z	kbrooks	cosmodad	it boots pretty fast
+2008-02-20T02:46:00.000Z	cosmodad	kbrooks	that's fine with moderately new machines.
+2008-02-20T02:46:00.000Z	kbrooks	cosmodad	and no swap in /dev/mapper
+2008-02-20T02:47:00.000Z	kbrooks	cosmodad	hello? there is no swap file in /dev/mapper, only control
+2008-02-20T02:47:00.000Z	cosmodad	kbrooks	relax, man. I'm not getting paid. :)
+2008-02-20T02:48:00.000Z	cosmodad	kbrooks	do this and check if there's a result: sudo dmsetup ls|grep swap

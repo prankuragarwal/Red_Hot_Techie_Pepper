@@ -1,0 +1,23 @@
+2006-08-04T05:48:00.000Z	ogamiitto		hi, i had a defective hard disk which contained all my ubuntu install, today i've received the replacement drive that is bigger than the defective one, how can i transfer the ubuntu install (presumably with dd) from one disk to another?
+2006-08-04T05:50:00.000Z	soundray	ogamiitto	if the drive is really broken, I suggest you do a fresh install on the new disk, mount your old disk from the new installation, and copy everything that you still need with cp or rsync
+2006-08-04T05:52:00.000Z	ogamiitto	soundray	it was working, just bad performance (i/o) errors, I really want to avoid install + customizing, any clues?
+2006-08-04T05:54:00.000Z	soundray	ogamiitto	if you can still boot the old install, I would use tar to copy the entire root system.
+2006-08-04T05:55:00.000Z	soundray	ogamiitto	assuming that hda1 is the old root, and hdb1 is the target for the new root, you would do something like:
+2006-08-04T05:55:00.000Z	soundray	ogamiitto	hold on - I've had a change of heart...
+2006-08-04T05:55:00.000Z	soundray	ogamiitto	do you have a live CD?
+2006-08-04T06:01:00.000Z	soundray	ogamiitto	have you partitioned the new drive?
+2006-08-04T06:01:00.000Z	ogamiitto	soundray	no
+2006-08-04T06:03:00.000Z	soundray	ogamiitto	you should create the partitions you want on the new disk. Do it from your old system or from the live CD - it doesn't matter. I recommend gparted. Make sure you have ext3 filesystems on the target, and that there is a swap partition, too.
+2006-08-04T06:04:00.000Z	soundray	ogamiitto	then, in the live system, create mountpoints for the old root and the empty ext3 which you want as the new root.
+2006-08-04T06:05:00.000Z	soundray	ogamiitto	'sudo mkdir /media/oldroot ; sudo mkdir /media/newroot'
+2006-08-04T06:05:00.000Z	soundray	ogamiitto	assuming that the old root is on /dev/hda1 and the target is /dev/hdb1, do a 'mount /dev/hda1 /media/oldroot ; mount /dev/hdb1 /media/newroot'
+2006-08-04T06:06:00.000Z	soundray	ogamiitto	then the copying command: '(cd /media/oldroot && tar cf - . ) | (cd /media/newroot && tar xf - )'
+2006-08-04T06:07:00.000Z	soundray	ogamiitto	the tar ensures that all your device special files are transferred as they are.
+2006-08-04T06:07:00.000Z	soundray	ogamiitto	'cp -a' should work, too, but it's less reliable than the command above.
+2006-08-04T06:08:00.000Z	ogamiitto	soundray	looks good
+2006-08-04T06:39:00.000Z	ogamiitto	soundray	command does not work
+2006-08-04T06:41:00.000Z	soundray	ogamiitto	don't copy the quote marks
+2006-08-04T06:42:00.000Z	soundray	ogamiitto	the command is adapted from http://www.tldp.org/HOWTO/Tips-HOWTO-2.html#ss2.6  -- have a look there
+2006-08-04T06:42:00.000Z	ogamiitto	soundray	ok, just the parenthesis, right?
+2006-08-04T06:42:00.000Z	soundray	ogamiitto	from the famous Alan Cox
+2006-08-04T06:42:00.000Z	soundray	ogamiitto	yes, those are essential

@@ -1,0 +1,21 @@
+2009-07-14T21:16:00.000Z	Ti-dev		hi, I'm struggling to build mesa 7.4.4 to fix a bug with my drivers and I'm encountering errors. I'm not really sure what it is...any help? Please...Thanks..
+2009-07-14T21:17:00.000Z	Ti-dev		anyone?
+2009-07-14T21:19:00.000Z	trashbarg	Ti-dev	you could start giving a litle bit more information
+2009-07-14T21:23:00.000Z	Ti-dev	trashbarg	ok...umm...well to start with, I issue the command, "make linux-dri-x86". It ends with some error messages that I can't seem to figure out. It ends like so, dri2.o returns Error 1, subdirs Error 1, default Error1 and linux-dri-x86 Error2...This isn't the actual the full set of errors though...
+2009-07-14T21:23:00.000Z	trashbarg	Ti-dev	Scroll up and try to find out the first error message.
+2009-07-14T21:27:00.000Z	Ti-dev	trashbarg	dri2.c:117: error: ‘xDRI2ConnectReq’ has no member named ‘window’. Well that's the first line that starts with "error:" :D
+2009-07-14T21:30:00.000Z	trashbarg	Ti-dev	There is some guy experiencing the same problem: http://bbs.archlinux.org/viewtopic.php?pid=501627
+2009-07-14T21:30:00.000Z	Ti-dev	trashbarg	cool..thanks dude, i'll check it out..
+2009-07-14T21:40:00.000Z	Ti-dev	trashbarg	according to the link you sent, it's something to do with xorg. I use Jaunty Jackelope which in turn uses xorg 1.6...required is 1.5. The dude with the prob seemed to have enabled "dri2" at compilation. To make a long story short, do I have to rebuild my xorg server??
+2009-07-14T21:44:00.000Z	trashbarg	Ti-dev	If you dont get a packages with the options you want enabled, you have to compile it by yourself
+2009-07-14T21:45:00.000Z	trashbarg	Ti-dev	How do you come to compiling the module?
+2009-07-14T21:45:00.000Z	Ti-dev	trashbarg	yeah, I think I got it...I think I missed an option for "./configure"..I'll try it now..thanks..I'm following this guide: http://www.mesa3d.org/autoconf.html
+2009-07-14T21:45:00.000Z	Ti-dev	trashbarg	I'm sorry, didn't quite get you?
+2009-07-14T21:46:00.000Z	trashbarg	Ti-dev	you dont want to compile it for no reason. Maybe there is an easier way to solve you problem?
+2009-07-14T21:47:00.000Z	Ti-dev	trashbarg	not really, I'm trying to get 3D accel for the infamous mach64...no other way it seems...I used a different fix once. It worked but was for an older v. of ubuntu so it wasn't really successfull...
+2009-07-14T21:57:00.000Z	trashbarg	Ti-dev	sorry, i cant help you with that, but you should ask at #xorg. Comiling the server isnt a good idea, imo ubuntu is not the best system if you are about building your own binaries. But you could give it a try ;)
+2009-07-14T21:57:00.000Z	Ti-dev	trashbarg	hey I think I got it...I missed out some additional operators to include with "./configure" especially, "--with-driver=dri"
+2009-07-14T21:57:00.000Z	Ti-dev	trashbarg	hehe yeah, but the xorg dudes are rather rude..
+2009-07-14T22:11:00.000Z	Ti-dev	trashbarg	ok my first prob was with "make linux-dri-x86" now it's the "make" command that follows "./configure"
+2009-07-14T22:32:00.000Z	trashbarg	Ti-dev	seems to be --with-dri-drivers instead of --with-drivers
+2009-07-14T22:33:00.000Z	Ti-dev	trashbarg	oh hi :D, I'm sorry I'm not quite getting what you mean..

@@ -1,0 +1,23 @@
+2011-09-09T08:37:00.000Z	fiber		Hi everyone... I'm having an issue where I get a kernel panic every time I try logging into unity (http://imgur.com/txZ41).  This is only a problem with unity, I can log into ubuntu classic just fine.  This problem is new (~2 days) and until an hour ago only happened every once in a while.  Now I have a 0% chance of logging into unity.  Does anyone know about this issue?  Googling gives nothing!
+2011-09-09T08:38:00.000Z	soreau	fiber	It's most likely a graphics driver issue. Which are you using?
+2011-09-09T08:39:00.000Z	fiber	soreau	it is just the internal video card for the i5... although even in ubuntu classic opengl works just fine and it is using the same driver
+2011-09-09T08:41:00.000Z	soreau	fiber	You can export compiz settings in ccsm>Preferences to save them
+2011-09-09T08:43:00.000Z	fiber	soreau	so... what do you think is going on then? because it seems to me that the graphics driver is working just fine
+2011-09-09T08:43:00.000Z	soreau	fiber	First, what makes you think it's a kernel panic?
+2011-09-09T08:45:00.000Z	fiber	soreau	http://imgur.com/txZ41 (picture of my computer after... granted it doesn't say kernel oops so it may be some other sort of panic)
+2011-09-09T08:45:00.000Z	fiber	soreau	on further inspection, it says avahi-daemon is tainted... i think this was recently updated... maybe a reinstall on it?
+2011-09-09T08:47:00.000Z	soreau	fiber	I'm willing to bet it's a problem with the intel drm module
+2011-09-09T08:47:00.000Z	soreau	fiber	Try a different kernel version if you can or get more specific support in #intel-gfx
+2011-09-09T08:48:00.000Z	fiber	soreau	what would i do to use a different kernel version? just install the right  linux-image-* package?
+2011-09-09T08:49:00.000Z	soreau	fiber	That's one way I guess.. but typically most kernels in a ubuntu distro are pretty much the same version..
+2011-09-09T08:50:00.000Z	fiber	soreau	ok, cool... i'm going to first try messing with avahi and then try downgrading the kernel
+2011-09-09T08:51:00.000Z	fiber	soreau	i'll be back in a bit to report what's going on
+2011-09-09T08:51:00.000Z	soreau	fiber	good idea
+2011-09-09T08:56:00.000Z	fiber	soreau	so... `sudo apt-get --reinstall install avahi-daemon` fixed everything up
+2011-09-09T08:56:00.000Z	fiber	soreau	unity still takes forever to load... but it loads
+2011-09-09T08:57:00.000Z	soreau	fiber	Oh cool
+2011-09-09T08:57:00.000Z	fiber	soreau	one question... how can i force ubuntu to check my disk on the next boot?
+2011-09-09T08:57:00.000Z	soreau	fiber	I think that was something to do with wireless networking
+2011-09-09T08:57:00.000Z	soreau	fiber	There's a way to do it but I don't know right off hand
+2011-09-09T08:57:00.000Z	fiber	soreau	it's more like configurationless routing... it doesn't automagic network mapping (it's basically apple's bonjour)
+2011-09-09T08:58:00.000Z	fiber	soreau	that's all good... i'll look it up

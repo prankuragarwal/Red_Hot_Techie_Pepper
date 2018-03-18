@@ -1,0 +1,22 @@
+2007-12-19T08:14:00.000Z	Ose		Is there a way to mass delete files?
+2007-12-19T08:15:00.000Z	nickrud	Ose	rm *
+2007-12-19T08:16:00.000Z	nickrud	Ose	that would get files, but not directories ending in *.txt . To get any dir, you would do rm -r *.txt  (-r means recursive)
+2007-12-19T08:28:00.000Z	Ose	nickrud	I get "No such file or directory" when I try to use the asterisk in removing files.
+2007-12-19T08:29:00.000Z	nickrud	Ose	rm *.txt works , it's a standard file glob
+2007-12-19T08:31:00.000Z	Ose	nickrud	I'm typing  rm /home/ose/testdisk-6.8/linux/*.txt  and it gives the error. And yes, I can CD to that directory. There are no texts directly there though, just in folders beneath it.
+2007-12-19T08:34:00.000Z	Ose	nickrud	I tried rm -r /home/ose/testdisk-6.8/linux/*.txt and still doesn't find a file or directory.
+2007-12-19T08:34:00.000Z	nickrud	Ose	if the dir is text.txt for example, it would remove that dir and any dirs under it
+2007-12-19T08:35:00.000Z	Ose	nickrud	Ah, well I want it to remove any texts in the directories (Which aren't named that, but there are like.. Hundreds of directories all under /linux/ How would that be done?
+2007-12-19T08:35:00.000Z	nickrud	Ose	find . -iname *.txt -exec rm {} \; will recurse down thru dirs, removing files ending in txt
+2007-12-19T08:36:00.000Z	nickrud	Ose	or Txt , the iname makes it case insensitive
+2007-12-19T08:37:00.000Z	Ose	nickrud	There it goes! Thanks.
+2007-12-19T08:38:00.000Z	nickrud	Ose	yw
+2007-12-19T08:39:00.000Z	Ose	nickrud	Is there a way to have it report on how many it's deleted thus far? It's kinda deleting uh... 150,000 text files. Haha.
+2007-12-19T08:40:00.000Z	nickrud	Ose	not sure, find pushes back hard every time I claim I know it :)
+2007-12-19T08:41:00.000Z	Ose	nickrud	Haha. Well, this will do. I had the GUI deleting them earlier.. After 6 hours it wasn't done. When I stopped it nothing was removed.. Figured terminal would be faster. I'll just let this go all night, thanks.
+2007-12-19T09:09:00.000Z	nickrud	Ose	ps -A
+2007-12-20T09:04:00.000Z	nickrud	Ose	#kubuntu probably knows more about dolphin
+2007-12-20T10:57:00.000Z	nickrud	Ose	another one that's pretty cool is pstree , I think you have to install it
+2007-12-20T10:57:00.000Z	Ose	nickrud	I'll try that.. THis one isn't organized to my liking. But it was yet another. Haha.
+2007-12-20T10:58:00.000Z	nickrud	Ose	and htop for a different view, you need to install that one also
+2007-12-20T10:58:00.000Z	Ose	nickrud	pstree works - cool. But it doesn't show IDs.

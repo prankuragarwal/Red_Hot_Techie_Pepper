@@ -1,0 +1,22 @@
+2009-08-22T09:09:00.000Z	pschorf		Can someone help me figure out why a ttf font isn't showing up in xfontsel?
+2009-08-22T09:10:00.000Z	bucky	pschorf	how did you install the font?
+2009-08-22T09:10:00.000Z	pschorf	bucky	i coped it into /usr/share/fonts/truetype/custom, and then ran fc-cache -fv
+2009-08-22T09:11:00.000Z	pschorf	bucky	it shows up with fc-list
+2009-08-22T09:14:00.000Z	bucky	pschorf	did you restart X ?
+2009-08-22T09:14:00.000Z	pschorf	bucky	i restarted in frustration :P
+2009-08-22T09:15:00.000Z	bucky	pschorf	and you did run fc-cache -fv as sudo ?
+2009-08-22T09:16:00.000Z	pschorf	bucky	yes
+2009-08-22T09:16:00.000Z	bucky	pschorf	does ls -l /usr/share/fonts/truetype/custom  list them all and show them as being root root ?
+2009-08-22T09:17:00.000Z	pschorf	bucky	yes
+2009-08-22T09:17:00.000Z	pschorf	bucky	the permissions are 644
+2009-08-22T09:17:00.000Z	bucky	pschorf	and -rw-r--r--
+2009-08-22T09:18:00.000Z	pschorf	bucky	yes
+2009-08-22T09:19:00.000Z	bucky	pschorf	they do have a .ttf extension and not a .TTF extension right
+2009-08-22T09:20:00.000Z	pschorf	bucky	they were TTF
+2009-08-22T09:20:00.000Z	pschorf	bucky	should i rename them and restart X?
+2009-08-22T09:21:00.000Z	bucky	pschorf	for i in fonts/*.ttf fonts/*.TTF; do cp "$i" .fonts; done  and do the sudo fc-cache -fv  again and restart X
+2009-08-22T09:21:00.000Z	bucky	pschorf	change the path or cd into the dir
+2009-08-22T09:22:00.000Z	pschorf	bucky	thanks, will be back
+2009-08-22T09:29:00.000Z	pschorf	bucky	no dice with the rename
+2009-08-22T09:30:00.000Z	bucky	pschorf	sorry buddy.. out of ideas unless you can do this http://manpages.ubuntu.com/manpages/karmic/man8/update-fonts-dir.8.html
+2009-08-22T09:30:00.000Z	pschorf	bucky	thanks for the help

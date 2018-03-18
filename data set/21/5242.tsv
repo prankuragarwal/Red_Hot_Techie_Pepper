@@ -1,0 +1,21 @@
+2008-01-27T01:28:00.000Z	ICM		Trying to install a Dell Laser Printer 1700 under Ubuntu Server 7.04, I need a driver for it, and the OpenPrinting Database tells me to use the "PCL6" driver... I can not find ANY information on how to obtain or install it... help, please?
+2008-01-27T01:30:00.000Z	soundray	ICM	PCL6 is a printer language invented by HP for laser printers. Try a HP laserjet driver.
+2008-01-27T01:30:00.000Z	ICM	soundray	just.. any one?
+2008-01-27T01:31:00.000Z	soundray	ICM	one that had PCL6 in the name, ideally
+2008-01-27T01:32:00.000Z	ICM	soundray	They all say HPLIB 1.7.3... none say PCL6
+2008-01-27T01:37:00.000Z	ICM	soundray	No dice... I even selected one in the list that said "(recommended)", but nothing is happening. When I used the "Dell M5200 Foomatic/Postscript" in the CUPS setup page... whenever I tried to print something the green LED marked 'data' would blink- granted it wouldnt' do anything like that, but..
+2008-01-27T01:38:00.000Z	soundray	ICM	I'm looking here, too -- not sure what to suggest. Your printer is definitely not Postscript, but it can be made to work: http://openprinting.org/show_printer.cgi?recnum=Dell-1700
+2008-01-27T01:41:00.000Z	ICM	soundray	that was the page where I found out about PCL6... on the opendrivers page
+2008-01-27T01:41:00.000Z	soundray	ICM	this ppd should work: /usr/share/ppd/ghostscript/model/pxlmono.ppd
+2008-01-27T01:41:00.000Z	ICM	soundray	-bash: cd: /usr/share/ppd/ghostscript/model/: No such file or directory
+2008-01-27T01:43:00.000Z	soundray	ICM	it comes with the ghostscript package
+2008-01-27T01:43:00.000Z	ICM	soundray	alright, I'll apt-get ghostscript
+2008-01-27T01:48:00.000Z	soundray	ICM	there should be an actual ghostscript package ^^
+2008-01-27T01:50:00.000Z	soundray	ICM	there it is -- you need gs-esp apparently
+2008-01-27T01:54:00.000Z	ICM	soundray	this still only gives me the options for the Dell M5200 Foomatic/Postscript and Dell S2500 Foomatic/Postscript drivers, both of which I did try earlier, and they made the LED on the printer blink, but nothing print
+2008-01-27T01:55:00.000Z	soundray	ICM	I don't know what the proper procedure is to use a ppd file in feisty server...
+2008-01-27T01:58:00.000Z	ICM	soundray	nevermind, false alarm, it was a result of me hitting a button on the printer for the test page :(
+2008-01-27T01:58:00.000Z	soundray	ICM	as long as you keep trying with postscript drivers, it won't work
+2008-01-27T02:13:00.000Z	ICM	soundray	thankyou, it works now
+2008-01-27T02:13:00.000Z	soundray	ICM	well done!
+2008-01-27T02:14:00.000Z	ICM	soundray	I managed to get it to go through all the paper in the paper tray xD (I tried using a PCL3 Lexmark printer.. lol), then I Found under 'Make' instead of choosing 'Dell' I choose 'Generic' and found "Generic PCL 6/PCL XL Printer Foomatic/pxlmono (recommended)" under that, works perfectly

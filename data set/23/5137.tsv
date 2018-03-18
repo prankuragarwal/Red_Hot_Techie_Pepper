@@ -1,0 +1,23 @@
+2012-07-08T16:11:00.000Z	pv2b		again, that fails - i guess because the devices are open still
+2012-07-08T16:11:00.000Z	pv2b		this system doesn't run pulseaudio, i think lubuntu doesn't ship with that enabled or something
+2012-07-08T16:12:00.000Z	pv2b		or more specifically, ps axuw|grep pulse turns up nothing
+2012-07-08T16:13:00.000Z	BluesKaj	pv2b	asla force reload doesn't always work , but a reboot does after making changes to alsa config
+2012-07-08T16:15:00.000Z	pv2b	BluesKaj	okay, let's take a step back. i want to be able to change what sound card is card0 in alsa - to achieve the goal of changing the default sound card for applications without having to reboot the machine. my mac does this. win7 does this. i would expect it to be possible somehow in linux as well. or is there another approach I could use to acheive the same result?
+2012-07-08T16:17:00.000Z	BluesKaj	pv2b	perhaps a logout-login ? frankly I've never tried thattho
+2012-07-08T16:24:00.000Z	BluesKaj	pv2b	try sudo modprobe snd-hda-intel
+2012-07-08T16:24:00.000Z	pv2b	BluesKaj	it works either with underscores of hyphens
+2012-07-08T16:25:00.000Z	BluesKaj	pv2b	ok thanks , wasn't aware of that :)
+2012-07-08T16:31:00.000Z	BluesKaj	pv2b	try this command ,dunno i it still works , if you use gstreamer backend , sudo gstreamer-properties , it should show a USB optional setting
+2012-07-08T16:31:00.000Z	pv2b	BluesKaj	i don't think i use gstreamer. but i'll investigate what it is when i've had my food :) thanks
+2012-07-08T20:27:00.000Z	pv2b	BluesKaj	he has, but the firmware is missing. going to see what the legacy firmware installer fell over on
+2012-07-08T20:28:00.000Z	pv2b	BluesKaj	because he ran it earlier
+2012-07-08T20:45:00.000Z	BluesKaj	pv2b	falstaf why the legacy installer , the b43 driver is the current one for most broadcom BCM43XX chips
+2012-07-08T20:45:00.000Z	pv2b	BluesKaj	most - not all.
+2012-07-08T20:46:00.000Z	pv2b	BluesKaj	http://paste.ubuntu.com/1081385/
+2012-07-08T20:46:00.000Z	pv2b	BluesKaj	that's why i'm telling him to modprobe b43legacy
+2012-07-08T20:47:00.000Z	BluesKaj	pv2b	yes understood , is the pc really old ?
+2012-07-08T20:49:00.000Z	BluesKaj	pv2b	falstaf , ok good to know for future reference , my apologies for the mistaken suggestions
+2012-07-08T21:06:00.000Z	pv2b	BluesKaj	he already has.
+2012-07-08T21:06:00.000Z	BluesKaj	pv2b	falstaf , you may need to install b43-fwcutter for leagacy firmware
+2012-07-08T21:06:00.000Z	BluesKaj	pv2b	ok
+2012-07-08T21:06:00.000Z	pv2b	BluesKaj	but for some reason teh driver isn't piiccking it up

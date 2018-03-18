@@ -1,0 +1,24 @@
+2010-03-29T17:19:00.000Z	bouma		help, ive got a process filling my /, i can make a bit of space by moving things out of /var/cache/apt/archives to another fs, but then the space gets eaten at a rate of megs a sec, i watch -d 'df -h', and watched it get eaten
+2010-03-29T17:19:00.000Z	bouma		how can i identify it ?
+2010-03-29T17:20:00.000Z	bouma		im lucky empathy runs with 0 space on root
+2010-03-29T17:20:00.000Z	bouma		pitty i dont have iotop installed
+2010-03-29T17:22:00.000Z	bouma		does anyone know how i can find what is writing to / ?
+2010-03-29T17:23:00.000Z	sipior	bouma	sure, "lsof" will do that for you.
+2010-03-29T17:24:00.000Z	bouma	sipior	thanks alot, ok so im checking the man
+2010-03-29T17:26:00.000Z	bouma	sipior	possibly ~/.xsession-errors, which i noticed were like >1gb and growing then i deleted, but perhaps there is another hard link to it and the space is still allocated? any suggestions ?
+2010-03-29T17:26:00.000Z	sipior	bouma	what exactly are you attempting to ascertain?
+2010-03-29T17:28:00.000Z	bouma	sipior	well im trying to find that process that eats all my space on / and kill it, so i can use my computer, many programs wont run with 0space on / i can temporarily free up space by moving things from /var/cache/apt/archives to another fs but the space is eaten up quickly at around megs/sec, i watched it disapear with watch -d 'df -h'
+2010-03-29T17:29:00.000Z	sipior	bouma	what does lsof say?
+2010-03-29T17:32:00.000Z	bouma	sipior	well the biggest file is ~/xsession-errors at 1.5gb , but it says its (deleted), but i have the suspicion that the inode is still allocated (not really in the know wrt filesystems but understand multiple hardlinks can keep a file in existence after being deleted in one place)
+2010-03-29T17:33:00.000Z	bouma	sipior	ah so the first field, in this case, gnome-pan, is the program holding the filehandle ?
+2010-03-29T17:33:00.000Z	sipior	bouma	well, if you're still running X, it's probably still dumping errors, yes. i don't think it's hard-linked anywhere. try killing X and see what happens.
+2010-03-29T17:33:00.000Z	sipior	bouma	should be, yes
+2010-03-29T17:33:00.000Z	bouma	sipior	will i be able to relogin with 0space on root,  idont have a spare boot disk here.
+2010-03-29T17:34:00.000Z	sipior	bouma	switch to a vt with "ctrl-alt-F1" and login there.
+2010-03-29T17:34:00.000Z	sipior	bouma	but if you think pan is causing the problem. blow it away and see if that helps.
+2010-03-29T17:35:00.000Z	bouma	sipior	ok i did lsof|grep xsession, and a quite a few programs are in the first field associated with .xsession-errors
+2010-03-29T17:35:00.000Z	bouma	sipior	but they all say (deleted) at the end of the line
+2010-03-29T17:38:00.000Z	bouma	sipior	just on a thought i ran sync, its taking a while
+2010-03-29T17:38:00.000Z	bouma		and totally occuping a cou
+2010-03-29T17:38:00.000Z	bouma		cpu
+2010-03-29T17:38:00.000Z	sipior	bouma	i don't doubt it. is X still running?

@@ -1,0 +1,22 @@
+2012-11-01T16:35:00.000Z	the_dark_knight		hey guys, I have one question. when I put this sample.conf file in /etc/init/ it works fine, even though it doesn't run the worker.py. But when i put it in $HOME/.init/ it says unknown job. please help me. here is my conf file http://www.bpaste.net/raw/3xGgfyobgkkwDP8dUc8Q/
+2012-11-01T16:37:00.000Z	robbie	the_dark_knight	you need to enable user jobs in upstart: http://bradleyayers.blogspot.com/2011/10/upstart-user-jobs-on-ubuntu-1110.html
+2012-11-01T16:40:00.000Z	the_dark_knight	robbie	jrib , new conf http://www.bpaste.net/raw/i2Fs9WlAWgkzeAH3gz3e/  why is it not running the exec. when I see my syslog it gives log till " just before starting the worker"
+2012-11-01T16:40:00.000Z	the_dark_knight	robbie	jrib , please help
+2012-11-01T16:41:00.000Z	robbie	the_dark_knight	please see the url I sent you
+2012-11-01T16:41:00.000Z	robbie	the_dark_knight	http://bradleyayers.blogspot.com/2011/10/upstart-user-jobs-on-ubuntu-1110.html
+2012-11-01T16:42:00.000Z	robbie	the_dark_knight	here's the page for playing with upstart -- Im sorry man, I dont actually use it: http://upstart.ubuntu.com/getting-started.html
+2012-11-01T16:43:00.000Z	the_dark_knight	robbie	it just helps regarding ther user services. but I can run the sample service now. just can't run the exec statement in it. please have a look at http://www.bpaste.net/raw/i2Fs9WlAWgkzeAH3gz3e/ .
+2012-11-01T16:43:00.000Z	the_dark_knight	robbie	your url doesn't help regarding this, it helps for my previous problem regarding $HOME/.init
+2012-11-01T16:43:00.000Z	robbie	the_dark_knight	either put it in /etc/init or enable "user jobs" in upstart -- see the second link for the manual for upstart
+2012-11-01T16:44:00.000Z	robbie	the_dark_knight	the manual for upstart is all I can give you, sorry. that is the only program for running jobs from $HOME/.init
+2012-11-01T16:46:00.000Z	the_dark_knight	robbie	I have put sample.conf in /etc/init/ it works fine upto running this service. but my log says http://www.bpaste.net/raw/qgcQKKPvGvDryuvrasLo/.   my conf http://www.bpaste.net/raw/i2Fs9WlAWgkzeAH3gz3e/
+2012-11-01T16:47:00.000Z	robbie	the_dark_knight	you need to change your logging message, it says "start" when it means stop
+2012-11-01T16:48:00.000Z	robbie	the_dark_knight	the last logger line should be: logger "post-stop for sample"
+2012-11-01T16:51:00.000Z	the_dark_knight	robbie	dr_willis , simple echo "hi" > ~/abc.log works, How do I make it run with python script
+2012-11-01T16:52:00.000Z	the_dark_knight	robbie	dr_willis , should I put "python sample.py" in a "sample.sh" and exec it?
+2012-11-01T16:53:00.000Z	robbie	the_dark_knight	I dont kow python, sorry
+2012-11-01T16:57:00.000Z	robbie	the_dark_knight	congrats :)
+2012-11-01T16:59:00.000Z	the_dark_knight	robbie	I mean I have previously tried to put "python" in cron too. It didn't work either, I had to go with a shell script with python command. Wonder why I can't directly run python
+2012-11-01T17:03:00.000Z	the_dark_knight	robbie	gearman requires it.
+2012-11-01T17:03:00.000Z	the_dark_knight	robbie	sorry that was other discussion.
+2012-11-01T17:05:00.000Z	robbie	the_dark_knight	yepwatermelon: whichever software that is, you might make a backup of it, and then uninstall it... install libboost1.46-dev and then reinstall the other software -- but I think you are going to find that it won't accept libboost1.46-dev, so you'll need to get the package from the source instead of from ubuntu

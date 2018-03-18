@@ -1,0 +1,18 @@
+2012-07-24T06:00:00.000Z	edgy		hi, how can I tell whether the installed OS is ubuntu server or ubuntu desktop?
+2012-07-24T06:02:00.000Z	escott	edgy	there isn't really a distinction
+2012-07-24T06:06:00.000Z	edgy	escott	ok but I noticed in my desktop when a kernel update is available, a file  /var/run/reboot... is created, now in my server I don't get that file so I don't know when to reboot, I thought may be the server does it in a different way
+2012-07-24T06:08:00.000Z	escott	edgy	im sure its a difference in attitude. on a desktop you might have unattended upgrades. do that on a server and you deserve to die
+2012-07-24T06:08:00.000Z	edgy	escott	why? I have it installed and doing the security updates
+2012-07-24T06:09:00.000Z	escott	edgy	from http://serverfault.com/questions/92932/how-does-ubuntu-keep-track-of-the-system-restart-required-flag-in-motd see Note: for debian systems, /var/run/reboot-required does not get created unless the update-notifier-common package is installed. – Peter V. Mørch Jan 27 at 7:50
+2012-07-24T06:13:00.000Z	edgy	escott	good catch, thanks a lot
+2012-07-24T06:16:00.000Z	escott	edgy	ive seen only 2GB or so on 32bit non pae. just need a nice shiny graphics card
+2012-07-24T06:17:00.000Z	escott	edgy	like my previous employer... who got the high end machine for the developers, but put 32bit non-pae kernels on it. so that really nice 2GB video card meant i had less usable ram than the other guys
+2012-07-24T06:20:00.000Z	edgy	escott	sorry I didn't understand the relation between the video card ram and pae kernels, you mean with non-pae 32-bits if you have 4G RAM and 2G vga-card you are going to use only 2G total?
+2012-07-24T06:20:00.000Z	escott	edgy	yes it all gets mapped
+2012-07-24T06:20:00.000Z	escott	edgy	if its DMA'able then it counts against the address space
+2012-07-24T06:21:00.000Z	edgy	escott	then what's the mapping rule? 1G from vga and 1G from RAM, or just 2G vga and 0 RAM ;)
+2012-07-24T06:22:00.000Z	escott	edgy	anything the card sets up is gone. and we were using windows so there was no way for me to blacklist the cards memory space or tell it to steal less of my ram. it was just *gone* and there was nothing i could do about it
+2012-07-24T06:23:00.000Z	edgy	escott	funny, but can you even do this in linux? I mean blacklist the cards memory?
+2012-07-24T06:24:00.000Z	escott	edgy	so that 3.2 is really based on averages. video cards have gotten more sane in recent years and you dont see as many 2GB cards out there. but theoretically with the right hardware it would be impossible to boot a system because it ran out of RAM
+2012-07-24T06:25:00.000Z	escott	edgy	i dont know if you can blacklist, but i imagine you probably could. point was i was very annoyed that our development team who worked with large data sets had less ram than everyone else on the floor
+2012-07-24T06:51:00.000Z	escott	edgy	i think in theory it could do with less, but Flannel seems to be backed by the docs and swsusp is rather simplistic

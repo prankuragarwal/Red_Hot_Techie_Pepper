@@ -1,0 +1,24 @@
+2007-07-27T10:47:00.000Z	fjb		Can somebody help me?  I just installed Ubuntu and everything was working fine.  Now, all of a sudden, sound stopped coming out of my sound card jack but for some reason is coming out of the internal speaker.  Is this a common problem?
+2007-07-27T10:48:00.000Z	pete83	fjb	check your volume settings with alsamixer
+2007-07-27T10:49:00.000Z	fjb	pete83	my alsamixer settings are fine.  Like I said sound is coming out of the internal speaker but not the external jack.  when I mess with the mixer the internal speaker is changing levels but not the sound jack
+2007-07-27T10:49:00.000Z	pete83	fjb	is this a laptop?
+2007-07-27T10:50:00.000Z	fjb	pete83	no it's an HP with an idiotic internal speaker
+2007-07-27T10:50:00.000Z	fjb	pete83	it's using the on board sound
+2007-07-27T10:52:00.000Z	pete83	fjb	what sound card? (lshw -class multimedia)
+2007-07-27T10:55:00.000Z	fjb	pete83	ICH5 AC'97
+2007-07-27T10:56:00.000Z	pete83	fjb	what HP model, anyway?
+2007-07-27T10:57:00.000Z	fjb	pete83	d530C
+2007-07-27T10:57:00.000Z	fjb	pete83	it's older
+2007-07-27T11:03:00.000Z	pete83	fjb	um, have you tried any programs that use OSS instead of alsa?
+2007-07-27T11:03:00.000Z	fjb	pete83	no
+2007-07-27T11:06:00.000Z	pete83	fjb	hey, do you have vlc?
+2007-07-27T11:06:00.000Z	fjb	pete83	yes
+2007-07-27T11:06:00.000Z	fjb	pete83	in fact I was using it to play an xvid when the sound broke
+2007-07-27T11:07:00.000Z	pete83	fjb	go to the preferences, and change the audio output module to OSS, and try if that works differently than alsa for playing a sound file...
+2007-07-27T11:07:00.000Z	fjb	pete83	ok
+2007-07-27T11:10:00.000Z	fjb	pete83	figured it out.  I got an idea and tried it.  Apparently alsamixer takes the sound device internal speaker as the MAIN channel and the output jack is treated as the HEADPHONE output.  Somehow the headphone level in the mixer was down.
+2007-07-27T11:11:00.000Z	pete83	fjb	aaargh! so the alsamixer was right all along!
+2007-07-27T11:11:00.000Z	fjb	pete83	lol yea, but it didn't dawn on me to try the "headphone" level.  stupid me :)
+2007-07-27T11:12:00.000Z	fjb	pete83	but your laptop question rang a bell a bit late in my head because even though it's a desktop it acts kind of like a laptop in that respect with the internal speaker
+2007-07-27T11:12:00.000Z	fjb	pete83	so anyway thank you very much for helping me.
+2007-07-27T11:13:00.000Z	pete83	fjb	no problem, thanks for telling me the final solution

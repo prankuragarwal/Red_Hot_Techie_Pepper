@@ -1,0 +1,22 @@
+2006-01-13T06:03:00.000Z	igaaa		hi, does everyone know how to make an optical audio output work with alsa ?
+2006-01-13T06:03:00.000Z	crimsun	igaaa	cat /proc/asound/cards
+2006-01-13T06:09:00.000Z	crimsun	igaaa	please just ask here; I can't accept dcc chats.
+2006-01-13T06:10:00.000Z	igaaa	crimsun	here's the output from cat /proc/asound/cards: http://paste.ubuntu-nl.org/6803
+2006-01-13T06:11:00.000Z	crimsun	igaaa	ok, and what's your sound issue?
+2006-01-13T06:11:00.000Z	crimsun	igaaa	optical-out?
+2006-01-13T06:11:00.000Z	crimsun	igaaa	does ``aplay -Dplug:iec958 /usr/share/sounds/startup.wav'' produce audible sound?
+2006-01-13T06:17:00.000Z	igaaa	crimsun	the jack-output works well, with vlc, Beep, etc. However, I don't know how to make both coaxial and optical outputs work.
+2006-01-13T06:17:00.000Z	crimsun	igaaa	"jack-output"?
+2006-01-13T06:20:00.000Z	igaaa	crimsun	and I didn't hear any sound neither with the jack nor the coaxial output
+2006-01-13T06:20:00.000Z	igaaa	crimsun	yes, the headphones' output
+2006-01-13T06:21:00.000Z	crimsun	igaaa	did you pastebin amixer output?
+2006-01-13T06:25:00.000Z	igaaa	crimsun	http://paste.ubuntu-nl.org/6804
+2006-01-13T06:27:00.000Z	crimsun	igaaa	you may need to mute 'IEC958 Capture Monitor'
+2006-01-13T06:30:00.000Z	igaaa	crimsun	done, but I still don't hear any sound
+2006-01-13T06:32:00.000Z	crimsun	igaaa	cat /proc/asound/devices --> pastebin
+2006-01-13T06:34:00.000Z	igaaa	crimsun	http://paste.ubuntu-nl.org/6805
+2006-01-13T06:35:00.000Z	crimsun	igaaa	ok, use ``aplay -Dplughw:0,4 /usr/share/sounds/startup.wav''
+2006-01-13T06:36:00.000Z	igaaa	crimsun	The probleme is that I want to use my external amplifier through the coaxial or optical output
+2006-01-13T06:36:00.000Z	igaaa	crimsun	It gives no sound
+2006-01-13T06:37:00.000Z	crimsun	igaaa	ok, then please follow the troubleshooting steps in alsa.opensrc.org -> digital
+2006-01-13T06:38:00.000Z	igaaa	crimsun	ok, thank you, I'm going to do so

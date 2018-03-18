@@ -1,0 +1,18 @@
+2004-10-13T10:51:00.000Z	bunbury		Hello I am having trouble getting a USB palm pilot recognised. Nothing shows up in /dev when I connect it. Any help appreciated.
+2004-10-13T10:51:00.000Z	Kosai	bunbury	modprobe visor, perhaps.
+2004-10-13T10:52:00.000Z	bunbury		FATAL: Module mass_storage not found.
+2004-10-13T10:52:00.000Z	bunbury		What next?
+2004-10-13T10:52:00.000Z	bunbury		I ran that as root
+2004-10-13T10:52:00.000Z	Kosai	bunbury	Try modprobe visor, and then tell us if 'dmesg' has anything related to your Palm at the bottom.
+2004-10-13T10:54:00.000Z	bunbury		yes there is a reference to USB serial support being registered for Palm OS
+2004-10-13T10:54:00.000Z	bunbury		That was for Kosai
+2004-10-13T10:55:00.000Z	Kosai	bunbury	Great.  Then you're all set.
+2004-10-13T10:55:00.000Z	Kosai		It should tell you which /dev/ttyS* device has been registered, and you can feed that to your sync program.
+2004-10-13T10:57:00.000Z	bunbury	Kosai	doesn't seem to I am afraid
+2004-10-13T10:58:00.000Z	Kosai		Oh.  Hm.  Well, try /dev/ttyS0, then /dev/ttyS1.
+2004-10-13T10:59:00.000Z	bunbury	Kosai	are they for USB connections?
+2004-10-13T11:00:00.000Z	Kosai	bunbury	Traditionally they're the serial ports, but the "USB serial support" is bridging between your USB crable and the serial device.
+2004-10-13T11:05:00.000Z	bunbury	Kosai	Tried ttys0-3. No joy. Under Mandrake, /dev/usb is created when I plug in the Pilot and I use /dev/usb/tts/0. None of this seems to happen in Ubuntu, although as we have seen, the Pilot seems to be registered OK. 
+2004-10-13T11:05:00.000Z	bunbury		Does anyone have any further clues, please?
+2004-10-13T11:18:00.000Z	bunbury	Kosai	I ran dmesg again and this time there was a reference to the port I needed. Sync now works. Thank you very much for your help
+2004-10-13T11:19:00.000Z	Kosai	bunbury	Oh!  I'm glad to hear that.  You're welcome.

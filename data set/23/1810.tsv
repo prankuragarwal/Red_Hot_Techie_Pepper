@@ -1,0 +1,23 @@
+2010-09-13T07:06:00.000Z	thune3	iluminator101	i'm not sure, does putting single quotes around the package glob help? or you get the same error specifying the package by it's actual name?
+2010-09-13T07:07:00.000Z	iluminator101	thune3	yep same error
+2010-09-13T07:14:00.000Z	thune3	iluminator101	that's not a package in the repos right? it was installed with a .deb file?
+2010-09-13T07:15:00.000Z	iluminator101	thune3	thats right i downloaded it from Brother
+2010-09-13T07:16:00.000Z	thune3	iluminator101	the error message suggests trying to reinstall it and then remove it. either the rm scripts in the package are broken or you manually removed the specified files.
+2010-09-13T07:19:00.000Z	thune3	iluminator101	you might also be able to fool with the rm scripts to disable the file checks if necessary in /var/lib/dpkg/info/cupswrappermfc7420*
+2010-09-13T07:23:00.000Z	iluminator101	thune3	what should i do then
+2010-09-13T07:24:00.000Z	thune3	iluminator101	first i would try reinstalling the .deb and then uninstalling. if that doesn't work then maybe disable or modify the specific file tests in the prerm (or postrm) scripts.
+2010-09-13T07:42:00.000Z	iluminator101	thune3	i did what you suggest remove postrm's thanks. you are a lifesave
+2010-09-13T07:43:00.000Z	thune3	iluminator101	what did you remove?
+2010-09-13T07:45:00.000Z	iluminator101	thune3	http://pastebin.com/fTYhCtNA
+2010-09-13T07:48:00.000Z	thune3	iluminator101	that may have been a bit extreme. I'm not sure what those files do to clean up. I was suggesting *modifying* those files to get uninstall to work. It is probably OK, but you need to make sure all the files in cupswrappermfc7420.list are gone.
+2010-09-13T07:50:00.000Z	iluminator101	thune3	erase all the files in cupswrappermfc7420.list why??
+2010-09-13T07:53:00.000Z	thune3	iluminator101	because since you removed the uninstall scripts, they may not have been removed.
+2010-09-13T07:54:00.000Z	iluminator101	thune3	i have my scanner for mfc-7420 works on debian squeeze i added what i added on debian squeeze udev-* file on ubuntu but now response
+2010-09-13T07:58:00.000Z	iluminator101	thune3	anyways i gotta go thanks again i appreciate it
+2010-09-16T08:41:00.000Z	thune3	iluminator101	the error message isn't really informative, but does suggest looking at make.log in /var/lib/dkms/oss4/4.2-build2002/build/
+2010-09-16T08:42:00.000Z	iluminator101	thune3	what i am trying to do here is install oss, pulse audio is hogging my limited resources...
+2010-09-16T08:44:00.000Z	thune3	iluminator101	i think pulse if fine, but downgrading to alsa first (before oss) is more typical.
+2010-09-16T08:45:00.000Z	iluminator101	thune3	make.log http://pastebin.com/HdGVwyts
+2010-09-16T08:48:00.000Z	thune3	iluminator101	no help there either i guess
+2010-09-16T08:53:00.000Z	iluminator101	thune3	i guess i will just have to go back to pluse for now
+2010-09-16T09:12:00.000Z	iluminator101	thune3	no sound on flash after in i am using alsa?

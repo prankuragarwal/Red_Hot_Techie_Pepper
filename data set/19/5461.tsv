@@ -1,0 +1,19 @@
+2008-07-16T15:10:00.000Z	Flannel	plouffe	That wiki page has all the commands you'll need
+2008-11-01T05:37:00.000Z	Flannel	plouffe	sudo apt-get update && sudo apt-get dist-upgrade
+2008-11-01T05:42:00.000Z	Flannel	plouffe	Finishing your upgrade.  No idea why it's 2GB though.
+2008-11-01T05:45:00.000Z	plouffe	Flannel	this is my output from sudo apt-get dist-upgrade --> http://paste.ubuntu.com/65484/ Does this look right?
+2008-11-01T05:47:00.000Z	Flannel	plouffe	well, this looks interesting at any rate.  Mind pastebinning /etc/apt/sources.list (and any files in /etc/apt/sources.list.d/) as well as the output of sudo apt-get update?
+2008-11-01T05:53:00.000Z	plouffe	Flannel	this is the output http://paste.ubuntu.com/65487/ (and this the previous http://paste.ubuntu.com/65484/)
+2008-11-01T05:54:00.000Z	Flannel	plouffe	Odd.  Well, the only thingsthat look out of place in the dist-upgrade are the things being held back.  Lets... try this: `apt-cache policy openmovieeditor ubuntu-desktop ubuntu-minimal` go ahead and pastebin that and we'll hopefully know whats going on (your sources.list and update look fine)
+2008-11-01T05:57:00.000Z	plouffe	Flannel	this is the apt-cache http://paste.ubuntu.com/65489/
+2008-11-01T05:59:00.000Z	Flannel	plouffe	Odd.  openmovieeditor should be held back, but not the other two.  At any rate, it wont eb the end of theworld if they are.  Lets go ahead with the dist-upgrade, and see where we're at at the end of it.  We may hvae to manually fiddle with one of those metapackages, but they're just metapackages.
+2008-11-01T06:00:00.000Z	plouffe	Flannel	so I have to download the 2GB?
+2008-11-01T06:00:00.000Z	Flannel	plouffe	It depends on other packages (to make installation easier) but doesn't provide anything itself.
+2008-11-01T06:00:00.000Z	Flannel	plouffe	I suppose so.
+2008-11-01T06:06:00.000Z	plouffe	Flannel	the dist-upgrade failed http://paste.ubuntu.com/65492/
+2008-11-01T06:06:00.000Z	Flannel	plouffe	Looks like some mirror problems (this may be due to overloaded servers surrounding the release).  Try a different mirror.
+2008-11-01T06:07:00.000Z	Flannel	plouffe	to do that, you switch the es.archive.ubuntu.com to the URL of your new mirror (in your sources.list)
+2008-11-01T06:13:00.000Z	plouffe	Flannel	I switched to another server and it told me upgrade done 0 upgraded, etc..
+2008-11-01T06:13:00.000Z	plouffe	Flannel	in dist-upgrade
+2008-11-01T06:15:00.000Z	plouffe	Flannel	but when I go into update manager it still shows me this list of 798 updates and says to do a partial upgrade
+2008-11-01T06:16:00.000Z	Flannel	plouffe	is your mirror up to date?  Also, did you do sudo apt-get update since changing?

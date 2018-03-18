@@ -1,0 +1,24 @@
+2007-05-03T05:54:00.000Z	wkdown		why would my /var/log directory be 147 GIG ?????
+2007-05-03T05:54:00.000Z	wkdown		yeah
+2007-05-03T05:55:00.000Z	wkdown		sylpheedclaws, how do I fix that?
+2007-05-03T05:55:00.000Z	wkdown		can I just wipe the directory?
+2007-05-03T05:55:00.000Z	sparr	wkdown	your logrotate daemon isnt working, AND you have something logging a crapload of data
+2007-05-03T05:55:00.000Z	sparr	wkdown	cd /var/log
+2007-05-03T05:55:00.000Z	sparr	wkdown	du -sc * | sort -n
+2007-05-03T05:55:00.000Z	wkdown		ok, whats DU
+2007-05-03T05:56:00.000Z	sparr	wkdown	disk usage
+2007-05-03T05:56:00.000Z	wkdown		ok ran
+2007-05-03T05:56:00.000Z	wkdown		what u need to know
+2007-05-03T05:56:00.000Z	sparr	wkdown	the stuff at the bottom is the biggest, whats there?
+2007-05-03T05:57:00.000Z	wkdown		153835128       cups
+2007-05-03T05:57:00.000Z	wkdown		then total
+2007-05-03T05:57:00.000Z	wkdown		everything else is under 1500
+2007-05-03T05:57:00.000Z	sparr	wkdown	ok, your printer daemon is logging a shitload of data
+2007-05-03T05:57:00.000Z	wkdown	sparr	ok, how do I clear it
+2007-05-03T05:58:00.000Z	sparr	wkdown	easy way?  rm -rf /var/log/cups/* && /etc/init.d/cups restart
+2007-05-03T05:58:00.000Z	wkdown		ok
+2007-05-03T05:58:00.000Z	sparr	wkdown	i seriously doubt you need any of that logged data
+2007-05-03T05:58:00.000Z	wkdown		lemme try
+2007-05-03T05:58:00.000Z	wkdown		I doubt it too
+2007-05-03T05:59:00.000Z	wkdown	sparr	"/etc/init.d/cups No such directory"
+2007-05-03T06:03:00.000Z	sparr	wkdown	/etc/init.d/cupsys restart

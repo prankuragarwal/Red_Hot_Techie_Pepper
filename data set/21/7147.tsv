@@ -1,0 +1,21 @@
+2006-11-19T10:09:00.000Z	Kingsqueak	robinhoode	that could be caused by software glitches with the fs or a utility or it could be a bad drive
+2006-11-19T10:01:00.000Z	Kingsqueak	robinhoode	you can run fsck on the partitions to check them
+2006-11-19T10:01:00.000Z	Kingsqueak	robinhoode	the devices shouldn't be mounted when you run fsck though
+2006-11-19T10:02:00.000Z	robinhoode	Kingsqueak	Yeah, fsck didn't work for me. I got "Bad magic number in superblock"
+2006-11-19T10:02:00.000Z	Kingsqueak	robinhoode	k, did you try the backup blocks?
+2006-11-19T10:03:00.000Z	robinhoode	Kingsqueak	It suggests  to use e2fsck -b 8193 <device>. I tried that, but didn't get anywhere. Any suggestions?
+2006-11-19T10:03:00.000Z	Kingsqueak	robinhoode	try 8192 instead
+2006-11-19T10:03:00.000Z	Kingsqueak	robinhoode	if that doesn't work, not sure
+2006-11-19T10:03:00.000Z	Kingsqueak	robinhoode	what happened that caused this?
+2006-11-19T10:04:00.000Z	Kingsqueak	robinhoode	also you sure you entered the device name properly as in /dev/hda1 etc?
+2006-11-19T10:04:00.000Z	robinhoode	Kingsqueak	I'm not sure what's been causing this. I got an Error 17 in grub the other day. Ran fsck, used it yesterday. Then last night, it frozen and I don't have a partition table!!
+2006-11-19T10:05:00.000Z	Kingsqueak	robinhoode	ugh, yeah, not sure
+2006-11-19T10:05:00.000Z	Kingsqueak	robinhoode	there's an FAQ for Edgy about that I think, re error 17
+2006-11-19T10:05:00.000Z	Kingsqueak	robinhoode	it's on the wiki I think, I don't have the link handy, maybe someone else does
+2006-11-19T10:06:00.000Z	robinhoode	Kingsqueak	Hmm.. yeah, I think I'm a little passed the error 17. I think I'm in full disk recovery mode.
+2006-11-19T10:07:00.000Z	robinhoode	Kingsqueak	How does one determine the block numbers, by the way?
+2006-11-19T10:07:00.000Z	Kingsqueak	robinhoode	basically that -b option is to use the backup boot blocks, if it can't see those, you're out of luck I think
+2006-11-19T10:07:00.000Z	Kingsqueak	robinhoode	well, there are 'standard' ones, they are determined by how mkfs is run
+2006-11-19T10:08:00.000Z	robinhoode	Kingsqueak	Figured as much. If it can't it to recognize the blocks, does that mean my whole disk is fucked or just my data?
+2006-11-19T10:08:00.000Z	Kingsqueak	robinhoode	it means the data mainly, it could be a bad drive, but it's not necessarily so
+2006-11-19T10:08:00.000Z	Kingsqueak	robinhoode	basically the mapping as to what data is where is fubar

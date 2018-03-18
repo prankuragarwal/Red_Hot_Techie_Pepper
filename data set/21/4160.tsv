@@ -1,0 +1,21 @@
+2008-06-25T09:47:00.000Z	int20		hi all! I want to chmod my files at webserver (user www-data). I want to rw-rw---- access rights. When i doing 'chmod -R 660 path' after that I see (ls -al) ?????????? ? ? ? ?                ? index.php
+2008-06-25T09:47:00.000Z	int20		what's wrong??
+2008-06-25T09:48:00.000Z	ace_suares	int20	filesystem or hardidsk problem ? drive mounted via sshfs ?
+2008-06-25T09:48:00.000Z	int20	ace_suares	no problem...
+2008-06-25T09:49:00.000Z	int20	ace_suares	any ideas?
+2008-06-25T09:50:00.000Z	ace_suares	int20	did you answer my question ?
+2008-06-25T09:50:00.000Z	int20	ace_suares	with HDD - no problems, and I don't know how to check sshfs at this hdd or not.
+2008-06-25T09:52:00.000Z	ace_suares	int20	your problems sounds like it is a mounted sshfs volume, but are you saying it's just one computer with a hard disk ? no network connections ?
+2008-06-25T09:52:00.000Z	int20	ace_suares	yes, no network connections
+2008-06-25T09:52:00.000Z	ace_suares	int20	hmm
+2008-06-25T09:52:00.000Z	int20	ace_suares	/dev/sda3 on /var type reiserfs (rw,relatime)
+2008-06-25T09:53:00.000Z	ace_suares	int20	maybe reboot and use 'recovery mode' and then try e2fsck /dev/hda1 (or /dev/whatever your partitions are).
+2008-06-25T09:53:00.000Z	int20	ace_suares	when i do" chmod -R 777 - it looks okay...
+2008-06-25T09:53:00.000Z	ace_suares	int20	so e2fsck -y /dev/sda3 (at your own risk !)
+2008-06-25T09:54:00.000Z	int20	ace_suares	thank you, I try.
+2008-06-25T09:54:00.000Z	ace_suares	int20	VERY weird. i had a client with a RAM problem and that f*** up reiserfs badly.
+2008-06-25T09:54:00.000Z	ace_suares	int20	try reboot and run memtest (press ESC when Grub is loading !)
+2008-06-25T09:54:00.000Z	ace_suares	int20	or reiserfsck ?
+2008-06-25T09:55:00.000Z	int20	ace_suares	reiserfsch report no problem
+2008-06-25T09:56:00.000Z	ace_suares	int20	hmm did you reboot in recovery mode ?
+2008-06-25T09:56:00.000Z	ace_suares	int20	or just unmont /dev/sda3 ? Dont do fsck on a mounted drive !

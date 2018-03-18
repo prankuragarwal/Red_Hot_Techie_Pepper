@@ -1,0 +1,22 @@
+2011-04-01T22:37:00.000Z	Sticks_tlab		hello
+2011-04-01T22:37:00.000Z	Sticks_tlab		could someone enlighten me as to which /dev/? corresponds to a usb microphone?
+2011-04-01T22:38:00.000Z	Sticks_tlab		ive been searching for more than an hour and can only find /dev/audio, /dev/dsp/ all of which are not listed
+2011-04-01T22:39:00.000Z	Sticks_tlab		anyone? knowledge of which device is the right one for an external microphone or else inbuilt microphone???
+2011-04-01T22:41:00.000Z	Sticks_tlab		no suggestions? I want to get an alsa program to run to capture microphone input, but i cannot locate the device that corresponds to the microphone
+2011-04-01T22:42:00.000Z	beniwtv	Sticks_tlab	Try the arecord program in terminal, it can record and/or list your  ALSA devices
+2011-04-01T22:44:00.000Z	Sticks_tlab	beniwtv	I already did that, I cannot find correspondence between the feedback of arecord and the content of /dev/
+2011-04-01T22:45:00.000Z	beniwtv	Sticks_tlab	There is no /dev/ for ALSA, that is OSS, another sound API. For ALSA, programs use the ALSA library directly.
+2011-04-01T22:45:00.000Z	Sticks_tlab	beniwtv	this is the reply of arecord
+2011-04-01T22:46:00.000Z	Sticks_tlab	beniwtv	im trying to use this little program here to get a hang of alsa
+2011-04-01T22:46:00.000Z	beniwtv	Sticks_tlab	Yes, these are your ALSA devices. There is no file in /dev for those.
+2011-04-01T22:47:00.000Z	beniwtv	Sticks_tlab	That program uses the ALSA library: #include <alsa/asoundlib.h>
+2011-04-01T22:47:00.000Z	beniwtv	Sticks_tlab	You would give it the device name, not the device file.
+2011-04-01T22:48:00.000Z	Sticks_tlab	beniwtv	Well yes, but I have to enter an argument. Which is the device name right!?
+2011-04-01T22:48:00.000Z	beniwtv	Sticks_tlab	Yep, probably the program has a way to specify that.
+2011-04-01T22:50:00.000Z	beniwtv	Sticks_tlab	Try arecord -L (upper case) to get device names
+2011-04-01T22:51:00.000Z	Sticks_tlab	beniwtv	I figured it out, it is actually the card number
+2011-04-01T22:52:00.000Z	beniwtv	Sticks_tlab	Strange program, but ok :)
+2011-04-01T22:52:00.000Z	Sticks_tlab	beniwtv	Well thats what the spec of snd_pcm_open tells me, how can I identify the right number though!?
+2011-04-01T22:53:00.000Z	beniwtv	Sticks_tlab	arecord
+2011-04-01T23:13:00.000Z	Sticks_tlab	beniwtv	I still have the same problem, the api spec was obsolete, its actually the ASCII indentifier of the PCM handle
+2011-04-01T23:13:00.000Z	Sticks_tlab	beniwtv	Any clue on what that is?

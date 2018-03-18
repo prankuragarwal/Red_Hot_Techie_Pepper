@@ -1,0 +1,19 @@
+2007-08-18T16:54:00.000Z	slimjimflim		hi. does anybody know how to run a python script in the background?
+2007-08-18T16:55:00.000Z	slimjimflim		SlimeyPele: that's what i've tried...exactly
+2007-08-18T16:55:00.000Z	dho_ragus	slimjimflim	if your program spits out text it'll still spill into the console.
+2007-08-18T16:56:00.000Z	slimjimflim	dho_ragus	so can i redirect output to /dev/null?
+2007-08-18T16:56:00.000Z	dho_ragus	slimjimflim	yes you can
+2007-08-18T16:57:00.000Z	slimjimflim	dho_ragus	something like `python script.py > /dev/null &`
+2007-08-18T16:57:00.000Z	dho_ragus	slimjimflim	i think it'd be `python script.py &> /dev/null &`
+2007-08-18T16:58:00.000Z	slimjimflim	dho_ragus	brilliant
+2007-08-18T16:58:00.000Z	dho_ragus	slimjimflim	you can also background any running process by hitting ctrl-Z and then typing `bg`
+2007-08-18T16:58:00.000Z	dho_ragus	slimjimflim	then you can type `jobs` to see a list of jobs, and `fg #` to foreground a certian job
+2007-08-18T16:58:00.000Z	dho_ragus	slimjimflim	but remember, these will all die when you exit the shell.
+2007-08-18T16:59:00.000Z	dho_ragus	slimjimflim	might want to look into `screen` or `nohup`
+2007-08-18T05:02:00.000Z	slimjimflim	dho_ragus	ok, so i tried that more less, but like you said...it's all gone when you exit the terminal
+2007-08-18T05:02:00.000Z	slimjimflim	dho_ragus	how can i get it to live on?
+2007-08-18T05:02:00.000Z	dho_ragus	slimjimflim	nohup will leave it running but you can't interact with it.
+2007-08-18T05:02:00.000Z	dho_ragus	slimjimflim	running it in a screen console will allow you to regain control of it later.
+2007-08-18T05:03:00.000Z	slimjimflim	dho_ragus	right, but i don't need that...i can always send a kill signal....lemme try that out quick
+2007-08-18T05:04:00.000Z	dho_ragus	slimjimflim	do it like `nohup python ./script....`
+2007-08-18T05:07:00.000Z	slimjimflim	dho_ragus	perfect, thx

@@ -1,0 +1,21 @@
+2012-05-20T19:17:00.000Z	theadmin	Etale	That doesn't even make sense. One window manager does not work "on" another window manager. You can't run two at the same time.
+2012-05-20T19:24:00.000Z	theadmin	Etale	Use the minimal Ubuntu setup, simple as that -- install only things you want from that point on
+2012-05-20T19:25:00.000Z	Etale	theadmin	thanks.
+2012-05-20T19:26:00.000Z	theadmin	Etale	Debian and Ubuntu are *unrelated*. They use different repositories, Debian is much less up-to-date most of the time (especially the "stable" branch), the two are incompatible.
+2012-06-14T00:18:00.000Z	theadmin	Etale	Add "reboot=bios" to the kernel line
+2012-06-14T00:19:00.000Z	Etale	theadmin	where at? I don't know where to add that line.
+2012-06-14T00:19:00.000Z	Etale	theadmin	do you mean in /etc/default/grub?
+2012-06-14T00:19:00.000Z	theadmin	Etale	Type "gksudo gedit /etc/default/grub" in a terminal. Next, find the line which says something like GRUB_CMDLINE_LINUX_DEFAULT="foo bar baz", change it to GRUB_CMDLINE_LINUX_DEFAULT="foo bar baz reboot=bios"
+2012-06-14T00:20:00.000Z	theadmin	Etale	Save the file, run "sync", then reboot in any way possible, and it should be working fine, more or less
+2012-06-14T00:21:00.000Z	theadmin	Etale	Makes the kernel ask BIOS for reboot/shutdown instead of using the built-in power management features.
+2012-06-14T00:26:00.000Z	Etale	theadmin	it's still doing it.
+2012-06-14T00:26:00.000Z	theadmin	Etale	Bah, forgot to tell you, you gotta run "sudo update-grub" after editing the file
+2012-06-14T00:27:00.000Z	Etale	theadmin	the relevant line is: GRUB_CMDLINE_LINUX_DEFAULT="quiet splash reboot=bios"
+2012-06-14T00:27:00.000Z	Etale	theadmin	I did run sudo update-grub.
+2012-06-14T00:27:00.000Z	theadmin	Etale	Hm, okay, well, you can try changing it to "reboot=force" but I'm not sure how helpful that will be.
+2012-06-14T00:28:00.000Z	theadmin	Etale	Some magic... lol, I honestly have no idea, I just got that one off some article on the web
+2012-06-14T00:29:00.000Z	theadmin	Etale	Well, as you would've probably guessed, rebooting *once* won't solve it, you have to boot with the new parameters first and *then* the reboot should work
+2012-06-14T00:32:00.000Z	Etale	theadmin	gah! Nothing works!
+2012-06-14T00:32:00.000Z	theadmin	Etale	:( Sad. Well, I can't really help much here, but you can hit Escape during shutdown to see the details, and maybe it will lead you to understanding the problem
+2012-06-14T00:33:00.000Z	Etale	theadmin	will it create some log file somewhere?
+2012-06-14T00:33:00.000Z	theadmin	Etale	Not sure about that, sorry

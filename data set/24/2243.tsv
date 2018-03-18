@@ -1,0 +1,24 @@
+2009-03-16T16:23:00.000Z	sprinkmeier	macrobad	acrually... routers have IP addresses and can have ports if they want to
+2009-03-16T16:24:00.000Z	macrobad	sprinkmeier	abuchbinder: well, true that, but I am thinking of home routers. azlon is quite certainly isn't going to WebDAV into his router.
+2009-03-16T16:24:00.000Z	sprinkmeier	macrobad	home routers tend to have port 80 for configuration over http.
+2009-03-16T16:25:00.000Z	macrobad	sprinkmeier	yes, but I've yet to see routers that support WebDAV!
+2009-03-16T16:33:00.000Z	sprinkmeier	macrobad	unix isn't half as much fun without without networking
+2009-03-16T17:27:00.000Z	sprinkmeier	macrobad	mess with /etc/ssh/ssh_config ?
+2009-03-16T17:28:00.000Z	macrobad	sprinkmeier	been doing it for the last 4 hours...
+2009-03-16T17:29:00.000Z	macrobad	sprinkmeier	trying to configure SSH over IPv6, but it doesn't work, and I suspect a software problem with ssh, because IPv6 works just fine
+2009-03-16T17:29:00.000Z	sprinkmeier	macrobad	'chmod 444 ~/.ssh/*' ssh will refuse to use these files if they're too open :-)
+2009-03-16T17:30:00.000Z	sprinkmeier	macrobad	ssh over v4 works, and other stuff over v6 works, but ssh over v6 is broken?
+2009-03-16T17:30:00.000Z	macrobad	sprinkmeier	:) nice idea! I've tried moving ~/.ssh/ altogether, but it didn't help. Let me try to make it world readable!
+2009-03-16T17:30:00.000Z	macrobad	sprinkmeier	yes, exactly.
+2009-03-16T17:31:00.000Z	macrobad	sprinkmeier	it merely keeps looking for SSHv1 keys in all the standard paths no matter what I do, although everything works fine with IPv4.
+2009-03-16T17:31:00.000Z	sprinkmeier	macrobad	I've (sort of) used ssh over v6, creating a reverse tunnel and ssh-ing to ::1 (mostly because it's quicker to type than 127.0.0.1)
+2009-03-16T17:31:00.000Z	macrobad	sprinkmeier	have a look: http://pastebin.com/m4a8f0e6f
+2009-03-16T17:32:00.000Z	sprinkmeier	macrobad	disable sshv1 for starters... bugs.
+2009-03-16T17:32:00.000Z	macrobad	sprinkmeier	The funny thing it is disabled on the server, in the client, and on the command line already...
+2009-03-16T17:38:00.000Z	sprinkmeier	macrobad	everything looks right.... except for the bit where it doesn't work. "fec0" addresses, i.e. same copper? no fancy 6-4-6 tunnelling?
+2009-03-16T17:40:00.000Z	macrobad	sprinkmeier	fec0... is Site-local unicast. It was deprecated, but still allowed to have until a substitution is adopted. It is similar to IPv4 private addresses. Anyway, I just don't have public routable addresses for the whole lab, and therefore experiment with private ones.
+2009-03-16T17:41:00.000Z	macrobad	sprinkmeier	Should get them in one week though. =)
+2009-03-16T17:41:00.000Z	macrobad	sprinkmeier	and yes, I'm connected via 6to4 tunnel.
+2009-03-16T17:42:00.000Z	sprinkmeier	macrobad	wondering if the tunnel does something weird that ssh objects to? messing up known_hosts or something?
+2009-03-16T17:43:00.000Z	sprinkmeier	macrobad	gotta go, getting^Wgotten late. good luck!
+2009-03-16T17:43:00.000Z	macrobad	sprinkmeier	hmm... it shouldn't be the case, because tunnel is configured on machine A, whereas I am connecting to machine A from machine B, and the problem seems to reside here

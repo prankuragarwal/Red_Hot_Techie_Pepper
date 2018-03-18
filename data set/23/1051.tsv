@@ -1,0 +1,23 @@
+2010-09-25T19:47:00.000Z	damiankw		sometimes it can grab a few hundred files at a time also
+2010-09-25T19:47:00.000Z	Xeross	damiankw	What are you trying to do ?
+2010-09-25T19:48:00.000Z	damiankw	Xeross	essentially make an entire folder read/write to everyone, even when a user dumps a new file in there - as umask does
+2010-09-25T19:49:00.000Z	Xeross	damiankw	So why cant you use the mask in there
+2010-09-25T19:51:00.000Z	damiankw	Xeross	how do you mean use the mask?
+2010-09-25T19:51:00.000Z	Xeross	damiankw	Hmm one second I'm not familiar with the masks
+2010-09-25T19:52:00.000Z	Xeross	damiankw	Yeah using the umask would be tricky, so you'd basically need something that chmods the file when it gets created right ?
+2010-09-25T19:53:00.000Z	Xeross	damiankw	Hmm, well there's a python package that can monitor a filesystem, and then you can just write a function that chmods
+2010-09-25T19:54:00.000Z	Xeross	damiankw	So I guess you could run that script as root and let it chmod everything, that's how I would do it
+2010-09-25T19:54:00.000Z	Xeross	damiankw	Another option is looping over the directory checking for differences every X seconds, but that's less efficient
+2010-09-25T19:55:00.000Z	Xeross	damiankw	So how do the users edit these files ?
+2010-09-25T19:56:00.000Z	Xeross	damiankw	Or create them
+2010-09-25T19:57:00.000Z	Xeross	damiankw	And the cron script cant chmod them appropriatly ?
+2010-09-25T19:57:00.000Z	Xeross	damiankw	Why not, it would only chmod the ones it writes, and it only chmods them when needed
+2010-09-25T19:59:00.000Z	Xeross	damiankw	From waht I understand the umask gets set on a process, so if we set the umask of the wget that should work right ?
+2010-09-25T20:01:00.000Z	Xeross	damiankw	According to the wiki page the umask is lost when the process terminates/the user logs out
+2010-09-25T20:02:00.000Z	Xeross	damiankw	Just out of curiosity how are you using it ?
+2010-09-25T20:03:00.000Z	Xeross	damiankw	Well the cron is a bash script or ?
+2010-09-25T20:04:00.000Z	Xeross	damiankw	And the PHP script calls wget ?
+2010-09-25T20:04:00.000Z	damiankw	Xeross	that's right
+2010-09-25T20:05:00.000Z	Xeross	damiankw	So you're using the system() call to run the wget
+2010-09-25T20:06:00.000Z	Xeross	damiankw	Ok, you would just add a call to the umask before calling wget, I'd say try if that works
+2010-09-25T20:08:00.000Z	Xeross	damiankw	If you already have a bash script yes add it to that, if not just try adding another system() call above the wget

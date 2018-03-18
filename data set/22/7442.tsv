@@ -1,0 +1,22 @@
+2006-04-01T17:58:00.000Z	GNU_Style		if I see 2 processors in my pc does it mean its hyperthreading now?
+2006-04-01T17:58:00.000Z	redguy	GNU_Style	yup
+2006-04-01T08:45:00.000Z	GNU_Style	redguy	MBR of /dev/sda
+2006-04-01T08:46:00.000Z	redguy	GNU_Style	dd if=/dev/sda of=mbr_backup bs=512 count=1
+2006-04-01T08:46:00.000Z	GNU_Style	redguy	how do I restore?
+2006-04-01T08:47:00.000Z	redguy	GNU_Style	^^
+2006-04-01T08:48:00.000Z	redguy	GNU_Style	to restore you would just dd if=mbr_backup of=/dev/sda
+2006-04-01T08:48:00.000Z	GNU_Style	redguy	can I just create an image of my logical drive and copy it to c:\ so that windows's bootloader can load linux?
+2006-04-01T08:49:00.000Z	redguy	GNU_Style	you can do that with dd as well
+2006-04-01T08:49:00.000Z	GNU_Style	redguy	syntax?
+2006-04-01T08:49:00.000Z	redguy	GNU_Style	erm, no, you can make windows bootloader to boostrap grub or lilo
+2006-04-01T08:50:00.000Z	redguy	GNU_Style	you would have to install grub in the partition's boot record
+2006-04-01T08:50:00.000Z	redguy	GNU_Style	windows' boot loader sucks big time compared to GRUB for example
+2006-04-01T08:52:00.000Z	redguy	GNU_Style	http://www.tprthai.net/bootmgr.htm
+2006-04-01T08:52:00.000Z	redguy	GNU_Style	but I really recommend using GRUB
+2006-04-01T08:52:00.000Z	GNU_Style	redguy	im afraid overwriting my mbr of /dev/sda, maybe it will cause windows to be unbotable
+2006-04-01T08:54:00.000Z	redguy	GNU_Style	doubtfull. as fiendskull9 said you can always bring the windows' MBR code back with a floppy or dd it as I told you
+2006-04-01T08:55:00.000Z	GNU_Style	redguy	ill go with GRUB then, will grub automatically find menu.list in /dev/sda8/boot/GRUB?
+2006-04-01T08:56:00.000Z	GNU_Style	redguy	note that I just copied my entire /dev/hda1 to /dev/sda8
+2006-04-01T08:57:00.000Z	redguy	GNU_Style	hmmmm, not sure how grub finds sata drives, but I would suggest that you change every occurance of (hd0,0) to (hd0,7) in your menu.lst
+2006-04-01T08:59:00.000Z	redguy	GNU_Style	I have to go, somebody else here might help you out more, or you could ask in #grub
+2006-04-01T08:59:00.000Z	GNU_Style	redguy	thanks for the time

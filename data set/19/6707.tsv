@@ -1,0 +1,19 @@
+2007-12-20T20:10:00.000Z	Prodromoi		Afternoon folks.
+2007-12-20T20:10:00.000Z	Prodromoi		Would someone be able to help me with a newbie question about DHCP please?
+2007-12-20T20:11:00.000Z	Prodromoi		I've got a new install of 7,10 and the DHCP isn't allocating an IP correctly.
+2007-12-20T20:11:00.000Z	Prodromoi		I've checked the network cable, the route and the network card - they're all working.
+2007-12-20T20:12:00.000Z	Kl4m	Prodromoi	you installed a dhcp server which doesn't give IPs or it's a DHCP client?
+2007-12-20T20:12:00.000Z	Prodromoi		The router is giving the right IPs to the other three machines on the LAN.
+2007-12-20T20:12:00.000Z	Prodromoi	Kl4m	- not sure I'm afraid.  It's whatever the default of 7.10 64-bit Ubuntu installed.
+2007-12-20T20:13:00.000Z	Prodromoi		Since the machine can't see the net, it can't update and I can't install anything else.
+2007-12-20T20:13:00.000Z	Kl4m	Prodromoi	ok the router gives the IPs so you're a dhcp client
+2007-12-20T20:14:00.000Z	Prodromoi		The router should be giving 192.168.x.x... but this machine always ends up with 169.254.7.100
+2007-12-20T20:15:00.000Z	Prodromoi		Any ideas what's wrong, and what I need to change?
+2007-12-20T20:15:00.000Z	Prodromoi		Config file somewhere, or a router setting?
+2007-12-20T20:17:00.000Z	Kl4m	Prodromoi	go to system - admin - network and be sure that 1. the proper network card is active 2. it uses dhcp. If it fails still try setting a static IP
+2007-12-20T20:19:00.000Z	Prodromoi		Kl4m... OK.  Was on roaming mode.  Have changed to DHCP... going to see what happens.
+2007-12-20T20:19:00.000Z	Kl4m	Prodromoi	roaming mode is default. You can put DHCP on a desktop no problem.
+2007-12-20T20:21:00.000Z	Prodromoi	Kl4m	- on the machine that I'm typing on... on the same network... it's on roaming mode and everything is fine.  Surely the same should be true of the other one?
+2007-12-20T20:22:00.000Z	Prodromoi		Hmm.  Changing to DHCP didn't make a difference.  I'll try a static IP.
+2007-12-20T20:23:00.000Z	Kl4m	Prodromoi	well yes but it doesn't. Maybe it's a problem related to a 64 bit client, maybe it's the router which is not completely dhcp compliant. Try static
+2007-12-20T20:24:00.000Z	Kl4m	Prodromoi	mask will be  255.255.255.0 address will be 192.168.x.25 gateway will be 192.168.x.1 , where x is the same as on the other machine.

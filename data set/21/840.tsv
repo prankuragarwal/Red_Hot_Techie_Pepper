@@ -1,0 +1,21 @@
+2012-11-23T10:59:00.000Z	nicekiwi		how do I write the output of a command into a text file?
+2012-11-23T10:59:00.000Z	rumpe1	nicekiwi	command > textfile
+2012-11-23T10:59:00.000Z	nicekiwi	rumpe1	chur
+2012-11-23T11:00:00.000Z	nicekiwi	rumpe1	that created an empty document
+2012-11-23T11:00:00.000Z	rumpe1	nicekiwi	... with the output of "command"
+2012-11-23T11:01:00.000Z	rumpe1	nicekiwi	try "ls > textfile"
+2012-11-23T11:01:00.000Z	nicekiwi	rumpe1	that worked
+2012-11-23T11:01:00.000Z	rumpe1	nicekiwi	both worked
+2012-11-23T11:01:00.000Z	nicekiwi	rumpe1	they did not
+2012-11-23T11:02:00.000Z	rumpe1	nicekiwi	the file got created -> it worked
+2012-11-23T11:02:00.000Z	rumpe1	nicekiwi	question is if it's just the output (and which maybe)
+2012-11-23T11:02:00.000Z	nicekiwi	rumpe1	well put it this way. the file was created yet, but all the crap that spilled out into the terminal after the command was run did not make it into the file
+2012-11-23T11:02:00.000Z	rumpe1	nicekiwi	which command exactly?
+2012-11-23T11:02:00.000Z	nicekiwi	rumpe1	strace
+2012-11-23T11:03:00.000Z	nicekiwi	rumpe1	"strace steam > output.txt"
+2012-11-23T11:04:00.000Z	rumpe1	nicekiwi	that seems to put the output of "steam" not "strace .." into the file
+2012-11-23T11:04:00.000Z	nicekiwi	rumpe1	ah.. ok :/
+2012-11-23T11:05:00.000Z	rumpe1	nicekiwi	probably because strace works more in the background.. no idea. maybe check "man strace"
+2012-11-23T11:05:00.000Z	rumpe1	nicekiwi	strace -ff ... -o ...
+2012-11-23T11:08:00.000Z	nicekiwi	rumpe1	hmm.. kk
+2012-11-23T11:09:00.000Z	nicekiwi	rumpe1	strace -o <out_file> <prog_name> did the trick. Thanks :)

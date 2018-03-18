@@ -1,0 +1,18 @@
+2006-07-10T11:36:00.000Z	Trishika		um what image does ubuntu 6.06 use to boot up?
+2006-07-10T11:37:00.000Z	Trishika		im configuring lilo and i have no idea what to put
+2006-07-10T11:37:00.000Z	Trishika		but there is no boot.img
+2006-07-10T11:38:00.000Z	Trishika		/boot/vmlinuz-2.6.15-25-386  -- thats the one i  have right now in there
+2006-07-10T11:38:00.000Z	Trishika		but i get a kernal panic
+2006-07-10T11:39:00.000Z	Trishika		does it need everything in the boot folder inorder to boot up?
+2006-07-10T11:40:00.000Z	nomin	Trishika	I have had a similar problem in the past.  I think you just need to point it to the partition
+2006-07-10T11:43:00.000Z	nomin	Trishika	 I had that problem when I first set up a triple boot system.  With ubuntu's grub the bootloader was fine, but when I wanted to use mandriva's lilo, that's when I got the kernel panic error.  I found out that all I had to do was point the boot option to the partition that ubuntu was installed on and it worked.
+2006-07-10T11:43:00.000Z	nomin	Trishika	I didn't have to include the kernel image in it.
+2006-07-10T11:46:00.000Z	nomin	Trishika	it would be something like "dev/hda1".  And that's it.  I think I still have the file saved.  I'll look for it to see exactly what I had in it.  Right now I boot with ubuntu's grub because I recently redid my whole system.
+2006-07-10T11:50:00.000Z	nomin	Trishika	I found it...
+2006-07-10T11:51:00.000Z	nomin	Trishika	that's all I had in lilo.conf for the option to boot into ubuntu and the kernel panic error was gone
+2006-07-10T11:53:00.000Z	nomin	Trishika	BTW, I didn't figure that one out by myself.  I did a combination of overrighting each bootloader with the other, and eventually the right combo did it automatically for me.
+2006-07-10T11:54:00.000Z	nomin	Trishika	yes, grub with ubuntu has been good for me
+2006-07-10T11:55:00.000Z	nomin	Trishika	the reason I preferred lilo from mandriva is that mandriva lets me easily get rid of the bootloader.  I haven't found a way to get rid of ubuntu's grub without installing a new bootloader over it.
+2006-07-10T11:57:00.000Z	nomin	Trishika	I installed windows and mandriva first.  When I installed ubuntu, grub was configured automatically.  It gives me options for just about every partition, which is unnecessary.  I just put a # before the options in grub.conf to keep the bootloader free of uneccesary options.
+2006-07-10T11:58:00.000Z	nomin	Trishika	but I don't know what distros grub will recognize.  I guess you'll have to find that out for yourself.  I would be interested in knowing what the outcome is.
+2006-07-10T12:56:00.000Z	nomin	Trishika	do you have mandriva installed?

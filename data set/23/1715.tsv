@@ -1,0 +1,23 @@
+2009-11-17T08:04:00.000Z	Crast		I'm trying to pivot-root install amd64 ubuntu on a 32-bit ubuntu server I have only SSH access to. I formatted another partition, mounted it; doing  debootstrap --arch=amd64 karmic /mnt/newbuntu http://archive.ubuntu.com/ubuntu;  installs the packages but understandably fails on the pivot-root part, because I'm running a 32-bit distro. Any suggestions on how to swap to a 64-bit kernel so I can do the rest? Note I don't have access to CD driv
+2009-11-17T08:04:00.000Z	Crast		es or a physical console
+2009-11-17T08:06:00.000Z	Docteh	Crast	got any docs or howtos on what you're doing?
+2009-11-17T08:06:00.000Z	Crast	Docteh	there are a few, though a bit incomplete; most assume you're doing it from a 64-bit livecd or rescue distro
+2009-11-17T08:06:00.000Z	Crast	Docteh	I'm sort of borrowing from multiple howtos at once, one of them is this: https://help.ubuntu.com/community/Installation/OverSSH
+2009-11-17T08:07:00.000Z	Crast	Docteh	I can say I am a rather competent linux user, I've successfully installed distros in chroots before, but I've never tried to go from x86 to x86_64 and understandably it's complex
+2009-11-17T08:08:00.000Z	Crast	Docteh	I don't feel like building my own kernel, though I know how; I was hoping there was a command I could use to grab me a 64-bit kernel
+2009-11-17T08:08:00.000Z	Docteh	Crast	chroot into your debootstrap
+2009-11-17T08:08:00.000Z	Crast	Docteh	you can with the 32-on-64 libs installed, I forget what they're called
+2009-11-17T08:08:00.000Z	Crast	Docteh	I can't chroot into it, because running any binaries including /bin/bash fails (due to having a 32-bit kernel); seems a chicken and egg
+2009-11-17T08:09:00.000Z	Crast	Docteh	I'm considering finding a way to trick sources.list into letting me install the 64-bit kernel, that or manually extracting the .deb file and placing them in /boot
+2009-11-17T08:09:00.000Z	Docteh	Crast	you can always surf packages.ubuntu.com for what you want, and then install it or convert to tgz and take stuff out
+2009-11-17T08:10:00.000Z	Crast	Docteh	which are the packages I need to get kernel, modules, and the initrd for that kernel?
+2009-11-17T08:10:00.000Z	Docteh	Crast	apt-get install alien first
+2009-11-17T08:11:00.000Z	Crast	Docteh	yeah I will, as failure will be expensive (gotta pay for a distro reinstall or a console attachment)
+2009-11-17T08:12:00.000Z	Crast	Docteh	but then, when my organization is paying $300+ a month per server for these beefy DB boxes, the hosting company should've just put a 64-bit distro to begin with, then it'd be a non-issue
+2009-11-17T08:20:00.000Z	Docteh	Crast	i appear to have successfully started up a 64bit kernel with a 32bit /
+2009-11-17T08:30:00.000Z	Crast	Docteh	I managed to extract the linux-image, but there's no initrd in there; and the initrd's I see in /boot appear to not belong to a package; so I presume they are generated somehow; how vital are initrd's to booting ubuntu?
+2009-11-17T08:30:00.000Z	Docteh	Crast	very
+2009-11-17T08:31:00.000Z	Crast	Docteh	d'oh. okay, will see what I can do there
+2009-11-17T08:32:00.000Z	Docteh	Crast	the tools to make it are in your distro already
+2009-11-17T08:32:00.000Z	Docteh	Crast	install the package the the i386 install and then mkinitrd?
+2009-11-17T08:45:00.000Z	Docteh	Crast	any luck?

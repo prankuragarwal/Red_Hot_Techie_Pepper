@@ -1,0 +1,18 @@
+2010-07-14T01:45:00.000Z	bcx		Hey, quick question
+2010-07-14T01:45:00.000Z	bcx		is there a way to set environment variables
+2010-07-14T01:45:00.000Z	bcx		that take effect before the rc.d scripts get run
+2010-07-14T01:47:00.000Z	bcx		Things like PATH
+2010-07-14T01:48:00.000Z	bcx		The sort of things you'd set in a .bashrc
+2010-07-14T01:48:00.000Z	bcx		but I want them set globally on boot.
+2010-07-14T01:50:00.000Z	erUSUL	bcx	what are you tryin to do ?
+2010-07-14T01:51:00.000Z	bcx	erUSUL	 I have a bunch of environment variables that our daemons rely on. I want to set these environment variables in one place, system-wide on boot
+2010-07-14T01:51:00.000Z	bcx	erUSUL	 before the /etc/rc.d scripts are run
+2010-07-14T01:52:00.000Z	erUSUL	bcx	why not set them in the daemons init script ? where is launched ?
+2010-07-14T01:52:00.000Z	erUSUL	bcx	why not set them in the daemon's init script ? where is launched ?
+2010-07-14T01:53:00.000Z	bcx	erUSUL	I launch a few daemons, and I'd rather just set it once also, the script we have that sets ENV takes a second or so to run since does some tricky things.. ideally I'd just like to run a script one time before the rc scripts, that sets ENV for all following RC scripts
+2010-07-14T01:54:00.000Z	erUSUL	bcx	set the vars in a file you source from all the init scripts? the truth is that i do not think there is a place to set those vars if you look into /etc/init.d/ scripts you will see that they all set up the env in the beggining including PATH and all the stuff
+2010-07-14T01:55:00.000Z	bcx		I could understand it if there was one daemon, but sometimes we have as many as 10 or so
+2010-07-14T01:55:00.000Z	bcx		Where does PATH get set for the first time?
+2010-07-14T01:57:00.000Z	bcx		hmm.. looks like /etc/environment might do it
+2010-07-14T01:58:00.000Z	erUSUL	bcx	checked with #bash god's and i was right. there is no way to set up env for the shell that runs the init scripts. every init script has to do it by itself. Youre best chance as i already said is to writte a single source file with the env you want and source that file from the other scripts.
+2010-07-14T01:58:00.000Z	erUSUL	bcx	"help source" in a terminal

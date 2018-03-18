@@ -1,0 +1,21 @@
+2010-11-26T07:04:00.000Z	aroman		is it possible to run a 64bit OS in virtualbox under 32bit maverick?
+2010-11-26T07:04:00.000Z	soreau	aroman	I don't think so.
+2011-03-11T10:53:00.000Z	soreau	aroman	Right click and select remove?
+2011-03-11T10:54:00.000Z	aroman	soreau	any idea how to do it from CLI?
+2011-03-11T10:55:00.000Z	soreau	aroman	chmod -x $(which gnome-panel)
+2011-03-11T10:55:00.000Z	aroman	soreau	...
+2011-03-11T10:56:00.000Z	soreau	aroman	If you knew exactly what you were doing, you wouldn't be here asking questions
+2011-03-13T03:30:00.000Z	soreau	aroman	sys>prefs>main menu
+2011-03-13T03:31:00.000Z	soreau	aroman	Find the entry you don't want and uncheck it there
+2011-03-13T03:31:00.000Z	aroman	soreau	any idea how to do that from terminal?
+2011-03-24T06:52:00.000Z	soreau	aroman	a thousand kittens die
+2011-03-24T06:54:00.000Z	soreau	aroman	chown the directory to your user again?
+2011-03-24T06:55:00.000Z	soreau	aroman	What is the directory you're in? Use 'sudo chown -R $USER /path/to/src/dir/' as your normal user
+2011-03-24T06:56:00.000Z	aroman	soreau	oh I see now
+2011-03-24T06:56:00.000Z	soreau	aroman	I am hoping you will ;)
+2011-03-24T06:56:00.000Z	aroman	soreau	ls -lah reveals all
+2011-03-24T06:57:00.000Z	soreau	aroman	As you normal user: sudo chown -r $USER $HOME
+2011-03-24T06:57:00.000Z	soreau	aroman	As you normal user: sudo chown -R $USER $HOME
+2011-03-24T06:58:00.000Z	aroman	soreau	oh, it's more root owned stuff
+2011-03-24T06:58:00.000Z	soreau	aroman	As your normal user: sudo chown -R $USER $HOME
+2011-03-24T07:01:00.000Z	soreau	aroman	General rule of thumb: you should be able to compile anything as user (provided the user owns the src dir) but should use root when installing (to a perfix the user doesnt own, like standard /usr )

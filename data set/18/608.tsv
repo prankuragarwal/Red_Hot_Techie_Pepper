@@ -1,0 +1,18 @@
+2011-12-01T22:13:00.000Z	fanboy		How can i open port 5432 to remote connections?
+2011-12-01T22:13:00.000Z	llutz_	fanboy	you are behind a router?
+2011-12-01T22:14:00.000Z	llutz_	fanboy	check your iptables rules
+2011-12-01T22:15:00.000Z	llutz_	fanboy	"sudo lsof -i :5432"
+2011-12-01T22:19:00.000Z	fanboy	llutz_	executed the command.Should i restart anything or should i go ahead and telnet 1xxx.xxx.xxx.xxx 5432
+2011-12-01T22:19:00.000Z	llutz_	fanboy	you just should give the line it gave back. that command didn't change anything
+2011-12-01T22:21:00.000Z	llutz_	fanboy	check postgres config, you bound it to localhost only, you have to make it listen on all devices if you want to access from internet
+2011-12-01T22:23:00.000Z	llutz_	fanboy	check "listen_adresses= "   seem to be set to "localhost", hast to be ='*'
+2011-12-01T22:24:00.000Z	llutz_	fanboy	then either its the wrong config or you didn't restart postgre after changing that file
+2011-12-01T22:26:00.000Z	llutz_	fanboy	it is NOT listening on external iface, you cannot "open something"
+2011-12-01T22:27:00.000Z	llutz_	fanboy	you might read a little bit about ports and services, tcp and all that stuff and how it basically works before trying to offer public services
+2011-12-01T22:27:00.000Z	llutz_	fanboy	yes, no(i prefer mysql)
+2011-12-01T22:27:00.000Z	fanboy	llutz_	"Offer public services"?.Explain
+2011-12-01T22:28:00.000Z	llutz_	fanboy	 running services being accessible from internet
+2011-12-01T22:30:00.000Z	fanboy	llutz_	oh.I don't get it,i did everything the article said
+2011-12-01T22:30:00.000Z	llutz_	fanboy	then check logs WHY postgres refuses to bind to external adresses
+2011-12-01T22:31:00.000Z	llutz_	fanboy	checking logs is the first thing to do on errors
+2011-12-01T22:33:00.000Z	llutz_	fanboy	/var/log/postgres* i'd guess, try setting ip explicit: "listen_adresses='localhost, <your.vps.ip.adr>'

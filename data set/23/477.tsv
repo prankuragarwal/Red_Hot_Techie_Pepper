@@ -1,0 +1,23 @@
+2011-08-06T02:53:00.000Z	TBotNik		All: Guys another box will let me boot HDD, can not login through XWin, but with Alt+F1 logins in fine.  ???  Any ideas?
+2011-08-06T02:55:00.000Z	TBotNik		Originally the chmod on sudoers and sudoers.d was 775, but got that changed to 440 as should be.  supspecting something else in X11 got permissions changed.  What do I look for?
+2011-08-06T02:55:00.000Z	vsync	TBotNik	well does X fire at all?
+2011-08-06T02:56:00.000Z	TBotNik	vsync	Get the login screen and that is all, fails login every time
+2011-08-06T02:56:00.000Z	TBotNik	vsync	But login at tty is good.
+2011-08-06T02:57:00.000Z	TBotNik	vsync	Was originally thinking bad/corrupted passwd file but not after getting in on tty.
+2011-08-06T03:01:00.000Z	vsync	TBotNik	could you maybe throw your ~/.xsessions-errors into a pastebin?
+2011-08-06T03:03:00.000Z	TBotNik	vsync	Looking at it
+2011-08-06T03:23:00.000Z	vsync	TBotNik	you didn't paste xsessions-errors?
+2011-08-06T03:24:00.000Z	TBotNik	vsync	Just sent you link
+2011-08-06T03:25:00.000Z	TBotNik	vsync	K what do you mean?
+2011-08-06T03:26:00.000Z	TBotNik	vsync	Oh missed the ~/ part so was looking in wrong place.
+2011-08-06T03:45:00.000Z	vsync	TBotNik	well you can always chroot
+2011-08-06T03:38:00.000Z	TBotNik	vsync	Updated PB at: http://pastebin.com/tYy0J9jB.  Error is can't open .profile
+2011-08-06T03:40:00.000Z	vsync	TBotNik	check the permissions of that file? ls -al ~/ | grep profile ?
+2011-08-06T03:40:00.000Z	TBotNik	vsync	Permission are at 775 and owner is root is that the problem?
+2011-08-06T03:41:00.000Z	vsync	TBotNik	prolly, depends on the group I guess, but use chown to change the owned
+2011-08-06T03:42:00.000Z	TBotNik	vsync	No owner:group is 1000:users, which I think is correct, except I made a change in sudoers, which added this user with sudo, so maybe need to comment that out?
+2011-08-06T03:44:00.000Z	vsync	TBotNik	just try sudo chown ndavis:ndavis /home/ndavis/.profile
+2011-08-06T03:45:00.000Z	TBotNik	vsync	logged in via liveCD, so can't do that.  Still fighting the inet connect on wlan0, but this waylayed me.
+2011-08-06T03:46:00.000Z	TBotNik	vsync	What I was thinking, got a script here somewhere for that.
+2011-08-06T07:51:00.000Z	TBotNik	vsync	Hey tried even deleting the .profile, but still can not log in.  Any ideas, no errors without the .profile but also empty desktop.
+2011-08-06T07:52:00.000Z	TBotNik	vsync	Actually does log in wo the file, but then no apps etc. since coming from that file.

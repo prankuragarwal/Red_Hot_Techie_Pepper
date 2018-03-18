@@ -1,0 +1,24 @@
+2012-03-10T01:25:00.000Z	carl-eric		I'm seeing WLAN brownouts, with 100% packet loss for a few seconds, then a slow rampup to acceptable levels again. dmesg gives me "wlan0: Wrong control channel in association response: configured center-freq: 2452 hti-cfreq: 2472  hti->control_chan: 13 band: 0.  Disabling HT.", but google didn't find anything for that.
+2012-03-10T01:27:00.000Z	ActionParsnip	carl-eric	if you disable ipv6 does it help
+2012-03-10T01:27:00.000Z	carl-eric	ActionParsnip	I've never done anything with ipv6 - how would i turn it off? And what does ipv6 have to do with it?
+2012-03-10T01:27:00.000Z	ActionParsnip	carl-eric	it can help with connections
+2012-03-10T01:27:00.000Z	ActionParsnip	carl-eric	is it a centrino wifi by any chance?
+2012-03-10T01:28:00.000Z	ActionParsnip	carl-eric	add the boot option: ipv6.disable=1    as a boot option, its good to disable anyway if you don't use ipv6 anyway :)
+2012-03-10T01:29:00.000Z	carl-eric	ActionParsnip	one is a "Intel Corporation WiFi Link 5100", the other is a  "Centrino Advanced-N 6205"
+2012-03-10T01:29:00.000Z	ActionParsnip	carl-eric	thought so
+2012-03-10T01:29:00.000Z	ActionParsnip	carl-eric	can you give the output of:  sudo lshw -C network | grep -i driver
+2012-03-10T01:31:00.000Z	carl-eric	ActionParsnip	I'm on the machine with WiFi 5100, this is the output: configuration: autonegotiation=on broadcast=yes driver=e1000e driverversion=1.2.20-k2 firmware=1.7-7 latency=0 link=no multicast=yes port=twisted pair       configuration: broadcast=yes driver=iwlagn driverversion=2.6.38-13-generic firmware=8.83.5.1 build 33692 ip=192.168.1.136 latency=0 link=yes multicast=yes wireless=IEEE 802.11abgn
+2012-03-10T01:31:00.000Z	ActionParsnip	carl-eric	echo "options iwlagn 11n_disable50=1 11n_disable=1" | sudo tee /etc/modprobe.d/iwlagn.conf; sudo modprobe -r iwlagn; sleep 2; sudo modprobe iwlagn
+2012-03-10T01:32:00.000Z	carl-eric	ActionParsnip	that disables 802.11n, doesn't it?
+2012-03-10T01:34:00.000Z	ActionParsnip	carl-eric	yes, some centtrino wifi rubbish has issues with n speed and makes it disconnect, so you stop it and the connection is steady
+2012-03-10T01:37:00.000Z	ActionParsnip	carl-eric	the .conf file adds options so that the loading of the module uses those options. The modprobe commands will apply the settings without need for reboot :)
+2012-03-10T01:37:00.000Z	carl-eric	ActionParsnip	yes, I've figured that much out at least :-)
+2012-03-10T01:38:00.000Z	ActionParsnip	carl-eric	is it working ok?
+2012-03-10T01:39:00.000Z	carl-eric	ActionParsnip	i'll have to disconnect and reconnect - I am on that machine connected with the wireless ;) give me a moment.
+2012-03-10T01:43:00.000Z	carl-eric	ActionParsnip	so far it is working at least in sofar that I am connected
+2012-03-10T01:44:00.000Z	ActionParsnip	carl-eric	it happens with those centrino things
+2012-03-10T01:45:00.000Z	ActionParsnip	carl-eric	until your web connection exceeds 54Mbps, you'll be ok
+2012-03-10T01:45:00.000Z	carl-eric	ActionParsnip	my outside connection is 100Mbps... but I think I can live with the 50M inside
+2012-03-10T01:46:00.000Z	ActionParsnip	carl-eric	wow, 50Mbps web connection, nice. Mines getting bumped to 120Mbps in summer :)
+2012-03-10T01:47:00.000Z	carl-eric	ActionParsnip	Fibre to the building :-)
+2012-03-10T01:47:00.000Z	ActionParsnip	carl-eric	damn

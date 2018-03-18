@@ -1,0 +1,21 @@
+2011-01-25T19:29:00.000Z	ugarit		I have two servers with identical iptables activated.  One get to the internet.  The other can only ping the gateway but cannot ping anything in the internet.  The only diff is the ip address .69 for working one and .70 for not working one.  .69 is a centos and .70 is an ubuntu.  what am I missing?
+2011-01-25T19:30:00.000Z	bonjoyee	ugarit	DNS working on ubunut?
+2011-01-25T19:31:00.000Z	ugarit	bonjoyee	I don't think DNS is working because ssh into box takes a very long time and I can't nslookup anything.  but I can't ping internet ip addresses either.
+2011-01-25T19:32:00.000Z	bonjoyee	ugarit	try pinging ip address on the internet instead of the name..
+2011-01-25T19:34:00.000Z	ugarit	bonjoyee	I am pinging 209.85.225.103 (google.com) and ping just hangs, and I have to kill it.  I get 100% loss. I can ping the ip of gateway and ping the internal .69 CentOS ip address.
+2011-01-25T19:36:00.000Z	bonjoyee	ugarit	using interfaces file or network-manager on ubuntu?
+2011-01-25T19:36:00.000Z	ugarit	bonjoyee	 I can ssh from centos (.69) to ubuntu (.70) after a long wait period.  But I cannot ssh from ubuntu (.70) to centos (.69).  Centos .69 machine can ping anything in the internet
+2011-01-25T19:36:00.000Z	ugarit	bonjoyee	interfaces file
+2011-01-25T19:36:00.000Z	bonjoyee	ugarit	can you pastebin it?
+2011-01-25T19:39:00.000Z	bonjoyee	ugarit	for the slow ssh.. sudo nano /etc/ssh/sshd_config...and then comment out "GSSAPIAuthentication" setting, restart sshd and try again
+2011-01-25T19:39:00.000Z	bonjoyee	ugarit	thats on the ssh server ofcourse
+2011-01-25T19:39:00.000Z	ugarit	bonjoyee	ok, one min
+2011-01-25T19:43:00.000Z	ugarit	bonjoyee	it's already commented out: #GSSAPIAuthentication no ::: but perhaps it defaults to yes?
+2011-01-25T19:44:00.000Z	bonjoyee	ugarit	uncomment and make it "no"...
+2011-01-25T19:46:00.000Z	bonjoyee	ugarit	any luck with ssh?
+2011-01-25T19:47:00.000Z	ugarit	bonjoyee	no !!!!
+2011-01-25T19:47:00.000Z	bonjoyee	ugarit	logins still slow?
+2011-01-25T19:48:00.000Z	ugarit	bonjoyee	yes, very
+2011-01-25T19:48:00.000Z	bonjoyee	ugarit	i assume you restarted sshd after making the change?
+2011-01-25T19:52:00.000Z	ugarit	bonjoyee	there is GSSAPIAuthentication in ssh_config AND sshd_config!
+2011-01-25T19:53:00.000Z	bonjoyee	ugarit	ssh_config matters on the client and the other on server,,,

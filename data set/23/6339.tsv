@@ -1,0 +1,23 @@
+2006-10-06T14:41:00.000Z	larsemil		since distupgrading to dapper i lost my swedish keyboardsettings. i have no idea where to look as gnome keyboardsettings works fine.
+2006-10-06T14:41:00.000Z	larsemil		ah. gnomekeys are correct but not working i mean
+2006-10-06T14:42:00.000Z	mathrick	larsemil	add "Keyboard indicator" (chances are it'll be named Tastaturindikator), what does it show?
+2006-10-06T14:45:00.000Z	larsemil	mathrick	where to add this?
+2006-10-06T14:45:00.000Z	larsemil	mathrick	ah found it
+2006-10-06T14:45:00.000Z	mathrick	larsemil	right click on panel, "add to panel", find tastaturindikator (assuming that's in swedish)
+2006-10-06T14:45:00.000Z	mathrick	larsemil	does it say "Swe" now?
+2006-10-06T14:45:00.000Z	larsemil	mathrick	tastatur is german but i found it and it says swe
+2006-10-06T14:46:00.000Z	mathrick	larsemil	but you can't type swedish?
+2006-10-06T14:46:00.000Z	mathrick	larsemil	aaa, that's what you should've began with
+2006-10-06T14:46:00.000Z	mathrick	larsemil	that's always a bitch to debug
+2006-10-06T14:46:00.000Z	larsemil	mathrick	sorry. :)
+2006-10-06T14:47:00.000Z	mathrick	larsemil	if you make a new user account, does it work there?
+2006-10-06T14:47:00.000Z	larsemil	mathrick	have not tried. should i?
+2006-10-06T14:48:00.000Z	mathrick	larsemil	yes
+2006-10-06T14:54:00.000Z	larsemil	mathrick	still the same.
+2006-10-06T14:55:00.000Z	mathrick	larsemil	then, uh, something is fucked and it's always nasty to debug. Honestly, I've never been able to figure that one out, XKB is not exactly an easy piece of software :\
+2006-10-06T14:55:00.000Z	larsemil	mathrick	but does it have anything to do with xorg.conf or is it something else?
+2006-10-06T14:59:00.000Z	mathrick	larsemil	possibly, try deleting (well, back it up) xorg.conf, then run 'sudo dpkg-reconfigure xserver-xorg'
+2006-10-06T15:02:00.000Z	larsemil	mathrick	or atleast i start editing it manually. :)
+2006-10-06T15:03:00.000Z	mathrick	larsemil	that too, but I don't think you know which parts to poke, since I sure as hell don't, not without at least looking at it
+2006-10-06T15:11:00.000Z	larsemil	mathrick	i solved it by xmodmap /usr/share/xmodmap/xmodmap.se
+2006-10-06T15:24:00.000Z	mathrick	larsemil	that doesn't solve anything, merely works around the problem by loading modmap using old and obsolete method. XKB still doesn't work and it will be broken again on your next login

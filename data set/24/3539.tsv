@@ -1,0 +1,24 @@
+2008-01-04T14:42:00.000Z	ronni1		[   47.416000] ACPI: PCI interrupt for device 0000:03:00.0 disabled how do I prevent this so my wireless will work?
+2008-01-04T14:43:00.000Z	scguy318	ronni1	what does that have to do with your wireless, if I may ask?
+2008-01-04T14:44:00.000Z	ronni1	scguy318	device 0000:03:00.0 is my AR5006EG wireless pci express card that uses madwifi driver
+2008-01-04T14:45:00.000Z	scguy318	ronni1	anything from madwifi in dmesg?
+2008-01-04T14:45:00.000Z	scguy318	ronni1	I'd think that would be the message of interest
+2008-01-04T14:47:00.000Z	ronni1	scguy318	well there is a message about ath_pci "[   47.388000] ath_pci: 0.9.4.5 (0.9.3.2)". I found this info about the bug http://madwifi.org/ticket/838#comment:11 but it says it was fixed those after 0.9.2
+2008-01-04T14:48:00.000Z	scguy318	ronni1	mm, if madwifi does not work out for you, try ndiswrapper
+2008-01-04T14:49:00.000Z	ronni1	scguy318	what is odd i'm using ethernet yet lspci says its unknown and my eth is eth8 now but it was 6  then 7 and changes every boot
+2008-01-04T14:49:00.000Z	scguy318	ronni1	sounds familiar
+2008-01-04T14:49:00.000Z	scguy318	ronni1	tell me your laptop model?
+2008-01-04T14:50:00.000Z	ronni1	scguy318	anyone can use ndiswrapper for most cards but this card is fully supported according to manufacturer and madwifi docs
+2008-01-04T14:51:00.000Z	scguy318	ronni1	can you pastebin your dmesg?
+2008-01-04T14:51:00.000Z	scguy318	ronni1	what laptop model are you?
+2008-01-04T14:51:00.000Z	ronni1	scguy318	sure
+2008-01-04T14:52:00.000Z	ronni1	scguy318	presario F756NR laptop
+2008-01-04T14:52:00.000Z	scguy318	ronni1	gimme a sec for that eth issue
+2008-01-04T14:55:00.000Z	scguy318	ronni1	http://ubuntuforums.org/showthread.php?t=583920&page=4 post #34
+2008-01-04T14:55:00.000Z	ronni1	scguy318	http://paste.ubuntu-nl.org/50695/ dmesg stuff
+2008-01-04T14:56:00.000Z	scguy318	ronni1	well, "Hardware revision not supported"
+2008-01-04T14:56:00.000Z	scguy318	ronni1	you may have to use ndiswrapper, some AR5006EGs are actually AR5007EG
+2008-01-04T14:56:00.000Z	scguy318	ronni1	the status of the latter is a bit iffy I think
+2008-01-04T14:58:00.000Z	ronni1	scguy318	http://www.atheros.cz/
+2008-01-04T15:00:00.000Z	ronni1	scguy318	brb
+2008-01-04T15:19:00.000Z	ronni1	scguy318	tried something lame and wireless still not working however dmesg mentioned '[   13.626004] PCI: If a device doesn't work, try "pci=routeirq".  If it helps, post a report" perhaps I could try doing that to get the wireless working?

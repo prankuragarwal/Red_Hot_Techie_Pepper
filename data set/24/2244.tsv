@@ -1,0 +1,24 @@
+2009-03-15T05:41:00.000Z	bonez46		what is a bad superblock?
+2009-03-15T05:41:00.000Z	sprinkmeier	bonez46	bad sector on disk or corrupted superblock (part of the filesystem metadata)
+2009-03-15T05:42:00.000Z	bonez46	sprinkmeier	if I get a message like this > mount: wrong fs type, bad option, bad superblock on /dev/sdb1,   <<  does that mean I need to keep trying, something different or am I outta luck?
+2009-03-15T05:43:00.000Z	sprinkmeier	bonez46	it means the mount command cannot figure out what filesystem is installed, or you're telling it something different from what it's reading (i.e. you're asking to mmount FAT as EXT or something). try "sudo fdisk -l" to get a list of partitions
+2009-03-15T05:45:00.000Z	bonez46	sprinkmeier	 ok. I got those loaded.. I guess I need to brush up on grub and naming conventions for drives.. I can access /boot/grub/menu.lst.  so I should be able to fix each menu.lst so that it can boot up, right?
+2009-03-15T05:46:00.000Z	sprinkmeier	bonez46	what changed to make you think grub is in pain? changed disks?
+2009-03-15T05:47:00.000Z	bonez46	sprinkmeier	 yes, removed a working disk from an older machine, put it in this new box.. I built it last year.. but the disk that I know works.. is new.. won't boot here, shows grub ERROR 2..
+2009-03-15T05:47:00.000Z	bonez46	sprinkmeier	so I know it's a grub issue..
+2009-03-15T05:47:00.000Z	sprinkmeier	bonez46	OK.... grub 'lost' the disks.
+2009-03-15T05:48:00.000Z	bonez46	sprinkmeier	yes grub lost the discs
+2009-03-15T05:50:00.000Z	sprinkmeier	bonez46	run "sudo blkid /dev/sd[ab]*" and use the UUID's in grub (and /etc/fstab). I'll make things more robust in case HDD's change again
+2009-03-15T05:51:00.000Z	bonez46	sprinkmeier	does the UUID more explicitly identify each unique drive?
+2009-03-15T05:52:00.000Z	sprinkmeier	bonez46	yes. Each partition is given a universally ubnique ID, so no matter where it pops up (/dev/sda, /dev/sdb etc...) it'll be found.
+2009-03-15T05:53:00.000Z	bonez46	sprinkmeier	ok, that shows all my partitions on all my drives.. I am running 8.10 live cd.. can I then go to /dev/sda2  which is where on the 1st hdd my linux partition is located, and update that /boot/grub/menu.lst with the correct UUID? is that the trick?
+2009-03-15T05:54:00.000Z	sprinkmeier	bonez46	yes, that should do it. Also make sure the grub bootloader is installed on the active disk (see the !grub links)
+2009-03-15T06:00:00.000Z	bonez46	sprinkmeier	 humor me.. what would a mount command look like , using the UUID instead of the /dev/device nomenclature
+2009-03-15T06:01:00.000Z	sprinkmeier	bonez46	"mount UUID=hex_soup /mnt/directory" instead of "mount /dev/sda4 /mnt/directory". Same optional options....
+2009-03-15T06:04:00.000Z	bonez46	sprinkmeier	   something like this ???  >>>  sudo mount UUID="24B85798B85766F8" TYPE="ntfs" /mnt/sda
+2009-03-15T06:06:00.000Z	sprinkmeier	bonez46	I have not useed the TYPE="..." syntax. Also, it might be "-U hex_soup" instead of "UUID=...", to be honest I've never mounted using UUID and was just cheating by looking at /etc/fstab. TRy it, check man mount....
+2009-03-17T07:29:00.000Z	sprinkmeier	bonez46	bad disk?
+2009-03-17T07:30:00.000Z	bonez46	sprinkmeier	this is the same stuff you were helping me with the other night.
+2009-03-17T07:31:00.000Z	sprinkmeier	bonez46	memory hazy... is that the 4.something you wanted to update to 8?
+2009-03-17T07:33:00.000Z	sprinkmeier	bonez46	"drives from older machines" might be flaky. SMART?
+2009-03-17T07:34:00.000Z	sprinkmeier	bonez46	(i.e. "run a SMART test http://en.wikipedia.org/wiki/S.M.A.R.T. )

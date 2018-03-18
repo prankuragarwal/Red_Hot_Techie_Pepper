@@ -1,0 +1,24 @@
+2007-09-14T16:08:00.000Z	snoopeh		Can anyone help me, Im trying to set up a "Sandisk 4gb Cruzer Micro" flash drive, onto linux & I will wish to use it for windows also. Here is the output of http://paste.ubuntu-nl.org/37354/ . I basically just need some help setting it up.
+2007-09-14T16:09:00.000Z	snoopeh		Output of dmesg*
+2007-09-14T16:10:00.000Z	hjmills	snoopeh	format it as FAT for use with both linux and windows
+2007-09-14T16:10:00.000Z	snoopeh	hjmills	 how would I go about doing that?
+2007-09-14T16:10:00.000Z	hjmills	snoopeh	do you have gparted installed?
+2007-09-14T16:11:00.000Z	hjmills	snoopeh	ok, open gparted up
+2007-09-14T16:11:00.000Z	hjmills	snoopeh	is the drive plugged in?
+2007-09-14T16:12:00.000Z	hjmills	snoopeh	make sure you click refresh devices in gparted
+2007-09-14T16:13:00.000Z	hjmills	snoopeh	can you pastebin the output from dmesg | tail for me after plugging the drive in
+2007-09-14T16:13:00.000Z	snoopeh	hjmills	http://paste.ubuntu-nl.org/37358/
+2007-09-14T16:16:00.000Z	hjmills	snoopeh	ok, looks like ubuntu has found it as /dev/sda
+2007-09-14T16:17:00.000Z	hjmills	snoopeh	sure - im just looking at the correct command
+2007-09-14T16:20:00.000Z	hjmills	snoopeh	try this: mkdosfs -F 32 -v /dev/sdc
+2007-09-14T16:20:00.000Z	hjmills	snoopeh	wait - no
+2007-09-14T16:23:00.000Z	hjmills	snoopeh	run fdisk /dev/sda
+2007-09-14T16:24:00.000Z	snoopeh	hjmills	 why "mkdosfs -F 32 -v /dev/sdc" and not "mkdosfs -F 32 -v /dev/sda" ?
+2007-09-14T16:25:00.000Z	hjmills	snoopeh	because I got it wrong :) use sda for all commands - sorry
+2007-09-14T16:26:00.000Z	hjmills	snoopeh	i think it needs a partition to format as fat - try sudo fdisk /dev/sda
+2007-09-14T16:28:00.000Z	hjmills	snoopeh	hmm
+2007-09-14T16:32:00.000Z	hjmills	snoopeh	did you run fdisk with sudo?
+2007-09-14T16:33:00.000Z	hjmills	snoopeh	do u have a windows machine around btw?
+2007-09-14T16:34:00.000Z	snoopeh	hjmills	 yes
+2007-09-14T16:34:00.000Z	snoopeh	hjmills	 (yes to both of those)
+2007-09-14T16:34:00.000Z	hjmills	snoopeh	if you have a windows machine it may be easier to plug it in, right click it in my comp and select format.

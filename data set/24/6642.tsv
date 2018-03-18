@@ -1,0 +1,24 @@
+2005-11-28T11:58:00.000Z	intelikey	pawan_	sorry i didn't catch that eariler....
+2005-11-28T12:01:00.000Z	intelikey	pawan_	that is the reason that the ub team desided on sudo for the default root access.  you 'can' set it up to allow very specific commands,  which is configured properly would be very secure.   problem is nearly no one configures it.
+2005-11-28T12:23:00.000Z	pawan_	intelikey	yes. but I get prompted if I type sudo nmap     too, without an argument
+2005-11-28T12:24:00.000Z	intelikey	pawan_	the command in the sudoers file must be exactly like the command you type less the leading sudo
+2005-11-28T12:26:00.000Z	intelikey	pawan_	you can have multipul commands on that line in sudoers if you need them.     e.g.    nmap,nmap kewl,nmap blah    better check the seperator tho
+2005-11-28T12:26:00.000Z	pawan_	intelikey	: so I type nmap as root, I get the options. I type sudo nmap and I get a password prompt, which I should not I think.
+2005-11-28T12:26:00.000Z	intelikey	pawan_	what does the line in sudoers look like now ?
+2005-11-28T12:27:00.000Z	pawan_	intelikey	um. so I should put in sudo /usr/bin/nmap then? odd. Lemme try
+2005-11-28T12:27:00.000Z	intelikey	pawan_	no not sudo   just what follows it...   everything that follows it.
+2005-11-28T12:28:00.000Z	intelikey	pawan_	also do a 'sudo which nmap '  and make sure the address is /usr/bin   that will affect it to
+2005-11-28T12:29:00.000Z	pawan_	intelikey	: I seem to be missing your point. Or vice versa ;-) sudo nmap without an argument should work if sudoers just has /usr/bin/nmap      (no args)
+2005-11-28T12:30:00.000Z	pawan_	intelikey	: sudo which nmap is going to work on which.
+2005-11-28T12:32:00.000Z	intelikey	pawan_	????<pawan_> intelikey : sudo which nmap is going to work on which.  ????
+2005-11-28T12:32:00.000Z	pawan_	intelikey	: 'sudo which nmap' is going to have 'sudo' work on 'which'.
+2005-11-28T12:32:00.000Z	intelikey	pawan_	yes
+2005-11-28T12:33:00.000Z	pawan_	intelikey	: I seem to be missing your point. Or vice versa ;-) 'sudo nmap' without an argument should work if sudoers just has /usr/bin/nmap      (no args), but it does not work. It (sudo nmap) still prompts for a password
+2005-11-28T12:34:00.000Z	intelikey	pawan_	yeah i saw that.   i asked to see the line in sudoers that you now have ?
+2005-11-28T12:35:00.000Z	pawan_	intelikey	: pawan   kewl = NOPASSWD: /usr/bin/nmap
+2005-11-28T12:36:00.000Z	intelikey	pawan_	'pawan   kewl=(ALL) NOPASSWD: /usr/bin/nmap,/usr/bin/nmap kewl '     if that line does not work, i know not why.
+2005-11-28T12:37:00.000Z	intelikey	pawan_	by all i've read on it it should.
+2005-11-28T12:38:00.000Z	pawan_	intelikey	: nope. Doesn't. My system must be b0rked in some strange way.
+2005-11-28T12:38:00.000Z	intelikey	pawan_	no error ?    just prompts ?
+2005-11-28T12:39:00.000Z	pawan_	intelikey	: just password prompts
+2005-11-28T12:39:00.000Z	intelikey	pawan_	i give up man.   i can't see any reason for it.

@@ -1,0 +1,21 @@
+2006-06-07T14:34:00.000Z	Gerbils		Any awstats experts in the house?
+2006-06-07T05:33:00.000Z	Gerbils		How can I apply a config file (like the one from Awstats), so new settings will be applied?
+2006-06-07T05:35:00.000Z	Ng	Gerbils	the example one?
+2006-06-07T05:36:00.000Z	Ng	Gerbils	by default it looks at /etc/awstats/awstats.conf and /etc/awstats/awstats.conf.local (which is where you should make changes ideally)
+2006-06-07T05:36:00.000Z	Ng	Gerbils	by default awstats only updates every 10 minutes
+2006-06-07T05:37:00.000Z	Gerbils	Ng	It's not about updating but about new settings.
+2006-06-07T05:37:00.000Z	Gerbils	Ng	Or should that be done automatically?
+2006-06-07T05:37:00.000Z	Ng	Gerbils	I don't think it will re-generate existing stats, you'd need to clear out its data and run all your logs through it again manually
+2006-06-07T05:38:00.000Z	Gerbils	Ng	Is it not so that it should just use the new settings?
+2006-06-07T05:39:00.000Z	Ng	Gerbils	it probably will use the new settings for new logs, but it won't magically figure out all the extra information from your old logs
+2006-06-07T05:40:00.000Z	Gerbils	Ng	What if it doesn't use the setting for new logs..
+2006-06-07T05:40:00.000Z	Ng	Gerbils	then you'd need to investigate as to why
+2006-06-07T05:40:00.000Z	Gerbils	Ng	The problem is that it doesn't recognise browser and robots.
+2006-06-07T05:41:00.000Z	Ng	Gerbils	hit the website a few times and wait until the next awstats cron job has run (tail -f /var/log/syslog) and see if it's doing it now
+2006-06-07T05:41:00.000Z	Gerbils	Ng	It didn't :(
+2006-06-07T05:43:00.000Z	Gerbils	Ng	Logs are set combined, Awstats is set to read them as combined and Awstats is set to recognise robots. I have also waited through several cron and even restarted Apache. Still no luck..
+2006-06-07T05:43:00.000Z	Ng	Gerbils	has the site had any hits in that time? it may well be that no robots have been to it since you updated the configs
+2006-06-07T05:44:00.000Z	Gerbils	Ng	Yes, google, me and yahoo have visited it.
+2006-06-07T05:45:00.000Z	Ng	Gerbils	well then i would suggest that you check the configs again, but it definitely does work because I use awstats and combined logs
+2006-06-07T05:47:00.000Z	Gerbils	Ng	Are there any other things I have to do to make it recognise robots/browsers? Other then the three things I mentioned?
+2006-06-07T05:48:00.000Z	Ng	Gerbils	nope

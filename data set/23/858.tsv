@@ -1,0 +1,23 @@
+2011-10-03T21:13:00.000Z	BarkingFish		Guys, bit of an urgent hand needed for gigenieks - we've unmounted his usb stick at /dev/sdb, gone to run fsck.vfat over it, and it's not opening the disk, stating there is no such volume.
+2011-10-03T21:14:00.000Z	fritsch	BarkingFish	what was the output of fdisk -l /dev/sdb ?
+2011-10-03T21:15:00.000Z	BarkingFish	fritsch	if it helps, I saw the dmesg output from when he attached the usb disk, it's definitely sdb
+2011-10-03T21:16:00.000Z	fritsch	BarkingFish	did you have ssh access?
+2011-10-03T21:16:00.000Z	BarkingFish	fritsch	no
+2011-10-03T21:17:00.000Z	BarkingFish	fritsch	unless I've misinterpreted the dmesg, that shows sdb as being attached with 2 partitions, sdb1 and sdb2
+2011-10-03T21:18:00.000Z	fritsch	BarkingFish	i think he unmounted the drive and plugged it off
+2011-10-03T21:19:00.000Z	BarkingFish	fritsch	- i told him only to unmount it, and then to run sudo fsck.vfat /dev/sdb to it
+2011-10-03T21:19:00.000Z	fritsch	BarkingFish	sdb is the raw device, this would not make sense
+2011-10-03T21:19:00.000Z	fritsch	BarkingFish	if there are partitions on it
+2011-10-03T21:20:00.000Z	fritsch	BarkingFish	we talk about gigenieks <- right?
+2011-10-03T21:20:00.000Z	fritsch	BarkingFish	oki
+2011-10-06T23:37:00.000Z	fritsch	BarkingFish	nope
+2011-10-06T23:37:00.000Z	fritsch	BarkingFish	it just copys stuff bytewise
+2011-10-06T23:37:00.000Z	fritsch	BarkingFish	you broke something?
+2011-10-06T23:38:00.000Z	fritsch	BarkingFish	you can rescue something if yo backupped before
+2011-10-06T23:38:00.000Z	fritsch	BarkingFish	what has he done with dd?
+2011-10-06T23:38:00.000Z	BarkingFish	fritsch	they transferred by cut and paste a folder from a source drive to external hdd, but removed the usb when ubuntu said it was finished...
+2011-10-06T23:39:00.000Z	fritsch	BarkingFish	the did not correctly umount the drive?
+2011-10-06T23:39:00.000Z	BarkingFish	fritsch	the result is that he has a reduced file on the target disk, and the file had gone from the source disk
+2011-10-06T23:39:00.000Z	fritsch	BarkingFish	i do not see that dd can help here
+2011-10-06T23:39:00.000Z	BarkingFish	fritsch	yes he did.  He umounted and removed the drive, but it came up with an error.  The buffer was still writing to the target USB disk
+2011-10-06T23:40:00.000Z	fritsch	BarkingFish	mmh, that seems bad luck

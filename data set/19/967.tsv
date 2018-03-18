@@ -1,0 +1,19 @@
+2011-10-12T09:26:00.000Z	nhr_		Hey folks, trying to set up vpn using pptp. I can login to remote system, but dns for remote does not work.
+2011-10-12T09:27:00.000Z	nhr_		Any ideas what should I do?
+2011-10-12T09:28:00.000Z	nhr_		I see the dns servers in resolv.conf
+2011-10-12T09:30:00.000Z	nhr_		I got the address back for a hostname
+2011-10-12T09:30:00.000Z	nhr_		yes it does - same dns server is shown is resolv.conf
+2011-10-12T09:32:00.000Z	nhr_		yes, even that is working
+2011-10-12T09:32:00.000Z	phlak_user	nhr_	what does your sudo route -n look like?
+2011-10-12T09:34:00.000Z	phlak_user	nhr_	that shows that your default route is thro the VPN (ppp0)
+2011-10-12T09:35:00.000Z	phlak_user	nhr_	login to your box after setting up the tunnel or for setting up the tunnel?
+2011-10-12T09:37:00.000Z	phlak_user	nhr_	what does your /etc/resolv.conf look like?
+2011-10-12T09:37:00.000Z	nhr_	phlak_user	I can login to the box, there are three entries in resolv.conf
+2011-10-12T09:38:00.000Z	phlak_user	nhr_	do they have  a search domain entry as well?
+2011-10-12T09:39:00.000Z	phlak_user	nhr_	like so -> search cyberciti.biz nameserver 10.0.0.10
+2011-10-12T09:40:00.000Z	phlak_user	nhr_	replace cyberciti.biz with the domain name of your remote box
+2011-10-12T09:41:00.000Z	phlak_user	nhr_	huh?
+2011-10-12T09:42:00.000Z	phlak_user	nhr_	not the *search* package; add that line to resolv.conf just above the nameserver line
+2011-10-12T09:44:00.000Z	phlak_user	nhr_	what about dig
+2011-10-12T09:45:00.000Z	phlak_user	nhr_	in network-manager where you added the vpn connection
+2011-10-12T09:45:00.000Z	phlak_user	nhr_	so is it working?

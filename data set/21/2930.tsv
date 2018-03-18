@@ -1,0 +1,21 @@
+2009-05-14T16:30:00.000Z	khaime		in trying to use qemu, i now try to use the cdrom to start the installation of the "guest", and i get this error : "you do not have enough space in '/dev/shm/ for the 256 mb of qemu virtual ram.  to have more space available provdided you have enough RAM and swap, do as root : umount /dev/shm"
+2009-05-14T16:30:00.000Z	khaime		i did just that, and  it said that '/dev/shm' was "busy"
+2009-05-14T16:31:00.000Z	gaveen	khaime	you can't unmount /dev/shm
+2009-05-14T16:31:00.000Z	khaime	gaveen	so how do i take care of this "256 mb" problem ?
+2009-05-14T16:32:00.000Z	gaveen	khaime	that means you don't have enough memory for the new VM
+2009-05-14T16:32:00.000Z	khaime		can i do this : "mount -t tmpfs -o size=272m none /dev/shm" while "/dev/shm" is running ?
+2009-05-14T16:32:00.000Z	gaveen		/dev/shm represents shared memory http://is.gd/zMN6
+2009-05-14T16:34:00.000Z	khaime		how do i determine how much memory i have on my linux box
+2009-05-14T16:34:00.000Z	khaime		i am certain it is at least 512..but how do i confirm
+2009-05-14T16:34:00.000Z	gaveen	khaime	free -m
+2009-05-14T16:35:00.000Z	gaveen	khaime	or check in the system monitor
+2009-05-14T16:35:00.000Z	khaime		 total       used       free     shared    buffers     cached
+2009-05-14T16:35:00.000Z	khaime		Mem:           494        483         10          0         10         94
+2009-05-14T16:35:00.000Z	khaime		-/+ buffers/cache:        378        115
+2009-05-14T16:35:00.000Z	khaime		Swap:         1443         68       1375
+2009-05-14T16:36:00.000Z	khaime		http://paste.ubuntu.com/172266/
+2009-05-14T16:36:00.000Z	gaveen	khaime	means you have around 494MB memory in total
+2009-05-14T16:36:00.000Z	gaveen	khaime	that's usually not enough memory to use in a desktop OS plus a 256MB VM
+2009-05-14T16:37:00.000Z	khaime	gaveen	so what about "swap" why do it said used : 1443
+2009-05-14T16:37:00.000Z	khaime	gaveen	thanks
+2009-05-14T16:38:00.000Z	gaveen	khaime	that is you have about 1443 MB is swap space in total. Swap is something similar to virtual memory in Windows

@@ -1,0 +1,21 @@
+2010-05-23T03:40:00.000Z	Mixxit		hi there i have an old 600mhz pc here with a 64mb nvidia card and 500mb of ram and was wondering how i can check if im using software rendering for my graphics
+2010-05-23T03:41:00.000Z	onetinsoldier	Mixxit	try... grep Driver /var/log/var/log/Xorg.0.log   ...and then you might want to pastebin the results for people to look at
+2010-05-23T03:43:00.000Z	Mixxit	onetinsoldier	http://pastebin.com/fcnHpi5E
+2010-05-23T03:44:00.000Z	onetinsoldier	Mixxit	i thought i might have messed up the command a little.. the dirs... glad you got it
+2010-05-23T03:46:00.000Z	onetinsoldier	Mixxit	ok, looked it at. i'm not really certain. you might want to ask the question to the entire channel with your pastebin url as part of your post. i'm sure what to make of it listing like 4 drivers at the top there. i don't know that any of those driver support hardware 3d rendering. but you probably at least have 2D hardware support
+2010-05-23T03:47:00.000Z	onetinsoldier	Mixxit	try this -->   glxinfo
+2010-05-23T03:47:00.000Z	onetinsoldier	Mixxit	i'm not* sure what to make of it listing 4 drivers at the top there
+2010-05-23T03:48:00.000Z	onetinsoldier	Mixxit	roger. no hurries
+2010-05-23T03:48:00.000Z	onetinsoldier	Mixxit	glxinfo is in 'mesa-utils'
+2010-05-23T03:49:00.000Z	onetinsoldier	Mixxit	probably different for me than it is you... i have an ati video card
+2010-05-23T05:58:00.000Z	Mixxit	onetinsoldier	hey im at the point where my drivers are installed and im wondering about glx :-)
+2010-05-23T05:58:00.000Z	onetinsoldier	Mixxit	roger. did you install mesa-utils? try.. glxinf
+2010-05-23T05:58:00.000Z	onetinsoldier	Mixxit	glxinfo
+2010-05-23T05:59:00.000Z	onetinsoldier	Mixxit	ok, roger.. what does it say near the very top?  for -->  direct rendering:
+2010-05-23T06:00:00.000Z	Mixxit	onetinsoldier	: http://www.pastebin.org/268783
+2010-05-23T06:00:00.000Z	onetinsoldier	Mixxit	no. you don't have it. no glx
+2010-05-23T06:02:00.000Z	onetinsoldier	Mixxit	i don't know. i'm not really that knowledgeable with X
+2010-05-23T06:02:00.000Z	onetinsoldier	Mixxit	try running it again after doing this command --> LIBGL_DEBUG=verbose
+2010-05-23T06:04:00.000Z	onetinsoldier	Mixxit	you'd probably be best off asking the channel how to get it working. let them know what video card you have, and what nvidia driver you have installed, ect.
+2010-05-23T06:05:00.000Z	onetinsoldier	Mixxit	sure, you're welcome
+2010-05-23T06:06:00.000Z	onetinsoldier	Mixxit	just in case you need to find out what nvidia packages you have installed, do --> dpkg -l '*nvidia*' | grep ^ii

@@ -1,0 +1,21 @@
+2012-09-06T06:23:00.000Z	phonebook_		hi i need some dumb ubuntu help
+2012-09-06T06:23:00.000Z	phonebook_		i want to install this https://launchpad.net/~inkscape.dev/+archive/trunk
+2012-09-06T06:24:00.000Z	phonebook_		sudo apt-get install ???
+2012-09-06T06:24:00.000Z	phonebook_		i dont understand how any of this works
+2012-09-06T06:25:00.000Z	phonebook_		programs in the repository... which i guess are just popular/common programs?
+2012-09-06T06:26:00.000Z	zhengyi	phonebook_	did you add the PPA shown on that page? if so, `sudo apt-get update && sudo apt-get install inkscape` should be the end of it
+2012-09-06T06:27:00.000Z	phonebook_		thx guys
+2012-09-06T06:27:00.000Z	phonebook_		let me digest all that
+2012-09-06T06:29:00.000Z	phonebook_		worked, outstanding!
+2012-09-06T06:29:00.000Z	phonebook_		so it worked because "inkscape" is registered somewhere?
+2012-09-06T06:30:00.000Z	zhengyi	phonebook_	so to speak
+2012-09-06T06:30:00.000Z	zhengyi	phonebook_	software packages live in repos
+2012-09-06T06:30:00.000Z	zhengyi	phonebook_	your machine has a list of repos it knows about in /etc/apt/sources.list.d
+2012-09-06T06:31:00.000Z	phonebook_		starting to make sense now, actually
+2012-09-06T06:31:00.000Z	phonebook_		so for example...
+2012-09-06T06:32:00.000Z	zhengyi	phonebook_	when you ask Ubuntu to install a particular piece of software, it'll go searching for that package in the list of repos it knows about, and assuming it finds it there, will pull it down and install it
+2012-09-06T06:32:00.000Z	phonebook_		got it
+2012-09-06T06:32:00.000Z	phonebook_		and if conflicts you namespace somehow... but there are probably never conflicts?
+2012-09-06T06:33:00.000Z	phonebook_	Logos01	so what if the same name is in two repositories?
+2012-09-06T06:34:00.000Z	zhengyi	phonebook_	I don't believe there's any concept of namespaces in apt repos -- but conflicts can certainly happen, if you have a given piece of software in multiple repos
+2012-09-06T06:34:00.000Z	zhengyi	phonebook_	in that case, apt decides which package to install based on something called "pinning" -- which you can go Google :)

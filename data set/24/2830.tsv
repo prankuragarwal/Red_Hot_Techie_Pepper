@@ -1,0 +1,24 @@
+2009-08-07T10:21:00.000Z	firecrotch	gladideg	You'll likely have to register your DNS servers with your registrar first - giving them IP addresses to match up to two hostnames, or something along those lines
+2009-08-07T10:21:00.000Z	gladideg	firecrotch	ok I'll call them and ask about that. Thanks
+2009-08-07T10:21:00.000Z	firecrotch	gladideg	who is your registrar?
+2009-08-07T10:22:00.000Z	firecrotch	gladideg	ah, in that case, I can't help you out much with dealing with them
+2009-08-07T10:23:00.000Z	gladideg	firecrotch	my website needs to create/delete subdomains on the fly, so I though I run my own DNS on a random domain I've made. So I can have blabla.blala.mydomain.com
+2009-08-07T10:24:00.000Z	firecrotch	gladideg	You might want to think about using a wildcard subdomain instead of creating DNS records for each subdomain you create.
+2009-08-07T10:25:00.000Z	firecrotch	gladideg	creating a dns record for dynamically created subdomains, even with low TTL values, they can still be cached for longer than you want by some ISPs DNS caching servers
+2009-08-07T10:25:00.000Z	gladideg	firecrotch	hmm, interesting. Good to know
+2009-08-07T10:26:00.000Z	firecrotch	gladideg	You can use apache's mod_rewrite to rewrite requests for the subdomains to something like yoursite.com/subdomain/
+2009-08-07T10:27:00.000Z	gladideg	firecrotch	apache is thus out of the picture
+2009-08-07T10:28:00.000Z	firecrotch	gladideg	You could use apache's mod_proxy :)
+2009-08-07T10:28:00.000Z	gladideg	firecrotch	does it work with other protocols than http and such?
+2009-08-07T10:28:00.000Z	gladideg	firecrotch	if so I'll read up on it. Just so I don't missunderstand u
+2009-08-07T10:29:00.000Z	firecrotch	gladideg	No, unfortunately, mod_proxy doesn't handle other protocols
+2009-08-07T10:30:00.000Z	gladideg	firecrotch	then the only way to go is using DNS records with low TLS and no cache if it works
+2009-08-07T10:30:00.000Z	firecrotch	gladideg	How often does the DNS records change?
+2009-08-07T10:31:00.000Z	firecrotch	gladideg	and do those changes need to be reflected instantaneously for ALL users?
+2009-08-07T10:31:00.000Z	gladideg	firecrotch	it won't change often. But I will create new ones for my customers quite often. They will stick
+2009-08-07T10:31:00.000Z	firecrotch	gladideg	Oh, if you're just creating them often, and not changing where a certain CNAME points, then your solution should work
+2009-08-07T10:31:00.000Z	gladideg	firecrotch	they won't change in theory. But when a new client get's a subdomain, I want it to work instantly.
+2009-08-07T10:32:00.000Z	gladideg	firecrotch	when I create a subdomain, will it be visible instantly?
+2009-08-07T10:33:00.000Z	gladideg	firecrotch	I see no reason why not, but if you know? ^^
+2009-08-07T10:33:00.000Z	firecrotch	gladideg	should be instant, pretty much
+2009-08-07T10:33:00.000Z	gladideg	firecrotch	great

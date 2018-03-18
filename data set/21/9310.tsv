@@ -1,0 +1,21 @@
+2006-06-18T15:55:00.000Z	mister_roboto		does anyone here use Skype on [k] ubuntu?
+2006-06-18T15:56:00.000Z	dooglus	mister_roboto	I have done.
+2006-06-18T15:56:00.000Z	mister_roboto	dooglus	did you have a problem "/dev/dsp-1: Device or resource busy" ?   and if so, how did you fix it?  i get no sound from skype
+2006-06-18T15:56:00.000Z	dooglus	mister_roboto	to do so, I added "deb http://download.skype.com/linux/repos/debian stable non-free" to /etc/apt/sources.list and installed 'skype'
+2006-06-18T15:57:00.000Z	mister_roboto	dooglus	ok, i'll try installing that one.   thanks
+2006-06-18T15:57:00.000Z	dooglus	mister_roboto	I had lots of problems with sound on linux, especially skype.  I did fix it, but I don't know which of the 43,240 things I tried actually worked...
+2006-06-18T15:57:00.000Z	mister_roboto	dooglus	lol.  i know what you mean
+2006-06-18T15:58:00.000Z	dooglus	mister_roboto	killing 'esd' is always a good start, and making sure nothing else is trying to use the sound card at the same time.
+2006-06-18T15:58:00.000Z	mister_roboto	dooglus	that's just the point though. if sound mixing is working correctly, they will ALL work at same time, which is precisely what i want
+2006-06-18T15:59:00.000Z	dooglus	mister_roboto	except some programs don't talk to the mixer, they talk directly to the sound card, stopping anything else from using it.
+2006-06-18T15:59:00.000Z	mister_roboto	dooglus	in that case, i'd like to figure out how to redirect those programs to talk to a mixing device, if possible.   pretty much a noob at linux sound here
+2006-06-19T16:00:00.000Z	mister_roboto	dooglus	no "esd" running
+2006-06-19T16:03:00.000Z	dooglus	mister_roboto	I'm no expert either, but I think it's different for each program...
+2006-06-19T16:04:00.000Z	dooglus	mister_roboto	maybe there's some magic solution, but I don't know of it.
+2006-06-19T16:04:00.000Z	mister_roboto	dooglus	trying the deb that you suggested now
+2006-06-19T16:06:00.000Z	mister_roboto	dooglus	hmmm... same problem. need to figure this out. nothing else has the sound card locked, unless it's kde itself  :\
+2006-06-19T16:20:00.000Z	dooglus	mister_roboto	you have artsd running?  that might be hogging the soundcard
+2006-06-19T16:46:00.000Z	mister_roboto	dooglus	you still here?
+2006-06-19T16:47:00.000Z	dooglus	mister_roboto	yes.
+2006-06-19T16:48:00.000Z	mister_roboto	dooglus	load module "snd-pcm-oss" will route /dev/dsp to alsa and mixing works fine then for /dev/dsp programs   :)    including skype
+2006-06-19T16:49:00.000Z	dooglus	mister_roboto	ok, cool.

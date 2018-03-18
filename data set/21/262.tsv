@@ -1,0 +1,21 @@
+2012-05-03T02:15:00.000Z	stiltzkin		Hello folks, hope someone can help me understand why my fresh install of Ubuntu 12.04 does not boot. I just get a plain black screen after GRUB and the system seems to hang. If I start up in recovery mode I can get to a login prompt, but nothing else - running "startx" gives "Fatal server error: no screens found." Where should I start with this? Not a good sign.
+2012-05-03T02:17:00.000Z	L3tops	stiltzkin	not sure why it is not starting, but you might: export DISPLAY=:0 startx
+2012-05-03T02:21:00.000Z	L3tops	stiltzkin	sorry, you can either separate those commands or drop the word export.
+2012-05-03T02:22:00.000Z	L3tops	stiltzkin	lspci -nn | grep VGA
+2012-05-03T02:24:00.000Z	stiltzkin	L3tops	01:00.0 VGA compatible controller [0300]: Advanced Micro Devices [AMD] nee ATI M96 [Mobility Radeon HD 4650] [1002:9480]
+2012-05-03T02:25:00.000Z	L3tops	stiltzkin	might try installing fglrx
+2012-05-03T02:26:00.000Z	stiltzkin	L3tops	shouldn't I not have to do that though? This card has always been well-supported by the generic drivers (and now Nouveau, I believe)
+2012-05-03T02:27:00.000Z	stiltzkin	L3tops	oh right right, not Nouveau. Point being this has always worked without issue before. Since ~9.04
+2012-05-03T02:29:00.000Z	L3tops	stiltzkin	apt-cache policy xserver-xorg-video-radeon
+2012-05-03T02:31:00.000Z	stiltzkin	L3tops	"Installed:  (none) Candidate: 1:6.14.99~git20111219.aacbd629-0ubuntu2 Version table: 1:6.14.99~git20111219aacbd629-0ubuntu2 0 500 http://us.archive.ubuntu.com/ubuntu/ precise/main amd64 Packages"
+2012-05-03T02:31:00.000Z	L3tops	stiltzkin	sudo apt-get install xserver-xorg-video-radeon
+2012-05-03T02:32:00.000Z	stiltzkin	L3tops	OK...I still don't understand why I need that package though, or if I do, why it isn't included by default. Especially since I installed while connected to the Internet. To install this I'll have to connect to WiFi via commandline though - I have no idea how to do that.
+2012-05-03T02:35:00.000Z	stiltzkin	L3tops	well that's disappointing. I'll see if I can try to connect to wifi. Looks like it involves wpa_supplicant scripts <_<
+2012-05-03T02:46:00.000Z	stiltzkin	L3tops	I managed to connect to wifi, install the xorg-radeon package, and run upgrades, but the problem persists :/
+2012-05-03T02:47:00.000Z	L3tops	stiltzkin	apt-cache policy fglrx | grep Installed
+2012-05-03T02:48:00.000Z	stiltzkin	L3tops	still says Installed: (none)
+2012-05-03T02:48:00.000Z	stiltzkin	L3tops	tyt
+2012-05-03T02:49:00.000Z	L3tops	stiltzkin	sudo apt-get install libgl1-mesa-glx libgl1-mesa-dri fglrx-modaliases
+2012-05-03T02:49:00.000Z	stiltzkin	L3tops	OK, thanks :)
+2012-05-03T02:50:00.000Z	stiltzkin	L3tops	can't find the package fglrx-modaliases
+2012-05-03T02:51:00.000Z	stiltzkin	L3tops	there's fglrx, fglrx-amdcccle, fglrx-amdccle-updates, fglrx-dev, fglrx-updates, fglrx-updates-dev...

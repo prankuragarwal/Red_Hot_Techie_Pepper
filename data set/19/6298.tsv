@@ -1,0 +1,19 @@
+2009-09-26T14:10:00.000Z	kyja		can bash do a function call with sudo?? I tried "sudo cleanup"     as it implies, cleanup is the function.
+2009-09-26T14:11:00.000Z	kyja		well that explains it :/ I have to discover a solution
+2009-09-26T14:11:00.000Z	kyja		oh thanks prince_jammys I will try that
+2009-09-26T14:13:00.000Z	kyja		:( guess i will go back to it being an exteral script
+2009-09-26T14:14:00.000Z	kyja		ooh ok I will try prince_jammys
+2009-09-26T14:14:00.000Z	prince_jammys	kyja	which will redefine the function in the bash mini-script you're sudoing.
+2009-09-26T14:10:00.000Z	prince_jammys	kyja	no, at least not that way. sudo runs external commmands, it's not bash.
+2009-09-26T14:11:00.000Z	prince_jammys	kyja	you might be able to do it by : export -f cleanup; sudo bash -c 'cleanup'
+2009-09-26T14:11:00.000Z	prince_jammys	kyja	though that may not work, because sudo modifies the environment.
+2009-09-26T14:12:00.000Z	prince_jammys	kyja	yeah, it doesn't work. sudo prevents this on purpose.
+2009-09-26T14:14:00.000Z	prince_jammys	kyja	but you can do this hack:  sudo bash -c "$(declare -f cleanup); cleanup"
+2009-09-26T14:22:00.000Z	kyja	prince_jammys	that worked perfectly. thank you alot for the help :)
+2009-09-26T14:23:00.000Z	prince_jammys	kyja	welcome
+2009-09-27T01:10:00.000Z	prince_jammys	kyja	PS1='$(date)'
+2009-09-27T01:11:00.000Z	prince_jammys	kyja	you MUST single quote it so it gets run when PS1 is printed.
+2009-09-27T01:12:00.000Z	prince_jammys	kyja	if you do PS=$(date) or PS1="$(date)" , $(date) expands at the time of assignment and never will change.
+2009-09-27T01:13:00.000Z	kyja	prince_jammys	thats a bummer. that would be one cool bash prompt.
+2009-09-27T01:13:00.000Z	prince_jammys	kyja	you can do it, by single quoting it.
+2009-09-27T01:15:00.000Z	prince_jammys	kyja	PS1='[\u@\w]$(date +%T) \$ '

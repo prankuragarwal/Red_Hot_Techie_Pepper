@@ -1,0 +1,18 @@
+2006-04-27T08:30:00.000Z	rabe		i do have floppy formatted in windows, if i delete everything on it, only ~400kb is free ... How to format it completely (for linux)?
+2006-04-27T08:31:00.000Z	Warbo	rabe	mkfs.vfat /dev/fd0
+2006-04-27T08:31:00.000Z	Warbo	rabe	be careful with that
+2006-04-27T08:32:00.000Z	Warbo	rabe	If you misspell something you could format something which is not your floppy drive :)
+2006-04-27T08:33:00.000Z	rabe	Warbo	mkfs.vfat: /dev/fd0 contains a mounted file system.
+2006-04-27T08:33:00.000Z	Warbo	rabe	Yes, unmount it
+2006-04-27T08:36:00.000Z	Warbo	rabe	The files aren't copied straight away, they are kept in RAM. When you are done you unmount the disk and changes are written
+2006-04-27T08:37:00.000Z	rabe	Warbo	can i read a floppy formatted in windows?
+2006-04-27T08:37:00.000Z	Warbo	rabe	Which is why it is important that you not just eject the disc
+2006-04-27T08:38:00.000Z	Warbo	rabe	vfat is fat32, so windows and linux can read it. If you use ext2 then it is hard to get windows to read it
+2006-04-27T08:38:00.000Z	Warbo	rabe	yes, the mkfs.vfat command made a fat32 (windows) disk
+2006-04-27T08:39:00.000Z	rabe	Warbo	for ext2/3 would i use "mkfs.ext3 ... " ?
+2006-04-27T08:40:00.000Z	Warbo	rabe	yes, but for some reason in the GUI floppy formatters I have seen they only use ext2 and not 3. Probably the journal takes up valuable space
+2006-04-27T08:41:00.000Z	Warbo	rabe	As the antichrist once said: "Developers, developers, developers, developers..." It is not really Ubuntu's problem (but they still try gawd bless em)
+2006-04-27T08:42:00.000Z	Warbo	rabe	Developers don't make stuff for non-m$ because nobody uses it. Nobody uses it because there are no apps for it. Catch 22 (which is why I hate m$ for shafting Java)
+2006-04-27T08:59:00.000Z	Warbo	rabe	"cp -r /etc/skel /home/username"
+2006-04-27T08:59:00.000Z	Warbo	rabe	Do that without /home/username existing
+2006-04-27T09:03:00.000Z	Warbo	rabe	If you want to "restore" your default settings then making an exact copt od /etc/skel in /home with your username will do (asfter changing it's permissions)

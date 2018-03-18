@@ -1,0 +1,21 @@
+2007-01-26T14:17:00.000Z	BHSPitMonkey		Why doesn't "Keep clock synchronized with Internet servers" work, in the Time and Date settings?
+2007-01-26T14:18:00.000Z	BHSPitMonkey		I mean, I can uncheck that box, and then click on "Synchronize Now", and it will work perfectly when I've initiated it. It won't honor the "Keep..." setting, though.
+2007-01-26T14:18:00.000Z	BHSPitMonkey		Never has, on any system I've used.
+2007-01-26T14:18:00.000Z	BHSPitMonkey		Am I missing something?
+2007-01-26T14:18:00.000Z	mustaukko	BHSPitMonkey	Yeah, that's a bummer. I've usually set a cronjob for that.
+2007-01-26T14:18:00.000Z	BHSPitMonkey	mustaukko	bummer indeed.
+2007-01-26T14:18:00.000Z	mustaukko	BHSPitMonkey	if you want to know more of it, I'll tell you.
+2007-01-26T14:19:00.000Z	BHSPitMonkey	mustaukko	shoot.
+2007-01-26T14:21:00.000Z	mustaukko	BHSPitMonkey	Ok, there is a program called ntpdate that's used to conenct the ntp servers. It is able to set up your system clock to real time.
+2007-01-26T14:21:00.000Z	BHSPitMonkey	mustaukko	it errors.
+2007-01-26T14:22:00.000Z	mustaukko	BHSPitMonkey	cron on the other hand is a job runner that executes all those commands you want in a timed manner.
+2007-01-26T14:22:00.000Z	mustaukko	BHSPitMonkey	ntpdate needs parameters.
+2007-01-26T14:23:00.000Z	mustaukko	BHSPitMonkey	For example I'm using this set '/usr/sbin/ntpdate -s -b -p 8 -u 129.132.2.21'
+2007-01-26T14:23:00.000Z	mustaukko	BHSPitMonkey	try that out, see if it errors too.
+2007-01-26T14:24:00.000Z	mustaukko	BHSPitMonkey	if you now type date...
+2007-01-26T14:24:00.000Z	mustaukko	BHSPitMonkey	if it's the current time and all is good, then just bolt that to you crontab
+2007-01-26T14:25:00.000Z	mustaukko	BHSPitMonkey	And that'd happen by you going all 'sudo bash' on your computer and then going all 'crontab -e' and then making a new line there stating '0 * * * * /usr/sbin/ntpdate -s -b -p 8 -u 129.132.2.21'
+2007-01-26T14:27:00.000Z	BHSPitMonkey	mustaukko	how often will that run
+2007-01-26T14:27:00.000Z	mustaukko	BHSPitMonkey	once a hour. every 0th minute
+2007-01-26T14:29:00.000Z	mustaukko	BHSPitMonkey	night.
+2007-01-26T14:30:00.000Z	mustaukko	BHSPitMonkey	np

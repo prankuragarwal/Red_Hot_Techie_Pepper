@@ -1,0 +1,18 @@
+2009-02-15T20:50:00.000Z	_delirium		I have just installed 8.10, but it does boot after restarting - I get the message - Alert! /dev/disk/by-uuid/<uuid here> does not exist! Dropping to a shell!!
+2009-02-15T20:50:00.000Z	_delirium		does boot = does not boot
+2009-02-15T20:51:00.000Z	Scunizi	_delirium	do you have more than one harddrive in your machine?
+2009-02-15T20:51:00.000Z	_delirium	Scunizi	sure - 4
+2009-02-15T20:51:00.000Z	Scunizi	_delirium	raid?
+2009-02-15T20:53:00.000Z	Scunizi	_delirium	what may have happened is setup put a bad uuid in /etc/fstab.. so you need to sudo fdisk -l to identify your partitions and sudo blkid to discover the correct uuid numbers of the partitions then look at fstab and match them up.  Change the bad one.
+2009-02-15T20:54:00.000Z	_delirium	Scunizi	okie dokie - im in the live cd at the moment - will take a look...
+2009-02-15T20:54:00.000Z	Scunizi	_delirium	any data on the drives that are off the raid card?
+2009-02-15T20:55:00.000Z	_delirium	Scunizi	yes the 1 x sata connected to the mobo is for my OS (partitions - 1=swap, 2=ext3, 3=ntfs) - the 3 x Sata connected to the RAID PCI card are for my important files (1 partition - ext3)
+2009-02-15T20:57:00.000Z	Scunizi	_delirium	If you don't discover an error in fstab with the uuid numbers, I'd suggest disconnecting the raid card and see if you can boot using the primary drive.. It'll still give you errors about uuid etc because any drives it identified on the raid card won't be there to reference..
+2009-02-15T20:59:00.000Z	_delirium	Scunizi	no mistakes in /etc/fstab - it also only lists the /dev/sda devices - which is the disk connected to my mobo
+2009-02-15T20:59:00.000Z	Scunizi	_delirium	the easiest way to do what stefg suggested is at terminal with pastebinit
+2009-02-15T21:01:00.000Z	Scunizi	_delirium	that's probably why it's having issues.. but if you can do what stefg said.. he/she may have more input than I can provide concering the raid card.. I'm not particularly good with raid
+2009-02-15T21:01:00.000Z	Scunizi	_delirium	try yanking the raid card and see if the errors go away
+2009-02-15T21:02:00.000Z	_delirium	Scunizi	is there a way to disable a module from being loaded at boot time - i see that the live cd loads the module pata_hpt37x - which is the wrong one for my raid card
+2009-02-15T21:02:00.000Z	Scunizi	_delirium	I think you're into stefg 's relm now..
+2009-02-15T21:18:00.000Z	_delirium	Scunizi	thanks for your help :-0
+2009-02-15T21:18:00.000Z	Scunizi	_delirium	np :)

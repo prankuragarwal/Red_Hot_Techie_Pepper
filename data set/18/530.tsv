@@ -1,0 +1,18 @@
+2012-01-06T03:21:00.000Z	suppl		Hello, could anyone help me with troubleshooting acpi please?
+2012-01-06T03:22:00.000Z	bullgard6	suppl	ACPI is a very voluminous matter. You better state your specific problem.
+2012-01-06T03:24:00.000Z	suppl		Well, i've got 2 gpus on my laptop. I used to boot with i915.modeset=0. Most of the things were unrecognized, like video and display (couldnt go more then 800x600).
+2012-01-06T03:24:00.000Z	suppl		bullgard6
+2012-01-06T03:25:00.000Z	bullgard6		suppl:
+2012-01-06T03:25:00.000Z	suppl		I just tried with acpi=off, video works awesome but the temperature problem is messy.
+2012-01-06T03:25:00.000Z	suppl		ie high
+2012-01-06T03:25:00.000Z	bullgard6		why is this an ACPI problem and no graphics problem?
+2012-01-06T03:26:00.000Z	bullgard6	suppl	 Ah, I see.
+2012-01-06T03:27:00.000Z	suppl	bullgard6	i was using acpi_call... im just fed up with it all :)
+2012-01-06T03:31:00.000Z	bullgard6	suppl	You have a rare bug in so far as ACPI and graphics rarely interfere. I would start by analyzing dmesg. If you cannot find a hint in dmesg, you could try to find a hint in /var/log/Xorg.0.log.old.
+2012-01-06T03:34:00.000Z	suppl	bullgard6	thank you. i'll try to dig something up... i think it might be some pci irq thing, but since im using ubuntu for a few months... thanks again.
+2012-01-06T03:36:00.000Z	bullgard6	suppl	 Yes, a PCI IRQ bug could be the culprit.  I once had such a bug. But this reflected in dmesg.
+2012-01-06T03:38:00.000Z	suppl	bullgard6	i did find some switching by ironlake card, "sharing irq 5 with 0000:01:00.0" and then, radeon at 0000:01:00.0 shared irq 5
+2012-01-06T03:42:00.000Z	bullgard6	suppl	 I do not know if this is a strong hint to a bug. In my case there was a repeated try to establish a sharing of the same IRQ so that an intermittent soperating state arose.
+2012-01-06T03:43:00.000Z	bullgard6		-s
+2012-01-06T03:43:00.000Z	suppl	bullgard6	can i post that bit for you, on pastebin or something?
+2012-01-06T03:44:00.000Z	bullgard6	suppl	 Yes. Go ahead.

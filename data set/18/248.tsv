@@ -1,0 +1,18 @@
+2012-05-24T01:11:00.000Z	liznevada		does ubuntu create a GPT Partition table when you use the "Full Disk" option?
+2012-05-24T01:12:00.000Z	escott	liznevada	it would depend on the disk size most likely
+2012-05-24T01:14:00.000Z	escott	liznevada	do you have a large disk? is it an efi system?
+2012-05-24T01:14:00.000Z	escott	liznevada	what does sudo parted -l say the partition type is
+2012-05-24T01:16:00.000Z	escott	liznevada	rather than speculate lets get some facts what is the current partition type?
+2012-05-24T01:17:00.000Z	escott	liznevada	do you happen to know if it is an efi system?
+2012-05-24T01:19:00.000Z	escott	liznevada	there is some file in /sys that will identify if you had an efi boot
+2012-05-24T01:19:00.000Z	escott	liznevada	does /sys/firmware/efi exist?
+2012-05-24T01:20:00.000Z	liznevada	escott	no
+2012-05-24T01:22:00.000Z	escott	liznevada	ok sounds like a bios boot (although maybe thats an artifact of the liveusb -- god knows -- the next few years are going to be rough). is there a partition (it would be small ~1MB YES 1MB) flagged as grub_bios?
+2012-05-24T01:24:00.000Z	liznevada	escott	nope, no grub_bios, just /dev/sda1 (which i think is the root partition), sda2 (is a swap part) and (sda3, which must be /home)
+2012-05-24T01:25:00.000Z	escott	liznevada	assuming it is a bios boot the absence of a grub_bios partition on a bios+gpt system would prevent the boot. so that would be step 1. make a small partition (basically any free space will do) and give it a flag of grub_bios
+2012-05-24T01:30:00.000Z	escott	liznevada	in a bios+gpt system there is no space between the end of the mbr (which does exist) and the gpt table for grub stage 2. you must have a grub_bios flagged partition for grub to install its stage 2 files
+2012-05-24T01:34:00.000Z	liznevada	escott	and what if i dont use bios+gtp but bios+mbr, how that explain the absence of grub of a mbr installation, cuz as i said b4 i also do a manual mbr installation with the same symptom
+2012-05-24T01:35:00.000Z	escott	liznevada	if you dont use bios+gpt then why do you have a gpt disk?
+2012-05-24T01:42:00.000Z	escott	liznevada	i suspect that whatever tool you used did not zero out the gpt structures. so you are in the same boat as ThePendulum. the installer keeps creating a gpt table because it sees gpt structures
+2012-05-24T01:43:00.000Z	escott	liznevada	in your case I would just install gdisk and erase the gpt structures (since you know you dont want them) and then create an mbr partition
+2012-05-24T01:44:00.000Z	liznevada	escott	i told you the gpt were created by the installer on the last installation, but how you explain the past installations and more importantly the first one (when the laptop has the original SO, windows), all those installations were manual, creating the partitions in gparted.

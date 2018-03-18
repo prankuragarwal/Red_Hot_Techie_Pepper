@@ -1,0 +1,23 @@
+2009-06-21T07:37:00.000Z	acedip		when I try to mount my cdrom, it says "you must specify the filesysystem type". now what filesystem does the cdrom have, any could help me??
+2009-06-21T07:38:00.000Z	stroyan	acedip	Usually   "iso9660"
+2009-06-21T07:39:00.000Z	acedip	stroyan	but which device is it?
+2009-06-21T07:41:00.000Z	acedip	stroyan	the iso9660 said "rong fs type, bad option, bad superblock on /dev/sr0, missing codepage or helper program, or other error In some cases useful info is found in syslog - try  dmesg | tail  or so"
+2009-06-21T07:46:00.000Z	acedip	stroyan	this the output of "dmesg | tail -5" http://pastebin.com/m4fff1cf5
+2009-06-21T07:49:00.000Z	acedip		when i try to mount the cdrom with "sudo mount -t iso9660 /dev/sr0 /media/cdrom" it says "the "rong fs type, bad option, bad superblock on /dev/sr0, missing codepage or helper program, or other error In some cases useful info is found in syslog - try  dmesg | tail  or so", any help
+2009-06-21T07:50:00.000Z	stroyan	acedip	You could use the lshw package and command to confirm the device file for your cdrom drive.  And you could try different media for which you are more certain of the filesystem type and image integrity.
+2009-06-21T07:50:00.000Z	acedip		and the output of "dmesg | tail -5" http://pastebin.com/m4fff1cf5
+2009-06-21T07:55:00.000Z	acedip	stroyan	how do I comprehend the output of lshw, it says this about the cdrom http://pastebin.com/m3fbed5d5
+2009-06-21T07:58:00.000Z	stroyan	acedip	It certainly looks like /dev/sr0 should work for that sony dvd drive.  Perhaps you should be suspicious of the disc that you put into it.
+2009-06-21T07:58:00.000Z	acedip	stroyan	the dvd is fine
+2009-06-21T08:00:00.000Z	stroyan	acedip	A dvd is likely to be "udf" filesystem.  A cd is more likely to be "iso9660".  You said before that you had a "cdrom".
+2009-06-21T08:01:00.000Z	acedip	stroyan	err..its a dvd rom and i'm inserting a dvd
+2009-06-21T08:06:00.000Z	acedip	stroyan	well with udf mount option too, its giving the same error of wrong filesystem type
+2009-06-21T08:07:00.000Z	stroyan	acedip	At this point I would test with another disc.  And check the first one for scratches and smudges.
+2009-06-21T08:07:00.000Z	acedip	stroyan	well I've tested it with another disk too
+2009-06-21T08:08:00.000Z	stroyan	acedip	with another dvd using udf filesystem?
+2009-06-21T08:08:00.000Z	acedip	stroyan	yes
+2009-06-21T08:10:00.000Z	acedip	stroyan	well i tried with a few dvds, while I dint have problem mounting a cd
+2009-06-21T08:14:00.000Z	acedip	stroyan	is there a problem with the dvdrom, might it read a cd but not a dvd properly?
+2009-06-21T08:14:00.000Z	stroyan	acedip	I am running low on suggestions.  If you have a lot of hard disk space you could try copying the raw image to a file.  It may produce something you could loop mount.  It would probably produce some interesting errors. ;-)
+2009-06-21T08:16:00.000Z	acedip	stroyan	but how to copy something from the dvd if its not mounted?
+2009-06-21T08:16:00.000Z	stroyan	acedip	dd if=/dev/sr0 of=my.iso bs=1M     or just     cat /dev/sr0 > my.iso

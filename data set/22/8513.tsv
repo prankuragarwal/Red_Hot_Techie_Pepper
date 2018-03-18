@@ -1,0 +1,22 @@
+2005-11-03T13:57:00.000Z	firestorm		Yikes. I have /etc/apache, /etc/apache2, /etc/apache-perl and /etc/apache-ssl  .. I have since apt-get removed apache, apache-perl  and have apache-ssl start but telnet localhost 80 fails...apache2 doesn't start. Any hints?
+2005-11-03T13:58:00.000Z	HappyFool	firestorm	hrm. do you have any files like '/etc/init.d/apache*' ?
+2005-11-03T13:59:00.000Z	firestorm	HappyFool	yes, have /etc/init.d/{apache,apache2,apache-perl,apache-ssl}
+2005-11-03T13:59:00.000Z	HappyFool	firestorm	try '/etc/init.d/apache2 start'
+2005-11-03T14:00:00.000Z	firestorm	HappyFool	i did and it didn't do anything...solved it by editing the apache2 script, replaced /bin/sh -e with /bin/sh -x and saw that it expected /etc/default/apache to be set to '1' instead of '0'....how "intuitive" !
+2005-11-03T14:01:00.000Z	HappyFool	firestorm	uninstall them all (use apt-get remove --purge) and reinstall apache2
+2005-11-03T14:01:00.000Z	firestorm	HappyFool	if I do that, will it overwrite all the configuration changes i've made to /etc/apache2 tree?
+2005-11-03T14:01:00.000Z	HappyFool	firestorm	yip
+2005-11-03T14:01:00.000Z	HappyFool	firestorm	back them up first
+2005-11-03T14:02:00.000Z	firestorm	HappyFool	i've already uninstalled them albeit no --purge option....do I manually hafta rm -r /etc/{apache,apache-perl} instead?
+2005-11-03T14:03:00.000Z	HappyFool	firestorm	try redoing the remove, and use --purge (i know synaptic can remove config files after uninstallation -- i guess apt-get is the same)
+2005-11-03T14:03:00.000Z	firestorm	HappyFool	it aint, doesn't work :)
+2005-11-03T14:06:00.000Z	HappyFool	firestorm	i'm running out of ideas; can you run synaptic, and see if that will let you choose 'Mark for complete removal' on 'apache' or 'apache-perl' ?
+2005-11-03T14:07:00.000Z	firestorm	HappyFool	i got sick of it and did an rm -r of /etc/init.d, /etc/, /var/log   for apache, apache-perl  ...but I must say, I'm quite disappointed at apt/synaptic having apache, apache2, apache-perl, apache-ssl installed all at once
+2005-11-03T14:07:00.000Z	HappyFool	firestorm	you rm -rf'd /etc/init.d ?
+2005-11-03T14:07:00.000Z	firestorm	HappyFool	rm -r /etc/init.d/{apache,apache-perl}
+2005-11-03T14:08:00.000Z	HappyFool	firestorm	ah
+2005-11-03T14:08:00.000Z	firestorm	HappyFool	i assume that is all --purge does under the hood
+2005-11-03T14:08:00.000Z	HappyFool	firestorm	you can probably run apache and apache2 on different ports, so you might want both installed
+2005-11-03T14:08:00.000Z	HappyFool	firestorm	well, it might remove other mysterious files too, but i think that's the idea
+2005-11-03T14:39:00.000Z	HappyFool	firestorm	hrm, i can't see ssl support for apache2 either. odd
+2005-11-03T14:39:00.000Z	HappyFool	firestorm	oh, but the apache2 package depends on ssl - does it not maybe come with apache2 ?

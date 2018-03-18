@@ -1,0 +1,18 @@
+2008-10-02T08:55:00.000Z	Shak-		hey guys, I compiled a custom iwl4965 module (wifi) but its really unstable, any idea how I could load over the old one that came with the kernel?
+2008-10-02T08:56:00.000Z	usser	Shak-	how did u compile it?
+2008-10-02T08:56:00.000Z	usser	Shak-	using compat-wireless?
+2008-10-02T08:56:00.000Z	Shak-	usser	yep
+2008-10-02T08:56:00.000Z	usser	Shak-	so it was compat-wireless?
+2008-10-02T08:57:00.000Z	Shak-	usser	well I used compat-wireless to compile it so yes
+2008-10-02T08:57:00.000Z	usser	Shak-	do you still have the folder with the compat-wireless sources from which u installed?
+2008-10-02T08:57:00.000Z	Shak-	usser	yes I do
+2008-10-02T08:57:00.000Z	usser	Shak-	if u have it just do sudo make uninstall
+2008-10-02T08:57:00.000Z	Shak-		oh
+2008-10-02T08:57:00.000Z	usser	Shak-	from within it
+2008-10-02T08:58:00.000Z	Shak-	usser	then my old module will reload itself?
+2008-10-02T08:59:00.000Z	usser	Shak-	compat-wireless doesnt overwrite native modules it puts them in the update folder, and after you uninstall that folder will be deleted and the kernel will revert back to old modules
+2008-10-02T08:59:00.000Z	usser	Shak-	you'll have to rmmod and modprobe of course
+2008-10-02T08:59:00.000Z	Shak-	usser	ah I see, should I rmmod iwl4965 first?
+2008-10-02T08:59:00.000Z	Shak-		ok
+2008-10-02T08:59:00.000Z	Shak-		k here goes
+2008-10-02T09:00:00.000Z	usser	Shak-	yea rmmod iwl4945 mac80211 cfg80211 led_class in that order

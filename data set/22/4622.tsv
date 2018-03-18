@@ -1,0 +1,22 @@
+2007-12-21T20:29:00.000Z	gorilla3d		how do yo load a module into the kernel? modprobe?
+2007-12-21T20:31:00.000Z	wols_	gorilla3d	which module?
+2007-12-21T20:31:00.000Z	wols_	gorilla3d	NAMES. and what did you do after compiling it?
+2007-12-21T20:31:00.000Z	gorilla3d	wols_	nothing...
+2007-12-21T20:31:00.000Z	wols_	gorilla3d	you need to install it
+2007-12-21T20:32:00.000Z	wols_	gorilla3d	it needs ot end up somewhere in /lib/modules/
+2007-12-21T20:33:00.000Z	gorilla3d	wols_	rm -f /lib/modules/`uname -r`/kernel/drivers/media/video/gspca.ko
+2007-12-21T20:33:00.000Z	wols_	gorilla3d	why do you want to delete it?
+2007-12-21T20:33:00.000Z	gorilla3d	wols_	it did that.....
+2007-12-21T20:33:00.000Z	wols_	gorilla3d	what did that?
+2007-12-21T20:34:00.000Z	gorilla3d	wols_	make install, but yeah just dump the compiled files in /lib/modules
+2007-12-21T20:35:00.000Z	gorilla3d	wols_	it is install there hm.. /lib/modules/2.6.22-14-generic/ubuntu/media/gspcav1/gspca.ko & /lib/modules/2.6.22-14-generic/kernel/drivers/usb/media/gspca.ko
+2007-12-21T20:36:00.000Z	wols_	gorilla3d	so what's the problem now?
+2007-12-21T20:36:00.000Z	gorilla3d	wols_	and then sudo modprobe gspca.ko returns "FATAL: Module gspca.ko not found."
+2007-12-21T20:37:00.000Z	wols_	gorilla3d	depmod -a then try again
+2007-12-21T20:39:00.000Z	gorilla3d	wols_	same error...
+2007-12-21T20:39:00.000Z	wols_	gorilla3d	where exactly is your module. full path
+2007-12-21T20:40:00.000Z	gorilla3d	wols_	http://paste2.org/p/10893
+2007-12-21T20:41:00.000Z	wols_	gorilla3d	and your modprobe line?
+2007-12-21T20:41:00.000Z	gorilla3d	wols_	 sudo modprobe gspca.ko
+2007-12-21T20:41:00.000Z	wols_	gorilla3d	modprobe wants a module name, not a filename
+2007-12-21T20:42:00.000Z	gorilla3d	wols_	oh... <,< i knew that....

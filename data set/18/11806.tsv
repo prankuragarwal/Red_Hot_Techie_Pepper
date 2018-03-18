@@ -1,0 +1,18 @@
+2007-04-11T07:14:00.000Z	tatters		I got 1000 files without an extension, I need to add ,fcm to the end of each file, any quick way to do this other than manually
+2007-04-11T07:15:00.000Z	jrib	tatters	do you know regular expressions?  If so, you can use the 'rename' command.  A for loop would work too in that case
+2007-04-11T07:16:00.000Z	jrib	tatters	wait, did you mean file or file name?
+2007-04-11T07:17:00.000Z	jrib	tatters	yes, try: rename -n 's/$/.fcm/' *       if that looks right, get rid of the -n
+2007-04-11T07:20:00.000Z	tatters	jrib	thnx it looks good,, what does excluding the -n switch do ?
+2007-04-11T07:20:00.000Z	jrib	tatters	the -n makes it tell you what it will do without doing it.  Without the -n, it will actually do what it said
+2007-04-11T07:23:00.000Z	jrib	tatters	np
+2007-08-12T06:35:00.000Z	jrib	tatters	startup uses /etc/event.d/tty* I believe, see:
+2007-08-12T06:36:00.000Z	jrib	tatters	yeah, I mean't "upstart", not "startup"
+2007-08-12T06:36:00.000Z	tatters	jrib	thnx
+2008-11-18T18:28:00.000Z	jrib	tatters	apply the patch (see 'man patch') before you do dpkg-buildpackage.  You probably also want to run 'dch -i' and append ~tatters to the version.
+2008-11-18T18:29:00.000Z	tatters	jrib	why did u direct me to a link for apt-get, do we use that to apply a patch?
+2008-11-18T18:30:00.000Z	jrib	tatters	well without more context, I'm assuming you need to rebuild a package to apply the patch
+2008-11-18T18:30:00.000Z	tatters	jrib	I assumed a patch could be applied to a script without rebuilding?
+2008-11-18T18:31:00.000Z	jrib	tatters	"without more context"
+2008-11-18T18:31:00.000Z	tatters	jrib	said patch https://bugs.launchpad.net/ubuntu/+source/gzip/+bug/215863
+2008-11-18T18:32:00.000Z	jrib	tatters	you need to rebuild gzip
+2008-11-18T18:32:00.000Z	jrib	tatters	or whatever zgrep.in is in

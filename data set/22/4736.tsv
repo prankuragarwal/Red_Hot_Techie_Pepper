@@ -1,0 +1,22 @@
+2007-10-22T03:58:00.000Z	honeking		anyone know how to fix a sound problem where the volume control spits out this message when you try to open it: "No volume control GStreamer plugins and/or devices found."
+2007-10-22T04:00:00.000Z	honeking		okay, so noone knows how to fix the sound issue?
+2007-10-22T04:00:00.000Z	murkyMurk	honeking	try reinstalling asla
+2007-10-22T04:01:00.000Z	honeking	murkyMurk	I tried reinstalling alsa, do you think i should completely remove alsa and install again?
+2007-10-22T04:03:00.000Z	murkyMurk	honeking	that's what i'd do...i take it that it worked fine in fiesty?
+2007-10-22T04:04:00.000Z	honeking	murkyMurk	it worked until I installed a few things in synaptic that were graphics related
+2007-10-22T04:04:00.000Z	murkyMurk	honeking	have you been able to run alsamix from the CLi?
+2007-10-22T04:04:00.000Z	honeking	murkyMurk	no
+2007-10-22T04:04:00.000Z	murkyMurk	honeking	*a;samixer
+2007-10-22T04:05:00.000Z	murkyMurk	honeking	is that no you haven't tried or no it doesn't work?
+2007-10-22T04:05:00.000Z	honeking	murkyMurk	when i try to run alsamixer, it spits out this message in terminal: "alsamixer: function snd_ctl_open failed for default: No such device"
+2007-10-22T04:06:00.000Z	murkyMurk	honeking	ouch, looks like the device files no longer exist. Yep reinstall alsa...there might be a reconfigure, thingy
+2007-10-22T04:06:00.000Z	honeking	murkyMurk	also, when I go to System>Preferences>Sound there is no default sound card in the drop down menu
+2007-10-22T04:07:00.000Z	honeking	murkyMurk	i know that alsa is tied in with a bunch of other programs, would i have to delete all of them as well?
+2007-10-22T04:07:00.000Z	murkyMurk	honeking	alsa shoudl be an indepenent module...others depend on it but not it on them
+2007-10-22T04:08:00.000Z	honeking	murkyMurk	the reason why i ask is i went to uninstall alsa last night, and it had a list of like 20 progs it was going to delete
+2007-10-22T04:09:00.000Z	murkyMurk	honeking	yeah, i think synaptic tries to clear everything that depends on it as well....you're probably best off just forcing reinstall via apt-get install -f
+2007-10-22T04:11:00.000Z	murkyMurk	honeking	sudo dpkg-reconfigure linux-sound-base
+2007-10-22T04:13:00.000Z	honeking	murkyMurk	i'm going to try that, give me a second
+2007-10-22T04:13:00.000Z	murkyMurk	honeking	cool
+2007-10-22T04:15:00.000Z	honeking	murkyMurk	it still says the same thing when i try to open the volume control
+2007-10-22T04:15:00.000Z	murkyMurk	honeking	pooo. that's you left with no choice but a forced reinstall apt-get install als-utils -f etc

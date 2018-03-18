@@ -1,0 +1,19 @@
+2006-11-22T12:33:00.000Z	liri		it seems like something is either wrong with my cpu scaling or with my cpu itself...
+2006-11-22T12:34:00.000Z	liri		powernowd is running and i see my cpu *constantly* on 1ghz or 59% which is... ODD! any ideas?
+2006-11-22T12:36:00.000Z	segfault_	liri	why is that odd? and what cpu?
+2006-11-22T12:37:00.000Z	liri	segfault_	because it always moved around from 1gh to 1.66ghz but now it stays the same and i know its bad cause im having some issues like the laptop would freeze for a few seconds every like 15 minutes (happens both in windows and linux)
+2006-11-22T12:38:00.000Z	segfault_	liri	if same freezing issues in windows and linux sounds like a hardware issue
+2006-11-22T12:38:00.000Z	liri	segfault_	i agree but i need to debug it somehow to see where is it coming from since this happened out of the blue for me...
+2006-11-22T12:40:00.000Z	liri	segfault_	look at what i just found, i did chmod +s /usr/bin/cpufreq-selector and now i'm able to change the cpu frequency manually... the question is now, why isn't it changing dynamically? i have installed powernowd, maybe that interferes with cpufreqd or something like that?
+2006-11-22T12:41:00.000Z	segfault_	liri	u chk to see u ahve the correct modules loaded for ur cpu speed stepping?  also iirc cpufreqd is another speed step daemon u only need one, that or powernowd
+2006-11-22T12:43:00.000Z	liri	segfault_	lsmod | grep cpu shows: cpufreq_userspace cpufreq_stats freq_table cpufreq_powersave cpufreq_ondemand cpufreq_conservative
+2006-11-22T12:43:00.000Z	segfault_	liri	next thing to do is to make sure only one speed step daemon is running
+2006-11-22T12:44:00.000Z	liri	segfault_	you're correct about the two packages maybe... how do i check if cpufreqd is installed? i do have cpufrequtils installed.
+2006-11-22T12:46:00.000Z	segfault_	liri	run this dpkg -l | grep cpufreqd if u get output then cpufrqd is installed
+2006-11-22T12:47:00.000Z	liri	segfault_	i checked like this before, its not installed then. another odd thing is that i think cpu frequency isn't working cause if i manually change the cpu speed from the gnome applet i keep seeing cpu MHz: 1662.724 on /proc/cpuinfo...
+2006-11-22T12:51:00.000Z	liri	segfault_	i keep seeing this in /var/log/syslog: kernel: [17184616.160000]  psmouse.c: TouchPad at isa0060/serio4/input0 lost sync at byte 1
+2006-11-22T12:51:00.000Z	liri	segfault_	which is probably when the computer (mouse and keyboard) are freezing...
+2006-11-22T12:52:00.000Z	segfault_	liri	r u dapper or edgy?
+2006-11-22T12:53:00.000Z	liri	segfault_	dapper. my fresh install was from flight 7 and then i upgraded only some packages like kernel and others, didn't do an entire apt-get upgrade...
+2006-11-22T13:02:00.000Z	liri	segfault_	is there an easy way to see the cpu temp? maybe its over heated? (although it doesnt feel like it)
+2006-11-22T13:10:00.000Z	segfault_	liri	think u need lmsensors installed and configed for that

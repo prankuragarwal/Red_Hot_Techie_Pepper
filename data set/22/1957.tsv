@@ -1,0 +1,22 @@
+2009-11-09T23:42:00.000Z	arcanus		How can I set up automatically opening of a encrypted disk in this new fast-booting karmic? When booting without quiet and splash, the last thing i see befor the login manager kicks off is "Enter password for the disk DATA:" but it doesnt really give me a chance..
+2009-11-09T23:44:00.000Z	inivex	arcanus	you don't want it to automatically mount an encrypted drive
+2009-11-09T23:44:00.000Z	arcanus	inivex	I want it to if it asks me the password first
+2009-11-09T23:44:00.000Z	inivex		the passphrase would have to be stored plaintext for any utility to use it, defeating the purpose
+2009-11-09T23:45:00.000Z	arcanus	inivex	That is why i want it to ask me to input it first
+2009-11-09T23:45:00.000Z	inivex	arcanus	you have a partition that is encrypted, OTHER than the root partition?
+2009-11-09T23:46:00.000Z	arcanus	inivex	Yes, i have
+2009-11-09T23:46:00.000Z	inivex		good question... i encrypt everything except /boot, so it HAS to stop and ask me for passphrase
+2009-11-09T23:47:00.000Z	arcanus	inivex	I did that in 9.04 too, but i figured that the only thing I need to encrypt is the /home/ folder, since the rest is open source anyway. So I only encrypt swap and /home/
+2009-11-09T23:48:00.000Z	inivex	arcanus	i'm not sure about the implementation in linux, but sometimes the passphrase can be recovered from swap
+2009-11-09T23:48:00.000Z	inivex	arcanus	it's known as the cold boot attack
+2009-11-09T23:48:00.000Z	arcanus	inivex	that is why I encrypt swap aswell ;)
+2009-11-09T23:49:00.000Z	arcanus	inivex	Its hard to read something when the key is generated on boot for each session by /dev/urandom :-P
+2009-11-09T23:50:00.000Z	inivex	arcanus	are both home and swap on the same crypto disk?
+2009-11-09T23:51:00.000Z	arcanus	inivex	nope, different partitions, it would defeat the purpose of encryption if you can
+2009-11-09T23:51:00.000Z	inivex	arcanus	i'd hate to have to put in multiple passphrases EVERY single boot
+2009-11-09T23:53:00.000Z	inivex	arcanus	the way i have it set up is with 2 logical partitions, boot and crypt. on the crypto disk i have an lvm disk, and on that i have swap and /
+2009-11-09T23:54:00.000Z	arcanus	inivex	That is why I encrypted root and home with 2048bit generated keys and added them to a small keys partition which I had a script decrypt the keys partition, then use the keys in that partition to open the home and root partition, then I closed the keys partition before booting.
+2009-11-09T23:55:00.000Z	arcanus	inivex	There is no reason not to encrypt swap as a seperate partition with a generated key for each boot. Adds a layer of security
+2009-11-09T23:55:00.000Z	arcanus	inivex	Should do the same with /tmp rly, but im not sure how much space you would need on tmp...
+2009-11-09T23:56:00.000Z	inivex	arcanus	i have to admit, i'm a little bit lost by your setup. i'm sorry i can't be of more help
+2009-11-09T23:57:00.000Z	arcanus	inivex	np :)

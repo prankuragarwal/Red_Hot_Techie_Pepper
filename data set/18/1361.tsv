@@ -1,0 +1,18 @@
+2011-09-27T23:42:00.000Z	Tectu		hi. Quick Question: Can i use ubuntu server on a machine with two CPUs? will they both be used?
+2011-09-27T23:43:00.000Z	Tectu		thank you iceroot and wcchandler
+2011-09-27T23:44:00.000Z	b3ta	Tectu	make sure you're using an SMP kernel tho
+2011-09-27T23:44:00.000Z	Tectu	b3ta	is that one on a regular ubuntu server 10.04?
+2011-09-27T23:44:00.000Z	b3ta	Tectu	it should be.  if you liveboot, 'cat /proc/cpuinfo' and if you see more you're good
+2011-09-27T23:45:00.000Z	Tectu	b3ta	why dualcore? do you mean that that is good or not? i guess he uses now both CPUs, right?
+2011-09-27T23:46:00.000Z	b3ta	Tectu	yeah
+2011-09-27T23:47:00.000Z	b3ta	Tectu	rule of thumb for servers - if it aint broke, dont apt-get upgrade
+2011-09-27T23:48:00.000Z	Tectu	b3ta	allready know that... i am just always afraid of security...
+2011-09-27T23:48:00.000Z	b3ta	Tectu	don't be.  only allow the ports required
+2011-09-27T23:49:00.000Z	Tectu	b3ta	yeah, but the ports are a thing for the NAT, not for ubuntu server, right?
+2011-09-27T23:49:00.000Z	b3ta	Tectu	is this an internal server or an outward facing one?
+2011-09-27T23:50:00.000Z	b3ta	Tectu	only update the necessary packages of the services that are exposed to the outside world
+2011-09-27T23:50:00.000Z	Tectu	b3ta	its an outward facing server
+2011-09-27T23:51:00.000Z	b3ta	Tectu	if you have ssh available outside, make sure your /etc/ssh/sshd_config is locked down.  if you use apache, make sure httpd.conf is locked down.  update just those packages if those are the only ones being accessed.
+2011-09-27T23:52:00.000Z	b3ta	Tectu	also, if you offer ssh I would make it jailed shell only
+2011-09-27T23:52:00.000Z	Tectu	b3ta	what do you mean with lock sshd_config?
+2011-09-27T23:53:00.000Z	b3ta	Tectu	make sure you deny root and only allow certain users to login.  that way if there's any rogue accounts active, they cannot be accessed

@@ -1,0 +1,18 @@
+2006-12-03T09:52:00.000Z	stepansta1		i am a new bee, quick question, how do i change to 24 bit?
+2006-12-03T09:54:00.000Z	stepansta1		how do i change to  24-bit?
+2006-12-03T09:54:00.000Z	jrib	stepansta1	sudo dpkg-reconfigure xserver-xorg  will let you do that I believe.  Did exporting the variable not work?
+2006-12-03T09:55:00.000Z	jrib	stepansta1	run this to see your current setting:  xdpyinfo| grep -i 'depth of root'
+2006-12-03T09:55:00.000Z	stepansta1	jrib	i know just about nothing about linux, my second day using it;)
+2006-12-03T09:55:00.000Z	jrib	stepansta1	type in my last command with xdpyinfo first to check what it is
+2006-12-03T09:56:00.000Z	jrib	stepansta1	yeah, go ahead and run the first command then
+2006-12-03T09:58:00.000Z	stepansta1	jrib	does it matter what driver i choose?
+2006-12-03T09:58:00.000Z	jrib	stepansta1	yes
+2006-12-03T09:59:00.000Z	stepansta1	jrib	what if im stupid and dont know which one i have?
+2006-12-03T09:59:00.000Z	jrib	stepansta1	open /etc/X11/xorg.conf in a text editor and see what you have now
+2006-12-03T10:00:00.000Z	jrib	stepansta1	should be under Section "Device"
+2006-12-03T10:02:00.000Z	stepansta1	jrib	if i just change it their, will it do anything (in the text)
+2006-12-03T10:04:00.000Z	jrib	stepansta1	it only writes the changes at the end
+2006-12-03T10:06:00.000Z	jrib	stepansta1	you can try that if you feel comfortable doing so, notice that is in the "Screen" section.  Be sure to make a backup.  If X does not start after your change do you know how to get to a tty and restore the backup?
+2006-12-03T10:06:00.000Z	stepansta1	jrib	no but i think this method will be easier for me, ill take the risk
+2006-12-03T10:07:00.000Z	stepansta1	jrib	hopefully, ill see you in a bit
+2006-12-03T10:07:00.000Z	jrib	stepansta1	if X does not start, press ctrl-alt-f1, that gets you a terminal.  To make the backup,  sudo cp /etc/X11/xorg.conf /etc/X11/xorg.conf.backup

@@ -1,0 +1,23 @@
+2005-09-20T08:06:00.000Z	anthony		I've been having trouble changing the permissions and owner of files.  I have an interchange partition for working with things in both Linux and windows, but I've found that when I make a file in Windows, put it in that partition, and boot Linux, it will only allow root to access the file with write permissions.  I've tried actually logging in as root (beyond just sudo and su -), and when I try to change permissions from the command
+2005-09-20T08:06:00.000Z	anthony		line, it seems to work, but does not actually, and chown replies that it is unable to do that.
+2005-09-20T08:06:00.000Z	anthony		Any ideas?
+2005-09-20T08:07:00.000Z	anthony		No, the partition is a FAT.
+2005-09-20T08:07:00.000Z	anthony		However, the main drive of Windows is NTFS.  Would that matter?
+2005-09-20T08:08:00.000Z	intelikey	anthony	it sounds like a mount issue.   rather than a file permissions issue.
+2005-09-20T08:09:00.000Z	intelikey	anthony	what fs is the interchange partition
+2005-09-20T08:10:00.000Z	intelikey	anthony	add umask=000 to the line in /etc/fstab  that discribes that partition
+2005-09-20T08:11:00.000Z	intelikey	anthony	you should "man fstab "  first.
+2005-09-20T08:12:00.000Z	anthony	intelikey	Where on the line should that go?
+2005-09-20T08:12:00.000Z	intelikey	anthony	you should "man fstab "  first.
+2005-09-20T08:21:00.000Z	anthony	intelikey	I looked in the man page, and unfortunately I don't really understand it, nor did I see any mention of "umask".  I'm guessing this information is all in there, but I'm missing it somehow.
+2005-09-20T08:24:00.000Z	anthony	intelikey	Any more suggestions if I don't understand the man?
+2005-09-20T08:25:00.000Z	intelikey	anthony	put "umask=000" next to the last entry in the line in fstab
+2005-09-20T08:26:00.000Z	intelikey	anthony	/dev/hdc1 /mnt/disk vfat  defaults,umaks=000 0 0  <--- something along that line.
+2005-09-20T08:29:00.000Z	anthony	intelikey	Okay, I've done that and saved it.
+2005-09-20T08:29:00.000Z	intelikey	anthony	umount <mount_point_of_that_partition>
+2005-09-20T08:29:00.000Z	intelikey	anthony	then      mount <mount_point_of_that_partition>
+2005-09-20T08:31:00.000Z	anthony	intelikey	[mntent] : line 7 in /etc/fstab is bad
+2005-09-20T08:33:00.000Z	anthony	intelikey	/dev/sda5       /interchange    vfat    defaults        umask=000       0       0
+2005-10-31T11:06:00.000Z	intelikey	anthony	remember "apt-cache search <blah> "    :)
+2005-10-31T11:06:00.000Z	intelikey	anthony	keeps you from feeling that way.... :)
+2005-10-31T11:07:00.000Z	intelikey	anthony	yeah i think it will print "RAW"

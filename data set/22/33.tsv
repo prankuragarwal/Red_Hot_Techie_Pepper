@@ -1,0 +1,22 @@
+2012-10-28T04:15:00.000Z	johnjacobjingerh		how might i move a swap partition to the end of a disk?
+2012-10-28T04:15:00.000Z	johnjacobjingerh		right now i have it smack between one partition and one unallocated space
+2012-10-28T04:16:00.000Z	johnjacobjingerh		how do I tell ubuntu to use that as the SWAP?
+2012-10-28T04:16:00.000Z	johnjacobjingerh		gparted
+2012-10-28T04:18:00.000Z	PatrickDickey	johnjacobjingerh	create the partition and format it as swap. Then use the sudo swapoff -a command to shut your curent swap off, and then sudo swapon /dev/sdx (where x is the partition you just created). Once you know that the new swap works, change the information in /etc/fstab.
+2012-10-28T04:18:00.000Z	johnjacobjingerh		ah ok
+2012-10-28T04:18:00.000Z	johnjacobjingerh		thanks patrickdickey i'll give that a shot as soon as my system is finishing being installed
+2012-10-28T04:18:00.000Z	PatrickDickey	johnjacobjingerh	I'd close everything that you don't need open before you do the swapoff and swapon commands though. Otherwise you could have problems.
+2012-10-28T04:19:00.000Z	PatrickDickey	johnjacobjingerh	You do know that it won't matter which position the swap is in, right? it just has to be there.
+2012-10-28T04:20:00.000Z	johnjacobjingerh	PatrickDickey	yes i know, but it's setting between my "/" partition and a 800GB of unallocated space
+2012-10-28T04:20:00.000Z	johnjacobjingerh		it's preventing me from extending my "/" to the 800GB space
+2012-10-28T04:20:00.000Z	PatrickDickey	johnjacobjingerh	Ahhh. that explains a lot then.
+2012-10-28T04:20:00.000Z	johnjacobjingerh		yea
+2012-10-28T04:21:00.000Z	johnjacobjingerh		i didnt want a second partition
+2012-10-28T04:21:00.000Z	PatrickDickey	johnjacobjingerh	after you do the swapoff and swapon commands, then use gparted to remove the swap between the two partitions. And then resize it.
+2012-10-28T04:21:00.000Z	PatrickDickey	johnjacobjingerh	you're doing a fresh install right now, correct?
+2012-10-28T04:21:00.000Z	johnjacobjingerh		yes PatrickDickey
+2012-10-28T04:22:00.000Z	johnjacobjingerh		but i'm midway through when i realized what i did
+2012-10-28T04:22:00.000Z	johnjacobjingerh		so i dont want to have to stop it
+2012-10-28T04:22:00.000Z	PatrickDickey	johnjacobjingerh	there's a much easier but more boring way to do it then. ;-) When this installation is done, redo the installation. Choose the option to "Use the entire drive".
+2012-10-28T04:22:00.000Z	johnjacobjingerh		i'm just gonna change it after the fact
+2012-10-28T04:22:00.000Z	johnjacobjingerh	PatrickDickey	yea i guess... lol

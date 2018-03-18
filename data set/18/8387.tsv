@@ -1,0 +1,18 @@
+2007-08-27T12:27:00.000Z	jmd1		I changed a host to use a static ip and now have some problems. It responds to ping and can ping other hosts on the network. I can ssh to it (again from the internal network), though login takes several extra seconds. However, I cannot ping anything out on the internet, or get to the web, etc. What should I do to figure out where the problem is?
+2007-08-27T12:28:00.000Z	printk	jmd1	probably not resolving.  Need to add your namserver in /etc/resolv.conf
+2007-08-27T12:28:00.000Z	jmd1	printk	I already checked that
+2007-08-27T12:28:00.000Z	jmd1	printk	thanks though
+2007-08-27T12:28:00.000Z	printk	jmd1	can you ping 4.2.2.2 ?
+2007-08-27T12:28:00.000Z	printk	jmd1	or any other "outside" public IP?
+2007-08-27T12:31:00.000Z	jmd1	printk	nope, I can't ping anything "outside"
+2007-08-27T12:31:00.000Z	printk	jmd1	did you add your gateway or your default route?  does "netstat -rn" show it?
+2007-08-27T12:32:00.000Z	jmd1	printk	yes, I did. The output of `netstat -rn` is identical on machine I'm typing from (a host on the same network, but using dhcp)
+2007-08-27T12:33:00.000Z	printk	jmd1	and can you ping the gateway?
+2007-08-27T12:33:00.000Z	jmd1	printk	yes.
+2007-08-27T12:35:00.000Z	jmd1	printk	yes, I can ping the default gateway. (just in case you missed it during the flood)
+2007-08-27T12:35:00.000Z	printk	jmd1	that's completely weird.  i'm assuming your gateway is your router or dsl or cable modem device?  Some reason it's not routing for that box.
+2007-08-27T12:36:00.000Z	jmd1	printk	yeah, that's right.
+2007-08-27T12:38:00.000Z	jmd1	printk	Thanks for your help, I'm going to try power cycling the router.
+2007-08-27T12:38:00.000Z	printk	jmd1	np
+2007-08-27T12:43:00.000Z	jmd1	printk	do you think a reasonable idea is, the router (being a pos rented from the cable company) will only do nat for ips it gives out with dhcp?
+2007-08-27T12:44:00.000Z	printk	jmd1	yah that's what i was thinking.  def possible

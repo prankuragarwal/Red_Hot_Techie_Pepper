@@ -1,0 +1,23 @@
+2011-02-24T20:47:00.000Z	pw-toxic		hi
+2011-02-24T20:47:00.000Z	pw-toxic		i want to create a new partition on a 2TB drive, but i have heard about a sector size issue
+2011-02-24T20:47:00.000Z	pw-toxic		can someone tell me more about this?
+2011-02-24T20:48:00.000Z	compdoc	pw-toxic	its a 4k sector drive? most new ones are. you have to concern yourself with alignment
+2011-02-24T20:48:00.000Z	pw-toxic	compdoc	how do i know what sectorsize i have?
+2011-02-24T20:49:00.000Z	compdoc	pw-toxic	what model drive?
+2011-02-24T20:49:00.000Z	pw-toxic	compdoc	hitachi 2TB
+2011-02-24T20:51:00.000Z	compdoc	pw-toxic	alignment is easy to do - the latest gparted does it automatically. you just leave 1meg of free space before the first partition
+2011-02-24T20:51:00.000Z	pw-toxic	compdoc	but i will work with fdisk and mdadm since i want to create a mdadm raid1 software raid
+2011-02-24T20:53:00.000Z	compdoc	pw-toxic	google 4K-sector drives and Linux
+2011-02-25T19:21:00.000Z	compdoc	pw-toxic	no hidden files or directories?
+2011-02-25T19:22:00.000Z	compdoc	pw-toxic	that is pretty bad
+2011-02-25T19:23:00.000Z	compdoc	pw-toxic	what does the disk utility benchmark for each array show?
+2011-02-25T19:24:00.000Z	pw-toxic	compdoc	what is this tool and how can i install it?
+2011-02-25T19:24:00.000Z	compdoc	pw-toxic	it comes with the gonome desktop. try the command:  palimpsest
+2011-02-25T19:26:00.000Z	compdoc	pw-toxic	benchmarks - tests the speed of the arrays to see which is the slowest
+2011-02-25T19:26:00.000Z	compdoc	pw-toxic	did you align the partition on the new array?
+2011-02-25T19:26:00.000Z	pw-toxic	compdoc	align?
+2011-02-25T19:28:00.000Z	pw-toxic	compdoc	"The disk seems to have usage 'filesystem' - write benchmarking requries the disk to be completley empty"   why cant i make read write tests when the partition isnt completley empty?
+2011-02-25T19:28:00.000Z	compdoc	pw-toxic	yeah, most large drives use 4k sectors, and if you dont create the first partition correctly, the speed suffers greatly, or so Im told. the latest gparted creates them correctly now, as long as you accept the defaults
+2011-02-25T19:28:00.000Z	compdoc	pw-toxic	just do a read test
+2011-02-25T19:29:00.000Z	pw-toxic	compdoc	i create the partition with mkfs.ext4 manually
+2011-02-25T19:29:00.000Z	pw-toxic	compdoc	a read test shows 90MB/s for my raid1

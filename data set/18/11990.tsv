@@ -1,0 +1,18 @@
+2006-12-17T11:20:00.000Z	owh	stefg	How do you get fried fat drives? Are you talking about the names, corruption, or something else?
+2006-12-17T11:22:00.000Z	stefg	owh	dosfsck during boot in edgy/dapper and windows chkdsk can't obviously not agree on what a fat32 filesystem is... so if don't change the default behaviour of fsck'ing the fat drives at boot, dosfsck corrupt the drives
+2006-12-17T11:23:00.000Z	owh	stefg	Could it be that fcsk, or dosfsck are checking your drive as fat16, rather than fat32, and could this be caused by an fstab entry where you've marked the drive as fat, rather than vfat?
+2006-12-17T11:24:00.000Z	stefg	owh	i don't care /what/ dosfsck does wrong... i just mark all fat-drives as 0 0 in /etc/fstab
+2006-12-17T11:26:00.000Z	owh	stefg	My point is that the fstab might be tripping you up, causing the fsck on boot to run with the wrong options, thus "corrupting" your partition, rather than the right thing, so perhaps you should have a look. I'd be surprised if dosfsck is actually doing something wrong.
+2006-12-17T11:39:00.000Z	owh	stefg	And looking at the duplicate bugs, the cause is exactly what I suspected, a fat32 partition being treated as fat16.
+2006-12-17T11:39:00.000Z	owh	stefg	Heh :-)
+2006-12-17T11:28:00.000Z	stefg	owh	no, my fstab is alright... dosfsck tripps, by claiming lost clusters and 'repairing' (actually destroying) files... and this is a default behavior.
+2006-12-17T11:29:00.000Z	owh	stefg	That sounds wrong to me. I'm not doubting your report, but fat has been around for a looooong time and was from memory the first file system used under linux (I might be mistaken), so the behaviour you're describing just sounds completely wrong.
+2006-12-17T11:30:00.000Z	stefg	owh	It *is* completly wrong... but i stopped complaining about edgy bugs a while ago, just finding my silent workarounds
+2006-12-17T11:34:00.000Z	owh	stefg	Hmm, did you see bug #48806?
+2006-12-17T11:36:00.000Z	stefg	owh	this is a Launchpad bug number, not a bugzilla bugnumber, huh?
+2006-12-17T11:36:00.000Z	owh	stefg	https://bugs.launchpad.net/distros/ubuntu/+source/sysvinit/+bug/48806
+2006-12-17T11:37:00.000Z	stefg	owh	hit it on the spot... i too reported a bug some time ago, but this would have been a duplicate
+2006-12-17T11:38:00.000Z	owh	stefg	Did you see the comments about the 0 in column 6?
+2006-12-17T11:39:00.000Z	stefg	owh	The reason is probably that I always do a /server/-install and then dpkg --set-selections... there might be a different default for server and desktop-installs
+2006-12-17T11:40:00.000Z	owh	stefg	I'm going to have a little chat in #ubuntu-bugs about this.
+2006-12-17T11:41:00.000Z	stefg	owh	i'll join in, but will be eating :-)

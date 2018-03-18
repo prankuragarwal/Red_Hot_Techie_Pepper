@@ -1,0 +1,19 @@
+2008-09-29T22:51:00.000Z	silverpower		Is there a reason why the manual partitioner needs to sanitize my partition table? I hid my NTFS partition for a *reason* - to keep the XP installer from messing with it.
+2008-09-29T22:53:00.000Z	silverpower		Instead the Ubuntu (kubuntu 8.04) installer decides to shrink the extended partition to perfectly fit the Linux partitions, and deletes my NTFS partition.
+2008-09-29T22:54:00.000Z	scampbell	silverpower	if you did something to obscure a partition from the partition table then it's probably gonna get hosed when something else manipulates the partition table.
+2008-09-29T22:55:00.000Z	silverpower	scampbell	I set the hidden flag, which changed the partition type to a 'hidden' but still valid entry.
+2008-09-29T22:57:00.000Z	scampbell	silverpower	isn't 'hidden partition' a microsoft concept and not actualy a function of standard partition table.  do   fdisk -l /dev/hda  (assuming hda is the disk in question ) and tell us if you see the partition.
+2008-09-29T22:58:00.000Z	silverpower	scampbell	that's the problem. Ubuntu deleted the damn thing and then shrunk my extended partition to 'free' the empty space.
+2008-09-29T23:00:00.000Z	silverpower	scampbell	alternate partition types.
+2008-09-29T23:01:00.000Z	scampbell	silverpower	If it was just a parition type then it wouldn't delete it.  Unknown partitions are definately left alone. It had to be 'not in the parition' table.  But let me continue to try to find reference, there may be a way out.
+2008-09-29T23:03:00.000Z	silverpower	scampbell	the partition in question is a logical partition within an extended partition - but the extended partition has been shrunk to 'free' this 'free space'.
+2008-09-29T23:06:00.000Z	silverpower	scampbell	Fedora's variant doesn't do this - all I wanted to do was set the mount points. I didn't want it messing with my partitions in the first place.
+2008-09-29T23:10:00.000Z	scampbell	silverpower	don't know what to tell you. I've not seen any paritioners mangle the table unless told to.  I'm guessing you have no backup.
+2008-09-29T23:10:00.000Z	silverpower	scampbell	not for the majority of the data, no.
+2008-09-29T23:12:00.000Z	scampbell	silverpower	yeah, you could actually allocate to an extended but then you couldn't boot off it anyway.
+2008-09-29T23:13:00.000Z	silverpower	scampbell	it's a data partition, not OS (the boot partitions for XP and Linux are elsewhere). :)
+2008-09-29T23:13:00.000Z	scampbell	silverpower	you can zap one of the primaries for ubuntu and put in the NTFS to recover your data.   The rude statement "Always backup first" is already ringing in you ears so I won't say it :)
+2008-09-29T23:14:00.000Z	scampbell	silverpower	as long as the start and end cylinders are correct you should be able to do it.
+2008-09-29T23:18:00.000Z	scampbell	silverpower	how many partitions on that disk now and is one of them an extended?
+2008-09-29T23:23:00.000Z	silverpower	scampbell	okay, my table's sane again but I lost my actual XP partition.
+2008-09-29T23:34:00.000Z	silverpower	scampbell	thanks for the help - I'm suddenly reminded just why I hate the Intel partition table design, though. :p

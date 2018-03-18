@@ -1,0 +1,19 @@
+2006-04-03T16:38:00.000Z	damousys		hey peeps
+2006-04-03T16:40:00.000Z	damousys		ive got a problem i accedently chowned /etc/run/sudo to www-data
+2006-04-03T16:40:00.000Z	damousys		how can i change that?
+2006-04-03T16:41:00.000Z	redguy	damousys	/etc/run/sudo?? you could propably change it when root, if sudo is broken now boot in the emergency mode
+2006-04-03T16:45:00.000Z	damousys	redguy	- owke and what should i do when i am in emergency mode ?
+2006-04-03T16:46:00.000Z	redguy	damousys	chown it to root. when you boot in the rescue mode you will be root, so you don't need to use sudo.
+2006-04-03T16:47:00.000Z	redguy	damousys	note that there is no /erc/run/sudo on my system. Maybe you meant /var/run/sudo ?
+2006-04-03T16:48:00.000Z	damousys	redguy	- yes i meant @ var owke but ive got a problem with it it is a server @ datacenter so and no X
+2006-04-03T16:48:00.000Z	damousys	redguy	- how can i reboot
+2006-04-03T16:49:00.000Z	redguy	damousys	hmm, no sudo you say
+2006-04-03T16:49:00.000Z	damousys	redguy	- yep
+2006-04-03T16:50:00.000Z	redguy	damousys	you should be able to reboot it when you hit ctrl-alt-del on a keyboard attached to the box
+2006-04-03T16:52:00.000Z	redguy	damousys	well, how do you intend to select anything in GRUB if youre not physically at the box?
+2006-04-03T16:53:00.000Z	redguy	damousys	no sudo at all? try sudo -u www-data -i
+2006-04-03T16:54:00.000Z	redguy	damousys	or sudo -u www-data chmod root:root /var/run/sudo
+2006-04-03T16:54:00.000Z	redguy	damousys	maybe sudo will let you su to www-data
+2006-04-03T16:55:00.000Z	redguy	damousys	try the sudo with chmod, this might work
+2006-04-03T16:58:00.000Z	redguy	damousys	you still there?
+2006-04-03T16:58:00.000Z	redguy	damousys	no luck with sudo -u www-data?

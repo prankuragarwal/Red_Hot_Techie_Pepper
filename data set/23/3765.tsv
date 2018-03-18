@@ -1,0 +1,23 @@
+2010-01-12T01:10:00.000Z	nascentmind		 hi. in ubuntu hardy when i try to add a user to a group why can't i see www-data group?
+2010-01-12T01:11:00.000Z	jrib	nascentmind	probably because it's a system group
+2010-01-12T01:13:00.000Z	nascentmind	jrib	what's system group have to do with user joining it?
+2010-01-12T01:14:00.000Z	jrib	nascentmind	you are using the gui right?
+2010-01-12T01:14:00.000Z	nascentmind	jrib	yes i am using gui
+2010-01-12T01:15:00.000Z	jrib	nascentmind	I imagine it's an attempt to keep the interface simple.  User's shouldn't generally be part of system groups
+2010-01-12T01:16:00.000Z	nascentmind	jrib	well when i have set the user as a admin atleast i have to see the groups.
+2010-01-12T01:29:00.000Z	jrib	nascentmind	huh?
+2010-01-12T01:30:00.000Z	nascentmind	jrib	the user in the admin group. so he should atleast be able to see the system groups right?
+2010-01-12T01:31:00.000Z	jrib	nascentmind	shouldn't really matter.  If it's not showing them to you, it's because that's how the program is written.  It provides a checklist for some like (admin etc.)
+2010-01-12T01:32:00.000Z	jrib	nascentmind	but can I ask why you want the user to be in www-data?
+2010-01-12T01:34:00.000Z	nascentmind	jrib	if a developer wants to edit html files in /var/www i would prefer all the files are owned by www-data and the user be in www-data group.
+2010-01-12T01:34:00.000Z	jrib	nascentmind	that's really not best-practice, you want www-data to only be able to write where apache really *needs* to
+2010-01-12T01:36:00.000Z	nascentmind	jrib	i didn't get you. what do you mean by "write where apache really needs to"?
+2010-01-12T01:36:00.000Z	jrib	nascentmind	apache runs as www-data.  If you give www-data write permissions, then apache can write to the file
+2010-01-12T01:38:00.000Z	jrib	nascentmind	you should create some other group like "www-editors", add your users to that, and use that instead.  If you have a file that you need apache to be able to write to (e.g. a wiki), then let www-data have permission
+2010-01-12T01:38:00.000Z	nascentmind	jrib	ok so i would just put the files in /var/www give read permissions in /var/www add the user to www-data. is that fine? the user does dev of pages in his own directory.
+2010-01-12T01:38:00.000Z	nascentmind	jrib	yes i have a wiki too.
+2010-01-12T01:38:00.000Z	jrib	nascentmind	you're missing the point
+2010-01-12T01:39:00.000Z	jrib	nascentmind	you don't want apache to be able to write to randompage.html because there's no reason for it to ever do so
+2010-01-12T01:39:00.000Z	jrib	nascentmind	this is tangential to your original question
+2010-01-12T01:41:00.000Z	nascentmind	jrib	so i should be setting /var/www to www-editors group and www-data user?
+2010-01-12T01:41:00.000Z	jrib	nascentmind	no :/

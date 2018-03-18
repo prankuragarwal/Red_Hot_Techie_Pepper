@@ -1,0 +1,22 @@
+2007-07-27T16:39:00.000Z	slabby		How do I give an account write access to /var/www  ??
+2007-07-27T16:39:00.000Z	Nick_Hill	slabby	Add the user to group www and chmod 775 /var/www
+2007-07-27T16:41:00.000Z	Nick_Hill	slabby	scratch that. chown www-data:www-data /var/www ...
+2007-07-27T16:42:00.000Z	Nick_Hill	slabby	then add the user to group www-data  .. as one way to do it.
+2007-07-27T16:42:00.000Z	Nick_Hill	slabby	there is no group www.
+2007-07-27T16:48:00.000Z	Nick_Hill	slabby	chown -R www-data:www-data /var/www ; chmod 775 /var/www ; usermod -a -G www-data webftp
+2007-07-27T16:49:00.000Z	Nick_Hill	slabby	So you will be changing ownership of everything under /var/www to www-data. Then making www-data group writable (by members of www-data) then adding www-data as a supplementary group to webftp.
+2007-07-27T05:00:00.000Z	Nick_Hill	slabby	can you write to /var/www even if not writing to directories within there?
+2007-07-27T05:02:00.000Z	Nick_Hill	slabby	can you su webftp?
+2007-07-27T05:05:00.000Z	Nick_Hill	slabby	copy the contents of /etc/group and output of ls -lR /var/www and ls -ld /var/www to pastebin then give me link
+2007-07-27T05:06:00.000Z	Nick_Hill	slabby	Also, consider looking at the rute tutorial. Gives a good into to unix file permissions. In the longer term, you'll want to understand them. http://rute.2038bug.com/rute.html.gz
+2007-07-27T05:14:00.000Z	Nick_Hill	slabby	Ah, it looks as though none of the commands have had an effect.
+2007-07-27T05:16:00.000Z	Nick_Hill	slabby	the usermod should add webftp to the www-data line in /etc/group. chmod -R www-data:www-data /var/www should change ownership of the folder www-data and everything below it.
+2007-07-27T05:17:00.000Z	Nick_Hill	slabby	the chmod 775 /var/www makes the folder group-writable so other members of the www-data group can write to that folder.
+2007-07-27T05:18:00.000Z	Nick_Hill	slabby	Try going to root sudo su then running each command in turn.
+2007-07-27T05:18:00.000Z	Nick_Hill	slabby	Yes.
+2007-07-27T05:19:00.000Z	Nick_Hill	slabby	that'll give you a root command prompt ending in # . You can then put commands in directly. When finished, type ctrl+d to log-out of root
+2007-07-27T05:22:00.000Z	Nick_Hill	slabby	good. Can you see webftp next to www-data in /etc/group?
+2007-07-27T05:24:00.000Z	Nick_Hill	slabby	Great!
+2007-07-27T05:24:00.000Z	Nick_Hill	slabby	It means Apache can write to the folder. But that isn't usually particularly unsafe.
+2007-07-27T05:28:00.000Z	Nick_Hill	slabby	Apache runs as www-data. So if you give write access to www-data, apache, or processes run by apache can write to it.
+2007-07-27T05:29:00.000Z	Nick_Hill	slabby	You're welcome!

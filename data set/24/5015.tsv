@@ -1,0 +1,24 @@
+2006-11-14T07:02:00.000Z	boozey		ok i installed apache on linux it installed but its in system directory, and i created a user account in linux in /home/test/ so how would i config apache to /home/test/webserver
+2006-11-14T07:03:00.000Z	Kingsqueak	boozey	you would define a <Directory> container for that dir
+2006-11-14T07:04:00.000Z	boozey	Kingsqueak	can i do this for many user accounts?
+2006-11-14T07:04:00.000Z	Kingsqueak	boozey	there's a default in Apache that allows for /home/user/public_html already, not sure if you knew
+2006-11-14T07:04:00.000Z	Kingsqueak	boozey	that would equate to http://that.server/~user/
+2006-11-14T07:05:00.000Z	Kingsqueak	boozey	it's not enabled by default, but you can just uncomment it, UserDirs or something like that
+2006-11-14T07:08:00.000Z	Kingsqueak	boozey	http://httpd.apache.org/docs/2.2/mod/mod_userdir.html#userdir
+2006-11-14T07:11:00.000Z	boozey	Kingsqueak	WOW THANKS!
+2006-11-14T07:11:00.000Z	boozey		i did not know though
+2006-11-14T07:11:00.000Z	Kingsqueak	boozey	yeah figured :-) it's a handy thing
+2006-11-14T07:11:00.000Z	boozey		soon as i created public_html in the folder
+2006-11-14T07:11:00.000Z	boozey		it readed it :D
+2006-11-14T07:11:00.000Z	Kingsqueak	boozey	poking around that Directives section on the site is very useful stuff
+2006-11-14T07:12:00.000Z	boozey	Kingsqueak	what would be the best to use for a ftp server to?
+2006-11-14T07:13:00.000Z	Kingsqueak	boozey	I would recommend against ftp unless you must have it, it has too many issues.  If you absolutely must have incoming files, I would say proftpd and keep it totally seperate from actual local user accounts for auth
+2006-11-14T07:13:00.000Z	Kingsqueak	boozey	proftpd or wu-ftpd can work, you can set them up to use their own user db so they aren't actual user accounts on the system
+2006-11-14T07:18:00.000Z	boozey	Kingsqueak	what is a ftp server, that reads by user accounts on system and sets the ftp to the user home folder
+2006-11-14T07:18:00.000Z	boozey		by account
+2006-11-14T07:19:00.000Z	Kingsqueak	boozey	apt-cache search ftpd
+2006-11-14T07:19:00.000Z	Kingsqueak	boozey	look at lukemftpd, what you want is a 'chroot' to homedir, it probably does that, several do
+2006-11-14T07:20:00.000Z	boozey	Kingsqueak	deso proftpd do it?
+2006-11-14T07:20:00.000Z	boozey		does*
+2006-11-14T07:20:00.000Z	Kingsqueak	boozey	it will, but proftpd and wu-ftpd do a TON more and would be more complicated to setup
+2006-11-14T07:20:00.000Z	Kingsqueak	boozey	one of many reasons ftp isn't good with user accounts is the passwords are in plain text and can be snooped

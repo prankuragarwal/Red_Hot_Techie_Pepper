@@ -1,0 +1,24 @@
+2005-09-21T11:21:00.000Z	freeza		hey for compiling new kernel all i need are the kernel-image and kernel-headers files from the repos right?
+2005-09-21T11:21:00.000Z	trigg	freeza	nope --- install the tree
+2005-09-21T11:23:00.000Z	trigg	freeza	kernel-tree-2.6.XX
+2005-09-21T11:24:00.000Z	trigg	freeza	yep, you might need to make a soft link to a "/usr/src/linux" dir, though
+2005-09-21T11:24:00.000Z	trigg	freeza	like this: ln -s /usr/src/linux-2.6.XX-ubuntu... /usr/src/linux
+2005-09-21T11:27:00.000Z	trigg	freeza	from an apt-cache search linux-tree:  linux-tree-2.6.12 - Linux kernel tree for building prepackaged Ubuntu kernel images
+2005-09-21T11:28:00.000Z	trigg	freeza	make sure you have kernel-package installed . . .
+2005-09-21T11:32:00.000Z	trigg	freeza	should be okay then .. . actually make sure you install build-essential
+2005-09-21T11:41:00.000Z	trigg	freeza	do you have a problem, or is it just a general kind of dammit . . .
+2005-09-21T11:45:00.000Z	trigg	freeza	no.  you would have to do that manually.
+2005-09-21T11:45:00.000Z	trigg	freeza	there are a few "custom" kernels via synaptic (e.g. 686, K7, etc. . .)
+2005-09-21T11:46:00.000Z	trigg	freeza	yeah, whatever works.  The only custom compile I "did" was when hoary had the 2 minute delay because of the KT400 chipset
+2005-09-21T11:46:00.000Z	trigg	freeza	yep... there is a wiki page on how to actually do it. . .
+2005-09-21T11:49:00.000Z	trigg	freeza	though it is pretty easy. . .  cd /usr/src ; sudo make oldconfig; make menuconfig (change stuff you want) ; sudo make-kpkg --append-to-version=custom kernel
+2005-09-21T11:50:00.000Z	trigg	freeza	that last command should be: make-kpkg --append-to-versio=custom kernel_image
+2005-09-21T11:50:00.000Z	trigg	freeza	too much wine . . . blame the wife
+2005-09-21T11:51:00.000Z	trigg	freeza	have you tried hdparm?
+2005-09-21T11:51:00.000Z	trigg	freeza	 well, that is definitely a pain . . . are you using SATA?
+2005-09-21T11:53:00.000Z	trigg	freeza	try using "sudo hdparm /dev/hda1"  (or whatever hdX partition you need)
+2005-09-21T11:55:00.000Z	trigg	freeza	probably a motherboard issue.
+2005-09-21T11:55:00.000Z	trigg	freeza	I had tons of problems with my GA-7VAXP before 2.6.
+2005-09-21T11:57:00.000Z	trigg	freeza	you could always do an: hdparm -t -T /dev/whatever, then turn it off and try it again and compare results
+2005-09-21T11:58:00.000Z	trigg	freeza	then I guess it isn't working ;s
+2005-09-21T11:58:00.000Z	trigg	freeza	ok, the wife is calling me to bed, good luck all.

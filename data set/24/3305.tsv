@@ -1,0 +1,24 @@
+2008-05-24T13:37:00.000Z	rodolfo		guys I'm trying to mount a partition but I got an error message: 'ubuntu@ubuntu:/$ sudo chroot /mnt/hdb1 chroot: cannot run command `/bin/bash': No such file or directory'
+2008-05-24T13:38:00.000Z	rodolfo		what does that mean? this is the output from the fdisk -l command: http://paste.la/1258
+2008-05-24T13:39:00.000Z	legend2440	rodolfo	are you sure bash is installed?
+2008-05-24T13:40:00.000Z	rodolfo	legend2440	how can i be sure of that?
+2008-05-24T13:40:00.000Z	legend2440	rodolfo	in terminal sudo apt-get install bash
+2008-05-24T13:41:00.000Z	rodolfo	legend2440	hold on
+2008-05-24T13:41:00.000Z	rodolfo	legend2440	Reading package lists... Done Building dependency tree        Reading state information... Done bash is already the newest version. 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+2008-05-24T13:43:00.000Z	rodolfo	legend2440	I'm out of ideas. could you give me some tip?
+2008-05-24T13:46:00.000Z	legend2440	rodolfo	you can't mount /dev/hdb1?
+2008-05-24T13:46:00.000Z	rodolfo	legend2440	nop
+2008-05-24T13:46:00.000Z	legend2440	rodolfo	can you paste the /etc/fstab file?
+2008-05-24T13:49:00.000Z	rodolfo	legend2440	 chroot always returns `/bin/bash': No such file or directory. fstab has two lines
+2008-05-24T13:49:00.000Z	rodolfo	legend2440	 unionfs / unionfs rw 0 0 tmpfs /tmp tmpfs nosuid,nodev 0 0
+2008-05-24T13:50:00.000Z	legend2440	rodolfo	are you on the livecd?
+2008-05-24T13:50:00.000Z	rodolfo	legend2440	yeah
+2008-05-24T13:52:00.000Z	legend2440	rodolfo	in terminal type sudo mkdir /mnt/disk then sudo mount /dev/hdb1 /mnt/disk then cd /mnt/disk
+2008-05-24T13:54:00.000Z	rodolfo	legend2440	 should I  umount the other existing ones?
+2008-05-24T13:55:00.000Z	rodolfo	legend2440	 terminal says hdb1 is already mounted
+2008-05-24T13:55:00.000Z	legend2440	rodolfo	i don't hink you need to if your on livecd
+2008-05-24T13:55:00.000Z	legend2440	rodolfo	i don't think you need to if your on livecd
+2008-05-24T13:56:00.000Z	legend2440	rodolfo	type mount in terminal to see where its mounted
+2008-05-24T13:59:00.000Z	legend2440	rodolfo	in terminal type sudo mkdir /mnt/disk then sudo mount /dev/hdb1 /mnt/disk then cd /mnt/disk
+2008-05-24T13:59:00.000Z	rodolfo	legend2440	this is the output from the mount command: http://mibbit.com/pb/Zg6wZE
+2008-05-24T14:01:00.000Z	legend2440	rodolfo	ok so cd /mnt/hdb1 then type dir to see files

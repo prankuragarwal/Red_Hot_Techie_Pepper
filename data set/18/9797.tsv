@@ -1,0 +1,18 @@
+2007-05-07T15:02:00.000Z	sgtmattbaker		I just did a sudo apt-get install ssh on my server and then did a ssh login to my PC (this one) with nothing more than the root password on this PC.. am I not supposed to have an authentication key before I can do that?
+2007-05-07T15:03:00.000Z	jrib	sgtmattbaker	only if you edit your /etc/ssh/sshd_config
+2007-05-07T15:03:00.000Z	sgtmattbaker	jrib	so to fix that security hole I need to add a list of authenticated keys and then if that key doesn't match they cannot login?
+2007-05-07T15:04:00.000Z	jrib	sgtmattbaker	what security hole?  yes, you can generate ssh keys and allow them to login
+2007-05-07T15:05:00.000Z	jrib	sgtmattbaker	I'm surprised you could login as root actually, you should probably disable that altogether
+2007-05-07T15:05:00.000Z	sgtmattbaker	jrib	well I don't think I am logged in as root though.. the terminal is bill@bill$
+2007-05-07T15:06:00.000Z	jrib	sgtmattbaker	what did you mean by "root password"?
+2007-05-07T15:06:00.000Z	sgtmattbaker	jrib	I entered the root password when it asked for password for the ssh login but I dont think I am logged in as root.  could be wrong though
+2007-05-07T15:07:00.000Z	jrib	sgtmattbaker	did you actually create a root password or is this just your user's password who can sudo?
+2007-05-07T15:07:00.000Z	sgtmattbaker	jrib	oh I dunno if I do sudo to install things that is the password I use.. I thought root and sudo were synonomous
+2007-05-07T15:08:00.000Z	jrib	sgtmattbaker	ah no, you have a root account but it is locked by default so no one can use it.  Ubuntu prefers to let users sudo.  It is normal for you to be able to login with just your password after installing ssh.  I prefer to setup ssh keys and only allow those like you were asking about
+2007-05-07T15:10:00.000Z	sgtmattbaker	jrib	now I am actually trying to get back into my server but I cannot.  It won't let me log back in because it says the RSA key has changed (it has, I reinstalled the server today)  I deleted the authorized_keys files but stll no go
+2007-05-07T15:10:00.000Z	jrib	sgtmattbaker	delete known_hosts
+2007-05-07T15:11:00.000Z	sgtmattbaker	jrib	if I have a known_hosts and an authenticated_keys file with ssh is it then encrypted and only accessible by the passphrase I gave it?
+2007-05-07T15:12:00.000Z	sgtmattbaker	jrib	it says it is unauthenticated but I can login anyway.. I logged in but now I am going to do the ssh command to copy the RSA key to the other PC.
+2007-05-07T15:12:00.000Z	jrib	sgtmattbaker	hmm I'm not familiar with authenticated_keys
+2007-05-07T15:26:00.000Z	jrib	sgtmattbaker	use scp if it's just a one time thing
+2007-05-07T15:26:00.000Z	sgtmattbaker	jrib	ok

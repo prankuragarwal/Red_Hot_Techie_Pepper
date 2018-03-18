@@ -1,0 +1,23 @@
+2007-04-14T08:42:00.000Z	Shoeb		Ok, this is ridiculous. I have a ubuntu server 6.06, and I had it on dhcp. I just changed it to static by changing the /etc/network/interfaces file. But I don't need it till I send it to the colo, so.. to do some updates, I went to /etc/network/interfaces and brought it back to dhcp, but now it doesn't work. Can someone please help?
+2007-04-14T08:43:00.000Z	wastrel	Shoeb	 try killing dhclient and restarting it
+2007-04-14T08:43:00.000Z	Shoeb	wastrel	Lemme try, brb
+2007-04-14T08:45:00.000Z	Shoeb	wastrel	It doesn't seem to work.
+2007-04-14T08:45:00.000Z	Shoeb	wastrel	It wasn't running, so I simply ran it, and it's still 'discovering'.
+2007-04-14T08:46:00.000Z	wastrel	Shoeb	 have you been using ifconfig or ifup/ifdown ?
+2007-04-14T08:46:00.000Z	Shoeb		Yeah :$
+2007-04-14T08:46:00.000Z	Shoeb		ifconfig a lot.
+2007-04-14T08:46:00.000Z	Shoeb		ifconfig eth0 down and up, lol
+2007-04-14T08:46:00.000Z	wastrel		try ifup & ifdown
+2007-04-14T08:46:00.000Z	Shoeb		I just want to make sure I don't need to go to the colo a lot for this.
+2007-04-14T08:47:00.000Z	Shoeb		Ok wastrel.
+2007-04-14T08:48:00.000Z	Shoeb	wastrel	I just rebooted it, and now when I ifconfig, there is nothing. Why so? Do I now need to manually ifup lo and ifup eth0 or something? I want it to be automatic.
+2007-04-14T08:49:00.000Z	wastrel	Shoeb	 i've been too lazy to read up on it, but ifup/ifdown work & ifconfig doesn't for some reason on one of my boxes
+2007-04-14T08:49:00.000Z	Shoeb	wastrel	But how come now after a fresh reboot, ifconfig shows nothing?
+2007-04-14T08:50:00.000Z	wastrel	Shoeb	 oic, network driver isn't loaded ?
+2007-04-14T08:50:00.000Z	Shoeb	wastrel	But it worked before.
+2007-04-14T08:50:00.000Z	wastrel		no loopback even?
+2007-04-14T08:50:00.000Z	wastrel		kernel update?  i dunno
+2007-04-14T08:50:00.000Z	Shoeb		Loopback worked too.
+2007-04-14T08:50:00.000Z	Shoeb		And no, I can't see loopback now.
+2007-04-14T08:50:00.000Z	Shoeb		I did a sudo aptitude update/upgrade just before this.
+2007-04-14T08:56:00.000Z	Shoeb	wastrel	Working now, took off the # from a comment line and it messed it all up. :)

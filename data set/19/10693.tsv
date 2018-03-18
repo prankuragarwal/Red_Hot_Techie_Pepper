@@ -1,0 +1,19 @@
+2008-03-09T01:58:00.000Z	miranda82		hello
+2008-03-09T01:59:00.000Z	miranda82		is there any way, to mount as a drive, a camera that is connected via usb? i need to access the memory card
+2008-03-09T02:00:00.000Z	miranda82		is there any way, to mount as a drive, a camera that is connected via usb? i need to access the memory card
+2008-03-09T02:00:00.000Z	Thirsteh	miranda82	after inserting the camera, type 'dmesg' and look for any indication of the device address (something like /dev/sda1), then do something like 'sudo mount /dev/sda1 /media/some-folder'
+2008-03-09T02:01:00.000Z	miranda82	Thirsteh	thx for replying, the problem is that dmesg does not show anything like that,
+2008-03-09T02:01:00.000Z	miranda82	Thirsteh	shows: [  860.544000] Inbound IN=eth1 OUT= MAC=00:19:d2:35:b3:23:00:1c:10:4e:1e:74:08:00 SRC=38.103.50.145 DST=192.168.1.110 LEN=60 TOS=0x00 PREC=0x00 TTL=46 ID=56999 DF PROTO=TCP SPT=42576 DPT=49643 WINDOW=5840 RES=0x00 SYN URGP=0
+2008-03-09T02:02:00.000Z	Thirsteh	miranda82	if dmesg doesn't show anything at all, then I'd guess either USB is disabled in your BIOS or your camera is inserted in a USB slot that doesn't work (if you're using a USB hub on the front of the case, try the USB ports on the motherboard instead)
+2008-03-09T02:02:00.000Z	miranda82	Thirsteh	the camera works i am able to download the images usign gnome importer, the problem,  is to mount it as a drive
+2008-03-09T02:04:00.000Z	Thirsteh	miranda82	it'd need to be mounted for you to be able to get anything off of it. Try typing 'mount' in a shell and check if it's on that list and is already mounted (probably at the bottom of the list)
+2008-03-09T02:04:00.000Z	miranda82	Thirsteh	it's not
+2008-03-09T02:05:00.000Z	Thirsteh	miranda82	'tail -f /var/log/dmesg' then disconnect and reconnect the camera, there really should be a message
+2008-03-09T02:05:00.000Z	miranda82	Thirsteh	the message is: [  860.544000] Inbound IN=eth1 OUT= MAC=00:19:d2:35:b3:23:00:1c:10:4e:1e:74:08:00 SRC=38.103.50.145 DST=192.168.1.110 LEN=60 TOS=0x00 PREC=0x00 TTL=46 ID=56999 DF PROTO=TCP SPT=42576 DPT=49643 WINDOW=5840 RES=0x00 SYN URGP=0
+2008-03-09T02:05:00.000Z	Thirsteh	miranda82	that has nothing to do with USB
+2008-03-09T02:06:00.000Z	miranda82		i know
+2008-03-09T02:07:00.000Z	miranda82	Thirsteh	dmesg does not show anything, but I get the gnome asistant to import the pictures, that is the problem
+2008-03-09T02:10:00.000Z	miranda82	Thirsteh	the only thing i can get, from kern.log that might give a clue is: http://pastebin.com/m4a6d5fe1
+2008-03-09T02:13:00.000Z	miranda82	Thirsteh	any clue?
+2008-03-09T02:14:00.000Z	Thirsteh	miranda82	no, sorry, I'd look through available devices in /dev or any references to new devices in the kernel log, but right now I'm not in Linux so can't give you anything concrete off the top of my head
+2008-03-09T02:14:00.000Z	miranda82	Thirsteh	k, thx anyway

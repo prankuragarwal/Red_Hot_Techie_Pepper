@@ -1,0 +1,24 @@
+2006-09-30T12:52:00.000Z	GreatBriton		so, can anybody help me?
+2006-09-30T12:53:00.000Z	GreatBriton		when i boot into ubuntu, my wifi connection is listed as active in Networking, but I can't access the internet until i deactivate and then reactivate it. also, networkmanager can't find my connection, just says 'No network connection'
+2006-09-30T12:54:00.000Z	mrksht	GreatBriton	ip route show
+2006-09-30T12:54:00.000Z	GreatBriton	mrksht	what do you mean?
+2006-09-30T12:55:00.000Z	mrksht	GreatBriton	you obviously need a default route to access the internet. if that's the problem
+2006-09-30T12:55:00.000Z	GreatBriton		10.0.0.0/24 dev ra0  proto kernel  scope link  src 10.0.0.1    default via 10.0.0.138 dev ra0
+2006-09-30T12:57:00.000Z	mrksht		ip route add default via 10.0.0.1 dev ra0
+2006-09-30T12:57:00.000Z	GreatBriton	mrksht	should i try that?
+2006-09-30T12:57:00.000Z	mrksht	GreatBriton	no. substitue as needed.
+2006-09-30T12:58:00.000Z	GreatBriton	mrksht	substitute where?
+2006-09-30T12:58:00.000Z	mrksht	GreatBriton	using DHCP?
+2006-09-30T13:00:00.000Z	GreatBriton	mrksht	i think so
+2006-09-30T13:00:00.000Z	mrksht	GreatBriton	then check the file /etc/network/interfaces
+2006-09-30T13:01:00.000Z	GreatBriton	mrksht	will do
+2006-09-30T13:01:00.000Z	GreatBriton	mrksht	i've got it up, what should i look for?
+2006-09-30T13:02:00.000Z	mrksht	GreatBriton	iface ... inet dhcp
+2006-09-30T13:02:00.000Z	GreatBriton		iface ra0 inet dhcp     wireless-essid belkin54g
+2006-09-30T13:03:00.000Z	GreatBriton	mrksht	iface ra0 inet dhcp
+2006-09-30T13:03:00.000Z	GreatBriton	mrksht	wireless-essid belkin54g
+2006-09-30T13:03:00.000Z	mrksht	GreatBriton	so. does that make sense to you? is the ESSID "belkin54g"
+2006-09-30T13:03:00.000Z	GreatBriton	mrksht	yes, that's right
+2006-09-30T13:04:00.000Z	mrksht		and do you need a WEP key
+2006-09-30T13:04:00.000Z	GreatBriton	mrksht	no, it's unsecured
+2006-09-30T13:05:00.000Z	mrksht	GreatBriton	ifconfig ra0 up

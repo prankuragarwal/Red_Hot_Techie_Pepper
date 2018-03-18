@@ -1,0 +1,22 @@
+2008-02-14T08:42:00.000Z	jtmoney		i'm having a weird problem... sometimes, i cannot access my samba server/shares via \\ComputerName but only ip address. for example, i could type in \\192.168.1.100 and access the files *ALL THE TIME* but only \\ComputerName some of the time. any idea what could be causing this?
+2008-02-14T08:43:00.000Z	NigelS_	jtmoney	nmbd - the net bios daemon - windows networking is a pain in the neck at the best of times
+2008-02-14T08:44:00.000Z	NigelS_	jtmoney	essentially the directory isn't being maintained - you can get one machine to be the master browser on the network
+2008-02-14T08:44:00.000Z	jtmoney	NigelS_	you know, nmbd isn't even running on my machine
+2008-02-14T08:45:00.000Z	NigelS_	jtmoney	you're probably not sharing files from your machine?
+2008-02-14T08:45:00.000Z	jtmoney	NigelS_	no, i am, i can access files no problem
+2008-02-14T08:45:00.000Z	jtmoney	NigelS_	do you want to look at my /etc/samba/smb.conf? :)
+2008-02-14T08:46:00.000Z	NigelS_	jtmoney	post it if you like
+2008-02-14T08:46:00.000Z	NigelS_	jtmoney	what else is on your network?
+2008-02-14T08:47:00.000Z	jtmoney	NigelS_	http://jtmoney.biatches.org/samba/smb.conf
+2008-02-14T08:47:00.000Z	jtmoney		3 other computers, 2 are running xp, 1 is running vista
+2008-02-14T08:52:00.000Z	NigelS_	jtmoney	ok, what I think is happening: in the absence of a defined server for handling requests, windows machines jockey for position to become the local master browser - that is the machine that holds the directory of the names of the other machines on the network - what is probably happening is that your machine is querying and receiving replies from this machine but it then is either turned off or unavailable, at which point a new election takes place t
+2008-02-14T08:52:00.000Z	jtmoney		wow, that sucks
+2008-02-14T08:52:00.000Z	jtmoney		but thanks for the analysis :)
+2008-02-14T08:52:00.000Z	NigelS_	jtmoney	what you can do is set your own machine to always win elections - that is to say you can specify an oslevel in your smb.conf such that you should always win
+2008-02-14T08:52:00.000Z	jtmoney		ohh
+2008-02-14T08:53:00.000Z	jtmoney	NigelS_	okay, i'm going to google how to do that
+2008-02-14T08:53:00.000Z	NigelS_	jtmoney	if you get nmbd up and running it will work to provide replies to other machines on the network - I'm not sure what oslevel vista gives itself
+2008-02-14T08:54:00.000Z	NigelS_	jtmoney	also the command nmblookup can allow you to find the IP associated with a nmb name
+2008-02-14T08:56:00.000Z	jtmoney	NigelS_	that worked... os level = 32 made it work
+2008-02-14T08:57:00.000Z	jtmoney	NigelS_	thank you so much
+2008-02-14T08:57:00.000Z	NigelS_	jtmoney	cool - checkout /var/log/samba - you can watch things happening there, diagnose faults that you can never work out in windows - use tail -f or less with the follow cmd to watch etc

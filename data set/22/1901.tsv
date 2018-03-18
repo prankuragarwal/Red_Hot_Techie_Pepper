@@ -1,0 +1,22 @@
+2011-10-31T18:42:00.000Z	share		tcp        0      0 localhost.localdom:8118 *:*                     LISTEN
+2011-10-31T18:42:00.000Z	share		How do I know which service is using  that port?
+2011-10-31T18:42:00.000Z	share		help
+2011-10-31T18:43:00.000Z	XayOn	share	Probably a proxy, probably privoxy.
+2011-10-31T18:43:00.000Z	XayOn		netstat -putan|grep 8118
+2011-10-31T18:44:00.000Z	share	XayOn	yes but privoxy is not running!
+2011-10-31T18:44:00.000Z	XayOn	share	netstat -putan|grep 8118
+2011-10-31T18:44:00.000Z	XayOn		I insist.
+2011-10-31T18:44:00.000Z	share	XayOn	already did that comment, it doesnt show the process!
+2011-10-31T18:44:00.000Z	XayOn	share	As root.
+2011-10-31T18:44:00.000Z	share		ok
+2011-10-31T18:45:00.000Z	share	XayOn	damn you're right!
+2011-10-31T18:45:00.000Z	share		:)
+2011-10-31T18:45:00.000Z	share	XayOn	privoxy is running.
+2011-10-31T18:45:00.000Z	XayOn	share	Of course i am. And certainly, you have a running privoxy, with that PID.
+2011-10-31T18:46:00.000Z	share	XayOn	I killed it!
+2011-10-31T18:46:00.000Z	share	XayOn	sudo killall privoxy
+2011-10-31T18:47:00.000Z	XayOn	share	I don't think that should work. invoke-rc.d privoxy stop, and if it does not work sudo pkill -9 privoxy
+2011-10-31T18:47:00.000Z	share	XayOn	it did work for now:P but yeah rcconf doesn't show privoxy at startup!
+2011-10-31T18:48:00.000Z	share	XayOn	sudo service privoxy stop did the trick
+2011-10-31T18:49:00.000Z	XayOn	share	Nice.
+2011-10-31T18:50:00.000Z	share	XayOn	yeah but it seems I will have to that rc.d command

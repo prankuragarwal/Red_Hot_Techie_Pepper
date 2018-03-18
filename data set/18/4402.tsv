@@ -1,0 +1,18 @@
+2009-11-03T22:42:00.000Z	Omen_20		So if I wanted my XFS partition to mount at startup, would I add the line:
+2009-11-03T22:42:00.000Z	Omen_20		/dev/sda2       /media/Media    auto                             0       0
+2009-11-03T22:42:00.000Z	Omen_20		or is auto wrong? and do I need any options with it?
+2009-11-03T22:43:00.000Z	skysong	Omen_20	defaults 0 0 ?
+2009-11-03T22:43:00.000Z	skysong		i added 3-4 partitions today;)
+2009-11-03T22:44:00.000Z	Omen_20	skysong	hmm? i have no idea. I'm just kind of looking at how the CD and floppy are mounted as reference.
+2009-11-03T22:45:00.000Z	skysong	Omen_20	alright.. try /dev/xx /where/to/mount partitiontype defaults 0 0
+2009-11-03T22:46:00.000Z	skysong	Omen_20	then sudo mount -a to check (and don't forget to add a last empty line in fstab)
+2009-11-03T22:47:00.000Z	Omen_20	skysong	so for type should i just put xfs?
+2009-11-03T22:47:00.000Z	skysong	Omen_20	yes
+2009-11-03T22:48:00.000Z	Omen_20	skysong	"mount: mount point /media/Media does not exist"
+2009-11-03T22:49:00.000Z	skysong	Omen_20	you created the folder? Guess not.. sudo mkdir /media/Media
+2009-11-03T22:49:00.000Z	skysong		then retry sudo mount -a
+2009-11-03T22:50:00.000Z	Omen_20	skysong	wow it works like a charm now. thanks!
+2009-11-03T22:50:00.000Z	skysong	Omen_20	most welcome:)
+2009-11-03T22:51:00.000Z	Omen_20	skysong	one question, why does my floppy and cd have a folder named cdrom and then cdrom0? but my Media folder doesnt need a Media0?
+2009-11-03T22:52:00.000Z	skysong	Omen_20	you folder doesn't need a folder0.. what you mounted (/media/Media) will always mount the /dev/xx assigned to this folder on boot
+2009-11-03T22:52:00.000Z	Omen_20	skysong	okiedokie

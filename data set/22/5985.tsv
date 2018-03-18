@@ -1,0 +1,22 @@
+2007-01-17T12:20:00.000Z	Popo1		Hi, last night I fixed the Firefox and PHP problem intalling Apache 2.. but how can I configured Gnome to start Apache on the startup? Do I need to install BUM or can I do it from the terminal?
+2007-01-17T12:21:00.000Z	rukuartic	Popo1	If you want to do that, your best bet is through the terminal.
+2007-01-17T12:21:00.000Z	rukuartic	Popo1	But I wouldn't recommend running XOrg on an eneterprise/production server.
+2007-01-17T12:21:00.000Z	rukuartic	Popo1	What you need to do is look for a file in /etc/init.d called "apache2"
+2007-01-17T12:21:00.000Z	rukuartic	Popo1	Then create a symbolic link in /etc/rc2.d that's something like SXX-apache2
+2007-01-17T12:21:00.000Z	Popo1	rukuartic	Yeah, I want to run Apache 2 on the starup, how can I do it?
+2007-01-17T12:22:00.000Z	rukuartic	Popo1	;p I explained above.
+2007-01-17T12:22:00.000Z	Popo1	rukuartic	yeah .. cool.. thx ^^ i'll try it!
+2007-01-17T12:23:00.000Z	rukuartic	Popo1	Let me know if you get stuck!
+2007-01-17T12:24:00.000Z	Popo1	rukuartic	sorry I'm a bit fool.. but from where to where must I have to create the link?
+2007-01-17T12:24:00.000Z	Popo1	rukuartic	I use locate apache2 I can't find the init.d file
+2007-01-17T12:25:00.000Z	rukuartic	Popo1	If you have a file in /etc/init.d named "apache2", just go to /etc/rc2.d and type "ln -s /etc/init.d/apache2 ./S85-apache2"
+2007-01-17T12:25:00.000Z	rukuartic	Popo1	Oh, hold up. Did you install apache2 through apt-get?
+2007-01-17T12:25:00.000Z	Popo1	rukuartic	yup. I have installed form synaptic
+2007-01-17T12:26:00.000Z	rukuartic	Popo1	It should be starting up on boot then... type "pgrep apache2" to see if its running.
+2007-01-17T12:27:00.000Z	Popo1	rukuartic	Sure it will be running now cause I type sudo /etc/init.d/apache2 restart" recently
+2007-01-17T12:28:00.000Z	rukuartic	Popo1	I actually need to go and grab someone from school. Type "sudo updatedb" in the console, and then see if locate can find it again.
+2007-01-17T12:28:00.000Z	rukuartic	Popo1	I'm pretty sure when you install apache from apt, it installs a start-up script automatically
+2007-01-17T12:28:00.000Z	Popo1	rukuartic	ok, thanks for the help..
+2007-01-17T12:28:00.000Z	rukuartic	Popo1	Try "ls /etc/rc2.d | grep apache" if you see something saying "SXX-apache2" where XX are two numbers from 00 to 99, then it starts automatically
+2007-01-17T12:29:00.000Z	rukuartic		Gotta gp.
+2007-01-17T12:30:00.000Z	Popo1	rukuartic	the update works well. I can find it now :D

@@ -1,0 +1,24 @@
+2007-09-22T11:17:00.000Z	scaldov		pepole! help. why my ubunty FF does make ssh connection to another machine in rather long time. what should I do?
+2007-09-22T11:18:00.000Z	hmhowie	scaldov	how long does it take a ping request to be answered? is the network slow?
+2007-09-22T11:19:00.000Z	hmhowie	scaldov	how long does it take to answer a ping?
+2007-09-22T11:19:00.000Z	hmhowie	scaldov	though 15-20secs is too long in any case
+2007-09-22T11:20:00.000Z	scaldov	hmhowie	0.8 ms
+2007-09-22T11:21:00.000Z	hmhowie	scaldov	do both computers have ubuntu on them?
+2007-09-22T11:22:00.000Z	scaldov	hmhowie	No, mothership runs opensuse10.2, and my wife's notebook I'm now typing runs ubuntu FF
+2007-09-22T11:23:00.000Z	hmhowie	scaldov	a-ha. i once had this problem with an opensuse distribution. i've forgotten why it was... let me see what i can find out...
+2007-09-22T11:24:00.000Z	scaldov	hmhowie	very interesting. I'll try another server
+2007-09-22T11:26:00.000Z	hmhowie	scaldov	can you try connecting to the suse server with: "ssh -vvv <name of server> -l <name of account>"?
+2007-09-22T11:29:00.000Z	scaldov	hmhowie	debug1: Local version string SSH-2.0-OpenSSH_4.3p2 Debian-8ubuntu1
+2007-09-22T11:30:00.000Z	scaldov	hmhowie	have you seen my debug messages
+2007-09-22T11:33:00.000Z	hmhowie	scaldov	okay, i have now :) i was researching, and i still am researching....
+2007-09-22T11:34:00.000Z	scaldov	hmhowie	by the way, the same picture have been recently observed while connecting to FreeBSD ssh server
+2007-09-22T11:36:00.000Z	hmhowie	scaldov	if you try to log in with the wrong username, how long does it take?
+2007-09-22T11:38:00.000Z	scaldov	hmhowie	The same amount of time, at the same debug string. Then it queries a password 3 times and exits.
+2007-09-22T11:42:00.000Z	hmhowie	scaldov	okay. i'm not getting anywhere by google. there are various suggestions about checking the dns settings on both computers.
+2007-09-22T11:43:00.000Z	scaldov	hmhowie	dns works well. mothership runs NAT, notebook uses our provider's DNS. Queries are done in miliseconds.
+2007-09-22T11:44:00.000Z	scaldov	hmhowie	And I make a connection directly by IP, directly to the mothership
+2007-09-22T11:45:00.000Z	scaldov	hmhowie	maybe some options in /etc/ssh ?
+2007-09-22T11:45:00.000Z	hmhowie	scaldov	you can have a look, but i can't find anything on google to help :(
+2007-09-22T11:46:00.000Z	scaldov	hmhowie	Can I paste config to you?
+2007-09-22T11:47:00.000Z	hmhowie	scaldov	i doubt i can help, if it's a configuration problem. have a look at the routing as well on both computers ("route")
+2007-09-22T11:50:00.000Z	scaldov	hmhowie	Oh, routing works well. When I get connected, I issue scp command to copy a file, and it shows speed at 3.8MB/s

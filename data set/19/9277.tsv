@@ -1,0 +1,19 @@
+2006-12-03T06:12:00.000Z	jumble		does ubuntu have a 2GB file size limit?
+2006-12-03T06:12:00.000Z	jumble		ok, the system is formatted on ext3, i think.
+2006-12-03T06:13:00.000Z	jumble		a program im running that needs to generate a large file is generated a "Filze size limit exceeded (core dumped)" message at 2gb. im not sure where the source of the limitation is.
+2006-12-03T06:14:00.000Z	carlfk	jumble	what fs?
+2006-12-03T06:14:00.000Z	carlfk	jumble	I think fat is limited to 2g
+2006-12-03T06:15:00.000Z	carlfk	jumble	yeah, ext3 is a fs.  i forget which all has the 2g limit
+2006-12-03T06:16:00.000Z	carlfk	jumble	any networking stuff going on (like mounted over nfs/smb...)
+2006-12-03T06:17:00.000Z	carlfk	jumble	yes - you can use dd to create a 2.1 gig file.  I forget how.
+2006-12-03T06:21:00.000Z	carlfk	jumble	windows networking - samba.org
+2006-12-03T06:23:00.000Z	carlfk	jumble	no.
+2006-12-03T06:25:00.000Z	carlfk	jumble	dd if=/dev/zerro of=big.file count=2100000 bs=1000
+2006-12-03T06:27:00.000Z	carlfk	jumble	create a 2.1 gig file.  see if the os and fs support it.
+2006-12-03T06:27:00.000Z	carlfk	jumble	correct
+2006-12-03T06:28:00.000Z	carlfk	jumble	only zero, not zerro :)
+2006-12-03T06:30:00.000Z	jumble	carlfk	looks like it worked. so the 2gb limit is not being imposed by the file system.
+2006-12-03T06:31:00.000Z	carlfk	jumble	or the OS (which at one point I think Linux may have been limited
+2006-12-03T06:32:00.000Z	carlfk	jumble	use the strings command and maybe grep to see if the "error message" is part of the program you are running
+2006-12-03T06:34:00.000Z	carlfk	jumble	carl@dell17:~$ strings /bin/dd
+2006-12-03T06:34:00.000Z	carlfk	jumble	then pipe that to less so you can see it all: carl@dell17:~$ strings /bin/dd |less

@@ -1,0 +1,18 @@
+2008-09-15T07:13:00.000Z	sixth		﻿can anyone help me adding windows to grub? i tried to add it but when i click windows it just blinks
+2008-09-15T07:14:00.000Z	bobertdos	sixth	Pastebin your menu.lst please.
+2008-09-15T07:16:00.000Z	sixth	bobertdos	http://sixth.pastebin.com/d79b425d1
+2008-09-15T07:21:00.000Z	bobertdos	sixth	First of all, are you certain Windows is on the first partition of the first hard drive? Also, between root and makeactive, it is sometimes useful to add savedefault. Oh, and Windows entries generally go outside the automagic list.
+2008-09-15T07:21:00.000Z	bobertdos	sixth	but more than anything, we need to be sure you're pointing to the right partition
+2008-09-15T07:21:00.000Z	sixth	bobertdos	how can i found out on what hdd is my windows?
+2008-09-15T07:23:00.000Z	bobertdos	sixth	Because grub and fdisk's naming schemes parallel each other, if you pastebin the output of sudo fdisk -l, it will be possible to tell.
+2008-09-15T07:24:00.000Z	sixth	bobertdos	http://sixth.pastebin.com/m1d45d4e3
+2008-09-15T07:26:00.000Z	bobertdos	sixth	Yup, that should be 0,0...........Okay, so I suggest moving your Windows entry outside the automagic block and putting savedefault between "root" and "makeactive"
+2008-09-15T07:28:00.000Z	sixth	bobertdos	?
+2008-09-15T07:30:00.000Z	sixth	bobertdos	what is the automagic box?
+2008-09-15T07:32:00.000Z	bobertdos	sixth	I mean, put the Windows entry after the line that says ### END DEBIAN AUTOMAGIC KERNEL LIST
+2008-09-15T07:33:00.000Z	bobertdos	sixth	If it helps, mine looks like this: http://paste.ubuntu.com/47059/
+2008-09-15T07:34:00.000Z	sixth	bobertdos	thanks ill soon reboot to check. i also have a kernel problem, do you have any expirence with those?
+2008-09-15T07:34:00.000Z	bobertdos	sixth	not really, ;\
+2008-09-15T07:34:00.000Z	sixth	bobertdos	i will reboot now to check
+2008-09-15T07:52:00.000Z	sixth	bobertdos	thanks alot :)
+2008-09-15T07:53:00.000Z	bobertdos	sixth	Everything's working?

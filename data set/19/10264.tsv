@@ -1,0 +1,19 @@
+2006-08-05T07:35:00.000Z	Desh		Hi, I need help dual booting Ubuntu and XP. I have installed XP and am currently in it. I am going to restpre GRUB but I don;t know wether to overwrite the Windows Bootloader and use Grub only or if it is ok to use both bootloaders on the MBR. if I use both will i be asked which OS to boot to?
+2006-08-05T07:35:00.000Z	naknomik	Desh	you can't have Grub and windows at the same time
+2006-08-05T07:36:00.000Z	Desh		And if I do Grub only, will it auto-add XP or do I need to add it myself?
+2006-08-05T07:36:00.000Z	Desh		No, I had Ubuntu and now installed XP.
+2006-08-05T07:38:00.000Z	Desh		If I restore GRUB now, since it is gone right now, wil it auto-add XP or would I need to go and edit the GRUB config?
+2006-08-05T07:38:00.000Z	naknomik	Desh	add something like:
+2006-08-05T07:38:00.000Z	naknomik		title Window XP
+2006-08-05T07:38:00.000Z	naknomik		rootnoverify (hd1,0)
+2006-08-05T07:38:00.000Z	naknomik		chainloader +1
+2006-08-05T07:38:00.000Z	naknomik		Make sure you adjust the (hd1,0) entry
+2006-08-05T07:38:00.000Z	Desh		Ok, yeah I have the guide here
+2006-08-05T07:38:00.000Z	naknomik	Desh	may be not.
+2006-08-05T07:38:00.000Z	Desh		I just hope I use the right (hd1,0) type entry
+2006-08-05T07:39:00.000Z	naknomik	Desh	how is your partition table?
+2006-08-05T07:40:00.000Z	Desh	naknomik	First partition is Ubuntu, 2nd is extended which contains hda5, the Linux swap, and the 3rd partition is XP.
+2006-08-05T07:40:00.000Z	Desh	naknomik	but XP saw it as: Partition 1: Linux, Partition 2: XP, Partition 3: Swap
+2006-08-05T07:40:00.000Z	naknomik	Desh	are you booted into ubuntu right now?
+2006-08-05T07:40:00.000Z	Desh	naknomik	no, XP atm
+2006-08-05T07:41:00.000Z	naknomik	Desh	Can you boot into Ubuntu ISO CD?

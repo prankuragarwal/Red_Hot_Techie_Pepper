@@ -1,0 +1,23 @@
+2010-04-25T09:42:00.000Z	mossby		Any Imagemagick veterans out there tonight?
+2010-04-25T09:42:00.000Z	hoonteke	mossby	ask your question
+2010-04-25T09:44:00.000Z	hoonteke	mossby	define looping.  what do you want to happen?
+2010-04-25T09:46:00.000Z	mossby	hoonteke	I have fifty A*.bmp files (A0001.bmp, A0002.bmp) and fifty B*.bmp -- I want to turn those into fifty socialblend_0#.pngs
+2010-04-25T09:46:00.000Z	hoonteke	mossby	but I'm confused by this looping construct
+2010-04-25T09:47:00.000Z	mossby	hoonteke	I'm not 100% sure it's there... I assumed the wildcards would "loop" it by default
+2010-04-25T09:47:00.000Z	hoonteke	mossby	does 'convert A0001.bmp B0001.bmp -compose Overlay -composit socialblend_%0d.png' work as expected?
+2010-04-25T09:48:00.000Z	hoonteke	mossby	 what's the output from what you're doing now, a single file?
+2010-04-25T09:49:00.000Z	mossby	hoonteke	Yes, wonderfully, it basically blends the two images together into a third, I want to blend 50 pairs together to create 50 blends.... output is a single file, which is blended properly, but the %d never increments past zero
+2010-04-25T09:51:00.000Z	hoonteke	mossby	I don't know how to make imagemagick loop, but I can do it with the shell:
+2010-04-25T09:51:00.000Z	hoonteke	mossby	for i in {01..50}; do echo convert A00$i.bmp B00$1.bmp -compose Overlay -composite socialblend_$i.png; done
+2010-04-25T09:51:00.000Z	hoonteke	mossby	if that output looks right, then remove the echo, and away you'll go.
+2010-04-25T09:52:00.000Z	mossby	hoonteke	Thanks, ill give it a try
+2010-04-25T09:52:00.000Z	mossby	hoonteke	:D ive got good feeling about this tho!
+2010-04-25T09:52:00.000Z	hoonteke	mossby	bug: replace $1 with $i.  I always do that by accident.
+2010-04-25T09:57:00.000Z	mossby	hoonteke	Haha! You just made my night! Works perfectly! now to use mencoder to string it into an avi! thanks so much
+2010-04-25T09:57:00.000Z	hoonteke	mossby	no worries.  the shell is an awesome to learn right
+2010-04-25T09:58:00.000Z	mossby	hoonteke	yah, im a bit embarrassed how easy it was... I know the shell is powerful, but haven't really had to WORK work from the terminal before, thanks again
+2010-04-25T09:58:00.000Z	hoonteke	mossby	gotcha.
+2010-04-25T09:59:00.000Z	hoonteke	mossby	heh, you should see some of the commandlines I've created before.  The power of pipes is frickin' awesome ...
+2010-04-25T10:01:00.000Z	hoonteke	mossby	git log | \grep ^commit | awk {'print $2'} | dev/html_diff_generator.py | gzip |
+2010-04-25T10:36:00.000Z	hoonteke	mossby	you probably can.  I see a lot of blogs go by about automating media stuffs with the shell
+2010-04-25T10:36:00.000Z	hoonteke	mossby	but I usually find that I have to go through it the long way before it becomes "obvious" how to automate it

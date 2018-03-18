@@ -1,0 +1,22 @@
+2005-11-05T15:17:00.000Z	devnulljp		df ?
+2005-11-05T15:19:00.000Z	devnulljp		Looking for a good howto for extenal usb drives -- don't have /dev/sd* because of udev
+2005-11-05T15:19:00.000Z	devnulljp		usb is working fine, but none of my drives (pen and bigger) are working
+2005-11-05T15:19:00.000Z	devnulljp		don't show up in lsusb
+2005-11-05T15:20:00.000Z	bob2	devnulljp	that's not udev's problem
+2005-11-05T15:21:00.000Z	bob2	devnulljp	are you using the same physical port?
+2005-11-05T15:21:00.000Z	devnulljp	bob2	2 ports, tried both, same result
+2005-11-05T15:22:00.000Z	bob2	devnulljp	you're absolutely sure lsusb doesn't show them?
+2005-11-05T15:23:00.000Z	devnulljp	bob2	Definitely - they just don't show up in lsusb - mouse & bluetooth do tho
+2005-11-05T15:23:00.000Z	bob2	devnulljp	I don't know how that could happen
+2005-11-05T15:23:00.000Z	bob2	devnulljp	I'd guess try various combinations of noapic, nolapic and acpi=off as kernel boot paramaters and see if it helps
+2005-11-05T15:25:00.000Z	devnulljp	bob2	*if* they show up in lsusb, mount -t vfat /dev/sda0 /mnt/usb should do it tho?
+2005-11-05T15:26:00.000Z	bob2	devnulljp	if they show there, /var/log/syslog will show you what device they are
+2005-11-05T15:26:00.000Z	devnulljp	bob2	thnx
+2005-11-05T15:26:00.000Z	bob2	devnulljp	automounting depends on a whole stack of bits, tho
+2005-11-05T15:27:00.000Z	devnulljp	bob2	not worried about automounting, just trying to get them online
+2005-11-05T15:27:00.000Z	bob2	devnulljp	if they're not showing in lsusb, tho, something is deeply fucked
+2005-11-05T15:27:00.000Z	bob2	devnulljp	I assume you mean nothing at all is showing in there, aside from the known devices
+2005-11-05T15:27:00.000Z	devnulljp	bob2	my feeling too ...
+2005-11-05T15:28:00.000Z	devnulljp	bob2	yes - not a squeek apart form the mouse
+2005-11-05T15:28:00.000Z	devnulljp	bob2	I see  new high speed USB device using ehci_hcd and address in syslo
+2005-11-05T15:29:00.000Z	devnulljp	bob2	that's syslog

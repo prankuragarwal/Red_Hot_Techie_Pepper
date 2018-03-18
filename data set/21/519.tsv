@@ -1,0 +1,21 @@
+2011-10-27T22:29:00.000Z	TheTaLlesT		I have square text during boot and then nothing on a ubuntu server 11.10 box after fresh install. i installed sshd during the install so i do have access. any ideas how to fix?
+2011-10-27T22:30:00.000Z	TheTaLlesT		boot loader and bios are fine
+2011-10-27T22:30:00.000Z	phlak_user	TheTaLlesT	if you have sshd, then i guess you have everything :)
+2011-10-27T22:30:00.000Z	phlak_user	TheTaLlesT	also, please be aware that Server installs do not have a GUI
+2011-10-27T22:31:00.000Z	phlak_user	TheTaLlesT	what do you get when you press ctl+alt+f1 or f2
+2011-10-27T22:35:00.000Z	phlak_user	TheTaLlesT	can you check if you have getty running? ps -fe|grep getty should tell you
+2011-10-27T22:38:00.000Z	TheTaLlesT	phlak_user	yes i do
+2011-10-27T22:39:00.000Z	TheTaLlesT	phlak_user	i added the nomodeset option and it said it did not recognize it but i got text at the terminal i still have squares during boot
+2011-10-27T22:42:00.000Z	TheTaLlesT	phlak_user	could it be the nouveau driver? i have an nvidia card in there
+2011-10-27T22:43:00.000Z	phlak_user	TheTaLlesT	do you also have an onboard video card?
+2011-10-27T22:43:00.000Z	TheTaLlesT	phlak_user	no
+2011-10-27T22:44:00.000Z	TheTaLlesT	phlak_user	its a nvidia 5200
+2011-10-27T22:45:00.000Z	TheTaLlesT	phlak_user	i have no problems with older ubuntu and other linux distros i have tried with and without a gui
+2011-10-27T22:47:00.000Z	phlak_user	TheTaLlesT	umm - can you change/add this entry in /etc/default/grub GRUB_GFXMODE=640x480 and then run update-grub2 and reboot
+2011-10-27T22:48:00.000Z	TheTaLlesT	phlak_user	thats just for grub right? i dont have any problem with grub showing
+2011-10-27T22:49:00.000Z	phlak_user	TheTaLlesT	oh ok, i thought you said you could see only squares
+2011-10-27T22:49:00.000Z	TheTaLlesT	phlak_user	after the bootloader
+2011-10-27T22:49:00.000Z	TheTaLlesT	phlak_user	when ubuntu is booting
+2011-10-27T22:50:00.000Z	TheTaLlesT	phlak_user	why i was wondering if its a gfx driver. does the server version have any?
+2011-10-27T22:52:00.000Z	phlak_user	TheTaLlesT	sorry but i gotta go; in any case, if the X server isnt getting started, the gfx driver doesnt have much role. it should be the console vga mode (in earlier kernels/grubs vga=791 helpd)
+2011-10-27T22:52:00.000Z	TheTaLlesT	phlak_user	ok thx

@@ -1,0 +1,19 @@
+2010-09-01T20:08:00.000Z	Pici	askhader	Correct, you don't need numbers for any of them. That line you posted means that it should run every minute.  Is that pl file executable?
+2010-09-01T20:09:00.000Z	askhader	Pici	Yes and it's not running
+2010-09-01T20:09:00.000Z	askhader	Pici	Perms on it are -rwxr-xr-x
+2010-09-01T20:10:00.000Z	Pici	askhader	Two things to check: Does your .pl file include a shebang on the first line for the path to perl? Is there a newline at the end of your crontab?
+2010-09-01T20:10:00.000Z	askhader	Pici	There is no newline...
+2010-09-01T20:11:00.000Z	Pici	askhader	There needs to be.
+2010-09-01T20:11:00.000Z	askhader	Pici	Adding now, let's see if this works.
+2010-09-01T20:12:00.000Z	askhader	Pici	still seems to be not be working.
+2010-09-01T20:14:00.000Z	Pici	askhader	There should be an entry in /var/log/auth.log for cron when it tries to run the job, is there one there? (something like: pam_unix(cron:session): session opened for user $user)
+2010-09-01T20:14:00.000Z	askhader	Pici	Hundreds of line that says Sep  1 11:14:01 lambda CRON[28176]: pam_unix(cron:session): session opened for user askhader by (uid=0)
+2010-09-01T20:16:00.000Z	askhader	Pici	Does this mean that Ubuntu reports the cron job as being run?
+2010-09-01T20:16:00.000Z	Pici	askhader	And theres a shebang on the first line of the script? like: #!/path/to/perl
+2010-09-01T20:16:00.000Z	askhader	Pici	#!/usr/bin/env per
+2010-09-01T20:17:00.000Z	Pici	askhader	No, that should be fine.
+2010-09-01T20:18:00.000Z	Pici	askhader	If the cron lines in your auth.log are there, then it should be running.
+2010-09-01T20:19:00.000Z	askhader	Pici	The perl script has a very distinct effect. If I run it, the wallpaper of my background changes.
+2010-09-01T20:19:00.000Z	askhader	Pici	Is there a way for me to create a logfile?
+2010-09-01T20:19:00.000Z	askhader	Pici	To log any errors or output from the script?
+2010-09-01T20:20:00.000Z	Pici	askhader	At the end of the line: >> /path/to/log 2>&1

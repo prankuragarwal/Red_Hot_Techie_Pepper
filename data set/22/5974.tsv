@@ -1,0 +1,22 @@
+2008-02-19T18:02:00.000Z	shingouz		ideas where to find things like tun-source, bcm4400-source, thinkpad-source and madwifi-source? looks like the fresh ubuntu does not like to let me compile the modules because the source keeps on missing
+2008-02-19T18:02:00.000Z	Pici	shingouz	apt-get source packagename
+2008-02-19T18:03:00.000Z	shingouz	Pici	i know about that, i just seem to be missing the sources. in other words: repositories do not seem to have them
+2008-02-19T18:04:00.000Z	shingouz	Pici	..and now that i remember, they are all enabled in sources.list
+2008-02-19T18:04:00.000Z	Pici	shingouz	You need to make sure that you have the deb-src repositories for each of your normal deb lines
+2008-02-19T18:06:00.000Z	shingouz	Pici	main, universe, restricted and multiverse are all enabled for both deb and deb-src. done apt-get update too
+2008-02-19T18:07:00.000Z	Pici	shingouz	Give me a package name that you can't get the source for, I want to take a look.
+2008-02-19T18:08:00.000Z	Pici	shingouz	Are you doing: apt-get source tun-source? or apt-get source tun?
+2008-02-19T18:15:00.000Z	shingouz	Pici	sorry, phone....
+2008-02-19T18:16:00.000Z	shingouz	Pici	apt-get source tun and apt-get source tun-source both error out "cannot find a source package for tun[-source]"
+2008-02-19T18:20:00.000Z	Pici	shingouz	Are you sure that those are proper package names? The only one that I can see that should work is thinkpad-source (but in that case, its just a regular package)
+2008-02-19T18:21:00.000Z	shingouz	Pici	apt-get install thinkpad-source "cannot find package thinpad-source" and the same with all the others too. even modules-assistant reports the same
+2008-02-19T18:22:00.000Z	shingouz	Pici	they should be the proper names.... i *could* do a straight compile from raw sources but i am not really in a mood for htat kind of screwing around this time
+2008-02-19T18:22:00.000Z	Pici	shingouz	I ask because I dont see them at all.
+2008-02-19T18:23:00.000Z	shingouz	Pici	so it is not only me this time... hmm... tun i absolutely need, acx100, ipw2200, madwifi and thinkpad would be nice
+2008-02-19T18:24:00.000Z	Pici	shingouz	Have you looked in the kernel sources?
+2008-02-19T18:25:00.000Z	shingouz	Pici	iirc they all are external thingies. at least thinkpad, madwifi and tun are
+2008-02-19T18:26:00.000Z	Pici	shingouz	Then I'm not really sure, sorry :/
+2008-02-19T18:27:00.000Z	shingouz	Pici	the funny thing is that modules-assistant knows them by those names but it cannot find the sources. could they be in repositories for older releases?
+2008-02-19T18:28:00.000Z	Pici	shingouz	They are probably in the linux-restricted-modules or linux-ubuntu-modules packages for your kernel.
+2008-02-19T18:29:00.000Z	shingouz	Pici	restricted modules installed but tun. thinkpad and madwifi are all fully gpl... strange
+2008-02-19T18:31:00.000Z	shingouz	Pici	make-kpkg modules_image begins to sound a nice idea with some pure raw sources off the net

@@ -1,0 +1,18 @@
+2008-03-27T16:52:00.000Z	Moppa		can i put a * sign in adresses in my /etc/hosts?
+2008-03-27T16:52:00.000Z	Moppa		IE: *.moppa.se
+2008-03-27T16:53:00.000Z	unop_	Moppa	errm no
+2008-03-27T16:53:00.000Z	unop_	Moppa	what are you trying to do?
+2008-03-27T16:56:00.000Z	Moppa	unop_	- My D-Link router only shows me it's loginpage when i enter my server adress locally, but outside the router portforwards the connection correctly to my webserver. Read here: http://whirlpool.net.au/forum-replies-archive.cfm/706914.html that i could fix this by editing my /etc/hosts and entering my domainname (www.moppa.se), but i have subdomains there and i want all of them to be redirected locally. But i guess i have to add them
+2008-03-27T16:59:00.000Z	unop_	Moppa	it's quite simple to do really -- if you have a list of subdomains --  for i in s1 s2 s3; do echo ip.add.re.ss $i.mydomain.local > /etc/hosts; done
+2008-03-27T16:59:00.000Z	unop_	Moppa	the right way to do that is to have bind (dns server) register and manage subdomains
+2008-03-27T17:00:00.000Z	Moppa	unop_	- say i only wan't www.moppa.se to work at first, what will the command be?
+2008-03-27T17:00:00.000Z	unop_	Moppa	actually serious mistake with the last command -- it should be >> instead of >
+2008-03-27T17:01:00.000Z	unop_	Moppa	echo "ip.add.re.ss www.moppa.se" >> /etc/hosts
+2008-03-27T17:01:00.000Z	Moppa	unop_	- it says 192.168.1.9 www.moppa.se in my /etc/hosts
+2008-03-27T17:01:00.000Z	unop_	Moppa	so whats the problem then?
+2008-03-27T17:01:00.000Z	Moppa	unop_	- it doesn't work.
+2008-03-27T17:03:00.000Z	Moppa	unop_	- and i have restarted my network
+2008-03-27T17:04:00.000Z	Moppa	unop_	 - it still doesn't work. and i have restarted my network
+2008-03-27T17:06:00.000Z	Moppa	unop_	- www.moppa.se is an alias for hackback.servebeer.com. and then my externat ip-adress. I'm guessing i shall enter hackback.servebeer.com as host?
+2008-03-27T17:07:00.000Z	Moppa	unop_	- nope, still routerlogin
+2008-03-27T17:08:00.000Z	Moppa	unop_	- www.moppa.se is an alias for hackback.servebeer.com. hackback.servebeer.com has adress 213.64.134.153

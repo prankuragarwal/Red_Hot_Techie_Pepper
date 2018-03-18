@@ -1,0 +1,18 @@
+2011-06-22T11:15:00.000Z	foufis		hi,i just installed a new cd rom drive but ubuntu does not detect it..i see it in /media/cdrom. i cannot use it? any ideas?
+2011-06-22T11:16:00.000Z	dinkdink	foufis	apt-get wodim then wodim --devices
+2011-06-22T11:19:00.000Z	dinkdink	foufis	what are trying to do with what
+2011-06-22T11:19:00.000Z	dinkdink	foufis	what is on the disk in the driver
+2011-06-22T11:20:00.000Z	foufis	dinkdink	i tried different cds (.iso,audio,movie) nothing works...
+2011-06-22T11:21:00.000Z	dinkdink	foufis	what's in your fstab
+2011-06-22T11:22:00.000Z	dinkdink	foufis	sudoo mount -t iso9666 /dev/scd0 /media/cdrom
+2011-06-22T11:23:00.000Z	foufis	dinkdink	no iso9660 in cat /proc/filesystems
+2011-06-22T11:24:00.000Z	dinkdink	foufis	what is on the cd
+2011-06-22T11:29:00.000Z	dinkdink	foufis	you don't mount a blank cd for writing
+2011-06-22T11:29:00.000Z	dinkdink	foufis	the burning software hits up /dev/scd0
+2011-06-22T11:30:00.000Z	foufis	dinkdink	oh ok..but how can it detect it? i go to brasero and says "insert a blank cd" (it is already in)
+2011-06-22T11:32:00.000Z	dinkdink	foufis	if it is a cd and you want to expand an iso on it sudo wodim -eject -tao speed=96 dev=/dev/scd0 -v -data /path/to/image.iso
+2011-06-22T11:34:00.000Z	dinkdink	foufis	if it is a dvd and you want to exxpand an iso on it sudo growisofs -dvd-compat -Z /dev/scd0=/path/to/image.iso
+2011-06-22T11:36:00.000Z	foufis	dinkdink	so i have to do everything via terminal? is there a way to fix it permanently? to mount eveytime i plug a cd in no matter what is on the cd?
+2011-06-22T11:37:00.000Z	dinkdink	foufis	i believe mounting drives is configurable in fstab but i dont remember what it is
+2011-06-22T11:38:00.000Z	foufis	dinkdink	ok i ll search in google, just wanted to know where to focus...thnx
+2011-06-22T11:38:00.000Z	dinkdink	foufis	but blank media you dont need to do anything but know where your device is unless using the graphical burning software

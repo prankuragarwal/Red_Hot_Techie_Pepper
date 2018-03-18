@@ -1,0 +1,18 @@
+2011-04-09T01:39:00.000Z	davers		why would changing my router ip make vhosts stop working
+2011-04-09T01:39:00.000Z	davers		doesn't make any sense
+2011-04-09T01:40:00.000Z	davers		ok sec
+2011-04-09T01:40:00.000Z	candyban	davers	asyncronous routing ?
+2011-04-09T01:59:00.000Z	candyban	davers	is your dns still pointing to the old internal ip address?
+2011-04-09T02:00:00.000Z	davers	candyban	no i updated my router
+2011-04-09T02:00:00.000Z	davers	candyban	then only think that changed was my internal ip
+2011-04-09T02:01:00.000Z	candyban	davers	I have not been following the complete thread ... but first make sure your DNS is pointing to the correct server
+2011-04-09T02:01:00.000Z	davers	candyban	it is i can get to the default site using a vhost url
+2011-04-09T02:01:00.000Z	davers	candyban	which is the problem
+2011-04-09T02:02:00.000Z	davers	candyban	it doesn't go to the right documentroot of the vhost
+2011-04-09T02:03:00.000Z	candyban	davers	check your /etc/hosts file
+2011-04-09T02:03:00.000Z	davers	candyban	did that already
+2011-04-09T02:04:00.000Z	candyban	davers	and use NameVirtualHost *:80
+2011-04-09T02:04:00.000Z	davers	candyban	for all vhosts?
+2011-04-09T02:06:00.000Z	candyban	davers	you need the VirtualHost *:80 too
+2011-04-09T02:07:00.000Z	candyban	davers	apache will check the hostname in "ServerName" or "ServerAlias" directive
+2011-04-09T02:10:00.000Z	candyban	davers	what is the output of "apache2ctl -t -D DUMP_VHOSTS" ?

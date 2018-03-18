@@ -1,0 +1,19 @@
+2005-02-15T16:42:00.000Z	geppy		I've just patched and built a new kernel, and put it in /boot.  How do I need to reconfigure GRUB to recognize it?
+2005-02-15T16:43:00.000Z	geppy		Do I need to run 'grub-install /dev/hda4'?
+2005-02-15T16:43:00.000Z	geppy		ermm.... 3
+2005-02-15T16:43:00.000Z	geppy		 /dev/hda3 is my root directory
+2005-02-15T16:44:00.000Z	snowblink	geppy	edit /boot/grub/menu.lst
+2005-02-15T16:47:00.000Z	snowblink	geppy	mkinitrd
+2005-02-15T16:48:00.000Z	geppy	snowblink	In the kernel build tree?
+2005-02-15T16:50:00.000Z	snowblink	geppy	Are you using ext3?
+2005-02-15T16:51:00.000Z	snowblink	geppy	then you should create one
+2005-02-15T16:51:00.000Z	geppy	snowblink	 Alright.
+2005-02-16T17:00:00.000Z	snowblink	geppy	you didn't make your modules?
+2005-02-16T17:01:00.000Z	snowblink	geppy	did you make modules?
+2005-02-16T17:04:00.000Z	geppy	snowblink	 I built the realtime-lsm module.
+2005-02-16T17:04:00.000Z	snowblink	geppy	when you were compiling your kernel. You did make dep; make modules; make modules_install?
+2005-02-16T17:05:00.000Z	geppy	snowblink	Oh, no.  I just ran make modules_install
+2005-02-16T17:05:00.000Z	geppy	snowblink	 It didn't say to run 'make dep' or 'make modules' in the INSTALL or README files, but I guess that they assumed you should know that. =)
+2005-02-16T06:08:00.000Z	snowblink	geppy	mkinitrd -o /boot/initrd-2.blahblah.img
+2005-02-16T06:08:00.000Z	geppy	snowblink	But how do I specify the kernel to use for building it?  I think I've found the answer on redhat.com
+2005-02-16T06:10:00.000Z	geppy	snowblink	mkinitrd -o /boot/initrdblahblah 2.6.<rest-of-desired-kernel-designation>

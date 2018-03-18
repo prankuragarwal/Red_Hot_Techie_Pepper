@@ -1,0 +1,23 @@
+2005-09-18T13:09:00.000Z	WMCoolmon		i've gotten rid of everything that uses it
+2005-09-18T13:10:00.000Z	WMCoolmon		tried both
+2005-09-18T13:10:00.000Z	WMCoolmon		if i do install, i get "dpkg-deb: subprocess paste killed by signal (Broken pipe)
+2005-09-18T13:10:00.000Z	WMCoolmon		"
+2005-09-18T13:11:00.000Z	WMCoolmon		if i do remove, i get "dpkg: error processing python2.4-opengl (--remove):
+2005-09-18T13:11:00.000Z	WMCoolmon		 Package is in a very bad inconsistent state - you should
+2005-09-18T13:11:00.000Z	WMCoolmon		 reinstall it before attempting a removal.
+2005-09-18T13:11:00.000Z	WMCoolmon		terminate called after throwing an instance of 'std::logic_error'
+2005-09-18T13:11:00.000Z	WMCoolmon		  what():  basic_string::_S_construct NULL not valid
+2005-09-18T13:11:00.000Z	WMCoolmon		Aborted
+2005-09-18T13:11:00.000Z	topyli	WMCoolmon	you're trying plain 'apt-get -f install' with no arguments?
+2005-09-18T13:11:00.000Z	WMCoolmon	topyli	yes
+2005-09-18T13:12:00.000Z	topyli	WMCoolmon	python2.4-opengl is an argument. lose it
+2005-09-18T13:13:00.000Z	topyli	WMCoolmon	sounds like your system is in a bad state. you could try removing the package with dpkg and --force
+2005-09-18T13:14:00.000Z	WMCoolmon	topyli	i'm trying it with build-dep, looks like there's some issues there that synaptic and apt-get didn't tell me about :|
+2005-09-18T13:16:00.000Z	WMCoolmon	topyli	nope, didn't work...the problem seems to be that apt-get has cached the package as the very first item
+2005-09-18T13:17:00.000Z	topyli	WMCoolmon	dpkg doesn't care about apt
+2005-09-18T13:18:00.000Z	topyli	WMCoolmon	there's a file you can edit somewhere in /var to fool dpkg into thinking the package is ok. still looking
+2005-09-18T13:18:00.000Z	WMCoolmon	topyli	i tried dpkg -r --force-all, it just tells me the package is in an inconsistent state
+2005-09-18T13:18:00.000Z	WMCoolmon	topyli	do you know where packages from apt are cached?
+2005-09-18T13:18:00.000Z	topyli	WMCoolmon	/var/lib/dpkg/status. make sure to make a backup
+2005-09-18T13:19:00.000Z	topyli	WMCoolmon	/var/cache/apt/archives. but this is not an apt problem imo
+2005-09-18T13:22:00.000Z	topyli	WMCoolmon	obviously it makes it hard for dpkg to install things :)

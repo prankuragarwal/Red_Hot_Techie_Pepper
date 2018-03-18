@@ -1,0 +1,21 @@
+2009-11-05T01:51:00.000Z	alazyworkaholic		In karmic I found this new iBus thing under preferences. What is it?
+2009-11-05T01:51:00.000Z	trism	alazyworkaholic	it is an input method manager, let's you type in other languages
+2009-11-05T01:52:00.000Z	alazyworkaholic	trism	ok. I have to work in both English & Portuguese. I've been using the alt-gr US keyboard layout with fair success. What's this new IBus supposed to do better?
+2009-11-05T01:54:00.000Z	trism	alazyworkaholic	I imagine very little for portuguese, since the characters are latin...but with languages with completely difference characters sets, it allows you to type the words phonetically and replaces them with the correct characters (or gives you a menu to choose between several possible mappings)
+2009-12-17T00:23:00.000Z	trism	alazyworkaholic	if grub isn't detecting it, you may be better off specifying the entry manually in /etc/grub.d/40_custom
+2009-12-17T00:24:00.000Z	alazyworkaholic	trism	sorry, I've no idea what lines to put there. Can you help?
+2009-12-17T00:26:00.000Z	trism	alazyworkaholic	there is an example here https://wiki.ubuntu.com/Grub2#User-defined Entries , you should copy the menuentry "Ubuntu*" { } lines and try to set the correct values for the location of your fedora kernel, initrd and root partition
+2009-12-17T00:27:00.000Z	trism	alazyworkaholic	ignore the echo and cat lines, 40_custom is set up by default to just copy the menuentries you add to grub.cfg
+2009-12-17T00:29:00.000Z	trism	alazyworkaholic	after that just sudo update-grub; and it will be added to grub.cfg. Be aware that in grub 2, hard drive numbers still start at 0, but partitions now start at 1, so if the boot partition of fedora was /dev/sda3, it would be (hd0,3)
+2009-12-17T00:39:00.000Z	alazyworkaholic	trism	thanks a lot for your help, but I don't know how/where to get the correct lines for root=UUID=(bunch of numbers) for the Fedora install. Any idea?
+2009-12-17T00:44:00.000Z	trism	alazyworkaholic	you can use sudo blkid /dev/sda3 (whatever the name of the partition with fedora root is) to get the UUID
+2009-12-17T00:45:00.000Z	trism	alazyworkaholic	you could also just try root=/dev/sda3 (again whatever the correct partition is)
+2009-12-17T00:51:00.000Z	trism	alazyworkaholic	surprised there isn't an initrd there...initrd strickly necessary, but the kernel modules required to access your hard drives usually need to be compiled into the kernel if you don't use an initrd...hmm
+2009-12-17T00:51:00.000Z	trism	alazyworkaholic	isn't necessary I mean
+2009-12-17T00:56:00.000Z	alazyworkaholic	trism	maybe it only appears after 1st boot, like folders after adding a user?? There are these folders: efi, grub, lost+found ; & these files: config-2.6.31.5-127.fc12.x86_64, elf-memtest86+-4.00 initramfs-2.6.31.5-127.fc12.x86_64.img, memtest86+-4.00 System.map-2.6.31.5-127.fc12.x86_64, vmlinz-2.6.31.5-127.fc12.x86_64 ; So what should I do about the initrd line? Eliminate it?
+2009-12-17T00:57:00.000Z	trism	alazyworkaholic	you want initramfs I beleve
+2009-12-17T00:57:00.000Z	alazyworkaholic	trism	oh, so the initramfs...img file should take the place of the initrd...img file? Two names for basically the same thing?
+2009-12-17T00:58:00.000Z	trism	alazyworkaholic	yeah, initrd stands for initial ram disk
+2009-12-17T00:58:00.000Z	trism	alazyworkaholic	so, initramfs (initial ram file system) would make sense to me
+2009-12-17T00:59:00.000Z	alazyworkaholic	trism	Ok, thanks a lot for the help. I'll go try it out.
+2009-12-17T00:59:00.000Z	trism	alazyworkaholic	good luck

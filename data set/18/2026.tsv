@@ -1,0 +1,18 @@
+2010-09-10T02:19:00.000Z	galcha		guys I have a problem. Modifying my modprobe.conf file with livecd and it doesn't save it.
+2010-09-10T02:20:00.000Z	galcha		Can anyone help out with modiying config files under live cd?
+2010-09-10T02:21:00.000Z	galcha		Can you modify config files with a live cd?
+2010-09-10T02:22:00.000Z	erUSUL	galcha	yes why not ?
+2010-09-10T02:22:00.000Z	galcha	erUSUL	Well it doesn't seem to be saving mine! Everytime I modify and save the setting is gone when I reboot.
+2010-09-10T02:23:00.000Z	erUSUL	galcha	what do you do ? do oyu mount the ubuntu partition and edit /mount/point/etc/whateverfileineedtoedit ?
+2010-09-10T02:24:00.000Z	galcha	erUSUL	Yes the drive is mounted to /media. I then modify the file inside using nano and save. I then unmount the drive and reboot.
+2010-09-10T02:24:00.000Z	erUSUL	galcha	what file is this ?
+2010-09-10T02:25:00.000Z	galcha	erUSUL	blacklist.conf for modproble.
+2010-09-10T02:25:00.000Z	erUSUL	galcha	should work. maybe ou need to chroot and rebuilt initramfs ?
+2010-09-10T02:26:00.000Z	erUSUL	galcha	« sudo update-initramfs -u » once you chrooted
+2010-09-10T02:27:00.000Z	galcha	erUSUL	Ok I'll follow those instructions but do you think there is some way I could load my installed ubuntu. I'm getting a fatal error module not found error and the boot process just sits there. Can this be bypassed? Then I can modify the blacklist file through there.
+2010-09-10T02:28:00.000Z	erUSUL	galcha	the livecd has an option to boot a hard disk intall. dunno how well it works
+2010-09-10T02:31:00.000Z	galcha	erUSUL	Can you explain your procedure for using chroot and initramfs?
+2010-09-10T02:33:00.000Z	erUSUL	galcha	mount ubuntu install. then bind mount dev sys and proc « sudo mount -B /sys/ /mount/point/sys/ » « sudo mount -B /proc/ /mount/point/proc/ » « sudo mount -B /dev/ /mount/point/dev/ ». then chroot « sudo chroot /mount/point/ » and run the command « sudo update-initramfs -u »
+2010-09-10T02:34:00.000Z	galcha	erUSUL	Ok and once I have that done where will the /etc/modprobe.d folder be?
+2010-09-10T02:35:00.000Z	erUSUL	galcha	after the chrrot it will be in /etc/modprobe.d/
+2010-09-10T02:35:00.000Z	galcha	erUSUL	Aaaah ok I thought it was only dev sys and proc that were mounted?

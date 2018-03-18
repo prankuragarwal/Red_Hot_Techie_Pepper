@@ -1,0 +1,19 @@
+2007-08-05T15:08:00.000Z	crazyman		i'm back in heaven thank you!
+2007-08-05T15:09:00.000Z	crazyman		that was it, just apparently ubuntu failed to add that resolution upon install
+2007-08-05T15:11:00.000Z	crazyman		malachi ive been doing so much configuring and downloading the past few days, this sucks anyways .. i want to back up the whole hard-drive in case anything goes wrong it can just be formatted as a whole from an external usb backup device and put back to this state, is there a program that does this?
+2007-08-05T15:11:00.000Z	crazyman		k thanks
+2007-08-05T15:12:00.000Z	crazyman		this would also back up my windows partition?
+2007-08-05T15:14:00.000Z	crazyman		malachi, what im talking about its like a blind back up.. that just takes the whole drive and dumps it on my usb drive..
+2007-08-05T15:15:00.000Z	gordonjcp	crazyman	if your USB device is bigger than your hard disk, and you don't mind clobbering everything on the USB drive, you could use dd
+2007-08-05T15:15:00.000Z	gordonjcp	crazyman	you might be able to so something ingenious and a little bit evil with cat, gzip and pipes
+2007-08-05T15:16:00.000Z	gordonjcp	crazyman	how big is the drive you want to back up, and how big is the USB drive?
+2007-08-05T15:16:00.000Z	gordonjcp	crazyman	ah, plenty space
+2007-08-05T15:17:00.000Z	gordonjcp	crazyman	you *could* do something like dd if=/dev/sda of=/mnt/wherever/backup.img
+2007-08-05T15:17:00.000Z	gordonjcp	crazyman	you'd probably want to set a block size too
+2007-08-05T15:18:00.000Z	crazyman	gordonjcp	so then lets say my hard drive gets erased.. how would i go about bring it back to normal?
+2007-08-05T15:18:00.000Z	gordonjcp	crazyman	boot off a rescue CD of some sort, mount the USB drive, then dd the image back over the hard disk ;-)
+2007-08-05T15:19:00.000Z	gordonjcp	crazyman	yup
+2007-08-05T15:19:00.000Z	gordonjcp	crazyman	dd will pull every single bit of data off the device
+2007-08-05T15:19:00.000Z	gordonjcp	crazyman	another handy one is dd if=/dev/zero of=/dev/sda count=1 bs=512
+2007-08-05T15:19:00.000Z	gordonjcp	crazyman	that will zero out the mbr
+2007-08-05T15:20:00.000Z	gordonjcp	crazyman	if things get hopelessly screwed up you sometimes need to zap the MBR and just go from scratch

@@ -1,0 +1,23 @@
+2008-02-29T09:57:00.000Z	szx0		When configuring software RAID... how many HD should I create?
+2008-02-29T09:57:00.000Z	szx0		When configuring software RAID... how many HD (* correction MD)  should I create?
+2008-02-29T09:57:00.000Z	xtknight	szx0	well in any case make sure your /boot partition is not a raid partition
+2008-02-29T09:57:00.000Z	xtknight	szx0	an MD is just a partition
+2008-02-29T09:58:00.000Z	szx0	xtknight	right but how many do I need to make?
+2008-02-29T09:58:00.000Z	xtknight	szx0	well probably one for / and one for /home at maximum
+2008-02-29T09:58:00.000Z	xtknight	szx0	you really only need a /
+2008-02-29T09:58:00.000Z	xtknight	szx0	but i guess you can use RAID for swap.. i dont know if that's a good idea
+2008-02-29T09:59:00.000Z	szx0	xtknight	so I need to make a MD for every partition that I want for the RAID setup ?
+2008-02-29T09:59:00.000Z	xtknight	szx0	correct
+2008-02-29T09:59:00.000Z	szx0	xtknight	ok
+2008-02-29T09:59:00.000Z	xtknight	szx0	for example md0 can be a partition spanning hd1+hd2
+2008-02-29T10:00:00.000Z	szx0	xtknight	let me try this now
+2008-02-29T10:01:00.000Z	szx0	xtknight	so I should make another /boot on both Hard Disks, make it bootable but also don't make a MD for it ?
+2008-02-29T10:01:00.000Z	xtknight	szx0	make only one /boot partition on one hard disk
+2008-02-29T10:11:00.000Z	szx0	xtknight	I'm trying to install setup RAID1, I have two 300GB drives, I configured everything in the partitioner like u described...and told it to write it to disk, but now no matter which option I pick from the main menu it just dumps me right back in the partitioner! Is that Ubuntu's way of telling me something isn't right?
+2008-02-29T10:12:00.000Z	xtknight	szx0	did you mount a partition as /
+2008-02-29T10:12:00.000Z	xtknight	szx0	and /boot and swap
+2008-02-29T10:14:00.000Z	szx0	xtknight	well when i goto partion the disks it is asking me what I am going use the partition as... so i change it from ext3 to "physical volume for raid"... but once that option is chosen the mount point (i.e., "/") is gone and I have no where to define that now
+2008-02-29T10:15:00.000Z	xtknight	szx0	ok well that's fine.  you should designate two partitions as phys vol for RAID
+2008-02-29T10:15:00.000Z	xtknight	szx0	then you use the RAID partitioner that appears at the top.
+2008-02-29T10:15:00.000Z	xtknight	szx0	the raid partition has u create an MD device.  this md device's mountpoint can be set
+2008-02-29T10:16:00.000Z	szx0	xtknight	ahh yes yes I see now!!

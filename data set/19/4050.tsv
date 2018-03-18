@@ -1,0 +1,19 @@
+2009-04-19T19:07:00.000Z	itona		: System>Preferences>Session
+2009-04-19T19:08:00.000Z	itona		there it is...
+2009-04-19T19:08:00.000Z	itona		any idea how i may check if a file is older than a week within a shell-script?
+2009-04-19T19:09:00.000Z	thebackwash	itona	ls -l | grep filename
+2009-04-19T19:09:00.000Z	thebackwash		but that will just reveal it to yuo
+2009-04-19T19:09:00.000Z	thebackwash		not let you use the date for further processing
+2009-04-19T19:10:00.000Z	thebackwash	itona	actually, i think that might be the last modified date, not the creation date
+2009-04-19T19:11:00.000Z	itona	thebackwash	i want to know if it is older than a week. Pseudocode: if(age($file)>1w) echo "older"; endif;
+2009-04-19T19:12:00.000Z	thebackwash	itona	you want creation or modification date?
+2009-04-19T19:13:00.000Z	itona		modification
+2009-04-19T19:13:00.000Z	itona	thebackwash	modification
+2009-04-19T19:14:00.000Z	thebackwash	itona	do you want to use it in combination with other scripts, or to take a quick peek for yourself?
+2009-04-19T19:15:00.000Z	thebackwash	itona	because i *did* find some scripting tutorials dealing with file attributes, but ls -l will give you the modification date
+2009-04-19T19:16:00.000Z	itona		i want to create a backup reminder script.
+2009-04-19T19:16:00.000Z	thebackwash	itona	this will find all files older than 1 week old located at or below a given directory
+2009-04-19T19:16:00.000Z	thebackwash		find /YOUR/PATH/* -mtime +7
+2009-04-19T19:17:00.000Z	thebackwash	itona	also try the stat command
+2009-04-19T19:17:00.000Z	itona	thebackwash	thanks a lot!!
+2009-04-19T19:19:00.000Z	thebackwash	itona	you can also pass find the -exec flag, and, for instance, have it automatically back up those files

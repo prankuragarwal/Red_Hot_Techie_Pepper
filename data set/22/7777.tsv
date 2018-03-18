@@ -1,0 +1,22 @@
+2005-12-30T17:28:00.000Z	rabbit1		are those console apps?
+2005-12-30T17:29:00.000Z	rabbit1		it says to use XChat on the ubuntu site
+2005-12-30T09:36:00.000Z	rabbit1		if you access a fat32 drive from linux do permissions work at all?   what does setting permissions from linux do?
+2005-12-30T09:38:00.000Z	rabbit1		haven't done any yet.....  well I just partitioned the drive when I installed xp...  it's not formatted...
+2005-12-30T09:38:00.000Z	rabbit1		I'm going to format when I install ubuntu...
+2005-12-30T09:39:00.000Z	rabbit1		but I want to share a partition
+2005-12-30T09:39:00.000Z	rabbit1		and I'm trying to decide between fat32 and ext2 or 3
+2005-12-30T09:40:00.000Z	dabaR	rabbit1	there is a umask option for mounting fat.
+2005-12-30T09:41:00.000Z	dabaR	rabbit1	and other options. You likely can not change permissions after you mount. It is permissions during mount. run "man mount" in a terminal, and then read the section for fat. Then ask us what you do not get from there.
+2005-12-30T09:45:00.000Z	rabbit1	dabaR	I can set global permissions on the fat partition when I mount it....      but permissions aren't lasting?
+2005-12-30T09:49:00.000Z	rabbit1	dabaR	I can set global permissions on the fat partition when I mount it....      but permissions aren't lasting?
+2005-12-30T09:50:00.000Z	dabaR	rabbit1	what are you asking? the permissions are meaningful for a fat system only when it is mounted under linux, otherwise it is not meanignful. Just add the fat entry to /etc/fstab.
+2005-12-30T09:51:00.000Z	rabbit1	dabaR	if I use ext2 or 3 instead of fat32 for this shared partition, then permissions will be 1. persistent, and 2. different!  (not global umask)
+2005-12-30T09:52:00.000Z	dabaR	rabbit1	for ext3 permissions are meaningful, so yes.
+2005-12-30T09:52:00.000Z	dabaR	rabbit1	fat is a windows fs, so...windows does not have permissions.
+2005-12-30T09:54:00.000Z	dabaR	rabbit1	me? recommend? Not really, I never used either, but you can try what works better.
+2005-12-30T09:55:00.000Z	dabaR	rabbit1	and you can set up so that Ubuntu mounts your fat automatically, every time, with same permissions.
+2005-12-30T09:56:00.000Z	dabaR	rabbit1	what are global permissions?
+2005-12-30T09:59:00.000Z	rabbit1	dabaR	if you set the permissions when mounting, you use a bitmask.. every file will have the same permissions
+2005-12-30T09:59:00.000Z	dabaR	rabbit1	yes, that is right. I get what you mean now.
+2005-12-30T10:00:00.000Z	dabaR	rabbit1	and it is available, so I hear.
+2005-12-30T10:26:00.000Z	dabaR	rabbit1	it will treat it how the driver tells it.

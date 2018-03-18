@@ -1,0 +1,18 @@
+2010-08-28T04:30:00.000Z	eternalswd_work	RichardRaseley	 I can't tell completely your issue, but make sure ifconfig -a shows all of the devices, and you may want to look at /etc/udev/rules.d/70-persistent-net.rules
+2010-08-28T04:30:00.000Z	RichardRaseley	eternalswd_work	Thank you, ifconfig -a does show all devices
+2010-08-28T04:30:00.000Z	eternalswd_work	RichardRaseley	 what if you do sudo ifup eth1
+2010-08-28T04:31:00.000Z	RichardRaseley	eternalswd_work	It says that interface eht1 already configured.
+2010-08-28T04:33:00.000Z	eternalswd_work	RichardRaseley	 are they the same mac address, or different?
+2010-08-28T04:35:00.000Z	eternalswd_work	RichardRaseley	so you can't ping the ip address you set from within /etc/network/interfaces for eth1 or eth2?  maybe try uninstalling network-manager if it's installed
+2010-08-28T04:36:00.000Z	RichardRaseley	eternalswd_work	I can ping the IP address that is assigned to the adapter from the Ubuntu box itself.
+2010-08-28T04:41:00.000Z	eternalswd_work	RichardRaseley	so 192.168.1.0 / 24 works but the others don't?
+2010-08-28T04:41:00.000Z	RichardRaseley	eternalswd_work	Yes. Only things of note are that it was the first interface configured during setup and the only interface that has a default gateway defined.
+2010-08-28T04:44:00.000Z	eternalswd_work	RichardRaseley	are you sure the other two NICs are bridged properly in Hyper-V?  Make sure they are External and not Internal or Private
+2010-08-28T04:45:00.000Z	RichardRaseley	eternalswd_work	Yes, I am sure they are connected to the proper external network with the proper 802.1Q tag associated with them.
+2010-08-28T04:46:00.000Z	eternalswd_work	RichardRaseley	have you tried running /etc/init.d/networking restart or restarting the server?
+2010-08-28T04:47:00.000Z	RichardRaseley	eternalswd_work	I have tried restarting network, but not a full server reboot
+2010-08-28T04:48:00.000Z	eternalswd_work	RichardRaseley	jk_ you can always "sudo -s" to get a root shell, run the one command without sudo, then exit the root shell.
+2010-08-28T04:48:00.000Z	RichardRaseley	eternalswd_work	OK, will try that.
+2010-08-28T04:49:00.000Z	RichardRaseley	eternalswd_work	jk_ : OK, so I did that - now I will try to restart the server
+2010-08-28T04:51:00.000Z	RichardRaseley	eternalswd_work	jk_ : Well, after a server reboot I have the same symptoms.
+2010-08-28T04:59:00.000Z	RichardRaseley	eternalswd_work	I appreciate your help as well! Thanks a bunch to both.

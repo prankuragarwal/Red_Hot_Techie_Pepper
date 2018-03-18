@@ -1,0 +1,22 @@
+2011-07-30T07:06:00.000Z	emx		hello Guys
+2011-07-30T07:07:00.000Z	emx		I Have ubuntu 10.04 Server
+2011-07-30T07:07:00.000Z	emx		i want edit some thing like when i login @ ssh it's give me Welcome EmX and Some Text i want type it
+2011-07-30T07:07:00.000Z	emx		how can i do that ?
+2011-07-30T07:09:00.000Z	th0r	emx	near the end of the sshd config file there is a link to a 'banner'
+2011-07-30T07:10:00.000Z	emx	th0r	in /etc/ssh/sshd_config ?
+2011-07-30T07:10:00.000Z	th0r	emx	yes
+2011-07-30T07:10:00.000Z	th0r	emx	the banner file is a simple text file that is displayed at login
+2011-07-30T07:13:00.000Z	emx	th0r	 There Type no banner default path ?
+2011-07-30T07:14:00.000Z	th0r	emx	there is no default path...the full path/filename is defined in the config file
+2011-07-30T07:14:00.000Z	th0r	emx	you need to uncomment that line and put in whatever file you want to use. The filename entered there is the default, but notice it is a full path/filename
+2011-07-30T07:15:00.000Z	th0r	emx	oh....in debian it is /etc/issue.net. But you can put whatever filename you want there.
+2011-07-30T07:16:00.000Z	th0r	emx	take out the # and in place of None put the full path/filename
+2011-07-30T07:16:00.000Z	th0r	emx	then you need to do sudo service sshd restart to get it to read the new config
+2011-07-30T07:17:00.000Z	emx	th0r	 i need to make a file txt or what ? in /etc/ssh
+2011-07-30T07:18:00.000Z	th0r	emx	you can call the file anything, and put it just about anywhere. Just put the path/filename in the config file.
+2011-07-30T07:25:00.000Z	emx	th0r	 bro i have write banner
+2011-07-30T07:26:00.000Z	th0r	emx	there should only be one banner line. You can leave the second one alone...it is commented out so it isn't read
+2011-07-30T07:27:00.000Z	th0r	emx	the # at the beginning makes it a comment, so it isn't read by sshd
+2011-07-30T07:34:00.000Z	emx	th0r	 bro thanks but when i put ip and username its show me that msg
+2011-07-30T07:38:00.000Z	th0r	emx	that is a login banner, which I think is /etc/issue by default
+2011-07-30T07:40:00.000Z	th0r	emx	there is also the message of the day, /etc/motd

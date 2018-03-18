@@ -1,0 +1,18 @@
+2008-04-30T03:03:00.000Z	yoanis		hi there
+2008-04-30T03:04:00.000Z	yoanis		i'm running ubuntu 7.10 and i just bought 4GB of RAM (2x2GB) and for some reason only 2.5GB are recognized. any thoughts why this happens?
+2008-04-30T03:04:00.000Z	Cidan	yoanis	32 bit?
+2008-04-30T03:05:00.000Z	yoanis	Cidan	AMD 64bit
+2008-04-30T03:05:00.000Z	Cidan	yoanis	Odd... how do you know only 2.5 are detected?
+2008-04-30T03:06:00.000Z	Cidan	yoanis	cat /proc/meminfo | grep MemTotal
+2008-04-30T03:07:00.000Z	yoanis	Cidan	give me a minute please
+2008-04-30T03:07:00.000Z	Cidan	yoanis	kk
+2008-04-30T03:08:00.000Z	yoanis	Cidan	well i'm running a 32bit kernel
+2008-04-30T03:08:00.000Z	Cidan	yoanis	There's your problem. :)
+2008-04-30T03:08:00.000Z	yoanis	Cidan	why?
+2008-04-30T03:09:00.000Z	Cidan	yoanis	Complex, the OS will address in the same block of space for RAM the memory for other things on your bus, PCI cards, video cards, and so on.
+2008-04-30T03:09:00.000Z	Cidan	yoanis	64 bit OS installs "fix" this issue by raising the limit.
+2008-04-30T03:10:00.000Z	yoanis	Cidan	thanks
+2008-04-30T03:10:00.000Z	yoanis	Cidan	i will give it a try
+2008-04-30T03:11:00.000Z	Cidan	yoanis	kk, you can't just install the 64 bit kernel though.  You will run into problems.
+2008-04-30T03:20:00.000Z	yoanis	Cidan	some laptops accept up to 4GB of ram and they are only 32bits
+2008-04-30T03:21:00.000Z	Cidan	yoanis	And you will not see all four gigs.

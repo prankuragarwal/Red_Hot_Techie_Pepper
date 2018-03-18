@@ -1,0 +1,24 @@
+2009-06-02T00:18:00.000Z	korjata		Can somebody help me out? I recently formatted a second internal hard drive and now it won't let me mount it outside of gparted.
+2009-06-02T00:19:00.000Z	mdm	korjata	add it to /etc/fstab
+2009-06-02T00:19:00.000Z	korjata	mdm	how?
+2009-06-02T00:33:00.000Z	korjata	mdm	I have fstab open and it is there.
+2009-06-02T00:35:00.000Z	korjata	mdm	I also notice it says ntfs-3g in the third column, which is wrong.
+2009-06-02T00:37:00.000Z	mdm	korjata	what is the file system of the partition? also what does mount -a tell you?
+2009-06-02T00:38:00.000Z	korjata	mdm	^^^
+2009-06-02T00:38:00.000Z	mdm	korjata	use sudo and your favorite editor, also I doubt the UUID is the same if you took a windows NTFS partiton and repartitioned it as ext3
+2009-06-02T00:39:00.000Z	korjata	mdm	Yes I did have it as ntfs.
+2009-06-02T00:40:00.000Z	mdm	korjata	then you will need to look in /dev/dsk/by-uuid to see what the new uuid is, if it is not there restart udev
+2009-06-02T00:40:00.000Z	mdm	korjata	err /dev/disk/by-uuid
+2009-06-02T00:42:00.000Z	korjata	mdm	okay, I'm in that folder.
+2009-06-02T00:42:00.000Z	mdm	korjata	ls -l that folder, see what uuid matches the partition (well really the filesystem) and edit fstab with that value
+2009-06-02T00:45:00.000Z	korjata	mdm	Where would I put it?
+2009-06-02T00:46:00.000Z	mdm	korjata	follow the bots links on how to make an fstab entry its basicly the device, mount point, fs type, optioons, dump and pass
+2009-06-02T00:51:00.000Z	korjata	mdm	I don't have permissions to save the file.....
+2009-06-02T00:51:00.000Z	mdm	korjata	did you remeber to start the editor with sudo?
+2009-06-02T00:52:00.000Z	korjata	mdm	 brb.
+2009-06-02T00:55:00.000Z	korjata	mdm	I have: UUID=f430d80c-592e-4969-800c-dd6535a532f6 /media/Local\040Disk ext3 defaults 0 0
+2009-06-02T00:55:00.000Z	mdm	korjata	it looks fine except that  /media/Local\040Disk
+2009-06-02T00:56:00.000Z	korjata	mdm	There's a space there.
+2009-06-02T00:58:00.000Z	korjata	mdm	So I get rid of the 040 and put a space there then restart?
+2009-06-02T00:58:00.000Z	mdm	korjata	no need to restart, and make sure that mount point exists
+2009-06-02T01:00:00.000Z	korjata	mdm	DBus error org.gtk.Private.RemoteVolumeMonitor.Failed: An operation is already pending       is what I get with the 040 there, without it's just "there's no Local/"

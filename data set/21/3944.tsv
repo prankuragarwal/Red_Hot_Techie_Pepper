@@ -1,0 +1,21 @@
+2009-07-18T07:19:00.000Z	cwillu	ksc654	ctrl-alt-f1, not ctrl-alt-f
+2009-07-18T07:20:00.000Z	ksc654	cwillu	I tried all the F# keys.
+2009-07-18T07:21:00.000Z	cwillu	ksc654	you're just trying to get a vterm?  is x itself working?
+2009-07-18T07:22:00.000Z	ksc654	cwillu	X is all garbled from installing the ATI driver. I'm trying to drop to a command line so I can troubleshoot.
+2009-07-18T07:22:00.000Z	cwillu	ksc654	boot up into the recovery mode kernel (just pick it off the list in grub when you boot)
+2009-07-18T07:22:00.000Z	cwillu	ksc654	the fail-safe xorg option that will show up there may be enough to get you going again, failing that, moving /etc/X11/xorg.conf out of the way may also work
+2009-07-18T07:39:00.000Z	cwillu	ksc654	okay, in the device section, add a new line:  driver "vesa"
+2009-07-18T07:33:00.000Z	cwillu	ksc654	the recovery x option didn't work?
+2009-07-18T07:33:00.000Z	cwillu	ksc654	(should have been an option named something like that above the root prompt option)
+2009-07-18T07:33:00.000Z	ksc654	cwillu	Nope, it mentioned something about overwriting a custom config file. After it finished I tried booting again. No change.
+2009-07-18T07:36:00.000Z	cwillu	ksc654	sudo nano /etc/X11/xorg.conf, look for a line that says driver "fglrx", and change it to driver "vesa".  That should get you up and running.  Then you can try setting it to "ati", and finally, using the hardware drivers app in the admin menu, reenable the proprietary driver
+2009-07-18T07:39:00.000Z	ksc654	cwillu	xorg.conf is only 33 lines long. Most are comments. There's a "Device", "Monitor" and "Screen" section. "Device" has only one entry under it: Identifier "Configured Video Device"
+2009-07-18T07:40:00.000Z	cwillu	ksc654	which version of ubuntu are you on again?
+2009-07-18T07:40:00.000Z	ksc654	cwillu	Is X case sensitive?
+2009-07-18T07:40:00.000Z	ksc654	cwillu	9.04
+2009-07-18T07:40:00.000Z	cwillu	ksc654	I don't believe so
+2009-07-18T07:42:00.000Z	ksc654	cwillu	Saved my changes and tried rebooting. Still scrambled. Anything else I can try?
+2009-07-18T07:49:00.000Z	ksc654	cwillu	Still no change after adding the line to xorg.conf. Anything else you can think of?
+2009-07-18T07:49:00.000Z	cwillu	ksc654	not offhand, but I _have_ been up for 22 hours :p
+2009-07-18T07:50:00.000Z	ksc654	cwillu	You too?
+2009-07-18T07:52:00.000Z	ksc654	cwillu	Thanks for your help thus far.

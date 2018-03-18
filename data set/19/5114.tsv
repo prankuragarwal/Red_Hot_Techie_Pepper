@@ -1,0 +1,19 @@
+2008-09-04T21:08:00.000Z	Captain_Redbeard		Anyone in the mood for helping me with a command that works fine from commandline but not from a crontab?
+2008-09-04T21:09:00.000Z	dres	Captain_Redbeard	shoot
+2008-09-04T21:09:00.000Z	Captain_Redbeard	dres	ok here goes, /bin/date >> /chroot/var/weblogs/pokerroom/network_cron_log && chroot /chroot /bin/bash -c "cd /opt/ongame/boffice/pokernetwork.phpincl ; /usr/local/bin/php -d include_path=.:/usr/local/lib/php/ network/core/cron/cron.php >> /var/weblogs/pokerroom/network_cron_log"
+2008-09-04T21:11:00.000Z	dres	Captain_Redbeard	can you (on the commandline) add < /dev/null before each command and see what that changes.
+2008-09-04T21:15:00.000Z	dres	Captain_Redbeard	php reads stdin.  in cron that doesn't exist.  what's the php line meant to do?
+2008-09-04T21:15:00.000Z	Captain_Redbeard	dres	the PHP does some random mySQL queries
+2008-09-04T21:16:00.000Z	dres	Captain_Redbeard	where's it getting the input to do that?  what file is it reading?
+2008-09-04T21:16:00.000Z	Captain_Redbeard	dres	well it reads network/core/cron/cron.php which loads a bunch of other files that actually does the magic
+2008-09-04T21:20:00.000Z	dres	Captain_Redbeard	what happens if you add "< /dev/null" after cron.php on the command line?
+2008-09-04T21:21:00.000Z	Captain_Redbeard	dres	gimme a sec and I'll check it out
+2008-09-04T21:22:00.000Z	Captain_Redbeard	dres	why would i like to pipe /dev/null in to the cron.php file?
+2008-09-04T21:22:00.000Z	dres	Captain_Redbeard	simulating cron (to some extent).
+2008-09-04T21:23:00.000Z	Captain_Redbeard	dres	it still works
+2008-09-04T21:24:00.000Z	dres	Captain_Redbeard	then like others suggested you need more debug info.  I'd move the command to a script to run from cron.  add set -x in the script and see what the output is.
+2008-09-04T21:24:00.000Z	Captain_Redbeard	dres	gimme a sec and I'll try it then :P
+2008-09-04T21:27:00.000Z	Captain_Redbeard	dres	is there a way to force a cron to run before its time?
+2008-09-04T21:28:00.000Z	dres	Captain_Redbeard	not that I'm aware of.
+2008-09-04T21:28:00.000Z	Captain_Redbeard	dres	ah well... then we play the waiting game I suppose... two minutes to go
+2008-09-04T21:30:00.000Z	Captain_Redbeard	dres	no addition imformation I'm afraid

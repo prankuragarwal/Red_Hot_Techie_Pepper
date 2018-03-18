@@ -1,0 +1,22 @@
+2010-12-22T22:58:00.000Z	_pg_		can someone help me ssh? im getting operation timed out and the server has port 22 open
+2010-12-22T22:59:00.000Z	bonjoyee	_pg_	firewall?
+2010-12-22T23:00:00.000Z	_pg_	bonjoyee	isnt ssh to cinrcumvent my (remote) firewall?
+2010-12-22T23:01:00.000Z	bonjoyee	_pg_	how?
+2010-12-22T23:02:00.000Z	bonjoyee	_pg_	if theres a  firewall between your pc and router(iptables)..it'll block port 22
+2010-12-22T23:03:00.000Z	bonjoyee	_pg_	if its a timeout..it has to do something with the firewall/port forwarding
+2010-12-22T23:04:00.000Z	bonjoyee	_pg_	of course not!
+2010-12-22T23:05:00.000Z	bonjoyee	_pg_	it has to listen on the wan interface
+2010-12-22T23:06:00.000Z	bonjoyee	_pg_	127.0.0.1 is for local connections...to get connected from internet..ssh has to listen on a wan interface
+2010-12-22T23:12:00.000Z	bonjoyee	_pg_	any chance you ip back home changed?..and do you have an auto ip update client installed back home
+2010-12-22T23:12:00.000Z	_pg_	bonjoyee	no client yet but ip hasnt changed. I can still vnc into it
+2010-12-22T23:14:00.000Z	bonjoyee	_pg_	if u can vnc...then please login back home..and check if 22 is open?
+2010-12-22T23:15:00.000Z	_pg_	bonjoyee	it is. locally and remotely
+2010-12-22T23:15:00.000Z	bonjoyee	_pg_	am i bothering u too much with my suggestions/questions?
+2010-12-22T23:16:00.000Z	_pg_	bonjoyee	no not at all, ust replying to many ppls
+2010-12-22T23:18:00.000Z	bonjoyee	_pg_	try this : dig XXX.dyndns.org and then try ssh <ipaddress that is returned by dig >
+2010-12-22T23:24:00.000Z	bonjoyee	_pg_	vnc, bittorent work on ports higher than 1056...which are not checked by default by most routers!
+2010-12-22T23:25:00.000Z	_pg_	bonjoyee	what do you mean "not checked?
+2010-12-22T23:27:00.000Z	bonjoyee	_pg_	dyndns could be seeing port 22 open on your router..not necessarily on your server?
+2010-12-22T23:27:00.000Z	_pg_	bonjoyee	port 22 is open on the server (127.0.0.1) and from external ip check from internet
+2010-12-22T23:31:00.000Z	bonjoyee	_pg_	if u can somehow get to your server...give us the output of " sudo iptables -L" , "netstat -ltunp"
+2010-12-22T23:32:00.000Z	bonjoyee	_pg_	and im saying that based on u saying u can vnc home

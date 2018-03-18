@@ -1,0 +1,22 @@
+2010-06-25T04:15:00.000Z	aliendude3500		Hey guys, I'm a long time Ubuntu user, and a software developer who needs a bit of help helping a friend move their wubi Ubuntu Lucid Lynx installation to a dedicated partition. I have VNC and SSH access to their system. I tried the steps at http://lubi.sourceforge.net/lvpm.html to no avail.
+2010-06-25T04:16:00.000Z	aliendude3500		I couldn't get the partitionmanager package to install, and I couldn't find a newer version in the repositories. Any ideas?
+2010-06-25T04:16:00.000Z	aliendude3500		Unfortunately, I only have less than a gig to work with, as they maxed out their Ubuntu partition before asking me to help them resize their Windows partition and move Ubuntu to a new dedicated partition.
+2010-06-25T04:17:00.000Z	aliendude3500		The dedicated partition does not exist yet. I need to help them install partitionmanager to create that first.
+2010-06-25T04:18:00.000Z	aliendude3500		Unfortunately, I can't resize the Windows partition while in Ubuntu because of the fact it's mounted as the wubi host partition.
+2010-06-25T04:18:00.000Z	aliendude3500		Can anyone help me with this? I've been desperately trying to install the partition manager software in GRUB for the last hour...
+2010-06-25T04:19:00.000Z	codebrainz	aliendude3500	can you dd the wubi install?
+2010-06-25T04:21:00.000Z	codebrainz	aliendude3500	you could rsync the wubi install to another machine and then rsync it back after tweaking the partition table?
+2010-06-25T04:22:00.000Z	aliendude3500	codebrainz	Unfortunately, the wubi install is mounted. is moving the files while inside the installation really a good idea?
+2010-06-25T04:24:00.000Z	codebrainz	aliendude3500	rsync will copy the fs from theirs to yours, then you transfer back to a partition later.  only issues would be pseudo filesystems like /dev and such, which you can fixup afterwards
+2010-06-25T04:24:00.000Z	codebrainz	aliendude3500	of course the remote thing makes everything a lot more of a pain
+2010-06-25T04:25:00.000Z	codebrainz	aliendude3500	this is exactly what rsync does
+2010-06-25T04:27:00.000Z	codebrainz	aliendude3500	check the rsync manpage, something like 'rsync -ar -e ssh user@hostname:/ /home/you/backupdir'
+2010-06-25T04:27:00.000Z	codebrainz	aliendude3500	check the manpage first though, those options probably aren't 100%
+2010-06-25T04:28:00.000Z	codebrainz	aliendude3500	you can go either way, the former means you need a ssh on your local box
+2010-06-25T04:28:00.000Z	codebrainz	aliendude3500	*ssh server that is
+2010-06-25T04:29:00.000Z	aliendude3500	codebrainz	now will this only backup their home folder, or their whole linux filesystem?
+2010-06-25T04:30:00.000Z	codebrainz	aliendude3500	however you want, rsync is (in a sense) a super smart cp
+2010-06-25T04:32:00.000Z	aliendude3500	codebrainz	Okay, that's copying right now...
+2010-06-25T04:34:00.000Z	aliendude3500	codebrainz	is there anyway to exclude a folder from rsync, for example "/host", which contains their entire windows partition?
+2010-06-25T04:35:00.000Z	codebrainz	aliendude3500	yep, see the manpage, all the options are in there  (man rsync)
+2010-06-25T04:35:00.000Z	codebrainz	aliendude3500	it think it's --exclude

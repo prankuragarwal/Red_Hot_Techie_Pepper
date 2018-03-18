@@ -1,0 +1,19 @@
+2010-10-23T05:13:00.000Z	Roasted		not sure what's wrong with sudo
+2010-10-23T05:14:00.000Z	Roasted		I dont want system wide. I just want it for 1 folder.
+2010-10-23T05:14:00.000Z	Roasted		I guess I need windows-style openness with this share and it sucks when stuff is created in 755, requires me to have to reset perms just to keep working.
+2010-10-23T05:14:00.000Z	Roasted		yes, of ONE specific folder
+2010-10-23T05:14:00.000Z	Roasted		NOT system wide
+2010-10-23T05:15:00.000Z	Roasted		Muelli, I know about chmod.
+2010-10-23T05:16:00.000Z	Roasted		Muelli, the problem is I want two users to read/write to the same folder. They both belong to a gruop, and the perms are 770 on the folder.
+2010-10-23T05:16:00.000Z	Roasted		But when they create nw stuff, it comes in as 755, sot he other user cant write - only read. It's extremely frustrating to have to redo perms every efw minutes of the day.
+2010-10-23T05:17:00.000Z	Roasted		but AGAIN - group ID doesnt matter if the perms are read only - I need RW.
+2010-10-23T05:17:00.000Z	Roasted		wheres the 2 come into play?
+2010-10-23T05:18:00.000Z	__cool__	Roasted	are you talking about a samba share?
+2010-10-23T05:18:00.000Z	__cool__	Roasted	on samba it should be 'create mask = 775' in the con
+2010-10-23T05:21:00.000Z	__cool__	Roasted	and then there is 'force create mode' and 'directory mask' .... details in 'man smb.conf' :)  if you want something that works locally too, ACLs is the way to go
+2010-10-23T05:27:00.000Z	__cool__	Roasted	the problem is, there is no solution :[ ... think: you make a file in /a/b/c... inherit perms from /a oder /a/b or /c? why?
+2010-10-23T05:29:00.000Z	__cool__	Roasted	mixing local access with samba acces is not optimal anyway... locking comes to mind...
+2010-10-23T05:29:00.000Z	__cool__	Roasted	but! you could try a local smbmount to another location and access via that
+2010-10-23T05:30:00.000Z	__cool__	Roasted	here it works 'coo<tab>'
+2010-10-23T05:31:00.000Z	__cool__	Roasted	i mean you samba-mount the share on the local machine to somthing like /mnt/loopy ... then all acces goes through samba and respects the samba mask
+2010-10-23T05:37:00.000Z	__cool__	Roasted	no

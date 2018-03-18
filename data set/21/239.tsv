@@ -1,0 +1,21 @@
+2012-05-09T05:49:00.000Z	aJynks		I am trying to do this... - http://askubuntu.com/questions/123474/how-do-i-use-a-ntfs-drive-as-location-for-music-videos-etc : but I havn't run the ln -s command yet.. shouldn't I need to add the source directory in that ln -s command? Somthing like ln -s ~/Pictures /media/Data/Pictures ?
+2012-05-09T05:51:00.000Z	Cyberspaceloa	aJynks	if you "man ln" without the quotes it gives you the syntax
+2012-05-09T05:51:00.000Z	Cyberspaceloa	aJynks	"ln [OPTION]... TARGET" is the second form
+2012-05-09T05:53:00.000Z	Cyberspaceloa	aJynks	the first parameter is the TARGET for the symlink, if you don't supply a LINK_NAME it will place it in the current directory with the same name as the TARGET, in my experience
+2012-05-09T05:53:00.000Z	aJynks	Cyberspaceloa	ok.. i kinda read that with ln --help.. but I am not 100% understanding it... yeah but "what" is it linking? The root of the directoy you are currently in?
+2012-05-09T05:54:00.000Z	Cyberspaceloa	aJynks	ah, sorry. let me scroll through your link
+2012-05-09T05:55:00.000Z	aJynks	Cyberspaceloa	 I am trying to make "links" so that going into the dirs in my home directory take me to a larger different hdrive.. like.. ~/pictures .. I have a dir on a diffrent drive called pictures I want to link them so cd ~/pictures is in fact cd /media/Data/Pictures (sorry i ama noob am I making sense?)
+2012-05-09T05:56:00.000Z	Cyberspaceloa	aJynks	yes you're making sense
+2012-05-09T05:57:00.000Z	Cyberspaceloa	aJynks	the only reference to symlinks I'm seeing on your link is "ln -s /path/to/drive2/mount-point/Videos", is that to what you are referring?
+2012-05-09T05:58:00.000Z	aJynks		well yea that was the page I read.. but I do not understand the command.. as ther is no source specified? I want a link only for pictures and latter music to go to this other drive
+2012-05-09T05:59:00.000Z	Cyberspaceloa	aJynks	the first argument to ln is always the TARGET. With no LINK_NAME argument it will place the link in your current working directory
+2012-05-09T06:00:00.000Z	aJynks		What dose it call the link?
+2012-05-09T06:00:00.000Z	Cyberspaceloa	aJynks	so if you run that command in your home directory, the created link will reside in your home directory
+2012-05-09T06:00:00.000Z	Cyberspaceloa	aJynks	it will be the exact same as the TARGET identifier
+2012-05-09T06:01:00.000Z	aJynks	Cyberspaceloa	ok, and so this command... ln -s /media/Data/Pictures will make a link called Pictures in the directory I am currently in.. what if there is a directory wit hthat name in there already?
+2012-05-09T06:03:00.000Z	Cyberspaceloa	aJynks	that I'm not sure of offhand. I think the link will just fail, but you might want to read the manpage for it
+2012-05-09T06:03:00.000Z	Cyberspaceloa	aJynks	if you're a bit nervous about running the command, you can create some test files and directories to get a feel for it
+2012-05-09T06:04:00.000Z	Cyberspaceloa	aJynks	I often do that if I feel a bit hazy about the details of something
+2012-05-09T06:04:00.000Z	aJynks	Cyberspaceloa	yeah ok.. that is a idea! I'll do that brb
+2012-05-09T06:08:00.000Z	aJynks	Cyberspaceloa	yeah it errors - ln: failed to create symbolic link `./test': File exists - I guess I can just del the existing test dir and it worked.. so I supose I just rename the pictures dir, do the link then move all the contents into the new dir or somthing like that... thanks for the help
+2012-05-09T06:12:00.000Z	Cyberspaceloa	aJynks	no problem! Remember, manpages are your friend!

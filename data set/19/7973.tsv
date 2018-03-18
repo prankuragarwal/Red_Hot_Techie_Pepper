@@ -1,0 +1,19 @@
+2007-06-09T11:07:00.000Z	timmyd		when i compile a program on amd64, for some reason __x86_64__ isn't defined so i get the wrong __WORDSIZE defined... how can i fix this
+2007-06-09T11:07:00.000Z	khermans	timmyd	what program?
+2007-06-09T11:07:00.000Z	timmyd	khermans	anything that includes stdlib.h
+2007-06-09T11:08:00.000Z	khermans	timmyd	using gcc?
+2007-06-09T11:08:00.000Z	timmyd	khermans	yes
+2007-06-09T11:09:00.000Z	timmyd	khermans	zmigliozzi[away] : https://bugs.launchpad.net/ubuntu/+source/glibc/+bug/108946
+2007-06-09T11:10:00.000Z	khermans	timmyd	i run amd64
+2007-06-09T11:10:00.000Z	timmyd	khermans	did you install libc6-dev?
+2007-06-09T11:11:00.000Z	khermans	timmyd	yea
+2007-06-09T11:11:00.000Z	khermans	timmyd	build-essential
+2007-06-09T11:12:00.000Z	khermans	timmyd	is this on gutsy?
+2007-06-09T11:12:00.000Z	timmyd	khermans	i think this is feisty
+2007-06-09T11:13:00.000Z	khermans	timmyd	try compiling with -m64
+2007-06-09T11:14:00.000Z	timmyd	khermans	hm i just noticed m32 was on the command line
+2007-06-09T11:15:00.000Z	khermans	timmyd	yeah thats for a 32-bit binary
+2007-06-09T11:15:00.000Z	khermans	timmyd	install ia32-libs~n
+2007-06-09T11:15:00.000Z	khermans	timmyd	sudo aptitude install ia32-libs~n
+2007-06-09T11:19:00.000Z	timmyd	khermans	thanks, looks like the makefile i was using was setting -m32. i fixed the makefile. thanks again for the help
+2007-06-09T11:19:00.000Z	khermans	timmyd	yeah np -- it addumed you were on 32-bits

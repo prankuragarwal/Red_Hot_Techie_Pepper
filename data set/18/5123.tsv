@@ -1,0 +1,18 @@
+2009-01-24T22:18:00.000Z	Photoguy		Is there a way to use a port for something diffrent? I need a certain port, but it's already in use.
+2009-01-24T22:20:00.000Z	Photoguy		Is there a way to use a port for something different? I need a certain port, but it's already in use.
+2009-01-24T22:21:00.000Z	Photoguy		Sorry, networking, I need 666
+2009-01-24T22:22:00.000Z	Photoguy		*667
+2009-01-24T22:23:00.000Z	Photoguy		Right, but I allowed them.
+2009-01-24T22:24:00.000Z	Photoguy		Jack_sparrow, it's a small .exe server under Wine, that you've probably never heard of.
+2009-01-24T22:26:00.000Z	Photoguy		Ok, is it possible to cancel use of a port, so nothing is using it, then use it for my own thing? (root user of course)
+2009-01-24T22:27:00.000Z	geirha	Photoguy	try « sudo netstat -nap | grep 666 » The last field should be the pid/name of the process using that port
+2009-01-24T22:28:00.000Z	Photoguy	geirha	I'll try that
+2009-01-24T22:29:00.000Z	Photoguy	geirha	so this: sudo netstat -nap | grep 666 winedevice.exe    ?
+2009-01-24T22:31:00.000Z	geirha	Photoguy	the process using port 666 is winedevice.exe?
+2009-01-24T22:32:00.000Z	Photoguy	geirha	Wineserver.exe is the process that I want to use with 666
+2009-01-24T22:34:00.000Z	geirha	Photoguy	the netstat command lists all ports that are currently used. With -nap, it also lists which processes are using them. I understood it as such that your program didn't work because that port was already in use?
+2009-01-24T22:34:00.000Z	Photoguy	geirha	yes
+2009-01-24T22:34:00.000Z	geirha	Photoguy	then the following should list the process (last field) which is using it. « netstat -nap | grep 666 »
+2009-01-24T22:36:00.000Z	Photoguy	geirha	sorry so "netstat -nap process_name grep 666
+2009-01-24T22:36:00.000Z	geirha	Photoguy	no, exactly as I typed it: netstat -nap | grep 666
+2009-01-24T22:38:00.000Z	geirha	Photoguy	it should show you the pid and the name of the process using it now. With that information you can kill that process so that the port is freed up for your own program.

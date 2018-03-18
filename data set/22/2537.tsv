@@ -1,0 +1,22 @@
+2009-05-19T03:14:00.000Z	Peeeeeet		should my iptables chain be empty (does that mean it is accepting everything or nothing)?
+2009-05-19T03:14:00.000Z	th0r	Peeeeeet	yes, unless you have rules it should be empty
+2009-05-19T03:19:00.000Z	th0r	Peeeeeet	whois
+2009-05-19T03:20:00.000Z	th0r	Peeeeeet	you can also ping google.com to see what the ip address is
+2009-05-19T03:21:00.000Z	th0r	Peeeeeet	 not sure, check the man pages
+2009-05-19T03:23:00.000Z	th0r	Peeeeeet	they may not allow response to ping.
+2009-05-19T03:24:00.000Z	Peeeeeet	th0r	but I can ping and conenct to the net from any otehr machine behind said router (like this irc session)
+2009-05-19T03:24:00.000Z	th0r	Peeeeeet	and I would know that how? Sounds like you have a connectivity problem with that one server
+2009-05-19T03:25:00.000Z	th0r	Peeeeeet	what does 'route -n' respond with?
+2009-05-19T03:27:00.000Z	Peeeeeet	th0r	same thing
+2009-05-19T03:28:00.000Z	th0r	Peeeeeet	you are routing everything out everywhere...I dont think that will work
+2009-05-19T03:28:00.000Z	th0r	Peeeeeet	and if I read this right...you have three interfaces on the same network?
+2009-05-19T03:28:00.000Z	Peeeeeet	th0r	i am willing to accept that, but this exact same config worked before
+2009-05-19T03:29:00.000Z	Peeeeeet	th0r	one is connected to the switch, the otehr two are connected to other computers routing themselves through the server (using it as a mini 3 port switch)
+2009-05-19T03:30:00.000Z	th0r	Peeeeeet	I don't think that will work.
+2009-05-19T03:30:00.000Z	Peeeeeet	th0r	it did before I upgraded to 8.10 from 8.04
+2009-05-19T03:30:00.000Z	th0r	Peeeeeet	ok
+2009-05-19T03:31:00.000Z	Peeeeeet	th0r	i'm not saying youa re wrong, it is antirely possible that this config shouldn't have worked in the first place
+2009-05-19T03:32:00.000Z	Peeeeeet	th0r	and after upgrading to 8.10, something was "fixed" and thus my bad config stopped working
+2009-05-19T03:33:00.000Z	th0r	Peeeeeet	you say one interface is connected to the switch, that route should be the gateway and the default (dest 0.0.0.0)
+2009-05-19T03:33:00.000Z	th0r	Peeeeeet	each of the other two interfaces should have one ip for a destination, the ip that it is connected to.
+2009-05-19T03:33:00.000Z	th0r	Peeeeeet	and they should not be gateways

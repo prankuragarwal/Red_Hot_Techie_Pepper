@@ -1,0 +1,24 @@
+2011-02-26T23:23:00.000Z	nsd		Anyone know how to delete partitions with parted?
+2011-02-26T23:23:00.000Z	terry	nsd	Sure
+2011-02-26T23:25:00.000Z	terry	nsd	You can do it with fdisk if you like.  i.e. fdisk /dev/sdb  #where sdb is the dirve you want to delete partition on.
+2011-02-26T23:25:00.000Z	nsd	terry	ActionParsnip: I'm in a rescue (busybox) shell, and I thought fdisk wouldn't work b/c it doesn't support large drives. There is no cfdisk
+2011-02-26T23:26:00.000Z	terry	nsd	And then p  to "print" what is there and then d 4  to delete the #4 partition, and then w to rewrite
+2011-02-26T23:27:00.000Z	terry	nsd	fdisk -l  /dev/sdb  #Will give you info on sdb
+2011-02-26T23:28:00.000Z	terry	nsd	sudo fdisk -l  /dev/sdb  #Will give you info on sdb
+2011-02-26T23:28:00.000Z	nsd	terry	Ok, I have the partitions deleted (with fdisk), but how do I make ext3 or ext4 partitions? parted says it only does ext2, but I know the installer does at least 3
+2011-02-26T23:28:00.000Z	terry	nsd	You can create the partition with fdisk as well.  And then designate it as ext3
+2011-02-26T23:29:00.000Z	terry	nsd	But if you designate as ext2 in gparted it won't matter
+2011-02-26T23:29:00.000Z	terry	nsd	 You can still format as ext3
+2011-02-26T23:29:00.000Z	terry	nsd	What is it exactly you're tryint to do?
+2011-02-26T23:31:00.000Z	nsd	terry	I'm not using gparted, but gnu parted on the command line, old school, from a busybox rescue shell from a Ubuntu install disk. I'm trying to copy the contents of a hard drive to a compact flash drive which ordinarily wouldn't be a problem, but of course the card was FAT formatted, and I need a linux partition so I can boot off of it
+2011-02-26T23:32:00.000Z	terry	nsd	You're creating a linux partition on the thumb drive?  Or...?
+2011-02-26T23:33:00.000Z	nsd	terry	No, a compact flash card hooked up to an IDE adapter (so it appears to the system as an IDE drive)
+2011-02-26T23:33:00.000Z	terry	nsd	And you are wanting to boot from the flash drive?
+2011-02-26T23:34:00.000Z	nsd	terry	Yes
+2011-02-26T23:34:00.000Z	terry	nsd	What OS are you going to install on it?
+2011-02-26T23:34:00.000Z	nsd	terry	Actually, I think I have the installer's partitioner working. I was going to copy an existing installation. I think I have it know...
+2011-02-26T23:34:00.000Z	terry	nsd	Ok.  Very well.
+2011-02-26T23:35:00.000Z	nsd	terry	I didn't know how to get the partitioner up and running (the whiplash based one in the alternate install disk) but I have it now. Thanks for the help anyway, though, now I know how to use fdisk
+2011-02-26T23:36:00.000Z	terry	nsd	but if you copy an existing installation to it, it will need to be set to same drive designation for it to work. Or else you're going to have to change a lot of stuff for it to run.
+2011-02-26T23:36:00.000Z	nsd	terry	No, I only have to edit /etc/fstab
+2011-02-26T23:37:00.000Z	terry	nsd	Ok, sounds like you've got it under control.  Let us know how it works out.

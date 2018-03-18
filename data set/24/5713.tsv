@@ -1,0 +1,24 @@
+2006-05-16T14:16:00.000Z	cracko		well i was making a back up of my / so i copyed /* to my sata storage hard drive.. now for some reason my storage hard drive stays mounted as read only any ideas?
+2006-05-16T14:17:00.000Z	dli	cracko	check you dmesg/syslog for errors
+2006-05-16T14:19:00.000Z	cracko	dli	all kinds of errors in dmesg
+2006-05-16T14:19:00.000Z	cracko	dli	EXT3-fs error (device sdb1): ext3_get_inode_loc: unable to read inode block - inode=19234878, block=38469635
+2006-05-16T14:20:00.000Z	dli	cracko	close applications using it, umount it, and fsck it
+2006-05-16T14:21:00.000Z	cracko	dli	how do you recommend me fsck it?
+2006-05-16T14:22:00.000Z	dli	cracko	depends, if your data is critical, make a disk image now, if not, "e2fsck -p -f /dev/sdablah"
+2006-05-16T14:23:00.000Z	cracko	dli	it is critical information 160 gigs of it
+2006-05-16T14:24:00.000Z	dli	cracko	umount it, find another disk (larger), make a disk image of if first
+2006-05-16T14:24:00.000Z	cracko	dli	what do you think caused the disk to be currupted me copying so many files to it?
+2006-05-16T14:24:00.000Z	dli	cracko	it's could be a hardware problem
+2006-05-16T14:25:00.000Z	cracko	dli	could it of horked the hard drive when i copyed /* to it because i was not thinkin and /mnt/ was in it
+2006-05-16T14:25:00.000Z	cracko	dli	so i was copying data from /mnt/storage to /mnt/storage
+2006-05-16T14:26:00.000Z	dli	cracko	if you used "cp", it's fine, cp doesn't cp the same file by default
+2006-05-16T14:26:00.000Z	cracko	dli	what did you mean by make a disc image?
+2006-05-16T14:27:00.000Z	dli	cracko	next time, set up rsnapshot to backup
+2006-05-16T14:27:00.000Z	dli	cracko	like, "dd if=/dev/sda of=/path/to/disk-image.img"
+2006-05-16T14:27:00.000Z	cracko	dli	why would it matter though i could just copy all the files over right?
+2006-05-16T14:28:00.000Z	dli	cracko	if you used simple, "cp", it shouldn't happen
+2006-05-16T14:29:00.000Z	cracko	dli	i used cp -aai or whatever saved the permissions
+2006-05-16T14:30:00.000Z	dli	cracko	certain directories you shouldn't cp, /dev, /proc, /sys
+2006-05-16T14:31:00.000Z	cracko	dli	so copying /dev /proc /sys to my other hard drive could have messed it up?
+2006-05-16T14:31:00.000Z	dli	cracko	not sure about it :( I hope not
+2006-05-16T14:32:00.000Z	cracko	dli	if that is the case then i am really sad

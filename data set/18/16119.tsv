@@ -1,0 +1,18 @@
+2004-11-13T16:00:00.000Z	stuNNed_		is there a sound utility in ubuntu?  the module for my soundcard is loaded but alsa says no soundcards detected
+2004-11-13T16:01:00.000Z	anders_	stuNNed_	what sound card?
+2004-11-13T16:02:00.000Z	stuNNed_	anders_	intel i810 on a laptop
+2004-11-13T16:03:00.000Z	anders_	stuNNed_	and you're sure the right module is loaded?
+2004-11-13T16:04:00.000Z	stuNNed_	anders_	pretty sure, let me check
+2004-11-13T16:05:00.000Z	stuNNed_	anders_	from lspci: 0000:00:1f.5 Multimedia audio controller: Intel Corp. 82801CA/CAM AC'97 Audio Controller (rev 02)
+2004-11-13T16:05:00.000Z	stuNNed_	anders_	snd_intel8x0           33068  0 is loaded
+2004-11-13T16:08:00.000Z	anders_	stuNNed_	sounds good, what is /etc/init.d/alsa start saying
+2004-11-13T16:09:00.000Z	stuNNed_	anders_	alsactl: load_state:1134: No soundcards found...
+2004-11-13T16:11:00.000Z	anders_	stuNNed_	any conflicting modules? what do you see in lsmod | grep snd?
+2004-11-13T16:12:00.000Z	stuNNed_	anders_	there loaded: snd_intel8x0m and snd_intel8x0 i think it's the latter i need
+2004-11-13T16:14:00.000Z	anders_	stuNNed_	yes, unload both, reload snd_intel8x0, and rerun alsa init script
+2004-11-13T16:14:00.000Z	stuNNed_	anders_	ok
+2004-11-13T16:16:00.000Z	stuNNed_	anders_	no such luck
+2004-11-13T16:17:00.000Z	anders_	stuNNed_	oh, same error message?
+2004-11-13T16:17:00.000Z	stuNNed_	anders_	yes, no soundcards found by alsactl
+2004-11-13T16:20:00.000Z	anders_	stuNNed_	hmm, well, not sure what to do then. Your soundcard should work though
+2004-11-13T16:21:00.000Z	stuNNed_	anders_	can i get alsaconf from a .deb package?

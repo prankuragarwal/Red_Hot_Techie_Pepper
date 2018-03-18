@@ -1,0 +1,22 @@
+2006-11-06T09:22:00.000Z	Vuen_		hey guys, i'm having a problem with my partition table
+2006-11-06T09:22:00.000Z	Vuen_		it looks like this, i've got an ntfs partition (sda1), an ext3 partition (sda5), a swap partition (sda6), and three ext2 partitions
+2006-11-06T09:23:00.000Z	Vuen_		now the problem is, the last two partitions have their /dev/sda# references in the wrong order
+2006-11-06T09:23:00.000Z	Vuen_		the last partition is /dev/sda8 and the one before it is /dev/sda9
+2006-11-06T09:23:00.000Z	Vuen_		and gparted is confused and won't let me change the partition table anymore.
+2006-11-06T09:24:00.000Z	Vuen_		anyone know how i can fix my partition table?
+2006-11-06T09:24:00.000Z	immrtl	Vuen_	what do u mean wrong order
+2006-11-06T09:24:00.000Z	Vuen_	immrtl	i mean when i mount it, the last partition is /dev/sda8 and the one before it is /dev/sda9.
+2006-11-06T09:26:00.000Z	immrtl	Vuen_	what were u doing to make this happen?
+2006-11-06T09:27:00.000Z	Vuen_	immrtl	i was changing my partition table. i had a 120 gig partition (sda7) and a 60 gig partition (sda8) at the end of the drive
+2006-11-06T09:28:00.000Z	Vuen_	immrtl	yes. i've got 110 gigs of data in all. i want to just delete the middle partition and expand the other one to fill it, but it won't let me
+2006-11-06T09:30:00.000Z	immrtl	Vuen_	maybe i'm just real slow today, but theres something that doesn't seem right; why are you rewriting a partition table that has data on it? you have to clear that data before making a new partition
+2006-11-06T09:30:00.000Z	Vuen_	immrtl	i don't want to make a new partition, i want to expand a partition
+2006-11-06T09:31:00.000Z	Vuen_	immrtl	um, there's already an extended partition. the drive's got a bunch of stuff on it
+2006-11-06T09:33:00.000Z	Vuen_	immrtl	i don't think so
+2006-11-06T09:33:00.000Z	immrtl	Vuen_	hang on let me check
+2006-11-06T09:38:00.000Z	immrtl	Vuen_	i can't find an answer, im still looking though
+2006-11-06T09:38:00.000Z	Vuen_	immrtl	don't worry about it. i'll probably just move the 110 gigs off to a friend's computer and nuke the whole thing
+2006-11-06T09:39:00.000Z	immrtl	Vuen_	do as u wish, which partitions can u still access?
+2006-11-06T09:39:00.000Z	Vuen_	immrtl	i can still access all of them.
+2006-11-06T09:41:00.000Z	immrtl	Vuen_	have u tried using a different partitioning manager
+2006-11-06T09:41:00.000Z	Vuen_	immrtl	nope, i've just stuck with parted. should i try partition magic?

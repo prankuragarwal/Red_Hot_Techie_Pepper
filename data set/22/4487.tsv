@@ -1,0 +1,22 @@
+2008-02-18T18:47:00.000Z	sofiankrt		hello everyone
+2008-02-18T18:47:00.000Z	sofiankrt		I'm having a problem with booting ubuntu
+2008-02-18T18:48:00.000Z	sofiankrt		it says there's an error while checking the filesystem
+2008-02-18T18:48:00.000Z	sofiankrt		I press ctrl + d and I can boot ubuntu normally
+2008-02-18T18:48:00.000Z	sofiankrt		what do you think?
+2008-02-18T18:48:00.000Z	sofiankrt		I also gives me a log file
+2008-02-18T18:49:00.000Z	Thirsteh	sofiankrt	if it's an error about an invalid drive ("/dev/sda2: No such device" etc), you need to edit your /etc/fstab file
+2008-02-18T18:50:00.000Z	sofiankrt	Thirsteh	All my partitions are working, as far as I know
+2008-02-18T18:55:00.000Z	Thirsteh	sofiankrt	google 'pastebin'
+2008-02-18T18:55:00.000Z	Thirsteh	sofiankrt	http://paste.ubuntu-nl.org
+2008-02-18T18:57:00.000Z	sofiankrt	Thirsteh	so I'm getting this log file: http://paste.ubuntu-nl.org/56476/
+2008-02-18T18:59:00.000Z	Thirsteh	sofiankrt	the UUID is just an alias for a partition/device. If you unplugged a device or formatted a partition (with ext3), rectify it by commenting out its entry in /etc/fstab
+2008-02-18T18:59:00.000Z	sofiankrt	Thirsteh	right. so how do I do that?
+2008-02-18T19:00:00.000Z	Thirsteh	sofiankrt	fire up some editor, "gksu gedit /etc/fstab" (GUI) or "sudo nano -w /etc/fstab" (CLI) and have a look around. To disable a drive, simply put a pound sign in front of it to comment it out (#)
+2008-02-18T19:01:00.000Z	sofiankrt	Thirsteh	but I've formatted a lot of partitions, how do I know which one is causing the problem?
+2008-02-18T19:02:00.000Z	Thirsteh	sofiankrt	I suppose you have to figure out what the UUID means in lament terms (e.g. /dev/sda4) but I can't tell you how, sorry, never tried
+2008-02-18T19:03:00.000Z	sofiankrt	Thirsteh	never mind, thank you anyway
+2008-02-18T19:10:00.000Z	Thirsteh	sofiankrt	whole
+2008-02-18T19:11:00.000Z	sofiankrt	Thirsteh	the first character in the line? before the uuid?
+2008-02-18T19:11:00.000Z	Thirsteh	sofiankrt	the very first character on the line must be #, yes, before everything
+2008-02-18T19:11:00.000Z	sofiankrt	Thirsteh	great! thank you! let's see if it works...
+2008-02-18T19:11:00.000Z	Thirsteh	sofiankrt	be careful not to comment out your '/' drive :)

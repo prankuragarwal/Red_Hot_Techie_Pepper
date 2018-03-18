@@ -1,0 +1,24 @@
+2009-01-24T02:22:00.000Z	AphisOne		can someone help me with apt-get/dpkg?
+2009-01-24T02:23:00.000Z	damaltor	AphisOne	whats the problem?
+2009-01-24T02:23:00.000Z	AphisOne	damaltor	I'm trying to install php4-cgi, but it conflicts with php5 and I need that
+2009-01-24T02:24:00.000Z	damaltor	AphisOne	uninstall php5 before, then do "apt-get autoremove". then install php4
+2009-01-24T02:24:00.000Z	AphisOne	damaltor	as I just stated... I need php5
+2009-01-24T02:26:00.000Z	damaltor	AphisOne	php4 and php5 are not very compatible. i would not in any way recommend mixing anything between them. you _COULD_ download the .dep package by hand, and then force dpkg to install it. this _WILL_ massively disort your package system and propably your whole php setup.
+2009-01-24T02:27:00.000Z	AphisOne	damaltor	that's exactly what I need to do... but not sure how... php4 and php5 can work together if php5_mod and php-cgi... no problem then... just conflicts with the package system
+2009-01-24T02:27:00.000Z	AphisOne	damaltor	unless you know of something I don't
+2009-01-24T02:29:00.000Z	damaltor	AphisOne	download the .deb-package somwhere, then use "man dpkg" and search for the "--force..." options. but i can tell you, that you will not be able to do anything with your package system anymore after that, because it knows that you should have php5 OR php4 and not both.  you probably will not even be able to update anymore.
+2009-01-24T02:30:00.000Z	damaltor	AphisOne	another possibility would be to compile by hand. find source code, then make, then make install. this is not recognized by the package system.
+2009-01-24T02:30:00.000Z	AphisOne	damaltor	can I make the package system forget that php4 is installed?
+2009-01-24T02:31:00.000Z	damaltor	AphisOne	probably not.. as i just said, maybe compiling by hand is the way to go. but dont take me responsibly to anything that might happen then :P
+2009-01-24T02:31:00.000Z	AphisOne	damaltor	and my main question was what the force option was to have it ignore confilcts, because I couldn't find it
+2009-01-24T02:32:00.000Z	damaltor	AphisOne	try --force-depends
+2009-01-24T02:32:00.000Z	AphisOne	damaltor	lol ... no prob
+2009-01-24T02:32:00.000Z	AphisOne	damaltor	that just makes the package and dosn't install the packages that php4 requires
+2009-01-24T02:32:00.000Z	damaltor	AphisOne	kk wait a sec
+2009-01-24T02:35:00.000Z	AphisOne	damaltor	what about modifing the status file so that dpkg doesn't complain in the future?
+2009-01-24T02:35:00.000Z	damaltor	AphisOne	i have no idea how to do that, although it indeed should be possible.
+2009-01-24T02:36:00.000Z	AphisOne	damaltor	okay... so using --force-all will install dependancies but not complain about confilcts?
+2009-01-24T02:37:00.000Z	damaltor	AphisOne	--force-all will ignore everything possible. it will unpack the archive and put the file in place, if it is not absolutely impossible to do so.
+2009-01-24T02:38:00.000Z	damaltor	AphisOne	--force-all will NOT check for any dependencies.
+2009-01-24T02:38:00.000Z	AphisOne	damaltor	how about the --force-conflicts option?
+2009-01-24T02:39:00.000Z	damaltor	AphisOne	well.. gve it a try :P

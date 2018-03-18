@@ -1,0 +1,21 @@
+2007-04-22T05:22:00.000Z	iain		oh dear .............
+2007-04-22T05:22:00.000Z	iain		i managed to restart alsa now (thanks to horijzon!) but it hasn't helped. I still ahve no sound.
+2007-04-22T05:22:00.000Z	ajehuk	iain	- have you run alsaconf?
+2007-04-22T05:23:00.000Z	ajehuk	iain	(sudo alsaconf)
+2007-04-22T05:25:00.000Z	ajehuk	iain	- you need to run it as root (sudo alsaconf), depending on your config users cannot normally see commands that only root can run
+2007-04-22T05:27:00.000Z	ajehuk	iain	if you dont have it try installing the alsa-utils
+2007-04-22T05:27:00.000Z	ajehuk	iain	- let me just check again...
+2007-04-22T05:28:00.000Z	ajehuk	iain	- just check that alsa-base is intalled can you?
+2007-04-22T05:31:00.000Z	ajehuk	iain	- oh right - sorry, so all you are after is a restart of the sound system after hibernate... /etc/init.d/alsa reload should do that...
+2007-04-22T05:33:00.000Z	ajehuk	iain	- sorry should be 'sudo /etc/init.d/alsa restart'
+2007-04-22T05:35:00.000Z	ajehuk	iain	can you drop the output of sudo  modprobe -l | grep alsa* into a pastebin?
+2007-04-22T05:36:00.000Z	ajehuk	iain	- http://pastebin.ca will do
+2007-04-22T05:38:00.000Z	ajehuk	iain	- thought there was a link in that info - nevermind - as I said http://pastebin.ca is my preffered one...
+2007-04-22T05:39:00.000Z	ajehuk	iain	- OK can you add the output of 'sudo lsmod' to that pastebin...
+2007-04-22T05:41:00.000Z	ajehuk	iain	- and the output of 'sudo lspci' as well..
+2007-04-22T05:44:00.000Z	ajehuk	iain	- ta
+2007-04-22T05:46:00.000Z	ajehuk	iain	- can you try doing a 'sudo modprobe -i snd-hda-intel' and then restarting alsa.. and see what happens
+2007-04-22T05:50:00.000Z	ajehuk	iain	- OK situation is - drivers for the sound system are in, all relevant applications doing what they should but no sound.  the card isnt coming out of hibernate... 2 suggestions first, would be to log out and back in and see if it makes any difference (it wont) 2 report the bug with the hibernate people .  I would suggest there is a 50% chance of it being an issue with suspend and 50% problem with the driver..
+2007-04-22T05:51:00.000Z	ajehuk	iain	- looks like the hardware state after coming out of suspend isnt 100% -
+2007-04-22T05:54:00.000Z	ajehuk	iain	- interesting test would be to turn off the sound system - hibernate - start up again and enable it see if the problem is still there (it should be if its hardware but as I said it'd be interesting) as to bug reporting Im not sure who would be best to report to but I asume you'd go through the ubuntu but https://launchpad.net/ubuntu/+bugs looks like an option - either that or take alook at the man page for hibernate / suspend to s
+2007-04-22T05:56:00.000Z	ajehuk	iain	- np, sorry it didnt work out

@@ -1,0 +1,22 @@
+2009-06-26T16:05:00.000Z	iceroot	IsUp	sudo
+2009-06-26T16:05:00.000Z	IsUp		i am already logged with root
+2009-06-26T16:05:00.000Z	iceroot	IsUp	sudo /etc/init.d/programname start
+2009-06-26T16:06:00.000Z	IsUp	iceroot	faxgetty doesnt have a init script. that's my problem
+2009-06-26T16:06:00.000Z	iceroot	IsUp	ah ok
+2009-06-26T16:06:00.000Z	IsUp		i have to run '/usr/sbin/faxgetty ttyIAX0' command on startup
+2009-06-26T16:06:00.000Z	IsUp		and all problems goes
+2009-06-26T16:06:00.000Z	IsUp		but i cant find any to execute it on startup
+2009-06-26T16:06:00.000Z	IsUp		inittab not works
+2009-06-26T16:07:00.000Z	iceroot	IsUp	i am always using cron for something like that.... @reboot /usr/sbin/faxgetty ttyIAX0
+2009-06-26T16:07:00.000Z	IsUp	iceroot	let me test now.
+2009-06-26T16:09:00.000Z	IsUp	iceroot	haha thanks. it works
+2009-06-26T16:10:00.000Z	IsUp	iceroot	let me ask another thing. it's not working as a service. but how can i restart it?
+2009-06-26T16:10:00.000Z	IsUp		i am accesing to server over SSH.
+2009-06-26T16:10:00.000Z	iceroot	IsUp	you can also write your on init-script but i like the cron-@reboot more :)
+2009-06-26T16:10:00.000Z	IsUp		so its not going to work when i close SSH session
+2009-06-26T16:10:00.000Z	iceroot	IsUp	hm, only know killall and then restart....
+2009-06-26T16:11:00.000Z	IsUp		i want to run it as a service. like 'service faxgetty start|stop|restart'
+2009-06-26T16:11:00.000Z	iceroot	IsUp	it is working if you close ssh
+2009-06-26T16:11:00.000Z	IsUp		how?
+2009-06-26T16:11:00.000Z	iceroot	IsUp	you have not startet it with ssh, the system (cron) has startet it at boot
+2009-06-26T16:11:00.000Z	iceroot	IsUp	it should still run if you close ssh

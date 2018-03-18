@@ -1,0 +1,19 @@
+2006-07-11T15:20:00.000Z	hajuu		Hm so, when loading now I get an error: "Failed to load GLX extension (Nvidia X driver not found) ; even though ive installed nvidia-legacy and the linux-restricted...-nvidia-legacy packages.. It also says its "Ignoring request to load GLCore"But doesnt give a reason... Any ideas?
+2006-07-11T15:21:00.000Z	hajuu		Uh.. I *have* installed their drivers
+2006-07-11T15:22:00.000Z	fyrestrtr	hajuu	what card do you have?
+2006-07-11T15:22:00.000Z	hajuu	fyrestrtr	a tnt2 m64
+2006-07-11T15:22:00.000Z	fyrestrtr	hajuu	what Device line do you have in your xorg.conf ?
+2006-07-11T15:23:00.000Z	hajuu	fyrestrtr	sec im command line so cant paste lol
+2006-07-11T15:23:00.000Z	hajuu	fyrestrtr	Which line exactly did you want?
+2006-07-11T15:24:00.000Z	fyrestrtr	hajuu	in Section "Device" the Driver line, it should say "nvidia" and also have a line in there Option "RenderAccel" "true"
+2006-07-11T15:24:00.000Z	fyrestrtr	hajuu	errmm, yeah.
+2006-07-11T15:30:00.000Z	hajuu	fyrestrtr	Now when I restart X it says "Failed to insert kernel module nvidia" or something
+2006-07-11T15:31:00.000Z	fyrestrtr	hajuu	are you on dapper?
+2006-07-11T15:31:00.000Z	fyrestrtr	hajuu	....oh.
+2006-07-11T15:32:00.000Z	fyrestrtr	hajuu	try modprobe nvidia
+2006-07-11T15:32:00.000Z	fyrestrtr	hajuu	then restart X
+2006-07-11T15:32:00.000Z	fyrestrtr	hajuu	you are trying it with sudo right?
+2006-07-11T15:33:00.000Z	hajuu	fyrestrtr	of course.
+2006-07-11T15:33:00.000Z	fyrestrtr	hajuu	your drivers aren't installed properly.
+2006-07-11T15:35:00.000Z	fyrestrtr	hajuu	cd /lib/modules/`uname -r`/kernel/drivers/video ?
+2006-07-11T15:35:00.000Z	fyrestrtr	hajuu	do you see nvidia there?

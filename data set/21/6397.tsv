@@ -1,0 +1,21 @@
+2007-10-24T13:07:00.000Z	jscinoz		is there an easy way to do complete disk image backups to a mounted CIFS share, and then do only differential images to this same location?
+2007-10-24T13:07:00.000Z	kale	jscinoz	tar can backup, only changed files, since a date
+2007-10-24T13:07:00.000Z	jscinoz	kale	can it do a complete image of the disk?
+2007-10-24T13:08:00.000Z	kale	jscinoz	tar does not make images
+2007-10-24T13:08:00.000Z	jscinoz		kale >_< i need something that does entire partition images
+2007-10-24T13:08:00.000Z	kale	jscinoz	dd does
+2007-10-24T13:09:00.000Z	jscinoz		can dd do differential images?
+2007-10-24T13:09:00.000Z	kale	jscinoz	no
+2007-10-24T13:09:00.000Z	jscinoz		gah
+2007-10-24T13:09:00.000Z	jscinoz		i need something that does differential partition images
+2007-10-24T13:09:00.000Z	kale	jscinoz	why do you want a binary backup?
+2007-10-24T13:10:00.000Z	jscinoz	kale	hmm not sure  i guess, i was just used to doing that way back on windows
+2007-10-24T13:10:00.000Z	jscinoz	kale	so can tar be scheduled to do differential archives at specific times?
+2007-10-24T13:10:00.000Z	kale	jscinoz	get used to something else, there is no reason to backup a 500G partition, that holds 12G of data!
+2007-10-24T13:11:00.000Z	kale	jscinoz	first you make a complete tar archive
+2007-10-24T13:11:00.000Z	kale	jscinoz	then you make an archive of files that has been changed since that date
+2007-10-24T13:11:00.000Z	jscinoz	kale	and with the right syntax it can automatically choose which files based on changed date right?
+2007-10-24T13:12:00.000Z	kale	jscinoz	when you are about to restore the archive, you have to restore the complete tarball, and the all the "differential"
+2007-10-24T13:12:00.000Z	kale	jscinoz	yes
+2007-10-24T13:12:00.000Z	jscinoz		alright thanks, ill look into it
+2007-10-24T13:13:00.000Z	kale	jscinoz	you can use any combination of: cron, find, cpio/tar

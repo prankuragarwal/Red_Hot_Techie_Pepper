@@ -1,0 +1,24 @@
+2007-12-02T18:38:00.000Z	_Dbug_	sandaru1	no idea ? Where can I check that ?
+2007-12-02T18:37:00.000Z	sandaru1	_Dbug_	do you have any kernel parameters like "vga=792"
+2007-12-02T18:39:00.000Z	sandaru1	_Dbug_	in grub, select ubuntu then, press e.. after that remove "splash" and "vga=xxx".. then you'll be able to access the shell. there was  a problem with gusty.. shell is a blank screen when booted with vga parameters
+2007-12-02T18:40:00.000Z	_Dbug_	sandaru1	I have only ubuntu on this machine and it runs fast, how can I avoid it to boot ? Is there a key to press to access the grub menu ?
+2007-12-02T18:41:00.000Z	sandaru1	_Dbug_	i'm not sure about.. however, if you can boot into gnome with low graphics mode, you'll be able to fire up  gnome-terminal and reconfigure X : "dpkg-reconfigure xserver-xorg"
+2007-12-02T18:43:00.000Z	_Dbug_	sandaru1	when I select "continue" on the "low graphic mode" dialog box, all I have is a blank screen. So I will try what you said about removing parameters in start up, I just hope I can change that before it starts booting.
+2007-12-02T18:43:00.000Z	sandaru1	_Dbug_	then you can edit the grub config file
+2007-12-02T18:43:00.000Z	sandaru1	_Dbug_	if you have mounted the hard drive in live CD, edit "/boot/grub/menu.lst"
+2007-12-02T18:44:00.000Z	_Dbug_	sandaru1	ha I can try that, thanks :)
+2007-12-02T18:45:00.000Z	_Dbug_	sandaru1	I guess I just have to add a '#' in front of 'hiddenmenu' ? and increase the timeout delay value ?
+2007-12-02T18:46:00.000Z	sandaru1	_Dbug_	can you paste the menu.lst in pastebin. I'll have a look
+2007-12-02T18:47:00.000Z	sandaru1	_Dbug_	i'm not sure.. but probably it would be using "vesa" drivers.. so, it won't help you much
+2007-12-02T18:47:00.000Z	sandaru1	_Dbug_	it's again low graphics mode
+2007-12-02T18:48:00.000Z	_Dbug_	sandaru1	I was thinking about the currently running config, since I'm on the same machine with a working video setup :) Not the file of the live cd, the detected correct configuration.
+2007-12-02T18:49:00.000Z	_Dbug_	sandaru1	http://pastebin.com/m398185b4
+2007-12-02T18:49:00.000Z	sandaru1	_Dbug_	hmm.. that have a fair chance of working.. worth trying running the config
+2007-12-02T18:50:00.000Z	sandaru1	_Dbug_	ok. you don't have vga parameters in menu.lst.. so, blank shell is not due to that
+2007-12-02T18:50:00.000Z	_Dbug_	sandaru1	where is on the disk the x configuration file ? I can paste it also
+2007-12-02T18:51:00.000Z	sandaru1	_Dbug_	/etc/X11/xorg.conf
+2007-12-02T18:53:00.000Z	_Dbug_	sandaru1	http://pastebin.com/m14f231e5  <- xorg.conf see anything wrong ?
+2007-12-02T18:54:00.000Z	sandaru1	_Dbug_	everything seems to be weird.. it's failsafe graphics by default.. you can try running the config from live CD and copy that.. that's the best way i guess
+2007-12-02T18:55:00.000Z	_Dbug_	sandaru1	so I can probably copy the content of FileSystem/etc/x11/xorg.conf to Disk/etc/x11/xorg.conf I guess ? Any other file used for the graphic setup ?
+2007-12-02T18:56:00.000Z	sandaru1	_Dbug_	you should first run "sudo dpkg-reconfigure xserver-xorg"... then coping xorg.conf would be enough
+2007-12-02T18:56:00.000Z	_Dbug_	sandaru1	great, will try that. Thanks :)

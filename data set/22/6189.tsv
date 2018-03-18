@@ -1,0 +1,22 @@
+2007-01-07T07:38:00.000Z	mvfeinstein		 Hi can anyone in here help me, I have an ATI x850 and just installed xorg-driver-fglx and now when i run glxinfo it says that direct render is off. How can I turn it back on?
+2007-01-07T07:39:00.000Z	petal	mvfeinstein	open a console & type 'lsmod' & look if you find fglry among the list...
+2007-01-07T07:42:00.000Z	petal	mvfeinstein	good. now open your xorg.conf (etc/X11/xorg.conf) and look for the section "Device"...It should say something about ATI... (if you have a ati card, that is...)
+2007-01-07T07:42:00.000Z	petal	mvfeinstein	In this section "Device" the second line should be 'driver'
+2007-01-07T07:43:00.000Z	petal	mvfeinstein	Is the 'driver' set to 'fglrx' there?
+2007-01-07T07:49:00.000Z	petal	mvfeinstein	Stupid question, but have you restarted your system after you installed the fglrx-drivers?
+2007-01-07T07:51:00.000Z	petal	mvfeinstein	Do you still have that xorg.conf file open?
+2007-01-07T07:51:00.000Z	petal	mvfeinstein	Scroll down to its ending
+2007-01-07T07:52:00.000Z	petal	mvfeinstein	Is there something like " Option "Composite" "false" "
+2007-01-07T07:52:00.000Z	petal	mvfeinstein	If not, try to add the following line(s) to your xorg.conf at its end:
+2007-01-07T07:53:00.000Z	petal	mvfeinstein	Section "Extensions"
+2007-01-07T07:53:00.000Z	petal	mvfeinstein	Option "Composite" "false"
+2007-01-07T07:53:00.000Z	petal	mvfeinstein	EndSection
+2007-01-07T07:53:00.000Z	petal	mvfeinstein	Then put the three lines that I just posted there
+2007-01-07T07:53:00.000Z	petal	mvfeinstein	And restart your X-Server
+2007-01-07T07:55:00.000Z	petal	mvfeinstein	Good luck
+2007-01-07T08:02:00.000Z	petal	mvfeinstein	Had any luck?
+2007-01-07T08:03:00.000Z	petal	mvfeinstein	Great! Glad I could help... Beryl is cool - give it a try! Feels like a whole new OS! :)
+2007-01-07T08:06:00.000Z	petal	mvfeinstein	Indeed I do! http://www.ubuntuforums.org/showthread.php?t=290841
+2007-01-07T08:06:00.000Z	petal	mvfeinstein	This one worked like a charm for me (also using an ATI card...)
+2007-01-07T08:09:00.000Z	petal	mvfeinstein	Btw, no matter what you do with Beryl... You SHOULD always have the possibility to go back to your GDM Login screen and chose a normal Gnome session there...
+2007-01-07T08:09:00.000Z	petal	mvfeinstein	I'm off now - Good luck with your 3d-Acc.!

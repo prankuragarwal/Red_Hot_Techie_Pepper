@@ -1,0 +1,19 @@
+2012-01-19T00:53:00.000Z	flintwingel	d3eniz	is your ddns connection going through a firewall?
+2012-01-19T00:54:00.000Z	d3eniz		i thought of that aswell and disabled my router firewall
+2012-01-19T00:55:00.000Z	flintwingel	d3eniz	do you apprecaite how complex the ftp protocol is (i.e. a right pain to get working through a firewall)
+2012-01-19T00:56:00.000Z	flintwingel	d3eniz	the initial connection is made out from the client to a "well known port". under normal circumstances the server will then make a connection back to the client on a random port number
+2012-01-19T00:57:00.000Z	flintwingel	d3eniz	have you tried PASSIVE?
+2012-01-19T00:57:00.000Z	d3eniz		no
+2012-01-19T00:58:00.000Z	flintwingel		with PASSIVE the second connection goes from the client to the server rather than the other way round
+2012-01-19T00:58:00.000Z	d3eniz		okey?
+2012-01-19T00:59:00.000Z	d3eniz	flintwingel	so how do i make it passive?
+2012-01-19T01:00:00.000Z	flintwingel	d3eniz	depends on the client.... if you're using a text mode client just try typing "passive"
+2012-01-19T01:01:00.000Z	flintwingel	d3eniz	with graphical clients it's usually an option (tick box) associated with the connection
+2012-01-19T01:01:00.000Z	d3eniz	flintwingel	using vsftpd
+2012-01-19T01:02:00.000Z	flintwingel	d3eniz	vsftpd is the server.. it will accept the PASSIVE option but it's the client end that sets it.
+2012-01-19T01:02:00.000Z	d3eniz		oh
+2012-01-19T01:03:00.000Z	d3eniz	flintwingel	im using the browser atm but got filezilla installed aswell
+2012-01-19T01:04:00.000Z	flintwingel	d3eniz	it's been a while since I used filezilla but you should find an option for passive connection somewhere is the connection setup
+2012-01-19T01:05:00.000Z	flintwingel	d3eniz	vsftpd has the option to strictly limit the port numbers it will use to make an ACTIVE connection. The other option would be to restrict the port range from vsftpd and open all those ports on your firewall
+2012-01-19T01:06:00.000Z	d3eniz	flintwingel	what port range is a good range to restrict / open?
+2012-01-19T01:09:00.000Z	flintwingel	d3eniz	anything between 1024 and 65535 ;)... generally something like 50000 to 50009 would be ok for a small server. How many simultaneous connections are you expecting?

@@ -1,0 +1,22 @@
+2012-06-05T07:12:00.000Z	Nom-		Are there any command line tools to set the IP Address (ie. Manage /etc/network/interfaces) ?
+2012-06-05T07:13:00.000Z	aaron_samuel	Nom-	ip and ifconfig
+2012-06-05T07:13:00.000Z	aaron_samuel		the interfaces file is manual - but you can assign ip's with those commands
+2012-06-05T07:13:00.000Z	Nom-	aaron_samuel	Those don't change /etc/network/interfaces last i checked
+2012-06-05T07:13:00.000Z	aaron_samuel	Nom-	nothing does afaik
+2012-06-05T07:14:00.000Z	Nom-		*nod* fairy nuff... cat <<EOF it is :P
+2012-06-05T07:15:00.000Z	aaron_samuel	Nom-	well - are you looking to autoconfigure things? like images or auto build outs? in which case they're are better methods puppet/chef but if your just trying something quick and dirty, and you know shell , yes something like that is fine.. just don't mistype anything..
+2012-06-05T07:15:00.000Z	Nom-	aaron_samuel	I'm writing a first boot script which will allow the user to change the hostname/ip address/etc of a VM
+2012-06-05T07:16:00.000Z	aaron_samuel	Nom-	hmm yes - there are many ways i guess.. but it sounds like you want something dynamic that takes args in which case = yes your probably on right track
+2012-06-05T07:17:00.000Z	aaron_samuel	Nom-	make sure you bring up lo if your going to create that file like new
+2012-06-05T07:17:00.000Z	Nom-		We don't use DHCP for Servers :)
+2012-06-05T07:17:00.000Z	aaron_samuel		a static reservation is possible in dhcp protocol Nom-
+2012-06-05T07:18:00.000Z	aaron_samuel		no it's the default for
+2012-06-05T07:18:00.000Z	aaron_samuel		VM's...
+2012-06-05T07:18:00.000Z	aaron_samuel		its not the norm for any server to be dhcp virtual or not....
+2012-06-05T07:18:00.000Z	Nom-		And when the DHCP server is down because your DC blows up?
+2012-06-05T07:19:00.000Z	Nom-		Yeah, it's pretty rare for servers to be on DHCP in any form last I checked
+2012-06-05T07:19:00.000Z	aaron_samuel	Nom-	the autoconfigure would work - i guess you pull in certain vars from the user and run them in the VM to bring up network?
+2012-06-05T07:20:00.000Z	aaron_samuel	Nom-	what will be running the firstboot? rc.local or something? and how will you communicate with the VM with network down/unknown? some guest driver api?
+2012-06-05T07:20:00.000Z	Nom-		It's designed to be configured on console
+2012-06-05T07:20:00.000Z	Nom-		Like a first boot wizard type thing
+2012-06-05T07:20:00.000Z	aaron_samuel	Nom-	whats type of VM's if you don't mind me asking?

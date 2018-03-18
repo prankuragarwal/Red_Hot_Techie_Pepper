@@ -1,0 +1,21 @@
+2010-02-17T14:06:00.000Z	randy2009		hi, how can i set the max openfiles option?
+2010-02-17T14:07:00.000Z	randy2009		max openfiles for a user
+2010-02-17T14:09:00.000Z	llutz	randy2009	ulimit
+2010-09-22T16:25:00.000Z	llutz	randy2009	you have installed nfs-common + portmap on client, portmapper is running?
+2010-09-22T16:29:00.000Z	randy2009	llutz	i have it running
+2011-11-01T20:06:00.000Z	llutz	randy2009	11.10 pings every second here, unless ping -i  is used
+2011-12-02T17:20:00.000Z	llutz	randy2009	you shouldn't use ssh logins as root at all (PermitRootLogin forced-commands-only or no). ssh -vvv  to get more details
+2011-12-02T17:23:00.000Z	llutz	randy2009	you can use rsync as root with passphrase-less key, just use "PermitRootLogin forced-commands-only" in sshd_config
+2011-12-02T17:23:00.000Z	llutz	randy2009	/etc/ssh
+2011-12-02T17:26:00.000Z	llutz	randy2009	this is an example how to do that http://troy.jdmz.net/rsync/index.html
+2011-12-02T17:28:00.000Z	llutz	randy2009	how did you create those keys? seeem to be gpg not ssh-format
+2011-12-02T17:29:00.000Z	llutz	randy2009	does it start with "-----BEGIN RSA PRIVATE KEY ..."
+2011-12-02T17:32:00.000Z	randy2009	llutz	yes
+2011-12-02T18:27:00.000Z	randy2009	llutz	can you see something weird here?: http://paste.ubuntu.com/756987/
+2011-12-02T18:29:00.000Z	llutz	randy2009	no
+2011-12-02T18:32:00.000Z	llutz	randy2009	backup your userx id_rsa, generate a new one using ssh-keygen. "ssh-copy-id userY@host" then and try again from userx: ssh userY@host
+2011-12-02T18:33:00.000Z	randy2009	llutz	i did it 4 times now
+2011-12-02T18:33:00.000Z	llutz	randy2009	everytime same error? reads like a broken id_rsa file
+2011-12-02T18:37:00.000Z	llutz	randy2009	user@host in pub-key is ok, its just an info where the key comes from
+2011-12-02T18:39:00.000Z	llutz	randy2009	just use "ssh-keygen -t rsa"
+2011-12-02T18:58:00.000Z	randy2009	llutz	i found something :) Authentication refused: bad ownership or modes for directory /home/userY

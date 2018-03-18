@@ -1,0 +1,18 @@
+2005-08-25T12:33:00.000Z	makhan		if someone could help me, that'd be great, my sound doesn't work.
+2005-08-25T12:34:00.000Z	makhan		no, when I go to a webpage that has videos, I cannot hear anything.
+2005-08-25T12:34:00.000Z	makhan		help?
+2005-08-25T12:34:00.000Z	makhan		anyone?
+2005-08-25T12:34:00.000Z	wsmith	makhan	ps ax | grep esd
+2005-08-25T12:34:00.000Z	wsmith	makhan	get anything?
+2005-08-25T12:34:00.000Z	makhan	wsmith	do I do that in terminal?
+2005-08-25T12:35:00.000Z	wsmith	makhan	yes
+2005-08-25T12:36:00.000Z	wsmith	makhan	any luck?
+2005-08-25T12:37:00.000Z	makhan	wsmith	what i got from that was : 6736 ?     S    0:00 /usr/bin/esd -nobeebs
+2005-08-25T12:37:00.000Z	wsmith	makhan	good. now, your media player is most likely using oss to try to get to the sound card (which esd has stolen)
+2005-08-25T12:38:00.000Z	wsmith	makhan	which plugin are you using to view movies mplayer?
+2005-08-25T12:39:00.000Z	wsmith	makhan	ah
+2005-08-25T12:42:00.000Z	makhan	wsmith	any other advice you could give me?
+2005-08-25T12:42:00.000Z	wsmith	makhan	one sec...
+2005-08-25T12:46:00.000Z	wsmith	makhan	Ok. the crux of the matter is that flash needs exclusive access to your sound card. esd already has exclusive access. neither like sharing
+2005-08-25T12:47:00.000Z	wsmith	makhan	either you can turn off esd (you'll lose ubuntu gnome sounds) and restart mozilla, or I can go into an extremely involved process of getting alsa dmix working
+2005-08-25T12:50:00.000Z	wsmith	makhan	I believe the problem stems from a holdover from debian. Dunno why everything hasn't been switched to use alsa or the aoss wrapper by default.

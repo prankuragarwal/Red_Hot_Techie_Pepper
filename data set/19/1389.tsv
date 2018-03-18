@@ -1,0 +1,19 @@
+2011-03-08T07:05:00.000Z	EmuAlert		I can't get crontab to work right. My entry is "* * * * * /home/brian/launchstuff", to try to get it to run every minute for testing, but it doesn't seem to do anything
+2011-03-08T07:05:00.000Z	EmuAlert		The file does run properly from the command line, though
+2011-03-08T07:05:00.000Z	LnxGnome	EmuAlert	is the user allowed to use cron?
+2011-03-08T07:08:00.000Z	EmuAlert	LnxGnome	Well /var/log/syslog says "fatal: open /etc/postfix/main.cf: No such file or directory" right after it tries to run my crontab entry. Also, is there any way to refresh crontab after you edit it, or does it happen automatically?
+2011-03-08T07:10:00.000Z	LnxGnome	EmuAlert	That tells me that postfix isn't installed and/or configured correctly, so you cannot see the output of your job (which is normally mailed to the user running the job)
+2011-03-08T07:16:00.000Z	EmuAlert	LnxGnome	so what sort of setting should I tweak in postfix? Also, what does postfix have to do with crontab? All my file does is open Google.
+2011-03-08T07:19:00.000Z	LnxGnome	EmuAlert	Cron runs commands for you.  if those commands produce output to STDOUT, then the system by default tries to mail the output to you.  That requires some kind of mail delivery system.  postfix is mail system.
+2011-03-08T07:21:00.000Z	LnxGnome	EmuAlert	and that error says the main config file for postfix is missing or unreadable, so probably postfix isn't running.
+2011-03-08T07:26:00.000Z	EmuAlert	LnxGnome	Any tips for how to configure it? I already have it installed and haven't ever configured it, so I don't know why it wouldn't be working
+2011-03-08T07:28:00.000Z	LnxGnome	EmuAlert	try to 'touch' the /etc/postfix/main.cf and restarting postfix
+2011-03-08T07:34:00.000Z	EmuAlert	LnxGnome	What do you mean by "touch"?
+2011-03-08T07:34:00.000Z	LnxGnome	EmuAlert	man touch
+2011-03-08T07:45:00.000Z	EmuAlert	LnxGnome	Well, I got a different error now. http://paste.ubuntu.com/577287/ I ran 'sudo touch /etc/postfix/main.cf' and then 'sudo /etc/init.d/postfix restart'
+2011-03-08T07:47:00.000Z	LnxGnome	EmuAlert	looks like there isn't enough info in the built-in config to allow postfix to run.  I'd apt-get purge postfix and then re-install it to see if it gives you a default main.cf.  Are there any /etc/postfix/main.*  files?
+2011-03-08T07:49:00.000Z	LnxGnome	EmuAlert	btw, from the looks of the line "CRON[15104]: (brian) CMD (/home/brian/launchstuff)", I'd say your cron entry is being run.
+2011-03-08T07:50:00.000Z	EmuAlert	LnxGnome	Only main.cf, which is blank
+2011-03-08T07:55:00.000Z	LnxGnome	EmuAlert	I don't know what happened to your postfix configs ... unless you picked "No Configuration" during the install :D  remove it, install it again, and pick "Local only" for the configs.
+2011-03-08T07:56:00.000Z	EmuAlert	LnxGnome	Ah, just installed with no config and was wondering why it was back to the old error message. Reinstalling with local only now
+2011-03-08T08:01:00.000Z	EmuAlert	LnxGnome	Another different error: http://paste.ubuntu.com/577290/

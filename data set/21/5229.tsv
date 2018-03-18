@@ -1,0 +1,21 @@
+2007-12-01T11:41:00.000Z	RyanT5001		how do i get the mail command to work? i'm trying to send out some emails using scripts, but they just vanish
+2007-12-01T11:41:00.000Z	RyanT5001		i'm not sure if i'm getting spam filtered or if it's just not sending in the first place
+2007-12-01T11:42:00.000Z	kelsin	RyanT5001	if you have exim installed (which is default I think) check /var/log/exim4/mainlog
+2007-12-01T11:43:00.000Z	RyanT5001	kelsin	i don't have any such log directory; maybe I just need to install exim?
+2007-12-01T11:43:00.000Z	RyanT5001	kelsin	i'm clueless about this stuff; i've never set up any smtp-related anything before
+2007-12-01T11:43:00.000Z	kelsin	RyanT5001	try "man sendmail" and see if that reveals what stmp program you have installed
+2007-12-01T11:45:00.000Z	RyanT5001	kelsin	no entry for sendmail.  the only mail-related package i've installed manually (over Gutsy) is mailx to get the "mail" command
+2007-12-01T11:45:00.000Z	kelsin	RyanT5001	you can also check /var/log/mail.log
+2007-12-01T11:46:00.000Z	kelsin	RyanT5001	those will at least tell you if the mail is going off your server (or trying to)
+2007-12-01T11:46:00.000Z	RyanT5001	kelsin	i've got /var/log/mail.{err,info,log,warn}, all of which are empty
+2007-12-01T11:46:00.000Z	RyanT5001	kelsin	oh wait, let me double-check, i think i was on the wrong machine
+2007-12-01T11:49:00.000Z	RyanT5001	kelsin	cyzie: sorry, i was retarded; i was accidentally in the wrong ssh session; although mail is equally broken, there is some log in /var/log/exim4/
+2007-12-01T11:50:00.000Z	RyanT5001	kelsin	** ryant5000@gmail.com R=nonlocal: Mailing to remote domains not supported
+2007-12-01T11:50:00.000Z	kelsin	RyanT5001	cool one sec
+2007-12-01T11:50:00.000Z	kelsin	RyanT5001	"sudo dpkg-reconfigure exim4-config" and select "mail sent by smarthost; no local mail"
+2007-12-01T11:50:00.000Z	RyanT5001		bah, putting a real email in here was probably a bad idea, given spam spidering these logs
+2007-12-01T11:51:00.000Z	kelsin	RyanT5001	and then go through the rest of the config, there is a lto of explanation in the dpkg program and google for the rest cause I don't know what would be perfect for you
+2007-12-01T11:52:00.000Z	kelsin	RyanT5001	but then exim should be setup to deliver to whatever smtp server you need it to, or if you want to fully send email from your computer you should select the first option and configure it from there :) but at that point def should start looking at other tutorials on setting up exim for ubuntu
+2007-12-01T11:52:00.000Z	RyanT5001	kelsin	ah, ok, thanks
+2007-12-01T11:52:00.000Z	RyanT5001	kelsin	yeah, now that i know exim is the key, i should be able to find tutorials; thanks a ton
+2007-12-01T11:52:00.000Z	kelsin	RyanT5001	yep, by default it doesn't send email out :)

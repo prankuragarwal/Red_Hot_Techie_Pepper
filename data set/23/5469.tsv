@@ -1,0 +1,23 @@
+2006-12-11T08:44:00.000Z	Trevinho		anyone here can help me with regex (expr)?
+2006-12-11T08:44:00.000Z	Boelcke	Trevinho	that's partially why I'm in here.  Fire away...
+2006-12-11T08:45:00.000Z	Trevinho	Boelcke	have you seen the query?
+2006-12-11T08:51:00.000Z	Trevinho	Boelcke	when you can read... Pratically I've to parse some debian "control files"... Splitting it for each "Package" section... So I should take all the text between each "Package:" and an empty line
+2006-12-11T08:53:00.000Z	Boelcke	Trevinho	what are you trying to "select" in each line?
+2006-12-11T08:56:00.000Z	Boelcke	Trevinho	is everthing after Package that you want on one line, or multiple lines?  Where can I look at an example of such a text file?
+2006-12-11T08:56:00.000Z	Boelcke	Trevinho	you've got to use a slash \ before special characters that mess things up.
+2006-12-11T08:58:00.000Z	Trevinho	Boelcke	look... this is an example
+2006-12-11T08:59:00.000Z	Boelcke	Trevinho	for example, the command sed -e 's_\$__g' returns the same lines with all the $ removed.
+2006-12-11T09:00:00.000Z	Trevinho	Boelcke	I don't want replace...
+2006-12-11T09:00:00.000Z	Boelcke	Trevinho	so you want to break this file up into, say, a bunch of files, one for each time you see "Package"...?
+2006-12-11T09:01:00.000Z	Boelcke	Trevinho	Hm.  Couple thoughts on how to do this, and I'll suggest one that reeks of my linux scripting newbieness.
+2006-12-11T09:02:00.000Z	Boelcke	Trevinho	the one thing we can count on with these files is that a blank line will separate the things.  Or, better yet, that Package will start it.
+2006-12-11T09:04:00.000Z	Boelcke	Trevinho	so make a script that grabs a line (I usually use sed for this) and writes it out to the new text file. With a loop, keep doing that, appending the text, UNLESS the new line contains "Package"
+2006-12-11T09:04:00.000Z	Boelcke	Trevinho	if it does contain "Package" we'd close that file, and start another one.
+2006-12-11T09:04:00.000Z	Boelcke	Trevinho	this sound like what you're thinking?
+2006-12-11T09:06:00.000Z	Boelcke	Trevinho	you're looking for some thoughts on a few of the specific command line tools you might use in this script?
+2006-12-11T09:06:00.000Z	Boelcke	Trevinho	to grab each line from your big text file, I like sed.  Run through a loop, and use something from http://sed.sourceforge.net/sed1line.txt
+2006-12-11T09:07:00.000Z	Boelcke	Trevinho	I like sed '52q;d' which would print/return line 52.  I set that number as a variable, which I run through in my loop, thus grabbing each line.
+2006-12-11T09:09:00.000Z	Boelcke	Trevinho	then the other cool thing you need is a command to check each line to see if it starts with Package.
+2006-12-11T09:10:00.000Z	Boelcke	Trevinho	so to do an if VARIABLE="Package" you want to have a regular expression.  Um.  Package.* might work.
+2006-12-11T09:15:00.000Z	Boelcke	Trevinho	you'd need...?
+2006-12-11T09:20:00.000Z	Boelcke	Trevinho	holy cow, what a jackpot!  I just love that sed one-liner site.  Couldn't me more exactly-what-you-need!  Sweet.

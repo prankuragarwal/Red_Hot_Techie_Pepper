@@ -1,0 +1,22 @@
+2006-10-13T05:37:00.000Z	randomas		anyone manage to share a printer with cups?
+2006-10-13T05:37:00.000Z	randomas		njal:what do you need?
+2006-10-13T05:38:00.000Z	njal	randomas	I have vista installed on an IDE hard drive set to slave and ubuntu install on a master SATA drive and grub is not detecting the other hard drive
+2006-10-13T05:41:00.000Z	njal	randomas	Is it possible to fix?
+2006-10-13T05:41:00.000Z	randomas	njal	check the original file in /boot/grub/menu should be an entry for other OS: title           Microsoft Windows XP Home Edition
+2006-10-13T05:43:00.000Z	njal	randomas	Which entry is this?
+2006-10-13T05:43:00.000Z	njal	randomas	In fact shall i pastebin my menu.lst?
+2006-10-13T05:44:00.000Z	njal	randomas	It kinda is there, but not under default options
+2006-10-13T05:45:00.000Z	randomas	njal	what is the "root" line?
+2006-10-13T05:46:00.000Z	njal	randomas	Ok there is no windows entry in my default options, but the root for ubuntu (which is obviously in my defualt options is (hd1,0)
+2006-10-13T05:48:00.000Z	randomas	njal	at bottom of the file add these lines
+2006-10-13T05:49:00.000Z	randomas	njal	change the root (hd0,0) to the right drive, first number is drive second is partition
+2006-10-13T05:51:00.000Z	njal	randomas	done
+2006-10-13T05:51:00.000Z	randomas	njal	if you added the lines it should be there!!!???
+2006-10-13T05:52:00.000Z	randomas	njal	at the grub prompt enter the lines manually and see what happens
+2006-10-13T05:52:00.000Z	njal	randomas	So i just copy the windows stuff from the examples and add them into default options?
+2006-10-13T05:53:00.000Z	randomas	njal	nope default options you don't touch it's only for automatically built linux entries
+2006-10-13T05:54:00.000Z	randomas	njal	you want to add lines after the automagically reated entries
+2006-10-13T05:56:00.000Z	njal	randomas	I am a bit confused http://pastebin.ca/200155 see the link, do i put an entry after the line ##end default options##
+2006-10-13T05:57:00.000Z	randomas	njal	add lines after ### END DEBIAN AUTOMAGIC KERNELS LIST
+2006-10-13T05:58:00.000Z	njal	randomas	and it would be root(hd1,0)
+2006-10-13T05:59:00.000Z	njal	randomas	slave hard drive partition 1

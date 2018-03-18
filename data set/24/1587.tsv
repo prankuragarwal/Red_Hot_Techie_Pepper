@@ -1,0 +1,24 @@
+2009-11-07T08:12:00.000Z	sciencekid		anyone know how to uninstall  adobe flash or install using the yum or zipped version of the install file?
+2009-11-07T08:12:00.000Z	Cosmic	sciencekid	yum is the package manager used by Redhat/Fredora, IIRC
+2009-11-07T08:18:00.000Z	Cosmic	sciencekid	it probably isn't just called flash though. first do "aptitude search flash". Among the results, an "i" will tell you what you have installed
+2009-11-07T08:21:00.000Z	sciencekid	Cosmic	here is what it said for the line regarding flash: C   adobe-flashplugin               - Adobe Flash Player plugin version 10
+2009-11-07T08:24:00.000Z	Cosmic	sciencekid	do you have universe and multiverse enabled in your repositories?
+2009-11-07T08:25:00.000Z	sciencekid	Cosmic	yes last time i checked i did
+2009-11-07T08:48:00.000Z	Cosmic	sciencekid	have you already tried "sudo aptitude purge adobe-flashplugin"? If not, I suggest you do so
+2009-11-07T08:57:00.000Z	Cosmic	sciencekid	No, no, don't download and install directly! From the looks of that log, the purge fixed it. Now try "sudo aptitude update" and "sudo aptitude install adobe-flashplugin"
+2009-11-07T08:58:00.000Z	Cosmic	sciencekid	let aptitude take care of everything for you, it's your friend ;-)
+2009-11-07T09:01:00.000Z	Cosmic	sciencekid	same error or is it just saying it couldn't find the package?
+2009-11-07T09:02:00.000Z	sciencekid	Cosmic	nope differnet error ill go post it on pastebin
+2009-11-07T09:08:00.000Z	Cosmic	sciencekid	ChogyDan: Okay, I think we need to see exactly what you've got for flash-related packages in there. Try running "dpkg -L|grep -i flash" and let us know what it spits up (here if it's short, else pastebin)
+2009-11-07T09:09:00.000Z	sciencekid	Cosmic	ok, rictec, hang on a sec
+2009-11-07T09:10:00.000Z	Cosmic	sciencekid	ChogyDan, rictec: there was definitely mention of iceape-flashplugin earlier, though - if he tried to install that using dpkg it would definitely cause these kinds of problems, especially without having iceapepinstalled
+2009-11-07T09:11:00.000Z	sciencekid	Cosmic	something is wrong with that command
+2009-11-07T09:12:00.000Z	Cosmic	sciencekid	my bad! lower-case "l"
+2009-11-07T09:12:00.000Z	sciencekid	Cosmic	what letter is thast i cant tell, an i or a l
+2009-11-07T09:12:00.000Z	Cosmic	sciencekid	lower-case L
+2009-11-07T09:14:00.000Z	sciencekid	Cosmic	it says: rFR adobe-flashplugin                          10.0.32.18-1
+2009-11-07T09:29:00.000Z	Cosmic	sciencekid	sounds pretty messed up. for completeness, try "sudo dpkg --purge adobe-flashplugin". If successful,  do "sudo aptitude clean" and then "aptitude search flashplugin". if search turns it up, do "sudo aptitude install adobe-flashplugin".
+2009-11-07T09:30:00.000Z	Cosmic	sciencekid	and check your repositories. If you don't have restricted, enable it and update
+2009-11-07T09:33:00.000Z	Cosmic	sciencekid	if nothing else works, you can risk trying "sudo aptitude --full-resolver" but be warned that this is very forceful and could potentially do bad things to your installation
+2009-11-07T09:34:00.000Z	sciencekid	Cosmic	ummmmm
+2009-11-07T09:34:00.000Z	sciencekid	Cosmic	im kinda afraid of trying that

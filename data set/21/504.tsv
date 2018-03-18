@@ -1,0 +1,21 @@
+2011-11-07T22:00:00.000Z	d33ck		cant someone lend me a hand please
+2011-11-07T22:00:00.000Z	d33ck		i really dont know whats wrong. i did everything it need to setup virtual interface
+2011-11-07T22:01:00.000Z	d33ck		but the eth0:1 still disconnected
+2011-11-07T22:02:00.000Z	d33ck		looks like no answer here
+2011-11-07T22:03:00.000Z	sipior	d33ck	if you want an answer, give us more data.
+2011-11-07T22:05:00.000Z	d33ck	sipior	okay, my bad. i wanted to use clonezilla server on ubuntu desktop. i need to setup two ip address on single ethernet interface. i have removed the network-manager network-manager-gnome, i have edited interfaces file to list my eth0 and eth0:1 an ip address each on completely different c class subnet.
+2011-11-07T22:08:00.000Z	sipior	d33ck	could you pastebin the output of ifconfig for the two interfaces?
+2011-11-07T22:09:00.000Z	d33ck	sipior	hang on please
+2011-11-07T22:09:00.000Z	sipior	d33ck	might as well throw in /etc/network/interfaces, while you're at it.
+2011-11-07T22:20:00.000Z	d33ck	sipior	http://pastebin.com/5bwwd0jx
+2011-11-07T22:22:00.000Z	sipior	d33ck	so, "Running /etc/init.d/networking restart is deprecated because it may not enable again some interfaces"
+2011-11-07T22:22:00.000Z	sipior	d33ck	can you start the virtual interface on the command line?
+2011-11-07T22:22:00.000Z	d33ck	sipior	using ifup?
+2011-11-07T22:23:00.000Z	sipior	d33ck	no, using ip/ifconfig
+2011-11-07T22:24:00.000Z	d33ck	sipior	hmm...how to do that using ifconfig?
+2011-11-07T22:25:00.000Z	sipior	d33ck	should be "ifconfig eth0:0 <address> netmask <netmask>..."
+2011-11-07T22:25:00.000Z	d33ck	sipior	hold on, letme try
+2011-11-07T22:27:00.000Z	d33ck	sipior	http://pastebin.com/f5v1i5jD just that
+2011-11-07T22:28:00.000Z	sipior	d33ck	okay, and does the interface now show as running in "ifconfig -a"?
+2011-11-07T22:29:00.000Z	d33ck	sipior	: http://pastebin.com/2jeb5ZWz it is in ifconfig -a now. is it working now.
+2011-11-07T22:30:00.000Z	sipior	d33ck	yep, have fun

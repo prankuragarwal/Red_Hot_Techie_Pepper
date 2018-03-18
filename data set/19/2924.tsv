@@ -1,0 +1,19 @@
+2009-11-24T12:51:00.000Z	zaoul		What would be the proper way to export all the packages I've apt-get and to run that on another computer?
+2009-11-24T12:52:00.000Z	forkcap	zaoul	you can do something like "dpkg -L | grep ii" to get a list of installed packages... then take that list to the other machine as a checklist
+2009-11-24T12:53:00.000Z	zaoul	forkcap	I need automation
+2009-11-24T12:53:00.000Z	zaoul	forkcap	I have MANY applications
+2009-11-24T12:53:00.000Z	forkcap	zaoul	you need something like Ghost then, for cloning of system images... anyone have a ubottu for that :)
+2009-11-24T12:54:00.000Z	zaoul	forkcap	naa I don't want that.. it takes up too much space.. im fine with installing default OS and then running install apps script
+2009-11-24T12:55:00.000Z	forkcap	zaoul	well if it's just one machine, a one-line script like "for i in `cat my_package_list`; do sudo aptitude install $i; done" would work, given that my_package_list is a list of packages from the other machine, one package name per line
+2009-11-24T12:56:00.000Z	zaoul	forkcap	seems like something that should be built into apt or synaptics :-/
+2009-11-24T12:57:00.000Z	forkcap	zaoul	and actually you can just pass it one big list, never mind the for loop.  Yes, a sort of templating system would be nice. More of an enterprise feature than a desktop one though...
+2009-11-24T12:59:00.000Z	zaoul	forkcap	Im thinking of a cheap backup strategy
+2009-11-24T12:59:00.000Z	zaoul	forkcap	as long as I keep home, and the list of my install apps, I should be able to save media space
+2009-11-24T13:01:00.000Z	forkcap	zaoul	if you just want to back up your home, and the list of installed packages, the traditional way would be to add a scheduled task (or cron job) that uses rsync+ssh (with keys) to copy /home and the list over to a remote host. Other people may be able to recommend more user friendly solutions.
+2009-11-24T13:02:00.000Z	zaoul	forkcap	imma give bacula a shot, I use BackupPC on a few machines already.. going to try something new
+2009-11-24T13:02:00.000Z	forkcap	zaoul	there is a definite lack of an easy solution like Time Machine, etc.
+2009-11-24T13:03:00.000Z	forkcap	zaoul	Bacula, yes, might be overkill for 1 machine but right track.
+2009-11-24T13:03:00.000Z	forkcap	zaoul	yeah it is almost 1-click backup...
+2009-11-24T13:03:00.000Z	zaoul	forkcap	no I have 10 machines
+2009-11-24T13:04:00.000Z	forkcap	zaoul	ooh, definitely give Bacula a try... also Puppet for configuration management.
+2009-11-24T13:04:00.000Z	zaoul	forkcap	I like seeing it has a real front end directory, instead of just a web based gui... I miss real applications

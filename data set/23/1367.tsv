@@ -1,0 +1,23 @@
+2010-04-29T18:56:00.000Z	odie5533		I'm trying to set up an sshd. Why are there keys in both ~/.ssh/ and /etc/ssh_host_key ?
+2010-04-29T18:56:00.000Z	mournkaye	odie5533	The key in /etc is the key for your *machine*, the one in ~ is for your *user*
+2010-04-29T18:58:00.000Z	mournkaye	odie5533	You don't have to have on in ~/.ssh - but if you do set it up properly it can save you from having to use passwords
+2010-04-29T19:00:00.000Z	mournkaye	odie5533	Yes - but that key is only used when you SSH from your machine to a remote machine
+2010-04-29T19:00:00.000Z	mournkaye	odie5533	It's not used 'locally' for local logins
+2010-04-29T19:00:00.000Z	mournkaye	odie5533	Take a look at http://sial.org/howto/openssh/publickey-auth/
+2010-04-29T19:02:00.000Z	mournkaye	odie5533	So, for example, when I log into my laptop I need to type a password.  If I then SSH into my server it'll use my key in ~/.ssh and I don't need to type a password again (since I set up my server to accept the key)
+2010-04-29T19:03:00.000Z	odie5533	mournkaye	I'm setting up an sshd on my computer though, I want to then log into it from my laptop. So I don't use the ~/.ssh/ on my host (computer) but instead on my laptop only (client)?
+2010-04-29T19:03:00.000Z	mournkaye	odie5533	that's correct!
+2010-04-29T19:04:00.000Z	odie5533	mournkaye	how will my host know about my login key though?
+2010-04-29T19:04:00.000Z	mournkaye	odie5533	...well, it's half-correct ;-) on your host 'server' you need an entry in ~/.ssh/authorized_keys
+2010-04-29T19:04:00.000Z	odie5533	mournkaye	is that only the public key though? won't my host need a private one too?
+2010-04-29T19:05:00.000Z	mournkaye	odie5533	nope
+2010-04-29T19:05:00.000Z	odie5533	mournkaye	or does my client have the private one and the host have the public?
+2010-04-29T19:05:00.000Z	mournkaye	odie5533	The public part goes in $HOST:~/.ssh/authorized_keys, the private part in $CLIENT:~/ssh/id_rsa
+2010-04-29T19:05:00.000Z	mournkaye	odie5533	what MikeChelen said :)
+2010-04-29T19:07:00.000Z	odie5533	mournkaye	How do I disallow regular password logins and only allow key logins?
+2010-04-29T19:07:00.000Z	mournkaye	odie5533	On your server host, change /etc/ssh/sshd_config
+2010-04-29T19:07:00.000Z	mournkaye	odie5533	it's pretty self-explanatory
+2010-04-29T19:10:00.000Z	odie5533	mournkaye	I think I have it now, thanks for the help!
+2010-04-29T19:12:00.000Z	mournkaye	odie5533	You're very welcome, good luck!
+2010-04-29T19:12:00.000Z	mournkaye	odie5533	Next you'll want to learn about protecting your keys with a password and using ssh-agent
+2010-04-29T19:13:00.000Z	mournkaye	odie5533	...in case they fall into enemy hands

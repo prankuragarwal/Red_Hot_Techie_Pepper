@@ -1,0 +1,21 @@
+2010-07-26T03:15:00.000Z	Sjors		Hi, can anyone test something for me? I think I've found a bug and I want to know whether I'm the only one
+2010-07-26T03:15:00.000Z	randomguy	Sjors	shoot
+2010-07-26T03:17:00.000Z	randomguy	Sjors	let me check. I was about to mess around with on screen keyboard too! (got ts device here)
+2010-07-26T03:17:00.000Z	Sjors	randomguy	great ;-)
+2010-07-26T03:18:00.000Z	Sjors	randomguy	by locking a pidfile :)
+2010-07-26T03:18:00.000Z	randomguy	Sjors	can you elaborate?
+2010-07-26T03:19:00.000Z	Sjors	randomguy	what you do is: check /var/run/appname.lck, take a PID from that file if it exists, then kill -0 it; if that works then another instance is already running
+2010-07-26T03:19:00.000Z	Sjors	randomguy	otherwise, write your own PID to the file, done
+2010-07-26T03:19:00.000Z	Sjors	randomguy	what works even better is to use DBUS and just check if a service is already available, if so exit, if not take it
+2010-07-26T03:21:00.000Z	randomguy	Sjors	do you have some sample bash script for the manual pidfile method ?
+2010-07-26T03:21:00.000Z	Sjors	randomguy	manual pidfile is usually what servers do - DBUS is sort of a "newer non-UNIX approach"
+2010-07-26T03:22:00.000Z	randomguy	Sjors	it is for openning only one instance of wicd-client program when tapping the icon in gnome-panel
+2010-07-26T03:23:00.000Z	Sjors	randomguy	for GNOME / gtk applications, use dbus integration, it's a lot easier programming-wise
+2010-07-26T03:23:00.000Z	Sjors	randomguy	but maybe gtk has stuff for it - I know kdelibs does
+2010-07-26T03:24:00.000Z	Sjors	randomguy	with kdelibs / qt, you can just say: I want only one instance of this application ever
+2010-07-26T03:25:00.000Z	Sjors	randomguy	it automatically does the stuff via dbus :)
+2010-07-26T03:25:00.000Z	randomguy	Sjors	ok. I tried to reconstruct your problem: I logged out (not switch user) and in the gnome login screen I tapped the global access icon and chose on screen keyboard. a nice window pops up and ---- stays open.
+2010-07-26T03:25:00.000Z	Sjors	randomguy	hm :/
+2010-07-26T03:26:00.000Z	Sjors	randomguy	weird, this is on 10.04? I just took the non-updated isos from ubuntu.com
+2010-07-26T03:26:00.000Z	Sjors	randomguy	problem is that I can't seem to type in there, probably vmware fusion did something wrong
+2010-07-26T03:28:00.000Z	randomguy	Sjors	sorry I only used qemu in the past

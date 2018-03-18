@@ -1,0 +1,24 @@
+2012-11-08T12:20:00.000Z	MikeS11	Erin	I don't know anything about it, but it sounds like a particular daemon isn't running. Try the following: service --status-all
+2012-11-08T12:21:00.000Z	Erin	MikeS11	 [ + ]  php5-fpm
+2012-11-08T12:21:00.000Z	Erin	MikeS11	php5-fpm also says its running through its own daemon. but its clearly not listening on port 9000 :-\
+2012-11-08T12:24:00.000Z	MikeS11	Erin	Within your php5-fpm config file you can specify the "listen_address" which includes the port. Check you config and see what it is set for.
+2012-11-08T12:29:00.000Z	Erin	MikeS11	in this file ? http://paste.ubuntu.com/1341940/ /etc/php5/fpm/php.ini ?
+2012-11-08T12:31:00.000Z	MikeS11	Erin	No, there should be a php-fpm.conf file. See the php-fpm wiki: http://php-fpm.org/wiki/Configuration_File
+2012-11-08T12:32:00.000Z	Erin	MikeS11	i can't seem to file, any clue to where it is located? localhost:9000 is supposed to be the "default" setup ....
+2012-11-08T12:33:00.000Z	Erin	MikeS11	seem to find that file that is .
+2012-11-08T12:34:00.000Z	Erin	MikeS11	ahh I found it, had a typo ;-p
+2012-11-08T12:34:00.000Z	MikeS11	Erin	Right on! Out of curiousity, where was it? Also, what port does it say you are supposed to be using?
+2012-11-08T12:36:00.000Z	Erin	MikeS11	that file had no line "listen_address"
+2012-11-08T12:37:00.000Z	Erin	MikeS11	i added listen_address = 127.0.0.1:9000 to the file, reloaded the daemon but still its not listening..
+2012-11-08T12:39:00.000Z	Erin	MikeS11	it appears according to the log file I have the wrong syntax for listen_address
+2012-11-08T12:41:00.000Z	Erin	MikeS11	hrm im not sure what format to use? [08-Nov-2012 02:36:12] ERROR: [/etc/php5/fpm/php-fpm.conf:26] unknown entry 'listen_address'
+2012-11-08T12:42:00.000Z	MikeS11	Erin	I believe something like this -> listen_address = 127.0.0.1:9000
+2012-11-08T12:42:00.000Z	Erin	MikeS11	tried that, no dice.
+2012-11-08T12:46:00.000Z	MikeS11	Erin	Looking at examples, it looks like Synt may be correct. But that is weird that their homepage wiki says listen_address. :/
+2012-11-08T12:49:00.000Z	Erin	MikeS11	ahh
+2012-11-08T12:52:00.000Z	MikeS11	Erin	*fingers crossed*
+2012-11-08T12:52:00.000Z	Erin	MikeS11	so like this ? [pool]
+2012-11-08T12:53:00.000Z	MikeS11	Erin	listen = 127.0.0.1:9000
+2012-11-08T12:53:00.000Z	MikeS11	Erin	(proably a typo)
+2012-11-08T12:55:00.000Z	MikeS11	Erin	Check out the example Synt gave - it looks to have a good Pool definition sample.
+2012-11-08T13:00:00.000Z	MikeS11	Erin	Good luck!

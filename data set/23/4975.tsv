@@ -1,0 +1,23 @@
+2007-03-25T09:12:00.000Z	hakanw		what's the default account and password for the mysql db in ubuntu server's LAMP setup?
+2007-03-25T09:13:00.000Z	hakanw		I cannot access it.
+2007-03-25T09:13:00.000Z	hakanw		although it's up and running
+2007-03-25T09:14:00.000Z	hakanw		ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
+2007-03-25T09:15:00.000Z	hakanw		you mean that root :)
+2007-03-25T09:15:00.000Z	hakanw		hmm, I thought ubuntu preferred sudo over root
+2007-03-25T09:16:00.000Z	hakanw		so I'm not sure that a root account is setup by default
+2007-03-25T09:16:00.000Z	omptiger	hakanw	there is one, but has a random password (I think)
+2007-03-25T09:16:00.000Z	hakanw	omptiger	um, so at what point does one get that password? :/
+2007-03-25T09:17:00.000Z	omptiger	hakanw	make one yourself: sudo passwd root
+2007-03-25T09:17:00.000Z	hakanw	omptiger	ah, of course. thanks
+2007-03-25T09:18:00.000Z	omptiger	hakanw	oh... whoops.   I thought you were talking about just logging into the regular root account, not sql
+2007-03-25T09:18:00.000Z	hakanw	omptiger	well I'm talking about mysql and what the passwd is for the root account
+2007-03-25T09:20:00.000Z	omptiger	hakanw	have you tried setting a new password?
+2007-03-25T09:20:00.000Z	hakanw	omptiger	mysqladmin -u root oldpasswd newpasswd ?
+2007-03-25T09:21:00.000Z	omptiger	hakanw	yup
+2007-03-25T09:21:00.000Z	omptiger	hakanw	except try not putting anything in oldpasswiord
+2007-03-25T09:22:00.000Z	hakanw	omptiger	should that be mysqladmin foobar
+2007-03-25T09:24:00.000Z	omptiger	hakanw	should it be mysqladmin -u root newpassword?
+2007-03-25T09:25:00.000Z	hakanw	omptiger	trying to find out the best command, since none of those I test work
+2007-03-25T09:26:00.000Z	omptiger	hakanw	try mysql -u root password newpassword  don't replace password with anything else
+2007-03-25T09:26:00.000Z	hakanw	omptiger	# mysqladmin -u root password foobar
+2007-03-25T09:27:00.000Z	omptiger	hakanw	strange

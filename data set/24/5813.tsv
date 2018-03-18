@@ -1,0 +1,24 @@
+2008-12-10T05:55:00.000Z	fliegenderfrosch		i’m trying to connect to an open wlan via the console. with network manager it works. when i use iwconfig ath0 essid "ESSID", iwconfig shows me the essid, but no ap or channel is shown. Has anyone an idea how I could connect?
+2008-12-10T05:55:00.000Z	nick|here	fliegenderfrosch	try to obtain  an ip with dhclient or dhcpcd or whatever you are using
+2008-12-10T05:56:00.000Z	nick|here	fliegenderfrosch	and what about link quality shown when you done iwconfig ath0
+2008-12-10T05:59:00.000Z	fliegenderfrosch	nick|here	dhclient doesn‘t get me an ip and afterwards the AP and channel are still not set
+2008-12-10T05:59:00.000Z	fliegenderfrosch	nick|here	the wlan is open btw
+2008-12-10T05:59:00.000Z	nick|here	fliegenderfrosch	try iwconfig ath0 ap "ESSID"
+2008-12-10T06:02:00.000Z	nick|here	fliegenderfrosch	by the way, do you get anything when you do iwlist ath0 s can
+2008-12-10T06:02:00.000Z	fliegenderfrosch	nick|here	ath0 is up
+2008-12-10T06:02:00.000Z	fliegenderfrosch	nick|here	yes, I get a list with all networks
+2008-12-10T06:03:00.000Z	nick|here	fliegenderfrosch	when you done iwconfig ath0 essid "YourEssid" then iwconfig you can't see your essid here, that's your problem. can you check in which mode your ath0 is?  Monitor, managed?
+2008-12-10T06:04:00.000Z	nick|here	fliegenderfrosch	it's enough to set ap for an open network
+2008-12-10T06:04:00.000Z	fliegenderfrosch	nick|here	ath0 is managed
+2008-12-10T06:05:00.000Z	fliegenderfrosch	nick|here	iwconfig sets the essid, but AP is shown not associated and channel is shown 0
+2008-12-10T06:06:00.000Z	nick|here	fliegenderfrosch	try iwconfig channel "Channel" essid "ESSID" rate auto
+2008-12-10T06:06:00.000Z	nick|here	fliegenderfrosch	but it isn't necessary to do that
+2008-12-10T06:06:00.000Z	nick|here	fliegenderfrosch	there should be a mac filter if you can't connect even with the last command
+2008-12-10T06:08:00.000Z	fliegenderfrosch	nick|here	there can‘t be a mac filter, as i can connect with network-manager, it just doesn‘t work from the console. but i’ll try this command
+2008-12-10T06:10:00.000Z	fliegenderfrosch	nick|here	i still get AP: Not associated with this last command
+2008-12-10T06:11:00.000Z	fliegenderfrosch	nick|here	i’ve got the feeling that this command doesn‘t really do anything, it quits instantaniously and tha wlan led doesnt blink
+2008-12-10T06:11:00.000Z	nick|here	fliegenderfrosch	wlanconfig ath0 destroy && wlanconfig ath0 create wlandev wifi0 wlanmode sta
+2008-12-10T06:12:00.000Z	nick|here	fliegenderfrosch	it's normal. it actually seems like to do nothing but it does. and the leds cannot be work unless you've done some special settings. by the way, why you're insisting to connect via command line
+2008-12-10T06:17:00.000Z	fliegenderfrosch	nick|here	still the same... it’s not really important that I can connect, I just thought it would be nice to be able to do it from the console and as it didn’t work I wanted to know if I do something wrong.
+2008-12-10T06:18:00.000Z	fliegenderfrosch	nick|here	unop: thanks for your help anyway
+2008-12-10T06:19:00.000Z	nick|here	fliegenderfrosch	nope. i really wonder why you can't. i'm creating a tool that allow users to connect from console easily like gui. i'll inform you later

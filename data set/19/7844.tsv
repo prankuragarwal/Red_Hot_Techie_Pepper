@@ -1,0 +1,19 @@
+2007-07-11T08:18:00.000Z	draeath		my xubuntu system here has it's filesystem seperated into 6 partitions :D
+2007-07-11T08:19:00.000Z	retour	draeath	how it helps? I can see /root and /Home and /swap but 6???
+2007-07-11T08:19:00.000Z	draeath	retour	my /var /tmp and /home are seperate, which means I can use different block sizes :D
+2007-07-11T08:21:00.000Z	retour	draeath	block sizes are different because of different partition sizes or you set them up manually, file system is ext3 or reiser?
+2007-07-11T08:21:00.000Z	draeath	retour	manual setup
+2007-07-11T08:21:00.000Z	draeath	retour	ext3
+2007-07-11T08:22:00.000Z	retour	draeath	can you give me your values as examples? I was always going with defaults but would be nice to experiment and see if it makes it faster or more space efficient?
+2007-07-11T08:23:00.000Z	draeath	retour	generally the smaller the block size the more 'efficient', minus the extra overhead for storing the file info. smaller blocks = better for smaller files
+2007-07-11T08:24:00.000Z	draeath	retour	the more useful reason that I seperated was that if I loose a filesystem for some reason, it isn't crippling
+2007-07-11T08:24:00.000Z	draeath	retour	and seperate journals for each means move journal coverage overall :P
+2007-07-11T08:26:00.000Z	retour	draeath	small is relative 1kB file or 100kB is still small? And I'm not guru in journalized files systems so if partition fails data is corrupted hmm dont feel that last one
+2007-07-11T08:26:00.000Z	draeath	retour	generally don't worry about block size. It's one of those things where "If you don't know what it's for, you don't need it"
+2007-07-11T08:27:00.000Z	draeath	retour	as far as journal... the journal on each FS can only store so many 'transactions' (writes, erases, etc) - having a seperate journal for frequently used filesystems (/var) means that more journal is available on /home for instance.
+2007-07-11T08:28:00.000Z	retour	draeath	remember dealing with it since first 2GB disks back in DOS times so I know a bit. Just dont know how small/bi file size changed since than
+2007-07-11T08:29:00.000Z	draeath	retour	poke around with 'ls -lah /directory' to figure out average filesizes
+2007-07-11T08:29:00.000Z	draeath	retour	regardless of filesize, a file is stored in whole blocks (so if you have a 64kb file on a system with 16kb blocks, that file uses 4 blocks. a 67 kb file would take 5.)
+2007-07-11T08:33:00.000Z	retour	draeath	yes this I remember since DOS times hehe. But about lots of transactions - what level of files system usage justifies such trick? server or even single workstation can benefit? And what you think about reiser fs? it supposed to be better and faster than ext(s) is it true?
+2007-07-11T08:36:00.000Z	draeath	retour	if you use a modern FS (even NTFS) it journals EVERYTHING
+2007-07-11T08:37:00.000Z	retour	draeath	thank you!

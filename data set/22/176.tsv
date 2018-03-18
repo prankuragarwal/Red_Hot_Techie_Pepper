@@ -1,0 +1,22 @@
+2012-09-08T06:02:00.000Z	l1t		I know how to create startup scripts. But how do I make a startup script run last out of all the startup scrips...If that makes sense?
+2012-09-08T06:02:00.000Z	l1t		And or how do I make one run first. So the first thing init calls upon is the script in question
+2012-09-08T06:02:00.000Z	Church-	l1t	it probably depends on init system used
+2012-09-08T06:03:00.000Z	l1t		10.04 sooo system v
+2012-09-08T06:03:00.000Z	l1t		not systemd
+2012-09-08T06:03:00.000Z	l1t	Church-	initdaemon I guess right? Not systemd
+2012-09-08T06:03:00.000Z	Church-		in sysv style initscripts it was by numbers that prefixed name of symlink to initscript
+2012-09-08T06:04:00.000Z	Church-		00-99, put bigger number to start later, smaller to start sooner
+2012-09-08T06:04:00.000Z	l1t	Church-	well if I look in rc2.d for instance I see a few with the number 99 appended to their symlinks
+2012-09-08T06:04:00.000Z	l1t	Church-	that what your speaking about?
+2012-09-08T06:05:00.000Z	Church-	l1t	in sysv usually there are initscripts in /etc/rc.d/init.d/ and /etc/rc.d/rc#.d runlevel dirs with simlinks to those initscripts. 87_initscript will be run before 88_initscript
+2012-09-08T06:06:00.000Z	l1t	Church-	mmk thanks
+2012-09-08T06:08:00.000Z	l1t	Church-	so I just simply change the number? That wont screw aything up? Also to my understanding in ubuntu (for some reason) our run level 2 3 etc. all are multiuser with networking. So would I change the number for each script in each directory rc2.d rc3.d etc...?
+2012-09-08T06:09:00.000Z	Church-	l1t	to complete review of sysv initsript style there is also defined default runlevel in /etc/inittab, scripts in runlevel dirs are run with start or stop param depending if link name is prefixed with S or K (short for start or kill). and often there is also rc.local script, that usually is run after everything else, and might contain some commands/scripts to run in addition to those simlinked scripts
+2012-09-08T06:10:00.000Z	Church-		as to your last question, yes, simply rename that link (or script) with increased number for it to be run later after scripts with lesser numbers
+2012-09-08T06:11:00.000Z	Church-	l1t	just when changing number think that particular service might depend on other things run before it, so you shouldn't for example decrease number that much, when some dependant stuff hasn't been launched yet
+2012-09-08T06:11:00.000Z	l1t	Church-	nope no inittab here. And rc.local just executes whatever run level im in
+2012-09-08T06:12:00.000Z	l1t	Church-	ok good point
+2012-09-08T06:12:00.000Z	l1t	Church-	But this still does not answer if I should change the number for all run levels ubuntu calls multiuser + networking
+2012-09-08T06:13:00.000Z	l1t	Church-	Church- nevermind I guess all I have to worry about is the symlinks in rc2.d right?
+2012-09-08T06:13:00.000Z	Church-	l1t	set for runlevel you are booting to default
+2012-09-08T06:13:00.000Z	l1t	Church-	ok thanks again

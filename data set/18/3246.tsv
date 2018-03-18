@@ -1,0 +1,18 @@
+2009-11-08T15:56:00.000Z	Newbee_		hello guys
+2009-11-08T15:58:00.000Z	Newbee_		I have wirtten a little shell script to back up my personal data on another partition and sync it to my home server if I am at home. But while the script seems to work if I run it from the shell, it is not executed if I put it in cron.daily
+2009-11-08T15:58:00.000Z	Newbee_		Does anybody know why this can happen?
+2009-11-08T15:59:00.000Z	jrib	Newbee_	you're going to have to pastebin.  Most likely it depends on some environment settings that are not set when you ask cron to run it
+2009-11-08T16:02:00.000Z	Newbee_	jrib	here is it: http://paste.ubuntu.com/313179/
+2009-11-08T16:03:00.000Z	jrib	Newbee_	how are you running that?
+2009-11-08T16:04:00.000Z	Newbee_	jrib	just executing the script file
+2009-11-08T16:04:00.000Z	jrib	Newbee_	how exactly/
+2009-11-08T16:04:00.000Z	jrib	Newbee_	you realize you don't have a proper shebang line?
+2009-11-08T16:05:00.000Z	Newbee_	jrib	sudo /etc/cron.daily/rdiff-backup  because the mounting in the script needs root rights
+2009-11-08T16:05:00.000Z	jrib	Newbee_	fix the she bang line
+2009-11-08T16:05:00.000Z	Newbee_	jrib	no, what is a shebang line?
+2009-11-08T16:06:00.000Z	jrib	Newbee_	the first line should be: #!/bin/bash
+2009-11-08T16:06:00.000Z	Newbee_	jrib	oh, yes. This is something even a beginner like I am has seen bevore. Ok, I will fix that
+2009-11-08T16:08:00.000Z	Newbee_	jrib	do you thing that this can be the problem? Wouldn't anacron just use the default shell to execute the script if this is worng or doesn't it consider the script to be a srcipt?
+2009-11-08T16:08:00.000Z	jrib	Newbee_	the default shell is dash
+2009-11-08T16:09:00.000Z	Newbee_	jrib	yes and I tested the thing with dash and it workded
+2009-11-08T16:10:00.000Z	jrib	Newbee_	ah, well make sure this still doesn't work.  If it doesn't check for mail from cron (you may have to setup local mail) or just redirect the output of the command to some file and see what happens

@@ -1,0 +1,23 @@
+2005-12-31T08:48:00.000Z	oneseventeen_		If I "PING -c 3 www.google.com" I get a 100% packet loss, but I'm doing it via SSH from home, so obviously the server has network connectivity
+2005-12-31T08:48:00.000Z	oneseventeen_		how do I get it to ping, wget, and all that good stuff?
+2005-12-31T08:48:00.000Z	twysted	oneseventeen_	if it cannot resolve the ip then it wont ping
+2005-12-31T08:49:00.000Z	twysted	oneseventeen_	try ping'n 72.14.207.99
+2005-12-31T08:49:00.000Z	oneseventeen_	twysted	it says PING ww.1.google.com (66.102.7.147) 56(84) bytes of data when I ping google.com
+2005-12-31T08:49:00.000Z	twysted	oneseventeen_	we can then see if its a dns or network issue
+2005-12-31T08:49:00.000Z	twysted		ok so dns is working
+2005-12-31T08:50:00.000Z	oneseventeen_	twysted	pinging the IP didn't work, so yeah, DNS is fine
+2005-12-31T08:50:00.000Z	oneseventeen_		does the Bcast in ifconfig have anything to do with it?  (as I have not set this)
+2005-12-31T08:51:00.000Z	twysted	oneseventeen_	you need to set broadcast
+2005-12-31T08:51:00.000Z	twysted	oneseventeen_	usually 255.255.255.0
+2005-12-31T08:52:00.000Z	oneseventeen_	twysted	that looks like my netmask or Mask
+2005-12-31T08:52:00.000Z	oneseventeen_	twysted	should my broadcast be my netmask?
+2005-12-31T08:52:00.000Z	twysted	oneseventeen_	yes
+2005-12-31T08:53:00.000Z	oneseventeen_	twysted	nope, still won't work.
+2005-12-31T08:53:00.000Z	twysted	oneseventeen_	you have to take the interface down and bring it back up
+2005-12-31T08:54:00.000Z	oneseventeen_	twysted	is /etc/init.d/networking restart enough?
+2005-12-31T08:54:00.000Z	twysted	oneseventeen_	it should be
+2005-12-31T08:54:00.000Z	twysted	oneseventeen_	sometimes no
+2005-12-31T08:54:00.000Z	twysted	oneseventeen_	why not use dhcp and let your dhcp server assign a ip?
+2005-12-31T08:55:00.000Z	oneseventeen_	twysted	this is for a webserver at work that actually has 3 static IP's attached
+2005-12-31T08:55:00.000Z	twysted		oneseventeen_> ah i see
+2005-12-31T08:55:00.000Z	oneseventeen_	twysted	and the 2 IP aliases have been removed by ifconfig, so I'm pretty sure the networking restart did its thing

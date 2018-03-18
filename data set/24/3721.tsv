@@ -1,0 +1,24 @@
+2007-11-01T00:44:00.000Z	flixh	void^	looking at some comments from Blue on the various bug reports, it looks as if Ubuntu IS changing drive parameters!
+2007-11-01T00:47:00.000Z	void^	flixh	well, i don't know if there are cases when laptop_mode is enabled by default, would have to grep through the installer's source to make sure..
+2007-11-01T00:48:00.000Z	flixh	void^	according to Blue's comments he just exchanged hdparm with a logging script in a clean install, and it is called with the harmfull hdparm -B 1, so it does not really matter if laptop_mode is enabled or not.
+2007-11-01T00:50:00.000Z	flixh	void^	BTW: for me laptop_mode reduces the Load_Cycle to (still to high) 2-5/min, without it's up to 10/min...
+2007-11-01T00:51:00.000Z	void^	flixh	i've just grepped my ubuntu systems for calls to hdparm and traced them back .. i'll use a logging script just to be sure..
+2007-11-01T00:53:00.000Z	flixh	void^	I am very interested in your results. Unfortunately I only have a system that has been dist-upgraded since hoary, so no clean install...
+2007-11-01T00:53:00.000Z	flixh	void^	no clean install to test with
+2007-11-01T00:58:00.000Z	void^	flixh	not a single call to hdparm. this is an upgraded system too, though. feisty-beta i think.
+2007-11-01T00:59:00.000Z	flixh	void^	interesting. There might still of course be cases where this differs.
+2007-11-01T01:02:00.000Z	flixh	void^	do mind answering a few question over this respective system? such as: are acpi, apm activ?
+2007-11-01T01:03:00.000Z	void^	flixh	this system here is a perfectly normal desktop - core2duo, acpi enabled, using x86_64
+2007-11-01T01:04:00.000Z	flixh	void^	is laptop-mode-tools installes?
+2007-11-01T01:04:00.000Z	void^	flixh	yes
+2007-11-01T01:05:00.000Z	flixh	void^	but not active I guess?
+2007-11-01T01:06:00.000Z	flixh	void^	have you tried suspend to ram and if it's calling hdparm on waking up?
+2007-11-01T01:06:00.000Z	void^	flixh	ENABLE_LAPTOP_MODE=false in acpi-support
+2007-11-01T01:07:00.000Z	void^	flixh	i don't think str works on this mainboard.. hrm, well don't think i ever tried. let's see..
+2007-11-01T01:08:00.000Z	void^	flixh	it actually works, but doesn't invoke hdparm either.
+2007-11-01T01:10:00.000Z	flixh	void^	ok, so it's not the case for every system and might only occur in some corner cases. For me personally it's pretty anoying and can unfortunately not be solved with hdparm -B or -S :-(
+2007-11-01T01:11:00.000Z	void^	flixh	if you can't fix it with hdparm -B 255 i would assume it's a builtin "feature"
+2007-11-01T01:13:00.000Z	flixh	void^	i think it's the fault of my Samsung drive, that does not care what hdparm tells it. So in some way it's a builtin "feature" yes.
+2007-11-01T01:14:00.000Z	flixh	void^	at the same time the disc is specified for 600000 cycles and I'm at almost 400000 already, counting rapidly. So if it's builtin in, then it's pretty stupid.
+2007-11-01T01:14:00.000Z	void^	flixh	and that's why i think the noise about this issue is a bigger problem for hdd manufacturers than ubuntu :]
+2007-11-01T01:16:00.000Z	flixh	void^	it probably should be. But probably it's more sales for them and bad publicity for Ubuntu, as people do not necessarly care about the complex background.

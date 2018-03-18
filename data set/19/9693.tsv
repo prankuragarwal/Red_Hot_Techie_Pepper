@@ -1,0 +1,19 @@
+2007-01-09T10:17:00.000Z	craigbass1976		How come when I apt-get remove apache, the /etc/init.d/apache isn't removed?  When I remove it manually, as well as the files in /var/www/ things aren't put back when I apt-get install apache.
+2007-01-09T10:17:00.000Z	craigbass1976		Also, when I had it and apache2 both installed, I could run apache, but not apache2.
+2007-01-09T10:17:00.000Z	owh	craigbass1976	You need to do an apt-get --purge remove apache to remove config files.
+2007-01-09T10:18:00.000Z	craigbass1976	owh	I get "Package apache is not installed, so not removed" so do I have to install it and then run the purge command?
+2007-01-09T10:19:00.000Z	owh	craigbass1976	Yup.
+2007-01-09T10:19:00.000Z	owh	craigbass1976	If you want to also remove the automagic stuff, the command is: apt-get --purge autoremove apache
+2007-01-09T10:21:00.000Z	craigbass1976	owh	Ahh. Very nice.
+2007-01-09T10:21:00.000Z	owh	craigbass1976	I always thought so.
+2007-01-09T10:24:00.000Z	craigbass1976	owh	is there something funny about apache2 in dapper?
+2007-01-09T10:24:00.000Z	owh	craigbass1976	Makes me laugh all the time, but other than that, no.
+2007-01-09T10:24:00.000Z	craigbass1976	owh	what's that mean?
+2007-01-09T10:24:00.000Z	owh	craigbass1976	That there is nothing funny about apache2, other than its name.
+2007-01-09T10:25:00.000Z	owh	craigbass1976	It just worked for me.
+2007-01-09T10:26:00.000Z	craigbass1976	owh	Oh, I asked if there were something funny.  I get it. duh...
+2007-01-09T10:26:00.000Z	owh	craigbass1976	It happens :-)
+2007-01-09T10:27:00.000Z	craigbass1976	owh	so I guess I've got trouble... I do the purge on apache2, and things are left in /usr/sbin and /etc.  I remove them manually, and reinstall the app, and those things don't come back.
+2007-01-09T10:28:00.000Z	owh	craigbass1976	Before you start removing and purging, what does dpkg tell you that is installed?
+2007-01-09T10:29:00.000Z	owh	craigbass1976	dpkg -l|grep ii|grep -i apache
+2007-01-09T10:30:00.000Z	craigbass1976	owh	Ok.  thanks

@@ -1,0 +1,24 @@
+2009-01-16T08:42:00.000Z	rogermudd		Does the directory have to be outside /home?
+2009-01-16T08:43:00.000Z	usser	rogermudd	the umasks are set in /etc/profile
+2009-01-16T08:44:00.000Z	usser	rogermudd	umask 022 means default create permissions are 755 it is essentiall reversed
+2009-01-16T08:44:00.000Z	usser	rogermudd	so if u want to give the owner and group all rights set it to 002
+2009-01-16T08:45:00.000Z	rogermudd	usser	et al: And this will affect all future files too?
+2009-01-16T08:46:00.000Z	usser	rogermudd	yes but it will not be bound to one directory, umask applies to every file a user creates
+2009-01-16T08:47:00.000Z	rogermudd	usser	Not exactly what I was hoping to do, though. I want to keep individual user directories private.
+2009-01-16T08:49:00.000Z	usser	rogermudd	they will be you only modifying group and owner, not everyone. every user has his own primary group to which all files he creates default, now i dont know about setgid that someone suggested but i think what it does is essentially forces newly created files to certain other group different from user's primary
+2009-01-16T08:51:00.000Z	usser	rogermudd	that was kinda unclear :)
+2009-01-16T08:52:00.000Z	rogermudd	usser	I'll give it a shot. Have you done this? I can't believe it's not baked into the OS. I know it's on the Ideastorm (?) web site.
+2009-01-16T08:54:00.000Z	usser	rogermudd	theres these permissions on every file in linux: owner - the user that creates the file, group - his primary group, and other - everybody else umask of 002 gives owner and group read/write/execute permissions on every file he creates, and setgid sets the default group id of a directory to a group that you create and of which all users are part of. so that any member of that group has all permissions in that directory
+2009-01-16T08:54:00.000Z	usser	rogermudd	i tried something like that yes
+2009-01-16T08:54:00.000Z	usser	rogermudd	only i didnt use setgid, i simply set my users primary group to the one they are part of.
+2009-01-16T08:55:00.000Z	usser	rogermudd	ie user1's and user's primary group is CompUsers for example
+2009-01-16T08:55:00.000Z	usser	rogermudd	sorry im not good at explaining stuff
+2009-01-16T08:58:00.000Z	rogermudd	usser	No. I appreciate the help. I've been trying to get this going for a while. Can never seem to get it going, though. It's a necessity, however, as I share the machine with my wife and she would like to have access to photos and such. No need to have copies in each user's directory. Again, wish it was baked into the OS. Windows and OSX do it out of the box. I think it should be a priority for Ubuntu.
+2009-01-16T09:00:00.000Z	usser	rogermudd	thats not going to change anytime soon though, since those are unix permissions and changing that model would break the POSIX compatibility
+2009-01-16T09:01:00.000Z	rogermudd	usser	OSX does it with a UNIX foundation. Should be possible.
+2009-01-16T09:02:00.000Z	usser	rogermudd	osx is one mess of a unix, case insentivity is one big issue
+2009-01-16T09:09:00.000Z	usser	rogermudd	yea gid bit works
+2009-01-16T09:09:00.000Z	usser	rogermudd	just tested it, so basically create a group, add all your users, change mask to 002 or 007
+2009-01-16T09:10:00.000Z	usser	rogermudd	run a file manager with sudo, find your dir go to properties -> permissions, change primary group of that dir to the one common to all users and set gid bit
+2009-01-16T09:10:00.000Z	usser	rogermudd	that should do it
+2009-01-16T09:11:00.000Z	rogermudd	usser	and trinitronx: Thanks for the help. I'll give it a shot in the morning. But first, off to sleep ;-)

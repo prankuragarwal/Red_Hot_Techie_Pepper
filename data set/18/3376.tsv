@@ -1,0 +1,18 @@
+2009-10-18T07:42:00.000Z	lenswipe		can someone tell me if users currently have read only perms on other users home dirs?
+2009-10-18T07:42:00.000Z	xrandr	lenswipe	use ls -al /home
+2009-10-18T07:43:00.000Z	lenswipe	xrandr	well the reason im asking is im giving users access through usermin and at the moment they have read permissions on other users home dirs, if i was to chmod /home recursively to 700 would that give everyone except the owner and root permissions of 0?
+2009-10-18T07:43:00.000Z	xrandr	lenswipe	that's true
+2009-10-18T07:44:00.000Z	lenswipe	xrandr	so whats the default numerical permissions incase i mess up?
+2009-10-18T07:47:00.000Z	lenswipe	xrandr	another thing is, i have all my samba stuff in /home like my public folder and stuff, what would be the effect of that command on those?
+2009-10-18T07:48:00.000Z	lenswipe	xrandr	is there a way of having that command ignore the folder called "samba" ?
+2009-10-18T07:48:00.000Z	xrandr	lenswipe	no affect at all. Samba permissions are set in /etc/samba/smb.conf
+2009-10-18T07:49:00.000Z	lenswipe	xrandr	so for example if i was to run that command on /home then it wont mean stuff happens like users cant write to public and stuff?
+2009-10-18T07:49:00.000Z	lenswipe	xrandr	ah ok...
+2009-10-18T07:50:00.000Z	xrandr	lenswipe	the directives in smb.conf (allowed users, admin users) are what sets those permissions in samba
+2009-10-18T07:50:00.000Z	lenswipe	xrandr	right
+2009-10-18T07:51:00.000Z	lenswipe	xrandr	what is the best way of giving users permissions of 0 on anything that they dont own, would it be "chmod -R 700 /home"?
+2009-10-18T07:51:00.000Z	xrandr	lenswipe	yes.
+2009-10-18T07:51:00.000Z	lenswipe	xrandr	ah right ok, and if it messes up i can get it back using a chmod of 755 recursive?
+2009-10-18T07:51:00.000Z	xrandr	lenswipe	or chmod -R u+wrx /home
+2009-10-18T07:53:00.000Z	xrandr	lenswipe	letter format for chmod is   chmod [options] [(u)ser (g)roup (o)ther] [(r)ead (w)rite e(x)ecute (s)pecial/sticky ]
+2009-10-18T07:54:00.000Z	lenswipe	xrandr	heh, i prefer numbers :P to letters - the letters confuse me :)

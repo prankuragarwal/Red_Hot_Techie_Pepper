@@ -1,0 +1,18 @@
+2006-05-24T10:49:00.000Z	TheBigToe		how do I get read access to an ntfs drive?
+2006-05-24T10:49:00.000Z	TheBigToe		it says I don't have the right permissions
+2006-05-24T10:49:00.000Z	TheBigToe		yeah
+2006-05-24T10:50:00.000Z	TheBigToe		hah
+2006-05-24T10:51:00.000Z	TheBigToe		er, minus the >
+2006-05-24T10:51:00.000Z	TheBigToe		er, ?
+2006-05-24T10:51:00.000Z	TheBigToe		I can't type today
+2006-05-24T10:51:00.000Z	TheBigToe		well, I think it's mounted, I think it's hda1
+2006-05-24T10:52:00.000Z	mwe	TheBigToe	it's not safe to write to ntfs from linux. to let all users have read accass put umask=0222 under mount options in /etc/fstab
+2006-05-24T10:55:00.000Z	TheBigToe	mwe	so should I change /dev/hda1       /media/hda1     ntfs    defaults        0       0 to /dev/hda1       /media/hda1     ntfs    defaults,umask=0222        0       0?
+2006-05-24T10:57:00.000Z	mwe	TheBigToe	yeah or just umask=0222
+2006-05-24T10:57:00.000Z	mwe	TheBigToe	I'm not sure if defaults works with other options
+2006-05-24T10:58:00.000Z	mwe	TheBigToe	change it to users,umask=0222
+2006-05-24T10:58:00.000Z	mwe	TheBigToe	that will let users have permissions to mount it
+2006-05-24T11:00:00.000Z	mwe	TheBigToe	after you've changed it remount the drive, sudo mount -o remount /media/hda1
+2006-06-03T11:39:00.000Z	mwe	TheBigToe	you reaaly need to read the documentation, sorry
+2006-06-03T11:39:00.000Z	mwe	TheBigToe	it's not a one liner
+2006-06-03T11:39:00.000Z	mwe	TheBigToe	there are installation instructions on the vmware page

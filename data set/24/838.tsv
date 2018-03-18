@@ -1,0 +1,24 @@
+2011-04-25T06:35:00.000Z	Inumedia		Why does my cursor move faster left/right than up/down when I use my touchpad?  It seems to be in relation to my screen resolution and is not the same for a normal USB mouse.
+2011-04-25T06:35:00.000Z	ActionParsnip	Inumedia	what make / model is the laptop?
+2011-04-25T06:37:00.000Z	ActionParsnip	Inumedia	try turning off tap to click, may help
+2011-04-25T06:38:00.000Z	ActionParsnip	Inumedia	also can you pastebin the output of:  lsmod
+2011-04-25T06:38:00.000Z	ActionParsnip	Inumedia	it may affect it, its a quick thing to test
+2011-04-25T06:39:00.000Z	ActionParsnip	Inumedia	ok cool, can you run: lsmod    and give the output
+2011-04-25T06:39:00.000Z	Inumedia	ActionParsnip	http://pastebin.com/uSRfatT7
+2011-04-25T06:41:00.000Z	ActionParsnip	Inumedia	try:   options psmouse proto=imps    or     options psmouse proto=bare       in /etc/modprobe.d/psmouse.conf
+2011-04-25T06:41:00.000Z	ActionParsnip	Inumedia	you can then run: sudo modprobe -r psmouse; sudo modprobe psmouse
+2011-04-25T06:41:00.000Z	ActionParsnip	Inumedia	try them individually :)
+2011-04-25T06:42:00.000Z	ActionParsnip	Inumedia	you won't you make the file
+2011-04-25T06:43:00.000Z	ActionParsnip	Inumedia	those files add extra options to the modules when you load them
+2011-04-25T06:43:00.000Z	ActionParsnip	Inumedia	some weird hardware needs extra options to work nice
+2011-04-25T06:45:00.000Z	ActionParsnip	Inumedia	run: sudo modprobe -r psmouse; sudo modprobe psmouse
+2011-04-25T06:46:00.000Z	ActionParsnip	Inumedia	if it doesn't work, re-edit the file and retry the other option I gave (delete the old text first)
+2011-04-25T06:48:00.000Z	ActionParsnip	Inumedia	so the option you used was necessary for your hadware
+2011-04-25T06:48:00.000Z	ActionParsnip	Inumedia	look for other options you can add to the module, one may make it nice
+2011-04-25T06:49:00.000Z	ActionParsnip	Inumedia	you may also be able to simply increase the mouse speed in the mouse settings to make up for the slowness
+2011-04-25T06:51:00.000Z	Inumedia	ActionParsnip	Do you have a list of options for psmouse?
+2011-04-25T06:52:00.000Z	ActionParsnip	Inumedia	i just websearched and found those, the proto=imps one is good for sony viaos I have noticed
+2011-04-25T07:00:00.000Z	Inumedia	ActionParsnip	Do you know where I can find some information on /etc/modprobe.d/psmouse.conf?
+2011-04-25T07:00:00.000Z	ActionParsnip	Inumedia	it's not the filename you need to worry about. You can call it ANYTHING you want, as long as it ends in .conf
+2011-04-25T07:00:00.000Z	ActionParsnip	Inumedia	look for options on the psmouse module
+2011-04-25T09:01:00.000Z	Inumedia	ActionParsnip	What were those two commands again?

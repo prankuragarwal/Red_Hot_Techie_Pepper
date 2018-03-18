@@ -1,0 +1,22 @@
+2012-08-03T22:03:00.000Z	djzn_	trism	I did an experiment here, using the ubuntu netinstall iso... and installed only a server, then I installed MATE from MATE repos, and the cursor is behaving well.... (not when is installed along with Unity).
+2012-08-03T22:08:00.000Z	trism	djzn_	interesting, have to look at the mate code and see what they (or gnome2) did differently
+2012-08-03T22:08:00.000Z	djzn_	trism	it's basically the same code, because I get this same behaviour on debian
+2012-08-03T22:09:00.000Z	djzn_	trism	there is something from GTK3 or something else bringing in to the issue
+2012-08-03T22:11:00.000Z	trism	djzn_	I dropped all the patches on the quantal gtk3 package and still had the problem, so I'm still trying to narrow down where to look
+2012-08-03T22:14:00.000Z	djzn_	trism	notice that this setup didn't have anything, just a bare system.... X11 and MATE.... it didn't have compiz either.... could compiz make some influence over any DE running from LightDM ?
+2012-08-03T22:15:00.000Z	trism	djzn_	I wouldn't think so, it isn't even running in the metacity session and I see it there too
+2012-08-03T22:16:00.000Z	djzn_	trism	you said metacity?
+2012-08-03T22:17:00.000Z	djzn_	trism	MATE runs on 'marco'...
+2012-08-03T22:17:00.000Z	trism	djzn_	oh oh, never mind I may be wrong, I just purged compiz on my quantal box and mouse is working fine (it removed unity and compiz so the bug seems to be there)
+2012-08-03T22:23:00.000Z	trism	djzn_	hmm, I actually changed a bunch of things on this box today, and even reinstalling them, it still works, so I fixed it somehow without trying today, I'll need to reinstall and try again
+2012-08-03T22:27:00.000Z	trism	djzn_	I had switched to lightdm-kde-greeter earlier, to see if kde had the bug too (but couldn't figure out how to change the cursor size), it seems that lightdm-kde-greeter is the reason it was working (switched back to unity-greeter and the bug is back)
+2012-08-03T22:31:00.000Z	trism	djzn_	and switching to gdm the cursor resizing works as well
+2012-08-03T22:31:00.000Z	trism	djzn_	odd
+2012-08-03T22:48:00.000Z	trism	djzn_	thought it only works in the unity-2d and gnome classic metacity sessions, so we may be dealing with multiple bugs (compiz + lightdm)
+2012-08-03T22:49:00.000Z	trism	djzn_	oh gnome-shell works too
+2012-08-03T22:49:00.000Z	djzn_	trism	what works in gshell
+2012-08-03T22:50:00.000Z	djzn_	trism	the cursor size is ok?
+2012-08-03T22:53:00.000Z	trism	djzn_	yes, cursor resizing is working for me if I use lightdm-kde-greeter or gdm in everything but compiz/unity, but not working if I use unity-greeter/lightdm-gtk-greeter/lightdm-webkit-greeter
+2012-08-03T22:54:00.000Z	djzn_	trism	i told you it had somethign to do with lightdm
+2012-08-03T22:56:00.000Z	trism	djzn_	indeed, seems you were right, now the question is what does the kde greeter/gdm do right while the others don't
+2012-08-03T22:58:00.000Z	djzn_	trism	theme code

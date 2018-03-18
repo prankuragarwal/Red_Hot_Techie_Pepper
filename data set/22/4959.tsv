@@ -1,0 +1,22 @@
+2008-01-19T07:41:00.000Z	nickrud	miketalanca	you can test that, edit /etc/rc2.d/S30gdm on the partition to K30gdm , that will prevent X startup
+2008-01-19T07:42:00.000Z	miketalanca	nickrud	I'm trying that now, thanks.
+2008-01-19T07:44:00.000Z	miketalanca	nickrud	I don't see a file named S30gdm; it's probably because I am using KDE instead of gnome. DO you know what the file would be called for a KDE user?
+2008-01-19T07:45:00.000Z	nickrud	miketalanca	I think it would S30kdm , or end in kdm anyway
+2008-01-19T07:47:00.000Z	miketalanca	nickrud	So I just change the name of the file, not changing anything inside it?
+2008-01-19T07:47:00.000Z	nickrud	miketalanca	yes. Part of the startup is each of those scripts being run in alphanumeric order, if the start with S.  If they start with K, they are ignored
+2008-01-19T07:51:00.000Z	miketalanca	nickrud	It definitely got a lot further than it did before, but now it's hanging on "Loading hardware drivers." Should I try to start up in recovery mode?
+2008-01-19T07:53:00.000Z	nickrud	miketalanca	  find all the nvidia.ko files in /lib/modules , and delete them, in recovery mode hopefully
+2008-01-19T07:55:00.000Z	miketalanca	nickrud	It's hanging at the same place when I try to boot in recovery mode; the last line it spits out is "module license 'NVIDIA' taints kernel"
+2008-01-19T07:55:00.000Z	nickrud	miketalanca	yes! get rid of those nvidia.ko files
+2008-01-19T08:10:00.000Z	miketalanca	nickrud	Alright, I am about to reboot after deleting the nvidia.ko file, but before I do, what was the name of the first file you told me to change? Something regarding gdm/kdm on startup
+2008-01-19T08:10:00.000Z	nickrud	miketalanca	S30kdm , leave it as K30gdm
+2008-01-19T08:10:00.000Z	miketalanca	nickrud	ok, I'll leave it for now
+2008-01-19T08:11:00.000Z	nickrud	miketalanca	first rule of troubleshooting, only change one variable at a time
+2008-01-19T08:16:00.000Z	miketalanca	nickrud	It gets a LOT further in the boot process, but it still freezes after getting to a certain point. I CAN start up in recovery mode, though, which is a definite improvement.
+2008-01-19T08:17:00.000Z	nickrud	miketalanca	take a look at /var/log/syslog, look for the time it freezes. you might see some clues there
+2008-01-19T08:18:00.000Z	nickrud	miketalanca	and try sudo aptitude upgrade && sudo aptitude upgrade , see if you have new Xorg stuff
+2008-01-19T08:25:00.000Z	miketalanca	nickrud	I've looked through the bootlog of the past boot and the last things that it says before ending are network-related, just stuff like "no IPv6 routers present"
+2008-01-19T08:27:00.000Z	nickrud	miketalanca	I'm still thinking your nvidia stuff, try sudo dpkg-reconfigure -pcritical xserver-xorg in the recovery console then move on to X
+2008-01-19T08:29:00.000Z	miketalanca	nickrud	Well, I booted up normally and I have a mouse now o-0;;
+2008-01-19T08:29:00.000Z	miketalanca	nickrud	I don't know what happened but I have solved my booting problem. Now, all I need to do is get rid of that Xorg package and revert to the old one, correct?
+2008-01-19T08:54:00.000Z	miketalanca	nickrud	Things are working so far, though I haven't reinstalled my drivers yet. I'm about to do that now. Thanks for all your help!

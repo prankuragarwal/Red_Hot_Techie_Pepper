@@ -1,0 +1,24 @@
+2010-08-14T10:06:00.000Z	akoimeexx		Still having issues with my desktop system flaking out when connecting to a wireless network... anyone?
+2010-08-14T10:08:00.000Z	psycho_oreos	akoimeexx	how are you connected to wireless? is it USB or PCI?
+2010-08-14T10:09:00.000Z	akoimeexx	psycho_oreos	USB. I can establish a connection, obtain an ip address, then ping google (or other site) about three times before it stops transmitting/receiving data
+2010-08-14T10:10:00.000Z	psycho_oreos	akoimeexx	pastebin your lsusb output with the USB dongle
+2010-08-14T10:17:00.000Z	akoimeexx	psycho_oreos	http://pastebin.org/481444
+2010-08-14T10:18:00.000Z	psycho_oreos	akoimeexx	and you're using the latest ubuntu?
+2010-08-14T10:19:00.000Z	akoimeexx	psycho_oreos	Yep.
+2010-08-14T10:19:00.000Z	psycho_oreos	akoimeexx	pastebin your dmesg output
+2010-08-14T10:19:00.000Z	akoimeexx	psycho_oreos	Not sure why it's failing, I've used this dongle before with no trouble.
+2010-08-14T10:20:00.000Z	psycho_oreos	akoimeexx	it could be issue with the driver I'm thinking, which might be solved with using linux-backports
+2010-08-14T10:21:00.000Z	akoimeexx	psycho_oreos	I'll grab that dmesg and pastebin it then... Half a mo'.
+2010-08-14T10:24:00.000Z	akoimeexx	psycho_oreos	http://pastebin.org/481459
+2010-08-14T10:25:00.000Z	akoimeexx	psycho_oreos	It is reporting the correct mac address, just blotted that bit out.
+2010-08-14T10:25:00.000Z	psycho_oreos	akoimeexx	which driver are you using on the desktop? rt2x00?
+2010-08-14T10:26:00.000Z	akoimeexx	psycho_oreos	Not sure offhand, what's the best way to check?
+2010-08-14T10:26:00.000Z	psycho_oreos	akoimeexx	lsmod| grep rt2x00
+2010-08-14T10:28:00.000Z	akoimeexx	psycho_oreos	Looks like it.
+2010-08-14T10:28:00.000Z	psycho_oreos	akoimeexx	so the command line says there's rt2x00? hmm ok I'd try linux-backports
+2010-08-14T10:30:00.000Z	akoimeexx	psycho_oreos	Where can I grab the package I need so I can install it locally on that machine? (No net access otherwise for the desktop.)
+2010-08-14T10:31:00.000Z	psycho_oreos	akoimeexx	I believe its from the ubuntu repository but it may have dependencies in which you'll need to grab as well, its probably a good idea to physically connect your desktop to the router via wired
+2010-08-14T10:32:00.000Z	akoimeexx	psycho_oreos	That's the problem. Bad eth port on the hardware.
+2010-08-14T10:33:00.000Z	psycho_oreos	akoimeexx	well I don't have much other suggestions :) a wired network card costs almost like nothing, maybe a good idea to invest in one
+2010-08-14T10:34:00.000Z	akoimeexx	psycho_oreos	Thanks for helping with troubleshooting the cause. :)
+2010-08-14T10:34:00.000Z	psycho_oreos	akoimeexx	the other is to downgrade I suppose, its probably an issue with kernel afaik

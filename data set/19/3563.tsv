@@ -1,0 +1,19 @@
+2010-03-21T14:11:00.000Z	nannes		hi all... how do I do if I can't format (or modify partition table) of a flash USB drive?
+2010-03-21T14:11:00.000Z	nannes		I inserted it, found it on 'lsusb' (and also /dev/sdb come created), BUT I can't access to it (tried with many partition tools)
+2010-03-21T14:11:00.000Z	nannes		here the dmesg -----> http://pastebin.ubuntu.com/398680/
+2010-03-21T14:12:00.000Z	CQ	nannes	what does sudo fdisk -l say? (should list all devices and partitions)
+2010-03-21T14:13:00.000Z	nannes	CQ	nothing abount sdb.... only hard drive detected
+2010-03-21T14:14:00.000Z	CQ	nannes	does it show up on mount -l
+2010-03-21T14:15:00.000Z	nannes	CQ	no it doesn't :(
+2010-03-21T14:16:00.000Z	CQ	nannes	can you access the USB stick with dolphin?
+2010-03-21T14:16:00.000Z	nannes	CQ	I don't know what it is... i'll try now
+2010-03-21T14:17:00.000Z	CQ	nannes	dolphin is a filebrowser... or konqueror or somethign else...
+2010-03-21T14:17:00.000Z	nannes		ooooh nautilus! :) no
+2010-03-21T14:18:00.000Z	CQ	nannes	try sudo scsiadd -s
+2010-03-21T14:20:00.000Z	nannes	CQ	yeah, look ---> http://pastebin.ubuntu.com/398684/
+2010-03-21T14:20:00.000Z	CQ	nannes	now mount -l or sudo fdisk -l should show it...
+2010-03-21T14:22:00.000Z	nannes	CQ	no :( ---> http://pastebin.ubuntu.com/398685/
+2010-03-21T14:24:00.000Z	CQ	nannes	weird, no idea then, sorry...
+2010-03-21T14:25:00.000Z	CQ	nannes	I have hotpluggable scsi drives, and they become visible after a sudo scsiadd -s ... then I can do what I want with them
+2010-03-21T14:25:00.000Z	CQ	nannes	err, hotpluggable SATA drives
+2010-03-21T14:26:00.000Z	nannes	CQ	ok, thanks selfsame..... I think anyone lat it fall! bye

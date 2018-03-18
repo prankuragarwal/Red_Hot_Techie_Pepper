@@ -1,0 +1,24 @@
+2007-05-05T14:11:00.000Z	Helmi		hey guys. i got two little smb problems. i mounted several smb shares from a buffalo terastation via fstab. since feisty these mounts don't load on startup. i have to "sudo mount -a" to make them work
+2007-05-05T14:12:00.000Z	Taladan	Helmi	check that feisty didn't overwrite your fstab
+2007-05-05T14:13:00.000Z	Helmi	Taladan	the fstab is there - otherwise it wouldn't work with mount -a ;)
+2007-05-05T14:13:00.000Z	Helmi	Taladan	i also did a fresh install with just the same commands within fstab - i didn't do an update.
+2007-05-05T14:13:00.000Z	Taladan	Helmi	- what about dmesg? Does it show any failed mounting attempts?
+2007-05-05T14:14:00.000Z	Helmi	Taladan	didn't know that so far - will check.
+2007-05-05T14:15:00.000Z	Helmi	Taladan	the first number in brackets... are they seconds?
+2007-05-05T14:16:00.000Z	Taladan	Helmi	I honestly don't remember what the numbers in the brackets indicate...they may be priority level of the rc scripts
+2007-05-05T14:16:00.000Z	Helmi	Taladan	doesn't look like any smb stuff in there which could be related
+2007-05-05T14:16:00.000Z	Taladan	Helmi	- is it starting the smb service before it tries to mount the smb-mounts?
+2007-05-05T14:17:00.000Z	Helmi	Taladan	how can i find this out? also dmesg?
+2007-05-05T14:17:00.000Z	Taladan	Helmi	- yeah, or /var/log/messages
+2007-05-05T14:18:00.000Z	Helmi	Taladan	there's just a few lines with smb or samba in it in the messages file which are related to a smb_lookup stuff. that shouldn't have to do with it as it wasn't at boot time.
+2007-05-05T14:20:00.000Z	Taladan	Helmi	- I'm not sure then...the only reason I can think is either: a) trying to mount the smb shares before SMB is runnig, b) error in the fstab, c) trying to mount the smb shares before networking is up and running...the first two we've disproved I think, the last one...well, i think networking starts up pretty early in the sequence, so not very likely.
+2007-05-05T14:22:00.000Z	Helmi	Taladan	yeah fstab should be okay as a simple "sudo mount -a" works well directly after startup. The stuff with smb not starting before the mount ... sounds most possible but should be logged as an error. probably if just not seen it :( will check this again
+2007-05-05T14:22:00.000Z	Taladan	Helmi	if it fails to mount, it will spit an error, but finding that error can be a pain inna ass
+2007-05-05T14:22:00.000Z	Helmi	Taladan	 kernel: [   15.379278]  smbfs: mount_data version 1684370019 is not supported
+2007-05-05T14:23:00.000Z	Taladan	Helmi	- that's a new one on me
+2007-05-05T14:23:00.000Z	Helmi	Taladan	sorry, it's the only one i have ;)
+2007-05-05T14:26:00.000Z	Helmi	Taladan	sethk - okay thanks for your help i can live with that problem at the moment - probably i'll find out more later. but there's still one problem left. sometimes i get "text file busy" errors when trying to delete or overwrite a file on a smb share. do you have an idea where this may come from?
+2007-05-05T14:27:00.000Z	Taladan	Helmi	- sounds like something else is using that file at that particular moment and has it locked.  you can check open files with lsof
+2007-05-05T14:30:00.000Z	Taladan	Helmi	- sudo /etc/init.d/smb restart should let you restart samba
+2007-05-05T14:30:00.000Z	Helmi	Taladan	yeah but the box isn't accessible via ssh ;)
+2007-05-05T14:32:00.000Z	Taladan	Helmi	- oh, I've seen those

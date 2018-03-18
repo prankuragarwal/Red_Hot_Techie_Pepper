@@ -1,0 +1,19 @@
+2011-06-01T21:27:00.000Z	prod___		Hi all, i really need a push in the right direction. I need to share users and groups across my lan so that all the computers on the lan can access my NFS shares and manipulate files with their respective permissions. What software would i use to accomplish this?
+2011-06-01T21:28:00.000Z	akakak	prod___	are you in a workplace or at home? Do you have windows machines currently connected to your network?
+2011-06-01T21:30:00.000Z	prod___	akakak	Its a home network although i am not really concerned about serving the windows machines. Nonetheless i wouldnt mind if your solution would help both
+2011-06-01T21:34:00.000Z	akakak	prod___	if you have to service samba clients, it'd probably be easiest to just set up the share as a cifs or smb share, and set the permissions of the share to a user of a specific machine on your network. Such as if you have a windows client named 'clientA', you could add some users to 'clientA' that the rest of your users on your home network would use to access the share with
+2011-06-01T21:35:00.000Z	akakak	prod___	then on the new smb share, add the permissions of the new users you created in the fashion on "clientA\user1"
+2011-06-01T21:36:00.000Z	prod___	akakak	ill try and explain exactly what i am tryin to do and why i am using nfs.
+2011-06-01T21:36:00.000Z	akakak	prod___	using this method basically gives anyone a login to that windows machine that you're adding the "permissions" users for though.
+2011-06-01T21:37:00.000Z	akakak	prod___	alrighty. I used that method to give my gf and I access to a backup directory on my media server, while also keeping my media server's media directories open for public users if they come over and want to share media with me
+2011-06-01T21:38:00.000Z	prod___	akakak	I have a virtual machine runnin which is host to an openvpn client and transmission-daemon. This machine will be saving the downloads to a nfs directory mounted in its FS. The nfs-server will be running on the domain-0 and will also be sharing the downloads directory out to all the other *nix machines.
+2011-06-01T21:39:00.000Z	prod___	akakak	I have many other thing that i will be addin to the VM that will serv anonimity to my local network
+2011-06-01T21:39:00.000Z	akakak		chat nicely?
+2011-06-01T21:39:00.000Z	akakak		:)
+2011-06-01T21:41:00.000Z	akakak		wow.
+2011-06-01T21:42:00.000Z	akakak		thank god.
+2011-06-01T21:43:00.000Z	akakak	prod___	you could use smb to accomplish that task
+2011-06-01T21:43:00.000Z	akakak		and then have it available for your windows users as well as your *nix users
+2011-06-01T21:45:00.000Z	prod___	akakak	But what is the linux equivalent for doing this? later down the road i would like to be able to do a lot of work with PXE booting thin/discless and virtual machines
+2011-06-01T21:46:00.000Z	prod___	akakak	as i understand nfs is a very clean way of doing this
+2011-06-01T21:47:00.000Z	prod___	akakak	so far i have read a little about NIS, LDAP, PAM but i am lost in the sea of jargon

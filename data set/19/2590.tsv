@@ -1,0 +1,19 @@
+2010-02-23T22:43:00.000Z	puxl		Hi, I have a question regarding GRUB in Ubuntu 9.10: After adding the "elevator=noop" line in the GRUB config (I'm on a SSD) and running the update-grub command, GRUB always halts and waits for input, it's not quiet anymore. Any ideas how to make my GRUB quiet again?
+2010-02-23T22:45:00.000Z	Jordan_U	puxl	Does "grub-editenv list" show recordfail?
+2010-02-23T22:49:00.000Z	puxl	Jordan_U	grub-editenv list gives me a no command specified error (I have no idea why...)
+2010-02-23T22:50:00.000Z	Jordan_U	puxl	Can you pastebin the contents of /boot/grub/grubenv?
+2010-02-23T22:52:00.000Z	puxl	Jordan_U	grub-editenv list gives me a no command specified error (I have no idea why...)
+2010-02-23T22:52:00.000Z	Jordan_U	puxl	Can you pastebin the contents of /boot/grub/grubenv?
+2010-02-23T22:52:00.000Z	puxl	Jordan_U	http://pastebin.com/5530AbgQ
+2010-02-23T22:53:00.000Z	Jordan_U	puxl	For some reason /etc/init.d/grub-common isn't being run. That usually means that booting into Ubuntu failed.
+2010-02-23T22:54:00.000Z	puxl	Jordan_U	oh. I'm posting from ubuntu right now
+2010-02-23T22:54:00.000Z	Jordan_U	puxl	Try running "sudo service grub-common start". That should clear the recordfail from grubenv.
+2010-02-23T22:55:00.000Z	puxl	Jordan_U	done. should I try a reboot now?
+2010-02-23T22:56:00.000Z	Jordan_U	puxl	Check the contents of /boot/grub/grubenv again
+2010-02-23T22:56:00.000Z	puxl	Jordan_U	the recordfail is gone
+2010-02-23T22:56:00.000Z	Jordan_U	puxl	The idea is that /etc/init.d/grub-common is supposed to run at boot and record that Ubuntu has booted successfully. If it doesn't for whatever reason then grub assumes that the last boot failed and therefore shows you the menu to allow you to choose older kernels / rescue mode.
+2010-02-23T22:57:00.000Z	puxl	Jordan_U	aah, got it
+2010-02-23T22:58:00.000Z	Jordan_U	puxl	So if you reboot now the grub menu won't show, but the problem will come back until you figure out why /etc/init.d/grub-common isn't being run at boot.
+2010-02-23T22:58:00.000Z	puxl	Jordan_U	okay, any hints where I should start searching?
+2010-02-23T22:59:00.000Z	puxl	Jordan_U	thanks for your help and giving me the right directions
+2010-02-23T23:00:00.000Z	Jordan_U	puxl	np

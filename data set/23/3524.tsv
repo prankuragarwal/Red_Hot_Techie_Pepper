@@ -1,0 +1,23 @@
+2012-06-14T04:18:00.000Z	crackerjackz	Zoohouse	are you sure you're not using public key authentication with password authentication disabled?
+2012-06-14T04:18:00.000Z	crackerjackz	Zoohouse	are you behind a router?
+2012-06-14T04:18:00.000Z	crackerjackz	Zoohouse	did you check ufw is not blocking 22?
+2012-06-14T04:21:00.000Z	crackerjackz	Zoohouse	just for testing purposes type sudo disable ufw (only for a couple moments) just so that we can insure its not ufw causing it
+2012-06-14T04:22:00.000Z	Zoohouse	crackerjackz	i disabled ufw aginn
+2012-06-14T04:22:00.000Z	crackerjackz	Zoohouse	what is the make and model of your router?
+2012-06-14T04:23:00.000Z	crackerjackz	Zoohouse	i would actually completely open your router up and just use IPTABLES to filter the traffic across your network
+2012-06-14T04:29:00.000Z	Zoohouse	crackerjackz	I have vonage voip connected to my linksys wrt54gs
+2012-06-14T04:30:00.000Z	crackerjackz	Zoohouse	what device.. the vonage device is also a firewall
+2012-06-14T04:31:00.000Z	crackerjackz	Zoohouse	completely disable firewall on your router and dmz your IP
+2012-06-14T04:32:00.000Z	crackerjackz	Zoohouse	ensure that you have spi firewall disabled on your router
+2012-06-14T04:32:00.000Z	Zoohouse	crackerjackz	Its the VDV21-VD
+2012-06-14T04:32:00.000Z	Zoohouse	crackerjackz	spi firewall? are you seeing that in the docs? I've never seen anything named spi firewall on the linksys
+2012-06-14T04:42:00.000Z	Zoohouse	crackerjackz	the only thing I can't turn off of the router's firewall is spi firewall
+2012-06-14T04:42:00.000Z	Zoohouse	crackerjackz	sorry, meant to say the only thing I can't turn off is Filter IDENT(Port 113)
+2012-06-14T04:47:00.000Z	Zoohouse	crackerjackz	ah, the problem was with the linksys router. As soon as I turned on dmz, it worked.
+2012-06-14T04:58:00.000Z	crackerjackz	Zoohouse	it might be called something different
+2012-06-14T04:53:00.000Z	crackerjackz	Zoohouse	now use IPTABLES to filter the traffic across your network, maybe even just get rid of that linksys and build your self a linux router
+2012-06-14T04:54:00.000Z	Zoohouse	crackerjackz	I got ufw back up now. Problem is I have other computers that I want to connect via ssh. If I fwd all the ports to this laptop then how am I going to connect to other pcs?
+2012-06-14T04:54:00.000Z	crackerjackz	Zoohouse	that's why i suggested that you build a linux router
+2012-06-14T04:56:00.000Z	crackerjackz	Zoohouse	for now though i would disable the spi firewall on the linux router and undo the dmz of your computer then just use port forwarding
+2012-06-14T04:57:00.000Z	Zoohouse	crackerjackz	what spi firewall?
+2012-06-14T04:57:00.000Z	crackerjackz	Zoohouse	there should be a setting in your router somewhere you should see it

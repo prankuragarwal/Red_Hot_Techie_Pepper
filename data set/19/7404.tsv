@@ -1,0 +1,19 @@
+2009-06-29T21:55:00.000Z	reenignEesreveR		im having a strange behaviour. On a folder, I've got read access for group enabled and i am member of the group which the folder belongs to. but still when i try directory listing it gives me access denied error
+2009-06-29T21:56:00.000Z	sipior	reenignEesreveR	try enabling the execute bit as well.
+2009-06-29T21:57:00.000Z	reenignEesreveR	sipior	it worked by setting x bit ... why did this happen?
+2009-06-29T21:58:00.000Z	sipior	reenignEesreveR	the execute bit allows directory search.
+2009-06-29T22:19:00.000Z	reenignEesreveR	sipior	could you please tell me how to set execute bit automatically everytime a subdirectory is created?
+2009-06-29T22:23:00.000Z	sipior	reenignEesreveR	you can set the mask to 027: "umask 027". new directories should have permissions "rwxr-x---"
+2009-06-29T22:24:00.000Z	sipior	reenignEesreveR	might be easier just to change them all after the fact: "chmod -R g=rx <parent dir>"
+2009-06-29T22:25:00.000Z	reenignEesreveR	sipior	is it possible to do it without changing the umask?
+2009-06-29T22:25:00.000Z	reenignEesreveR	sipior	actually i wanna do it for a particular directory only
+2009-06-29T22:25:00.000Z	sipior	reenignEesreveR	then "chmod g=rx <directory>"
+2009-06-29T22:26:00.000Z	reenignEesreveR	sipior	i'll have to do a chmod everytime a new subdir is created?
+2009-06-29T22:27:00.000Z	reenignEesreveR	sipior	does sticky bit help?
+2009-06-29T22:27:00.000Z	sipior	reenignEesreveR	yes. consider writing a small script to do this if you find it tedious. or, as i mentioned earlier, you can use the recursive (-R) switch for chmod.
+2009-06-29T22:28:00.000Z	reenignEesreveR	sipior	for certain reasons that isn't feasible for me
+2009-06-29T22:28:00.000Z	sipior	reenignEesreveR	the sticky bit on a directory means that only owners of a file can delete that file, irrespective of the permission set on the parent directory.
+2009-06-29T22:28:00.000Z	sipior	reenignEesreveR	write a script, then.
+2009-06-29T22:48:00.000Z	sipior	reenignEesreveR	just "+t"
+2009-06-29T22:47:00.000Z	sipior	reenignEesreveR	+t
+2009-06-29T22:47:00.000Z	reenignEesreveR	sipior	chmod g+t doesn't have any affect. any idea?

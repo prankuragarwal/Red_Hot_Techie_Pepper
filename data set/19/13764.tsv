@@ -1,0 +1,19 @@
+2006-09-25T09:56:00.000Z	eyequeue	Asc	-rw-r--r-- 1 root root 17842965 2006-09-25 03:39 /var/lib/dpkg/available
+2006-09-25T09:57:00.000Z	eyequeue	Asc	both
+2006-09-25T09:57:00.000Z	eyequeue	Asc	maybe you want status in that dir
+2006-09-25T10:00:00.000Z	eyequeue	Asc	you probably want a command instead, though there is i .list file
+2006-09-25T10:00:00.000Z	eyequeue	Asc	dpkg -L foo
+2006-09-25T10:01:00.000Z	eyequeue	Asc	but there are files like this   -rw-r--r-- 1 root root 9213 2006-04-20 19:53 /var/lib/dpkg/info/apt.list
+2006-09-25T10:02:00.000Z	eyequeue	Asc	okay, you're in need of doing some drastic surgery to the database then?  with the dangers?
+2006-09-25T10:02:00.000Z	eyequeue	Asc	sudo nano /var/lib/dpkg/status  and edit it to the format that you'll see for uninstalled apps
+2006-09-25T10:03:00.000Z	eyequeue	Asc	it's definitely not something except a last-dotch means :)
+2006-09-25T10:04:00.000Z	eyequeue	Asc	you also should try to run the preem and postrm scripts in  /var/lib/dpkg/info/foo.*  and rm the files in .list
+2006-09-25T10:04:00.000Z	eyequeue	Asc	it's prettty darn drastic, i can see no one knowing it or at least admitting :)
+2006-09-25T10:05:00.000Z	eyequeue	Asc	um, i may have been able to save you some work :)  sudo apt-get --reinstall install linux-image-whatever :)
+2006-09-25T10:06:00.000Z	eyequeue	Asc	ah, okay, well, that command for future use, heh
+2006-09-25T10:11:00.000Z	eyequeue	Asc	good luck with it
+2006-09-25T10:12:00.000Z	eyequeue	Asc	most should be shell scripts, sudo sh /var/lib/dpkg/info/foo.postrm
+2006-09-25T10:15:00.000Z	eyequeue	Asc	yeah, some might be bash, but they are supposed to be generic bourne shell unless they specify otherwise, i think :)  per policy
+2006-09-25T10:45:00.000Z	eyequeue	Asc	first guess, that fs needs a serious fsck, as in, maybe you powered down and it got scrambled?
+2006-09-25T10:46:00.000Z	eyequeue	Asc	do you have a separate /home partition presently?
+2006-09-25T10:46:00.000Z	eyequeue	Asc	something to consider making *if* you do end up reinstalling

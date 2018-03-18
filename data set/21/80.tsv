@@ -1,0 +1,21 @@
+2012-09-26T00:30:00.000Z	genii-around	JuanoPsy	Should probably run memtest from the boot-up screen to see if it is your memory
+2012-09-26T00:31:00.000Z	JuanoPsy		I know is not much memory..
+2012-09-26T00:31:00.000Z	JuanoPsy		ok, mem test
+2012-09-26T00:33:00.000Z	genii-around	JuanoPsy	If your ram ends up with no errors after memtest runs,  I suggest to unmount your swap partition and run badblocks  on it to see if it's physically going.
+2012-09-26T00:35:00.000Z	JuanoPsy	genii-around	sorry, what you mean by unmount my swap partition?
+2012-09-26T00:37:00.000Z	genii-around	JuanoPsy	When programs run out of physical ram that your computer has, it starts to use disk space as if it is more ram. The disk space is called swap. Most times people have a separate partition for this. If you type: grep swap /etc/fstab   it should tell you what partition it is using for that.
+2012-09-26T00:39:00.000Z	JuanoPsy	genii-around	man thx... I'll try that...
+2012-09-26T00:41:00.000Z	JuanoPsy	genii-around	It returns "/host/ubuntu/disks/swap.disk none            swap    loop,sw         0       0"
+2012-09-26T00:41:00.000Z	genii-around	JuanoPsy	First you do: sudo swapoff -a     Then you run the badblocks program on it to see if it's physically failing. If it is, you have to find another place to use for swap. You can put swap back on by: sudo swapon -a
+2012-09-26T00:42:00.000Z	genii-around	JuanoPsy	So in this case you are using a file for swap and not a partition
+2012-09-26T00:42:00.000Z	genii-around	JuanoPsy	You are using Wubi ?
+2012-09-26T00:43:00.000Z	JuanoPsy		yes, I was going to tell I'm on wubi
+2012-09-26T00:45:00.000Z	JuanoPsy	genii-around	yes, I was going to tell I'm on wubi
+2012-09-26T00:48:00.000Z	genii-around	JuanoPsy	Unfortunately I am not very familiar with Wubi. But my first suspicion here is that you don't have enough ram.
+2012-09-26T00:50:00.000Z	JuanoPsy	genii-around	 shure, thanks anyway... I'm tring to learn how to do the badblock test... and I'll see...
+2012-09-26T00:51:00.000Z	genii-around	JuanoPsy	I'm not sure if badblocks will work on a file.
+2012-09-26T00:53:00.000Z	JuanoPsy	genii-around	Ohhh....
+2012-09-26T00:55:00.000Z	JuanoPsy	genii-around	 May be if I install the ubuntu on the computer fixes the problem?
+2012-09-26T00:55:00.000Z	genii-around	JuanoPsy	You might want to run the chdsk C: /f      on your main drive from inside Window's command prompt to make sure your ntfs is OK.
+2012-09-26T00:57:00.000Z	genii-around	JuanoPsy	It is possible. Might want to look at https://wiki.ubuntu.com/WubiGuide#How_do_I_migrate_to_a_real_partition.2C_and.2BAC8-or_get_rid_of_Windows_entirely.3F   if you want to move the wubi install to a real partition. Because you have so little ram, it's probably best to dual-boot and not run Ubuntu from inside of Windows
+2012-09-26T00:58:00.000Z	JuanoPsy	genii-around	Yeahh.. shure... but I think I have dual boot...

@@ -1,0 +1,23 @@
+2012-09-18T17:29:00.000Z	mbeierl	John	try "lsb_release -a" to see what distro it is claiming to be
+2012-09-18T19:55:00.000Z	mbeierl	John	how are you accessing the machine?  Where is your X display client running?
+2012-09-18T19:55:00.000Z	John	mbeierl	 erm, i'm not really using X
+2012-09-18T19:55:00.000Z	mbeierl	John	how did you get to the command line?  You said this is an Amazon machine, right?
+2012-09-18T19:56:00.000Z	John	mbeierl	 yeah :]
+2012-09-18T19:56:00.000Z	mbeierl	John	and the client machine - is it Windows, Mac or Linux?
+2012-09-18T19:56:00.000Z	mbeierl	John	you could try ssh -X to forward X display back to the client machine
+2012-09-18T19:57:00.000Z	mbeierl	John	ok.
+2012-09-18T19:59:00.000Z	mbeierl	John	so it sounds like it is wanting to display something back to you.  I don't know the program or its underlying libraries, so I don't know why that would be
+2012-09-18T20:00:00.000Z	John	mbeierl	 Well, it's meant to write a pretty .ps file to disk
+2012-09-18T20:01:00.000Z	mbeierl	John	sorry - I got that much, but what I meant is I, like you, don't know what it is wanting to do.  If you do "ssh -X user@amazonpc" and then once logged in, execute "xterm" what happens?
+2012-09-18T20:02:00.000Z	mbeierl	John	it tunnels the X display over ssh.  It will create a pseudo X server for you
+2012-09-18T20:02:00.000Z	mbeierl	John	it /might/ just be enough to trick the library into running
+2012-09-18T20:03:00.000Z	mbeierl	John	it will set a DISPLAY env variable for you
+2012-09-18T20:03:00.000Z	mbeierl	John	but before that, I just wanted to see if the "xterm" will even show itself locally on the mac using ssh -X
+2012-09-18T20:04:00.000Z	mbeierl	John	perfect.  Go ahead and exit out of it, then try your sir_graph again.
+2012-09-18T20:04:00.000Z	mbeierl	John	ssh -X is a low-tech form of remote display :)
+2012-09-18T20:04:00.000Z	mbeierl	John	did you need to "su" or "sudo" to run it?
+2012-09-18T20:05:00.000Z	mbeierl	John	ok, that is expected then.  You logged in as user, and SSH allows the display to be forwarded for "user" only, not any sub su'd users
+2012-09-18T20:06:00.000Z	mbeierl	John	have you tried sir_graph as user?  It might not need root permission.  Or perhaps the data or target directory could be set to allow user to write to it
+2012-09-18T20:07:00.000Z	mbeierl	John	Yes.  That is what I feared.  That somehow the version you have wants an actual GUI
+2012-09-18T20:07:00.000Z	John	mbeierl	 bugger :/
+2012-09-18T20:24:00.000Z	John	mbeierl	 do most versions expect a real gui?

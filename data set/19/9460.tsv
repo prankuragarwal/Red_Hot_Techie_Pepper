@@ -1,0 +1,19 @@
+2009-09-23T13:08:00.000Z	dryg		Hmm
+2009-09-23T13:09:00.000Z	dryg		I've just removed all the files from my 2gig USB drive, and it still says that 700mb is being used. I've gon into terminal and tried to rm -rf the directory and it says it is busy. I've checked the option marked 'Show hidden files' as well and deleted the /.Trash directory as well, but my drive still isnt empty. How else can I format it?
+2009-09-23T13:10:00.000Z	dryg		?
+2009-09-23T13:12:00.000Z	dryg		erm
+2009-09-23T13:12:00.000Z	dryg		whatevers convinent
+2009-09-23T13:12:00.000Z	dryg		i just want it empty
+2009-09-23T13:12:00.000Z	dryg		sometimes
+2009-09-23T13:13:00.000Z	dryg		oh my
+2009-09-23T13:13:00.000Z	Jordan_U	dryg	Try "fuser /path/to/mountpoint" to see if any of the deleted files are still in use
+2009-09-23T13:16:00.000Z	Jordan_U	dryg	No, it will be something like /dev/sdb1 and be VERY carefull you have the right device since it will destroy any data on the device you choose
+2009-09-23T13:18:00.000Z	Jordan_U	dryg	You might want to use gparted instead, it's graphical and will prevent you from doing some catastrophic things
+2009-09-23T13:20:00.000Z	Jordan_U	dryg	Have a fire extinguisher on hand just in case ;)
+2009-09-23T13:22:00.000Z	Jordan_U	dryg	You did
+2009-09-23T13:22:00.000Z	Jordan_U	dryg	YOu should probably shut down now, and hopefully you aren't using much swap currently
+2009-09-23T13:23:00.000Z	Jordan_U	dryg	I think you will be fine when you start back up, it's just that you've corrupted any memory that was swapped to disk and I don't know what's going to happen when the kernel tries to swap it back :)
+2009-09-23T13:26:00.000Z	Jordan_U	dryg	When applications need to allocate more memory than is available in RAM their data is written to the swap partition on the hard drive ( which is extremely slow compared to RAM but better than running out of memory )
+2009-09-23T13:27:00.000Z	Jordan_U	dryg	When they want to read that data it's swapped from disk to real RAM ( and other memory is swapped from RAM to disk to make space for it )
+2009-09-23T13:29:00.000Z	Jordan_U	dryg	It's a little more complicated than that but you basically just formatted what programs on your computer consider ram, luckily you probably weren't low on free memory so you probably didn't corrupt any programs memory
+2009-09-23T13:31:00.000Z	Jordan_U	dryg	Which is why you should shut down before you DO run low on memory, or an app asks for memory that has been swapped to disk and is now corrupt

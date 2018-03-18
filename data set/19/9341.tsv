@@ -1,0 +1,19 @@
+2009-03-26T07:20:00.000Z	danfg		i have a simple shell question: for i in "word1 word2 word3" works fine, but what if i want spaces in a word?
+2009-03-26T07:21:00.000Z	Slart	danfg	tried using '\ ' instead of space? ... like "word1 word2 big\ word word4"
+2009-03-26T07:21:00.000Z	danfg	Slart	i did try that, sh and bash just ignore it, does it work for you?
+2009-03-26T07:23:00.000Z	Slart	danfg	hmm.. it doesn't even work with your example
+2009-03-26T07:24:00.000Z	danfg	Slart	you mean "word1 word2 word3"? i am actually using a variable defined before, VALUES="word1 word2 word3"; for i in $VALUES
+2009-03-26T07:25:00.000Z	danfg	Slart	i even tried using double backslashes, VALUE="big\\ word1 word2"; no worky :-(
+2009-03-26T07:26:00.000Z	Slart	danfg	hmmm
+2009-03-26T07:26:00.000Z	danfg	Slart	any other way i can iterate thru values?
+2009-03-26T07:26:00.000Z	Slart	danfg	this actually works for me.. for i in word1 "big word" word3; do echo $i$i; done
+2009-03-26T07:27:00.000Z	Slart	danfg	perhaps you can do something tricky with the quotes
+2009-03-26T07:31:00.000Z	danfg	Slart	when I do VALUES="big word" "big word2" ..., i get an error: big word2 not found
+2009-03-26T07:31:00.000Z	Slart	danfg	tried VALUES=
+2009-03-26T07:31:00.000Z	Slart	danfg	tried VALUES='word1 "big word" word3' ?
+2009-03-26T07:34:00.000Z	danfg	Slart	lstarnes: you are suggesting things that are not working, i appreciate it though
+2009-03-26T07:35:00.000Z	Slart	danfg	I never claimed to know the answer.. I'm just suggesting things to try =)
+2009-03-26T07:35:00.000Z	danfg	Slart	i know, thanks though, i didn't think of those, but unfortunately they are not working :)
+2009-03-26T07:36:00.000Z	Slart	danfg	I've never managed to make bash ignore spaces in filenames and such.. even when using those zero separated functions..
+2009-03-26T07:39:00.000Z	danfg	Slart	hmm yikes i didn't know that, i thought sh/bash could handle simple stuff like that, makes me sad that i'll have to make a ruby script (i don' t know perl) to iterate some values and run commands
+2009-03-26T07:41:00.000Z	Slart	danfg	afaik it's supposed to.. many commands support some switch to use \0 instead of space... and there are lots of tutorials around the net that makes it look easy.. I've never managed to make it work though

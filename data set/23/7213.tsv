@@ -1,0 +1,23 @@
+2006-03-24T08:26:00.000Z	carbo		hi there, i'm looking for some help with bad sectors on a windows partition, i can't boot it so here i am on ubuntu
+2006-03-24T08:26:00.000Z	_jason	carbo	try chkdsk /r, in windows recovery mode.  But you should go to #windows
+2006-03-24T08:27:00.000Z	carbo	_jason	got a problem there, i have a OEM recovery disc but no proper WinXP CD, can't boot windows either so can't get into recovery mode
+2006-03-24T08:28:00.000Z	_jason	carbo	ah, well just get rid of windows and stick to ubuntu then
+2006-03-24T08:28:00.000Z	_jason	carbo	(or find a friend with a normal install disk)
+2006-03-24T08:29:00.000Z	carbo	_jason	i wish i could... i've spent about an hour searching around, i've meddled with ntfsprogs (particularly ntfsresize), none of the suggestions i've found work though
+2006-03-28T09:41:00.000Z	_jason	carbo	did you do an expert install?
+2006-03-28T09:44:00.000Z	_jason	carbo	did you do an expert install?
+2006-03-28T09:45:00.000Z	carbo	_jason	i did, actually... i swear i didn't mess anything :p
+2006-03-28T09:45:00.000Z	_jason	carbo	it's known to happen, read the bot's message for a one line solution
+2006-03-28T09:47:00.000Z	carbo	_jason	thanks! that took care of it
+2006-04-03T12:15:00.000Z	_jason	carbo	I had a similar problem once with a url starting with a - and was told in deviant art's channel that it was b/c linux follows some standard and it was against that standard, while ms ignores it
+2006-04-25T06:52:00.000Z	_jason	carbo	can you paste the output of 'groups'?
+2006-04-25T06:53:00.000Z	carbo	_jason	carbo adm dialout cdrom floppy sudo audio dip video plugdev lpadmin scanner hamachi
+2006-04-25T06:53:00.000Z	_jason	carbo	why are you in the sudo group?  that's the reason
+2006-04-25T06:53:00.000Z	_jason	carbo	the proper group to be in is 'admin'
+2006-04-25T06:54:00.000Z	carbo	_jason	i'm not sure why i'm in those groups... okay i'll change it
+2006-04-25T06:54:00.000Z	_jason	carbo	just make sure you /etc/sudoers contains the %admin line before you do that :P
+2006-04-25T06:56:00.000Z	carbo	_jason	okay sorry how do i remove myself from a group? the users-admin thing doesn't list the group sudo so i have to do it manually
+2006-04-25T06:56:00.000Z	_jason	carbo	first, 'sudo adduser your_username admin', then 'sudo deluser your_username sudo'
+2006-04-25T06:56:00.000Z	_jason	carbo	actually, first paste the resutl of 'sudo cat /etc/sudoers | grep admin'
+2006-04-25T06:57:00.000Z	carbo	_jason	thanks it works! yeah i added %admin to sudoers with all permissions, is that right?
+2006-04-25T06:57:00.000Z	_jason	carbo	yeah

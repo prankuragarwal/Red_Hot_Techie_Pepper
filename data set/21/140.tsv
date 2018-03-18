@@ -1,0 +1,21 @@
+2012-08-07T19:06:00.000Z	Malthus		Hello I'm trying to rebuild the network manager package, it gets threw ./configure but when I try to make it errors out: http://pastebin.com/L7QTAgZs
+2012-08-07T19:07:00.000Z	TJ-	Malthus	Where did the source-code come from?
+2012-08-07T19:08:00.000Z	Malthus	TJ-	I used apt-source to fetch it
+2012-08-07T19:08:00.000Z	TJ-	Malthus	Good... when you build an Ubuntu package you should use "debian/rules build" then "fakeroot debian/rules binary"
+2012-08-07T19:09:00.000Z	TJ-	Malthus	and as theadmin says, make sure to have installed the build-dependencies
+2012-08-07T19:10:00.000Z	TJ-	Malthus	that gcc error though looks like some of the debian patches may not have been fully applied... it's trying to pass a const pointer
+2012-08-07T19:24:00.000Z	TJ-	Malthus	is it the networkmanager from precise? give me the version string
+2012-08-07T19:26:00.000Z	TJ-	Malthus	I'll build it here
+2012-08-07T19:27:00.000Z	TJ-	Malthus	as I said before, I think it is because you are not using the Debian build system
+2012-08-07T19:29:00.000Z	TJ-	Malthus	I've just issued this build command: "debian/rules build 2>&1 | tee ../build.log"
+2012-08-07T19:31:00.000Z	TJ-	Malthus	That article is doing a lot of silly things ... all you need to build in an isolated setting is to create a pbuilder
+2012-08-07T19:32:00.000Z	TJ-	Malthus	I wrote an article on it a long time ago with some supporting scripts: https://tjworld.net/wiki/Linux/Ubuntu/Packages/CreatingPbuilderVariations
+2012-08-07T19:33:00.000Z	TJ-	Malthus	The build was successful here
+2012-08-07T19:36:00.000Z	TJ-	Malthus	You don't need that guide to build the package! That guide is for professional packagers who need to ensure there are no hidden dependencies
+2012-08-07T19:36:00.000Z	TJ-	Malthus	All you need to do to build any Ubuntu/Debian package is : "debian/rules build"  then "fakeroot debian/rules binary"
+2012-08-07T19:37:00.000Z	TJ-	Malthus	The 'binary' operation will leave the .deb files in the parent directory of the package-directory
+2012-08-07T19:39:00.000Z	TJ-	Malthus	Did you do a "make clean" first?
+2012-08-07T19:40:00.000Z	TJ-	Malthus	I suggest you start again. Move to the parent directory, do "rm -rf network-manager-0.9.4.0" then "dpkg-source -x network-manager_0.9.4.0-0ubuntu4.1.dsc" then "cd network-manager-0.9.4.0" then "debian/rules build" then "fakeroot debian/rules binary"
+2012-08-07T19:43:00.000Z	TJ-	Malthus	well warnings are usually OK ... though it is good practice to capture the build log and review it just in case
+2012-08-07T20:06:00.000Z	TJ-	Malthus	Against a library that isn't already a dependency of the package (which is defined in debian/control on the source "build-depends:" line
+2012-08-07T20:07:00.000Z	TJ-	Malthus	systemd0wn I meant had you captured the messages from running dpkg -i ? I usually tee the command output to a log file. e.g. "sudo dpkg -i <package list> 2>&1 | tee install.log"

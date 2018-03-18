@@ -1,0 +1,24 @@
+2010-06-14T11:26:00.000Z	spoonb		VT-d usually needs to be enabled in bios, check there.
+2010-06-14T11:27:00.000Z	gbear14275	spoonb	Is there anyway to probe to see if its enabled already?
+2010-06-14T11:29:00.000Z	spoonb	gbear14275	give me a sec to poke around on this comp which I have it enabled
+2010-06-14T11:30:00.000Z	gbear14275	spoonb	OOH thanks!
+2010-06-14T11:35:00.000Z	gbear14275	spoonb	running amd
+2010-06-14T11:35:00.000Z	gbear14275	spoonb	but i think I can look up the twin on amds side
+2010-06-14T11:36:00.000Z	gbear14275	spoonb	I have the vme flags... that mean vt-d is possible?
+2010-06-14T11:37:00.000Z	gbear14275	spoonb	kms?
+2010-06-14T11:38:00.000Z	gbear14275	spoonb	ah yeah.  I'm already running VM's with kvm... my problem is figuring out pci passthrough which seems to be dependent on vt-d/IOMMU
+2010-06-14T11:38:00.000Z	gbear14275	spoonb	thats actually my problem... how do I enable it in the kernel?
+2010-06-14T11:38:00.000Z	gbear14275	spoonb	prepacakged :-/
+2010-06-14T11:39:00.000Z	gbear14275	spoonb	I've read about alot of stuff happeinng in the grub .config but I don't know how to enable it
+2010-06-14T11:40:00.000Z	gbear14275	spoonb	this all talks to the error messages IOMMU states on startup: http://ubuntuforums.org/showpost.php?p=6855830&postcount=88
+2010-06-14T11:43:00.000Z	spoonb	gbear14275	Do you not have access to your BIOS? Even the kernel description says to check the bios for an option to enable it.
+2010-06-14T11:44:00.000Z	gbear14275	spoonb	how do I set that kernel config option?
+2010-06-14T11:45:00.000Z	gbear14275	spoonb	I have a /usr/src/ directory with kernel headers inside
+2010-06-14T11:46:00.000Z	gbear14275	spoonb	no
+2010-06-14T11:48:00.000Z	gbear14275	spoonb	yeah I saw those commands in the howto... but i didn't know how to do that
+2010-06-14T11:49:00.000Z	gbear14275	spoonb	I probably don't want to learn how to build my own kernels tonight I'm guessing
+2010-06-14T11:50:00.000Z	gbear14275	spoonb	in some of the howto's they mention this: "add iommu=noaperture at the end of the line in /boot/grub/menu.lst starting with #defoptions. then do sudo update-grub and, finally reboot ..." we couldn't do something similar for that config change too could we?
+2010-06-14T11:55:00.000Z	spoonb	gbear14275	dmesg well report it is enabled.
+2010-06-14T11:56:00.000Z	gbear14275	spoonb	this look right?   GRUB_CMDLINE_LINUX="CONFIG_AMD_IOMMU=y"
+2010-06-14T11:57:00.000Z	gbear14275	spoonb	brb
+2010-06-14T11:57:00.000Z	spoonb	gbear14275	thats a kernel config style arguement.

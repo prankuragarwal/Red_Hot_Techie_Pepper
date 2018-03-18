@@ -1,0 +1,24 @@
+2011-04-04T20:33:00.000Z	sukima		Why does apt-get rubygems say it is uptoday whena gem -v clearly shows an out of date version. Most gems need a newer version.
+2011-04-04T20:34:00.000Z	maco	sukima	because it's up-to-date as of the ubuntu repositories
+2011-04-04T20:34:00.000Z	maco	sukima	what is on your system is the newest in the repos. that's all apt-get can tell you
+2011-04-04T20:34:00.000Z	sukima	maco	is there something wrong with it that ubuntu repositories are not being updated?
+2011-04-04T20:34:00.000Z	maco	sukima	new versions of upstream software go into new versions of ubuntu. only bugs are fixed in stable ubuntu releases
+2011-04-04T20:50:00.000Z	sukima	maco	I'll try that thanks
+2011-04-04T20:35:00.000Z	maco	sukima	you could perhaps request a backport of the newer version for an older ubuntu release. there's a separate repository just for that
+2011-04-04T20:36:00.000Z	sukima	maco	can up upgrade my ubuntu?
+2011-04-04T20:36:00.000Z	sukima	maco	err can I upgrade my ubuntu release. I'm currently at 10.04
+2011-04-04T20:39:00.000Z	maco	sukima	system -> admin -> software sources -> updates. set it to allow normal upgrades (instead of just long term support (LTS) releases), then open up update manager
+2011-04-04T20:41:00.000Z	sukima	maco	thank you. How do you do that command line I'm running server
+2011-04-04T20:41:00.000Z	maco	sukima	ah ok. just a second
+2011-04-04T20:42:00.000Z	maco	sukima	/etc/update-manager/release-upgrades    <-- modify that file to "normal" instead of "lts"
+2011-04-04T20:42:00.000Z	maco	sukima	then "sudo apt-get update && sudo do-release-upgrade"
+2011-04-04T20:43:00.000Z	sukima	maco	thank you!!!!!
+2011-04-04T20:47:00.000Z	sukima	maco	I'm sorry to bother again. it said no new release found
+2011-04-04T20:48:00.000Z	maco	sukima	after changing it to normal and then doing apt-get update?
+2011-04-04T20:49:00.000Z	sukima	maco	Sorry how do I change it to normal?
+2011-04-04T20:49:00.000Z	maco	sukima	sudo vi ...that file i said...
+2011-04-04T20:50:00.000Z	maco	sukima	big comment explains what different values for the variable mean, then at the end the variable is set to "lts" ...you need to change it to "normal"
+2011-04-04T20:52:00.000Z	sukima	maco	that fixed it
+2011-04-04T20:52:00.000Z	sukima	maco	thank you for dealing with my idiouscy
+2011-04-04T20:52:00.000Z	maco	sukima	it's not idiocy, just inexperience. everybody has to ask for help first time through doing something new!
+2011-04-04T20:54:00.000Z	sukima	maco	I'll be sure to pay that forward. thx again

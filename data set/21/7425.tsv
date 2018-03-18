@@ -1,0 +1,21 @@
+2006-10-02T11:18:00.000Z	atraeyu		I've got a harddrive (VFAT) mounted to /mnt.  The permissions are set so only the owner can write to it.  When I do: sudo chmod 777 /mnt it prompts for my password, but nothing happens and the permissions don't change.  Any idea what I'm doing wrong?
+2006-10-02T11:19:00.000Z	zoidi79	atraeyu	vfat doesn't have permissions, so you can't set them
+2006-10-02T11:21:00.000Z	atraeyu	zoidi79	VFAT doesn't have permissions?  I'm not sure I understand ... I formatted the disk using disk writer, now I just want to copy data to it off my internal hard drive ...
+2006-10-02T11:24:00.000Z	zoidi79	atraeyu	vfat is a pretty simple fs - it does not store permission information for every file, as ext2 or ntfs do. linux kind of "emulates" permissions when you mount a vfat volume
+2006-10-02T11:24:00.000Z	zoidi79	atraeyu	the permissions used can be set in /etc/fstab
+2006-10-02T11:25:00.000Z	atraeyu	zoidi79	I've got it formated as VFAT right now, but ubuntu says that only the "owner" (root) has permission to write to it.  There isn't an owner account on ubuntu, so I don't know how to copy from my directory to the disk ... I believe I need to change the permissions on the disk (mounted at /mnt) ... but sudo chmod 777 /mnt doesn't do anything ...
+2006-10-02T11:28:00.000Z	zoidi79	atraeyu	could you tell my the corresponding line for the disk in /etc/fstab?
+2006-10-02T11:29:00.000Z	atraeyu	zoidi79	#/dev/hdb1 /media/hdb1 ntfs ro,user,fmask=0133,dmask=0022,uid=1000,gid=1000 0 0
+2006-10-02T11:30:00.000Z	atraeyu	zoidi79	Wait, that's not it
+2006-10-02T11:31:00.000Z	atraeyu	zoidi79	I don't see a line in fstab that corresponds to it.  What I did was: System -> Administration -> Disks ... Formatted the Disk to VFAT and set the mountpoint there to /mnt
+2006-10-02T11:33:00.000Z	zoidi79	atraeyu	run "mount" once to see which dev the hd mounted at /mnt is
+2006-10-02T11:34:00.000Z	zoidi79	atraeyu	then "sudo umount /mnt"
+2006-10-02T11:34:00.000Z	atraeyu	zoidi79	/dev/hdb1 on /mnt type vfat (rw)
+2006-10-02T11:35:00.000Z	atraeyu	zoidi79	Okay, it's not longer mounted
+2006-10-02T11:36:00.000Z	zoidi79	atraeyu	then remount it with 'sudo mount -o "defaults,user,uid=0,gid=1000,umask=002" /dev/hdb1 /mnt'
+2006-10-02T11:37:00.000Z	atraeyu	zoidi79	I did that, but it still tells me no permissions (I'm trying to drag a folder I "own" into the /mnt directory)
+2006-10-02T11:41:00.000Z	zoidi79	atraeyu	which gid does your user have?
+2006-10-02T11:41:00.000Z	atraeyu	zoidi79	1000
+2006-10-02T11:45:00.000Z	zoidi79	atraeyu	hm that's strange - i have the exact same mount parameters for a vfat drive here and can write to it, no problems
+2006-10-02T11:49:00.000Z	atraeyu	zoidi79	Strange ... I have no idea what to do :(
+2006-10-02T11:58:00.000Z	zoidi79	atraeyu	ok, umount hdb1 again and try this: mount -o "rw,nosuid,noexec,nodev,uid=1000,gid=1000,umask=77" /dev/hdb1 /mnt

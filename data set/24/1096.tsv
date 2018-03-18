@@ -1,0 +1,24 @@
+2010-07-19T02:15:00.000Z	rocker2344	crux000	just got home, the harddrive is connected to usb and power and the write protect switch is off
+2010-07-19T01:53:00.000Z	crux000	rocker2344	is the webcam plugged in? (/smartass answer)
+2010-07-19T01:54:00.000Z	crux000	rocker2344	when you say 'see'... as in show up in the Computer, or not at all (e.g. no /dev entry, if you know what that means?)
+2010-07-19T02:01:00.000Z	crux000	rocker2344	I wasn't paying attention to the channel.... did you paste in what dmesg had to say?
+2010-07-19T02:02:00.000Z	rocker2344	crux000	not yet
+2010-07-19T02:04:00.000Z	crux000	rocker2344	what's "fdisk -l /dev/sda" say?
+2010-07-19T02:05:00.000Z	rocker2344	crux000	sda is my main harddrive
+2010-07-19T02:06:00.000Z	crux000	rocker2344	whoops, was reading too quick.
+2010-07-19T02:06:00.000Z	crux000	rocker2344	try 'dmesg | tail -f' then unplug & re-add the usb drive -- does anything get printed out when you plug it in?
+2010-07-19T02:07:00.000Z	rocker2344	crux000	http://pastebin.com/GDRNLNj8
+2010-07-19T02:08:00.000Z	crux000	rocker2344	your dmesg didn't contain any mentions of finding sdb, so you're probably just looking at an empty file / disconnected device node? with fdisk... (quickly leaving stuff I'm comfortable with)
+2010-07-19T02:09:00.000Z	crux000	rocker2344	it's as if its power cable was disconnected :)
+2010-07-19T02:10:00.000Z	crux000	rocker2344	there's "seeing" and then there's seeing: even a fairly corrupt drive will usually get picked up one way or another in the kernel messages when it's plugged in
+2010-07-19T02:15:00.000Z	crux000	rocker2344	unplug it from the computer, run "dmesg | tail -f", then plug it in. Any *new* lines that happened at the same time you plug it in?
+2010-07-19T02:18:00.000Z	crux000	rocker2344	I was wrong with the dmesg... "tail -f /var/log/messages" should give what you want, though.
+2010-07-19T02:21:00.000Z	crux000	rocker2344	was that it? ... try with a known good USB storage device (another drive, or a thumbdrive) and you should see more.
+2010-07-19T02:23:00.000Z	crux000	rocker2344	there's usually some entries about recognizing a mass storage device and assigning it to /dev/sdb (or sdc, etc)
+2010-07-19T02:24:00.000Z	crux000	rocker2344	Yup. Hence.... I'm guessing there's something busted with it.
+2010-07-19T02:25:00.000Z	crux000	rocker2344	if the stuff on there is super important you can try moving it to a different enclosure to make sure it's the drive that's dead (and not the USB case around it)
+2010-07-19T02:27:00.000Z	crux000	rocker2344	bummer
+2010-07-19T02:27:00.000Z	crux000	rocker2344	USB enclosures are cheap;
+2010-07-19T02:27:00.000Z	crux000	rocker2344	also cheap are PCMCIA eSATA adapters for laptops
+2010-07-19T02:37:00.000Z	rocker2344	crux000	it was a hardware issue. the connections inside eroeded ayaw but i might be able to resoder tmem
+2010-07-19T02:38:00.000Z	crux000	rocker2344	good luck :) you may also be able to move the drive to a different case

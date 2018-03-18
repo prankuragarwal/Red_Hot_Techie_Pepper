@@ -1,0 +1,23 @@
+2011-12-08T21:11:00.000Z	mneptok	evil_hog	UEFI partitions need to be ~120MB and formatted FAT32. they need to be mounted to /boot/efi and the EFI bits of GRUB2 need to be installed.
+2011-12-08T21:12:00.000Z	mneptok	evil_hog	the Ubuntu installer should detect all this and set it up. if you choose to do it manually, then you need to be very aware of the rules.
+2011-12-08T21:12:00.000Z	evil_hog	mneptok	with default partitioning it was fat16 20mb (or 200mb, can't remember) and it worked. i've seen ubuntu in uefi boot menu and was able to boot it. well, i still can see it but it doesn't boot
+2011-12-08T21:13:00.000Z	mneptok		!info grub-efi
+2011-12-08T21:13:00.000Z	mneptok	evil_hog	^^^^
+2011-12-08T21:13:00.000Z	evil_hog	mneptok	alright, if i'll make 120mb fat32 partition. what should i chose in installer GUI? to install grub to /dev/sda or /dev/sda1 (efi partition)
+2011-12-08T21:14:00.000Z	mneptok	evil_hog	if you want to define all this stuff manually, i would suggest you use the alternate installer.
+2011-12-08T21:15:00.000Z	evil_hog	mneptok	well, the main reason why i'm doing so is that i want separate /home and  i want 4k aligned partitions.  the default GUI installer can see EFI partition. but i'm not sure what should i choose as target for grub. the drive itself or that efi partition
+2011-12-08T21:16:00.000Z	mneptok	evil_hog	sudo grub-install /dev/sd(whatever)
+2011-12-08T21:16:00.000Z	mneptok	evil_hog	that's AFTER you install the grub-efi package and remove grub-pc
+2011-12-08T21:18:00.000Z	evil_hog	mneptok	and then i should add ubuntu to efi menu?
+2011-12-08T21:20:00.000Z	mneptok	evil_hog	then "sudo update-grub"
+2011-12-08T21:20:00.000Z	evil_hog	mneptok	thank a lot for the info. i'm going to give it last try today
+2011-12-08T21:20:00.000Z	mneptok	evil_hog	there's no manual tweaking of the GRUB menu necessary
+2011-12-08T21:21:00.000Z	evil_hog	mneptok	and what about efibootmgr?
+2011-12-08T21:21:00.000Z	mneptok	evil_hog	should be brought in as a dependency of grub-efi
+2011-12-08T21:22:00.000Z	evil_hog	mneptok	but grub-efi should handle this itself or i'll have to run efibootmgr and configure that menu?
+2011-12-08T21:24:00.000Z	mneptok	evil_hog	update-grub will take care of all of it
+2011-12-08T21:25:00.000Z	evil_hog	mneptok	thanks again
+2011-12-08T21:36:00.000Z	evil_hog	mneptok	and now the main question:) should I bother now with uefi and gpt, if i have just 750GB drive and probably installation to mbr partition should be easy?
+2011-12-08T21:58:00.000Z	evil_hog		take care and thanks for the help. cya )
+2011-12-09T16:22:00.000Z	evil_hog		weee! I made it! i installed kubuntu x64 on GPT with EFI
+2011-12-09T16:22:00.000Z	evil_hog	mneptok	thanks for assistance, it worked

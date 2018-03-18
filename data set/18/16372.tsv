@@ -1,0 +1,18 @@
+2004-10-01T07:19:00.000Z	Wsquared		nvidia driver doesn't seem to be working.  I installed nvidia-glx, ran dpkg-reconfigure xserver-xfree86 where I selected the nvidia driver, and deselected loading dri and glx.  But according to my careful, scientific graphics driver evaluation (run tuxracer), it didn't work.  What am I missing?
+2004-10-01T07:20:00.000Z	Wsquared		Oh, and I logged out and back in again after I reconfigured the X server.
+2004-10-01T07:22:00.000Z	Wsquared		I think the driver is supposed to allow these functions to be performed by the card.
+2004-10-01T07:23:00.000Z	Wsquared		But the real reason that I deselected them is because someone here said to!  (I already forget--was that deft?)
+2004-10-01T07:23:00.000Z	goatboy_	Wsquared	you'll need glx; it's GLcore and dri that you need to disable IIRC.
+2004-10-01T07:47:00.000Z	goatboy_	Wsquared	you have to enable glx and disable GLcore and dri.
+2004-10-01T07:48:00.000Z	goatboy_	Wsquared	nvidia's binary is special, it doesn't use dri.
+2004-10-01T07:50:00.000Z	Wsquared	goatboy_	But the X server configuration program specifically said that GLCore and glx enable software rendering.  Isn't the point of the card to do the rendering in hardware--so these modules are not necessary?
+2004-10-01T07:53:00.000Z	goatboy_	Wsquared	I'm not sure what the X configuration program says, but the nvidia-glx package provides an accelerated glx.
+2004-10-01T07:54:00.000Z	Wsquared	goatboy_	Yes, and I think that is why glx does not have be be done in software in X, since the card will do it.
+2004-10-01T07:58:00.000Z	goatboy_	Wsquared	glxinfo | grep direct
+2004-10-01T07:59:00.000Z	Wsquared	goatboy_	Thanks. Heres what I got:
+2004-10-01T08:00:00.000Z	goatboy_	Wsquared	that means it's renedering in software right now.
+2004-10-01T08:03:00.000Z	Wsquared	goatboy_	I'm still wondering about the comment in the X configuration program about the mesa libraries.  In synaptic I see a package mesag3, which I do not have installed.  
+2004-10-01T08:05:00.000Z	goatboy_	Wsquared	you don't want mesa (software-only on nvidia cards), nvidia-glx should provide its own libGL.
+2004-10-01T08:16:00.000Z	Wsquared	goatboy_	So far, none of the combinations worked. 
+2004-10-01T08:18:00.000Z	goatboy_	Wsquared	you're using the nvidia driver, not nv, right?
+2004-10-01T08:20:00.000Z	Wsquared	goatboy_	Yes, each time I run dpkg-reconfigure xserver-xfree86, I select the nvidia driver.

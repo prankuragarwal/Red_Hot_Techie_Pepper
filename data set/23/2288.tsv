@@ -1,0 +1,23 @@
+2009-05-10T16:03:00.000Z	markupdude		i installed samba and now able to file transfer between my ubuntu and xp PCs over my home network. But along with that i would like to share/read/write a second HDD that is in the Ubuntu machine. so when i mount it and share it it becomes only accessible for root
+2009-05-10T16:04:00.000Z	markupdude		so even though i can see that HDD from my XP machine i can write anything to it
+2009-05-10T16:04:00.000Z	koshari1	markupdude	what are the folders permissions?
+2009-05-10T16:04:00.000Z	markupdude	koshari1	rwx r-x r-x
+2009-05-10T16:05:00.000Z	markupdude	koshari1	if i add 'root' as the new user in samba i can write to that hDD, but not a good thing u know
+2009-05-10T16:06:00.000Z	koshari1	markupdude	the folder is only selected to let groups and users read that dir,
+2009-05-10T16:06:00.000Z	markupdude	koshari1	i have tried changing permissions and ownership it does let me do so
+2009-05-10T16:06:00.000Z	markupdude	koshari1	that HDD is formatted as fat
+2009-05-10T16:07:00.000Z	koshari1	markupdude	what about the mount placeholder? (the foldername its mounted at?
+2009-05-10T16:07:00.000Z	markupdude	koshari1	ah i was actually chaning permissions of the place holder all the time, that is /media/storage
+2009-05-10T16:08:00.000Z	koshari1	markupdude	there will be no permissians on the fat drive
+2009-05-10T16:08:00.000Z	markupdude	koshari1	should i change the actual thing's permission/ownership
+2009-05-10T16:09:00.000Z	koshari1	markupdude	i think you should unmount the drive, chmod the mountpoint them mount it again
+2009-05-10T16:09:00.000Z	koshari1	markupdude	test the permissians by writing to the folder ar a user rather than root
+2009-05-10T16:22:00.000Z	markupdude	koshari1	sucks, as soon as i mount the drive the mount point becomes rwx r-x r-x again :( and i reverts back to root user even though i changed ownership to a non-root onr
+2009-05-10T16:23:00.000Z	koshari1	markupdude	did you mount it with read write switches in the fstab entry?
+2009-05-10T16:23:00.000Z	markupdude	koshari1	just to confirm i can use other non-root user home folders, so this is
+2009-05-10T16:24:00.000Z	markupdude	koshari1	i have this in fdtab to mount it on start /dev/sda5 /media/storage vfat users 0 0
+2009-05-10T16:24:00.000Z	koshari1	markupdude	add the rw switch to mount it read/write.
+2009-05-10T16:30:00.000Z	koshari1	markupdude	heres an example /dev/sda3 /mnt/WindowsFAT32 vfat quiet,defaults,rw 0 0
+2009-05-10T16:37:00.000Z	markupdude	koshari1	umm tried using those fstab read write options, even after reboot no :(
+2009-05-10T16:37:00.000Z	koshari1	markupdude	 sorry mate beats me ?
+2009-05-10T16:40:00.000Z	markupdude	koshari1	no worries, as last resort i might have to use root user, no harm though, its only me as the user.. btw what to i type to check currently mounted stuffs

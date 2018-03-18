@@ -1,0 +1,24 @@
+2009-02-20T15:18:00.000Z	ActionParsnip	MrGoodkat_	are you using 64bit linux?
+2009-02-20T15:18:00.000Z	MrGoodkat_	ActionParsnip	no i dont
+2009-02-20T15:19:00.000Z	ActionParsnip	MrGoodkat_	sudo apt-get install --reinstall flashplugin-nonfree
+2009-02-20T15:19:00.000Z	MrGoodkat_	ActionParsnip	i did this already a a few times, nothing
+2009-02-20T15:21:00.000Z	ActionParsnip	MrGoodkat_	try: mkdir ~/.mozilla/plugins; cd ~/.mozilla/plugins/; ln -s /usr/lib/mozilla/plugins/libflashplayer.so
+2009-02-20T15:21:00.000Z	ActionParsnip	MrGoodkat_	if: file libflashplayer.so       doesnt say the link is broken you are golden
+2009-02-20T15:24:00.000Z	MrGoodkat_	ActionParsnip	i did this thx, but no change
+2009-02-20T15:24:00.000Z	ActionParsnip	MrGoodkat_	make sure yuor user can read the file
+2009-02-20T15:27:00.000Z	ActionParsnip	MrGoodkat_	all i can suggest is that you remove and purge the flash plugin/s you have installed and then reinstall the single one from repo
+2009-02-20T15:28:00.000Z	ActionParsnip	MrGoodkat_	dpkg -l | grep flash
+2009-02-20T15:29:00.000Z	MrGoodkat_	ActionParsnip	dpkg -l: ii  flashplugin-nonfree                        10.0.15.3ubuntu1~intrepid1
+2009-02-20T15:30:00.000Z	ActionParsnip	MrGoodkat_	sudo apt-get --purge remove flashplugin-nonfree; sudo apt-get clean; sudo apt-get install flashplugin-nonfree
+2009-02-20T15:32:00.000Z	MrGoodkat_	ActionParsnip	still not working, maybe i just reinstall firefox
+2009-02-20T15:32:00.000Z	ActionParsnip	MrGoodkat_	same method, different package
+2009-02-20T15:33:00.000Z	ActionParsnip	MrGoodkat_	i dont think so I think it still reads the same plugins folder, jump into where you extracted the tarball and see if there is a plugins directory
+2009-02-20T15:34:00.000Z	MrGoodkat_	ActionParsnip	yes there is a plugins folder
+2009-02-20T15:34:00.000Z	ActionParsnip	MrGoodkat_	ok, symlink the .so in there
+2009-02-20T15:36:00.000Z	ActionParsnip	MrGoodkat_	did you restart firefox after you put the link in the folder
+2009-02-20T15:37:00.000Z	MrGoodkat_	ActionParsnip	yes i did, but i just see that there is no libflashplugin.so in /usr/lib/mozilla/plugins
+2009-02-20T15:37:00.000Z	ActionParsnip	MrGoodkat_	then its not correctly installed, you could try to find the .so file and symlink that
+2009-02-20T15:38:00.000Z	ActionParsnip	MrGoodkat_	sudo find / -name .so | grep flash
+2009-02-20T15:38:00.000Z	ActionParsnip	MrGoodkat_	the libflashplayer.so file will need symlinking in ~/.mozilla/plugins
+2009-02-20T15:38:00.000Z	MrGoodkat_	ActionParsnip	thx, its working now i linked the flashplugin-alternate.so
+2009-02-20T15:38:00.000Z	ActionParsnip	MrGoodkat_	awesome :)

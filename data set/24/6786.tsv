@@ -1,0 +1,24 @@
+2005-10-27T16:07:00.000Z	kkathman		Greetings, I wonder if I could get a little help diagnosing a network problem, please?
+2005-10-27T16:08:00.000Z	kkathman		I had a power outage, which caused my linux box to go down. When I restarted, it hung during the boot on bringing up the network connection, and SMB failed. All my other computers are ok, and the connection point is good. The ethernet lights on the card are blinking
+2005-10-27T16:09:00.000Z	kkathman		when I do an ifup eth0, it says eth0 is already configured, yet in the system settings it reports "Disabled network device"
+2005-10-27T16:09:00.000Z	Jowi	kkathman	sudo network-admin, enable eth0
+2005-10-27T16:11:00.000Z	Jowi	kkathman	did you install ubuntu as server? network-admin is standard in gnome.
+2005-10-27T16:13:00.000Z	Jowi	kkathman	sorry, i didn't really follow you. did you or did you not get the network-admin running?
+2005-10-27T16:15:00.000Z	Jowi	kkathman	click on eth0, then click on the button labeled "enable". if it already is, deactivate it and activate it again. also, check its settings so it is set to dhcp. it might be that you are getting a conflicting ip from your router. you can try to set a static ip to eth0
+2005-10-27T16:16:00.000Z	Jowi	kkathman	set an ip to the nic that you are sure is not in use. like 192.168.0.152 (if your router is 192.168.0.1)
+2005-10-27T16:16:00.000Z	Jowi	kkathman	also check that your subnetmask is 255.255.255.0
+2005-10-27T16:18:00.000Z	Jowi	kkathman	so try a static ip then. might be that your nic is toast, but to make sure you should test your system with a live-cd or if you have other os installed on the machine.
+2005-10-27T16:20:00.000Z	Jowi	kkathman	you can disregard that warning
+2005-10-27T16:22:00.000Z	Jowi	kkathman	in a terminal: "ping -c 5 192.168.0.1"
+2005-10-27T16:22:00.000Z	Jowi	kkathman	yes
+2005-10-27T16:23:00.000Z	Jowi	kkathman	ping -c 5 127.0.0.1
+2005-10-27T16:25:00.000Z	Jowi	kkathman	is eth0 visible when you do "ifconfig"?
+2005-10-27T16:25:00.000Z	Jowi	kkathman	and the mask is?
+2005-10-27T16:26:00.000Z	Jowi	kkathman	is your router address 192.168.248.1?
+2005-10-27T16:27:00.000Z	Jowi	kkathman	so all look ok. test your nic with a live-cd or another os. best advice i can give you.
+2005-10-27T16:27:00.000Z	Jowi	kkathman	yep. might be the NIC connector.
+2005-10-27T16:28:00.000Z	Jowi	kkathman	but really hard to tell. most NIC look normal even if they are faulty
+2005-10-27T16:29:00.000Z	Jowi	kkathman	absolutely worth a shot. be sure to enable it in bios if you haven't. you can also try to connect to another port on the router.
+2005-10-27T16:30:00.000Z	Jowi	kkathman	connect straight to router. hubs are not reliable.
+2005-10-27T16:31:00.000Z	Jowi	kkathman	at least i have had some troubles with hubs. maybe it's just my paranoia kicking in :) but it is nice to have lowest possible connections when troubleshooting network
+2005-10-27T16:48:00.000Z	Jowi	kkathman	you're welcome man

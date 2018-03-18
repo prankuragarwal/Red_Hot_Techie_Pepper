@@ -1,0 +1,18 @@
+2007-04-25T16:42:00.000Z	Pi4uks		Hei!
+2007-04-25T16:43:00.000Z	Pi4uks		I have problem with ACPI!!!
+2007-04-25T16:44:00.000Z	Pi4uks		Have problem with ACPI: ACPI kills USB after some period!!!
+2007-04-25T16:45:00.000Z	Pi4uks		!ati
+2007-04-25T06:05:00.000Z	Pi4uks		Someone help plz: Ubuntu 7.04 - ACPI kills USB ports on my laptop! (if boot with noacpi - FAN not working - cpu get hot) What to do?
+2007-04-25T06:05:00.000Z	LjL	Pi4uks	possibly, see this bug report: https://bugs.launchpad.net/bugs/22336
+2007-04-25T06:08:00.000Z	Pi4uks	LjL	i dont need help about FAN - FAN working when i boot with acpi (default) - FAN not working with noacpi ( this i set to get usb working )... i need solution, how to do, to work with acpi and usb together
+2007-04-25T06:10:00.000Z	LjL	Pi4uks	try booting with "noapic" instead of "noacpi". i have the USB killing problem as well, but "noapic" solves it
+2007-04-25T06:11:00.000Z	Pi4uks	LjL	thanks, i will test... :*
+2007-04-25T06:26:00.000Z	Pi4uks	LjL	-noapic causes my FAN to stop...
+2007-04-25T06:27:00.000Z	Pi4uks	LjL	i wrote noapic in kernel  /boot/vmlinuz-2.6.20-15-generic root=UUID=3ac93e05-c50a-45e3-919a-4cb3cbc204fa ro quiet splash -noapic
+2007-04-25T06:27:00.000Z	LjL	Pi4uks	then i'm not sure what to try. perhaps you can force your fan to start manually (install "lm-sensors", it's got a "fancontrol" script that could help). but even if it works, that's a hack, and i wouldn't trust my computer to run like that
+2007-04-25T06:27:00.000Z	LjL	Pi4uks	wait, no, it's not "-noapic", it's just "noapic". though i'm not sure the "-" is considered anyway
+2007-04-25T06:28:00.000Z	Pi4uks	LjL	ok, i will try
+2007-04-25T06:29:00.000Z	LjL	Pi4uks	oh, i know there's also the related option "nolapic", but i hve never used it. try, if you don't know what else to try
+2007-04-25T06:31:00.000Z	Pi4uks	LjL	 how to use sensors, when i installed them with apt-get ?
+2007-04-25T06:33:00.000Z	LjL	Pi4uks	 sudo sensors-detect  first, then "sensors" to show the system state. to use "fancontrol", you have to hack a little: first run "pwmconfig", which will tell you (hopefully) where you fan's config file is located.
+2007-04-25T06:33:00.000Z	LjL	Pi4uks	then, you can either use "fancontrol" to control the fan automatically, or just "echo 255 >/file/where/the/fan/is/controlled" to make it run full-speed

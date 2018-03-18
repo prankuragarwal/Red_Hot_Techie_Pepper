@@ -1,0 +1,19 @@
+2008-05-16T08:33:00.000Z	g0tcha1	Starnestommy	i logged in from ubuntu, i think its easier like this
+2008-05-16T08:33:00.000Z	Starnestommy	g0tcha1	which command?
+2008-05-16T08:34:00.000Z	g0tcha1	Starnestommy	ps aux | grip ssh
+2008-05-16T08:34:00.000Z	Starnestommy	g0tcha1	it's grep, not grip
+2008-05-16T08:35:00.000Z	g0tcha1	Starnestommy	root      6499  0.0  0.3   5280   968 ?        Ss   03:40   0:00 /usr/sbin/sshd
+2008-05-16T08:35:00.000Z	Starnestommy	g0tcha1	it appears to be running
+2008-05-16T08:35:00.000Z	g0tcha1	Starnestommy	why does it keep telling me connection refused even locally then?
+2008-05-16T08:35:00.000Z	Starnestommy	g0tcha1	it could be a bad configuration setting in /etc/ssh/ssh_config
+2008-05-16T08:36:00.000Z	g0tcha1	Starnestommy	ill paste it for you in pastebin.com .. one sec
+2008-05-16T08:41:00.000Z	g0tcha1	Starnestommy	http://pastebin.com/m3c91387e thats the ssh_config
+2008-05-16T08:41:00.000Z	Starnestommy	g0tcha1	what about /etc/ssh/sshd_config ?
+2008-05-16T08:42:00.000Z	g0tcha1	Starnestommy	one sec
+2008-05-16T08:47:00.000Z	g0tcha1	Starnestommy	heres sshd_config http://pastebin.com/m6a939b72
+2008-05-16T08:47:00.000Z	Starnestommy	g0tcha1	change the "Port" option from 512 to 22
+2008-05-16T08:47:00.000Z	Starnestommy	g0tcha1	then sudo invoke-rc.d ssh restart
+2008-05-16T08:48:00.000Z	g0tcha1	Starnestommy	ok, one sec
+2008-05-16T08:50:00.000Z	g0tcha1	Starnestommy	it worked this time
+2008-05-16T08:54:00.000Z	g0tcha1	Starnestommy	so to change the port i have to do it from /etc/init.d/sshd_config not ssh_config?
+2008-05-16T08:54:00.000Z	Starnestommy	g0tcha1	yes

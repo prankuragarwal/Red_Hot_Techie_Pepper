@@ -1,0 +1,22 @@
+2008-02-25T09:15:00.000Z	davis		I'm having trouble getting my wireless working w/o roaming mode, but it works fine with roaming mode
+2008-02-25T09:15:00.000Z	davis		any suggestions on what to check to see what's going wrong?
+2008-02-25T09:17:00.000Z	chris0	davis	do you have an atheros card? if you do, either get REALLY close to your access point, or user ndiswrapper
+2008-02-25T09:18:00.000Z	chris0	davis	I've got one too. it's a known issue with the madwifi (ath_pci) driver
+2008-02-25T09:19:00.000Z	chris0	davis	what kind of graphics card do you have?
+2008-02-25T09:19:00.000Z	davis	chris0	is it a recent problem that has come up, cause it work before
+2008-02-25T09:19:00.000Z	davis	chris0	a nvidia gf 6800
+2008-02-25T09:20:00.000Z	chris0	davis	yeah. same issue here. what's going on is that nvidia and ath_pci are both part of the linux-restricted-drivers package. what you need to do is uninstall that, and then install ndiswrapper and manually install the nvidia driver
+2008-02-25T09:21:00.000Z	chris0	davis	it's annoying. I fought with it for a week before I got it to work
+2008-02-25T09:21:00.000Z	davis	chris0	will yours work with roaming mode on via networkmanager before you fixed it?
+2008-02-25T09:22:00.000Z	chris0	davis	it showed networks, but I couldn't connect to them, unless I was literally within five feet of the AP
+2008-02-25T09:23:00.000Z	davis	chris0	hmm, see mine works great in roaming mode, but I want it to log onto the network at boot, and it's a desktop, so not switching APs
+2008-02-25T09:23:00.000Z	chris0	davis	you mean that you want it to connect before X starts?
+2008-02-25T09:24:00.000Z	davis	chris0	yes
+2008-02-25T09:25:00.000Z	chris0	davis	hm...what kind of wireless connection is it? 64-bit hex? 128-bit passphrase? Etc.
+2008-02-25T09:25:00.000Z	davis	chris0	WPA-Personal
+2008-02-25T09:26:00.000Z	chris0	davis	dang. I've actually been trying to figure out how to connect to non 64-bit networks by command-line. it wouldn't be too hard to write a script that starts up your wireless at boot, but I don't know how to connect to WPA-Personal via command-line.
+2008-02-25T09:27:00.000Z	davis	chris0	I'm wondering if something with WPA supplicant isn't messed up on it
+2008-02-25T09:27:00.000Z	chris0	davis	can you connect once you've already booted up?
+2008-02-25T09:28:00.000Z	chris0	davis	i see...
+2008-02-25T09:32:00.000Z	davis	chris0	thanks for your help
+2008-02-25T09:32:00.000Z	chris0	davis	no prob. sorry I couldn't help more

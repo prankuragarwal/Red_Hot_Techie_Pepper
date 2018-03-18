@@ -1,0 +1,22 @@
+2011-12-04T03:11:00.000Z	x_		startx starts X but how do you kill it completely?
+2011-12-04T03:11:00.000Z	escott	x_	thats an unusually way to start x, but if you do it that way, x stops when you exit the terminal that gets spawned when you start x
+2011-12-04T03:14:00.000Z	x_	escott	umm. not sure what that means.
+2011-12-04T03:15:00.000Z	x_	escott	like if im using flubox, I can right click and "exit" but X is still running so I can't re-open fluxbox later. and I can't find any process with X in the name...
+2011-12-04T03:15:00.000Z	escott	x_	the first application that x starts is the "session manager" and when it closes x closes. so look and see what the first application you have configured to start is
+2011-12-04T03:16:00.000Z	x_	escott	look where?
+2011-12-04T03:16:00.000Z	escott	x_	look at pstree and figure out what the child process of X is
+2011-12-04T03:18:00.000Z	x_	escott	pstree 1121 returns Xorg
+2011-12-04T03:33:00.000Z	escott	x_	if lightdm is running then service lightdm stop
+2011-12-04T03:33:00.000Z	x_	escott	no, that crashes my whole computer ;\
+2011-12-04T03:34:00.000Z	escott	x_	buggy graphics driver that isnt returning control to the kernel for the physical ttys
+2011-12-04T03:34:00.000Z	x_	escott	it's the nvidia propreitary and I haven't had any problems with it.
+2011-12-04T03:37:00.000Z	escott	x_	if you cant ctrl-alt-f1 without corruption, then chances are stopping x will leave you in a bad place
+2011-12-04T03:38:00.000Z	x_	escott	I think you are missing the point.
+2011-12-04T04:11:00.000Z	escott	x_	what is on vt7? ctrl-alt-f7
+2011-12-04T04:11:00.000Z	x_	escott	this screen, (fluxbox launched using lightdm)
+2011-12-04T04:11:00.000Z	escott	x_	then its likely starting on :1 which would be tty8 ctrl-alt-f8
+2011-12-04T04:12:00.000Z	x_	escott	8 has a blinkinh cursors in top left but nothing else.
+2011-12-04T04:12:00.000Z	escott	x_	ps aux | grep gdm should tell you want display it is running on. check the other ttys
+2011-12-04T04:13:00.000Z	escott	x_	look for /usr/bin/gdm :#
+2011-12-04T04:13:00.000Z	x_	escott	root      1993  0.0  0.0  70044  3016 ?        Ssl  18:05   0:00 gdm-binary
+2011-12-04T04:25:00.000Z	x_	escott	nice I didn't know you could do a general sudo blkid to list all. I thought you had to know which /dev/ ;-)

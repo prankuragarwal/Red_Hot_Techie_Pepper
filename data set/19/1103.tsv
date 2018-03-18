@@ -1,0 +1,19 @@
+2011-09-13T22:45:00.000Z	goltoof		i get an i/o error when trying to copy a 40gb file from trash... is there a tool out there for this?
+2011-09-13T22:47:00.000Z	B0g4r7	goltoof	"copy from trash" does not make a lot of sense really.  The fact that you are receiving an i/o error is in no way connected with the items being copied residing "in the trash".
+2011-09-13T22:47:00.000Z	goltoof	B0g4r7	copy from here  ~/.local/share/Trash/files/.VirtualBox/  to here  ~/
+2011-09-13T22:48:00.000Z	goltoof	B0g4r7	 i get an i/o error
+2011-09-13T22:48:00.000Z	B0g4r7	goltoof	what if you instead move the files?
+2011-09-13T22:48:00.000Z	goltoof	B0g4r7	 i get an i/o error in nautilus and cli
+2011-09-13T22:48:00.000Z	goltoof	B0g4r7	 no matter where i try to copy to
+2011-09-13T22:49:00.000Z	goltoof	B0g4r7	 or "move" to
+2011-09-13T22:49:00.000Z	B0g4r7	goltoof	it kind of sounds like the media the files reside on is damaged.
+2011-09-13T22:51:00.000Z	B0g4r7	goltoof	you can use something like ddrescue to copy all of the readable areas of the file and replace the damaged pieces with zeros.
+2011-09-13T22:53:00.000Z	B0g4r7	goltoof	I would recommend using "badblocks" for that job.
+2011-09-13T22:53:00.000Z	goltoof	B0g4r7	 ah yes tht's the one
+2011-09-13T23:03:00.000Z	B0g4r7	goltoof	yes, you can preform a read-only test on your hard drive while partitions on it are mounted.
+2011-09-13T23:03:00.000Z	B0g4r7	goltoof	sudo badblocks -vv /dev/sda
+2011-09-13T23:04:00.000Z	goltoof	B0g4r7	 would it be better to check from livedisk?
+2011-09-13T23:04:00.000Z	B0g4r7	goltoof	I don't see any reason why that would be better.  You could though.
+2011-09-13T23:06:00.000Z	goltoof	B0g4r7	 so it could do read/write test..
+2011-09-13T23:06:00.000Z	B0g4r7	goltoof	Well, there is that.  Be aware that the write/read test is destructive.  It will erase anything on the device beng tested.
+2011-09-13T23:06:00.000Z	goltoof	B0g4r7	 oic

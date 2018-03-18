@@ -1,0 +1,22 @@
+2012-01-07T01:18:00.000Z	rhaces		Hey Everyone.. the latest release of firefox 9.0.1 in my ubuntu broke a lot of things and I need to downgrade to 8.0.1. I wonder if someone knows what is the correct pin version to put on /etc/apt/preference, since if I put 8.0.1 (or anything with 8) I get a unknown pin version
+2012-01-07T01:20:00.000Z	ssta	rhaces	you should be able to
+2012-01-07T01:22:00.000Z	rhaces	ssta	do you have an idea on what I need to put in preferences in /etc/apt/ ??? if I put Pin version 8.0.1 or whatever it doesn't work
+2012-01-07T01:22:00.000Z	ssta	rhaces	I'd have thought 8* would work
+2012-01-07T01:24:00.000Z	rhaces	ssta	no it does/t.. I have Package: firefox Pin: 8* Pin-Priority: 800 and I get W: Did not understand pin type 8*
+2012-01-07T01:24:00.000Z	ssta	rhaces	oh, syntax is: Pin: version 8*
+2012-01-07T01:24:00.000Z	ssta	rhaces	try that
+2012-01-07T01:25:00.000Z	ssta	rhaces	it's because you can pin on stuff other than version, so "version" is part of what you're pinning (as well as the version number)
+2012-01-07T01:26:00.000Z	rhaces	ssta	now I didn't get the error but after apt-get install firefox I see Unpacking firefox (from .../firefox_9.0.1+build1-0ubuntu0.11.10.2_i386.deb) ...
+2012-01-07T01:28:00.000Z	ssta	rhaces	make the priority >990
+2012-01-07T01:28:00.000Z	ssta	rhaces	pin priorities are tricksy things
+2012-01-07T01:29:00.000Z	ssta	rhaces	apt will not downgrade unless priority is >=1000 for example
+2012-01-07T01:29:00.000Z	rhaces	ssta	Pin-Priority: 1000 and still the same... should I do something different than apt-get update && apt-get install firefox
+2012-01-07T01:29:00.000Z	rhaces	ssta	I'm not even downgrading, I'm removing and reinstalling
+2012-01-07T01:30:00.000Z	ssta	rhaces	is version 8 even availble in your source?
+2012-01-07T01:30:00.000Z	rhaces	ssta	maybe not.. LOL!! how can I check that?
+2012-01-07T01:31:00.000Z	ssta	rhaces	apt-cache search maybe?  I'd grep through the apt lists
+2012-01-07T01:35:00.000Z	rhaces	ssta	I guess that's the problem.. there's no version 8 in the repo.. from 7 it jumped to 9...
+2012-01-07T01:35:00.000Z	rhaces	ssta	let me change it back to 7 and see if that works
+2012-01-07T01:37:00.000Z	rhaces	ssta	yes.. that did the trick..  I'm installing version 7 right now with the following in the preferences in /etc/apt/: Package: firefox Pin: version 7* Pin-Priority: 1000
+2012-01-07T01:37:00.000Z	ssta	rhaces	cool
+2012-01-07T01:37:00.000Z	rhaces	ssta	thank you very much

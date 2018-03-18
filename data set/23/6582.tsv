@@ -1,0 +1,23 @@
+2006-03-10T15:06:00.000Z	kyevan		is there a way to remove the timestamp checking from sudo? My clock is really messed up and when i correct it via ntp, i usualy can't use sudo for up to a day or two (Yes, it's that bad)
+2006-03-10T15:08:00.000Z	soundray	kyevan	you really have to setup a cron job to timesync more often.
+2006-03-10T15:08:00.000Z	soundray	kyevan	do you want a workaround for the sudo ban?
+2006-03-10T15:08:00.000Z	kyevan	soundray	that would be nice
+2006-03-10T15:09:00.000Z	soundray	kyevan	it takes a few steps. First you want to synchronize with a time server. Then create a reference file for the current time: 'touch /tmp/reference'
+2006-03-10T15:11:00.000Z	soundray	kyevan	then set a system time that is further in the future than any file on the system (probably 12pm tomorrow will be enough)
+2006-03-10T15:11:00.000Z	soundray	kyevan	then you find all files that need resetting, and set them to the time of the reference file. Give me a minute to compose the command...
+2006-03-10T15:12:00.000Z	kyevan	soundray	Wouldn't all that require root privledges?
+2006-03-10T15:13:00.000Z	soundray	kyevan	setting the system time does. You can do it with sudo date for example.
+2006-03-10T15:13:00.000Z	kyevan	soundray	But, if sudo isn'y working....
+2006-03-10T15:13:00.000Z	soundray	kyevan	then you need to do it in the recovery console.
+2006-03-10T15:15:00.000Z	soundray	kyevan	assuming time is set forward in the recovery console, do 'find / -newer /tmp/reference -print0 | xargs -0 touch -r /tmp/reference'
+2006-03-10T15:15:00.000Z	soundray	kyevan	making sense?
+2006-03-10T15:16:00.000Z	kyevan	soundray	not really. Also, ntpdate is now complaining that the port is in use
+2006-03-10T15:17:00.000Z	soundray	kyevan	if you reboot and choose the recovery option in the grub menu, you should be able to run ntpdate without a problem.
+2006-03-10T15:17:00.000Z	kyevan	soundray	OK, but, won't I have to do this all the time still?
+2006-03-10T15:18:00.000Z	soundray	kyevan	not if you then set up a cron job or so to run ntpdate every hour
+2006-03-10T15:18:00.000Z	soundray	kyevan	if you really delved into it, you could also configure an adjustment value for your fast clock.
+2006-03-10T15:19:00.000Z	kyevan	soundray	I have a root shell open right now. The time is off. I need to make it so that either my time stays right, or that sudo doesn't care if I last sudoed in the future
+2006-03-10T15:19:00.000Z	soundray	kyevan	shall we do it step by step, then?
+2006-03-10T15:20:00.000Z	kyevan	soundray	OK. Lets move to a private session though
+2006-03-10T15:20:00.000Z	kyevan	soundray	hang on, I forgot to regester and stuff
+2006-03-10T15:21:00.000Z	soundray	kyevan	okay, pm me when you're ready.

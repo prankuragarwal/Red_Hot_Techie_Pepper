@@ -1,0 +1,21 @@
+2008-03-26T14:39:00.000Z	nomopofomo		I have a DVD ISO which I'm trying to downsize but the program knows that it's a mounted image. Is there any way to make the program think that it's an actual DVD? It's looking for /dev/hdc so what could I do?
+2008-03-26T14:40:00.000Z	ActionParsnip	nomopofomo	if its mounted then its accessible like a dvd. what are you trying to do
+2008-03-26T14:40:00.000Z	nomopofomo	ActionParsnip	I'm using DVD95 to make it able to fit a 4gb DVD.
+2008-03-26T14:41:00.000Z	nomopofomo	ActionParsnip	I've used gisomount to mount it and it automounts it in the /media folder. Any ideas?
+2008-03-26T14:41:00.000Z	nomopofomo	ActionParsnip	could I somehow create a custom device in the /dev folder?
+2008-03-26T14:41:00.000Z	ActionParsnip	nomopofomo	then its ready to go surely. Ive not used DVD95 but any mounted DVD is seen as a folder in the file system
+2008-03-26T14:42:00.000Z	ActionParsnip	nomopofomo	what does DVD95 say when you try to use it?
+2008-03-26T14:42:00.000Z	nomopofomo	ActionParsnip	"File /media/5_CENTIMETERS_PER_SECOND(vcd) doesn't exists !"
+2008-03-26T14:43:00.000Z	nomopofomo	ActionParsnip	I think it's looking for a device file.
+2008-03-26T14:43:00.000Z	ActionParsnip	nomopofomo	and the 5 centime... is the mount point of the ISO?
+2008-03-26T14:43:00.000Z	nomopofomo	ActionParsnip	yes.
+2008-03-26T14:45:00.000Z	nomopofomo	ActionParsnip	the default options are /dev/hda /dev/hdc and /dev/dvd
+2008-03-26T14:48:00.000Z	ActionParsnip	nomopofomo	totally. sudo ln -s <something> <link name>
+2008-03-26T14:54:00.000Z	nomopofomo	ActionParsnip	It's not working. It's telling me that it's not a file. Probably because it's a directory to a symlink.
+2008-03-26T14:54:00.000Z	nomopofomo	ActionParsnip	reverse that. symlink to a directory.
+2009-11-04T19:09:00.000Z	ActionParsnip	nomopofomo	should be ok
+2009-11-04T19:09:00.000Z	nomopofomo	ActionParsnip	thanks
+2009-11-04T19:09:00.000Z	ActionParsnip	nomopofomo	the permissions will be the same as the pervious one when used so makes sense
+2009-11-04T19:11:00.000Z	nomopofomo	ActionParsnip	i was just worried that i'd have to use chown or something
+2009-11-04T19:11:00.000Z	ActionParsnip	nomopofomo	doubt it, try and see
+2009-11-04T19:14:00.000Z	nomopofomo	ActionParsnip	how do i check to see if i'm using the new swap file?

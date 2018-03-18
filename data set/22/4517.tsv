@@ -1,0 +1,22 @@
+2007-12-17T09:14:00.000Z	Nemesis02		How do i fix this issue with apt-get? "trying to overwrite `/usr/share/zoneinfo/Canada/Atlantic', which is also in package locales"
+2007-12-17T09:15:00.000Z	nickrud	Nemesis02	what are you installing, and what version of ubuntu?
+2007-12-17T09:15:00.000Z	Nemesis02	nickrud	was trying to install libapache2-fastcgi, did a full upgrade, and it was trying to install tzdata_2007b-1_all.deb
+2007-12-17T09:16:00.000Z	nickrud	Nemesis02	try sudo aptitude install tzdata locales
+2007-12-17T09:20:00.000Z	Nemesis02	nickrud	same error.  not going away.
+2007-12-17T09:20:00.000Z	nickrud	Nemesis02	a sec
+2007-12-17T09:21:00.000Z	nickrud	Nemesis02	what version of ubuntu are your running, you said you did a full upgrade? Was that from one version to another?
+2007-12-17T09:24:00.000Z	Nemesis02	nickrud	check your PMs
+2007-12-17T09:24:00.000Z	nickrud	Nemesis02	don't see it, you have to be registered with freenode to send pms
+2007-12-17T09:24:00.000Z	Nemesis02	nickrud	o ok.
+2007-12-17T09:24:00.000Z	Nemesis02	nickrud	http://pastebin.com/d6eee9eef
+2007-12-17T09:26:00.000Z	nickrud	Nemesis02	you have several issues, but to start, make sure you have no sources other than ubuntu ones installed. Then run sudo apt-get dist-upgrade
+2007-12-17T09:27:00.000Z	Nemesis02	nickrud	i can't do dist-upgrade till i fix the issue with tzdata affecting apt-get
+2007-12-17T09:27:00.000Z	nickrud	Nemesis02	true, doh
+2007-12-17T09:29:00.000Z	nickrud	Nemesis02	sudo dpkg -i --force-overwrite /var/cache/apt/archives/tzdata<tab>
+2007-12-17T09:29:00.000Z	nickrud	Nemesis02	did you just do an upgrade from one version to another?
+2007-12-17T09:31:00.000Z	nickrud	Nemesis02	oh, did you read what I said about repositories other than ubuntu above? REMOVE them, apt-get update, and try again
+2007-12-17T09:31:00.000Z	Nemesis02	nickrud	yes i did.
+2007-12-17T09:32:00.000Z	nickrud	Nemesis02	ok, and dpkg -i is one of the fundamental commands, used it many times
+2007-12-17T09:32:00.000Z	Nemesis02	nickrud	woops my bad
+2007-12-17T09:33:00.000Z	nickrud	Nemesis02	 ;)
+2007-12-17T09:35:00.000Z	nickrud	Nemesis02	you probably still have some mixed debian packages in your system, the origins button in synaptic will let you check

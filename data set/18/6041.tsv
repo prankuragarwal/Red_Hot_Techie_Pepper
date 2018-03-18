@@ -1,0 +1,18 @@
+2008-07-11T07:55:00.000Z	SubZeroLux		my install is having problems taking my passwords now- i sometimes have to enter them two times before anything happens- sometimes it accepts but does not perform the command i requested, any ideas?
+2008-07-11T07:57:00.000Z	SubZeroLux		can i repeat my question?
+2008-07-11T07:58:00.000Z	SubZeroLux		my primary login and my su/root
+2008-07-11T07:58:00.000Z	SubZeroLux		i did a bios update last night and things got a little bit- odd :/
+2008-07-11T07:59:00.000Z	unop	SubZeroLux	you've enabled the root account?
+2008-07-11T07:59:00.000Z	SubZeroLux	unop	yes, i've been running this install for months now
+2008-07-11T08:00:00.000Z	unop	SubZeroLux	hmm, could be one of the pam modules at fault -- i would check these files /var/log/{auth.log,syslog}
+2008-07-11T08:00:00.000Z	unop	SubZeroLux	might also find information in the other files in the same directory
+2008-07-11T08:01:00.000Z	SubZeroLux	unop	makes sense, i edited part of that earlier trying to install fprint for my biometrics- which brings me to my next question
+2008-07-11T08:02:00.000Z	SubZeroLux	unop	aah, you're absolutely right, my pam.d/common-auth had a duplicate line in it that must have caused a conflict
+2008-07-11T08:02:00.000Z	SubZeroLux		ok, second part- i am on a Dell XPS m1330, i'd like to enable the biometric fingerprint scanner, i heard fprint was a good package, anyone have much experience with that?
+2008-07-11T08:02:00.000Z	unop	SubZeroLux	now that doesn't make sense, pam ought to ignore the repeat
+2008-07-11T08:03:00.000Z	SubZeroLux	unop	it was slightly different, one said requisite the other was 'required' for pam_unix.so nullok_secure (two entries)
+2008-07-11T08:03:00.000Z	unop	SubZeroLux	ahh now, that makes sense
+2008-07-11T08:04:00.000Z	SubZeroLux		it was part of the fprint config setup, but the packages would not install
+2008-07-11T08:04:00.000Z	unop	SubZeroLux	not sure you'd find much info on biometrics in here -- you might like to try #debian or some authoritative source
+2008-07-11T08:04:00.000Z	SubZeroLux	unop	sounds good, thanks
+2008-07-11T08:04:00.000Z	unop	SubZeroLux	yw

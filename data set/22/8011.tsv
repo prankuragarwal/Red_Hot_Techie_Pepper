@@ -1,0 +1,22 @@
+2008-01-30T08:56:00.000Z	RiXtEr		hey all what would be the regex for finding '58G' using grep ... thats (digit)(digit)G
+2008-01-30T08:57:00.000Z	czr	RiXtEr	[\d\d]G
+2008-01-30T08:59:00.000Z	RiXtEr	czr	grep -e [\d\d]G isn't working...
+2008-01-30T08:59:00.000Z	czr	RiXtEr	add proper quotes around it
+2008-01-30T08:59:00.000Z	RiXtEr	czr	proper quotes? ""
+2008-01-30T09:00:00.000Z	czr	RiXtEr	hmm. you're right. let me check what's up with that.
+2008-01-30T09:00:00.000Z	czr	RiXtEr	try '[:digit:]{2}G'
+2008-01-30T09:02:00.000Z	RiXtEr	czr	still nothing
+2008-01-30T09:03:00.000Z	czr	RiXtEr	grep -E '[0-9]{2}G'
+2008-01-30T09:04:00.000Z	RiXtEr	czr	Ahh!!! thats the one... THANKS!
+2008-01-30T09:04:00.000Z	czr	RiXtEr	took a while ;-)
+2008-01-30T09:04:00.000Z	RiXtEr	czr	I've used it before, but its been a while
+2008-01-30T09:05:00.000Z	czr	RiXtEr	I normally just use python RE anyway, hence the delay :-)
+2008-01-30T09:05:00.000Z	RiXtEr	czr	looking for large directories on my server du -hc | grep -E '[0-9]{2}G'
+2008-01-30T09:06:00.000Z	RiXtEr	czr	it will grab a little junk, but I can sort it out to find it :)
+2008-01-30T09:06:00.000Z	RiXtEr	czr	is there a way to make it only look at the first 4 chars... possibly awk..
+2008-01-30T09:06:00.000Z	czr	RiXtEr	yup. you might try running filelight at your server at some point. very nice & visual way of finding out where the large dirs go
+2008-01-30T09:06:00.000Z	czr	RiXtEr	^ = start of line. start with that :-)
+2008-01-30T09:06:00.000Z	RiXtEr	czr	no x on the server ;)
+2008-01-30T09:07:00.000Z	czr	RiXtEr	so? mount over nfs ;-)
+2008-01-30T09:07:00.000Z	czr	RiXtEr	good luck with your endevours. -> afk.
+2008-01-30T09:07:00.000Z	RiXtEr	czr	thanks again.

@@ -1,0 +1,24 @@
+2007-01-28T08:43:00.000Z	bartbes		Libc6 crashes, when I compile program (using strcat and gethostbyname (more)) the program crashes on execution
+2007-01-28T08:43:00.000Z	LjL	bartbes	pastebin the program source
+2007-01-28T08:45:00.000Z	bartbes	LjL	http://paste.ubuntu-nl.org/3198/
+2007-01-28T08:47:00.000Z	bartbes	LjL	the source is at http://paste.ubuntu-nl.org/3198/
+2007-01-28T08:54:00.000Z	LjL	bartbes	doesn't crash for me
+2007-01-28T08:55:00.000Z	LjL	bartbes	gethostbyname crashes, yes, *if* you don't give an address on the command line
+2007-01-28T08:55:00.000Z	bartbes	LjL	is something missing?
+2007-01-28T08:55:00.000Z	bartbes	LjL	strcat (now commented out) crashed as weel
+2007-01-28T08:56:00.000Z	LjL	bartbes	i haven't quite looked at what exactly the program does - and perhaps i don't want to. but if i give it the address of an existing IRC server on the command line, it doesn't crash - just sits there. haven't checked if it actually connects etc
+2007-01-28T08:56:00.000Z	bartbes	LjL	it doesn't i wasnt finished
+2007-01-28T08:58:00.000Z	bartbes	LjL	but the problem with gethostbyname, was a mistake, but the strcat is still failing
+2007-01-28T08:59:00.000Z	LjL	bartbes	dunno, not for me... apparently
+2007-01-28T08:59:00.000Z	bartbes	LjL	in the source I gave, it's commented out. line 29
+2007-01-28T09:02:00.000Z	LjL	bartbes	got it, "man strcat", the first argument is a *destination* string, so it must not be a const value.. instead, you're giving it the return val of another strcat
+2007-01-28T09:03:00.000Z	bartbes	LjL	strcat returns the value of str1
+2007-01-28T09:04:00.000Z	LjL	bartbes	not sure what you mean. strcat takes two arguments (call them str1 and str2 if you want, but they're called dest and src in the manpage), and appends str2 *to* str1, and *also* returns a pointer to str1 for convenience
+2007-01-28T09:04:00.000Z	LjL	bartbes	so you still need str1 to be writable anyway
+2007-01-28T09:05:00.000Z	LjL	bartbes	i'd really change that to  OWNER=sprintf("~%s@%s", OWNERNICK, OWNERHOST);   (the latter variable should be defined, or use the hardcoded value you're already using if you prefer)
+2007-01-28T09:06:00.000Z	LjL	bartbes	it's really just a C syntax issue anyway, ubuntu's libc is fine
+2007-01-28T09:07:00.000Z	bartbes	LjL	changed it, adding a string. but still crashes
+2007-01-28T09:07:00.000Z	bartbes	LjL	ill paste the edited bit in the pastebin
+2007-01-28T09:08:00.000Z	bartbes	LjL	on http://paste.ubuntu-nl.org/3199/
+2007-01-28T09:10:00.000Z	LjL	bartbes	no wonder it still crashes, you're creating a pointer and not allocating any memory for it... what about just using sprintf anyway? it's *made* for that
+2007-01-28T09:11:00.000Z	LjL	bartbes	we're totally offtopic anyway, come join #ubuntu-offtopic

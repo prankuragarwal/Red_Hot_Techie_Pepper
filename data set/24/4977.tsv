@@ -1,0 +1,24 @@
+2006-11-24T15:21:00.000Z	whta		I'm still having trouble figuring out how to mount a drive i have =\
+2006-11-24T15:22:00.000Z	sethk	whta	what kind of drive, file system, etc?
+2006-11-24T15:23:00.000Z	whta	sethk	regular ol' IDE HD, ntfs but I only need it for reading files anyway
+2006-11-24T15:36:00.000Z	sethk	whta	that has nothing to do with the permissions of the mount point
+2006-11-24T15:36:00.000Z	sethk	whta	you need the options uid= and gid= on the mount command.
+2006-11-24T15:36:00.000Z	whta	sethk	hmm, what do i have to do to repair this?
+2006-11-24T15:36:00.000Z	sethk	whta	it's a kludge for handling file systems that don't implement permissions
+2006-11-24T15:36:00.000Z	sethk	whta	umount it, and mount it again with the options.
+2006-11-24T15:36:00.000Z	sethk	whta	if it's ntfs, qman has a good point
+2006-11-24T15:37:00.000Z	sethk	whta	there is ntfs write support that is supposedly safe, but it is much too new to rely on IMO
+2006-11-24T15:37:00.000Z	whta	sethk	I don't need the write support at the moment so read only is fine
+2006-11-24T15:38:00.000Z	sethk	whta	hmm, then I must have misunderstood your question.
+2006-11-24T15:38:00.000Z	sethk	whta	anyway, what I was talking about applies to which user can access the files.  even on a read only mount, you may need uid=/gid= to allow the desired user to read the files.
+2006-11-24T15:39:00.000Z	sethk	whta	you don't need write support to read.  :)
+2006-11-24T15:39:00.000Z	whta	sethk	so what would the command be? what do i put for uid and gid?
+2006-11-24T15:40:00.000Z	sethk	whta	at the command prompt, do the "id" command.  it will tell you the user and group IDs
+2006-11-24T15:41:00.000Z	whta	sethk	will doing this add that awesome hard drive icon onto my desktop too? ;D
+2006-11-24T15:41:00.000Z	sethk	whta	I don't think so, no.  I don't bother with icons.
+2006-11-24T15:59:00.000Z	whta	sethk	could you run that mount command by me one more time? with the uid and gid?
+2006-11-24T16:00:00.000Z	sethk	whta	if you are doing, say:   mount -t ntfs /dev/hda1 /mnt/something, you would do:  mount -t ntfs -o 'uid=500,gid=500' /dev/hda1 /mnt/something
+2006-11-24T16:00:00.000Z	sethk	whta	of course 500 is an example, you have to use the correct numbers.  :)
+2006-11-24T16:02:00.000Z	sethk	whta	excellent.
+2006-11-24T16:07:00.000Z	sethk	whta	it's under $HOME/.mozilla
+2006-11-24T16:08:00.000Z	whta	sethk	sorry for the noobness, but where do i go to get to whatever $HOME represents? If I try to go directly to it it errors me

@@ -1,0 +1,21 @@
+2009-02-18T13:44:00.000Z	bnagy		also did dpkg reconfigure all thing
+2009-02-18T13:45:00.000Z	bnagy		8.1 but it's the easy-peasy netbook ISO
+2009-02-18T13:45:00.000Z	bnagy		what I _think_ I want to do is get an x86 binary of that file and just copy it into usr/bin
+2009-02-18T13:46:00.000Z	bnagy		can I extract that from the package file somehow?
+2009-02-18T13:46:00.000Z	bnagy		might be :)
+2009-02-18T13:47:00.000Z	bnagy		or, alternatively, how do I look at the postinstall script and see what it's trying to do?
+2009-02-18T13:47:00.000Z	IntuitiveNipple	bnagy	Have you tried purging the package and trying again?
+2009-02-18T13:47:00.000Z	bnagy	IntuitiveNipple	yes, and it broke sudo
+2009-02-18T13:48:00.000Z	IntuitiveNipple	bnagy	lol... yes, I recall seeing you mention something about that earlier
+2009-02-18T13:49:00.000Z	IntuitiveNipple	bnagy	Hmmm, it sounds as if there's something gone wrong than just a few isolated package configuration issues.
+2009-02-18T13:50:00.000Z	IntuitiveNipple	bnagy	Can you give us a quick outline of what happened leading up to this?
+2009-02-18T13:51:00.000Z	IntuitiveNipple	bnagy	It sounds as if the original update was upgrading sudo - that would explain the sudo break... I think :)
+2009-02-18T13:52:00.000Z	bnagy	IntuitiveNipple	hm.. maybe.. when I removed xulrunner it removed a lot of stuff, and xul seems to be a dependency of sudo for some reason
+2009-02-18T13:52:00.000Z	IntuitiveNipple	bnagy	Is it Intrepid?
+2009-02-18T13:53:00.000Z	IntuitiveNipple	bnagy	So the update is 1.9.0.6+nobinonly-0ubuntu0.8.10.1 ?
+2009-02-18T13:53:00.000Z	bnagy	IntuitiveNipple	yes, that's right
+2009-02-18T13:55:00.000Z	IntuitiveNipple	bnagy	My inclination would that the package has somehow been corrupted in apt's archive, but because the previous version's postinst script is still available, it has removed the old version but got stuck installing the new... that would explain the missing /usr/bin/xulrunner but
+2009-02-18T13:55:00.000Z	IntuitiveNipple	bnagy	The way I'd do it, I'd tell dpkg/apt that xulrunner is no longer installed, then install from the .deb package
+2009-02-18T13:57:00.000Z	bnagy	IntuitiveNipple	OK, sounds good - how do I do that?
+2009-02-18T13:57:00.000Z	IntuitiveNipple	bnagy	give me a mo... Jaunty is updating and it's just stopped the bluetooth service so lost the mouse :)
+2009-02-18T14:12:00.000Z	bnagy	IntuitiveNipple	so.. how do I manually install from the .deb like you were saying?

@@ -1,0 +1,19 @@
+2008-04-13T18:44:00.000Z	LebLinux		if I install libc6 from hardy on Gutsy would I break my system?
+2008-04-13T18:45:00.000Z	unop_	LebLinux	it might, that depends on whether the lic6 package (or its depends) conflict with existing packages on the system .. it is not recommended you do that though
+2008-04-13T18:48:00.000Z	LebLinux	unop_	I wanted to install a package , and i did it and it worked, but now when I ran update-manager it gave me an error that I should run apt-get -f install, when I ran it, it gave me alot of packages including packages of thw wm to be removed, I choosed No
+2008-04-13T18:50:00.000Z	unop_	LebLinux	i'm not surprised you've got that problem now - it's not wise to cross-install packages
+2008-04-13T18:50:00.000Z	LebLinux	unop_	so I'll remove the package that required the libc6 from hardy and install the gutsy one?
+2008-04-13T18:52:00.000Z	unop_	LebLinux	have you got any hardy sources in your /etc/apt/sources.list ?  if so, remove them first and run this.  sudo aptitude install libc6=2.6.1-1ubuntu10
+2008-04-13T18:52:00.000Z	unop_	LebLinux	and then run. sudo aptitude install -f
+2008-04-13T18:53:00.000Z	unop_	LebLinux	ok, run those two commands then
+2008-04-13T18:55:00.000Z	LebLinux	unop_	I can't remove libc6
+2008-04-13T18:56:00.000Z	unop_	LebLinux	use the !pastebin (don't paste in here) and let's have a look at what you see there
+2008-04-13T19:00:00.000Z	LebLinux	unop_	http://pastebin.com/m742c6a39
+2008-04-13T19:01:00.000Z	unop_	LebLinux	thats not what i asked you to run tho :)
+2008-04-13T19:01:00.000Z	unop_	LebLinux	sudo aptitude install libc6=2.6.1-1ubuntu10; sudo aptitude install -f
+2008-04-13T19:02:00.000Z	LebLinux	unop_	alright.
+2008-04-13T19:03:00.000Z	LebLinux	unop_	Am am downgrading libc6
+2008-04-13T19:08:00.000Z	LebLinux	unop_	thank you, it works!
+2008-04-13T19:09:00.000Z	unop_	LebLinux	well, now - i can tell you, it's ok to maintain a mixed-system, just as long as you know what you are doing :)
+2008-04-13T19:10:00.000Z	LebLinux	unop_	the trick was in aptitude? could it work with the libc6 that I've installed from hardy?
+2008-04-13T19:10:00.000Z	LebLinux	unop_	because when it asked me to remove all these packages I was surprised!

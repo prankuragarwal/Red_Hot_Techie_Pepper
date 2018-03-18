@@ -1,0 +1,24 @@
+2010-01-23T13:08:00.000Z	Slart	NotTooSmart	how is your swap defined in fstab?
+2010-01-23T13:12:00.000Z	Slart	NotTooSmart	could it be a race condition? that /dev/mapper isn't created when it tries to mount the swap?
+2010-01-23T13:12:00.000Z	NotTooSmart	Slart	my encrypted drive always works ... and /dev/mapper/cryptoswap is always created
+2010-01-23T13:13:00.000Z	Slart	NotTooSmart	no error messages in syslog or kern.log?
+2010-01-23T13:13:00.000Z	NotTooSmart	Slart	how do I check?
+2010-01-23T13:14:00.000Z	Slart	NotTooSmart	gedit /var/log/syslog    and   gedit /var/log/kern.log    try searching from the end
+2010-01-23T13:15:00.000Z	NotTooSmart	Slart	Jan 22 06:27:15 media kernel: [56884.010887] FAT: Directory bread(block 275) failed but its not FAT ?
+2010-01-23T13:17:00.000Z	Slart	NotTooSmart	never seen that message before.. not really sure what it means..
+2010-01-23T13:18:00.000Z	NotTooSmart	Slart	it is actually a server install ;-P
+2010-01-23T13:19:00.000Z	Slart	NotTooSmart	ahem.. well.. =)
+2010-01-23T13:21:00.000Z	Slart	NotTooSmart	I can't really think of any other reason for it to work *some* of the time...
+2010-01-23T13:21:00.000Z	NotTooSmart	Slart	me either
+2010-01-23T13:24:00.000Z	NotTooSmart	Slart	well I think I just fixed it by re-creating the swap partition
+2010-01-23T13:25:00.000Z	Slart	NotTooSmart	huh? I'm happy for you.. but I still don't understand why that would work
+2010-01-23T13:25:00.000Z	NotTooSmart	Slart	alright, neither do I
+2010-01-23T13:27:00.000Z	NotTooSmart	Slart	Probably because your right and on reboot it goes back to not working.
+2010-01-23T13:28:00.000Z	Slart	NotTooSmart	you could of course try not mounting the swap in the fstab and create a script that runs on boot with a sleep 10; create swap
+2010-01-23T13:29:00.000Z	Slart	NotTooSmart	but that's kind of like giving up =)
+2010-01-23T13:29:00.000Z	NotTooSmart	Slart	yea, but its kind of easy ;-p
+2010-01-23T13:31:00.000Z	Slart	NotTooSmart	nope.. I've been googling about swap and encryption.. haven't found anything useful yet
+2010-01-23T13:32:00.000Z	NotTooSmart	Slart	/etc/crypttab is also involved
+2010-01-23T13:32:00.000Z	NotTooSmart	Slart	cryptoswap /dev/sda5 /dev/urandom swap,cipher=aes-cbc-essiv:sha256 is the line im using
+2010-01-23T13:42:00.000Z	NotTooSmart	Slart	maybe i should go about writing that script ;-p
+2010-01-23T13:44:00.000Z	Slart	NotTooSmart	try asking the channel again.. perhaps someone else has run into the same problem

@@ -1,0 +1,21 @@
+2011-04-19T05:50:00.000Z	dabbish		How can I create a user that doesn't need a public key to log in with SSH?
+2011-04-19T05:51:00.000Z	shcherbak	dabbish	You mean with password, or passwordless?
+2011-04-19T05:51:00.000Z	dabbish	shcherbak	with password, without public key
+2011-04-19T05:53:00.000Z	shcherbak	dabbish	Did you disabled password login? can you paste message (if -vvv use web paste).
+2011-04-19T05:54:00.000Z	dabbish	shcherbak	Well it's really an image at Amazon EC2. So it might have been like that by default. Message is simply: Permission denied (publickey).
+2011-04-19T05:57:00.000Z	shcherbak	dabbish	You log in with password (first user)? Does new user have home directory?
+2011-04-19T05:58:00.000Z	dabbish	shcherbak	No, I never created a home directory for the user
+2011-04-19T05:58:00.000Z	shcherbak	dabbish	And old user using password login?
+2011-04-19T05:58:00.000Z	dabbish	shcherbak	No, first user uses key
+2011-04-19T05:58:00.000Z	dabbish	shcherbak	No, I want the new user to be able to login without key
+2011-04-19T05:59:00.000Z	dabbish	shcherbak	Actually, the new user has a home directory I see now
+2011-04-19T06:00:00.000Z	shcherbak	dabbish	Does it have .ssh directory, and what permissions?
+2011-04-19T06:01:00.000Z	dabbish	shcherbak	Lemme check
+2011-04-19T06:02:00.000Z	dabbish	shcherbak	No, home folder empty
+2011-04-19T06:05:00.000Z	shcherbak	dabbish	You could copy .ssh (with content) from old account and chown it.
+2011-04-19T06:08:00.000Z	dabbish	shcherbak	Now it looks like this: drwx------ 2 eugene root   4096 2011-04-19 01:07 .ssh
+2011-04-19T06:09:00.000Z	shcherbak	dabbish	Was wrong: http://stackoverflow.com/questions/1454629/aws-ssh-access-permission-denied-publickey-issue
+2011-04-19T06:14:00.000Z	shcherbak	dabbish	ok, more info: http://serverfault.com/questions/253464/enable-password-login-for-ssh-on-amazon-linux-ami
+2011-04-19T06:15:00.000Z	dabbish	shcherbak	thanks! that's exactly what I was looking for
+2011-04-19T06:17:00.000Z	dabbish	shcherbak	YES! that worked. thanks a million
+2011-04-19T06:17:00.000Z	shcherbak	dabbish	Welcome ;)

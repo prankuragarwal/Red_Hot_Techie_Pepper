@@ -1,0 +1,21 @@
+2009-01-04T14:01:00.000Z	decomp_		i have a hosed grub after installing winblows. Now I can boot windows, used knoppix and can see my linux partitions. Ive tried mounting sda1 and doing grub-install, and going into the grub shell doing root (hd0,1) etc. but nothing is working.
+2009-01-04T14:03:00.000Z	Rapture	decomp_	if you go into grub's command line and do a find /boot/grub, does it show anything?
+2009-01-04T14:03:00.000Z	decomp_	Rapture	no it cant find it - thats the bizarre thing
+2009-01-04T14:03:00.000Z	Rapture	decomp_	how about root (hd0), setup?
+2009-01-04T14:08:00.000Z	decomp_	Rapture	yeah i tried that series of steps - i have it saved and have used them before. I did the following:
+2009-01-04T14:08:00.000Z	decomp_	Rapture	sudo grub, find /boot/grub/stage1, root (hd0,1), setup (hd0)
+2009-01-04T14:08:00.000Z	decomp_	Rapture	thats worked for me in the past but not this time. It gives me an error saying it cant determine the filesystem type. weird
+2009-01-04T14:09:00.000Z	Rapture	decomp_	sounds like winblows rewrote the MBR... grub-install from knoppix didn't fix it?
+2009-01-04T14:09:00.000Z	decomp_	Rapture	i know its hosed good. Couldnt find it. Could i try reinstalling linux ontop without formatting and have it reinstall grub?
+2009-01-04T14:10:00.000Z	Rapture	decomp_	I haven't tried that before, but if you have everything backed up, i don't see why not
+2009-01-04T14:12:00.000Z	decomp_	Rapture	actually im remembering earlier when i tried i couldnt even chroot
+2009-01-04T14:13:00.000Z	Rapture	decomp_	what does your partitions look like?
+2009-01-04T14:14:00.000Z	decomp_	Rapture	one sec booting install dvd now - will need to look again to get that info - one sec
+2009-01-04T14:14:00.000Z	Rapture	decomp_	kk
+2009-01-04T14:21:00.000Z	decomp_	Rapture	i have 3 partitions: /dev/sda1, ext3, 262337MB, /dev/sda2. ntfs, 45568MB for win, and /dev/sda5,swap,12165MB
+2009-01-04T14:21:00.000Z	Rapture	decomp_	holy crap that's a huge swap
+2009-01-04T14:21:00.000Z	decomp_	Rapture	must have been created by the last install ;)
+2009-01-04T14:22:00.000Z	decomp_	Rapture	damn never saw that - 12gb? thats enormous. I need to do something about that
+2009-01-04T14:23:00.000Z	Rapture	decomp_	hmm, well, my suggestion would be to delete/resize that swap, but for the grub issue, i'd try a grub-install on sda and include your winblows install in it
+2009-01-04T14:24:00.000Z	decomp_	Rapture	AHA! ive been trying to put it on /dev/sda1 so you are saying try to grub-install on /dev/sda2 (ntfs partition?)
+2009-01-04T14:25:00.000Z	Rapture	decomp_	no, just sda... grub writes to the MBR, which is a partition, but not readily visible

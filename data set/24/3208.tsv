@@ -1,0 +1,24 @@
+2008-08-23T23:57:00.000Z	AdrianStrays		I'm trying to format an external drive manually, and it either can't open the unformatted drive or it can't find it
+2008-08-23T23:58:00.000Z	AdrianStrays		Can someone help me
+2008-08-23T23:59:00.000Z	vocx	AdrianStrays	external drives are usually always FAT32, trying to partition them and format them with other file systems maybe troublesome, or so I've read.
+2008-08-23T23:59:00.000Z	AdrianStrays	vocx	No, I've wiped the entire drive.  Its unformatted at this point
+2008-08-24T00:00:00.000Z	AdrianStrays	vocx	for some reason the command "fdisk -l | grep '^Disk' doesn't do anything for me
+2008-08-24T00:00:00.000Z	vocx	AdrianStrays	run it with sudo, "sudo fdisk -l"
+2008-08-24T00:01:00.000Z	AdrianStrays	vocx	So its possible I'm looking at the wrong partition
+2008-08-24T00:01:00.000Z	vocx	AdrianStrays	partitioning and formating is rather easy with Gparted, how can anybody have problems with it.
+2008-08-24T00:02:00.000Z	AdrianStrays	vocx	All right, there we go.  According to the terminal the device apparently doesn't exist and can't open
+2008-08-24T00:02:00.000Z	vocx	AdrianStrays	plug it to a different USB port, reconnect multiple times, see the output of "dmesg"
+2008-08-24T00:02:00.000Z	AdrianStrays	vocx	I tried using Gparted and had the same issues,  It could reformat, but when it came to making the filesystem it insisted the device didn't exist.
+2008-08-24T00:03:00.000Z	AdrianStrays	vocx	It said it found a new device at 3 and is waiting for it to settle
+2008-08-24T00:04:00.000Z	vocx	AdrianStrays	it is in some way different your external drive? Check the brand name and model in the forums for any clue.
+2008-08-24T00:05:00.000Z	AdrianStrays	vocx	The hard drive was originally that of my old Pc, I just gutted it and turned it into an external hard drive
+2008-08-24T00:06:00.000Z	AdrianStrays	vocx	I'm trying to do it in Gparted again.
+2008-08-24T00:06:00.000Z	vocx	AdrianStrays	maybe it's dead. Once a Hard drive didn't show up anymore and I tried many things. But eventually realized not even the BIOS detected it. So I ditched it.
+2008-08-24T00:07:00.000Z	AdrianStrays	vocx	I'm considering the possibility.  The only thing that makes me hesitate is the fact that it worked fine as an external hard drive until I tried to change the filesystem
+2008-08-24T00:08:00.000Z	AdrianStrays	vocx	I just wish there was a clear sign
+2008-08-24T00:08:00.000Z	vocx	AdrianStrays	yeah. I tried mine in an old PC and then on a newer one, and it was fine. And then it simply dies. No way to tell.
+2008-08-24T00:09:00.000Z	AdrianStrays	vocx	It created an empty partition and is now setting the partition type to /dev/sdb1
+2008-08-24T00:10:00.000Z	AdrianStrays	vocx	Ugh.  Same issue....
+2008-08-24T00:10:00.000Z	vocx	AdrianStrays	you meant the partition type is ext3. /dev/sdb1 is the node point.
+2008-08-24T00:11:00.000Z	AdrianStrays	vocx	No, the patition type is ext2.  It succeeded in that step then said: mkfs.ext2 /dev/sdb1 could not stat /dev/sdb1 --- No such file or directory
+2008-08-24T00:11:00.000Z	vocx	AdrianStrays	use a live CD to do it, or Windows, I don't know. If you just want to allocate the space use whatever it takes, then try to create the filesystem.

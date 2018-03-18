@@ -1,0 +1,22 @@
+2007-09-17T16:01:00.000Z	Steven_		hi, during the install, when it asks for the disk to install grub, how can i know to wich device is referred hd0?
+2007-09-17T16:01:00.000Z	Steven_		is tehre any way to convert devices to grub ones?
+2007-09-17T16:01:00.000Z	tanath	Steven_	hd0 is the first hard drive
+2007-09-17T16:01:00.000Z	tanath	Steven_	hd0,0 is disk one partition 1
+2007-09-17T16:02:00.000Z	tanath	Steven_	hd0,1 is disk 1 partition 2, etc
+2007-09-17T16:02:00.000Z	Steven_	tanath	yes i now but drives are mapped differently between live and installed system
+2007-09-17T16:02:00.000Z	Steven_	tanath	is there any way to know the correpsonding device?
+2007-09-17T16:03:00.000Z	tanath	Steven_	check your fstab to see if your installed system does things differently, and how so
+2007-09-17T16:03:00.000Z	tanath	Steven_	/etc/fstab
+2007-09-17T16:04:00.000Z	Steven_	tanath	i'm helping a friend to install ubuntu, he want grub to be placed on the disk where he's installing
+2007-09-17T16:04:00.000Z	tanath	Steven_	it should do that by default
+2007-09-17T16:04:00.000Z	Steven_	tanath	the order of disks changes from live to the system when ide and sata drives are present (it happened to me)
+2007-09-17T16:05:00.000Z	tanath	Steven_	er, unless the one he's installing to is different from the default boot device, but there should be the option
+2007-09-17T16:05:00.000Z	Steven_	tanath	no he already tried, grup was placed on the BOOT hd, that is not the hd where he's installing ubuntu
+2007-09-17T16:06:00.000Z	Steven_	tanath	tehre is only a textbox...
+2007-09-17T16:06:00.000Z	tanath	Steven_	yeh. grub and linux naming conventions aren't too hard to puzzle out. hda1 is disk 1 partition 1, and goes hdb1 for next disk & hda2 for next partition, etc...
+2007-09-17T16:06:00.000Z	tanath	Steven_	with grub it's (hd0,0) for disk 1, partition 1, and hd1,0 for 2nd disk & first partition. etc
+2007-09-17T16:08:00.000Z	Steven_	tanath	i know, but i don't know what PHISICAL disk, for ex, hd1 refers to, if i can have the device name then i could check
+2007-09-17T16:08:00.000Z	tanath	Steven_	there is no hd1. must be hd<letter><and/or_number>
+2007-09-17T16:09:00.000Z	Steven_	tanath	i'm talking of grub
+2007-09-17T16:09:00.000Z	tanath	Steven_	in the booted system you should be able to find out which device is which, remember which device it is, and use that info
+2007-09-17T16:09:00.000Z	tanath	Steven_	i just told you how devices are represented in both linux & grub

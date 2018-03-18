@@ -1,0 +1,19 @@
+2012-04-22T09:42:00.000Z	JosephHarrietha		Okay... well is there anyway to make a terminal turnicate lines if they would excede the width of the terminal?
+2012-04-22T09:43:00.000Z	JosephHarrietha		I have auth.log "tail -f"-ed to a desktop terminal, and its very hard to read when it has an output spread over multiple lines. I would like to just cut off the last of the line if it exceeds 110 characters
+2012-04-22T09:44:00.000Z	SolarisBoy	JosephHarrietha	you can pass a line count to tail
+2012-04-22T09:44:00.000Z	JosephHarrietha		I know, but it isn't lines. Its the characters on the line
+2012-04-22T09:44:00.000Z	SolarisBoy		i see
+2012-04-22T09:44:00.000Z	JosephHarrietha		I don't like it when one line in a file, when tail-ed to the terminal it put over multiple lines
+2012-04-22T09:44:00.000Z	SolarisBoy	JosephHarrietha	there is a way but i forget it actually =)
+2012-04-22T09:45:00.000Z	SolarisBoy		cut/awk or some other command that can edit a text via pipe will work like potat mentioned also
+2012-04-22T09:45:00.000Z	JosephHarrietha		Hmm.. probably not. The command is just "tail -f /var/log/auth.log"
+2012-04-22T09:45:00.000Z	JosephHarrietha		and its on a desktop terminal that is not clickable or moveable... just sits in the background
+2012-04-22T09:46:00.000Z	SolarisBoy		so the process is running already?
+2012-04-22T09:46:00.000Z	SolarisBoy	JosephHarrietha	?
+2012-04-22T09:46:00.000Z	JosephHarrietha	SolarisBoy	Hmm.. let me read man cut and get back to you
+2012-04-22T09:46:00.000Z	SolarisBoy	JosephHarrietha	actually you can redirect the stdout using gdb....
+2012-04-22T09:46:00.000Z	SolarisBoy	JosephHarrietha	ok
+2012-04-22T09:47:00.000Z	SolarisBoy	JosephHarrietha	cut -d"<delimeter>" -f<column #> would be the basic usage.. but that implies you have something sane to split the output on...
+2012-04-22T09:48:00.000Z	SolarisBoy		awk may be easier if it's delimited by variable white spaces
+2012-04-22T09:48:00.000Z	JosephHarrietha		Yea... how would I cut the output of tail -f. Esspecially because its not a "final output", its a constant output. cut sounds great for reading the first characters of a file, but what happends when tail -f starts sending more lines
+2012-04-22T09:49:00.000Z	SolarisBoy	JosephHarrietha	it would just print what you told it

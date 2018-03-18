@@ -1,0 +1,24 @@
+2007-04-30T16:07:00.000Z	starkruzr		Okay.  So I go into System -> Administration -> Network and take my (wired) ethernet card off DHCP and assign it an IP address.  Why does it appear with ifconfig that nothing has changed?  I tried bringing the interface down and back up with ifdown and ifup and that didn't help either.  Same DHCP-granted address.  Shouldn't the Network Settings configuration applet be able to control what IP address your interfaces are using?
+2007-04-30T16:08:00.000Z	StoneNote	starkruzr	try "sudo /etc/init.d/networking restart" and then check it
+2007-04-30T16:08:00.000Z	starkruzr		Thanks, Stone.
+2007-04-30T16:09:00.000Z	starkruzr		I didn't realize that was something controlled in init.d scripts.
+2007-04-30T16:09:00.000Z	starkruzr		Well.
+2007-04-30T16:09:00.000Z	starkruzr		That was interesting.  It sort of exploded.
+2007-04-30T16:09:00.000Z	starkruzr		!pastebin
+2007-04-30T16:11:00.000Z	starkruzr		StoneWolf: It did this: http://paste.ubuntu-nl.org/18294/ Also I still have the same IP address.
+2007-04-30T16:13:00.000Z	StoneNote	starkruzr	pastbin a copy of your /etc/network/interfaces both before and after your changes and paste me the url
+2007-04-30T16:13:00.000Z	starkruzr		I don't have a copy of the before, Stone, but I'll look at my /etc/network/interfaces for you.
+2007-04-30T16:15:00.000Z	starkruzr		StoneWolf: http://paste.ubuntu-nl.org/18296/ <-- is the "auto eth0" making it default to DHCP and overriding the static configuration after that?
+2007-04-30T16:16:00.000Z	starkruzr		If so, looks like I found a bug :)
+2007-04-30T16:16:00.000Z	starkruzr		What's with all the joining and quitting everyone seems to be doing?  Jeez.
+2007-04-30T16:24:00.000Z	StoneNote	starkruzr	(1) if you don't put my nick in your post, then I am pretty sure not to see it. in fact, I miss the pastebin until I scrolled back and found it. (2) the "auto eth0" is fine (3) the error messages from the /etc/init.d/networking restart occured from it trying to restart your wireless connections (4) your /etc/network/interfaces looks a bit off to me.  when I've coded it by hand before I've always had two more lines: network & broadc
+2007-04-30T16:24:00.000Z	StoneNote		ast
+2007-04-30T16:25:00.000Z	starkruzr		Sorry, I thought you were StoneWolf, not StoneNote.  what does "network" do?
+2007-04-30T16:26:00.000Z	starkruzr		(Also, note, I didn't hand-code this, Network Settings wrote it for me)
+2007-04-30T16:26:00.000Z	StoneNote	starkruzr	try adding these two lines to interfaces: network 192.168.1.0 | broadcast 192.168.1.255 and then restart your networking however you normally do
+2007-04-30T16:26:00.000Z	starkruzr	StoneNote	Ok, lemme give that a shot.
+2007-04-30T16:29:00.000Z	starkruzr	StoneNote	That seems to have worked.  Thanks.  Should I report a bug in Network Settings?
+2007-04-30T16:29:00.000Z	StoneNote	starkruzr	no
+2007-04-30T16:30:00.000Z	starkruzr	StoneNote	Surely that isn't desirable behavior, though...
+2007-04-30T16:30:00.000Z	StoneNote	starkruzr	well, go ahead then. I'm not in charge :)
+2007-04-30T16:34:00.000Z	starkruzr	StoneNote	Turns out it's already been reported about 5 times :)

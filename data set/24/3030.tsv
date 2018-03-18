@@ -1,0 +1,24 @@
+2011-09-01T09:11:00.000Z	domino14		could someone please explain what this could mean? "System information disabled due to load higher than 1" when the cpu% and mem% don't add up to anything more than like 5-10% when i do ps aux?
+2011-09-01T09:12:00.000Z	domino14		why are my servers so screwed up
+2011-09-01T09:12:00.000Z	domino14		waaah
+2011-09-01T09:12:00.000Z	domino14		my processes are at status D
+2011-09-01T09:12:00.000Z	domino14		and they just stopped writing to the log file
+2011-09-01T09:12:00.000Z	domino14		and hte whole computer is basically frozen
+2011-09-01T09:13:00.000Z	domino14		but what would cause a disk wait.. my processes arent that many, theyre just celery workers.. i maybe write 50 MB to disk every 3 hours or so
+2011-09-01T09:13:00.000Z	domino14		and old log files get deleted.. i dont understand
+2011-09-01T09:13:00.000Z	domino14		if many workers are all writing to the same file, the OS should take care of switching who writes when, right? there shouldnt be a deadlock in writing?
+2011-09-01T09:14:00.000Z	lws	domino14	if there are many programs writing to the same file, you have issues
+2011-09-01T09:14:00.000Z	lws	domino14	the OS doesn't take care of file locking, beyond providing the lock() mechanisms for doing so
+2011-09-01T09:14:00.000Z	lws	domino14	it's up to the application to make sure the file doesn't get trashed
+2011-09-01T09:15:00.000Z	domino14	lws	a supervisord process starts multiple celery workers, and it has a supervisor log. as far as i can see the outputs of the workers go to the log correctly
+2011-09-01T09:15:00.000Z	lws	domino14	"freezes"?
+2011-09-01T09:15:00.000Z	lws	domino14	as in hard lock, the magic-sysrq keys don't work?
+2011-09-01T09:17:00.000Z	domino14	lws	the computer is just super slow, it says system load is higher than 1, it's not writing to the log file anymore, i do a ps and i see dozens of CRON jobs (in all uppercase), pstree just hangs, a lot of operations hang
+2011-09-01T09:22:00.000Z	lws	domino14	sounds like an application bug
+2011-09-01T09:22:00.000Z	lws	domino14	what software is causing the grief?
+2011-09-01T09:24:00.000Z	domino14	lws	i have celeryd running tasks on this machine
+2011-09-01T09:29:00.000Z	domino14	lws	it seems there is a sudden spike in disk writes shortly before the machine becomes unresponsive
+2011-09-01T09:29:00.000Z	lws	domino14	anything in the logs?
+2011-09-01T09:29:00.000Z	lws	domino14	try the everything log, hich i believe is either /var/log/messages or /var/log/everything
+2011-09-01T10:04:00.000Z	lws	domino14	yes, iotop can log
+2011-09-01T10:05:00.000Z	lws	domino14	see man iotop for details of that

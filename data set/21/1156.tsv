@@ -1,0 +1,21 @@
+2011-01-16T01:44:00.000Z	Azareth		how can I check whether my router allows me to use port 25?
+2011-01-16T01:45:00.000Z	Azareth		the truth is that I am trying to setup mail server
+2011-01-16T01:46:00.000Z	Azareth		I use postfix but in the log I see "connection timed out"
+2011-01-16T01:46:00.000Z	Gnea	Azareth	much of that will depend on whether or not your isp filters port 25 or not
+2011-01-16T01:47:00.000Z	Azareth	Gnea	: so I have to contact my ISP?
+2011-01-16T01:48:00.000Z	Gnea	Azareth	maybe, if you're using a VM then it may not work at all if the socket isn't listening directly on the outside IP
+2011-01-16T01:48:00.000Z	Azareth	Gnea	: i can not telnet form the host OS too on port 25
+2011-01-16T01:48:00.000Z	Gnea	Azareth	have you made sure it's listening?
+2011-01-16T01:49:00.000Z	Azareth	Gnea	telnet alt2.gmail-smtp-in.l.google.com 25
+2011-01-16T01:49:00.000Z	Gnea	Azareth	I'm talking about the smtp (postfix) listening on your ubuntu in VM. it does not have that google address.
+2011-01-16T01:50:00.000Z	Azareth	Gnea	: it has it mails in the queue, so I think it is
+2011-01-16T01:51:00.000Z	Gnea	Azareth	the problem is that you're using it in a VM, it has a local IP, not a real IP
+2011-01-16T01:51:00.000Z	Azareth	Gnea	: I just rememberd that I succeded to send mail using ssmtp, so port 25 is ok, it must be the postfix configuration
+2011-01-16T01:52:00.000Z	Gnea	Azareth	then you need to find a way to get virtualbox to accept connections from the internet
+2011-01-16T01:52:00.000Z	Gnea	Azareth	your ip on the vm is a local lan ip, right?
+2011-01-16T01:53:00.000Z	Azareth	Gnea	: I have send an email once, with other smtp server so the problem is in the postfix config, not the network
+2011-01-16T01:53:00.000Z	Gnea	Azareth	okay
+2011-01-16T01:53:00.000Z	Azareth	Gnea	: am I not right?
+2011-01-16T01:54:00.000Z	Gnea	Azareth	well, heh, an SMTP should be able to do outbound and inbound connections.  if the port isn't being forwarded correctly, then it's only going to do outbound. With virtualbox, you get a private IP, so it can NOT be seen on the internet. Do you understand?
+2011-01-16T01:55:00.000Z	Azareth	Gnea	: I have bridged the connections of VB and my ISP
+2011-01-16T01:55:00.000Z	Gnea	Azareth	okay, and can you telnet to port 25 from the internet?

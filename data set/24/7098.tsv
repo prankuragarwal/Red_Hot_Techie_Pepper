@@ -1,0 +1,24 @@
+2006-11-29T11:44:00.000Z	green_earz	zim	you could use sftp in the bash script. on the remote machine put your ssh key on it. you can ssh up so that it will not ask for a password
+2006-12-13T17:42:00.000Z	green_earz	zim	to find out what the driver name is for sound card check out > http://kmuto.jp/debian/hcl/
+2006-12-13T17:42:00.000Z	zim	green_earz	will do ty
+2006-12-13T17:46:00.000Z	zim	green_earz	the sound driver shoul be snd-intel8x0,i810_audio
+2006-12-13T17:53:00.000Z	green_earz	zim	i am a debian user so should be very simular setup to config sound. see if the command sudo alsaconf    dose any thing
+2006-12-13T06:14:00.000Z	green_earz	zim	to install the driver for the card you can use the app modconf : sudo apt-get install modconf  : then sudo modconf and track down the driver for the sound card : but first is the driver all ready install : lsmod | grep snd    and can you see it ?
+2006-12-13T06:19:00.000Z	green_earz	zim	its there snd_intel8x0    so are you a member of the auido group ? use the command :  groups   to see
+2006-12-13T06:22:00.000Z	green_earz	zim	so driver installed your install auido group so it may be that the sound is muted in alsamixer : use the command alsamixer and see if it a channel that muted
+2006-12-13T06:26:00.000Z	zim	green_earz	nothing muted
+2006-12-13T06:26:00.000Z	green_earz	zim	turn your volume down and see if the command cat /dev/urandom > /dev/dsp    puts out a sound or any errors on the terminal
+2006-12-13T06:27:00.000Z	zim	green_earz	cat /dev/urandom > /dev/dsp
+2006-12-13T06:29:00.000Z	zim	green_earz	bash: /dev/dsp: Device or resource busy
+2006-12-13T06:31:00.000Z	green_earz	zim	see if this one dose any thing     lspci -nv && amixer -c0
+2006-12-13T06:33:00.000Z	zim	green_earz	http://paste.ubuntu-nl.org/36737/
+2006-12-13T06:38:00.000Z	green_earz	zim	the out put looks ok may be that the sound app is not config to alsa. fire up xmms and have a look at if its using alsa as its sound demom
+2006-12-13T06:40:00.000Z	green_earz	zim	yes sudo apt-get install xmms
+2006-12-13T06:43:00.000Z	green_earz	zim	open xmms on a sound file and see if it will make a sound we hope
+2006-12-13T06:44:00.000Z	zim	green_earz	:( nope
+2006-12-13T06:47:00.000Z	green_earz	zim	haa it playing if you can see movement on xmms interface. chech your jack plugs for the sound out put lead
+2006-12-13T06:49:00.000Z	zim	green_earz	nope i get sound in windoze and and the sony startup jingle but not in 6.10
+2006-12-13T06:51:00.000Z	green_earz	zim	sorry but i am at a lost here. the driver install your in the sound group and its the mixer not muted. it be small small thing
+2006-12-13T06:53:00.000Z	zim	green_earz	ty for you time i will hit google again
+2006-12-13T06:54:00.000Z	green_earz	zim	all the best
+2006-12-13T06:56:00.000Z	green_earz	zim	by the way when you get the sound up and running have a look at steamtuner for internet radio shoutcast and streamripper

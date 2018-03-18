@@ -1,0 +1,22 @@
+2008-11-17T06:47:00.000Z	WhoNeedszzz		Hey. I have ubuntu Intrepid and I'm trying to run a cron job (just testing by trying to open xterm) and it isn't working. After checking the mail from cron I get: Invalid MIT-MAGIC-COOKIE-1 keyxterm Xt error: Can't open display: :0. What do I do?
+2008-11-17T06:48:00.000Z	Dr_willis	WhoNeedszzz	 You normally do not run gui apps as cron jobs - since cron may not be running them as the same user thats using the X dislay at that time
+2008-11-17T06:48:00.000Z	WhoNeedszzz	Dr_willis	well it worked in hardy just fine
+2008-11-17T06:48:00.000Z	WhoNeedszzz	Dr_willis	xterm -display :0
+2008-11-17T06:49:00.000Z	Dr_willis	WhoNeedszzz	   sounds like they plugged a security hole.
+2008-11-17T06:49:00.000Z	Dr_willis	WhoNeedszzz	 if you really need to do it I guess ya could  find some work around..
+2008-11-17T06:49:00.000Z	WhoNeedszzz	Dr_willis	I believe it is something to do with Xauthority.
+2008-11-17T06:50:00.000Z	Dr_willis	WhoNeedszzz	 yep. that would be my guess also.. the xhost command may let ya get around that.. with the new  user-switching  features of 8.10   i imagine they locked that stuff down as much as they can
+2008-11-17T06:51:00.000Z	WhoNeedszzz	Dr_willis	what about xhost?
+2008-11-17T06:51:00.000Z	Dr_willis	WhoNeedszzz	 it can disable some of that security features
+2008-11-17T06:51:00.000Z	WhoNeedszzz	Dr_willis	hmm how do I use it?
+2008-11-17T06:52:00.000Z	Dr_willis	WhoNeedszzz	 i would start with 'man xhost'  im proper use of it can be considerd a big security hole.. 'xhost +localhost'  used to allow anyonton the local machine to access the X display.. Not sure if it still does..
+2008-11-17T06:52:00.000Z	Dr_willis	WhoNeedszzz	 the person RUNNING the X server/logged in. uses the command to allow otehrs to run apps on his display
+2008-11-17T06:55:00.000Z	Dr_willis	WhoNeedszzz	 some good info here.. (hard core info) --> http://www.oceanwave.com/technical-resources/unix-admin/security/x-security.html
+2008-11-17T07:18:00.000Z	WhoNeedszzz	Dr_willis	sorry about that. Ok so cron works. mplayer worked fine. And I'm almost certain it has something to do with xauth. What do I do to allow it to run xterm?
+2008-11-17T07:19:00.000Z	Dr_willis	WhoNeedszzz	 i would say read up on that x security site i posted earlier.. it details how to allow other users to access the desktop with the xauth system.  I wonder how mplayer 'works' but not xterm...
+2008-11-17T07:19:00.000Z	WhoNeedszzz	Dr_willis	I am the sole user on the computer...
+2008-11-17T07:20:00.000Z	Dr_willis	WhoNeedszzz	 so.. :) cron is not running as that user..
+2008-11-17T07:20:00.000Z	Dr_willis	WhoNeedszzz	 if you need apps to run at specific times I belive there are some alarm type apps that can do that.. you dont need to use cron
+2008-11-17T07:22:00.000Z	WhoNeedszzz	Dr_willis	True but it's easy with cron. Well it was in hardy. What changed since then?
+2008-11-17T07:23:00.000Z	Dr_willis	WhoNeedszzz	 no idea.   the forums may tell you
+2008-11-17T07:53:00.000Z	WhoNeedszzz	Dr_willis	figured it out. Had to run xhost +. Apparently Intrepid is stricter with x stuff and for some reason wouldn't allow xterm to run even though it's from localhost

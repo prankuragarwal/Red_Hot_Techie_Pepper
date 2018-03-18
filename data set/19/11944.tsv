@@ -1,0 +1,19 @@
+2008-09-25T20:12:00.000Z	StFS		hello... is there a way for me to see from what repository a package came?
+2008-09-25T20:13:00.000Z	LjL	StFS	apt-cache policy packagename
+2008-09-25T20:18:00.000Z	StFS	LjL	hmm... "apt-cache policy libqtcore4" tells me the package version... but not the actual repository it came from (http://rafb.net/p/yHNdwa13.html)
+2008-09-25T20:20:00.000Z	StFS	LjL	What's bugging me is that I believe I've removed all the non-standard repositories from sources.list but this package (libqtcore4) is still under "installed packages" and not "obsolete and locally inserted"
+2008-09-25T20:20:00.000Z	LjL	StFS	no, you're right, it doesn't. i don't believe anything does, apt-cache just comes close, by giving you a list of repositories the package is found in (in this case, it isn't even telling you the repository, probably because the package isn't there anymore)
+2008-09-25T20:20:00.000Z	LjL	StFS	all odds are that that package comes from the KDE4 PPA repository
+2008-09-25T20:21:00.000Z	StFS	LjL	and I need to downgrade it (and all its dependencies) to the official repo so I can install libqt4-dev
+2008-09-25T20:21:00.000Z	LjL	StFS	i'm afraid you'll have to do them manually
+2008-09-25T20:21:00.000Z	StFS	LjL	ok... well I had that repo... but I've commented it out, updated and it's still in "installed" as opposed to "obsolete and locally installed"
+2008-09-25T20:21:00.000Z	LjL	StFS	well, it's not obsolete
+2008-09-25T20:22:00.000Z	LjL	StFS	you can install a specific version of a package with sudo apt-get install packagename=version
+2008-09-25T20:22:00.000Z	StFS	LjL	ahhhh... a package goes to obsolete only if it's not found in any other repo
+2008-09-25T20:23:00.000Z	StFS	LjL	right... I'll try that but I'm just a little worried about dependency problems when going that way
+2008-09-25T20:24:00.000Z	LjL	StFS	yes, you're likely to have dependency issues that will have to be solved painfully
+2008-09-25T20:25:00.000Z	StFS	LjL	thing is though... I created an /etc/apt/preferences file that put a high priority on the o=Ubuntu... but I guess that's not enough... :(
+2008-09-25T20:25:00.000Z	StFS	LjL	anyways... gotta run to class now... thanks so much for your help
+2008-09-25T20:25:00.000Z	LjL	StFS	sorry, i really don't quite understand APT pinning and all that
+2008-09-25T20:26:00.000Z	LjL	StFS	you could use some ugly command like this to find out what packages come from the ppa repositories...  pt-cache search "" | xargs -n 1 apt-cache policy | grep ppa
+2008-09-25T20:26:00.000Z	LjL	StFS	or, you find out how to do it from aptitude in some cleaner way

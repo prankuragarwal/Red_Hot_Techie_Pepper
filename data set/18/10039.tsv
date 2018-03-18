@@ -1,0 +1,18 @@
+2007-01-26T09:52:00.000Z	Cybercod		how does one change group ownership and permissions for a whole home folder?  I was trying to change username and I screwed it up
+2007-01-26T09:52:00.000Z	jrib	Cybercod	chgrp?  chgrp -R for recursive
+2007-01-26T09:52:00.000Z	jrib	Cybercod	make sure you don't do it outside your $HOME since that would be *bad*
+2007-01-26T09:52:00.000Z	Cybercod	jrib	 use it in a sentence
+2007-01-26T09:53:00.000Z	jrib	Cybercod	one changes group ownership for a whole home folder with chgrp -R
+2007-01-26T09:53:00.000Z	jrib	Cybercod	what exactly happened?
+2007-01-26T09:56:00.000Z	jrib	Cybercod	how did you change the name?
+2007-01-26T09:57:00.000Z	jrib	Cybercod	I see, what does:  getent passwd USERNAME_HERE   return?
+2007-01-26T09:57:00.000Z	jrib	Cybercod	k, that's teh new name?
+2007-01-26T09:58:00.000Z	jrib	Cybercod	and you have a /home/oldname that you are going to replace /home/family with right?
+2007-01-26T09:59:00.000Z	jrib	Cybercod	delete /home/family.  Then rename /home/oldname to /home/family
+2007-01-26T10:00:00.000Z	jrib	Cybercod	afterwards:  sudo chown family: /home/family
+2007-01-26T10:01:00.000Z	jrib	Cybercod	that : is part of the command by the way, so it's everyhthing in quotes here: "sudo chown family: /home/family"
+2007-01-26T10:01:00.000Z	jrib	Cybercod	oops, I mean,  sudo chown -R family: /home/family
+2007-01-26T10:04:00.000Z	jrib	Cybercod	yep
+2007-01-26T10:07:00.000Z	jrib	Cybercod	ls -l ~/.dmrc
+2007-01-26T10:08:00.000Z	jrib	Cybercod	weird,  sudo chmod 644 ~/.dmrc
+2007-01-26T10:08:00.000Z	jrib	Cybercod	sure

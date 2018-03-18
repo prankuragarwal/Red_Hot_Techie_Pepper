@@ -1,0 +1,21 @@
+2012-11-20T11:15:00.000Z	SpecialEd		So I've been trying to use dd with the following command (in bold): dd if=/ of/tempdir/disk.iso but for some reason it doesn't write anything, do I need to dismount the OS to perform DD?
+2012-11-20T11:16:00.000Z	Jordan_U	SpecialEd	The if argument needs to be a file or a block device, not a directory.
+2012-11-20T11:17:00.000Z	Jordan_U	SpecialEd	And you should be *very* careful with dd, if you get something wrong you could whipe out all the data on your hard drive.
+2012-11-20T11:17:00.000Z	SpecialEd	Jordan_U	I understand it operates at the block level, but when I do /dev/simfs I get this (in bold): dd: opening `/dev/simfs': Operation not permitted
+2012-11-20T11:18:00.000Z	Jordan_U	SpecialEd	What is the output of "lsb_release -d"?
+2012-11-20T11:19:00.000Z	Jordan_U	SpecialEd	Please pastebin the output of "mount".
+2012-11-20T11:20:00.000Z	Jordan_U	SpecialEd	Please follow my directions, I'd like to see the complete output of the command "mount", no more, less, or different.
+2012-11-20T11:20:00.000Z	Jordan_U	SpecialEd	And please use http://pastebin.ubuntu.com .
+2012-11-20T11:20:00.000Z	SpecialEd	Jordan_U	Sure thing, it won't be any different than what I just told you though :)
+2012-11-20T11:21:00.000Z	Jordan_U	SpecialEd	Please follow my instructions exactly. I asked you for the output of "mount".
+2012-11-20T11:22:00.000Z	SpecialEd	Jordan_U	my bad, here ya go: http://pastebin.ubuntu.com/1371855/
+2012-11-20T11:24:00.000Z	Jordan_U	SpecialEd	You have a very odd configuration because this is a hosted container, not a default Ubuntu install.
+2012-11-20T11:25:00.000Z	SpecialEd	Jordan_U	yeah, as soon as I am done with this I'm gonna kiss that host good-bye
+2012-11-20T11:27:00.000Z	Jordan_U	SpecialEd	There is no real block device associated with symfs, it just maps files in your container to files in the host's filesystem. To do a block level copy you'd need to be able to access the host's hard drive (which also contains the files for all of the other containers on that machine).
+2012-11-20T11:29:00.000Z	Jordan_U	SpecialEd	In other words, dd is not an option for you.
+2012-11-20T11:29:00.000Z	SpecialEd	Jordan_U	OK that makes more sense to me now, I'm not familiar with SimFS.  Basically I'm trying to move files from a OpenVZ VPS system to my dedicated server where I have created a Guest VirtualBox VM  (All machines are Ubuntu 12.04LTS Server x64).  Should I just rsync / to / ?
+2012-11-20T11:30:00.000Z	Jordan_U	SpecialEd	You can do that, just know that there are probably a lot of configuration files that contain settings specific to OpenVZ containers, since that's what the system you're using now is.
+2012-11-20T11:31:00.000Z	Jordan_U	SpecialEd	rsync is the way to go, if you really want to copy everything. Though after the rsync your new "copied" system will probably fail to boot until you remove the OpenVZ specific stuffs.
+2012-11-20T11:33:00.000Z	SpecialEd	Jordan_U	Could I ask my hosting company to go onto their OpenVZ server and create a raw disk image of my VPS server for me?
+2012-11-20T11:33:00.000Z	Jordan_U	SpecialEd	There is no raw disk to image, your container is just a collection of files in a directory.
+2012-11-20T11:34:00.000Z	Jordan_U	SpecialEd	Exactly.

@@ -1,0 +1,21 @@
+2007-08-15T07:22:00.000Z	fredl		hi guys, not really an Ubuntu question, but I recently added a (third) disk to my system which is a PATA disk. It installed itself before the two SATA disks that had both Ubuntu and XP on it. Not a big deal as I wanted to do a new (64 bit) install of Ubuntu anyways. However, my XP does not start anymore now. GRUB sees it alright and starts loading it, but because XP thinks it's installed on the first disk it thinks it can boot up from there.
+2007-08-15T07:22:00.000Z	scguy318	fredl	pastebin your menu.lst
+2007-08-15T07:25:00.000Z	fredl	scguy318	http://pastebin.ca/658223
+2007-08-15T07:27:00.000Z	scguy318	fredl	i'm not all that comfy with GRUB, but I'd imagine you'd tweak the root
+2007-08-15T07:28:00.000Z	fredl	scguy318	- yeah that sounds logical, you know what's the meaning of the the 'map' lines under the sdb1 section?
+2007-10-22T11:50:00.000Z	scguy318	fredl	sudo in general
+2007-10-22T11:50:00.000Z	scguy318	fredl	well, yeah, was talking about the whole session caching thing :P
+2007-10-22T11:51:00.000Z	scguy318	fredl	im aware
+2007-12-15T14:08:00.000Z	scguy318	fredl	invisible like can't see your text? no
+2007-12-15T14:09:00.000Z	scguy318	fredl	what about USB?
+2007-12-15T14:10:00.000Z	fredl	scguy318	but it works on another machine.
+2007-12-15T14:10:00.000Z	scguy318	fredl	im looking
+2007-12-15T14:12:00.000Z	scguy318	fredl	I'm thinking this link might help you: http://www.linux-usb.org/FAQ.html#ts6
+2007-12-15T14:14:00.000Z	fredl	scguy318	I'm looking in /proc/interrupts and I see  11:     193148    XT-PIC-XT        ohci1394, bcm43xx, nvidia
+2007-12-15T14:15:00.000Z	scguy318	fredl	ohci1394 is Firewire
+2007-12-15T14:17:00.000Z	scguy318	fredl	pastebin your dmesg and I'll look
+2007-12-15T14:20:00.000Z	fredl	scguy318	http://pastebin.ca/817166
+2007-12-15T14:21:00.000Z	scguy318	fredl	thanks, looking
+2007-12-15T14:22:00.000Z	fredl	scguy318	this may be of help too, lspci lists: 00:11.2 USB Controller: VIA Technologies, Inc. VT82xxxxx UHCI USB 1.1 Controller (rev 1b)
+2007-12-15T14:23:00.000Z	scguy318	fredl	it's not that, because USB 2.0 devices should be backwards compatible with 1.1
+2007-12-15T14:23:00.000Z	scguy318	fredl	personally I think it might be something hardware-wise, but don't take me as the final word

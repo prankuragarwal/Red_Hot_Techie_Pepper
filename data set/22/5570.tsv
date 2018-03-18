@@ -1,0 +1,22 @@
+2007-04-15T06:52:00.000Z	hamlet	dockane	for some very strange reason /sbin/killall5 is not executable program but some random binary chunk of data. no idea why
+2007-04-15T06:53:00.000Z	hamlet	dockane	the program is installed by sysvinit-utils. you may try to reinstall this package. but if you haven't played with your file system, maybe someone else did...
+2007-04-15T06:56:00.000Z	hamlet	dockane	you may try to track the changes to your files with something like aide but this is very annoying with lots of updated packages
+2007-04-15T06:56:00.000Z	dockane	hamlet	chkrootkit did not find anything suspicios..
+2007-04-15T06:57:00.000Z	hamlet	dockane	chkrootkit cannot give the ultimate answer if your fs has been tampered. it won't find custom rootkits
+2007-04-15T06:58:00.000Z	hamlet	dockane	it's best to start with fresh install tracked by aide. its a lot of work but if you need to be sure this is the safest way
+2007-04-15T07:01:00.000Z	dockane	hamlet	this may be the ultimative solution. i still would like to know if this is the case
+2007-04-15T07:02:00.000Z	hamlet	dockane	i don't understand your last sentence: what do you want to know?
+2007-04-15T07:04:00.000Z	hamlet	dockane	if you want to know if your install have been tampered with and you have spare partition and your install is pretty standard
+2007-04-15T07:05:00.000Z	hamlet	dockane	you can make a similar install on the spare partition and binary compare the files
+2007-04-15T07:05:00.000Z	dockane	hamlet	a fresh install with an ids would be the ultimate solution but i still would like to know if this an error caused by an update or something else or the system got infected by some backdoor/rootkit
+2007-04-15T07:05:00.000Z	hamlet	dockane	it will take a lot of time and work but you'll see if other files have been manipultated also (or if they are some unexpected new files)
+2007-04-15T07:07:00.000Z	dockane	hamlet	is there any documentation to this file-to-file compare and how do that? what should i search for?
+2007-04-15T07:08:00.000Z	hamlet	dockane	diff -r /mnt/oldinstall /mnt/newinstall (from lifecd preferrable in order not to consider /proc)
+2007-04-15T07:10:00.000Z	hamlet	dockane	you may want to use "-q" for diff also. take a look at the man page
+2007-04-15T07:13:00.000Z	dockane	hamlet	i found some hidden directories in /dev.  /dev/.static (directory)  /dev/.udev (directory)  /dev/.initramfs (directory)  /etc/.java (directory)
+2007-04-15T07:14:00.000Z	hamlet	dockane	/dev/.static is ok. not sure for the others
+2007-04-15T07:14:00.000Z	hamlet	dockane	i have them here too
+2007-04-15T07:15:00.000Z	hamlet	dockane	without /dev/.java
+2007-04-15T07:16:00.000Z	hamlet	dockane	but a binary compare is better because rootkits try to hide in well known locations (preferrably directories which change a lot). one of the fascinating ideas was directory named "..."
+2007-04-15T07:27:00.000Z	dockane	hamlet	apt-get --reinstall install sysvinit did it but ill have an eye on it and probably will check it from a livecd, with a fresh isntall. thank you for you help, i apreciated it.
+2007-04-15T07:28:00.000Z	hamlet	dockane	you're welcome

@@ -1,0 +1,22 @@
+2011-06-21T06:34:00.000Z	GregAce		how can I solve conflits with library sharing : : error while loading shared libraries: libfuse.so.2: Cheers
+2011-06-21T06:35:00.000Z	|COM|Styx	GregAce	what does "ldd /usr/lib/libfuse.so.2" say?
+2011-06-21T06:39:00.000Z	GregAce	|COM|Styx	 it says no such file or directory
+2011-06-21T06:40:00.000Z	|COM|Styx	GregAce	you need to install that library, then.  if it already is installed, run "sudo ldconfig"
+2011-06-21T06:40:00.000Z	GregAce	|COM|Styx	But it's installed
+2011-06-21T06:41:00.000Z	GregAce	|COM|Styx	what's those run-time bindings ?
+2011-06-21T06:41:00.000Z	|COM|Styx	GregAce	what do you mean?
+2011-06-21T06:42:00.000Z	GregAce	|COM|Styx	2 sec I'm reading the man of ldconfig
+2011-06-21T06:42:00.000Z	|COM|Styx	GregAce	ldconfig updates the database of where different .so files are
+2011-06-21T06:44:00.000Z	GregAce	|COM|Styx	 yup I got that, well I still get the error truecrypt: error while loading shared libraries: libfuse.so.2: cannot open shared object file: No such file or directory
+2011-06-21T06:45:00.000Z	GregAce	|COM|Styx	I'll probably reboot to fix it,  libfuse is installed but I think used by another instance.
+2011-06-21T06:46:00.000Z	|COM|Styx	GregAce	on linux more than one program can have a file open
+2011-06-21T06:46:00.000Z	GregAce	|COM|Styx	I hate having to use those old windows tricks to fix stuff,
+2011-06-21T06:46:00.000Z	|COM|Styx	GregAce	that won't fix it
+2011-06-21T06:47:00.000Z	|COM|Styx	GregAce	try "locate ilbfuse.so.2"
+2011-06-21T06:47:00.000Z	GregAce	|COM|Styx	it's in /lib
+2011-06-21T06:48:00.000Z	|COM|Styx	GregAce	you ran "sudo ldconfig", right?
+2011-06-21T06:48:00.000Z	GregAce	|COM|Styx	2 times, with the verbose
+2011-06-21T06:49:00.000Z	|COM|Styx	GregAce	hmm...  try ldd on the library that's having the problem again
+2011-06-21T06:51:00.000Z	GregAce	|COM|Styx	yup I've done ldd showed few dependencies
+2011-06-21T06:52:00.000Z	|COM|Styx	GregAce	did you try "ldd $(which truecrypt)"?
+2011-06-21T06:57:00.000Z	GregAce	|COM|Styx	As you expected still not  working

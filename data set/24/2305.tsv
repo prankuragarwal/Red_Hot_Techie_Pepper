@@ -1,0 +1,24 @@
+2010-03-17T00:37:00.000Z	wasutton3		is there a way to get transmission-daemon to be able to write to a samba share?
+2010-03-17T00:38:00.000Z	airtonix	wasutton3	have you tried using smbfs ?
+2010-03-17T00:39:00.000Z	airtonix	wasutton3	i think that would make reduce the issue to simply pointing transmission-daemon at your smbfs mount point
+2010-03-17T00:39:00.000Z	wasutton3	airtonix	i have it mounted via fstab (the linux is actually a guest virtualbox machine)
+2010-03-17T00:41:00.000Z	airtonix	wasutton3	so your smbfs mount point is something like /media/blah and transmission won't write to /media/blah/torrents ?
+2010-03-17T00:41:00.000Z	wasutton3	airtonix	its actually in /home/user/blah but yea
+2010-03-17T00:42:00.000Z	airtonix	wasutton3	ah so you have it mounted in your home folder... ok. my next thought would be that some user permissions relating to the vbox and the user account running in vbox might need looking at ?
+2010-03-17T00:43:00.000Z	wasutton3	airtonix	hmmmm
+2010-03-17T00:43:00.000Z	airtonix	wasutton3	your current problem is just that transmission wont write to your samba share right ?
+2010-03-17T00:44:00.000Z	wasutton3	airtonix	yes, i have a feeling that its because transmission-daemon has its own user
+2010-03-17T00:45:00.000Z	airtonix	wasutton3	true if its run as root
+2010-03-17T00:45:00.000Z	wasutton3	airtonix	no its actually got its own user "transmission-daemon"
+2010-03-17T00:46:00.000Z	airtonix	wasutton3	ok have a look at creating a group for samb virtual box sharing ... somthing like "smb-vbox" and place yourself, virtualbox and the transmission daemon in that group ?
+2010-03-17T00:47:00.000Z	wasutton3	airtonix	i actually have not been using the vbox sharing, i have the network connection bridged to the network adapter so i only have to activate the windows shares once in one way
+2010-03-17T00:47:00.000Z	airtonix	wasutton3	ok so virtualbox isn't part of the permissions problem but you understand my point ?
+2010-03-17T00:48:00.000Z	wasutton3	airtonix	yes i do understand
+2010-03-17T00:48:00.000Z	wasutton3	airtonix	i have already added transmission-daemon to the samba group
+2010-03-17T00:50:00.000Z	airtonix	wasutton3	i think you'd be better off leavign system groups alone and isolating the situation to custom groups
+2010-03-17T00:50:00.000Z	wasutton3	airtonix	i shuffled the mount point to the /media folder, im checking now
+2010-03-17T00:51:00.000Z	wasutton3	airtonix	true, but otherwise transmission-daemon wouldnt be able to use samba services
+2010-03-17T00:51:00.000Z	airtonix	wasutton3	thats the point of smbfs, that it doesnt realise that it is using samba... all it sees is a folder.
+2010-03-17T00:52:00.000Z	airtonix	wasutton3	maybe your fstab line is a bit askew?
+2010-03-17T00:52:00.000Z	wasutton3	airtonix	yes, thats whats used in my fstab
+2010-03-17T00:53:00.000Z	wasutton3	airtonix	"//192.168.2.122/array   /media/Kira smbfs       auto,username=****,password=****,uid=1000,umask=000,user 0 0"

@@ -1,0 +1,18 @@
+2007-05-14T13:01:00.000Z	defcon		root@dell:~/scan/abyss# ./abyss -s www.target.com
+2007-05-14T13:01:00.000Z	defcon		*** stack smashing detected ***: ./abyss terminated
+2007-05-14T13:01:00.000Z	defcon		Aborted (core dumped)
+2007-05-14T13:01:00.000Z	defcon		why does this happen in ubuntu
+2007-05-14T13:02:00.000Z	defcon		and not in any other os
+2007-05-14T13:02:00.000Z	defcon		;\
+2007-05-14T13:03:00.000Z	RAOF	defcon	Probably becasue Ubuntu builds everything with a bunch of compile-time security options, which abyss is breaking.
+2007-05-14T13:03:00.000Z	RAOF	defcon	In particular, it seems that it's trying to access memory weirdly.  If this is the intended behaviour, file a bug.
+2007-05-14T13:05:00.000Z	RAOF	defcon	I'm not entirely sure, there's something on the ubuntu wiki, but I can't seem to find it.
+2007-05-14T13:06:00.000Z	RAOF	defcon	And you can't turn it off, it's how the abyss package was compiled.  You should file a bug against the abyss package.
+2007-05-14T13:13:00.000Z	defcon	RAOF	can I install another gcc instead of ubuntu's because I believe ubuntu's gcc installs the stack protection
+2007-05-14T13:14:00.000Z	RAOF	defcon	As far as I'm aware, it's a compile time option to use the stack protection.
+2007-05-15T13:54:00.000Z	RAOF	defcon	That's awesome.  What are these programs you're trying to run, that abuse the stack in such a fashion? ;)
+2007-05-15T13:54:00.000Z	RAOF	defcon	You've built this from source yourself, or is it a package from the Ubuntu archives?
+2007-05-15T13:56:00.000Z	RAOF	defcon	If they're packages from the archives, you should file bugs against them, since stack protection is enabled at build-time (and I don't believe you can disable it at run-time)
+2007-05-15T13:56:00.000Z	defcon	RAOF	package from ubuntu
+2007-05-15T13:57:00.000Z	RAOF	defcon	Then you need to file bugs, since you can't disable the protections at run time.
+2007-05-15T13:57:00.000Z	RAOF	defcon	Or you could apt-get source the packages, edit the debian/rules files, and rebuild them.

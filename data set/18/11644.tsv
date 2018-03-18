@@ -1,0 +1,18 @@
+2007-10-18T07:28:00.000Z	troubled	ianm_	lsmod | grep snd_intel8x0
+2007-10-18T07:30:00.000Z	ianm_	troubled	isn't that the opposite?  the things that snd_intel8x0 itself uses?
+2007-10-18T07:30:00.000Z	troubled	ianm_	perhaps I misread you. you wanted to know what is using snd_intel8x0, no?
+2007-10-18T07:31:00.000Z	ianm_	troubled	right, so I can rmmod it
+2007-10-18T07:32:00.000Z	troubled	ianm_	grepping for it would help. but if your trying to rm it, try depmod -r perhaps?
+2007-10-18T07:32:00.000Z	ianm_	troubled	$ sudo modprobe -r snd_intel8x0   =>  FATAL: Module snd_intel8x0 is in use.
+2007-10-18T07:34:00.000Z	troubled	ianm_	perhaps try modprobe --show-depends snd_intel8x0?
+2007-10-18T07:35:00.000Z	troubled	ianm_	also, any chance your actually using your sound card with artsd or something (whatever ubuntu uses these days)
+2007-10-18T07:35:00.000Z	troubled	ianm_	lsof might help on your sound /dev/ file as well
+2007-10-18T07:46:00.000Z	ianm_	troubled	esd is using /dev/snd/pcmC0D0p but killing it doesn't let me remove the module either
+2007-10-18T07:47:00.000Z	troubled	ianm_	not familiar with ubuntu, but there may be an init.d script to start/stop the sound system completly instead of just killing. is there a specific reason you need to remove the module? cause you can always blacklist it to prevent it from loading in the first place.
+2007-10-18T07:48:00.000Z	ianm_	troubled	the goal is to reset the sound hardware, since the microphone is broken after APM suspend
+2007-10-18T07:48:00.000Z	troubled	ianm_	could always try force remove the module for modprobe perhaps. man modprobe
+2007-10-18T07:49:00.000Z	ianm_	troubled	I've tried forcing, but still says it's in use
+2007-10-18T07:50:00.000Z	troubled	ianm_	well, lsmod | grep <module> should list everything that may be using it. other than that, not sure. sorry.
+2007-10-18T07:57:00.000Z	ianm_	troubled	ok removing everything using it might do
+2007-10-18T07:57:00.000Z	ianm_	troubled	I'll try to unwind it all
+2007-10-18T07:57:00.000Z	troubled	ianm_	usually works for me

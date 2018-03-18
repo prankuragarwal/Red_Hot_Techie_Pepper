@@ -1,0 +1,22 @@
+2007-06-26T12:19:00.000Z	sirbob		I am trying to moutn an NFS drive with: sudo mount IP:/PATH  /mnt/MOUNTEDDRIVE
+2007-06-26T12:19:00.000Z	sirbob		wehere do I put username/password
+2007-06-26T12:19:00.000Z	sirbob		?
+2007-06-26T12:20:00.000Z	persica	sirbob	you don't enter a username and password with NFS in general.
+2007-06-26T12:20:00.000Z	sirbob	persica	It says the server said "permission denied"
+2007-06-26T12:20:00.000Z	persica	sirbob	NFS traditionally just acts like a normal file system and permissions are enforced based on the user/group id.
+2007-06-26T12:21:00.000Z	persica	sirbob	That may be that the file system isn't being exported to your host.  How is the NFS host setup?
+2007-06-26T12:22:00.000Z	sirbob	persica	I am not sure, but this works from the SUSE gui
+2007-06-26T12:22:00.000Z	sirbob		does linux have such a thing?
+2007-06-26T12:22:00.000Z	sirbob		s/linux/ubuntu/ *
+2007-06-26T12:23:00.000Z	persica	sirbob	on the host, what is the export line for that share, i.e. in the /etc/exports file?
+2007-06-26T12:23:00.000Z	persica	sirbob	NFS is often limited by IP address and the most common reason for getting permission denied is that the NFS server isn't allowing a connection from your IP for that share.
+2007-06-26T12:24:00.000Z	sirbob		there is no /etc/exports file
+2007-06-26T12:24:00.000Z	persica	sirbob	try the manpage for exports on the NFS server.
+2007-06-26T12:24:00.000Z	sirbob		it is a solaris box
+2007-06-26T12:25:00.000Z	persica	sirbob	oh, from solaris?
+2007-06-26T12:25:00.000Z	sirbob		yes
+2007-06-26T12:25:00.000Z	persica	sirbob	alright, type "share" on the solaris host.  what does it say for the path you want to get to?
+2007-06-26T12:26:00.000Z	persica	sirbob	you'll want a 'rw=' entry I believe.
+2007-06-26T12:26:00.000Z	persica	sirbob	what version of solaris?
+2007-06-26T12:28:00.000Z	sirbob	persica	Thanks a lot, I figured it out
+2007-06-26T12:29:00.000Z	persica	sirbob	oh? What was it?

@@ -1,0 +1,21 @@
+2010-12-26T23:53:00.000Z	chills518		I noticed yesterday when coping files from my ubuntu machine to my windows machine that it was very random on speed.  I was coping over 175MB avi files and it mostly copied at 2MB/s and take a couple minute.  Then there were times it would copy the whole file over in about 5 seconds.  What could be causing it to be so random?  how can I get it to be the fast speed consistently?
+2010-12-26T23:54:00.000Z	scaine	chills518	: Run ifconfig -a on both your client and server to check for line errors (errors, dropped, overruns and frame)
+2010-12-26T23:57:00.000Z	chills518	scaine	 client and server...  meaning ubuntu machine and windows machine?  sorry very new to this...
+2010-12-26T23:57:00.000Z	scaine	chills518	: Yep, run ifconfig -a in a terminal on your ubuntu machine.  I'm not sure how to check for errors on your
+2010-12-26T23:57:00.000Z	scaine		...server.  Didn't realise you meant Windwos.
+2010-12-26T23:58:00.000Z	scaine		...server.  Didn't realise you meant Windows.
+2010-12-26T23:58:00.000Z	chills518	scaine	 I've been wondering if having my laptop(ubuntu) machine, plugged in with ethernet cable and wireless enabled would cause a conflict as well...
+2010-12-27T00:00:00.000Z	scaine	chills518	Nope - never had a problem with that myself.  I did have slow speeds just the other day, checked the server (in my case, another Ubuntu box), and sure enough - 27K frame errors.  Must be a fault on my ethernet cable or something!
+2010-12-27T00:00:00.000Z	scaine	chills518	I have no idea how to check a Windows box for errors.  Hang on - I'll fire up my XP box and see if I can see a way...
+2010-12-27T00:01:00.000Z	chills518	scaine	 from my ubuntu here are the results "   RX packets:2737169 errors:1 dropped:0 overruns:0 frame:1"
+2010-12-27T00:03:00.000Z	chills518	scaine	 how I setup a connection between my machines.  maybe the way I setup it up is not the best way... I installed smbfs and then setup the connections in my fstab for a permanent share to the windows machine... not sure if that was the best way.. that was just the way I found online which actually worked for me quickly.
+2010-12-27T00:04:00.000Z	scaine	chills518	That's fine... IF you're connecting with ethernet.
+2010-12-27T00:04:00.000Z	scaine	chills518	If you're using wireless, then you'll likely notice that when you shutdown your PC, it will hang for 60 seconds per Windows share.
+2010-12-27T00:04:00.000Z	scaine	chills518	It's a known bug.
+2010-12-27T00:04:00.000Z	chills518		my windows machine is connected with ethernet and my laptop has both ethernet and wireless going.
+2010-12-27T00:06:00.000Z	scaine	chills518	You'll see "CIFS VFS timeout" errors
+2010-12-27T00:06:00.000Z	scaine	chills518	Here's the bug reference : https://bugs.launchpad.net/ubuntu/+source/network-manager/+bug/211631?comments=all
+2010-12-27T00:06:00.000Z	scaine	chills518	So as long as you have that ethernet cable in, no worries.  Otherwise, timeouts.
+2010-12-27T00:07:00.000Z	scaine	chills518	Need to pop away for a bit.  Good luck troubleshooting...
+2010-12-27T00:07:00.000Z	chills518	scaine	 I do see some errors like that during boot up..
+2010-12-27T00:07:00.000Z	chills518	scaine	 ok.. thanks for the help and link.. gives me something to look into.  thanks again

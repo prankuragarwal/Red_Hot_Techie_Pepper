@@ -1,0 +1,21 @@
+2005-08-06T06:38:00.000Z	Jemt		I want to mount my Windows partition (dual boot) and make it available to all my users. Will this line in fstab do the trick? :  /dev/hdaX  /media/hdd  nts  user  0 2
+2005-08-06T06:39:00.000Z	njan	Jemt	user lets any user mount it
+2005-08-06T06:39:00.000Z	njan	Jemt	if you just want to let users read/write to it whilst having it mounted at startup, umask=0
+2005-08-06T06:40:00.000Z	Jemt	njan	umask=0 ? Where ?
+2005-08-06T06:40:00.000Z	njan	Jemt	in the options column
+2005-08-06T06:41:00.000Z	njan		/dev/hdaX               /mnt/winnt              ntfs    umask=0,ro      0 0
+2005-08-06T06:41:00.000Z	njan		something like that, for instance.
+2005-08-06T06:41:00.000Z	njan	Jemt	except you'll want 'auto' in there too
+2005-08-06T06:43:00.000Z	Jemt	njan	What do 'auto' do ? Auto mount ?
+2005-08-06T06:43:00.000Z	njan	Jemt	indeed
+2005-08-06T06:44:00.000Z	njan	Jemt	at the CLI, type 'man mount', and when that's loaded type '/-o mount' and hit enter
+2005-08-06T06:44:00.000Z	njan	Jemt	those are all for the mount command, but they (I think) all work in the options field for fstab.
+2005-08-06T06:45:00.000Z	Jemt		thanks, njan
+2005-08-06T06:45:00.000Z	njan	Jemt	yvw
+2005-08-06T06:45:00.000Z	njan	Jemt	man is really useful for stuff like this 0:)
+2005-08-06T06:46:00.000Z	Jemt		btw - it is "dangerous" to check a windows disk in Linux? <pass> = 2
+2005-08-06T06:46:00.000Z	njan	Jemt	plus, if you read man and figure it out rather than just letting a website tell you what options to use, you do things in the way you want and you learn something ;)
+2005-08-06T06:46:00.000Z	njan	Jemt	I wouldn't do it.
+2005-08-06T06:46:00.000Z	njan	Jemt	I don't think linux will check fat32, and linux basically only has read support for ntfs, so I don't know how it would anyway
+2005-08-06T06:46:00.000Z	Jemt	njan	Oh, yeah - thanks
+2005-08-06T06:47:00.000Z	njan	Jemt	but I'm not authoritative on that, I don't really ever try doing crazy cross-platform stuff like that 0:)

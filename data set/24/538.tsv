@@ -1,0 +1,24 @@
+2011-07-05T12:57:00.000Z	corecode	devral	did you log in to the share?
+2011-07-05T12:58:00.000Z	corecode	devral	do you have security = share?
+2011-07-05T12:58:00.000Z	corecode	devral	or security = user?
+2011-07-05T12:59:00.000Z	devral	corecode	i believe neither, where is this defined?
+2011-07-05T13:00:00.000Z	corecode	devral	in smb.conf
+2011-07-05T13:00:00.000Z	corecode	devral	did you have a look at the smb logs?
+2011-07-05T13:01:00.000Z	devral	corecode	got it - it was commented out; it is now security = user - does that use linux the system users or separate smb users? (e.g., via smbpasswd?)
+2011-07-05T13:02:00.000Z	corecode	devral	no, that's a protocol option
+2011-07-05T13:02:00.000Z	corecode	devral	but that was the default
+2011-07-05T13:03:00.000Z	corecode	devral	so that's not the issue
+2011-07-05T13:03:00.000Z	corecode	devral	you should look at the logs
+2011-07-05T13:03:00.000Z	corecode	devral	and try accessing from the local machine via smbclient
+2011-07-05T13:07:00.000Z	devral	corecode	what logs am i supposed to look at? none of them in /var/log/samba update when i try to access them, and the only things in there are about my initial logging in
+2011-07-05T13:08:00.000Z	devral	corecode	oops, i mean none of the logs update when i try to write to the non-working share
+2011-07-05T13:08:00.000Z	corecode	devral	you'll have to up the log level
+2011-07-05T13:10:00.000Z	devral	corecode	before i dive off into that deep end of the pool, can you verify i haven't goofed up the share section? here's what i have http://pastebin.com/SAv7ZJUQ
+2011-07-05T13:11:00.000Z	devral	corecode	devral is a user on the system with sudo/admin rights, and root owns the /home/public folder
+2011-07-05T13:14:00.000Z	corecode	devral	oh/
+2011-07-05T13:14:00.000Z	corecode	devral	i think you'll have to be able to write to that directory without using sudo
+2011-07-05T13:18:00.000Z	devral	corecode	/home/public has chmod 777 permissions
+2011-07-05T13:19:00.000Z	corecode	devral	well, that should rule out file system issues
+2011-07-05T13:23:00.000Z	devral	corecode	if i `smbclient -U devral //server/public` and do `smb: \> md test` i can successfully create a folder
+2011-07-05T13:25:00.000Z	devral	corecode	and it appears windows 7 will allow me to do it now as well!
+2011-07-05T13:25:00.000Z	devral	corecode	thanks for the help :)

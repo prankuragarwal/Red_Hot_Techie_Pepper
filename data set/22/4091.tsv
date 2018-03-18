@@ -1,0 +1,22 @@
+2008-10-26T00:33:00.000Z	juniecho		thank you
+2008-10-26T00:34:00.000Z	ActionParsnip	juniecho	good to hear :D:D
+2008-10-26T00:36:00.000Z	ActionParsnip	juniecho	you can delete the source code
+2008-10-26T00:37:00.000Z	ActionParsnip	juniecho	try renaming and rebooting. If its fine, delete it
+2009-07-09T15:28:00.000Z	ActionParsnip	juniecho	can you use IP address?
+2009-07-09T15:28:00.000Z	juniecho	ActionParsnip	yes when i use IP address it works perfectly
+2009-07-09T15:29:00.000Z	ActionParsnip	juniecho	then add an entry for the name to ip conversion in /etc/hosts
+2009-07-09T15:29:00.000Z	ActionParsnip	juniecho	and set the file server to use a static ip
+2009-07-09T15:30:00.000Z	ActionParsnip	juniecho	gksudo gedit/etc/hosts
+2009-07-09T15:31:00.000Z	ActionParsnip	juniecho	no, you just set the server box to static ip. The rest of the computers will be able to use dhcp
+2009-07-09T15:31:00.000Z	ActionParsnip	juniecho	if a system is using a static ip it will never request an IP from the pool, provided its IP address falls into the subnet mask then it can communicate
+2009-07-09T15:32:00.000Z	ActionParsnip	juniecho	then it may change ip address if you use dhcp
+2009-07-09T15:32:00.000Z	ActionParsnip	juniecho	hmm
+2009-07-09T15:33:00.000Z	ActionParsnip	juniecho	you could add the IP address of your router to /etc/resolv.conf
+2009-07-09T15:33:00.000Z	ActionParsnip	juniecho	follow the same format as what is currently in there
+2009-07-09T15:35:00.000Z	ActionParsnip	juniecho	gksudo gedit /etc/resolv.conf
+2009-07-09T15:35:00.000Z	ActionParsnip	juniecho	add a line         nameserver <ip of your router>
+2009-07-09T15:35:00.000Z	ActionParsnip	juniecho	e.g.    nameserver 10.0.0.1
+2009-07-09T15:36:00.000Z	ActionParsnip	juniecho	if thats it's address then yes
+2009-07-09T15:36:00.000Z	ActionParsnip	juniecho	once its added, save the new file and close gedit, then run: sudo /etc/init.d/networking restart
+2009-07-09T15:36:00.000Z	ActionParsnip	juniecho	then try pinging the name
+2009-07-09T15:38:00.000Z	ActionParsnip	juniecho	worth a go, check the file once you are booted round

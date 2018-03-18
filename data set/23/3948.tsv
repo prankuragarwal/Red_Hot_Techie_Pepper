@@ -1,0 +1,23 @@
+2008-01-01T14:08:00.000Z	johnnymo1218		hi, installed apache2 and configured it for https access - unable to access http on port 80 now. Any ideas?
+2008-01-01T14:09:00.000Z	Hemebond	johnnymo1218	How did you configure it? You've got separate virtual hosts, yeah?
+2008-01-01T14:09:00.000Z	johnnymo1218	Hemebond	yeh, sepearte vhosts - also have ports 80 and 443 listed in ports.conf!
+2008-01-01T14:10:00.000Z	Hemebond	johnnymo1218	What happens with you try to access it on 80?
+2008-01-01T14:10:00.000Z	johnnymo1218	Hemebond	bad request error - hint use https
+2008-01-01T14:11:00.000Z	Hemebond	johnnymo1218	I'd need to see your conf
+2008-01-01T14:11:00.000Z	Hemebond	johnnymo1218	You've reloaded the config, right?
+2008-01-01T14:11:00.000Z	johnnymo1218	Hemebond	reloaded server after each change, whats the url for pastebin?
+2008-01-01T14:20:00.000Z	johnnymo1218	Hemebond	posted config files here http://paste.ubuntu-nl.org/50365/ - thanks.
+2008-01-01T14:22:00.000Z	Hemebond	johnnymo1218	I can't check because of my little X problem, but I think you need to qualify each virtual host entry with a port.
+2008-01-01T14:23:00.000Z	johnnymo1218	Hemebond	i'll try and let you know result..
+2008-01-01T14:26:00.000Z	johnnymo1218	Hemebond	no joy adding Listen to vhosts - also get error when specifically set port in url...
+2008-01-01T14:33:00.000Z	johnnymo1218	Hemebond	still no joy - the server is always listening on port 443 regardless, despite having port 80 and 443 listed in ports.conf. Will keep plugging away.
+2008-01-01T14:33:00.000Z	Hemebond	johnnymo1218	If I get my problem fixed I'll start up my VM and check those settings.
+2008-01-01T14:34:00.000Z	johnnymo1218	Hemebond	cheers - its appreciated.
+2008-01-01T15:48:00.000Z	Hemebond	johnnymo1218	You still there?
+2008-01-01T15:49:00.000Z	johnnymo1218	Hemebond	hi - still here
+2008-01-01T15:50:00.000Z	Hemebond	johnnymo1218	You need NameVirtualHost *:80 and NameVirtualHost *:443
+2008-01-01T15:50:00.000Z	johnnymo1218	Hemebond	 both for each vhost?
+2008-01-01T15:51:00.000Z	Hemebond	johnnymo1218	No no. Put both NameVirtualHost entries at the top.
+2008-01-01T15:51:00.000Z	johnnymo1218	Hemebond	ah - ok. will try now...
+2008-01-01T15:51:00.000Z	Hemebond	johnnymo1218	But then you must have <VirtualHost *:##> entries for each (80 and 443)
+2008-01-01T15:52:00.000Z	Hemebond	johnnymo1218	And make sure there's no SSL stuff in the :80 virtual host.

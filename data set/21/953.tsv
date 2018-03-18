@@ -1,0 +1,21 @@
+2011-03-29T14:24:00.000Z	RobinHood		hello! I have a problem with apt-get; I have a local repository set up, and I used dpkg-scanpackages to make a Packages.gz file, then put the proper lines in /etc/apt/sources.list; but when I run apt-get update, it says (among other things) "failed to fetch file:/[file path]/Packages.gz File not found". The thing that irks me most is...that precise path DOES exist! What am I doing wrong? I googled, and I'm not finding anything...
+2011-03-29T14:26:00.000Z	lekremyelsew	RobinHood	Did you have to type in the file name/path to the system any any point in time?
+2011-03-29T14:27:00.000Z	RobinHood	lekremyelsew	: as in...when I ran dpkg-scanpackages, or when I ran apt-get?
+2011-03-29T14:29:00.000Z	RobinHood	lekremyelsew	: no, i didn't type in the file name/path, i just cd'd to the root of my repository, and ran dpkg-scanpackages; I then checked the Packages.gz file to make sure that the package filename paths were correct, and they were...
+2011-03-29T14:32:00.000Z	lekremyelsew	RobinHood	What happens to me sometimes is that I type in a file path like '/home/user/Some Folder' but I forget the quotation marks and the computer looks for /home/user/Some because the space ends the argument
+2011-03-29T14:33:00.000Z	lekremyelsew	RobinHood	I just thought that might have possibly happened to you
+2011-03-29T14:33:00.000Z	RobinHood	lekremyelsew	: well, there aren't any spaces in the path...there ARE "."s in it...
+2011-03-29T14:35:00.000Z	lekremyelsew	RobinHood	yeah I think there fine
+2011-03-29T14:38:00.000Z	lekremyelsew	RobinHood	is there possibly a space after the .gz?
+2011-03-29T14:38:00.000Z	lekremyelsew	RobinHood	in the actual file
+2011-03-29T14:38:00.000Z	RobinHood	lekremyelsew	: the name Packages.gz is not mentioned in sources.list, at all.
+2011-03-29T14:39:00.000Z	lekremyelsew	RobinHood	then why is the program looking for it?
+2011-03-29T14:40:00.000Z	RobinHood	lekremyelsew	: apt-get looks for a file called Packages.gz for the list of files in the repository
+2011-03-29T14:41:00.000Z	RobinHood	lekremyelsew	: my sources.list line is as follows: deb file:/[my home dir]/ports.ubuntu.com/ powerpc/
+2011-03-29T14:41:00.000Z	RobinHood	lekremyelsew	: and ports.ubuntu.com is a directory on my computer, not a web address.
+2011-03-29T14:43:00.000Z	lekremyelsew	RobinHood	on second thought, it might just be the '.'s throwing off the stating point of the extension
+2011-03-29T14:49:00.000Z	RobinHood	lekremyelsew	: any other ideas?
+2011-03-29T14:49:00.000Z	lekremyelsew	RobinHood	nada, sorry man
+2011-03-29T14:49:00.000Z	RobinHood	lekremyelsew	: or should I just repeat my question in a few moments and hope for the best...
+2011-03-29T14:49:00.000Z	RobinHood	lekremyelsew	: ok.
+2011-03-29T14:52:00.000Z	lekremyelsew	RobinHood	the only thing that struck me as odd was the file:/ thing at the beginning

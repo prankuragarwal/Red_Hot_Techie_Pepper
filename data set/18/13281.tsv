@@ -1,0 +1,18 @@
+2005-12-15T07:50:00.000Z	humandoing		are there any grub ninjas kicking around for a quick question?
+2005-12-15T07:51:00.000Z	humandoing		excellent. well. I finally managed to get ubuntu to boot off of SATA drives (pain in the...) - but the only thing that I've been able to do to get it to boot is remove the "root" line from menu.lst
+2005-12-15T07:52:00.000Z	humandoing		anyone have any idea if removing the "root" (eg: root(hd2,0) ) line from menu.lst is "A Bad Thing"
+2005-12-15T07:53:00.000Z	decklin	humandoing	are you sure your device.map is correct?
+2005-12-15T07:54:00.000Z	humandoing	decklin	I'll pastebin that, too
+2005-12-15T07:55:00.000Z	humandoing	decklin	/ mmikkeel2: http://pastebin.com/457944
+2005-12-15T07:55:00.000Z	humandoing		the device.map i _think_ is correct.
+2005-12-15T07:55:00.000Z	humandoing		the root entry specified (hd2,0) - which is mapped to the correct device / partition
+2005-12-15T07:56:00.000Z	humandoing		but grub gives me a "Device not found" on the rood(hd2,0) entry.
+2005-12-15T07:57:00.000Z	decklin		the map seems ok (not that i know what your devices physically are), but try running grub-install --recheck
+2005-12-15T07:58:00.000Z	humandoing	decklin	the devices are correct. sda and sdb are 2x160GB SATA, sdc is 120GB SATA (where I am installed)
+2005-12-15T08:02:00.000Z	humandoing	decklin	if i do: "sudo grub-install --recheck hd2" - it gives me no errors, and says all is good
+2005-12-15T08:02:00.000Z	humandoing		but it's not really :(
+2005-12-15T08:08:00.000Z	humandoing	decklin	if you're still listening to any of this, I think that hdc is actually my cdrom... can I change the device.map to something else, and then modify the root entried in the menu.lst?
+2005-12-15T08:09:00.000Z	decklin	humandoing	yes, you can edit the map yourself
+2005-12-15T08:09:00.000Z	decklin		just rerun grub after
+2005-12-15T08:10:00.000Z	decklin		it checks what the bios says those devices are and saves that for when you boot (since the loader can only use the bios obviously)
+2005-12-15T08:13:00.000Z	humandoing	decklin	thanks, I am gonna give it a whirl.

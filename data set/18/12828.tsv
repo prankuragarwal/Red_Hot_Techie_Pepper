@@ -1,0 +1,18 @@
+2006-05-27T12:46:00.000Z	arcade		Anyone?  How to set up ip-masquerading?  I seem to remember "echo 1 > /proc/sys/net/ip_masquerading", but that file no longer exists.. :)
+2006-05-27T12:47:00.000Z	h3sp4wn	arcade	edit /etc/sysctl.conf
+2006-05-27T12:48:00.000Z	arcade	h3sp4wn	Ah, thanks for the hint. :)
+2006-05-27T12:48:00.000Z	h3sp4wn	arcade	add or uncomment net/ipv4/ip_forward=1
+2006-05-27T12:48:00.000Z	arcade	h3sp4wn	That one is in.
+2006-05-27T12:48:00.000Z	arcade	h3sp4wn	Still need the masquerading.
+2006-05-27T12:48:00.000Z	h3sp4wn	arcade	are the addresses setup right ?
+2006-05-27T12:49:00.000Z	arcade	h3sp4wn	Uhm, yeps, but remember, eth1 has 192.168.0.0/16, while eth0 has a real ip.  the 192.168.0.0/16 is forwarded straight out the default route if i'm only enabling ip_forwarding without also enabling some sort of NATing or masquerading, but I'm no sure how to do that with a 2.6 kernel :)
+2006-05-27T12:49:00.000Z	h3sp4wn	arcade	post-up /sbin/iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE to the relevant part of /etc/network/interfaces (at the bottom of the eth1 section)
+2006-05-27T12:50:00.000Z	arcade	h3sp4wn	Ah, thank you.  You do this with iptables these days? :)
+2006-05-27T12:50:00.000Z	h3sp4wn	arcade	You have since 2.4
+2006-05-27T12:51:00.000Z	arcade	h3sp4wn	oh my :)
+2006-05-27T12:51:00.000Z	arcade	h3sp4wn	I have to admit that last time I did this was with 2.0.35 ;)
+2006-05-27T12:52:00.000Z	arcade	h3sp4wn	in debian 'slink' if I remember correctly :)
+2006-05-27T12:52:00.000Z	arcade	h3sp4wn	Thanks, works like a charm. :)
+2006-05-27T12:53:00.000Z	h3sp4wn	arcade	Cool
+2006-05-27T12:54:00.000Z	arcade	h3sp4wn	Finally my other computers are online again ;)  Just reinstalled the gateway.  SuSE 9.1 -> Ubuntu 5/11 :)
+2006-05-27T12:55:00.000Z	arcade	h3sp4wn	But I used the graphical tools to get the gateway working in SuSE ;)

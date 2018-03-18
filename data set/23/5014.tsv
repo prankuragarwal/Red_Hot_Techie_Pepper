@@ -1,0 +1,23 @@
+2007-06-12T15:55:00.000Z	Dacvak		Doesn't anyone here know how to fix a MBR??
+2007-06-12T15:55:00.000Z	Dacvak		Ubuntu totally effed up my computer. >_<
+2007-06-12T15:56:00.000Z	Dacvak		It doesn't matter if I keep ubuntu...  I just REALLY need to boot into Windows
+2007-06-12T15:57:00.000Z	NigelS	Dacvak	what's the actual problem?
+2007-06-12T15:57:00.000Z	Dacvak	NigelS	I had XP on one hard drive, and then installed Ubuntu on a different one. now XP won't boot
+2007-06-12T15:58:00.000Z	NigelS	Dacvak	which drive is set to be checked first by the BIOS? which drive did the installer write to in terms of the MBR portion? and lastly what happens when you try to boot xp?
+2007-06-12T15:59:00.000Z	Dacvak	NigelS	I'm not sure about most of that stuff, but when I boot Windows is says "ntldr not found    Press Ctrl Alt Del to reboot"
+2007-06-12T15:59:00.000Z	NigelS	Dacvak	so you get the grub menu and then you choose the XP option and it give you that msg?
+2007-06-12T15:59:00.000Z	Dacvak	NigelS	Yes
+2007-06-13T16:01:00.000Z	NigelS	Dacvak	sounds like the root is possibly wrong, when you get the grub menu press esc, then opt to edit the file from there - what drive is windows on and what drive linux, what drive is the root for each according to grub?
+2007-06-13T16:01:00.000Z	Dacvak	NigelS	Linux is on hd3, Windows should be on hd1
+2007-06-13T16:06:00.000Z	NigelS	Dacvak	what does your /boot/grub/menu.lst have listed as root for linux and windows?
+2007-06-13T16:08:00.000Z	NigelS	Dacvak	what is it exactly? i.e paste the lines from that file
+2007-06-13T16:10:00.000Z	Dacvak	NigelS	http://paste.ubuntu-nl.org/25322/
+2007-06-13T16:11:00.000Z	NigelS	Dacvak	and you boot into Vista or into WMC?
+2007-06-13T16:12:00.000Z	Dacvak	NigelS	I don't even have Vista on here. I don't know why that's still there. Windows Media center
+2007-06-13T16:12:00.000Z	Dacvak	NigelS	I'm going to try out SuperGrub... Take a look at that, and I'm sure I'll be back in like 5 minutes with failed results.
+2007-06-13T16:25:00.000Z	Dacvak	NigelS	SuperGrub didn't work. I tried EVERYTHING.
+2007-06-13T16:27:00.000Z	NigelS	Dacvak	ok, I guess you're IRCing from the machine now - so write this down and try it: reboot and at the grub menu press esc, then at the command prompt type rootnoverify (hd1,0), <enter>, chainloader +1, <enter>, boot, <enter>
+2007-06-13T16:30:00.000Z	Dacvak	NigelS	I'll try that
+2007-06-13T16:42:00.000Z	Dacvak	NigelS	Ok, now I'm offically BONED.
+2007-06-13T16:42:00.000Z	Dacvak	NigelS	My MBR doesn't even exist anymore!
+2007-06-13T05:18:00.000Z	NigelS	Dacvak	what result of trying that sequence?

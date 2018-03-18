@@ -1,0 +1,18 @@
+2009-06-06T01:27:00.000Z	geirha	Joeseph	Sounds like a filesystem error on /. Boot a liveCD -> System -> Administration -> Partition Editor, right click the ubuntu partition and choose check filesystem
+2009-06-06T01:31:00.000Z	geirha	Joeseph	Yes, ext3 is recommended. ext4 isn't 100% stable in jaunty yet. It's mention in the release notes
+2009-06-06T01:32:00.000Z	geirha	Joeseph	gksu nautilus, right-click /home and choose to archive it.
+2009-06-06T01:33:00.000Z	Joeseph	geirha	Is that how I should have Done my root director for upgrading to ext4 also?  Not that I plan on doing it again.
+2009-06-06T01:34:00.000Z	geirha	Joeseph	Did the upgrade to ext4 go wrong so you had to restore from backup?
+2009-06-06T01:34:00.000Z	geirha	Joeseph	You can upgrade to ext4 without formatting ...
+2009-06-06T01:35:00.000Z	Joeseph	geirha	The upgrade to ext4 *seemed* to go fine; I guess it didn't entirely.  So you reccomend using nautilus to make an 'archive' of it, and then copy it to a seperate partition?
+2009-06-06T01:36:00.000Z	geirha	Joeseph	That would be the easiest I think. If you want to do it in a terminal, it would be: sudo tar zcvf /path/to/store/homes.tar.gz /home
+2009-06-06T01:37:00.000Z	Joeseph	geirha	Thanks.   I'll do that...  If I copy it to a seperate partition, I can tell Ubuntu to use that partition as home and not lose anything, correct?
+2009-06-06T01:37:00.000Z	geirha	Joeseph	Have you allready made a partition where you want to put /home?
+2009-06-06T01:37:00.000Z	Joeseph	geirha	Yes I have, it's just.. not partitioned or there yet.
+2009-06-06T01:38:00.000Z	geirha	Joeseph	Ok, well you can do that from the liveCD, then I'd recommend using rsync rather than cp. It will allow you to resume as well: rsync -av /home /media/disk
+2009-06-06T01:40:00.000Z	Joeseph	geirha	I thought I was using nautilus's archiving tool?     What's the rsync for? oh... and what do you mean by resume?
+2009-06-06T01:41:00.000Z	geirha	Joeseph	Well, if you want to copy /home to an external drive in order to reinstall, then copy it back, I'd recommend archiving it.
+2009-06-06T01:42:00.000Z	geirha	Joeseph	Since you want to put /home on a separate partition, copying /home to that partition, then tell the installer to use it as /home is a good option.
+2009-06-06T01:42:00.000Z	Joeseph	geirha	I plan on leaving it in the other partition So I can have a separate home partition, so i won't have to copy it back.
+2009-06-06T01:43:00.000Z	Joeseph	geirha	Sorry for the confusion, and cabrey and geirha: thanks for the help.
+2009-06-06T01:43:00.000Z	geirha	Joeseph	rsync -av should do the same as cp -a -r, but if you abort the rsync command, you can simply run the same command again, and it will continue where it left off

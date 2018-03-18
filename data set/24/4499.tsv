@@ -1,0 +1,24 @@
+2007-03-25T14:15:00.000Z	zeddicus2		i read the solution to my anjuta problem is: "Change the /bin/sh symlink on Ubuntu systems to point to the dash shell instead of the current bash shell. "   how do i do that??????
+2007-03-25T14:15:00.000Z	Flannel	zeddicus2	that's not the solution.
+2007-03-25T14:16:00.000Z	zeddicus2	Flannel	so what is the solution?
+2007-03-25T14:16:00.000Z	Flannel	zeddicus2	What's the problem? Sounds like your script is written wrong.
+2007-03-25T14:17:00.000Z	zeddicus2	Flannel	i didn't write anything yet, it's just a fresh copy of anjuta, and i get the message: "/usr/bin/create_global_tags.sh: 3: function: not found  shift: 11: can't shift that many."
+2007-03-25T14:17:00.000Z	zeddicus2	Flannel	i googled on it and it told me to do what i wrote in the channel before
+2007-03-25T14:21:00.000Z	Flannel	zeddicus2	the problem is it's using bash, and you want it to use dash?  Are you sure that's not backwards?
+2007-03-25T14:22:00.000Z	zeddicus2	Flannel	to tell you the truth i'm new in the linux thingy and i have no idea what's the difference, i think that dash is a more powerfull shell?
+2007-03-25T14:23:00.000Z	Flannel	zeddicus2	With edgy, ubuntu switched to using dash as default, which broke a *lot* of scripts which required stuff in bash (and didn't specify that they needed bash, because the writers were careless)
+2007-03-25T14:23:00.000Z	Flannel	zeddicus2	the shebang at the beginning of the script (#! /bin/sh) says "use any shell", they needed /bin/bash, essentially.
+2007-03-25T14:24:00.000Z	zeddicus2	Flannel	so where is this script located? in usr/bin?
+2007-03-25T14:25:00.000Z	Flannel	zeddicus2	Uh, that script was... whereever that error message said it was.  But, first, are you sure you're installing the correct version of anjuita?  Made for Edgy?
+2007-03-25T14:25:00.000Z	zeddicus2	Flannel	I used the simple add/remove thingy of edgy and put a mark next to anjuta...
+2007-03-25T14:26:00.000Z	Flannel	zeddicus2	hmm.  Really?  They still haven't fixed a bug like that this far along?  You're running from the... oh, a bug report
+2007-03-25T14:27:00.000Z	Flannel	zeddicus2	right.  Ok, so we're going to open to that file, (sudo nano /usr/bin/create_global_tags.sh) and change the first line, where it says /bin/sh, change it to /bin/bash
+2007-03-25T14:27:00.000Z	zeddicus2	Flannel	I got anjuta 2.0.2
+2007-03-25T14:30:00.000Z	zeddicus2	Flannel	thanks, looks ok now
+2007-03-25T14:32:00.000Z	zeddicus2	Flannel	lol, now anjuta crashed (it worked almost fine before), checking what's wrong...
+2007-03-25T14:33:00.000Z	Flannel	zeddicus2	You're connected to the internet, right?
+2007-03-25T14:33:00.000Z	Flannel	zeddicus2	and have updated all these packages?
+2007-03-25T14:33:00.000Z	zeddicus2	Flannel	yes, ofcourse
+2007-03-25T14:34:00.000Z	Flannel	zeddicus2	Odd.  Just strikes me as horribly odd that something so simple hasn't yet been fixed in the repos.
+2007-03-25T14:34:00.000Z	zeddicus2	Flannel	i might have damaged something yesterday when i wasn't able to connect to my access-point that has wpa-psk, and i had to install network-manager menually,
+2007-03-25T14:41:00.000Z	zeddicus2	Flannel	ok now i still get a weird message when i try to execute my prog, "program <program path> is not a local file"

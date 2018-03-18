@@ -1,0 +1,21 @@
+2010-06-24T14:07:00.000Z	Beelsebob		if I then run mysqld manually myself, it works
+2010-06-24T14:07:00.000Z	Beelsebob		subsequently to running mysqld myself, the server starts
+2010-06-24T14:07:00.000Z	Beelsebob		it leaves *nothing* in it's error.log
+2010-06-24T14:07:00.000Z	Beelsebob		nor in mysql.err
+2010-06-24T14:08:00.000Z	Beelsebob		iceberg: as I just said – no error messages
+2010-06-24T14:08:00.000Z	Beelsebob		just sudo start mysql hangs
+2010-06-24T14:08:00.000Z	Beelsebob		until I run mysqld manually myself
+2010-06-24T14:09:00.000Z	Beelsebob		mysqld starts if I run it myself
+2010-06-24T14:09:00.000Z	Beelsebob		before I run it manually sudo start mysql doesn't work
+2010-06-24T14:09:00.000Z	Beelsebob		after I run it manually sudo start mysql does work
+2010-06-24T14:11:00.000Z	ddilinger	Beelsebob	so what happens? where does it get stuck?  does the mysql process ever get started, does the /etc/init.d/mysql script get run?  throw some debugging lines in there its all shell script :P
+2010-06-24T14:12:00.000Z	ddilinger		although i always found lynx to be blah,  try w3m :)
+2010-06-24T14:12:00.000Z	Beelsebob	ddilinger	sudo start mysql hangs, and does not start any mysqld process
+2010-06-24T14:12:00.000Z	ddilinger	Beelsebob	does it run the script /etc/init.d/mysql?
+2010-06-24T14:12:00.000Z	ddilinger	Beelsebob	does it start if you use /etc/init.d/mysql start instead of start mysql ?
+2010-06-24T14:13:00.000Z	Beelsebob	ddilinger	no, it says "oh hey, you should use the upstart script, not the init.d one"
+2010-06-24T14:13:00.000Z	ddilinger	Beelsebob	typically they say that then start anyways
+2010-06-24T14:13:00.000Z	ddilinger	Beelsebob	its more of a info statement that an actual problem
+2010-06-24T14:14:00.000Z	ddilinger	Beelsebob	if you look through the /etc/init.d/mysqld script you can see its still a full start script
+2010-06-24T14:14:00.000Z	Beelsebob	ddilinger	well, the init.d script produces that output, *doesn't* hang, but also doesn't start mysqld
+2010-06-24T14:14:00.000Z	ddilinger	Beelsebob	hmm,

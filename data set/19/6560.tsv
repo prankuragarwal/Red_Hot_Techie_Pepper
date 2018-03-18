@@ -1,0 +1,19 @@
+2010-05-26T18:51:00.000Z	micka		hi
+2010-05-26T18:52:00.000Z	micka		i've a huge problem :(  my ubuntu server is full !
+2010-05-26T18:52:00.000Z	micka		i've a huge problem :(  my ubuntu server is full ! it seems that the folder /proc use more than 128TB
+2010-05-26T18:52:00.000Z	ActionParsnip	micka	remove some old unused kernels to gain ~120Mb per kernel
+2010-05-26T18:53:00.000Z	micka	ActionParsnip	is there a way to clean /proc ?
+2010-05-26T18:53:00.000Z	ActionParsnip	micka	afaik thats a tempfs
+2010-05-26T18:56:00.000Z	ActionParsnip	micka	run: sudo du -h /proc | sort -n -r | head -n 30     may give clues
+2010-05-26T18:58:00.000Z	ActionParsnip	micka	my /proc is 0 bytes
+2010-05-26T18:58:00.000Z	micka	ActionParsnip	http://pastebin.com/m5N1a5E4
+2010-05-26T18:58:00.000Z	ActionParsnip	micka	whats the output of: du -ha /proc | tail -n 1
+2010-05-26T19:00:00.000Z	micka	ActionParsnip	http://pastebin.com/FbQD4SiF
+2010-05-26T19:01:00.000Z	ActionParsnip	micka	then your /proc is 0kb
+2010-05-26T19:01:00.000Z	micka	ActionParsnip	so where is the problem ?
+2010-05-26T19:02:00.000Z	ActionParsnip	micka	check for old kernels, you can remove those to get space back
+2010-05-26T19:02:00.000Z	micka	ActionParsnip	it is a server :)
+2010-05-26T19:03:00.000Z	micka	ActionParsnip	and i don't know how to check for old kernell
+2010-05-26T20:04:00.000Z	ActionParsnip	micka	sudo apt-get clean    may help there
+2010-05-26T20:05:00.000Z	ActionParsnip	micka	then you can use: sudo du -la /var | sort -n -r | head -n 20   to see what is biggest
+2010-05-26T20:06:00.000Z	ActionParsnip	micka	better: sudo du -lah /var | sort -n -r | head -n 20    makes the values human readable

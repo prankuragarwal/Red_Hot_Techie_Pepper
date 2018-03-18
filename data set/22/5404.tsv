@@ -1,0 +1,22 @@
+2007-05-08T11:22:00.000Z	eyequeue		i've got a question, about the bash 3.2-0ubuntu7 (aka 3.2.13(1)-release)
+2007-05-08T11:24:00.000Z	eyequeue		why is /etc/bash.logout not working, as mentioned near the end of bash(1)?  what do i need to do differently?  are my perms right?
+2007-05-08T11:24:00.000Z	eyequeue		-rw-r--r-- 1 root root   6 2007-05-08 06:53 /etc/bash.logout
+2007-05-08T11:25:00.000Z	eyequeue		basically i want to do a "clear" in that file, but even "/usr/bin/clear" in that file, thinking maybe it loses $PATH by then(?) doesn't work
+2007-05-08T11:26:00.000Z	eyequeue		it *does* work as ~/.bash_logout btw, but i want this system-wide, not something per-user
+2007-05-08T11:28:00.000Z	eyequeue		anyone have any odeas on getting a system-wide /etc/bash.logout working, as mentioned near the end of the bash manpage?  it fails with feisty's bash, anyone care to test it on other versions?
+2007-05-08T11:30:00.000Z	fierycleric	eyequeue	on my bash man it only mentions ~/.bash_logout
+2007-05-08T11:31:00.000Z	eyequeue	fierycleric	which version?  dapper etc
+2007-05-08T11:31:00.000Z	fierycleric	eyequeue	dapper
+2007-05-08T11:32:00.000Z	eyequeue	fierycleric	line 4845 of the feisty man page, waaaay down in the FILES section of the man page, 99%
+2007-05-08T11:33:00.000Z	fierycleric	eyequeue	ok  must be new
+2007-05-08T11:33:00.000Z	eyequeue	fierycleric	what i'm trying to accomplish is clear the console screen upon users logging out (/usr/bin/clear) so there's no "sensitive" things left around after they walk away
+2007-05-08T11:34:00.000Z	fierycleric	eyequeue	how do they login ?
+2007-05-08T11:35:00.000Z	eyequeue	fierycleric	username enter password enter, at a console prompt (no X)  like tty1 through tty6 (alt-ctrl-1 type thing on your machine)
+2007-05-08T11:36:00.000Z	eyequeue	fierycleric	so "exit" will lof them out, but i'd like it to auto-run "clear" leaving that tty in a pristine state
+2007-05-08T11:36:00.000Z	eyequeue		s/lof/log/
+2007-05-08T11:37:00.000Z	fierycleric	eyequeue	ok have you looked at getty ?
+2007-05-08T11:37:00.000Z	fierycleric	eyequeue	you could a very big /etc/issue file
+2007-05-08T11:37:00.000Z	eyequeue	fierycleric	yeah, though not tonight.  do you kind of have a feel for what "clear" in ~/.bash_logout would do for you, logging out of console on tty1 as your user
+2007-05-08T11:38:00.000Z	eyequeue	fierycleric	lol, true
+2007-05-08T11:38:00.000Z	fierycleric	eyequeue	i see what you are trying to do....
+2007-05-08T11:39:00.000Z	eyequeue	fierycleric	once you mentioned /etc/issue, i could tell you did :)

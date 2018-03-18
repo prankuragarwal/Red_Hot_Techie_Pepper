@@ -1,0 +1,18 @@
+2005-11-27T11:06:00.000Z	FlimFlamMan		i dual-boot debian-stable and ubuntu breezy.  is it possible to set up postgresql on these installations to use the same data files, so that the same database is available regardless of which OS i'm in?
+2005-11-27T11:07:00.000Z	pitti	FlimFlamMan	if you use the same postgresql version, sure
+2005-11-27T11:07:00.000Z	FlimFlamMan	pitti	thanks
+2005-11-27T11:07:00.000Z	pitti	FlimFlamMan	however, breezy and sarge have different postgresql architectures
+2005-11-27T11:07:00.000Z	FlimFlamMan	pitti	in what way?
+2005-11-27T11:07:00.000Z	pitti	FlimFlamMan	so either you need to fiddle a bit with the breezy system, or you use the sarge backports of the new infrastructure
+2005-11-27T11:08:00.000Z	pitti	FlimFlamMan	deb http://people.debian.org/~mpitt/packages/sarge-backports/ ./
+2005-11-27T11:08:00.000Z	FlimFlamMan	pitti	what are sarge backports?
+2005-11-27T11:08:00.000Z	pitti	FlimFlamMan	Debian sid and Breezy have a new storage layout
+2005-11-27T11:08:00.000Z	pitti	FlimFlamMan	sid packages built for sarge
+2005-11-27T11:09:00.000Z	FlimFlamMan	pitti	if i manage to get postgresql running this way on ubuntu and sarge (eg by moving the postgresql directory to a different location), any idea if anything else will break that expects postgresql files to be in a certain place?
+2005-11-27T11:10:00.000Z	pitti	FlimFlamMan	if you don't use the backports, you must register the sarge cluster in breezy's architecture
+2005-11-27T11:11:00.000Z	pitti	FlimFlamMan	man pg_createcluster
+2005-11-27T11:13:00.000Z	FlimFlamMan	pitti	ok, so i can register another cluster and it will be served up by the default postgresql instance?  do i have to distinguish which cluster to use in connection settings or anything like that?
+2005-11-27T11:14:00.000Z	pitti	FlimFlamMan	pg_lscluster will show you the registered clusters and on which ports they are
+2005-11-27T11:14:00.000Z	pitti	FlimFlamMan	please read pg_wrapper(1) and pg_createcluster(1)
+2005-11-27T11:15:00.000Z	pitti	FlimFlamMan	but I don't really support accessing sarge clusters with the new architecture
+2005-11-27T11:15:00.000Z	pitti	FlimFlamMan	it will work after some fiddling, but upgrading to the backports on sarge is easier and better

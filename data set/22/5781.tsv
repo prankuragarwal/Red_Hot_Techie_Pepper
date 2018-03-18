@@ -1,0 +1,22 @@
+2007-04-25T11:06:00.000Z	marx2k		vega: it does, yes
+2007-04-25T11:06:00.000Z	andy753421	marx2k	try running 'route add -net loopback netmask 255.0.0.0 lo'
+2007-04-25T11:10:00.000Z	andy753421	marx2k	did you try 'route add -net loopback netmask 255.0.0.0 lo' ?
+2007-04-25T11:14:00.000Z	andy753421	marx2k	you might also see if 'ping -I lo -r 127.0.0.1 works'
+2007-04-25T11:18:00.000Z	andy753421	marx2k	what about 'tracepath localhost', and what error does ping actually give?
+2007-04-25T11:24:00.000Z	andy753421	marx2k	can you get non ICMP data from localhost?
+2007-04-25T11:25:00.000Z	andy753421	marx2k	yea sounds like it, you might also try running netstat and seeing if there's connections to localhost
+2007-04-25T11:29:00.000Z	andy753421	marx2k	do you by any chance have busybox installed?, and just for fun, 'sudo /bin/ping localhost'
+2007-04-25T11:34:00.000Z	andy753421	marx2k	if you trust me, here's a statically linked version of ping that works on my computer http://137.112.135.238/files/ping
+2007-04-25T11:36:00.000Z	andy753421	marx2k	were you able to get a loopback in route? i dont think it should be needed, but mine comes with one anyway
+2007-04-25T11:37:00.000Z	marx2k	andy753421	explain pls?
+2007-04-25T11:38:00.000Z	andy753421	marx2k	 running 'route add -net loopback netmask 255.0.0.0 lo' should add a loopback entry to route, however as vega- mentioned, it should not be necessary.
+2007-04-25T11:42:00.000Z	marx2k	andy753421	: route: netmask doesn't match route address
+2007-04-25T11:43:00.000Z	andy753421	marx2k	yea, i'm not sure what that means, it works on my end
+2007-04-25T11:45:00.000Z	andy753421	marx2k	do you have a /etc/networks? if so what's it say?
+2007-04-25T11:46:00.000Z	marx2k	andy753421	whoa..wtf... here's that file:
+2007-04-25T11:46:00.000Z	andy753421	marx2k	loopback   127.0.0.0
+2007-04-25T11:47:00.000Z	andy753421	marx2k	yea, it's the network,  not the host
+2007-04-25T11:49:00.000Z	marx2k	andy753421	changed it - restarted networking..still no dice
+2007-04-25T11:50:00.000Z	andy753421	marx2k	 does the route -add net loopback command work yet?
+2007-04-25T11:50:00.000Z	marx2k	andy753421	 this is less of a functional issue and more of a I CANT GET THIS DAMN SPOT OFF issue :)
+2007-04-25T11:53:00.000Z	andy753421	marx2k	I'm out of ideas, good luck on the forums

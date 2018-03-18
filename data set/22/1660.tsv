@@ -1,0 +1,22 @@
+2010-03-01T05:45:00.000Z	hipitihop		if I have a machine which allows ssh access, but my router also port forwards some voip related ports, namely 5060 and 10000-20000 then I want to secure this machine a litlle more.. is it possible to restrict ssh to my internal network ? or is that not enough from a security pov
+2010-03-01T05:46:00.000Z	brjann	hipitihop	if your router doesn't forward your ssh port, ssh isn't accessible from outside your LAN
+2010-03-01T05:46:00.000Z	hipitihop	brjann	indeed.... any other precautions I should take since those ports are technically open ?
+2010-03-01T05:49:00.000Z	brjann	hipitihop	if your voip application is running, those ports will connect to it. if the voip application isn't running, those ports will appear closed. so you should be fine
+2010-03-01T05:50:00.000Z	hipitihop	brjann	thanks.... so really the only thing I should consider is I am also running a wireless network here and booth wired machines and wirless machines are on same network (arguably should have seperate but a bit hard at the moment) , so I should probably restrict which machines are allowed to log into others
+2010-03-01T05:52:00.000Z	brjann	hipitihop	you could lock ssh down further if you wanted to. you might take a look at tcpwrappers: http://ubuntu-tutorials.com/2007/09/02/network-security-with-tcpwrappers-hostsallow-and-hostsdeny/
+2010-03-01T05:53:00.000Z	hipitihop	brjann	thanks very much, will read up
+2010-03-01T05:54:00.000Z	brjann	hipitihop	for example, I forward ssh through my router, but I've set up /etc/hosts.allow to only allow connections from my local network and my network at work
+2010-03-01T05:54:00.000Z	brjann	hipitihop	you're welcome, good luck :)
+2010-03-01T05:54:00.000Z	hipitihop	brjann	I see.. is it posisble to do based on MAC
+2010-03-01T05:56:00.000Z	brjann	hipitihop	hm, I'm not 100% sure, but I think it's based solely on IP addresses/subnets.
+2010-03-01T05:56:00.000Z	hipitihop	brjann	ok, thanks I'll readup and go from there. cheers
+2010-03-01T10:45:00.000Z	brjann	hipitihop	date
+2010-03-01T10:45:00.000Z	brjann	hipitihop	that will show the current time in what the system thinks is your local timezone
+2010-03-01T10:45:00.000Z	hipitihop	brjann	says EST whereas I am GMT+10:00
+2010-03-01T10:46:00.000Z	hipitihop	brjann	although date and time correct, hence I suspect I never set my timzone properly and just set date/time
+2010-03-01T10:47:00.000Z	brjann	hipitihop	this should help :) https://help.ubuntu.com/community/UbuntuTime
+2010-03-01T10:50:00.000Z	hipitihop	brjann	strnage I followed dpkg-reconfigure tzdata and it showed the correct settings and shows current local timezone correctly but in local time it shows EST
+2010-03-01T10:51:00.000Z	brjann	hipitihop	that's weird. if you click on the clock in your panel, does it show your location correctly?
+2010-03-01T10:54:00.000Z	hipitihop	brjann	I'm checking the machine remotely via ssh so not simple to bring that up
+2010-03-01T10:54:00.000Z	brjann	hipitihop	ah, i see. sorry, i actually have to do something else for a little bit :( good luck, though!
+2010-03-01T10:59:00.000Z	hipitihop	brjann	np, thanks for assist

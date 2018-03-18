@@ -1,0 +1,22 @@
+2011-08-09T11:21:00.000Z	richtroye		Hi, I just tried updating 10-4 and it wanted but couldn't find several files for example logrotate.  Here's the url it wanted --
+2011-08-09T11:22:00.000Z	richtroye		http://us.archive.ubuntu.com/ubuntu/pool/main/l/logroate/logrotate_3.7.8-4ubuntu2.1_i386.deb
+2011-08-09T11:22:00.000Z	richtroye		I had a look, and earlier and later logrotates are there but not 2.1
+2011-08-09T11:23:00.000Z	richtroye		Any suggests on what I should do about my update?
+2011-08-09T11:23:00.000Z	richtroye		s/suggest/&ion
+2011-08-09T11:24:00.000Z	richtroye		any comments or thoughts on my update issue, logrotate et al, above?
+2011-08-09T11:25:00.000Z	richtroye		Or is there a more appropriate channel for me to take the issue to?
+2011-08-09T11:25:00.000Z	Flannel	richtroye	So, you're saying the package is not there?
+2011-08-09T11:26:00.000Z	Flannel	richtroye	3.1 is the current version in 10.04, is there a reason you're looking for 2.1?
+2011-08-09T11:27:00.000Z	Flannel	richtroye	Or are you saying that apt was looking for 2.1?  (As far as I can tell, 2.1 never was in the 10.04 repositories, went from 2 to 3 to 3.1)
+2011-08-09T11:28:00.000Z	Flannel	richtroye	oh wait, I got mixed up somehow with versions.  10.04 had 2.1, and now it has 2.2.  Do you have -proposed enabled by any chance?
+2011-08-09T11:29:00.000Z	Flannel	richtroye	The easiest way for you and me is to just pastebin the output of `sudo apt-get update`
+2011-08-09T11:32:00.000Z	Flannel	richtroye	As far as I know, everything goes to stdout
+2011-08-09T11:37:00.000Z	Flannel	richtroye	the package is pastebinit
+2011-08-09T11:44:00.000Z	Flannel	richtroye	looks like there may be a repository issue.  Try disabling the source repositories and seeing if you can update again without the error
+2011-08-09T11:45:00.000Z	Flannel	richtroye	Thats a repository file though, from what it's saying.  I don't see how something you've done locally would affect it.  I'd try disabling source repos (temporarily) and seeing if it helps
+2011-08-09T11:46:00.000Z	Flannel	richtroye	Do you have a GUI on this box?
+2011-08-09T11:46:00.000Z	Flannel	richtroye	Are you more comfortable with config files?
+2011-08-09T11:48:00.000Z	Flannel	richtroye	alright, go ahead and edit /etc/apt/sources.list, and comment out all of the deb-src lines (keeping the deb lines), save the file, then apt-get update again.  You can also check in /etc/apt/sources.list.d/*, but I don't think you'll find much, if anything, there.
+2011-08-09T11:51:00.000Z	Flannel	richtroye	Oh.  Question for you.  Do you have any xchat-specific repositories in that file, or in /etc/apt/sources.list.d/?
+2011-08-09T11:55:00.000Z	Flannel	richtroye	Just comment out the (xchat) line.  And sources.list.d being empty isn't a surprise, just one more place to look.
+2011-08-09T11:57:00.000Z	Flannel	richtroye	That'll work.  Looks like your xchat specific repository has some configuration issues.

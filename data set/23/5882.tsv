@@ -1,0 +1,23 @@
+2010-10-20T06:11:00.000Z	ZeiP		I can't get my Ubuntu to work.
+2010-10-20T06:12:00.000Z	ZeiP		I'm using Ubuntu 10.10 (just updated, the problem existed before the upgrade also), the problem is that none of the Mono software work
+2010-10-20T06:12:00.000Z	ZeiP		I think it's because of this: ”E: mono-gac: subprocess installed post-installation script returned error exit status 9”
+2010-10-20T06:14:00.000Z	ZeiP		johsyep. I tried reinstalling it, but didn't do a bit
+2010-10-20T06:14:00.000Z	jrib	ZeiP	joshmc, rohith: sudo -i   if you must...
+2010-10-20T06:15:00.000Z	ZeiP	jrib	I think sudo su - worked better in some installation
+2010-10-20T06:15:00.000Z	jrib	ZeiP	no, it's redundant...
+2010-10-20T06:15:00.000Z	ZeiP	jrib	it's not exactly the same thing.
+2010-10-20T06:15:00.000Z	jrib	ZeiP	I didn't say it was
+2010-10-20T06:16:00.000Z	ZeiP	jrib	su - opens the shell pretty much as it would be when logging in, instead of recycling your environment variables (which sudo -i probably does – or does it?)
+2010-10-20T06:17:00.000Z	jrib	ZeiP	sudo -i sanitizes the environment
+2010-10-20T06:17:00.000Z	ZeiP	jrib	mmh, ok, then it might work
+2010-10-20T06:17:00.000Z	ZeiP	jrib	thanks, didn't know that
+2010-10-20T06:17:00.000Z	jrib	ZeiP	"The -i (simulate initial login) option runs the shell ..."
+2010-10-20T06:17:00.000Z	ZeiP	jrib	ok
+2010-10-20T06:19:00.000Z	jrib	ZeiP	are you using repositories not meant for your ubuntu version or packages outside of the repositories?
+2010-10-20T06:19:00.000Z	ZeiP	jrib	no, I just upgraded and I think that removed all extra repos
+2010-10-20T06:20:00.000Z	ZeiP	jrib	I'm not sure about the packages outside repos though... Is there a way to find them?
+2010-10-20T06:20:00.000Z	jrib	ZeiP	well add "set -x" as the second line of /var/lib/dpkg/info/mono-gac.postinst   and you'll get more explicit information about why it fails.  Also check bugs.ubuntu.com
+2010-10-20T06:21:00.000Z	ZeiP	jrib	nice, thanks, I'll try that
+2010-10-20T06:25:00.000Z	ZeiP	jrib	http://paste.ubuntu.com/516566/ << that's what it printed, any ideas?
+2010-10-20T06:26:00.000Z	jrib	ZeiP	I'd start with: debconf: DbDriver "config": /var/cache/debconf/config.dat is locked by another process: Resource temporarily unavailable
+2010-10-20T06:27:00.000Z	jrib	ZeiP	but I don't know anything about mono if those mono errors persist after you resolve debconf being in use

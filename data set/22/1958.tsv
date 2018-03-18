@@ -1,0 +1,22 @@
+2009-12-29T03:02:00.000Z	mka	edbian	I think using host names helps because you don't have to memorise changing ip addresses
+2009-12-29T03:03:00.000Z	edbian	mka	I don't understand.  If you use the hostname then you add that hostname to your hosts file correct?  When the ip changes you still have to edit the host file or it won't work.
+2009-12-29T03:03:00.000Z	mka	edbian	no
+2009-12-29T03:03:00.000Z	edbian	mka	Please explain where I went wrong?
+2009-12-29T03:04:00.000Z	mka	edbian	you map the hostname to 127.0.0.1
+2009-12-29T03:05:00.000Z	mka	edbian	things make difference when accessing machine from another one
+2009-12-29T03:05:00.000Z	edbian	mka	but if I want to use the hostname to specify an ssh server then on some client I need to make an entry in the hosts file on that client: "<serverName> <ip address>"
+2009-12-29T03:05:00.000Z	mka	edbian	if the IP of the destination maching changes, the hostname is sticks to it, there is something like dhclient that is responsible for this
+2009-12-29T03:06:00.000Z	edbian	mka	Does dhclient tell all of the machines on the network?  How do all of the machines keep the hostnames matched to the correct IPs ??
+2009-12-29T03:06:00.000Z	mka	edbian	I know about that, that is just an ALIAS you can write what ever you want
+2009-12-29T03:07:00.000Z	edbian	mka	Could you rephrase that it doesn't make sense
+2009-12-29T03:09:00.000Z	mka	edbian	if I am the maching and you know my IP as 196.2.12.1 for example but my hostname as "mka". next time it changes to 196.0.0.1 my dhclient will tell my dhcp server about this change and it will map it to "mka". you will always call me "mka" without bothering about what my address is
+2009-12-29T03:11:00.000Z	mka	edbian	the /etc/hosts file is for when you dont want to refer to me as "mka" but as "m". the danger is that when my address changes, you have to update your file otherwise it will point to another random person's machine if the IP is existing
+2009-12-29T03:11:00.000Z	edbian	mka	Yeah
+2010-01-02T23:24:00.000Z	edbian	mka	how the hell is /cdrom reporting that it has 390gb free and /home says it only has 1 if they're on the same partition?
+2010-01-02T23:25:00.000Z	mka	edbian	can you paste "df -h"
+2010-01-02T23:25:00.000Z	edbian	mka	I'm asking about invaderjonny42's hdds
+2010-01-02T23:26:00.000Z	mka	edbian	thanks for explaining I just took the issue halfway
+2010-01-02T23:26:00.000Z	mka	edbian	invaderjonny42 that explains it
+2010-01-02T23:26:00.000Z	edbian	mka	I thought I was going nutz for a sec there!
+2010-01-02T23:48:00.000Z	edbian	mka	He's running from a usb drive
+2010-01-02T23:50:00.000Z	edbian	mka	He wants to boot from the live USB and use his linux partition on an external hdd for his /home.  Unfortunately the linux partition on that hdd just dissappeared

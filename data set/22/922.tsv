@@ -1,0 +1,22 @@
+2011-01-14T16:33:00.000Z	avanof		hi there
+2011-01-14T16:33:00.000Z	avanof		can I create a symbolic link from a Makefile?
+2011-01-14T16:35:00.000Z	avanof		I want to create a symboli link inside a Makefile
+2011-01-14T16:36:00.000Z	avanof		I don't know why but when I type make install, even if I have compiled before the project it recompiles again
+2011-01-14T16:36:00.000Z	avanof		and it delete a file
+2011-01-14T16:36:00.000Z	avanof		deletes*
+2011-01-14T16:36:00.000Z	avanof		the file is this symbolic link
+2011-01-14T16:37:00.000Z	avanof		so I want to call a script at the end of the makefile in order to create this link
+2011-01-14T16:38:00.000Z	q_a_z_steve	avanof	ln -s /path/to/file filehere
+2011-01-14T16:39:00.000Z	avanof	q_a_z_steve	yes but I mean, I get errors when I write: ls in the Makefile
+2011-01-14T16:42:00.000Z	q_a_z_steve	avanof	who said anything about ls
+2011-01-14T16:42:00.000Z	avanof	q_a_z_steve	ah ok I'm going to try it
+2011-01-14T16:44:00.000Z	avanof	q_a_z_steve	same error: Makefile:263: *** missing separator.  Stop.
+2011-01-14T16:44:00.000Z	avanof	q_a_z_steve	I added this line: ln -s ~/ToCompile/armlibfreenect/libfreenect/build/Makefile danylink at the end of the Makefile
+2011-01-14T16:45:00.000Z	avanof	q_a_z_steve	because I need to generate it before the make install
+2011-01-14T16:46:00.000Z	avanof	q_a_z_steve	every time I call the make install, it recompiles the project and erase a symbolic link
+2011-01-14T16:50:00.000Z	q_a_z_steve	avanof	google around for a #linux-coders or something like that. Doesn't show up for me on freenode
+2011-01-14T16:51:00.000Z	avanof	q_a_z_steve	I have found this:
+2011-01-14T16:51:00.000Z	avanof	q_a_z_steve	I need to create something like: variable = $(shell echo $(VERSION))
+2011-01-14T16:52:00.000Z	q_a_z_steve	avanof	you would use the export command
+2011-01-14T16:53:00.000Z	q_a_z_steve	avanof	as one possibility
+2011-01-14T16:53:00.000Z	avanof	q_a_z_steve	but I want to call it in the makefile not export it

@@ -1,0 +1,19 @@
+2010-06-18T13:00:00.000Z	zingbats		Quick question, I'm running tar with verbose output, then using > to write to a text file. The verbose file list is written to the file, but warnings are still displayed in console. Anyway I can change that?
+2010-06-18T13:00:00.000Z	damian	zingbats	i THINK you'd do something like:
+2010-06-18T13:00:00.000Z	damian		tar .... > file 2>1
+2010-06-18T13:01:00.000Z	damian		which should output stderr (2) to stdout (1)
+2010-06-18T13:01:00.000Z	damian		but it could be the other way around.. :P
+2010-06-18T13:02:00.000Z	zingbats	damian	where 2 and 1 are both files I assume
+2010-06-18T13:02:00.000Z	damian		nope
+2010-06-18T13:02:00.000Z	damian		file is file :P
+2010-06-18T13:02:00.000Z	damian		2/1 are representation of stdout and stderr; actually leave them as 2 and 1
+2010-06-18T13:02:00.000Z	damian		unless it doesn't wokr, then swap them around
+2010-06-18T13:02:00.000Z	zingbats	damian	So what if I want to output both 1 and 2?
+2010-06-18T13:03:00.000Z	zingbats		IE: stdout and stderr
+2010-06-18T13:03:00.000Z	damian		think of it like this, zingbats..
+2010-06-18T13:03:00.000Z	damian		[command] > [file] [strerr] > [stdout]
+2010-06-18T13:03:00.000Z	damian		everything from 'command' goes into 'file', everything from 'stderr' goes into 'stdout'
+2010-06-18T13:03:00.000Z	zingbats	damian	Ok. Thanks
+2010-06-18T13:04:00.000Z	damian		so if there's an error, it'll go to your file :D
+2010-06-18T13:04:00.000Z	damian		so; tar zxvf yourtar.tar > youroutput.log 2>1
+2010-06-18T13:05:00.000Z	zingbats	damian	Yup, got it, thanks. It's a little different because it's a terrible tape drive. The error file is about the most important file there is

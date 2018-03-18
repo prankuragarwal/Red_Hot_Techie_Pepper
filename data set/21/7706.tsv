@@ -1,0 +1,21 @@
+2007-04-01T16:34:00.000Z	fiXXXerMet		Hi everyone.  Problem with both 6.10 and 7.04:  If I have my wireless card in while the machine is booting, it locks up.  Also, as soon as I stick the wireless card in the machine (after booting), it locks up.
+2007-04-01T16:35:00.000Z	soundray	fiXXXerMet	what's the chipset on your wireless card?
+2007-04-01T16:35:00.000Z	fiXXXerMet	soundray	I'm not sure.  It's a netgear 16-bit b pcmcia card.
+2007-04-01T16:36:00.000Z	soundray	fiXXXerMet	run 'tail -f /var/log/syslog' while you plug it in. Hopefully it will log some card information before it freezes.
+2007-04-01T16:36:00.000Z	fiXXXerMet	soundray	OK - one second.
+2007-04-01T16:40:00.000Z	fiXXXerMet	soundray	Nope.  Locks up before anything is written to syslog.
+2007-04-01T16:40:00.000Z	fiXXXerMet	soundray	It takes only about 2 seconds after I plug it in to lock up.
+2007-04-01T16:41:00.000Z	soundray	fiXXXerMet	have you got any other PCMCIA cards? It could be a problem with the slot rather than the network chipset
+2007-04-01T16:42:00.000Z	fiXXXerMet	soundray	No, that is my only card.  I have two slots, though - should I try the other?
+2007-04-01T16:42:00.000Z	soundray	fiXXXerMet	sure, why not
+2007-04-01T16:43:00.000Z	fiXXXerMet	soundray	Ahah!  System still froze, but I got something in syslog.   Nothing bad, though - just that it is detected.
+2007-04-01T16:44:00.000Z	soundray	fiXXXerMet	you could remove 'quiet splash' from the kernel lines in your /boot/grub/menu.lst to get a verbose bootup, then boot with the card in place
+2007-04-01T16:44:00.000Z	soundray	fiXXXerMet	right now, it could still be a problem with the PCMCIA subsystem *or* the network chipset
+2007-04-01T16:45:00.000Z	soundray	fiXXXerMet	you can edit the entries in the menu by hitting the 'e' key at the grub boot screen
+2007-04-01T16:47:00.000Z	fiXXXerMet	soundray	"unexpected IRQ trap at vector 50"
+2007-04-01T16:48:00.000Z	soundray	fiXXXerMet	sounds like you have PCI conflicts. Your BIOS setup may help.
+2007-04-01T16:51:00.000Z	fiXXXerMet	soundray	Nothing in there to change mess with, actually.  I have serial and parallel turned off there.
+2007-04-01T16:53:00.000Z	soundray	fiXXXerMet	I think you can manipulate the way the PCMCIA subsystem is initialized, blotting out address ranges etc. -- but that's beyond me... sorry
+2007-04-01T16:53:00.000Z	soundray	fiXXXerMet	with kernel boot options, I mean
+2007-04-26T08:43:00.000Z	soundray	fiXXXerMet	sudo ethtool eth0
+2007-04-26T08:44:00.000Z	fiXXXerMet	soundray	speed:  1000MB/s.  Duple:  Full..  Port:  Twisted Pair.  Sweet :)  Thanks.

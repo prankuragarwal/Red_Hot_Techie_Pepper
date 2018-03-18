@@ -1,0 +1,24 @@
+2012-04-25T06:38:00.000Z	barxool		gogeta> i tried "apt-get source libc6", then i executed the configure script (no error), then "make -j 2" and i have... exactly the same error
+2012-04-25T06:39:00.000Z	barxool		gogeta> build-essential
+2012-04-25T06:39:00.000Z	gogeta	barxool	:)
+2012-04-25T06:40:00.000Z	gogeta	barxool	then your missing a dep
+2012-04-25T06:40:00.000Z	gogeta	barxool	thats the pain w source
+2012-04-25T06:13:00.000Z	gogeta	barxool	what is
+2012-04-25T06:16:00.000Z	gogeta	barxool	apt-get -d packagename
+2012-04-25T06:17:00.000Z	gogeta	barxool	apt-get download packagename is also valed
+2012-04-25T06:18:00.000Z	gogeta	barxool	anything you dl that way will be in /var/cache/apt/archives
+2012-04-25T06:18:00.000Z	gogeta	barxool	to clean it just apt-get clean to delete em all
+2012-04-25T06:19:00.000Z	gogeta	barxool	yea normal they have a slightly diffrent name like xorg-devel
+2012-04-25T06:21:00.000Z	gogeta	barxool	you whant to make a deb from source?
+2012-04-25T06:22:00.000Z	gogeta	barxool	then you well need build essentals and a nice little program called check install it compiles it then makes a binary
+2012-04-25T06:23:00.000Z	gogeta	barxool	oh
+2012-04-25T06:23:00.000Z	gogeta	barxool	your going to need build essentals it set up a compiler etc
+2012-04-25T06:24:00.000Z	gogeta	barxool	and yes its easer to get the devil builds becouse it will grab all the deps nedded
+2012-04-25T06:27:00.000Z	gogeta	barxool	apt-get source libc6
+2012-04-25T06:27:00.000Z	gogeta	barxool	that should get the source and anything it needs
+2012-04-25T06:39:00.000Z	gogeta	barxool	did you install build essentals or just gcc
+2012-04-25T06:42:00.000Z	gogeta	barxool	Need to add -U_FORTIFY_SOURCE to the gcc invocation
+2012-04-25T06:42:00.000Z	gogeta	barxool	i looked uup your error that was the answer
+2012-04-25T06:45:00.000Z	gogeta	barxool	http://sourceware.org/bugzilla/show_bug.cgi?id=10375
+2012-04-25T06:49:00.000Z	gogeta	barxool	that seems to be the thing to do
+2012-04-25T06:56:00.000Z	gogeta	barxool	:(

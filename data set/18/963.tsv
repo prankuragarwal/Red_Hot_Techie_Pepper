@@ -1,0 +1,18 @@
+2011-07-17T10:13:00.000Z	monoprotic		i have a script that writes output to stdout while it runs (long term). i'd like to capture that output in a log file instead. i tried using '>>' but it didnt work (i am guessing since the script wasn't 'done' executing)
+2011-07-17T10:14:00.000Z	Fossilet	monoprotic	Maybe they are error messages?
+2011-07-17T10:15:00.000Z	monoprotic	Fossilet	the file gets written to when i cntl-C the running script. but i'd like to see a log as it runs. im not sure if that is possible easily
+2011-07-17T10:15:00.000Z	monoprotic	Fossilet	FWIW the statements come from 'print' in a python script
+2011-07-17T10:17:00.000Z	Fossilet	monoprotic	Can you paset it?
+2011-07-17T10:18:00.000Z	monoprotic	Fossilet	the script? it is very large and covers many files. they are just print statements
+2011-07-17T10:32:00.000Z	monoprotic	Fossilet	no ideas?
+2011-07-17T10:32:00.000Z	Fossilet	monoprotic	So that's a python script. You use it in bash like this: prog >> file?
+2011-07-17T10:35:00.000Z	monoprotic	Fossilet	typically i call it like ./prog and just let the output go to stdout while it runs. i tried ./prog >> file  but nothing was written until i ended the script with cntl-C
+2011-07-17T10:36:00.000Z	Fossilet	monoprotic	It might be until your script ends, the output are written to the file.
+2011-07-17T10:37:00.000Z	monoprotic	Fossilet	that is what i think too. i was wondering if there was a way to get the output flushed to the file immediately
+2011-07-17T10:37:00.000Z	Fossilet	monoprotic	I think you have to print to the file every message.
+2011-07-17T10:37:00.000Z	monoprotic	Fossilet	okay. thank you for your help
+2011-07-17T10:43:00.000Z	Fossilet	monoprotic	Have you tried with fifo?
+2011-07-17T10:47:00.000Z	monoprotic	Fossilet	no. i solved the problem within python though. thanks for your help :)
+2011-07-17T10:48:00.000Z	Fossilet	monoprotic	Can you elaborate?
+2011-07-17T10:48:00.000Z	monoprotic	Fossilet	within python i opened the log file, and changed sys.stdout and sys.stderr to point towards the file handle instead.
+2011-07-17T10:49:00.000Z	Fossilet	monoprotic	Good to hear that.:)

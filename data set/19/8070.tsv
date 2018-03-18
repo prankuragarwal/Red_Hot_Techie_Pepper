@@ -1,0 +1,19 @@
+2007-08-03T09:13:00.000Z	kandrews		hi everyone
+2007-08-03T09:15:00.000Z	kandrews		my friend is having a little trouble running a program in his home directory. It needs python to work and he has it in his path. Yet, the program keeps complaining there is no python. I'm running the program just fine with python2.5 so I don't think it is a python version issue. Anyone know anything I could try?
+2007-08-03T09:16:00.000Z	bruenig	kandrews	he does what command? python something.py
+2007-08-03T09:17:00.000Z	bruenig	kandrews	what does the bash script do when it calls python
+2007-08-03T09:18:00.000Z	kandrews	bruenig	do you mean the error it gives or do you want me to post the bash script?
+2007-08-03T09:19:00.000Z	bruenig	kandrews	you can post the bash script, I meant the particular part of the bash script that actually does the python stuff
+2007-08-03T09:24:00.000Z	kandrews	bruenig	http://paste.ubuntu-nl.org/32313/
+2007-08-03T09:26:00.000Z	kandrews	bruenig	I'm going to log out and log back in. I've been trying to learn the command line more, but I don't know how to paste from the gui to this tty. brb, and thanks a bunch for your help!
+2007-08-03T09:28:00.000Z	kandrews	bruenig	I'm back.
+2007-08-03T09:28:00.000Z	bruenig	kandrews	I have become a bit rusty with basename and dirname since I became familiar with parameter expansion
+2007-08-03T09:29:00.000Z	kandrews	bruenig	is that last line telling it to execute /usr/lib?
+2007-08-03T09:30:00.000Z	bruenig	kandrews	for one, you don't need to be escaping the " at the bottom I don't think
+2007-08-03T09:30:00.000Z	bruenig	kandrews	well realize it will only get to that line if exec "${0%.sh}.app/Contents/MacOS/Ren'Py Launcher" "$dir/${base%.sh}.py" "$@" doesn't fail, that could also be the issue
+2007-08-03T09:31:00.000Z	kandrews	bruenig	ah
+2007-08-03T09:31:00.000Z	bruenig	kandrews	the ` make it harder to read, I would certainly recommend $()
+2007-08-03T09:34:00.000Z	kandrews	bruenig	I am not versed in the art of bashscripting, can you give me a rough idea of what that last line is saying?
+2007-08-03T09:35:00.000Z	bruenig	kandrews	oh did you not write that? that is a really obfuscated script, it is hard really to figure out what is going on
+2007-08-03T09:36:00.000Z	kandrews	bruenig	no, it is a launch script for a program called ren'py.
+2007-08-03T09:37:00.000Z	bruenig	kandrews	I guess the guy writing it doesn't much care for readability

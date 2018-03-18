@@ -1,0 +1,21 @@
+2005-04-29T08:12:00.000Z	jannifer		hey; having trouble getting my i810 to display larger than 640x480 despite having larger resolutions in the xorg.conf file
+2005-04-29T08:12:00.000Z	nickrud	jannifer	I think I can help :)
+2005-04-29T08:12:00.000Z	jannifer	nickrud	tried NoDDC and IgnoreEDID
+2005-04-29T08:13:00.000Z	nickrud	jannifer	how much memory do you have reserved under device in xorg.conf
+2005-04-29T08:14:00.000Z	jannifer	nickrud	none
+2005-04-29T08:15:00.000Z	jannifer	nickrud	those were set correctly as x.org has my monitor in the database
+2005-04-29T08:18:00.000Z	nickrud	jannifer	you need to tell xorg to set aside enough memory.
+2005-04-29T08:19:00.000Z	nickrud	jannifer	i810?
+2005-04-29T08:19:00.000Z	jannifer	nickrud	i810 is the driver, 845G is the actual chipset
+2005-04-29T08:20:00.000Z	jannifer	nickrud	this machine has 64MB, aka 65535K
+2005-04-29T08:34:00.000Z	jannifer	nickrud	X seems to think there's nothing wrong now but it's still setting 640x480
+2005-04-29T08:35:00.000Z	nickrud	jannifer	what you need to do is look at /var/log/Xorg.0.log
+2005-04-29T08:36:00.000Z	jannifer	nickrud	looking at it, I don't really see anything out of the ordinary
+2005-04-29T08:36:00.000Z	nickrud	jannifer	nothing about display modes disallowed because of not enough memory?
+2005-04-29T08:37:00.000Z	jannifer	nickrud	nope
+2005-04-29T08:38:00.000Z	jannifer	nickrud	they're there but I have no mode lines
+2005-04-29T08:39:00.000Z	nickrud	jannifer	mode lines are so 3.x
+2005-04-29T08:41:00.000Z	jannifer	nickrud	horiz 30-70, vert 50-160
+2005-04-29T08:42:00.000Z	nickrud	jannifer	please post /etc/X11/xorg.cong and /var/log/Xorg.0.log to pastebin.com so I can see them.
+2005-04-29T08:42:00.000Z	nickrud	jannifer	please post /etc/X11/xorg.conf and /var/log/Xorg.0.log to pastebin.com so I can see them.
+2005-04-29T08:43:00.000Z	jannifer	nickrud	fixed it, ubuntu config refused to write HorizSync and VertRefresh to xorg.conf

@@ -1,0 +1,22 @@
+2006-12-11T07:19:00.000Z	Xaphoo		can anyone help me with a CD-ROM problem?  I cannot get data CDs to be read... DVDs read just fine, but not CDs...
+2006-12-11T07:19:00.000Z	Xaphoo		I'd like some help
+2006-12-11T07:21:00.000Z	Xaphoo		is anyone familiar with my problem?  I cannot read DATA CDs, nothing mounts, if I do "sudo mount /dev/hdb /media/cdrom0" it responds with a message "no media"
+2006-12-11T07:22:00.000Z	Xaphoo		yet the media is fine, it works on other computers
+2006-12-11T07:22:00.000Z	pike_	Xaphoo	these arent blank cds? theyre iso9660 format?
+2006-12-11T07:23:00.000Z	Xaphoo	pike_	and ALL my data CDs have this problem now... DVDs are fine... haven't tried audo CDs yet
+2006-12-11T07:24:00.000Z	pike_	Xaphoo	maybe the dev node changed? /dev/hdc or something.. the cd format wouldnt be the problem
+2006-12-11T07:25:00.000Z	Xaphoo	pike_	how do I find that out?
+2006-12-11T07:27:00.000Z	pike_	Xaphoo	you could like sudo head /dev/hdc  then try /dev/cdrom etc if it says cannot open its not an associated node im sure there is a better way though
+2006-12-11T07:28:00.000Z	Xaphoo	pike_	what the hell does sudo head /dev/hdb do?  I just did it and some wierd stuff happened
+2006-12-11T07:31:00.000Z	pike_	Xaphoo	try "file /dev/hdc" little bit better output
+2006-12-11T07:31:00.000Z	Xaphoo	pike_	/dev/hdb: block special (3/64)
+2006-12-11T07:31:00.000Z	pike_	Xaphoo	what does file /dev/hdb say?
+2006-12-11T07:31:00.000Z	pike_	Xaphoo	lol thats prob it
+2006-12-11T07:32:00.000Z	Xaphoo	pike_	what does that mean to you?
+2006-12-11T07:33:00.000Z	pike_	Xaphoo	type "groups"  real quick to make sure youre a member of cdrom or whatever if you are go ahead and do file /dev/hdb real quick to see if thats the correct node
+2006-12-11T07:34:00.000Z	Xaphoo	pike_	yeah I'm cdrom
+2006-12-11T07:34:00.000Z	pike_	Xaphoo	if you "file /dev/hdb" does it exist?
+2006-12-11T07:35:00.000Z	pike_	Xaphoo	ok
+2006-12-11T07:37:00.000Z	pike_	Xaphoo	and sudo mount -t iso9660 /dev/hdc /media/cdrom0 doesnt work ?
+2006-12-11T07:37:00.000Z	pike_	Xaphoo	sorry or hdb
+2006-12-11T07:41:00.000Z	pike_	Xaphoo	thats a new one on me sorry man do udf works but not iso9660..

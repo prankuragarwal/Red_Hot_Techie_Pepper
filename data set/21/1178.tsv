@@ -1,0 +1,21 @@
+2011-01-07T19:10:00.000Z	s3r3n1t7		How can i check if a user has a password set?
+2011-01-07T19:12:00.000Z	mvanle	s3r3n1t7	in /etc/passwd
+2011-01-07T19:12:00.000Z	s3r3n1t7	mvanle	can't see if it has a password there can i?
+2011-01-07T19:13:00.000Z	mvanle	s3r3n1t7	it might look like this "s3r3n1t7:x:500:500::/home/s3r3n1t7:/bin/bash". the 'x' mean there's a password set.
+2011-01-07T19:13:00.000Z	s3r3n1t7	mvanle	that's a lot more helpful, didn't know that. Thanks
+2011-01-07T19:14:00.000Z	s3r3n1t7	mvanle	that leads me to my next question: Why would i have an sshd user login with password?
+2011-01-07T19:15:00.000Z	mvanle	s3r3n1t7	because the ssh user is logging in the host without using a key.
+2011-01-07T19:15:00.000Z	s3r3n1t7	mvanle	but i have no user named sshd
+2011-01-07T19:16:00.000Z	mvanle	s3r3n1t7	oh you mean "sshd" in /etc/passwd ... well, the /etc/passwd file contains information about user acounts. "sshd" is an account that is probably not a regular user. these types of accounts are created for system administration purposes eg. the sshd service runs as user "sshd". it's for security reasons.
+2011-01-07T19:17:00.000Z	s3r3n1t7	mvanle	that doesn't explain why it has a password set still ...
+2011-01-07T19:17:00.000Z	mvanle	s3r3n1t7	if it did not have a password, some guy can just log in as user "sshd" on your host.
+2011-01-07T19:17:00.000Z	s3r3n1t7	mvanle	no he couldn't, since sshd is set to not allow passwordless logins
+2011-01-07T19:18:00.000Z	s3r3n1t7	mvanle	although that does sound like a sane theory
+2011-01-07T19:18:00.000Z	s3r3n1t7	mvanle	thank you.
+2011-01-07T19:18:00.000Z	mvanle	s3r3n1t7	yeah but you're talking about "ssh" as a connection. i'm talking about "sshd" as a user.
+2011-01-07T19:18:00.000Z	s3r3n1t7	mvanle	ssh daemon won't allow any user to login without a password, including but not limited to the user sshd
+2011-01-07T19:19:00.000Z	mvanle	s3r3n1t7	oh right. yeah, but a local user could log in.
+2011-01-07T19:20:00.000Z	mvanle	s3r3n1t7	(or somebody who is already logged in could change to user "sshd" with 'su - sshd')
+2011-01-07T19:21:00.000Z	mvanle	s3r3n1t7	and then perhaps even delete /usr/sbin/sshd (or even worse, replace it with a trojan).
+2011-01-07T19:21:00.000Z	s3r3n1t7	mvanle	hmm i suppose
+2011-01-07T19:21:00.000Z	s3r3n1t7	mvanle	that's probably true, yeah

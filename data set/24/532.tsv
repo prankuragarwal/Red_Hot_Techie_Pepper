@@ -1,0 +1,24 @@
+2011-07-15T06:32:00.000Z	szal	mecheese	unless you've been told already -> to identify your graphics card, run 'lspci -v' on the terminal and look for the buzzword 'VGA', it will also tell you what driver it is currently running on
+2011-07-15T06:34:00.000Z	szal	mecheese	what driver?
+2011-07-15T06:35:00.000Z	szal	mecheese	to install nVidia driver -> 'sudo apt-get install nvidia-current && sudo nvidia-xconfig', then reboot..   if you still have issues then, please come back here
+2011-07-16T03:31:00.000Z	szal	mecheese	didn't I tell you yesterday how to install nVidia drivers?
+2011-07-16T03:33:00.000Z	mecheese	szal	I know how to install them. I'm just wanting something that I can hope to get permanant and I don't have to fix some day.
+2011-07-16T03:33:00.000Z	mecheese	szal	I'm very tired of reinstalling ubuntu. 5 or 6 times in the last couple weeks.
+2011-07-16T03:34:00.000Z	szal	mecheese	no need to reinstall the driver if you install it from *buntu package sources in the 1st place
+2011-07-16T03:34:00.000Z	mecheese	szal	I really like ubuntu and want to keep using it, but it's wearing on me.
+2011-07-16T03:34:00.000Z	mecheese	szal	after install it made the screen black.
+2011-07-16T03:38:00.000Z	mecheese	szal	I did that yesterday and still got black screen.
+2011-07-16T03:40:00.000Z	szal	mecheese	make sure you have "nomodeset" in the GRUB_CMDLINE_LINUX= line in /etc/default/grub; if you don't, add it there, then run 'sudo update-grub'
+2011-07-16T03:40:00.000Z	mecheese	szal	it's already there
+2011-07-16T03:40:00.000Z	mecheese	szal	I wrote nomodeset in there
+2011-07-16T03:42:00.000Z	szal	mecheese	grep -i nomodeset /boot/grub/grub.cfg <- it should show 'nomodeset' in every kernel boot line
+2011-07-16T03:43:00.000Z	mecheese	szal	I'm using ubuntu dvd right now will that do anything good while I'm using the dvd?
+2011-07-16T03:44:00.000Z	szal	mecheese	to my knowledge there is no Ubuntu DVD; if you have a DVD, it's almost certainly not Ubuntu..  mount your / partition & change the file path accordingly
+2011-07-16T03:44:00.000Z	mecheese	szal	cd or whatever it's not the hd install.
+2011-07-16T03:51:00.000Z	mecheese	szal	says no such file or directory. I can see the file in nautilus.
+2011-07-16T03:53:00.000Z	szal	mecheese	make sure you got the path right
+2011-07-16T03:54:00.000Z	mecheese	szal	ok. I fixed the the path. it now does show nomodeset in results.
+2011-07-16T03:54:00.000Z	mecheese	szal	it shows nomodeset in red
+2011-07-16T03:55:00.000Z	szal	mecheese	then the most probable culprit for screen blackouts is the connection between gfx card and monitor, analog connections (VGA) tend to be picky when it comes to display modes
+2011-07-16T03:56:00.000Z	mecheese	szal	what I want to know is how did it work before. I had it working for a time and then when I reinstalled it just didn't work.
+2011-07-16T04:13:00.000Z	szal	mecheese	edbian: no surprises here, since part of the process of installing the nVidia driver is blacklisting nouveau

@@ -1,0 +1,21 @@
+2011-08-16T08:17:00.000Z	ccmonster		anyone?
+2011-08-16T08:18:00.000Z	ccmonster		i cant get tixati to write to a drive, it says it cant create folder. Not sure how to see what user the app is running under
+2011-08-16T08:19:00.000Z	ccmonster		i assume as me?
+2011-08-16T08:19:00.000Z	ccmonster		but when i go into the drive in nautilus and look at the folder properties, it says its under root
+2011-08-16T08:19:00.000Z	ccmonster		which is odd. because I thought I made the owner as me, so...yea
+2011-08-16T08:19:00.000Z	SIFTU	ccmonster	you tried the dynamic configuration rules like in http://pysdm.sourceforge.net/screenshots/udev_04.png
+2011-08-16T08:20:00.000Z	ccmonster	SIFTU	i was messing with that.
+2011-08-16T08:21:00.000Z	SIFTU	ccmonster	so its mounted as root but the actual file permissions need to be changed from root to your user?
+2011-08-16T08:22:00.000Z	ccmonster	SIFTU	I guess that's one method
+2011-08-16T08:23:00.000Z	SIFTU	ccmonster	ok well you can change that easy enough.. what file system is it?
+2011-08-16T08:23:00.000Z	SIFTU	ccmonster	no it's probably just the file permissions
+2011-08-16T08:24:00.000Z	SIFTU	ccmonster	sudo chown <user>:<user> <filename>
+2011-08-16T08:25:00.000Z	SIFTU	ccmonster	try that one 1 file, if it works it's easy to do it for the whole device
+2011-08-16T08:25:00.000Z	SIFTU	ccmonster	it depends how it mounts it.. generally root needs to mount filesystems unless it's a fuse filesystem
+2011-08-16T08:26:00.000Z	SIFTU	ccmonster	yeah runs under the user
+2011-08-16T08:26:00.000Z	SIFTU	ccmonster	ah ok
+2011-08-16T08:27:00.000Z	ccmonster	SIFTU	it said chown: changing ownership of `Stowaway/': Read-only file system
+2011-08-16T08:27:00.000Z	SIFTU	ccmonster	have you got ntfs-3g installed?
+2011-08-16T08:31:00.000Z	SIFTU	ccmonster	I have never used that GUI you are talking about
+2011-08-16T08:33:00.000Z	SIFTU	ccmonster	mount -t ntfs-3g /dev/<your-NTFS-partition> /{mnt,...}/<folder>
+2011-08-16T08:34:00.000Z	SIFTU	ccmonster	the directory you wish to mount it under

@@ -1,0 +1,21 @@
+2010-08-08T07:41:00.000Z	Taev		hey guys my apache2 webserver is down and I can't figure out why
+2010-08-08T07:41:00.000Z	Taev		its not starting at boot
+2010-08-08T07:42:00.000Z	ilovefairuz	Taev	check the logs
+2010-08-08T07:44:00.000Z	ilovefairuz	Taev	well check the logs to know why, but this hostname error message is negligible
+2010-08-08T07:45:00.000Z	ilovefairuz	Taev	apache has a folder in /var/log
+2010-08-08T07:46:00.000Z	ilovefairuz	Taev	try /var/log/apache2/error.log
+2010-08-08T07:48:00.000Z	ilovefairuz	Taev	have you configured it to push logs to a mysql database?
+2010-08-08T07:49:00.000Z	ilovefairuz	Taev	these are two different things, mod_log_mysql is different from the PHP mysql client functions
+2010-08-08T07:50:00.000Z	ilovefairuz	Taev	apache is somehow trying to put its log messages into a mysql database but it can't access it (perhaps because it starts before mysql or that mysql is not installed or not properly configured)
+2010-08-08T07:53:00.000Z	ilovefairuz	Taev	pastebin  /etc/apache2/apache2.conf
+2010-08-08T07:56:00.000Z	ilovefairuz	Taev	pastebin: ls /etc/apache2/mods-enabled/
+2010-08-08T07:58:00.000Z	ilovefairuz	Taev	sudo rm ls /etc/apache2/mods-enabled/log_sql.load; sudo rm ls /etc/apache2/mods-enabled/log_sql_mysql.load;
+2010-08-08T07:59:00.000Z	ilovefairuz	Taev	sorry just rm, not rm ls
+2010-08-08T07:59:00.000Z	ilovefairuz	Taev	no these are not the actual files, just symlinks, won't delete anything
+2010-08-08T07:59:00.000Z	ilovefairuz	Taev	it will only deactivate the modules
+2010-08-08T08:01:00.000Z	ilovefairuz	Taev	ok test
+2010-08-08T08:01:00.000Z	ilovefairuz	Taev	 you said it doesn't start at boot, so reboot?
+2010-08-08T08:09:00.000Z	ilovefairuz	Taev	man, and thank you.
+2010-08-08T08:10:00.000Z	ilovefairuz	Taev	yes
+2010-08-08T08:10:00.000Z	Taev	ilovefairuz	I'd tell you why apache2 wasn't starting at boot, but you'd laugh.
+2010-08-08T08:11:00.000Z	ilovefairuz	Taev	I suspect mysql starting after it not before, but tell.

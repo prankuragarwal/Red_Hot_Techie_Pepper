@@ -1,0 +1,18 @@
+2006-06-04T07:13:00.000Z	Sirkent		Hi, could anyone please tell me the main differences between recovery mode and normal mode? Feel free to talk to me directly if you like.
+2006-06-04T07:14:00.000Z	mwe	Sirkent	recovery mode boots you to a simple root prompt in single user mode, no X or anything is started
+2006-06-04T07:15:00.000Z	Sirkent	mwe	Yes, but are there any other differences? At the moment my system freezes in normal mode, but i I head into recovery and then start gdm manually I don't have any problems. I'm just trying to track down the problem but finding it very tough as no errors appear in syslog!
+2006-06-04T07:16:00.000Z	mwe	Sirkent	it probably freezes due to a broken service that is not started in single user mode. doesn't it give you a clue? when does it freeze?
+2006-06-04T07:16:00.000Z	mwe	Sirkent	and what text is on the screen when it freezes?
+2006-06-04T07:19:00.000Z	mwe	Sirkent	that sounds like a bad bug. I'd check the log files /var/log/syslog for starters
+2006-06-04T07:20:00.000Z	mwe	Sirkent	most of the time broken drivers are causing that behavior. maybe some module that is normally loaded isn't in single user mode
+2006-06-04T07:20:00.000Z	Sirkent	mwe	There's nothing obvious in syslog - certainly no errors. Like I said, it always happens at a slightly different time, so the logs always look slightly different before the crash. There's no obvious common event.
+2006-06-04T07:21:00.000Z	mwe	Sirkent	can you lsmod in single user mode and then in normal mode and compare them?
+2006-06-04T07:21:00.000Z	mwe	Sirkent	maybe that will help you determine the bad module if that is the case
+2006-06-04T07:22:00.000Z	Sirkent	mwe	Aaah yes, lsmod lists the loaded modules doesn't it? Ok, another good idea! I think my common sense must have jumped ship! Thanks.
+2006-06-04T07:22:00.000Z	mwe	Sirkent	yw :)
+2006-06-04T07:23:00.000Z	Sirkent	mwe	I suppose the main problem will be doing lsmod before it freezes. I don't know if I'll have enough time.
+2006-06-04T07:23:00.000Z	mwe	Sirkent	you can disable the gdm startup
+2006-06-04T07:23:00.000Z	mwe	Sirkent	if that helps
+2006-06-04T07:23:00.000Z	mwe	Sirkent	in single user mode install rcconf and run it and disable gdm
+2006-06-04T07:24:00.000Z	Sirkent	mwe	Excellent - thanks. I (obviously) didn't know that could be done. Right... I'll go and give this a try. Thanks again!
+2006-06-04T07:24:00.000Z	mwe	Sirkent	good luck

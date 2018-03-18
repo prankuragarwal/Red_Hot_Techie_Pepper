@@ -1,0 +1,21 @@
+2011-10-04T10:56:00.000Z	Geoffrey2		I've got a 33-in-1 card reader in my Ubuntu desktop, the chipset is Genesys...lsusb detects it, but I can't seem to read any sd cards I put into it...I tried the google routine, but all I see are posts with questions that never seem to get answered....
+2011-10-04T10:58:00.000Z	Shirakawasuna	Geoffrey2	does it produce useful output in dmesg after being plugged in w/ a sd card?
+2011-10-04T11:02:00.000Z	Geoffrey2	Shirakawasuna	looks like it
+2011-10-04T11:02:00.000Z	Shirakawasuna	Geoffrey2	does it list the availability of any partitions like /dev/sdb1?
+2011-10-04T11:03:00.000Z	Geoffrey2	Shirakawasuna	http://pastebin.com/nw8M7JF2
+2011-10-04T11:06:00.000Z	Shirakawasuna	Geoffrey2	it doesn't say anything about sdb1 or sdb2 later on?
+2011-10-04T11:06:00.000Z	Shirakawasuna	Geoffrey2	does sudo fdisk -l say anything about sdb?
+2011-10-04T11:06:00.000Z	Geoffrey2	Shirakawasuna	hmmm, sg3, sg4, sg5, sg6, and sg7?
+2011-10-04T11:10:00.000Z	Shirakawasuna	Geoffrey2	he ehci_hcd and usb-storage messages are a good sign. They're usb modules (drivers) for usb and storage, respectively
+2011-10-04T11:10:00.000Z	Shirakawasuna	Geoffrey2	I don't really know how to deal with /dev/sg nodes, but it appears you may be able to figure out what they mean and map them to other nodes for easier use
+2011-10-04T11:30:00.000Z	Geoffrey2	Shirakawasuna	hmm, apparently /dev/sg2 is mapped to /dev/scd1, but when I try to mount scd1, I get an error that says there is no medium on /dev/sr1
+2011-10-05T09:10:00.000Z	Geoffrey2	Shirakawasuna	I just figured out why my card reader wasn't working last night....
+2011-10-05T09:21:00.000Z	Shirakawasuna	Geoffrey2	what was it?
+2011-10-05T09:21:00.000Z	Geoffrey2	Shirakawasuna	in short, the device was working just fine...it's simply obsolete....
+2011-10-05T09:22:00.000Z	Shirakawasuna	Geoffrey2	were you able to end up making it work with ubuntu/be useful?
+2011-10-05T09:22:00.000Z	Geoffrey2	Shirakawasuna	I realized every card I was trying was SD HC, as soon as I put a standard SD card in, it auto mounted....
+2011-10-05T09:23:00.000Z	Shirakawasuna	Geoffrey2	Ah. So does that mean it was the card reader and not linux (does it do this in windows?)?
+2011-10-05T09:25:00.000Z	Geoffrey2	Shirakawasuna	I'll have to try, fortunately this computer dual boots Ubuntu and Vista, so I can load in there, try a few cards, and see what happens...but at least in Linux, it looks like the firmware simply can't handle the HC cards
+2011-10-05T09:27:00.000Z	Geoffrey2	Shirakawasuna	it's a known issue with older SD card readers, and generally there's no solution but replacement....
+2011-10-05T10:02:00.000Z	Geoffrey2	Shirakawasuna	yep, tried in Vista, the regular SD card loaded right up, the SDHC card was totally ignored...
+2011-10-05T10:02:00.000Z	Shirakawasuna	Geoffrey2	Ah. That's a bummer, but at least it isn't an unfixable ubuntu quirk :)

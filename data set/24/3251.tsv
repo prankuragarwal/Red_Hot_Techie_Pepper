@@ -1,0 +1,24 @@
+2011-08-16T06:42:00.000Z	Kaapa		hey there. Trying to create a PXEServer to install ubuntu but having some difficulties with dhcp server
+2011-08-16T06:42:00.000Z	Kaapa		trying to run dhcpserver in the host, but the host itself is getting a ip
+2011-08-16T06:42:00.000Z	usr13	Kaapa	Where is the DHCP server?
+2011-08-16T06:43:00.000Z	usr13	Kaapa	YOu need to trun OFF the dhcp server on your router.
+2011-08-16T06:43:00.000Z	Kaapa	usr13	on the same box
+2011-08-16T06:43:00.000Z	Kaapa		well, I need the dhcp server in the router
+2011-08-16T06:43:00.000Z	Kaapa		else I won't  be able to do a net install
+2011-08-16T06:43:00.000Z	usr13	Kaapa	The host should have a static IP.  (You can't have two dhcp servers running on the same LAN).
+2011-08-16T06:44:00.000Z	Kaapa		I'm trying to run the dhcp server on eth0 only
+2011-08-16T06:44:00.000Z	usr13	Kaapa	So turn off the dhcp server on the router and let the dhcp server on the PC take over.
+2011-08-16T06:44:00.000Z	Kaapa		the router is wireless
+2011-08-16T06:45:00.000Z	Kaapa	usr13	can't this be done without removing dhcp form the rourter?
+2011-08-16T06:45:00.000Z	Kaapa		the router is wireless, and I'm trying to use nat with a phisical cable
+2011-08-16T06:46:00.000Z	usr13	Kaapa	It will be much easier if you just turn off the dhcp server on the router and let the dhcp server on the PC take over.
+2011-08-16T06:47:00.000Z	Kaapa	usr13	the dhcp in the router is over the wireless connection. Over the wired connection is working ok
+2011-08-16T06:48:00.000Z	Kaapa		but for some reason, when I do the wired connection, the computer that's acting as a bridge is losing access to the internet
+2011-08-16T06:49:00.000Z	usr13	Kaapa	Are they intergrated?  Or not?
+2011-08-16T06:49:00.000Z	usr13	Kaapa	What router do you have?
+2011-08-16T06:50:00.000Z	Kaapa	usr13	I'm trying to install ubuntu in a laptop that doesn't have an optical drive and usb boot doesn't work
+2011-08-16T06:50:00.000Z	Kaapa	usr13	so I'm trying to use another laptop to act as a pxeserver and use net install
+2011-08-16T06:50:00.000Z	usr13	Kaapa	What subnet do you have on the Wireless?  What subnet do you have on the wired network?
+2011-08-16T06:51:00.000Z	Kaapa		wireless: 192.168.1.X; wired, I'm chosing 192.168.0.X
+2011-08-16T06:51:00.000Z	usr13	Kaapa	What do you mean, you are choosing?
+2011-08-16T06:52:00.000Z	Kaapa	usr13	I'm configuring /etc/dhcpcd for those values and assiging that class to eth1

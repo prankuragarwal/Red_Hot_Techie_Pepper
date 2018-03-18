@@ -1,0 +1,18 @@
+2012-02-12T21:12:00.000Z	Taneb		Hello!
+2012-02-12T21:12:00.000Z	Taneb		I'm having a problem with a microphone
+2012-02-12T21:13:00.000Z	ActionParsnip	Taneb	what is the problem?
+2012-02-12T21:13:00.000Z	ActionParsnip	Taneb	can you give the output of: wget -O alsa-info.sh http://www.alsa-project.org/alsa-info.sh && chmod +x ./alsa-info.sh && ./alsa-info.sh
+2012-02-12T21:16:00.000Z	Taneb	ActionParsnip	http://www.alsa-project.org/db/?f=7c9a4149c492ccef947a8f6a21666933bbc4d2a5
+2012-02-12T21:18:00.000Z	ActionParsnip	Taneb	try:    sudo add-apt-repository ppa:ubuntu-audio-dev/ppa; sudo add-apt-repository ppa:team-iquik/alsa; sudo apt-get update; sudo apt-get dist-upgrade; killall pulseaudio; rm -r ~/.pulse*
+2012-02-12T21:20:00.000Z	Taneb	ActionParsnip	can't hear anything now
+2012-02-12T21:23:00.000Z	ActionParsnip	Taneb	yes, you killed the sound process, so obviously yo will get no sound
+2012-02-12T21:24:00.000Z	ActionParsnip	Taneb	your system isnt as fast as you may think it is
+2012-02-12T21:24:00.000Z	Taneb	ActionParsnip	Youtube works now
+2012-02-12T21:24:00.000Z	Taneb	ActionParsnip	mic... still not working?
+2012-02-12T21:27:00.000Z	Taneb	ActionParsnip	microphone still doesn't work
+2012-02-12T21:28:00.000Z	ActionParsnip	Taneb	try:   echo "options snd-hda-codec-realtek index=-2" | sudo tee -a /etc/modprbe.d/alsa-base.conf
+2012-02-12T21:29:00.000Z	Taneb	ActionParsnip	tee: /etc/modprbe.d/alsa-base.conf: No such file or directory
+2012-02-12T21:29:00.000Z	ActionParsnip	Taneb	/etc/modprobe.d/alsa-base.conf           sorry, typo
+2012-02-12T21:30:00.000Z	ActionParsnip	Taneb	yes but it is also added to the file, reboot to test
+2012-02-12T21:34:00.000Z	Taneb	ActionParsnip	thank you!
+2012-02-12T21:34:00.000Z	ActionParsnip	Taneb	there are bugs all over for this....

@@ -1,0 +1,22 @@
+2006-01-19T15:20:00.000Z	HiTiT		hello guys, I have a problem in synaptic, whe I install: fiaif, it writes me: ' E: fiaif: subprocess post-installation script returned error exit status 1 ' what should I do?
+2006-01-19T15:21:00.000Z	Wibble-_	HiTiT	that is an error with the package somewhere.  the rest of the error might tell you what to do, that that line is useless.  Use pastebin (see topic)
+2006-01-19T15:21:00.000Z	HiTiT	Wibble-_	even foe Kde it makes me this error
+2006-01-19T15:22:00.000Z	Wibble-_	HiTiT	that error says "there has been an error".  It is the bit before that that tells you the useful things.
+2006-01-19T15:23:00.000Z	Wibble-_	HiTiT	highlight it with the mouse, then use the middle mouse button to paste it into the web form at the pastebin
+2006-01-19T15:25:00.000Z	HiTiT	Wibble-_	rhank you : here is the paste:http://rafb.net/paste/results/mFfx1Z19.html
+2006-01-19T15:27:00.000Z	Wibble-_	HiTiT	that suggests something else is doing things with the config dat file; reboot the computer (or if you know what it might be, close that app - e.g. aptitude in a terminal?)
+2006-01-19T15:28:00.000Z	HiTiT	Wibble-_	Ive made End Session, doesnt it need to vlose everything??
+2006-01-19T15:28:00.000Z	HiTiT	Wibble-_	this what it writes is apt-get:   http://rafb.net/paste/results/wu4d9n50.html
+2006-01-19T15:29:00.000Z	Wibble-_	HiTiT	there may be some applications which are not part of your X session
+2006-01-19T15:29:00.000Z	HiTiT	Wibble-_	ok SO ILL MAKE A RESTART AND ILL BE BACK
+2006-01-19T15:30:00.000Z	Wibble-_	HiTiT	type "which lsof" - if you have that, then try "lsof | grep /var/cache/debconf/config.dat"
+2006-01-19T15:30:00.000Z	HiTiT	Wibble-_	to type in the terminal: lsof | grep /var/cache/debconf/config.dat?
+2006-01-19T15:31:00.000Z	Wibble-_	HiTiT	type: which lsof
+2006-01-19T15:31:00.000Z	HiTiT	Wibble-_	which lsof
+2006-01-19T15:32:00.000Z	HiTiT	Wibble-_	? i didnt understand
+2006-01-19T15:32:00.000Z	Wibble-_	HiTiT	type lsof | grep /var/cache/debconf/config.dat
+2006-01-19T15:33:00.000Z	HiTiT	Wibble-_	dpkg-reco 10487       root    4rW     REG       22,3   65055     608119 /var/cache/debconf/config.dat
+2006-01-19T15:34:00.000Z	Wibble-_	HiTiT	oh - looks like something went wrong when it was trying to reconfigure some modules, and it left the process hanging.
+2006-01-19T15:34:00.000Z	HiTiT	Wibble-_	so i need to close th process?
+2006-01-19T15:34:00.000Z	Wibble-_	HiTiT	you could try killing it (kill 10487) - but I would recommend a reboot because I don't know what else is happening with it.
+2006-01-19T15:35:00.000Z	HiTiT	Wibble-_	OK thank you very much i will reboot it now

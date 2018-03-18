@@ -1,0 +1,19 @@
+2010-03-07T23:30:00.000Z	MgMt		plus i dont wanna move the files or redownload when i reformat
+2010-03-07T23:30:00.000Z	MgMt		the whole partition is downloads
+2010-03-07T23:31:00.000Z	MgMt		i used pysdm to mount it on boot
+2010-03-07T23:32:00.000Z	MgMt		im using a fresh 9.10 install
+2010-03-07T23:32:00.000Z	MgMt		idk what wubi is
+2010-03-07T23:33:00.000Z	MgMt		no, i have multiple partitions
+2010-03-07T23:33:00.000Z	MgMt		multiple installs
+2010-03-07T23:35:00.000Z	MgMt		i just did chmod 700 /dev/sda2 and now i cant make a folder
+2010-03-07T23:36:00.000Z	MgMt		is there a way to fix that?
+2010-03-07T23:37:00.000Z	MgMt		im waiting
+2010-03-07T23:38:00.000Z	VCoolio	MgMt	the default permissions for /dev/sda was probably 660, revert that
+2010-03-07T23:40:00.000Z	VCoolio	MgMt	do 'mount' and see what /dev/sda2 is mounted to; that's the folder you want to mess with; for example /media/Download
+2010-03-07T23:41:00.000Z	VCoolio	MgMt	now in that folder make a new folder that is going to be your user folder, so "sudo mkdir /media/sda2/Downloads" then own it by "sudo chown -R MgMt /media/sda2/Downloads
+2010-03-07T23:46:00.000Z	VCoolio	MgMt	try this "sudo chown -R andy:andy /media/sda2/Downloads
+2010-03-07T23:49:00.000Z	VCoolio	MgMt	ah, good thinking, try that
+2010-03-07T23:49:00.000Z	VCoolio	MgMt	yes
+2010-03-07T23:51:00.000Z	VCoolio	MgMt	that's right, sudo umount /dev/blah
+2010-03-07T23:55:00.000Z	VCoolio	MgMt	mount again, then try to "mkdir /media/sda2/Downloads/test" (without sudo!)
+2010-03-07T23:56:00.000Z	VCoolio	MgMt	yay! you've experienced one of linux' good old permissions annoyances

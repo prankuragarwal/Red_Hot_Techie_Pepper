@@ -1,0 +1,23 @@
+2011-05-09T11:25:00.000Z	blaine_		after I chroot into my root fs that I've mounted via liveCD, I no longer see my hard drives, which were previously listed as /dev/sda[1,2,5]
+2011-05-09T11:25:00.000Z	blaine_		err, I could no longer see my one hard drive, or its partitions
+2011-05-09T11:25:00.000Z	blaine_		why would /dev/sda be missing after a chroot?
+2011-05-09T11:26:00.000Z	yagoo	blaine_	u doing a livecd boot then chroot?
+2011-05-09T11:26:00.000Z	blaine_	yagoo	yessir
+2011-05-09T11:26:00.000Z	yagoo	blaine_	google 'ubuntu rescue wiki bind"
+2011-05-09T11:27:00.000Z	yagoo	blaine_	u should type "mount --bind" << similar commands before chroot
+2011-05-09T11:27:00.000Z	blaine_	yagoo	did that for dev, dev/pts, proc, and sys
+2011-05-09T11:27:00.000Z	yagoo	blaine_	can u pastebin it? (exit chroot, type mount, and pastebin it)
+2011-05-09T11:28:00.000Z	blaine_	yagoo	http://pastebin.com/XVj5GWEu
+2011-05-09T11:30:00.000Z	yagoo	blaine_	ur mountpoint is /mnt/root , not /mnt ...
+2011-05-09T11:31:00.000Z	blaine_	yagoo	I didn't think that mattered
+2011-05-09T11:31:00.000Z	yagoo	blaine_	redo those commands.. but use /mnt/root and not /mnt
+2011-05-09T11:32:00.000Z	yagoo	blaine_	u can unmount to undo those mount statments
+2011-05-09T11:32:00.000Z	yagoo	blaine_	or simply continue.. and just add those mount commands with /mnt/root
+2011-05-09T11:33:00.000Z	yagoo	blaine_	they're virtual anyways.. and ur chrooting to /mnt/root so /mnt/dev wont be seen anyways
+2011-05-09T11:33:00.000Z	yagoo	blaine_	yep
+2011-05-09T11:34:00.000Z	yagoo	blaine_	the mount proc may have already been done by the live cd (there's /proc on /mnt/root/proc type proc (rw) )
+2011-05-09T11:35:00.000Z	yagoo	blaine_	btw is there a rescue option with the bootcd ?
+2011-05-09T11:35:00.000Z	yagoo	blaine_	as i thought once the rescue would do these binds automatically
+2011-05-09T11:36:00.000Z	yagoo	blaine_	what command u trying?
+2011-05-09T11:38:00.000Z	yagoo	blaine_	/dev/sda is not a partition
+2011-05-09T13:39:00.000Z	yagoo	blaine_	try apropos initramfs .. use the update command to generate a new initrd image

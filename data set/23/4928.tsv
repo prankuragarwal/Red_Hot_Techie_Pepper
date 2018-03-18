@@ -1,0 +1,23 @@
+2008-11-25T04:13:00.000Z	urthmover		I am trying to mount an HFSplus drive read/write on ubuntu server and I get an error     mount: unknown filesystem type 'users'
+2008-11-25T04:13:00.000Z	urthmover		how do I resolve it?
+2008-11-25T04:13:00.000Z	erUSUL	urthmover	what command line are you using?
+2008-11-25T04:14:00.000Z	erUSUL	urthmover	paste your /etc/fstab ina pastebin please
+2008-11-25T04:15:00.000Z	urthmover	erUSUL	http://pastebin.com/m1ffe46a0
+2008-11-25T04:18:00.000Z	erUSUL	urthmover	http://pastebin.com/m2d436c1e there is an space between the file system type hfsplus and the options
+2008-11-25T04:18:00.000Z	erUSUL	urthmover	you forgot it
+2008-11-25T04:19:00.000Z	erUSUL	urthmover	i suspect that the udf entry is wrong too? did you hand edited it ?
+2008-11-25T04:19:00.000Z	erUSUL	urthmover	well put an space there too
+2008-11-25T04:24:00.000Z	urthmover	erUSUL	well I don't get an error now when I sudo mount -a  but the filesystem is still read only when I attempt to create a file on it with vi
+2008-11-25T04:24:00.000Z	urthmover	erUSUL	thoughts?
+2008-11-25T04:25:00.000Z	erUSUL	urthmover	paste the output of "cat /proc/mounts"
+2008-11-25T04:25:00.000Z	urthmover	erUSUL	ok  *pasting*
+2008-11-25T04:27:00.000Z	urthmover	erUSUL	http://pastebin.com/m4d2d44aa   (pasted cat /proc/mounts)
+2008-11-25T04:27:00.000Z	erUSUL	urthmover	it got mounted read only dunno why /dev/sdb1 /media/ExternalHD hfsplus ro,nosuid,nodev,noexec,umask=22,uid=0,gid=0,nls=utf8 0 0
+2008-11-25T04:28:00.000Z	erUSUL	urthmover	note the ro
+2008-11-25T04:28:00.000Z	urthmover	erUSUL	so do I have this configured correctly    it is just not working as expected?
+2008-11-25T04:29:00.000Z	urthmover	erUSUL	please continue this with Guiri he also has access to this system
+2010-07-03T01:35:00.000Z	erUSUL	urthmover	most nic are suported out of the box. you only have to configure the corresponding iface via /etc/network/interfaces ( man interfaces )
+2010-07-19T21:21:00.000Z	erUSUL	urthmover	/usr/share/pixmaps/ ?
+2010-07-19T21:22:00.000Z	urthmover	erUSUL	cool thanks....I'm actually finding the vmware ones  in /usr/lib/vmware/share/pixmaps    I did a locate *.xpm | grep vm*   and have found them
+2010-07-20T01:06:00.000Z	erUSUL	urthmover	if it is an iso it will be in a /dev/loop? device
+2010-07-20T01:06:00.000Z	urthmover	erUSUL	hmm ok I'll try to mount it to a directory  thanks

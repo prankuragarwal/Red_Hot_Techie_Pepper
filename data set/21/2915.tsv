@@ -1,0 +1,21 @@
+2009-11-26T19:31:00.000Z	ironfoot495		Hello Is there anyone who knows how to get 9.10 server to see the intranet? I have googled and still can't seem to find the answer?
+2009-11-26T19:33:00.000Z	ironfoot495		DR_Willis:I don't see the intranet !
+2009-11-26T19:33:00.000Z	n8ature	ironfoot495	do you mean internet?
+2009-11-26T19:37:00.000Z	n8ature	ironfoot495	 so assuming you mean internet, then you need to hook it up to your router which has access to the internet.
+2009-11-26T19:37:00.000Z	n8ature	ironfoot495	 it is going to work the same way as your desktop.  just make sure the network settings are the same as your desktop.
+2009-11-26T19:39:00.000Z	ironfoot495	n8ature	I appreciate your input  I have internet  because I'm communicating with you right, for some reson the server is not setup the same way that's the problem.
+2009-11-26T19:39:00.000Z	n8ature	ironfoot495	 is your desktop running ubuntu?
+2009-11-26T19:43:00.000Z	ironfoot495	n8ature	That's the problem they are not Desktop -> 2.6.31-15-generic ; Server 2.6.31-15-generic-pae
+2009-11-26T19:43:00.000Z	n8ature	ironfoot495	 I am assuming you have your desktop and server connected to your router..  if you desktop is working and connected to the internet, make sure the network settings of your server are set up the same way.  check this file: /etc/network/interfaces.  Your desktop probably has just a few links with "auto lo" and "iface lo inet loopback".  change that file on your server to the same thing and it should be able to get to the internet
+2009-11-26T19:44:00.000Z	n8ature	ironfoot495	 i said, "a few links", but i meant to say, "a few lines".. lol
+2009-11-26T19:44:00.000Z	ironfoot495	n8ature	OK! I'll go take a look bb;
+2009-11-26T19:58:00.000Z	ironfoot495	n8ature	here is the Server's /etc/network/interfaces ->http://paste.ubuntu.com/328536/
+2009-11-26T19:59:00.000Z	n8ature	ironfoot495	good, so it looks like your server is setup to use DCHP as well, next step is to see if you can ping things near you.  Do you know the IP of your router?  Probably something like 192.168.0.100
+2009-11-26T20:01:00.000Z	n8ature	ironfoot495	 the first paste was your desktop right?  the second your server?
+2009-11-26T20:02:00.000Z	ironfoot495	n8ature	probably let me try it bb;
+2009-11-26T20:04:00.000Z	n8ature	ironfoot495	 after you update that file on your server to be the same as your desktop, you can restart the networking on your server with this command:  "sudo /etc/init.d/networking restart"
+2009-11-26T20:08:00.000Z	ironfoot495	n8ature	yes I can ping my desktop I forgot the nmap cmd is it nmap -sP 192.168.0.100/16?
+2009-11-26T20:08:00.000Z	ironfoot495	n8ature	yes that's it and I tried it all and it does work?
+2009-11-26T20:09:00.000Z	ironfoot495	n8ature	yes the first one is my Desktop!
+2009-11-26T20:09:00.000Z	n8ature	ironfoot495	 are you saying you got it to work?
+2009-11-26T20:10:00.000Z	n8ature	ironfoot495	can you ping google.com from your server?  if not, can you ping a google ip from your server like:  74.125.53.100

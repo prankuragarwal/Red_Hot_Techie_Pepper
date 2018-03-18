@@ -1,0 +1,24 @@
+2010-06-26T21:07:00.000Z	r0zz	airtonix	i have to add manually
+2010-06-26T20:52:00.000Z	airtonix	r0zz	because pinging by hostname requires either 1) a local dns server, or 2) that you add the hostname to equate to an ip address in a machines hosts file
+2010-06-26T20:54:00.000Z	airtonix	r0zz	yes see what i just said. windows provides this due to its intergration with netbios
+2010-06-26T20:56:00.000Z	airtonix	r0zz	install bonjour on the windows machines then they announce their hostnames (and related ip address)
+2010-06-26T20:57:00.000Z	airtonix	r0zz	then you won't have permission to install a dns server either then.
+2010-06-26T20:57:00.000Z	airtonix	r0zz	of course it can.
+2010-06-26T20:58:00.000Z	airtonix	r0zz	just reference via ip address
+2010-06-26T20:59:00.000Z	airtonix	r0zz	also do not confuse samba(or windows networking) hostnames with real hostnames.
+2010-06-26T21:01:00.000Z	airtonix	r0zz	they are provided by different services on a machine... in a windows centric network the netbios portion of windows networking does this.
+2010-06-26T21:03:00.000Z	r0zz	airtonix	well i think have to research about, do u have some link?
+2010-06-26T21:04:00.000Z	airtonix	r0zz	you understand what the /etc/hosts file does on linux machines ?
+2010-06-26T21:07:00.000Z	r0zz	airtonix	in this file is the  ip with hostname
+2010-06-26T21:07:00.000Z	airtonix	r0zz	good. now if you add a line like : 127.0.0.1 testhost
+2010-06-26T21:08:00.000Z	r0zz	airtonix	Oh i have 127.0.1.1 localhost
+2010-06-26T21:08:00.000Z	airtonix	r0zz	yes but for this demo add that line also
+2010-06-26T21:09:00.000Z	airtonix	r0zz	127.0.1.1 is a special one that allows bonjour/avahi/zeroconf to do its magic
+2010-06-26T21:10:00.000Z	r0zz	airtonix	mmm 127.0.1.1 allow me use  bonjour, avahi and zeroconf?
+2010-06-26T21:10:00.000Z	airtonix	r0zz	once you saved that file, ping : ping testhost
+2010-06-26T21:11:00.000Z	airtonix	r0zz	so now you see how this file lets you use real hostnames
+2010-06-26T21:11:00.000Z	r0zz	airtonix	64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.075 ms
+2010-06-26T21:11:00.000Z	r0zz	airtonix	ping testhost is answering me
+2010-06-26T21:12:00.000Z	r0zz	airtonix	this mean i have to add 200 entries oh no :s im scared
+2010-06-26T21:13:00.000Z	airtonix	r0zz	well. no. 1) installing a dns server and configuring it isn't easy. 2) permissions to install one on your ubuntu machine might not be requried but once installed it might interfer with the school network. 3) once you do have it installed you still need permission to edit the tcp/ip settings of the windows machines.
+2010-06-26T21:15:00.000Z	r0zz	airtonix	yep, ok thank you

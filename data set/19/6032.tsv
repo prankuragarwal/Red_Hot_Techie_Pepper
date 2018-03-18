@@ -1,0 +1,19 @@
+2008-03-26T04:15:00.000Z	Belboz92		hey, I'm still stuck with modprobe:  FATAL: Error inserting lirc_serial (/lib/modules/2.6.22-14-generic/ubuntu/media/lirc/lirc_serial/lirc_serial.ko): Device or resource busy
+2008-03-26T04:16:00.000Z	azexia2	Belboz92	try sudo modprobe lirc_serial
+2008-03-26T04:16:00.000Z	azexia2	Belboz92	if you are not already =)
+2008-03-26T04:16:00.000Z	Belboz92	azexia2	 That is what I ran it with
+2008-03-26T04:17:00.000Z	azexia2	Belboz92	ok, try doing that without the ir inserted
+2008-03-26T04:18:00.000Z	Belboz92	azexia2	thanks for trying, but that didn't work either :(
+2008-03-26T04:19:00.000Z	Belboz92	azexia2	I've also stopped lircd and removed the other lirc modules in case they were conflicting
+2008-03-26T04:19:00.000Z	azexia2	Belboz92	hmm... that is an odd error, device busy tends to mean that it can't remove, the fact that it cant modprobe, glance at dmesg, does it have another module confilicting perhaps? just dmesg | tail to see the last few lines
+2008-03-26T04:19:00.000Z	azexia2	Belboz92	you were to quick for me =)
+2008-03-26T04:20:00.000Z	azexia2	Belboz92	is there nothing in dmesg?
+2008-03-26T04:20:00.000Z	Belboz92	azexia2	sorry [ 1544.766432] lirc_serial: port 02f8 already in use
+2008-03-26T04:21:00.000Z	azexia2	Belboz92	is that a serial device?
+2008-03-26T04:21:00.000Z	Belboz92	azexia2	I don't know what port 02f8 is, is there any way I can find out what's using it?
+2008-03-26T04:21:00.000Z	azexia2	Belboz92	sounds like an irq conflict to me, is the bios seutp to do it manually?
+2008-03-26T04:22:00.000Z	Belboz92	azexia2	the only other serial device I can think of the mouse
+2008-03-26T04:22:00.000Z	Belboz92	azexia2	no, it doesn't but I think I'll check that  again
+2008-03-26T04:22:00.000Z	azexia2	Belboz92	right, but lots of things get irqs, every device in fact, although unless you have made all the devices manual irq, that soundn't happen...
+2008-03-26T04:23:00.000Z	Belboz92	azexia2	I don't believe I did, I'm pretty darn sure
+2008-03-26T04:24:00.000Z	azexia2	Belboz92	i may be pulling on threads here, but that does sound like a conflict...

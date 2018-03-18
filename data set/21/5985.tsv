@@ -1,0 +1,21 @@
+2008-01-05T09:35:00.000Z	LeChacal		hello, i have a question what does the file "/proc/modules" do for my system and is it important, because i am getting errors when working with it
+2008-01-05T09:35:00.000Z	nickrud	LeChacal	you would only read that file ...
+2008-01-05T09:37:00.000Z	LeChacal	nickrud	i was trying to read it with gedit and i got the error "The file /proc/modules changed on disk.", the reason i am trying to open it is because i am looking for a line that i think should be there but something else says is not there
+2008-01-05T09:37:00.000Z	nickrud	LeChacal	it does change, and gedit is only letting you know it did. You won't be saving the file, so it's not an error
+2008-01-05T09:39:00.000Z	LeChacal	nickrud	but when i reload it, that is the option that it gives me i see nothing in there and shouldn't there be something in there? or what is it for?
+2008-01-05T09:40:00.000Z	LeChacal	nickrud	does this modules file have any connections to modules.dep
+2008-01-05T09:41:00.000Z	nickrud	LeChacal	as bruenig pointed out, lsmod shows you the same information. I think a better thing would be for you to explain what you're trying to do, someone might have some help then
+2008-01-05T09:44:00.000Z	nickrud	LeChacal	  sudo modprobe usbhid
+2008-01-05T09:46:00.000Z	nickrud	LeChacal	/proc/modules is a list of kernel modules that are currently installed into the kernel, should have added that earlier
+2008-01-05T09:46:00.000Z	LeChacal	nickrud	isn't that the opposite of "sudo rmmod usbhid" which in the tutorial it tells me to do so that buttons on the mouse act like buttons on a keyboard (i think that is what it does)
+2008-01-05T09:47:00.000Z	nickrud	LeChacal	yes, it is the opposite. And that would be a possible result, I guess.  sudo modprobe -r usbhid would be the preferred way rather than rmmod
+2008-01-05T09:48:00.000Z	nickrud	LeChacal	so the script is expecting usbhid and trying to remove it, but it's not already loaded into the kernel, causing that error?
+2008-01-05T09:50:00.000Z	LeChacal	nickrud	so then i should change the line in my script file that the tutorial had me make to "sudo modprobe -r usbhid" and then just ignore the error about it not be able to unload it because it isn't load in the first place?
+2008-01-05T09:51:00.000Z	nickrud	LeChacal	sounds right without reading the script.
+2008-01-05T09:51:00.000Z	LeChacal	nickrud	ok ill do that and it sounds fine thank you
+2008-01-12T10:30:00.000Z	nickrud	LeChacal	gconf-editor /apps/nautilus/preferences/enable_delete
+2008-01-12T10:43:00.000Z	LeChacal	nickrud	thank you that was what i was looking for
+2008-03-09T07:41:00.000Z	nickrud	LeChacal	http://www.linuxquestions.org/questions/debian-26/dynamic-mmap-ran-out-of-room-error-when-adding-new-apt-source-list-233417/#post1188874 , I'd make a fresh file in /etc/apt/apt.conf.d/ myslef
+2008-03-09T07:43:00.000Z	LeChacal	nickrud	i had tried that and then i was getting an error that said "there was extra junk on line 1"
+2008-03-09T07:45:00.000Z	nickrud	LeChacal	ah, I just got that for the options, it shouldn't have quote marks
+2008-03-09T07:45:00.000Z	nickrud	LeChacal	I'll look for a different one to bookmark, thanks

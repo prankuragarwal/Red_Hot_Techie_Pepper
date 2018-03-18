@@ -1,0 +1,22 @@
+2012-01-30T20:53:00.000Z	Lachezar		Hi all. I am having weird issue: when I try to ping one specific IP that is not in the LAN, my laptop attempts to ARP it. How come? It's one SPECIFIC IP address.
+2012-01-30T20:53:00.000Z	ActionParsnip	Lachezar	You need the ethernet address as it is on the same network segment
+2012-01-30T20:54:00.000Z	Lachezar	ActionParsnip	It is _NOT_ on the same network segment
+2012-01-30T20:54:00.000Z	ActionParsnip	Lachezar	sorry, misread
+2012-01-30T20:54:00.000Z	ActionParsnip	Lachezar	is it just that one IP?
+2012-01-30T20:55:00.000Z	Lachezar	ActionParsnip	Yes, I can find easily other IPs in the target network, just this one...
+2012-01-30T20:55:00.000Z	ActionParsnip	Lachezar	is there a VPN involved?
+2012-01-30T20:55:00.000Z	Lachezar	ActionParsnip	Nope.
+2012-01-30T20:57:00.000Z	Lachezar	ActionParsnip	Me(192.168.1.x) <- (wlan) -> (192.168.1.1) Router (192.168.2.1) <- LAN -> (192.168.2.y) Target
+2012-01-30T20:57:00.000Z	ActionParsnip	Lachezar	so your LAN is split into 2 subnets?
+2012-01-30T20:58:00.000Z	Lachezar	ActionParsnip	many subnets actually. Not exactly same location.
+2012-01-30T20:58:00.000Z	Lachezar	ActionParsnip	I can ping 192.168.2.Z, but not 192.168.2.Y, and tcpdump shows ARP requests for 192.168.2.Y, which is... Well.. WRONG.
+2012-01-30T20:59:00.000Z	ActionParsnip	Lachezar	do you have a route specifying how the 192.168.2.0 network
+2012-01-30T21:00:00.000Z	Lachezar	ActionParsnip	module000: My routing table has a default route, a 192.168.1.0/24 route and a 169.254.0.0/16 route.
+2012-01-30T21:00:00.000Z	ActionParsnip	Lachezar	you should add one for 192.168.2.0/24 too
+2012-01-30T21:01:00.000Z	Lachezar	ActionParsnip	Nah... The router takes care of routing between different networks.
+2012-01-30T21:01:00.000Z	Lachezar	ActionParsnip	The default route works with the other nets, just not _THAT_ host.
+2012-01-30T21:13:00.000Z	ActionParsnip	Lachezar	try prefixing with sudo
+2012-01-30T21:13:00.000Z	Lachezar	ActionParsnip	:) Not that noobish.
+2012-01-30T21:14:00.000Z	ActionParsnip	Lachezar	covering the bases
+2012-01-30T21:14:00.000Z	ActionParsnip	Lachezar	could restart network service, shoul wipe it clean afaik
+2012-01-30T21:15:00.000Z	Lachezar	ActionParsnip	Yep the ARP (incomplete) is gone with .../networking restart

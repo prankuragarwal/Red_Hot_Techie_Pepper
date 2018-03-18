@@ -1,0 +1,18 @@
+2008-11-05T03:49:00.000Z	Conglomo		It seems to think that it was a failed password when I look at the /var/log/auth.log
+2008-11-05T03:49:00.000Z	Conglomo		..even though a failed password would not show that message
+2008-11-05T03:50:00.000Z	Conglomo		I'm trying to add shell accounts. I'd rather not mix it with gdm.
+2008-11-05T03:51:00.000Z	Conglomo		"su - conglomo" and "ssh conglomo@localhost" all fail with the password expired message and then it says password failed. (which is the odd part, wrong password does not show the password expired message).
+2008-11-05T03:52:00.000Z	kitche	Conglomo	well of course it won't if the password is wrong then it's not expired
+2008-11-05T03:53:00.000Z	Conglomo	kitche	The problem I'm having is, when a password is expired, the user is no longer prompted to change it, instead it says that it's expired and doesn't let them proceed to change it.
+2008-11-05T03:53:00.000Z	kitche	Conglomo	yes it won't
+2008-11-05T03:53:00.000Z	Conglomo	kitche	In the previous version of ubuntu that I was running, this wasn't an issue. I could "useradd", set a temp password, and expire it.
+2008-11-05T03:54:00.000Z	Conglomo	kitche	The user would be immediately prompted to change it and they could go happily on their way.
+2008-11-05T03:55:00.000Z	kitche	Conglomo	hang on looks like it's an issue not with just Ubuntu
+2008-11-05T03:55:00.000Z	Conglomo	kitche	ah
+2008-11-05T03:56:00.000Z	kitche	Conglomo	you need to edit /etc/pam.d/login and add this line password required pam_stack.so service=system-auth
+2008-11-05T03:56:00.000Z	kitche	Conglomo	also might need to add that to /etc/pam.d/sshd as well
+2008-11-05T03:57:00.000Z	Conglomo	kitche	ah, thanks!
+2008-11-05T04:04:00.000Z	Conglomo	kitche	PAM unable to dlopen(/lib/security/pam_stack.so): /lib/security/pam_stack.so: cannot open shared object
+2008-11-05T04:04:00.000Z	kitche	Conglomo	ok remove those lines and guess Ubuntu actually removed that
+2008-11-05T04:06:00.000Z	Conglomo	kitche	nods, I guess I'll deal with this later, have a meeting to go to now
+2008-11-05T04:06:00.000Z	Conglomo	kitche	thanks for the help ;)

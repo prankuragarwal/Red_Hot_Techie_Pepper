@@ -1,0 +1,23 @@
+2009-11-12T20:47:00.000Z	Beelsebob		on what device would you normally expect the DVD drive to show up?
+2009-11-12T20:47:00.000Z	Beelsebob		 /dev/dvd doesn’t appear to have anything sensible at it
+2009-11-12T20:47:00.000Z	Samus_Aran	Beelsebob	/dev/dvd
+2009-11-12T20:47:00.000Z	Samus_Aran	Beelsebob	/dev/cdrom
+2009-11-12T20:48:00.000Z	Beelsebob	Samus_Aran	same again, not at cdrw or dvdrw either
+2009-11-12T20:50:00.000Z	Samus_Aran	Beelsebob	dmesg | egrep -i '(cd|sr|dvd)'
+2009-11-12T20:51:00.000Z	Beelsebob	Samus_Aran	oh interesting, it seems to be detecting it as a CD drive only
+2009-11-12T20:52:00.000Z	Samus_Aran	Beelsebob	it will often list a Blu-Ray or DVD drive as a CD in there, nothing to worry about.  look for the device.  probably sr0 or scd0 or hd* or sd*
+2009-11-12T20:53:00.000Z	Beelsebob	Samus_Aran	/dev/sr0 is there, but ddrescue still reports “ddrescue: cannot open input file: No medium found”
+2009-11-12T20:53:00.000Z	Samus_Aran	Beelsebob	"no medium found" is just a confusing way of saying "there's no disk in the drive"
+2009-11-12T20:54:00.000Z	Beelsebob	Samus_Aran	right, which there is
+2009-11-12T20:54:00.000Z	Samus_Aran	Beelsebob	eject it, make sure it's not upside down, make sure it's not badly scratched, wipe the surface, try again
+2009-11-12T20:56:00.000Z	Samus_Aran	Beelsebob	what do you mean by ddrescuing a CD ?
+2009-11-12T20:56:00.000Z	Beelsebob	Samus_Aran	it’s a DVD
+2009-11-12T20:57:00.000Z	Samus_Aran	Beelsebob	DVD then
+2009-11-12T20:57:00.000Z	Beelsebob	Samus_Aran	it’s dd, only better (it can deal with zero cells and other invalid crap that’s dumped onto the disk, or with scratches for example)
+2009-11-12T20:57:00.000Z	Beelsebob	Samus_Aran	in the mean time, VLC thinks /dev/sr0 is the correct device, but fails to read from it too… Neither even seem to spin up the disk
+2009-11-12T20:58:00.000Z	Samus_Aran	Beelsebob	the likelihood that the DVD drive is faulty is quite high
+2009-11-12T20:58:00.000Z	Samus_Aran	Beelsebob	modern cheapo DVD drives tend to drop like flies
+2009-11-12T20:59:00.000Z	Beelsebob	Samus_Aran	I’m thinking that too – weird that it read the CD to install ubuntu, but I guess there’s a different laser for reading DVDs or something
+2009-11-12T21:01:00.000Z	Samus_Aran	Beelsebob	might want to try with another DVD first, and check the data cable is snug, and confirm you can eject with software ("eject /dev/sr0") as well
+2009-11-12T21:01:00.000Z	Beelsebob	Samus_Aran	oh, good plans
+2009-11-12T21:02:00.000Z	Beelsebob	Samus_Aran	eject on the device works fine, will check the data cable later, but I think it’s probably a dead drive

@@ -1,0 +1,21 @@
+2012-01-27T08:25:00.000Z	bdkbdk		I'm trying to upgrade 10.10 to 11.04. It fails with "Could not calculate the upgrade". I googled for this and found lots of suggestions, but nothing that worked. Has anyone found a workaround for this error?
+2012-01-27T08:27:00.000Z	metaspike	bdkbdk	how are you trying to do this? from console tried: sudo apt-get update && sudo apt-get dist-upgrade 0 after editing /etc/apt/sources.list ?
+2012-01-27T08:29:00.000Z	bdkbdk		I was using the update manager, but I'll try your suggestion.
+2012-01-27T08:31:00.000Z	bdkbdk		sudo apt-get update && sudo apt-get dist-upgrade 0 worked... Now trying the upgrade from the update manager.
+2012-01-27T08:39:00.000Z	bdkbdk	metaspike	same problem. I'm not sure that I've gotten rid of enough repositories from /etc/apt/sources.list. Any ideas about how to tell which ones are necessary?
+2012-01-27T08:39:00.000Z	metaspike	bdkbdk	the ones that are necessary are the ones ubuntu provides.
+2012-01-27T08:40:00.000Z	metaspike	bdkbdk	relevant to your version of choice
+2012-01-27T08:43:00.000Z	bdkbdk	metaspike	ok, but how can I tell which ones are ones that ubuntu provides? Most of them refer to mirrors, not canonical.com.
+2012-01-27T08:44:00.000Z	metaspike	bdkbdk	 https://launchpad.net/ubuntu/+archivemirrors
+2012-01-27T08:45:00.000Z	bdkbdk		Thanks.
+2012-01-27T08:55:00.000Z	bdkbdk	metaspike	I looked at the list and my sources.list. All but one entry in sources.list pointed to mirrors.se.eu.kernel.org. The one exception pointed to archive.canonical.com. I commented that out and am retrying.
+2012-01-27T08:56:00.000Z	metaspike	bdkbdk	the crux of the version upgrade is that you must change the name from lucid to orenic for example
+2012-01-27T08:58:00.000Z	bdkbdk	metaspike	While the package manager is running, it replaces the sources.list file with a new one that has s/maverick/natty. When it fails, it reverts it.
+2012-01-27T09:09:00.000Z	bdkbdk	metaspike	It's still failing in the same way. The sources.list entries all look OK. Any other ideas? The apt.log has a lot of lines like this:
+2012-01-27T09:09:00.000Z	bdkbdk		Broken xul-ext-ubufox:amd64 Depends on apturl-kde [ amd64 ] < none -> 0.4.2ubuntu5.1 > ( admin )
+2012-01-27T09:09:00.000Z	bdkbdk		  Considering apturl-kde:amd64 1 as a solution to xul-ext-ubufox:amd64 12
+2012-01-27T09:09:00.000Z	bdkbdk		  Try Installing apturl-kde [ amd64 ] < none -> 0.4.2ubuntu5.1 > ( admin ) before changing xul-ext-ubufox:amd64
+2012-01-27T09:09:00.000Z	bdkbdk		    Installing kdesudo as Depends of apturl-kde
+2012-01-27T09:09:00.000Z	bdkbdk		    Installing software-properties-kde as Depends of apturl-kde
+2012-01-27T09:09:00.000Z	bdkbdk		  Or group remove for xul-ext-ubufox:amd64
+2012-01-27T09:17:00.000Z	bdkbdk	metaspike	in apt.log, I'm seeing a lot of errors like: Broken <packagename>:amd64  Depnds on <packagename> [ amd64 ] ...

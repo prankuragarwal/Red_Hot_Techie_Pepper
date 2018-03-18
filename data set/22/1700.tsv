@@ -1,0 +1,22 @@
+2010-10-12T00:56:00.000Z	dagny_taggart	andyzammy	i use ssh to access my box with dyndns, works fine
+2010-10-12T00:57:00.000Z	andyzammy	dagny_taggart	i'm having some trouble with mine - can't seem to ssh using extern ip or url. i'm sure i've opened 22 on both router and firewall but still no joy. don't suppose you'd know how to troubleshoot?
+2010-10-12T00:58:00.000Z	dagny_taggart	andyzammy	when you ping your domain name does it return the same ip address, i.e. your external address?
+2010-10-12T01:00:00.000Z	andyzammy	dagny_taggart	yes it does
+2010-10-12T01:01:00.000Z	dagny_taggart	andyzammy	have your tried ssh with the -v option to see what is happening when you try to connect?
+2010-10-12T01:02:00.000Z	andyzammy	dagny_taggart	just get dabug1 connection then time out messages
+2010-10-12T01:03:00.000Z	dagny_taggart	andyzammy	can you ssh to your box from within your network?
+2010-10-12T01:04:00.000Z	andyzammy	dagny_taggart	yes i can. can use both internal ip address and machine names
+2010-10-12T01:04:00.000Z	dagny_taggart	andyzammy	i would suggest doing a traceroute on your domain name to find out where the connection is stopping
+2010-10-12T01:08:00.000Z	andyzammy	dagny_taggart	i've done it but i can't make any sense out of it. don't fancy putting results into pastebin, any other way i can post u results?
+2010-10-12T01:08:00.000Z	dagny_taggart	andyzammy	pastebin is the way to go
+2010-10-12T01:10:00.000Z	andyzammy	dagny_taggart	http://paste.ubuntu.com/511116/ removed my ip
+2010-10-12T01:11:00.000Z	andyzammy		not sure if that will hinder you?
+2010-10-12T01:13:00.000Z	dagny_taggart	andyzammy	can you ping 213.120.181.17?  It seems to be where your problem is
+2010-10-12T01:13:00.000Z	andyzammy	dagny_taggart	yes i can, 0% loss
+2010-10-12T01:17:00.000Z	dagny_taggart	andyzammy	it seems that server is your issue.  the only thing i can think of is to try your ssh command from a different network to see if that works.  it sounds like you have everything set up correctly so I'm not so sure you are your problem, if you know what i mean
+2010-10-12T01:18:00.000Z	andyzammy	dagny_taggart	yeah i do know what u mean. i'm already able to do that by using my phone's 3g connection to attempt to ssh.... it fails. do you think it could be something to do with the fact that the server is a vm sitting inside another machine??
+2010-10-12T01:20:00.000Z	dagny_taggart	andyzammy	yes, i would say that is your problem.  when you traceroute, are you using the domain name or ip address?
+2010-10-12T01:21:00.000Z	andyzammy	dagny_taggart	i used the ip.. but i don't think that would matter because the domain name points to that ip (they're teh same thing as far as traceroute is concerned, right?) i know for sure only the server vm is able to accept web http server traffic
+2010-10-12T01:22:00.000Z	dagny_taggart	andyzammy	try tracerouting the domain name, seeing as that is what you are trying to connect using
+2010-10-12T01:23:00.000Z	dagny_taggart	andyzammy	but if you are trying to connect to a virtual machine on your box I don't know how to help you :(
+2010-10-12T01:24:00.000Z	andyzammy	dagny_taggart	the results look very similar. okay, thanks for your time :)

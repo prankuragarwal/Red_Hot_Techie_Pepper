@@ -1,0 +1,22 @@
+2009-07-11T22:10:00.000Z	dethray		when I stop gdm to get into the console my system freezes with a black screen. I'm using gdm stop
+2009-07-11T22:11:00.000Z	th0r	dethray	don't stop gdm...use 'init 2'
+2009-07-11T22:11:00.000Z	th0r	dethray	but you can get into a console by pressing Alt-Ctl-F2 and you can get back into x again wwiht Alt-F7
+2009-07-11T22:13:00.000Z	th0r	dethray	a blank screen with what? init 2?
+2009-07-11T22:14:00.000Z	th0r	dethray	init 2 should force a reboot into a command line login prompt
+2009-07-11T22:14:00.000Z	th0r	dethray	does it reboot or just lock up?
+2009-07-11T22:16:00.000Z	th0r	dethray	right...you'll need sudo
+2009-07-11T22:17:00.000Z	th0r	dethray	oops...too many years in suse....you need init 1 and it will force single user mode. In ubuntu there is no non-X multiuser mode
+2009-07-11T22:17:00.000Z	th0r	dethray	but if you want such a login why not use Alt-Ctl-F2-F6....you can have five command prompts plus X running at once
+2009-07-11T22:21:00.000Z	th0r	dethray	what...init 2?
+2009-07-11T22:21:00.000Z	th0r	dethray	did it start a reboot or freeze before loading grub to restart?
+2009-07-11T22:22:00.000Z	th0r	dethray	sounds like a problem with shutdown. If you try to shutdown the computer from X does it shut down OK?
+2009-07-11T22:23:00.000Z	th0r	dethray	from the desktop, if you press Alt-Ctl-F2 do you get to a command prompt?
+2009-07-11T22:24:00.000Z	th0r	dethray	hmmm....might be an issue with the framebuffer driver for non-X video...haven't messed with Framebuffer in years
+2009-07-11T22:25:00.000Z	th0r	dethray	sounds like graphic (X) video works OK, but not the text mode...just the opposite of what everyone else complains about <smile>
+2009-07-11T22:33:00.000Z	th0r	dethray	I think you just need to type 'single' into the grub options line when it appears
+2009-07-11T22:33:00.000Z	th0r	dethray	but that I think forces a boot into runlevel 1 just like init 1 does...so will probably lock your system up
+2009-07-11T22:36:00.000Z	th0r	dethray	what is your screen resolution?
+2009-07-11T22:38:00.000Z	th0r	dethray	next time it boots, type 'vga=792' on the grub options line and then see if Alt-Ctl-F2 works
+2009-07-11T22:38:00.000Z	th0r	dethray	that will force 1024x768 for text mode
+2009-07-11T22:45:00.000Z	dethray	th0r	its gotta be these nvidia ddrivers.  the framebuffer worked fine at boot...
+2009-07-11T22:46:00.000Z	th0r	dethray	forcing 1024x768 didn't help?

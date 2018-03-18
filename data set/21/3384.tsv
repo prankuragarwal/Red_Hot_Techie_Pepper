@@ -1,0 +1,21 @@
+2010-06-08T03:50:00.000Z	Jordan_U	cheekee	"sudo update-grub" doesn't add a menu entry for fedora?
+2010-06-08T03:52:00.000Z	cheekee	Jordan_U	No. It only adds the chainloader Fedora 13 menu, but that boots straight to Windows, ignoring the 2 Fedora kernels, just above it on the menu
+2010-06-08T03:53:00.000Z	Jordan_U	cheekee	Can you pastebin your grub.cfg?
+2010-06-08T03:54:00.000Z	cheekee	Jordan_U	 ok
+2010-06-08T03:58:00.000Z	cheekee	Jordan_U	 http://pastebin.ca/1878733
+2010-06-08T03:58:00.000Z	Jordan_U	cheekee	Did you know that you have grub legacy installed to your mbr and not grub2?
+2010-06-08T04:06:00.000Z	cheekee	Jordan_U	sorry I was trying to run the bootinfo script in Fedora but I don't know how to
+2010-06-08T04:07:00.000Z	cheekee	Jordan_U	and I didn't get any prev. msgs
+2010-06-08T04:07:00.000Z	Jordan_U	cheekee	Right now Fedora is controlling the boot menu, and not giving an option to boot Ubuntu. I am pretty sure that if you let Ubuntu controll the boot menu, it will give an option to boot fedora
+2010-06-08T04:09:00.000Z	Jordan_U	cheekee	Then follow this guide to install Ubuntu's grub2 to your mbr: http://grub.enbug.org/Grub2LiveCdInstallGuide
+2010-06-08T04:09:00.000Z	Jordan_U	cheekee	It will work just the same from your fedora installation as it would if you were running in a liveCD
+2010-06-08T04:10:00.000Z	cheekee	Jordan_U	 sorry that is an old bootinfo...since then I used superdisk to update Ubuntu10  and it wrestled back control of the boot up from Fedora 13, while installing ne kernel
+2010-06-08T04:11:00.000Z	Jordan_U	cheekee	Ok, can you run the boot info script again to give the current situation?
+2010-06-08T04:16:00.000Z	cheekee	Jordan_U	I'm really sorry, but I don't know the instructions to run the bootinfo script in Fedora either as root or as user....I have tried for about 5 mins but nothing seems to work
+2010-06-08T04:17:00.000Z	Jordan_U	cheekee	I thought you were booted into Ubuntu right now?
+2010-06-08T04:17:00.000Z	cheekee	Jordan_U	No I use the supergrubdisk to boot into Fedora
+2010-06-08T04:20:00.000Z	Jordan_U	cheekee	Ok, to run the boot info script from fedora run: su -c "bash /path/to/bootinfoscript.sh"
+2010-06-08T04:40:00.000Z	Jordan_U	cheekee	Can you use pastebin to give a link to the boot info script output? (do *not* paste it into the channel)
+2010-06-08T04:45:00.000Z	cheekee	Jordan_U	http://ubuntu.pastebin.com/MXpczFdZ
+2010-06-08T04:48:00.000Z	Jordan_U	cheekee	Remove the echo, cat << EOF, etc from /etc/grub.d/40_custom. That's already dealt with with the tail command at the top of the file
+2010-06-08T04:48:00.000Z	Jordan_U	cheekee	Whatever you put in /etc/grub.d/40_custom will be added verbatum into your grub.cfg

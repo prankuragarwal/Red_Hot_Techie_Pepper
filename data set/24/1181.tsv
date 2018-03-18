@@ -1,0 +1,24 @@
+2010-08-28T21:00:00.000Z	lunavorax	jneves	no
+2010-08-28T20:34:00.000Z	jneves	lunavorax	do you have some kind of VM?
+2010-08-28T20:35:00.000Z	lunavorax	jneves	running ? No
+2010-08-28T20:35:00.000Z	jneves	lunavorax	if that's not it, use lsof to find which program is using
+2010-08-28T20:35:00.000Z	jneves	lunavorax	running? you don't need it to be running to take over a CD - which VM?
+2010-08-28T20:36:00.000Z	jneves	lunavorax	check the lsof result
+2010-08-28T20:36:00.000Z	lunavorax	jneves	lsof gives me way too much information how can I sort this out ?
+2010-08-28T20:37:00.000Z	jneves	lunavorax	lsof | grep -i sr0
+2010-08-28T20:37:00.000Z	jneves	lunavorax	or paste the full result and let's us do that for you ;)
+2010-08-28T20:38:00.000Z	lunavorax	jneves	nothing is using sr0 apparently
+2010-08-28T20:38:00.000Z	jneves	lunavorax	it might be the most reasonable thing to do in that case
+2010-08-28T20:38:00.000Z	lunavorax	jneves	to give you all of lsof result ?
+2010-08-28T20:39:00.000Z	jneves	lunavorax	yeah - paste it on pastie.ubuntu.com
+2010-08-28T20:42:00.000Z	lunavorax	jneves	here you go http://paste.ubuntu.com/485021/
+2010-08-28T20:42:00.000Z	jneves	lunavorax	can you repeat with sudo lsof?
+2010-08-28T20:44:00.000Z	lunavorax	jneves	however it doesn't give much information about sr0 with sudo
+2010-08-28T20:44:00.000Z	jneves	lunavorax	it might be using another name - that why I asked for the full list
+2010-08-28T20:45:00.000Z	lunavorax	jneves	http://www.mediafire.com/?t0v63yho330jfc3
+2010-08-28T20:51:00.000Z	jneves	lunavorax	either a) a program is constantly trying to access the cdrom, or b) you need to disable virtualbox services - try b) first
+2010-08-28T20:53:00.000Z	lunavorax	jneves	vbox isn't running at all
+2010-08-28T20:55:00.000Z	jneves	lunavorax	the services are always running - try /etc/init.d/virtualbox-ose stop (if that's the version you're using)
+2010-08-28T20:57:00.000Z	jneves	lunavorax	pstree -p | less - check if the process has children
+2010-08-28T21:00:00.000Z	lunavorax	jneves	excellent ! i was able to localize it
+2010-08-28T21:00:00.000Z	jneves	lunavorax	can you read the cd?

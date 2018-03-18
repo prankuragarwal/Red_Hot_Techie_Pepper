@@ -1,0 +1,24 @@
+2009-05-25T07:44:00.000Z	kwtm		Hi!  Is anyone here running Ubuntu 9.04?  I would like some help.
+2009-05-25T07:46:00.000Z	nickrud	kwtm	the best way to create a menu.lst in ubuntu is to have the system do it. Move the one in /boot/grub/ out of the way (rename, move) then run  sudo update-grub
+2009-05-25T07:47:00.000Z	nickrud	kwtm	try chrooting into the install from another (the live cd, for example) then running the update-grub command
+2009-05-25T07:47:00.000Z	kwtm	nickrud	Oh, will "sudo update-grub" do it if grub has never been installed in the first place?  I will try that.  Ok to do from live Ubuntu CD, right?
+2009-05-25T07:48:00.000Z	nickrud	kwtm	be sure to chroot
+2009-05-25T07:48:00.000Z	kwtm	nickrud	There *is* no install to chroot into; installation didn't complete.  (Well, I guess technically it did.)
+2009-05-25T07:49:00.000Z	nickrud	kwtm	you may need to install grub from inside the install.  chroot is your friend while repairing the system. If the install didn't complete (and grub is the only thing that failed) just installing grub should do it
+2009-05-25T07:49:00.000Z	kwtm	nickrud	Okay... I'll need pointers on how to chroot.  I'm going to read the man page.
+2009-05-25T07:52:00.000Z	nickrud	kwtm	  sudo blkid  in the 8.04 will show you the uuid of the partion
+2009-05-25T07:53:00.000Z	kwtm	nickrud	I'm installing 9.04 on a desktop; I'm just using the 8.04 on my laptop as a reference because I don't have a working 9.04 system to compare to.
+2009-05-25T07:53:00.000Z	nickrud	kwtm	ah. well, you can still do it from the live cd
+2009-05-25T07:54:00.000Z	kwtm	nickrud	Okay, so I would do 'chroot /path/to/rootdir_of_harddrive grub-update'?
+2009-05-25T07:54:00.000Z	nickrud	kwtm	that's part of it. There's some prep work; a sec while I find a reference
+2009-05-25T07:55:00.000Z	kwtm	nickrud	Sorry, that should be 'chroot /path/to/rootdir_of_harddrive sudo update-grub'
+2009-05-25T07:56:00.000Z	nickrud	kwtm	https://help.ubuntu.com/community/RecoveringUbuntuAfterInstallingWindows?action=show&redirect=RestoreGrub#Preparing%20Your%20Working%20Environment has the steps to get a proper chroot env
+2009-05-25T07:58:00.000Z	kwtm	nickrud	Wow, this is great!  I'll try it.  I'll probably be away for a bit.
+2009-05-25T07:58:00.000Z	nickrud	kwtm	good luck I'm hoping that grub is your only issue ;)
+2009-05-25T07:59:00.000Z	kwtm	nickrud	I hope it's the only issue, too.  I can't believe we're at v9.04 and it still can't install itself properly.  Maybe it's SATA that it's having trouble with, or the very large size of the drive.
+2009-05-25T07:59:00.000Z	nickrud	kwtm	I've had problems with mixed sata/pata systems, but otherwise it's installed well
+2009-05-25T09:00:00.000Z	nickrud	kwtm	what was it?
+2009-05-25T09:01:00.000Z	kwtm	nickrud	I put my main partition at the end of my 1.5TB drive.  On manually using grub, it complained that the cylinder was too far out for BIOS to handle.
+2009-05-25T09:01:00.000Z	kwtm	nickrud	so I just put the main partition at the beginning of the drive, and everything went smoothly.
+2009-05-25T09:01:00.000Z	kwtm	nickrud	It would be nice for the installer to pass on these messages so I don'
+2009-05-25T09:01:00.000Z	kwtm	nickrud	don't have to guess at what the problem was.  Geez, man!

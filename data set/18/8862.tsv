@@ -1,0 +1,18 @@
+2007-06-21T10:59:00.000Z	Naisenu		that's all it says
+2007-06-21T11:00:00.000Z	Naisenu		the next line goes on to talk about the fifth field.
+2007-06-21T11:01:00.000Z	Naisenu		the fields were delineated by white space
+2007-06-21T11:02:00.000Z	Naisenu		as indicated by use of the spacebar and shown as one blank space between "ntfs-3g" and "umask=022,gid=1003"
+2007-06-21T11:04:00.000Z	Naisenu		Okay so does anyone else know if my fstab line is correct or not?
+2007-06-21T11:05:00.000Z	Saraphim	Naisenu	Could you link it again please?
+2007-06-21T11:06:00.000Z	Naisenu	Saraphim	http://paste.ubuntu-nl.org/26555/
+2007-06-21T11:07:00.000Z	Saraphim	Naisenu	You have a space between gid=1003 and defaults, this should be a comma I believe.
+2007-06-21T11:09:00.000Z	Naisenu	Saraphim	Ah okay.  ... Now how is a drive unmounted and remounted? I assume that has to be done....
+2007-06-21T11:10:00.000Z	Saraphim	Naisenu	sudo umount /path/to/mount and then sudo mount /path/to/mount
+2007-06-21T11:12:00.000Z	Saraphim	Naisenu	Er, what mask are you seeing on that drive?
+2007-06-21T11:13:00.000Z	Naisenu	Saraphim	this mask: drwxr-xr-x 1 root dutton 12288 2007-06-14 20:22 hdb1
+2007-06-21T11:14:00.000Z	Saraphim	Naisenu	Then the mask you set in fstab is wrong.
+2007-06-21T11:14:00.000Z	Saraphim	Naisenu	only root has rwx access on that mask
+2007-06-21T11:15:00.000Z	Naisenu	Saraphim	Okay what do I need to do to make group "dutton" have rw?
+2007-06-21T11:16:00.000Z	Saraphim	Naisenu	Should be 770 or something, right? I honestly can't remember.
+2007-06-21T11:17:00.000Z	Naisenu	Saraphim	Would that be the umask section i'm changing? Or something else?
+2007-06-21T11:17:00.000Z	Saraphim	Naisenu	yes, that would be the umask. You've already set the group ID, now you need to set the umask so that the group gets rws access.

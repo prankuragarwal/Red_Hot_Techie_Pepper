@@ -1,0 +1,23 @@
+2007-03-25T08:30:00.000Z	rg535748		I have an external ntfs hard drive (usb connection) that I can't seem to read from under my default user, only under root. Can someone help me with my fstab please?
+2007-03-25T08:30:00.000Z	bruenig	rg535748	what does that line of the fstab say?
+2007-03-25T08:31:00.000Z	bruenig	rg535748	did you set that up?
+2007-03-25T08:32:00.000Z	bruenig	rg535748	but you wrote that, not the installer, well you must have, it is mounted on the desktop for some strange reason
+2007-03-25T08:33:00.000Z	rg535748	bruenig	 Yes, I wrote it myself. Should it be someplace else?
+2007-03-25T08:33:00.000Z	bruenig	rg535748	put it where you want, the rw needs to go because you can't write to ntfs
+2007-03-25T08:34:00.000Z	bruenig	rg535748	change the "auto" to "ntfs" and I would change the options to something like "ro,user,auto,fmask=0111,dmask=0000
+2007-03-25T08:36:00.000Z	rg535748	bruenig	/dev/sdb1 /home/rg535748/Desktop/EXTERNAL ntfs ro,user,auto,fmask=0111,dmask=0000 0 0
+2007-03-25T08:36:00.000Z	bruenig	rg535748	yeah, you can change it to "users" too like you had it. I don't know why I didn't leave that intact
+2007-03-25T08:36:00.000Z	rg535748	bruenig	What do I have to put there to allow my default user (I guess his ID would be like 1000) to access it?
+2007-03-25T08:37:00.000Z	bruenig	rg535748	the fmask and dmask should take care of that
+2007-03-25T08:37:00.000Z	rg535748	bruenig	I did that, did sudo mount -a, and still can't access it.
+2007-03-25T08:38:00.000Z	bruenig	rg535748	you should be able to, if you want to add uid=1000 to it, you can try
+2007-03-25T08:39:00.000Z	rg535748	bruenig	 bash: cd: EXTERNAL/: Permission denied
+2007-03-25T08:40:00.000Z	bruenig	rg535748	should work
+2007-03-25T08:40:00.000Z	rg535748	bruenig	Doesn't, and I don't know why. :(
+2007-03-25T08:40:00.000Z	bruenig	rg535748	the fmask and dmask is setup to allow anyone to read it
+2007-03-25T08:40:00.000Z	bruenig	rg535748	don't know can you sudo cd into it
+2007-03-25T08:41:00.000Z	rg535748	bruenig	sudo gives me a 'cd command not found'
+2007-03-25T08:42:00.000Z	bruenig	rg535748	yeah don't know. Did you unmount it before you sudo mount -a
+2007-03-25T08:42:00.000Z	rg535748	bruenig	How do I unmount it?
+2007-03-25T08:42:00.000Z	bruenig	rg535748	sudo unmount /dev/sdb1
+2007-03-25T08:44:00.000Z	bruenig	rg535748	ok good

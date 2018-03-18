@@ -1,0 +1,19 @@
+2012-09-06T20:08:00.000Z	srj55		Hi!  What is a good, simple way to do snapshot backups of my ubuntu server?  I want to take daily or on demand snapshots of my main disk (about 5GB) and be able to completely restore back to the state of any snapshot.
+2012-09-06T20:09:00.000Z	smw	srj55	xfs has support for snapshots
+2012-09-06T20:09:00.000Z	smw	srj55	you can also use lvm
+2012-09-06T20:10:00.000Z	srj55	smw	what's the most popular? something simple for newbs
+2012-09-06T20:11:00.000Z	srj55	smw	 I see a whole bunch here:  https://help.ubuntu.com/community/BackupYourSystem
+2012-09-06T20:12:00.000Z	smw	srj55	you are right now looking for something that has no newb answer
+2012-09-06T20:13:00.000Z	srj55	smw	alright, a couple steps up from a newb
+2012-09-06T20:14:00.000Z	smw	srj55	lvm snapshots tend to be expensive
+2012-09-06T20:14:00.000Z	smw	srj55	I don't think I would do it every day
+2012-09-06T20:14:00.000Z	smw	srj55	I would probably do an xfs snapshot and then back that up
+2012-09-06T20:15:00.000Z	srj55	smw	ok, right now i use linode, and they have a great backup manager.  i want to switch to a dedicated setup and wondered if I can get a similar tool that allows on demand or nightly snapshots.
+2012-09-06T20:16:00.000Z	srj55	smw	hwilde_ : yes, i want a complete server backup
+2012-09-06T20:17:00.000Z	smw	srj55	so then yes, I would use xfs to snapshot and then copy all the files from the snapshot
+2012-09-06T20:18:00.000Z	srj55	smw	alright, xfs, i'll check it out.  thanks!
+2012-09-06T20:18:00.000Z	smw	srj55	watch out though. If you are running mysql or something, you may want to make sure it syncs disk and locks tables first
+2012-09-06T20:20:00.000Z	srj55	smw	yeah, or just shut down the service, do the sync, then bring it back up?
+2012-09-06T20:21:00.000Z	smw	srj55	I guess?
+2012-09-06T20:21:00.000Z	smw	srj55	sorry I am just realizing that not everyone has the same uptime requirements I do :-P
+2012-09-06T20:24:00.000Z	srj55	smw	 hmm, i use postgres on linode, and just do snapshots at 3am during "low" usage...never really considered (nor how to do) sync disk and locking...maybe bad a idea

@@ -1,0 +1,22 @@
+2009-07-02T22:41:00.000Z	silidan		is there a way to automatically rebuild the tree /var/cache ?
+2009-07-02T22:42:00.000Z	mdm	silidan	????
+2009-07-02T22:43:00.000Z	mdm	silidan	reboot the system qand crash recover everything that you just wiped out its runing cache.  Most thing can recover from that
+2009-07-02T22:45:00.000Z	silidan	mdm	you mean by running dpkg-reconfigure?
+2009-07-02T22:46:00.000Z	mdm	silidan	/var/cache is a place for programs to store things like state data and running data.  Apt put things like its repo cache output there.  You can rerun any program and it will recreate them.  Sometimes you need to trigger it, with an update, sometimes it will do it on its own.  But whatever you wiped out will make the programs unstable, reboot the system
+2009-07-02T22:47:00.000Z	silidan	mdm	i already rebooted and apt update only worked after i created the path it said it could not read (cause it wasnt there)
+2009-07-02T22:47:00.000Z	silidan	mdm	nothing recreates itself, unless the path already exists
+2009-07-02T22:47:00.000Z	silidan	mdm	at least this is what i observed
+2009-07-02T22:48:00.000Z	mdm	silidan	rerun apt-get update
+2009-07-02T22:50:00.000Z	silidan	mdm	after it was run finishing with done, i get without doing anything the following error:
+2009-07-02T22:51:00.000Z	silidan	mdm	Failed to open connection to "system" message bus: Failed to connect to socket /var/run/dbus/system_bus_socket : no such file or directory
+2009-07-02T22:51:00.000Z	mdm	silidan	restart dbus, also you may have to go recreate the directories by hand
+2009-07-02T22:52:00.000Z	silidan	mdm	no shit?, that was why i was asking if there is an automated way of doing all this
+2009-07-02T22:52:00.000Z	mdm	silidan	yes reinstall the OS.  we call this a learning experience
+2009-07-02T22:54:00.000Z	mdm	silidan	this is multiple programs that you have screwed up its running state and its data.  You can fix them, one by one, or you can reinstall the OS and let it do it.  Either way do not go deleting /var any more
+2009-07-02T22:55:00.000Z	mdm	silidan	yes you will loose all the data in them, go copy your /home directory and /etc directory somewhere (home is your persoanl files, etc will allow you get get any custom configs back)
+2009-07-02T22:55:00.000Z	mdm	silidan	co make a tar backup of them, we call this a learning experiance too
+2009-07-02T22:57:00.000Z	mdm	silidan	tar and gzip the files in home, store them somwhere else, reinstall the OS (this time making a seperate root and home parition) then reinstal and restore the backup
+2009-07-02T23:01:00.000Z	mdm	silidan	go reinstall, putting about 25G or so as root the rest as home.  Pay attention to the size of /usr/src and /var/log.  But basicly you can spend multipel hours diagnosing programs, or you can reinstall the OS
+2009-07-02T23:02:00.000Z	mdm	silidan	those 4 days is why I suggested backing up /etc as well.  Things like /etc/asound.conf, /etc/X11/xorg.conf, all of /etc/mail and /etc/samba are there
+2009-07-02T23:03:00.000Z	mdm	silidan	basicly all that "stuff" you configured by hand is there.  Everything else (like your gnome settings) are in /home so back that up too
+2009-07-02T23:03:00.000Z	mdm	silidan	then relay out the OS so you dont have to do this yet again in the future.  The more painfull this is the more you will learn

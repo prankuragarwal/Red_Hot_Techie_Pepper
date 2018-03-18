@@ -1,0 +1,24 @@
+2009-08-28T16:08:00.000Z	kedars		I have one static and one dhcp interface. I want that the "gateway" of the dhcp interface should take effect, but it always picks that of the static ip address
+2009-08-28T16:08:00.000Z	kedars		any idea how to fix this?
+2009-08-28T16:08:00.000Z	Gnea	kedars	how are you setting the static interface?
+2009-08-28T16:09:00.000Z	kedars	Gnea	here is my sample interfaces file http://pastebin.com/m6450780b
+2009-08-28T16:09:00.000Z	kedars		my gateway always shows up as 192.168.1.1 instead of that received with the eth0 dhcp
+2009-08-28T16:14:00.000Z	Gnea	kedars	are you using regular ubuntu or ubuntu-sever?
+2009-08-28T16:15:00.000Z	kedars	Gnea	I am actually using this on ubuntu-arm. I just did "apt-get install network-manager"
+2009-08-28T16:16:00.000Z	Gnea	kedars	okay, then the network-manager should be used to set the interface static, not the interfaces file - as soon as you edit interfaces file, network-manager won't touch it
+2009-08-28T16:17:00.000Z	kedars	Gnea	I am not sure I understand. Do you mean use the NetworkManager gui?
+2009-08-28T16:17:00.000Z	Gnea	kedars	if you'd like to reset it and start from scratch with networkmanager, then use this: http://pastebin.com/m512e1d63
+2009-08-28T16:17:00.000Z	kedars	Gnea	this is a text-only system,
+2009-08-28T16:17:00.000Z	Gnea	kedars	okay, i thought ubuntu-arm would be a gui
+2009-08-28T16:18:00.000Z	Gnea	kedars	if you're going to use only the /etc/network/interfaces file, then you don't need NetworkManager
+2009-08-28T16:18:00.000Z	Gnea	kedars	you can use one or the other, but not both
+2009-08-28T16:18:00.000Z	kedars	Gnea	Oh I see. So is there any other configuration file for NetworkManager that I should edit then?
+2009-08-28T16:19:00.000Z	Gnea	kedars	it doesn't work that way. you either use the networkmanager GUI, or edit the file. that's it, there is no other way (Except for wicd, but even that's GUI too). since you have no GUI, stick with /etc/network/interfaces and make sure you add more than you have... sec
+2009-08-28T16:20:00.000Z	kedars	Gnea	oh ok. But the /etc/network/interfaces solution doesn't seem to work... :(
+2009-08-28T16:21:00.000Z	Gnea	kedars	try to make it look like this: http://pastebin.com/m6fb31ef1
+2009-08-28T16:21:00.000Z	Gnea	kedars	that's because you didn't put enough
+2009-08-28T16:22:00.000Z	Gnea		okay, too many Callum's
+2009-08-28T16:22:00.000Z	Gnea		one of you please change
+2009-08-28T16:22:00.000Z	kedars	Gnea	ohh ok. let me check that
+2009-08-28T16:22:00.000Z	Gnea		that's just wrong, are you trying to be confusing on purpose?
+2009-08-28T16:24:00.000Z	kedars	Gnea	no luck :| same problem

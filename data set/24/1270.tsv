@@ -1,0 +1,24 @@
+2010-05-15T02:23:00.000Z	dbee		yeah
+2010-05-15T02:23:00.000Z	dbee		it works perfectly when the external is connectedr
+2010-05-15T02:23:00.000Z	dbee		connected*
+2010-05-15T02:24:00.000Z	dbee		if the external is not connected grub rescue comes up and i do not have that option
+2010-05-15T02:24:00.000Z	dbee		it points to the device UUID and says it cant find it
+2010-05-15T02:25:00.000Z	dbee		do i need to /mount /dev/sda1 or something
+2010-05-15T02:27:00.000Z	dbee		its grub rescue i have to enter a command
+2010-05-15T02:28:00.000Z	dbee		/etc/default/grub/ works with grub rescue?
+2010-05-15T02:30:00.000Z	dbee		can someone please help me
+2010-05-15T02:30:00.000Z	dbee		i am in need of serious help
+2010-05-15T02:31:00.000Z	Traintop	dbee	what's your problem: I just entered the channel...
+2010-05-15T02:33:00.000Z	Traintop	dbee	yeah I know, I'm trying to help you: but I have to know your problem... :-)
+2010-05-15T02:34:00.000Z	Traintop	dbee	looks like you set up your ubuntu to use your internal first disk for the grub-booter, which you shouldn't do in this scenario
+2010-05-15T02:35:00.000Z	Traintop	dbee	set the boot-record of your external for this and let the internal managed by win/proprietary os...
+2010-05-15T02:39:00.000Z	Traintop	dbee	if you set up a discs first sector to contain grub it "hard codes" to look for config-files,etc, if this disc isn't there, it can't find them so you end up in rescue mode or just hanging the system, if you want to be able to boot your system without the external disc you have to leave the internal discs managed by the proprietary os installed on them (I assume this would be windows :-))
+2010-05-15T02:40:00.000Z	Traintop	dbee	then set your bios to boot the external disc before the internal ones and let grub enter the first sector of the external one
+2010-05-15T02:41:00.000Z	Traintop	dbee	I am no windows geek, but there is some command involving "-fixmbr" to do that from win, then boot ubuntu from live-cd and install/reinstall linux on the external one and when it comes to install grub, be sure you select the external drive as the location of grub
+2010-05-15T02:42:00.000Z	Traintop	dbee	linexh posted the command
+2010-05-15T02:43:00.000Z	Traintop	dbee	in windows command-line-mode
+2010-05-15T02:50:00.000Z	Traintop	dbee	what other thing?
+2010-05-15T02:52:00.000Z	Traintop	dbee	sorry, but acpi settings in ubuntu is far beyond my knowledge, perhaps somone else can help you, but here I have to give up... :-(
+2010-05-15T02:52:00.000Z	Traintop	dbee	what do you mean by "update everything" ?
+2010-05-15T02:54:00.000Z	Traintop	dbee	this should normally be handled by either synaptic or the update-manager; all gui-apps, so quite self-explanatory
+2010-05-15T02:56:00.000Z	Traintop	dbee	you're welcome :-)

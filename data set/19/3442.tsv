@@ -1,0 +1,19 @@
+2010-08-06T08:43:00.000Z	Crell		Hi folks.  I recently upgraded my 9.10 system to 10.04.  As always it's been a bit bumpy, but of note is that PHP seems to not be active anymore.  It says it's enabled in the Apache log when I restart apache, but if I visit a PHP page I simply get a download offer back from the web server.  Any idea what could have broken?  I've not seen this sort of problem in years.
+2010-08-06T08:45:00.000Z	Watson516	Crell	if I'm not mistaken, apache changed something during one of the updates which will cause that problem
+2010-08-06T08:46:00.000Z	Watson516	Crell	it's been a while since I had to deal with it
+2010-08-06T08:47:00.000Z	Crell	Watson516	Found it.  Apparently the default configuration for apache2/php5.conf disables PHP for all public_html directories.
+2010-08-06T08:49:00.000Z	Watson516	Crell	yeah, that sounds familiar lol
+2010-08-06T08:59:00.000Z	Watson516	Crell	have you restarted the server?
+2010-08-06T09:01:00.000Z	Watson516	Crell	interesting...
+2010-08-06T09:02:00.000Z	Crell	Watson516	Frustrating... :-)
+2010-08-06T09:05:00.000Z	Watson516	Crell	does this help? http://ubuntuforums.org/showthread.php?p=5780073
+2010-08-06T09:09:00.000Z	Crell	Watson516	No, I don't think so.  The packages are already installed and the DirectoryIndex is being set by an .htaccess file.  AllowOverride is set to All.
+2010-08-06T09:14:00.000Z	Watson516	Crell	if you remove the .htaccess file, does it work?
+2010-08-06T09:15:00.000Z	Crell	Watson516	Nope.  I renamed .htaccess to just htaccess.  No change.  Still works in Konqueror but not Firefox.
+2010-08-06T09:21:00.000Z	Watson516	Crell	Sorry, I have no idea what would cause that...are the headers set correctly? Maybe Firefox is more strict?
+2010-08-06T09:21:00.000Z	Watson516	Crell	is it just the index or any php?
+2010-08-06T09:24:00.000Z	Crell	Watson516	Other PHP files work fine, as does index.php if I access it directly.
+2010-08-06T09:25:00.000Z	Crell	Watson516	The return mimetype is text/html it looks like, according to wget.
+2010-08-06T09:27:00.000Z	Watson516	Crell	how are you accessing index when it doesn't work?
+2010-08-06T09:28:00.000Z	Crell	Watson516	Going to http://localhost/~me/foo/ in Firefox.
+2010-08-06T09:40:00.000Z	Crell	Watson516	sacarlson: Well I just tried both the HTML and PHP versions.  Firefox still wants to download the file.

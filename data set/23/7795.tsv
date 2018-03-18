@@ -1,0 +1,23 @@
+2007-09-12T09:09:00.000Z	Bassxman1		i have no sound
+2007-09-12T09:09:00.000Z	nickrud	Bassxman1	what chip & laptop?
+2007-09-12T09:11:00.000Z	nickrud	Bassxman1	the old isa one?
+2007-09-12T09:16:00.000Z	nickrud	Bassxman1	was away, did you find a fix yet
+2007-09-12T09:18:00.000Z	nickrud	Bassxman1	if it doesn't work, there's some instructions for a sb16 (blast from the past!) at https://help.ubuntu.com/community/HowToSetupSoundCards
+2007-09-12T09:24:00.000Z	nickrud	Bassxman1	that sounds like the wrong module for the card
+2007-09-12T09:25:00.000Z	nickrud	Bassxman1	look at that page I gave; it explains how to set up the non-pnp card you have
+2007-09-12T09:35:00.000Z	nickrud	Bassxman1	I'm no sound expert, but I can help you follow those instructions.
+2007-09-12T09:36:00.000Z	nickrud	Bassxman1	are you at https://help.ubuntu.com/community/HowToSetupSoundCards
+2007-09-12T09:37:00.000Z	nickrud	Bassxman1	about 1/4 of the way down, it lists sb16 as an example
+2007-09-12T09:39:00.000Z	nickrud	Bassxman1	add      snd-sb16   on a line by itself at the bottom
+2007-09-12T09:41:00.000Z	nickrud	Bassxman1	ok, ctl-X to exit, and save it
+2007-09-12T09:42:00.000Z	nickrud	Bassxman1	just let it keep the old one. There was other stuff in that file you opened, right?
+2007-09-12T09:43:00.000Z	nickrud	Bassxman1	after you save it, type     cat /etc/modules    and verify it's ok
+2007-09-12T09:44:00.000Z	nickrud	Bassxman1	that will be an empty, new file
+2007-09-12T09:46:00.000Z	nickrud	Bassxman1	ok, now hightlight the line in the instructions that starts with options snd-sb16 , move the mouse to the terminal window and press the middle button
+2007-09-12T09:47:00.000Z	nickrud	Bassxman1	that web page I gave you
+2007-09-12T09:49:00.000Z	nickrud	Bassxman1	close and save, cat /etc/modprobe.d/alsa-sb16 to verify again
+2007-09-12T09:51:00.000Z	nickrud	Bassxman1	ok, now    sudo modprobe snd-sb16   ; there should be no output at all
+2007-09-12T09:52:00.000Z	nickrud	Bassxman1	now type     alsamixer     and run up the volumes to about 70%
+2007-09-12T09:53:00.000Z	nickrud	Bassxman1	ok, play some music
+2007-09-12T09:54:00.000Z	nickrud	Bassxman1	to exit, hit escape.  Also, be sure you raised master/main and pcm
+2007-09-12T09:59:00.000Z	nickrud	Bassxman1	yw

@@ -1,0 +1,18 @@
+2008-02-13T20:19:00.000Z	L3ttuc3		however, i had a nap today, and while system went into power-save mode (blank lcd screen, though not turned off), for some reason, my usb devices also stopped responding (keyboard and mouce). i tried to modprobe -r usbhid and that worked, but modprobe usbhid hung. also, system load average was hovering around 6. reboot stalled as well.
+2008-02-13T20:20:00.000Z	L3ttuc3		this is the second time i'm having the issue with the usb peripherals.
+2008-02-13T20:21:00.000Z	MasterShrak	L3ttuc3	powersave modes (standby, hibernate) have never had a good reputation in linux, it doesnt surprise me that you are having difficulties after resuming
+2008-02-13T20:24:00.000Z	L3ttuc3	MasterShrak	it's not exactly full powersave. it only blanks the lcd screen, does not even turn it off. everything else was working fine.
+2008-02-13T20:24:00.000Z	L3ttuc3	MasterShrak	i mean, it hadn't suspended or hibernated.
+2008-02-13T20:24:00.000Z	MasterShrak	L3ttuc3	you are sure it isnt going into a standby mode or anythign?
+2008-02-13T20:25:00.000Z	L3ttuc3	MasterShrak	positive, the only thing it does is blank the lcd screen, and not turned off. i can use Fn key on laptop keyboard and the little lcd icon, and that really turns the backlight off, because it goes darker, so no, it just blanks it. and it's not in standby, or hibernate either.
+2008-02-13T20:26:00.000Z	MasterShrak	L3ttuc3	very weird, i would check some forums or somethign to see if anyoen else is experiencing this
+2008-02-13T20:27:00.000Z	L3ttuc3	MasterShrak	i would, but the search parameters are exceedingly vague, i suspect i'll get a lot of false positive hits.
+2008-02-13T20:27:00.000Z	MasterShrak	L3ttuc3	true
+2008-02-13T20:27:00.000Z	L3ttuc3	MasterShrak	had similar issues with usbhid the last time it happened too, this time however, i hadn't removed the module, but lsusb hung as well.
+2008-02-13T20:28:00.000Z	L3ttuc3	MasterShrak	and all i get from kern.log is a generic message like: 5684.344000] usb 6-6.3: USB disconnect, address 8
+2008-02-13T20:28:00.000Z	MasterShrak	L3ttuc3	try rmmod'ing the module and modprobe'ing it
+2008-02-13T20:29:00.000Z	L3ttuc3	MasterShrak	i did that after it stopped working, what i said earlier. modprobe usbhid hung. had to ctrl+c out of it, although after bootup it reloaded it automatically, so it must have written something in modules.conf or wherever those modules listings are kept before failing to actually do something.
+2008-02-13T20:31:00.000Z	L3ttuc3	MasterShrak	well, to summarise, after the problem happens, modprobe usbhid and lsusb both hang.
+2008-02-13T20:31:00.000Z	MasterShrak	L3ttuc3	wow, sorry dude i dunno what to tell ya, ive never had problems with my laptop and that sort of thing, but different hardware acts differently
+2008-02-13T20:32:00.000Z	L3ttuc3	MasterShrak	i know :) couple of pointers would be enough. i was hoping one of the other guys around here might have had an idea where to look.
+2008-02-13T20:43:00.000Z	L3ttuc3	MasterShrak	there have been similar issues i see on launchpad. nothing definite.

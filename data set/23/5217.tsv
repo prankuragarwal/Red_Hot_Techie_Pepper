@@ -1,0 +1,23 @@
+2008-09-04T13:40:00.000Z	xukun		Hi all. I did sudo dpkg -i vnc-e_4.4.2_amd64.deb but know I get  this: The following packages have unmet dependencies:
+2008-09-04T13:40:00.000Z	xukun		  vnc-e: Depends: libstdc++5 (>= 1:3.3.4-1) but it is not installed
+2008-09-04T13:42:00.000Z	xukun		anybody please
+2008-09-04T13:44:00.000Z	unop	xukun	why aren't you installing vnc from the repos?
+2008-09-04T13:46:00.000Z	xukun	unop	we have a switch here for remote management which have pre-installed vnc-sever I the only vncviewer that works is the one from realvnc
+2008-09-23T01:04:00.000Z	unop	xukun	how exactly are you mounting the nfs export?
+2008-09-23T01:06:00.000Z	xukun	unop	sorry I get that message after I do  sudo /etc/init.d/nfs-kernel-server restart  on the nfs server
+2008-09-23T01:08:00.000Z	xukun	unop	any idea?
+2008-09-23T01:09:00.000Z	unop	xukun	i'm guessing that you shared a device (mounted at /media/FREECOM) with NFS at some point - but it's perhaps no longer available?
+2008-09-23T01:10:00.000Z	unop	xukun	does /media/FREECOM exist?
+2008-09-23T01:10:00.000Z	xukun	unop	yes. /dev/sdc1 on /media/FREECOM type fuseblk (rw,nosuid,nodev,noatime,allow_other,blksize=4096)
+2008-09-23T01:11:00.000Z	unop	xukun	is there an entry for /media/FREECOM in /etc/exports ?
+2008-09-23T01:12:00.000Z	unop	xukun	i think milt15 confused NFS with NTFS
+2008-09-23T01:13:00.000Z	xukun	unop	yes /media/FREECOM/ 192.168.1.0/24(rw,no_root_squash,async)
+2008-09-23T01:15:00.000Z	unop	xukun	perhaps NFS does not like FUSE mounted volumes? a guess again.  do other exports work properly, if you have any?
+2008-09-23T01:15:00.000Z	xukun	unop	I just did sudo export -a and then I this message now: exportfs: Warning: /media/FREECOM does not support NFS export.
+2008-09-23T01:16:00.000Z	xukun	unop	yes I have one other directory on server, it mount without any problem
+2008-09-23T01:16:00.000Z	unop	xukun	try this.  sudo mkdir /media/freecom; sudo mount --bind /media/FREECOM /media/freecom;  # then change the /etc/exports entry to /media/freecom - then  export -a
+2008-09-23T01:24:00.000Z	xukun	unop	then it says: sudo mkdir /media/freecom; sudo mount --bind /media/FREECOM /media/freecom
+2008-09-23T01:25:00.000Z	unop	xukun	ok, use another name (one that doesn't exist already in /media/) -  sudo mkdir /media/something; sudo mount --bind /media/FREECOM /media/something
+2008-09-23T01:29:00.000Z	xukun	unop	sorry but I think this command is not ok becouse even after I rm -r /media/freecom it recreates the freecom directory after I run that command and it also gives me the error
+2008-09-23T01:33:00.000Z	xukun	unop	thanks for your help. but I will just leave things for a while
+2008-09-23T01:33:00.000Z	unop	xukun	no worries

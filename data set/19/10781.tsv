@@ -1,0 +1,19 @@
+2007-11-29T21:04:00.000Z	Overand		I just changed sshd to run on a nonstandard port, and did /etc/init.d/ssh restart
+2007-11-29T21:04:00.000Z	Overand		but now i get connection closed by (ip address) when I try to ssh in - any ideas?
+2007-11-29T21:04:00.000Z	ikonia	Overand	you need to specify the port
+2007-11-29T21:04:00.000Z	Overand	ikonia	I'm specifying it
+2007-11-29T21:05:00.000Z	ikonia	Overand	firewall ?
+2007-11-29T21:05:00.000Z	Overand	ikonia	this isn't the first machine I've done this to, but it's the first ubuntu machine i've done it to
+2007-11-29T21:06:00.000Z	Overand	ikonia	iptables --list shsows no rules
+2007-11-29T21:06:00.000Z	ikonia	Overand	is sshd listening on that port ?
+2007-11-29T21:07:00.000Z	Overand	ikonia	yep.  i can even telnet in to that port and i get an OpenSSH 'prompt'
+2007-11-29T21:07:00.000Z	ikonia	Overand	thats odd
+2007-11-29T21:09:00.000Z	ikonia	Overand	could be something random
+2007-11-29T21:13:00.000Z	Overand	ikonia	ah.   something is already listening on that port, ipv6...?
+2007-11-29T21:13:00.000Z	ikonia	Overand	nice one !
+2007-11-29T21:13:00.000Z	Overand	ikonia	I switched it to a different port and it works fine - How can I figure out what the heck 'tcp6' is listening to on ::8022 ?
+2007-11-29T21:25:00.000Z	Overand	ikonia	I figured it out.
+2007-11-29T21:26:00.000Z	ikonia	Overand	?
+2007-11-29T21:26:00.000Z	Overand	ikonia	one of the times I ran /etc/init.d/ssh restart, I did it as a normal user
+2007-11-29T21:26:00.000Z	ikonia	Overand	ah
+2007-11-29T21:26:00.000Z	Overand	ikonia	so a normal-user had that port open!

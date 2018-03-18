@@ -1,0 +1,24 @@
+2008-05-09T08:36:00.000Z	bpat1434		how can I disable "standby" mode in 8.04?
+2008-05-09T08:37:00.000Z	harriseldon	bpat1434	do you mean make it so that closing the lid does not trigger it or to remove it completely from the logoff menu?
+2008-05-09T08:38:00.000Z	bpat1434	harriseldon	As in to stop my computer from EVER going into standby... it kills my computer.  The screen fails to reinitialize
+2008-05-09T08:39:00.000Z	harriseldon	bpat1434	have you looked at this wiki for debugging suspend? https://wiki.ubuntu.com/DebuggingKernelSuspend
+2008-05-09T08:39:00.000Z	bpat1434	harriseldon	no, didn't know it existed :)
+2008-05-09T08:40:00.000Z	harriseldon	bpat1434	I also saw this http://ubuntuforums.org/showthread.php?t=440225
+2008-05-09T08:40:00.000Z	bpat1434	harriseldon	okay, thanks
+2008-10-16T09:11:00.000Z	harriseldon	bpat1434	does sudo mount -a mount them? are they hotplug (ie usb/firewire)? Are you sure the device names are correct? why not use uuid?
+2008-10-16T09:13:00.000Z	bpat1434	harriseldon	not sure of the UUID.  Turns out that some things changed disk-label wise so that /dev/sde was an external drive
+2008-10-16T09:15:00.000Z	harriseldon	bpat1434	using the /dev/disk/by-uuid/ is supposed to eliminate issue with removable drives. It could be that the devices are not there. did sudo mount -a work?
+2008-10-16T09:25:00.000Z	bpat1434	harriseldon	they aren't removable drives.  I figured it out though, I was trying to mount the wrong disk (it was the right disk prior to reboot)\
+2008-10-16T09:26:00.000Z	harriseldon	bpat1434	look at using uuid then. Sometime scsi devices (SATA emulates scsci) initial in different orders each boot.
+2008-10-16T09:30:00.000Z	bpat1434	harriseldon	yeah, just changed them over to UUID
+2008-10-16T09:31:00.000Z	harriseldon	bpat1434	you can write your own udev rules to give the drive whatever aliases you want
+2008-10-16T09:31:00.000Z	bpat1434	harriseldon	documentation?
+2008-10-16T09:32:00.000Z	harriseldon	bpat1434	http://gentoo-wiki.com/UDEV
+2008-10-16T09:34:00.000Z	bpat1434	harriseldon	how would I define what name shows up under the disk icon using udev?
+2008-10-16T09:35:00.000Z	harriseldon	bpat1434	that is the drive label (independent of udev). It depends on the partition type. What partition type?
+2008-10-16T09:35:00.000Z	bpat1434	harriseldon	ext3
+2008-10-16T09:37:00.000Z	harriseldon	bpat1434	the labelling instructions apply to non-usb as well ignore the title https://help.ubuntu.com/community/RenameUSBDrive
+2008-10-16T09:45:00.000Z	bpat1434	harriseldon	when I try to get the info about the disk, I get "Couldn't find valid filesysetem superblock" using "sudo e2label /dev/sdd"
+2008-10-16T09:47:00.000Z	harriseldon	bpat1434	you label the partition, not the device /dev/sdd1 not /dev/sdd
+2008-10-16T09:47:00.000Z	bpat1434	harriseldon	ah, okay
+2008-10-16T09:50:00.000Z	bpat1434	harriseldon	it didn't work.  I used e2label, I can see the label; however, after umounting and mounting they still show as XXX.X GB Media instead of their label

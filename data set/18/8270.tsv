@@ -1,0 +1,18 @@
+2007-09-13T06:24:00.000Z	Marduk		I execute my script by typing ./scriptname ... So after copying it to /etc/init.d, do I type update-rc.d ./scriptname defaults, or is it update-rc.d scriptname defaults? Or is it the same?
+2007-09-13T06:24:00.000Z	bruenig	Marduk	./ simple means current directory
+2007-09-13T06:24:00.000Z	bruenig	Marduk	so when you are dong ./ you are effectively just typing the path to the script
+2007-09-13T06:26:00.000Z	Marduk	bruenig	okay, so I should type update-rc.d ./scriptname defaults, yes?
+2007-09-13T06:26:00.000Z	bruenig	Marduk	no, that you are typing ./ is only a result of the fact you are in the current directory, if you were in another directory, it would be something else
+2007-09-13T06:27:00.000Z	Marduk	bruenig	then how do I get it to run on startup?
+2007-09-13T06:28:00.000Z	bruenig	Marduk	no ./
+2007-09-13T06:28:00.000Z	Marduk	bruenig	but if I go to the directory where the script is located, and type it without the ./, it doesn't work... Thats not a problem?
+2007-09-13T06:29:00.000Z	bruenig	Marduk	no
+2007-09-13T06:29:00.000Z	bruenig	Marduk	./ is like ~
+2007-09-13T06:29:00.000Z	bruenig	Marduk	in terms of paths, it is just a shortcut to be able to give a path to something in order to run it
+2007-09-13T06:29:00.000Z	Marduk	bruenig	okay, I get it now, thanks :)
+2007-09-13T06:31:00.000Z	Marduk	bruenig	it said its adding it in /etc/rc0.d,rc1,rc2,rc3,rc4,rc5.. Whats all that?
+2007-09-13T06:32:00.000Z	bruenig	Marduk	the init system ubuntu uses has 6 directories of symlinks for some baffling reason and so it is adding those symlinks
+2007-09-13T06:33:00.000Z	Marduk	bruenig	okay.. Will it also get executed after resuming from hibernation, or only when the system's turned on after a normal shutdown / reboot?
+2007-09-13T06:33:00.000Z	bruenig	Marduk	normal shutdown / reboot
+2007-09-13T06:34:00.000Z	Marduk	bruenig	and how do I go about removing it from startup if I decide I no longer want it?
+2007-09-13T06:35:00.000Z	bruenig	Marduk	probably a similar way using the updaterc. or whatever it is, just read through the arguments in that

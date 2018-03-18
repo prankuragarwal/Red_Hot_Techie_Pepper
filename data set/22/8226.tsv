@@ -1,0 +1,22 @@
+2006-02-21T17:11:00.000Z	nailbiter	evan_	That usually means it's stuck loading a device driver
+2006-02-21T17:17:00.000Z	nailbiter	evan_	As a last resort, you can use 'init=/bin/bash' to get a shell just after the kernel finishes booting
+2006-02-21T17:17:00.000Z	nailbiter	evan_	I believe there's a way to get hotplug to print debugging output (like what driver it's currently loading); I'm not sure how to do it, thoughs
+2006-02-21T17:20:00.000Z	nailbiter	evan_	Pass 'init=/bin/bash' as a boot option to the kernel to get a shell immediately after the kernel starts
+2006-02-21T17:21:00.000Z	evan_	nailbiter	ok. im going that. also I am 90% sure it is the audi drivers failing. the speakers click right before it stalls
+2006-02-21T17:26:00.000Z	nailbiter	evan_	If you know the name of the kernel modules you suspect are hanging your system, try loading them one by one
+2006-02-21T17:27:00.000Z	evan_	nailbiter	i don't know specifically.. i just think it might be something to do with the sound
+2006-02-21T17:27:00.000Z	nailbiter	evan_	Use 'pcimodules' to list the modules which match your hardware
+2006-02-21T17:27:00.000Z	nailbiter	evan_	You can load those by hand on by one with 'modprobe'
+2006-02-21T17:28:00.000Z	evan_	nailbiter	i think it might be hw_random... how would i blacklist it?
+2006-02-21T17:28:00.000Z	nailbiter	evan_	Edit /etc/modprobe.d/blacklist
+2006-02-21T17:29:00.000Z	evan_	nailbiter	with.. nano?
+2006-02-21T17:30:00.000Z	nailbiter	evan_	Yes, you can use 'nano'
+2006-02-21T17:30:00.000Z	evan_	nailbiter	blacklist doesn't exists.. make it?
+2006-02-21T17:30:00.000Z	nailbiter	evan_	Yes. Add a line like 'blacklist hw_random'.
+2006-02-21T17:31:00.000Z	nailbiter	evan_	Basically, modprobe will slurp in all files in /etc/modprobe.d--so you can name it whatever you want
+2006-02-21T17:31:00.000Z	nailbiter	evan_	'vim' is in the standard Ubuntu installation
+2006-02-21T17:32:00.000Z	evan_	nailbiter	thanks
+2006-02-21T17:35:00.000Z	evan_	nailbiter	sorry.. how do you save a file with vim?
+2006-02-21T17:36:00.000Z	nailbiter	evan_	:wq
+2006-02-21T17:36:00.000Z	evan_	nailbiter	yeah but how do i get back to the little : prompt that use to be there?
+2006-02-21T17:37:00.000Z	nailbiter	evan_	Hit ESC to go back to command mode. Then you can use those ':' commands

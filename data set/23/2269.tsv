@@ -1,0 +1,23 @@
+2010-02-20T17:56:00.000Z	Advo		Hi there, if a program has made a directory called: full-20100220.084714.936  is that just "full-" plus a GMT timestamp? if so, is there any way I can generate that myself? ie if i ran now it would make name something full-"current timestamp as GMT with milliseconds"?
+2010-02-20T17:57:00.000Z	erUSUL	Advo	man date
+2010-02-20T17:58:00.000Z	erUSUL	Advo	you can make a lvm volume with both drives and mount that as /opt/
+2010-02-20T17:59:00.000Z	Advo	erUSUL	will that cause problems with the existing /opt dir? as i cant afford to lose the data on there? i just need to somehow increase the space :S
+2010-02-20T18:00:00.000Z	erUSUL	Advo	really dunno; just giving pointers on how to achieve what you want. you will have to research a little yourself.
+2010-02-20T18:05:00.000Z	erUSUL	Advo	i do not think is possible to use lvm after the fact ... you will have to find another way. like mounting the new partition inside the /opt/ hierarchy or something like that
+2010-02-20T18:06:00.000Z	Advo	erUSUL	can you do that though?
+2010-02-21T00:15:00.000Z	erUSUL	Advo	i do not thnk date can do math
+2010-02-21T00:15:00.000Z	Advo	erUSUL	ahh, any ideas, I can do calculation in a script maybe?
+2010-02-21T00:16:00.000Z	erUSUL	Advo	for floating point you will have to use bc
+2010-02-21T00:16:00.000Z	erUSUL	Advo	bc <<< 'scale=2; 10/3'
+2010-02-21T00:17:00.000Z	Advo	erUSUL	that went totally over my head if im honest lol
+2010-02-21T00:18:00.000Z	erUSUL	Advo	just an example on how to use bc in the command line
+2010-02-21T00:18:00.000Z	Advo	erUSUL	im doing: date '+full-%Y%m%d.%H%M%S.%N  and with the %N i just need that converting, does that mean i need to seperate the %N?
+2010-02-21T00:18:00.000Z	Advo	erUSUL	ill try
+2010-02-21T00:18:00.000Z	erUSUL	Advo	yes
+2010-02-21T00:19:00.000Z	Advo	erUSUL	ahh bc <<< '704545000/1000' works
+2010-02-21T00:22:00.000Z	Advo	erUSUL	date '+full-%Y%m%d.%H%M%S.'bc <<< '%N/1000'  gives: full-20100220.191957.bc <<< 634788000/1000  which isnt quite right, any ideas?
+2010-02-21T00:26:00.000Z	erUSUL	Advo	nano=$(date '+%N') ; nano=$(bc <<< "scale=2; $nano/1000") ; date=$(date '+full-%Y%m%d.%H%M%S') ; echo $date.$nano
+2010-02-21T00:26:00.000Z	Advo	erUSUL	a lot closer than my attempt, that produced: full-20100220.192612.381424.00  it normally does: full-20100220.084714.936   so whats the extra bits?
+2010-02-21T00:27:00.000Z	erUSUL	Advo	what extra bits?
+2010-02-21T00:28:00.000Z	Advo	erUSUL	see mine is:  full-20100220.084714.936  the example code you gave gives: full-20100220.192612.381424.00   so its giving me an extra 381424.00 instead of a 3 numbers on the end, get me?
+2010-02-21T00:29:00.000Z	erUSUL	Advo	but what are you sding to get your result?

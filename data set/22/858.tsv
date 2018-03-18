@@ -1,0 +1,22 @@
+2012-03-09T07:27:00.000Z	sacarlson	onoez_omg	I've had problems with my rt73 raylink wifi device I can't seem to get it to go into master mode also any more.  I guess it's the firmware they now install in the device that's the cause
+2012-03-30T07:51:00.000Z	sacarlson	onoez_omg	from that error I'm guessing your wifi driver doesn't support master mode
+2012-03-30T07:52:00.000Z	onoez_omg	sacarlson	it works with the same modules as on 11.04 how comes it stopped supporting master mode, what error messages push u to such conclusion?
+2012-03-30T07:53:00.000Z	sacarlson	onoez_omg	you should be able to verify manualy if you can put the device in master mode,  I'm just guessing from what I see
+2012-03-30T07:54:00.000Z	sacarlson	onoez_omg	I had the same problem with my raylink driver in 2008 it had master mode now today in 2012 it no longer does
+2012-03-30T07:55:00.000Z	onoez_omg	sacarlson	the only thing that differs now is that i upgraded to 12.04 from 11.10, it was working flawlessly before, it switches to master mode by hostapd and can't be switched to it manually (at least i don't know the proper way to do that)
+2012-03-30T07:56:00.000Z	sacarlson	onoez_omg	so run the old kernel in 12.04 then
+2012-03-30T07:57:00.000Z	sacarlson	onoez_omg	if you don't know how to put it in master mode doesn't mean it can't be
+2012-03-30T07:58:00.000Z	sacarlson	onoez_omg	if they have any complaints you can PM to continue but then I'll miss helping others here
+2012-03-30T08:12:00.000Z	onoez_omg	sacarlson	i was trying to say that after some point, due to changes in some mechanisms, it should be set to master mode like this `iw phy phy0 interface add wlan0 type master` but iw stops saying that i have "... to run a management daemon, e.g. hostapd ..."
+2012-03-30T08:13:00.000Z	sacarlson	onoez_omg	you can play with it manualy with  sudo iwconfig;   try man iwconfig to see if you can put it in master mode
+2012-03-30T08:14:00.000Z	onoez_omg	sacarlson	iwconfig is no longer designed to switch it to master mode
+2012-03-30T08:14:00.000Z	sacarlson	onoez_omg	that means the driver is no longer supporting master mode
+2012-03-30T08:14:00.000Z	onoez_omg	sacarlson	no it doesnt mean that, because it was the same way at 11.10
+2012-03-30T08:16:00.000Z	sacarlson	onoez_omg	oh I'm not sure then,  maybe hostapd doesn't need master mode?  adhoc might work
+2012-03-30T08:18:00.000Z	sacarlson	onoez_omg	I hope you looked at this https://help.ubuntu.com/community/WifiDocs/MasterMode
+2012-03-30T08:18:00.000Z	onoez_omg	sacarlson	i'm familiar with described things
+2012-03-30T08:18:00.000Z	sacarlson	onoez_omg	and you see "AP" in that list then?
+2012-03-30T08:19:00.000Z	onoez_omg	sacarlson	iw shows it supports ap mode obviously
+2012-03-30T08:19:00.000Z	sacarlson	onoez_omg	ok sounds like it's not the driver then the new bug must be in hostap,  time to backup to 11.10
+2012-03-30T08:20:00.000Z	sacarlson	onoez_omg	or just write your own script to setup an access point, it's not that hard
+2012-03-30T08:23:00.000Z	sacarlson	onoez_omg	something like this (but this looks old) you can setup shareing https://help.ubuntu.com/community/Internet/ConnectionSharing

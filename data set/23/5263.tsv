@@ -1,0 +1,23 @@
+2007-01-19T07:36:00.000Z	gdb		postfix
+2007-01-19T07:36:00.000Z	gdb		because an MTA is a daemon and that means an open network port
+2007-01-19T07:36:00.000Z	gdb		so no, it's not installed by default
+2007-01-19T07:36:00.000Z	gdb		install mail-server or any MUA and it will grab postfix
+2007-01-19T07:36:00.000Z	gdb		yes
+2007-01-19T07:36:00.000Z	gdb		you can use sendmail or exim4 as well
+2007-01-19T07:37:00.000Z	edburns	gdb	I can install it using synaptic package manager?
+2007-01-19T07:38:00.000Z	gdb		Yes, if you like.  Or Add/Remove Applications, or apt-get, or aptitude, or any number of other methods. ;-)
+2007-01-19T07:38:00.000Z	gdb		An MTA is sort of like underwear
+2007-01-19T07:38:00.000Z	gdb		you buy a brand you like
+2007-01-19T07:38:00.000Z	gdb		and you otherwise never think about it
+2007-01-19T07:38:00.000Z	gdb		it's just there, it works, and it never crosses your mind again
+2007-01-19T07:39:00.000Z	gdb		I personally find Synaptic to be complete overkill for simple package management.
+2007-01-19T07:40:00.000Z	gdb		The only thing I've found it useful for is removing all packages provided by a specific repository.
+2007-01-19T07:40:00.000Z	gdb		It's not?
+2007-01-19T07:40:00.000Z	edburns		very nice!
+2007-01-19T07:40:00.000Z	edburns		I was thinking I'd have to edit mail.cf
+2007-01-19T07:40:00.000Z	gdb		Hrm, odd that.  I must have never come across the "complex" parts of installing and removing software.
+2007-01-19T07:41:00.000Z	gdb	edburns	yes, and you can get back to that at any time with "sudo dpkg-reconfigure postfix"
+2007-01-19T07:41:00.000Z	gdb	edburns	What I'd suggest you do, after installing all your "must have" packages is save a selections list with "dpkg --get-selections > working-selections.list" or something
+2007-01-19T07:42:00.000Z	edburns	gdb	that sounds great.
+2007-01-19T07:42:00.000Z	gdb	edburns	that way, if you ever reinstall the machine, you can easily get back to the same state with "dpkg --set-selections < working-selections.list && apt-get dist-ugprade"
+2007-01-19T08:04:00.000Z	edburns	gdb	If I make a change to postfix/main.cf, do I need to send a signal to someone to have it be read?

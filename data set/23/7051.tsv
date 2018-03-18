@@ -1,0 +1,23 @@
+2006-08-13T10:41:00.000Z	pequatre		hello. I can't sudo anymore. Could anyone copy/paste his /etc/sudoers so that i see what it should look like ? thx.
+2006-08-13T10:42:00.000Z	slacker	pequatre	what did you do?
+2006-08-13T10:42:00.000Z	pequatre	slacker	dunno :/ i've runned "faster-dapper" and some other scripts, added grubfx, etc...
+2006-08-13T10:43:00.000Z	slacker	pequatre	ahhh
+2006-08-13T10:43:00.000Z	pequatre	slacker	why ? is any of these prone to messing an ubuntu system ?
+2006-08-13T10:44:00.000Z	slacker	pequatre	because the default install sets you in the admin group, and in sudo this groups is used
+2006-08-13T10:46:00.000Z	pequatre	slacker	now i recall i've added something with "adduser" or somethg as part of some script i ran. maybe that screw my system. Anyway, is there an easier way to restore it rather than visudo ?
+2006-08-13T10:46:00.000Z	slacker	pequatre	I think you need to restore your sudoers file and have a look at the group your user is in
+2006-08-13T10:47:00.000Z	slacker	pequatre	i think this is the source of your problem
+2006-08-13T10:47:00.000Z	pequatre	slacker	yes i agree :)
+2006-08-13T10:48:00.000Z	slacker	pequatre	this line should be in /etc/sudoers: %admin ALL=(ALL) ALL
+2006-08-13T10:48:00.000Z	slacker	pequatre	and grep for your user in /etc/group
+2006-08-13T10:49:00.000Z	slacker	pequatre	and check if you are in the group admin
+2006-08-13T10:49:00.000Z	pequatre	slacker	ok. the pb is i must reboot to gain root access :( .btw what's the command to add oneself in admin ? groupadd or addgroup ?
+2006-08-13T10:49:00.000Z	slacker	pequatre	just open /etc/group with your favorite editor and add yourself to that line
+2006-08-13T10:50:00.000Z	pequatre	slacker	k
+2006-08-13T12:45:00.000Z	pequatre	slacker	yep
+2006-08-13T12:48:00.000Z	slacker	pequatre	it also could have been a change in the hostname i realized while I was eating
+2006-08-13T12:51:00.000Z	slacker	pequatre	looks like you had something simialir to this.. http://ubuntuforums.org/showthread.php?t=234912&highlight=locked+sudo
+2006-08-13T12:52:00.000Z	pequatre	slacker	a script did it. I didn't ! :)
+2006-08-13T12:52:00.000Z	slacker	pequatre	you told me, but the problem looks to be similair
+2006-08-13T12:54:00.000Z	pequatre	slacker	yes that's right. registering into one group deleted from the rest :/ unfortunately i don't recall what i've done
+2006-08-13T12:55:00.000Z	slacker	pequatre	usermod -G new_group without the -a

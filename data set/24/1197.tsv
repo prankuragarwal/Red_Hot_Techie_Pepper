@@ -1,0 +1,24 @@
+2011-07-11T07:42:00.000Z	arunkumar413	pfifo	hi, it's not booting
+2011-07-11T07:42:00.000Z	pfifo	arunkumar413	what happened?
+2011-07-11T07:42:00.000Z	arunkumar413	pfifo	its opening like this: grub>
+2011-07-11T07:43:00.000Z	pfifo	arunkumar413	hmm thats not good, lets try again, open a terminal and start with `sudo -s` everything here needs to be done as root
+2011-07-11T07:44:00.000Z	arunkumar413	pfifo	ok
+2011-07-11T07:46:00.000Z	pfifo	arunkumar413	now `mount /dev/sda7 /mnt && mount --bind /dev/ /mnt/dev` after that, `grub-install --root-directory=/mnt /dev/sda` then chroot, `chroot /mnt`
+2011-07-11T07:47:00.000Z	arunkumar413	pfifo	ok done
+2011-07-11T07:48:00.000Z	pfifo	arunkumar413	pastebin the entire terminal let me review
+2011-07-11T07:49:00.000Z	arunkumar413	pfifo	http://paste.ubuntu.com/641640/
+2011-07-11T07:51:00.000Z	pfifo	arunkumar413	ok so far so good, lets mount proc, sys and devpts this time `mount -t proc none /proc && mount -t sysfs none /sys && mount -t devpts none /dev/pts` then run `update-grub` pastebin afterwards
+2011-07-11T07:53:00.000Z	arunkumar413	pfifo	http://paste.ubuntu.com/641641/
+2011-07-11T07:55:00.000Z	pfifo	arunkumar413	ok that looks perfect, reboot and test it out
+2011-07-11T07:55:00.000Z	arunkumar413	pfifo	in our earlier attempt also we did the same thing but it didn't boot. will it boot now
+2011-07-11T07:56:00.000Z	pfifo	arunkumar413	I think it was cause you install grub to /dev/sda1 instead of /dev/sda7, I thought update-grub would 'update grub' but I guess it didnt
+2011-07-11T07:56:00.000Z	pfifo	arunkumar413	im pretty confident that it willl boot this time
+2011-07-11T07:59:00.000Z	arunkumar413	pfifo	before making our first attempt the default boot loader was of fedora's which is not grub 2
+2011-07-11T08:00:00.000Z	pfifo	arunkumar413	I have no idea what fedora uses, their usually up on tech though so im guessing grub2
+2011-07-11T08:00:00.000Z	arunkumar413	pfifo	no its not grub 2. its the older one
+2011-07-11T08:06:00.000Z	arunkumar413	pfifo	i'm going to reboot now
+2011-07-11T08:06:00.000Z	pfifo	arunkumar413	good luck
+2011-07-11T08:38:00.000Z	arunkumar413	pfifo	ok, i'm able to boot
+2011-07-11T08:39:00.000Z	arunkumar413	pfifo	many thanks for the help
+2011-07-11T08:39:00.000Z	arunkumar413	pfifo	but there is a problem booting the fedora 15
+2011-07-11T08:40:00.000Z	pfifo	arunkumar413	you can ask here, but #fedora might know better

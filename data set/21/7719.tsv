@@ -1,0 +1,21 @@
+2009-02-15T20:50:00.000Z	_delirium		I have just installed 8.10, but it does boot after restarting - I get the message - Alert! /dev/disk/by-uuid/<uuid here> does not exist! Dropping to a shell!!
+2009-02-15T20:50:00.000Z	_delirium		does boot = does not boot
+2009-02-15T20:51:00.000Z	stefg	_delirium	so you get to the initrd, but that can't find the root filesystem
+2009-02-15T20:52:00.000Z	stefg	_delirium	yeah... which is the shell in the initrd
+2009-02-15T20:53:00.000Z	_delirium	stefg	ash
+2009-02-15T20:53:00.000Z	stefg	_delirium	tell abozt your hardware and partitions
+2009-02-15T20:58:00.000Z	stefg	_delirium	it would be easiest if you could pastebin the outputs of 'sudo fdisk -l' 'sudo blkid' the content of /boot/grub/menu.lst and probably the /etc/fstab of the installed system
+2009-02-15T21:02:00.000Z	stefg	_delirium	is there any kind of dmraid/ mdadm involved or is that hardware raid ?
+2009-02-15T21:03:00.000Z	_delirium	stefg	hardware raid - its a highpoint tech Rocketraid 1640 - i have used the drives for their website succesfully on Ubuntu before
+2009-02-15T21:04:00.000Z	stefg	_delirium	so that's fake-raid probably... (dmraid) ... the cpu is still doing the number crunching
+2009-02-15T21:05:00.000Z	_delirium	stefg	is that /etc/modprobe/my_blacklist filename correct - seems the format of the filenames already in /etc/modprobe is more like name_blacklist
+2009-02-15T21:06:00.000Z	stefg	_delirium	you have to replace that of course with the REAL name of the module
+2009-02-15T21:13:00.000Z	_delirium	stefg	this is weird  - i rebooted and it started fine, whilst i had added that module to the blacklist i was unable to run update-initramfs from the live cd!
+2009-02-15T21:14:00.000Z	_delirium	stefg	anyways just ran update-initramfs rebooted and it started up fine without loading that module
+2009-02-15T21:14:00.000Z	stefg	_delirium	this fake-raid pci card might be misbehaving and/or confuse the bios... If you ask me: get rid of it, connect everything to the mobo and use plain mdadm softraid
+2009-02-15T21:15:00.000Z	_delirium	stefg	well I have used it for years with no problems until now - older version of Ubuntu, FreeBSD, Windows XP and Vista
+2009-02-15T21:16:00.000Z	_delirium	stefg	out of interest - why do you call it a fake raid card?
+2009-02-15T21:18:00.000Z	_delirium	stefg	thanks also for the help dude
+2009-02-15T21:18:00.000Z	stefg	_delirium	if i understand right it has no cpu on it, so it's nothing but a cludge to present a raid array as a single disk to *win*-type OS's ... the raid calculations are still done by the cpu, so you're better off using mdadm (which isn't dependant on a special piece of hardware, but will work in any box)
+2009-02-15T21:21:00.000Z	stefg	_delirium	as an interesting side note: with mdadm you could use different raid levels on your parititons ... say raid 10 for your system and working data, but a raid-5 for the backup parition. This can't be done with fake-raid controllers which take a full disk, not a partition
+2009-02-15T21:26:00.000Z	_delirium	stefg	okay thanks, will eventually be moving those disks to a OpenSolaris ZFS NAS hopefully - http://www.mini-itx.com/store/?c=42

@@ -1,0 +1,18 @@
+2008-02-25T03:36:00.000Z	stroogle		after installing mysql i can't connect to it with an error 2003, what should i look for?
+2008-02-25T03:36:00.000Z	hspaans	stroogle	check if you use socket of network
+2008-02-25T03:37:00.000Z	stroogle	hspaans	- right, how?
+2008-02-25T03:37:00.000Z	hspaans	stroogle	config of netstat
+2008-02-25T03:43:00.000Z	stroogle	hspaans	- there is an entry in /etc/mysql/my.cnf that specifies the msyql.sock file which is in the right place i think
+2008-02-25T03:44:00.000Z	stroogle	hspaans	- does that answer the question?
+2008-02-25T03:45:00.000Z	hspaans	stroogle	look for the keyword "port"
+2008-02-25T03:45:00.000Z	hspaans	stroogle	keyword "bind-address" is the other one
+2008-02-25T03:49:00.000Z	stroogle	hspaans	- it has port 3306 which is right i think, and socket = /var/run/mysqld/mysqld.sock, the bind-address is the localhost 127.0.0.1
+2008-02-25T03:50:00.000Z	hspaans	stroogle	and skip-networking has been commented out? then "netstat -na | grep 3306" should show something listening
+2008-02-25T03:53:00.000Z	stroogle	hspaans	- nothing about skip-networking that's not commented out - netstat -na | grep 3306 shows  'tcp blah blah LISTEN'
+2008-02-25T03:53:00.000Z	stroogle	hspaans	- nothing about skip-networking that's not commented out - netstat -na | grep 3306 shows  'tcp blah blah LISTEN'
+2008-02-25T03:54:00.000Z	hspaans	stroogle	then you should be able to connect, but permissions within mysql may be incorrect
+2008-02-25T03:54:00.000Z	stroogle	hspaans	- permissions eh?  what to check?
+2008-02-25T03:56:00.000Z	hspaans	stroogle	is this an upgrade or a new installation?
+2008-02-25T03:57:00.000Z	stroogle	hspaans	- new on a fresh 7.10 ubuntu install
+2008-02-25T03:58:00.000Z	hspaans	stroogle	check if commandline options work or else the mysql forum may be a better place to continue your journey (you're not alone with these issues)
+2008-02-25T03:59:00.000Z	stroogle	hspaans	- ok dude, thanks for time :)

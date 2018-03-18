@@ -1,0 +1,19 @@
+2007-03-20T05:20:00.000Z	badatt		hi all, the 'more' command doesn't work, it stops after displaying a single page, it doesn't ask for --More-- , how can i solve?
+2007-03-20T05:22:00.000Z	soundray	badatt	also, try hitting space to see if it scrolls in spite of the missing message
+2007-03-20T05:22:00.000Z	badatt		less works, but it doesnt fix 'more'
+2007-03-20T05:22:00.000Z	badatt		ok ill try 'stty sane'
+2007-03-20T05:23:00.000Z	badatt	soundray	thanks for you answers, but it returns to the prompt after showing a page
+2007-03-20T05:23:00.000Z	badatt		in example: ' ls -R / | more '
+2007-03-20T05:23:00.000Z	badatt		just displays a page and then the bash prmpt
+2007-03-20T05:24:00.000Z	soundray	badatt	what happens when you do 'ls -R / | less'?
+2007-03-20T05:24:00.000Z	badatt	soundray	it works
+2007-03-20T05:25:00.000Z	soundray	badatt	listen to thoreauputic -- set it to less, preferrably
+2007-03-20T05:25:00.000Z	badatt		yeah, i know less is better but it doesnt fix 'more', ill promise to use less from now on, but i just wanna now what happens to 'more'
+2007-03-20T05:26:00.000Z	soundray	badatt	I suppose it's just there for compatibility
+2007-03-20T05:26:00.000Z	badatt		strace? can you tell me more about that?
+2007-03-20T05:27:00.000Z	badatt		thanks, i'll try it as soon as i get access to the machine
+2007-03-20T05:28:00.000Z	soundray	badatt	also, check the output from " ls -l $(which more)". Here it's -rwxr-xr-x 1 root root 32256 2006-10-12 16:47 /bin/more (and my "more" works as expected)
+2007-03-20T05:28:00.000Z	badatt		also i have to tell that i tried to replace more with another bin/more from otrher server
+2007-03-20T05:28:00.000Z	badatt		with n result
+2007-03-20T05:29:00.000Z	badatt		more uses (ldd more) libncurses and other basic libs
+2007-03-20T05:29:00.000Z	soundray	badatt	to revert to the ubuntu version, run 'sudo apt-get --reinstall install util-linux'

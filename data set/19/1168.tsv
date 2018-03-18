@@ -1,0 +1,19 @@
+2012-09-22T03:04:00.000Z	Dantevios		think of it as a server with a GPU ikonia
+2012-09-22T03:04:00.000Z	Dantevios		My desktop is a desktop but it is powerful enough to compete with a Dell Poweredge server
+2012-09-22T03:05:00.000Z	Dantevios		it has an i7 860 chip in it and 16 gigs of ram
+2012-09-22T03:05:00.000Z	Dantevios		yes, but it will be used as a virtualization server
+2012-09-22T03:05:00.000Z	Dantevios		essentially
+2012-09-22T03:06:00.000Z	Dantevios		why ikonia ? What is different about the server edition why is that special?
+2012-09-22T03:06:00.000Z	Dantevios		are we talking different driver packages here?
+2012-09-22T03:06:00.000Z	Dantevios		or what
+2012-09-22T03:07:00.000Z	Dantevios		that makes more sense then thank you ikonia
+2012-09-22T03:08:00.000Z	Dantevios		is there an x64 edition of ubuntu 12.04?
+2012-09-22T03:08:00.000Z	escott	Dantevios	yes
+2012-09-22T03:08:00.000Z	Dantevios		don't answer that doh
+2012-09-22T03:08:00.000Z	Dantevios		just saw it my bad annoying questions
+2012-09-22T03:10:00.000Z	escott	Dantevios	the only reason i can think of for installing a desktop as the primary hypervisor in kvm/xen is (a) you don't want to run another linux desktop as a guest (b) you want to use the primary video card, but cannot pass it through with vt-d
+2012-09-22T03:11:00.000Z	Dantevios	escott	I do want to run another linux desktop as a guest and I do want the functionality of doing a pass through. I have heard ubuntu has xen in it's repos that's why I want to use it specifically.
+2012-09-22T03:11:00.000Z	Dantevios		but if the host OS doesn't have the correct video drivers then that's pointless so I guess that rules server edition out for me
+2012-09-22T03:12:00.000Z	Dantevios		because ikonia I'm going to make two HVMs and use them for Windows guests to do Direct3D gaming while not having to sacrifice the convience of running linux as a desktop
+2012-09-22T03:12:00.000Z	Dantevios		and do a graphics card passthrough to both of them
+2012-09-22T03:14:00.000Z	escott	Dantevios	i was looking into doing this myself (haven't purchased the hardware though) and one thing I read was that a VT-d passthrough of the primary display adapter was not possible in either KVM or XEN. if thats still true then you would lose the intel HD (or at least it would only be accessible to the primary hypervisor)

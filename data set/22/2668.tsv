@@ -1,0 +1,22 @@
+2009-04-16T06:25:00.000Z	Davide-buntu		hey how do you mount a windows network location??
+2009-04-16T06:26:00.000Z	Davide-buntu		yeah but I want to permanently mount it on my desktop
+2009-04-16T06:26:00.000Z	Davide-buntu		sudo mount //none-xvlc1hi3pv/ /media/none ntfs-3g
+2009-04-16T06:27:00.000Z	Davide-buntu		is what I was using
+2009-04-16T06:27:00.000Z	usser	Davide-buntu	smbmount is deprecated try mount -t cifs
+2009-04-16T06:28:00.000Z	usser	Davide-buntu	you need smbfs package for that
+2009-04-16T06:31:00.000Z	usser	Davide-buntu	sudo mount -t cifs //none-xvlc1hi3pv/ /media/none
+2009-04-16T06:31:00.000Z	usser	Davide-buntu	wont even need credentials if its a winXP home you're sharing from
+2009-04-16T06:32:00.000Z	Davide-buntu	usser	it's winxp pro
+2009-04-16T06:32:00.000Z	usser	Davide-buntu	actually
+2009-04-16T06:32:00.000Z	usser	Davide-buntu	scratch that your command is inavlid anyhow
+2009-04-16T06:32:00.000Z	usser	Davide-buntu	//none-whatever/ is missing a sharename
+2009-04-16T06:32:00.000Z	usser	Davide-buntu	should be //none-whatever/sharename //mymachine/C for example
+2009-04-16T06:32:00.000Z	Davide-buntu	usser	 I guess it woudl be my D drive
+2009-04-16T06:33:00.000Z	usser	Davide-buntu	sudo mount -t cifs //none-xvlc1hi3pv/D /media/none
+2009-04-16T06:33:00.000Z	Davide-buntu	usser	ULFfuntu what do -t and -o do?
+2009-04-16T06:33:00.000Z	Davide-buntu	usser	ULFfuntu what do -t and -o do? and cifs
+2009-04-16T06:34:00.000Z	usser	Davide-buntu	-t cifs specifies filesystem of the share - cifs, -o tells mount that optional parameters follow
+2009-04-16T06:34:00.000Z	usser	Davide-buntu	like -o user=root, pass=secure
+2009-04-16T06:35:00.000Z	usser	Davide-buntu	sudo apt-get install smbfs
+2009-04-16T06:37:00.000Z	Davide-buntu	usser	ULFfuntu, mount error: could not find target server. TCP name none-xvlc1hi3pv/D not found
+2009-04-16T06:38:00.000Z	usser	Davide-buntu	try by ip

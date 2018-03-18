@@ -1,0 +1,19 @@
+2007-03-13T14:31:00.000Z	bruenig		no more _
+2007-03-13T14:32:00.000Z	bruenig		PsychoBud, what is its name (/dev/what) and what is it formatted as
+2007-03-13T14:34:00.000Z	bruenig		PsychoBud, ok then do sudo mkdir /media/sda1, and then gksu gedit /etc/fstab and add this line to it: /dev/sda1 /media/sda1 ext3 defaults 0 0
+2007-03-13T14:35:00.000Z	Psychoman	bruenig	that's what i did
+2007-03-13T14:33:00.000Z	Psychoman	bruenig	it's an ext3 on /dev/sda1
+2007-03-13T14:35:00.000Z	Psychoman	bruenig	i'll check, but i know i can mount the harddisk by hand with mount /dev/sda1
+2007-03-13T14:36:00.000Z	Psychoman	bruenig	i did
+2007-03-13T14:36:00.000Z	bruenig	Psychoman	ok then it should mount at boot
+2007-03-13T14:37:00.000Z	Psychoman	bruenig	it doesn't :) i'll check some logs then
+2007-03-13T14:38:00.000Z	Psychoman	bruenig	in /var/log/boot it says that /dev/sda1 doesn't exist
+2007-03-13T14:38:00.000Z	bruenig	Psychoman	hmmm
+2007-03-13T14:39:00.000Z	Psychoman	bruenig	i'll paste my fstab to be sure
+2007-03-13T14:39:00.000Z	bruenig	Psychoman	ok but if mount -a is working then your fstab should be in order, or so I would think
+2007-03-13T14:40:00.000Z	Psychoman	bruenig	hee it is http://paste.ubuntu-nl.org/10258/
+2007-03-13T14:41:00.000Z	bruenig	Psychoman	that line looks fine, maybe if you did it by uuid, do file /dev/disk/by-uuid/* | grep sda1 to find out what the uid for
+2007-03-13T14:42:00.000Z	Psychoman	bruenig	i got : bash: /dev/disk/by-uuid/0675a8e0-a996-49fc-ac54-f785f12e0db3: Permission denied
+2007-03-13T14:53:00.000Z	Psychoman	bruenig	thx :)
+2007-03-13T15:06:00.000Z	Psychoman	bruenig	i don't believe this is the normal way to do it, but it works :)
+2007-03-13T15:07:00.000Z	Psychoman	bruenig	the harddisk should be mounted automaticly with the line in fstab, but it doesn't. maybe because of hald. if i find a better way i'll be sure to come tell you guys :)

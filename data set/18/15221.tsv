@@ -1,0 +1,18 @@
+2012-09-13T11:35:00.000Z	e66		I have disk image. i want to mount it everytime I log in. how can I do that?  The user has no root-right on that account?
+2012-09-13T11:35:00.000Z	enyc	e66	would 'every time you boot up' be sufficient ?
+2012-09-13T11:36:00.000Z	enyc	e66	disk image ,being  something you are mounting  with   -o loop   etc. ?
+2012-09-13T11:37:00.000Z	e66	enyc	On every boot its sufficient. It should only be mounted for a special user
+2012-09-13T11:37:00.000Z	enyc	e66	how are you mounting it at present?  and what sort of filesystem *is* the image?  then I can explain options...
+2012-09-13T11:38:00.000Z	enyc	e66	i wouldn't have thought we can mount it only for a special user as such  BUT  can set the filesystem permissions so only one use can read it,  which depends on the filesystem
+2012-09-13T11:40:00.000Z	enyc	e66	yes, but you havent' answered my qusetion ;-)
+2012-09-13T11:40:00.000Z	enyc	e66	it can be mounted on boot, and the filesystem permissions can be set so that other users can't go into that subdirectory.  What sort of filesystem is in the disk images?
+2012-09-13T11:41:00.000Z	enyc	e66	i.e. is it  an ISO9660, ext4,  FAT32, ntfs, etc. ?
+2012-09-13T11:41:00.000Z	enyc	e66	are you mounting using  -o loop,offset=????  to mount each partition?
+2012-09-13T11:43:00.000Z	e66	enyc	It has ext3 ext4, ntfs and a 100m dos partition
+2012-09-13T11:43:00.000Z	enyc	e66	right.  now you say you don't want other users to be able to access the contents of any of his mounts?
+2012-09-13T11:43:00.000Z	e66	enyc	Right
+2012-09-13T11:46:00.000Z	enyc	e66	ok then you can just add entries in /etc/fstab to mount them there...  the various columns will allow you to add the needed options
+2012-09-13T11:46:00.000Z	enyc	e66	because?
+2012-09-13T11:47:00.000Z	enyc	e66	that shouldn't be a problem =)
+2012-09-13T11:48:00.000Z	enyc	e66	yes don't worry about that =)  its not like windows running out of drive letters
+2012-09-13T12:00:00.000Z	enyc	e66	btw i was gong to explain , if somebodys directory is traversible, then you can use  -o uid -o gid -o mode  etc.  to set the apparent permissions on  DOS fat portitions mounted

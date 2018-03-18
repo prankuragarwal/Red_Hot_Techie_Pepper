@@ -1,0 +1,24 @@
+2009-10-08T14:26:00.000Z	rags		how to associate an email id to a particular user in ubuntu...say I want user foo to be associated with foo.domain.org, so when ever I send mails to foo it should go to his address.
+2009-10-08T14:26:00.000Z	rags		I suppose on eway is using aliases...
+2009-10-08T14:26:00.000Z	Gnea	rags	that's usually done with /etc/aliases
+2009-10-08T14:26:00.000Z	rags	Gnea	I have a large number of users...hmm..any other way?
+2009-10-08T14:27:00.000Z	Gnea	rags	no. it shouldn't make a difference. you just edit it and save it.
+2009-10-08T14:28:00.000Z	rags	Gnea	k...thx. will the mails sent go to the user's mbox as well?...or just to the mail address?
+2009-10-08T14:32:00.000Z	Gnea	rags	depends how you set it up
+2009-10-08T14:33:00.000Z	Gnea	rags	if you use postfix, there's a special procedure for rolling the aliases into postfixes database
+2009-10-08T14:34:00.000Z	rags	Gnea	I don't want it to go to the mbox, so say i add in the aliases file "foo foo@domain.org" the mails directly go to the required address right?
+2009-10-08T14:34:00.000Z	Gnea	rags	https://lists.ubuntu.com/archives/ubuntu-users/2007-January/104143.html
+2009-10-08T14:34:00.000Z	rags	Gnea	I'm using sendmail...I think...
+2009-10-08T14:34:00.000Z	Gnea	rags	oh
+2009-10-08T14:34:00.000Z	Gnea	rags	that's different. for that, you'd just need a ~/.forward file
+2009-10-08T14:35:00.000Z	rags	Gnea	oh...nothing to do with /etc/aliases then?...
+2009-10-08T14:35:00.000Z	Gnea	rags	I recommend postfix, especially with a lot of users
+2009-10-08T14:36:00.000Z	Gnea	rags	well, it'll work with /etc/aliases too
+2009-10-08T14:36:00.000Z	rags	Gnea	How to know which mta is being used on a system?
+2009-10-08T14:36:00.000Z	Gnea	rags	but using ~/.forward gives the user a bit more control
+2009-10-08T14:36:00.000Z	Gnea	rags	see what's running
+2009-10-08T14:36:00.000Z	Gnea	rags	https://help.ubuntu.com/community/PostfixBasicSetupHowto#Per%20User%20.forward%20Files
+2009-10-08T14:37:00.000Z	Gnea		!de | categore
+2009-10-08T14:37:00.000Z	Gnea	rags	but .forward is universal, it's not just for postfix, but for sendmail, etc
+2009-10-08T14:37:00.000Z	rags	Gnea	oh..yeah...actually I want this to set up quotas on the home directories..everthing is setup except I want the mails to be sent to thwir external mail addresses...
+2009-10-08T14:38:00.000Z	rags	Gnea	Thx for the link..I'll chk out postfix

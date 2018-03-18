@@ -1,0 +1,19 @@
+2011-09-28T16:21:00.000Z	faLUCE		hi, I added "/home/user/my_script" to "startup applications" of the gnome menu. Unfortunately, it is not executed after login. why? I can execute the script with command line.
+2011-09-28T16:21:00.000Z	RaTTuS|BIG	faLUCE	- check .xsession-errors file it will tell you why
+2011-09-28T16:22:00.000Z	RaTTuS|BIG	faLUCE	but you probably need to do /usr/bin/gnome-terminal -e /home/usr/script
+2011-09-28T16:24:00.000Z	faLUCE	RaTTuS|BIG	I understand the problem but I don't want to see a gnome-terminal in background
+2011-09-28T16:24:00.000Z	faLUCE	RaTTuS|BIG	is it possible to hide the gnome-terminal ?
+2011-09-28T16:25:00.000Z	RaTTuS|BIG	faLUCE	- if you just run the command it will run iun the background - you dont need to use the terminal
+2011-09-28T16:26:00.000Z	faLUCE	RaTTuS|BIG	but you said "/usr/bin/gnome-terminal -e /home/usr/script"
+2011-09-28T16:27:00.000Z	faLUCE	RaTTuS|BIG	I don't understand what to add in "startup applications" in order to run /home/user/myscript
+2011-09-28T16:27:00.000Z	RaTTuS|BIG	faLUCE	- yes the terminal will open a new tereminal and run your script - if you just want it to run with no terminal [depends on your script] then you can just do /usr/home/script - but check the .xsession errors to see what is erring - as it should say
+2011-09-28T16:29:00.000Z	faLUCE	RaTTuS|BIG	ok thanks let's try
+2011-09-28T16:32:00.000Z	faLUCE	RaTTuS|BIG	gnome-session[1870]: WARNING: Could not launch application 'RestartScripts.desktop': Unable to start application: Failed to execute child process "/home/ocs/Sistema/SysScripts/./foo" (Permission denied)
+2011-09-28T16:33:00.000Z	faLUCE	RaTTuS|BIG	which permissions should I add to foo ?
+2011-09-28T16:33:00.000Z	faLUCE	RaTTuS|BIG	yes
+2011-09-28T16:35:00.000Z	faLUCE	RaTTuS|BIG	I can run it from a terminal session in this way:   /home/ocs/Sistema/SysScripts/./foo
+2011-09-28T16:44:00.000Z	faLUCE	RaTTuS|BIG	it's probably a bug. a workaround would be using an invisible application launcher, like gnome-terminal ... but which one?
+2011-09-28T16:45:00.000Z	RaTTuS|BIG	faLUCE	- give me 5 mins I'll just try something here
+2011-09-28T16:50:00.000Z	RaTTuS|BIG	faLUCE	- from a tereminal try /usr/bin/gnome-terminal --geometry 60x50+100+100  -e /script  ... then if that works you could try in the startup 2x2+1200+1200
+2011-09-28T17:11:00.000Z	faLUCE	RaTTuS|BIG	this is a workaround and, in addition, the terminal window is not invisible....
+2011-09-28T17:33:00.000Z	faLUCE	RaTTuS|BIG	just found where the problem. myscript is in an usb attached memory.   /home/user/mydir/myscript <---- mydir is not a real dir but only a link to the usb memory. If I copy the script into a real dir, it works. but why doesn't it work in thie usb dev too ?

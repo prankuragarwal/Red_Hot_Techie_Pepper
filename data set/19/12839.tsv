@@ -1,0 +1,19 @@
+2005-12-25T12:15:00.000Z	Cope57		I have read the wiki on mounting another HD which is formatted with FAT32, but my situation is that the HD is partitioned 4 times. How do I mount all the partitions at boot time? I can get it to mount 1 at a time, and when I try to mount more than 1, the other partitions have the same files as the others...? When mounted one at a time, I see the correct files. Any suggestions?
+2005-12-25T12:17:00.000Z	dabaR	Cope57	sudo fdisk -l to start. then post that to paste.ubuntu-nl.org
+2005-12-25T12:20:00.000Z	Cope57	dabaR	it is pasted
+2005-12-25T12:21:00.000Z	dabaR	Cope57	paste /etc/fstab too, please.
+2005-12-25T12:23:00.000Z	Cope57	dabaR	sent.
+2005-12-25T12:26:00.000Z	Cope57	dabaR	I can erase the last three lines and keep changing the hdb1-4 to mount it that way. but I would like to have them all mounted at the same time at boot for easy file transfers.
+2005-12-25T12:26:00.000Z	dabaR	Cope57	well, your computer is recognizing only one partition, are you 100% sure there is more partitions?
+2005-12-25T12:26:00.000Z	dabaR	Cope57	sda is fat, that is what fdisk says.
+2005-12-25T12:30:00.000Z	dabaR	Cope57	those say your hdb is formatted as linux, but...why you are not able to mount is cause... you selected all to be mounted under the same directory, /media/windows
+2005-12-25T12:34:00.000Z	Cope57	dabaR	In my fstab it says the partitions are windoes though.
+2005-12-25T12:41:00.000Z	dabaR	Cope57	just change the dirs, and then create the dirs, and then "sudo mount -a"
+2005-12-25T12:42:00.000Z	Cope57	dabaR	I just finished doing that. But it is strange that the system still says Linux. Maybe because there is no Windows on this system? It is just a spare HD that my pc's share together.
+2005-12-25T12:43:00.000Z	dabaR	Cope57	did it fix your issue? I think the drives are really formatted as ext3...
+2005-12-25T12:46:00.000Z	Cope57	dabaR	Should this work? http://paste.ubuntu-nl.org/5944
+2005-12-25T12:47:00.000Z	dabaR	Cope57	make sure you created the dirs themselves.
+2005-12-25T12:48:00.000Z	Cope57	dabaR	I used sudo mkdir /media/windows/hdb1, sudo mkdir /media/windows/hdb2, and so on, The directories should be there, but are they in the right place?
+2005-12-25T12:49:00.000Z	dabaR	Cope57	well, if you created the dirs you will mount to in that file, ya, they are. so "sudo mount -a" now.
+2005-12-25T12:50:00.000Z	Cope57	dabaR	they are all mounted, and all files are in the proper partitions. Now are they ALL going to be mounted at each reboot?
+2005-12-25T12:51:00.000Z	dabaR	Cope57	only one way to know for sure, but yes, taht is the proper config.

@@ -1,0 +1,19 @@
+2008-11-14T07:33:00.000Z	linguini		No
+2008-11-14T07:33:00.000Z	linguini		I'm on Ubuntu 8.04.1
+2008-11-14T07:35:00.000Z	linguini		Is it normal to run NetworkManager on a server (not a workstation or laptop)?
+2008-11-14T07:37:00.000Z	Falstius	linguini	I usually network manager on machines with static IPs.
+2008-11-14T07:38:00.000Z	Falstius	linguini	usually disable ...
+2008-11-14T07:38:00.000Z	linguini	Falstius	Does disable == remove the package?
+2008-11-14T07:39:00.000Z	Falstius	linguini	no, use /sbin/chkconfig to disable the NetworkManager service.  Or you can  use the Services GUI to do it.
+2008-11-14T07:41:00.000Z	Falstius	linguini	you would use the network service instead of NetworkManager.
+2008-11-14T07:48:00.000Z	linguini	Falstius	Thanks; I don't seem to have /sbin/chkconfig, but I'll look around.  Do you also usually disable dhcdbd and avahi-daemon?
+2008-11-14T07:50:00.000Z	Falstius	linguini	you can and should disable anything you aren't using on a server.  you can use the services gui from system->administration instead of chkconfig.  I'm just old school.
+2008-11-14T07:52:00.000Z	linguini	Falstius	Thanks, I'm in console-only mode, so I'll stick with the command line as well...
+2008-11-14T07:53:00.000Z	Falstius	linguini	then sudo /sbin/chkconfig NetworkManager off
+2008-11-14T07:53:00.000Z	Falstius	linguini	and sudo /sbin/chkconfig network on
+2008-11-14T07:54:00.000Z	Falstius	linguini	ack!  sorry.  I'm thinking in redhat mode :)
+2008-11-14T07:55:00.000Z	linguini	Falstius	Does "network service" what I should be looking for in ubuntu?
+2008-11-14T07:56:00.000Z	Falstius	linguini	in ubuntu it is /etc/init.d/networking   there is a command line tool for adding and removing services in debian/ubuntu but I never remember the name.
+2008-11-14T07:57:00.000Z	linguini	Falstius	Oh, good thanks; I think there is already a symlink for networking in /etc/rcS.d/S40networking .  I'll probably just use apt-stuff to completely remove NetworkManager.
+2008-11-14T07:58:00.000Z	linguini	Falstius	Thanks, already edited that file to define my address and domain.
+2008-11-14T07:59:00.000Z	linguini	Falstius	Thanks, you've been quite helpful.  I'm on the right track now...

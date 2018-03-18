@@ -1,0 +1,18 @@
+2008-03-05T23:32:00.000Z	mrpockets_		anyone have a clue as to why i cannot connect to the open wireless network thats feet behind my computer?
+2008-03-05T23:33:00.000Z	mrpockets_		its srtong
+2008-03-05T23:33:00.000Z	mrpockets_		and airodump says its spewing packets
+2008-03-05T23:34:00.000Z	mrpockets_		but it'll try to conenct for about a minute, then just connect to the ethernet conenction
+2008-03-05T23:36:00.000Z	hwilde_	mrpockets_	the commands you need are:     sudo iwconfig eth1 essid [ssidhere] key off                  sudo dhclient eth1
+2008-03-05T23:36:00.000Z	hwilde_	mrpockets_	the first iwconfig command sets the ssid and the key, the dhclient grabs dhcp address
+2008-03-05T23:37:00.000Z	hwilde_	mrpockets_	yeah whatever your interface is called.  mine is eth1
+2008-03-05T23:42:00.000Z	hwilde_	mrpockets_	 pastebin the output of "ifconfig -a"  and "iwconfig"
+2008-03-05T23:43:00.000Z	hwilde_	mrpockets_	use eth1 not wlan0
+2008-03-05T23:44:00.000Z	hwilde_	mrpockets_	pastebin  sudo iwconfig
+2008-03-05T23:45:00.000Z	hwilde_	mrpockets_	that iwconfig output shows you don't have any ssid set.   pastebin the output of this:   sudo iwlist wlan0 scan
+2008-03-05T23:46:00.000Z	hwilde_	mrpockets_	  sudo iwconfig wlan0 essid default key off
+2008-03-05T23:46:00.000Z	hwilde_	mrpockets_	pastebin your iwconfig now
+2008-03-05T23:47:00.000Z	hwilde_	mrpockets_	you're looking for it to say ESSID: "default"  and Associated
+2008-03-05T23:50:00.000Z	hwilde_	mrpockets_	ok your ssid is set and you are asociated to that access point.  now you need to get an IP address with "sudo dhclient wlan0"
+2008-03-05T23:52:00.000Z	hwilde_	mrpockets_	ok you got an IP!  you are online!
+2008-03-05T23:53:00.000Z	hwilde_	mrpockets_	#DHCPACK from 192.168.0.1 <--- that is the dhcp server.  #bound to 192.168.0.111   <-- that is your IP
+2008-03-05T23:53:00.000Z	mrpockets_	hwilde_	 okay..

@@ -1,0 +1,21 @@
+2010-03-13T11:01:00.000Z	Fandekasp_		hi
+2010-03-13T11:02:00.000Z	Fandekasp_		I'd like to change permissions to a user ... how can I do this ? (I'd create a svn user, and he's unable to create a new file for example)
+2010-03-13T11:03:00.000Z	theadmin	Fandekasp_	See: man chmod
+2010-03-13T11:04:00.000Z	Fandekasp_	theadmin	: chmod modify file permissions, but I don't know how to change user permissions with it. Or I missed something
+2010-03-13T11:04:00.000Z	theadmin	Fandekasp_	"user permissions" being?
+2010-03-13T11:04:00.000Z	theadmin	Fandekasp_	What exactly do you want?
+2010-03-13T11:04:00.000Z	Fandekasp_	theadmin	: I'd like my user "svn" to be able to create a new file .svn/lock
+2010-03-13T11:05:00.000Z	theadmin	Fandekasp_	He must have rw access to .svn folder
+2010-03-13T11:06:00.000Z	Fandekasp_	theadmin	: hum all the directories have the permissions www-data:www-data ... how can I authorize svn AND www-data to access these files ?
+2010-03-13T11:09:00.000Z	theadmin	Fandekasp_	Hm... sudo addgroup somegroup && sudo usermod www-data -G -a somegroup && sudo usermod svn -G -a somegroup && sudo chown nobody:somegroup svn
+2010-03-13T11:12:00.000Z	Fandekasp_	theadmin	: needed some time to understand ^^ should work, I try :)
+2010-03-13T11:16:00.000Z	Fandekasp_	theadmin	: there is a problem : http://paste.pocoo.org/show/189062/  He want a user and I only created a groupe
+2010-03-13T11:17:00.000Z	theadmin	Fandekasp_	Damn, i forgot the "usermod" synopsis
+2010-03-13T11:18:00.000Z	theadmin	Fandekasp_	^
+2010-03-13T11:19:00.000Z	Fandekasp_	theadmin	: http://paste.pocoo.org/show/189066/   I don't understand lol
+2010-03-13T11:21:00.000Z	theadmin	Fandekasp_	Hm. guess i messed up again... "sudo usermod -aG svn-data svn", there!
+2010-03-13T11:24:00.000Z	theadmin	Fandekasp_	Let's listen to flannel. "sudo adduser svn svn-data && sudo adduser www-data svn-data"
+2010-03-13T11:27:00.000Z	Fandekasp_	theadmin	: don't change anything :(
+2010-03-13T11:29:00.000Z	Fandekasp_	theadmin	: look this : http://paste.pocoo.org/show/189068/
+2010-03-13T11:30:00.000Z	Fandekasp_	theadmin	: how can I check if my svn user is really part of the group svn-data, and "should" have permission to create file in the directory ?
+2010-03-13T11:31:00.000Z	Fandekasp_	theadmin	: anyway, thank you for your help :)

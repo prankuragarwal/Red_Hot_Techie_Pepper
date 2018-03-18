@@ -1,0 +1,19 @@
+2005-12-07T12:10:00.000Z	_tux		i did chmod -R 600 <myhomefolder> and now i cant log in! plz help!
+2005-12-07T12:11:00.000Z	trappist	_tux	that was a bad, bad idea
+2005-12-07T12:11:00.000Z	trappist	_tux	you're probably going to have to boot into single user mode to fix it
+2005-12-07T12:15:00.000Z	_tux	trappist	single user mode? plz explain......
+2005-12-07T12:16:00.000Z	trappist	_tux	at your grub prompt press 'e' then type 'init=/bin/bash' and hit enter.  that should get you to a root prompt.
+2005-12-07T12:37:00.000Z	_tux	trappist	thanks:)
+2005-12-07T12:38:00.000Z	_tux	trappist	once i am root, what then? how to fix what ive messed up?
+2005-12-07T12:38:00.000Z	trappist	_tux	step one: chmod 755 /home/whatever
+2005-12-07T12:39:00.000Z	trappist	_tux	NOT -R
+2005-12-07T12:39:00.000Z	_tux	trappist	ok..then......?
+2005-12-07T12:40:00.000Z	trappist	_tux	once you've done that you should be able to log in normally, but a lot of stuff is still going to be broken.  let's see what we can fix...
+2005-12-07T12:40:00.000Z	trappist	_tux	find /home/whatever -type d -exec chmod o+x {} \;
+2005-12-07T12:41:00.000Z	_tux	trappist	thx..what will that do?
+2005-12-07T12:42:00.000Z	trappist	_tux	that should fix 98% of what you broke.  now reboot normally and think REALLY REALLY hard before using chmod -R in the future.
+2005-12-07T12:42:00.000Z	trappist	_tux	what I said to transgress was meant for you
+2005-12-07T12:44:00.000Z	_tux	trappist	thanks:).......actually i was trying to make my home folder inaccessible to another user (my bro:)......
+2005-12-07T12:45:00.000Z	trappist	_tux	yeah I've made a similar mistake.  just chmod 750 (NO -R) and make sure he's not in the same group as you
+2005-12-07T12:47:00.000Z	_tux	trappist	got it.....thanks:)
+2005-12-07T12:49:00.000Z	_tux	trappist	i had noticed that my desktop icons became all red! when i made that mistake.......

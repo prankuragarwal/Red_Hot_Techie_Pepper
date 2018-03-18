@@ -1,0 +1,24 @@
+2009-07-22T00:33:00.000Z	tckb		anybody here facing problems while using skype ???
+2009-07-22T00:33:00.000Z	pzero	tckb	which problem?
+2009-07-22T00:33:00.000Z	pzero	tckb	i had an issue a while back where it was complaining about a bluetooth hardware thing
+2009-07-22T00:34:00.000Z	pzero	tckb	i do not, but it thought i did. so audio wouldnt work
+2009-07-22T00:34:00.000Z	pzero	tckb	i fixed it by setting an environment variable, forgot what i did but i could find it again if that's your problem.
+2009-07-22T00:34:00.000Z	pzero	tckb	run skype from command line and see what it's spitting out
+2009-07-22T00:36:00.000Z	pzero	tckb	it would help if i could see the warnings/errors from running skype on terminal.
+2009-07-22T00:38:00.000Z	pzero	tckb	that is EXACTLY the problem i fixed before. let me see if i can dig up how i fixed it.
+2009-07-22T00:42:00.000Z	pzero	tckb	i removed "pulse".
+2009-07-22T00:42:00.000Z	tckb	pzero	.. i didnt get you.. can you tell where and how you did it..
+2009-07-22T00:42:00.000Z	pzero	tckb	sudo apt-get remove pulse
+2009-07-22T00:43:00.000Z	tckb	pzero	are you sure.. is that ok to remove it..
+2009-07-22T00:43:00.000Z	pzero	tckb	if it isn't, just reinstall it
+2009-07-22T00:44:00.000Z	tckb	pzero	E: Couldn't find package pulse
+2009-07-22T00:44:00.000Z	pzero	tckb	sudo aptitude search "pulse"
+2009-07-22T00:45:00.000Z	pzero	tckb	figure out which one to remove : )
+2009-07-22T00:52:00.000Z	pzero	tckb	what is your soundcard?
+2009-07-22T00:54:00.000Z	pzero	tckb	try this. close skype, run "sudo killall -9 pulseaudio", start skype from command line. see if it works.
+2009-07-22T00:58:00.000Z	tckb	pzero	no help .. the server is starting almost instantaneously .. moreover no sound wen it stops..
+2009-07-22T00:58:00.000Z	pzero	tckb	what happens when you run it through a sound service?
+2009-07-22T00:58:00.000Z	tckb	pzero	, sound service? ..
+2009-07-22T01:02:00.000Z	tckb	pzero	.. its a bug!!!!! https://bugs.launchpad.net/ubuntu/+source/bluez/+bug/361615 X-(
+2009-07-22T01:05:00.000Z	pzero	tckb	that's a bug in pulseaudio and how it works with skype. killing/removing pulseaudio fixed it for me. another option is running it through some sound service
+2009-07-22T01:05:00.000Z	tckb	pzero	k let me try

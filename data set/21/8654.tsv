@@ -1,0 +1,21 @@
+2007-09-29T13:48:00.000Z	curtis_		hello everyone!
+2007-09-29T13:48:00.000Z	curtis_		i'm wondering if anyone could help me out with a problem im having whilst updating my ubuntu!
+2007-09-29T13:48:00.000Z	MrPrimate	curtis_	explain
+2007-09-29T13:49:00.000Z	curtis_	MrPrimate	 i previously shutdown the pc while updating so i guess thts wht caused it
+2007-09-29T13:49:00.000Z	MrPrimate	curtis_	try apt-get -f update
+2007-09-29T13:49:00.000Z	MrPrimate	curtis_	sudo apt-get -f update
+2007-09-29T13:55:00.000Z	curtis_	MrPrimate	 any other advice!
+2007-09-29T13:56:00.000Z	MrPrimate	curtis_	your still having problems, ?  whats the problem again, you killed box during apt updating and now it gives error whenever you apt-get update ?
+2007-09-29T13:56:00.000Z	curtis_	MrPrimate	 exactly
+2007-09-29T13:57:00.000Z	MrPrimate	curtis_	type ls -l /var/lib/dpkg/lock   and paste the results here,
+2007-09-29T13:57:00.000Z	MrPrimate	curtis_	you may just need to delete that lock file
+2007-09-29T13:57:00.000Z	MrPrimate	curtis_	you can try              sudo rm /var/lib/dpkg/lock
+2007-09-29T13:58:00.000Z	curtis_	MrPrimate	 result: -rw-r----- 1 root root 0 2007-09-29 10:52 /var/lib/dpkg/lock
+2007-09-29T13:58:00.000Z	MrPrimate	curtis_	good, delete that file,     sudo rm /var/lib/dpkg/lock
+2007-09-29T13:58:00.000Z	MrPrimate	curtis_	then run sudo apt-get update again
+2007-09-29T14:00:00.000Z	curtis_	MrPrimate	 E: Some index files failed to download, they have been ignored, or old ones used instead.
+2007-09-29T14:00:00.000Z	MrPrimate	curtis_	you have probably some bad sources in /etc/apt/sources.list
+2007-09-29T14:00:00.000Z	curtis_	MrPrimate	 and how can i fix tht! (sorry if am bothering)
+2007-09-29T14:02:00.000Z	curtis_	MrPrimate	 so how could i fix my sources list..!
+2007-09-29T14:03:00.000Z	MrPrimate	curtis_	you can edit it with a text editor, the file is at /etc/apt/sources.list,     remove lines that don't say ubuntu probably -- at the bottom usually
+2007-09-29T14:04:00.000Z	curtis_	MrPrimate	 ok thanks

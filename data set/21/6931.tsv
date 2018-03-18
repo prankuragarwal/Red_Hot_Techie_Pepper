@@ -1,0 +1,21 @@
+2010-06-16T08:15:00.000Z	koolatron		The installer won't even give me the option to select it.
+2010-06-16T08:16:00.000Z	koolatron		Nominally it asks if I'd like to have the OSes share, or wipe the volume entirely, or whatever.  No soap here, it just ignores /dev/sda
+2010-06-16T08:16:00.000Z	xtknight	koolatron	what installer mode are you using..manual or automatic partitioning
+2010-06-16T08:16:00.000Z	koolatron	xtknight	I tried 'em all.
+2010-06-16T08:17:00.000Z	xtknight	koolatron	so what's overall problem?sry i joined late...u cant see a drive?
+2010-06-16T08:17:00.000Z	koolatron	xtknight	even the manual mode only picked up /dev/sdb
+2010-06-16T08:17:00.000Z	koolatron	xtknight	No worries.  The Ubuntu installer is ignoring my /dev/sda device wholesale.
+2010-06-16T08:17:00.000Z	xtknight	koolatron	so you're talking about missing an entire drive, not a partition.  what disk controller is /dev/sda residing on?
+2010-06-16T08:17:00.000Z	koolatron	xtknight	same SATA controller that /dev/sdb is living on
+2010-06-16T08:17:00.000Z	xtknight	koolatron	or, anyway, what would have been /dev/sda
+2010-06-16T08:18:00.000Z	xtknight	koolatron	what disk controller is that? Intel ICH?... and is it in AHCI or IDE mode?
+2010-06-16T08:19:00.000Z	xtknight	koolatron	oh ok
+2010-06-16T08:19:00.000Z	xtknight	koolatron	did you wipe the raid flag off of the disk first? use gparted to do that
+2010-06-16T08:20:00.000Z	koolatron	xtknight	 Aha!  Okay, I'll give that a shot.
+2010-06-16T08:20:00.000Z	xtknight	koolatron	further than this we will look at dmesg, fdisk -l, and sfdisk output....but that's my first guess
+2010-06-16T08:21:00.000Z	koolatron	xtknight	I imagine that the raid flag's still set, and the installer's ignoring it based on that.  I seem to vaguely recall needing the alternate install cd to install to a raid
+2010-06-16T08:22:00.000Z	xtknight	koolatron	yes, that's still a necessity. once it is a no longer raid however you should be able to install to it fine.  i dont know what the flags do, but it might be the culprit
+2010-06-16T08:23:00.000Z	koolatron	xtknight	 I'll be back if I run into problems :)
+2010-06-16T08:23:00.000Z	koolatron	xtknight	 Thanks for the input!
+2010-06-16T08:27:00.000Z	xtknight	koolatron	here are what raid flags look like (look at the right).  http://img17.imageshack.us/img17/3600/screenshotdevsdagpartedn.png
+2010-06-16T10:19:00.000Z	xtknight	koolatron	so whats the status?

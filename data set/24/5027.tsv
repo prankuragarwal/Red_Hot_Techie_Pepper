@@ -1,0 +1,24 @@
+2010-08-16T06:41:00.000Z	hipitihop		anyone familiar with checkinstall ? I have done 'sudo checkinstall' and 'sudo checkinstall make cd-sounds-install' and 'sudo checkinstall make cd-moh-install'. Does this create a single package with both options or am I creating a new package reconfigured only with latest option ?
+2010-08-16T06:43:00.000Z	Barnabas	hipitihop	just do a checkinstall in the folder with the make / configure file
+2010-08-16T06:43:00.000Z	Barnabas		the rest is automatic
+2010-08-16T06:43:00.000Z	hipitihop	Barnabas	I have run the above as individual runs
+2010-08-16T06:43:00.000Z	Barnabas	hipitihop	provided you have the compile prerequisites of cause, but the configure step should sort that out
+2010-08-16T06:44:00.000Z	Barnabas	hipitihop	checkinstall will make a deb pkg for you
+2010-08-16T06:44:00.000Z	Barnabas		install that by double clicking it when the compile is done
+2010-08-16T06:46:00.000Z	hipitihop	Barnabas	yes .. but what is it doing when I run it again with the extra parameters ... it seems to do the right thing and even download additional tar.gz stuff, so I am assuming it creates a new package each time
+2010-08-16T06:46:00.000Z	Barnabas	hipitihop	it should prompt you for a package name and description ?
+2010-08-16T06:46:00.000Z	Barnabas		it does here
+2010-08-16T06:48:00.000Z	hipitihop	Barnabas	yes it does that. I think I am not explaining myself well, let me try again
+2010-08-16T06:49:00.000Z	hipitihop	Barnabas	I ran teh first time with 'sudo checkinstall' and it went through its motions and finished saying I can remove the package anytime via 'dpkg -r xxxx' ...
+2010-08-16T06:50:00.000Z	Barnabas	hipitihop	thats should be ok then? You should be able to find that pkg in synaptic
+2010-08-16T06:50:00.000Z	hipitihop	Barnabas	.. but then reading further install docs, which said you should also consider 'make cd-moh-install', so I ran checkinstall again this time with 'sudo checinstall make cd-moh-install'
+2010-08-16T06:51:00.000Z	Barnabas	hipitihop	try to check synaptic and see if the pkg is installed - then check info to see what files it installed
+2010-08-16T06:51:00.000Z	hipitihop	Barnabas	second run also went through similar motions, this time downloading additonal tar.gz files and completed the same way...
+2010-08-16T06:53:00.000Z	hipitihop	Barnabas	so what I'm not sure of if I run again with further make parameters, like 'sudo checkinstall make cd-sounds-install' does the latest get added to the previous, or do I somehow have to specify both lots of make arguments
+2010-08-16T06:54:00.000Z	Barnabas	hipitihop	if there is a configure step you should never have to in any build, since that step analyze your system and configure accordingly
+2010-08-16T06:54:00.000Z	Barnabas		if a prerequisite is missing the configure step should fail
+2010-08-16T06:55:00.000Z	hipitihop	Barnabas	yes there is a configure step, but these look like additional options, let me find actual instructions to see what you make of them
+2010-08-16T07:03:00.000Z	hipitihop	Barnabas	worked it out, I need to specify both in one run i.e. 'sudo checkinstall make cd-moh-install cd-sounds-install'
+2010-08-16T07:03:00.000Z	Barnabas	hipitihop	super
+2010-08-16T07:08:00.000Z	hipitihop	Barnabas	thanks for your time
+2010-08-16T07:08:00.000Z	Barnabas	hipitihop	np

@@ -1,0 +1,18 @@
+2011-03-15T17:57:00.000Z	acicula	antonio_	does the connection actually slow to a crawl?
+2011-03-15T17:57:00.000Z	acicula	antonio_	or even stop completely?
+2011-03-15T17:58:00.000Z	antonio_	acicula	just slowing down, using a very small window
+2011-03-15T17:58:00.000Z	acicula	antonio_	sysctl -w "net.ipv4.tcp_window_scaling=0 turns it off
+2011-03-15T17:58:00.000Z	antonio_	acicula	yes disabling window scaling solves
+2011-03-15T17:58:00.000Z	antonio_	acicula	but why is working fine
+2011-03-15T17:58:00.000Z	antonio_	acicula	on a 32 bit version
+2011-03-15T17:59:00.000Z	acicula	antonio_	dont know
+2011-03-15T18:01:00.000Z	antonio_	acicula	from 64bit network dump I see a too high value for tcp window size, maybe a bug? I can reproduce the issue
+2011-03-15T18:05:00.000Z	acicula	antonio_	its a known issue with routers according to google
+2011-03-15T18:10:00.000Z	antonio_	acicula	already googled, I have no router, I experience the same problem when connecting from different network
+2011-03-15T18:10:00.000Z	acicula	antonio_	are you connecting to the same host every time?
+2011-03-15T18:11:00.000Z	antonio_	acicula	yes...
+2011-03-15T18:11:00.000Z	acicula	antonio_	try connecting to a node on another network
+2011-03-15T18:12:00.000Z	antonio_	acicula	no problems connecting to other hosts or connecting to that same host using a 32bit version
+2011-03-15T18:14:00.000Z	acicula	antonio_	means it can also be caused by a router that is closer to the computer you are connecting to
+2011-03-15T18:15:00.000Z	acicula	antonio_	dunno
+2011-03-15T18:18:00.000Z	antonio_	acicula	changing client solve the problem, switch off scaling solve the problem. this make me believe is a client side issue, not on router

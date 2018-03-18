@@ -1,0 +1,22 @@
+2007-12-29T05:49:00.000Z	coreyo		can someone tell me where to look to diagnose a problem with no direct rendering?  I have checked my xorg logs and everything seems to be initializing without any error messages there.  I have also turned on verbose debugging mode for glxinfo and found nothing.  Where else might I turn?
+2007-12-29T05:49:00.000Z	katakaio	coreyo	That's a problem that we've been working on for some time
+2007-12-29T05:49:00.000Z	katakaio		I don't know if there's an easy solution
+2007-12-29T05:50:00.000Z	katakaio	coreyo	This is a good place to start: http://ubuntuforums.org/showthread.php?t=582873&page=3
+2007-12-29T05:52:00.000Z	coreyo	katakaio	if it helps, I have an intel 965 chipset.  Was having opengl/mesa/driver problems with the gutsy packages, so I compiled all of these from scratch and installed them:  http://www.intellinuxgraphics.org/index.html   Now everything is working, except that glxinfo shows me no direct rendering, and games like tuxracer and planeshift run reaaaallly slowly.
+2007-12-29T05:54:00.000Z	katakaio	coreyo	That does help - all of my research has been for my intel 945 chipset, which should be similar. You might like this link too: http://ubuntuforums.org/showthread.php?p=3825086#post3825086
+2007-12-29T05:55:00.000Z	katakaio	coreyo	Try this - check to see if direct rendering is on when logged in as root
+2007-12-29T05:55:00.000Z	coreyo	katakaio	thank you, I am reviewing the posts now
+2007-12-29T05:55:00.000Z	katakaio		I found that direct rendering was listed as on when I was logged in as root, but not as any other user
+2007-12-29T05:59:00.000Z	coreyo	katakaio	nope, no DRI as root.  I guess that means it's not a permissions problem?
+2007-12-29T06:01:00.000Z	katakaio	coreyo	Hmm. The command I used was "glxinfo | grep render" to see if DR was on or not . . . did you do the same or something different?
+2007-12-29T06:02:00.000Z	coreyo	katakaio	right, that's what I used
+2007-12-29T06:03:00.000Z	katakaio	coreyo	OK then, looks like my issue is a permissions problem :P
+2007-12-29T06:03:00.000Z	coreyo	katakaio	actually, the stock setup for gutsy worked very well except that eve-online and planeshift both crashed due to some problem between mesa/kernel driver/xorg driver
+2007-12-29T06:04:00.000Z	katakaio		Are you using the intel driver for your 965 chipset?
+2007-12-29T06:04:00.000Z	katakaio		Whopps, that answers that
+2007-12-29T06:04:00.000Z	coreyo	katakaio	aye, intel
+2007-12-29T06:04:00.000Z	coreyo	katakaio	I have both the mesa libs, the drm libs and kernel modules, and the xorg driver compiled from the latest source right now.
+2007-12-29T06:05:00.000Z	katakaio	coreyo	I don't have any first-hand experience with this, but I know some guys with 945/965 chipsets like reverting to the i810 driver
+2007-12-29T06:05:00.000Z	katakaio		Especially when they're crashing out programs or having compatibility issues
+2007-12-29T06:06:00.000Z	coreyo	katakaio	it was my experience that the i815 wasn't working on the 965, I guess I could try again now that I recompiled it
+2007-12-29T06:07:00.000Z	katakaio	coreyo	You're right, and I think the people who use it have recompiled it. But I should warn you, I don't really know what I'm talking about - never dared to do it myself

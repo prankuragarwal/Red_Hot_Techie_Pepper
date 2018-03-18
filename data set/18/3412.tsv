@@ -1,0 +1,18 @@
+2009-10-13T07:46:00.000Z	shane2peru		does anyone know how to get apt to show the info for the released package it wants to upgrade?  version # etc.
+2009-10-13T07:47:00.000Z	thedude42	shane2peru	apt-cache show <package>
+2009-10-13T07:48:00.000Z	shane2peru	thedude42	that shows the installed package, not the one it want's to download and install
+2009-10-13T07:48:00.000Z	thedude42	shane2peru	right, so you take the package name of the package it wants to download and install, and do apt-cache show on that package....
+2009-10-13T07:49:00.000Z	shane2peru	thedude42	it is an upgrade of a package I have, I want to know what it wants to replace my package with?  I installed from source, it is ffmpeg
+2009-10-13T07:50:00.000Z	thedude42	shane2peru	if you installed yours from source and it's not in the apt cache, then apt-cache show will show you the one it wants to install
+2009-10-13T07:51:00.000Z	shane2peru	thedude42	oh, right, I actually made a package and installed it so, when I use apt-cache show ffmpeg it shows me as the maintainer, and shows my package, however now it want's to update it, and I'm quite curious as to what it wants to replace it with.
+2009-10-13T07:52:00.000Z	thedude42	shane2peru	then download the deb for the package it wants to upgrade and do some dpkg fu on it
+2009-10-13T07:53:00.000Z	shane2peru	thedude42	I guess I could do that, I was just hoping apt had a way to tell me why it wanted to upgrade it
+2009-10-13T07:53:00.000Z	shane2peru	thedude42	I guess I could just install it, and then remove it and revert back to my old package, but that is a pain too.
+2009-10-13T07:55:00.000Z	thedude42	shane2peru	well, i assume you're doing apt-get update.... does it not show a package name with a version there?
+2009-10-13T07:55:00.000Z	shane2peru	thedude42	The following packages will be upgraded:
+2009-10-13T07:56:00.000Z	shane2peru	thedude42	I think it is pulling it in as a dep for melt, or something
+2009-10-13T07:57:00.000Z	thedude42	shane2peru	well the tool is going to either be apt-cache or dpkg, apt-get doesn't do much in the inspection area
+2009-10-13T07:58:00.000Z	shane2peru	thedude42	right, apt-cache, I will have to look into it more probably as you said, download it and dpkg fu it
+2009-10-13T08:00:00.000Z	shane2peru	thedude42	ahh, aptitude download ffmpeg gives me the scoop, fyi :)
+2009-10-13T08:01:00.000Z	thedude42	shane2peru	yeah, i never use aptitude... i should probably consider using it :p
+2009-10-13T08:01:00.000Z	shane2peru	thedude42	I use it as a fallback when I forget the apt-get commands,

@@ -1,0 +1,18 @@
+2007-12-05T04:12:00.000Z	Freman		from what I've read, upstart should still read inittab if it's there but doesn't seem to, and I've tried creating an events.d file for it and it's not starting through that either
+2007-12-05T04:13:00.000Z	Freman		I can force it to start.... but it's not starting on runlevel
+2007-12-05T04:13:00.000Z	Freman		my ssh tunnel
+2007-12-05T04:14:00.000Z	Freman		come again?
+2007-12-05T04:14:00.000Z	kelsin	Freman	can you pastebin your event.d file?
+2007-12-05T04:15:00.000Z	kelsin	Freman	can you paste your sshtunnel script (with hosts change if you want)
+2007-12-05T04:15:00.000Z	Freman	kelsin	the script works
+2007-12-05T04:16:00.000Z	kelsin	Freman	anything in message or syslog?
+2007-12-05T04:16:00.000Z	kelsin	Freman	and I'm assuming the script blocks and doesn't exit?
+2007-12-05T04:17:00.000Z	kelsin	Freman	I would change the start lines to "start on stopped rc2" etc, and see if the problem is network and ssh not being up yet
+2007-12-05T04:18:00.000Z	Freman	kelsin	how does that work? I'm in runlevel2 now...
+2007-12-05T04:18:00.000Z	kelsin	Freman	run "initctl list" you'll see that rc2 is stoped
+2007-12-05T04:18:00.000Z	kelsin	Freman	the "rc2" upstart job is stopped technically
+2007-12-05T04:19:00.000Z	kelsin	Freman	you can stop and start rc2 but I have no idea how that works, since the main problem you're having is ONLY on reboot I would suggest you have to test it that way :-(
+2007-12-05T04:20:00.000Z	kelsin	Freman	but I would assume the probably is a race condition since the default thing just runs rc2 AND your job at the same time right away
+2007-12-05T04:20:00.000Z	kelsin	Freman	you could maybe sleep until you can ping the host in your script as another possible solution (if that's the problem)
+2007-12-05T04:22:00.000Z	Freman	kelsin	 http://paste-bin.com/12769
+2007-12-05T04:22:00.000Z	kelsin	Freman	looks good to me, even if it's wrong you'll just end up with the job not started (visisble in sudo initctl list)

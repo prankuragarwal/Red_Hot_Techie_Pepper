@@ -1,0 +1,23 @@
+2009-02-24T20:56:00.000Z	Maarek		can anyone determine this symptom:  I cannot SSH to my server (fatal error) from PuTTY.  And I cannot get to my homepage from the server, but I can ping the server.  I'm at work and SSH is the only connection that I use to gain access.  Any ideas?
+2009-02-24T20:58:00.000Z	Maarek		correction:  PuTTY stating "Connection Refused" for an SSH connection to my server
+2009-02-24T20:59:00.000Z	samhassell	Maarek	you should try to nmap your server to see what ports are open
+2009-02-24T20:59:00.000Z	Maarek		nmap?  I'm not familiar with that.
+2009-02-24T21:00:00.000Z	Maarek	samhassell	the server is behind a firewall, the only ports open for it are 22, 80, and the email ports
+2009-02-24T21:01:00.000Z	samhassell	Maarek	so if it can't connect, either the service isn't running or its firewalled right?
+2009-02-24T21:01:00.000Z	samhassell	Maarek	what OS are you on?
+2009-02-24T21:02:00.000Z	Maarek		OS, ubuntu 8.10 server.  No GUI installed
+2009-02-24T21:02:00.000Z	samhassell	Maarek	so sudo apt-get install nmap
+2009-02-24T21:02:00.000Z	Maarek		I'll have to do that when someone can reboot it.
+2009-02-24T21:02:00.000Z	samhassell	Maarek	its a network scanner, so it will tell you for sure that status of the machines exposed ports
+2009-02-24T21:03:00.000Z	Maarek	samhassell	oh, you mean what I'm running right now
+2009-02-24T21:03:00.000Z	samhassell	Maarek	yeh
+2009-02-24T21:03:00.000Z	samhassell	Maarek	the nmap command would be 'nmap -sS -P0 -sV -O <target>'
+2009-02-24T21:03:00.000Z	Maarek	samhassell	windowsxp sp3
+2009-02-24T21:03:00.000Z	samhassell	Maarek	where target is your servers ip
+2009-02-24T21:04:00.000Z	Maarek	samhassell	good, I copied the command, downloading the windows version to run a check.  I believe I turned off the UDP in the firewall
+2009-02-24T21:05:00.000Z	samhassell	Maarek	sweet, that sounds like the problem :)
+2009-02-24T21:05:00.000Z	Maarek	samhassell	but it's always been off.
+2009-02-24T21:13:00.000Z	Maarek	samhassell	once someone get's to the location I'll have them hard reboot the box.  It's uptime is over 60days.
+2009-02-24T21:15:00.000Z	samhassell	Maarek	yeah sounds like somethings broken there.. software firewall or hardware?
+2009-02-24T21:17:00.000Z	Maarek	samhassell	looks like software.  I'll have someone reboot it once they get there
+2009-02-24T21:18:00.000Z	Maarek	samhassell	if it was hardware, than I wouldn't be able to ping it.

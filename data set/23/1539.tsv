@@ -1,0 +1,23 @@
+2011-02-10T20:31:00.000Z	xro		hi, is there a way to boot ubuntu in text mode? i mean deactivate gnome in the grub menu?
+2011-02-10T20:31:00.000Z	llutz_	xro	add "text" to the grub boot-options
+2011-03-17T19:22:00.000Z	llutz_	xro	ls -la ~/.profile ~/.bashrc
+2011-03-17T19:23:00.000Z	xro	llutz_	i get /home/myusername/.bashrc and /home/myusername/.profile
+2011-03-17T19:23:00.000Z	llutz_	xro	both exist and size != 0? echo $SHELL
+2011-03-17T19:25:00.000Z	xro	llutz_	they are 3.1ko and 675... echo $SHELL --> /bin/sh
+2011-03-17T19:25:00.000Z	llutz_	xro	"/bin/bash"
+2011-03-17T19:26:00.000Z	xro	llutz_	why? i should be done automatically, no?
+2011-03-17T19:26:00.000Z	llutz_	xro	getent passwd |grep $USER           whats the login shel there? (last entry)
+2011-03-17T19:26:00.000Z	xro	llutz_	there is my user... (it works with /bin/bash)
+2011-03-17T19:27:00.000Z	llutz_	xro	getent passwd |grep $USER           whats the login shel there? (last entry)
+2011-03-17T19:27:00.000Z	xro	llutz_	it is my login
+2011-03-17T19:27:00.000Z	llutz_	xro	What shell does it show??
+2011-03-17T19:28:00.000Z	xro	llutz_	myusername:x:uid:gid:surname name:/home/myusername:
+2011-03-17T19:29:00.000Z	llutz_	xro	ups no shell at all. usermod -s /bin/bash $USER
+2011-03-17T19:30:00.000Z	xro	llutz_	usermod: cannot lock /etc/passwd
+2011-03-17T19:30:00.000Z	llutz_	xro	sudo
+2011-03-17T19:31:00.000Z	llutz_	xro	sudo usermod -s /bin/bash <yourusername>
+2011-03-17T19:32:00.000Z	xro	llutz_	user not exist in /etc/passwd... but this is normal... the users are in a ldap server
+2011-03-17T19:33:00.000Z	llutz_	xro	i never used ldap, is info like login-shell also saved there? then your have to change it there
+2011-03-17T19:34:00.000Z	xro	llutz_	ok... thank you for your help... I now understand that the problem is in the ldap user config...
+2011-03-17T19:34:00.000Z	llutz_	xro	finally you have to set your login-shell correctly, whereever ;)
+2011-03-17T19:35:00.000Z	xro	llutz_	exactly... :) thanks again

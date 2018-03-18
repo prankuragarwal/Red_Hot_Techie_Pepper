@@ -1,0 +1,23 @@
+2010-10-18T01:01:00.000Z	hobomo		does anyone know a command to open two xterm sessions simultaneously and execute a script in each of them?
+2010-10-18T01:02:00.000Z	Jordan_U	hobomo	xterm -e foo & xterm -e bar
+2010-10-18T01:05:00.000Z	hobomo	Jordan_U	that doesnt seem to open them simultaneously, it does it sequentially
+2010-10-18T01:05:00.000Z	Jordan_U	hobomo	Did you use '&' or '&&' ?
+2010-10-18T01:05:00.000Z	hobomo	Jordan_U	&
+2010-10-18T01:05:00.000Z	hobomo	Jordan_U	is there a difference?
+2010-10-18T01:06:00.000Z	Jordan_U	hobomo	Yes.
+2010-10-18T01:06:00.000Z	Jordan_U	hobomo	What is the exact command you ran?
+2010-10-18T01:07:00.000Z	hobomo	Jordan_U	xterm -e /media/F5B6-D9E4/pythongame/newapp/gameServer1.py & sleep 1 & xterm -e /media/F5B6-D9E4/pythongame/newapp/newclient.py
+2010-10-18T01:08:00.000Z	hobomo	Jordan_U	i need both of those scripts to run at the same time, but i want to give the first script a second to initialize
+2010-10-18T01:08:00.000Z	Jordan_U	hobomo	The "sleep 1" in that is doing nothing, as using '&' means that it is also running in the background. So all three commands are running at the same time.
+2010-10-18T01:10:00.000Z	hobomo	Jordan_U	ok that makes sense now. so how would i start the second script a second after the first? im trying to keep this in one command so i can alias it.
+2010-10-18T01:11:00.000Z	Jordan_U	hobomo	foo & sleep 1; bar &
+2010-10-18T01:12:00.000Z	hobomo	Jordan_U	alright ill try it
+2010-10-18T01:12:00.000Z	hobomo	Jordan_U	what is the last & doing?
+2010-10-18T01:13:00.000Z	Jordan_U	hobomo	Making it so that you can run commands after that in the same shell.
+2010-10-18T01:15:00.000Z	hobomo	Jordan_U	so if these scripts are running in the background, how do i stop them? will they automatically stop when i close the terminal?
+2010-10-18T01:17:00.000Z	Jordan_U	hobomo	Yes (though the scripts can be made to continue even after the terminal is closed if you wanted them to).
+2010-10-18T01:39:00.000Z	hobomo	Jordan_U	i tried your command with xterm and tried it with gnome-terminal but it isnt working the way i would like in either
+2010-10-18T01:40:00.000Z	Jordan_U	hobomo	What is happening and what would you like to happen instead?
+2010-10-18T01:41:00.000Z	hobomo	Jordan_U	im just looking for a way to emulate that command in xterm (ie without tabs)
+2010-10-18T01:44:00.000Z	hobomo	Jordan_U	with this command it opens the first tab and executes the script, waits a second, then opens the second tab and executes the second script
+2010-10-18T01:52:00.000Z	hobomo	Jordan_U	nevermind, getting rid of the "sleep 1" seems to fix things. not sure why that was causing a problem.

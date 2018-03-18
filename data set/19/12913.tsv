@@ -1,0 +1,19 @@
+2006-07-12T07:23:00.000Z	Cheradenine		ive just installed wine and when running winecfg i click the audio tab it fails with an error saying "ALSA lib seq_hw.c:456:(snd_seq_hw_open) open /dev/snd/seq failed: No such file or directory
+2006-07-12T07:23:00.000Z	Cheradenine		*** glibc detected *** free(): invalid pointer: 0x7c075048 ***
+2006-07-12T07:23:00.000Z	Cheradenine		"
+2006-07-12T07:24:00.000Z	Cheradenine		anyone got a good idea ?
+2006-07-12T07:24:00.000Z	Cheradenine		what if i need the sound in wine?
+2006-07-12T07:24:00.000Z	erUSUL	Cheradenine	sound works in other apps?
+2006-07-12T07:26:00.000Z	erUSUL	Cheradenine	no dapper runs alsa... check the perms 'ls -al /dev/snd/*'
+2006-07-12T07:27:00.000Z	erUSUL	Cheradenine	if with the same user you can use sound in other apps i do not see why wine would fail...
+2006-07-12T07:28:00.000Z	erUSUL	Cheradenine	'ls -al /dev/snd/seq'
+2006-07-12T07:29:00.000Z	erUSUL	Cheradenine	only apps that still use oss api opens /dev/dsp (a few like skype and audacity)
+2006-07-12T07:30:00.000Z	erUSUL	Cheradenine	for some reason your card or drivers do not create a seq dev file i do not know what might it be....
+2006-07-12T07:30:00.000Z	erUSUL	Cheradenine	what sound card do you have??
+2006-07-12T07:35:00.000Z	erUSUL	Cheradenine	try lsmod | grep seq and past the output to pastebine
+2006-07-12T07:37:00.000Z	erUSUL	Cheradenine	sudo modprobe snd_seq_device
+2006-07-12T07:39:00.000Z	erUSUL	Cheradenine	was 'sudo modprobe snd_seq_device' succesfull?
+2006-07-12T07:39:00.000Z	erUSUL	Cheradenine	btw lsmod | grep snd to see alsa stuff
+2006-07-12T07:40:00.000Z	erUSUL	Cheradenine	try again 'ls -al /dev/snd/seq'
+2006-07-12T07:41:00.000Z	erUSUL	Cheradenine	:( i do not know what is the problem...
+2006-07-12T07:41:00.000Z	erUSUL	Cheradenine	lsmod | grep seq still outputs nothing, does it?

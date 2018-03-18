@@ -1,0 +1,24 @@
+2011-10-17T20:25:00.000Z	enapupe_		Hi, i need some help installing ubuntu on an empty hd
+2011-10-17T20:26:00.000Z	enapupe_		I want to split the HD onto 300gb system and 700gb data, what should I choose on 'mount point'? /root, / ?
+2011-10-17T20:27:00.000Z	enapupe_		I don't know this concept.. what's the difference
+2011-10-17T20:28:00.000Z	enapupe_		of using both in / ?
+2011-10-17T20:28:00.000Z	Polah	enapupe_	You probably won't really need 300GB for the system
+2011-10-17T20:28:00.000Z	enapupe_		the second must be logic?
+2011-10-17T20:30:00.000Z	Polah	enapupe_	perhaps around 100GB system, mountpoint would be /, a few gigabytes of swap, then a 900ishGB data partition mounted at /home perhaps, or /media/anything you like. You don't need any logical partition unless you already have four primaries
+2011-10-17T20:30:00.000Z	enapupe_	Polah	ty, I think i got it..
+2011-10-17T20:31:00.000Z	Polah	enapupe_	swap partition should be at least as large as your RAM (unless you have like 16GB of RAM or something like that)
+2011-10-17T20:31:00.000Z	enapupe_		I have 4gb
+2011-10-17T20:31:00.000Z	enapupe_		is swap necessary?
+2011-10-17T20:32:00.000Z	Polah	enapupe_	yes I'd make at least a 2GB swap partition
+2011-10-17T20:32:00.000Z	enapupe_		Ok.. is swap logic or primary?
+2011-10-17T20:32:00.000Z	enapupe_		or whatever..
+2011-10-17T20:32:00.000Z	enapupe_		?
+2011-10-17T20:32:00.000Z	Polah	enapupe_	your choice.
+2011-10-17T20:32:00.000Z	enapupe_		what' the difference?
+2011-10-17T20:32:00.000Z	Polah	enapupe_	the only thing that really requires a primary partition is a Windows system, because it's silly like that.
+2011-10-17T20:32:00.000Z	enapupe_		what' the difference between logic and primary
+2011-10-17T20:33:00.000Z	enapupe_		ok.. so swap and data is logic?
+2011-10-17T20:34:00.000Z	Polah	enapupe_	primary partitions have their information stored in the MBR section of the disk, logical partitions have their information stored outside the MBR and an extended partition inside the MBR tells the system to look for the logical partition info elsewhere. The limit on four primaries is due to the limit on MBR size
+2011-10-17T20:34:00.000Z	Polah	enapupe_	no. They can be primary or logical, doesn't really matter.
+2011-10-17T20:34:00.000Z	enapupe_		ok
+2011-10-17T20:34:00.000Z	Polah	enapupe_	I'd make them all primary unless you need to have more than four primaries and plan to put other partitions for things that required primaries

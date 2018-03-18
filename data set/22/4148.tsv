@@ -1,0 +1,22 @@
+2010-05-02T04:27:00.000Z	Lasivian		I'm trying to get a wacom pen to work with Ubuntu 9.04, and it's not, but I can't figure out why, i've tried multiple instruction sites but it keeps acting like it's simply not seeing it and I don't know how to figure out why
+2010-05-02T04:27:00.000Z	Lasivian		any suggestions?
+2010-05-02T04:28:00.000Z	Gartral	Lasivian	is it a tablet/pen combo or one of the "freewriter" or "freeagent" pens?
+2010-05-02T04:28:00.000Z	Lasivian	Gartral	it's a pen that goes with the OQO pamtop computer, it's a Wacom Serial
+2010-05-02T04:29:00.000Z	Gartral	Lasivian	sounds like it needs OEM drivers dude... MOST tablets just dont work in linux for that reason..
+2010-05-02T04:30:00.000Z	Lasivian	Gartral	there are sites all over google saying "pen works fine in 8.14"
+2010-05-02T04:30:00.000Z	Gartral	Lasivian	there is no such thing as 8.14 there was 8.04 8.06 8.10 and 8.10b
+2010-05-02T04:36:00.000Z	Gartral	Lasivian	do me a favor and pastebin your lsusb output
+2010-05-02T04:36:00.000Z	Lasivian	Gartral	I could, but it doesn't list the device, it's serial
+2010-05-02T04:39:00.000Z	Gartral	Lasivian	are you sure, have you tryied? the serial bus is part of a UDB circuit on MOST comps without qpi, and so far as i know, there are no i3/i5 netbooks
+2010-05-02T04:39:00.000Z	Lasivian	Gartral	this is the xorg.conf they keep saying to use: http://vefur.simula.no/~aasmundo/tmp/oqo.xorg.conf
+2010-05-02T04:42:00.000Z	Gartral	Lasivian	do you see the parts that are commented out?
+2010-05-02T04:42:00.000Z	Lasivian	Gartral	yeah
+2010-05-02T04:43:00.000Z	Lasivian	Gartral	/dev/input/wacom is the device when it's connected via USB
+2010-05-02T04:43:00.000Z	Gartral	Lasivian	uncomment them and reboot
+2010-05-02T04:44:00.000Z	Gartral	Lasivian	even though the device is serial, it MAY be that the kernal is using the USB buffer for it's data, meaning it could assign a virtual USB device for communicating with the tablet
+2010-05-02T04:44:00.000Z	Lasivian	Gartral	there is no /dev/input/wacom on the device for that command to find if tyhat matters
+2010-05-02T04:45:00.000Z	Gartral	Lasivian	do me a favor and run touch /dev/ttyS1
+2010-05-02T04:46:00.000Z	Lasivian	Gartral	no reply
+2010-05-02T04:47:00.000Z	Gartral	Lasivian	ok, now try that with /dev/input/wacom
+2010-05-02T04:52:00.000Z	Gartral	Lasivian	can you repost if you replied, i cant find a post after mine
+2010-05-02T04:53:00.000Z	Lasivian	Gartral	none of the touch commands returned anything

@@ -1,0 +1,22 @@
+2006-07-27T16:29:00.000Z	tabman		I wanna check whether the linux bluetooth protocol stack is installed on my machine or not, how can I do that ?
+2006-07-27T16:30:00.000Z	longwave	tabman	check the output of "dmesg" to see if there are any mentions of bluetooth
+2006-07-27T16:31:00.000Z	tabman	longwave	yes there is
+2006-07-27T16:39:00.000Z	longwave	tabman	it is in your home directory
+2006-07-27T16:39:00.000Z	longwave	tabman	but files beginning with a . do not show up by default, though it is there
+2006-07-27T06:06:00.000Z	longwave	tabman	you need to add an entry to /etc/fstab
+2006-07-27T06:07:00.000Z	tabman	longwave	the entry is present in fstab
+2006-07-27T06:07:00.000Z	longwave	tabman	then it should mount at boot, unless you have "noauto" in the options
+2006-07-27T06:08:00.000Z	tabman	longwave	there is no noauto in the options
+2006-07-27T06:10:00.000Z	tabman	longwave	it says back : mount: wrong fs type, bad option, bad superblock on /dev/hda4, missing codepage or other error In some cases useful info is found in syslog - try dmesg | tail  or so
+2006-07-27T06:10:00.000Z	longwave	tabman	did you put the right filesystem type in /etc/fstab?
+2006-07-27T06:11:00.000Z	longwave	tabman	you need the same options in fstab as you pass to "mount" on the command line
+2006-07-27T06:11:00.000Z	tabman	longwave	my fstab http://paste.ubuntu-nl.org/19006
+2006-07-27T06:12:00.000Z	longwave	tabman	if it really is ext3, try removing the "utf8" bit, i think that is not needed on ext3 filesystems
+2006-07-27T06:13:00.000Z	longwave	tabman	in fact, remove the umask and gid parts as well so the options just say "defaults"
+2006-07-27T06:13:00.000Z	tabman	longwave	you mean /dev/hda4       /media/hda4     ext3    defaults  0       1
+2006-07-27T06:13:00.000Z	longwave	tabman	yes
+2006-07-27T06:15:00.000Z	tabman	longwave	I did mount -a and it has opened up my drive
+2006-07-27T06:15:00.000Z	tabman	longwave	I hope it would do it on restart as well
+2006-07-27T06:15:00.000Z	longwave	tabman	ok, that should be automounted next time you reboot
+2006-07-27T06:15:00.000Z	tabman	longwave	Thanks
+2006-07-27T06:26:00.000Z	longwave	tabman	apt-get install build-essential

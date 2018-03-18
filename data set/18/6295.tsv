@@ -1,0 +1,18 @@
+2008-05-28T03:42:00.000Z	krim		I just installed freecol (the colonization clone) and when I try to start it nothing happens. I'm using Hardy 64. Any ideas?
+2008-05-28T03:42:00.000Z	krim		I tried running freecol from terminal now and got "exec: 26: /usr/lib/jvm/java-6-sun/jre/bin/java: not found
+2008-05-28T03:43:00.000Z	hanth1	krim	Do you have java 6 installed?
+2008-05-28T03:44:00.000Z	krim	hanth1	hanth1 Shouldn't aptitude install everything the package needs to run? It installed these two packages with freecol: libhiglayout-java libwoodstox-java
+2008-05-28T03:46:00.000Z	hanth1		Krim: Yes ideally it should take care of dependencies like that. But not always, like if the person who packaged freecol forgot something. Can you try the command which java in a prompt?
+2008-05-28T03:47:00.000Z	krim	hanth1	/usr/bin/java was the result. I also found this: http://ubuntuforums.org/showthread.php?t=779645 but don't know how to create symbolic link (or if it would solve my problem) and when I looked for sun-java in aptitude I found several choices, don't know which to choose.
+2008-05-28T03:49:00.000Z	hanth1	krim	From this thread http://ubuntuforums.org/showthread.php?t=255573 you can see syntax for creating a symbolic link
+2008-05-28T03:49:00.000Z	krim	hanth1	Thanks!
+2008-05-28T03:51:00.000Z	krim	hanth1	ln -s /usr/bin/java /usr/lib/jvm/java-6-sun/jre/bin/java or the other way around?
+2008-05-28T03:53:00.000Z	hanth1	krim	I think you got it the right way around. ln -s something-real something-symbolic
+2008-05-28T03:54:00.000Z	krim	hanth1	I tried both :) the 'right one' gave me "no such file" the wrong one gave me "file exists" and freecol still won't start
+2008-05-28T03:56:00.000Z	hanth1	krim	Hang on I am gonna test it here (tired can't remember syntax)
+2008-05-28T03:57:00.000Z	krim	hanth1	Maybe I need to install sun-java instead of making symbolic links.
+2008-05-28T03:59:00.000Z	hanth1	krim	You could try that. But which java seems to show that you have java installed already... I suspect it IS sun java 6. (java -version will tell you)
+2008-05-28T04:00:00.000Z	krim	hanth1	1.6.0 OpenJDK
+2008-05-28T04:02:00.000Z	hanth1	krim	AH that could be a problem :) Freecol might not be satisfied with that even if you do get it to accept the different path (with the symlink)
+2008-05-28T04:04:00.000Z	krim	hanth1	I'll try to install sun-java after I've made some food then. Thanks for the help!
+2008-05-28T04:06:00.000Z	hanth1	krim	No problem. I'll get some sleep.

@@ -1,0 +1,19 @@
+2011-08-03T02:22:00.000Z	freax		can anyone please tell how to create a wireless network through terminal?
+2011-08-03T02:23:00.000Z	siert	freax	`man wireless` explains the most import stuff/references
+2011-08-03T02:23:00.000Z	siert	freax	not through command line -> use network manager applet
+2011-08-03T02:23:00.000Z	freax	siert	: Yes i did but I didnt find any suitable commands for that
+2011-08-03T02:24:00.000Z	siert	freax	you need /etc/network/interfaces for permanent connections or iwconfig/iwpriv for manual stuff from the cli
+2011-08-03T02:26:00.000Z	siert	freax	iwlist scans network, iwconfig sets wireless stuff (iwconfig -h) and dhclient/ifconfig sets IP stuff onto the adapter
+2011-08-03T02:26:00.000Z	siert	freax	the manual pages of these commands refer to other wireless related commands aswell... dive into it :)
+2011-08-03T02:26:00.000Z	freax	siert	: Okay, I will look into that now..
+2011-08-03T02:30:00.000Z	siert	freax	`iwconfig` will list your wireless devices, iwconfig <device> essid <ap> key <ap> etc. will bring up the wireless network, don't forget to put IP over it with ifconfig (static) or dhclient (dhcp), etc. ... it's quiet easy, but to be honest I use nm-apllet these days :P
+2011-08-03T02:32:00.000Z	freax	siert	: When i give iwconfig, its telling that no wireless extensions are there for l0 and eth0..does that mean that my wireless driver has to have these extensions?
+2011-08-03T02:34:00.000Z	siert	freax	lo is loopback, eth0 is the first ethernet device, etc. if there isn't any wireless adapter listed, check `lspci` and if the correct kernel module is loaded
+2011-08-03T02:34:00.000Z	siert	freax	does your adapter work within the graphical environment? if true -> it'll work on the shell aswell
+2011-08-03T02:37:00.000Z	freax	siert	: How can I check whether the correct kernel module is loaded or not/
+2011-08-03T02:39:00.000Z	siert	freax	just check `lspci |grep -i network` and check if your card is listed @ https://help.ubuntu.com/community/WifiDocs/WirelessCardsSupported :) thx yagoo
+2011-08-03T02:41:00.000Z	freax	siert	: Yes dude, I already checked and its there.. "Broadcom Corporation BCM4312 802.11b/g LP-PHY (rev 01)"
+2011-08-03T02:50:00.000Z	siert	freax	`lspci -nnn|grep BCM4312`
+2011-08-03T02:52:00.000Z	freax	siert	: It gave the same line : Network controller [0280]: Broadcom Corporation BCM4312 802.11b/g LP-PHY [14e4:4315] (rev 01)
+2011-08-03T02:52:00.000Z	siert	freax	see the comments of edbian; try the b43 driver
+2011-08-03T02:53:00.000Z	siert	freax	you'll need the package firmware-b43-installer

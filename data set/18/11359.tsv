@@ -1,0 +1,18 @@
+2006-11-12T15:22:00.000Z	baxter_kylie		How do I create an mdadm /dev/md[x]  device to assemble an array?
+2006-11-12T15:22:00.000Z	baxter_kylie		how do I establish a connection to a samba server in a parent subnet?
+2006-11-12T15:22:00.000Z	neildarlow	baxter_kylie	you can invoke mdadm with a switch that automatically creates the device node
+2006-11-12T15:23:00.000Z	baxter_kylie	neildarlow	: What's the switch and will it destroy the existing data I have on the array?
+2006-11-12T15:24:00.000Z	neildarlow	baxter_kylie	it's "-a"
+2006-11-12T15:31:00.000Z	baxter_kylie	neildarlow	it errors '... no /dev/md3 device present'
+2006-11-12T15:33:00.000Z	neildarlow	baxter_kylie	mdadm --assemble /dev/md3 -a /dev/... /dev/... should do it
+2006-11-12T15:36:00.000Z	baxter_kylie	neildarlow	same error '... no /dev/md3 device or address present'
+2006-11-12T15:37:00.000Z	neildarlow	baxter_kylie	i can only suggest reading the mdadm manpage. i've never needed to resort to using mdadm directly on ubuntu
+2006-11-12T15:38:00.000Z	baxter_kylie	neildarlow	Ugh. Manpage says the same things you did.
+2006-11-12T15:38:00.000Z	neildarlow	baxter_kylie	how was your array created?
+2006-11-12T15:39:00.000Z	baxter_kylie	neildarlow	with mdadm a year or so ago on a debian system
+2006-11-12T15:39:00.000Z	neildarlow	baxter_kylie	are you using lilo?
+2006-11-12T15:39:00.000Z	baxter_kylie	neildarlow	grub. It's just media storage, though -- nothing is booting off these drives
+2006-11-12T15:41:00.000Z	neildarlow	baxter_kylie	how about creating an /etc/mdadm.conf that describes the array then use mdadm's autostart feature to start it?
+2006-11-12T15:41:00.000Z	baxter_kylie	neildarlow	already have the mdadm.conf autostart also complains about the lack of an md device
+2006-11-12T15:43:00.000Z	neildarlow	baxter_kylie	doh! is the appropriate raid module loaded?
+2006-11-12T15:44:00.000Z	neildarlow	baxter_kylie	it might be as simple as adding e.g. raid1 to /etc/modules

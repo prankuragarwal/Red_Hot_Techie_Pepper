@@ -1,0 +1,23 @@
+2006-11-30T07:40:00.000Z	zim		in this line "ftp $FTP_SERVER <<END_SCRIPT"  what is this doing <<END_SCRIPT
+2006-11-30T07:40:00.000Z	zim		it the << bit i dont understand
+2006-11-30T07:41:00.000Z	zim		        ftp $FTP_SERVER <<END_SCRIPT
+2006-11-30T07:41:00.000Z	zim		        put $DAY_TODAY_DIR/$SERVER_NAME-$DAY_TODAY.tar $SERVER_NAME-$DAY_TODAY.tar
+2006-11-30T07:41:00.000Z	zim		        quit
+2006-11-30T07:41:00.000Z	zim		        END_SCRIPT
+2006-11-30T07:41:00.000Z	zim		sorry
+2006-11-30T07:41:00.000Z	jrib	zim	that's a heredoc
+2006-11-30T07:42:00.000Z	jrib	zim	http://tldp.org/LDP/abs/html/here-docs.html
+2006-11-30T07:43:00.000Z	zim	jrib	ty how to i stop it ending the script at that point
+2006-11-30T07:44:00.000Z	jrib	zim	write more stuff after it?  Not sure what you mean
+2006-11-30T07:44:00.000Z	jrib	zim	you should be able to just write another command below it
+2006-11-30T07:46:00.000Z	zim	jrib	http://paste.ubuntu-nl.org/34882/
+2006-11-30T07:48:00.000Z	zim	jrib	you there
+2006-11-30T07:49:00.000Z	jrib	zim	yes, I'm not really sure why.  To me it seems like it should work.  A dedicated scripting channel like #bash might be able to help you better
+2006-11-30T07:50:00.000Z	jrib	zim	k well, if you change "ftp $FTP_SERVER" to "cat" does it go all the way through?
+2010-11-21T17:13:00.000Z	jrib	zim	does logrotate use ctime?
+2010-11-21T17:09:00.000Z	jrib	zim	use "touch"
+2010-11-21T17:10:00.000Z	zim	jrib	touch cant do cdate all the other just not cdate
+2010-11-21T17:13:00.000Z	jrib	zim	so?
+2010-11-21T17:15:00.000Z	jrib	zim	google offers one way: change system time, make a new hard link, remove it, change system time back
+2010-11-21T17:16:00.000Z	zim	jrib	I saw that but its a production server so dont want to dick with the time :-(
+2010-11-21T17:17:00.000Z	jrib	zim	I don't know how to change ctime, use a test system would be my suggestion

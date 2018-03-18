@@ -1,0 +1,22 @@
+2007-05-07T15:48:00.000Z	Dandre		Hello,
+2007-05-07T15:50:00.000Z	Dandre		I must change my harddisk on my laptop because it is becoming defective. What is the best methode to get all my system on another disk?
+2007-05-07T15:50:00.000Z	mcphail	Dandre	dd
+2007-05-07T15:52:00.000Z	mcphail	Dandre	dd will do an exact copy of the disk. You will lose all formatting on the destination drive, replaced by the filesystem on the source disk
+2007-05-07T15:52:00.000Z	mcphail	Dandre	the destination drive will have to be at least as large as the source drive
+2007-05-07T15:54:00.000Z	mcphail	Dandre	if the drive is large enough, yes. I'd recommend you buy a new laptop drive and stick it in an external caddy. dd the contents of your native drive onto it and then switch them over.
+2007-05-07T15:56:00.000Z	mcphail	Dandre	the only downside to this might be the way edgy and feisty create the fstab. I'm using dapper and don't have any problems doing this
+2007-05-07T15:57:00.000Z	mcphail	Dandre	I'd imagine you might need to tweak /etc/fstab on the new drive after transfer. Apart from that, things should be ok
+2007-05-07T15:58:00.000Z	mcphail	Dandre	i have done this to replace a 60GB drive with an 80GB drive with no problems on dapper
+2007-05-07T16:00:00.000Z	mcphail	Dandre	i got to create a new 20GB partition :)
+2007-05-08T16:05:00.000Z	mcphail	Dandre	how large is your usb drive?
+2007-05-08T16:07:00.000Z	mcphail	Dandre	do you have anything you need to keep on the usb drive?
+2007-05-08T16:07:00.000Z	Dandre	mcphail	yes I do
+2007-05-08T16:07:00.000Z	mcphail	Dandre	that command will obliterate everything on the usb drive
+2007-05-08T16:09:00.000Z	Dandre	mcphail	 I don't understand why. I want to create one large 80G file with all my disque image
+2007-05-08T16:10:00.000Z	mcphail	Dandre	that command doesn't create a file - it bitwise copies the filesystem.
+2007-05-08T16:10:00.000Z	mcphail	Dandre	you _can_ easily create a file instead, but you can't write an 80GB file to FAT32
+2007-05-08T16:14:00.000Z	mcphail	Dandre	yes - that sort of thing will do the trick. You might need to play with the syntax a bit so do a dummy run first
+2007-05-08T16:15:00.000Z	mcphail	Dandre	looking back, your dd invocation was ok (I read it wrong), but would cause a headache on FAT32
+2007-05-08T16:16:00.000Z	mcphail	Dandre	any chance of mounting your new laptop drive in a USB caddy and doing the thing directly?
+2007-05-08T16:16:00.000Z	Dandre	mcphail	I don't havesuch a caddie
+2007-05-08T16:17:00.000Z	mcphail	Dandre	ok, then piping dd through split is the best idea!

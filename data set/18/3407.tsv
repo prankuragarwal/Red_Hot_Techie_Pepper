@@ -1,0 +1,18 @@
+2012-05-14T02:28:00.000Z	jpsman		this is more of a nix question but you guys like a challenge right?  Is it possible to scan a directory for a certain hex value BESIDES hexdump -c * | grep ab\ cd ??????
+2012-05-14T02:29:00.000Z	DarwinSurvivor	jpsman	searching for a file with a certain value in its name, or in its contents?
+2012-05-14T02:29:00.000Z	jpsman	DarwinSurvivor	contents but HEX content not just text
+2012-05-14T02:29:00.000Z	DarwinSurvivor	jpsman	if you can escape the hex values, you can simply use grep
+2012-05-14T02:31:00.000Z	DarwinSurvivor	jpsman	I think so, there's one way to find out :)
+2012-05-14T02:31:00.000Z	DarwinSurvivor	jpsman	is there any particular reason you don't want to use hexdump?
+2012-05-14T02:32:00.000Z	DarwinSurvivor	jpsman	the files are piped directly into grep, so there is *very* little overhead (grep would need to open them anyways)
+2012-05-14T02:32:00.000Z	DarwinSurvivor	jpsman	you may experience slightly more cpu usage, but the speed will be limited by your HDD's read speed long before the cpu chokes on it
+2012-05-14T02:32:00.000Z	DarwinSurvivor	jpsman	ah, that makes sense
+2012-05-14T02:34:00.000Z	DarwinSurvivor	jpsman	try $'\x##'
+2012-05-14T02:35:00.000Z	jpsman	DarwinSurvivor	as a command alone or as the grep search pattern?
+2012-05-14T02:36:00.000Z	DarwinSurvivor	jpsman	as the grep search string. I think that's the bash escape sequence for hex
+2012-05-14T02:36:00.000Z	DarwinSurvivor	jpsman	"grep $'\x##' -R *"
+2012-05-14T02:39:00.000Z	jpsman	DarwinSurvivor	is it possible to do a wild card search?  so kinda like grep $'\xab\xcd\x(wildcard)' *   ?
+2012-05-14T02:40:00.000Z	DarwinSurvivor	jpsman	sorry, replace ## by the hex code of the character you are searching for
+2012-05-14T02:49:00.000Z	DarwinSurvivor	jpsman	was it a wiki page from ubuntu's website, or a 3rd party location?
+2012-05-14T02:50:00.000Z	jpsman	DarwinSurvivor	third party stackoverflow :0D
+2012-05-14T03:03:00.000Z	DarwinSurvivor	jpsman	no problem

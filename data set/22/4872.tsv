@@ -1,0 +1,22 @@
+2009-06-07T00:12:00.000Z	operator19		Is there anyone that would walk me through trying to get ubuntu to mount an external HD ( I have been at it for 2 days ) and I am very very frustrated - I know its me, I just dont know what I am doing wrong
+2009-06-07T00:13:00.000Z	adammw	operator19	what sort of HD? USB I presume?
+2009-06-07T00:15:00.000Z	adammw	operator19	well, first thing i would try is just to plug it in, see if it comes up under computer. if not, open a terminal window or go to the gnome partiton window (if installed)
+2009-06-07T00:17:00.000Z	adammw	operator19	do you know what format the hard drive is in? e.g. NTFS? FAT? HFS?
+2009-06-07T00:17:00.000Z	adammw	operator19	ok, and Ubuntu version?
+2009-06-07T00:18:00.000Z	adammw	operator19	when you get a list, find the one that sounds about the right size (if it gives labels even better) and remember the bit after /dev/
+2009-06-07T00:20:00.000Z	adammw	operator19	did the fdisk output have anything under that text, e.g. a table with headings "device boot", "start", "end",etc.
+2009-06-07T00:22:00.000Z	adammw	operator19	so nothing like /dev/sde1     1   etc.    NTFS there?
+2009-06-07T00:23:00.000Z	adammw	operator19	ur right
+2009-06-07T00:23:00.000Z	adammw	operator19	my fault, you'll need to work out which partition the NTFS is in without fdisk as it said it didn't support your GPT filesystem table
+2009-06-07T00:24:00.000Z	adammw	operator19	do u know that the drive is one whole partiton?
+2009-06-07T00:25:00.000Z	adammw	operator19	hmm, weird, but that might be why it can't automount.
+2009-06-07T00:26:00.000Z	adammw	operator19	in the terminal, create a folder ("sudo mkdir /media/ntfsdrive/") then...
+2009-06-07T00:27:00.000Z	adammw	operator19	...then "sudo mount -t ntfs /dev/sde2 /media/ntfsdrive" and tell me what it outputs
+2009-06-07T00:28:00.000Z	adammw	operator19	could it be the drive has failed?
+2009-06-07T00:29:00.000Z	adammw	operator19	now try forcing it to be ntfs with "sudo -t ntfs /dev/sde2 /media/ntfsdrive -o force"
+2009-06-07T00:30:00.000Z	adammw	operator19	have u ever tried it in a windows pc?
+2009-06-07T00:32:00.000Z	adammw	operator19	sorry, typo, essentially same as lasttime but with -o force on end, (there should have been the word mount b4 -t)
+2009-06-07T00:35:00.000Z	adammw	operator19	you sure you put in /dev/sde2 rather than just without the 2
+2009-06-07T00:36:00.000Z	adammw	operator19	if so, you can try again i guess with 1 and 3 but i doubt you will get much luck. do you have lots of data on there you need (e.g. re-formatting is not an option) or could you re-format?
+2009-06-07T00:38:00.000Z	adammw	operator19	i know what you mean. for safety's sake i would recommend using it in a windows pc, and possibly doing a scan disk or backup, rather than trying more drastic measures such as rebuilding partition tables or doing other nasty things
+2009-06-07T00:39:00.000Z	adammw	operator19	np, but i'm really sorry i couldn't actually do anything that results in a successful result.

@@ -1,0 +1,24 @@
+2009-11-09T19:11:00.000Z	vania	erUSUL	and it always goes back to default kernel settings after reboot
+2009-11-09T19:06:00.000Z	erUSUL	vania	change i/o ? what do you mean ?
+2009-11-09T19:07:00.000Z	vania	erUSUL	/dev/ttyS0 at 0x5100 (irq = 3) is a 16550A must be /dev/ttyS0 at 0x03E8 (irq = 3) is a 16550A
+2009-11-09T19:08:00.000Z	vania	erUSUL	cant make it work through rc.serial
+2009-11-09T19:08:00.000Z	vania	erUSUL	setserial conf is: /dev/ttyS0 uart 16550A port 0x03E8 irq 7 baud_base 9600 spd_normal
+2009-11-09T19:09:00.000Z	vania	erUSUL	setserial conf is: /dev/ttyS0 uart 16550A port 0x03E8 irq 3 baud_base 9600 spd_normal
+2009-11-09T19:10:00.000Z	vania	erUSUL	i've tryied to make conf through /var/lib/setserial/autoserial.conf, and sudo dpkg-reconfigure setserial is set to manual
+2009-11-09T19:13:00.000Z	vania	erUSUL	any help from You?
+2009-11-09T19:14:00.000Z	erUSUL	vania	vania just checking info...
+2009-11-09T19:16:00.000Z	erUSUL	vania	well it seems you did everything as spected ... maybe you need the skip_test parameter ?
+2009-11-09T19:16:00.000Z	erUSUL	vania	/dev/ttyS0 uart 16550A port 0x03E8 irq 7 baud_base 9600 spd_normal skip_test ?
+2009-11-09T19:17:00.000Z	vania	erUSUL	i allready tryied with skip test
+2009-11-09T19:17:00.000Z	erUSUL	vania	paste --> dmesg| egrep -i '(serial|tty)'
+2009-11-09T19:18:00.000Z	vania	erUSUL	just to be sure, when i'm putting rc.serial into rc.local file. How should i put it there? coz now it is just /etc/rc.serial
+2009-11-09T19:18:00.000Z	vania	erUSUL	any sh needed?
+2009-11-09T19:19:00.000Z	erUSUL	vania	i only have /etc/init.d/setserial
+2009-11-09T19:19:00.000Z	erUSUL	vania	no rc.serial here
+2009-11-09T19:20:00.000Z	vania	erUSUL	yes i had to create this file, it is not created by default
+2009-11-09T19:20:00.000Z	erUSUL	vania	what you need it for ?
+2009-11-09T19:20:00.000Z	vania	erUSUL	but it is responsible for serial override at boot
+2009-11-09T19:22:00.000Z	vania	erUSUL	well, this pcmcia card, Silicom, is meant to work with appropriate settings, and with default kernel settings it is just dont work
+2009-11-09T19:22:00.000Z	erUSUL	vania	no /etc/init.d/setserial is afaics based on /var/lib/setserial/autoserial.conf ...
+2009-11-09T19:23:00.000Z	vania	erUSUL	autoserial.conf looks like this atm: #
+2009-11-09T19:25:00.000Z	erUSUL	vania	well this is as far as i can go helping with his isuue sorry.

@@ -1,0 +1,21 @@
+2007-04-05T12:11:00.000Z	ubuntuEdgy		ok now i have this  ls -l /home
+2007-04-05T12:11:00.000Z	ubuntuEdgy		total 0
+2007-04-05T12:11:00.000Z	ubuntuEdgy		?--------- ? ? ? ?                ? /user/mythtv
+2007-04-05T12:11:00.000Z	ubuntuEdgy		?--------- ? ? ? ?                ?/user/username
+2007-04-05T12:12:00.000Z	ardchoille42	ubuntuEdgy	Did you do a sudo chmod -R on home recently?
+2007-04-05T12:13:00.000Z	ubuntuEdgy		 ardchoille42:sudo chmod 644 /home
+2007-04-05T12:13:00.000Z	ardchoille42	ubuntuEdgy	That is exactly why you are having this problem. You removed the execute bit from the folders.
+2007-04-05T12:13:00.000Z	ubuntuEdgy		help me ardchoille42: how can i get things back in order
+2007-04-05T12:14:00.000Z	ardchoille42	ubuntuEdgy	sudo chmod a+x /home
+2007-04-05T12:15:00.000Z	ubuntuEdgy		ardchoille42:drwxrwxrwx 53  users ,shouldn't it be drwxr-xr-x
+2007-04-05T12:16:00.000Z	ardchoille42	ubuntuEdgy	That command I gave you will only restore the execute bit to /home, which should solve your problem.
+2007-04-05T12:17:00.000Z	ubuntuEdgy	ardchoille42	when i log on i get this Your $HOME/dmrc file has incorrect permissions and is being ignored ...........File should be owned by user and have 644 permissions.
+2007-04-05T12:19:00.000Z	ardchoille42	ubuntuEdgy	ubuntuEdgy You are getting that because the system can't descend into /home, it has improper permissions. I gave you the command to fix it.
+2007-04-05T12:19:00.000Z	ardchoille42	ubuntuEdgy	folders must always have the execute bit set or you will have permissions problems.
+2007-04-05T12:21:00.000Z	ubuntuEdgy		zipper:i didnt :(
+2007-04-05T12:21:00.000Z	ubuntuEdgy		been hacked ?
+2007-04-05T12:21:00.000Z	ardchoille42	ubuntuEdgy	When you did sudo chmod 644 /home, YOU messed it up.
+2007-04-05T12:22:00.000Z	ardchoille42	ubuntuEdgy	YOU removed the execute bit from the folder. Now you need to restore it.
+2007-04-05T12:23:00.000Z	ubuntuEdgy		ardchoille42:any easy way to restore it ? sudo chmod a+x /home again ?
+2007-04-05T12:23:00.000Z	ardchoille42	ubuntuEdgy	yes
+2007-04-05T12:24:00.000Z	ardchoille42	ubuntuEdgy	And then I would recommend you learn about folder permissions as well as read man chmod

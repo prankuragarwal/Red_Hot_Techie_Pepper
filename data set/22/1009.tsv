@@ -1,0 +1,22 @@
+2011-11-28T16:09:00.000Z	unomi		Hiyas - I am seeing somewhat poor performance copying files between 2 11.04 computers I was getting ~600kbs
+2011-11-28T16:11:00.000Z	unomi		after setting netbios name and ensuring that they are mounted via 'cifs' I am now seeing ~1.2 mb/s which is still alot slower than I think it should be
+2011-11-28T16:12:00.000Z	ne2k	unomi	adhoc or infrastructure?
+2011-11-28T16:12:00.000Z	ne2k	unomi	btw, kbs is not a measure of transfer rate
+2011-11-28T16:12:00.000Z	unomi	ne2k	sure.
+2011-11-28T16:12:00.000Z	ne2k	unomi	access point in between? or is it really going through a router?
+2011-11-28T16:14:00.000Z	unomi	ne2k	I couldn't tell you tbh, they are close enough that they could talk directly - but they are both being served by a wifi router that gives them their IP
+2011-11-28T16:14:00.000Z	ne2k	unomi	what is the wifi data rate reported by each?
+2011-11-28T16:14:00.000Z	ne2k	unomi	they can't talk directly if it's infrastructure; but obviously they share a channel so only one can talk at once
+2011-11-28T16:17:00.000Z	unomi	ne2k	waiting for a transfer to finish up, then I'll try to look at rates for other transports
+2011-11-28T16:18:00.000Z	ne2k	unomi	with 54Mb/s, you can expect to get about 15Mb/s of real throughput. this is obviously shared between them, though, as they are on the same channel, so 7.5Mb/s would be a maximum for end-to-end
+2011-11-28T16:19:00.000Z	ne2k	unomi	a general rule of thumb is that with TCP transfer, on a 10Mb/s link you get about 1MB/s of throughput. so on your 7.5Mb/s link, I would expect about 750kB/s of actual data transfer
+2011-11-28T16:28:00.000Z	ne2k	unomi	8.35Mb/s is comparable to the 7.5Mb/s I suggested you would get
+2011-11-28T16:28:00.000Z	ne2k	unomi	you really have to use m, M, b and B correctly when talking about this stuff
+2011-11-28T16:28:00.000Z	unomi	ne2k	sure, are you?
+2011-11-28T16:29:00.000Z	ne2k	unomi	errm, yes
+2011-11-28T16:30:00.000Z	unomi	ne2k	anyway - iperf is telling me ~8 MBits which I interpret as ~1 MByte/s no?
+2011-11-28T16:31:00.000Z	ne2k	unomi	yes -- but you didn't say that, you said 1 mb/s. sorry for being pedantic but it's actually really important in a discussion like this
+2011-11-28T16:31:00.000Z	unomi	ne2k	only if context escapes you
+2011-11-28T16:32:00.000Z	ne2k	unomi	errm, well, how should I know what the program you're using to transfer files reports?
+2011-11-28T16:33:00.000Z	ne2k	unomi	anyway, 8Mb/s of iperf throughput means you will generally get something like 0.8MB/s of real data throughput once you've got TCP and other protocol overheads
+2011-11-28T16:34:00.000Z	ne2k	unomi	so your 0.6MB/s that you initially reported is a little low, but not massively

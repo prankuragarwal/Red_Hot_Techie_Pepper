@@ -1,0 +1,19 @@
+2010-03-16T07:08:00.000Z	hmw		I cannot access a web space. It needs FTPES and after logging in, it hangs at LIST. I read some pages on the web but couldn't make out, what I need to do to my  iptables  firewall, to let my FileZilla through. Can anyone help? Perhaps some suggestions, what I should be googeling for
+2010-03-16T07:10:00.000Z	Sylphid|netbook	hmw	set filezilla to active and see if it hangs as well
+2010-03-16T07:11:00.000Z	Sylphid|netbook	hmw	there are 2 types of ftp, active and passive, one uses only port 21 the other uses ports 20 and 21
+2010-03-16T07:11:00.000Z	hmw	Sylphid|netbook	already tried, still hangs. I believe, i need to configure my conntrack module of my linux router.
+2010-03-16T07:11:00.000Z	Sylphid|netbook	hmw	depending on the type then yes you do need connection tracking
+2010-03-16T07:12:00.000Z	Sylphid|netbook	hmw	i believe passive should work without connection tracking and only using port  21
+2010-03-16T07:13:00.000Z	hmw	Sylphid|netbook	i tried any possible combination of settings already
+2010-03-16T07:14:00.000Z	hmw	Sylphid|netbook	perhaps i am too stupid or the server isn't allowing the passive mode? the guy owing the web space is never available and some super linux geek. He probably assumes, I am as allmighty as he seems to be.
+2010-03-16T07:15:00.000Z	Sylphid|netbook	hmw	well it seems like your probably on the right track with looking into ftp connection tracking
+2010-03-16T07:16:00.000Z	hmw	Sylphid|netbook	well... there I am stuck now... i have been googleing for quite a while, i always find stuff how to make a server available
+2010-03-16T07:16:00.000Z	Sylphid|netbook	hmw	what disto is your router running?
+2010-03-16T07:16:00.000Z	hmw	Sylphid|netbook	LFS :(
+2010-03-16T07:17:00.000Z	Sylphid|netbook	hmw	money!
+2010-03-16T07:17:00.000Z	hmw		argh
+2010-03-16T07:18:00.000Z	hmw	Sylphid|netbook	only chance might be to connect my modem directly to my ubuntu box
+2010-03-16T07:19:00.000Z	Sylphid|netbook	hmw	im looking to verify but i think that the conntrack module you want is included in the netfilter tarball
+2010-03-16T07:24:00.000Z	hmw	Sylphid|netbook	it seems nf_conntrack can NOT handle ftpes, due to encryption. Gotta try something different now (assinging ports per hand)
+2010-03-16T07:29:00.000Z	Sylphid|netbook	hmw	looks like one solution may be to set up a proxy server on your router
+2010-03-16T07:30:00.000Z	hmw	Sylphid|netbook	hmm.

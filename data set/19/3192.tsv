@@ -1,0 +1,19 @@
+2009-10-07T13:02:00.000Z	latexknight		so anyone encountered problems with apt-get, unable to downgrade or reinstall from an unsuccessful install?
+2009-10-07T13:02:00.000Z	joaopinto	latexknight	downgrading is not supported, what error are you getting ?
+2009-10-07T13:04:00.000Z	latexknight	joaopinto	i don't know what error, cuz read the pastebin, it doesn't say, its not so much down grading as purging the new release, and trying to install the old one back, http://pastebin.com/d244aa21
+2009-10-07T13:06:00.000Z	joaopinto	latexknight	how did you got with the 5.1 release ?
+2009-10-07T13:07:00.000Z	joaopinto	latexknight	yes, the 5.0 preinstallation fails because you have already 5.1 installed, and it's getting in it's way in some part of the pre install script
+2009-10-07T13:07:00.000Z	joaopinto	latexknight	how did you install 5.1 ?
+2009-10-07T13:08:00.000Z	joaopinto	latexknight	adding random repositories is not recommended
+2009-10-07T13:08:00.000Z	joaopinto	latexknight	do you have any data on mysql that you care about ?
+2009-10-07T13:10:00.000Z	latexknight	joaopinto	what should I do? find all the files matching '*mysql*' and delete them?
+2009-10-07T13:10:00.000Z	joaopinto	latexknight	no, you do a purge on mysql-common
+2009-10-07T13:10:00.000Z	joaopinto	latexknight	sudo apt-get purge mysql-common
+2009-10-07T13:10:00.000Z	joaopinto	latexknight	with purge on mysql-common ?
+2009-10-07T13:10:00.000Z	joaopinto	latexknight	note that it's common, not -server
+2009-10-07T13:12:00.000Z	joaopinto	latexknight	so yes, purge failed you will need to manually identify the mysql 5.1 files
+2009-10-07T13:15:00.000Z	latexknight	joaopinto	i deleted all the files '*mysql*5.1*' but it didn't help, i think its written in some files somewhere, you have any suggestions?
+2009-10-07T13:15:00.000Z	joaopinto	latexknight	yes, you will need to read the mysql-server pre-install script, the script must mention the files that are being checked
+2009-10-07T13:16:00.000Z	joaopinto	latexknight	/var/lib/dpkg/info/*mysql*postinst*
+2009-10-07T13:21:00.000Z	latexknight	joaopinto	where do i find the installation script for the package?
+2009-10-07T13:30:00.000Z	joaopinto	latexknight	/var/lib/dpkg/info/*mysql*postinst*

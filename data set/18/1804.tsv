@@ -1,0 +1,18 @@
+2010-11-04T20:12:00.000Z	Guest62180		hi guys, i need a real quick answer. how do i restrict persmissions so that a user only has access to thier home folder and cannot even read any other?
+2010-11-04T20:13:00.000Z	Draqul	Guest62180	take them out of the sudoer's file and group and/or wheel group
+2010-11-04T20:14:00.000Z	Guest62180	Draqul	just # them out? and that will work so that when they are on my ftp server they wil not be able to view other users file?
+2010-11-04T20:15:00.000Z	Draqul	Guest62180	The most simple answer is just to comment each user in question out of the sudo'ers file. Without sudo permissions they will only be able to work in their home directory, but will still have access to /usr/bin/* commands (ls, python, grep, etc.)
+2010-11-04T20:15:00.000Z	Draqul	Guest62180	please also make certain that they're not in the sudoers group or the wheel group.
+2010-11-04T20:16:00.000Z	Guest62180	Draqul	undecim for example i have my acoubt and a account called guest which is not in the sudoers file but can read all files, how would i create an account that can only ftp?
+2010-11-04T20:20:00.000Z	Draqul	Guest62180	I agree with undecim - no one user should be able to look into another's /home without sudoer perms unless you have perms all messed up
+2010-11-04T20:21:00.000Z	Draqul	Guest62180	can you ls -l /home and see what the perms are for us?
+2010-11-04T20:21:00.000Z	Guest62180	Draqul	undecim ^^
+2010-11-04T20:23:00.000Z	Guest62180	Draqul	why has mine gone so open? and what would fix the permissions and possibly fix the ones on further accounts as im about to make more accounts and i need to get these permission sorted
+2010-11-04T20:24:00.000Z	Draqul	Guest62180	When you make an account, what is the primary group you add it to and what are the additional groups?
+2010-11-04T20:26:00.000Z	Guest62180	Draqul	i didnt really specify any groups
+2010-11-04T20:26:00.000Z	Draqul	Guest62180	how do you make their /home dirs?
+2010-11-04T20:28:00.000Z	Draqul	Guest62180	mhazy shouldn't it be chmod 700?
+2010-11-04T20:30:00.000Z	Draqul	Guest62180	mhazy is right - if you decide to allow groups to access each other's stuff then 750 so you can save yourself a hassle down the road. 700 for max security on an individual /home
+2010-11-04T20:31:00.000Z	Guest62180	Draqul	mhazy cheers guys i do have one more question what is the chmod number to all read only on a users home folder and no write anywhere
+2010-11-04T20:32:00.000Z	Draqul	Guest62180	754
+2010-11-04T20:39:00.000Z	Guest62180	Draqul	mhazy cheers for your help guys, has opened my eyes how useless i am. but my boss has decided he will use his ftp server for now to give me more time to improve mine

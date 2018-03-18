@@ -1,0 +1,24 @@
+2009-02-19T19:26:00.000Z	Dimensions		Hi not sure where to ask this question ... but i have a dedicated server with Ubuntu ... i would like to access its /var/www via its ip ... i have installed it phpmyadmin on it via ssh and can access phpmyadmin login but nothing else ... how do i access its /var/www via its ip ?
+2009-02-19T19:28:00.000Z	oCean_	Dimensions	what is the error you get
+2009-02-19T19:28:00.000Z	Dimensions	oCean_	 the error is "Not Found" the requested / is not found on this server
+2009-02-19T19:29:00.000Z	oCean_	Dimensions	in your DocumentRoot, there is no index file (e.g. index.html or index.php), so if you just type http://<ipaddress> it returns that error
+2009-02-19T19:30:00.000Z	oCean_	Dimensions	do you have a subdir in /var/www ? Some application
+2009-02-19T19:31:00.000Z	Dimensions	oCean_	i have just an index file in /var/www and there is a folder with another test index.html too
+2009-02-19T19:32:00.000Z	oCean_	Dimensions	and http://<ip>/index.html (explicitly) also returns the same error?
+2009-02-19T19:32:00.000Z	oCean_	Dimensions	see what /var/log/apach2/error_log says
+2009-02-19T19:33:00.000Z	Dimensions	oCean_	[Thu Feb 19 14:28:20 2009] [error] [client *IP*] File does not exist: /htdocs
+2009-02-19T19:33:00.000Z	oCean_	Dimensions	it seems that your DocRoot is not correctly configured
+2009-02-19T19:34:00.000Z	oCean_	Dimensions	go check the settings in /etc/apache2/sites-enabled
+2009-02-19T19:34:00.000Z	oCean_	Dimensions	apache expects the root to be at /htdocs, not /var/www
+2009-02-19T19:35:00.000Z	Dimensions	oCean_	 restarting apache2 gives this warning too "[warn] NameVirtualHost *:80 has no VirtualHosts" and ... waiting apache2: apr_sockaddr_info_get() failed for localhost.localdomai
+2009-02-19T19:36:00.000Z	oCean_	Dimensions	well it seems the apache config is a little off...
+2009-02-19T19:36:00.000Z	Dimensions	oCean_	 site-enable folder is empty
+2009-02-19T19:37:00.000Z	oCean_	Dimensions	see in /etc/apache2/sites-available/ if there is a file called "default"
+2009-02-19T19:37:00.000Z	Dimensions	oCean_	that file is in site-enabled
+2009-02-19T19:38:00.000Z	oCean_	Dimensions	site-enabled folder was *empty* you said. site-available has default file?
+2009-02-19T19:39:00.000Z	oCean_	Dimensions	if the site-enabled folder is empty enable, the "default" virtual host by using command "/usr/sbin/a2ensite default"
+2009-02-19T19:40:00.000Z	oCean_	Dimensions	that will make a symlink from the default file in sites-available to a 000-default in sites-enabled.
+2009-02-19T19:41:00.000Z	oCean_	Dimensions	from the main apache2.conf this site-enabled directory is included in the config. So if the link exists, edit the default file to suit your needs, like editing the DocumentRoot
+2009-02-19T19:41:00.000Z	oCean_	Dimensions	yay! :)
+2009-02-19T19:44:00.000Z	oCean_	Dimensions	well, the thing about no virtualhosts should be gone by now. As far as the other one concerns, I'd like to setup my webserver to know the hosts ServerName, and add that ip to the /etc/hosts file, that way apache know what it's talking about... or who :-)
+2009-02-19T19:46:00.000Z	oCean_	Dimensions	cheers.

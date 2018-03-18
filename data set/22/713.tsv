@@ -1,0 +1,22 @@
+2012-10-25T21:25:00.000Z	escott	ahtmly2k	what is the output of "mount" in the terminal and what is the drive you are trying to open in nautilus
+2012-10-25T21:16:00.000Z	escott	ahtmly2k	how are you trying to access them? what tool are you using?
+2012-10-25T21:22:00.000Z	ahtmly2k	escott	nautilus ofcourse..
+2012-10-25T21:23:00.000Z	escott	ahtmly2k	so what does nautilus show the files as?
+2012-10-25T21:24:00.000Z	ahtmly2k	escott	i click on my other drive and a pop-up appears saying "this location is not a folder"
+2012-10-25T21:28:00.000Z	ahtmly2k	escott	what? how can i see that?
+2012-10-25T21:29:00.000Z	escott	ahtmly2k	open a terminal, type "mount[ENTER]" and put the output on paste.ubuntu.com and send us the link
+2012-10-25T21:34:00.000Z	ahtmly2k	escott	http://paste.ubuntu.com/1305411/
+2012-10-25T21:37:00.000Z	escott	ahtmly2k	looks like the files can be found by browsing to /media/ahtmly2k/subfolders. this /media/username/subfolder is new in 12.10 where in 12.04 it was /media/subfolder. thats the cause of the problem, not sure how to fix it nautilus clearly still thinks it should be /media/subfolder
+2012-10-25T21:39:00.000Z	ahtmly2k	escott	so it can't be fixed then?
+2012-10-25T21:39:00.000Z	escott	ahtmly2k	im sure there is a fix (probably modifying something in the nautilus cache with dconf or gconf, i dont know what it would be though)
+2012-10-25T21:42:00.000Z	ahtmly2k	escott	another problem occurs, when i access media/ahtmly2k it states that i don't have the permission to view it.. and also there are two folders within the media folder one is ahtmly2k and another AHTMLY2K
+2012-10-25T21:42:00.000Z	escott	ahtmly2k	what is the output of ls -l /media
+2012-10-25T21:46:00.000Z	ahtmly2k	escott	and how do i see that?
+2012-10-25T21:46:00.000Z	escott	ahtmly2k	in the terminal. same place as mount "ls -l /media[ENTER]"
+2012-10-25T21:48:00.000Z	ahtmly2k	escott	http://paste.ubuntu.com/1305434/
+2012-10-25T21:51:00.000Z	escott	ahtmly2k	thats exciting. i would recommend (a) "sudo umount /dev/sdc1; sudo umount /dev/sda1" (b) disconnect the usb drives (physically remove them from the machine) (c) sudo ls /media and sudo ls /media/*/* to verify that no files are in any directories (d) sudo rm -rf /media/*
+2012-10-25T21:51:00.000Z	escott	ahtmly2k	and be EXTREMELY careful to type those commands exactly as they are. an errant space could hose your system
+2012-10-25T21:53:00.000Z	escott	ahtmly2k	christoph_, Kyle__, i have to run. might be back online later, but probably won't be able to get online for a few hours. goodluck
+2012-10-25T21:53:00.000Z	ahtmly2k	escott	okay i don't get it.. should i do either a, b or c? or should i do all of them respectively?
+2012-10-25T21:54:00.000Z	escott	ahtmly2k	all of them. the permissions in /media are fouled up. not sure why, but nuking everything in there might get you back to a sensible state
+2012-10-25T21:54:00.000Z	ahtmly2k	escott	nah man.. i need you right now.. you're the only one helping me out..

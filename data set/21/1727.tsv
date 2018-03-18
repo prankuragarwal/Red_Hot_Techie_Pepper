@@ -1,0 +1,21 @@
+2012-08-07T05:33:00.000Z	SilverZ		yes I'm using a wired connection right now
+2012-08-07T05:34:00.000Z	SilverZ		I read the various questions on the ubuntu page
+2012-08-07T05:34:00.000Z	SilverZ		I uninstalled and reinstalled various
+2012-08-07T05:34:00.000Z	SilverZ		drivers
+2012-08-07T05:34:00.000Z	SilverZ		I have the proprietary driver broadcom sta installed
+2012-08-07T05:34:00.000Z	SilverZ		and activated
+2012-08-07T05:34:00.000Z	SilverZ		but when I do lspci -v it says <access denied> next to capabilities still
+2012-08-07T05:35:00.000Z	SilverZ		no kidding
+2012-08-07T05:35:00.000Z	SilverZ		it worked on 10.04 lts but when I switched to 12.04 it went pfffftttt
+2012-08-07T05:35:00.000Z	SilverZ		it's internal
+2012-08-07T05:35:00.000Z	TJ-	SilverZ	You need to do "sudo lspci -v" - you need root privileges to view that additional info
+2012-08-07T06:15:00.000Z	TJ-	SilverZ	"whoami"
+2012-08-07T06:17:00.000Z	TJ-	SilverZ	can you pastebin the results of "ls -al"  (that's lowercase L S -AL)
+2012-08-07T06:52:00.000Z	TJ-	SilverZ	A little tip. In Linux, command lines often don't report anything if they don't error
+2012-08-07T06:59:00.000Z	TJ-	SilverZ	You may need to modprobe the module again ... it may not have been loaded. You can check by doing "lsmod | grep XXX" where XXX is a string of characters in the module name
+2012-08-07T07:00:00.000Z	TJ-	SilverZ	to modprobe, you do " sudo modprobe b43"
+2012-08-07T07:00:00.000Z	TJ-	SilverZ	No ... you've installed the module to the kernel's lib/ directory
+2012-08-07T07:01:00.000Z	TJ-	SilverZ	so modprobe will 'know' where to find the module
+2012-08-07T07:09:00.000Z	TJ-	SilverZ	If a module doesn't get auto-loaded at boot-time (it ought to) then you can ensure it is by adding its name to the file /etc/modules
+2012-08-07T07:10:00.000Z	TJ-	SilverZ	that should be type "ifconfig | pastebinit"
+2012-08-07T07:10:00.000Z	TJ-	SilverZ	note the ending T not N

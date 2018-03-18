@@ -1,0 +1,21 @@
+2008-05-31T01:09:00.000Z	syrius`		After recompiling the kernel following the instructions from https://help.ubuntu.com/community/Kernel/Compile... i get to the log in screen, put in user/pass and then the screen goes white and stays like that... the mouse pointer is still visible and movable.. has anyone else seen this?
+2008-05-31T01:09:00.000Z	syrius`		I'm looking online but don't see anything regarding this issue
+2008-05-31T01:11:00.000Z	syrius`		anyone familiar with kernel compilations that would know why a white screen would appear after login right after installing a freshly compiled image?
+2008-05-31T01:12:00.000Z	syrius`		i thought last night it did it because the laptop froze halfway through the compile, so i did the whole compile again this morning, and the same issue happened
+2008-05-31T01:12:00.000Z	syrius`		im writing custom device drivers
+2008-05-31T01:13:00.000Z	syrius`		ok
+2008-05-31T01:13:00.000Z	syrius`		hmm
+2008-05-31T01:13:00.000Z	syrius`		i used the instructions from the ubuntu site, i'll try a diff one
+2008-05-31T01:13:00.000Z	danand	syrius`	- did you compile your gfx card driver yourself? if your using a new kernel name or such you might need to recompile your gfx driver.... had this issue before...
+2008-05-31T01:14:00.000Z	syrius`		I am using an ATI Radeon Mobility driver, and using the restricted-modules to support it
+2008-05-31T01:14:00.000Z	syrius`		but did not recompile those yet
+2008-05-31T01:14:00.000Z	syrius`		i was undert he impression i had to do the initial compile/install before i could recompile the restricted modules
+2008-05-31T01:15:00.000Z	syrius`	danand	I need to recompile gfx drivers before the kernel compile is what you're saying?
+2008-05-31T01:15:00.000Z	syrius`		on https://help.ubuntu.com/community/CustomRestrictedModules it says: Note: this will only work if you have created AND installed linux-image and linux-header or linux-source packages
+2008-05-31T01:16:00.000Z	syrius`		I'm also using the up to date kernel, just recompiling it and for the --append-to-version i'm just doing 'rupert', my machine name
+2008-05-31T01:17:00.000Z	danand	syrius`	- no ... just that you may need to recompile the gfx drivers against the new version of the kernel your running. I had this problem with my nvidia card on an old debian box. each time i recompiled the kernel (i was always screwing up my options :)) i had to recompile the gfx drivers before X would work again...
+2008-05-31T01:17:00.000Z	syrius`		ahhhh
+2008-05-31T01:17:00.000Z	syrius`	danand	So i would compile the new kernel, just not run it yet.. recompile the restricted-modules, then load the new kernel?
+2008-05-31T01:20:00.000Z	syrius`		ok tryin to recompile restricted-modules first lets give this a try
+2008-05-31T01:22:00.000Z	danand	syrius`	- hmmm.... not sure... can you not get to a shell to try and fix/compile your driver with your new kernel running? By the way have you looked in your X logs to see what is causing the problem... may not be anything to do with the gfx driver or kernel ... I would try and look at those first...
+2008-05-31T01:22:00.000Z	syrius`	danand	would i be able to PM you for a moment?

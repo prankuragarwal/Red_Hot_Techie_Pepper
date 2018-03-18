@@ -1,0 +1,22 @@
+2007-09-24T09:23:00.000Z	bjv		im having trouble installing libwxbase2.8-dev, update-alternatives: unable to open /var/lib/dpkg/alternatives/wx-config.dpkg-new for write: No such file
+2007-09-24T09:24:00.000Z	bjv		E: Sub-process /usr/bin/dpkg returned an error code (1)
+2007-09-24T09:24:00.000Z	bjv		there are 2 files/packages
+2007-09-24T09:24:00.000Z	bjv		unable to open /var/lib/dpkg/alternatives/wx-config.dpkg-new & unable to open /var/lib/dpkg/alternatives/wx.pth.dpkg-new
+2007-09-24T09:24:00.000Z	bjv		from   libwxbase2.8-dev   &    python-wxgtk2.4  respectivly
+2007-09-24T09:25:00.000Z	bjv		python-wxgtk2.4 is a package that has been throwing errors for awhile, i would like to just remove it totally
+2007-09-24T09:25:00.000Z	bjv		dpkg --purge python-wxgtk2.4 was my best bet so far.
+2007-09-24T09:25:00.000Z	macd	bjv	can you just paste all that into pastebin please, rather than the channel, its hard to follow
+2007-09-24T09:25:00.000Z	bjv		ok
+2007-09-24T09:26:00.000Z	macd		I think the Microsoft discussion is a bit offtopic ;)
+2007-09-24T09:26:00.000Z	macd		!offtopic
+2007-09-24T09:27:00.000Z	macd		;)
+2007-09-24T09:27:00.000Z	bjv		ok macd, http://paste.ubuntu-nl.org/38457/
+2007-09-24T09:28:00.000Z	macd	bjv	run 'sudo apt-get autoremove' then install your package.
+2007-09-24T09:29:00.000Z	bjv	macd	that cleaned up some unrelated cruft, http://paste.ubuntu-nl.org/38458/  but im still hitting that update-alternatives error
+2007-09-24T09:29:00.000Z	bjv		wrt that same package
+2007-09-24T09:30:00.000Z	macd	bjv	yeah b/c you purged it first, umm, is there anything in /var/cache/apt/archive or /partial ?
+2007-09-24T09:30:00.000Z	bjv		oh my god, im a hacker.
+2007-09-24T09:30:00.000Z	bjv		mkdir /var/lib/dpkg/alternatives   fixed it :P
+2007-09-24T09:30:00.000Z	bjv		lol, thx macd
+2007-09-24T09:30:00.000Z	macd	bjv	nice ;)
+2007-09-24T09:31:00.000Z	macd	bjv	you just got bit by a odd set of cirumstances, typically you want to use autoremove first and not try to purge

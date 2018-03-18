@@ -1,0 +1,19 @@
+2008-11-08T23:29:00.000Z	jadams_		I have a webcam supported by gscpa according to http://www.kernel.org/doc/Documentation/video4linux/gspca.txt (it's 0471:0328 Philips SPC 700 NC).  The light is on when I plug it in, and lsusb registers it.  However, it doesn't show up in the dropdown for cheese.  What should I do to troubleshoot?
+2008-11-08T23:29:00.000Z	gammy	jadams_	dmesg would be a good start.
+2008-11-08T23:30:00.000Z	jadams_	gammy	http://pastie.org/310233
+2008-11-08T23:30:00.000Z	gammy	jadams_	I didn't say *I* wanted it. :|
+2008-11-08T23:30:00.000Z	jadams_	gammy	fair :)
+2008-11-08T23:30:00.000Z	jadams_		and sorry
+2008-11-08T23:30:00.000Z	gammy	jadams_	Anyway, that message is pretty clear is it not?
+2008-11-08T23:31:00.000Z	jadams_	gammy	well, looks to me like it both says it has a driver for it and says that it doesn't, so no not really.
+2008-11-08T23:32:00.000Z	gammy	jadams_	The camera has several components. It uses a supported bridge but doesn't use a (yet?) supported sensor.
+2008-11-08T23:32:00.000Z	gammy	jadams_	Make sure your software is up to date. ov5XX drivers are under a lot of development.
+2008-11-08T23:33:00.000Z	gammy	jadams_	http://www.linux-projects.org/modules/sections/index.php?op=viewarticle&artid=6 might also help.
+2008-11-08T23:33:00.000Z	jadams_	gammy	which software?  I'm on a fully-updated intrepid
+2008-11-08T23:33:00.000Z	gammy	jadams_	see 9. Supported devices.
+2008-11-08T23:34:00.000Z	jadams_	gammy	right, and 0x0471     0x0328 is in the list of supported devices
+2008-11-08T23:35:00.000Z	jadams_	gammy	also, lsmod shows sn9c102 as loaded
+2008-11-08T23:35:00.000Z	gammy	jadams_	Please continue reading. "The list above does not imply that all those devices work with this driver.."
+2008-11-08T23:35:00.000Z	jadams_		bbiab
+2008-11-08T23:35:00.000Z	jadams_	gammy	thanks for the help, sorry to rope you in
+2008-11-08T23:36:00.000Z	gammy	jadams_	Webcam stuff is a bitch. The vendors always ship the same looking cameras with multiple hardware inside and never make any information available.

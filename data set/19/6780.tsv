@@ -1,0 +1,19 @@
+2008-10-31T15:50:00.000Z	natalisushka		Anyone knows how can i connect to wired connection using command line when I am in recovery mode?
+2008-10-31T15:52:00.000Z	velko	natalisushka	are you on the box right now?
+2008-10-31T15:52:00.000Z	natalisushka	velko	I am inside Live CD on the same machine that has the problem
+2008-10-31T15:53:00.000Z	natalisushka	velko	I had 8.04 and while upgrading to 8.10 I had some issues. When I restart, I get to the login screen of ubuntu but keyboard doesn't work, and I guess it's due to broken packages, so in reconvery mode I want to fix that but I need internet connection
+2008-10-31T15:55:00.000Z	velko	natalisushka	ok. if you can connect from the livecd you are using dhcp. if your wired network (on the broken install) is configured for using dhcp (which it most probably is) you have just to issue "ifup eth0" when you log in, provided your interface is called eth0
+2008-10-31T17:51:00.000Z	velko	natalisushka	hahaha :-)
+2008-10-31T17:32:00.000Z	velko	natalisushka	you have to chroot to the directory where your installation is mounted first. else you'll "apt-get update" the live session
+2008-10-31T17:34:00.000Z	velko	natalisushka	could you pastebin the content for your /etc/network/interfaces
+2008-10-31T17:35:00.000Z	natalisushka	velko	also one minute
+2008-10-31T17:36:00.000Z	natalisushka	velko	should i paste the interfaces output under chroot of the isntalled system?
+2008-10-31T17:36:00.000Z	velko	natalisushka	yes. the installed system, please
+2008-10-31T17:42:00.000Z	natalisushka	velko	yes, I guess it's because of that. Do you think changing the interfaces of the installed system might solve it?
+2008-10-31T17:42:00.000Z	velko	natalisushka	you may try to sync the installed "interfaces" with the live cd file
+2008-10-31T17:45:00.000Z	velko	natalisushka	i guess it will. but i don't know enought about wireless to assist you
+2008-10-31T17:47:00.000Z	velko	natalisushka	another idea. if you can ping the ip, you can list the servers listed in /etc/apt/sources.list in /etc/hosts in order to get resolved
+2008-10-31T17:53:00.000Z	velko	natalisushka	yeah. it's better to mount the /dev/ system before you chroot
+2008-10-31T17:53:00.000Z	natalisushka	velko	how?
+2008-10-31T17:54:00.000Z	velko	natalisushka	you have to google it. i'm at work now and don't know the exact syntax. just google for chroot and you'll find it
+2008-10-31T17:54:00.000Z	velko	natalisushka	it was something like "-o bind"

@@ -1,0 +1,19 @@
+2009-02-06T19:52:00.000Z	HexTasy		ok so now the hardware is actually showing up in eth1 as it should.  But I get "Ignoring unknown interface" when I try to /etc/init.d/networking restart  -  if I use ifconfig to set an IP it works just fine. wth?
+2009-02-06T19:53:00.000Z	n8tuser	HexTasy	-> post your /etc/network/interfaces  file
+2009-02-06T19:53:00.000Z	HexTasy	n8tuser	post it in the channel?
+2009-02-06T19:55:00.000Z	HexTasy	n8tuser	http://pastebin.com/d574510c2
+2009-02-06T19:57:00.000Z	n8tuser	HexTasy	-> which interface are you having issues with?
+2009-02-06T19:57:00.000Z	HexTasy	n8tuser	eth1
+2009-02-06T19:57:00.000Z	n8tuser	HexTasy	-> you have a static ip address assigned to it, is that what you desired?
+2009-02-06T19:58:00.000Z	HexTasy	n8tuser	yep, that's what I wanted.
+2009-02-06T19:58:00.000Z	n8tuser	HexTasy	-> so what not working? you have an ip address assigned..
+2009-02-06T20:00:00.000Z	HexTasy	n8tuser	it doesn't automatically assign itself an IP, I have to set it with ifconfig
+2009-02-06T20:00:00.000Z	n8tuser	HexTasy	-> after you did a /etc/init.d/networking restart  your eth1 did not get an ip address?
+2009-02-06T20:01:00.000Z	HexTasy	n8tuser	that's what i'm trying to tell you, yes.  it errors and says ignoring unknown device
+2009-02-06T20:02:00.000Z	n8tuser	HexTasy	-> your interfaces are missing entries for gateway, mask, etc.. please man interfaces   to get a sypnosis
+2009-02-06T20:03:00.000Z	HexTasy	n8tuser	... I don't need a gateway, this IS the gateway
+2009-02-06T20:04:00.000Z	n8tuser	HexTasy	-> umm lets back up a few, can you tell us what is your network layout?  what devices are connected to which?
+2009-02-06T20:42:00.000Z	HexTasy	n8tuser	it was a type in my /etc/network/interfaces file.  I had eht1 instead of eth1  :X
+2009-02-06T20:42:00.000Z	n8tuser	HexTasy	-> fixed now?
+2009-02-06T20:43:00.000Z	HexTasy	n8tuser	yep, it works.  I did however have to take the gateway assignment out of the equation, kinda messed up my iptables.  but yes it works now
+2009-02-06T20:44:00.000Z	n8tuser	HexTasy	-> good, another pair of eyes usually points out those little details :P

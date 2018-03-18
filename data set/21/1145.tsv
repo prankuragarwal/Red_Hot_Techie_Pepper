@@ -1,0 +1,21 @@
+2012-03-19T23:57:00.000Z	belgianguy		but I can't find the real name through dmesg or df
+2012-03-19T23:57:00.000Z	belgianguy		it's called /dev/sdb5
+2012-03-19T23:59:00.000Z	belgianguy		yet I can remember using it :s
+2012-03-20T00:00:00.000Z	belgianguy		oops :$
+2012-03-20T00:02:00.000Z	belgianguy		it's an NTFS partition I want to get rid off, to give more room to Ubuntu
+2012-03-20T00:03:00.000Z	mcb_1	belgianguy	Try $ ls -lah /dev/disks/by-label It will list all devs that are attached. You should find your drive there.
+2012-03-20T00:04:00.000Z	belgianguy	mcb_1	thanks, this shows some of the sd* devices
+2012-03-20T00:05:00.000Z	mcb_1	belgianguy	 It should show you all the disks you have.
+2012-03-20T00:06:00.000Z	mcb_1	belgianguy	Try $ ls -lah /dev/disk/by-uuid/ In case you have disks without labels.
+2012-03-20T00:06:00.000Z	belgianguy	mcb_1	the partition is called sdb5 in GParted, and I can't see it in the by-label list
+2012-03-20T00:07:00.000Z	belgianguy	mcb_1	it's there, :)
+2012-03-20T00:08:00.000Z	mcb_1	belgianguy	Just mount it. $mount /dev/sdb5 /mnt
+2012-03-20T00:18:00.000Z	mcb_1	belgianguy	If you delete a partition, all files are lost. Only by a  backup restore will you see the files again. It is an important system partition, you can make all the system unusable.....
+2012-03-20T00:19:00.000Z	belgianguy	mcb_1	I double checked, and made a backup^of what was on it (only pictures)
+2012-03-20T00:22:00.000Z	mcb_1	belgianguy	Just to be sure. You are messing in a Windows partiotion? If so, I cant be sure what will happen, it can be safe it is not the windows system partition, but this is what i think, i dont know for sure.....
+2012-03-20T00:24:00.000Z	belgianguy	mcb_1	I can't see any Windows folder in the other partitions of this HDD
+2012-03-20T00:26:00.000Z	mcb_1	belgianguy	I never used a system without swap, and i must think that you can get problems if you use too much RAM and need to use swap space. It is not a good idea not to have a swap area.
+2012-03-20T00:27:00.000Z	mcb_1	belgianguy	Nevertheless, you shoud do $swapoff before you start messing with the this partition.
+2012-03-20T00:31:00.000Z	mcb_1	belgianguy	If you told is right, and that is your Linux swap partition, Windows will not even know that something has changed.
+2012-03-20T00:34:00.000Z	mcb_1	belgianguy	You cant have something else in the same partition as the Linux Swap....... Can you?????? I never heard of it. You may have more than partition on the same disk, but a Linux Swap Partition will be only good for that and nothing else. As far as i can tell. Please tell me otherwise.
+2012-03-20T00:34:00.000Z	belgianguy	mcb_1	true, I'm uploadin a pic of GParted

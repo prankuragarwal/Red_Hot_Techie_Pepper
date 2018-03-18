@@ -1,0 +1,23 @@
+2012-05-15T03:32:00.000Z	Rexter		anyone available to help with an ethernet issue?
+2012-05-15T03:33:00.000Z	tyler_d	Rexter	I can gladly give it a shot
+2012-05-15T03:33:00.000Z	tyler_d	Rexter	need more detail though
+2012-05-15T03:36:00.000Z	tyler_d	Rexter	do you know how to open a terminal? is there something plugged into it? what does it show for cards/connections?
+2012-05-15T03:39:00.000Z	tyler_d	Rexter	if you right click on the connection manager, and choose "edit connections" you can see them. from a terminal what does `ip a` show please?
+2012-05-15T03:43:00.000Z	tyler_d	Rexter	shoudl I assume you have tried restarting? if so try doing sudo /etc/init.d/network-manager restart
+2012-05-15T03:43:00.000Z	tyler_d	Rexter	normally it would simply load that in there
+2012-05-15T03:46:00.000Z	tyler_d	Rexter	lol
+2012-05-15T03:48:00.000Z	tyler_d	Rexter	could you please remove the entry for eth0 from within  /etc/network/interfaces
+2012-05-15T03:48:00.000Z	tyler_d	Rexter	then reboot
+2012-05-15T03:49:00.000Z	tyler_d	Rexter	so you would want to (from a terminal) do cd /etc/network
+2012-05-15T03:50:00.000Z	tyler_d	Rexter	then cp interfaces ~/interfaces.bak ..... followed by gksu gedit interfaces
+2012-05-15T03:51:00.000Z	tyler_d	Rexter	very good, keep me updated
+2012-05-15T03:55:00.000Z	tyler_d	Rexter	very good, do you see a line refering to eth0?
+2012-05-15T03:57:00.000Z	tyler_d	Rexter	can you please remove the auto: eth0 references, ie. literally where it says eth0, delete it
+2012-05-15T03:57:00.000Z	tyler_d	Rexter	then save and close please
+2012-05-15T03:58:00.000Z	tyler_d	Rexter	very good, restart the machine please
+2012-05-15T04:00:00.000Z	tyler_d	Rexter	very good :)
+2012-05-15T04:01:00.000Z	tyler_d	Rexter	I belive that was the goal, and you should be set :)
+2012-05-15T04:02:00.000Z	tyler_d	Rexter	you can manually configure your cards from that file, but once it notices that it is in there, it doesn't try to do a thing with network-manager... bypasses it
+2012-05-15T04:02:00.000Z	tyler_d	Rexter	so removing it allows the app(network-manager) to tak eit over
+2012-05-15T04:18:00.000Z	tyler_d	Rexter	while its booting alt-ctrl F1
+2012-05-15T04:18:00.000Z	tyler_d	Rexter	until it drops to the login prompt

@@ -1,0 +1,21 @@
+2009-09-01T15:07:00.000Z	acron17		hi there. i've a nvidia vanta graphics card ( 10de:002c (rev 15) ) which i'm unable to get operatable
+2009-09-01T15:08:00.000Z	acron17		the hardware-driver window is empty. i installed nvidia-glx-71 and the kernel module seems to get loaded but xorg refuses to load the driver
+2009-09-01T15:08:00.000Z	ActionParsnip	acron17	try a different driver
+2009-09-01T15:09:00.000Z	ActionParsnip	acron17	what release are you using?
+2009-09-01T15:09:00.000Z	acron17	ActionParsnip	jaunty
+2009-09-01T15:10:00.000Z	ActionParsnip	acron17	could try the 96 driver
+2009-09-01T15:11:00.000Z	acron17	ActionParsnip	why should i try a different diver? the vanta card is supposed to be supported by the 71 driver as stated here: http://us.download.nvidia.com/XFree86/Linux-x86/169.12/README/appendix-a.html
+2009-09-01T15:14:00.000Z	ActionParsnip	acron17	well what you have isnt working so to me it makes sense. have you tried modifying xorg.conf?
+2009-09-01T15:14:00.000Z	ActionParsnip	acron17	or reading /var/log/Xorg.log.0
+2009-09-01T15:16:00.000Z	acron17	ActionParsnip	i added Driver "nvidia" and xorg failed to start... (EE) Failed to load /usr/lib/xorg/modules/drivers//nvidia_drv.so
+2009-09-01T15:16:00.000Z	ActionParsnip	acron17	ok did the dkms step of the driver install complete?
+2009-09-01T15:17:00.000Z	acron17	ActionParsnip	yeah i think so. lsmod shows me nvidia is loaded and the dmesg is ok i think
+2009-09-01T15:17:00.000Z	ActionParsnip	acron17	uninstall the driver and in xorg.conf set it to Driver 'nv"
+2009-09-01T15:18:00.000Z	acron17	ActionParsnip	but i do need hw accel :-/
+2009-09-01T15:19:00.000Z	ActionParsnip	acron17	i know, but if you install the driver from fresh it sometimes makes it work
+2009-09-01T15:19:00.000Z	acron17	ActionParsnip	ok. so what do you suggest?
+2009-09-01T15:19:00.000Z	ActionParsnip	acron17	sudo apt-get clean; sudo apt-get --purge remove nvidia*; sudo apt-get --purge autoremove; sudo dpkg-reconfigure xserver-xorg
+2009-09-01T15:20:00.000Z	acron17	ActionParsnip	ok and then? sudo apt-get install nvidia-glx-71 ?
+2009-09-01T15:21:00.000Z	ActionParsnip	acron17	run all that and reboot, then once back to desktop, rm ~/.nv*; sudo apt-get update; sudo apt-get install nvidia-glx-71
+2009-09-01T15:31:00.000Z	acron17	ActionParsnip	re. did as you suggested... no luck error in Xorg-log is: (EE) Failed to initialize GLX extension (NVIDIA X driver not found)
+2009-09-01T15:33:00.000Z	ActionParsnip	acron17	not sure then, i'd try different drivers til you hit the gold

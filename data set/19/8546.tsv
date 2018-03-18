@@ -1,0 +1,19 @@
+2008-02-20T10:33:00.000Z	bullgard4		What command line command will be called by clicking on the Gnome 'Force Quit Button' applet?
+2008-02-20T10:34:00.000Z	tanubis	bullgard4	likely it sends a kill command
+2008-02-20T10:34:00.000Z	bullgard4	tanubis	Yes, but I should like to know it more exactly.
+2008-02-20T10:36:00.000Z	tanubis	bullgard4	check "man pgrep" "man pkill"
+2008-02-20T10:36:00.000Z	tanubis	bullgard4	if you wanted to duplicate the kill window command from command line, you'd use pgrep to find the name of the process you want and pkill to terminate it
+2008-02-20T10:38:00.000Z	tanubis	bullgard4	for example, if I wanted to kill my browser, I could pgrep firefox and then pkill <idnumber from pgrep> to terminate it
+2008-02-20T10:40:00.000Z	tanubis	bullgard4	Also, you could use the command pstree -p to see a list of running processes laid out as an ascii diagram, and pskill id# to terminate
+2008-02-20T10:41:00.000Z	tanubis	bullgard4	*pkill
+2008-02-20T10:42:00.000Z	bullgard4	tanubis	Your explanations are helpful, and I thank you for them. --  My outset was that a communication program prevented me from terminating my Epiphany. Even using the 'Force Quit Button' could not kill the remnants of Epiphany. Only using 'killall epiphany' killed the remnants. So I wonder what the 'Force Quit Button' really does.
+2008-02-20T10:44:00.000Z	tanubis	bullgard4	anytime.  I suppose if one was really curious, one could always find the source code and take a gander.  My guess would be that it looks for the process ID of the window you click, and kills that.  But if a parent process has hung, sometimes the child process that's displaying the window maybe doesn't work?  I could be way off though.
+2008-02-20T10:46:00.000Z	bullgard4	tanubis	Last night I already tried to find the source code but was not successful. I will keep trying.
+2008-02-20T10:47:00.000Z	tanubis	bullgard4	good luck :)
+2008-02-20T11:01:00.000Z	tanubis	bullgard4	the command it's calling is xkill
+2008-02-20T11:01:00.000Z	tanubis	bullgard4	if you type that in and hit enter, you basically get the exact same thing as what the force kill does
+2008-02-20T11:02:00.000Z	tanubis	bullgard4	they just modified it slightly (esc cancels as opposed to mouse2 + help text window)
+2008-02-20T11:04:00.000Z	bullgard4	tanubis	Ah, very interesting. I will play a bit with xkill and see if its effect is the same as that of the 'Force Quit Button' applet. --  You are most helpful. Thank you very much indeed.
+2008-02-20T11:06:00.000Z	tanubis	bullgard4	welcome... still hunting for the source myself; someone on another forum had mentioned that force kill applet = gui wrapper for xkill command, but didn't site source.
+2008-02-20T11:06:00.000Z	bullgard4	tanubis	site > cite?
+2008-02-20T11:06:00.000Z	tanubis	bullgard4	indeed :P

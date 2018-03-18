@@ -1,0 +1,24 @@
+2011-08-03T23:44:00.000Z	claviusmond		nobody in sed gives me an answer, can anyone tell me whats wrong with sed '/^1    .*$/ s/\(^.|.)\.*/ \ U & / g' /home/dexter/Compiled/FlightGear/install/fgfs/fgdata/Airports/apt.dat > newfile2?
+2011-08-03T23:45:00.000Z	jrib	claviusmond	what do you want to do?  What is it doing instead?
+2011-08-03T23:46:00.000Z	claviusmond	jrib	I want it to, in every line that starts with 1    (1 and four spaces) to transform every word to Standard Capitalization (NOT THIS, not this, But This), I then add the path to the file and the output file
+2011-08-03T23:47:00.000Z	jrib	claviusmond	escape your other parentheses
+2011-08-03T23:49:00.000Z	claviusmond	jrib	if I get rid of both parentheses it doesnt do anything
+2011-08-03T23:49:00.000Z	jrib	claviusmond	but I didn't say to get rid of both paretheses
+2011-08-03T23:49:00.000Z	claviusmond	jrib	excuse the noob
+2011-08-03T23:52:00.000Z	jrib	claviusmond	(or maybe escape neither, but be consistent)
+2011-08-03T23:54:00.000Z	jrib	claviusmond	you probably want to just enclose your sed expression in single quotes ('') and always use '(' instead of '\(' and ')' instead of '\)' unless you want to match an actual parentheses.  At the moment, you have a '\(' and a ')'
+2011-08-03T23:56:00.000Z	jrib	claviusmond	try this in a terminal, you have some spacing issues: sed -r 's/(^.| .)/\U&/g' <<< "foo bar"
+2011-08-03T23:57:00.000Z	claviusmond	jrib	dont I need the path to the file?
+2011-08-03T23:57:00.000Z	jrib	claviusmond	in this example, sed will just operate on "foo bar" (it's just an example for you)
+2011-08-03T23:58:00.000Z	jrib	claviusmond	that's what you want it to do?
+2011-08-03T23:59:00.000Z	jrib	claviusmond	right, so add the beginning part that filters for lines that start with 1 and four spaces
+2011-08-04T00:02:00.000Z	jrib	claviusmond	also, sed -r 's/(\w*)/\u&/g' seems easier to comprehend
+2011-08-04T00:04:00.000Z	claviusmond	jrib	sed '/^1    .-r 's/(^.| .)/\U&/g' /home/dexter/Compiled/FlightGear/install/fgfs/fgdata/Airports/apt.dat > newfile2 , what am I doing wrong?
+2011-08-04T00:04:00.000Z	jrib	claviusmond	"sed -r" not "sed" and then -r somewhere later
+2011-08-04T00:17:00.000Z	jrib	claviusmond	if you care, I've found some documentation on \u and \U in « man perlre »
+2011-08-04T00:18:00.000Z	claviusmond	jrib	as of now my head is exploding
+2011-08-04T00:18:00.000Z	jrib	claviusmond	why?
+2011-08-04T00:19:00.000Z	claviusmond	jrib	noobness
+2011-08-04T00:19:00.000Z	jrib	claviusmond	ok, if you get stuck, feel free to ask
+2011-08-04T00:23:00.000Z	claviusmond	jrib	fuck, a previous work that I though was complete, needs to be further transformed
+2011-08-04T00:24:00.000Z	jrib	claviusmond	mind the language please

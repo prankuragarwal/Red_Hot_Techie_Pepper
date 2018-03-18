@@ -1,0 +1,18 @@
+2012-04-22T21:11:00.000Z	streblo		ive been using ubuntu for a while now, just shut my machine off after not using it for a while, and now it boots into initramfs and cant get any further
+2012-04-22T21:11:00.000Z	streblo		can anyone help me diagnose the issue?
+2012-04-22T21:11:00.000Z	streblo		i get a couple of errors like this:
+2012-04-22T21:12:00.000Z	streblo		mounting /dev on /root/dev failed: No such file or directory
+2012-04-22T21:12:00.000Z	IntuitiveNipple	streblo	Sounds like a kernel update or other package caused the initial RAMdisk to be rebuilt, and that wasn't totally successful. Very hard to diagnose remotely.
+2012-04-22T21:12:00.000Z	streblo	IntuitiveNipple	i have a usb stick i made with unetbootin and i cant even get it to boot with that
+2012-04-22T21:13:00.000Z	IntuitiveNipple	streblo	Can you boot into a Previous Version from the GRUB boot menu? Hold down the Shift key as the PC finished the power-on-self-test (POST) and you should get the GRUB boot menu where you can choose to boot an earlier configuration
+2012-04-22T21:14:00.000Z	streblo	IntuitiveNipple	i'll try that right now
+2012-04-22T21:14:00.000Z	IntuitiveNipple	streblo	USB boot relies on the BIOS to know to try booting from the USB ports. I assume you have that selected, but the USB boot starts but fails?
+2012-04-22T21:15:00.000Z	streblo	IntuitiveNipple	i've tried telling the BIOS to boot using the usb stick, but it still drops me into initramfs
+2012-04-22T21:15:00.000Z	IntuitiveNipple	streblo	OK... but is it the initramfs of the USB device, or is it still booting from the hard disk? Can you watch the activity light of the hard disk during boot to determine which device it is booting from?
+2012-04-22T21:16:00.000Z	streblo	IntuitiveNipple	no, you're right, i was being an idiot. i'm now at the grub menu for the usb device
+2012-04-22T21:17:00.000Z	IntuitiveNipple	streblo	good luck! I know how hard solving boot issues is!
+2012-04-22T21:18:00.000Z	IntuitiveNipple	streblo	be aware that Recovery Mode of the same kernel version will use the same initramdisk as the normal mode. You usually need to use an earlier kernel version which has it's own initramdisk
+2012-04-22T21:18:00.000Z	streblo	IntuitiveNipple	i'm going to try an earlier version
+2012-04-22T21:19:00.000Z	streblo	IntuitiveNipple	awesome, looks like its booting from the usb stick, thanks for the help
+2012-04-22T21:20:00.000Z	IntuitiveNipple	streblo	If you can boot to a previous version on the affected hard disk, you could then re-generate the initramdisk image
+2012-04-22T21:21:00.000Z	IntuitiveNipple	streblo	(for the affected kernel version) which would allow you to get back to normal

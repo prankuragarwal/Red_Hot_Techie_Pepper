@@ -1,0 +1,19 @@
+2011-04-30T23:56:00.000Z	osse		Each time a new Ubuntu version comes out I see a lot about upgrading. But I never manage to find out if there will be any significant difference between a fresh install and an upgraded installation. I guess because there are none?
+2011-04-30T23:56:00.000Z	jrib	osse	there shouldn't be any significant difference, yes
+2011-04-30T23:59:00.000Z	jrib	osse	if you take a fresh 10.10 install and upgrade it should be the same as an 11.04 install.  Obviously, if you make changes to 10.10 and upgrade those changes affect your upgrade result vs a fresh 11.04 install...
+2011-05-01T00:01:00.000Z	jrib	osse	you'll likely have both installed
+2011-05-01T00:03:00.000Z	osse	jrib	ohsix: thanks.
+2012-10-04T20:03:00.000Z	jrib	osse	hmm.  Have you tried using pacmd maybe?
+2012-10-04T20:06:00.000Z	osse	jrib	no I haven't. It looks interesting. I'll experiment with it. Thanks =)
+2012-10-29T14:19:00.000Z	jrib	osse	it could be some environment issue
+2012-10-29T14:20:00.000Z	jrib	osse	can you explain the $ in $'\t'?
+2012-10-29T14:20:00.000Z	jrib	osse	never mind
+2012-10-29T14:23:00.000Z	jrib	osse	http://paste.ubuntu.com/1314834/ this works fine for me
+2012-10-29T14:25:00.000Z	osse	jrib	same here :/
+2012-10-29T14:27:00.000Z	jrib	osse	if you run the script as root manually, does it work ok?  Do a sudo -i and execute it
+2012-10-29T14:29:00.000Z	osse	jrib	yes, it works as expected when I log in as root with 'sudo -i'
+2012-10-29T14:30:00.000Z	osse	jrib	it is curious though, the header that I print in bold is rendered in bold when I run the script manually, but it appears in regular text when I log in.
+2012-10-29T14:32:00.000Z	jrib	osse	try adding "exec 2>&1".  update-motd seems to only grab stdout so you won't see stderr
+2012-10-29T14:35:00.000Z	jrib	osse	also maybe throw in "set -x"
+2012-10-29T15:23:00.000Z	osse	jrib	I think I found a problem. The author name is the one that messes with column. If I simply put an 'Ø' in the format string I get no output :/
+2012-10-29T17:48:00.000Z	osse	jrib	if I export LANG=en_US.UTF-8 in the script it works... That was the whole issue it seems.

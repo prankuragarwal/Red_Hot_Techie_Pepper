@@ -1,0 +1,21 @@
+2008-12-09T21:12:00.000Z	squirt94_		Hey guys
+2008-12-09T21:13:00.000Z	squirt94_		I have a problem i have windows xp installed on /dev/sda3 how do i dualboot this with the bunutu instakllled on /dev/sda2?
+2008-12-09T21:15:00.000Z	squirt94_		I have a problem i have windows xp installed on /dev/sda3 how do i dualboot this with the bunutu instakllled on /dev/sda2?
+2008-12-09T21:16:00.000Z	squirt94_		I have a problem i have windows xp installed on /dev/sda3 how do i dualboot this with the bunutu instakllled on /dev/sda2?
+2008-12-09T21:16:00.000Z	Slart	squirt94_	if you install ubuntu after you installed windows I think it will put a menu choice in your grub menu for booting windows.. but it's not that hard to create it yourself
+2008-12-09T21:17:00.000Z	squirt94_	Slart	i= dd install ubuntu afterwards but it just shows ubuntu like 5 times and Memtest
+2008-12-09T21:18:00.000Z	Slart	squirt94_	basicall you have to add 4-5 lines to your /boot/grub/menu.lst file
+2008-12-09T21:19:00.000Z	Slart	squirt94_	then either the tutorials are wrong or you're doing something wrong.. can you start by pastebinning (is that even a word??) your current menu.lst?
+2008-12-09T21:21:00.000Z	Slart	squirt94_	ok
+2008-12-09T21:23:00.000Z	Slart	squirt94_	ok.. seems like you already have a menu item for windows xp.. it's the last 5 or so lines in that file.. where did you say your windows install was located.. what hard drive?
+2008-12-09T21:24:00.000Z	Slart	squirt94_	my bad.. I mean partition.. where is it located.. on /dev/sda3? somewhere else?
+2008-12-09T21:24:00.000Z	Slart	squirt94_	you can start gparted to take a look at your drives/partitions
+2008-12-09T21:25:00.000Z	Slart	squirt94_	I would change the line "root (hd1,0)
+2008-12-09T21:26:00.000Z	Slart	squirt94_	I would change the line "root (hd1,0)", to "root (hd1,2)"... sda1 = (hd0,0), sda2 = (hd0,1), sdb1 = (hd1,0) and so on
+2008-12-09T21:27:00.000Z	Slart	squirt94_	oops.. sorry.. change the line to "root (hd0,2)
+2008-12-09T21:28:00.000Z	Slart	squirt94_	correct.. just me having a bit of a slow brain day here =)
+2008-12-09T21:28:00.000Z	Slart	squirt94_	change that.. save the file.. run "sudo update-grub" and try rebooting
+2008-12-09T21:28:00.000Z	Slart	squirt94_	I don't think those are really needed.. I would remove them
+2008-12-09T21:29:00.000Z	Slart	squirt94_	actually they might even stop it from working.. so def remove them
+2008-12-09T21:30:00.000Z	Slart	squirt94_	afaik those lines are only needed when you want to boot from another hard drive.. but you're still booting from the same drive, just a different partition.. windows can't handle things if it isn't installed on hd0 so you have to trick it if it isn't
+2008-12-09T21:31:00.000Z	Slart	squirt94_	sure..

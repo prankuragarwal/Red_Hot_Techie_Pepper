@@ -1,0 +1,19 @@
+2010-01-11T03:55:00.000Z	Spasysheep		can anyone explain why I'm only getting 14-20MB/s when transferring files to my external HDD over firewire when I could potentially be getting nearly 50?
+2010-01-11T03:56:00.000Z	the_real_dave	Spasysheep	something else accessing it? Try find the reading speed with sudo hdparm -Tt /dev/whatever
+2010-01-11T03:57:00.000Z	Spasysheep	the_real_dave	kkty shall try that when current (144gb) transfer is done
+2010-01-11T03:58:00.000Z	the_real_dave	Spasysheep	cool, let us know
+2010-01-11T04:00:00.000Z	the_real_dave	Spasysheep	are you sure that's bytes not bits?
+2010-01-11T04:01:00.000Z	Spasysheep	the_real_dave	"The original release of IEEE 1394-1995[18] specified what is now known as FireWire 400. It can transfer data between devices at 100, 200, or 400 Mbit/s half-duplex data rates (the actual transfer rates are 98.304, 196.608, and 393.216 Mbit/s, i.e. 12.288, 24.576 and 49.152 megabytes per second respectively)"
+2010-01-11T04:02:00.000Z	the_real_dave	Spasysheep	ah ok.
+2010-01-11T04:02:00.000Z	the_real_dave	Spasysheep	is the drive connected directly to a firewire port on your motherboard or via a USB hub or anything?
+2010-01-11T04:03:00.000Z	Spasysheep	the_real_dave	and the hdd is FW800 compatible, so there's no reason it shouldn't be able to reach the FW400 max, and it's plugged straight into the mobo's onboard port
+2010-01-11T04:04:00.000Z	the_real_dave	Spasysheep	ah ok, maybe the drive is the bottleneck?
+2010-01-11T04:04:00.000Z	Spasysheep	the_real_dave	maybe - hrmm... what's a good write speed for a 2.5" hdd when it's connected through sata?
+2010-01-11T04:06:00.000Z	the_real_dave	Spasysheep	SATA II is a meant to be 300Mb/s right? My main rig get's around 80Mb/s, but there 3.5 7200rpm SATA drives. It wouldn't be your bottleneck anyway I'd presume.
+2010-01-11T04:08:00.000Z	Spasysheep	the_real_dave	it could be: HDD Read | Mobo Transfer | Ext. HDD Transfer | Ext. Hdd Write
+2010-01-11T04:10:00.000Z	the_real_dave	Spasysheep	yes actually, that makes sense. I presume the source drives are SATA also? hdparm should give their speed, well, read speed at least
+2010-01-11T04:10:00.000Z	Spasysheep	the_real_dave	yea, source drive is sata, can't test speed atm as the file transfer is still going
+2010-01-11T04:13:00.000Z	the_real_dave	Spasysheep	just as a note, this is what hdparm reports for my server's drives, 3.5 7k2 SATA through a PCI SATA RAID card http://paste.ubuntu.com/354736/
+2010-01-11T04:15:00.000Z	Spasysheep	the_real_dave	well this is coming from a single, non-RAID 7K2 3.5 SATA drive connected directly to the mobo
+2010-01-11T04:17:00.000Z	the_real_dave	Spasysheep	my apologies for not being clearer, the SATA RAID card is used only to connect a SATA drive to an IDE only mobo
+2010-01-11T04:17:00.000Z	Spasysheep	the_real_dave	ah k

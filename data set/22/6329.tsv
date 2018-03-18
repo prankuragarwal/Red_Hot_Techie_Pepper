@@ -1,0 +1,22 @@
+2007-03-12T08:03:00.000Z	kronoman		I have a little problem : when I boot my system, fsck says a error in my root /dev/hda1 and that I have to run fsck manually ;
+2007-03-12T08:03:00.000Z	kronoman		but, when I reboot in a Live CD and run fsck, it says that everything is fine
+2007-03-12T08:03:00.000Z	kronoman		but, if I reboot in hard disk, same thing happens
+2007-03-12T08:04:00.000Z	h1st0	kronoman	it just needs to do a fsck check on boot.  Let me try to find the command hold up
+2007-03-12T08:06:00.000Z	h1st0	kronoman	someone else on here may know .  Can you boot the system in recovery mode or anything?
+2007-03-12T08:06:00.000Z	kronoman	h1st0	I'm on the system right now, I booted using a Live CD
+2007-03-12T08:07:00.000Z	h1st0	kronoman	can you boot to the hd though and not use the live disk?  Or does it halt at that error?
+2007-03-12T08:07:00.000Z	kronoman	h1st0	I can boot , the thing goes like this : fsck error -> root command prompt -> "exit" -> boot
+2007-03-12T08:08:00.000Z	h1st0	kronoman	shutdown -F  -r now
+2007-03-12T08:09:00.000Z	h1st0	kronoman	that will force a reboot and run fsck on the next boot to fix the problem.
+2007-03-12T08:09:00.000Z	h1st0	kronoman	hopefully.
+2007-03-12T08:09:00.000Z	kronoman	h1st0	great, thanks!!
+2007-03-12T08:10:00.000Z	h1st0	kronoman	make sure you use a capital F linux is case sensitive
+2007-03-12T08:22:00.000Z	kronoman	h1st0	well, the check failed :(
+2007-03-12T08:23:00.000Z	h1st0	kronoman	did you get an error or what it failed on?
+2007-03-12T08:24:00.000Z	kronoman	h1st0	well, the check in /dev/hda1 went fine, then checked all the other partitions fine, but after that, it puts " inconsistency on / with inodes " or something around that
+2007-03-12T08:24:00.000Z	kronoman	h1st0	seems that the problem is when it mounts, not when it runs the fsck
+2007-03-12T08:24:00.000Z	kronoman	h1st0	it says "UNEXPECTED INCONSISTENCY"
+2007-03-12T08:25:00.000Z	kronoman	h1st0	with uppercase and all
+2007-03-12T08:25:00.000Z	h1st0	kronoman	and it passes on a fsck from livecd?
+2007-03-12T08:26:00.000Z	kronoman	h1st0	totally, even with -f parameter
+2007-03-12T08:26:00.000Z	kronoman	h1st0	I did a check with fsck.ext3fs, with fsck alone, with and without -f and -v and everything is fine, says clean filesystem

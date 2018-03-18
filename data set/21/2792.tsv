@@ -1,0 +1,21 @@
+2009-06-17T00:45:00.000Z	lunie2ns-linux		Although I do have a general, i think, linux question, My hard drive is partitioned, and I can't get it to automatically mount the other partition at bootup... i have to manually do it every time, i remember seeing something to fix this, but after i tried it, it didnt automatically load the partition on the next bootup
+2009-06-17T00:45:00.000Z	lunie2ns-linux		oh maybe that will answer both questions
+2009-06-17T00:46:00.000Z	bastidrazor	lunie2ns-linux	you need to add it to /etc/fstab
+2009-06-17T00:46:00.000Z	lunie2ns-linux	bastidrazor	I have no idea what that means
+2009-06-17T01:36:00.000Z	bastidrazor	lunie2ns-linux	pastebin sudo blkid and sudo fdisk -l
+2009-06-17T01:40:00.000Z	lunie2ns-linux	bastidrazor	http://pastebin.com/m21a08fcb       http://pastebin.com/m15d4b805
+2009-06-17T01:41:00.000Z	bastidrazor	lunie2ns-linux	which partition do you want to add to fstab?
+2009-06-17T01:42:00.000Z	lunie2ns-linux	bastidrazor	 The NTFS 67 GB partition..and i want it to mount to /media/disk like it does right now when i manually do it if possible
+2009-06-17T01:43:00.000Z	lunie2ns-linux	bastidrazor	 do I need to unmount the drive before i do this??
+2009-06-17T01:43:00.000Z	bastidrazor	lunie2ns-linux	no.. give me a bit and i'll have the line you need to insert to fstab
+2009-06-17T01:44:00.000Z	lunie2ns-linux	bastidrazor	ok thanks
+2009-06-17T01:47:00.000Z	bastidrazor	lunie2ns-linux	first gksudo gedit /etc/fstab  ..then at the bottom add this line :: UUID=C07404CB7404C5DE /media/disk ntfs-3g defaults,locale=en_US.utf8 0 0
+2009-06-17T01:51:00.000Z	lunie2ns-linux	bastidrazor	 last message was to u :p
+2009-06-17T01:51:00.000Z	bastidrazor	lunie2ns-linux	you can test it without rebooting.. unmount the drive now.. sudo umount /media/disk then type sudo mount -a  .. if it mounts all worked
+2009-06-17T01:53:00.000Z	lunie2ns-linux	bastidrazor	 fuse: failed to access mountpoint /media/disk: No such file or directory
+2009-06-17T01:53:00.000Z	bastidrazor	lunie2ns-linux	sudo mkdir /media/disk and then try sudo mount -a again
+2009-06-17T01:54:00.000Z	lunie2ns-linux	bastidrazor	 thanks, that seems to have done it
+2009-06-17T01:55:00.000Z	bastidrazor	lunie2ns-linux	no problem. enjoy :)
+2009-06-17T01:55:00.000Z	lunie2ns-linux	bastidrazor	 so it will boot like that now, correct? thanks
+2009-06-17T01:55:00.000Z	bastidrazor	lunie2ns-linux	yes on boot it will be mounted
+2009-06-17T01:55:00.000Z	lunie2ns-linux	bastidrazor	great

@@ -1,0 +1,21 @@
+2011-08-30T07:32:00.000Z	hetecro		I have a mac pro running Ubuntu, Lion, and Windows 7
+2011-08-30T07:33:00.000Z	hetecro		There are 5 partitions
+2011-08-30T07:33:00.000Z	hetecro		In order, 1.bootcamp, 2.hfs+, 3.ext3, 4. Ntfs, 5. Fat32
+2011-08-30T07:34:00.000Z	hetecro		I want to know if I can share files (or te entire user folder) between the three without using fat32 and it's poor performance/limits
+2011-08-30T07:35:00.000Z	theadmin	hetecro	If Mac is capable of reading NTFS, yeah
+2011-08-30T07:35:00.000Z	theadmin	hetecro	Ubuntu can read both HFS+ and NTFS
+2011-08-30T07:35:00.000Z	theadmin	hetecro	And it's also capable of writing to NTFS, idk about hfs+ though
+2011-08-30T07:37:00.000Z	theadmin	hetecro	No, because of UNIX permissions -- /home/* MUST be a UNIX-compatible filesystem
+2011-08-30T07:38:00.000Z	theadmin	hetecro	There are ext3 drivers for Windows out there I beleive
+2011-08-30T07:39:00.000Z	theadmin	hetecro	Again, UNIX file permissions. No.
+2011-08-30T07:40:00.000Z	theadmin	hetecro	You can install on ext2-4, maybe some other unix-compatible filesystem
+2011-08-30T07:41:00.000Z	theadmin	hetecro	OSX is BSD-based
+2011-08-30T07:48:00.000Z	theadmin	hetecro	Answer is you can't, just can't put your entire user directory on another filesystem. A part of the directory, sure
+2011-08-30T07:50:00.000Z	theadmin	hetecro	Just make them links, then
+2011-08-30T07:50:00.000Z	theadmin	hetecro	Create a link called "Documents" pointing to some documents folder on a FAT32 drive, and such
+2011-08-30T07:51:00.000Z	theadmin	hetecro	Then NTFS, or whatever.
+2011-08-30T07:51:00.000Z	theadmin	hetecro	Those documents, pictures, etc folders are unimportant -- you can even delete them
+2011-08-30T07:53:00.000Z	theadmin	hetecro	Yeah, well, it's just in their settings. If those folders are links, they'll point to the link location
+2011-08-30T07:54:00.000Z	theadmin	hetecro	No, sadly, NTFS write speed in Linux is currently horrible
+2011-08-30T07:56:00.000Z	theadmin	hetecro	An implementation is available here: https://launchpad.net/~relan/+archive/exfat -- note that it's currently BETA, however
+2011-08-30T08:20:00.000Z	theadmin	hetecro	If you'd try installing Linux on your brain you'd have much more trouble :P

@@ -1,0 +1,22 @@
+2009-06-03T08:54:00.000Z	jZed		any tips on troubleshooting grub error 25 disk read error ... can I rescue the disk and or the data?
+2009-06-03T08:55:00.000Z	losher	jZed	with a but of luck, you can do both. Start by booting the live cd
+2009-06-03T08:55:00.000Z	losher	jZed	is it running now?
+2009-06-03T08:57:00.000Z	losher	jZed	I don't understand. Just how many computers are you running, and which one has the boot problem, which one has the data?
+2009-06-03T08:58:00.000Z	losher	jZed	ok, standing by...
+2009-06-03T09:05:00.000Z	jZed	losher	TIA, live cd is now booted
+2009-06-03T09:07:00.000Z	losher	jZed	ok, open a terminal and type 'dmesg | egrep sd' and we'll see what hard drives the kernel has detected. Do you know about pastebin?
+2009-06-03T09:08:00.000Z	losher	jZed	nothing to it. Just open a browser window and go to  http://ubuntu.pastebin.com/
+2009-06-03T09:10:00.000Z	losher	jZed	redo it, using hd instead of sd
+2009-06-03T09:11:00.000Z	losher	jZed	what kind of hard drive is supposed to be in there?
+2009-06-03T09:12:00.000Z	losher	jZed	well there's no sign of it in the kernel. Did you touch any of the cabling?
+2009-06-03T09:14:00.000Z	losher	jZed	ok, well if i had to guess, I'd say your hard drive has just failed. Wanna paste all the dmesg into pastebin for completeness?
+2009-06-03T09:16:00.000Z	losher	jZed	it's not unheard of for a disk to fail at 3 months, though it is bad luck. Paste your dmesg...
+2009-06-03T09:19:00.000Z	losher	jZed	still there, or given up?
+2009-06-03T09:21:00.000Z	jZed	losher	pasted my dmesg, it seets SATA1 I guess
+2009-06-03T09:21:00.000Z	losher	jZed	what's the url?
+2009-06-03T09:23:00.000Z	jZed	losher	http://ubuntu.pastebin.com/d3527ba39
+2009-06-03T09:27:00.000Z	losher	jZed	Sorry, bad news; this line "ata1.00: failed to IDENTIFY (I/O error, err_mask=0x1)" if fatal I believe.
+2009-06-03T09:28:00.000Z	jZed	losher	; so can't get the data?
+2009-06-03T09:30:00.000Z	losher	jZed	at this point, you have nothing to lose by moving the disk to a different sata port and then a different machine (if you have one). It's just possible the disk is actually ok and its your motherboard or SATA controller that's broken. But Murphy's law says it's the disk. The other thing you might try is downloading the manufacturers diagnostic disk and see if that gives you any joy...
+2009-06-03T09:32:00.000Z	losher	jZed	that's exactly what I'd do. If you can mount it, you can get the data off...
+2009-06-03T09:33:00.000Z	losher	jZed	you were just unlucky, though if I'd seen DRDY errors, I'd have started a backuo right then and there. With modern drives, the first error you see is cause for worry....

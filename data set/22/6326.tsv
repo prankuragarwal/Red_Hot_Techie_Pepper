@@ -1,0 +1,22 @@
+2006-11-18T13:51:00.000Z	RAOF	hipitihop	Services can be started/stopped with "sudo /etc/init.d/servicename {stop, start, restart}"
+2006-11-18T13:54:00.000Z	hipitihop	RAOF	yes after searching around on google I found that out, however when I try this with nfs or nfslock I get an error "ubknown command"
+2006-11-18T13:56:00.000Z	hipitihop	RAOF	so are these services known under another name in Ubuntu or what am I doing wrong ?
+2006-11-18T13:56:00.000Z	RAOF	hipitihop	I suppose that you actually have nfs *installed*?  It doesn't seem to be by default.
+2006-11-18T13:57:00.000Z	hipitihop	RAOF	I'll verify that, but I had setup my /etc/exports to include /home and I can mount it from another machine at home so I was assuming that all happened via NFS..anyway checking standby...
+2006-11-18T14:00:00.000Z	RAOF	hipitihop	So, I've just installed the nfs stuff, and it seems that what you're after would be either /etc/init.d/nfs-common or ../nfs-kernel-server
+2006-11-18T14:03:00.000Z	hipitihop	RAOF	just check and both nfs-common and nfs-kernel-server are already installed
+2006-11-18T14:04:00.000Z	RAOF	hipitihop	Um... so what was the problem again?  You should be able to start/stop/restart NFS with "sudo /etc/init.d/nfs-kernel-server {start,stop,restart}"
+2006-11-18T14:06:00.000Z	hipitihop	RAOF	ok I tried '/etc/init.d/nfs-kernel-server start' and seems to work.
+2006-11-18T14:06:00.000Z	hipitihop	RAOF	doe you then happen to know what the nfslock service equivalent is also ?
+2006-11-18T14:07:00.000Z	RAOF	hipitihop	I don't know what nfslock *is*.
+2006-11-18T14:07:00.000Z	RAOF	hipitihop	Presumably, it's something about lockfiles on NFS, but I've got nothing, sorry :)
+2006-11-18T14:09:00.000Z	hipitihop	RAOF	very confusing. I'm trying to follow this http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch30_:_Configuring_NIS#Table_30-2_NIS_Master_.2F_Slave_.2Fetc.2Fhosts_Files
+2006-11-18T14:10:00.000Z	hipitihop	RAOF	in short I'm trying to setup NIS on Ubuntu so that I can manage logins on one machine and also have all users on all machines host their /home on one NFS server
+2006-11-18T14:14:00.000Z	RAOF	hipitihop	Aha!  "aptitude show nfs-common" says that it includes lockd, which is probably what you're after.
+2006-11-18T14:14:00.000Z	RAOF	hipitihop	So, I'd suggest that nfs-common does everything that the nfslock service would do, and more.
+2006-11-18T14:17:00.000Z	hipitihop	RAOF	you have been most helpful. Are you saying I should be starting the nfs-common instead of nfs-kernal=server ?
+2006-11-18T14:17:00.000Z	RAOF	hipitihop	I think you should be starting *both*.  nfs-kernel-server is the nfs server, and nfs-common seems to start a bunch of related services, like lockd, nfsstat, etc.
+2006-11-18T14:18:00.000Z	RAOF	hipitihop	Also, I thought these services would be on by default if you installed them.  Aren't they?
+2006-11-18T14:19:00.000Z	hipitihop	RAOF	I did not install them, just trying to follow those instructions I gave you the link to...but I see and I also guess that clients probably only need the common
+2006-11-18T14:21:00.000Z	hipitihop	RAOF	although the client instruction on that link mention another one 'netfs' ...anyway I think I'm on the right track. Many thanks...going to go and eat some dinner now.
+2006-11-18T14:21:00.000Z	RAOF	hipitihop	good luck :)

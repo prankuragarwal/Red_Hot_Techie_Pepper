@@ -1,0 +1,24 @@
+2007-01-03T12:50:00.000Z	Bepo		hey guys I have a little problem here: originally had ubuntu installed and decided to create a partition for windows. SO i resized my Ubuntu hard drive with the live cd and proceeded with installing Windows, but it looks like it got rid of the Grub. SO I cannot run Ubuntu now, it only loads WINdows. How do I fix this?
+2007-01-03T12:52:00.000Z	FunnyMan3595	Bepo	Have you tried booting off a live CD?
+2007-01-03T12:52:00.000Z	FunnyMan3595	Bepo	If you can see the linux partition from a live CD, there's hope.  If not, Windows probably ate it.  :(
+2007-01-03T12:53:00.000Z	Bepo	FunnyMan3595	ah ok... if it did see it what do I do?
+2007-01-03T12:54:00.000Z	FunnyMan3595	Bepo	In that case, you'll need to find a way to force a grub reinstall.  If you've got inet access from the livecd, sudo apt-get install --reinstall grub    should work
+2007-01-03T12:57:00.000Z	FunnyMan3595	Bepo	No guarantees, but theoretically, that should force the livecd to fix your boot system.  Can't say for sure, but the worst I'd predict would be a no-op.
+2007-01-03T14:00:00.000Z	FunnyMan3595	Bepo	I can hand you the usual magic formula for launching windows, it might work.
+2007-01-03T14:01:00.000Z	FunnyMan3595	Bepo	Certainly.
+2007-01-03T14:01:00.000Z	FunnyMan3595	Bepo	Take care, though, it's possible to screw things up if you edit the file wrong.
+2007-01-03T14:01:00.000Z	Bepo	FunnyMan3595	please please help :(
+2007-01-03T14:01:00.000Z	Bepo	FunnyMan3595	what was your solution?
+2007-01-03T14:02:00.000Z	FunnyMan3595	Bepo	Okay, step one is to figure out what /dev/hdX the windows partition is.
+2007-01-03T14:03:00.000Z	Bepo	FunnyMan3595	and how do I do that?
+2007-01-03T14:04:00.000Z	FunnyMan3595	Bepo	*nods*
+2007-01-03T14:05:00.000Z	FunnyMan3595	Bepo	Was about to direct you there, but that is... hiding in edgy.  O.o
+2007-01-03T14:05:00.000Z	FunnyMan3595	Bepo	For me, at least.  *glowers*
+2007-01-03T14:06:00.000Z	FunnyMan3595	Bepo	Okay, the one I've got is /dev/hda2, which maps to (hd0,1).  Assuming I understand the naming convention, that should make yours (sd0,1)
+2007-01-03T14:07:00.000Z	FunnyMan3595	Bepo	You can change the comment too, for clarity.  :)
+2007-01-03T14:09:00.000Z	FunnyMan3595	Bepo	http://paste.ubuntu-nl.org/320/
+2007-01-03T14:09:00.000Z	FunnyMan3595	Bepo	Had to go put it up.  :)
+2007-01-03T14:09:00.000Z	FunnyMan3595	Bepo	The real "magic words" there are the root and chainloader line.  Root says "Use this file system", chainloader says, "And let it boot itself!"
+2007-01-03T14:12:00.000Z	FunnyMan3595	Bepo	Yup!
+2007-01-03T14:13:00.000Z	FunnyMan3595	Bepo	Good luck!
+2007-01-03T14:14:00.000Z	FunnyMan3595	Bepo	*smiles*  You're welcome, glad I could help.

@@ -1,0 +1,22 @@
+2006-01-14T16:49:00.000Z	serengeti		hello, i'm trying to set up irda on my thinkpad t42. I've found some instructions here: http://thinkwiki.org/wiki/Irda
+2006-01-14T16:50:00.000Z	serengeti		but the problem is that they want me to add some lines to /etc/modprobe.conf
+2006-01-14T16:50:00.000Z	serengeti		and there's no such file in my Breezy
+2006-01-14T16:51:00.000Z	mika0800	serengeti	good luck! I have the same issue. Thank god this is a business PC.... so we'll just hire commercial consultant to configure that.... (using external USB-IrDA Actisys IR-4000U)
+2006-01-14T16:57:00.000Z	serengeti	mika0800	that would surely be nice
+2006-01-14T17:05:00.000Z	mika0800	serengeti	did you really get your IrDA working ?
+2006-01-14T17:07:00.000Z	serengeti	mika0800	I got it to display SIEMENS ME45 in irdadump so I guess I got it working :)
+2006-01-14T17:07:00.000Z	mika0800	serengeti	do you have any program which is capable of talking to either a serial port or IrDA -port ?
+2006-01-14T17:08:00.000Z	serengeti	mika0800	not yet - I want to use the GPRS modem through irda
+2006-01-14T17:08:00.000Z	serengeti	mika0800	one moment
+2006-01-14T17:11:00.000Z	serengeti	mika0800	everything I did was adding these (http://paste.getlinuxhelp.org/1886) lines to /etc/modules
+2006-01-14T17:11:00.000Z	serengeti	mika0800	rebooting and then MAKEDEV -d irda MAKEDEV irda
+2006-01-14T17:13:00.000Z	mika0800	serengeti	btw: I made a serial port / Ir-port client app myself.
+2006-01-14T17:17:00.000Z	serengeti	mika0800	I don't yet have any serial port client app yet but echo "AT <Cr>" > /dev/ircomm0 causes some activity in irdadump
+2006-01-14T17:19:00.000Z	mika0800	serengeti	if you use echo, maybe you should use /r to make <Cr> ... which means carriage return (ascii 13 decimal or 0x0D for C programmers)
+2006-01-14T17:49:00.000Z	serengeti	mika0800	I got gnome-ppp to talk to the modem in my Siemens
+2006-01-14T17:52:00.000Z	serengeti	mika0800	should make a ppp connection
+2006-01-14T17:53:00.000Z	serengeti	mika0800	yes but I'm not sure how to tell if something happened :)
+2006-01-14T17:54:00.000Z	serengeti	mika0800	I did echo -e "ATDT0800123456;\r" > /dev/ircomm
+2006-01-14T17:57:00.000Z	serengeti	mika0800	it's not calling anywhere
+2006-01-14T17:59:00.000Z	serengeti	mika0800	only thing that happens is some stuff appearing in irdadump
+2006-01-14T06:27:00.000Z	serengeti	mika0800	i've to go now, if I find out something new I'll share :)

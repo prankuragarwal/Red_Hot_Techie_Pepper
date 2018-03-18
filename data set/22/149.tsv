@@ -1,0 +1,22 @@
+2012-05-20T18:51:00.000Z	maddinw		Hello again.
+2012-05-20T18:52:00.000Z	maddinw		Unfortunately my attempt did not work quite well...
+2012-05-20T18:53:00.000Z	maddinw		sudo su maddinw -c ssh -D 8000 -fN maddinw@ssh.silenceisdefeat.com
+2012-05-20T18:55:00.000Z	maddinw		Does anyone know what I am doing wrong?
+2012-05-20T18:56:00.000Z	flowerpot	maddinw	what are you trying to do?
+2012-05-20T18:56:00.000Z	maddinw	flowerpot	I am trying to get my SSH-Tunnel working at startup
+2012-05-20T18:58:00.000Z	maddinw	flowerpot	so I edited /etc/init.d/rc.local
+2012-05-20T18:58:00.000Z	flowerpot	maddinw	what's up with the first "udo su" in your line?
+2012-05-20T18:58:00.000Z	flowerpot	maddinw	could you upload your rc.local and share it if it doesn't contain any sensitive information?
+2012-05-20T18:58:00.000Z	maddinw	flowerpot	bash didnt catch that anymore...it does not. I can upload it to pastebin.
+2012-05-20T19:01:00.000Z	maddinw	flowerpot	http://pastebin.com/7r0TbwHM
+2012-05-20T19:04:00.000Z	maddinw	flowerpot	and idea what I should try out?
+2012-05-20T19:06:00.000Z	flowerpot	maddinw	I don't know if the sudo command will work, but I suggest you put this in your ~/.bashrc or ~.bash_profile files instead
+2012-05-20T19:07:00.000Z	maddinw	flowerpot	alright...I will reboot, try it out and give you feedback. Thank you so far.
+2012-05-20T19:10:00.000Z	flowerpot	maddinw	if you put the script in your ~/.bashrc or ~/.bash_profile it won't start the tunnel until you log in...  if you're cool with root or whatever process init runs as owning the tunnel, then just remove the sudo su stuff and try again.  Also, FYI, sudo su isn't necessary; sudo can run commands as another user.
+2012-05-20T19:11:00.000Z	maddinw	flowerpot	I will try it now without the sudo su stuff.
+2012-05-20T19:28:00.000Z	flowerpot	maddinw	pleasure to be of help
+2012-05-20T20:00:00.000Z	maddinw	flowerpot	maybe you remember me ;)
+2012-05-20T20:10:00.000Z	flowerpot	maddinw	yes
+2012-05-20T20:22:00.000Z	flowerpot	maddinw	you can also use netstat to check what processes are using what tcp ports (over ipv4) with: netstat -4tap
+2012-05-20T20:23:00.000Z	maddinw	flowerpot	thank you...this will be helpful.
+2012-05-20T20:30:00.000Z	flowerpot	maddinw	if you're running netstat to check for a tcp connection from localhost:someport to remotehost:8000, then you don't need to include -a in netstat

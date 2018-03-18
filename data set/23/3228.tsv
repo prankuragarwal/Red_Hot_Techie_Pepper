@@ -1,0 +1,23 @@
+2008-06-14T01:13:00.000Z	coopster		(I'm correct in that ntfs-3g write support is somewhat beta still, right?)
+2008-06-14T01:14:00.000Z	rampageoberon	coopster	no its been stable since feb 2007
+2008-06-14T01:14:00.000Z	rampageoberon	coopster	according to ntfs-3g website anyway
+2008-06-14T01:18:00.000Z	coopster	rampageoberon	chill the speed on the repeat a bit, pls.  How are you running the apps (ssh, etc) ?
+2008-06-14T01:18:00.000Z	rampageoberon	coopster	no on my desktop from terminal (no ssh involved)
+2008-06-14T01:19:00.000Z	coopster	rampageoberon	so you're using su or something to log in as another user in the terminal, then running the apps from the command line?
+2008-06-14T01:19:00.000Z	rampageoberon	coopster	yes
+2008-06-14T01:20:00.000Z	coopster	rampageoberon	Are the apps starting, showing a window, and later dying or just never showing a display?
+2008-06-14T01:21:00.000Z	rampageoberon	coopster	nope not showing any display, just die with segmentation fault
+2008-06-14T01:22:00.000Z	coopster	rampageoberon	try running `xhost +[user you run apps as]` from a terminal that is the user you're logged into X as.  (NOT recommended if this is a production/server machine, as I've heard xhost is not the most secure way to grant access, but I think it would be fine here)
+2008-06-14T01:22:00.000Z	rampageoberon	coopster	already done that, like i said the application runs with no blank media in the drive, i've onlu noticed it cause trouble when i insert a blank cd/dvd
+2008-06-14T01:24:00.000Z	coopster	rampageoberon	workaround: don't put blank media in drive.  :-p   Hrmm, that's very odd.  You're not running a full gnome session as the other user or anything like that are you?
+2008-06-14T01:24:00.000Z	rampageoberon	coopster	nope, just the one gnome session and other user using only one gui application
+2008-06-14T01:25:00.000Z	rampageoberon	coopster	only reason i'm running the application as another user is for firewall purposes so I can filter connections by uid
+2008-06-14T01:26:00.000Z	coopster	rampageoberon	I'd check dmesg for a possible error message.  You could always run the app through ssh, which would probably fix the problem
+2008-06-14T01:26:00.000Z	rampageoberon	coopster	please explain what you mean by through ssh?
+2008-06-14T01:27:00.000Z	coopster	rampageoberon	log into your machine by doing "ssh -Y user@localhost" and run the application from that terminal
+2008-06-14T01:27:00.000Z	rampageoberon	coopster	ah okay, i'll try that
+2008-06-14T01:27:00.000Z	coopster	rampageoberon	the only problem would be if the performance of the GUI goes all to crap, but it's worth a shot.
+2008-06-14T01:28:00.000Z	rampageoberon	coopster	yeah not the biggest fan of x11 forwarding
+2008-06-14T01:29:00.000Z	rampageoberon	coopster	i would hope there is something to fix it permanently
+2008-06-14T01:30:00.000Z	coopster	rampageoberon	my guess would be something related to ubuntu trying to pop up a window asking if you'd like to make a CD, but it is odd.
+2008-06-14T01:31:00.000Z	rampageoberon	coopster	i tried disabling the default actions on detecting any media, but that didn't help too

@@ -1,0 +1,23 @@
+2007-04-22T07:26:00.000Z	assasukasse		someone uses readahead?
+2007-04-22T07:26:00.000Z	assasukasse		is useful?
+2007-04-22T07:26:00.000Z	LjL	assasukasse	readahead is used by default
+2007-04-22T07:27:00.000Z	assasukasse	LjL	i wish to know how it goes if u disable by default
+2007-04-22T07:27:00.000Z	assasukasse	LjL	because i also have prelink installed, but seems that i don't have that much speed change..
+2007-04-22T07:27:00.000Z	LjL	assasukasse	never tried disabling it, but i'm quite 100% sure that things just go slower, and no advantages
+2007-04-22T07:27:00.000Z	assasukasse	LjL	u have prelink also?
+2007-04-22T07:27:00.000Z	LjL	assasukasse	readahead only intervenes during boot, nothing else
+2007-04-22T07:27:00.000Z	LjL	assasukasse	no, i have preload though
+2007-04-22T07:28:00.000Z	assasukasse	LjL	on feisty?
+2007-04-22T07:28:00.000Z	LjL	assasukasse	yes, though i brought it with me from edgy
+2007-04-22T07:29:00.000Z	assasukasse	LjL	oh yea i have it installed, i forgot about it :D
+2007-04-22T07:29:00.000Z	LjL	assasukasse	if your installation has gone though a few upgrade, you might want to try re-generating the readahead list, by putting the "profile" option temporarily in the kernel parameters (can do that at GRUB menu)
+2007-04-22T07:30:00.000Z	assasukasse	LjL	i did install beta 4 and upgraded from then
+2007-04-22T07:30:00.000Z	LjL	assasukasse	i really doubt that readahead has much to do with the poor performance increase from prelink. you know, prelink and preload are the kind of things that some people swear on, and other people say they didn't notice any difference
+2007-04-22T07:30:00.000Z	LjL	assasukasse	in that case, a profile won't hurt - though, don't expect *huge* boot-time improvements
+2007-04-22T07:30:00.000Z	assasukasse	LjL	so i should just add option profile on grub menu.lst?
+2007-04-22T07:31:00.000Z	LjL	assasukasse	no need to add it to menu.lst. just reboot, and at the GRUB menu, select your kernel, hit "e", select the kernel line, hit "e" again, add "profile" (after "nosplash quiet"), and hit "b" to boot
+2007-04-22T07:31:00.000Z	LjL	assasukasse	boot will be a lot slower than usual, since readahead will kick in and profile accessed files. then subsequent boots should be faster
+2007-04-22T07:39:00.000Z	assasukasse	LjL	seems more responsive..
+2007-04-22T07:40:00.000Z	LjL	assasukasse	uhm, responsive? again, readahead can *only* improve the time your system takes to boot. it does nothing else. after your system is up and running, readahead isn't there anymore at all
+2007-04-22T07:41:00.000Z	assasukasse	LjL	yes i mean faster in booting
+2007-04-22T07:41:00.000Z	LjL	assasukasse	oh, ok. remember you can also judge more objectively (and find out which things specifically are slow at boot) if you install the "bootchart" packages

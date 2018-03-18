@@ -1,0 +1,23 @@
+2008-05-16T18:06:00.000Z	cq		i have apache2 and php installed, but it doesn't work when I point the browser to localhost/drupal/index.php ... what module am I missing?
+2008-05-16T18:06:00.000Z	cq		apache is working fine otherwise
+2008-05-16T18:07:00.000Z	fugitivo	cq	is /drupal/index.php inside your wwwroot?
+2008-05-16T18:07:00.000Z	fugitivo	cq	and what error you get?
+2008-05-16T18:08:00.000Z	fugitivo	cq	then your php5 installation is broken
+2008-05-16T18:08:00.000Z	fugitivo	cq	or apache doesnt know how to handle php files
+2008-05-16T18:10:00.000Z	fugitivo	cq	check your apache config, it should have a line for php handling
+2008-05-16T18:11:00.000Z	fugitivo	cq	ls -la /etc/apache2/mods-enabled/php5*
+2008-05-16T18:12:00.000Z	cq	fugitivo	 yes
+2008-05-16T18:12:00.000Z	fugitivo	cq	cat /etc/apache2/mods-enabled/php5.conf (pastebin)
+2008-05-16T18:12:00.000Z	fugitivo	cq	cat /etc/apache2/mods-enabled/php5.load (pastebin)
+2008-05-16T18:14:00.000Z	fugitivo	cq	sudo /etc/init.d/apache2 restart
+2008-05-16T18:14:00.000Z	cq	fugitivo	already didd that a few times
+2008-05-16T18:14:00.000Z	fugitivo	cq	whos the owner of the php file?
+2008-05-16T18:15:00.000Z	fugitivo	cq	chown to www-data or whatever user runs apache
+2008-05-16T18:17:00.000Z	cq	fugitivo	still no luck, weird, same install worked yesterday...
+2008-05-16T18:18:00.000Z	cq	fugitivo	should something be in /etc/apache2/apache2.conf?
+2008-05-16T18:19:00.000Z	cq	fugitivo	no not empty, but no mention of php5
+2008-05-16T18:20:00.000Z	fugitivo	cq	it's ok
+2008-05-16T18:23:00.000Z	cq	fugitivo	I jsut rebooted, no change, apache refuses to parse the php5
+2008-05-16T18:23:00.000Z	cq	fugitivo	apache2ctl -M lists php5_module as well
+2008-05-16T18:29:00.000Z	cq	fugitivo	WTF? it works from another machine
+2008-05-16T18:34:00.000Z	cq	fugitivo	it's a firefox problem, with konqueror it works.

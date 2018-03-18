@@ -1,0 +1,24 @@
+2010-10-23T13:23:00.000Z	anygivenname		is there an app that would manage to have my PC connected to network before system log-in password has been entered ?
+2010-10-23T13:23:00.000Z	llutz_	anygivenname	/etc/network/interfaces (ifupdown)
+2010-10-23T13:27:00.000Z	anygivenname	llutz_	what does /etc/network/interfaces do ?
+2010-10-23T13:27:00.000Z	llutz_	anygivenname	configuring your network in an old fashion manner
+2010-10-23T13:28:00.000Z	llutz_	anygivenname	easy and far away from any userspace-tools like nm
+2010-10-25T13:00:00.000Z	llutz_	anygivenname	(r)syslogd up and running?
+2010-10-25T13:08:00.000Z	llutz_	anygivenname	dpkg -l *syslog* | grep ^ii       should tell you what's installed
+2010-10-25T13:10:00.000Z	llutz_	anygivenname	so, rsyslogd up and running? "pgrep rsyslogd"
+2010-10-25T13:10:00.000Z	llutz_	anygivenname	if its running, check /etc/rsyslogd.conf and confs in /etc/rsyslogd.d/*   if something redirects AUTH
+2010-10-25T13:12:00.000Z	llutz_	anygivenname	581 is the pid of the running rsyslogd
+2010-10-25T13:12:00.000Z	llutz_	anygivenname	so its running. that command would have given nothing back, if it was not running
+2010-10-25T13:25:00.000Z	llutz_	anygivenname	set  " LogLevel "verbose" "  in /etc/ssh/sshd_config and recheck /var/log/auth.log then
+2010-10-25T13:25:00.000Z	llutz_	anygivenname	restart ssh after changing conifg
+2010-10-25T13:28:00.000Z	llutz_	anygivenname	auth/authpriv are facilities not loglevel
+2010-10-25T13:30:00.000Z	llutz_	anygivenname	yes
+2010-10-25T13:31:00.000Z	llutz_	anygivenname	but sorry, no idea what causes sshd not to log logins. your configs seem correct to me
+2010-10-25T13:34:00.000Z	llutz_	anygivenname	sudo service ssh restart
+2010-10-25T13:35:00.000Z	llutz_	anygivenname	grrr upstart.....  sudo /etc/init.d/ssh restart
+2010-10-25T13:42:00.000Z	llutz_	anygivenname	nope, just a cron-run
+2010-10-25T13:48:00.000Z	llutz_	anygivenname	no idea, i don't use fail2ban but guess it just reads logfiles and shouldn't conflict
+2010-10-25T13:50:00.000Z	llutz_	anygivenname	that's no reason for rsyslogd not to log logins at all
+2010-10-25T13:52:00.000Z	llutz_	anygivenname	you should find things like this if all was correct: Oct 12 18:28:47 mooo sshd[3516]: Accepted publickey for llutz from 192.168.1.xxx port 34022 ssh2
+2010-10-25T13:54:00.000Z	llutz_	anygivenname	yes, but theres no difference if i login from remote
+2010-10-25T14:29:00.000Z	llutz_	anygivenname	as i said, i don't use fail2ban, just know what it was made for

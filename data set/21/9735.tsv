@@ -1,0 +1,21 @@
+2006-10-12T15:25:00.000Z	nn		How can i delete changes i made to the default gdm greeter? It now explodes with a "Greeter keeps crashing" message and i just want to go back to dapper's default without it exploding :(
+2006-10-12T15:25:00.000Z	nn		No ideas? :/
+2006-10-12T15:26:00.000Z	kmaynard	nn	what did you do?
+2006-10-12T15:26:00.000Z	nn	kmaynard	switched themes from the preferences in gnome
+2006-10-12T15:26:00.000Z	nn	kmaynard	after which it no longer works, giving a Greeter Keeps Crashing error and falling back to the default greeter, ironically the one it falls back to looks just like what i had selected and tried to go back to...\
+2006-10-12T15:27:00.000Z	kmaynard	nn	does it let you login then?
+2006-10-12T15:28:00.000Z	kmaynard	nn	check /var/log/Xorg.0.log for errors
+2006-10-12T15:29:00.000Z	nn	kmaynard	sadly nothing, x is working ok, it's a gdm thing
+2006-10-12T15:29:00.000Z	nn		maybe uninstall gdm and reinstall?
+2006-10-12T15:31:00.000Z	kmaynard	nn	if it lets you login, can you switch back to the original screen?
+2006-10-12T15:31:00.000Z	kmaynard		and yes, i would try a reintsall
+2006-10-12T15:31:00.000Z	kmaynard		of gdm
+2006-10-12T15:31:00.000Z	nn	kmaynard	I can login, what happens is the default greeter crashes several times, so it uses a fallback
+2006-10-12T15:31:00.000Z	nn		hold one
+2006-10-12T15:32:00.000Z	kmaynard		sounds like a video driver
+2006-10-12T15:32:00.000Z	nn	kmaynard	is the greeter app part of gdm or?
+2006-10-12T15:32:00.000Z	kmaynard		yes, its gdm
+2006-10-12T15:34:00.000Z	nn		/etc/gdm/gdm.conf-custom has [daemon]  Greeter=/usr/lib/gdm/gdmlogin
+2006-10-12T15:35:00.000Z	nn		whats that properly?
+2006-10-12T15:35:00.000Z	kmaynard		!ask
+2006-10-12T15:41:00.000Z	nn	kmaynard	had to cp the /etc/gdm to ~, del /etc/gdm, reinstall package, cp the gdm.conf and Xkeepscrashing and Xsession files back to /etc/gdm but it works, cheers!

@@ -1,0 +1,24 @@
+2006-06-30T14:00:00.000Z	tct		hi I just installed ubuntu on another computer but the network isnt working
+2006-06-30T14:01:00.000Z	tct		I tried everything I know but cant get it to work
+2006-06-30T14:02:00.000Z	tct		anyone?
+2006-06-30T14:04:00.000Z	tct		so I have a computer without a working network connection that wont even respond to ping what do I do?
+2006-06-30T14:05:00.000Z	tct		...
+2006-06-30T14:07:00.000Z	tct		I installed ubuntu on my windows xp box which words perfectly fine in a second partition, Now I cant access the network ... the computer does not even respond to ping now. Can someone help me here?
+2006-06-30T14:08:00.000Z	SVisor	tct	You do not give much to go on. Do your system have two (or more) network cards?
+2006-06-30T14:09:00.000Z	tct	SVisor	: It has 2 network cards one is onboard but disabled in the bios and the other is in  pci card
+2006-06-30T14:10:00.000Z	SVisor	tct	in a CLI try "dmesg | fgrep eth0" should show if Ubuntu sees the HW
+2006-06-30T14:11:00.000Z	tct	SVisor	Pharaoh_Atem> ok I have to run back over to that pc to try it
+2006-06-30T14:14:00.000Z	tct	SVisor	Pharaoh_Atem: I am not familar with the name it gave me, but it dint have the cnet pro name in it
+2006-06-30T14:15:00.000Z	SVisor	tct	 How do you give IP to your system? (DHCP?)
+2006-06-30T14:16:00.000Z	SVisor	tct	The quick and ugly test would be to switch the cable to the other card and try again.
+2006-06-30T14:21:00.000Z	tct	SVisor	the onboard one isnt working ... the light on the switch didnt even come on
+2006-06-30T14:24:00.000Z	tct	SVisor	any idea what to do next here?
+2006-06-30T14:25:00.000Z	SVisor	tct	The other card is turned of then. Well try: "dmesg | fgrep -i eth". Should show if your system is seing any eth card. No idea, not realy.
+2006-06-30T14:26:00.000Z	SVisor	tct	Thanks for nothing more likely. :-( Well your best shot would be to see if Ubuntu sees any NICs. And start from there.
+2006-06-30T14:27:00.000Z	SVisor	tct	Does it get eth0 or eth1 as its name.
+2006-06-30T14:28:00.000Z	SVisor	tct	What does "cat /etc/network/interfaces" tell you
+2006-06-30T14:43:00.000Z	tct	SVisor	I just enabled the onboard nic ... the light on the switch comes on now. "cat /etc/network/interfaces" tells me all but eth0 are dhcp while eth0 is static, address 192.168.254.1, subnet mask 255.255.255.0, gateway 192.168.254.254 (which is the ip of my router)
+2006-06-30T14:45:00.000Z	SVisor	tct	Can you ping from the machine, your router as an example. Yeah I agree. dmesg should give you a hint on which cards are alive and which not.
+2006-06-30T14:50:00.000Z	SVisor	tct	Then its truly dead. Can the system ping itself on the 192... address? You could always conf eth0 on one address, and then eth1 on another and try em out. But now Im grasping. Truly dont have a clue anymore.
+2006-06-30T15:00:00.000Z	SVisor	tct	To setup a network: 1) Check link (the green led on card and router/switch - HW ok) 2) System can "ping 127.0.0.1" (Kernel agrees, we have network). 3) "ifconfig" to verify cards and setup (I changed config. and the kernel accepted it) 4) Ping system on its real address (routs are more or less right). 5) "route -n" to verify that default route is sane (we might have access to the big word). 6) ping default gateway (route actually work
+2006-06-30T15:03:00.000Z	SVisor	tct	Obviously you have to manually verify output from "ifconfig" and "route". But should be fairly easy to understand their output.

@@ -1,0 +1,24 @@
+2007-12-30T17:03:00.000Z	Areli1		Apperantly i got disconnected. Can I ask my question again?:
+2007-12-30T17:03:00.000Z	Areli1		Hi all. apt-get is behaving very weirdly. I tried installing thunar, then got this message: "dpkg: parse error, in file `/var/lib/dpkg/status' near line 7720 package `libebook1.2-9': missing version". Since then, apt-get doesn't work anymore.
+2007-12-30T17:03:00.000Z	scguy318	Areli1	sure
+2007-12-30T17:06:00.000Z	scguy318	Areli1	did you get what i wrote? :)
+2007-12-30T17:06:00.000Z	Areli1	scguy318	no..
+2007-12-30T17:07:00.000Z	scguy318	Areli1	looks like for some reason your /var/lib/dpkg/status has experienced corruption, can you pastebin it? (big file tho)
+2007-12-30T17:07:00.000Z	Areli1	scguy318	okay.
+2007-12-30T17:08:00.000Z	Areli1	scguy318	http://paste.ubuntu-nl.org/50094/
+2007-12-30T17:09:00.000Z	Areli1	scguy318	is it safe to delete that file?
+2007-12-30T17:09:00.000Z	scguy318	Areli1	don't delete it!
+2007-12-30T17:09:00.000Z	scguy318	Areli1	it happens to be how APT keeps track of all your packages :)
+2007-12-30T17:09:00.000Z	scguy318	Areli1	could you kindly restate the error you said?
+2007-12-30T17:10:00.000Z	Areli1	scguy318	dpkg: parse error, in file `/var/lib/dpkg/status' near line 7720 package `libebook1.2-9': missing version
+2007-12-30T17:12:00.000Z	Areli1	scguy318	wow you're helping lots of people at once
+2007-12-30T17:12:00.000Z	Areli1	scguy318	dpkg: parse error, in file `/var/lib/dpkg/status' near line 7720 package `libebook1.2-9': missing version
+2007-12-30T17:13:00.000Z	scguy318	Areli1	easy fix :)
+2007-12-30T17:13:00.000Z	scguy318	Areli1	were you messing with this file by any chance? :P
+2007-12-30T17:13:00.000Z	Areli1	scguy318	nope. I haven't touched the file.
+2007-12-30T17:13:00.000Z	scguy318	Areli1	gksudo gedit /var/lib/dpkg/status
+2007-12-30T17:13:00.000Z	scguy318	Areli1	jump to line 7712, change "Versmon" to "Version"
+2007-12-30T17:13:00.000Z	scguy318	Areli1	then save
+2007-12-30T17:14:00.000Z	Areli1	scguy318	Thank you! Alright, can somebody notify the package managers of this little breakage? I didn't edit the file, i just used apt-get.
+2007-12-30T17:14:00.000Z	Areli1	scguy318	(it got fixed :D)
+2007-12-30T17:16:00.000Z	scguy318	Areli1	yay, and it might be something disk-related

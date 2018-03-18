@@ -1,0 +1,21 @@
+2006-03-02T13:46:00.000Z	hanasaki		i just plugged in a usb drive.. how can i find what dev it is one
+2006-03-02T13:46:00.000Z	hanasaki		on
+2006-03-02T13:46:00.000Z	jb1	hanasaki	" sudo lsusb" should do it.
+2006-03-02T13:51:00.000Z	jb1	hanasaki	ah, sorry.  I would try "mount -l"
+2006-03-02T13:51:00.000Z	jb1	hanasaki	that's a small L
+2006-03-02T13:54:00.000Z	jb1	hanasaki	I believe USB stuff gets assigned to the scsi bus by the system so it will show up as sda, sdb, etc.
+2006-03-02T13:55:00.000Z	jb1	hanasaki	or you could do "cat proc/scsi/scsi"
+2006-03-02T13:56:00.000Z	jb1	hanasaki	oops...forgot a leading slash. that's "cat /proc/scsi/scsi"
+2006-03-02T13:58:00.000Z	jb1	hanasaki	please describe what you are trying to do and what kind of device it is.
+2006-03-02T14:00:00.000Z	hanasaki	jb1	i have http://www.newegg.com/Product/Product.asp?Item=N82E16817146057
+2006-03-02T14:01:00.000Z	hanasaki	jb1	i want to partition it w/ cfdisk or a better util if i have one.. and then format it
+2006-03-02T14:01:00.000Z	hanasaki	jb1	it is using the usb2 interface aTM
+2006-03-02T14:03:00.000Z	jb1	hanasaki	OK, an external SATA drive.  If it is USB, it should be automounted by hotplug and assigned a device name by udev.
+2006-03-02T14:04:00.000Z	hanasaki	jb1	 it is a sata2 drive in the enclosure and connected to the pc w/ the usb interface
+2006-03-02T14:05:00.000Z	jb1	hanasaki	i really think that "mount -l" should give you the device name if it is mounted.
+2006-03-02T14:06:00.000Z	jb1	hanasaki	lol...duh.  Did you try "fdisk -l"?
+2006-03-02T14:08:00.000Z	jb1	hanasaki	np. it should have worked!!!
+2006-03-02T14:09:00.000Z	jb1	hanasaki	i mean it should have modprobed the scsi driver automatically when it detected it.
+2006-03-02T14:10:00.000Z	jb1	hanasaki	ok. you should be fine.
+2006-03-02T14:11:00.000Z	jb1	hanasaki	i'm afraid i don't have any experience with reiser so i can't comment. i just stick with ext3.
+2006-03-02T14:12:00.000Z	jb1	hanasaki	i'm off to bed now. glad you got things going. later...

@@ -1,0 +1,19 @@
+2011-04-25T14:49:00.000Z	Bisaya		How do i add GRUB_CMDLINE_LINUX= into grub
+2011-04-25T14:50:00.000Z	Bisaya		i dont wanna add it to the top or bottom if its meant to be in the middle etc
+2011-04-25T14:50:00.000Z	arand	Bisaya	/etc/default/grub
+2011-04-25T14:51:00.000Z	arand	Bisaya	Then run update-grub to propagate these into the grub.cfg file
+2011-04-25T14:53:00.000Z	arand	Bisaya	If you want to add the options manually, the "wrong way", you'd add them at the end of the "linux   ...." line in /boot/grub/grub.cfg
+2011-04-25T14:54:00.000Z	Bisaya	arand	GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+2011-04-25T14:56:00.000Z	arand	Bisaya	Those options control whether or not the splash screen, and the linux kernel boot log will be shown.
+2011-04-25T14:58:00.000Z	arand	Bisaya	http://forums.debian.net/viewtopic.php?f=5&t=41881&start=15#p277908
+2011-04-25T14:59:00.000Z	arand	Bisaya	That is probably not the corrrect way to add that option
+2011-04-25T14:59:00.000Z	Bisaya	arand	 i dont know wat i can do yet,im just getting tips from ppl sorry
+2011-04-25T15:03:00.000Z	Bisaya	arand	 that just seems like a lot of confusing stuff
+2011-04-25T15:03:00.000Z	arand	Bisaya	~grub2 the version number is just odd
+2011-04-25T15:04:00.000Z	arand	Bisaya	If you just remove "quiet splash" from the default options, you might at least get some information about the issue
+2011-04-25T15:05:00.000Z	Bisaya	arand	 so if i remove quiet splash, wil i still be able to boot
+2011-04-25T15:05:00.000Z	arand	Bisaya	You should be yes.
+2011-04-25T15:05:00.000Z	arand	Bisaya	What you can do termpoarily...
+2011-04-25T15:06:00.000Z	arand	Bisaya	Is at boot time go into the grub menu, press e to edit the entry, and remove those two options there, that will only boot with that once, not add it permanently
+2011-04-25T15:43:00.000Z	Bisaya	arand	 I fixed it! changed from "quiet splash" to "nomodeset quiet splash"
+2011-04-25T15:44:00.000Z	Bisaya	arand	 it now shows the ugly lines screen when i shutdown, but i dont care, im shutting the computer down neways at that stage lol

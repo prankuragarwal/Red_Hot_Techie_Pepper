@@ -1,0 +1,19 @@
+2008-10-05T02:36:00.000Z	cyrus__		Trying to setup NFS shares. On the client (ubuntu box) I run mount hostname:share mount_point and get mount.nfs: mount to NFS server 'rpcbind' failed: RPC Error: Program not registered
+2008-10-05T02:36:00.000Z	cyrus__		any idea what could be up
+2008-10-05T02:37:00.000Z	ikonia	cyrus__	rpc (part of nfs-server normally) is not running
+2008-10-05T02:38:00.000Z	cyrus__	ikonia	- if I run rpcinfo -p it shows me that portmap is running
+2008-10-05T02:39:00.000Z	ikonia	cyrus__	so port mapper is running
+2008-10-05T02:39:00.000Z	cyrus__	ikonia	- ya. Now, since the ubuntu box is only the client all I installed was nfs-common and portmap
+2008-10-05T02:40:00.000Z	cyrus__	ikonia	- I didn't install nfs-kernel-server
+2008-10-05T02:40:00.000Z	ikonia	cyrus__	shoulnd need to
+2009-02-01T00:16:00.000Z	ikonia	cyrus__	put it in your fstab
+2009-02-01T00:16:00.000Z	cyrus__	ikonia	- I have it there, still doesn't automatically  mount on boot
+2009-02-01T00:16:00.000Z	ikonia	cyrus__	what happens if you do "sudo mount $mountpoint" after boot ?
+2009-02-01T00:17:00.000Z	cyrus__	ikonia	- it mou nts
+2009-02-01T00:17:00.000Z	ikonia	cyrus__	interesting
+2009-02-13T21:53:00.000Z	ikonia	cyrus__	the kernel source package, and core headers, ncurses-dev and a compiler
+2009-02-13T21:55:00.000Z	cyrus__	ikonia	- if I install the kernel source package, will it provide me the current .config file used for 8.10?
+2009-02-13T21:58:00.000Z	ikonia	cyrus__	no it won't give you the .config
+2009-02-13T22:00:00.000Z	cyrus__	ikonia	- anyway to get the .config used for the default kernel of 8.10
+2009-02-13T22:00:00.000Z	ikonia	cyrus__	it's in your /boot directory
+2009-02-13T22:00:00.000Z	cyrus__	ikonia	- ah...thank you

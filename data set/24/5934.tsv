@@ -1,0 +1,24 @@
+2006-05-04T05:12:00.000Z	carthik		I am unable to write anything to my external USB HDD right now, it says it is a read-only filesystem. I used to be able to write to it (FAT-32 partition)
+2006-05-04T05:12:00.000Z	carthik		How can I fix this issue?
+2006-05-04T05:13:00.000Z	kingspawn	carthik	have you mounted it with the proper permissions?
+2006-05-04T05:13:00.000Z	carthik	kingspawn	it is automounted, as always.
+2006-05-04T05:13:00.000Z	carthik	kingspawn	the last time i used it it was fine, and now it is not.
+2006-05-04T05:13:00.000Z	kingspawn	carthik	hm, okay, from an entry in fstab?
+2006-05-04T05:13:00.000Z	carthik	kingspawn	no, just like with any other usb drive "magic" perhaps?
+2006-05-04T05:14:00.000Z	kingspawn	carthik	well, does "sudo mount -o remount -t vfat -o umask=0000,dmask=0111 /dev/whatever /mountpoint" work?
+2006-05-04T05:15:00.000Z	carthik	kingspawn	one sec
+2006-05-04T05:16:00.000Z	kingspawn	carthik	yeah, the dmask and umask are the important ones just now
+2006-05-04T05:18:00.000Z	carthik	kingspawn	that doesn't owrk, points me to a mount manpage
+2006-05-04T05:18:00.000Z	kingspawn	carthik	with what error?
+2006-05-04T05:19:00.000Z	carthik	kingspawn	no error message, there is a "USAGE:" part and then a "Now about Mount" part and then a refer to the manpage part
+2006-05-04T05:19:00.000Z	kingspawn	carthik	well, umount it, and drop the -o remount, i noticed we had two -o's
+2006-05-04T05:20:00.000Z	carthik	kingspawn	that I figured :)
+2006-05-04T05:24:00.000Z	kingspawn	carthik	eh, are you sure you're doing it right?
+2006-05-04T05:25:00.000Z	carthik	kingspawn	yes. I think the issue is that the last time the drive might have been unplugged before being unmounted, the wire must have sprung loose. I will have to figure out what to do to reclaim the drive etc...
+2006-05-04T05:25:00.000Z	carthik	kingspawn	searching tells me that in case of errors, the drive is mount read-only but I cant find how to fix it. I would love to not have to reformat 200Gigs of data
+2006-05-04T05:25:00.000Z	kingspawn	carthik	could try umounting it and fscking it
+2006-05-04T05:26:00.000Z	carthik	kingspawn	fsck for vfat?
+2006-05-04T05:26:00.000Z	kingspawn	carthik	hahah, sorry, im getting a bit slow. blame the beer.
+2006-05-04T05:27:00.000Z	carthik	kingspawn	I will be beerland soon, hopefully. No probs :)
+2006-05-04T05:28:00.000Z	carthik	kingspawn	biovore thanks for your help -- much appreciated. I will find a way out later, after beer :)
+2006-05-04T05:30:00.000Z	kingspawn	carthik	always good to get some beer in you first

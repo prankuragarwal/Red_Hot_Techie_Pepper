@@ -1,0 +1,18 @@
+2010-01-06T02:54:00.000Z	bitfox		in fstab file there isn't an option to enable the mount as an user id... uid or guid options... can I mount an ext3 partition as a normal user?
+2010-01-06T02:55:00.000Z	mkanyicy	bitfox	what do you want to do?
+2010-01-06T02:56:00.000Z	mkanyicy	bitfox	are you surviving?
+2010-01-06T02:57:00.000Z	bitfox	mkanyicy	I want to access at partition through samba from windows
+2010-01-06T02:57:00.000Z	mkanyicy	bitfox	but what is the problem with that?
+2010-01-06T02:59:00.000Z	bitfox	mkanyicy	During the boot, the partition was mount as root so I'm not able to access and modify the data...
+2010-01-06T03:01:00.000Z	mkanyicy	bitfox	do you want to share the whole partition or a folder on it
+2010-01-06T03:03:00.000Z	bitfox	mkanyicy	I want to share a partition
+2010-01-06T03:04:00.000Z	mkanyicy	bitfox	then chmod the partition to the right mode and chown it to the user and group you want to grant access to
+2010-01-06T03:05:00.000Z	mkanyicy	bitfox	then change the owner of that partition and set access permissions accordingly
+2010-01-06T03:07:00.000Z	mkanyicy	bitfox	in the most basic and most insecure case, just do a "sudo chown -Rv 777 mount-point" while the partition is mounted to the mount point
+2010-01-06T03:10:00.000Z	bitfox	mkanyicy	and Dr_Willis: thank you very much!
+2010-01-06T03:12:00.000Z	bitfox	mkanyicy	so when the chmod is used on mount points of ext3 partitions these are mounted and owned during every boot by the same owner?
+2010-01-06T03:13:00.000Z	mkanyicy	bitfox	the partition is NOT owned, any part of it can be owned for example to root of a partition can be owned by root and files under the root directory by may people
+2010-01-06T03:14:00.000Z	bitfox	mkanyicy	yes, I make a little confusion, I'm sorry...
+2010-01-06T03:15:00.000Z	mkanyicy	bitfox	im sorry that my explanation might be a bit awkward and vague but the permissions to files in the ext3 partition have NOTHING to do with the mounting process
+2010-01-06T03:16:00.000Z	bitfox	mkanyicy	There is no problem!!! :-)
+2010-01-06T03:17:00.000Z	mkanyicy	bitfox	gth

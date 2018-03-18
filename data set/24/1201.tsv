@@ -1,0 +1,24 @@
+2010-09-30T05:16:00.000Z	stiltzkin		hey guys, hoping you can help me with something. I have an (apparently infamous) issue wherein ksoftirqd consumes 100% of my cpu
+2010-09-30T05:17:00.000Z	stiltzkin		output of dmesg | tail shows lots of messages like sr 1:0:0:0: timing out command, waited 120s
+2010-09-30T05:17:00.000Z	stiltzkin		wat do?
+2010-09-30T05:18:00.000Z	stiltzkin		Can't kill the process, it just respawns immediately
+2010-09-30T05:19:00.000Z	stiltzkin		Anyone have any idea what I'm talking about? For reference, I'm running 2.6.35-22
+2010-09-30T05:20:00.000Z	stiltzkin		This is really very frustrating. It's eating all my resources and there's no way to stop it
+2010-09-30T05:21:00.000Z	jrenner	stiltzkin	just uninstall?
+2010-09-30T05:21:00.000Z	stiltzkin	jrenner	just installed lol
+2010-09-30T05:21:00.000Z	jrenner	stiltzkin	what program is it again?
+2010-09-30T05:22:00.000Z	stiltzkin	jrenner	ksoftirqd, it's apparently a low level device thing
+2010-09-30T05:23:00.000Z	jrenner	stiltzkin	try upgrading kernel "sudo apt-get update; sudo apt-get dist-upgrade"
+2010-09-30T05:23:00.000Z	stiltzkin	jrenner	running updates right now actually...and praying
+2010-09-30T05:25:00.000Z	jrenner	stiltzkin	if you did any updating be sure to reboot
+2010-09-30T05:25:00.000Z	stiltzkin	jrenner	absolutely. it's taking forever because it's using an entire core of my CPU
+2010-09-30T05:26:00.000Z	jrenner	stiltzkin	its a little hackish but "while [ 1==1 ]; do killall ksoftirqd; done;"
+2010-09-30T05:26:00.000Z	stiltzkin	jrenner	I'm a little worried about hardware problems with this as well, my CPU has to be lava hot right now, and the fan is kicking
+2010-09-30T05:28:00.000Z	jrenner	stiltzkin	are you overclocked or is your comp pressed up a against a wall or buried in the ground? if not you _should_ be okay....
+2010-09-30T05:28:00.000Z	stiltzkin	jrenner	I don't think even that will keep it down. It spawns new processes as soon as they're killed. Killing all of them will probably use about as many resources
+2010-09-30T05:28:00.000Z	jrenner	stiltzkin	prolly right.... but a while loop of killing is always fun right? :P
+2010-09-30T05:29:00.000Z	stiltzkin	jrenner	yeah I suppose lol. I'm just frustrated that I couldn't find any definitive answer for what causes this. Dates back to 2004 but no one has a real paper trail on it
+2010-09-30T05:30:00.000Z	stiltzkin	jrenner	I mean most people just said stuff along the lines of "it has something to do with the wireless drivers; just reinstall"
+2010-09-30T05:30:00.000Z	jrenner	stiltzkin	that might be a good idea if upgrading doesn't work
+2010-09-30T05:31:00.000Z	stiltzkin	jrenner	don't see what it'll solve though, because inevitably the same wireless drivers and ksoftirqd daemon will get installed next time
+2010-09-30T05:32:00.000Z	jrenner	stiltzkin	true but installs aren't infallible. its sorta a last ditch effort.

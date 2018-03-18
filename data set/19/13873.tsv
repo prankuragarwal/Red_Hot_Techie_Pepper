@@ -1,0 +1,19 @@
+2005-09-28T09:53:00.000Z	JDahl		I fell for the temptation to upgrade to Breezy and my sound stopped working. I have no clue what to look, because everything appears OK, I can even get gnome sound-server sounds. I just can't get any audio output from regular programs. Any suggestions for bug-hunting?
+2005-09-28T09:54:00.000Z	TTilus	JDahl	start "regular programs" from console, with verbatim output, if possible, and watch what they say about audio
+2005-09-28T09:55:00.000Z	JDahl	TTilus	I dont get any error messages from mplayer, xmms, totem, cdplayer etc
+2005-09-28T09:56:00.000Z	TTilus	JDahl	check mixer, you may have something muted tjsp
+2005-09-28T09:57:00.000Z	JDahl	TTilus	nothing muted either. But I dont wonder why I can suddenly choose between "Intel 82801 (Alsa)" and "Analog Devices (OSS Mixer)"; that's something new I think
+2005-09-28T09:59:00.000Z	TTilus	JDahl	check both alsa and oss mixers
+2005-09-28T09:59:00.000Z	JDahl	TTilus	I did that also, with no luck. I think I used Alsa under Hoary, so I guess I should stick with Alsa, right?
+2005-09-28T09:59:00.000Z	TTilus	JDahl	do you have soundcard _and_ embedded sound too?
+2005-09-28T10:00:00.000Z	JDahl	TTilus	I have an IBM tp40, god knows what's inside it
+2005-09-28T10:00:00.000Z	TTilus	JDahl	yes, i think, ...
+2005-09-28T10:00:00.000Z	TTilus	JDahl	ah, portable, no double sounds then, propably
+2005-09-28T10:01:00.000Z	TTilus	JDahl	try different sound outputs with mplayer (choose from setup)
+2005-09-28T10:02:00.000Z	JDahl	TTilus	I tried all of those, also without luck - I never had problems with sound before, and the gnome sound is actually working (but I disabled it so it would lock /dev/dsp)
+2005-09-28T10:04:00.000Z	TTilus	JDahl	weirdo
+2005-09-28T10:06:00.000Z	JDahl	TTilus	I enabled all 200 switches in the gnome mixer, and it turned out that Head Phone Jack Sense was unchecked, and for some reason muted my output
+2005-09-28T10:06:00.000Z	TTilus	JDahl	didn't i say to check the mixer  :D
+2005-09-28T10:06:00.000Z	JDahl	TTilus	indeed you did :S
+2005-09-28T10:08:00.000Z	TTilus	JDahl	could it be that you have non-multiplexing sound, so if your laptop thinks input is on, then output is off?
+2005-09-28T10:09:00.000Z	JDahl	TTilus	that could be... I dont think this audio driver has multiplexing

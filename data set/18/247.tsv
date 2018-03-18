@@ -1,0 +1,18 @@
+2012-08-29T21:33:00.000Z	_Marcus		How do I make it so that a group can read and write to a folder and it's contents? I need the www-data to write there. I already have the group that owns the file to www-data, and the permissions are at 775, but it's not working.
+2012-08-29T21:34:00.000Z	WarOfTheNerd	_Marcus	have you checked the user is associated with the group?
+2012-08-29T21:34:00.000Z	_Marcus	WarOfTheNerd	www-data is in the www-data group.
+2012-08-29T21:35:00.000Z	WarOfTheNerd	_Marcus	are we talking about Apache not being able to write?
+2012-08-29T21:35:00.000Z	_Marcus	WarOfTheNerd	Yes. I'm using PHP's mkdir().
+2012-08-29T21:36:00.000Z	WarOfTheNerd	_Marcus	check /etc/group and /etc/gshadow
+2012-08-29T21:36:00.000Z	WarOfTheNerd	_Marcus	www-data is not in the group by default despite what Apache says
+2012-08-29T21:36:00.000Z	_Marcus	WarOfTheNerd	This is a strange problem because I can read and write in another PHP script, but mkdir wont allow me to.
+2012-08-29T21:37:00.000Z	WarOfTheNerd	_Marcus	also you may need to turn off PHP safe_mode
+2012-08-29T21:37:00.000Z	_Marcus	WarOfTheNerd	Okay. So is this a PHP problem? Not Ubuntu-related?
+2012-08-29T21:37:00.000Z	WarOfTheNerd	_Marcus	PHP safe_mode won't let you write unless you own the files IIRC
+2012-08-29T21:38:00.000Z	WarOfTheNerd	_Marcus	that may explain why mkdir() is failing
+2012-08-29T21:38:00.000Z	_Marcus	WarOfTheNerd	Oh. Okay. I'll try that. Thanks :)
+2012-08-29T21:40:00.000Z	_Marcus	WarOfTheNerd	Safemode was already off.
+2012-08-29T21:40:00.000Z	WarOfTheNerd	_Marcus	check if 777 works
+2012-08-29T21:58:00.000Z	_Marcus	WarOfTheNerd	No, it still didn't work after I set it to 777.
+2012-08-29T21:58:00.000Z	WarOfTheNerd	_Marcus	maybe it's more than a permissions issue then
+2012-08-29T22:00:00.000Z	_Marcus	WarOfTheNerd	So what else do you think I can do?

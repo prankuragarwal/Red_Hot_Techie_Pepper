@@ -1,0 +1,22 @@
+2012-09-05T04:51:00.000Z	kalledelta		TJ: I have eth4+5 bonded under bond1, and vlan2 and vlan3 on bond1 (connections work there)
+2012-09-05T04:52:00.000Z	kalledelta		TJ: it's all manual… how do you mean configured netfilters? :-)
+2012-09-05T04:52:00.000Z	kalledelta		TJ: Maybe I have missed a "small" detail...
+2012-09-05T04:53:00.000Z	kalledelta		TJ: ah.. well, I'm trying to use iptables.. but even though I have enabled ip_forward (in sysctl), the POSTROUTE doesn't even log...
+2012-09-05T04:55:00.000Z	kalledelta		TJ: The —to-source works when I tries to ping or do whatever locally on the machine, but not from the outside..
+2012-09-05T04:55:00.000Z	kalledelta		TJ: and all iptable-chains have ACCEPT as default
+2012-09-05T04:57:00.000Z	m6d4	kalledelta	we use ferm for our iptables rules management - don't know if you like it or not http://ferm.foo-projects.org/
+2012-09-05T04:57:00.000Z	kalledelta		TJ: it's a oneliner right now.. iptables -t nat -A POSTROUTING -o vlan3 -j SNAT --to-source 99.99.99.99 (not actual ip)
+2012-09-05T04:58:00.000Z	kalledelta		TJ: what am I missing? I've read some tutorials, and they almost ever say anything more than that
+2012-09-05T05:08:00.000Z	kalledelta		TJ: Still no go...
+2012-09-05T05:10:00.000Z	kalledelta		TJ: http://pastebin.com/GA1MSrZ4
+2012-09-05T05:10:00.000Z	kalledelta		TJ: default route is a bit wierd.. I don't really want to fiddle too much with it, since I'm at home and the servers and switches are at the office...
+2012-09-05T05:11:00.000Z	kalledelta		TJ: But yes, the default route with the lowest metric is via my link-connection.. on the correct interface..
+2012-09-05T05:12:00.000Z	kalledelta		TJ: no, the ip on vlan3 is a different one… I have a /30-network that I connect my equipment with my ISP… and they forward my ip-net to my part...
+2012-09-05T05:13:00.000Z	kalledelta		TJ: Lets call it like this: 15.15.15.15/30 (ISP) 15.15.15.16/30 (me)
+2012-09-05T05:13:00.000Z	kalledelta		TJ: default route is 0.0.0.0/0 via 15.15.15.15 dev vlan3 metric 50
+2012-09-05T05:16:00.000Z	kalledelta		TJ: Ok… do you have any possible solution for this?
+2012-09-05T05:19:00.000Z	kalledelta		TJ: It's not really that complicated… it's basically the "internet" on one side, my ip net 80.156.155.163 on the other, connected with a third network between them 15.15.15.15/30
+2012-09-05T05:19:00.000Z	kalledelta		TJ: My ISP forwards all traffic that is supposed to go to my ips (80…) to 15.15.15.16
+2012-09-05T05:19:00.000Z	kalledelta		TJ: And I forward all my connections going to Internet via 15.15.15.15
+2012-09-05T05:20:00.000Z	m6d4	kalledelta	you have a dev called vlan3 on your linux box or bond1 ?
+2012-09-05T05:20:00.000Z	kalledelta	m6d4	I have a bond1 that is made up of eth4+5 and then I have a dev called vlan3 that uses bond1 as the raw device

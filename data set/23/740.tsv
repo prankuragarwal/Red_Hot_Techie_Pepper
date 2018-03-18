@@ -1,0 +1,23 @@
+2011-03-03T21:58:00.000Z	dajhorn	guest234234	Which module do you need to blacklist?
+2011-03-03T21:58:00.000Z	guest234234	dajhorn	usb_storage
+2011-03-03T22:00:00.000Z	dajhorn	guest234234	usb-storage is automatically added to the initrd so blacklisting there doesn't work.
+2011-03-03T22:00:00.000Z	guest234234	dajhorn	why is that so, and how one can knew which one are added automatically?
+2011-03-03T22:01:00.000Z	dajhorn	guest234234	You need to edit the /etc/initramfs-tools/initramfs.conf file and change the 'MODULES=most' option to something appropriate for your computer.
+2011-03-03T22:02:00.000Z	dajhorn	guest234234	Try 'MODULES=dep' first.  You need to regenerate the initrd before the change takes effect.  Note that you can make your computer unbootable by changing this option.
+2011-03-03T22:02:00.000Z	guest234234	dajhorn	thanks, and how can I check which modules are added automatically?
+2011-03-03T22:03:00.000Z	dajhorn	guest234234	Start at `man initramfs.conf`.
+2011-03-03T22:03:00.000Z	guest234234	dajhorn	Thanks.
+2011-03-03T22:03:00.000Z	dajhorn	guest234234	Welcome.
+2011-03-03T22:07:00.000Z	guest234234	dajhorn	one more question if you please. If I add 'modprobe -r usb_storage' to startup programs, will it work?
+2011-03-03T22:08:00.000Z	dajhorn	guest234234	Dunno.  Why do you need to blacklist usb-storage?
+2011-03-03T22:09:00.000Z	guest234234	dajhorn	it's for my friend who runs small business. Protecting sensitive data etc.
+2011-03-03T22:10:00.000Z	dajhorn	guest234234	A better solution could be to disable gnome gvfs automounting.
+2011-03-03T22:10:00.000Z	guest234234	dajhorn	which man should I read?
+2011-03-03T22:12:00.000Z	dajhorn	guest234234	 Create an unprivileged account at the "User Settings" panel.   Click the "Advanced Settings" button on the new account.  Click the "User Privileges" tab.    Disable the "external storage" and "fuse".
+2011-03-03T22:13:00.000Z	dajhorn	guest234234	 You can disable floppy drives and cd-r burners at the same list of privileges.
+2011-03-03T22:14:00.000Z	guest234234	dajhorn	sorry if I am bothering you, but, I like to do things from cli. I would like to knew what exacly does it do. Removing user from some kind of groups?
+2011-03-03T22:16:00.000Z	dajhorn	guest234234	 It is difficult to do this kind of job correctly at the cli on an Ubuntu computer.   Also try the `polkit-gnome-authorization` utility.
+2011-03-03T22:16:00.000Z	guest234234	dajhorn	ok, thanks.
+2011-03-03T22:17:00.000Z	dajhorn	guest234234	 If you're not the only administrator of the computer, then the next guy that needs to fix it will be annoyed if you do the `modprobe -r` trick.
+2011-03-03T22:18:00.000Z	dajhorn	guest234234	 I could defeat your `modprobe -r` security hack by rebooting the computer with a USB stick attached.
+2011-03-03T22:18:00.000Z	dajhorn	guest234234	 And that vector can easily happen accidentally.

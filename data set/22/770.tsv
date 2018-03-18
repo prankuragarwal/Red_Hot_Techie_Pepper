@@ -1,0 +1,22 @@
+2011-03-24T12:21:00.000Z	motaka2		how can I check what port mysql is using to connect mysql ?
+2011-03-24T12:22:00.000Z	critical_max	motaka2	start with http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
+2011-03-24T12:23:00.000Z	motaka2	critical_max	it says 3306 , how can i see if mysql jdbc is installed on my ubuntu machine?
+2011-03-24T12:23:00.000Z	critical_max	motaka2	you are connecting from your mysql client to a mysql server on the same machine?
+2011-03-24T12:24:00.000Z	motaka2	critical_max	 to no I am trying to import my mysql database on my local machine into an ER java software called Druid ,
+2011-03-24T12:25:00.000Z	critical_max	motaka2	I haven't used that, but it looks like the ubuntu package is 'libmysql-java'
+2011-03-24T12:25:00.000Z	critical_max	motaka2	that is the jdbc driver for mysql
+2011-03-24T12:26:00.000Z	critical_max	motaka2	i found that by doing "apt-cache search jdbc | grep mysql"
+2011-03-24T12:28:00.000Z	motaka2	critical_max	what I don't know is where that file is located
+2011-03-24T12:28:00.000Z	critical_max	motaka2	probably /usr/lib/mysql/plugin
+2011-03-24T12:29:00.000Z	critical_max	motaka2	'dpkg -L libmysql-java' to get a file list
+2011-03-24T12:30:00.000Z	critical_max	motaka2	i'm assuming you already installed the package libmysql-java right?
+2011-03-24T12:31:00.000Z	motaka2	critical_max	 i just ran sudo apt-get install libmysql-java
+2011-03-24T12:31:00.000Z	critical_max	motaka2	ok cool. the dpkg -L should work then on that package
+2011-03-24T12:32:00.000Z	critical_max	motaka2	you only get the file list from dpkg if the package is installed
+2011-03-24T12:33:00.000Z	motaka2	critical_max	here is the result:  http://pastebin.com/sXwqCJh0
+2011-03-24T12:35:00.000Z	critical_max	motaka2	some of those files are probably symlinks, do "ls" on them to find out which one you should point  your Java app too
+2011-03-24T12:38:00.000Z	motaka2	critical_max	I have added them, now  the soft wants me to fill this:  jdbc:mysql://<host><:port>/<database>   I dont know if i should remove <>s or not
+2011-03-24T12:38:00.000Z	critical_max	motaka2	yeah the <> is just to tell you to replace that with the actual value
+2011-03-24T12:38:00.000Z	motaka2	critical_max	ok wait ...
+2011-03-24T12:39:00.000Z	critical_max	motaka2	jdbc:mysql://localhost:3306/yourDB
+2011-03-24T12:39:00.000Z	critical_max	motaka2	or whatever your database name really is.

@@ -1,0 +1,24 @@
+2007-01-24T11:07:00.000Z	xmOD		pike: at present i dont have any linux OS on my comp as the linux HD crashed leaving grub in MBR
+2007-01-24T11:08:00.000Z	xmOD		pike: I just need a little help.. jus tell me how i can install grub on hd0 to boot windows? or how can i install the windows bootloader back into MBR??? the second option is preferred by me if u can help
+2007-01-24T11:09:00.000Z	xmOD		please help me anyone who has experience with grub.. i really need help
+2007-01-24T11:10:00.000Z	rm_you|somewhere	xmOD	you need to be able to boot windows?
+2007-01-24T11:10:00.000Z	rm_you|somewhere	xmOD	and you already have grub installed so as to boot linux, right?
+2007-01-24T11:11:00.000Z	rm_you|somewhere	xmOD	ok well, if you install grub to the windows drive's MBR...
+2007-01-24T11:11:00.000Z	rm_you|somewhere	xmOD	grub-install (hd0)
+2007-01-24T11:11:00.000Z	rm_you|somewhere	xmOD	no.
+2007-01-24T11:12:00.000Z	rm_you|somewhere	xmOD	yeah, this is the difficult part...
+2007-01-24T11:12:00.000Z	rm_you|somewhere	xmOD	in the short term, if you write down what you will need to type in once it loads grub, you can do that
+2007-01-24T11:12:00.000Z	rm_you|somewhere	xmOD	otherwise, your best option is to install linux somewhere again
+2007-01-24T11:13:00.000Z	rm_you|somewhere	xmOD	the grub commands to load windows
+2007-01-24T11:13:00.000Z	rm_you|somewhere	xmOD	it's like.... "root (hd0,1)" "chainloader +1" "boot"
+2007-01-24T11:13:00.000Z	rm_you|somewhere	xmOD	something like that... i can look it up to make sure
+2007-01-24T11:13:00.000Z	rm_you|somewhere	xmOD	it has something to do with what drive/partition windows is on
+2007-01-24T11:14:00.000Z	rm_you|somewhere	xmOD	yes, if all you do is install grub to the MBR
+2007-01-24T11:15:00.000Z	rm_you|somewhere	xmOD	your best option is to run the Ubuntu livecd (is that what you're doing already?) and do the install, resizing your windows partition down like 5gb at the end, and install ubuntu... that will put grub back in and autodetect/configure windows booting as well
+2007-01-24T11:15:00.000Z	rm_you|somewhere	xmOD	read: best == easiest
+2007-01-24T11:16:00.000Z	rm_you|somewhere	xmOD	without a boot partition for grub to read data from, I have no idea how to give grub permanent configuration data :( all I can guarentee is that you'll get a grub command prompt, from which you could boot
+2007-01-24T11:16:00.000Z	rm_you|somewhere	xmOD	well, like someone said earlier, "fdisk /mbr" should do it, if you can get back to windows once
+2007-01-24T11:17:00.000Z	rm_you|somewhere	xmOD	open a command prompt in windows and type "fdisk /mbr"
+2007-01-24T11:17:00.000Z	rm_you|somewhere	xmOD	that should fix it (or so i've heard)
+2007-01-24T11:18:00.000Z	rm_you|somewhere	xmOD	that would be it
+2007-01-24T11:18:00.000Z	rm_you|somewhere	xmOD	"fdisk /mbr"

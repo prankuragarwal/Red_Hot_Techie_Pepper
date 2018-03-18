@@ -1,0 +1,21 @@
+2009-05-25T10:42:00.000Z	FLJohn		Ok.  My system just locked up while I was surfing the internet.  I have a Photo of the screen (looks like Bios)  anyone interested in seeing it?
+2009-05-25T10:42:00.000Z	FLJohn		http://www.glorystock.com/error.jpg
+2009-05-25T10:43:00.000Z	RedSocrates	FLJohn	I'm interested
+2009-05-29T09:20:00.000Z	RedSocrates	FLJohn	Haven't really been following the conversation, but if you're having issues with freezing using an ATI card, you might look here: https://bugs.launchpad.net/ubuntu/+source/xserver-xorg-video-ati/+bug/348332
+2009-05-29T09:20:00.000Z	RedSocrates	FLJohn	I had a similar problem and upgraded the kernel as suggested, and it fixed my issues.  If you're new to Ubuntu, upgrading the kernel might be a bit difficult, but there are instructions here: https://wiki.ubuntu.com/KernelMainlineBuilds
+2009-05-29T09:22:00.000Z	FLJohn	RedSocrates	I had a problme with 9.04 64 when I downloaded it.  Let me read this.  Here is a screen shot from a few days ago.  I see that fglrx is in there too.
+2009-05-29T09:23:00.000Z	FLJohn	RedSocrates	http://www.glorystock.com/Screenshot.png
+2009-05-29T09:27:00.000Z	RedSocrates	FLJohn	Not too sure about fglrx, I can only confirm my suggestion works for me with the radeon driver.  Also, I'm on 32-bit, so not sure about 64
+2009-05-29T09:31:00.000Z	RedSocrates	FLJohn	"The Direct Rendering Infrastructure, also known as the DRI, is a framework for allowing direct access to graphics hardware under the X Window System in a safe and efficient manner."
+2009-05-29T09:33:00.000Z	RedSocrates	FLJohn	Maybe just commenting out the dri line in your /etc/X11/xorg.conf, if you have one
+2009-05-29T09:35:00.000Z	RedSocrates	FLJohn	Right, the kernel fix is what worked for me and my ATI problems, using the radeon driver.  But if you're using 8.04, it's very possible that you have a different bug than the one described there.  A mainline kernel upgrade shouldn't really *hurt*, though, if you want to try it... And if the kernel has issues, you can always boot the old kernel from GRUB.
+2009-05-29T09:35:00.000Z	RedSocrates	FLJohn	No problem, good luck.  Keep asking around if that doesn't fix anything, of course
+2009-05-29T09:38:00.000Z	RedSocrates	FLJohn	Incidentally, that bug report to which I linked you also shows how to disable DRI.  You want the line: Option "DRI" "off"
+2009-05-29T09:39:00.000Z	RedSocrates	FLJohn	Have you tried using the radeon drivers rather than fglrx?
+2009-05-29T09:41:00.000Z	RedSocrates	FLJohn	There are two drivers for ATI Radeon cards, one is fglrx and the other is radeon
+2009-05-29T09:44:00.000Z	RedSocrates	FLJohn	Well, first, can you put your /etc/X11/xorg.conf in a pastebin?
+2009-05-29T09:45:00.000Z	RedSocrates	FLJohn	You should be able to open /etc/X11/xorg.conf in gedit
+2009-05-29T09:45:00.000Z	RedSocrates	FLJohn	And here's pastebin information
+2009-05-29T09:49:00.000Z	RedSocrates	FLJohn	I'm sorry, but I'm going to have to get going, real life calls
+2009-05-29T09:50:00.000Z	RedSocrates	FLJohn	Ask around, see if maybe someone will help you install the radeon drivers instead of fglrx.  Otherwise, you could try the kernel thing if you feel up for it
+2009-05-29T09:50:00.000Z	RedSocrates	FLJohn	Sorry to have to run out; good luck!

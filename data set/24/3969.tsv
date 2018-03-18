@@ -1,0 +1,24 @@
+2010-03-28T02:05:00.000Z	erUSUL	olga_	worked ?
+2010-03-28T01:23:00.000Z	erUSUL	olga_	what are you trying to do ?
+2010-03-28T01:27:00.000Z	olga_	erUSUL	i want to boot windows by default, here is what i get if i try to launch startupmanager
+2010-03-28T01:27:00.000Z	olga_	erUSUL	http://pastebin.com/0AeMbdvK
+2010-03-28T01:32:00.000Z	erUSUL	olga_	https://help.ubuntu.com/community/Grub2#/etc/default/grub (file) <<<< modify GRUB_DEFAULT to point to the windows wntry
+2010-03-28T01:34:00.000Z	olga_	erUSUL	now my GRUB DEFAULT is 0, when im booting i see there 1- ubuntu 2 - ubuntu (revoery) 3 - memtest 4 - another memtest 5 - windows. And i know that u have to start to count from 0, so my windows should be GRUB DEFAULT = 4. But it doesnt work.
+2010-03-28T01:35:00.000Z	erUSUL	olga_	why not use the exact manuentry name ?
+2010-03-28T01:35:00.000Z	erUSUL	olga_	GRUB_DEFAULT="xxxx" An exact menu entry, including the quotation symbols, may also be used. In this case,
+2010-03-28T01:35:00.000Z	erUSUL	olga_	the number is not reliable anyway if you install a new kernel the numberchanges
+2010-03-28T01:36:00.000Z	erUSUL	olga_	doing « grep -i windows /boot/grub/grub.cfg » --> menuentry "Microsoft Windows XP Professional" { so it will be GRUB_DEFAULT="Microsoft Windows XP Professional"
+2010-03-28T01:37:00.000Z	erUSUL	olga_	make the changes to fit your system settings
+2010-03-28T01:37:00.000Z	erUSUL	olga_	then do "sudo update-grub"
+2010-03-28T01:37:00.000Z	olga_	erUSUL	i guess you are the one who is going to be able to help me today
+2010-03-28T01:38:00.000Z	olga_	erUSUL	i already know that number can change, and that u can use name, but have no idea how to get the right name, and u just give me a command :) ill try, onemoment
+2010-03-28T01:38:00.000Z	erUSUL	olga_	lets see; :) we do not know if it will work
+2010-03-28T01:46:00.000Z	olga_	erUSUL	grep -i windows /boot/grub/grub.cfg
+2010-03-28T01:47:00.000Z	erUSUL	olga_	everything that is quoted (between the " "
+2010-03-28T01:47:00.000Z	olga_	erUSUL	ok ty
+2010-03-28T01:48:00.000Z	erUSUL	olga_	do not forget to run update-grub
+2010-03-28T01:49:00.000Z	olga_	erUSUL	and i dont do what then?
+2010-03-28T01:49:00.000Z	erUSUL	olga_	? after you edit /etc/default/grub you have to run « sudo update-grub »
+2010-03-28T01:51:00.000Z	olga_	erUSUL	i havent did that last time i changed settings can this be a reason it didnt worked?
+2010-03-28T01:52:00.000Z	erUSUL	olga_	could be. you have to run this so a new /boot/grub/grub.cfg is generated based on the /etc/default/grub and /etc/grub.d/* contents
+2010-03-28T02:05:00.000Z	olga_	erUSUL	ty guys

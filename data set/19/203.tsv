@@ -1,0 +1,19 @@
+2012-06-28T00:47:00.000Z	mp19uy		asd
+2012-06-28T00:48:00.000Z	mp19uy		Hi I'm kind of lost here (first time using IRC), where can I ask a question about a problem I'm having in ubuntu?
+2012-06-28T00:50:00.000Z	mp19uy		Im trying to configure my ati video card, to set the fan speed to a preconfigured value after the computer resumes from suspend
+2012-06-28T00:50:00.000Z	mp19uy		Ive created a script in /etc/pm/sleep.d
+2012-06-28T00:51:00.000Z	mp19uy		which one runs the following comand: aticonfig --pplib-cmd "set fanspeed 0 50"
+2012-06-28T00:51:00.000Z	ActionParsnip	mp19uy	is there a command you can run
+2012-06-28T00:53:00.000Z	ActionParsnip	mp19uy	check here: http://ubuntuforums.org/showthread.php?t=1831541    #6
+2012-06-28T00:54:00.000Z	ActionParsnip	mp19uy	you may need a sleep in the command so that it gives the x server time to reload, I'd put the items in a script then have the script run in the background
+2012-06-28T01:03:00.000Z	ActionParsnip	mp19uy	yes, thats why you need a script for both commands, so you can background the script and the wake up will happen but the sleep will delay the command you needto run
+2012-06-28T01:04:00.000Z	ActionParsnip	mp19uy	http://pastie.org/4162121    http://pastie.org/4162123
+2012-06-28T01:04:00.000Z	ActionParsnip	mp19uy	something like that
+2012-06-28T01:05:00.000Z	ActionParsnip	mp19uy	obviously the shorter paste is the fixati script
+2012-06-28T01:05:00.000Z	ActionParsnip	mp19uy	see how the script is backgrounded, this is so the flow doesn't wait 10 seconds for nothing
+2012-06-28T01:06:00.000Z	ActionParsnip	mp19uy	the script is backgrounded, the resume occurs as normal and there is a 10 second wait before the command you found works
+2012-06-28T01:06:00.000Z	ActionParsnip	mp19uy	thats why I said you need a script for it
+2012-06-28T01:06:00.000Z	ActionParsnip	mp19uy	I did say...
+2012-06-28T01:08:00.000Z	ActionParsnip	mp19uy	that backgrounds the command and lets the next commands run
+2012-06-28T01:22:00.000Z	ActionParsnip	mp19uy	what is you make the wait reallllly long, on the desktop you should see it running in:  ps -ef | grep wait
+2012-06-28T02:54:00.000Z	mp19uy	ActionParsnip	you told me to set the wait time high and run the command ps -ef | grep wait, I set sleep 100 and I the return of that command is:

@@ -1,0 +1,24 @@
+2008-08-13T00:29:00.000Z	giacomo		how can I repopulate /dev
+2008-08-13T00:30:00.000Z	_2	giacomo	udev does that for you.      short answer is  cd /dev ;sudo MAKEDEV
+2008-08-13T00:30:00.000Z	_2	giacomo	note however that that's in ram.
+2008-08-13T00:31:00.000Z	giacomo	_2	thanks for your answer but I don't have MAKEDEV
+2008-08-13T00:31:00.000Z	_2	giacomo	not in /dev ???
+2008-08-13T00:32:00.000Z	_2	giacomo	maybe in /dev/.static/dev/  then...
+2008-08-13T00:33:00.000Z	giacomo	_2	that's the problem: I've deleted /dev and now I'm inside the livecd to recreate it
+2008-08-13T00:34:00.000Z	giacomo		I've already tried to copy whole /dev from livecd to disk unsuccesfull
+2008-08-13T00:34:00.000Z	_2	giacomo	i return to my first answer.   udev does that for you.    did you try booting the installed system ?
+2008-08-13T00:35:00.000Z	giacomo		yes _2 , I't says something like "cannot find root file system" but kernel configuration is unchanged, only empty /dev
+2008-08-13T00:35:00.000Z	giacomo		maybe I need to mknod it
+2008-08-13T00:35:00.000Z	_2	giacomo	ok what's your root fs ?
+2008-08-13T00:36:00.000Z	_2	giacomo	ide pata sata scis ???
+2008-08-13T00:36:00.000Z	_2		scsi that is
+2008-08-13T00:36:00.000Z	giacomo		pata sda5
+2008-08-13T00:37:00.000Z	_2	giacomo	ok.    change to the empty dev/  and issue this as root.    mknod sda5 b 8 5 ;ln -s sda5 root
+2008-08-13T00:39:00.000Z	_2	giacomo	you might want to add a    mknod console c 5 1      as well...
+2008-08-13T00:40:00.000Z	_2	giacomo	that should be all you need to get booted.
+2008-08-13T00:41:00.000Z	_2	giacomo	if it complains    tell me and i'll help you make what ever it needs.    if i'm still here or in #kubuntu that is.
+2008-08-13T00:41:00.000Z	giacomo		it says "couldn't find valid RAM disk image starting at 0"
+2008-08-13T00:42:00.000Z	_2	giacomo	what says that ?
+2008-08-13T00:42:00.000Z	giacomo		booting the OS, kernel panic with that
+2008-08-13T00:43:00.000Z	_2		ok.  that's a grub issue. giacomo    the ramdisk image and the kernel are loaded by the boot loader.    see the !grub infonode for how to reinstall grub.
+2008-08-13T00:44:00.000Z	_2	giacomo	that should have nothing to do with device nodes    not to the best of my knowledge anyway

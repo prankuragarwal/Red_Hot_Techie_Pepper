@@ -1,0 +1,18 @@
+2011-01-02T16:58:00.000Z	grelle		how come 'cfdisk' doesn't recognize my main ext4 partition or the swap partition? The disk shows up as "Free Space"
+2011-01-02T16:59:00.000Z	kuttans	grelle	check with gparted
+2011-01-02T16:59:00.000Z	grelle	kuttans	I'm running Ubuntu Server
+2011-01-02T16:59:00.000Z	grelle	kuttans	so no graphical interface right now
+2011-01-02T17:19:00.000Z	grelle	kuttans	right, thanks
+2011-01-02T17:05:00.000Z	kuttans	grelle	i think cfdisk i having a problem if the disk is in use
+2011-01-02T17:07:00.000Z	grelle	kuttans	Allright. I don't know if I can trust it for my other drives now, though... :-)
+2011-01-02T17:07:00.000Z	kuttans	grelle	i will check the man page and come back to you
+2011-01-02T17:08:00.000Z	grelle	kuttans	I did browse through the man page. couldn't find anything about partition tables not accessible on mounted devices
+2011-01-02T17:09:00.000Z	grelle	kuttans	By the way. 'parted' also works as expected
+2011-01-02T17:13:00.000Z	grelle	kuttans	wait a second. This command lists the partition as free space: "cfdisk /dev/sda1". But the command "cfidsk /dev/sda" says: FATAL ERROR: Bad primary partition 1: Partition ends in the final partial cylinder
+2011-01-02T17:13:00.000Z	grelle	kuttans	so I was wrong before when I said the cfdisk lists the whole device as free space.
+2011-01-02T17:14:00.000Z	grelle	kuttans	right. i mistyped
+2011-01-02T17:14:00.000Z	grelle	kuttans	But something is still weird
+2011-01-02T17:15:00.000Z	grelle	kuttans	the "partition ends in the final cylinder" error seems strange. is that a legacy thing?
+2011-01-02T17:17:00.000Z	grelle	kuttans	right. 'cfdisk /dev/sda' gives the FATAL ERROR
+2011-01-02T17:17:00.000Z	grelle	kuttans	but 'fdisk -l /dev/sda' outputs the correct partition table
+2011-01-02T17:18:00.000Z	grelle	kuttans	Maybe I should just forget about cfdisk and use 'parted' or 'fdisk' to do all the work. :-)

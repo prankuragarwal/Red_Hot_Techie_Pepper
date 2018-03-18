@@ -1,0 +1,19 @@
+2006-08-16T16:01:00.000Z	Levi__		To anybody who can help me out... I'm a totally new user in linux and Ubuntu doesn't work with my soundcard. Can anybody tell me how to fix it?
+2006-08-16T16:01:00.000Z	NemesisUK	Levi__	whats your soundcard
+2006-08-16T16:02:00.000Z	Levi__		it's an intel
+2006-08-16T16:02:00.000Z	NemesisUK	Levi__	intel which one?
+2006-08-16T16:04:00.000Z	NemesisUK	Levi__	can you do this in a terminal lspci | grep Multimedia and post the output
+2006-08-16T16:05:00.000Z	Levi__		0000:00:1f.5 Multimedia audio controller: Intel Corporation 82801CA/CAM AC'97 Audio Controller (rev 01)
+2006-08-16T16:05:00.000Z	Levi__		i couldn't remember the command
+2006-08-16T16:05:00.000Z	NemesisUK	Levi__	lspci | grep Multimedia
+2006-08-16T16:06:00.000Z	Levi__		0000:00:1f.5 Multimedia audio controller: Intel Corporation 82801CA/CAM AC'97 Audio Controller (rev 01)
+2006-08-16T16:08:00.000Z	Levi__	NemesisUK	you still there?
+2006-08-16T16:08:00.000Z	NemesisUK	Levi__	 at a terminal type sudo modprobe intel-8x0 and if it loads ok add intel-8x0 to /etc/modules
+2006-08-16T16:09:00.000Z	NemesisUK	Levi__	after doing that reboot and see if you have sound
+2006-08-16T16:09:00.000Z	Levi__		this is what it came up with         FATAL: Module intel_8x not found.
+2006-08-16T16:10:00.000Z	Levi__		ok, it loaded
+2006-08-16T16:11:00.000Z	Levi__		so, how do I add that command to the modules folder?
+2006-08-16T16:12:00.000Z	NemesisUK	Levi__	it sohuld of been sudo modprobe snd-intel8x0
+2006-08-16T16:12:00.000Z	Levi__		i did that and the command went through
+2006-08-16T16:13:00.000Z	Levi__		that's it, then?
+2006-08-16T16:13:00.000Z	NemesisUK	Levi__	if it loads add snd-intel8x0 to your /etc/modules file and see how it goes after a reboot

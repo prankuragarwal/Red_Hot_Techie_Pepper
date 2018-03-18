@@ -1,0 +1,21 @@
+2007-06-29T10:24:00.000Z	Lunar_Lamp		Why is there no linux-restricted-modules package for server kernels? :-(
+2007-06-29T10:25:00.000Z	Flannel	Lunar_Lamp	just use the generic kernel if you need restricted modules
+2007-06-29T10:26:00.000Z	Lunar_Lamp	Flannel	that works I guess, alas, it draws in the generic kernel, so doesn't use the server kernel.  I'm converting this to a desktop system anyway, so don't mind, but otheres might.
+2007-06-29T10:27:00.000Z	Flannel	Lunar_Lamp	If it's a desktop, you're going to want the generic kernel anyway, because you want PREEMPT.
+2007-06-29T10:27:00.000Z	Lunar_Lamp	Flannel	hmm, not sure what PREEMPT is - what's that?
+2007-06-29T10:28:00.000Z	Flannel	Lunar_Lamp	https://help.ubuntu.com/community/LiveCDCustomization and https://help.ubuntu.com/community/InstallCDCustomization ?
+2007-06-29T10:30:00.000Z	Flannel	Lunar_Lamp	basically the desktop kernel has stuff (like PREEMPT) which allows hardware interrupts (like the mouse, etc) to interrupt already running processes, makes it more responsive.  Wikipedia covers it well: http://en.wikipedia.org/wiki/Preemption_%28computing%29
+2007-06-29T10:30:00.000Z	Lunar_Lamp	Flannel	thanks :-)
+2007-07-09T10:54:00.000Z	Lunar_Lamp	Flannel	the CDrom that I assume you're booting from? :-)  Probably something went wrong when it was being burnt.
+2007-07-09T10:58:00.000Z	Lunar_Lamp	Flannel	the CDrom that I assume you're booting from? :-)  Probably something went wrong when it was being burnt.
+2008-03-02T00:47:00.000Z	Flannel	Lunar_Lamp	dpkg -l | grep libapache2-mod-perl2, what do the first group of characters say?
+2008-03-02T00:48:00.000Z	Lunar_Lamp	Flannel	it doesn't show up :-/
+2008-03-02T00:48:00.000Z	Flannel	Lunar_Lamp	Er... if its installed, it should show up.  Maybe we typed somethingw rong: dpkg -l | grep libapache2
+2008-03-02T00:49:00.000Z	Flannel	Lunar_Lamp	that's a lower case L
+2008-03-02T00:49:00.000Z	Lunar_Lamp	Flannel	yeah, I know, I think it's because it doesn't show the full package name (frustratingly)
+2008-03-02T00:49:00.000Z	Flannel	Lunar_Lamp	alright, the ii at the beginning menas its desired to be installed (first) and it it is installed (second), there's a key at the top of the dpkg -l line. But, I don't knwo what B means in aptitude
+2008-03-02T00:51:00.000Z	Flannel	Lunar_Lamp	reinstall the packages (remove --purge then install again, or some say --reinstall works, I've never actually used the latter)
+2008-03-02T00:52:00.000Z	Lunar_Lamp	Flannel	well, yes, that's what I thought to do - except purge doesn't seem to get rid of the configs :-/
+2008-03-02T00:52:00.000Z	Flannel	Lunar_Lamp	You need to make sure you get the package with the config files, it's the -common package
+2008-03-02T00:52:00.000Z	Flannel	Lunar_Lamp	apache2.2-common in feisty, apache2-common in others
+2008-03-02T00:53:00.000Z	Flannel	Lunar_Lamp	you can see what package a particular file belongs to with dpkg -S [path]

@@ -1,0 +1,24 @@
+2009-03-16T21:56:00.000Z	jove		Hello All, I need some help if some want are the GURU of mount ISO to -o loop
+2009-03-16T21:56:00.000Z	jove		Hi, can someone help :[root@lustre-client4 ~]# mount   RHEL5.2-Server-20080430.0-x86_64-DVD.iso /mnt/rhel5.2/
+2009-03-16T21:56:00.000Z	jove		mount: special device RHEL5.2-Server-20080430.0-x86_64-DVD.iso does not exist
+2009-03-16T21:57:00.000Z	erUSUL	jove	you need to add "-o loop"
+2009-03-16T21:59:00.000Z	jove	erUSUL	I have created the dir /mnt/rhel5.2 and mount with -o loop: [root@lustre-client4 ~]# mount -t iso9660  -o loop RHEL5.2-Server-20080430.0-x86_64-DVD.iso /mnt/rhel5.2/
+2009-03-16T21:59:00.000Z	jove	erUSUL	do you have any idea ?
+2009-03-16T21:59:00.000Z	erUSUL	jove	the iso file is not there
+2009-03-16T22:00:00.000Z	erUSUL	jove	are you on the same directory/folder as the iso file?
+2009-03-16T22:00:00.000Z	jove	erUSUL	yes Ia m in that dir
+2009-03-16T22:00:00.000Z	erUSUL	jove	does it show up if you do ls ?
+2009-03-16T22:01:00.000Z	jove	erUSUL	yes, it show the file ISO in that dir
+2009-03-16T22:02:00.000Z	erUSUL	jove	well mount disagrees clearly. check that you typed the name correctly
+2009-03-16T22:03:00.000Z	jove	erUSUL	no...I check and copy the file in the dir correctly....any idea to help for the solution
+2009-03-16T22:03:00.000Z	erUSUL	jove	no; not any new idea
+2009-09-19T21:36:00.000Z	erUSUL	jove	mount -t ntfs-3g /dev/sdc1/media/My\ Book -o force
+2009-09-19T21:35:00.000Z	erUSUL	jove	it should just automount when plugged
+2009-09-19T21:36:00.000Z	jove	erUSUL	not automount
+2009-09-19T21:36:00.000Z	erUSUL	jove	you have to scape the space in the filename
+2009-09-19T21:37:00.000Z	erUSUL	jove	or you "scape" the space or you use double quotes
+2009-09-19T21:38:00.000Z	erUSUL	jove	and what Myrtti says is also true
+2009-09-19T21:40:00.000Z	erUSUL	jove	special characters need scaping on the command line
+2009-09-19T21:40:00.000Z	erUSUL	jove	for example scape. the shell needs a way to tell the difference between two arguments and just one argument with a space in its name
+2009-09-19T21:41:00.000Z	erUSUL	jove	i.e. «rm 1 2» deletes file named 1 and file named 2 ;; rm 1\ 2 deltes file nemed 1 2
+2009-09-19T21:43:00.000Z	erUSUL	jove	as Myrtti already told you /media/My Book has to be created before you mount it

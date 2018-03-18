@@ -1,0 +1,18 @@
+2010-10-17T07:18:00.000Z	dominicdinada		how do i disable apache modules that are broken I tried a2dismod mod_pyth but restart still shows a fail and the broken packages are still there even after i just run a2dismod  i see mod_pyth and still nothing
+2010-10-17T07:20:00.000Z	dominicdinada		!a2dismod
+2010-10-17T07:22:00.000Z	ilovefairuz	dominicdinada	remove relevant files from /etc/apache2/mods-enabled/
+2010-10-17T07:22:00.000Z	dominicdinada	ilovefairuz	welll thanks i didnt think it was just that simple
+2010-10-17T07:36:00.000Z	ilovefairuz	dominicdinada	did you find any relevant files in the mods-enabled directory? if not, then it's not enabled
+2010-10-17T07:37:00.000Z	dominicdinada	ilovefairuz	well i followed an old link that wouldnt allow apache to restart... you suggested i goto the directory to remove said files and i did... then i installed the lib... wait awww crap
+2010-10-17T07:39:00.000Z	dominicdinada	ilovefairuz	well this is not good the command givin called me to load this. sudo ln -s ../mods-available/mod_python.load mod_python.load   and after that broke things i went to the directory and rm -rf mod_python.load and i just assumed that mod_pyth was with that i also removed the mod_pyth
+2010-10-17T07:42:00.000Z	ilovefairuz	dominicdinada	it's okay, re-enable the module, these are just symlinks
+2010-10-17T07:44:00.000Z	dominicdinada	ilovefairuz	a2enmod shows only python no mod_pyth
+2010-10-17T07:45:00.000Z	ilovefairuz	dominicdinada	i don't know what mod_pyth
+2010-10-17T08:05:00.000Z	ilovefairuz	dominicdinada	why are you going in circles? pastebin the output of: ls -R /etc/apache2
+2010-10-17T08:08:00.000Z	dominicdinada	ilovefairuz	http://pastebin.com/VGmTBJZL and I am not going in circles first i added some bogus commands then needed help removing, then i addded the a2enmod python restarted tried python, then googled how to add python support
+2010-10-17T08:10:00.000Z	ilovefairuz	dominicdinada	apparently, mod_python is enabled in your apache installation
+2010-10-17T08:10:00.000Z	dominicdinada	ilovefairuz	right but the handlers are not added but i am thinking adding them to apache2.conf is the correct thing. http://ubuntuforums.org/showthread.php?t=1131260
+2010-10-17T08:18:00.000Z	ilovefairuz	dominicdinada	it looks like mod_python is obsolete but yeah the handlers are missing by default it seems
+2010-10-17T08:19:00.000Z	dominicdinada	ilovefairuz	but i was asking if that handler in the ubuntu forum for apache2.conf would be fine. seeing as i want it sitewide
+2010-10-17T08:21:00.000Z	ilovefairuz	dominicdinada	http://goo.gl/Kqsx
+2010-10-17T08:22:00.000Z	dominicdinada	ilovefairuz	 ok thankyou, i already had that link up but it was one of 5 all giving different directions, again thankyou

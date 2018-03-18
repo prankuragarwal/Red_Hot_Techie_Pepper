@@ -1,0 +1,21 @@
+2008-05-29T03:02:00.000Z	alexbobp		How do I make apt-get ignore a specific dependency when installing a package?
+2008-05-29T03:02:00.000Z	Chousuke	alexbobp	I don't think you can do that, but you can do it manually with dpkg
+2008-05-29T03:02:00.000Z	Chousuke	alexbobp	note that doing it may break your system.
+2008-05-29T03:03:00.000Z	alexbobp	Chousuke	wouldn't the worst case be breaking the package I'm installing with missing dependancies?
+2008-05-29T03:04:00.000Z	Chousuke	alexbobp	It might confuse apt.
+2008-05-29T03:04:00.000Z	Chousuke	alexbobp	what package is it, though?
+2008-05-29T03:04:00.000Z	alexbobp	Chousuke	I want to install wine without installing libgphoto2-2, or install libgphoto2-2 without installing udev.
+2008-05-29T03:05:00.000Z	Chousuke	alexbobp	you... don't have udev installed?
+2008-05-29T03:05:00.000Z	Chousuke	alexbobp	or is it trying to dl udev from a non-ubuntu repository?
+2008-05-29T03:05:00.000Z	alexbobp	Chousuke	It's on colinux.  All the stuff that interacts directly with hardware can't be installed.
+2008-05-29T03:05:00.000Z	Chousuke	alexbobp	ah
+2008-05-29T03:06:00.000Z	Chousuke	alexbobp	download the libgphoto package manually.
+2008-05-29T03:06:00.000Z	Chousuke	alexbobp	then you need to install it with dpkg and the appropriate --force -flags
+2008-05-29T03:07:00.000Z	alexbobp	Chousuke	can I make apt-get download the deb without thinking about dependancies?
+2008-05-29T03:08:00.000Z	Chousuke	alexbobp	apt-get -d install libgphoto2-2
+2008-05-29T03:09:00.000Z	alexbobp	Chousuke	it refuses to download the deb because of dependancy handling.
+2008-05-29T03:10:00.000Z	Chousuke	alexbobp	ah, aptitude can do it
+2008-05-29T03:10:00.000Z	Chousuke	alexbobp	aptitude download whatever
+2008-05-29T03:11:00.000Z	alexbobp	Chousuke	thanks.  I'll have to install aptitude, but if it works, it works
+2008-05-29T03:11:00.000Z	Chousuke	alexbobp	then you can install the libgphoto thing with dpkg -i libgphoto*deb --ignore-depends=udev
+2008-05-29T03:14:00.000Z	alexbobp	Chousuke	thanks, it's working.

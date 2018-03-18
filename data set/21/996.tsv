@@ -1,0 +1,21 @@
+2011-04-01T22:14:00.000Z	larious		having a problem install my deb package, can anyone help me out?
+2011-04-01T22:15:00.000Z	larious		having a problem install my deb package, can anyone help me out?
+2011-04-01T22:15:00.000Z	larious		having a problem install my deb package, can anyone help me out?
+2011-04-01T22:15:00.000Z	Combatjuan	larious	What seems to be the problem?
+2011-04-01T22:16:00.000Z	larious	Combatjuan	Errors were encountered while processing: openvpn
+2011-04-01T22:17:00.000Z	larious	Combatjuan	did you got my msg
+2011-04-01T22:18:00.000Z	Combatjuan	larious	Yes.  You'd be wise to settle down a bit though.  Helping takes time.  What command did you run?
+2011-04-01T22:18:00.000Z	larious	Combatjuan	sudo dpkg -i openvpn_2.2-beta5-ubuntu0_i386.deb
+2011-04-01T22:20:00.000Z	Combatjuan	larious	Use a paste site (e.g. http://goo.gl/ixcN9) and past the full output of the command.  Also, tail /var/log/dpkg.log and see if anything interesting is there.
+2011-04-01T22:23:00.000Z	larious	Combatjuan	http://paste.ubuntu.com/588329/
+2011-04-01T22:25:00.000Z	Combatjuan	larious	Looks like dependency problems.  openvpn can't be installed because it requires some other packages.  You'll have to grab liblz02, libpkcs11-helper, openvpn-blacklist and whatever others are needed (probably from the same place as you got the openvpn deb).
+2011-04-01T22:26:00.000Z	Combatjuan	larious	Is there some reason you can't use the openvpn packages in the official repository (apt-get install openvpn)?
+2011-04-01T22:26:00.000Z	larious	Combatjuan	but there is no other file like that there
+2011-04-01T22:28:00.000Z	Combatjuan	larious	Wherever "there" is, why use it instead of the ubuntu repository?  Installing 3rd party .debs is much harder and potentially dangerous compared to using your distro's packages.  There must be a reason you're using other ones.
+2011-04-01T22:29:00.000Z	larious	Combatjuan	my ubuntu is offline, I cant go online without fixing up two package, that package will help me to go online
+2011-04-01T22:31:00.000Z	Combatjuan	larious	I see.  It'll be tedious, but you'll need to grab all those packages openvpn requires.  I recommend getting them from here: http://packages.ubuntu.com/ for whatever version you're using.
+2011-04-01T22:32:00.000Z	Combatjuan	larious	To get a full list of dependencies: "% apt-cache depends openvpn"
+2011-04-01T22:42:00.000Z	larious	Combatjuan	can this package openvpn-blacklist_0.1-0ubuntu0.8.04.1_all.deb work for Ubuntu 10.04
+2011-04-01T22:42:00.000Z	Combatjuan	larious	No idea.  Seems like you should be able to find an official one for your version though.
+2011-04-01T22:45:00.000Z	larious	Combatjuan	cnt find any for 10.04
+2011-04-01T22:46:00.000Z	Combatjuan	larious	http://packages.ubuntu.com/lucid/net/ -- Search for openvpn

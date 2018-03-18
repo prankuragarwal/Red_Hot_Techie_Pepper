@@ -1,0 +1,22 @@
+2007-09-05T11:00:00.000Z	markelhas		where it goes again. i've a asus m3n with 1 gb of mem, when i try to boot ubutun the system is very very very slow, slower than the livecd. I've made the memtest and no errors found. I've tested a different 512 mem and same problem. Later i've put a 256 mem and it works just fine. What can i do to use 1g mem in my ubuntu?
+2007-09-05T11:01:00.000Z	markelhas		7.04
+2007-09-05T11:02:00.000Z	GyrosGeier	markelhas	try booting it with 512MB of RAM inserted, and mem=256M kernel option
+2007-09-05T11:03:00.000Z	GyrosGeier	markelhas	if that runs at normal speed, it is most likely that your mainboard chipset cannot handle that much memory
+2007-09-05T11:03:00.000Z	markelhas	GyrosGeier	i can try that by editing boot option right!?
+2007-09-05T11:04:00.000Z	markelhas	GyrosGeier	says that can 1G and in windows was working with 1G
+2007-09-05T11:04:00.000Z	GyrosGeier	markelhas	yes; you can do that at the boot prompt, no need to edit files
+2007-09-05T11:04:00.000Z	GyrosGeier	markelhas	I think Windows could use the extra memory as swapspace rather than "real" memory
+2007-09-05T11:05:00.000Z	markelhas	GyrosGeier	ikonia i've found this http://gentoo-wiki.com/FAQ_Linux_Memory_Management#The_mysterious_880_MB_limit_on_x86
+2007-09-05T11:06:00.000Z	GyrosGeier	markelhas	I think most kernels these days have HIGHMEM enabled
+2007-09-05T11:06:00.000Z	markelhas	GyrosGeier	but the laptop has 512m based and one expansion bay
+2007-09-05T11:07:00.000Z	GyrosGeier	markelhas	so 512M is fine?
+2007-09-05T11:07:00.000Z	markelhas	GyrosGeier	nop, with the 256 extra ok, but this extra 256 aren't mine
+2007-09-05T11:08:00.000Z	GyrosGeier	markelhas	ah, so 768 works, 1G doesn't
+2007-09-05T11:08:00.000Z	markelhas	GyrosGeier	yes
+2007-09-05T11:08:00.000Z	GyrosGeier	markelhas	that could indeed be HIGHMEM then, or cache
+2007-09-05T11:10:00.000Z	markelhas	GyrosGeier	yap it's true
+2007-09-05T11:12:00.000Z	markelhas	GyrosGeier	can i force to use the HIGHMEM ?
+2007-09-05T11:12:00.000Z	GyrosGeier	markelhas	that's a kernel config option that is most likely set (so it's unlikely that this is your problem)
+2007-09-05T11:13:00.000Z	markelhas	GyrosGeier	ok
+2007-09-05T11:14:00.000Z	GyrosGeier	markelhas	I'd try 800 and 900
+2007-09-05T11:14:00.000Z	GyrosGeier	markelhas	exactly 880 won't tell much

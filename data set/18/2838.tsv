@@ -1,0 +1,18 @@
+2010-02-09T02:08:00.000Z	swygue		Hello I'm trying automate a Ubuntu install using pxe and a preseed file, Ubuntu boots and the installer kicks off but fails to detect disk, I get "No root file system is defined". If switch to the shell terminal, and issue fdisk, I don't see any disk. If manually install Ubuntu using the CD-ROM on the same server, the installation detects the disk. Is there something I need to pass as a kernel parameter to get this working. My server is a HP 360. Thanks
+2010-02-09T02:08:00.000Z	ikonia	swygue	does the disk have hardware raid setup ?
+2010-02-09T02:10:00.000Z	swygue	ikonia	yes I am using hardware raid
+2010-02-09T02:11:00.000Z	ikonia	swygue	this is common when pxe booting, I've got a note on this, hang on
+2010-02-09T02:13:00.000Z	ikonia	swygue	here or #ubuntu-server
+2010-02-09T02:16:00.000Z	swygue	ikonia	did you respond, my IRC client crashed?
+2010-02-09T02:16:00.000Z	ikonia	swygue	just trying to find my notes on this
+2010-02-09T02:16:00.000Z	ikonia	swygue	I've gone through this pain with redhat and kickstart, the process should be the same with ubuntu
+2010-02-09T02:19:00.000Z	swygue	ikonia	not sure what process you are referring, I'm not experiencing this issue with my RHEL servers on the same hardware
+2010-02-09T02:19:00.000Z	ikonia	swygue	ooh really, it's working on your RHEL setup
+2010-02-09T02:19:00.000Z	swygue	ikonia	works fine with RHEL, no special configuration, other that I'm kickstarting
+2010-02-09T02:20:00.000Z	ikonia	swygue	rhel 5 (I assume you're using 5) must have it sorted then as 3 certainly didn't and I don't think 4 did
+2010-02-09T02:21:00.000Z	ikonia	swygue	yeah
+2010-02-09T02:22:00.000Z	ikonia	swygue	oops
+2010-02-09T02:24:00.000Z	ikonia	swygue	I can't find the darn module line, but basically you need to pass the cciss module at boot time
+2010-02-09T02:39:00.000Z	swygue	ikonia	how would pass the cciss module as kernel boot parameter. Another thing, I did modprobe -l on the problem server from the installation terminal, i did not see any cciss.ko file. shouldn't't i be seeing the module from that output
+2010-02-09T02:39:00.000Z	ikonia	swygue	it's not called cciss.ko - I can't remember the name and I don't have access to a dl to check it
+2010-02-09T02:40:00.000Z	swygue	ikonia	really, let me look around, in the mean time, how would I load the module from the pxe installer

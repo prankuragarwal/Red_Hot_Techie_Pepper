@@ -1,0 +1,23 @@
+2012-07-15T18:41:00.000Z	synned		an audio video sync issue with ubuntu 12.04 some help please
+2012-07-15T18:42:00.000Z	Meris	synned	OK, what Audio and what video hardware are you using and what is the trouble?
+2012-07-15T18:47:00.000Z	Meris	synned	I might be able to help you better if you answered my previous question. What hardware are you using, what are the steps to reproduce the faulty behaviour?
+2012-07-15T18:49:00.000Z	Meris	synned	if it involves more than one line of text, please use a pastebin, such as paste.ubuntu.com
+2012-07-15T18:55:00.000Z	synned	Meris	i have a gigabyte 865 motherboard and the video and sound card are onboard
+2012-07-15T18:55:00.000Z	Meris	synned	realtek ALC1200 / ALC899?
+2012-07-15T18:56:00.000Z	Meris	synned	please pastebin the output of lspci for me.
+2012-07-15T19:02:00.000Z	synned	Meris	http://paste.ubuntu.com/1093318/plain/
+2012-07-15T19:04:00.000Z	Meris	synned	please leave the /plain bit out of it next time, it requires you to login into Launchpad for some silly reason I can't fathom right now.
+2012-07-15T19:08:00.000Z	Meris	synned	thanks for the pastebin; does it help if you run the program with syncing difficulties through pasuspend? If that's the case then Pulse Audio is to blame
+2012-07-15T19:11:00.000Z	synned	Meris	havent really tried that
+2012-07-15T19:11:00.000Z	Meris	synned	it might work, just try pasuspend [the program you want to run that has syncing problems]
+2012-07-15T19:20:00.000Z	Meris	synned	that's really odd, because pulse is essentially sitting on top of alsa. Does your program specifically bind to a pulse sink?
+2012-07-15T19:22:00.000Z	synned	Meris	no i dont think so
+2012-07-15T19:23:00.000Z	Meris	synned	what program are we talking about?
+2012-07-15T19:24:00.000Z	synned	Meris	vlc rhythmbox and not only appliacations but online videos too
+2012-07-15T19:25:00.000Z	Meris	synned	true, but for the first time now, you tell me which apps are involved, which makes it easier to help you.
+2012-07-15T19:40:00.000Z	synned	Meris	now that i have pasuspened there is no sound at all
+2012-07-15T19:46:00.000Z	Meris	synned	that's strange, try pasuspend bash so you have an entire bash session under pasuspend. Try running alsamixer there, increasing volume levels where neccesary and run your program afterwards
+2012-07-15T20:01:00.000Z	synned	Meris	no i did it tried but no difference. i m deaf now
+2012-07-15T20:07:00.000Z	Meris	synned	well, it was worth the try... If I were you, I'd look into the connection between ALSA and Pulse. That is bound to create the lag somehow...
+2012-07-15T20:08:00.000Z	synned	Meris	ok fine ill i will have a go at it can u give me some suggestions that might help
+2012-07-15T20:11:00.000Z	Meris	synned	this may sound weird, but did you try a LiveCD of Ubuntu 12.04? If that works, it's definitely not hardware related. You might even look at the differences in configuration of ALSA and Pulse between the LiveCD environment and your local config.

@@ -1,0 +1,24 @@
+2009-06-13T23:30:00.000Z	mmm4m5m		anyone about xdg-open please? 'xdg-open file://' for userA open firefox, but for userB open w3m. How to change it to firefox as default?
+2009-06-13T23:31:00.000Z	crdlb	mmm4m5m	what desktop environment?
+2009-06-13T23:32:00.000Z	mmm4m5m	crdlb	gnome. 'xdg-open http://...' works correct for both users.
+2009-06-13T23:32:00.000Z	crdlb	mmm4m5m	then change the association in system > preferences > preferred applications
+2009-06-13T23:33:00.000Z	mmm4m5m	crdlb	'xdg-mime' does not help... works only for files. alternatives x-www-browser in /etc is correct
+2009-06-13T23:33:00.000Z	mmm4m5m	crdlb	prefered applications are correct for both users. Also firefox setting "default browser" is yes for both users.
+2009-06-13T23:34:00.000Z	crdlb	mmm4m5m	does it work if you run gnome-open directly?
+2009-06-13T23:35:00.000Z	mmm4m5m	crdlb	yes, gnome-open works. The only link which point to w3m in /etc/alternatives is www-browser (not x-www-browser).
+2009-06-13T23:35:00.000Z	crdlb	mmm4m5m	then figure out why the /usr/bin/xdg-open script is not running gnome-open
+2009-06-13T23:35:00.000Z	mmm4m5m	crdlb	I need to fix xdg-open, because it is used from lazarus and it does not open in browser.
+2009-06-13T23:36:00.000Z	crdlb	mmm4m5m	the logic is pretty simple: it checks for KDE_FULL_SESSION and GNOME_DESKTOP_SESSION_ID in the environment
+2009-06-13T23:36:00.000Z	crdlb	mmm4m5m	make sure the former is not set and the latter is
+2009-06-13T23:37:00.000Z	mmm4m5m	crdlb	ah, it is script... them let me check. thanks a lot
+2009-06-14T00:01:00.000Z	mmm4m5m	crdlb	I login as userA but run lazarus (xdg-open) as userB. So, no gnome session for userB. Still wondering 'xdg-open http://' works (x-www-browser), but '﻿xdg-open file://' does not work (www-browser). Both are URL, why they are different types?
+2009-06-14T00:02:00.000Z	crdlb	mmm4m5m	why would you run a GUI app as a different user?
+2009-06-14T00:03:00.000Z	mmm4m5m	crdlb	it is convinient (using 'xhost +si:localuser:userB)
+2009-06-14T00:04:00.000Z	crdlb	mmm4m5m	but why it use useful?
+2009-06-14T00:06:00.000Z	mmm4m5m	crdlb	I have few restricted users, separate home dirs.. instead of login or switch user, this is how I do it. I do not know is it wrong, but I like it.
+2009-06-14T00:08:00.000Z	crdlb	mmm4m5m	well, xdg-open's open_generic function seems to do odd things with file:/// uris, but I guess you could artificially export GNOME_DESKTOP_SESSION_ID
+2009-06-14T00:09:00.000Z	mmm4m5m	crdlb	another option - for userB, change PATH and put there different odg-open?
+2009-06-14T00:09:00.000Z	mmm4m5m	crdlb	I mean, xdg-open (sorry)
+2009-06-14T00:09:00.000Z	crdlb	mmm4m5m	that would work, I guess ...
+2009-06-14T00:10:00.000Z	crdlb	mmm4m5m	assuming it doesn't run /usr/bin/xdg-open
+2009-06-14T00:10:00.000Z	mmm4m5m	crdlb	right !! :) Ok, thanks a lot.

@@ -1,0 +1,24 @@
+2007-01-08T16:03:00.000Z	Sling		on my compaq presario v2000, i have setup all the drivers and blacklisted bcm43xx.  if i do a ndiswrapper -l it says bcmwl5 driver installed, hardware present....i restart, and when i do, the wireless light ont eh laptop just blinks, it doe snot stay constant which is what it does on windows.  i cannot access the internet or router either
+2007-01-08T16:04:00.000Z	Tonren	Sling	That's bizarre.  I'm on a Presario v2565us (that's v2000 series as well) and ndiswrapper has been working for me.
+2007-01-08T16:04:00.000Z	Sling	Tonren	do you have any ideas
+2007-01-08T16:04:00.000Z	Sling	Tonren	 Like what did u do after u installed the drivers?
+2007-01-08T16:05:00.000Z	Tonren	Sling	Try this: sudo rmmod bcm43xx; sudo modprobe ndiswrapper; sudo depmod -a;
+2007-01-08T16:06:00.000Z	Sling	Tonren	this could be the issue, it says ERROR: Module bcm34xx does not exist in /proc/modules
+2007-01-08T16:07:00.000Z	Tonren	Sling	Don't worry, that just means that bcm43xx wasn't already there.  We were removing (rm)ing it anyway.
+2007-01-08T16:07:00.000Z	Tonren	Sling	OK.  Now that that's done.  Please pastebin the output of sudo iwconfig and sudo ifconfig
+2007-01-08T16:08:00.000Z	Sling	Tonren	how do i pastebin
+2007-01-08T16:09:00.000Z	Tonren	Sling	Type "/topic" into your IRC chat program and click on the "Pastes to" link
+2007-01-08T16:10:00.000Z	Sling	Tonren	i can't exactly do a paste.... i'm on a different computer
+2007-01-08T16:10:00.000Z	Tonren	Sling	Oh, of course.
+2007-01-08T16:10:00.000Z	Sling	Tonren	when i plug it in i cannot get connect either....i can access the router, but i cannot access the intnet
+2007-01-08T16:11:00.000Z	Tonren	Sling	That sounds like a DNS issue.
+2007-01-08T16:11:00.000Z	Sling	Tonren	i thought about that, the forums say add the ISP DNS to the list......i don't understand that...how do i know the ISP DNS ip?
+2007-01-08T16:11:00.000Z	Tonren	Sling	On your other computer, try navigating to this IP address in your browser; http://72.14.207.99
+2007-01-08T16:12:00.000Z	Sling	Tonren	nope....didn't work
+2007-01-08T16:12:00.000Z	Tonren	Sling	Hm.  OK, on your working computer, ping google.com and write down its IP address.  Then try navigating to that IP address in the browser of your laptop.
+2007-01-08T16:13:00.000Z	Sling	Tonren	nothing
+2007-01-08T16:14:00.000Z	Tonren	Sling	OK, it's not STRICTLY a DNS issue.  If it was, that would work.
+2007-01-08T16:14:00.000Z	Sling	Tonren	yay
+2007-01-08T16:14:00.000Z	Tonren	Sling	Unfortunately, I don't really have the time to help you in depth... I'm trying to figure out something on my own at the moment.
+2007-01-08T16:14:00.000Z	Tonren	Sling	Umm... ok, summarize what you see when you type iwconfig and ifconfig
+2007-01-08T16:14:00.000Z	Sling	Tonren	shucks...thanks anyways

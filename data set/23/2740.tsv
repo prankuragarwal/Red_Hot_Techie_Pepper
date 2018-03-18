@@ -1,0 +1,23 @@
+2008-11-25T08:41:00.000Z	klament		Is there any command-line tool I can run that gives a report such as "looking up domain foo.bar on nameserver aaa.bbb.ccc.ddd takes Z (milli)seconds?" nslookup seems to be giving results that disagree with how ping is behaving when pinging a domain versus an IP address
+2008-11-25T08:41:00.000Z	AidenXi	klament	use dig?
+2008-11-25T08:42:00.000Z	klament	AidenXi	/ danbhfive: all right, I'll try those. Thanks :)
+2008-11-25T09:14:00.000Z	AidenXi	klament	sure
+2008-11-25T09:14:00.000Z	klament	AidenXi	would you try visiting www.tpl.toronto.on.ca? it's the toronto public library.. I'm curious to see if it loads up super fast for you in windows (1-3 seconds) while slow in linux (20+ seconds)
+2008-11-25T09:15:00.000Z	AidenXi	klament	both about equal speed, 1.13 on win, .95 on firefox/lin.
+2008-11-25T09:16:00.000Z	klament	AidenXi	interesting.. i'm getting a few people on ##linux with slower results.. those were times in "seconds" right?
+2008-11-25T09:16:00.000Z	AidenXi	klament	yes, from a 1gbit fiber line.
+2008-11-25T09:18:00.000Z	AidenXi	klament	heh well with 1gbit its pretty hard to load anything slow unless the server itself is slow.
+2008-11-25T09:19:00.000Z	AidenXi	klament	if it matters, chrome took about 17 seconds to load it...weird.
+2008-11-25T09:20:00.000Z	klament	AidenXi	just out of curiosity, have you done anything with your linux install that's changed how the ethernet card behaves? MTU sizes, etc?
+2008-11-25T09:22:00.000Z	AidenXi	klament	tried it from a Ubuntu machine and a CentOS machine, both loaded <1s in Firefox and 10-20 seconds in Chrome. Both are clean install systems with the exception of a custom mplayer.
+2008-11-25T09:22:00.000Z	klament	AidenXi	hmm.. it may be a driver problem with my specific network card or linux doesn't like my router then, as even doing an attempt to load the site from ubuntu's boot CD is slow... bizarre
+2008-11-25T09:24:00.000Z	AidenXi	klament	I'd say it was something on the sonicwall nat/dmz switch but if chrome loads it slow then I'd have to go with something in linux itself. Does the server do load balancing/web server do any kind of scripts/etc based on OS type?
+2008-11-25T09:26:00.000Z	klament	AidenXi	i'm not too sure to be honest... I just always thought the site was slow by default until I tried loading it up one of the few times I was in windows and was disturbed by the difference in speed
+2008-11-25T09:27:00.000Z	AidenXi	klament	dont have time to look through the scripting but I'm guessing it loads an alternate site based on which OS it detects, only thing I can think of. Or a load balancing system that does the same based on OS type.
+2008-11-25T09:27:00.000Z	klament	AidenXi	maybe i'll try installing firefox's user agent plugin :)
+2008-11-25T09:27:00.000Z	AidenXi	klament	give it a shot, can't hurt =)
+2008-11-25T09:56:00.000Z	AidenXi	klament	run the app as chroot/different user with restricted permissions?
+2008-11-25T09:58:00.000Z	klament	AidenXi	/ usser hmm.. ok, thank you :)
+2008-11-25T10:00:00.000Z	klament	AidenXi	/ usser that user would still be able to access the internet though, no? ie: the software could open up a new socket and connect elsewhere .. is there any way of having that program run without manually removing eth0 from ifconfig?
+2008-11-25T10:01:00.000Z	AidenXi	klament	what usser said =)
+2008-11-25T10:02:00.000Z	AidenXi	klament	chroot is powerful, really powerful. Look up guides on howtoforge and it should explain how you need to set it up to block networking.

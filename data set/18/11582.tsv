@@ -1,0 +1,18 @@
+2012-02-05T19:33:00.000Z	damo22	cool	dd
+2012-02-05T19:33:00.000Z	cool	damo22	can dd backup & restore grub too?
+2012-02-05T19:34:00.000Z	damo22	cool	yep
+2012-02-05T19:34:00.000Z	cool	damo22	how? dd if=source of=destination thing?
+2012-02-05T19:35:00.000Z	damo22	cool	yes exactly, but it copies a whole block device
+2012-02-05T19:35:00.000Z	damo22	cool	its not much use if you just want to back up a few files
+2012-02-05T19:37:00.000Z	cool	damo22	I want to backup my root drive, so I think dd should be useful for me.  but will it erase the destination as well?
+2012-02-05T19:37:00.000Z	damo22	cool	it will simply write block for block from the source to the destination until either it finishes, or it doesnt fit and it will stop
+2012-02-05T19:39:00.000Z	damo22	cool	ideally you should send the output to a file not another block device, otherwise you wont know where the end of the drive is
+2012-02-05T19:40:00.000Z	cool	damo22	good idea but how do I send it to a file? any syntax help? or should I go RTFM way! :P
+2012-02-05T19:40:00.000Z	damo22	cool	dd if=/dev/DRIVE of=/path/to/file
+2012-02-05T19:41:00.000Z	damo22	cool	bear in mind the whole drive must fit in the target mountpoint
+2012-02-05T19:41:00.000Z	cool	damo22	Sure, thanks no Problem
+2012-02-05T19:41:00.000Z	damo22	cool	you can even gzip the output on the fly
+2012-02-05T20:03:00.000Z	cool	damo22	the dd command you gave worked well. my backup has started  & generating file in gigabytes :D
+2012-02-05T20:04:00.000Z	damo22	cool	you might want to pipe the output to gzip
+2012-02-05T20:05:00.000Z	damo22	cool	it might be possible to run a separate process that compresses the file on the fly, even though youve already started to dump
+2012-02-05T20:06:00.000Z	cool	damo22	Interesting! I I never done that

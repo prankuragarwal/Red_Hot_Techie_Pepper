@@ -1,0 +1,22 @@
+2006-10-20T08:43:00.000Z	Psykus		question: trying to install ubuntu onto a serial ATA drive, but my computer doesn't support booting from it since it's on a PCI controller card. ubuntu recognizes the drive just fine in the installer, I just can't boot from it once it's finished and needs to reboot. i read that I could possibly make a grub bootdisk which would boot the drive, but i'm not sure how?
+2006-10-20T08:44:00.000Z	teledyn	Psykus	install grub to /dev/fd0
+2006-10-20T08:44:00.000Z	Psykus	teledyn	I tried that, on the liveCD, didn't work, got some sort of error
+2006-10-20T08:44:00.000Z	Psykus		grub-install /dev/fd0
+2006-10-20T08:45:00.000Z	teledyn	Psykus	grub-install --recheck /dev/fd0
+2006-10-20T08:45:00.000Z	Psykus	teledyn	what does the --recheck option do exactly?
+2006-10-20T08:46:00.000Z	teledyn		man grub-install  dude
+2006-10-20T08:46:00.000Z	Psykus		it said something about not recognizing it as a BIOS device
+2006-10-20T08:46:00.000Z	Psykus		can't remember the exact text
+2006-10-20T08:47:00.000Z	teledyn	Psykus	it rechecks the device map
+2006-10-20T08:47:00.000Z	Psykus	teledyn	ok, would I also need to specify the installed ubuntu? (since i'm running from the liveCD)
+2006-10-20T08:47:00.000Z	Psykus		as the root directory
+2006-10-20T08:48:00.000Z	teledyn		grub-install --root-directory=/target --recheck /dev/hda
+2006-10-20T08:48:00.000Z	Psykus		k, will try that
+2006-10-20T08:49:00.000Z	teledyn	Psykus	that should be /dev/fd0  and <target> is the mount point for the HD install
+2006-10-20T08:49:00.000Z	Psykus		ok, going to try that, back later
+2006-10-20T09:03:00.000Z	Psykus		no can do, it made the floppy disk succesfully, when booting off of it, I just get "GRUB Hard Disk Error"
+2006-10-20T09:04:00.000Z	Psykus		if I remembered who I was talking to i'd do the whole tab complete thing
+2006-10-20T09:05:00.000Z	Psykus		left the channel :P
+2006-10-20T09:06:00.000Z	Psykus		someone was helping me with creating a floppy boot disk for getting my sata drive booted
+2006-10-20T09:06:00.000Z	Psykus		yup
+2006-10-20T09:08:00.000Z	Psykus	teledyn	created the floppy successfully, upon booting from it, "GRUB Hard Disk Error"

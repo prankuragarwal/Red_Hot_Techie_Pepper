@@ -1,0 +1,18 @@
+2008-09-25T23:59:00.000Z	biouser		how to unzip without creating a new directory?
+2008-09-25T23:59:00.000Z	biouser		but keeping all sub directories ,.,,
+2008-09-25T23:59:00.000Z	biouser		creating the subdirectories
+2008-09-26T00:00:00.000Z	biouser		within the zip
+2008-09-26T00:00:00.000Z	unop	biouser	using the CLI or GUI?
+2008-09-26T00:01:00.000Z	biouser	unop	CLI
+2008-09-26T00:01:00.000Z	biouser	unop	but either way...
+2008-09-26T00:02:00.000Z	unop	biouser	there's the -d option to unzip that should help
+2008-09-26T00:04:00.000Z	biouser	unop	$ unzip -d filename.zip /path/to/where/to/extract/            ?
+2008-09-26T00:05:00.000Z	unop	biouser	almost.  unzip file.zip -d .  # . being the current directory
+2008-09-26T00:07:00.000Z	biouser	unop	 that did the same thing
+2008-09-26T00:09:00.000Z	unop	biouser	i guess there is no easy way then - if you know the name of the directory in the zip archive, you can do something like the following ...
+2008-09-26T00:10:00.000Z	unop	biouser	unzip file.zip -d . && mv directory_name/* . && rm -r directory_name
+2008-09-26T00:10:00.000Z	unop	biouser	if you are adding dotfiles into the archive, you need to turn on dotglobbing too
+2008-09-26T00:10:00.000Z	biouser	unop	I just broke down and did it with the gui
+2008-09-26T00:11:00.000Z	unop	biouser	sorry to hear that
+2008-09-26T00:11:00.000Z	biouser	unop	but yeah there are some hidden things that I might be missing that way
+2008-09-26T00:11:00.000Z	unop	biouser	then before you run the command, you need to have this.  shopt -s dotglob

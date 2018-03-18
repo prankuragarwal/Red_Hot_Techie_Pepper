@@ -1,0 +1,23 @@
+2007-06-09T15:19:00.000Z	lina_		do new files or files downloaded from the internet have executable permissions by default?
+2007-06-09T15:21:00.000Z	lina_		like, if i download a text file from a unix server that has the executable bit set, will that be preserved?
+2007-06-09T15:21:00.000Z	DarkED	lina_	i'm pretty sure it wont
+2007-06-09T15:21:00.000Z	DarkED	lina_	thats why we have to do chmod +x for .bin files
+2007-06-09T15:23:00.000Z	lina_	DarkED	but i seem to be able to run scripts off the bat without chmoding them.. i havent changed the ssytem at all
+2007-06-09T15:23:00.000Z	DarkED	lina_	you mean like running bash scripts and such? yeah, i dont think they have to be executables
+2007-06-09T15:24:00.000Z	lina_	DarkED	I am just thinking about that dodgey openoffice "badbunny" worm.. it copys a script to an xchat directory
+2007-06-09T15:25:00.000Z	lina_	DarkED	shell scripts do have to be set executable.. or you couldn't execute it
+2007-06-09T15:25:00.000Z	DarkED	lina_	yes that is true, this is one of the reasons linux is so secure agains spyware/virii
+2007-06-09T15:26:00.000Z	DarkED	lina_	er, .bin's are not shell scripts. .bin's are binary executables, and yes, they have to be chmodded +x before executing
+2007-06-09T15:26:00.000Z	DarkED	lina_	perhaps shell scripts do as well... i cant remember heh
+2007-06-09T15:27:00.000Z	DarkED	lina_	but the thing is, when you download a file, your linux system gives it permissions depening on which users downloads it (user accout, root, etc.) but it is never set executable by default
+2007-06-09T15:27:00.000Z	lina_	DarkED	i am aware that a .bin generaly is a binary application file.. but shell scripts still need the executable bit set
+2007-06-09T15:27:00.000Z	lina_	DarkED	will test that
+2007-06-09T15:27:00.000Z	DarkED	lina_	ok, so shell scripts do need the executable bit
+2007-06-09T15:31:00.000Z	lina_	DarkED	well, i made a ls.sh (containing only /bin/ls) on my webserver and set the exectuable bit. i then downloaded it to ubuntu and ran "/bin/bash ls.sh" this worked
+2007-06-09T15:32:00.000Z	lina_	DarkED	although the executable bit is actually not preserved it seems
+2007-06-09T15:32:00.000Z	DarkED	lina_	so the script ran without setting it executable?
+2007-06-09T15:33:00.000Z	lina_	DarkED	if you type /bin/bash whatever.sh then yeah
+2007-06-09T15:33:00.000Z	lina_	DarkED	wget www.mrintegrity.net/~variant/ls.sh
+2007-06-09T15:33:00.000Z	lina_	DarkED	it has the +x set on the server
+2007-06-09T15:33:00.000Z	DarkED	lina_	yeah
+2007-06-09T15:35:00.000Z	lina_	DarkED	rob_p thanks!

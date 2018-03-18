@@ -1,0 +1,24 @@
+2012-08-04T14:42:00.000Z	llutz_	SwashBuckla	doesnt holding down left-shift at boot force the menu to be shown?
+2012-08-04T14:43:00.000Z	SwashBuckla	llutz_	no
+2012-08-04T14:43:00.000Z	llutz_	SwashBuckla	then you should get a live-cd and fix this
+2012-08-04T14:44:00.000Z	SwashBuckla	llutz_	what do I do in the livecd?
+2012-08-04T14:44:00.000Z	llutz_	SwashBuckla	change your grub-settings
+2012-08-04T14:44:00.000Z	llutz_	SwashBuckla	or just boot into your ubuntu to fix it
+2012-08-04T14:44:00.000Z	SwashBuckla	llutz_	lololol
+2012-08-04T14:44:00.000Z	SwashBuckla	llutz_	if I could do that I wouldn't have a problem
+2012-08-04T14:44:00.000Z	llutz_	SwashBuckla	^^ using the live-cd
+2012-08-04T14:45:00.000Z	SwashBuckla	llutz_	so livecd must be 64 bit if OS is 64 bit/
+2012-08-04T14:46:00.000Z	llutz_	SwashBuckla	to change grub? no any live-cd would do
+2012-08-04T14:46:00.000Z	SwashBuckla	llutz_	wrong
+2012-08-04T14:46:00.000Z	llutz_	SwashBuckla	just set timeout=3 in grub-cfg to boot once
+2012-08-04T14:47:00.000Z	llutz_	SwashBuckla	don't ask if you don't want an answer
+2012-08-04T14:47:00.000Z	llutz_	SwashBuckla	you'll need 64bit live-cd if you want to run anything inside a chroot. not for just changing grub-timeout
+2012-08-04T14:53:00.000Z	SwashBuckla	llutz_	isn't it necessary to run chroot to modify grub2 though?
+2012-08-04T14:53:00.000Z	SwashBuckla	llutz_	i.e. you do need the same arch for the live-cd
+2012-08-04T14:53:00.000Z	llutz_	SwashBuckla	you don't read what i write. to change grub it is, just to change a textfile to boot once its not
+2012-08-04T14:53:00.000Z	llutz_	SwashBuckla	it does /boot/grub/grub.cfg
+2012-08-04T14:54:00.000Z	llutz_	SwashBuckla	 grep timeout /boot/grub/grub.cfg   one is set to "-1" and the other to 0 in your case, change the 0 into 5 or whatever
+2012-08-04T14:55:00.000Z	llutz_	SwashBuckla	then you can boot into your ubuntu and THEN fix grub the correct way
+2012-08-04T14:55:00.000Z	llutz_	SwashBuckla	once booted into ubuntu, edit /etc/default/grub and run "sudo update-grub" after it
+2012-08-04T14:56:00.000Z	llutz_	SwashBuckla	and this can be made from any live-cd you want, it just needs an editor and to be able to read/write your filesystem used for /boot
+2012-08-04T14:58:00.000Z	llutz_	SwashBuckla	supergrub-cd would be my choice, just to boot directly into your ubuntu

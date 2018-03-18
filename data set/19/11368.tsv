@@ -1,0 +1,19 @@
+2006-03-27T07:35:00.000Z	starpause		i just insterted an sd card on my system and it's showing up in /media/usbdisk/ but using that for the of= parameter of dd doesn't work. how can use dd to write an image of an sd card onto my /media/usbdisk ???
+2006-03-27T07:36:00.000Z	Frogzoo	starpause	you need to dd of= to the device, not where it's mounted
+2006-03-27T07:37:00.000Z	Frogzoo	starpause	also, I wouldn't have the device mounted while you do that
+2006-03-27T07:37:00.000Z	starpause	Frogzoo	thanks, i'll try that
+2006-03-27T07:44:00.000Z	starpause	Frogzoo	i've unmounted the usbdisk, but how do i figure out what the device is called to dd to it?
+2006-03-27T07:44:00.000Z	Frogzoo	starpause	easiest to just mount it, then 'mount'
+2006-03-27T07:46:00.000Z	starpause	Frogzoo	would 'sde' be the device?
+2006-03-27T07:46:00.000Z	Frogzoo	starpause	certainly could be - just be sure you don't inadvertently clobber some other file system
+2006-03-27T07:47:00.000Z	Frogzoo	starpause	best way to check is dd if=/dev/sde | od -c | less
+2006-03-27T07:49:00.000Z	starpause	Frogzoo	that puts a bunch of trash i don't understand on my screen? heh
+2006-03-27T07:50:00.000Z	starpause	Frogzoo	but drying a 'dd if=sd.dd of=/dev/sde' returns 'dd: opening '/dev/sde': Permission denied
+2006-03-27T07:54:00.000Z	Frogzoo	starpause	best way to check is 'sudo dd if=/dev/sde | od -c | less
+2006-03-27T07:55:00.000Z	starpause	Frogzoo	what should i expect out of that?
+2006-03-27T07:56:00.000Z	Frogzoo	starpause	now remove the drive & see if the command still works ;)
+2006-03-27T07:57:00.000Z	starpause	Frogzoo	perfect, it did not work :)
+2006-03-27T07:57:00.000Z	Frogzoo	starpause	cool
+2006-03-27T07:59:00.000Z	starpause	Frogzoo	i've re-inserted the card, and unmounted it again. what parameter should i pass to of= to hit sde?
+2006-03-27T08:00:00.000Z	Frogzoo	starpause	/dev/sde or /dev/sde# depending
+2006-03-27T08:01:00.000Z	starpause	Frogzoo	attempting "dd if=sd.dd of=/dev/sde" or /dev/sde1 both return "dd: opening '/dev/sde': Permission denied

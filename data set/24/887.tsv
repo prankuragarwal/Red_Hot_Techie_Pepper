@@ -1,0 +1,24 @@
+2011-09-28T01:37:00.000Z	fuho		Hi, hopefully short question, how can I add a user to sudoers in terminal? Ubuntu 11.04 Server 32b
+2011-09-28T01:37:00.000Z	Flannel	fuho	You don't need to add them to sudoers, just add them to the admin group: sudo adduser username admin
+2011-09-28T01:38:00.000Z	fuho	Flannel	I dont want the user to be admin all the time, so he cant accidentaly f***k things up
+2011-09-28T01:38:00.000Z	Flannel	fuho	I don't understand what you're trying to do.  You want to let them use sudo, but not use sudo?
+2011-09-28T01:39:00.000Z	fuho	Flannel	I want them to be able to do sudo, but not be root. I think I misunderstood you, my bad.
+2011-09-28T01:40:00.000Z	fuho	Flannel	Will try right away.
+2011-09-28T01:40:00.000Z	Flannel	fuho	sudo is effectively giving them root access.
+2011-09-28T01:40:00.000Z	Flannel	fuho	but, that command will 'merely' let them use sudo.
+2011-09-28T01:40:00.000Z	fuho	Flannel	I dont have group admin though
+2011-09-28T01:41:00.000Z	Flannel	fuho	Did you remove it? or what's your set up?
+2011-09-28T01:42:00.000Z	fuho	Flannel	Its vanilla set up, just reinstalled the server 3 days ago.
+2011-09-28T01:42:00.000Z	fuho	Flannel	ubuntu 11.04 server 32b
+2011-09-28T01:42:00.000Z	fuho	Flannel	Its running on VPS
+2011-09-28T01:42:00.000Z	Flannel	fuho	If this is a vanilla install that didn't have any installation issues, then yes, you have an admin group.  If you had some installation issues, you may not have an admin group.
+2011-09-28T01:45:00.000Z	fuho	Flannel	I havent seen the install, I only have web access to the management console.
+2011-09-28T01:46:00.000Z	Flannel	fuho	Ah, this is someone else's VPS?  That's not unusual then.  Many of those installs aren't "vanilla"
+2011-09-28T01:48:00.000Z	fuho	Flannel	Yes its on some companys hardware I just pay for the VPS. Do you have any other suggestions?
+2011-09-28T01:48:00.000Z	Flannel	fuho	And you current have root access to that system, riht?
+2011-09-28T01:48:00.000Z	Flannel	fuho	(not a regular user with sudo, but actual root)
+2011-09-28T01:49:00.000Z	fuho	Flannel	I have root access, and I made myslef standard user as well. I can always just su root, but I thought sudoing my
+2011-09-28T01:50:00.000Z	Flannel	fuho	right, so it's the standard VPS type set up that many VPSs seem to prefer (not a vanilla set up).  So, you can either make a group named 'admin' and set up your sudoers like the default sudoers (see the wikipage on that), or you can add individual accounts by name to your sudoers.
+2011-09-28T01:51:00.000Z	fuho	Flannel	Adding one user would be great, it will be just me using the server anyways.
+2011-09-28T01:52:00.000Z	Flannel	fuho	https://help.ubuntu.com/community/Sudoers will give you a good run down of that file, I suggest you read the whole document, try to understand it, and come back here for help.  You have a root user, so if you mess up your sudoers so no one can sudo, you still have access to fix it (you should still use visudo to edit though)
+2011-09-28T01:53:00.000Z	fuho	Flannel	 Ok, thanks.

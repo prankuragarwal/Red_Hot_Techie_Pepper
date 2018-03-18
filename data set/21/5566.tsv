@@ -1,0 +1,21 @@
+2007-09-26T13:54:00.000Z	getnthevan4candy		i tried to configure the driver for nvidia, and when i got to the terminal step, it said the script could not be automatically executed. what do i do?
+2007-09-26T13:56:00.000Z	getnthevan4candy		it says "error: your x configuration has been altered".... any ideas?
+2007-09-26T13:56:00.000Z	ronnie	getnthevan4candy	your desktop isn't loading because of x server issues then right?
+2007-09-26T13:57:00.000Z	ronnie	getnthevan4candy	do dpkg-reconfigure xserver-xorg as root and if you don't know which driver to use try vesa, lspci should list your card then its only a matter of looking through repository for right driver
+2007-09-26T13:59:00.000Z	ronnie	getnthevan4candy	what?
+2007-09-26T14:00:00.000Z	ronnie	getnthevan4candy	if you don't feel like going through that then nano /etc/X11/xorg.conf and fix your settings up some
+2007-09-26T14:14:00.000Z	ronnie	getnthevan4candy	you may feel extremely stupid but when you were on your desktop before you could have went to restricted manager under system and instantly had nvidia driver working ;)
+2007-09-26T14:15:00.000Z	getnthevan4candy	ronnie	: i feel stupid because this is my first linux experience.
+2007-09-26T14:16:00.000Z	ronnie	getnthevan4candy	I had same problem yesterday I went overkill on setting up graphics driver then noticed it worked fine if I just checked that box on restricted drivers manager
+2007-09-26T14:17:00.000Z	getnthevan4candy	ronnie	: come again?
+2007-09-26T14:18:00.000Z	ronnie	getnthevan4candy	hmm.. that might be bad then try pulling up synaptic and make sure you have appropriate restricted-modules for your kernel
+2007-09-26T14:18:00.000Z	getnthevan4candy	ronnie	: what are the appropriate..... this is the first time i've done linux. ever. can you put it into idiot terms for me?
+2007-09-26T14:18:00.000Z	ronnie	getnthevan4candy	there is nvidia-glx, nvidia-glx-new, nvidia-glx-legacy you might want to figure out which package yours will need
+2007-09-26T14:19:00.000Z	ronnie	getnthevan4candy	also nvidia-settings package and some other one
+2007-09-26T14:19:00.000Z	ronnie	getnthevan4candy	your using a 32 bit operating system right? x86?
+2007-09-26T14:20:00.000Z	ronnie	getnthevan4candy	then uname -r command lists what kernel your using, get restricted modules with that label ok
+2007-09-26T14:20:00.000Z	ronnie	getnthevan4candy	you can search with synaptic or if your on command line try apt-cache search restricted-modules
+2007-09-26T14:21:00.000Z	ronnie	getnthevan4candy	then apt-get install package
+2007-09-26T14:22:00.000Z	ronnie	getnthevan4candy	install a 32 bit operating system on your computer and save your time, the 64 bit OS is only for servers and weird debugging database floating point jibbery stuff :/
+2007-09-26T14:25:00.000Z	ronnie	getnthevan4candy	64 bit os just allows extra machine code cheats that do nothing for average user
+2007-09-26T14:26:00.000Z	ronnie	getnthevan4candy	for some hardware it might be neccesary but that sort of hardware would never make it off the shelfs

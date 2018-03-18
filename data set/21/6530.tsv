@@ -1,0 +1,21 @@
+2009-01-03T20:18:00.000Z	Whitor		Hi. I had a system running flawlessly on 8.04, Decided to upgrade to 8.10. FAIL - the upgrade looked like it went fine, but upon reboot, I get a message: Kernel Panic - not syncing: VFS: Unable to mount root fs on unknown block(0,0)
+2009-01-03T20:18:00.000Z	Whitor		repost from above
+2009-01-03T20:19:00.000Z	Whitor		but if I choose an older kernel, I can get it to boot
+2009-01-03T20:19:00.000Z	Whitor		but I have no control in X
+2009-01-03T20:19:00.000Z	piksi	Whitor	that error has been documented years ago with many ubuntu updates
+2009-01-03T20:20:00.000Z	Whitor	piksi	so you are familiar with the solution ?
+2009-01-03T20:21:00.000Z	piksi	Whitor	iirc usually it's due to grub trying to access wrong partition uuid so check out what's the uuid of your /boot and then modify grub menu.lst to point to the correct partition. if the error appears already before grub menu then you have propably crap in MBR and just need to rewrite mbr with correct info
+2009-01-03T20:22:00.000Z	Whitor	piksi	yeah, I checked that, root=(0,1)- is correct, boots with older kernels
+2009-01-03T20:23:00.000Z	piksi	Whitor	boot to rescue mode on cd, mount your file systems and check /dev/disk/by-* directories and their contents and fstab contents
+2009-01-03T20:24:00.000Z	Whitor	piksi	What am I checking for ?
+2009-01-03T20:24:00.000Z	piksi	Whitor	and after that check if menu.lst has correct uuid (the long string of dashes, letters and numbers)
+2009-01-03T20:30:00.000Z	Whitor	piksi	 in grub/menu.lst The root UUID of the failing kernel option is the same as all the other (older semi-working) kernel options
+2009-01-03T20:34:00.000Z	piksi	Whitor	ok, and is the line above it that only says "uuid blahblahblahblah" the uuid of the boot partition you see in fstab?
+2009-01-03T20:35:00.000Z	Whitor	piksi	yes, the other one I see is the swap
+2009-01-03T20:36:00.000Z	piksi	Whitor	ok, then i suggest you boot to rescue mode from the cd and run grub to update mbr and everything to ensure it's set up correclty. if that doesn't work then i can't remember what the error could be. the last time i ran to that error was with ubuntu 5 and 6
+2009-01-03T20:37:00.000Z	Whitor	piksi	ew. ok thx
+2009-01-03T22:01:00.000Z	Whitor	piksi	hey! I found the solution my first problem. I had to manually make an initrd img file with sudo update-initramfs -c -k 2.6.27-11
+2009-01-03T22:03:00.000Z	piksi	Whitor	ah so initrd was the culprit for wrong partition info... great that you found the problem :-)
+2009-01-03T22:04:00.000Z	Whitor	piksi	the initrd.img file didn't exist at all!
+2009-01-03T22:05:00.000Z	piksi	Whitor	ah well that explains a lot. it's really odd if the updater hasn't generated a new initrd at all...
+2009-01-03T22:07:00.000Z	Whitor	piksi	yeah. it is odd. But apparently I'm not the first one with this issue. Than god for the internets

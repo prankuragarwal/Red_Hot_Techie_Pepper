@@ -1,0 +1,21 @@
+2010-08-23T06:29:00.000Z	gaelsong		libgcflashplayer.so is crashing in chrome anyone have a fix for that?
+2010-08-23T06:31:00.000Z	gaelsong		libgcflashplayer.so is crashing in chrome anyone have a fix for that?
+2010-08-23T06:32:00.000Z	ActionParsnip	gaelsong	don't you mean libflashplayer.so
+2010-08-23T06:32:00.000Z	gaelsong	ActionParsnip	no, I mean libgcflashplayer.so thats the name of the file as reported by chrome
+2010-08-23T06:33:00.000Z	ActionParsnip	gaelsong	i use chrome, let me see if I have the file
+2010-08-23T06:34:00.000Z	ActionParsnip	gaelsong	here are all the .so files on my system with "libgc" in them: http://pastebin.com/gL4B9V28
+2010-08-23T06:35:00.000Z	gaelsong	ActionParsnip	thanks I'll take a look at that.
+2010-08-23T06:35:00.000Z	ActionParsnip	gaelsong	if you move the file do you lose flash?
+2010-08-23T06:36:00.000Z	gaelsong	ActionParsnip	I haven't tried moving the file yet, some flash players work, others crash
+2010-08-23T06:37:00.000Z	ActionParsnip	gaelsong	can you use http://pastie.org to give the output of: dpkg -l | grep flash; dpkg -l | grep gnash; dpkg -l | grep swf     thanks
+2010-08-23T06:39:00.000Z	gaelsong	ActionParsnip	the file exists at /opt/google/chrome/libgcflashplayer.so
+2010-08-23T06:41:00.000Z	ActionParsnip	gaelsong	hmm, i'm guessing you installed with the archive rather than using a repo
+2010-08-23T06:41:00.000Z	ActionParsnip	gaelsong	can you give the output of the above command too please
+2010-08-23T06:42:00.000Z	gaelsong	ActionParsnip	I installed from http://www.google.com/chrome and yep gimme a sec I'll get that output for ya
+2010-08-23T06:43:00.000Z	gaelsong	ActionParsnip	http://pastie.org/1108933
+2010-08-23T06:44:00.000Z	ActionParsnip	gaelsong	ok then try this: sudo apt-get --purge remove flashplugin-nonfree; sudo apt-get --purge autoremove; sudo apt-get clean; sudo apt-get install flashplugin-nonfree
+2010-08-23T06:46:00.000Z	gaelsong	ActionParsnip	result of that command sha256sum mismatch install_flash_player_10_linux.tar.gz
+2010-08-23T06:47:00.000Z	ActionParsnip	gaelsong	http://klaith.wordpress.com/2009/04/04/the-flash-plugin-is-not-installed/
+2010-08-23T06:47:00.000Z	gaelsong	ActionParsnip	not that it would matter that much I don't think, Google Chrome has Flash Integrated 5.0.375.127 so it doesn't use the external plugin
+2010-08-23T06:48:00.000Z	ActionParsnip	gaelsong	not sure then. I use chromium daily and its flawless
+2010-08-23T06:49:00.000Z	gaelsong	ActionParsnip	yeah I do to, on all but this computer. /shrug, first time I've had this happen

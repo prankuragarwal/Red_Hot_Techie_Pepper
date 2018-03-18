@@ -1,0 +1,19 @@
+2012-07-26T20:33:00.000Z	indigofera		there is no xorg.conf. only xorg.conf.fail
+2012-07-26T20:33:00.000Z	indigofera		pastebin http://pastebin.com/f5UhBF66
+2012-07-26T20:34:00.000Z	indigofera		i cannot get net connection on the failed login
+2012-07-26T20:34:00.000Z	kyle__	indigofera	Then it's using it's auto-generated config.  You may have to create an xorg (or partial xorg).conf file to get it to work how you want.
+2012-07-26T20:39:00.000Z	kyle__	indigofera	I didn't.  You can run X -configure, as root, when X isn't running.  It will cobble togeather a complete xorg.conf file.  You can then edit it, and put it in /etc/X11/
+2012-07-26T21:51:00.000Z	kyle__	indigofera	If you have over 4GB of memory, you'll need to use a PAE kernel to use it.  No processes will be able to allocate more than 4GB to itself, etc.
+2012-07-26T21:51:00.000Z	kyle__	indigofera	More or less, if you don't have a monster machine or a server, 32bit will serve your needs just fine
+2012-07-26T21:51:00.000Z	indigofera	kyle__	apart from that - because i have been trying for over 10 hours to install on a 64 bit system am getting a fatal error "screen not found"
+2012-07-26T21:52:00.000Z	kyle__	indigofera	screen not found sounds like something else... can you do a text install?
+2012-07-26T21:55:00.000Z	indigofera	kyle__	if i then install the pae kernel will it be the same as a 64 bit system
+2012-07-26T21:56:00.000Z	kyle__	indigofera	No, not at all.  The PAE kernel gives a constant 5-15% performance hit, because of all the tricks it does to use more than 4GB of memory on a 32bit system.
+2012-07-26T21:56:00.000Z	kyle__	indigofera	How much memory do you have?
+2012-07-26T21:56:00.000Z	kyle__	indigofera	free, or top should tell you
+2012-07-26T21:57:00.000Z	kyle__	indigofera	Then you could use 32bit just fine, or 64bit.  I don't think the issue you're experiencing has anything to do with 32vs64 however.
+2012-07-26T21:59:00.000Z	indigofera	kyle__	my issue is i had mint 9 installed since 2010 no problem - yesterday i installed mint xfce that too worked well. it was installed parallely
+2012-07-26T22:00:00.000Z	kyle__	indigofera	Did you do an update or any other thing that would have changed it?
+2012-07-26T22:01:00.000Z	indigofera	kyle__	no update
+2012-07-26T22:02:00.000Z	kyle__	indigofera	THat's strange.  If you remove your /var/log/X*.log, run it again, maybe you can pastebin the log file, and check with people in #xorg?
+2012-07-26T22:10:00.000Z	indigofera	kyle__	will try

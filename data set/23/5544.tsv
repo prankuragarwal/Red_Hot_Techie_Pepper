@@ -1,0 +1,23 @@
+2009-09-28T12:53:00.000Z	spaceBARbarian		prince_jammys>> that fixed it, dont know what was wrong but the updated packages solved the issue
+2009-09-28T12:55:00.000Z	spaceBARbarian		prince_jammys>> nvm, that didnt work, i spoke too soon. the installation failed for some reason
+2009-09-28T12:57:00.000Z	spaceBARbarian		prince_jammys>> yeah now i am getting this "vlc: error while loading shared libraries: /usr/lib/libvlc.so.2: file too short"
+2009-09-28T12:58:00.000Z	spaceBARbarian		prince_jammys>> not sure how, ive tried apt-get remove but that doesnt help
+2009-09-28T12:59:00.000Z	spaceBARbarian		prefrontal_>> i have some red stuff realted to VLC in synaptic
+2009-09-28T13:00:00.000Z	spaceBARbarian		prince_jammys>> i have some red stuff realted to VLC in synaptic
+2009-09-28T13:01:00.000Z	spaceBARbarian		prince_jammys>> okay same errors with apt-get purge, here - http://pastebin.org/28018
+2009-09-28T13:03:00.000Z	spaceBARbarian		prince_jammys>> yeah i dont know whats going on : (
+2009-09-28T13:03:00.000Z	spaceBARbarian		prince_jammys>> should i just go reomove these packages manually ?
+2009-09-28T13:05:00.000Z	Jordan_U	spaceBARbarian	You can use debsums to find out what files are zero size
+2009-09-28T13:05:00.000Z	Jordan_U	spaceBARbarian	Are you using ext4?
+2009-09-28T13:07:00.000Z	Jordan_U	spaceBARbarian	Did you lose power or force shut down recently?
+2009-09-28T13:09:00.000Z	Jordan_U	spaceBARbarian	Try running "sudo apt-get install --reinstall libvlc2 libvlccore"
+2009-09-28T13:12:00.000Z	Jordan_U	spaceBARbarian	Yes, use debsums, also use sysrq next time ( and tell your friend to as well )
+2009-09-28T13:14:00.000Z	Jordan_U	spaceBARbarian	np
+2009-09-28T13:16:00.000Z	Jordan_U	spaceBARbarian	"debsums -c" should give you a list of all of the packages you need to reinstall, unfortunately it will also give a *lot* of false positives. I'm looking for something better
+2009-09-28T13:24:00.000Z	Jordan_U	spaceBARbarian	run "sudo apt-get install debsums && sudo debsums_init" It will take a while and require a lot of downloading, once it's done you can check what files are corrupted
+2009-09-28T13:42:00.000Z	Jordan_U	spaceBARbarian	Still here?
+2009-09-28T13:45:00.000Z	Jordan_U	spaceBARbarian	Well I have a way of detecting the files without false positives now
+2009-09-28T13:46:00.000Z	Jordan_U	spaceBARbarian	No, that just prepares the checksums
+2009-09-28T13:47:00.000Z	Jordan_U	spaceBARbarian	Then you need to check if the files match the checksums
+2009-09-28T13:48:00.000Z	Jordan_U	spaceBARbarian	which you should be able to do by running this ( after the debsums_init ): sudo bash -c 'debsums -c | { while read file; do if [[ ! -s "$file" ]]; then echo "$file" ; fi; done;  }'
+2009-09-28T13:49:00.000Z	Jordan_U	spaceBARbarian	Well I'm curious if it works :)

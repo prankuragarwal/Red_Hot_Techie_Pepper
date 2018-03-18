@@ -1,0 +1,18 @@
+2009-03-12T19:27:00.000Z	ignis__		does any one here use openvpn?
+2009-03-12T19:27:00.000Z	ignis__		openvpn channel is not reponsive
+2009-03-12T19:27:00.000Z	allquixotic	ignis__	Yes, I use it
+2009-03-12T19:28:00.000Z	ignis__	allquixotic	gfather ,well thank you both i would really appreciate a small help
+2009-03-12T19:28:00.000Z	allquixotic	ignis__	I run OpenVPN server on a Fedora 10 jeOS inside virtualbox on ubuntu server :) didn't want to risk messing up the server's networking because i don't have out of band management, otherwise i might have tried it on the native ubuntu :P
+2009-03-12T19:30:00.000Z	allquixotic	ignis__	You might also need to specify "client-to-client" in the server-side config
+2009-03-12T19:32:00.000Z	ignis__	allquixotic	wait, if i use push route it gives my clients the ability to talk to inner pc's?
+2009-03-12T19:33:00.000Z	allquixotic	ignis__	push "route ..." can do almost anything you can imagine. It's basically telling the client to run the route command. Read the manpages!
+2009-03-12T19:33:00.000Z	allquixotic	ignis__	client-to-client allows multiple connected users to the VPN to ocmmunicate with one another
+2009-03-12T19:34:00.000Z	ignis__	allquixotic	but i want them to communicate with other computers from within the network, not one another
+2009-03-12T19:35:00.000Z	ignis__	allquixotic	how do i gain that?
+2009-03-12T19:35:00.000Z	allquixotic	ignis__	If you want the VPN-connected clients to have _all_ IP traffic redirected through your internet gateway -- that is, any IP address that your server resolves will be resolved in exactly the same way by the clients, and your VPN server basically becomes a NAT -- then use redirect-gateway, along with iptables
+2009-03-12T19:36:00.000Z	allquixotic	ignis__	If you use redirect-gateway and the proper firewall rules, then you can determine which routes your VPN clients can access by sitting down at the server's console and pinging sites... whatever responds will also be accessible to clients
+2009-03-12T19:39:00.000Z	allquixotic	ignis__	You would have to use push "route ..." but I'm not exactly sure how to do it. You should make sure the desired IPs and subnets match.
+2009-03-12T19:39:00.000Z	allquixotic	ignis__	And you might need to do some masquerade/forward hacks with iptables to redirect stuff coming off a separate NIC (if that's how you have it set up) into the tun0
+2009-03-12T19:40:00.000Z	allquixotic	ignis__	I don't push any routes in my configuration, I just use the full tunneling via redirect-gateway. So I don't have the knowledge to answer, sorry :( Be patient and ask your question in #openvpn and someone will respond eventually
+2009-03-12T19:40:00.000Z	ignis__	allquixotic	i am dying here can't stand this anymore, so much simpler on windows
+2009-03-12T19:40:00.000Z	ignis__	allquixotic	thanks

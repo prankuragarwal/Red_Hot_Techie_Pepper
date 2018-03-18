@@ -1,0 +1,24 @@
+2006-08-17T11:17:00.000Z	digitallotus	simsalabim	you can tell apache not to follow symlinks...
+2006-08-17T11:18:00.000Z	simsalabim	digitallotus	yes probably i can tell it not to follow symlinks in /var/www, but still shouldnt that be set per default?
+2006-08-17T11:19:00.000Z	digitallotus	simsalabim	not sure... some people might want that setting... i guess it's up to the package maintainer...
+2006-08-17T11:21:00.000Z	simsalabim	digitallotus	well seems insecure to me (but maybe im not understanding it thoroughly).. i mean I want to allow some friends to builda website, and to upload files with scp to /var/www, but i dont want them to see the entire system...
+2006-08-17T11:22:00.000Z	digitallotus	simsalabim	the option you'd want is Option -FollowSymlinks, iirc
+2006-08-17T11:22:00.000Z	simsalabim	digitallotus	k
+2006-08-17T11:23:00.000Z	simsalabim	digitallotus	i tried adding Deny from all to <Directory  /> in /etc/apache2/sites-available/default.. shouldnt that prevent apache from reading / entirely?
+2006-08-17T11:24:00.000Z	digitallotus	simsalabim	from what you're seeing, i'm guessing it takes the symlink'ed path, as in <Directory /path/to/symlink/>
+2006-08-17T11:24:00.000Z	digitallotus	simsalabim	but i agree, it does seem like that should work...
+2006-08-17T11:25:00.000Z	simsalabim	digitallotus	i think youre right as the url in the browser says http://10.11.1.2/joomla/bim.html/ (that is the symlink) when showing /
+2006-08-17T11:29:00.000Z	simsalabim	digitallotus	can you confirm this for me: the directives in the /etc/apache2/sites-available/default <VirtualHost *> section applies to the whole server? Or to the whole server minus whatever other virtualhost i have defined?
+2006-08-17T11:30:00.000Z	digitallotus	simsalabim	hold up, let me get apache on this box and see how it's setup...
+2006-08-17T11:31:00.000Z	simsalabim	digitallotus	ah, sorry, I didnt mean to get you into trouble :-)
+2006-08-17T11:32:00.000Z	digitallotus	simsalabim	nah, i've been meaning to put it on here anyway.... i'm just sure the config is a little different than redhat / slackware / etc...
+2006-08-17T11:32:00.000Z	simsalabim	digitallotus	it is.. it seems nicely organized..
+2006-08-17T11:34:00.000Z	simsalabim	digitallotus	fyi: "Be careful with the directory-path arguments: They have to literally match the filesystem path which Apache uses to access the files. Directives applied to a particular <Directory> will not apply to files accessed from that same directory via a different path, such as via different symbolic links."
+2006-08-17T11:35:00.000Z	digitallotus	simsalabim	aha
+2006-08-17T11:38:00.000Z	digitallotus	simsalabim	it looks like those settings are applied to the default / main site
+2006-08-17T11:49:00.000Z	simsalabim	digitallotus	anyway thanks for the help so far :-)
+2006-08-17T11:38:00.000Z	digitallotus	simsalabim	if you setup additional virtual hosts, their configuration is used instead of the default
+2006-08-17T11:42:00.000Z	simsalabim	digitallotus	i just took a trip to #apache.. that helped :-)
+2006-08-17T11:43:00.000Z	digitallotus	simsalabim	excellent
+2006-08-17T11:45:00.000Z	simsalabim	digitallotus	the reason why deny on <Directory /> doesnt work is that to the filesystem the symlink is the directory its linking to.. so <Directory /> will not match the symlink.. but you can use SymlinksIfOwnersMatch on /var/www to make apache only follow symlinks where the owner is the same as the owner of the file which is being pointed to
+2006-08-17T11:46:00.000Z	simsalabim	digitallotus	i hope what i type makes sense :-)

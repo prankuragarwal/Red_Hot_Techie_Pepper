@@ -1,0 +1,19 @@
+2010-09-28T08:23:00.000Z	willwh		hi guys - anyone running mpd? (with music in ~/Music)? I would have thought this would be a snap to get going - and it's not.
+2010-09-28T08:24:00.000Z	rww	willwh	yes. I just had to edit /etc/mpd.conf to set the path to my music and then make sure that that folder (and its parents) were accessible by the mpd user
+2010-09-28T08:24:00.000Z	willwh	rww	mind if I query you a bit?
+2010-09-28T08:24:00.000Z	rww	willwh	I'd prefer in-channel messages.
+2010-09-28T08:24:00.000Z	willwh	rww	that's why I asked :)
+2010-09-28T08:25:00.000Z	rww	willwh	so, my music's in /home/rww/Music, I had to do chmod o+x /home/rww and chmod -R o+rX /home/rww/Music
+2010-09-28T08:30:00.000Z	willwh	rww	what does the second command do? (chmod -R o+rX /path) - recursive, allow owner to read/execute?
+2010-09-28T08:31:00.000Z	willwh	rww	< being half alseep, asking a basic question, apologies, man chmod
+2010-09-28T08:31:00.000Z	rww	willwh	Recursive chmod, allows Other users (i.e., not the owning user or group) to read and execute (if it's a directory)
+2010-09-28T08:32:00.000Z	willwh	rww	ok, paths for all your mpd stuff you just left as /var/** etc
+2010-09-28T08:32:00.000Z	rww	willwh	I only changed music_directory
+2010-09-28T08:35:00.000Z	willwh	rww	what was the first chmod o+x ~/ for? (that would allow other users to execute files / search if dir?
+2010-09-28T08:36:00.000Z	rww	willwh	execute permissions on directories means that a user can traverse the directory to get to something they have access to. So, /home/rww/ needs to be +x so that mpd can get to /home/rww/Music
+2010-09-28T08:36:00.000Z	willwh	rww	gotcha, apologies for the series of questions, great answers though - thank you very much.
+2010-09-28T08:37:00.000Z	rww	willwh	no problem, it's a confusing topic :)
+2010-09-28T08:37:00.000Z	willwh	rww	you're not using ampache are you? :D
+2010-09-28T08:37:00.000Z	rww	willwh	nope, sorry
+2010-09-28T08:38:00.000Z	willwh	rww	I just wondered - mine is rdy to set up - just finishing off mpd and I'll be good to go soon :]
+2010-09-28T08:47:00.000Z	willwh	rww	thanks for the simple tips - I'm surprised there isn't a very straightforward guide for that - it would seem to be a common request.. perhaps I'll write one.

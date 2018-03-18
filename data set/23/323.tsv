@@ -1,0 +1,23 @@
+2011-12-09T22:38:00.000Z	BarkingFish	kripton	try running the x server from a terminal.  i think startx works on ubuntu, i'm pretty sure it does anyway.
+2011-12-09T22:42:00.000Z	kripton	BarkingFish	it tries to start the X-server then but sais it needs KMS. since I just disabeld it (not working), X doesn't work either :( Damn this uber-new hardware :) Nevertheless, in gentoo with linux-3.1.4 it didn't work eiter ...
+2011-12-09T22:44:00.000Z	kripton	BarkingFish	it works with the vesa driver
+2011-12-09T22:44:00.000Z	BarkingFish	kripton	what card are you trying to use for your graphics?
+2011-12-09T22:45:00.000Z	kripton	BarkingFish	The system has an AMD Llano APU A8-3850 with integrated Radeon HD 6550D
+2011-12-09T22:46:00.000Z	BarkingFish	kripton	which version of Ubuntu are you trying to use this on?
+2011-12-09T22:46:00.000Z	kripton	BarkingFish	the latest available. 11.10
+2011-12-09T22:48:00.000Z	kripton	BarkingFish	I'll try the fglrx-driver or stay with vesa
+2011-12-09T22:49:00.000Z	BarkingFish	kripton	have you tried editing your boot line?  It's possible that it may work if you use   nomodeset on your boot line
+2011-12-09T22:50:00.000Z	kripton	BarkingFish	yes, without nomodeset is default but then screen gets no output at all. no console, no X. SSH is working and the only way to "use" the machine
+2011-12-09T22:50:00.000Z	BarkingFish	kripton	so using nomodeset in your boot line does what?
+2011-12-09T22:52:00.000Z	kripton	BarkingFish	nomodeset makes the text console work but the "ati" (=opensource) driver fail since it cant find KMS
+2011-12-09T22:52:00.000Z	kripton	BarkingFish	gonna try again without "nomodeset" and check Xorg.0.log via SSH
+2011-12-09T22:57:00.000Z	kripton	BarkingFish	Xorg.0.log looks way too normal: http://paste.ubuntu.com/765153/
+2011-12-09T22:57:00.000Z	kripton	BarkingFish	excactly like on Gentoo but screen stays off
+2011-12-09T22:57:00.000Z	kripton	BarkingFish	it even reads the monitor's EDID correctly ..
+2011-12-09T22:58:00.000Z	BarkingFish	kripton	are you sure you're not missing things out of your system?
+2011-12-09T22:59:00.000Z	kripton	BarkingFish	right, it loads the xserver-xorg-video-ati stuff. The open-source-driver for the card instead of the closed-source one
+2011-12-09T22:59:00.000Z	kripton	BarkingFish	yes, just like it should
+2011-12-09T23:00:00.000Z	kripton	BarkingFish	found something yesterday on some linux-drm mailing list... will have to find it again
+2011-12-09T23:01:00.000Z	BarkingFish	kripton	ok then - have another look there. I have to go out in a moment, but I'm sure someone else here will be able to give you a hand.
+2011-12-09T23:02:00.000Z	kripton	BarkingFish	just my problem: https://groups.google.com/group/linux.kernel/browse_thread/thread/2273f97574f2b695
+2011-12-09T23:02:00.000Z	kripton	BarkingFish	nevermind. I'll try fglrx in the meantime

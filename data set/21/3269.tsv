@@ -1,0 +1,21 @@
+2009-02-13T00:24:00.000Z	Slart		Hello everyone.. I have some text files edited on a windows computer and I need to make them work nicely on my ubuntu machine.. some of the international characters isn't the same but linefeeds and newlines are still working.. there has to be some kind of converter I can use.. any hints?
+2009-02-13T00:25:00.000Z	mzz	Slart	many of them, and do you know the encoding they're currently using?
+2009-02-13T00:25:00.000Z	mzz	Slart	gedit actually has a "Character Coding" option in its load and save dialogs. Or you can use something like iconv if you prefer the command line.
+2009-02-13T00:26:00.000Z	Slart	mzz	what windows xp create by default =).. I can see if enca has anything wise to say about it
+2009-02-13T00:27:00.000Z	Slart	mzz	enca didn't recognize it.. file says it's a "Non-ISO extended-ASCII text, with CRLF line terminators"
+2009-02-13T00:27:00.000Z	Slart	mzz	I'll give gedit a try, thanks
+2009-02-13T00:28:00.000Z	mzz	Slart	what windows (notepad?) saved it as may depend on what locale windows thinks you're in
+2009-02-13T00:28:00.000Z	Slart	mzz	it's actually matlab .. but I guess that editor is as smart as notepad
+2009-02-13T00:28:00.000Z	mzz	Slart	and it's pretty much impossible for tools (like file) to reliably detect the encoding if it's one of the one-byte-per-codepoint ones
+2009-02-13T00:29:00.000Z	Slart	mzz	yup.. I know
+2009-02-13T00:31:00.000Z	Slart	mzz	thanks for your help
+2009-02-13T00:31:00.000Z	mzz	Slart	hope you can figure out what encoding it is actually in...
+2009-05-20T20:10:00.000Z	mzz	Slart	that wouldn't give you an orbit process. It's a different protocol.
+2009-05-20T20:11:00.000Z	Slart	mzz	ok.. I've never messed with it.. so I'm really just guessing..
+2009-05-20T20:12:00.000Z	mzz	Slart	don't start now, it's slowly on its way out (mainly replaced by dbus)
+2009-05-20T20:17:00.000Z	mzz	Slart	how are you checking, and is it running gnome?
+2009-05-20T20:18:00.000Z	mzz	Slart	bleh, I'm wrong, there's no actual orbit process
+2009-05-20T20:18:00.000Z	Slart	mzz	I checked my running processes, configuration files.. anything starting with 'orb'.. doesn't find anything
+2009-05-20T20:19:00.000Z	mzz	Slart	you're correct, the sockets are just used by a couple of gnome processes. Check with fuser or lsof if you really want to know :)
+2009-05-20T20:20:00.000Z	Slart	mzz	ahh.. lots and lots of open files.. but it seems that it's only the folder that is called orbit.. not the process in itself..
+2009-05-20T20:21:00.000Z	mzz	Slart	exactly (it's a library, used by things like gconf and the panel)

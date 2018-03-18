@@ -1,0 +1,23 @@
+2008-07-29T04:37:00.000Z	ManualOverDozer		is there any real difference from using iwconfig wlan0 up, or, ifup wlan0 ?
+2008-07-29T04:37:00.000Z	alex-weej	ManualOverDozer	yes. use ifup.
+2008-07-29T04:38:00.000Z	ManualOverDozer	alex-weej	any particular reason ?
+2008-07-29T04:38:00.000Z	alex-weej	ManualOverDozer	ifup will do things like actually configure the wireless connection via the settings in /etc/network/interfaces
+2008-07-29T04:39:00.000Z	ManualOverDozer	alex-weej	another question: how come when i do ifdown wlan0 when i open System/Administration/Netowkr it still shows as activated (checkbox checked) ?
+2008-07-29T04:40:00.000Z	alex-weej	ManualOverDozer	are you using Network Manager?
+2008-07-29T04:40:00.000Z	ManualOverDozer	alex-weej	yes
+2008-07-29T04:41:00.000Z	ManualOverDozer	alex-weej	i would rather use just command-line
+2008-07-29T04:41:00.000Z	alex-weej	ManualOverDozer	if you edit the connection in the network admin, do you have "Roaming Mode" enabled?
+2008-07-29T04:41:00.000Z	ManualOverDozer	alex-weej	no, i manually add the information
+2008-07-29T04:42:00.000Z	alex-weej	ManualOverDozer	so when you do ifconfig down, you're breaking Debian Networking's internal state i think
+2008-07-29T04:42:00.000Z	ManualOverDozer	alex-weej	but i see a descrepency , iwconfig shows differnt. can i use just ifconfig/ifup soley and remove netowrk manager completely ?
+2008-07-29T04:43:00.000Z	alex-weej	ManualOverDozer	you may remove n-m completely but you should configure your devices in /etc/network/interfaces and use ifup / ifdown instead of ifconfig
+2008-07-29T04:43:00.000Z	ManualOverDozer	alex-weej	yes, i thought it was messing with it. can i safely remove Network Manager and run solely command-line connect ?
+2008-07-29T04:43:00.000Z	ManualOverDozer	alex-weej	thank you much
+2008-07-29T04:44:00.000Z	alex-weej	ManualOverDozer	ifconfig only deals with one particular layer of the networking stuff i think
+2008-07-29T04:44:00.000Z	alex-weej	ManualOverDozer	in particular the link layer
+2008-07-29T04:45:00.000Z	alex-weej	ManualOverDozer	for ethernet, you need to e.g. run dhclient in order to get an IP address automatically
+2008-07-29T04:45:00.000Z	ManualOverDozer	alex-weej	i have run into NetManager messing with my connection before, and i thought it was because i was doing command-line. i dont like NetManager anyhow, so it is toast
+2008-07-29T04:45:00.000Z	alex-weej	ManualOverDozer	whereas ifup/ifdown will do all that automatically
+2008-07-29T04:45:00.000Z	ManualOverDozer	alex-weej	yes, they seem like they fighting each other
+2008-07-29T04:45:00.000Z	alex-weej	ManualOverDozer	network-mangler deals with a very specific usecase. don't look back if you don't need it.
+2008-07-29T04:46:00.000Z	ManualOverDozer	alex-weej	thank you

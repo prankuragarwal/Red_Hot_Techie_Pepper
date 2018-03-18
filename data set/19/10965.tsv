@@ -1,0 +1,19 @@
+2006-04-23T09:12:00.000Z	swa		okay so now I have one more question :P
+2006-04-23T09:13:00.000Z	swa		when I do "cat /proc/cpuinfo" -- it detects my CPU properly as "model name      : AMD Athlon(tm) 64 X2 Dual Core Processor 4200+" -- however, the MHz is way off:  "cpu MHz         : 1010.277" -- any ideas why?
+2006-04-23T09:13:00.000Z	roh	swa	speedstep?
+2006-04-23T09:14:00.000Z	swa	roh	what's speedstep?
+2006-04-23T09:16:00.000Z	roh	swa	do you have any modules loaded like cpufreq* ?
+2006-04-23T09:16:00.000Z	swa	roh	 yes I have about 5 cpufreq_* modules loaded
+2006-04-23T09:17:00.000Z	roh	swa	then look at your dmesg if it prints anything about it
+2006-04-23T09:18:00.000Z	roh	swa	sorry.. i just see it also doesnt print anything here..
+2006-04-23T09:19:00.000Z	roh	swa	see if there is something like cpufreqd or powernowd running. if not, just install powernowd and it should work nicely. there is also a gnome.applet which can show the actual setting
+2006-04-23T09:19:00.000Z	swa	roh	 I see that powernowd is running, so does that mean /proc/cpuinfo the MHz may change as the kernel needs?
+2006-04-23T09:21:00.000Z	roh	swa	i dunno. the freq isnt really a concern since nothing in userspace shpould depend on whats printed there. thats just informational
+2006-04-23T09:21:00.000Z	roh	swa	it could be that it only prints the value from the bootup-time
+2006-04-23T09:24:00.000Z	roh	swa	proc/cpuinfo shows 273mhz on my notebook when it should print 500 and 328 when it should be 600.. so its dynamic, but way off
+2006-04-23T09:25:00.000Z	roh	swa	yes it does
+2006-04-23T09:26:00.000Z	roh	swa	add the cpu frequency scaling monitor dockapp to your bar and you can see when it changes due to high cpuload
+2006-04-23T09:26:00.000Z	swa	roh	forgive my newness to ubuntu, but how would I do that?
+2006-04-23T09:27:00.000Z	roh	swa	klick right on a panel and on add to panel
+2006-04-23T09:27:00.000Z	swa	roh	ah I see it in there ;)
+2006-04-23T09:27:00.000Z	swa	roh	thanks for the help!

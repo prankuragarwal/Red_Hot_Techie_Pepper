@@ -1,0 +1,21 @@
+2006-10-31T08:22:00.000Z	MusicKing		I have a laptop with a ati 9600 pro card and I am not able to install ubuntu using the live CD, so I installed via alternative CD. Now once I login I have no video
+2006-10-31T08:23:00.000Z	MusicKing		can anyone help me out at all?
+2006-10-31T08:23:00.000Z	Uberriffi1	MusicKing	are you running the mobility or PCI/AGP version of the card?
+2006-10-31T08:24:00.000Z	Uberriffi1	MusicKing	hello?
+2006-10-31T08:26:00.000Z	Uberriffi1	MusicKing	Sager laptop?
+2006-10-31T08:27:00.000Z	Uberriffi1	MusicKing	 What driver are you using in your /etc/X11/xorg.conf file?
+2006-10-31T08:29:00.000Z	Uberriffi1	MusicKing	run "sudo nano /etc/X11/xorg.conf" Look for a Section "Device" and tell us what driver it is using
+2006-10-31T08:31:00.000Z	Uberriffi1	MusicKing	you can boot into single user mode to log in via a terminal , and bypassing X
+2006-10-31T08:34:00.000Z	MusicKing	Uberriffi1	driver is set to ATI
+2006-10-31T08:36:00.000Z	Uberriffi1	MusicKing	it should
+2006-10-31T08:36:00.000Z	Uberriffi1	MusicKing	if you want to run the binrary you could type "dpkg -l | grep fglrx" to see if you have the fglrx driver installed, you could also try "fglrx" as the driver
+2006-10-31T08:36:00.000Z	Uberriffi1	MusicKing	although it has some problems with the 9600 card
+2006-10-31T08:36:00.000Z	Uberriffi1	MusicKing	especially if you have two monitors (the mouse ont he second monitor shows up as a square box)
+2006-10-31T08:41:00.000Z	Uberriffi1	MusicKing	it probably isn't a fault of Ubuntu, it probably is that your Xorg config needs to be updated
+2006-10-31T08:42:00.000Z	Uberriffi1	MusicKing	Xorg has changed from 6.8 to 6.9 to 7.0 to 7.1 with each ubuntu release
+2006-10-31T08:42:00.000Z	Uberriffi1	MusicKing	did changing to "radeon" work?
+2006-10-31T08:42:00.000Z	Uberriffi1	MusicKing	after it *fails*, do a "less /var/log/Xorg.0.log"
+2006-10-31T08:43:00.000Z	Uberriffi1	MusicKing	search for "EE" by typing a slash "/" and then EE
+2006-10-31T08:43:00.000Z	Uberriffi1	MusicKing	use the 'n' key to find th enext match
+2006-10-31T08:44:00.000Z	Uberriffi1	MusicKing	there is a chance your Xorg config is just wrong or has an error in it.
+2006-10-31T08:44:00.000Z	Uberriffi1	MusicKing	if thats the case you'll have to eidt it, and not just rely on "ubuntu updates"

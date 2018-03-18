@@ -1,0 +1,21 @@
+2008-01-03T15:12:00.000Z	WEW		I'm using dual monitor with separate X screens. When I want to launch a program from terminal, how do i let it know which screen to open in? Write now everything's going to the 2nd monitor
+2008-01-03T15:14:00.000Z	imaginator	WEW	do you have displays :0.0 and :0.1?
+2008-01-03T15:14:00.000Z	WEW	imaginator	i dont know
+2008-01-03T15:14:00.000Z	WEW	imaginator	where do I check that
+2008-01-03T15:15:00.000Z	imaginator	WEW	xdpyinfo would tell you which screens you have.  The screen number comes after the 0.
+2008-01-03T15:16:00.000Z	imaginator	WEW	you should be able to do something like:  xterm -display :0.0   to make it be on a certain screen.  If the program doesn't support that you can use: env DISPLAY=:0.0 someprogram &
+2008-01-03T15:16:00.000Z	WEW	imaginator	Okay it's 0 and 1, and the default screen is set to 0
+2008-01-03T15:16:00.000Z	WEW	imaginator	Sorry I mean default is 1
+2008-01-03T15:17:00.000Z	WEW	imaginator	how do I make the default screen 0
+2008-01-03T15:18:00.000Z	imaginator	WEW	I'm not certain, but perhaps via your /etc/X11/xorg.conf  mine is by default screen 0
+2008-01-03T15:19:00.000Z	WEW	imaginator	Mine was normal before, but after I restarted gdm, somehow everything's now going to the 2nd screen
+2008-01-03T15:23:00.000Z	imaginator	WEW	do you have any mention of your "Default Screen" in your /etc/X11/xorg.conf ServerLayout?
+2008-01-03T15:24:00.000Z	WEW	imaginator	yes it's there
+2008-01-03T15:26:00.000Z	WEW	imaginator	it's there in section "Screen"
+2008-01-03T15:29:00.000Z	WEW	imaginator	http://www.nomorepasting.com/getpaste.php?pasteid=9300 This is what my xorg.conf says
+2008-01-03T15:29:00.000Z	WEW	imaginator	I never added anything in there myself. I let nvidia-settings set it up
+2008-01-03T15:29:00.000Z	WEW	imaginator	It was working fine till now.. I don't know how it set a default screen without asking me
+2008-01-03T15:31:00.000Z	imaginator	WEW	I wonder if it could be the xinerama settings. I don't personally use xinerama, with my multiple displays
+2008-01-03T15:32:00.000Z	WEW	imaginator	I don't have xinerama enabled
+2008-01-03T15:32:00.000Z	imaginator	WEW	did you use this: #Removed Option "Xinerama" "1"  ?
+2008-01-03T15:39:00.000Z	imaginator	WEW	I wish I had further advice other than hints.  You mentioned that you restarted GDM.  Perhaps it has something to do with changing the default screen.

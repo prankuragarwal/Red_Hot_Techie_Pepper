@@ -1,0 +1,23 @@
+2010-05-04T08:44:00.000Z	Guest99344		QUESTION: I'm having a problem. The desktop vanished, icons missing, can't right-click desktop. I tried using gconf-editor and setting apps->nautilus->preferences->show_desktop to "true", and it works, but as soon as I log out and back in again it is once again broken. Any ideas? Packages I can reinstall? Help!
+2010-05-04T08:45:00.000Z	jrib	Guest99344	nautilus is responsible for your desktop
+2010-05-04T08:45:00.000Z	Guest99344	jrib	Yes, I understand.
+2010-05-04T08:49:00.000Z	jrib	Guest99344	was it false before you changed it to true?
+2010-05-04T08:50:00.000Z	Guest99344	jrib	No, it was always true.
+2010-05-04T08:50:00.000Z	jrib	Guest99344	so how do you set it to true...?
+2010-05-04T08:51:00.000Z	Guest99344	jrib	I opened the gconf-editor, on a hunch, turned it to false, then BACK to true, and that fixed it temporarily.
+2010-05-04T08:51:00.000Z	Guest99344	jrib	upon logging out and back in, however, it was broken again.
+2010-05-04T08:51:00.000Z	jrib	Guest99344	create a fresh new user and verify the problem exists there please
+2010-05-04T08:55:00.000Z	Guest99344	jrib	Just created a new user. Logging in... No desktop interactivity. Can't right-click, and no icons display.
+2010-05-04T08:55:00.000Z	jrib	Guest99344	what ubuntu version?
+2010-05-04T08:56:00.000Z	Guest99344	jrib	10.04 -- installed the minimal ISO then did apt-get install ubuntu-desktop to install the remainder of the system -- the system has a dodgy CD drive, and no other ISO images would work.
+2010-05-04T08:57:00.000Z	jrib	Guest99344	anything in ~/.xsession-errors?
+2010-05-04T08:57:00.000Z	Guest99344	jrib	let me check.
+2010-05-04T09:00:00.000Z	Guest99344	jrib	Nothing in .xsession-errors mentioning show_desktop, nautilus, or anything I can immediately relate
+2010-05-04T09:01:00.000Z	Guest99344	jrib	polkit, power-manager, compiz (GLXFBConfig), evolution, update-notifier, gnome-terminal
+2010-05-04T09:03:00.000Z	Guest99344	jrib	Rebooting -- I just "aptitude reinstall"ed gconf2 and nautilus
+2010-05-04T09:06:00.000Z	Guest99344	jrib	System reboted after reinstalling nautilus and gconf2 -- no effect, still having the issue.
+2010-05-04T09:06:00.000Z	jrib	Guest99344	does it happen if you don't use compiz?
+2010-05-04T09:06:00.000Z	Guest99344	jrib	I'm not using compiz.
+2010-05-04T09:09:00.000Z	jrib	Guest99344	keep an eye on https://bugs.edge.launchpad.net/ubuntu/+source/nautilus/+bug/573947
+2010-05-04T09:11:00.000Z	Guest99344	jrib	Thanks for the link. I'll submit my information as well. Problem is, this is a family computer, I'm only visiting for a week. By the time this gets fixed, I'll likely be out of the state.
+2010-05-04T09:11:00.000Z	jrib	Guest99344	see if you can workaround it by running gconftool on startup

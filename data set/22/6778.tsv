@@ -1,0 +1,22 @@
+2006-10-08T05:38:00.000Z	aboutblank		is it even possible to have one partition on a physical disk be part of an LVM based LV??
+2006-10-08T05:39:00.000Z	sethk	aboutblank	the only thing that can be part of it is a physical disk, no?
+2006-10-08T05:39:00.000Z	aboutblank		... what
+2006-10-08T05:40:00.000Z	aboutblank		i'm trying to make a spanned LV...
+2006-10-08T05:40:00.000Z	sethk	aboutblank	yes, and?
+2006-10-08T05:40:00.000Z	aboutblank		and i'm trying to add one partition on a physical disk to this spanned LV... so i do "pvcreate /dev/hda3"
+2006-10-08T05:41:00.000Z	sethk	aboutblank	right
+2006-10-08T05:41:00.000Z	aboutblank	sethk	so when i do that from the livecd, it tells me "failed to write physical volume "/dev/hda3"
+2006-10-08T05:42:00.000Z	sethk	aboutblank	ok, but that doesn't tell us what the error is, only that the command failed.  If you are asking whether it failed because /dev/hda3 is a partition on a physical disk, the answer is, no, your command is correct
+2006-10-08T05:42:00.000Z	sethk	aboutblank	it didn't fail because a partition is not allowed there; in fact, a partition is most commonly what you use.
+2006-10-08T05:43:00.000Z	sethk	aboutblank	that's all it says?  no more information about why it failed?
+2006-10-08T05:43:00.000Z	aboutblank	sethk	that's all it says.
+2006-10-08T05:43:00.000Z	aboutblank	sethk	actually, it ALTERNATES between that message and "physical volume /dev/hda3 successfully created"
+2006-10-08T05:43:00.000Z	aboutblank	sethk	but i still cannot add it to a LV
+2006-10-08T05:44:00.000Z	aboutblank	sethk	vgcreate says "No physical volume label read from /dev/hda3 \n /dev/hda3 not identified as an existing physical volume"
+2006-10-08T05:45:00.000Z	sethk	aboutblank	something is clearly wrong, but unfortunately I don't know what.
+2006-10-08T05:45:00.000Z	sethk	aboutblank	I believe there is a verbose option you can use on that command to perhaps get more information.
+2006-10-08T05:45:00.000Z	sethk	aboutblank	try it with -v
+2006-10-08T05:46:00.000Z	aboutblank	sethk	verbose says nothing interesting to say the most.
+2006-10-08T05:47:00.000Z	sethk	aboutblank	I don't have any good suggestions at the moment, unfortunately.
+2006-10-08T05:47:00.000Z	aboutblank	sethk	alright.. thanks for the help.
+2006-10-08T05:47:00.000Z	sethk	aboutblank	in your situation I would probably strace the command and try to get an idea of what is going on, but the strace output is very difficult to interpret

@@ -1,0 +1,19 @@
+2011-08-20T00:37:00.000Z	edgy		Hi, where is the recommended dir to mount partitions in linux? /media for removable media, /mnt for temporary mounts according to fhs, no?
+2011-08-20T00:38:00.000Z	llutz	edgy	/media seems to be used today for every type of mounts
+2011-08-20T00:39:00.000Z	edgy	llutz	rww: but the problem with media is that you don't want to mix removable with non-removables, e.g I don't want to index the files in removable
+2011-08-20T00:40:00.000Z	llutz	edgy	then you'll have to pick your own place to mount, maybe not fhs-conform
+2012-02-15T22:39:00.000Z	llutz	edgy	apt-file does this
+2012-02-15T22:42:00.000Z	edgy	llutz	which option with apt-file?
+2012-02-15T22:42:00.000Z	llutz	edgy	apt-file list packagename  (man apt-file)
+2012-02-15T22:42:00.000Z	edgy	llutz	that didn't work
+2012-02-15T22:42:00.000Z	llutz	edgy	sure it does
+2012-02-15T22:43:00.000Z	llutz	edgy	sudo apt-get install apt-file && sudo apt-file update && apt-file list package
+2012-02-15T22:46:00.000Z	edgy	llutz	I tried sudo apt-file list samba4 but got no result
+2012-02-15T22:47:00.000Z	llutz	edgy	did you run "sudo apt-file update"?
+2012-02-15T22:47:00.000Z	edgy	llutz	I guess I ran it before but let me redo it
+2012-02-15T23:04:00.000Z	edgy	llutz	nice! now it works
+2012-02-15T23:04:00.000Z	edgy	llutz	thanks a lot
+2012-06-07T21:09:00.000Z	llutz	edgy	you see the difference " /dev/mapper/vg*"
+2012-06-07T21:09:00.000Z	edgy	llutz	the /dev/mapper/vg is a link to /dev/vg.. but I will try it your way ...
+2012-06-07T21:09:00.000Z	edgy	llutz	this $ sudo mount /dev/mapper/vg00-lv<tab> didn't work either
+2012-06-07T21:10:00.000Z	edgy	llutz	sipio, toafan_: it's strange because I have 3 logical volumes and it autocompletes one of them but not the other two

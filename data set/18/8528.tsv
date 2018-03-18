@@ -1,0 +1,18 @@
+2007-08-06T12:05:00.000Z	ryphix		I'm having a problem where linux won't boot if the IDE cable is plugged into my CD-ROM drive?  Is it common?
+2007-08-06T12:06:00.000Z	hwilde	ryphix	you probably have primary/secondary master/slave conflicts on the cable so it is not recognizing yoru harddrive
+2007-08-06T12:06:00.000Z	hwilde		!wine | Rayyan
+2007-08-06T12:07:00.000Z	hwilde		!hardware | pantel
+2007-08-06T12:07:00.000Z	ryphix	hwilde	i have two hard drive and on a seperate cable i have the cd rom
+2007-08-06T12:07:00.000Z	hwilde	ryphix	when they are all plugged in does the bios recognize all the devices
+2007-08-06T12:08:00.000Z	ryphix		yes
+2007-08-06T12:08:00.000Z	ryphix		windows boots fine
+2007-08-06T12:08:00.000Z	hwilde		!fixgrub | ryphix
+2007-08-06T12:08:00.000Z	hwilde	ryphix	grub probably needs the hda/hdb/hdc/hdd specification corrected.  when you plugin the cdrom it is probably changing the order of the drives
+2007-08-06T12:08:00.000Z	ryphix		I haven't lost grub
+2007-08-06T12:09:00.000Z	ryphix		okay, ill look into that
+2007-08-06T12:09:00.000Z	ryphix		thanks
+2007-08-06T12:10:00.000Z	hwilde	ryphix	primary master should be hda, primary slave hdb, secondar master hdc, secondary slave hdd.  this has to be specific in grub and could be changing with the cdrom connected
+2007-08-06T12:10:00.000Z	ryphix		not even the live cd will boot when the cd rom is plugged in
+2007-08-06T12:10:00.000Z	ryphix		i get an ata2 error
+2007-08-06T12:12:00.000Z	ryphix	hwilde	/bin/sh/:can't access tty job control turned off
+2007-08-06T12:13:00.000Z	hwilde	ryphix	that is odd...

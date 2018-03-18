@@ -1,0 +1,21 @@
+2006-06-20T11:38:00.000Z	Sjoerd-	gavagai	Do you use pure-ftpd?
+2006-06-20T11:38:00.000Z	gavagai		i use proftpd
+2006-06-20T11:39:00.000Z	Sjoerd-	gavagai	Do you have any idea how to manage pure-ftpd? Adding users and stuff.. I guide that applies to Ubuntu would be most welcome.
+2006-06-20T11:39:00.000Z	gavagai		i installed pure-ftpd once, had it working in about 30 seconds, but i'm just used to proftd
+2006-06-20T11:39:00.000Z	gavagai	Sjoerd-	the users for ftpd are just regular system users
+2006-06-20T11:39:00.000Z	Sjoerd-	gavagai	Well it's working here.. But just for the system users.
+2006-06-20T11:40:00.000Z	Sjoerd-	gavagai	I read on the pureftpd website that you can add users just for ftp.
+2006-06-20T11:40:00.000Z	gavagai	Sjoerd-	if you want to add ftp users that just have ftp, what i do is add them as regular users and then make their shell /bin/false
+2006-06-20T11:40:00.000Z	gavagai	Sjoerd-	i don't know about that, sorry, my experience with pure ftpd is about 5 minutes
+2006-06-20T11:41:00.000Z	Sjoerd-	gavagai	That's ok, when I use ftp servers on windows they always have their own users. Doesn't seem really logical to only be able to use the system users :)
+2006-06-20T11:41:00.000Z	gavagai	Sjoerd-	it depends what you want to do.  do you just want some people to have access to your files?  create a generic ftp user whose shell in /bin/false
+2006-06-20T11:41:00.000Z	Sjoerd-	gavagai	Problem is that the documentation on pureftpd is not really the best ever and does not seem to apply for ubuntu os.
+2006-06-20T11:41:00.000Z	gavagai		s/in/is
+2006-06-20T11:41:00.000Z	Sjoerd-	gavagai	For now I need one account for someone that only has to have access to one folder in /var/www/
+2006-06-20T11:42:00.000Z	gavagai	Sjoerd-	create them as a regular user, make their home be that one folder, and make their shell /bin/false.  that's what i would do.
+2006-06-20T11:42:00.000Z	gavagai		i am not an expert or anything though
+2006-06-20T11:42:00.000Z	Sjoerd-	gavagai	Ok i'm going to give it a try
+2006-06-20T11:43:00.000Z	gavagai		that way even if they get ssh or telnet access or whatever they cannot do anything
+2006-06-20T11:43:00.000Z	gavagai		however pureftpd may check if /bin/false is a valid shell, so you may need to add /bin/false to the file /etc/shells.  i would make backups of all these files before you start making changes.  :)
+2006-06-20T11:44:00.000Z	Sjoerd-		maybe it makes sense to start a thread about this on the forums.
+2006-06-20T12:05:00.000Z	gavagai	Sjoerd-	did that work out for you, or did you find another solution?

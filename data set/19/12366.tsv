@@ -1,0 +1,19 @@
+2006-10-27T09:24:00.000Z	nemik		so what is recommended for laptop dual boot, windows first then ubuntu or vice-versa? i'm looking to give windows less space
+2006-10-27T09:24:00.000Z	Flannel	nemik	windows first
+2006-10-27T09:25:00.000Z	Flannel	nemik	if you're doing a fresh install, then make windows only install on the partition you want it on ultimately
+2006-10-27T09:25:00.000Z	nemik	Flannel	really? still?
+2006-10-27T09:25:00.000Z	Flannel	nemik	still? what?  Yes, Windows doesn't play well with others.
+2006-10-27T09:26:00.000Z	nemik	Flannel	i was thinking to just divide them but yes, a post-win install will probably overwrite grub on the MBR won't it...ok cool
+2007-10-20T12:19:00.000Z	Flannel	nemik	If its not a locale setting, you might try perusing gconf
+2008-01-12T12:15:00.000Z	Flannel	nemik	sdb1 is hd1,0.  To keep windows happy, you'll need to map it.  Because windows doesn't like being on the second disk
+2008-01-12T12:16:00.000Z	Flannel	nemik	grub-speak is "hd" for HardDrive, regardless of IDE/SATA
+2008-01-12T12:16:00.000Z	nemik	Flannel	i tried that though and it didn't like it for some reason. with map (hd0) (hd1) then map (hd1) (hd0)
+2008-01-12T12:17:00.000Z	Flannel	nemik	thats right.  But when did you do it?  and what did you use as root after that?
+2008-01-12T12:18:00.000Z	nemik	Flannel	my setup hasn't changed before or after trying that. root is mounted at sda1 which maps to hd0,0
+2008-01-12T12:18:00.000Z	Flannel	nemik	Right, but for windows I mean
+2008-01-12T12:18:00.000Z	nemik	Flannel	ah, since it is separate drive i installed windows on it with JUST that drive connected
+2008-01-12T12:19:00.000Z	nemik	Flannel	think i had it set to channel so no need for switching master/slave jumpers. xp setup and boot was fine
+2008-01-12T12:19:00.000Z	Flannel	nemik	since the map only happens when you've chosen the windows boot.  you map, then root (and the root is the same regardless of mapping.  Map only works for the booted OS)
+2008-01-12T12:20:00.000Z	nemik	Flannel	yea, map first then do the rootnoverify(hd0,1) ?
+2008-01-12T12:20:00.000Z	Flannel	nemik	yeah.  not hd0,1 but hd1,0
+2008-01-12T12:21:00.000Z	nemik	Flannel	i'll give it a shot, thanks. so much effort just to play counterstrike on the HDTV/mythtv setup :/

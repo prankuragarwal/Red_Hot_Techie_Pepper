@@ -1,0 +1,18 @@
+2010-07-29T16:18:00.000Z	rifter	JediMaster	have you tried some of the workarounds they list in there?
+2010-07-29T16:18:00.000Z	rifter	JediMaster	I am reading your bug
+2010-07-29T16:19:00.000Z	JediMaster	rifter	not this time, switching to gdm worked last time, but I switched back to kdm recently
+2010-07-29T16:20:00.000Z	rifter	JediMaster	someone also indicates that this bug helped them https://bugs.launchpad.net/ubuntu/+source/linux/+bug/544590
+2010-07-29T16:20:00.000Z	rifter	JediMaster	well for kdm they suggest making a change to a config file...
+2010-07-29T16:21:00.000Z	rifter	JediMaster	https://bugs.launchpad.net/ubuntu/+source/xorg-server/+bug/441653/comments/34 he altered /etc/init/kdm.conf and added the sleep command "sleep 1" before the "exec kdm" line.
+2010-07-29T16:22:00.000Z	rifter	JediMaster	if that fixes it it would seem to me that something isn't getting initialized soon enough in the process
+2010-07-29T16:24:00.000Z	rifter	JediMaster	this guy suggests that there is an update to xorg for this problem which makes sense since it would have something to do with driver initialization from the look of it https://bugs.launchpad.net/ubuntu/+source/xorg-server/+bug/441653/comments/42  but meanwhile try the workaround
+2010-07-29T16:26:00.000Z	rifter	JediMaster	the other mentioned bug suggests there is a patch to the kernel with package 2.6.32-23.37
+2010-07-29T16:26:00.000Z	rifter	JediMaster	beyond that I am not sure what to suggest
+2010-07-29T16:26:00.000Z	JediMaster	rifter	I have 2.6.32-24
+2010-07-29T16:27:00.000Z	rifter	JediMaster	yeah .. I would try the sleep workaround then
+2010-07-29T16:28:00.000Z	rifter	JediMaster	and hope that fixes to xorg and the kernel come down to help this
+2010-07-29T16:37:00.000Z	rifter	JediMaster	you might check for regular updates to see what pops up there
+2010-07-29T16:38:00.000Z	rifter	JediMaster	the security updates only give you patches for security issues, not for other bugs
+2010-07-29T16:39:00.000Z	JediMaster	rifter	well yeah been doing those too =)
+2010-07-29T16:39:00.000Z	JediMaster	rifter	the sleep 1 fix didn't work straight away, that is when it stopped working, sshing in, killing off any trace of kdm and X then doing the /etc/init/kdm.conf update and start kdm, however I've done 5 reboots in a row now and it's worked each time
+2010-07-29T16:40:00.000Z	rifter	JediMaster	well that is good.  it's a hack but hopefully when they kill the bug it won't be necessary

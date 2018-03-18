@@ -1,0 +1,18 @@
+2010-05-27T12:52:00.000Z	xro		hi, to execute script on a remote machine, i would like use ssh root@host "python /path/script.py"    -->  but i would have to type a password... so i tried to do --> ssh-copy -i /.ssh/id_rsa.pub   root@host,   exec ssh-agent bash,   ssh-add....  but i always have to type password... why? can u help me?
+2010-05-27T12:54:00.000Z	neil_d	xro	I use the command ssh-copy-id... but have you checked that the /root/.ssh/authorized_keys on the other computer has the correct key in it?
+2010-05-27T12:57:00.000Z	xro	neil_d	yes there is the key
+2010-05-27T12:59:00.000Z	neil_d	xro	and you have switch to a root login...
+2010-05-27T13:02:00.000Z	xro	neil_d	i call it from root to root@remotehost...
+2010-05-27T13:05:00.000Z	neil_d	xro	what happens if you just try to login with "# ssh <host>"
+2010-05-27T13:08:00.000Z	xro	neil_d	 ssh root@host ask for password, i put pass and get logged
+2010-05-27T13:11:00.000Z	neil_d	xro	but root doesn't have a password... but there has got to be something wrong the keys!  As they take priority over passwords.
+2010-05-27T13:12:00.000Z	xro	neil_d	 so, i'll try do create a new keys pair and transfer it again...
+2010-05-27T13:12:00.000Z	neil_d	xro	I wouldn't regenerate.
+2010-05-27T13:12:00.000Z	xro	neil_d	why?
+2010-05-27T13:13:00.000Z	neil_d	xro	cat the /root/.ssh/id_rsa.pub key and check against the authorized_keys on the remote..
+2010-05-27T13:14:00.000Z	neil_d	xro	both should end with root@<host>
+2010-05-27T13:16:00.000Z	xro	neil_d	i found the problem.... i copied the rigth key... it was the for another user....
+2010-05-27T13:16:00.000Z	neil_d	xro	but root doesn't have a password... but there has got to be something wrong the keys!  As they take priority over passwords.
+2010-05-27T13:16:00.000Z	xro	neil_d	thanks for your help...
+2010-05-27T13:16:00.000Z	neil_d	xro	ok
+2010-05-27T13:17:00.000Z	neil_d	xro	oops!

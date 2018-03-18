@@ -1,0 +1,24 @@
+2011-03-29T03:06:00.000Z	maharaja_		any idea why the uid/gid on my nfs mount is showing 4294967294
+2011-03-29T03:07:00.000Z	raido	maharaja_	your user on both systems host/server need to have the same UID/GID
+2011-03-29T03:07:00.000Z	maharaja_	raido	i am using ldap for authentcation
+2011-03-29T03:07:00.000Z	raido	maharaja_	thats seperate and regardless
+2011-03-29T03:08:00.000Z	maharaja_	raido	 how do i ensure that they are the same?
+2011-03-29T03:09:00.000Z	raido	maharaja_	check you UID on both
+2011-03-29T03:09:00.000Z	maharaja_	raido	this might look like a silly question i did id in both machines and b oth of them are 1000
+2011-03-29T03:10:00.000Z	raido	maharaja_	UID and GID are same on both?
+2011-03-29T03:11:00.000Z	maharaja_	raido	 i ran id <username>
+2011-03-29T03:12:00.000Z	maharaja_	raido	 does it have something to do with the /etc/idmapd.conf file?
+2011-03-29T03:13:00.000Z	raido	maharaja_	dont know. I use NFS and never had to mess with that file.
+2011-03-29T03:14:00.000Z	maharaja_	raido	any pointers?
+2011-03-29T03:14:00.000Z	raido	maharaja_	your on Linux on both ends right? Not using Unix services for windows, right?
+2011-03-29T03:14:00.000Z	maharaja_	raido	nope both from the same vm template
+2011-03-29T03:16:00.000Z	maharaja_	raido	sorry got d/c
+2011-03-29T03:16:00.000Z	raido	maharaja_	ok, but both vm's are linux right?
+2011-03-29T03:17:00.000Z	maharaja_	raido	yes sir both ubuntu
+2011-03-29T03:20:00.000Z	raido	maharaja_	Ok, you got me. You dont need ldap just for nfs, I use nfs here at work and dont use ldap, so Im not sure if ldap is configured properly or not of if it wold cause your problem, but as long as your UID/GIDs match on both sides you should be ok.
+2011-03-29T03:20:00.000Z	raido	maharaja_	what was the issue before you used ldap
+2011-03-29T03:20:00.000Z	maharaja_	raido	no issue with ldap it works fine, i can change passwords, do id all sorts of thigns and it works fine
+2011-03-29T03:24:00.000Z	raido	maharaja_	http://serverfault.com/questions/98741/files-mounted-over-nfsv4-are-owned-by-4294967294-uids-and-gids-match
+2011-03-29T03:27:00.000Z	maharaja_	raido	 thanks for pointer, NEED_IDMAPD is what i had to change as well
+2011-03-29T03:30:00.000Z	maharaja_	raido	 it was the use idmapd thingy
+2011-03-29T03:30:00.000Z	raido	maharaja_	great

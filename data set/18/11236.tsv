@@ -1,0 +1,18 @@
+2006-08-31T05:30:00.000Z	zoredache		is the ubuntu version of 'adduser' not supposed to prompt you for a username"  whenever I run '/usr/sbin/adduser' I get 'adduser: Only one or two names allowed.'
+2006-08-31T05:32:00.000Z	ladydoor	zoredache	don't you just do "sudo adduser username"
+2006-08-31T05:34:00.000Z	zoredache	ladydoor	I have a script that calls 'sudo /usr/sbin/adduser'  That i previously used on my debian system...  adduser would ask the user for the username...
+2006-08-31T05:35:00.000Z	ladydoor	zoredache	ok, here's a workaround
+2006-08-31T05:35:00.000Z	ladydoor	zoredache	are you currently editing your program?
+2006-08-31T05:35:00.000Z	ladydoor	zoredache	if not, i guess open it up and go to that poing
+2006-08-31T05:35:00.000Z	ladydoor	zoredache	*point. and let me know when you're ready
+2006-08-31T05:37:00.000Z	ladydoor	zoredache	ok, before the line where you do "sudo /usr/sbin/adduser," add a couple lines that say this:
+2006-08-31T05:38:00.000Z	ladydoor	zoredache	echo "Please enter new username."
+2006-08-31T05:38:00.000Z	ladydoor	zoredache	read $username01
+2006-08-31T05:38:00.000Z	ladydoor	zoredache	wait
+2006-08-31T05:38:00.000Z	ladydoor	zoredache	actually that should be "read username01"
+2006-08-31T05:39:00.000Z	ladydoor	zoredache	and then change your "sudo /usr/sbin/addusr" line to "sudo /usr/sbin/adduser $username01"
+2006-08-31T05:39:00.000Z	zoredache	ladydoor	I wanted to avoid doing a read because I wanted to avoid doing the input santization.  I don't want a user to put in  something like username && rm -rf / into the username filed
+2006-08-31T05:39:00.000Z	ladydoor	zoredache	oh. well sorry, i don't know
+2006-08-31T05:40:00.000Z	zoredache	ladydoor	thanks for the help though...  I am still curious about the difference in the adduser command... I guess I'll have to go to the changelog...
+2006-08-31T05:41:00.000Z	ladydoor	zoredache	:-/
+2006-08-31T05:41:00.000Z	ladydoor	zoredache	sorry

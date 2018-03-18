@@ -1,0 +1,18 @@
+2007-01-11T08:26:00.000Z	dvheumen		Hi everyone! Is there a way to check te compile date or version number of a certain kernel module? Because I want to check if the loaded modules were already in the modules list, or that I added them yesterday...
+2007-01-11T08:27:00.000Z	maddash	dvheumen	uname
+2007-01-11T08:27:00.000Z	maddash	dvheumen	oops sorry - use modinfo
+2007-01-11T08:29:00.000Z	dvheumen	maddash	I'm going to find out... I didn't know that command :)
+2007-01-11T08:29:00.000Z	maddash	dvheumen	do "lsmod" to see what modules you have, then "modinfo <modulename"
+2007-01-11T08:31:00.000Z	dvheumen	maddash	tnx, I already knew lsmod. Btw, can't I just look at the creating/modification date of the .ko file?
+2007-01-11T08:31:00.000Z	maddash	dvheumen	yes, i suppose.
+2007-01-11T08:31:00.000Z	dvheumen	maddash	k, in that case I' ve got my anser, tnx for the quick response :D
+2007-01-11T08:32:00.000Z	maddash	dvheumen	unless you copied the .ko to /lib/modules *some time after* you compiled...
+2007-01-11T08:33:00.000Z	dvheumen	maddash	the thing is... I've compiled a driver for the realtek8180 wlan card yesterday. And looking in lsmod now I thought it wasn't supposed to be loaded because I removed everything, but it was :P. So I was curious... or insmod has automatically copied the driver to /lib/modules/ or it was already in /lib/modules/ :D
+2007-01-11T08:34:00.000Z	maddash	dvheumen	check /etc/modules
+2007-01-11T08:35:00.000Z	dvheumen	maddash	no r818x in there, only ndiswrapper (and some other that don't have anything to do with this)
+2007-01-11T08:36:00.000Z	maddash	dvheumen	check your /boot/config-`uname -r`  , maybe the kernel is compiled to automatically load that module
+2007-01-11T08:37:00.000Z	maddash	dvheumen	do you want the realtek module or not?
+2007-01-11T08:38:00.000Z	dvheumen	maddash	If it works, I' ve been working with ndiswrapper so far, so I'll have to check it first. I'm gonna give it a reboot (now *not* loading ndiswrapper) to make sure it works from the start.
+2007-01-11T08:55:00.000Z	dvheumen	maddash	it seems that the kernel module works just fine, so I don't need to remove it. It's kind of ironic, I've been playing with ndiswrapper to get the wlan going and now it turns out that support is already in the linux kernel :P. Btw, how does the kernel respond to 2 kernel modules that both want to use the same device? (like r818x and ndiswrapper)
+2007-01-11T08:56:00.000Z	maddash	dvheumen	not sure, shares the device between the two?
+2007-01-11T08:58:00.000Z	dvheumen	maddash	hmmm... I don't think so... I can tell that there was only 1 wlan (wlan0) adapter. Maybe the second module overrules the first and takes the device away, probably leaving the first module to doing nothing... (At least, that would explain why there was only 1 wlan adapter)

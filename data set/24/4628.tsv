@@ -1,0 +1,24 @@
+2007-11-17T00:59:00.000Z	mark___	LuitvD	have you bound dev and proc on the chroot env?
+2007-11-17T00:59:00.000Z	LuitvD	mark___	I'm not sure what you mean, so I guess I haven't
+2007-11-17T00:59:00.000Z	mark___	LuitvD	mount -o bind /dev /mnt/chroot/dev
+2007-11-17T00:59:00.000Z	mark___	LuitvD	mount -t proc none /mnt/chroot/proc/
+2007-11-17T01:00:00.000Z	mark___	LuitvD	then chroot, then apt-get update
+2007-11-17T01:00:00.000Z	mark___	LuitvD	np
+2007-11-17T01:03:00.000Z	LuitvD	mark___	still doens't work...
+2007-11-17T01:04:00.000Z	mark___	LuitvD	well what error msg does it give?
+2007-11-17T01:04:00.000Z	LuitvD	mark___	still doesn't update...
+2007-11-17T01:04:00.000Z	LuitvD	mark___	fails to fetch apt sources
+2007-11-17T01:05:00.000Z	mark___	LuitvD	are you sure they are set right in /etc/apt/sources.list, and are you sure that server is up?
+2007-11-17T01:06:00.000Z	LuitvD	mark___	I copied the sources.list file from the other chroot
+2007-11-17T01:06:00.000Z	LuitvD	mark___	and the servers are the archive.ubuntu.com servers
+2007-11-17T01:07:00.000Z	mark___	LuitvD	and you have internet running in the chroot? e.g. you can ping, for example, www.google.com
+2007-11-17T01:07:00.000Z	LuitvD	mark___	I'm chatting here, aren't I?
+2007-11-17T01:08:00.000Z	mark___	LuitvD	maybe not fromt he console in the chroot? i dont know your setup
+2007-11-17T01:08:00.000Z	LuitvD	mark___	it's the same computer AFAIK :P
+2007-11-17T01:08:00.000Z	LuitvD	mark___	if that's the answer to your question...
+2007-11-17T01:09:00.000Z	mark___	LuitvD	that doesnt matter, if i, for example, am building a gentoo system in a chroot, i can have internet on the running system, but not in the chroot, because proc wouldnt be bound or whatever
+2007-11-17T01:09:00.000Z	LuitvD	mark___	bah, so I need to initialize the internet connection there ?
+2007-11-17T01:10:00.000Z	mark___	LuitvD	we are talking about the same chroot right? like chroot /mnt/chroot ?
+2007-11-17T01:10:00.000Z	mark___	LuitvD	you need to bind proc, as i have told you, mount -t proc none /mnt/chroot/proc/
+2007-11-17T01:10:00.000Z	LuitvD	mark___	it's /mnt/sda1, and I've mounted ./dev and ./proc accordingly
+2007-11-17T01:12:00.000Z	mark___	LuitvD	yes that too, the dns

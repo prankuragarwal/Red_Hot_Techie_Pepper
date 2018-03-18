@@ -1,0 +1,22 @@
+2009-11-28T12:11:00.000Z	brando753		how can i securely wipe my deleted files so they cant be recovered?
+2009-11-28T12:11:00.000Z	zcat[1]	brando753	 delete them, then create some huge null files from /dev/zero until the disk is full, then delete them again.
+2009-11-28T12:12:00.000Z	brando753	zcat[1]	that isnt very efficent nor secure for sensitive data
+2009-11-28T12:13:00.000Z	zcat[1]	brando753	 it's a lot more secure that 'shredding' files ... due to the way the filesystem works, files tend to get moved around so the safest option is to fill up ALL the empty space.. (an even better option is to tar the entire filesystem to a clean new drive and then zero-wipe the old one.
+2009-11-28T12:19:00.000Z	zcat[1]	brando753	 what I said are the best and second-best options afaik..
+2009-11-28T12:19:00.000Z	brando753	zcat[1]	how would you create the null file then
+2009-11-28T12:20:00.000Z	zcat[1]	brando753	 cat /dev/zero > useupspace
+2009-11-28T12:21:00.000Z	zcat[1]	brando753	 the file will be called 'useupspace' ; when you run out of hard drive cat will crash and you just 'rm useupspace' to get rid of the huge empty file
+2009-11-28T12:23:00.000Z	brando753	zcat[1]	its a very slow process :(
+2009-11-28T12:24:00.000Z	zcat[1]	brando753	 yes, it is...
+2009-11-28T12:25:00.000Z	zcat[1]	brando753	 which is why I usually zero-wipe another drive and clone the filesystem over using tar
+2009-11-28T12:25:00.000Z	brando753	zcat[1]	whats zero wipe?
+2009-11-28T12:26:00.000Z	zcat[1]	brando753	 erase the entire disk to factory-clean using dban or dumping /dev/zero to /dev/sda
+2009-11-28T12:27:00.000Z	brando753	zcat[1]	is that practicall for a computer in constant use?
+2009-11-28T12:27:00.000Z	brando753	zcat[1]	or more for the paranoid user?
+2009-11-28T12:28:00.000Z	zcat[1]	brando753	 it takes a little while.. if you do things right you can do the wipe and clone while the computer is still in use, and keep downtime to a minimum just swapping the drives and reparing grub.
+2009-11-28T12:29:00.000Z	brando753	zcat[1]	but dont u loose all your files
+2009-11-28T12:31:00.000Z	brando753	zcat[1]	how do i do the null option if my root and my home our seperate partitions?
+2009-11-28T12:31:00.000Z	zcat[1]	brando753	 two drives; you put in a second drive (which means the computer os down for a minute or two) then when it's up again you can zero-wipe the space drive, make a filesystem on it, tar the files over.. takes a couple of hours but the computer can still be used.. then once that's done shutdown, swap the drives around, boot a live CD and reinstall GRUB, bring the computer up, and zero-wipe the old drive..
+2009-11-28T12:32:00.000Z	brando753	zcat[1]	wont tarring it over also bring the deleted files back to?
+2009-11-28T12:33:00.000Z	brando753	zcat[1]	and last is zero-wipe a program or what is it
+2009-11-28T12:34:00.000Z	zcat[1]	brando753	 to sero wipe, become root and cat /dev/zero > /dev/sdx (where x is whatever drive you want to wipe)

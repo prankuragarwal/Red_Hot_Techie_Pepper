@@ -1,0 +1,24 @@
+2010-02-06T01:03:00.000Z	toastedmilk		My kernel won't upgrade from 2.6.27-15, how can I fix this?
+2010-02-06T01:03:00.000Z	blakkheim	toastedmilk	aptitude update; aptitude dist-upgrade then removed the old kernels and run update-grub
+2010-02-06T01:20:00.000Z	toastedmilk	blakkheim	er..i tried that, and the new kernel doesn't show up in my grub menu
+2010-02-06T01:21:00.000Z	blakkheim	toastedmilk	i just did it today and it worked. you must have done some step incorrectly
+2010-02-06T01:22:00.000Z	blakkheim	toastedmilk	you skipped the step about removing the older kernels
+2010-02-06T01:22:00.000Z	toastedmilk	blakkheim	: i used sudo rm to remove everything in update-grub that was older
+2010-02-06T01:22:00.000Z	blakkheim	toastedmilk	you need to remove the old ones from /boot
+2010-02-06T01:22:00.000Z	blakkheim	toastedmilk	THEN run update-grub
+2010-02-06T01:23:00.000Z	toastedmilk	blakkheim	sudo rm /boot/initrd/  and sudo rm /boot/vmlinuz
+2010-02-06T01:23:00.000Z	blakkheim	toastedmilk	you only need to remove the older ones, not all of them. removing all of them is bad.
+2010-02-06T01:23:00.000Z	toastedmilk	blakkheim	yeah, i just removed the older ones
+2010-02-06T01:23:00.000Z	toastedmilk	blakkheim	but the newer ones don't show up in the grub menu
+2010-02-06T01:23:00.000Z	blakkheim	toastedmilk	pastebin the output of "ls /boot"
+2010-02-09T01:18:00.000Z	toastedmilk	blakkheim	hey, do you remember trying to help me getting the latest version of my linux image to run?
+2010-02-09T01:18:00.000Z	blakkheim	toastedmilk	no
+2010-02-09T01:20:00.000Z	toastedmilk	blakkheim	do you know how to get grub to read an image file it doesn't have on the boot loader from a different partition?
+2010-02-12T11:51:00.000Z	blakkheim	toastedmilk	it means you chrooted incorrectly, most likely
+2010-02-12T11:52:00.000Z	toastedmilk	blakkheim	'sudo chroot /media/ubuntu'(on which i mounted /dev/sda1)
+2010-02-12T11:53:00.000Z	blakkheim	toastedmilk	i was right
+2010-02-12T11:53:00.000Z	toastedmilk	blakkheim	so i should try....?
+2010-02-12T11:54:00.000Z	toastedmilk	blakkheim	echo "bbb" < /dev/null returns bbb
+2010-02-12T11:54:00.000Z	blakkheim	toastedmilk	man chroot, you need to mount /proc and /dev correctly
+2010-02-12T11:54:00.000Z	toastedmilk	blakkheim	yeah... the error also says 'grep /proc/modules: No file or directory.  and cat: /proc/cmdline: No such file or directory
+2010-02-12T12:00:00.000Z	toastedmilk	blakkheim	well 'info coreutils chroot invocation' is a maze of information..

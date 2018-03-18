@@ -1,0 +1,19 @@
+2012-01-09T05:32:00.000Z	xubuntu5		pysdm that was easy thanks again hooch!
+2012-01-09T05:34:00.000Z	xubuntu5		hoooch!
+2012-01-09T05:34:00.000Z	xubuntu5		i have one more question
+2012-01-09T05:34:00.000Z	xubuntu5		how can i automount via sshfs?
+2012-01-09T05:35:00.000Z	xubuntu5		alright thanks
+2012-01-09T05:36:00.000Z	ActionParsnip	xubuntu5	you can add them in /etc/fstab
+2012-01-09T05:37:00.000Z	ActionParsnip	xubuntu5	you may need to run:  sudo mount -a    in the desktop (or tweak the OS) to make it mount after the network comes up etc (unless the system uses a wired connection)
+2012-01-09T05:40:00.000Z	ActionParsnip	xubuntu5	you can have a script run which has a looong sleep command in then run: sudo mount -a     may do it...
+2012-01-09T05:43:00.000Z	ActionParsnip	xubuntu5	make a script with 3 lines:http://pastebin.com/buQJyUj4    save that somewhere and make it executable
+2012-01-09T05:44:00.000Z	ActionParsnip	xubuntu5	then make it run in /etc/rc.local
+2012-01-09T05:45:00.000Z	ActionParsnip	xubuntu5	the -a option, tells the system to mount (A)ll the file systems in fstab
+2012-01-09T05:45:00.000Z	ActionParsnip	xubuntu5	rc.local will run the script as root, you will need to add an ampersand to the command so the script is backgrounded
+2012-01-09T05:46:00.000Z	ActionParsnip	xubuntu5	add it above the exit 0 line
+2012-01-09T05:46:00.000Z	ActionParsnip	xubuntu5	the network will not be up when fstab is executed, so network shares will not mount
+2012-01-09T05:47:00.000Z	ActionParsnip	xubuntu5	no do NOT use ./  use absolute path as there is no pwd
+2012-01-09T05:48:00.000Z	ActionParsnip	xubuntu5	the script will sleep 30 seconds, then run the mount -a   making the fstab mount for you.
+2012-01-09T05:49:00.000Z	ActionParsnip	xubuntu5	yes everything runs as root, you can use su to run commands as any other user too :)
+2012-01-09T05:50:00.000Z	ActionParsnip	xubuntu5	just services and command, there is no x server when rc.local is ran, unless you use the sleep method
+2012-02-13T22:15:00.000Z	ActionParsnip	xubuntu5	why not just use sudo to copy the file

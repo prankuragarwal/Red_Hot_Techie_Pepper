@@ -1,0 +1,19 @@
+2008-02-10T13:19:00.000Z	mkbernard		is it possible to make sshd listen on multiple ports, or do i have to have multiple sshd running?
+2008-02-10T13:19:00.000Z	insta	mkbernard	why would you want to do that?
+2008-02-10T13:20:00.000Z	mkbernard	insta	because i want to have a special port for sshd to listen on that will be forwarded by my router
+2008-02-10T13:20:00.000Z	mkbernard	insta	so only that particular server will respond to a ssh req on that port
+2008-02-10T13:21:00.000Z	insta	mkbernard	it just sounds like you're doing something backwards, i guess :/
+2008-02-10T13:21:00.000Z	mkbernard	insta	why? what would you do?
+2008-02-10T13:23:00.000Z	mkbernard	insta	well, 8191 would be forwarded to my server by my router, and the only thing on my server listening on that port would be ssh
+2008-02-10T13:23:00.000Z	insta	mkbernard	you can make almost all routers forward external port 8191 to internal port 22
+2008-02-10T13:23:00.000Z	mkbernard	insta	it makes that server visible from outside the network
+2008-02-10T13:24:00.000Z	mkbernard	insta	i realize that, but i have multiple servers with sshd running, i want it to forward external requests to a specific server
+2008-02-10T13:24:00.000Z	insta	mkbernard	 port forwarding has to point to a specific IP inside the firewall
+2008-02-10T13:26:00.000Z	mkbernard	insta	i realize that to, but there may or may not be multiple redundant routers internally
+2008-02-10T13:27:00.000Z	mkbernard	insta	in any case, is it or is it not possible to make ssh listen on multiple ports
+2008-02-10T13:27:00.000Z	insta	mkbernard	is that really the case with your situation?
+2008-02-10T13:27:00.000Z	insta	mkbernard	i don't know that much, and i'm sorry for wasting your time in that case ... it just seemed like there was a better way
+2008-02-10T13:28:00.000Z	mkbernard	insta	its not a waste, im learning about ubuntu, so i think up problems, and your questions help me to reinforce my learning
+2008-02-10T13:28:00.000Z	mkbernard	insta	in all honesty, i could just forward requests using external/internal port switching as you said, i just wanted to know IF it is possible
+2008-02-10T13:28:00.000Z	insta	mkbernard	i think that unless you were doing some really wild and radical changes between them, you should use something like iptables or your router's config to forward 8191 to port 22, regardless of where it happens
+2008-02-10T13:29:00.000Z	mkbernard	insta	agreed. but look at it from an academic standpoint as far as ssh customization

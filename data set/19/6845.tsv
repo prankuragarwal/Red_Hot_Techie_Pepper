@@ -1,0 +1,19 @@
+2007-11-29T01:11:00.000Z	gnome-gnew		anybody got experience (or has info on) setting up virtual ftp users in ubuntu / proftp environment?
+2007-11-29T01:11:00.000Z	Ubmin	gnome-gnew	a little bit
+2007-11-29T01:13:00.000Z	Ubmin	gnome-gnew	okay, and this is for a virtual domain?
+2007-11-29T01:14:00.000Z	Ubmin	gnome-gnew	so what do you want to do? make it so the user only has access to his/her files and not the rest of the system?
+2007-11-29T01:16:00.000Z	Ubmin	gnome-gnew	just chsh his shell to /bin/false, change his home directory to his apache directory (where he can upload/download his web files), and add the following to your proftpd.conf:  DefaultRoot ~
+2007-11-29T01:17:00.000Z	Ubmin	gnome-gnew	restart proftpd and that should take care of it
+2007-11-29T01:20:00.000Z	Ubmin	gnome-gnew	you will need to change the DefaultRoot from /var/www to ~
+2007-11-29T01:22:00.000Z	gnome-gnew	Ubmin	> there's other users, unix users, who have to ftp into the machine and be able to access all of /var/www
+2007-11-29T01:23:00.000Z	Ubmin	gnome-gnew	well unless you have some virtual domains, then that will echo for everyone
+2007-11-29T01:23:00.000Z	gnome-gnew	Ubmin	thanks
+2007-11-29T01:24:00.000Z	Ubmin	gnome-gnew	the problem, however, is that proftpd is IP-based, as it is a limitation of the ftp protocol itself
+2007-11-29T01:24:00.000Z	Ubmin	gnome-gnew	as long as your virtual domains reside on their own IP and they're not sharing the same IP together, then it will work.
+2007-11-29T01:25:00.000Z	gnome-gnew	Ubmin	> i might be asking for a little too much :)
+2007-11-29T01:26:00.000Z	Ubmin	gnome-gnew	you *CAN* limit who can and cannot login to the domain...
+2007-11-29T01:26:00.000Z	Ubmin	gnome-gnew	and it's all done in the same config file
+2007-11-29T01:27:00.000Z	Ubmin	gnome-gnew	with <Limit> ... </Limit>
+2007-11-29T01:29:00.000Z	gnome-gnew	Ubmin	> that doesn't help - it controls the reverse of what i need to; johnny needs full access to his subdirectory... and only to his subdir
+2007-11-29T01:30:00.000Z	Ubmin	gnome-gnew	you still haven't answered if the virtual domain has its own IP or not - that's the deciding factor
+2007-11-29T01:31:00.000Z	Ubmin	gnome-gnew	okay, then it's possible - just set the virtual domain ip to limit access to only the user johnny and default his root to ~, it should remain independent of the other unix users, just make sure you set it all in the <VirtualHost> directive

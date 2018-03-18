@@ -1,0 +1,18 @@
+2009-06-10T03:09:00.000Z	nickolaus		i just did a partial upgrade and now my wireless is gone. I don't even have the option to enable wireless. Can anyone help?
+2009-06-10T03:10:00.000Z	Ampelbein	nickolaus	what wireless NIC do you have?
+2009-06-10T03:11:00.000Z	nickolaus	Ampelbein	NIC?
+2009-06-10T03:12:00.000Z	Ampelbein	nickolaus	the chipset your wireless card has. i.e. the output of lspci -vvnn for your wireless
+2009-06-10T03:14:00.000Z	nickolaus	Ampelbein	http://pastebin.com/mea91380
+2009-06-10T03:15:00.000Z	Ampelbein	nickolaus	you have a broadcom BCM4312
+2009-06-10T03:16:00.000Z	nickolaus	Ampelbein	any ideas?
+2009-06-10T03:16:00.000Z	Ampelbein	nickolaus	that card should work, can you pastebin the command "dmesg"?
+2009-06-10T03:18:00.000Z	nickolaus	Ampelbein	http://pastebin.com/m2f0b7c7e
+2009-06-10T03:20:00.000Z	nickolaus	Ampelbein	seeing anything?
+2009-06-10T03:20:00.000Z	Ampelbein	nickolaus	nothing so far. what does "iwlist scan" say?
+2009-06-10T03:22:00.000Z	nickolaus	Ampelbein	 "Interface doesn't support scanning." three times for lo, eth0, pan0
+2009-06-10T03:23:00.000Z	Ampelbein	nickolaus	weird. try "sudo modprobe wl" and pastebin dmesg again after that command
+2009-06-10T03:25:00.000Z	nickolaus	Ampelbein	 I did sudo modprobe wl and it just connected... what did that do?
+2009-06-10T03:26:00.000Z	Ampelbein	nickolaus	it loads the driver, which should get autoloaded at boot.
+2009-06-10T03:26:00.000Z	nickolaus	Ampelbein	 Well your my savor!
+2009-06-10T03:27:00.000Z	Ampelbein	nickolaus	try adding wl to the list of modules in /etc/modules, that should keep it loaded next boot.
+2009-06-10T03:28:00.000Z	Ampelbein	nickolaus	it would be interesting to know, why it wasn't autoloaded now, this could cause some harm. do you happen to remember what packages were not upgraded during your partial upgrade?

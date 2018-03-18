@@ -1,0 +1,23 @@
+2005-11-23T17:13:00.000Z	theoddbot		now, anyone know what in the boot process is hogging my sdb, it wont let me mount anything on it after boot
+2005-11-23T17:13:00.000Z	theoddbot		but if i stop it at the ramdisk its all good
+2005-11-23T17:14:00.000Z	theoddbot		lsof /dev/sdb and /dev/sdb* shows nothing
+2005-11-23T06:00:00.000Z	theoddbot		but anything from hda will work at the same mountpoint
+2005-11-23T06:00:00.000Z	theoddbot		and it all works ok from the initrd
+2005-11-23T06:01:00.000Z	theoddbot		only after a system boot it goes silly
+2005-11-23T06:01:00.000Z	holycow	theoddbot	say what?
+2005-11-23T06:01:00.000Z	holycow		what you can mount hdc but not hdd, hde, etc?
+2005-11-23T06:01:00.000Z	theoddbot	holycow	after ubuntu boots it thinks all my drives except the boot drive are busy
+2005-11-23T06:02:00.000Z	holycow		it sounds like you messed up your fstab theoddbot
+2005-11-23T06:02:00.000Z	theoddbot	holycow	nope, fresh as a daisy
+2005-11-23T06:02:00.000Z	holycow	theoddbot	so, it boots fine, you can mount partitions fine, but you cannot mount the slave?
+2005-11-23T06:02:00.000Z	theoddbot	holycow	dd-ing my boot partition to another drive to see if anything changes
+2005-11-23T06:03:00.000Z	theoddbot	holycow	yeah, even if i put fstab entries in it wont mount them
+2005-11-23T06:03:00.000Z	holycow	theoddbot	are you sure the slave is okay?
+2005-11-23T06:03:00.000Z	holycow		sometimes the drive is hosed
+2005-11-23T06:03:00.000Z	theoddbot	holycow	theres 4 drives in the system, and they are fine
+2005-11-23T06:03:00.000Z	theoddbot	holycow	i can badblocks and e2fsk them etc
+2005-11-23T06:03:00.000Z	holycow	theoddbot	i would reverse the drives and install ubuntu on the slave (now master) and see what happens in reverse
+2005-11-23T06:04:00.000Z	theoddbot	holycow	yeah trying that now
+2005-11-23T06:04:00.000Z	theoddbot	holycow	though like i said, if i break the boot parameters so that it stops on the initrd, before anything is mounted proper, it all works ok
+2005-11-23T06:05:00.000Z	theoddbot	holycow	any way i can boot the system step-by-step till i find out whats causing it
+2005-11-23T06:05:00.000Z	holycow	theoddbot	not without rewriting the bootscripts ... not that i know of in other words

@@ -1,0 +1,22 @@
+2010-02-13T09:41:00.000Z	keepsake		Does anyone know how to associate the slider in volume control with Master instead of PCM? I've done this before but forgot how I did it and where i found that information.
+2010-02-13T09:43:00.000Z	keepsake		Actually, is there a way to change what the default volume slider controls?
+2010-02-13T09:43:00.000Z	stevecam	keepsake	i would like to know how to stop that too
+2010-02-13T09:44:00.000Z	keepsake	stevecam	AFAIK there is a way to do it, and i've done it before. It takes editing some config file that I can no longer remember =\
+2010-02-13T09:45:00.000Z	stevecam	keepsake	if you find out let me know :-)\
+2010-02-13T09:46:00.000Z	keepsake	stevecam	I'm looking for that old article I used when I had terrible sound quality in karmic =P
+2010-02-13T10:04:00.000Z	keepsake	stevecam	I might have solved the problem
+2010-02-13T10:05:00.000Z	keepsake	stevecam	Restarting to check, I'll be right back
+2010-02-13T10:07:00.000Z	keepsake	stevecam	Are you still there? =D
+2010-02-13T10:08:00.000Z	stevecam	keepsake	yes
+2010-02-13T10:08:00.000Z	stevecam	keepsake	:-)
+2010-02-13T10:09:00.000Z	keepsake	stevecam	I've found a way to make volume slider and buttons change master instead of PCM. =D
+2010-02-13T10:09:00.000Z	stevecam	keepsake	that is exactly what i want
+2010-02-13T10:09:00.000Z	keepsake	stevecam	gksudo gedit usr/share/pulseaudio/alsa-mixer/paths/analog-output.conf.common
+2010-02-13T10:10:00.000Z	keepsake	stevecam	Then under [Element PCM] set volume to ignore instead of merge.
+2010-02-13T10:10:00.000Z	keepsake	stevecam	Then add [Element Master] with the lines "switch = mute" and "volume = merge". Restart and presto! =D
+2010-02-13T10:11:00.000Z	keepsake	stevecam	More specifically controls with "volume = merge" will be affected by the slider. Ignore makes it not change. My PCM is now sitting happily at 70
+2010-02-13T10:15:00.000Z	keepsake	stevecam	Have you tried the changes?
+2010-02-13T10:17:00.000Z	stevecam	keepsake	it works, thank you, i will have to make note of that
+2010-02-13T10:17:00.000Z	keepsake	stevecam	Yes, me too =P enjoy the slightly-higher-quality sound =P
+2010-02-13T10:18:00.000Z	stevecam	keepsake	i will, and i can now stick with the volume control in gnome instead of keeping a terminal open
+2010-02-13T10:18:00.000Z	keepsake	stevecam	Haha, yeah, down with alsamixer =P

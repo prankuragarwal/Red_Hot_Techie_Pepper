@@ -1,0 +1,18 @@
+2011-02-10T17:58:00.000Z	Dr_Willis	MarcRichter	 ive seen things like that in the past if some service is trying to get started befor other services it depends on are still loading. but I thought upstart fixed most of those race conditions.
+2011-02-10T17:59:00.000Z	MarcRichter	Dr_Willis	That is exactly my kind of thought - It looks as if the device drivers are initiated after the network - config or such ...
+2011-02-10T18:00:00.000Z	Dr_Willis	MarcRichter	 as a dirty work around. restart networking from rc.local after a few sec of delay.
+2011-02-10T18:00:00.000Z	MarcRichter	Dr_Willis	Don't know if this is possible, but it feels like that and I don't have an Idea how to analyse this futher.
+2011-02-10T18:00:00.000Z	MarcRichter	Dr_Willis	*gg* That's exactly our current workarround ;)
+2011-02-10T18:00:00.000Z	Dr_Willis	MarcRichter	 upstart dosent use the #'s of the old init system. so you cant move networking down the list that i know of.
+2011-02-10T18:00:00.000Z	MarcRichter	Dr_Willis	But I'm interested in both: A better solution and a clear and reproduceable Bugreport for the devs :)
+2011-02-10T18:01:00.000Z	MarcRichter	Dr_Willis	Can't I add some kind of pre-requirement for upstart?
+2011-02-10T18:01:00.000Z	Dr_Willis	MarcRichter	 it could be the modules are loading. but the device is just a little slow to respond/get up. Not sure how to delay networking from starting. there may be some upstart options for it.
+2011-02-10T18:03:00.000Z	Dr_Willis	MarcRichter	 seems the /etc/init/network* scrips are bash scripts. try tossing in a sleep statement or 4 in there. :)
+2011-02-10T18:03:00.000Z	Dr_Willis	MarcRichter	 that bot factoid is a bit out of date..  :) i dont think BUM or update-rc.d work with Upstart.
+2011-02-10T18:05:00.000Z	Dr_Willis	MarcRichter	 Huh? i got one in /etc/init/networking.conf
+2011-02-10T18:05:00.000Z	MarcRichter	Dr_Willis	But the init-Script isn't a Symlink to init :
+2011-02-10T18:07:00.000Z	Dr_Willis	MarcRichter	 i dont think so.. the init.d is using some upstart commands/options it seems.
+2011-02-10T18:08:00.000Z	Dr_Willis	MarcRichter	 toss in some echo commands in the scripts and watch what its doing.
+2011-02-10T18:10:00.000Z	MarcRichter	Dr_Willis	You're speakting of the init.d Script, not the init - Configfile, don't you?
+2011-02-10T18:10:00.000Z	Dr_Willis	MarcRichter	 check them both out.   i looked in init.d/networking and it looks like it was using some upstart functions just now
+2011-02-10T18:11:00.000Z	MarcRichter	Dr_Willis	I doubt if I understand what the echo's shall tell :P The Script is running - that I know because it *works* when issued after the boot ..

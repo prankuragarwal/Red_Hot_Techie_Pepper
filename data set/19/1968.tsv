@@ -1,0 +1,19 @@
+2011-02-20T15:10:00.000Z	elfranne		i am transfering files between a whole new ubuntu 10.10 install but the transfer is only 4mb/s running on 100mbps lan transfer is via sftp ... any idea why ?
+2011-02-20T15:10:00.000Z	elfranne		sudo passwd root
+2011-02-20T15:11:00.000Z	Diamondcite	elfranne	Which transfer method? scp? sshfs? nfs? samba?
+2011-02-20T15:12:00.000Z	elfranne		yes it 4 MB/s but it is still slow, you should reach around 8, sftp transfer
+2011-02-20T15:14:00.000Z	Diamondcite	elfranne	Maybe they are small files or one of the CPUs are already maxed?
+2011-02-20T15:14:00.000Z	Diamondcite	elfranne	After all.. scp/sftp is quite CPU intensive.
+2011-02-20T15:15:00.000Z	elfranne	Diamondcite	: 50% of cpu in use, and about small files they are around 5-10MB each
+2011-02-20T15:16:00.000Z	Diamondcite	elfranne	If it's a single core hyperthreaded CPU, then it might be maxed...
+2011-02-20T15:16:00.000Z	elfranne	Diamondcite	: single core VIA cpu
+2011-02-20T15:17:00.000Z	Diamondcite	elfranne	While I don't know the details.. On a N270 Atom (1.6GHz) I can copy at around 6MB/sec due to CPU speed limitations.
+2011-02-20T15:18:00.000Z	elfranne	Diamondcite	: this cpu is a less powerfull cpu than the N270, so even with samba i should only be able to copy at aroud 6 MB/s ?
+2011-02-20T15:19:00.000Z	Diamondcite	elfranne	Samba might be faster since it's actually lighter than sftp in resources.
+2011-02-20T15:19:00.000Z	elfranne	Diamondcite	: ok
+2011-02-20T15:20:00.000Z	elfranne	Diamondcite	: it is because i got problems with my smb.conf file -_-
+2011-02-20T15:20:00.000Z	Diamondcite	elfranne	On the flipside, sftp gurantees a proper file transfer, samba doesn't have such an offer I think.
+2011-02-20T15:21:00.000Z	elfranne	Diamondcite	: you mean there is a check of the fileś on sftp ?
+2011-02-20T15:22:00.000Z	Diamondcite	elfranne	Since all the files are encrypted before transfer, I would assume that the file can't be decrypted if the transfer went bad.
+2011-02-20T15:26:00.000Z	elfranne	Diamondcite	: thx a lot for the infos :)
+2011-02-20T15:31:00.000Z	elfranne	Diamondcite	: just checked where the files were it sftp is taking 50%cpu on my  core 2 duo 2.0GHz ... so i can understand it got problems on a atom like cpu

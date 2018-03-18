@@ -1,0 +1,24 @@
+2004-12-15T06:55:00.000Z	wood1		How to I use the Terminal Server Client to connect to my other PC using Ubuntu ?
+2004-12-15T06:55:00.000Z	wood1		Both are running on Ubuntu Linux ?
+2004-12-15T06:55:00.000Z	siretart	wood1	I dont understand your question. either all ports are closed so you are out of luck. Or you can connect to your office pc using ssh. then there you are!
+2004-12-15T06:57:00.000Z	wood1	siretart	all the ports are closed on my Office Network except for Ports 80 and 21. I can connect to my Home PC using SSH but not vice versa
+2004-12-15T06:59:00.000Z	siretart	wood1	thats strange. port 21 (ftp) is open but 22 (ssh) is not? you should ask your system administrator for support..
+2004-12-15T07:01:00.000Z	siretart	wood1	if thats the policy of your network, you should follow it
+2004-12-15T07:02:00.000Z	siretart	wood1	you could try to make your ssh listen on other ports than 22, e.g. port 21 or port 80
+2004-12-15T07:03:00.000Z	siretart	wood1	you would have to edit /etc/ssh/sshd_config
+2004-12-15T07:04:00.000Z	siretart	wood1	information about options there can be found in the manpage sshd_config(5)
+2004-12-15T07:05:00.000Z	siretart	wood1	you're welcome, but take care..
+2004-12-15T07:07:00.000Z	siretart	wood1	you would have to start a vnc server on the computer to be remote controlled. but check with your network policy if you are permitted to install one..
+2004-12-15T07:09:00.000Z	wood1	siretart	how do I start a VNC Server on the computer to be controlled ?
+2004-12-15T07:10:00.000Z	siretart	wood1	never have done that. I just connect via ssh using option "-X" and start graphical applications from the shell. The are displayed on my local computer..
+2004-12-15T07:11:00.000Z	wood1	siretart	do I have to ssh to the other PC as root ?
+2004-12-15T07:12:00.000Z	siretart	wood1	nope. only ssh server must run as root (in normal setups). ssh client is running as user just fine
+2004-12-15T07:16:00.000Z	siretart	wood1	because the rdesktop protocoll microsoft is using has not been published in a way ubuntu could adapt it. the rdesktop client is working quite well but an rdesktop server is not available :(
+2004-12-15T07:17:00.000Z	siretart	wood1	starting an vncserver should be an easy task
+2004-12-15T07:25:00.000Z	siretart	wood1	I heard there are some known problems with openoffice.org packages in hoary and uploads fixing that are pending..
+2004-12-15T07:26:00.000Z	siretart	wood1	if you need a stable and reliable system you shouldn't use a development branch..
+2004-12-15T07:37:00.000Z	siretart	wood1	check why root can't remove /usr/lib/openoffice/share/gallery/www-graf/redat.gif
+2004-12-15T07:37:00.000Z	siretart	wood1	perhaps some directorys have broken permissions?
+2004-12-15T07:41:00.000Z	siretart	wood1	try creating one with `touch /usr/lib/openoffice/share/gallery/www-graf/redat.gif`. does this work?
+2004-12-15T07:43:00.000Z	siretart	wood1	check every directory in that path for permissions. something seems to be weird.
+2005-01-03T16:47:00.000Z	siretart	wood1	try debfoster

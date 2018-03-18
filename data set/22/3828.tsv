@@ -1,0 +1,22 @@
+2009-05-14T01:11:00.000Z	getxsick		i set hibernation, and i need to update initramfs, and seems like it's updated but still i can't resume a system. it works only if i type resume=/dev/xxx parameter into kernel during the boot
+2009-05-14T01:12:00.000Z	ranf	getxsick	you add that in /boot/grub/menu.lst
+2009-05-14T01:14:00.000Z	getxsick	ranf	"that" what?
+2009-05-14T01:15:00.000Z	ranf	getxsick	resume=/dev ...
+2009-05-14T01:15:00.000Z	getxsick	ranf	i know, but it's not the solution
+2009-05-14T01:16:00.000Z	ranf	getxsick	No? I thought so.
+2009-05-14T01:17:00.000Z	getxsick	ranf	i think it should works without using that paramter, it should be done by using initramfs
+2009-05-14T01:18:00.000Z	ranf	getxsick	something like in /etc/initramfs-tools/conf.d/resume
+2009-05-14T01:19:00.000Z	getxsick	ranf	conf.d is empty
+2009-05-14T01:20:00.000Z	ranf	getxsick	mine has resume with that content "RESUME=UUID=0bd9849a-b353-4ce5-859c-e09087194c6d"
+2009-05-14T01:21:00.000Z	ranf	getxsick	that would need the UUID of your swap partition
+2009-05-14T01:21:00.000Z	getxsick	ranf	ah, ok...anyway i think it should be created by update-initramfs
+2009-05-14T01:22:00.000Z	ranf	getxsick	don't know what creates this
+2009-05-14T01:22:00.000Z	getxsick	ranf	ok, let me check :)
+2009-05-14T01:23:00.000Z	getxsick	ranf	i'm wondering about this: https://wiki.ubuntu.com/InitramfsUpdates
+2009-05-14T01:23:00.000Z	getxsick	ranf	but propably it's outdated
+2009-05-14T01:24:00.000Z	ranf	getxsick	it's a spec from 2005
+2009-05-14T01:26:00.000Z	getxsick	ranf	doesn't work
+2009-05-14T01:27:00.000Z	ranf	getxsick	I'd create that resume file
+2009-05-14T01:27:00.000Z	getxsick	ranf	i did
+2009-05-14T01:27:00.000Z	getxsick	ranf	but didn't help
+2009-05-14T01:28:00.000Z	ranf	getxsick	Oh I see

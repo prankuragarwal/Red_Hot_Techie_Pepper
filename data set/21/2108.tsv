@@ -1,0 +1,21 @@
+2011-06-22T05:22:00.000Z	jstoone		HI everyone, how do make so that I don't have to sudo all the time when I'm changeing things in /var/www? www-data: is the owner isn't it just enough that I added myself to the group=
+2011-06-22T05:23:00.000Z	qin	jstoone	Change permissions for group, or do it right and make yourself owner.
+2011-06-22T05:24:00.000Z	jstoone	qin	But if I make myself jstoone: the owner the web cannot see any pictures.. :S
+2011-06-22T05:25:00.000Z	qin	jstoone	Really?
+2011-06-22T05:26:00.000Z	jstoone	qin	are you being ironic ? ;) I'm not good with permissions and ownership :S
+2011-06-22T05:29:00.000Z	qin	jstoone	Not, just sheer surprise, ok, can you give one line from ls -l in your web directory?
+2011-06-22T05:30:00.000Z	jstoone	qin	sure!
+2011-06-22T05:33:00.000Z	jstoone	qin	http://paste.ubuntu.com/630602/
+2011-06-22T05:35:00.000Z	qin	jstoone	sudo chmod 755 images (from same place you run ls)
+2011-06-22T05:36:00.000Z	jstoone	qin	ah ;) I never remember if it should be 775 or 755 xD
+2011-06-22T05:36:00.000Z	qin	jstoone	Did your server displayed images before?
+2011-06-22T05:37:00.000Z	qin	jstoone	Well, 775 or 755 change pesmission for group
+2011-06-22T05:38:00.000Z	jstoone	qin	 ah ;)
+2011-06-22T05:38:00.000Z	qin	jstoone	My way is (ower=me=full=right=7, group=nobody=noright=0)
+2011-06-22T05:39:00.000Z	qin	jstoone	rest, for files=read, directories=read,execute
+2011-06-22T05:40:00.000Z	jstoone	qin	Lost me there ;) I'll go on ubuntu's forums and read about permissions ;)
+2011-06-22T05:40:00.000Z	jstoone	qin	Thank you very much mate (:
+2011-06-22T05:40:00.000Z	qin	jstoone	Better do: man chmod, man chown
+2011-06-22T05:42:00.000Z	jstoone	qin	Ah, thanks again (:
+2011-06-22T05:43:00.000Z	jstoone	qin	It works like a charm, thanks!
+2011-06-22T05:44:00.000Z	qin	jstoone	You do not need (well maybe a bit) www-data group.

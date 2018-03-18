@@ -1,0 +1,23 @@
+2008-12-14T03:47:00.000Z	deftop_		I'm following this: https://help.ubuntu.com/community/SSHHowto#Running%20GUI%20Programs
+2008-12-14T03:47:00.000Z	deftop_		in putty I typed that command
+2008-12-14T03:48:00.000Z	deftop_		oh
+2008-12-14T03:48:00.000Z	deftop_		in that case, how do I do it from putty?
+2008-12-14T03:49:00.000Z	deftop_		raboo: no =/
+2008-12-14T03:49:00.000Z	deftop_		raylu*
+2008-12-14T03:49:00.000Z	deftop_		can't use text-based
+2008-12-14T03:50:00.000Z	deftop_		already tried those
+2008-12-14T03:50:00.000Z	deftop_		see I screwed up my router and I've been trying to get in to fix it
+2008-12-14T03:50:00.000Z	deftop_		but my router apparently outputs bad HTML that the text-based browsers won't display properly
+2008-12-14T03:50:00.000Z	Terrasque	deftop_	ssh tcp port tunneling
+2008-12-14T03:51:00.000Z	Terrasque	deftop_	ssh port forwarding, either directly to router:80 or set up a vnc server and port forward to that, connect, and start firefox.
+2008-12-14T03:52:00.000Z	deftop_	Terrasque	ssh port forwarding? how can I do that?
+2008-12-14T03:52:00.000Z	Terrasque	deftop_	what client do you use to ssh?
+2008-12-14T03:53:00.000Z	Terrasque	deftop_	Putty configuration -> Connection -> SSH -> Tunnels
+2008-12-14T03:53:00.000Z	Terrasque	deftop_	source port is port on local machine, destination is ip:port
+2008-12-14T03:54:00.000Z	Terrasque	deftop_	so source 8080, then destination router_ip:80 - then connect to localhost:8080
+2008-12-14T03:55:00.000Z	Terrasque	deftop_	some web interfaces does "clever stuff" that break the forwarding (hard code url in links for example), and then you'll need to use vnc instad.
+2008-12-14T03:56:00.000Z	deftop_	Terrasque	so once I log in through ssh I can open a browser on my local machine and point it to localhost:8080?
+2008-12-14T03:56:00.000Z	Terrasque	deftop_	yes, if port tunnel is set up correctly :)
+2008-12-14T03:57:00.000Z	deftop_	Terrasque	It worked!!!
+2008-12-14T03:58:00.000Z	Terrasque	deftop_	good :) and remember that ssh port tunneling is a very useful tool, for a lot of stuff :D
+2008-12-14T04:00:00.000Z	Terrasque	deftop_	as a bonus it's encrypted, so no snooping on the stream too. You can even make it work as a socks proxy. It's all kinds of awesome, and one of the reasons for why ssh is my #1 favorite tool

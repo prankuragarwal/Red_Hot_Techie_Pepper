@@ -1,0 +1,19 @@
+2008-06-19T09:48:00.000Z	bullgard4		How can I use the command 'stat' to display the owner of the file /etc/hosts? "detlef@MD97600:~$ sudo stat /etc/hosts" does not show it.
+2008-06-19T09:49:00.000Z	muerr	bullgard4	assuming you have a specific reason for using stat, it should show a line like "Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)" when you run 'stat /etc/hosts'
+2008-06-19T09:51:00.000Z	muerr	bullgard4	the number between ( and / is padded with spaces, since it could be longer than a single digit, of course...
+2008-06-19T09:51:00.000Z	bullgard4	muerr	What do you mean by 'id 0'?
+2008-06-19T09:51:00.000Z	muerr	bullgard4	linux, like unix, assigns numeric values to each user and group. the name 'root' or whatever is a convenience for humans.
+2008-06-19T09:52:00.000Z	bullgard4	muerr	Ah! Understood. Thank you very much for your help.
+2008-06-19T09:52:00.000Z	muerr	bullgard4	np
+2008-06-19T09:55:00.000Z	bullgard4	muerr	The kernel Documentation about the ext2 filesystem states: "The metadata about a file object includes the permission, owner, group, flags, size, number of blocks, access time, change time, ...". 'sudo stat /etc/hosts' for example did not print any flags. What flags are meant here?
+2008-06-19T09:57:00.000Z	muerr	bullgard4	sorry not sure, i don't use the stat command.
+2008-06-19T09:57:00.000Z	bullgard4	muerr	ok.
+2008-06-19T09:59:00.000Z	bullgard4	muerr	What command do you use to print the metadata of an ext2/3 file?
+2008-06-19T10:00:00.000Z	muerr	bullgard4	What kind of metadata are you after? Like, tags applied to files or something?
+2008-06-19T10:01:00.000Z	muerr	bullgard4	or some kind of lower level metadata like journal?
+2008-06-19T10:04:00.000Z	bullgard4	muerr	/usr/share/doc/linux-doc-2.6.24/Documentation/filesystems/ext2.txt: "The metadata about an object includes the permissions, owner, group, flags, size, number of blocks used, access time, change time, modification time, deletion time, number of links, fragments, version (for NFS) and extended attributes (EAs) and/or Access Control Lists (ACLs)." (Contined in the inode structure.)
+2008-06-19T10:04:00.000Z	bullgard4	muerr	/usr/share/doc/linux-doc-2.6.24/Documentation/filesystems/ext2.txt: "The metadata about an object includes the permissions, owner, group, flags, size, number of blocks used, access time, change time, modification time, deletion time, number of links, fragments, version (for NFS) and extended attributes (EAs) and/or Access Control Lists (ACLs)." (Contained in the inode structure.)
+2008-06-19T10:08:00.000Z	muerr	bullgard4	ls, generally :-). Is there specific information about a file you're looking for?
+2008-06-19T10:09:00.000Z	bullgard4	muerr	I am interested how to read out the contents of the inode of a file, let's say the file /etc/hosts.
+2008-06-19T10:12:00.000Z	muerr	bullgard4	well stat would show the most information that i know of, but i haven't really had cause to look deeper than output from ls
+2008-06-19T10:13:00.000Z	bullgard4	muerr	Thank you for your help.

@@ -1,0 +1,23 @@
+2009-11-08T02:32:00.000Z	HelpMe932		Ok, I am upgrading from 9.04 to 9.10. Halfway through installation the laptop battery died. When I went to reboot I couldn't. I dropped into the recovery console but it's read only. I tried fsck /dev/sda6 but it didn't return any errors.
+2009-11-08T02:33:00.000Z	HelpMe932		It says "One or more of the mounts listed in /etc/fstab cannot yet be mounted" and it's waiting for the uuid...
+2009-11-08T02:33:00.000Z	Jordan_U	HelpMe932	Can you boot into a LiveCD?
+2009-11-08T02:33:00.000Z	HelpMe932	Jordan_U	sure.
+2009-11-08T02:34:00.000Z	HelpMe932	Jordan_U	so, where do I go from there?
+2009-11-08T02:35:00.000Z	Jordan_U	HelpMe932	Boot from a LiveCD and mount your root partition to /mnt ( if you need any help with that just ask )
+2009-11-08T02:42:00.000Z	HelpMe932	Jordan_U	ok, now what?
+2009-11-08T02:45:00.000Z	HelpMe932	Jordan_U	I've mounted it. What's next?
+2009-11-08T02:47:00.000Z	Jordan_U	HelpMe932	Run "sudo mount -o bind /dev /mnt/dev && sudo mount -o bind /proc /chroot/proc && sudo mount -o bind /sys /mnt/sys && sudo chroot /mnt"
+2009-11-08T02:49:00.000Z	HelpMe932	Jordan_U	says : "mount: can't find /proc/chroot/proc in /etc/fstab or /etc/mtab"
+2009-11-08T02:50:00.000Z	Jordan_U	HelpMe932	Be carefull to include all spaces
+2009-11-08T02:51:00.000Z	Jordan_U	HelpMe932	so "sudo mount -o bind /proc /chroot/proc"
+2009-11-08T02:51:00.000Z	HelpMe932	Jordan_U	my bad, there was a page break there and I thought it was a continuum
+2009-11-08T02:53:00.000Z	HelpMe932	Jordan_U	"mount: mount point /chroot/proc does not exist"
+2009-11-08T02:53:00.000Z	Jordan_U	HelpMe932	Did you mount your root filesystem to /chroot?
+2009-11-08T02:53:00.000Z	HelpMe932	Jordan_U	no...
+2009-11-08T02:54:00.000Z	Jordan_U	HelpMe932	Why did you try to mount to /chroot?
+2009-11-08T02:56:00.000Z	HelpMe932	Jordan_U	I'm not sure, the only thing I've done on my own is mount it to /mnt . Otherwise I've just typed in the commands you've given me.
+2009-11-08T02:58:00.000Z	Jordan_U	HelpMe932	Sorry, run "sudo mount -o bind /proc /mnt/proc"
+2009-11-08T02:59:00.000Z	HelpMe932	Jordan_U	ok, done.
+2009-11-08T02:59:00.000Z	Jordan_U	HelpMe932	Then "sudo mount -o bind /sys /mnt/sys" then "sudo chroot /mnt" then "apt-get dist-upgrade"
+2009-11-08T03:02:00.000Z	HelpMe932	Jordan_U	ok, thanks. I assume I just wait for it to finish now?
+2009-11-08T03:03:00.000Z	Jordan_U	HelpMe932	Yes, and if you get an error about starting a service then follow the directions @ http://www.ubuntu.com/getubuntu/releasenotes/910#Upstart%20jobs%20cannot%20be%20run%20in%20a%20chroot

@@ -1,0 +1,19 @@
+2008-03-22T21:53:00.000Z	No1CaNTeL		How can I find out which process is keeping my dvd drive in use? I currently share via samba  my dvd drive on the network so that my xbox can connnect and play media using my PC's DVD drive. Now I have the share working just fine, the movies/music play, but the dvd drive refuses to release saying that it is still in use when it is not. This only happens when I share the drive.
+2008-03-22T21:55:00.000Z	No1CaNTeL		lsof?
+2008-03-22T21:55:00.000Z	No1CaNTeL		console command?
+2008-03-22T21:55:00.000Z	No1CaNTeL		I'm a bit new to nix so I need a bit more then that if ya can :P
+2008-03-22T21:55:00.000Z	Benandro	No1CaNTeL	try '/sbin/lsof /dev/dvd'
+2008-03-22T22:02:00.000Z	Benandro	No1CaNTeL	first of all, you have to know which (file) device represents your DVD hardware. Usually it's /dev/dvd. So, the 'lsof' command will show you the apps using this (file) device (lsof = LiSt Open Files)
+2008-03-22T22:04:00.000Z	No1CaNTeL	Benandro	well I am not sure which represent my drive so I tried all that are in dev and have anything to do with a cd/dvd drive
+2008-03-22T22:05:00.000Z	Benandro	No1CaNTeL	try this one: 'cat /etc/fstab |grep cdrom' (without the apostrophes)
+2008-03-22T22:14:00.000Z	Benandro	No1CaNTeL	IMO, lsof don't find any app blocking the device. What's the matter? why do you need to know which app is using the device?
+2008-03-22T22:17:00.000Z	Benandro	No1CaNTeL	I can't say as I don't use samba
+2008-03-22T22:20:00.000Z	Benandro	No1CaNTeL	try 'mount' within a shell, and see if the DVD device is mounted.
+2008-03-22T22:30:00.000Z	Benandro	No1CaNTeL	what you are describing is an automount problem.
+2008-03-22T22:30:00.000Z	No1CaNTeL	Benandro	------ THANK U!!
+2008-03-22T22:31:00.000Z	Benandro	No1CaNTeL	so it worked. but... which command? ;)
+2008-03-22T22:42:00.000Z	Benandro	No1CaNTeL	shell scripts. The power of a real OS ;-)
+2008-03-22T22:45:00.000Z	Benandro	No1CaNTeL	';' is just in pascal language
+2008-03-22T22:49:00.000Z	Benandro	No1CaNTeL	IMO, a shell script is better. For example, create a 'bin' directory within your home dir. create a new file which'll countain all your 'commands'. First line is '#!/bin/sh'. Put this script within the desktop properties. Advantages: can be easily modified and used within other commands or within a shell ;-))
+2008-03-22T22:50:00.000Z	No1CaNTeL	Benandro	sounds like the right way to do it but for now I think a few more baby steps are in order, I do not want to get too far ahead of myself as that is where you start mucking things up more then learning :P
+2008-03-22T22:53:00.000Z	Benandro	No1CaNTeL	I agree! As you're a programmer I'm sure you'll get the max from you linux box... soon ;) Good luck, and good 'man xxxxxx' :-))

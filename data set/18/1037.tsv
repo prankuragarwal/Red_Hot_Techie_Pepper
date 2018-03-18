@@ -1,0 +1,18 @@
+2011-06-25T22:03:00.000Z	sammmy		When I'm logging in, the mouse settings are set to default. This is annoying because I'm expecting the cursor to move faster because I set the cursor acceleration to be faster.
+2011-06-25T22:03:00.000Z	sammmy		How do I fix this?
+2011-06-25T22:04:00.000Z	soreau	sammmy	Did you run something as root? Could be a permissions issue where it can't save the settings
+2011-06-25T22:08:00.000Z	sammmy	soreau	the settings are saved when I log in. It's only at the login screen does the mouse settings return to their defaults.
+2011-06-25T22:09:00.000Z	soreau	sammmy	Not sure in that case..
+2011-06-25T22:25:00.000Z	soreau	sammmy	Look in /var/log/Xorg.0.log
+2011-06-25T22:26:00.000Z	soreau	sammmy	The settings can probably be setup from xorg.conf Input section, but if it doesn't justwork, its likely a bug in the device driver module for your trackpad
+2011-06-25T22:26:00.000Z	sammmy	soreau	what am I looking for in this log file?
+2011-06-25T22:27:00.000Z	soreau	sammmy	Anything interesting :)
+2011-06-25T22:28:00.000Z	sammmy	soreau	what does a log file have to do with my issue? :\
+2011-06-25T22:29:00.000Z	soreau	sammmy	X is the one that configures the device. If it's not a driver problem but a configuration one, you should be able to set it up in xorg.conf
+2011-06-25T22:42:00.000Z	sammmy	soreau	where's xorg.conf?
+2011-06-25T22:43:00.000Z	soreau	sammmy	It's stored in /etc/X11/ though recent versions of X are smart enough to guess what configuration is needed so no xorg.conf is installed by default
+2011-06-25T22:44:00.000Z	sammmy	soreau	so I just create a text file called xorg.conf in /etc/X11
+2011-06-25T22:44:00.000Z	soreau	sammmy	Yes, if the file exists, the settings will be respected if it can parse it
+2011-06-25T22:51:00.000Z	sammmy	soreau	what sort of settings can I put in this configuration file?
+2011-06-25T22:52:00.000Z	soreau	sammmy	That is really beyond the scope of this channel.. you might try googling though (you basically would just define and Input section )
+2011-06-25T22:57:00.000Z	sammmy	soreau	an inputdevice section you mean?

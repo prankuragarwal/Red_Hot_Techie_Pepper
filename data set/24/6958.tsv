@@ -1,0 +1,24 @@
+2005-06-05T07:51:00.000Z	kestas		why doesnt sound work, is there a firewall, how do I get xmms, why doesnt mplayer play .wmvs, how do I get kde, which wm is the best?
+2005-06-05T07:51:00.000Z	kestas		there have I got your attention?
+2005-06-05T07:51:00.000Z	kestas		SMB connection failed
+2005-06-05T07:52:00.000Z	xoz	kestas	possible that storage is owned by root? ls -ld /mnt/storage
+2005-06-05T07:53:00.000Z	kestas	xoz	drwxr-xr-x  2 root root 48 2005-05-16 04:23 /mnt/storage/
+2005-06-05T07:53:00.000Z	kestas	xoz	it is owned by root, is that a prob?
+2005-06-05T07:53:00.000Z	xoz	kestas	that's it. change is to the user
+2005-06-05T07:54:00.000Z	kestas	xoz	Ill try it, but isnt that what uid=1000 is for? and why would it work using 'mount' if that was a problem?
+2005-06-05T07:54:00.000Z	xoz	kestas	because you used sudo
+2005-06-05T07:54:00.000Z	kestas	xoz	well its the exact same problem Im afraid
+2005-06-05T07:55:00.000Z	kestas	xoz	looks like it didnt make a difference
+2005-06-05T07:55:00.000Z	xoz	kestas	while just reading using fstab means mount is run by the user which has no access to the dir
+2005-06-05T07:55:00.000Z	kestas	xoz	not to mention that the other share, which is on another server //10.10.1.20/Data /mnt/PubStore works fine with fstab, and its owned by root
+2005-06-05T07:56:00.000Z	kestas	xoz	but I run it with sudo, of course I have access Im running as root
+2005-06-05T07:56:00.000Z	xoz	kestas	have you changed it?
+2005-06-05T07:56:00.000Z	kestas	xoz	yes
+2005-06-05T07:56:00.000Z	kestas	xoz	but still no difference, why would it say "Access Denied" if it was a problem with the mount point ffs?
+2005-06-05T07:57:00.000Z	xoz	kestas	access denied in my interpretation is that you don't have access to the target dir
+2005-06-05T07:58:00.000Z	kestas	xoz	no the error comes from smbmount
+2005-06-05T07:58:00.000Z	kestas	xoz	its as if the password is wrong, but the same username and password works fine if I mount it using 'mount -t smbfs -o blablabla'
+2005-06-05T07:59:00.000Z	xoz	kestas	possible also that you have to enable encryption in the smb.conf because pain text passed may not work. this is one bug in the latest tiger of OS X.
+2005-06-05T08:01:00.000Z	kestas	xoz	tell me this: why would it work doing it with mount -t smbfs -o blablabla, but not when I mount it with the same options specified in /etc/fstab?? how could plain text passwords possibly be a problem from /etc/fstab but not doing it directly??
+2005-06-05T08:01:00.000Z	xoz	kestas	so it must be with the fstab then. i think you have to check access ownership of the dir...
+2005-06-05T08:02:00.000Z	kestas	xoz	its NOT ownership of the dir

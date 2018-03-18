@@ -1,0 +1,22 @@
+2008-03-12T17:41:00.000Z	MindSpark		hi, does anyone know how I can launch another instance of X on a different virtual console ?
+2008-03-12T17:43:00.000Z	jrib	MindSpark	startx -- :1 &
+2008-03-12T17:43:00.000Z	jrib	MindSpark	or use gdmflexiserver
+2008-03-12T17:44:00.000Z	MindSpark	jrib	startx -- :1 works fine, but does it work without -- ?
+2008-03-12T17:45:00.000Z	jrib	MindSpark	I never tried
+2008-03-12T17:46:00.000Z	MindSpark	jrib	gdmflexiserver just started the screen saver
+2008-03-12T17:48:00.000Z	jrib	MindSpark	gdmflexiserver -l next time, otherwise it will lock your current screen.   But now that you did that, you should still be able to hit ctrl-alt-f9 and get to a new login window  (you need to read manpages when someone just gives you a command :))
+2009-08-08T16:21:00.000Z	jrib	MindSpark	use a mirror
+2009-08-08T16:21:00.000Z	MindSpark	jrib	I am trying to find the best one and it's not connecting
+2009-08-08T16:21:00.000Z	jrib	MindSpark	you can't connect to any mirror?
+2009-08-08T16:22:00.000Z	MindSpark	jrib	bazhang there's this option that basically pings all servers and finds the fastest one. I keep getting "no suitable server found"
+2010-01-18T18:25:00.000Z	jrib	MindSpark	apt-cache search ftpfs ?
+2010-01-18T18:25:00.000Z	jrib	MindSpark	there's probably some way to use fuse too
+2010-01-18T18:26:00.000Z	MindSpark	jrib	curlftpfs is there ! thanks
+2011-03-22T20:00:00.000Z	jrib	MindSpark	I don't believe you when you say you do "mount -a" :)
+2011-03-22T20:01:00.000Z	MindSpark	jrib	wtf ? lol
+2011-03-22T20:01:00.000Z	jrib	MindSpark	you're using sudo or doing it as root?
+2011-03-22T20:02:00.000Z	MindSpark	jrib	yes, I am using sudo. Oh ! it reads keys from the root config !
+2011-03-22T20:02:00.000Z	jrib	MindSpark	yes, but I think the page you linked provides syntax: sshfs#$USER@far:/projects /home/$USER/far_projects fuse defaults,idmap=user 0 0
+2011-03-22T20:03:00.000Z	MindSpark	jrib	the syntax works, but I think it's due to sudo
+2011-03-22T20:03:00.000Z	jrib	MindSpark	that's for fstab
+2011-03-22T20:06:00.000Z	jrib	MindSpark	are you sure the instructions on your link don't work?  Note there seem to be two requirements: 1) add your user to the fuse group (and log out and back in) and 2) structure the fstab line like described

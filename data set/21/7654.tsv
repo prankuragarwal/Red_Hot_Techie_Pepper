@@ -1,0 +1,21 @@
+2006-08-15T15:28:00.000Z	zanpakuto		hello, anyone with ibm ipssend or serveraid 7k experience?
+2006-08-15T15:30:00.000Z	freaky_	zanpakuto	nope, just an adaptec raid using I2O driver, runs great tho'
+2006-08-15T15:31:00.000Z	zanpakuto	freaky_	i see
+2006-08-15T15:33:00.000Z	freaky_	zanpakuto	did you run into troubles, or haven't tried it yet?
+2006-08-15T15:35:00.000Z	zanpakuto	freaky_	I am pretty new with hardware RAID. sent a command ipssend synch 1 1 . Its not finished 'synching' , so I looked at the logs, and I saw those messages I mentione earlier. I was wondering if its normal :)
+2006-08-15T15:35:00.000Z	freaky_	zanpakuto	didn't see those sorry. when RAID has just been setup, depending on the raid controller, it can take several hours before the disks are synced
+2006-08-15T15:37:00.000Z	zanpakuto	freaky_	 oh my bad. did not post the message here sorry! here it is (kernel log), "program ipssend not setting count and/or reply_len properly"
+2006-08-15T15:37:00.000Z	zanpakuto	freaky_	 kernel: sg_write: data in/out 4304/4304 bytes for SCSI command 0xd--guessing data in;
+2006-08-15T15:39:00.000Z	freaky_	zanpakuto	never seen those... dunno how good the driver is either, usually they first get things running, management apps n such usually come later
+2006-08-15T15:39:00.000Z	freaky_	zanpakuto	seems to be just info tho'...
+2006-08-15T15:39:00.000Z	zanpakuto	freaky_	Ok.
+2006-08-15T15:41:00.000Z	zanpakuto	freaky_	am I right to assume that if the raid controller is installed and the two hard disk setup as raid 1 . When I installed ubuntu there, only 1 drive gets seen. Am I assumming right that the 'mirroring' aspect is already being done on the background?
+2006-08-15T15:42:00.000Z	freaky_	zanpakuto	yes, the controller will show the RAID-1 as a single disk to the OS
+2006-08-15T15:43:00.000Z	freaky_	zanpakuto	true hardware raid always does that, it only shows what they call the logical disks to the os
+2006-08-15T15:43:00.000Z	zanpakuto	freaky_	so does it mean mirroring will work without doing anything?
+2006-08-15T15:44:00.000Z	freaky_	zanpakuto	it should.. some bad hardware raid controllers (but have only seen this with IDE raid controllers) sometimes present both the IDE disks and the logical disk (the raid set) which is crappy. never seen it with real raid controllers tho (scsi ones)
+2006-08-15T15:45:00.000Z	freaky_	zanpakuto	what's your disk? /dev/sda? do a 'dmesg | grep sda' and see what name/brand/etc the disk has
+2006-08-15T15:49:00.000Z	zanpakuto	freaky_	yep its /dev/sda.
+2006-08-15T15:50:00.000Z	freaky_	zanpakuto	what does the 'dmesg | grep sda' tell you? or lshw, still compiling it myself (on gentoo, run ubuntu on my vmware server as the host os)
+2006-08-15T15:53:00.000Z	zanpakuto	freaky_	servers been up for a while so dmesg |grep sda returns nothing
+2006-08-15T15:54:00.000Z	freaky_	zanpakuto	the lshw looks very nice :) a long output

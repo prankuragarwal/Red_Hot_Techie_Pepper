@@ -1,0 +1,24 @@
+2006-11-10T06:19:00.000Z	JosefK		christ Adam_G, did you shut that system down in the middle of an update?
+2006-11-10T06:19:00.000Z	Adam_G	JosefK	this error first showed up *during* the edgy update
+2006-11-10T06:20:00.000Z	JosefK	Adam_G	try 'sudo dpkg --configure -a' first, if that's not working though I think you're up the creek without a paddle
+2006-11-10T06:20:00.000Z	Adam_G	JosefK	thanks, I'll try that, and good to know :D
+2006-11-10T06:22:00.000Z	Adam_G	JosefK	same thing... oh well... I'm still able to install stuff though, just get a long error message after everything.
+2006-11-10T06:23:00.000Z	JosefK	Adam_G	if it's any consolation, it looks like only 2 packages are actually failing to configure, the rest are dependencies
+2006-11-10T06:24:00.000Z	Adam_G	JosefK	I don't suppose they're packages that can easily be removed?
+2006-11-10T06:24:00.000Z	JosefK	Adam_G	'sudo aptitude clean; sudo aptitude -f install gnome-media-common'
+2006-11-10T06:24:00.000Z	Adam_G		ah, thanks
+2006-11-10T06:24:00.000Z	JosefK	Adam_G	may/may-not work, but that package is the cause of the trouble
+2006-11-10T06:25:00.000Z	JosefK	Adam_G	there are some options to force, but they're dangerous (man dpkg for more info on the --force options)
+2006-11-10T06:26:00.000Z	Adam_G	JosefK	thanks. I've had to force once before... defintely make me nervous. (BTW, same issues with that last command)
+2006-11-10T06:26:00.000Z	JosefK	Adam_G	from googling error 139 seems to happen when you have corrupted binaries on the system
+2006-11-10T06:27:00.000Z	Adam_G		hmm...
+2006-11-10T06:27:00.000Z	JosefK	Adam_G	probably a program only those packages are using for configuration, too
+2006-11-10T06:28:00.000Z	Adam_G		so... something tied in with gnome's configuration is corrupted...
+2006-11-10T06:28:00.000Z	Adam_G		I might see if I can get away with taking out as much of gnome as I can...
+2006-11-10T06:29:00.000Z	JosefK	Adam_G	I'd check your logs to see if it's listed in more detail first
+2006-11-10T06:30:00.000Z	Adam_G	JosefK	which logs? I don't see anything hopeful in /etc/dpkg or /etc/apt
+2006-11-10T06:30:00.000Z	JosefK	Adam_G	there's /var/log/dpkg.log
+2006-11-10T06:30:00.000Z	Adam_G	JosefK	ah, ok :)
+2006-11-10T06:32:00.000Z	JosefK	Adam_G	I'm gonna get some kip, but to save you the effort I doubt gutting gnome would help
+2006-11-10T06:33:00.000Z	Adam_G	JosefK	ok. I think I'm going to just let it be as it doesn't interfere with installing anything else
+2006-11-10T06:33:00.000Z	JosefK	Adam_G	fair enough, good luck with it anyway

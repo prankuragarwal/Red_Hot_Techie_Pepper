@@ -1,0 +1,21 @@
+2012-10-25T06:31:00.000Z	eliteprodigy	Tohuw	How? How do I switch users after?
+2012-10-25T06:16:00.000Z	Tohuw	eliteprodigy	What video driver are you using? Whenever switching sessions results in display problems, the #1 culprit is the display driver.
+2012-10-25T06:16:00.000Z	eliteprodigy	Tohuw	 How do I check?
+2012-10-25T06:17:00.000Z	Tohuw	eliteprodigy	lspci | grep -i vga
+2012-10-25T06:21:00.000Z	Tohuw	eliteprodigy	Some light reading: http://ubuntuforums.org/showthread.php?p=11781573 and the bad news: http://ati.cchtml.com/show_bug.cgi?id=343 and make sure you add yourself to the affected of this bug, and it may be worth following: https://bugs.launchpad.net/ubuntu/+source/fglrx-installer-updates/+bug/876242
+2012-10-25T06:27:00.000Z	eliteprodigy	Tohuw	So basically this hasn't been fixed and it never will be?
+2012-10-25T06:28:00.000Z	Tohuw	eliteprodigy	:'( Your solution is to fallback to Gnome Classic (blech) or get non-ati hardware. ATI has made it clear they don't care.
+2012-10-25T06:29:00.000Z	eliteprodigy	Tohuw	So I can't use Gnome 3?
+2012-10-25T06:30:00.000Z	Tohuw	eliteprodigy	Correct. Or Unity. Not if you want fast user switching. My advice: ditch fast user switching.
+2012-10-25T06:31:00.000Z	Tohuw	eliteprodigy	log out, log the new user in
+2012-10-25T06:32:00.000Z	eliteprodigy	Tohuw	But that's impossible, it destroys any kind of productivity I've gained by switching to Ubuntu.
+2012-10-25T06:32:00.000Z	eliteprodigy	Tohuw	Why is it that switch user works in Win 7 but not here?
+2012-10-25T06:32:00.000Z	Tohuw	eliteprodigy	ATI cares about Windows.
+2012-10-25T06:33:00.000Z	eliteprodigy	Tohuw	I guess I just don't know enough low-level programming to understand why it matters which OS is running. :S
+2012-10-25T06:35:00.000Z	Tohuw	eliteprodigy	Display drivers are OS-specific. When you use Windows, you are using entirely different software to talk to your video card than you use in Linux. ATI makes stuff work in Windows, but fglrx is horribly neglected in Linux. Always has been, and (I expect) will be for the forseeable future.
+2012-10-25T06:43:00.000Z	Tohuw	eliteprodigy	Ctrl + Alt + Del sends a reboot message. The two lines of text are the shutdown broadcast messages.
+2012-10-25T06:48:00.000Z	Tohuw	eliteprodigy	You're thinking of it backwards. ATI makes the card work. The source code and firmware on the cards are secret.
+2012-10-25T06:48:00.000Z	eliteprodigy	Tohuw	But it's working on top of code, with code. Code is bloody code. I can't get my head around it.
+2012-10-25T06:51:00.000Z	Tohuw	eliteprodigy	Video cards contain firmware. This firmware needs instructions to render graphics. These instructions have to know everything about the firmware. Because the firmware is not open source, only ATI knows how to make software that can talk to it properly. Because ATI did not do a good job with fglrx and refuses to let others have enough information to help, you are in this situation
+2012-10-25T06:52:00.000Z	eliteprodigy	Tohuw	The only way that makes sense is if there's a line of code that's like #IF OS != WINDOWS { Generate.Pseudo.Random.Behaviour(); }
+2012-10-25T06:52:00.000Z	Tohuw	eliteprodigy	You are making vast assumptions about how graphics rendering works. I am trying my best to explain to you that it is very OS specific. We can discuss further in #ubuntu-offtopic if you like.

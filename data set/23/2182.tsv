@@ -1,0 +1,23 @@
+2009-06-05T20:08:00.000Z	GreaterCore		i've installed Apache/2.2.11 but it could not find my files in /var/www
+2009-06-05T20:09:00.000Z	GreaterCore		help?
+2009-06-05T20:10:00.000Z	GreaterCore		yes
+2009-06-05T20:10:00.000Z	GreaterCore		i messed up quite lot of things :(
+2009-06-05T20:11:00.000Z	GreaterCore		index.php
+2009-06-05T20:11:00.000Z	GreaterCore		i have php extension
+2009-06-05T20:12:00.000Z	GreaterCore		no worries
+2009-06-05T20:12:00.000Z	GreaterCore		i reinstalled apache2
+2009-06-05T20:12:00.000Z	GreaterCore		and it does not do anything at all... i had to run a2enmod for almost everything
+2009-06-05T20:12:00.000Z	GreaterCore		before it started responding
+2009-06-05T20:12:00.000Z	rob_p	GreaterCore	In /etc/apache2/sites-enabled, is your default vhost configured correctly (ie document root set to /var/www)?
+2009-06-05T20:13:00.000Z	rob_p	GreaterCore	Also, did you a2ensite default and then /etc/init.d/apache2 reload?
+2009-06-05T20:14:00.000Z	GreaterCore		a2ensite works!
+2009-06-05T20:14:00.000Z	GreaterCore		what are all the a2enXXX commands for anyway?
+2009-06-05T20:15:00.000Z	rob_p	GreaterCore	That sort of came with apache2 with a more scalable configuration scheme.
+2009-06-05T20:15:00.000Z	GreaterCore	rob_p	where do i read up more about them?
+2009-06-05T20:17:00.000Z	rob_p	GreaterCore	Basically the a2ensite/mod/whatever simply creates sym-links from the available vhosts, modules, etc.
+2009-06-05T20:18:00.000Z	rob_p	GreaterCore	you could also manually create the sym-links but it's more of a bother.
+2009-06-05T20:19:00.000Z	rob_p	GreaterCore	For instance, if I have a vhost defined in /etc/apache2/sites-available called, "mydomain", I could enable it by creating a sym-link to it from within the /etc/apache2/sites-enabled directory.
+2009-06-05T20:20:00.000Z	rob_p	GreaterCore	The command would be, "sudo ln -s /etc/apache2/sites-available/mydomain /etc/apache2/sites-enabled/mydomain"
+2009-06-05T20:20:00.000Z	rob_p	GreaterCore	But a2ensite is quicker!  :-)
+2009-06-05T20:21:00.000Z	rob_p	GreaterCore	Just remember that whenever you make a change (enable or disable a vhost, module, etc.), you need to reload apache.
+2009-06-05T20:21:00.000Z	rob_p	GreaterCore	...meaning, "sudo /etc/init.d/apache2 reload"

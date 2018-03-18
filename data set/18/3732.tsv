@@ -1,0 +1,18 @@
+2009-09-16T19:44:00.000Z	thedancingdeer		is there any way to make .exe files outof my c/cpp sources which dont use *nix stuff?
+2009-09-16T19:45:00.000Z	grawity	thedancingdeer	There is - google for "cross-compiling on linux for windows"
+2009-09-16T19:52:00.000Z	thedancingdeer	grawity	thanks! :) gcc they say supports it! working on it!
+2009-11-14T18:55:00.000Z	grawity	thedancingdeer	rsync --perms
+2009-11-14T19:06:00.000Z	grawity	thedancingdeer	tar only uses compression if you use either -z or -j.
+2009-11-14T18:58:00.000Z	thedancingdeer	grawity	tried doing that,.. still the owner is root on installed and 'live user' on live cd!
+2009-11-14T18:59:00.000Z	grawity	thedancingdeer	Are you rsyncing as root?
+2009-11-14T18:59:00.000Z	grawity	thedancingdeer	In Unix, only "root" can change a file's owner.
+2009-11-14T18:59:00.000Z	grawity	thedancingdeer	So if you are not root, rsync can preserve most permissions - but not the file owners.
+2009-11-14T19:01:00.000Z	thedancingdeer	grawity	so how do i achieve it? i want to format my /home partition cuz the drive has loads of errors and goes fsck everytime it boots!
+2009-11-14T19:01:00.000Z	grawity	thedancingdeer	Uh, run rsync as root.
+2009-11-14T19:01:00.000Z	grawity	thedancingdeer	Or, I would just archive the entire thing with tar -cvzf
+2009-11-14T19:02:00.000Z	thedancingdeer	grawity	18gb archive?
+2009-11-14T19:02:00.000Z	thedancingdeer	grawity	rsync as root doesn't still preserve the owner permissions!
+2009-11-14T19:03:00.000Z	grawity	thedancingdeer	'man rsync', and add the whole set: -ogpX and so on.
+2009-11-14T19:06:00.000Z	thedancingdeer	grawity	one question! will tar do it without compression? how long will 18gb take approx!?
+2009-11-14T19:07:00.000Z	grawity	thedancingdeer	tar -cvf /media/pendrive/home.tar /mnt/home, for example, won't compress at all.
+2009-11-14T19:11:00.000Z	thedancingdeer	grawity	its still not happening! when i check the permissions either by ls -all or in nautilus alt+enter, the owner is root! i don't get it! why isn't it working!

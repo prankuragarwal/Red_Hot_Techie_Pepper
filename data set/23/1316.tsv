@@ -1,0 +1,23 @@
+2012-10-04T18:07:00.000Z	TJ-	fidel	This appears to be an issue with a UEFI system, is that correct?
+2012-10-04T18:08:00.000Z	fidel	TJ-	yes that is my impression as well
+2012-10-04T18:09:00.000Z	fidel	TJ-	the 12.04 installer seems to create a 100mb uefi-partition on the drive
+2012-10-04T18:09:00.000Z	fidel	TJ-	as i dont see an option to jump from uefi to legacy boot in bios & grub-repair didndt work either i am somehow stuck
+2012-10-04T18:10:00.000Z	TJ-	fidel	I assume you can still boot from the liveISO?
+2012-10-04T18:10:00.000Z	fidel	TJ-	yes i can
+2012-10-04T18:11:00.000Z	TJ-	fidel	Is there a version of Windows installed on it, that you also want access to?
+2012-10-04T18:11:00.000Z	fidel	TJ-	booting live-cds and or running install-procedures fro mthem do work without issues. problem starts on reboot
+2012-10-04T18:11:00.000Z	fidel	TJ-	no i want a stupid single boot
+2012-10-04T18:12:00.000Z	fidel	TJ-	so linux / ubuntu only and thats it
+2012-10-04T18:13:00.000Z	fidel	TJ-	those lenovo think centres seem to have issues with several installers. trying to install xp fails also if you dont create yourself a modified install-medium ....impressive issues ihavent seen before in that detail
+2012-10-04T18:13:00.000Z	fidel	TJ-	but back to main target - single ubuntu 64bit server - no other os'es needed at all
+2012-10-04T18:14:00.000Z	TJ-	fidel	:p OK ... just trying to get a picture in my mind of what would have happened and how to fix it. The core of the issue is the disk has a GPT (GUID partition table) rather than a 'legacy' MSDOS partition table. One implication of that is when the GRUB bootloader is installed, it should be installing "grub-efi" rather than "grub-pc".
+2012-10-04T18:14:00.000Z	fidel	TJ-	grub-efi vs grub-pc is a good pointer. agreeing to the rest
+2012-10-04T18:15:00.000Z	TJ-	fidel	One thing to always keep in mind - since it can easily catch us out - is that on a GPT disk there is a 'dummy' MSDOS partition label to prevent legacy tools corrupting the GPT
+2012-10-04T18:16:00.000Z	TJ-	fidel	So doing the usual grub-pc updates of the MBR and so forth doesn't have the magic effect one would suppose :)
+2012-10-04T18:17:00.000Z	fidel	TJ-	yep i was trying to use fdisk during live-cd which failed as well - i assume this is also a uefi/gpt issue
+2012-10-04T18:17:00.000Z	TJ-	fidel	Have you read this page, and in particular the section "Converting Ubuntu into EFI mode" ?  https://help.ubuntu.com/community/UEFI
+2012-10-04T18:18:00.000Z	fidel	TJ-	i do see 3 partitions created on that disk by the 12.04 installer: uefi-partition + linux + swap
+2012-10-04T18:18:00.000Z	TJ-	fidel	item 4 of the first paragraph covers your issue, I believe
+2012-10-04T18:18:00.000Z	fidel	TJ-	thanks gonna check it next hour
+2012-10-04T18:20:00.000Z	TJ-	fidel	also note what it says in item 1 about 'Boot-Repair' not being preinstalled in the standard 12.04 installer. This link shows you how to install it whilst in the liveISO environment:  https://help.ubuntu.com/community/Boot-Repair#A2nd_option_:_install_Boot-Repair_in_Ubuntu
+2012-10-04T18:45:00.000Z	fidel	TJ-	as i was curious: it seems to be related with the 12.04 installer & the hardware. if i do run the 10.04 server install it works without issues including rebooting ;)

@@ -1,0 +1,19 @@
+2008-03-01T00:29:00.000Z	kavit		Hi, I was wondering if the kernel module firmware_class is a part of standard gutsy install? I get a FATAL: Module mot found error when I modprobe it
+2008-03-01T00:30:00.000Z	kavit		will I need to compile this myself?
+2008-03-01T00:31:00.000Z	danand	kavit	- for a list of all the installable modules on your system type modprobe -l in a terminal. you may wanna pipe that through less :)
+2008-03-01T00:32:00.000Z	kavit	danand	already done that, it is not there. I was wondering if it was removed from gutsy?
+2008-03-01T00:34:00.000Z	danand	kavit	- are you sure firmware_class is a module and not just a kernel config option. what part of the kernel does that belong to ?
+2008-03-01T00:35:00.000Z	kavit	danand	menu General Options... it should be under drivers/base
+2008-03-01T00:35:00.000Z	danand	kavit	- wait one ... just having a look
+2008-03-01T00:35:00.000Z	kavit	danand	its not there in the kernel headers but linux-source has drivers/base/firmware_class.c
+2008-03-01T00:38:00.000Z	danand	kavit	- do you mean Userspace firmware loading support?
+2008-03-01T00:41:00.000Z	danand	kavit	- if you do that module is called FW_LOADER i think. if you cat /boot/config-$(uname -r) | grep FW you should see the options your kernel uses
+2008-03-01T00:43:00.000Z	kavit	danand	i will have to compile it i think.... thanks anyway
+2008-03-01T00:43:00.000Z	danand	kavit	- did you see my last?
+2008-03-01T00:44:00.000Z	danand	kavit	- if you do that module is called FW_LOADER i think. if you cat /boot/config-$(uname -r) | grep FW you should see the options your kernel uses
+2008-03-01T00:44:00.000Z	danand	kavit	- the 2.6.22-14-generic kernel has that set to yes by default
+2008-03-01T00:45:00.000Z	kavit	danand	ah ok. so its compiled into the kernel?
+2008-03-01T00:46:00.000Z	danand		sizzle - yes. on my system that option is compiled in rather than being a loadable module. i just use  a stock kernel - 2.6.22-14-generic
+2008-03-01T00:46:00.000Z	kavit	danand	thanks for your help
+2008-03-01T00:46:00.000Z	kavit		brb
+2008-03-01T00:47:00.000Z	danand	kavit	- np

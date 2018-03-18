@@ -1,0 +1,22 @@
+2005-06-09T10:07:00.000Z	DarkraD-		hello, everytime i start ubuntu i need to do "sudo ifconfig wlan0 x.x.x.x" and "route add default gw x.x.x.x" before using internet.. is there a way to automize that?
+2005-06-09T10:07:00.000Z	DarkraD-		at every boot?
+2005-06-09T10:07:00.000Z	tsw	DarkraD-	put the infomation in /etc/network/interfaces
+2005-06-09T10:07:00.000Z	DarkraD-		i read man interfaces
+2005-06-09T10:08:00.000Z	DarkraD-		but haven't understand much =\
+2005-06-09T10:08:00.000Z	DarkraD-		i can't figure out how should i set that file
+2005-06-09T10:08:00.000Z	DarkraD-		resolv.conf i already set
+2005-06-09T10:08:00.000Z	DarkraD-		i need only to add those 2 command
+2005-06-09T10:09:00.000Z	tsw	DarkraD-	no, those files have their own syntax
+2005-06-09T10:09:00.000Z	DarkraD-		ya
+2005-06-09T10:09:00.000Z	DarkraD-		i mean
+2005-06-09T10:09:00.000Z	DarkraD-		resolv.conf is already set
+2005-06-09T10:09:00.000Z	DarkraD-		i set dns servers there
+2005-06-09T10:09:00.000Z	DarkraD-		nameserver x.x.x.x
+2005-06-09T10:10:00.000Z	DarkraD-		i need to set wireless static ip with ifconfig wlan0 x.x.x.x and set gateway with route add default gw x.x.x.x
+2005-06-09T10:12:00.000Z	tsw	DarkraD-	you need something like this "auto wlan0" "iface wlan0 inet static" "address x.x.x.x" "netmask x.x.x.x" "gateway x.x.x.x"
+2005-06-09T10:12:00.000Z	tsw		every " " are own lines
+2005-06-09T10:12:00.000Z	DarkraD-		nice thx
+2005-06-09T10:12:00.000Z	DarkraD-		ill try
+2005-06-09T10:13:00.000Z	tsw	DarkraD-	and remember to check that "auto lo" "iface lo inet loopback" is there also
+2005-06-09T10:13:00.000Z	DarkraD-		ya it's there =)
+2005-06-09T10:26:00.000Z	DarkraD-	tsw	thanks, works

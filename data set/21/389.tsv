@@ -1,0 +1,21 @@
+2012-01-22T05:09:00.000Z	OKTOKT		I'm having some issues getting eth0 to link up to the network. http://ubuntuforums.org/showthread.php?p=11630323#post11630323 anything else I could try to troubleshoot?
+2012-01-22T05:11:00.000Z	ActionPa1snip	OKTOKT	I suggest you run:  sudo lshw -C network; lsb_release -a; uname -a     and add that to the entry
+2012-01-22T05:14:00.000Z	OKTOKT	ActionPa1snip	Thanks!
+2012-01-22T05:19:00.000Z	ActionPa1snip	OKTOKT	also try:  sudo dhclient3 eth0
+2012-01-22T05:19:00.000Z	ActionPa1snip	OKTOKT	make sure you have the lights flashing on the interface itself on both sides of the cable too
+2012-01-22T05:19:00.000Z	OKTOKT	ActionPa1snip	No lights on either end.
+2012-01-22T05:20:00.000Z	ActionPa1snip	OKTOKT	strange, should be
+2012-01-22T05:22:00.000Z	OKTOKT	ActionPa1snip	I would have to agree with you on that. I'd like to be able to narrow this down to a Hardware/Software issue. I'm hoping to exaust the software side first.
+2012-01-22T05:27:00.000Z	ActionPa1snip	OKTOKT	do you know the lan cable is good?
+2012-01-22T05:28:00.000Z	OKTOKT	ActionPa1snip	Step1: haha... I pulled it from the working connection between the windows file server and the router.
+2012-01-22T12:08:00.000Z	ActionPa1snip	OKTOKT	if you unload then reload the module. Is it ok?
+2012-01-22T12:08:00.000Z	OKTOKT	ActionPa1snip	What is the command to unload the sky2 module?
+2012-01-22T12:08:00.000Z	OKTOKT	ActionPa1snip	Also I'd assume it's a modprobe to reload it?
+2012-01-22T12:09:00.000Z	ActionPa1snip	OKTOKT	sudo modprobe -r sky2; sleep 2; sudo modprobe sky2
+2012-01-22T12:10:00.000Z	ActionPa1snip	OKTOKT	the pause gives the system chance to stop etc
+2012-01-22T12:11:00.000Z	OKTOKT	ActionPa1snip	Looks like I got lights... I knew it was the module...
+2012-01-22T12:15:00.000Z	ActionPa1snip	OKTOKT	ok is it connecting now?
+2012-01-22T12:16:00.000Z	ActionPa1snip	OKTOKT	if it does, add the command in /etc/rc.local above the exit 0   line and it will run automagically at boot.
+2012-01-22T12:16:00.000Z	OKTOKT	ActionPa1snip	It doesn't seem to be getting it's DHCP lease
+2012-01-22T12:18:00.000Z	ActionPa1snip	OKTOKT	is the interface still eth0?
+2012-01-22T12:18:00.000Z	ActionPa1snip	OKTOKT	if so, run:  sudo dhclient3 eth0

@@ -1,0 +1,21 @@
+2010-06-27T07:58:00.000Z	ebhc		I have a DNS problem I was hoping someone could help me out with.
+2010-06-27T08:00:00.000Z	ruari	ebhc	what knida of dns problem?
+2010-06-27T08:01:00.000Z	ebhc		I have a Ubuntu box acting as a firewall/router for my internal network and the two windows boxes I have hooked up to it work just fine but DNS can't resolve on the two bsd boxes I have hooked up.  I'm able to ssh to all boxes no problem.  Any ideas?
+2010-06-27T08:02:00.000Z	ebhc		rpgsim: one sec
+2010-06-27T08:02:00.000Z	ruari		route -n showing your default gateway?
+2010-06-27T08:03:00.000Z	ebhc		I can't ping any outside ips, and the resolv.conf has the nameservers for my isp listed.
+2010-06-27T08:04:00.000Z	ebhc		rpg: yes, I can ping and ssh to all boxes on my internal network
+2010-06-27T08:05:00.000Z	ebhc		rpg: see that's the thing, I'm pretty sure it's my firewall on ubuntu as I've hooked up the bsd boxes directly to my cable modem and it works no problem.
+2010-06-27T08:07:00.000Z	ruari		wbhc : and you checked your default gateway?
+2010-06-27T08:07:00.000Z	ebhc	ruari	default gateway?
+2010-06-27T08:07:00.000Z	ruari		does your firewall log denials
+2010-06-27T08:09:00.000Z	ebhc		rpg: not sure how to check for static routes.  I was using webmin to setup iptables but then switched to firestarter.
+2010-06-27T08:09:00.000Z	ruari		bsd it is netstat -rn
+2010-06-27T08:09:00.000Z	ruari		that should show you default gateway
+2010-06-27T08:11:00.000Z	ebhc		rpg: on the ubuntu box the default gateway shows my isp ip.
+2010-06-27T08:11:00.000Z	ruari		http://www.cyberciti.biz/faq/freebsd-setup-default-routing-with-route-command/
+2010-06-27T08:13:00.000Z	ruari	ebhc	need to know the routing table for your bsd's that are behind your ubuntu firwall
+2010-06-27T08:13:00.000Z	ebhc		rpg: I think the rules are set to forward all internal network traffic.  let me check that faq that was just posted for me. brb
+2010-06-27T08:13:00.000Z	ruari		hate to ask but your interfaces are up on your bsd as well, ifconfig -a
+2010-06-27T08:14:00.000Z	ruari		sorry missed that
+2010-06-27T08:16:00.000Z	ebhc	ruari	& rgp: Thanks! using the netstat command I saw that my default gateway was set to 192.168.0.0 instead of 192.168.0.1  I fixed it and now it works.  Thanks!

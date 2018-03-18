@@ -1,0 +1,24 @@
+2007-05-24T14:41:00.000Z	DarthShrine		My laptop has the Intel 945GM chipset, but the integrated sound does not work (it's a laptop). The driver is loaded and whatnot, and I'm pretty sure it's not muted. What else could be wrong?
+2007-05-24T14:42:00.000Z	DarthShrine		(Yay, I managed to mention it's a laptop twice >_>)
+2007-05-24T14:43:00.000Z	brylie	DarthShrine	you have checked the system volume control by double clicking the speaker icon next to the clock?
+2007-05-24T14:44:00.000Z	DarthShrine	brylie	Yeap, nothing is muted.
+2007-05-24T14:49:00.000Z	brylie	DarthShrine	is your soundcard listed under Device Manager?
+2007-05-24T14:49:00.000Z	DarthShrine	brylie	Where is the Device Manager hiding?
+2007-05-24T14:50:00.000Z	brylie	DarthShrine	System > Prefrences
+2007-05-24T14:52:00.000Z	DarthShrine	brylie	Ah right, it is, yeah.
+2007-05-24T15:00:00.000Z	brylie	DarthShrine	is your laptop a dell Latitude?
+2007-05-24T15:00:00.000Z	DarthShrine	brylie	Nope, Toshiba Satellite
+2007-05-24T15:02:00.000Z	brylie	DarthShrine	what are you using to try and play audio?
+2007-05-24T15:03:00.000Z	DarthShrine	brylie	I've tried Rhythmbox for my music, but none of the system sounds work either.
+2007-05-24T15:03:00.000Z	DarthShrine	brylie	Also, even low-level tests like noise don't work.
+2007-05-24T15:07:00.000Z	brylie	DarthShrine	what is listed for your audio device when you type 'lspci' in the terminal?
+2007-05-24T15:07:00.000Z	DarthShrine	brylie	00:1b.0 Audio device: Intel Corporation 82801G (ICH7 Family) High Definition Audio Controller (rev 02)
+2007-05-24T15:09:00.000Z	brylie	DarthShrine	https://bugs.launchpad.net/ubuntu/+source/linux-source-2.6.20/+bug/92825
+2007-05-24T15:15:00.000Z	brylie	DarthShrine	you'running 6.06 then?
+2007-05-24T15:16:00.000Z	DarthShrine	brylie	Nope, 7.04
+2007-05-24T15:17:00.000Z	brylie	DarthShrine	did that link help? there woro some suggestions in the comments
+2007-05-24T15:18:00.000Z	DarthShrine	brylie	Yeah, I'm trying something now.
+2007-05-24T16:13:00.000Z	DarthShrine	brylie	Re my sound prob, I had to add "options snd-hda-intel model=3stack" to /etc/modprobe.d/alsa-base. It doesn't work through the headphones though.
+2007-05-24T16:30:00.000Z	brylie	DarthShrine	man... that is a weird issue ya got
+2007-05-24T16:36:00.000Z	DarthShrine	brylie	Aha, I simply had to check the "headphone" box in the volume control and all is working.
+2007-05-24T16:37:00.000Z	DarthShrine	brylie	I sure can. Thanks for the link.

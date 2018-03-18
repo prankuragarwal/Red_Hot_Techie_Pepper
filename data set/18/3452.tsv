@@ -1,0 +1,18 @@
+2010-02-09T04:59:00.000Z	Kyle_S		Hello.
+2010-02-09T04:59:00.000Z	Kyle_S		Hopefully quick question about pulse audio.
+2010-02-09T04:59:00.000Z	Kyle_S		How do you adjust the mic input settings?
+2010-02-09T05:00:00.000Z	pfifo	Kyle_S	I normally use 'alsa-mixer' from the command line, press tab to switch between output/input/all controls
+2010-02-09T05:01:00.000Z	pfifo	Kyle_S	try this 'alsa-mixer -c0' or 'alsa-mixer -c1'
+2010-02-09T05:02:00.000Z	pfifo	Kyle_S	i dont know how to switch cards in the GUI, but that is more than likely your problem.
+2010-02-09T05:03:00.000Z	Kyle_S	pfifo	maybe.
+2010-02-09T05:04:00.000Z	pfifo	Kyle_S	pulse adds some weird device as a mixer, with just a single volume control
+2010-02-09T05:05:00.000Z	Kyle_S	pfifo	Ahh ok.
+2010-02-09T05:05:00.000Z	pfifo	Kyle_S	the -c switch allows you so specify a card number, eg... -c0 -c1 -c2
+2010-02-09T05:06:00.000Z	pfifo	Kyle_S	i have to use -c0, why it would default to showing card 1 is beyond me, but -c0 gets the job done
+2010-02-09T05:06:00.000Z	Kyle_S	pfifo	oddly -c0 works, -c1 doesn't.  Just errors out immidiately.
+2010-02-09T05:06:00.000Z	pfifo	Kyle_S	what dose -c0 show? the pulse controlls?
+2010-02-09T05:07:00.000Z	Kyle_S	pfifo	it shows HDA Intel/Realtek ALC269
+2010-02-09T05:08:00.000Z	pfifo	Kyle_S	looks like your on the right track, press tab to switch to input settings, my card has more than one mic jack, if yours dose as well you may need to change the input source
+2010-02-09T05:08:00.000Z	Kyle_S	pfifo	Allright.  Lemmie try again.
+2010-02-09T05:09:00.000Z	pfifo	Kyle_S	if there is more than one control there you just need to play around with sound recorder and the levels until you find something that works
+2010-02-09T05:11:00.000Z	pfifo	Kyle_S	sometimes running this command in a seprate terminal can hint about the various settings 'arecord|aplay' (record input and pipe it to the output [caution this makes a bad feebback if your mic is near your speakers, best turn your volume down])

@@ -1,0 +1,19 @@
+2008-12-24T16:34:00.000Z	Koordin		hi i have an annoying problem : i have to type 'sudo dhclient' in order to connect to internet and i have to retype it every minute in order not to be disconnected ; i'm on wifi ; does someone have an idea ? i've already tried to set up a static address ip as shown there but with no result : (eth0 is my wifi interface) http://paste.ubuntu.com/92145/
+2008-12-24T16:35:00.000Z	nibbler	Koordin	so your interface' ip gets lost after a minute?
+2008-12-24T16:36:00.000Z	nibbler	Koordin	well, you could "sudo watch dhclient ..." but that would be no more than a stupid workaround
+2008-12-24T16:37:00.000Z	nibbler	Koordin	so -n 60 maybe even
+2008-12-24T16:37:00.000Z	nibbler	Koordin	you should check your logs what happens to your interface/ip
+2008-12-24T16:37:00.000Z	Koordin	nibbler	where ?
+2008-12-24T16:37:00.000Z	nibbler	Koordin	/var/log/{syslog,messages}
+2008-12-24T16:47:00.000Z	nibbler	Koordin	what interface are you using to connect to inet?
+2008-12-24T16:47:00.000Z	Koordin	nibbler	eth0 for the wifi
+2008-12-24T16:47:00.000Z	nibbler	Koordin	eth0 for wifi sounds strange enough, but ok
+2008-12-24T16:49:00.000Z	nibbler	Koordin	avahi-daemon[4783]: Registering new address record for 192.168.1.2 on eth1.IPv4.  <--- avahi binds this ip to eth1, this might be the prblem, you have 2 NICs in same network?
+2008-12-24T16:49:00.000Z	Koordin	nibbler	NICs ?
+2008-12-24T16:49:00.000Z	nibbler	Koordin	network interface cards
+2008-12-24T16:50:00.000Z	nibbler	Koordin	like having wlan and cable connected at the same time, or even two of the same kind...
+2008-12-24T16:50:00.000Z	nibbler	Koordin	as he is assigning IP to eth1, and you say you use eth0
+2008-12-24T16:51:00.000Z	Koordin	nibbler	i have to NICs, one on wifi, and one on ethernet, but the ethernet cable is not plugged and i don't want to use the ethernet interface (eth1)
+2008-12-24T16:52:00.000Z	nibbler	Koordin	so maybe deactivate eth1, or set it to static in /etc/netwo*/interfaces
+2008-12-24T17:04:00.000Z	Koordin	nibbler	i've deleted all the lines but the first two and this seems to work, but i don't know for how long
+2008-12-24T17:04:00.000Z	nibbler	Koordin	you deleted lines?? ummm yes, fingers crossed

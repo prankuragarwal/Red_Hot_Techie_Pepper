@@ -1,0 +1,24 @@
+2007-02-21T13:50:00.000Z	Blacken		Hey, I'm installing vmware-player and apparently the network configuration decided to kill itself. It returns an error code of 1 and I can't uninstall it via apt-get. How do I force removal of the package?
+2007-02-21T13:51:00.000Z	Blacken		(apt-get -f remove does nothing.)
+2007-02-21T13:51:00.000Z	z_malloc	Blacken	dpkg --purge packagename
+2007-02-21T13:52:00.000Z	Blacken	z_malloc	Ah, crap. I forgot about that! Thank you. :)
+2007-02-21T13:53:00.000Z	Blacken	z_malloc	Hmm...Trying to remove it, but it refuses to remove--"pre-removal script returned error exit status 1".
+2007-02-21T13:54:00.000Z	z_malloc	Blacken	it may have its own unstall script you might want to try first.  don't remember for sure.
+2007-02-21T13:55:00.000Z	Blacken	z_malloc	Yeah, if you install the player independently there is one...not sure whether it's even THERE though.
+2007-02-21T13:55:00.000Z	z_malloc	Blacken	 vmware-install.pl -> bin/vmware-uninstall.pl
+2007-02-21T13:56:00.000Z	z_malloc	Blacken	try locate vmware-install.pl
+2007-02-21T13:56:00.000Z	Blacken	z_malloc	Negatory.
+2007-02-21T13:59:00.000Z	z_malloc	Blacken	hmm dunno.  if you haven't tried a gui package manager, do that. otherwise you'll probably have to search for other people having similar trouble.  ive used vmware numerous times without issue.  wish i could help you more.
+2007-02-21T14:00:00.000Z	Blacken	z_malloc	I've used it without trouble myself...now I'm confused. :(
+2007-02-21T14:00:00.000Z	z_malloc	Blacken	anything unusual in /etc/networking/interfaces ?
+2007-02-21T14:02:00.000Z	z_malloc	Blacken	i suspect as a way to "just get it working"  you could delete /etc/init.d/vmware  and any symlinks in the rc directory start up scripts, then reboot.  that should get it out of your hair for sure.. although leave the half borked install still in place.
+2007-02-21T14:02:00.000Z	Blacken	z_malloc	It's the package that's the problem.
+2007-02-21T14:02:00.000Z	Blacken	z_malloc	I can't install anything else due to it.
+2007-02-21T14:03:00.000Z	z_malloc	Blacken	try this..  dpkg --force --purge packagename
+2007-02-21T14:03:00.000Z	Blacken	z_malloc	Already tried. "invalid force option"
+2007-02-21T14:06:00.000Z	z_malloc	Blacken	did you try dpkg --force-depends --purge package
+2007-02-21T14:07:00.000Z	Blacken	z_malloc	Ooh, that's a new error... invoke-rc.d: initscript vmware-player, action "stop" failed.
+2007-02-21T14:09:00.000Z	Blacken	z_malloc	A force install says that it's installed fine.
+2007-02-21T14:09:00.000Z	Blacken	z_malloc	The uninstall barfs.
+2007-02-21T14:10:00.000Z	Blacken	z_malloc	There isn't enough of it installed TO run, but let me look.
+2007-02-21T14:10:00.000Z	Blacken	z_malloc	Was doing that.

@@ -1,0 +1,23 @@
+2011-01-30T01:22:00.000Z	warlock		hi guys.. i am getting really bad wlan speeds.. just around 200 kb/p it should be in MBs right...  any idea why so?? i am on ubuntu 10.10
+2011-01-30T01:22:00.000Z	warlock		magic_ninja,  yes i have a win xp machine as well..
+2011-01-30T01:23:00.000Z	warlock		i have a 600 kbps internet line that goes to my linksys router.. and from there i get wifi to my ubuntu box
+2011-01-30T01:25:00.000Z	warlock		is there some setting on the linksys router that curbs the data transfer between 2 comps of the network
+2011-01-30T01:26:00.000Z	warlock		i am using samba share.. to share files.. and while copying from one comp to another.. its barely 200 kbps.. instead of MBs
+2011-01-30T01:26:00.000Z	ghostknife	warlock	how fast is it when you copy using HTTP or something else?
+2011-01-30T01:27:00.000Z	ghostknife	warlock	try installing+starting apache, then copy a file to your docroot (with default apache it's /var/www). Download this file over the network (default would be http://your-ip-address/filename.ext)
+2011-01-30T01:28:00.000Z	warlock	ghostknife	and how would installing apache help me ???
+2011-01-30T01:29:00.000Z	ghostknife	warlock	sudo apt-get install apache2 && sudo service apache2 start
+2011-01-30T01:30:00.000Z	warlock	ghostknife	no i know that part... i meant.. how will it help me
+2011-01-30T01:30:00.000Z	ghostknife	warlock	oh. well, if the download is faster over HTTP, then you know it's not your network card/driver but samba
+2011-01-30T01:31:00.000Z	ghostknife	warlock	or rather, you have a strong indication. it can still be the network card/driver
+2011-01-30T01:31:00.000Z	warlock	ghostknife	i feel it could be my wireless router .. :S ... how do i check that for a linksys router.. noob here
+2011-01-30T01:32:00.000Z	ghostknife	warlock	type and paste the output of "iwconfig"
+2011-01-30T01:33:00.000Z	warlock	ghostknife	http://pastie.org/1509801
+2011-01-30T01:35:00.000Z	ghostknife	warlock	hmm. you have a pretty low quality, though still good bit rate. it might be that the samba protocol is struggling over that connection/router. try changing the buffer sizes. check rsize and wsize in "man mount.cifs". it's mount options
+2011-01-30T01:36:00.000Z	warlock	ghostknife	 No manual entry for mount.cifs
+2011-01-30T01:38:00.000Z	ghostknife	warlock	also: sudo apt-get install smbfs
+2011-01-30T01:39:00.000Z	warlock	ghostknife	 installed that
+2011-01-30T01:39:00.000Z	warlock	ghostknife	 anything else to install??
+2011-01-30T01:39:00.000Z	ghostknife	warlock	then you have mount.cifs' man page
+2011-01-30T01:39:00.000Z	ghostknife	warlock	just type: man mount.cifs
+2011-01-30T01:43:00.000Z	warlock	ghostknife	 no luck

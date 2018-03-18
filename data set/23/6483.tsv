@@ -1,0 +1,23 @@
+2006-04-18T11:22:00.000Z	twopeak		not knowing anything about Grub, would it be smart to edit my menu.lst to add windows?
+2006-04-18T11:23:00.000Z	tonyyarusso	twopeak	The better bet would be to let it try to add it automatically.
+2006-04-18T11:23:00.000Z	twopeak	tonyyarusso	I tried the "update-grub" and then using install disk with rescue mode as I found in the wiki, but nothing helped.
+2006-04-18T11:24:00.000Z	tonyyarusso	twopeak	Dang.  Is it a weird setup somehow?  (slave drives or the like?)
+2006-04-18T11:25:00.000Z	twopeak	tonyyarusso	Ubuntu is on IDE master (hda) (on hda1) and Windows is on IDE slave (hdb) (on hdb1)
+2006-04-18T11:26:00.000Z	tonyyarusso	twopeak	That might do it, not sure.  Well, you can always try; if you understand what you're doing at all the worst you'll do is make a grub entry for Windows that doesn't boot, which is where you're at now anyway.
+2006-04-18T11:27:00.000Z	twopeak	tonyyarusso	I don't know anything ;-) but I read the wiki and there's an example in the menu.lst and I feel like I can add a new "section" for windows.
+2006-04-18T11:28:00.000Z	tonyyarusso	twopeak	Go for it then, and good luck!
+2006-04-18T11:44:00.000Z	tonyyarusso	twopeak	You probably have a default set.  a) do you even see a menu at boot time at all?
+2006-04-18T11:44:00.000Z	tonyyarusso	twopeak	(It would be helpful if the pastebin had the entire file)
+2006-04-18T11:44:00.000Z	twopeak	tonyyarusso	if I press esc on time, i see it, I can choose different options, but chosing my "Windows XP" just made the computer reboot.
+2006-04-18T11:45:00.000Z	tonyyarusso	twopeak	What do you have installed on the MBR of hdb?
+2006-04-18T11:48:00.000Z	tonyyarusso	twopeak	Okay, so it's trying to chainload to the other drive, but what's in the other drive's bootloader?
+2006-04-18T11:48:00.000Z	twopeak	tonyyarusso	the other drive contains ubuntu. (IDE master (hda)   #1 primary /media/hda1)
+2006-04-18T11:49:00.000Z	tonyyarusso	twopeak	I don't think we're communicating very well.  Isn't Ubuntu on the drive you're messing with the grub on?
+2006-04-18T11:51:00.000Z	tonyyarusso	twopeak	Okay, and what's on the master boot record of the second drive?
+2006-04-18T11:51:00.000Z	twopeak	tonyyarusso	the second drive is hdb and hdb1 contains a fresh Windows XP profesional
+2006-04-18T11:52:00.000Z	tonyyarusso	twopeak	Fresh?  Okay, then it should have the Windows bootloader okay too...  Does it give you any sort of output about what's going on when it goes into the reboot on selection?
+2006-04-18T11:53:00.000Z	twopeak	tonyyarusso	I have no clue what is chain +1 (I just copied it from the example in the same menu.lst) And when I choose the option "Windows XP" the screen blacks and the computer reboots
+2006-04-18T11:55:00.000Z	tonyyarusso	twopeak	This might be a "Windows is dumb" situation.  I wonder what would happen if the drive with Windows was rigged up as the master rather than the slave.
+2006-04-18T11:56:00.000Z	twopeak	tonyyarusso	do I have to change the jumpers on the disk? (phisically?)
+2006-04-18T11:56:00.000Z	tonyyarusso	twopeak	To test that theory, yes.
+2006-04-18T11:57:00.000Z	twopeak	tonyyarusso	okay, i'm trying that now! thanks for the help :-)

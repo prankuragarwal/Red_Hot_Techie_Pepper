@@ -1,0 +1,21 @@
+2005-06-29T16:18:00.000Z	sirri^		Is it just me and my messed up system or why does this happen: apt-get upgrade: e2fslibs: Depends: libc6 (>= 2.3.2.ds1-21) but 2.3.2.ds1-20ubuntu13 is installed \n e2fsprogs: PreDepends: e2fslibs (= 1.35-8ubuntu2) but 1.37+1.38-WIP-0509-1 is installed ?
+2005-06-29T16:18:00.000Z	nalioth	sirri^	are you using non-ubuntu repos?
+2005-06-29T16:18:00.000Z	sirri^	nalioth	universe :)
+2005-06-29T16:19:00.000Z	sirri^	nalioth	and marillat
+2005-06-29T16:19:00.000Z	nalioth	sirri^	the marillat is causing the problem
+2005-06-29T16:21:00.000Z	sirri^	nalioth	right. I'll look in to it
+2005-06-29T16:35:00.000Z	sirri^	nalioth	commenting out those marillat repos doesn't work. Any ideas on how to fix this?
+2005-06-29T16:37:00.000Z	nalioth	sirri^	remove the offending item (use synaptic)
+2005-06-29T16:37:00.000Z	nalioth	sirri^	then reinstall from ubuntu repos
+2005-06-29T16:41:00.000Z	sirri^	nalioth	The package which I get complaints when trying to upgrade, e2fslibs, can't removed due to dependencies.
+2005-06-29T16:44:00.000Z	nalioth	sirri^	to solve your problem, you will have to dismantle the house marillat made for you
+2005-06-29T16:44:00.000Z	nalioth	sirri^	a piece at a time
+2005-06-29T16:46:00.000Z	sirri^	nalioth	they made a big house of doom for me. I see couple of options, 1) blow the whole house and rebuild it 2) wait for next ubuntu release to upgrade packages or 3) get packages from debian unstable, try to work it out and then revert to option number 1. No other options?
+2005-06-29T16:47:00.000Z	sirri^	nalioth	and it can't be done. Packages such as sysvinit and ubuntu-base depend on e2fslibs indirectly.
+2005-06-29T16:47:00.000Z	nalioth	sirri^	sounds like you have it well in hand
+2005-06-29T16:48:00.000Z	nalioth	sirri^	this is why backports and marillat are not advised
+2005-06-29T16:50:00.000Z	sirri^	nalioth	I understand that backports suck and was amazed to see it as a official project of ubuntu. It seems to be very much in conflict with ubuntu idea and doesn't do any good. I used marillat due to decoders and such, it worked with debian (if I remember correctly) so I saw no problem using it.
+2005-06-29T16:51:00.000Z	nalioth	sirri^	in the future, enable the "off" repos, get what you need and disable them
+2005-06-29T16:51:00.000Z	sirri^	nalioth	I'll do that. Thanks for your tips
+2005-06-29T16:52:00.000Z	nalioth	sirri^	another way is to build from source (using apt-get)
+2005-06-29T16:53:00.000Z	sirri^	nalioth	right. Gotta get some sleep, it's been a long day. Good night

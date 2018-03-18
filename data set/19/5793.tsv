@@ -1,0 +1,19 @@
+2008-05-19T00:24:00.000Z	fifthrune		Why does it say I have no video card driver installed?  Under "screens and graphics' it is picking up my Intel 945 GMA card but under 'driver' it says none.  Screen res still works fine though.
+2008-05-19T00:24:00.000Z	Mark_G	fifthrune	it's using the generic default.. if you have the option to turn on the propriatory driver in the restricted drivers manager do so.
+2008-05-19T00:25:00.000Z	fifthrune	Mark_G	last time I tried that I had to reconfigure .xorg.  am I doing something wrong?
+2008-05-19T00:26:00.000Z	Mark_G	fifthrune	not neccessarily.. xorg isn't really used to much for video right now.. it's xrandr.  but if you want all the graphic goodies you have to use the right driver.. I'm no expert on the the work-a-rounds to get the rez and configuration correct.. maybe someone else here can guide you in that area.
+2008-05-19T00:27:00.000Z	fifthrune	Mark_G	hm, do you know how I can enable the res driver cuz it's not listed in the driver manager
+2008-05-19T00:27:00.000Z	Mark_G	fifthrune	 hang on.  you said it was the 945?
+2008-05-19T00:27:00.000Z	fifthrune	Mark_G	yes
+2008-05-19T00:29:00.000Z	Mark_G	fifthrune	look in synaptic and search for 945 .. you should have two things listed as installed. xserver-xorg-video-i810 and xserver-xorg-video-intel
+2008-05-19T00:30:00.000Z	Mark_G	fifthrune	you may have to install 915resolution as well to get the right resolution at boot.
+2008-05-19T00:30:00.000Z	fifthrune	Mark_G	they are installed.  I already have the right resolution with the default though.  In fact, I had to uninstall 915res after upgrading from Gutsy cuz it screwed up my hibernate
+2008-05-19T00:31:00.000Z	Mark_G	fifthrune	and in xorg.conf is "Intel" listed as the video driver?
+2008-05-19T00:31:00.000Z	fifthrune	Mark_G	how do I check?
+2008-05-19T00:32:00.000Z	Mark_G	fifthrune	gksudo gedit /etc/X11/xorg.conf  ... then in there you'll see where the driver is listed.. either nvidia, intel, vesa or nv typically
+2008-05-19T00:32:00.000Z	fifthrune	Mark_G	 this is all I get under devices where I think it is: Section "Device"
+2008-05-19T00:33:00.000Z	Mark_G	fifthrune	I'll look at mine. hang on.
+2008-05-19T00:34:00.000Z	Mark_G	fifthrune	weird.. mine has 2 lines.. Identifer "video card description" and Driver "nvidia".. you might be able to insert the "Driver" line and name "intel" as the driver..
+2008-05-19T00:35:00.000Z	fifthrune	Mark_G	hm, how sure are you of that, because I really don't wanna blow up .xorg and have to try and reset it by command line
+2008-05-19T00:37:00.000Z	Mark_G	fifthrune	to make it easier to test.. do "sudo cp /etc/X11/xorg.conf /etc/X11/xorg.conf.back" .. that will create a backup of the file then make your changes, restart x and if it doesn't work and drops you to a command prompt without gui then "sudo cp /etc/X11/xorg.conf.back /etc/X11/xorg.conf" and restart x again and it should be back to normal.
+2008-05-19T00:39:00.000Z	Mark_G	fifthrune	you can also load irssi as a command line IRC client.. start it after ctrl+alt+f2 and it will continue to run there even after restarting x.  x can be seen at ctrl+alt+f7

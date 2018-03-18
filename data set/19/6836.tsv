@@ -1,0 +1,19 @@
+2008-04-04T09:29:00.000Z	Sefram		ubotu:wpa_supplicant
+2008-04-04T09:29:00.000Z	IcemanV9	Sefram	in the /etc directory
+2008-04-04T09:30:00.000Z	Sefram	IcemanV9	: yes i know but i need to manage the pid files for wpa_supplicant from inside my shell script. Do you have any ideas how to do that?
+2008-04-04T09:31:00.000Z	IcemanV9	Sefram	pgrep wpa ?
+2008-04-04T09:34:00.000Z	Sefram	IcemanV9	i need the pid of the process for a specific interface, pidof or pgrep only gives me pids of all running processes...
+2008-04-04T09:35:00.000Z	IcemanV9	Sefram	ah. well. check /var/run directory
+2008-04-04T09:35:00.000Z	Sefram	IcemanV9	When i start something from within a shell script: is there a way to get the pid of this child process?
+2008-04-04T09:36:00.000Z	Sefram	IcemanV9	there is ./wpa_supplicant/eth1 but no pid files
+2008-04-04T09:37:00.000Z	IcemanV9	Sefram	dhclient.eth1.pid
+2008-04-04T09:38:00.000Z	Sefram	IcemanV9	yes but that is not wpa_supplicant ?
+2008-04-04T09:41:00.000Z	IcemanV9	Sefram	wpa_supplicant is with eth1 ... i don't know what more do you want?
+2008-04-04T09:44:00.000Z	Sefram	IcemanV9	I need the pid of the process wpa_supplicant for eth1
+2008-04-04T09:47:00.000Z	Sefram	IcemanV9	I am starting wpa_supplicant from inside my WLAN start script and only want to kill the wpa_supplicant process i started here when i run my script with a shutdown wlan command later.
+2008-04-04T09:47:00.000Z	IcemanV9	Sefram	where do you see that in your top or htop?? there are TWO pid's for wpa & eth1, but they are working together.
+2008-04-04T09:48:00.000Z	IcemanV9	Sefram	well, to find out might be the best is to playing around with it 'til you get what you want.
+2008-04-04T09:50:00.000Z	Sefram	IcemanV9	`ps -A | grep wpa_supplicant` is different to `ps -A | grep dhclient`
+2008-04-04T09:52:00.000Z	Sefram	IcemanV9	`ps -aux | grep "wpa_supplicant start arguments"` or sth like that would do the job, but ps -aux is not available at my target platform...
+2008-04-04T09:58:00.000Z	IcemanV9	Sefram	same as pgrep wpa_supplicant & pgrep dhclient; yes, wpa is before dhclient. i don't know anymore than that to help you to achieve what you want.
+2008-04-04T10:01:00.000Z	Sefram	IcemanV9	thx anyways...

@@ -1,0 +1,23 @@
+2012-05-10T22:43:00.000Z	vbajpai		why is types.h not at include/sys/types.h but at /usr/include/x86_64-linux-gnu/sys/types.h
+2012-05-10T22:43:00.000Z	tsimpson	vbajpai	because sys/types.h is architecture dependant
+2012-05-10T22:44:00.000Z	vbajpai	tsimpson	okay, so when include/arpa/nameser.h includes sys/types.h what happens?
+2012-05-10T22:45:00.000Z	tsimpson	vbajpai	unless you tell the compiler that you're cross-compiling, it'll use the one for your running architecture
+2012-05-10T22:45:00.000Z	tsimpson	vbajpai	the default paths searched take care of that for you
+2012-05-10T22:46:00.000Z	vbajpai	tsimpson	I think I will get directly to the point
+2012-05-10T22:48:00.000Z	vbajpai	tsimpson	I am trying to compile my software on gnu/linux, all this time I was developing on OS X. The issue is I am dependent on a library (flow-tools), which uses nameserv.h which in turn uses u_char type, which is only defined in types.h, when I try to compile I get error that it does not know about w_char
+2012-05-10T22:49:00.000Z	tsimpson	vbajpai	looks like you need to define _BSD_SOURCE in order to get those types
+2012-05-10T22:51:00.000Z	vbajpai	tsimpson	but why?
+2012-05-10T22:51:00.000Z	tsimpson	vbajpai	because those are part of the BSD standard(s), not ISO/ANSI standard C or POSIX
+2012-05-10T22:52:00.000Z	vbajpai		I see, so you mean whosoever wrote flow-tools library, wrote it with BSD in mind?
+2012-05-10T22:52:00.000Z	tsimpson	vbajpai	that, or they just didn't know that those were BSD types, rather than POSIX
+2012-05-10T22:53:00.000Z	vbajpai	tsimpson	okay, but then where do I define this macro? in my cmakelist or somewhere else, what is the correct way to do it
+2012-05-10T22:54:00.000Z	tsimpson	vbajpai	it doesn't matter too much, as long as the compiler sees it. but where ever is more "global" to the project is best
+2012-05-10T22:56:00.000Z	vbajpai	tsimpson	quick question again, i see sys/types.h is part of POSIX library, so it nameserv.h which is BSD-specific?
+2012-05-10T22:57:00.000Z	tsimpson	vbajpai	it's not that it's BSD-specific, it's just that that interface (API) is the one from the BSD standards
+2012-05-10T23:03:00.000Z	vbajpai	tsimpson	it was not w_char but u_char, sorry
+2012-05-10T23:04:00.000Z	tsimpson	vbajpai	I know, I just ignored the mistake :)
+2012-05-10T23:12:00.000Z	vbajpai	tsimpson	I am sorry, I am still very confused. So I looked into nameserv.h (included by flow-tools). This file is using u_char, I see they are making up for which platform this compiles on no? http://pastie.org/3891102
+2012-05-10T23:13:00.000Z	vbajpai	tsimpson	this is my error: http://pastie.org/3891112
+2012-05-10T23:24:00.000Z	vbajpai		okay I had _GNU_SOURCE defined up until now, I changed it to _BSD_SOURCE
+2012-05-10T23:25:00.000Z	vbajpai	tsimpson	^
+2012-05-10T23:31:00.000Z	vbajpai	tsimpson	okay but I also have c99 features, so I have -std=c99, which turns it off again, what do I do

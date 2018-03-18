@@ -1,0 +1,23 @@
+2011-01-11T07:29:00.000Z	CSun		 obfu yes all the same card
+2011-01-11T07:30:00.000Z	sacarlson	CSun	no I don't know why you would have a problem with setup of static on 5 nic,  maybe a conflict with network-manager? what method are you using to setup static?  /etc/network/interfaces ?
+2011-01-11T07:31:00.000Z	CSun	sacarlson	not using network mgr.  yes to etc/network/interfaces'
+2011-01-11T07:33:00.000Z	sacarlson	CSun	I would like to see the /etc/network/interfaces file,  and also is network-manager still running?  If so I would try stoping it
+2011-01-11T07:34:00.000Z	CSun	sacarlson	& obfu: hang on a sec. :)
+2011-01-11T07:35:00.000Z	CSun	sacarlson	& obfu: pastebin.com/4DSdzs8V
+2011-01-11T07:36:00.000Z	CSun	sacarlson	& obfu: FYI, the 5th NIC has been removed from that pastebin
+2011-01-11T07:36:00.000Z	sacarlson	CSun	well you only setup 4 nic so that's all there will be
+2011-01-11T07:37:00.000Z	CSun	sacarlson	yes we took the 5th out to try and get around the problem but now three of the cards aren't working, can you see anything wrong with that config?
+2011-01-11T07:39:00.000Z	CSun	sacarlson	ifconfig says the cards are up and connected but no ping
+2011-01-11T07:39:00.000Z	sacarlson	CSun	oh ok so let me see sudo route
+2011-01-11T07:40:00.000Z	CSun	sacarlson	stand by.
+2011-01-11T07:41:00.000Z	CSun	sacarlson	pastebin.com/Af1tvBhx
+2011-01-11T07:42:00.000Z	sacarlson	CSun	I'm not sure but normaly I only see one auto line,  it should look like  auto eth0 eth1 eth2 eth3 eth4 lo,  it may work both ways just never see it like this
+2011-01-11T07:42:00.000Z	CSun	sacarlson	ok ill give that a go. back in a few mins
+2011-01-11T07:44:00.000Z	sacarlson	CSun	your route has 4 defaults is that what you really want?
+2011-01-11T07:45:00.000Z	sacarlson	CSun	normaly you have subnets and one path to wan as the default
+2011-01-11T07:48:00.000Z	CSun	sacarlson	this box doesn't have an ip assigned to it. it just offers dhcp services to 5 subnets.
+2011-01-11T07:48:00.000Z	CSun	sacarlson	we cant get a ping from an  outside node.  so dns is a secondary concern to us for now :)
+2011-01-11T07:49:00.000Z	sacarlson	CSun	does each subnet have wan access? try take out all but one default route
+2011-01-11T07:50:00.000Z	CSun	sacarlson	hang on, taking headache pills.. gime a min. :P
+2011-01-11T07:50:00.000Z	sacarlson	CSun	take your time
+2011-01-11T07:53:00.000Z	sacarlson	CSun	I think I might be wrong since each default is on a different nic

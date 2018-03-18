@@ -1,0 +1,19 @@
+2008-11-28T23:15:00.000Z	KentonS		I'm running Ubuntu 7.10. I just downloaded the latest Security Update du jour, and now the system doesn't recognize my screen and graphics card and puts me in low-graphics mode. I tried disabling and re-enabling the nvidia drive in System -> Administration -> Restricted Drivers Management. That didn't help. I tried going into System -> Administration -> Screens and Graphics and changing things manually, but the changes don't stick. Any id
+2008-11-28T23:16:00.000Z	scunizi	KentonS	not sure if this will do it ... but sudo gedit /etc/X11/xorg.conf and then make sure that nvidia is the chosen driver..
+2008-11-28T23:21:00.000Z	KentonS	scunizi	What am I looking for in xorg.conf?
+2008-11-28T23:26:00.000Z	scunizi	KentonS	a line that says "Driver nvidia"
+2008-11-28T23:26:00.000Z	scunizi	KentonS	do you have a seperate /home partition?
+2008-11-28T23:27:00.000Z	KentonS	scunizi	I see the line in there. In Section "device" #
+2008-11-28T23:28:00.000Z	scunizi	KentonS	yes..
+2008-11-28T23:30:00.000Z	KentonS	scunizi	I have a /home directory, but it's not in a separate partition. (Sorry, I missed your question.)
+2008-11-28T23:31:00.000Z	KentonS	scunizi	I'm considering restoring my previousxorg.conf (xorg.conf.bsckup) Is that a bad idea?
+2008-11-28T23:31:00.000Z	scunizi	KentonS	you should probably work on creating a seperate partition for /home and move your data there.. once that's done you can upgrade by fresh installing directly to the latest version.  7.04 will loose support in the near future.
+2008-11-28T23:32:00.000Z	scunizi	KentonS	if it's there. go for it.. might just do the trick
+2008-11-28T23:33:00.000Z	KentonS	scunizi	OK. That's something to consider. Right now, though, I just want to get things working. In the meantime, I'll try using xorg.conf.backup. (After saving the current version, of course. ;-) )
+2008-11-28T23:34:00.000Z	scunizi	KentonS	you might also install nvidia-settings
+2008-11-28T23:35:00.000Z	KentonS	scunizi	nvidia-settings? Is that something I install or a backup I should use?
+2008-11-28T23:36:00.000Z	scunizi	KentonS	I'm not sure if it's available in 7.04 but it helps setup nvidia cards.. sudo apt-get install nvidia-settings
+2008-11-28T23:36:00.000Z	KentonS	scunizi	FWIW, I'm running 7.10
+2008-11-28T23:36:00.000Z	scunizi	KentonS	oh. ok.. well.... same issues.
+2008-11-28T23:37:00.000Z	KentonS	scunizi	OK. After I restore xorg.conf.backup and reboot I'll check out nvidia-settings. Thanks!
+2008-11-28T23:38:00.000Z	scunizi	KentonS	sure

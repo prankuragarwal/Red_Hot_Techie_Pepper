@@ -1,0 +1,24 @@
+2011-04-05T00:22:00.000Z	qwebirc93887		I am trying to enable ACPI in Ubuntu but it's not working. I've tried sudo modprobe acpi (and acpid), installed acpi and acpid, added acpi and acpid to /etc/modules, added "acpi=force" to grub... What else can I do? I am desesperated.
+2011-04-05T00:23:00.000Z	ohsix	qwebirc93887	what makes you think you had to do anything?
+2011-04-05T00:24:00.000Z	qwebirc93887	ohsix	because it's an old motherboard.
+2011-04-05T00:27:00.000Z	qwebirc93887	ohsix	what made you ask that question in a agressive way?
+2011-04-05T00:27:00.000Z	ohsix	qwebirc93887	i meant who gave you such advice, or is it rote, old motherboard force acpi?
+2011-04-05T00:27:00.000Z	ohsix	qwebirc93887	i think the acpi epoch was in 2005, it's older than that?
+2011-04-05T00:29:00.000Z	qwebirc93887	ohsix	Ubuntu forums and a lot of other websites where I found other users having same problem than I:  when I sudo shutdown -h now or sudo poweroff the computer will not poweroff, it hangs and shows "system halted" message.
+2011-04-05T00:30:00.000Z	ohsix	qwebirc93887	first, check if acpi is even being used and for what reason, look at the output of "dmesg" run in a terminal, if it's not obvious to you please post it to paste.ubuntu.com
+2011-04-05T00:32:00.000Z	qwebirc93887	ohsix	yes, I did check dmesg | grep acpi and shows "[    0.000000] ACPI: BIOS age (1997) fails cutoff (2000), acpi=force is required to enable ACPI" so I added acpi=force "[    0.000000] ACPI: acpi=force override"
+2011-04-05T00:32:00.000Z	ohsix	qwebirc93887	and does it find a DSDT?
+2011-04-05T00:33:00.000Z	qwebirc93887	ohsix	but lsmod lsmod does not show anything acpi related
+2011-04-05T00:33:00.000Z	ohsix	qwebirc93887	that's not what i asked
+2011-04-05T00:33:00.000Z	ohsix	qwebirc93887	there isn't here either (lsmod | grep acpi)
+2011-04-05T00:33:00.000Z	qwebirc93887	ohsix	I was not replying to what you asked. What do you mean with DSDT?
+2011-04-05T00:34:00.000Z	qwebirc93887	ohsix	how do you check if acpi is working?
+2011-04-05T00:35:00.000Z	ohsix	qwebirc93887	well, you ask it to do stuff for you, but checking if it found a DSDT is a good start, as it wont do anything without one (dmesg | grep DSDT)
+2011-04-05T00:35:00.000Z	qwebirc93887	ohsix	ps aux |  grep acpi root       511  0.0  0.1   1792   608 ?        Ss   20:30   0:00 acpid -c /etc/acpi/events -s /var/run/acpid.socket
+2011-04-05T00:36:00.000Z	qwebirc93887	ohsix	dmesg | grep DSDT empty output..
+2011-04-05T00:36:00.000Z	ohsix	qwebirc93887	not it, sorry if i was rude earlier but i've got to go; and it sounds like theres no ACPI
+2011-04-05T00:36:00.000Z	ohsix	qwebirc93887	you'll have to try the "platform" shutdown mode
+2011-04-05T00:36:00.000Z	ohsix	qwebirc93887	one sec i'll find you the appropriate config file
+2011-04-05T00:36:00.000Z	qwebirc93887	ohsix	It is enabled in the BIOS
+2011-04-05T00:37:00.000Z	ohsix	qwebirc93887	maybe i'm mistaken and very very early acpi impls didn't have a DSDT, but i doubt it
+2011-04-05T00:37:00.000Z	ohsix	qwebirc93887	the file has documentationa nd the settings in it, /etc/default/acpi-support gl, and bye

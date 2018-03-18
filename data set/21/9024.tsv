@@ -1,0 +1,21 @@
+2009-02-28T15:41:00.000Z	rdw200169	dominique	hmm.. you could try adding a network restart to rc.local
+2009-02-28T15:42:00.000Z	dominique	rdw200169	Yeah, but this is a bad solution i think... I mean, networking is executed while booting, isn'it? Why do i have to restart it...?
+2009-02-28T15:43:00.000Z	rdw200169	dominique	it may be a problem with the initialization of the wireless related drivers... i dunno.  you may have received an error in your syslog, like it didn't get an IP address in time
+2009-02-28T15:43:00.000Z	rdw200169	dominique	i'm not sure, but i think the timeout for dhcp is reduced during boot to prevent seemingly *loooong* boot times, even though some routers are stubborn and make you wait a while for your IP address (like mine :( )
+2009-02-28T15:44:00.000Z	dominique	rdw200169	Yeah, i had troubles last days with wireless, so I installed a few drivers i (probably) don't need. Maybe there's a conflict. Thank you, i'll try to remove some of them from modules
+2009-02-28T15:44:00.000Z	rdw200169	dominique	you should check the syslog for a boot message that might help ;)
+2009-02-28T15:45:00.000Z	dominique	rdw200169	k... :)
+2009-02-28T15:58:00.000Z	rdw200169	dominique	you can do that it /etc/rc.local
+2009-02-28T15:58:00.000Z	dominique	rdw200169	Dr_willis_AAO: thank you!
+2009-02-28T15:59:00.000Z	dominique	rdw200169	No message found in boot log, i'll put restart networking into /etc/rc.local
+2009-02-28T16:00:00.000Z	rdw200169	dominique	i find the quick fix like that to be much easier than trying to dig in /etc/init.d/ files ;)
+2009-02-28T16:00:00.000Z	dominique	rdw200169	I can just put the line '/etc/init.d/networking restart' into the file?
+2009-02-28T16:01:00.000Z	rdw200169	dominique	yeah
+2009-02-28T16:01:00.000Z	dominique	rdw200169	yeah... but i'm not a fan of these quick'n'dirty since ubuntu is so brillant
+2009-02-28T16:01:00.000Z	rdw200169	dominique	test it by running that file like a normal script to make sure it works
+2009-02-28T16:02:00.000Z	dominique	rdw200169	thank you :)
+2009-02-28T16:02:00.000Z	rdw200169	dominique	if you want to get deeper into the problem... for example if you have random network drops... you can use something like monit to watch the network connection and restart it when necessary
+2009-02-28T16:03:00.000Z	rdw200169	dominique	i have to do this with my wireless connection... it has a bad habit of going stale or something ( i think its the garbage wireless router... )
+2009-02-28T16:03:00.000Z	dominique	rdw200169	I got the network manager applet in the panel, which shows when somethings wrong, then i execute networking restart on my own
+2009-02-28T16:03:00.000Z	rdw200169	dominique	ah, that works too ;)  i don't use NetworkManager b/c i have a lot of whacky networking things going on ;)
+2009-02-28T16:05:00.000Z	dominique	rdw200169	hehe :) for me it's suffisent... worst things happen when i'm at my friends and log into his WAP encrypted wlan... this works awesome, but when i go home afterwards i have to take two hours before i can get into my unencrypted wlan...

@@ -1,0 +1,24 @@
+2010-11-17T20:41:00.000Z	samw		how about to reload the sound system without rebooting?  does anyone know how to do that?
+2010-11-17T20:42:00.000Z	Magnum	samw	/etc/init.d/pulseaudio (<- or so) restart
+2010-11-17T20:44:00.000Z	samw	Magnum	"* PulseAudio configured for per-user sessions" and i've tried pulseaudio -k.  anything else i can try? :(
+2010-11-17T20:46:00.000Z	Magnum	samw	Google is very good for finding things out. I use it all the time for things that i need to find out. Sorry i cant help more on this, but esentially you need to just reload the pulseaudio system for some reason... why btw ?
+2010-11-17T20:46:00.000Z	samw	Magnum	i've been googling for days
+2010-11-17T20:47:00.000Z	Magnum	samw	To reload alsa or pulseaudio ?
+2010-11-17T20:47:00.000Z	Magnum	samw	What is the original issue youre seeing ?
+2010-11-17T20:48:00.000Z	Magnum	samw	Something hangs it seems. Maybe the alsa driver even. See what drivers are loaded for the soundcard. Unload them and load them again
+2010-11-17T20:49:00.000Z	Magnum	samw	You have tried alsamixer and turned up the volume i hope ?
+2010-11-17T20:49:00.000Z	samw	Magnum	yes, volume is up
+2010-11-17T20:49:00.000Z	Magnum	samw	lsmod, modprobe -r, modprobe als...somedriver
+2010-11-17T20:51:00.000Z	Magnum	samw	Wow, i even know all the options to most programs by heart nowdays... was unceratain about the -r flag :)
+2010-11-17T20:51:00.000Z	samw	Magnum	i just did a lsmod | grep als an there's not there.  is it snd_* ?
+2010-11-17T20:51:00.000Z	Magnum	samw	lsmod
+2010-11-17T20:52:00.000Z	Magnum	samw	snd_hda_codec_si3054, yep
+2010-11-17T20:53:00.000Z	Magnum	samw	grep for snd
+2010-11-17T20:54:00.000Z	samw	Magnum	i have snd_hda_codec_intelhdmi, snd_hda_codec_idt Should i remove them both?
+2010-11-17T20:54:00.000Z	Magnum	samw	First, Have you tried the pulseaudio volume control ? and if you have FN-button + Sound volume up key ?
+2010-11-17T20:56:00.000Z	samw	Magnum	the volume notifier works and is at full.  is that the same thing as "pulseaudio volume control"?
+2010-11-17T21:13:00.000Z	Magnum	samw	Ah! Its one of those issues probably. You need to probe the alsa module with modulename=acer/fujitsu or something. I did that once before. Edited /etc/modprobe.conf but that could have been moved to somewhere like /etc/modprobe.d (I wish they stop changing all the paths so often as they do nowdays)
+2010-11-17T21:14:00.000Z	Magnum	samw	But its also facinating that playing music kills the driver. Thats a big bug.
+2010-11-17T21:14:00.000Z	Magnum	samw	lspci ... check what driver it is if you have the time..
+2010-11-17T21:14:00.000Z	samw	Magnum	yeah. hopefully this will help.
+2010-11-17T21:15:00.000Z	Magnum	samw	im sure it will. Wonder why i didnt think of that /grr :)

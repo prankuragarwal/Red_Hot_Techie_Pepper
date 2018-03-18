@@ -1,0 +1,22 @@
+2010-08-23T09:40:00.000Z	boobsbr		wow, my read speeds seem horrible
+2010-08-23T09:41:00.000Z	boobsbr		copying a file from one directory to another on the same partition averages 7 MB/s
+2010-08-23T09:41:00.000Z	boobsbr		wth is wrong with my setup?
+2010-08-23T09:43:00.000Z	thune3	boobsbr	what is the drive hardware? 7 MB/s: this might not be horrible for a bunch of tiny files or depending on the hardare
+2010-08-23T09:59:00.000Z	thune3	boobsbr	just guessing: maybe you have sync enabled on the drive mount? check appropriate line in "mount" output.
+2010-08-23T10:02:00.000Z	boobsbr	thune3	can't any sync/async options on mtab and fstab
+2010-08-23T10:11:00.000Z	thune3	boobsbr	i believe iostat is in sysstat package.
+2010-08-23T10:12:00.000Z	boobsbr	thune3	how do I make sense of the iostat output?
+2010-08-23T10:17:00.000Z	thune3	boobsbr	-m option give in megabytes
+2010-08-23T10:24:00.000Z	thune3	boobsbr	i might try running ' iostat -md sdc 1 | egrep "\w+" ' in one terminal, an then run something what writes only in another: dd if=/dev/zero of=/path/to/target bs=1M count=100 conv=fsync  Substituting the appropriate target. (bs*count=total size). and look at what you get
+2010-08-23T10:24:00.000Z	boobsbr	thune3	ok, brb
+2010-08-23T10:27:00.000Z	boobsbr	thune3	ok, now I'm getting write speeds between 45 and 66 MB/s
+2010-08-23T10:37:00.000Z	thune3	boobsbr	i just got paranoid that you may have misunderstood that by " of=/path/to/target " i mean the path to a file, like /media/my_files/bigfilefullofzero, and not /dev anything.
+2010-08-23T10:39:00.000Z	boobsbr	thune3	yeah, I just type of=./iotestfile
+2010-08-23T10:40:00.000Z	thune3	boobsbr	ok ...whew...
+2010-08-23T10:40:00.000Z	boobsbr	thune3	I've played with dd before, overwriting the MBR and restoring it. that kinda stuff
+2010-08-23T10:41:00.000Z	boobsbr	thune3	do you think Cannonical payed support would help me solve this problem? I'm willing to pay if it will solve this once and for all
+2010-08-23T10:41:00.000Z	thune3	boobsbr	oh cool, i just realized that my instructions were *not* clear enough for a beginner. i'm glad you're experienced.
+2010-08-23T10:44:00.000Z	thune3	boobsbr	is it possible this is a bios/firmware issue ^^^
+2010-08-23T10:46:00.000Z	boobsbr	thune3	tried updating my BIOS like this http://ubuntuforums.org/showthread.php?t=318789 but it didn't work
+2010-08-23T10:46:00.000Z	boobsbr	thune3	it seemed like nothing was actually written and when I rebooted, the bios version did not change
+2010-08-23T11:41:00.000Z	boobsbr	thune3	thanks for your help

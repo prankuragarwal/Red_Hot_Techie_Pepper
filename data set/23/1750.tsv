@@ -1,0 +1,23 @@
+2009-11-05T15:07:00.000Z	Ballistic		Hey guys, ive installed 9.10 and sofar its ok... however, my 8768 soundcard gets recognized as a 8738, and now i have no optical out support. Can anyone help me change the driver?
+2009-11-05T15:08:00.000Z	Ballistic		uhm
+2009-11-05T15:08:00.000Z	Ballistic		no, C-Media
+2009-11-05T15:08:00.000Z	ActionParsnip	Ballistic	if you run: sudo lshw -C sound    it will show you what it is
+2009-11-05T15:10:00.000Z	ActionParsnip	Ballistic	not something ive used, maybe if you search for the product line in the output it will yield some guides
+2009-11-05T15:10:00.000Z	ActionParsnip	Ballistic	it only matters what Linux sees it as
+2009-11-05T15:12:00.000Z	Ballistic	ActionParsnip	yes i understand that, ubuntu recognized it as a 8738 but that card/driver doesnt have optical out support. the 8768 i have does, and i need it ;)
+2009-11-05T15:12:00.000Z	ActionParsnip	Ballistic	then you will need to blacklist the driver causing issues and add the other driver
+2009-11-05T15:13:00.000Z	Ballistic	ActionParsnip	How do i figure out the name to blacklist it?
+2009-11-05T15:16:00.000Z	ActionParsnip	Ballistic	lsmod   will list the loaded modules, one will be for the sound
+2009-11-05T15:22:00.000Z	Ballistic	ActionParsnip	i blacklisted it and rebooted but now it doesnt find a card at all
+2009-11-05T15:22:00.000Z	Ballistic	ActionParsnip	only the damn hdmi sound
+2009-11-05T15:22:00.000Z	ActionParsnip	Ballistic	thats because you havent put in a replacement driver yet
+2009-11-05T15:24:00.000Z	ActionParsnip	Ballistic	maybe the system has the driver: if you type: sudo modprobe       then type a few characters from the module you blacklisted and press tab, you may find a similar named module (but with the different name) that you need
+2009-11-05T15:24:00.000Z	Ballistic	ActionParsnip	ok, but the module i blacklisted wasnt really a specific one, it was snd_cmipci
+2009-11-05T15:24:00.000Z	ActionParsnip	Ballistic	i see, well you may need to load in a specially named one, you may even need to compile or install a package from ppa
+2009-11-05T15:25:00.000Z	ActionParsnip	Ballistic	you need to websearch the sound chip you have to see what module it need
+2009-11-05T15:26:00.000Z	ActionParsnip	Ballistic	maybe the card manufacturers have open drivers
+2009-11-05T15:32:00.000Z	Ballistic	ActionParsnip	I found on the internet that cmipci is the driver for 8338/8768/8768, so its right module but somehow it selects the first one, and not the 3rd one (that i have
+2009-11-05T15:32:00.000Z	Ballistic	ActionParsnip	cmipci is the module i blacklisted
+2009-11-05T15:33:00.000Z	ActionParsnip	Ballistic	ok then unblacklist the module, maybe it needs some options on the probe
+2009-11-05T19:18:00.000Z	Ballistic	ActionParsnip	Thanks for the help earlier, turned out the option Digital Stereo' worked for 5.1 too ;) Unfortunatly i want to run XBMC and it needs 9.04.. and card is not supported there, only analog
+2009-11-05T19:19:00.000Z	ActionParsnip	Ballistic	nice

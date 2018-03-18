@@ -1,0 +1,22 @@
+2009-01-19T17:14:00.000Z	poncio		hi! how do i remove older kernel versions from my /boot ?
+2009-01-19T17:15:00.000Z	poncio		should i just type rm *version* ?
+2009-01-19T17:16:00.000Z	poncio		i actualy deleted them the other day because i had no space in the boot drive...
+2009-01-19T17:16:00.000Z	savvas	poncio	how many linux kernels do you see?
+2009-01-19T17:18:00.000Z	savvas	poncio	go to System > Administration > Synaptic package manager. Click on "Status" on the lower left corner. See inside "Installed (local or obsolete)" - Select a package you what you want to remove, right-click on it and press "Mark for Complete Removal".  Also in Status, check out "Not Installed (residual config)"
+2009-01-19T17:20:00.000Z	poncio	savvas	wich packages should i change then?
+2009-01-19T17:21:00.000Z	savvas	poncio	the "Not installed (residual config)" are all safe to mark for complete removal. it's packages you removed and have leftover configuration files (removes stuff from root system files/folders, NOT your home directory configuration files)
+2009-01-19T17:22:00.000Z	savvas	poncio	in "Installed (local or obsolete)" lists packages that YOU installed (with a .deb file) or packages that are NOT supported anymore. All linux-image* packages in there are safe to remove.
+2009-01-19T17:30:00.000Z	poncio	savvas	how do i get my "2.6.24-23" kernel back? i only have "2.6.24-22" now...
+2009-01-19T17:30:00.000Z	savvas	poncio	which ubuntu release are you using?
+2009-01-19T17:31:00.000Z	savvas	poncio	go to Applications > Accessories > Terminal and paste the output of this command: uname -a
+2009-01-19T17:33:00.000Z	poncio	savvas	here it is: "Linux multivac 2.6.24-22-generic #1 SMP Mon Nov 24 18:32:42 UTC 2008 i686 GNU/Linux"
+2009-01-19T17:34:00.000Z	savvas	poncio	ok now the output of this command: lsb_release -r
+2009-01-19T17:35:00.000Z	poncio	savvas	 8.04
+2009-01-19T17:36:00.000Z	savvas	poncio	can you paste at www.pastebin.com (and give me the link) the output of: apt-cache policy linux-generic linux-image-2.6.24-23-generic
+2009-01-19T17:40:00.000Z	poncio	savvas	it is like i told you... http://pastebin.com/m50cb9c7f i just deleted the wrong files on my /boot ...
+2009-01-19T17:41:00.000Z	savvas	poncio	execute this (all in one line): sudo apt-get update; sudo apt-get install --reinstall linux-generic linux-image-2.6.24-23-generic; sudo dpkg-reconfigure linux-image-2.6.24-23-generic
+2009-01-19T17:42:00.000Z	savvas	poncio	if asked something, press "Y" and hit enter :)
+2009-01-19T17:43:00.000Z	poncio	savvas	i had already tried the "reinstall linux-generic" part... :)
+2009-01-19T17:44:00.000Z	poncio	savvas	 seems to have worked.
+2009-01-19T17:44:00.000Z	poncio	savvas	thx
+2009-01-19T17:46:00.000Z	savvas	poncio	ok, glad to hear it :)

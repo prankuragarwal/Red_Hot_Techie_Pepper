@@ -1,0 +1,18 @@
+2008-03-17T22:29:00.000Z	MilitantPotato		chis0:  run xev in terminal
+2008-03-17T22:29:00.000Z	chris0	MilitantPotato	that doesn't tell me what the name of my mouse is...it only spits events when I move it.
+2008-03-17T22:31:00.000Z	MilitantPotato	chris0	cat /proc/bus/input/devices
+2008-03-17T22:32:00.000Z	chris0	MilitantPotato	it says two lines: Phys=usb-0000:00:somethingorother/input0, and Stsfs=/class/input/input10. Neither one's anything in /dev...
+2008-03-17T22:34:00.000Z	MilitantPotato	chris0	/dev/input/by-id/
+2008-03-17T22:35:00.000Z	MilitantPotato	chris0	right click the one for your mouse, see what event it points too?
+2008-03-17T22:36:00.000Z	chris0	MilitantPotato	ok...so there's two things in that directory...usb-Logitech_USB_Gaming_Mouse-event-mouse  and usb-Logitech_USB_Gaming_Mouse-mouse
+2008-03-17T22:37:00.000Z	MilitantPotato	chris0	I'm not sure which, I'm guessing the one without event, it will point to mouse* I'm guessing
+2008-03-17T22:38:00.000Z	chris0	MilitantPotato	yeah...an ll shows the event one points to /dev/input/event10 and the other one points to /dev/input/mouse3....It's probably mouse3?
+2008-03-17T22:38:00.000Z	MilitantPotato	chris0	mouse3 it is I'd guess :)   backup your xorg.conf and see if that works.
+2008-03-17T22:39:00.000Z	MilitantPotato	chris0	cat /proc/bus/input/devices tells you the same
+2008-03-17T22:39:00.000Z	MilitantPotato	chris0	H: Handlers=mouse2 event3 is my logitech
+2008-03-17T22:40:00.000Z	chris0	MilitantPotato	yeah, for me it's mouse3 event 10.....cool beans! lemme change my xorg and see what happens!
+2008-03-17T22:43:00.000Z	chris0	MilitantPotato	well, apparently my xorg settings are wrong. Just out of curiosity, what kind of Logitech do you have? I'm trying to configure a brand-new G5.
+2008-03-17T22:44:00.000Z	chris0	MilitantPotato	any chance that that's a 7-button mouse?
+2008-03-17T22:45:00.000Z	MilitantPotato	chris0	http://paste.stgraber.org/1674
+2008-03-17T22:45:00.000Z	chris0	MilitantPotato	minimec's giving me his xorg, but if it doesn't work, mind if I look at yours?
+2008-03-17T22:48:00.000Z	MilitantPotato	chris0	http://ubuntuforums.org/showthread.php?t=65471 might help

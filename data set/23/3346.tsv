@@ -1,0 +1,23 @@
+2008-05-09T06:14:00.000Z	STSX		Can someone here help me modify my /boot/grub/menu.lst to include a new Linux distro I installed on another partition? I'm close but I need some help.
+2008-05-09T06:15:00.000Z	fde	STSX	can you please show us your fdisk -l /dev/hd<whatever> and menu.lst via paste.ubuntu.com ?
+2008-05-09T06:15:00.000Z	STSX	fde	Sure thing, hang on...
+2008-05-09T06:22:00.000Z	STSX	fde	amenado: OK, here's my fdisk and menu.lst output: http://pastebin.com/d5d8aab87
+2008-05-09T06:30:00.000Z	STSX	fde	So do I even need that "root=..." line at all? Why is the Ubuntu one so arcane?
+2008-05-09T06:23:00.000Z	fde	STSX	you're having it boot from a swap... you likely want (hd0,4) (hda5 looks like the / of pclinuxos)
+2008-05-09T06:25:00.000Z	STSX	fde	Yes, hda5 is the root of the new distro. So I should be using (hd0,4) and not (hd0,2)? Please explain what the 2 and the 4 are if they don't correspond to hda2 or hda4.
+2008-05-09T06:27:00.000Z	fde	STSX	hd0 defines first hard drive (hda within linux) the 2 defines hdx3 as grub starts with 0 and linux starts with 1... so hda3 is (hd0,2) which for fdisk is telling me is swap ... hda5 is an extended linux partition, which is (hd0,4) to grub.
+2008-05-09T06:27:00.000Z	fde	STSX	make sense>
+2008-05-09T06:29:00.000Z	STSX	fde	OK that makes sense. Now what about the "root=/dev/hda5" part--what should that be? If you look at it for my Ubuntu partition it's kinda crazy.
+2008-05-09T06:29:00.000Z	fde	STSX	that should be fine... it isn't actualy necessary at all because your /boot and / is the same partition for PCLinuxOS it looks like.
+2008-05-09T06:30:00.000Z	fde	STSX	keep it there as it won't do any harm, but I'm fairly sure it isn't needed...
+2008-05-09T06:31:00.000Z	fde	STSX	Ubuntu uses UUID's because they are more secure.
+2008-05-09T06:32:00.000Z	STSX	fde	OK, I'll give it a try. One last question tho--what is the "ro quiet splash" parameters in the Ubuntu partition lines for?
+2008-05-09T06:32:00.000Z	fde	STSX	ls -l /dev/disk/by-uuid ... you'll notice they are symlinks to normal devices.
+2008-05-09T06:33:00.000Z	fde	STSX	ro means mount read only... although it actually doesn't, so I don't understand... quiet is not telling you all the boot stuff, and splash is the pretty Ubuntu logo on boot  :)
+2008-05-09T06:34:00.000Z	STSX	fde	OK, thanks for the info! I'll give it a try. :)
+2008-05-13T05:58:00.000Z	fde	STSX	right click > Clock Preferences
+2008-05-13T05:59:00.000Z	STSX	fde	I right-click it, go to "configure clock" and I don't see anywhere, under any tab, how to change it to 12 hour time.
+2008-05-13T06:01:00.000Z	fde	STSX	It should be there... I'm not in KDE though... it's Configure Date/Time though... you want 'pH' rather than 'HH'
+2008-05-13T06:04:00.000Z	STSX	fde	OK, I found it under "Adjust Date & Time", thanks. But how am I supposed to know that pH is 12 hour and HH is 24 hour? Totally counter-intuitive to me, but I'm not a programmer either.
+2008-05-13T06:04:00.000Z	fde	STSX	I forget where I found that out... I think it is defined if you hit "Help" or something.
+2008-06-02T01:10:00.000Z	fde	STSX	gksu --desktop /usr/share/applications/software-properties.desktop /usr/bin/software-properties-gtk  <-- exactly what alacarte says about it

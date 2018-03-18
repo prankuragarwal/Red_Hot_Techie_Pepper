@@ -1,0 +1,23 @@
+2007-07-23T12:30:00.000Z	isaac		i need to create  a root account, how do i do it?
+2007-07-23T12:30:00.000Z	isaac		i forgot the commands
+2007-07-23T12:30:00.000Z	isaac		i forgot the command*
+2007-07-23T12:31:00.000Z	Gnea	isaac	no you don't, it's already there.
+2007-07-23T12:32:00.000Z	Gnea	isaac	sudo <command>
+2007-07-23T12:34:00.000Z	Gnea	isaac	you can't ftp in as root.
+2007-07-23T12:35:00.000Z	Gnea	isaac	if you have root access, you can edit the restrictions for the ftp server, if you're using a decent daemon
+2007-07-23T12:36:00.000Z	Gnea	isaac	locate the vsftp documentation (probably on the website or in /usr/share/doc/vsftp) and see what you can do
+2007-07-23T12:37:00.000Z	Gnea	isaac	why?
+2007-07-23T12:38:00.000Z	Gnea	isaac	sorry, can't tell you without a legitimate reason. that's a security violation.
+2007-07-23T12:39:00.000Z	Gnea	isaac	oh ok
+2007-07-23T12:39:00.000Z	Gnea	isaac	no need to grant root privs to that user then, just make the dir world read/writeable
+2007-07-23T12:40:00.000Z	Gnea	isaac	chmod 777 dir/ && chmod +t dir/
+2007-07-23T12:43:00.000Z	Gnea	isaac	that rather defeats the purpose of /home
+2007-07-23T12:44:00.000Z	Gnea	isaac	find dir/ -type f -exec chmod 666 {} \ && find dir/ -type d -exec chmod 777 {} \  <--- do that too
+2007-07-23T12:45:00.000Z	Gnea	isaac	that will change the permissions on all files and directories within the target directory, respectively
+2007-07-23T12:45:00.000Z	Gnea	isaac	if you don't do it that way, you'll foobar the whole structure
+2007-07-23T12:46:00.000Z	Gnea	isaac	right.
+2007-07-23T12:48:00.000Z	Gnea	isaac	hehehe, no no no, those aren't configuration directives, you need to run those with sudo on the commandline
+2007-07-23T12:49:00.000Z	Gnea	isaac	the && just means "don't run the second find until the first find has finished exectuting properly, otherwise exit and don't run the second find."
+2007-07-23T12:50:00.000Z	Gnea	isaac	sudo find dir/ -type f -exec chmod 666 {} \ && find dir/ -type d -exec chmod 777 {} \
+2007-07-23T13:01:00.000Z	Gnea	isaac	it has to be typed exactly
+2007-07-23T13:03:00.000Z	Gnea	isaac	i don't know, you're not providing details. so far, it only looks like you didn't type it right.

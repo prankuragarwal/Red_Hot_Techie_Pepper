@@ -1,0 +1,22 @@
+2011-08-31T21:59:00.000Z	Kirill		anyone know how to fix this this console-setup install problem? bah, what a piece of shit this is
+2011-08-31T22:00:00.000Z	Kirill		is this IRC channel just for people to ask questions and not get answers?
+2011-08-31T22:00:00.000Z	Pici	Kirill	Please be patient.
+2011-08-31T22:02:00.000Z	Pici	Kirill	Can you pastebin the entire error message you are getting?
+2011-08-31T22:02:00.000Z	Kirill	Pici	http://pastebin.com/X5xUHAt2
+2011-08-31T22:05:00.000Z	Pici	Kirill	I'm looking at your issue, not sure what the problem is yet.
+2011-08-31T22:06:00.000Z	Pici	Kirill	Is this an upgrade or right after an upgrade?
+2011-08-31T22:07:00.000Z	Kirill	Pici	yeah, part of apt-get dist-upgrade
+2011-08-31T22:08:00.000Z	Pici	Kirill	Please tell me you aren't upgrading from something to natty with that.
+2011-08-31T22:08:00.000Z	Kirill	Pici	I am, but I did all the previous steps like search/replace everything in sources to "natty", e tc.
+2011-08-31T22:09:00.000Z	Pici	Kirill	Thats not the proper way to upgrade to a new release. You should be using do-release-upgrade  (or update-manager if you prefer the gui) .
+2011-08-31T22:09:00.000Z	Pici	Kirill	That file has been migrated from one package to another and apt-get isn't smart enough to handle that on its own. I don't know what to suggest if d-r-u didn't work for you :/
+2011-08-31T22:11:00.000Z	Kirill	Pici	any ideas how to informat apt of this change manually? too late for d-r-u anyway. there must be a way to fix this ridiculous problem
+2011-08-31T22:11:00.000Z	Kirill	Pici	*inform, I mean
+2011-08-31T22:12:00.000Z	Pici	Kirill	I wonder if you install --reinstall both packages if it will work.
+2011-08-31T22:12:00.000Z	Kirill	Pici	not working
+2011-08-31T22:14:00.000Z	Kirill	Pici	it says "trying to overwrite '/etc/init.d/console-setup', which is also in package console-setup 1.57ubuntu20" ... but this file isn't even there
+2011-08-31T22:15:00.000Z	Pici	Kirill	This is really iffy, but you could use dpkg --force-conflicts with the package in /var/cache/apt/archives/
+2011-08-31T22:17:00.000Z	Kirill	Pici	--force-conflicts with what command?
+2011-08-31T22:17:00.000Z	Pici	Kirill	dpkg --force-conflicts -i /var/cache/apt/archives/keyboard-configuration_1.57ubuntu20_all.deb
+2011-08-31T22:19:00.000Z	Pici	Kirill	sorry :/
+2011-08-31T22:19:00.000Z	Kirill	Pici	that's alright, not your fault. it's amazing how much of a POS ubuntu is with respect to its installation/package management... epic fail.

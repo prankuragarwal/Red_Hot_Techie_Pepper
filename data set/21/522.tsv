@@ -1,0 +1,21 @@
+2011-10-25T06:41:00.000Z	javier__		hi. Is there a way to repair bad sectors in HDD in ubuntu?
+2011-10-25T06:42:00.000Z	cmn`	javier__	boot from livecd then e2fsck -c <drive>
+2011-10-25T06:43:00.000Z	javier__	cmn`	saying -c it will scan all my hard drive? (I have several partitions, windows included)
+2011-10-25T06:44:00.000Z	cmn`	javier__	e2fsck only does ext{2,3,4} partitions, so no. -c updates the bad sectors list in the partition table
+2011-10-25T06:44:00.000Z	cmn`		you'll need to do scandisk from windows for the rest 'mafraid
+2011-10-25T06:45:00.000Z	javier__	cmn`	ok. So I will run that. And for ntfs partition, can I do it somehow?
+2011-10-25T06:46:00.000Z	cmn`	javier__	I haven't tried this but the ntfsprogs package has a 'ntfsck' command
+2011-10-25T06:47:00.000Z	cmn`		well it did, anyway. the latest version apparently doesn't.
+2011-10-25T06:50:00.000Z	javier__	cmn`	can't I install ntfsprogs without unistalling ntfs-3g?
+2011-10-25T06:51:00.000Z	cmn`	javier__	ntfs-3g has the same programs, it's a fork of ntfsprogs.
+2011-10-25T06:51:00.000Z	javier__	cmn`	all right. Thanks
+2011-10-25T06:53:00.000Z	javier__	cmn`	unfortunatelly it doesn't seem to work. I get things like unsupported replay_log or check_volume, unsupported cases found. BUt it says "volume is dirty"
+2011-10-25T06:55:00.000Z	cmn`	javier__	can you post a paste?
+2011-10-25T06:55:00.000Z	javier__	cmn`	sure, but it's only this: http://pastebin.com/pvJ0FcGq
+2011-10-25T06:58:00.000Z	cmn`		ah, ntfsprogs? I thought you were talking about e2fsck :) I haven't used them unfortunately. Windows' tools were designed by the guys that designed the fs, but ntfs-3g's tools aren't all that great.
+2011-10-25T07:00:00.000Z	javier__	cmn`	I just found that gparted can do something similar, but if I try to run the test, it can't even make the first step and finds an error
+2011-10-25T07:02:00.000Z	cmn`	javier__	I think gparted uses the ntfs-3g cli tools in the background ;)
+2011-10-25T07:05:00.000Z	javier__	cmn`	yes... but, any idea why it can't make it work?
+2011-10-25T07:07:00.000Z	cmn`	javier__	if i had an NTFS partition to play with I'd be able to help with your issue more, but all the hd's in this house are ext3/4 ;)
+2011-10-25T07:08:00.000Z	javier__	cmn`	good choice :) thanks a lot anyway!
+2011-10-25T07:10:00.000Z	cmn`	javier__	I don't know if this will help but I just got pointed at testdisk, it's in the repos so you can apt-get it

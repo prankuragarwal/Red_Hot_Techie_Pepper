@@ -1,0 +1,24 @@
+2008-12-20T05:56:00.000Z	TriBeCa99		then i can add the two RAID1 drives to the RAID10 array
+2008-12-20T05:56:00.000Z	TriBeCa99		i just can't figure out how to copy everything from one array to the other
+2008-12-20T05:57:00.000Z	TriBeCa99		ok... anyone else?
+2008-12-20T05:57:00.000Z	georgy_28	TriBeCa99	: can your paste the output cat /proc/mdstat ?
+2008-12-20T05:58:00.000Z	TriBeCa99	georgy_28	can't paste as it's a seperate box, but i'll run it and brb
+2008-12-20T05:59:00.000Z	georgy_28	TriBeCa99	: normally the command to add a device for raid1 is : mdadm --add /dev/mdX /dev/sdX
+2008-12-20T05:59:00.000Z	TriBeCa99	georgy_28	basically it has md1 (raid1) and md0 (raid10)
+2008-12-20T05:59:00.000Z	TriBeCa99	georgy_28	I already have the arrays. I just need to move the entire filesystem and installation from md0 to md1
+2008-12-20T06:02:00.000Z	TriBeCa99	georgy_28	any ideas?
+2008-12-20T06:03:00.000Z	georgy_28	TriBeCa99	: no
+2008-12-20T06:03:00.000Z	TriBeCa99		:-/
+2008-12-20T06:03:00.000Z	TriBeCa99		guy i was talking to yesterday said to use a liveCD or something, but i can't get the ubuntu liveCD to work
+2008-12-20T06:03:00.000Z	georgy_28	TriBeCa99	: need the output from cat /proc/mdstat
+2008-12-20T06:04:00.000Z	TriBeCa99	georgy_28	what specifically do you need? i have it up on the ubuntu rig
+2008-12-20T06:05:00.000Z	georgy_28	TriBeCa99	: need to see the arrays and the disk in use
+2008-12-20T06:07:00.000Z	TriBeCa99	georgy_28	md1 is active RAID10 with 'missing /dev/sdc1 missing /dev/sdd1' and md0 is active RAID1 with '/dev/sda1 /dev/sdb1'
+2008-12-20T06:07:00.000Z	TriBeCa99	georgy_28	anything else?
+2008-12-20T06:14:00.000Z	georgy_28	TriBeCa99	: sorry but not sure what to do, but try : mdadm --stop /dev/md0  mdadm --add /dev/md1 /dev/sda1
+2008-12-20T06:21:00.000Z	TriBeCa99	georgy_28	I can do that fine later... but i need to copy the filesystem over first, don't I? or it won't be able to boot...
+2008-12-20T06:22:00.000Z	georgy_28	TriBeCa99	: I guess
+2008-12-20T06:25:00.000Z	TriBeCa99	georgy_28	well i just mounted md1 in a new directory and am trying a sudo cp -R / /dirname/
+2008-12-20T06:26:00.000Z	TriBeCa99		win98 never worked
+2008-12-20T06:26:00.000Z	georgy_28	TriBeCa99	: beter sudo cp  -dpR
+2008-12-20T06:27:00.000Z	TriBeCa99	georgy_28	ok. running again. it still fails to copy a bunch of stuff from /proc/ and /proc/sys

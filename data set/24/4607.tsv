@@ -1,0 +1,24 @@
+2011-06-22T05:36:00.000Z	bricas		my cifs share is messed up in ubuntu 11.04. It seems to be recursively mounted on itself. I can see the main directory list, but a dir list inside any dir gives the same list.
+2011-06-22T05:36:00.000Z	Jordan_U	bricas	Is Ubuntu the server or the client in this case?
+2011-06-22T05:37:00.000Z	bricas	Jordan_U	client. i have a seagate goflex nas as the server.
+2011-06-22T05:37:00.000Z	bricas	Jordan_U	FWIW, it worked fine in 10.10
+2011-06-22T05:37:00.000Z	Jordan_U	bricas	Can you pastebin the output of "find /path/to/mountpoint/"?
+2011-06-22T05:38:00.000Z	Jordan_U	bricas	Assuming the filenames aren't secret :)
+2011-06-22T05:38:00.000Z	bricas	Jordan_U	well, it won't go past the first dir...
+2011-06-22T05:39:00.000Z	bricas	Jordan_U	http://paste.scsys.co.uk/114946
+2011-06-22T05:40:00.000Z	Jordan_U	bricas	Did find go into an infinite loop or did it stop at some point? Did it give any error message?
+2011-06-22T05:41:00.000Z	bricas	Jordan_U	i cut it short after about 10-15 seconds. seems like an infinite loop to me.
+2011-06-22T05:41:00.000Z	Jordan_U	bricas	Can you pastebin the output of "mountpoint /media/goflex/Music/"?
+2011-06-22T05:41:00.000Z	bricas	Jordan_U	no error per-se.
+2011-06-22T05:41:00.000Z	bricas	Jordan_U	is not a mountpoint
+2011-06-22T05:41:00.000Z	Jordan_U	bricas	Or just post it, as it should be only one line.
+2011-06-22T05:42:00.000Z	Jordan_U	bricas	Can you pastebin the output of "stat /media/goflex/Music/"?
+2011-06-22T05:43:00.000Z	bricas	Jordan_U	http://paste.scsys.co.uk/114947
+2011-06-22T05:51:00.000Z	bricas	Jordan_U	fyi, i've been mounting it via fstab, not that it would matter, necessarily?
+2011-06-22T05:56:00.000Z	Jordan_U	bricas	Can you pastebin the output of "stat /media/goflex/Music/Music/Music/"?
+2011-06-22T05:58:00.000Z	bricas	Jordan_U	http://paste.scsys.co.uk/114948
+2011-06-22T05:59:00.000Z	Jordan_U	bricas	They have different inode numbers. I'm not sure if there's any signifigance to that but it's interesting.
+2011-06-22T06:00:00.000Z	bricas	Jordan_U	also, fwiwi, i can navigate through the network/windows shares menu in nautilus and see the share contents just fine.
+2011-06-22T06:01:00.000Z	Jordan_U	bricas	You should also be able to access the files via ~/.gvfs then as a work around. Can you pastebin your /etc/fstab/ ?
+2011-06-22T06:02:00.000Z	bricas	Jordan_U	oh! interesting. thanks! paste coming a sec.
+2011-06-22T06:03:00.000Z	bricas	Jordan_U	http://paste.scsys.co.uk/114949

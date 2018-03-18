@@ -1,0 +1,23 @@
+2009-07-30T18:53:00.000Z	Gluck		Hi. I've just bought an used Dell monitor and plugged it to my PC. It works fine, but instead of its native 1280x1024 gnome-display-properties manager shows something strange, like 1152x864 or 1360x768. It seems that everyone has problems with Dell monitors. I succeeded making it use 1280x1024 by typing xrandr  --newmode "1280x1024_60.00"  109.00  1280 1368 1496 1712  1024 1027 1034 1063 -hsync +vsync; xrandr --addmode VGA "1280x1024_60.00"; xrandr --o
+2009-07-30T18:53:00.000Z	Gluck		utput VGA --mode "1280x1024_60.00". But system forgets this mode after reboot. How to make it remember it, and remove those strange modes?
+2009-07-30T18:54:00.000Z	Gluck		Doesn't work, at least in Ubuntu.
+2009-07-30T18:55:00.000Z	Gluck		ikanobory, yes, it should, but doesn't. It was the first thing I tried.
+2009-07-30T18:56:00.000Z	Gluck		ikanobory, It seems that gnome-display-properties somehow override xorg.conf settings.
+2009-07-30T18:57:00.000Z	Gluck		ikanobory, why do you answer then. Thanks for your participation anyway.
+2009-07-30T18:59:00.000Z	Gluck		Hi. I've just bought an used Dell monitor and plugged it to my PC. It works fine, but instead of its native 1280x1024 gnome-display-properties manager shows something strange, like 1152x864 or 1360x768. It seems that everyone has problems with Dell monitors. I tried to save those settings in xorg.conf, but to no avail. It seems that gnome-display-properties somehow override xorg.conf settings.I succeeded making it use 1280x1024 by typing xrandr  --newm
+2009-07-30T18:59:00.000Z	Gluck		ode "1280x1024_60.00"  109.00  1280 1368 1496 1712  1024 1027 1034 1063 -hsync +vsync; xrandr --addmode VGA "1280x1024_60.00"; xrandr --output VGA --mode "1280x1024_60.00". But system forgets this mode after reboot. How to make it remember it, and remove those strange modes?
+2009-07-30T18:59:00.000Z	trashbarg	Gluck	add a modeline in xorg.conf and edit modes in screen section
+2009-07-30T19:01:00.000Z	Gluck	trashbarg	to no avail, i tried. A glue is that I can temporary convince xrandr to use a native resolution. Now, how to convince it remember it?
+2009-07-30T19:03:00.000Z	trashbarg	Gluck	You can just add your modeline to the monitor section
+2009-07-30T19:04:00.000Z	trashbarg	Gluck	after that you can chose 1280x1024_60 in the screen/display section
+2009-07-30T19:06:00.000Z	Gluck	trashbarg	thank you for your advice. I tried. It doesn't work. Gnome-display-properties seem to not give a shit about xorg.conf: It doesn't see my modes and use modes that are not in xorg.conf.
+2009-07-30T19:07:00.000Z	trashbarg	Gluck	I had a similar problem before using the nv driver. It seems it doesnt care about modelines. The vesa driver does, so if its enough for you ...
+2009-07-30T19:09:00.000Z	Gluck	trashbarg	I use intel driver. My system is a laptop with integrated graphics and external monitor.
+2009-07-30T19:10:00.000Z	trashbarg	Gluck	if the xrandr solution works for you, you may want to add the command to your Xsession
+2009-07-30T19:12:00.000Z	Gluck	trashbarg	I also suppose that I will end up with that. But I would like to find a nicer solution.
+2009-07-30T19:13:00.000Z	Gluck	trashbarg	Where gnome-display-properties store their data files anyway?
+2009-07-30T19:13:00.000Z	trashbarg	Gluck	I _think_ gnome-display-properties is using xrandr, its just a graphical frontend
+2009-07-30T19:14:00.000Z	Gluck	trashbarg	Well then, where xrandr stores its settings?
+2009-07-30T19:16:00.000Z	trashbarg	Gluck	idk. Just put your command in some autostart script and be happy it works ;)
+2009-07-30T19:17:00.000Z	trashbarg	Gluck	IMO configuring xorg is a lot of trial and error^^
+2009-07-30T19:18:00.000Z	Gluck	trashbarg	hell yes.

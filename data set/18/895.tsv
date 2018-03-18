@@ -1,0 +1,18 @@
+2011-08-04T14:30:00.000Z	obfuscatr		hi all.. need help with a windows smbfs mounting in ubuntu. the mount is successful, and as root I can full read/write. other users can read however I can't work out how to allow other users write (all obvious chown/chmod before/after mount get overridden after the mount)
+2011-08-04T14:31:00.000Z	ne2k	obfuscatr	you need to pass options to smbmount to set the group and the permissions mask. then add users you want to have access to that share to that group
+2011-08-04T14:32:00.000Z	obfuscatr	ne2k	ah, I was looking at man mount for an option like that, but couldn't find it.. i'll look again
+2011-08-04T14:33:00.000Z	ne2k	obfuscatr	it seems that the commands have changed. there used to be smbmount or mount.smbfs but I can't seem to find those on my linux! is this for a server? if it's a desktop you should just use fuse
+2011-08-04T14:34:00.000Z	ne2k	obfuscatr	you need -o gid=sharegroup,fmask=664,dmask=775
+2011-08-04T14:34:00.000Z	ne2k	obfuscatr	and does it have the gui desktop installed?
+2011-08-04T14:34:00.000Z	ne2k	obfuscatr	then just use places->connect to server
+2011-08-04T14:35:00.000Z	ne2k	obfuscatr	no need to mount as root, because fuse (userspace file system) handles it
+2011-08-04T14:35:00.000Z	ne2k	obfuscatr	well, do it the original way then
+2011-08-04T14:36:00.000Z	ne2k	obfuscatr	have you read this howto? https://help.ubuntu.com/community/MountWindowsSharesPermanently
+2011-08-04T14:38:00.000Z	obfuscatr	ne2k	thanks for the help. FYI fmask/dmask are deprecated and they're now file_mode=0777,dir_mode=0777
+2011-08-04T14:39:00.000Z	ne2k	obfuscatr	ah, right, thanks. I must have found an old man page on the web. bear in mind that if you use 0777 then all users will have full access, which is not a good idea
+2011-08-04T14:40:00.000Z	ne2k	obfuscatr	you should use 0660 or 0664 for files, depending on whether you want everyone to be able to read or not
+2011-08-04T14:40:00.000Z	ne2k	obfuscatr	no real need to make everything executable
+2011-08-04T14:41:00.000Z	obfuscatr	ne2k	on a 'standard' install with one user called 'bob', what is a good group to set it to? is there a 'users' group ?
+2011-08-04T14:41:00.000Z	ne2k	obfuscatr	I would make a new group entirely for this purpose
+2011-08-04T14:41:00.000Z	obfuscatr	ne2k	good plan
+2011-08-04T14:42:00.000Z	ne2k	obfuscatr	if you know there is only going to be one user you could just do 0600 and uid=bob and forget gid altogether

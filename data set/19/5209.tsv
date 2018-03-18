@@ -1,0 +1,19 @@
+2010-07-05T00:32:00.000Z	oren	guntbert	"connection faild..unable to get IP address"
+2010-07-05T00:32:00.000Z	oren	guntbert	sorry. it was for greezmunkey
+2010-07-05T00:37:00.000Z	guntbert	oren	please !pastebin the output of ifconfig
+2010-07-05T00:37:00.000Z	oren	guntbert	http://paste.ubuntu.com/459199/
+2010-07-05T00:39:00.000Z	guntbert	oren	I see you've been though this before :)  -- reading
+2010-07-05T00:44:00.000Z	guntbert	oren	I never used wicd, but maybe dhclient is not needed (with network manager it isn't) - could you please look into /var/log/syslog and pastebin that (or relevant parts)
+2010-07-05T00:44:00.000Z	oren	guntbert	sure
+2010-07-05T00:46:00.000Z	oren	guntbert	http://paste.ubuntu.com/459210/
+2010-07-05T00:49:00.000Z	guntbert	oren	one idea (from my system) stop dhclient (I see wpasupplicant is running, maybe you have to tell it that it should use eth1)
+2010-07-05T00:51:00.000Z	oren	guntbert	is it a service? so i do it with /etc/init.d/dhclient stop ?
+2010-07-05T00:53:00.000Z	guntbert	oren	I'll have to look
+2010-07-05T00:56:00.000Z	guntbert	oren	try with dhclient -x (may need sudo)
+2010-07-05T00:59:00.000Z	oren	guntbert	ok. and after that, just try with wicd?
+2010-07-05T01:01:00.000Z	guntbert	oren	yes, and in another terminal watch the output of tail -f /var/log/syslog to see what is happening
+2010-07-05T01:03:00.000Z	oren	guntbert	can't connect. i'll paste the syslog in a minute.
+2010-07-05T01:24:00.000Z	oren	guntbert	i reboot and looking at dmesg. I see at least 2 lines there that related to my wireless card :" input: bcm5974 as /devices/pci0000:00/0000:00:04.0/usb3/3-6/3-6:1.2/input/input5" and "usbcore: registered new interface driver bcm5974". here is the log:  http://paste.ubuntu.com/459222/
+2010-07-05T01:30:00.000Z	guntbert	oren	the relevant line is [   18.222008] eth1: Broadcom BCM432b 802.11 Hybrid Wireless Controller 5.60.48.36 - I have to say that I know nothing about broadcom devices, but have you seen https://help.ubuntu.com/community/WifiDocs/Driver/bcm43xx ?
+2010-07-05T01:32:00.000Z	oren	guntbert	i'll take a look. thanks
+2010-07-05T01:33:00.000Z	guntbert	oren	Good luck :-)

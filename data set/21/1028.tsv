@@ -1,0 +1,21 @@
+2011-03-02T07:47:00.000Z	Mios		I need some help. I am trying to install Ubuntu 10.04 64 bit on an AMD64 computer, yet I don't seem to understand partitioning for it. I do not want to erase my entire hard drive.
+2011-03-02T07:48:00.000Z	Mios		I had 32 bit on my desktop, and it's install process was great. I do not know how to partition this one correctly to not screw it up.
+2011-03-02T07:49:00.000Z	Mios		I know this. I dont... *Waits*
+2011-03-02T07:49:00.000Z	Mios		My RAM is 3 GB. I shall make a 6 gig Swap file.
+2011-03-02T07:49:00.000Z	Mios		And why try zfs?
+2011-03-02T07:50:00.000Z	exar	Mios	do you want to overwrite the 32-bit Ubuntu installation with the 64-bit Ubuntu installation?
+2011-03-02T07:53:00.000Z	exar	Mios	well even if you have to manually partition, the process is not that hairy
+2011-03-02T07:54:00.000Z	exar	Mios	but there should be a 3-radio-button list where the options are the equivalent of: 1. Install Ubuntu alongside other operating systems, 2. Blow everything else away, and 3. Manually partition
+2011-03-02T07:56:00.000Z	exar	Mios	weird. well, specify partitions manually. Right-click the biggest the NTFS partition, select change, and change the size of the partition
+2011-03-02T07:58:00.000Z	exar	Mios	that must be why the installer didn't have an option to install alongside other operating systems
+2011-03-02T08:04:00.000Z	exar	Mios	if you exit the installer and make sure the NTFS partition is not mounted (disk utility or just type mount at a prompt) you can see if gparted will let you resize it
+2011-03-02T08:06:00.000Z	exar	Mios	disclaimer: I'm not an op or official Ubuntu support or anything. I've been in this channel for about an hour. I came here to ask a question about bridging wireless networks, but at this point I don't think this is the right place for it.
+2011-03-02T08:12:00.000Z	exar	Mios	try rebooting and run the installer directly instead of live
+2011-03-02T08:13:00.000Z	exar	Mios	hehe that looks bad
+2011-03-02T08:13:00.000Z	exar	Mios	does your partition have some kind of transparent encryption?
+2011-03-02T08:26:00.000Z	exar	Mios	I doubt it's your actual BIOS, but I would keep it around
+2011-03-02T08:39:00.000Z	exar	Mios	I really think you should try to resize the big 280GiB partition
+2011-03-02T08:39:00.000Z	exar	Mios	I see you found Gparted. If you make sure it's unmounted, even Gparted won't do it?
+2011-03-02T08:40:00.000Z	exar	Mios	see how it says mount point and it has text there? that text should not be there
+2011-03-02T08:40:00.000Z	exar	Mios	when that column is empty for sda2, try to resize it
+2011-03-02T08:53:00.000Z	exar	Mios	http://ubuntuforums.org/showthread.php?t=487300 it's a little dated, but this thread says try chkdsk /f on the partition in safe mode then reboot windows a couple of times to let the scans run before Windows attempts to load  the OS off the partition

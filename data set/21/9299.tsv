@@ -1,0 +1,21 @@
+2007-02-26T15:52:00.000Z	VSpike		OK, so I'm on 2.6.17-11-generic... but "dpkg-query -l | grep kernel" gives a whole load of items..
+2007-02-26T15:52:00.000Z	eck	VSpike	that's because the package is called linux-image-generic, or something like that
+2007-04-15T14:52:00.000Z	eck	VSpike	that is the recommended way to run it
+2007-04-15T14:52:00.000Z	eck	VSpike	strictly speaking you do not need it; for example, you can filter your mail messages though it with your mail client and not run the daemon
+2007-04-15T14:53:00.000Z	VSpike	eck	: I want to filter messages through it using maildrop
+2007-04-15T14:53:00.000Z	eck	VSpike	are you using maildrop with an mta, or in conjunction with something like fetchmail?
+2007-04-15T14:54:00.000Z	VSpike	eck	for some reason in the default install, there's a file /etc/default/dspam containing the line "START=no" which seems to prevent it running when you do "/etc/init.d/dspam start"
+2007-04-15T14:54:00.000Z	VSpike	eck	I'm running fetchmail -> postfix -> maildrop for delivery
+2007-04-15T14:55:00.000Z	eck	VSpike	why does fetchmail deliver to postfix?
+2007-04-15T14:55:00.000Z	VSpike	eck	I'm not really sure.  can i get rid of postfix then?
+2007-04-15T14:55:00.000Z	eck	VSpike	yeah, maildrop is an lda
+2007-04-15T14:57:00.000Z	VSpike	eck	Oh. Ok.  Because I don't really want to use my machine for smtp, and it's really only a single user setup. so that would make more sense
+2007-04-15T14:57:00.000Z	eck	VSpike	you would do something like this http://spr.mahonri5.net/linux/dspam/
+2007-04-15T14:57:00.000Z	eck	VSpike	you have maildrop run dspam and then filter based on the header
+2007-04-15T14:59:00.000Z	VSpike	eck	that's what I'm trying to do, and it should still work even with postfix in the middle, I think
+2007-04-15T15:00:00.000Z	VSpike	eck	i think my dspam is broken, or I'm missing something really obvious.  If I pipe a message throught dspam by hand, it doesn't seem to add any headers
+2007-04-15T15:01:00.000Z	VSpike	eck	if I do dspam_stats or dspam_stats <user> I get nothing
+2007-04-15T15:01:00.000Z	eck	VSpike	i think you can make dspam log what it is doing to a log file
+2007-04-15T15:14:00.000Z	VSpike	eck	there's something seriously broken with this.  I think the package is fubared
+2007-04-15T15:30:00.000Z	VSpike	eck	added myself to dspam group and logged out/in which has helped.  Also fixed perms on /var/log/dspam to allow write for dspam group whihc allows debug output to write there... but still not working properly
+2007-04-15T15:30:00.000Z	VSpike	eck	"cat spamtestmessage | dspam --classify" should output something, right?

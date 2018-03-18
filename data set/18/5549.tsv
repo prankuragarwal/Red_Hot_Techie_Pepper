@@ -1,0 +1,18 @@
+2009-02-23T05:26:00.000Z	Royall		How do I stop this error when I try to mount my external? ntfs-3g: Failed to access volume '/dev/sdb1': No such file or directory
+2009-02-23T05:28:00.000Z	prince_jammys	Royall	run 'sudo fdisk -l' to check whether it's the right device
+2009-02-23T05:29:00.000Z	Royall	prince_jammys	what am I looking for
+2009-02-23T05:29:00.000Z	prince_jammys	Royall	the /dev/blah of your ntfs partition
+2009-02-23T05:31:00.000Z	prince_jammys	Royall	how were you trying to mount the partition?
+2009-02-23T05:31:00.000Z	Royall	prince_jammys	sudo mount /media/[re]drive
+2009-02-23T05:32:00.000Z	prince_jammys	Royall	is it listed correctly in /etc/fstab?
+2009-02-23T05:32:00.000Z	Royall	prince_jammys	I think so
+2009-02-23T05:32:00.000Z	prince_jammys	Royall	check, and if it isn't, replace the /dev/foo  with whatever device you saw from the output of fdisk
+2009-02-23T05:34:00.000Z	prince_jammys	Royall	you may also do 'sudo blkid' and use UUID=blahblahablah instead of /dev/..
+2009-02-23T05:35:00.000Z	prince_jammys	Royall	no. change the device in /etc/fstab. it's wrong
+2009-02-23T05:35:00.000Z	prince_jammys	Royall	'sudo fdisk -l' should display the device name for your ntfs partition.  replace /dev/sdb1 with that device name
+2009-02-28T06:57:00.000Z	prince_jammys	Royall	use fuser
+2009-02-28T07:00:00.000Z	prince_jammys	Royall	sudo fuser -vki '/media/[re]drive'
+2009-02-28T07:00:00.000Z	Royall	prince_jammys	Cannot stat /media/[re]drive: Input/output error
+2009-02-28T07:00:00.000Z	prince_jammys	Royall	hm. that's not nice
+2009-02-28T07:03:00.000Z	prince_jammys	Royall	the command i gave does it
+2009-02-28T07:03:00.000Z	prince_jammys	Royall	does exactly that

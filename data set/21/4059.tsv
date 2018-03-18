@@ -1,0 +1,21 @@
+2010-03-08T21:10:00.000Z	purpzey		Can someone help out to umount a folder, I accidentally mounted it from the local machine using NFS, and when I go to umount it I get "device is busy" but if I run fuser I don't get any process
+2010-03-08T21:11:00.000Z	nibbler_	purpzey	use lsof | grep /mountpoint
+2010-03-08T21:12:00.000Z	purpzey	nibbler_	I ran that command, and it didn't unmount the dir, then I tried umount and I still got device is busy, am I missing something?
+2010-03-08T21:13:00.000Z	nibbler_	purpzey	the command i gave you should show you processes accessing the share, these have to be stopped/killed
+2010-03-08T21:13:00.000Z	purpzey	nibbler_	It didn't display anything.
+2010-03-08T21:13:00.000Z	nibbler_	purpzey	you used your mountpoint instead of "mountpoint"?
+2010-03-08T21:14:00.000Z	purpzey	nibbler_	I used sudo mount
+2010-03-08T21:14:00.000Z	nibbler_	purpzey	lets say your mountpoint is /mnt, so use: sudo lsof  |grep /mnt
+2010-03-08T21:14:00.000Z	purpzey	nibbler_	Oh oh, yes...I did lsof | grep /home/mountpoint
+2010-03-08T21:15:00.000Z	nibbler_	purpzey	and maybe prepend sudo, i'm not sure if this is needed :\
+2010-03-08T21:15:00.000Z	purpzey	nibbler_	I didn't do it as sudo let me try that, kk.
+2010-03-08T21:16:00.000Z	nibbler_	purpzey	anyways, you can always try: sudo umount -f /home/mountpoint    -  but try other approaches first.
+2010-03-08T21:17:00.000Z	purpzey	nibbler_	"warning can't stat() fuser.gvfs-fuser-daemon" (or something similar)
+2010-03-08T21:19:00.000Z	nibbler_	purpzey	ok, the gvfs is not related to your problem. no other output? try sudo umount -f
+2010-03-08T21:19:00.000Z	purpzey	nibbler_	sudo umount -f /mount/point ?
+2010-03-08T21:19:00.000Z	nibbler_	purpzey	yep
+2010-03-08T21:20:00.000Z	purpzey	nibbler_	Device or resource busy.
+2010-03-08T21:21:00.000Z	nibbler_	purpzey	sorry, i'm out of ideas then... maybe check dmesg
+2010-03-08T21:26:00.000Z	nibbler_	purpzey	might it be you were in the directory? but then this should have shown up in the lsof...
+2010-03-08T21:26:00.000Z	purpzey	nibbler_	Works now, so, it's all good.
+2010-03-08T21:27:00.000Z	nibbler_	purpzey	good

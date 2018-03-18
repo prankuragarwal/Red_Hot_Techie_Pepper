@@ -1,0 +1,21 @@
+2011-12-17T13:10:00.000Z	weyer		is there a way to make te screen 'flash' from the CLI ? sort of as cheese does when taking a photograph?
+2011-12-17T13:12:00.000Z	penguin359	weyer	you mean like a visual bell?
+2011-12-17T13:12:00.000Z	weyer		yes
+2011-12-17T13:12:00.000Z	penguin359		The simple way is to write Control-G to the screen.
+2011-12-17T13:12:00.000Z	penguin359		try echo ^G
+2011-12-17T13:13:00.000Z	penguin359		in order to get ^G, you must hit Ctrl-V and Ctrl-G on the keyboard
+2011-12-17T13:13:00.000Z	penguin359		don't type a literal ^ followed by a G.
+2011-12-17T13:27:00.000Z	weyer	penguin359	that is not doing anything
+2011-12-17T13:44:00.000Z	weyer		I have the full screen visual bell working, but it dims the screen shortly. is there a command to do the opposite? flash it white? I need that to have a 'flash' on a scriptbased based snapshot taker with webcam
+2011-12-17T13:50:00.000Z	penguin359	weyer	yes, it's possible, but a whole lot more complicated.
+2011-12-17T13:51:00.000Z	weyer		any hints on where to look? if I look for anything 'flash' related I end up on well, flash-related items :-)
+2011-12-17T13:51:00.000Z	penguin359	weyer	you could send an escape sequence to set the background color to white, followed by an escape sequence to clear the screen, then set the color to black and clear the screen again.
+2011-12-17T13:53:00.000Z	penguin359	weyer	http://www.termsys.demon.co.uk/vtansi.htm
+2011-12-17T13:54:00.000Z	penguin359		Under the second for Erasing Text, they have the erase screen code to clear the screen with the background color
+2011-12-17T13:58:00.000Z	weyer	penguin359	thanks!
+2011-12-17T14:00:00.000Z	penguin359	weyer	here's a starter: it sets background color to white, clears the screen, waits one second, resets display color and clears the screen
+2011-12-17T14:00:00.000Z	penguin359		echo -ne '\e[47m\e[2J'; sleep 1; echo -ne '\e[m\e[2J'
+2011-12-17T14:00:00.000Z	penguin359		\e = <ESC>
+2011-12-17T14:01:00.000Z	penguin359		http://bluesock.org/~willg/dev/ansi.html
+2011-12-17T14:01:00.000Z	penguin359		And many more pages on the Internet listing various ANSI Escape and Control Sequences
+2011-12-17T14:09:00.000Z	penguin359	weyer	here's a more complete example that restores the screen on exit.

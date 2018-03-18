@@ -1,0 +1,21 @@
+2007-11-15T08:37:00.000Z	morgan		Any ideas where to start looking why my network card is not working? I am trying to use the internet with a wired connection and no luck?
+2007-11-15T08:37:00.000Z	PokerFacePenguin	morgan	ifconfig
+2007-11-15T08:37:00.000Z	PokerFacePenguin	morgan	will give you your network details
+2007-11-15T08:39:00.000Z	morgan	PokerFacePenguin	it doesnt do the spinning green lights when I plug it in like it should
+2007-11-15T08:39:00.000Z	PokerFacePenguin	morgan	ifconfig gives you all the details of your interfaces, eth0 is probably your onboard nic
+2007-11-15T08:40:00.000Z	PokerFacePenguin	morgan	ifconfig gives status (up down) and inet address (you have successfully dhcp'd one or set it static)
+2007-11-15T08:43:00.000Z	morgan	PokerFacePenguin	I see the eth0  and there are 2 inet lines, inet and inet6
+2007-11-15T08:43:00.000Z	PokerFacePenguin	morgan	does eth0 say up?
+2007-11-15T08:44:00.000Z	morgan	PokerFacePenguin	broadcast running multicast MTU:1500 Metric:1
+2007-11-15T08:45:00.000Z	PokerFacePenguin	morgan	give a summary of your problem please
+2007-11-15T08:47:00.000Z	morgan	PokerFacePenguin	when I plug in the network cable, the network icons do not spin the green lines, when I open the browser it cannot find any web pages
+2007-11-15T08:49:00.000Z	PokerFacePenguin	morgan	a command to get you an ip address for your interface etho is "sudo dhclient eth0" .........try that after you plug in the wire
+2007-11-15T08:50:00.000Z	morgan	PokerFacePenguin	what am I looking for, the i.p.? Then what do I do with it?
+2007-11-15T08:51:00.000Z	PokerFacePenguin	morgan	you are trying to get your isp/router to give you an ip address so that your computer can talk to other computers on the network
+2007-11-15T08:51:00.000Z	PokerFacePenguin	morgan	after the command, try to surf the net with your browser
+2007-11-15T08:54:00.000Z	morgan	PokerFacePenguin	hey it works, the icons dont look like they do on my laptop when I plug it in, but Im not worried about looks, im looking for functionality, is this something that will need to be done with each reboot or each time its on a new network?
+2007-11-15T08:54:00.000Z	morgan	PokerFacePenguin	thank you for your help
+2007-11-15T08:55:00.000Z	PokerFacePenguin	morgan	there are multiple possibilities for why, but you probably have more than one nic installed and your interfaces set up improperly somehow, dhclient will ask the network for an ip for whatever interface you specify
+2007-11-15T08:56:00.000Z	PokerFacePenguin	morgan	another useful command you can try is man ifconfig, it will give you information on that command
+2007-11-15T08:57:00.000Z	PokerFacePenguin	morgan	and man will work for any command
+2007-11-15T09:00:00.000Z	PokerFacePenguin	morgan	you can also type cat /etc/network/interfaces to see how you are set up to load at boot, do a google on this standard file for detailed info

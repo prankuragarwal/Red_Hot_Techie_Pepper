@@ -1,0 +1,18 @@
+2008-05-16T23:54:00.000Z	zipito		can someone help me with ext3 fs
+2008-05-16T23:54:00.000Z	zipito		when I try to mount ext3 partition I see such message in the log
+2008-05-16T23:54:00.000Z	zipito		May 16 21:50:43 10ka kernel: [42955545.060000] ext3: No journal on filesystem on hdb1
+2008-05-16T23:55:00.000Z	zipito		is it fixable ??
+2008-05-16T23:55:00.000Z	tech0007	zipito	hdb may not be ext3
+2008-05-16T23:55:00.000Z	tech0007	zipito	what filesystem is it?
+2008-05-16T23:56:00.000Z	zipito		 tech0007 ext3
+2008-05-16T23:56:00.000Z	zipito		so fsck tells
+2008-05-16T23:57:00.000Z	tech0007	zipito	sudo fdisk -l /dev/hdb
+2008-05-16T23:57:00.000Z	zipito	tech0007	dev/hdb1   *           1        5079    38397208+  83  Linux
+2008-05-16T23:59:00.000Z	zipito	tech0007	tune2fs -j /dev/hdb1 ??
+2008-05-16T23:59:00.000Z	tech0007	zipito	yes
+2008-05-16T23:59:00.000Z	tech0007	zipito	that's what i'm about to suggest
+2008-05-17T00:01:00.000Z	zipito	tech0007	now I can see only lost+found catalog there :(
+2008-05-17T00:01:00.000Z	tech0007	zipito	-j only adds a journal
+2008-05-17T00:02:00.000Z	zipito	tech0007	before I've been recovering FS using fsck
+2008-05-17T00:02:00.000Z	zipito	tech0007	is there automated recovery from the lost+found ??
+2008-05-17T00:03:00.000Z	tech0007	zipito	not sure, but you can check file recovery sw from repo ie e2undel, recover, etc

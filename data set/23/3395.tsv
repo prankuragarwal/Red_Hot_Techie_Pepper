@@ -1,0 +1,23 @@
+2008-05-02T01:40:00.000Z	andre_pl		what is ubuntu's version of inittab?
+2008-05-02T01:40:00.000Z	andre_pl		where dO I set the default runlevel/login manager stuff
+2008-05-02T01:42:00.000Z	fde	andre_pl	http://upstart.ubuntu.com/
+2008-05-02T01:43:00.000Z	fde	andre_pl	Upstart replaces SysVInit for which inittab is a part of... read about it there.
+2008-05-02T01:45:00.000Z	andre_pl	fde	thanks, I'm trying to get auto-login without GDM/KDM etc. and all of the solutions I see use /etc/inittab
+2008-11-20T20:12:00.000Z	fde	andre_pl	try #kernel ... this isn't really the place for that
+2008-11-20T20:13:00.000Z	andre_pl	fde	but I'm building the kernel using all of the standard ubuntu tools for the job, this sin't a compilation issue, its a packaging and installation issue
+2008-11-20T20:16:00.000Z	fde	andre_pl	where is it getting the version number from? it wants it there twice for some reason....
+2008-11-20T20:18:00.000Z	andre_pl	fde	I have no idea, i checked out the kernel source from git and followed https://wiki.ubuntu.com/KernelTeam/GitKernelBuild to build it. it worked the first time, but not since then
+2008-11-20T20:19:00.000Z	fde	andre_pl	hmm, then file a bug about it on bugs.launchpad.net under kernel-package .... that isn't normal
+2008-11-20T20:21:00.000Z	andre_pl	fde	I tried asking in #kernel and apparently it doesn't look like anything kernel related, its a debian/ubuntu packaging thing they say
+2008-11-20T20:21:00.000Z	fde	andre_pl	yeah, its a kernel-package bug
+2008-11-20T20:22:00.000Z	fde	andre_pl	kernel-package is a debian tool to compile .deb's from kernel source
+2008-11-20T20:22:00.000Z	andre_pl	fde	ok thanks, I'm going to keep working away at it, I'm pretty deseratate to get his working today
+2008-11-20T20:22:00.000Z	fde	andre_pl	if its just for that box though, and you don't want to wait, you can try a regular compilation of the kernel.... but make sure you file a bug on kernel-package
+2008-11-20T20:23:00.000Z	andre_pl	fde	I dont know how to do a "regular compilation" what I dont get is that this exact process worked with the same kenel source the first time I ran it.
+2008-11-20T20:24:00.000Z	fde	andre_pl	kernel-package is only really useful if you plan to move the resulting .deb to another machine or something, the normal process is much less error prone ime
+2008-11-20T20:24:00.000Z	fde	andre_pl	probably kernel-package was upgraded recently, idk
+2008-11-20T20:24:00.000Z	andre_pl	fde	where can I find the normal process?
+2008-11-20T20:25:00.000Z	fde	andre_pl	google knows...
+2008-11-20T20:26:00.000Z	fde	andre_pl	its basically just 'make menuconfig && make && make modules_install && make bzImage' though...
+2008-11-20T20:27:00.000Z	fde	andre_pl	there is more to read though if you want a decent kernel... you can use the old .config from Ubuntu's kernel too though like what your guide stated
+2008-11-20T20:28:00.000Z	andre_pl	fde	thanks. I'm going to give it a shot

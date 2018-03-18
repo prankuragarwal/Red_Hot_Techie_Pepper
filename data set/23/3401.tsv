@@ -1,0 +1,23 @@
+2008-07-19T01:20:00.000Z	Wicky656		could anyone give me the ssh command to copy the contents of a file form one server to the other with root access required on both servers?
+2008-07-19T01:20:00.000Z	dpod	Wicky656	you need some set up first...
+2008-07-19T01:22:00.000Z	Wicky656	dpod	but i need to sudo on both sides to read the file
+2008-07-19T01:35:00.000Z	Wicky656	dpod	I want to do something like cat file| ssh user@server sudo cat |echo .. other file
+2008-07-19T01:26:00.000Z	Wicky656	dpod	 thanks that what I have been doing. Seems like a bug or something. not having a root account should have a work around to this issue or at least a tool to get arround it
+2008-07-19T01:30:00.000Z	dpod	Wicky656	I'm not sure how it could be a bug. It's really a binary choice: either an account can remote log in or it can't. If you want to scp to an account, then you have to be able to log in. Otherwise it would be a huge security flaw: people could put things on your computer as root without demonstrating that they know the password. Remote root login is a greater security flaw than no remote root login, but it is less a security flaw than allowing people to pu
+2008-07-19T01:31:00.000Z	dpod	Wicky656	BTW did you mean "can I do this without having to enter the password each time?" Then there is a different answer: you can use ssh-keygen to allow automatic remote log in. You still need to set a root password, and you are still using it. But the public/private key pair mean that you don't have to actually type the password.
+2008-07-19T01:31:00.000Z	Wicky656	dpod	 you dont understand. there should be a way to use sudo to change into priveledge on both sides
+2008-07-19T01:32:00.000Z	Wicky656	dpod	 basically i have a fileon one server that is readonly to root and i need it to be identicalon two servers both in content and permisions
+2008-07-19T01:32:00.000Z	Wicky656	dpod	 and I have to do it from a command line
+2008-07-19T01:33:00.000Z	Wicky656	dpod	 there "should" be a way to do that without having to enable remote logins for root
+2008-07-19T01:33:00.000Z	Wicky656	dpod	if I wanted to batch it i would set up key pairs for root
+2008-07-19T01:34:00.000Z	dpod	Wicky656	we're assuming command line. And it seems to me that allowing people to put stuff on your drive without a password is the same as not having a password.
+2008-07-19T01:34:00.000Z	Wicky656	dpod	 no you still dont understand
+2008-07-19T01:34:00.000Z	Wicky656	dpod	I don't mind typpeing a password
+2008-07-19T01:35:00.000Z	dpod	Wicky656	you know what you might be able to do: set up a root user not called root but with the same permissions and group? I'm brainstorming here.
+2008-07-19T01:36:00.000Z	Wicky656	dpod	 no I want to use sudo just via ssh on a single line
+2008-07-19T01:39:00.000Z	dpod	Wicky656	you might be beyond me. Are you thinking of using ssh as a kind of inter-machine pipe?
+2008-07-19T01:39:00.000Z	Wicky656	dpod	exactly
+2008-07-19T01:40:00.000Z	Wicky656	dpod	you can cat the contents into ssh and create or replace fiels on the other side. what you can't seem to do is use sudo with that
+2008-07-19T01:40:00.000Z	Wicky656	dpod	at leat on the remote sie
+2008-07-19T01:41:00.000Z	dpod	Wicky656	I think you're above my skills, then. Rsynch might work for you if you run that as root, but I think I really am just not following what you're up to. Sorry!
+2008-07-19T01:42:00.000Z	Wicky656	dpod	I am documenting how to build a mysql cluster :) the file is the debian.cnf in this particualr case

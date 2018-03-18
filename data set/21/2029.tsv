@@ -1,0 +1,21 @@
+2010-02-11T14:52:00.000Z	usernet		why burning cd in jaunty failed
+2010-02-11T14:53:00.000Z	darolu	usernet	can you be more specific?
+2010-02-11T14:54:00.000Z	darolu	usernet	do you remember what the error message said?
+2010-02-11T14:54:00.000Z	usernet	darolu	no
+2010-02-11T14:55:00.000Z	darolu	usernet	OK, try burning a CD using the command line, if it fails it will return a very specific error message that can help fix the problem; this link explains how to do it: http://sharkysoft.com/tutorials/linuxtips/cdcommands/
+2010-02-11T14:56:00.000Z	usernet	darolu	ok, i will try
+2010-02-11T14:58:00.000Z	usernet	darolu	how about copy data to cd
+2010-02-11T14:58:00.000Z	darolu	usernet	follow the steps of "writing an ISO to CD" just change the .iso file for the list of files you want to burn; make sure you write full paths if they are in different directories.
+2010-02-11T15:01:00.000Z	usernet	darolu	how to know device cd rom
+2010-02-11T15:02:00.000Z	darolu	usernet	you can use: cdrecord -v yourfiles only; you shouldn't have a problem if you have one drive only
+2010-02-11T15:03:00.000Z	usernet	darolu	ok thanks
+2010-02-11T15:33:00.000Z	usernet	darolu	my error cd record http://rinovan.pastebin.com/f119c1164
+2010-02-11T15:35:00.000Z	darolu	usernet	I'm reading it
+2010-02-11T15:39:00.000Z	darolu	usernet	try this first: cdrecord --scanbus it will tell you your dev info. Then do: cdrecord -v speed=4 dev=0,0,0* -data yourfile.; use the info you got with scanbus instead of 0,0,0
+2010-02-11T15:40:00.000Z	usernet	darolu	this k3b error http://rinovan.pastebin.com/f6f5257f9
+2010-02-11T15:47:00.000Z	darolu	usernet	cdrecord, and all the other programs don't have access to your cd writter, the error says programs have no access; you can try running cdrecord or brasero/etc with sudo and see if that helps.
+2010-02-11T15:48:00.000Z	usernet	darolu	maybe set permission in etc/group
+2010-02-11T15:49:00.000Z	darolu	usernet	yes you can try that too; I'd try running cd writer programs as root first (well with sudo) though; it is very weird
+2010-02-11T15:52:00.000Z	usernet	darolu	with user root, failed too
+2010-02-11T15:53:00.000Z	darolu	usernet	I'm out of ideas (it's very late too though), maybe if you post it on the forum you'll have better luck
+2010-02-11T15:53:00.000Z	usernet	darolu	ok thx

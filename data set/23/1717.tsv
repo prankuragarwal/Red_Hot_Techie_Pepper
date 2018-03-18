@@ -1,0 +1,23 @@
+2009-11-16T23:16:00.000Z	Th-c		what is the syntax to scp a folder ?
+2009-11-16T23:17:00.000Z	llutz	Th-c	scp -r folder host@dest
+2009-11-16T23:19:00.000Z	Th-c	llutz	what if I have a port ?
+2009-11-16T23:20:00.000Z	llutz	Th-c	man scp (-P port)
+2009-11-16T23:21:00.000Z	Th-c	llutz	 scp -p 30000 -r folder host@ip:/destination/folder  ?
+2009-11-16T23:21:00.000Z	llutz	Th-c	man scp (-P port)
+2009-11-16T23:23:00.000Z	llutz	Th-c	scp -P xx -r folder user@host:/dest  (sry, typo)
+2009-11-16T23:23:00.000Z	Th-c	llutz	 yes I got it ... but I get permission denied
+2009-11-16T23:25:00.000Z	Th-c	llutz	I get this error "scp: /home/public_html/folder: Permission denied"
+2009-11-16T23:26:00.000Z	llutz	Th-c	check permissions, if you don't have access, you cannot scp it
+2009-11-16T23:26:00.000Z	Th-c	llutz	I can ssh to it ... I am actually loged in right now.
+2009-11-16T23:28:00.000Z	llutz	Th-c	"ls -dl /home/public_html/folder " shows you permissions
+2009-11-16T23:29:00.000Z	llutz	Th-c	why define it as target then?
+2009-11-16T23:29:00.000Z	llutz	Th-c	target seems to be /home/public_html/
+2009-11-16T23:31:00.000Z	Th-c	llutz	yes that's the taget
+2009-11-16T23:31:00.000Z	llutz	Th-c	"ls -dl /home/public_html"
+2009-11-16T23:35:00.000Z	Th-c	llutz	 it returns this "drwxr-xr-x 3 root root 4096 Nov 16 18:30 /home/public_html"
+2009-11-16T23:36:00.000Z	llutz	Th-c	so scp as root
+2009-11-16T23:37:00.000Z	llutz	Th-c	maybe read a few basics about permissions/ownership etc. on *nix systems
+2009-11-16T23:44:00.000Z	Th-c	llutz	it asked me my local and remote password
+2009-11-17T00:18:00.000Z	llutz	Th-c	as i already told you: since that destination-directory is owned by root, you have to scp as root or copy it elsewhere and copy local later
+2009-11-17T00:19:00.000Z	llutz	Th-c	scp as root fails on *buntu, because of the deactivated root-account
+2009-11-17T00:23:00.000Z	llutz	Th-c	i highly recommend to read a few basics about permissions/ownership etc. on *nix systems

@@ -1,0 +1,24 @@
+2010-06-11T20:36:00.000Z	aswin		is there a way to format pendrives in linux..currently its not formatted and i want to format i=to NTFS but it aint showing up in ubuntu
+2010-06-11T20:36:00.000Z	Dr_Willis	aswin	 partition it to make a ntfs partition, then use mkfs.ntfs  - or use gparted
+2010-06-11T20:37:00.000Z	Dr_Willis	aswin	 check that its seen with 'sudo fdisk -l'  If fdisk dosent even see it. well theres some deeper issues going on
+2010-06-11T20:37:00.000Z	Dr_Willis	aswin	 just because gnome dosent automount it - does not mean its not 'seen'
+2010-06-11T20:38:00.000Z	Dr_Willis	aswin	 check it via the terminal. Gnomes auto mount stuff can be flakey at times
+2010-06-11T20:38:00.000Z	Dr_Willis	aswin	 check that its seen with 'sudo fdisk -l'
+2010-06-11T20:40:00.000Z	Dr_Willis	aswin	 fdisk shows disks. reguardless of if they are formated or not
+2010-06-11T20:41:00.000Z	Dr_Willis	aswin	 if fdisk is not showing it. then theres some bigger problems. check the output of 'dmesg'  as you insert the device.
+2010-06-11T20:41:00.000Z	Dr_Willis	aswin	 it could be dead.. or some other odd issue.
+2010-06-11T20:41:00.000Z	Dr_Willis	aswin	 plug it in.. run 'dmesg' wait a few sec.. run 'dmesg' again.. watch what it says.. or use 'tail -f /var/log/messages' to watch for kernel messages as you insert it
+2010-06-11T20:47:00.000Z	aswin	Dr_Willis	this was  wat i got
+2010-06-11T20:47:00.000Z	Dr_Willis	aswin	 you should get more messages thjen that.  Eventually it will mention a /dev/sdXX  name for the pendrive
+2010-06-11T20:47:00.000Z	Dr_Willis	aswin	 untill you determine that /dev/sd## name - you are not going to be doing much with it
+2010-06-11T20:48:00.000Z	Dr_Willis	aswin	 and if 'sudo fdisk -l' is not showing the device at all. Its possible the flash drive is bad/going bad. or you could try a different usb port
+2010-06-11T20:49:00.000Z	Dr_Willis	aswin	 Untill you get that.. you are not going to be doing much with it.
+2010-06-11T20:50:00.000Z	Dr_Willis	aswin	 some line similer to --> [187643.581913] sd 22:0:0:0: [sdh] 7567360 512-byte logical blocks: (3.87 GB/3.60 GiB) --- SDH is the drive name in this example
+2010-06-11T20:51:00.000Z	Dr_Willis	aswin	 its sdb then...
+2010-06-11T20:52:00.000Z	Dr_Willis	aswin	  sudo mkfs.ntfs /dev/sdb1         IF YOU ARE SURE thats the proper drive...
+2010-06-11T20:53:00.000Z	Dr_Willis	aswin	 if you are guessing wrong.. that will format the disk.
+2010-06-11T20:53:00.000Z	Dr_Willis	aswin	 its your stuff.. IS it right?
+2010-06-11T20:53:00.000Z	Dr_Willis	aswin	 if thers no partitions. You will need to partition the disk first
+2010-06-13T12:25:00.000Z	aswin	Dr_Willis	to rescue again
+2010-06-13T12:26:00.000Z	Dr_Willis	aswin	 look in the direectory its accessing and see what files are there
+2010-06-13T12:26:00.000Z	Dr_Willis	aswin	 or comment out/remove that entry from the conky config

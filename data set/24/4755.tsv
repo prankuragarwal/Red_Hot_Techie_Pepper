@@ -1,0 +1,24 @@
+2008-07-06T08:37:00.000Z	tehquickness		Has anyone had anyproblems mounting USB harddrives in UBuntu??
+2008-07-06T08:38:00.000Z	tehquickness		My harddrive is now automounting when I plug it into my laptop. Anyone know how to fix this problem?
+2008-07-06T08:38:00.000Z	tehquickness		*not
+2008-07-06T08:40:00.000Z	unop	tehquickness	use fdisk -l to find out
+2008-07-06T09:12:00.000Z	unop	tehquickness	probably -- can you mount it at the command line?
+2008-07-06T09:17:00.000Z	unop	tehquickness	what does this give you?  pmount-hal /dev/sdb1
+2008-07-06T09:19:00.000Z	tehquickness	unop	the pmount gives me the following http://paste.ubuntu.com/25355/
+2008-07-06T09:20:00.000Z	unop	tehquickness	pmount does not require sudo .. but anyway.  pmount-hal /dev/sdb
+2008-07-06T09:21:00.000Z	tehquickness	unop	Well in the case pmount-hal /dev/sdb returns, Error: could not execute pmount
+2008-07-06T09:22:00.000Z	unop	tehquickness	hrm, that's it?
+2008-07-06T09:22:00.000Z	unop	tehquickness	can you !pastebin the output of fdisk -l
+2008-07-06T09:24:00.000Z	unop	tehquickness	fdisk -l /dev/sdb
+2008-07-06T09:24:00.000Z	tehquickness	unop	Here is fdisk -l http://paste.ubuntu.com/25357/
+2008-07-06T09:26:00.000Z	unop	tehquickness	the thing looks hosed - invalid partition table
+2008-07-06T09:26:00.000Z	unop	tehquickness	unless there is some output that is missing here
+2008-07-06T09:31:00.000Z	unop	tehquickness	try using gpart to guess the tables
+2008-07-06T09:31:00.000Z	unop	tehquickness	you probably need to install it first .. sudo aptitude install gpart
+2008-07-06T09:32:00.000Z	tehquickness	unop	done
+2008-07-06T09:35:00.000Z	tehquickness	unop	what do i need to do after I install it?
+2008-07-06T09:35:00.000Z	unop	tehquickness	 errm, not quite sure, never had to use gpart -- but i would start by reading the manpage   man gpart
+2008-07-06T09:36:00.000Z	unop	tehquickness	out of curiosity -- how many partitions did you have on the drive?
+2008-07-06T09:36:00.000Z	tehquickness	unop	Just one
+2008-07-06T09:37:00.000Z	unop	tehquickness	gimme 2 minutes - let's see what i can come up with
+2008-07-06T09:40:00.000Z	unop	tehquickness	  sudo gpart -vvd /dev/sdb

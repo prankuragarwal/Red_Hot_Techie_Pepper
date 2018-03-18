@@ -1,0 +1,19 @@
+2012-03-20T23:25:00.000Z	JesseC		I did a fresh install of Ubuntu 10.04, but my network card doesn't seem to be recognized. lspci returns the broadcom interface, but dmesg doesn't show anything related to the card at boot.
+2012-03-20T23:27:00.000Z	JesseC		I have also ran all updates and upgraded to the latest kernel using apt-offline, because I figured the driver would be in the release, but that didn't help either.
+2012-03-20T23:27:00.000Z	mcb_	JesseC	Install aditional driver. Go system -> Adminitration -> Aditional drivers. See if you have anything to install.
+2012-03-20T23:27:00.000Z	JesseC	mcb_	it's ubuntu server
+2012-03-20T23:27:00.000Z	JesseC		headless
+2012-03-20T23:28:00.000Z	mcb_	JesseC	: $apt-get install b43-fwcutter
+2012-03-20T23:28:00.000Z	JesseC		can't connect to the internet..
+2012-03-20T23:28:00.000Z	JesseC		but I'll download the deb, sec.
+2012-03-20T23:29:00.000Z	JesseC	mcb_	that also isn't the chipset of the driver I need, does that matter?
+2012-03-20T23:29:00.000Z	mcb_	JesseC	In another machine thar connects. $apt-get install -d b43-fwcutter. copy the .deb and $dpkg -i package in the server.
+2012-03-20T23:30:00.000Z	mcb_	JesseC	That is the only driver i used with broadcom. I dont know for sure.
+2012-03-20T23:30:00.000Z	JesseC	mcb_	This one is, BCM57781
+2012-03-20T23:31:00.000Z	JesseC	mcb_	doesn't seem to be covered under the BCM43xx list.
+2012-03-20T23:32:00.000Z	mcb_	JesseC	You can always $apt-cache search broadcom and try to find something more specific for you.
+2012-03-20T23:33:00.000Z	JesseC		It's not wireless
+2012-03-20T23:33:00.000Z	JesseC		sorry]
+2012-03-20T23:33:00.000Z	JesseC		This is just a gigabit onboard wired ethernet.
+2012-03-20T23:35:00.000Z	mcb_	JesseC	There the package "bcm5700-source".
+2012-03-20T23:36:00.000Z	JesseC	mcb_	Yes, reading up on it, but I've attempted to compile the driver by hand without success.

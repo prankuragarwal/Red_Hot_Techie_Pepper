@@ -1,0 +1,19 @@
+2011-02-21T22:56:00.000Z	ohsix	Godslastering	do you have dnsmasq installed?
+2011-02-21T22:58:00.000Z	Godslastering	ohsix	no, i don't.
+2011-02-21T22:59:00.000Z	ohsix	Godslastering	can you post the output of ifconfig to a pastebin
+2011-02-21T22:59:00.000Z	Godslastering	ohsix	http://pastebin.com/3rS6ysM3
+2011-02-21T23:04:00.000Z	ohsix	Godslastering	does ping6 mango.itojun.org return unknown host
+2011-02-21T23:04:00.000Z	Godslastering	ohsix	connect: Network is unreachable
+2011-02-21T23:04:00.000Z	ohsix	Godslastering	it probably has something to do with it; sec
+2011-02-21T23:07:00.000Z	ohsix	Godslastering	theres no simple way to disable ipv6 in chrome to check, but firefox has network.dns.disableIPv6, you can try it with it on and off and see if it goes away
+2011-02-21T23:08:00.000Z	Godslastering	ohsix	i have that disabled and am still getting the issue
+2011-02-21T23:09:00.000Z	ohsix	Godslastering	https://help.ubuntu.com/community/WebBrowsingSlowIPv6IPv4
+2011-02-21T23:11:00.000Z	ohsix	Godslastering	if your router is sending RA's but doesn't have a route to ipv6 it should be fixed/disabled there if you can
+2011-02-21T23:11:00.000Z	Godslastering	ohsix	i just looked through my router and didn't see anything related to ipv6 at all
+2011-02-21T23:11:00.000Z	ohsix	Godslastering	for shame
+2011-02-21T23:12:00.000Z	ohsix	Godslastering	RA's might not even be coming from your router; you can listen for them with tcpdump, it won't solve your problem but you might be able to fix the thing after you force it off in ubuntu
+2011-02-21T23:14:00.000Z	Godslastering	ohsix	i'm going to attempt a reboot and i'll tell you if it helps
+2011-02-21T23:22:00.000Z	ohsix	Godslastering	yay
+2011-02-21T23:22:00.000Z	ohsix	Godslastering	the red flag was the ipv6 address on the interface
+2011-02-21T23:23:00.000Z	Godslastering	ohsix	pesky little problem though, because i'm not sure where the issue is arising from. is my router actually creating the issue?
+2011-02-21T23:24:00.000Z	ohsix	Godslastering	could be, like i said you can use tcpdump to listen for RA's and see where they're coming from, the problem is paying attention to them when theres no ipv6 route through the router advertising routes

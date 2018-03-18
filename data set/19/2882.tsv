@@ -1,0 +1,19 @@
+2010-11-23T11:15:00.000Z	al_nz1		how do I remove blank lines in a text file with either awk or sed? I tried a few examples I found with google but none worked
+2010-11-23T11:16:00.000Z	ectospasm	al_nz1	sed -s "/^$//"
+2010-11-23T11:18:00.000Z	al_nz1	ectospasm	it didnt like that
+2010-11-23T11:18:00.000Z	ectospasm	al_nz1	please state what happened
+2010-11-23T11:18:00.000Z	al_nz1	ectospasm	sed '/^$//' /media/disk/kiwi_words1.txt > kiwi_words2.txt
+2010-11-23T11:18:00.000Z	ectospasm	al_nz1	sed -s
+2010-11-23T11:22:00.000Z	ectospasm	al_nz1	hmm, my regex works with grep, not sed
+2010-11-23T11:23:00.000Z	al_nz1	ectospasm	sed '/^$/d' /media/disk/kiwi_words1.txt > kiwi_words2.txt doesnt generate an error but doesnt remove the spaces either
+2010-11-23T11:23:00.000Z	ectospasm	al_nz1	you need a substition
+2010-11-23T11:23:00.000Z	ectospasm	al_nz1	er, substitution
+2010-11-23T11:24:00.000Z	ectospasm	al_nz1	egrep -v "^$" will remove blank lines
+2010-11-23T11:24:00.000Z	al_nz1	ectospasm	how do you point that to a file?
+2010-11-23T11:26:00.000Z	ectospasm	al_nz1	egrep -v "^$" > file.txt
+2010-11-23T11:27:00.000Z	al_nz1	ectospasm	i am begining to wonder if there are some special charatcers on those lines because they are not getting deleted
+2010-11-23T11:27:00.000Z	al_nz1	ectospasm	how would i check?
+2010-11-23T11:27:00.000Z	ectospasm	al_nz1	look at the file in a hex editor
+2010-11-23T11:28:00.000Z	ectospasm	al_nz1	or try this:  egrep -v "^[[:space:]]*$" file1.txt > file2.txt
+2010-11-23T11:29:00.000Z	al_nz1	ectospasm	there is no spaces on the blank lines
+2010-11-23T11:30:00.000Z	ectospasm	al_nz1	then use a hex editor to see if there are nonprinting control characters on those lines

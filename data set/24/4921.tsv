@@ -1,0 +1,24 @@
+2006-12-18T15:44:00.000Z	Clarrisa_2008		how do I find out who are members of a specific group in bash in ubuntu?
+2006-12-18T15:45:00.000Z	fangorious	Clarrisa_2008	assuming local passwd files, grep <group> /etc/group
+2006-12-18T15:49:00.000Z	fangorious	Clarrisa_2008	whatever apache runs as. seems odd that the package didn't set that up for you. did you install it using apt-get from the ubuntu repos?
+2006-12-18T15:50:00.000Z	Clarrisa_2008	fangorious	for some reason a while back I created a user called apachegroup, I think intending for that group to help facilitate apache's needs... but I don't know how apache is supposed to be "aware" of that group, is apache supposed to be a member of that group?
+2006-12-18T15:50:00.000Z	Clarrisa_2008	fangorious	I am pretty sure I used apt-get, but since this is my first server I've been futzing with it quite a bit as I'm learning so who knows what else I did
+2006-12-18T15:50:00.000Z	fangorious	Clarrisa_2008	the uid that the httpd process runs as would need to be a member of that group in order to read/write files owned by that group and without world read/write permission
+2006-12-18T15:51:00.000Z	Clarrisa_2008	fangorious	how can I find the UID of the httpd process?
+2006-12-18T15:52:00.000Z	fangorious	Clarrisa_2008	the httpd.conf file (probably under somewhere under /etc) should say what user and group httpd runs as
+2006-12-18T15:52:00.000Z	Clarrisa_2008	fangorious	ok, checking...
+2006-12-18T15:55:00.000Z	Clarrisa_2008	fangorious	my httpd.conf file is located under /etc/apache2 and it's empty, except for a statement that says it's a placeholder... I'm using apache2
+2006-12-18T15:58:00.000Z	fangorious	Clarrisa_2008	weird. if you start apache you could run 'ps aux | grep httpd' and the first column should be the username
+2006-12-18T15:58:00.000Z	Clarrisa_2008	fangorious	I have a folder called sites-available that has config files in it for each of my websites I've set up...   in each of these is that where I will find the owner reference..?
+2006-12-18T15:59:00.000Z	Clarrisa_2008	fangorious	when I tryped ps aux | grep httpd  It lists root as the first column.... that isn't good is it?
+2006-12-18T16:00:00.000Z	fangorious	Clarrisa_2008	presumably those would each be for a domain hosted by a single instance of the server, and there would be one master conf file that defines a bunch of globals and includes the domain-specific ones
+2006-12-18T16:00:00.000Z	fangorious	Clarrisa_2008	usually not suggested to run as root
+2006-12-18T16:00:00.000Z	Clarrisa_2008	fangorious	I am pretty sure someone instructed me to create this apachegroup for this purpose... I didn't do it right I don't think
+2006-12-18T16:00:00.000Z	Clarrisa_2008	fangorious	can I change it to the apachegroup?
+2006-12-18T16:01:00.000Z	fangorious	Clarrisa_2008	unfortunately i haven't maintained an apache install in a while, so i'm running on memory
+2006-12-18T16:01:00.000Z	fangorious	Clarrisa_2008	well each process has both a UID (user) and GID (group). You would need the user to be a member of the desired group, but could then have the process run with that GID
+2006-12-18T16:01:00.000Z	fangorious	Clarrisa_2008	that would be set in the top-level conf file
+2006-12-18T16:02:00.000Z	Clarrisa_2008	fangorious	I have a file in sites-available called default, but I don't see a directive for user or group in it.
+2006-12-18T16:04:00.000Z	Clarrisa_2008	fangorious	I am a member of the group apachegroup, if I could just figure out how to change the httpd process GID to apachegroup
+2006-12-18T16:05:00.000Z	fangorious	Clarrisa_2008	try 'locate httpd.conf'
+2006-12-18T16:07:00.000Z	fangorious	Clarrisa_2008	hm, i guess I haven't administered an apache2 instance then

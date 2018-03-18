@@ -1,0 +1,23 @@
+2010-04-05T03:48:00.000Z	jsec		Can somebody help me figure out where unistd.h went? http://pastebin.com/XRi2E3BZ
+2010-04-05T03:50:00.000Z	soreau	jsec	Is libc6-dev installed?
+2010-04-05T03:51:00.000Z	jsec	soreau	yes. latest version. build-essential installed as well.
+2010-04-05T03:52:00.000Z	soreau	jsec	Does /usr/include/unistd.h exist?
+2010-04-05T03:52:00.000Z	jsec	soreau	yes
+2010-04-05T03:53:00.000Z	soreau	jsec	I guess you need to tweak your module makefile then. What is it you're trying to do exactly?
+2010-04-05T03:54:00.000Z	jsec		I'm building a LKM, and I'm trying to get the module to printk the PID of the process loading it. Here, let me pastebin the makefile real quick...
+2010-04-05T03:55:00.000Z	jsec	soreau	http://pastebin.com/yb1Ue3ki
+2010-04-05T03:56:00.000Z	soreau	jsec	If all you have is a makefile and course file, please pastebin the source and I'll see if I can get it working here
+2010-04-05T03:56:00.000Z	soreau		source*
+2010-04-05T03:58:00.000Z	jsec	soreau	it's a very rudimentary module. http://pastebin.com/uJere8rd
+2010-04-05T04:02:00.000Z	soreau	jsec	Ok, let me tinker with it a bit and see if I can get it building
+2010-04-05T04:02:00.000Z	jsec	soreau	thank you.
+2010-04-05T04:03:00.000Z	jsec	soreau	by changing it to linux/unistd.h it did manage to build. Now I've got a warning about an implicit declaration of getpid, but I think that's more a C problem than an Ubuntu problem :)
+2010-04-05T04:04:00.000Z	soreau	jsec	Yea, I was just about to say I don't think you can include out-of-tree headers from a kernel module
+2010-04-05T04:06:00.000Z	soreau	jsec	You might want to ask in ##kernel because I'm not sure how you could get the pid of the calling process..
+2010-04-05T04:07:00.000Z	jsec	soreau	I tried. No answer yet. :(
+2010-04-05T04:15:00.000Z	jsec	soreau	thank you for all your assistance btw.
+2010-04-05T04:16:00.000Z	soreau	jsec	Did you figure it out?
+2010-04-05T04:20:00.000Z	jsec	soreau	not yet. I can get the module to compile and load if I remove the PID errata and just have it post a generic message with printk, but I'll figure it out. My brain's fried. I need a nap.
+2010-04-05T04:21:00.000Z	soreau	jsec	you're trying to get the pid of the process that's loaded the module?
+2010-04-05T04:21:00.000Z	jsec	soreau	yes
+2010-04-05T04:22:00.000Z	soreau	jsec	ok

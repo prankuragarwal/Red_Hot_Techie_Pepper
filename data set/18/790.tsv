@@ -1,0 +1,18 @@
+2011-09-07T15:42:00.000Z	pete-joh		how do you know if a process is detached from a terminal?
+2011-09-07T15:43:00.000Z	pete-joh		is there a command you can enter to find that out?
+2011-09-07T15:45:00.000Z	jrib	pete-joh	"jobs" will list the process your terminal is handling
+2011-09-07T16:00:00.000Z	pete-joh	jrib	hm, my daemon does not show up under jobs, does it gurantee that it runs as a detached process?
+2011-09-07T16:01:00.000Z	pete-joh	jrib	i can see the process with ps aux
+2011-09-07T16:01:00.000Z	jrib	pete-joh	yes
+2011-09-07T16:01:00.000Z	pete-joh	jrib	epic
+2011-09-07T16:01:00.000Z	pete-joh	jrib	the TTY column says its running as ?
+2011-09-07T16:01:00.000Z	pete-joh	jrib	instead of ttyX/ptsX
+2011-09-07T16:02:00.000Z	pete-joh	jrib	any ideas why i cannot stop the daemon  with start-stop-daemon commadn?
+2011-09-07T16:02:00.000Z	jrib	pete-joh	I am not familiar with start-stop-daemon
+2011-09-07T16:02:00.000Z	jrib	pete-joh	I would start by investigating how start-stop-daemon tries to stop the process... and seeing how the process responds to different signals
+2011-09-07T16:02:00.000Z	pete-joh	jrib	its the function that /etc/init.d/scripts call when they start and stop daemons
+2011-09-07T16:03:00.000Z	pete-joh	jrib	yea, i can stop the daemon by sending kill TERM, the daemon listens to that kill signal
+2011-09-07T16:03:00.000Z	pete-joh	jrib	but i have no idea about the internal functions in start-stop-daemon
+2011-09-07T16:04:00.000Z	jrib	pete-joh	I would read start-stop-daemon documentation and source code at this point
+2011-09-07T16:04:00.000Z	pete-joh	jrib	also, i cannot use 'pgrep <tab> to list the daemon'
+2011-09-07T16:04:00.000Z	pete-joh	jrib	i fear that the daemon isnt completely daemonized

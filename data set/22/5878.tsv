@@ -1,0 +1,22 @@
+2009-06-30T08:46:00.000Z	earthmeLon		1.51 is Server WiFi
+2009-06-30T08:47:00.000Z	earthmeLon		REBOOT!!!!
+2009-06-30T08:48:00.000Z	earthmeLon		After I re-connected the wifi, raylu, I wasn't able to reach the laptop over ssh remotely over EITHER adapters
+2009-06-30T08:48:00.000Z	earthmeLon		I have two connections.  WiFi 10.1.1.51  Switch 10.1.2.75. raylu
+2009-06-30T08:49:00.000Z	earthmeLon		I *can* but I kinda wanted it on it's own subnet
+2009-06-30T08:50:00.000Z	earthmeLon		Switches IP is 10.1.2.1
+2009-06-30T08:51:00.000Z	earthmeLon		I've always had problems when I plug in ethernet for the first time. raylu
+2009-06-30T08:52:00.000Z	Dulak	earthmeLon	motd is overwritten on every boot
+2009-06-30T08:53:00.000Z	Dulak	earthmeLon	have a look in /etc/init.d/bootlogs.sh
+2009-06-30T08:55:00.000Z	Dulak	earthmeLon	whatever floats your boat, you can change /etc/init.d/bootlogs.sh if you like
+2009-06-30T13:50:00.000Z	Dulak	earthmeLon	did you configure eth0 with network manager?
+2009-06-30T13:53:00.000Z	Dulak	earthmeLon	add a line right above that "auto eth0"
+2009-06-30T13:54:00.000Z	earthmeLon	Dulak	Thank you.  I can now ping my laptop but I still cannot connect to sshd < raylu
+2009-06-30T13:55:00.000Z	Dulak	earthmeLon	ok, is sshd running?
+2009-06-30T13:55:00.000Z	Dulak	earthmeLon	ps aux | grep sshd
+2009-06-30T13:55:00.000Z	earthmeLon	Dulak	I can connect to my server over wlan0, but not eth0.  I have 0.0.0.0 AND both ip addresses in sshd_config
+2009-06-30T13:56:00.000Z	Dulak	earthmeLon	ok but we need to troubleshoot it from the beginning, so make sure sshd is actually running: "ps aux | grep sshd" should show some output
+2009-06-30T13:58:00.000Z	Dulak	earthmeLon	Ok, on that machine, can you ssh to localhost ok?
+2009-06-30T13:59:00.000Z	Dulak	earthmeLon	"ssh localhost" should prompt you for your password and let you login
+2009-06-30T13:59:00.000Z	earthmeLon	Dulak	Yes, I can.  I can also connect over wlan0.  I cannot connect over eth0
+2009-06-30T14:00:00.000Z	Dulak	earthmeLon	that's just weird then, if ping works, ssh should too.  You using any type of firewall on that machine?
+2009-06-30T14:04:00.000Z	Dulak	earthmeLon	doh, I should have thought of that, eth0 wasn't there to bind to when sshd started

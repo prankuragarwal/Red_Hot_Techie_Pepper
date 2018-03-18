@@ -1,0 +1,21 @@
+2011-01-01T10:21:00.000Z	oDesk		anyone?
+2011-01-01T10:22:00.000Z	sync3times	oDesk	  what is the topology?
+2011-01-01T10:23:00.000Z	sync3times	oDesk	are both subnets on the same wire or are they separated by a router?
+2011-01-01T10:23:00.000Z	oDesk	sync3times	same wire, separated by Vyatta server
+2011-01-01T10:23:00.000Z	sync3times	oDesk	  the vyatta server is multi-homed?
+2011-01-01T10:24:00.000Z	oDesk	sync3times	yes if i'm on vyatta i can access both subnets
+2011-01-01T10:24:00.000Z	sync3times	oDesk	 is the server your default route for either side?
+2011-01-01T10:25:00.000Z	oDesk	sync3times	no
+2011-01-01T10:26:00.000Z	sync3times	oDesk	 so you need to setup a  network route.       something like:    route add -net  192.168.X.X/24    gw  vyatta
+2011-01-01T10:27:00.000Z	sync3times	oDesk	  Both sides need routes setup .    they packets need to know how to get there and how to get back.    Or you can setup the routes on your default routers
+2011-01-01T10:27:00.000Z	oDesk	sync3times	ok, i'll try that
+2011-01-01T10:27:00.000Z	sync3times	oDesk	 how many machines need to talk accross the router?
+2011-01-01T10:27:00.000Z	oDesk	sync3times	mine only
+2011-01-01T10:28:00.000Z	sync3times	oDesk	  bear in mind also,   there is the concept of  forwarding.     If the vyatta is not setup to forward packets accross the interfaces, then it will be a wall
+2011-01-01T10:28:00.000Z	oDesk	sync3times	Vyatta can talk to other subnets nicely
+2011-01-01T10:28:00.000Z	sync3times	oDesk	   you said mine.    you did not say how many boxes on the other side need to talk back?
+2011-01-01T10:30:00.000Z	oDesk	sync3times	i feel your first suggestion for adding route might work
+2011-01-01T10:30:00.000Z	oDesk	sync3times	i'll give it a try
+2011-01-01T10:30:00.000Z	sync3times	oDesk	  luck
+2011-01-01T10:34:00.000Z	oDesk	sync3times	it works perfectly
+2011-01-01T10:34:00.000Z	oDesk	sync3times	thank you

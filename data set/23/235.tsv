@@ -1,0 +1,23 @@
+2012-08-03T20:27:00.000Z	Gnea		!keyring
+2012-08-03T20:28:00.000Z	Gnea		okay, this is annoying.  I should be able to use subversion without having any integration with gnome.
+2012-08-03T20:28:00.000Z	Gnea		WARNING: gnome-keyring:: couldn't connect to: /tmp/keyring-lFNlKH/pkcs11: No such file or directory
+2012-08-03T20:30:00.000Z	gvo	Gnea	what seems to be the problem.
+2012-08-03T20:30:00.000Z	Gnea	gvo	I'm trying to use subversion to do a checkout on the commandline
+2012-08-03T20:30:00.000Z	Gnea	gvo	it complains that there is no gnome-keyring file. I'm not using gnome.
+2012-08-03T20:33:00.000Z	Gnea	gvo	nothing is set there, tried to set kwallet and it still complains about gnome-keyring
+2012-08-03T21:28:00.000Z	Gnea	gvo	Okay, back.  I tried the empty line in both ~/.subversion/config and /etc/subversion/config and it still insists on gnome-keyring
+2012-08-03T21:29:00.000Z	Gnea	gvo	there's no /etc/default/subversion file either
+2012-08-03T21:29:00.000Z	Gnea	gvo	I'm going to guess that the package maintainer hardcoded it in, which is wrong in my book
+2012-08-03T21:30:00.000Z	gvo	Gnea	 well it can be selected at compile time but you should be able to overwrite it.
+2012-08-03T21:32:00.000Z	Gnea	gvo	yeah, but I shouldn't HAVE to recompile it.
+2012-08-03T21:34:00.000Z	Gnea	gvo	I already did that to gnome-keyring, found a forum thread that suggests removing it is the only solution.  since I don't use the standard ubuntu desktop (I use E17), this shouldn't have a major impact.  I will check svn dependencies when it's done.
+2012-08-03T21:35:00.000Z	Gnea	gvo	iacon% apt-cache rdepends subversion | wc -l
+2012-08-03T21:36:00.000Z	Gnea	gvo	66 dependencies
+2012-08-03T21:36:00.000Z	Gnea	gvo	wc == wordcount
+2012-08-03T21:39:00.000Z	Gnea	gvo	Version: 1.6.17dfsg-3ubuntu3
+2012-08-03T21:40:00.000Z	Gnea	gvo	it's straight out of 12.04
+2012-08-03T21:41:00.000Z	Gnea	gvo	the standard 12.04 repositories
+2012-08-03T21:42:00.000Z	gvo	Gnea	If you've have run the apt-cache command I'd know exactly...  Anyway temporarily mv the .subversion directory somewhere and try it again.
+2012-08-03T21:54:00.000Z	Gnea	gvo	no dice
+2012-08-03T21:55:00.000Z	gvo	Gnea	OK maybe it's got something to do with the repository?  Svn works fine for me without attempting a ring access.
+2012-08-03T21:59:00.000Z	gvo	Gnea	That's a long shot,however but I'm grasping at straws here.

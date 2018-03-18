@@ -1,0 +1,21 @@
+2008-06-06T03:54:00.000Z	DJ_Cranky		here is my question, i am trying to configure samba, i am admin, but i do not own /var/lib/samba/usershares it is owned by root i need permissions there in order to add shares is there any way to do this in sudo without logging in to root as i do not think that is a good idea
+2008-06-06T03:55:00.000Z	DJ_Cranky		anyone know?
+2008-06-06T03:55:00.000Z	BobCFC	DJ_Cranky	create a samba user group?
+2008-06-06T03:55:00.000Z	BobCFC	DJ_Cranky	file could be owned by root and group samba
+2008-06-06T03:58:00.000Z	BobCFC	DJ_Cranky	permission can be set seperatly for owner/group/everyone.. you can set group owner to a samba group then add urself to that group
+2008-06-06T03:58:00.000Z	DJ_Cranky	BobCFC	it is part of group sambashare but also owned by root
+2008-06-06T03:59:00.000Z	BobCFC	DJ_Cranky	add yourself to group sambashare then
+2008-06-06T03:59:00.000Z	DJ_Cranky	BobCFC	how would i chmod a folder i do not have permissions for in the first place?
+2008-06-06T03:59:00.000Z	DJ_Cranky	BobCFC	i was in there root wasnt even i still have no access
+2008-06-06T04:00:00.000Z	DJ_Cranky	BobCFC	because root is the owner there is no way for me to access it
+2008-06-06T04:00:00.000Z	BobCFC	DJ_Cranky	yousaid it was already samba group?
+2008-06-06T04:00:00.000Z	BobCFC	DJ_Cranky	anyway with sudo you can do anything
+2008-06-06T04:01:00.000Z	DJ_Cranky	BobCFC	yes i understand now
+2008-06-06T04:02:00.000Z	BobCFC	DJ_Cranky	something like    sudo usermod -a MYNAME sambagroup  will add you to the group
+2008-06-06T04:02:00.000Z	DJ_Cranky	BobCFC	i am in the group, that did not help
+2008-06-06T04:03:00.000Z	BobCFC	DJ_Cranky	does the group have read/write permission?
+2008-06-06T04:03:00.000Z	DJ_Cranky	BobCFC	it obviously doesnt because i cant change anything :(
+2008-06-06T04:04:00.000Z	DJ_Cranky	BobCFC	if i understand correctly i need to do a chmod of it under sudo how do i do that?
+2008-06-06T04:04:00.000Z	BobCFC	DJ_Cranky	to enable group writable try    sudo  chmod  g+w /some/file/here
+2008-06-06T04:09:00.000Z	BobCFC	DJ_Cranky	as long as you know 777 gives world writable privilages
+2008-06-06T04:09:00.000Z	DJ_Cranky	BobCFC	i am only one who uses this on a private LAN, dont really care, and yes i know

@@ -1,0 +1,21 @@
+2008-11-14T04:57:00.000Z	AlexPalmer		does anyone know how to create multiple small zip files out of one big file?  I have a file too big to store on a fat32 hdd
+2008-11-14T04:57:00.000Z	jrib	AlexPalmer	any problem with just using 'split'?
+2008-11-14T04:58:00.000Z	jrib	AlexPalmer	yes, you have the 'cat' command on osx
+2008-11-14T04:58:00.000Z	AlexPalmer	jrib	can you explain the steps for me.  thanks
+2008-11-14T04:59:00.000Z	jrib	AlexPalmer	you would split the files (split's man page should be an easy read), then to put the together you just do: cat file1 file2 ... fileN > file
+2008-11-14T04:59:00.000Z	AlexPalmer	jrib	 ok, thanks
+2008-11-14T05:15:00.000Z	AlexPalmer	jrib	 i am having trouble figuring out the split command in the man pages
+2008-11-14T05:16:00.000Z	jrib	AlexPalmer	split -b SIZE FILE
+2008-11-14T05:17:00.000Z	AlexPalmer	jrib	 that's what i have been trying, but i cannot figure out the whole numbering thing.  If i want a 100 mb split i am not sure what numbers to type in.  Same goes for a 4 GB split.  It's very confusing to me
+2008-11-14T05:18:00.000Z	jrib	AlexPalmer	the man page describes the format at the bottom.  100 mb would be: 100MB
+2008-11-14T05:18:00.000Z	jrib	AlexPalmer	Sorry.  It's 100M.  See the difference in the man page
+2008-11-14T05:19:00.000Z	AlexPalmer	jrib	 it says "MB 1000*1000".  Ok.  and would 4 GB be 4 G?
+2008-11-14T05:19:00.000Z	jrib	AlexPalmer	yes
+2008-11-14T05:22:00.000Z	AlexPalmer	jrib	 i typed in "sudo split -d 100M ~/Desktop/ubuntu* ~/test/testing" and i get an error that says "split:  extra operand"  but it appears to be working.  Thank you so much
+2008-11-14T05:27:00.000Z	AlexPalmer	jrib	 now i will just type "sudo cat (and then each file path)" and it will work?
+2008-11-14T05:28:00.000Z	jrib	AlexPalmer	no sudo.  You can do: cat file1 file2 ... fileN > file
+2008-11-14T05:28:00.000Z	AlexPalmer	jrib	what does the fileN > file mean?
+2008-11-14T05:29:00.000Z	jrib	AlexPalmer	I just mean the last file, so if you had 3 files (N = 3): cat file1 file2 file3 > file
+2008-11-14T05:29:00.000Z	AlexPalmer	jrib	is the "> file" where you are saving it?
+2008-11-14T05:29:00.000Z	jrib	AlexPalmer	exactly
+2008-11-14T05:30:00.000Z	AlexPalmer	jrib	 thank you

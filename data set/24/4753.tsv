@@ -1,0 +1,24 @@
+2008-05-19T19:52:00.000Z	chazco		Hi.. i'm trying to use grysnc to backup some files, ext2 -> ext2... it copies them all every time... It seems that its the time that isnt matching, since setting "size only" fixes this. any ideas?
+2008-05-19T19:53:00.000Z	sipior	chazco	are the clocks on both machines correct?
+2008-05-19T19:53:00.000Z	chazco	sipior	- Its the same machine
+2008-05-19T19:53:00.000Z	sipior	chazco	does rsync work without a hitch?
+2008-05-19T19:55:00.000Z	sipior	chazco	if you diff one pair of files, is anything reported?
+2008-05-19T19:56:00.000Z	chazco	sipior	- They're exactly the same... its got to be something to do with the time
+2008-05-19T19:57:00.000Z	sipior	chazco	what is the exact rsync command you use?
+2008-05-19T19:57:00.000Z	chazco	sipior	- rsync -r -n -p -o -g -v --progress <in> <out>
+2008-05-19T19:58:00.000Z	chazco	sipior	- Also, using preserve-time has no effect, but setting size-only does (but isnt a good solution for me)
+2008-05-19T19:58:00.000Z	chazco	sipior	-Looking at the files the times dont match, but everything else does
+2008-05-19T20:00:00.000Z	sipior	chazco	and a simple "rsync -av" has the same problem? also, i assume you left the -n option out?
+2008-05-19T20:01:00.000Z	chazco	sipior	- Which is -n again?
+2008-05-19T20:02:00.000Z	sipior	chazco	the "dry-run" switch :-) also, did you try enabling -t?
+2008-05-19T20:02:00.000Z	chazco	sipior	- Ah of course :) -t didnt make much difference, but its working again now
+2008-05-19T20:03:00.000Z	sipior	chazco	with which switches?
+2008-05-19T20:03:00.000Z	sipior	chazco	sans -n :-)
+2008-05-19T20:04:00.000Z	sipior	chazco	that's always sensible
+2009-04-23T17:37:00.000Z	sipior	chazco	if you've a long list to check, try "md5sum -c <filename>"
+2009-04-23T17:37:00.000Z	sipior	chazco	where the file given is the md5sum list
+2009-04-23T17:37:00.000Z	chazco	sipior	- Ah thanks, thats what I was looking for... thought it was more difficult :)
+2009-05-29T20:14:00.000Z	sipior	chazco	i think it's available as a theme under gdmsetup. might be mistaken about that.
+2009-05-29T20:14:00.000Z	chazco	sipior	- Cant see it
+2009-05-29T20:15:00.000Z	sipior	chazco	try "apt-cache search gdm", and look for relevant theme packages. might be there still.
+2009-05-29T20:23:00.000Z	chazco	sipior	- Seems like to used to be called human but isnt there anymore, just the new metal one

@@ -1,0 +1,19 @@
+2012-01-24T08:45:00.000Z	sbts-tv_	flowerpot	zykotick9 the system wide path originates in /etc/environment
+2012-01-24T08:46:00.000Z	flowerpot	sbts-tv_	thank you!
+2012-01-24T08:47:00.000Z	flowerpot	sbts-tv_	so if I add a directory to the $PATH defined in /etc/environment, it will be present in every shell no matter what?
+2012-01-24T08:48:00.000Z	sbts-tv_	flowerpot	yes. but you will need to at least logout and back in first, if not reboot
+2012-01-24T08:48:00.000Z	flowerpot	sbts-tv_	cool.  thank you!
+2012-01-24T09:16:00.000Z	flowerpot	sbts-tv_	I have a question for you: I've added /foo to the path defined in /etc/environment, and now if I type which bar then /foo/bar is returned.  However, sudo which bar returns nothing -- typing sudo foo says "sudo: foo: command not found"
+2012-01-24T09:17:00.000Z	flowerpot	sbts-tv_	I have a question for you: I have a program bar in directory /foo.  I've added /foo to the path defined in /etc/environment and rebooted, and now which bar returns /foo/bar but sudo which bar returns nothing.  Moreover, bar works but sudo bar results in: "sudo: bar: command not found" -- do you have any idea what's wrong?
+2012-01-24T09:21:00.000Z	sbts-tv_	flowerpot	check out the manpage for sudo. from memory sudo, by default, clears the path. there are options to change that behaviour
+2012-01-24T09:23:00.000Z	sbts-tv_	flowerpot	once again from memory, the best way to fix this would be to also add /foo to the path sudo uses. this should be configurable in /etc/sudoers I think
+2012-01-24T09:23:00.000Z	flowerpot	sbts-tv_	I am baffled: sudo echo $PATH shows /foo is in $PATH, but sudo foo fails with "sudo: foo: command not found".  I'll check out the sudoers file
+2012-01-24T09:25:00.000Z	sbts-tv_	flowerpot	look at variable secure_path in man sudoers
+2012-01-24T09:26:00.000Z	flowerpot	sbts-tv_	I notice that in sudoers, there's the line "Defaults    env_reset"
+2012-01-24T09:27:00.000Z	flowerpot	sbts-tv_	there is no secure_path in /etc/sudoers for me
+2012-01-24T09:27:00.000Z	sbts-tv_	flowerpot	no, leave that one alone. by default secure_path is set to </usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/X11R6/bin so just add you /foo
+2012-01-24T09:28:00.000Z	sbts-tv_	flowerpot	that info is from "man sudoers" there are a lot of settings that have defaults and will not be in the sudoers file.
+2012-01-24T09:31:00.000Z	flowerpot	sbts-tv_	OK, so if env_reset is set and I also specify secure_path to be /foo + the default, the environment will be reset (as it is currently) but the PATH will be forcefully set to what I've specified, right?
+2012-01-24T09:31:00.000Z	sbts-tv_	flowerpot	yes that is correct. don't forget to use sudoedit to edit the sudoers file, it saves you from disaster!
+2012-01-24T09:32:00.000Z	flowerpot	sbts-tv_	righto, i'll give it a try. thanks
+2012-01-24T09:33:00.000Z	sbts-tv_	flowerpot	I think that sudoedit still defaults to useing vi as an editor, you may want to either read up on using vi, or check the manpage for sudoedit to find out how to use a different editor with it

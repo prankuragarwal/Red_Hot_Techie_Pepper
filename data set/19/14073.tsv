@@ -1,0 +1,19 @@
+2004-11-14T15:51:00.000Z	Striss		hey guys...I'm running Ubuntu PPC and I installed Java from the Synaptic Package Manager with the free-java-sdk package, how do I get java to work inside Firefox now?
+2004-11-14T15:51:00.000Z	mjr	Striss	you pretty much don't with that
+2004-11-14T15:51:00.000Z	Striss	mjr	oh...is there any way I can get java working inside firefox on ppc?
+2004-11-14T15:51:00.000Z	mjr	Striss	the free Java stuff isn't up to running applets
+2004-11-16T12:56:00.000Z	mjr	Striss	you just probably don't have 3d accelerated drivers on the linux side
+2004-11-16T12:56:00.000Z	Striss	mjr	yeah i can't even get opengl to work in X
+2004-11-16T12:57:00.000Z	mjr	Striss	what video card do you have, by the way?
+2004-11-16T12:58:00.000Z	Striss	mjr	rage128 pro, on my imac
+2004-11-16T12:59:00.000Z	mjr	Striss	well that should be supported by the dri drivers at http://dri.sourceforge.net/ ; I don't know about ppc support but I'd be surprised if there weren't
+2004-11-16T13:00:00.000Z	Striss	mjr	i'll have a look there
+2004-11-16T13:08:00.000Z	mjr	Striss	hmm, of course, there's one thing; try and grep -i dri /var/log/XFree86.0.log and see if it says something about why dri would not be enabled
+2004-11-16T13:09:00.000Z	Striss	mjr	it loads module "dri"
+2004-11-16T13:10:00.000Z	Striss	mjr	but in glxinfo, it says direct rendering is not enabled
+2004-11-16T13:10:00.000Z	mjr	Striss	righto
+2005-05-02T10:25:00.000Z	mjr	Striss	depends, really, but for you it probably doesn't. See glxinfo though, the line about Direct rendering
+2005-05-02T10:27:00.000Z	mjr	Striss	before I go, dri.sourceforge.net might be a place to look for info
+2005-05-02T10:27:00.000Z	mjr	Striss	is there something related immediately above that text?
+2005-05-02T10:30:00.000Z	mjr	Striss	well, there you have it then. A bit of a shame, but at least it's fixable by giving up something...
+2005-05-02T10:30:00.000Z	mjr	Striss	edit /etc/X11/xorg.conf, change DefaultDepth

@@ -1,0 +1,24 @@
+2005-04-19T15:18:00.000Z	aroman		so, to upgrade to Hoary from Warty, is it as easy as s/warty/hoary/g in sources.list, then apt-get update && apt-get dist-upgrade?
+2005-04-19T15:19:00.000Z	crimsun	aroman	essentially, save you'll want to use a mirror: http://64.233.187.104/search?q=cache:XmNbmphb-KMJ:www.ubuntulinux.org/wiki/Archive+ubuntu+archive&hl=en
+2006-02-25T08:47:00.000Z	crimsun	aroman	here.
+2006-02-25T08:52:00.000Z	crimsun	aroman	add its name to /etc/modprobe.d/blacklist-foo
+2006-02-25T08:52:00.000Z	aroman	crimsun	I added it to /etc/modprobe.d/blacklist
+2006-02-25T08:52:00.000Z	crimsun	aroman	what are you trying to blacklist?
+2006-02-25T08:52:00.000Z	aroman	crimsun	ieee1394 ohci1394 eth1394 (already blacklisted) and sbp2
+2006-02-25T08:53:00.000Z	crimsun	aroman	do you have a firewire controller?
+2006-02-25T08:53:00.000Z	aroman	crimsun	firewire keeps my network from working... weird issue, I think it is my laptop's acpi implementation, causing troubles in non-windpipe OSes
+2006-02-25T08:53:00.000Z	aroman	crimsun	yes, but I don't want drivers to be loaded for it
+2006-02-25T08:56:00.000Z	crimsun	aroman	eth1394 is the culprit?
+2006-02-25T08:56:00.000Z	aroman	crimsun	no, I believe it is ieee1394
+2006-02-25T08:57:00.000Z	crimsun	aroman	I think what you want to test first is passing ignore_drivers=1 to modprobe ieee1394
+2006-02-25T08:57:00.000Z	aroman	crimsun	can you please explain what that will do, and how I can pass that option to modprobe?
+2006-02-25T08:58:00.000Z	crimsun	aroman	echo "options ieee1394 ignore_drivers=1" | sudo tee -a /etc/modprobe.d/ieee1394
+2006-02-25T08:58:00.000Z	crimsun	aroman	a description can be found using modinfo ieee1394
+2006-02-25T09:00:00.000Z	aroman	crimsun	ok, done, rebooting
+2006-02-25T09:01:00.000Z	aroman	crimsun	what method does dapper use for hardware auto-detection. I notice they've gotten rid of hotplug?
+2006-02-25T09:01:00.000Z	crimsun	aroman	udev.
+2006-02-25T09:01:00.000Z	aroman	crimsun	really? I didn't know udev had that capability...
+2006-02-25T09:01:00.000Z	aroman	crimsun	thought udev was just like a devfs replacement...
+2006-02-25T09:02:00.000Z	crimsun	aroman	udev+Linux 2.6.15's netlink.
+2006-02-25T09:02:00.000Z	aroman	crimsun	netlink? ^_^ sorry, not too up-to-date with latest kernel features
+2006-02-25T09:03:00.000Z	aroman	crimsun	that didn't do the trick, I'm afraid :(

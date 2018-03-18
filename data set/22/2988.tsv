@@ -1,0 +1,22 @@
+2010-08-02T00:52:00.000Z	zopiac		Whenever i try to install/upgrade ANYTHING it tried to install wine 1.2 and fails, giving me this error: Errors were encountered while processing: /var/cache/apt/archives/wine1.2_1.1.42-0ubuntu4_amd64.deb Can anyone PLEASE help? I've been wresting with this for over an hour!
+2010-08-02T00:53:00.000Z	zopiac		only relevent thing on the forums said to use synaptic to fix broken packages, but that does nothing.
+2010-08-02T00:53:00.000Z	hspaans	zopiac	remove the file, do an update and try again?
+2010-08-02T01:06:00.000Z	hspaans	zopiac	did you try to purge the package an try again?
+2010-08-02T01:06:00.000Z	zopiac	hspaans	sorry, define purge :P
+2010-08-02T01:07:00.000Z	zopiac	hspaans	the purge command ended up giving me this error http://pastebin.org/439294
+2010-08-02T01:11:00.000Z	hspaans	zopiac	you tried? sudo apt-get install -f
+2010-08-02T01:12:00.000Z	zopiac	hspaans	same error (/var/cache/apt/archives/wine...)
+2010-08-02T01:12:00.000Z	hspaans	zopiac	and? ls -l /var/cache/debconf
+2010-08-02T01:13:00.000Z	zopiac	hspaans	hmmm. ls: cannot access /var/cache/debconf: No such file or directory
+2010-08-02T01:13:00.000Z	hspaans	zopiac	that is not good
+2010-08-02T01:15:00.000Z	zopiac	hspaans	any way to restore /debconf?
+2010-08-02T01:15:00.000Z	hspaans	zopiac	sudo mkdir /var/cache/debconf && sudo apt-get install --reinstall -f debconf
+2010-08-02T01:17:00.000Z	zopiac	hspaans	well it didnt stop at wine 1.2 that time, right now its building the man page database
+2010-08-02T01:17:00.000Z	zopiac	hspaans	awesome! that fixed it!
+2010-08-02T01:18:00.000Z	hspaans	zopiac	sudo apt-get install -f
+2010-08-02T01:18:00.000Z	zopiac	hspaans	that only told me that there is one package not upgraded
+2010-08-02T01:18:00.000Z	hspaans	zopiac	good ;-)
+2010-08-02T01:19:00.000Z	hspaans	zopiac	you may want to install debsums and run it to see what more you're missing
+2010-08-02T01:20:00.000Z	zopiac	hspaans	just 'debsums' to run it?
+2010-08-02T01:20:00.000Z	hspaans	zopiac	install debsums first
+2010-08-02T01:20:00.000Z	hspaans	zopiac	sudo debsums -s

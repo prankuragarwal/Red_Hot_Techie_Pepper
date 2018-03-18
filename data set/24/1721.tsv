@@ -1,0 +1,24 @@
+2012-01-15T18:27:00.000Z	CharminTheMoose		Hey all, I'm trying to boot a debootstrapped ubuntu 11.04 system, but the console login isn't appearing. Init seems to just hang after parsing rc.local.
+2012-01-15T18:28:00.000Z	theadmin	CharminTheMoose	You got agetty, bash etc?
+2012-01-20T22:31:00.000Z	theadmin	CharminTheMoose	You don't understand what initcpio/initrd does, do you
+2012-01-20T22:32:00.000Z	theadmin	CharminTheMoose	initrd is loaded in order to load the proper kernel modules, i.e. device drivers, after which it's gone from the RAM pretty much
+2012-01-20T22:33:00.000Z	theadmin	CharminTheMoose	Well, some distros keep it forever (becuase they intend to run from RAM)
+2012-01-20T22:33:00.000Z	theadmin	CharminTheMoose	Not the case with Ubuntu
+2012-01-23T13:18:00.000Z	theadmin	CharminTheMoose	Half-window manager, it has things desktop environments tend to have (panels, trays, etc etc)
+2012-02-18T00:52:00.000Z	theadmin	CharminTheMoose	No root password
+2012-02-18T00:55:00.000Z	theadmin	CharminTheMoose	gksudo synaptic
+2012-02-25T16:43:00.000Z	theadmin	CharminTheMoose	Ubuntu doesn't officially support setting the root password. If you do that, you're no longer eglible to receive support from this channel, Ubuntu forums, etc.
+2012-02-25T16:43:00.000Z	theadmin	CharminTheMoose	And yeah, use sudo/gksudo. They make much more sense than plain su alternatives of theirs.
+2012-02-25T16:45:00.000Z	theadmin	CharminTheMoose	Use gksudo. Or open "gksu-properties" and tell it to use sudo through that. That way, both gksu and gksudo will act the same
+2012-02-25T16:46:00.000Z	CharminTheMoose	theadmin	hmm yeah, I tried using gksu-properties, but the settings aren't saved on a dbusless chroot of 11.04. :/
+2012-02-25T16:47:00.000Z	theadmin	CharminTheMoose	Ouch... Using desktop environments without dbus is generally a bad idea
+2012-02-25T16:48:00.000Z	CharminTheMoose	theadmin	it's not a full blown DE, just that stuff like gksu which AptUrl uses is by default in, ah, 'su' mode. *cough*
+2012-02-25T16:49:00.000Z	theadmin	CharminTheMoose	That's weird, since if I recall right, gksu by *default* actually uses the sudo mode in Ubuntu, but then again it might act strangely because of lack of dbus
+2012-02-25T16:51:00.000Z	CharminTheMoose	theadmin	would it be possible for me to temporarily set up dbus inside the chroot from the host system?
+2012-02-25T16:52:00.000Z	theadmin	CharminTheMoose	Probably, I'm not into chroots, sorry about that. But basically "apt-get install dbus" in it, start the dbus daemon and that should be about it
+2012-02-25T17:00:00.000Z	theadmin	CharminTheMoose	I think gksu as well as gksudo relies heavily on dbus to perform the authorisation, so if you don't have that it will fail... It's just a wild guess, but something makes me think that's the case.
+2012-02-25T17:01:00.000Z	CharminTheMoose	theadmin	well, I was trying this out from the chroot-as-livecd, which starts up dbus and such.
+2012-02-25T17:02:00.000Z	theadmin	CharminTheMoose	Ah, then sorry, no idea.
+2012-02-25T17:04:00.000Z	theadmin	CharminTheMoose	Have you tried runing gksu with --sudo-mode and/or --debug? Might help...
+2012-02-25T19:41:00.000Z	theadmin	CharminTheMoose	sudo -u username -i
+2012-02-25T19:41:00.000Z	theadmin	CharminTheMoose	Or, "su username". Well. That works fine for non-root

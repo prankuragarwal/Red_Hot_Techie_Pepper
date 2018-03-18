@@ -1,0 +1,22 @@
+2012-01-06T19:58:00.000Z	jasonlfunk		I have ubuntu server installed and am trying to figure out how to configure my ethernet device so that when I plug in a cable it will get an ip address via DHCP. Currently, if I boot without a cable plugged in and then plug it in after it is up, it will not grab an IP address.
+2012-01-06T19:59:00.000Z	jasonlfunk		That will get me an IP address, but I want it to do it automatically.
+2012-01-06T20:00:00.000Z	llutz	jasonlfunk	allow-hotplug ethX    in /etc/network/interfaces
+2012-01-06T20:02:00.000Z	jasonlfunk	llutz	Use "allow-hotplug eth0" instead of "auto eth0"?
+2012-01-06T20:03:00.000Z	llutz	jasonlfunk	not instead, add it
+2012-01-06T20:04:00.000Z	jasonlfunk	llutz	okay, I'll give that a shot.
+2012-01-06T20:10:00.000Z	jasonlfunk	llutz	that doesn't seem to help. I see the "eth0: link up" in my messages file, but I don't see it tried to get an IP address.
+2012-01-06T20:11:00.000Z	llutz	jasonlfunk	did you disable networkmanager?
+2012-01-06T20:12:00.000Z	jasonlfunk	llutz	It's possible, I don't see the process running.
+2012-01-06T20:13:00.000Z	llutz	jasonlfunk	allow-hotplug eth0, auto eth0, iface eth0 inet dhcp             those 3 lines should be in your interfaces
+2012-01-06T20:14:00.000Z	jasonlfunk	llutz	It doesn't look like I have network-manager installed.
+2012-01-06T20:15:00.000Z	jasonlfunk	llutz	I may have uninstalled it because I thought it was a Gnome thing.
+2012-01-06T20:15:00.000Z	llutz	jasonlfunk	well, then it should work ™ this way
+2012-01-06T20:15:00.000Z	jasonlfunk	llutz	is network-manager required for this to work?
+2012-01-06T20:15:00.000Z	llutz	jasonlfunk	no  need for that crap
+2012-01-06T20:16:00.000Z	jasonlfunk	llutz	does "allow-hotplug" need to come before the auto line?
+2012-01-06T20:16:00.000Z	jasonlfunk	llutz	I suppose I could just try. :)
+2012-01-06T20:16:00.000Z	llutz	jasonlfunk	i always have it on top of the file... no idea if that matters
+2012-01-06T20:27:00.000Z	jasonlfunk	llutz	do you know any way to debug why this isn't working?
+2012-01-06T20:28:00.000Z	llutz	jasonlfunk	not off hand, sry
+2012-01-06T20:28:00.000Z	jasonlfunk	llutz	np, thanks.
+2012-01-06T20:34:00.000Z	jasonlfunk	llutz	I wonder if my hotplug isn't working at all.

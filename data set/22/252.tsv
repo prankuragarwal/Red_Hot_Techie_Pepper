@@ -1,0 +1,22 @@
+2012-02-20T19:06:00.000Z	Zerpex	sacarlson	xD
+2012-02-20T18:49:00.000Z	sacarlson	Zerpex	 sudo chmod -R 775 /var/www ; worry about security later
+2012-02-20T18:50:00.000Z	Zerpex	sacarlson	it's a development server, which will be private running on a network
+2012-02-20T18:51:00.000Z	sacarlson	Zerpex	so how does that make it any different?  if needed chown -R www-data:www-data
+2012-02-20T18:54:00.000Z	sacarlson	Zerpex	ok I think I get it.  seems like an application problem.  if the file doesn't exist yet and your app creates it I'm not sure you have to power to force it to something else
+2012-02-20T18:54:00.000Z	sacarlson	Zerpex	I guess you could have a demon run that auto changes it at some periodic period
+2012-02-20T18:54:00.000Z	Zerpex	sacarlson	when running php as DSO, normally the 'customers' shouldn't use the chown and chmod on the files each time
+2012-02-20T18:56:00.000Z	sacarlson	Zerpex	I've had php apps that could change chmod settings so I know it can, so it's up to your app
+2012-02-20T18:57:00.000Z	sacarlson	Zerpex	I assume you want it to have privlige but giving it also provides the opertunity  for php to change it
+2012-02-20T18:57:00.000Z	Zerpex	sacarlson	I know.. it's pretty easy in php, but shouldn't be needed to create a PHP script that changes the permissions of the folders - there should be a default group-ownershio of the folders to www-data
+2012-02-20T18:58:00.000Z	sacarlson	Zerpex	yes anything php creates will be owned by www-data as set by priv in appache
+2012-02-20T18:59:00.000Z	Zerpex	sacarlson	not the files php creates.. let's say I log into ftp on the server, and rightclick, and choose 'new file' then the group should by default be set to www-data
+2012-02-20T18:59:00.000Z	sacarlson	Zerpex	you have more than apache set to access the same file set?
+2012-02-20T19:00:00.000Z	Zerpex	sacarlson	nevermind, the commands I was looking for was chgrp -R www-data /var/www and chmod g+s /var/www
+2012-02-20T19:00:00.000Z	sacarlson	Zerpex	so you have an ftp server runing on the same directory under a different user?
+2012-02-20T19:01:00.000Z	sacarlson	Zerpex	sorry never used chgrp
+2012-02-20T19:01:00.000Z	Zerpex	sacarlson	I have a ftp access to /var/www indeed
+2012-02-20T19:02:00.000Z	sacarlson	Zerpex	ok see I didn't know that part but I might have just change ftp user to www-data but that's only because I'm ignorant
+2012-02-20T19:03:00.000Z	Zerpex	sacarlson	indeed, but we're 10 developers, with different access
+2012-02-20T19:03:00.000Z	sacarlson	Zerpex	well I'm only glad you found a solution even with my added confusion
+2012-02-20T19:04:00.000Z	Zerpex	sacarlson	no worries :P
+2012-02-20T19:04:00.000Z	sacarlson	Zerpex	oh and my other simple solution would have been chmod -R 777 /var/www  if it's just local who cares

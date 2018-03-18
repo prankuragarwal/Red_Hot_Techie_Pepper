@@ -1,0 +1,23 @@
+2008-05-26T23:08:00.000Z	amenado		maximumbob-> try  sudo /etc/init.d/networking restart
+2008-05-26T23:08:00.000Z	maximumbob	amenado	tried that, and I get the same thing
+2008-05-26T23:09:00.000Z	maximumbob	amenado	can't do much pasting since I'm off the network, but it's only two lines and I don't see an eth0:
+2008-05-26T23:10:00.000Z	maximumbob	amenado	I thought it wasn't detected, however ifconfig eth0 gives me info
+2008-05-26T23:14:00.000Z	maximumbob	amenado	I tried adding auto eth0/iface eth0 inet dhcp to that file, restart networking, but as DHCP tries to do it's thing, I get the same 'invalid arg' error plus: "send_packet: Network is down"'s
+2008-05-26T23:16:00.000Z	maximumbob	amenado	I posted it above: "auto lo eth0 / iface lo inet loopback / iface eth0 inet dhcp"
+2008-05-26T23:18:00.000Z	maximumbob	amenado	I was using / to denote linebreak so as not to multiline post on IRC
+2008-05-26T23:20:00.000Z	maximumbob	amenado	http://paste.ubuntu.com/14850/ - I just figured it was simple enough not to have to paste, but here 'tis.
+2008-05-26T23:23:00.000Z	maximumbob	amenado	Everything there is in order, has product, vendor, size, clock, etc etc... though at the top it says "*-network DISABLED" so I guess that's what I have to fix
+2008-05-26T23:24:00.000Z	maximumbob	amenado	how? And for the record, another ubuntu desktop install I have has the bare interfaces file (just lo) but wired still works there.
+2008-05-26T23:25:00.000Z	maximumbob	amenado	wired, SiS900 PCI Fast Ethernet
+2008-05-26T23:26:00.000Z	maximumbob	amenado	I think this is what you're asking - it says "module=sis900"
+2008-05-26T23:28:00.000Z	maximumbob	amenado	ah yes, sorry missed it: driver also =sis900
+2008-05-26T23:29:00.000Z	maximumbob	amenado	interestingly no
+2008-05-26T23:32:00.000Z	maximumbob	amenado	nothing, though I did come across this - http://ubuntuforums.org/showthread.php?t=274453 and this - http://www.brownhat.org/sis900.html
+2008-05-26T23:34:00.000Z	maximumbob	amenado	I think it's all integrated stuff
+2008-05-26T23:42:00.000Z	maximumbob	amenado	I don't really understand it... Googling lets me know that ubuntu usually does fine with sis900, and lspci has it showing fine too.
+2008-05-26T23:43:00.000Z	maximumbob	amenado	ifconfig -a or just ifconfig
+2008-05-26T23:44:00.000Z	maximumbob	amenado	if only I had a usb flash drive on hand :-/
+2008-05-26T23:45:00.000Z	maximumbob	amenado	I get that, but the fact is that this card works by default in debian and ubuntu, based on comments online
+2008-05-26T23:52:00.000Z	maximumbob	amenado	was prepping pastebin stuff
+2008-05-26T23:53:00.000Z	maximumbob	amenado	http://paste.ubuntu.com/14859 for ifconfig, http://paste.ubuntu.com/14860 for lspci. For lscpi I only included ethernet line
+2008-05-27T00:08:00.000Z	maximumbob	amenado	I found the driver in /lib/modules/`uname -r`/kernel/drivers/net/sis900.ko. Then I rmmod sis900, modprobe -v sis900, and it showed successful, however in dmesg it showed 00:00:00:00:00:00 again.

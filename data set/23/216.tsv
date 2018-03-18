@@ -1,0 +1,23 @@
+2012-03-21T00:19:00.000Z	pjs		hey all.. quick question.. where are iptables stored by default in Ubuntu 11.10? (this is a rackspace managed instance, if that matters.)
+2012-03-21T00:19:00.000Z	pjs		iptables rules*
+2012-03-21T00:21:00.000Z	beandog	pjs	if you're using ufw, they'll be in /etc/ufw I think
+2012-03-21T00:22:00.000Z	pjs	beandog	yea looks like there is some default rules that I assume rackspace added as part of their image
+2012-03-21T00:22:00.000Z	beandog	pjs	yah I've got a rackspace one too, I already changed mine though.
+2012-03-21T00:22:00.000Z	pjs	beandog	ahh, gotcha.. thx. sorry, BSD guy so my iptables stuff is way on the edge of my memory :)
+2012-03-21T00:23:00.000Z	beandog	pjs	I just ditched theirs and used my custom ones anyway.
+2012-03-21T00:24:00.000Z	pjs	beandog	well all i need to do is allow port 80, so I'll stick with this for now. To lazy to save the rules, load them at startup, etc. :)
+2012-03-21T00:24:00.000Z	beandog	pjs	if you use ufw, it'll save it for you
+2012-03-21T00:24:00.000Z	beandog	pjs	sec
+2012-03-21T00:24:00.000Z	beandog	pjs	ufw allow proto tcp to any port 80; ufw enable
+2012-03-21T00:25:00.000Z	beandog	pjs	oh, if you want ssh, don't forget port 22: ufw allow proto tcp to any port 22
+2012-03-21T00:25:00.000Z	pjs	beandog	oh beautiful.. thanks man
+2012-03-21T00:25:00.000Z	pjs	beandog	yea.. ssh was already added via rackspace I suppose
+2012-03-21T00:25:00.000Z	beandog	pjs	well ufw will drop everything by default, so yah, better add that.
+2012-03-21T00:25:00.000Z	pjs	beandog	let me make sure..
+2012-03-21T00:26:00.000Z	pjs	beandog	yea it's good.. thanks man.. so ufw will auto save this and upon reboot port 80 will be good to go?
+2012-03-21T00:26:00.000Z	beandog	pjs	yah, ufw enable will do all the magic for you
+2012-03-21T00:27:00.000Z	beandog	pjs	if you want a copy of rackspace's defaults, just for the record, you can do iptables-save
+2012-03-21T00:27:00.000Z	pjs	beandog	awesome man.. thanks for the ufw help. first I'm seeing this
+2012-03-21T00:27:00.000Z	beandog	pjs	yah, like I said, don't forget 22
+2012-03-21T00:28:00.000Z	pjs	beandog	yup. got 22.. thanks my man!
+2012-03-21T00:28:00.000Z	beandog	pjs	have fun

@@ -1,0 +1,19 @@
+2005-06-03T08:07:00.000Z	xf`		How can I disable all oss modules loaded and enable all of my alsa modules?
+2005-06-03T08:07:00.000Z	bob2	xf`	that should happen by default.  hotplug is loading oss modules ahead of alsa ones?
+2005-06-03T08:09:00.000Z	xf`	bob2	I get...Failed to load output plugin "alsa".  Trying defaults.
+2005-06-03T08:09:00.000Z	bob2	xf`	what sound card do you have?
+2005-06-03T08:10:00.000Z	xf`	bob2	What I'm really after is having my apps share sound or mix the sound
+2005-06-03T08:11:00.000Z	xf`	bob2	A refund on my sound card?  It's onboard.
+2005-06-03T08:11:00.000Z	bob2	xf`	not you
+2005-06-03T08:11:00.000Z	bob2	xf`	what does "lsmod | grep ac97" print?
+2005-06-03T08:12:00.000Z	xf`	bob2	...
+2005-06-03T08:12:00.000Z	bob2	xf`	so, you have the alsa modules loaded
+2005-06-03T08:12:00.000Z	bob2	xf`	if you "pkill esd", that program should work
+2005-06-03T08:13:00.000Z	bob2	xf`	http://alsa.opensrc.org/index.php?page=DmixPlugin
+2005-06-03T08:13:00.000Z	xf`	bob2	thanks
+2005-06-03T08:22:00.000Z	xf`	bob2	I'm getting Can't find a suitable libao driver. (Is device in use?) when iI do `aoss mpg123  foo.mp3`  I've folowed the instructions up to that point.
+2005-06-03T08:23:00.000Z	bob2	xf`	is the device in use?
+2005-06-03T08:23:00.000Z	xf`	bob2	Nothing is running that would be using it.
+2005-06-03T08:23:00.000Z	bob2	xf`	fuser -v /dev/{dsp,mixer,audio} /dev/snd/*
+2005-06-03T08:25:00.000Z	bob2	xf`	ignore aoss then, and just use aplay or something
+2005-06-03T08:25:00.000Z	xf`	bob2	Okay

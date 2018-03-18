@@ -1,0 +1,19 @@
+2010-11-14T03:21:00.000Z	Celso_		hello people
+2010-11-14T03:21:00.000Z	Celso_		i need your help
+2010-11-14T03:22:00.000Z	Celso_		can sommeone tell me how do i set a code on  shutdown?
+2010-11-14T03:22:00.000Z	Celso_		imagine i want to close a program on shutdown. how do i do it?
+2010-11-14T03:23:00.000Z	Celso_		noone can help me on this?
+2010-11-14T03:23:00.000Z	Dr_Willis	Celso_	 i dident really see a full question.. if you shut down.. the apps will close.. whats the issue?
+2010-11-14T03:27:00.000Z	Dr_Willis	Celso_	 thats still not real clear..  and not very good english.. If you want to make a 'script' that has commands to do somthing. the script is just a text file. use any text editor you like.
+2010-11-14T03:30:00.000Z	Dr_Willis	Celso_	 i think the  .bash_logout file was mentioned.. but thats for when you are exiting a bash shell i belive.  ive not noticved any 'logout' type files for Gnome,
+2010-11-14T03:30:00.000Z	Dr_Willis	Celso_	 you could have GDM start somthign when it starts UP.. that would get ran after a user logs out and gdm restarts...
+2010-11-14T03:33:00.000Z	Dr_Willis	Celso_	 when the users log out and gdm starts up. You could make GDM run some command that 'fixs' your graphics..   Ive not seen gnome or KDE have any sort of log-OUT script.. what if Gnome just crashes back to GDM.. then your logout thing would proberly get skipped.
+2010-11-14T03:33:00.000Z	Dr_Willis	Celso_	 You want somtign to run when the System shuts down? or the user logs out and goes back to GDM or what exactly are you running.. whats the 'core' problem?
+2010-11-14T03:34:00.000Z	Dr_Willis	Celso_	 ive never seen a /etc/rc.local.conf  just a /etc/rc.local that gets ran at the end of the system boot process.
+2010-11-14T03:35:00.000Z	Dr_Willis	Celso_	 rc.local does NOT get ran at login. it gets ran during the boot process.  befor a user even logs in normally
+2010-11-14T03:35:00.000Z	Dr_Willis	Celso_	 you could make some upstart service that gets ran  at boot. and then at shutdown to run the commands.
+2010-11-14T03:38:00.000Z	Dr_Willis	Celso_	 services get ran as the root user..  i just googled and found this thread -> http://ubuntuforums.org/showthread.php?t=256783
+2010-11-14T03:38:00.000Z	Dr_Willis	Celso_	 its using  the sysv service method that will still work in 10.10 i belive
+2010-11-14T03:39:00.000Z	Dr_Willis	Celso_	 or if wanting to use the Upstart way the example service -> cat hwclock-save.conf
+2010-11-14T03:40:00.000Z	Dr_Willis	Celso_	 /etc/init/hwclock-save.conf  may work as a basis for you to change.
+2010-11-14T03:40:00.000Z	Dr_Willis	Celso_	 COPY the script.. rename it.. edit it...

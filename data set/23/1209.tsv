@@ -1,0 +1,23 @@
+2010-07-09T19:39:00.000Z	ujvarosya		hey, anyone can help why don't work my floppy drive under 10.04? the BIOS see it..
+2010-07-09T19:41:00.000Z	frostburn	ujvarosya	do you see it in /dev/?       ls -lah /dev/fd*
+2010-07-09T19:42:00.000Z	ujvarosya	frostburn	yes
+2010-07-09T19:43:00.000Z	ujvarosya	frostburn	but I can't open it or format..
+2010-07-09T19:44:00.000Z	ujvarosya	frostburn	pastebin.com/XnywKS81
+2010-07-09T19:45:00.000Z	frostburn	ujvarosya	 that's not the floppy, it should say /dev/fd0 thats a diff device.  i wonder if the floppy disk modules are even included in the kernel
+2010-07-09T19:46:00.000Z	ujvarosya	frostburn	sorry, pastebin.com/xAVWek4Q
+2010-07-09T19:47:00.000Z	frostburn	ujvarosya	try mounting it    mkdir /mnt/floppy       mount /dev/fd0 /mnt/floppy
+2010-07-09T19:49:00.000Z	ujvarosya	frostburn	what would be the type of filesystem?
+2010-07-09T19:49:00.000Z	frostburn	ujvarosya	depends on what you formatted it with
+2010-07-09T19:50:00.000Z	ujvarosya	frostburn	donno..I think it's msdos..sec
+2010-07-09T19:52:00.000Z	frostburn	ujvarosya	most likely it's fat
+2010-07-09T19:54:00.000Z	ujvarosya	frostburn	I tried it with msdos and vfat, but it said, that there are errors in filesystem type, or bad superblock..etc
+2010-07-09T19:56:00.000Z	frostburn	ujvarosya	i'm assuming you can load the floppy in another system and it sees data, yes?  if it's a linux system do a mount and you should be able to see the filesystem type, or do a fdisk -l
+2010-07-09T19:57:00.000Z	ujvarosya	frostburn	after fdisk -l still looking for the FS type..
+2010-07-09T19:58:00.000Z	ujvarosya	frostburn	and by the way I don't have other PC-s with non-Linux OS and floppy drive:)
+2010-07-09T19:58:00.000Z	frostburn	ujvarosya	any pcs?
+2010-07-09T19:59:00.000Z	ujvarosya	frostburn	?
+2010-07-09T20:20:00.000Z	ujvarosya	frostburn	I can't format iswith fdisk it said always to reboot ("old kernel?"), thanks anyway:)
+2010-07-09T20:22:00.000Z	frostburn	ujvarosya	i was going to suggest using a windows compupter to copy the data off, or make a raw image, and then transferring it to linux via ethernet/usb
+2010-07-09T20:24:00.000Z	ujvarosya	frostburn	yes, but I don't know why don't work..thanks again, bye:)
+2010-07-09T20:41:00.000Z	ujvarosya	frostburn	I format the disk under my father's old worklaptop, then I can mount it with sudo, but the "normal" way still not work
+2010-07-09T20:42:00.000Z	frostburn	ujvarosya	it may have been unformatted?

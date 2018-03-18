@@ -1,0 +1,24 @@
+2010-10-14T20:38:00.000Z	gpetrakis		hello the hibernation option is not available in the power menu
+2010-10-14T20:40:00.000Z	gpetrakis		hello the hibernation option is not available in the power menu
+2010-10-14T20:40:00.000Z	undecim	gpetrakis	Did you configure your partitions manually?
+2010-10-14T20:41:00.000Z	undecim	gpetrakis	Can you check to see what size your swap partition is?
+2010-10-14T20:41:00.000Z	gpetrakis	undecim	i dont need swap i have 4gb ram
+2010-10-14T20:42:00.000Z	undecim	gpetrakis	Swap is required for hibernation
+2010-10-14T20:42:00.000Z	undecim	gpetrakis	That's where the memory is dumped
+2010-10-14T20:42:00.000Z	gpetrakis	undecim	how do i create one?
+2010-10-14T20:48:00.000Z	undecim	gpetrakis	You will have UUIDs for other partitions as well. If you already have one that says swap, then you're fine.
+2010-10-14T20:43:00.000Z	undecim	gpetrakis	You will need to use GParted with a live CD, then setup the line in fstab and reconfigure uswsusp
+2010-10-14T20:44:00.000Z	gpetrakis	undecim	how do i setup the line in fstab and fixing the uswsusp?
+2010-10-14T20:45:00.000Z	undecim	gpetrakis	My fstab swap line looks like this: UUID=a54dda5e-c297-4db3-a49e-f1af66685cd3 none            swap    sw              0       0
+2010-10-14T20:45:00.000Z	gpetrakis	undecim	where do i find this?
+2010-10-14T20:45:00.000Z	undecim	gpetrakis	You need to put a line it /etc/fstab that looks just like that, but with your own swap's UUID, which you can get by typing "blkid" in a terminal
+2010-10-14T20:48:00.000Z	gpetrakis	undecim	i have a UUID line there
+2010-10-14T20:49:00.000Z	undecim	gpetrakis	You should have a swap partition by default if you let Ubuntu manage the partition setup
+2010-10-14T20:49:00.000Z	gpetrakis	undecim	i have only one for the /dev/sdb1
+2010-10-14T20:50:00.000Z	undecim	gpetrakis	So nothing with "swap" in it?
+2010-10-14T20:50:00.000Z	gpetrakis	undecim	no
+2010-10-14T20:50:00.000Z	undecim	gpetrakis	You will need to make one on a livecd with GParted then.
+2010-10-14T20:52:00.000Z	gpetrakis	undecim	how big to do the swap partition
+2010-10-14T20:52:00.000Z	undecim	gpetrakis	If you want to hibernate, make it the size of your ram.
+2010-10-14T20:52:00.000Z	gpetrakis	undecim	as big as the RAM size?
+2010-10-14T20:53:00.000Z	undecim	gpetrakis	Yup

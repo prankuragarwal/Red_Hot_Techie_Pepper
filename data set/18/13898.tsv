@@ -1,0 +1,18 @@
+2008-10-20T22:24:00.000Z	klaxian		X/gnome seems to be crashing or freezing during login.  does anyone know how I can find out what is causing that?
+2008-10-20T22:25:00.000Z	soundray	klaxian	log into a failsafe session and examine ~/.xsession-errors
+2008-10-20T22:26:00.000Z	klaxian	soundray	i did that, but nothing looks too problematic there
+2008-10-20T22:28:00.000Z	soundray	klaxian	have you been able to login successfully before this problem occurred, or is this a fresh installation?
+2008-10-20T22:29:00.000Z	klaxian	soundray	i was able to successfully log in in hardy, but i just upgraded to intrepid (i know this isn't the right channel).  my laptop runs intrepid fine, but i cna't log in to my desktop now
+2008-10-20T22:29:00.000Z	klaxian	soundray	i tried making a new user also...no luck
+2008-10-20T22:29:00.000Z	soundray	klaxian	the wonders of beta software
+2008-10-20T22:30:00.000Z	klaxian	soundray	perhaps, but i've had it working on several other computers.  i was just hoping for a way to figure out what is actually crashing so i can remove it
+2008-10-20T22:31:00.000Z	soundray	klaxian	difficult, if there's nothing in .xsession-errors
+2008-10-20T22:31:00.000Z	klaxian	soundray	the .xsession-errors file looks the same as another computer i have except it just stops half way through.  the last line is "x-session-manager[6702]: WARNING: Application 'gnome-wm.desktop' failed to regi..."
+2008-10-20T22:32:00.000Z	soundray	klaxian	you could reset your gnome configuration with gconftool --recursive-unset /
+2008-10-20T22:32:00.000Z	klaxian	soundray	i made a brand new user so that i could test with default settings and it still didn't work
+2008-10-20T22:33:00.000Z	klaxian	soundray	i'm just not sure how to troubleshoot this one
+2008-10-20T22:39:00.000Z	klaxian	soundray	i have now killed every process running by the user attempting to log in.  however, the screen is still frozen.  perhaps gdm itself crashes?
+2008-10-20T22:40:00.000Z	soundray	klaxian	you can bypass gdm to check: Ctrl-Alt-F2 for text mode, log in and run startx
+2008-10-20T22:40:00.000Z	klaxian	soundray	ctrl-alt-f2 doesn't work, the keyboard is unresponsive
+2008-10-20T22:41:00.000Z	klaxian	soundray	i am ssh'ing into the machine to try things
+2008-10-20T22:41:00.000Z	klaxian	soundray	i will try to kill x and start again

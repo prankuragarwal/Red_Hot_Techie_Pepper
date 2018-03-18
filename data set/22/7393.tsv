@@ -1,0 +1,22 @@
+2006-04-28T06:27:00.000Z	pschulz01		Greetings.. trying to find  <sys/io.h> in breezy...
+2006-04-28T06:27:00.000Z	roryy	pschulz01	install the build-essential package
+2006-04-28T06:28:00.000Z	pschulz01	roryy	build-essential is already the newest version.
+2006-04-28T06:30:00.000Z	roryy	pschulz01	and sys/io.h is missigin ?
+2006-04-28T06:30:00.000Z	pschulz01	roryy	 dpkg -S include/sys/io.h
+2006-04-28T06:31:00.000Z	roryy	pschulz01	puzzling. I set libc6-dev -- which is a dep of build-essential
+2006-04-28T06:31:00.000Z	roryy	pschulz01	that is, i *get* libc6-dev (from dpkg -S ... )
+2006-04-28T06:32:00.000Z	roryy	pschulz01	/usr/include/sys/io.h
+2006-04-28T06:33:00.000Z	pschulz01	roryy	dpkg -L libc6-dev | grep sys/io.h -  doesn't return anything on Breezy.
+2006-04-28T06:33:00.000Z	roryy	pschulz01	it does on my breezy ;)
+2006-04-28T06:33:00.000Z	roryy	pschulz01	what arch are you on?
+2006-04-28T06:34:00.000Z	pschulz01	roryy	PowerPC
+2006-04-28T06:34:00.000Z	roryy	pschulz01	let's check on packages.ubuntu.com
+2006-04-28T06:35:00.000Z	pschulz01	roryy	Is is arch dependent?
+2006-04-28T06:35:00.000Z	roryy	pschulz01	wouldn't have thought so
+2006-04-28T06:36:00.000Z	roryy	pschulz01	but that is the only difference between our system
+2006-04-28T06:37:00.000Z	pschulz01	roryy	My Dapper is on i386, and this has this file..
+2006-04-28T06:38:00.000Z	roryy	pschulz01	i'm on i386 breezy
+2006-04-28T06:38:00.000Z	roryy	pschulz01	hmm. http://packages.ubuntu.com/cgi-bin/search_contents.pl?word=sys%2Fio.h&searchmode=searchfiles&case=insensitive&version=breezy&arch=powerpc
+2006-04-28T06:38:00.000Z	roryy	pschulz01	as opposed to http://packages.ubuntu.com/cgi-bin/search_contents.pl?word=sys%2Fio.h&searchmode=searchfiles&case=insensitive&version=breezy&arch=i386
+2006-04-28T06:39:00.000Z	roryy	pschulz01	looks like it is arch specific
+2006-04-28T06:41:00.000Z	pschulz01	roryy	Thanks.. looks like I'll have to hack some code..

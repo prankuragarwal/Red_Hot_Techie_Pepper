@@ -1,0 +1,21 @@
+2006-06-08T05:48:00.000Z	WhatTheDeuce		as a followup to my last question, what would be the best way to use grep on each file in a directory (including the files inside directories in that directory)?
+2006-06-08T05:48:00.000Z	bobstro	WhatTheDeuce	find should work
+2006-06-08T06:10:00.000Z	bobstro	WhatTheDeuce	try "find . -exec grep barf {} \;" perhaps?
+2006-06-08T06:11:00.000Z	WhatTheDeuce	bobstro	What would I replace with my pattern in that?
+2006-06-08T06:12:00.000Z	bobstro	WhatTheDeuce	barf
+2006-06-08T06:13:00.000Z	bobstro	WhatTheDeuce	"find <startpath> -exec grep <pattern> {} \;
+2006-06-08T06:13:00.000Z	bobstro	WhatTheDeuce	Just tested, works fine.
+2006-06-08T06:16:00.000Z	WhatTheDeuce	bobstro	How long should this take to work?  Right now I'm running it, and it seems to be going extremely slowly
+2006-06-08T06:17:00.000Z	bobstro	WhatTheDeuce	is it possible it's not matching? try a test with a pattern you know exists first.
+2006-06-08T06:18:00.000Z	bobstro	WhatTheDeuce	i tested with "sudo find /etc/ -exec grep hostname {} \;"
+2006-06-08T06:18:00.000Z	WhatTheDeuce	bobstro	I know the pattern exists.  It's taking about 30 seconds to search through each file though
+2006-06-08T06:19:00.000Z	bobstro	WhatTheDeuce	should search at same rate "find . -print" does
+2006-06-08T06:20:00.000Z	WhatTheDeuce	bobstro	Hmm...maybe it's just taking a long time searching through large binaries.  Is there any way I could make it not search hidden folders?
+2006-06-08T06:22:00.000Z	bobstro	WhatTheDeuce	hmm... not sure if you can use that elaborate a regexp in find
+2006-06-08T06:22:00.000Z	bobstro	WhatTheDeuce	so you mean files starting with ".", right?
+2006-06-08T06:23:00.000Z	WhatTheDeuce	bobstro	Yes.
+2006-06-08T06:24:00.000Z	bobstro	WhatTheDeuce	i think you'll be chaining find commands, but not sure. problem is, EVERYTHING it returns will start with "."!
+2006-06-08T06:25:00.000Z	WhatTheDeuce	bobstro	Hm...I think the environment I'll be using this on won't have as many binaries as the testing environment, so I think I'll be fine
+2006-06-08T06:25:00.000Z	bobstro	WhatTheDeuce	ah, wait. are the big files binaries?
+2006-06-08T06:26:00.000Z	WhatTheDeuce	bobstro	Most of them are
+2006-06-08T09:33:00.000Z	bobstro	WhatTheDeuce	yeah, use dyndns or such

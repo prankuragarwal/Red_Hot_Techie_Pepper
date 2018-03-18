@@ -1,0 +1,23 @@
+2006-05-21T09:03:00.000Z	shawn		can someone help me please, i just installed linux on a partition, i have windows xp on the other, and when i try to view files from the other partition, it says that im not the owner
+2006-05-21T09:04:00.000Z	shawn		fstab?
+2006-05-21T09:05:00.000Z	nickrud	shawn	/etc/fstab (file system table) defines how your windows partition is read. That link https://wiki.ubuntu.com/AutomaticallyMountMSWindowsPartitions explains a lot
+2006-05-21T09:19:00.000Z	nickrud	shawn	you need help with fixing your /etc/fstab?
+2006-05-21T09:20:00.000Z	nickrud	shawn	ok. start with Applications->Accessories-Terminal from the top menu bar
+2006-05-21T09:21:00.000Z	nickrud	shawn	did that open a window for you?
+2006-05-21T09:22:00.000Z	nickrud	shawn	good. That's the place you're going to type nearly everything someone says here.
+2006-05-21T09:23:00.000Z	nickrud	shawn	the first thing we're going to do is make a copy of the filesystem table so if everything goes tits up, we can recover :)
+2006-05-21T09:23:00.000Z	nickrud	shawn	in that terminal, type cp /etc/fstab ~
+2006-05-21T09:24:00.000Z	nickrud	shawn	yes it did. if you type ls in the terminal, you should see fstab listed (ls is the same as dir in windows)
+2006-05-21T09:26:00.000Z	nickrud	shawn	now, type gksudo gedit /etc/fstab in the terminal , it should open a file and show you some text,
+2006-05-21T09:27:00.000Z	nickrud	shawn	those are warnings, not errors. no sweat
+2006-05-21T09:28:00.000Z	nickrud	shawn	close it then. samuli he's using gksudo
+2006-05-21T09:29:00.000Z	nickrud	shawn	good, work from there
+2006-05-21T09:30:00.000Z	nickrud	shawn	no, open a firefox browser window to http://paste.ubuntu-nl.org/ and copy the text to that web page, and submit it. That way we can see what your /etc/fstab is
+2006-05-21T09:31:00.000Z	nickrud	shawn	that no after your name should have been now :)
+2006-05-21T09:36:00.000Z	nickrud	shawn	http://paste.ubuntu-nl.org/14105 Do you see the addition I made, to line 6?
+2006-05-21T09:38:00.000Z	nickrud	shawn	make the changes to the fstab in gedit, and save it
+2006-05-21T09:39:00.000Z	nickrud	shawn	now close gedit
+2006-05-21T09:39:00.000Z	nickrud	shawn	now, type this exactly: sudo umount /dev/sda1 && sudo mount /dev/sda1
+2006-05-21T09:41:00.000Z	nickrud	shawn	thanks
+2006-05-21T09:45:00.000Z	nickrud	shawn	by installing wine, which is ' wine is not a windows emulator ' :)
+2006-05-21T09:46:00.000Z	nickrud	shawn	some, no promises

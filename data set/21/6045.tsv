@@ -1,0 +1,21 @@
+2007-09-27T10:00:00.000Z	stroyan	CroX	I don't know of any problem with gnome-terminal and keypad keys.  Are you saying that arrow keys remain in local mode instead of sending escape sequences to some applications?
+2007-09-27T10:01:00.000Z	CroX	stroyan	I don't know what the exact problem is but with num lock off, pressing keypad 4, for example, moves the cursor to the left. In other terms, as I would like to have it, I get an escape sequence.
+2007-09-27T10:02:00.000Z	stroyan	CroX	If you execute    tput smkx; cat -A; tput rmkx     You should see escape sequences from the arrow keys.  Do you?  And what does   echo $TERM   report?
+2007-09-27T10:03:00.000Z	stroyan	CroX	(You type ctrl-d  to end that "cat -A".
+2007-09-27T10:03:00.000Z	CroX	stroyan	xterm. I'll check those commands, one moment.
+2007-09-27T10:04:00.000Z	CroX	stroyan	Yeah, there they are!
+2007-09-27T10:04:00.000Z	CroX	stroyan	The reason I've run into this is that I want to hook those keys to macros, in a MUD client. By the by.
+2007-09-27T10:05:00.000Z	stroyan	CroX	It seems that your client isn't using the terminfo sequence to ask for escape sequences.
+2007-09-27T10:06:00.000Z	CroX	stroyan	But why does it work in aterm/xterm/whatever, and not gnome-terminal?
+2007-09-27T10:06:00.000Z	stroyan	CroX	Perhaps the application is hardcoding some other method that doesn't match gnome-terminal.  The source code would know. ;-)
+2007-09-27T10:07:00.000Z	CroX	stroyan	I guess you don't fancy lurking around the source, looking for more info? :>
+2007-09-27T10:07:00.000Z	stroyan	CroX	No, thank you.
+2007-09-27T10:08:00.000Z	CroX	stroyan	Heh, figured as much. Thanks though.
+2007-09-27T10:12:00.000Z	stroyan	CroX	My curiosity is getting the better of me.  Which mud application are you trying to use with gnome-terminal.
+2007-09-27T10:12:00.000Z	CroX	stroyan	Hehe. TinTin++. Found at http://tintin.sourceforge.net/.
+2007-09-30T09:55:00.000Z	CroX	stroyan	I didn't, no. :/ The dev of TinTin++ told me to try other terms.
+2007-09-30T09:56:00.000Z	stroyan	CroX	Just changing printf("\033=\033[?1h"); to printf("\033[?1h\033="); seems like any easy fix.
+2007-09-30T09:56:00.000Z	CroX	stroyan	In the source for tt++?
+2007-09-30T09:57:00.000Z	CroX	stroyan	Have you suggested this on the boards of TinTin++? :)
+2007-09-30T09:58:00.000Z	CroX	stroyan	Ohh, I never caught that. Then I'll test that this week hopefully. I'll let you know how it goes. :)
+2007-09-30T09:58:00.000Z	stroyan	CroX	OK

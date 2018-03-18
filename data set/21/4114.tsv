@@ -1,0 +1,21 @@
+2009-07-16T11:21:00.000Z	R0b0t1	vise	Yes.
+2009-07-16T11:18:00.000Z	vise	R0b0t1	Something to do with the execute disable bit of the processor?
+2009-07-16T11:20:00.000Z	vise	R0b0t1	So you do a PROT_EXEC on mprotect?
+2009-07-16T11:25:00.000Z	vise	R0b0t1	mprotect returning no error?
+2009-07-16T11:26:00.000Z	vise	R0b0t1	Does it go this way: You load code from a file.. and say manipulate it and then call mprotect to enable execution and then jump to it?
+2009-07-16T11:27:00.000Z	R0b0t1	vise	Yes, I try to run it like that (although no file stuff, just char f[] = {0x90, 0x90, 0x90, 0x90, 0xC3}; which I memcpy to a heap location.
+2009-07-16T11:28:00.000Z	vise	R0b0t1	So C3 is ret, which should return to where you called from .. right?
+2009-07-16T11:29:00.000Z	R0b0t1	vise	Yes.
+2009-07-16T11:30:00.000Z	vise	R0b0t1	I guess there could be a few things you could try. 1. Disable all optimizations of the compiler. 2. Print in hex the destination code (in the heap) and verify it's the same. 3. Step debug into the assembly.
+2009-07-16T11:35:00.000Z	vise	R0b0t1	mprotect upon successful completion, returns 0 right?
+2009-07-16T11:35:00.000Z	R0b0t1	vise	Yeah, it's not returning any other number for me.
+2009-07-16T11:35:00.000Z	vise	R0b0t1	Your code seems to be printing an error if it returns zero..
+2009-07-16T11:36:00.000Z	vise	R0b0t1	So do you see an "err"?
+2009-07-16T11:36:00.000Z	R0b0t1	vise	Indeed I do.
+2009-07-16T11:37:00.000Z	vise	R0b0t1	Runs for me too
+2009-07-16T11:37:00.000Z	vise	R0b0t1	Did you change the compiler recently?
+2009-07-16T11:37:00.000Z	R0b0t1	vise	Not beside regular ubuntu updates.
+2009-07-16T11:38:00.000Z	vise	R0b0t1	Oh yes.. it doesnt print a message for me too.. so it fails i think..
+2009-07-16T11:39:00.000Z	vise	R0b0t1	Yep.. mprotect fails and returns -1 for me too
+2009-07-16T11:40:00.000Z	R0b0t1	vise	But does it fail with a segfault? I think mprotect just might be failing, but still running the code.
+2009-07-16T11:40:00.000Z	vise	R0b0t1	I don't get a segfault, but i added an "else" to it.. so it does not execute if there is an error.. I don't think you should execute if there is an error

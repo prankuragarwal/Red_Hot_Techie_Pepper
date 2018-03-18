@@ -1,0 +1,23 @@
+2007-01-06T08:06:00.000Z	Znero		i tried to use gparted for reformating my harddrive, but grub etc is still remaining. isnt there any way to erase everything?
+2007-01-06T08:07:00.000Z	lupine_85	Znero	dd if=/dev/zero of=/dev/hda -- assuming hda is the hard drive you want clearing
+2007-01-06T08:07:00.000Z	Znero	lupine_85	thanks
+2007-01-06T08:08:00.000Z	lupine_85	Znero	there's also wipe & shred that attempt to do it in a more "secure" manner
+2007-01-06T08:08:00.000Z	lupine_85		just don't use /dev/random :D - you'll be waiting years
+2007-01-06T08:11:00.000Z	Znero	lupine_85	It says /dev/hda: Read-only file system (im using liveCD)
+2007-01-06T08:12:00.000Z	lupine_85	Znero	what it says
+2007-01-06T08:12:00.000Z	lupine_85		elevate privs with sudo
+2007-01-06T08:13:00.000Z	Znero	lupine_85	what do you mean? i entered the command you posted and than the message add: ffne /dev/hda: Read-only file system appears
+2007-01-06T08:14:00.000Z	lupine_85	Znero	yes. you don't have appropriate privs to write to /dev/hda (that is the correct device-file, right?). so prefix sudo to the command to get them
+2007-01-06T08:14:00.000Z	lupine_85		since you're on the liveCD, the sudo password is blank
+2007-01-06T08:14:00.000Z	Znero	lupine_85	sudo doesnt help, the same message appears
+2007-01-06T08:15:00.000Z	lupine_85	Znero	is it mounted anywhere?
+2007-01-06T08:15:00.000Z	lupine_85		or rather, any of it's partitions
+2007-01-06T08:15:00.000Z	Znero	lupine_85	no
+2007-01-06T08:15:00.000Z	lupine_85		weird. works here
+2007-01-06T08:16:00.000Z	lupine_85		hda isn't your CDROM drive, by any chance, is it? =)
+2007-01-06T08:16:00.000Z	lupine_85		(SATA drives will be sd*)
+2007-01-06T08:17:00.000Z	Znero	lupine_85	oh, i looked at gparted and it says /dev/sda1.... yes its a sata
+2007-01-06T08:18:00.000Z	lupine_85	Znero	please, for crying out loud, /read/ what people say. If you had an IDE and SATA hard drive, you'd be kicking my arse right now
+2007-01-06T08:19:00.000Z	lupine_85		so anyway. s/hda/sda/ I guess
+2007-01-06T08:19:00.000Z	Znero	lupine_85	sorry. but ive unplugged the drive i dont want to be formated, so nothing could have happened
+2007-01-06T08:19:00.000Z	lupine_85	Znero	at least that was sensible ^^

@@ -1,0 +1,19 @@
+2010-02-04T18:45:00.000Z	xro		hi...
+2010-02-04T18:46:00.000Z	xro		i have a trouble with cron... www-data (apache user) has to start remote shell with cron... i write command in /var/spool/cron/crontabs/www-data , but it's like cron nerver read this file....
+2010-02-04T18:47:00.000Z	bigpresh	xro	Use the crontab command to edit crontabs, don't edit directly in /var/spool/cron/crontabs
+2010-02-04T18:47:00.000Z	bigpresh	xro	e.g. sudo crontab -e -u www-data
+2010-02-04T18:48:00.000Z	bigpresh	xro	Also, make sure that all commands you put in the crontab end with a newline; at least some cron daemons will silently ignore ones which don't (e.g. if it's the last line of the file)
+2010-02-04T18:51:00.000Z	xro	bigpresh	but it's a python script that writes in my /var/spool/cron/crontabs... why i can't write in this file?
+2010-02-04T18:52:00.000Z	bigpresh	xro	I believe crond will ignore you, as the changes should be made with the crontab command
+2010-02-04T18:53:00.000Z	bigpresh	xro	You can overwrite the current crontab with one from a file using 'crontab -e -u username filename'
+2010-02-04T18:54:00.000Z	bigpresh	xro	Also, beware that if the machine is configured correctly, the www-data user won't have a shell.  If that's the case, cron won't run any commands for them
+2010-02-04T18:55:00.000Z	xro	bigpresh	i added a shell
+2010-02-04T18:56:00.000Z	xro	bigpresh	crontab -e -u www-data /var/spool/cron/crontabs/www-data   -->  crontab: usage error: no arguments permitted after this option
+2010-02-04T18:57:00.000Z	bigpresh	xro	Apologies, omit the -e option if you want it to read a crontab from a file, as opposed to launching an editor to edit the crontab
+2010-02-04T18:58:00.000Z	xro	bigpresh	crontab -u www-data /var/spool/cron/crontabs/www-data  that works fine
+2010-02-04T18:58:00.000Z	xro	bigpresh	but that means i can't edit my crontab with python?
+2010-02-04T18:59:00.000Z	xro	bigpresh	or should do a --> os.system("crontab -u www-data /var/spool/cron/crontabs/www-data")
+2010-02-04T18:59:00.000Z	bigpresh	xro	That ought to work, if a bit bodgy
+2010-02-04T19:03:00.000Z	xro	bigpresh	ok so it's not possible to directly write in the crontab files... it works in /etc/crontab but not in /var/spool/cron/.../www-data     do you understant it?
+2010-02-04T19:03:00.000Z	bigpresh	xro	Yes - you shouldn't mess with the files in /var/spool/cron as I originally said :)
+2010-02-04T19:04:00.000Z	bigpresh	xro	Or, if you do mess with them, be aware that crond won't notice

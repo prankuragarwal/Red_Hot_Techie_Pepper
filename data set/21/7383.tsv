@@ -1,0 +1,21 @@
+2008-02-28T01:18:00.000Z	Muffy		hey, I have this RAID, and I want to mount it without having the OS HDD in (e.g. if I take it simewhere else)
+2008-02-28T01:18:00.000Z	Muffy		all google gives me is how to make a system boot from RAID
+2008-02-28T01:19:00.000Z	erUSUL	Muffy	what type of reid it is?
+2008-02-28T01:19:00.000Z	Muffy	erUSUL	RAID 1
+2008-02-28T01:21:00.000Z	erUSUL	Muffy	i mean it is bios raid (fakeraid) ?? or is a software linux raid?
+2008-02-28T01:21:00.000Z	Muffy	erUSUL	Softraid, I think I found a guide that uses mdadm to do the job
+2008-02-28T01:23:00.000Z	erUSUL	Muffy	if you assembled the array you know what /dev/xxxx  node it got just use it as you wopuld use /dev/sda to mount the partitions on the raid
+2008-02-28T01:24:00.000Z	Muffy	erUSUL	I'm om a liveCD now, the gisk with the OS and fstab etc is not in the system with the raid
+2008-02-28T01:26:00.000Z	erUSUL	Muffy	the dev node should be something like /dev/md**  (cat /proc/mdstat should list them iirc)
+2008-02-28T01:28:00.000Z	Muffy	erUSUL	it doesn't. But I don't have the disk in with which I made the RAID ( and which has the fstab), so it shouldn't be able to recognise it, right?
+2008-02-28T01:31:00.000Z	Muffy	erUSUL	if I do this, will it wipe the RAID or recognise it? >> http://paste.ubuntu-nl.org
+2008-02-28T01:32:00.000Z	Muffy	erUSUL	 http://paste.ubuntu-nl.org/57606/ << that's the link
+2008-02-28T01:33:00.000Z	erUSUL	Muffy	as i understand that will recreate the array...
+2008-02-28T01:34:00.000Z	Muffy	erUSUL	k, wi try it. I've got all hte data backed up anyway, but it's a pain to set up a new RAID =p
+2008-02-28T01:35:00.000Z	erUSUL	Muffy	cat /proc/mdstat does not return anything??
+2008-02-28T01:36:00.000Z	Muffy	erUSUL	nope
+2008-02-28T01:36:00.000Z	erUSUL	Muffy	http://www.linuxjournal.com/article/8874
+2008-02-28T01:36:00.000Z	erUSUL	Muffy	the article mentions this >> mdadm --examine --scan  /dev/sda1 /dev/sda2 /dev/sda3
+2008-02-28T01:36:00.000Z	erUSUL	Muffy	read it fully
+2008-02-28T01:37:00.000Z	Muffy	erUSUL	k, I wil
+2008-02-28T01:47:00.000Z	Muffy	erUSUL	buh, gonna put the HDD with fstab and mdadm.conf on it in again and see if that helps me when mounting with the live cd

@@ -1,0 +1,23 @@
+2006-08-14T08:06:00.000Z	Nexea		can someone help me with my hibernate problem?
+2006-08-14T08:08:00.000Z	Nexea		how do you disable hibernation capability
+2006-08-14T08:09:00.000Z	neutrinomass	Nexea	Why exactly do you want to disable it ?
+2006-08-14T08:11:00.000Z	neutrinomass	Nexea	OK, but why remove hibernation capability ?
+2006-08-14T08:11:00.000Z	Nexea	neutrinomass	oh nice nickname.. neutrinos are very small mass
+2006-08-14T08:12:00.000Z	Nexea	neutrinomass	because when i go to log out, there is a huge hiberate button
+2006-08-14T08:12:00.000Z	neutrinomass	Nexea	I don't think you can do that for a root user : They can always interface directly with the kernel ..
+2006-08-14T08:12:00.000Z	neutrinomass	Nexea	Ahh, remove it from gdm/gnome-session ?
+2006-08-14T08:14:00.000Z	neutrinomass	Nexea	It can be done ... I'm not sure how exactly - try searching for a gconf key ...
+2006-08-14T08:16:00.000Z	neutrinomass	Nexea	gnome-power-manager, that's where it is I think . I'm NOT sure if this is safe, but you could set "can hibernate" and "can suspend" to false
+2006-08-14T08:17:00.000Z	neutrinomass	Nexea	Btw, I think it's still being debated whether neutrinos have mass at all :-)
+2006-08-14T08:19:00.000Z	Nexea	neutrinomass	yeah.. i set both of them to unchecked
+2006-08-14T08:19:00.000Z	Nexea	neutrinomass	i assume settings become active once i restart.. yet it is still not working
+2006-08-14T08:20:00.000Z	neutrinomass	Nexea	Hm... I'd think that they take effedt immediately. Maybe you have to relogin... IIRC the gnome logout panel was patched to make it read that gconf key to see whether the system can be suspended/hibernated to avoid showing the option if it cannot
+2006-08-14T08:21:00.000Z	Nexea	neutrinomass	one second, let me try to logout
+2006-08-14T08:25:00.000Z	Nexea	neutrinomass	i found something
+2006-08-14T08:25:00.000Z	Nexea	neutrinomass	the hibernate command is /sbin/pmi hibernate
+2006-08-14T08:26:00.000Z	Nexea	neutrinomass	which is a shutdown script
+2006-08-14T08:26:00.000Z	neutrinomass	Nexea	Yes ... probably - but there should be a gconf key (I'm trying to get to a clean solution .... I guess you could boot with acpi=off and be done with it )
+2006-08-14T08:27:00.000Z	neutrinomass	Nexea	Under gnome-power-manager in gconf I also found a "show_actions_in_menu" key which seems promising....
+2006-08-14T08:27:00.000Z	neutrinomass	Nexea	Sorry, I have to leave now... I may be back in a moment though ... good luck with your problem
+2006-08-14T08:27:00.000Z	Nexea	neutrinomass	hmmm
+2006-08-14T08:28:00.000Z	Nexea	neutrinomass	well thank you for your time

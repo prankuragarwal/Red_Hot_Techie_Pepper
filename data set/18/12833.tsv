@@ -1,0 +1,18 @@
+2008-06-27T18:43:00.000Z	zipper		Anyone managed to re-map the "+" and "-" keys on a Logitech MX518 mouse? I've tried using evdev, but i seems like no matter what i do i cannot get xev to register those two keys - and then i cant bind them to pageUp/down like i want. I read a guide using evrouter, but i haven't managed to get it working (if anyone got experience with evrouter, please speak up, maybe you could help me understand the guide). Any ideas on what i could do?
+2008-06-27T18:44:00.000Z	cjohnson	zipper	I had better luck remapping my logitech mice buttons using btnx
+2008-06-27T18:44:00.000Z	zipper	cjohnson	btnx? None of the guides i've read mentioned that
+2008-06-27T18:44:00.000Z	cjohnson	zipper	yeah, it's a lesser known one than evdev
+2008-06-27T18:44:00.000Z	cjohnson	zipper	it's wizard oriented
+2008-06-27T18:45:00.000Z	zipper	cjohnson	oh cool. Is it in the repos?
+2008-06-27T18:45:00.000Z	cjohnson	zipper	"click the button 5 times" "choose action for newly detected button" etc.
+2008-06-27T18:45:00.000Z	zipper	cjohnson	wonder if that will work, when xev does not register the buttons tho? Worth a try i guess
+2008-06-27T18:45:00.000Z	cjohnson	zipper	that i'm not sure of
+2008-06-27T18:45:00.000Z	cjohnson	zipper	it worked for me, xev wouldn't detect _any_ of my extra buttons
+2008-06-27T18:55:00.000Z	zipper	cjohnson	with btnx.... I suppose i need to change my xorg.conf to not use evdev?
+2008-06-27T18:55:00.000Z	cjohnson	zipper	probably
+2008-06-27T19:01:00.000Z	zipper	cjohnson	darn, btnx cannot detect those two buttons either it seems =/
+2008-06-27T19:01:00.000Z	cjohnson	zipper	then i'm out of ideas :(
+2008-06-27T19:06:00.000Z	zipper	cjohnson	I'm reading the btnx man atm... It seems like it listens to all the event handlers during mouse detection. It only found one handler in my case, but still it cannot detect 2 of the buttons. I guess that means linux doesnt have any way of knowing those buttons exists. Maybe this is impossible without a driver from logitech?
+2008-06-27T19:06:00.000Z	cjohnson	zipper	perhaps, and unfortunately I don't think logitech cares about it's customers enough to make a decent method for us to use those functions
+2008-06-27T19:16:00.000Z	zipper	cjohnson	hmm, /proc/bus/input/devices tells me there is 2 handlers for my mouse : Handlers=mouse1 event3 . You have any idea if btnx only listens to event* ? Maybe this 'mouse1' handler could be the one taking care of those 2 buttons?
+2008-06-27T19:17:00.000Z	cjohnson	zipper	perhaps...i'm not skilled enough in devices like that to really know :s

@@ -1,0 +1,23 @@
+2009-02-28T07:08:00.000Z	_ryker		clear
+2009-02-28T07:08:00.000Z	_ryker		whoops lol
+2009-02-28T07:08:00.000Z	_ryker		hey guys, my router assigns my computer an ip, but i need it to assign the same ip every time, any ideas?
+2009-02-28T07:10:00.000Z	n8tuser	_ryker	-> pretty much should be same in the next acquisition, look for the leases in /var/lib/dhcp
+2009-02-28T07:14:00.000Z	_ryker	n8tuser	the files in there are empty
+2009-02-28T07:16:00.000Z	n8tuser	_ryker	-> files in /var/lib/dhcp3 ?
+2009-02-28T07:17:00.000Z	n8tuser	_ryker	-> are you using dhclient ?
+2009-02-28T07:17:00.000Z	n8tuser	_ryker	-> how are you acquiring your ip address now ?
+2009-02-28T07:18:00.000Z	n8tuser	_ryker	-> can you post your interfaces file?
+2009-02-28T07:21:00.000Z	_ryker	n8tuser	http://pastebin.ca/1349251
+2009-02-28T07:22:00.000Z	n8tuser	_ryker	-> you have a static address assignment so what is the issue?
+2009-02-28T07:22:00.000Z	_ryker	n8tuser	the connection is not working anymore, even though it should, and it worked fine under nm
+2009-02-28T07:23:00.000Z	n8tuser	_ryker	-> thats because you dont have the correct configs,  man iwconfig  to include the AP essid and whatever else is needed
+2009-02-28T07:28:00.000Z	_ryker	n8tuser	still not functional, i set the essid, key, channel to auto, ap and is still not working
+2009-02-28T07:28:00.000Z	n8tuser	_ryker	-> post it again
+2009-02-28T07:30:00.000Z	_ryker	n8tuser	http://pastebin.ca/1349255
+2009-02-28T07:32:00.000Z	n8tuser	_ryker	 i dont think it looks right.. its something like  wireless-essid  xxxxx
+2009-02-28T07:35:00.000Z	_ryker	n8tuser	i think i have to edit resolv.conf
+2009-02-28T07:36:00.000Z	n8tuser	_ryker	-> see step 5 on this  https://help.ubuntu.com/community/WifiDocs/WirelessTroubleShootingGuide
+2009-02-28T07:37:00.000Z	n8tuser	_ryker	-> rather see step 4 on this  https://help.ubuntu.com/community/WifiDocs/WirelessTroubleShootingGuide
+2009-02-28T07:41:00.000Z	_ryker	n8tuser	im making these changes, but its still not working at all. i dont understand, it really should work
+2009-02-28T08:25:00.000Z	n8tuser	_ryker	-> i stepped out, did you try   sudo ifdown wlan0; sudo ifup wlan0   ?
+2009-02-28T08:26:00.000Z	_ryker	n8tuser	i ended up reinstalling network-manager and setting the static details using that, and it worked fine

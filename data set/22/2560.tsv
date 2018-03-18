@@ -1,0 +1,22 @@
+2010-05-07T05:44:00.000Z	enlil		Hello
+2010-05-07T05:44:00.000Z	enlil		Ok I'm playing with gftp-text in command line but I don't know how to pass multiple instructions to it.
+2010-05-07T05:44:00.000Z	enlil		"gftp-text login:pass@host <<< "cd backups"" works
+2010-05-07T05:44:00.000Z	enlil		But it's a single instruction
+2010-05-07T05:45:00.000Z	enlil		How to send several ones? Whith a separator or something?
+2010-05-07T05:46:00.000Z	enlil		Actualy h00k I didn't find very useful help in the manpage :/
+2010-05-07T05:46:00.000Z	enlil		Actually it doesn't concern gftp-text in particular
+2010-05-07T05:46:00.000Z	enlil		It's about passing several instructions in one string
+2010-05-07T05:46:00.000Z	unop	enlil	a guess. gftp-text login:pass@host <<< "cd backups; get myfile; cd otherdir; other_command;"
+2010-05-07T05:46:00.000Z	enlil		Ok I'll tru with the ; unop
+2010-05-07T05:47:00.000Z	unop	enlil	or you might have to use a newline separator instead of ;
+2010-05-07T05:47:00.000Z	enlil	unop	well I just tryed both and neither work. I've got an error like "cd www/backups \n put test
+2010-05-07T05:47:00.000Z	enlil		CWD www/backups \n put test
+2010-05-07T05:47:00.000Z	enlil		550 Failed to change directory.
+2010-05-07T05:47:00.000Z	enlil		"
+2010-05-07T05:48:00.000Z	enlil		Same with semicolon
+2010-05-07T05:48:00.000Z	enlil		I use some variants with && and stuffs like that
+2010-05-07T05:48:00.000Z	enlil		But nothing worked
+2010-05-07T05:49:00.000Z	unop	enlil	 <<<"command1"$'\n'"command2"$'\n'"command3"  #etc
+2010-05-07T05:49:00.000Z	unop	enlil	but if i were you i would look into lftp instead
+2010-05-07T05:50:00.000Z	enlil		Ok unop thanks a lot it works great. But why lftp?
+2010-05-07T05:52:00.000Z	unop	enlil	because you write a script and pass that to lftp instead of using convoluted command line constructs

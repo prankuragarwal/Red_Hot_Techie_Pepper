@@ -1,0 +1,22 @@
+2010-07-05T02:00:00.000Z	wanderingi		is that what i shoud be expecting?
+2010-07-05T02:01:00.000Z	carl-m	wanderingi	apache usually runs as user www-data
+2010-07-05T02:02:00.000Z	wanderingi	carl-m	so if its running as that what do i need to do? I need to be able to edit these files etc so thats why my group has ownership.
+2010-07-05T02:02:00.000Z	carl-m	wanderingi	let me make usre I understand. you have some web app that is runnins out of apache and is unable to edit some files
+2010-07-05T02:03:00.000Z	carl-m	wanderingi	and you want to be able to edit them as your own user as well
+2010-07-05T02:04:00.000Z	carl-m	wanderingi	just one user, or a whole user group?
+2010-07-05T02:07:00.000Z	carl-m	wanderingi	if it's just one user, I would change the group ownership of the files to www-data, and leave the user ownrship set to you. if the web app creates new files, you may need to make the directories u+s as well
+2010-07-05T02:07:00.000Z	wanderingi	carl-m	how do i do that
+2010-07-05T02:08:00.000Z	carl-m	wanderingi	say that the top-level directory is /directory and your username is USER. you'd run : sudo chown -R USER:www-data /directory
+2010-07-05T02:12:00.000Z	wanderingi	carl-m	the webapp still cant write to the directories
+2010-07-05T02:13:00.000Z	carl-m	wanderingi	replace /directory with your actual directory, run : ls -ld /directory
+2010-07-05T02:13:00.000Z	wanderingi	carl-m	drwxrwxr-x  7 user www-data  4096 2009-10-12 07:13 xampp
+2010-07-05T02:13:00.000Z	carl-m	wanderingi	yes. apache should be able to write to that
+2010-07-05T02:15:00.000Z	carl-m	wanderingi	what error message do you get, exactly?
+2010-07-05T02:18:00.000Z	carl-m	wanderingi	I thought this was a web app. what user are you running the script as?
+2010-07-05T02:19:00.000Z	carl-m	wanderingi	ok. so you're running it out of your browser
+2010-07-05T02:20:00.000Z	carl-m	wanderingi	just to double-check apache, try: ps aux | grep apache
+2010-07-05T02:20:00.000Z	carl-m	wanderingi	you should also get some lines for apache
+2010-07-05T02:21:00.000Z	carl-m	wanderingi	what webserver is running on the server?
+2010-07-05T02:23:00.000Z	carl-m	wanderingi	are you running ubuntu, then?
+2010-07-05T02:30:00.000Z	wanderingi	carl-m	apache was running as 'nobody' when i ran your script with 'nobody' as the owner everything was fine
+2010-07-05T02:30:00.000Z	carl-m	wanderingi	great!

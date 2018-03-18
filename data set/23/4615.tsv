@@ -1,0 +1,23 @@
+2007-07-13T16:26:00.000Z	CppIsWeird		anyone know where to go with this: http://pastebin.com/m76c7f1d    its a make error from alsa.
+2007-07-13T16:27:00.000Z	dawn`chorus	CppIsWeird	just a wild stab, but you may need the -dev package for alsa.
+2007-07-13T16:30:00.000Z	dawn`chorus	CppIsWeird	libasound2-dev
+2007-07-13T16:35:00.000Z	dawn`chorus	CppIsWeird	what sort of trouble you having w/ alsa?  sorry, didn't catch your problem.
+2007-07-13T16:49:00.000Z	dawn`chorus	CppIsWeird	what's going on w/ alsa?  why you need to compile?
+2007-07-13T16:50:00.000Z	dawn`chorus	CppIsWeird	i understand.
+2007-07-13T16:52:00.000Z	dawn`chorus	CppIsWeird	what sound card?
+2007-07-13T16:52:00.000Z	CppIsWeird	dawn`chorus	http://www.alsa-project.org/alsa-doc/doc-php/template.php?company=Intel&card=ICH+southbridge+HD-audio+and+modem.&chip=ICH6%2C+ICH6M%2C+ICH7%2C+ESB2&module=hda-intel
+2007-07-13T16:54:00.000Z	dawn`chorus	CppIsWeird	echo "options snd-hda-intel position_fix=1 model=3stack" | sudo tee -a /etc/modprobe.d/alsa-base
+2007-07-13T16:54:00.000Z	dawn`chorus	CppIsWeird	try that.  and reboot.
+2007-07-13T16:55:00.000Z	CppIsWeird	dawn`chorus	what exactly does that do?
+2007-07-13T16:56:00.000Z	dawn`chorus	CppIsWeird	it's the magic.  :)  no.  it just adds an option to your alsa configuration that may fix it.  it's helped me in the past.  i have one other thing you can try, if that doesn't work.
+2007-07-13T16:57:00.000Z	CppIsWeird	dawn`chorus	okie dokie... if this works, im gonna be kinda pissed at the 300megs of crap i just installed trying to compile the drivers. :P
+2007-07-13T05:01:00.000Z	CppIsWeird	dawn`chorus	that made it worse... my computer doesnt even pretend to have sound anymore. i click on the sound icon at the top and get a huge error message about how i dont have GStreamer
+2007-07-13T05:02:00.000Z	dawn`chorus	CppIsWeird	most likely that's come about via your compiling adventures, not a simple options appendage.
+2007-07-13T05:02:00.000Z	dawn`chorus	CppIsWeird	but you can always remove it.  sudo nano /etc/modprobe.d/alsa-base and delte the last line.
+2007-07-13T05:03:00.000Z	CppIsWeird	dawn`chorus	nothing successfully compiled, so how?
+2007-07-13T05:03:00.000Z	dawn`chorus	CppIsWeird	have you tried this howto?  https://help.ubuntu.com/community/HdaIntelSoundHowto
+2007-07-13T05:06:00.000Z	dawn`chorus	CppIsWeird	i told you how to remove that little option.  so stop complaining.  perhaps try out a livecd of another distro, to see if any distro supports your sound card.
+2007-07-13T05:09:00.000Z	dawn`chorus	CppIsWeird	sudo nano /etc/modprobe.d/alsa-base.  it'll be the very last line.
+2007-07-13T05:16:00.000Z	dawn`chorus	CppIsWeird	behaving?
+2007-07-13T05:16:00.000Z	CppIsWeird	dawn`chorus	minor, one i had options before that, and i was booting in kernel 386 (i was reaching) your option may have fixed it... so far so good, but i've had it last for quite some time once before.
+2007-07-13T05:17:00.000Z	CppIsWeird	dawn`chorus	 not to mention it sounds alot better then when it was working before. so my fingers are crossed. Thanks.

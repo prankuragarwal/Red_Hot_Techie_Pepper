@@ -1,0 +1,23 @@
+2008-08-03T03:17:00.000Z	ibilicki		hi guys, I want to clean up my partitions
+2008-08-03T03:17:00.000Z	ibilicki		i have windows, ubuntu 7.10 and ubuntu 8.04 installed
+2008-08-03T03:18:00.000Z	ibilicki		for a start, I want to delete the partition with ubuntu 7.10
+2008-08-03T03:18:00.000Z	ibilicki		and its swap file
+2008-08-03T03:18:00.000Z	ibilicki		in its place, I want to install puppy linux
+2008-08-03T03:19:00.000Z	ibilicki		first of all, I see two swap partitions, should I delete one of them?
+2008-08-03T03:19:00.000Z	ibilicki		how do I know which one?
+2008-08-03T03:19:00.000Z	nickrud	ibilicki	/etc/fstab will show you which one you're using
+2008-08-03T03:20:00.000Z	ibilicki	nickrud	excllent, I need to delete /dev/sda6 and /dev/sda5
+2008-08-03T03:21:00.000Z	ibilicki		but, in gparted, when I try to delete them
+2008-08-03T03:21:00.000Z	ibilicki		it says "please unmount any logical partitions having a number higher than 6
+2008-08-03T03:22:00.000Z	ibilicki		what does that mean, and why is this the case?
+2008-08-03T03:23:00.000Z	nickrud	ibilicki	hm, you must have an extended partition and sda6 and maybe sda5 are in that one  (that is, a container holding logical partitions)
+2008-08-03T03:23:00.000Z	ibilicki	nickrud	yes, one big extendd partition
+2008-08-03T03:24:00.000Z	nickrud	ibilicki	then possibly you're trying to remove the extended partition?
+2008-08-03T03:24:00.000Z	ibilicki	nickrud	the extended partition is /dev/sda3... inside it, I want to remove /dev/sda5 and /dev/sda6
+2008-08-03T03:25:00.000Z	nickrud	ibilicki	try booting a live cd and doing it from there
+2008-08-03T03:25:00.000Z	ibilicki		but my OS is on /dev/sda7 and /dev/sda8
+2008-08-03T03:25:00.000Z	ibilicki	nickrud	will it break something?
+2008-08-03T03:25:00.000Z	nickrud	ibilicki	you did make backups prior to messing with partitions, right? ;)
+2008-08-03T03:25:00.000Z	ibilicki	nickrud	I didn't mess with them... I am about to :)
+2008-08-03T03:26:00.000Z	nickrud	ibilicki	but I will say I've never seen that error, but I generally use cfdisk over gparted. Never needed to resize
+2008-08-03T03:26:00.000Z	ibilicki	nickrud	but yes, everything I need is on my externar hard drive... but I would really rather not install ubuntu again

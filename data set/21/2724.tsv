@@ -1,0 +1,21 @@
+2009-07-12T22:56:00.000Z	dmead		tks
+2009-07-12T22:58:00.000Z	dmead		anybody know what module i need for this? Audio device: Intel Corporation 82801G (ICH7 Family) High Definition Audio Controller (rev 01)
+2009-07-12T22:58:00.000Z	dmead		bjorge, apt-get install ntfsprogs qparted
+2009-07-12T23:00:00.000Z	dmead		# aplay -l
+2009-07-12T23:00:00.000Z	dmead		aplay: device_list:217: no soundcards found...
+2009-07-12T23:00:00.000Z	dmead		:/
+2009-07-12T23:00:00.000Z	dmead		thats after i did modprobe snd-hda-intel
+2009-07-12T23:02:00.000Z	Ti-dev	dmead	If you have a prob loading your soundcard, try running sudo alsamixer in a terminal after probing the right module. If that works then you need to check your user priviledges
+2009-07-12T23:02:00.000Z	dmead	Ti-dev	i've loaded the correct module
+2009-07-12T23:03:00.000Z	Ti-dev	dmead	what happens when you try "sudo alsamixer" in a terminal?
+2009-07-12T23:03:00.000Z	dmead	Ti-dev	alsamixer: function snd_ctl_open failed for default: No such file or directory
+2009-07-12T23:03:00.000Z	dmead		:/
+2009-07-12T23:04:00.000Z	Ti-dev	dmead	are you sure that you append "sudo"?
+2009-07-12T23:04:00.000Z	dmead		i'm logged in as root
+2009-07-12T23:04:00.000Z	Ti-dev	dmead	oh ok
+2009-07-12T23:06:00.000Z	Ti-dev	dmead	well just to be sure, try enabling "audio devices" for your user in "user priviledges" and then check what happens?
+2009-07-12T23:07:00.000Z	dmead	Ti-dev	haha it's not enabled
+2009-07-12T23:07:00.000Z	dmead	Ti-dev	good call
+2009-07-12T23:07:00.000Z	Ti-dev	dmead	It's not by default at each of my encounters...that worked for me on an older PC :D
+2009-07-12T23:08:00.000Z	dmead		brb etc
+2009-07-12T23:09:00.000Z	dmead	Ti-dev	fail

@@ -1,0 +1,18 @@
+2010-11-28T00:12:00.000Z	abstrakt		if I want my "deploy" user to be able to run a2ensite and a2dissite without entering a password for sudo
+2010-11-28T00:12:00.000Z	abstrakt		how would that line look in visudo (aka /etc/sudoers)
+2010-11-28T00:14:00.000Z	abstrakt		*anyway*
+2010-11-28T00:15:00.000Z	abstrakt		magical, except without the quotes
+2010-11-28T00:16:00.000Z	abstrakt		hmm, http://viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html
+2010-11-28T00:16:00.000Z	abstrakt		that's nice
+2010-11-28T00:16:00.000Z	abstrakt		now
+2010-11-28T00:17:00.000Z	abstrakt		what would be the proper syntax for a line in /etc/sudoers to allow a given user to run a given command without requiring the password
+2010-11-28T00:17:00.000Z	abstrakt		like if I want my deploy user to be able to run a2ensite without needing a password
+2010-11-28T00:18:00.000Z	FrozenFire	abstrakt	I believe the NOPASSWD tag is what you're looking for
+2010-11-28T00:18:00.000Z	abstrakt	FrozenFire	right but where does that go?
+2010-11-28T00:19:00.000Z	FrozenFire	abstrakt	Given that I know you're competent, I have to say RTFM :P
+2010-11-28T00:23:00.000Z	FrozenFire	abstrakt	by the way, adding a user to the "sudo" group on Debian-based systems will, as I understand it, globally exempt them from password requirements.
+2010-11-28T00:24:00.000Z	abstrakt	FrozenFire	um, no that just allows you to run sudo commands
+2010-11-28T00:24:00.000Z	abstrakt	FrozenFire	it doesn't exempt you from needing a password
+2010-11-28T00:24:00.000Z	FrozenFire	abstrakt	I don't believe so. The exempt_group setting in the sudoers file is set to sudo on Debian systems.
+2010-11-28T00:25:00.000Z	FrozenFire	abstrakt	Similarly, I'm able to sudo, but I'm not in the sudo group.
+2010-11-28T00:25:00.000Z	abstrakt	FrozenFire	so "if you have exempt_group" or some such, yes probably what you said is true

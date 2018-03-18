@@ -1,0 +1,23 @@
+2012-05-17T23:23:00.000Z	raphaelle		hello @ll, I'm upgrading to Lubuntu  11.04 to 12.04 but it seems to run  in the background : no screen message, only a 70-80% "precise" process seen on task monitor. How can I control what's happening there ?
+2012-05-17T23:23:00.000Z	ruli	raphaelle	how did you upgrade
+2012-05-17T23:24:00.000Z	raphaelle	ruli	I just pushed the button on my upgrade monitor...
+2012-05-17T23:25:00.000Z	ruli	raphaelle	you might look for the lubuntu channel cause i dont know what youre talking about
+2012-05-17T23:26:00.000Z	raphaelle	ruli	sorry, I meant update-notifier
+2012-05-17T23:28:00.000Z	ruli	raphaelle	so you didnt get a guy anywhere in the entire process?
+2012-05-17T23:28:00.000Z	raphaelle	ruli	: nope,   " upgrade monitor" disapeared once I clicked on "upgrade to 12.04", and now "precise" is running in the background, that's all
+2012-05-17T23:30:00.000Z	ruli	raphaelle	thats really strange. you're screwed basically.strace it and see if it's reading files or something. otherwise tail -f /var/log/dpkg.log and see if it's installing packages or something. otherwise look around the screen for your disappeared window
+2012-05-17T23:31:00.000Z	raphaelle	ruli	my sceen is not that big :-) I 'll check at your suggestions
+2012-05-17T23:37:00.000Z	raphaelle	ruli	: this is my strace -p upon precise : pretty busy indeed, with a lot of "no such file or directory", see http://pastebin.com/ABmyft0a
+2012-05-17T23:38:00.000Z	ruli	raphaelle	the no such file or directory spam is normal. you're more looking for whether it's a constant flow of spam. check the dpkg.log next
+2012-05-17T23:42:00.000Z	ruli	raphaelle	anyway if it's a busy process you can either wait it out and monitor the strace spam or you can probably more or less safely kill it and do dpkg --configure -a and apt-get -f install to try to finish the upgrade process if that's what it's apaprently secretly trying to do
+2012-05-17T23:43:00.000Z	ruli	raphaelle	frankly ubuntu devs don't suprise me any more, a hidden gui might be expected behavior nowadays
+2012-05-17T23:43:00.000Z	raphaelle	ruli	: I would say nothing happens, time here is 21.43 and nothing happens since 07.05... see http://pastebin.com/5k4Wkzr0
+2012-05-17T23:45:00.000Z	raphaelle	ruli	I'll do what you said  (kill it and do dpkg --configure -a and apt-get -f install)
+2012-05-17T23:45:00.000Z	ruli	raphaelle	stopped on libc-bin...well ......just pray you didnt get a libc upgrade failure like i did it's a huge pain in the ass to fix
+2012-05-17T23:50:00.000Z	ruli	raphaelle	so what happend after killing etc
+2012-05-17T23:52:00.000Z	raphaelle	ruli	: my PC breathes now ! CPU calmed down and so did the ventilation. dpkg did not propose anything so I switched to apt-get upgrade that seems to work fine at the moment.
+2012-05-17T23:53:00.000Z	ruli	raphaelle	also do apt-get dist-upgrade to be sure. the ubuntu devs arent the brightest crayons in the box, the missing gui seems like it was probably a use case they didnt account for when there is an upgrade probably of some kind
+2012-05-17T23:54:00.000Z	raphaelle	ruli	: do you mean after apt-get upgrade ? or should I stop apt-get upgrade to do apt-get dist-upgrade ?
+2012-05-17T23:56:00.000Z	ruli	raphaelle	before or after. doesn't really matter. better to do it before, but worse case scenario is you just upgrade oneeric or whatever, then re-upgrade precise. since you're already in apt-get upgrade you'll basically have to finish anyway
+2012-05-18T00:00:00.000Z	ruli	raphaelle	ok. at least something's happening
+2012-05-18T00:03:00.000Z	ruli	raphaelle	no problem i'll be expecting my check in the mail

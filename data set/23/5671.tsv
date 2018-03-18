@@ -1,0 +1,23 @@
+2006-10-12T08:58:00.000Z	dack		anyone willing to help me with xorg? for some reason it decided today that it wont start and i can't figure out why. :(
+2006-10-12T08:58:00.000Z	cherubiel	dack	more info please
+2006-10-12T09:00:00.000Z	dack	cherubiel	it's a 2 weeks old dapper installation. i didn't install, update nor change anything before this happened. today the computer booted just fine, but about an hour ago while i was surfing away with firefox, xorg refused to start new programs so i decided to reboot. during next reboot i was greeted with shell prompt...
+2006-10-12T09:01:00.000Z	cherubiel	dack	i would start with /var/log/Xorg.0.log
+2006-10-12T09:02:00.000Z	dack	cherubiel	the most recent error in that log is "fatal server error: could not open default font 'fixed'"
+2006-10-12T09:02:00.000Z	cherubiel	dack	paste your xorg.conf
+2006-10-12T09:03:00.000Z	dack	cherubiel	Could not init font path element unix/:7100, removing from list!
+2006-10-12T09:03:00.000Z	cherubiel	dack	thats not a problem
+2006-10-12T09:03:00.000Z	cherubiel	dack	paste xorg.conf
+2006-10-12T09:03:00.000Z	cherubiel	dack	paste the log and the conf file contents
+2006-10-12T09:04:00.000Z	dack	cherubiel	here on this channel? they're alfully long...
+2006-10-12T09:05:00.000Z	cherubiel	dack	^^
+2006-10-12T09:06:00.000Z	dack	cherubiel	now that i started looking at the xorg.conf, there's something wrong with the font paths
+2006-10-12T09:06:00.000Z	dack	cherubiel	any idea what might have tampered with these? firefox and gaim were the only open programs at the time.
+2006-10-12T09:06:00.000Z	cherubiel	dack	your update should have added the font lines
+2006-10-12T09:07:00.000Z	cherubiel	dack	the apt-get update/upgrade you would've done
+2006-10-12T09:07:00.000Z	cherubiel	dack	no, nope any programs, you need root perms to edit xorg.conf
+2006-10-12T09:08:00.000Z	dack	cherubiel	i guess i'm lucky to have you on this channel and this spare PII 400MHz i'm currently on :). without these i'd be lost without a working xorg.conf i can compare.
+2006-10-12T09:15:00.000Z	dack	cherubiel	no, the problem isn't in xorg.conf
+2006-10-12T09:15:00.000Z	dack	cherubiel	i just compared a working xorg.conf with the one that is not working
+2006-10-12T09:16:00.000Z	dack	cherubiel	i get these on my .xsession-errors: x-session-manager: symbol lookup error: /usr/lib/libgtk-x11-2.0.so.0: undefined
+2006-10-12T09:20:00.000Z	cherubiel	dack	gtk seems to be broken, try to upgrade gtk+, pango, atk and glib2
+2006-10-12T09:20:00.000Z	dack	cherubiel	how do i do that? apt-get update says there's nothing new. can i somehow force it to reinstall these?

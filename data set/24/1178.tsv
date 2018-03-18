@@ -1,0 +1,24 @@
+2010-06-22T22:12:00.000Z	BlaDe		Hi guys, i'm getting: FastCgiIpcDir /var/lib/apache2/fastcgi: access for server (uid 1001, gid 1001) failed: write not allowe
+2010-06-22T22:12:00.000Z	BlaDe		does anyone know the cause?
+2010-06-22T22:14:00.000Z	Lord_Rahl	BlaDe	I believe that folder is owned by www-data, you are trying to write to it with a user does not have permission
+2010-06-22T22:15:00.000Z	Lord_Rahl	BlaDe	you can add that user to the www-data group. Google groupadd
+2010-06-22T22:17:00.000Z	BlaDe	Lord_Rahl	 how do I find out which user it is ?
+2010-06-22T22:18:00.000Z	Lord_Rahl		cat /etc/passwd and look for the name:x:1001
+2010-06-22T22:19:00.000Z	BlaDe		ok thanks lord
+2010-06-22T22:19:00.000Z	Lord_Rahl	BlaDe	np
+2010-06-22T22:27:00.000Z	BlaDe	Lord_Rahl	 I added the user to the www-data group and it still says the same thing
+2010-06-22T22:27:00.000Z	BlaDe		 did usermod -a -G www-data blade
+2010-06-22T22:28:00.000Z	BlaDe		system -> preferences -> keyboard
+2010-06-22T22:36:00.000Z	Lord_Rahl	BlaDe	did you restart apache
+2010-06-22T22:36:00.000Z	BlaDe		nope Lord_Rahl  I can't do that either
+2010-06-22T22:37:00.000Z	BlaDe		/etc/init.d/apache2: line 105: kill: (10902) - Operation not permitted   ...fail!
+2010-06-22T22:37:00.000Z	BlaDe		then it gives the same error as before
+2010-06-22T22:37:00.000Z	Lord_Rahl	BlaDe	sudo /etc/init.d/apache
+2010-06-22T22:38:00.000Z	Lord_Rahl	BlaDe	sorry out sudo /etc/init.d/apache restart
+2010-06-22T22:38:00.000Z	BlaDe		now it can't bind to 80
+2010-06-22T22:38:00.000Z	BlaDe		aha now it can
+2010-06-22T22:40:00.000Z	BlaDe	Lord_Rahl	 the directory permissions are 750 how can I find out which group owns it ? because I probably shouldn't chmod all to 755
+2010-06-22T22:40:00.000Z	Lord_Rahl		ls -la
+2010-06-22T22:40:00.000Z	BlaDe		and i can't sftp in otherwise, quick phone call bac in a sec
+2010-06-22T22:52:00.000Z	BlaDe	Lord_Rahl	 are you still here?
+2010-06-22T22:53:00.000Z	Lord_Rahl	BlaDe	yep

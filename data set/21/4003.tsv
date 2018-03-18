@@ -1,0 +1,21 @@
+2009-05-18T20:46:00.000Z	Dvlpr		hmhm, somehow, my system is running autoconf2.5
+2009-05-18T20:47:00.000Z	Dvlpr		while that thing I wonna autoconf requires 2.6
+2009-05-18T20:47:00.000Z	Dvlpr		the question: why no 2.6 version in lists of updates?
+2009-05-18T20:47:00.000Z	Dvlpr		apt-get install says that I run the latest version of autoconf ><
+2009-05-18T20:47:00.000Z	Dvlpr		>.<*
+2009-05-18T20:49:00.000Z	sipior	Dvlpr	which version of ubuntu are you running? the default autoconf on 9.04 is 2.63.
+2009-05-18T20:54:00.000Z	sipior	Dvlpr	are you using an autoconf distributed with the source code itself?
+2009-05-18T20:57:00.000Z	sipior	Dvlpr	why the "./" in front of autoconf in your example? are you sure you're not running a script provided by the authors of the source code? what does "which autoconf" return?
+2009-05-18T20:58:00.000Z	sipior	Dvlpr	ah. try running the one in /usr/bin
+2009-05-18T20:59:00.000Z	sipior	Dvlpr	is /usr/local/bin in front of /usr/bin in your $PATH?
+2009-05-18T21:03:00.000Z	sipior	Dvlpr	does /usr/local/bin appear before /usr/bin in your $PATH?
+2009-05-18T21:04:00.000Z	sipior	Dvlpr	i did, yes. change your path so that /usr/bin is first, otherwise you'll call the wrong autom4te and aclocal from /usr/local/bin, when you really want the ones from /usr/bin.
+2009-05-18T21:05:00.000Z	Dvlpr	sipior	so how would $PATH look?
+2009-05-18T21:06:00.000Z	sipior	Dvlpr	preferably /usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin...
+2009-05-18T21:09:00.000Z	Dvlpr	sipior	root@vladimir-desktop:/media/ACER/trunk# PATH="/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/sbin:/bin:/usr/X11R6/bin" - right
+2009-05-18T21:09:00.000Z	sipior	Dvlpr	you'll want 'export PATH="....."'
+2009-05-18T21:10:00.000Z	sipior	Dvlpr	if you're just testing in the terminal, you can leave it off (force of habit for me, i guess)
+2009-05-18T21:11:00.000Z	Dvlpr	sipior	root@vladimir-desktop:/media/ACER/trunk# export PATH="/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/sbin:/bin:/usr/X11R6/bin" - is it ok now? xD
+2009-05-18T21:11:00.000Z	sipior	Dvlpr	looks okay
+2009-05-18T21:12:00.000Z	sipior	Dvlpr	what is the *precise* command you are using to invoke autoconf?
+2009-05-18T21:13:00.000Z	sipior	Dvlpr	and if you try /usr/bin/autoreconf --install --force?

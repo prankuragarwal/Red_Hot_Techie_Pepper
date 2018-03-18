@@ -1,0 +1,19 @@
+2009-01-28T17:27:00.000Z	Cpplus		Are there any people here that're using Intrepid with a notebook with the Geforce series 9M video card?
+2009-01-28T17:27:00.000Z	Cpplus		Reason I ask is because of the annoying black tty's 1 through 6
+2009-01-28T17:27:00.000Z	Cpplus		Uninstalling nvidia driver gives back tty functionality
+2009-01-28T17:28:00.000Z	jrib	Cpplus	bugs.ubuntu.com should have a bug about that
+2009-01-28T17:28:00.000Z	Cpplus	jrib	correct, workaround don't work here
+2009-01-28T17:28:00.000Z	jrib	Cpplus	what did you try?
+2009-01-28T17:29:00.000Z	Cpplus	jrib	are you also referring to this bug? https://bugs.launchpad.net/ubuntu/+source/initramfs-tools/+bug/129910
+2009-01-28T17:31:00.000Z	jrib	Cpplus	what does your /etc/initramfs-tools/modules contain now?
+2009-01-28T17:32:00.000Z	Cpplus	jrib	nothing. lsmod does show up fbcon and vesafb as loaded
+2009-01-28T17:37:00.000Z	jrib	Cpplus	did you try the suggestions at the end regarding using uvesafb instead of vesafb?
+2009-01-28T17:39:00.000Z	Cpplus	jrib	yup I did. I'm beginning to wonder if specific videocards are bugged by this
+2009-01-28T17:39:00.000Z	jrib	Cpplus	In my case, I had the issue in gutsy and never again since then
+2009-01-28T17:39:00.000Z	jrib	Cpplus	what card do you have?
+2009-01-28T17:41:00.000Z	Cpplus	jrib	GeForce 9600M GS (rev a1)
+2009-01-28T18:33:00.000Z	Cpplus	jrib	&& scunizi, I've managed to fix the issue
+2009-01-28T18:34:00.000Z	Cpplus	jrib	&& scunizi about the black tty's
+2009-01-28T18:34:00.000Z	jrib	Cpplus	what did you end up doing?
+2009-01-28T18:35:00.000Z	Cpplus	jrib	well was something stupid on my part. vesafb kept being loaded, but I forgot to remove the module from /lib/modules/`uname -r`/initrd and place uvesafb module there
+2009-01-28T18:35:00.000Z	Cpplus	jrib	uvesafb was loaded but from dmesg I got that it couldn't reserve video memory, so vesafb kept overriding it

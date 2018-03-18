@@ -1,0 +1,18 @@
+2007-06-14T15:50:00.000Z	Ubuntu-Noob		np dude
+2007-06-14T15:52:00.000Z	Ubuntu-Noob		lol what are yu thinking?
+2007-06-14T15:52:00.000Z	Ubuntu-Noob		is there something i need to do to the diswks to make them accessable?
+2007-06-14T15:53:00.000Z	Ubuntu-Noob		nah i had it on the last install but when i booted into xp they were fine (it was the 1st thing i checked
+2007-06-14T15:54:00.000Z	Ubuntu-Noob		see i'm using sata for all my devices and i have a DFI LANPARTY NF590 and i'm wondering if lnux needs some sort of drivers to access
+2007-06-14T15:55:00.000Z	Ubuntu-Noob		altho scrap that, partiton manager sees them
+2007-06-14T15:55:00.000Z	ikonia	Ubuntu-Noob	whats the chipset on that board ?
+2007-06-14T15:57:00.000Z	ikonia	Ubuntu-Noob	you'll probably be fine with that
+2007-06-14T15:57:00.000Z	ikonia	Ubuntu-Noob	what is the device name of the disk your trying to access
+2007-06-14T15:58:00.000Z	Ubuntu-Noob	ikonia	/dev/sda and /sdc
+2007-06-14T15:58:00.000Z	ikonia	Ubuntu-Noob	please put the output of "sudo fdisk -l /dev/sda" and "sudo fdisk -l /dev/sdc" into a pastebin
+2007-06-14T16:00:00.000Z	Ubuntu-Noob	ikonia	  http://paste.ubuntu-nl.org/25624/
+2007-06-15T16:01:00.000Z	ikonia	Ubuntu-Noob	once again you don't listen " sudo fdisk -l /dev/sda" fdisk -l !!!!
+2007-06-15T16:04:00.000Z	Ubuntu-Noob	ikonia	   http://paste.ubuntu-nl.org/25625/
+2007-06-15T16:06:00.000Z	ikonia	Ubuntu-Noob	I see the problem, you are fine. The partitions are there, but the disk type is set to DMRAID
+2007-06-15T16:06:00.000Z	ikonia	Ubuntu-Noob	are these disks part of a raid group ?
+2007-06-15T16:07:00.000Z	ikonia	Ubuntu-Noob	you can try using fdisk to change the partition type - this shouldn't cause any data loss, but it could
+2007-06-15T16:08:00.000Z	ikonia	Ubuntu-Noob	"sudo fdisk /dev/sda"

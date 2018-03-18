@@ -1,0 +1,21 @@
+2005-01-20T07:26:00.000Z	jonmasters		(argh. spelling.)
+2005-01-20T07:26:00.000Z	jonmasters		s/oficial/official/
+2005-01-20T07:27:00.000Z	jonmasters		Sure. I wasn't getting at that - what I was getting at is that there are often things in the lobby there.
+2005-01-20T07:28:00.000Z	jonmasters		Last time I had a very late night drinking session with Justin in the lobby, then we hit the town until 03:00 or later. Which is unlike me.
+2005-01-20T07:28:00.000Z	jonmasters		Random hacking, free wifi.
+2005-01-20T07:28:00.000Z	jonmasters		(for given values of "free" if you are not staying there)
+2005-01-20T07:30:00.000Z	jonmasters		Google will do that.
+2005-01-20T07:30:00.000Z	jonmasters		For any suitably sized community project, someone will organise stuff.
+2005-01-20T07:31:00.000Z	jonmasters		The question is though, is it a bug?
+2005-01-20T07:32:00.000Z	jonmasters		Box at work ran out of disk space, dm got very happy on boot, no space to create device entries. Debian && Ubuntu should explicitly catch out of disk on boot and handle it with warnings IMO.
+2005-01-20T07:33:00.000Z	bob2	jonmasters	device nodes aren't on / in ubuntu
+2005-01-20T07:34:00.000Z	bob2	jonmasters	/ full is one of those all-bets-are-off things in unix...how could a boot script predict how much space depmod will use?
+2005-01-20T07:35:00.000Z	jonmasters	bob2	It's actually very easy to get in that situation.
+2005-01-20T07:37:00.000Z	bob2	jonmasters	depmod does catch it.  you think every program that the init scripts run should return a value if the disk is full to tell the init scripts to print something?
+2005-01-20T07:38:00.000Z	jonmasters	bob2	No. That's not what I was getting at. What I was getting at is that if the system has no free blocks at boot then it should be caught straight off with a big red warning.
+2005-01-20T07:38:00.000Z	bob2	jonmasters	what if it has 1?  depmod still won't run.
+2005-01-20T07:38:00.000Z	jonmasters	bob2	Then some suitable minimum to print a warning at. It doesn't have to do much more than that.
+2005-01-20T07:38:00.000Z	bob2	jonmasters	what's a sensible minimum?
+2005-01-20T07:39:00.000Z	jonmasters	bob2	Just a big warning "You have less than 5% free space on /".
+2005-01-20T07:39:00.000Z	jonmasters	bob2	(going from the default reservation size)
+2005-01-20T08:03:00.000Z	jonmasters	bob2	https://bugzilla.ubuntu.com/show_bug.cgi?id=5353

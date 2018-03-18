@@ -1,0 +1,18 @@
+2010-08-18T03:05:00.000Z	trelayne		hey all, I'm trying to run tcpdump for debuggin purposes on my Ubuntu LTS 10.04 server but I keep getting the following error: pcap_loop: corrupted frame on kernel ring mac offset 94 .. Anyone know why that might be?
+2010-08-18T03:06:00.000Z	hiku	trelayne	have you tried wireshark?
+2010-08-18T03:07:00.000Z	trelayne	hiku	 it's server only no X. I've tried with tshark and get a different error: tshark: cap_set_proc() fail return: Operation not permitted
+2010-08-18T03:07:00.000Z	hiku	trelayne	did you run tshark with sudo ?
+2010-08-18T03:08:00.000Z	trelayne	hiku	 yes.. but now I'm wondering if the user needs to part of a special group
+2010-08-18T03:08:00.000Z	hiku	trelayne	looks like it could be a libpcap bug...checking now
+2010-08-18T03:09:00.000Z	trelayne		thanks hiku
+2010-08-18T03:10:00.000Z	hiku	trelayne	what command are you running with tcpdump, I'll try to see if it happens to me here.
+2010-08-18T03:11:00.000Z	hiku	trelayne	also, what version of libpcap are you running?
+2010-08-18T03:11:00.000Z	trelayne	hiku	sudo tcpdump -s0 -i eth0 -w /tmp/output
+2010-08-18T03:11:00.000Z	hiku	trelayne	I have 1.0.0-6 libpcap installed right now.
+2010-08-18T03:11:00.000Z	trelayne		libpcap.so.0.8
+2010-08-18T03:12:00.000Z	hiku	trelayne	ok same version. I'm running it now, and so far, no errors
+2010-08-18T03:12:00.000Z	trelayne	hiku	 I'm wondering whether it's because my kernel does not support capture (it's a VM)
+2010-08-18T03:12:00.000Z	hiku	trelayne	oooo, yeah, good question.
+2010-08-18T03:13:00.000Z	hiku	trelayne	haven't tried running tcpdump from a vm.
+2010-08-18T03:13:00.000Z	trelayne	hiku	 that's probably the problem... but thank's nonetheless.. I guess I'll have to debug other ways... thanks again!
+2010-08-18T03:14:00.000Z	hiku	trelayne	anytime man, and good luck

@@ -1,0 +1,21 @@
+2008-06-18T08:55:00.000Z	SonicComKid		I have a complex question for you guys
+2008-06-18T08:56:00.000Z	SonicComKid		I need a script to massively edit all the content of php files changeing all their code to lowercase
+2008-06-18T08:58:00.000Z	afabian	SonicComKid	It's pretty easy to make a file all lower case.. say, with tr.  But you'll probably have to do something to leave comments alone.  It sounds like something you might want to consider writing up in perl.  Actually, perl rubs me the wrong way.  I'd probably use python even though perl arguably has a good edge in text processing.
+2008-06-18T08:59:00.000Z	afabian	SonicComKid	Also, there's the "be careful what you wish for" effect.  I don't know PHP very well, but ... bad things mysteriously happen when you make global transformations in a thoughtless manner.  I'd probably go through file-by-file and use something like emacs, or a text editor with a downcase function, to make lower-casing regions easy.
+2008-06-18T09:02:00.000Z	SonicComKid	afabian	sorry, phone made it so I couldn't reply. The reason for this is I need to make the content of tons of php files lowercase because they keep referenceing files with uppercase letters. There's too many php files to manually edit to lower case. I need to chage the code to point to lower case filenames
+2008-06-18T09:04:00.000Z	afabian	SonicComKid	 If the filenames have a pretty regular pattern, you could use sed on them.  Say, the filenames are all uppercase, and all have an extension.. you could do something like.. erm...
+2008-06-18T09:05:00.000Z	SonicComKid	afabian	the problem is they're all over the place, some are labled Index.htm, other's somthing_or_OTHER, etc. which screwed everything up for me (was designed for a windows server) I mass renamed all the files to lowercase, now I need to fix the PHP scripts to point to lowercase filenames
+2008-06-18T09:08:00.000Z	afabian	SonicComKid	Hmm.  Well, there's a lot to it.  I'd have to look at the PHP files and the changed files, and it'd probably take me half an hour to decide what approach I wanted to use.  My best suggestion is ... use perl, keep backups of the files before you change them.
+2008-06-18T09:09:00.000Z	SonicComKid	afabian	my solution is simple, this is just a one time run. I just need to chage the text in all the *.php files to lowercase
+2008-06-18T09:09:00.000Z	SonicComKid		there must be a simple way to change the case of all text in files with the .php extention
+2008-06-18T09:12:00.000Z	afabian	SonicComKid	All right.  If that's what you really want to do, change ALL text to lower case.. that's trivial.  Try something like: export DIR=dirwithPHPfiles ; for i in $( find $DIR \*.php ) ; do cat i | tr A-Z a-z > $i.lc ; mv $i $.bak ; mv $i.lc $i; done .. or *something* like that.  Take this as a rough guide.  Read manual pages.
+2008-06-18T09:13:00.000Z	SonicComKid		so run everything from 'export' to 'done' exactly as you typed it?
+2008-06-18T09:14:00.000Z	SonicComKid	afabian	so run everything from 'export' to 'done' exactly as you typed it?
+2008-06-18T09:15:00.000Z	afabian	SonicComKid	I *think* so--but I can't swear to it.  Use at your own risk, read manual pages, etc.  But I think so.
+2008-06-18T09:15:00.000Z	SonicComKid	afabian	I have full backups. Thanks
+2008-06-18T09:16:00.000Z	afabian	SonicComKid	Oops. I did miss an "i" after a $ in there.
+2008-06-18T09:16:00.000Z	SonicComKid	afabian	which $?
+2008-06-18T09:17:00.000Z	afabian	SonicComKid	In $.bak
+2008-06-18T09:17:00.000Z	SonicComKid	afabian	so instead $ i .bak or what?
+2008-06-18T09:18:00.000Z	SonicComKid	afabian	please just IM me your line again with the correction
+2008-06-18T09:18:00.000Z	SonicComKid	afabian	between phone and chat I can't make things clear enough

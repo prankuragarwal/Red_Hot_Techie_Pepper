@@ -1,0 +1,24 @@
+2012-01-28T01:35:00.000Z	Scopey		Can anyone help me with xfs on ubuntu
+2012-01-28T01:36:00.000Z	Scopey		Anyone please?
+2012-01-28T01:37:00.000Z	Scopey		Anyone have any ideas why a fresh install of ubuntu would give an unknown file system type for xfs when mountin a drive?
+2012-01-28T01:38:00.000Z	yumbo	Scopey	sudo apt-get install xfsprogs xfsdump
+2012-01-28T01:39:00.000Z	Scopey	yumbo	I got both
+2012-01-28T01:42:00.000Z	Scopey	yumbo	Any other ideas for xfs besides xfsprogs and xfsdump
+2012-01-28T01:43:00.000Z	yumbo	Scopey	sudo mount -t xfs /dev/sdc1 /media/my_xfs_drive
+2012-01-28T01:43:00.000Z	yumbo	Scopey	replace /dev/sdc1 with the drive /dev/
+2012-01-28T01:43:00.000Z	yumbo	Scopey	and replace /media/my_xfs_drive with the folder you want it to mount
+2012-01-28T01:45:00.000Z	Scopey	yumbo	I still get unknown filesystem type xfs
+2012-01-28T01:46:00.000Z	yumbo	Scopey	what is the exact error you get?
+2012-01-28T01:47:00.000Z	yumbo	Scopey	what does "file -s /dev/sdXX" give? (replace /dev/sdXX ofcourse)
+2012-01-28T01:48:00.000Z	yumbo	Scopey	I meant a "sudo" before that ofcourse
+2012-01-28T01:50:00.000Z	Scopey	yumbo	Sorry derped out, sgi xfs filesystem data (blksz 4096, inosz 256, v2 dirs)
+2012-01-28T01:54:00.000Z	Scopey	yumbo	sgi xfs filesystem data (blksz 4096, inosz 256, v2 dirs) other ideas?
+2012-01-28T01:54:00.000Z	yumbo	Scopey	hang on a minute...
+2012-01-28T01:54:00.000Z	Scopey	yumbo	Alrighty
+2012-01-28T01:54:00.000Z	yumbo	Scopey	"sudo ls -a /proc/filesystems" ?
+2012-01-28T01:56:00.000Z	Scopey	yumbo	Nothing happened?
+2012-01-28T01:56:00.000Z	yumbo	Scopey	try "sudo modprobe xfs" and then try to mount again
+2012-01-28T01:57:00.000Z	Scopey	yumbo	Error inserting xfs, cannot allocate memory
+2012-01-28T01:59:00.000Z	yumbo	Scopey	^
+2012-01-28T02:04:00.000Z	Scopey	yumbo	or ssta: any ideas?
+2012-01-28T03:25:00.000Z	Scopey	yumbo	I tried doing that and chown came back saying invalid user, i just typed my username as i see it when i login

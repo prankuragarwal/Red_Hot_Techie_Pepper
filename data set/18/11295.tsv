@@ -1,0 +1,18 @@
+2006-10-15T06:28:00.000Z	m0		hi when I do this: d, --directory            list directory entries instead of contents,
+2006-10-15T06:29:00.000Z	m0		for ls, it doens't list my directories
+2006-10-15T06:29:00.000Z	m0		how else can I list only directories under a pathj?
+2006-10-15T06:30:00.000Z	timalot	m0	find -type d
+2006-10-15T06:30:00.000Z	m0	timalot	I want to do somthing like ls -l /home/m0/
+2006-10-15T06:31:00.000Z	timalot	m0	do u want the subdirectories listed?
+2006-10-15T06:32:00.000Z	m0	timalot	no
+2006-10-15T06:32:00.000Z	m0	timalot	is find faster ?
+2006-10-15T06:33:00.000Z	timalot	m0	find is usually just for finding filenames (but u can display other stuff) ... ls -l gives u other info ... dont know about speed
+2006-10-15T06:33:00.000Z	m0	timalot	how about finding the size of the file?
+2006-10-15T06:34:00.000Z	m0	timalot	i meant the size of the directory
+2006-10-15T06:35:00.000Z	m0	timalot	no
+2006-10-15T06:36:00.000Z	m0	timalot	i want to list the directory size + directory name
+2006-10-15T06:41:00.000Z	timalot	m0	du -sk * ... please
+2006-10-15T06:43:00.000Z	timalot	m0	du -sk /mypath/*
+2006-10-15T06:44:00.000Z	m0	timalot	ah ok :x, it still gives me the files
+2006-10-15T06:55:00.000Z	timalot	m0	 du -sk `find -maxdepth 1 -type d ` does exactly what u want
+2006-10-15T06:57:00.000Z	timalot	m0	add a | tail -n +2 to the backquoted part if u dont want . included

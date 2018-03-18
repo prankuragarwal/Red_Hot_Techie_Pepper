@@ -1,0 +1,19 @@
+2009-11-19T08:43:00.000Z	digitalfiz		is there a way to mount a ssh connection?
+2009-11-19T08:43:00.000Z	Jordan_U	digitalfiz	sshfs
+2010-09-16T03:51:00.000Z	Jordan_U	digitalfiz	Not possible unfortunately. You need to disable journaling for write support.
+2010-09-16T03:51:00.000Z	digitalfiz	Jordan_U	the partition has stuff i dont want to lose will that mess it up?
+2010-09-16T03:52:00.000Z	digitalfiz	Jordan_U	i dont mind doing that if i can undo it later. i just need to copy 1 file over to fix a boot error
+2010-09-16T03:52:00.000Z	Jordan_U	digitalfiz	No, though it will make the filesystem less robust to power failures and the like.
+2010-09-16T03:52:00.000Z	Jordan_U	digitalfiz	You can undo it later.
+2010-09-16T03:52:00.000Z	digitalfiz	Jordan_U	can i do that with hfsutils or do i gotta boot from the osx cd :/
+2010-09-16T03:52:00.000Z	Jordan_U	digitalfiz	Though you may need to use OSX to disable journaling in the first place...
+2010-09-16T03:53:00.000Z	digitalfiz	Jordan_U	i have the install dvd i can boot from just takes forever to boot from the dvd lol thanks ill try that
+2010-09-16T04:15:00.000Z	digitalfiz	Jordan_U	still no luck i even try to force it and it wont work. the partition is now just hfs+ non journaled
+2010-09-16T04:16:00.000Z	digitalfiz	Jordan_U	ive tried both "mount -o force /dev/sda1 /media/Snow" and "mount -t hfsplus -o "rw" /dev/sda1 /media/Snow" and they both still mount it read only
+2010-09-16T04:17:00.000Z	Jordan_U	digitalfiz	How did you disable journaling?
+2010-09-16T04:17:00.000Z	digitalfiz	Jordan_U	i booted the osx dvd and used diskutil
+2010-09-16T04:18:00.000Z	digitalfiz	Jordan_U	gparted says its just hfs+ now it doesnt say journaled anymore
+2010-09-16T04:19:00.000Z	Jordan_U	digitalfiz	Can you pastebin the output of "dmesg" after trying to mount the partition?
+2010-09-16T04:23:00.000Z	digitalfiz	Jordan_U	figured it out i had to run fsck.hfsplus and now it mounts write thanks for the help
+2010-09-16T04:23:00.000Z	Jordan_U	digitalfiz	You're welcome.
+2010-09-16T04:23:00.000Z	digitalfiz	Jordan_U	so for future ref its disabled journaling and then run fsck.hfsplus in ubuntu :D

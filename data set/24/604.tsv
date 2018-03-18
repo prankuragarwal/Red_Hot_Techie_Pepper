@@ -1,0 +1,24 @@
+2011-05-15T00:48:00.000Z	mozeee		any soloution about my problem (ssh)??? http://paste.ubuntu.com/607520/
+2011-05-15T00:48:00.000Z	oCean	mozeee	you should not create a dir 'authorized_keys' but a file
+2011-05-15T00:49:00.000Z	mozeee	oCean	 :(
+2011-05-15T00:50:00.000Z	oCean	mozeee	or use ssh-copy-id command
+2011-05-15T00:52:00.000Z	mozeee	oCean	YES! what a cool command> ssh-copy-id>>>> I did it again.. but still when i want to login it asked for pass!!!!?
+2011-05-15T00:53:00.000Z	oCean	mozeee	ok, it should not ask for the pass. On the server check if there is a ~/.ssh/authorized_keys file
+2011-05-15T00:54:00.000Z	mozeee	oCean	there is! :(
+2011-05-15T00:55:00.000Z	oCean	mozeee	what mode is the ~/.ssh directory you created? It should be 700, and the authorized_keys file should be 600
+2011-05-15T00:56:00.000Z	mozeee	oCean	how can I change the premissions to these numbers? I mean what is the command line?
+2011-05-15T00:57:00.000Z	oCean	mozeee	 chmod 700 .ssh    chmod 600 authorized_keys
+2011-05-15T01:02:00.000Z	mozeee	oCean	send u a private msg!
+2011-05-15T01:26:00.000Z	oCean	mozeee	I suggest that you start over, creating the key and copying it
+2011-05-15T01:26:00.000Z	mozeee	oCean	i did everthing...o god :(
+2011-05-15T01:27:00.000Z	oCean	mozeee	it's only 2 or 3 little steps!
+2011-05-15T01:28:00.000Z	oCean	mozeee	let me help a little. Start with removing the files in your local ~/.ssh directory
+2011-05-15T01:35:00.000Z	mozeee	oCean	nice! it works :P i did everything again but this time it works! but if i don't want to use ssh-copy-id then what should i do?
+2011-05-15T01:37:00.000Z	oCean	mozeee	glad it works. You would have to copy the contents of the ~/.ssh/id_rsa.pub file in the ~/.ssh/authorized_keys file on the server. But that has to be done carefully, with the permissions etc
+2011-05-15T01:37:00.000Z	oCean	mozeee	while the ssh-copy-id does that all for you!
+2011-05-15T01:38:00.000Z	mozeee	oCean	and what if i want to log in to my server with another client, my lap top for example?
+2011-05-15T01:39:00.000Z	oCean	mozeee	you have to repeat the process. Each client has its own keypair.
+2011-05-15T01:40:00.000Z	mozeee	oCean	i mean what happen to that authorized_keys? does it change? or new key will add to it?
+2011-05-15T01:41:00.000Z	oCean	mozeee	ssh-copy-id will add to it. If you add it by hand, you would have to do that very carefully.
+2011-05-15T01:42:00.000Z	mozeee	oCean	i mean then there would be two authorized_keys files something like authorized_keys, authorized_keys2  ???? or all keys gonna be there in authorized_keys!??
+2011-05-15T02:01:00.000Z	mozeee	oCean	how can i remove the remove the public key on my pc?

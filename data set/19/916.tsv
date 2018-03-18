@@ -1,0 +1,19 @@
+2011-07-17T05:21:00.000Z	jimubao		what can i do now to be able to mount the drive again and retrieve my data first
+2011-07-17T05:22:00.000Z	jimubao		ok
+2011-07-17T05:23:00.000Z	jimubao		Hi guys, after i update my ubuntu 10.10 yesterday, i cant start up my ubuntu anymore, i'm getting error msg of 'The drive for /media/sdb1 is not ready or not present.'
+2011-07-17T05:25:00.000Z	jimubao		Hi guys, after i update my ubuntu 10.10 yesterday, i cant start up my ubuntu anymore, i'm getting error msg of 'The drive for /media/sdb1 is not ready or not present.'. i've checked the google, apparently i need to get to command line and set up fdtsb properly, however how can i get access to the command line ?
+2011-07-17T05:26:00.000Z	wildbat	jimubao	 boot with livecd and mount the root/ then fix the fstab
+2011-07-18T03:29:00.000Z	wildbat	jimubao	mainly coz ntfs is not native to linux ~ it don't support chmod/chown. you have to remount it with different mount option or use bindfs
+2011-07-18T03:30:00.000Z	jimubao	wildbat	so is not possible to have apache files on ntfs volume then ?
+2011-07-18T03:31:00.000Z	wildbat	jimubao	it is possible ~ you just have to give it the right mount options
+2011-07-18T03:31:00.000Z	jimubao	wildbat	how do u do that ? what do u mean by right mount option ?
+2011-07-18T03:33:00.000Z	wildbat	jimubao	mount it so that www-data can read the ntfs
+2011-07-18T03:34:00.000Z	jimubao	wildbat	i using 11.04
+2011-07-18T03:35:00.000Z	jimubao	wildbat	i though ntfs-3g is preloaded on installiation
+2011-07-18T03:36:00.000Z	wildbat	jimubao	and you use gnome gvfs to mount it ~ that y group www-data can read that drive.
+2011-07-18T03:36:00.000Z	jimubao	wildbat	so i need root mount ?
+2011-07-18T03:40:00.000Z	jimubao	wildbat	???
+2011-07-18T03:42:00.000Z	wildbat	jimubao	ok ~ "sudo umount /media/Files"
+2011-07-18T03:43:00.000Z	jimubao	wildbat	ok done
+2011-07-18T03:44:00.000Z	wildbat	jimubao	sudo mkdir /media/Files; sudo mount.ntfs -o uid=1000,gid=33,umask=007,dmask=007,fmask=007,defaults,user,locale=en_US.utf8 /dev/sdx# /media/Files
+2011-07-18T03:45:00.000Z	wildbat	jimubao	where the sdx# is the ntfs dev you trying to mount

@@ -1,0 +1,23 @@
+2005-05-27T16:05:00.000Z	Battletux		how long till breezy get to RC?
+2005-05-27T16:05:00.000Z	Battletux		cool
+2005-05-27T07:06:00.000Z	Battletux		can someone tell me if the following is do-able, and if so how to do it?
+2005-05-27T07:06:00.000Z	Battletux		use a mounted ISO of hoary as a source. (to save having to dig the CD out every now and then)
+2005-05-27T07:07:00.000Z	CarlK	Battletux	- kinda
+2005-05-27T07:09:00.000Z	CarlK	Battletux	- didn't you dl an iso?
+2005-05-27T07:10:00.000Z	Battletux	CarlK	yes ages ago. i dont have the file anymore just the cd i burnt it to
+2005-05-27T07:11:00.000Z	CarlK	Battletux	- got it.  you could also cp -a  the files, not sure there is much advantage to one big iso vs 100's of .deb
+2005-05-27T07:16:00.000Z	Battletux	CarlK	what am i doing wrong with the ISO creation, am doing this: mkisofs -o /home/andym/.iso/hoary.iso /cdrom but it fails?
+2005-05-27T07:16:00.000Z	CarlK	Battletux	- going the wrong direction ;)
+2005-05-27T07:16:00.000Z	Battletux	CarlK	how so?
+2005-05-27T07:17:00.000Z	CarlK	Battletux	- dd if=/dev/hdb  of=hoary.iso
+2005-05-27T07:18:00.000Z	CarlK	Battletux	- oh, I see what you were doing, mount it to get tot the files, then mkiso from the files...
+2005-05-27T07:19:00.000Z	Battletux	CarlK	got it: mkisofs -o /home/andym/.iso/hoary.iso /cdrom/* works, thanks
+2005-05-27T07:19:00.000Z	CarlK	Battletux	- easier to unmount and just "rip" the whole image as one big wad of bytes
+2005-05-27T07:20:00.000Z	CarlK	Battletux	- your image won't be bootable, so you can't burn a new CD
+2005-05-27T07:20:00.000Z	Battletux	CarlK	i dont want it bootable, i just want to use it as a source for apt-get instead of the actual cd
+2005-05-27T07:21:00.000Z	CarlK	Battletux	- then either way
+2005-05-27T07:36:00.000Z	Battletux	CarlK	ok what would need to be entered into /etc/fstab to get the iso to mount each time the system booted?
+2005-05-27T08:00:00.000Z	Battletux	CarlK	what was the RAW way of copying the ubuntu disk that would make it bootable?
+2005-05-27T08:01:00.000Z	CarlK	Battletux	- dd if=/dev/hdc of=hoary.iso
+2005-05-27T08:01:00.000Z	Battletux	CarlK	with the cd unmounted i presume?
+2005-05-27T08:01:00.000Z	CarlK	Battletux	- correct

@@ -1,0 +1,18 @@
+2010-08-19T00:44:00.000Z	prince_jammys	hoodoos	... >>/var/log/foo 2>&1
+2010-08-19T00:44:00.000Z	hoodoos	prince_jammys	let me try :)
+2010-08-19T00:45:00.000Z	prince_jammys	hoodoos	you were saying 'send everything going to FD 2 to the same place as FD 1' _before_ sending FD1 to you log file.
+2010-08-19T00:51:00.000Z	hoodoos	prince_jammys	this works this way: "exec sudo -u www-data /usr/local/bin/node /usr/local/mcore/core.js >> /var/log/mcore.log 2>&1"
+2010-08-19T00:51:00.000Z	prince_jammys	hoodoos	yep
+2010-08-19T00:52:00.000Z	hoodoos	prince_jammys	btw, what does sh -c "..." should mean? since it doesn't write anything with it
+2010-08-19T00:52:00.000Z	prince_jammys	hoodoos	sh -c '...'  runs sh (the system shell) with '...' as the shell script.
+2010-08-19T00:54:00.000Z	prince_jammys	hoodoos	you probably needed that somewhere so that the redirections take place as a different user. otherwise >foo is set up _before_ sudo is run.
+2010-08-19T00:56:00.000Z	prince_jammys	hoodoos	the shell sets up the redirections _before_ running a command. so ''sudo blah >somefile'' will fail if the _current_ user doesn't have permission to write to somefile.
+2010-08-19T00:57:00.000Z	prince_jammys	hoodoos	if you run ''sudo sh -c 'blah >somefile' ''  , you're running sh via sudo, so in sh's eyes, you are root, and the redirection works.
+2010-08-19T01:01:00.000Z	hoodoos	prince_jammys	ah! got it
+2010-08-19T01:01:00.000Z	hoodoos	prince_jammys	looks really strange indeed
+2010-08-19T01:04:00.000Z	hoodoos	prince_jammys	i got another problem now, following script (http://pastebin.com/XsQ91zeE) doesn't make my node see NODE_PATH variable when I run it. my guess is maybe export is not being made under root, however i use SUDO to start my script, where can be a problem?
+2010-08-19T01:05:00.000Z	hoodoos	prince_jammys	or maybe problem in -u www-data really? so i export variable in some other context?
+2010-08-19T01:08:00.000Z	prince_jammys	hoodoos	sudo 'cleans' the environment. try: sudo -u www-data NODE_PATH=whatever /usr/bin....
+2010-08-19T01:10:00.000Z	hoodoos	prince_jammys	ah it worked.. btw, i don't feel really goot to running my script as sudo.. it doesn't seem to use any privilages. so can i make owner of the script some other user? maybe www-data and run it under it?
+2010-08-19T01:16:00.000Z	hoodoos	prince_jammys	thanks a lot :)
+2010-08-19T01:17:00.000Z	prince_jammys	hoodoos	welcome

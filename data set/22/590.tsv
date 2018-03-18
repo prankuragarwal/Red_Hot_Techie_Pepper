@@ -1,0 +1,22 @@
+2011-07-06T22:09:00.000Z	wells5878		anyone know why directories without indexes give me an error 500 regardless of Options +/-Indexes?
+2011-07-06T22:09:00.000Z	wells5878		(apache server)
+2011-07-06T22:10:00.000Z	neuticle	wells5878	you have any .htaccess files laying around?
+2011-07-06T22:10:00.000Z	wells5878	neuticle	nope
+2011-07-06T22:11:00.000Z	neuticle	wells5878	any mod-rewrite?
+2011-07-06T22:11:00.000Z	wells5878		mod-rewrite is enabled
+2011-07-06T22:15:00.000Z	neuticle	wells5878	meh, sorry, can't think of anything besides trying it without mod-rewrite or overrides to see what it does... do all directories do it, or just one?
+2011-07-06T22:15:00.000Z	wells5878		all. if i override mod-rewrite with RewriteEngine off in htaccess it still happens
+2011-07-06T22:17:00.000Z	neuticle	wells5878	AllowOverride Indexes will cause a 500
+2011-07-06T22:19:00.000Z	neuticle	wells5878	if you just set it as an option it will probably work, but as an override, depending on the other configs, it could cause the issue
+2011-07-06T22:19:00.000Z	neuticle	wells5878	or at least it has with older versions... no idea
+2011-07-06T22:19:00.000Z	wells5878	neuticle	i'm not sure what you mean
+2011-07-06T22:20:00.000Z	neuticle	wells5878	do you use AllowOverride Indexes?
+2011-07-06T22:20:00.000Z	wells5878	neuticle	i've never tried doing that. we have AllowOverride All in our httpd.conf
+2011-07-06T22:20:00.000Z	neuticle	wells5878	ah, and then an Option Indexes?
+2011-07-06T22:21:00.000Z	neuticle	wells5878	meh, I don't know then
+2011-07-06T22:21:00.000Z	wells5878	neuticle	yeah, both Options -Indexes and Options +Indexes cause 500 error
+2011-07-06T22:21:00.000Z	neuticle	wells5878	sorry man
+2011-07-06T22:29:00.000Z	neuticle	wells5878	dude, I'm an idiot, it's the allowoverrides all
+2011-07-06T22:29:00.000Z	neuticle	wells5878	that sets an override for the indexes, then you set it as an option
+2011-07-06T22:30:00.000Z	neuticle	wells5878	set allow overrides to none for that directory, then set options indexes
+2011-07-06T22:30:00.000Z	neuticle	wells5878	I just saw it here setting up a new virtualhost...

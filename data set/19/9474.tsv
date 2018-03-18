@@ -1,0 +1,19 @@
+2006-11-03T08:32:00.000Z	pazemlsqdfmo1		FFS how can i set permission inheritance??
+2006-11-03T08:32:00.000Z	pazemlsqdfmo1		this is driving me crazy
+2006-11-03T08:32:00.000Z	LjL	pazemlsqdfmo1	honestly i don't think you can get it
+2006-11-03T08:32:00.000Z	LjL	pazemlsqdfmo1	perhaps with ACLs, but not with the standard Unix permission system i'm afraid
+2006-11-03T08:33:00.000Z	pazemlsqdfmo1	LjL	heres my situation: i have a folder shared over the network, for security reasons i created a new user which only has access to that folder, to log on remotely, but both the user i log in wiv on this computer, as the user i can log in with on another computer, need rwx on that folder
+2006-11-03T08:34:00.000Z	pazemlsqdfmo1	LjL	i am 99% sure that there was a way to do it, but i cant remember, which is driving me crazy
+2006-11-03T08:36:00.000Z	LjL	pazemlsqdfmo1	you can make files in a directory inherit the group of the directory, by setting suid group on the directory
+2006-11-03T08:36:00.000Z	pazemlsqdfmo1	LjL	i set chmod ug+rwx on it
+2006-11-03T08:36:00.000Z	LjL	pazemlsqdfmo1	still, if the default umask doesn't have g+rwx, that won't gain you much
+2006-11-03T08:36:00.000Z	LjL	pazemlsqdfmo1	http://www.dartmouth.edu/~rc/help/faq/permissions.html - search for "inherit"
+2006-11-03T08:41:00.000Z	LjL	pazemlsqdfmo1	well as i said, if you set SUID group to the directory, the group should become that of the directory (give it a group that the needed user(s) belong to, and you'll be fine, no?)
+2006-11-03T08:42:00.000Z	pazemlsqdfmo1	LjL	it inherits the group, but the group has no rights over the file, so i need to modify my own umask
+2006-11-03T08:42:00.000Z	pazemlsqdfmo1	LjL	not sure where and to what though :|
+2006-11-03T08:46:00.000Z	pazemlsqdfmo1	LjL	i think i fixed it, in ACL, i set the mask to what it needed to be, seems ok now
+2006-11-03T08:46:00.000Z	pazemlsqdfmo1	LjL	argh, i spoke too soon
+2006-11-03T08:47:00.000Z	LjL	pazemlsqdfmo1	well with ACLs you should be able to do that, anyway. but i'm not familiar with that at all
+2006-11-03T08:47:00.000Z	pazemlsqdfmo1	LjL	i still had permissions on 0777 for testing, i set them to 2770 again, and it dont work anymore (with ACL)
+2006-11-03T08:50:00.000Z	pazemlsqdfmo1	LjL	you know how i can set my own umask?
+2006-11-03T08:52:00.000Z	LjL	pazemlsqdfmo1	"umask blah" in your shell.

@@ -1,0 +1,22 @@
+2012-06-09T19:38:00.000Z	deitarion		I got apt wedged where trying to do anything results in a request for `apt-get -f install` but that fails because I need to remove a package to avoid an installed file conflict (which it refuses to do because I need to `apt-get -f install`).
+2012-06-09T19:39:00.000Z	deitarion		I'm used to Gentoo and Portage. How do I either tell dpkg to just *#$@ing overwrite the file from the package or tell apt-get that I know what I'm doing and it should mind its own business and remove the one package before I `apt-get -f install`?
+2012-06-09T19:40:00.000Z	Seveas	deitarion	can you do apt-get -f install and pastebin the output?
+2012-06-09T19:41:00.000Z	deitarion	Seveas	Tricky. The machine with the problem has no IRC client.
+2012-06-09T19:42:00.000Z	Seveas	deitarion	pastebin urls are easy to copy manually :)
+2012-06-09T19:42:00.000Z	deitarion	Seveas	Copy manually how?
+2012-06-09T19:43:00.000Z	deitarion	Seveas	...oh, wait. You mean manually write it down and key it in on this machine?
+2012-06-09T19:43:00.000Z	Seveas	deitarion	you type it in...
+2012-06-09T19:43:00.000Z	Seveas	deitarion	yeah, paste the error on pastebin.com, and give us the resulting url
+2012-06-09T19:43:00.000Z	deitarion	Seveas	One sec.
+2012-06-09T19:50:00.000Z	deitarion	Seveas	http://pastebin.com/mYrYS55T
+2012-06-09T19:52:00.000Z	Seveas	deitarion	oh, it's not too bad. Let's remove gimp entirely: sudo dpkg -P gimp gimp-data gimp-plugin-registry
+2012-06-09T19:52:00.000Z	deitarion	Seveas	Thanks. "dpkg -P" is what I was looking for.
+2012-06-09T19:52:00.000Z	Seveas	deitarion	add libgimp2.0 to that list (you want them all in one command)
+2012-06-09T19:55:00.000Z	Seveas	deitarion	hmm, there shouldn't be that many dependencies. Can you pastebin the output?
+2012-06-09T19:56:00.000Z	Seveas	deitarion	one thing you can do is find the .deb files for the older version on archive.ubuntu.com/ubuntu/pool/main/g/gimp/ and dpkg -i those
+2012-06-09T19:56:00.000Z	deitarion	Seveas	It's my mother's laptop. She has a lot of GIMP plugins... and, to be honest, I'd find it less grating to reinstall the system from my Lubuntu Precise disk (12.04) than to run back and forth manually copying pastebin URLs.
+2012-06-09T19:57:00.000Z	Seveas	deitarion	fair enough. Try the trick with the older .deb files though
+2012-06-09T19:58:00.000Z	Seveas	deitarion	yeah, dpkg can do that with --force-depends, but more problems lie that route
+2012-06-09T19:59:00.000Z	deitarion	Seveas	I've got all the new depends in /var/cache. The only problem is that the old version of one package has a file in common with the new version of a different one.
+2012-06-09T19:59:00.000Z	Seveas	deitarion	well, --force-depends may just help you there
+2012-06-09T20:06:00.000Z	deitarion	Seveas	There. That fixed it. Say what you will about Gentoo's Portage (Dependency calculation is slow, no binary packages), but it's miles ahead of apt in a lot of ways (package DB doesn't hold an exclusive lock for the entire course of an install, clear "big red warning" mechanism for ripping out packages if you really know what you're doing, greatly superior 3rd-party alternative to apt-cache search, etc.).

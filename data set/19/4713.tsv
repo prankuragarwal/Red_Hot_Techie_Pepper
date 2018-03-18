@@ -1,0 +1,19 @@
+2008-11-25T14:44:00.000Z	oskar-	jeancalvin	 i suggest to write a litte script that ouputs such using netstat
+2008-11-25T14:44:00.000Z	jeancalvin	oskar-	i'm no hacker. i'm a newb
+2008-11-25T14:45:00.000Z	oskar-	jeancalvin	 where do you want to use it for? maybe there are other solutions?
+2008-11-25T14:50:00.000Z	oskar-	jeancalvin	 you can view a list of used ports with something like "netstat -atun". port numbers for tcp and udp reach from 0 to 65535, so everything not mentioned is unused atm
+2008-11-25T14:51:00.000Z	jeancalvin	oskar-	is there a netstat command to get a list of UNused ports?
+2008-11-25T14:52:00.000Z	oskar-	jeancalvin	 that list normally would be quite long and confusing
+2008-11-25T14:53:00.000Z	jeancalvin	oskar-	here's netstat -atun printout: http://pastebin.com/m6cbf46e7 . what is a low number for unused port?
+2008-11-25T14:54:00.000Z	oskar-	jeancalvin	 1
+2008-11-25T14:55:00.000Z	jeancalvin	oskar-	what column are you looking at to find ports?
+2008-11-25T14:56:00.000Z	oskar-	jeancalvin	 the column "local address". 1 is not a good choice. choose some port > 1023, that does not show up after the ':' in the local address column
+2008-11-25T14:56:00.000Z	jeancalvin	oskar-	thanks
+2008-11-25T15:02:00.000Z	oskar-	jeancalvin	 choose a port > 1023. if this is for port forwarding, also make sure, that no firewall an the target computer is blocking the port there
+2008-11-25T15:03:00.000Z	jeancalvin	oskar-	i have no firewall on my comp
+2008-11-25T15:04:00.000Z	oskar-	jeancalvin	 you can try a sniffer to watch, what packets arrive at the computer: sudo tcpdump -n -i eth0 'port 1099'
+2008-11-25T15:05:00.000Z	jeancalvin	oskar-	i did your command and all i got was the "greater than" [ >  ] symbol
+2008-11-25T15:05:00.000Z	oskar-	jeancalvin	 did you forget the trailing '?
+2008-11-25T15:06:00.000Z	jeancalvin	oskar-	so far... "tcpdump: verbose output suppressed, use -v or -vv for full protocol decode listening on eth0, link-type EN10MB (Ethernet), capture size 96 bytes"
+2008-11-25T15:08:00.000Z	oskar-	jeancalvin	 that sounds good. it listens and will print a line for each packet matching the expression in the '' (here packets with port 1099 anywhere). with that and some variantions you should be able to experiment and maybe get it working. i have no time left, sorry... bye
+2008-11-25T15:09:00.000Z	oskar-	jeancalvin	 but you should consider to read something about tcp/ip networking, routing, nat and firewalling

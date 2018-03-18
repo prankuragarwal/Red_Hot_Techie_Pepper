@@ -1,0 +1,18 @@
+2012-04-09T18:00:00.000Z	tigers		Hello... im having trouble shrinking a partition in gparted. It refuses to shrink past a certain point.. how do i fix?
+2012-04-09T18:01:00.000Z	FrozenMind	tigers	what type of partition is it? EXT2/3, EXT4, NTFS, FAT12/16/32, exFAT?
+2012-04-09T18:02:00.000Z	FrozenMind	tigers	don't be sorry :) just asking to help the question get answered :D
+2012-04-09T18:07:00.000Z	FrozenMind	tigers	what could be happening is that you have a file at that certain cluster boundary. what you can do is make a back up of the partition and dump the current partition to allow you to move everything back in after the resize.
+2012-04-09T18:08:00.000Z	tigers	FrozenMind	thats the problem. I have no space to backup, the partition in question is some 309 gigs big
+2012-04-09T18:10:00.000Z	FrozenMind	tigers	aah, how much space is free on the EXT 4 you want to resize? you might still be hitting that cluster boundary... do you know if you have large files like 10gig+?
+2012-04-09T18:14:00.000Z	FrozenMind	tigers	the thing is, with EXT4, it crams everythign as close together, this is why you do not need to defragment your os/files in linux because is mashes everything as tight as it can, unlike windows.
+2012-04-09T18:14:00.000Z	FrozenMind	tigers	so you might be hitting a rather large file that was placed at the end, it would seem to me...
+2012-04-09T18:15:00.000Z	tigers	FrozenMind	i've shrunk it as far as i can to the nearest 100MB(if that makes sense)... so if its a stray cluster then it is at the very end of the partition..
+2012-04-09T18:16:00.000Z	FrozenMind	tigers	looking at it like that, I would suggest that you should do a search ro use a tool that finds all the files as well as their sizes (sorry, i do not know of any) and then from there you would need to either copy it out onto a flash drive or delete it..
+2012-04-09T18:17:00.000Z	FrozenMind	tigers	it does make sense :) and hmm... that is odd...
+2012-04-09T18:21:00.000Z	FrozenMind	tigers	this might help you, i have not used this  but seems like the same kind of idea you are having :)
+2012-04-09T18:21:00.000Z	FrozenMind	tigers	http://forums.fedoraforum.org/showthread.php?t=232773
+2012-04-09T18:23:00.000Z	FrozenMind	tigers	good luck, not needed to do this so i hope for the best!
+2012-04-09T18:43:00.000Z	FrozenMind	tigers	so i am guessing you got it figured out?
+2012-04-09T18:44:00.000Z	FrozenMind	tigers	good luck
+2012-04-09T18:44:00.000Z	tigers	FrozenMind	domo domo
+2012-04-09T19:02:00.000Z	tigers	FrozenMind	alas.. it didnt work

@@ -1,0 +1,22 @@
+2007-05-28T11:06:00.000Z	wols		dedi:sudo apt-get install openssh
+2007-05-28T11:07:00.000Z	dedi	wols	i did that but it isnt starting
+2007-05-28T11:07:00.000Z	wols	dedi	/etc/init.d/ssh start
+2007-05-28T11:07:00.000Z	wols	dedi	via sudo of course
+2007-05-28T11:10:00.000Z	dedi	wols	tried that also but cant putty myself
+2007-05-28T11:10:00.000Z	wols	dedi	paste the output of that in a pastebin
+2007-05-28T11:12:00.000Z	dedi	wols	http://paste.ubuntu-nl.org/22928/ and thanks for taking a look at it :)
+2007-05-28T11:13:00.000Z	wols	dedi	ssh is listening. "ssh localhost". what does it say?
+2007-05-28T11:13:00.000Z	wols	dedi	and when it can't connect: grep -i ssh /var/log/syslog.1.gz
+2007-05-28T11:13:00.000Z	wols	dedi	and when it can't connect: grep -i ssh /var/log/syslog
+2007-05-28T11:15:00.000Z	dedi	wols	its a little strange. ssh localhost -> network is unreachable. ssh 192.168.1.2 (local ip) -> just waiting, nothing happens. syslog has no ssh entry
+2007-05-28T11:16:00.000Z	dedi	wols	it is :)
+2007-05-28T11:16:00.000Z	wols	dedi	ping localhost
+2007-05-28T11:17:00.000Z	dedi	wols	nslookup brings 172.0.0.1
+2007-05-28T11:18:00.000Z	dedi	wols	PING localhost (127.0.0.1) 56(84) bytes of data. From lau01a04.sunrise.ch (212.161.178.80) icmp_seq=1 Destination Net Unreachable. looks like localhost gets routed :)
+2007-05-28T11:19:00.000Z	wols	dedi	route -n output?
+2007-05-28T11:19:00.000Z	dedi	wols	seems to be ok for local and wan, there is just no localhost entry
+2007-05-28T11:19:00.000Z	wols	dedi	pate it
+2007-05-28T11:20:00.000Z	dedi	wols	http://paste.ubuntu-nl.org/22930/
+2007-05-28T11:20:00.000Z	wols	dedi	how did you end up with the first route?
+2007-05-28T11:21:00.000Z	wols	dedi	nvm. looks ok
+2007-05-28T11:21:00.000Z	dedi	wols	the strange networkmaks is because of my ip limited router

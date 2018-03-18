@@ -1,0 +1,21 @@
+2011-07-10T20:32:00.000Z	Arikoth		anyone here good with wifi issues?
+2011-07-10T20:33:00.000Z	el_seano	Arikoth	what's the issue?
+2011-07-10T20:35:00.000Z	el_seano	Arikoth	does your netbook run hot before it shuts down?
+2011-07-10T20:35:00.000Z	el_seano	Arikoth	sorry, freezing
+2011-07-10T20:38:00.000Z	el_seano	Arikoth	which driver are you using for your card?
+2011-07-10T20:39:00.000Z	el_seano	Arikoth	also which card?  can you paste the output of `lspci | grep -i network`
+2011-07-10T20:42:00.000Z	Arikoth	el_seano	Network controller: Broadcom Corporation BCM4313 80.211b/n/g Wireless LAN Controller (rev 01)
+2011-07-10T20:46:00.000Z	el_seano	Arikoth	can you go to paste.ubuntu.com and put the output of `cat /var/log/dmesg.0`?
+2011-07-10T20:47:00.000Z	el_seano	Arikoth	There might be something more nefarious at hand, but you might just try switching drivers.  Go to System>>Administration>>Hardware Drivers.  There should be two options for the bcm4313, one's an open source driver, the other is broadcom's proprietary driver.
+2011-07-10T20:47:00.000Z	el_seano	Arikoth	switch to the driver you're not currently using and see if that helps any.
+2011-07-10T20:53:00.000Z	Arikoth	el_seano	http://paste.ubuntu.com/641408/
+2011-07-10T20:55:00.000Z	el_seano	Arikoth	looks like you're using broadcom's propietary driver.  Try switching to the 'b43' driver as per tge steps outlined above.
+2011-07-10T21:01:00.000Z	Arikoth	el_seano	tge steps?
+2011-07-10T21:02:00.000Z	el_seano	Arikoth	typo.  the steps.
+2011-07-10T21:03:00.000Z	el_seano	Arikoth	Go to System>>Administration>>Hardware Drivers.  There should be two options for the bcm4313, one's an open source driver, the other is broadcom's proprietary driver.
+2011-07-10T21:15:00.000Z	Arikoth	el_seano	I don't see an option for Hardware Drivers, but I did disable it under the additional drivers area. After a reboot it seems to see the card, but won't detect the wireless network anymore
+2011-07-10T21:16:00.000Z	Arikoth	el_seano	also the Fn F3 combo to disable/enable wifi doesn't work, figured that was tied to the driver though
+2011-07-10T21:20:00.000Z	el_seano	Arikoth	have you rebooted since switching drivers?  Sometimes cleans things up.
+2011-07-10T21:21:00.000Z	Arikoth	el_seano	Yeah did that first thing, No wifi listed under ifconfig either
+2011-07-10T21:21:00.000Z	el_seano	Arikoth	ifconfig -a
+2011-07-10T21:23:00.000Z	Arikoth	el_seano	http://paste.ubuntu.com/641420/

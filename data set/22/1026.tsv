@@ -1,0 +1,22 @@
+2011-02-06T12:26:00.000Z	jtannenbaum		do changes to /etc/hosts take effect immediately?
+2011-02-06T12:27:00.000Z	ActionParsnip	jtannenbaum	yes
+2011-02-06T12:27:00.000Z	ActionParsnip	jtannenbaum	you can test with dig
+2011-02-06T12:27:00.000Z	ActionParsnip	jtannenbaum	dig hostname    run that and the lookup time should be 0ms
+2011-02-06T12:28:00.000Z	jtannenbaum	ActionParsnip	my /etc/hosts http://pastebin.com/28CEQkF5
+2011-02-06T12:30:00.000Z	ActionParsnip	jtannenbaum	thats empty
+2011-11-05T11:55:00.000Z	ActionParsnip	jtannenbaum	what language are the filenames?
+2011-11-05T11:55:00.000Z	jtannenbaum	ActionParsnip	japanese I believe
+2012-08-28T23:02:00.000Z	ActionParsnip	jtannenbaum	how big is it?
+2012-08-28T23:03:00.000Z	ActionParsnip	jtannenbaum	it'll take a while, depending on speed etc
+2012-08-28T23:10:00.000Z	ActionParsnip	jtannenbaum	can you mount it manually?
+2012-08-28T23:11:00.000Z	ActionParsnip	jtannenbaum	what file system did you format it?
+2012-08-28T23:12:00.000Z	ActionParsnip	jtannenbaum	sudo mkdir /media/sdb1; sudo mount -t ext4 /dev/sdb1 /media/sdb1
+2012-08-28T23:12:00.000Z	jtannenbaum	ActionParsnip	great, thanks
+2012-08-28T23:13:00.000Z	ActionParsnip	jtannenbaum	did it mount?
+2012-08-28T23:13:00.000Z	ActionParsnip	jtannenbaum	run:  sudo blkid | grep sdb1
+2012-08-28T23:13:00.000Z	ActionParsnip	jtannenbaum	you can then use the UUID and add it to /etc/fstab  and the option will be used every time
+2012-08-28T23:15:00.000Z	ActionParsnip	jtannenbaum	yes, then I suggest you reboot and it should be ok
+2012-08-28T23:17:00.000Z	ActionParsnip	jtannenbaum	5% I believe, you can use tune2fs to change it
+2012-08-28T23:19:00.000Z	ActionParsnip	jtannenbaum	its probably not needed if its just user data
+2012-08-28T23:19:00.000Z	ActionParsnip	jtannenbaum	that's an option too
+2012-08-28T23:20:00.000Z	ActionParsnip	jtannenbaum	i'd look online for the pros and cons of both

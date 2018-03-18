@@ -1,0 +1,18 @@
+2012-04-30T15:01:00.000Z	Darael		Something I've wondered for a while: Is there a way of generating a minimal list of packages to install to get all packages currently installed on a system?
+2012-04-30T15:03:00.000Z	txomon|home	Darael	you also can get with dpkg --get-selections
+2012-04-30T15:15:00.000Z	txomon|home	Darael	stop using aptitude and use apt-get
+2012-04-30T15:16:00.000Z	Darael	txomon|home	The issue is that tasksel uses aptitude, and that tasksel is in the text-mode installer, not that I'm using aptitude myself.
+2012-04-30T15:18:00.000Z	Darael	txomon|home	I'm fully familiar with apt-get, I just wish the alternate (and minimal) CDs would use it instead of aptitude (although I can see the use of the latter for the "manual package selection" option.
+2012-04-30T15:18:00.000Z	txomon|home	Darael	I discourage you to use that
+2012-04-30T15:19:00.000Z	Darael	txomon|home	I /don't/ use the "manual package selection" option.  I /have/ used the tasksel interface, which /still/ calls aptitude.
+2012-04-30T15:22:00.000Z	txomon|home	Darael	the best usually is to do it yourself. you can take all the manually selected ones, and filter the not real ones
+2012-04-30T15:24:00.000Z	Darael	txomon|home	I know - that's what I'm doing, in conjunction with "aptitude why" (if you can give me an apt-get or apt-cache equivalent, that'd be great, incidentally), I was just hoping for something involving a little less manual effort.
+2012-04-30T15:24:00.000Z	txomon|home	Darael	apt-cache rdepends
+2012-04-30T15:26:00.000Z	Darael	txomon|home	Not the same; aptitude why gives results based on what else is installed, apt-cache (r)depends just gives a dependency list, which is /much/ more effort to work out.
+2012-04-30T15:43:00.000Z	Darael	txomon|home	ogra_:  Incidentally, I found something that looks very much like what I was after in deborphan.  Thanks for your suggestions.
+2012-04-30T15:44:00.000Z	txomon|home	Darael	link?
+2012-04-30T15:45:00.000Z	Darael	txomon|home	Lists installed packages with no installed reverse dependencies, or that's what the extended description suggests.
+2012-04-30T15:45:00.000Z	txomon|home	Darael	but, apt detects automatically those ones
+2012-04-30T15:45:00.000Z	Darael	txomon|home	No, apt only automatically detects those where they were pulled in as dependencies of something else.  Deborphan, if I read it aright, will pick up ones that weren't.
+2012-04-30T15:49:00.000Z	Darael	txomon|home	A quick test (deborphan -a | most) suggests it does what I wanted - it's picking up even things that were manually installed.
+2012-06-01T04:26:00.000Z	Darael	txomon|home	The minimal CDs are not packages and cannot be downloaded with apt-get.  Use wget instead.

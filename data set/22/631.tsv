@@ -1,0 +1,22 @@
+2011-07-26T11:59:00.000Z	Untouchab1e		question. I have a windows NFS share, but when I create a directory on it from a linux system, the folder is inaccessible from the Windows system.. "Windows cannot access \\NFS-share\folder"..
+2011-07-26T11:59:00.000Z	Untouchab1e		I realize its an issue with permission, but not quite sure how to fix it=?
+2011-07-26T12:00:00.000Z	Northernen	Untouchab1e	fairly certain you need to use samba for that.
+2011-07-26T12:01:00.000Z	Untouchab1e	Northernen	unfortunately, I need to use NFS :/
+2011-07-26T12:01:00.000Z	Untouchab1e	Northernen	Im thinking there must be an easy chmod command from the linux box to fix it?
+2011-07-26T12:02:00.000Z	Northernen	Untouchab1e	what
+2011-07-26T12:03:00.000Z	Untouchab1e	Northernen	the problem must be that the files/folders created on the Windows NFS share from the Linux box have the linux root user as owner
+2011-07-26T12:03:00.000Z	Northernen	Untouchab1e	you want to change the owner of the files/directories?
+2011-07-26T12:03:00.000Z	Untouchab1e	Northernen	idk if that will fix it..
+2011-07-26T12:04:00.000Z	Northernen	Untouchab1e	me neither, but worth a try. "chown newonwer file/directory" by the way.
+2011-07-26T12:05:00.000Z	Untouchab1e	Northernen	yea, thanks, however, I have no idea what owner to set
+2011-07-26T12:05:00.000Z	Northernen	Untouchab1e	just your own user?
+2011-07-26T12:06:00.000Z	Untouchab1e	Northernen	but Linux doesnt use the same access control system as Windows
+2011-07-26T12:08:00.000Z	Northernen	Untouchab1e	you need to access it from Windows as well?
+2011-07-26T12:09:00.000Z	Untouchab1e	Northernen	thats the problem here.. I have a Windows NFS Share which works fine, but I cannot access folders created from Linux systems on the Windows box
+2011-07-26T12:11:00.000Z	Northernen	Untouchab1e	I see. I don't think Windows recognises Linux permissions.
+2011-07-26T12:11:00.000Z	Untouchab1e	Northernen	exactly.. so there must be a way to work around this somehow
+2011-07-26T12:12:00.000Z	Untouchab1e	Northernen	I wonder if my mount command for the NFS share is the issue?
+2011-07-26T12:13:00.000Z	Northernen	Untouchab1e	might be. Should probably mount it as a user account, although not sure if that will hell.
+2011-07-26T12:14:00.000Z	Northernen	Untouchab1e	not _as_ as a user account, but connect it to one.
+2011-07-26T12:15:00.000Z	Northernen	Untouchab1e	local partition or over network?
+2011-07-26T12:16:00.000Z	Northernen	Untouchab1e	never mind, I can't read.

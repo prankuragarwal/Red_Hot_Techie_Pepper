@@ -1,0 +1,18 @@
+2008-01-13T04:52:00.000Z	maddog39		is there any way for me to access my samba shares mounted via nautilus in a Qt application?
+2008-01-13T04:54:00.000Z	Khisanth	maddog39	you should be able to with the gnome-vfs libs
+2008-01-13T04:54:00.000Z	Khisanth	maddog39	but that is going to be some annoying dependency for users
+2008-01-13T04:54:00.000Z	maddog39	Khisanth	well i know that but im trying to access my Qt4 project files from QDevelop which doesnt support gnome-vfs as of yet
+2008-01-13T04:55:00.000Z	Khisanth	maddog39	since it's smb why not just use mount?
+2008-01-13T04:56:00.000Z	maddog39	Khisanth	because for whatever reason, i dont have write permissions when i use mount
+2008-01-13T04:56:00.000Z	maddog39	Khisanth	even if i pass the rw flag and of course my credentials, i get permission denied when i try to do anything besides read/trove directories
+2008-01-13T04:57:00.000Z	Khisanth	maddog39	who is the owner of the files when you do an ls?
+2008-01-13T04:57:00.000Z	maddog39	Khisanth	root
+2008-01-13T04:57:00.000Z	Khisanth	maddog39	and are you supplying a uid/gid when mounting?
+2008-01-13T04:58:00.000Z	maddog39	Khisanth	no i didnt know fileshares had a uid :/
+2008-01-13T05:00:00.000Z	Khisanth	maddog39	well your credientials are for the remote side, but you can specify who owns them on the local side
+2008-01-13T05:00:00.000Z	maddog39	Khisanth	okay, u know which mount flag i can use to do that
+2008-01-13T05:01:00.000Z	Khisanth	maddog39	same way you are specifying the rw -o rw,uid=...,gid=...
+2008-01-13T05:01:00.000Z	maddog39	Khisanth	okay ill take a look
+2008-01-13T05:02:00.000Z	Khisanth	maddog39	you can use 'id maddog39' to find your uid/gid in case you don't know what they are :)
+2008-01-13T05:03:00.000Z	maddog39	Khisanth	okay thanks, i think i got it lol, i never actually knew what uid/gid on a drive meant, thought it was something else
+2008-01-13T05:10:00.000Z	maddog39	Khisanth	hey thanks, its all working now

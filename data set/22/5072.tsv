@@ -1,0 +1,22 @@
+2007-07-31T10:46:00.000Z	clu3l3ss		i'm having a bit of a problem with the nvidia restricted legacy drivers - they load and enable, but i only have two low-res settings to choose from.  ive checked the xorg.conf file, and all of the higher resolutions seem to be listed under all of the color depths. help?
+2007-07-31T10:46:00.000Z	clu3l3ss		the monitor is recognized in the conf file correctly as well.
+2007-07-31T10:46:00.000Z	pike_	clu3l3ss	what model monitor?
+2007-07-31T10:49:00.000Z	pike_	clu3l3ss	gksu gedit /etc/X11/xorg.conf     then scroll to the horiz and vert number and replace em with Horizontal Fresh Rate, 31-81 kHz. Vertical Fresh Rate, 56-76 Hz
+2007-07-31T10:49:00.000Z	pike_	clu3l3ss	then save and alt-ctrl-backspace
+2007-07-31T10:54:00.000Z	clu3l3ss	pike_	aha!  no vert or horiz settings in there now. i'll have to look up a sample to see how to put those in, or should i run the nvidia-xconfig?
+2007-07-31T10:54:00.000Z	pike_	clu3l3ss	id run nvidia-xconfig i guess but i normally go back and put my monitors specific settings. im just picky that way
+2007-07-31T11:18:00.000Z	clu3l3ss	pike_	thanks for the hand, i've got it working.
+2007-07-31T11:29:00.000Z	clu3l3ss	pike_	well that's odd - i have the higher resolution desktop now, but anything 3d doesn't run, i.e. screen savers, tux racer, tux cart..  just doesn't come up.
+2007-07-31T11:30:00.000Z	pike_	clu3l3ss	might want to pastebin your /etc/X11/xorg.conf file
+2007-07-31T11:33:00.000Z	clu3l3ss	pike_	pastebinned
+2007-07-31T11:33:00.000Z	pike_	clu3l3ss	url?
+2007-07-31T11:34:00.000Z	clu3l3ss	pike_	http://pastebin.com/d2e83c3a5
+2007-07-31T11:42:00.000Z	clu3l3ss	pike_	looks like glx is supposed to be loading in the xorg.conf - but no dice.  any idea where the log file is?
+2007-07-31T11:43:00.000Z	pike_	clu3l3ss	cat /var/log/Xorg.0.log
+2007-07-31T11:43:00.000Z	pike_	clu3l3ss	other than that i have only passing familiarity with 3d issues
+2007-07-31T11:47:00.000Z	clu3l3ss	pike_	here's something, "glx is not supported with the composite extension".  what's the composite extension?
+2007-07-31T11:49:00.000Z	pike_	clu3l3ss	gksu gedit /etc/X11/xorg.conf  and under device section for nvidia driver add line
+2007-07-31T11:50:00.000Z	clu3l3ss	pike_	 :)
+2007-07-31T11:50:00.000Z	clu3l3ss	pike_	looks like a submitted bug.
+2007-07-31T11:51:00.000Z	clu3l3ss	pike_	Option "AllowGLXWithComposite" "true"
+2007-07-31T11:51:00.000Z	clu3l3ss	pike_	trying that, brb.

@@ -1,0 +1,22 @@
+2004-10-28T06:58:00.000Z	rublind		Are there any ubuntu dev's in here? (right now)
+2004-10-28T06:58:00.000Z	rublind		Who?
+2004-10-28T06:59:00.000Z	rublind		Thanks.
+2004-10-28T07:00:00.000Z	rublind		Nope*
+2004-10-28T07:00:00.000Z	rublind		No. :P
+2004-10-28T07:01:00.000Z	rublind		Yeah.
+2004-10-28T07:01:00.000Z	rublind		PCI
+2004-10-28T07:01:00.000Z	rublind		Creative Labs Audigy
+2004-10-28T07:01:00.000Z	rublind		Uh, where should I go? Someone tell me.
+2004-10-28T07:01:00.000Z	rublind		#gnome ?
+2004-10-28T07:02:00.000Z	Despair	rublind	#alsa is probably good, for sound setup stuff.
+2004-10-28T08:27:00.000Z	Despair	rublind	sort of. You'll probably need to remove the kernel modules for all sound stuff, then blacklist the kernel modules for your various sound cards, then manually load them in the order you want them to appear. when you figure out the order, you'll need to make them load in a script during bootup in that order.
+2004-10-28T08:45:00.000Z	Despair	rublind	any change in where it's putting things?
+2004-10-28T09:00:00.000Z	Despair	rublind	add `snd_emu10k1` to /etc/modules
+2004-10-28T09:02:00.000Z	Despair	rublind	just `rmmod snd_intel8x0;rmmod snd_emu10k1`
+2004-10-28T09:03:00.000Z	Despair	rublind	ick, need to kill whatever is using it. probably gnome-settings.
+2004-10-28T13:53:00.000Z	Despair	rublind	have you put snd_emu10k1 in /etc/modules.conf, and rebooted? and it didn't make a difference?
+2004-10-28T13:57:00.000Z	Despair	rublind	I got CL cards working for 2 other people with the /etc/modules trick. I can't see why it doesn't work for you. :/
+2004-10-28T14:03:00.000Z	Despair	rublind	probably that you need to manually reset mixer settings, because it stores&loads them by card number, not name
+2004-10-28T14:04:00.000Z	Despair	rublind	other possibility is that you broke something and it's not loading sound modules before trying to restore sound settings.
+2004-10-28T14:04:00.000Z	rublind	Despair	how would I load snd_emu10k1 ?
+2004-10-28T14:07:00.000Z	Despair	rublind	any error messages?

@@ -1,0 +1,21 @@
+2011-09-12T06:20:00.000Z	fus10nx1		ah, o
+2011-09-12T06:20:00.000Z	fus10nx1		ok
+2011-09-12T06:20:00.000Z	fus10nx1		is that gonna be a problem?
+2011-09-12T06:20:00.000Z	fus10nx1		nah
+2011-09-12T06:20:00.000Z	fus10nx1		no need
+2011-09-12T06:21:00.000Z	fus10nx1		but i do need the public to be able to access these files i.e. when they go to http://x.x.x.x/whateverFile they can access it
+2011-09-12T06:22:00.000Z	fus10nx1		just says 'not found' -- so i'm missing a step somewhere
+2011-09-12T06:23:00.000Z	fus10nx1		so apache conf needs to look at /home/user1/var/www
+2011-09-12T06:24:00.000Z	fus10nx1		I only have 1 domain
+2011-09-12T06:24:00.000Z	fus10nx1		so should i have a second Apache install on a different listen port or something? so confused at this point
+2011-09-12T06:24:00.000Z	cheako	fus10nx1	You should make a dedicated FTP user for managing the site content with /var... as it's home folder.
+2011-09-12T06:25:00.000Z	fus10nx1	cheako	thats what ive been trying to do
+2011-09-12T06:26:00.000Z	cheako	fus10nx1	What FTPd?
+2011-09-12T06:32:00.000Z	cheako	fus10nx1	This looks overly complex: http://linuxforfun.net/2008/04/05/vsftpd-virtual-users/  My suggestion is to use "adduser --home /var/www webmaster"
+2011-09-12T06:42:00.000Z	cheako	fus10nx1	Yeah, doing maintanace of the /var/www folder isn't well suted over FTP.  you'r going to have to chmod and perhaps chown(if possible) things.
+2011-09-12T07:33:00.000Z	cheako	fus10nx1	Yeah, you should be using the www-data login!
+2011-09-12T07:33:00.000Z	cheako	fus10nx1	No chmoding things.
+2011-09-12T07:35:00.000Z	cheako	fus10nx1	Configure the pam.d/vsftp file to use a separate password/shadow file per the virtual-users example I posted an hour ago.  Then login using the www-data username.
+2011-09-12T07:37:00.000Z	cheako	fus10nx1	Yeah trying to use FTP to manage /var/www was likely your first mistake...  Though I'm not sure there is a good method, any takers on writing a howto?
+2011-09-12T07:38:00.000Z	cheako	fus10nx1	umask only removes permissions it dosn't ever increase access as is needed here.
+2011-09-12T07:40:00.000Z	cheako	fus10nx1	Gumby: He should just bit the bullet and login as www-data!

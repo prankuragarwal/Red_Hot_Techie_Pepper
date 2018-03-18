@@ -1,0 +1,23 @@
+2009-06-30T20:07:00.000Z	mbeierl		Maybe someone can answer this: There's xnest and XDCMP to start a completely new session remotely, or vino/vinagre/vnc for taking over an existing local session, but is there anything like windows Terminal Services which allows you to start a new session and "disconnect" so that it stays running in the background?  Like XDCMP with nohup somehow?
+2009-06-30T20:08:00.000Z	mhall119	mbeierl	vncserver can do that
+2009-06-30T20:09:00.000Z	mbeierl	mhall119	for multiple users or for a specific X session?
+2009-06-30T20:09:00.000Z	mhall119	mbeierl	you can start a new X display for the VNC session, and keep it going after you disconnect
+2009-06-30T20:10:00.000Z	mbeierl	mhall119	googling vncserver now... don't recall this quite being as straightforward as that... thanks!
+2009-06-30T20:11:00.000Z	mhall119	mbeierl	if you want the session accessible from teh console, it's not as straight forward
+2009-06-30T20:12:00.000Z	mbeierl	mhall119	no I'm thinking like what tsm for windows does where you have a client that does the initial connect and you get a "login" screen or resume your current session
+2009-06-30T20:13:00.000Z	mhall119	mbeierl	Xvnc is an X extension that shares the default display over VNC
+2009-06-30T20:13:00.000Z	mbeierl	mhall119	I see - that's what I thought for the vnc server: it's started as the specific user and waits for that user to connect, not as arbitrary user
+2009-06-30T20:15:00.000Z	mbeierl	mhall119	but, there again, it's the default console, not a remote session that can be used at the same time as others.  Say I want user1 and user2 to both be able to log in remotely and disconnect/resume sessions independently.  To make it more complicated, user1 and user2 can be any arbitrary user on the system
+2009-06-30T20:16:00.000Z	mhall119	mbeierl	I'm not entirely sure how to do that with VNC
+2009-06-30T20:17:00.000Z	mbeierl	mhall119	that's just it - I cannot actually find a suitable replacement for Microsoft's terminal service manager under linux and I am really baffled that Microsoft can make their OS more multi-user usable than the Linux community can.  I'm actually stumped here
+2009-06-30T20:17:00.000Z	mhall119	mbeierl	XDMCP can probably do what you want
+2009-06-30T20:18:00.000Z	mbeierl	mhall119	close, but if the connection drops, XDMCP completely closes the session - hard
+2009-06-30T20:18:00.000Z	mbeierl	mhall119	that's why I started the question the way I did.
+2009-06-30T20:19:00.000Z	mhall119	mbeierl	have you seen http://linuxreviews.org/howtos/xvnc/ ?
+2009-06-30T20:21:00.000Z	mbeierl	mhall119	looking at it now...
+2009-06-30T20:23:00.000Z	mhall119	mbeierl	I'm not sure if you can make that setup keep a session alive after a disconnect and have the user re-connect to it again later
+2009-06-30T20:23:00.000Z	mbeierl	mhall119	Wow.  That might do it, but it's not going to be easy to streamline the client connection process :(
+2009-06-30T20:31:00.000Z	mbeierl	mhall119	Wait!  I think freenx is what I might be wanting :)
+2009-06-30T20:32:00.000Z	mbeierl	mhall119	fyi: http://freenx.berlios.de/
+2009-06-30T20:34:00.000Z	mhall119	mbeierl	thanks, I've heard of it before, but not really familiar
+2009-06-30T20:34:00.000Z	mbeierl	mhall119	or better yet the NoMachine (commercial but with free version) http://www.nomachine.com/select-package.php?os=linux&id=1

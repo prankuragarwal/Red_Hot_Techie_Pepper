@@ -1,0 +1,24 @@
+2006-03-18T12:43:00.000Z	OmegaAlpha		hello, can someone help me with resizing a partition... For some reason it cant resize it using Part.Magic and Gparted.  I think there are errors on the drive
+2006-03-18T12:43:00.000Z	silvaran	OmegaAlpha	What filesystem?
+2006-03-18T12:44:00.000Z	OmegaAlpha	silvaran	fat32
+2006-03-18T12:44:00.000Z	OmegaAlpha	silvaran	It was working fine for me the other day, till i had to resize the partition to make it bigger so i can put more files onto it. the partition was at the end of the drive
+2006-03-18T12:45:00.000Z	OmegaAlpha	silvaran	i simply resized it so it was the whole drive and now i cant resize it to make it smaller nor can i access the drive
+2006-03-18T12:45:00.000Z	silvaran	OmegaAlpha	There's probably some FS corruption then... you're really going to need to run a recovery tool on it first.
+2006-03-18T12:46:00.000Z	OmegaAlpha	silvaran	where can i get a recovery tool...? will i lose the files on there now?
+2006-03-18T12:46:00.000Z	silvaran	OmegaAlpha	No idea... someone who knows fat32 recovery would be better able to answer that, I haven't had to recover any files off a drive like that for a loooong time...
+2006-03-18T12:47:00.000Z	silvaran	OmegaAlpha	What did you use to expand the drive in the first place?
+2006-03-18T12:47:00.000Z	OmegaAlpha	silvaran	thanks for the help... this sucks i just got this damn drive for xmas and i already screwed it up lol
+2006-03-18T12:47:00.000Z	silvaran	OmegaAlpha	It's a software thing, so not as serious (at least by the sounds of it).
+2006-03-18T12:47:00.000Z	OmegaAlpha	silvaran	partition magic... the damn thing froze or something when resizing it too
+2006-03-18T12:48:00.000Z	silvaran	OmegaAlpha	Argh, that's no good... did it reboot and resize, or just resize while Windows was running?
+2006-03-18T12:49:00.000Z	OmegaAlpha	silvaran	when i partitioned my internal drive.. it rebooted. but this is an external drive. i was expecting it to reboot but it didnt
+2006-03-18T12:49:00.000Z	silvaran	OmegaAlpha	It only needs to reboot when the drive is locked (ie: you booted off of it)... it doesn't need to reboot for external drives or non-system drives.
+2006-03-18T12:52:00.000Z	silvaran	OmegaAlpha	Something like "/dev/sda1 not found in /etc/fstab"?
+2006-03-18T12:53:00.000Z	silvaran	OmegaAlpha	Are you sure you have the mount parameters right?
+2006-03-18T12:53:00.000Z	OmegaAlpha	silvaran	no it said "Warning: device /dev/sda5 is already handled by /etc/fstab, supplied label is ignored
+2006-03-18T12:54:00.000Z	silvaran	OmegaAlpha	You need to be root... "sudo mount /media/sda"
+2006-03-18T12:55:00.000Z	OmegaAlpha	silvaran	now its saying mount: unknown filesystem type 'fat32' now thats odd
+2006-03-18T13:22:00.000Z	OmegaAlpha	silvaran	wont he have to make a new partition as fat32  in order to listen to his mp3s on linux
+2006-03-18T13:22:00.000Z	silvaran	OmegaAlpha	You can still read ntfs drives, you just can't write them.  And the default permissions are finicky.
+2006-03-21T06:41:00.000Z	silvaran	OmegaAlpha	physical errors or filesystem corruption?
+2006-03-21T06:43:00.000Z	silvaran	OmegaAlpha	If you're unsure, back it up somewhere else with dd, and go ahead and fix it (DON'T check/repair a filesystem that is mounted).

@@ -1,0 +1,18 @@
+2007-03-23T08:01:00.000Z	digitize		for some reason my dvd-rom is only allowing root as the owner, so my main user cannot view dvds, nor have i been successful in changing the permissions with sudo + nautilus.  any suggestions?
+2007-03-23T08:02:00.000Z	digitize		ty
+2007-03-23T08:02:00.000Z	bruenig	digitize	do grep cdrom /etc/fstab and paste the output
+2007-03-23T08:03:00.000Z	bruenig	digitize	looks good
+2007-03-23T08:03:00.000Z	digitize	bruenig	i know... yet it doesn't work :(
+2007-03-23T08:06:00.000Z	digitize	bruenig	http://www.geocities.com/d1g17123/dvd-perm.png
+2007-03-23T08:06:00.000Z	bruenig	digitize	is there any problems though with it being owned by root?
+2007-03-23T08:06:00.000Z	digitize	bruenig	that's with the line i pasted from /etc/fstab
+2007-03-23T08:06:00.000Z	digitize	bruenig	i have no file access
+2007-03-23T08:06:00.000Z	digitize	bruenig	and i cannot change that setting
+2007-03-23T08:07:00.000Z	bruenig	digitize	sudo chown $(whoami):$(whoami) /media/cdrom1 maybe
+2007-03-23T08:08:00.000Z	digitize	bruenig	nothing :(
+2007-03-23T08:08:00.000Z	bruenig	digitize	do ls -l /media
+2007-03-23T08:09:00.000Z	digitize	bruenig	dr-xr-xr-x  1 root     root      128 2006-11-03 00:12 cdrom1
+2007-03-23T08:09:00.000Z	bruenig	digitize	are you sure chowning isn't working?
+2007-03-23T08:10:00.000Z	digitize	bruenig	yeah, not able to play dvds
+2007-03-23T08:11:00.000Z	bruenig	digitize	sudo chown username /media/cdrom1
+2007-03-23T08:11:00.000Z	bruenig	digitize	cdrom1 is just a folder, it should be able to be chowned

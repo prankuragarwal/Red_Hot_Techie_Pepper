@@ -1,0 +1,19 @@
+2010-09-14T08:00:00.000Z	nicnic		this channel appears to be +m and i must be lacking voice hehe
+2010-09-14T08:01:00.000Z	nicnic		it doesn't mention anything about changing the target drive as strange as that may sound
+2010-09-14T08:02:00.000Z	nicnic		that is not without creating a custom install cd so far
+2010-09-14T08:02:00.000Z	nicnic		which seems like overkill
+2010-09-14T08:04:00.000Z	nicnic		thanks, will take a look
+2010-09-14T08:05:00.000Z	nicnic		just wanted to find out if there was a generic and simple way to specify the drive
+2010-09-14T08:05:00.000Z	nicnic		had to downgrade from 10.04 because insight has been removed
+2010-09-14T08:06:00.000Z	nicnic		ahh, thanks
+2010-09-14T08:08:00.000Z	nicnic		anyone know how to specify the target drive when using the alternative cd?
+2010-09-14T08:09:00.000Z	nicnic		ie it's not listing when selecting manual partitioning
+2010-09-14T08:10:00.000Z	Jordan_U	nicnic	Do you use any fakeraid?
+2010-09-14T08:10:00.000Z	nicnic	Jordan_U	no, surprisingly, sda and sdb are both listed in dmesg output, however, the installer only shows sdb
+2010-09-14T08:12:00.000Z	Jordan_U	nicnic	That usually happens when the installer thinks that the drive has fakeraid metadata that it doesn't understand. Rather than writing to it and possably destroying a RAID array it simply doesn't present it as an option (it should really warn the user that it's doing this but that's beside the point).
+2010-09-14T08:13:00.000Z	nicnic	Jordan_U	i will double check the bios, any way to confirm this from a shell?
+2010-09-14T08:14:00.000Z	Jordan_U	nicnic	Probably but I don't personally know how. The work around is to press F6 at the initial boot screen and select the "nodmraid" option.
+2010-09-14T08:15:00.000Z	Jordan_U	nicnic	Or zero out the beginning of sdb so that there isn't anything that would look like fakeraid metadata on it.
+2010-09-14T08:16:00.000Z	nicnic	Jordan_U	you are right, this is an old drive and was probably used in a raid config
+2010-09-14T08:17:00.000Z	Jordan_U	nicnic	I'm not sure I understand, you have a windows install on sda currently that you want to preserve?
+2010-09-14T08:20:00.000Z	Jordan_U	nicnic	I'd just use the nodmraid option then (if you're sure that the drive isn't actually part of a raid array).

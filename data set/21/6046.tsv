@@ -1,0 +1,21 @@
+2007-06-14T13:41:00.000Z	puff		Anybody good at make or gmake?
+2007-06-14T13:41:00.000Z	yo2k_	puff	has a problem?
+2007-06-14T13:42:00.000Z	puff	yo2k_	Yeah,  @find {de,com,javax} -iname *.java > javaSourceFiles
+2007-06-14T13:42:00.000Z	puff	yo2k_	That appears to be generating a size 0 file, and then the subsequent command ( (mkdir build;  javac -d build @javaSourceFiles))  fails.
+2007-06-14T13:42:00.000Z	yo2k_	puff	you want to compile or ...?
+2007-06-14T13:43:00.000Z	puff	yo2k_	Yeah.  The java files are there, a shell find ./ -name "*.java" finds them.
+2007-06-14T13:43:00.000Z	puff		But the javac command errors with "javac: no source files"
+2007-06-14T13:43:00.000Z	yo2k_	puff	so ? that need/find a file *.java
+2007-06-14T13:44:00.000Z	puff	yo2k_	I'm trying to figure out what's wrong with this line in the make file:   (mkdir build;  javac -d build @javaSourceFiles)
+2007-06-14T13:44:00.000Z	puff	yo2k_	Er, sorry, the next line:  @find {de,com,javax} -iname *.java > javaSourceFiles
+2007-06-14T13:44:00.000Z	yo2k_	puff	let try...
+2007-06-14T13:45:00.000Z	puff	yo2k_	I don't understand you.
+2007-06-14T13:46:00.000Z	yo2k_	puff	that mean waht you compile find/need *.java in the current directory
+2007-06-14T13:47:00.000Z	yo2k_	puff	than the information collect in variable @javaSourceFile
+2007-06-14T13:47:00.000Z	puff	yo2k_	Are you saying, the line: "@find {de,com,javax} -iname *.java > javaSourceFiles" means find *.java in the current directory
+2007-06-14T13:48:00.000Z	yo2k_	puff	yes
+2007-06-14T13:48:00.000Z	puff	yo2k_	Okay, so it's incorrect then.  What it needs to do is find *.java in subdirectories of directory de, directory com, and directory javax.  How do I fix it to do that?
+2007-06-14T13:49:00.000Z	yo2k_	puff	man find
+2007-06-14T13:49:00.000Z	yo2k_	puff	parameter -iname
+2007-06-14T13:50:00.000Z	puff	yo2k_	So it's just invoking the shell command version of find?
+2007-06-14T13:50:00.000Z	yo2k_	puff	yup...

@@ -1,0 +1,22 @@
+2012-09-30T16:42:00.000Z	tyler_d		what kernel should I be using for an intel i5?
+2012-09-30T16:43:00.000Z	TJ-	tyler_d	amd64 or i386 (the former for 64-bit and addressing more than 4GB or RAM)
+2012-09-30T18:02:00.000Z	TJ-	tyler_d	The headers you need for building the nvidia DKMS packages, are in the Ubuntu mainline Kernel PPA
+2012-09-30T18:03:00.000Z	tyler_d	TJ-	once again tyvm sir.
+2012-10-04T16:55:00.000Z	TJ-	tyler_d	do join in! the error is "ssh_exchange_identification: Connection closed by remote host" when doing "svn co svn+tssh://localhost/usr/local/svn/repos/fig/trunk"
+2012-10-04T17:02:00.000Z	TJ-	tyler_d	the error is "ssh_exchange_identification: Connection closed by remote host" when doing "svn co svn+tssh://localhost/usr/local/svn/repos/fig/trunk"
+2012-10-04T17:03:00.000Z	tyler_d	TJ-	sandb____ hte problem there is that you haven't specified a port other than "localhost"... you need to tell it what port to try on localhost to hit the tunnel
+2012-10-04T17:04:00.000Z	TJ-	tyler_d	That's in the svn config file, defined as "tssh = ssh -p 1234"
+2012-10-26T22:25:00.000Z	TJ-	tyler_d	I don't seen anything untoward in your "/proc/interrupts" you paste-binned earlier.
+2012-10-26T22:26:00.000Z	tyler_d	TJ-	the schedule interupts within there are ie. cpu3 at 12706
+2012-10-26T22:26:00.000Z	tyler_d	TJ-	sorry, 62829
+2012-10-26T22:26:00.000Z	tyler_d	TJ-	which is far 2 many.
+2012-10-26T22:39:00.000Z	tyler_d	TJ-	any thoughts?
+2012-10-26T22:40:00.000Z	TJ-	tyler_d	If those are bad, my system must be dying: http://pastebin.ubuntu.com/1307812/
+2012-10-26T22:41:00.000Z	tyler_d	TJ-	it's from an applicaiton or such trying to "balance" itself between the processors, from what little I know of it
+2012-10-26T22:41:00.000Z	TJ-	tyler_d	Use affinity to pin it to one
+2012-10-26T22:45:00.000Z	tyler_d	TJ-	any clue how to pin down the pid of that proc that is overunning those?
+2012-10-26T22:59:00.000Z	TJ-	tyler_d	Are you still there? It took me a while to figure out how to get the PID of the most switching process. Try this, maybe work it up some more. "for pid in /proc/{1,2,3,4,5,6,7,8,9}*; do echo "$(basename $pid) $(cat $pid/sched | grep nr_switches | awk '{print $3}')"; done | sort -n -k 2"
+2012-10-26T22:59:00.000Z	tyler_d	TJ-	still here
+2012-10-26T23:00:00.000Z	TJ-	tyler_d	That'll give you a sorted list with "PID nr_switches"
+2012-10-26T23:00:00.000Z	tyler_d	TJ-	so from there I should be able to dig in a bit. that's excellent
+2012-10-26T23:02:00.000Z	tyler_d	TJ-	so ksoftirq is my main culprit(which is wireless)

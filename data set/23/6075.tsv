@@ -1,0 +1,23 @@
+2006-12-28T15:22:00.000Z	crimsun		search the wiki.
+2006-12-28T15:22:00.000Z	mojojojo__	crimsun	what distro do you have?
+2006-12-28T15:23:00.000Z	crimsun	mojojojo__	which one do you think I have? :)
+2006-12-28T15:24:00.000Z	mojojojo__	crimsun	I wanted to ask you about alsa... I upgraded to edgy yesterday and now it doesn't wor... Firefox as welll
+2006-12-28T15:24:00.000Z	crimsun	mojojojo__	please be more precise (and concise)
+2006-12-28T15:25:00.000Z	mojojojo__	crimsun	OSS works but ALSA doesn't
+2006-12-28T15:25:00.000Z	mojojojo__	crimsun	after upgrade to edgy
+2006-12-28T15:25:00.000Z	crimsun	mojojojo__	please be more precise. Do you mean oss/free or alsa's oss emulation?
+2006-12-28T15:27:00.000Z	mojojojo__	crimsun	oss/free... alsa's oss emulation isn't installed at all
+2006-12-28T15:30:00.000Z	crimsun	mojojojo__	which driver? Why do I have to prod you to provide this information?
+2006-12-28T15:31:00.000Z	mojojojo__	crimsun	well, maybe because I'm not experienced enough to know which information is relevant
+2006-12-28T15:33:00.000Z	crimsun	mojojojo__	...so which driver are you using?
+2006-12-28T15:35:00.000Z	mojojojo__	crimsun	wait a sec
+2006-12-28T15:38:00.000Z	mojojojo__	crimsun	/dev/sndstat show Installed drivers:
+2006-12-28T15:39:00.000Z	crimsun	mojojojo__	no, which sound driver are you using -right now-?
+2006-12-28T15:39:00.000Z	crimsun	mojojojo__	meaning, i810_audio? snd-intel8x0? snd-hda-intel?
+2006-12-28T15:41:00.000Z	mojojojo__	crimsun	snd_pcm
+2006-12-28T15:43:00.000Z	crimsun	mojojojo__	no, that's not the driver.
+2006-12-28T15:43:00.000Z	crimsun	mojojojo__	pastebin ``cat /proc/asound/modules && amixer''
+2006-12-28T15:47:00.000Z	mojojojo__	crimsun	http://paste.ubuntu-nl.org/39227/
+2006-12-28T15:51:00.000Z	crimsun	mojojojo__	kill -t $(lsof -t /dev/dsp* /dev/snd/*) && sudo modprobe -r $(lsmod |grep ^snd |awk '{print $1}') && sudo rm -f /var/lib/alsa/asound.state && sudo modprobe snd-cmipci
+2006-12-28T15:51:00.000Z	crimsun	mojojojo__	sorry
+2006-12-28T15:51:00.000Z	crimsun	mojojojo__	kill $(lsof -t /dev/dsp* /dev/snd/*) && sudo modprobe -r $(lsmod |grep ^snd |awk '{print $1}') && sudo rm -f /var/lib/alsa/asound.state && sudo modprobe snd-cmipci

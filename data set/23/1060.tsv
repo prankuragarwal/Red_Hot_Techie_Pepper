@@ -1,0 +1,23 @@
+2010-09-23T19:01:00.000Z	krisphillips		and its for the school I work for volunteering
+2010-09-23T19:02:00.000Z	krisphillips		I'm using a hub for the keyboard and mouse.  There are four monitors, four keyboards, four mice, all statically assigned in Xorg.conf
+2010-09-23T19:02:00.000Z	krisphillips		I tried using modprobe usbhid with no success
+2010-09-23T19:02:00.000Z	krisphillips		and removing and readding the usbhid module to see if that fixes it, but it just kills all keyboards and mice
+2010-09-23T19:03:00.000Z	krisphillips		then nothing USB Human Interface Device works
+2010-09-23T19:03:00.000Z	krisphillips		Cuz I tried it with a script to remove and readd it
+2010-09-23T19:04:00.000Z	krisphillips		Its irritating cuz the students use the machines and if one screen does it, I have to reboot the machine that runs all four monitors, kicking three other students off
+2010-09-23T19:04:00.000Z	krisphillips		Is there at least a way to kill power to USB and then restart it?
+2010-09-23T19:04:00.000Z	krisphillips		Or SOMETHING
+2010-09-23T19:05:00.000Z	krisphillips		At least a workaround would be nice for now
+2010-09-23T19:06:00.000Z	undecim	krisphillips	Can you re-summarize your problem? (preferably in one message)
+2010-09-23T19:13:00.000Z	krisphillips	undecim	did you get all that?
+2010-09-23T19:13:00.000Z	undecim	krisphillips	yeah
+2010-09-23T19:14:00.000Z	krisphillips	undecim	OK.  Let me know when you get a chance to look it over.  I'm at wits end, so any ideas would help
+2010-09-23T19:14:00.000Z	undecim	krisphillips	So it seems that some of the devices are not powering back up after the computer enters sleep mode?
+2010-09-23T19:15:00.000Z	krisphillips	undecim	and yes, they are not coming back on.  I know this because the num lock won't light when I hit the num lock key
+2010-09-23T19:18:00.000Z	undecim	krisphillips	Okay, I would say that the problem is with upowerd then...
+2010-09-23T19:19:00.000Z	undecim	krisphillips	It's a background service that handle power management and gives a dbus interface for it...
+2010-09-23T19:19:00.000Z	undecim	krisphillips	I'm actually not sure how to work with it, but I can do a little Googling...
+2010-09-23T19:28:00.000Z	undecim	krisphillips	Alright... all those devices mentioned in the "Input Device" sections.. the /dev/input/by-path/  devices. Can you make sure all of those exist after returning from sleep?
+2010-09-23T19:28:00.000Z	undecim	krisphillips	Specifically, any of the ones that aren't working. I want to know if that input device file exists after return from sleep.
+2010-09-23T19:28:00.000Z	undecim	krisphillips	Sorry, I got disconnected a moment ago...
+2010-09-23T19:47:00.000Z	undecim	krisphillips	Have you tried changing that "AutoEnableDevices" flag to True then?

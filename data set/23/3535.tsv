@@ -1,0 +1,23 @@
+2008-03-24T17:29:00.000Z	ideal		does ubuntu 7.10 support microsoft wireless 2000 keyboard set? (Cause even windows hardly supports it, ha ha.)
+2008-03-24T17:30:00.000Z	ideal		sorry to be asking noob questions here..
+2008-03-24T17:31:00.000Z	ideal		I used the add programs feature and chose gnome partition editor, but I can't find an icon for it
+2008-03-24T17:31:00.000Z	ideal		the other programs I added all got icons..
+2008-03-24T17:32:00.000Z	Scunizi	ideal	gparted has to be run by root. so it assumes you know what you're doing.  open a terminal and type sudo gparted and it should open..
+2008-03-24T17:35:00.000Z	Scunizi	ideal	check out fvwmnet post.. you need to add a mount line to fstab
+2008-03-24T17:35:00.000Z	Scunizi	ideal	I would.. format with ext3
+2008-03-24T17:36:00.000Z	ideal	Scunizi	ok
+2008-03-24T17:37:00.000Z	ideal	Scunizi	do I have to leave any free space? cause I thought it said something about that in a guide I found
+2008-03-24T17:37:00.000Z	Scunizi	ideal	are you just using this drive as a secondary data drive? or are you going to use it for something else?
+2008-03-24T17:38:00.000Z	ideal	Scunizi	I'm just going to use it for like storing mp3s and stuff if I download any torrents
+2008-03-24T17:39:00.000Z	Scunizi	ideal	format the entire thing.. or whatever the max  is  allowed by gparted
+2008-03-24T17:40:00.000Z	ideal	Scunizi	ok, so I did that, and it's like creating the ext3 filesystem now.. but, if I mount this to the filesystem later.. will it show up as a separate disk or will it like just be a directory? I mean, so one can tell the free space on it etc..
+2008-03-24T17:42:00.000Z	Scunizi	ideal	you need to create a file in /media to mount the drive to.  Say.. sudo mkdir /media/hdb1
+2008-03-24T17:43:00.000Z	ideal	Scunizi	ok, so will that create "hdb1" in the media folder?
+2008-03-24T17:43:00.000Z	ideal	Scunizi	man, I can't wait to be more familiar with this, so I don't have to spend so much time on everything, LOL
+2008-03-24T17:43:00.000Z	Scunizi	ideal	then you need to add a line to fstab so the drive will mount on boot.  blkid will discover the uuid of the drive. type gksudo gedit /etc/fstab and you may be able to copy one of the other drive lines then modify it for the correct uuid
+2008-03-24T17:45:00.000Z	Scunizi	ideal	yes it will create hdb1.. remember most everything in linux is a "file" or text file.. even the directory of the new drive.. it becomes a file called /media/hdb1
+2008-03-24T17:45:00.000Z	ideal	Scunizi	ok, well I'm not sure I totally understand you there, what's an uuid? :)
+2008-03-24T17:46:00.000Z	Scunizi	ideal	when you open fstab for editing you'll see these long numbers like serial numbers associated with different partitions.  That is the uuid. It's a way of identifing a partition or drive
+2008-03-24T17:47:00.000Z	ideal	Scunizi	oh yeah, fdisk -l will show that, right?
+2008-03-24T17:48:00.000Z	Scunizi	ideal	maybe.. I've never used it that way.
+2008-03-24T20:19:00.000Z	ideal	Scunizi	what was that line I should put with the uuid again? :)

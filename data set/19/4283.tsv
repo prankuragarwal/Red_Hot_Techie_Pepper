@@ -1,0 +1,19 @@
+2009-02-12T19:54:00.000Z	cedrichurst		so i feel like i'm missing something pretty basic, but it's driving me crazy
+2009-02-12T19:54:00.000Z	cedrichurst		i'm trying to launch a file called "install"
+2009-02-12T19:55:00.000Z	cedrichurst		i ls and the is in the pwd
+2009-02-12T19:55:00.000Z	cedrichurst		i do ./install and i get a "no such file or directory" message
+2009-02-12T19:55:00.000Z	cedrichurst		not "invalid permissions", but "no such file or directory"
+2009-02-12T19:55:00.000Z	cedrichurst		but the file is clearly there
+2009-02-12T19:55:00.000Z	cedrichurst		what could be causing this?
+2009-02-12T19:57:00.000Z	oCean_	cedrichurst	see the first line of the "install" The interpreter (e.g. !#/bin/bash) might be wrong
+2009-02-12T19:57:00.000Z	cedrichurst	oCean_	it's a binary file
+2009-02-12T19:58:00.000Z	oCean_	cedrichurst	ok. the mov was cool though :)
+2009-02-12T20:00:00.000Z	cedrichurst	oCean_	yeah, that's possible
+2009-02-12T20:01:00.000Z	oCean_	cedrichurst	do a "file ./install" Does that return something like "executable" ?
+2009-02-12T20:03:00.000Z	oCean_	cedrichurst	use "strace -f ./install 2>/tmp/debug.txt" to trace the execution. Output of strace is in /tmp/debug.txt. Search that file for the missing file(name)
+2009-02-12T20:07:00.000Z	cedrichurst	oCean_	http://rifers.org/paste/show/8773
+2009-02-12T20:08:00.000Z	cedrichurst	oCean_	should i just install coreutils, then?
+2009-02-12T20:08:00.000Z	oCean_	cedrichurst	that's a start
+2009-02-12T20:09:00.000Z	oCean_	cedrichurst	indeed. coreutils, and try again
+2009-02-12T20:25:00.000Z	cedrichurst	oCean_	& n8tuser: so i verified that i have coreutils installed, and i have the /usr/share/locale-langpacks/en langpack installed
+2009-02-12T20:27:00.000Z	oCean_	cedrichurst	sorry, no clue to that langpack..

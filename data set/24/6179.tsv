@@ -1,0 +1,24 @@
+2007-10-03T10:33:00.000Z	kane77		I have a problem with my wifi in my laptop (it's broadcom) I installed the fwcutter but it acts strange: it works (I have eth1 listed in ifconfig, it scans with iwlist scan), then when I enable roaming mode it still seems to work, but when I disable it again it stops working and it disapears from ifconfig, iwlist says eth1 doesn't support scanning.. do you think that this is a driver issue?
+2007-10-03T10:34:00.000Z	usr13	kane77	sounds normal to me.
+2007-10-03T10:49:00.000Z	usr13	kane77	ifconfig  [show network device names] 
+2007-10-03T10:34:00.000Z	kane77	usr13	i don't think this is normal...
+2007-10-03T10:34:00.000Z	usr13	kane77	if you dissable the driver, you are essentially turning off the device.
+2007-10-03T10:35:00.000Z	usr13	kane77	and you won't see the network device name anymore.
+2007-10-03T10:35:00.000Z	kane77	usr13	that's badly written I meant I disable roaming mode... not the card
+2007-10-03T10:35:00.000Z	usr13	kane77	O
+2007-10-03T10:36:00.000Z	usr13	kane77	So, what command are you using to dissable roaming?
+2007-10-03T10:36:00.000Z	kane77	usr13	the gui config
+2007-10-03T10:37:00.000Z	kane77	usr13	I also set it to settings it was before (static IP, no WEP etc)
+2007-10-03T10:37:00.000Z	usr13	kane77	Then I don't know what the GUI app is really doing, but sounds like it's just unloading the driver.
+2007-10-03T10:37:00.000Z	kane77	usr13	so how should I disable the roaming mode from terminal?
+2007-10-03T10:37:00.000Z	usr13	kane77	What you need to do is set up multiple profiles and just switch from one to the other.
+2007-10-03T10:38:00.000Z	usr13	kane77	I don't know, just set the essid to a specific name, rather than "any" or what ever it is.
+2007-10-03T10:39:00.000Z	usr13	kane77	setting essid to "any" would be roaming mode, I think.
+2007-10-03T10:40:00.000Z	usr13	kane77	and you would control that with iwconfig.  e.g.  iwconfig eth1 essid linksys    or   iwconfig eth1 any
+2007-10-03T10:41:00.000Z	usr13	kane77	corrections: sudo iwconfig eth1 essid linksys    or  sudo iwconfig eth1 essid any
+2007-10-03T10:42:00.000Z	usr13	kane77	iwconfig   with no arguments will show current settings
+2007-10-03T10:43:00.000Z	kane77	usr13	strange is that card lists if I use iwconfig, but not with ifconfig (normally it lists also there)
+2007-10-03T10:44:00.000Z	usr13	kane77	May be that it will only show in ifconfig if it is connected to a live network.
+2007-10-03T10:54:00.000Z	usr13	kane77	haveing a wireless card running under ndsiwrapper will not have full range of functions.
+2007-10-03T11:00:00.000Z	kane77	usr13	it is running with fwcutter, and nevermind it seems to work again I purge removed the bcm43xx-fwcutter and reinstalled again...
+2007-10-03T11:01:00.000Z	kane77	usr13	on the page it says that my card (bcm4311) is supported...

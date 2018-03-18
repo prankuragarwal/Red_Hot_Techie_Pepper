@@ -1,0 +1,22 @@
+2008-07-25T09:03:00.000Z	unop	mroc	is the router something that has sufficient storage on it?
+2008-07-25T09:03:00.000Z	mroc	unop	no
+2008-07-25T09:04:00.000Z	unop	mroc	what kind of a router is it?
+2008-07-25T09:19:00.000Z	unop	mroc	do you have to enter a password when you connect to a host on the inside network from the router?  with ssh i mean?
+2008-07-25T09:21:00.000Z	mroc	unop	yes
+2008-07-25T09:23:00.000Z	unop	mroc	that's a shame .. because this would work otherwise.   (cd /path && tar cf - .) | ssh username@router ' cat -| ssh username@internal_host " (cd /path && tar xf - .) " '
+2008-07-25T09:24:00.000Z	unop	mroc	can you setup passwordless ssh up on the router? via public key auth. ? perhaps
+2008-07-25T09:26:00.000Z	unop	mroc	this wrt router runs linux right .. you might still be able to setup key auth. to the internal hosts on it
+2008-07-25T09:27:00.000Z	mroc	unop	what would the motivation be to set up key auth to the internal hosts?
+2008-07-25T09:27:00.000Z	unop	mroc	this.   (cd /path && tar cf - .) | ssh username@router ' cat -| ssh username@internal_host " (cd /path && tar xf - .) " '
+2008-07-25T09:30:00.000Z	unop	mroc	that command uses ssh to copy files rather than scp -- the problem is the second ssh command has no way of getting a password from you if you pipe something to it already
+2008-07-25T09:30:00.000Z	mroc	unop	i understand parts of that command set.  some of that syntax i've seen and learned before but am not entirely familiar with.  i can look it up if it's a pain to explain
+2008-07-25T09:30:00.000Z	mroc	unop	ok, cool.
+2008-07-25T09:31:00.000Z	unop	mroc	ssh tries it's best to find ways of logging in automatically and if none are found it prompts you for a password -- the idea here is to get ssh to log in auto, so it can send whatever is piped to it to the end host -- which will take the incoming data and pass it to tar, which will recreate the directory structure
+2008-07-25T09:32:00.000Z	mroc	unop	thanks, that makes sense.
+2008-07-25T09:33:00.000Z	mroc	unop	i'll check out setting up keypairs.  it's getting a bit late for me here so i'll probably look into it tomorrow.  i may be back then if i get stuck.   thank you for your help.
+2008-07-25T09:33:00.000Z	unop	mroc	or you could also setup a tunnel on the router as someone else already suggested - not sure how well it works for public traffic though
+2008-07-25T09:34:00.000Z	mroc	unop	if i set up a tunnel then i'll definitely do keypairs for the internal hosts.  from what i understand of things, that should be secure enough.
+2008-07-25T09:35:00.000Z	unop	mroc	the only problem is that if the router is ever compromised -- access to internal hosts is relatively easy
+2008-07-25T09:38:00.000Z	mroc	unop	how so?  if tunneling is set up, an scp connection to the tunneled port on the router would get forwarded to the specified port on the internal host (probably just the standard), and that would require a private key, which would live on the remote computer.  am i misunderstanding this?  even if the router is compromised, the private key is still necessary, right?
+2008-07-25T09:39:00.000Z	unop	mroc	ahh, i was talking about setting up pub. key auth. on the router for internal hosts to do that command i showed you earlier
+2008-07-25T09:41:00.000Z	mroc	unop	oh, oh, i understand what you're saying now.  i thought you were saying that applied to the tunneling.  that is a consideration.  seems pretty unlikely that the router would become compromised, especially with keypair auth., but it is something to think about.

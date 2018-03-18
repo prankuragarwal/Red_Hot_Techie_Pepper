@@ -1,0 +1,18 @@
+2009-12-12T18:20:00.000Z	nikhil_		can someone help me with bash scripting
+2009-12-12T18:21:00.000Z	nikhil_		i need to create  a script that takes the remote ip assigned from wvdial and sets it as x in "route add default gw x"
+2009-12-12T18:21:00.000Z	nikhil_		can anyone help?
+2009-12-12T18:22:00.000Z	llutz	nikhil_	why don't you let wvdial, better pppd set the defaultroute?
+2009-12-12T18:23:00.000Z	nikhil_	llutz	how would i do that?
+2009-12-12T18:23:00.000Z	llutz	nikhil_	that should be default-behaviour. look into your pppd-options
+2009-12-12T18:24:00.000Z	nikhil_	llutz	the config script is where?
+2009-12-12T18:25:00.000Z	llutz	nikhil_	^^
+2009-12-12T18:28:00.000Z	nikhil_	llutz	no such string
+2009-12-12T18:29:00.000Z	llutz	nikhil_	then add it to the pppd-optinfile of your connection
+2009-12-12T18:30:00.000Z	llutz	nikhil_	setting defaultroute without a working modem is.... pointless
+2009-12-12T18:31:00.000Z	llutz	nikhil_	modprobe? add your modules to /etc/modules
+2009-12-12T18:32:00.000Z	llutz	nikhil_	add those options in /etc/modprobe.d/
+2009-12-12T18:32:00.000Z	nikhil_	llutz	it's done in my grub boot line
+2009-12-12T18:35:00.000Z	llutz	nikhil_	tried man 5 wvdial.conf (Check Def Route)?
+2009-12-12T18:39:00.000Z	llutz	nikhil_	LANG=C ifconfig ppp0|awk -F':' '/inet addr/ { print $2 }'|cut -d" " -f1
+2009-12-12T18:39:00.000Z	nikhil_	llutz	now i just feel like an ass
+2010-03-26T13:57:00.000Z	llutz	nikhil_	it is in the repos since jaunty (afaik)

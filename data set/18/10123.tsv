@@ -1,0 +1,18 @@
+2007-01-10T06:30:00.000Z	lotacus		I installed the ATI drivers, and when I rebooted my monitor said "H/V syn over frequency" bah! I guess it's something in the xorg.conf file, anyways, I went into console because I couldn't startx and ran aticonfig with the display flag and set 1024x768. then I did startx and everything is good I think, but I have a question
+2007-01-10T06:32:00.000Z	lotacus		what is the correct precedure to enable 3D acceleration on an ATI radeon x1650?
+2007-01-10T06:33:00.000Z	lotacus		nah I think i'm using 2.0
+2007-01-10T06:34:00.000Z	lotacus		ubuntu is still using mesa rendering even after installing the ati drivers. How do I get 3D rendering to work?
+2007-01-10T06:34:00.000Z	lotacus		i've tried some tuts on the net but they all break ubuntu
+2007-01-10T06:36:00.000Z	lotacus		.. i think i' mtalking to myself
+2007-01-10T06:37:00.000Z	auTONYmous	lotacus	are you using the ATI Binary drivers ("FGLRX"), or the Xorg free ones ("ATI" or "RADEON")?
+2007-01-10T06:38:00.000Z	lotacus	auTONYmous	I used the proprietary installer
+2007-01-10T06:38:00.000Z	auTONYmous	lotacus	did you change the entry in your xorg.conf from "ati" to "fglrx"?
+2007-01-10T06:39:00.000Z	auTONYmous	lotacus	what about the kernel module?
+2007-01-10T06:41:00.000Z	auTONYmous	lotacus	You need to put both of those device entries on "fglrx"....look here: http://www.ubuntuforums.org/showpost.php?p=1953501&postcount=1
+2007-01-10T07:26:00.000Z	auTONYmous	lotacus	you don't HAVE to, until you can confirm fgrlx is working...I leave it installed for disasters
+2007-01-10T07:35:00.000Z	auTONYmous	lotacus	did you do the steps involved with blacklisting the module?
+2007-01-10T07:38:00.000Z	lotacus	auTONYmous	http://paste.ubuntu-nl.org/1052/
+2007-01-10T07:44:00.000Z	auTONYmous	lotacus	Nuts...I think you're stuck...third-party board, not original ATI
+2007-01-10T07:44:00.000Z	auTONYmous	lotacus	the driver doesn't recognize your PCI ID, so it's not loading
+2007-01-10T07:45:00.000Z	auTONYmous	lotacus	No, wait...scratch that. fglrx IS loading, DRI isn't
+2007-01-10T07:57:00.000Z	auTONYmous	lotacus	read your pm's...

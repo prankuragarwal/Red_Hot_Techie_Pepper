@@ -1,0 +1,19 @@
+2009-09-04T19:15:00.000Z	brz		Hey, anyone got any idea why OIDENTD my OIDENTD isn't working - Ive done everything in the manual.
+2009-09-04T19:15:00.000Z	brz		It actually worked while using 8.10, but when I upgraded to Jaunty, it stopped :(
+2009-09-04T19:15:00.000Z	grawity	brz	Run 'sudo fuser -n tcp 113', what does it say?
+2009-09-04T19:16:00.000Z	brz	grawity	113/tcp:              2189
+2009-09-04T19:16:00.000Z	grawity	brz	It might be your router blocking it somehow.
+2009-09-04T19:17:00.000Z	grawity	brz	Very often, incoming ports must be manually forwarded to your computer.
+2009-09-04T19:17:00.000Z	grawity	brz	Hmm, good point.
+2009-09-04T19:17:00.000Z	grawity	brz	telnet localhost 113
+2009-09-04T19:18:00.000Z	grawity	brz	Then enter this line: 123,456
+2009-09-04T19:18:00.000Z	grawity	brz	After you enter 123,456 (any number, comma, any number) and press Enter, oidentd should give an error message.
+2009-09-04T19:19:00.000Z	grawity	brz	Well, it seems to be working :|
+2009-09-04T19:20:00.000Z	grawity	brz	Do you connect to any IRC server over IPv6?
+2009-09-04T19:21:00.000Z	grawity	brz	netstat -ltn | grep :113
+2009-09-04T19:21:00.000Z	grawity	brz	See if it's listening on both tcp and tcp6.
+2009-09-04T19:21:00.000Z	grawity	brz	That one is IPv4 only.
+2009-09-04T19:23:00.000Z	brz	grawity	any idea on how to make it listen on v6?
+2009-09-04T19:23:00.000Z	brz	grawity	despite the fact it was working previously on v6 without any other editing :P?
+2009-09-04T19:24:00.000Z	grawity	brz	I'm not sure oidentd _can_ listen on v6... (Anyway, things like that happen often on the intercybernetspacetubes. "Heisenbugs" are the worst type)
+2009-09-04T19:26:00.000Z	brz	grawity	must of been a freak act of nature, because I primarily use v6 and worked b4. Strange, when I upgraded the distro I can't even get standard irssi op scripts to work, and I have to now "run ubuntu in low graphics mode"

@@ -1,0 +1,23 @@
+2010-07-22T00:21:00.000Z	yessir_turan		Hi.. is it possible to have a one-time password for ubuntu login..
+2010-07-22T00:21:00.000Z	yessir_turan		e.g. i want to generate a noe time password.. email it to myself.. check it up on my cellphone.. and login using that..
+2010-07-22T00:21:00.000Z	theoctagon	yessir_turan	sound pretty paranoid
+2010-07-22T00:22:00.000Z	yessir_turan	theoctagon	:P
+2010-07-22T00:23:00.000Z	theoctagon	yessir_turan	you could write a script that uses mcookie and sets this as password and set the script as login shell - but then you are stuck in a endless loop
+2010-07-22T00:23:00.000Z	theoctagon	yessir_turan	find a way to break that loop and you're good to go :P
+2010-07-22T00:24:00.000Z	theoctagon	yessir_turan	woul be an advanced version of /bin/passwd as login shell :P
+2010-07-22T00:25:00.000Z	theoctagon	yessir_turan	you could delay the effect of your mcooky login skript to multiple logins - than you only have a race condition :P
+2010-07-22T00:26:00.000Z	yessir_turan	theoctagon	:) Nice..  I think I got an idea.. It follows:
+2010-07-22T00:28:00.000Z	yessir_turan	theoctagon	I create a binary.. that acts as my shell.. check if I'm connected to an X session, if so, spawn bash.
+2010-07-22T00:29:00.000Z	yessir_turan	theoctagon	flaws..?
+2010-07-22T00:29:00.000Z	theoctagon	yessir_turan	I don't get the "check if connected to x session"
+2010-07-22T00:30:00.000Z	yessir_turan	theoctagon	Neither do I :P. Was hoping there might be something to it.. Let me look/cook something up..
+2010-07-22T00:36:00.000Z	theoctagon	yessir_turan	well another idea - you could write a program that generates a mcookie and mails it and then waits forever for input
+2010-07-22T00:36:00.000Z	theoctagon	yessir_turan	than use this as shell
+2010-07-22T00:37:00.000Z	theoctagon	yessir_turan	you just have to handle the case that the new shell knows that the mcookie has already been sent
+2010-07-22T00:38:00.000Z	theoctagon	yessir_turan	therefor you could use a file to remember if cookie is sent or not if sent prompt for input else send new cookie
+2010-07-22T00:39:00.000Z	theoctagon	yessir_turan	how does that sound?
+2010-07-22T00:40:00.000Z	yessir_turan	theoctagon	its sounds good... but I don't understand one thing.. How do I actually spawn that mcookie shell without using my password.. ?
+2010-07-22T00:41:00.000Z	theoctagon	yessir_turan	this is what your selfmade shell has to handle
+2010-07-22T00:42:00.000Z	yessir_turan	theoctagon	I give up :P
+2010-07-22T00:42:00.000Z	theoctagon	yessir_turan	why?
+2010-07-22T00:46:00.000Z	theoctagon	yessir_turan	you won't get that without sticking to pam

@@ -1,0 +1,18 @@
+2008-10-23T07:27:00.000Z	Bogaurd		i have an ubuntu machine which I use as a router - once it has very high uptime (around 100 days), I find that things become very slow, especially building the route table when links come up/go down, it takes several minutes - could anybody suggest why this is?
+2008-10-23T07:28:00.000Z	Orbixx	Bogaurd	What's the memory usage?
+2008-10-23T07:29:00.000Z	Bogaurd	Orbixx	it shows as having about 179MB cahced, 5mb free, and 150mb active..
+2008-10-23T07:29:00.000Z	Orbixx	Bogaurd	Then you're out of memory.
+2008-10-23T07:30:00.000Z	Bogaurd	Orbixx	hmm. why would it happen gradually?
+2008-10-23T07:30:00.000Z	Bogaurd		a memory leak or something?
+2008-10-23T07:30:00.000Z	Orbixx		Quite possibly.
+2008-10-23T07:30:00.000Z	Orbixx		That's the first thing I thought.
+2008-10-23T07:31:00.000Z	Bogaurd	Orbixx	any ideas on how to track down the culprit? :)
+2008-10-23T07:31:00.000Z	Orbixx	Bogaurd	top, then shift+m
+2008-10-23T07:32:00.000Z	Bogaurd	Orbixx	thats what I thought, but the only thing using any significant amount of memory is mysqld, using 8% of my memory, and 124mb of virtual memory
+2008-10-23T07:32:00.000Z	Orbixx	Bogaurd	Then you just simply do not have enough memory.
+2008-10-23T07:33:00.000Z	Orbixx		Take it down, install more RAM.
+2008-10-23T07:33:00.000Z	Orbixx		It's the caching to the swap file that's slowing your system down.
+2008-10-23T07:33:00.000Z	Bogaurd	Orbixx	fair enough. weird that it runs fine for around 100 days though =\
+2008-10-23T07:34:00.000Z	Orbixx	Bogaurd	A few different services always end up consuming a little more memory over time, even when idle.
+2008-10-23T07:34:00.000Z	Bogaurd	Orbixx	cheers :)
+2008-10-23T07:34:00.000Z	Orbixx	Bogaurd	You're welcome.

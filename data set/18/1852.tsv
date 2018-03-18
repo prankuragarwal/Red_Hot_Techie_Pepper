@@ -1,0 +1,18 @@
+2011-02-22T21:53:00.000Z	JeffJassky		hey, guys. My server is remote. how do I view /usr/share/doc in my browser? i tried making a symlink to it in one of my document roots but it showed as forbidden.
+2011-02-22T21:54:00.000Z	jamesgecko	JeffJassky	By default, apache won't follow system-links.
+2011-02-22T21:55:00.000Z	JeffJassky	jamesgecko	Thanks for the info - however it seemed to have followed it. it was just forbidden. does that make sense?
+2011-02-22T21:57:00.000Z	jamesgecko	JeffJassky	if it's following the links, you'll need to make sure that www-data has read access to the docs
+2011-02-22T21:58:00.000Z	JeffJassky	jamesgecko	how would i go about doing that?
+2011-02-22T22:00:00.000Z	jamesgecko	JeffJassky	I'm not sure it's a permissions issue anymore. by default /usr/share/doc is owned by root and readable by everyone.
+2011-02-22T22:02:00.000Z	JeffJassky	jamesgecko	any idea what it might be? i've been working on this for 3 hours now.
+2011-02-22T22:03:00.000Z	jamesgecko	JeffJassky	Have you tried the "Files Outside the DocumentRoot" section here? http://httpd.apache.org/docs/2.2/urlmapping.html
+2011-02-22T22:06:00.000Z	JeffJassky	jamesgecko	yeah.. i don't really understand how to do it, though.
+2011-02-22T22:08:00.000Z	jamesgecko	JeffJassky	You understand that it goes in /etc/apache2/apache2.conf , right?
+2011-02-22T22:08:00.000Z	JeffJassky	jamesgecko	i put it in /etc/apache2/httpd.conf
+2011-02-22T22:08:00.000Z	JeffJassky	jamesgecko	Alias /usr/share/doc /var/www/vhosts/guruz.us/subdomains/www
+2011-02-22T22:11:00.000Z	jamesgecko	JeffJassky	It looks like you've already got something in that directory. Try mapping it  somewhere that doesn't already have php files in it.
+2011-02-22T22:14:00.000Z	jamesgecko	JeffJassky	But anyway, I use lighttpd, so I'm a bit out of my depth here. If you've spent 3 hours on it, I'd just give up and copy the entire docs folder to a subdirectory of your site and run chmod on it to give www-data full ownership. ;-)
+2011-02-22T22:14:00.000Z	JeffJassky	jamesgecko	Thanks for the help.. but i'm giving up for now.. i see no end in sight.
+2011-02-22T22:15:00.000Z	JeffJassky	jamesgecko	That's what I ended up doing. I spent 3 hours trying to get sendmail to work with PHP.. and every step along the way is like a 30 minute detour that dead-ends.
+2011-02-22T22:15:00.000Z	jamesgecko	JeffJassky	server stuff is hard. I feel your pain.
+2011-02-22T22:16:00.000Z	JeffJassky	jamesgecko	yeah it's a fairly new thing for me

@@ -1,0 +1,24 @@
+2006-07-27T05:48:00.000Z	increase_		hi everyone
+2006-07-27T05:48:00.000Z	increase_		i just installed Dapper, and I have an option to chane resolution, yet when I change it and it reboots gnome, it jumps back original resolution! any ideas why?
+2006-07-27T05:50:00.000Z	increase_		my screens runs so slow. very slow refresh rate :(  wasnt like that in Breezy
+2006-07-27T05:51:00.000Z	rpedro_	increase_	try opening System >> Preferences >> Screen Resolution , you can change refresh rate there too
+2006-07-27T05:52:00.000Z	increase_	rpedro_	I do that from there and change the res!  but when it reboots gnome it jumps back to original setting!  Do I need to do a full reboot for it to take affect?
+2006-07-27T05:52:00.000Z	rpedro_	increase_	hmm, it should't ...
+2006-07-27T05:53:00.000Z	rpedro_	increase_	you using the binary drivers for your graphics card ?
+2006-07-27T05:53:00.000Z	increase_	rpedro_	no idea!  how cna I know that?
+2006-07-27T05:55:00.000Z	rpedro_	increase_	in /etc/X11/xorg.conf
+2006-07-27T05:57:00.000Z	increase_	rpedro_	I changed xorg.conf to read exactly like it does in breezy!  but it wont stay at the resoution, it keeps juping back to original!  any ideas why?  do I need to do a full reboot before it changes?
+2006-07-27T05:57:00.000Z	rpedro_	increase_	just a sugestion, maybe you should run 'sudo dpkg-reconfigure xserver-xorg' , so you get a fresh xorg.conf, this is a good idea when having gfx problems and you don't know what else to do
+2006-07-27T05:58:00.000Z	rpedro_	increase_	that might be what's giving issues, better run that command I gave to create a new xorg.conf
+2006-07-27T05:58:00.000Z	increase_	rpedro_	what command did you give me?
+2006-07-27T05:58:00.000Z	rpedro_	increase_	and what graphics card do you have ?
+2006-07-27T05:59:00.000Z	rpedro_	increase_	'sudo dpkg-reconfigure xserver-xorg'
+2006-07-27T05:59:00.000Z	increase_	rpedro_	once I run sudo dpkg-reconfigure xserver-xorg, what do I tell it?
+2006-07-27T05:59:00.000Z	increase_	rpedro_	an old video card
+2006-07-27T05:59:00.000Z	rpedro_	increase_	you need to tell which driver to use , what resolutions to allow, plus some other optiongs
+2006-07-27T06:00:00.000Z	rpedro_	increase_	you don't know the model ?
+2006-07-27T06:00:00.000Z	rpedro_	increase_	pci, agp?
+2006-07-27T06:01:00.000Z	rpedro_	increase_	nvm
+2006-07-27T06:01:00.000Z	rpedro_	increase_	run this in a vt >> lspci | grep vga
+2006-07-27T06:02:00.000Z	rpedro_	increase_	that should tell what gfx card you have
+2006-07-27T06:03:00.000Z	rpedro_	increase_	rather, make that 'lspci | grep *VGA*' uppercase

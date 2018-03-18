@@ -1,0 +1,24 @@
+2006-09-07T16:14:00.000Z	RogerRabb		how can check what speed my network card connected to my switch at? eg 100mbit, 1gbps etc ?
+2006-09-07T16:15:00.000Z	zm0	RogerRabb	mii-tool ethX
+2006-09-07T16:16:00.000Z	RogerRabb	zm0	SIOCGMIIPHY on 'eth0' failed: Operation not permitted
+2006-09-07T16:16:00.000Z	zm0	RogerRabb	sudo mii-tool
+2006-09-07T16:17:00.000Z	zm0	RogerRabb	sudo mii-tool ethYourInterface
+2006-09-07T16:25:00.000Z	zm0	RogerRabb	no, how many interfaces do you have?
+2006-09-07T16:29:00.000Z	RogerRabb	zm0	just eth0 and loopback
+2006-09-07T16:31:00.000Z	zm0	RogerRabb	so 'sudo mii-tool eth0' returns the operation not permitted error
+2006-09-07T16:32:00.000Z	zm0	RogerRabb	i can't help you i guess it's not supported :-) what type of network card is it?
+2006-09-07T16:33:00.000Z	RogerRabb	zm0	an on board nforce 4 gigabit nic
+2006-09-07T16:35:00.000Z	RogerRabb	zm0	okay.. do you know where I can configure the various features of the network card - jumbo packets etc?
+2006-09-07T16:38:00.000Z	zm0	RogerRabb	i have no experience with setting options for the nvnet driver
+2006-09-07T16:41:00.000Z	zm0	RogerRabb	yes you can put them in /etc/modprobe.d/<yourdrivername>
+2006-09-07T16:41:00.000Z	zm0	RogerRabb	but the options are driver specific...are you using the nvnet driver? lsmod |grep nvnet
+2006-09-07T16:46:00.000Z	RogerRabb	zm0	looks like I'm using the default forcedeth driver
+2006-09-07T16:48:00.000Z	zm0	RogerRabb	check this out http://download.nvidia.com/XFree86/nforce/1.0-0310/ReleaseNotes.html you can put options like force_speed_duplex=4 for 100Mbps/Full
+2006-09-07T16:48:00.000Z	zm0	RogerRabb	just an example...
+2006-09-07T16:49:00.000Z	zm0	RogerRabb	9 = gigabit full duplex
+2006-09-07T16:54:00.000Z	zm0	RogerRabb	stop networking: /etc/init.d/networking stop then rmmod forcedeth and modprobe forcedeth <your_options)
+2006-09-07T16:58:00.000Z	zm0	RogerRabb	there is no nvnet in your ubuntu kernel
+2006-09-07T16:59:00.000Z	zm0	RogerRabb	no just use your forcedeth with the options
+2006-09-07T05:00:00.000Z	zm0	RogerRabb	:-) ethtool...forgot about that one!
+2006-09-07T05:05:00.000Z	zm0	RogerRabb	just try the options in the release notes: modprobe forcedeth force_speed_duplex=9 mtu=bla
+2006-09-07T05:05:00.000Z	zm0	RogerRabb	np :-)

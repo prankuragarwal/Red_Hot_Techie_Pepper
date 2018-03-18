@@ -1,0 +1,22 @@
+2008-05-02T07:24:00.000Z	jcooke		and use the password you created, that should log you in as that user
+2008-05-02T07:25:00.000Z	microwaver	jcooke	you have a nice handy phpmyadmin cfg file lying around? :)
+2008-05-02T07:25:00.000Z	jcooke	microwaver	I refuse to use phpmyadmin ;x
+2008-05-02T07:26:00.000Z	jcooke	microwaver	but if you do, please remember to set up auth for it!
+2008-05-02T07:26:00.000Z	microwaver	jcooke	you do anything in terminal?
+2008-05-02T07:27:00.000Z	jcooke	microwaver	terminal? at the command line you mean?
+2008-05-02T07:27:00.000Z	microwaver	jcooke	yes. what priveleges should a mysql user need?
+2008-05-02T07:28:00.000Z	jcooke	microwaver	creating a user for phpmyadmin?
+2008-05-02T07:28:00.000Z	microwaver	jcooke	no, a uer for drupal, a cms
+2008-05-02T07:30:00.000Z	jcooke	microwaver	you mean what grant perms?
+2008-05-02T07:30:00.000Z	microwaver	jcooke	grant perms he needs
+2008-05-02T07:31:00.000Z	microwaver	jcooke	what does a cms need, to create a database, be sure it doesn't get too mutch auth
+2008-05-02T07:33:00.000Z	jcooke	microwaver	I would do GRANT SELECT,INSERT,UPDATE,CREATE on database.*...
+2008-05-02T07:33:00.000Z	microwaver	jcooke	thanks.
+2008-05-02T07:34:00.000Z	microwaver	jcooke	hmm gotta get used to the cli :p cuz haven't set up a config for phpmyadmin
+2008-05-02T07:34:00.000Z	jcooke	microwaver	I may be missing one, it could need DELETE, but I hate having to give delete to an application
+2008-05-02T07:35:00.000Z	microwaver	jcooke	hmmm good remark. I may understand UPDATE = ALTER ?
+2008-05-02T07:35:00.000Z	jcooke	microwaver	no, ALTER lets the user change the database schema(including dropping columns), don't give it ALTER
+2008-05-02T07:36:00.000Z	microwaver	jcooke	give it delete but not alter :)
+2008-05-02T07:36:00.000Z	jcooke	microwaver	maybe delete, that'll let it delete rows, if there were some sort of SQL exploit for the app though, it could let people delete data
+2008-05-02T07:37:00.000Z	microwaver	jcooke	gotta read through the notes of DRUPAL if it uses it safe. and itself is safe
+2008-05-02T07:37:00.000Z	jcooke	microwaver	I'm reading some people grant DROP, and ALTER, which isn't smart since it'll allow the user to drop tables completelt

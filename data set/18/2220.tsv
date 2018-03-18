@@ -1,0 +1,18 @@
+2010-09-10T21:16:00.000Z	brett\		rm: cannot remove directory `/homes': Device or resource busy
+2010-09-10T21:17:00.000Z	brett\		                     USER        PID ACCESS COMMAND
+2010-09-10T21:17:00.000Z	brett\		./homes:              root     kernel mount /homes
+2010-09-10T21:18:00.000Z	quiescens	brett\	i would check to see if its a mountpoint or something
+2010-09-10T21:18:00.000Z	brett\	quiescens	it is not mounted
+2010-09-10T21:19:00.000Z	quiescens	brett\	no idea then, that's what it usually means
+2010-09-10T21:19:00.000Z	quiescens		maybe something is mounted there and mtab isn't working properly
+2010-09-10T21:20:00.000Z	quiescens		shrugs
+2010-09-10T21:21:00.000Z	quiescens	brett\	can you check /proc/mounts just in case?
+2010-09-10T21:28:00.000Z	brett\	quiescens	ding. --> auto.svl /homes autofs rw,relatime,fd=43,pgrp=1405,timeout=300,minproto=5,maxproto=5,indirect 0 0
+2010-09-10T21:28:00.000Z	brett\	quiescens	still not sure what to do with that. tips?
+2010-09-10T21:29:00.000Z	quiescens	brett\	yeah, so something is mounted on /homes
+2010-09-10T21:29:00.000Z	brett\	quiescens	strange it didnt come up with 'mount' command.
+2010-09-10T21:29:00.000Z	quiescens	brett\	you should technically be able to just do: sudo umount /homes
+2010-09-10T21:30:00.000Z	brett\	quiescens	nah busy.. same prob as before
+2010-09-10T21:30:00.000Z	quiescens	brett\	but I don't know why its mounted, and it may or may not work as expected
+2010-09-10T21:30:00.000Z	quiescens	brett\	okay then I guess we have to try to work out why its mounted, and why it isn't showing up in the output from mount
+2010-09-10T21:30:00.000Z	brett\	quiescens	thanks for the right track.

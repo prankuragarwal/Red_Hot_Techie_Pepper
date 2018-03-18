@@ -1,0 +1,23 @@
+2006-05-27T15:08:00.000Z	perpetualrabbit		does anyone here have tried debootstrap with dapper?
+2006-05-27T15:08:00.000Z	crimsun	perpetualrabbit	while in dapper or !dapper?
+2006-05-27T15:08:00.000Z	perpetualrabbit		I'm trying to install ubuntu in a chroot, but the base-config script no longer works.
+2006-05-27T15:09:00.000Z	perpetualrabbit		What is the replacement for it?
+2006-05-27T15:09:00.000Z	perpetualrabbit	crimsun	does not matter
+2006-05-27T15:10:00.000Z	perpetualrabbit		It could be in a chroot on whatever else linux installation, in my case breezy, but could be gentoo or redhat.
+2006-05-27T15:10:00.000Z	crimsun	perpetualrabbit	sure it matters, because the debootstrap packages differ between !dapper and dapper.
+2006-05-27T15:11:00.000Z	perpetualrabbit	crimsun	oh, I wasn't aware of that.
+2006-05-27T15:12:00.000Z	perpetualrabbit		I downloaded the debootstrap 0.3.0.3 or 3.0.3 or something like that. What is !dapper? dapper beta I suppose?
+2006-05-27T15:13:00.000Z	crimsun	perpetualrabbit	0.3.3.0ubuntu2?
+2006-05-27T15:13:00.000Z	perpetualrabbit		Anyway, my question is: base-config was removed, what has replaced it? 0.3.3ubuntu2, yes.
+2006-05-27T15:14:00.000Z	crimsun	perpetualrabbit	what's(re) the precise error message(s)?
+2006-05-27T15:15:00.000Z	perpetualrabbit		My current problem is, I run debootstrap, and I get a base system that is not configured, and I have no idea what to configure by hand. For instance shadow file is missing, but that may be just one thing out of a hundred?
+2006-05-27T15:16:00.000Z	perpetualrabbit	crimsun	so there is no specific error message, it's just that the complete configuration that base-config used to do, has now to be done by hand...
+2006-05-27T15:17:00.000Z	perpetualrabbit	crimsun	I want to install images on a server, from where I want to rsync them to machines that are to be installed.
+2006-05-27T15:21:00.000Z	crimsun	perpetualrabbit	sec, at work, attempting to reproduce
+2006-05-27T15:59:00.000Z	perpetualrabbit	crimsun	could you reproduce my "problem" (it's more an side effect of a change, not a bug)
+2006-05-27T15:59:00.000Z	crimsun	perpetualrabbit	as in the "missing" /etc/shadow?
+2006-05-27T16:02:00.000Z	perpetualrabbit	crimsun	yes, exactly. It is missing, because normally at that point you'd run base-config. But it has been replaced by pkgsel, I just heard, and I'm unsure what needs to be started to get a dialog, that then configures things like shadow passwords, timezones, library paths etc.
+2006-05-27T16:03:00.000Z	crimsun	perpetualrabbit	tzconfig, locale-gen, and so on
+2006-05-27T16:03:00.000Z	perpetualrabbit		abo, with netstat.
+2006-05-27T16:04:00.000Z	perpetualrabbit	crimsun	yes, but there seems to be no comprehensive installation guide a la gentoo, if you go the debootstrap way.
+2006-05-27T16:04:00.000Z	perpetualrabbit	crimsun	if I follow the normal installer, it's easy enough, but I want to install within a chroot, on a server, to prepare images for workstations

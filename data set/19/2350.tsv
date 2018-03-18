@@ -1,0 +1,19 @@
+2012-07-19T09:24:00.000Z	Loshki	dpnux	you need 5 lines of config to do gmail: mailhub, AuthUser, AuthPass, UseSTARTTLS and AuthMethod
+2012-07-19T09:26:00.000Z	dpnux	Loshki	yes, I fill all that and also adding current user to revaliases.
+2012-07-19T09:27:00.000Z	dpnux	Loshki	I try explicitly telling AuthMethod=LOGIN. but no success :(
+2012-07-19T09:28:00.000Z	Loshki	dpnux	Can you run sendmail -v <your_address> and capture the debug output? I also use AuthMethod=LOGIN.
+2012-07-19T09:29:00.000Z	dpnux	Loshki	I did and here my last error message "sSMTP[6846]: Server didn't like our AUTH LOGIN (530 5.7.0 Must issue a STARTTLS command first. ms1sm977391pbb.63)"
+2012-07-19T09:30:00.000Z	Loshki	dpnux	I assume you have UseSTARTTLS=YES and mailhub=smtp.gmail.com:587
+2012-07-19T09:32:00.000Z	dpnux	Loshki	True, I use that configuration.  Sorry, I was try to send by mail command. I try your suggested command and it hang up.
+2012-07-19T09:34:00.000Z	Loshki	dpnux	'hang up'? no debug message?
+2012-07-19T09:35:00.000Z	dpnux	Loshki	Sorry, it's not hang. I put dot and enter and it show same error message
+2012-07-19T09:35:00.000Z	Loshki	dpnux	oh right, it hangs. Sorry, I'm slow tonight. The mail command is fine. I still think the problem is your config. Can you pastebin your config (please remove the passwords first)
+2012-07-19T09:37:00.000Z	dpnux	Loshki	ok,  I put my config on pastebin.
+2012-07-19T09:38:00.000Z	Loshki	dpnux	ok, you have to tell us the url so we can see it too...
+2012-07-19T09:42:00.000Z	dpnux	Loshki	http://pastebin.com/wQzzzdF0
+2012-07-19T09:46:00.000Z	Loshki	dpnux	first diff I notice is I have no spaces round the '=' sign in my config. 2nd is I have the equivalent of AuthUser=dpnux i.e. no trailing gmail.com, 3rd. I have no useTLS line at all....
+2012-07-19T09:48:00.000Z	dpnux	Loshki	Wow, great. it works :). Thank you
+2012-07-19T09:49:00.000Z	Loshki	dpnux	I'm glad. Eventually I gave up on ssmtp and went back to postfix :-)
+2012-07-19T09:49:00.000Z	dpnux	Loshki	I need for my php development, postfix is gigantic.
+2012-07-19T09:51:00.000Z	Loshki	dpnux	I know, but ssmtp has no queuing, so if my network link ever goes down, it loses email...
+2012-07-19T09:52:00.000Z	dpnux	Loshki	yes, it's. Surely, I am not using ssmtp on my production VPS :)

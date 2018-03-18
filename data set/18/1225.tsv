@@ -1,0 +1,18 @@
+2012-11-09T06:47:00.000Z	Praxi		I just rebooted a box, it wouldn't come back up, messages about; Kernel panic - not syncing: VFS etc etc...    I booted to a previous kernel, and it came up fine.  Is it possible to tell when that current kernel was installed? like have I been running it for a while and something is really wrong?
+2012-11-09T06:49:00.000Z	escott	Praxi	did it say it couldn't find root?
+2012-11-09T06:51:00.000Z	Praxi	escott	the complete message was LIKE this Kernel Panic - not syncing: VFS: Unable to mount root fs on unknown-bloc(8,2)
+2012-11-09T06:51:00.000Z	escott	Praxi	more than likely a module is missing that is required to be able to access your / filesystem (maybe a dmraid module or perhaps lvm?)
+2012-11-09T06:52:00.000Z	escott	Praxi	what is special about the way your computer is configured... in particular is / on LVM or some kind of raid?
+2012-11-09T06:53:00.000Z	Praxi		its just a VM, I shut it down to reboot my host, and it came back with that escott
+2012-11-09T06:53:00.000Z	Praxi		had a normal shutdown, no errors or complaints
+2012-11-09T06:53:00.000Z	escott	Praxi	what kind of VM? what is the virtualization system
+2012-11-09T06:54:00.000Z	Praxi		vmware, host is ubuntu 12.04, guest is ubuntu server 12.xx
+2012-11-09T06:55:00.000Z	escott	Praxi	perhaps its para-virt and you need to get the para-virt drivers into the kernel for the new kernel, or perhaps something about the new kernel is incompatible with vmware virtualized hardware
+2012-11-09T06:56:00.000Z	Praxi		normally when a new kernel comes out, it tells me to recompile.
+2012-11-09T06:57:00.000Z	Praxi		it is booting up on the previous kernel, can I just uninstall the new kernel thats it seems to be hosing out on?
+2012-11-09T06:57:00.000Z	escott	Praxi	you probably just missed that and need to make the paravirt modules
+2012-11-09T06:58:00.000Z	Praxi		not really familiar with that escott
+2012-11-09T07:00:00.000Z	escott	Praxi	for performance reasons you are probably running a para-virt system meaning that some of the stuff that the guest kernel would do through the virtual hardware is actually passed through a special kernel module down to the host kernel. Things like accessing disks are a good example of that as guest can just inject its reads and writes into the VFS queue of the host. But to make that work you need a kernel module to be available.
+2012-11-09T07:00:00.000Z	escott		sounds like you forgot to compile it after getting a kernel update (which you might not have noticed came through). So compile the vmware guest paravirt modules, and update-initramfs for the offending kernel and that will hopefully take care of the issue
+2012-11-09T07:02:00.000Z	Praxi	escott	does this look like a reasonable instructions for me to use?  http://www.rdoxenham.com/?p=218
+2012-11-09T07:02:00.000Z	escott	Praxi	would not be able to tell you. know absolutely nothing about vmware

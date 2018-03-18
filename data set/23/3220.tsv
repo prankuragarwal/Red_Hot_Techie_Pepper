@@ -1,0 +1,23 @@
+2009-02-02T00:41:00.000Z	jarco		does anyone has an idea if it is possible to run a program that is using kde on my server that only uses command line with my local kubuntu ?
+2009-02-02T00:43:00.000Z	W_McL	jarco	you can forward graphical programs over ssh via the option -X
+2009-02-02T00:44:00.000Z	jarco	W_McL	how would i go about then to run ktorrent on my server?
+2009-02-02T00:46:00.000Z	W_McL	jarco	ssh -X yourusername@yourserver, start ktorrent when logged in. the problem is, that logging out will kill ktorrent, and I don't know if you can use screen with an X program
+2009-02-02T00:50:00.000Z	W_McL	jarco	the option is -X, not -x
+2009-02-02T00:52:00.000Z	W_McL	jarco	you're startig it as root? probably that's the problem, because X access as root is disabled for security reasons
+2009-02-02T00:53:00.000Z	W_McL	jarco	on many systems graphical access is disabled for root users for security reasons
+2009-02-02T00:54:00.000Z	jarco	W_McL	a normal user not in root group also has the same problem
+2009-02-02T00:55:00.000Z	W_McL	jarco	you checked if it works with an user which isn't in the root group?
+2009-02-02T00:56:00.000Z	W_McL	jarco	does 'yes' mean you checked, or it works? if the latter, simply use a user which isn't in the root group, which is safer anyway
+2009-02-02T00:57:00.000Z	W_McL	jarco	no problem, that's why i asked ;)
+2009-02-02T00:57:00.000Z	jarco	W_McL	this is the error that i get : ERROR: KUniqueApplication: Can't determine DISPLAY. Aborting.
+2009-02-02T01:02:00.000Z	W_McL	jarco	is the $DISPLAY environment variable set? do 'echo $DISPLAY', which will also give you the value of the variable
+2009-02-02T01:03:00.000Z	jarco	W_McL	that just gives an emty line
+2009-02-02T01:05:00.000Z	jarco	W_McL	perhaps it is better to start over: what i need is a working torrent client for seeding torrents. Rtorrent is seeding slowly or almost none. So i try to use ktorrent now. It is not the best solution to use it over ssh -X i guess. Perhaps u have better suggestions ?
+2009-02-02T01:06:00.000Z	W_McL	jarco	so it's not set. that migt indicate that probably there's no X running on the machine. what output does 'ps -e|grep X' give?
+2009-02-02T01:06:00.000Z	W_McL	jarco	sorry, was a bit slow
+2009-02-02T01:10:00.000Z	W_McL	jarco	for your needs a non graphical torrent client seems to be ideal, tried any other than rtorrent? there's also a web based interface for bittorrent in the repos: torrentflux
+2009-02-02T01:11:00.000Z	jarco	W_McL	torrentflux i have running but it will not start seeding either ...
+2009-02-02T01:12:00.000Z	W_McL	jarco	you're sure it's a problem of the application? No firewall blocking any required ports?
+2009-02-02T01:13:00.000Z	W_McL	jarco	sadly there are even some ISPs that block or slow down bittorrent traffic :(
+2009-02-02T01:13:00.000Z	jarco	W_McL	i did apt-get remove iptables to be sure, and its a dedicated server so no blocking from isp :)
+2009-02-02T01:15:00.000Z	W_McL	jarco	good luck then, I hope it will work then, but it's still weird that multiple different clients don't work

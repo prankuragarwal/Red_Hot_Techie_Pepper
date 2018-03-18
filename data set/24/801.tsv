@@ -1,0 +1,24 @@
+2011-03-18T06:59:00.000Z	jrtayloriv		When I try to put a Windows recovery disk into my CD-ROM drive (on either of my Ubuntu laptops), it makes a bunch of whirring and clicking noises but generally won't mount the disk. By insert-eject-repeating I have gotten it to mount once, but it generally won't. I get the following from dmesg when I pop it in: http://pastebin.com/6pmVJXFG
+2011-03-18T06:59:00.000Z	jrtayloriv		Really I'm just interested in mounting the disk image so that I can run it in qemu
+2011-03-18T07:00:00.000Z	jrtayloriv		Is there any way that I could use dd to pull the contents of the disk, even if I can't mount it properly?
+2011-03-18T07:01:00.000Z	Aginor	jrtayloriv	yes, there's many alternatives for you
+2011-03-18T07:01:00.000Z	jrtayloriv	Aginor	What would be the easiest way for me to just make an ISO image?
+2011-03-18T07:01:00.000Z	Aginor	jrtayloriv	but you will most likely end up dumping the entire disk/filesystem to a file
+2011-03-18T07:02:00.000Z	jrtayloriv	Aginor	That's fine with me, as long as I can create a mountable ISO image from it.
+2011-03-18T07:02:00.000Z	Aginor	jrtayloriv	proper ISO file system or a general disk image?
+2011-03-18T07:02:00.000Z	Aginor	jrtayloriv	are you getting read errors from the disk?
+2011-03-18T07:03:00.000Z	jrtayloriv	Aginor	Yes, if "Buffer I/O error" is what you mean: --> http://pastebin.com/6pmVJXFG
+2011-03-18T07:04:00.000Z	Aginor	jrtayloriv	that looks like an unhappy disk :D
+2011-03-18T07:06:00.000Z	jrtayloriv	Aginor	Do you have any idea why I would have been able to get it to mount once though?
+2011-03-18T07:06:00.000Z	Aginor	jrtayloriv	I would recommend that you try to use ddrescue http://www.gnu.org/software/ddrescue/ddrescue.html on the relevant partition of your device
+2011-03-18T07:06:00.000Z	jrtayloriv	Aginor	OK -- I'll look into that. Thanks for your help.
+2011-03-18T07:06:00.000Z	Aginor	jrtayloriv	if it's a cd, you might have a dirty laser in the device, the cd or dvd might be dirty/scratched
+2011-03-18T07:07:00.000Z	Aginor	jrtayloriv	you could try to carefully wipe it off with a microfiber cloth, from the centre and out, not in circles
+2011-03-18T07:07:00.000Z	jrtayloriv	Aginor	The CD is brand new, no scratches. I just got it in the mail. I'll try to take out the CD drive and clean it out.
+2011-03-18T07:08:00.000Z	Aginor	jrtayloriv	have you tried it in a different cd?
+2011-03-18T07:08:00.000Z	Aginor	jrtayloriv	try a different drive first, is my recommendation
+2011-03-18T07:09:00.000Z	jrtayloriv	Aginor	-- Actually, I just had a brain fart. It's happening on two different laptops, so it's unlikely to be the disk drive.
+2011-03-18T07:10:00.000Z	Aginor	jrtayloriv	it might have some nasty copy protection on it that confuses the operating systems as well
+2011-03-18T07:10:00.000Z	Aginor	jrtayloriv	but dodgy cd sounds like a good theory :)
+2011-03-18T07:11:00.000Z	jrtayloriv	Aginor	I'll try ddrescue and come back and whine some more if that doesn't work :) thanks again.
+2011-03-18T07:11:00.000Z	Aginor	jrtayloriv	it'll take long and you probably have to run it several times, so you have been warned

@@ -1,0 +1,23 @@
+2012-09-19T01:27:00.000Z	docid		interesting
+2012-09-19T01:27:00.000Z	TJ-	docid	I'm chasing your wabbit :p
+2012-09-19T01:18:00.000Z	TJ-	docid	There are several places that snmp_conf will read the configuration from. It is possible that your disableAuthorization is being over-ridden by a later config file I think
+2012-09-19T01:19:00.000Z	TJ-	docid	Are you starting snmptrapd with the "-c" option?
+2012-09-19T01:19:00.000Z	docid	TJ-	 thank you for the reply, but i am getting "Warning: Unknown token: disableAuthorization."  when starting snmptrapd and using the -H option does not list it as a recognised option
+2012-09-19T01:20:00.000Z	TJ-	docid	Really! I've not seen that on my Precise servers! Let me dig!
+2012-09-19T01:20:00.000Z	docid	TJ-	thank ya much
+2012-09-19T01:21:00.000Z	TJ-	docid	I see what you mean :s  .... hmmm
+2012-09-19T01:22:00.000Z	TJ-	docid	The changelog doesn't reveal any change like that. Grabbing the source
+2012-09-19T01:23:00.000Z	docid	TJ-	afk 1 min
+2012-09-19T01:26:00.000Z	TJ-	docid	The source still registers the option:   "     netsnmp_ds_register_config(ASN_BOOLEAN, "snmptrapd", "disableAuthorization", ... "
+2012-09-19T01:27:00.000Z	docid	TJ-	and deeper down the rabbithole we go
+2012-09-19T01:35:00.000Z	TJ-	docid	I'm able to start snmptrapd with that option in "/etc/snmp/snmptrapd.conf" and debugging shows it is read... how about trying this in your situ and then reviewing the log for processing of disableAuthorizations ? "snmptrapd -D -f 2>&1 >snmptrapd.log"
+2012-09-19T01:36:00.000Z	docid	TJ-	thanks much, will follow this and see what i come up with
+2012-09-19T01:41:00.000Z	docid	TJ-	command hangs, when broken, dumps a bunch trace: _callback_lock()   lines
+2012-09-19T01:42:00.000Z	TJ-	docid	Maybe there's something in the config causing that? did you capture everything to a log file? that would help discover the cause
+2012-09-19T01:45:00.000Z	TJ-	docid	Did you redirect stderr to stdout like I showed in my example?
+2012-09-19T01:47:00.000Z	docid	TJ-	i believe so, the '>&1 >' portion, correct?
+2012-09-19T01:47:00.000Z	TJ-	docid	"2>&1"
+2012-09-19T01:48:00.000Z	TJ-	docid	maybe you have configuration options that are directing the "-D" logging to another place? syslog maybe? or a dedicated log-file?
+2012-09-19T01:49:00.000Z	docid	TJ-	possiblity, ill dig through everything again, and see if i can find anything....
+2012-09-19T01:50:00.000Z	TJ-	docid	What I did was use the "-c <config-file>" option to test it and gave it "/etc/snmp/snmptrapd.conf" to work with
+2012-09-19T01:50:00.000Z	docid	TJ-	aye, will force it to just that one.... thanks for the help,

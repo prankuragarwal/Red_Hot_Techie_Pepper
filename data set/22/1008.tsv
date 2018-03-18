@@ -1,0 +1,22 @@
+2010-11-19T05:52:00.000Z	histo		  Sofus2004 depends how it is being mounted
+2010-11-19T05:52:00.000Z	histo		!fstab | Sofus2004
+2010-11-19T05:52:00.000Z	Sofus2004	histo	sudo mount -t smbfs //192.168.1.118/Linux/ /home/windows/ -o username=Guest,password=
+2010-11-19T05:53:00.000Z	Sofus2004	histo	My user can write to that dir normally
+2010-11-19T05:54:00.000Z	histo	Sofus2004	Guest will own it
+2010-11-19T05:54:00.000Z	Sofus2004	histo	So I should make a user on my windows machine that has a user called the same as on my linux machine?
+2010-11-19T05:55:00.000Z	histo	Sofus2004	no the username=   line is the issue
+2010-11-19T05:55:00.000Z	histo	Sofus2004	unless you login name on the linux machine is Guest
+2010-11-19T05:55:00.000Z	Sofus2004	histo	Oh. I thought that was meant for the login to the windows machine.
+2010-11-19T05:56:00.000Z	histo	Sofus2004	nope
+2010-11-19T05:56:00.000Z	histo	Sofus2004	that will specify the user that owns the mount and can write to it
+2010-11-19T05:57:00.000Z	Sofus2004	histo	It mounts fine with my username but I still cant make any files
+2010-11-19T05:59:00.000Z	histo	Sofus2004	whats the group set as? check the moutn with ls -l
+2010-11-19T06:00:00.000Z	histo	Sofus2004	what is the command you are using to mount it?
+2010-11-19T06:01:00.000Z	Sofus2004	histo	sudo mount -t smbfs //192.168.1.118/Linux/ /home/downloads/windows/ -o username=sofus,password=
+2010-11-19T06:02:00.000Z	histo	Sofus2004	sudo mount -t smbfs //192.168.1.118/Linux /home/downloads/windows -o uid=1000,gid=100
+2010-11-19T06:03:00.000Z	Sofus2004	histo	That did it! Mind explaining what the error was?
+2010-11-19T06:03:00.000Z	histo	Sofus2004	also you should be using cifs instead of smbfs.
+2010-11-19T06:03:00.000Z	histo	Sofus2004	that just specified your user uid=1000 and group users by the gid=100
+2010-11-19T06:04:00.000Z	histo	Sofus2004	not sure why the other way wasn't worky maybe a type or something.
+2010-11-19T06:04:00.000Z	histo	Sofus2004	s/type/typo
+2010-11-19T06:04:00.000Z	Sofus2004	histo	perhaps, oh well. Thanks alot for the time, really apreciated.

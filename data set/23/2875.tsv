@@ -1,0 +1,23 @@
+2008-12-30T10:19:00.000Z	shredder12	WebcamWonder	Its actually a diff file.. Its actually a patch file for ethernet driver stuff.. now the article i read asked me to "apply the patch: patch<>" i tried the patch command and it gave me some hunk errors.. i think i m not able to use the command in the right format.. help please..
+2008-12-30T10:19:00.000Z	WebcamWonder	shredder12	patch -p0 < pathtofile is thee syntax of the command IIRC
+2008-12-30T10:20:00.000Z	shredder12	WebcamWonder	kk let me try it..
+2008-12-30T10:22:00.000Z	shredder12	WebcamWonder	it says that the "#1 hunk failed at 942"
+2008-12-30T10:22:00.000Z	WebcamWonder	shredder12	Are you sure the patch is against the correct source?
+2008-12-30T10:25:00.000Z	shredder12	WebcamWonder	ya, i think so.. it was about resolving some ethernet problem with dell vostro 1510 in Ubuntu hardy.. i link to the patch was given in the article.. so i think.. that its correct..
+2008-12-30T10:25:00.000Z	WebcamWonder	shredder12	Could you give me the path to the patch?
+2008-12-30T10:31:00.000Z	shredder12	WebcamWonder	  http://www.martinhenze.de/extern/r8168-8.006.00.hardy.diff this is the patch to the patchfile.. and this is the article i referred...   http://www.martinhenze.de/2008/05/24/ubuntu-linux-on-dell-vostro-1510/
+2008-12-30T10:32:00.000Z	WebcamWonder	shredder12	And the directory you are sitting in, has the r8168.h right?
+2008-12-30T10:33:00.000Z	shredder12	WebcamWonder	yes it has
+2008-12-30T10:34:00.000Z	WebcamWonder	shredder12	Try patch -p1 < path.to.file
+2008-12-30T10:37:00.000Z	shredder12	WebcamWonder	same error.. "ing file r8168.h #1 failed at 942"
+2008-12-30T10:37:00.000Z	WebcamWonder	shredder12	Ok, open the r8168.h in gedit/leafpad
+2008-12-30T10:38:00.000Z	WebcamWonder	shredder12	And tell me what do you see at line number 943
+2008-12-30T10:39:00.000Z	shredder12	WebcamWonder	this is line 943  CSIAR_Addr_Mask = 0x0fff,
+2008-12-30T10:39:00.000Z	shredder12	WebcamWonder	 and this one is 942 "CSIAR_ByteEn_shift = 12,"
+2008-12-30T10:40:00.000Z	WebcamWonder	shredder12	Yup, that source is not the same as the one with which this patch was generated
+2008-12-30T10:40:00.000Z	WebcamWonder	shredder12	You can open up the patch file and see that it is completely different from what the patch file is expecting... that is why it is failing
+2008-12-30T10:43:00.000Z	shredder12	WebcamWonder	Ya i can see.. but i have downloaded the latest version of realtek driver.. is it because of it..
+2008-12-30T10:43:00.000Z	shredder12	WebcamWonder	i mean because of the latest version
+2008-12-30T10:44:00.000Z	WebcamWonder	shredder12	Highly likely
+2008-12-30T10:44:00.000Z	shredder12	WebcamWonder	may be i should consult the writer of the article.. newaz.. thanks for ur help..
+2008-12-30T10:44:00.000Z	WebcamWonder	shredder12	No problems. Glad to help

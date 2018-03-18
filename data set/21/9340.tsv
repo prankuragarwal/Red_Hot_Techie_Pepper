@@ -1,0 +1,21 @@
+2006-03-10T14:23:00.000Z	tolkan		Question: how do i go about pinging servers on a hostname basis like in windows... i'm in a residential network with a router
+2006-03-10T14:23:00.000Z	tolkan		dhcp
+2006-03-10T14:24:00.000Z	tolkan		flint-=: dhcp
+2006-03-10T14:24:00.000Z	tolkan		dabaR-=: doesn't work
+2006-03-10T14:24:00.000Z	tolkan		flint-=:  that works fine but i would like to ping the hostname instead of the ip address
+2006-03-10T14:25:00.000Z	soundray	tolkan	if you want to ping the name of hosts which aren't public, you have to enter them in the /etc/hosts file.
+2006-03-10T14:27:00.000Z	soundray	tolkan	if the router has DNS, you have to enter the router address in /etc/resolv.conf (a line like 'nameserver 192.168.1.1')
+2006-03-10T14:27:00.000Z	soundray	tolkan	does the router also have DHCP?
+2006-03-10T14:33:00.000Z	soundray	tolkan	can you check whether the router responds to DNS queries?
+2006-03-10T14:34:00.000Z	soundray	tolkan	if the nameserver line corresponding to the router, and you get an immediate response to an arbitrary request like the one triggered by 'ping www.heise.de', then it is responding.
+2006-03-10T14:35:00.000Z	soundray	tolkan	sorry: if the nameserver line corresponding to the router *is the first*, and you get an immediate...
+2006-03-10T14:36:00.000Z	soundray	tolkan	good, you've narrowed it down to how you made the local hosts known to the router.
+2006-03-10T14:37:00.000Z	soundray	tolkan	can you get a shell on the router?
+2006-03-10T14:38:00.000Z	soundray	tolkan	did you give it the names of your LAN hosts via the HTTP interface?
+2006-03-10T14:39:00.000Z	soundray	tolkan	were you replying to me?
+2006-03-10T14:41:00.000Z	soundray	tolkan	did you give it the names of your LAN hosts via the HTTP interface?
+2006-03-10T14:42:00.000Z	soundray	tolkan	I'll rephrase my question.
+2006-03-10T14:42:00.000Z	soundray	tolkan	did you use the router's HTTP interface to feed it all the names of the hosts in your LAN?
+2006-03-10T14:44:00.000Z	soundray	tolkan	does your router manual claim that it works as a DNS server for the LAN?
+2006-03-10T14:46:00.000Z	soundray	tolkan	it's unusual, though, for a DHCP client to determine its own hostname and pass it to the DHCP server (that's how I understand you).
+2006-03-10T14:55:00.000Z	soundray	tolkan	if all else fails, read the router manual ;)  I know it can be a pain if it's a PDF hiding on some CD-ROM.

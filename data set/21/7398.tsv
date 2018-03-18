@@ -1,0 +1,21 @@
+2006-10-08T16:59:00.000Z	ruokblah		hey guys, quick question, does anyone know the user smb runs as?
+2006-10-08T05:01:00.000Z	wasabi_	ruokblah	Whatcha mean? smbd itself runs as root, but forks for each user.
+2006-10-08T05:02:00.000Z	ruokblah	wasabi_	basicly i want to smb in to /var/www i have it working so that only local machines to my network can use smb on the server but for some reason i cant get write permsion from smb in /var/www
+2006-10-08T05:02:00.000Z	ruokblah	wasabi_	i have tried everything i can think of changing owner ship changing group chmod -R 777 everything
+2006-10-08T05:02:00.000Z	wasabi_	ruokblah	You need to make local users, and grant them access to the server, and establish either NT hashes or kerberos keys for them.
+2006-10-08T05:02:00.000Z	wasabi_	ruokblah	Are you using AD?
+2006-10-08T05:03:00.000Z	wasabi_	ruokblah	Or just plain two windows machines?
+2006-10-08T05:03:00.000Z	ruokblah	wasabi_	i dont know what AD is and shea i think i did, and wasabi_ again, it is ubuntu server as smbServer and then a windows machine connects to it
+2006-10-08T05:04:00.000Z	wasabi_	ruokblah	You need to make a user for the windows user.
+2006-10-08T05:04:00.000Z	wasabi_	ruokblah	and run smbpasswd to set it's password.
+2006-10-08T05:04:00.000Z	wasabi_	ruokblah	The usernames much match.
+2006-10-08T05:04:00.000Z	ruokblah	wasabi_	i have done that
+2006-10-08T05:05:00.000Z	ruokblah	wasabi_	the problem is that from smb i can not get write persission at /var/www, that is the only directoy that does not work
+2006-10-08T05:07:00.000Z	wasabi_	ruokblah	Does the user you made have write access?
+2006-10-08T05:07:00.000Z	ruokblah	wasabi_	when i log in to the box from ssh i can mod the files in /var/www with out needing to sudo or change users
+2006-10-08T05:07:00.000Z	wasabi_	ruokblah	Other than setting read only = No in smb.conf, that's all you need to do
+2006-10-08T05:09:00.000Z	ruokblah	wasabi_	i had writable = yes should that be read only = no?
+2006-10-08T05:09:00.000Z	wasabi_	ruokblah	No, those are equivelent. I'd read the log files.
+2006-10-08T05:10:00.000Z	ruokblah	wasabi_	ok i will dive in to the logs and then come back here if i cant get it still thanks man
+2006-10-08T05:38:00.000Z	ruokblah	wasabi_	thanks for the log idea, turns out  that i had a printer in there that was erroring and that one below the printer, i removed the errored printer and poof it works
+2006-10-08T05:39:00.000Z	wasabi_	ruokblah	Heh.

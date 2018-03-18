@@ -1,0 +1,19 @@
+2007-01-02T12:53:00.000Z	Zyphern		 I had a problem with my network when using ubuntu. someone told me I needed to make ubuntu act as a DHCP Client in order for it all to work. Looking in the packages section there are 3 different ones. dhcp-client (2.0pl5-19.5ubuntu2) /// dhcp3-client (3.0.4-12ubuntu1) /// dhcpcd (1:2.0.3-1). Which one should I use?
+2007-01-02T12:54:00.000Z	rasman	Zyphern	there should be dhcp3-client installed by default for desktop installations
+2007-01-02T12:55:00.000Z	rasman	Zyphern	the command you need to run is "sudo dhclient eth0" if your network adapter is eth0.
+2007-01-02T12:57:00.000Z	rasman	Zyphern	run 'ifconfig'  Dhcp should be automatically used unless you changed the configuration
+2007-01-02T13:01:00.000Z	rasman	Zyphern	we still need to see the output of 'ifconfig' from a command line.  Application --> Accessories --> Terminal
+2007-01-02T13:06:00.000Z	rasman	Zyphern	it sounds like ubuntu is running as a dhcp server.
+2007-01-02T13:08:00.000Z	rasman	Zyphern	you can verify by running 'dpkg -l dhcp*' and see if dhcpd has ii as the first two characters (it stands for commanded to install and installed successfully)
+2007-01-02T13:09:00.000Z	rasman	Zyphern	you will want to uninstall the dhcp server with 'sudo apt-get uninstall dhcpd'
+2007-01-02T13:33:00.000Z	rasman	Zyphern	sorry I dissapeared
+2007-01-02T13:33:00.000Z	Zyphern	rasman	rather
+2007-01-02T13:34:00.000Z	rasman	Zyphern	did you uninstall the dhcpd application?
+2007-01-02T13:34:00.000Z	Zyphern	rasman	I have not uninstalled anything
+2007-01-02T13:35:00.000Z	rasman	Zyphern	right now you have  ubuntu and your router acting as competing dhcp servers.  You can temporarily disable dhcpd with a 'sudo /etc/init.d/dhcpd stop'
+2007-01-02T13:35:00.000Z	Zyphern	rasman	will that fix it?
+2007-01-02T13:36:00.000Z	rasman	Zyphern	eventually you will need to uninstall it from ubuntu.  if you run the last command, you will stop it until the next time ubuntu restarts
+2007-01-02T13:36:00.000Z	rasman	Zyphern	the command to uninstall dhcpd is 'sudo apt-get uninstall dhcpd'
+2007-01-02T13:38:00.000Z	rasman	Zyphern	you will also have to make sure that your /etc/network/interfaces file has a dhcp address defined instead of a static address
+2007-01-02T13:39:00.000Z	Zyphern	rasman	How can I ensure that?
+2007-01-02T13:40:00.000Z	rasman	Zyphern	run 'sudo gedit /etc/network/interfaces' and verify that you have a 'iface eth0 inet dhcp'

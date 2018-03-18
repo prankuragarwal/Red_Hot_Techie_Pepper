@@ -1,0 +1,22 @@
+2011-09-24T04:49:00.000Z	redragon_		hello
+2011-09-24T04:49:00.000Z	redragon_		so have ubuntu doing a weird thing with networking and I've run into an impass
+2011-09-24T04:49:00.000Z	redragon_		http://fpaste.org/ZUNN/
+2011-09-24T04:49:00.000Z	redragon_		thats the route and ifconfig info
+2011-09-24T04:49:00.000Z	redragon_		but if I try to ping 192.168.100.102 it is trying to send it out eth0 instead of eth1
+2011-09-24T04:51:00.000Z	yaerkin	redragon_	What does 'ip route' give you?
+2011-09-24T04:53:00.000Z	redragon_		http://fpaste.org/vMIX/
+2011-09-24T04:53:00.000Z	redragon_	yaerkin	there is a new paste with ip route output
+2011-09-24T04:54:00.000Z	redragon_		wait
+2011-09-24T04:54:00.000Z	redragon_		http://fpaste.org/TBNp/
+2011-09-24T04:54:00.000Z	redragon_		fpaste doesn't like me sometimes :)
+2011-09-24T04:57:00.000Z	yaerkin	redragon_	That's really weird.  Try 'ping -I eth1' (that is a capital i)
+2011-09-24T04:59:00.000Z	redragon_	yaerkin	whats even weirder is that both machine exhibit the same issue
+2011-09-24T05:00:00.000Z	redragon_	yaerkin	in all my years i've not seen a box blatently disreguard routing like that
+2011-09-24T05:03:00.000Z	yaerkin	redragon_	Are you 100% certain that the interface names correspond to the NICs you think they do?
+2011-09-24T05:03:00.000Z	redragon_	yaerkin	what do you mean?
+2011-09-24T05:04:00.000Z	yaerkin	redragon_	You've got 2 interfaces.  Are you absolutely sure that eth0 is the card you think it is?
+2011-09-24T05:04:00.000Z	yaerkin		(and vice versa)
+2011-09-24T05:05:00.000Z	redragon_		eth0 is working fine
+2011-09-24T05:05:00.000Z	redragon_		I show links, if I do arping to the 100 subnet it returns the mac of the 104 subnet
+2011-09-24T05:09:00.000Z	redragon_	yaerkin	further the udev rules show the same mac for the respective output from ifconfig
+2011-09-24T07:17:00.000Z	redragon_	yaerkin	it was networking not the servers

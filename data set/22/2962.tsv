@@ -1,0 +1,22 @@
+2009-02-19T02:10:00.000Z	lifestream		I installed a module, but now when I try to modprobe it, it says Not Found. :/ What can I do?
+2009-02-19T02:11:00.000Z	Titan8990	lifestream	try:   modprobe -l | grep POSSIBLEMODULENAME
+2009-02-19T02:11:00.000Z	lifestream	Titan8990	 Yeah, it's not listed there
+2009-02-19T02:12:00.000Z	Titan8990	lifestream	how did you install the module?
+2009-02-19T02:13:00.000Z	lifestream	Titan8990	 I had the source, did make, make install, no errors. Though there was no output for make install O_o That's all it says to do
+2009-02-19T02:13:00.000Z	Titan8990	lifestream	that typically won't work in ubuntu
+2009-02-19T02:13:00.000Z	Titan8990	lifestream	because the way that it builds and install modules is different from most distros
+2009-02-19T02:14:00.000Z	lifestream	Titan8990	 how so? :/ Hmm... even different from Debian?
+2009-02-19T02:14:00.000Z	Titan8990	lifestream	you will need the kernel source (headers MAY work) or your currently running config to /usr/src/linux
+2009-02-19T02:14:00.000Z	Titan8990	lifestream	not different then debian
+2009-02-19T02:14:00.000Z	lifestream	Titan8990	 Uuuggghh so I have to recompile the whole kernel?
+2009-02-19T02:15:00.000Z	Titan8990	lifestream	no, but you need the headers/source of your currently running kernel
+2009-02-19T02:15:00.000Z	Titan8990	lifestream	in fact, recompiling the kernel in ubuntu, ofthen just breaks apt-get when installing modules
+2009-02-19T02:15:00.000Z	Titan8990	lifestream	and highly not recommended
+2009-02-19T02:16:00.000Z	lifestream	Titan8990	 hmmm I have linux-headers-26etcetc installed. Hmmm I can't install the module from apt-get because its not available there
+2009-02-19T02:16:00.000Z	Titan8990	lifestream	what driver is it?
+2009-02-19T02:16:00.000Z	lifestream	Titan8990	lmpcm_usb
+2009-02-19T02:16:00.000Z	Titan8990	lifestream	which is?
+2009-02-19T02:17:00.000Z	lifestream	Titan8990	 Logitech MediaPlay mouse drivers
+2009-02-19T02:18:00.000Z	Titan8990	lifestream	when you did make install, what kernel source headers did it use?
+2009-02-19T02:19:00.000Z	lifestream	Titan8990	 the one I'm running now
+2009-02-19T02:21:00.000Z	Titan8990	lifestream	my only guess, is you need to full kernel source, and not just the headers

@@ -1,0 +1,21 @@
+2007-12-11T08:13:00.000Z	marnanel		Hello. I have upgraded to gutsy today, and I have lost my /home partition; instead, something prints "device-mapper: ioctl: error adding target to table" to syslog forever. I have ssh'd into the machine from elsewhere. Does anyone have any clues as to how I would go about fixing this?
+2007-12-11T08:13:00.000Z	marnanel		It also prints " device-mapper: table: 254:1: linear: dm-linear: Device lookup failed"
+2007-12-11T08:13:00.000Z	david_J	marnanel	raid? or lvm or neither?
+2007-12-11T08:14:00.000Z	marnanel	david_J	Neither-- just one partition which is /, one which is /home, and one which is swap.
+2007-12-11T08:14:00.000Z	marnanel	david_J	I can find the /dev/sdaX numbers if you like
+2007-12-11T08:15:00.000Z	david_J	marnanel	odd.. maybe a fstab problem... device mapper is used for lvm2, raid, or luks
+2007-12-11T08:15:00.000Z	marnanel	david_J	I thought I hadn't heard of it before.
+2007-12-11T08:16:00.000Z	marnanel	david_J	for what it's worth, the upgrade process didn't touch /etc/fstab.
+2007-12-11T08:16:00.000Z	david_J	marnanel	You root gets mounted?
+2007-12-11T08:16:00.000Z	marnanel	david_J	Yes.
+2007-12-11T08:16:00.000Z	david_J	marnanel	dmseg has no more output?
+2007-12-11T08:17:00.000Z	david_J	marnanel	mount the drive manually and see what happens?
+2007-12-11T08:17:00.000Z	david_J	marnanel	or partition oops
+2007-12-11T08:17:00.000Z	marnanel	david_J	oh, good idea, let's see how that goes.
+2007-12-11T08:17:00.000Z	david_J	marnanel	prolly just need to fsck it...
+2007-12-11T08:21:00.000Z	marnanel	david_J	strange: `mount /dev/sda3 /home` --> `/dev/sda3 already mounted or /home busy`. `umount /dev/sda3` --> `/dev/sda3: not mounted`. `mount /dev/sda3 /tmp/some-crappy-name-i-just-created` --> same as /home
+2007-12-11T08:21:00.000Z	david_J	marnanel	do a df -h or mount
+2007-12-11T08:22:00.000Z	marnanel	david_J	it is indeed not mounted
+2007-12-11T08:22:00.000Z	david_J	marnanel	man fuser or lsof
+2007-12-11T08:23:00.000Z	marnanel	david_J	what am I looking for? I know how to use fuser and lsof; am I checking nobody has a lock on /dev/sda3?
+2007-12-11T08:23:00.000Z	david_J	marnanel	yeah basically.. then I'd try to fsck /dev/sda3

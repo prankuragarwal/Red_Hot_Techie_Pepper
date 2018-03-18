@@ -1,0 +1,19 @@
+2005-01-18T17:25:00.000Z	IRCMonkey		aha! ok: the xsane refuses to run unless I am "root". If I run it as "root" it says -- no! don't run me as root -- it's dangerous. What should I do?
+2005-01-18T17:26:00.000Z	kezz	IRCMonkey	whats the error when you run as non root?
+2005-01-18T17:26:00.000Z	IRCMonkey	kezz	just a second, I'll check...
+2005-01-18T17:27:00.000Z	IRCMonkey	kezz	"no devices available". I have a USB HP scanjet 2200c. When run as root it works all right.
+2005-01-18T17:28:00.000Z	kezz	IRCMonkey	sounds like a permissions problem
+2005-01-18T17:29:00.000Z	IRCMonkey	kezz	and how do I permit all users to use the scanner?
+2005-01-18T17:31:00.000Z	kezz	IRCMonkey	try this sudo chmod -R 666 /proc/bus/usb/
+2005-01-18T17:35:00.000Z	IRCMonkey	kezz	aha! this helped: chmod -R 666 /proc/bus/usb/; chmod go+x /proc/bus/usb/. Thanks a lot!
+2005-01-18T17:35:00.000Z	kezz	IRCMonkey	you'll need to put it in ur /etc/fstab to make the changes permanent after restart
+2005-01-18T17:36:00.000Z	kezz	IRCMonkey	none /proc/bus/usb usbfs defaults,devmode=0666 0 0
+2005-01-18T17:36:00.000Z	kezz		should do the trick
+2005-01-18T17:36:00.000Z	IRCMonkey	kezz	aha, /etc/fstab runs automatically at the startup?
+2005-01-18T17:36:00.000Z	kezz	IRCMonkey	it mounts ur filesystems on startup with the relevant permissions etc
+2005-01-18T17:37:00.000Z	IRCMonkey	kezz	ok, I'll do that, thanks a lot!
+2005-01-18T17:38:00.000Z	kezz	IRCMonkey	np
+2005-01-18T17:38:00.000Z	IRCMonkey	kezz	and what is "np"?
+2005-01-18T17:38:00.000Z	kezz	IRCMonkey	no problem
+2005-01-18T17:38:00.000Z	IRCMonkey	kezz	no0tic: oh, I see.... :)
+2005-01-18T17:39:00.000Z	kezz	IRCMonkey	don't you mean oic? :P

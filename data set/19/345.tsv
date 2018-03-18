@@ -1,0 +1,19 @@
+2012-09-09T19:33:00.000Z	renode		i keep getting ln: failed to create symbolic link `/dev/null': File exists when linking a log file to dev null
+2012-09-09T19:33:00.000Z	renode		on 12.04, how can i fix this?
+2012-09-09T19:35:00.000Z	renode		# ln -s /var/log/syslog /dev/null
+2012-09-09T19:36:00.000Z	T_H_X	renode	eh?
+2012-09-09T19:37:00.000Z	renode	T_H_X	i was responding to daemongpl
+2012-09-09T19:37:00.000Z	T_H_X	renode	strange command
+2012-09-09T19:37:00.000Z	renode		How so?
+2012-09-09T19:38:00.000Z	T_H_X		piping dev/null to syslog
+2012-09-09T19:39:00.000Z	renode		I am
+2012-09-09T19:39:00.000Z	renode		Unless you have another way of destroying openSSH logs?
+2012-09-09T19:40:00.000Z	renode		Make SSH logless
+2012-09-09T19:40:00.000Z	renode		*ssh-server
+2012-09-09T19:41:00.000Z	renode		which config file? because its not sshd_config
+2012-09-09T19:41:00.000Z	renode		LogLevel NONE ?
+2012-09-09T19:44:00.000Z	T_H_X	renode	just edit /etc/default/ssh
+2012-09-09T19:44:00.000Z	renode		which is why i wanted to /dev/null syslog
+2012-09-09T19:44:00.000Z	T_H_X	renode	SSHD_OPTS="-e /dev/null"
+2012-09-09T19:45:00.000Z	renode		but T_H_X i get the error of 'File Exists'
+2012-09-09T19:45:00.000Z	T_H_X	renode	to dev null syslog you do ln -s /dev/null /var/log/syslog

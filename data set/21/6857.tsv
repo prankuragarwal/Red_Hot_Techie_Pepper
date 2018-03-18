@@ -1,0 +1,21 @@
+2007-02-01T08:33:00.000Z	dmitri		hy i am trying to  mount -t vfat /media/windows/ /dev/hda5 and i get this error: mount: /media/windows/ is not a block device
+2007-02-01T08:33:00.000Z	dmitri		how?
+2007-02-01T08:34:00.000Z	Pici	dmitri	: reverse the arguments
+2007-02-01T08:34:00.000Z	dmitri		then i get this error mount: wrong fs type, bad option, bad superblock on /dev/hda5,
+2007-02-01T08:34:00.000Z	dmitri		Jowi:
+2007-02-01T08:35:00.000Z	Pici	dmitri	: what fs type is /dev/hda5 ?
+2007-02-01T08:35:00.000Z	dmitri		win32
+2007-02-01T08:35:00.000Z	Pici	dmitri	: Thats OS, not the FS
+2007-02-01T08:35:00.000Z	Pici	dmitri	: is it fat32, fat16, ntfs?
+2007-02-01T08:35:00.000Z	dmitri		hidden w95 fat32
+2007-02-01T08:36:00.000Z	dmitri	Pici	escuse me fat32
+2007-02-01T08:37:00.000Z	Pici	dmitri	: is it possible that theres a problem with the drive?
+2007-02-01T08:38:00.000Z	dmitri	Pici	what problem?
+2007-02-01T08:43:00.000Z	Pici	dmitri	: a bad superblock indicates that theres an issue reading from the drive.  You can try running dosfsck to find/fix errors, but in my experience this sometimes leads to futher corrupting the data
+2007-02-01T08:43:00.000Z	Pici		!upgrade | xpoint
+2007-02-01T08:45:00.000Z	dmitri	Pici	it doesn't maeter i just formated that drive
+2007-02-01T08:47:00.000Z	Pici	dmitri	: try sudo dosfsck /dev/devicename -a    This will automatically attempt to fix any issues with the drive, you can then try to mount it
+2007-02-01T08:49:00.000Z	dmitri	Pici	I get this Currently, only 1 or 2 FATs are supported, not 21.
+2007-02-01T08:49:00.000Z	dmitri		:(
+2007-02-01T08:50:00.000Z	Pici	dmitri	: try just fsck -a /dev/devicename
+2007-02-01T08:51:00.000Z	dmitri	Pici	not working:( e2fsck: Bad magic number in super-block while trying to open /dev/hda5

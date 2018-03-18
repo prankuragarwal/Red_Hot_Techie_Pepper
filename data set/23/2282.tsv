@@ -1,0 +1,23 @@
+2010-03-20T06:29:00.000Z	igoryonya	Ganymede	I always used samba to access windows network shares, how else would you do that?
+2010-03-20T06:29:00.000Z	igoryonya	Ganymede	nevermind, I found your post about it
+2010-03-20T06:29:00.000Z	igoryonya	Ganymede	but smbfs is samba
+2010-03-20T06:30:00.000Z	Ganymede	igoryonya	when you say, "using samba" to access the share, it depends on whether you're referring to the samba server, which is provided by the samba package, or the smbfs/cifs kernel code and mount.cifs mount utility, which probably has code contributed by the samba project
+2010-03-20T06:33:00.000Z	igoryonya	Ganymede	I am referring to some windows running computer on the lan/net
+2010-03-20T06:33:00.000Z	Ganymede	igoryonya	yeah, you don't use "samba" to access those, use mount.cifs to mount them, or nautilus probably has a built-in smb client
+2010-03-20T06:35:00.000Z	igoryonya	Ganymede	so the question is not how do you connect to a windows share, but how do you mount it so it looks as a part of your file system?
+2010-03-20T06:35:00.000Z	Ganymede	igoryonya	^^
+2010-03-20T06:40:00.000Z	Ganymede	igoryonya	smb procotol is different from "samba", samba was the name chosen for the software package and was derived from the name "SMB"
+2010-03-20T06:41:00.000Z	igoryonya	Ganymede	:), now I know that SMB is not short for samba, but an abbreviation.
+2010-03-20T06:47:00.000Z	Ganymede	igoryonya	for a filesystem check, i think that's usually fsck.vfat or something like that and for bad "blocks", there's the "badblocks" command...hit up the man pages
+2010-03-20T06:47:00.000Z	igoryonya	Ganymede	thanx
+2010-03-20T06:51:00.000Z	Ganymede	igoryonya	soft links are sorta like files that say, "my content is actually in this other file" and specifies that file either relative to itself or via absolute path. a hardlink is a lower level link...it's sorta like a directory entry that says, "may data is at this location on disk" and it points to the same location as some other file entry and contributes 1 to the "link count"...not sure if that helps at all...
+2010-03-20T06:52:00.000Z	igoryonya	Ganymede	thanx
+2010-03-20T06:56:00.000Z	igoryonya	Ganymede	kind of difficult concept, :) I tried, but didn't see the difference between the two in your explanation, I will open the link, posted by nunya
+2010-03-20T06:58:00.000Z	Ganymede	igoryonya	i guess my description was more OS level and never end-user oriented...a quick summary would be that symlinks can cross filesystems, hardlinks cannot, with hardlinks, you can delete either of the linked files and your data will be safe as long as one hardlink remains so they're all equal in a sense, but with softlinks, you have a destination and a link and if the destination is gone, the link is broken and unusable
+2010-03-20T06:58:00.000Z	Ganymede	igoryonya	but yeah, do check out the reading
+2010-03-20T07:02:00.000Z	igoryonya	Ganymede	OK, I got it, the hardlink is kind of like an other entry in the partition table, but symlink (softlink?) is kind of like a windows shortcut.
+2010-03-20T07:03:00.000Z	Ganymede	igoryonya	yes, symlink is like a windows shortcut (.lnk) file, BUT i don't know about the hardlink/partition stuff you just said
+2010-03-20T07:03:00.000Z	Ganymede	igoryonya	do you have any knowledge of filesystems? such as how FAT32/ext3 or anything actually stores hierarchical data on a sequential device?
+2010-03-20T07:07:00.000Z	Ganymede	igoryonya	you can think about how softlinks just contain a string that's the path to their data whereas hardlinks contain the inode number (i.e. address on the disk) of the data
+2010-03-20T07:11:00.000Z	igoryonya	Ganymede	yes, I can, and that clarifys everything.
+2010-03-20T07:22:00.000Z	igoryonya	Ganymede	nunya, Random832, sorry, if I missed somebody: thanx, I understand all the differences now.

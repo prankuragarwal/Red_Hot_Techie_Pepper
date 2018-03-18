@@ -1,0 +1,18 @@
+2007-12-29T11:46:00.000Z	JJHathoway		Probably a dumb question, but i cant seem to find a simple answer on the net....i just installed ubuntu server (LAMP, OpenSSH)  and i want to access the generic default web site that is loaded with apache
+2007-12-29T11:46:00.000Z	JJHathoway		how do i do that
+2007-12-29T11:47:00.000Z	nickrud	JJHathoway	point your browser at http://localhost
+2007-12-29T11:48:00.000Z	JJHathoway	nickrud	 i take it you mean from a different computer?
+2007-12-29T11:49:00.000Z	nickrud	JJHathoway	your computer is also known as  localhost. you can use the 127.0.0.1   also
+2007-12-29T11:50:00.000Z	nickrud	JJHathoway	no, you'd need to forward port 80 on your router, then use the public address of your router
+2007-12-29T11:51:00.000Z	nickrud	JJHathoway	erm, both computers are on the same side of the router?
+2007-12-29T11:51:00.000Z	nickrud	JJHathoway	then http://<numeric address of machine you want to see>
+2007-12-29T11:54:00.000Z	JJHathoway	nickrud	putting http://192.169.0.101 (which is the address my router has for static dhcp for my server)
+2007-12-29T11:54:00.000Z	nickrud	JJHathoway	no, use the same ip as you did to ssh
+2007-12-29T11:55:00.000Z	nickrud	JJHathoway	then your server is either firewalled, or not running
+2007-12-29T11:57:00.000Z	nickrud	JJHathoway	sudo invoke-rc.d apache restart
+2007-12-29T12:04:00.000Z	nickrud	JJHathoway	do you have lynx installed on the the machine you've ssh'd into?  If not, install it, it's a text browser, then point it at http://127.0.0.1 to see if apache is actually up
+2007-12-29T12:08:00.000Z	JJHathoway	nickrud	it appears to be running after installing lynx, gives the default index page
+2007-12-29T12:08:00.000Z	nickrud	JJHathoway	then it's something in your network
+2007-12-29T12:09:00.000Z	JJHathoway	nickrud	 wait, maybe its not working, the page does not come up, i was wrong (doesnt come up with the lynx)
+2007-12-29T12:12:00.000Z	nickrud	JJHathoway	I'm no apache guru, I just drop files in /var/www and let the default setup run.
+2007-12-29T12:12:00.000Z	JJHathoway	nickrud	i got if finally

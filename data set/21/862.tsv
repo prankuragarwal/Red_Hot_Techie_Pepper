@@ -1,0 +1,21 @@
+2011-05-04T20:06:00.000Z	Jessica903		anyone here know anything about PXE over wireless?
+2011-05-04T20:07:00.000Z	Jessica903		well, that's part of the question
+2011-05-04T20:08:00.000Z	Jessica903		I was reading about making a grub boot disk http://wiki.linuxmce.org/index.php/GRUB_PXE_network_boot
+2011-05-04T20:08:00.000Z	nanog	Jessica903	pxe is for wired lan
+2011-05-04T20:09:00.000Z	nanog		heh i forgot about gpxe
+2011-05-04T20:09:00.000Z	nanog		however, there are only two families of wlan cards supported
+2011-05-04T20:09:00.000Z	Jessica903		Basically, I wanna boot a static CD with PXE enabled Grub, and then grab my boot image wirelessly.  anyone done this?
+2011-05-04T20:10:00.000Z	nanog	Jessica903	that can be done
+2011-05-04T20:10:00.000Z	nanog		i'd imagine you'll need an initrd though
+2011-05-04T20:10:00.000Z	nanog		where you'll load your wlan drivers
+2011-05-04T20:10:00.000Z	Jessica903		I have a couple of really old intel wireless cards I wanna use instead of throwing them away
+2011-05-04T20:11:00.000Z	Jessica903	nanog	can you point me in the right direction?  I'm kinda weak here...
+2011-05-04T20:12:00.000Z	nanog		you will just want to create an initrd (squashfs) that includes your wlan drivers
+2011-05-04T20:12:00.000Z	nanog		I would just modofy en existing bootable setup
+2011-05-04T20:13:00.000Z	nanog		the bootstrap will load the initrd which will in turn load your wlan, run a script to connect to your wifi, and then begin whetever else it is you're wanting to accomplish
+2011-05-04T20:13:00.000Z	nanog		if you're just wanting to have a diskless boot
+2011-05-04T20:13:00.000Z	Jessica903		is there any kind of "make boot disk" utility that will add the drivers I select?
+2011-05-04T20:13:00.000Z	nanog		then you should just load the system via nfs or tftp
+2011-05-04T20:14:00.000Z	nanog		no, this is not for beginners
+2011-05-04T20:14:00.000Z	nanog		or even intermediates ;)
+2011-05-04T20:14:00.000Z	Jessica903	nanog	what about stubborn biatches who wanna learn?

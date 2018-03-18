@@ -1,0 +1,22 @@
+2006-02-22T07:56:00.000Z	bonez		question .. is it possible to have reiser and ext3 on a system i currently have a full ext3 setup but i am going to build a lvm on raid and i heard that reiser is better for suck a setup (online resizing)
+2006-02-22T07:56:00.000Z	bonez		such*
+2006-02-22T07:57:00.000Z	ccooke	bonez	I'd advise against using reiserfs unless you have regular backups. It's a very fast filesystem, but it's *much* more likely to develop corruption and the recovery tools are poor.
+2006-02-22T07:59:00.000Z	ccooke	bonez	See if it meets your needs first. I'd just advise against trusting it for, say, root or important files.
+2006-02-22T08:00:00.000Z	ccooke	bonez	(For instance, I just lost a week of my time recovering a reiserfs filesystem for work - ended up having to move an 800 gig filesystem image to a different computer, compile later reiserfs tools and then wait three days for the fsck to finish)
+2006-02-22T08:01:00.000Z	ccooke	bonez	it uses less space for some workloads.
+2006-02-22T08:10:00.000Z	bonez	ccooke	 you seem to know your filesystems... JFS how does that one compare to the rest?
+2006-02-22T08:12:00.000Z	ccooke	bonez	it's fast, reputed to be good for large files...
+2006-02-22T08:12:00.000Z	ccooke	bonez	I've not personally used, it though. I believe it's not as mature *in linux* as, say, xfs
+2006-02-22T08:13:00.000Z	ccooke	bonez	oh! if you're using ext3, two things that you might find useful:
+2006-02-22T08:14:00.000Z	ccooke	bonez	first, mounting use user_xattr (check mount(8) for how)
+2006-02-22T08:15:00.000Z	bonez	ccooke	average file size is around a gig  (just so ya know )
+2006-02-22T08:15:00.000Z	ccooke	bonez	second, dir_index - 'sudo tune2fs -O dir_index /dev/hda1' would turn on directory indexing, which will speed up access in directories with lots of files (assuming your filesystem is /dev/hda1, of course)
+2006-02-22T08:15:00.000Z	ccooke	bonez	right. JFS sounds like a definite option, then
+2006-02-22T08:16:00.000Z	ccooke	bonez	I've heard no more horror stories about it than I've heard for XFS, which I've used a bit.
+2006-02-22T08:16:00.000Z	ccooke	bonez	but it *is* explicitly designed to be good for big files.
+2006-02-22T08:17:00.000Z	bonez	ccooke	yea i have a few 100 m's and pictures here and there ..
+2006-02-22T08:17:00.000Z	ccooke	bonez	right.
+2006-02-22T08:18:00.000Z	bonez	ccooke	pff ..  let me ask you this way what would you use.. cus after making this disition i dont see myself finding a spare TB to change my fs to something else
+2006-02-22T08:19:00.000Z	ccooke	bonez	hmm. To be honest, I trust ext3. It's very, very stable on linux.
+2006-02-22T08:19:00.000Z	ccooke	bonez	Take a look at mke2fs(8)
+2006-02-22T08:20:00.000Z	ccooke	bonez	there are options to tailor it to large or small files.

@@ -1,0 +1,19 @@
+2007-06-04T09:42:00.000Z	deemo		Hello all, I have a dapper system here, and for some reason, no outbound internet connection will work. i can access apache and other internet ports from other computers so it works fine as a server, but firefox, apt-get, etc dont work from it locally. what could be wrong?
+2007-06-04T09:42:00.000Z	TOoSmOotH	deemo	are you running a firewall?
+2007-06-04T09:43:00.000Z	deemo		TooSmooth, no i dont beleive i have
+2007-06-04T09:43:00.000Z	TOoSmOotH	deemo	try iptables --flush
+2007-06-04T09:44:00.000Z	deemo		toosmooth, that did not work
+2007-06-04T09:45:00.000Z	deemo	bulmer	the computer is assigned an ip address, and i dont know how to check the route table
+2007-06-04T09:45:00.000Z	TOoSmOotH	deemo	netstat -rn
+2007-06-04T09:46:00.000Z	TOoSmOotH	deemo	also do a "cat /etc/resolve.conf"
+2007-06-04T09:46:00.000Z	deemo	bulmer	what should i be looking for with the output of netstat -rn?
+2007-06-04T09:46:00.000Z	TOoSmOotH	deemo	UG
+2007-06-04T09:47:00.000Z	deemo	bulmer	toosmooth one of the rows is UG
+2007-06-04T09:47:00.000Z	TOoSmOotH	deemo	can you ping that address?
+2007-06-04T09:47:00.000Z	deemo	bulmer	toosmooth Destination: 0.0.0.0, Gateway 192.168.1.1 (the router) Genmask 0.0.0.0
+2007-06-04T09:47:00.000Z	TOoSmOotH	deemo	type nslookup yahoo.com
+2007-06-04T09:48:00.000Z	deemo	bulmer	it pings correctly and its assinged 192.168.1.106
+2007-06-04T09:48:00.000Z	deemo		toosmooth connection timed out
+2007-06-04T09:49:00.000Z	TOoSmOotH	deemo	What is in your /etc/resolv.conf
+2007-06-04T09:49:00.000Z	deemo		toosmooth nameserver 192.168.0.1 which was the gateway to an old router
+2007-06-04T09:50:00.000Z	TOoSmOotH	deemo	edit that and put your correct nameservers in it

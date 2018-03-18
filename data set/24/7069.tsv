@@ -1,0 +1,24 @@
+2006-12-13T17:17:00.000Z	zeeble		i know
+2006-12-13T17:18:00.000Z	zeeble		i thought it would recreate... so i deleted the dir in the first place
+2006-12-13T17:19:00.000Z	zeeble		from the console.
+2006-12-13T17:20:00.000Z	zeeble		apt-get reinstall didnt do it either
+2006-12-13T17:20:00.000Z	zeeble		let me purge all apache2 related packages then
+2006-12-13T17:21:00.000Z	zeeble		let me try this.
+2006-12-13T17:21:00.000Z	zeeble		2 mins
+2006-12-13T17:21:00.000Z	zeeble		oh
+2006-12-13T17:21:00.000Z	zeeble		let me purge it too
+2006-12-13T17:22:00.000Z	zeeble		no. could be :)
+2006-12-13T17:24:00.000Z	Gumby	zeeble	which directory is it that you have accidentally removed?
+2006-12-13T17:24:00.000Z	zeeble	Gumby	not accidentally. i rm -rfed it knowingly. /etc/apache2/
+2006-12-13T17:27:00.000Z	Gumby	zeeble	apt-get remove --purge apache2-common && apt-get install apache2-common was the key
+2006-12-13T17:27:00.000Z	zeeble	Gumby	hm. i removed apache2-common and reinstalled too. so guess that's it then :D
+2006-12-13T17:28:00.000Z	Gumby	zeeble	I just tested with apt-get install apache2, rm -Rf /etc/apache2, apt-get remove --purge apache2-common, apt-get install apache2
+2006-12-13T17:29:00.000Z	Gumby	zeeble	you'll need to purge then again remove the apache php5 module
+2006-12-13T17:29:00.000Z	zeeble	Gumby	which module?
+2006-12-13T17:29:00.000Z	Gumby	zeeble	you have libapache2-mod-php5  installed?
+2006-12-13T17:29:00.000Z	zeeble	Gumby	yes
+2006-12-13T17:29:00.000Z	zeeble	Gumby	i installed apache2, apache2-common and libapache2-mod-php5 in one go
+2006-12-13T17:30:00.000Z	zeeble	Gumby	purge libapachemod and reinstall the whole lot, or jus tthe mod?
+2006-12-13T17:32:00.000Z	Gumby	zeeble	like I said, if it was installed after it need to be purged then reinstalld
+2006-12-13T17:33:00.000Z	zeeble	Gumby	hehe, ok
+2006-12-13T17:36:00.000Z	Gumby	zeeble	I just installed apache, installed php5 module, restarted apache, no php support

@@ -1,0 +1,24 @@
+2007-05-28T08:26:00.000Z	niriven		hi if i accidently removed my /usr/src contents, and can no longer build, how can i get it back?
+2007-05-28T08:28:00.000Z	bensode	niriven	Try this : sudo apt-get install linux-headers-$(uname -r)
+2007-05-28T08:29:00.000Z	niriven	bensode	Wondering, seems as though whenever the kernel upgrades it keeps the older header files, why is this? its just wasting space on upgrade
+2007-05-28T08:31:00.000Z	bensode	niriven	It keeps the older in case you ever revert or you have kernel modules that require them .. for backward compatability.  You can always remove the, but the space I don't think is all that large but I've never checked the size space has never been an issue for me on any of my linux boxes
+2007-05-28T08:32:00.000Z	niriven	bensode	Ah ok. Also, whe i removed (the src is back now), i can no longer compile, i get an error saying it cannot find the build files
+2007-05-28T08:32:00.000Z	bensode	niriven	What you are compiling still won't compile even with the headers?
+2007-05-28T08:33:00.000Z	niriven	bensode	ndiswrapper
+2007-05-28T08:33:00.000Z	bensode	niriven	is it still asking for the kernel headers?
+2007-05-28T08:34:00.000Z	niriven	bensode	Can't find kernel build files in /lib/modules/2.6.20-16-generic/build;
+2007-05-28T08:34:00.000Z	bensode	niriven	paste the results of uname -r here
+2007-05-28T08:35:00.000Z	niriven	bensode	2.6.20-16-generic
+2007-05-28T08:35:00.000Z	niriven	bensode	I can probably get it to work, i use freebsd and other distrobutions, im just trying to get it back to the normal ubuntu config
+2007-05-28T08:35:00.000Z	bensode	niriven	Check /usr/src directory for the header files of your kernel make sure they got installed
+2007-05-28T08:36:00.000Z	niriven	bensode	2.6.20-16-generic
+2007-05-28T08:36:00.000Z	niriven	bensode	in my usr/src dir
+2007-05-28T08:37:00.000Z	bensode	niriven	odd ... I'm not the compiling master, maybe try a make clean and start from the beginning of hte compile process
+2007-05-28T08:37:00.000Z	bensode	niriven	might also need to do a make dist-clean too
+2007-05-28T08:37:00.000Z	bensode	niriven	that should clean up any existing problems before you had the headers ... and removes all the temp files
+2007-05-28T08:38:00.000Z	niriven	bensode	:-/ I just sit here and do nothing and ubuntu uses 400+ megs on updates, i dont even know what they are, which is why i removed the old /usr/src, im not sure i like that.
+2007-05-28T08:39:00.000Z	bensode	niriven	Hmm that's an odd one
+2007-05-28T08:40:00.000Z	niriven	bensode	Eh, ubuntu is cool, i just dont like it it doing stuff i dont know about, like holding archives to older kernel headers and modules, strange, yes, i am used to full control of the system though
+2007-05-28T08:41:00.000Z	bensode	niriven	Heh ubuntu is "Easy" enough to work for the Joe Consumer person as well as the advanced linux users.  Just have to become a little more familiar with some of the advanced management features -- you can turn off the auto update features I'm sure.
+2007-05-28T08:43:00.000Z	niriven	bensode	Oh its easy, but i cant seem to find out why it slowly eats up space, ive installed nothing, and i have 200-300 megs more space used somewhere. /usr/src had my old kernel headers and so did my modules directory, which was about 200 of space, not sure wher ethe other 100 went.
+2007-05-28T08:44:00.000Z	bensode	niriven	You could always install tripwire and watch what directories are getting updated, then hunt down the process based on that as a start

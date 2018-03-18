@@ -1,0 +1,23 @@
+2007-01-03T09:17:00.000Z	svr		suse is doing this correkt
+2007-01-03T09:17:00.000Z	Ferret	svr	There isn't a 'correct' way
+2007-01-03T09:18:00.000Z	svr	Ferret	ok but how may i change this?
+2007-01-03T09:18:00.000Z	Ferret	svr	If you have a tendency to swap disks around while your system is off you can always use id notation, use the nodes in /dev/disk/ instead of /dev/[sh] d*, etc.
+2007-01-03T09:20:00.000Z	svr	Ferret	well if that work it will be engouth for me
+2007-01-03T09:26:00.000Z	svr	Ferret	/dev/disk/my-id dose'nt list my raid ...very strange
+2007-01-03T09:27:00.000Z	Ferret	svr	What's the /dev/[hs] d* entries for your raid?
+2007-01-03T09:27:00.000Z	svr	Ferret	/dev/sda
+2007-01-03T09:28:00.000Z	Ferret	svr	try 'ls -lR /dev | grep sda' to see if you have any persistent links anywhere (hopefully in /dev/disk)
+2007-01-03T09:28:00.000Z	svr	Ferret	under /dev/disk/by-path i found them
+2007-01-03T09:32:00.000Z	svr	Ferret	unter /dev/disk/by-path der are links to /dev/sda but i can't really work with that string all the time...is'nt there a posibility to change on boot hat hd0,0 is /dev/sda an hd1,0 is /dev/sdb and so on
+2007-01-03T09:33:00.000Z	Ferret	svr	I think that's possible but it's probably more difficult -- I'll have a look
+2007-01-03T09:33:00.000Z	svr	Ferret	thanks
+2007-01-03T09:40:00.000Z	Ferret	svr	Not finding anything... grrr, wish I was on my home system where all my docs and saved links are. :)
+2007-01-03T09:40:00.000Z	Ferret	svr	I'm thinking there must be some other way around this... how many different disk configurations do you boot up with?
+2007-01-03T09:41:00.000Z	svr	Ferret	may u can mail me if you are back home?
+2007-01-03T09:41:00.000Z	svr	Ferret	i tried everythink...as i say suse is doing this "right"
+2007-01-03T09:42:00.000Z	Ferret	svr	suse uses the same kernel from the same place... it's just circumstantial resolution that it works for suse and not for ubuntu; it could easily be the other way around
+2007-01-03T09:43:00.000Z	Ferret	svr	An easy alternative I can think of that isn't great but will work is: to have two entries in your bootloader configuration, one for if you have only the main disk plugged in, and one for if you have both
+2007-01-03T09:44:00.000Z	svr	Ferret	i have a system disk suse and ubuntu on it (should be my booting disk)
+2007-01-03T09:44:00.000Z	svr	Ferret	and a RAID for containing data
+2007-01-03T09:45:00.000Z	svr	Ferret	i have every time this config...i don't change the disks
+2007-01-03T09:46:00.000Z	svr	Ferret	so there is no need for 2 bootloader....i just wonder why ubuntu "thinks" my RAID sould be /dev/sda

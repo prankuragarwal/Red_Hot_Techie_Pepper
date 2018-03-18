@@ -1,0 +1,19 @@
+2008-01-24T01:39:00.000Z	CrazyWulf		Nope
+2008-01-24T01:39:00.000Z	CrazyWulf		I don't see how that would effect my mouse even if there was?
+2008-01-24T01:39:00.000Z	CrazyWulf		Yes, if I download a large file it will happen
+2008-01-24T01:40:00.000Z	CrazyWulf		All resources are normal, cpu usage is next to nothing
+2008-01-24T01:41:00.000Z	CrazyWulf		Even after the downloading, the mouse still lags
+2008-01-24T01:41:00.000Z	CrazyWulf		It's not the greatest system, HDD brand new
+2008-01-24T01:41:00.000Z	CrazyWulf		Only has 512MB ram
+2008-01-24T01:41:00.000Z	CrazyWulf		If I disconnect and reconnect the mouse, the mouse will no longer respond
+2008-01-24T01:43:00.000Z	CrazyWulf		Any ideas on what could be causing this problem?    It would be one thing if it was *just* the network card or *just* the mouse
+2008-01-24T01:43:00.000Z	CrazyWulf		I don't see any connection between the two though
+2008-01-24T01:43:00.000Z	bascule	CrazyWulf	IRQ sharing
+2008-01-28T05:06:00.000Z	bascule	CrazyWulf	cdrecord -vv dev=/dev/scd0 speed=16 the.iso, what happens?
+2008-01-28T05:50:00.000Z	bascule	CrazyWulf	cdrecord -vv dev=/dev/scd0 speed=8 some.iso
+2008-01-28T05:53:00.000Z	bascule	CrazyWulf	try dev=/dev/hdc or dev=/dev/hdd
+2008-01-28T05:56:00.000Z	CrazyWulf	bascule	both giving same message again
+2008-01-28T05:56:00.000Z	bascule	CrazyWulf	sudo cdrecord --scanbus
+2008-01-28T06:00:00.000Z	bascule	CrazyWulf	is the drive master or slave?
+2008-01-28T06:01:00.000Z	bascule	CrazyWulf	sudo cdrecord -vv dev=ATA:1,0,0 speed=8 some.iso
+2008-01-28T06:08:00.000Z	bascule	CrazyWulf	growisofs -dvd-compat -Z /dev/dvd=image.iso

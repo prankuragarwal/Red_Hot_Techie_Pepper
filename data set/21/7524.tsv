@@ -1,0 +1,21 @@
+2007-08-01T07:27:00.000Z	rabidsnail		How do I add the following video card to my xorg.conf? 01:0b.0 VGA compatible controller: ATI Technologies Inc Radeon RV200 QW [Radeon 7500] 
+2007-08-01T07:27:00.000Z	ShackJack	rabidsnail	Have you tried restriced drivers manager?
+2007-08-01T07:28:00.000Z	rabidsnail	ShackJack	It's not supported by the proprietary drivers. It's too old.
+2007-08-01T07:29:00.000Z	ShackJack	rabidsnail	Oops misread -- you can use the radeon driver -- just have to install and change in xorg.conf
+2007-08-01T07:32:00.000Z	ShackJack	rabidsnail	If you have video already bus id should stay the same... just change driver from vesa to radeon ...
+2007-08-01T07:33:00.000Z	rabidsnail	ShackJack	I don't have video already. I'm using the onboard intel video.
+2007-08-01T07:33:00.000Z	ShackJack	rabidsnail	Sorry confused --- so you're installing another video card?
+2007-08-01T07:35:00.000Z	rabidsnail	ShackJack	I Just installed the os on the machine two days ago, and the radeon card has been there the whole time. There is no mention of it in the xorg.conf. I'm using the crappy integrated video in the meantime.
+2007-08-01T07:36:00.000Z	ShackJack	rabidsnail	Does ATI Card show in lspci ?  And what is onboard video chip 9 series or above?
+2007-08-01T07:38:00.000Z	rabidsnail	ShackJack	What I pasted earlier was from lspci. The onboard shows up as "Intel Corporation 82810E DC-133 CGC"
+2007-08-01T07:38:00.000Z	ShackJack	rabidsnail	right but ATI card doesn't show up at all?  You can lspci  | grep -i radeon
+2007-08-01T07:39:00.000Z	rabidsnail	ShackJack	Yes, it does. "ATI Technologies Inc Radeon RV200 QW [Radeon 7500] "
+2007-08-01T07:39:00.000Z	ShackJack	rabidsnail	Bus ID should be off to left....
+2007-08-01T07:40:00.000Z	rabidsnail	ShackJack	Do I need to preface that with PCI: ?
+2007-08-01T07:41:00.000Z	ShackJack	rabidsnail	Yes, what does it say there?
+2007-08-01T07:42:00.000Z	rabidsnail	ShackJack	Where?
+2007-08-01T07:42:00.000Z	ShackJack	rabidsnail	.... to the left of Radeon in lspci listing...
+2007-08-01T07:44:00.000Z	ShackJack	rabidsnail	Hmmm... never seen vid with the b in there... but if that's what it says PCI:1:0:b  --- ??? Dunno you might want get confimration :)
+2007-08-01T07:45:00.000Z	ShackJack	rabidsnail	And of course you have to load the fglrx driver and change driver...
+2007-08-01T07:46:00.000Z	rabidsnail	ShackJack	Does fglrx support the 7500? I thought it was too old.
+2007-08-01T07:46:00.000Z	ShackJack	rabidsnail	Erpp.. sorry meant radeon...

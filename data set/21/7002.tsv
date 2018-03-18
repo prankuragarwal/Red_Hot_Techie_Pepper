@@ -1,0 +1,21 @@
+2007-02-01T14:23:00.000Z	seravitae		microsoft's fdisk /mbr recreates the mbr
+2007-02-01T14:23:00.000Z	seravitae		im sure the fdisk equivilant has it
+2007-02-01T14:24:00.000Z	seravitae		danmit
+2007-02-01T14:24:00.000Z	seravitae		the ubuntuhowto guide for compiling kernels doesn't work. just followed it to the n'th degree.
+2007-02-01T08:10:00.000Z	seravitae		Hi there, I have followed the ubuntu guide for compiling kernels. I have followed it exactly and yet when i go to make kpkg-clean i get the following result: http://pastebin.com/872738 <-- can anyone please tell me how I can fix this?
+2007-02-01T08:12:00.000Z	erUSUL	seravitae	it seems that the 'sources' have an error in one of the directories... maybe a corrupt source tree?
+2007-02-01T08:13:00.000Z	seravitae	erUSUL	well im following the exact ubuntu guide...
+2007-02-01T08:14:00.000Z	seravitae	erUSUL	i also found a forum post where someone said they 'removed the offending bit' and it gave another error about main.io or something - if i do a 'make' without the kpkg bit, i get that same main.io result.
+2007-02-01T08:15:00.000Z	erUSUL	seravitae	what can isay have you tried with vanilla sources? (the ones in kernel.org) keep in mind that they do not come with as many drivers as the ubuntu sources...
+2007-02-01T08:15:00.000Z	seravitae	erUSUL	these *are* the kernel sources from apt-get ubuntu repository.
+2007-02-01T08:15:00.000Z	seravitae	erUSUL	oh, right. okay ill try that.
+2007-02-01T08:21:00.000Z	seravitae	erUSUL	heheh. i accidently ln -s linux-headers to linux. my bad :P changed it to linux sources.
+2007-02-01T08:22:00.000Z	erUSUL	seravitae	;)
+2007-02-01T08:22:00.000Z	erUSUL	seravitae	this time the bug was between the chair and the monitor ;)
+2007-02-01T10:14:00.000Z	erUSUL	seravitae	make -jn (n number of threads, i use 4 in a dual core cpu)
+2007-02-01T10:14:00.000Z	seravitae	erUSUL	ok. um, im following a guide
+2007-02-01T10:15:00.000Z	seravitae	erUSUL	i am using: fakeroot make-kpkg --initrd --append-to-version=-custom kernel_image kernel_headers
+2007-02-01T10:16:00.000Z	seravitae	erUSUL	since im using make-kpkg which doesnt give me an option for threads, is there a way to like, 'force' all make commands to be appended by -jn 4?
+2007-02-01T10:18:00.000Z	erUSUL	seravitae	man make-kpkg ;) (use CONCURRENCY_LEVEL=n fakeroot make-kpkg --initrd --append-to-version=-custom kernel_image kernel_headers  whre n is the number of threads
+2007-02-01T10:19:00.000Z	erUSUL	seravitae	man is your friend ;)
+2007-02-01T10:19:00.000Z	seravitae	erUSUL	ah yeah

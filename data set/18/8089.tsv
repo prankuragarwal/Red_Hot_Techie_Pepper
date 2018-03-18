@@ -1,0 +1,18 @@
+2012-10-30T09:04:00.000Z	aata		i just installed ubuntu 12.10 on a machine that already had windows 7. did not overwrite the mbr with grub, rather kept the windows bootloader and used easybcd to add the ubuntu entry to it. all is good, expect when i boot into ubuntu, i get a grub command prompt. i know the sequence of commands to get it to boot up, but how do i make this happen everytime on startup?
+2012-10-30T09:05:00.000Z	wols	aata	you get a grub error message too
+2012-10-30T09:06:00.000Z	aata	wols	no error message - just a prompt
+2012-10-30T09:23:00.000Z	wols	aata	I'd reinstall grub then
+2012-10-30T09:23:00.000Z	aata	wols	on /boot?
+2012-10-30T09:24:00.000Z	wols	aata	any partition. it does not matter
+2012-10-30T09:24:00.000Z	wols	aata	tho /boot with ext4 is strange. heck, having /boot is strange
+2012-10-30T09:25:00.000Z	aata	wols	doing it so that i dont have tio write grub to the mbr - makes updating windows easier supposedly
+2012-10-30T09:25:00.000Z	wols	aata	you are wrong
+2012-10-30T09:25:00.000Z	wols	aata	in your case you would simply use a single partition for ubuntu
+2012-10-30T09:36:00.000Z	aata	wols	does the windows 7 boot loader "call" grub when i select the ubuntu partition?
+2012-10-30T09:38:00.000Z	wols	aata	it loads the first sector of the partition you specify, that's all it does
+2012-10-30T09:38:00.000Z	wols	aata	but in your case the /boot partition is totally utterlly unneeded
+2012-10-30T09:39:00.000Z	aata	wols	so i should install grub on the ubuntu partition?
+2012-10-30T09:40:00.000Z	wols	aata	I just told before you it doesn't matter. do you even read?
+2012-10-30T09:43:00.000Z	aata	wols	i did read but the reason i chose to have a /boot was so that i dont overwrite the mbr. is there a way to specify to grub what partition it can find the kernel image, initrd etc on so that it looks there every time its loaded?
+2012-10-30T09:46:00.000Z	wols	aata	you never tell grub where to find it, it finds it on its own. it's always under /boot, no matter on which partition /boot is. finding the kernel is another totally irrelevant thing
+2012-10-30T09:46:00.000Z	wols	aata	and what you read there is totally utterly bogus

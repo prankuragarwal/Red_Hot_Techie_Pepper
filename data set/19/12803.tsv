@@ -1,0 +1,19 @@
+2006-01-03T10:37:00.000Z	xiaogil		how to have the console in english ? LANG=???
+2006-01-03T10:39:00.000Z	mwe	xiaogil	en_US or en_UK should work
+2006-01-11T17:19:00.000Z	mwe	xiaogil	please prefix your command with LANGUAGE=C to get the errors in english
+2006-01-11T17:20:00.000Z	xiaogil	mwe	make: *** /lib/modules/2.6.12-10-686/source: No such file or directory.  Stop.
+2006-01-11T17:20:00.000Z	mwe	xiaogil	what are you trying to compile?
+2006-01-11T17:20:00.000Z	mwe	xiaogil	it sounds like the kernel source is missing
+2006-01-11T17:21:00.000Z	xiaogil	mwe	do you know the exact name of package to install ?
+2006-01-11T17:22:00.000Z	mwe	xiaogil	what are you trying to install? maybe you just need the headers
+2006-01-11T17:23:00.000Z	xiaogil	mwe	pvrusb2-mci-20060103$ to use my WinTV PVR USB2
+2006-01-11T17:23:00.000Z	mwe	xiaogil	it's a kernel module?
+2006-01-11T17:24:00.000Z	xiaogil	mwe	yes, it looks to be
+2006-01-11T17:24:00.000Z	mwe	xiaogil	sudo apt-get install linux-headers-$(uname -r) then if it still complains sudo apt-get install linux-source-2.6.12
+2006-01-11T17:25:00.000Z	xiaogil	mwe	I'm trying to follow the instructions there : http://www.isely.net/pvrusb2.html
+2006-01-11T17:25:00.000Z	mwe	xiaogil	looks like you need the kernel source
+2006-01-11T17:25:00.000Z	xiaogil	mwe	both are already installed
+2006-01-11T17:26:00.000Z	xiaogil	mwe	what is the location of my kernel source tree ?
+2006-01-11T17:26:00.000Z	mwe	xiaogil	check that the link /lib/modules-$(uname -r)/source is valid and point to the kernel source
+2006-01-11T17:27:00.000Z	mwe	xiaogil	should be /usr/src/linux-$(uname -r) IIRC
+2006-01-11T17:27:00.000Z	mwe	xiaogil	and /usr/src/linux should be a symlink pointing to it

@@ -1,0 +1,23 @@
+2006-12-21T11:08:00.000Z	peirce142		n8of9: I used the System->Administration->Shared folders, it installed Samba for me, changed my Workgroup to "Workgroup" to match my Windows box, then added my folder. I restarted samba with sudo /etc/init.d/samba restart and now i can't even see my windows shares, though I could before
+2006-12-21T11:08:00.000Z	n8of9	peirce142	running winXP?
+2006-12-21T11:09:00.000Z	peirce142	n8of9	This box is edgy if it matters
+2006-12-21T11:09:00.000Z	n8of9	peirce142	it may matter (at least to me), as i haven't yet run edgy
+2006-12-21T11:10:00.000Z	n8of9	peirce142	are you trying to connect to your windows shares using Places>Connect to Server...?
+2006-12-21T11:11:00.000Z	peirce142	n8of9	I'm using Places->Network Servers, then clicking on "Windows Network", before this I could access my windows share right in Network Servers, there was no "Windows Network"
+2006-12-21T11:12:00.000Z	peirce142	n8of9	should "dns proxy" in smb.conf be set to yes?
+2006-12-21T11:12:00.000Z	n8of9	peirce142	i like frogzoo's idea... can you take a look at your smb.conf to see if maybe samba is trying to be a master browser?
+2006-12-21T11:13:00.000Z	peirce142	n8of9	im in smb.conf, where should I look for master browser?
+2006-12-21T11:14:00.000Z	n8of9	peirce142	'dns proxy' is 'yes' by default.  check the 'domain master' setting.
+2006-12-21T11:14:00.000Z	peirce142	n8of9	'dns proxy' is no by default for me, I just removed samba completely, then reinstalled, the default smb.conf has it set to no
+2006-12-21T11:15:00.000Z	peirce142	n8of9	domain master is set to auto, but it is commented out
+2006-12-21T11:17:00.000Z	n8of9	peirce142	please paste the contents of smb.conf to http://paste.ubuntu-nl.org
+2006-12-21T11:18:00.000Z	peirce142	n8of9	http://paste.ubuntu-nl.org/38192/
+2006-12-21T11:18:00.000Z	n8of9	peirce142	k, give me a couple misn
+2006-12-21T11:24:00.000Z	n8of9	peirce142	ok, two things: 1> under Authentication, 'security = user' should be unchecked
+2006-12-21T11:25:00.000Z	n8of9	peirce142	2> you have no shares set up from your linux box, but you were just trying to see windows shares, right?
+2006-12-21T11:25:00.000Z	peirce142	n8of9	so remove the ';' from the Security = user line?
+2006-12-21T11:25:00.000Z	n8of9	peirce142	correct
+2006-12-21T11:25:00.000Z	n8of9	peirce142	you'll then have to restart the samba service and try again
+2006-12-21T11:26:00.000Z	peirce142	n8of9	alright, i'll try it
+2006-12-21T11:26:00.000Z	peirce142	n8of9	still no Windows share showing up
+2006-12-21T12:19:00.000Z	n8of9	peirce142	good luck. sorry i couldn't be of more help

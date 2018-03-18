@@ -1,0 +1,23 @@
+2006-11-03T16:21:00.000Z	zalbor		Is there an easy way to tell which disk grub considers to be hd0? I have two disks, one is seen as the first by default, but I've set it to be second in the BIOS settings. I've had trouble with ubuntu not seeing them in the right order before, and I don't want to install grub on the wrong one.
+2006-11-03T16:22:00.000Z	mtymobile	zalbor	hd0 is the primary master
+2006-11-03T16:23:00.000Z	mtymobile	zalbor	unless you have a dev in the primary master which is not a disk
+2006-11-03T16:23:00.000Z	zalbor	mtymobile	 Even if I've set another one as first? For example, dapper sees my third master as hd0 because I've set it first in the BIOS. But the grub installation in dapper still sees it as hd1.
+2006-11-03T16:24:00.000Z	mtymobile	zalbor	what do you mean by bios position?
+2006-11-03T16:25:00.000Z	zalbor	mtymobile	Message above, I forgot to include your name
+2006-11-03T16:25:00.000Z	mtymobile	zalbor	hd values are absolute in grub, they don't depend on the bios boot order
+2006-11-03T16:26:00.000Z	mtymobile	zalbor	so if you need to boot the second disk on third partition you sould boot from hd1,2
+2006-11-03T16:27:00.000Z	zalbor	mtymobile	I just checked my menu.lst in dapper. It's set to boot from hd0, which indeed is my third master. But last time I used grub-install, it thought hd0 was my primary master.
+2006-11-03T16:29:00.000Z	mtymobile	zalbor	let's repeat hd0 = primary master, hd1=primary slave, hd2=secondary master, and so on
+2006-11-03T16:30:00.000Z	zalbor	mtymobile	If that's definitely so, then how come I can boot dapper when menu.lst says to boot from hd0 which is /dev/sda?
+2006-11-03T16:32:00.000Z	mtymobile	zalbor	i'm going crazy, please explain the hole disk set to me
+2006-11-03T16:33:00.000Z	mtymobile	zalbor	ahhh now i get what your problem is
+2006-11-03T16:34:00.000Z	zalbor	mtymobile	Primary master=/dev/hda. Third master=/dev/sda. No other hard disks. While installing grub (with grub-install), hd0=/dev/hda. I need to boot from /dev/sda, and the only way to do that is to type in menu.lst this: root  (hd0,6)
+2006-11-03T16:34:00.000Z	mtymobile	zalbor	what is it sda? raid? sata>
+2006-11-03T16:35:00.000Z	mtymobile	zalbor	where do you want the mbr?
+2006-11-03T16:35:00.000Z	zalbor	mtymobile	mnepton: I want grub to be installed in the mbr of /dev/sda. device.map doesn't exist on edgy's live.
+2006-11-03T16:37:00.000Z	mtymobile	zalbor	then install it with grub-install hd1,0
+2006-11-03T16:38:00.000Z	zalbor	mtymobile	Is that for sure? And I want to isntall it with the edgy installer.
+2006-11-03T16:39:00.000Z	mtymobile	zalbor	& mnepton : i wasn't giving out the correct command, i was just saying that the disk zalbor is looking for is hd1,n
+2006-11-03T16:40:00.000Z	zalbor	mtymobile	Although dapper boots from hd0?
+2006-11-03T16:40:00.000Z	mtymobile	zalbor	mnepton seems more accurate and prepared than me on the matter, ask him
+2006-11-03T16:41:00.000Z	zalbor	mtymobile	Heh, ok. THanks for the help anyhow

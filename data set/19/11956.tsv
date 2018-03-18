@@ -1,0 +1,19 @@
+2006-01-25T09:49:00.000Z	NCLife		hi, ive got a problem with my other account, whenever i try to login, i have an error
+2006-01-25T09:49:00.000Z	NCLife		oh, let me find the error message
+2006-01-25T09:51:00.000Z	NCLife		arg, i cant find it.. it had a Unable to open /home/jean/.gnome2: Permission Denied
+2006-01-25T09:51:00.000Z	NCLife		and that happened after i changed Permissions to the home folder /home/jaen
+2006-01-25T09:51:00.000Z	NCLife		jean*
+2006-01-25T09:53:00.000Z	NCLife		ive tried sudo chown -A jean:jean /home/jean and nothing happened
+2006-01-25T09:54:00.000Z	cafuego	NCLife	What was that supposed to accomplish? (chown doesn't have a -A param)
+2006-01-25T09:54:00.000Z	NCLife	cafuego	it was supposed to change the Permissions on the home folder of my other user account
+2006-01-25T09:54:00.000Z	cafuego	NCLife	-R then
+2006-01-25T09:54:00.000Z	cafuego	NCLife	Not -A
+2006-01-25T09:54:00.000Z	cafuego	NCLife	(That's recursively change all ownership in that dir)
+2006-01-25T09:55:00.000Z	NCLife	cafuego	thanks.. well, i tried that, and i still get the same error
+2006-01-25T09:55:00.000Z	cafuego	NCLife	An error? I thought you said nothing happened...
+2006-01-25T09:56:00.000Z	cafuego	NCLife	What are the perms on /home/jean/.gnome2 then?
+2006-01-25T09:57:00.000Z	NCLife	cafuego	if i remember well, i had changed the home permissions once to 744 or something like that, then it kept me telling at login that they should be 644, so i changed them to 644.. and now i get that error
+2006-01-25T09:58:00.000Z	cafuego	NCLife	Yes. 644 is okay for a file, but NOT for a directory. It means you can't cd into it. Set it to 755. (chmod 755 /home/jean/.gnome2)
+2006-01-25T09:59:00.000Z	NCLife	cafuego	okss
+2006-01-25T10:00:00.000Z	NCLife	cafuego	i typed that command and i still get the same error :S
+2006-01-25T10:03:00.000Z	NCLife	cafuego	i mean /home/sinclair. but nothing happened, am i doing something wrong?

@@ -1,0 +1,18 @@
+2009-05-21T07:59:00.000Z	rkitect		any suggestions on why a disk is not showing up in /dev after adding mount lines to fstab?
+2009-05-21T08:00:00.000Z	rkitect		or with fdisk -l for that matter?
+2009-05-21T08:01:00.000Z	phoenixz	rkitect	fstab is for mounting disks, not for showing up in /dev..
+2009-05-21T08:01:00.000Z	phoenixz	rkitect	check the command "dmesg" before and after connecting the harddrive and see hwat the kernel says about detecting it
+2009-05-21T08:01:00.000Z	rkitect	phoenixz	sorry, did i say fstab -l, i meant fdisk -l
+2009-05-21T08:02:00.000Z	phoenixz	rkitect	check dmesg
+2009-05-21T08:02:00.000Z	rkitect	phoenixz	the physical disk was showing up  earlier, but now it's not.  checking now
+2009-05-21T08:02:00.000Z	phoenixz	rkitect	dmesg should say that it detected the disk and made it available, or complain with errors
+2009-05-21T08:07:00.000Z	rkitect	phoenixz	ok i see where it's detecting the drive now, it's coming back with a qc timeout
+2009-05-21T08:07:00.000Z	phoenixz	rkitect	dunno what qc timeout is, sorry
+2009-05-21T08:08:00.000Z	rkitect	phoenixz	says failed to read native max address
+2009-05-21T08:09:00.000Z	phoenixz	rkitect	ummm.. you got me here.. maybe try #linux for the big boys?
+2009-05-21T08:17:00.000Z	rkitect	phoenixz	ffr; unplugging the drive, booting, then replugging the drive in (ide) after another boot brought the drive back
+2009-05-21T08:17:00.000Z	phoenixz	rkitect	might be a kernel borkup on drive status... specially if you disconnected a mounted drive, heard that more.. unfortunately, a reboot is then requiered
+2009-05-21T08:18:00.000Z	rkitect	phoenixz	it almost acted like it didn't unmount when i halted earlier and couldn't reinitialize it
+2009-05-21T08:18:00.000Z	rkitect	phoenixz	either way, scare is over, back to getting it to automount
+2009-05-21T08:19:00.000Z	phoenixz	rkitect	yeah, kernel frackup
+2009-05-21T08:19:00.000Z	rkitect	phoenixz	thanks again

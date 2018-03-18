@@ -1,0 +1,24 @@
+2010-05-02T23:42:00.000Z	repvik		I've got a mini-itx mobo w/Atom 330 and NVidia ION, running lucid 64-bit. I'm getting segfaults and weird crashes (eg. http://pastebin.com/mfhVwtXM), and I'm having trouble pinning it down. I've been running kernel compiles (make -j4) for a few hours without any crashes, so I *think* it's not a ram/cpu problem. Aone got any ideas?
+2010-05-02T23:44:00.000Z	bankix	repvik	Allthough I would think of a RAM/timing/cooling problem.
+2010-05-02T23:46:00.000Z	bankix	repvik	If you have two RAM modules, try removing one and test if the system is stable then. if not, replace the one with the other
+2010-05-02T23:46:00.000Z	repvik	bankix	I know. But I can't reproduce it by kernel compiles. The load is at ~6 right now, and has been for hours. It hasn't failed at all. If I start X on the other hand, it appears to be a lot less cooperative.
+2010-05-02T23:46:00.000Z	bankix	repvik	Use slowest RAM timings, if your BIOS allow to adjust this.
+2010-05-02T23:47:00.000Z	bankix	repvik	RAM/CPU or thermical problems are the most difficult one to point out :-(
+2010-05-02T23:47:00.000Z	bankix	repvik	Any safe way to reproduce that segmentation faults?
+2010-05-02T23:47:00.000Z	repvik	bankix	thanks, don't know why I didn't think of that. I'll try single dimm first. I've tried memtest86+ overnight, but nothing showed up (but that's not exactly foolproof)
+2010-05-02T23:48:00.000Z	bankix	repvik	Sadly, memtest(+) is no safe way of detecting flat ram.
+2010-05-02T23:48:00.000Z	repvik	bankix	There's no easily reproducible way, no. It appears to be pretty random
+2010-05-02T23:48:00.000Z	repvik	bankix	I know, I've had better success using heavy kernel compiles.
+2010-05-02T23:48:00.000Z	bankix	repvik	If it shows the same defective adresses in several runs, you have a flat chip.
+2010-05-02T23:48:00.000Z	bankix	repvik	But if it detects nothing, this doesn't mean your RAM is really okay....
+2010-05-02T23:49:00.000Z	repvik	bankix	I know.
+2010-05-02T23:49:00.000Z	repvik	bankix	Anyway, it would appear that the worst thing I can do is start XBMC with VDPAU
+2010-05-02T23:49:00.000Z	bankix	repvik	Maybe removing one chip helps to find out. Try using another RAM slot as well, maybe some "dusty" contacts
+2010-05-02T23:50:00.000Z	repvik	bankix	Not really that many to choose between, only two on this mini-itx mobo ;)
+2010-05-02T23:50:00.000Z	bankix	repvik	XMBC? OK, I'm using VDR with VDPAU :-)
+2010-05-02T23:52:00.000Z	repvik	bankix	Don't watch much live tv, so VDR isn't that interesting :-P But XBMC appears to make the segfaults appear a lot more frequently. I'll rip out a dimm and try first, then adjust timings. If that doesn't help, what then? :)
+2010-05-02T23:52:00.000Z	bankix	repvik	Next thing would be heavy cooling
+2010-05-02T23:53:00.000Z	bankix	repvik	Not to say to put it in the fridge, cool it down and run it with the cables through the fridge door.
+2010-05-02T23:53:00.000Z	bankix	repvik	Of course only mainboard, not harddisk/power suppl
+2010-05-02T23:54:00.000Z	bankix	repvik	There are camping cooling boxes. Put in some ice or cooling accus to get the temperature low.
+2010-05-02T23:54:00.000Z	bankix	repvik	That's easier than putting everything into the fridge.

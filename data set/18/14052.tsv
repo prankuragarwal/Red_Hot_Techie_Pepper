@@ -1,0 +1,18 @@
+2008-05-31T16:52:00.000Z	Error323		I'd like to perform a screen session at auto start. Tried using crontab and inserted a line '@reboot screen -S rtorrent rtorrent', but it seemed to fail, without even a msg in dmesg (other @reboot commands in crontab do work). Has anyone got a suggestion on howto fix/workaround this?
+2008-05-31T16:52:00.000Z	Dr_willis	Error323	 spawn it from rc.local  as a proper user. with  use of the su command and its options.
+2008-05-31T16:53:00.000Z	Error323	Dr_willis	can you give a bit more information on howto do that? where can I find rc.local
+2008-05-31T16:53:00.000Z	Dr_willis	Error323	 ive never seen that used in crontab befor.. :)  @reboot
+2008-05-31T16:53:00.000Z	Dr_willis	Error323	 its in /etc/
+2008-05-31T16:55:00.000Z	Error323	Dr_willis	how can i spawn it as a proper user in the rc.local file?
+2008-05-31T16:56:00.000Z	Dr_willis	Error323	 with theuse of the 'su' command.  unless you want it running as root.
+2008-05-31T16:56:00.000Z	Dr_willis	Error323	 that may be why it was having problems befor.?
+2008-05-31T16:59:00.000Z	Error323	Dr_willis	could be, so this will work in rc.local ?: "su - user screen -S rtorrent rtorrent"
+2008-05-31T16:59:00.000Z	Dr_willis	Error323	 try it and see i guess.   you checked the su man pages? :)
+2008-05-31T17:00:00.000Z	Dr_willis	Error323	 your users name is screen?
+2008-05-31T17:00:00.000Z	Error323	Dr_willis	yes i did, but using this command requires a password prompt it seems could find a way around it in the man pages
+2008-05-31T17:00:00.000Z	Dr_willis	Error323	 from the rc.local it gets ran as root.
+2008-05-31T17:01:00.000Z	Error323	Dr_willis	no it's fhuizing so the command will be: "su - fhuizing screen -S rtorrent rtorrent"
+2008-05-31T17:01:00.000Z	Dr_willis	Error323	  you might want toreread the man pages.. i think you need the -C option in there somewhere.
+2008-05-31T17:01:00.000Z	Error323	Dr_willis	and that implies no pw prompt?
+2008-05-31T17:02:00.000Z	Dr_willis	Error323	 the rc.localis ran by root anyway. he can su to a user with out needing a password   I think
+2008-05-31T17:03:00.000Z	Error323	Dr_willis	ur right

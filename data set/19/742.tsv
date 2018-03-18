@@ -1,0 +1,19 @@
+2011-09-21T01:53:00.000Z	nickradford		How do you write an upstart script that will allow any user to start the service without using sudo?
+2011-09-21T01:54:00.000Z	DasEi1	nickradford	you can make it executable and add it to /etc/rc.local
+2011-09-21T01:57:00.000Z	nickradford	DasEi1	I'll try that
+2011-09-21T01:58:00.000Z	nickradford	DasEi1	I don't have a directory at /etc/rc.local
+2011-09-21T02:00:00.000Z	DasEi1	nickradford	it's a file where you add your script (including path and made executable) to
+2011-09-21T02:01:00.000Z	nickradford	DasEi1	And then I'll be able to run `start myservice` ?
+2011-09-21T02:01:00.000Z	DasEi1	nickradford	yes
+2011-09-21T02:02:00.000Z	nickradford	DasEi1	and what's the syntax for the rc.local file?
+2011-09-21T02:02:00.000Z	DasEi1	nickradford	gksu gedit /etc/rc.local
+2011-09-21T02:03:00.000Z	DasEi1	nickradford	add a line above exit 0 ./mysript.sh , that will be called as root at bootup then
+2011-09-21T02:04:00.000Z	nickradford	DasEi1	That's not what I need to happen. I need to be able to start or stop an upstart service via command line, and I wrote the .conf file for it.
+2011-09-21T02:05:00.000Z	DasEi1	nickradford	that would be /etc/init then, but it might be easier to do it directly , like service ssh start (or stop)
+2011-09-21T02:05:00.000Z	nickradford	DasEi1	which is what I was asking
+2011-09-21T02:06:00.000Z	nickradford	DasEi1	I have a service (call it foo) which I *can* run `sudo service foo start`, but the end users won't know the user account's password
+2011-09-21T02:07:00.000Z	DasEi1	nickradford	so just add service foo start in rc.local
+2011-09-21T02:07:00.000Z	nickradford	DasEi1	The service may crash at some point, and the users will need to be able to start and stop the service.
+2011-09-21T02:08:00.000Z	DasEi1	nickradford	then visudo is your friend for just that particular service
+2011-09-21T02:10:00.000Z	DasEi1	nickradford	<your username> ALL=(ALL) NOPASSWD: service foo
+2011-09-21T02:11:00.000Z	DasEi1	nickradford	I'm off for bed https://help.ubuntu.com/community/Sudoers

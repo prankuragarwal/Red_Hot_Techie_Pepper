@@ -1,0 +1,18 @@
+2010-02-20T10:08:00.000Z	harisund		Hey guys how do I setup static net connection? Do I edit /etc/network/interfaces again?
+2010-02-20T10:08:00.000Z	greezmunkey	harisund	are you using NetworkManager?
+2010-02-20T10:08:00.000Z	harisund	greezmunkey	no
+2010-02-20T10:09:00.000Z	greezmunkey	harisund	edit /etc/network/interfaces...
+2010-02-20T10:09:00.000Z	harisund	greezmunkey	There's no line for eth0
+2010-02-20T10:10:00.000Z	harisund	greezmunkey	Once upon a time /etc/network/interfaces used to have auto eth0 followed by "iface eth0 inet dhcp" or something like that. No longer there ..
+2010-02-20T10:11:00.000Z	greezmunkey	harisund	I can paste you an example, or you an google one...
+2010-02-20T10:12:00.000Z	harisund	greezmunkey	Most places online say there will be a line in /etc/network/interfaces that says "auto eth0 ; iface eth0 inet dhcp" .. but /etc/network/interfaces on 9.10 doesn't have that line at all. Where does Ubuntu know to setup DHCP for eth0 on boot? I am guessing there's something with Upstart, and no instructions are there on the web for 9.10 (only 9.04 and prior)
+2010-02-20T10:13:00.000Z	greezmunkey	harisund	give me a minute and I'll paste you an example with comments...
+2010-02-20T10:13:00.000Z	harisund	greezmunkey	Thanks man, but please make sure it is 9.10 compatible
+2010-02-20T10:14:00.000Z	greezmunkey	harisund	no worries :)
+2010-02-20T10:16:00.000Z	greezmunkey	harisund	look here: http://paste.ubuntu.com/380153
+2010-02-20T10:17:00.000Z	greezmunkey	harisund	for the static interface you need: netmask 255.255.255.0 or whatever
+2010-02-20T10:23:00.000Z	greezmunkey	harisund	if you make the appropriate entries in your /etc/network/interfaces file be sure to restart networking: sudo /etc/init.d/networking restart
+2010-02-20T10:25:00.000Z	harisund	greezmunkey	that I do .. but here's my question. In the current /etc/network/interfaces file, there's no entry for eth0. But still, eth0 automatically starts with DHCP on boot. When there's no entry how does Ubuntu know ?
+2010-02-20T10:26:00.000Z	greezmunkey	harisund	you said you have no gui, are you running server?
+2010-02-20T10:26:00.000Z	harisund	greezmunkey	yeah why? (but I think NM might be installed, since I did a apt-get install ubuntu-desktop later but only login remotely really)
+2010-02-20T10:28:00.000Z	greezmunkey	harisund	you can check with ps -ef | grep Network

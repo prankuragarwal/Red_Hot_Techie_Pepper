@@ -1,0 +1,22 @@
+2010-01-26T12:01:00.000Z	meowbuntu		hi my dev/sda5 wont mount says its not there
+2010-01-26T12:02:00.000Z	meowbuntu		i need to fix this if i can
+2010-01-26T12:02:00.000Z	soreau	meowbuntu	What is telling you it's not there?
+2010-01-26T12:03:00.000Z	meowbuntu	soreau	i am having a problem swap is not being mounted from boot so it says
+2010-07-27T15:25:00.000Z	soreau	meowbuntu	does that even have 3D?
+2010-07-27T15:27:00.000Z	meowbuntu	soreau	^
+2010-07-27T15:28:00.000Z	soreau	meowbuntu	Have you tried to install any drivers yet? What is the output of 'glxinfo|grep renderer'?
+2010-07-27T15:30:00.000Z	soreau	meowbuntu	That card may already be supported by the open radeon driver. Can you pastebin your X log and glxinfo output?
+2010-07-27T15:31:00.000Z	meowbuntu	soreau	i'm helping a friend in msn with this isue
+2010-07-27T15:32:00.000Z	soreau	meowbuntu	Have fun with that then
+2010-07-27T15:33:00.000Z	meowbuntu	soreau	glxinfo | grep renderer X Error of failed request:  BadRequest (invalid request code or no such operation) Major opcode of failed request:  135 (GLX) Minor opcode of failed request:  19 (X_GLXQueryServerString) Serial number of failed request:  16 Current serial number in output stream:  16
+2010-07-27T15:33:00.000Z	soreau	meowbuntu	Looks like he tried to or has fglrx installed but it failed. pastein /var/log/Xorg.0.log
+2010-07-27T15:36:00.000Z	meowbuntu	soreau	he did have a nvidia card in before but he upgraded to the ati one so he may need to reconfigure /etc/X11/xorg.conf <- that nvidia left behind  not sure though
+2010-07-27T15:36:00.000Z	soreau	meowbuntu	According to the radeon gpu comparison chart wiki page, that card is an x800 which cannot use fglrx/catalyst/proprietary drivers. Instead you have to remove them and use the open radeon driver that should have already been working in the first place
+2010-07-27T15:38:00.000Z	soreau	meowbuntu	Get rid of xorg.conf since X will select radeon by default
+2010-07-27T15:40:00.000Z	meowbuntu	soreau	here is teh  pastebin /var/log/Xorg.0.log <-  http://pastebin.com/UrMadhYb
+2010-07-27T15:41:00.000Z	soreau	meowbuntu	That's even worse because it looks like he has 9.10 still
+2010-07-27T15:41:00.000Z	soreau	meowbuntu	Nevertheless, he still has to completely get rid of fglrx using the method used to install it and reinstall libgl1-mesa-glx and libgl1-mesa-dri packages then reboot and it should work
+2010-07-27T15:42:00.000Z	soreau	meowbuntu	But it should work better with 10.04 and even newer kernel
+2010-07-27T16:51:00.000Z	soreau	meowbuntu	That sounds like the driver isn't being loaded. Have you checked the output of 'dmesg' for anything interesting?
+2010-07-27T16:52:00.000Z	meowbuntu	soreau	what am i looking for roughly in that
+2010-07-27T16:53:00.000Z	soreau	meowbuntu	Anything concerning your webcam and possibly success or fail messages?

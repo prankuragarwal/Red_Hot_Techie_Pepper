@@ -1,0 +1,24 @@
+2006-07-30T16:30:00.000Z	operativ1		can anyone recommend a usb-sound card that plays nicely with ubuntu?
+2006-07-30T16:30:00.000Z	crimsun	operativ1	most of them should.
+2006-07-30T16:30:00.000Z	crimsun	operativ1	(they all use the same driver)
+2006-07-30T16:31:00.000Z	operativ1	crimsun	how can they all use the same driver> thats very odd, because that implies they all use the same chipsets?
+2006-07-30T16:31:00.000Z	crimsun	operativ1	it's the usb audio standard.
+2006-07-30T16:32:00.000Z	crimsun	operativ1	granted many manufacturers don't adhere to the spec, so we have to hardcode quirks into the driver...
+2006-07-30T16:34:00.000Z	crimsun	operativ1	well, that may be overkill. Which driver are you currently using?
+2006-07-30T16:35:00.000Z	operativ1	crimsun	 Card: HDA Intel   Chip: SigmaTel STAC9200
+2006-07-30T16:35:00.000Z	crimsun	operativ1	ah, yeah, the infamous 92xx.
+2006-07-30T16:35:00.000Z	crimsun	operativ1	are you using 2.6.15-26.45?
+2006-07-30T16:36:00.000Z	crimsun	operativ1	dpkg -l linux-image-$(uname -r) |grep ^ii |awk '{ print $2 }'
+2006-07-30T16:36:00.000Z	operativ1	crimsun	:P
+2006-07-30T16:36:00.000Z	crimsun	operativ1	err, sorry, that should be 3, not 2
+2006-07-30T16:37:00.000Z	crimsun	operativ1	no, uname is insufficient, since I need the actual packaging revision, which uname doesn't reveal.
+2006-07-30T16:38:00.000Z	crimsun	operativ1	ok, good. Now please pastebin your ``amixer'' output.
+2006-07-30T16:39:00.000Z	operativ1	crimsun	http://pastebin.ca/105832
+2006-07-30T16:40:00.000Z	crimsun	operativ1	ok, try changing the parameter for 'Capture Mux'
+2006-07-30T16:40:00.000Z	crimsun	operativ1	it's currently set to 4, so you'll want to try the values 0, 1, 2, and 3.
+2006-07-30T16:40:00.000Z	operativ1	crimsun	how do I change mate?
+2006-07-30T16:40:00.000Z	crimsun	operativ1	amixer set 'Capture Mux' 0
+2006-07-30T16:41:00.000Z	crimsun	operativ1	then test if you can hear what you record. If it doesn't work, repeat for the values of 1-3.
+2006-07-30T16:43:00.000Z	operativ1	crimsun	no joy
+2006-07-30T16:44:00.000Z	operativ1	crimsun	managed to get some static with options 2-4 but thats all
+2006-07-30T16:47:00.000Z	crimsun	operativ1	ok. Well, I use an M-Audio Transit USB, but just about any USB audio device should work.

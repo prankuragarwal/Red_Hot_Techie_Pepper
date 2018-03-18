@@ -1,0 +1,19 @@
+2012-09-26T07:55:00.000Z	Nordom		I am trying to find the location of a executable, how do I find it dpkg -l <name> lists a file directory but what if I want to find the location of a file inside
+2012-09-26T07:56:00.000Z	Nordom		I am trying to find the location of a executable, how do I find it dpkg -l <name> lists a file directory but what if I want to find the location of a file inside
+2012-09-26T07:57:00.000Z	Nordom		a file call adb, its from android sdk
+2012-09-26T07:57:00.000Z	Nordom		I am having problems connecting to my phone via usb, and on way was try it in SU mode, and when I log into SU and type adb it doesnt work, but if I am not in SU, it works
+2012-09-26T07:58:00.000Z	escott	Nordom	"which binary_name"
+2012-09-26T07:58:00.000Z	Nordom	escott	 what do you mean?
+2012-09-26T07:59:00.000Z	Nordom	escott	 I am a nub so sorry if I seem daft
+2012-09-26T07:59:00.000Z	escott	Nordom	the command would be "which adb" i see im late in giving that answer
+2012-09-26T07:59:00.000Z	Nordom		which is what I wanted ty!
+2012-09-26T08:00:00.000Z	Nordom	escott	: When I logged into SU, and went to the folder where adb was located it didnt do anything, and suggestions on why this happened?
+2012-09-26T08:00:00.000Z	escott	Nordom	its failing because when you login as root "sudo -i" you change the working directory to /root but you installed adb to /home/username/whatever so you need to cd /home/username/whatever
+2012-09-26T08:01:00.000Z	Nordom	escott	so I need to type sudo -i su ?
+2012-09-26T08:01:00.000Z	escott	Nordom	you shouldnt be using "su" on ubuntu at all
+2012-09-26T08:01:00.000Z	Nordom		I see
+2012-09-26T08:02:00.000Z	escott	Nordom	either sudo adb whatever or sudo -i; adb whatever
+2012-09-26T08:02:00.000Z	Nordom		then this guide is probably not what I want to use then, thank you
+2012-09-26T08:02:00.000Z	escott	Nordom	im sure the guide is fine except that we use sudo not su
+2012-09-26T08:02:00.000Z	Nordom		got it!
+2012-09-26T08:03:00.000Z	escott	Nordom	if you see "su" in isolation replace it with "sudo -i" if you see "su -c command" replace it with "sudo command"

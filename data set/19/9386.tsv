@@ -1,0 +1,19 @@
+2007-05-22T07:23:00.000Z	MetaBookfoziS		Has anybody RT2561 Wireless chip working?
+2007-05-22T07:25:00.000Z	soundray	MetaBookfoziS	I got it to work with the legacy rt61 CVS driver from serialmonkey.
+2007-05-22T07:26:00.000Z	MetaBookfoziS	soundray	iirc i have the same (i have changed a hundred times the ndiswrapper(2version), default and the serialmonkey one driver
+2007-05-22T07:27:00.000Z	MetaBookfoziS	soundray	> can you help me how can i debug why? Knetworkmanager stops conencting, rutilt also.
+2007-05-22T07:27:00.000Z	soundray	MetaBookfoziS	I also had to disable NetworkManager and nm-applet completely, configuring it via System-Admin-Network instead.
+2007-05-22T07:29:00.000Z	MetaBookfoziS	soundray	how you disabled the networkmanager?
+2007-05-22T07:31:00.000Z	soundray	MetaBookfoziS	'sudo chmod -x /etc/dbus-1/event.d/25NetworkManager /etc/dbus-1/event.d/26NetworkManagerDispatcher', and removing nm-applet from the Session startup.
+2007-05-22T07:32:00.000Z	soundray	MetaBookfoziS	the chmod -x procedure applies to kubuntu as well.
+2007-05-22T07:35:00.000Z	MetaBookfoziS	soundray	> thanx a lot, i need restart i think to networkmanager shuts up... brb!
+2007-05-22T07:48:00.000Z	MetaBookfoziS	soundray	> is you here?
+2007-05-22T07:49:00.000Z	soundray	MetaBookfoziS	no app. Just configure it via System-Administration-Network (disable roaming and set up DHCP)
+2007-05-22T07:49:00.000Z	MetaBookfoziS	soundray	> that is an application, or a way in gnome settings?
+2007-05-22T07:50:00.000Z	soundray	MetaBookfoziS	oh, you're in kubuntu... sec
+2007-05-22T07:52:00.000Z	soundray	MetaBookfoziS	add these lines to your /etc/network/interfaces: "iface ra0 inet dhcp", "wireless-essid youressid" and "auto ra0"
+2007-05-22T07:52:00.000Z	soundray	MetaBookfoziS	replace ra0 with your real interface name and youressid with your ESSID ;)
+2007-05-22T07:53:00.000Z	MetaBookfoziS	soundray	>  thx, i trying
+2007-05-22T07:55:00.000Z	soundray	MetaBookfoziS	when you're ready, do a 'sudo ifup ra0'
+2007-05-22T08:02:00.000Z	MetaBookfoziS	soundray	> i actually get "Error for wireless request "Set Encode" (8B2A) :" it's not problem i'm under googling or this, but that is not problem if in the iwlist, ra0 thinks she's SSID is something else than my wanted network?
+2007-05-22T08:02:00.000Z	soundray	MetaBookfoziS	sorry, I'm not familiar with that error

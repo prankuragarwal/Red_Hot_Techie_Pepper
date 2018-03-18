@@ -1,0 +1,19 @@
+2009-08-10T08:49:00.000Z	StaticShock		how can i tell where apt-get installs a package?
+2009-08-10T08:49:00.000Z	nevyn	StaticShock	it'll install bits everywhere.
+2009-08-10T08:49:00.000Z	StaticShock	nevyn	any way to track that down? where does it install curl?
+2009-08-10T08:50:00.000Z	nevyn	StaticShock	dpkg -L curl will show you all the files installed by the curl package
+2009-08-10T08:50:00.000Z	StaticShock	nevyn	i'm looking for curl.h
+2009-08-10T08:50:00.000Z	nevyn	StaticShock	did you install the dev library?
+2009-08-10T08:52:00.000Z	StaticShock	nevyn	what's the apt name of the dev library? apt-cache doesn't seem to help
+2009-08-10T08:53:00.000Z	StaticShock	nevyn	i must be missing some sources
+2009-08-10T08:54:00.000Z	nevyn	StaticShock	try libcurl
+2009-08-10T08:55:00.000Z	StaticShock	nevyn	yeah, i have that
+2009-08-10T08:55:00.000Z	StaticShock	nevyn	i have "libcurl3"
+2009-08-10T08:56:00.000Z	nevyn	StaticShock	run dpkg -L on that
+2009-08-10T08:57:00.000Z	StaticShock	nevyn	doesn't amount to any source files either
+2009-08-10T08:58:00.000Z	nevyn	StaticShock	you need libcurl3-dev
+2009-08-10T08:59:00.000Z	StaticShock	nevyn	ah, i see.
+2009-08-10T08:59:00.000Z	nevyn	StaticShock	libcurl3 provides the binary library the -dev package has the headers.
+2009-08-10T09:00:00.000Z	StaticShock	nevyn	makes sense, i just don't have that in my sources list
+2009-08-10T09:00:00.000Z	StaticShock	nevyn	so it doesn't come up
+2009-08-10T09:03:00.000Z	StaticShock	nevyn	actually, i don't see libcurl3-dev even locally. do you see it?

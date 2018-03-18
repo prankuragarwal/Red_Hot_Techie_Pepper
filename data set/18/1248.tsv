@@ -1,0 +1,18 @@
+2012-01-30T03:13:00.000Z	ModFather		Please help me, how i can remove programs that is installed? i tried make unistall and i got : make: *** No rule to make target `unistall'.  Stop.
+2012-01-30T03:13:00.000Z	ssta	ModFather	"unistall"?  Spelling error maybe?  Did you mean "uninstall"?
+2012-01-30T03:14:00.000Z	ModFather	ssta	make: *** No rule to make target `uninstall'.  Stop.
+2012-01-30T03:15:00.000Z	ssta	ModFather	guess that particular thing doesn't have an uninstall then.  Does the documentation say it should?
+2012-01-30T03:15:00.000Z	ModFather	ssta	not :( and i need to complete remove it
+2012-01-30T03:15:00.000Z	ModFather	ssta	: also i checked on google but i didnt find nothing i asked on their channel but never got response
+2012-01-30T03:16:00.000Z	ssta	ModFather	then you'll need to take the Makefile apart, see what it installed and where to, and remove them all by hand
+2012-01-30T03:16:00.000Z	ssta	ModFather	installing from source is tricky...that's why it's not usually recommended
+2012-01-30T03:17:00.000Z	ModFather	ssta	: how i can make it removed on startup up?
+2012-01-30T03:17:00.000Z	ssta	ModFather	probably not
+2012-01-30T03:17:00.000Z	ModFather	ssta	: how i can removed from startup up?
+2012-01-30T03:17:00.000Z	ssta	ModFather	you'll have to track down everything that make install did and undo it
+2012-01-30T03:17:00.000Z	ssta	ModFather	oh, it's probably a script somewhere in /etc/init.d
+2012-01-30T03:18:00.000Z	ModFather	ssta	: with rm -rf script name its all fine? or i need to remove it from update.rc?
+2012-01-30T03:19:00.000Z	ssta	ModFather	don't use -rf unless you KNOW you need to, especially as root.  Just "rm /etc/init.d/whateverthescriptiscalled" whould do
+2012-01-30T03:20:00.000Z	ModFather	ssta	: is it on /etc/rc0.d/K*****
+2012-01-30T03:21:00.000Z	ssta	ModFather	that't the one that shuts it down.
+2012-01-30T03:21:00.000Z	ssta	ModFather	remove each one

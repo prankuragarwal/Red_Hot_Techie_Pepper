@@ -1,0 +1,19 @@
+2007-02-14T14:37:00.000Z	jelen		hi folks
+2007-02-14T14:39:00.000Z	jelen		i have one question :]  ... i'm trying to start skype on the ubuntu edgy (2.6.17-10-generic x86_64) and dunno why - it just say that file doesn't exists (ls -la skype> -rwxr-xr-x 1 1000 1000 15232104 2006-09-29 14:08 skype) but when i try to execute - it say> -su: ./skype: No such file or directory ... anyone know whats this all about? :|
+2007-02-14T14:41:00.000Z	jelen		use shorewall :) clear configs, nice loging if anything is wrong..
+2007-02-14T14:43:00.000Z	unop	jelen	 where is this skype file located?
+2007-02-14T14:46:00.000Z	jelen	unop	at my mounted home directory.. anyway - if i move it to /tmp it doesn't work anyway.. all permitions are ok (chmod a+rx), but it just doesn't work...
+2007-02-14T14:47:00.000Z	jelen		root@ubuntu:/mnt/home/ienik/skype# ldd ./skype
+2007-02-14T14:47:00.000Z	jelen		/usr/bin/ldd: line 171: /lib/ld-linux.so.2: No such file or directory
+2007-02-14T14:47:00.000Z	jelen		ldd: /lib/ld-linux.so.2 exited with unknown exit code (127)
+2007-02-14T14:47:00.000Z	unop	jelen	 it looks like you are trying to use su on the file? is that so?
+2007-02-14T14:48:00.000Z	jelen	unop	i didn't use su or sudo on this file.. just execute it by non-root user using "./skype" and it does nothing
+2007-02-14T14:49:00.000Z	jelen		dunno why, but on edgy it doesn't work... on my old Dapper - it works... i moved from Dapper to try edgy and now i have only troubles :/
+2007-02-14T14:50:00.000Z	unop	jelen	 hrmm, for some reason it's looking for ld-linux.so.2 in /lib when it should look in /usr/lib -- is this skype from the skype repositories? was it compiled for debian/ubuntu?
+2007-02-14T14:50:00.000Z	unop	jelen	 i'd suggest reinstalling skype then
+2007-02-14T14:52:00.000Z	unop	jelen	 https://help.ubuntu.com/community/Skype
+2007-02-14T14:52:00.000Z	jelen	unop	it's a static version (non-debian) but as I said - it works on Dapper (2.6.15 I guess) ..
+2007-02-14T14:52:00.000Z	jelen	unop	hmh.. ok, but i think, that it will not help :/...
+2007-02-14T14:53:00.000Z	unop	jelen	 if skype will work on edgy here -- why wont it there :)
+2007-02-14T14:53:00.000Z	jelen	unop	ok.. downloading.. i will give you response in few minutes :)
+2007-02-14T14:58:00.000Z	jelen	unop	thanks for help .. i'm going to reboot (just now I am runing installation cd and it doesn't allow me to edit /etc/apt/sources.list) so I have to try it on "real" system..

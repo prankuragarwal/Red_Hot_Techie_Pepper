@@ -1,0 +1,21 @@
+2009-07-01T19:33:00.000Z	gh0stp		deany:FS is FAT32
+2009-07-01T19:33:00.000Z	djiezes	gh0stp	i reckon the linux style file permissions are not applicable to fat32 systems
+2009-07-01T19:33:00.000Z	djiezes	gh0stp	but when automounted as usbdevice you have all write & read permissions, right?
+2009-07-01T19:34:00.000Z	gh0stp		i can but many other utilities and programs cannot, IE: apache,the chmod command xD also intermitantly it will cahnge to a "read only file system"
+2009-07-01T19:35:00.000Z	gh0stp		formatting is out of the Question outright, it needs to be fat32 due to my PS3, and it has 500GB of 700mb movies on it
+2009-07-01T19:36:00.000Z	gh0stp		ive ran checks on it and repaired any errors, for now its just straight up permissions
+2009-07-01T19:37:00.000Z	gh0stp		hmmmm. any idea why apache wouldnt be able to access it through a symlink then?
+2009-07-01T19:37:00.000Z	gh0stp		it could access a symlink to my /home fine
+2009-07-01T19:38:00.000Z	djiezes	gh0stp	i don't think symlinks work on fat32
+2009-07-01T19:38:00.000Z	gh0stp		:( are you kidding me?!
+2009-07-01T19:38:00.000Z	djiezes	gh0stp	you're better of doing apache on a native linux filesystem like ext3
+2009-07-01T19:38:00.000Z	djiezes	gh0stp	you'll run into file permissions troubles & symlink troubles like you're doing now
+2009-07-01T19:39:00.000Z	gh0stp		what if i symlink to a symlink created on my home FS? my local FS is EXT4, the storage drive is FAT32(it can't be anything else due to compat. issues)
+2009-07-01T19:40:00.000Z	djiezes	gh0stp	no idea, google for "symlink fat32" and "chmod fat32".
+2009-07-01T19:42:00.000Z	gh0stp	djiezes	interesting link http://www.linuxquestions.org/questions/linux-general-1/how-do-i-chmod-fat32-635778/ sorry for the trouble, but could you "dumb this down" for me? lol
+2009-07-01T19:43:00.000Z	gh0stp		damn. thank you
+2009-07-01T19:43:00.000Z	gh0stp		thanks to all that helped me!! appreciate it!
+2009-07-01T19:44:00.000Z	djiezes	gh0stp	that link says how to mount a fat32 partition at boot with all read/write/execute permissions. symlink still won't work.
+2009-07-01T19:45:00.000Z	gh0stp	djiezes	thanks for clarifying, ill look into a back-up reformat solution
+2009-07-01T19:46:00.000Z	djiezes	gh0stp	only solution i can think of with having to back up is resizing your fat32 partition and adding an ext3/ext4 partition for whatever it is you want to do with apache on there.
+2009-07-01T19:46:00.000Z	djiezes	gh0stp	but resizing without backing up is a bad idea ...

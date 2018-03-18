@@ -1,0 +1,22 @@
+2010-10-03T21:29:00.000Z	phil_in_london	jaik	can't you just locate the libdb-5.1.so on your system and include it with your package? alternatively you could statically compile the libdb-5.1.a  into your application and it would carry the library with it.
+2010-10-03T21:32:00.000Z	jaik	phil_in_london	that's what I'm trying now :) - you mean putting an #include <file.o> in the sourcecode?
+2010-10-03T21:33:00.000Z	phil_in_london	jaik	if you have a look at where your libraries are, you'll also find  file.a  rather than file.o... the a will make it static.
+2010-10-03T21:34:00.000Z	phil_in_london	jaik	you can do that with your command line parameters    eg  /usr/local/BerkeleyDB.5.1/include/libdb-5.1.a      (thats just an example, I'm unsure of your folder layout)
+2010-10-03T21:35:00.000Z	jaik	phil_in_london	I'll try, but I already include the files, using gcc ... /usr/local/BerkeleyDB.5.1/include ? :)
+2010-10-03T21:39:00.000Z	phil_in_london	jaik	I'm not exactly an expert, I mostly compile for custom kernels, but I've found that I do my configure, I get exact, heres a sample of one of configure parameters, yours will be different obviously.   BLUETOOTH_LIBS=/home/phil/mylibs/compiled/lib/libbluetooth.a
+2010-10-03T21:39:00.000Z	phil_in_london	jaik	that forces the compiler to statically load the library and compile it into the application, it will, of course, be much bigger, but no more worrying about where the lib is :)
+2010-10-03T21:40:00.000Z	phil_in_london	jaik	do  ./configure --help    to determine which parameters you can control on the command line.
+2010-10-03T21:40:00.000Z	jaik	phil_in_london	perhaps I misunderstand you completely: but now I used the following command: gcc ... -L/usr/local/BerkeleyDB.5.1/lib/libdb-5.1.a - doesn't work
+2010-10-03T21:40:00.000Z	jaik	phil_in_london	I'll try now the ./configure
+2010-10-03T21:41:00.000Z	phil_in_london	jaik	yeah, see what you actually have control over.
+2010-10-03T21:43:00.000Z	jaik	phil_in_london	./configure --help shows up: No such file or directory -- you know, that the program was written and compiled by myself?
+2010-10-03T21:44:00.000Z	phil_in_london	jaik	oh, sorry about that. missed that part of your question, do you have an include within your code already for the libdb-so.5.1 ?
+2010-10-03T21:45:00.000Z	jaik	phil_in_london	nop - i didn'T include it
+2010-10-03T21:45:00.000Z	phil_in_london	jaik	have you done a search on your system to see if you have the libdb-5.1.a file ? you may not, and if not, you'll want to get the source of the libdb-5.1, it will have the "a" file.
+2010-10-03T21:47:00.000Z	jaik	phil_in_london	yes, found it in /usr/local/BerkeleyDB.5.1/lib/libdb-5.1.a
+2010-10-03T21:47:00.000Z	phil_in_london	jaik	try doing an include with that.
+2010-10-03T21:48:00.000Z	phil_in_london	jaik	unless its going to be prohibitively large, then you'll have to package your application with the so file.
+2010-10-03T21:49:00.000Z	jaik	phil_in_london	it's a dummy question now - you mean #include <libdb-5.1.a> in the sourcecode?
+2010-10-03T21:49:00.000Z	phil_in_london	jaik	but as I say, I don't have alot of experience, I make small edits to existing packages, and then compile them and/or their dependants. I've only ever used the command line to pass the library source to the compiler.
+2010-10-03T21:50:00.000Z	jaik	phil_in_london	ok, i'll try now - if i succeed, i'll report - thank you :)
+2010-10-03T22:41:00.000Z	jaik	phil_in_london	If you're still interested - I mastered the problem using: gcc test.c -o test -I /usr/local/BerkeleyDB.5.1/include/ -L /usr/local/BerkeleyDB.5.1/lib/ -ldb -Wl,-rpath=/usr/local/BerkeleyDB.5.1/lib

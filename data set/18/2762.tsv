@@ -1,0 +1,18 @@
+2010-05-29T21:15:00.000Z	rmatte		ok, so I just upgraded to lucid from gutsy, and I had syslog-ng installed.  When it installed originally it installed with the --enable-spoof-source config option.  Now, when I go to start it after the upgrade I see: "Error enabling spoof-source, you need to compile syslog-ng with --enable-spoof-source".  When I check in /usr/local/src/syslog-ng-3.0.3/tgz2build/rules I can see that --enable-spoof-source is already a config option listed...
+2010-05-29T21:15:00.000Z	rmatte		Is there any way to force aptitude to install with that option?
+2010-05-29T21:15:00.000Z	bazhang	rmatte	in one step?
+2010-05-29T21:16:00.000Z	rmatte	bazhang	I don't care how many steps it takes, but I'd like to avoid manually compiling it straight from source
+2010-05-29T21:16:00.000Z	rmatte	bazhang	I still want aptitude to be aware of the package
+2010-05-29T21:17:00.000Z	bazhang	rmatte	what I meant was a direct upgrade (in a single step) from Gutsy to Lucid
+2010-05-29T21:17:00.000Z	rmatte	bazhang	oh, yessir
+2010-05-29T21:17:00.000Z	bazhang	rmatte	how did you do that?
+2010-05-29T21:17:00.000Z	bazhang		!xsane | monolith
+2010-05-29T21:18:00.000Z	rmatte	bazhang	do-release-upgrade --proposed -m server
+2010-05-29T21:18:00.000Z	rmatte		it worked fine, everything upgraded smoothly except for syslog-ng getting installed without that option
+2010-05-29T21:18:00.000Z	rmatte		and I really need that option
+2010-05-29T21:18:00.000Z	bazhang	rmatte	there is not a one-step upgrade for gutsy to lucid, perhaps you mean lts to lts (8.04 to 10.04)
+2010-05-29T21:19:00.000Z	rmatte	bazhang	yeh, from LTS to LTS
+2010-05-29T21:19:00.000Z	rmatte		8.04 to 10.04
+2010-05-29T21:20:00.000Z	rmatte	bazhang	any ideas on resolving the issue?
+2010-05-29T21:20:00.000Z	bazhang	rmatte	so its enabled, and just giving a warning? or erroring out and unresponsive; I'm not much help with servers, so you may wish to repeat in a while, and there is #ubuntu-server as well
+2010-05-29T21:22:00.000Z	rmatte	bazhang	basically, according to the aptitude rules file for building the package (syslog-ng), it should have been compiled with the --enable-source-spoof option which would have enabled source spoofing in syslog-ng.  When syslog-ng is started it's giving a warning that it wasn't compiled with that option

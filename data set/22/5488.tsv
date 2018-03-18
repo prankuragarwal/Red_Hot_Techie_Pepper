@@ -1,0 +1,22 @@
+2008-04-27T21:35:00.000Z	Techdeck		hey guys, I'm trying to install vmware server 1.0.5, when I run vmware-config.pl I get the following error during the module buildup: http://rafb.net/p/11s4xA96.html   ---- any ideas how to fix this?
+2008-04-27T21:36:00.000Z	Wyzard	Techdeck	You need a vmware-any-any patch to make the VMware kernel modules build against newer kernels
+2008-04-27T21:36:00.000Z	Techdeck	Wyzard	what's that patch? where do I get it and how do I apply it?
+2008-04-27T21:37:00.000Z	Wyzard	Techdeck	Google for "vmware-any-any"...  it's an unofficial patch (produced by one of the VMware developers, I think)
+2008-04-27T21:37:00.000Z	Techdeck	Wyzard	is it hard to apply?
+2008-04-27T21:38:00.000Z	Wyzard	Techdeck	No, it's pretty easy...  extract the tarball and run the runme.pl script within, and then run vmware-configure again
+2008-04-27T21:38:00.000Z	Wyzard	Techdeck	You need vmware-any-any-update116 (older versions won't work with 2.6.24)
+2008-04-27T21:38:00.000Z	Techdeck	Wyzard	lemme try
+2008-04-27T21:41:00.000Z	Techdeck	Wyzard	you rock! it worked! :)
+2008-04-27T21:41:00.000Z	Techdeck	Wyzard	Thanks a lot!
+2008-04-27T21:54:00.000Z	Techdeck	Wyzard	any ideas how to run the vmware console?
+2008-04-27T21:55:00.000Z	Wyzard	Techdeck	should be just "vmware"
+2008-04-27T21:57:00.000Z	Techdeck	Wyzard	http://rafb.net/p/FCumxM64.html  -- any ideas?
+2008-04-27T21:58:00.000Z	Techdeck	Wyzard	I did install gcc-4.3
+2008-04-27T21:59:00.000Z	Wyzard	Techdeck	dunno about that, sorry, but installing gcc-4.3 isn't likely to help; this is a library issue
+2008-04-27T21:59:00.000Z	Wyzard	Techdeck	The problem is that it's using a version of libgcc_s.so provided by VMware itself, but a copy of libstdc++ provided by Ubuntu, and the former is too old for the latter
+2008-04-27T22:00:00.000Z	Techdeck	Wyzard	damn :(
+2008-04-27T22:00:00.000Z	Wyzard	Techdeck	VMware ships a bunch of bundled libraries to try to be independent of the library versions on the system where it's installed, but apparently that's not working quite right in this case
+2008-04-27T22:00:00.000Z	Wyzard	Techdeck	The VMware support forums would be the best place to look for info on that
+2008-04-27T22:03:00.000Z	Techdeck	Wyzard	!
+2008-04-27T22:03:00.000Z	Wyzard	Techdeck	nifty, though personally I'd check the support forums anyway for a less-klugey solution
+2008-04-27T22:03:00.000Z	Techdeck	Wyzard	will do, thanks a lot for your help!

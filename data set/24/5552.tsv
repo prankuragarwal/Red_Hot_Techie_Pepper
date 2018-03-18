@@ -1,0 +1,24 @@
+2011-03-10T17:12:00.000Z	exile		running maverick, suddenly none of my daemons (including sysklogd) are starting on reboot. networking also down for same reason. initctl lists them all as stop/waiting. initctl start rc gives "failed to start". any ideas?
+2011-03-10T17:13:00.000Z	jrib	exile	what changed since last time they did run?
+2011-03-10T17:25:00.000Z	jrib	exile	what changed since last time they did run?
+2011-03-10T17:27:00.000Z	jrib	exile	can you start it manually?
+2011-03-10T17:28:00.000Z	jrib	exile	how do you start it munually?
+2011-03-10T17:29:00.000Z	exile	jrib	/etc/init.d/sysklogd start (also tried via initctl start rc, which fails)
+2011-03-10T17:29:00.000Z	jrib	exile	ok, so we should figure out why it fails with initctl
+2011-03-10T17:32:00.000Z	exile	jrib	do you know where to find the logs from initctl? upstart is vague at best, indicates it should be logged to syslog :<
+2011-03-10T17:33:00.000Z	jrib	exile	I don't.  I'll see if I can find more info.  Is there a reason you're using sysklogd though?
+2011-03-10T17:34:00.000Z	exile	jrib	i have klogd in /etc/init.d too
+2011-03-10T17:35:00.000Z	jrib	exile	what ubuntu version?  I seem to have rsyslog on all my systems
+2011-03-10T17:36:00.000Z	exile	jrib	i can try apting it but i'm worried about making this more complicated even
+2011-03-10T17:36:00.000Z	jrib	exile	no need, I was trying to understand the situation
+2011-03-10T17:37:00.000Z	jrib	exile	are you logging to a remote host?
+2011-03-10T17:39:00.000Z	jrib	exile	also, start trying http://upstart.ubuntu.com/wiki/Debugging to get more info on what is happening
+2011-03-10T17:42:00.000Z	exile	jrib	yes
+2011-03-10T17:42:00.000Z	jrib	exile	yes, it's logging to a remote host?
+2011-03-10T17:42:00.000Z	exile	jrib	yes i'm on a remote host - no grub
+2011-03-10T17:43:00.000Z	jrib	exile	did you setup sysklogd to log to a remote host?
+2011-03-10T17:44:00.000Z	exile	jrib	nope, and i've seen that google result already :P (ps, i appreciate the help)
+2011-03-10T17:46:00.000Z	jrib	exile	you can add the redirection lines in the actual init script (even though the upstart link I gave is saying to do it for actual upstart jobs, just do it in the init.d script.  Although I guess you can do both and add it to the rc upstart job to see if it's actually useful).  Just redirect the output to some file you can get at later
+2011-03-10T17:50:00.000Z	exile	jrib	so i'm confused, you want me to add something to /etc/init.d/sysklogd
+2011-03-10T17:52:00.000Z	jrib	exile	yes, I'm suggesting you add ">> /tmp/upstart.log 2>&1" to the line that actually attempts to start the daemon in the appropriate init.d script
+2011-03-10T17:52:00.000Z	exile	jrib	ok attempting that

@@ -1,0 +1,23 @@
+2009-05-16T09:33:00.000Z	needhelp1		so first shrink the sda3
+2009-05-16T09:33:00.000Z	needhelp1		what is the yellow in gparted on teh partitions.. is this system files or just used space on the part?
+2009-05-16T09:34:00.000Z	needhelp1		ext3 has more features doenst it.. does ext3 do file encryption
+2009-05-16T09:35:00.000Z	needhelp1		so should i do the partitioning?
+2009-05-16T09:36:00.000Z	needhelp1		do i need to set up the swap in Gparted? or does the installer do this?
+2009-05-16T09:36:00.000Z	needhelp1		ahh ok thanks
+2009-05-16T09:37:00.000Z	needhelp1		i hope when i shrink the ntfs, it doenst mess up my windows install
+2009-05-16T09:38:00.000Z	needhelp1		i defraged the C drive today.. but im going to shrink a differnt partition
+2009-05-16T09:38:00.000Z	needhelp1		in windows its drive is D.. so i guess this is a local partition i think the term is
+2009-05-16T09:39:00.000Z	needhelp1		16340 MIB would = around 16gb right?
+2009-05-16T09:40:00.000Z	calc	needhelp1	16378 MiB is 16GiB
+2009-05-16T09:40:00.000Z	calc	needhelp1	aka 16 * 2^30
+2009-05-16T10:07:00.000Z	needhelp1	calc	so am i ok?
+2009-05-16T10:08:00.000Z	calc	needhelp1	for 5 partitions you need at least a extended and logical or two
+2009-05-16T10:08:00.000Z	calc	needhelp1	eg sda1 sda2 sda3 then a sda4 extended with sda5 and sda6 being logical
+2009-05-16T10:09:00.000Z	calc	needhelp1	if you have more than 4 partitions you must have one of the 4 'primary' ones designated as an extended partition
+2009-05-16T10:10:00.000Z	needhelp1	calc	what would happen if i tried it as primary
+2009-05-16T10:10:00.000Z	calc	needhelp1	the dos mbr only has space for 4 partitions which is considered the 'primary' ones, logical partitions are basically a linked list across the drive with the 'extended' partition being in one of the 4 spots in the mbr linking to the first logical parititon on the drive
+2009-05-16T10:10:00.000Z	calc	needhelp1	you can't make 5 primary partitions there isn't enough space in the MBR layout to do it, period
+2009-05-16T10:11:00.000Z	calc	needhelp1	sda1-4 are always primary
+2009-05-16T10:11:00.000Z	calc	needhelp1	sda5+ as logical
+2009-05-16T10:12:00.000Z	calc	needhelp1	those are primary then
+2009-05-16T10:15:00.000Z	needhelp1	calc	so should i make the 18 gb partions sda4?

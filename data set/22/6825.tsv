@@ -1,0 +1,22 @@
+2006-09-03T16:40:00.000Z	lmosher		I'm working with an NTFS partition. I've unmounted it, changed some files around, and mounted it again. However, the file I deleted still shows up! How do i force a refresh?
+2006-09-03T16:41:00.000Z	psusi	lmosher	the ubuntu NTFS driver is read only... are you playing with something experimental?
+2006-09-03T16:42:00.000Z	lmosher	psusi	No. I -unmounted- it and deleted the file with Windows. However when i mount again the file is still there! It's not actually reading the stupid drive b/c I've definately deleted that file..
+2006-09-03T16:42:00.000Z	psusi	lmosher	you rebooted into windows, deleted it, rebooted back into ubuntu, and it is still there?
+2006-09-03T16:43:00.000Z	lmosher	psusi	No, I'm using VMware to access the drive natively. I'm sure rebooting would do the trick, but I'm hoping there's a way to refresh the drive...
+2006-09-03T16:44:00.000Z	psusi	lmosher	are you sure you have vmware configured to allow writes to the partition?  it's probably just faking it with copy on write
+2006-09-03T16:45:00.000Z	lmosher	psusi	vmware does allow writes, but it maybe be caching or something, b/c in linux I can still actually play the file (it's a movie) so it's not there. I'll reboot vmware.
+2006-09-03T16:46:00.000Z	psusi	lmosher	you did shutdown the windows vmware session before mounting the partition again right?
+2006-09-03T16:46:00.000Z	lmosher	psusi	No I didn't. Probably not a great idea, but since linux is ro I didn't think it would matter.
+2006-09-03T16:47:00.000Z	lmosher	psusi	hrm ok vmware is down, but the file -still- shows up when I mount it. I guess I can copy all the files I want to a different folder.
+2006-09-03T16:48:00.000Z	psusi	lmosher	start vmware back up and see if it's there in windows... after unmounting it of course
+2006-09-03T16:48:00.000Z	psusi	lmosher	if it is, then vmware is configured to not actually allow writes to the device
+2006-09-03T16:48:00.000Z	lmosher	psusi	ok I'll check
+2006-09-03T16:49:00.000Z	lmosher	psusi	I can't say for certain that's not happening, but the disk file on my linux partition is quite small
+2006-09-03T16:50:00.000Z	psusi	lmosher	if all you did was delete a file it would be.... windows wouldn't write much to do that
+2006-09-03T16:50:00.000Z	psusi	lmosher	you should not have a seperate disk file if you want the vm to actually write to the disk
+2006-09-03T16:50:00.000Z	psusi	lmosher	that seperate disk file is where vmware reroutes writes to instead of the real disk
+2006-09-03T16:51:00.000Z	lmosher	psusi	I don't see how that's possible. I've installed Office 2003 using vmware and the disk file is only 112kb
+2006-09-03T16:51:00.000Z	lmosher	psusi	Plus, that file isn't there on reboot...
+2006-09-03T16:52:00.000Z	lmosher	psusi	That is, the file doesn't show up in windows. it's still there in LInux :/
+2006-09-03T16:53:00.000Z	lmosher	psusi	oops I take it back. after rebooting the vm the file is now gone for linux. Not sure why that was the procses I had to use, but I'll remember it I guess...
+2006-11-10T15:27:00.000Z	psusi	lmosher	nothing

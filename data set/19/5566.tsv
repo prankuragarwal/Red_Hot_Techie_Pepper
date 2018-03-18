@@ -1,0 +1,19 @@
+2008-06-09T23:57:00.000Z	leeping2008	ASULutzy	Thanks :) I'll look at yours
+2008-06-09T23:46:00.000Z	ASULutzy	leeping2008	The OpenSSH update banned all keys generated before the update. You need to regenerate the keys
+2008-06-09T23:46:00.000Z	leeping2008	ASULutzy	I already did that
+2008-06-09T23:48:00.000Z	leeping2008	ASULutzy	I'm able to log in via SSH, but it asks me for a password even though I've added the public key to authorized_keys
+2008-06-09T23:54:00.000Z	ASULutzy	leeping2008	Did you edit your /etc/ssh/sshd_config (not 100% sure on the filename)
+2008-06-09T23:54:00.000Z	ASULutzy	leeping2008	You need to change some settings, hold on, I'll paste mine on pastebin
+2008-06-09T23:55:00.000Z	ASULutzy	leeping2008	http://paste.ubuntu.com/18858/
+2008-06-09T23:56:00.000Z	ASULutzy	leeping2008	Oops, wrong file
+2008-06-09T23:56:00.000Z	ASULutzy	leeping2008	Hold on lol
+2008-06-09T23:56:00.000Z	ASULutzy	leeping2008	Here we go http://paste.ubuntu.com/18859/
+2008-06-09T23:57:00.000Z	ASULutzy	leeping2008	You need to set UsePAM to no, set password authentication to no, and and challenge response authentication to no
+2008-06-09T23:58:00.000Z	leeping2008	ASULutzy	my passwordless SSH is working even though UsePAM is set to yes.  (I got it to work without changing settings by adding id_rsa.pub to authorized_keys)
+2008-06-09T23:59:00.000Z	leeping2008	ASULutzy	whoops, I mean I added id_dsa.pub to authorized_keys.  Adding id_rsa.pub does not work
+2008-06-10T00:00:00.000Z	ASULutzy	leeping2008	So you're saying that you can use the key to login, but if you don't specify a key it still accepts passwords and you ONLY want to be able to login through the use of a key? If so, that's how my ssh is configured, and http://paste.ubuntu.com/18859/ produces that functionality
+2008-06-10T00:02:00.000Z	leeping2008	ASULutzy	the problem was that I couldn't use the key to login even when it was specified.  I don't mind if it accepts passwords if the key isn't specified
+2008-06-10T00:03:00.000Z	ASULutzy	leeping2008	Hmmm, did you add your key to the right location on the server?
+2008-06-10T00:03:00.000Z	leeping2008	ASULutzy	Yes, I did.  Adding a DSA public key allowed passwordless login, but adding an RSA public key did not, inexplicably
+2008-06-10T00:04:00.000Z	ASULutzy	leeping2008	Oh, weird, I have no idea :P
+2008-06-10T00:04:00.000Z	ASULutzy	leeping2008	Gotta be a setting in sshd_config

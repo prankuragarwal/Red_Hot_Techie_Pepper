@@ -1,0 +1,24 @@
+2008-09-21T21:50:00.000Z	mapreduce		How could I make a program into something that can be controlled via /etc/init.d/myprog restart etc.?
+2008-09-21T21:50:00.000Z	mapreduce		It's a program I wrote in Haskell, but hopefully the answer is language-agnostic.
+2008-09-21T21:51:00.000Z	mapreduce		Ok, I'll read one.
+2008-09-21T21:51:00.000Z	erUSUL	mapreduce	check /etc/init.d/skeleton is a bash script that serves as example on how to do a init.d script
+2008-09-21T21:52:00.000Z	erUSUL	mapreduce	also check other scripts for clues. once you have the script ready just copy it to /etc/init.d/ and make it executable done
+2009-11-10T15:56:00.000Z	erUSUL	mapreduce	what version of ubuntu/kernel ?
+2009-11-10T15:57:00.000Z	mapreduce	erUSUL	From an older version (jaunty I think) to karmic.
+2009-11-10T15:59:00.000Z	erUSUL	mapreduce	maybe you are using still jaunty kernel ? jaunty: 2.6.28 karmic: 2.6.31 make sure you select the correct one from grub
+2009-11-10T15:59:00.000Z	mapreduce	erUSUL	And linux 2.6.22 - ouch
+2009-11-10T15:59:00.000Z	mapreduce	erUSUL	Ok, but I cannot now boot the system, other than from an Ubuntu live CD.
+2009-11-10T15:59:00.000Z	erUSUL	mapreduce	22 is ancient
+2009-11-10T16:00:00.000Z	erUSUL	mapreduce	then chroot to it and install the kernel
+2009-11-10T16:01:00.000Z	erUSUL	mapreduce	sudo mount --bind /dev/ /mount/point/of/root/dev/ <<< repeat this for /proc/ and /sys/ then sudo chroot /mount/point/of/root/
+2009-11-10T16:02:00.000Z	mapreduce	erUSUL	I see, thanks a lot.
+2009-11-10T16:02:00.000Z	erUSUL	mapreduce	once in there « aptitude install linux-image »
+2009-11-10T16:08:00.000Z	erUSUL	mapreduce	can you boot into the hard disk install ?
+2009-11-10T16:09:00.000Z	mapreduce	erUSUL	I'll try momentarily.
+2009-11-10T16:33:00.000Z	mapreduce	erUSUL	It wouldn't boot, which I think is related to fuse-utils' errors.  I've removed fuse-utils, am doing a bit of sitting around while apt-get dist-upgrade continues, then I'll see.
+2009-11-10T16:47:00.000Z	mapreduce	erUSUL	All done. :)
+2011-02-16T02:33:00.000Z	erUSUL	mapreduce	maybe you have to first install an inetd daemon
+2011-02-16T02:34:00.000Z	mapreduce	erUSUL	I'll have a look.
+2011-02-16T02:34:00.000Z	erUSUL	mapreduce	like xinetd
+2011-02-16T02:35:00.000Z	erUSUL	mapreduce	those are the two recomended by ubuntu
+2011-02-16T02:35:00.000Z	mapreduce	erUSUL	It looks like I need to add a file in /etc/init.d named git, guessing by the other things in there.

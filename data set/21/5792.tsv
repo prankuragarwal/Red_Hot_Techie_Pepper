@@ -1,0 +1,21 @@
+2007-08-07T07:50:00.000Z	Xoris	soundray	fabs is in math.h if i'm not mistaken, so i don't see why it shouldn't be available if you have build-essential. and if you didn't have math.h, well it would tell you...
+2007-08-07T07:51:00.000Z	soundray	Xoris	yeah, I've got math.h via build-essential on both.
+2007-08-07T07:53:00.000Z	Xoris	soundray	i suspected you did... now, the only things i can think of is either 1) it's not really the same program that you're compiling or 2) your RAM, or other hardware, is bad, and GCC is known to often make RAM errors quite visible
+2007-08-07T07:55:00.000Z	soundray	Xoris	I've made sure I downloaded the same archive onto both machines.
+2007-08-07T07:56:00.000Z	Xoris	soundray	dunno, write a .c test file with #include <math.h>, int main() { printf("%f\n", fabs(10.3)) }, and compile with gcc -lm. at least you'll see if there's actually a problem with fabs
+2007-08-07T07:56:00.000Z	soundray	Xoris	as for the RAM, I doubt that it is bad. The machine runs rock-solid with everything else.
+2007-08-07T07:57:00.000Z	soundray	Xoris	will try that, thanks
+2007-08-07T07:59:00.000Z	Xoris	soundray	well anyway tgmath.h shouldn't *have* to be included manually, math.h is enough to get fabs(). to make sure the installations are both valid, you could also try "debsums". and i would also try diffing dpkg --get-selections, not just with -dev...
+2007-08-07T08:03:00.000Z	Xoris	soundray	also if you *really* want to make sure the installations are the same... try something like find -xdev / | xargs -n 1 md5sum >machine1 - same on machine2, and diff the two ;)
+2007-08-07T08:03:00.000Z	soundray	Xoris	I'm having trouble with your sample program, too... Can we meet in #ubuntu-classroom?
+2007-08-07T14:00:00.000Z	soundray	Xoris	I found a solution to my earlier problem...
+2007-08-07T14:00:00.000Z	Xoris	soundray	won't that fill the file up until the disk is full?
+2007-08-07T14:01:00.000Z	soundray	Xoris	no. Note it's /dev/null, not /dev/zero
+2007-08-07T14:01:00.000Z	Xoris	soundray	what was it?
+2007-08-07T14:01:00.000Z	Xoris	soundray	oh, /dev/null right... never used it for input
+2007-08-07T14:02:00.000Z	soundray	Xoris	the program depended on libfltk-dev, which also comes with a math.h. Now I was giving the wrong include path, /usr/include/FL, when I should just have given it /usr/include
+2007-08-07T14:03:00.000Z	Xoris	soundray	"you" as in manually? you had to give the include path manually?
+2007-08-07T14:03:00.000Z	soundray	Xoris	yes, in the cmake config. It didn't find it spontaneously.
+2007-08-07T14:04:00.000Z	Xoris	soundray	weird though because /usr/include is the *default* include path... if you call gcc without any options at all, it'll just use that
+2007-08-07T14:05:00.000Z	Xoris	soundray	but then i've seen weirder build systems *shrug*
+2007-08-07T14:06:00.000Z	soundray	Xoris	thanks again for your pointer in the right direction.

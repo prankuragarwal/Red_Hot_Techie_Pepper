@@ -1,0 +1,22 @@
+2008-06-09T15:56:00.000Z	Shade_		 /msg ubottu etiquette
+2008-06-09T15:57:00.000Z	Shade_		Hey everyone... Looking for help with an USB device that doesn't show as /dev/ttyUSB*...
+2008-06-09T15:59:00.000Z	Shade_		My remote control receiver shows in lsusb but I've got no ttyUSB* in /dev
+2008-06-09T16:00:00.000Z	soundray	Shade_	this suggests that no driver is loaded. Run 'tail -f /var/log/syslog' and see what messages are generated in the log while you plug the receiver in.
+2008-06-09T16:01:00.000Z	Shade_	soundray	Sounds about right. USBView shows the device in red.
+2008-06-09T16:02:00.000Z	Shade_	soundray	http://paste.ubuntu.com/18707/
+2008-06-09T16:03:00.000Z	Shade_	soundray	So the driver is the one supposed to create ttyUSB files? That explains it.
+2008-06-09T16:03:00.000Z	Shade_	soundray	But I've seen no references to a VLSystem MPlay Blast driver online, from online instructions it seemed as if the device should just be there...
+2008-06-09T16:03:00.000Z	soundray	Shade_	please pastebin your lsusb output as well
+2008-06-09T16:05:00.000Z	Shade_	soundray	http://paste.ubuntu.com/18708/
+2008-06-09T16:06:00.000Z	Shade_	soundray	It's the Cygnal one.
+2008-06-09T16:10:00.000Z	soundray	Shade_	sorry, I can't find any hint on the web of your device being supported. Which URL has the instructions you were using?
+2008-06-09T16:13:00.000Z	Shade_	soundray	Actually, at this point I was just running standard lirc configuration
+2008-06-09T16:14:00.000Z	Shade_	soundray	It asks for a driver ( I chose VLSystem MPlay ) and then for a /dev/ttyUSB* entry (but none exist)
+2008-06-09T16:14:00.000Z	soundray	Shade_	are you using a serial LIRC receiver on a USB-serial adapter?
+2008-06-09T16:14:00.000Z	Shade_	soundray	It's an USB external device... From the name (Cygnal) I can see it's converting to serial
+2008-06-09T16:15:00.000Z	Shade_	soundray	It occurs to me that mine is the external USB version, and the driver
+2008-06-09T16:15:00.000Z	soundray	Shade_	I see. I'm sorry, I don't think I'll be able to help you.
+2008-06-09T16:15:00.000Z	Shade_	soundray	seems to have been written for the OEM version included in the Zaiman case#
+2008-06-09T16:16:00.000Z	Shade_	soundray	Thanks anyway. So the ttyUSB entries appear because the driver creates them?
+2008-06-09T16:16:00.000Z	soundray	Shade_	yes
+2008-06-09T16:16:00.000Z	Shade_	soundray	Thanks. That clears a lot, actually. Cheers

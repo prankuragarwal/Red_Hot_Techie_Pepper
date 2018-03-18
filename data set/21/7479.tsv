@@ -1,0 +1,21 @@
+2006-09-21T06:44:00.000Z	spudds		I know this is a generic Linux question but I just added a new Hard drive.  How do I actually get it added to the system so I can use it?
+2006-09-21T06:45:00.000Z	spudds		Is there a howto anywhere describing how to add a new HD to Ubuntu?
+2006-09-21T06:46:00.000Z	ladydoor	spudds	do you know the device name?
+2006-09-21T06:46:00.000Z	spudds	ladydoor	it's a scsi disk sdb?  I don't have an x environment btw.  Is it mkfs?
+2006-09-21T06:47:00.000Z	ladydoor	spudds	errrr...that's not what i meant. ok...basically there's file in your /etc dir called fstab, which has information about all of your partitions. to mount it, you need to tell ubuntu about it
+2006-09-21T06:48:00.000Z	ladydoor	spudds	to look at the sort of "device name" you'll be looking for, do less /etc/fstab to look at the file. other than that, i've got nothing on this :-)
+2006-09-21T06:48:00.000Z	spudds	ladydoor	 This is a a new disk.  Will it show in the fstab?
+2006-09-21T06:48:00.000Z	ladydoor	spudds	it will if you put it there. i'm suggesting you look at it so you'll know what you're looking for :-)
+2006-09-21T06:50:00.000Z	spudds	ladydoor	 I've looked in fstab.  I understand the general format of it from Sun/HP/etc.  Looking in the /dev directory, I see a device called sdb, which I assume is my new 2nd physical hard-drive.  Don't know what to do now...
+2006-09-21T06:51:00.000Z	ladydoor	spudds	sweet! that's good news. now, do sudo fdisk -l /dev/sdb to see the partition name(s) on it
+2006-09-21T06:51:00.000Z	spudds	ladydoor	 k, trying.
+2006-09-21T06:52:00.000Z	ladydoor	spudds	coool...
+2006-09-21T06:52:00.000Z	spudds	ladydoor	shows all the guts and then says there isn't a valid partition table (which I would expect)
+2006-09-21T06:52:00.000Z	ladydoor	spudds	aha! ok, and you say you're *not* in x?
+2006-09-21T06:53:00.000Z	spudds	ladydoor	no.  do I do a fdisk, create one large partition, do a makefs, then mount?
+2006-09-21T06:54:00.000Z	ladydoor	spudds	you could do that, yeah, sounds like you know what you're doing (better than i do when it comes to fdisk, actually). so i guess do that and then do sudo fdisk -l again, and then put the line for that partition in fstab & mount it.
+2006-09-21T06:55:00.000Z	spudds	ladydoor	thanks lady.  done it many times in Sun but unsure in linux. thx for the help.
+2006-09-21T06:56:00.000Z	ladydoor	spudds	np! i think you would've gotten there on your own :-)
+2006-09-21T07:05:00.000Z	spudds	ladydoor	fdisk: create a big partition (/dev/sdb1 in my case), mkfs -t ext3 /dev/sdb1. Mount and done. thx for the help
+2006-09-21T07:05:00.000Z	ladydoor	spudds	swweeeeeeet!
+2006-09-21T07:05:00.000Z	ladydoor	spudds	:-)

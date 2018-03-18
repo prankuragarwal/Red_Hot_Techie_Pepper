@@ -1,0 +1,23 @@
+2008-08-27T02:05:00.000Z	hakunin		hi guys. I'm trying to launch a desktop environment on Ubuntu 8.04 server without actually having access to video card... The reason is unusual, but I really need it to work. I can't seem to make xterm or anything like that run. Would appreciate help.
+2008-08-27T02:07:00.000Z	hakunin		i have an application that depends on some SCREEN being defined. that application needs to run on server. what's funny is that application works when I ssh -X to my server, run xterm, and from xterm launch that application.  However, it doesn't work autonomously when I just ssh without -X and xterm.
+2008-08-27T02:09:00.000Z	unop	hakunin	ssh user@somehost 'xterm -e "appname"'
+2008-08-27T02:09:00.000Z	unop	hakunin	actually.   ssh -X user@somehost 'xterm -e "appname"'
+2008-08-27T02:14:00.000Z	hakunin	unop	i just tried it. As far as I see, it opened the application with xterm running, then left it open and closed connection. problem is - even though it launched the application, once I ssh regularly and try to do smth - it gives me same problems. Like it needs some graphics to be actually accessible throuhgout its life.
+2008-08-27T02:15:00.000Z	hakunin	unop	i need something to simulate display, something similar to vncserver, but vncserver didn't do it : (
+2008-08-27T02:16:00.000Z	unop	hakunin	what is this app you are launching in xterm?
+2008-08-27T02:16:00.000Z	hakunin	unop	jaxer
+2008-08-27T02:16:00.000Z	hakunin	unop	it relies on mozilla
+2008-08-27T02:16:00.000Z	hakunin	unop	mozilla has dependencies on some display stuff
+2008-08-27T02:16:00.000Z	hakunin	unop	it's sort of like running mozilla on server
+2008-08-27T02:17:00.000Z	unop	hakunin	hmm .. is this a GUI app? or perhaps, does this require a display be set?
+2008-08-27T02:19:00.000Z	hakunin	unop	it does javascript on server-side.  it does require display to be set, i can see how it can't access it. We're doing some visual stuff on server-side javascript using "canvas".  i could install anything necessary as long as it running. desktop environment. it's just i don't think i have access to video card on VPS.  so need a workaround.
+2008-08-27T02:20:00.000Z	hakunin	unop	if I can make it work by doing ssh -X and launching xterm, there must be a way to make it work autonomously
+2008-08-27T02:21:00.000Z	unop	hakunin	ssh -X user@host 'nohup jaxer'  # perhaps
+2008-08-27T02:24:00.000Z	hakunin	unop	that does work
+2008-08-27T02:25:00.000Z	hakunin	unop	but it makes my laptop continuously maintain connection with the vps
+2008-08-27T02:25:00.000Z	hakunin	unop	as soon as i ctrl+c out of it  -- and try again, it doesn't work again.
+2008-08-27T02:26:00.000Z	hakunin	unop	basically it tricks server to think that my laptop is the display. but how could I do that without laptop? maybe I could ssh from server to itself with -X ?
+2008-08-27T02:26:00.000Z	unop	hakunin	i don't get this .. you want to run jaxer as some kind of service?
+2008-08-27T02:28:00.000Z	hakunin	unop	jaxer is apache-based server. it has to run all the time. but it needs some kind of display all the time
+2008-08-27T02:29:00.000Z	unop	hakunin	you could run jaxer in a fake X env with xvfb
+2008-08-27T02:30:00.000Z	hakunin	unop	thanks! i will look into this. this sounds very much like what i need

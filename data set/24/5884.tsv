@@ -1,0 +1,24 @@
+2008-05-22T20:02:00.000Z	Lichte		is there a way to mask packages or tell apt that the packages are already installed, when in fact they aren't?
+2008-05-22T20:03:00.000Z	clemyeats	Lichte	you can pin them with empty ones.. it's quite advanced...
+2008-05-22T20:04:00.000Z	Lichte	clemyeats	with apt, or something else?
+2008-05-22T20:05:00.000Z	Lichte	clemyeats	do I need to man dpkg?
+2008-05-22T20:06:00.000Z	clemyeats	Lichte	you need to make your own repository, set your apt preferences to pin yours with a higher priority, then make empty packages with the name of the packages you don't want to see.. depending on what you want to achieve it may not be worth the hassle :)
+2008-05-22T20:07:00.000Z	Lichte	clemyeats	well, some idiot hard coded openjava dependency to netbeans, so I either do that or dump Ubuntu for something else
+2008-05-22T20:08:00.000Z	clemyeats	Lichte	well in this case all you need to do is to repackage netbeans.
+2008-05-22T20:08:00.000Z	Lichte	clemyeats	that doesn't sound too hard
+2008-05-22T20:08:00.000Z	clemyeats	Lichte	that's quite easy.. apt-get source netbeans... change debian/control file, then dpkg-buildpackage and here goes :)
+2008-05-22T20:09:00.000Z	Lichte	clemyeats	wow, I'll do that, thanks for your help
+2008-05-22T20:09:00.000Z	Lichte	clemyeats	I need to do this as root?
+2008-05-22T20:09:00.000Z	clemyeats	Lichte	you're welcome. Bear in mind that you'll have to keep doing that for each upgrade though... unless you pin your repository.
+2008-05-22T20:09:00.000Z	clemyeats	Lichte	the package build yes.
+2008-05-22T20:10:00.000Z	Lichte	clemyeats	well, someone filed a bug on this, so I hope it will get fixed in Ubuntu
+2008-05-22T20:10:00.000Z	clemyeats	Lichte	it should be fixed quite fast, depending on the maintainer's availability.
+2008-05-22T20:13:00.000Z	Lichte	clemyeats	I hope so.......do I install my package with dpkg?  Will dpgk install deps?
+2008-05-22T20:13:00.000Z	Lichte	clemyeats	or can I use aptitude on my own created file?
+2008-05-22T20:13:00.000Z	clemyeats	Lichte	dpkg -i will only install the deb.
+2008-05-22T20:14:00.000Z	clemyeats	Lichte	you can use gdebi, it does both (local deb + deps)
+2008-05-22T20:14:00.000Z	Lichte	clemyeats	so how do I install my handmade package with deps?
+2008-05-22T20:14:00.000Z	Lichte	clemyeats	ah, thanks!
+2008-05-22T20:15:00.000Z	Lichte	clemyeats	I'm off to create a package, thanks again :)
+2008-05-22T20:16:00.000Z	clemyeats	Lichte	you're welcome. good luck
+2008-05-22T20:16:00.000Z	Lichte	clemyeats	thanks, later

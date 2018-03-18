@@ -1,0 +1,18 @@
+2008-08-04T02:29:00.000Z	lucas2_		hi.  just installed hardy on a fresh machine. Trying to figure out what to do to get my wireless usb wifi adapter to work.  ifconfig shows a wlan0, and the ubuntu network settings show a "wireless connection" entry.  I can't seem to find where I can select a network though.
+2008-08-04T02:31:00.000Z	magnetron	lucas2_	in the upper right corner of the screen?
+2008-08-04T02:33:00.000Z	lucas2_	magnetron	thanks.  it shows no network.  my mac sees the network at 90% just fine.  Does that automatically mean I don't have a correct driver ?
+2008-08-04T02:33:00.000Z	magnetron	lucas2_	no
+2008-08-04T02:34:00.000Z	lucas2_	magnetron	is there a way to figure out if I have a properly configured driver?
+2008-08-04T02:35:00.000Z	magnetron	lucas2_	in linux, you generally don't "install drivers", since they are an integral part of the Linux kernel. if you have a "wireless adapter" in your list, then there's a driver for it.
+2008-08-04T02:36:00.000Z	lucas2_	magnetron	in order for me to get more leads on how to fix this: is there a way to figure out which driver is being used for wlan0 ?
+2008-08-04T02:37:00.000Z	magnetron	lucas2_	"lsmod" will give you a list of all drivers that are in use
+2008-08-04T02:38:00.000Z	lucas2_	magnetron	I know.  the list is two pages long.  Is there a way to figure out which one is being used to generate /dev/wlan0 ?   (faster than googling for 80 different drivernames)
+2008-08-04T02:40:00.000Z	magnetron	lucas2_	try "lsmod | grep wlan0". but my experience suggests that it may be an Atheros based card, though
+2008-08-04T02:40:00.000Z	lucas2_	magnetron	what drivername should I look for for a atheros card?
+2008-08-04T02:41:00.000Z	magnetron	lucas2_	madwifi.
+2008-08-04T02:41:00.000Z	lucas2_	magnetron	not in the list :(
+2008-08-04T02:41:00.000Z	magnetron	lucas2_	lsusb may give you info about your hardwre
+2008-08-04T02:42:00.000Z	lucas2_	magnetron	 hey that helped.  My device is Bus005 Device 007: ID 050d:005c Belkin Components
+2008-08-04T02:43:00.000Z	magnetron	lucas2_	ok, that Device ID uniquely specifies your make and model
+2008-08-04T02:54:00.000Z	lucas2_	magnetron	While trying to get the wifi to work, I managed to remove the network info from the right top of the screen.  Do you happen to know where I could look to find it agian?
+2008-08-04T02:56:00.000Z	magnetron	lucas2_	you need to both have network-manager-applet running, and add a notificiation area to the panel

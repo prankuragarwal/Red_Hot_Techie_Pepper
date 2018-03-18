@@ -1,0 +1,19 @@
+2007-07-02T13:50:00.000Z	makaira		I've installed and un-installed, and then re-installed libiw-dev and still xsupplicant is telling me that I don't have the iwlib.h file. Anybody know what's going on?
+2007-07-02T13:50:00.000Z	bruenig	makaira	sudo updatedb && locate iwlib.h
+2007-07-02T13:51:00.000Z	makaira	bruenig	it doesn't seem to be doing anything. just a blinking cursor on the line after the command.
+2007-07-02T13:51:00.000Z	bruenig	makaira	right so it isn't installed
+2007-07-02T13:52:00.000Z	makaira	bruenig	nevermind
+2007-07-02T13:52:00.000Z	makaira	bruenig	found it. /usr/include/iwlib.h
+2007-07-02T13:52:00.000Z	bruenig	makaira	ok, so it might be an issue with xsupplicant then
+2007-07-02T13:53:00.000Z	makaira	bruenig	is there any way to point xsupplicant in the right direction?
+2007-07-02T13:53:00.000Z	bruenig	makaira	not sure, I assume you are compiling, see if there is anything in the README or INSTALL or ./configure --help
+2007-07-02T13:53:00.000Z	bruenig	makaira	I can't imagine it would be looking anywhere other than /usr/include
+2007-07-02T13:55:00.000Z	makaira	bruenig	any idea on how i would get rid of an old installation of xsupplicant if i had already successfully compiled and installed it?
+2007-07-02T13:55:00.000Z	bruenig	makaira	you would need to recompile it and then instead of make install do make uninstall
+2007-07-02T13:55:00.000Z	bruenig	makaira	or track down all the files and delete them
+2007-07-02T13:56:00.000Z	makaira	bruenig	thanks. i think i'll go with the first option :)
+2007-07-02T13:56:00.000Z	bruenig	makaira	when I used to compile stuff, I would put the directory I compiled it in in /opt since that tends to be unused and then when I needed to uninstall just cd into it and make uninstall sort of a little impromptu package management setup
+2007-07-02T13:57:00.000Z	makaira	bruenig	thanks.
+2007-07-02T14:06:00.000Z	makaira	bruenig	this is quite rediculous. i went and found the older version of xsupplicant so i could remove it, and now when i try to configure it it's telling me that /linux/wireless.h isn't there, even though it is.
+2007-07-02T14:07:00.000Z	bruenig	makaira	don't know
+2007-07-02T14:07:00.000Z	makaira	bruenig	and at one point in time, it obviously located it correctly because i have it installed right now.

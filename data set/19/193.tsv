@@ -1,0 +1,19 @@
+2012-07-06T06:06:00.000Z	blackstripes		anyone with mdadm experience?
+2012-07-06T06:08:00.000Z	blackstripes		ok, so i need help adding a 2TB drive to a 3x1TB raid 5
+2012-07-06T06:08:00.000Z	blackstripes		wanting to partition off 1tb and add that, no idea how to do it
+2012-07-06T06:09:00.000Z	escott	blackstripes	without a change of personality?
+2012-07-06T06:10:00.000Z	escott	blackstripes	you can't add one disk to raid five without restriping
+2012-07-06T06:10:00.000Z	escott	blackstripes	not with raid 5
+2012-07-06T06:12:00.000Z	escott	blackstripes	mdadm might support a raid 5 with N disk to a raid 5 with M disks with a personality switch but that is an extremely time consuming operation, and you should backup before even considering it
+2012-07-06T06:14:00.000Z	blackstripes	escott	i was planning on running this command - mdadm --add /dev/md0 /dev/sdf
+2012-07-06T06:15:00.000Z	escott	blackstripes	take a backup. power outage and everything is gone
+2012-07-06T06:18:00.000Z	escott	blackstripes	you should look at the wikipedia page on raid levels and make sure you understand what RAID 5 means
+2012-07-06T06:20:00.000Z	blackstripes	escott	i'm not sure what you are trying to tell me.  I've read it and (think) I understand things fine.  3 drives, with parity, ability to lose 1 drive w/otu loss of data
+2012-07-06T06:20:00.000Z	blackstripes	escott	i'm just trying to grow my array to increase storage. if i'm missing something please point it out to me
+2012-07-06T06:20:00.000Z	escott	blackstripes	and now you propose to add a 4th drive. so where does the data come from that ends up on this disk?
+2012-07-06T06:21:00.000Z	escott	blackstripes	currently a block is split into an EVEN and ODD section and a PARITY section. with that fourth disk EVEN and ODD is not a usable split you need to split the data into thirds not half
+2012-07-06T06:23:00.000Z	escott	blackstripes	im suggesting you take a full backup before you do anything that requires you rewrite the entire contents of the disks
+2012-07-06T06:24:00.000Z	blackstripes	escott	ok, time to buy a new drive
+2012-07-06T06:30:00.000Z	escott	blackstripes	move the start 2560 bytes
+2012-07-06T06:31:00.000Z	blackstripes	escott	using what utility
+2012-07-06T06:31:00.000Z	escott	blackstripes	the partition editor

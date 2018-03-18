@@ -1,0 +1,24 @@
+2006-01-10T15:53:00.000Z	netbutterfly		Hey there, I'd really appreciate a little help on a partition problem :)
+2006-01-10T15:53:00.000Z	dbecker	netbutterfly	what's the issue?
+2006-01-10T15:53:00.000Z	netbutterfly		Got an "error 16 : inconsistent filesystem structure" with grub
+2006-01-10T15:54:00.000Z	netbutterfly	dbecker	And therefore can't boot anything with grub
+2006-01-10T15:54:00.000Z	netbutterfly		So I booted with the live cd
+2006-01-10T15:54:00.000Z	netbutterfly		And tried a e2fsck : it tells me I have a superblock problem
+2006-01-10T15:54:00.000Z	netbutterfly	dbecker	Then I tried a few e2fsck -b XXXXX
+2006-01-10T15:55:00.000Z	netbutterfly	dbecker	ah ?
+2006-01-10T15:55:00.000Z	netbutterfly	dbecker	But here on the live cd, I can mount all my partitions without any problem
+2006-01-10T15:55:00.000Z	dbecker		netbfly: maybe a bad grub install? Bad MBR...
+2006-01-10T15:56:00.000Z	netbutterfly	dbecker	Well, I chrooted and tried a grub-install, but the problem remains
+2006-01-10T15:56:00.000Z	dbecker		netbfly: if you can mount all partitions from the live CD and fsck runs clean on all of them from the live CD then something else is going on
+2006-01-10T15:56:00.000Z	netbutterfly	dbecker	With sudo grub-install /dev/hda, it does install on the MBR, right ?
+2006-01-10T15:56:00.000Z	dbecker		nbfly: it should
+2006-01-10T15:57:00.000Z	dbecker		nbfly: can you specify boot params with the live CD?
+2006-01-10T15:57:00.000Z	netbutterfly	dbecker	sure, which ones ?
+2006-01-10T15:57:00.000Z	dbecker		nbfly: you could try to boot from the live CD setting the root to your real root partition
+2006-01-10T15:57:00.000Z	netbutterfly	dbecker	ah, nice idea
+2006-01-10T15:58:00.000Z	dbecker		nbfly: root=/dev/hda<#>
+2006-01-10T15:58:00.000Z	netbutterfly	dbecker	I guess I can find the right option by pressing F1, F2, etc., at boot time ?
+2006-01-10T15:58:00.000Z	netbutterfly	dbecker	root=, ok, great, I'll try that
+2006-01-10T15:58:00.000Z	netbutterfly	dbecker	thanks !
+2006-01-10T15:58:00.000Z	dbecker		nbfly: let me know if that works, I'll be on a while
+2006-01-10T15:58:00.000Z	netbutterfly	dbecker	thanks a lot, I'll reboot right away :)

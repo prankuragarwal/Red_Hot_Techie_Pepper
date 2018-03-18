@@ -1,0 +1,23 @@
+2011-08-20T01:33:00.000Z	glebihan	mfpockets	did you try removing the "libcupsys2" package ?
+2011-08-20T01:34:00.000Z	mfpockets	glebihan	 just did now, it seems if I try to remove anything I get the same error. :(
+2011-08-20T01:34:00.000Z	mfpockets	glebihan	even with -f
+2011-08-20T01:35:00.000Z	glebihan	mfpockets	what about "dpkg -r libcupsys2" ?
+2011-08-20T01:37:00.000Z	mfpockets	glebihan	 that gives this http://pastebin.ubuntu.com/670408/
+2011-08-20T01:37:00.000Z	glebihan	mfpockets	then try "dpkg --force-all -r libcupsys2"
+2011-08-20T01:39:00.000Z	mfpockets	glebihan	seems to have worked, running a apt-get install -f and getting further than before... for now
+2011-08-20T01:43:00.000Z	glebihan	mfpockets	still running ?
+2011-08-20T01:43:00.000Z	mfpockets	glebihan	yup its still going :)  looks like im in the clear...
+2011-08-20T01:44:00.000Z	mfpockets	glebihan	I just got these 2 errors http://pastebin.ubuntu.com/670415/
+2011-08-20T01:44:00.000Z	mfpockets	glebihan	portmap and samba
+2011-08-20T01:45:00.000Z	glebihan	mfpockets	do you need those packages ?
+2011-08-20T01:45:00.000Z	mfpockets	glebihan	dont think so :)
+2011-08-20T01:45:00.000Z	glebihan	mfpockets	ok try removing them then
+2011-08-20T01:46:00.000Z	mfpockets	glebihan	update made me loose sudo access :(  first gotta figure that out, I think I forgot root password *facepalm*
+2011-08-20T01:47:00.000Z	glebihan	mfpockets	how are you running all the dpkg and apt commands then ?
+2011-08-20T01:47:00.000Z	mfpockets	glebihan	I was in the sudoers file, then the sudo apt-get upgrade removeed me from sudoers file
+2011-08-20T01:48:00.000Z	mfpockets	glebihan	then I tried su - to find out I forgot root password.  Im logging into my vps control now I think I can change root pass
+2011-08-20T01:53:00.000Z	mfpockets	glebihan	ok im back in, I think I may need portmap but not sure, what is the switch to reinstall portmap and samba so I wont get the errors when doing updates?
+2011-08-20T01:54:00.000Z	glebihan	mfpockets	not sure as I don't where those errors came from
+2011-08-20T01:55:00.000Z	glebihan	mfpockets	I think the best thing to do would be first uninstalling those packages, finish the upgrade, then trying to reinstall them
+2011-08-20T01:55:00.000Z	mfpockets	glebihan	so just sudo apt-get remove?
+2011-08-20T01:56:00.000Z	glebihan	mfpockets	if it works, yes, otherwise use the dpkg command again

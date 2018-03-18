@@ -1,0 +1,24 @@
+2007-06-16T05:50:00.000Z	Sidey		anyone?
+2007-06-16T05:50:00.000Z	Sidey		I could not setup networking during install. not near my network.. now I gotta set it up on ubuntu server.. but I am lost
+2007-06-16T05:50:00.000Z	Sidey		any links or walk thru's?
+2007-06-16T05:51:00.000Z	Sidey		dhcp on main router..
+2007-06-16T05:51:00.000Z	Sidey		k
+2007-06-16T05:51:00.000Z	Sidey		frustrated.. I gotta get this sorted before i can go on
+2007-06-16T05:52:00.000Z	Sidey		the rest I can crash and burn thru.. but the newtworking is new to me via linux. I am or was a windows user
+2007-06-16T05:53:00.000Z	Sidey		its past the setup siimo.. I had to set to do not setup @ this time.. (or soemthign like that) due to not being near my network during install
+2007-06-16T05:54:00.000Z	Sidey		I am @ my login.. but I cant sort where or how to setup the networking to grab IP from router
+2007-06-16T05:55:00.000Z	nickrud	Sidey	a straight wired connection to a dhcp assigned ip address?
+2007-06-16T05:56:00.000Z	nickrud	Sidey	and you only have one network card in the computer?
+2007-06-16T05:58:00.000Z	nickrud	Sidey	ok.  add the following two lines to /etc/network/interfaces:   auto eth0      and then the line        iface eth0 inet dhcp
+2007-06-16T06:00:00.000Z	nickrud	Sidey	type this in a terminal:   sudo nano /etc/network/interfaces    <-- that's the file you add the two lines to
+2007-06-16T06:02:00.000Z	Sidey	nickrud	then restart server?
+2007-06-16T06:10:00.000Z	nickrud	Sidey	then it's not eth0, or your router's not offering leases
+2007-06-16T06:03:00.000Z	nickrud	Sidey	now type sudo ifup eth0
+2007-06-16T06:07:00.000Z	nickrud	Sidey	are you up?
+2007-06-16T06:08:00.000Z	Sidey	nickrud	no working leases in persistent database - sleeping
+2007-06-16T06:10:00.000Z	nickrud	Sidey	I think, mind yuo
+2007-06-16T06:11:00.000Z	nickrud	Sidey	then it's not the router , I agree
+2007-06-16T06:15:00.000Z	nickrud	Sidey	good, it's almost time for me to go home ;)
+2007-06-16T06:17:00.000Z	nickrud	Sidey	you can set up a static address:  a sample stanza for that interfaces file is at http://paste.ubuntu-nl.org/25800 . I have a work router that doesn't seem to talk to my linux box either; that's the config I Use
+2007-06-16T06:18:00.000Z	nickrud	Sidey	the resolvconf package is important, for somewhat obvious reasons
+2007-06-16T06:25:00.000Z	Sidey	nickrud	that link is perfect. will see if it works

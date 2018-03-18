@@ -1,0 +1,21 @@
+2011-01-26T18:19:00.000Z	velory		Hey I'm trying to install one deb package without installing lib*-mesa,  is it possible ?
+2011-01-26T18:19:00.000Z	velory		using dpkg ?
+2011-01-26T18:20:00.000Z	jrib	velory	use the repositories through APT, don't use .deb you download
+2011-01-26T18:20:00.000Z	velory	jrib	it's not in repository
+2011-01-26T18:20:00.000Z	velory		I have package
+2011-01-26T18:20:00.000Z	jrib	velory	what is "it" exactly?
+2011-01-26T18:20:00.000Z	velory	jrib	Panda3D arm build
+2011-01-26T18:21:00.000Z	jrib	velory	then you need to download a .deb meant for your version of ubuntu and satisfy requirements manually (by installing them from APT)
+2011-01-26T18:22:00.000Z	velory	jrib	I have deb package
+2011-01-26T18:22:00.000Z	jrib	velory	they seem to have a ppa on their website (http://www.panda3d.org/download.php?platform=ubuntu&version=1.0.0&runtime) are you using that?
+2011-01-26T18:22:00.000Z	velory	jrib	no
+2011-01-26T18:22:00.000Z	velory	jrib	can't I just add --ignore-depends=libegl-mesa etc.
+2011-01-26T18:23:00.000Z	jrib	velory	not really, unless you know you can.  Dependencies are there because a package needs another package to work right.  Use the ppa: https://launchpad.net/~panda3d/+archive/ppa
+2011-01-26T18:23:00.000Z	velory	jrib	I know I should ignore those dependencies
+2011-01-26T18:24:00.000Z	jrib	velory	use the ppa
+2011-01-26T18:28:00.000Z	jrib	velory	did that work?
+2011-01-26T18:28:00.000Z	velory	jrib	I'm already talking with that rdb guy, to make that build work so I have to build with ignoring those dependencies to not use those libraries
+2011-01-26T18:29:00.000Z	jrib	velory	then download the source package, remove the dependency, rebuild the package, and file a bug somewhere
+2011-01-26T18:29:00.000Z	velory	jrib	can't you just tell how to ignore packages ?
+2011-01-26T18:30:00.000Z	jrib	velory	no, this is the proper way.  You can force dpkg to install without the dep but then you'll always get complaints about it.  So rebuilding as I described is the optimal way to fix your issue.
+2011-01-26T18:31:00.000Z	jrib	velory	if you really want to ignore my advice, you can just take two minutes in the dpkg man page and search for "ignore-dep" I suppose...

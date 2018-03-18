@@ -1,0 +1,24 @@
+2011-01-11T01:24:00.000Z	Danny78		how do I apt-get the debian unstable version of a package?
+2011-01-11T01:24:00.000Z	erUSUL	Danny78	using debian unstable and not ubuntu ?
+2011-01-11T01:25:00.000Z	Danny78	erUSUL	 I have to because of a bug that prevents me from downloading dnsproxy for SAMBA
+2011-01-11T01:25:00.000Z	Danny78	erUSUL	 gpg --armor --export EEF818CF | sudo apt-key add -
+2011-01-11T01:25:00.000Z	Danny78	erUSUL	 ignore that
+2011-01-11T01:26:00.000Z	erUSUL	Danny78	mixing ubuntu and debain repos is not supported ...
+2011-01-11T01:26:00.000Z	Danny78	erUSUL	 there's no other way I've found to be able to install dnsproxy
+2011-01-11T01:27:00.000Z	erUSUL	Danny78	sudo apt-get install dnsproxy errors out? or what is exactly the problem with the ubuntu version of the package?
+2011-01-11T01:29:00.000Z	Danny78	erUSUL	 http://pastebin.com/rZz4Ggdm  that's the error output on install
+2011-01-11T01:30:00.000Z	Danny78	erUSUL	 it's a sub-process error (script error status one)
+2011-01-11T01:30:00.000Z	erUSUL	Danny78	i see
+2011-01-11T01:32:00.000Z	erUSUL	Danny78	i see https://bugs.launchpad.net/ubuntu/+source/dnsproxy/+bug/567008 <<< better option dwonload the deb from debian and install it; do not add the repo
+2011-01-11T01:33:00.000Z	Danny78	erUSUL	 thanks I'll try that
+2011-01-11T01:34:00.000Z	Danny78	erUSUL	 oh wait, thats what I was looking at already--  and that's my question--  how do I install the unstable debian package?
+2011-01-11T01:34:00.000Z	erUSUL	Danny78	download the deb from the packages site of debian do « sudo dpkg -i file.deb »
+2011-01-11T01:35:00.000Z	Danny78	erUSUL	 I get "cannot access archive: No such file or directory"
+2011-01-11T01:36:00.000Z	erUSUL	Danny78	http://www.debian.org/distrib/packages
+2011-01-11T01:36:00.000Z	erUSUL	Danny78	you have to dwonload the file
+2011-01-11T01:36:00.000Z	Danny78	erUSUL	 ah, sorry
+2011-01-11T01:36:00.000Z	erUSUL	Danny78	here http://packages.debian.org/sid/dnsproxy
+2011-01-11T01:37:00.000Z	erUSUL	Danny78	choose the right cpu arch ( amd64 or i386 )
+2011-01-11T01:39:00.000Z	erUSUL	Danny78	that's just becouse the package is half installed
+2011-01-11T01:39:00.000Z	erUSUL	Danny78	can you purge it « sudo apt-get purge dnsproxy » ?
+2011-01-11T01:43:00.000Z	Danny78	erUSUL	 does "sudo apt-get --purge autoremove dnsproxy && sudo apt-get clean" purge dnsproxy?  sam had suggested that which I did

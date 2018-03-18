@@ -1,0 +1,22 @@
+2009-03-19T05:09:00.000Z	alecwh_d		Every time I login, I need to do a 'sudo modprobe ndiswrapper' in order to get my wifi card working. Is there a way to fix this so it will automatically work when I turn on my computer?
+2009-03-19T05:10:00.000Z	bernz	alecwh_d	there is... you want to learn about "run levels", and the '/etc/init.d/' magical directory hierarchy
+2009-03-19T05:11:00.000Z	alecwh_d	bernz	i'll check it out, is there a quick way to do it?
+2009-03-19T05:11:00.000Z	bernz	alecwh_d	basically, when your computer starts, it goes through various "run levels", which are "how much you can interact with it" in most systems, so on one of the lower levels, you could add a command to its start script to launch your custom thingy (e.g. modprobe or whatever)
+2009-03-19T05:12:00.000Z	bernz	alecwh_d	if you poke around in '/etc/init.d/', you'll quickly see the general structure; then edit the appropriate 'rc' file as root (use sudo on your editor), and find a good spot... these scripts are shell-like, so if you know shell scripts (like batch files), you'll see the spot to put your command soon)
+2009-03-19T05:13:00.000Z	alecwh_d	bernz	thanks
+2009-03-19T05:13:00.000Z	bernz	alecwh_d	no worries
+2009-03-19T05:15:00.000Z	bernz	alecwh_d	on my desktop intrepid, i have '/etc/init.d/rc' -- that's not necessarily *the* best file to use, but it's close, and maybe okay -- the experts can make a call here if they are at their keyboards :-)
+2009-03-19T05:16:00.000Z	alecwh_d	bernz	looking through the file, it looks like code... while I can follow the logical structure, where should I put my command?
+2009-03-19T05:17:00.000Z	bernz	alecwh_d	well, you want to find the runlevel that will be probably "before" X starts (usually that's a high number), and you want it there for your "command line only" level (single-user, i think it's called)
+2009-03-19T05:18:00.000Z	bernz	alecwh_d	so maybe level 2 or 3... take a look at whatever handles those
+2009-03-19T05:19:00.000Z	bernz	alecwh_d	i'm going to look at my 'rc'...
+2009-03-19T05:20:00.000Z	alecwh_d	bernz	gah, I'm looking. I really should invest more time in learning linux directory structure.
+2009-03-19T05:20:00.000Z	bernz	alecwh_d	yes, once you get a few important branches "inside your head", things go much smoother/faster :-)
+2009-03-19T05:21:00.000Z	bernz	alecwh_d	near the end of the file is a 'rc.boot' mentioned... maybe that's the ticket?
+2009-03-19T05:21:00.000Z	alecwh_d	bernz	maybe I should put the command in the /etc/rc.boot file?
+2009-03-19T05:22:00.000Z	bernz	alecwh_d	precisely, that might get executed on every boot -- just what you want
+2009-03-19T05:22:00.000Z	bernz	alecwh_d	what i might also do is some research on this "rc.boot" -- is it a typical/common file on 'nix systems, etc?
+2009-03-19T05:22:00.000Z	bernz	alecwh_d	you might even do 'man rc.boot' for more info
+2009-03-19T05:23:00.000Z	alecwh_d	bernz	thanks a lot!
+2009-03-19T05:25:00.000Z	bernz	alecwh_d	okay, if that works -- maybe post a blurb about it here (for the log, and searchers) -- saying how you fixed your problem :-)
+2009-03-19T05:25:00.000Z	alecwh_d	bernz	okay!

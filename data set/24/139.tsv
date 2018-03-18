@@ -1,0 +1,24 @@
+2012-09-20T12:28:00.000Z	greek		Hi what is the latest version of firefox supported by ubuntu?
+2012-09-20T12:28:00.000Z	greek		Is it version 5? Because I see on the firefox website version 15
+2012-09-20T12:29:00.000Z	greek		how do I upgrade firefox from command line?
+2012-09-20T12:29:00.000Z	greek		11.04
+2012-09-20T12:30:00.000Z	crizis	greek	just upgrade to 12.04 already :)
+2012-10-17T14:55:00.000Z	crizis	greek	i would think images need to be with full path for such tools to work, at least
+2012-10-17T14:56:00.000Z	greek	crizis	yeah I've tried full path, as well as relative, local, sticking everything in the same folder, etc. No luck
+2012-10-17T14:59:00.000Z	crizis	greek	for an alternative, i've used http://www.html2pdf.fr/en this, which has had no probs with images
+2012-10-17T15:00:00.000Z	greek	crizis	does html2pdf handle html / css such as overlapping divs, floating, etc?
+2012-10-17T15:02:00.000Z	greek	crizis	ok so I can just run that for all the dependencies in that link you sent me
+2012-10-17T15:04:00.000Z	greek	crizis	what's xorg
+2012-10-17T15:10:00.000Z	crizis	greek	i'll test that thing myself..
+2012-10-17T15:11:00.000Z	greek	crizis	64bit static binary here: http://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2 and 32 bit here: http://code.google.com/p/wkhtmltopdf/downloads/detail?name=wkhtmltopdf-0.11.0_rc1-static-i386.tar.bz2&can=2&q=
+2012-10-17T15:12:00.000Z	crizis	greek	worked perfectly for me. tested the version from 12.04 repositories (sudo apt-get install wkhtmltopdf) and did wkhtmltopdf http://www.google.com google.pdf and images worked fine
+2012-10-17T15:14:00.000Z	greek	crizis	yeah that's not the static binary though, that's the ubuntu package, which unfortunately doesn't support certain features (custom page breaks being one of the more crucial ones). So we're trying to get the static binaries to work :)
+2012-10-17T15:16:00.000Z	crizis	greek	that doesn't work indeed. memory overflow and complains about that qpixmap
+2012-10-17T15:18:00.000Z	greek	crizis	ok I've had a breakthrough thanks to your help, installing xorg did the trick but then I just had to stick the images in the same folder as the outputted pdf file
+2012-10-17T15:20:00.000Z	crizis	greek	for local files, file:///path/image.jpg should work
+2012-10-17T15:20:00.000Z	greek	crizis	I didn't know I could do that! Will give it a try
+2012-10-17T15:21:00.000Z	crizis	greek	http://code.google.com/p/wkhtmltopdf/wiki/Usage take a look at comments there, there's lots of discussion about images
+2012-10-17T16:29:00.000Z	greek	crizis	pardon delay i was on a lunch break, but yeah, I can get the PDFs to show images now when running wkhtmltopdf from my command line when everything's in the same folder, but they don't show up when I run wkhtmltopdf from my php script (using relative paths to the images)
+2012-10-17T16:30:00.000Z	crizis	greek	check those comments ^ on the usage page at their wiki, there's tips. can't help more as haven't used the thing myself
+2012-10-17T16:31:00.000Z	greek	crizis	ah ok I missed that link thanks I'll check it out
+2012-10-17T16:33:00.000Z	greek	crizis	hey that was quick it's working now, that file:/// approach did the trick. Thanks again for all your help! You've saved us a lot of time :)

@@ -1,0 +1,21 @@
+2006-06-03T15:13:00.000Z	gavin		can anyone tell me what i can do to force my ubuntu install to NOT start anything graphical on boot up? i log in remotely with freenx and want to free up resources
+2006-06-03T15:14:00.000Z	feg	gavin	changin runlevel?
+2006-06-03T15:14:00.000Z	gavin	feg	yes i think thats what i want
+2006-06-03T15:15:00.000Z	feg	gavin	you can config your boot runlevel in /etc/inittab
+2006-06-03T15:15:00.000Z	gavin	feg	do you know of a page that has detailed info on editing that file? i don't quite understand how it works, even with the comments
+2006-06-03T15:17:00.000Z	feg	gavin	no. but you can change the line bout default runlevel
+2006-06-03T15:18:00.000Z	feg	gavin	change the number after id:
+2006-06-03T15:18:00.000Z	gavin	feg	my default runlevel appears to be 2... isn't that one below the normal graphical start up runlevel?
+2006-06-03T15:19:00.000Z	feg	gavin	then go to /etc/rc$yournumber and do "mv S13gdm K13gdm"
+2006-06-03T15:20:00.000Z	feg	gavin	2 is the default runlevel
+2006-06-03T15:20:00.000Z	feg	gavin	you can change to 3 for example, and then modify /etc/rc3.d
+2006-06-03T15:21:00.000Z	feg	gavin	renaming S13gdm to K13gdm
+2006-06-03T15:21:00.000Z	gavin	feg	i used that mv S13gdm K13gdm command. next time i boot it will stay at console then?
+2006-06-03T15:21:00.000Z	feg	gavin	this way you have a text mode boot
+2006-06-03T15:22:00.000Z	feg	gavin	did you do it in /etc/rc2.d?
+2006-06-03T15:22:00.000Z	gavin	feg	yes
+2006-06-03T15:22:00.000Z	feg	gavin	and you didn't change your runlevel in /etc/inittab, correct?
+2006-06-03T15:22:00.000Z	gavin	feg	correct
+2006-06-03T15:23:00.000Z	feg	gavin	so you should have a text mode next time
+2006-06-03T15:23:00.000Z	gavin	feg	great. thats what i wanted. thanks for the help.
+2006-06-03T15:23:00.000Z	feg	gavin	;-)

@@ -1,0 +1,22 @@
+2006-02-19T17:11:00.000Z	naetrick		Ok, has anyone here ever successfully built a custom kernel for Ubuntu?
+2006-02-19T08:09:00.000Z	naetrick		What are some requirements after installing a custom kernel on Ubuntu
+2006-02-19T08:09:00.000Z	naetrick		Something, _something_ really odd goes on
+2006-02-19T08:09:00.000Z	naetrick		besides that
+2006-02-19T08:09:00.000Z	naetrick		It can't find something on boot
+2006-02-19T08:10:00.000Z	naetrick		It tries to mount XFS, I believe it does, but then it can't mount /dev/root on /root
+2006-02-19T08:10:00.000Z	naetrick		I'm using the exact config as the stock kernel installed in ubuntu
+2006-02-19T08:11:00.000Z	hatake_kakashi	naetrick	wait.. XFS that's supposed to be either Xorg font server or the SGI XFS filesystem, which one are you referring to?
+2006-02-19T08:12:00.000Z	hatake_kakashi	naetrick	you are supposed to point mount the hdd/device/partition .. eg /dev/hda3 not /dev/root
+2006-02-19T08:12:00.000Z	naetrick	hatake_kakashi	That I do
+2006-02-19T08:13:00.000Z	hatake_kakashi	naetrick	wait.. /dev/root is XFS for yours?
+2006-02-19T08:16:00.000Z	naetrick	hatake_kakashi	Here are the errors I get: http://rafb.net/paste/results/AE1c5i99.html
+2006-02-19T08:18:00.000Z	hatake_kakashi	naetrick	try mounting it as 'sudo mkdir /mnt/root && mount -t xfs /dev/hda3 /mnt/root'
+2006-02-19T08:18:00.000Z	naetrick	hatake_kakashi	Manually?
+2006-02-19T08:20:00.000Z	hatake_kakashi	naetrick	yeah give it a try
+2006-02-19T08:21:00.000Z	naetrick	hatake_kakashi	Mounting it right now? It's already mounted
+2006-02-19T08:22:00.000Z	hatake_kakashi	naetrick	ok, you want that partition to be mounted on /root right? as /root directory?
+2006-02-19T08:23:00.000Z	naetrick	hatake_kakashi	I want the partition to be mounted as my main, root partition ('/'), yes
+2006-02-19T08:24:00.000Z	hatake_kakashi	naetrick	ack, you need to specify that in lilo.conf at boot.. I'm not too sure how lilo.conf went. However you need to specify that initally,
+2006-02-19T08:26:00.000Z	hatake_kakashi	naetrick	there's another way, but I never tried it.. its going through the method of mounting it similar to what I said, using chroot and then unmounting the previous / drive (becareful though)
+2006-02-19T08:27:00.000Z	naetrick	hatake_kakashi	I think it is configured correctly in my lilo.conf
+2006-02-19T08:29:00.000Z	hatake_kakashi	naetrick	imo.. that should be set, you need to reload lilo to update its specific settings that you specified in lilo.conf. When you reboot next time, lilo should mount /dev/hda3 as /

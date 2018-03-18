@@ -1,0 +1,23 @@
+2009-04-02T07:29:00.000Z	c0l2e		you cannot install other OS like windows XP when you already installed ubuntu right??
+2009-04-02T07:30:00.000Z	soreau	c0l2e	You can
+2009-04-02T07:30:00.000Z	soreau	c0l2e	You may have to do some repartitioning but it's quite doable
+2010-04-16T11:25:00.000Z	soreau	c0l2e	Can you pastebin the output of compiz from your terminal to pastebin.org?
+2010-04-16T11:32:00.000Z	c0l2e	soreau	 wait
+2010-04-16T11:33:00.000Z	c0l2e	soreau	 still there?
+2010-04-16T11:33:00.000Z	soreau	c0l2e	Just pastebin it
+2010-04-16T11:35:00.000Z	c0l2e	soreau	 here http://ubuntu.pastebin.com/5aKr91Hz
+2010-04-16T11:36:00.000Z	soreau	c0l2e	your drivers are using software rasterizer, pastebin your /var/log/Xorg.0.log
+2010-04-16T11:38:00.000Z	c0l2e	soreau	 here http://ubuntu.pastebin.com/2X9UVXAY
+2010-04-16T11:40:00.000Z	c0l2e	soreau	I've been trying to fix this via dpkg-reconfigure xserver-xorg but no help
+2010-04-16T11:40:00.000Z	soreau	c0l2e	The problem is [drm] failed to load kernel module "i915"
+2010-04-16T11:40:00.000Z	c0l2e	soreau	 what to do then?
+2010-04-16T11:41:00.000Z	soreau	c0l2e	What does it say when you try sudo modprobe i915 ?
+2010-04-16T11:43:00.000Z	c0l2e	soreau	 here
+2010-04-16T11:44:00.000Z	soreau	c0l2e	Seems like you have this old module lying around for some reason
+2010-04-16T11:44:00.000Z	c0l2e	soreau	 how can i fix it?
+2010-04-16T11:45:00.000Z	soreau	c0l2e	Try reinstalling linux-image-$(uname -r)
+2010-04-16T11:46:00.000Z	c0l2e	soreau	how can I do that?
+2010-04-16T11:46:00.000Z	soreau	c0l2e	I would move or rename this file first /lib/modules/2.6.31-20-generic/kernel/drivers/gpu/drm/i915/i915.ko so you know when you have it reinstalled
+2010-04-16T11:52:00.000Z	c0l2e	soreau	 some said its the intel driver update
+2010-04-16T11:53:00.000Z	c0l2e	soreau	how can I backport it?
+2010-04-16T11:53:00.000Z	soreau	c0l2e	Reinstall linux-image package for your kernel version

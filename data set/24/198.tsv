@@ -1,0 +1,24 @@
+2012-03-25T16:58:00.000Z	viktor		i got a radeon driver, but it's not set up / configured, or doesn't work, display is unclaimed. where can i fix that?
+2012-03-25T16:59:00.000Z	ljt	viktor	please run lspci -v in a terminal, and post the output to paste.ubuntu.com
+2012-03-25T17:01:00.000Z	viktor	ljt	http://paste.ubuntu.com/899078/
+2012-03-25T17:02:00.000Z	ljt	viktor	you did restart your system after installation, right?
+2012-03-25T17:03:00.000Z	viktor	ljt	it was already installed, but i did did reboot after trying to install, also purged the fglrx driver that wasn't working
+2012-03-25T17:04:00.000Z	viktor	ljt	i did add "nomodeset" to the grub, can that be related to the issue?
+2012-03-25T17:13:00.000Z	viktor	ljt	maybe this is relevant? kms is disabled, and radeon seems to be initialized
+2012-03-25T17:14:00.000Z	viktor	ljt	srry, forgot to paste what might be relevant http://paste.ubuntu.com/899095/
+2012-03-25T17:18:00.000Z	viktor	ljt	are you still there?
+2012-03-25T17:20:00.000Z	ljt	viktor	yes sorry, nomodeset is often the preferred option but if you haven't already - perhaps try without it
+2012-03-25T17:21:00.000Z	ljt	viktor	also, have you used this card with ubuntu before? (and had it working?)
+2012-03-25T17:23:00.000Z	viktor	ljt	i've had difficulties with lucid as well (using oneiric now) it only worked reasonably well under hardy (proprietary driver). You mean boot without nomodeset? i can't, nothing but black screen if i do..
+2012-03-25T17:24:00.000Z	ljt	viktor	right ok, check this out if you haven't already: https://wiki.ubuntu.com/X/Troubleshooting/FglrxInteferesWithRadeonDriver#Problem:%20%20Need%20to%20fully%20remove%20-fglrx%20and%20reinstall%20-ati%20from%20scratch
+2012-03-25T17:27:00.000Z	viktor	ljt	i have :) exept, i think, for the "more aggresive" recipe that purges both driver instead for just the amd catalyst unthing.
+2012-03-25T17:36:00.000Z	ljt	viktor	sorry I'm not sure how much more I can help, I'm no expert in this area and drawing a blank atm
+2012-03-25T17:37:00.000Z	viktor	ljt	no prob, one more thing though, apt-get recommends that i install additional package "linux-firmware", but it has no installation candidate, if i google for repo i get dell sites. so you think it's just useful for dell, and how do i get the repo?
+2012-03-25T17:45:00.000Z	ljt	viktor	I believe that linux-firmware is required for certain ati drivers
+2012-03-25T17:45:00.000Z	ljt	viktor	it should be available in all versions of ubuntu from lucid onwards
+2012-03-25T17:46:00.000Z	ljt	viktor	however in the multiverse repo
+2012-03-25T17:46:00.000Z	viktor	ljt	necessary for proprietary or open source?
+2012-03-25T17:48:00.000Z	ljt	viktor	I'm not sure - it doesn't specify but read this: https://bugs.launchpad.net/ubuntu/+source/xserver-xorg-video-ati/+bug/894693
+2012-03-25T17:51:00.000Z	viktor	ljt	can they make the names more confusing :p ?
+2012-03-25T17:52:00.000Z	viktor	ljt	http://paste.ubuntu.com/899141/
+2012-03-25T17:53:00.000Z	viktor	ljt	according to apt-get linux-firmware is already the newest version

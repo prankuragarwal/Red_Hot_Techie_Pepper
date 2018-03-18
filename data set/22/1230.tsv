@@ -1,0 +1,22 @@
+2010-08-10T17:21:00.000Z	reggi		i have a question related to dns. Last week I installed freenas and created an smb share so I could access it on my network. Last week I was able to access the freenas shared folders by > connecting to server > freenas. But I have played around with some settings on my dns server and now I can only access the freenas shared drive by typing the ipaddress only because the name 'freenas' no longer resolves. how would you guys trouble shoot this? (incidentally th
+2010-08-10T17:21:00.000Z	reggi		is is why I attempted to install or compile dhcp-4.2.0 but I have little idea what i'm doing lol)
+2010-08-10T17:21:00.000Z	ikonia	reggi	what is your dns running on
+2010-08-10T17:24:00.000Z	reggi	ikonia	ok the setup on my ubuntu desktop 10.04 (not server edition) is as follows. I have a vodafone mobile internet connection (ppp) which is shared on eth0 (using firestarter) and the output from eth0 goes to a switch.
+2010-08-10T17:24:00.000Z	ikonia	reggi	what is running your dns
+2010-08-10T17:25:00.000Z	reggi	ikonia	the ubuntu 10.04 desktop (the laptop i'm on currently)
+2010-08-10T17:25:00.000Z	ikonia	reggi	what dns server have you set up, and what change did you make to break it
+2010-08-10T17:27:00.000Z	reggi	ikonia	ok the main thing that changed is this. I originally used a M$ Vista laptop to connect the vodafone mobile internet and share using ICS and it acted as the gateway and DNS server for the network.
+2010-08-10T17:27:00.000Z	ikonia	reggi	ok - so the thing you've changed is not actually your DNS server, you've changed your whole network to make the ubuntu machine your connection gateway
+2010-08-10T17:28:00.000Z	reggi	ikonia	i don't know what dns (if it's even installed) is running on my ubuntu desktop - dhcp also does not work for my other clients, how do i check?
+2010-08-10T17:28:00.000Z	reggi	ikonia	that is right
+2010-08-10T17:30:00.000Z	reggi	ikonia	thanks for that. i did read through that before but I got stuck with the meaning of iptables - would you pls give me something to read with regards to iptables and also routing? thanks.
+2010-08-10T17:30:00.000Z	ikonia	reggi	you shouldn't need to change anything on routeing, just iptables forwarding, that's detailed in that link
+2010-08-10T19:33:00.000Z	ikonia	reggi	resolv.conf is dynamic, you don't have to restart to pickup changes
+2010-08-10T19:34:00.000Z	reggi	ikonia	i thought I had to /restart everytime i changed that file.
+2010-08-10T19:34:00.000Z	ikonia	reggi	/etc/resolv.conf ?
+2010-08-10T19:34:00.000Z	reggi	ikonia	yes /etc/resolv.conf (i'm troubleshooting why internet is not working on my laptop)
+2010-08-10T19:35:00.000Z	ikonia	reggi	it's dynamic you can change it on the fly
+2010-08-10T19:47:00.000Z	reggi	ikonia	and littlepenguin i finally got the internet to work. the reason it didn't work before was becuase my /etc/resolv.conf file was missing the text 'nameserver' before the dns address.
+2010-09-09T12:04:00.000Z	ikonia	reggi	no
+2010-09-09T12:04:00.000Z	ikonia	reggi	the graphical command is gksudo
+2010-09-09T12:05:00.000Z	reggi	ikonia	thanks, i'e learned something nu!

@@ -1,0 +1,18 @@
+2007-03-27T15:42:00.000Z	rausb0	BeepAU	probably the sound card is a onboard component of the nvidia chipset, using a sigmatel codec
+2007-03-27T15:45:00.000Z	BeepAU	rausb0	- you're probaly right. as when i go $ lspci , it says the audio device is nvidia
+2007-03-27T15:46:00.000Z	BeepAU	rausb0	- i tried to follow the nvidia path for a while and got nothing.
+2007-03-27T15:46:00.000Z	rausb0	BeepAU	which pci id is it?
+2007-03-27T15:47:00.000Z	BeepAU	rausb0	- mcp51
+2007-03-27T15:47:00.000Z	BeepAU	rausb0	- is that what you meant?
+2007-03-27T15:47:00.000Z	rausb0	BeepAU	no, i mean the pci id
+2007-03-27T15:48:00.000Z	rausb0	BeepAU	lspci -n   (identify the line which is the card)
+2007-03-27T15:49:00.000Z	BeepAU	rausb0	- i got alot of stuff with with that, most of them have '(rev a2)' at the end
+2007-03-27T15:49:00.000Z	rausb0	BeepAU	compare to the lspci output (without -n). identify the line in the lspci -n output which corresponds to the soundcard
+2007-03-27T15:50:00.000Z	rausb0	BeepAU	the beginning of the lines should be the same
+2007-03-27T15:51:00.000Z	BeepAU	rausb0	- 00:10.1
+2007-03-27T15:51:00.000Z	BeepAU	rausb0	- that?
+2007-03-27T15:52:00.000Z	rausb0	BeepAU	no, the vendor/product part of the line
+2007-03-27T15:54:00.000Z	BeepAU	rausb0	- -n says 00:10.1 0403: 10de:026c (rev a2)
+2007-03-27T16:04:00.000Z	rausb0	BeepAU	you need kernel module snd-hda-intel
+2007-03-27T16:05:00.000Z	BeepAU	rausb0	- that was the first thing i tried.
+2007-03-27T16:05:00.000Z	BeepAU	rausb0	- following the troubleshooting guide for sound on the ubuntu website.

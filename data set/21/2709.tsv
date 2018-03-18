@@ -1,0 +1,21 @@
+2012-05-28T19:46:00.000Z	kunji		Hi everyone, does anyone know how to forward packets for UPnP?  I have a desktop with mediatomb connected by CAT5 to a laptop that connects to my router via wireless.  If I connect the desktop by wireless to my router i can reach everything on mediatomb from my PS3 (via wireless to the router).  With this configuration though the laptop is the gateway for the desktop.  so router is 192.168.1.1, laptop connected to router at 192.168.1.6, lap
+2012-05-28T19:46:00.000Z	Pricey	kunji	Have you looked in network manager's settings? I found it very easy to 'bridge' last time I looked.
+2012-05-28T19:47:00.000Z	Pricey	kunji	(netowrk manager is the little icon next to the clock)
+2012-05-28T19:48:00.000Z	kunji	Pricey	Well, it is essentially a bridge, is it not?  And I'm not sure how well network manager will play with the changes I've made, could just end up with a mess couldn't I?
+2012-05-28T19:48:00.000Z	Pricey	kunji	Separate network cards requires 'effort' to bridge.
+2012-05-28T19:48:00.000Z	Pricey		Unless I've mistaken.
+2012-05-28T19:49:00.000Z	kunji	Pricey	I think I did my original setup that way some months ago just for forwarding to one comp, but I think for UPnP I need something a bit different
+2012-05-28T19:49:00.000Z	Pricey	kunji	By the way, your message was cut off at 'connected to router' so I had to guess at your problem ;)
+2012-05-28T19:51:00.000Z	kunji	Pricey	here's the rest  at 192.168.1.6, laptop acts as gateway (10.42.43.1) for desktop (10.42.43.53), I've managed to forward my tcp traffic with iptables on the laptop and can ping back and forth from the desktop to the rest of the network and vice versa.  So I think I just need a rule or two for iptables to get the UPnP working.    (didn't show the cut off on mine for some reason)
+2012-05-28T19:51:00.000Z	Pricey	kunji	Is there any reason why you want to do it with random iptables?
+2012-05-28T19:52:00.000Z	Pricey	kunji	I'd far and away reccomend getting rid of what you've done and using network-manager instead. It'll bridge the two. No messy NAT's.
+2012-05-28T19:52:00.000Z	Pricey	kunji	As far as the other machine will be concerned, it'll be on the real network.
+2012-05-28T19:52:00.000Z	kunji	Pricey	just that I don't think the network manager method was working out for me, I'm willing to try again though, I'm all ears ^_^
+2012-05-28T19:53:00.000Z	Pricey	kunji	I'm not on an ubuntu machine atm so I'm little use... but i know that it was easy peasy when i did it.
+2012-05-28T19:53:00.000Z	kunji	Pricey	So if I go into the network manager and to edit connection for my wired connection (to the desktop), under ipv4 settings, the method is set as "Shared to other computers"
+2012-05-28T19:54:00.000Z	Pricey	kunji	i think that sounds right
+2012-05-28T19:58:00.000Z	kunji	Pricey	Yeah, that seems to work great for just internet, but laptop keeps it's own ip for the connection, and the desktop gets it's ip from the laptop, not the router.  So I had to add a route to the router in order to ping back and forth, so now I thought all traffic should be going where it should, but the UPnP just doesn't seem to be working, so I was resorting to iptables because I think I needed to convince the laptop to send all traf
+2012-05-28T19:59:00.000Z	Pricey	kunji	that was the wrong option then... is there another one? 'bridge interfaces' or similar?
+2012-05-28T20:01:00.000Z	kunji	Pricey	they are, Automatic (DHCP), Automatic (DHCP) addresses only, Manual, Link-Local Only, Shared to other computers, and Disabled
+2012-05-28T20:01:00.000Z	Pricey	kunji	Maybe I'm just imagining it :-/ I've got to head off now. Check out https://help.ubuntu.com/community/BridgingNetworkInterfaces I still think you'd have better luck bridging than the other way.
+2012-05-28T20:01:00.000Z	kunji	Pricey	thanks for the help though, I remember seeing something like what you're saying in the past, don't see it here now though

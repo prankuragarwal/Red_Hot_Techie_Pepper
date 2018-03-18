@@ -1,0 +1,18 @@
+2010-05-20T04:17:00.000Z	a3ist		hey guys I am using imwheel to set up hotkeys for the extra functions on my mouse, but when I lock the screen and come back later, the process always loses its tty.  Is there a way to reclaim it?  Or hook a script to the event of unlocking the screen where i could kill/restart it?
+2010-05-20T04:18:00.000Z	jrib	a3ist	don't know, but I can tell you xbindkeys works fine.  imwheel lets you have application-specific binds, but if you aren't doing that then xbindkeys should be fine
+2010-05-20T04:18:00.000Z	a3ist	jrib	 Thanks, I'll check it out
+2010-05-20T04:20:00.000Z	jrib	a3ist	lshw will just give you more info, either is fine for what you ask
+2010-05-20T04:30:00.000Z	a3ist	jrib	 With xbindkeys, where do you find the right identifiers for inputs?  I don't see keysym.h or keysymdef.h anywhere
+2010-05-20T04:31:00.000Z	jrib	a3ist	xbindkeys -k is the easy way
+2010-05-20T04:32:00.000Z	a3ist	jrib	doesn't seem to pick up my extra mouse functionality :-/
+2010-05-20T04:33:00.000Z	jrib	a3ist	does xev see them?
+2010-05-20T04:34:00.000Z	a3ist	jrib	hard to tell but I don't think so.  Not all that familiar with xev
+2010-05-20T04:34:00.000Z	a3ist	jrib	 nm, got it via xev
+2010-05-20T04:35:00.000Z	jrib	a3ist	fwiw, I just use for example "b:4" for my mouse buttons even though xbindkeys -k shows me something more complicated looking
+2010-05-20T04:36:00.000Z	a3ist	jrib	 so "b:4" would correspond to "Button 4" in xev?
+2010-05-20T04:36:00.000Z	jrib	a3ist	I believe so
+2010-05-20T04:37:00.000Z	a3ist	jrib	 I'll give it a shot and let you know how it works
+2010-05-20T04:40:00.000Z	a3ist	jrib	 one last question...is there a way to bind a key to act as a different key, or can they only launch commands
+2010-05-20T04:40:00.000Z	jrib	a3ist	both :).  Here's an example of what I mean: "/usr/bin/xvkbd -xsendevent -text "\[Control_L]\[Page_Up]" &"
+2010-05-20T04:40:00.000Z	jrib	a3ist	note xvkbd is not installed by default
+2010-05-20T05:08:00.000Z	a3ist	jrib	I keep getting errors with different permutations of using xvkbd; they all result in "xvkbd: Mode_switch not available as a modifier; xvkbd: although ISO_Level3_Shift is used instead, AltGr may not work correctly"

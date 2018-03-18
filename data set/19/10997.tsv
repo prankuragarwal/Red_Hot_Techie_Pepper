@@ -1,0 +1,19 @@
+2006-06-07T15:48:00.000Z	slider2800		Hi ppl.
+2006-06-07T15:50:00.000Z	slider2800		GRUB problem -- again. : So. i finally managed to reinstall GRUB after a win XP reinst... but now i can't boot into XP. Its like Grub is resterting itself, AND i have to overwrite some stuff to be able to boot Ubutntu... Is there any way to wipe off Grub from the HD and reinstall it? or can i do something to fix this problem?
+2006-06-07T15:52:00.000Z	h3sp4wn	slider2800	look in /boot/grub/menu.lst - which partition is windows on
+2006-06-07T15:53:00.000Z	slider2800		one sec.
+2006-06-07T15:53:00.000Z	slider2800		root  (hd0,0)
+2006-06-07T15:54:00.000Z	slider2800	h3sp4wn	Windows is on the first partition, Ubuntu on the second one.
+2006-06-07T15:56:00.000Z	h3sp4wn	slider2800	look in /boot/grub/menu.lst - look at the examples bit for windows and copy that section to the very bottom of the file (under the ##end automagic ## ) - it is exactly the same as the one earlier in the file (hd0,0)
+2006-06-07T15:58:00.000Z	slider2800		The only difference between the example and the lines for XP is that in the exmaple there is no SAVEDEFAULT command.
+2006-06-07T16:00:00.000Z	slider2800	h3sp4wn	another question... is it possible that i messed up something seriously? When i reinstalled GRUB, i gave the commands "setup (hd0)" , then "setup (hd0,0)" and then "setup (dh0,1)" ... might this srew up the bootloader?
+2006-06-07T16:01:00.000Z	h3sp4wn	slider2800	I think that would install it to the boot part of the first and sectioned partitions but not the mbr (hence overwriting the windows bootloader)
+2006-06-07T16:02:00.000Z	h3sp4wn	slider2800	Normally you would just do setup hd0
+2006-06-07T16:03:00.000Z	slider2800	h3sp4wn	yeah. thats done... and GRUB starts normally, but without that little modding to the lines, i can't boot to Linux, and when i want to boot Windows, its just returning to Grub.
+2006-06-07T16:03:00.000Z	h3sp4wn	slider2800	The best idea is probably just to forget about windows and don't use it
+2006-06-07T16:04:00.000Z	slider2800	h3sp4wn	sorry, no can't do. i've got a serious amount of workfiles on that partition AND i still use XP for working... yeah. i know... i hate it too, but i need it for work.
+2006-06-07T16:04:00.000Z	h3sp4wn	slider2800	You could try running sudo update-grub
+2006-06-07T16:04:00.000Z	slider2800	h3sp4wn	okay
+2006-06-07T16:05:00.000Z	slider2800	h3sp4wn	and how about LILO. what if i download that with Synaptic... will it overwrite GRUB on the MBR ?
+2006-06-07T16:06:00.000Z	h3sp4wn	slider2800	Do you know how to setup lilo ?
+2006-06-07T16:06:00.000Z	slider2800	h3sp4wn	nope. :D

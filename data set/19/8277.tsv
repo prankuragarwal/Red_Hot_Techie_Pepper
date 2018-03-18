@@ -1,0 +1,19 @@
+2007-04-17T10:07:00.000Z	Slackr		can anybody tell me how ext3 is setup in ubuntu? I'm reading that ext3 filesystems can store my data in other places on the drive and make secure removal of important data difficult, but that ubuntu might setup ext3 with "Journal Data Ordered" by default which would make file removal possible
+2007-04-17T10:08:00.000Z	Slackr		Ubuntu 6.10 i386, for what it's worth
+2007-04-17T10:10:00.000Z	Slackr		let me rephrase that, does anybody know for sure what journal mode ubuntu uses with ext3 by default?
+2007-04-17T10:11:00.000Z	mc44	Slackr	ordered according to dmesg | grep ordered
+2007-04-17T10:13:00.000Z	Slackr	mc44	I hate to ask a real noob question, but what command do I issue to verify that for myself?
+2007-04-17T10:13:00.000Z	mc44	Slackr	the one I just typed: dmesg | grep ordered
+2007-04-17T10:14:00.000Z	Slackr	mc44	so that command doesn't actually change the way the filesystem is journaling, it just displays the info?
+2007-04-17T10:14:00.000Z	mc44	Slackr	correct
+2007-04-17T10:14:00.000Z	mc44	Slackr	is it ordered for you?
+2007-04-17T10:15:00.000Z	mc44	Slackr	ok, now you can help me, does that mean you can or cant securly delete things? :)
+2007-04-17T10:17:00.000Z	Slackr	mc44	that sound right to you?
+2007-04-17T10:17:00.000Z	mc44	Slackr	hard to tell from that, it seems so
+2007-04-17T10:18:00.000Z	mc44	Slackr	np, thanks for the info
+2007-04-17T10:38:00.000Z	Slackr	mc44	http://www.slac.stanford.edu/comp/unix/secure-erase.html
+2007-04-17T10:39:00.000Z	mc44	Slackr	which concludes...?
+2007-04-17T10:39:00.000Z	mc44	Slackr	ah great :) Thanks
+2007-04-17T10:39:00.000Z	Slackr	mc44	or that's my interpretation
+2007-04-17T10:40:00.000Z	Slackr	mc44	"The default file system in RHEL is named "ext3" which is, in fact, a journaling file system. However, by default it only journals a file's metadata, so file erasing tools should be effective. In particular, our limited testing suggests that shred should work on an ext3 file system in default mode."
+2007-04-17T10:41:00.000Z	mc44	Slackr	I agree with your intrepretation then :)

@@ -1,0 +1,22 @@
+2006-07-07T07:37:00.000Z	mark_		how can I rn or install a .deb package
+2006-07-07T07:37:00.000Z	mark_		I forgot how
+2006-07-07T07:37:00.000Z	mark_		thanks guys
+2006-07-07T07:39:00.000Z	mark_		does anyone know the library for libstdc5++ so i can apt-get it?
+2006-07-07T07:40:00.000Z	mark_		i'm trying to run fluxbox
+2006-07-07T07:40:00.000Z	LjL	mark_	sorry? i'm not sure what you're asking
+2006-07-07T07:40:00.000Z	mark_	LjL	I need libstdc5++ in order to run fluxbox
+2006-07-07T07:41:00.000Z	LjL	mark_	what happens when you try? (also, installing fluxbox should get it installed automatically, like with every package)
+2006-07-07T07:49:00.000Z	LjL	mark_	have you run "sudo apt-get update" recently? if you haven't, do
+2006-07-07T07:54:00.000Z	LjL	mark_	there's something you aren't realizing, namely that *your system is broken*. you won't fix it by simply "patching in" the packages you need. the fact that you can't install packages that are *part of the standard distribution* (libimlib2 is in Main) means you have a problem. try to solve that problem, don't just try to get fluxbox or whatever running in any way -- that'll just result in the same problem next time you want to install someth
+2006-07-07T07:55:00.000Z	LjL	mark_	as i said, have you tried doing "sudo apt-get update"? if so, does it give any error?
+2006-07-07T07:56:00.000Z	mark_	LjL	that command worked fine
+2006-07-07T07:56:00.000Z	LjL	mark_	and what about "apt-cache show libimlib2"?
+2006-07-07T07:57:00.000Z	LjL	mark_	can you pastebin your /etc/apt/sources.list file into the pastebin for me?
+2006-07-07T07:58:00.000Z	LjL	mark_	?!
+2006-07-07T07:59:00.000Z	LjL	mark_	what the... try the kubuntu pastebin, at... uh, at nowhere, it's not in the topic anymore :\
+2006-07-07T08:00:00.000Z	LjL	mark_	try one more time, if it still doesn't work use the #flood channel
+2006-07-07T08:01:00.000Z	LjL	mark_	ooh, you're running breezy. you should specify that, most people here will assume you're running dapper. anyway, i know what the problem is
+2006-07-07T08:02:00.000Z	LjL	mark_	you simply have every line commented out except for the CD-ROM line. so only the packages that are on the CD-ROM can be installed
+2006-07-07T08:02:00.000Z	LjL	mark_	yes, remove the leading "# " from... everything that starts with "deb" or "deb-src"
+2006-07-07T08:03:00.000Z	LjL	mark_	actually you might prefer to avoid activating backports. in that case, don't uncomment the lines that have "backports" in them
+2006-07-07T08:04:00.000Z	LjL	mark_	after you've uncommented everything and saved, do "sudo apt-get update", and then install fluxbox

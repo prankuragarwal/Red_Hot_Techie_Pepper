@@ -1,0 +1,23 @@
+2012-09-22T10:14:00.000Z	chovynz		is there a command i can do to 1) search my home folder, 2)go through each filename and folder, 3)find any spaces and replace the spaces with underscores? I recently did a backup of windows files and some of them have spaces, despite every effort to enforce a no spaces policy.
+2012-09-22T10:15:00.000Z	Snow-Man	chovynz	yes, that's possible to do, but it's a bit involved.  There's no single command to do it.
+2012-09-22T10:15:00.000Z	Snow-Man	chovynz	that's one of the good things about unix though, really, lots of small/simple utilities which you can put together to do what you need...
+2012-09-22T10:16:00.000Z	chovynz	Snow-Man	currently im doing it manually through filezilla, so, anything might be better :)
+2012-09-22T10:17:00.000Z	Snow-Man	chovynz	hahaha.
+2012-09-22T10:17:00.000Z	Snow-Man	chovynz	my recommendation would be to use a shell script, really.
+2012-09-22T10:18:00.000Z	Snow-Man	chovynz	you might be able to do it w/ a single find command, but it'd be kind of tricky.
+2012-09-22T10:22:00.000Z	Snow-Man	chovynz	ever created a shell script before?
+2012-09-22T10:22:00.000Z	chovynz	Snow-Man	nope
+2012-09-22T10:23:00.000Z	Snow-Man	chovynz	alright..  ever written an actual *text* file, using nano or vi or something?
+2012-09-22T10:25:00.000Z	Snow-Man	chovynz	are all the files in one directory?
+2012-09-22T11:04:00.000Z	Snow-Man	chovynz	working on it, give me a few.
+2012-09-22T11:10:00.000Z	chovynz	Snow-Man	how would i go about making this work on all subdirectories? (recursively?)
+2012-09-22T11:10:00.000Z	Snow-Man	chovynz	you would need to split it up into directory and file components
+2012-09-22T11:10:00.000Z	Snow-Man	chovynz	you can do that by running 'dirname' on $line, that'll give you the directory
+2012-09-22T11:11:00.000Z	chovynz	Snow-Man	 some of the directories have spaces too. is it pretty much the same proces but for dirs?
+2012-09-22T11:18:00.000Z	chovynz	Snow-Man	true...
+2012-09-22T11:18:00.000Z	chovynz	Snow-Man	is there some way of going to the last depth of directory and working back or does it not work that way?
+2012-09-22T11:19:00.000Z	Snow-Man	chovynz	here's my suggestion
+2012-09-22T11:20:00.000Z	Snow-Man	chovynz	create a set of directories which have some of these 'issues' and challenges
+2012-09-22T11:25:00.000Z	chovynz	Snow-Man	find ~ -name "* *" -type d, this limited my search and i found a few where i wanted instead of searching root which is / (or is that current directory?)
+2012-09-22T11:25:00.000Z	Snow-Man	chovynz	/ is 'root', current directory would be '.'
+2012-09-22T11:25:00.000Z	chovynz	Snow-Man	thanks

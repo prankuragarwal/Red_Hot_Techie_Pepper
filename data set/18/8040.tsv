@@ -1,0 +1,18 @@
+2007-10-16T15:00:00.000Z	tronyx		i'm not terribly familiar with linux file systems, can i move my home directory to another ext3 partition?
+2007-10-16T15:01:00.000Z	jhaig	tronyx	How do you mean?  You can create a new partition, and then mount it on /home.
+2007-10-16T15:02:00.000Z	jhaig	tronyx	Or you could change the path of your home directory, but I don't know why you would want to do that unless you have a lot of users.
+2007-10-16T15:02:00.000Z	jhaig	tronyx	OK, I've just read your previous comments as well, and it makes more sense now.
+2007-10-16T15:03:00.000Z	jhaig	tronyx	So, if I understand correctly, you have partitioned your disk to have 7G for the root partition, and then about 30G unused.  Is this correct?
+2007-10-16T15:04:00.000Z	jhaig	tronyx	OK, then you can create a new partition, copy the files from /home onto the new partition, empty /home and then mount the new partition on /home.
+2007-10-16T15:04:00.000Z	jhaig	tronyx	Is it already mounted?
+2007-10-16T15:06:00.000Z	jhaig	tronyx	Unless you want to change the partitioning, you can just do (something like): sudo cp -a /home/* /media/hda2
+2007-10-16T15:07:00.000Z	jhaig	tronyx	This will depend on how the new partition is mounted.
+2007-10-16T15:07:00.000Z	tronyx	jhaig	could I PM you?
+2007-10-16T15:07:00.000Z	jhaig	tronyx	OK
+2007-10-16T15:09:00.000Z	jhaig	tronyx	Well, I think you can do that too, but I am an advocate of having a separate /home partition.  Having said that, I have found a bug in the gutsy installer that has problems with this.  :-(
+2007-10-16T15:12:00.000Z	jhaig	tronyx	The bug I found is this: https://bugs.launchpad.net/ubuntu/+source/migration-assistant/+bug/152261  You are only likely to see it, though, if you already have a separate /home partition from a previous install.
+2007-10-16T15:13:00.000Z	tronyx	jhaig	and jmdc I will be thinking on these things but now I believe it's time for bed.  should something go wrong with the resizing I know I wouldn't be able to let it go until the morning
+2007-10-16T15:13:00.000Z	jhaig	tronyx	So that if you need to completely reinstall for any reason you can format the disk but keep the home partition intact.
+2007-10-16T15:19:00.000Z	jhaig	tronyx	Without the c:
+2007-10-16T15:19:00.000Z	jhaig	tronyx	Linux doesn't have drive letters.  Everything is mounted in a single directory tree.
+2007-10-16T15:20:00.000Z	jhaig	tronyx	It depends how you install it, but usually no.

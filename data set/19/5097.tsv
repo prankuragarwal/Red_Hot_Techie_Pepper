@@ -1,0 +1,19 @@
+2009-08-27T21:09:00.000Z	Trijntje		Is it possible for dmesg to get full? And if so, how can i clear it?
+2009-08-27T21:10:00.000Z	llutz	Trijntje	its a ring-buffer, will delete oldest entries when full
+2009-08-27T21:10:00.000Z	Trijntje	llutz	strange, its is full with some sort of TCP error message and it doesnt show the usb stick i just plugged in
+2009-09-03T22:19:00.000Z	llutz	Trijntje	what filesystem?
+2009-09-03T22:21:00.000Z	Trijntje	llutz	ext2, luks encrypted
+2009-09-03T22:21:00.000Z	llutz	Trijntje	use chown/chmod
+2009-09-03T22:22:00.000Z	Trijntje	llutz	yes, that works, but i am hoping there is a way to mount it properly so i dont have to do that every time i use the disk
+2009-09-03T22:23:00.000Z	llutz	Trijntje	you won't need to do it everytime if you've done it right once. permissions will be stored in the filesystem
+2009-09-03T22:24:00.000Z	Trijntje	llutz	ah ok, will that also work when i plug the disk in another pc with different users?
+2009-09-03T22:24:00.000Z	llutz	Trijntje	no
+2009-09-03T22:24:00.000Z	llutz	Trijntje	it will work for users with the same UID
+2009-09-03T22:25:00.000Z	Trijntje	llutz	so if they both have UID=1000 or so the changes will be permanent?
+2009-09-03T22:27:00.000Z	Trijntje	llutz	thanks a lot, I spent a lot of time trying to figure out why I couldnt mount it properly. Is this bug or a feature, because I was expecting it to behave as a normal filesystem when you decrypt it.
+2009-09-03T22:28:00.000Z	llutz	Trijntje	i have no clue about encrypted fs
+2009-09-03T22:29:00.000Z	Trijntje	llutz	i'm sorry, is this the default behavior for ext2 filesystems? because i have no such problem with a fat usb stick
+2009-09-03T22:30:00.000Z	llutz	Trijntje	its default for unix-filesystems
+2009-09-03T22:30:00.000Z	llutz	Trijntje	on usb and other external you mostly have vfat/ntfs, which work different
+2009-09-03T22:31:00.000Z	llutz	Trijntje	you cannot use unix-permissions on vfat/ntfs, that's why they have special mount-options
+2009-09-03T22:31:00.000Z	Trijntje	llutz	I see, thank you very much, you've explained a lot to me in a short time.

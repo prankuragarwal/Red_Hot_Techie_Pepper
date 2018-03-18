@@ -1,0 +1,23 @@
+2008-04-13T11:33:00.000Z	blag		gutsy is letting me read past the end of an array: http://paste.ubuntu-nl.org/63000/  (password is "student")   before segfaulting.   Is this bad?
+2008-04-13T11:34:00.000Z	Cpudan80	blag	that isn't gutsy's fault
+2008-04-13T11:34:00.000Z	blag	Cpudan80	?
+2008-04-13T11:35:00.000Z	Cpudan80	blag	When you do bad things in Java, Java slaps your hand
+2008-04-13T11:36:00.000Z	blag	Cpudan80	Okay, but shouldn't the memory space of a different program be protected from being read by my program?
+2008-04-13T11:37:00.000Z	Cpudan80	blag	Nope
+2008-04-13T11:37:00.000Z	Cpudan80	blag	Stack-smashing/buffer attacks rely on this fact
+2008-04-13T11:38:00.000Z	blag	Cpudan80	right, so why doesn't the OS disallow it?
+2008-04-13T11:39:00.000Z	Cpudan80	blag	normally you wouldn't program the thing to access memory you havent worked with
+2008-04-13T11:40:00.000Z	Cpudan80	blag	this is why you have to be especially careful when reading in data from the user
+2008-04-13T11:40:00.000Z	blag	Cpudan80	true, but I reading in command line flags, and if somebody enters in "-vvf", i want to parse both v's and the f into variables in my program
+2008-04-13T11:41:00.000Z	Cpudan80	blag	ok.... so you just do a string comparison
+2008-04-13T11:42:00.000Z	blag	Cpudan80	but then I have to think of every possible combination of strings that can be entered... and not just parse options individually...
+2008-04-13T11:42:00.000Z	blag	Cpudan80	is that how its normally done then?
+2008-04-13T11:43:00.000Z	Cpudan80	blag	C gives you an argv array and an argc value (length of the argv array)
+2008-04-13T11:43:00.000Z	Cpudan80	blag	just run through the argv array and do a string comparison on the thing to see if it is vvf or whatever
+2008-04-13T11:45:00.000Z	blag	Cpudan80	right, but they could also enter "vfv" or "fvv" and I would want it to do the same thing.  if I'm understanding you correctly, as the number of flags increases, the total number of permutations increases as well, and i would have to make cases for all permutations.
+2008-04-13T11:47:00.000Z	Cpudan80	blag	You're designing the program -- so why not just do
+2008-04-13T11:48:00.000Z	blag	Cpudan80	i guess ill have to, but it just kind of bugs me that i cant combine arguments then...
+2008-04-13T11:49:00.000Z	Cpudan80	blag	normally programs which accept multi char args (ex. tar -czvf) treat each character as a specific flag
+2008-04-13T11:49:00.000Z	Cpudan80	blag	maybe you can do that too somehow?
+2008-04-13T11:54:00.000Z	blag	Cpudan80	nevermind, i just figured it out.  I just convert every argument into a string and then decompose the string.  thanks for your help!
+2008-04-13T11:55:00.000Z	Cpudan80	blag	no problem

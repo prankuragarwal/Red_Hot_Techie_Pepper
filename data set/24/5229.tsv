@@ -1,0 +1,24 @@
+2006-09-19T07:51:00.000Z	chuckyp		Anyone know of a good text based system monitor for the desktop?
+2006-09-19T07:52:00.000Z	liquidtenmillion	chuckyp	Conky
+2006-09-19T07:53:00.000Z	chuckyp	liquidtenmillion	conky flickers in gnome
+2006-09-19T07:54:00.000Z	liquidtenmillion	chuckyp	Add the following lines to your .conkyrc  "own_window yes"   "own_window_transparent yes" and "own_window_type override"
+2006-09-19T07:55:00.000Z	chuckyp	liquidtenmillion	let me give that a try
+2006-09-19T07:55:00.000Z	liquidtenmillion	chuckyp	 and also add "double_buffer"
+2006-09-19T07:55:00.000Z	chuckyp	liquidtenmillion	are you running conky?
+2006-09-19T07:56:00.000Z	liquidtenmillion	chuckyp	yes, right now, in gnome 2.14 with no flicker
+2006-09-19T07:56:00.000Z	chuckyp	liquidtenmillion	cool lets see if I can add those.
+2006-09-19T07:57:00.000Z	liquidtenmillion	chuckyp	You might also need to add "on_bottom yes" to your .conkyrc also.
+2006-09-19T08:04:00.000Z	chuckyp	liquidtenmillion	Conky: failed to set up double buffer
+2006-09-19T08:05:00.000Z	liquidtenmillion	chuckyp	That's not good.
+2006-09-19T08:05:00.000Z	chuckyp	liquidtenmillion	yeah I don't get it
+2006-09-19T08:05:00.000Z	chuckyp	liquidtenmillion	thats definately why i'm getting the flicker
+2006-09-19T08:05:00.000Z	liquidtenmillion	chuckyp	It's probably a problem with your Xorg configuration file.  Run "sudo nano /etc/X11/xorg.conf" and then add this line "Load "dbe"" into the "Section "Module"" section and save and then restart x11.
+2006-09-19T08:06:00.000Z	liquidtenmillion	chuckyp	So near where you have "load glx" and "load dri" and such just add "Load "dbe"" also.
+2006-09-19T08:07:00.000Z	liquidtenmillion	chuckyp	DBE stands for double-buffer extension
+2006-09-19T08:07:00.000Z	chuckyp	liquidtenmillion	ahh gotcha yeah that was missing let me restart gdm brb
+2006-09-19T08:09:00.000Z	chuckyp	liquidtenmillion	okay that worked only thing that didn't wokr is I added it to the session as a startup program it loaded upon loggin in then when the wallpaper came up it disappeared
+2006-09-19T08:11:00.000Z	liquidtenmillion	chuckyp	I think I had problems with it starting too.  Make sure you start it AFTER nautilus starts up.  For me it only really works if i start it manually, otherwise nautilus tries to cover it.
+2006-09-19T08:11:00.000Z	chuckyp	liquidtenmillion	yeah that appears to be what happened.  Do you know much about configuring what information it displays?  is that all in the .conkyrc file?
+2006-09-19T08:12:00.000Z	liquidtenmillion	chuckyp	It's all in the .conkyrc file.  It's rather confusing at first too.
+2006-09-19T08:12:00.000Z	liquidtenmillion	chuckyp	typing in "man conky" gives you all of the different options kind of.
+2006-09-19T08:13:00.000Z	chuckyp	liquidtenmillion	ty

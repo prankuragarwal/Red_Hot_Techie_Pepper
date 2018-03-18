@@ -1,0 +1,19 @@
+2007-05-31T07:01:00.000Z	dromer		how can I make a program start on boot?
+2007-05-31T07:01:00.000Z	bruenig	dromer	system>preferences>sessions
+2007-05-31T07:02:00.000Z	dromer	bruenig	kde here, I'd like a commandline-way
+2007-05-31T07:02:00.000Z	bruenig	dromer	when I used kde for a day, I remember there being some .autostart directory in ~ or something similar, #kubuntu will know probably
+2007-05-31T07:02:00.000Z	bruenig	dromer	you can always add it to the ~/.xinitrc
+2007-05-31T07:02:00.000Z	dromer	bruenig	I don't want the program to start with the wm, but with the computer
+2007-05-31T07:03:00.000Z	dromer	bruenig	it's an audioscrobler for mpd
+2007-05-31T07:03:00.000Z	bruenig	dromer	oh you need an init script, or perhaps if it is a simple command add it to /etc/rc.local
+2007-05-31T07:03:00.000Z	dromer	bruenig	ah ok :)
+2007-05-31T07:04:00.000Z	dromer	bruenig	can you explain what I have to add?
+2007-05-31T07:05:00.000Z	dromer	bruenig	I just want mpdscribble to start, do I just put it above exit 0 ?
+2007-05-31T07:05:00.000Z	bruenig	dromer	if you are going the rc.local route, just put whatever commands you would put to execute it as if it were a terminal (remember that they will be run as root so no sudo or anything) yeah put it above the exit 0
+2007-05-31T07:05:00.000Z	dromer	bruenig	ok thnx :)
+2007-05-31T07:05:00.000Z	bruenig	dromer	it just gets sourced during boot so think of it like that
+2007-05-31T07:06:00.000Z	dromer	bruenig	what are other ways are there to start programs like this on boot?
+2007-05-31T07:07:00.000Z	bruenig	dromer	you can write an init script which has to follow the init scrpt rules and put it in /etc/init.d and symlink it to one of the rc#.d directories, I think that is it. I haven't used ubuntu in a while, there init is so much more difficult than it needs to be
+2007-05-31T07:08:00.000Z	dromer	bruenig	ah ok, but I only need to start mphscribble (no extra parameters or w/e), so I guess using /etc/rc.local is best :)
+2007-05-31T07:08:00.000Z	bruenig	dromer	yeah
+2007-05-31T07:08:00.000Z	dromer	bruenig	thnx :)

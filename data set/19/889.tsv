@@ -1,0 +1,19 @@
+2011-07-30T05:44:00.000Z	jahannan		WHRH4WK: "gdm start/running, process 983"
+2011-07-30T05:46:00.000Z	jahannan		WHRH4WK: Yeah, I found the fact that I'm stuck in a terminal when I disable the splash to be pretty suspect.
+2011-07-30T05:47:00.000Z	jahannan		WHRH4WK: Last message is "Enabling additional executable binary formats binfmt-support [ OK ]"
+2011-07-30T05:47:00.000Z	jahannan		WHRH4WK: There's a [fail] on "Stopping automatic crash report generation"
+2011-07-30T05:48:00.000Z	jahannan		WHRH4WK: No error messages, just "gdm start/running, process 1477"
+2011-07-30T05:49:00.000Z	jahannan		Hmmm
+2011-07-30T05:49:00.000Z	jahannan		Thanks, that gave me a lot of hints
+2011-07-30T05:49:00.000Z	jahannan		'Failed to load module "nvidia"'
+2011-07-30T05:49:00.000Z	jahannan		Guess it's time for that fine-toothed comb
+2011-07-30T05:51:00.000Z	jahannan		So I shouldn't get them via apt-get?
+2011-07-30T05:51:00.000Z	dr_willis	jahannan	 i would use the ones from the repos first..
+2011-07-30T05:51:00.000Z	dr_willis	jahannan	 the ones in the repos were workiing?
+2011-07-30T05:52:00.000Z	jahannan		I previously tried the ones in the repo with sudo apt-get install --reinstall nvidia-current, so I'll take that to mean that they aren't working :)
+2011-07-30T05:53:00.000Z	dr_willis	jahannan	 but they used to work? or have they never worked? check output of  sudo dkms status
+2011-07-30T05:54:00.000Z	jahannan	dr_willis	They worked for 10.10, but on installing Natty Narwhal they stopped working. I assume Natty included a new version of the drivers that is causing the problem.
+2011-07-30T05:54:00.000Z	dr_willis	jahannan	 this is a clean install of natty? or a upgrade?
+2011-07-30T05:55:00.000Z	jahannan		It's an upgrade
+2011-07-30T05:56:00.000Z	dr_willis	jahannan	 the other day i had to remove all the nvidia drivers for all my kernels , rebooted, then reinstalled them for the kernel i was using. for some odd reason some older versions/kernels had the current kernel messed up
+2011-07-30T05:56:00.000Z	dr_willis	jahannan	  sudo dkms status  - showed me then that i had several differnt versions installed that i had to remove.

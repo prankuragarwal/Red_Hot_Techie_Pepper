@@ -1,0 +1,23 @@
+2008-11-24T14:32:00.000Z	oxdot		hi ... anyone knows how to blacklist libata and enable old ide on intrepid ... it's even possible ?
+2008-11-24T14:32:00.000Z	ikonia	oxdot	thats an odd request, for what reason
+2008-11-24T14:32:00.000Z	ikonia	oxdot	keep in mind that everything in ubuntu is setup to use the current libatar model
+2008-11-24T14:33:00.000Z	oxdot	ikonia	^^' ... cant read an old ide disk on intrepid, but can do it on my ipcop box (2.4) and wanted to ddrescue it ...
+2008-11-24T14:33:00.000Z	ikonia	oxdot	well, thats a different kernel - that shouldn't be anything to do with libata
+2008-11-24T14:33:00.000Z	ikonia	oxdot	how are you trying to access the disk in 8.10
+2008-11-24T14:35:00.000Z	ikonia	oxdot	what device file are you running it against ?
+2008-11-24T14:36:00.000Z	ikonia	oxdot	/dev/$what
+2008-11-24T14:36:00.000Z	oxdot	ikonia	ubuntu/sysrecue /dev/sdx  ... ipcop /devhdx
+2008-11-24T14:37:00.000Z	ikonia	oxdot	is the device removable or mounted in the chassis
+2008-11-24T14:37:00.000Z	oxdot	ikonia	internal (on an old nforce2 board)
+2008-11-24T14:37:00.000Z	ikonia	oxdot	is teh forcedeath drivers loaded ?
+2008-11-24T14:38:00.000Z	oxdot	ikonia	appears not (lsmod | grep '*force*') ... it is an WD400GB
+2008-11-24T14:39:00.000Z	ikonia	oxdot	worth loading the forcedeath drivers
+2008-11-24T14:39:00.000Z	ikonia	oxdot	also check if dmesg/var/log/syslog shows up the disk at boot time
+2008-11-24T14:41:00.000Z	oxdot	ikonia	it does ... i can acces other partition on the drive (witch is 'diying') but the 1st and the last are not accessible. I cant test forcedeath right now (its mounted on ipcop, but i take a look ...)
+2008-11-24T14:43:00.000Z	oxdot	ikonia	any idea why i cant acces theses partitions on ubuntu, but can copy around on ipcop ?
+2008-11-24T14:43:00.000Z	ikonia	oxdot	I'd guess (and it is just a guess) that the older 2.4 driver doesn't do any sort of error checking, where as teh new one may do and won't allow you to mount a damaged disk
+2008-11-24T14:45:00.000Z	oxdot	ikonia	but it tell me that the device does not exist (special device does not exist ... ) even if fdisk -l list every thing ... ???
+2008-11-24T14:45:00.000Z	ikonia	oxdot	thats still driver access
+2008-11-24T14:46:00.000Z	oxdot	ikonia	well ... any way thks for the hint ;) gonna look further ...
+2008-11-24T14:47:00.000Z	ikonia	oxdot	no poroblem, but I really don't think it has anything to do with libata (to save time wasting)
+2008-11-24T14:48:00.000Z	oxdot	ikonia	ok (thks for save me some time and maybe my conf ;) )... i just finished dl Acc-Knoppix, maybe it use the old one ...

@@ -1,0 +1,24 @@
+2009-07-08T08:50:00.000Z	Fohn		I am trying to install morphing-tools to build a morphix live-cd. I added the repository, "deb http://www.morphix.org/debian unstable/", to /etc/apt/sources.list and performed apt-get update, however when I try to install the right package it says there is no such package. Is this due to how I have the repo listed in sources.list, or what?
+2009-07-08T08:52:00.000Z	bruenig	Fohn	pastebin your sources.list
+2009-07-08T08:55:00.000Z	bruenig		!pm | Fohn
+2009-07-08T08:56:00.000Z	Fohn		http://pastebin.com/d7964d8ad
+2009-07-08T08:56:00.000Z	bruenig	Fohn	try removing that '/' on the end of unstable
+2009-07-08T08:56:00.000Z	Fohn	bruenig	Will do, thanks.
+2009-07-08T08:57:00.000Z	Fohn	bruenig	I get ": Malformed line 60 in source list /etc/apt/sources.list (dist parse)"
+2009-07-08T08:57:00.000Z	bruenig	Fohn	that line is bogus
+2009-07-08T08:57:00.000Z	bruenig	Fohn	deb http://www.morphix.org/debian jaunty unstable
+2009-07-08T08:57:00.000Z	bruenig	Fohn	it should have something before the unstable
+2009-07-08T08:58:00.000Z	bruenig		don't know what it is, but it should have something there
+2009-07-08T08:58:00.000Z	bruenig		check the repo
+2009-07-08T08:59:00.000Z	Fohn	bruenig	Alright, I'll try messing around and putting different stuff in, if what you said still doesn't work.
+2009-07-08T08:59:00.000Z	bruenig	Fohn	the syntax should be deb url distro reponame
+2009-07-08T08:59:00.000Z	bruenig	Fohn	what you listed was just deb url reponame, the distro is left out
+2009-07-08T09:00:00.000Z	Fohn	bruenig	Ah, ok thanks. Hopefully that will solve my problem.
+2009-07-08T09:00:00.000Z	bruenig	Fohn	unless it is actually deb http://morphix.org/ debian unstable
+2009-07-08T09:00:00.000Z	bruenig		which would make some sense
+2009-07-08T09:00:00.000Z	Fohn		Yeah that seems to be the case
+2009-07-08T09:00:00.000Z	Fohn		because it says that the jaunty package is nonexistant
+2009-07-08T09:01:00.000Z	Fohn		and when I had it as it was previous I was getting no errors in apt-get update, just wasn't having the desired package available afterwards
+2009-07-08T09:05:00.000Z	Fohn	bruenig	Reviewing the log of 'apt-get update', I see that the parts with the morphix repo are preceded by 'Ign' as opposed to 'hit', could this be part of the issue?
+2009-07-08T09:07:00.000Z	bruenig	Fohn	well ign means ignore so
+2009-07-08T09:08:00.000Z	Fohn	bruenig	I got that much, I just don't know how to make it not ignore it

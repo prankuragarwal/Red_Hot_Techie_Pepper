@@ -1,0 +1,22 @@
+2011-06-06T03:46:00.000Z	heffay		I need some help figuring out why my ubuntu box suddenly wont connect to a shared folder on my network
+2011-06-06T03:46:00.000Z	heffay		no its a samba share on a debian box
+2011-06-06T03:47:00.000Z	heffay		the only computer that refuses to connect to it is ubuntu
+2011-06-06T03:48:00.000Z	heffay		wired and wireless clients all over the house
+2011-06-06T03:48:00.000Z	heffay		the debian box hosting the share is wired though
+2011-06-06T03:49:00.000Z	heffay		why not? because im not going to set up a whole new share and filesystem JUST because ubuntu doesn't want to play nice. macs and windows and other debian boxes connect just fine
+2011-06-06T03:51:00.000Z	heffay		So, does anyone have ideas on how to troubleshoot this?
+2011-06-06T03:52:00.000Z	heffay		if i smbclient -L Host i get (Error NT_STATUS_HOST_UNREACHABLE)
+2011-06-06T03:53:00.000Z	ikonia	heffay	can't get to that host, network/firewall/service not running
+2011-06-06T03:53:00.000Z	heffay	ikonia	what?
+2011-06-06T03:54:00.000Z	ikonia	heffay	"NT_STATUS_HOST_UNREACHABLE" it can't talk to that service over the network for some reason
+2011-06-06T03:55:00.000Z	ikonia	heffay	ok - so work on the comms between the two hosts
+2011-06-06T03:57:00.000Z	ikonia	heffay	checking the comms between the two hosts
+2011-06-06T03:57:00.000Z	ikonia	heffay	sure, do some tests to make sure the two hosts can see each other on the required ports, telnet is a good test to hit ports
+2011-06-06T04:02:00.000Z	ikonia	heffay	what tests have you done so far ?
+2011-06-06T04:02:00.000Z	ikonia	heffay	it does, ufw - however what have you done to test this as I suggested
+2011-06-06T04:04:00.000Z	ikonia	heffay	telnet to the port, see if a connection is made, or an error mesage comes back (send nonsense to it)
+2011-06-06T04:07:00.000Z	ikonia	heffay	ahhh, dns
+2011-06-06T04:10:00.000Z	ikonia	heffay	what does the samba log on the debian box say
+2011-06-06T04:11:00.000Z	ikonia	heffay	that's cups - not samba
+2011-06-06T04:12:00.000Z	ikonia	heffay	you're interest in something to do with your client connecting,
+2011-06-06T04:12:00.000Z	ikonia	heffay	there is the central samba log, and the individual client log on the debian box, both ip and hostname referenced

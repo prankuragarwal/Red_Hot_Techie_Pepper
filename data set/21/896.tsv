@@ -1,0 +1,21 @@
+2011-12-29T06:33:00.000Z	escott	d1g1ta1	use a VCS like git
+2011-12-29T06:25:00.000Z	escott	d1g1ta1	why are you expecting failures?
+2011-12-29T06:29:00.000Z	d1g1ta1	escott	because I used cp to copy a subfolder tree and the first copy failed (usb) and the second worked, so I need something fault tolerant and self recovering because USB sucks
+2012-01-03T05:10:00.000Z	escott	d1g1ta1	when you make install everything will be installed under /usr/local
+2012-01-03T04:54:00.000Z	escott	d1g1ta1	the path doesn't have much to do with installing. the path is where the system checks in order to run the program
+2012-01-03T05:03:00.000Z	escott	d1g1ta1	you are assuming that if you move something from c:\program files that it will work on windows which isn't always true. usually a program looks for libraries and in a particular place, but if your path is correct a well written binary should be runnable from anywhere
+2012-01-03T05:03:00.000Z	d1g1ta1	escott	if I could get half my programs to install on the USB drive that would be a big improvement
+2012-01-03T05:04:00.000Z	escott	d1g1ta1	why are you doing this?
+2012-01-03T05:05:00.000Z	d1g1ta1	escott	security, disk space, etc
+2012-01-03T05:05:00.000Z	d1g1ta1	escott	tiny HD, giant USB
+2012-01-03T05:07:00.000Z	escott	d1g1ta1	not sure how it helps security, but if you are concerned about space then look to set the usb as a mountpoint for something like /usr/local or /usr/games. in the past /usr could be its own mountpoint, but thats increasingly harder (and you won't get a bootable system without the usb)
+2012-01-03T05:08:00.000Z	d1g1ta1	escott	yes, that's what I'm worried about... do you know how to make the package manager or make etc to install there?
+2012-01-03T05:08:00.000Z	escott	d1g1ta1	the thing to do is use the disk analyzer (or du) to figure out what is using the most space and is least critical and create a separate mount point for that
+2012-01-03T05:08:00.000Z	escott	d1g1ta1	you can always use a --prefix-dir when running ./configure if you are building by hand
+2012-01-03T05:08:00.000Z	d1g1ta1	escott	I'm good if I just don't install anything more on the internal drive...
+2012-01-03T05:09:00.000Z	d1g1ta1	escott	 oh, so ./configure --prefix-dir ?
+2012-01-03T05:10:00.000Z	escott	d1g1ta1	./configure --prefix=/usr/local and then set your fstab to mount the usb on /usr/local
+2012-01-03T05:12:00.000Z	d1g1ta1	escott	is there a way to make it go to /usb/usr/bin ?
+2012-01-03T05:13:00.000Z	escott	d1g1ta1	sure just change the prefix. /usr/local is the traditional label is all
+2012-01-03T05:15:00.000Z	d1g1ta1	escott	so in my case, can I do ./configure --prefix=/usb/usr/bin ?
+2012-01-03T05:15:00.000Z	escott	d1g1ta1	yes

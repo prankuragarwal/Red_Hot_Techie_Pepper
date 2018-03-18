@@ -1,0 +1,18 @@
+2007-04-12T07:15:00.000Z	systemd0wn		anyone have a quick recommendation for re-sizing my ubuntu partition?  GUI would be nice.  Want to play with another OS.
+2007-04-12T07:15:00.000Z	bruenig	systemd0wn	gparted
+2007-04-12T07:16:00.000Z	bruenig	systemd0wn	you are going to have to do it in live cd though if it is your root partition
+2007-04-12T07:16:00.000Z	systemd0wn	bruenig	_nnx_, thanks.
+2007-07-12T12:34:00.000Z	bruenig	systemd0wn	I would imagine it uses iwconfig to determine the ssid, then iwconfig to configure the card and then dhclient to acquire an ip, that is how I would do it at least. I know that is how wifi-radar does it, I have never used nm-applet though
+2007-07-12T12:34:00.000Z	bruenig	systemd0wn	the first one should say iwlist to determine the ssid
+2007-07-12T12:35:00.000Z	systemd0wn	bruenig	i figured something like that.  But my problem is whats running in the background and auto-connecting so that i can stop it. :P
+2007-07-12T12:35:00.000Z	bruenig	systemd0wn	kill it
+2007-07-12T12:35:00.000Z	systemd0wn	bruenig	whats IT?
+2007-07-12T12:35:00.000Z	systemd0wn	bruenig	you mean nm-applet?
+2007-07-12T12:36:00.000Z	bruenig	systemd0wn	I don't know, see ps -A and see if any of the names look right, it may be nm-applet, I think that is what ubuntu goes with
+2007-07-12T12:37:00.000Z	systemd0wn	bruenig	good idea.  there is "NetworkManager" , "NetworkManagerD", and "nm-applet" the last probably just being the GUI front-end
+2007-07-12T12:38:00.000Z	bruenig	systemd0wn	the second one would be the daemon and the first one is likely the actual thing located at /usr/sbin/networkmanager, you could probably kill the first two
+2007-07-12T12:39:00.000Z	systemd0wn	bruenig	i like that idea.  if it breaks i will just re-start them
+2007-07-12T12:41:00.000Z	systemd0wn	bruenig	for the record they both have man pages, NetworkManager and NetworkManagerDispatcher
+2007-07-12T12:42:00.000Z	systemd0wn	bruenig	ya i used wifi-radar for a bit, but i guess im getting used to networkmanager
+2007-07-12T12:43:00.000Z	bruenig	systemd0wn	I like that you can launch it with sudo therefore meaning no password, I know networkmanager requires keyring, and that it is standalone so I can shortcut with keyboard seeing as its only use is on a laptop and all
+2007-07-12T12:46:00.000Z	systemd0wn	bruenig	dont think i ever used the shortcut

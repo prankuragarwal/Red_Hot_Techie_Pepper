@@ -1,0 +1,19 @@
+2010-05-29T10:29:00.000Z	gurjeet		I am trying to reset my root password. I started Ubuntu 9.10 in recovery mode from the GRUB menu, but at a subsequent screen it is still asking for root passwrod!!! Is the Ubuntu runlevel 1 broken?
+2010-05-29T10:30:00.000Z	phlak_user	gurjeet	another old way of doing it is appending the word single to the end of the kernel line; it should drop you into the root shell
+2010-05-29T10:31:00.000Z	gurjeet	phlak_user	I think thats what the recovery option has at the end of kernel line
+2010-05-29T10:31:00.000Z	phlak_user	gurjeet	if you press e on that option in grub, you might be able toconfirm
+2010-05-29T10:33:00.000Z	gurjeet	phlak_user	yes.. the recovery mode's kernel line _does_ have single at the end.. not I am going to reboot by editing the normal GRUB entry and adding single to it..
+2010-05-29T10:34:00.000Z	phlak_user	gurjeet	ok let us know if that works
+2010-05-29T10:36:00.000Z	gurjeet	phlak_user	nope.. even that lead me to the "Recovery Menu" screen with 4 options, and when I choose "root    Drop to root shell prompt" it says: "Give root password for maintenance (Control D  to continue)"
+2010-05-29T10:36:00.000Z	gurjeet	phlak_user	This is all heppening in VirtualBox VM
+2010-05-29T10:37:00.000Z	phlak_user	gurjeet	oh ok; what happens if you press ctl-d?
+2010-05-29T10:37:00.000Z	gurjeet	phlak_user	back to the "Recovery Menu" screen with those 4 options :(
+2010-05-29T10:39:00.000Z	gurjeet	phlak_user	options are: "resume    resume normal boot", "dpkg    repair broken packages", "root ... mentioned above..", :xfix Try to fix X server"
+2010-05-29T10:40:00.000Z	phlak_user	gurjeet	can you add this to the kernel line instead of single --> rw init=/bin/bash
+2010-05-29T10:45:00.000Z	gurjeet	phlak_user	thanks.. that worked..
+2010-05-29T10:45:00.000Z	phlak_user	gurjeet	yw
+2010-05-29T10:45:00.000Z	gurjeet	phlak_user	I am sorry but I didn't understand that "yw"..
+2010-05-29T10:45:00.000Z	phlak_user	gurjeet	yw -> you're welcome
+2010-05-29T10:46:00.000Z	gurjeet	phlak_user	IMHO Ubuntu recovery mode is broken then..
+2010-05-29T10:46:00.000Z	phlak_user	gurjeet	or they made it safer ?\
+2010-05-29T10:47:00.000Z	gurjeet	phlak_user	a bit too safe to be usable by even a hacker !!! single mode is supposed to work on all linux distros.. but no ..

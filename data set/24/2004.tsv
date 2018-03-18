@@ -1,0 +1,24 @@
+2010-03-18T20:21:00.000Z	Industrial		Hi. I'm getting this error when I run synaptic/apt-get; https://gist.github.com/1f0aeadd871791e0483b
+2010-03-18T20:21:00.000Z	Industrial		running the command provided yields another error
+2010-03-18T20:22:00.000Z	DopeGhoti	Industrial	what is the other error you get?
+2010-03-18T20:23:00.000Z	Industrial	DopeGhoti	my PC froze when trying to install a wireless driver (proprietary) so I guess that messed dpkg over. Can I reset it?
+2010-03-18T20:24:00.000Z	DopeGhoti	Industrial	Industrial interesting; that's the first time I've seen the --reconfigure -a command not fix things.  you could try an apt-get clean perhaps?
+2010-03-18T20:24:00.000Z	Industrial	DopeGhoti	sure
+2010-03-18T20:24:00.000Z	Industrial	DopeGhoti	same thing unfortunately
+2010-03-18T20:28:00.000Z	Industrial	DopeGhoti	I still see some broadcome wireless drivers in /var/lib/dpkg/updates, I'll try installing it again (hope that works..) and see if it crashed the system again :P I _am_ running inside Wubi though.
+2010-03-18T20:29:00.000Z	DopeGhoti	Industrial	wubiness shouldn't break wireless (or dpkg, for that matter); good luck!
+2010-03-18T20:35:00.000Z	Industrial	DopeGhoti	hmm, I removed (and backed up) $ sudo rm /var/lib/dpkg/updates/*; fixed it. (I did back them up but meh :P)
+2010-03-18T20:35:00.000Z	DopeGhoti	Industrial	glad you found a solution!
+2010-03-18T20:44:00.000Z	Industrial	DopeGhoti	it seems my dpkg problem is not yet fixed; https://gist.github.com/9dfe26bc4e9007407172
+2010-03-18T20:46:00.000Z	DopeGhoti	Industrial	try apt-get --reinstall install dkms
+2010-03-18T20:50:00.000Z	Industrial	DopeGhoti	hmm, no go. I also tried just removing the broadcom wireless package (can I force it?)
+2010-03-18T20:51:00.000Z	DopeGhoti	Industrial	force removal?  Sure, apt-get --purge --force remove packagename
+2010-03-18T20:51:00.000Z	Industrial	DopeGhoti	https://gist.github.com/b210ed03d271f0ebfa9c
+2010-03-18T20:54:00.000Z	DopeGhoti	Industrial	try this:  apt-get --reinstall install dkms fakeroot bcmwl-kernel-source
+2010-03-18T20:55:00.000Z	Industrial	DopeGhoti	it seems no matter what I do it keeps hanging on the post-removal script of bcmwl-kernel-source
+2010-03-18T21:00:00.000Z	Industrial	DopeGhoti	I guess manually removing files would be the only way out here? but thats recipe for disaster :p
+2010-03-18T21:01:00.000Z	DopeGhoti	Industrial	there must be a way, but it's out of my league I'm afraid :(
+2010-03-18T21:01:00.000Z	Industrial	DopeGhoti	should I try in #debian?
+2010-03-18T21:02:00.000Z	Industrial	DopeGhoti	also thanks for the time ;)
+2010-03-18T21:02:00.000Z	DopeGhoti	Industrial	it's worth a shot; just don't tell 'em you're using ubuntu. Apt works the same with both distros
+2010-03-18T21:13:00.000Z	Industrial	DopeGhoti	it seems debian people like collectively jumping on anything vaguely smelling of ubuntu and throwing it out the channel

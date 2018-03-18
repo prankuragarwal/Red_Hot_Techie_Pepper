@@ -1,0 +1,22 @@
+2010-07-17T18:28:00.000Z	silv3r_m00n		hi there
+2010-07-17T18:29:00.000Z	silv3r_m00n		on this LAN there are 5 computers and all in dhcp mode , isn't is possible to give each computer a name , so that when accessing each other from browser , it can be like http://somename/ rather than http://192.168.0.101/   ?
+2010-07-17T18:31:00.000Z	silv3r_m00n		the router is allocating each computer its ip , so the dns service has to run on the router I guess ?
+2010-07-17T18:32:00.000Z	Ganymede	silv3r_m00n	if they're all ubuntu or osx machines, you can access them with <computername>.local thanks to zeroconf/bonjour/avahi, on windows machines, it may or may not work depending on version and installed software
+2010-07-17T18:33:00.000Z	silv3r_m00n	Ganymede	3 are ubuntu 5 are windows
+2010-07-17T18:33:00.000Z	Ganymede	silv3r_m00n	try ping computername.local and see if it resolves the IP properly, replacing "computername" with the actual host name
+2010-07-17T18:33:00.000Z	silv3r_m00n		and all in dhcp mode
+2010-07-17T18:33:00.000Z	Ganymede	silv3r_m00n	zeroconf should work regardless of if the machine gets its IP via DHCP or not
+2010-07-17T18:34:00.000Z	silv3r_m00n	Ganymede	hmmm , zeroconf , so what's its equivalent for windows ?
+2010-07-17T18:35:00.000Z	silv3r_m00n		by the way how do I configure zeroconf ?
+2010-07-17T18:36:00.000Z	Ganymede	silv3r_m00n	in windows xp, it was provided by apple's bonjour software, i don't know about windows vista and 7, it might have it built in. on linux, the software is called avahi-daemon and on osx, it's called bonjour
+2010-07-17T18:37:00.000Z	silv3r_m00n		ok , I installed avahi-daemon
+2010-07-17T18:40:00.000Z	Ganymede	silv3r_m00n	for ubuntu desktop, it should work out of the box for recent versions, and for windows, i could never figure out how to get it to work...i just install adobe creative suite and that installs bonjour automatically i think
+2010-07-17T18:40:00.000Z	silv3r_m00n		is there are good vnc client I can install from synaptic ?
+2010-07-17T18:41:00.000Z	silv3r_m00n		amazing , it was already working
+2010-07-17T18:41:00.000Z	Ganymede	silv3r_m00n	https://help.ubuntu.com/community/HowToZeroconf
+2010-07-17T18:41:00.000Z	Ganymede	silv3r_m00n	vinagre is the vnc client that is usually installed by default in ubuntu desktop
+2010-07-17T18:41:00.000Z	silv3r_m00n		how do I change my computer name ?
+2010-07-17T18:41:00.000Z	Ganymede	silv3r_m00n	i usually edit the file /etc/hostname and reboot, but there are probably better ways
+2010-07-17T18:42:00.000Z	silv3r_m00n		ah cool , so simple
+2010-07-17T18:42:00.000Z	Ganymede	silv3r_m00n	yeah, as ubottu said, edit /etc/hosts also to reflect the change
+2010-07-17T18:43:00.000Z	Ganymede	silv3r_m00n	you can probably get away with not rebooting if you restart avahi-daemon and syslog and a few other daemons that remember your hostname

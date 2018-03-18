@@ -1,0 +1,23 @@
+2009-08-13T10:12:00.000Z	SmithX		scratch that--I can see video
+2009-08-13T10:12:00.000Z	SmithX		still no sound though, even though I'm part of the audio group
+2009-08-13T10:14:00.000Z	SmithX		got another noobie question
+2009-08-13T10:15:00.000Z	SmithX		anyone know how to use apt-get to tell you from what package a file is from?
+2009-08-13T10:15:00.000Z	SmithX		like, with rpm you'd do rpm -qf <file> or something
+2009-08-13T10:17:00.000Z	SmithX		but, when I do, say, "apt-file find /usr/bin/renice" for example, it gives me dozens of results
+2009-08-13T10:17:00.000Z	SmithX		it should only have been installed from a single package
+2009-08-13T10:18:00.000Z	SmithX		so, apt-file search is actually not what I want, since it apparently finds where your file is in *all possible packages*
+2009-08-13T10:18:00.000Z	SmithX		whereas what I want is to know what package it was actually installed from
+2009-08-13T10:19:00.000Z	crdlb	SmithX	apt-file find /usr/bin/renice gives two results her, one for /usr/bin/renice and one for /usr/bin/reniced
+2009-08-13T10:19:00.000Z	crdlb	SmithX	two results here, that is
+2009-08-13T10:20:00.000Z	SmithX	crdlb	but it's still searching all packages that it knows of--what I want is for it to tell me which package it was actually installed from
+2009-08-13T10:20:00.000Z	crdlb	SmithX	dpkg -S will do that
+2009-08-13T10:21:00.000Z	crdlb	SmithX	relatedly, dpkg -L will list the files in an installed package
+2009-08-13T10:21:00.000Z	SmithX	crdlb	yes! thanks! dpkg -S seems to work perfectly!
+2009-08-13T10:21:00.000Z	SmithX	crdlb	this is more like the rpm command that I'm familiar with
+2009-08-13T10:22:00.000Z	SmithX	crdlb	dpkg -L is another think I wanted to know about--thanks again
+2009-08-13T10:22:00.000Z	SmithX	crdlb	why does ubuntu have 2 package managers?
+2009-08-13T10:22:00.000Z	crdlb	SmithX	do you mean apt-get and dpkg, or what?
+2009-08-13T10:22:00.000Z	SmithX	crdlb	yeah
+2009-08-13T10:23:00.000Z	crdlb	SmithX	apt-get:yum::dpkg:rpm
+2009-08-13T10:24:00.000Z	crdlb	SmithX	I mean dpkg is the actual package manager; apt-get just handles fetching dependencies and repositories
+2009-08-13T10:24:00.000Z	SmithX	crdlb	thanks for the info

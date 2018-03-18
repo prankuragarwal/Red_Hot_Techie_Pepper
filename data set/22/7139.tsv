@@ -1,0 +1,22 @@
+2006-05-27T07:12:00.000Z	gholias		Hi guys, Im a new ubuntu user and need some help
+2006-05-27T07:12:00.000Z	DBO	gholias	sure, whats your problem?
+2006-05-27T07:16:00.000Z	gholias	DBO	did you undestand my problem? my english is poor
+2006-05-27T07:16:00.000Z	DBO	gholias	is there a cable plugged into the second card?
+2006-05-27T07:17:00.000Z	gholias	DBO	 yes, and the ubuntu show me it at devices manager, but associate with ethx
+2006-05-27T07:18:00.000Z	DBO	gholias	please enter the command "ifconfig" into a terminal and put the output at pastebin
+2006-05-27T07:19:00.000Z	gholias	DBO	root@servidor:~# ifconfig eth1 up
+2006-05-27T07:21:00.000Z	DBO	gholias	"gedit /var/log/kernel" and put that in pastebin
+2006-05-27T07:23:00.000Z	gholias	DBO	http://paste.ubuntu-nl.org/14729
+2006-05-27T07:28:00.000Z	DBO	gholias	"gedit /var/log/kernel" and put that in pastebin
+2006-05-27T07:29:00.000Z	gholias	DBO	/var/log/kernel isnt a file
+2006-05-27T07:29:00.000Z	DBO	gholias	"gedit /var/log/kern.log" and put that in pastebin
+2006-05-27T07:33:00.000Z	gholias	DBO	http://paste.ubuntu-nl.org/14731
+2006-05-27T07:35:00.000Z	DBO	gholias	the kernel isnt seeing the thernet card...
+2006-05-27T07:35:00.000Z	gholias	DBO	realtek
+2006-05-27T07:36:00.000Z	DBO	gholias	go look and see if you can find it in the hardware list
+2006-05-27T07:37:00.000Z	DBO	gholias	yes, I can see that in your kernel log...  you are only getting 1 ethernet device detected, I think you have a driver issue
+2006-05-27T07:41:00.000Z	gholias	DBO	 look, searching on google, i found a tutorial that said to add eth1 info at /etc/modprobe.conf, but this file isnt in my ubuntu
+2006-05-27T07:43:00.000Z	DBO	gholias	yes, use /etc/modprobe.d/aliases instead
+2006-05-27T07:46:00.000Z	gholias	DBO	/etc/modprobe.d/aliases dont list eth0, should i add this line alias eth1 8139too?
+2006-05-27T07:47:00.000Z	gholias	DBO	8139too is the modulo of realtek cards
+2006-05-27T07:48:00.000Z	DBO	gholias	do whatever your walkthrough tells you do, I havent configured one of those cards ever, I was just pointing you to the file you were looking for =P

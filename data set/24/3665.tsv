@@ -1,0 +1,24 @@
+2007-11-23T22:52:00.000Z	darkentity		i tried manually configuring the grub menu.lst but nothign works
+2007-11-23T22:53:00.000Z	darkentity		i did the usual hda (0,1) etc and added it probably and nothing
+2007-11-23T22:54:00.000Z	darkentity		grub displays the windows xp pro list that i created but when i enter windows it says an error on screen
+2007-11-23T22:54:00.000Z	darkentity		like it doenst know the parameters or whatever
+2007-11-23T22:54:00.000Z	darkentity		juano explain to me more
+2007-11-23T22:55:00.000Z	darkentity		i know
+2007-11-23T22:55:00.000Z	darkentity		i did that
+2007-11-23T22:55:00.000Z	darkentity		but i still get error
+2007-11-23T22:56:00.000Z	darkentity		i put (0,1)
+2007-11-23T22:56:00.000Z	darkentity		and nothing
+2007-11-23T22:56:00.000Z	bradv	darkentity	Pastebin fdisk -l and /etc/fstab
+2007-11-23T23:11:00.000Z	bradv	darkentity	Try hd(1,0) instead of hd(0,0). The drive order is backwards on your computer between grub and ubuntu.
+2007-11-23T23:15:00.000Z	bradv	darkentity	juano__ : I don't think you can do both, can you?
+2007-11-23T23:23:00.000Z	bradv	darkentity	Remove the map lines and replace hd1,0 with hd0,0
+2007-11-23T23:23:00.000Z	bradv	darkentity	Or the other way around, I'm confused.
+2007-11-23T23:26:00.000Z	bradv	darkentity	No its not.
+2007-11-23T23:27:00.000Z	bradv	darkentity	You changed your ubuntu drive from 0 to 1. Change it back.
+2007-11-23T23:27:00.000Z	bradv	darkentity	Otherwise you won't be able to boot anything.
+2007-11-23T23:28:00.000Z	bradv	darkentity	Originally you had ubuntu as 0,0. Why did you change it?
+2007-11-23T23:28:00.000Z	bradv	darkentity	juano__ : Here: http://paste.ubuntu-nl.org/45589/
+2007-11-23T23:29:00.000Z	bradv	darkentity	That's what you had at first.
+2007-11-23T23:30:00.000Z	bradv	darkentity	Windows should be 1,0. Ubuntu should be 0,0.
+2007-11-23T23:31:00.000Z	bradv	darkentity	You didn't change anything?
+2007-11-23T23:33:00.000Z	bradv	darkentity	You're good.

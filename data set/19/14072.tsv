@@ -1,0 +1,19 @@
+2004-11-12T07:58:00.000Z	alexeijh		where would I make some noise about fixing MIDI for hoary?
+2004-11-12T07:58:00.000Z	TheMuso	alexeijh	Are you trying to use OSS MIDI or ALSA MIDI?
+2004-11-12T08:00:00.000Z	alexeijh	TheMuso	no idea. I'm using sound as it's automatically setup from the install [creative live] . I'm not even sure if this problem is solfege specific, is there any midi stuff in main I could try out?
+2004-11-12T08:00:00.000Z	TheMuso		Have you tried typing aconnect -i and aconnect -o to see what you get?
+2004-11-12T08:01:00.000Z	TheMuso		Load the module snd-seq-midi and see what happens.
+2004-11-12T08:01:00.000Z	TheMuso		I had to do that before I could find out what MIDI ports I had available on my desktop system.
+2004-11-12T08:06:00.000Z	alexeijh	TheMuso	snd-seq-midi wasn't loaded.
+2004-11-12T08:06:00.000Z	TheMuso		Nor was it for me either.
+2004-11-12T08:06:00.000Z	TheMuso		Until I manually loaded it.
+2004-11-12T08:06:00.000Z	TheMuso		You could put it in /etc/modules
+2004-11-12T08:06:00.000Z	TheMuso		add it I mean.
+2004-11-12T08:07:00.000Z	alexeijh	TheMuso	so I've just loaded it, what am I looking for from aconnect output?
+2004-11-12T08:07:00.000Z	TheMuso		aconnect -i will list all the ports available to ALSA MIDI. -i will give you all your input ports.
+2004-11-12T08:09:00.000Z	alexeijh	TheMuso	I'm a little lost with all this. Can I ask what program you are using midi with?
+2004-11-12T08:10:00.000Z	TheMuso		None specifically, but I know a fair bit about the ALSA MIDI setup and the ports.
+2004-11-12T08:10:00.000Z	TheMuso		So how does solfege need MIDI?
+2004-11-12T08:12:00.000Z	alexeijh		solfege is an aural training program [stuff like intervals and transcription] . It does things like play intervals throught midi, in the preferences you can use a device [eg. /dev/sequencer2]  or external midiplayer [eg timidity, playmidi] .
+2004-11-12T08:13:00.000Z	alexeijh	TheMuso	any chance you could have a play with it and see if you have any success?
+2004-11-12T08:14:00.000Z	TheMuso	alexeijh	I will see what I can do. Looking atthe apt-cache information about it, it seems that it uses OSS, as it doesn't directly depend on any ALSA packages.

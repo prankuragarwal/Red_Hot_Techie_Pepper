@@ -1,0 +1,23 @@
+2006-11-09T17:28:00.000Z	dreamer		so, does anyone know if/how I can import all my windows-firefox-configs ?
+2006-11-09T17:30:00.000Z	dooglus	dreamer	did you try copying your windows profile into ~/.mozilla/firefox/ ?
+2006-11-09T17:31:00.000Z	dreamer	dooglus	not yet :#
+2006-11-09T17:32:00.000Z	dooglus	dreamer	something like: cp -r /mnt/c/Documents\ and\ Settings/<user>/Application\ Data/Mozilla/Firefox/Profiles/*.default ~/.mozilla/firefox/
+2006-11-09T17:32:00.000Z	dooglus	dreamer	(once you've got your windows C drive mounted as /mnt/c, of course)
+2006-11-09T17:44:00.000Z	dreamer	dooglus	didn't work :S
+2006-11-09T17:45:00.000Z	dooglus	dreamer	rename the profile you copied to be exactly the same as the old profile you removed.  firefox is expecting your profile to be called <random-stuff>.default
+2006-11-09T17:45:00.000Z	dreamer	dooglus	aarg, don't know what it was called :s
+2006-11-09T17:45:00.000Z	dooglus	dreamer	reading ~/.mozilla/firefox/profiles.ini will tell you
+2006-11-09T17:45:00.000Z	dooglus	dreamer	the 'path=' bit
+2006-11-09T17:48:00.000Z	dooglus	dreamer	I'll try it here with my old windows firefox profile and see if that works.
+2006-11-09T17:50:00.000Z	dooglus	dreamer	I see the same error - that firefox is in use (it isn't)
+2006-11-09T17:51:00.000Z	dreamer	dooglus	hmmm
+2006-11-09T17:52:00.000Z	dooglus	dreamer	I'll work out what's wrong - give me a minute
+2006-11-09T17:54:00.000Z	dreamer	dooglus	I just removed the old ~/mozilla/firefox/ and copied my windows Firefox to it, I just need to rename the folder to see what happens ..
+2006-11-09T06:02:00.000Z	dooglus	dreamer	got it :)
+2006-11-09T06:02:00.000Z	dreamer	dooglus	HOW? :o
+2006-11-09T06:02:00.000Z	dooglus	dreamer	run a "chmod -R u+w <random-junk>.default" to make the profile writable!
+2006-11-09T06:03:00.000Z	dreamer	dooglus	YAY !!!!!! :D
+2006-11-09T06:04:00.000Z	dooglus	dreamer	good, isn't it?  the problem is, your windows partition was mounted readonly, so when you copied the files, the copies were read-only, too, which meant firefox wasn't able to mark the profile 'in use', so it thought it must already be in use...
+2006-11-20T10:39:00.000Z	dooglus	dreamer	that's an old URL.  marillat's repo is now "deb http://www.debian-multimedia.org sid main" - and it's for debian, not ubuntu
+2006-11-20T10:40:00.000Z	dreamer	dooglus	where can I find a good package for ubuntu ?
+2006-11-20T10:40:00.000Z	dooglus	dreamer	you can use http://www.debian-multimedia.org/pool/main/w/w32codecs/w32codecs_20061022-0.0_i386.deb - since it's only codecs, it probably doesn't matter that it's packaged for debian

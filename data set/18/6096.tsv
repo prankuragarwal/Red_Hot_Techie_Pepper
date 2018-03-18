@@ -1,0 +1,18 @@
+2008-07-02T09:08:00.000Z	hyougin		Does anyone here have experience with ati+ubuntu?
+2008-07-02T09:09:00.000Z	hyougin		Well, it's already too late.
+2008-07-02T09:09:00.000Z	hyougin		It was working perfectly *until* I did something stupid.
+2008-07-02T09:09:00.000Z	hyougin		and now my entire system is gone to hell.
+2008-07-02T09:10:00.000Z	hyougin		When I first installed ubuntu my card worked fine, and i tried updating drivers to fix a small problem and now it's all gone to hell.
+2008-07-02T09:10:00.000Z	hyougin		ubuntu wont let me out of low gfx mode
+2008-07-02T09:11:00.000Z	nickrud	hyougin	sudo dpkg-reconfigure -pcritical xserver-xorg will get you back to the default video setup
+2008-07-02T09:12:00.000Z	nickrud	hyougin	yep, it made a backup of what you had. Now restart the desktop (logout, login)
+2008-07-17T08:20:00.000Z	nickrud	hyougin	what does  sudo apt-get remove --purge firefox-2 say?
+2008-07-17T08:21:00.000Z	nickrud	hyougin	do   dpkg -l '*firefox*' | grep ^ii , and put the output on paste.ubuntu.com
+2008-07-17T08:23:00.000Z	nickrud	hyougin	if you have any firefox installed with synaptic, that will output the package names
+2008-07-17T08:25:00.000Z	nickrud	hyougin	what do you mean, refuse to delete then? You can run firefox, even though dpkg says none are installed?
+2008-07-17T08:25:00.000Z	nickrud	hyougin	type:  which firefox
+2008-07-17T08:28:00.000Z	nickrud	hyougin	ok, now  ls -l /usr/bin/firefox
+2008-07-17T08:28:00.000Z	hyougin	nickrud	lrwxrwxrwx 1 root root 20 2008-07-16 13:46 /usr/bin/firefox -> /opt/firefox/firefox
+2008-07-17T08:29:00.000Z	nickrud	hyougin	aha! you are using a non ubuntu firefox package ;)
+2008-07-17T08:30:00.000Z	nickrud	hyougin	should have no firefox now
+2008-07-17T08:33:00.000Z	nickrud	hyougin	just one pointer, you should do your compiling in your home dir somewhere, it's easier

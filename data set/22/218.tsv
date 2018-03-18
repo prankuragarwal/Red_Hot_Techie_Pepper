@@ -1,0 +1,22 @@
+2012-10-21T03:41:00.000Z	itatitat		guys I have this error message when I try to start apache 2, http://askubuntu.com/questions/203844/apache-doesnt-start-after-upgrade-to-12-10, is the first time I see it, can you help me please?=
+2012-10-21T03:42:00.000Z	jrib	itatitat	did you read what you posted?
+2012-10-21T03:45:00.000Z	jrib	itatitat	why are you involving cron if your issue is with apache?
+2012-10-21T03:53:00.000Z	jrib	itatitat	sudo service apache2 start
+2012-10-21T04:02:00.000Z	jrib	itatitat	well if you want to use apache2, you should install it
+2012-10-21T04:03:00.000Z	jrib	itatitat	so you have apache2 running now?
+2012-10-21T04:05:00.000Z	itatitat	jrib	really I dont know, I had some error trying to install, and removing, Im trying with autoremove (that was in the message)
+2012-10-21T04:05:00.000Z	jrib	itatitat	you should pastebin what you are doing and the full output
+2012-10-21T04:07:00.000Z	itatitat	jrib	okok, I'll paste, its very strange
+2012-10-21T04:07:00.000Z	jrib	itatitat	ok, use a pastebin like http://paste.ubuntu.com for example
+2012-10-21T04:09:00.000Z	itatitat	jrib	as you can see, look that its installed fine, but later, when I try to run apache2 doesnt find httpd.conf
+2012-10-21T04:10:00.000Z	jrib	itatitat	do you have /etc/apache2/httpd.conf ?
+2012-10-21T04:11:00.000Z	itatitat	jrib	yes, right now I made a locate, is in /etc/apache2/conf.d/httpd.conf
+2012-10-21T04:12:00.000Z	jrib	itatitat	so that's "no".  Umm, do you have configuration that you want to keep or is it ok to purge your apache configuration?
+2012-10-21T04:12:00.000Z	itatitat	jrib	Im going to purge it
+2012-10-21T04:12:00.000Z	jrib	itatitat	tell me the result of this command: grep httpd.conf /var/lib/dpkg/info/apache2*
+2012-10-21T04:13:00.000Z	itatitat	jrib	https://gist.github.com/3925306#comments
+2012-10-21T04:14:00.000Z	jrib	itatitat	sudo apt-get purge apache2.2-common
+2012-10-21T04:15:00.000Z	itatitat	jrib	done. Now I reinstall?
+2012-10-21T04:15:00.000Z	jrib	itatitat	now: sudo apt-get install apache2
+2012-10-21T04:16:00.000Z	itatitat	jrib	running, buff...............really I didnt know how to solf this situation, thanks a lot jrib
+2012-10-21T04:17:00.000Z	jrib	itatitat	it was because you kept your old apache2.conf.  The old one expected a /etc/apache2/httpd.conf but the new packaging deleted /etc/apache2/httpd.conf and moved it to /etc/apache2/conf.d/httpd.conf (I think)

@@ -1,0 +1,19 @@
+2007-04-18T14:19:00.000Z	sorcerer		is there a way in linux letys .. say something bad happens to my machine right and i need to install it all over again .. and i really dont remember what i installed or all those .. repos i had in my source list /./. like i want a new system with the same stuff i hade befoe it crashed ... like i just do a sudo pat or what ever and downloads all the applications thats was there on the machine earlier .. before the crash ?
+2007-04-18T14:20:00.000Z	thoreauputic	sorcerer	make a list with:   dpkg --get-selections > package.list
+2007-04-18T14:21:00.000Z	sorcerer	thoreauputic	 once i gety the package list what happens next
+2007-04-18T14:22:00.000Z	thoreauputic	sorcerer	that command will put it in a file called package.list
+2007-04-18T14:22:00.000Z	thoreauputic	sorcerer	you can read that with a text editor
+2007-04-18T14:22:00.000Z	sorcerer	thoreauputic	umm it says permision denied
+2007-04-18T14:23:00.000Z	thoreauputic	sorcerer	you are in the wrong directory then - do the command in your $HOME dir
+2007-04-18T14:23:00.000Z	thoreauputic	sorcerer	 cd ~ ; dpkg --get-selections > package.list
+2007-04-18T14:23:00.000Z	sorcerer	thoreauputic	 why does it always have to be in the home directory ?
+2007-04-18T14:24:00.000Z	thoreauputic	sorcerer	because in most directories outside $HOME you don't have write permissions without sudo :)
+2007-04-18T14:24:00.000Z	thoreauputic	sorcerer	/tmp is an exception
+2007-04-18T14:25:00.000Z	sorcerer	thoreauputic	 ok mate well .. what happened the pakage liste .. what dfoes that contain and what can id o
+2007-04-18T14:25:00.000Z	thoreauputic	sorcerer	now that you have the list, have a look at it ( gedit packages.list )
+2007-04-18T14:26:00.000Z	thoreauputic	sorcerer	all the packages marked "install" are ones you have installed
+2007-04-18T14:27:00.000Z	sorcerer	thoreauputic	ok mate .. it shows all the stuff i have installed how can i use it on my new system
+2007-04-18T14:27:00.000Z	thoreauputic	sorcerer	install all those packages :)
+2007-04-18T14:27:00.000Z	thoreauputic	sorcerer	you can feed it to  dpkg --set-selections
+2007-04-18T14:28:00.000Z	thoreauputic	sorcerer	this is all in the dpkg man page :)
+2007-04-18T14:29:00.000Z	thoreauputic	sorcerer	as with most things in linux, there are several ways to achieve the same thing

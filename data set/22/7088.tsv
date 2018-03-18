@@ -1,0 +1,22 @@
+2009-09-27T16:37:00.000Z	sman		hello, unetbootin does not work, it complains of blkid not found suggests to install e2fsprogs. I have this installed
+2009-09-27T16:38:00.000Z	sman		what should I do?
+2009-09-27T16:39:00.000Z	sman		I want to install ubuntu. I wish to copy an ubuntu iso over to my usb pendrive, since my EEEPC doesn't have a cd drive
+2009-09-27T16:39:00.000Z	stefg	sman	sudo updatedb && locate blkid
+2009-09-27T16:40:00.000Z	sman	stefg	stefg I'm not using ubuntu right now
+2009-09-27T16:43:00.000Z	stefg	sman	it might be easier if you run a ubuntu Live CD for creating the bootable USB stick
+2009-09-27T16:44:00.000Z	sman	stefg	don't have a spare cd to hand
+2009-09-27T16:54:00.000Z	stefg	sman	it's not too hard to do the tweaking by hand to make a bootable USB-Stick. Actually after making it bootable and installing syslinux all it takes is some renaming of files from isolinux* to syslinux*
+2009-09-27T16:55:00.000Z	sman	stefg	yeah I followed the ubuntu USB howto wiki
+2009-09-27T16:55:00.000Z	sman	stefg	but there's no help on how to copy over everything
+2009-09-27T16:55:00.000Z	sman	stefg	I get "Not enough permission to copy symlink ..."
+2009-09-27T16:56:00.000Z	sman	stefg	any help?
+2009-09-27T16:57:00.000Z	stefg	sman	mount -o loop -t iso9660 /path/to/ubuntu.iso /some/mountpoint ... then cp -ar /some/mountpoint /dev/your_thumbdrive
+2009-09-27T16:59:00.000Z	sman	stefg	it should really be on the wiki :(
+2009-09-27T17:00:00.000Z	sman	stefg	ah here we go "cp: cannot create symbolic link `/media/fl/cd/dists/stable': Operation not permitted"
+2009-09-27T17:01:00.000Z	sman	stefg	cp -ar /media/loopcd /media/pendrive  did not work!
+2009-09-27T17:05:00.000Z	sman	stefg	it takes a while to get to the "cp: cannot create symbolic link `/media/pendrive/cd/dists/stable': Operation not permitted" message, as if it had been copying stuff
+2009-09-27T17:05:00.000Z	sman	stefg	should I just ignore them then?
+2009-09-27T17:06:00.000Z	stefg	sman	ot recreate them by touch /media/pendrive/dists/stable
+2009-09-27T17:07:00.000Z	sman	stefg	ok.
+2009-09-27T17:07:00.000Z	sman	stefg	booting from it now... fingers crossed
+2009-09-27T17:36:00.000Z	stefg	sman	welcome to the wonderfu world of UTF-8

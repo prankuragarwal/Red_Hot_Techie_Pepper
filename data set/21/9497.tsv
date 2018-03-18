@@ -1,0 +1,21 @@
+2006-07-24T13:36:00.000Z	gehel		Hi ! I get a strange error "Can't connect to http::80 (Bad hostname 'http:')" with apt-cacher. I checked /etc/apt/sources.list which seems correct. Any idea ?
+2006-07-24T13:36:00.000Z	Flannel	gehel	paste your sources, sounds like you've got something funky going on
+2006-07-24T13:37:00.000Z	gehel	Flannel	one of the problematic line : deb http://localhost:3142/security.ubuntu.com/ubuntu dapper-security main restricted universe multiverse
+2006-07-24T13:37:00.000Z	Flannel	gehel	yeah, that should be http://security.ubuntu.com/ubuntu dapper etc etc
+2006-07-24T13:38:00.000Z	gehel	Flannel	let me check ... funny, it did work without the proxy ...
+2006-07-24T13:42:00.000Z	gehel	Flannel	still the same problem ... what I dont understand is why it looks for a "http:" hostname. And the logs give me : "getting http://http://localhost:3142/security.ubuntu.com/ubuntu/dists/dapper/multiverse/binary-i386/Packages.gz"
+2006-07-24T13:42:00.000Z	Flannel	gehel	paste your whole sources.list
+2006-07-24T13:43:00.000Z	gehel	Flannel	in which channel ? Here ?
+2006-07-24T13:44:00.000Z	gehel	Flannel	ok, sent under the name gehel
+2006-07-24T13:45:00.000Z	Flannel	gehel	got a url?
+2006-07-24T13:45:00.000Z	gehel	Flannel	sorry : http://paste.ubuntu-nl.org/18757
+2006-07-24T13:45:00.000Z	Flannel	gehel	no problem
+2006-07-24T13:47:00.000Z	Flannel	gehel	hmm, looks alright.  I imagine it's some problem with your proxy then.  Can you go to http://localhost:3142/au.archive.ubuntu.com/ubuntu/ in a browser, and get there without two https?
+2006-07-24T13:51:00.000Z	gehel	Flannel	most interesting, if I get " http://localhost:3142/security.ubuntu.com/ubuntu/dists/dapper-security/multiverse/binary-i386/Packages.gz" in my browser, I get the file ...
+2006-07-24T13:52:00.000Z	Flannel	gehel	that is odd.  You might've found a bug.  Do you get the double thing with just the directory listing? it might have to do with trailing slashes
+2006-07-24T13:53:00.000Z	Flannel	gehel	I'd check launchpad to see if someone has filed the bug already, either with apt itself, or the proxy program youre using.
+2006-07-24T13:53:00.000Z	gehel	Flannel	apt-cacher doest allow directory listing. It gives "Sorry, not allowed to fetch that type of file:"
+2006-07-24T13:53:00.000Z	Flannel	gehel	right, I'm talking about in a webbrowser
+2006-07-24T13:54:00.000Z	gehel	Flannel	yep, from a browser, I try to access apt-cacher (my proxy) which refuses to give directory listings
+2006-07-24T13:55:00.000Z	Flannel	gehel	ah, I see.  I'd check launchpad for bugs with apt-cacher
+2006-07-24T13:57:00.000Z	gehel	Flannel	thanks for your help ! I'll get back if I find something interesting ...

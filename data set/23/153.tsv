@@ -1,0 +1,23 @@
+2012-05-18T20:21:00.000Z	Taddle		I've got a problem. I have got Apache on my Ubuntu Desktop (working as my server) and am currently trying to install mysql to make everything work, but things seem to be coming from the dotdeb repo. Anybody got any idea on how I can get rid of this not working repo?
+2012-05-18T20:22:00.000Z	L3tops	Taddle	gksudo gedit /etc/apt/sources.list
+2012-05-18T20:22:00.000Z	Taddle	L3tops	through SSH please?
+2012-05-18T20:23:00.000Z	L3tops	Taddle	are you familiar with vi/vim?
+2012-05-18T20:23:00.000Z	L3tops	Taddle	I juts use vim... people are very fond of nano etc.
+2012-05-18T20:23:00.000Z	Taddle	L3tops	errr, vim for windows
+2012-05-18T20:30:00.000Z	L3tops	Taddle	Assuming it is there, then sudo apt-get update and move on. If it is not there, ls /etc/apt/sources.list.d and delete it from wherever it lives in there.
+2012-05-18T20:33:00.000Z	Taddle	L3tops	my web server over SSH
+2012-05-18T20:35:00.000Z	Taddle	L3tops	err, what? I don't have a clue about this side of things, I can manage an existing setup, but I can't set something up, could you give me commands or something please?
+2012-05-18T20:37:00.000Z	L3tops	Taddle	I did. You cannot start mysql directly over ssh, so you will need to background the process with an &
+2012-05-18T20:42:00.000Z	L3tops	Taddle	how are you trying to install?
+2012-05-18T20:42:00.000Z	L3tops	Taddle	what command did you use
+2012-05-18T20:43:00.000Z	Taddle	L3tops	apt get install mysql-server
+2012-05-18T20:43:00.000Z	L3tops	Taddle	then it looks like you were just missing a piece
+2012-05-18T20:43:00.000Z	L3tops	Taddle	I thought you removed that and updated
+2012-05-18T20:44:00.000Z	L3tops	Taddle	^
+2012-05-18T20:47:00.000Z	L3tops	Taddle	is there a reason you have those ppas?
+2012-05-18T20:54:00.000Z	L3tops	Taddle	if there are ppas in /etc/apt/sources.list then yes, comment them out. but they may exist in /etc/apt/sources.list.d in which case you would sudo rm /etc/apt/sources.list.d/*  then sudo apt-get update again
+2012-05-18T20:57:00.000Z	L3tops	Taddle	dpkg --configure -a
+2012-05-18T20:58:00.000Z	L3tops	Taddle	that will need a sudo... sorry.
+2012-05-18T20:59:00.000Z	Taddle	L3tops	what was your intention with that?
+2012-05-18T21:00:00.000Z	L3tops	Taddle	that attempts to reconfigure broken package installs
+2012-05-18T21:00:00.000Z	L3tops	Taddle	now apt-get remove again

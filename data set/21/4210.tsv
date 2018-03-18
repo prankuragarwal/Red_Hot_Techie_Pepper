@@ -1,0 +1,21 @@
+2008-06-29T07:13:00.000Z	rampageoberon		Hi, I need some help with a very strange problem - usually after a reboot when I start a video my screen freezes (kind off) and keyboard stops responding. If I do a hard reboot it usually fixes things but the porblem seems to be more recurrent now. I posted on the forums but seems no one was able to reply. Please help. Forum post is http://ubuntuforums.org/showthread.php?t=807443
+2008-06-29T07:14:00.000Z	cirkit	rampageoberon	sounds like a graphics driver issue. What video card are you using and how was this installed?
+2008-06-29T07:15:00.000Z	rampageoberon	cirkit	I'm using the Intel Corporation Mobile 915GM/PM/GMS/910GML card, and drivers installed by default. This used to be an occasional problem but seems to be recurrent now
+2008-06-29T07:16:00.000Z	rampageoberon	cirkit	not using any restricted drivers
+2008-06-29T07:18:00.000Z	rampageoberon	cirkit	i'm quite scared that i have to resort to hard reboots everytime this happens :(
+2008-06-29T07:19:00.000Z	cirkit	rampageoberon	run 'dmesg' in a terminal and paste the output on pastebin please.
+2008-06-29T07:20:00.000Z	rampageoberon	cirkit	http://paste.ubuntu.com/23642/
+2008-06-29T07:28:00.000Z	cirkit	rampageoberon	it looks like a bug within the intel chipset driver itself. You may want to re-install the intel driver, then backup your xorg.conf and run X -configure to make a new xorg.conf file. If video still freezes with latest intel drivers for your Intel 915GM Chipset, file a bug report.
+2008-06-29T07:29:00.000Z	cirkit	rampageoberon	let me see if I can find any other useful information about this issue
+2008-06-29T07:29:00.000Z	rampageoberon	cirkit	i'll try reinstall the drivers now, thanks for this help :)
+2008-06-29T07:46:00.000Z	rampageoberon	cirkit	would you know why the freeze happens occasionally with some video files repeatedly with a vob?
+2008-06-29T07:48:00.000Z	cirkit	rampageoberon	if you're trying to open a .vob individually that could be the issue right there. These sound like copyrighted DVD content which would require something like libdvdcss. Try opening up mplayer or vlc, they give you the option of opening up a "DVD" disc, instead of trying to open up the .VOB files.
+2008-06-29T07:50:00.000Z	rampageoberon	cirkit	okay will do that with vob's. I get this issue occasionally with Xvid files too, which is why I think its strange. Driver issue like you said there or something else?
+2008-06-29T07:52:00.000Z	cirkit	rampageoberon	it does sound video related. Make sure you have all the necessary video codecs / plugins installed too. Re-install xserver-xorg-video-intel
+2008-06-29T07:53:00.000Z	rampageoberon	cirkit	Yes I've reinstalled xserver-xorg-video-intel, and codecs are fine too (installed ubuntu-restricted-extras) and usually play videos with vlc
+2008-06-29T07:54:00.000Z	cirkit	rampageoberon	it also just sounds like the correct plugins for whatever video application you are trying to use are not installed.
+2008-06-29T07:54:00.000Z	cirkit	rampageoberon	installed totem and gstreamer?
+2008-06-29T07:54:00.000Z	rampageoberon	cirkit	yes
+2008-06-29T07:55:00.000Z	cirkit	rampageoberon	don't mean to confuse you.
+2008-06-29T07:55:00.000Z	rampageoberon	cirkit	I do get the videos working usually. its just when i reboot then it will cause this occasionally and once i hard reboot the videos play fine. no idea why it does that
+2008-06-29T07:55:00.000Z	rampageoberon	cirkit	and no its not confusing, any help is welcome :)

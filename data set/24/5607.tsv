@@ -1,0 +1,24 @@
+2008-02-21T23:43:00.000Z	Columbo		anyone familiar with gconf and how to modify the default ubuntu desktop look and feel?
+2008-02-21T23:43:00.000Z	Columbo		I want to have my own settings the default after an unattended installation
+2008-02-21T23:44:00.000Z	ejer	Columbo	look into /etc/skel
+2008-02-21T23:54:00.000Z	Columbo	ejer	is putting a default setup in /etc/skel preferred, in stead of modifying /etc/gconf/gconf.xml.defaults ?
+2008-02-21T23:54:00.000Z	ejer	Columbo	totally depends on your deployment
+2008-02-21T23:56:00.000Z	Columbo	ejer	in what way does it depend on the deployment? In my case, PC's are rolled out using netboot, pxe and preseed
+2008-02-21T23:56:00.000Z	Columbo	ejer	and I'ld like to modify the default look and feel
+2008-02-21T23:56:00.000Z	ejer	Columbo	this is a case for testing
+2008-02-21T23:56:00.000Z	Columbo	ejer	to be more in line with the suse desktop
+2008-02-21T23:59:00.000Z	Columbo	ejer	case for testing? what do you mean exactly?
+2008-02-21T23:59:00.000Z	ejer	Columbo	I mean this is the kind of thing you test, my answer should not matter much
+2008-02-22T00:01:00.000Z	Columbo	ejer	suppose I'd like to have the application bar on the bottom of the screen
+2008-02-22T00:01:00.000Z	Columbo	ejer	for all new users
+2008-02-22T00:01:00.000Z	Columbo	ejer	after imaging, I'd like to have that as the default
+2008-02-22T00:02:00.000Z	ejer	Columbo	yes, what I suggested will work fine if set up right http://www.linfo.org/etc_skel.html
+2008-02-22T00:03:00.000Z	Columbo	ejer	just put a .gconf dir there with the correct settings?
+2008-02-22T00:04:00.000Z	Columbo	ejer	I just think, it may not work, because the homedirs are automounted from an NFS share
+2008-02-22T00:04:00.000Z	Columbo	ejer	so no new homedir is created...
+2008-02-22T00:36:00.000Z	Columbo	ejer	/etc/skel is not an option -> home dirs already exist and are automounted
+2008-02-22T00:37:00.000Z	Columbo	ejer	any idea about alternatives?
+2008-02-22T00:38:00.000Z	ejer	Columbo	you are looking for a custom solution, writing a script in bash might be your best bet, or google for others who set this up
+2008-02-22T00:38:00.000Z	Columbo	ejer	I now created a small deb which populated /etc/gconf/gconf.xml.defaults
+2008-02-22T00:38:00.000Z	Columbo	ejer	but for some reason, it's overwritten somewhere
+2008-02-22T00:39:00.000Z	Columbo	ejer	I may need to implement a less clean solution....

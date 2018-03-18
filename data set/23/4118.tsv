@@ -1,0 +1,23 @@
+2008-08-11T11:20:00.000Z	Bogaurd		I've got something in /etc/crontab, which is supposed to run every minute... it's not running at all though. Crond is running, and the script runs fine when I call it by hand, any ideas?
+2008-08-11T11:20:00.000Z	leo_away	Bogaurd	is it a script or an X app?
+2008-08-11T11:21:00.000Z	Bogaurd	leo_away	a script
+2008-08-11T11:21:00.000Z	leo_away	Bogaurd	try calling bash and making bash call the script
+2008-08-11T11:21:00.000Z	Bogaurd	leo_away	good idea, 2 secs
+2008-08-11T11:22:00.000Z	leo_away	Bogaurd	we had a thread about that in the argentine loco :P
+2008-08-11T11:22:00.000Z	Bogaurd	leo_away	reckon setting SHELL=/bin/bash in the crontab would be enough?
+2008-08-11T11:24:00.000Z	leo_away	Bogaurd	not sure, i bet the best way to find out is trying it. i used konsole -e when i run into that problem but i was told bash works as well
+2008-08-11T11:25:00.000Z	Bogaurd	leo_away	just tried setting the shell,. that didnt work. do you mean to try something like /bin/bash /path/to/script?
+2008-08-11T11:26:00.000Z	leo_away	Bogaurd	lemme look for the thread to refresh my mind
+2008-08-11T11:26:00.000Z	Bogaurd	leo_away	thanks :-)
+2008-08-11T11:29:00.000Z	leo_away	Bogaurd	this was the original idea: export DISPLAY=:0 &&  gnome-terminal --command="sh /path/to/script"
+2008-08-11T11:30:00.000Z	leo_away	Bogaurd	then someone suggested using bash instead of gnome-terminal
+2008-08-11T11:30:00.000Z	Bogaurd	leo_away	this box doesnt have a GUI...
+2008-08-11T11:30:00.000Z	leo_away	Bogaurd	exactly how the thread developed ;-)
+2008-08-11T11:30:00.000Z	leo_away	Bogaurd	change gnome-terminal --command for /bin/bash i guess
+2008-08-11T11:31:00.000Z	Bogaurd	leo_away	hrmm. odd. is the thread publically viewable?
+2008-08-11T11:31:00.000Z	leo_away	Bogaurd	http://ubuntuforums.org/showthread.php?t=858560&highlight=cron (it's spanish)
+2008-08-11T11:32:00.000Z	Bogaurd	leo_away	haha. that ruins it for me then :P
+2008-08-11T11:33:00.000Z	leo_away	Bogaurd	export DISPLAY=:0 && bash /path/to/script
+2008-08-11T11:33:00.000Z	leo_away	Bogaurd	that worked for me, but I do have X
+2008-08-11T11:33:00.000Z	Bogaurd	leo_away	I'll try it in a moment. cheers.
+2008-08-11T11:33:00.000Z	leo_away	Bogaurd	yup, no problem

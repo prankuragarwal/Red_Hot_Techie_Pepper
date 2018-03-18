@@ -1,0 +1,18 @@
+2007-01-12T16:57:00.000Z	un_operateur	torkel_	any improvement?
+2007-01-12T16:57:00.000Z	torkel_	un_operateur	no, i've changed the routing... let me paste the new route -n
+2007-01-12T16:58:00.000Z	un_operateur	torkel_	ok
+2007-01-12T16:59:00.000Z	torkel_	un_operateur	http://paste.ubuntu-nl.org/1289/
+2007-01-12T16:59:00.000Z	torkel_	un_operateur	same issue as last time
+2007-01-12T17:00:00.000Z	torkel_	un_operateur	back in a minute, going to move my macbook to the serverroom :)
+2007-01-12T17:02:00.000Z	un_operateur	torkel_	yea but the route's aren't correct -- notice that the gateway for 192.168.0.0 is 192.168.0.1 not .2 .. moreover the route addresses a subnet of 192.168.0.0 i.e. 192.168.0.0/29 as opposed to 192.168.0.0/24
+2007-01-12T17:04:00.000Z	torkel_	un_operateur	the reason i cant ping the internal ip addresses of the lan from the server is because they are infact masqueraded by the router (192.168.0.2)
+2007-01-12T17:05:00.000Z	un_operateur	torkel_	i dont think thats the issue because it is only traffic that traverses the server that is masqueraded not traffic originating from itself
+2007-01-12T17:06:00.000Z	un_operateur	torkel_	so what is this address 192.168.0.1/255.255.255.252 ? is it an interface on the router too?
+2007-01-12T17:07:00.000Z	un_operateur	torkel_	well, so according to your routing table ..  all traffic to 192.168.0.0 is sent back up it's own interface ,.. almost in an endless loop
+2007-01-12T17:09:00.000Z	un_operateur	torkel_	examine route -n again .. second route's gateway is it's own interface .. :)
+2007-01-12T17:12:00.000Z	un_operateur	torkel_	the next hop for that route should be 192.168.0.2 as with the 192.168.4.0 route
+2007-01-12T17:15:00.000Z	un_operateur	torkel_	another thing -- if only 192.168.0.1 and .2 exist in that subnet, how do you verify cross subnet talk .. ??
+2007-01-12T17:17:00.000Z	un_operateur	torkel_	ok, what kind of a router is this?
+2007-01-12T17:17:00.000Z	un_operateur	torkel_	does it do NAT? is NAT enabled on it?
+2007-01-12T17:25:00.000Z	un_operateur	torkel_	if 'router' is using NAT server will not be able to talk to 192.168.4.x if it initiates communication
+2007-01-12T17:26:00.000Z	un_operateur	torkel_	also you should repair the route i gave you -- the route's still pointing at 192.168.0.1 .. change it back to 0.0.0.0

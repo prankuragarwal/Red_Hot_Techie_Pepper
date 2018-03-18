@@ -1,0 +1,23 @@
+2012-08-26T08:49:00.000Z	Tynach		But does anyone have any ideas about my kdm/lightdm issue?
+2012-08-26T08:51:00.000Z	Tynach		For a good reason too.
+2012-08-26T08:51:00.000Z	Tynach		But it keeps booting up with the KDM login screen.
+2012-08-26T08:51:00.000Z	Tynach		But I want it to use LightDM.
+2012-08-26T08:51:00.000Z	Tynach		sudo dpkg-reconfigure lightdm/kdm doesn't work.
+2012-08-26T08:51:00.000Z	Tynach		KDE is what I installed.
+2012-08-26T08:52:00.000Z	Tynach		I'm looking through the rc.d folders, and don't see EITHER of them being used or triggered :/
+2012-08-26T08:54:00.000Z	T_H_X	Tynach	maybe check out X11/default-display-manager
+2012-08-26T08:55:00.000Z	Tynach	T_H_X	cating default-display-manager gives "/usr/sbin/lightdm".
+2012-08-26T08:55:00.000Z	Tynach	T_H_X	I don't want KDM to be default.
+2012-08-26T08:58:00.000Z	T_H_X	Tynach	also check in /etc/init.d/kdm
+2012-08-26T08:58:00.000Z	Tynach	T_H_X	you mean /etc/init.d/kdm or lightdm? Yeah, I have both. I'm not sure what folder Ubuntu uses for the init scripts to be called depending on runtime; I don't know much about managing Upstart.
+2012-08-26T08:59:00.000Z	T_H_X	Tynach	try update-rc.d -f kdm remove
+2012-08-26T09:00:00.000Z	Tynach	T_H_X	I remember there was a utility to view the runtime configuration (like a graphical update-rc.d), do you remember what it's called?
+2012-08-26T09:00:00.000Z	T_H_X	Tynach	no
+2012-08-26T09:01:00.000Z	T_H_X	Tynach	is there a /etc/init.d/kdm.conf  .?
+2012-08-26T09:02:00.000Z	T_H_X	Tynach	i meant, is there a /etc/init/kdm.conf  .?
+2012-08-26T09:02:00.000Z	Tynach	T_H_X	yes.
+2012-08-26T09:03:00.000Z	T_H_X	Tynach	move it out of there
+2012-08-26T09:04:00.000Z	Tynach	T_H_X	rebooting again after moving the file.
+2012-08-26T09:04:00.000Z	T_H_X	Tynach	roger roger
+2012-08-26T09:05:00.000Z	Tynach	T_H_X	it is STILL using KDM!
+2012-08-26T09:06:00.000Z	T_H_X	Tynach	im out of ideas, id have to google now

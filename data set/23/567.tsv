@@ -1,0 +1,23 @@
+2011-11-02T19:20:00.000Z	mathgirl		I don't have a GUI on the machine.  That's my problem.
+2011-11-02T19:20:00.000Z	mathgirl		How can I run whatever admin>additional drivers woudl do?
+2011-11-02T19:21:00.000Z	mathgirl		Yes, I'm sshing into the machine.
+2011-11-02T19:21:00.000Z	mathgirl		jockey-text just said
+2011-11-02T19:22:00.000Z	mathgirl		Additional Drivers
+2011-11-02T19:22:00.000Z	mathgirl		Searching for additional drivers
+2011-11-02T19:22:00.000Z	mathgirl		I'll try apt-getting as instructed.
+2011-11-02T19:22:00.000Z	szal	mathgirl	sudo apt-get install nvidia-current && sudo nvidia-xconfig, then reboot
+2011-11-02T21:21:00.000Z	szal	mathgirl	did you pastebin /var/log/Xorg.0.log already (or have a look in it yourself)?
+2011-11-02T21:21:00.000Z	mathgirl	szal	I only do as I'm told.
+2011-11-02T21:22:00.000Z	szal	mathgirl	well, when searching for X-related errors this is about the 1st place to look :)
+2011-11-02T21:25:00.000Z	mathgirl	szal	http://paste.ubuntu.com/726526/
+2011-11-02T21:25:00.000Z	szal	mathgirl	one of your previous pastes seemed to suggest that you have packages to update; I'd suggest you run 'sudo apt-get update && sudo apt-get upgrade'
+2011-11-02T21:26:00.000Z	mathgirl	szal	Hmm.  I thought that wasn't previously the case.  But it looks true now.  I've just upgraded.
+2011-11-02T21:27:00.000Z	szal	mathgirl	anything nVidia- or X-server-related in there?
+2011-11-02T21:28:00.000Z	mathgirl	szal	nope, just
+2011-11-02T21:29:00.000Z	szal	mathgirl	k, that's not likely to do anything about your situation..
+2011-11-02T21:30:00.000Z	szal	mathgirl	you might want to have a look at /var/log/kern.log regarding messages about the nvidia module
+2011-11-02T21:32:00.000Z	mathgirl	szal	Sorry, I forgot to prefix your name to what I just said.
+2011-11-02T21:33:00.000Z	szal	mathgirl	hmmm..  does that machine have a built-in gfx module (perhaps Intel)?
+2011-11-02T21:34:00.000Z	mathgirl	szal	I don't know what a built-in graphics module is.  But it's an intel mac.
+2011-11-02T21:42:00.000Z	szal	mathgirl	'lspci | grep -i vga' gives you the nVidia card or anything else?
+2011-11-02T21:43:00.000Z	mathgirl	szal	It gives me 03:00.0 VGA compatible controller: nVidia Corporation C79 [GeForce 9400] (rev b1)

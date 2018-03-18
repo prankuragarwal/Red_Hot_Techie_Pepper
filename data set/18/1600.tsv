@@ -1,0 +1,18 @@
+2011-05-06T18:02:00.000Z	rgb247		how to use grep to search only in files with a defined extension(for example .php)
+2011-05-06T18:02:00.000Z	schnuffle	rgb247	combine it with find or use it like grep "something" *.php
+2011-05-06T18:05:00.000Z	schnuffle	rgb247	the -H prepends the file name
+2011-05-06T18:05:00.000Z	schnuffle	rgb247	so what do you want it to do ?
+2011-05-06T18:06:00.000Z	rgb247	schnuffle	I have a php script and I want to search in it for a variable
+2011-05-06T18:06:00.000Z	schnuffle	rgb247	if you want to search in a dir tree use: find /path/to/start -name "*.php" -exec grep pattern {} \;
+2011-05-06T18:08:00.000Z	rgb247	schnuffle	I don't understand where will be the grep pattern, it shouldn't be betweek " and " ?
+2011-05-06T18:12:00.000Z	schnuffle	rgb247	Aaah, then grep -n <variable name> /path/to/phpfile.php
+2011-05-06T18:12:00.000Z	rgb247	schnuffle	I have a directory with files, not one file, I need to know file name which are contain the string
+2011-05-06T18:13:00.000Z	schnuffle	rgb247	then grep -Hn <variable name> /path/to/*.php
+2011-05-06T18:14:00.000Z	schnuffle	rgb247	if there're sub dir  then find /path/to/file -name "*.php -exec grep -Hn <variable name> {} \;
+2011-05-06T18:14:00.000Z	schnuffle	rgb247	if there're sub dir  then find /path/to/file -name "*.php" -exec grep -Hn <variable name> {} \;
+2011-05-06T18:17:00.000Z	rgb247	schnuffle	find: missing argument to `-exec'
+2011-05-06T18:18:00.000Z	schnuffle	rgb247	paste the comand you used
+2011-05-06T18:19:00.000Z	schnuffle	rgb247	you missed the \; at the end
+2011-05-06T18:19:00.000Z	schnuffle	rgb247	so your command should be:  find /avsvideo -name "*.php" -exec grep -Hn "$mails_count" {} \;
+2011-05-06T18:20:00.000Z	rgb247	schnuffle	no such file or directory
+2011-05-06T18:21:00.000Z	schnuffle	rgb247	 okay I'm out beli is your man

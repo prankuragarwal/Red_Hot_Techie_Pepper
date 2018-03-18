@@ -1,0 +1,18 @@
+2010-02-18T23:10:00.000Z	ActionParsnip		Yo yo yo
+2010-02-18T23:11:00.000Z	ActionParsnip		Jtwhite: seems so, crazy
+2010-02-18T23:12:00.000Z	ActionParsnip		!info kernel-source
+2010-02-18T23:13:00.000Z	ActionParsnip		Doolph: apt-cache search linux-image | grep source
+2010-02-18T23:14:00.000Z	ActionParsnip		Raendeer: does the cd pass self-test? Did you md5 test the iso you downloaded? Is the drive shown in bios? Does: sudo fdisk -l ,show the drive?
+2010-02-18T23:15:00.000Z	ActionParsnip		Raendeer: have you tried some boot options?
+2010-02-18T23:15:00.000Z	raendeer	ActionParsnip	it's installing from usb, I didn't md5 it but the iso mounted fine and all of the files seemed good and there, the drive has centos installed onto it so it's in correctly, fdisk -l does not show it in the installer, I've tried boot pci=nommconf irqpoll as per one post I found
+2010-02-18T23:19:00.000Z	raendeer	ActionParsnip	computer was just ordered last week, bios is default that came with the board. I haven't been able to get it online yet. I'll try to reboot and do a check disk now.. it's not the live cd iso, but I'll try things in this faq
+2010-02-18T23:20:00.000Z	raendeer	ActionParsnip	it loaded up with no issues at all in centos. dmesg only shows the usb I'm booting from
+2010-02-18T23:22:00.000Z	raendeer	ActionParsnip	if it is seeing the drive, it's not sdX or hdX.. can't think of what else it'd be. it looks like my install dvd does not come with checkdisc
+2010-02-18T23:24:00.000Z	raendeer	ActionParsnip	ah, I thought checkdisc was the option to verify the iso was good.. sorry
+2010-02-18T23:24:00.000Z	ActionParsnip	raendeer	i'd look at the centos install. It may give clues and is essentially the same OS
+2010-02-18T23:25:00.000Z	raendeer	ActionParsnip	yeah, I'll take a look at what modules it loads
+2010-02-18T23:39:00.000Z	raendeer	ActionParsnip	the iso I have passed the md5 check. loaded ata_piix and libata (only two relevant looking modules in lsmod under centos) and the drive still doesn't show under fdisk -l
+2010-02-18T23:43:00.000Z	raendeer	ActionParsnip	do you think trying to install from centos might help? or would I still run into an issue with necessary modules not being loaded
+2010-02-19T00:12:00.000Z	raendeer	ActionParsnip	any other ideas on my sata drive not detected problem?
+2010-02-19T00:13:00.000Z	raendeer	ActionParsnip	no, it's a desktop. I can tell you the hardware if you'd like (ordered parts off of newegg and assembled, not a prebuilt system). will try without dma/acpi
+2010-02-19T00:22:00.000Z	raendeer	ActionParsnip	noacpi didn't help, don't see the dma option in the boot options wiki, and don't see anything on google about problems with the motherboard and ubuntu. in fact, there are several posts/reviews with people who loaded ubuntu on it fine

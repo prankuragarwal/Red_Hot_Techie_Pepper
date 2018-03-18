@@ -1,0 +1,23 @@
+2010-10-20T22:57:00.000Z	NeedHelpPlz		I'm having some major problems installing Ubuntu 10.04   it won't install Grub2 to the drive... and the kernel module for detecting drives seems to have failed somehow.
+2010-10-20T22:57:00.000Z	ikonia	NeedHelpPlz	are you using raid ?
+2010-10-20T22:59:00.000Z	ikonia	NeedHelpPlz	are you using raid ?
+2010-10-20T22:59:00.000Z	NeedHelpPlz	ikonia	there is a raid on the system, but I'm not trying to install to it... I'm trying to install to a sata drive
+2010-10-20T23:00:00.000Z	ikonia	NeedHelpPlz	are you manually changing the install path for grub using the installer, or later/post install
+2010-10-20T23:02:00.000Z	NeedHelpPlz	ikonia	sorry, I forgot to tag your name in the last reply
+2010-10-20T23:03:00.000Z	ikonia	NeedHelpPlz	dm is a raid device
+2010-10-20T23:03:00.000Z	NeedHelpPlz	ikonia	I just ran the installer in the defacto method, upon reboot, no joy.  Booted back to live cd and tried to install manually to the needed drive, but grub can't see the dev device.  the dm_(something) kernel module isn't loaded
+2010-10-20T23:03:00.000Z	ikonia	NeedHelpPlz	that's a device mapper managed device (normally raid) you said you where not trying to install to raid
+2010-10-20T23:03:00.000Z	NeedHelpPlz	ikonia	whats normally in charge of detecting drives?
+2010-10-20T23:04:00.000Z	ikonia	NeedHelpPlz	no it's not
+2010-10-20T23:04:00.000Z	ikonia	NeedHelpPlz	the devices are /dev/sda, /dev/sdb that sort of thing, /dev/dm are device mappers
+2010-10-20T23:04:00.000Z	ikonia	NeedHelpPlz	you should install to the /dev/sd$X device
+2010-10-20T23:04:00.000Z	NeedHelpPlz	ikonia	I can mount the drives, but when I try to install to /dev/sdb1, it tells me it can't detect the device
+2010-10-20T23:05:00.000Z	ikonia	NeedHelpPlz	that's because /dev/sdb1 is  partition, not a device
+2010-10-20T23:05:00.000Z	ikonia	NeedHelpPlz	you need to install to the disk, not the parttion
+2010-10-20T23:06:00.000Z	NeedHelpPlz	ikonia	I've tried both /dev/sdb and /dev/sdb1
+2010-10-20T23:06:00.000Z	ikonia	NeedHelpPlz	have you mounted your device file system ?
+2010-10-20T23:06:00.000Z	ikonia	NeedHelpPlz	are the device files /dev/sd$X there ?
+2010-10-20T23:07:00.000Z	NeedHelpPlz	ikonia	yeah, the block device files are there in the /dev folder
+2010-10-20T23:07:00.000Z	ikonia	NeedHelpPlz	and when you mount them, does that have the /boot file system on them ?
+2010-10-20T23:07:00.000Z	NeedHelpPlz	ikonia	yep
+2010-10-20T23:09:00.000Z	NeedHelpPlz	ikonia	I just tried installing again... I'll see if I can get it to boot this time.  I may be back in a few.  Wish me luck

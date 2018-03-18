@@ -1,0 +1,23 @@
+2005-10-15T05:19:00.000Z	synackuator		if you modprobe something, will it automatically load when you reboot?
+2005-10-15T05:19:00.000Z	drrakn	synackuator	no
+2005-10-15T05:20:00.000Z	synackuator	drrakn	how do you get them to load automatically?  some config file?
+2005-10-15T05:20:00.000Z	drrakn	synackuator	/etc/modules
+2005-10-15T05:29:00.000Z	drrakn	synackuator	have you tried a debian-version of the wlan-ng howto?
+2005-10-15T05:29:00.000Z	drrakn	synackuator	that worked for me a few years back when I was using it
+2005-10-15T05:29:00.000Z	drrakn	synackuator	and I imagine that it might still work on ubuntu
+2005-10-15T05:32:00.000Z	synackuator	drrakn	I tried a hoary one and it didn't work - the prism2_cs module doesn't do anything
+2005-10-15T05:32:00.000Z	synackuator	drrakn	pcmcia is good in lsmod though
+2005-10-15T05:32:00.000Z	drrakn	synackuator	is prism2_cs the wlan-ng module?
+2005-10-15T05:33:00.000Z	drrakn	synackuator	actually, I remember that being buggered
+2005-10-15T05:33:00.000Z	synackuator	drrakn	i guess so - i don't know what else is
+2005-10-15T05:33:00.000Z	drrakn	synackuator	make sure your pcmcia net.config hint points at the right driver
+2005-10-15T05:33:00.000Z	drrakn	synackuator	I think "first one wins"
+2005-10-15T05:34:00.000Z	drrakn	synackuator	I really hated wlan-ng ;)
+2005-10-15T05:34:00.000Z	synackuator	drrakn	what would be the alternative for prism2 cards?
+2005-10-15T05:34:00.000Z	drrakn	synackuator	duno, it's been a while since I used something that didn't work with stock drivers. lucky I guess.
+2005-10-15T05:35:00.000Z	drrakn	synackuator	just my usb adaptors still need wlan-ng and those are in the closet ;)
+2005-10-15T05:35:00.000Z	synackuator	drrakn	so where is this pcmcia net.config located??
+2005-10-15T05:35:00.000Z	drrakn	synackuator	found it. look in /etc/pcmcia/config and see if the right driver is being loaded for your card
+2005-10-15T05:36:00.000Z	drrakn	synackuator	I vagely recall that being a problem at one point
+2005-10-15T05:36:00.000Z	drrakn	synackuator	you might scrape some debugging hints from /var/log/* too
+2005-10-15T05:37:00.000Z	drrakn	synackuator	but is has been a long time since I had to troubleshoot cardctrl

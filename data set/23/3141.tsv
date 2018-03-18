@@ -1,0 +1,23 @@
+2008-12-16T19:16:00.000Z	LjL	gaelfx	consolekit (>= 0.7)?! there's no such version in any ubuntu release. show me your /etc/apt/sources.list please
+2008-12-16T19:19:00.000Z	gaelfx	LjL	hang on
+2008-12-16T19:20:00.000Z	gaelfx	LjL	http://pastebin.com/d386004e9
+2008-12-16T19:21:00.000Z	LjL	gaelfx	it looks sane, however i can't see a reason why a package could require consolekit 0.7... what does "apt-cache policy gnome-panel" tell you?
+2008-12-16T19:23:00.000Z	LjL	gaelfx	i don't understand... it's the right version for intrepid, and the right version of consolekit is 0.2... what consolekit version does "apt-cache depends gnome-panel" mention?
+2008-12-16T19:24:00.000Z	LjL	gaelfx	also, what's the currently installed version of consolekit? (first line of "apt-cache policy consolekit")
+2008-12-16T19:25:00.000Z	gaelfx	LjL	it doesn't actually mention a version number, just that it depends on it
+2008-12-16T19:25:00.000Z	gaelfx	LjL	0.2.10
+2008-12-16T19:26:00.000Z	LjL	gaelfx	actually, wait, gnome-panel *does* depend on consolekit?
+2008-12-16T19:27:00.000Z	gaelfx	LjL	it appears to
+2008-12-16T19:27:00.000Z	LjL	gaelfx	uh, check also with "apt-cache show gnome-panel | grep Depends
+2008-12-16T19:28:00.000Z	LjL	gaelfx	because after checking better - it *shouldn't* directly depend on it
+2008-12-16T19:28:00.000Z	gaelfx	LjL	oh man, what the heck happened to my apt-get?
+2008-12-16T19:29:00.000Z	LjL	gaelfx	i don't quite know. i suspect one package or another is the wrong version, though. have you ever had any third-party repositories enabled? (aside from the WINE one, i can see you have that)
+2008-12-16T19:29:00.000Z	gaelfx	LjL	nope, unless medibuntu counts
+2008-12-16T19:30:00.000Z	LjL	gaelfx	well, it does to an extent, but it tends to be safe enough...
+2008-12-16T19:30:00.000Z	LjL	gaelfx	so anyway does gnome-panel directly depend on consolekit according to "show"?
+2008-12-16T19:32:00.000Z	LjL	gaelfx	ok, but you say it depends on it according to "depends", so can you make out which packages it depends on it through? (just pastebin the whole "depends" output if you like)
+2008-12-16T19:35:00.000Z	LjL	gaelfx	eh, i'm lost completely. it depends on it directly, but it doesn't depend on it directly.
+2008-12-16T19:36:00.000Z	LjL	gaelfx	try giving a "sudo apt-get clean; sudo apt-cache gencaches; sudo apt-get update" and then try again installing
+2008-12-16T19:41:00.000Z	LjL	gaelfx	i'm out of ideas to be honest and i have to run for a bit, be back later
+2008-12-16T20:07:00.000Z	LjL	gaelfx	perhaps try simulating a removal of consolekit (just don't hit Y, or use the "--simulate" option of apt-get) and see what it'd also remove that depend on it
+2012-04-27T16:33:00.000Z	gaelfx	LjL	ftfy

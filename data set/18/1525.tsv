@@ -1,0 +1,18 @@
+2012-10-23T01:45:00.000Z	wariat		Hello! I like to know what i've installed on my computer. I was sure that i will find this by # apt-mark showmanual but there is a lot of crap I did not install manually. I've installed ubuntu on other machine today, after is tarted i've checked # apt-mark showmanual | wc -l; apt-mark showauto | wc -l and the result is: 1381, 62 and IMO should be 0, 1443 can anyone please tell me if it is just a bug or maybe that auto/manual is not about who
+2012-10-23T01:45:00.000Z	wariat		installed the packet in the system.
+2012-10-23T01:46:00.000Z	jordanm	wariat	"automatic" installations occur when something is installed because it depends or recommended by a package that it was told to install (which is manual)
+2012-10-23T01:47:00.000Z	jordanm	wariat	the packages the installer explicitly tells apt to install would be manual whereas the things that get pulled in as a result are "automatic"
+2012-10-23T01:47:00.000Z	jordanm	wariat	I just explained it, are you reading?
+2012-10-23T01:48:00.000Z	jordanm	wariat	you installed the manually installed packages by using the ubuntu installer
+2012-10-23T01:50:00.000Z	jordanm	wariat	sudo -i is the proper way to get a root shell using sudo
+2012-10-23T01:53:00.000Z	jordanm	wariat	no, apt does not differentiate between you typing "apt-get install" and the installer running "apt-get install"
+2012-10-23T01:55:00.000Z	wariat	jordanm	so theer is no way to get this list? weird but ok i'll try to live with that. Anyway so the information about manual/automatic packages has any sense here? I'm asking because i like to know what for is something
+2012-10-23T01:55:00.000Z	jordanm	wariat	17:46:16 < jordanm> wariat: "automatic" installations occur when something is installed because it depends or recommended by a package that it was told to install (which is manual)
+2012-10-23T01:56:00.000Z	jordanm	wariat	if I say apt-get install foo and it installs bar also because bar is a depends "foo" is a manual installation and "bar" is an automatic
+2012-10-23T01:58:00.000Z	wariat	jordanm	but it doeas not work like this … i've installed vim for example (manually) so vim should be manual, and it's dependencies should be automatic right? Can you see here: http://pastebin.com/pD9wjSEF ?
+2012-10-23T02:01:00.000Z	jordanm	wariat	the last 3 were done by the installer
+2012-10-23T02:02:00.000Z	wariat	jordanm	Ok so there is a way to get a list od packages installed by the installer? You kno to compare this list with all manuall packages and get a list of packages installed by me
+2012-10-23T02:03:00.000Z	jordanm	wariat	what are you really trying to accomplish?
+2012-10-23T02:04:00.000Z	wariat	jordanm	i like to get a list od packages i've installed on my computer. Like i had in gentoo in /var/lib/portage/world just a list of packages installed by me not the installer or anyone
+2012-10-23T02:05:00.000Z	jordanm	wariat	for what purpose? just to waste time? gentoo has an installer now?
+2012-10-23T02:09:00.000Z	jordanm	wariat	aptitude search -F '%100p' '~i!~M' > package_list; on the reference machine; xargs aptitude --schedule-only install < package_list; aptitude install; on the other machine

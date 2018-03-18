@@ -1,0 +1,18 @@
+2006-08-30T07:04:00.000Z	YogSothoth		Hi
+2006-08-30T07:06:00.000Z	YogSothoth		I just installed Ubuntu on my new laptop. My Wi-Fi card is installed using ndiswrapper. But I can only reach IP addresses: it seems that it does not reverse using DNS. Why?
+2006-08-30T07:07:00.000Z	fyrestrtr	YogSothoth	something is wrong with you /etc/resovl.conf
+2006-08-30T07:08:00.000Z	YogSothoth	fyrestrtr	thank you. How can I fix my /etc/resovl.conf ?
+2006-08-30T07:09:00.000Z	YogSothoth	fyrestrtr	it is empty
+2006-08-30T07:09:00.000Z	YogSothoth	fyrestrtr	is that normal?
+2006-08-30T07:10:00.000Z	fyrestrtr	YogSothoth	I made a mistake, its /etc/resolv.conf
+2006-08-30T07:10:00.000Z	fyrestrtr	YogSothoth	this file lists your dns servers
+2006-08-30T07:10:00.000Z	YogSothoth	fyrestrtr	it's ok!
+2006-08-30T07:10:00.000Z	fyrestrtr	YogSothoth	if its empty, it means your computer cannot resolve domain names to ip addresses.
+2006-08-30T07:10:00.000Z	YogSothoth	fyrestrtr	I recopied the content from the current Ubuntu box I use and it worked
+2006-08-30T07:11:00.000Z	YogSothoth	fyrestrtr	I don't understand why this file was not automatically filled. I've installed Ubuntu multiple times and it's the first time it happens
+2006-08-30T07:12:00.000Z	fyrestrtr	YogSothoth	it normally gets filled via DHCP. If you don't have DHCP, you have to manually specify your dns servers.
+2006-08-30T07:18:00.000Z	YogSothoth	fyrestrtr	okay this is it: i deactivated dhcp to specify my own ip address. I should have done a dhcp first!
+2006-08-30T07:18:00.000Z	YogSothoth	fyrestrtr	thank you
+2006-08-30T07:18:00.000Z	fyrestrtr	YogSothoth	no, you don't *have* to use DHCP, but if you decide not you, you must give IP addresses for atleast one DNS server.
+2006-08-30T07:19:00.000Z	YogSothoth	fyrestrtr	which can be my gateway, 192.168.1.1
+2006-08-30T07:19:00.000Z	fyrestrtr	YogSothoth	sure it can, if your gateway runs dns :)

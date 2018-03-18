@@ -1,0 +1,18 @@
+2012-06-19T13:19:00.000Z	jolaren		I'm logged into my webmin on my server and I can see that /usr/sbin/apache2 -k start is running like 10 times
+2012-06-19T13:20:00.000Z	fidel	jolaren	shouldnt that be based on the apache config?
+2012-06-19T13:20:00.000Z	jolaren	fidel	it's running as root and as www-data
+2012-06-19T13:20:00.000Z	jolaren		i haven't looked at it earlier, just saw it now
+2012-06-19T13:21:00.000Z	fidel	jolaren	having > 1 apache process is rteally nothing special
+2012-06-19T13:21:00.000Z	fidel		play with your apache config and tweak it to your needs
+2012-06-19T13:21:00.000Z	fidel		the default values are just .....'default values' matching for some .. not for others
+2012-06-19T13:23:00.000Z	jolaren	fidel	llutz_: okay.. so I shouldn't mind apache running as root? the website is not live, I access it only via ssh tunnel
+2012-06-19T13:25:00.000Z	jolaren		ive looked after the conf in several places now, haven't found the parameter your stating llutz_ .. checked /etc/default/apache2 and /etc/phpmyadmin/apache.conf
+2012-06-19T13:25:00.000Z	fidel	jolaren	i do see 1 root process here - and several owned by www-data
+2012-06-19T13:25:00.000Z	fidel		the first is wondering me myself a bit - the second is rhe expected part
+2012-06-19T13:26:00.000Z	jolaren	fidel	then we are on the same page.. I have the same setup as you. I don't know how that happend.
+2012-06-19T13:27:00.000Z	jolaren	fidel	I didn't know that! I probarbly should remove webmin then, I've always used it.
+2012-06-19T13:29:00.000Z	fidel	jolaren	having 1 apache process owned by root isnt that special either btw
+2012-06-19T13:29:00.000Z	jolaren	fidel	I reckoned from your statement earlier, I felt more calm.
+2012-06-19T13:29:00.000Z	jolaren		Googled it, apparently it's normal
+2012-06-19T13:29:00.000Z	fidel		so - basically seeing > 1 process owned by www-data or similar users -> is fine - if you want less - consider checking your apache config for min/max etc
+2012-06-19T13:31:00.000Z	jolaren	fidel	llutz_ thanks for your assistance

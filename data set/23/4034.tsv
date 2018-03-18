@@ -1,0 +1,23 @@
+2011-09-14T01:05:00.000Z	K4k		What is the equivalent directory to /etc/pki/tls/certs in Ubuntu 10.04.3?
+2011-09-14T01:05:00.000Z	ikonia	K4k	for what application
+2011-09-14T01:05:00.000Z	K4k	ikonia	openldap
+2011-09-14T01:06:00.000Z	ikonia	K4k	there slapd.conf should show where it's looking for certs
+2011-09-14T01:06:00.000Z	K4k	ikonia	thank you
+2011-09-14T01:07:00.000Z	K4k	ikonia	I don't appear to have that file anywhere...
+2011-09-14T01:07:00.000Z	ikonia	K4k	then how have you configured openldap
+2011-09-14T01:07:00.000Z	K4k	ikonia	https://help.ubuntu.com/community/LDAPClientAuthentication
+2011-09-14T01:08:00.000Z	ikonia	K4k	are you trying to configure the client or server ?
+2011-09-14T01:09:00.000Z	K4k	ikonia	I already have a server set up. I'm normally doing this with Redhat though :-(
+2011-09-14T01:09:00.000Z	ikonia	K4k	so this is just the client to connect to the redhat server ?
+2011-09-14T01:09:00.000Z	K4k	ikonia	correct
+2011-09-14T01:10:00.000Z	ikonia	K4k	I don't have an ubuntu client here to look at, I'm just reading that wiki
+2011-09-14T01:11:00.000Z	K4k	ikonia	actually, wouldn't the ldap.conf tell ldap where to look for certs?
+2011-09-14T01:11:00.000Z	ikonia	K4k	I would have expected that, yes
+2011-09-14T01:12:00.000Z	K4k	ikonia	well lookie there, completely glazed over that...
+2011-09-14T01:12:00.000Z	ikonia	K4k	oh, it is ther ?
+2011-09-14T01:12:00.000Z	K4k	ikonia	yes, just commented out
+2011-09-14T01:12:00.000Z	ikonia	K4k	mega, good find
+2011-09-14T01:13:00.000Z	K4k	ikonia	/etc/ssl/certs if you're curious
+2011-09-14T01:13:00.000Z	ikonia	K4k	useful, thank you
+2011-09-14T02:00:00.000Z	K4k	ikonia	I finally got LDAP working btw. Follow the wiki + had to add "TLS_REQCERT allow" to the ldap.conf because we're using our own internal CA. Probably not the best way to solve the issue since it could potentially pose a security issue but at least it works for now.
+2011-09-14T02:00:00.000Z	ikonia	K4k	that sounds a fine way to work,

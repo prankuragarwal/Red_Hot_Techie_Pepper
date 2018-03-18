@@ -1,0 +1,22 @@
+2011-03-25T03:07:00.000Z	purpzey		Can anyone help me out, my filesystem won't mount, I booted to LiveCD, tried check/repair it is returning "The filesystem is NOT clean"
+2011-03-25T03:09:00.000Z	dfh	purpzey	which FS do you use?
+2011-03-25T03:10:00.000Z	purpzey	dfh	Ext3
+2011-03-25T02:34:00.000Z	dfh	purpzey	do you literally mean the filesystem or messed up files on top?
+2011-03-25T03:11:00.000Z	dfh	purpzey	use fsck from the terminal and post the output
+2011-03-25T03:11:00.000Z	purpzey	dfh	What is the command? I mean, I know fsck...but what options do I need?
+2011-03-25T03:16:00.000Z	purpzey	dfh	I am getting Device or resource busy...but I don't have the drive mounted...do I need to manually umount it first or something? \
+2011-03-25T03:25:00.000Z	dfh	purpzey	I don't think you have the filesystem directly on sdb but more likely on sdb1, check dmesg|grep sdb
+2011-03-25T03:23:00.000Z	dfh	purpzey	sudo fsck.ext3 /dev/sda2 or similar?
+2011-03-25T03:24:00.000Z	purpzey	dfh	sudo fsck /dev/sdb
+2011-03-25T03:27:00.000Z	purpzey	dfh	It looks like it is sdb...there is a an [sbd] tag on the largest size block
+2011-03-25T03:28:00.000Z	dfh	purpzey	post output of sudo fdisk -l /dev/sdb
+2011-03-25T03:29:00.000Z	purpzey	dfh	K...will be a sec, need to get it on the internets...
+2011-03-25T03:34:00.000Z	purpzey	dfh	I apologize...you were right...it was sdb1 I am running the fsck now...
+2011-03-25T03:34:00.000Z	dfh	purpzey	np
+2011-03-25T03:48:00.000Z	purpzey	dfh	fsck to the rescue...ty for the help!
+2011-03-25T03:49:00.000Z	dfh	purpzey	nice to hear that
+2011-03-25T03:50:00.000Z	purpzey	dfh	Can you give me a short version of why that would have happened? just in abstract...
+2011-03-25T03:51:00.000Z	dfh	purpzey	fdisk would look at /dev/sdb which has a mbr "header" instead of a valid ext3 header, instead of properly failing and telling you: "no ext3 FS found on /dev/sdb" it gave you that misleading error code (well that's how I understand it anway)
+2011-03-25T03:52:00.000Z	purpzey	dfh	Sorry, my fault for being a little unclear, what would cause the file system to fail?
+2011-03-25T03:53:00.000Z	dfh	purpzey	Oh many reasons, often it's hardware related, bad RAM, bad PSU, bad HDD, system crash, but software bugs could corrupt the FS as well.
+2011-03-25T03:53:00.000Z	purpzey	dfh	Ok, fair enough..I'll settle for it being fixed...thanks again...take care...

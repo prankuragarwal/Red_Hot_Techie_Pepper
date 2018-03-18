@@ -1,0 +1,23 @@
+2011-11-06T00:13:00.000Z	Maccer		How does one download a PPA package offline from a machine that doesn't have ubuntu?
+2011-11-06T00:14:00.000Z	Maccer		https://launchpad.net/~foresto/+archive/extradrivers  This for instance, how would one download this package on windows and execute it off-line on ubuntu?
+2011-11-06T00:14:00.000Z	trism	Maccer	on the ppa page, click 'View package details', then expand the package you want to download and they are listed at the bottom
+2011-11-06T00:15:00.000Z	Maccer		I assume the .deb already includes the files, trism?
+2011-11-06T00:16:00.000Z	trism	Maccer	the debs are generally what you want unless you are rebuilding the package
+2011-11-06T00:19:00.000Z	Maccer		Bah, what the hell is this dkms bunk that I have to download?
+2011-11-06T00:20:00.000Z	trism	Maccer	dkms automatically rebuilds kernel modules when a new kernel is installed
+2011-11-06T00:23:00.000Z	Maccer		Where could I download dkms 2.1 or higher as an offline package?\
+2011-11-06T00:25:00.000Z	trism	Maccer	packages.ubuntu.com , you'll also want to get the linux-headers package for your running kernel, since dkms will need it to build the module
+2011-11-06T00:29:00.000Z	Maccer		I can't find a linux-headers off-line .deb anywhere, also dkms says "dependency not satisfiable, patch." Tris
+2011-11-06T00:29:00.000Z	Maccer		*trism
+2011-11-06T00:31:00.000Z	trism	Maccer	it means you'll need to download the deb for the patch package too, and I'll find the linux-headers package if you give me: uname -a;
+2011-11-06T00:33:00.000Z	Maccer	trism	Linux 3.0.0-12-generic #20 ubuntu x86_64
+2011-11-06T00:34:00.000Z	trism	Maccer	http://packages.ubuntu.com/oneiric/linux-headers-3.0.0-12
+2011-11-06T00:35:00.000Z	trism	Maccer	you may need the amd64 package here too: http://packages.ubuntu.com/oneiric/linux-headers-3.0.0-12-generic
+2011-11-06T00:43:00.000Z	Maccer	trism	 Looks like the software center is taking a while to open or analyze the package.  Any other way I can install it?  Sigh, linux driver support. :(
+2011-11-06T00:44:00.000Z	trism	Maccer	you can install them from the command line with: sudo dpkg -i *.deb; (once you navigate to the directory with the files)
+2011-11-06T00:56:00.000Z	Maccer	trism	I'm sorry for bugging you, and thanks for all the help by the way, but where the hell do I find a proper dkms .deb?  This one depends on some patch.  Being ethernet and ssh-less is a bitch
+2011-11-06T00:57:00.000Z	trism	Maccer	it depends on the ubuntu package called patch: http://packages.ubuntu.com/oneiric/patch
+2011-11-06T00:58:00.000Z	Maccer		Oh, it literally depends on something called 'patch', heh.
+2011-11-06T01:09:00.000Z	Maccer	trism	 Thanks for the help.  Ultimately the driver ended up failing and making ubuntu not see any network possibilities (as opposed to connections) and now I'm thinking I should just buy a network card that's linux friendly.
+2011-11-06T01:09:00.000Z	Maccer		Stupid Marvell
+2011-11-06T01:10:00.000Z	trism	Maccer	sorry to here that, wish I could help further but I am not familiar with that card

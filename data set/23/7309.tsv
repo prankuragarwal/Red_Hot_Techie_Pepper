@@ -1,0 +1,23 @@
+2005-10-26T10:47:00.000Z	OneSeventeen		I just installed Breezy server, and after modifying the /etc/networking/interfaces file with my static IP address, everything went fine until...
+2005-10-26T10:48:00.000Z	OneSeventeen		I logged out, and the next morning, my Breezy server decided its static IP wasn't good enough, and it went out to a DHCP server and got a new IP
+2005-10-26T10:48:00.000Z	OneSeventeen		Is there another place I need to tell the server to stay with the Static IP I've been assigned?
+2005-10-26T10:49:00.000Z	OneSeventeen		a simple "/etc/init.d/networking restart" forced the server to read the config file again, and it went back to normal, but I want it to stay normal
+2005-10-26T10:49:00.000Z	Belutz	OneSeventeen	/etc/networking/interfaces
+2005-10-26T10:50:00.000Z	Belutz	OneSeventeen	sorry, it should be /etc/network/interfaces
+2005-10-26T10:50:00.000Z	OneSeventeen	Belutz	/etc/network/interfaces is configured with "iface eth1 inet static" and my network details follow it.
+2005-10-26T10:50:00.000Z	Belutz	OneSeventeen	yes, the 'static' means that it use static IP
+2005-10-26T10:50:00.000Z	OneSeventeen	Belutz	when I restart the networking interfaces, it reads the file and remembers to be static again.
+2005-10-26T10:51:00.000Z	OneSeventeen		My problem is when I left work last night, I logged out, and it was still on a static IP.
+2005-10-26T10:51:00.000Z	OneSeventeen		When I got to work this morning, it had gotten a dynamic IP from a dhcp server.
+2005-10-26T10:51:00.000Z	Belutz	OneSeventeen	is there an 'auto ethx' in it?
+2005-10-26T10:52:00.000Z	Belutz		replace x with a number
+2005-10-26T10:52:00.000Z	OneSeventeen	Belutz	Yes, "auto eth1" then the next line is the "iface eth1 inet static"
+2005-10-26T10:52:00.000Z	Belutz	OneSeventeen	try to put the 'auto eth1' after the eth1 details
+2005-10-26T10:53:00.000Z	OneSeventeen		okay, I'll come back if it goes dhcp again.  (but since it happend during a 10 hour span, I'm not quite sure what triggered it.)
+2005-10-26T10:54:00.000Z	Belutz	OneSeventeen	ok
+2005-10-26T10:55:00.000Z	OneSeventeen	Belutz	do you know what the auto eth1 does?
+2005-10-26T10:55:00.000Z	OneSeventeen		Or is there a man page/document on /etc/network/interfaces ?
+2005-10-26T10:55:00.000Z	Belutz	OneSeventeen	it's auto configuring the eth1 based on the config you provided in interfaces
+2005-10-26T10:56:00.000Z	Belutz	OneSeventeen	man interfaces :)
+2005-10-26T10:56:00.000Z	OneSeventeen	Belutz	Cool, thanks.
+2005-10-26T10:56:00.000Z	Belutz	OneSeventeen	you're welcome

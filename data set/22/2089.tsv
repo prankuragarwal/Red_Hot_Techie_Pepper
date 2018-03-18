@@ -1,0 +1,22 @@
+2011-06-18T19:22:00.000Z	PeskyJ		My son just bought a laptop (MSI CR620) and we're trying to put ubuntu on it, but the USB stick installer and the CD install (11.04 desktop amd64) both just get stuck on the "ubuntu ..." screen - any ideas how to troubleshoot?
+2011-06-18T19:23:00.000Z	pfifo	PeskyJ	try booting the alternate installer, see if you can get to a command line
+2011-06-18T19:24:00.000Z	PeskyJ	pfifo	how do you make it boot that? is there a key to press during boot?
+2011-06-18T19:29:00.000Z	PeskyJ	pfifo	wols: I found the alternate text based installer on the ubuntu site - I'll try that.
+2011-06-18T19:29:00.000Z	pfifo	PeskyJ	download and burn the alternate iso
+2011-06-19T00:44:00.000Z	pfifo	PeskyJ	have you tried booting with your wireless device disabled? My laptops can toggle it off, and theres probably a way to disable it in the bios too
+2011-06-19T00:57:00.000Z	pfifo	PeskyJ	that's not what your lookingfor
+2011-06-19T01:03:00.000Z	pfifo	PeskyJ	You can blacklist a module using the following syntax: module_name.blacklist=yes. This will cause the module to be blacklisted in /etc/modprobe.d/blacklist.local both during the installation and for the installed system.
+2011-06-19T01:06:00.000Z	PeskyJ	pfifo	is that in the grub boot commands?
+2011-06-19T01:07:00.000Z	pfifo	PeskyJ	yes, youll have to determine the actual module nome from someone else or google, I have no idea what to actually put there, but it can be done
+2011-06-19T01:09:00.000Z	PeskyJ	pfifo	ok trying it now :) what's the correct way to see the boot log during boot instead of the graphical progress thingy?
+2011-06-19T01:10:00.000Z	pfifo	PeskyJ	remove "quiet splash" from the boot options
+2011-06-19T01:13:00.000Z	PeskyJ	pfifo	are we talking about in grub here? I don't see anything to do with quiet splash
+2011-06-19T01:14:00.000Z	pfifo	PeskyJ	press "E" to edit the boot command
+2011-06-19T01:15:00.000Z	PeskyJ	pfifo	my bad - found it
+2011-06-19T01:16:00.000Z	PeskyJ	pfifo	should the module.blacklist=yes be an option to the 'linux' command or before it on a separate line?
+2011-06-19T01:18:00.000Z	pfifo	PeskyJ	to the linux command
+2011-06-19T01:18:00.000Z	PeskyJ	pfifo	ok retrying :D I'm new to editing the grub commands - it's fun
+2011-06-19T01:20:00.000Z	PeskyJ	pfifo	you are a superstar!!!
+2011-06-19T01:21:00.000Z	PeskyJ	pfifo	the blacklist thing works great - now I think I will be able to get the fixed module and make it all work (or at least get it to boot to try!)
+2011-06-19T01:21:00.000Z	pfifo	PeskyJ	you shoul;d propose a workaround on that bug report
+2011-06-19T01:26:00.000Z	PeskyJ	pfifo	ok, will do :)

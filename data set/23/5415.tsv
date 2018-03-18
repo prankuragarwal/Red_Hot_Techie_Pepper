@@ -1,0 +1,23 @@
+2007-05-13T08:17:00.000Z	stefg	jlaw	see dpkg --force-help to force deinstallation of the dmraid-package
+2007-05-13T08:18:00.000Z	jlaw	stefg	i already did dpkg --force-all -r dmraid gives the same error
+2007-05-13T08:20:00.000Z	stefg	jlaw	what's the error you got while installing dmraid? might it help to download the package manually, install it with dpkg -i and remove it then?
+2007-05-13T08:21:00.000Z	jlaw	stefg	almost same error when installing
+2007-05-13T08:22:00.000Z	stefg	jlaw	so what error? complaints it cant start dmraid?
+2007-05-13T08:22:00.000Z	jlaw	stefg	wait a second
+2007-05-13T08:23:00.000Z	jlaw	stefg	flood or pm?
+2007-05-13T08:24:00.000Z	stefg		!paste | jlaw
+2007-05-13T08:24:00.000Z	jlaw	stefg	http://paste.ubuntu-nl.org/20649/
+2007-05-13T08:25:00.000Z	stefg		k, sec
+2007-05-13T08:27:00.000Z	stefg	jlaw	try to sudo dpkg --configure --pending
+2007-05-13T08:28:00.000Z	jlaw	stefg	nothing, no messages of succes nor failures
+2007-05-13T08:29:00.000Z	stefg	jlaw	so try what error  sudo /etc/init.d/dmraid start  throws
+2007-05-13T08:30:00.000Z	jlaw	stefg	no error; but ls -l /dev/mapper gives me 0
+2007-05-13T08:31:00.000Z	jlaw	stefg	the weird is that it works in the system booted from cd. everything is partitioned etc. but i can not apt-get install dmraid in the chrooted system
+2007-05-13T08:33:00.000Z	stefg	jlaw	http://ubuntuforums.org/showthread.php?p=1131444
+2007-05-13T08:35:00.000Z	stefg	jlaw	you need /proc and /sys mounted in the chroot
+2007-05-13T08:35:00.000Z	jlaw	stefg	/proc and /sys are mounted :(
+2007-05-13T08:36:00.000Z	stefg	jlaw	hmmm... so maybe the thread i linked you to can help you fixing it. I'm running out of ideas
+2007-05-13T08:36:00.000Z	jlaw	stefg	i'll have a look on it, thanx so far
+2007-05-13T08:39:00.000Z	jlaw	stefg	haha i got it :D must have forgotten one mount -.-
+2007-05-13T08:39:00.000Z	stefg	jlaw	PEBKAC :-)
+2007-05-13T08:39:00.000Z	jlaw	stefg	thanx might

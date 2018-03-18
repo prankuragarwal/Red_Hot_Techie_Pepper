@@ -1,0 +1,19 @@
+2009-05-14T07:24:00.000Z	vertix	jbmigel	watch out for dd. it is one of the most destructive programs, cause i can write directly to device and wipe out your entire partition, superblock, and file system!
+2009-05-16T21:05:00.000Z	jbmigel	vertix	to switch sdb to sda, change which port the sata drive is plugged into on the motherboard.... but fix your grub first or it will never boot again
+2009-05-16T21:12:00.000Z	vertix	jbmigel	i know abouit "or it will never boot again". that is why i am so hesitant to shut down, cause i wasted a week on this already. somehow managed to make it work, but after updating to kernel 2.6.27-14, it wouldn't boot. i guess because the .map file was wrong. how did i manage to come up (via another version installed on a different partition), only god knows. I just remember i added chainlloader +1 from grubs prompt when booting,
+2009-05-16T21:13:00.000Z	jbmigel	vertix	well grub is a dance between the hardware and kernels... take modifications slowly... who cares what your drives are called anyway really... just leave it all be
+2009-05-16T21:15:00.000Z	vertix	jbmigel	fine with me, it does not matter what is called what. except when it started to boot, it started toing fsck on wrong partitions because its idea of drive order is not what it was when it was booting
+2009-05-16T21:17:00.000Z	vertix	jbmigel	another thing: for some reason, it does not see my cdrom. what could be the reason for it? I was able to come up, but after doing update, it does not see the cdrom
+2009-05-16T21:17:00.000Z	jbmigel	vertix	im not really sure, maybe you accidentally unplugged it last time you were digging around in the case?\
+2009-05-16T21:18:00.000Z	vertix	jbmigel	nope. it is all there. i did not change anything in hardware. is there any way to generate the device in /dev directory with something like modprobe?
+2009-05-16T21:19:00.000Z	vertix	jbmigel	(before i generate another grub and screw my mbr?) :)
+2009-05-16T21:20:00.000Z	vertix	jbmigel	or can i add something to /lib/modules or something to make sure ubuntu is seeing my cdrom drive?
+2009-05-16T21:20:00.000Z	jbmigel	vertix	sorry im not sure
+2009-05-16T21:22:00.000Z	jbmigel	vertix	if you look in /etc/fstab you can see where your current kernel is looking for it
+2009-05-16T21:26:00.000Z	vertix	jbmigel	i have this in /etc/fstab /dev/scd0       /media/cdrom0   udf,iso9660 user,noauto,exec,utf8 0       0. but there is no /dev/scd0
+2009-05-16T21:28:00.000Z	jbmigel	vertix	it really sounds like your cd drive is not installed... you're sure its not unplugged or something? can you put a boot disk in and boot from it?
+2009-05-16T21:29:00.000Z	vertix	jbmigel	cd drive is installed. otherwise, how could it boot from livecd?
+2009-05-16T21:29:00.000Z	vertix	jbmigel	unplugged? :) who did that?!? :)
+2009-05-16T21:31:00.000Z	jbmigel	vertix	does lspci list cdroms in it for you?
+2009-05-16T21:34:00.000Z	jbmigel	vertix	and its not in dmesg either?
+2009-05-16T21:43:00.000Z	vertix	jbmigel	well, i like NDIS intermediate drivers, i wrote one powerful driver for my monitoring firewall, i wish i could port it to linux. do they have equivalent of NDIS drivers? cause that is the key

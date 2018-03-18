@@ -1,0 +1,23 @@
+2006-05-27T13:01:00.000Z	mr_hus		Does the freetype build available from the ubuntu repositories support BCI?? Or you need to build it yourself?
+2006-05-27T13:02:00.000Z	crimsun	mr_hus	yes, it supports it.
+2006-05-27T13:02:00.000Z	crimsun	mr_hus	it does not, however, use Apple's patented stuff.
+2006-05-27T13:04:00.000Z	mr_hus	crimsun	does a good job anyway or apple's patented stuff does a better job?
+2006-05-27T13:04:00.000Z	crimsun	mr_hus	seems fine to me, and we're not permitted to distribute Apple's patented stuff anyhow
+2006-05-27T13:04:00.000Z	mr_hus	crimsun	im still not quite satisfied with how the fonts get rendered on my box...
+2006-05-27T13:05:00.000Z	mr_hus	crimsun	but if i wanted i could build freetype myself with the patented stuff right?
+2006-05-27T13:05:00.000Z	crimsun	mr_hus	no, you can't
+2006-05-28T12:47:00.000Z	crimsun	mr_hus	we need the output from ``dpkg -D3773 -i /var/cache/apt/archives/ntp-server_1%3a4.2.0a+stable-8.1ubuntu5_i386.deb''
+2006-05-28T12:51:00.000Z	mr_hus	crimsun	here's the output of that command... http://paste.ubuntu-nl.org/14756
+2006-05-28T12:53:00.000Z	crimsun	mr_hus	pastebin the prerm from the new package.
+2006-05-28T13:00:00.000Z	crimsun	mr_hus	yep, it's probably because ntpd isn't running when the package upgrade occurs
+2006-05-28T13:00:00.000Z	crimsun	mr_hus	you'll need to work around it by editing /etc/init.d/ntp-server
+2006-05-28T13:02:00.000Z	crimsun	mr_hus	still with me?
+2006-05-28T13:02:00.000Z	mr_hus	crimsun	yeah i just opened the file
+2006-05-28T13:02:00.000Z	crimsun	mr_hus	ok, scroll down to the stop target
+2006-05-28T13:03:00.000Z	crimsun	mr_hus	line 24 or thereabouts depending on $COLUMNS
+2006-05-28T13:03:00.000Z	crimsun	mr_hus	change "start-stop-daemon --stop --quiet --pidfile /var/run/ntpd.pid"  to  "start-stop-daemon --stop --quiet --pidfile /var/run/ntpd.pid ||true"
+2006-05-28T13:04:00.000Z	crimsun	mr_hus	save it, then apt-get -f install
+2006-05-28T13:04:00.000Z	mr_hus	crimsun	so i just add the || true part at the end?
+2006-05-28T13:04:00.000Z	crimsun	mr_hus	yes
+2006-05-28T13:07:00.000Z	mr_hus	crimsun	urm okay seems like this worked now.... but what the hell did we just do? just force it not to bitch??
+2006-05-28T13:07:00.000Z	crimsun	mr_hus	essentially.

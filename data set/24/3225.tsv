@@ -1,0 +1,24 @@
+2008-03-22T19:31:00.000Z	unop_	xlrr	if you want to use username@computername - you'll need to add an entry to /etc/resolv.conf for it
+2008-03-22T19:32:00.000Z	unop_	xlrr	sorry, /etc/hosts not /etc/resolv.conf
+2008-03-22T19:32:00.000Z	xlrr	unop_	Do you know where I can find more details on how to accomplish that?
+2008-03-22T19:33:00.000Z	unop_	xlrr	simple really -- examine /etc/hosts -- and follow the format for one of the existing entries --  gksudo gedit /etc/hosts
+2008-03-22T19:35:00.000Z	xlrr	unop_	Thanks for your help. I'm in gedit now, but I think I need more help as to what exactly add there? An ip address and some sort of name? How do I find those values?
+2008-03-22T19:36:00.000Z	unop_	xlrr	what is the IP address of the host you wish to map??
+2008-03-22T19:36:00.000Z	unop_	xlrr	you can find that out with ifconfig (on the other machine)
+2008-03-22T19:37:00.000Z	xlrr	unop_	You mean I have to specify the IP address of whatever computer I am connecting from?
+2008-03-22T19:38:00.000Z	unop_	xlrr	if you are on compA -- and want to add an entry for compB (so you can do ssh user@compB) .. then you need compB's address -- get on compB and find out it's ip address
+2008-03-22T19:40:00.000Z	xlrr	unop_	Okay when I do '/sbin/ifconfig/ on the other comp, I get an IP adddress after inet addr: in the 'eth0' row. Do I add that to /etc/hosts?
+2008-03-22T19:40:00.000Z	unop_	xlrr	yes -- to /etc/hosts (on this computer)
+2008-03-22T19:44:00.000Z	xlrr	unop_	I added '172.xx.xx.xxx compB' after the other IP Address + name entries in /etc/hosts. Now I still cannot ssh username@computername from compB.
+2008-03-22T19:45:00.000Z	unop_	xlrr	you're to edit /etc/hosts on compA  if you want to "ssh user@compB" .. get me?
+2008-03-22T19:50:00.000Z	xlrr	unop_	I setup ssh on Comp A (the comp I am on right now). Now the username@compname method aside, I used 'ssh username@ipaddressofcompA' from comp B and got connected, but it prompts me for a password which I don't know of. I tried all of my passwords but it returns 'Permission denied...'. What did I do wrong? Thanks again.
+2008-03-22T19:51:00.000Z	unop_	xlrr	you probably don't have a password set for that user -- you can change it by using -- passwd
+2008-03-22T19:53:00.000Z	xlrr	unop_	My terminal begins with username@compnameA. I did passwd and changed the pw (it was the same as before). Now I still cannot 'ssh username@compnameA' from compB. Thanks.
+2008-03-22T19:54:00.000Z	xlrr	unop_	Sorry I meant 'ssh username@ipaddressofCompA'.
+2008-03-22T19:54:00.000Z	unop_	xlrr	did you change the password on compA or compB ??
+2008-03-22T19:54:00.000Z	xlrr	unop_	compA
+2008-03-22T19:54:00.000Z	unop_	xlrr	so you are on compB now trying to ssh into compA ??
+2008-03-22T19:54:00.000Z	xlrr	unop_	That is correct.
+2008-03-22T19:56:00.000Z	unop_	xlrr	are you sure you got the username correct in the ssh command?? make sure you got the case right, capitals and small case are different, make sure you have the right hostname/ip address too
+2008-03-22T20:01:00.000Z	xlrr	unop_	It still doesnot work. Can I confirm with you that the IP address of comp A is what follows 'inet addr' in the eth0  row from a '/sbin/ifconfig' and that my username on compA is the same as what appears in front of every line in my terminal,  i.e. 'username@compAName:~$'?
+2008-03-22T20:01:00.000Z	unop_	xlrr	if your nick is registered on freenode -- pm me and we'll take this into private chat -- it's hard following you

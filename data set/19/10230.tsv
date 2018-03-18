@@ -1,0 +1,19 @@
+2007-02-01T17:37:00.000Z	Nutubuntu		Hm - maybe I should ask a more general question. If I compile a package myself (e.g., Bluefish-unstable 1.1.2) and install it (sudo aptitude install ./mypackage.deb), am I right in assuming that aptitude will manage dependencies as it does for packages downloaded from repositories?
+2007-02-01T17:38:00.000Z	LjL	Nutubuntu	you can't use aptitude or apt-get to install a local package, you must use dpkg or gdebi. gdebi will handle the dependencies - if they are available, that is
+2007-02-01T17:42:00.000Z	LjL	Nutubuntu	well, not quite, because if you make a package but do *not* put it in a repository, you can't use APT to install it, so there will be no way for APT to track which packages were installed as dependencies
+2007-02-01T17:43:00.000Z	LjL	Nutubuntu	you can, however, install it using dpkg or gdebi, and if the dependencies are listed correctly, you can do a manual "sudo aptitude markauto list-of-all-the-dependencies" to mark them as automatically installed, so that they will be removed when you remove that package
+2007-02-01T17:44:00.000Z	LjL	Nutubuntu	*perhaps* using gdebi will even track the dependencies automatically through APT, i don't precisely know how gdebi works. that will only be useful if you have Edgy though, of course, since Dapper doesn't have auto-installed-packages-tracking outside of aptitude
+2007-02-01T17:45:00.000Z	Nutubuntu	LjL	- thank you ... I'm running Dapper and trying to wean myself from Synaptic to aptitiude. I'll do some reading on the "markauto" aptitude command; I don't know much about aptitude at all. Yet. :)
+2007-02-01T17:46:00.000Z	LjL	Nutubuntu	well, you know that aptitude adds auto-dependency tracking right? that is, it knows which packages were installed automatically and which manually, so if an automatically-installed package isn't needed anymore, it will remove it
+2007-02-01T17:46:00.000Z	Nutubuntu	LjL	- yes - that's the exact reason why I am trying to train myself to prefer aptitude
+2007-02-01T17:46:00.000Z	LjL	Nutubuntu	"markauto" and "unmarkauto" are simply the aptitude commands that let you change its vision of this manually. if you markauto a package, aptitude will believe that package to have been installed automatically, and vice versa
+2007-02-01T17:47:00.000Z	LjL	Nutubuntu	note that Edgy adds a feature similar to this of aptitude, but in the whole APT system
+2007-02-01T17:47:00.000Z	Nutubuntu	LjL	- that seems like a *very*  useful feature to add. I'm thinking of a new box, and Edgy is what I figure to run on it. Now there's one more reason :)
+2007-02-01T17:48:00.000Z	LjL	Nutubuntu	on the other hand i've had a feeling that aptitude's implementation works better... Edgy's autoremove behaved strangely for me at times. though perhaps it's just "smarter" and i didn't get the smartness ;)
+2007-02-01T17:49:00.000Z	LjL	Nutubuntu	aptitude has other interesting features, at any rate, and is certainly a nice enough APT frontend (except for the graphical interface, which *bleah*, but that's just me anyway ;)
+2007-02-01T17:51:00.000Z	Nutubuntu	LjL	- thank you once again :)
+2007-06-04T13:58:00.000Z	LjL	Nutubuntu	sorry? you were basically the only one actually posting in a sensible way.
+2007-06-04T13:59:00.000Z	LjL	Nutubuntu	it's probably a good time to upgrade, in my opinion
+2007-06-04T14:00:00.000Z	Nutubuntu	LjL	- I was actually typing a question about that exact dpkg command when I saw the msg. Thanks!
+2007-06-04T14:06:00.000Z	LjL	Nutubuntu	i think that you know how to partition a drive. if you're looking for a tutorial on "what's the best partition setup for a drive", you won't find one, because there's not a "best" setup.
+2007-06-04T14:06:00.000Z	LjL	Nutubuntu	i have my root partition, and i have /home, and that's all. it works for me, but something else might work better for you

@@ -1,0 +1,18 @@
+2010-02-01T17:53:00.000Z	osirisx11		how can i make CPU scaling preferences stick beyond reboot?
+2010-02-01T17:55:00.000Z	osirisx11		!info ubottu
+2010-02-01T17:57:00.000Z	duffydack	osirisx11	I have a link for that, let me find it
+2010-02-01T17:59:00.000Z	duffydack	osirisx11	 is it defaulting to ondemand on boot?
+2010-02-01T18:02:00.000Z	duffydack	osirisx11	 edit  /etc/init.d/ondemand and look for echo -n ondemand > $CPUFREQ   and change it to performance
+2010-02-01T18:03:00.000Z	osirisx11	duffydack	thanks i'll look at that... but wouldn't that change the meaning of 'on demand' ?
+2010-02-01T18:03:00.000Z	duffydack	osirisx11	it sets my cpu on boot to performance... not ondeand
+2010-02-01T18:04:00.000Z	duffydack	osirisx11	all cpu`s... i have i7
+2010-02-01T18:04:00.000Z	osirisx11	duffydack	ah but it is kind of a hack, isn't it?
+2010-02-01T18:04:00.000Z	duffydack	osirisx11	well yes I guess so..  but its a simple one
+2010-02-01T18:06:00.000Z	duffydack	osirisx11	its not doing anything bad..  its only a sall script that by default is setting the governor to ondemand.. all you are doing is telling it to use performance instead...
+2010-02-01T18:07:00.000Z	osirisx11	duffydack	but i am thinking there is someplace that is calling init.d/ondemand and i want it instead to call init.d/powersave (or whatever)
+2010-02-01T18:08:00.000Z	duffydack	osirisx11	you are overthinking the situation.. its just a startup script.
+2010-02-01T18:09:00.000Z	osirisx11	duffydack	ok thanks dude
+2010-02-01T18:11:00.000Z	duffydack	osirisx11	you could go through all of this.. if you like http://ubuntuforums.org/showthread.php?t=248867&highlight=Cpu+scaling+ondemand
+2010-02-01T18:11:00.000Z	osirisx11	duffydack	thanks
+2010-02-01T18:11:00.000Z	duffydack	osirisx11	but thats a long long way of doing something simple..
+2010-02-01T18:12:00.000Z	duffydack	osirisx11	there is no other scaling mode in /etc/init.d btw... its ondemand only.. and all the script is doing is setting it by default on startup.. dont worry about it.

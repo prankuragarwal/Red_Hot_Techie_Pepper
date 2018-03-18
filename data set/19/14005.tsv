@@ -1,0 +1,19 @@
+2004-11-21T17:23:00.000Z	desp		audio_setup: Can't open audio device /dev/dsp: Device or resource busy
+2004-11-21T17:23:00.000Z	desp		Could not open/initialize audio device -> no sound.
+2004-11-21T17:23:00.000Z	desp		any ideas why?
+2004-11-21T17:24:00.000Z	desp		this happens when I try to play something in mplayer
+2004-11-21T17:25:00.000Z	pdaoust	desp	you're running GNOME, which runs the Enlightened sound daemon, which keeps control of the soundcard at all times. You must have an onboard or bargain-counter sound card like me that doesn't accept multiple sounds at the same time.
+2004-11-21T17:25:00.000Z	desp	pdaoust	ahh, thanks
+2004-11-21T17:25:00.000Z	pdaoust	desp	you'll need to configure mplayer to use esd as its audio output... can you at least run the mplayer gui?
+2004-11-21T17:26:00.000Z	pdaoust	desp	it's been a while since I used mplayer (I fell in love with xine because it Just Worked for me), I don't remember where it is, but it's configurable from a menu somewhere (i.e., you don't have to go farting around in a config file)
+2004-11-21T17:26:00.000Z	desp	pdaoust	right, thanks
+2004-11-21T17:27:00.000Z	pdaoust	desp	no prob!
+2004-11-21T17:28:00.000Z	pdaoust	desp	heh heh... you're obviously doing something above and beyond my level of knowledge ^_^ I believe that if you use alsa as an output, it won't conflict with esd
+2004-11-21T17:28:00.000Z	desp	pdaoust	thanks anyway, I just killed esd for now :D
+2004-11-21T17:29:00.000Z	pdaoust	desp	hey, if it works, great!
+2004-11-21T17:30:00.000Z	pdaoust	desp	I believe that, if you use alsa as an output, it will play nice with esd... if your card doesn't support hardware mixing, mplayer will take control of the sound card, but it'll give control back to esd when it's done. What platform are you using?
+2004-11-21T17:31:00.000Z	desp	pdaoust	I think I would need to have esd-alsa installed
+2004-11-21T17:31:00.000Z	pdaoust	desp	ohhhh, you're using esd-oss?
+2004-11-21T17:31:00.000Z	desp	pdaoust	not by choice, that's what was installed for me with warty
+2004-11-21T17:32:00.000Z	pdaoust	desp	really?!? must be a difference between PPC and x86 -- ALSA works lovely for me.
+2004-11-21T17:32:00.000Z	desp	pdaoust	probably, yeah

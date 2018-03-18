@@ -1,0 +1,21 @@
+2010-07-22T20:10:00.000Z	flupke		whenever I change volume from the notification bar, it bounces alsa's headphones level to 0db which is very loud ("normal" volume for my soundcard is -21db) ; I have to kill pulse and adjust level again with alsamixer to return to normal. I tried to sudo alsactl store before relaunching pulse, but still it must load its levels from elsewhere
+2010-07-22T20:11:00.000Z	flupke		so, where does pulse take its alsa levels settings from ?
+2010-07-22T20:12:00.000Z	maco	flupke	internet says ~/.pulse/volume.restore.table
+2010-07-22T20:16:00.000Z	flupke	maco	apparently not, I removed ~/.pulse entirely with pulse killed, adjusted levels, started pulse and changed volume => headphone bounces to 0db
+2010-07-22T20:17:00.000Z	maco	flupke	did you then change the volume and stop/start pulse?
+2010-07-22T20:17:00.000Z	flupke	maco	yes (you have to kill pulse to see the "real" levels with alsamixer)
+2010-07-22T20:17:00.000Z	maco	flupke	i think it intentionally starts at 0db as the default when .pulse is created so blind users are never stuck without their screenreader
+2010-07-22T20:19:00.000Z	flupke	maco	problem is with my headphones at 0 db, moving 1 pixel on the pulse volume bar goes from silence to full volume
+2010-07-22T20:20:00.000Z	flupke	maco	and I'm almost sure it was me who did this while toying with jack, after installation volume scaling was normal on the pulse bar
+2010-07-22T20:20:00.000Z	maco	flupke	ah! thats a bug in pulse's flat volume handling. i think it crops up when the sound card reports it possible ranges wrong... please file it. ubuntu-bug -s audio
+2010-07-22T20:21:00.000Z	maco	flupke	oh
+2010-07-22T20:21:00.000Z	flupke	maco	mmmh maybe then it happened after I installed latest alsa drivers from source and this is indeed a bug with the driver
+2010-07-22T20:22:00.000Z	maco	flupke	oh dear. you've done a *lot* that couldve done it
+2010-07-22T20:23:00.000Z	flupke	maco	I'm almost sure it's the driver, the issue you describe makes sense
+2010-07-22T20:23:00.000Z	flupke	maco	I'll try to reverse to the kernel driver and see what happens
+2010-07-22T20:23:00.000Z	maco	flupke	ok
+2010-07-22T20:56:00.000Z	flupke	maco	reverting to the stock drivers fixes the volume bar scaling problem, so it was a bug in the newest drivers as you said
+2010-07-22T20:56:00.000Z	flupke	maco	but now I lose half of my soundcards functionality... why I'm so unlucky with each and every sound card I buy :)
+2010-07-22T21:04:00.000Z	flupke	maco	it also happens with the drivers from linux-backports-modules-alsa, do you think I should file a bug or are they unsupported ?
+2010-07-22T21:04:00.000Z	maco	flupke	that package is supported
+2010-07-22T21:04:00.000Z	flupke	maco	ok I'll file one then

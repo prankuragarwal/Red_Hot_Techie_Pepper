@@ -1,0 +1,23 @@
+2010-04-18T06:11:00.000Z	nineof7		i can't get my ntfs disks mounted, how can i fix that?
+2010-04-18T06:12:00.000Z	nineof7		i can't get my ntfs disks mounted, how can i fix that?
+2010-04-18T06:12:00.000Z	hatake_kakashi	nineof7	have you read what I wrote?
+2010-04-18T06:16:00.000Z	nineof7	hatake_kakashi	no u didn't direct it at me. which one was for me>
+2010-04-18T06:16:00.000Z	hatake_kakashi	nineof7	check dmesg| tail for reasons why, or better yet, check dmesg| grep ntfs
+2010-04-18T06:17:00.000Z	nineof7	hatake_kakashi	how do i do that>
+2010-04-18T06:17:00.000Z	hatake_kakashi	nineof7	you'll need to open up terminal and type in "dmesg| tail" (without quotes)
+2010-04-18T06:21:00.000Z	nineof7	hatake_kakashi	it says  * [  225.975886] end_request: I/O error, dev sr0, sector 0 [  225.978048] sr 4:0:0:0: [sr0] Device not ready: Sense Key : Not Ready [current] [  225.978057] sr 4:0:0:0: [sr0] Device not ready: Add. Sense: Medium not present *  but it IS present!! So ... ?
+2010-04-18T06:22:00.000Z	hatake_kakashi	nineof7	I think you'll find that this error is related to the optical drives, not hard drives
+2010-04-18T06:22:00.000Z	hatake_kakashi	nineof7	pastebin (not paste) your complete dmesg
+2010-04-18T06:23:00.000Z	nineof7	hatake_kakashi	yes, but the ntfs partition on my hdd is also gone
+2010-04-18T06:23:00.000Z	nineof7	hatake_kakashi	 in gparted, the only option i have is to delete it
+2010-04-18T06:23:00.000Z	hatake_kakashi	nineof7	"sudo fdisk -l" will prove it if that's the scase
+2010-04-18T06:24:00.000Z	hatake_kakashi	nineof7	probably not a good idea to do other things related to the disk whilst a partitioning editor is running
+2010-04-18T06:30:00.000Z	nineof7	hatake_kakashi	 care to take a look at my 'sudo fdisk -l' output? http://pastebin.ubuntu.com/416408/
+2010-04-18T06:31:00.000Z	hatake_kakashi	nineof7	you have 4 hard disks and 5 ntfs partitions? I don't understand where the problem is
+2010-04-18T06:32:00.000Z	nineof7	hatake_kakashi	the problem is that i can't access any of them
+2010-04-18T06:33:00.000Z	hatake_kakashi	nineof7	try what ubottu wrote
+2010-04-18T06:36:00.000Z	nineof7	hatake_kakashi	but the problem is exactly that! Gparted won't let me mount the hdd's, any of them. that option is grayed out
+2010-04-18T06:37:00.000Z	hatake_kakashi	nineof7	you shouldn't be using gparted to mount the hard disks, especially gparted is for use as editing partitions not mounting them
+2010-04-18T06:40:00.000Z	nineof7	hatake_kakashi	gogeta yes i just wanna mount them. the only changes i made was to install another partition editor, or the same one twice
+2010-04-18T06:41:00.000Z	nineof7	hatake_kakashi	gogeta yes but even before that, i couldn't see my ntfs partion on the same disk as my linux partions
+2010-04-18T06:53:00.000Z	hatake_kakashi	nineof7	you'll need to add it into /etc/fstab

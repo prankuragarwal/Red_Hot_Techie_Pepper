@@ -1,0 +1,23 @@
+2005-12-08T07:35:00.000Z	iluciv		Hi I have two installations of ubuntu of two seperate drives but I want to mount one of the drives in the other so that I can transfer data onto one drive and format the other. I have the drive that I want to mount plugged in as slave on secondary ide and ubuntu recognises the disk as hdd but I cannot access the drive. How does one do this??
+2005-12-08T07:36:00.000Z	drumline	iluciv	the BIOS sees the drives OK?
+2005-12-08T07:37:00.000Z	iluciv	drumline	yes
+2005-12-08T07:37:00.000Z	drumline	iluciv	"dmesg | less" to find the device names of the drives.  create a directory /mnt and mount that sucker on it.
+2005-12-08T07:38:00.000Z	drumline	iluciv	i thought it would be too...   check your media:/ folder.  see if it's there
+2005-12-08T07:39:00.000Z	iluciv	drumline	nope not there will try the mount option though
+2005-12-08T07:39:00.000Z	drumline	iluciv	mount will certainly work
+2005-12-08T07:39:00.000Z	drumline	iluciv	it's just not as automagic as it should be.
+2005-12-08T07:40:00.000Z	drumline	iluciv	that's definitely something to add to Ubuntu eh?   Auto HD mounting to the /mnt folder or something.
+2005-12-08T07:41:00.000Z	iluciv	drumline	dmesg |less gave me a whole lota this "Buffer I/O error on device hdd, logical block 0
+2005-12-08T07:41:00.000Z	drumline	iluciv	is the drive failing?
+2005-12-08T07:43:00.000Z	drumline	iluciv	cool...   'apt-get install gnome-volume-manager'
+2005-12-08T07:43:00.000Z	drumline	iluciv	preface that with 'sudo'
+2005-12-08T07:45:00.000Z	iluciv	drumline	I've got the latest version already installed
+2005-12-08T07:47:00.000Z	drumline	iluciv	it was from another ubuntu install?
+2005-12-08T07:47:00.000Z	iluciv	drumline	yes
+2005-12-08T07:47:00.000Z	drumline	iluciv	try -t ext3
+2005-12-08T07:48:00.000Z	drumline	iluciv	and before you complete the whole project, be sure to look over the man page and get familiar with the other options of 'mount'
+2005-12-08T07:49:00.000Z	drumline	iluciv	...willis.
+2005-12-08T07:55:00.000Z	drumline	iluciv	did that work for you?
+2005-12-08T07:55:00.000Z	iluciv	drumline	nope I'm going to shut down now and reverse the drives and see if it picks it up on the other install/drive
+2005-12-08T07:57:00.000Z	drumline	iluciv	you didn't alter the default install file system type?
+2005-12-08T10:24:00.000Z	iluciv	drumline	hi again, do you think that fstab having the wrong listings would be a problem i.e. the dvd drive is listed in fstab as /dev/hdb yet the harddrive I want mounted in system/administration/Disks is listed as /dev/hdb

@@ -1,0 +1,22 @@
+2011-01-12T22:34:00.000Z	bencahill	vBm	can you mount the share from another windows computer
+2011-01-12T22:34:00.000Z	vBm	bencahill	i don't have other computers on this network ... just two pc's
+2011-01-12T22:36:00.000Z	bencahill	vBm	yeah, definitely have a password...you can still make it autologon if you wish
+2011-01-12T22:36:00.000Z	bencahill	vBm	yeah, no need to reboot
+2011-01-12T22:50:00.000Z	bencahill	vBm	does it work using mount (command)?
+2011-01-12T22:52:00.000Z	bencahill	vBm	try this:
+2011-01-12T22:53:00.000Z	bencahill	vBm	sudo mount -t cifs //sever/share /path/to/mount/point
+2011-01-12T22:54:00.000Z	vBm	bencahill	mount error(12): Cannot allocate memory
+2011-01-12T22:54:00.000Z	bencahill	vBm	? weird
+2011-01-12T22:57:00.000Z	bencahill	vBm	okay, do you have any pertinent items in Event Viewer?
+2011-01-12T22:57:00.000Z	bencahill	vBm	(on the windows machine)
+2011-01-12T22:57:00.000Z	bencahill	vBm	btw, what v of windows?
+2011-01-12T22:59:00.000Z	vBm	bencahill	win7 ultimate ... and let me see for even viewer ... also this is when i get if i try smbmount -> http://paste.omertabeyond.com/view/raw/2290cac0
+2011-01-12T23:00:00.000Z	bencahill	vBm	you need to be running smbmount ^^ as root (sudo)
+2011-01-12T23:00:00.000Z	bencahill	vBm	...or add it to /etc/fstab with the "user" option
+2011-01-12T23:02:00.000Z	vBm	bencahill	if i use sudo i get this -> mount error(12): Cannot allocate memory | Refer to the mount.cifs(8) manual page (e.g. man mount.cifs)
+2011-01-12T23:04:00.000Z	bencahill	vBm	okay, look in Event Viewer (System log) for something with the source as "Srv"
+2011-01-12T23:06:00.000Z	vBm	bencahill	i did it ;o -> sudo mount -t smbfs -o username=USER,password=PASS //server/share /mnt/share
+2011-01-12T23:06:00.000Z	vBm	bencahill	http://www.linux-noob.com/forums/index.php?/topic/1404-how-to-mount-a-windows-share-with-smbmount/page__view__findpost__p__8252
+2011-01-12T23:06:00.000Z	bencahill	vBm	o_o interesting, well good for you! :)
+2011-01-12T23:07:00.000Z	vBm	bencahill	compdoc, glaceman ... thank you very much for your time ... much appreciated
+2011-01-12T23:07:00.000Z	bencahill	vBm	np, glad you got it working! :)

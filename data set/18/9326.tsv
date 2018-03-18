@@ -1,0 +1,18 @@
+2008-11-23T20:50:00.000Z	flo_		i have an atheros wifi card which need ath5k... I installed it, i see the card in iwlist but scanning for networks doesn't work. maybe our problems are related
+2008-11-23T20:52:00.000Z	flo_		iwlist wlan0 scanning returns "no scan results" so i think it's not network manager
+2008-11-23T20:52:00.000Z	usser	flo_	you have to use sudo
+2008-11-23T20:53:00.000Z	flo_	usser	i did
+2008-11-23T20:53:00.000Z	usser	flo_	im sorry i've never dealt with atheros
+2008-11-23T20:53:00.000Z	usser	flo_	can u pastebin the output of lspci so that i know what card it is exactly
+2008-11-23T20:57:00.000Z	usser	flo_	u on hardy right?
+2008-11-23T20:57:00.000Z	usser	flo_	oh cool. the fix is easy then
+2008-11-23T20:58:00.000Z	usser	flo_	sudo nano /etc/modprobe.d/blacklist
+2008-11-23T20:59:00.000Z	usser	flo_	and add ath_pci
+2008-11-23T21:02:00.000Z	flo_	usser	it did not fix
+2008-11-23T21:03:00.000Z	usser	flo_	did u restart?
+2008-11-23T21:03:00.000Z	usser	flo_	you saved the file after you added that right?
+2008-11-23T21:04:00.000Z	usser	flo_	ok on the terminal. type sudo rmmod ath_pci
+2008-11-23T21:04:00.000Z	usser	flo_	sudo modprobe ath9k
+2008-11-23T21:06:00.000Z	usser	flo_	so it did work?
+2008-11-23T21:08:00.000Z	flo_	usser	and Evilrick : THX a LOT for your help... I'll try to investigate on what i did for it to work. I don't beleive in magic
+2008-11-23T21:09:00.000Z	usser	flo_	it was blacklist. I remember cause i was setting ath on someone's eeepc and thats all it takes to make it work on intrepid.

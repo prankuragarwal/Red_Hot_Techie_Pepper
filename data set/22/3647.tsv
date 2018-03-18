@@ -1,0 +1,22 @@
+2008-07-16T03:03:00.000Z	mbrigdan		is it possible to change the strength of a DSA key?
+2008-07-16T03:04:00.000Z	linuxkrn	mbrigdan	no, you need to re-generate it.
+2008-07-16T03:05:00.000Z	mbrigdan	linuxkrn	Thats what I mean, ssh-keygen tells me that a DSA key must be 1024 bits, but I want a stronger one
+2008-07-16T03:05:00.000Z	linuxkrn	mbrigdan	sure, use -b 2048
+2008-07-16T03:06:00.000Z	mbrigdan	linuxkrn	thats what I tried, it tells me that I can't do that.
+2008-07-16T03:06:00.000Z	linuxkrn	mbrigdan	try -b 2048 -t rsa
+2008-07-16T03:06:00.000Z	linuxkrn	mbrigdan	DSA might be limited
+2008-07-16T03:07:00.000Z	mbrigdan	linuxkrn	that works, so i'm guessing that DSA must be restricted
+2008-07-16T03:07:00.000Z	linuxkrn	mbrigdan	yeah, I use RSA myself, so guess DSA is
+2008-07-16T03:08:00.000Z	mbrigdan	linuxkrn	how big is your RSA key? Mine is 16384 bits :P
+2008-07-16T03:08:00.000Z	linuxkrn	mbrigdan	lol, no point in going over 4096, it will also effect your ssh speeds with larger keys (just fyi)
+2008-07-16T03:09:00.000Z	linuxkrn	mbrigdan	remember, your key is used to encrypt everything, larger key = more cpu cycles = slower ssh/scp
+2008-07-16T03:09:00.000Z	mbrigdan	linuxkrn	I was told that it woudn't, and I like the security that being told that all the worlds governments working together would need 10-20 years to break my key gives me.
+2008-07-16T03:11:00.000Z	linuxkrn	mbrigdan	test it out for yourself, doesn't hurt anything to run ssh-keygen.  Also, remember your passphrase is very critical to good security.
+2008-07-16T03:12:00.000Z	mbrigdan	linuxkrn	don't people only need the passphrase if they have the key? I just use the same as my user password, which is reasonably secure. (letters, numbers, symbols, nice length)
+2008-07-16T03:12:00.000Z	linuxkrn	mbrigdan	I use over 256 characters in my pass"phrase"
+2008-07-16T03:13:00.000Z	linuxkrn	mbrigdan	most governments can't crack > 1024 keys now anyway, they just go after the user for the passphrase
+2008-07-16T03:13:00.000Z	mbrigdan	linuxkrn	holy crap. o.O Isn't the password useless to anyone that doesn't have the key though?
+2008-07-16T03:14:00.000Z	linuxkrn	mbrigdan	correct.  This is getting offtopic, go read wiki about pki =)
+2008-07-16T03:38:00.000Z	linuxkrn	mbrigdan	not an ssh key, but using gpg keys yes
+2008-07-16T03:39:00.000Z	mbrigdan	linuxkrn	how do I generate a gpg key?
+2008-07-16T03:40:00.000Z	linuxkrn	mbrigdan	gpg --gen-key

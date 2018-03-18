@@ -1,0 +1,23 @@
+2011-12-20T20:56:00.000Z	abu-bakr		!ssh
+2011-12-20T20:58:00.000Z	abu-bakr		anyone work with ssh?
+2011-12-20T20:58:00.000Z	edbian	abu-bakr	all the time!
+2011-12-20T20:59:00.000Z	abu-bakr	edbian	cool.. i'm trying to get Rsync on this machine to backup home directories on other ubuntu machines.. was thinking i might use ssh to create a drive mount?
+2011-12-20T21:00:00.000Z	edbian	abu-bakr	yeah, rsync user@remote-machine:/some/path/ /some/local/path
+2011-12-20T21:00:00.000Z	edbian	abu-bakr	You can just talk about remote machines like that and it will ssh for you and copy things to /some/local/path/
+2011-12-20T21:00:00.000Z	abu-bakr	edbian	ok.. so i dont need to install anything?
+2011-12-20T21:00:00.000Z	edbian	abu-bakr	the remote machine must be an ssh server (which is not installed by default)
+2011-12-20T21:00:00.000Z	edbian	abu-bakr	the local machine needs rsync, (IDK if that's installed)
+2011-12-20T21:01:00.000Z	edbian	abu-bakr	no
+2011-12-20T21:02:00.000Z	edbian	abu-bakr	If you do a lot of rsync's from this server at once it will become slow (perhaps obviously
+2011-12-20T21:03:00.000Z	edbian	abu-bakr	then it won't make the machine slow.  It will probably make the network all these machines are sharing slow
+2011-12-20T21:03:00.000Z	edbian	abu-bakr	The load on the user machines in minimal using rysnc
+2011-12-20T21:03:00.000Z	abu-bakr	edbian	.. and the ssh server?
+2011-12-20T21:03:00.000Z	edbian	abu-bakr	You will not notice a difference while it is rsyncing on the client if there is only one rsync process going
+2011-12-20T21:03:00.000Z	edbian	abu-bakr	the ssh server will become slow if there are many rsync processes going at once
+2011-12-20T21:04:00.000Z	edbian	abu-bakr	that's right!
+2011-12-20T21:05:00.000Z	edbian	abu-bakr	yeah, that's the nature of a server.  It is always running waiting for connections
+2011-12-20T21:07:00.000Z	edbian	abu-bakr	no (I don't it)
+2011-12-20T21:07:00.000Z	edbian	abu-bakr	this is probably the lightest weight way
+2011-12-20T21:08:00.000Z	edbian	abu-bakr	Additionally, I doubt you will notice any slow-ness while you're rsyncing
+2011-12-20T21:08:00.000Z	edbian	abu-bakr	we're splitting hairs.  Try it and see how little it affects the speed of the machine
+2011-12-20T21:09:00.000Z	abu-bakr	edbian	you're right.. thanks

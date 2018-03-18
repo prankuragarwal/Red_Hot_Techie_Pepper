@@ -1,0 +1,21 @@
+2010-12-18T13:53:00.000Z	pkmhs		i installed lucid on my dell laptop
+2010-12-18T13:53:00.000Z	pkmhs		but bluetooth is disabled
+2010-12-18T13:53:00.000Z	pkmhs		please help me
+2010-12-18T13:54:00.000Z	pkmhs		yes it works on windows
+2010-12-18T13:55:00.000Z	pkmhs		there is a key to start bluetooth but even if i start it no effect
+2010-12-18T13:55:00.000Z	soreau	pkmhs	Have you looked in system>preferences>bluetooth?
+2010-12-18T13:56:00.000Z	pkmhs	soreau	yes
+2010-12-18T13:58:00.000Z	soreau	pkmhs	Is there any output from 'lsmod|grep bluetooth' in your terminal?
+2010-12-18T13:58:00.000Z	pkmhs	soreau	no lsmod doesn't give anything
+2010-12-18T13:58:00.000Z	soreau	pkmhs	What about '/etc/init.d/bluetooth status'?
+2010-12-18T13:59:00.000Z	soreau	pkmhs	Ok run 'sudo modprobe bluetooth' and pastebin if there is any error message
+2010-12-18T14:00:00.000Z	pkmhs	soreau	i did modprobe bluetooth..it dint produce any error
+2010-12-18T14:00:00.000Z	soreau	pkmhs	Now check the output of 'lsmod|grep bluetooth' again. It should show the module is loaded
+2010-12-18T14:01:00.000Z	soreau	pkmhs	No output typically means success
+2010-12-18T14:01:00.000Z	soreau	pkmhs	Now do 'sudo service bluetooth start'
+2010-12-18T14:02:00.000Z	soreau	pkmhs	And now restart sys>prefs>bluetooth and see what it says
+2010-12-18T14:02:00.000Z	soreau	pkmhs	What does '/etc/init.d/bluetooth status' say?
+2010-12-18T14:03:00.000Z	soreau	pkmhs	You need to do 'sudo service bluetooth start' or 'sudo /etc/init.d/bluetooth start'
+2010-12-18T14:06:00.000Z	pkmhs	soreau	   what should i do
+2010-12-18T14:06:00.000Z	soreau	pkmhs	You need to get the bluetooth service started. Are those commands failing or giving any error?
+2010-12-18T14:07:00.000Z	soreau	pkmhs	I don't know but I suspect the problem is that bluetooth is off in hardware on boot so it doesn't load the module. It might be a good idea to put 'bluetooth' in /etc/modules so it loads it by default then reboot

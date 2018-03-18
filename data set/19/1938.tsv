@@ -1,0 +1,19 @@
+2010-08-31T03:09:00.000Z	[KS]		can I "hook into" running process (to see its output) ?
+2010-08-31T03:10:00.000Z	nakhlawi	[KS]	you can re-direct output through the command tee
+2010-08-31T03:10:00.000Z	[KS]	nakhlawi	?
+2010-08-31T03:11:00.000Z	nakhlawi	[KS]	http://en.wikipedia.org/wiki/Tee_(command)
+2010-08-31T03:14:00.000Z	[KS]	nakhlawi	if I specify `date -%d%m%Y` as filename, will it evaluate only once at the beginning (if the process is running for more than one day) ?
+2010-08-31T03:15:00.000Z	nakhlawi	[KS]	actually, I didn't get your last question!
+2010-08-31T03:16:00.000Z	[KS]	nakhlawi	if I use process | tee `date -%d%m%Y`.log
+2010-08-31T03:16:00.000Z	[KS]		will date get evaluated only once when it's executed, or it will change daily?
+2010-08-31T03:17:00.000Z	nakhlawi	[KS]	I think once per day. But that is only my guess.
+2010-08-31T03:18:00.000Z	nakhlawi	[KS]	because you are telling "date" to display date, but not hours/minutes/seconds.
+2010-08-31T03:19:00.000Z	[KS]		I know, I need daily rotation
+2010-08-31T03:19:00.000Z	[KS]		but I suspect it will be evaluated only when process is started
+2010-08-31T03:19:00.000Z	nakhlawi	[KS]	what do you want to do?
+2010-08-31T03:20:00.000Z	[KS]		I have java app that runs 24/7 and has output all the time
+2010-08-31T03:20:00.000Z	[KS]		I want daily logs of it's output
+2010-08-31T03:20:00.000Z	nakhlawi	[KS]	then the process will continue writing to the same file, unless you kill it.
+2010-08-31T03:21:00.000Z	[KS]		yeah, I figured, I'll just output to log.txt and have cronjob move log.txt > log.date.txt
+2010-08-31T03:21:00.000Z	[KS]		:)
+2010-08-31T03:21:00.000Z	nakhlawi	[KS]	maybe "logrotate" can help you.

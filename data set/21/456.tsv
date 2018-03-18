@@ -1,0 +1,21 @@
+2011-12-05T02:13:00.000Z	jrshaul		A friend of mine wants to install to empty space on a hard drive with a 2.2TB Windows partition. However, he gets an error saying that this is not possible.
+2011-12-05T02:13:00.000Z	jrshaul		I've never seen this before. What's going on?
+2011-12-05T02:13:00.000Z	escott	jrshaul	probably a gpt issue. what version of the installer is he using
+2011-12-05T02:14:00.000Z	jrshaul		Latest one - just burnt.
+2011-12-05T02:14:00.000Z	jrshaul		He's trying to use the default "install alongside windows" option. However, anything I suggest seems to be throwing the same error message.
+2011-12-05T02:15:00.000Z	escott	jrshaul	try the manual partitioning
+2011-12-05T02:15:00.000Z	jrshaul		It doesn't seem to be working, though I am helping someone remotely (augh.)
+2011-12-05T02:15:00.000Z	jrshaul		I get" Error: partition length of 7762061790 sectors exceeds the msdos-partition-table-imposed maximum". It seems to be preventing the ubuntu installer from doing anything.
+2011-12-05T02:16:00.000Z	escott	jrshaul	well if he has an msdos partition table on a 2.2TB disk then the end of the disk is inaccessbile
+2011-12-05T02:16:00.000Z	escott	jrshaul	he could try and switch to gpt using gdisk, and perhaps he has a hybrid gpt/msdos partition table which could confuse things
+2011-12-05T02:16:00.000Z	escott	jrshaul	install and use gdisk to figure out what is going on
+2011-12-05T02:17:00.000Z	jrshaul		It's just a standard Win7 install.
+2011-12-05T02:17:00.000Z	escott	jrshaul	that doesnt mean much
+2011-12-05T02:17:00.000Z	jrshaul		When I say "standard win7 install", I mean that there's nothing on the disk but Win7 and some empty space.
+2011-12-05T02:17:00.000Z	escott	jrshaul	again that doesnt mean much
+2011-12-05T02:17:00.000Z	jrshaul		Huh. Should shrinking the NTFS partition fix it?
+2011-12-05T02:17:00.000Z	escott	jrshaul	install and use gdisk
+2011-12-05T02:18:00.000Z	jrshaul	escott	It throws an error.
+2011-12-05T02:18:00.000Z	escott	jrshaul	disk throws an error?
+2011-12-05T02:18:00.000Z	escott	jrshaul	gdisk that is
+2011-12-05T02:20:00.000Z	escott	jrshaul	this documentation is very thorough http://www.rodsbooks.com/gdisk/

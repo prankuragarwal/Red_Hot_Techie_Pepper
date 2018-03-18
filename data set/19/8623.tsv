@@ -1,0 +1,19 @@
+2009-06-19T08:35:00.000Z	russe11		Yeah, the problem is everything was working great from when Jaunty was released (and before) until now, and now sound quit. I can't think what I would have done to break it.
+2009-06-19T08:35:00.000Z	ectospasm	russe11	have you checked your mixer levels, make sure they're not turned all the way down or muted...
+2009-06-19T08:36:00.000Z	ectospasm	russe11	also, make sure pulseaudio is running.
+2009-06-19T08:36:00.000Z	russe11	ectospasm	I have, and I think I'd be hearing nothing rather than static if they were all the way down.
+2009-06-19T08:36:00.000Z	russe11	ectospasm	I also restarted a couple of times.
+2009-06-19T08:37:00.000Z	ectospasm	russe11	if you turn them down via software, do your speakers still produce static?
+2009-06-19T08:37:00.000Z	ectospasm	russe11	try stopping pulseaudio
+2009-06-19T08:38:00.000Z	russe11	ectospasm	I get no static with volume muted/turned down in software
+2009-06-19T08:38:00.000Z	russe11	ectospasm	what's the best way to stop pulseaudio?
+2009-06-19T08:39:00.000Z	ectospasm	russe11	you can try sudo /etc/init.d/pulseaudio stop, or just use ps to determine which PID is pulseaudio, and kill -9 <PID>
+2009-06-19T08:39:00.000Z	russe11	ectospasm	pulseaudio stop gives  * PulseAudio configured for per-user sessions
+2009-06-19T08:40:00.000Z	ectospasm	russe11	so kill it from your user (not root)
+2009-06-19T08:40:00.000Z	ectospasm	russe11	ps -ef | grep pulseaudio
+2009-06-19T08:40:00.000Z	russe11	ectospasm	okay, killed pulse
+2009-06-19T08:41:00.000Z	ectospasm	russe11	still hearing static?
+2009-06-19T08:41:00.000Z	ectospasm	russe11	try unloading the snd_hda module (sudo modprobe -r snd_hda) <- not sure if snd_hda is the name of your module...
+2009-06-19T08:42:00.000Z	russe11	ectospasm	Looks like that's not it, what's the best way to determine what the name of my module is?
+2009-06-19T08:42:00.000Z	ectospasm	russe11	I don't know.
+2009-06-19T08:43:00.000Z	russe11	ectospasm	k, googling

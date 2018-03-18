@@ -1,0 +1,24 @@
+2012-08-17T23:31:00.000Z	sporty		I am having a problem with my wired internet ETH0 connection.  Toshiba Satellite laptop, it worked a couple of months ago, but I tried to use it yesterday and no connection with no lights at connector - anyone have an idea what could be wrong?
+2012-08-17T23:31:00.000Z	InferiorHuman	sporty	does your /etc/network/interfaces have auto eth0 inet dhcp
+2012-08-17T23:33:00.000Z	sporty	InferiorHuman	how do I check for that?
+2012-08-17T23:34:00.000Z	InferiorHuman	sporty	can you pastebin /etc/network/interfaces ?
+2012-08-17T23:37:00.000Z	sporty	InferiorHuman	- bash: ifconfig/etc/network/interfaces: No such file or directory             Is what I get.  Am I searching correctly?
+2012-08-17T23:37:00.000Z	InferiorHuman	sporty	no, cat /etc/network/interfaces
+2012-08-17T23:38:00.000Z	sporty	InferiorHuman	- Here's what I got:  auto lo
+2012-08-17T23:43:00.000Z	InferiorHuman	sporty	then do sudo ifconfig eth0 up
+2012-08-18T00:07:00.000Z	sporty	InferiorHuman	- how do I add those lines?
+2012-08-18T00:07:00.000Z	InferiorHuman	sporty	open it in gedit or mousepad. guessing you never used nano
+2012-08-18T00:08:00.000Z	sporty	InferiorHuman	- I'm fairly new at working in the terminal.
+2012-08-18T00:09:00.000Z	InferiorHuman	sporty	type sudo gedit /etc/network/interfaces
+2012-08-18T00:14:00.000Z	sporty	InferiorHuman	- tried and this is what I got:  sudo gedit /etc/network/interfaces
+2012-08-18T00:15:00.000Z	InferiorHuman	sporty	you need to add those lines I gave you earlier
+2012-08-18T00:15:00.000Z	InferiorHuman	sporty	http://paste.ubuntu.com/1153257/ see the lines auto eth0 and the line under it add those under the lo stuff
+2012-08-18T00:16:00.000Z	InferiorHuman	sporty	then you can use sudo ifconfig eth0 up to turn on your ethernet
+2012-08-18T00:32:00.000Z	sporty	InferiorHuman	- all I get is "no command auto found"
+2012-08-18T00:33:00.000Z	InferiorHuman	sporty	can you pastebin your /etc/network/interface ??
+2012-08-18T00:33:00.000Z	InferiorHuman	sporty	can you pastebin your /etc/network/interfaces ??
+2012-08-18T00:36:00.000Z	sporty	InferiorHuman	- http://paste.ubuntu.com/1153337/
+2012-08-18T00:38:00.000Z	InferiorHuman	sporty	do this.  sudo apt-get install pastebinit && sudo pastebinit /etc/network/interfaces
+2012-08-18T00:40:00.000Z	sporty	InferiorHuman	- I apparently need to learn a lot more - I DO appreciate your help
+2012-08-18T00:41:00.000Z	sporty	InferiorHuman	- I did sudo apt-get install pastebinit && sudo pastebinit /etc/network/interfaces
+2012-08-18T00:47:00.000Z	InferiorHuman	sporty	does your card show up if you do lspci | grep Ethernet

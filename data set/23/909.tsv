@@ -1,0 +1,23 @@
+2011-12-10T02:49:00.000Z	mongy		exit
+2011-12-10T02:49:00.000Z	mongy		oops*
+2011-12-10T02:51:00.000Z	marcuy	mongy	file chmod 600 and .ssh chmod 700
+2011-12-10T02:51:00.000Z	mongy	marcuy	and your /etc/ssh/sshd_config is setup properly to allow pubkey auth?
+2011-12-10T02:53:00.000Z	marcuy	mongy	I hope so, it's a shared vps
+2011-12-10T02:54:00.000Z	marcuy	mongy	how can I be sure of that without having access to sshd_config?
+2011-12-10T02:54:00.000Z	mongy	marcuy	cat /etc/ssh/sshd_config | grep -i pubkey
+2011-12-10T02:54:00.000Z	marcuy	mongy	I will try that
+2011-12-10T02:55:00.000Z	marcuy	mongy	PubkeyAuthentication yes
+2011-12-10T02:57:00.000Z	mongy	marcuy	try connecting with -vvv
+2011-12-10T02:57:00.000Z	mongy	marcuy	and paste it on pastebin
+2011-12-10T03:04:00.000Z	marcuy	mongy	http://pastebin.com/Qti53bjs
+2011-12-10T03:05:00.000Z	mongy	marcuy	unknown key type...  how did you make the key ?     we never asked this question either, can you login with just the password ?
+2011-12-10T03:06:00.000Z	marcuy	mongy	after I put id_rsa password I can login
+2011-12-10T03:06:00.000Z	mongy	marcuy	do you have a passphrase on the key ?
+2011-12-10T03:06:00.000Z	marcuy	mongy	yes
+2011-12-10T03:07:00.000Z	marcuy	mongy	ups so is it ok that being asked?
+2011-12-10T03:07:00.000Z	mongy	marcuy	and you are entering the passphrase ?
+2011-12-10T03:08:00.000Z	marcuy	mongy	after I enter key passphrase I can log in
+2011-12-10T03:08:00.000Z	mongy	marcuy	well, there you go then
+2011-12-10T03:11:00.000Z	mongy	marcuy	if you dont want a passphrase, just remove your key and make a new one with ssh-keygen and choose no passphrase, then ssh-copy-id it
+2011-12-10T03:11:00.000Z	marcuy	mongy	hehe sorry, thanks for your time
+2011-12-10T03:12:00.000Z	mongy	marcuy	no worries

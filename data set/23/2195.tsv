@@ -1,0 +1,23 @@
+2010-11-17T18:22:00.000Z	hariom		In need to disable Immediate-Configure in apt.conf but unable to find where is apt.conf?
+2010-11-17T18:22:00.000Z	hariom		Getting errors while apt-get and also a message to see Immediate-Configure. man page says to try with disabling this option
+2010-11-17T18:22:00.000Z	llutz	hariom	configs are in /etc/apt/apt.conf.d/
+2010-11-17T18:22:00.000Z	hariom		In which file to disapble this
+2010-11-17T18:23:00.000Z	hariom		I don't have any apt.conf in /etc/apt/apt.conf.d
+2010-11-17T18:23:00.000Z	llutz	hariom	just create a new file and add your option, if none of the existing files have the option already set
+2010-11-17T18:24:00.000Z	hariom	llutz	what is the format?
+2010-11-17T18:25:00.000Z	llutz	hariom	read "man apt.conf"
+2010-11-17T18:25:00.000Z	hariom		ok
+2010-11-17T18:27:00.000Z	hariom	llutz	once added into apt.conf how to activate this settings?
+2010-11-17T18:28:00.000Z	hariom		I still get error while apt-get and it says to look for Immediate-Configure in man 5 apt.conf
+2010-11-17T18:28:00.000Z	hariom		In man page it says to disable it which I did by Get{Immediate-Configure "false"}
+2010-11-17T18:29:00.000Z	llutz	hariom	they'll be read when apt runs
+2010-11-17T18:30:00.000Z	hariom	llutz	but I still get error
+2010-11-17T18:30:00.000Z	llutz	hariom	isn't it " APT::Immediate-Confifure "false" "
+2010-11-17T18:31:00.000Z	llutz		Configure*
+2010-11-17T18:37:00.000Z	hariom	llutz	I have tried this: $sudo apt-get -o APT::Get::Immediate-Configure="false" dist-upgrade
+2010-11-17T18:38:00.000Z	hariom		but I still get errors. No effect observed.
+2010-11-17T18:38:00.000Z	llutz	hariom	try       -o APT::Immediate-Configure="false"
+2010-11-17T18:38:00.000Z	llutz	hariom	afaik "Immediate-Configure" is an own group like GET
+2010-11-17T18:39:00.000Z	hariom	llutz	Still no effect observed and get same error
+2010-11-17T18:40:00.000Z	llutz	hariom	no idea then, sorry
+2010-11-17T18:40:00.000Z	hariom	llutz	Actually by mistake I deleted /var/lib/dpkg directory

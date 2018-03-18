@@ -1,0 +1,22 @@
+2008-01-05T11:13:00.000Z	Gpalco		Hi, Guys! What is wrong with this IP "192.168.0.88" ??? 192.168.1.88 works all right, but not "0.88" !!! It works under Windows. Is it some kind of limitation in Linux ?
+2008-01-05T11:13:00.000Z	bulmer	Gpalco	nothing wrong with the ending 0.88..how are you testing these?
+2008-01-05T11:19:00.000Z	bulmer	Gpalco	you get network unreachable if you dont have a correct routing table
+2008-01-05T11:23:00.000Z	bulmer	Gpalco	the missing info is the route to the other computer..do this..  route -n   from the side you are pinging from and paste result so
+2008-01-05T11:28:00.000Z	Gpalco	bulmer	I can only connect to internet when at home (due to the mentioned issue) and cannot give those results right now. I can paste what I get when connected at home. Buthere at home I use a small router with dhcp, so just rely on NM and never have a problem. Would that info still help?
+2008-01-05T11:29:00.000Z	bulmer	Gpalco	without knowing your route -n results, its difficult to tell if you have a correct route path to destination
+2008-01-05T11:31:00.000Z	Gpalco	bulmer	here is the route -n results of my currecnt connection (at home, IP given by a DHCP server):: mine@uno-laptop:~$ route -n
+2008-01-05T11:31:00.000Z	bulmer	Gpalco	dont paste here..use pastebin
+2008-01-05T11:32:00.000Z	Gpalco	bulmer	sorry. never heard. will try to learn how to useit
+2008-01-05T11:32:00.000Z	bulmer	Gpalco	that looks okay for now, the 192.168.0.x is in same vicinity as your computer is?
+2008-01-05T11:38:00.000Z	Gpalco	bulmer	thank you very much for giviing your time to deal with this! "bulmer: Gpalco, that looks okay for now, the 192.168.0.x is in same vicinity as your computer is?" Is "vicinity" used as a technical term? Or you are asking how far I live from that office where I am strugling with stupid network setup?
+2008-01-05T11:38:00.000Z	Gpalco	bulmer	English isnotmy 1st lang
+2008-01-05T11:39:00.000Z	bulmer	Gpalco	the reason i asked about vicinity as in closeness.. you can be attempting to ping a 192.168.0.x but if its on the other end of the world and you dont have path to it, it will not work
+2008-01-05T11:41:00.000Z	bulmer	Gpalco	what I really meant is if the other computer is in the same building...am trying to figure out if you have to get out of the building to get to the other end or its within the same building
+2008-01-05T11:41:00.000Z	Gpalco	bulmer	oh! sorry. I understand now. It is very close. Once I boot into Windows (forgive me that fault, but is the only option yet) it works fine, even with XXX.XXX.0.XXX
+2008-01-05T11:43:00.000Z	bulmer	Gpalco	is there a network admin support that manages which network are allowed to reach each other ?
+2008-01-05T11:47:00.000Z	Gpalco	bulmer	Network admin avoids even talking about it. Plus I cannot insist too much so they don't get and impresion it is theLinux that iscausing the problem. My idea was to promote Ubuntu. I always avoid using "0" in IPs (just in case). But is there generally a limitation on using it in IPs ???
+2008-01-05T11:48:00.000Z	bulmer	Gpalco	no limitation I know of other than not being in the range.. the network people sets the policy on which network you can get to and can not, for example forbid you in getting to accounting network per say
+2008-01-05T11:49:00.000Z	bulmer	Gpalco	the network admin could possibly have a filter preventing you to reach the 192.168.0.x subnet..hard to tell other than you cant get there
+2008-01-05T11:50:00.000Z	bulmer	Gpalco	however you said if you were using windows, what is the limitations if any?
+2008-01-05T12:01:00.000Z	Gpalco	bulmer	Windows made it possible to make such etwork seups in the past, which were absolutely unusable, and neverwarned of it. Linux is known to be followng the rules, so I thought may be there was a requirement on avoiding this digit in IPs, which Windows simply ignored? I could easily believe that. That's why I made this guess. That is actually the only guess I could possibly make. Ant that is why I am here. To understand if there is a chance that the net
+2008-01-05T12:03:00.000Z	bulmer	Gpalco	there are tools like traceroute you can use to trace the route to the destination

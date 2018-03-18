@@ -1,0 +1,24 @@
+2010-01-21T23:07:00.000Z	DSpair		Hello all. I am in need of consultation on booting Ubuntu on an HP DL385/G5 Server. I keep getting "IO Error" when trying to boot up the Live CD.
+2010-01-21T23:07:00.000Z	DSpair		Does anyone have a suggestion to resolve this?
+2010-01-21T23:08:00.000Z	DSpair		I have even tried various kernel boot params like "noapic" to see if that might help, but no joy.
+2010-01-21T23:08:00.000Z	loops	DSpair	if you've tried 3 distros then something is wrong with your hardware/config
+2010-01-21T23:09:00.000Z	DSpair	loops	No, it's running just fine.
+2010-01-21T23:10:00.000Z	loops	DSpair	so you get to the grub boot menu, but then you get IO error when the linux kernel is booting up?
+2010-01-21T23:10:00.000Z	DSpair	loops	Yup.
+2010-01-21T23:11:00.000Z	loops	DSpair	can you give the exact error message plz
+2010-01-21T23:11:00.000Z	DSpair	loops	Sorry, not Grub. syslinux/isolinux prompt
+2010-01-21T23:11:00.000Z	loops	DSpair	okay.. same thing
+2010-01-21T23:11:00.000Z	DSpair	loops	I don't have physical access to the server. I have a co-worker relaying.
+2010-01-21T23:12:00.000Z	loops	DSpair	actual error message would help :o)
+2010-01-21T23:12:00.000Z	DSpair	loops	Being able to put my hands on the keyboard would help too, I was just hoping someone here would have a suggestion I hadn't thought of.
+2010-01-21T23:13:00.000Z	loops	DSpair	it might be Xorg dying..  try going into text mode
+2010-01-21T23:14:00.000Z	DSpair	loops	Nope, it's not even making it that far. I had my co-worker in NY disable "quiet" in the kernel boot params. The initial kernel and ramdisk load, but then it stops.
+2010-01-21T23:14:00.000Z	loops	DSpair	dunno could guess at things all day I fear
+2010-01-21T23:15:00.000Z	DSpair	loops	Guesses or suggestions would be appreciated... :)
+2010-01-21T23:15:00.000Z	DSpair	loops	Theories are good too
+2010-01-21T23:19:00.000Z	loops	DSpair	another guess would be that the linux kernel can't read the boot media..  try installing from a USB stick maybe
+2010-01-21T23:20:00.000Z	loops	DSpair	another option is to install windows and use Wubi   the windows based linux installer
+2010-01-21T23:21:00.000Z	DSpair	loops	USB was a thought I just had while out smoking. I'll have my co-worker see if he has a USB CD-ROM Drive.
+2010-01-21T23:21:00.000Z	loops	DSpair	good luck
+2010-01-21T23:22:00.000Z	DSpair	loops	Thanks for the suggestions!
+2010-01-21T23:36:00.000Z	DSpair	loops	Adding the kernel param of "all-generic-ide" seems to have made it work. Turns out it was trying to see the CD-ROM as SATA and that driver is not in the initrd.

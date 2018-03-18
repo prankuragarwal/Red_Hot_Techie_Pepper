@@ -1,0 +1,23 @@
+2009-11-12T02:03:00.000Z	kevin__		will chromium update itself whenver there is a successful new build?
+2009-11-12T02:05:00.000Z	nanotube	kevin__	if you enable the chromium daily ppa repository, then you'll see the new builds as soon as they are made.
+2009-11-12T02:06:00.000Z	kevin__	nanotube	how do i enable it (or where)?
+2009-11-12T02:06:00.000Z	nanotube	kevin__	https://launchpad.net/~chromium-daily/+archive/ppa
+2009-11-12T02:08:00.000Z	nanotube	kevin__	it does. you just have to run with --enable-plugins option, because plugins aren't enabled by default.
+2009-11-12T02:21:00.000Z	kevin__	nanotube	for chromium browser, i use chromium-browser --enable-plugins %U      but flash still doesn't work :( :( :(
+2009-11-12T02:23:00.000Z	nanotube	kevin__	hm, strange, that works for me. do you have flash installed and where chromium can see it?
+2009-11-12T02:25:00.000Z	nanotube	kevin__	try sticking the libflashplayer.so into ~/.mozilla/plugins
+2009-11-12T02:25:00.000Z	kevin__	nanotube	let me try that
+2009-11-12T02:33:00.000Z	kevin__	nanotube	~/.mozilla/plugins does not exist
+2009-11-12T02:34:00.000Z	nanotube	kevin__	create the plugins directory inside ~/.mozilla. then stick the .so in there.
+2009-11-12T02:36:00.000Z	kevin__	nanotube	sudo cp /usr/lib/flashplugin-installer/libflashplayer.so ~/.mozilla/plugins/
+2009-11-12T02:36:00.000Z	kevin__	nanotube	still no flash for me :(
+2009-11-12T02:37:00.000Z	nanotube	kevin__	your libflashplayer in your home dir should be owned by you (though shouldn't make a difference as long as it's readable by you)
+2009-11-12T02:37:00.000Z	nanotube	kevin__	check the ownership/permissions of .mozilla/plugins/libflashplayer.so
+2009-11-12T02:38:00.000Z	kevin__	nanotube	-rw-r--r--
+2009-11-12T02:39:00.000Z	nanotube	kevin__	and owned by you?
+2009-11-12T02:40:00.000Z	kevin__	nanotube	-rw-r--r-- 1 root root 10278616 2009-11-11 13:34 libflashplayer.so
+2009-11-12T02:42:00.000Z	kevin__	nanotube	I tried to run as root also -- and start chromium browser -- stil no flash so I don't think that is the problem
+2009-11-12T02:42:00.000Z	nanotube	kevin__	chown it to yourself, then try again. (sudo chown youruser:youruser ~/.mozilla/plugins/libflashplayer.so)
+2009-11-12T02:42:00.000Z	nanotube	kevin__	if that still doesn't work...then i'm out of ideas....
+2009-11-12T02:44:00.000Z	kevin__	nanotube	ok well thanks for trying -- maybe someday it will work liek a charm :)
+2009-11-12T02:45:00.000Z	nanotube	kevin__	hrm, sorry we couldn't solve.

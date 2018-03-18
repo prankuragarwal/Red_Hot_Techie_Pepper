@@ -1,0 +1,18 @@
+2008-01-16T02:33:00.000Z	magnetophon		Hi everybody, I've just added 2 disks to my system, and they are being seen by the bios but not by any software. (/dev/disk/by-id/ shows just my old disks) What can I do?
+2008-01-16T02:33:00.000Z	Duke_Fluke	magnetophon	what does fdisk -l show?
+2008-01-16T02:35:00.000Z	magnetophon	Duke_Fluke	Just the old HD's
+2008-01-16T02:36:00.000Z	Duke_Fluke	magnetophon	how about dmesg? do they show up there?
+2008-01-16T02:36:00.000Z	Duke_Fluke	magnetophon	are these plain jane ide drives?
+2008-01-16T02:38:00.000Z	Duke_Fluke	magnetophon	can you try with another  os live cd?
+2008-01-16T02:40:00.000Z	magnetophon	Duke_Fluke	I've tried two different liveCD's and a third didn't boot (though it used to, go figure) What do I search for in dmesg?
+2008-01-16T02:40:00.000Z	Duke_Fluke	magnetophon	try dmesg|grep hd or HD
+2008-01-16T02:43:00.000Z	Duke_Fluke	magnetophon	 did you get that? do you have any raid setup and what is your chipset?
+2008-01-16T02:43:00.000Z	Duke_Fluke	magnetophon	I think you can do lspci -v |grep IDE
+2008-01-16T02:47:00.000Z	magnetophon	Duke_Fluke	they are not raided, and are on a Marvell 88SE61XX
+2008-01-16T02:48:00.000Z	Duke_Fluke	magnetophon	does lsmod |grep 88SE61 find anything?
+2008-01-16T02:49:00.000Z	magnetophon	Duke_Fluke	Nope.
+2008-01-16T02:50:00.000Z	Duke_Fluke	magnetophon	check this out then http://www.driverstock.com/ASUS-P5WDG2-WS-Professional-driver-download/6-9-10190/index.html
+2008-01-16T02:58:00.000Z	magnetophon	Duke_Fluke	Yhat is not the MOBO I'm using, does it matter (it is the correct chip)
+2008-01-16T02:59:00.000Z	Duke_Fluke	magnetophon	not sure but thats the only driver I could find
+2008-01-16T02:59:00.000Z	Duke_Fluke	magnetophon	right now you prob have ide_generic (check with lsmod)
+2008-01-16T03:51:00.000Z	magnetophon	Duke_Fluke	After some research i found pata_marvell (wich is the module that is loaded) should work in legacy mode, for the first two ports. I will reboot and try that. Thanks so far!

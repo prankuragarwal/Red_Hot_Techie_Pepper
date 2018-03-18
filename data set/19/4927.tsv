@@ -1,0 +1,19 @@
+2008-10-20T22:12:00.000Z	smoovep		i cannot see eth1 under ifconfig
+2008-10-20T22:13:00.000Z	smoovep		i can see the NIC card under dmesg loaded as e100 module, but not listed in ifconfig
+2008-10-20T22:13:00.000Z	smoovep		Any IDEAS?
+2008-10-20T22:14:00.000Z	smoovep		is there a network tool to setup eth1 ?
+2008-10-20T22:16:00.000Z	Kr0ntab	smoovep	how many NIC's do you have?
+2008-10-20T22:16:00.000Z	smoovep	Kr0ntab	: yes
+2008-10-20T22:17:00.000Z	Kr0ntab	smoovep	lshw -C net
+2008-10-20T22:17:00.000Z	Kr0ntab	smoovep	that command will tell you the logical names the cards are identified by...
+2008-10-20T22:18:00.000Z	smoovep	Kr0ntab	The card is loaded as module e100 .. i can see it also as intel under lspci and dmesg... but nothing under ifconfig
+2008-10-20T22:19:00.000Z	Kr0ntab	smoovep	did you run that command I told you?
+2008-10-20T22:19:00.000Z	Kr0ntab	smoovep	lspci -C net
+2008-10-20T22:19:00.000Z	smoovep	Kr0ntab	yes. and it shows logical name eth1 ..
+2008-10-20T22:20:00.000Z	smoovep	Kr0ntab	Yep.. its there.. if i reboot, will it go away?
+2008-10-20T22:21:00.000Z	Kr0ntab	smoovep	it just means your nic is not configured or turn on.  "ifconfig eth1" demonstrates that your NIC is there... you just need to do something with it.
+2008-10-20T22:21:00.000Z	Kr0ntab	smoovep	what is your goal.. if eth0 is up and working...  what do you want to do with eth1?
+2008-10-20T22:22:00.000Z	smoovep	Kr0ntab	i want it to be my main NIC .. dhcp
+2008-10-20T22:22:00.000Z	Kr0ntab	smoovep	cool.. then you need to configure it as your primary NIC...
+2008-10-20T22:22:00.000Z	Kr0ntab	smoovep	brb mate...
+2008-10-20T22:29:00.000Z	Kr0ntab	smoovep	in /etc/network/interfaces you should have one line that says "auto eth0"... just change that to "auto eth1"... reboot... and make sure your e100 nic is plugged in...

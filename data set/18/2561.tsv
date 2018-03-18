@@ -1,0 +1,18 @@
+2010-05-15T22:55:00.000Z	shane3		i see the file through samba - i just get an error when trying ot mount
+2010-05-15T22:55:00.000Z	thedude42	shane3	is what I meant there
+2010-05-15T22:56:00.000Z	thedude42	shane3	by default windows XPsp2 and later make shares only accessable by user 'Anonymous' unless you change your default sharing settings
+2010-05-15T22:56:00.000Z	thedude42	shane3	by default your samba client will ask you for a user name if you go through the nautalis interface
+2010-05-15T22:58:00.000Z	thedude42	shane3	easiest way is in an explorer window, Tools => folder options and there's a tab in there with a bunch of check boxes, at the bottom is one where you can disable 'simple sharing' which is what prevents using anything but Anonymouse to connect
+2010-05-15T22:58:00.000Z	thedude42	shane3	harder way is through Group Policy Editor
+2010-05-15T22:59:00.000Z	shane3	thedude42	shane3 definately choose the easier route
+2010-05-15T23:05:00.000Z	thedude42	shane3	do you see the tab in folder options that has all the check boxes, with things like "show hidden files" and "hide extenstions of known file types"?
+2010-05-15T23:06:00.000Z	shane3	thedude42	shane3:  yes i see that folder
+2010-05-15T23:06:00.000Z	shane3	thedude42	shane3: view tab
+2010-05-15T23:09:00.000Z	shane3	thedude42	 just got this off microsoft page Note You cannot disable simple file sharing in Windows XP Home Edition.
+2010-05-15T23:12:00.000Z	thedude42	shane3	ah yes, home edition... I'm so used to people using pro... then you need to connect as Anonymous without a password from samba
+2010-05-15T23:12:00.000Z	thedude42	shane3	are you using the command line samba client or the nautalis interface (which would be using the 'connect to server' dialog int he desktop gui)
+2010-05-15T23:17:00.000Z	thedude42	shane3	https://help.ubuntu.com/community/SettingUpSamba#Samba%20Client%20-%20Manual%20Configuration
+2010-05-15T23:39:00.000Z	shane3	thedude42	i'm not haveing any luck with this - i can't get past the password prompt - right or wront i need gui to survive
+2010-05-15T23:41:00.000Z	thedude42	shane3	assume that the ip address of the windows machine is IPADDRESS... then use this command: smbclient -L //IPADDRESS -U Anonymous
+2010-05-15T23:41:00.000Z	thedude42	shane3	if that doesn't work then you need to check the firewall settings on your windows machine
+2010-05-15T23:46:00.000Z	thedude42	shane3	so take that error message, put it in quotes, paste that in to google along with the terms ubuntu, smbclient and windows home.... and you'll be doing the the next things I would be doing

@@ -1,0 +1,21 @@
+2012-01-18T00:27:00.000Z	LinuxApprentice		how come '/etc/default/tftpd-hpa restart' gives me 'permission denied' as root?
+2012-01-18T00:27:00.000Z	LinuxApprentice		what's the command to see if the tftpd-hpa service is running ?
+2012-01-18T00:28:00.000Z	h00k	LinuxApprentice	try 'sudo service tftp-hpa status'
+2012-01-18T00:28:00.000Z	LinuxApprentice	h00k	 ok
+2012-01-18T00:28:00.000Z	h00k	LinuxApprentice	I'm pretty sure it's tftp-hpa, not tftpd-hpa
+2012-01-18T00:28:00.000Z	h00k	LinuxApprentice	'sudo service tftp-hpa restart'
+2012-01-18T00:30:00.000Z	LinuxApprentice	h00k	that worked
+2012-01-18T00:33:00.000Z	LinuxApprentice	h00k	what does 'tftp: client: does not accept options' mean? it stays stuck on 'trying to load pxelinux.cfg' on the client
+2012-01-18T00:35:00.000Z	h00k	LinuxApprentice	I'd assume it's something wrong with your pxelinux.cfg/default file
+2012-01-18T00:40:00.000Z	LinuxApprentice	h00k	do chmod options need to be anything specific on '/srv/tftp/' ?
+2012-01-18T00:41:00.000Z	h00k	LinuxApprentice	I don't believe so, at least readable
+2012-01-18T00:46:00.000Z	h00k	LinuxApprentice	do you have a file in there called 'default', if not, the bunch of numbers is the MAC address of the NIC that's trying to pxeboot
+2012-01-18T00:47:00.000Z	LinuxApprentice	h00k	yes the file is there, but it has an arrow over it, a symlink?
+2012-01-18T00:48:00.000Z	h00k	LinuxApprentice	that'd be a symlink, I don't know if that can be followed
+2012-01-18T00:51:00.000Z	LinuxApprentice	h00k	using wget how do i download the contents of an entire folder?
+2012-01-18T00:56:00.000Z	h00k	LinuxApprentice	You'll want to use a tftp client
+2012-01-18T00:56:00.000Z	LinuxApprentice	h00k	i need to put the files in the tftp folder first
+2012-01-18T00:56:00.000Z	h00k	LinuxApprentice	do you have that default file not symlinked now?
+2012-01-18T00:56:00.000Z	LinuxApprentice	h00k	how do i unsymlink it
+2012-01-18T00:57:00.000Z	LinuxApprentice	h00k	i downloaded the netboot archive and when i extracted it into tftp that's how the files where
+2012-01-18T00:58:00.000Z	h00k	LinuxApprentice	I guess make sure that default file is readable

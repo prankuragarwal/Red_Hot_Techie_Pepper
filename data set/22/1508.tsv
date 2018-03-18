@@ -1,0 +1,22 @@
+2010-06-19T04:38:00.000Z	ennui		anyone have any experience with partitioning external drives while retaining data on the drive? I know boot camp can do that for your boot drive, but wasn't sure about non-boot externals
+2010-06-19T04:39:00.000Z	Jordan_U	ennui	Gparted lets you do that. It's actually a failry common taks.
+2010-06-19T04:41:00.000Z	ennui	Jordan_U	So I could say.... take a external that is just media files. add a small partition to it while retaining the rest of the data, and then put an OS installer on that partition and boot from it?
+2010-06-21T12:42:00.000Z	Jordan_U	ennui	You need a BIOS boot partition to reliably install grub to gpt (which is what macs use by default, and is required for drives larger than 2 terabytes)
+2010-06-21T12:44:00.000Z	Jordan_U	ennui	http://grub.enbug.org/BIOS_Boot_Partition '
+2010-06-21T12:48:00.000Z	Jordan_U	ennui	To the mbr, after setting up a BIOS boot partition (carefully noting the warning at the end of the page I linked you to)
+2010-06-21T12:49:00.000Z	Jordan_U	ennui	If you chose automatic/guided partitioning then the Ubuntu installer should have created a BIOS boot partition for you already, in which case you just need to install grub to the mbr following: grub.enbug.org/Grub2LiveCdInstallGuide
+2010-06-21T12:57:00.000Z	ennui	Jordan_U	It had created a small partition flagged with bios_grub but it was corrupted somehow. If I just reform at it to ext2 can I write grub to it?
+2010-06-21T12:59:00.000Z	Jordan_U	ennui	I think you might not understand how a bios boot partition works. It's not a filesystem, so it's normal that it can't be mounted (it's not "corrupt)
+2010-06-21T12:59:00.000Z	ennui	Jordan_U	Though sudo mount /dev/sda4/mnt give me an error: saying it can't find /dev/sda/4/mnt in /etc/fstab or /etc/mtab
+2010-06-21T13:00:00.000Z	ennui	Jordan_U	I wasn't trying to boot from the bios partition. I was trying to boot from the linux file system I had installed minus grub (as it failed on installation)
+2010-06-21T13:02:00.000Z	Jordan_U	ennui	the mount command should be exactly "sudo mount /dev/sda4 /mnt" (note where there are spaces, copy and paste the command if you need to)
+2010-06-23T06:08:00.000Z	Jordan_U	ennui	Macs use EFI, and only an EFI bootloader can be the "default", and Ubuntu is using grub-pc, which is a BIOS bootloader. You have two options, 1: install rEFIt, which is a easy to use graphical bootloader for EFI 2: Use grub-efi, which works fairly well but isn't currently very easy to install.
+2010-06-23T06:10:00.000Z	Jordan_U	ennui	Since I assume you'll want to go with rEFIt, you can use the "legacyfirst" (meaning bios based bootloader, i.e. grub-pc) option to make Ubuntu the default OS. See: http://refit.sourceforge.net/doc/c3s3_config.html
+2010-06-23T06:36:00.000Z	ennui	Jordan_U	I tryed installing  rEFIt before with the installer bundle on OSX, but I never saw the menu upon start up after trying several times
+2010-06-23T06:45:00.000Z	ennui	Jordan_U	any other reason to use rEFIt over grub-efi besides a easier installation? I think the boot to linux would be faster with grub-efi
+2010-06-23T06:46:00.000Z	Jordan_U	ennui	Linux drivers currently don't work verry well when not booting from BIOS, so you'd want to load grub-pc from grub-efi anyway.
+2010-06-23T07:07:00.000Z	Jordan_U	ennui	If you want to try grub-efi, see: http://grub.enbug.org/TestingOnMacbook . Note that while it says to get the latest svn version, source is now managed with bzr. You can also just install the grub-efi package.
+2010-06-23T07:20:00.000Z	ennui	Jordan_U	Looks like I need to find the repo for it. When I try and install from synaptic it tells me it can't install a dependancy (grub-efi-amd64)
+2010-06-23T07:21:00.000Z	Jordan_U	ennui	It's in universe.
+2010-06-23T07:28:00.000Z	ennui	Jordan_U	It looks like installing amd64 will uninstall grub-pc :o. don't i need both grub-pc and grub-efi to get this to work? and it won't let me install grub-efi without grub-efi-amd64
+2010-06-23T07:29:00.000Z	Jordan_U	ennui	It's probably best if you compile from source, but unfortunately I don't have enough time right now to walk you through that (finals week).

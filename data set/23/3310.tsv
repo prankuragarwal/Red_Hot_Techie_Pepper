@@ -1,0 +1,23 @@
+2008-05-18T21:45:00.000Z	PaulEU		hello!
+2008-05-18T21:46:00.000Z	PaulEU		I have problem with mysql-5.0.51a, I've had mysql in ubuntu 7.10 and I did mysqldump via: sudo mysqldump --add-drop-database -A --comments --create-options -u root -pPasswd > file.dump next I've installed new system ubuntu 8.04 and I want restore mysqldump. It was done successfully: sudo mysql -u root -pPasswd < file.dump but when I restart service mysql I have error: http://pastebin.com/d5afc5366
+2008-05-18T21:46:00.000Z	PaulEU		where is mistake?
+2008-05-18T21:46:00.000Z	PaulEU		where can I change password to user debian-sys-maint ?
+2008-05-18T21:47:00.000Z	_sammy_	PaulEU	Drop to a shell and do: sudo passwd debian-sys-maint - You -should- have set that on first install, though
+2008-05-18T21:49:00.000Z	PaulEU	_sammy_	Should I read password from old /etc/mysql/debian.cnf and put into new ?
+2008-05-18T21:49:00.000Z	_sammy_	PaulEU	No, just go that route I mentioned and set it to something you will remember ;)
+2008-05-18T21:50:00.000Z	PaulEU	_sammy_	aha, I'll try
+2008-05-18T21:54:00.000Z	PaulEU	_sammy_	I see problem: I wrote: sudo passwd debian-sys-maint and it return: passwd: unknown user debian-sys-maint
+2008-05-18T21:56:00.000Z	PaulEU	_sammy_	on old system 7.10 there wasn't user debian
+2008-05-18T21:56:00.000Z	PaulEU	_sammy_	on old system 7.10 there wasn't user debian-sys-maint
+2008-05-18T21:56:00.000Z	PaulEU	_sammy_	Can I change this file /etc/mysql/debian.cnf ?
+2008-05-18T21:57:00.000Z	_sammy_	PaulEU	<PaulEU> where can I change password to user debian-sys-maint ?
+2008-05-18T21:57:00.000Z	PaulEU	_sammy_	I should add this user into system?
+2008-05-18T21:59:00.000Z	_sammy_	PaulEU	The user debian-sys-maint is usually created when MySQL is first installed. If the user has not been made, then you need to create a MySQL user yourself
+2008-05-18T21:59:00.000Z	PaulEU	_sammy_	after installation it created user root, and it has full perms
+2008-05-18T22:00:00.000Z	_sammy_	PaulEU	Aye, it will do. You need to create a user now with the root credentials
+2008-05-18T22:02:00.000Z	PaulEU	_sammy_	eh, I don't want create new user because user root exists
+2008-05-18T22:02:00.000Z	PaulEU	_sammy_	can I replace debian.cnf from old system into new?
+2008-05-18T22:03:00.000Z	_sammy_	PaulEU	You do not want to be using the MySQL root user for general use ;)
+2008-05-18T22:04:00.000Z	PaulEU	_sammy_	yes, but in old system there were other users in db
+2008-05-18T22:05:00.000Z	PaulEU	_sammy_	OK, I'll try move old debian.cnf into new..
+2008-05-18T22:06:00.000Z	PaulEU	_sammy_	now it works.. uff, thx for advices

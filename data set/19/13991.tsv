@@ -1,0 +1,19 @@
+2004-11-24T16:51:00.000Z	srx33		could someone help me please?
+2004-11-24T16:52:00.000Z	Nefarous	srx33	what is your question?
+2004-11-24T16:53:00.000Z	Nefarous	srx33	I had that problem on my other worstation, it locked up in hotplug, I had to remove all my connections to my usb hub in my Monitor, try eliminating connections to see if that helps.
+2004-11-24T16:53:00.000Z	srx33	Nefarous	ok.. now grub. e2fs_stage1_5 is for ext3 right?
+2004-11-24T16:54:00.000Z	Nefarous	srx33	not sure why you're asking that question, why are you dealing with things at that low a level? (I haven't used gnoppix myself)
+2004-11-24T16:56:00.000Z	srx33	Nefarous	The system doesnt seem to boot right, in the boot messeges I see that hda3 mounts as ext2  but it is ext3, I thought maybe this has to do with it freezing when starting the syslogd deamon, and by that.. I was wondering if e2fs_stage is the correct file for ext3 system... Any ideas how I can fix all this?
+2004-11-24T16:57:00.000Z	Nefarous	srx33	a little too much grub for me, sorry I don't have any suggestions - other than the fact that your initrd may not include support for ext3 ... and thus it was expecting a ext2 fs for boot ... but that's just a guess.
+2004-11-24T16:58:00.000Z	Nefarous	srx33	do you get a kernel panic on boot, or does it just stop?
+2004-11-24T16:59:00.000Z	srx33	Nefarous	everything loads untill it starts the syslogd deamon
+2004-11-25T17:01:00.000Z	Nefarous	srx33	let me look at my logs
+2004-11-25T17:01:00.000Z	srx33	Nefarous	ok
+2004-11-25T17:03:00.000Z	Nefarous	srx33	nothign enlightening ... sorry ... need more detail I guess ... this gnoppix you're talking about ... hmmm, I guess I'm the wrong person :)
+2004-11-25T17:03:00.000Z	srx33	Nefarous	hmm ok
+2004-11-25T17:06:00.000Z	srx33	Nefarous	Which file in a linux system contains which starts up when booting? deamons etc.. ?
+2004-11-25T17:07:00.000Z	Nefarous	srx33	it's debian based: it goes /etc/rcS.d/* and then /etc/rc2.d/* (all the files in there)
+2004-11-25T17:09:00.000Z	Nefarous	srx33	of course the real scripts are in /etc/init.d ... the rc files are symlinks ...
+2004-11-25T17:10:00.000Z	srx33	Nefarous	yeah..  I saw it sysklogd it says
+2004-11-25T17:12:00.000Z	Nefarous	srx33	appears to be the first service in runlevel 2 ... bummer ... still a long way to go.
+2004-11-25T17:14:00.000Z	srx33	Nefarous	yes, because it isnt in the symbolik link dir  only in init.d  . I opened sysklogd.. hmm maybe I can edit it somehow.. what should I look for?

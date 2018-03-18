@@ -1,0 +1,18 @@
+2009-08-07T17:17:00.000Z	Ascavasaion		My friend phoned me... He ordered a CD with a couple of distros on it... for his new Acer Aspire notebook.  He wants to mount the DVD on another machine with a DVDROM Drive, and then install individual applications via a network cable onto the Aspire which has no removable drives.  Problem is that the whole distribution is in ons large file /casper/filesystem.squashfs  Any idea how he can access individual packages out of this one l
+2009-08-07T17:17:00.000Z	Ascavasaion		arge file?
+2009-08-07T17:18:00.000Z	geirha	Ascavasaion	There aren't any packages in there. It contains the fs of the live session, and when you install, it copies files from it directly, it doesn't install packages.
+2009-08-07T17:19:00.000Z	geirha	Ascavasaion	The alternative install disc contains packages though, since it has room for it without a live session.
+2012-10-12T12:15:00.000Z	geirha	Ascavasaion	That command doesn't look valid, but what filesystem is on the 60G?
+2012-10-12T12:18:00.000Z	Ascavasaion	geirha	What I need is what I imagine would be a fstab file used for mounting via the filemanager.
+2012-10-12T12:18:00.000Z	geirha	Ascavasaion	The mount cannot change ownership or permissions of an ext4 filesystem. You really do need to chown it. Though once you have chowned it, it'll be permanently so
+2012-10-12T12:19:00.000Z	Ascavasaion	geirha	but what is other users log in under their own accounts?
+2012-10-12T12:19:00.000Z	geirha	Ascavasaion	They'll likely have no access since it's owned by you
+2012-10-12T12:20:00.000Z	Ascavasaion	geirha	Exactly... so how do I get it to mount like the others that work fine?
+2012-10-12T12:20:00.000Z	geirha	Ascavasaion	If you want others to have access, create a group, add them and yourself as members of that group, give the group the proper permissions for the files on that filesystem
+2012-10-12T12:21:00.000Z	Ascavasaion	geirha	I hear you, but the other hard disk mounts just fine per user.
+2012-10-12T12:21:00.000Z	geirha	Ascavasaion	And what filesystem does that one have?
+2012-10-12T12:21:00.000Z	Ascavasaion	geirha	Also ext4
+2012-10-12T12:23:00.000Z	geirha	Ascavasaion	Then it probably has laxer permissions set
+2012-10-12T12:23:00.000Z	Ascavasaion	geirha	laxer?
+2012-10-12T12:24:00.000Z	geirha	Ascavasaion	as in "relaxed", less strict. Anyway, I recommend you read http://mywiki.wooledge.org/Permissions
+2012-10-12T12:24:00.000Z	Ascavasaion	geirha	Um, okay, thank you.

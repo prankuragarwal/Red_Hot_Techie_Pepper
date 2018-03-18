@@ -1,0 +1,23 @@
+2012-11-10T00:30:00.000Z	JFranks		Anyone a pro with parted? .. I made a disk image of a machine with a 2TB (crappy old WD Green drive we had spare) disk.. I want to restore the image to a more reliable disk like one of these 1TB WD Blacks I just got in.. Sadly I can't get the 12GB of image data to fit on the 1TB drive because the 'partition size' of the image I'm restoring is 2TB. ;p
+2012-11-10T00:31:00.000Z	gordonjcp	JFranks	why not just copy the data across?
+2012-11-10T00:33:00.000Z	JFranks	gordonjcp	I've sadly used this on several machines and would actually like a solution to the issue regardless. I'm guessing the only 'fix' would be to edit the partition table size in the .img files?
+2012-11-10T00:33:00.000Z	gordonjcp	JFranks	that won't work, because it assumes the data is all up one end of the disk
+2012-11-10T00:36:00.000Z	gordonjcp	JFranks	or, you could just copy the data off it, onto the new drive
+2012-11-10T00:36:00.000Z	JFranks	gordonjcp	Yes in this case I do still have that option. In this case.. :(
+2012-11-10T00:37:00.000Z	gordonjcp	JFranks	why wouldn't you have that option?
+2012-11-10T00:38:00.000Z	gordonjcp	JFranks	just mount it, and copy the stuff off - possibly using rsync with appropriate switches to keep the permissions straight
+2012-11-10T00:38:00.000Z	JFranks	gordonjcp	If the drive was backed up, then failed, and all I had was the 2TB backup image? Which was the reason I am running parted on my machines .. now I have to re-think it.. or always use a recovery drive that's BIGGER than the IMG and then re-size and clone that disk.. which is .. nuts.
+2012-11-10T00:39:00.000Z	gordonjcp	JFranks	yes, from the image
+2012-11-10T00:40:00.000Z	gordonjcp	JFranks	oh, oho right, look at "mount -o loop"
+2012-11-10T00:48:00.000Z	gordonjcp	JFranks	you like clicky keyboards?  You need an old Dell QuietKey in your life
+2012-11-10T00:57:00.000Z	JFranks	gordonjcp	I've actually got a friend that collects IBM 8923s so that he'll always have one to type on.. I'm pretty jelly.. Now back to Parted.. I ran it via clonezilla, which made 'parts' in .gz format.. So mounting is now a lost option unless I want to re-assemble the compressed parts first, which is as much work as restoring to a larger drive.. So I guess I need to rethink the image creation process because all I've made so far are n
+2012-11-10T00:59:00.000Z	gordonjcp	JFranks	in future use dd to clone the whole drive, or ddrescue
+2012-11-10T00:59:00.000Z	gordonjcp	JFranks	if you extract the .gz of the partition, can you mount it?
+2012-11-10T01:00:00.000Z	JFranks	gordonjcp	It's like sda1.ntfs-ptcl-img.gz.aa sda1.ntfs-ptcl-img.gz.ab sda1.ntfs-ptcl-img.gz.ac ... etc.
+2012-11-10T01:00:00.000Z	gordonjcp	JFranks	O_O
+2012-11-10T01:00:00.000Z	gordonjcp	JFranks	okay, how big are the pieces?
+2012-11-10T01:01:00.000Z	JFranks	gordonjcp	I'm assuming I'd have to 'join' those chunks then decompress it to get an .img  .. The chunks are 2GB
+2012-11-10T01:01:00.000Z	gordonjcp	JFranks	so something like cat chunk.gz.aa chunk.gz.ab chunk.gz.ac > allchunks.gz
+2012-11-10T01:02:00.000Z	gordonjcp	JFranks	the command line is a powerful tool and a dangerous weapon
+2012-11-10T01:02:00.000Z	gordonjcp	JFranks	be careful, or it'll cut your leg off
+2012-11-10T01:02:00.000Z	gordonjcp	JFranks	of course if you *want* to cut your leg off, it's not going to stop you

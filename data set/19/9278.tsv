@@ -1,0 +1,19 @@
+2007-02-05T10:01:00.000Z	matsavhalev		anyone have experience with TFTP and PXE booting? having a small problem cant seem to figure it out
+2007-02-05T10:01:00.000Z	genii	matsavhalev	Yes, I have a server mirroring dapper and edgy to a local lan here where they netboot and install.
+2007-02-05T10:03:00.000Z	genii	matsavhalev	What is the cause of your frustration involving pxe and tftpd ?
+2007-02-05T10:04:00.000Z	matsavhalev	genii	i followed http://www.howtoforge.com/ubuntu_pxe_install_server_p2 till the end of page two, the PXE boots and gets a dhcp ip addy but it says TFTP file not found
+2007-02-05T10:04:00.000Z	genii	matsavhalev	Yes, you have to enable it in the file /etc/default/tftpd
+2007-02-05T10:04:00.000Z	matsavhalev	genii	tried playing with it again and again :-) no luck findingthe file, when i do a tftp localhost i can see it though so i dont understand
+2007-02-05T10:05:00.000Z	matsavhalev	genii	did that, are you using tftp or tftp-hpa?
+2007-02-05T10:05:00.000Z	genii	matsavhalev	I have a good link for you. 1 minute
+2007-02-05T10:06:00.000Z	genii	matsavhalev	I use tftpd-hpa and my netboot root is /var/lib/tftpboot  where pxelinux.0 is. Under that is the pxelinux.cfg directory where the default boot file is
+2007-02-05T10:07:00.000Z	matsavhalev	genii	i have the same setup
+2007-02-05T10:07:00.000Z	genii	matsavhalev	This is a good place to look at for conf settings and so on https://help.ubuntu.com/community/UbuntuOnCluster
+2007-02-05T10:08:00.000Z	genii	matsavhalev	The yp stuff you don't neccesarily need
+2007-02-05T10:08:00.000Z	genii		(nis)
+2007-02-05T10:10:00.000Z	genii	matsavhalev	This is useful as well http://wiki.koeln.ccc.de/index.php/Ubuntu_PXE_Install
+2007-02-05T10:10:00.000Z	matsavhalev	genii	unfortunately this computer is my pxe server so have to disconnect every time i wanna try it :0)
+2007-02-05T10:12:00.000Z	genii	matsavhalev	Those 2 sites I gave have between them pretty much all the stuff you need to do. If you need help with preseed files let me know, I had to reverse engineer mine but they auto setup over netboot fine now
+2007-02-05T10:12:00.000Z	matsavhalev	genii	cool thanks, actually just looking to get feisty on my coreduo but the cdrom drive burnt out
+2007-02-05T10:13:00.000Z	matsavhalev	genii	figured i could do it over pxe
+2007-02-05T10:13:00.000Z	genii	matsavhalev	Yeah it's a bit of a learning curve but works great once it's setup

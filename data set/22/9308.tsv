@@ -1,0 +1,22 @@
+2005-01-10T08:25:00.000Z	Gerrath		I performed an update on my Ubuntu installation and for what ever reason the post configuration did not complete.  The computer was shut down (not by me) before I could see the errors.  This would normally not be an issue but for some reason the initrd.img was deleted and a new one was not installed so now the system will not boot.
+2005-01-10T08:26:00.000Z	Gerrath		I tried running from the live distro and finishing the post configuration (chroot, dpkg --configure -a) but I get a /dev/null resitriction since I'm running off the live distro.
+2005-01-10T08:26:00.000Z	Gerrath		any suggestions?
+2005-01-10T08:27:00.000Z	NixerX	Gerrath	how dose your menu.lst look?
+2005-01-10T08:27:00.000Z	Gerrath		it has the link to the kernel and the initrd (which is no longer there).
+2005-01-10T08:28:00.000Z	Gerrath		the kernel is there but I can't access the root file system with out the initrd.
+2005-01-10T08:28:00.000Z	Gerrath		thats what I'm looking for.
+2005-01-10T08:28:00.000Z	NixerX	Gerrath	What kernel is it now? 2.6.8?
+2005-01-10T08:28:00.000Z	Gerrath		if I can remount dev to the internal HD then I will be in good shape.
+2005-01-10T08:28:00.000Z	Gerrath		yes, its 2.6.8
+2005-01-10T08:29:00.000Z	Gerrath		I tried booting with out the initrd but it cant access the root fs.
+2005-01-10T08:29:00.000Z	NixerX	Gerrath	do you have root            (hd0,0) in menu list?
+2005-01-10T08:30:00.000Z	NixerX		menu.lst
+2005-01-10T08:32:00.000Z	Gerrath	NixerX	my Linux root is grub:(hd0,2), Kernel:(hda3)
+2005-01-10T08:34:00.000Z	Gerrath	NixerX	Why did you ask the root question?
+2005-01-10T08:35:00.000Z	NixerX		cause you said it couldnt find root.
+2005-01-10T08:36:00.000Z	Gerrath		it just cant mount the root since the kernel module for the FS is not loaded and is on the root file system so it can't be loaded.  Thats why the initrd is important to beat the chicken before the egg issue ;)
+2005-01-10T08:36:00.000Z	NixerX	Gerrath	gotcha.
+2005-01-10T08:40:00.000Z	NixerX	Gerrath	there was something in the gentoo stuff that allowed oyu to chroot from the live cd to the mounted root partition...let me see if I can find that...then maybe you can use dpkg or apt
+2005-01-10T08:41:00.000Z	Gerrath	NixerX	Thanks that would be a big help.  I have been able to chroot but I get the /dev/null errors since it is tied to the live distro.
+2005-01-10T08:43:00.000Z	NixerX	Gerrath	http://www.gentoo.org/doc/en/handbook/2004.2/handbook-x86.xml?full=1
+2005-01-10T08:44:00.000Z	NixerX	Gerrath	not 100% sure if it will help you considering the env-update.

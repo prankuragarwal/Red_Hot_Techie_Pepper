@@ -1,0 +1,22 @@
+2010-11-16T11:06:00.000Z	pdg1		?
+2010-11-16T11:06:00.000Z	pdg1		okay
+2010-11-16T11:06:00.000Z	Jordan_U	pdg1	Where are you seeing that you have an EFI partition? While not unheard of it's odd for a computer to come shipped with windows booting via EFI.
+2010-11-16T11:07:00.000Z	pdg1	Jordan_U	: computer management
+2010-11-16T11:08:00.000Z	Jordan_U	pdg1	If you're using EFI you're probably also using GPT, which means there is no need for the hack that is "extended" and "logical" partitions. You can have as many partitions as you want.
+2010-11-16T11:09:00.000Z	pdg1	Jordan_U	: i'll tell you what i'm using.. i just got a asus T101MT eeepc
+2010-11-16T11:18:00.000Z	Jordan_U	pdg1	Ok. I can't find out much information about how EFI is setup on the T101MT eeepc, at this point I'm not even sure if it uses EFI or not. Can you boot an Ubuntu LiveCD and pastebin the output of "sudo blkid"?
+2010-11-16T11:19:00.000Z	pdg1	Jordan_U	... i suppose i could do that... i guess ::p
+2010-11-16T11:37:00.000Z	pdg1	Jordan_U	so what was that command you wanted me to run again?
+2010-11-16T11:38:00.000Z	Jordan_U	pdg1	"sudo blkid".
+2010-11-16T11:40:00.000Z	pdg1	Jordan_U	http://paste.ubuntu.com/532814/
+2010-11-16T11:42:00.000Z	pdg1	Jordan_U	interesting?
+2010-11-16T11:42:00.000Z	Jordan_U	pdg1	What is the output of "sudo grub-probe -t partmap -d /dev/sda1"?
+2010-11-16T11:45:00.000Z	pdg1	Jordan_U	msdos
+2010-11-16T11:48:00.000Z	Jordan_U	pdg1	That's unfortunate. Since you aren't using GPT, and the manufacturer of your computer configured it with 4 primary partitions, it's going to be hard to install Ubuntu without losing the ability to user your recovery partition.
+2010-11-16T11:54:00.000Z	pdg1	Jordan_U	i'm guessing that was the efi?
+2010-11-16T11:55:00.000Z	Jordan_U	pdg1	I don't think you're using EFI.
+2010-11-16T11:56:00.000Z	pdg1	Jordan_U	I'm confused what you had me do :p
+2010-11-16T11:57:00.000Z	Jordan_U	pdg1	I had you run one command to give some information about your partitions, and another to tell what type of partition table you're using.
+2010-11-16T12:03:00.000Z	pdg1	Jordan_U	so... if i'm installing onto HDD will i run into issues with dual booting and grub?
+2010-11-18T07:45:00.000Z	pdg1	Jordan_U	: hey remember helping me the other day?
+2010-11-18T10:02:00.000Z	Jordan_U	pdg1	The 24 meg partition is likely the windows "system" partition. It's needed for windows to boot, so do *not* delete it.

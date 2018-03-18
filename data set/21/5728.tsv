@@ -1,0 +1,21 @@
+2008-07-06T09:50:00.000Z	sshirley		Hi everyone. I recently installed a webcam with the ov51x-jpeg driver. How can I see what /dev the camera might be at?
+2008-07-06T09:51:00.000Z	jscinoz	sshirley	what does "ls /dev/video*" say?
+2008-07-06T09:53:00.000Z	sshirley	jscinoz	video0, video1, video2, video24, video25, video32, video33
+2008-07-06T09:53:00.000Z	jscinoz	sshirley	eeep.. one second
+2008-07-06T09:54:00.000Z	sshirley	jscinoz	this is a mythtv system so I got a couple of tuners on here too
+2008-07-06T09:55:00.000Z	jscinoz	sshirley	does  cat /proc/bus/usb/devices | grep -i video say anything useful?
+2008-07-06T09:58:00.000Z	sshirley	jscinoz	there is nothing in /proc/bus/usb
+2008-07-06T09:59:00.000Z	jscinoz	sshirley	hmm not sure >_< wish i could but im not sure where to go from here, sorry :(
+2008-07-06T10:01:00.000Z	sshirley	jscinoz	when a device gets recognized, what happens?
+2008-07-06T10:01:00.000Z	jscinoz	sshirley	i believe it sees if it matches a udev rule and then makes the /dev/ device for it
+2008-07-06T10:03:00.000Z	sshirley	jscinoz	can I tell which of these /dev/video* is mapped to that camera?
+2008-07-06T10:03:00.000Z	jscinoz	sshirley	not that  i know how, the best way would perhaps be to  open gstreamer-properties, go to video and input, then just go through the devices until you find which one gives the camera image
+2008-07-06T10:11:00.000Z	sshirley	jscinoz	ok, i cycled through until I found the camera at /dev/video2
+2008-07-06T10:12:00.000Z	jscinoz	sshirley	 :)
+2008-07-06T10:12:00.000Z	sshirley	jscinoz	Now I need to find the built-in mic
+2008-07-06T10:12:00.000Z	jscinoz	sshirley	>_<
+2008-07-06T10:12:00.000Z	sshirley	jscinoz	thanks, so far. :-)
+2008-07-06T10:12:00.000Z	jscinoz	sshirley	camera should have its own Alsa device (hw cameraname or something)
+2008-07-06T10:13:00.000Z	sshirley	jscinoz	how can i find the avail. alsa devices?
+2008-07-06T10:13:00.000Z	jscinoz	sshirley	amixer should list them
+2008-07-06T10:15:00.000Z	sshirley	jscinoz	too many to go through at 1:30 am EST. :-)  I'll look through it tomorrow. Thanks!

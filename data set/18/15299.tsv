@@ -1,0 +1,18 @@
+2005-04-14T13:08:00.000Z	bddebian		Hey folks.  OK, so I finally installed Ubuntu on one of my laptops and the install went great.  However, my routing table seems jacked up and route add default.. doesn't seem to work.  Any ideas?
+2005-04-14T13:09:00.000Z	LeeJunFan	bddebian	what does route add default do?
+2005-04-14T13:10:00.000Z	bddebian	LeeJunFan	I get "No such device"
+2005-04-14T13:10:00.000Z	LeeJunFan	bddebian	the device doesn't seem to be up. if you have dhcp on your LAN you might try running sudo dhclient <device>
+2005-04-14T13:11:00.000Z	bddebian	LeeJunFan	Ifconfig works fine and eth0 has an IP from dhcp
+2005-04-14T13:12:00.000Z	LeeJunFan	bddebian	is eth0 a wired nic?
+2005-04-14T13:12:00.000Z	bddebian	LeeJunFan	Nope, wireless
+2005-04-14T13:13:00.000Z	LeeJunFan	bddebian	can you try this and see if you get replies: arping -I eth0 <ip of something else on your lan like a router>
+2005-04-14T13:13:00.000Z	LeeJunFan	bddebian	that is an I (eye)
+2005-04-14T13:14:00.000Z	bddebian	LeeJunFan	I can ping the router (.1) fine with that
+2005-04-14T13:14:00.000Z	LeeJunFan	bddebian	can you do a plain ping?
+2005-04-14T13:14:00.000Z	bddebian	LeeJunFan	Yes
+2005-04-14T13:15:00.000Z	LeeJunFan	bddebian	what is the exact syntax you are using with route?
+2005-04-14T13:15:00.000Z	bddebian	LeeJunFan	Well I think that is part of my problem..;-)
+2005-04-14T13:16:00.000Z	LeeJunFan	bddebian	try 'ip route add default via <router ip>'
+2005-04-14T13:17:00.000Z	LeeJunFan	bddebian	but it doesn't explain why it doesn't get set with dhcp.
+2005-04-14T13:17:00.000Z	bddebian	LeeJunFan	Bahh, I had to use ip route change.  What a dolt.  Thanks a million for the help!
+2005-04-14T13:18:00.000Z	LeeJunFan	bddebian	:)

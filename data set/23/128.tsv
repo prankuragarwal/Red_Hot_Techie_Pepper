@@ -1,0 +1,23 @@
+2012-06-12T10:14:00.000Z	fishbait_		umm how do i undo chmod 400 /etc/resolv.conf
+2012-06-12T10:14:00.000Z	fishbait_		it killed my internet
+2012-06-12T10:16:00.000Z	fishbait_		lrwxrwxrwx 1 root root 29 jun 10 21:20 /etc/resolv.conf -> ../run/resolvconf/resolv.conf
+2012-06-12T10:17:00.000Z	fishbait_		okay
+2012-06-12T10:19:00.000Z	fishbait_		okay done with sudo telinit 6 and hope it works.
+2012-06-12T10:21:00.000Z	fishbait_		thats likle ford vs chevy if u know what i mean
+2012-06-12T10:22:00.000Z	fishbait_		i do that with utorrrent and torrent fu
+2012-06-12T10:23:00.000Z	fishbait_		didn't owkr and now its lost my config
+2012-06-12T10:24:00.000Z	fishbait_		need to restore resolve.conf to original state.
+2012-06-12T10:25:00.000Z	fishbait_		*resolv.conf
+2012-06-12T10:25:00.000Z	L3top	fishbait_	state being permission state?
+2012-06-12T10:45:00.000Z	L3top	fishbait_	pastebin your /etc/network/interfaces file, and what does ls -l say about it?
+2012-06-12T11:05:00.000Z	L3top	fishbait_	I would hash out the avahi stuff
+2012-06-12T11:05:00.000Z	L3top	fishbait_	you will need to restart the network
+2012-06-12T11:08:00.000Z	L3top	fishbait_	this is after hashing out the second iteration eth0 with avahi?
+2012-06-12T11:13:00.000Z	L3top	fishbait_	Is this a wifi connection? Can I see the output of /etc/udev/rules.d/70-persistent-net.rules
+2012-06-12T11:17:00.000Z	fishbait_	L3top	http://paste.ubuntu.com/1036725/
+2012-06-12T11:20:00.000Z	L3top	fishbait_	STuff is missing there. I would expect that line to end with KERNEL=="eth*", NAME="eth0"
+2012-06-12T11:20:00.000Z	L3top	fishbait_	what I would do, is mv that file to someplace like ~/Documents and reboot. It will be recreated as it is missing.
+2012-06-12T11:22:00.000Z	L3top	fishbait_	take a look at it after reboot/recreation and see if the eth0 is in there
+2012-06-12T11:31:00.000Z	L3top	fishbait_	lspci | grep thernet
+2012-06-12T11:31:00.000Z	L3top	fishbait_	your hw is not being seen... is the bottom line almost without doubt.
+2012-06-12T11:35:00.000Z	L3top	fishbait_	Very interesting. I do not know how it is being generated blank if it can see it... My guess is that it is not live until afterwords... that is one of the weirdos. Can you follow those steps in that link AGAIN to try and get your nic recognized at the onset? You can also add: KERNEL=="eth*", NAME="eth0" to the end of the file you moved to documents, and move it back...

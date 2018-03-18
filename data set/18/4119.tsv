@@ -1,0 +1,18 @@
+2009-06-06T15:42:00.000Z	G_A_C		this would launch "command" in the background, ready for you to attach with screen -r if needed
+2009-06-06T15:43:00.000Z	G_A_C		that's the command I use to launch things in screen on reboot
+2009-06-06T15:44:00.000Z	mrwes	G_A_C	you launch rtorrent on boot up with that too?
+2009-06-06T15:44:00.000Z	mrwes	G_A_C	from /etc/rc.local ?
+2009-06-06T15:44:00.000Z	G_A_C	mrwes	actually I do it from my user's crontab, with "@reboot /usr/bin/screen -dmS rtorrent /usr/bin/rtorrent"
+2009-06-06T15:45:00.000Z	G_A_C	mrwes	anything launched from rc.local runs as root by default (I believe) which I didn't want or need
+2009-06-06T15:45:00.000Z	mrwes	G_A_C	ahh...that'll work
+2009-06-06T15:46:00.000Z	mrwes	G_A_C	so the crontab would be just @reboot /usr/bin/screen -dmS rtorrent /usr/bin/rtorrent
+2009-06-06T15:47:00.000Z	G_A_C	mrwes	yeah, I'm pretty sure that's all it says. I found I had to use full pathnames as the $PATH wasn't set, but that's not a problem really
+2009-06-06T15:47:00.000Z	mrwes	G_A_C	ok, so I don't need the * * * * * before that correct?
+2009-06-06T15:48:00.000Z	G_A_C	mrwes	no, you only need that for timed events. for starting things on reboot, just replace all the stars with the keyword @reboot
+2009-06-06T15:48:00.000Z	mrwes	G_A_C	very nice, I didn't know that
+2009-06-06T15:48:00.000Z	G_A_C	mrwes	me neither, for a long time...comes in very useful now though!
+2009-06-06T15:49:00.000Z	mrwes	G_A_C	are there other @ commands that would work in a cron too?
+2009-06-06T15:49:00.000Z	G_A_C	mrwes	I'm not sure, what other events do you have in mind?
+2009-06-06T15:50:00.000Z	mrwes	G_A_C	dunno...just interested in that type of entry in a cron -- knowledge is power :)
+2009-06-06T15:51:00.000Z	G_A_C	mrwes	very true :)
+2009-06-06T15:53:00.000Z	mrwes	G_A_C	I just needed to change that to /usr/local/bin/rtorrent -- that's where the svn version is installed -- thanks again

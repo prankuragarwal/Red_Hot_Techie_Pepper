@@ -1,0 +1,22 @@
+2007-05-17T11:27:00.000Z	pyCube		Ok.. now i am confused... first couple boots, i saw my amd64 dualcore as 2 cpus.. now it only shows 1, and /proc/cpuinfo shows the wrong mhz too
+2007-05-17T11:27:00.000Z	r00tintheb0x	pyCube	what kernel are you using?
+2007-05-17T11:28:00.000Z	pyCube	r00tintheb0x	generic, x86 32bit
+2007-05-17T11:29:00.000Z	r00tintheb0x	pyCube	isnt that a 64bit arch?
+2007-05-17T11:29:00.000Z	pyCube	r00tintheb0x	yes.. but thats not the point
+2007-05-17T11:30:00.000Z	r00tintheb0x	pyCube	what is it reading the type as?
+2007-05-17T11:30:00.000Z	pyCube	r00tintheb0x	that part is right.
+2007-05-17T11:31:00.000Z	r00tintheb0x	pyCube	dmesg |grep CPU0
+2007-05-17T11:31:00.000Z	pyCube	r00tintheb0x	what i dont get is what changed.. it used to get the right info and see both cpus
+2007-05-17T11:31:00.000Z	r00tintheb0x	pyCube	run top and see if when you press the number one... if it expands to see both CPUs
+2007-05-17T11:31:00.000Z	pyCube	r00tintheb0x	already did.. 1 cpu.. but
+2007-05-17T11:33:00.000Z	r00tintheb0x	pyCube	looks like cpu1 is gettin the wrong interrupt
+2007-05-17T11:34:00.000Z	r00tintheb0x	pyCube	is it a SMP kernel?
+2007-05-17T11:34:00.000Z	pyCube	r00tintheb0x	i believe so.. generic does smp on my other machines
+2007-05-17T11:35:00.000Z	r00tintheb0x	pyCube	is it enabled in your mobo BIOS?
+2007-05-17T11:35:00.000Z	pyCube	r00tintheb0x	i looked around, and didnt see anything that controls that... lemme reboot and look again
+2007-05-17T11:39:00.000Z	r00tintheb0x	pyCube	i figured it out
+2007-05-17T11:40:00.000Z	r00tintheb0x	pyCube	"noapic acpi=noirq"
+2007-05-17T11:41:00.000Z	pyCube	r00tintheb0x	ok.. will test that.. BUT.. heh, i unplugged a questionable usb cf reader.. and its got 2 cpus again..when i first tried to install, it was plugged in and caused the system to hang when the installer was starting
+2007-05-17T11:42:00.000Z	r00tintheb0x	pyCube	thats because your IRQ's are going bananas.
+2007-05-17T11:42:00.000Z	pyCube	r00tintheb0x	right
+2007-05-17T11:43:00.000Z	r00tintheb0x	pyCube	http://ubuntuforums.org/showthread.php?t=373534

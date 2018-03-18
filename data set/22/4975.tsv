@@ -1,0 +1,22 @@
+2007-09-10T09:26:00.000Z	Downix		any ideas how to unlock my CD-ROM drive?
+2007-09-10T09:28:00.000Z	Downix		terminal
+2007-09-10T09:28:00.000Z	stefg	Downix	define 'unlock'
+2007-09-10T09:28:00.000Z	Downix		stafg:  being able to eject it so I can put in a music CD would be nice
+2007-09-10T09:28:00.000Z	stefg	Downix	sudo eject
+2007-09-10T09:29:00.000Z	Downix		it says the cd-rom is not mounted
+2007-09-10T09:29:00.000Z	Downix		and it didn't eject
+2007-09-10T09:29:00.000Z	stefg	Downix	inspect dmesg for device errors
+2007-09-10T09:30:00.000Z	Downix		bunch of buffer I/O block errors, and a comment about not liking multisession CD's
+2007-09-10T09:34:00.000Z	Downix		ah well, it shuld fix on reboot
+2007-09-10T09:34:00.000Z	stefg	Downix	try $hdparm -w /dev/hdX
+2007-09-10T09:34:00.000Z	Downix		 HDIO_DRIVE_RESET failed: Inappropriate ioctl for device
+2007-09-10T09:36:00.000Z	stefg	Downix	you have to use your correct device name... mybe sr0, scd0, hdc ... whatecer
+2007-09-10T09:36:00.000Z	Downix		I did, scd0 is the normal address for the drive
+2007-09-10T09:37:00.000Z	stefg	Downix	bah... libata.... maybe sdparm works with it
+2007-09-10T09:37:00.000Z	stefg		!fstab
+2007-09-10T09:38:00.000Z	Downix		a ha, sdparm not installed
+2007-09-10T09:40:00.000Z	Downix		unable to access /dev/scd0, ATA disk?
+2007-09-10T09:40:00.000Z	Downix		interesting
+2007-09-10T09:41:00.000Z	Downix		looks like some kind of hardware fault then
+2007-09-10T09:41:00.000Z	stefg	Downix	time to reach for the office clip
+2007-09-10T09:41:00.000Z	Downix	stefg	 it's not opening it that's the issue, it's in getting the thing to see what's in it once I do use the clip

@@ -1,0 +1,21 @@
+2011-05-01T19:26:00.000Z	Krishnandu		Hi, how to do upgrade from Alternate ISO??
+2011-05-01T19:27:00.000Z	escott	Krishnandu	most upgrades are done off the web not from iso, but you could add the iso to your apt-sources and then try to upgrade
+2011-05-01T19:27:00.000Z	Krishnandu	escott	Can you please guide me how?? I mean how to add the ISO to apt-sources??
+2011-05-01T19:29:00.000Z	escott	Krishnandu	if you put the disk in and then go to synaptic -> preferences -> software sources you should be able to add a volume
+2011-05-01T19:29:00.000Z	Krishnandu	escott	Thanks :)
+2011-05-01T19:55:00.000Z	escott	Krishnandu	it seems some bioses dislike allowing grub access to partitions not marked with the bootable flag so have him set the bootable flag on his ubuntu and windows partitions
+2011-05-01T19:56:00.000Z	Krishnandu	escott	Didn't got your point, can you please elaborate?? Or any docs link would also do...
+2011-05-01T19:58:00.000Z	escott	Krishnandu	use fdisk to set the bootable flag on the windows and ubuntu /boot partition (/ if he doesn't have /boot). there are lots of other details that we would need to know like how many disks he has, i've seen people have problems when they have multiple disks and only install grub on one of the mbr's
+2011-05-01T19:59:00.000Z	Krishnandu	escott	Ya I asked him to ran fdisk -l , only one HDD, /dev/sda, and he installed grub on MBR, he had 12 partitions on HDD, and he does have /boot
+2011-05-01T20:00:00.000Z	Krishnandu	escott	I can only see boot flag(*) set to /dev/sda1 which is NTFS partition, which I guess is Windows
+2011-05-01T20:00:00.000Z	escott	Krishnandu	so add the boot flag to the /boot partition
+2011-05-01T20:01:00.000Z	Krishnandu	escott	Thanks, lemme google it out about how to set boot flag
+2011-05-01T20:02:00.000Z	escott	Krishnandu	sudo fdisk /dev/sda then "a" "number of partition" "w"
+2011-05-01T20:03:00.000Z	Krishnandu	escott	Number of partition is the ID of partition??
+2011-05-01T20:03:00.000Z	escott	Krishnandu	the number of the partition you want to set bootable
+2011-05-01T20:04:00.000Z	Krishnandu	escott	means something like this sudo fdisk /dev/sda "a" /dev/sda9 "w" assuming /dev/sda9 is /boot
+2011-05-01T20:04:00.000Z	escott	Krishnandu	"a" it will ask the partition number "9" and then you write the changes with "w"
+2011-05-01T20:05:00.000Z	Krishnandu	escott	Ahh ok, got it..!! Thanks :)
+2011-05-01T20:06:00.000Z	Krishnandu	escott	Thanks a lot, lemme make him try this :)
+2011-05-01T20:59:00.000Z	Krishnandu	escott	He tried adding boot flag to /boot partition, didn't helped, same CLI Grub screen...
+2011-05-01T21:01:00.000Z	escott	Krishnandu	sounds like the grub-install wasn't done correctly or something is confusing grub.if he wants to get on the channel in the next 30 minutes ill still be eating lunch so having him pm me

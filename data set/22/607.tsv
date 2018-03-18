@@ -1,0 +1,22 @@
+2011-06-21T00:05:00.000Z	clix		can you get a list of available kernel modules? I want to find one for my wireless card
+2011-06-21T00:06:00.000Z	llutz	clix	modprobe -l
+2011-06-21T00:09:00.000Z	clix	llutz	that shows active modules? or installed ones? or just what's in /lib/modules? I mean can i see a list of modules from ubuntu servers that i can install?
+2011-06-21T00:09:00.000Z	llutz	clix	it show modules available, used modules to list "lsmod"
+2011-06-21T00:11:00.000Z	llutz	clix	either install packages containing new modules, a new kernel-package or build modules yourself
+2011-06-21T00:12:00.000Z	clix	llutz	right, so where's the list of packages containing new modules, so i can install the right one?
+2011-06-21T00:12:00.000Z	llutz	clix	what exactly do you miss/need/want?
+2011-06-21T00:15:00.000Z	llutz	clix	read here for info http://ubuntuforums.org/showthread.php?t=1600498
+2011-06-21T00:17:00.000Z	clix	llutz	ok, will read that - i found some on that forum before using google but didn't understand it - I was hoping for something like install package called xxx then it will work :D
+2011-06-21T00:22:00.000Z	clix	llutz	I tried to install that before and it said that the package doesn't conform because it has binaries in an architecture independent package, so ubuntu refused to install it
+2011-06-21T00:24:00.000Z	llutz	clix	try dpkg --force-architecture                but that might break things, be carefull
+2011-06-21T00:28:00.000Z	clix	llutz	I have the rt2860sta module :) must have been something I did yesterday to install it - now to make it work
+2011-06-21T00:29:00.000Z	llutz	clix	sudo modprobe rt2860sta
+2011-06-21T00:29:00.000Z	clix	llutz	will it load by default? should i add that to a config file?
+2011-06-21T00:30:00.000Z	llutz	clix	1st check if it loads and works. if it does, add "rt2860sta" to /etc/modules to make sure it'll be loaded at boottime
+2011-06-21T00:32:00.000Z	clix	llutz	ok, thanks a lot for your help - i think i am on the right track now :)
+2011-06-21T00:48:00.000Z	llutz	clix	try "lsusb"
+2011-06-21T00:50:00.000Z	clix	llutz	two integrated rate matching hubs and two root hubs in lsusb - nothing else. the camera is a built-in one on this laptop, so i'm trying to figure out the model
+2011-06-21T00:50:00.000Z	llutz	clix	was just a guess since my netbooks camera is usb :) sry cannot help
+2011-06-21T00:59:00.000Z	clix	llutz	haha - to make the webcam work, just needs to be turned on with the fn+F6, that was easy
+2011-06-21T00:59:00.000Z	llutz	clix	:D
+2011-06-21T01:00:00.000Z	llutz	clix	life can be soo easy

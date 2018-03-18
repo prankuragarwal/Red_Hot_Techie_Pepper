@@ -1,0 +1,24 @@
+2005-04-14T16:37:00.000Z	claint		i thought it was april 6 but i am not sure.
+2005-04-14T16:38:00.000Z	claint		unless it was another april fool's joke... the rc that is
+2005-04-14T06:20:00.000Z	claint		how come i have sound on the desktop, but none of my programs are giving out any sound?
+2005-04-14T06:21:00.000Z	claint		bah, clicked on the wrong spot by the way
+2005-04-14T06:21:00.000Z	crimsun	claint	please describe more fully.
+2005-04-14T06:22:00.000Z	claint	crimsun	the sound card works for sound events like logon, clicks on windows, the ubuntu drums and what not. but for programs like bzflag, or java programs, i have no sound.
+2005-04-14T06:23:00.000Z	crimsun	claint	using ,,gstreamer-properties'', ensure your default audio sink it set to ESD, and click Test
+2005-04-14T06:24:00.000Z	claint	crimsun	: test works.
+2005-04-14T06:24:00.000Z	claint	crimsun	: still no sound in java
+2005-04-14T06:24:00.000Z	crimsun	claint	make sure your audio applications are set to use esd.  For instance, if you use beep-media-player or xmms, set the output plugin to esound.
+2005-04-14T06:25:00.000Z	crimsun	claint	pkill esd, then try your java app
+2005-04-14T06:26:00.000Z	claint	crimsun	after killing esd, i got sound in java.
+2005-04-14T06:28:00.000Z	crimsun	claint	problem resolved.
+2005-04-14T06:28:00.000Z	claint	crimsun	but i had to kill esd
+2005-04-14T06:28:00.000Z	claint	crimsun	: not exactly a solution
+2005-04-14T06:29:00.000Z	crimsun	claint	that's why polypaudio was strongly considered
+2005-04-14T06:29:00.000Z	claint	crimsun	: cant i just choose plain alsa from gstreamer-properties?
+2005-04-14T06:30:00.000Z	crimsun	claint	sure, it's your system.  Just remember to change all your sound apps to use ALSA directly.
+2005-04-14T06:30:00.000Z	crimsun	claint	and make sure esd isn't started automatically.
+2005-04-14T06:30:00.000Z	claint	crimsun	is there a debian/ubuntu command to get it out of init execution?
+2005-04-14T06:31:00.000Z	crimsun	claint	just uncheck the "sound server startup" option
+2005-04-14T06:31:00.000Z	claint	crimsun	: what's dmix?
+2005-04-14T06:31:00.000Z	crimsun	claint	dmix is alsa-lib's multiplexing
+2005-04-15T09:05:00.000Z	crimsun	claint	:syn on

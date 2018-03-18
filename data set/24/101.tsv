@@ -1,0 +1,24 @@
+2012-07-21T02:49:00.000Z	spacebarbarian		is there an easy way to check if all my traffic is going over vpn ? my downloads are way faster than they should be for some reason while connected
+2012-07-21T02:50:00.000Z	folmer	spacebarbarian	assumin your VPN is on tun0 interface, block all traffic originating from any other interface using ufw
+2012-07-21T02:51:00.000Z	spacebarbarian	folmer	it seems to be on tap0 does that make sense ?
+2012-07-21T02:52:00.000Z	folmer	spacebarbarian	I'm only familiar with tun*, but if tap0 is treated like the tun interface, then it should work
+2012-07-21T02:52:00.000Z	spacebarbarian		hmm so should i disable traffic on eth0
+2012-07-21T02:53:00.000Z	spacebarbarian		(This is in a vm by the way)
+2012-07-21T02:53:00.000Z	folmer	spacebarbarian	if you use gufw as a frontend for ufw, and choose deny-policies for inbound/outbound, you're at a good starting point
+2012-07-21T02:54:00.000Z	spacebarbarian	folmer	got it thanks
+2012-07-21T02:56:00.000Z	folmer	spacebarbarian	then create rules for the VPN ip you're connecting to, and then add a rule allowing all traffic out on tap0
+2012-07-21T02:56:00.000Z	spacebarbarian	folmer	yeah Im just blocking all traffic that isnt giong through the VPN ip
+2012-07-21T02:57:00.000Z	folmer	spacebarbarian	should work. That's the config I'm using.
+2012-07-21T02:59:00.000Z	spacebarbarian	folmer	is netstat a good way to check all traffic though ? just to see what connections are made and if any of them are not from my vpn ?
+2012-07-21T03:02:00.000Z	folmer	spacebarbarian	sure, you can use netstat -antup to check connections. But keep in mind that connections made before enabling the tap0 interface won't be disconnected, so it may look like it's leaking
+2012-07-21T03:03:00.000Z	spacebarbarian	folmer	ah interesting
+2012-07-21T03:03:00.000Z	spacebarbarian		that reminds me also need to check for dns leaks
+2012-07-21T03:03:00.000Z	folmer	spacebarbarian	you using openvpn?
+2012-07-21T03:03:00.000Z	spacebarbarian		yes
+2012-07-21T03:04:00.000Z	spacebarbarian		network manager
+2012-07-21T03:04:00.000Z	spacebarbarian		but its running inside a virtualmachine so the interface names are a bit weird
+2012-07-21T03:04:00.000Z	folmer		with the block-all-approach, you'll eliminate DNS leaks as well
+2012-07-21T03:05:00.000Z	spacebarbarian		oh ok
+2012-07-21T03:05:00.000Z	spacebarbarian		I need to make sure it doesnt block my local router cache though (ddwrt)
+2012-07-21T03:05:00.000Z	folmer	spacebarbarian	I've only used the openvpn client standalone. Never through network-manager
+2012-07-21T03:06:00.000Z	spacebarbarian	folmer	ah yeah i didnt want to mess with commandline stuff :/

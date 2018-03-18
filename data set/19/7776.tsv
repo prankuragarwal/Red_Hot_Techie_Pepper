@@ -1,0 +1,19 @@
+2007-07-14T06:56:00.000Z	John`		how do i mount a folder from another ubuntu computer that is using samba?  i keep getting access denied when i try mounting it with "smbfs"
+2007-07-14T06:57:00.000Z	Xyhthyx	John`	Try mounting it with cifs instead.
+2007-07-14T06:58:00.000Z	John`		cifs?
+2007-07-14T06:58:00.000Z	John`	Xyhthyx	where can i get that?
+2007-07-14T06:58:00.000Z	Xyhthyx	John`	sudo mount -t cifs -o user=<user_name>,iocharset=utf8,file_mode=0777,dir_mode=0777 //<computer>/<folder> /media/<mount-point>
+2007-07-14T06:59:00.000Z	John`	Xyhthyx	do i have to install cifs?
+2007-07-14T06:59:00.000Z	Xyhthyx	John`	Make a folder in /media to mount it in first of course.
+2007-07-14T06:59:00.000Z	Xyhthyx	John`	No.
+2007-07-14T06:59:00.000Z	John`	Xyhthyx	what if it has a password?
+2007-07-14T07:00:00.000Z	Xyhthyx	John`	The first password request you get is for using sudo, the second for accessing the folder.
+2007-07-14T07:02:00.000Z	John`	Xyhthyx	what is all this? iocharset=utf8,file_mode=0777,dir_mode=0777
+2007-07-14T07:02:00.000Z	Xyhthyx	John`	Those are cifs options, iocharset for using UTF8 char set, dir mode and file mode set to read/write.
+2007-07-14T07:05:00.000Z	Xyhthyx	John`	btw I failed to mention that in the cifs command I gave you, //<computer>/<folder> should be //<ip-address>/folder
+2007-07-14T07:06:00.000Z	John`		yeah
+2007-07-14T07:06:00.000Z	John`		lol
+2007-07-14T07:06:00.000Z	John`		i was gonna ask that
+2007-07-14T07:06:00.000Z	John`		haha
+2007-07-14T07:06:00.000Z	John`		thanks
+2007-07-14T07:08:00.000Z	John`	Xyhthyx	it still say mount error 13 = Permission denied

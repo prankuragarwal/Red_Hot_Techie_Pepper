@@ -1,0 +1,24 @@
+2012-10-16T18:52:00.000Z	barry_		how do i find what wireless card i have in my laptop?
+2012-10-16T18:53:00.000Z	deadmund	barry_	sudo lspci -k  (it will be listed in there)  using -k shows the driver / modules available and the one that is being used
+2012-10-16T18:53:00.000Z	deadmund	barry_	If it doesn't list it you can also try lsusb
+2012-10-16T18:55:00.000Z	barry_	deadmund	the problem i have is i was running linuxmint 9 which found my wireless driver for me, i install xubuntu and it doesnt find it for me :(
+2012-10-16T18:55:00.000Z	deadmund	barry_	Yeah, I'm not really surprised.  Usually wifi cards require proprietary software / firmware and linux mint installs this by default but ubuntu does not.  I am very good with wifi cards.  What card do you have?
+2012-10-16T18:56:00.000Z	barry_	deadmund	Dell Wireless 1370 WLAN Mini-PCI Card
+2012-10-16T18:57:00.000Z	barry_	deadmund	im still learning linux i appreciate it
+2012-10-16T18:57:00.000Z	deadmund	barry_	what is the chipset?  (no problem).  Can you paste the relevant line for lspci in the channel or post the entire lspci output here: paste.ubuntu.com
+2012-10-16T18:59:00.000Z	barry_	deadmund	how do i find out the chipset?
+2012-10-16T19:00:00.000Z	deadmund	barry_	The chipset is in the output of lspci, 1370 might be the chipset or it might be the model number.  I can't tell, sort of have to play it by feel there.
+2012-10-16T19:02:00.000Z	barry_	deadmund	cant find the model number all i get is: 02:03.0 Network controller: Broadcom Corporation BCM4318 [AirForce One 54g] 802.11g Wireless LAN Controller (rev 02)
+2012-10-16T19:03:00.000Z	barry_	deadmund	ok
+2012-10-16T19:03:00.000Z	deadmund	barry_	Is the computer connected to the internet in some other way right now?
+2012-10-16T19:04:00.000Z	deadmund	barry_	The guide that was posted by ubottu is accurate and helpful but it's detailed.  I can tell you right now you need to install (using apt-get) firmware-b43-installer
+2012-10-16T19:05:00.000Z	barry_	deadmund	installed so i should reboot? ye it found my other laptop
+2012-10-16T19:06:00.000Z	deadmund	barry_	You can reboot or run sudo modprobe b43
+2012-10-16T19:06:00.000Z	barry_	deadmund	what is it? and how do you know this incase i need to no in the future
+2012-10-16T19:07:00.000Z	deadmund	barry_	what is modprobe?  modprobe is a command that inserts modules (drivers) into the system. You can think of it as 'turning the driver on'
+2012-10-16T19:07:00.000Z	deadmund	barry_	When you boot, all relevant drivers for the system are modprobed automatically for you.  The driver was not modprobed before because the firmware was missing
+2012-10-16T19:11:00.000Z	barry_	deadmund	ok done :) so what would be the steps to doing all this, i mean talk me though it in noob term incase i need it again for anothe machine or to help someone else?
+2012-10-16T19:12:00.000Z	barry_	deadmund	 ok done :) so what would be the steps to doing all this, i mean talk me though it in noob term incase i need it again for another machine or to help someone else?
+2012-10-16T19:12:00.000Z	deadmund	barry_	First I found out from you the wifi chipset.  Then I used my knowledge and experience to determine which driver you need.  Then I used more knowledge and experience to determine that you need firmware for the driver to work.  Then I looked up here: http://packages.ubuntu.com/ the package that provides that firmware.  Then I told you to install that package.  Then we turned on the driver by rebooting
+2012-10-16T19:14:00.000Z	deadmund	barry_	However, 9 / 10 you have a card that doesn't work, it's a b43 card and you need to install that firmware package (firmware-b43-installer)
+2012-10-16T19:17:00.000Z	deadmund	barry_	the additional-drivers tool can be helpful too.  Effectively does everything I did for you automatically (i.e. knowing what driver to use and getting the firmware packages and so on)

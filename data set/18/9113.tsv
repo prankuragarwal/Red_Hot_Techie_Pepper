@@ -1,0 +1,18 @@
+2007-05-08T12:44:00.000Z	generalcola		I did something kind of stupid, I unchecked the box in the User and Groups window that made my user able to administer the system, and I now I'm not able to get into the user and groups window, is there any way I could get my user to have those privileges again?
+2007-05-08T12:44:00.000Z	eyequeue	generalcola	i'm guessing you removed your user from the wheel group
+2007-05-08T12:45:00.000Z	eyequeue	generalcola	"grep generalcola /etc/groups" to see
+2007-05-08T12:46:00.000Z	eyequeue	generalcola	then, as a user that *can" admin the system, add yourself back to that file, or brute force it using a rescue disk
+2007-05-08T12:52:00.000Z	generalcola	eyequeue	I don't have any other users that can use root, I just installed ubuntu 2 days ago and I haven't created any users except for the one I created at the installation.
+2007-05-08T12:52:00.000Z	eyequeue	generalcola	two options come to mind, being that it is such a new installation there
+2007-05-08T12:53:00.000Z	eyequeue	generalcola	first, if you have nothing all that customized yet, re-install ... not the only choice, but less intimidating perhaps, so i mention it, not knowing your fluency/comfort
+2007-05-08T12:54:00.000Z	eyequeue	generalcola	the other involves using the command line and booting from a rescue disk (like the ubuntu cd you installed from, probably)
+2007-05-08T12:55:00.000Z	eyequeue	generalcola	"vigr" and add your username to the wheel group, after chrooting to your root partition
+2007-05-08T12:55:00.000Z	generalcola	eyequeue	I've been using a few distros off and on for the past few months, but in a random fit of stupidity i accedentally took away the option to allow me to administer. I probably could handle the command line.
+2007-05-08T12:56:00.000Z	eyequeue	generalcola	or "adduser generalcola wheel" after chrooting to the root partition
+2007-05-08T12:56:00.000Z	eyequeue	generalcola	if either of those ring a bell, you can probably handle it just fine :)
+2007-05-08T12:56:00.000Z	generalcola	eyequeue	Thanks
+2007-05-08T12:57:00.000Z	eyequeue	generalcola	or whatever the account really is called, like say, "adduser alex wheel"
+2007-05-08T12:58:00.000Z	eyequeue	generalcola	the trick is, you need to do this as root, and you have effectively locked yourself out of "as root", hence why we brute-force it by :
+2007-05-08T12:59:00.000Z	eyequeue	generalcola	step 1, boot from rescue cd, step 2, mount the root partition, step 3, manually edit that /etc/group file, using vigr or something or even the higher-level command adduser
+2007-05-08T13:01:00.000Z	generalcola	eyequeue	thanks for the help, I'll go try that now
+2007-05-08T13:02:00.000Z	eyequeue	generalcola	presuming your username is alex there, do grep alex /etc/group (or run "groups" as alex)

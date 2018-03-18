@@ -1,0 +1,22 @@
+2005-06-30T13:51:00.000Z	alex_		hello world!
+2005-06-30T13:52:00.000Z	alex_		i've just installed ubuntu 5.04. i've got a problem with totem
+2005-06-30T13:52:00.000Z	alex_		can anybody helo pme?
+2005-06-30T13:52:00.000Z	Seveas	alex_	what's the problem?
+2007-10-07T15:18:00.000Z	Seveas	alex_	pastebin the errors
+2007-10-07T15:18:00.000Z	alex_	Seveas	k
+2007-10-07T15:19:00.000Z	Seveas	alex_	after your problem is fixed, it's a good idea to reinstall all packages to iron out other errors that this may have caused. Here's a handy oneliner for that: dpkg -l | awk '/^ii/{print $2}' | xargs apt-get install --reinstall
+2007-10-07T15:21:00.000Z	alex_	Seveas	here is the link to it http://pastebin.com/m371b2c06
+2007-10-07T15:21:00.000Z	Seveas	alex_	you're in a pickle there, installing the kernel failed
+2007-10-07T15:22:00.000Z	Seveas	alex_	/etc/init.d/acpid stop
+2007-10-07T15:22:00.000Z	Seveas	alex_	and then apt-get -f dist-upgrade
+2007-10-07T15:22:00.000Z	Seveas	alex_	and pastebin all errors you get of course :)
+2007-10-07T15:24:00.000Z	alex_	Seveas	here is the link to it http://pastebin.com/m382f0f32 after stopping the acpid daemon and running the command to force the dist upgrade it still gives me the same errors
+2007-10-07T15:25:00.000Z	Seveas	alex_	no you get different errors now
+2007-10-07T15:25:00.000Z	Seveas	alex_	the acpid problem is now gone but the kernel problem is still their :)
+2007-10-07T15:26:00.000Z	Seveas	alex_	sudo dpkg -P linux-image-2.6.22-13-generic
+2007-10-07T15:26:00.000Z	Seveas	alex_	sudo dpkg -P --force-depends linux-image-2.6.22-13-generic
+2007-10-07T15:28:00.000Z	alex_	Seveas	first command executed fine but the second complained about requesting to remove a package which isn't installed
+2007-10-07T15:28:00.000Z	Seveas	alex_	that's ok
+2007-10-07T15:28:00.000Z	Seveas	alex_	I was afraid the first wouldn't run, the second was a more agressive version of the first
+2007-10-07T15:29:00.000Z	alex_	Seveas	thank you I was actually able to complete it properly now
+2007-10-07T15:29:00.000Z	Seveas	alex_	after that is done, sudo apt-get install linux-generic

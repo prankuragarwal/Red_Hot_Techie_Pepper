@@ -1,0 +1,24 @@
+2009-12-09T04:22:00.000Z	hdtdi		does someone successfully manage to make disc quotas on ubuntu 9.10 with ext4 fs ?
+2009-12-09T04:22:00.000Z	ikonia	hdtdi	I don't have it currently but I've done quotas on a 9.10 desktop
+2009-12-09T04:23:00.000Z	hdtdi	ikonia	but with ext4 fs ? because i read in google and there is a bit difference
+2009-12-09T04:24:00.000Z	ikonia	hdtdi	slightly different implimentations, but the confifguration is the same
+2009-12-09T04:25:00.000Z	hdtdi	ikonia	can you tell me why i got this error :S http://pastebin.ca/1707541
+2009-12-09T04:25:00.000Z	ikonia	hdtdi	I can have a look, one moment
+2009-12-09T04:26:00.000Z	ikonia	hdtdi	what's the permissions on /home/hdtidi/.gvfs ?
+2009-12-09T04:26:00.000Z	ikonia	hdtdi	have ou fsck'd /home as i suggests ?
+2009-12-09T04:26:00.000Z	hdtdi	ikonia	yes
+2009-12-09T04:27:00.000Z	hdtdi	ikonia	w0w.. w8 to paste in pastebin whats the result when i try to see the permissions
+2009-12-09T04:28:00.000Z	ikonia	hdtdi	looks like a little bit of file system corruption there :)
+2009-12-09T04:29:00.000Z	hdtdi	ikonia	i run fsck -C -f -v /dev/sda6 (/home partition) but i dont know what to look for.. but i didnt saw any errors what so ever
+2009-12-09T04:29:00.000Z	ikonia	hdtdi	you didn't do that while its mounted did you ?
+2009-12-09T04:29:00.000Z	ikonia	hdtdi	phew, remove .gvfs file - reboot it should get recreated, lets see if that's the only corruption
+2009-12-09T04:30:00.000Z	ikonia	hdtdi	sudo is your friend
+2009-12-09T04:30:00.000Z	ikonia	hdtdi	whoaaa, you're root
+2009-12-09T04:31:00.000Z	ikonia	hdtdi	drop into single user mode, do an ls -i on it and remove the inode (dirty hack)
+2009-12-09T04:32:00.000Z	ikonia	hdtdi	ok - if you're not comfortable with that, this may not be the best way to go, as a mistake could cause you pain
+2009-12-09T04:55:00.000Z	hdtdi	ikonia	syn-ack i did remove .gvfs not by inode just in init 1 - rm -rf .gvfs .. and it was gone.. but now its the same.. when i execute quotacheck -avugm its still the same error
+2009-12-09T05:12:00.000Z	hdtdi	ikonia	here?
+2009-12-10T03:44:00.000Z	hdtdi	ikonia	hi, i am from yesterday with the quota problem remember?
+2009-12-10T03:44:00.000Z	ikonia	hdtdi	I certainly do
+2009-12-10T03:46:00.000Z	hdtdi	ikonia	i just wanted to say i got my problem :) i went into init 1 and deleted this .vgs(whatever) and then run the quotaon command and voalq :) after reboot everything was fine
+2009-12-10T03:46:00.000Z	ikonia	hdtdi	now that is great news, well done

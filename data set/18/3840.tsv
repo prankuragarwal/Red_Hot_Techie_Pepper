@@ -1,0 +1,18 @@
+2009-07-25T01:44:00.000Z	soapbox		Hey when I attempt to SCP or FTP into a specific folder on my server it's telling me "no such file or directory"
+2009-07-25T01:44:00.000Z	soapbox		even though very clearly both the file and the directory exist
+2009-07-25T01:45:00.000Z	soapbox		i can upload to the folder's immediate parent directory no problem btw
+2009-07-25T01:45:00.000Z	MaskedDriver	soapbox	permissions problem?
+2009-07-25T01:46:00.000Z	MaskedDriver	soapbox	it's probably because the folder is owned by root
+2009-07-25T01:46:00.000Z	MaskedDriver	soapbox	in ssh, go to that folder and do a ls -la and see who the owner is
+2009-07-25T01:47:00.000Z	MaskedDriver	soapbox	you FTP in as your username... you ssh as root (which is highly unrecommended)... if your folder is owned by root you can't play around with it
+2009-07-25T01:49:00.000Z	MaskedDriver	soapbox	ofc I'm right ;)
+2009-07-25T01:49:00.000Z	MaskedDriver	soapbox	sudo chown username:username image_script_pics
+2009-07-25T01:50:00.000Z	MaskedDriver	soapbox	the username you ftp into
+2009-07-25T01:51:00.000Z	MaskedDriver	soapbox	the first bob is the user, the second bob is the group
+2009-07-25T01:51:00.000Z	MaskedDriver	soapbox	exactly
+2009-07-25T01:52:00.000Z	MaskedDriver	soapbox	no, you can skip sudo... but you should never log in as root... nasty things can happen
+2009-07-25T01:53:00.000Z	MaskedDriver	soapbox	you can accidentally run a command that will screw up your whole system
+2009-07-25T01:53:00.000Z	MaskedDriver	soapbox	sudo is the appropriate way to accomplish root commands
+2009-07-25T01:56:00.000Z	MaskedDriver	soapbox	most usually your own
+2009-07-25T01:57:00.000Z	MaskedDriver	soapbox	my pleasure
+2009-07-25T01:58:00.000Z	MaskedDriver	soapbox	is this a web server?  because if you plan on having apache right to the server the group should be whatever group is set up for apache

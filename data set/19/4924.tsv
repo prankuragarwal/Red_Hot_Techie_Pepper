@@ -1,0 +1,19 @@
+2009-06-08T01:12:00.000Z	s0|		complied on a 8.04 LTS server install to a 8.04 LTS desktop
+2009-06-08T01:14:00.000Z	s0|		I assume that once a binary is complied it should run on similar systems
+2009-06-08T01:15:00.000Z	losher	s0|	in general. yes, unless you've messed something up. Wanna paste the output of 'ls -l' for us to see...
+2009-06-08T01:15:00.000Z	s0|		-rwxrwxrwx  1 mark mark      7092 2009-06-07 14:06 helo
+2009-06-08T01:16:00.000Z	losher	s0|	and what exactly happens when you do ./helo
+2009-06-08T01:16:00.000Z	s0|		-bash: ./helo: No such file or directory
+2009-06-08T01:17:00.000Z	losher	s0|	please do ldd ./helo and paste
+2009-06-08T01:18:00.000Z	s0|		not a dynamic executable      (I guess this means I complied worong somehow)
+2009-06-08T01:19:00.000Z	s0|	losher	damn thing works fine elsewhere
+2009-06-08T01:21:00.000Z	losher	s0|	well, statically linked executables should be runnable. Presumably something different about the environment on your desktop machine. Dunno what that might be though. What is the program supposed to do?
+2009-06-08T01:21:00.000Z	s0|	losher	it's supposed to run N-threads, where N = number of cores
+2009-06-08T01:21:00.000Z	s0|		it says hello from each, and thats it
+2009-06-08T01:23:00.000Z	losher	s0|	all I can suggest at this point is to relink it dynamically on the server & see if that makes a difference. I wonder if it depends on kernel threads or something?
+2009-06-08T01:23:00.000Z	s0|	losher	I don't know what you mean by relink it dynamiically
+2009-06-08T01:25:00.000Z	losher	s0|	it's a compiler option. Look for the keyword 'static' when the build happens
+2009-06-08T01:25:00.000Z	s0|	losher	do I need to add static?
+2009-06-08T01:26:00.000Z	s0|		this is all I did to make the binary: gcc -fopenmp helo.c -o helo
+2009-06-08T01:29:00.000Z	losher	s0|	sorry, at this point I'm out of my depth. Maybe you need compiler help next?
+2009-06-08T01:29:00.000Z	s0|	losher	probably - thanks

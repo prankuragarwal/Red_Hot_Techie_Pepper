@@ -1,0 +1,18 @@
+2006-10-27T14:03:00.000Z	tonyyarusso		I'm having trouble with CUPS configuration.  I got the printer set up, and it works on that box, but I'm getting "connection refused" and being unable to use it from another machine.
+2006-10-27T14:04:00.000Z	sbalneav	tonyyarusso	Have you gone to global-settings -> share printer?
+2006-10-27T14:05:00.000Z	tonyyarusso	sbalneav	I need to do this from the command line.
+2006-10-27T14:05:00.000Z	sbalneav	tonyyarusso	Why, is the machine remote?
+2006-10-27T14:06:00.000Z	tonyyarusso	sbalneav	Doesn't have X installed.  (server)
+2006-10-27T14:06:00.000Z	sbalneav	tonyyarusso	Then you'll have to manually edit the /etc/cups/cupsd.conf file.
+2006-10-27T14:07:00.000Z	tonyyarusso	sbalneav	Yeah, I've been trying to do that, and think I've allowed everything I can come up with, but still no luck.
+2006-10-27T14:08:00.000Z	tonyyarusso	sbalneav	I have All 192.168.1.0/16 _and_ Allow all
+2006-10-27T14:10:00.000Z	sbalneav	tonyyarusso	Are you wanting IPP printer sharing, or lpd printer sharing?
+2006-10-27T14:11:00.000Z	tonyyarusso	sbalneav	Either?  Both?  IPP seems to be the default; if I could use it remotely through http that would be awesome.
+2006-10-27T14:12:00.000Z	sbalneav	tonyyarusso	You should just need to change the line that says "Listen localhost:631" to "Listen 631", and do a invoke-rc.d cupsys restart
+2006-10-27T14:16:00.000Z	tonyyarusso	sbalneav	Well, it still won't print, but links2 192.168.1.5:631/help changed from "Connection refused" to "403: forbidden" if that's any indication
+2006-10-27T14:18:00.000Z	sbalneav	tonyyarusso	Are you trying to use the web interface to modify the printers?  If that's what you're trying to do, add the cupsys user to the "shadow" group in /etc/groups, and restart cups again.
+2006-10-27T14:18:00.000Z	sbalneav	tonyyarusso	It needs to be able to read the shadow file for authentication to use the web interface.
+2006-10-27T14:18:00.000Z	tonyyarusso	sbalneav	So far I was just using the web interface to see if I could get a response at all.
+2006-10-27T14:24:00.000Z	tonyyarusso	sbalneav	Any other thoughts on why I'm not getting any response when I try to send a print job?
+2006-10-27T14:39:00.000Z	tonyyarusso	sbalneav	Got it working
+2006-10-27T14:40:00.000Z	sbalneav	tonyyarusso	Oh, excellent.

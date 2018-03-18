@@ -1,0 +1,19 @@
+2007-04-11T14:39:00.000Z	lockmist		*blink* Has anyone ever used tinydns under Ubuntu successfully? Some people clearly seem to, and I can't figure out why it seems to be running but not answering...
+2007-04-11T14:40:00.000Z	Alumin	lockmist	are you sure that it's not answering...and not that the answer just isn't being received?
+2007-04-11T14:41:00.000Z	Alumin	lockmist	since you're choosing between DNS servers I'm going to assume that you're at a certain level of competency and just throw things at you :P
+2007-04-11T14:42:00.000Z	Alumin	lockmist	nmap -sU -p 53 81.2.97.154?
+2007-04-11T14:45:00.000Z	Alumin	lockmist	ok, you're correct that it's not a firewall/networking issue
+2007-04-11T14:46:00.000Z	Alumin	lockmist	my next best suggestion is...verbose logging on the tinydns end?
+2007-04-11T14:46:00.000Z	Alumin	lockmist	no idea, I've never even seen tinydns
+2007-04-11T14:54:00.000Z	Alumin	lockmist	"netstat -ltpn" look for tinydns
+2007-04-11T15:05:00.000Z	Alumin	lockmist	wireshark didn't help
+2007-04-11T15:07:00.000Z	lockmist	Alumin	Exactly as you said...
+2007-04-11T15:08:00.000Z	lockmist	Alumin	I suppose, but I don't get why; tinydns and most other DJB stuff bails out at the tiniest hint of a configuration problem.
+2007-04-11T15:09:00.000Z	Alumin	lockmist	if you're feeling especially saucy, you could try running tinydns out of strace
+2007-04-11T15:10:00.000Z	lockmist	Alumin	I'll give it a go...
+2007-04-11T15:10:00.000Z	Alumin	lockmist	have you dealt with strace output before?
+2007-04-11T15:11:00.000Z	lockmist	Alumin	Just tried it and it's quite self-explanatory for a kernel debugger...
+2007-04-11T15:14:00.000Z	lockmist	Alumin	I'm tail -f'ing the strace output now. Quite enlightening.
+2007-04-11T15:15:00.000Z	Alumin	lockmist	oh lord, don't do that unless you want a migraine
+2007-04-11T15:15:00.000Z	lockmist	Alumin	It's not all that verbose. ... and no, it wasn't, I wrote Vexmon. :)
+2007-04-11T15:19:00.000Z	lockmist	Alumin	Eureka. It's responding to PTR requests, but not A requests...

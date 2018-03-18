@@ -1,0 +1,22 @@
+2005-12-08T12:39:00.000Z	Thunderguy		I have this concern, bassically I locked the root account with 'passwd -l' and made sure I was in the sudoers file right? problem is I have errors on my partition and am in urgent need of fsck repairs, but when I go into emergency mode it asks me for a root password which I don't have since the account is locked! know what I could do? without sacrificing a security concern that someone knows 'root' is my administrator account?
+2005-12-08T12:41:00.000Z	Thunderguy		yes?
+2005-12-08T12:41:00.000Z	HappyFool	Thunderguy	did you do an expert install ? or did you previously enable root ? by default it should be disabled
+2005-12-08T12:43:00.000Z	HappyFool	Thunderguy	ok. but you get asked for a password on recovery mode?
+2005-12-08T12:43:00.000Z	HappyFool	Thunderguy	or is the problem that you *don't* get asked for a password?
+2005-12-08T12:43:00.000Z	Thunderguy	HappyFool	Yes, hmm could it be that I should remove a password before locking the account?
+2005-12-08T12:44:00.000Z	HappyFool	Thunderguy	i haven't used 'passwd -l'; i'll check the man page in a moment. When I boot into recovery mode I go straight to a root prompt with no password check
+2005-12-08T12:45:00.000Z	Thunderguy	HappyFool	Yeah the problem is I 'had' to use expert mode, apt-get setup freezes the install on my system, even in the newest breezy so expert was the only one that worked, but at the same time I'm trying to default things back to how they would have been if I didn't use expert.
+2005-12-08T12:46:00.000Z	HappyFool	Thunderguy	fair enough. FWIW, here's my entry for 'root' in /etc/shadow: root:*:13072:0:99999:7:::
+2005-12-08T12:47:00.000Z	HappyFool	Thunderguy	maybe try forcing your entry to be similar ('man shadow' says a * disables login)
+2005-12-08T12:49:00.000Z	Thunderguy	HappyFool	Thanks for the advice, yes I don't have an * I'll go ahead and copy that shadow entry as a default incase I can't figure it out any other way.
+2005-12-08T12:49:00.000Z	HappyFool	Thunderguy	i'd like to know why it asks for a password on recovery mode; let me know if you find out
+2005-12-08T12:50:00.000Z	Thunderguy	HappyFool	Sure I'll go try some things and figure out how to default back to that value without having to do it the hard way and change shadow, then inform you.
+2005-12-08T13:11:00.000Z	Thunderguy	HappyFool	For an expert setup the only way to return to the default sudo usage is to A: edit the sudoers file with 'visudo' as root and place your primary user account in there with all priveledges or 'user   ALL=(ALL) ALL', then edit the shadow file, put an * as root..
+2005-12-08T13:12:00.000Z	HappyFool	Thunderguy	thanks. your system is working as desired now?
+2005-12-08T13:12:00.000Z	Thunderguy	HappyFool	or rather an * in the second field.
+2005-12-08T13:12:00.000Z	Thunderguy	HappyFool	Not really, I got single user and emergency mode to work fine, but there is something it won't let me do... unmount my root partition, I happen to know there are errors in the superblock.. but I can't unmount it even under emergency mode.
+2005-12-08T13:13:00.000Z	HappyFool	Thunderguy	hmm. d'you have a live cd ?
+2005-12-08T13:13:00.000Z	Thunderguy	HappyFool	I do, think it's the only option at this point?
+2005-12-08T13:13:00.000Z	HappyFool	Thunderguy	well, i think it's probably the easiest
+2005-12-08T13:14:00.000Z	Thunderguy	HappyFool	Well thanks again for the help, I'll got boot Damn Small Linux and fix the partition.
+2005-12-08T13:14:00.000Z	HappyFool	Thunderguy	cool. good luck

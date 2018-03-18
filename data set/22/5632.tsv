@@ -1,0 +1,22 @@
+2009-06-11T23:07:00.000Z	jontec		problem with wireless on Jaunty, fresh install: installed ndiswrapper and drivers for my card while blacklisting b43; card is now not detected by system (was previously wlan0). The problem initially arose from an inability to connect to WEP networks because iwconfig could not set the key
+2009-06-11T23:08:00.000Z	raylu	jontec	why were you using iwconfig to set the key?
+2009-06-11T23:09:00.000Z	jontec	raylu	I tried using NetworkManager, wifi-radar, and kwlan; when I launched wifi-radar from the terminal I noticed that it was using iwconfig (I noticed the same error output) so I am assuming all of the programs use this method to set the key?
+2009-06-11T23:10:00.000Z	raylu	jontec	strange. what was the error that you got when trying to set the key manually?
+2009-06-11T23:10:00.000Z	jontec	raylu	it was error SET ENCODE... using syntax like `sudo iwconfig <device> key <hex key>`
+2009-06-11T23:11:00.000Z	raylu	jontec	ok. do you have the ndiswrapper module loaded?
+2009-06-11T23:11:00.000Z	jontec	raylu	I can't exactly reproduce it now... the card is no longer detected
+2009-06-11T23:11:00.000Z	jontec	raylu	I think so... it was appended to /etc/modules
+2009-06-11T23:11:00.000Z	raylu	jontec	lsmod | grep ndis
+2009-06-11T23:11:00.000Z	raylu	jontec	also, ndiswrapper -l
+2009-06-11T23:12:00.000Z	jontec	raylu	yeah, I can see an entry for it
+2009-06-11T23:13:00.000Z	jontec	raylu	ndiswrapper           193308  0
+2009-06-11T23:17:00.000Z	raylu	jontec	and ndsiwrapper -l?
+2009-06-11T23:18:00.000Z	jontec	raylu	first it provides me a warning about /etc/modprobe.d/ndiswrapper not having the .conf file extension, then it says bcmwl5: driver installed, device (14E4:4311) present (alternate driver: ssb)
+2009-06-11T23:20:00.000Z	jontec	raylu	the warning says that the configuration file will not be found in future versions without the extension... I don't know if it applies to this one or not
+2009-06-11T23:29:00.000Z	raylu	jontec	that warning can be safely ignored
+2009-06-11T23:29:00.000Z	raylu	jontec	does ifconfig -a show your device?
+2009-06-11T23:30:00.000Z	jontec	raylu	no, it doesn't. T_T
+2009-06-11T23:31:00.000Z	jontec	raylu	I'm guessing that that's because I blacklisted b43 and this driver is not working?
+2009-06-11T23:55:00.000Z	jontec	raylu	I'll be back... I just moved the drivers in the DRIVERS_US folder to the main folder to see if ndiswrapper needed more files that weren't available in that folder... I doubt it, but it's worth a try
+2009-06-12T00:09:00.000Z	jontec	raylu	still no dice :(
+2009-06-12T00:10:00.000Z	jontec	raylu	https://bugs.launchpad.net/ubuntu/+source/network-manager/+bug/230047 lists the problem I was initially having

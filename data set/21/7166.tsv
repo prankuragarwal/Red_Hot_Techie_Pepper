@@ -1,0 +1,21 @@
+2008-12-14T01:09:00.000Z	BoSJo		Hi all, whats wrong with : dd if=/mnt/sda1/shift-vista-recovery.bin of=/dev/hda2/ bs=16384 skip=2244480
+2008-12-14T01:10:00.000Z	BoSJo		gives 0+0 records both in and out
+2008-12-14T01:10:00.000Z	Slart	BoSJo	is the skip number correct? it doesn't just skip the entire file?
+2008-12-14T01:11:00.000Z	BoSJo	Slart	thats what im not sure of, howdo i ensure that bs and skip match?
+2008-12-14T01:11:00.000Z	Slart	BoSJo	hmm.. I'm not even sure what you are trying to do
+2008-12-14T01:12:00.000Z	Slart	BoSJo	did you find that command somewhere?
+2008-12-14T01:13:00.000Z	Slart	BoSJo	a short reading of "man dd" might give you some useful info
+2008-12-14T01:14:00.000Z	BoSJo	Slart	ok, but the dump has been dumped with the same numbers, shouldent it be recovered with the same numbers then
+2008-12-14T01:15:00.000Z	Slart	BoSJo	it's 34 GB of data in that file?
+2008-12-14T01:16:00.000Z	BoSJo	Slart	the disk is 40GB in total, factory delivered with 2 partisions where one 3GB holds the vista recovery partision. The dump holds the vista partision
+2008-12-14T01:17:00.000Z	Slart	BoSJo	setting bs=16834 means dd will work with chunks of 16384 bytes.. skip 2244480 means to skip 2244480 such chunks at the start of the file... that's an awful lot of data to skip
+2008-12-14T01:17:00.000Z	Slart	BoSJo	so you
+2008-12-14T01:18:00.000Z	Slart	BoSJo	so you're skipping the first 34 GB's of the file.. if the file is less than 34 GB then you won't copy anything
+2008-12-14T01:19:00.000Z	Slart	BoSJo	how big is the file?
+2008-12-14T01:19:00.000Z	BoSJo	Slart	Ahhhhhh, so the recovery dump is currently only about 3GB, abd i shouldent skip anything
+2008-12-14T01:19:00.000Z	BoSJo	Slart	http://pof.eslack.org/blog/2008/04/22/how-to-dump-and-restore-the-vista-recovery-partition-on-htc-shift/
+2008-12-14T01:20:00.000Z	Slart	BoSJo	I can't really say if that's correct or not.. and I'm not sure how to restore it properly
+2008-12-14T01:21:00.000Z	BoSJo	Slart	ahhh shit i just realise that he wrote seek=2244480 and not skip=.... for the recovery
+2008-12-14T01:21:00.000Z	Slart	BoSJo	ahh.. that would make more sense
+2008-12-14T01:22:00.000Z	BoSJo	Slart	damm, sometimes one really needs to read and not just assume :-)
+2008-12-14T01:22:00.000Z	Slart	BoSJo	=)

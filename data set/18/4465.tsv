@@ -1,0 +1,18 @@
+2009-06-25T10:17:00.000Z	Mike_lifeguard		If you're moving ubuntu to a new hard drive, can you just 'sudo cp -r / /mnt/newroot' then fix GRUB, or is it more involved?
+2009-06-25T10:17:00.000Z	unop	Mike_lifeguard	that does not preserve permissions
+2009-06-25T10:18:00.000Z	Mike_lifeguard	unop	K, so what other options does cp need for that?
+2009-06-25T10:18:00.000Z	unop	Mike_lifeguard	 -a
+2009-06-25T10:19:00.000Z	Mike_lifeguard	unop	and if I'm a sneaky bastard who already did 'cp -r...' and now needs to fix it, is there a way to overwrite?
+2009-06-25T10:22:00.000Z	unop	Mike_lifeguard	did you run cp as root?
+2009-06-25T10:22:00.000Z	Mike_lifeguard	unop	yes
+2009-06-25T10:22:00.000Z	unop	Mike_lifeguard	you should be ok then
+2009-06-25T10:23:00.000Z	unop	Mike_lifeguard	though I would still advise using -a
+2009-06-25T10:24:00.000Z	Mike_lifeguard	unop	OK, so... when logging in the graphical session lasts less than 10s and a little dialog comes up saying "your session lasted <10s, that's bad" and then says something (I wish I had written it down) about one file being linked to another. I think a symlink didn't get preserved there... would that be a possible problem of not using -a?
+2009-06-25T10:26:00.000Z	unop	Mike_lifeguard	I would use tar like this.   (cd /path/to/src/ && tar cpf - . | cd  /path/to/dest/ && tar xf -)
+2009-06-25T10:27:00.000Z	Mike_lifeguard	unop	does that need the brakets?
+2009-06-25T10:27:00.000Z	unop	Mike_lifeguard	yes
+2009-06-25T10:28:00.000Z	Mike_lifeguard	unop	jigidyjensen: Actually, I was going to ask about excluding /proc and/or /dev... necessary or not?
+2009-06-25T10:29:00.000Z	unop	Mike_lifeguard	if you are backing up while the system is offline (which i recommend you do) - then you shouldn't have to bother about excluding /proc, /dev, /tmp, etc
+2009-06-25T10:30:00.000Z	Mike_lifeguard	unop	yep, that's what I did
+2009-06-25T10:37:00.000Z	unop	Mike_lifeguard	no, don't recommend that
+2009-06-25T10:39:00.000Z	Mike_lifeguard	unop	Thanks a lot for your help.. but I'm going to reinstall jaunty (using ext4) - easier ... downloading the iso now.

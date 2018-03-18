@@ -1,0 +1,18 @@
+2012-02-16T20:31:00.000Z	martian	mastro	I didn't see the original question, but are you trying to get a network mount to work in fstab?
+2012-02-16T20:34:00.000Z	martian	mastro	does your fstab entry have _netdev in the options?
+2012-02-16T20:37:00.000Z	martian	mastro	Hello? Does your fstab entry have _netdev in the options?
+2012-02-16T20:37:00.000Z	mastro	martian	I pasted you the fstab entry
+2012-02-16T20:40:00.000Z	martian	mastro	I don't see a paste anywhere.
+2012-02-16T20:44:00.000Z	mastro	martian	192.168.88.252:/repo  /mnt/repos   nfs      rw,hard,intr  0     0
+2012-02-16T20:46:00.000Z	martian	mastro	I am fairly certain that you need to add _netdev to the options like: _netdev,rw,hard,intr
+2012-02-16T20:46:00.000Z	martian	mastro	that tells the system that you need networking first to mount that device
+2012-02-16T20:49:00.000Z	mastro	martian	? ok I'll try thanks
+2012-02-16T20:49:00.000Z	mastro	martian	never had to do so.. is this an ubuntu modification?
+2012-02-16T20:51:00.000Z	martian	mastro	I don't really know, but I've had to do it on my machines. I guess the kernel will normally try to mount devices before making network connections, or do them in parallel, so with that option it forces it to wait for networking to complete before attempting to mount
+2012-02-16T20:51:00.000Z	mastro	martian	thanks it worked but I wonder why on any other server (redhat, debian, ...) I never had to add that argument
+2012-02-16T20:53:00.000Z	martian	mastro	beats me!
+2012-02-16T20:54:00.000Z	mastro	martian	anyway thank you
+2012-02-16T20:57:00.000Z	mastro	martian	no apparently that doesn't worked... it's random
+2012-02-16T20:59:00.000Z	martian	mastro	bummer. Any valuable information in dmesg?
+2012-02-16T21:19:00.000Z	mastro	martian	anyway no it didnt' fix the issue, it was random and apparently there's something else going on
+2012-02-16T21:21:00.000Z	martian	mastro	you should check your dmesg to see what if any error is being thrown.

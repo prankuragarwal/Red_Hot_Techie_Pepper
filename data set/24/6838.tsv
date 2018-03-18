@@ -1,0 +1,24 @@
+2006-06-16T11:57:00.000Z	Cntryboy		anyone know how to force umount for cdrom? I'm typing sudo umount /media/cdrom0 and it says device is busy ?
+2006-06-16T11:58:00.000Z	Spec	Cntryboy	lsof |grep -i cdrom0   will show you what's using it
+2006-06-16T12:09:00.000Z	Spec	Cntryboy	have you pressed the button the cdrom drive that ejects the cdrom?
+2006-06-16T12:10:00.000Z	Spec	Cntryboy	and it's not mounted, you're sure?
+2006-06-16T12:10:00.000Z	Spec	Cntryboy	look at dmesg i guess
+2006-06-16T12:11:00.000Z	Spec	Cntryboy	it could be
+2006-06-16T12:12:00.000Z	Spec	Cntryboy	type 'mount'
+2006-06-16T12:12:00.000Z	Spec	Cntryboy	and pastebin the results
+2006-06-16T12:13:00.000Z	Spec	Cntryboy	i dont' know what that means
+2006-06-16T12:13:00.000Z	Spec	Cntryboy	eject /dev/hdc
+2006-06-16T12:13:00.000Z	Spec	Cntryboy	np
+2006-06-16T12:49:00.000Z	Spec	Cntryboy	md5sum generates a long magical number off a file
+2006-06-16T12:49:00.000Z	Spec	Cntryboy	if the file is at all different, the long magical number will have changed
+2006-06-16T12:50:00.000Z	Spec	Cntryboy	so if you take an md5sum of, say, a cd-ISO, and compare it to what it's supposed to be, if it's different, than the contents of the .iso have changed
+2006-06-16T12:50:00.000Z	Spec	Cntryboy	detecting bad downloads/verifying a hacker hasn't changed it, etc
+2006-06-16T12:51:00.000Z	Spec	Cntryboy	the md5 file is just a number you compare it to, type "man md5sum" for more information
+2006-06-16T12:51:00.000Z	Spec	Cntryboy	if you want to find the md5sum of every file in your system (note: no reason to do this), you'd type: find . |xargs -n1 md5sum
+2006-06-16T12:51:00.000Z	Spec	Cntryboy	hehe
+2006-06-16T12:51:00.000Z	Spec	Cntryboy	naa, you don't need to worry about it
+2006-06-16T12:51:00.000Z	Spec	Cntryboy	you can safely ignore the existance of .md5 files
+2006-06-16T12:52:00.000Z	Spec	Cntryboy	yeap, the md5 is just a file with a long number in it, it's very small, go ahead and download it/open it up with a text editor if you wanna see it
+2006-06-16T12:52:00.000Z	Spec	Cntryboy	once you download the real file, run "md5sum <downloadedfile>" and compare the numbers, they should be identical to what's shown in the *.md5 file
+2006-06-16T13:07:00.000Z	Spec	Cntryboy	sudo uses your own users password
+2006-06-16T13:07:00.000Z	Spec	Cntryboy	su uses root's password, which, default in ubuntu, is not set, so therefore it is impossible

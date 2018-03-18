@@ -1,0 +1,21 @@
+2008-10-10T02:17:00.000Z	richcollins		Why isn't ubuntu looking in /usr/local/lib for shared libraries?
+2008-10-10T02:17:00.000Z	richcollins		and is there a way to get it to without using LD_LIBRARY_PATH
+2008-10-10T02:17:00.000Z	x-ip	richcollins	look up echo $LD_LIBRARY_PATH
+2008-10-10T02:18:00.000Z	richcollins	x-ip	It is empty
+2008-10-10T02:18:00.000Z	x-ip	richcollins	try to set a path to that global var with export
+2008-10-10T02:19:00.000Z	richcollins	x-ip	I would rather not set up the environment for each process that will run things that link to /usr/local/lib
+2008-10-10T02:19:00.000Z	richcollins		Is there a way other than LD_LIBRARY_PATH
+2008-10-10T02:19:00.000Z	richcollins		ah /etc/ld.so.conf
+2008-10-10T02:19:00.000Z	x-ip	richcollins	i dont know 'other way' but doesnt understand why u should set up this env for each process ...
+2008-10-10T02:20:00.000Z	x-ip		u mean, because you have some process run by different users i think ...
+2008-10-10T02:20:00.000Z	richcollins	x-ip	apache will have a www user
+2008-10-10T02:20:00.000Z	x-ip		yeap ... i got the point
+2008-10-10T02:20:00.000Z	richcollins	x-ip	Looks liek I can modify /etc/ld.so.conf and run ldconfig
+2008-10-10T02:21:00.000Z	x-ip	richcollins	yep, i forget that
+2008-10-10T02:21:00.000Z	x-ip	richcollins	thats what u need
+2008-10-10T02:21:00.000Z	x-ip		=)
+2008-10-10T02:24:00.000Z	richcollins	x-ip	Ah.  I had to run ldconfig after installing libc6-dev
+2008-10-10T02:24:00.000Z	richcollins		It added the entry
+2008-10-10T02:24:00.000Z	x-ip	richcollins	perfect :)
+2008-10-10T02:24:00.000Z	richcollins	x-ip	Thanks for your help
+2008-10-10T02:24:00.000Z	x-ip	richcollins	ou ... np =)

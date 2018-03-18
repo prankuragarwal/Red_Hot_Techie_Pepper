@@ -1,0 +1,21 @@
+2009-11-13T22:21:00.000Z	csaba		I bought a new sata2 hard disk, how can I create a partition on it?
+2009-11-13T22:21:00.000Z	csaba		I don't know where it is, it's not /dev/sda or /dev/sdb...
+2009-11-13T22:21:00.000Z	llutz	csaba	sudo fdisk -l
+2009-11-13T22:23:00.000Z	llutz	csaba	so sdb seems to be the one to partition
+2009-11-13T22:23:00.000Z	llutz	csaba	sudo cfdisk /dev/sdb
+2009-11-13T22:24:00.000Z	llutz	csaba	doesn't matter
+2009-11-13T22:24:00.000Z	llutz	csaba	primary is fine then
+2009-11-13T22:26:00.000Z	llutz	csaba	try: sudo mkfs.ntfs /dev/sdb1
+2009-11-13T22:26:00.000Z	llutz	csaba	ntfsprogs have to be installed
+2009-11-13T22:29:00.000Z	llutz	csaba	go for a coffee
+2010-02-24T21:21:00.000Z	llutz	csaba	it's still just a textfile
+2010-02-24T21:21:00.000Z	csaba	llutz	no it's not, because the system goes to hell if you chmod it
+2010-02-24T21:22:00.000Z	csaba	llutz	and i can't edit it with sudo nano sudoers... which I could do in the previous versions
+2010-02-24T21:22:00.000Z	llutz	csaba	it needs proper permissions to work
+2010-02-24T21:23:00.000Z	llutz	csaba	 sudoers has to be edited with visudo, which preserves permissions.
+2010-02-24T21:23:00.000Z	csaba	llutz	wasn't the case in previous versions
+2010-02-24T21:23:00.000Z	llutz	csaba	it has bee 440 root before too
+2010-02-25T23:06:00.000Z	llutz	csaba	"grep -i dns /var/log/syslog" if you're using dhcp
+2010-02-25T23:07:00.000Z	csaba	llutz	that only tells me my own ip address
+2010-02-25T23:07:00.000Z	llutz	csaba	if using a router, you have to use it there
+2010-02-25T23:08:00.000Z	llutz	csaba	on that device, getting the ip from your ISP

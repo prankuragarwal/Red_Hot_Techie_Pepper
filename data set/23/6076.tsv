@@ -1,0 +1,23 @@
+2010-02-03T04:01:00.000Z	sysdoc		Hey guys, I'm looking to reinstall 9.10 to a new drive and have my current /home partition copied into place on the new drive with the new ext4 file sys... Anyone have any suggestions or a howto on how to accomplish this?
+2010-02-03T04:03:00.000Z	clausen	sysdoc	I assume /home is on the / partition?  Then you could shrink your / partition, install ubuntu, then mount your old / partition?  you could deleted everything outside of /home from it...
+2010-02-03T04:05:00.000Z	sysdoc	clausen	/home part is on the old drive and it is ext3, would like to have the /home part copied to a new part that was ext4 on the new drive..
+2010-02-03T04:05:00.000Z	clausen	sysdoc	ah, I see
+2010-02-03T04:05:00.000Z	clausen	sysdoc	and you want to preserve permissions, etc.
+2010-02-03T04:05:00.000Z	sysdoc	clausen	:)
+2010-02-03T04:06:00.000Z	sysdoc	clausen	yea want everything to be the same as in this install of 9.10, just want to move to the new drive with ext4
+2010-02-03T04:06:00.000Z	clausen	sysdoc	I believe tar preserves ownership?
+2010-02-03T04:06:00.000Z	clausen	sysdoc	maybe cp has some options too?
+2010-02-03T04:07:00.000Z	sysdoc	clausen	I was thinking that gparted at install had a option to copy a dir or partition to a new drive, but not sure if I needed to stay with the same fs or could create it as a new ext4 then copy
+2010-02-03T04:07:00.000Z	clausen	sysdoc	I just checked... tar works
+2010-02-03T04:09:00.000Z	clausen	sysdoc	I wouldn't know if gparted has such an option...
+2010-02-03T04:09:00.000Z	clausen	sysdoc	parted used to have such an option, but they got rid of it
+2010-02-03T04:09:00.000Z	sysdoc	clausen	yea I thought I had seen it from other installs
+2010-02-03T04:10:00.000Z	clausen	sysdoc	(actually, I wrote the option!)
+2010-02-03T04:10:00.000Z	sysdoc	clausen	well put it back...:)
+2010-02-03T04:10:00.000Z	clausen	sysdoc	the ext2 code in parted wasn't really being maintained, so the maintainers decided to remove it (fair enough)
+2010-02-03T04:10:00.000Z	clausen	sysdoc	I haven't touched parted in 5 years!
+2010-02-03T04:10:00.000Z	clausen	sysdoc	can't say I'm missing it that much, hehe
+2010-02-03T04:10:00.000Z	sysdoc	clausen	ok lol!!
+2010-02-03T04:11:00.000Z	clausen	sysdoc	(I'm an economist now!)
+2010-02-03T04:23:00.000Z	sysdoc	clausen	so what would you suggest the best way to go would be? cp or tar up the /home dir and extract after the new install in done or?
+2010-02-03T04:24:00.000Z	clausen	sysdoc	I'd probably use tar:  (cd /home; tar c) | (cd /newroot; tar x)

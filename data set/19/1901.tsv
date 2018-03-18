@@ -1,0 +1,19 @@
+2010-09-04T08:32:00.000Z	kneaux		if i wanted to create a script "in" that does "apt-get install $$1" i have to put it in /usr/bin and chmod +x yeah?
+2010-09-04T08:33:00.000Z	sacarlson	kneaux	I guess that would work but you might want to put it in your local bin /usr/local/bin  so that only your account would be efected
+2010-09-04T08:34:00.000Z	sacarlson	kneaux	oh maybe that would still effect the rest of the accounts
+2010-09-04T08:40:00.000Z	sacarlson	kneaux	yes
+2010-09-04T08:41:00.000Z	sacarlson	kneaux	the other machine would require to have a ssh-server running
+2010-09-04T08:42:00.000Z	sacarlson	kneaux	one thing they can't have the same IP that would cause a conflict.  you would have to install ssh-server on the target sudo apt-get install ssh
+2010-09-04T08:43:00.000Z	sacarlson	kneaux	you must mean by same ip that they reside on the same ip mask?  on the client side just got to terminal and ssh ipoftarget.
+2010-09-04T08:45:00.000Z	kneaux	sacarlson	i currently have this laptop (that i'm ircing from) and my server together on an ethernet switch, sharing the ip 137.229.82.30. i want to connect from here to the server, but i'll also want to connect from elsewhere (other ip addresses). i don't know how ethernet switches work, is there a protocol for addressing a specific machine at a particular address?
+2010-09-04T08:48:00.000Z	sacarlson	kneaux	you two systems you have are on a lan (local area network)  they each have an address on that lan.  on the internet they are seen as having the same address.  so to find the address of each you can do the command ifconfig  at a term.  this is the address you will login with on ssh localy
+2010-09-04T08:50:00.000Z	kneaux	sacarlson	which address?
+2010-09-04T08:50:00.000Z	sacarlson	kneaux	if you plan to connect to them from outside your local network from the Internet to one or both then you will require setup of your router port forwarding.
+2010-09-04T08:52:00.000Z	kneaux	sacarlson	i'll cross the remote connection bridge when i come to it
+2010-09-04T08:52:00.000Z	kneaux	sacarlson	thanks for the help
+2010-09-10T11:21:00.000Z	sacarlson	kneaux	address computers?  it should plug and play if you have a dhcp server running on it.
+2010-09-10T11:24:00.000Z	kneaux	sacarlson	i forgot i was asking this the last time i was here hehe
+2010-09-10T11:24:00.000Z	kneaux	sacarlson	i'm still trying to figure out how to connect remotely to a server i have on a lan where every machine has the same ip
+2010-09-10T11:27:00.000Z	sacarlson	kneaux	again they don't have the same ip they are just on the same local ip mask.  to come in remote from outside that local network you will need to add nat forwarding settings you your router.
+2010-09-10T11:28:00.000Z	kneaux	sacarlson	again, switch, not a router, i'm not sure it's terribly configurable
+2010-09-10T11:29:00.000Z	sacarlson	kneaux	some switches are smart like cisco but most people use simple auto detect switches that just detect the mac address of each device that plugs in.

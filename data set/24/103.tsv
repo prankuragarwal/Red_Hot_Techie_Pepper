@@ -1,0 +1,24 @@
+2012-09-23T01:54:00.000Z	k4r1m		can anyone help me for a few minutes? I installed an update last night and now my DNS is broken, system can't preform any dnslookup
+2012-09-23T01:55:00.000Z	Meris	k4r1m	did you try restarting your networking service?
+2012-09-23T01:55:00.000Z	k4r1m	Meris	sudo restart network-manager, numerous times..
+2012-09-23T01:56:00.000Z	k4r1m	Meris	/etc/init.d/networking restart?
+2012-09-23T01:57:00.000Z	Meris	k4r1m	that's one way to do it, though not the proper way. The proper way is: sudo service networking restart
+2012-09-23T01:58:00.000Z	k4r1m	Meris	I ran that and I got a weird message, "Ignoring unknown interface eth0=eth0" and still not working
+2012-09-23T02:02:00.000Z	Meris	k4r1m	does that "something" match your DNS server/ Internet Gateway?
+2012-09-23T02:07:00.000Z	Meris	k4r1m	Why don't you make a separate entry in your network manager config that takes this difference into acocunt?
+2012-09-23T02:08:00.000Z	Meris	k4r1m	aocount => account
+2012-09-23T02:08:00.000Z	k4r1m	Meris	how do I do that?
+2012-09-23T02:10:00.000Z	Meris	k4r1m	surely you know how to make an extra entry in your network manager? It's done through the GUI.
+2012-09-23T02:15:00.000Z	Meris	k4r1m	Nice, so at least the cisco app bothered to make a backup of your original settings first.
+2012-09-23T02:22:00.000Z	k4r1m	Meris	well I think thats where the problem is coming from, my machine always hangs on shutddown/reboot I have to hold down the power.. and I believe it's coming from network cifs mounts in fstab which only connect at work
+2012-09-23T02:26:00.000Z	k4r1m	Meris	about that account thing, it's in the network manager GUI?
+2012-09-23T02:31:00.000Z	Meris	k4r1m	sound like an ancient TAP/TUN setup to me. If that's true, you can just select your eth0 proper, with zero settings in the VPN tab, unless the Cisco VPN client is more intrusive than it should be. Given your descriptions of  other network config files, this seems to be the case here.
+2012-09-23T02:32:00.000Z	k4r1m	Meris	I'm going to connect to the vpn and see what changes locally in the configs
+2012-09-23T02:33:00.000Z	k4r1m	Meris	yeah  I just did that
+2012-09-23T02:38:00.000Z	k4r1m	Meris	TJ- : connected and it just changed /etc/resolv.conf to with the weird nameservers
+2012-09-23T02:42:00.000Z	k4r1m	Meris	TJ- : upon disconnection it reverted resolv.conf back...
+2012-09-23T02:44:00.000Z	k4r1m	Meris	client is like 20 years old came with a lucid image
+2012-09-23T02:45:00.000Z	k4r1m	Meris	I'm afraid they would override company specific configs
+2012-09-23T02:47:00.000Z	k4r1m	Meris	they all use windows.
+2012-09-23T02:48:00.000Z	k4r1m	Meris	when I asked IT to give me their linux image they gave me lucid. It was a painful upgrade especially with centrifydc
+2012-09-23T02:49:00.000Z	k4r1m	Meris	I'll look into, thanks !

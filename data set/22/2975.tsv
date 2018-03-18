@@ -1,0 +1,22 @@
+2009-03-21T20:02:00.000Z	quizme		my cron jobs is not running.  does anybody know how to see the error message ?
+2009-03-21T20:03:00.000Z	quizme		does anybody know how to debug cron jobs ?
+2009-03-21T20:03:00.000Z	oCean_	quizme	there are several reasons why it might fail.
+2009-03-21T20:03:00.000Z	quizme	oCean_	like what ?
+2009-03-21T20:03:00.000Z	oCean_	quizme	Is it in your user's cron? Meaning "crontab -l" shows the scheduled job?
+2009-03-21T20:04:00.000Z	quizme	oCean_	i can run it as that user, but it wont' run as a cronjob.  :(  and i don't know where to find errors.  when i put  >&  errors  it doesn't log errors either.
+2009-03-21T20:04:00.000Z	oCean_	quizme	the entry itself can be wrong, the script might not be accessible and/or executable, or the script/command is trying to run interactively etc
+2009-03-21T20:06:00.000Z	oCean_	quizme	Ok. Make it look like this: "/path/to/command >> /tmp/logfile 2>&1"
+2009-03-21T20:06:00.000Z	quizme	oCean_	okay i'll try that
+2009-03-21T20:07:00.000Z	oCean_	quizme	Also see output of "grep -i cron /var/log/syslog"
+2009-03-21T20:10:00.000Z	quizme	oCean_	thanks I"ll try that too.  btw, what does  the 2&>1 part mean?
+2009-03-21T20:10:00.000Z	oCean_	quizme	make STDERR and STDOUT go to the mentioned logfile.
+2009-03-21T20:13:00.000Z	quizme	oCean_	thanks so much for your help.  I think I found the error!
+2009-03-21T20:13:00.000Z	oCean_	quizme	ok!
+2009-12-11T15:35:00.000Z	oCean_	quizme	have you installed correct kernel headers? sudo apt-get install linux-headers-`uname -r`
+2009-12-11T15:37:00.000Z	oCean_	quizme	ok, let's check: "dpkg -l | grep linux-headers"
+2009-12-11T15:39:00.000Z	oCean_	quizme	uname -r gives 2.6.28? installed headers are for 2.6.31
+2009-12-11T15:40:00.000Z	oCean_	quizme	not sure what you are compiling, but whatever it is, it will try to find the header files of the current running kernel
+2009-12-11T15:41:00.000Z	oCean_	quizme	my previous hint was "sudo apt-get install linux-headers-`uname -r`"
+2009-12-11T15:44:00.000Z	oCean_	quizme	that is weird. Your installed header versions are > your current kernel.
+2009-12-11T15:45:00.000Z	oCean_	quizme	indeed :)
+2009-12-11T15:45:00.000Z	oCean_	quizme	no problem

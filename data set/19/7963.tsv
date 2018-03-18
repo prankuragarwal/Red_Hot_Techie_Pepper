@@ -1,0 +1,19 @@
+2010-01-03T17:45:00.000Z	tim167_		hello, i have a partition to which i can not write because i am not the owner, how do i change that ?
+2010-01-03T17:45:00.000Z	llutz	tim167_	what filesystem?
+2010-01-03T17:45:00.000Z	tim167_	llutz	ext3
+2010-01-03T17:45:00.000Z	llutz	tim167_	chown/chmod
+2010-01-03T17:45:00.000Z	tim167_	llutz	i tried chown, but that didn't work
+2010-01-03T17:46:00.000Z	llutz	tim167_	where is that partition mounted to?
+2010-01-03T17:46:00.000Z	tim167_	llutz	it's a live usb key, i formatted the remaining space on it and want to use it as storage space...
+2010-01-03T17:46:00.000Z	tim167_	llutz	i used gparted to forlat unalocated space to a ext3 partition, it's mounted to /dev/sdb3
+2010-01-03T17:46:00.000Z	llutz	tim167_	mount it, sudo chown user:grp /mount/point
+2010-01-03T17:47:00.000Z	llutz	tim167_	/dev/sdb3 is the device, not the mountpoint
+2010-01-03T17:47:00.000Z	tim167_	llutz	user:grp, literally, or replace it by  my user name ?
+2010-01-03T17:47:00.000Z	llutz	tim167_	replace
+2010-01-03T17:48:00.000Z	tim167_	llutz	sorry it's /media/sdb3
+2010-01-03T17:49:00.000Z	tim167_	llutz	i get "chown: changing ownership of `/media/sdb3': Operation not permitted", although i do it as su
+2010-01-03T17:50:00.000Z	llutz	tim167_	"sudo fdisk -l /dev/sdb | grep sdb3"
+2010-01-03T17:50:00.000Z	tim167_	llutz	/dev/sdb3            7199       14441     1970096    b  W95 FAT32
+2010-01-03T17:50:00.000Z	llutz	tim167_	either wrong partition or wrong partition-id
+2010-01-03T17:51:00.000Z	tim167_	llutz	hmm apparently it's fat32...
+2010-01-03T17:51:00.000Z	llutz	tim167_	to make it accessible for users, you have to use uid/gid/umask as mount-options

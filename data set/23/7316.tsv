@@ -1,0 +1,23 @@
+2008-11-05T08:53:00.000Z	dazvid		Hi guys, quick question about linking libopenal.so.0 to libopenal.so.1. Is it possible to run a program that depends on libopenal.so.0 with libopenal.so.1 ?
+2008-11-05T08:54:00.000Z	fonzarelli	dazvid	i bet linking would work
+2008-11-05T08:55:00.000Z	dazvid	fonzarelli	i think i created a link using "ln /usr/lib32/libopenal.so.1 /usr/lib32/libopenal.so.0", alas the program still reports the missing lib
+2008-11-05T08:55:00.000Z	fonzarelli	dazvid	ln -s
+2008-11-05T08:55:00.000Z	dazvid	fonzarelli	oh thanks :)
+2008-11-05T08:57:00.000Z	dazvid	fonzarelli	unfortunately linking did not solve my problem. Any other suggestions i could follow up?
+2008-11-05T08:58:00.000Z	fonzarelli	dazvid	what ap are you trying to run?
+2008-11-05T08:58:00.000Z	fonzarelli		app*
+2008-11-05T08:58:00.000Z	dazvid		ioquake
+2008-11-05T08:59:00.000Z	dazvid		ioquake3 more specifically fonzarelli
+2008-11-05T09:00:00.000Z	fonzarelli	dazvid	would openarena meet your needs?
+2008-11-05T09:00:00.000Z	dazvid		Nope, unfortunately that game is not compatible with the proprietary verison of q3
+2008-11-05T09:05:00.000Z	fonzarelli	dazvid	 rm /usr/lib32/libopenal.so.0
+2008-11-05T09:05:00.000Z	fonzarelli	dazvid	then:  ln -s /usr/lib32/libopenal.so.1 /usr/lib32/libopenal.so.0
+2008-11-05T09:06:00.000Z	fonzarelli	dazvid	then relaunch the game
+2008-11-05T09:06:00.000Z	dazvid	fonzarelli	thats exactly what I did with no luck
+2008-11-05T09:07:00.000Z	dazvid	fonzarelli	wait i think i have made a huge mistake. Let me try something
+2008-11-05T09:07:00.000Z	fonzarelli	dazvid	k
+2008-11-05T09:08:00.000Z	dazvid	fonzarelli	i realised that im using 64 bit.. and ioquake supports 64. So the 32 bit library was not the problem
+2008-11-05T09:08:00.000Z	dazvid		hahah
+2008-11-05T09:08:00.000Z	dazvid		i feel silly
+2008-11-05T09:08:00.000Z	dazvid		thanks for the help!
+2008-11-05T09:08:00.000Z	fonzarelli	dazvid	ahh, cool

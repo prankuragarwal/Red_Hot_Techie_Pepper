@@ -1,0 +1,22 @@
+2006-07-14T11:24:00.000Z	haakonn		my dapper system totally disregards /etc/hosts and only asks the nameservers in /etc/resolv.conf. i've looked at man hosts and man resolv.conf, but i can't figure out how to make it ask hosts first. any ideas?
+2006-07-14T11:25:00.000Z	haakonn		(the effect is that localhost doesn't resolve, of course)
+2006-07-14T11:27:00.000Z	mattnash	haakonn	I think you need to look at nsswitch.conf
+2006-07-14T11:27:00.000Z	haakonn	mattnash	 i even looked at that, but i didn't understand a lot ;)
+2006-07-14T11:27:00.000Z	mattnash	haakonn	There should be a line that says hosts: -- change the order to files dns
+2006-07-14T11:28:00.000Z	mattnash	haakonn	http://learnlinux.tsf.org.za/courses/build/net-admin/ch07s03.html
+2006-07-14T11:33:00.000Z	haakonn	mattnash	 thanks, but there's really no different no matter how i rearrange the "hosts:" line
+2006-07-14T11:35:00.000Z	mattnash	haakonn	I'm looking... there may be a process restart required.
+2006-07-14T11:43:00.000Z	mattnash	haakonn	also check /etc/host.conf.  Is your only problem that localhost doesn't resolve?  Check your lo interface and make sure it has an address.
+2006-07-14T11:45:00.000Z	haakonn	mattnash	 host.conf has "order hosts,bind", lo has ip 127.0.0.1. the problem is that anything i put in hosts does not resolve, and host -v says it asks the ISP nameserver (which fails for my local /etc/hosts names) and then gives up. now i want to set up the leafnode program, which requires to be able to resolve localhost
+2006-07-14T11:47:00.000Z	mattnash	haakonn	Yes, resolving localhost is very important.  Can you reboot the whole thing?  I can't find anything that suggests you should have to restart anything.
+2006-07-14T11:48:00.000Z	haakonn	mattnash	 i could certainly try a reboot. thanks for your time :)
+2006-07-14T11:48:00.000Z	mattnash	haakonn	actually host -v does the same thing to me but localhost resolves on a ping
+2006-07-14T11:49:00.000Z	haakonn	mattnash	 ping manages to resolve localhost actually
+2006-07-14T11:49:00.000Z	haakonn	mattnash	 is host (or something in that system) using negative name caching or something? hmm
+2006-07-14T11:50:00.000Z	mattnash	haakonn	Not to my knowledge, which is limited.
+2006-07-14T11:51:00.000Z	mattnash	haakonn	So does the leafnode install, or the application itself, still not work?
+2006-07-14T11:51:00.000Z	haakonn	mattnash	 dpkg-reconfigure exits complaining about not being able to resolve localhost
+2006-07-14T11:52:00.000Z	haakonn	mattnash	 hmm, hang on, now it says my hostname is not a fqdn (which is right), i'll look into that
+2006-07-14T11:56:00.000Z	haakonn	mattnash	 fixed that by adding ".mydomain" to my hostname :) host still cannot resolve localhost, but i don't know how critical that is
+2006-07-14T11:57:00.000Z	mattnash	haakonn	host is supposed to use nsswitch.conf if it is using gethostbyname... I don't know what its problem is.
+2006-07-14T13:09:00.000Z	mattnash	haakonn	Did you get it working?

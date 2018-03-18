@@ -1,0 +1,22 @@
+2006-06-05T08:24:00.000Z	BlackSolaris		hey, I am trying to install Ubuntu, but X wont start for some reason.  I don't really care, I just need to know how to start the Ubuntu installer from the command line
+2006-06-05T08:26:00.000Z	jighead	BlackSolaris	if you've run the install and gdm is failing, hit ctl+alt+F1 to get to a console
+2006-06-05T08:30:00.000Z	jighead	BlackSolaris	if X is your only problem, try dpkg-reconfigure xserver-xorg
+2006-06-05T08:30:00.000Z	BlackSolaris	jighead	ok, let me try that
+2006-06-05T08:30:00.000Z	jighead	BlackSolaris	do you know what video card you have?
+2006-06-05T08:31:00.000Z	jighead	BlackSolaris	you can run lspci and find out if it is ATI, Nvidia, etc
+2006-06-05T08:31:00.000Z	BlackSolaris	jighead	it's some intigrated Intel card
+2006-06-05T08:33:00.000Z	jighead	BlackSolaris	ok, that should be supported out of the box, fool around with dpkg-reconfigure and when you're done, do a sudo /etc/init.d/gdm restart and see if it gets better, repeat as needed
+2006-06-05T08:35:00.000Z	BlackSolaris	jighead	I still haven't gotten dpkg -reconfigure to work... it just says dpkg: conflicting actions --control and --remove [...] 
+2006-06-05T08:42:00.000Z	jighead	BlackSolaris	what errors are you getting in /var/log/Xorg.0.log?
+2006-06-05T08:42:00.000Z	BlackSolaris	jighead	how do I check?
+2006-06-05T08:42:00.000Z	jighead	BlackSolaris	less /var/log/Xorg.0.log
+2006-06-05T08:44:00.000Z	jighead	BlackSolaris	have you installed ubuntu? what installer are you trying to run?
+2006-06-05T08:45:00.000Z	BlackSolaris	jighead	Breezy is installed on this computer, as well as WinXP, but I am trying to run the Dapper installer becuase I want to repartition and overwrite all of that
+2006-06-05T08:47:00.000Z	jighead	BlackSolaris	if you want to upgrade, edit /etc/apt/sources.list and change all instances of breezy to dapper and then aptitude update && aptitude dist-upgrade
+2006-06-05T08:47:00.000Z	BlackSolaris	jighead	I don't want to upgrade though, I want to start with a completely fresh install
+2006-06-05T08:48:00.000Z	jighead	BlackSolaris	ok, so do you have an installer downloaded?
+2006-06-05T08:49:00.000Z	jighead	BlackSolaris	or are you trying from CD?
+2006-06-05T08:49:00.000Z	BlackSolaris	jighead	skippy: yes, I am trying from the CD right now, I just want to run the installer
+2006-06-05T08:50:00.000Z	jighead	BlackSolaris	there is no X-based install, it's text-mode
+2006-06-05T08:50:00.000Z	jighead	BlackSolaris	is the install failing at any point, or are you looking for a gui?
+2006-06-05T08:51:00.000Z	BlackSolaris	jighead	I went to the option "start or install" or whatever it is called, and it came up with the "can't start X" error

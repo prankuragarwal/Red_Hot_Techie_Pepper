@@ -1,0 +1,23 @@
+2010-08-28T03:45:00.000Z	nakhlawi	ntr0py	you can use the exec option in mount
+2010-08-28T03:49:00.000Z	ntr0py	nakhlawi	"sudo mount /src.iso /dst -t udf -o loop,exec"  does not work
+2010-08-28T03:50:00.000Z	nakhlawi	ntr0py	why? what happened. when you type: mount what do you see?
+2010-08-28T03:51:00.000Z	ntr0py	nakhlawi	it mounts without complaining but the mounted files are not executable
+2010-08-28T03:52:00.000Z	nakhlawi	ntr0py	it looks like you have to mount with "su" to activate executable access
+2010-08-28T03:53:00.000Z	ntr0py	nakhlawi	nope the files are "-r--r--r--"
+2010-08-28T03:56:00.000Z	nakhlawi	ntr0py	is the mount point executable?
+2010-08-28T03:56:00.000Z	ntr0py		yes
+2010-08-28T03:56:00.000Z	ntr0py	nakhlawi	yes
+2010-08-28T04:04:00.000Z	nakhlawi	ntr0py	did you try to remount?
+2010-08-28T04:04:00.000Z	nakhlawi	ntr0py	with the correct flags that is.
+2010-08-28T04:07:00.000Z	ntr0py	nakhlawi	i tried "sudo mount /dst -o exec,loop,remount" without any difference the files still are "-r--r--r--"
+2010-08-28T04:07:00.000Z	nakhlawi	ntr0py	then I think those are the creation flags, you cannot change them.
+2010-08-28T04:08:00.000Z	nakhlawi	ntr0py	If the file was created having the executable flag, then you will see it executable
+2010-08-28T04:08:00.000Z	nakhlawi	ntr0py	if you have a re-writable CD, then you can chmod those files. (I think).
+2010-08-28T04:08:00.000Z	ntr0py	nakhlawi	you think the permissions are set inside the iso?
+2010-08-28T04:09:00.000Z	nakhlawi	ntr0py	Yes. That is why you can change permissions on a hard disk, but not on an ISO. It is read only.
+2010-08-28T04:10:00.000Z	nakhlawi	ntr0py	you cannot even change the contents of those files once you burn it.
+2010-08-28T04:11:00.000Z	ntr0py	nakhlawi	thats very uncomfortable, i really miss an mount option to overwrite those... guess then ill have to cpy them in a local folder...
+2010-08-28T04:11:00.000Z	nakhlawi	ntr0py	Yes, do that and try.
+2010-08-28T04:12:00.000Z	nakhlawi	ntr0py	ISO filesystems usually are not writeable once you burn the CD.
+2010-08-28T04:12:00.000Z	ntr0py	nakhlawi	thx for helping me and explaining the details...
+2010-08-28T04:12:00.000Z	nakhlawi	ntr0py	no problem.

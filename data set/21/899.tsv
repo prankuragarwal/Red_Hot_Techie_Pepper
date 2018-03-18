@@ -1,0 +1,21 @@
+2012-05-19T06:55:00.000Z	psych		Can someone lend me a hand with tune2fs? Even after telling it not to reserve blocks it still seems to be doing the same thing. 28 GB used on 2 TB without anything done to it
+2012-05-19T06:55:00.000Z	escott	psych	what command did you use
+2012-05-19T06:56:00.000Z	psych	escott	I've tried tune2fs -m 0 /dev/sdb1 and tune2fs -r 0 /dev/sdb1
+2012-05-19T06:58:00.000Z	psych	escott	mind if I link you to the forum thread?
+2012-05-19T06:59:00.000Z	psych	escott	http://ubuntuforums.org/showthread.php?t=1982635
+2012-05-19T07:00:00.000Z	escott	psych	so your problem is that the reserved block count is zero, but the free blocks is less than the block count
+2012-05-19T07:02:00.000Z	psych	escott	I'm not sure. It still says 28 GB used in df -h. But yeah, free blocks is less than block counts
+2012-05-19T07:03:00.000Z	escott	psych	i wonder what running an fsck would do
+2012-05-19T07:04:00.000Z	psych	escott	I can give it a try I guess
+2012-05-19T07:04:00.000Z	psych	escott	fsco -a alright for this?
+2012-05-19T07:05:00.000Z	psych	escott	fsck from util-linux 2.20.1
+2012-05-19T07:06:00.000Z	psych	escott	when unmounted I see this:
+2012-05-19T07:07:00.000Z	escott	psych	df wont tell you anything when it is unmounted
+2012-05-19T07:11:00.000Z	escott	psych	im not sure. thats very strange.
+2012-05-19T07:12:00.000Z	psych	escott	should I perhaps repartition? Do you know if there's a way to select block size reserve space in parted or something
+2012-05-19T07:12:00.000Z	escott	psych	to be honest i would just leave it at 5%. if you actually start using more than 95% of the filesystem thats not good and you need to get more storage
+2012-05-19T07:13:00.000Z	escott	psych	so in some ways that 5% buffer is only preventing you from doing something you probably wouldn't want to do anyways
+2012-05-19T07:14:00.000Z	escott	psych	if its really empty you could just rerun mkfs with the correct options
+2012-05-19T07:14:00.000Z	psych	escott	that's what I'm looking at doing.
+2012-05-19T07:15:00.000Z	escott	psych	it helps prevent fragmentation. 28Gb may be bigger than necessary, but there is no guarantee that those 28GB will be contiguous so 5% isn't crazy
+2012-05-19T07:18:00.000Z	psych	escott	bandit5432 I ran  sudo mkfs.ext4 -m 0 /dev/sdb1

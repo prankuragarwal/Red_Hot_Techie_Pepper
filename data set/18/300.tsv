@@ -1,0 +1,18 @@
+2012-08-16T03:31:00.000Z	bonhoeffer		i keep trying to mount hfs, but get: wrong fs type, bad option, bad superblock on /dev/loop0
+2012-08-16T03:32:00.000Z	jagginess	bonhoeffer	maybe /dev/loop0 has a partition table header
+2012-08-16T03:32:00.000Z	bonhoeffer	jagginess	i'll check
+2012-08-16T03:32:00.000Z	jagginess	bonhoeffer	if you modprobe dm, and then kpartx -a /dev/loop (something like this), you'll get /dev/mapper/loop0p1 stuff
+2012-08-16T03:33:00.000Z	jagginess	bonhoeffer	ya but you have to paste what command you used
+2012-08-16T03:34:00.000Z	bonhoeffer	jagginess	what do you mean by "modprobe dm"
+2012-08-16T03:35:00.000Z	jagginess	bonhoeffer	http://pastebin.com/wXxzQAxJ
+2012-08-16T03:35:00.000Z	jagginess	bonhoeffer	it's actually dm_mod
+2012-08-16T03:35:00.000Z	bonhoeffer	jagginess	my bad, i should have gotten familiar with it :)
+2012-08-16T03:36:00.000Z	jagginess	bonhoeffer	not widely reported online, i made those notes like a year ago :)
+2012-08-16T03:36:00.000Z	jagginess	bonhoeffer	i was in a heated debated with someone about using a script that was using predetermine presets.. but presets aren't the same for all table headers..
+2012-08-16T03:37:00.000Z	jagginess	bonhoeffer	i told him you dont need a script to do mountpoints from an image.. so this is the safest way.. (kpartx, losetup, etc.)
+2012-08-16T03:38:00.000Z	jagginess	bonhoeffer	did you list you losetup points?
+2012-08-16T03:38:00.000Z	bonhoeffer	jagginess	i like your noscript approach
+2012-08-16T03:38:00.000Z	jagginess	bonhoeffer	what's bound to /dev/loop0 ?
+2012-08-16T03:38:00.000Z	jagginess	bonhoeffer	you're supposed to use losetup if you're trying to bound a rawimage
+2012-08-16T03:39:00.000Z	jagginess	bonhoeffer	losetup -a , lists
+2012-08-16T03:40:00.000Z	jagginess	bonhoeffer	you can ask me on #linux, this seems very unubuntu

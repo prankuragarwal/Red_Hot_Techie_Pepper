@@ -1,0 +1,19 @@
+2007-04-12T13:24:00.000Z	jochus		my .bashrc doesn't get loaded as "source" when I login at my gnome-terminal ... what can the problem be?
+2007-04-12T13:24:00.000Z	scottam	jochus	does .bash_profile?
+2007-04-12T13:25:00.000Z	jochus	scottam	hmm, there's no .bash_profile? :$ ...
+2007-04-12T13:26:00.000Z	scottam	jochus	echo "echo .bash_profile executes" >> .bash_profile
+2007-04-12T13:26:00.000Z	scottam	jochus	and open a new terminal
+2007-04-12T13:26:00.000Z	jochus	scottam	jochus@Jochus ~ $ su - buildtool \n Password: \n .bash_profile executes \n
+2007-04-12T13:27:00.000Z	jochus	scottam	so yes, it executes :-)
+2007-04-12T13:28:00.000Z	scottam	jochus	so worst case, you can move your stuff there of add a line telling it to read .bashrc
+2007-04-12T13:28:00.000Z	jochus	scottam	yes, perfect! :-)
+2007-04-12T13:29:00.000Z	scottam	jochus	NO! it's a horrible workaround and i'm looking for a better solution
+2007-04-12T13:29:00.000Z	jochus		yes, but I searched on google to find a better solution, and I don't know how to solve it
+2007-04-12T13:29:00.000Z	jochus	scottam	I created the user with the "useradd" command ... so nothing really special ...
+2007-04-12T13:30:00.000Z	scottam	jochus	i mean there is nothing wrong with it, but there is a much more elegant solution, i think you want to put the reference in /etc/bash.bashrc so it works for all users or something
+2007-04-12T13:31:00.000Z	jochus	scottam	you mean a reference to where?
+2007-04-12T13:32:00.000Z	scottam	jochus	what does /etc/profile look like?
+2007-04-12T13:33:00.000Z	scottam		hi
+2007-04-12T13:33:00.000Z	scottam		but i have no idea how to solve your problem =(
+2007-04-12T13:33:00.000Z	jochus	scottam	check this pastebin: http://pastebin.ca/435935
+2007-04-12T13:36:00.000Z	scottam	jochus	adding a line below line 9 reading ". ~/.bashrc" might work, otherwise, adding it to ~/.bash_profile should work....but i should tell you i'm in a bit over my head and making suggestions that i think will work without having tested anything

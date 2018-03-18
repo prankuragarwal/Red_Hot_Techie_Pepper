@@ -17,6 +17,7 @@ from jobs import Job
 from directions import Direct
 from atm import Atm
 from autocorrect import spell
+#from trainers import UbuntuCorpusTrainer
 p = pprint.PrettyPrinter()
 BOT_MAIL = "test-bot@prankuragarwal.zulipchat.com"
 
@@ -25,7 +26,9 @@ class ZulipBot(object):
 		self.client = zulip.Client(site="https://prankuragarwal.zulipchat.com/api/")
 		self.subscribe_all()
 		self.chatbot = ChatBot("Test", trainer='chatterbot.trainers.ChatterBotCorpusTrainer')
-		#self.chatbot.train("chatterbot.corpus.english")
+		self.chatbot.train("chatterbot.corpus.english")
+		self.chatbot.train("chatterbot.corpus.english.greetings")
+		self.chatbot.train("chatterbot.corpus.english.conversations")
 		self.currency = curr()
 		self.lat_lon = latlon()
 		self.language = Lang()
@@ -33,6 +36,7 @@ class ZulipBot(object):
 		self.bus_stations = Bus()
 		self.tourist_places = Tour()
 		self.jobs = Job()
+
 		self.directions = Direct()
 		self.atm = Atm()
 		self.subkeys = ["currency", "latilongi", "language", "restaurant", "bus", "tourist", "job", "direction","atm"]

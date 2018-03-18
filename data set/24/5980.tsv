@@ -1,0 +1,24 @@
+2006-03-08T13:39:00.000Z	eobanb		can anyone help me with dual-booting....i have two IDE hard drives, ubuntu is on the master and XP is on the slave.  i have the bios set to boot from the master, where grub is installed, but when i choose xp from the list, it just sits there.
+2006-03-08T13:40:00.000Z	eobanb		should be straightforward...done this lots of times before..
+2006-03-08T13:40:00.000Z	once1er	eobanb	are you using chainloader +1 or whatever it is?
+2006-03-08T13:40:00.000Z	eobanb	once1er	yes.
+2006-03-08T13:41:00.000Z	eobanb		yes
+2006-03-08T13:41:00.000Z	once1er	eobanb	maybe the boot record has been stripped off the xp partition
+2006-03-08T13:41:00.000Z	eobanb		well, when i set the bios to boot directly from the windows drive, it can boot windows.
+2006-03-08T13:41:00.000Z	eobanb		it just doesnt work from grub.
+2006-03-08T13:41:00.000Z	once1er	eobanb	oh
+2006-03-08T13:41:00.000Z	eobanb		no error messages, after it says 'boot' it just sits there.
+2006-03-08T13:42:00.000Z	once1er	eobanb	the boot record for the windows machine might not actually reside on hd(1,0)
+2006-03-08T13:42:00.000Z	eobanb	once1er	what would i do to find out
+2006-03-08T13:42:00.000Z	once1er		its possible its on hd(0,0) and scans the devices for other stuff?
+2006-03-08T13:42:00.000Z	eobanb		how can it be 0,0 when that's my linux drive?
+2006-03-08T13:44:00.000Z	once1er	eobanb	hmm, well, i know when SATA drives get setup for XP they need to have the boot record on the first IDE drive (if both are installed), maybe they require that the first drive have the boot record in _any_ configureation?
+2006-03-08T13:44:00.000Z	eobanb	once1er	i have no sata drives or anything like that
+2006-03-08T13:45:00.000Z	once1er	eobanb	i guess i'm not really sure why its happening. I've always heard that its _way_ easier to setup windows on the primary drive. Guess this is why. lemme think about it for a few minutes
+2006-03-08T13:45:00.000Z	eobanb		all right, thanks, once1er
+2006-03-08T13:46:00.000Z	once1er	eobanb	oh i just had a thought, you can actually use the windows boot loader to load linux
+2006-03-08T13:46:00.000Z	once1er		if thats a way you might want to go
+2006-03-08T13:47:00.000Z	eobanb	once1er	i've never worked with it before, really.
+2006-03-08T13:47:00.000Z	once1er	eobanb	http://www.geocities.com/epark/linux/grub-w2k-HOWTO.html
+2006-03-08T13:47:00.000Z	once1er		wow, something good actually came from a geocities site?!
+2006-03-08T13:48:00.000Z	once1er	eobanb	it basically consists of copying the head off of your /boot partition, and giving it to windows

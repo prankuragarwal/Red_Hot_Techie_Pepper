@@ -1,0 +1,18 @@
+2010-10-14T18:30:00.000Z	StaRetji		Folks, I've just check and I have 24 second of boot delay beetween lines: "hda_codec: ALC662 rev1: BIOS auto-probing." and "EXT4-fs (sda1): re-mounted. Opts: errors=remount-ro,commit=0"
+2010-10-14T18:31:00.000Z	StaRetji		is there a way to avoud hda_codec message and save these 24 seconds?
+2010-10-14T18:32:00.000Z	enkidu	StaRetji	it seems, that you arefrcing your root partition to be checked on every mount
+2010-10-14T18:35:00.000Z	StaRetji	enkidu	thx for the answer, how can I avoid that.
+2010-10-14T18:37:00.000Z	enkidu	StaRetji	either you have to use tunefs, either change /etc/fstab options (last two numbers)
+2010-10-14T18:39:00.000Z	StaRetji	enkidu	I'm using usb stick btw and here is my /etc/fstab http://paste.ubuntu.com/513120/ I've messed with it before. Could you please have a look? Thx.
+2010-10-14T18:39:00.000Z	enkidu	StaRetji	usb you say?
+2010-10-14T18:39:00.000Z	StaRetji	enkidu	Yes, Its for xbmc (htpc)
+2010-10-14T18:41:00.000Z	StaRetji	enkidu	You don't mind if I ask what it does? errors=remount-ro 0       1 to errors=remount-ro 0       0
+2010-10-14T18:41:00.000Z	enkidu	StaRetji	also, usb flash drives are slow in general, so you would prefer to use non-jurnaling filesystem (ext2)
+2010-10-14T18:41:00.000Z	enkidu	StaRetji	it disables forced filesystem check on every mount
+2010-10-14T18:42:00.000Z	StaRetji	enkidu	I've just installed maverick :/ without swap and made /var/log to be written in memory. At least I think I did that
+2010-10-14T18:43:00.000Z	enkidu	StaRetji	good. anyways, you wuld prefer not to use: journalling, atime, diratime etc
+2010-10-14T18:44:00.000Z	StaRetji	enkidu	if forced filesystem check in good for the usb stick, I will leave it then. How about "EXT4-fs (sda1): mounted filesystem with ordered data mode. Opts: (null)" Is ordered mode good for usb system? Also, I guess I can't change ext4 to ext2 on a working system?
+2010-10-14T18:45:00.000Z	enkidu	StaRetji	unfortunately, you cannot mount ext4 as ext2. Forced filesystem check makes you waiting for bootup, while it will not find errors
+2010-10-14T18:47:00.000Z	StaRetji	enkidu	So basically it should be safe without it. If it doesn't find errors I don't see the point using it. I've just changed 1 to 0 and it's the same delay. Nothing has changed.
+2010-10-14T18:48:00.000Z	enkidu	StaRetji	dunno, then, it must wait for something else, but not for driver you mentioned before
+2010-10-14T18:49:00.000Z	StaRetji	enkidu	Ok, thx for effort, it's really appreciated.

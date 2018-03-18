@@ -1,0 +1,21 @@
+2008-08-26T14:46:00.000Z	ActionParsnip		!evms
+2008-08-26T14:46:00.000Z	ActionParsnip		!info evms
+2008-08-26T14:47:00.000Z	longsleep	ActionParsnip	i get lines like Considering evms 10002 as a solution to ubuntu-standard 1
+2008-08-26T14:47:00.000Z	longsleep	ActionParsnip	Removing ubuntu-standard rather than change evms
+2008-08-26T14:47:00.000Z	ActionParsnip	longsleep	can you give us a pastebin of the errors when you sudo apt-get update; sudo apt-get upgrade
+2008-08-26T14:48:00.000Z	longsleep	ActionParsnip	sure but i am doing do-release-upgrade -p
+2008-08-26T14:48:00.000Z	ActionParsnip	longsleep	whichever, we just want the errors
+2008-08-26T14:49:00.000Z	longsleep	ActionParsnip	okay - here it is http://paste.ubuntu.com/40614/
+2008-08-26T14:50:00.000Z	ActionParsnip	longsleep	would it be possible to remove the troublesome app, upgrade, then reinstall the app?
+2008-08-26T14:50:00.000Z	longsleep	ActionParsnip	and http://paste.ubuntu.com/40616/ is the package manager stuff from /var/log/dist-upgrade/apt.log
+2008-08-26T14:51:00.000Z	longsleep	ActionParsnip	well there is no troublesome app - it seems like ubuntu-standard does not get installed cause of dependency on evms
+2008-08-26T14:52:00.000Z	longsleep	ActionParsnip	so at the end i get DEBUG The package 'ubuntu-standard' is marked for removal but it's in the removal blacklist
+2008-08-26T14:53:00.000Z	ActionParsnip	longsleep	looks like libgl1-mesa needs installing on its own from what i can blearily see
+2008-08-26T14:53:00.000Z	longsleep	ActionParsnip	i could try to remove all the mesa and x stuff - do you think that is the problem?
+2008-08-26T14:54:00.000Z	ActionParsnip	longsleep	why you running an x server on a server system??
+2008-08-26T14:54:00.000Z	longsleep	ActionParsnip	well its running openoffice inside a framebuffer xserver for uno services
+2008-08-26T14:57:00.000Z	longsleep	ActionParsnip	trying again without the mesa stuff installed
+2008-08-26T15:06:00.000Z	longsleep	ActionParsnip	things are working now after remove of all related to mesa - thanks for your help!
+2008-08-26T15:07:00.000Z	ActionParsnip	longsleep	np man, 1 step back for 2 forward eh
+2008-08-26T15:08:00.000Z	longsleep	ActionParsnip	do you feel that this is a bug worth for launchpad ?
+2008-08-26T15:08:00.000Z	ActionParsnip	longsleep	i would, its a bit of a ball ache. id put your pastebin text in there too so they can see the full picture

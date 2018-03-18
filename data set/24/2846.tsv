@@ -1,0 +1,24 @@
+2008-10-29T14:27:00.000Z	tphilosopher		Hey guys. My wireless stopped working on my Ubuntu 8.10 installation, and when I tried the Fedora 9 Live CD (which previously had support for my wireless card) it also did not work. The wireless card is still visible when I run lspci.
+2008-10-29T14:27:00.000Z	tphilosopher		Does this mean it is a hardware problem?
+2008-10-29T14:28:00.000Z	jim_p	tphilosopher	is it inside lspci?
+2008-10-29T14:28:00.000Z	tphilosopher	jim_p	Yup.
+2008-10-29T14:28:00.000Z	jim_p	tphilosopher	ooops. ok then what is it?
+2008-10-29T14:28:00.000Z	tphilosopher	jim_p	It fails to detect any networks at all.
+2008-10-29T14:29:00.000Z	jim_p	tphilosopher	i mean, what is the line of the card in lspci?
+2008-10-29T14:29:00.000Z	tphilosopher	jim_p	Realtek 8185. It worked out of the box on Ubuntu 8.10 beta and then stopped working. I tried Ndiswrapper but that also failed to work.
+2008-10-29T14:29:00.000Z	jim_p	tphilosopher	give me some time to think. i guess its some module again
+2008-10-29T14:31:00.000Z	jim_p	tphilosopher	in 8.04 were you using ndiswrapper to make it work?
+2008-10-29T14:31:00.000Z	tphilosopher	jim_p	Yes, I was. But that was unnecessary in 8.10 beta.
+2008-10-29T14:34:00.000Z	jim_p	tphilosopher	please give me a sec
+2008-10-29T14:35:00.000Z	tphilosopher	jim_p	No problem.
+2008-10-29T14:43:00.000Z	jim_p	tphilosopher	are you still there? they decided to make a kernel module finally!
+2008-10-29T14:44:00.000Z	tphilosopher	jim_p	And that means it should be supported?
+2008-10-29T14:44:00.000Z	jim_p	tphilosopher	try      sudo modprobe rtl8185
+2008-10-29T14:45:00.000Z	jim_p	tphilosopher	yes, natively supported by the kernel
+2008-10-29T14:45:00.000Z	jim_p	tphilosopher	do you get any error?
+2008-10-29T14:46:00.000Z	jim_p	tphilosopher	i am sure you will get because of the wrong name of the module
+2008-10-29T14:49:00.000Z	jim_p	tphilosopher	are you there?
+2008-10-29T14:50:00.000Z	tphilosopher	jim_p	Just turned on the laptop... and the wireless is working. Without me actually doing anything at all!
+2008-10-29T14:51:00.000Z	jim_p	tphilosopher	can you please tell me the module it uses?
+2008-10-29T14:53:00.000Z	tphilosopher	jim_p	How do I find out what module it uses?
+2008-10-29T14:53:00.000Z	jim_p	tphilosopher	lsmod | grep rtl                                    pm me the output because its loads of lins

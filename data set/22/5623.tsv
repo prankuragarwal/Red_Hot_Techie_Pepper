@@ -1,0 +1,22 @@
+2007-05-15T11:13:00.000Z	danny3793		i have 7 different things i can do with my mouse, i dont get how to implement these into xorg
+2007-05-15T11:15:00.000Z	danny3793		i do have the CD which came with the mouse, but i dont think it would help, would it?
+2007-05-15T11:17:00.000Z	troxor	danny3793	which mouse is it?
+2007-05-15T11:18:00.000Z	danny3793	troxor	i am using a Dynex mouse
+2007-05-15T11:20:00.000Z	troxor	danny3793	what model number?
+2007-05-15T11:20:00.000Z	troxor	danny3793	how many buttons, etc
+2007-05-15T11:20:00.000Z	danny3793	troxor	DX-WOM2
+2007-05-15T11:21:00.000Z	danny3793	troxor	it has left/right clickers, a scroll thingy which can be clicked, and 2 side buttons which when on XP the left side one would go back and the right side one would go forward
+2007-05-15T11:22:00.000Z	troxor	danny3793	run `xev`, a little white box will pop up; click all your mouse buttons in that area, and watch the output to see what buttons the system is detecting
+2007-05-15T11:24:00.000Z	danny3793	troxor	i did and the window hasnt done anything
+2007-05-15T11:32:00.000Z	troxor	danny3793	what if you changed it to "evdev" ?
+2007-05-15T11:24:00.000Z	troxor	danny3793	did you run xev from a terminal?
+2007-05-15T11:25:00.000Z	danny3793	troxor	ok now i see what you were saying, what now
+2007-05-15T11:25:00.000Z	troxor	danny3793	it's usually best to run most commands from a terminal, in case they give useful output. in this case, xev only gives output in the terminal window
+2007-05-15T11:26:00.000Z	troxor	danny3793	make sure you click every button and make sure they each register as something different... button 1 for left, 2 (or 3) for right and middle, and hopefully the side buttons get recognized as 4 and 5
+2007-05-15T11:27:00.000Z	danny3793	troxor	yes, it seems as if all the buttons have been recognized
+2007-05-15T11:29:00.000Z	troxor	danny3793	does the scroll wheel work?
+2007-05-15T11:29:00.000Z	danny3793	troxor	currently, yes the scroll wheel operates correctly
+2007-05-15T11:31:00.000Z	troxor	danny3793	can you view xorg.conf, and see what driver is mentioned in the mouse section?
+2007-05-15T11:31:00.000Z	danny3793	troxor	yep, lemme get that for ya....." Driver         "mouse" "
+2007-05-15T11:33:00.000Z	danny3793	troxor	do i need to do anything to get these settings to work?
+2007-05-15T11:33:00.000Z	troxor	danny3793	restarting X will use the new settings in xorg.conf.. sudo /etc/init.d/gdm restart will do this, but you'll be logged out, of course

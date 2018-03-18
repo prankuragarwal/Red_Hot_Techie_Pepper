@@ -1,0 +1,23 @@
+2006-07-12T07:38:00.000Z	Cheradenine		so one would have to suspect that my laptop is only running oss stuff wouldnt one?
+2006-07-12T07:39:00.000Z	Cheradenine		nope
+2006-07-12T07:39:00.000Z	Cheradenine		it didnt return anything
+2006-07-12T07:40:00.000Z	Cheradenine		ls: /dev/snd/seq: No such file or directory
+2006-07-12T07:41:00.000Z	Cheradenine		no worries man :) thanks for helping anyway
+2006-07-12T07:41:00.000Z	Cheradenine		well this was an unexpected bump in the road for my gaming adventure
+2006-07-12T07:42:00.000Z	Cheradenine		nope.. not a thing
+2006-07-12T07:42:00.000Z	Cheradenine		that "seq" doesnt exist by the looks of it
+2006-07-12T07:42:00.000Z	Cheradenine		controlC0  pcmC0D0c  pcmC0D0p  pcmC0D1c  pcmC0D2c  pcmC0D3c  pcmC0D4p  timer
+2006-07-12T07:43:00.000Z	Cheradenine		thats the contents of /dev/snd
+2006-07-12T07:44:00.000Z	roshan_s	Cheradenine	which app are you having sound trouble with?
+2006-07-12T07:46:00.000Z	roshan_s	Cheradenine	/dev/snd/seq is usually used for MIDI music. Most systems nowadays don't have a MIDI synthesiser, so no /dev/snd/seq
+2006-07-12T07:48:00.000Z	roshan_s	Cheradenine	Does winecfg output anything on the terminal before crashing
+2006-07-12T07:54:00.000Z	roshan_s	Cheradenine	Can you try deleting your .wine directory and starting again? You'll lose any Wine related configuration changes you might have made
+2006-07-12T07:57:00.000Z	roshan_s	Cheradenine	No tricks, I'm afraid. I suppose you've already tried "sudo modprobe snd_seq"
+2006-07-12T07:58:00.000Z	roshan_s	Cheradenine	Still no /dev/snd/seq?
+2006-07-12T08:00:00.000Z	roshan_s	Cheradenine	Which sound card do you have? Or motherboard, if its integrated.
+2006-07-12T08:02:00.000Z	roshan_s	Cheradenine	Can you try "sudo modprobe snd-seq-dummy"
+2006-07-12T08:04:00.000Z	roshan_s	Cheradenine	That's a good sign. It only returns something if there's trouble :-)
+2006-07-12T08:05:00.000Z	roshan_s	Cheradenine	See if you have a /dev/snd/seq now
+2006-07-12T08:07:00.000Z	roshan_s	Cheradenine	Strange. That did it on my system. It creates a dummy sequencer. Maybe some other module you loaded earlier conflicts with it. How about rebooting and then loading snd-seq-dummy? That'll clear out any extra modules
+2006-07-12T08:09:00.000Z	roshan_s	Cheradenine	I'm sorry I can't help you there. I'm running amd64 and wine doesn't support it :-|
+2006-07-12T08:27:00.000Z	roshan_s	Cheradenine	Nice to hear that

@@ -1,0 +1,24 @@
+2010-07-08T07:10:00.000Z	fxfitz		I would like to run a unix command when the computer starts, but not as root, as a user. How would I do that?
+2010-07-08T07:10:00.000Z	rystraum	fxfitz	System > Preferences > Startup Applications
+2010-07-08T07:11:00.000Z	fxfitz	rystraum	Tried that, but gnome doesn't start on boot.
+2010-07-08T07:11:00.000Z	rystraum	fxfitz	So, what do you get on boot?
+2010-07-08T07:11:00.000Z	fxfitz	rystraum	I can SSH in. That's what I"m doing.
+2010-07-08T07:12:00.000Z	rystraum	fxfitz	Hmmm. You want it to run every time or just once?
+2010-07-08T07:13:00.000Z	fxfitz	rystraum	Every time on boot.
+2010-07-08T07:13:00.000Z	rystraum	fxfitz	Have you checked up on adding your commands at the end of ~/.bashrc?
+2010-07-08T07:14:00.000Z	fxfitz	rystraum	If I add it to .bashrc, wouldn't I have to log in with SSH before the command is run?
+2010-07-08T07:15:00.000Z	fxfitz	rystraum	This might be easier: I want to start vncserver on boot.
+2010-07-08T07:16:00.000Z	rystraum	fxfitz	Ahh. So that's what you want to do. Hmmm. I can't think of anything else but adding it to /etc/init.rcXd.
+2010-07-08T07:17:00.000Z	rystraum	fxfitz	But then again, that would execute the process as root.
+2010-07-08T07:17:00.000Z	fxfitz	rystraum	And vncserver needs to be started as the user, right?
+2010-07-08T07:17:00.000Z	fxfitz	rystraum	Could I write a script that did like 'su fxfitz; vncserver'??
+2010-07-08T07:19:00.000Z	rystraum	fxfitz	That could work I think. I'm checking up on if vncserver really needs to be run by the user.
+2010-07-08T07:20:00.000Z	rystraum	fxfitz	I have vncserver installed on my desktop too so I'm trying to find out.
+2010-07-08T07:20:00.000Z	rystraum	fxfitz	Where did you get the impression that vncserver should be run as user? Any documentation / link?
+2010-07-08T07:21:00.000Z	fxfitz	rystraum	Well, all of the server information is stored in ~/.vnc/ so I figured it was user-specific.
+2010-07-08T07:26:00.000Z	rystraum	fxfitz	My NXServer starts up via /etc/rc[2,3,5]d
+2010-07-08T07:27:00.000Z	fxfitz	rystraum	NXServer?
+2010-07-08T07:27:00.000Z	rystraum	fxfitz	I use NX Machine for remote desktop access: http://www.nomachine.com/download.php
+2010-07-08T07:28:00.000Z	rystraum	fxfitz	I think it's the same as vncserver, but it's what we used at school and it's relatively painless to install.
+2010-07-08T07:30:00.000Z	rystraum	fxfitz	I think su user -c "command" could work.
+2010-07-08T07:30:00.000Z	fxfitz	rystraum	Awesome! I'll try that! Thanks! :-D

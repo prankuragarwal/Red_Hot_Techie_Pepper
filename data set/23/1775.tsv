@@ -1,0 +1,23 @@
+2009-11-04T04:12:00.000Z	Trizicus		What would be best way to image a linux partition?
+2009-11-04T04:12:00.000Z	xt28	Trizicus	dd if=/path/to/device of=image bs=10M (or so?)
+2009-11-04T04:13:00.000Z	Trizicus	xt28	so dd will make an image that I can apply to another hdd?
+2009-11-04T04:14:00.000Z	xt28	Trizicus	yes, if the other hard disk has a partition of the same size
+2009-11-04T04:16:00.000Z	Trizicus	xt28	Do you need to unmount the drive you're imaging? Also can you image to a file?
+2009-11-04T04:17:00.000Z	xt28	Trizicus	yes (i think so) and yes (definitely)
+2009-11-04T04:17:00.000Z	xt28	Trizicus	you are trying to make an exact duplicate of the partition, right?
+2009-11-04T04:18:00.000Z	Trizicus	xt28	yes
+2009-11-04T04:18:00.000Z	xt28	Trizicus	then dd is your tool. check man dd.
+2009-11-04T04:18:00.000Z	Trizicus	xt28	Ok, thank you
+2009-11-04T04:20:00.000Z	xt28	Trizicus	you're welcome. one word of caution: make sure you never confuse "if" (input) and "of" (output). dd will not ask before overwriting existing data.
+2009-11-04T04:20:00.000Z	Trizicus	xt28	input being the source drive, and output being target drive?
+2009-11-04T04:21:00.000Z	xt28	Trizicus	exactly.
+2009-11-04T04:21:00.000Z	Trizicus	xt28	Thanks again
+2009-11-04T04:22:00.000Z	xt28	Trizicus	i'm glad to help.
+2009-11-04T04:23:00.000Z	Trizicus	xt28	Glad to be helped :D. Also lets say that I do dd my drive, on that new hard drive I need to install grub to the MBR to be able to boot from that partition correct?
+2009-11-04T04:23:00.000Z	Trizicus	xt28	Assuming I install that HDD into another computer**
+2009-11-04T04:26:00.000Z	xt28	Trizicus	i see (at least) two ways of doing this: you could duplicate the whole hard drive ("if=/dev/sdX" or whatever) including the MBR or you could duplicate the partition ("if=/dev/sdXn" or so) after creating a partition of the exact same size on the new hd. in this case you would need to install a boot loader to the MBR.
+2009-11-04T04:27:00.000Z	Trizicus	xt28	Hm, I presume I get it. I'm so used to imaging on Windows and not so much as on Linux. Thanks though :)
+2009-11-04T04:30:00.000Z	xt28	Trizicus	sure thing. are you going to try this right away? (in this case i might stay online for a couple more minutes...)
+2009-11-04T04:30:00.000Z	Trizicus	xt28	I'm currently at work, lol. I'll most likely do this tomorrow or so
+2009-11-04T04:32:00.000Z	xt28	Trizicus	all right. i hope it all goes well.
+2009-11-04T04:32:00.000Z	Trizicus	xt28	thank ya

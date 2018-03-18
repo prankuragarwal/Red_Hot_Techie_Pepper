@@ -1,0 +1,18 @@
+2009-01-04T14:33:00.000Z	cq		hello, i'm trying to isntall ubuntu from a netinstall USB stick... the installation works, grub installs, but then it doesn't boot.
+2009-01-04T14:33:00.000Z	cq		Then I  run the super grub bootdisk, which finds my linux installation, but hangs on Running "embed /boot/grub/e2fs_stage1_5 (hd0)"...
+2009-01-04T14:34:00.000Z	cq		any ideas?
+2009-01-04T14:34:00.000Z	cq		I can boot from the USB fine, jsut when I try to boot from the SATA drives it hangs...
+2009-01-04T14:35:00.000Z	genii	cq	Sounds like you're mising the sata chipset driver
+2009-01-04T14:36:00.000Z	cq	genii	ok, what do I need to do? use a special netinstall installation, or a different live image?
+2009-01-04T14:36:00.000Z	cq		and: who's missing it? after the ubuntu installation, the reboot doesn't even show the grub menu...
+2009-01-04T14:36:00.000Z	genii	cq	You can boot to live cd, edit the intramfs conf file to include the driver you need, then rebuild the initrd
+2009-01-04T14:37:00.000Z	cq		hm, there are no images with all drivers included somewhere?
+2009-01-04T14:37:00.000Z	cq		or is that easy to do?
+2009-01-04T14:42:00.000Z	genii	cq	First find what driver module you need. What is the chipset?
+2009-01-04T14:44:00.000Z	genii	cq	A fast way for the initramfs without rebuilding it is: boot to livecd. mount the hd / somewhere. then make a file in the mounted /etc/initramfs-tools   called init, and make it executable. Then in the file the command to load the driver. Like:  modprobe sata_nv                      or so
+2009-01-04T14:44:00.000Z	cq	genii	its an msi ms-7521 board, g45m
+2009-01-04T14:46:00.000Z	genii	cq	That one has an intel ICH10r chipset.
+2009-01-04T14:49:00.000Z	cq		weird, jsut tried the debian installer from stable, it doesn't even see the disks
+2009-01-04T14:49:00.000Z	cq		the ubuntu installer sees them
+2009-01-04T14:49:00.000Z	cq		then again, debian stable is old, I'll try testing...
+2009-01-04T14:50:00.000Z	genii	cq	The driver name should be: ahci

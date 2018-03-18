@@ -1,0 +1,23 @@
+2007-07-07T16:25:00.000Z	Bartzy		what's the command to unmount ?
+2007-07-07T16:25:00.000Z	intelikey	Bartzy	is there a linux system installed on /dev/sda3 ???
+2007-07-07T16:26:00.000Z	intelikey	Bartzy	is there a linux system installed on /dev/sda3 ???
+2007-07-07T16:26:00.000Z	Bartzy	intelikey	- yep..
+2007-07-07T16:27:00.000Z	intelikey	Bartzy	then /bin/umount /dev/sda3
+2007-07-07T16:27:00.000Z	intelikey	Bartzy	but i doubt that you can.
+2007-07-07T16:28:00.000Z	intelikey	Bartzy	only way to umount / is reboot
+2007-07-07T16:32:00.000Z	intelikey	Bartzy	grub-install is not a package iirc   you want grub
+2007-07-07T16:46:00.000Z	intelikey	Bartzy	sounds like you are describing an error in /boot/grub/devices.map
+2007-07-07T16:49:00.000Z	Bartzy	intelikey	how do I generate a new and working device.map ?
+2007-07-07T16:50:00.000Z	intelikey	Bartzy	just find out what the devices are and edit the devices.map file.     sudo fdisk -l     should list the devices
+2007-07-07T16:51:00.000Z	Bartzy	intelikey	- but I don't know the grub convention of this (like hd(0) hd(1)) etc
+2007-07-07T16:52:00.000Z	intelikey	Bartzy	hd = hard drive   starting at 0 and counting upward.   ,0 means first partition and counting upwards
+2007-07-07T16:54:00.000Z	Bartzy	intelikey	- hd(0) for grub means phyisical drive 0... now what's "0" (I have 3 phyiscal drives) and where do I see it ? :] 
+2007-07-07T16:56:00.000Z	intelikey	Bartzy	it's (hd0)   that means the first drive that bios sees as bootable.   (hd1) thats the second driver bios sees.     so you list them like    (hd0)   /dev/hda      (hd1)   /dev/hdb     (hd2)   /dev/sda    and so forth.
+2007-07-07T16:57:00.000Z	Bartzy	intelikey	- so if I check the SATA as the first boot in bios - it will be hd0 for grub ? lol but my 2nd boot in bios is the CDROM.. so it will be hd(1) ? :)
+2007-07-07T16:57:00.000Z	intelikey	Bartzy	correct
+2007-07-07T16:58:00.000Z	Bartzy	intelikey	- omg. thanks. so if I now change the device.map , SATA to hd(0) and deletes the rest - it will work ?
+2007-07-07T16:58:00.000Z	intelikey	Bartzy	you should probably skip the cdrom  in the devices.map  grub doesn't do real well booting cd's
+2007-07-07T16:59:00.000Z	Bartzy	intelikey	so only make SATA hd(0) and delete everything else from there ? (hd1), (hd2)
+2007-07-07T16:59:00.000Z	intelikey	Bartzy	that assumes that the /boot/grub/menu.lst  expects the system to be on (hd0)   yes.
+2007-07-07T05:00:00.000Z	Bartzy	intelikey	menu.lst handles (hd0) from device.map , right ?
+2007-07-07T05:00:00.000Z	Bartzy	intelikey	and Jowi, thank you both very much, I'm sitting on this problems for hours.... Hope it will be solved now :] 

@@ -1,0 +1,18 @@
+2006-04-19T13:54:00.000Z	Madman1234		i can only get my wireless connection working if i set my windows laptop to the same mac address and connect with the windows laptop...once i do that my linux wireless connection works
+2006-04-19T13:54:00.000Z	Madman1234		what is windows doing that ubuntu's not?
+2006-04-19T13:55:00.000Z	polpak	Madman1234	possibly sending a hostname?
+2006-04-19T13:56:00.000Z	polpak	Madman1234	yes
+2006-04-19T13:56:00.000Z	polpak	Madman1234	/etc/dhclient has the config for your dhcp client AFAIK
+2006-04-19T13:57:00.000Z	polpak	Madman1234	really?
+2006-04-19T13:57:00.000Z	polpak	Madman1234	what kind of network connection do you have?
+2006-04-19T13:57:00.000Z	polpak	Madman1234	to a dsl/cable router?
+2006-04-19T13:58:00.000Z	polpak	Madman1234	is there a reason you aren't using DHCP on the linux box?
+2006-04-19T13:58:00.000Z	polpak	Madman1234	is you windows boxes using static ip?
+2006-04-19T13:59:00.000Z	polpak	Madman1234	I'd guess that the router may not be configure to route from unrecognized mac addresses?
+2006-04-19T13:59:00.000Z	polpak	Madman1234	in which case you'll need to use DHCP from the linux box
+2006-04-19T14:00:00.000Z	polpak	Madman1234	I know, but the windows box is getting an IP lease for that mac address from the DHCP server
+2006-04-19T14:00:00.000Z	polpak	Madman1234	so until the lease expires the linux box can then route
+2006-04-19T14:00:00.000Z	polpak	Madman1234	You should be able to config the router to always lease the same IP to your linux box
+2006-04-19T14:00:00.000Z	polpak	Madman1234	which would essentially give you a static ip
+2006-04-19T14:02:00.000Z	Madman1234	polpak	doesn't work with dhcp
+2006-04-19T14:03:00.000Z	polpak	Madman1234	Well, my best suggestion would be to use dhcp, and in /etc/dhcp3/dhclient.conf uncomment the send host-name and put your linux boxes host name

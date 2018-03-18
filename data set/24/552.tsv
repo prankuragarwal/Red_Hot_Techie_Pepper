@@ -1,0 +1,24 @@
+2011-06-10T03:58:00.000Z	sulucohmun		hey, I could use some help, I
+2011-06-10T03:58:00.000Z	sulucohmun		how do i apply a git patch like this one : https://github.com/Caccc/Gnome-shell-extension-Mediasplayers/issues/2
+2011-06-10T03:59:00.000Z	sulucohmun		@#ubuntu: how can I apply a git patch like this one: https://github.com/Caccc/Gnome-shell-extension-Mediasplayers/issues/2  it uses diff? im not too familiar with git
+2011-06-10T04:01:00.000Z	trism	sulucohmun	just download the patch file and in the source directory run: patch -p1 < /path/to/patchfile
+2011-06-10T04:01:00.000Z	sulucohmun		in a git-patch, when you see a plus + and minus - symbols next to the lines, does - mean remove the line, + mean add line?
+2011-06-10T04:02:00.000Z	sulucohmun	trism	how would I download this patch? if i use "git clone https://github.com/Caccc/Gnome-shell-extension-Mediasplayers.git" it downloads the unpatched sounrce? how do i specify with git to download it "patched"?
+2011-06-10T04:03:00.000Z	sulucohmun	trism	ill do it that way, I was just wondering if you could download it from GIT already patched by specifying with git clone/pull/feth w.e
+2011-06-10T04:06:00.000Z	trism	sulucohmun	if the patch has been merged you could pull it in, otherwise you need to download it and apply it somehow (I don't see a link to download it so it looks like you need to copy/paste to a file)
+2011-06-10T04:06:00.000Z	sulucohmun	trism	i could do it by hand, im having trouble otherwise, I just need to know, does + mean add line, - mean remove line? or does - mean leave line alone?
+2011-06-10T04:07:00.000Z	sulucohmun	trism	also the patch's first line is this: diff --git a/mediasplayers@ycdref/extension.js b/mediasplayers@ycdref/extension.js  wtf is that supposed ti mean ? lol
+2011-06-10T04:08:00.000Z	trism	sulucohmun	+ are lines added, - are lines removed, but just copy/paste the file to a text file, cd into the directory where you cloned the git repo, and run: patch -p1 < /path/to/patchfile.txt; and it should work
+2011-06-10T04:08:00.000Z	sulucohmun		do i need to create directories ~a ~b and be in ~ to run the patch command? @trism: i tried that and it failed with "invalid hunk" or something
+2011-06-10T04:09:00.000Z	trism	sulucohmun	that means the change is in mediasplayers@ycdref/extension.js (the a/ is just an arbitrary name, it is stripped off by the -p1 arg to patch)
+2011-06-10T04:10:00.000Z	sulucohmun	trism	ahh okay ill try again, i think i see what i did wrong.
+2011-06-10T04:14:00.000Z	sulucohmun	trism	i did EXACTLY what you said and it errors with: Hunk #1 FAILED at 173.
+2011-06-10T04:15:00.000Z	trism	sulucohmun	I'll take a look, one second
+2011-06-10T04:15:00.000Z	sulucohmun		thanks.
+2011-06-10T04:15:00.000Z	sulucohmun	trism	i think maybe the patch is being told to start patching on the wrong line. I think it should start on line 172 maybe. lol
+2011-06-10T04:16:00.000Z	sulucohmun	trism	I tried applying the patch by hand, removing all the -, adding all the +, and it broke the extension. ;oX
+2011-06-10T04:40:00.000Z	trism	sulucohmun	it looks like the spacing in the patch got mangled somehow, http://pastebin.com/i7Cu2FgJ should work although will complain about a missing newline at the end (I have no idea if the patched version works though, I don't have banshee installed)
+2011-06-10T04:40:00.000Z	sulucohmun	trism	I thought it was spacing, I tried adding 3 spaces to the original file before patching but failed still, thanks ill try it :)
+2011-06-10T04:44:00.000Z	sulucohmun	trism	thank you so much. :) you went above and beyond to figure that out.
+2011-06-10T04:44:00.000Z	trism	sulucohmun	you're welcome, hope it works
+2011-06-10T04:44:00.000Z	sulucohmun	trism	works like a charm!

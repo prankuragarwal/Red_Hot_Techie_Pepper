@@ -1,0 +1,21 @@
+2010-06-20T05:04:00.000Z	mom		what file does dmesg display?
+2010-06-20T05:05:00.000Z	Random832	mom	it's not a file - it's an internal buffer maintained by the kernel
+2010-06-20T05:07:00.000Z	mom	Random832	its not /var/log/dmesg ?
+2010-06-20T05:09:00.000Z	Random832	mom	no
+2010-06-20T05:09:00.000Z	Random832		it uses the syslog() system call
+2010-06-20T05:09:00.000Z	Random832		i think the dmesg contents are saved to /var/log/dmesg occasionally
+2010-06-20T05:10:00.000Z	Random832		[man klogctl]
+2010-06-20T05:12:00.000Z	mom	Random832	thanks!
+2010-06-20T05:32:00.000Z	mom	Random832	do you know how exactly dmesg works?  it reads from /proc/kmsg it looks like . . . but that file is empty
+2010-06-20T05:33:00.000Z	Random832	mom	it calls klogctl() and that fills in a buffer - there's no file
+2010-06-20T05:34:00.000Z	Random832		i notice that if i cat /proc/kmsg, it doesn't end, maybe new messages get sent to it
+2010-06-20T05:34:00.000Z	Random832		if something has it open
+2010-06-20T05:34:00.000Z	mom	Random832	oh because these ibm notes say: To inspect messages on the kernel ring buffer, you can use the dmesg utility (or work through /proc itself with the command cat /proc/kmsg)
+2010-06-20T05:35:00.000Z	Random832		it looks like just new ones go there, and syslog reads it
+2010-06-20T05:35:00.000Z	Random832		i don't know
+2010-06-20T05:35:00.000Z	Random832		i did a strace and dmesg works by calling klogctl
+2010-06-20T05:36:00.000Z	mom	Random832	ok, i just thought everything in linux was a file, so i thought the kernel buffer too
+2010-06-20T05:36:00.000Z	Random832		the unix API kind of evolved
+2010-06-20T05:37:00.000Z	Random832		originally tools like dmesg, ps, and so on had to open /dev/mem and search for the appropriate kernel structure
+2010-06-20T05:37:00.000Z	Random832		then various systems added system calls or files like /proc for different things
+2010-06-20T05:37:00.000Z	mom	Random832	my friend was curious what then writes /var/log/messages and /var/log/dmesg

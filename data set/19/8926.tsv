@@ -1,0 +1,19 @@
+2008-02-03T22:24:00.000Z	dsnyders		unop_, rsync has a tonne of options.  I know the --remove-source-files will remove files from A, but only if rsync copies them to B, not if they pre-exist.
+2008-02-03T22:25:00.000Z	unop	dsnyders	so, you want to delete from B what does not exist in A? is that right?
+2008-02-03T22:25:00.000Z	dsnyders	unop	I want to delete from A what already exsists in B
+2008-02-03T22:27:00.000Z	unop	dsnyders	errm -- maybe this then -- (cd A; for i in *; do [ -e B/$i ] && echo rm $i; done)
+2008-02-03T22:28:00.000Z	unop	dsnyders	iirc, the rsync equiv is -- rsync --delete -av B A   but i could be wrong
+2008-02-03T22:29:00.000Z	dsnyders	unop	I'll take a look at those options in rsync.
+2008-02-03T22:30:00.000Z	unop	dsnyders	actually, forget the rsync command, it does more than what you want
+2008-02-03T22:31:00.000Z	dsnyders	unop	yeah.  I don't want to delete the files in B if they don't exist in A, which is what that seems to do.
+2008-02-03T22:35:00.000Z	dsnyders	unop	I gather the echo in (cd A; for i in *; do [ -e B/$i ] && echo rm $i; done) is for safety purposes?
+2008-02-03T22:36:00.000Z	unop	dsnyders	errm, let me try this out quick ..
+2008-02-03T22:41:00.000Z	unop	dsnyders	have a look here - http://pastebin.ca/890331
+2008-02-03T22:42:00.000Z	dsnyders	unop	looking...
+2008-02-03T22:43:00.000Z	unop	dsnyders	the last line should say " deleted from a..." .. :)
+2008-02-03T22:43:00.000Z	unop	dsnyders	made a mistake there
+2008-02-03T22:47:00.000Z	dsnyders	unop	you're using some new-to-me command syntax.  However, shouldn't  [ -e ../a/$i ] be  [ -e ../b/$i ] ?
+2008-02-03T22:48:00.000Z	dsnyders	unop	I'm assuming that that's the existence test.
+2008-02-03T22:49:00.000Z	unop	dsnyders	i'm working under the assumption you want to delete from A what already exists in B .. so what you need to do is walk through each file in B and test it's existance in A, if it exists, delete it from A ..
+2008-02-03T22:49:00.000Z	unop	dsnyders	which is why it's  [ -e ../a/$i ] and not the other way around
+2008-02-03T22:51:00.000Z	dsnyders	unop	 Right!  Yes.

@@ -1,0 +1,19 @@
+2005-03-06T12:35:00.000Z	calvin		ok, i removed and reinstalled apache2
+2005-03-06T12:35:00.000Z	calvin		still having the .pl problem
+2005-03-06T12:37:00.000Z	calvin		yes, i doublechecked with dpkg -i
+2005-03-06T12:37:00.000Z	calvin		dpkg -l, i mean
+2005-03-06T12:38:00.000Z	calvin		do i need a perl.conf file?
+2005-03-06T12:38:00.000Z	calvin		in addition to perl.load?
+2005-03-06T12:38:00.000Z	calvin		hi
+2005-03-06T12:38:00.000Z	calvin		can you check to see if you have an perl.conf file?
+2005-03-06T12:38:00.000Z	calvin		in /etc/apache2/mods-available/
+2005-03-06T12:39:00.000Z	calvin		oh, ok
+2005-03-06T12:39:00.000Z	evarlast	calvin	you need mod_cgi installed.
+2005-03-06T12:39:00.000Z	evarlast	calvin	and you need to run the .pl file either in a script aliased directory, or enable pl as a cig extension
+2005-03-06T12:39:00.000Z	evarlast		s/cig/cgi/
+2005-03-06T12:41:00.000Z	calvin		do you know the name of the cgi deb?
+2005-03-06T12:41:00.000Z	evarlast	calvin	its part of std. apache.
+2005-03-06T12:42:00.000Z	evarlast	calvin	just make sure that it is enabled.  /etc/apache2/mods-enabled should symlink to /etc/apache2/mods-available/cgi.log
+2005-03-06T12:42:00.000Z	evarlast		s/log/load/
+2005-03-06T12:43:00.000Z	evarlast	calvin	maybe you need : AddHandler cgi-script .pl
+2005-03-06T12:44:00.000Z	calvin	evarlast	that was right

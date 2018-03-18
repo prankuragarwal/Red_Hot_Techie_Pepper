@@ -1,0 +1,24 @@
+2009-07-30T02:42:00.000Z	dimension128	archman	Have you tried 'sudo umount /dev/sdx' ?
+2009-07-30T02:42:00.000Z	archman	dimension128	yes, says it's not mounted LOL, but in gparted it says opposite
+2009-07-30T02:46:00.000Z	dimension128	archman	Just a guess, maybe the exact device name is different. does it show up in the list when you just type 'mount' ?
+2009-07-30T02:47:00.000Z	archman	dimension128	a sec
+2009-07-30T02:49:00.000Z	archman	dimension128	they doesn't show up, i will pastebin you, ok?
+2009-07-30T02:49:00.000Z	archman	dimension128	http://paste.ubuntu.com/236160/
+2009-07-30T02:50:00.000Z	dimension128	archman	its not mounted. wouldnt you agree gabriel_ ?
+2009-07-30T02:51:00.000Z	dimension128	archman	sounds like gpart is screwing up
+2009-07-30T02:51:00.000Z	dimension128	archman	what are you trying to do?
+2009-07-30T02:52:00.000Z	archman	dimension128	so why can't i remove the empty partitions?? how to remove em?
+2009-07-30T02:52:00.000Z	dimension128	archman	are you familiar with fdisk?
+2009-07-30T02:54:00.000Z	archman	dimension128	a little, done it once, but forgot. we can do it, if you're experienced. sda3 and sda5 are safe to remove, other HAS to remain untouched!
+2009-07-30T02:55:00.000Z	dimension128	archman	run fdisk /dev/hda
+2009-07-30T02:55:00.000Z	dimension128	archman	probably will need sudo..   then use 'm' to get a list of commands inside fdisk
+2009-07-30T02:56:00.000Z	archman	dimension128	ok, wait a sec
+2009-07-30T02:56:00.000Z	dimension128	archman	you use p to print the partition table.  d to delete a partition
+2009-07-30T02:57:00.000Z	dimension128	archman	then w to write the changes.
+2009-07-30T02:57:00.000Z	archman	dimension128	"Unable to open /dev/hda"
+2009-07-30T02:58:00.000Z	archman	dimension128	any ideas?
+2009-07-30T02:58:00.000Z	dimension128	archman	hm.. well its possible as gabriel was saying, that something is using it. But maybe you dont have an sda at all. maybe it was moved to sdb or something like that. Is this a laptop or a desktop? is it a sata harddrive?
+2009-07-30T02:59:00.000Z	archman	dimension128	those partitions are empty, how can something be used? it's a laptop, and gparted says that sda3 is Busy, and Path is /dev/sda3...
+2009-07-30T03:01:00.000Z	dimension128	archman	 Thats really what its looking like. Some program has sda3 'open/locked' and nothing else can modify it. It could simply be a nautilus file browser window open. or anything that is accessing sda3.
+2009-07-30T03:02:00.000Z	dimension128	archman	But there is something using it. somehwere. rebooting may be the quickest fix if you cant find anything.
+2009-07-30T03:04:00.000Z	dimension128	archman	I am not familiar with that command, but it looks useful.

@@ -1,0 +1,18 @@
+2008-07-26T08:49:00.000Z	trimeta		I'm not sure how to do that consistently for the alt+F2 dialog, though I know you can do "PATH="$PATH:/path/to/dir" in your .bashrc file for interactive shells.
+2008-07-26T08:50:00.000Z	unop	trimeta	put it in ~/.bash_profile and log back in
+2008-07-26T08:54:00.000Z	unop	trimeta	are you on hardy at present?
+2008-07-26T08:54:00.000Z	trimeta	unop	That is correct.
+2008-07-26T08:54:00.000Z	unop	trimeta	backport the intrepid packages (and their new and required dependencies)
+2008-07-26T08:55:00.000Z	trimeta	unop	I did that, and I've even installed the new libotr. I'm still getting an error while compiling pidgin-otr complaining about libotr's version.
+2008-07-26T08:56:00.000Z	unop	trimeta	how exactly did you backport libotr?
+2008-07-26T08:57:00.000Z	trimeta	unop	prevu libotr && apt-get update && apt-get upgrade (all sudo'ed, of course.)
+2008-07-26T08:58:00.000Z	trimeta	unop	Though...I'm not sure that's actually getting me the Intrepid sources...hold on...
+2008-07-26T08:59:00.000Z	unop	trimeta	i'm not sure that's how prevu works -- you might need prevu-update after  prevu libotr
+2008-07-26T08:59:00.000Z	trimeta	unop	I'll look into it.
+2008-07-26T09:00:00.000Z	unop	trimeta	i prefer the older traditional way of backporting i.e.  apt-get source -t intrepid -b libotr  # after making sure you have the intrepid deb-src's
+2008-07-26T09:01:00.000Z	trimeta	unop	I'll see if that's easier.
+2008-07-26T09:02:00.000Z	unop	trimeta	actually - see the very last section here on circular dependencies - https://wiki.ubuntu.com/Prevu
+2008-07-26T09:02:00.000Z	trimeta	unop	Oh, yea, that's probably it. Good call.
+2008-07-26T09:07:00.000Z	trimeta	unop	Cool, everything worked.
+2008-07-26T09:08:00.000Z	unop	trimeta	nice
+2008-07-26T09:55:00.000Z	unop	trimeta	does the directory you are trying to chroot to have a directory heirarchy within it? or better, how did you create this directory?

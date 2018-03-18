@@ -1,0 +1,24 @@
+2005-01-29T11:01:00.000Z	larsrohdin		sudo doesn't work and there's no root account
+2005-01-29T11:01:00.000Z	larsrohdin		don't work
+2005-01-29T11:02:00.000Z	larsrohdin		sudo chown larsrohdin share
+2005-01-29T11:02:00.000Z	larsrohdin		"operation not allowed"
+2005-01-29T11:03:00.000Z	larsrohdin		how what?
+2005-01-29T11:03:00.000Z	larsrohdin		is it possible to activate a root account? thats alot easier
+2005-01-29T11:04:00.000Z	larsrohdin		it doesnt work
+2005-01-29T11:04:00.000Z	larsrohdin		ok... good to know...
+2005-01-29T11:05:00.000Z	larsrohdin		its a fat filesystem, does that have anything to do with that i can't give myself ownership to it?
+2005-01-29T11:06:00.000Z	larsrohdin		hello?
+2005-01-29T11:06:00.000Z	petemc	larsrohdin	yeah, you cant do that, you set the permissions for fat/ntfs at mount time
+2005-01-29T11:07:00.000Z	petemc	larsrohdin	that should make it rwxr-xr-x i believe , use uid= and gid= options in fstab
+2005-01-29T11:08:00.000Z	larsrohdin	petemc	how? can you write what i should write
+2005-01-29T11:09:00.000Z	petemc	larsrohdin	/dev/hdN /mnt/point vfat   defaults,uid=youruid,gid=yourgid,umask=002
+2005-01-29T11:21:00.000Z	larsrohdin	petemc	thanks alot dude! finally i got it working=)
+2005-05-16T13:59:00.000Z	petemc	larsrohdin	fat32 cant have files over 4 gig
+2005-05-16T13:59:00.000Z	larsrohdin	petemc	but with LBA then?
+2005-05-16T14:00:00.000Z	larsrohdin	petemc	how can i see the size of a partition?
+2005-05-16T14:01:00.000Z	petemc	larsrohdin	df -h
+2005-05-16T14:01:00.000Z	larsrohdin	petemc	i have a 200 gig partition with fat32...
+2005-05-16T14:01:00.000Z	petemc	larsrohdin	your point?
+2005-05-16T14:02:00.000Z	larsrohdin	petemc	how is that possible then? if i need LBA for partitions bigger th
+2005-05-16T14:03:00.000Z	petemc	larsrohdin	your bios supports it, and linux has supported it for a long time
+2005-05-16T14:03:00.000Z	larsrohdin	petemc	ok...

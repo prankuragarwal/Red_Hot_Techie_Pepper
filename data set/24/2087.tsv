@@ -1,0 +1,24 @@
+2009-07-01T04:39:00.000Z	ibeekman		So I just dist upgraded from 8.04 to 9.04 and I have some connection problems.  Could someone familiar with network manager and manual interface configuration send me a PM to trouble shoot?
+2009-07-01T04:39:00.000Z	coleys	ibeekman	Wired or Wireless?
+2009-07-01T04:39:00.000Z	ibeekman	coleys	wired
+2009-07-01T04:39:00.000Z	coleys	ibeekman	Name of your ethernet card?
+2009-07-01T04:40:00.000Z	ibeekman	coleys	it was a manual i.e. through the gui selecting manual configuaration in 8.04 because I have two ethernet cards one to a secure local network and one to the broader LAN
+2009-07-01T04:40:00.000Z	ibeekman	coleys	don't know the name I can check maybe with ifconfig
+2009-07-01T04:41:00.000Z	coleys	ibeekman	Nah, do lspci | grep -i ethernet
+2009-07-01T04:43:00.000Z	ibeekman	coleys	it is def software... there was a manual config option in the gui with 8.04 now it's gone but there is no way to update the settings with network manager, the old ones are stuck
+2009-07-01T04:43:00.000Z	coleys	ibeekman	sudo apt-get install wicd
+2009-07-01T04:43:00.000Z	ibeekman	coleys	what's that?
+2009-07-01T04:45:00.000Z	coleys	ibeekman	You will like wicd better, for sure.
+2009-07-01T04:45:00.000Z	ibeekman	coleys	installed now how do I get to it?
+2009-07-01T04:46:00.000Z	coleys	ibeekman	uhh... you'll want to kill the network... so... do ... sudo /etc/init.d/network stop
+2009-07-01T04:47:00.000Z	coleys	ibeekman	Yes, but start wicd from gnome menu... Or Alt +f2 --> wicd-client
+2009-07-01T04:49:00.000Z	coleys	ibeekman	Allright... Just sudo gedit /etc/modprobe.d/blacklist and add network and networkmanager (Two seperate lines then save and exit
+2009-07-01T04:50:00.000Z	coleys	ibeekman	Yeah.
+2009-07-01T04:51:00.000Z	ibeekman	coleys	each on its own line?
+2009-07-01T04:51:00.000Z	coleys	ibeekman	Yeah.
+2009-07-01T04:52:00.000Z	ibeekman	coleys	edits made ....
+2009-07-01T04:52:00.000Z	coleys	ibeekman	ibeekman now restart, and... once your logged in... Alt +f2 --> wicd-client (Or type that from terminal, or just plain wicd)
+2009-07-01T04:58:00.000Z	ibeekman	coleys	so what was the name and location of the module blacklist file?  I did what you said but I have an issue with wicd: it only lets me configure one ethernet card, AND there's no easy pptp vpn config gui and the settings still seem to be locked... I can access the internet and the local network whether or not wicd is started
+2009-07-01T04:59:00.000Z	coleys	ibeekman	/etc/modprobe.d/blacklist
+2009-07-01T04:59:00.000Z	coleys	ibeekman	Uhh.. I recommend you just fresh install... Upgrades are scewy =)
+2009-07-01T05:01:00.000Z	coleys	ibeekman	Nah, I would just backup on to some form of media, i.e Dvd,etc... And then fresh install 9.04... =) Definitly alot less problems ahead that way.

@@ -1,0 +1,22 @@
+2011-11-16T09:46:00.000Z	tpyo		wow i thought id just build and make ntop..... 7 dependancies later.... i need like 5 more
+2011-11-16T09:46:00.000Z	tpyo		i guess i'll leave this till tomorrow
+2011-11-16T09:46:00.000Z	tpyo		i wish apt-get got everything
+2011-11-16T09:46:00.000Z	tpyo		but ntop doesn't appear to be supported on it D:
+2011-11-16T09:47:00.000Z	tpyo		im guessing that apt-get is the "newer" mechanism of installing stuffs?
+2011-11-16T09:47:00.000Z	tpyo		(im relatively newish to linux)
+2011-11-16T09:48:00.000Z	tpyo		whereas ./configure make make install is the more old school mechanism of installing stuff
+2011-11-16T09:48:00.000Z	escott	tpyo	you should not be building stuff by hand
+2011-11-16T09:49:00.000Z	tpyo	escott	really? i couldn't seem to find another mechanism to get ntop
+2011-11-16T09:49:00.000Z	escott	tpyo	you should install everything through apt-get. if you dont do that you can mess up your system
+2011-11-16T09:49:00.000Z	escott	tpyo	have you already done a ./configure; make; make install?
+2011-11-16T09:50:00.000Z	escott	tpyo	ntop is in the repositories you should just apt-get install ntop
+2011-11-16T09:52:00.000Z	escott	tpyo	if you have done a make install already you have placed files into system libraries that apt knows nothing about, and they may be incompatible with the libraries that apt would want to put there. you should audit the files in /usr against the dpkg database of files
+2011-11-16T09:52:00.000Z	escott	tpyo	you can use a gui like synaptic to browse the full list of available software
+2011-11-16T09:53:00.000Z	escott	tpyo	but in almost every case installing outside of apt is the wrong thing to do. the universe of available software should cover almost any need you have
+2011-11-16T09:54:00.000Z	escott	tpyo	so if you know what you make installed, and you still have the build directory you can make uninstall
+2011-11-16T09:54:00.000Z	escott	tpyo	other versions of linux use other tools. so redhat uses rpm and yum, but the same principles hold
+2011-11-16T09:56:00.000Z	escott	tpyo	yes it probably would which is why doing things outside of apt is discouraged
+2011-11-16T09:56:00.000Z	tpyo	escott	thanks for informing me thusly, I appreciate it :)
+2011-11-16T09:57:00.000Z	escott	tpyo	depending on how critical the programs you were manually installing are (and how many there were) you can perhaps safely ignore the issue. a few files won't be the apt version, and some programs may crash from time to time, but hopefully its not critical
+2011-11-16T09:58:00.000Z	escott	tpyo	otherwise you have to dig through the list of installed programs with dpkg --get-selections, and for each of them dig through the files with dpkg -L and then diff that with what is on your hard drive
+2011-11-16T10:00:00.000Z	tpyo	escott	that sounds horrible, I think if I have problems i'll just restall

@@ -1,0 +1,22 @@
+2010-04-18T07:02:00.000Z	gbear14275		hello, I'm trying to setup an ubuntu server as a virtual host and have 2 network connections...  I have connected ethernet cables to both ports but one doesn't seem to be working.  I was hoping someone might be able to point me to a howto which can show me how to setup a server with two nics.  Any help would be appreciated.  Thank you
+2010-04-18T07:03:00.000Z	mrwes	gbear14275	http://ubuntuforums.org/showthread.php?t=113675
+2010-04-18T07:04:00.000Z	gbear14275	mrwes	thanks I'll read through that
+2010-04-18T07:04:00.000Z	mrwes	gbear14275	reading is fundamental :)
+2010-04-18T07:05:00.000Z	gbear14275	mrwes	yup, just didn't know where to start.  Ran into an issue...  Do I need to restart to get both nics recognized?  I ran into this error:  hello, I'm trying to setup an ubuntu server as a virtual host and have 2 network connections...  I have connected ethernet cables to both ports but one doesn't seem to be working.  I was hoping someone might be able to point me to a howto which can show me how to setup a server with 
+2010-04-18T07:05:00.000Z	gbear14275	mrwes	sudo ifup eth1
+2010-04-18T07:06:00.000Z	mrwes	gbear14275	normally an /etc/init.d/networking restart should do it
+2010-04-18T07:06:00.000Z	gbear14275	mrwes	ok I'll try that
+2010-04-18T07:06:00.000Z	mrwes	gbear14275	sudo of course :)
+2010-04-18T07:16:00.000Z	gbear14275	mrwes	ok restarted the networking and then did a few other things.  Searched on google real quick and it said to see if ifconfig sees the interfaces... it only sees one...  I have 2 onboard nics and 1 additional... is this something that will require me to reinstall?
+2010-04-18T07:16:00.000Z	mrwes	gbear14275	not that I'm aware of
+2010-04-18T07:17:00.000Z	gbear14275	mrwes	the interfaces come up on lspci... but they don't seem to be active... is there something I have to do to get them activated?
+2010-04-18T07:19:00.000Z	mrwes	gbear14275	you've setup eth0 and eth1 ?
+2010-04-18T07:20:00.000Z	gbear14275	mrwes	paste.ubuntu.com/416422/   And not sure if I have "setup" eth1...  I'm logged into the machine via ssh now so eth0 works but the additional onboard and the pci nic don't seem to be in /etc/network/interfaces
+2010-04-18T07:21:00.000Z	mrwes	gbear14275	did you read the thread I posted, and how to setup a static IP for each?
+2010-04-18T07:22:00.000Z	gbear14275	mrwes	yes but sudo ifup eth0 gives "Ignoring unknown interface eth1=eth1."
+2010-04-18T07:23:00.000Z	mrwes	gbear14275	is eth1 even in /etc/network/interfaces  ?
+2010-04-18T07:23:00.000Z	gbear14275	mrwes	no
+2010-04-18T07:25:00.000Z	gbear14275	mrwes	looking now how to add it to /etc/network/interfaces
+2010-04-18T07:30:00.000Z	gbear14275	mrwes	I'm guessing i have to add eth1 to /etc/network/interfaces before I can continue correct?
+2010-04-18T07:31:00.000Z	mrwes	gbear14275	yah, pretty much, it should be a similar entry like eth0, but a different IP, correct
+2010-04-18T07:31:00.000Z	mrwes	gbear14275	then bring it up

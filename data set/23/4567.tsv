@@ -1,0 +1,23 @@
+2007-07-10T11:34:00.000Z	Bree1		Its on a seperate harddrive
+2007-07-10T11:34:00.000Z	Bree1		No.
+2007-07-10T11:34:00.000Z	Bree1		I screwed up when installing Ubuntu
+2007-07-10T11:34:00.000Z	Bree1		And I cant get into Windows
+2007-07-10T11:34:00.000Z	Bree1		So I disconnected the harddrive
+2007-07-10T11:34:00.000Z	Bree1		Heh
+2007-07-10T11:35:00.000Z	Bree1		It gives me a grub error, that I remember. Its been a few months
+2007-07-10T11:35:00.000Z	Bree1		I was in here asking for help for it.
+2007-07-10T11:37:00.000Z	Bree1		No, bruenig
+2007-07-10T11:37:00.000Z	Bree1		I did make the partition /using/ windows, though
+2007-07-10T11:37:00.000Z	Creeture	Bree1	If you don't want to go through that hassle, you might be about to boot off of your Windows CDROM, go into recovery console and do a chkdsk on the drive and clear everything up.
+2007-07-10T11:41:00.000Z	Creeture	Bree1	Let's start anew on your problem. You have a 2nd drive, NTFS filesystem. You're trying to write to it?
+2007-07-10T11:41:00.000Z	Creeture	Bree1	Same thing. Is the rest true?
+2007-07-10T11:42:00.000Z	Creeture	Bree1	It's partition /dev/sda1?
+2007-07-10T11:43:00.000Z	Creeture	Bree1	So do this.
+2007-07-10T11:43:00.000Z	Creeture	Bree1	sudo umount /dev/sda1
+2007-07-10T11:43:00.000Z	Bree1	Creeture	umount: /dev/sda1: not mounted
+2007-07-10T11:44:00.000Z	Creeture	Bree1	dpkg -l ntfs-3g
+2007-07-10T11:44:00.000Z	Creeture	Bree1	What version?
+2007-07-10T11:45:00.000Z	Creeture	Bree1	Good. Now sudo dmesg -c
+2007-07-10T11:45:00.000Z	Bree1	Creeture	[ 9152.972349]  NTFS-fs error (device sda1): ntfs_ucstonls(): Unicode name contains characters that cannot be converted to character set cp437.  You might want to try to use the mount option nls=utf8.
+2007-07-10T11:46:00.000Z	Creeture	Bree1	So let's do that then.
+2007-07-10T11:47:00.000Z	Creeture	Bree1	sudo mount -t ntfs-3g -o uid=1000,gid=1000,force /dev/sda1 /media/drive

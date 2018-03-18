@@ -1,0 +1,23 @@
+2011-03-17T08:08:00.000Z	needlez		Hi, quick question I'm having an issue with using unlock when I lock my screen through ubuntu. I have pam_tally configured to lock out user at 3 login attempts.  not sure if there is something that i need to modify in pam.d to get the gnome-screensaver to let me use unlock??
+2011-03-17T08:10:00.000Z	elektroid	needlez	you tried 'passwd -u [user]'
+2011-03-17T08:11:00.000Z	needlez	elektroid	its not at a terminal, its the screensaver login it wont allow unlock, since I modified pam.d/auth-common
+2011-03-17T08:13:00.000Z	elektroid	needlez	cant reboot or what exactly?
+2011-03-17T08:14:00.000Z	needlez	elektroid	its not that im locked out, its that when I go to use unlock on screensaver its like unlock has been disabled, says password is incorrect even though its the correct password.
+2011-03-17T08:15:00.000Z	needlez	elektroid	I can go to switch user and login as me but just wanted to know if I can turn back on unlock somehow
+2011-03-17T08:15:00.000Z	elektroid	needlez	I think I misunderstood the context, basically, you can login and want to reactivate unlock for screensaver?
+2011-03-17T08:16:00.000Z	needlez	elektroid	correct, i have to use switch user instead of unlock to login, its kinda annoying
+2011-03-17T08:42:00.000Z	elektroid	needlez	http://pastebin.com/pEdLJ82V
+2011-03-17T08:46:00.000Z	needlez	elektroid	are you on ubuntu or what distro is this from, cuz its way different from mine. guessing its fedora since it shows fedora
+2011-03-17T08:47:00.000Z	elektroid	needlez	but the version of pam should be the determinant as far as syntax
+2011-03-17T08:51:00.000Z	elektroid	needlez	have you altered anything specfic to /etc/passwd or /etc/group?
+2011-03-17T08:51:00.000Z	needlez	elektroid	no
+2011-03-17T08:51:00.000Z	elektroid	needlez	has this issue occured since first install or when did it specifically start?
+2011-03-17T08:53:00.000Z	needlez	elektroid	occured after I added this to common-auth auth required pam_tally.so onerr=fail deny=5 unlock_time=21600 no_reset
+2011-03-17T08:56:00.000Z	needlez	elektroid	any idea??
+2011-03-17T08:58:00.000Z	elektroid	needlez	sorry, I am reading pam.d configuration to find out what each part means, I am suspect to the onerr part
+2011-03-17T08:58:00.000Z	elektroid	needlez	if it was that line that changed everything perhaps something is missing or incorrect and I am trying to find out
+2011-03-17T08:58:00.000Z	needlez	elektroid	kk take your time
+2011-03-17T09:25:00.000Z	elektroid	needlez	what was it?
+2011-03-17T09:42:00.000Z	elektroid	needlez	you need lsmod
+2011-03-17T09:54:00.000Z	needlez	elektroid	i looked over his lsmod and it shows no uvc or v4l area, however shows video0
+2011-03-17T09:54:00.000Z	elektroid	needlez	yeah its just video using raw output module

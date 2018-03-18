@@ -1,0 +1,18 @@
+2009-07-01T22:45:00.000Z	geirha	MK13	from the input file (if=), read 100 (count=100) blocks of size 1M (bs=1M), and write them to outfile (of=)
+2009-07-01T22:40:00.000Z	geirha	MK13	This will create a 100M file filled with zeroes: dd if=/dev/zero bs=1M count=100 of=/path/to/store/casper-rw
+2009-07-01T22:41:00.000Z	geirha	MK13	Then run mke2fs /path/to/store/casper-rw
+2009-07-01T22:41:00.000Z	geirha	MK13	to format it
+2009-07-01T22:41:00.000Z	MK13	geirha	thnx
+2009-07-01T22:42:00.000Z	MK13	geirha	what does the /dev/zero do?
+2009-07-01T22:42:00.000Z	geirha	MK13	When you read from it, it will continuosly output zero bytes, infinately
+2009-07-01T22:42:00.000Z	MK13	geirha	ahh, gotcha
+2009-07-01T22:44:00.000Z	MK13	geirha	could you explain most of that command so I can learn the components used?
+2009-07-01T22:45:00.000Z	MK13	geirha	kk thnx alot
+2009-07-01T22:46:00.000Z	geirha	MK13	Don't set the blocksize too high. With bs=1M, it will use at least 1M memory, if you set bs=1G, it will use at least 1G memory
+2009-07-01T22:47:00.000Z	MK13	geirha	very good to know
+2009-07-01T22:47:00.000Z	MK13	geirha	1M shouldn't impact 2 gigs much :D
+2009-07-01T22:48:00.000Z	geirha	MK13	Yeah, 1M should be fairly effcient
+2009-07-01T22:48:00.000Z	MK13	geirha	the count wont matter will it... it will just cause it to run longer while using 1M right?
+2009-07-01T22:50:00.000Z	geirha	MK13	With the one I showed you, it will read 1M into memory, then write it, read another 1M, and write it. Reapeated 100 times when count=100
+2009-07-01T22:50:00.000Z	MK13	geirha	thnx alot
+2009-08-01T00:07:00.000Z	geirha	MK13	Just right-click it and choose write to disc

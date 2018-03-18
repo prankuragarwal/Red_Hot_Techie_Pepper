@@ -1,0 +1,19 @@
+2009-02-27T03:34:00.000Z	cafree		I'm trying to set UserDir in my apache2.conf, but keep getting the error "Invalid command".  Can anyone help me figure out why?
+2009-02-27T03:34:00.000Z	Titan8990	cafree	what command are you running?
+2009-02-27T03:35:00.000Z	Titan8990	cafree	when do you recieve that error?
+2009-02-27T03:36:00.000Z	Titan8990	cafree	did you enable the module needed for userdir?
+2009-02-27T03:37:00.000Z	Titan8990	cafree	are you following a guide or just going off the comments in the config file?
+2009-02-27T03:38:00.000Z	Titan8990	cafree	sudo a2enmod user_dir && sudo /etc/init.d/apache2 restart
+2009-02-27T03:38:00.000Z	Titan8990	cafree	that should do it
+2009-02-27T03:39:00.000Z	Titan8990	cafree	a2enmod is a command implemented in debian based distros, it enables modules in apache so you do not have to manually link them
+2009-02-27T03:40:00.000Z	Titan8990	cafree	the && means run this next command only after the first has finished, and the 2nd command restarts apache
+2009-02-27T03:40:00.000Z	cafree	Titan8990	Oh, ok so do I put in the literal 'user_dir' or should I substiiitute that with something
+2009-02-27T03:40:00.000Z	Titan8990	cafree	user_dir is the correct name of the module that you need to enable
+2009-02-27T03:41:00.000Z	cafree	Titan8990	hm, apparently the module doesn't exist
+2009-02-27T03:41:00.000Z	Titan8990	cafree	run a2enmod without specifying a module, this will give a list of available modules
+2009-02-27T03:43:00.000Z	Titan8990	cafree	also, it appears that this user encountered the same problem and was able to get it resolved: http://ubuntuforums.org/showthread.php?t=143350
+2009-02-27T03:43:00.000Z	cafree	Titan8990	it looks like the module was just "userdir"
+2009-02-27T03:45:00.000Z	Titan8990	cafree	good, is it working for you?
+2009-02-27T03:45:00.000Z	cafree	Titan8990	I'm getting permission issues, but I'll see if I can fix that
+2009-02-27T03:45:00.000Z	Titan8990	cafree	sudo
+2009-02-27T03:45:00.000Z	Titan8990	cafree	or if you are referrring to the webserver, check .htaccess

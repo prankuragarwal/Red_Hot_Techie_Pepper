@@ -1,0 +1,21 @@
+2008-01-26T12:01:00.000Z	profx		no ideas on this gparted 'disklabel', never had thi happen before
+2008-01-26T12:03:00.000Z	profx		a disklabel is a piece of data stored at a well known place on the disk, that indicates where each partition beings adn how many sectors it occupies. You need a disklabel if you want to create partitions on this disk.
+2008-01-26T12:03:00.000Z	profx		MasterShrek`, so thats a no :)
+2008-01-26T12:04:00.000Z	profx		nope
+2008-01-26T12:04:00.000Z	profx		as Gparted finished
+2008-01-26T12:04:00.000Z	profx		let me attempt cli
+2008-01-26T12:05:00.000Z	profx		sorry nickrud ?
+2008-01-26T12:06:00.000Z	profx		this is my third SATA in this system, do I want it to be a primary ?
+2008-01-26T12:06:00.000Z	nickrud	profx	not sure, but I think it's the partition table type. mneptok reminded me that not all partition tables are msdos types
+2008-01-26T12:06:00.000Z	profx	nickrud	any suggestoion on what to choose ?
+2008-01-26T12:07:00.000Z	nickrud	profx	  cfdisk   :)
+2008-01-26T12:07:00.000Z	nickrud	profx	first three partitions primary, then an extended and any others logical
+2008-01-26T12:07:00.000Z	nickrud	profx	my style anyway
+2008-01-26T12:10:00.000Z	nickrud	profx	yes
+2008-01-26T12:26:00.000Z	nickrud	profx	  you ran   sudo mkfs.ext3 /dev/sdc1  ?
+2008-01-26T12:27:00.000Z	nickrud	profx	try  sudo e2label  my_external  (or some other label)
+2008-01-26T12:27:00.000Z	nickrud	profx	guessing based on the error, never seen that one myslef
+2008-01-26T12:29:00.000Z	profx	nickrud	do I need the UUID to add it to fstab ?
+2008-01-26T12:29:00.000Z	nickrud	profx	it's a good idea to use the uuid ,   blkid   will tell you what it is
+2008-01-26T12:30:00.000Z	profx	nickrud	not listed under blkid
+2008-01-26T12:32:00.000Z	nickrud	profx	dang, there's a command to read it from the partition, but I don't remember it ...  rebooting would reset blkid :)

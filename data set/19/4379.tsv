@@ -1,0 +1,19 @@
+2010-07-25T18:20:00.000Z	padhu		Which is the best GUI firewall for ubuntu 10.04?
+2010-07-25T18:20:00.000Z	padhu		gucf  or firestarter?
+2010-07-25T18:20:00.000Z	troubled	padhu	firestarter seems to do an okay job. i use shorewall now though
+2010-07-25T18:21:00.000Z	troubled	padhu	shorewall isnt a gui btw. but it pwns :)
+2010-07-25T18:23:00.000Z	padhu	troubled	 ^^^
+2010-07-25T18:23:00.000Z	troubled	padhu	shorewall? its a bunch of config files in /etc/shorewall that you "fill in the blanks"
+2010-07-25T18:23:00.000Z	troubled	padhu	shorewall is more of a rather advanced firewall though
+2010-07-25T18:24:00.000Z	padhu	troubled	give me an link for learn it
+2010-07-25T18:24:00.000Z	troubled	padhu	http://sohrewall.net/
+2010-07-25T18:25:00.000Z	troubled	padhu	iirc, ubuntu ships with 4.2, so pick the docs accordingly when on that site
+2010-07-25T18:26:00.000Z	troubled	padhu	also, to have a better shorewall experience, I removed/disabled the package for the default ubuntu network that gives each user the option for specifying the networking info. I forget the package name though. basically, I reverted back to a "traditional" networking environment where the eth is brought up during start and stays up
+2010-07-25T18:27:00.000Z	padhu	troubled	oh
+2010-07-25T18:28:00.000Z	troubled	padhu	also, you probably want shorewall-perl instead of plain shorewall, that installs a perl version of the compiler instead of a bash/sh based compiler. there are limits that probably will affect both, but perl tends to be the more powerful one
+2010-07-25T18:29:00.000Z	troubled	padhu	an example: the shell shorewall can do firewalling on a bridge, but the perl version cant yet. (not likely to affect you). Where as the perl version can auto detect broadcast address of an interface but the shell version cant, etc.
+2010-07-25T18:29:00.000Z	padhu	troubled	that's good idea. any GUI tar ball?
+2010-07-25T18:31:00.000Z	troubled	padhu	as for the package to remove, do you know that little applet ubuntu gives you to control networking? remove that package. As for GUI, no, its just "always on" so to speak. just apt-get install shorewall-perl shorewall-doc, and you should be good to go. Its safe to install too as it wont run until you enabled it in /etc/default/shorewall
+2010-07-25T18:38:00.000Z	padhu	troubled	ok, i am going to try
+2010-07-25T18:38:00.000Z	troubled	padhu	np, gl!
+2010-07-25T18:39:00.000Z	troubled	padhu	if you get stuck and firewall yourself offline, just remember to do "shorewall clear" in a shell as root. that will open your firewall up so to speak. "shorewall stop" actually blocks everything in or out

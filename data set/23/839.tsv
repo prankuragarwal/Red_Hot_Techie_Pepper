@@ -1,0 +1,23 @@
+2012-10-20T19:51:00.000Z	amews_aj-study		What terminal command should I use for safely formatting an HDD ?
+2012-10-20T19:51:00.000Z	bekks	amews_aj-study	fdisk and mkfs.
+2012-10-20T19:52:00.000Z	amews_aj-study	bekks	a few months ago I used a different command I think. Could you mention other options ?
+2012-10-20T19:54:00.000Z	amews_aj-study	bekks	I believe it was shred - is that plausible?
+2012-10-20T19:55:00.000Z	bekks	amews_aj-study	Shred doesnt format. Shred shreds.
+2012-10-20T19:57:00.000Z	amews_aj-study	bekks	What about "dd" ?
+2012-10-20T20:13:00.000Z	bekks	amews_aj-study	No.
+2012-10-20T20:17:00.000Z	bekks	amews_aj-study	dd bs=16M if=/dev/zero of=/dev/yourharddisk
+2012-10-20T20:18:00.000Z	amews_aj-study	bekks	So whats the difference between cat as nibbler_ suggested, and dd ?
+2012-10-20T20:20:00.000Z	amews_aj-study	bekks	nibbler_, using cat command I get permission denied, even with sudo ?
+2012-10-20T20:21:00.000Z	bekks	amews_aj-study	cat is the slowest solution. And sudo doesnt pass that ">" pipe.
+2012-10-20T20:21:00.000Z	amews_aj-study	bekks	I should use dd ?
+2012-10-20T20:21:00.000Z	bekks	amews_aj-study	Yes.
+2012-10-20T20:22:00.000Z	bekks	amews_aj-study	Yes.
+2012-10-20T20:22:00.000Z	bekks	amews_aj-study	Thats why i wrote bs=16M
+2012-10-20T20:24:00.000Z	bekks	amews_aj-study	kill -1 on the PID of the dd process.
+2012-10-20T20:25:00.000Z	bekks	amews_aj-study	kill -1
+2012-10-20T20:25:00.000Z	bekks	amews_aj-study	Thats HUP, and it will continue.
+2012-10-20T20:25:00.000Z	bekks	amews_aj-study	Hang up - and continue.
+2012-10-20T20:27:00.000Z	amews_aj-study	bekks	it wrote hangup, and killed it
+2012-10-20T20:30:00.000Z	bekks	amews_aj-study	I was wrong - it should have been kill -USR1
+2012-10-20T20:30:00.000Z	amews_aj-study	bekks	anyway, shred -n 0 -z -v should also be a single zero-pass right ?
+2012-10-20T20:30:00.000Z	bekks	amews_aj-study	I never used shred, since dd was faster :)

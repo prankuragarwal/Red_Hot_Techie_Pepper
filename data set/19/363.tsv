@@ -1,0 +1,19 @@
+2012-03-26T08:35:00.000Z	J-Escobar		I just cloned a 300gb Ubuntu HD to a 2tb HD using clonezilla. When I boot up using the cloned 2tb drive it works fine. But it only sees it as a 300gb drive. I am trying to use gparted to resize it to the full 2tb, but it isn't letting me. Anyone have any ideas?
+2012-03-26T08:37:00.000Z	Fyodorovna	J-Escobar	use a live cd and turn off the swap.
+2012-03-26T08:39:00.000Z	J-Escobar	Fyodorovna	What live CD should I use?
+2012-03-26T08:41:00.000Z	Fyodorovna	J-Escobar	use a ubuntu or one with gparted, the latter you can download it self small iso.
+2012-03-26T08:42:00.000Z	J-Escobar	Fyodorovna	I have been having a problem booting up from live CDs. I am currently booted up on a separate HD running 10.04 and have the 2tb drive as a slave. But gparted will not let me modify the partition.
+2012-03-26T08:43:00.000Z	Fyodorovna	J-Escobar	is the swap on in that HD?
+2012-03-26T08:44:00.000Z	J-Escobar	Fyodorovna	I think so. I have an option to turn it off i think
+2012-03-26T08:45:00.000Z	Fyodorovna	J-Escobar	needs to be off just right click it=swap off
+2012-03-26T08:47:00.000Z	J-Escobar	Fyodorovna	Ok swap is off now. What next? when i click the main part ion in gparted it still does not give me a resize option
+2012-03-26T08:47:00.000Z	J-Escobar	Fyodorovna	Partition*
+2012-03-26T08:48:00.000Z	Fyodorovna	J-Escobar	itake a screenshot of the drive and imagebin it.
+2012-03-26T08:50:00.000Z	Fyodorovna	J-Escobar	So the HD you want to resize must not be mounted as well.
+2012-03-26T08:52:00.000Z	J-Escobar	Fyodorovna	http://i.imgur.com/5hLnI.png
+2012-03-26T08:53:00.000Z	Fyodorovna	J-Escobar	So you trying to shrink it?
+2012-03-26T08:54:00.000Z	J-Escobar	Fyodorovna	No I am trying to enlarge the 300GB to the full 2tb drive. it says it is mounted but when i choose unmount it gives me an error saying i need to unmount it manually .
+2012-03-26T08:56:00.000Z	J-Escobar	Fyodorovna	http://i.imgur.com/fzdL5.png
+2012-03-26T08:57:00.000Z	Fyodorovna	J-Escobar	you have the partition mounted, and no space to move it to. Unmount with the disk utility with gparted closed. Resize the the sdc3 partition, then just delete the swap, expand the sdc1 into the free space leaving room for a new swap.
+2012-03-26T08:59:00.000Z	J-Escobar	Fyodorovna	disk utility shows it unmounted. Should I proceed with deleting the swap?
+2012-03-26T09:02:00.000Z	Fyodorovna	J-Escobar	Sure the swap is also contained in a extended which you would remove for now as well just put both in to have a extended option if needed.

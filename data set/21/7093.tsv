@@ -1,0 +1,21 @@
+2007-12-22T18:29:00.000Z	kr0n1x		hi, there are any with some known of ssh? when i try in terminal "ssh remoteuser@remoteip" it stay hangs :(
+2007-12-22T18:29:00.000Z	usr13	kr0n1x	ssh ip.address.here
+2007-12-22T18:30:00.000Z	kr0n1x	usr13	i've 2 pc in my home. i'm trying to connect them together. when in all pc was Ubuntu, it worked. now there is Ubuntu in one pc, and fluxbuntu in another, and now it doesn't work :(
+2007-12-22T18:31:00.000Z	usr13	kr0n1x	is ssh installed?  (on both)
+2007-12-22T18:31:00.000Z	usr13	kr0n1x	openssh-client & openssh-server
+2007-12-22T18:32:00.000Z	usr13	kr0n1x	then just do:  ssh ip-address.here
+2007-12-22T18:32:00.000Z	kr0n1x	usr13	when i type ssh ip or ssh user@ip, it stay hangs...with no reply
+2007-12-22T18:33:00.000Z	usr13	kr0n1x	Then you iether have user or ip wrong. OR, you have firewall blocking port 22
+2007-12-22T18:33:00.000Z	usr13	kr0n1x	nmap -p 22
+2007-12-22T18:34:00.000Z	usr13	kr0n1x	nmap -p 22  ip-address.here
+2007-12-22T18:34:00.000Z	usr13	kr0n1x	to see if it's blocked ("filtered")
+2007-12-22T18:36:00.000Z	kr0n1x	usr13	read?
+2007-12-22T18:38:00.000Z	kr0n1x	usr13	it looks as open.. no blocked...true?
+2007-12-22T18:39:00.000Z	usr13	kr0n1x	if it's open it should work: If you are logged in to same user name on the client machine, just do:  ssh 192.168.1.x
+2007-12-22T18:40:00.000Z	usr13	kr0n1x	If not same user name, do:  ssh -l user 192.168.1.x
+2007-12-22T18:41:00.000Z	usr13	kr0n1x	ssh 192.168.1.x
+2007-12-22T18:41:00.000Z	usr13	kr0n1x	and wait, for password prompt
+2007-12-22T18:43:00.000Z	usr13	kr0n1x	If you have a router between your machine and the target machine, you will have to forward port 22 through router to target machine.
+2007-12-22T18:44:00.000Z	usr13	kr0n1x	But if both machines are on the same lan, (inside the lan of same router), that is NOT necessary.
+2007-12-22T18:49:00.000Z	usr13	kr0n1x	you dissabled your password?
+2007-12-22T18:53:00.000Z	kr0n1x	usr13	what i'm trying to say...about the password...is that i've set PasswordAuthentication no in my /etc/ssh/sshd_config file.

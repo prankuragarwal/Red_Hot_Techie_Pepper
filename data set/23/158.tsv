@@ -1,0 +1,23 @@
+2012-06-29T22:51:00.000Z	jiffe98		there a way to find out which disks are raid10 mirror pairs with mdadm ?
+2012-06-29T22:52:00.000Z	DaDaDOSPrompt	jiffe98	type: cat /proc/mdstat
+2012-06-29T22:52:00.000Z	DaDaDOSPrompt		you should see the names of some HDD /dev/ files
+2012-06-29T22:52:00.000Z	DaDaDOSPrompt		or a pattern specifying them
+2012-06-29T22:53:00.000Z	jiffe98	DaDaDOSPrompt	when I do that I see md127 : active raid10 sdb[4] sda[0] sdc[2] sdd[3]
+2012-06-29T22:54:00.000Z	jiffe98		sdb is a rebuuilding spare right now so it may pop in spot 1 after it is rebuilt
+2012-06-29T22:54:00.000Z	DaDaDOSPrompt		spot 1 in what list?
+2012-06-29T22:54:00.000Z	DaDaDOSPrompt		or which list, rather
+2012-06-29T22:55:00.000Z	DaDaDOSPrompt		or perhaps what after all
+2012-06-29T23:00:00.000Z	jiffe98	DaDaDOSPrompt	well if I am looking at the output of mdstat which is 'md127 : active raid10 sdb[4] sda[0] sdc[2] sdd[3]' how would I determine the raid pairs?
+2012-06-29T23:01:00.000Z	DaDaDOSPrompt		oh, the pairs?
+2012-06-29T23:01:00.000Z	DaDaDOSPrompt		hmm
+2012-06-29T23:01:00.000Z	DaDaDOSPrompt		so you're saying that there are 2+ logical disks in that output, jiffe98 ?
+2012-06-29T23:01:00.000Z	DaDaDOSPrompt		if so, hm
+2012-06-29T23:02:00.000Z	DaDaDOSPrompt		if that's the case, then we may have to write a quick script to divine the truth
+2012-06-29T23:02:00.000Z	DaDaDOSPrompt		mdadm can surely give us the info we seek
+2012-06-29T23:02:00.000Z	DaDaDOSPrompt		yes, I think I see how to do it
+2012-06-29T23:02:00.000Z	jiffe98	DaDaDOSPrompt	there are 4 physical drives in a raid 10 and I just want to know which drives are mirror copies of which other drives
+2012-06-29T23:02:00.000Z	DaDaDOSPrompt		ooh
+2012-06-29T23:02:00.000Z	jiffe98		so I know which drives can fail without breaking the raid
+2012-06-29T23:02:00.000Z	DaDaDOSPrompt		hm
+2012-06-29T23:06:00.000Z	DaDaDOSPrompt	jiffe98	have you played with mdadm much?
+2012-06-29T23:25:00.000Z	jiffe98	DaDaDOSPrompt	I have

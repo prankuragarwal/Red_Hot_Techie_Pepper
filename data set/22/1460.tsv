@@ -1,0 +1,22 @@
+2010-05-19T00:07:00.000Z	tripps		ok so one thing fixed, but still laptop freezing hard when trying to suspend. again, didn't do that under jackalope. ideas?
+2010-05-19T00:08:00.000Z	pgpkeys	tripps	~ modify the laptop-node config to utilize s2disk/s2both
+2010-05-19T00:09:00.000Z	tripps	pgpkeys	okeydoke will give it a shot. how does that differ from hibernate?
+2010-05-19T00:09:00.000Z	pgpkeys	tripps	~ s2disk is basically hibernate. the difference is in the use of pm-utils vs. s2disk
+2010-05-19T00:10:00.000Z	pgpkeys	tripps	~ apt-cache show laptop-mode
+2010-05-19T00:11:00.000Z	pgpkeys	tripps	~ make sure that uswsusp is installed
+2010-05-19T00:12:00.000Z	tripps	pgpkeys	will do. how is the performance (speed to suspend/restore)?
+2010-05-19T00:13:00.000Z	tripps	pgpkeys	laptop-mode package not installed. installing now
+2010-05-19T00:14:00.000Z	tripps	pgpkeys	gotcha. though suspend to ram came out of suspend in 2-3 seconds or faster. probably not getting that, will I?
+2010-05-19T00:16:00.000Z	pgpkeys	tripps	~ dont know, each laptop differs
+2010-05-19T00:16:00.000Z	tripps	pgpkeys	laptop-mode is not a package. do i just set it in acpi-support?
+2010-05-19T00:18:00.000Z	pgpkeys	tripps	~ hehe busy trying to find WHERE i set that. in what file
+2010-05-19T00:20:00.000Z	tripps	pgpkeys	ok so I'm looking at the acpi-support file and looking at various options (i run gnome): dbus-pm, hal, pm-utils, etc. what is the fastest most reliable method? right now SUSPEND_METHODS="dbus-pm dbus-hal pm-utils"
+2010-05-19T00:21:00.000Z	pgpkeys	tripps	~ again, i can't tell you which is the most 'reliable'. reliable is subjective as per individual hardware
+2010-05-19T00:21:00.000Z	tripps	pgpkeys	okeydoke. I'll google and poke around for my laptop model and otherwise test various configs
+2010-05-19T00:23:00.000Z	tripps	pgpkeys	ok i'll try that too
+2010-05-19T00:24:00.000Z	tripps	pgpkeys	i don't have that file but do have 00sleep_module and can set SLEEP_MODULE="uswusp" - same thing?
+2010-05-19T00:25:00.000Z	pgpkeys	tripps	~ or MAKE the file 10_config.conf and add that line
+2010-05-19T00:25:00.000Z	tripps	pgpkeys	k. i'll try various methods and let you know what works :)
+2010-05-19T00:26:00.000Z	pgpkeys	tripps	~ ok, wont be able to respoind to me but msging you my email. let me know and I'll work it as best i can to assist. that was a MAJOR PITA for me so..
+2010-05-19T00:26:00.000Z	pgpkeys	tripps	~ can't respond cause well I dont wanna go through the effort of adding you to my whitelist filter for messaging :)
+2010-05-19T00:48:00.000Z	tripps	pgpkeys	if I set SLEEP_MODE to uswsusp will that work with the normal suspend lid close? note I have to sudo s2ram --force since my machine isn't in the database.

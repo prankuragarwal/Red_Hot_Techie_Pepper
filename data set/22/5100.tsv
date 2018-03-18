@@ -1,0 +1,22 @@
+2010-10-07T06:53:00.000Z	mcantor		Why do I get 256 color support in Screen when I SSH into my linux machine with Putty, but NOT when I'm in a local login shell?
+2010-10-07T06:54:00.000Z	Dr_Willis	mcantor	 check the value of the TERM variable perhaps for starters
+2010-10-07T06:54:00.000Z	mcantor	Dr_Willis	It's xterm-256colors in both cases.
+2010-10-07T06:54:00.000Z	Dr_Willis	mcantor	and by local login shell - you mean the console? or a xterm? or gnome-0terminal?
+2010-10-07T06:54:00.000Z	mcantor	Dr_Willis	gnome-terminal
+2010-10-07T06:55:00.000Z	mcantor	Dr_Willis	Hang on, let me check TERM before I get into screen itself
+2010-10-07T06:56:00.000Z	mcantor	Dr_Willis	Ah..
+2010-10-07T06:56:00.000Z	mcantor	Dr_Willis	gnome-terminal was starting out as xterm, putty was starting out as xterm-256color
+2010-10-07T06:58:00.000Z	mcantor	Dr_Willis	I'm desperate to understand what in the world is going on.  Where can I go to read about this?
+2010-10-07T06:59:00.000Z	Dr_Willis	mcantor	 i cant recall ever having a program that needed 256color terminals..
+2010-10-07T06:59:00.000Z	mcantor	Dr_Willis	Nicer vim themes.
+2010-10-07T06:59:00.000Z	mcantor	Dr_Willis	Seriously though.  Why is it that 256 colors works in a login shell no matter what my TERM is, and no matter whether I'm in gnome-terminal or logged in remotely via PuTTY, but it suddenly matters when I start GNU Screen?
+2010-10-07T07:00:00.000Z	mcantor	Dr_Willis	Also, how can I tell gnome-terminal to set TERM to xterm-256color by default?
+2010-10-07T07:00:00.000Z	Dr_Willis	mcantor	 no idea. Ive not used that feature ever in my many years of using linux. You can export the TERM variable if you want.
+2010-10-07T07:01:00.000Z	Dr_Willis	mcantor	 export TERM=xterm-256 and see if it works better.
+2010-10-07T07:01:00.000Z	mcantor	Dr_Willis	Yes, but I only want gnome-terminal to use that. I can't set it in my .bashrc, because there's no guarantee that I'll be logging in with a client that I've configured to work with 256 colors.
+2010-10-07T07:02:00.000Z	Dr_Willis	mcantor	 make .bashrc ask. or check some other bariables.. or just do it by hand when you login.
+2010-10-07T07:02:00.000Z	mcantor	Dr_Willis	I absolutely positively will not do it by hand every single time I log in ;-)  I'll figure it out, don't worry about it.  Thanks for the help
+2010-10-07T07:02:00.000Z	Dr_Willis	mcantor	 could be that gnome-terminal dosent support it.. try it in a normal xterm
+2010-10-07T07:03:00.000Z	mcantor	Dr_Willis	gnome-terminal supports 256 colors perfectly.  It's just that it uses the TERM "xterm" by default, instead of "xterm-256color", which apparently is how screen knows to turn on 256color support.
+2010-10-07T07:04:00.000Z	Dr_Willis	mcantor	 check the gnome-terminal profiles perhaps.  I tend to use Terminator these days. which is enhanced gnome-terminal
+2010-10-07T07:04:00.000Z	mcantor	Dr_Willis	Yeah... they don't have an option to set TERM.  :-\  Maybe I can set it in .Xdefaults or something...

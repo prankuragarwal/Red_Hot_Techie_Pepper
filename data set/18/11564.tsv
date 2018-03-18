@@ -1,0 +1,18 @@
+2006-09-28T07:56:00.000Z	warlock		Is it possible to do this through a command?, Add something on the end of a line in ex all files ending with *.cfg in a dir?
+2006-09-28T07:58:00.000Z	warlock		Is it possible to add a word in end of a line on all files in a dir ending with *.cfg (example: adding 'test' to myconfigline: something, 'test') in all files in a dir that ends with .cfg?
+2006-09-28T07:59:00.000Z	LjL	warlock	i'm not sure i understood. you have files in a directory "X", and you want that all of those with a ".cfg" extension get the word "test" added to the last line of them?
+2006-09-28T08:04:00.000Z	LjL	warlock	you there? if it's what i said, this might work, after you cd to the right dir: find | grep "\.cfg$" | awk ' { print "echo test >>" $1 } '
+2006-09-28T08:04:00.000Z	LjL	warlock	oh, with an "| sh" added at the end though
+2006-09-28T08:05:00.000Z	LjL	warlock	oh i see erUSUL also gave you an answer. that sounds like it would work, too. make sure to test either suggestion on unimportant files, anyway!
+2007-01-26T14:31:00.000Z	LjL	warlock	use quotation marks around $File, i forgot
+2007-01-26T14:24:00.000Z	LjL	warlock	clever use of "find" and "xargs", and something such as sed or echo, would do that
+2007-01-26T14:25:00.000Z	LjL	warlock	find -name "*.conf" -print0 | xargs -n 1 sed -i "s/someline/someline\ntest/g"     for instance, not really tried
+2007-01-26T14:27:00.000Z	LjL	warlock	*assuming* it's correct, which is a big assumption, 1) find all files in the current directory, and subdirectories, with names matching *.conf   2) for each of these files, whenever the text "someline" appears, substitute it with "someline" followed by a newline followed by "test"
+2007-01-26T14:28:00.000Z	LjL	warlock	graft is definitely correct about it, as i said i didn't try it at all
+2007-01-26T14:29:00.000Z	warlock	LjL	I dont want it to edit sub dirs - I want find all .conf files in the current folder, then in the files it finds, there a line called myline=something,something, I want it to add ,something2 in the end of that line in all .conf files
+2007-01-26T14:30:00.000Z	LjL	warlock	for File in *.conf ; do sed -i "s/myline=.*$/myline=\1,something2/g" $File ; done
+2007-01-26T14:31:00.000Z	LjL	warlock	for every file in the current directory with a name matching *.conf, whenever the text "myline=" appears, substitute it with "myline=" followed by whatever there was there until the end of the line, and add ",something2"
+2007-01-26T14:34:00.000Z	LjL	warlock	ok let me check it
+2007-01-26T14:35:00.000Z	warlock	LjL	care to join a channel and talk there with me? As im not registered in this network
+2007-01-26T14:35:00.000Z	LjL	warlock	oh right i forgot something quite essential -    for File in *.conf ; do sed -i "s/myline=\(.*\)$/myline=\1,something2/g" "$File" ; done
+2007-01-26T14:36:00.000Z	LjL	warlock	can use #ubuntu-classroom for that

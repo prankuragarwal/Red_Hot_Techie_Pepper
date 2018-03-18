@@ -1,0 +1,22 @@
+2009-02-19T01:55:00.000Z	MaxDread		without doing a soft-install, how can I fix a corrupted "sudo" command?
+2009-02-19T01:56:00.000Z	MaxDread		the problem is that I can't do it as root
+2009-02-19T01:57:00.000Z	MaxDread		Filesystem got corrupted, fixed it with e2fsck, and sudo itself got corrupted
+2009-02-19T01:58:00.000Z	MaxDread		lupine: tried that... I need to be able to get a fresh "sudo" command from CD because even booting into recovery mode it wouldn't let me go out to the net
+2009-02-19T02:00:00.000Z	MaxDread		lupine: dpkg isn't working... can't get root
+2009-02-19T02:01:00.000Z	MaxDread		lupine: I already tried it through recovery -- still no dice... thought that su was disabled, btw
+2009-02-19T02:02:00.000Z	MaxDread		lupine: so it's not a permanent disabled, eh? Hmmm... ;-)
+2009-02-19T02:03:00.000Z	MaxDread		lupine: from recovery environment, trying anything with dpkg like "dpkg --configure -a" failed to get out to the net
+2009-02-19T02:03:00.000Z	savvas	MaxDread	what seems to be the problem? no sudo?
+2009-02-19T02:04:00.000Z	MaxDread	savvas	yep.. no sudo... sudo corrupted after last e2fsck.. and as a result, no dpkg works either
+2009-02-19T02:04:00.000Z	savvas	MaxDread	did you try running e2fsck again ?
+2009-02-19T02:05:00.000Z	MaxDread		lupine: I'll try that extract from the .deb on the CD... can you send that command string in a priv msg real quick?
+2009-02-19T02:05:00.000Z	MaxDread	savvas	tried e2fsck several times. Was forced to do it because something hosed up with Tracker and locked up this machine...
+2009-02-19T02:06:00.000Z	MaxDread	savvas	was trying to fix this without having to do a soft-install and then go through the hours of slow downloading updates
+2009-02-19T02:07:00.000Z	savvas	MaxDread	which release, hardy? 32-bit or 64-bit?
+2009-02-19T02:08:00.000Z	MaxDread	savvas	8.10 Intrepet 32-bit
+2009-02-19T02:09:00.000Z	savvas	MaxDread	here's the package: http://security.ubuntu.com/ubuntu/pool/main/s/sudo/sudo_1.6.9p17-1ubuntu2.1_i386.deb
+2009-02-19T02:10:00.000Z	savvas	MaxDread	save it and remember the directory you saved it in. then you can boot in recovery mode and execute: dpkg -i /path/to/sudo_1.6.9p17-1ubuntu2.1_i386.deb
+2009-02-19T02:10:00.000Z	MaxDread	savvas	got it... gonna try it now.. thanks big time!
+2009-02-19T02:10:00.000Z	savvas		np :) hope it works
+2009-02-19T02:11:00.000Z	savvas	MaxDread	by the way, you might have to also do: dpkg-reconfigure sudo
+2009-02-19T02:12:00.000Z	MaxDread	savvas	duly noted

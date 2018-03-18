@@ -1,0 +1,18 @@
+2007-05-20T12:33:00.000Z	pngwen		ok, so now I have gotten vmware to uninstall and reinstall, but now it is not extracting and installing its /etc/init.d scripts
+2007-05-20T12:33:00.000Z	pngwen		is there, perhaps, an "aptitude install --work-correctly" flag?
+2007-05-20T12:34:00.000Z	pngwen		lol
+2007-05-20T12:34:00.000Z	pngwen		ok, what would cause a package to not install one of its files, yet still declare success?
+2007-05-20T12:35:00.000Z	pngwen		I've never had a package give me this much trouble and I've been on debian based systems for years.
+2007-05-20T12:35:00.000Z	bbrazil	pngwen	an, conf files are special
+2007-05-20T12:35:00.000Z	bbrazil	pngwen	either purge it an reinstall, or there's a dpkg option re. missing conf files
+2007-05-20T12:37:00.000Z	bbrazil	pngwen	have you tried my suggestions?
+2007-05-20T12:38:00.000Z	pngwen	bbrazil	doing that now.
+2007-05-20T12:39:00.000Z	bbrazil	pngwen	hmm, is it part of the package or created by the postinstall?
+2007-05-20T12:39:00.000Z	pngwen	bbrazil	it's created during the package setup script.
+2007-05-20T12:40:00.000Z	pngwen	bbrazil	so the author was just too lazy to list it
+2007-05-20T12:40:00.000Z	bbrazil	pngwen	that's likely a bug in the packaging then
+2007-05-20T12:40:00.000Z	pngwen	bbrazil	I know.
+2007-05-20T12:40:00.000Z	bbrazil	pngwen	no, there's reasons you don't want a config file to be actually in the package
+2007-05-20T12:41:00.000Z	bbrazil	pngwen	it's relatively rare, but it happens
+2007-05-20T12:41:00.000Z	pngwen	bbrazil	right, but when you build a pacakge, you typically want to make sure that it uninstalls completely.
+2007-05-20T12:41:00.000Z	bbrazil	pngwen	typically, not always

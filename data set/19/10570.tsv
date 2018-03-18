@@ -1,0 +1,19 @@
+2006-08-10T06:08:00.000Z	tr00st		Hey, I seem to be having a problem with my WLAN card (Belkin F5D7010, PCMCIA). Installed Dapper last night, all was running fine, configured the card via the networking tool and it worked fine. This morning, unless I remove the wlan card, the boot process stops when configuring network devices. Further to that, if I plug it in while the laptop's running, I'm unable to run most programs (firefox runs, but that's all I could find). Any help would be
+2006-08-10T06:08:00.000Z	tr00st		much appreciated.
+2006-08-10T06:08:00.000Z	Whyvas	tr00st	when you plug it in and stuff slows down, open up a terminal and type dmesg
+2006-08-10T06:17:00.000Z	tr00st	Whyvas	http://paste.ubuntu-nl.org/20193 is the output I got from dmesg
+2006-08-10T06:20:00.000Z	Whyvas	tr00st	what version of ndiswrapper are you using?
+2006-08-10T06:21:00.000Z	tr00st	Whyvas	whatever was installed as default... I'll just check
+2006-08-10T06:23:00.000Z	Whyvas	tr00st	i have 1.8 installed on my dapper, the newest stable is 1.22, on my other machine, compiling it from source made a huge diffrence for me, even speedwise it would go much faster
+2006-08-10T06:24:00.000Z	tr00st	Whyvas	shall I try disabling whatever drivers are already running and compile ndiswrapper then?
+2006-08-10T06:25:00.000Z	Whyvas	tr00st	I THINK if you just do a rmmod ndiswrapper then compile the new one and install then modprobe it you're fine, but im not sure
+2006-08-10T06:26:00.000Z	Whyvas	tr00st	remove all the drivers and configs that you can and redo them all
+2006-08-10T06:26:00.000Z	tr00st	Whyvas	ndiswrapper isn't installed
+2006-08-10T06:27:00.000Z	Whyvas	tr00st	paste the output of lspci in the pastebin
+2006-08-10T06:27:00.000Z	tr00st	Whyvas	after putting the card in?
+2006-08-10T06:28:00.000Z	tr00st	Whyvas	http://paste.ubuntu-nl.org/20194
+2006-08-10T06:29:00.000Z	Whyvas	tr00st	yeah, RaLink chipset, i've never dealth with them, I would just use ndiswrapper
+2006-08-10T06:30:00.000Z	Whyvas	tr00st	or if you have money, go out and buy a better card
+2006-08-10T06:30:00.000Z	tr00st	Whyvas	sadly, that is not an option :(
+2006-08-10T06:30:00.000Z	Whyvas	tr00st	yeah, figured
+2006-08-10T06:30:00.000Z	tr00st	Whyvas	thanks for the help though

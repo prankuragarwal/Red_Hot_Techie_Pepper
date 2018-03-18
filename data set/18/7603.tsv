@@ -1,0 +1,18 @@
+2010-06-16T06:18:00.000Z	rabby		no idea for: how to force modprobe to load a specific driver although vendor/productid does not fit?
+2010-06-16T06:19:00.000Z	soreau	rabby	modprobe -f
+2010-06-16T06:19:00.000Z	soreau	rabby	What device is it?
+2010-06-16T06:19:00.000Z	rabby	soreau	modprobe sisusbvga works, but it doesn't seem to run on the right device...
+2010-06-16T06:20:00.000Z	soreau	rabby	You cant use a kernel module that doesn't specifically support your device
+2010-06-16T06:20:00.000Z	soreau	rabby	You can load the module but it just wont work
+2010-06-16T06:20:00.000Z	rabby	soreau	it does, but it has not all productids+vendors inside...
+2010-06-16T06:24:00.000Z	rabby	soreau	the modprobe modname works without -f, too, but it does not understand which physical device it belongs to.
+2010-06-16T06:24:00.000Z	soreau	rabby	If this is the case that the module is designed such that it only operates with valid product/vender IDs, then you should use the patch
+2010-06-16T06:25:00.000Z	rabby	soreau	so there is no way to do it - just for testing - before recompiling all the patch?
+2010-06-16T06:25:00.000Z	soreau	rabby	Apparently not.
+2010-06-16T06:26:00.000Z	soreau	rabby	Try modinfo $MODULE to see the options available for said module
+2010-06-16T06:27:00.000Z	rabby	soreau	:-( it will take for hours to get the X devels which are required to compile this driver. i will go on searching for modprobe tricks.
+2010-06-16T06:27:00.000Z	soreau	rabby	Use modinfo to see the options available to the module you're working with
+2010-06-16T06:28:00.000Z	rabby	soreau	modinfo returns a lot and also knows the 0x0711 already: http://nopaste.info/ecf1742905.html
+2010-06-16T06:29:00.000Z	soreau	rabby	I think there is a reason for the patch and you should use it unless it's really old and already made it's way into the kernel
+2010-06-16T06:30:00.000Z	rabby	soreau	the patch is really only rewriting the compatibility list. no other changes at all.
+2010-06-16T06:31:00.000Z	soreau	rabby	Takes seconds to compile a kernel module usually

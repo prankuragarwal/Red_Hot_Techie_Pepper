@@ -1,0 +1,18 @@
+2011-11-13T10:14:00.000Z	r4y		How do I know if my motherboard has s.m.a.r.t.? so I know if I should install smartmontools.
+2011-11-13T10:15:00.000Z	pnorman	r4y	Any modern SATA drive should have SMART support
+2011-11-13T10:16:00.000Z	pnorman	r4y	How old is your motherboard?
+2011-11-13T10:17:00.000Z	pnorman	r4y	Ya, I'd just try it - that's easiest.
+2011-11-13T10:20:00.000Z	pnorman	r4y	looks like it has SATA ports as well as IDE ports. I'd just go ahead install smartmontools and tryit out.
+2011-11-13T11:08:00.000Z	pnorman	r4y	the tests take time to complete. try sudo smartctl -a /dev/sda
+2011-11-13T11:12:00.000Z	pnorman	r4y	SMART isn't really a motherboard or BIOS related thing, it's the drives
+2011-11-13T13:23:00.000Z	pnorman	r4y	reading smart responses is always somewhat of an art.
+2011-11-13T13:24:00.000Z	pnorman	r4y	It did an extended test without error so I wouldn't be inclined to worry too much. maybe it found a bad block and remapped it, which is fairly normal
+2011-11-13T13:27:00.000Z	pnorman	r4y	keep in mind that the drive could fail at any time, even if SMART is reporting okay. that's what backups are for.
+2011-11-13T13:30:00.000Z	pnorman	r4y	that drive has a surprisingly low power_on_hours for a 320 GB PATA drive - did you just get it recently?
+2011-11-13T13:30:00.000Z	pnorman	r4y	I'd be as confident in the drive as any - some SMART errors can safely be ignored
+2011-11-13T13:31:00.000Z	pnorman	r4y	they've always had back blocks, what you have to worry about is when they start getting lots of them and when they get more than they can remap around
+2011-11-24T13:21:00.000Z	pnorman	r4y	Is it a SATA drive? It almost certainly does. To query the drive about the SMART status you want smartmontools
+2011-11-24T13:22:00.000Z	pnorman	r4y	sudo apt-get install smartmontools
+2011-11-24T13:25:00.000Z	pnorman	r4y	if it's connected and you just need to run mount, it should still work. drive letter is likely to be sdb in that case
+2011-11-24T13:29:00.000Z	pnorman	r4y	smartctl deals with the drives, not the partitions on them
+2011-11-24T13:32:00.000Z	pnorman	r4y	Ya - that looks normal. Keep in mind a drive can look normal with SMART and still fail at any minute.

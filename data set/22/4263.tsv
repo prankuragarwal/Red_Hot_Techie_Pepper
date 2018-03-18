@@ -1,0 +1,22 @@
+2008-02-04T04:13:00.000Z	BobboL		hey.. I installed a pata card in my comp with 2 hd's on it.  dmesg says the card is there (it seems to be using the libata module) but the drives on the card are not showing up.. has someone experience with these kinds of cards?
+2008-02-04T04:15:00.000Z	erUSUL	BobboL	maybe the dmesg has some clue can you post it to pastebin??
+2008-02-04T04:16:00.000Z	BobboL	erUSUL	thats a bit hard because its a different comp with no net. but the line that caught my eye was: ata2: sata link down (SStatus 0 Scontrol 300)
+2008-02-04T04:17:00.000Z	erUSUL	BobboL	it is sata or pata??
+2008-02-04T04:18:00.000Z	BobboL	erUSUL	its a sata card with a pata connector as well.
+2008-02-04T04:18:00.000Z	erUSUL	BobboL	that's the normal msg for a not used sata port (i have three of them on my pc)
+2008-02-04T04:19:00.000Z	BobboL	erUSUL	there are no extra devices (such as sda or hde)
+2008-02-04T04:19:00.000Z	erUSUL	BobboL	what chip does the card uses?
+2008-02-04T04:21:00.000Z	erUSUL	BobboL	do you see sata_via and pata_via loaded?
+2008-02-04T04:22:00.000Z	BobboL	erUSUL	libata under lsmod shows the sata_via, sata_promise.
+2008-02-04T04:22:00.000Z	BobboL	erUSUL	I try a modprobe
+2008-02-04T04:24:00.000Z	BobboL	erUSUL	nope modprobe pata_via   Module pata-via not found
+2008-02-04T04:24:00.000Z	BobboL	erUSUL	nope modprobe pata_via   Module pata_via not found sorry
+2008-02-04T04:26:00.000Z	erUSUL	BobboL	try this one then «sudo modprobe via82cxxx»
+2008-02-04T04:27:00.000Z	BobboL	erUSUL	that is already loaded.. part of ide_core in lsmod
+2008-02-04T04:29:00.000Z	erUSUL	BobboL	but no /dev/hdxx for the disks :(
+2008-02-04T04:29:00.000Z	BobboL	erUSUL	nope :(
+2008-02-04T04:30:00.000Z	BobboL	erUSUL	I check the jumpers on the drives
+2008-02-04T04:34:00.000Z	erUSUL	BobboL	it seems that using the boot option "all-generic-ide" to the kernel may help with your issue
+2008-02-04T04:39:00.000Z	BobboL	erUSUL	Gilda: nope didn't work.. gonna try to get you guys the dmesg
+2008-02-04T04:44:00.000Z	BobboL	erUSUL	you mentioned a module pata_via?
+2008-02-04T05:24:00.000Z	BobboL	erUSUL	after abit of playing around, I removed the pata drives and inserted a sata drive on the card,  on boot I first noticed before grab a quick flash of a drive.. and now my kernel is looking much different. and /devsda is present, the sata drives work.. any ideas what is wrong with the pata?

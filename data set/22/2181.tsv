@@ -1,0 +1,22 @@
+2010-04-10T23:44:00.000Z	bribroder	azi`	did you have any luck?
+2010-04-10T23:45:00.000Z	azi`	bribroder	i was able to boot into my machine by removing the "load fglrx" section of my xorg.conf, but now i can't use applications using openGL
+2010-04-10T23:46:00.000Z	azi`	bribroder	any clue how to fix that? for the proprietary drivers, it just seem they'll not work so i'll switch to the open ones for the moment
+2010-04-10T23:48:00.000Z	bribroder	azi`	 did you apt-get remove --purge xorg-driver-fglrx ?
+2010-04-10T23:49:00.000Z	bribroder	azi`	you may find it helpful to reconfig the server
+2010-04-10T23:50:00.000Z	azi`	bribroder	reconfig manually or is there any command for that? xorgcfg doesn't seem to be shipped with ubuntu
+2010-04-10T23:50:00.000Z	bribroder	azi`	sudo dpkg-reconfigure xserver-xorg
+2010-04-10T23:50:00.000Z	azi`	bribroder	thanks
+2010-04-10T23:51:00.000Z	azi`	bribroder	the xorg configs remains the same as after my last edit, after I issue this command
+2010-04-10T23:51:00.000Z	azi`	bribroder	and the problem is that with this config i am not able to use opengl
+2010-04-10T23:52:00.000Z	bribroder	azi`	just making sure there's no bits left over... did you say you --purged the driver?
+2010-04-10T23:52:00.000Z	azi`	bribroder	yes
+2010-04-10T23:52:00.000Z	azi`	bribroder	copy pasted what u said actually
+2010-04-10T23:56:00.000Z	azi`	bribroder	removing xorg.conf and restarting X helped. now i just need to find if there is any related bug to mine
+2010-04-10T23:57:00.000Z	bribroder	azi`	is wine involved at all?
+2010-04-10T23:59:00.000Z	azi`	bribroder	no, why?
+2010-04-10T23:59:00.000Z	azi`	bribroder	where did wine came from?
+2010-04-11T00:01:00.000Z	bribroder	azi`	just curious if you were trying to run an app with wine, infamously fragile
+2010-04-11T00:04:00.000Z	bribroder	azi`	you may try --reinstalling libgl1-mesa-glx and libgl1-mesa-dri
+2010-04-11T00:06:00.000Z	bribroder	azi`	and be sure to restart of course :)
+2010-04-11T00:06:00.000Z	azi`	bribroder	ok. thank you for your time
+2010-04-11T00:07:00.000Z	bribroder	azi`	you're probably better at this in any case... driver problems freak me out

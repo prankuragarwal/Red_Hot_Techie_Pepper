@@ -1,0 +1,23 @@
+2008-11-16T00:23:00.000Z	AnythingJe		Hey guys, I'm trying to get Ushare to work (streaming to my xbox360)  It runs fine, but the xbox times out when it tries to connect (it can see it, just can't connect).  I don't have iptables, and I've disabled ufw... any ideas what it could be?
+2008-11-16T00:24:00.000Z	AnythingJe		/etc/init.d/iptables start
+2008-11-16T00:24:00.000Z	AnythingJe		bash: /etc/init.d/iptables: No such file or directory\
+2008-11-16T00:25:00.000Z	AnythingJe		so how do I change that to allow all (I'm within a network, so will be fine)?  And why don't I have an /etc/init.d/iptables?
+2008-11-16T00:27:00.000Z	AnythingJe		would "ufw disable" do the trick? does ufw work by creating iptables rules for me? or are they two separate firewalls that both have to be disabled?
+2008-11-16T00:29:00.000Z	musikgoat	AnythingJe	ufw is a front end to iptables
+2008-11-16T00:30:00.000Z	AnythingJe	musikgoat	awesome great, so "ufw status" gives me "Firewall not loaded" should imply that I allow all connections, right?
+2008-11-16T00:30:00.000Z	musikgoat	AnythingJe	yes
+2008-11-16T00:31:00.000Z	musikgoat	AnythingJe	does the xbox see the ushare?
+2008-11-16T00:33:00.000Z	AnythingJe	musikgoat	Sort of... if I wait 5 minutes or so it appears but doesn't let me connect... it disappears if I wait longer though
+2008-11-16T00:33:00.000Z	AnythingJe	musikgoat	so it fades in and out.... which makes me not surprised that the connection times out
+2008-11-16T00:34:00.000Z	musikgoat	AnythingJe	can you pastebin your ushare.conf?
+2008-11-16T00:35:00.000Z	AnythingJe	musikgoat	Ya, configure file here: http://ubuntuforums.org/showthread.php?t=983131
+2008-11-16T00:37:00.000Z	musikgoat	AnythingJe	few moments
+2008-11-16T00:40:00.000Z	musikgoat	AnythingJe	if ushare is running, can you tell me what following gives you:  ps aux | grep ushare
+2008-11-16T00:42:00.000Z	AnythingJe	musikgoat	I get: dan       6984  0.0  0.0  64664  2820 pts/0    Sl+  11:50   0:00 ushare -t -w -x -f /etc/ushare.conf  I'm currently running it manually with those -t -w -x commands... also tried running at a service or manually with just -x, all have the same behavior
+2008-11-16T00:42:00.000Z	musikgoat	AnythingJe	try adding the -r command
+2008-11-16T00:43:00.000Z	musikgoat	AnythingJe	sorry, no
+2008-11-16T00:43:00.000Z	musikgoat	AnythingJe	it was -x that i was saying, but nevermind
+2008-11-16T00:47:00.000Z	AnythingJe	musikgoat	Thanks for trying.  Guess I won't be able to watch any today.  I'll just wait for a reply to my thread... Though there were 3 or 4 other posts of people with the same issue which never got any replies :-/
+2008-11-16T00:48:00.000Z	musikgoat	AnythingJe	i saw that,  i'd check around on some xbox forums too
+2008-11-16T00:48:00.000Z	musikgoat	AnythingJe	good luck
+2008-11-16T00:48:00.000Z	AnythingJe	musikgoat	thanks :-D

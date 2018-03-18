@@ -1,0 +1,22 @@
+2009-12-24T03:18:00.000Z	mdt		Anybody know why X might fail to start when startx is run by a normal user, but starts OK when startx is run by root?
+2009-12-24T03:18:00.000Z	dabaR	mdt	permissions.
+2009-12-24T03:19:00.000Z	mdt	dabaR	what permissions?  .Xauthority files removed and still does not work ... no errors in logs
+2009-12-24T03:19:00.000Z	dabaR	mdt	well, that sounds like the kind of thing that would be caused by permissions, don't you think?
+2009-12-24T03:21:00.000Z	mdt	dabaR	absolutely ... I just can't find anything wrong with the permissions :(
+2009-12-24T03:21:00.000Z	dabaR	mdt	there may be more things than just that .XAuthority
+2009-12-24T03:23:00.000Z	mdt	dabaR	prolly ... but I can't figure out what.  And I would expect some errors in the logs indicating such.
+2009-12-24T03:23:00.000Z	dabaR	mdt	do you have gdm installed?
+2009-12-24T03:25:00.000Z	mdt	dabaR	yeah (either that or Xdm ... whatever the Xubuntu default is)
+2009-12-24T03:26:00.000Z	dabaR	mdt	does that start?
+2009-12-24T03:26:00.000Z	mdt	dabaR	yes ... but when i try to log on as my regular user, it just goes back to the display manager logon screen after blanking for a few secs
+2009-12-24T03:27:00.000Z	dabaR	mdt	so it is not X that is not starting, but rather you can't log in.
+2009-12-24T03:27:00.000Z	mdt	dabaR	hmmm... lemme think about that
+2009-12-24T03:28:00.000Z	dabaR	mdt	what are the permissions and ownership like on .dmrc?
+2009-12-24T03:28:00.000Z	mdt	dabaR	sec
+2009-12-24T03:28:00.000Z	mdt	dabaR	sry in middle of a reboot atm
+2009-12-24T03:30:00.000Z	mdt	dabaR	-rw-r--r--
+2009-12-24T03:30:00.000Z	dabaR	mdt	your user the owner?
+2009-12-24T03:30:00.000Z	mdt	dabaR	chmod 77 -> same prob
+2009-12-24T03:31:00.000Z	mdt	dabaR	y
+2009-12-24T03:36:00.000Z	mdt	dabaR	I've been thinking about what u said re: logging on -vs- starting server.  I think the problem is that a non-root user cannot start X.  gdm is run with root priv's is it not?
+2009-12-24T03:44:00.000Z	mdt	dabaR	Maybe not ... perhaps the server starts OK, then crashes when trying to authenticate a non-root client.  If it crashes bad enough maybe it dies before it can log anything.

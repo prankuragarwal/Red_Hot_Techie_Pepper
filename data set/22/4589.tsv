@@ -1,0 +1,22 @@
+2009-11-21T00:09:00.000Z	jcrawford		ok so someone said I could enter commands like this in gnome but i had to step out so i missed where they said to add it.  I want this command to run everytime that i start the system: ssh -L 3306:localhost:3306 user@domain.com &
+2009-11-21T00:10:00.000Z	cellofellow	jcrawford	see the System > Preferences > Startup Apps
+2009-11-21T00:11:00.000Z	cellofellow	jcrawford	you'll want to set up key-based auth though
+2009-11-21T00:17:00.000Z	cellofellow	jcrawford	you probably need to put those keys in /root instead of ~.
+2009-11-21T00:17:00.000Z	jcrawford	cellofellow	i will try that now
+2009-11-21T00:19:00.000Z	jcrawford	cellofellow	can you explain why though?
+2009-11-21T00:20:00.000Z	cellofellow	jcrawford	cause the ssh command will be running as root and need the keys to be in /root where it will access them.
+2009-11-21T00:20:00.000Z	cellofellow	jcrawford	/root/.ssh/ in particular.
+2009-11-21T00:20:00.000Z	jcrawford	cellofellow	will that still forward my port even though my app is not running as root?
+2009-11-21T00:20:00.000Z	jcrawford	cellofellow	yea i followed you on the .ssh/
+2009-11-21T00:20:00.000Z	cellofellow	jcrawford	also, may want to put -fN options on the SSH command. -f means fork to background and -N means don't run anything on the server.
+2009-11-21T00:21:00.000Z	jcrawford	cellofellow	ah thanks for that tip will do that now
+2009-11-21T00:21:00.000Z	cellofellow	jcrawford	yeah
+2009-11-21T00:21:00.000Z	cellofellow	jcrawford	as long as L is last
+2009-11-21T00:21:00.000Z	cellofellow	jcrawford	yes
+2009-11-21T00:22:00.000Z	cellofellow	jcrawford	no
+2009-11-21T00:23:00.000Z	cellofellow	jcrawford	wait, what are you chmodding?
+2009-11-21T00:23:00.000Z	jcrawford	cellofellow	/etc/init.d/mysql_forward
+2009-11-21T00:23:00.000Z	cellofellow	jcrawford	755 yes
+2009-11-21T00:23:00.000Z	cellofellow	jcrawford	make sure the /root/.ssh/id_rsa file is 400
+2009-11-21T00:23:00.000Z	cellofellow	jcrawford	and owned by root.
+2009-11-21T00:39:00.000Z	jcrawford	cellofellow	any idea why that would not work after the changes you just suggested?  I cannot connect to mysql using localhost 3306 and I should be able to if the tunnel command worked

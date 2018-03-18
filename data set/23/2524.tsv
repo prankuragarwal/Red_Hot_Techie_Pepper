@@ -1,0 +1,23 @@
+2009-02-26T23:30:00.000Z	Stevethepirate		Where would I drop a networking based script that has to be run on startup before anything on the PC actually touches the networking modules [ghosting a MAC here]
+2009-02-26T23:31:00.000Z	Stevethepirate		!xset
+2009-02-26T23:31:00.000Z	Stevethepirate		Or not.
+2009-02-26T23:33:00.000Z	Stevethepirate		Where would I drop a networking based script that has to be run on startup before anything on the PC actually touches the networking modules [ghosting a MAC here]
+2009-02-26T23:35:00.000Z	bernz	Stevethepirate	what about booting from the network itself? bootp?
+2009-02-26T23:35:00.000Z	bernz	Stevethepirate	if you're ghosting, you don't really need an OS, just enough to do the copying, right?
+2009-02-26T23:38:00.000Z	bernz	Stevethepirate	right, that might be tricky, because network cards try to get right in there as soon as they're plugged in... if you're trying to masquerade a MAC address, you probably need a card that can store the custom MAC address in non-volatile storage, so it's right there when the PHY powers up
+2009-02-26T23:39:00.000Z	Stevethepirate	bernz	Hmm, I could do this in windows np
+2009-02-26T23:40:00.000Z	bernz	Stevethepirate	well, it's possible to have the card join the network as its original "hardwired" MAC, then get re-assigned at run-time, "leave", and "come back" as the new custom MAC, sure... i don't know enough about that to tell you where to start, though, sorry :-/
+2009-02-26T23:54:00.000Z	bernz	Stevethepirate	or perhaps once an hour or less ;-)  heheeh
+2009-02-26T23:42:00.000Z	bernz	Stevethepirate	well, one possible way, though super convoluted, is to modify udev rules to detect-and-do-nothing for your NIC, then when the system has booted to your shell, re-run udev with a different config, allowing it to "see" the NIC this time, but overriding the MAC
+2009-02-26T23:44:00.000Z	Stevethepirate	bernz	Surely I can just add the ifconfig commands to run in rc?
+2009-02-26T23:45:00.000Z	bernz	Stevethepirate	well, i could only say "hopefully", because i don't rightly know ;-/
+2009-02-26T23:46:00.000Z	Stevethepirate	bernz	Ok, well.surely, rc{x} is run as root?
+2009-02-26T23:46:00.000Z	bernz	Stevethepirate	i'd bet at least a few bucks on that, though i'm not certain
+2009-02-26T23:47:00.000Z	bernz	Stevethepirate	one question i'd have is: are rc{x} run *after* udev (at which point, the card probably becomes "alive", and it's too late to pretend to be another MAC without others on the network noticing, if that's the goal)
+2009-02-26T23:47:00.000Z	Stevethepirate	bernz	Hmm, that could be true.
+2009-02-26T23:48:00.000Z	bernz	Stevethepirate	the key is to figure out overall startup process for the distro you're using, to best pick the "wedge" point
+2009-02-26T23:51:00.000Z	bernz	Stevethepirate	not sure, just watch the channel a bit, and those who Get It will make themselves known (i don't want to name anyone specifically, because my opinions of the Clueful are personal ;-)
+2009-02-26T23:52:00.000Z	Stevethepirate	bernz	my spam keys are autobound :D
+2009-02-26T23:53:00.000Z	bernz	Stevethepirate	that's probably a bad idea; i won't say this channel is super strict, but people appreciate a lack of redundancy (and rightly so)
+2009-02-26T23:53:00.000Z	Stevethepirate	bernz	Yeah i know.
+2009-02-26T23:54:00.000Z	Stevethepirate	bernz	Heh

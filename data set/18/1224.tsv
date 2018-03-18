@@ -1,0 +1,18 @@
+2011-11-28T05:13:00.000Z	carey		:)
+2011-11-28T05:14:00.000Z	carey		I need to mount a RAID10 mdadm array in a live CD so I can access my files. But I can't work out how to do it
+2011-11-28T05:15:00.000Z	carey		It's something like mdadm --assemble /dev/md0 --level=raid10 --raid-devices=4 /dev/sda1 /dev/sdb1 /dev/sdc1 /dev/sdd1
+2011-11-28T05:15:00.000Z	carey		but i worry that if I run the command it might wipe my array, just wanting someone to confirm it if possible :)
+2011-11-28T05:16:00.000Z	carey		yeah they do
+2011-11-28T05:16:00.000Z	carey		when I run mdadm --assemble --scan it misses out one drive (/dev/sdb1)
+2011-11-28T05:16:00.000Z	carey		but the drive is fine, shows up with fdisk fine
+2011-11-28T05:17:00.000Z	carey		so i think maybe the manual command (with the list of drives) is what I want instead of the auto scan (from --scan)
+2011-11-28T05:18:00.000Z	carey		well I think I'm going to try this command: "mdadm --assemble /dev/md0 --level=raid10 --raid-devices=4 /dev/sda1 /dev/sdb1 /dev/sdc1 /dev/sdd1".... hopefully nothing goes wrong )
+2011-11-28T05:19:00.000Z	carey		they are the right drives and partitions, right raid level (10) and the right number of devices (4). Just not sure on the --assemble bit as to what it means :)
+2011-11-28T05:19:00.000Z	escott	carey	assemble just assembles an existing array from the different components. if the components didn't match up it would complain
+2011-11-28T05:24:00.000Z	carey	escott	ok thank you. actually I was having a problem with /dev/sdb1 not appearing in raid array. I can see why now, because /proc/mdstat has /dev/dsb1 as inactive listed as /dev/md_d0 (it must have been auto detected, because I have not instructed mdadm.conf to do anything with my raid drives). I have just run mdadm --stop /dev/md_d0 and it stopped it. Now I'm going to try the assemble command.
+2011-11-28T05:28:00.000Z	escott	carey	the array should have information in it about what level it is and the uuids of the other disks so the level is superfluous
+2011-11-28T05:28:00.000Z	carey	escott	I'll try omitting the level thanks
+2011-11-28T05:29:00.000Z	carey	escott	I omitted the options and it worked, but I still have the same problem. "mdadm: /dev/md0 has been started with 3 drives (out of 4). "
+2011-11-28T05:29:00.000Z	escott	carey	it may be rejecting the drive for some reason (stale timestamp or hardware failure)
+2011-11-28T05:31:00.000Z	carey	escott	yes it must be. For some reason /dev/sdb1 is listed separately in /proc/mdstat. It has "md0 : active raid10 sda1[0] sdd1[3] sdc1[2] "   and "md_d0 : inactive sdb1[1](S)"
+2011-11-28T05:35:00.000Z	carey	escott	THANK YUO

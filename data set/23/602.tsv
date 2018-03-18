@@ -1,0 +1,23 @@
+2011-05-16T05:12:00.000Z	tntc	kajakajo	the question is this: do you want to move all the stuff out of the folder and into another folder, or do you want to copy them?
+2011-05-16T05:12:00.000Z	tntc	kajakajo	from the way I read it, you want to move them
+2011-05-16T05:12:00.000Z	kajakajo	tntc	move them. My big question is how to select all the contents.
+2011-05-16T05:14:00.000Z	tntc	kajakajo	well, the short answer is mv source/* dest/
+2011-05-16T05:16:00.000Z	tntc	kajakajo	and a lot more time if you're moving big files.
+2011-05-16T05:17:00.000Z	tntc	kajakajo	but the mv command will handle directories inside and stuff correctly. and it will just move the stuff. Genereally, it just shifts what points to the contents of the folder, rather than actually moving anything on the disk.
+2011-05-16T05:17:00.000Z	tntc	kajakajo	if you're moving from one disk to another, use cp, because it will take the same amount of time and is safer
+2011-05-16T05:17:00.000Z	tntc	kajakajo	you can rm the old directory after the cp completes correctly.
+2011-05-16T05:18:00.000Z	tntc	kajakajo	does that make sense to you?
+2011-05-16T05:21:00.000Z	tntc	kajakajo	did you get it sorted out?
+2011-05-16T05:23:00.000Z	tntc	kajakajo	let me make sure I have this situation right: You've got stuff in /folder/foo/ , but you want everything in there in /folder/ instead?
+2011-05-16T05:23:00.000Z	kajakajo	tntc	exactly
+2011-05-16T05:23:00.000Z	tntc	kajakajo	go into the folder the stuff is in right now, like this: cd /folder/foo/
+2011-05-16T05:24:00.000Z	tntc	kajakajo	then, move everything in that folder to the folder below like this: mv * ..
+2011-05-16T05:24:00.000Z	tntc	kajakajo	the mv is "move", * means "Everything in this folder" and .. means "Into the folder above it."
+2011-05-16T05:24:00.000Z	tntc	kajakajo	cp will mean it will copy everything, which means that folder will suddenly use twice the space.
+2011-05-16T05:25:00.000Z	tntc	kajakajo	mv will just say "You're in /folder/ now, not /folder/foo/"
+2011-05-16T05:25:00.000Z	tntc	kajakajo	much, much faster.
+2011-05-16T05:25:00.000Z	kajakajo	tntc	that sounds perfect.
+2011-05-16T05:25:00.000Z	tntc	kajakajo	;)
+2011-05-16T05:26:00.000Z	tntc	kajakajo	be careful when using stuff like .. and ., especially with * and mv or rm. The unix command line has some... oddities.
+2011-05-16T05:26:00.000Z	kajakajo	tntc	ntoed.
+2011-05-16T05:28:00.000Z	tntc	kajakajo	oh, also be wary of any directories with filenames starting with weird symbols like - or ? or *. - is especially bad. something like rm with a wildcard can find a -r and treat it as a /parameter/ instead of a filename, thus making your delete /recursive/. BAD NEWS! :)

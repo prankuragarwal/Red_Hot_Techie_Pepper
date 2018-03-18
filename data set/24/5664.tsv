@@ -1,0 +1,24 @@
+2009-05-14T03:37:00.000Z	linux_noob		hi could someone more awesome than me please tell me how to search my apache2 folder for references to port 80???
+2009-05-14T03:38:00.000Z	blizzkid	linux_noob	grep 80 * inside /etc/apache2
+2009-05-14T03:38:00.000Z	linux_noob	blizzkid	thx ur awesome
+2009-05-14T03:38:00.000Z	blizzkid	linux_noob	you could even do grep -r 80 /etc/apache2/*
+2009-05-14T03:42:00.000Z	blizzkid	linux_noob	none of them are conflicting
+2009-05-14T03:42:00.000Z	linux_noob	blizzkid	so you're saying i must have two references to port 80 in ONE file to get the message that my por t80 is already being used then??
+2009-05-14T03:42:00.000Z	blizzkid	linux_noob	2 references? in which file?
+2009-05-14T03:43:00.000Z	blizzkid	linux_noob	netstat -punta | grep 80
+2009-05-14T03:45:00.000Z	blizzkid	linux_noob	make that "sudo netstat -punta | grep 80"
+2009-05-14T03:45:00.000Z	linux_noob	blizzkid	okay i see something using it now
+2009-05-14T03:46:00.000Z	blizzkid	linux_noob	what process is it?
+2009-05-14T03:46:00.000Z	linux_noob	blizzkid	im not so sure how to read what im seeing here... i see a buncha IPs... i see "tcp" and "time_wait" as well as "listen"
+2009-05-14T03:46:00.000Z	blizzkid	linux_noob	pastebin the output
+2009-05-14T03:48:00.000Z	linux_noob	blizzkid	- my paste bin for sudo netstat -punta | grep 80 http://www.mibbit.com/pb/hBMSq8
+2009-05-14T03:48:00.000Z	blizzkid	linux_noob	so your apache is listening on port 80, which is fine
+2009-05-14T03:49:00.000Z	linux_noob	blizzkid	why wont my apache restart? do i need to force it to stop or something?
+2009-05-14T03:49:00.000Z	blizzkid	linux_noob	pastebin the output of sudo /etc/init.d/apache2 restart
+2009-05-14T03:50:00.000Z	linux_noob	blizzkid	thanks btw, here is the apache restart: http://www.mibbit.com/pb/ZUxVt4
+2009-05-14T03:52:00.000Z	blizzkid	linux_noob	do a "sudo /etc/init.d/apache2 stop" and after that "ps -ef | grep apache" pastebin the output of the latter
+2009-05-14T03:53:00.000Z	linux_noob	blizzkid	apache stopped, then "ps -ef | grep apache" http://www.mibbit.com/pb/THGA28
+2009-05-14T03:55:00.000Z	blizzkid	linux_noob	try "sudo kill -9 5446 5457 5464" followed by "sudo /etc/init.d/apache2 start"
+2009-05-14T03:55:00.000Z	linux_noob	blizzkid	no such process, is that okay?
+2009-05-14T03:56:00.000Z	blizzkid	linux_noob	see if "ps -ef | grep apache" generates some output now, if there's only a line with grep it's ok
+2009-05-14T03:56:00.000Z	linux_noob	blizzkid	i guess it was okay because it just started :) thank you so much

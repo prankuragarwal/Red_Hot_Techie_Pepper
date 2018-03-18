@@ -1,0 +1,19 @@
+2008-05-17T22:06:00.000Z	keymoo_		hi guys quick one - i've installed xubuntu onto an old PC which has on board video. my video res is set to a max of 800x600 - how can i find out my video card and increase the screen res? thanks
+2008-05-17T22:06:00.000Z	heymr	keymoo_	in a terminal> xrandr
+2008-05-17T22:07:00.000Z	keymoo_		ok, thanks
+2008-05-17T22:07:00.000Z	heymr	keymoo_	xrandr will list all the available rezzys
+2008-05-17T22:08:00.000Z	keymoo_	heymr	thanks it says max is 800x600
+2008-05-17T22:08:00.000Z	heymr	keymoo_	shucks :/
+2008-05-17T22:09:00.000Z	keymoo_		am i screwed?
+2008-05-17T22:09:00.000Z	heymr	keymoo_	what graphic card did you say you have?
+2008-05-17T22:09:00.000Z	keymoo_	heymr	that's the problem i dont know - it's on-board and the PC is 5-6 years old
+2008-05-17T22:09:00.000Z	keymoo_	heymr	is there a command i can use to find out?
+2008-05-17T22:11:00.000Z	heymr	keymoo_	nano /etc/X11/xorg.conf, Ctrl+W and type Driver and hit enter. that will show what driver it is currently using
+2008-05-17T22:12:00.000Z	keymoo_	heymr	thanks lshw give this: http://paste.ubuntu.com/12758/
+2008-05-17T22:12:00.000Z	heymr		ur efforts                  │ _chaky_
+2008-05-17T22:13:00.000Z	heymr		[20:11:09]             <-- laeg (n=laeg@87.192.92.168) has quit ("leaving")            │ _coredump_
+2008-05-17T22:13:00.000Z	heymr		wwooppss
+2008-05-17T22:13:00.000Z	heymr		so much for middle clicking that link
+2008-05-17T22:13:00.000Z	keymoo_	heymr	and xorg.conf is http://paste.ubuntu.com/12759/
+2008-05-17T22:15:00.000Z	heymr	keymoo_	oh, NVIDIA, eh? You can get more then that... use the nv driver, or get the driver you need from the nVidia website, they have linux drivers
+2008-05-17T22:15:00.000Z	heymr	keymoo_	sudo dpkg-reconfigure -phigh xserver-xorg when you get a chance (this might have to kill X)

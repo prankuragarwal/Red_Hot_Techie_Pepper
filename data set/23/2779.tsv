@@ -1,0 +1,23 @@
+2008-11-12T00:27:00.000Z	DelGurth		question, can someone explain to me why avahi causes problems when I have a .local domain?
+2008-11-12T00:27:00.000Z	DelGurth		http://ubuntuforums.org/showthread.php?t=978582
+2008-11-12T00:29:00.000Z	jimv2000	DelGurth	 If it's causing problems, you can remove Avahi...it's kind of like Rendvous for Mac.
+2008-11-12T00:30:00.000Z	jimv2000		@JohnC you can't use apt-get at a cybercafe?
+2008-11-12T00:30:00.000Z	jimv2000		O
+2008-11-12T00:30:00.000Z	DelGurth	jimv2000	I disabled it indeed, but I rather would have ubuntu to work out of the box at my current job location
+2008-11-12T00:31:00.000Z	DelGurth	jimv2000	how do I explain a new ubuntu user that the default install can't handle a .local domain as it's configured there
+2008-11-12T00:32:00.000Z	jimv2000	DelGurth	I suppose you could take mdns out of the resolv.conf file
+2008-11-12T00:32:00.000Z	jimv2000		oh
+2008-11-12T00:32:00.000Z	jimv2000		I didn't see your second message
+2008-11-12T00:32:00.000Z	DelGurth		not resolv.conf but nsswitch.conf
+2008-11-12T00:32:00.000Z	jimv2000		yeah, wrong file
+2008-11-12T00:33:00.000Z	DelGurth		but yes, it could be removed there as well.. but the admin userinterface also gives a way to remove it
+2008-11-12T00:33:00.000Z	DelGurth		but thinking now, I'm "complaining" at the wrong place... it's avahi that's broken, not ubuntu
+2008-11-12T00:33:00.000Z	jimv2000	DelGurth	looks like something that should be changed
+2008-11-12T00:34:00.000Z	jimv2000		"if you have avahi (aka zeroconf) installed, *.local
+2008-11-12T00:34:00.000Z	jimv2000		addresses are resolved via mDNS first. The default config of avahi is to
+2008-11-12T00:34:00.000Z	jimv2000		fail if mDNS is enabled and the host is not found in mDNS. This means
+2008-11-12T00:34:00.000Z	jimv2000		that you cannot resolve addresses under .local which are
+2008-11-12T00:34:00.000Z	jimv2000		in DNS but not mDNS."
+2008-11-12T00:34:00.000Z	DelGurth		allthough if avahi doesn't work in certain situations
+2008-11-12T00:34:00.000Z	DelGurth		why is it enabled on default
+2008-11-12T00:34:00.000Z	jimv2000	DelGurth	I don't know

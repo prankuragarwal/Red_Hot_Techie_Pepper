@@ -1,0 +1,23 @@
+2008-03-29T08:10:00.000Z	rhineheart_m		mmmm.. modprobe -r ipv6 <<< what does it do?
+2008-03-29T08:10:00.000Z	nickrud	rhineheart_m	it removes the ipv6 support from the kernel
+2008-03-29T08:11:00.000Z	nickrud	rhineheart_m	you can see all the modules in the kernel (providing much of it functionality) with lsmod
+2008-03-29T08:11:00.000Z	nickrud	rhineheart_m	no modules, no
+2008-03-29T08:12:00.000Z	nickrud	rhineheart_m	it's better to create a new file in the modprobe.d , the blacklist file is provided by ubuntu and the whole purpose of *.d directories is avoiding altering files provided by packages
+2008-03-30T06:05:00.000Z	nickrud	rhineheart_m	admin users have sudo privileges, you would add a user to admin to let them sudo
+2008-03-30T06:06:00.000Z	rhineheart_m	nickrud	yeah I know that..but how to allow a user with sudo power to write files in a certain directory?
+2008-03-30T06:07:00.000Z	nickrud	rhineheart_m	you would either make the directory writeable by all, or use sudo when you write to the dir. Depends on the dir
+2008-03-30T06:07:00.000Z	rhineheart_m	nickrud	I will be using winscp to transfer files.. but it gives me permission error everytime I will create files somewhere in /var/www subdir..
+2008-03-30T06:08:00.000Z	nickrud	rhineheart_m	ah. then you need to make   /var/www writeable by non group or user:    sudo chmod -R  o+w  /var/www
+2008-03-30T06:08:00.000Z	rhineheart_m	nickrud	so I guess.. the better alternative for this one. is to allow the user to only write in the specified folder.. not to anywhere...
+2008-03-30T06:09:00.000Z	nickrud	rhineheart_m	yes, doing it specifically to one dir under www would be good
+2008-03-30T06:09:00.000Z	rhineheart_m	nickrud	I want to give that privilege to a SINGLE USER.. how to do it?
+2008-03-30T06:11:00.000Z	rhineheart_m	nickrud	sudo chmod -R  o+w  /var/www/**** <<< will give writable permission to non-group or user.. how about giving that permission to single user only? how to do it?
+2008-03-30T06:11:00.000Z	nickrud	rhineheart_m	you could make him the owner of that single directory. The only drawback if you do that is that apache can't write to the dir (like allowing uploads from the web page) unless it's owned by www-data. If apache isn't going to write there, it's all god
+2008-03-30T06:11:00.000Z	nickrud	rhineheart_m	  sudo chown usr:usr /path/to/dir
+2008-03-30T06:13:00.000Z	rhineheart_m	nickrud	it is under drupal directory... so I guess there should never be problems with it.. what do you think? all folders there are set to root group anyway...
+2008-03-30T06:14:00.000Z	nickrud	rhineheart_m	that happened when you unpacked the drupal tarball. drupal does require write to /files , you need to chown that to www-data . Some admin screen should tell you it's not right right now
+2008-03-30T06:15:00.000Z	rhineheart_m	nickrud	the site is already up. I just want the user to upload files/folders to a sites/all sub directory.. any idea?
+2008-03-30T06:16:00.000Z	nickrud	rhineheart_m	as I said earlier :)  sudo chown usr:usr /path/to/dir
+2008-03-30T06:17:00.000Z	rhineheart_m	nickrud	I am just confirming it.. so if the username is billgates... is this the right one? sudo chown billgates:billgates /var/www/somewhere ?
+2008-03-30T06:17:00.000Z	nickrud	rhineheart_m	heresy! but yes
+2008-03-30T06:18:00.000Z	rhineheart_m	nickrud	:)

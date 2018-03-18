@@ -1,0 +1,24 @@
+2009-07-11T21:01:00.000Z	laeg		if it's a good idea to change your ssh server from port 22 for security reasons, what's a good port?
+2009-07-11T21:01:00.000Z	kevdog	laeg	 anyport you want -- but skip many common ports to cut down on traffic
+2009-07-11T21:06:00.000Z	kevdog	laeg	 Use both for testing in case something goes wrong?
+2009-07-11T21:08:00.000Z	laeg	kevdog	i've already tested, i'm able to ssh to myself in term with the key, and i've open putty in WINE and can do the same. afaik all i need do is bring id_rsa.ppk with me to work tomorrow
+2009-07-11T21:10:00.000Z	kevdog	laeg	 Ok bring the key -- make sure you can do it from work -- then go home and deactivate the password -- something always messes up in my opinion
+2009-07-11T21:10:00.000Z	laeg	kevdog	:)
+2009-07-11T21:11:00.000Z	kevdog	laeg	 I prefer cygwin to the putty version of ssh -- unless you are running a strictly portable app on the client machine!
+2009-07-11T21:13:00.000Z	laeg	kevdog	it's mainly just for tunneling http and im traffic, but i only got that started yesterday so who knows what more i can do with it
+2009-07-11T21:13:00.000Z	laeg	kevdog	i won't need to connect to my ubuntu box by username and pass first to preapprove the work pc right? i mean if i have the id_rsa.ppk loaded in putty it should just connect, right?
+2009-07-11T21:14:00.000Z	kevdog	laeg	 Tunneling is a great exercise.  http traffic is good.  https doesnt need tunneling.  T
+2009-07-11T21:14:00.000Z	kevdog	laeg	That's right however you will need your username -- your key can be thought of as your password!
+2009-07-11T21:14:00.000Z	laeg	kevdog	kevdog only really exeprience i have with https is my bank's website and using a webmin tunnel which i've now uninstalled
+2009-07-11T21:15:00.000Z	laeg	kevdog	yup have my username, have my key, and have the passphrase i set upon it
+2009-07-11T21:15:00.000Z	kevdog	laeg	 You've done the putty key to openssh key conversion?
+2009-07-11T21:16:00.000Z	kevdog	laeg	 You should be good.  The only problem is if your work or wherever doesnt allow out going connections to port 22 or whatever port you are running your openssh server on!
+2009-07-11T21:16:00.000Z	laeg	kevdog	i was able to connect yesterday for the first time as normal with username and pass :)
+2009-07-11T21:17:00.000Z	kevdog	laeg	 You should be good to go -- however a few things -- run ssh on a different port like 222 if possible.  You may want to make use of iptables rate-limit command to cut down on the number of false log in attempts, and if you want to get real fancy -- use a port knocker!
+2009-07-11T21:19:00.000Z	kevdog	laeg	others prefer the use of denyhosts or actual modifications of the sshd_conf script itself to specify exact users who can log it.  If you are not explicily listed then you can't log in
+2009-07-11T21:21:00.000Z	laeg	kevdog	the port knockings something i've already on my list. you mean explicitly listed by username?
+2009-07-11T21:22:00.000Z	kevdog	laeg	 Yes, or by group
+2009-07-11T21:23:00.000Z	kevdog	laeg	 Port knocking is great -- but some consider it heresy -- fwknop is the port knocking utility you want to try however -- its the most advanced and currently is in very active development
+2009-07-11T21:23:00.000Z	kevdog	laeg	www.cipherdyne.org
+2009-07-11T21:34:00.000Z	laeg	kevdog	ty, i'll have a look]#
+2009-07-11T21:35:00.000Z	kevdog	laeg	 Ive also written a tutorial on how to set it up on the linux server -- its slightly out of date however it will get you up in running  Its missing a section for the new feature -- however the new featrues are rarely used IMO

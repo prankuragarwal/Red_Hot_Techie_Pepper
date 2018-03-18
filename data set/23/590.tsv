@@ -1,0 +1,23 @@
+2012-02-18T14:23:00.000Z	barnex		Hello. I can't kill process on 11.10 and consider reporting a bug. Can someone tell me what should I include in this report to make it useful?
+2012-02-18T14:23:00.000Z	barnex		compiz
+2012-02-18T14:24:00.000Z	barnex		Don't I need some info about kernel? It seems to be the kernel problem.
+2012-02-18T14:24:00.000Z	barnex		Top says that compiz is in 'R' state
+2012-02-18T14:24:00.000Z	barnex		and it just ignores kill -9
+2012-02-18T14:25:00.000Z	bc81	barnex	you might try switching window managers (metacity --replace, compiz --replace)  just a suggestion
+2012-02-18T14:31:00.000Z	barnex	bc81	Hmm, that might work, but i have no idea how to do it - I currently have 2 guest sessions running compiz at 100%, and I'm not logged in neither of them.
+2012-02-18T14:32:00.000Z	barnex		I can su to those guest, but then when I try metacity --replace I get Window manager error: Unable to open X display :0
+2012-02-18T14:32:00.000Z	bc81	barnex	how are you trying to kill compiz?
+2012-02-18T14:33:00.000Z	barnex		sudo kill -9 15384
+2012-02-18T14:33:00.000Z	barnex		where 15384 is the pid
+2012-02-18T14:33:00.000Z	bc81	barnex	ok, how about killall compiz?
+2012-02-18T14:34:00.000Z	barnex		well, even if it does have multiple processes, shouldn
+2012-02-18T14:34:00.000Z	barnex		well, even if it does have multiple processes, shouldn't the 15384 be killed anyways?
+2012-02-18T14:35:00.000Z	barnex		pkill and killall haven't worked
+2012-02-18T14:36:00.000Z	barnex		I did sudo /etc/init.d/lightdm restart
+2012-02-18T14:36:00.000Z	barnex		I believe it restarts X server as well?
+2012-02-18T14:38:00.000Z	bc81	barnex	or what about killall -9 compiz
+2012-02-18T14:39:00.000Z	barnex	bc81	doesn't work.
+2012-02-18T14:39:00.000Z	barnex		Well, It seems like the program isn't the problem - all of them return 0, so kernel seems to accept the signal
+2012-02-18T14:40:00.000Z	barnex		and something is wrong on the kernel part?
+2012-02-18T14:41:00.000Z	bc81	barnex	the answer here says you can't kill compiz when the Launcher or Unity is running, maybe that's the problem? http://askubuntu.com/questions/47022/how-to-kill-unity-panel-unity-launcher
+2012-02-18T14:43:00.000Z	barnex	bc81	hmm, I'm not sure what are the process names of Unity and Launcher, but "ps ax | grep -i unity" lists no processes

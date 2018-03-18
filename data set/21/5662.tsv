@@ -1,0 +1,21 @@
+2008-01-30T04:10:00.000Z	flush_		yo my damn ntp wont keep synchronization, i have to run "ntpdate 192.168.0.1" and even when ntpd is running, it wont keep sync
+2008-01-30T04:10:00.000Z	flush_		any ideas?
+2008-01-30T04:11:00.000Z	nemilar	flush_	did you check your ntp.conf?
+2008-01-30T04:14:00.000Z	nemilar	flush_	did you set that up yourself?  it's way different from the default
+2008-01-30T04:15:00.000Z	flush_	nemilar	yea..
+2008-01-30T04:15:00.000Z	nemilar	flush_	true, hmm
+2008-01-30T04:16:00.000Z	nemilar	flush_	I'm assuming your driftfile is correct and all
+2008-01-30T04:16:00.000Z	flush_	nemilar	what is the driftfile.. sorry im such a newb
+2008-01-30T04:16:00.000Z	nemilar	flush_	the default location for the driftfile is /var/lib/ntp/ntp.drift
+2008-01-30T04:16:00.000Z	flush_	nemilar	copy
+2008-01-30T04:17:00.000Z	nemilar	flush_	do 'ls -l /etc/ntp/drift'
+2008-01-30T04:17:00.000Z	flush_	nemilar	/etc/ntp/ directory doesnt exist actually..
+2008-01-30T04:18:00.000Z	nemilar	flush_	it has somethingto do with the local clock's frequency, not entirely sure to be honest
+2008-01-30T04:18:00.000Z	nemilar	flush_	see if /var/lib/ntp/ntp.drift exists, and if so, set that as the drift file and restart ntpd
+2008-01-30T04:19:00.000Z	flush_	nemilar	just did it
+2008-01-30T04:19:00.000Z	nemilar	flush_	perhaps ;)  it certainly fixed a problem with the configuration..whether it was the only problem, who's to say? ;)
+2008-01-30T04:19:00.000Z	nemilar	flush_	ntpd doesn't always give me the most accurate clock, it usually goes off by about a minute per week for some reason.
+2008-01-30T04:20:00.000Z	flush_	nemilar	roger
+2008-01-30T04:21:00.000Z	nemilar	flush_	sounds like your setup should work
+2008-01-30T04:21:00.000Z	nemilar	flush_	rdate isn't the preferred way of doing things...I just did it as a quick-fix
+2008-01-30T04:22:00.000Z	flush_	nemilar	thanks btw

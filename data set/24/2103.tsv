@@ -1,0 +1,24 @@
+2010-05-25T23:01:00.000Z	ohir	lvh	man su, man sudoers
+2010-05-25T23:02:00.000Z	lvh	ohir	Yes, that's elevating privilege.
+2010-05-25T23:02:00.000Z	lvh	ohir	My point is that there's no technical reason why. Since existing software *does* it.
+2010-05-25T23:03:00.000Z	ohir	lvh	if you want to know why - read docs/forums/code of given package. If you do think it should work w/o elevated priviledges - discuss it with package authors
+2010-05-25T23:04:00.000Z	ohir	lvh	if they did it because its easier - then do not use ;)
+2010-05-25T23:04:00.000Z	lvh	ohir	I'm not sure gdm devs care (nor should they) when Ubuntu's gdm doesn't and Debian's does.
+2010-05-25T23:04:00.000Z	lvh	ohir	How is this easier for anyone?
+2010-05-25T23:04:00.000Z	lvh	ohir	It's pretty simple. If .xsession exists, it's an option. If it doesn't, obviously it's not.
+2010-05-25T23:05:00.000Z	ohir	lvh	display manager do run their core as root, they need to login users
+2010-05-25T23:05:00.000Z	ohir	lvh	managers*
+2010-05-25T23:05:00.000Z	lvh	ohir	Yes, I understand that.
+2010-05-25T23:06:00.000Z	lvh	ohir	So? Eventually they run something as a user. In fact, they run an entirely similar file as a user.
+2010-05-25T23:06:00.000Z	lvh	ohir	The difference is if the file lives in /usr/share/xsessions or ~/.xsession.
+2010-05-25T23:06:00.000Z	ohir	lvh	similar != same
+2010-05-25T23:06:00.000Z	ohir	lvh	there are things that root might but user should not do
+2010-05-25T23:07:00.000Z	ohir	lvh	the difference is that first file is global settings for all users and second is for particular user
+2010-05-25T23:07:00.000Z	lvh	ohir	Yes, I understand that.
+2010-05-25T23:08:00.000Z	lvh	ohir	gdm runs gnome-session as my user, because /usr/share/xsessions/gnome.desktop wants it to.
+2010-05-25T23:08:00.000Z	lvh	ohir	I want it to run a different thing as a user. Why is that so bad?
+2010-05-25T23:08:00.000Z	lvh	ohir	It's not a security hole. It just runs a different program, but *both* are ran as my user. There is no elevation of privilege.
+2010-05-25T23:10:00.000Z	ohir	lvh	read about xorg initialization flow then think where you want to put your stuff to start with your session
+2010-05-25T23:10:00.000Z	ohir	lvh	hint: it will likely be in directory with .d sufix :)
+2010-05-25T23:12:00.000Z	ohir	lvh	if you want runn something as your user but before your session starts, use /etc/rc.local and su
+2010-05-25T23:12:00.000Z	ohir	lvh	or use cron, or use at

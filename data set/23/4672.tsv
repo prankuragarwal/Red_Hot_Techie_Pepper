@@ -1,0 +1,23 @@
+2010-11-06T20:44:00.000Z	phasma		anybody around able to help with a refresh rate issue yet, please?
+2010-11-06T20:46:00.000Z	dli	phasma	do you mean in X? you can find monitor(screen) setting in Preferences menu
+2010-11-06T20:46:00.000Z	phasma	dli	No. This is happening before X. I have set xrandr to disregard the rate, although it is still evident in text mode (whilst booting up)
+2010-11-06T20:47:00.000Z	dli	phasma	are you using kernel mode setting?
+2010-11-06T20:47:00.000Z	dli	phasma	if so, you can use kernel parameter "video=" options
+2010-11-06T20:47:00.000Z	phasma	dli	No. There is a bug with KMS on my video chip
+2010-11-06T20:48:00.000Z	dli	phasma	if not, I guess you will have to rely on old framebuffer drivers, no a pleasant way, with vga= settings
+2010-11-06T20:49:00.000Z	phasma	dli	eww, but if that is the only way, then so be it. Thanks. Out of curiosity, though. Where is the rate set as things stand right now? Is it read from the EDID before X loads? I am thinking along the lines of changing it manually, as it is obviously set -somewhere-
+2010-11-06T20:50:00.000Z	dli	phasma	I'm not sure, but kernel has lower level video control
+2010-11-06T20:51:00.000Z	phasma	dli	You think it is possible I set the configuration incorrectly when I configured the kernel?
+2010-11-06T20:52:00.000Z	dli	phasma	if it works with default ubuntu livecd, then, you know for sure, something wrong with your kernel
+2010-11-06T20:52:00.000Z	phasma	dli	Good point. Thanks for your help
+2010-11-06T20:53:00.000Z	dli	phasma	for me, the ubuntu livecd gives me blank screen, so I know my kernel is better
+2010-11-06T20:54:00.000Z	phasma	dli	Yeah, I had to roll my own kernel on this box owing to a 2 year old kernel bug, so I can totally identify with that
+2010-11-06T20:54:00.000Z	phasma		dli@ KMS basically wedges my GPU
+2010-11-06T20:54:00.000Z	dli	phasma	what bug, do you get a bts link for it?
+2010-11-06T20:55:00.000Z	phasma	dli	Not sure if you are aware, but there is an old bug with mode setting on the onboard intel video chips
+2010-11-06T20:56:00.000Z	phasma	dli	https://wiki.ubuntu.com/X/Bugs/Lucidi8xxFreezes
+2010-11-06T20:56:00.000Z	dli	phasma	the KMS bug I reported: http://bugs.freedesktop.org/show_bug.cgi?id=29221
+2010-11-06T20:56:00.000Z	phasma	dli	Not sure about that one. Checking now
+2010-11-06T20:58:00.000Z	phasma	dli	No, this is a different issue than that. I do not get a blank screen. X loads fine, but upon the GPU wedge, it fails to redraw, requiring a magic key out of it
+2010-11-06T20:58:00.000Z	dli	phasma	looks like your chip is a little bit too old, my mine is a little too new :( intel video is not satisfactory :(
+2010-11-06T20:58:00.000Z	phasma	dli	Yeah, mine is an Intel 845 (about 6 years old)

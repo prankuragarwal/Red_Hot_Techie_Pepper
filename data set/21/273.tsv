@@ -1,0 +1,21 @@
+2012-04-12T03:01:00.000Z	hinder90		hi, I have a question about the sadc implementation in ubuntu 10.04
+2012-04-12T03:01:00.000Z	hinder90		I am trying to collect individual i/o metrics for each disk
+2012-04-12T03:02:00.000Z	hinder90		sadc doesn't accept the -d option nor does -S DISK provide that data to make sar -d work
+2012-04-12T03:02:00.000Z	hinder90		you just get Requested activities not available in file....
+2012-04-12T03:03:00.000Z	hinder90		I have hunted hi and low for a solution... anyone know how this is done?
+2012-04-12T03:03:00.000Z	ActionParsnip	hinder90	does testdisk not help?
+2012-04-12T03:04:00.000Z	ActionParsnip	hinder90	or hdparm
+2012-04-12T03:04:00.000Z	hinder90	ActionParsnip	I added it and the behavior didn't change
+2012-04-12T03:05:00.000Z	ActionParsnip	hinder90	testdisk is a data recovery app so isn't useful. Got muddled
+2012-04-12T03:05:00.000Z	hinder90	ActionParsnip	hdparm already install
+2012-04-12T03:05:00.000Z	ActionParsnip	hinder90	you can set options on devices with hdparm
+2012-04-12T03:06:00.000Z	hinder90	ActionParsnip	whoa, do I want to be mucking with hdparm? looks dangerous :-)
+2012-04-12T03:09:00.000Z	hinder90	ActionParsnip	what was your sugguestion what I should do with hdparm to get disk i/o metrics to report in sadc?
+2012-04-12T03:10:00.000Z	ActionParsnip	hinder90	sudo hdparm -Tt /dev/sda
+2012-04-12T03:10:00.000Z	hinder90	ActionParsnip	it looks like it is doing something when I run that
+2012-04-12T03:11:00.000Z	ActionParsnip	hinder90	it's the test command, it tests write and read speeds
+2012-04-12T03:11:00.000Z	hinder90	ActionParsnip	it would seem like the -d aption simply doesn't work with lucid's implementation of sadc
+2012-04-12T03:12:00.000Z	ActionParsnip	hinder90	not someting i've used tbh
+2012-04-12T03:14:00.000Z	hinder90	ActionParsnip	the other issue may just be that lucid's implemention doesn't support -d
+2012-04-12T03:14:00.000Z	ActionParsnip	hinder90	do versions in later releases suport it?
+2012-04-12T03:16:00.000Z	hinder90	ActionParsnip	I am looking to do is collect what iostat reports with sa1

@@ -1,0 +1,19 @@
+2012-03-07T19:17:00.000Z	trevor69420		advowork sorry? is this FTP?
+2012-03-07T19:18:00.000Z	AdvoWork	trevor69420	yeah, ive logged in as one of my users fine, try and upload/overwrite the file and says permission denied
+2012-03-07T19:18:00.000Z	trevor69420		advowork they need to have write permissions on the folder
+2012-03-07T19:18:00.000Z	trevor69420		not just FTP permissions
+2012-03-07T19:20:00.000Z	AdvoWork	trevor69420	what do I need to change then?
+2012-03-07T19:20:00.000Z	AdvoWork		that testing dir is actually 777
+2012-03-07T19:21:00.000Z	AdvoWork	trevor69420	the exact error is: open for write: permission denied
+2012-03-07T19:22:00.000Z	trevor69420		advowork you using Ubuntu Server or desktop?
+2012-03-07T19:22:00.000Z	trevor69420		you can set the permissions through te GUI if you want
+2012-03-07T19:22:00.000Z	AdvoWork		no gui access unfortunately :S
+2012-03-07T19:22:00.000Z	trevor69420		ok i'll walk u through via CLI
+2012-03-07T19:22:00.000Z	AdvoWork		ok thanks
+2012-03-07T19:22:00.000Z	trevor69420		u know the path of the folder i assume?
+2012-03-07T19:23:00.000Z	trevor69420		sudo chgrp -R <group>/path/here
+2012-03-07T19:23:00.000Z	trevor69420		replace <group> with the name of the group you want to have write access
+2012-03-07T19:24:00.000Z	trevor69420		advowork then after that you should do
+2012-03-07T19:24:00.000Z	trevor69420		sudo chmod -R g+w /path/here
+2012-03-07T19:25:00.000Z	AdvoWork	trevor69420	thats done it, thanks!
+2012-03-07T19:25:00.000Z	trevor69420	AdvoWork	also, this is up to you but it might make sense to make it so that all the subdirectories and files are owned by the group

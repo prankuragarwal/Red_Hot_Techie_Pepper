@@ -1,0 +1,23 @@
+2006-03-16T11:42:00.000Z	NoelJB		In Synaptic, advanced mode, status.  What does "Local or Obsolete" mean?  I don't see anything about it in the manual, the synaptic website, nor the ubuntu web site.
+2006-03-16T11:42:00.000Z	LjL	NoelJB	means packages that are known by the APT system, but don't appear in the repositories, i think
+2006-03-16T11:42:00.000Z	LjL	NoelJB	so, it's either packages that *used* to be in the reps but aren't anymore, or packages that you installed manually from outside the reps
+2006-03-16T11:43:00.000Z	NoelJB	LjL	hmmm ... I installed emacs using apt-get, rather than synaptics.  Would that cause it?
+2006-03-16T11:43:00.000Z	LjL	NoelJB	no
+2006-03-16T11:44:00.000Z	NoelJB	LjL	because those are precisely the packages appearing in that list.
+2006-03-16T11:44:00.000Z	LjL	NoelJB	perhaps the names have been changed recently? what are the packages called?
+2006-03-16T11:46:00.000Z	NoelJB	LjL	emacs21, emacs21-bin-common, emacs21-common, emacsen-common and xaw3dg
+2006-03-16T11:47:00.000Z	LjL	NoelJB	not sure about it, those *are* the current names
+2006-03-16T11:48:00.000Z	NoelJB	LjL	hence my question.
+2006-03-16T12:02:00.000Z	NoelJB	LjL	OK, I just noticed that aptitude lists what "Local or Obsolete" means, but I don't see why it applys to those.  Weird.
+2006-03-16T12:39:00.000Z	NoelJB	LjL	I found the problem with the packages.  Apparently, Ubuntu does not support emacs.  It is only available if you enable the Universe repository, which I don't normally enable.
+2006-03-16T12:39:00.000Z	LjL	NoelJB	"emacs21" is in main for me
+2006-03-16T12:40:00.000Z	NoelJB	LjL	look at your repository configuration.  if you have universe enabled, remove it.  After the update, tell me if emacs is still present under editors.  It disappears for me.
+2006-03-16T12:42:00.000Z	LjL	NoelJB	still there for me
+2006-03-16T12:43:00.000Z	NoelJB	LjL	Weird ... I've done a reload of the repositories, and emacs only appears if and only if I have universe enabled, but then it shows up in the main area.
+2006-03-16T12:44:00.000Z	LjL	NoelJB	sounds like a synaptic quirk to me...
+2006-03-16T12:45:00.000Z	NoelJB	LjL	possibly.  aptitude shows the same.  I haven't looked to see if they are related.  Aptitude appears to be a curses version of synaptics.
+2006-03-16T12:45:00.000Z	NoelJB	LjL	I'll be doing a clean install, anyway.  see what happens.  Right now, I bootstrapped from the ubuntu provided VMware image.
+2006-03-16T12:46:00.000Z	LjL	NoelJB	at best, synaptic is a GUI version of aptitude... i don't know if synaptic has started using aptitude's database yet, but i heard it was going to
+2006-03-16T12:46:00.000Z	NoelJB	LjL	ah, didn't mean to reverse polarity  ;-)
+2006-03-16T12:52:00.000Z	NoelJB	LjL	do you have the ubuntu cd in your sources.list?  I wonder if that's my problem.  I wonder if I need to add a non-CD main.
+2006-03-16T13:09:00.000Z	NoelJB	LjL	Thanks for your help.  I got it resolved.  I had the first of these too in /etc/apt/sources.list, and had to add the second: deb cdrom:[Ubuntu 5.10 _Breezy Badger_ - Release i386 (20051012)] / breezy main restricted

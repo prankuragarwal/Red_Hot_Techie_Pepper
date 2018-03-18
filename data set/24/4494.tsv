@@ -1,0 +1,24 @@
+2007-12-05T04:59:00.000Z	ouellettesr		hey you guys what do I need to get wireless adapters to work on my laptop?
+2007-12-05T05:00:00.000Z	genii	ouellettesr	What make/model wifi card?
+2007-12-05T05:01:00.000Z	ouellettesr		genii they are both lynksys, one a wusb12 and the other a wusb54gsv4
+2007-12-05T05:02:00.000Z	genii	ouellettesr	usb wifi is tricky, the driver that would work if it wasn't on the usb doesn't usually.
+2007-12-05T05:03:00.000Z	ouellettesr		genii I also have a linksys pcmcia card I can use, will that be easier?
+2007-12-05T05:05:00.000Z	genii	ouellettesr	with the wusb12 in does lsmod show prism2_usb as a module installed?
+2007-12-05T05:05:00.000Z	ouellettesr		genii yes
+2007-12-05T05:05:00.000Z	genii	ouellettesr	Then it should be able to work
+2007-12-05T05:06:00.000Z	genii	ouellettesr	Do you see a wlan0 device on the ifconfig command?
+2007-12-05T05:08:00.000Z	ouellettesr		genii I don't see wlan0
+2007-12-05T05:09:00.000Z	genii	ouellettesr	try: sudo ifconfig wlan0 up
+2007-12-05T05:10:00.000Z	ouellettesr		genii I get SIOCSIFFLAGS: No Such Device
+2007-12-05T05:11:00.000Z	genii	ouellettesr	Bah, OK. Do you see an eth1 device where you know you have only 1 wired adapter then?
+2007-12-05T05:11:00.000Z	ouellettesr	genii	nope I just have eth0 and lo
+2007-12-05T05:13:00.000Z	genii	ouellettesr	OK, perhaps add with admin privelege to /etc/network/interfaces   2 lines   line1:  auto wlan0       line2: iface wlan0 inet dhcp
+2007-12-05T05:14:00.000Z	ouellettesr		genii ok ill try that
+2007-12-05T05:14:00.000Z	genii	ouellettesr	Hopefully your access point is set to hand out dhcp numbers
+2007-12-05T05:17:00.000Z	genii	ouellettesr	after saving those 2 lines, try again sudo ifconfig wlan0 up
+2007-12-05T05:20:00.000Z	ouellettesr		genii I get the same error SIOCSIFFLAGS: No such device
+2007-12-05T05:24:00.000Z	genii	ouellettesr	Bah ok. I'm not overly familiar with usb troubleshooting so I'd recommend the pcmcia adapter at this point unless another here can help further with the usb one
+2007-12-05T05:24:00.000Z	ouellettesr	genii	you don't think I would have a problem with a pcmcia adapter?
+2007-12-05T05:24:00.000Z	genii		ouellettesr:I just had a disconnect/reconnect so last msg not sure you got:  Bah ok. I'm not overly familiar with usb troubleshooting so I'd recommend the pcmcia adapter at this point unless another here can help further with the usb one
+2007-12-05T05:25:00.000Z	genii	ouellettesr	Since the pcmcia works as part of the pci it is less problemmatic
+2007-12-05T05:25:00.000Z	ouellettesr	genii	cool I think ill get one of them now

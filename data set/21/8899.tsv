@@ -1,0 +1,21 @@
+2005-12-19T13:02:00.000Z	hawk`		burning the livecd now
+2005-12-19T13:02:00.000Z	hawk`		what do i need to change to make myself a sudoer again?
+2005-12-19T13:03:00.000Z	sethk	hawk`	visudo
+2005-12-19T13:10:00.000Z	hawk`	sethk	and your point is?
+2005-12-19T13:32:00.000Z	sethk	hawk`	you wouldn't.  It isn't disabled
+2005-12-19T13:32:00.000Z	sethk	hawk`	you probably mean how do you set a password for the root account.
+2005-12-19T13:47:00.000Z	sethk	hawk`	almost always wheel
+2005-12-19T14:10:00.000Z	sethk	hawk`	Might be a leftover lock file in /tmp
+2005-12-19T13:53:00.000Z	sethk	hawk`	you do, if you did a normal install
+2005-12-19T14:09:00.000Z	sethk	hawk`	you left a program running that has the password file open, probably
+2005-12-19T14:10:00.000Z	hawk`	sethk	that was my thought too, but i just booted 2 minutes ago
+2005-12-19T14:11:00.000Z	sethk	hawk`	I'd suggest using strace to find out what file it fails to lock, but I suspect you might have trouble doing that.
+2005-12-19T14:11:00.000Z	sethk	hawk`	erase everything in /tmp (and it's subdirectories) older than the reboot time.
+2005-12-19T14:12:00.000Z	hawk`	sethk	i can sudo now so maybe i can use strace?
+2005-12-19T14:13:00.000Z	sethk	hawk`	then  sudo strace usermod  ....   (whatever you typed before for usermod) ...  -o output.strace
+2005-12-19T14:13:00.000Z	sethk	hawk`	output.strace is just a filename I made up
+2005-12-19T14:13:00.000Z	sethk	hawk`	make it ~/output.strace, so it ends up in your home directory
+2005-12-19T14:14:00.000Z	sethk	hawk`	if it spawns child processes that won't be enough, but start there.
+2005-12-19T14:16:00.000Z	hawk`	sethk	got the output printed on screen
+2005-12-19T14:17:00.000Z	sethk	hawk`	you didn't use -o, then
+2005-12-19T14:17:00.000Z	hawk`	sethk	looks like an o from here

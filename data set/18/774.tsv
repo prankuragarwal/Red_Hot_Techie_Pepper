@@ -1,0 +1,18 @@
+2011-09-16T23:48:00.000Z	OverworkDL1		Would anyone be able to help diagnose why I have some rather monstrously large, and growing startup times, as can be seen by my full dmesg log:  http://overminddl1.com/misc/dmesg.txt
+2011-09-16T23:49:00.000Z	escott	OverworkDL1	note the ext4 orphan stuff
+2011-09-16T23:50:00.000Z	escott	OverworkDL1	your filesystem is corrupted which requires recovery and adds to the boot time. fsck your filesystem first
+2011-09-16T23:52:00.000Z	escott	OverworkDL1	if it still takes a long time you can install bootchart to see what might be the cause
+2011-09-16T23:53:00.000Z	OverworkDL1	escott	 Perhaps that could be caused by the system not shutting down clean, the computer is never powered off, but it has a tendency to lock up when I run a few graphical intensive applications, even the screen turns into blue/black colored bars when that happens.
+2011-09-16T23:55:00.000Z	OverworkDL1	escott	 Also, doesn't the orphan recovery take less then a second according to the log?
+2011-09-16T23:56:00.000Z	escott	OverworkDL1	it is easier to fix an identified problem than to speculate on if it causes or does not cause subsequent problems
+2011-09-16T23:57:00.000Z	OverworkDL1	escott	 True, I shall safely reboot when next possible after an fsck
+2011-09-16T23:57:00.000Z	escott	OverworkDL1	and check your smart status just in case the disk is bad (disk-utility tool)
+2011-09-16T23:58:00.000Z	OverworkDL1	escott	 Already have checked SMART, not failing, yet anyway
+2011-09-16T23:58:00.000Z	escott	OverworkDL1	and install bootchart. the lockup you are describing is most likely video driver related. drop back to classic
+2011-09-16T23:58:00.000Z	OverworkDL1	escott	 Just did install bootchart
+2011-09-16T23:59:00.000Z	OverworkDL1	escott	 Oh I hope it is not video driver related (why freeze only when writing files though?), I need it fully accelerated...
+2011-09-17T00:00:00.000Z	escott	OverworkDL1	you said it tends to freeze when running graphically intensive applications
+2011-09-17T00:00:00.000Z	OverworkDL1	escott	 Yes, but it only crashes when both the graphically intensive apps are using the graphics, as well as writing files, *never* when not writing a file...
+2011-09-17T00:01:00.000Z	OverworkDL1	escott	 I do run the GUI accelerated as well, even stressed it out and it never crashed for note
+2011-09-17T00:01:00.000Z	escott	OverworkDL1	DMA or IRQ conflict? i don't know
+2011-09-17T00:02:00.000Z	OverworkDL1	escott	 Checked those, I shall be remotely rebooting my computer soon and I have bootchart installed so we shall see what it says, thanks for that tip

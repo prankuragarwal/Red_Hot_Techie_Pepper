@@ -1,0 +1,19 @@
+2011-08-11T23:53:00.000Z	faint545		can someone provide me guidance on how to set up a Git server on my ubuntu server machine?
+2011-08-11T23:53:00.000Z	faint545		docs online aren't very clear
+2011-08-11T23:54:00.000Z	OEP	faint545	youre installing ubuntu or you're trying to set up git on ubuntu?
+2011-08-11T23:54:00.000Z	faint545	OEP	I want to setup a Git repository so i can push projects up and pull them down remotely from anywhere instead of having to keep a lcoal copy
+2011-08-11T23:55:00.000Z	OEP	faint545	git init --bare, then try to pull from it like $> git pull user@mycomp:/path/to/repo
+2011-08-11T23:55:00.000Z	OEP	faint545	you don't really have to set up a 'server' per se
+2011-08-11T23:56:00.000Z	OEP	faint545	unless it's important to you that you pull from a git:// URL
+2011-08-11T23:57:00.000Z	OEP	faint545	does that help you? I assumed you already had SSH running but I forgot to make sure
+2011-08-11T23:58:00.000Z	faint545	OEP	 yeah. thanks.
+2011-08-11T23:58:00.000Z	OEP	faint545	just remember to use --bare when you want other people to pull/push to it
+2011-08-11T23:59:00.000Z	faint545	OEP	gotcha
+2011-08-12T00:15:00.000Z	faint545	OEP	hey, im getting this: "fatal: Not a git repository (or any of the parent directories): .git" when i try to set things up
+2011-08-12T00:15:00.000Z	faint545	OEP	any idea?
+2011-08-12T00:18:00.000Z	OEP	faint545	you'll probably need to pastebin the actual git commands you used to create the repository and what you used to clone
+2011-08-12T00:21:00.000Z	faint545	OEP	i setup a new user called "git" and i created a new folder called "repo.git" and inside that folder i did a "git --bare init". This was done via SSH to my server. then on my local machine, i did "git remote add origin git@homeserver:repo.git"
+2011-08-12T00:24:00.000Z	OEP	faint545	you want to do "git clone git@myserver:repo.git" first before you do any "git remote ..."
+2011-08-12T00:25:00.000Z	faint545	OEP	oops..forgot that part.
+2011-08-12T00:26:00.000Z	OEP	faint545	alternatively you can do "mkdir repo; cd repo; git init; git pull git@..."
+2011-08-12T00:27:00.000Z	OEP	faint545	scratch that. do clone hehe

@@ -1,0 +1,19 @@
+2011-06-29T09:04:00.000Z	Erik500002		hey guys need some help I accidentally deleted my wireless modules so I have no wifi, how can I restore everything back to default
+2011-06-29T09:06:00.000Z	dtchen	Erik500002	did the wireless modules come with Ubuntu, i.e., were they part of linux-image?
+2011-06-29T09:06:00.000Z	dtchen	Erik500002	^ what DanaG implied
+2011-06-29T09:43:00.000Z	dtchen	Erik500002	that normally means something's syntactically amiss in /etc/modprobe.d/*.conf
+2011-06-29T09:43:00.000Z	dtchen	Erik500002	dmesg can shed some light
+2011-06-29T09:45:00.000Z	Erik500002	dtchen	dmesg shows unknown symbol wiphy_free (err -22) and another one with disagrees about versino of symbol wiphy_new
+2011-06-29T09:45:00.000Z	dtchen	Erik500002	which module was attempted?
+2011-06-29T09:46:00.000Z	Erik500002	dtchen	ipw2200
+2011-06-29T09:48:00.000Z	dtchen	Erik500002	please pastebin the output from: cat /proc/version ; modinfo ipw2200|grep ^verm
+2011-06-29T09:52:00.000Z	Erik500002	dtchen	http://pastebin.com/bDFwGLTq
+2011-06-29T09:56:00.000Z	dtchen	Erik500002	how about the output from: find /lib/modules/$(uname -r) -name 'ipw2200.ko
+2011-06-29T09:56:00.000Z	dtchen	Erik500002	oops, I forgot the trailing '
+2011-06-29T10:01:00.000Z	Erik500002	dtchen	anything?
+2011-06-29T10:03:00.000Z	dtchen	Erik500002	did you run the last find command I mentioned above? (Don't forget the trailing ' that I omitted.)
+2011-06-30T09:52:00.000Z	dtchen	Erik500002	after suspend/resume, or always?
+2011-06-30T09:53:00.000Z	Erik500002	dtchen	doesn't seem to work at all in natty :/ so dissapointing
+2011-06-30T09:53:00.000Z	dtchen	Erik500002	it works fine for my AR9285
+2011-06-30T09:55:00.000Z	Erik500002	dtchen	pretty weird can't seem to get it to work, I remember months ago i had it working but what i did was i upgraded from ubuntu 10.10 to natty
+2011-06-30T09:58:00.000Z	Erik500002	dtchen	I Have a AR5008 cardbus

@@ -1,0 +1,21 @@
+2009-02-23T20:28:00.000Z	LjL	sanity	i don't know of a resource, i can tell you roughly (but i might be wrong too) that "VIRT" is what the process has allocated in total, "RES" is what is actually in RAM, "SHR" is what was allocated as shared memory with other programs
+2009-02-23T20:29:00.000Z	sanity	LjL	thanks.  so doesn't top tell you whether any of a processes' data is swapped out to disk?
+2009-02-23T20:30:00.000Z	LjL	sanity	not by default i don't think, but there should be an option
+2009-02-23T20:30:00.000Z	sanity	LjL	ok, will check - thanks
+2009-02-23T20:31:00.000Z	LjL	sanity	actually, it seems it does, because the manpage actually says that VIRT = SWAP + RES, so the swapped-out portion should simply be VIRT-RES (i thought VIRT also included allocated-but-as-yet-unused pages)
+2009-02-23T20:31:00.000Z	LjL	sanity	search for "swapped size" in the manpage
+2009-02-23T20:31:00.000Z	sanity	LjL	ah, ok
+2009-02-23T20:32:00.000Z	sanity	LjL	hmm, well - just now in my process VIRT is 7843m, and RES is 2.1g - could that mean most of my app is swapped out?  I'm not sure why it would do that when apparently there is 5g free memory
+2009-02-23T20:33:00.000Z	LjL	sanity	no that doesn't make sense to me, i thought VIRT should always be bigger than RES. i need to look better
+2009-02-23T20:33:00.000Z	sanity	LjL	well, VIRT is bigger than RES in this case
+2009-02-23T20:34:00.000Z	LjL	sanity	err... yes of course it is. i read the numbers wrong :>
+2009-02-23T20:34:00.000Z	LjL	sanity	so yes, it *should* mean that most of your app is swapped out, at least according to the manpage
+2009-02-23T20:34:00.000Z	LjL	sanity	but i still suspect somehow that VIRT might also include things that aren't really swapped out, but are simply allocated-and-as-of-yet-unused
+2009-02-23T20:34:00.000Z	sanity	LjL	that doesn't make a lot of sense - why would it swap out over half my app when it has so much free space?
+2009-02-23T20:34:00.000Z	sanity	LjL	right
+2009-02-23T20:35:00.000Z	sanity	LjL	is there a better command than top for investigating per-process memory/swap usage?
+2009-02-23T20:35:00.000Z	LjL	sanity	mind, the manpage doesn't say that, but looking at my own process table, i do suspect that's the case
+2009-02-23T20:35:00.000Z	LjL	sanity	"top" should give you all sort of information if you pass it the right parameters - look at the manpage, there's plenty... "ps" should also do
+2009-02-23T20:39:00.000Z	LjL	sanity	kind of
+2009-02-23T20:39:00.000Z	LjL	sanity	you can set swappiness to 0, then it will never swap out anything unless it absolutely needs to
+2009-02-23T20:40:00.000Z	LjL	sanity	i don't know if you can do that per-process

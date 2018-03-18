@@ -1,0 +1,21 @@
+2006-05-25T06:03:00.000Z	v3rmap		When I start a new application on my Ubuntu box, it does not appear in the taskbar (is it the gnome-panel?) on the screen. How can I fix it?
+2006-05-25T06:03:00.000Z	v3rmap		This started happening yesterday after a rogue application crashed my gnome-panel
+2006-05-25T06:04:00.000Z	dli	v3rmap	which gnome version?
+2006-05-25T06:05:00.000Z	v3rmap	dli	It's gnome panel version 2.14. And mwe thanks for the ~/.gnome suggestion. I'll try it out.
+2006-05-25T06:07:00.000Z	dli	v3rmap	check your libwnck version, "dpkg -s libwnck"
+2006-05-25T06:07:00.000Z	dli	v3rmap	check your libwnck version, " sudo dpkg -s libwnck "
+2006-05-25T06:07:00.000Z	v3rmap	dli	:Package `libwnck' is not installed and no info is available.
+2006-05-25T06:08:00.000Z	dli	v3rmap	sorry, my fault, it's libwnck-common
+2006-05-25T06:08:00.000Z	v3rmap	dli	it is: 2.14.0-0ubuntu1
+2006-05-25T06:09:00.000Z	dli	v3rmap	that's why, the wnck-applets bug is only fixed in libwnck-2.14.1
+2006-05-25T06:10:00.000Z	v3rmap	dli	it was working till yesterday until a bad application crashed the gnome-panel. Do you think it'll work if I delete ~/.gnome*?
+2006-05-25T06:11:00.000Z	dli	v3rmap	it will reset your gnome user settings, but gnome will crash again, so, upgrade gnome to 2.14.1 ( in dapper)
+2006-05-25T06:11:00.000Z	v3rmap	dli	but this has worked well for ages and only started crashing yesterday.
+2006-05-25T06:12:00.000Z	dli	v3rmap	it's a known gnome bug
+2006-05-25T06:18:00.000Z	dli	v3rmap	the gnome bug tracking, http://bugzilla.gnome.org/show_bug.cgi?id=316096
+2006-05-25T06:21:00.000Z	dli	v3rmap	quit gnome, in console or another wm/de, "rm -rf ~/.gnome*"
+2006-05-25T06:22:00.000Z	v3rmap	dli	yes this time after "gdm stop", I "rm -rf"d all .gnome dirs
+2006-05-25T06:22:00.000Z	dli	v3rmap	and?
+2006-05-25T06:23:00.000Z	v3rmap	dli	and restarted gdm, but still see the same problem when I logged in.
+2006-05-25T06:23:00.000Z	dli	v3rmap	you rmed the correct location?
+2006-05-25T06:27:00.000Z	v3rmap	dli	mwe, it worked when I deleted .gconf this time. thanks for your help!

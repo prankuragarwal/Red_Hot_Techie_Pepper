@@ -1,0 +1,24 @@
+2004-10-01T10:44:00.000Z	marquivon		hi. i've a redhat 9 system without a cd drive. i've saved the files from the iso on a system in a network
+2004-10-01T10:45:00.000Z	marquivon		will it be possible to install ubuntu through the network. if yes, can someone guide me to any documentation or give any hints? thanks
+2004-10-01T10:46:00.000Z	Kamion	marquivon	yes, the files in /install/netboot/ can be used; you're probably best looking at the debian-installer documentation for now
+2004-10-01T10:49:00.000Z	Kamion	marquivon	full documentation's on my queue as soon as I dig myself out from under installation bugs :-)
+2004-10-01T10:50:00.000Z	marquivon	Kamion	:-)
+2004-10-01T11:03:00.000Z	Kamion	marquivon	hm, that might work, although you'd have to be careful not to nuke the RHL9 partition during the install
+2004-10-01T11:04:00.000Z	Kamion	marquivon	you'll have to copy the right boot parameters from d-i though
+2004-10-01T11:04:00.000Z	Kamion	marquivon	if you can boot over the network, PXE might be better
+2004-10-01T11:05:00.000Z	marquivon	Kamion	can't use PXE as of now. btw what's d-i? debian installer?
+2004-10-01T11:06:00.000Z	Kamion	marquivon	yes
+2004-10-01T11:07:00.000Z	marquivon	Kamion	where will i get the debian installer parameters?
+2004-10-01T11:08:00.000Z	Kamion	marquivon	syslinux.cfg in the CD image
+2004-10-02T13:30:00.000Z	Kamion	marquivon	it's one of my 60 or so bugs to fix :)
+2004-10-02T13:21:00.000Z	Kamion	marquivon	at the moment the CD image is not a valid repository for use from netboot installs
+2004-10-02T13:22:00.000Z	Kamion	marquivon	there's a bug open about it; at the moment you need to rsync the rest of the archive down from archive.ubuntulinux.org
+2004-10-02T13:22:00.000Z	marquivon	Kamion	actually it took a long time downloading the CD :-( 
+2004-10-02T13:23:00.000Z	marquivon	Kamion	if i rsync, then can i save that locally on one debian machine and then setup ubuntu on another machine using those files?
+2004-10-02T13:24:00.000Z	Kamion	marquivon	you may be able to get away with using the standard archive (not the one you put together from the ISO) before the first reboot, then using your own repository after the first reboot
+2004-10-02T13:25:00.000Z	Kamion	marquivon	yeah
+2004-10-02T13:25:00.000Z	marquivon	Kamion	i think i can do the first part without any hassles, but how will i specify my own repository in the second stage?
+2004-10-02T13:28:00.000Z	Kamion	marquivon	you might have to ctrl-c, edit /etc/apt/sources.list, apt-get update, aptitude -y install ~tubuntu-desktop
+2004-10-02T13:28:00.000Z	Kamion	marquivon	probably won't be pretty, though
+2004-10-02T13:29:00.000Z	marquivon	Kamion	sighs. i've been trying to install ubuntu on 3 machines thru a network and those machines don't have CD drive nor floppy. but they've redhat installed and i wish to replace that. i've reached a long way and now know a little bit setting up repositories, so will end it as well
+2004-10-02T13:30:00.000Z	marquivon	Kamion	really appreciated all the effort that has gone into it :-)

@@ -1,0 +1,22 @@
+2009-08-27T13:52:00.000Z	roshan		Hi, everyone, I'm trying to mirror the Ubuntu amd64 repositories. I want to download the repositories and then transfer them as they are to another computer which will host them. I don't want to host them on the same computer as I'm downloading them on.
+2009-08-27T13:52:00.000Z	roshan		I know of apt-mirror, debmirror and using rsync to mirror but I don't know which is the best for what I want to do.
+2009-08-27T13:52:00.000Z	roshan		Any suggestions?
+2009-08-27T13:53:00.000Z	sayanriju	roshan	depends on your purpose
+2009-08-27T13:55:00.000Z	sayanriju	roshan	so you are looking for a sort of local repository for your LAN?
+2009-08-27T13:56:00.000Z	sayanriju	roshan	so rsync is not really what you'd be wanting
+2009-08-27T13:59:00.000Z	sayanriju	roshan	what /me'd do in such a situation is pull down all the packages from net on the cafe, carry them over to the college computer) and create a local repository from it
+2009-08-27T14:01:00.000Z	sayanriju	roshan	the only downside is the local repository won't really offer up-to-date updates like the official mirrors, but since ur college net is bad anyway, /me don't think that will be a problem
+2009-08-27T14:02:00.000Z	roshan	sayanriju	This is the part I'm unsure about. I was wondering which of apt-mirror and debmirror to use since all documentation I can find regarding both dates back to 2006-7.
+2009-08-27T14:03:00.000Z	sayanriju	roshan	none of apt-mirror or debmirror will suit the purpose if you decide to follow my idea of creating a local repo
+2009-08-27T14:03:00.000Z	roshan	sayanriju	I see, then how do I ensure I only download amd64 packages?
+2009-08-27T14:05:00.000Z	sayanriju	roshan	u can use any of those tools (including rsync) to just pull down the packages...but for the rest of the process none of them would be of much help
+2009-08-27T14:06:00.000Z	roshan	sayanriju	I see. Do you know of an existing script to simplify downloading all packages of a particular architecture?
+2009-08-27T14:07:00.000Z	sayanriju	roshan	why not create your own? Shouldn't be much hard, using wget+sed :P
+2009-08-27T14:08:00.000Z	roshan	sayanriju	:) I could try that but considering I have no idea how to use sed, it would require me to learn quite a bit just to do one task.
+2009-08-27T14:08:00.000Z	sayanriju	roshan	then just use apt-mirror to download the packages on your cafe machine. You can worry about the rest of process later
+2009-08-27T14:09:00.000Z	sayanriju	roshan	as it is, the rest (creating a local repo) is not very difficult
+2009-08-27T14:09:00.000Z	roshan	sayanriju	I can just move over the repository files once it downloads?
+2009-08-27T14:10:00.000Z	sayanriju	roshan	yes, but make sure it downloads ALL the packages (don't interrupt it midway e.g)
+2009-08-27T14:10:00.000Z	roshan	sayanriju	Very well, sayanriju. Thank you. I will use apt-mirror.
+2009-08-27T14:12:00.000Z	sayanriju	roshan	and in case you need help creating the local mirror, u can see my blog post at http://blog.sayanriju.co.cc/2009/07/31/using-a-local-ubuntu-repository-to-avoid-redownloading-packages-on-a-reinstall/ (shameless self advertising :)
+2009-08-27T14:13:00.000Z	roshan	sayanriju	What a useful coincidence that you posted on just that! Bookmarked for later.

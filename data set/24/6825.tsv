@@ -1,0 +1,24 @@
+2007-07-17T09:36:00.000Z	aaron_		anyone here know about SSH VPN tunneling?
+2007-07-17T09:37:00.000Z	Falstius	aaron_	ssh or vpn?  they aren't the same
+2007-07-17T09:38:00.000Z	aaron_	Falstius	point-to-point using SSH
+2007-07-17T09:38:00.000Z	Falstius	aaron_	I use it with vnc
+2007-07-17T09:39:00.000Z	Falstius	aaron_	ooh ... cool.
+2007-07-17T09:41:00.000Z	aaron_	Falstius	you'll see my comment on that pages. its' the very last one.
+2007-07-17T09:49:00.000Z	Falstius	aaron_	you don't give enough information for a informed response.  you should post stuff like the output of route -n and ifconfig
+2007-07-17T09:49:00.000Z	Falstius	aaron_	and any firewall you have
+2007-07-17T09:49:00.000Z	aaron_	Falstius	is it something you can help with?
+2007-07-17T09:49:00.000Z	Falstius	aaron_	depends on why it isn't working :)  I'm not a networking expert.
+2007-07-17T09:49:00.000Z	aaron_	Falstius	you copy?
+2007-07-17T09:49:00.000Z	Falstius	aaron_	yeah
+2007-07-17T09:50:00.000Z	aaron_	Falstius	alright. so far, i have this vpn connected. my server is behind a DSL router and obviously port 22 is forwarded correctly. I can ping (from here, the client) my servers local ip address (192.168.1.58) and it's pointopoint ip address (10.254.254.1) but I can't ping anythign else on my office network, like 192.168.1.200
+2007-07-17T09:57:00.000Z	Falstius	aaron_	you need to set up your server as a gateway to do the packet forwarding.
+2007-07-17T09:57:00.000Z	aaron_	Falstius	so it wont' be able to forward with just one nic?
+2007-07-17T09:58:00.000Z	Falstius	aaron_	no, it can forward with just one real nic.  It forwards between a real nic and the virtual nic.
+2007-07-17T09:59:00.000Z	aaron_	Falstius	so, easier terms, what do you mean i need to set it up as a gateway
+2007-07-17T10:00:00.000Z	Falstius	aaron_	you set it up as a gateway by configuring iptables.  The reference linked at the bottom of the instructions talks about how to do that.  https://help.ubuntu.com/community/SSH_VPN
+2007-07-17T10:03:00.000Z	aaron_	Falstius	i'm either blind or stupid. call me tommy, but I'm not seeing anything.
+2007-07-17T10:04:00.000Z	Falstius	aaron_	search for IP Forwarding on that page
+2007-07-17T10:04:00.000Z	aaron_	Falstius	 # echo 1 > /proc/sys/net/ipv4/ip_forward    -------- that bit?
+2007-07-17T10:05:00.000Z	Falstius	aaron_	yeah.
+2007-07-17T10:05:00.000Z	Falstius	aaron_	you should read the rest too.  There may be other necessary steps.
+2007-07-17T10:05:00.000Z	aaron_	Falstius	done that. it's one of the steps

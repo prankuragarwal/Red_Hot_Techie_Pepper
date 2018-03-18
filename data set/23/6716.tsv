@@ -1,0 +1,23 @@
+2006-08-22T10:45:00.000Z	ramvi		I've installed fglrx and chosen it in dpkg-reconfigure. But still gf
+2006-08-22T10:45:00.000Z	ramvi		ups
+2006-08-22T10:46:00.000Z	ramvi		I've installed fglrx and chosen it in dpkg-reconfigure. But still fglrx returns OpenGL vendor string: Mesa project: www.mesa3d.org. What do I do for it to use the ati drivers?
+2006-08-22T10:46:00.000Z	fredl	ramvi	- apt-get  install linux-restricted-modules-`uname -r`
+2006-08-22T10:47:00.000Z	ramvi	fredl	linux-restricted-modules-2.6.15-26-386 is allready the newest version... :(
+2006-08-22T10:48:00.000Z	fredl	ramvi	- grep drm /var/log/Xorg.0.log
+2006-08-22T10:49:00.000Z	fredl	ramvi	- got any 'failed to load kernel module "fglrx"' in there?
+2006-08-22T10:50:00.000Z	ramvi	fredl	yeah
+2006-08-22T10:50:00.000Z	ramvi	fredl	http://pastebin.com/773333
+2006-08-22T10:50:00.000Z	fredl	ramvi	- then you have the same problem I have I think.
+2006-08-22T10:51:00.000Z	ramvi	fredl	the same problem? The same as who?
+2006-08-22T10:51:00.000Z	fredl	ramvi	- yup, exactly the same message I get.
+2006-08-22T10:51:00.000Z	ramvi	fredl	what do we do?
+2006-08-22T10:51:00.000Z	fredl	ramvi	- and your ATI card used to work fine until today?
+2006-08-22T10:51:00.000Z	ramvi	fredl	nah. New Macbook pro
+2006-08-22T10:52:00.000Z	fredl	ramvi	- I think it's because of the trouble with xorg-core today, can't think of any other reason why it wouldn't be able to load the kernel module.
+2006-08-22T10:52:00.000Z	fredl	ramvi	- I just have the complication that I manually installed the 8.27 drivers manually and thought that might be the source of my problems.
+2006-08-22T10:53:00.000Z	ramvi	fredl	but it wqa
+2006-08-22T10:53:00.000Z	fredl	ramvi	- don't think so, since the kernel hasn't been update.
+2006-08-22T10:53:00.000Z	fredl	ramvi	what's wqa?
+2006-08-22T10:54:00.000Z	ramvi	fredl	typo :P but it did't work?
+2006-08-22T10:55:00.000Z	fredl	ramvi	the xorg-core update today caused trouble so I thought maybe it was because of my 8.27 manual install. Yeah it worked earlier, and it worked just fine.
+2006-08-22T10:55:00.000Z	fredl	ramvi	so I tried to go back to 8.25 and thought that perhaps 8.27 files were in there that caused the prob I'm having now.

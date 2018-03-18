@@ -1,0 +1,21 @@
+2010-03-01T02:53:00.000Z	linux1001		I have an issue trying to get my usb wireless adapter (linksys WUSB54GSCv2) to work with ndiswrapper. I have followed all the instructions I could find and I still cannot get it to work
+2010-03-01T02:54:00.000Z	wirechief	linux1001	what errors are you getting
+2010-03-01T02:55:00.000Z	wirechief	linux1001	what are you using 64bit or 32bit
+2010-03-01T02:57:00.000Z	wirechief	linux1001	what do you get with ndiswrapper -l
+2010-03-01T02:59:00.000Z	wirechief	linux1001	maybe if you retry using ndiswrapper -r name.inf and redo it.but you also need to blacklist any modules that are being loaded that are not being used.
+2010-03-01T03:01:00.000Z	wirechief	linux1001	that ndiswrapper -r nameofwindowsdriver without the inf on the end
+2010-03-01T03:01:00.000Z	linux1001	wirechief	i'll do that now
+2010-03-01T03:02:00.000Z	wirechief	linux1001	then reinstall with ndiswrapper name.inf  but also do ndiswrapper -ma too
+2010-03-01T03:03:00.000Z	wirechief	linux1001	what version ndiswrapper are you using ? dpkg -l|grep ndiswrapper
+2010-03-01T03:04:00.000Z	linux1001	wirechief	will do as soon as it comes back up... rebooted
+2010-03-01T03:05:00.000Z	wirechief	linux1001	i used 1.54 for my belkin N wireless adapter and it worked fine.
+2010-03-01T03:05:00.000Z	linux1001	wirechief	ndisgtk 0.8.4-1    ndiswrapper-common 1.54-2ubuntu1  ndiswrapper-utils-1.9    1.54-2ubuntu1
+2010-03-01T03:05:00.000Z	wirechief	linux1001	ok
+2010-03-01T03:06:00.000Z	linux1001	wirechief	was the blacklisting i did correct?
+2010-03-01T03:06:00.000Z	linux1001	wirechief	if so, can i go ahead and ndiswrapper -i <inf file>
+2010-03-01T03:06:00.000Z	wirechief	linux1001	well you can do lsmod and see if any wireless modules are loaded other than yours
+2010-03-01T03:07:00.000Z	linux1001	wirechief	it is showing ndiswrapper on that list
+2010-03-01T03:07:00.000Z	wirechief	linux1001	ndisgtk works too.
+2010-03-01T03:09:00.000Z	wirechief	linux1001	you need to be in the same folder as the above .inf and .sys files
+2010-03-01T03:11:00.000Z	wirechief	linux1001	well you can just mv it to a filename.conf
+2010-03-01T03:14:00.000Z	wirechief	linux1001	just mv /etc/modprobe.d/ndiswrapper /etc/modprobe.d/ndiswrapper.conf

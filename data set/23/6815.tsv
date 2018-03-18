@@ -1,0 +1,23 @@
+2006-01-03T07:34:00.000Z	ssstormy		hey
+2006-01-03T07:34:00.000Z	ssstormy		or I should say: "hello guys"
+2006-01-03T07:35:00.000Z	ssstormy		I'm running a SID release of mysql5.0 (I know it's unsupported and all) but is there a configuration setting to close the ports to te world?  My mysql server is only running on localhost; the port is only open when I scan localhost
+2006-01-03T07:36:00.000Z	Goldfisch	ssstormy	Doesn't the mysql.user table control who has access to what? You can contrain all users to only be allowed from host "localhost".
+2006-01-03T07:36:00.000Z	ssstormy	Goldfisch	and that would stop the port from opening?
+2006-01-03T07:37:00.000Z	Goldfisch	ssstormy	If you are running a service on a machine, like mysql on 3309, (or whatever), the port is open. If you are behind a firewall and don't forward the port, then it is closed to everyone on the other side.
+2006-01-03T07:37:00.000Z	ssstormy	Goldfisch	it's forwarded.  but I scan localhost and it's open
+2006-01-03T07:38:00.000Z	Goldfisch	ssstormy	You mean the firewall-router between yourself and the world is forwarding traffic to your mysql server?
+2006-01-03T07:38:00.000Z	ssstormy	Goldfisch	you bet
+2006-01-03T07:38:00.000Z	Goldfisch	ssstormy	Is that your intention?
+2006-01-03T07:38:00.000Z	ssstormy	Goldfisch	and I know it's working cause apache and ftp is working
+2006-01-03T07:39:00.000Z	Goldfisch	ssstormy	There are two ways to forward traffic, either your entire mysql server has been placed in the firewalls' DMZ, or you configured it to forward the mysql port. What is your setup?
+2006-01-03T07:40:00.000Z	ssstormy	Goldfisch	just port forwarding
+2006-01-03T07:40:00.000Z	Goldfisch	ssstormy	If you don't want anyone other than localhost user's getting to that, than remove that port for the forwarding list.
+2006-01-03T07:41:00.000Z	ssstormy	Goldfisch	other way round.  I want the world to have access to my mysql server
+2006-01-03T07:42:00.000Z	Goldfisch	ssstormy	Then what is the matter? You are having issues with people connecting to it?
+2006-01-03T07:42:00.000Z	ssstormy	Goldfisch	yes.  cause the port is not open for remote users
+2006-01-03T07:43:00.000Z	ssstormy	Goldfisch	my router is all set up nice, and my firewall too, but the only place port 3306 is open is on localhost, not on my network adaptor, thus no one can access the server
+2006-01-03T07:44:00.000Z	Goldfisch	ssstormy	Is this some iptables configuration? I don't understand what you mean by the port being closed. The firewall is defining what is open and closed, and you just explained to me how the firewall is open.
+2006-01-03T07:44:00.000Z	ssstormy	Goldfisch	well I disabled all firewall activity and it didn't help
+2006-01-03T07:45:00.000Z	Goldfisch	ssstormy	How do you know this? Are you trying to connect from an external IP address via port 3306?
+2006-01-07T10:57:00.000Z	ssstormy	Goldfisch	dosn't that file come bare, with just root in it?
+2006-01-07T10:58:00.000Z	Goldfisch	ssstormy	Umm....memory's a little hazy. Well, I like the group mechanism better, anyway. :)

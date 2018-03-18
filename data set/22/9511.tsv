@@ -1,0 +1,22 @@
+2006-06-02T09:31:00.000Z	YoussefAssad		How do I change the framebuffer driver? Anyone know?
+2006-06-02T09:31:00.000Z	amphi	YoussefAssad	console fb driver?
+2006-06-02T09:31:00.000Z	YoussefAssad	amphi	Yep.
+2006-06-02T09:31:00.000Z	amphi	YoussefAssad	edit the kernel command line in /boot/grub/menu.lst
+2006-06-02T09:32:00.000Z	YoussefAssad	amphi	Hmm, okay. I'll look into that
+2006-06-02T09:32:00.000Z	amphi	YoussefAssad	if you want that option used for all kernel packages you install, edit the line that starts '# kopt'
+2006-06-02T09:33:00.000Z	amphi	YoussefAssad	note that you should not remove the leading '#'
+2006-06-02T09:33:00.000Z	YoussefAssad	amphi	okay, sounds good. I gurss man grub can tell me what the option looks like
+2006-06-02T09:34:00.000Z	amphi	YoussefAssad	what driver do you want to use? this is a kernel issue more than a grub one, it's an argument on the kernel command line
+2006-06-02T09:34:00.000Z	amphi	YoussefAssad	[p] info grub will be more rewarding
+2006-06-02T09:35:00.000Z	YoussefAssad	amphi	sis actually. I need an option saying video=sisfb Does that look right?
+2006-06-02T09:38:00.000Z	amphi	YoussefAssad	yes, assuming sisfb driver exists ;)
+2006-06-02T09:39:00.000Z	amphi	YoussefAssad	then there should be 'vga=foo' for the video mode - IIRC, I have vga=0x318, which is 1024x768x24bpp
+2006-06-02T09:39:00.000Z	YoussefAssad	amphi	Okie, I think I got it. Will reboot and check. Thanks a bunch!
+2006-06-02T09:54:00.000Z	amphi	YoussefAssad	did it work?
+2006-06-02T09:56:00.000Z	YoussefAssad	amphi	Yes, it did (sort of). MY issue was with a very unresponsive X after upgrading to dapper. I followed the solution here: https://launchpad.net/distros/ubuntu/+source/xserver-xorg-driver-sis/+bug/26637
+2006-06-02T09:56:00.000Z	YoussefAssad	amphi	Thanks, fella :) Now I just need to figure out what's wrong with the gl acceleration, but that's for another time
+2006-06-02T09:57:00.000Z	amphi	YoussefAssad	does that console fb driver let you use fbset to change video mode on the fly? (idle curiosity)
+2006-06-02T09:58:00.000Z	YoussefAssad	amphi	I don't know... let me give that a shot
+2006-06-02T09:59:00.000Z	YoussefAssad	amphi	erm, nope. My console is b0rked; screen illegible
+2006-06-02T09:59:00.000Z	amphi	YoussefAssad	ah...
+2006-06-02T09:59:00.000Z	YoussefAssad	amphi	I'll give it a shot when I next reboot

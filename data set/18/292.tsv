@@ -1,0 +1,18 @@
+2012-10-02T01:46:00.000Z	wilee-nilee	X-Raimo	You have a live cd?
+2012-10-02T01:48:00.000Z	X-Raimo	wilee-nilee	only flash stick
+2012-10-02T01:48:00.000Z	wilee-nilee	X-Raimo	with the live cd on it? This was not a install fro windows right?  Notice two questions here.
+2012-10-02T01:49:00.000Z	X-Raimo	wilee-nilee	I found this: http://ubuntuforums.org/showthread.php?p=12262958, but grub says: "invalid file name vmlinuz"
+2012-10-02T01:50:00.000Z	X-Raimo	wilee-nilee	with live cd. Grub failed after update+reboot
+2012-10-02T01:51:00.000Z	wilee-nilee	X-Raimo	I am going to assume this is not a wubi install, which is a install from windows. Boot the live cd from the thumb or a cd and chroot in and run the commands where this wiki defaults. https://help.ubuntu.com/community/Grub2/Installing#via_ChRoot
+2012-10-02T01:52:00.000Z	wilee-nilee	X-Raimo	This wiki tells you how to chroot and what commands read very carefully.
+2012-10-02T01:53:00.000Z	X-Raimo	wilee-nilee	yes, thanx, but it seems lilke I have grub-1.99
+2012-10-02T01:53:00.000Z	wilee-nilee	X-Raimo	That is for grub 2 which is 1.99
+2012-10-02T01:54:00.000Z	wilee-nilee	X-Raimo	As I suggested read it carefully there is a command to make sure you know which partition the ubuntu install is on run it first
+2012-10-02T01:58:00.000Z	X-Raimo	wilee-nilee	I finally did: linux (hd0,msdos5)/boot/vmlinuz-3.2.0-31-generic=pae root=/dev/sda5 and it works
+2012-10-02T02:01:00.000Z	wilee-nilee	X-Raimo	If your in the ubuntu then run sudo fdisk -l and find the HD your are on HD=the flash and reload grub to the mbr with sudo grub-install /dev/sdX   X is the letter of the flash like a or b or c...etc, no partition then run sudo update-grub
+2012-10-02T02:02:00.000Z	wilee-nilee	X-Raimo	good job on a manual boot most can't figure that out. ;)
+2012-10-02T02:02:00.000Z	X-Raimo	wilee-nilee	I did. Thanx a lot. This update wasn't best moment in my life
+2012-10-02T02:03:00.000Z	wilee-nilee	X-Raimo	It has happened to a lot of users did it to me as wel.
+2012-10-02T02:03:00.000Z	X-Raimo	wilee-nilee	o, yes. I just did loader's job step-by-step
+2012-10-02T02:04:00.000Z	X-Raimo	wilee-nilee	I used to recover grub via chroot, but before this update didn't have experience with grub2
+2012-10-02T02:06:00.000Z	wilee-nilee	X-Raimo	Yeah, I just use a supergrub loaded to a multiloaded ISO thumb if I run into problems which is hardly ever as I have 4 OS's on my HD, and know where the grub control is but have had to chroot on occasion, no biggie for me.

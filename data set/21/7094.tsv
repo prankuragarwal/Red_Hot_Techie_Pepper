@@ -1,0 +1,21 @@
+2009-05-02T11:28:00.000Z	PerryArmstrong		why are the versions beyond hardy not supporting my monitor
+2009-05-02T11:28:00.000Z	PerryArmstrong		why are the versions beyond hardy not supporting my monitor...is there any solution
+2009-05-02T11:30:00.000Z	PerryArmstrong		lstarnes; i suppose so...but i dont remember....do i have to??
+2009-05-02T11:32:00.000Z	genii	PerryArmstrong	Likely because of recent cnages in the way the X server uses the xorg.conf file. I would suggest to install read-edid and then to issue: sudo get-edid| parse-edid               and then use the results for manual entries in your /etc/X11/xorg.conf file under the Configured Video Device area.
+2009-05-02T11:34:00.000Z	genii	PerryArmstrong	It is an application which scans your monitor/crt and extracts it's capabilities
+2009-05-02T11:49:00.000Z	genii	PerryArmstrong	To reiterate. I would suggest to install read-edid and then to issue: sudo get-edid| parse-edid               and then copy and paste from:Section "Monitor"     up to: EndSection             Then replace in your /etc/X11/xorg.conf the Monitor section which currently exists there.
+2009-05-02T11:50:00.000Z	genii	PerryArmstrong	Will require X restart afterwards
+2009-05-02T11:51:00.000Z	genii	PerryArmstrong	Log off, choose some option from login screen like "Restart X" then login again
+2009-05-02T11:57:00.000Z	genii	PerryArmstrong	Reading
+2009-05-02T11:58:00.000Z	genii	PerryArmstrong	Yes, REPLACE the current part from Section ro EndSection with the new par
+2009-05-02T12:00:00.000Z	genii	PerryArmstrong	Reading
+2009-05-02T12:01:00.000Z	genii	PerryArmstrong	Yup, looks good.
+2009-05-02T12:02:00.000Z	genii	PerryArmstrong	See you soon
+2009-05-02T12:11:00.000Z	genii	PerryArmstrong	Reading
+2009-05-02T12:12:00.000Z	genii	PerryArmstrong	Indicates X was still actually running somewhere.
+2009-05-02T12:13:00.000Z	genii	PerryArmstrong	Gimme a minute, re-checking your config file
+2009-05-02T12:15:00.000Z	genii	PerryArmstrong	I can't find any error with the xorg.conf file. Try a complete restart, return here again please
+2009-05-02T12:16:00.000Z	genii	PerryArmstrong	OK. Give me a minute to consider next tactic.
+2009-05-02T12:25:00.000Z	genii	PerryArmstrong	Please pastebin result of command: grep Modeline /var/log/Xorg.0.log
+2009-05-02T12:29:00.000Z	genii	PerryArmstrong	OK. What video card ? Command:  lspci -nn | grep VGA                       result
+2009-05-02T12:44:00.000Z	genii	PerryArmstrong	My local time is about 3:45AM ... so will soon depart with /away. I will be returning in approximately 10 hours for a stretch about 4 hours. If your issue is till unresolved please feel free to contact me then.

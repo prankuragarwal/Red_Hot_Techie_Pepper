@@ -1,0 +1,18 @@
+2009-04-27T22:13:00.000Z	c_korn		hello, this is the output of ssh -vvv when I want to connect to a server with pubkey authentification. I transfered the public key to the server using ssh-copy-id. http://paste.ubuntu.com/159515/ especially the line "we did not send a packet, disable method" confuses me
+2009-04-27T22:14:00.000Z	mzz	c_korn	you might need server-side logging to make sure it picks up the public key in authorized_keys
+2009-04-27T22:15:00.000Z	mzz	c_korn	also note ssh will get upset if parts of your ~/.ssh are world-writable or the wrong files are world-readable
+2009-04-27T22:16:00.000Z	c_korn	mzz	that is bad. it is a server on university and I am no admin. also pubkey auth. works fine for two friends with this server. do you think the problem is on client or server side?
+2009-04-27T22:16:00.000Z	mzz	c_korn	I'm not entirely sure tbh
+2009-04-27T22:16:00.000Z	mzz	c_korn	what's in your ~/.ssh/authorized_keys on the server end?
+2009-04-27T22:17:00.000Z	c_korn	mzz	http://pastebin.com/d430e47af
+2009-04-27T22:17:00.000Z	mzz	c_korn	ssh-dss?
+2009-04-27T22:18:00.000Z	c_korn	mzz	http://pastebin.com/d15be8cca this are the permissions.
+2009-04-27T22:19:00.000Z	c_korn	mzz	it is just a DSA key instead of RSA. but this is not the problem. my friend has setup a DSA key in his account and is able to login
+2009-04-27T22:19:00.000Z	mzz	c_korn	authorized_keys should be world-readable, I think (it definitely can be world-readable, I don't remember if it has to be, but it might)
+2009-04-27T22:21:00.000Z	c_korn	mzz	http://pastebin.com/d6ad8f3d
+2009-04-27T22:24:00.000Z	mzz	c_korn	on my (working) system I get "we sent a publickey packet, wait for reply" followed by "Server accepts key: pkalg ssh-rsa blen 149"
+2009-04-27T22:25:00.000Z	mzz	c_korn	so afaict the problem is server-side (the client offers the available keys, the server rejects them, either because they don't match authorized_keys or for some other reason)
+2009-04-27T22:27:00.000Z	mzz	c_korn	I'm not sure how to debug this without being able to run sshd -ddd on the server (which wants to read /etc/ssh/sshd_config)
+2009-04-27T22:29:00.000Z	mzz	c_korn	I really don't know what to do besides comparing key properties (like size) to those with a working setup
+2009-04-27T22:29:00.000Z	mzz	c_korn	the server rejects your key, but it (probably intentionally) isn't very verbose about why
+2009-04-27T22:29:00.000Z	mzz	c_korn	(not over the network at least, it would be verbose to the server-side log if configured that way)

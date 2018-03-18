@@ -1,0 +1,19 @@
+2005-01-29T15:39:00.000Z	carthik		How would I un-gzip a file larger than 2 GB?
+2005-01-29T15:39:00.000Z	carthik		It's a huge backup from a DB
+2005-01-29T15:39:00.000Z	crimsun	carthik	just gunzip it.
+2005-01-29T15:40:00.000Z	carthik	crimsun	since it is larger than 2 Gigs, gunzip says it's not a gzip file. It seems as though gzip can only deal with files < 2 GB... not sure. Tried with ark too.
+2005-01-29T15:41:00.000Z	crimsun	carthik	gzip/gunzip are compiled with large file support.
+2005-01-29T15:41:00.000Z	carthik	crimsun	how do I check that, or is it always as you describe in Ubuntu? If it is, then why can't I seem to gunzip it??
+2005-01-29T15:43:00.000Z	carthik	crimsun	thanks for you help, in any case :)
+2005-01-29T15:44:00.000Z	crimsun	carthik	apt-get source gzip; more gzip-1.3.5/debian/rules
+2005-01-29T15:44:00.000Z	crimsun	carthik	note how there's no reference to "--disable-largefile"
+2006-07-19T07:09:00.000Z	crimsun	carthik	more context?
+2006-07-19T07:11:00.000Z	carthik	crimsun	I have a primary as well as a secondary email address. I want to use gpg with both addresses. Should I use "adduid" "addkey" or "genkey" to use both emails - what is "right" way for one person to manage more than one email address? I want to be able to, revoke/cancel email addresses if I stop using them later (like my university email address)
+2006-07-19T07:12:00.000Z	crimsun	carthik	adduid
+2006-07-19T07:13:00.000Z	carthik	crimsun	http://www.gnupg.org/gph/en/manual.html#AEN305 says a UID cannot be revoked (and elsewhere that uids cannot be deleted)?
+2006-07-19T07:16:00.000Z	crimsun	carthik	you can always delete uids
+2006-07-19T07:17:00.000Z	crimsun	carthik	for example, my primary key has 6 e-mail addresses associated
+2006-07-19T07:18:00.000Z	carthik	crimsun	the manual says that if I delete them, they won't effectively get deleted with the folks that already have it, since the changes are merged into what they already have (http://www.gnupg.org/gph/en/manual.html#AEN282 5th paragraph)
+2006-07-19T07:19:00.000Z	carthik	crimsun	alright, if adduid works for you, it works for me :) thanks.
+2006-07-19T07:19:00.000Z	crimsun	carthik	that's correct due to syncing across keyservers. You'd have to ask everyone who imported your key to delete the uid
+2006-07-19T07:19:00.000Z	carthik	crimsun	cool - will take that path

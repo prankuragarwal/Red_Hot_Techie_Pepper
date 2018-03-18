@@ -1,0 +1,21 @@
+2004-11-19T07:28:00.000Z	crimsun	djtansey	blacklist snd-intel8x0m
+2004-11-19T07:28:00.000Z	djtansey	crimsun	do you know anything about it?
+2004-11-19T07:31:00.000Z	djtansey	crimsun	noapic?
+2004-11-19T07:32:00.000Z	crimsun	djtansey	sometimes that resolves the "invalid codec 0" issue. It's a hit n' miss issue. You can see that error in the output of dmesg.
+2004-11-19T07:34:00.000Z	djtansey	crimsun	but how do i use noapic? do i pass it to my kernel with grub?
+2004-11-19T07:34:00.000Z	crimsun	djtansey	correct.
+2004-11-19T07:34:00.000Z	crimsun	djtansey	append it to the kernel line
+2004-11-19T07:34:00.000Z	crimsun	djtansey	but first check the output of `dmesg' for those "invalid codec 0" errors.
+2004-11-19T07:35:00.000Z	crimsun	djtansey	if you don't have those, it's not worth trying that option.
+2004-11-19T07:35:00.000Z	crimsun	djtansey	the first thing I'd try is blacklisting snd-intel8x0m and rebooting.
+2004-11-19T07:35:00.000Z	djtansey	crimsun	didn't find any. the word invalid (or Invalid) anywhere
+2004-11-19T07:36:00.000Z	djtansey	crimsun	where is the blacklist list? i have forgotten
+2004-11-19T07:36:00.000Z	crimsun	djtansey	ok, you don't need the "noapic" option. Try the first suggestion.
+2004-11-19T07:37:00.000Z	crimsun	djtansey	you can add it to /etc/hotplug/blacklist.d/alsa-base or /etc/hotplug/blacklist
+2004-11-19T07:37:00.000Z	djtansey	crimsun	just did the latter. thanks. i'll see you in a minute.
+2004-11-19T07:46:00.000Z	djtansey	crimsun	nothing -- i blacklisted it an it was still loaded! i even blacklisted it in both files and rebooted agian. nothing.
+2004-11-19T07:47:00.000Z	crimsun	djtansey	ok, more drastic measures. sudo rm -f /lib/modules/2.6.8.1-3-686-smp/kernel/sound/pci/snd-intel8x0m.ko
+2006-06-03T09:44:00.000Z	crimsun	djtansey	yes, using tc
+2006-06-03T09:45:00.000Z	djtansey	crimsun	thank you very much.
+2006-06-03T09:45:00.000Z	crimsun	djtansey	the advanced routing how-to on tldp.org has some pointers, and some programs like wondershaper help, too
+2006-06-03T09:46:00.000Z	djtansey	crimsun	thanks again. going there now.

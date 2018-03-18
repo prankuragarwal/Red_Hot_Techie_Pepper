@@ -1,0 +1,23 @@
+2006-07-10T14:56:00.000Z	AngryElf		I've followed the wiki on ATI's drivers yet fglrxinfo still shows the mesa3D project - despite fglrx explicitly being listed in xorg.conf.....any ideas?
+2006-07-10T14:57:00.000Z	h3sp4wn	AngryElf	lsmod | grep fglrx
+2006-07-10T14:58:00.000Z	AngryElf	h3sp4wn	nothing
+2006-07-10T14:58:00.000Z	h3sp4wn	AngryElf	put fglrx into /etc/modules
+2006-07-10T14:59:00.000Z	h3sp4wn	AngryElf	You can do modprobe fglrx but its likely to lock the system
+2006-07-10T15:03:00.000Z	AngryElf	h3sp4wn	fglrx is now loaded, rebooted, and still not showing up in fglrxinfo
+2006-07-10T15:04:00.000Z	h3sp4wn	AngryElf	You set it up with aticonfig --inital ?
+2006-07-10T15:04:00.000Z	AngryElf	h3sp4wn	i did
+2006-07-10T15:05:00.000Z	h3sp4wn	AngryElf	dpkg-divert --list | grep fglrx
+2006-07-10T15:05:00.000Z	h3sp4wn	AngryElf	What card are you using ?
+2006-07-10T15:06:00.000Z	AngryElf	h3sp4wn	radeon 9600
+2006-07-10T15:06:00.000Z	AngryElf	h3sp4wn	msg or pastebin?
+2006-07-10T15:06:00.000Z	h3sp4wn	AngryElf	pastebin if its more than a few lines
+2006-07-10T15:07:00.000Z	AngryElf	h3sp4wn	http://pastebin.ca/84359
+2006-07-10T15:08:00.000Z	h3sp4wn	AngryElf	Are you using the ones from the repos or the new ones ?
+2006-07-10T15:09:00.000Z	h3sp4wn	AngryElf	The ones downloaded from ati.com or the ones in the repos ?
+2006-07-10T15:09:00.000Z	AngryElf	h3sp4wn	i presume they're from the repos'
+2006-07-10T15:10:00.000Z	AngryElf	h3sp4wn	i followed the current wiki
+2006-07-10T15:13:00.000Z	h3sp4wn	AngryElf	Try the ones from ati.com you can generate packages for dapper (and before I got rid of my fglrx they seemed to be working alot better than the previous ones)
+2006-07-10T15:29:00.000Z	AngryElf	h3sp4wn	supposidly the ati drivers are installed, same situation :(
+2006-07-10T15:29:00.000Z	AngryElf	h3sp4wn	fglrx doesn't appear anywhere in Xorg.0.log, yet no errors either
+2006-07-10T15:36:00.000Z	h3sp4wn	AngryElf	cat /etc/X11/xorg.conf | grep Driver
+2006-07-10T15:37:00.000Z	h3sp4wn	AngryElf	It may be a good idea to backup /etc/X11/xorg.conf (move it somewhere else) then try aticonfig --initial again

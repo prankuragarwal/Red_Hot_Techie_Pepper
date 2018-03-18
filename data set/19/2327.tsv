@@ -1,0 +1,19 @@
+2010-05-01T14:32:00.000Z	TVC-DAP		I need help with a LAN problem. My two ethernet cards have not been automatically added to /etc/network/interfaces, and are not responding to either ifup or the network manager
+2010-05-01T14:33:00.000Z	TVC-DAP		see #ubunt-help-dap-net
+2010-05-01T14:34:00.000Z	TVC-DAP		I've tried that. "Ignoring non-existent interface eth0"
+2010-05-01T14:34:00.000Z	maco	TVC-DAP	ifconfig -a
+2010-05-01T14:35:00.000Z	maco	TVC-DAP	that just means your interface has a different name. command i just said should tell you what it is
+2010-05-01T14:36:00.000Z	maco	TVC-DAP	that file is only used for "ifup"
+2010-05-01T14:36:00.000Z	maco	TVC-DAP	if network manager is handling things, that shouldnt matter
+2010-05-01T14:37:00.000Z	maco	TVC-DAP	i thought you said it was ifconfig that wasnt working?
+2010-05-01T14:38:00.000Z	maco	TVC-DAP	is network manager running?
+2010-05-01T14:38:00.000Z	maco	TVC-DAP	you cant use ifup & /etc/network/interfaces while NM is running
+2010-05-01T14:39:00.000Z	maco	TVC-DAP	sudo service network-manager stop
+2010-05-01T14:39:00.000Z	maco	TVC-DAP	sudo ifconfig eth0 up
+2010-05-01T14:39:00.000Z	maco	TVC-DAP	after those two, then you should be able to use dhclient or ifup&interfaces or whatever you want
+2010-05-01T14:43:00.000Z	TVC-DAP	maco	I did those two. what next to get ip address?
+2010-05-01T14:43:00.000Z	maco	TVC-DAP	sudo dhclient eth0
+2010-05-01T14:44:00.000Z	maco	TVC-DAP	yeah
+2010-05-01T14:44:00.000Z	maco	TVC-DAP	if theres dhcp at least
+2010-05-01T14:44:00.000Z	maco	TVC-DAP	if theres no dhcp you have to manually setup your ip address in /etc/network/interfaces
+2010-05-01T14:44:00.000Z	maco	TVC-DAP	in which case "man 5 interfaces" for syntax help

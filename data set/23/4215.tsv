@@ -1,0 +1,23 @@
+2009-08-15T21:35:00.000Z	Janos		hello, I'm pretty new (to Ubuntu and IRC both) and I have what is likely a stupid question
+2009-08-15T21:37:00.000Z	geirha	Janos	Don't worry about that, just ask :)
+2009-08-15T21:38:00.000Z	Janos		okay :D from time to time while exploring I'll screw something up (at the moment its wireless drivers) - is there a simple way to 'fix' an ubuntu install in place (e.g. re obtain the default shipped drivers) without reinstalling clean?
+2009-08-15T21:40:00.000Z	geirha	Janos	It's a bit complicated. It depends on what you've done really, but in most cases a reinstall will be unneccesary.
+2009-08-15T21:41:00.000Z	geirha	Janos	Did you follow a guide?
+2009-08-15T21:41:00.000Z	Janos	geirha	what I need to do specifically is reinstall the b43 wireless drivers, as my wireless card is now coming up as 'unasigned'
+2009-08-15T21:43:00.000Z	geirha	Janos	What have you tried so far? Did you try ndiswrapper perhaps?
+2009-08-15T21:44:00.000Z	Janos		geirha> I used 43-fcutter to get the firmware (its a broadcom driver) and it was working with the out of the box ubuntu drivers; then I was walking through the instal for the newest driver, and now it doesn't :-(
+2009-08-15T21:46:00.000Z	geirha	Janos	I have no experience with broadcom myself, but from what I can read from https://help.ubuntu.com/community/WifiDocs/Driver/bcm43xx , I'd try reconfiguring the b43-fwcutter package.   sudo dpkg-reconfigure b43-fwcutter
+2009-08-15T21:47:00.000Z	Janos		geirha> Thanks - I'll give that command a try!
+2009-08-15T21:47:00.000Z	geirha	Janos	Or, maybe reinstall it with: sudo aptitude reinstall b43-fwcutter
+2009-08-15T21:47:00.000Z	Janos		obliged
+2009-08-15T21:48:00.000Z	Janos		g> you wouldn't know what the package with the out of the box ubuntu wireless drivers is would you?
+2009-08-15T21:54:00.000Z	geirha	Janos	No, but most likely it's shipped with the kernel package
+2009-08-15T21:54:00.000Z	Janos		!geirha ah that makes sense
+2009-08-15T21:55:00.000Z	geirha	Janos	BTW, make sure my full nick is the first part of your message if you want to adress me. My irc-client will highlight the message then, so I can easily read it through all the noise
+2009-08-15T21:56:00.000Z	geirha	Janos	Was it a kernel update that made it stop working?
+2009-08-15T21:57:00.000Z	Janos	geirha	> no it was me replacing the wl.ko file in libs/modules/blah/volatile with a newly compiled version from broadcom. when it didn't work I repalced the original file, but still doesn;t work (thank goodness for wired access)
+2009-08-15T21:58:00.000Z	geirha	Janos	dpkg -S /libs/modules/blah/volatile    <- will tell you what package initially installed that file
+2009-08-15T21:58:00.000Z	Janos	geirha	ah! cunning!
+2009-08-15T21:58:00.000Z	geirha	Janos	Er.. with /wl.ko at the end
+2009-08-15T22:01:00.000Z	geirha	Janos	Hm. On my system it doesn't find any package for that file, which possibly means it is being generated after the package is installed. But I'd try reinstalling linux-image-blah
+2009-08-15T22:02:00.000Z	Janos	geirha	lots of thanks, I'll be back if it doesn't work

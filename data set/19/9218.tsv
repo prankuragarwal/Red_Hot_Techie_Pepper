@@ -1,0 +1,19 @@
+2006-12-08T16:14:00.000Z	FluxAR		Hello! I have a problem with dpkg. I tried to install k3d and something was broken in dpkg database. Now I get an error when I try to use apt-get and dpkg ( pasted in : http://pastebin.ca/272309 ) ... Could someone help me to restore or rebuild dpkg database please? Thank you!
+2006-12-08T16:15:00.000Z	jrib	FluxAR	looks like a bug in the package.  Please pastebin 'apt-cache policy k3d'.  Have you searched bugs.ubuntu.com?
+2006-12-08T16:15:00.000Z	FluxAR	jrib	I want to make dpkg or apt to ignore that k3d package that seems to have a bug, and has a pending action
+2006-12-08T16:16:00.000Z	jrib	FluxAR	we can probably just edit the preremoval script and fix the bug, it's a typo
+2006-12-08T16:17:00.000Z	FluxAR	jrib	yes, but how can I restore now my dpkg database? Now I can't use apt or dpkg because of that pending action :(
+2006-12-08T16:17:00.000Z	jrib	FluxAR	can you pastebin 'apt-cache policy k3d' please?
+2006-12-08T16:17:00.000Z	FluxAR	jrib	of course... just a sec
+2006-12-08T16:18:00.000Z	FluxAR	jrib	http://paste.ubuntu-nl.org/35974/
+2006-12-08T16:20:00.000Z	jrib	FluxAR	pastebin /var/lib/dpkg/info/k3d.postinst
+2006-12-08T16:21:00.000Z	FluxAR	jrib	http://paste.ubuntu-nl.org/35976/
+2006-12-08T16:22:00.000Z	FluxAR	jrib	I'm looking at it now... let's see
+2006-12-08T16:26:00.000Z	jrib	FluxAR	my suggestion was going to be to edit /var/lib/dpkg/status and fix the error
+2006-12-08T16:27:00.000Z	FluxAR	jrib	but I can't see which is the error
+2006-12-08T16:27:00.000Z	jrib	FluxAR	someone wrote Python-versions and it should be Python-version without the 's'
+2006-12-08T16:28:00.000Z	FluxAR	jrib	Ok .... I'll try.
+2006-12-08T16:28:00.000Z	jrib	FluxAR	make a backup before editing that file
+2006-12-08T16:33:00.000Z	FluxAR	jrib	orion2012 : thanks for your helping today! I solved my problem!
+2006-12-08T16:33:00.000Z	jrib	FluxAR	great, how did you end up doing it?
+2006-12-08T16:35:00.000Z	FluxAR	jrib	editing /var/lib/dpkg/status :-)

@@ -1,0 +1,24 @@
+2007-06-30T11:09:00.000Z	matt2292		I'm setting up a computer to act as a server, so it will not have any monitors attached to it. I still need x server running because i control it via VNC, but if i try to boot without a monitor connected, i get the xserver fatal error "no screens detected" and so it will not start. My question is, how can i get x server to ignore the fact i have no physical monitor and still start up anyway?
+2007-06-30T11:10:00.000Z	dr_willis	matt2292	 you can set up vnc and not need a X server running.
+2007-06-30T11:10:00.000Z	dr_willis	matt2292	 vnc can run tottaly in the background. You dont have to share the 'currently seen' desktop.
+2007-06-30T11:10:00.000Z	dr_willis	matt2292	 you may need to configure the 'vncserver' settings a little bit. there was a buglet or 2 in them last i looked.
+2007-06-30T11:12:00.000Z	matt2292	dr_willis	is there an easier way? I'm running x11vnc because vncserver dosent seem to work with xfce, and i currently have it configured to login automatically and just use one desktop.
+2007-06-30T11:13:00.000Z	dr_willis	matt2292	 the 'issue' is that the default vncserver dosent read the users  .vnc/xstartup like it used to do. You can configure vncserver to do so.. and launch xfce from that file.
+2007-06-30T11:13:00.000Z	dr_willis	matt2292	 what i normally do is 'ssh' to the box and start vncserver. X doisent need to be running at all.
+2007-06-30T11:14:00.000Z	dr_willis	matt2292	 ive twiddled and played with vnc for years. :) its a very flexiable tool. but the default setup  under feisty seems to be a little bit bugged. :(
+2007-06-30T11:16:00.000Z	matt2292		dr_wilis: ok thanks, i spent a while trying to set it up because i only knew how to get it to work with gnome, and i have no idea right now how to set up vnc to run without x server but still use my default desktop
+2007-06-30T11:16:00.000Z	matt2292	dr_willis	i hate how seemingly small and irrelivant errors make you have to start all over again
+2007-06-30T11:18:00.000Z	dr_willis	matt2292	 :)  I find that 'vnc4server' works better for me.. It seems to work  'how i expect it to'
+2007-06-30T11:18:00.000Z	dr_willis	matt2292	 it will make a .vnc/xstartup script that you can tewek and run whatever you want to when you spawn 'vncserver'
+2007-06-30T11:19:00.000Z	matt2292		ok
+2007-06-30T11:20:00.000Z	matt2292	dr_willis	would it be easier to replace my installation of xubuntu with ubuntu server and start from there?
+2007-06-30T11:21:00.000Z	dr_willis	matt2292	 i dont see why you need to.
+2007-06-30T11:21:00.000Z	dr_willis	matt2292	 you can run 'vncserver' without X running at all. Ive had a fileserver with no monitor that way for ages...
+2007-06-30T11:23:00.000Z	matt2292	dr_willis	so should i replace x11vnc with vncserver?
+2007-06-30T11:24:00.000Z	dr_willis	matt2292	 you can have botyh installed at the same time. I USE vncserver. I dont share the currently running desktop ( thats what x11vnc does)
+2007-06-30T11:24:00.000Z	dr_willis	matt2292	 i tend to 'ssh' to the remote box. run vncserver, and then on the local box. run the vncclient i want to connect to it.
+2007-06-30T11:26:00.000Z	dr_willis		night all
+2007-06-30T11:26:00.000Z	matt2292	dr_willis	ok well i know how to set it up where i can log into a session not already started on the server using a port other than the current screen, is that how i would configure it?
+2007-06-30T11:27:00.000Z	matt2292	dr_willis	VNC that is, then start vnc from ssh and then login
+2007-06-30T11:27:00.000Z	matt2292	dr_willis	i think it was logging in from XDMCP or something
+2007-06-30T11:32:00.000Z	matt2292	dr_willis	thanks i think i got it

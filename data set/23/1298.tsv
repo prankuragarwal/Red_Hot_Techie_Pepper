@@ -1,0 +1,23 @@
+2010-05-23T23:43:00.000Z	Konfused		Hi all.
+2010-05-23T23:45:00.000Z	Konfused		Has anyone tried to install Lucid on a Sony VAio PGC-TR1A?  It has an Intel 855GM graphics adapter and I can't seem to get the intel driver to work.
+2010-05-23T23:45:00.000Z	eye-zak	Konfused	see lucid release notes .. there are issues with intel graphics maybe
+2010-05-23T23:46:00.000Z	Konfused		I looked at the release notes, and the wiki, and the rest of the documentation, including the docs from Xorg and still no joy.
+2010-05-23T23:47:00.000Z	eye-zak	Konfused	can u use X at all ?
+2010-05-23T23:47:00.000Z	Konfused		I also did a far amount of Googling.
+2010-05-23T23:47:00.000Z	Konfused		Yes, with the vesa driver.
+2010-05-23T23:47:00.000Z	Konfused		If I take a bare bones xorg.conf that works with the vesa driver and substitute intel for vesa, the system hangs.
+2010-05-23T23:47:00.000Z	eye-zak	Konfused	hmm haven't had that specific hardware ... not sure if u've tried UXA workaround
+2010-05-23T23:48:00.000Z	Konfused		It isn't just X that fails, the whole system hangs.
+2010-05-23T23:48:00.000Z	eye-zak	Konfused	the xvesa config will probably not work, have u tried changing the acceleration (UXA/EXA/XXA)
+2010-05-23T23:48:00.000Z	Konfused		It seems like the intel kernel module is somehow causing the freeze.  Also, there are no logged errors.
+2010-05-23T23:48:00.000Z	Konfused		I have tried turning all acceleration off.
+2010-05-23T23:49:00.000Z	eye-zak	Konfused	afaik (my intel is a server) the best acceleration option in xorg/although buggy also/ is UXA
+2010-05-23T23:49:00.000Z	Konfused		It is my opinion by the way that even a very bad video driver should not hang the whole system.
+2010-05-23T23:50:00.000Z	eye-zak	Konfused	yes .. but it happens to me even with proprietary nVidia
+2010-05-23T23:50:00.000Z	Konfused	eye-zak	I don't have any opinion with regard to acceleration at this point.  I was just trying to get the system to work with absolutely no acceleration first before I decided how to tune it.
+2010-05-23T23:51:00.000Z	eye-zak	Konfused	i know.. but afaik the intel UXA pipeline is the most stable and currently mantained and is recommended for that driver
+2010-05-23T23:51:00.000Z	Konfused	eye-zak	do you mean to say that it is possible that the system might work with XUA acceleration better than it works with no acceleration at all?
+2010-05-23T23:52:00.000Z	eye-zak	Konfused	no acceleration means XXA (old and not really supported by intel ) tbw these are 2D acceleration methods, not 3D
+2010-05-23T23:53:00.000Z	Konfused	eye-zak	I understand that those are 2D methods.
+2010-05-23T23:53:00.000Z	Konfused		All right, I will try XUA.  I'll be back in a little while..
+2010-05-23T23:53:00.000Z	eye-zak	Konfused	i can't suggest much else ... haven't used X ever on my intel

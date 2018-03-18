@@ -1,0 +1,18 @@
+2006-10-04T12:32:00.000Z	StuartWSU		Has anyone ever heard of outbound tcp connections to other IPs with a remote port greater than 1024 be blocked?  I have a machine here that I can connect outside to 983/tcp however if I run a webserver on, say, 8080 on another machine, connecting to it is impossible.  tcpdump shows the packets seemingly leave the machine, however nothing is returned and there is no selinux policy that I can see that is affecting this.  Booting into windoze on th
+2006-10-04T12:32:00.000Z	StuartWSU		e same machine, same mac, same ip and the connection to 8080/tcp works fine.  Any ideas?
+2006-10-04T12:34:00.000Z	StuartWSU		I just setup a webserver on a remote machine listening on 999/tcp.  I can connect to it no problem.  If I bind the remote webserver to 1000/tcp and try to connect - nothing.  Any idea why this would be blocked and where in the OS would it be blocked from?
+2006-10-04T12:36:00.000Z	StuartWSU		I just setup a webserver on a remote machine listening on 999/tcp.  I can connect to it no problem from my ubuntu machine both using http://remote:999 and telnet remote 999.  If I bind the remote webserver to 1000/tcp and try to connect - nothing.  Any idea why this would be blocked and where in the OS would it be blocked from?
+2006-10-04T12:37:00.000Z	aeroSoul	StuartWSU	did you restart the webserver?
+2006-10-04T12:40:00.000Z	aeroSoul	StuartWSU	you can't telnet to port 1000 from localhost?
+2006-10-04T12:43:00.000Z	aeroSoul	StuartWSU	and did you try connecting to the port from the machine the server is running on?
+2006-10-04T12:43:00.000Z	aeroSoul	StuartWSU	when it's listening on port 1000 can you connect from the same machine?
+2006-10-04T12:43:00.000Z	aeroSoul	StuartWSU	what do you see when you type "iptables -L" ?
+2006-10-04T12:46:00.000Z	aeroSoul	StuartWSU	which os are you using to connect?
+2006-10-04T12:47:00.000Z	aeroSoul	StuartWSU	you already tried telnet form the remote machine, right?
+2006-10-04T12:48:00.000Z	aeroSoul	StuartWSU	if you want i can try to connect to the host... to rule out that it's your client machine that is the problem
+2006-10-04T12:50:00.000Z	aeroSoul	StuartWSU	on which ip is the webserver listening?
+2006-10-04T12:50:00.000Z	aeroSoul	StuartWSU	you can see it with "netstat -anp | grep 1000" or grep apache
+2006-10-04T12:50:00.000Z	aeroSoul	StuartWSU	maybe it is only listening on a local ip
+2006-10-04T12:51:00.000Z	aeroSoul	StuartWSU	ok sry.. then it wouldnt work on port 999
+2006-10-04T12:54:00.000Z	aeroSoul	StuartWSU	dont know what the problem is, maybe iptables rules on your client machine? i'd try port forwarding... to redirect port 1000 to port 999 or something =)
+2006-10-04T12:55:00.000Z	aeroSoul	StuartWSU	maybe another service listening on port 1000?

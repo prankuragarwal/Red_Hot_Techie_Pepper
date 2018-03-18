@@ -1,0 +1,18 @@
+2007-06-28T06:48:00.000Z	mtbosworth		can anyone help me with networking/ssh problems?
+2007-06-28T06:49:00.000Z	mtbosworth		basically, my problem is that I have ssh install and after I run the server and try ssh username@ipaddress I always get "Connection refused on port 22"
+2007-06-28T06:50:00.000Z	mtbosworth		I used nmap to look at my ip and it doesn't list port 22 as being open
+2007-06-28T06:50:00.000Z	kitche	mtbosworth	does the other place that your sshing into have sshd installed?
+2007-06-28T06:51:00.000Z	kitche	mtbosworth	start the sshd server
+2007-06-28T06:51:00.000Z	kitche	mtbosworth	ok but see if sshd is running
+2007-06-28T06:52:00.000Z	kitche	mtbosworth	umm try starting it :) sudo /etc/init.d/sshd start
+2007-06-28T06:57:00.000Z	kitche	mtbosworth	then you don't have openssh-server  installed most likely or your typing it in wrong
+2007-06-28T06:57:00.000Z	kitche	mtbosworth	go to /etc/init.d and see if you do have a sshd script in there
+2007-06-28T07:00:00.000Z	kitche	mtbosworth	then you don't have openssh-server installed
+2007-06-28T07:02:00.000Z	kitche	mtbosworth	hmm odd uninstall it and reinstall it
+2007-06-28T07:09:00.000Z	kitche	mtbosworth	might be that file instead :)
+2007-06-28T07:11:00.000Z	kitche	mtbosworth	yeah
+2007-06-28T07:11:00.000Z	kitche	mtbosworth	it probably won't
+2007-06-28T07:22:00.000Z	kitche	mtbosworth	it means it can't assign to that port how are you starting the sshd
+2007-06-28T07:24:00.000Z	kitche	mtbosworth	umm do ssh localhost
+2007-06-28T07:25:00.000Z	kitche	mtbosworth	or ssh 127.0.0.1
+2007-06-28T07:26:00.000Z	kitche	mtbosworth	check the logs sudo nano /var/log/messages to see why

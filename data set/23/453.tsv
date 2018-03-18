@@ -1,0 +1,23 @@
+2011-08-15T17:05:00.000Z	vbnj		hello, who can tell me how to prevent a program from accessing network on Ubuntu ?
+2011-08-15T17:06:00.000Z	edbian	vbnj	That's what a firewall is used for (or just don't run or uninstall that program)
+2011-08-15T17:06:00.000Z	vbnj	edbian	: can ufw block entire programs/process/child-processes ?
+2011-08-15T17:07:00.000Z	edbian	vbnj	It doesn't block based on processes but rather what port they're talking on (which is usually as good)
+2011-08-15T17:07:00.000Z	vbnj	edbian	: clock-applet, conky, and gweater are using port 80
+2011-08-15T17:07:00.000Z	edbian	vbnj	what?
+2011-08-15T17:08:00.000Z	vbnj	edbian	i can't reasonably block p.80
+2011-08-15T17:08:00.000Z	edbian	vbnj	how sure are you?
+2011-08-15T17:08:00.000Z	vbnj	edbian	: netstat -pn | grep tcp
+2011-08-15T17:09:00.000Z	edbian	vbnj	good test...
+2011-08-15T17:10:00.000Z	edbian	vbnj	Have you looked at nethogs  ?
+2011-08-15T17:11:00.000Z	edbian	vbnj	It's used to see which processes are using network but I think it can block them too.   I probably shouldn't have to tell you that it is strange that the clock applet and conky are accessing port 80
+2011-08-15T17:12:00.000Z	vbnj	edbian	it's just a pain to stop them gnome-system-monitor, i pkill won't work sending STOP signal to them. I don't know sh scripting, i can't thing on anything more to automatise the process, because these may leak intels about my location when using a vpn
+2011-08-15T17:13:00.000Z	edbian	vbnj	well just don't run conky in the first place.  (I didn't know you were gonna kill the processes(
+2011-08-15T17:14:00.000Z	edbian	vbnj	what is gweater?
+2011-08-15T17:15:00.000Z	vbnj	edbian	i don't kill them, i send them a SIGSTOP, which as named, stop the process, but don't kill it. If i agree that i could just not run conky, it's quite different for clock-applet by example.
+2011-08-15T17:17:00.000Z	edbian	vbnj	Well that weather applet is going to give away your location (to a very very sneaky person) because it is info about your region!
+2011-08-15T17:17:00.000Z	edbian	vbnj	just kill the processes  kill <pid>
+2011-08-15T17:20:00.000Z	edbian	vbnj	If you're going to kill them on startup (killing them is an option) just uninstall them and don't use them
+2011-08-15T17:21:00.000Z	edbian	vbnj	Or learn shell scripting and kill them (it's not that hard to do what you're asking)
+2011-08-15T17:25:00.000Z	vbnj	edbian	ok, i tought there was some built-in util to that without having to shellscript. And i use them most of the time, it's just that sometime, i'm going under vpn and don't want them to work.
+2011-08-15T17:26:00.000Z	edbian	vbnj	write the script :)
+2011-08-15T17:27:00.000Z	edbian	vbnj	http://paste.ubuntu.com/666503/

@@ -1,0 +1,19 @@
+2007-06-28T13:28:00.000Z	babo		Could not find information on interface eth1:avahi in /proc/net/dev ... my internet connection has stopped working all of a sudden ...
+2007-06-28T13:29:00.000Z	bruenig	babo	does ifconfig give any information on it, ip address or anything?
+2007-06-28T13:30:00.000Z	babo	bruenig	The interface seems to be there in /proc/net/dev but it loses 100% of it's packets. In 'ifconfig /all' I get "error fetching interface information, device not found"
+2007-06-28T13:30:00.000Z	bruenig	babo	just ifconfig with no arguments, what does it give you
+2007-06-28T13:30:00.000Z	babo	bruenig	but ifconfig seems to work OK.
+2007-06-28T13:31:00.000Z	babo	bruenig	ah sorry, maybe i was thinking of windows ipconfig /all
+2007-06-28T13:32:00.000Z	bruenig	babo	what I generally would do is just sort of a check and do "sudo ifconfig $interface down" "sudo ifconfig $interface up" "sudo dhclient $interface"
+2007-06-28T13:33:00.000Z	babo	bruenig	which config files should I be looking at for this ? Which config files control the ethernet interface ? what's eth1:avahi ?
+2007-06-28T13:34:00.000Z	bruenig	babo	I don't really get avahi stuff and don't use it. Just type all of that stuff at the terminal and see if you can get a connection
+2007-06-28T13:34:00.000Z	bruenig	babo	eth1 is probably our interface though
+2007-06-28T13:34:00.000Z	babo	bruenig	k thanks ...
+2007-06-28T14:17:00.000Z	babo	bruenig	that won't work ... I just get  No DHCPOFFERS received, No working leases in persistent db's ...
+2007-06-28T14:17:00.000Z	bruenig	babo	what
+2007-06-28T14:18:00.000Z	babo	bruenig	the original error message seems to be the most pertinent though ... \nCould not find information on interface eth1:avahi in /proc/net/dev
+2007-06-28T14:18:00.000Z	babo	bruenig	my interface problem ...
+2007-06-28T14:18:00.000Z	bruenig	babo	don't know, I don't remember that
+2007-06-28T14:19:00.000Z	babo	bruenig	when i look in /proc/net/dev there isn't any eth1:avahi ... there is only eth1 ( and it drops 100% of the packets )
+2007-06-28T14:19:00.000Z	babo	bruenig	I don't see why I'm using it either ...
+2007-06-28T14:23:00.000Z	babo	bruenig	you had suggested that I try sudo ifconfig eth1 down && sudo ifconfig eth1 up && dhclient eth1 ... but I got the No DHCPOFFERS received ...

@@ -1,0 +1,22 @@
+2011-03-05T20:28:00.000Z	BostX		hi
+2011-03-05T20:29:00.000Z	BostX		anyone knows why im getting this openvpn error: "Note: cannot open openvpn_up_de081fa40736957e5630b2fe63e18c27.tmp for WRITE"
+2011-03-05T20:29:00.000Z	BostX		and after that: "TLS Auth Error: could not write username/password to file: openvpn_up_de081fa40736957e5630b2fe63e18c27.tmp"
+2011-03-05T20:29:00.000Z	Jasonn	BostX	its a read-only file
+2011-03-05T20:30:00.000Z	Jasonn	BostX	try sudo -i and then your command
+2011-03-05T20:30:00.000Z	Jasonn	BostX	not all together**
+2011-03-05T20:30:00.000Z	BostX	Jasonn	well yea... but the file was created by /etc/init.d/openvpn
+2011-03-05T20:30:00.000Z	Jasonn	BostX	run the command sudo -i
+2011-03-05T20:31:00.000Z	BostX	Jasonn	I do "sudo /etc/init.d/openvpn start", u mean the '-i' is missing... ? i'll try it
+2011-03-05T20:31:00.000Z	Jasonn	BostX	no, sudo -i is a separate command, try that
+2011-03-05T20:31:00.000Z	Jasonn	BostX	sudo -i makes you the root user in all commands you type, and THEN in a new line, type the command you want
+2011-03-05T20:33:00.000Z	BostX	Jasonn	hmm.. no success... the same error as before
+2011-03-05T20:33:00.000Z	Jasonn	BostX	can you look for the file and see if its "read only"?
+2011-03-05T20:34:00.000Z	Jasonn	BostX	with "gksudo nautilus"
+2011-03-05T20:35:00.000Z	BostX	Jasonn	hmmm... I cannot find the file...
+2011-03-05T20:35:00.000Z	BostX	Jasonn	do u know where it might be?
+2011-03-05T20:36:00.000Z	BostX	Jasonn	i tried /tmp/, /var/log/ but its not there
+2011-03-05T20:36:00.000Z	Jasonn	BostX	First, type this into your terminal: gksudo nautilus
+2011-03-05T20:37:00.000Z	Jasonn	BostX	BostX It will open up a file manager with root privelages
+2011-03-05T20:37:00.000Z	Jasonn	BostX	THEN what you have to do is go to: /etc/init.d/openvpn
+2011-03-05T20:41:00.000Z	BostX	Jasonn	it must be somewhere in tmp_dir
+2011-03-05T20:41:00.000Z	Jasonn	BostX	if you are trying to run file "/etc/init.d/openvpn" then that is where it is

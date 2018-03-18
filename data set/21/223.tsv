@@ -1,0 +1,21 @@
+2012-05-19T02:15:00.000Z	Krambiorix		in a crontab i want to grep a log file for things that happened today, how can i do that? The date format is like [Sat May 19 00:08:43 2012]
+2012-05-19T02:17:00.000Z	todon_	Krambiorix	`grep 'Sat May 19 ' /path/to/logfile` should do it.
+2012-05-19T02:17:00.000Z	Krambiorix	todon_	it should work for all days :-)
+2012-05-19T02:18:00.000Z	Krambiorix	todon_	something like '%D %M %d......?
+2012-05-19T02:23:00.000Z	todon_	Krambiorix	Ah, I see. In that case:
+2012-05-19T02:23:00.000Z	todon_	Krambiorix	grep `date '+%a %b %d'` /path/to/logfile
+2012-05-19T02:23:00.000Z	todon_	Krambiorix	Check out the date manpage for more info :)
+2012-05-19T02:24:00.000Z	todon_	Krambiorix	Actually, needs quoting, so:
+2012-05-19T02:24:00.000Z	todon_	Krambiorix	grep "`date '+%a %b %d'`" /path/to/logfile
+2012-05-19T02:25:00.000Z	Krambiorix	todon_	i'll test it, thx!
+2012-05-19T02:29:00.000Z	Krambiorix	todon_	shouldn't it be grep "`date +'%a %b %d'`" /path/to/logfile  ?
+2012-05-19T02:31:00.000Z	todon_	Krambiorix	Yes, also spotted that and corrected in my last response
+2012-05-19T02:31:00.000Z	Krambiorix	todon_	you said grep "`date '+%a %b %d'`" tmp_error_logs.log -> crontab says there 's an error in that line
+2012-05-19T02:35:00.000Z	todon_	Krambiorix	If you're placing that command in a crontab you'll need to escape the %
+2012-05-19T02:36:00.000Z	Krambiorix	todon_	i have this, still err   grep "`date '+%%a %%b %%d'`" file.log
+2012-05-19T02:36:00.000Z	todon_	Krambiorix	Replace %% with \%
+2012-05-19T02:37:00.000Z	Krambiorix	todon_	still error: grep "`date '+\%a \%b \%d'`"  :-s
+2012-05-19T02:38:00.000Z	todon_	Krambiorix	Might be easier to put the command in a shell script
+2012-05-19T02:38:00.000Z	todon_	Krambiorix	And checkout `man 5 crontab`
+2012-05-19T02:40:00.000Z	Krambiorix	todon_	if i put it in a shell script -> should i escape too?
+2012-05-19T02:41:00.000Z	todon_	Krambiorix	No need to escape the % characters

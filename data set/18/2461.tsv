@@ -1,0 +1,18 @@
+2010-12-14T15:59:00.000Z	casperfoo	sgo11	what protocol do you want to use?  HTTP?  SSH?  FTP?  I think you just need to serve that up on PC_A and setup port forwarding
+2010-12-14T16:01:00.000Z	casperfoo	sgo11	sounds like you need a web server to me to allow all these clients to download files
+2010-12-14T16:07:00.000Z	sgo11	casperfoo	thanks for reply. sorry I was just away. I assume PCs don't have access to their router/firewall. so PC_A to setup port forwarding on router/firewall won't work. jrib suggests ssh port forwarding should work. but I don't know the performance.
+2010-12-14T16:11:00.000Z	casperfoo	sgo11	I don't really understand your problem I guess, maybe you could explain more of your goal
+2010-12-14T16:16:00.000Z	sgo11	casperfoo	ok. thanks for the attention. Our company want to solve the problem by transfering files between two different NAT. We have a central server with public IP. If PC_A and PC_B under two different NAT, somehow, we want PC_A and PC_B can access their shared files directly. The best concept I can think is this: PC_A tells the central server its IP and ports. PC_B asks PC_A's IP and ports. and then PC_B directly access PC_A.
+2010-12-14T16:17:00.000Z	casperfoo	sgo11	and you want this to happen in some sort of dynamic fashion?  i.e. new PCs join these separate networks
+2010-12-14T16:19:00.000Z	sgo11	casperfoo	yeah, that's cool. It's good PC_A can access PC_B directly in the end. I don't want to add too much overhead to the server.
+2010-12-14T16:21:00.000Z	casperfoo	sgo11	how are the two computers supposed to initially setup the connection?  will the PC_B know the public IP and a port it can contact PC_A on?
+2010-12-14T16:21:00.000Z	sgo11	casperfoo	well. that is the problem I am trying to solve. I don't know.
+2010-12-14T16:23:00.000Z	sgo11	casperfoo	the concept should work. like bittorrent, peers download files directly from other peers.
+2010-12-14T16:23:00.000Z	casperfoo	sgo11	yeah, the tracker facilitates all of that
+2010-12-14T16:24:00.000Z	sgo11	casperfoo	yeah, but I don't know how I can use of the tracker facilitates.
+2010-12-14T16:25:00.000Z	casperfoo	sgo11	you'll need to design a way for the setup to happen... e.g. a matchmaking of some sort, at least to establish the IP/port for PC_B to get to PC_A on, then it's just a matter of a port forward to a web server or something running on PC_A (one of many options)
+2010-12-14T16:26:00.000Z	sgo11	casperfoo	any existing project/tools/protocols I can use of, instead of building it from scratch? it will be too much work.
+2010-12-14T16:27:00.000Z	casperfoo	sgo11	the key there is the central server being able to act as a kind of directory service; you could leverage a lot from BitTorrent; I don't have any other ideas at the moment sorry
+2010-12-14T16:28:00.000Z	sgo11	casperfoo	maybe, we just build a bittorrent server? any good open source bittorrent server/tracker you can suggest to build under ubuntu? thanks.
+2010-12-14T16:28:00.000Z	casperfoo	sgo11	never tried setting one up but I'm sure they're out there, probably even one that integrates with a website automatically
+2010-12-14T16:29:00.000Z	sgo11	casperfoo	let's google it again. I haven't found a good one. thanks for the help.

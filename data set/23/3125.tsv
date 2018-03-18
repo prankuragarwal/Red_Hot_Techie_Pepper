@@ -1,0 +1,23 @@
+2008-07-19T00:16:00.000Z	fuhgawz		hi all
+2008-07-19T00:16:00.000Z	fuhgawz		hi i need to view a hardware raid from ubuntu, the server its conected to a dell powervault
+2008-07-19T00:17:00.000Z	fuhgawz		when i do a sudo fdisk -l it only shows my internal scsi disk
+2008-07-19T00:17:00.000Z	fyrestrtr	fuhgawz	sudo fdisk -l /dev/yourotherdevice
+2008-07-19T00:21:00.000Z	fuhgawz	fyrestrtr	im using xfe4
+2008-07-19T00:22:00.000Z	fyrestrtr	fuhgawz	I have no idea what you are talking about lol start from the top. What is the powervault?
+2008-07-19T00:24:00.000Z	fuhgawz	fyrestrtr	i have a dell powervault storage connected to a dell poweredge server
+2008-07-19T00:25:00.000Z	fyrestrtr	fuhgawz	oh. How do you connect to the storage? NFS? FTP?
+2008-07-19T00:26:00.000Z	fyrestrtr	fuhgawz	I mean, how do you connect to it at the FS level.
+2008-07-19T00:27:00.000Z	fyrestrtr	fuhgawz	is the device detected? check dmesg
+2008-07-19T00:28:00.000Z	fyrestrtr	fuhgawz	no, use a pastebin.
+2008-07-19T00:33:00.000Z	fuhgawz	fyrestrtr	its under the name of fuhgawz in pastebin
+2008-07-19T00:33:00.000Z	fyrestrtr	fuhgawz	paste the link to it here.
+2008-07-19T00:36:00.000Z	fyrestrtr	fuhgawz	did you say its connected via PCI?
+2008-07-19T00:42:00.000Z	fuhgawz	fyrestrtr	yes, its connected via PCI
+2008-07-19T00:43:00.000Z	fyrestrtr	fuhgawz	sudo lspci -vv
+2008-07-19T00:43:00.000Z	fyrestrtr	fuhgawz	pastebin the output of that.
+2008-07-19T00:46:00.000Z	fuhgawz	fyrestrtr	http://pastebin.com/m2b60eba0
+2008-07-19T00:48:00.000Z	fyrestrtr	fuhgawz	iirc, you need the megaraid2 kernel module to access the device.
+2008-07-19T00:49:00.000Z	fuhgawz	fyrestrtr	so i need to recompile the kernel?
+2008-07-19T00:50:00.000Z	fyrestrtr	fuhgawz	probably -- or find the module and install it.
+2008-07-19T00:59:00.000Z	fuhgawz	fyrestrtr	i did a modprobe megaraid, is that ok?
+2008-07-19T01:00:00.000Z	fyrestrtr	fuhgawz	that won't do anything if the module doesn't exist. Check with lsmod

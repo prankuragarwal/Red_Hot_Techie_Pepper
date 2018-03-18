@@ -1,0 +1,23 @@
+2010-07-24T17:30:00.000Z	joakimk		After upgrading firefox, the flash player is messed up... I've tried reinstalling with "sudo apt-get install flashplugin-nonfree" and restart FF, but no luck. Also, going to adobe.com for the install file fails, since FF can not handle the apt:// protocol. Any tips?
+2010-07-24T17:31:00.000Z	joakimk		btw, this is Ubuntu 9.04
+2010-07-24T17:31:00.000Z	ActionParsnip	joakimk	dont use the adobe site for flash, flash is in the repo
+2010-07-24T17:31:00.000Z	joakimk	ActionParsnip	ok... But going to Add/Remove software menu, and searching for "flash" gave 0 hits
+2010-07-24T17:32:00.000Z	ActionParsnip	joakimk	if you give the output of:  dpkg -l | grep flash; dpkg -l | grep gnash; dpkg -l | grep swf    use http://pastie.org  I can advise
+2010-07-24T17:32:00.000Z	joakimk	ActionParsnip	and I did try installing flashplugin-nonfree
+2010-07-24T17:32:00.000Z	ActionParsnip	joakimk	if you install apturl  you can use apt:// links
+2010-07-24T17:33:00.000Z	joakimk	ActionParsnip	http://pastie.org/1058265
+2010-07-24T17:33:00.000Z	joakimk	ActionParsnip	but I have "apturl is already the newest version."
+2010-07-24T17:33:00.000Z	ActionParsnip	joakimk	ok there is your issue, too many flash plugins. Ifyu have more than one they conflict and you get nothing
+2010-07-24T17:33:00.000Z	joakimk	ActionParsnip	:) ok...
+2010-07-24T17:34:00.000Z	ActionParsnip	joakimk	i'll give a big command and it will fix you up
+2010-07-24T17:35:00.000Z	ActionParsnip	joakimk	http://www.pastie.org/1058266
+2010-07-24T17:37:00.000Z	ActionParsnip	joakimk	that removes ALL the flash plugins you have then installs only the one you need, it will be fine then
+2010-07-24T17:38:00.000Z	joakimk	ActionParsnip	yes, that did the trick! Wow
+2010-07-24T17:38:00.000Z	joakimk	ActionParsnip	thanks a bunch! :)
+2010-07-24T17:39:00.000Z	ActionParsnip	joakimk	like I said, one flash plugin and you are fine, installing more doesnt make it any better
+2010-07-24T17:39:00.000Z	ActionParsnip	joakimk	glad you got the gold
+2011-05-22T03:20:00.000Z	ActionParsnip	joakimk	what video chip do you use?
+2011-05-22T03:21:00.000Z	ActionParsnip	joakimk	if you use the nvidia driver, you may need to remove the driver, reboot then reinstall the driver to make things nice
+2011-05-22T03:22:00.000Z	joakimk	ActionParsnip	I think maybe I did do something like that in 10.04...
+2011-05-23T03:39:00.000Z	ActionParsnip	joakimk	sudo parted -l | grep sda6
+2011-05-23T03:40:00.000Z	ActionParsnip	joakimk	ok forget the grep

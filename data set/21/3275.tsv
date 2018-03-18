@@ -1,0 +1,21 @@
+2009-02-13T19:23:00.000Z	heatmzzr		how do I erase a hard drive? what is the command, try to delete files on it but it says i dont have permission
+2009-02-13T19:23:00.000Z	bernz	heatmzzr	you could unmount the drive, then do 'mkfs' on it ... to learn more, 'man umount', and 'man mkfs'
+2009-02-13T19:24:00.000Z	bernz	heatmzzr	also, sorry i meant, unmount the _volume_, not the drive
+2009-02-13T19:25:00.000Z	heatmzzr	bernz	kinda newbie. tried to load 64bit ver last night, but realized some things I need to use arent available, so now I have a bootloader full of crap i dont want
+2009-02-13T19:26:00.000Z	bernz	heatmzzr	well, out of sight, out of mind, right? so you should be able to edit your boot menu (read docs on your bootloader to find its location) and remove the unwanted entries, and you're done ;-) (that's the "quick and dirty" way, though... not the Right Way)
+2009-02-13T19:27:00.000Z	bernz		(in this case, i don't know what the Right Way is, just that what i suggested is not it)
+2009-02-13T19:29:00.000Z	heatmzzr	bernz	would rather free up hard drive space rather that have 3 distros crowding things
+2009-02-13T19:29:00.000Z	bernz	heatmzzr	fair enough; in that case, step 0: backup the installation you want to keep ;-)
+2009-02-13T19:30:00.000Z	heatmzzr	bernz	couldnt i delete everything on that hdd since thats where the mess is then simply edit bootloader>?
+2009-02-13T19:31:00.000Z	bernz	heatmzzr	and frankly, at today's speeds, it might be fastest to just wipe everthing, and re-install the distro you want, then restore (remount) your (already-separated-in-advance) '/home' and other "keeper" partitions
+2009-02-13T19:31:00.000Z	bernz	heatmzzr	but you'll learn the least that way (of course, doing it the "hard way" to learn will take quite a while, and much reading)
+2009-02-13T19:32:00.000Z	heatmzzr		tried to wipe everything on install, ended up with yet another distro.. lol that was funny what you said
+2009-02-13T19:32:00.000Z	heatmzzr		im working in an office dont have time to learn...lol
+2009-02-13T19:33:00.000Z	heatmzzr	bernz	lol where and how would i edit bootloader?
+2009-02-13T19:35:00.000Z	bernz	heatmzzr	what i found useful when replacing a whole disk, is to delete the partition table and write it (to ensure it's clean), then reboot into whatever distro's installer CD
+2009-02-13T19:35:00.000Z	bernz	heatmzzr	anyway, first identify your bootloader (it's probably GRUB, but check to be sure)
+2009-02-13T19:35:00.000Z	heatmzzr	bernz	its grub
+2009-02-13T19:36:00.000Z	bernz	heatmzzr	okay, race time: we'll both do 'man grub' and first one to find location of "secret file" wins... GO!
+2009-02-13T19:37:00.000Z	bernz		*ding*  /boot/grub/menu.lst
+2009-02-13T19:37:00.000Z	bernz	heatmzzr	so, browse over to that location ('/boot/grub') and look for 'menu.lst'
+2009-02-13T19:38:00.000Z	bernz	heatmzzr	open that file with text editor, and ... hm... try to figure it out ;-) i'll read a bit more...

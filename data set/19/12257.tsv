@@ -1,0 +1,19 @@
+2006-01-26T08:32:00.000Z	besfred		has anyone configured his 7/10 button mouse so that forward/backward works in firefox?
+2006-01-26T08:32:00.000Z	_jason	besfred	yes, use xbindkeys and xvkbd to map them to ALT+LEFT and ALT+RIGHT.  What mouse do you have by the way?
+2006-01-26T08:33:00.000Z	besfred	_jason	logitech cordless click plus. the button 6 and 7 also send button 2/3 events.
+2006-01-26T08:35:00.000Z	besfred	_jason	any idea why those would send 2 button events?
+2006-01-26T08:36:00.000Z	_jason	besfred	hrmm, what does your xorg.conf look like?
+2006-01-26T08:39:00.000Z	besfred	_jason	http://paste.ubuntu-nl.org/7452  is the relevant xorg.conf part
+2006-01-26T08:40:00.000Z	_jason	besfred	can you use usb?  the evdev protocol might handle it better
+2006-01-26T08:41:00.000Z	_jason	besfred	wait you are :), but it's conencted to usb right?
+2006-01-26T08:43:00.000Z	_jason	besfred	I do't know if it matters but my xorg looks like this: Option          "Protocol"              "evdev"
+2006-01-26T08:44:00.000Z	besfred	_jason	well worth a try. can you look what xev gives you as button events on the thumb buttons?
+2006-01-26T08:45:00.000Z	_jason	besfred	my mouse like to sends multiple signals because of 'smartscroll' functionality (not for side buttons).  I can disable it using a program called 'lmctl'... I have no idea if it is something similar to what you are getting.  Does increasing or reducing the number of buttons fix the problem at any point (just to see)?
+2006-01-26T08:46:00.000Z	besfred	_jason	nope. with 4 or 5, it just doesnt get any event. with more than 10 i havent tried
+2006-01-26T08:47:00.000Z	_jason	besfred	mine just do 8 and 9
+2006-01-26T08:47:00.000Z	besfred	_jason	my mousewheel allows horizontal scrolling
+2006-01-26T08:48:00.000Z	_jason	besfred	hrmm mine gets 6 and 7
+2006-01-26T08:48:00.000Z	_jason	besfred	firefox seems to understand those
+2006-01-26T08:49:00.000Z	_jason	besfred	on that wiki page, that's how I set mine up.  It is basically like yours except I have zaxis mapping with 4 entries
+2006-01-26T08:51:00.000Z	_jason	besfred	yeah, it just seems strange.  Because for mine, the 2 signals make sense.  But I don't think it would make sense to send 2 signals with one of them being right click
+2006-01-26T08:52:00.000Z	_jason	besfred	yeah, I noticed that changing that modified how key reacted for me a lot

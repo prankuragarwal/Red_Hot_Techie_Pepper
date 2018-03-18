@@ -1,0 +1,24 @@
+2008-09-12T04:35:00.000Z	NotDamienGray		What's a good IRC client that will show up in the programs list? Konversation requires me to run it as root, and it seems that's why I'm banned from some channels.
+2008-09-12T04:36:00.000Z	jrib	NotDamienGray	konversation does not require you to run it as root...
+2008-09-12T04:36:00.000Z	NotDamienGray	jrib	Whenever I don't run it as root I get a lot of errors and it doesn't open.
+2008-09-12T04:36:00.000Z	jrib	NotDamienGray	pastebin the errors you get
+2008-09-12T04:37:00.000Z	NotDamienGray	jrib	http://pastebin.com/m1ad3f84f
+2008-09-12T04:38:00.000Z	jrib	NotDamienGray	it's exactly because you run things as root that you are having this issue. You have files in your HOME owned as root now
+2008-09-12T04:38:00.000Z	jrib	NotDamienGray	do: sudo chown $USER: ~
+2008-09-12T04:38:00.000Z	jrib	NotDamienGray	do: sudo chown -R $USER: ~
+2008-09-12T04:39:00.000Z	NotDamienGray	jrib	Done, but I still get those errors.
+2008-09-12T04:39:00.000Z	jrib	NotDamienGray	did you run my second command?  As my first one was wrong
+2008-09-12T04:39:00.000Z	NotDamienGray	jrib	Okay, that outputs: "chown: cannot access `/home/damien/.gvfs': Permission denied"
+2008-09-12T04:40:00.000Z	jrib	NotDamienGray	paste the command you ran here
+2008-09-12T04:40:00.000Z	NotDamienGray	jrib	sudo chown -R $USER: ~
+2008-09-12T04:41:00.000Z	jrib	NotDamienGray	what does 'ls -ld /home/damien/.kde{,share}' return now?
+2008-09-12T04:41:00.000Z	jrib	NotDamienGray	what does 'ls -ld /home/damien/.kde{,/share}' return now?
+2008-09-12T04:41:00.000Z	jrib	NotDamienGray	and the second command?  use pastebin
+2008-09-12T04:42:00.000Z	NotDamienGray	jrib	http://pastebin.com/m2125f710
+2008-09-12T04:43:00.000Z	jrib	NotDamienGray	I don't know why you are getting an error on .gvfs, but I think everything else went okay.  Try running konversation now.  You probably want to log out and log back in anyway though
+2008-09-12T04:43:00.000Z	NotDamienGray	jrib	Alright, I'll do that as soon as I'm done compiling open office.
+2008-09-12T04:44:00.000Z	jrib	NotDamienGray	why compile it?  It's packaged in the repositories
+2008-09-12T04:44:00.000Z	NotDamienGray	jrib	I wanted to see if it really takes as long as people say.
+2008-09-12T04:44:00.000Z	jrib	NotDamienGray	heh
+2008-09-12T04:45:00.000Z	jrib	NotDamienGray	make sure you use gksu or kdesu when you need to launch a gui app as root from now on, but you should really never need to
+2008-09-12T04:45:00.000Z	NotDamienGray	jrib	Alright, thanks.

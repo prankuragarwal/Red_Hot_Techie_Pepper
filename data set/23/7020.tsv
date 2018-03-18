@@ -1,0 +1,23 @@
+2006-03-07T06:21:00.000Z	newubuntuman		hey, what the crap do i do with a deb package that tells me it can't install because i'm missing the dependency?
+2006-03-07T06:22:00.000Z	LjL	newubuntuman	install the dependency ;)
+2006-03-07T06:22:00.000Z	LjL	newubuntuman	don't install that thing
+2006-03-07T06:22:00.000Z	LjL	newubuntuman	you don't even *have* that version of linux, assuming you're using breezy
+2006-03-07T06:23:00.000Z	LjL	newubuntuman	"apt-cache search ltmodem" does show a few packages -- none of which is called "ltmodem" (they're actually the inux-restricted-modules packages), but i somehow suspect they contain that module
+2006-03-07T06:24:00.000Z	LjL	newubuntuman	what do you mean by updated?
+2006-03-07T06:25:00.000Z	LjL	newubuntuman	you're fine with the latest kernel. type "uname -r", if it's 2.6.12-10 then it's the current kernel for breezy
+2006-03-07T06:26:00.000Z	LjL	newubuntuman	does "apt-cache search ltmodem" show anything at all for you?
+2006-03-07T06:27:00.000Z	LjL	newubuntuman	you should see some linux-restricted-modules packages. is that what you see?
+2006-03-07T06:27:00.000Z	LjL	newubuntuman	then install the one that best fits your processor. but i suspect it's already installed -- and if it is, it will already contain ltmodem
+2006-03-07T06:28:00.000Z	LjL	newubuntuman	in other words -- if it's installed, then i don't quite know why ltmodem isn't working (never used it), but i can assure you that it will be installed
+2006-03-07T06:29:00.000Z	LjL	newubuntuman	"dpkg -l | grep restricted"
+2006-03-07T06:30:00.000Z	LjL	newubuntuman	you only care about "linux-restricted-modules-2.6.12-10-XXXX"
+2006-03-07T06:31:00.000Z	LjL	newubuntuman	me neither. tried "sudo modprobe ltmodem"?
+2006-03-07T06:31:00.000Z	LjL	newubuntuman	nevermind, that's not the correct name of the module
+2006-03-07T06:33:00.000Z	LjL	newubuntuman	bah, "dpkg -L linux-restricted-modules-2.6.12-10-XXXX" will list you the contents of the package, but the funny thing is that i don't see anything resembling ltmodem there
+2006-03-07T06:41:00.000Z	LjL	newubuntuman	depends on your keyboard layout. 
+2006-03-07T06:42:00.000Z	LjL	newubuntuman	i type it using altgr + the higher key left of Enter, followed by N. but that's because i have a swedish keyboard layout
+2006-03-07T06:45:00.000Z	LjL	newubuntuman	      :)
+2006-03-07T07:27:00.000Z	LjL	newubuntuman	let me guess, you deleted the files manually? =)
+2006-03-07T07:27:00.000Z	LjL	newubuntuman	try "sudo apt-get --purge remove packagename", or "sudo apt-get --reinstall install packagename" followed by a purge
+2006-03-07T07:29:00.000Z	LjL	newubuntuman	well you could try installing it with the "--force-depends" option of dpkg, and then remove it
+2006-03-07T07:29:00.000Z	LjL	newubuntuman	don't think so... it should still bail out if it attempts to overwrite something

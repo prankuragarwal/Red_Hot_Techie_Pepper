@@ -1,0 +1,18 @@
+2011-08-05T12:59:00.000Z	Tetsuo55		Hello, how can i apply a .diff patch to sourcecode from within ubuntu itself?
+2011-08-05T13:00:00.000Z	Araneidae	Tetsuo55	do you have the source code already, and do you know how to build it?
+2011-08-05T13:00:00.000Z	Tetsuo55	Araneidae	i have the source and know how to build it (which is not possible on ubuntu)
+2011-08-05T13:00:00.000Z	Araneidae	Tetsuo55	well, it's quite possible that the version of the sources you're patching isn't the same version the patch is against
+2011-08-05T13:01:00.000Z	Tetsuo55	Araneidae	its a windows app that only compiles with msvc
+2011-08-05T13:05:00.000Z	Tetsuo55	Araneidae	ok i have modified the patch so it matches the revision im using, but it still gives me the same error, activiting -p doesnt fix it
+2011-08-05T13:13:00.000Z	Araneidae	Tetsuo55	that'll be a -p0 patch
+2011-08-05T13:14:00.000Z	Araneidae	Tetsuo55	 can you pastebin the errors?
+2011-08-05T13:15:00.000Z	Tetsuo55	Araneidae	http://pastebin.com/URuCkf2v
+2011-08-05T13:16:00.000Z	Araneidae	Tetsuo55	it's definitely not happy ... at all.
+2011-08-05T13:17:00.000Z	Tetsuo55	Araneidae	http://sourceforge.net/apps/trac/mpc-hc/changeset/3580/trunk?old_path=%2F&format=zip
+2011-08-05T13:20:00.000Z	Araneidae	Tetsuo55	I've reproduced your problem, will look deeper now
+2011-08-05T13:22:00.000Z	Araneidae	Tetsuo55	definitely looks like a line ending issue: your sources are CRLF endings, and the patch file is in Unix format
+2011-08-05T13:25:00.000Z	Araneidae	Tetsuo55	there might be an option on patch, otherwise you can convert all your sources by running dos2unix on them
+2011-08-05T13:26:00.000Z	Araneidae	Tetsuo55	if I run `find -type f -exec dos2unix {} \;` the patch then applies (except for one failed hunk), but that's a bit drastic
+2011-08-05T13:28:00.000Z	Araneidae	Tetsuo55	that's the best I can come up with.  Works for me
+2011-08-05T13:50:00.000Z	Tetsuo55	Araneidae	i found the problem, the zip file was using windows line endings, if i do a svn checkout everything should apply correctly
+2011-08-05T13:51:00.000Z	Araneidae	Tetsuo55	that's good, is what I thought

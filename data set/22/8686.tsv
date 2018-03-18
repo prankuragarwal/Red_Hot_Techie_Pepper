@@ -1,0 +1,22 @@
+2005-06-14T10:53:00.000Z	MattAndreas		just installed ubuntu for the first time.  Love the install, but....vid drivers weren't there
+2005-06-14T10:53:00.000Z	MattAndreas		anyone know how to get some for a Dimension 3000's onboard Intel chipset?
+2005-06-14T10:54:00.000Z	MattAndreas		Intel 82865G
+2005-06-14T10:54:00.000Z	MattAndreas		we got the same thing
+2005-06-14T10:55:00.000Z	MattAndreas		now where do I find the driver?
+2005-06-14T10:55:00.000Z	MattAndreas		Intel 82865G Integrated Graphics Device, to be exact
+2005-06-14T10:57:00.000Z	MattAndreas		ok, wait...
+2005-06-14T10:57:00.000Z	MattAndreas		it's in there already
+2005-06-14T10:57:00.000Z	MattAndreas		and yet it doesn't let me choose anything other than 640x480
+2005-06-14T10:58:00.000Z	MattAndreas		in the screen resolution tool jobby
+2005-06-14T10:58:00.000Z	bob2	MattAndreas	known bug
+2005-06-14T10:58:00.000Z	MattAndreas	bob2	so i'm stuck then?
+2005-06-14T10:59:00.000Z	bob2	MattAndreas	no, you just need to edit the config manually
+2005-06-14T10:59:00.000Z	bob2	MattAndreas	in my Monitor section in xorg.conf, I have this:
+2005-06-14T11:00:00.000Z	bob2	MattAndreas	yo ucan find the values for those from the "monitorrange" line in the output of "sudo ddcprobe"
+2005-06-14T11:02:00.000Z	bob2	MattAndreas	yes, add only the lines I mentioned (with the right values) to the Monitor section
+2005-06-14T11:02:00.000Z	MattAndreas	bob2	just the refresh rates?
+2005-06-14T11:02:00.000Z	bob2	MattAndreas	indeed
+2005-06-14T11:03:00.000Z	bob2	MattAndreas	you may need to add resolutions at the bottom later, if they aren't there already
+2005-06-14T11:04:00.000Z	MattAndreas	bob2	the very bottom, or in "Screen"?
+2005-06-14T11:05:00.000Z	MattAndreas	bob2	thanks
+2005-06-14T11:10:00.000Z	MattAndreas	bob2	        VertRefresh     48-160

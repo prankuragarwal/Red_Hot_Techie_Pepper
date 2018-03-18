@@ -1,0 +1,22 @@
+2007-05-25T16:26:00.000Z	Ernz		Hi, can anyone please tell me what's wrong with this nautilus script line?:              if [$filetype == "Hello"] ; then
+2007-05-25T16:28:00.000Z	Juhaz	Ernz	you need space after and before [] 
+2007-05-25T16:29:00.000Z	Ernz	Juhaz	Bizarre syntax. Are my comparisons right?
+2007-05-25T16:30:00.000Z	Ernz	Juhaz	does == mean equal to? And does != mean NOT equal to?
+2007-05-25T16:31:00.000Z	Juhaz	Ernz	hrm, not entirely sure about ==, it could be just = there (yes, more bizarro syntax)
+2007-05-25T16:32:00.000Z	Juhaz	Ernz	== does pattern matching instead of equality test, in that case it would be the same, though
+2007-05-25T16:34:00.000Z	Ernz	Juhaz	Hmm, this is bugging me. It should be very simple. I have set filetype=$(file "$arg"). All I want to do is compare the $filename with a "String" and do something if it is one thing, and do something else if it is another. I can;t find a tutorial on this anywhere.
+2007-05-25T16:38:00.000Z	Juhaz	Ernz	actually, that was wrong, sorry, there's no pattern matching if the literals are quoted
+2007-05-25T16:38:00.000Z	Ernz	Juhaz	So it is ==?
+2007-05-25T16:39:00.000Z	Juhaz	Ernz	both = and == work, = forces strict posix compliance and turns off any bashisms
+2007-05-25T16:40:00.000Z	Ernz	Juhaz	For some reason neither work
+2007-05-25T16:42:00.000Z	Juhaz	Ernz	what, exactly, is the line just now?
+2007-05-25T16:56:00.000Z	Ernz	Juhaz	No one in #bash is of any use. English is no one's first language, they all talk in anagrams and bash. And they sh*t on n00bs genuinely trying to learn something.
+2007-05-25T05:12:00.000Z	Juhaz	Ernz	spaces, eh? you could've mentioned that...
+2007-05-25T05:12:00.000Z	Ernz	Juhaz	Sorry ;)
+2007-05-25T05:15:00.000Z	Ernz	Juhaz	Looks better, but still doesn't work. poningru: Yea, sure. I will do that right now.
+2007-05-25T05:20:00.000Z	Juhaz	Ernz	thing is... $filetype is not "filetype: Bourne shell script text executable". it's "$arg: Bourne shell script text executable"
+2007-05-25T05:21:00.000Z	Ernz	Juhaz	But if you remove the if statement and just run the gdialog is outputs "filetype: Bourne shell script text executable"
+2007-05-25T05:23:00.000Z	Ernz	Juhaz	See what I mean?
+2007-05-25T05:23:00.000Z	Juhaz	Ernz	well, if the name of your test file is "filetype"...
+2007-05-25T05:25:00.000Z	Juhaz	Ernz	well, the file command outputs "filename: filetype"
+2007-05-25T05:27:00.000Z	Ernz	Juhaz	- I get it now dude - thanks for your help

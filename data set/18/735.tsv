@@ -1,0 +1,18 @@
+2011-10-07T03:49:00.000Z	zromayn		hello all: is there anybody around with dhcp3-server experience to help me out. I'm trying to get the dhcp server to automatically update my DNS server PTR table and I don't seem to quite get it yet.
+2011-10-07T03:49:00.000Z	tlambert	zromayn	also have to set the ddns-update-style parameter, and your DNS must support either RFC 2136 or ad-hoc update mode AND it must be enabled AND it must trust your DHCP server.
+2011-10-07T03:49:00.000Z	tlambert		If the DNS server won't play, game over.
+2011-10-07T03:51:00.000Z	tlambert	zromayn	also ad-hoc is generally deprecated and won't work anyway.
+2011-10-07T03:51:00.000Z	zromayn	tlambert	I'm trying to get it working with "allow client-updates"
+2011-10-07T03:52:00.000Z	zromayn	tlambert	which is the THE INTERIM DNS UPDATE SCHEME, according to the ubuntu manpages http://manpages.ubuntu.com/manpages/natty/en/man5/dhcpd.conf.5.html but the thing is that the manpages doesn't specify which dhcp3-server file I need to modify :S
+2011-10-07T03:53:00.000Z	tlambert		ddns-update-style interim; ddns-updates on; -- then configure your DNS server to accept updates from your DHCP server via RFC 2136.
+2011-10-07T03:55:00.000Z	tlambert	zromayn	if you do not control your DNS server configuration, this will likely not help you.
+2011-10-07T03:56:00.000Z	zromayn	tlambert	thank you. so the ddns-update-style interim; parameter goes into my /etc/dhcp/db.* file?
+2011-10-07T03:57:00.000Z	tlambert	zromayn	it goes into your dhcpd.conf file in the scope you want it to apply, of if you have broken out config files per scope, in one or more of those.
+2011-10-07T03:59:00.000Z	zromayn	tlambert	thank you, let me play with it to see if it works. btw, how can I get the dhcp3-server service to bounce? i have tried different options such as sudo service dhcpd restart or sudo /etc/init.d/dhcpd restart with no avail
+2011-10-07T04:00:00.000Z	tlambert	zromayn	it keeps binary config files.  It likes SIGHUP to tell it to reread its configs.
+2011-10-07T04:01:00.000Z	zromayn	tlambert	in other words, there's no need to restart the service?
+2011-10-07T04:02:00.000Z	tlambert	zromayn	think about how it has to remember leases it has already granted.  BTW, you will want to explicitly release and renew the lease on the client machine you are experimenting on to flush that out,.
+2011-10-07T04:03:00.000Z	tlambert	zromayn	basically if it dies and comes back, it can't start granting the same leases that are already granted to new supplicants.
+2011-10-07T04:04:00.000Z	tlambert	zromayn	so you have to signal it to reread rather than restarting,, and you have to explicitly release and reacquire from the client for the change to take effect for that client
+2011-10-07T04:05:00.000Z	zromayn	tlambert	got it
+2011-10-07T04:09:00.000Z	zromayn	tlambert	when you stated that the option goes in the scope, are you referring to the subnet section, for instance subnet 1.1.1.0 netmask 255.255.255.0 { range 1.1.1.1 1.1.1.3; ddns-update-style interim;

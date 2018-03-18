@@ -1,0 +1,24 @@
+2012-02-12T00:01:00.000Z	TomSlominski		Hello.
+2012-02-12T00:03:00.000Z	TomSlominski		I have /usr/sbin/lightdm in /etc/X11/default-display-manager, but lightdm ain't starting on boot. when I alt+ctrl+F1 to a console, login as root and then execute "lightdm", it does start fine.
+2012-02-12T00:04:00.000Z	TomSlominski		Everything was fine before, but I was trying to fix another problem and installed gdm. decided that gdm won't be useful so now I want lightdm back
+2012-02-12T00:04:00.000Z	trism	TomSlominski	sudo dpkg-reconfigure lightdm;
+2012-02-12T00:04:00.000Z	TomSlominski		dpkg-reconfigure lightdm doesn't work because it returns errors.
+2012-02-12T00:04:00.000Z	trism	TomSlominski	what errors?
+2012-02-12T00:05:00.000Z	TomSlominski	trism	http://askubuntu.com/questions/58023/how-can-i-make-lightdm-the-default-display-manager#comment68525_58024
+2012-02-12T00:06:00.000Z	trism	TomSlominski	actually it shouldn't really matter anyway because all that does it set /etc/X11/default-display-manager (the errors don't stop it from working though)
+2012-02-12T00:07:00.000Z	TomSlominski	trism	oh. it's a lightdm problem then :/
+2012-02-12T00:07:00.000Z	TomSlominski	trism	how about i replace that with lightdm-session?
+2012-02-12T00:08:00.000Z	trism	TomSlominski	lightdm-session?
+2012-02-12T00:09:00.000Z	TomSlominski	trism	yes. I dir'd /usr/sbin and there's a lightdm-session in there
+2012-02-12T00:09:00.000Z	trism	TomSlominski	that's not what you want
+2012-02-12T00:10:00.000Z	TomSlominski	trism	okay. I'll have a look for errors in /var/log
+2012-02-12T00:10:00.000Z	trism	TomSlominski	it is either that upstart is not starting it at boot (because perhaps one of the checks fails) or there is an error when lightdm starts (in which case check out the logs in /var/log/lightdm)
+2012-02-12T00:10:00.000Z	trism	TomSlominski	you don't have text in the kernel command line do you?
+2012-02-12T00:13:00.000Z	TomSlominski	trism	I have plymouth and none of the other tty's say anything
+2012-02-12T00:13:00.000Z	trism	TomSlominski	if you dpkg-reconfigure gdm and select it, will it boot properly to gdm?
+2012-02-12T00:14:00.000Z	TomSlominski	trism	it could be a problem with X. I had to downgrade it due to a bug in the latest xserver-xorg-common
+2012-02-12T00:14:00.000Z	TomSlominski	trism	It defaulted to gdm before and it was fine, but now I've purged it.
+2012-02-12T00:16:00.000Z	trism	TomSlominski	alright, it would be interesting to see /var/log/lightdm/lightdm.log right after a boot then, without manually starting it
+2012-02-12T00:16:00.000Z	TomSlominski	trism	I'll do that then. be right back
+2012-02-12T00:22:00.000Z	TomSlominski	trism	It fixed itself :P Thanks anyway
+2012-02-12T00:22:00.000Z	trism	TomSlominski	strange, at least it works now

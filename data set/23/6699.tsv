@@ -1,0 +1,23 @@
+2012-08-13T19:10:00.000Z	bobby_		im doing a resize2fs, and pass2 keeps resetting? is it normal?
+2012-08-13T19:12:00.000Z	kyle__	bobby_	Pastebin what you're seeing maybe?
+2012-08-13T19:12:00.000Z	kyle__	bobby_	I've resized2fs more times than I care to recall, but don't recall that being repeated.
+2012-08-13T19:13:00.000Z	bobby_	kyle__	its a resize from 16tb to 14tb
+2012-08-13T19:13:00.000Z	bobby_		started 4 days ago
+2012-08-13T19:13:00.000Z	bobby_	kyle__	you know how the XXX add up?
+2012-08-13T19:13:00.000Z	kyle__	bobby_	That could take awhile, but that seems excessive.  You did a -p right?
+2012-08-13T19:13:00.000Z	kyle__		AHh yes, the XXXs, yup.
+2012-08-13T19:13:00.000Z	bobby_		well, i see them go to like 8, then reset to 0
+2012-08-13T19:14:00.000Z	bobby_		over a 20-25 hours laps time
+2012-08-13T19:15:00.000Z	kyle__	bobby_	That could just be so you can see it move, since it's such a large device.  Otherwise you'd see an X, come back in three hours, not see another, and think it's stalled.
+2012-08-13T19:15:00.000Z	kyle__	bobby_	THere may be another method for determining what it's current status is.
+2012-08-13T19:16:00.000Z	bobby_	kyle__	id love to hear about it
+2012-08-13T19:18:00.000Z	kyle__	bobby_	COnsidering it's an online resize, has df changed?   Also, how full was it before resizing?
+2012-08-13T19:20:00.000Z	bobby_	kyle__	its not mounted, it had 2.4tb free space
+2012-08-13T19:20:00.000Z	kyle__	bobby_	I've got a 15TB raid6 on ext4, and it was grown drive by drive to preserve data, but it wasn't that full.  It still took >24 hours for most of the resize2fses I think.
+2012-08-13T19:20:00.000Z	kyle__	bobby_	Then it's doing a lot of shuffling around I'd bet.
+2012-08-13T19:20:00.000Z	bobby_	kyle__	growing resize is ok, shrink takes for ever
+2012-08-13T19:21:00.000Z	bobby_	kyle__	its all luks'ed
+2012-08-13T19:21:00.000Z	kyle__		luks'ed?
+2012-08-13T19:55:00.000Z	bobby_		is there any way to mount 2 diff FS, with the same file structur and only add/remove/move files from 1 of the fs?
+2012-08-13T19:55:00.000Z	bobby_		mount the 2 fs in the same place
+2012-08-13T19:55:00.000Z	kyle__	bobby_	There was an overlayfs somewhere.  DUnno if it's still supported or now just in fuse.

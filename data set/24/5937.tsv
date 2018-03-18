@@ -1,0 +1,24 @@
+2006-07-25T15:47:00.000Z	ax		i'm trying to install vmware, and i need the "C header files that match your running", i installed linux-headers-2.6.15-26-386 and uname -a gives me "2.6.15-26-386 #1 PREEMPT", i point vmware to /usr/src/linux-headers-2.6.15-26/include but vmware complains that these headers don't match my kernel, any pointers?
+2006-07-25T15:48:00.000Z	Intangir	ax	gimme a second
+2006-07-25T15:48:00.000Z	Intangir	ax	there are virtual packages that rely on the latest kernels, and kernel headers
+2006-07-25T15:49:00.000Z	Intangir	ax	there is a package called linux-kernel-headers
+2006-07-25T15:50:00.000Z	Intangir	ax	oh
+2006-07-25T15:51:00.000Z	ax	Intangir	"The directory of kernel headers (version 2.6.15-26) does not match your running kernel (version 2.6.15-26-386).  Even if the module were to compile successfully, it would not load into the running kernel."
+2006-07-25T15:53:00.000Z	Intangir	ax	what CPU do you have?
+2006-07-25T15:54:00.000Z	ax	Intangir	AMD Athlon(tm) 64 X2 Dual Core Processor 4400+, i figure i shouldn't be running 386 but that is what the base install gave me
+2006-07-25T15:55:00.000Z	Intangir	ax	do this: apt-get update
+2006-07-25T15:56:00.000Z	Intangir	ax	apt-get install linux-headers-k7
+2006-07-25T15:56:00.000Z	Intangir	ax	apt-get install linux-image-k7
+2006-07-25T15:56:00.000Z	Intangir	ax	apt-get install linux-restricted-modules-k7
+2006-07-25T15:57:00.000Z	Intangir	ax	oh looks like there is an even better kernel for dual cores
+2006-07-25T15:57:00.000Z	Intangir	ax	restricted modules has a bunch of odds and ends drivers for like madwifi wirelss, and nvidia kernel
+2006-07-25T15:57:00.000Z	Intangir	ax	does it only suggest it? and not isntall it?
+2006-07-25T15:59:00.000Z	Intangir	ax	after you get all those virutal packages (which will probably upgrade your kernel) reboot
+2006-07-25T16:00:00.000Z	ax	Intangir	cool, thanks a lot for your help, i'm installing right now
+2006-07-26T16:01:00.000Z	Intangir	ax	im gonna try the smp stuff myself
+2006-07-26T16:02:00.000Z	ax	Intangir	do you think the same headers will work with smp or are there other headers to dl?
+2006-07-26T16:03:00.000Z	Intangir	ax	i didnt see any extra speacual headers for the smp stuff
+2006-07-26T16:03:00.000Z	Intangir	ax	so i guess they will work, i think its just a config option
+2006-07-26T16:03:00.000Z	Intangir	ax	but i dont know ;)
+2006-07-26T16:04:00.000Z	ax	Intangir	cool :)
+2006-07-26T16:41:00.000Z	ax	Intangir	seems to be working fine for me :) [vmware on the k7-smp kernel] 

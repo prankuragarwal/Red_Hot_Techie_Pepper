@@ -1,0 +1,18 @@
+2009-08-20T09:57:00.000Z	cjs		So how do I download and examine an ubuntu source package?
+2009-08-20T09:59:00.000Z	cjs		Oh, I see. Silly me, thinking that aptitude would allow me to get the source.
+2009-08-20T10:01:00.000Z	cjs		Ah.
+2009-08-20T10:01:00.000Z	cjs		I take it that the directory it unpacked includes the patches?
+2009-08-20T10:02:00.000Z	cjs		Grr. "Cron Daemon" is hard-coded as the full name when cron sends e-mail.
+2009-08-20T10:03:00.000Z	cjs		So I have messages from twenty different machines in my mailbox, and they're all from "Cron Daemon."
+2009-08-20T10:04:00.000Z	losher	cjs	what kind of messages?
+2009-08-20T10:05:00.000Z	cjs	losher	Oops, wrong channel.
+2009-08-20T10:05:00.000Z	losher	cjs	usually cron will only send messages when something it runs produces output. If you make sure to pipe the output from jobs into a mail program, you can set the subject line explicitly. Let me know if you need an example...
+2009-08-20T10:06:00.000Z	losher	cjs	seems on-topic to me...
+2009-08-20T10:06:00.000Z	cjs	losher	That seems a bit of a pain, since I also then have to deal myself with making sure it doesn't send mail if there's no output, right?
+2009-08-20T10:10:00.000Z	losher	cjs	actually, I cheat. The only thing in my crontab is 50 3 * * * /bin/sh /home/losher/save/cronjobs/daily 2>&1 | mailx -s 'losher1 daily run' losher. Then I run everything from  /home/losher/save/cronjobs/daily and all the various outputs go in one big email to losher. If I needed anything more sophisticated e.g. put the output in a file, onlly send email if the file is non-zero size, then I could do it inside "daily"
+2009-08-20T10:12:00.000Z	losher	cjs	I understand, but the same principle applies. Just a suggestion...
+2009-08-20T10:12:00.000Z	cjs	losher	Thanks. It would be painful for me to move that way, Unfortunately. Some of these are from hosts I have very little admin access to, as well, and the admins would probably rebel against major changes in how they set up cron jobs.
+2009-08-20T10:14:00.000Z	losher	cjs	I suppose another option would be to filter your incoming mail, looking at the headers, which *will* say which machine they are from, and process the mail accordingly...
+2009-08-20T10:25:00.000Z	cjs	losher	Turns out that in mutt, "subscribe ^root@.*$" does the trick if you use %L for the name display in the mail index format (which is the default).
+2009-08-20T10:26:00.000Z	losher	cjs	very cool. Much neater than the pile of perl I would've used...
+2009-08-20T10:28:00.000Z	cjs	losher	I'm still tempted to munge it with procmail, since there's still a lot of redundant info in that 15 char field, but it will do for the moment.

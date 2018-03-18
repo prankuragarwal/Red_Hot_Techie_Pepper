@@ -1,0 +1,18 @@
+2007-09-19T09:57:00.000Z	dwxreaper		if I run xming (a windows x client), and don't forward it through ssh, then on my ssh connect type gedit
+2007-09-19T09:57:00.000Z	dwxreaper		that should pull up gedit on my windows PC, but not forward the traffic through the tunnel??
+2007-09-19T09:58:00.000Z	dwxreaper		can someone help me with xwindows
+2007-09-19T09:58:00.000Z	dwxreaper		vs: sudo apt-get install wireshark
+2007-09-19T09:58:00.000Z	Dr_Willis	dwxreaper	you can set up xdmcp,  I belive.
+2007-09-19T09:58:00.000Z	dwxreaper		then just type sudo wireshark, that's it
+2007-09-19T09:58:00.000Z	Dr_Willis	dwxreaper	i use xming all the time to get apps running on my windows box, from the linxu server in the basement
+2007-09-19T09:59:00.000Z	dwxreaper	Dr_willis	wI need to install xdmcp for this to work?
+2007-09-19T09:59:00.000Z	dwxreaper		vsay: i just installed wireshark today, and ran it, worked well, but I use it through vnc
+2007-09-19T09:59:00.000Z	Dr_Willis	dwxreaper	i alawya ENABLE xdmcp. its a feature of X. that way i can get a whole 'desktop' -  i dont thionk it needs to be enabled for just single apps.
+2007-09-19T10:00:00.000Z	Dr_Willis	dwxreaper	xdmcp is there. just disabled.  by default.
+2007-09-19T10:00:00.000Z	Dr_Willis		!vnc
+2007-09-19T10:00:00.000Z	Dr_Willis		vnc is handy also. for doing what i do,
+2007-09-19T10:00:00.000Z	Dr_Willis		but ive had some issues with vnc lately.
+2007-09-19T10:00:00.000Z	dwxreaper		dr_willis: i type gedit, and it says "cant open display" in xming, i said no full screen, muliltple windows
+2007-09-19T10:01:00.000Z	dwxreaper		I get this : fatal error InitOutput - Duplicate invocation on display number: 0.  Exiting.
+2007-09-19T10:01:00.000Z	dwxreaper		from the xming server log
+2007-09-19T10:01:00.000Z	Dr_Willis	dwxreaper	you either need to export the display variable, or set up xhost +whatever properly.  thats what 'ssh' does for you automaticially. you might need ot be sure that your ssh stuff is set to X forwarding.

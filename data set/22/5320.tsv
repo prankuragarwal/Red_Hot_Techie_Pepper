@@ -1,0 +1,22 @@
+2009-06-22T08:22:00.000Z	flavio		Hi there!
+2009-06-22T08:24:00.000Z	flavio		Hello, how to avoid losing resolv.conf configuration?  I dont know why, but when I edit my resolv.conf with my needs, some time after it resets...
+2009-06-22T08:25:00.000Z	unitheory	flavio	resolv.conf is generated automatically by network-manager
+2009-06-22T08:30:00.000Z	unitheory	flavio	yea want to specify a nameserver?
+2009-06-22T08:30:00.000Z	flavio	unitheory	yes
+2009-06-22T08:31:00.000Z	unitheory	flavio	echo "prepend domain-name-servers x.x.x.x;" >> /etc/dhcp3/dhclient.conf
+2009-06-22T08:31:00.000Z	unitheory	flavio	put your nameserver in for x.x.x.x
+2009-06-22T08:32:00.000Z	flavio	unitheory	I will try it now...
+2009-06-22T08:34:00.000Z	flavio	unitheory	kharn: need to reboot to test. I'll come back to tell what happened. thank you.
+2009-06-22T08:43:00.000Z	flavio	unitheory	hi. thank you for the "prepend" command.
+2009-06-22T08:44:00.000Z	flavio	unitheory	but, can I change the 'search' option too? because without changing it I can resolv only fully qualified domain names...
+2009-06-22T09:24:00.000Z	flavio	unitheory	hi there
+2009-06-22T09:24:00.000Z	unitheory	flavio	hello
+2009-06-22T09:25:00.000Z	flavio	unitheory	thank you for the command (to include dns ip)... but can you help to change (or add) the 'search domainname' too ?
+2009-06-22T09:26:00.000Z	flavio	unitheory	only the ip is not enough to my needs... :(
+2009-06-22T09:27:00.000Z	unitheory	flavio	so edit /etc/dhcp3/dhclient.conf and stick a domain-search yourdomainseach in there
+2009-06-22T09:28:00.000Z	flavio	unitheory	so, the name is 'domain-search' there too ?
+2009-06-22T09:28:00.000Z	unitheory	flavio	yea that's what the file says but i've never tried changing that ;]
+2009-06-22T09:29:00.000Z	flavio	unitheory	I didn't try that name because I couldn't find any mention to it...
+2009-06-22T09:30:00.000Z	unitheory	flavio	if you take a look at /etc/dhcp3/dhclient.conf you will see that be default it requests domain-name-servers and domain-search
+2009-06-22T09:30:00.000Z	unitheory	flavio	the command i gave you earlier added a line to the end of the file that puts your custom nameserver in before the requested ones
+2009-06-22T09:31:00.000Z	flavio	unitheory	ok. right... I will try domain-search... but in my dhclient.conf there's no domain-search there... thank you...

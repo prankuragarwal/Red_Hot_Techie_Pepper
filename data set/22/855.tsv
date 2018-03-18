@@ -1,0 +1,22 @@
+2011-02-12T04:38:00.000Z	linuxdude21		Hey all, can someone fix my alias command: alias ip='ifconfig eth0 | grep inet | awk '{print $2}''
+2011-02-12T04:40:00.000Z	variable	linuxdude21	alias ip='ifconfig eth0 | grep inet | cut -d ' ' -f 2    or alias ip='ifconfig eth0 | awk " /inet/ {print $2}"'
+2011-02-12T04:43:00.000Z	linuxdude21	variable	but  ifconfig eth0 | grep inet | awk '{print $2}'    works the way i want
+2011-02-12T04:44:00.000Z	linuxdude21	variable	but need that in an alias
+2011-02-12T04:44:00.000Z	variable	linuxdude21	awk is too powerful for what you need. either remove the grep and use only awk; or replace awk with cut :-)
+2011-02-12T04:45:00.000Z	linuxdude21	variable	that may be.  so awk is what is giving me problems not the alias
+2011-02-12T04:46:00.000Z	variable	linuxdude21	you could use the alias with the awk as torrancew told you above.
+2011-02-12T04:47:00.000Z	linuxdude21	variable	oh sorry i didn't see torrancew post
+2011-02-12T04:49:00.000Z	variable	linuxdude21	either way I would switch the awk for cut though or replace the grep with awk
+2011-02-12T04:56:00.000Z	variable	linuxdude21	alias foo="ifconfig eth0 | grep inet | awk  '{print $2}'"
+2011-02-12T04:56:00.000Z	linuxdude21	variable	i see grep with awk all the time
+2011-02-12T04:57:00.000Z	variable	linuxdude21	then you see bad all the time
+2011-02-12T04:57:00.000Z	linuxdude21	variable	does not return the same why
+2011-02-12T04:58:00.000Z	variable	linuxdude21	ah - because "$0" is special
+2011-02-12T04:58:00.000Z	variable	linuxdude21	alias foo='ifconfig eth0 | grep inet | awk  "{print $2}"'
+2011-02-12T04:58:00.000Z	linuxdude21	variable	stop i have never heard someone say "grep and awk dont work together"  in fact that what nawk is!
+2011-02-12T04:58:00.000Z	variable	linuxdude21	alias foo='ifconfig eth0 | awk  "/inet/ {print $2}"' --> better
+2011-02-12T04:59:00.000Z	variable	linuxdude21	grep and awk work perfectly fine together -- but its a plain waste
+2011-02-12T04:59:00.000Z	linuxdude21	variable	alias foo='ifconfig eth0 | grep inet | awk  "{print $2}"' does not return the same as ifconfig eth0 | grep inet | awk  '{print $2}'
+2011-02-12T04:59:00.000Z	linuxdude21	variable	OHHHHH SORRY
+2011-02-12T05:00:00.000Z	linuxdude21	variable	misunderstood
+2011-02-12T05:01:00.000Z	linuxdude21	variable	thanks too!

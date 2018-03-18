@@ -1,0 +1,22 @@
+2009-09-10T03:08:00.000Z	losher	unr3a1	do you mean overwrite /etc/resolv.conf. That's usually how dhcp manages dns service...
+2009-09-10T03:08:00.000Z	unr3a1	losher	yes... I want to overwrite the resolv.conf at every startup
+2009-09-10T03:09:00.000Z	losher	unr3a1	are you using dhcp?
+2009-09-10T03:09:00.000Z	unr3a1	losher	yes, I use DHCP, but I want to overwrite specifically the DNS settings of the resolv.conf file
+2009-09-10T03:10:00.000Z	unr3a1	losher	it was some startup thing I did.
+2009-09-10T03:10:00.000Z	unr3a1	losher	so that every time I booted up, the resolv.conf and /etc/hosts got overwritten with customized files.
+2009-09-10T03:13:00.000Z	losher	unr3a1	I think it's supposed to be done via an /etc/dhcp3/dhclient-exit-hooks script. See man dhclient-script
+2009-09-10T03:20:00.000Z	losher	unr3a1	there's a supersede option you can use in dhclient.conf, presumably it will override the dns setting...
+2009-09-10T03:20:00.000Z	unr3a1	losher	yea, I just need to copy the dhclient.conf file from my old ubuntu filesystem
+2009-09-10T03:21:00.000Z	unr3a1	losher	I dont have to actually change anything.  just overwrite my current file.
+2009-09-10T03:21:00.000Z	losher	unr3a1	I'd like to see your dhclient.conf to see how it's done. Wanna paste it?
+2009-09-10T03:21:00.000Z	unr3a1	losher	absolutely.
+2009-09-10T03:22:00.000Z	unr3a1	losher	one sec
+2009-09-10T03:24:00.000Z	unr3a1	losher	osotogari, http://pastebin.com/m4a77995e
+2009-09-10T03:25:00.000Z	unr3a1	losher	osotogari, take note of lines 19 and 20.  I tell the dhclient to force those settings
+2009-09-10T03:25:00.000Z	losher	unr3a1	excellent, I see it...
+2009-09-10T03:26:00.000Z	unr3a1	losher	osotogari, then the subsequent lines request all the info that is listed from the DHCP server and only that info.  so my DNS server is always set to OpenDNS and my domain name is always home.net.
+2009-09-10T03:28:00.000Z	unr3a1	losher	osotogari, good times, no?
+2009-09-10T03:28:00.000Z	unr3a1	losher	osotogari, thank you both for the help.  you guys really helped me remember what I did last time.  :)
+2009-09-10T03:30:00.000Z	unr3a1	losher	thank you again
+2009-09-10T03:42:00.000Z	losher	unr3a1	excellent!
+2009-09-10T03:42:00.000Z	unr3a1	losher	osotogari, thank you both again.  I wouldn't have remembered that without you guys.  I wont forget after this though, trust me on that... lol

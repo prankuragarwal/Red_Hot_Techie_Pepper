@@ -1,0 +1,21 @@
+2011-09-02T08:02:00.000Z	doodmang		is there anyway to see what processes are doing read/write operations to disk?
+2011-09-02T08:03:00.000Z	Polah	doodmang	Install iotop and run it, it's basically the same as top but shows disk activity
+2011-09-02T08:04:00.000Z	doodmang	Polah	any graphical ones? : P
+2011-09-02T08:06:00.000Z	Polah	doodmang	Well, it does display things on your screen so it is technically graphical (:
+2011-09-02T10:48:00.000Z	Polah	doodmang	Back it up somewhere safe
+2011-09-02T10:49:00.000Z	doodmang	Polah	oops. Yeah, that would probably be a good idea, though I don't have any important information on it yet
+2011-09-02T10:51:00.000Z	doodmang	Polah	how can I make sure my removable media is mounted on boot?
+2011-09-02T10:51:00.000Z	Polah	doodmang	Make an fstab entry for it.
+2011-09-02T10:52:00.000Z	doodmang	Polah	by including it, will it automatically be mounted, or do I need to add a flag or something
+2011-09-02T10:52:00.000Z	Polah	doodmang	I guess you're trying to make a removeable key so that the filesystem is only decrypted when that key is inserted?
+2011-09-02T10:52:00.000Z	doodmang	Polah	yep. Unfortunately it's not my brilliant idea though
+2011-09-02T10:53:00.000Z	Polah	doodmang	Do sudo blkid and pastebin that for me please, and tell me the mount point you want
+2011-09-02T10:54:00.000Z	doodmang	Polah	I haven't gotten the removable media yet
+2011-09-02T10:54:00.000Z	Polah	doodmang	Ah, well then you'll probably want to wait for that to set up mounting it then
+2011-09-02T10:57:00.000Z	doodmang	Polah	as long as I don't add the noauto flag, it should mount automatically, yes?
+2011-09-02T10:59:00.000Z	Polah	doodmang	Everything in fstab is mounted automatically. This should do you:      UUID="blah" /mount/point -t vfat -o ro,nouser,suid,uid=UID,gid=GID 0 0
+2011-09-02T11:00:00.000Z	Polah	doodmang	Change vfat to the appropriate filesystem if it's not that, change UID and GID (capital parts) to the specific user's UID and GID, and change blah to the proper UUID when you have the drive set up
+2011-09-02T11:02:00.000Z	doodmang	Polah	well, users can have their own passphrases on the drive as well, cant they? If you limit the UID and GID, then only one user can use it. In that case, shouldn't permission just be set
+2011-09-02T11:04:00.000Z	doodmang	Polah	permissions on the files*. And what about if I wanted to add a passphrase because I had another file to add?
+2011-09-02T11:04:00.000Z	Polah	doodmang	That would mount it read-only
+2011-09-02T11:05:00.000Z	Polah	doodmang	Don't know about a passphrase to add another file, sudo might be able to override read-only though

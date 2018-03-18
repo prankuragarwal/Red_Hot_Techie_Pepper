@@ -1,0 +1,22 @@
+2008-03-03T17:09:00.000Z	mohamed		hi guys
+2008-03-03T17:09:00.000Z	mohamed		 i need some clarifications
+2008-03-03T17:09:00.000Z	mohamed		how to find /dev/sdb2
+2008-03-03T17:10:00.000Z	mohamed		i want to mount my external hdd
+2008-03-03T17:10:00.000Z	mohamed		it says no directory something like that
+2008-03-03T17:11:00.000Z	mohamed		ok i will give a try
+2008-03-03T17:11:00.000Z	geirha	mohamed	sudo fdisk -l  # can you identify it from that list?
+2008-03-03T17:19:00.000Z	geirha	mohamed	plug it out, then plug it in again, and type "dmesg | tail" does it say anything about the usb drive in that log output?
+2008-03-03T17:20:00.000Z	geirha	mohamed	if you only have one internal harddrive, then it's probably it
+2008-03-03T17:23:00.000Z	geirha	mohamed	ls -l /dev/sdb2
+2008-03-03T17:25:00.000Z	geirha	mohamed	no, it only shows mounted disks. Try mounting /dev/sdc2 and see if it's the correct one
+2008-03-03T17:27:00.000Z	geirha	mohamed	ah, is the external harddrive new? it sounds like it's unpartitioned
+2008-03-03T17:30:00.000Z	geirha	mohamed	what was it that showed this? < mohamed> it shows sdc1 sdc2 sdc3
+2008-03-03T17:32:00.000Z	geirha	mohamed	could you paste the output of that on http://paste.ubuntu-nl.org ?
+2008-03-03T17:42:00.000Z	geirha	mohamed	did you paste the output of dmesg|tail on the pastebin? if/when you do, you need to write the url here so we can look at it
+2008-03-03T17:44:00.000Z	geirha	mohamed	what's the url to the paste?
+2008-03-03T17:46:00.000Z	geirha	mohamed	that's the url to the site, there should be a number at the end of the url
+2008-03-03T17:49:00.000Z	geirha	mohamed	those error-messages would explain why it won't show up. Not sure why those errors are there though
+2008-03-03T17:50:00.000Z	geirha	mohamed	might be that the external harddrive is broken. Do you have access to another computer you can test it on?
+2008-03-03T17:51:00.000Z	mohamed	geirha	it works fine in winxp pro
+2008-03-03T17:55:00.000Z	geirha	mohamed	hm, then there must be a bug in a driver or something. I think it's best if you ask about this in the forums. And supply the whole output of dmesg (without the |tail)
+2008-03-03T18:03:00.000Z	geirha	mohamed	it's beyond my knowledge I'm afraid, though you could try plugging it in a different usb-port. Perhaps the usb-port is faulty

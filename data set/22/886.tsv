@@ -1,0 +1,22 @@
+2011-04-17T18:27:00.000Z	afman		Has anyone found a workaround for the problem where Ubuntu fails to boot because it's waiting for root device and it drops to busybox? I'm dual booting and I have to start Windows to get rid of it.
+2011-04-17T18:29:00.000Z	ohsix	afman	what filesystem are you using with your install?
+2011-04-17T18:29:00.000Z	afman	ohsix	ext3
+2011-04-17T18:45:00.000Z	ohsix	afman	do you have an ocz ssd? they have an awesome time loss glitch
+2011-04-17T18:49:00.000Z	ohsix	afman	so it never finds the root filesystem?
+2011-04-17T18:49:00.000Z	afman	ohsix	Nope doesn't matter if you leave it on all night and type exit still won't start
+2011-04-17T18:50:00.000Z	ohsix	afman	you can look at dmesg and for the actual partition from that busybox prompt
+2011-04-17T18:50:00.000Z	ohsix	afman	if it hits that shell it's never going to recover automatically
+2011-04-17T18:50:00.000Z	afman	ohsix	That's a good idea I hadn't thought of that.
+2011-04-17T18:51:00.000Z	ohsix	afman	beyond that, is this an upgrade from older versions? or have you edited fstab
+2011-04-17T18:52:00.000Z	ohsix	afman	well it's not one problem, and people can do thousands of things to their linux install to make it happen
+2011-04-17T18:53:00.000Z	afman	ohsix	True, It seems mostly to be either you didn't wait long enough for the root device or there seems to be some mysterious other reason no one's worked out yet.
+2011-04-17T18:53:00.000Z	ohsix	afman	people give up, you can at least gather more information
+2011-04-17T18:57:00.000Z	ohsix	afman	as long as the uuid is specified for the root filesystem, and correct; it should find it barring other problems not related to strictly mounting it
+2011-04-17T18:58:00.000Z	afman	ohsix	When I get around to working on this again I think that's the avenue I'm going to approach it from. I feel like it's an issue of it not getting mounted properly. If I come up with a fix I'll put it on the forums.
+2011-04-17T18:59:00.000Z	ohsix	afman	find the problem, it'll probably be different from what other people have to deal with; only the symptoms might resemble eachother
+2011-04-17T19:01:00.000Z	afman	ohsix	Na this computer has been 10.10 from the get go. I get the feeling that like I said before there are two problem here. One fixed by increasing root delay and another having to do with the windows partition. I would be surprised if it were different problems. Everyone says the same thing and that it is fixed by starting windows and then restarting into ubuntu.
+2011-04-17T19:02:00.000Z	ohsix	afman	well on the laptop, i could suggest some things if i knew the chipset being used
+2011-04-17T19:02:00.000Z	ohsix	afman	but with the ocz ssd unless you've ruled out the time warp thing i can't offer anything, cuz it's the exact same symptoms and "solution"
+2011-04-17T19:02:00.000Z	afman	ohsix	I really appreciate it but I've got to go back to work lol I've spent way too long trying to figure this one out lol
+2011-04-17T19:04:00.000Z	ohsix	afman	agh you shouldn't heh; it has its own sudo wrapper, for building the modules; and that's the only phase that needs root
+2011-04-17T19:05:00.000Z	afman	ohsix	Huh never knew that I've always just had to run it as sudo. I just edited the menu and added the line gksudo in front of it.

@@ -1,0 +1,21 @@
+2012-06-02T00:43:00.000Z	escott	saliak	did you read man 5 aliases?
+2012-06-02T00:48:00.000Z	saliak	escott	yeah.  I mean, I added a pipe to script as the "value" and ran postalias.
+2012-06-02T00:48:00.000Z	saliak	escott	it seemed like that should do it.  i'm clearly missing something
+2012-06-02T00:49:00.000Z	escott	saliak	so you have |/usr/bin/script.sh where that script reads from stdin and dumps to the correct mailbox?
+2012-06-02T00:49:00.000Z	saliak	escott	yeah.  the problem i'm having is that proemial says the user can't be found.
+2012-06-02T00:50:00.000Z	escott	saliak	did you restart the procmail service?
+2012-06-02T00:51:00.000Z	saliak	escott	hrm. i thought procmail was an mda and wasn't really a service
+2012-06-02T00:52:00.000Z	escott	saliak	its not something i use. i just noticed that you didnt have a | so what you had didnt make much sense
+2012-06-02T00:53:00.000Z	saliak	escott	i see. hrm. so, no.  i'm wondering if i even need procmail.  in this application, does the same thing get passed to my script if it's in aliases or the mda?
+2012-06-02T00:54:00.000Z	escott	saliak	i dont know
+2012-06-02T00:54:00.000Z	escott	saliak	i would imagine that procmail speaks some network protocol
+2012-06-04T05:50:00.000Z	escott	saliak	sudo doesnt work with scripts
+2012-06-04T05:51:00.000Z	escott	saliak	suid doesnt work with scripts
+2012-06-04T05:53:00.000Z	saliak	escott	 how would i accomplish this?  fetch mail grabs emails, passes them to procmail that runs a script that needs to create a .call file for asterisk (in a directory owned by asterisk:asterisk).  my final issue is that i need to be able to copy the file to the directory.  i tried adding fetchmail user to the asterisk group (by editing /etc/groups), but no luck
+2012-06-04T05:53:00.000Z	escott	saliak	write in C. or write a wrapper in C that is marked suid and starts your script
+2012-06-04T05:54:00.000Z	escott	saliak	i dont see why adding the fetchmail user to the asterick group wouldn't work. what uid does the fetchmail process run under?
+2012-06-04T05:55:00.000Z	saliak	escott	i think i must be doing something wrong on that end.  editing /etc/groups and adding fetch mail to the asterisk line adds it to that group, right?  runs as uid 113
+2012-06-04T05:56:00.000Z	escott	saliak	that should be enough yes. are the folder permissions correct for the group. do you need to set the guid (group version of suid) on the directory
+2012-06-04T05:57:00.000Z	saliak	escott	ahh, looks like the group permissions are not w
+2012-06-04T05:57:00.000Z	saliak	escott	i wonder why that's the case.. weird.
+2012-06-04T06:06:00.000Z	saliak	escott	hrm. set g+w and it still doesn't work.  hrm.  i know it runs as fetchmail cause i've exported a whoami. is there a "am i part of group XXXX" command?

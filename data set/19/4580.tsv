@@ -1,0 +1,19 @@
+2008-12-29T07:33:00.000Z	jtaji	Susie	yeah you shouldn't do that, have you tried going into Synaptic and searching and removing all vmware packages?
+2008-12-29T07:34:00.000Z	Susie	jtaji	I have, and all vmware packages are not installed
+2008-12-29T07:34:00.000Z	jtaji	Susie	or you could figure out what package an installed file is from with dpkg -S path/to/file
+2008-12-29T07:35:00.000Z	Susie	jtaji	Let me try that.
+2008-12-29T07:36:00.000Z	Susie	jtaji	I can't seem to find the file of the program itself. There are so many vmware files to hunt through
+2008-12-29T07:36:00.000Z	jtaji	Susie	how about the ones in /etc/init.d or /usr/lib you mentioned?
+2008-12-29T07:37:00.000Z	Susie	jtaji	The ones I am trying give the result of "dpkg: *filename* not found
+2008-12-29T07:41:00.000Z	Susie	jtaji	Should I just delete the files?  =/
+2008-12-29T07:44:00.000Z	jtaji	Susie	perhaps, did you install using apt-get? what is the file name in /etc/init.d/ ?
+2008-12-29T07:45:00.000Z	Susie	jtaji	I don't remember how I installed it! I don't think it was with apt-get, but I'm not sure. The init.d file is called "vmware"
+2008-12-29T07:46:00.000Z	jtaji	Susie	if you install things other ways it can be difficult to remove completey, however you can prevent it from starting by just doing: sudo update-rc.d vmware remove
+2008-12-29T07:48:00.000Z	Susie	jtaji	That would be great. I was mostly concerned with the five seconds or so it was adding to my boot time
+2008-12-29T07:49:00.000Z	Susie	jtaji	"update-rc.d: /etc/init.d/vmware exists during rc.d purge (use -f to force)"
+2008-12-29T07:49:00.000Z	Susie	jtaji	"update-rc.d: /etc/init.d/vmware exists during rc.d purge (use -f to force)
+2008-12-29T07:49:00.000Z	Susie		"
+2008-12-29T07:50:00.000Z	Susie	jtaji	Should I force it or would that be harmful?
+2008-12-29T07:50:00.000Z	jtaji	Susie	go ahead and add the -f option, sudo update-rc.d -f vmware remove
+2008-12-29T07:51:00.000Z	jtaji	Susie	all this does is remove the links to /etc/init.d/vmware in the /etc/rc*.d/ directories which cause it to start, you can always recreate them
+2008-12-29T07:52:00.000Z	Susie	jtaji	That seemed to do it. Thanks. :)

@@ -1,0 +1,24 @@
+2011-06-17T06:49:00.000Z	toad`		I cant get ONLINE!
+2011-06-17T06:50:00.000Z	toad`		do you mean use the LiveCD and download frmo there? can I instal it using the LiveCD?
+2011-06-17T06:50:00.000Z	toad`		or should I just download and stick it in the filesystem?
+2011-06-17T06:50:00.000Z	toad`		would that work?
+2011-06-17T06:50:00.000Z	toad`		I have a LiveCD
+2011-06-17T06:50:00.000Z	toad`		dvd
+2011-06-17T06:50:00.000Z	toad`		whatever itr is
+2011-06-17T06:50:00.000Z	toad`		I have one I burned myself and one Ubuntu sent me
+2011-06-17T06:50:00.000Z	toad`		lol
+2011-06-17T06:50:00.000Z	toad`		you need to change the thing
+2011-06-17T06:51:00.000Z	escott	toad`	is network manager still installed?
+2011-06-17T06:51:00.000Z	escott	toad`	is the nm package still in /var/cache/apt
+2011-06-17T06:52:00.000Z	escott	toad`	boot the livecd chroot yourself in, then install nm
+2011-06-17T06:53:00.000Z	escott	toad`	are you familiar with a chroot?
+2011-06-17T06:54:00.000Z	escott	toad`	see https://help.ubuntu.com/community/Grub2#ChRoot (its for grub but the principle is the same). gives you access to your system but using the livecds to provide the basic system
+2011-06-17T07:00:00.000Z	escott	toad`	follow the chroot up to the grub-install then try apt-get install network-manager instead
+2011-06-17T07:09:00.000Z	escott	toad`	blah you probably need to copy some things like resolve.conf over from /etc
+2011-06-17T07:11:00.000Z	escott	toad`	try copying /etc/resolve.conf and /etc/hosts from the livecd to the chroot just in case
+2011-06-17T07:12:00.000Z	escott	toad`	and see if you can ping something like 192.168.1.1 inside the chroot (assuming that is your router)
+2011-06-17T07:14:00.000Z	escott	toad`	then its probably just dns (ie the resolve.conf)
+2011-06-17T07:14:00.000Z	escott	toad`	were you able to install nm?
+2011-06-17T07:14:00.000Z	escott	toad`	and i realize telling you to copy over /etc/hosts would have blown away your hostname
+2011-06-17T07:16:00.000Z	escott	toad`	well if you get nm working again on the installed system you will need to correct /etc/hosts to make sure your /etc/hostname is mapped to 127.0.0.1
+2011-06-17T07:17:00.000Z	escott	toad`	thats no doubt what apt said was wicked, because hosts didn't direct hostname back to the localhost

@@ -1,0 +1,24 @@
+2005-06-13T15:27:00.000Z	Loevborg		q: where do I look for nfs error messages? what can it be when it says connection refused (2 ubuntu machines)?
+2005-06-13T15:29:00.000Z	chol	Loevborg	rpcinfo -p remote_host
+2005-06-13T15:29:00.000Z	Loevborg	chol	gives me: rpcinfo: can't contact portmapper: RPC: Remote system error - Connection refused
+2005-06-13T15:30:00.000Z	chol	Loevborg	there you go
+2005-06-13T15:30:00.000Z	chol	Loevborg	is portmap started on the other machines, are they even reachable etc..
+2005-06-13T15:31:00.000Z	Loevborg	chol	portmap is installed, and ssh/smb is working
+2005-06-13T15:31:00.000Z	chol	Loevborg	and running?
+2005-06-13T15:32:00.000Z	Loevborg	chol	daemon   16125  0.0  0.0   1652   452 ?        Ss   23:28   0:00 /sbin/portmap
+2005-06-13T15:32:00.000Z	chol	Loevborg	it should return something like portmapper and nlockmgr when it works
+2005-06-13T15:32:00.000Z	chol	Loevborg	oh.. i remember one thing from debian, it only listens to localhost
+2005-06-13T15:34:00.000Z	Loevborg	chol	now I installed portmap & nfs-common on the client machine too, and it gives me: mount: RPC: Program not registered
+2005-06-13T15:34:00.000Z	chol	Loevborg	portmap needs to be started before any other rpc programs
+2005-06-13T15:39:00.000Z	chol	Loevborg	it still won't work?
+2005-06-13T15:40:00.000Z	chol	Loevborg	start with rpcinfo -p on the local hosts, when that works, it should be ok for remote usage aswell
+2005-06-13T15:41:00.000Z	Loevborg	chol	I actually used the wrong IP.
+2005-06-13T15:41:00.000Z	Loevborg	chol	I'll remember the rpcinfo command tho.
+2005-06-13T15:42:00.000Z	chol	Loevborg	oh, bummer ;),
+2005-06-13T15:42:00.000Z	chol	Loevborg	rpcinfo is useful, and always restart portmap first
+2005-06-13T15:43:00.000Z	Loevborg	chol	there's no GUI for connection nfs shares, no?
+2005-06-13T15:43:00.000Z	Loevborg	chol	smb shares are much (10x) slower here on my wlan, for whatever reason.
+2005-06-13T15:45:00.000Z	chol	Loevborg	same here.. nfs is udp and there's not csma/cd in the wlan afaik so i guess that could have something to do with it
+2005-06-13T15:46:00.000Z	Loevborg	chol	I actually think it's a bug in the samba server (or the client)
+2005-06-13T15:48:00.000Z	Loevborg	chol	you're using ndiswrapper too? (that might be the problem)
+2005-06-13T15:48:00.000Z	chol	Loevborg	no.. regular drivers

@@ -1,0 +1,19 @@
+2010-06-13T21:13:00.000Z	roydude		Is there anyone with a bit of NFS experience that can help me with a mounting issue?  I'm a newb, I'm sure it's a simple fix.
+2010-06-13T21:15:00.000Z	roydude		Why does my NFS folder not mount?  (this is me being funny)(
+2010-06-13T21:15:00.000Z	llutz	roydude	errormessages?
+2010-06-13T21:15:00.000Z	roydude	llutz	where do I found that?
+2010-06-13T21:16:00.000Z	roydude		!ftsab
+2010-06-13T21:16:00.000Z	llutz	roydude	try mounting it in a terminal or look at /var/log/syslog or messages
+2010-06-13T21:18:00.000Z	roydude	llutz	I get no error messages when manually mounting using "mount /home/user/folder" which is linking to my fstab....  but the folder remains empty.... if I manually mount
+2010-06-13T21:19:00.000Z	llutz	roydude	whats your corresponding fstab-line?
+2010-06-13T21:20:00.000Z	roydude		192.168.4.101:/home/user/folder /home/user/folder nfs defaults 0 0
+2010-06-13T21:20:00.000Z	roydude	llutz	192.168.4.101:/home/user/folder /home/user/folder nfs defaults 0 0
+2010-06-13T21:22:00.000Z	llutz	roydude	does "mount | grep nfs" list it after mounting it manually?
+2010-06-13T21:23:00.000Z	roydude	llutz	yes it's listed but the contents are still empty
+2010-06-13T21:24:00.000Z	llutz	roydude	check permissions serverside
+2010-06-13T21:24:00.000Z	roydude		hmm
+2010-06-13T21:24:00.000Z	roydude	llutz	everyone has read access
+2010-06-13T21:25:00.000Z	llutz	roydude	same user client/serverside?
+2010-06-13T21:25:00.000Z	roydude		yes
+2010-06-13T21:25:00.000Z	roydude	llutz	yes
+2010-06-13T21:26:00.000Z	roydude	llutz	wtf....  the file is there now...  one sec, I'm going to reboot the node

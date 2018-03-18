@@ -1,0 +1,23 @@
+2010-03-27T10:22:00.000Z	Neon0Blue		Ok I managed to get ubuntu installed and working on an xfs partition. But I need help with two things. one, only root works "normally" so only root can install stuff.
+2010-03-27T10:22:00.000Z	Neon0Blue		two, Sound doesn't work on normal account.
+2010-03-27T10:24:00.000Z	Neon0Blue		Becuase my normal account can't open the administrator window to type in the password to launch the applications that install things.
+2010-03-27T10:24:00.000Z	Neon0Blue		"sudo: /etc/sudoers is mode 0777, should be 0440"
+2010-03-27T10:24:00.000Z	Neon0Blue		is that helps
+2010-03-27T10:24:00.000Z	SolarisBoy	Neon0Blue	thats the error you got?
+2010-03-27T10:25:00.000Z	SolarisBoy	Neon0Blue	do you have a root password?
+2010-03-27T10:25:00.000Z	SolarisBoy	Neon0Blue	switch to root and fix the file permissions
+2010-03-27T10:29:00.000Z	SolarisBoy	Neon0Blue	and the result?
+2010-03-27T10:29:00.000Z	SolarisBoy	Neon0Blue	are you in the audio group?
+2010-03-27T10:32:00.000Z	SolarisBoy	Neon0Blue	usermod -a -G audio <user> i believe is the command
+2010-03-27T10:38:00.000Z	SolarisBoy	Neon0Blue	what are the permissions on your audio devices and what if any messages logged when you access audio?
+2010-03-27T10:41:00.000Z	Neon0Blue	SolarisBoy	how can I check the permissions on the audio device?
+2010-03-27T10:42:00.000Z	SolarisBoy	Neon0Blue	oh sorry with ls -ltrh
+2010-03-27T10:42:00.000Z	SolarisBoy	Neon0Blue	https://wiki.ubuntu.com/DebuggingSoundProblems https://wiki.ubuntu.com/DebuggingSoundProblems/KarmicCaveats
+2010-03-27T10:44:00.000Z	SolarisBoy	Neon0Blue	umm thats what i meant
+2010-03-27T10:44:00.000Z	SolarisBoy	Neon0Blue	ls -ltrh /dev/<sounddevice>.. and probably others.. question..
+2010-03-27T10:46:00.000Z	SolarisBoy	Neon0Blue	wow so you in general blew all the perms away and left the data
+2010-03-27T10:57:00.000Z	SolarisBoy	Neon0Blue	heh
+2010-03-27T10:59:00.000Z	SolarisBoy	Neon0Blue	sudo fuser -v /dev/dsp* /dev/snd/* /dev/seq* ?
+2010-03-27T10:59:00.000Z	SolarisBoy	Neon0Blue	no
+2010-03-27T11:00:00.000Z	SolarisBoy	Neon0Blue	paste it there whenever you need to put more than one line of output
+2010-03-27T11:01:00.000Z	SolarisBoy	Neon0Blue	that sounds like an issue

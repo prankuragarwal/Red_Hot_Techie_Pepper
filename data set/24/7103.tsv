@@ -1,0 +1,24 @@
+2005-05-25T14:02:00.000Z	Brunellus		hi all.  why is /dev/cdrom not being recognized?
+2005-05-25T14:03:00.000Z	Brunellus		I've upgraded from warty to hoary, and everything is (mostly) OK
+2005-05-25T14:03:00.000Z	Brunellus		except that apps that need to use /dev/cdrom to read cd audio files now no longer work
+2005-05-25T14:04:00.000Z	Brunellus		data cds work fine and automount
+2005-05-25T14:04:00.000Z	Brunellus		and, bizarrely, soundjuicer works
+2005-05-25T14:04:00.000Z	Brunellus		but gnome-cd doesn't work.  nor does grip.  nor does the cd-player plugin for xmms
+2005-05-25T14:05:00.000Z	Brunellus		anybody?
+2005-05-25T14:06:00.000Z	Brunellus		can't anybody tell me why hoary is suddenly not recognizing music cds in /dev/cdrom
+2005-05-25T14:06:00.000Z	spo0nman	Brunellus	look at /etc/groups and see if you have access to cdrom
+2005-05-25T14:06:00.000Z	spo0nman	Brunellus	can you mount normal cd's?
+2005-05-25T14:07:00.000Z	spo0nman	Brunellus	hmm, most probably its a permission problem. see /etc/groups and /etc/sudoers and see if you have access to raw cd.
+2005-05-25T14:08:00.000Z	Brunellus	spo0nman	 if it were a permissions problem, I should be able to sudo grip and access /dev/cdrom
+2005-05-25T14:08:00.000Z	spo0nman	Brunellus	yes.
+2005-05-25T14:09:00.000Z	Brunellus	spo0nman	 guess what?  I just did sudo grip and it still won't read the raw cdrom
+2005-05-25T14:09:00.000Z	spo0nman	Brunellus	if you cant do that then make sure that /dev/cdrom *is* the real drive.
+2005-05-25T14:10:00.000Z	spo0nman	Brunellus	maybe /dev/cdrom is not pointing to the hardware ...
+2005-05-25T14:11:00.000Z	spo0nman	Brunellus	no, i mean /dev/hdb or hdc or hdd or whatever it really is.
+2005-05-25T14:12:00.000Z	spo0nman	Brunellus	ls -lah /dev/cdrom
+2005-05-25T14:13:00.000Z	spo0nman	Brunellus	there you go. go to /dev and try to figure out which one is your cdrom.
+2005-05-25T14:13:00.000Z	Brunellus	spo0nman	how on earth do I do that?
+2005-05-25T14:14:00.000Z	spo0nman	Brunellus	put a damn data cd in and look at /var/log/messages or see the logs of automount to check what hardware it mounts
+2005-05-25T14:14:00.000Z	spo0nman	Brunellus	it has to be hdb hdd or hdc
+2005-05-25T14:16:00.000Z	spo0nman	Brunellus	so ln -s /dev/hdc to /dev/cdrom
+2005-05-25T14:18:00.000Z	Brunellus	spo0nman	 ta very very VERY muchly

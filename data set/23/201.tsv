@@ -1,0 +1,23 @@
+2012-04-05T12:36:00.000Z	steinesel		I am trying to configure my 11.04 32bit OS to function with my Garmin Oregon GPSr. I am getting this Error Message from Gebbabel: [ERROR] XSERIAL: Cannot open serial port '/media/GARMIN/Garmin/gpx/geocaches.GPX': No such file or directory
+2012-04-05T12:36:00.000Z	steinesel		[ERROR] Cannot open serial port '/media/GARMIN/Garmin/gpx/geocaches.GPX'
+2012-04-05T12:36:00.000Z	steinesel		GARMIN:Can't init /media/GARMIN/Garmin/gpx/geocaches.GPX
+2012-04-05T12:38:00.000Z	llutz_	steinesel	how do you try to access it?
+2012-04-05T12:40:00.000Z	llutz_	steinesel	idk about oregon, older like vista hcx etc need to unload "garmin" kernel-module and being accessed through "USB:"
+2012-04-05T12:43:00.000Z	llutz_	steinesel	if you mounted the oregon, can't you just use nautilus to access the files
+2012-04-05T12:44:00.000Z	llutz_	steinesel	does "gpsbabel -w -i garmin -f usb: -o gpx -F geocaches.gpx" work on cli?
+2012-04-05T12:46:00.000Z	llutz_	steinesel	umount it, "sudo modprobe -r garmin" and try again
+2012-04-05T12:47:00.000Z	llutz_	steinesel	gpsbabel does not work with mounted devices, it uses direct access (it did at least with older garmin-gpsr)
+2012-04-05T12:49:00.000Z	steinesel	llutz_	: I get: FATAL: Module garmin not found.
+2012-04-05T12:49:00.000Z	llutz_	steinesel	 "sudo modprobe -r garmin_gps"
+2012-04-05T12:51:00.000Z	steinesel	llutz_	: Just to confirm - after sudo modprobe -r garmin_gps I plug the gps back to system ?
+2012-04-05T12:51:00.000Z	llutz_	steinesel	yes, and don't mount it
+2012-04-05T12:52:00.000Z	llutz_	steinesel	then umount it
+2012-04-05T12:54:00.000Z	steinesel	llutz_	: done
+2012-04-05T12:55:00.000Z	llutz_	steinesel	any erros from gpsbabel?
+2012-04-05T12:56:00.000Z	steinesel	llutz_	Yes: Found no Garmin USB devices.
+2012-04-05T12:56:00.000Z	llutz_	steinesel	try it as root, using sudo gpsbabel ... pls
+2012-04-05T12:59:00.000Z	steinesel	llutz_	: and no change when running gpsbabel with sudo same error message
+2012-04-05T13:01:00.000Z	llutz_	steinesel	things seem to have changed with Oregons. sry no more ideas then. that worked since years for me with my old vistaHCX and some other devices.
+2012-04-05T13:01:00.000Z	steinesel	llutz_	Thanx for the help anyway!!!
+2012-04-05T13:01:00.000Z	llutz_	steinesel	check http://rfc1149.de/index.php#2010-10-31   and try again
+2012-04-05T13:02:00.000Z	llutz_	steinesel	good luck and happy caching:)

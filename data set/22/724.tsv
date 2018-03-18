@@ -1,0 +1,22 @@
+2011-06-14T05:01:00.000Z	Faethin		Hi. Whenever I run SYBYL-X (Chemical simulation software) I get the error message "undefined symbol glColorTableEXT"
+2011-06-14T05:02:00.000Z	Faethin		"undefined symbol glColorTableEXT" <---- what does that mean?
+2011-06-14T05:02:00.000Z	escott	Faethin	your opengl driver doesnt support GL Color Tables
+2011-06-14T05:03:00.000Z	Faethin	escott	is there a way of fixing that? :|
+2011-06-14T05:04:00.000Z	escott	Faethin	your could try a different opengl implementation
+2011-06-14T05:05:00.000Z	Faethin	escott	Excuse me, I forgot to raise the n00b flag. How can I do that?
+2011-06-14T05:06:00.000Z	escott	Faethin	what kind of video card do you have
+2011-06-14T05:07:00.000Z	Faethin	escott	ATI technologies Inc M860G mobility radeon
+2011-06-14T05:08:00.000Z	Faethin	escott	I'm currently using the ATI/AMD prop FGLRX graphics driver
+2011-06-14T05:08:00.000Z	escott	Faethin	you could try the radeonhd it might support more gl extensions, but it would be slower
+2011-06-14T05:09:00.000Z	Faethin	escott	is that on synaptic?
+2011-06-14T05:09:00.000Z	Faethin	escott	nope, it's not
+2011-06-14T05:10:00.000Z	escott	Faethin	you would need to disable the fglrx and install radeonhd. i wouldn't recommend this unless you absolutely MUST have this program working
+2011-06-14T05:11:00.000Z	Faethin	escott	Well, yes I must have it. But perhaps there are other options, considering this one seems to be rather extreme
+2011-06-14T05:13:00.000Z	escott	Faethin	you might try recompiling the program and commenting out the glColorTableExt references
+2011-06-14T05:14:00.000Z	Faethin	escott	that's beyond my ability. The program came with an installer and I didn't see any options that permitted a re-compiling.
+2011-06-14T05:15:00.000Z	Faethin	escott	the exact error message is "/home/tripos/sybyl-x12/lib/linux/libmolcadplus.so: undefined symbol glColorTableEXT"
+2011-06-14T05:16:00.000Z	Faethin	escott	it makes reference to the libmolcadplus library (whatever that is)
+2011-06-14T05:16:00.000Z	Faethin	escott	I tried googling for that library and I got 0 results ;_;
+2011-06-14T05:18:00.000Z	escott	Faethin	its because your libGL doesn't have glColorTableEXT. you could write a small c program that implements a non-functional version of glColorTableEXT and LD_PRELOAD that, but there isn't anything easy you can do
+2011-06-14T05:20:00.000Z	Faethin	escott	thanks a lot for your time
+2011-06-14T05:20:00.000Z	Faethin	escott	I'll contact the higher-ups at the Uni and let them know about this mess

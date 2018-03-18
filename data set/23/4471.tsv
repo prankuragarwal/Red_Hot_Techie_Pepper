@@ -1,0 +1,23 @@
+2008-06-25T07:46:00.000Z	airstrike		my audio output is in use by some unknown application and i can't play any sounds.. how can i find out what app is using it so that i can terminate it?
+2008-06-25T07:46:00.000Z	crimsun_	airstrike	sudo lsof /dev/dsp* /dev/audio* /dev/mixer* /dev/seq* /dev/snd/*
+2008-06-25T07:47:00.000Z	airstrike		all i got was 'mixer_app', which i can't terminate
+2008-06-25T07:47:00.000Z	crimsun_	airstrike	that's mixer_applet2.
+2008-06-25T07:48:00.000Z	airstrike		wth
+2008-06-25T07:48:00.000Z	airstrike		none of those solutions worked ;(
+2008-06-25T07:49:00.000Z	crimsun_	airstrike	why don't you kill the pids?
+2008-06-25T07:49:00.000Z	airstrike		even if i kill mixer_applet2, the problem remains
+2008-06-25T07:49:00.000Z	airstrike		that's weird..
+2008-06-25T07:50:00.000Z	crimsun_	airstrike	what problem?
+2008-06-25T07:54:00.000Z	airstrike		problem is audio not playing any sounds on rhythmbox or any other player
+2008-06-25T07:54:00.000Z	airstrike		what i currently have open: xchat, pidgin, azureus, nautillus and nicotine..
+2008-06-25T07:54:00.000Z	airstrike		don't know how those could affect any of that
+2008-06-25T07:54:00.000Z	crimsun_	airstrike	pastebin the output from that sudo lsof command, please, then tell me the url.
+2008-06-25T07:55:00.000Z	airstrike		http://paste.ubuntu.com/22766/ - there it is, verbatim
+2008-06-25T07:57:00.000Z	crimsun_	airstrike	please preface statements to me with my nick, thanks!
+2008-06-25T07:57:00.000Z	airstrike	crimsun_	sorry, my bad
+2008-06-25T07:57:00.000Z	crimsun_	airstrike	and you made a typo: it's /dev/seq*, not /dev/sed*
+2008-06-25T07:59:00.000Z	airstrike	crimsun_	sorry.. got the same output, though.. what does that warning mean?
+2008-06-25T07:59:00.000Z	crimsun_	airstrike	well, first, the warning doesn't matter.  Disregard it.  Second, why are you using OSS devices like /dev/mixer instead of the ALSA ones?
+2008-06-25T08:01:00.000Z	airstrike	crimsun_	 i've always used them and they worked fine.. i assume i would get everything working again if i just rebooted, but i'd rather find out what the problem
+2008-06-25T08:02:00.000Z	crimsun_	airstrike	start from a clean slate.  Reboot.
+2008-06-25T08:02:00.000Z	crimsun_	airstrike	then poke me.

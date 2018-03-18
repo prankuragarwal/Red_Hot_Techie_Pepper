@@ -1,0 +1,18 @@
+2012-08-30T02:57:00.000Z	freerobby		I apologize for repeating questions but I've pined through hundreds of threads on the ubuntu forums/docs and I just can't find anything on this. I can get ulimit -n to work fine in a shell (https://gist.github.com/7fff364c0bca20c27aa5), but never to hold a value for an upstart process. Does anybody know how to set the ulimit values for processes that are not spawned in a bash shell?
+2012-08-30T02:57:00.000Z	jrib	freerobby	I have no idea if it addresses your question, but have you checked the upstart cookbook?
+2012-08-30T02:57:00.000Z	freerobby	jrib	I have.
+2012-08-30T02:58:00.000Z	jrib	freerobby	there's a #upstart here on freenode that may be able to help
+2012-08-30T02:58:00.000Z	freerobby	jrib	Ubuntu appears not to be honoring my /etc/default/ubuntu values, but I have no idea why.
+2012-08-30T02:58:00.000Z	freerobby	jrib	Thanks, I'll ask there. I don't think it's an upstart issue though.
+2012-08-30T02:59:00.000Z	jrib	freerobby	how are you setting the ulimit?
+2012-08-30T03:00:00.000Z	freerobby	jrib	I've tried a few things. Set high system limits in /etc/security/limits.conf. Tried making a /etc/default/ubuntu that set it. Also tried setting it directly in the upstart file.
+2012-08-30T03:01:00.000Z	jrib	freerobby	did you see if it made a difference whether the service starts at boot or later on?  (So for example stop the service and then start it again after the boot process is over)
+2012-08-30T03:03:00.000Z	freerobby	jrib	Yes, it fails in both cases.
+2012-08-30T03:04:00.000Z	jrib	freerobby	there's some discussion here http://serverfault.com/questions/195655/squid-running-out-of-file-descriptors-on-ubuntu though the user is on 10.04
+2012-08-30T03:05:00.000Z	jrib	freerobby	maybe give more details about what you are doing if you can
+2012-08-30T03:08:00.000Z	freerobby	jrib	May have found the solution here: http://upstart.ubuntu.com/wiki/Stanzas#limit It looks like upstart has its own way of doing limits; oddly unmentioned in any of the upstart tutorials i saw
+2012-08-30T03:08:00.000Z	jrib	freerobby	http://upstart.ubuntu.com/wiki/Stanzas#limit seems relevant too
+2012-08-30T03:08:00.000Z	jrib	freerobby	ha.
+2012-08-30T03:08:00.000Z	jrib	freerobby	I came across http://web.archiveorange.com/archive/v/v5FspALFu8N9fFxc8vPw
+2012-08-30T03:09:00.000Z	freerobby	jrib	I appreciate the help, think I'm close enough to get the rest of the way on my own
+2012-08-30T03:09:00.000Z	jrib	freerobby	cool, good luck

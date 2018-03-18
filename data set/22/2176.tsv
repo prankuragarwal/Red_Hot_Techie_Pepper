@@ -1,0 +1,22 @@
+2009-09-04T00:45:00.000Z	Nichod		help! I'm trying to move files from my main partition to another partition and i'm getting an error.
+2009-09-04T00:45:00.000Z	Nichod		There was an error copying the file into /media/disk.
+2009-09-04T00:45:00.000Z	Nichod		Error opening file '/media/disk/Starship.Troopers.3-Marauder[2008]DvDrip-aXXo.avi': Permission denied
+2009-09-04T00:46:00.000Z	glzzz	Nichod	problems with permissions maybe?
+2009-09-04T00:47:00.000Z	glzzz	Nichod	: what FS is it ? plz, show mount in terminal
+2009-09-04T00:51:00.000Z	glzzz	Nichod	aaa I see your problem -- user can't write to ext3 partition root -- create folder there, change it's permissions to users, and put files there
+2009-09-04T00:52:00.000Z	glzzz	Nichod	sudo install -d /media/disk/my_foler && sudo chown user.user /media/disk/my_folder
+2009-09-04T00:52:00.000Z	glzzz	Nichod	user -- your user name
+2009-09-04T00:55:00.000Z	glzzz	Nichod	you can't create folder?
+2009-09-04T00:55:00.000Z	glzzz	Nichod	it happens while which command?
+2009-09-04T00:56:00.000Z	Nichod	glzzz	no i was able to create the folder
+2009-09-04T00:57:00.000Z	glzzz	Nichod	sudo chmod +rw /media/disk/folder && sudo chown user.user /media/disk/folder
+2009-09-04T01:01:00.000Z	Nichod	glzzz	still only allows access only
+2009-09-04T01:02:00.000Z	glzzz	Nichod	hmm strange -- is it usb disk?
+2009-09-04T01:02:00.000Z	glzzz	Nichod	but you can't change permissions?
+2009-09-04T01:03:00.000Z	glzzz	Nichod	you're doing it with sudo, right?
+2009-09-04T01:04:00.000Z	glzzz	Nichod	I'm not quite sure about chmod -- maybe it cant take two args, and there is an error, as a result second command after && does not take place
+2009-09-04T01:04:00.000Z	glzzz	Nichod	try chmod +r , the same chmod +w and then chown
+2009-09-04T01:08:00.000Z	glzzz	Nichod	fat or ntfs
+2009-09-04T01:08:00.000Z	Nichod	glzzz	fat32 ?
+2009-09-04T01:11:00.000Z	glzzz	Nichod	it support ntfs or manually -- sudo mkfs.ntfs /dev/bla-bla
+2009-09-04T01:12:00.000Z	glzzz	Nichod	I did not do it myselfe, but there is driver for ext2 for windows, which works (they say) + plugin for Total Commander

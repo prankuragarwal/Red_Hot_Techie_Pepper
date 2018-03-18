@@ -1,0 +1,19 @@
+2012-08-16T06:06:00.000Z	danbeam		(it's a known bug)
+2012-08-16T06:07:00.000Z	TJ-	danbeam	Try starting it from a terminal under control of the debugger so you can capture a stack backtrace. "gdb --args gnome-control-center display"
+2012-08-16T06:08:00.000Z	danbeam	TJ-	why? it's in some bug somewhere, but it doesn't help me
+2012-08-16T06:09:00.000Z	danbeam	TJ-	looked for bug, couldn't find
+2012-08-16T06:12:00.000Z	TJ-	danbeam	 the first step to fixing is knowing where the problem is :)
+2012-08-16T06:12:00.000Z	danbeam	TJ-	there's no symbols
+2012-08-16T06:12:00.000Z	danbeam	TJ-	I'm on a backtrace
+2012-08-16T06:13:00.000Z	danbeam	TJ-	#0  0x00007ffff77fff77 in gtk_widget_size_allocate () from /usr/lib/x86_64-linux-gnu/libgtk-3.so.0
+2012-08-16T06:13:00.000Z	TJ-	danbeam	OK... if you're that good, you need to install the -dbgsym packages for the relevant package and libraries from the ddeb archive
+2012-08-16T06:14:00.000Z	danbeam	TJ-	ok
+2012-08-16T06:15:00.000Z	danbeam	TJ-	Like I mentioned before, this is definitely a known issue with a full stack trace
+2012-08-16T06:15:00.000Z	danbeam	TJ-	somewhere on launchpad or some tracker
+2012-08-16T06:15:00.000Z	TJ-	danbeam	OK ... you point me to it, I'll hack the source
+2012-08-16T06:17:00.000Z	danbeam	TJ-	https://bugs.launchpad.net/ubuntu/+source/gnome-control-center/+bug/979959
+2012-08-16T06:18:00.000Z	danbeam	TJ-	I should mention that I know RANDR is turned off (it says so in my xorg.conf) but I don't exactly know why my xorg.conf turns it off...
+2012-08-16T06:19:00.000Z	TJ-	danbeam	No, that is strange. usually there shouldn't be an xorg.conf anyhow. I run nvidia with multiple screens and don't get the symptoms described in comment #2
+2012-08-16T06:19:00.000Z	danbeam	TJ-	I could obviously disable (mv xorg.conf xborg.conf) it and set the option, I guess...
+2012-08-16T06:20:00.000Z	danbeam	TJ-	if that doesn't work I can install the dbg symbols and look through the gdb bt
+2012-08-16T06:29:00.000Z	danbeam	TJ-	PM'd you xorg.conf

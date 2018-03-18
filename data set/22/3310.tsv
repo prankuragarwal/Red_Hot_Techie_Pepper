@@ -1,0 +1,22 @@
+2008-10-17T01:03:00.000Z	Shakedown		Need SSH help: where do I put my private key on my remote machine (I'm using cygwin on remote machine)?
+2008-10-17T01:03:00.000Z	jrib	Shakedown	why do you want your private key on the remote machine?
+2008-10-17T01:04:00.000Z	jrib	Shakedown	nope :/
+2008-10-17T01:04:00.000Z	jrib	Shakedown	you mean "client" by "remote"?
+2008-10-17T01:06:00.000Z	jrib	Shakedown	the private key is yours, you keep it on the client usually as ~/.ssh/id_rsa .  On the server you add your ~/.ssh/id_rsa.password.pub (corresponding to your private key on the client)  to ~/.ssh/authorized_keys on the server
+2008-10-17T01:06:00.000Z	jrib	Shakedown	though you can just use ssh-copy-id to do all the work for you
+2008-10-17T01:07:00.000Z	Shakedown	jrib	I have that on both my desktop (server) and laptop (client). Which do I execute ssh-copy-id on?
+2008-10-17T01:08:00.000Z	Shakedown	jrib	no wait, I don't have ssh-copy-id on my laptop
+2008-10-17T01:08:00.000Z	jrib	Shakedown	on your client (see 'man ssh-copy-id')
+2008-10-17T01:10:00.000Z	Shakedown	jrib	I don't have it on my client. I put the public key in ~/.ssh/authorized_keys on my server, so where should I put the private key on my cygwin client?
+2008-10-17T01:11:00.000Z	jrib	Shakedown	then you don't need to do anything else on the server (that's what ssh-copy-id does).  I have no idea how cygwin works
+2008-10-17T01:11:00.000Z	Shakedown	jrib	just make some file named id_rsa in .ssh?
+2008-10-17T01:11:00.000Z	jrib	Shakedown	it's not "some file".  It's your private key
+2008-10-17T01:12:00.000Z	Shakedown	jrib	but it's just text in a file
+2008-10-17T01:12:00.000Z	jrib	Shakedown	sure, containing your private key
+2008-10-17T01:13:00.000Z	Shakedown	jrib	so if I make a file 'id_rsa' and put the private key in there that's all I need? (~/.ssh/id_rsa)
+2008-10-17T01:13:00.000Z	jrib	Shakedown	yeah, ssh will use that key by default
+2008-10-17T01:14:00.000Z	Shakedown	jrib	ok, then is there a way to make sure that I've done everything correctly?
+2008-10-17T01:14:00.000Z	jrib	Shakedown	try it? :P
+2008-10-17T01:32:00.000Z	Shakedown	jrib	I put the private key in id_rsa and when I connect it tells me WARNING: UNPROTECTED PRIVATE KEY FILE! Permissions for .ssh/id_rsa are too open
+2008-10-17T01:34:00.000Z	jrib	Shakedown	chmod 600 ~/.ssh/id_rsa
+2008-10-17T01:34:00.000Z	Shakedown	jrib	thanks

@@ -1,0 +1,22 @@
+2008-02-22T05:26:00.000Z	DrBanzai		I've tried setting up a software RAID 5 under both Ubuntu and CentOS and they both fail at formatting.  I've tried using both ext3 and JFS.  Any ideas?
+2008-02-22T05:26:00.000Z	kestir	DrBanzai	At which step does it fail?
+2008-02-22T05:27:00.000Z	DrBanzai	kestir	I'm installing from scratch, and after I get it all partioned and it goes to format, it gets the root partition formatted, but fails when it tries to do the raid.
+2008-02-22T05:27:00.000Z	kestir	DrBanzai	cent?
+2008-02-22T05:27:00.000Z	DrBanzai	kestir	Cent or Ubuntu, both fail at the same step
+2008-02-22T05:28:00.000Z	kestir	DrBanzai	ok...what does cat /proc/mdstat tell you?
+2008-02-22T05:28:00.000Z	DrBanzai	kestir	 Hmmm...can't tell you.  I aborted the install after the format failed.
+2008-02-22T05:29:00.000Z	kestir	DrBanzai	hmm, ok...first how many drives?
+2008-02-22T05:29:00.000Z	DrBanzai	kestir	4 250gb
+2008-02-22T05:30:00.000Z	DrBanzai	kestir	And they are connected 2 each on 2 different above board IDE cards.
+2008-02-22T05:30:00.000Z	DrBanzai	kestir	seperate system drive on the onboard controller.
+2008-02-22T05:30:00.000Z	kestir	DrBanzai	is there an os on 1 of them?
+2008-02-22T05:30:00.000Z	DrBanzai	kestir	No, they are all blank
+2008-02-22T05:31:00.000Z	kestir	DrBanzai	ok, i just did exactly this at the begining of the week...
+2008-02-22T05:31:00.000Z	kestir	DrBanzai	If you can get the os on one of the drives, it's just a matter of fdisk'ing the good partition onto the others
+2008-02-22T05:33:00.000Z	kestir	DrBanzai	you use mdadm now instead of etc/raidtab
+2008-02-22T05:34:00.000Z	DrBanzai	kestir	Ok, but is it difficult to "add" the raid into the system doing it that way?  I was hoping to just use the installer...
+2008-02-22T05:35:00.000Z	DrBanzai	kestir	Course...I was only told that the drives are blank...they were used...I think maybe I'll try wiping them all...
+2008-02-22T05:35:00.000Z	kestir	DrBanzai	oh definitely wipe them.
+2008-02-22T05:36:00.000Z	DrBanzai	kestir	Okay, I'll do that.  Thanks!
+2008-02-22T05:36:00.000Z	kestir	DrBanzai	the 3 other drives will need to be set to "fd" type in fdisk
+2008-02-22T05:37:00.000Z	DrBanzai	kestir	Ok

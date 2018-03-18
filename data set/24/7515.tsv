@@ -1,0 +1,24 @@
+2005-03-14T07:32:00.000Z	stodge		I'm getting the following when I try to mount a CD:
+2005-03-14T07:32:00.000Z	stodge		mount: block device /dev/hdc is write-protected, mounting read-only
+2005-03-14T07:32:00.000Z	stodge		mount: wrong fs type, bad option, bad superblock on /dev/hdc,
+2005-03-14T07:32:00.000Z	stodge		       or too many mounted file systems
+2005-03-14T07:32:00.000Z	stodge		The write-protected part is ok, but it's configured as vfat
+2005-03-14T07:32:00.000Z	stodge		Am I missing something?
+2005-03-14T07:33:00.000Z	stodge		Doh sorry I mean iso9660
+2005-03-14T07:34:00.000Z	stodge		Too busy thinking of my windows mounted drive :P
+2005-03-14T07:34:00.000Z	stodge		/dev/hdc        /media/cdrom0   udf,iso9660 rw,user,noauto  0       0
+2005-03-14T07:34:00.000Z	Blissex	stodge	as a rule you cannot expect 'vfat' on a CD
+2005-03-14T07:34:00.000Z	Blissex	stodge	do a manual mount.
+2005-03-14T07:35:00.000Z	stodge	Blissex	"Only root can do that"
+2005-03-14T07:35:00.000Z	Blissex	stodge	yes of course.
+2005-03-14T07:36:00.000Z	Blissex	stodge	if 'mount' is setuid root
+2005-03-14T07:36:00.000Z	Blissex	stodge	also, change the 'rw' in '/etc/fstab' to 'ro'
+2005-03-14T07:36:00.000Z	Blissex	stodge	ls -ld /bin/mount
+2005-03-14T07:37:00.000Z	Blissex	stodge	fine, then you should not be gettin an error.
+2005-03-14T07:38:00.000Z	Blissex	stodge	also, put yourself in the 'cdrom' group.
+2005-03-14T07:39:00.000Z	Blissex	stodge	then it must work... Unless the CD is buggered.
+2005-03-14T07:39:00.000Z	Blissex	stodge	try 'isochk /dev/hdc'
+2005-03-14T07:40:00.000Z	Blissex	stodge	oops, 'isovfy /dev/hdc'
+2005-03-14T07:42:00.000Z	Blissex	stodge	none :-)
+2005-03-14T07:42:00.000Z	Blissex	stodge	'xcdroast' is old but still more or less OK, not very cool though.
+2005-03-14T07:43:00.000Z	Blissex	stodge	however, 'mkisofs' and 'cdrecord' are very easy to use command line, except for multisession.

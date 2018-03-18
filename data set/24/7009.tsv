@@ -1,0 +1,24 @@
+2006-11-02T15:15:00.000Z	shiv	Samus_Aran	shiv@shiv-laptop:/media/MathWorks_R14_1$ \ls -l ./install
+2006-11-02T15:11:00.000Z	Samus_Aran	shiv	it means it doesn't have execute permissions for your user
+2006-11-02T15:11:00.000Z	Samus_Aran	shiv	chmod a+rx ./install
+2006-11-02T15:14:00.000Z	Samus_Aran	shiv	paste me the result of this command: \ls -l ./install
+2006-11-02T15:15:00.000Z	Samus_Aran	shiv	I missed the part about a loopback mounted ISO image
+2006-11-02T15:16:00.000Z	Samus_Aran	shiv	ISO9660 filesystems are read-only, so the "chmod" command wouldn't have done anything.  that is already executable, they most likely screwed up the shebang line (first line of the script, which tells it how to run)
+2006-11-02T15:16:00.000Z	Samus_Aran	shiv	try specifying a shell to run the script with, e.g.: sudo bash install
+2006-11-02T15:16:00.000Z	Samus_Aran	shiv	I mean "bash ./install"
+2006-11-02T15:17:00.000Z	Samus_Aran	shiv	otherwise it will look in your $PATH for "install"
+2006-11-02T15:17:00.000Z	shiv	Samus_Aran	I get this shiv@shiv-laptop:/media/MathWorks_R14_1$ sudo bash ./install
+2006-11-02T15:23:00.000Z	shiv	Samus_Aran	I am starting from scratch. Can u help me make scripts executable. I am trying this reply #3 http://ubuntuforums.org/showthread.php?t=149963&highlight=bin+cue
+2006-11-02T15:24:00.000Z	Samus_Aran	shiv	your ISO image is already fine
+2006-11-02T15:24:00.000Z	Samus_Aran	shiv	just go: sudo bash ./install
+2006-11-02T15:24:00.000Z	Samus_Aran	shiv	if that doesn't work, paste me the error message
+2006-11-02T15:24:00.000Z	shiv	Samus_Aran	ok let me see
+2006-11-02T15:25:00.000Z	shiv	Samus_Aran	whats wrong with this command sudo chmod 700 ~/.gnome2/nautilus-scripts/*.*
+2006-11-02T15:25:00.000Z	shiv	Samus_Aran	I just am redoing the scripts again
+2006-11-02T15:26:00.000Z	Samus_Aran	shiv	nothing is wrong with it, except on UNIX filesystems "dots" are not always used, so that should be: ~/.gnome2/nautilus-scripts/*
+2006-11-02T15:28:00.000Z	shiv	Samus_Aran	this is what I am getting shiv@shiv-laptop:/media/MathWorks_R14_1$ sudo bash ./install
+2006-11-02T15:29:00.000Z	Samus_Aran	shiv	okay, so it is telling you not to run it from the CD.  switch to another directory and then run it like: sudo bash /media/MathWorks_R14_1/install
+2006-11-02T15:30:00.000Z	shiv	Samus_Aran	ahha that worked :)
+2006-11-02T15:30:00.000Z	Samus_Aran	shiv	good
+2006-11-02T15:30:00.000Z	shiv	Samus_Aran	but I have messed up my mount unmount iso scripts
+2006-11-02T15:31:00.000Z	shiv	Samus_Aran	this is not working sudo chmod 700 ~/.gnome2/nautilus-scripts/*

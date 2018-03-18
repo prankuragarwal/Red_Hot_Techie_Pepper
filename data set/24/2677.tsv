@@ -1,0 +1,24 @@
+2010-10-24T09:42:00.000Z	Akiva		is it possible to have 2 gpt
+2010-10-24T09:42:00.000Z	Akiva		on one partition, because I am trying to add my windows 7 install, and I cant seem to get it to show up on my grub 2
+2010-10-24T09:43:00.000Z	Dr_Willis	Akiva	 if update-grub's not scanning/seeing the win7 install. You could always add the proper entries to the /etc/grub.d/40_custom file
+2010-10-24T09:45:00.000Z	Dr_Willis	Akiva	heres my 40_custom --> http://pastebin.com/ZJ0bcLBn
+2010-10-24T10:16:00.000Z	Akiva	Dr_Willis	sda1 does not show up on that list, it is my windows install
+2010-10-24T10:09:00.000Z	Dr_Willis	Akiva	 sudo dpkg-reconfigure grub-pc      'might' help.
+2010-10-24T10:10:00.000Z	Dr_Willis	Akiva	 using that 40_custom file i pasted earlier. should add a lot of entries  including one for windows7
+2010-10-24T10:11:00.000Z	Akiva	Dr_Willis	I used only part of it, should I have just pasted the whole darn thing? The partition is sda1,
+2010-10-24T10:12:00.000Z	Dr_Willis	Akiva	 you can edit the file how you want.  Windows7 for me was on the 2nd partition of sda. sda1 was the special windows boot partition. booting either of those worked to get me tinto windows. the 3rd windows partition was the restore partition here.
+2010-10-24T10:13:00.000Z	Akiva	Dr_Willis	I'll give it another try, but are their not some unique addresses on their?
+2010-10-24T10:13:00.000Z	Dr_Willis	Akiva	 you used that 40_custome, and no entries for win7 appeared?
+2010-10-24T10:13:00.000Z	Dr_Willis	Akiva	 its possible that one line is using the UUID of the partion/filesyste,
+2010-10-24T10:13:00.000Z	Dr_Willis	Akiva	 search --no-floppy --fs-uuid --set 2a0e335e0e3321ed
+2010-10-24T10:14:00.000Z	Dr_Willis	Akiva	 these entries are what update-grub generated on my Win7 laptop. I dont have another win7 machine.
+2010-10-24T10:17:00.000Z	Dr_Willis	Akiva	 after editing the 40_custom you have been doing a 'sudo update-grub' ?
+2010-10-24T10:17:00.000Z	Dr_Willis	Akiva	 which list are you refering to?
+2010-10-24T10:17:00.000Z	Akiva	Dr_Willis	yes. blkid, it gives me only my ext4 and swap uuid
+2010-10-24T10:18:00.000Z	Dr_Willis	Akiva	 that may explain the whole problem then./ Its not seeing your windows drive.  does 'sudo fdisk -l' show it?
+2010-10-24T10:19:00.000Z	Akiva	Dr_Willis	yes, it shows sda1... but sda1 according to my disk util is standing in the middle of my partition
+2010-10-24T10:21:00.000Z	Dr_Willis	Akiva	 you did do fdisk -l /dev/sda  not /dev/sda1 (common mistake)
+2010-10-24T10:21:00.000Z	Dr_Willis	Akiva	 windows7 for some reason installs often with a little bit of enpty hd at the front/rear of it. it also often installs with  windows own version of a boot partition.
+2010-10-24T10:22:00.000Z	Akiva	Dr_Willis	yah, it cannot open /dev/sda1
+2010-10-24T10:23:00.000Z	Dr_Willis	Akiva	 you could pastebin your fdisk -l output --> 'sudo fdisk -l | pastebinit'
+2010-10-24T10:24:00.000Z	Akiva	Dr_Willis	wow, I am learning really useful commands here :P

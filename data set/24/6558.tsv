@@ -1,0 +1,24 @@
+2005-10-31T08:28:00.000Z	ksmurf_		anyone know about the UsePAM option of ssh.  theres nothing in the man
+2005-10-31T08:28:00.000Z	crimsun	ksmurf_	any specific reason you want to enable that?
+2005-10-31T08:30:00.000Z	crimsun	ksmurf_	why not use passphrase auth+keychain?
+2005-10-31T08:30:00.000Z	ksmurf_	crimsun	I'm unfamiler with ssh so I know not how to set it up
+2005-10-31T08:32:00.000Z	crimsun	ksmurf_	here, I'll walk you through it.
+2005-10-31T08:32:00.000Z	crimsun	ksmurf_	in a Terminal, execute ssh-keygen
+2005-10-31T08:33:00.000Z	crimsun	ksmurf_	you probably want ''ssh-keygen -tdsa''
+2005-10-31T08:37:00.000Z	crimsun	ksmurf_	you should now have an ~/.ssh/id_dsa and an ~/.ssh/id_dsa.pub
+2005-10-31T08:38:00.000Z	crimsun	ksmurf_	now scp ~/.ssh/id_dsa.pub to your remote host(s)
+2005-10-31T08:40:00.000Z	ksmurf_	crimsun	so that would be scp ~/.ssh/id_dsa.pub user@host
+2005-10-31T08:40:00.000Z	crimsun	ksmurf_	user@host:  but yes
+2005-10-31T08:42:00.000Z	crimsun	ksmurf_	now on the remote host(s), echo ~/id_dsa.pub >> ~/.ssh/authorized_keys2 && rm ~/id_dsa.pub
+2005-10-31T08:42:00.000Z	crimsun	ksmurf_	err, s/echo/cat/
+2005-10-31T08:44:00.000Z	crimsun	ksmurf_	cat
+2005-10-31T08:44:00.000Z	crimsun	ksmurf_	as in cat ~/id_dsa.pub >> ~/.ssh/authorized_keys2 && rm ~/id_dsa.pub
+2005-10-31T08:48:00.000Z	crimsun	ksmurf_	done?
+2005-10-31T08:48:00.000Z	ksmurf_	crimsun	I have an issue .  would the command be  cat ~/id_dsa.pub >> ~/.ssh/authorized_keys2 && rm ~/.ssh/id_dsa.pub?
+2005-10-31T08:49:00.000Z	crimsun	ksmurf_	no, unless you scped id_dsa.pub to ~/.ssh/ on the remote host(s)
+2005-10-31T08:51:00.000Z	crimsun	ksmurf_	please tell me that you used user@host: not user@host
+2005-10-31T08:52:00.000Z	crimsun	ksmurf_	do not remove the ~/.ssh/id_dsa.pub on your local machine
+2005-10-31T08:52:00.000Z	crimsun	ksmurf_	you scp that to your remote machines
+2005-10-31T08:54:00.000Z	crimsun	ksmurf_	have you scped that file to your remote host(s)?
+2005-10-31T08:56:00.000Z	crimsun	ksmurf_	probably because you failed to scp it over first
+2005-10-31T08:57:00.000Z	crimsun	ksmurf_	you CANNOT leave out the trailing colon (':')

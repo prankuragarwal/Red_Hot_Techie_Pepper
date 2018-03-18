@@ -1,0 +1,18 @@
+2009-08-25T19:11:00.000Z	Viks		Hi everyone, this is first time I am trying IRC for Ubuntu help. I hope I am in correct room
+2009-08-25T19:11:00.000Z	genii	Viks	Yes, ask away
+2009-08-25T19:12:00.000Z	Viks		I am using single board computer running ubuntu 9.04
+2009-08-25T19:12:00.000Z	Viks		I need to install one ISA card
+2009-08-25T19:12:00.000Z	Viks		I installed driver but I am not able to detect ISA card
+2009-08-25T19:13:00.000Z	Viks		alright sorry about it. is there anything like device manager where I can get list of hardware I ?
+2009-08-25T19:14:00.000Z	genii	Viks	Since ISA is very old now the plug and play system doesn't bother much with it. You can add the name of the module the card would use to /etc/modules  file however.
+2009-08-25T19:15:00.000Z	Viks	genii	so I should read about modules ?? can you tell few commands I should look into ??
+2009-08-25T19:16:00.000Z	genii	Viks	First you should find what module the card should be using ... google is usually not bad for this. Then you open the /etc/modules file with a text editor in admin mode so you can edit it. then you add the module name there on a line of its own, save the file. Next reboot it loads the driver.
+2009-08-25T19:17:00.000Z	genii	Viks	You can load from commandline a driver with method:    sudo modprobe modulename
+2009-08-25T19:17:00.000Z	genii		Work requires me 3-5 minutes so I may seem unresponsive here.
+2009-08-25T19:18:00.000Z	Viks		yeah I tried modprobe, commands run well but not able to installed card. I am new to linux so I am sure I am not doing it right. I just wanted to get directions. what should I look into, I think as u suggested I should look modules.
+2009-08-25T19:27:00.000Z	genii	Viks	Because the hardware autodetect system cannot automatically determine what driver to use, you must research the card to find what the driver name is. Then you may also need to know what irq and address it uses so that you can specify this when you load the driver.
+2009-08-25T19:29:00.000Z	genii	Viks	I have an old ISA card for instance that requires:   cs4232 io=0x330,irq=7              as the line in /etc/modules
+2009-08-25T19:30:00.000Z	Viks		genni, I have all those things but I do not know the process to use irq and io address. I know the name of the card with recommended io and irq setting but when I use given installation process everything goes smothly but I can NOT use it. is there any way to find out if my card is recognized by PC
+2009-08-25T19:32:00.000Z	Viks		is there anything like device manager to show available ISA cards on my PC ??
+2009-08-25T19:34:00.000Z	genii	Viks	Please put my name in a message which you wish me to see. I am in many channels here. To answer.. since the autodetect system doesn see the ISA stuff as something it knows about it won't appear in device manager, etc. But references to ALL your hardware will show in the result of: dmesg       or in result of: sudo lshw
+2009-08-25T19:36:00.000Z	Viks	genii	thanks, I am trying sudo lshw.

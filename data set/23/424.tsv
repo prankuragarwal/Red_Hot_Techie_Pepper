@@ -1,0 +1,23 @@
+2011-09-07T21:43:00.000Z	zoned		can someone help me enable CGI? i'm using ubuntu 10.10 and apache2
+2011-09-07T21:43:00.000Z	zoned		i thought i needed to add a ScriptAlias directive in my apache2.conf, but that doesn't seem to apply on debian distros. so i am here to seek help from the experts :P
+2011-09-07T21:45:00.000Z	usr13	zoned	https://help.ubuntu.com/10.10/serverguide/C/httpd.html
+2011-09-07T21:47:00.000Z	zoned	usr13	i don't see CGI on there?
+2011-09-07T21:49:00.000Z	usr13	zoned	Well it does seem to have some discussion about CGI.
+2011-09-07T21:50:00.000Z	zoned	usr13	it does say that, but that's already all set up (as it is the default)..... but i need to enable it so when i go mysite.com/cgi-bin/myfile.cgi that it actually calls /usr/lib/cgi-bin/myfile.cgi and executes it. i do not know how to set this up on ubuntu/apache. that's why i'm here.
+2011-09-07T21:52:00.000Z	usr13	zoned	Well, you can place a page on your server that uses cgi-bin and see how it works.  Maybe that will help.
+2011-09-07T21:52:00.000Z	zoned	usr13	where do i find instructions for this?
+2011-09-07T21:54:00.000Z	usr13	zoned	http://httpd.apache.org/docs/2.0/howto/cgi.html
+2011-09-07T21:54:00.000Z	zoned	usr13	that is not the same on a debian system, is it?
+2011-09-07T21:55:00.000Z	usr13	zoned	Ive got the powered access bible working on a couple of LAN servers (built on Ubuntu) and works fine
+2011-09-07T21:55:00.000Z	zoned	usr13	so if i add the following line to my apache2.conf: ScriptAlias /cgi-bin/    /usr/lib/cgi-bin/
+2011-09-07T21:56:00.000Z	usr13	zoned	Should already be enabled.
+2011-09-07T21:56:00.000Z	usr13	zoned	By default
+2011-09-07T21:57:00.000Z	zoned	usr13	i have placed a cgi file inside /usr/lib/cgi-bin.   how do i call tihs file from a browser? i went to mysite.com/cgi-bin/myfile.cgi ... it does not load. myfile.cgi has chmod of 755
+2011-09-07T21:59:00.000Z	usr13	zoned	http://localhost/cgi-bin/mysite
+2011-09-07T22:00:00.000Z	usr13	zoned	Yes you got it.
+2011-09-07T22:01:00.000Z	zoned	usr13	jabbajac ^^
+2011-09-07T22:07:00.000Z	usr13	zoned	It just depends on if the script you put in /usr/lib/cgi-bin works or not.  Check your logs.
+2011-09-07T22:11:00.000Z	zoned	usr13	(8)Exec format error: exec of '/usr/lib/cgi-bin/dirpass.cgi' failed
+2011-09-07T22:12:00.000Z	usr13	zoned	Well that tells us that the sript was located but failed.  Yea as jabbajac suggests, check permissions.
+2011-09-07T22:13:00.000Z	zoned	usr13	jabbajac: did a chmod 777 and still get the same error
+2011-09-07T22:31:00.000Z	usr13	zoned	chmod 755

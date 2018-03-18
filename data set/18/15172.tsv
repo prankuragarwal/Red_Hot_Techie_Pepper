@@ -1,0 +1,18 @@
+2005-05-10T14:01:00.000Z	gingermark		Ok, so it looks like I installed a debian version of libidn11 when I REALLY didn't know what I was doing, trying to force the version back to hoary one, and Synaptic is telling me I'll have to uninstall A LOT of stuff, such as gnome-baker, kubuntu-desktop, openoffic, ubuntu-desktop plus others. Seems like a BAD idea....
+2005-05-10T14:02:00.000Z	NigelS	gingermark	your best bet is to get the ubuntu .deb and dpkg -i it, then see if it still wants to remove stuff to "fix" your system
+2005-05-10T14:04:00.000Z	NigelS	gingermark	it happens :) apt-getting the package version fix it?
+2005-05-10T14:06:00.000Z	NigelS	gingermark	follow Lathiat's suggestion, hopefully it won't then want to remove stuff.
+2005-05-10T14:11:00.000Z	NigelS	gingermark	I thought that might happen, apt-get wants to balance the system as you remove the lib.  You will prob need to use dpkg and maybe force it in order to get the ubuntu library version installed. http://archive.ubuntu.com/ubuntu/pool/main/libi/libidn/libidn11_0.5.2-3_i386.deb <-- e.g. download that and try manually dpkg -i it.
+2005-05-10T14:12:00.000Z	NigelS	gingermark	what version do you currently have? e.g. if you type dpkg -l libidn11\* you can see what you currently have
+2005-05-10T14:14:00.000Z	NigelS	gingermark	ah, ok :), when you get that type sudo dpkg -i ./libidn11_0.5.2-3_i386.deb - it'll prob say it can't, see why.  Then you may need to use the force options to make it ignore that problem.  That ought, if that library is the only one that's wrong, let apt-get see there's no longer a dependency problem.
+2005-05-10T14:23:00.000Z	NigelS	gingermark	yeah.  Has that fixed it now? I mean if you apt-get install -f, and apt-get update, apt-get dist-upgrade does it no longer want to remove loads of stuff?
+2005-05-10T14:24:00.000Z	NigelS	gingermark	no, not if it's the *right* version for those packages :) which it should be if you're using hoary...I assumed you were but should've asked :)
+2005-05-10T14:26:00.000Z	NigelS	gingermark	then there are still packages that don't belong :(
+2005-05-10T14:26:00.000Z	NigelS	gingermark	what was it you installed from debian?
+2005-05-10T14:27:00.000Z	NigelS	gingermark	in the fix broken info, does it say *what* it thinks the problem is?
+2005-05-10T14:31:00.000Z	NigelS	gingermark	I'm afraid you have to tediously dpkg -i all of those :)
+2005-05-10T14:32:00.000Z	NigelS	gingermark	apt is bad at downgrading a system gracefully, but if you manually restore the ubuntu versions it should be ok
+2005-05-10T14:33:00.000Z	NigelS	gingermark	yeah
+2005-05-10T14:34:00.000Z	NigelS	gingermark	if one complains you can use a -force-<option>
+2005-05-10T14:36:00.000Z	NigelS	gingermark	yeah, you shouldn't need it, but you can for example --force-overwrite to *make* the deb overwrite, etc etc, you can read them all with dpkg --force-help
+2005-05-10T14:52:00.000Z	gingermark	NigelS	I did "apt-get install -f" after replacing some packages, and now it doesn't want to uninstall a load of stuff - does that mean I'm sorted now?

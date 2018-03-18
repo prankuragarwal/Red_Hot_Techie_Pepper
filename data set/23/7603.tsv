@@ -1,0 +1,23 @@
+2005-11-24T16:41:00.000Z	pztak		anyone know why this isn't working:
+2005-11-24T16:41:00.000Z	pztak		paz@Cobra:/media/usbdisk$ sudo cp -l iWeather.display blah
+2005-11-24T16:41:00.000Z	pztak		cp: cannot create link `blah': Operation not permitted
+2005-11-24T16:42:00.000Z	pztak		and it works
+2005-11-24T16:44:00.000Z	erUSUL	pztak	why the -l switch?
+2005-11-24T16:44:00.000Z	pztak	erUSUL	i'm actually using the cp -al to do incremental backups to external fat32 usb disk
+2005-11-24T16:44:00.000Z	erUSUL	pztak	blondie is right hard links won't work on fat32
+2005-11-24T16:44:00.000Z	pztak	erUSUL	it ran fine yesterday
+2005-11-24T16:49:00.000Z	erUSUL	pztak	is not a question of filesystems you can not create a hardlink betwen two diferent devs
+2005-11-24T16:49:00.000Z	pztak	erUSUL	it's the same dev.. i'm using a rotation of 3 backups
+2005-11-24T16:50:00.000Z	erUSUL	pztak	that's why soft links (ln -s) were created to overcome the limitations of hardlinks
+2005-11-24T16:50:00.000Z	pztak	erUSUL	but that won't let me do incremental backups
+2005-11-24T16:51:00.000Z	erUSUL	pztak	you are hardlinking files in one dev (dev/sda1 the usbdisk) into another (the buckup media)
+2005-11-25T17:03:00.000Z	erUSUL	pztak	just do not use the -l flag to make the buckups
+2005-11-25T17:04:00.000Z	pztak	erUSUL	that wont make the backups incremental.. right? it'd copy the files over every time... that takes quite a while, and a lot of space for 3 backups
+2005-11-25T17:05:00.000Z	erUSUL	pztak	use tar or darc or some archiving tool that will do incremental backups
+2005-11-25T17:08:00.000Z	pztak	erUSUL	i think i would really rather use rsync with hardlinks.. lets me access each version of backup easily without having to decompress/etc
+2005-11-25T17:08:00.000Z	pztak	erUSUL	and saves me about 100gb
+2005-11-25T17:08:00.000Z	pztak	erUSUL	plus should be faster, from what i understand
+2005-11-25T17:09:00.000Z	erUSUL	pztak	it seems a good choice yes
+2005-11-25T17:10:00.000Z	pztak	erUSUL	so i am just wondering how i could repartition this existing harddrive that has a lot of free space on it.. i know in windows there's a tool called partitionmagic.. is there any equivalent in linux?
+2005-11-25T17:11:00.000Z	erUSUL	pztak	i've been told that gparted works fine
+2005-11-25T17:11:00.000Z	erUSUL	pztak	work ony in umonted partitions for safety

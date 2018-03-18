@@ -1,0 +1,23 @@
+2012-09-27T01:52:00.000Z	JainAmber		Hello
+2012-09-27T01:54:00.000Z	JainAmber		Is there a command equivalent to Synaptic's "Add downloaded packages"?
+2012-09-27T01:54:00.000Z	JainAmber		I need to automate the process of adding local .deb files to apt cache...
+2012-09-27T01:56:00.000Z	JainAmber		I can do so using 'cp *.deb /var/cache/apt/archives/' but is there some way to do this using apt?
+2012-09-27T01:56:00.000Z	jrib	JainAmber	you could setup a local repository?
+2012-09-27T01:57:00.000Z	jrib	JainAmber	why do you want to do it?  What's your end-goal?
+2012-09-27T01:59:00.000Z	JainAmber	jrib	I have a script that does 'sudo apt-get install' for hundreds of packages. Now I want to add a line to the script to check if there are any .deb files in current directory and add it to /var/cache/apt/archives if they are compatible with current installed Ubuntu version
+2012-09-27T02:00:00.000Z	jrib	JainAmber	/why/?  Where would these debs come from?
+2012-09-27T02:01:00.000Z	jrib	JainAmber	I'm not even sure what exactly you mean by the "if" clause in your statement
+2012-09-27T02:02:00.000Z	JainAmber	jrib	I can use simple 'cp' to copy files from current directory to /var/cache/apt/archives but then it won't check if packages are for same ubuntu version/arch which is installed on this machine....
+2012-09-27T02:02:00.000Z	JainAmber	jrib	These debs were copied either from another system's /var/cache/apt/archives, downloaded from packages.ubuntu.com OR downloaded using Synaptics' "Generate package download script"...
+2012-09-27T02:03:00.000Z	jrib	JainAmber	so what's the issue with just having apt download them again?
+2012-09-27T02:04:00.000Z	jrib	JainAmber	maybe I just don't understand what it is that you are trying to accomplish
+2012-09-27T02:05:00.000Z	JainAmber	jrib	this is for a small college lab. In developing countries, network connections are slow (30-50kbps). Moreover, this small college lab is part of 'parent' university network and I have no control over university's network (which can go down anytime thanks to crap admins).
+2012-09-27T02:07:00.000Z	jrib	JainAmber	so you don't want to use apt-cacher because the network is flaky?
+2012-09-27T02:12:00.000Z	JainAmber	jrib	Nevermind. I think "sudo dpkg -iR directory" is what will fulfill my needs. Thanks!
+2012-09-27T02:13:00.000Z	jrib	JainAmber	ok
+2012-09-27T02:14:00.000Z	jrib	JainAmber	right, but you're still copying the debs all over the place instead of just using apt; seems strange
+2012-09-27T02:15:00.000Z	jrib	JainAmber	I don't know the details, but couldn't you just create an install image with the packages you want already, and then install from that?  Might be useful to have for the future at least
+2012-09-27T02:15:00.000Z	JainAmber	jrib	yes, the best way to do this is to use 'apt-cacher' which I'll do asap. I'm a bit busy atm to be able to look into this (I'm volunteer student helping setup the lab).
+2012-09-27T02:16:00.000Z	jrib	JainAmber	ah!  Now I understand.
+2012-09-27T02:17:00.000Z	JainAmber	jrib	yea, creating an install image is another good idea. But I guess apt-cacher is the best solution since all we need to do is download package once on apt-cacher server. And, all other PCs on LAN can then get package from local server (if they have LAN apt-cacher server in sources.list).
+2012-09-27T02:25:00.000Z	JainAmber	jrib	evil me is now going to create a few pendrives with all packages and 'dpkg -iR' script and hand them to ubuntu-newbie junior assistants. They'll need to manually run the script on all computers! ;)

@@ -1,0 +1,19 @@
+2007-04-24T16:48:00.000Z	haru		how do i configure my ubuntu system to be able to ping my lan machines via their aliases?
+2007-04-24T16:48:00.000Z	eck	haru	use the hosts file or set up the router to do dns
+2007-04-24T16:48:00.000Z	haru	eck	theres already a dns and a wins server
+2007-04-24T16:49:00.000Z	eck	haru	if the ubuntu machine is using that dns then you should just be able to ping the machines by host name
+2007-04-24T16:49:00.000Z	haru	eck	unfortunately i am not able to
+2007-04-24T16:50:00.000Z	eck	haru	check the /etc/resolv.conf file to make sure it is using the proper dns server, and then if that looks good check the routing table with route -n
+2007-04-24T16:51:00.000Z	haru	eck	any use of the wins server?
+2007-04-24T16:51:00.000Z	haru	eck	plus we have 2 dns servers
+2007-04-24T16:51:00.000Z	eck	haru	i'm not really sure how wins works, ubuntu will just use dns
+2007-04-24T16:52:00.000Z	haru	eck	oki.. how do i use the other dns server
+2007-04-24T16:52:00.000Z	haru	eck	as there are 2 of them
+2007-04-24T16:54:00.000Z	eck	haru	the default behavior is to just take the dns server from dhcp, if you want something else you would edit the nameserver line in /etc/resolv.conf
+2007-04-24T16:54:00.000Z	haru	eck	the name server is set to 10.100.56.27
+2007-04-24T16:54:00.000Z	haru	eck	so can i add nameserver 10.100.56.28 too
+2007-04-24T16:55:00.000Z	eck	haru	yeah, i forget the syntax. i think it is just space separated though
+2007-04-24T16:56:00.000Z	eck	haru	sorry, you would add an additional nameserver line
+2007-04-24T16:56:00.000Z	haru	eck	 ok
+2007-04-24T05:13:00.000Z	haru	eck	apprantly i have to install winbind
+2007-04-24T05:14:00.000Z	haru	eck	and edit nsswitch :S

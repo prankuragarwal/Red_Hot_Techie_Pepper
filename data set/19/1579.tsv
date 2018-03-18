@@ -1,0 +1,19 @@
+2010-12-17T04:37:00.000Z	FrozenKnight		Right now when I connect a USB drive and go to "Computers" location it doesn't show any drive, is that behaviour normal? And if so... is there a way to set up easy access ? :)
+2010-12-17T04:38:00.000Z	FrozenKnight		("Computer")
+2010-12-17T04:38:00.000Z	resixian	FrozenKnight	check dmesg | tail
+2010-12-17T04:40:00.000Z	resixian	FrozenKnight	could be you need 'sudo modprobe ntfs' ?
+2010-12-17T04:40:00.000Z	FrozenKnight	resixian	I did the dmesg, and it shows "nice" messages, like usb found assuming write through
+2010-12-17T04:41:00.000Z	FrozenKnight	resixian	I think it allocated sdc
+2010-12-17T04:41:00.000Z	FrozenKnight	resixian	wait, it detected the USB hub but not the disk attached to it
+2010-12-17T04:42:00.000Z	FrozenKnight	resixian	 trying modprobe
+2010-12-17T04:43:00.000Z	FrozenKnight	resixian	nothing output
+2010-12-17T04:44:00.000Z	resixian	FrozenKnight	there shuoldn't have been any output. try re-plugging your drive int
+2010-12-17T04:45:00.000Z	resixian	FrozenKnight	also, can you plug it directly into your box? might be too little power on the usb hub
+2010-12-17T04:47:00.000Z	FrozenKnight	resixian	tried, dmesg says it has attached a usb drive... but I can't find it in System/Admin/Disks and neither in Computers
+2010-12-17T04:47:00.000Z	resixian	FrozenKnight	lsmod | grep ntfs shows the ntfs module?
+2010-12-17T04:48:00.000Z	FrozenKnight	resixian	and two numbers the latter 0
+2010-12-17T04:53:00.000Z	FrozenKnight	resixian	I just tried sudo mounting the drive to a temporary folder, and I can do it.
+2010-12-17T04:55:00.000Z	resixian	FrozenKnight	must be some user permission or the automagic daemon is failing you
+2010-12-17T04:56:00.000Z	FrozenKnight	resixian	I had a hunch the daemon might be failing, don't really know why, but I'll use it like this for now :) Thanks resixian ! :)
+2010-12-17T04:57:00.000Z	resixian	FrozenKnight	also check here, https://help.ubuntu.com/community/Mount/USB#User Privileges
+2010-12-17T04:57:00.000Z	resixian	FrozenKnight	it really should 'just work'

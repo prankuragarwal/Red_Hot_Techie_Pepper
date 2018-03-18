@@ -1,0 +1,21 @@
+2006-11-04T09:19:00.000Z	TLE_02		I am, as usual having, trouble booting the live cd because my ati graphics card is not supported by the "ati" driver, but this time(edgy) the safe graphics mode doesn't help me as it use to (Dapper). Furthermore I noticed to my surprise that when I boot in safe graphics mode, it still has "ati" in the xorg.conf, I thought the Safe Graphics mode was supposed to replace that with "vesa". Actually I can't get the boot cd past the splash unless I add a vga opti
+2006-11-04T09:21:00.000Z	JosefK	TLE_02	replacing 'ati' with 'radeon' used to work here
+2006-11-04T09:23:00.000Z	TLE_02	JosefK	Well i tried replacing it with vesa, and doing a sudo /etc/init.d/gdm retstart and still X failed to start, now vesa should work for sure right, but still my question is, sjouldn't it be vesa per standard when I boot in safe graphics ?
+2006-11-04T09:24:00.000Z	JosefK	TLE_02	yes, probably, but if you're trying to fix it that hardly matters here?
+2006-11-04T09:27:00.000Z	TLE_02	JosefK	I think it does. You see I think the actual problem is that my graphics card doesn't get detected properly. Now i might be able to fix that by adding a option at boot-time, but it is going to a hell trying to trouble shoot that if I have a driver problem problem on top of that
+2006-11-04T09:28:00.000Z	JosefK	TLE_02	not really, once you're installed it's fix-once and ignore it
+2006-11-04T09:31:00.000Z	TLE_02	JosefK	Yes but i can't get it installed because I can't get X. I can try replacing it with radeon but I don't think it is going to work when it wont work with vesa.
+2006-11-04T09:31:00.000Z	JosefK	TLE_02	if it isn't working with vesa, check the logs, the driver may not be the only problem in the xorg conf
+2006-11-04T09:37:00.000Z	TLE_02	JosefK	Tompu: exactly, I did that and it complains that it can't find any devices in the slots, I've pasted the xorg.conf and the errors and warnings here http://pastebin.ca/237447 It looks like it can't detect the graphics card. But as I said it is difficult to troubleshoot that if I have a driver problem on top
+2006-11-04T09:38:00.000Z	JosefK	TLE_02	'lspci'
+2006-11-04T09:38:00.000Z	JosefK	TLE_02	look which slot it's in
+2006-11-04T09:39:00.000Z	JosefK	TLE_02	try it with 'radeon' too, it could just be 'ati' being unclever
+2006-11-04T09:45:00.000Z	TLE_02	JosefK	Tompu: I can tell from Dapper, which I am in right now, that the card is in the PCI:1:0:0 slot and gets loaded just fine in that slot in Dapper. But I can go back and gather some more info. So I'll go back and try some different drivers, how much info shall I gather EE and WW from xorg log and "lspci" anything else ?
+2006-11-04T09:46:00.000Z	JosefK	TLE_02	can you force 'rmmod ati' and 'rmmod radeon', they're not locking the slot?
+2006-11-04T09:48:00.000Z	TLE_02	JosefK	I don't understand what you mean. Are those commands something I should try or should I append the output of them ?
+2006-11-04T09:49:00.000Z	JosefK	TLE_02	indeed, but try with radeon first
+2006-11-07T06:15:00.000Z	TLE_02	JosefK	Hey
+2006-11-07T06:15:00.000Z	JosefK	TLE_02	hey - found a fix for the console switching bug yet?
+2006-11-07T06:19:00.000Z	JosefK	TLE_02	ah, nice :) I thought the 'radeon' driver might fix the problem too
+2006-11-07T06:21:00.000Z	TLE_02	JosefK	gyaresu: Just to clear things up, I was following this bug because it fit my problem: https://launchpad.net/distros/ubuntu/+source/xserver-xorg-video-ati/+bug/67487 but in fact it is more general problem described in this bug: https://launchpad.net/distros/ubuntu/+source/xorg/+bug/59618
+2006-11-07T06:23:00.000Z	TLE_02	JosefK	I have an X800XL and will bee getting a NVIDIA very soon. So as you may know the "ati" driver has never worked with that card. It has just always been easy to fix, because I just always installd the fglrx in a hurry and be done with it, but that was somewhat more difficult this time

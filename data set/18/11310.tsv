@@ -1,0 +1,18 @@
+2007-01-14T15:08:00.000Z	DARKGuy		Is there a way to test stuff like vga=791 without restarting the comp ?
+2007-01-14T15:08:00.000Z	DARKGuy		damn x(
+2007-01-14T15:08:00.000Z	czr	DARKGuy	vga= is special as it is handled in the early kernel process (in 16-bit realmode)
+2007-01-14T15:09:00.000Z	czr	DARKGuy	so it will require rebooting
+2007-01-14T15:10:00.000Z	DARKGuy	czr	Okay, so is there a way I can test framebuffer modes (I've played with Splashy before, and Links2) and know what resolution I'm seeing for applying it in the vga line ?
+2007-01-14T15:11:00.000Z	czr	DARKGuy	you might try fbset, but it's been years since I used it. maybe it's obsolete
+2007-01-14T15:11:00.000Z	DARKGuy	czr	oh, cool, I shall look that up then, thanks too
+2007-01-14T15:12:00.000Z	czr	DARKGuy	if you're using vesafb, then the mode cannot be changed after kernel boots
+2007-01-14T15:12:00.000Z	czr	DARKGuy	fbset will work only for other fbdev-drivers (most of them).
+2007-01-14T15:13:00.000Z	DARKGuy	czr	I have an nVIDIA and Trident card both using the nvidia and trident driver, is vesafb separated from it? if not then I guess the mode can be changed after the kernel boots? or fbset would be able to work *shrug*
+2007-01-14T15:14:00.000Z	czr	DARKGuy	it would depend on your kernel configuration really. I have no idea. lsmod to see which drivers are used
+2007-01-14T15:15:00.000Z	DARKGuy	czr	lsmod | grep 'fb' returns vesafb and fbcon xD; I guess it can't be changed after the kernel boots D:
+2007-01-14T15:16:00.000Z	czr	DARKGuy	indeed. fbcon = implements terminal operations using fbdev. so basically the functionality you use to use VTs with fbdevs.
+2007-01-14T15:17:00.000Z	DARKGuy	czr	stefg: I see :( oh well, I'm gonna get ready for a few reboots then, but thanks for the help! :D
+2007-01-14T15:18:00.000Z	czr	DARKGuy	if you do a lot of fbdev-testing/development, I'd recommend using some virtualization environment. personally I like vmware but there are others.
+2007-01-14T15:20:00.000Z	DARKGuy	czr	Ah yes, I could imagine vmware could do stuff like that, but i'm just wanting to have a framebuffer console (with a background if possible) rather than just a plain DOS-like terminal :P
+2007-01-14T15:21:00.000Z	czr	DARKGuy	it's not DOS-like :-). DOS consoles are unix-like :-). but yeah, I see what you mean :-)
+2007-01-14T15:22:00.000Z	DARKGuy	czr	Haha, actually you're right XD

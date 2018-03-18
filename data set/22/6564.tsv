@@ -1,0 +1,22 @@
+2008-07-19T05:35:00.000Z	nikin		how can i see what process is using buffer and cache  in memory?
+2008-07-19T05:35:00.000Z	Baughn	nikin	Those areas aren't associated with particular processes
+2008-07-19T05:36:00.000Z	nikin	Baughn	i see but something is filling my RAM .. and i want to know what it is
+2008-07-19T05:37:00.000Z	Baughn	nikin	Um, yeah. Cache. This is a /good/ thing.
+2008-07-19T05:37:00.000Z	Baughn	nikin	Memory that's marked as "free" might as well be marked as "burning power with no benefit to you"
+2008-07-19T05:37:00.000Z	nikin	Baughn	i see but there is no reason for such an amount of uffers and cache the servers load is technicaly zero
+2008-07-19T05:38:00.000Z	Baughn	nikin	Exactly
+2008-07-19T05:38:00.000Z	Baughn	nikin	Cache is what linux used memory for if it can't figure out something better to do with it
+2008-07-19T05:39:00.000Z	Baughn	nikin	And it /will/ fill all of memory if you let things run long enough. This is /good/. It means any disk reads that have happened before will be memory reads instead.
+2008-07-19T05:39:00.000Z	nikin	Baughn	i understand but what is in that cache?
+2008-07-19T05:39:00.000Z	Baughn	nikin	Stuff linux read from disk earlier
+2008-07-19T05:40:00.000Z	nikin	Baughn	if i understand you right linux uses all free memory for disk cache?
+2008-07-19T05:40:00.000Z	Baughn	nikin	Yes
+2008-07-19T05:40:00.000Z	nikin	Baughn	is there a way to flush that?
+2008-07-19T05:40:00.000Z	Baughn	nikin	Why would you want to?
+2008-07-19T05:41:00.000Z	nikin	Baughn	to see how much memory i get freed
+2008-07-19T05:41:00.000Z	Baughn	nikin	Um. Just count the "cache" tag in free as free memory.
+2008-07-19T05:41:00.000Z	Baughn	nikin	Cache /is/ free memory, effectively. It can be dropped on the floor in a heartbeat, since the same data is on disk it can just be read back in at need.
+2008-07-19T05:42:00.000Z	Baughn	nikin	Oh, and incidentally, any programs that still have an existence on disk run from cache. Remove the cache, and they'd have to read the executable back in.
+2008-07-19T05:42:00.000Z	nikin	Baughn	i understand that :)
+2008-07-19T05:44:00.000Z	Baughn	nikin	I doubt all of that 900MB is for cache
+2008-07-19T05:44:00.000Z	Baughn	nikin	Run free. See what is what.

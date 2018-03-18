@@ -1,0 +1,22 @@
+2006-12-10T17:53:00.000Z	leny	Dimensions	if you know how to mount a disk, then all you do is mount your regular drive. do a 'sudo chroot <where its mounted>' then issue a "grub-install '(hd0)' " assuming you installed to the first hard disk.
+2006-12-10T17:54:00.000Z	Dimensions	leny	... i was lookin aroun web found a link which says make a directory in /mnt and then mount the linux drive to it which i did
+2006-12-10T17:56:00.000Z	Dimensions	leny	...
+2006-12-10T17:56:00.000Z	leny	Dimensions	then open Applcations > Accessories > Terminal  .  In it type "sudo chroot /mnt" then "grub-install '(hd0)' "  less the " of course.
+2006-12-10T17:57:00.000Z	Dimensions	leny	it says ... chroot: can't run command /bin/bash no such file or diretory ...
+2006-12-10T17:59:00.000Z	Dimensions	leny	exit would close terminal ...
+2006-12-10T06:00:00.000Z	leny	Dimensions	Yeah try another terminal your chroot is wrong if you have your disk mounted as /mnt/hda1 it should be chroot /mnt/hda1
+2006-12-10T06:01:00.000Z	leny	Dimensions	does "ls /mnt" show the directories "bin" and "boot"
+2006-12-10T06:02:00.000Z	Dimensions	leny	.... just did as u said ...
+2006-12-10T06:05:00.000Z	leny	Dimensions	 lets go back to the begining what is in the mnt directory you're using?
+2006-12-10T06:05:00.000Z	Dimensions	leny	... i have all folders which normally ubuntu has ...
+2006-12-10T06:07:00.000Z	Dimensions	leny	the first command did work ... chroot one ... but second one ... grub install hd0 gave that message that sudo unable to lookup ubuntu via gethostbyname()
+2006-12-10T06:09:00.000Z	leny	Dimensions	you don't need a sudo on the second one... are you trying it just as it is with the single ' around the '(hd0)' like that?
+2006-12-10T06:12:00.000Z	leny	Dimensions	If your boot device is not /dev/hda then you should replace the hd0 with /dev/xxx whatever you have does this apply?
+2006-12-10T06:13:00.000Z	Dimensions	leny	need a bit help here ... how can i find out which one it is ... as gparted shows hda1 as ext3 partition ... in /dev there is no hd*
+2006-12-10T06:14:00.000Z	leny	Dimensions	From an another terminal do a 'mount' it will be listed there.
+2006-12-10T06:18:00.000Z	Dimensions	leny	... from another window if i do ls /dev/hd* it should i have hda1 etc etc ... but when i do pwd in same window it also says i am in /dev but title says i am in /mnt/hda1
+2006-12-10T06:21:00.000Z	leny	Dimensions	 From what you're saying your current terminal is in the wrong place close all your terminals and start with a new one. Then do just 'mount' and look for /mnt<perhaps something> there.
+2006-12-10T06:22:00.000Z	Dimensions	leny	it says /dev/hda1 on /mnt/hda1 type ext3 (rw)
+2006-12-10T06:24:00.000Z	leny	Dimensions	Then do a "chroot /mnt/hda1" then on the next line a "grub-install '(hd0)'"
+2006-12-10T06:28:00.000Z	leny	Dimensions	I'm at a loss as to why, this very procedure worked for me yesterday.  Try quitting that window, if following the website didin't work I'll have to hand you over
+2006-12-10T06:32:00.000Z	leny	Dimensions	 Sorry to take your time up.. anyway is 00:30 UK time and time for me to sleep. Rgds - Leny

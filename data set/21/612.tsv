@@ -1,0 +1,21 @@
+2011-09-01T06:50:00.000Z	openn		does anybody know how can I specify a DNS server using OpenVPN?
+2011-09-01T06:51:00.000Z	Jokn	openn	you mean like what DNS gets sent to clients via DHCP ?
+2011-09-01T06:52:00.000Z	openn	Jokn	vpn server gives me a DNS IP which I dont want to use.
+2011-09-01T06:53:00.000Z	Jokn		are you controlling the VPN? you can change what DNS it pushes via DHCP in the config
+2011-09-01T06:53:00.000Z	openn	Jokn	no, I dont control the vpn server
+2011-09-01T06:53:00.000Z	openn	Jokn	hm how can I push the DNS I want via DHCP
+2011-09-01T06:55:00.000Z	Jokn	openn	you'd have to have control of the server itself to change that
+2011-09-01T06:55:00.000Z	openn	Jokn	the only solution is to edit /etc/resolv.conf?
+2011-09-01T06:56:00.000Z	Jokn		on your machine, yea you could specify dns
+2011-09-01T06:56:00.000Z	Jokn		are you trying to get around dns filtering ?
+2011-09-01T06:56:00.000Z	openn		no
+2011-09-01T06:56:00.000Z	Jokn		What's the problem then?
+2011-09-01T06:56:00.000Z	openn		just to use a different DNS server
+2011-09-01T06:56:00.000Z	openn		lower latency, no log, etc
+2011-09-01T06:57:00.000Z	openn		echo "nameserver 127.0.0.1" >> /etc/resolv.conf
+2011-09-01T06:58:00.000Z	Jokn		yea, not sure if the VPN dns will take over though.  haven't really messed with VPN tunnels via desktop version
+2011-09-01T06:58:00.000Z	Jokn	openn	but I think you get the idea.  Do you have DiG installed?
+2011-09-01T06:58:00.000Z	openn		bash: /etc/resolv.conf: Permission denied
+2011-09-01T06:58:00.000Z	openn		?
+2011-09-01T06:59:00.000Z	openn		yes
+2011-09-01T06:59:00.000Z	Jokn	openn	you use sudo to edit it?

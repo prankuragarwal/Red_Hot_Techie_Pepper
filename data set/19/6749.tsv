@@ -1,0 +1,19 @@
+2009-12-21T20:45:00.000Z	yancho		hi. i am trying to mount a windows share and i am getting: unable to mount read - write .. any ideas how to mount it please? i am managing to connect to it from the ubuntu live cd gnome / nautilus
+2009-12-21T20:46:00.000Z	ikonia	yancho	you need to install the ntfs3g packages to make ntfs read-write
+2009-12-21T20:46:00.000Z	yancho	ikonia	will i be able to do that in a live cd environment ?
+2009-12-21T20:48:00.000Z	yancho	ikonia	couldnt find package .. i did sudo apt-get install ntfs3g
+2009-12-21T20:48:00.000Z	ikonia	yancho	try searching for the package name
+2009-12-21T20:49:00.000Z	ikonia	yancho	use synaptic, the gui is quite easy
+2009-12-21T20:49:00.000Z	ikonia	yancho	you can use the search function to search for ntfs
+2009-12-21T20:51:00.000Z	yancho	ikonia	already the newest version
+2009-12-21T20:58:00.000Z	yancho	ikonia	any other ideas please? i cant get it to mount and i badly need it to backup :(
+2009-12-21T20:58:00.000Z	ikonia	yancho	if you open a terminal and paste the output of "mount" so we can see what options it's currently mounted with
+2009-12-21T20:59:00.000Z	yancho	ikonia	it does not list in the mount
+2009-12-21T21:00:00.000Z	ikonia	yancho	then it's not mounted
+2009-12-21T21:00:00.000Z	yancho	ikonia	but i can browse through the folders from gnome!
+2009-12-21T21:01:00.000Z	ikonia	yancho	then it must be mounted in userspace, use the mouont command to mount it on the system
+2009-12-21T21:02:00.000Z	yancho	ikonia	i am trying this command: sudo mount -t cifs //192.168.100.203/backup_old /media/fileserver -o username=domain/username,password=pass
+2009-12-21T21:03:00.000Z	ikonia	yancho	that's a samba share
+2009-12-21T21:03:00.000Z	yancho	ikonia	yes.. a windows one
+2009-12-21T21:04:00.000Z	ikonia	yancho	so that's  not your ntfs partition, that's a remote windows share
+2009-12-21T21:05:00.000Z	ikonia	yancho	a samba share is very different to a local NTFS disk,

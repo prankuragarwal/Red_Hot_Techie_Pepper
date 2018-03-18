@@ -1,0 +1,21 @@
+2004-10-02T11:37:00.000Z	jm_		so no one wants to try and get sound working for a dell laptop with an i810 chipset?
+2004-10-02T11:38:00.000Z	jm_		whip: its an inspiron 8599
+2004-10-02T11:39:00.000Z	jm_		snd_intel8x0           35468  0
+2004-10-02T11:39:00.000Z	jm_		snd_ac97_codec         67844  1 snd_intel8x0
+2004-10-02T11:40:00.000Z	schweeb	jm_	what hardware are you running? Dell laptop possibly?
+2004-10-02T11:41:00.000Z	schweeb	jm_	edit /etc/modules and remove "lp"
+2004-10-02T11:41:00.000Z	schweeb	jm_	then reboot, and check if lp, parport_pc, or parport are still loaded
+2004-10-02T11:41:00.000Z	schweeb	jm_	which they shouldn't be
+2004-10-02T11:41:00.000Z	schweeb	jm_	if they are, I'll have to tell you how to blacklist them
+2004-10-02T11:42:00.000Z	jm_	schweeb	time to reboot. i'll be back
+2004-10-02T11:45:00.000Z	jm_	schweeb	no lp in /etc/modules
+2004-10-02T11:45:00.000Z	schweeb	jm_	lsmod | grep parport
+2004-10-02T11:46:00.000Z	schweeb	jm_	edit /etc/hotplug/blacklist
+2004-10-02T11:46:00.000Z	schweeb	jm_	add lp, parport, and parport_pc to the end
+2004-10-02T11:54:00.000Z	jm_	schweeb	you are awesp,e
+2004-10-02T11:57:00.000Z	schweeb	jm_	yea, most people don't use the legacy interfaces anymore
+2004-10-02T11:59:00.000Z	jm_	schweeb	while i have your attention, i have another quick question.  my firewire drive wont automount from fstab
+2004-10-02T11:59:00.000Z	jm_	schweeb	that happened under debian woody as well
+2004-10-02T12:00:00.000Z	jm_	schweeb	and how does one go about doing that
+2004-10-02T12:01:00.000Z	jm_	schweeb	ok
+2004-10-02T12:04:00.000Z	jm_	schweeb	alright it came up, now will it come back as that same mount /media/sdb1 every time? 

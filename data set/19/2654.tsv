@@ -1,0 +1,19 @@
+2011-02-22T01:03:00.000Z	khafra		I just installed the latest updates, rebooted, and now 10 seconds after logging in I can no longer access any active elements of Gnome
+2011-02-22T01:03:00.000Z	khafra		Can't move windows around, click on menus, anything
+2011-02-22T01:03:00.000Z	khafra		This is a terminal window I opened before the gui freeze.
+2011-02-22T01:04:00.000Z	ohsix	khafra	try ctrl+alt+f1, then ctrl+alt+f7 to switch to a console and back; some grabs can do that and if you're lucky it'll break it
+2011-02-22T01:05:00.000Z	ohsix	khafra	if you can't switch than that's interesting indeed
+2011-02-22T01:05:00.000Z	khafra	ohsix	I can switch, it just doesn't help
+2011-02-22T01:06:00.000Z	ohsix	khafra	can you login on the terminal and do DISPLAY=:0 xlsclients
+2011-02-22T01:13:00.000Z	khafra	ohsix	This time, the GUI started working again, about 20 seconds after it froze. Still nothing on /var/log/messages
+2011-02-22T01:13:00.000Z	ohsix	khafra	try ~/.xsession-errors
+2011-02-22T01:14:00.000Z	ohsix	khafra	and xlsclients, it shows everything connected and the culprit is somewhere in there
+2011-02-22T01:25:00.000Z	khafra	ohsix	That log provided some interesting googling fodder; thanks.  xlsclients is a good list to have, too
+2011-02-22T01:25:00.000Z	ohsix	khafra	no problem, good luck
+2011-02-22T02:08:00.000Z	khafra	ohsix	Looks like it may very well be flash killing my system. I've put out an open contract on all Adobe VPs, as part of my bugfix attempt
+2011-02-22T02:10:00.000Z	ohsix	khafra	nice, are you using nspluginwrapper or an nvidia card?
+2011-02-22T02:11:00.000Z	khafra	ohsix	nspluginwrapper--but my card is a gefore 9800 GT.  Dunno why Ubuntu chose nspluginwrapper
+2011-02-22T02:11:00.000Z	ohsix	khafra	well because theres no nonbeta flash plugin, you can purge flashplugin-installer and install the plugin manually
+2011-02-22T02:11:00.000Z	ohsix	khafra	if you're not running the 64bit edition then it's not nspluginwrapper
+2011-02-22T02:12:00.000Z	khafra	ohsix	64-bit AMD
+2011-02-22T02:13:00.000Z	ohsix	khafra	yea so uninstall flash from the package manager and get the .so for 64bit flash from adobe, stash it in ~/.mozilla/plugins

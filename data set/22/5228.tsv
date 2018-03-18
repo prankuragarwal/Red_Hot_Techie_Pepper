@@ -1,0 +1,22 @@
+2011-08-08T22:38:00.000Z	chamunks		why does it seem that transferring data via ssh that there is a cap of 3mBps
+2011-08-08T22:39:00.000Z	chamunks		I love seeing the bots stomp out failures...
+2011-08-08T22:41:00.000Z	chamunks		Any ideas as to why my ssh transfers are running so slowly over a gigabit lan?
+2011-08-08T22:42:00.000Z	bsdunix	chamunks	ftp is king for speed if you're doing lots of transfers, it might be worth setting up
+2011-08-08T22:43:00.000Z	chamunks	bsdunix	do you think that I could rsync over ftp?
+2011-08-08T22:43:00.000Z	bsdunix	chamunks	not sure how to implement that
+2011-08-08T22:44:00.000Z	chamunks	bsdunix	because as far as I know rsync is by far the best method of copying something with any sort of assurances that your data is intact.
+2011-08-08T22:45:00.000Z	bsdunix	chamunks	you're correct there about rsync, i'd just use that
+2011-08-08T22:46:00.000Z	chamunks	bsdunix	escott seems to have mentioned something of interest thanks for your attention to my issue :)
+2011-08-08T22:46:00.000Z	bsdunix	chamunks	my experience with rsync was that i could have it copy over only diff between endpoints and resume broken transfer and verify. lovely stuff, indeed. try scp yet?
+2011-08-08T22:47:00.000Z	chamunks	bsdunix	I just have some 500 gigs of very important data to be transferred from a harddrive that was in a bad computer.
+2011-08-08T22:47:00.000Z	chamunks	bsdunix	I really dont want to take any chances and I dont really care for the encryption overhead anyways.
+2011-08-08T22:52:00.000Z	bsdunix	chamunks	here is one of my history uses of rsync; #rsync -avrt --delete rsync://centos.mirrors.tds.net/CentOS/5/os/x86_64 \
+2011-08-08T22:53:00.000Z	chamunks	bsdunix	that looks about right.
+2011-08-08T22:55:00.000Z	chamunks	bsdunix	thank you for a good example now i just need to figure out how freenas handles rsync from the web gui.
+2011-08-08T23:04:00.000Z	bsdunix	chamunks	that's too slow for overhead of encryption to account. you have some major bottleneck elsewhere, provided your definition of fast machines is as i assume...
+2011-08-08T23:06:00.000Z	chamunks	bsdunix	well my main box is a 6core amd 3.7ghz and the freenas box is my old quad core 3ghz and its all pushed over gigabit lan my smb xfers can handle sometimes upto 50mBps
+2011-08-08T23:06:00.000Z	bsdunix	chamunks	army artilley labs made a small c code server/client throughput metrix gathering tool. maybe search for it. quite handy for identifying bottlenecks
+2011-08-08T23:07:00.000Z	chamunks	bsdunix	I really dont know where to begin looking for that tool :S
+2011-08-08T23:07:00.000Z	chamunks	bsdunix	http://www.google.ca/search?sourceid=chrome&ie=UTF-8&q=army+artilley+labs+bottleneck+identifying+tool#hl=en&sa=X&ei=1zNATt6JHM_FsQKhkoE2&ved=0CBkQvwUoAQ&q=army+artillery+labs+bottleneck+identifying+tool&spell=1&bav=on.2,or.r_gc.r_pw.&fp=9eeecae9766a8360&biw=760&bih=825 is basically what I ended up with.
+2011-08-08T23:08:00.000Z	chamunks	bsdunix	sorry for the ugly link google is apparently bad for that.
+2011-08-08T23:13:00.000Z	bsdunix	chamunks	ttcp is what i was referring to. sorry

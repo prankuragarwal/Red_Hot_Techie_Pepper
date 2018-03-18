@@ -1,0 +1,18 @@
+2007-04-26T12:44:00.000Z	hume_		anyone got help? i try to log into mysql as root with phpmyadmin on feisty, but get the error "www-data denied access"
+2007-04-26T12:45:00.000Z	idefixx	hume_	www_data usually is the user the webserver runs with. so im guessing you are not root
+2007-04-26T12:45:00.000Z	hume_	idefixx	yes, well, i type "root" as the user to log in....
+2007-04-26T12:47:00.000Z	hume_	idefixx	seems the browser and phpmyadmin tries to access mysql as www-data..... should it? or should i change a setting somewhere?
+2007-04-26T12:47:00.000Z	idefixx	hume_	check the phpmyadmin.conf or howerver it was called
+2007-04-26T12:48:00.000Z	idefixx	hume_	or for fun just try this 'mysql -u root -p' enter the root pw when asked and see if you get access
+2007-04-26T12:49:00.000Z	hume_	idefixx	it's just an apache.conf, configuring access rules, but no user names
+2007-04-26T12:49:00.000Z	hume_	idefixx	yes, i can access mysql over command line
+2007-04-26T12:50:00.000Z	hume_	idefixx	it's just phpmyadmin that seems to be a problem
+2007-04-26T12:50:00.000Z	idefixx	hume_	phpmyadmin has a directory o its own on your webserver somewhere. in that dir there is a file 'config.inc.php' edit that file to fit your needs.
+2007-04-26T12:50:00.000Z	hume_	idefixx	is there a better channel to ask in? in #mysql noone seems to know about phpmyadmin
+2007-04-26T12:52:00.000Z	idefixx	hume_	that as a phpmyadmin issue a pretty common one.. edit the file i told you and read throug the manuals. its just a matter of setting up the tool. you'll have to get used to doing this anyway if you want anything working on your server ;)
+2007-04-26T12:52:00.000Z	hume_	idefixx	i was used to phpmyadmin working right off installation...
+2007-04-26T12:53:00.000Z	idefixx	hume_	that depends on how you configure authentication.. there are a few ways that can be done - in any case that is a pure phpmyadmin issue.
+2007-04-26T12:55:00.000Z	hume_	idefixx	isn't it an ubuntu-issue, when the ubuntu package does not do it, run the configuration?
+2007-04-26T12:57:00.000Z	idefixx	hume_	well if you look at it like this you might be right. i usually dont install phpmyadmin from packages but if you used and ubuntu package it should work out of the box i guess.
+2007-04-26T13:19:00.000Z	hume_	idefixx	solved it now, it was a bug, 98817
+2007-04-26T13:20:00.000Z	idefixx	hume_	gratz ;)

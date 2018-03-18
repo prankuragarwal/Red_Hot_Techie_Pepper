@@ -1,0 +1,19 @@
+2009-10-11T06:17:00.000Z	GSF1200S		can someone explain to me what an incremental backup does that rsync doesnt?
+2009-10-11T06:18:00.000Z	thedude42	GSF1200S	typically when people talk about incremental backup, they are talking about file diff, whereas rsync is looking at the disk blocks
+2009-10-11T06:22:00.000Z	GSF1200S	thedude42	but both backup the file dont they? If I lose the primary, all my info will still be verbatim stored on the backup, wont it?
+2009-10-11T06:23:00.000Z	thedude42	GSF1200S	no, rsync does some trickery with hard linking to the original file disk blocks
+2009-10-11T06:24:00.000Z	GSF1200S	thedude42	Oh holy crap. So if I lose the primary, nothing on the backup drive will work..
+2009-10-11T06:24:00.000Z	thedude42	GSF1200S	that is my understanding, but with incrimentals the same thing applies but in a different way
+2009-10-11T06:25:00.000Z	thedude42	GSF1200S	in incrimentals, you need the originals as a reference, unless you have them 100% backed up elsewhere
+2009-10-11T06:25:00.000Z	GSF1200S	thedude42	oh ok, makes sense
+2009-10-11T06:36:00.000Z	GSF1200S	thedude42	devdude: Well, I just killed X logged in as root, unmounted the primary drive completely, and all data was still accessible on the backup drive
+2009-10-11T06:36:00.000Z	thedude42	GSF1200S	that is because you had aq full copy on the backup drive
+2009-10-11T06:37:00.000Z	thedude42	GSF1200S	you misunderstood.... rsync's 'snapshots' rely on the original copy, and if those disk bloks from the original copy are gone, so are the 'snapshots'
+2009-10-11T06:38:00.000Z	GSF1200S	thedude42	right. Is there any issue with that? All im trying to do is have a total backup..
+2009-10-11T06:38:00.000Z	thedude42	GSF1200S	your original rsync is the 'total backup'
+2009-10-11T06:38:00.000Z	GSF1200S	thedude42	ahhh, ok. I wasnt aware thats what you were talking about. So using a full backup, I shouldnt have any issues
+2009-10-11T06:39:00.000Z	thedude42	GSF1200S	yeah sorry... when you started talking about incrimental vs rsync, I was thinking you meant somehting like dirvish vs veritas
+2009-10-11T06:40:00.000Z	GSF1200S	thedude42	nah its my bad.. i got confused. I asked some questions in another channel and some dude kept telling me rsync was not good enough and that I needed to look into incremental backups
+2009-10-11T06:41:00.000Z	GSF1200S	thedude42	hence why I came here and was asking. It didnt make sense to me since I thought I was making a full backup
+2009-10-11T06:41:00.000Z	thedude42	GSF1200S	i mean, rsync is as good as copying the files from one place to another..... not sure to what he was referring with regard to 'good enough'
+2009-10-11T06:42:00.000Z	GSF1200S	thedude42	yeah man, thats what ran through my head, and I got all confused thinking I was missing something. He got pissed and told me he didnt have time to teach me linux basics. Wtf? So I thought Id ask...

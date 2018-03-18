@@ -1,0 +1,22 @@
+2010-10-13T20:13:00.000Z	YeTr2		my executable bits on my /bin/chmod seem to be wrong. howto fix?
+2010-10-13T20:13:00.000Z	YeTr2		-rw-r--r-- 1 root root 50836 2010-09-21 14:33 /bin/chmod
+2010-10-13T20:14:00.000Z	tensorpudding	YeTr2	wow, how did that happen?
+2010-10-13T20:14:00.000Z	tensorpudding	YeTr2	the obvious answer of running chmod won't work...
+2010-10-13T20:15:00.000Z	YeTr2	tensorpudding	dunno. even better thou, when I try to change it, I get 'Operation not permitted'
+2010-10-13T20:15:00.000Z	YeTr2	tensorpudding	using a chmod executable I copied from another system
+2010-10-13T20:15:00.000Z	tensorpudding	YeTr2	Are you doing it as root?
+2010-10-13T20:15:00.000Z	YeTr2	tensorpudding	busybox chmod won't change it either.
+2010-10-13T20:15:00.000Z	YeTr2	tensorpudding	yes. yes I am
+2010-10-13T20:16:00.000Z	YeTr2		root@bounce:~# busybox chmod +x /bin/chmod
+2010-10-13T20:16:00.000Z	YeTr2		chmod: /bin/chmod: Operation not permitted
+2010-10-13T20:16:00.000Z	tensorpudding	YeTr2	Oh damn, busybox won't either?
+2010-10-13T20:16:00.000Z	tensorpudding	YeTr2	try 'lsattr /bin/chmod'
+2010-10-13T20:16:00.000Z	YeTr2		----i------------e- /bin/chmod
+2010-10-13T20:17:00.000Z	YeTr2		hmm.. havn't had to play with that in a while
+2010-10-13T20:17:00.000Z	tensorpudding	YeTr2	i is for immutable
+2010-10-13T20:17:00.000Z	tensorpudding	YeTr2	You need to run chattr to remove it
+2010-10-13T20:17:00.000Z	YeTr2		hmm... I wonder how that happened.
+2010-10-13T20:18:00.000Z	YeTr2		yay..
+2010-10-13T20:18:00.000Z	YeTr2		i has chmod again.
+2010-10-13T20:18:00.000Z	YeTr2		heh... havn't played with lsattr in forever.
+2010-10-13T20:18:00.000Z	tensorpudding	YeTr2	it sounds like something malicious attacked your system

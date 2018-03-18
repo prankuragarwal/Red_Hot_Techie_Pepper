@@ -1,0 +1,21 @@
+2007-07-08T12:12:00.000Z	Jack_Sparrow	JDahl	What was the problem again.. sorry I missed it
+2007-07-08T12:13:00.000Z	JDahl	Jack_Sparrow	I shrunk the Windows partition on a laptop to make room for linux at the end of it.  After installation, grub freezes with "Error 18"
+2007-07-08T12:14:00.000Z	Jack_Sparrow	JDahl	Did you have linux before? assuming so if you had grub.. and is that an sata?
+2007-07-08T12:17:00.000Z	JDahl	Jack_Sparrow	I had linux installed on this laptop a few years back,  but did a full Windows XP recovery at one point - now I'd like to put Ubuntu on it again.  I don't think it's a SATA disk, but Ubuntu does label it as /dev/sda. I used grub also at that time (probably Warty install)
+2007-07-08T12:18:00.000Z	Jack_Sparrow	JDahl	HAve you tried to install a new Ubuntu on the unallocated space?
+2007-07-08T12:18:00.000Z	JDahl	Jack_Sparrow	Yes, I just shrunk the windows partition and installed Feisty at the freed space,  and after installation grub freezes with "Error 18"
+2007-07-08T12:18:00.000Z	Jack_Sparrow	JDahl	HAve you run livecd and gone into gparted to look at the partitions?
+2007-07-08T12:19:00.000Z	Jack_Sparrow	JDahl	I would suggest fdisk /mbr and check your windows install first
+2007-07-08T12:19:00.000Z	JDahl	Jack_Sparrow	it looks fine.  A root partition and swap at the end of the disk.
+2007-07-08T12:20:00.000Z	JDahl	Jack_Sparrow	ok, I will try that - I was actually wondering how I'd at least get windows back
+2007-07-08T12:20:00.000Z	Jack_Sparrow		once you know you have a good windows install, we can try to fix grub
+2007-07-08T12:21:00.000Z	Jack_Sparrow	JDahl	I will be having brunch but trying to watch here..
+2007-07-08T12:21:00.000Z	JDahl	Jack_Sparrow	ok - thanks alot
+2007-07-08T12:26:00.000Z	JDahl	Jack_Sparrow	is the command "sudo fdisk /mbr"?   or did you mean the DOS fdisk? (I dont have a dos boot disk)
+2007-07-08T12:27:00.000Z	Jack_Sparrow	JDahl	dos
+2007-07-08T12:46:00.000Z	JDahl	Jack_Sparrow	I will try to get GRUB fixed before recovering Windows.  This is from "sudo fdisk -l": http://paste.ubuntu-nl.org/29130/   and it looks fine, I think
+2007-07-08T12:48:00.000Z	Jack_Sparrow	JDahl	Are you trying to boot to #2 and not using the mbr?
+2007-07-08T12:49:00.000Z	JDahl	Jack_Sparrow	no,  I just want the "regular"...  I actually wondered about the '*'... should I just flag #1 bootable ?
+2007-07-08T12:50:00.000Z	Jack_Sparrow	JDahl	you should be fine.. I wasnt looking at it right..
+2007-07-08T12:55:00.000Z	JDahl	Jack_Sparrow	does this /boot/grub/menu.lst file look alright to you?  http://paste.ubuntu-nl.org/29132/
+2007-07-08T13:00:00.000Z	JDahl	Jack_Sparrow	FYI - more googling seems to reveal the problem:  the thinkpad t40 has a hidden recovery partition that messes up cylinder calculations: http://www.markwilson.co.uk/blog/2006/03/grub-error-18-when-installing-suse-10.htm

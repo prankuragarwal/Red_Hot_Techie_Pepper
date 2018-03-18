@@ -1,0 +1,24 @@
+2007-08-07T09:51:00.000Z	jordan__		Good evening, I have a small network at home with 6 computers running ubuntu.  On each i have thunderbird for email.  Its nice, but each one has to redownload emails.  On the head of my network is a server (gateway).  Is it possible to use this server to download the emails then the 5 clients download from the server as if it were downloading using the standard method?
+2007-08-07T09:52:00.000Z	marginoferror	jordan__	There are a number of ways to deal with this problem.
+2007-08-07T09:52:00.000Z	marginoferror	jordan__	The best is to use IMAP and store your email on your mail server, but not all mail servers support this.
+2007-08-07T09:53:00.000Z	marginoferror	jordan__	So one way to do it is to set your gateway to download mail once via "fetchmail"
+2007-08-07T09:53:00.000Z	marginoferror	jordan__	And then, set up an IMAP server on that gateway.  This is a pain to set up, but it's a good solution.
+2007-08-07T09:54:00.000Z	jordan__	marginoferror	: is there any script or easier way of doing this?
+2007-08-07T09:54:00.000Z	marginoferror	jordan__	Not that I know of.  The easier way to do it is to get a mail server that supports IMAP - there are other ways to do it, but none of them are very easy
+2007-08-07T09:55:00.000Z	jordan__	marginoferror	: is there any how-to or turorial you're aware of on the www
+2007-08-07T09:56:00.000Z	marginoferror	jordan__	Well, there are all sorts of tutorials for installing fetchmail, and then after that there are all sorts of tutorials for installing an IMAP server
+2007-08-07T09:56:00.000Z	marginoferror	jordan__	But I don't know which are the best for Ubuntu in particular, and I haven't done it in years anyway
+2007-08-07T09:56:00.000Z	marginoferror	jordan__	Basically, your options are:
+2007-08-07T09:58:00.000Z	jordan__	marginoferror	: I think in my situation, the remote SSH (with x forwarding) across my network with thunderbird would be the best option
+2007-08-07T09:59:00.000Z	marginoferror	jordan__	Okay.  That is easier to set up.
+2007-08-07T09:59:00.000Z	jordan__	marginoferror	: I am not competent enough to mess with email servers (yet?) but ssh is within my grasp.  thank you for your help
+2007-08-07T09:59:00.000Z	marginoferror	jordan__	Good luck.  Remember that you don't necessarily need SSH forwarding over your home network - you can use X without encryption
+2007-08-07T10:00:00.000Z	marginoferror	jordan__	If this seems insecure, remember that downloading mail via POP is almost always plaintext over the internet anyway =)
+2007-08-07T10:01:00.000Z	marginoferror	jordan__	X itself is meant to be run over a network.  That's how it's designed.  So you can do two things:
+2007-08-07T10:02:00.000Z	marginoferror	jordan__	You can use ssh to launch the command on one machine but displaying on another
+2007-08-07T10:02:00.000Z	marginoferror	jordan__	(I haven't done this in a long time)
+2007-08-07T10:03:00.000Z	jordan__	marginoferror	yes that is what i was talking about
+2007-08-07T10:03:00.000Z	marginoferror	jordan__	Or you can directly log on to that machine remotely.  Ubuntu's login screen supports logging in elsewhere using XDMCP or something - my acronym might be mixed up there
+2007-08-07T10:03:00.000Z	jordan__	marginoferror	i am aware of these methods of x forwarding
+2007-08-07T10:04:00.000Z	marginoferror	jordan__	The difference is that SSH with X forwarding is tunneled through SSH and is encrypted, while using SSH to launch the program doesn't necessarily have to be.  But now that I think about it...  X forwarding is much easier to set up and more robust.  So I guess that is a better option.
+2007-08-07T10:04:00.000Z	marginoferror	jordan__	Okay.  I think I've reached the limit of my knowledge now, but good luck

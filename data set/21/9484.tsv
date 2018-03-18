@@ -1,0 +1,21 @@
+2007-01-27T15:41:00.000Z	walrus		hello, i want to be able to download the latest kernel image optimized for amd-k6
+2007-01-27T15:41:00.000Z	walrus		i can't find the packages on my repos =)
+2007-01-27T15:41:00.000Z	Flannel	walrus	what version are you running? edgy?
+2007-01-27T15:42:00.000Z	Flannel	walrus	linux-generic (probably what you already have installed) is what you want, it's optimized for your processor
+2007-01-27T15:44:00.000Z	Flannel	walrus	they got rid of the different arch specific kernels, -generic determines what opts it can use at runtime
+2007-01-27T15:59:00.000Z	Flannel	walrus	it's not (dfferent file structure) but, /etc/apache2/
+2007-01-27T16:00:00.000Z	Flannel	walrus	depending on what you want, it's either apache2.conf, or in sites-available or in mods-available
+2007-01-27T16:03:00.000Z	Flannel	walrus	eh? what?  What are you trying to... ultimately do?
+2007-01-27T16:06:00.000Z	Flannel	walrus	ubuntuguide is wrong.  It was bad, it got better, apparently it's bad again.  What page are you using?
+2007-01-27T16:08:00.000Z	Flannel	walrus	er... this site doesn't say anything about editing httpd.conf
+2007-01-27T16:15:00.000Z	Flannel	walrus	right, so you want to edit sites-available and change it
+2007-01-27T16:15:00.000Z	Flannel	walrus	or, edit the sit IN sites-available, that is.
+2007-01-27T16:16:00.000Z	Flannel	walrus	httpd.conf is empty... as it should be.
+2007-01-27T16:17:00.000Z	Flannel	walrus	Ubuntu uses a different (more modular) file structure for apache, it makes it a lot easier to handle.
+2007-01-27T16:20:00.000Z	Flannel	walrus	so, most of your config (general config, not modules, not specific hosts) goes in apache2.conf, module stuff goes in the respective conf files in /mods-available/ and site specific stuff goes in the respective sites file in /sites-available/
+2007-01-27T16:20:00.000Z	Flannel	walrus	/sites-available/ then. there's either 000-default or just default as the filename, edit that, and there's a directive in there
+2007-01-27T16:21:00.000Z	Flannel	walrus	it also means you can have separate 'sites' that behave differently and stuff (on separate ports, or whatever)
+2007-01-27T16:23:00.000Z	Flannel	walrus	open up ... either /etc/apache2/sites-available/000-default, or whatever that last filename is (might be just plain default)
+2007-01-27T16:25:00.000Z	Flannel	walrus	yeah.  and to restart -- sudo /etc/init.d/apache2 restart
+2007-01-27T16:28:00.000Z	Flannel	walrus	I use svn, just plain svn
+2007-01-27T16:31:00.000Z	Flannel	walrus	I'm sure there are.  You can search for them in synaptic, I'm not up on GUI svn clients.

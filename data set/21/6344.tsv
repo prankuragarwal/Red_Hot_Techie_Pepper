@@ -1,0 +1,21 @@
+2008-01-29T23:06:00.000Z	mintsoup		Could someone please help me with this? I have a custom program that I want to run from the console frequently, but I don't want to have to type the path name every time; how can I set it so that when I type the program name in bash the program will run?
+2008-01-29T23:06:00.000Z	usser	mintsoup	put a symbolic link into /usr/bin
+2008-01-29T23:07:00.000Z	usser	mintsoup	ie cd /usr/bin
+2008-01-29T23:07:00.000Z	usser	mintsoup	then sudo ln -s /path/to/program
+2008-11-09T05:34:00.000Z	usser	mintsoup	are your other machines windows?
+2008-11-09T05:34:00.000Z	usser	mintsoup	there was no problem theres just a little tweaking u have to do
+2008-11-09T05:35:00.000Z	usser	mintsoup	for that you have to have a dns server setup on your lan
+2008-11-09T05:36:00.000Z	mintsoup	usser	what does that entail?  .. i have ssh clients installed on all my windows machines and I can ssh into the server from them just fine.. why can't i ssh to my server from this computer?
+2008-11-09T05:36:00.000Z	usser	mintsoup	aha i see.
+2008-11-09T05:37:00.000Z	usser	mintsoup	in that case wins does name resolution
+2008-11-09T05:37:00.000Z	usser	mintsoup	you need a winbind package installed on linux client for it to be able to use wins
+2008-11-09T05:37:00.000Z	usser	mintsoup	ie sudo apt-get install winbind
+2008-11-09T05:37:00.000Z	usser	mintsoup	then u have to edit /etc/nsswitch.conf
+2008-11-09T05:38:00.000Z	usser	mintsoup	so that it reads something like that http://pastebin.com/f21a2ac01
+2008-11-09T05:39:00.000Z	usser	mintsoup	you need to basically add wins after files in those two lines
+2008-11-09T05:39:00.000Z	mintsoup	usser	ok lemme do that real fast and see if it makes a difference
+2008-11-09T05:41:00.000Z	mintsoup	usser	is there a service i should restart after making the change to nsswitch.conf?
+2008-11-09T05:41:00.000Z	usser	mintsoup	sudo /etc/init.d/winbind restart && sudo dhclient
+2008-11-09T05:41:00.000Z	usser	mintsoup	dhclient if u use dhcp
+2008-11-09T05:43:00.000Z	mintsoup	usser	thanks that did it!
+2008-11-09T05:43:00.000Z	usser	mintsoup	no problem

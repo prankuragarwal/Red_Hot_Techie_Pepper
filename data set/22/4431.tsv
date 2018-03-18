@@ -1,0 +1,22 @@
+2008-01-28T17:41:00.000Z	don_		I try it again: I'm trying to sort out the source of my problem that smbfs mounts are quicker than cifs-mounts.. on the way i found that mii-tool and ethtool don't say the same (as i understand it)
+2008-01-28T17:42:00.000Z	cizarro	don_	what is your question?
+2008-01-28T17:43:00.000Z	cizarro	don_	ethtool and mii-tool use different interface to the kernel. ethtool = more modern (netlink), mii-tool = obsolete. depending on NIC drivers, one or other will work, ethtool being the more implemented one nowadays.
+2008-01-28T17:44:00.000Z	don_	cizarro	ok, so it could be possible, that mii-tool doesn't recognise a 1gb-ethernet ? it says that it negociated on 100-FullDuplex while ethtool says "speed: 1000Mb/s"
+2008-01-28T17:45:00.000Z	cizarro	don_	yes
+2008-01-28T17:45:00.000Z	cizarro	don_	if ethtool works, use it. forget about mii-tool.
+2008-01-28T17:46:00.000Z	don_	cizarro	ok thanks
+2008-01-28T17:46:00.000Z	don_	cizarro	do you know causes for a different speed between smbfs and cifs mounts?
+2008-01-28T17:47:00.000Z	cizarro	don_	differernt protocols more or less. smbfs uses NetBIOS over TCP/IP. CIFS uses SMB directly.
+2008-01-28T17:47:00.000Z	cizarro	don_	also different negotiation and all kinds of other stuff.
+2008-01-28T17:47:00.000Z	cizarro	don_	cifs mounts quickly here though. you might check your network traffic to debug
+2008-01-28T17:47:00.000Z	don_		ciizarro: yeah, the mounting itself is no problem
+2008-01-28T17:49:00.000Z	don_	cizarro	but the transfers.. other way round, if i get a file to a windows -machine (working on it) it's very quick. so i guess the problem must be cifs..?
+2008-01-28T17:51:00.000Z	cizarro	don_	you didn't mention anything about transfers being slow. only mounts.
+2008-01-28T17:51:00.000Z	cizarro	don_	there is a bug in win xp >= TCP/IP stack in window scaling option negotation, you might be hitting that
+2008-01-28T17:51:00.000Z	don_	cizarro	sorry, i meant the transfers from these mounts.. the mounting itself goes well
+2008-01-28T17:52:00.000Z	cizarro	don_	what do you mean by "slow" then?
+2008-01-28T17:52:00.000Z	don_		i'm not able to watch a movie within a cifs-mounted directory, but with smbfs it works without freezing every five secs
+2008-01-28T17:53:00.000Z	don_		that's slow :)
+2008-01-28T17:55:00.000Z	don_	cizarro	so basically: a cifs-mounted directory is much slower than a smbfs-mounted directory.. and i don't have any clue where to look for the problem
+2008-01-28T17:56:00.000Z	cizarro	don_	quite busy now, but I'd start with google if I was you. something like "cifs much slower than smbfs when transffering data to windows from linux".
+2008-01-28T17:57:00.000Z	don_	cizarro	if i hadn't done that, i wouldnt be here :D

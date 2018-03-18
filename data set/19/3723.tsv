@@ -1,0 +1,19 @@
+2011-03-19T07:07:00.000Z	mcurran		anyone wanna help me setup a routing bridge properly between two interfaces and then share the connection?  I'm trying to setup a single master/node cluster with two intrepid machines and mpich, but I need to get this sorted first.  I'm using wlan0 as my master's connection and want to bridge eth0 to that, and then connect the second computer (node) directly into the eth0 <> eth0
+2011-03-19T07:07:00.000Z	mcurran		doubt it's related, they'd either be blocked (torrent ports) or not.
+2011-03-19T07:08:00.000Z	mcurran		yeah install the grub to the linux partition and then set it active instead of overwriting your mb
+2011-03-19T07:08:00.000Z	mcurran		r
+2011-03-19T07:09:00.000Z	edbian	mcurran	That is not right.  Grub must overwrite the MBR in order to use it to choose which OS to boot.
+2011-03-19T07:10:00.000Z	edbian	mcurran	the MBR currently has the windows bootloader in it.  The windows bootloader only boots windows.  If you install linux you must write in the HDDs mbr to boot it.
+2011-03-19T07:12:00.000Z	edbian	mcurran	You use grub in the MBR to boot linux.  You cannot use the windows bootloader in the MBR to boot linux.
+2011-03-19T07:12:00.000Z	edbian	mcurran	The MBR does not load things.  a boot loader in the MBR loads things.
+2011-03-19T07:17:00.000Z	edbian	mcurran	I just found a blog describing it.  I'm sorry I argued with you before.  You're right.
+2011-03-27T09:02:00.000Z	edbian	mcurran	broadcom... 4312 ?
+2011-03-27T09:04:00.000Z	edbian	mcurran	?
+2011-05-14T19:24:00.000Z	edbian	mcurran	What is 'the desktop entry' ?
+2011-05-14T19:24:00.000Z	edbian	mcurran	One place you might look is power button -> system-settings->startup apps
+2011-05-14T19:25:00.000Z	edbian	mcurran	Please explain what you're talking about.
+2011-05-14T19:26:00.000Z	edbian	mcurran	Are you logging in as root?
+2011-05-14T19:26:00.000Z	edbian	mcurran	open a terminal and type whoami
+2011-05-14T19:27:00.000Z	edbian	mcurran	alright.  Running as root is really bad.  to change the desktop folder  open gconf-editor (int a terminal)
+2011-05-14T19:28:00.000Z	edbian	mcurran	apps ->nautilus->preferences
+2011-05-14T19:29:00.000Z	edbian	mcurran	There is a 'use home folder as desktop'  I'm still looking for better customization. However root's homefolder is /root/

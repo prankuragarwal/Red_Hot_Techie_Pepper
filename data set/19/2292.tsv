@@ -1,0 +1,19 @@
+2010-05-08T09:42:00.000Z	archnagle		but it probably just does something lame like "oh can't swapoff, not enough memory" :P
+2010-05-08T09:42:00.000Z	greezmunkey	archnagle	logging into it now...
+2010-05-08T09:38:00.000Z	greezmunkey	archnagle	what if there's not enough room?
+2010-05-08T09:38:00.000Z	archnagle	greezmunkey	/ Fudge, not sure what happens if your swapoff without enough memory, kernel may start killing processes with out-of-memory errors
+2010-05-08T09:39:00.000Z	greezmunkey	archnagle	it'd be an interesting experiment
+2010-05-08T09:40:00.000Z	archnagle	greezmunkey	yeah, heh, except usually I see high swap on production servers where letting the kernel murder my poor innocent applicatiosn would be Bad (tm)
+2010-05-08T09:41:00.000Z	greezmunkey	archnagle	I have a low mem Ubox here booting it now, I want to see if it crashes...
+2010-05-08T09:41:00.000Z	archnagle	greezmunkey	let me know what happens ;)  5$ says kernel murders processes at random
+2010-05-08T09:41:00.000Z	greezmunkey	archnagle	I have a paypal account ;)
+2010-05-08T09:43:00.000Z	greezmunkey	archnagle	the test box is just plain jane 10.04 with no toys installed.
+2010-05-08T09:45:00.000Z	greezmunkey	archnagle	issuing sudo swapoff -a, top shows 6.8MB MEM free, 27MB in swap...
+2010-05-08T09:45:00.000Z	archnagle	greezmunkey	*drum roll*
+2010-05-08T09:46:00.000Z	greezmunkey	archnagle	holy manhole covers Batman, they went into the sewers...It's still running, 0 swap !!
+2010-05-08T09:47:00.000Z	archnagle	greezmunkey	nicely done
+2010-05-08T09:48:00.000Z	greezmunkey	archnagle	me?
+2010-05-08T09:48:00.000Z	archnagle	greezmunkey	yeah, from your swapoff there, out of memory errors or anything?
+2010-05-08T09:49:00.000Z	greezmunkey	archnagle	it's taking a looooong time to load Nautilus :)
+2010-05-08T09:49:00.000Z	greezmunkey	archnagle	but it did it
+2010-05-08T10:03:00.000Z	greezmunkey	archnagle	It looks like the system automatically "niced" a lot of the running processes, and I noticed the "cached" readout increase significantly. Reading the top manpage about it now...

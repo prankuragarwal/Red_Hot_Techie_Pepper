@@ -1,0 +1,23 @@
+2011-12-10T21:38:00.000Z	meadhikari		please help my ssh script does not works while on cron its ""ssh -i ~/.ssh/id_rsa.pub b@a.org"" it works without password when executed alone
+2011-12-10T21:40:00.000Z	pfifo	meadhikari	it might be because cron runs without the usual enviroment variables that your user runs as
+2011-12-10T21:41:00.000Z	meadhikari	pfifo	i gave the input file
+2011-12-10T21:41:00.000Z	meadhikari	pfifo	what other environment is required?
+2011-12-10T21:41:00.000Z	pfifo	meadhikari	cron dosent have a $HOME set, so ~ wont work
+2011-12-10T21:42:00.000Z	meadhikari	pfifo	/home/username/.ssh is also not working :(
+2011-12-10T21:42:00.000Z	pfifo	meadhikari	then perhaps ssh requires an interactive session
+2011-12-10T21:43:00.000Z	meadhikari	pfifo	no, it is not interactive no password or a passphrase needs to be provided
+2011-12-10T21:43:00.000Z	pfifo	meadhikari	exactly
+2011-12-10T21:44:00.000Z	meadhikari	pfifo	what you mean by that?
+2011-12-10T21:44:00.000Z	pfifo	meadhikari	i mean ssh most likely REQURES an interactive shell
+2011-12-10T21:45:00.000Z	meadhikari	pfifo	and now how to prevent that
+2011-12-10T21:45:00.000Z	pfifo	meadhikari	why not just put the real script into the crontab of the target computer?
+2011-12-10T21:47:00.000Z	meadhikari	pfifo	actually i wanted to create a reverse port forwarding
+2011-12-10T21:48:00.000Z	meadhikari	pfifo	ssh -i ~/.ssh/id -f -N -q -R 2222:localhost:22 my_name@remote.example.com is my script
+2011-12-10T21:49:00.000Z	pfifo	meadhikari	that will never work in cron, you should be putting that in /etc/rc.local
+2011-12-10T21:49:00.000Z	meadhikari	pfifo	 i do not have root access to the system, is their any work around?
+2011-12-10T21:50:00.000Z	pfifo	meadhikari	add it to your users startup scripts
+2011-12-10T21:50:00.000Z	meadhikari	pfifo	like @restart in cron? u just said it wont work on cron right?
+2011-12-10T21:51:00.000Z	pfifo	meadhikari	right it wont work in cron, add it to xsession or the startup applications
+2011-12-10T21:52:00.000Z	meadhikari	pfifo	i can only ssh to the system from inside the lan
+2011-12-10T21:53:00.000Z	pfifo	meadhikari	and?
+2011-12-10T21:53:00.000Z	meadhikari	pfifo	i just wanted to ssh to that computer from outside the lan

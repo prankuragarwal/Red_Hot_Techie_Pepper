@@ -1,0 +1,24 @@
+2007-12-02T13:24:00.000Z	Hanyou		Hello, I'm using a ATI Radeon x700 Mobility Graphics card and when I use "glxinfo | grep -i direct" I get thre return of "direct rendering: No (If you want to find out why, try setting LIBGL_DEBUG=verbose)" I'm currently trying to get OpenGL to work in order to play a game in Wine. Any help with this would be greatly appreciated:)
+2007-12-02T13:24:00.000Z	scguy318	Hanyou	what Xorg module are you using?
+2007-12-02T13:24:00.000Z	scguy318	Hanyou	you probably should be using ati module
+2007-12-02T13:24:00.000Z	scguy318	Hanyou	peek in your xorg.conf
+2007-12-02T13:25:00.000Z	scguy318	Hanyou	/etc/X11/xorg.conf
+2007-12-02T13:26:00.000Z	Hanyou	scguy318	I have this in my xorg.conf http://pastebin.com/m669d7404
+2007-12-02T13:27:00.000Z	scguy318	Hanyou	that's it?
+2007-12-02T13:27:00.000Z	scguy318	Hanyou	are you missing something?
+2007-12-02T13:28:00.000Z	Hanyou	scguy318	Sorry it skipped http://pastebin.com/m5caf808c
+2007-12-02T13:31:00.000Z	scguy318	Hanyou	using fglrx?
+2007-12-02T13:31:00.000Z	scguy318	Hanyou	I was under the impression that fglrx was not required for legacy chipsets
+2007-12-02T13:32:00.000Z	Hanyou	scguy318	I have no idea I'm rather new to the whole Linux thing so I'm drwaing a blank.
+2007-12-02T13:33:00.000Z	scguy318	Hanyou	you could try replacing the fglrx line here:         Driver          "fglrx" <--- and change to Driver       "vesa"
+2007-12-02T13:33:00.000Z	scguy318	Hanyou	I mean
+2007-12-02T13:33:00.000Z	scguy318	Hanyou	ati
+2007-12-02T13:33:00.000Z	scguy318	Hanyou	not vesa,
+2007-12-02T13:33:00.000Z	scguy318	Hanyou	make sure to backup your /etc/X11/xorg.conf and make the changes, then restart X
+2007-12-02T13:34:00.000Z	scguy318	Hanyou	since xorg.conf is owned by user/group root, you'll have to launch an editor with root permission like this: gksudo gedit /etc/X11/xorg.conf
+2007-12-02T13:36:00.000Z	scguy318	Hanyou	if when you restart X, it should fail to start, then you should go to recovery console and invoke the command
+2007-12-02T13:36:00.000Z	scguy318	Hanyou	cp /etc/X11/nameoftheback /etc/X11/xorg.conf
+2007-12-02T13:36:00.000Z	scguy318	Hanyou	then reboot and start normally
+2007-12-02T13:44:00.000Z	scguy318	Hanyou	Ctrl-Alt-Backspace, remember what I said
+2007-12-02T13:44:00.000Z	Hanyou	scguy318	It's backed up
+2007-12-02T13:45:00.000Z	scguy318	Hanyou	check yer DRI

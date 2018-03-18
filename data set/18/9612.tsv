@@ -1,0 +1,18 @@
+2007-09-19T05:55:00.000Z	thinman1189		can anyone help me with uninstalling clamav and vmware? I get these error messages E: vmware-player: subprocess post-installation script returned error exit status 1
+2007-09-19T05:55:00.000Z	thinman1189		E: clamav-base: subprocess post-installation script returned error exit status 1
+2007-09-19T05:55:00.000Z	thinman1189		E: clamav-freshclam: dependency problems - leaving unconfigured
+2007-09-19T05:55:00.000Z	thinman1189		E: clamav: dependency problems - leaving unconfigured
+2007-09-19T05:56:00.000Z	LjL	thinman1189	try first "sudo apt-get --reinstall install vmware-player clamav-base"
+2007-09-19T05:56:00.000Z	thinman1189	LjL	: thanks, haven't been here in a while and I've forgotten all of the commands.
+2007-09-19T05:59:00.000Z	thinman1189	LjL	: I'm getting the same error messages.
+2007-09-19T06:01:00.000Z	LjL	thinman1189	edit /var/lib/dpkg/info/clamav-base.postinst (if there is such a file), and put a line saying  exit 0  right at the beginning of it, but *after* the line that says #!/bin/sh
+2007-09-19T06:01:00.000Z	thinman1189	LjL	: I'll try that, one sec.
+2007-09-19T06:13:00.000Z	thinman1189	LjL	: says I don't have permission to save the file.
+2007-09-19T06:13:00.000Z	LjL	thinman1189	you need to be root to edit it, use "gksudo gedit filename"
+2007-09-19T06:15:00.000Z	thinman1189	LjL	...Says Authentication Rejected....
+2007-09-19T06:18:00.000Z	thinman1189	LjL	: now I can open the file but it shows as empty, when I know that it exists.
+2007-09-19T06:19:00.000Z	LjL	thinman1189	it showed the contents before?
+2007-09-19T06:20:00.000Z	thinman1189	LjL	: it showed the contents if I went places>file system>var>etc but not if I called from Terminal.
+2007-09-19T06:26:00.000Z	thinman1189	LjL	: I just want to uninstall both clamav and vmware. would "rm -f <file name>" work...?
+2007-09-19T06:26:00.000Z	LjL	thinman1189	no
+2007-09-19T06:26:00.000Z	LjL	thinman1189	you must have mistyped something in the terminal, if it was shown in nautilus

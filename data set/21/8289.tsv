@@ -1,0 +1,21 @@
+2006-07-14T05:42:00.000Z	wizzlefish		for some reason, when I do "apt-get install kubuntu-desktop," it wants me to remove "ubuntu-desktop" - why is this - I want KDE, without getting rid of GNOME
+2006-07-14T05:44:00.000Z	wizzlefish		how do I get KDE on Ubuntu?
+2006-07-14T05:45:00.000Z	wizzlefish		AndCooll_: when I do that, it tells me I have to remove ubuntu-desktop
+2006-07-14T05:46:00.000Z	ardchoille	wizzlefish	ubuntu-desktop is just a meta package, it pulls in all deps for the ubuntu desktop. the ubuntu-desktop package is safe to remove
+2006-07-14T05:47:00.000Z	wizzlefish	ardchoille	when I install, it gives me a list of about 100 dependencies - why doesn't it just install these automatically?
+2006-07-14T05:48:00.000Z	ardchoille	wizzlefish	because kubuntu-desktop is also a meta package, it pulls in the deps for a nice kde desktop
+2006-07-14T05:48:00.000Z	wizzlefish	ardchoille	well it is not doing that right now - Synaptic is only installing a few packages that KDE depends on, and won't install the other dependencies
+2006-07-14T05:56:00.000Z	ardchoille	wizzlefish	I install kde with sudo apt-get install kubuntu-desktop
+2006-07-14T06:09:00.000Z	ardchoille	wizzlefish	Yes, open a term and do: sudo apt-get install kubuntu-desktop
+2006-07-14T06:12:00.000Z	ardchoille	wizzlefish	That's what the kubuntu-desktop meta package was designed for.. so you wouldn't have to manually type in all the deps
+2006-07-14T06:13:00.000Z	ardchoille	wizzlefish	What happens when you do sudo apt-get install kubuntu-desktop?
+2006-07-14T06:15:00.000Z	ardchoille	wizzlefish	Are you certain you don't already have kubuntu-desktop?
+2006-07-14T06:16:00.000Z	wizzlefish	ardchoille	positive
+2006-07-14T06:47:00.000Z	wizzlefish	ardchoille	how would I test if I have kubuntu-desktop or not?
+2006-07-14T06:48:00.000Z	ardchoille	wizzlefish	That's a good question. I suppose you could log out and see if KDE is in the gdm list of desktops.. I think it is the "Options" button
+2006-07-14T06:49:00.000Z	wizzlefish	ardchoille	nope, not on the list
+2006-07-14T06:50:00.000Z	ardchoille	wizzlefish	try this: dpkg -l kubuntu-desktop
+2006-07-14T06:51:00.000Z	wizzlefish	ardchoille	not found
+2006-07-14T06:51:00.000Z	ardchoille	wizzlefish	Then it's not installed.
+2006-07-14T06:52:00.000Z	wizzlefish	ardchoille	I tried typing in "sudo apt-get install kubuntu-desktop adept (etc.)" to get all the dependencies, and it still didn't work - a longer list of dependencies
+2006-07-14T07:06:00.000Z	wizzlefish	ardchoille	KDE is installed - I used aptitude instead of apt-get and it's all good

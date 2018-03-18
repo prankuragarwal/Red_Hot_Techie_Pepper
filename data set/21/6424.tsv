@@ -1,0 +1,21 @@
+2008-03-28T06:24:00.000Z	mrpoundsign		please can someone help me downgrade from mysql-server 5.0.45 to 5.0.38?
+2008-03-28T06:24:00.000Z	nerdygirl_ellie	mrpoundsign	I can help.
+2008-03-28T06:25:00.000Z	mrpoundsign	nerdygirl_ellie	sweet. my innodb tables are hosed. I need to back out so I can back them up and then upgrade again and restore them. It's just one database.
+2008-03-28T06:26:00.000Z	nerdygirl_ellie	mrpoundsign	 open synaptic, search for mysql-server go to package -> force-version
+2008-03-28T06:27:00.000Z	mrpoundsign	nerdygirl_ellie	heh heh... I am running server edition.
+2008-03-28T06:27:00.000Z	nerdygirl_ellie	mrpoundsign	did you run the check table* commands.  * - I think that's what it is called.
+2008-03-28T06:27:00.000Z	mrpoundsign	nerdygirl_ellie	yes. and that's where it finds the errors.
+2008-03-28T06:29:00.000Z	nerdygirl_ellie	mrpoundsign	I _think_ dselect can let you select packages by version from the cli, but that is a stab in the dark.
+2008-03-28T06:30:00.000Z	mrpoundsign	nerdygirl_ellie	yeah, was just going through that. I have remote X11, wondering if I can get synaptic working remotely...
+2008-03-28T06:36:00.000Z	mrpoundsign	nerdygirl_ellie	<crosses fingers> downgrading now.
+2008-03-28T06:47:00.000Z	mrpoundsign	nerdygirl_ellie	well, that didn't help. crappers.
+2008-03-28T06:47:00.000Z	nerdygirl_ellie	mrpoundsign	I didn't think it would, you have to fix the busted tables.
+2008-03-28T06:47:00.000Z	nerdygirl_ellie	mrpoundsign	mysql.org has some good resources.... Sorry I can't help more.
+2008-03-28T06:48:00.000Z	mrpoundsign	nerdygirl_ellie	indeed. But everything I have found had to do with setting changes to my.cnf that I never did... and the my.cnf in the mysql-common 5.0.38 is exactly the same. repair table throws up the same error.
+2008-03-28T07:03:00.000Z	nerdygirl_ellie	mrpoundsign	would you be willing to let me ssh into your server?  I may be able to help.
+2008-03-28T07:03:00.000Z	mrpoundsign	nerdygirl_ellie	fraid not :)
+2008-03-28T07:00:00.000Z	mrpoundsign	nerdygirl_ellie	do you know if there's an easy way to see all the versions of a package that have been installed on this system?
+2008-03-28T07:01:00.000Z	nerdygirl_ellie	mrpoundsign	that are installed, or have been installed, ever?
+2008-03-28T07:02:00.000Z	mrpoundsign	nerdygirl_ellie	just want to see what the last installed version was. :) or if it backed up my my.cnf before overwriting it.
+2008-03-28T07:05:00.000Z	nerdygirl_ellie	mrpoundsign	understood.  If I were you, I would stop mysql, copy the /var/lib/mysql files somewhere else, and then copy your tables back in one at a time until you get to the one that doesn't work.   Then that one table you can plod around with and you know you'll have a minimally broken version as a backup to fall back to if you really broke it.
+2008-03-28T07:06:00.000Z	mrpoundsign	nerdygirl_ellie	yeah, I can get a list of busted tables. I think it's all the innodb ones rt created.

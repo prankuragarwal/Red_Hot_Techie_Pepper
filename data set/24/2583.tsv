@@ -1,0 +1,24 @@
+2008-11-02T21:34:00.000Z	roak1974		Hello all just made the switch and have my wifi working and all seems well. i have a question, as of right now i have to manually run my wifi to get it running how can i set a script or something to do this during bootup?
+2008-11-02T21:35:00.000Z	roak1974		i have to cd to directory then use sudo modprobe ath_pci then (enter passwaord) then sudo wlan_scan_sta
+2008-11-02T21:35:00.000Z	roak1974		then wifi works
+2008-11-02T21:36:00.000Z	velko	roak1974	put "ath_pci" as a new line in /etc/modules and restart. see if it does any good
+2008-11-02T21:41:00.000Z	velko	roak1974	yes. just put all commands you have to execute in a text file (replacing sudo with gksudo), make this file executable and execute it
+2008-11-02T21:42:00.000Z	velko	roak1974	the first line in this file should be "#!/bin/sh" without the quotes
+2008-11-02T21:49:00.000Z	roak1974	velko	im such a noob how do make the text file an exe?
+2008-11-02T21:49:00.000Z	velko	roak1974	right click on the file, go to the permissions tab and make it executable (for yor user)
+2008-11-02T21:55:00.000Z	roak1974	velko	im sorry but i still had to go to terminal then start manually
+2008-11-02T21:57:00.000Z	velko	roak1974	can you please pastebin your scirpt?
+2008-11-02T22:00:00.000Z	velko	roak1974	just a sec
+2008-11-02T22:02:00.000Z	velko	roak1974	nope - several problems. a question first: can you execute "sudo modprobe ath_pci" without error if you are not in the folder "wifi"?
+2008-11-02T22:03:00.000Z	velko	roak1974	ok. the path to this folder should be absolute, like /home/roak/wifi and not just wifi
+2008-11-02T22:04:00.000Z	velko	roak1974	you better give me the whole path and i'll pastebin the correct script for you
+2008-11-02T22:08:00.000Z	velko	roak1974	and the best solution would be to put these modules in the file /etc/modules so they will be loaded when you boot your computer. for this to work they have to be in a special folder recognized by your kernel (you have to be able to execute the modprobe command without switching directory)
+2008-11-02T22:08:00.000Z	velko	roak1974	you still there?
+2008-11-02T22:09:00.000Z	velko	roak1974	will you give me the full path to the direcotry "wifi"?
+2008-11-02T22:10:00.000Z	velko	roak1974	http://paste.ubuntu.com/66334/
+2008-11-02T22:11:00.000Z	roak1974	velko	can i PM u?
+2008-11-02T22:11:00.000Z	velko	roak1974	ok
+2008-11-02T22:20:00.000Z	roak1974	velko	no go
+2008-11-02T22:20:00.000Z	velko	roak1974	what happens?
+2008-11-02T22:21:00.000Z	velko	roak1974	try to execute the script in a terminal and tell me what output do you see
+2008-11-02T22:38:00.000Z	roak1974	velko	THANK YOU it works now just have to enter my password!

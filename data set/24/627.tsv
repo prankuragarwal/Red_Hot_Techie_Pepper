@@ -1,0 +1,24 @@
+2012-02-23T22:04:00.000Z	viktor133		seryth, do i need the amd64 or i386 version?
+2012-02-23T22:05:00.000Z	viktor133		seryth, 32-bit, pentium 4, 2 cores
+2012-02-23T22:07:00.000Z	viktor133		seryth, i'm actually not sure about the 32bit, it originally ran with windoze x64?
+2012-02-23T22:07:00.000Z	viktor133		xp
+2012-02-23T22:08:00.000Z	escott	viktor133	if you are in linux right now "grep flags /proc/cpuinfo" and look for "lm"
+2012-02-23T22:09:00.000Z	viktor133	escott	haven't succesfully installed linux yet
+2012-02-24T00:08:00.000Z	escott	viktor133	there could be other issues, but it wouldnt be the 32bit vs 64bit
+2012-02-24T00:09:00.000Z	viktor133	escott	i installed windoze xp 32-bit before on it, which showed two processor cores of 3,2 GHz, is it possible that this is the in fact one 64-bit core of the same clock speed?
+2012-02-24T00:13:00.000Z	escott	viktor133	no. the only reason i can think you would only see one cpu is if you were not running smp. there are some boot flags acpi issues that can lead to up on smp capable hardware. !paste us your dmesg
+2012-02-24T00:16:00.000Z	viktor133	escott	(repeat, had the name wrong), i don't have a dmesg, i'm still trying to get that box to work, i'm just trying to be sure that it has a 64-bit in stead of a 32-bit as i first assumed, thus the question if that could make me see 2 cores in stead of one on a 32-bit win xp
+2012-02-24T00:16:00.000Z	escott	viktor133	you likely have a one core SMP HyperThreading system. so it should always report two cpus, but there are acpi issues that can cause the kernel to be unable to bring up the other cpu
+2012-02-24T00:17:00.000Z	escott	viktor133	http://www.linuxquestions.org/questions/linux-kernel-70/smp-kernel-and-acpi%3Doff-614311/
+2012-02-24T00:21:00.000Z	viktor133	escott	how would you be able to (if at all) found out more exactly the specs of your hardware if you don't have a working operating sys? srry if this is a far-fetched question
+2012-02-24T00:22:00.000Z	escott	viktor133	well you have a system that does work its just older
+2012-02-24T00:23:00.000Z	viktor133	escott	uhm yes, but untill i found out what i can install on it, it doesn't
+2012-02-24T00:26:00.000Z	escott	viktor133	32bit should always work. so you should be able to boot a 32bit at least to cli and can then look at /proc/cpuinfo
+2012-02-24T00:28:00.000Z	viktor133	escott	can i go to cli with an install-cd?
+2012-02-24T00:28:00.000Z	escott	viktor133	i understand you aren't getting a full gui boot but if you can get to a rescue terminal on the install cd you can figure some things out
+2012-02-24T00:46:00.000Z	viktor133	escott	is "clflush size" the instruction set size of your cpu?
+2012-02-24T00:47:00.000Z	escott	viktor133	if it is 64bit it will list "lm" in flags. clflush size is the size of a cache line flush
+2012-02-24T00:49:00.000Z	viktor133	escott	lm in flags, so i best install the amd64 version?
+2012-02-24T00:50:00.000Z	escott	viktor133	means you are 64bit capable. whether or not that is !best i dont know
+2012-02-24T00:51:00.000Z	viktor133	escott	ok thnks
+2012-02-24T01:03:00.000Z	escott	viktor133	with an older p4 i think thats reasonable

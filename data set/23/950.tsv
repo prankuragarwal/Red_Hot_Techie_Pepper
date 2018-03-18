@@ -1,0 +1,23 @@
+2010-11-10T15:00:00.000Z	randomparticle		keyboard not working in initramfs environment. hid_apple compiled in, 2.6.36, efi grub2 boot, kernel arguments (video=efifb noefi break=top)
+2010-11-10T15:00:00.000Z	randomparticle		suggestions welcome, thanks
+2010-11-10T15:02:00.000Z	Jordan_U	randomparticle	Are you booting a 64 bit kernel, and does your hardware use 64 bit EFI?
+2010-11-10T15:03:00.000Z	randomparticle	Jordan_U	yes to both, thanks
+2010-11-10T15:04:00.000Z	Jordan_U	randomparticle	Try booting without the noefi parameter.
+2010-11-10T15:05:00.000Z	Jordan_U		!upgrade | ubuntu
+2010-11-10T15:05:00.000Z	randomparticle	Jordan_U	could do. i have tried video=efifb irqpoll acpi=force before and the screen went blank
+2010-11-10T15:05:00.000Z	randomparticle		but perhaps that's not caused by the missing noefi
+2010-11-10T15:05:00.000Z	Jordan_U	randomparticle	I assume you've tried booting with no extra kernel parameters?
+2010-11-10T15:06:00.000Z	randomparticle		there's no video without video=efifb
+2010-11-10T15:06:00.000Z	randomparticle		unfortunately, there are millions of different kernel argument permutations :)
+2010-11-10T15:09:00.000Z	randomparticle		might it be a problem that the keyboard is not directly attached to the machine?
+2010-11-10T15:09:00.000Z	randomparticle		it's connected to a USB hub in the monitor
+2010-11-10T15:09:00.000Z	randomparticle		works ok in the EFI environment though
+2010-11-10T15:10:00.000Z	Jordan_U	randomparticle	How is it attatched?
+2010-11-10T15:11:00.000Z	randomparticle		USB cable to Apple Cinema Display USB port, ACD to computer
+2010-11-10T15:11:00.000Z	randomparticle		i think it's just a normal USB hub in the display
+2010-11-10T15:11:00.000Z	randomparticle		i would attach directly to the machine, but the cable won't stretch that far
+2010-11-10T15:13:00.000Z	Jordan_U		!cn | songlixu
+2010-11-10T15:15:00.000Z	Jordan_U	randomparticle	Can you try with a kernel with Ubuntu's kernel config, either the stock kernel or a 2.6 kernel from the mainline kernel "ppa": http://kernel.ubuntu.com/~kernel-ppa/mainline/ ?
+2010-11-10T15:16:00.000Z	randomparticle	Jordan_U	ok, i will do that
+2010-11-10T15:19:00.000Z	randomparticle		i'm confused by this "noefi" option. it's widely recommended in various forums for efi booting, and yet supposedly disables efi runtime service access. i'm not sure why that would be a good idea or not
+2010-11-10T15:20:00.000Z	Jordan_U	randomparticle	There are times when it's better to try to access things directly than try to use the EFI runtime services. The largest example is that you simply can't use the runtime services from 64 bit EFI with a 32 bit kernel.

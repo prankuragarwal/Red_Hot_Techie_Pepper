@@ -1,0 +1,24 @@
+2006-07-23T14:30:00.000Z	Qwell		http://pastebin.ca/97485 - raid0, good or bad?
+2006-07-23T14:32:00.000Z	Qwell		okay, how about this...
+2006-07-23T14:32:00.000Z	Qwell		Can I net boot the ubuntu installer, and just quit the installer, so I can install something that doesn't hang?
+2006-07-23T14:33:00.000Z	Qwell		I'm not seeing a "quit installer" option
+2006-07-23T14:34:00.000Z	Qwell		or, at least, do it the *right* way
+2006-07-23T14:35:00.000Z	Qwell		ie; http://pastebin.ca/97485
+2006-07-23T14:35:00.000Z	Qwell		Is that wrong for software raid0?
+2006-07-23T14:35:00.000Z	chowells2	Qwell	yes. set the partition type to raid autodetect, then Configure Software RAID
+2006-07-23T14:36:00.000Z	Qwell	chowells2	raid autodetect isn't an option
+2006-07-23T14:36:00.000Z	chowells2	Qwell	it should be. I've set up software raid 0 and raid 1 on ubuntu a few times. Should be at the end of the list of partition/file system types
+2006-07-23T14:37:00.000Z	Qwell	chowells2	I assure you, it isn't..
+2006-07-23T14:37:00.000Z	chowells2	Qwell	i've no idea then
+2006-07-23T14:37:00.000Z	Qwell	chowells2	seems nobody does..
+2006-07-23T14:39:00.000Z	Qwell	chowells2	http://pastebin.ca/97521
+2006-07-23T14:39:00.000Z	chowells2	Qwell	physical volume for RAID is the one you want
+2006-07-23T14:39:00.000Z	Qwell	chowells2	So, how does that work?
+2006-07-23T14:40:00.000Z	chowells2	Qwell	hmm, that's not my experience. I have no problems creating multiple primary partitions, and setting each to physical volume for RAID
+2006-07-23T14:40:00.000Z	Qwell	chowells2	Give me a minute, I can show you what it says on the other drive when it's set on sda
+2006-07-23T14:42:00.000Z	Qwell	chowells2	http://pastebin.ca/97526
+2006-07-23T14:43:00.000Z	chowells2	Qwell	weird. I'd try deleting all of the partitions and start again. you don't need to create a separate /boot partition if you're using md, btw
+2006-07-23T14:44:00.000Z	Qwell	chowells2	That's counter to the advice I got in here last night. :)
+2006-07-23T14:45:00.000Z	chowells2	Qwell	ubuntu has an initrd so it's not needed
+2006-07-23T14:45:00.000Z	Qwell	chowells2	the question is, can silo handle it?
+2006-07-23T14:46:00.000Z	chowells2	Qwell	ah. I've only done this on x86.

@@ -1,0 +1,24 @@
+2012-11-05T15:04:00.000Z	mar77i	newgen	http://linux.die.net/man/3/system using suid? could be there's something funny going on in /bin/bash too...
+2012-11-05T15:06:00.000Z	newgen	mar77i	interesting. i thought about that. but would execl solve this problem?
+2012-11-05T15:07:00.000Z	mar77i	newgen	maybe. just wrote a minimal test, and no, it's not hanging here.
+2012-11-05T15:09:00.000Z	newgen	mar77i	i have the main program running and a thread, which starts something like system("nmap..."). but since nmap requires root, i need suid
+2012-11-05T15:09:00.000Z	mar77i	newgen	this works here. http://paste.ubuntu.com/1334405
+2012-11-05T15:09:00.000Z	mar77i	newgen	you said you were using system(NULL) << with NULL as argument.
+2012-11-05T15:09:00.000Z	newgen	mar77i	i can confirm: your sample runs on my system
+2012-11-05T15:10:00.000Z	newgen	mar77i	even with sudo
+2012-11-05T15:10:00.000Z	mar77i	newgen	also, the manpage states "Do not use system() from a program with [suid]..." not "...to call a..."
+2012-11-05T15:11:00.000Z	newgen	mar77i	I have read this. but up to 1 month ago, it worked without a fuzz. so I did not worry about it
+2012-11-05T15:15:00.000Z	newgen	mar77i	ok weird: when i run (without suid) a command like system("nmap -sV -O -A 192.168.0.11 -p- -oX ../nmap_scans/192.168.0.11_1352110312_nmap.xml"), it should return directly because of missing priviledges. but instead, it hangs for about 1 minute in some kind of loop and uses 100% cpu load
+2012-11-05T15:24:00.000Z	mar77i	newgen	interesting. try gdb
+2012-11-05T15:24:00.000Z	newgen	mar77i	ok, switched to execl. this now generates the error "Zeitnehmer zur Laufzeitbestimmung ist abgelaufen", what ever this means...
+2012-11-05T15:25:00.000Z	mar77i	newgen	prefix the command with LANG=C
+2012-11-05T15:25:00.000Z	newgen	mar77i	i am not familiar with gdb, but i have a printf before and after the system call and it hangs definitely on the system call...
+2012-11-05T15:25:00.000Z	newgen	mar77i	thanks
+2012-11-05T15:25:00.000Z	mar77i	newgen	I'm interested, too, now. I want to know the error message in english, see my last post
+2012-11-05T15:26:00.000Z	newgen	mar77i	it's ignored.  "LANG=C ./test" -> same error. "export LANG=C; ./test" -> same error
+2012-11-05T15:27:00.000Z	mar77i	newgen	you know what I think.
+2012-11-05T15:28:00.000Z	newgen	mar77i	hm.. no not really :) environment messed up?
+2012-11-05T15:29:00.000Z	mar77i	newgen	are you prefixing "time" or something?
+2012-11-05T15:29:00.000Z	newgen	mar77i	no, nothing. just "./test"
+2012-11-05T15:32:00.000Z	newgen	mar77i	I create the filename with a timestamp. but thats much sooner. and execl ist just called with a string...
+2012-11-05T15:35:00.000Z	newgen	mar77i	translated error to "Profiling timer expired" -> It means that your thread received signal 27 (SIGPROF).  Before signals are delivered to the debuggee, they are sent by the kernel to the debugger.

@@ -1,0 +1,24 @@
+2011-08-17T04:53:00.000Z	WCwarrior		anyone please: looking for ati radeon hd 3650 driver for ubuntu 11.04 ... please somebody...
+2011-08-17T04:55:00.000Z	escott	WCwarrior	is it not in jockey-gtk?
+2011-08-17T04:55:00.000Z	WCwarrior	escott	i'm literate but just learning linux for first time. Jockey-gtk?
+2011-08-17T04:56:00.000Z	WCwarrior	escott	is what you're speaking of a patricular pkg within ubuntu?
+2011-08-17T04:56:00.000Z	escott	WCwarrior	ie proprietary drivers. open a terminal and type jockey-gtk
+2011-08-17T05:02:00.000Z	escott	WCwarrior	that would make it harder for you. i would boot to terminal and then use jockey-text
+2011-08-17T05:03:00.000Z	WCwarrior	escott	please educate me on this process to do so cause when i have the card in and boot, i don't get a boot screen...just a black screen.
+2011-08-17T05:04:00.000Z	escott	WCwarrior	if you are going from an older ati to a newer ati its possible that there is an old config laying around. you might uninstall fglrx and go back to radeonhd and then switch to the newer card
+2011-08-17T05:05:00.000Z	WCwarrior	escott	trying to comprehend...again, i'm new to linux/ ubuntu 11.04
+2011-08-17T05:06:00.000Z	WCwarrior	escott	how do i go about of uninstalling fglrx?
+2011-08-17T05:06:00.000Z	escott	WCwarrior	we need a bit more info about the specifics. (a) what card do you currently have in there (b) did you install proprietary drivers for that card (c) what do you see on boot with the new card
+2011-08-17T05:06:00.000Z	WCwarrior	escott	i'm sure that was a very dumb question...but again, learning here.
+2011-08-17T05:07:00.000Z	WCwarrior	escott	give me a sec and i'll provide the details.
+2011-08-17T05:16:00.000Z	WCwarrior	escott	present card is a PNY GeForce 8200 and the driver's shown/ options are, NVIDIA accelerated graphics driver (version 173" (This driver is not activated.) and NVIDIA accelerated graphics driver (version current) [Recommended} This driver is activated but not currently in use.  And, I'm wanting to install ATI Radeon HD3650
+2011-08-17T05:18:00.000Z	escott	WCwarrior	ok. then i would recommend that you disable the nvidia drivers, and rename/move your /etc/X11/Xorg.conf and reboot so that you are booting with xorgs drivers
+2011-08-17T05:19:00.000Z	WCwarrior	escott	okay. my options are to "remove". would that be correct?
+2011-08-17T05:21:00.000Z	WCwarrior	escott	ok
+2011-08-17T05:22:00.000Z	escott	WCwarrior	and yes removing the nvidia drivers would disable them
+2011-08-17T05:23:00.000Z	WCwarrior	escott	okay. then for the part about rename/move your /etc/x11/Xorg.conf ??
+2011-08-17T05:23:00.000Z	WCwarrior	escott	i'm sorry for the paint by the numbers for me.
+2011-08-17T05:24:00.000Z	escott	WCwarrior	nvidia uses Xorg.conf what would not be compatible with ati. you should see it if you ls /etc/X11, and then mv /etc/X11/Xorg.conf /root
+2011-08-17T05:24:00.000Z	escott	WCwarrior	rather sudo mv ...
+2011-08-17T05:26:00.000Z	WCwarrior	escott	again, my apologies...is this information listed easily somewhere within the sytem folder or is there like a cmd in terminal to find this out, etc.?
+2011-08-17T05:28:00.000Z	escott	WCwarrior	find what out? i'm saying in your terminal type ls /etc/X11 there should be something called conf, and you can "sudo mv /etc/X11/Xorg.conf /etc/X11/Xorg.conf.nvidia" to back it up and disable it at the same time

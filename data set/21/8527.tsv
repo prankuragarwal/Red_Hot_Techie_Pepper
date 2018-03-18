@@ -1,0 +1,21 @@
+2007-12-12T22:05:00.000Z	Minifig		I need help restoring Linux.  Can anyone help?  I have 2 hard drives.  Master drive 20GB Windows XP, Slave is 160GB running LInux.
+2007-12-12T22:06:00.000Z	Minifig		No.
+2007-12-12T22:06:00.000Z	Minifig		Here is what happened.  I wanted to install WIndows and since I cannot install XP on a second drive with LInux installed, I swapped drives and put 20GB as master not slave.
+2007-12-12T22:07:00.000Z	pike_	Minifig	so you just need to reinstall grub to the new primary partitions mbr and overwrite the windows mbr
+2007-12-12T22:09:00.000Z	pike_	Minifig	oh sounds like hda1 is no longer hda1 but hdb1 or whatever
+2007-12-12T22:10:00.000Z	pike_	Minifig	boot livecd and mount the ubuntu partition then edit boot/grub/menu.lst and change hda1 to hdb1 or whatnot then save then sudo grub   then root (hd1,1)   then setup (hd0)   hd0 is hda hdb is hd1 hdc would be hd2
+2007-12-12T22:12:00.000Z	pike_	Minifig	basically root says 'here is my install folder' and setup says write grub to this hd0 without a partition will be mbr
+2007-12-12T22:16:00.000Z	pike_	Minifig	'file  filename.exe' file is a command that tells you details about whatever filename you pass it
+2007-12-12T22:16:00.000Z	pike_	Minifig	wait wrong problem
+2007-12-12T22:16:00.000Z	pike_	Minifig	^
+2007-12-12T22:21:00.000Z	pike_	Minifig	yes once
+2007-12-12T22:22:00.000Z	pike_	Minifig	sudo mkdir /media/ub; sudo mount /dev/sdb1 /media/ub; gksu gedit /media/ub/boot/grub/menu.lst
+2007-12-12T22:22:00.000Z	pike_	Minifig	once in gedit scroll to near the bottom and chang eall sda1 to sdb1
+2007-12-12T22:22:00.000Z	pike_	Minifig	im doing this the hard way but im not familiar with the automatic stuff in grub-install
+2007-12-12T22:26:00.000Z	pike_	Minifig	now sudo grub   then in grub shell type root (hd1,1)   then setup (hd0)   hd0 is hda hdb is hd1 hdc would be hd2
+2007-12-12T22:30:00.000Z	pike_	Minifig	odd type find /boot/grub/stage1
+2007-12-12T22:32:00.000Z	pike_	Minifig	thats the problem i spaced on it root (hd1,0)   setup (hd0)
+2007-12-12T22:32:00.000Z	pike_	Minifig	i told you hd1,1
+2007-12-12T22:34:00.000Z	pike_	Minifig	one more thing you still need to add windows info to grub
+2007-12-12T22:45:00.000Z	pike_	Minifig	so it should work now right? only issue now is windows needs to be added to the menu.lst
+2007-12-12T22:46:00.000Z	pike_	Minifig	check this out for an example of adding windows which on your system is sda1  https://help.ubuntu.com/community/RecoveringUbuntuAfterInstallingWindows

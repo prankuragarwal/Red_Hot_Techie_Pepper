@@ -1,0 +1,24 @@
+2007-08-27T08:00:00.000Z	dwxreaper		whats a remote desktop like software for ubuntu server
+2007-08-27T08:01:00.000Z	dwxreaper		nandermonai: does anything come default, i want a command shell and remote gui
+2007-08-27T08:02:00.000Z	dwxreaper		i'm not really worried about security because i'm blocking access from everything
+2007-08-27T08:03:00.000Z	dwxreaper		but i need to manage the server, vnc and hopefully ssh will by default give me a command shell
+2007-08-27T08:03:00.000Z	kauer	dwxreaper	Wll, you generally don't need one - you can run anything you need as an X client, securely via an ssh tunnel or in an ssh terminal window. But if you really want to have lots of unnecessary software on your server, open your server to a whole new class of attack, and administer your server as slowly as possible, go look and the many VNC variants available for Linux :-)
+2007-08-27T08:04:00.000Z	dwxreaper	kauer	you mean forward the vnc traffic through ssh?
+2007-08-27T08:04:00.000Z	kauer	dwxreaper	If you do "ssh -X me@server" and log in, you can then run any X program installed on your server, and the window will appear on your local machine.
+2007-08-27T08:05:00.000Z	kauer	dwxreaper	No I didn't mean tunneling VNC, though tunneling is a very, very good idea if you absolutely insist on running VNC.
+2007-08-27T08:06:00.000Z	kauer	dwxreaper	I mean that any program you can run on th eserver - any program installed on the server - can either be run in a simple terminal window (if it is a text program) or can be run as an X client (if it's an X program). X = X-windows)
+2007-08-27T08:07:00.000Z	dwxreaper	kauer	does the program run on the server or the client, it sounds like the program runs on the client where you ssh from
+2007-08-27T08:07:00.000Z	kauer	dwxreaper	here is a simple example: "ssh -X me@server xclock" That will run xclock *on the remote machine* but the clock will be displayed *locally on your machine*.
+2007-08-27T08:08:00.000Z	kauer	dwxreaper	Th eprogram runs on the server, the display is shown on your local machine. And best of all, it's all encrypted, so you can type in passwords etc if you have to, and they do not appear in cleartext on the network.
+2007-08-27T08:09:00.000Z	dwxreaper	kauer	yeah sounds good, i'm not worried about security, but that's good to know. we have switches here
+2007-08-27T08:09:00.000Z	kauer	dwxreaper	What you just said sounded extremely misguided. Do you think that switches prevent your cnetwork conversations being listened to ?!?
+2007-08-27T08:10:00.000Z	dwxreaper	kauer	yeah they do actually..
+2007-08-27T08:11:00.000Z	kauer	dwxreaper	Well, I hate to be the bearer of bad news, but they only stop someone with no access to the physical network, and then only if they can't hack a switch or a router. If you are eg in a dormitory or shared building, anyone with five minutes and a crimping tool can tap any connection.
+2007-08-27T08:11:00.000Z	dwxreaper	kauer	i'm not worried
+2007-08-27T08:12:00.000Z	kauer	dwxreaper	Ignorance is bliss, but ssh is your friend. Listen to people who actually know what they are talking about, and USE ENCRYPTION.
+2007-08-27T08:12:00.000Z	dwxreaper	kauer	i k now what i'm talking about, as i said, you can't sniff the switches here..
+2007-08-27T08:16:00.000Z	kauer	dwxreaper	For your sake I hope so. Quite frankly, unless you are in some kind of hardened facility, you do NOT know what you are talking about. And if you ARE in some kind of hardened facility, expect to get fired when your boss learns about your attitude to security ;-) I guess you'll figure it out the same way most people figure out backups - you'll get burned, it will all suddenly make sense, and you'll be sadder, but wiser (and your dat
+2007-08-27T08:17:00.000Z	dwxreaper	kauer	stfu you idiot, cryoniq doesn't know what's he's talking about either. when you get the same mac on two ports the switch bugs out or throws error disabled
+2007-08-27T08:20:00.000Z	kauer	dwxreaper	Keep your shirt on :-) Your data will live longer if you accept that there are more things between heaven and earth than are dreamed of in your philosophy. All I can do is warn you that you should be more careful, and not, ever, let a password fly in clear across your network. But you don't have to pay attention, and don't seem to want to, so I will leave it at that. You might like to think about how a bridge works, or a data tap.
+2007-08-27T08:21:00.000Z	kauer	dwxreaper	But if you want to use VNC, plenty of people here can help you, it's quite popular.
+2007-08-27T08:22:00.000Z	dwxreaper	kauer	if your in the DC might as well smash the server with a hammer, whatever, nothing has happened, nothing is going to happen

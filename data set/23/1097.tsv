@@ -1,0 +1,23 @@
+2010-09-24T09:59:00.000Z	etherealite		How can I change my initrd settings?
+2010-09-24T10:01:00.000Z	etherealite		How can I get initrd to mount a cd at boot?
+2010-09-24T10:02:00.000Z	glebihan	etherealite	that would be done by adding an entry in fstab, but I doubt it's a very good idea
+2010-09-24T10:02:00.000Z	etherealite	glebihan	why is it such a bad idea?
+2010-09-24T10:03:00.000Z	glebihan	etherealite	because if the disk is not present, it could prevent your system from booting
+2010-09-24T10:03:00.000Z	etherealite	glebihan	don't the hooks need to be written in C?
+2010-09-24T10:05:00.000Z	glebihan	etherealite	I don't think there's anything to write in C to make it work
+2010-09-24T10:05:00.000Z	glebihan	etherealite	I don't know exactly how a missing disk would be handled
+2010-09-24T10:06:00.000Z	etherealite	glebihan	can it be done it grub? I could modify the menu entry?
+2010-09-24T10:07:00.000Z	glebihan	etherealite	I don't think you can do it in grub, grub runs way before file systems are mounted
+2010-09-24T10:07:00.000Z	glebihan	etherealite	you could try with fstab and change it back if it doesn't work (if you have a live cd)
+2010-09-24T10:12:00.000Z	glebihan	etherealite	by the way why do you need to do this ?
+2010-09-24T10:12:00.000Z	etherealite	glebihan	to read a luks key to mount my encrypted root files system at boot.
+2010-09-24T10:13:00.000Z	glebihan	etherealite	do your disk will always be present anyway ?
+2010-09-24T10:13:00.000Z	etherealite	glebihan	it will always be in the drive.
+2010-09-24T10:14:00.000Z	glebihan	etherealite	in that case, fstab should work fine
+2010-09-24T10:15:00.000Z	etherealite	glebihan	maybe, but it might not  work because fstab is in the root file system which is encrypted?
+2010-09-24T10:15:00.000Z	glebihan	etherealite	oh I get it... you need it to be done before root filesystem is mounted...
+2010-09-24T10:16:00.000Z	glebihan	etherealite	then you'll probably have to create an upstart job and use mount
+2010-09-24T10:18:00.000Z	etherealite	glebihan	doesn't upstart run off the root partion?
+2010-09-24T10:20:00.000Z	glebihan	etherealite	I don't know enough about upstart to be sure, but some jobs are run before the filesystems are mounted
+2010-09-24T10:26:00.000Z	glebihan	etherealite	you may want to have a look at this http://lfde.org/wiki/index.php/Ubuntu_Lucid_Lynx_10.04_Full_Disk_Encryption_with_USB_Key_Authentication
+2010-09-24T10:26:00.000Z	glebihan	etherealite	it uses USB instead of CD, but it should be quite the same

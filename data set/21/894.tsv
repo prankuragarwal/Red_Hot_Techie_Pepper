@@ -1,0 +1,21 @@
+2012-06-06T02:01:00.000Z	NeedHelpPlz		I need some help with fsck options. I dont know which ones I need to use. I've tried different combos and nothing is happening. http://linux.die.net/man/8/fsck
+2012-06-06T02:01:00.000Z	escott	NeedHelpPlz	fsck /dev/sda# where # is the partition number
+2012-06-06T02:02:00.000Z	escott	NeedHelpPlz	if there are problems it will ask what it should do. if you dont know the right answer fsck -a will say "yes" toeverything
+2012-06-06T02:03:00.000Z	NeedHelpPlz	escott	^^
+2012-06-06T02:04:00.000Z	escott	NeedHelpPlz	if you have raid you need to fsck /dev/md#
+2012-06-06T02:05:00.000Z	NeedHelpPlz	escott	i did md1 and it checked it, but i need a more through check like chkdsk, to check for hdd errors
+2012-06-06T02:06:00.000Z	escott	NeedHelpPlz	install smartmontools and use smartctl to check the smart status
+2012-06-06T02:07:00.000Z	NeedHelpPlz	escott	i have two other paritions? sda1 and sdb2. SMART logs are ok. i cant install smartmontools since im using a network boot
+2012-06-06T02:16:00.000Z	escott	NeedHelpPlz	i thought you said you had raid. is sda1 part of the raid device?
+2012-06-06T02:17:00.000Z	NeedHelpPlz	escott	i didnt build the filesystem... ill show u what it looks like... its weird, actually. http://i.imgur.com/EcctF.png
+2012-06-06T02:18:00.000Z	NeedHelpPlz	escott	i think its RAID1 for the OS and then RAID0 for the rest of the hdds
+2012-06-06T02:18:00.000Z	escott	NeedHelpPlz	sda1 is part of the raid device. the mdadm drivers have an exclusive lock on the device file. you would have to break the raid to gain access to sda1
+2012-06-06T02:19:00.000Z	NeedHelpPlz	escott	if its broken, can it be rebuilt without losing data?
+2012-06-06T02:19:00.000Z	escott	NeedHelpPlz	yes, but why would you want to access sda1?
+2012-06-06T02:20:00.000Z	escott	NeedHelpPlz	you dont need access to sda1 to do that. just look at the smart data
+2012-06-06T02:21:00.000Z	escott	NeedHelpPlz	and if you want something more than the smart data you might look at hdparm, but you have no good reason to break the raid. it will tell you nothing you cannot figure out otherwise
+2012-06-06T02:21:00.000Z	escott	NeedHelpPlz	ok sounds like the drives are good then. do you have some reason for believing otherwsie?
+2012-06-06T02:22:00.000Z	NeedHelpPlz	escott	im having an issue saving some data to the hdds, which why i was thinking its the hdds
+2012-06-06T02:22:00.000Z	escott	NeedHelpPlz	"an issue" can you be more specific
+2012-06-06T02:24:00.000Z	escott	NeedHelpPlz	what is the path of this missing file?
+2012-06-06T02:24:00.000Z	NeedHelpPlz	escott	^^ i dont know off the top of my head, but i know its long

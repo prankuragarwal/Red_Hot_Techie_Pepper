@@ -1,0 +1,21 @@
+2009-06-26T19:21:00.000Z	Operations		I have a problem starting a ftp server on ubuntu, anyone can help?
+2009-06-26T19:21:00.000Z	Operations		openftpd
+2009-06-26T19:21:00.000Z	Operations		Should I install Ubuntu Server edition?
+2009-06-26T19:23:00.000Z	Operations		On ubuntul I cant run a server. On windoes I can
+2009-06-26T19:24:00.000Z	sipior	Operations	can you be more specific? how are you attempting to start the ftp daemon?
+2009-06-26T19:25:00.000Z	sipior	Operations	are you sure about the path you just quoted?
+2009-06-26T19:26:00.000Z	sipior	Operations	it's not just "/etc/init.d/proftpd"?
+2009-06-26T19:26:00.000Z	sipior	Operations	and what happens when you attempt to start the daemon?
+2009-06-26T19:27:00.000Z	sipior	Operations	so the daemon starts just fine, then
+2009-06-26T19:28:00.000Z	sipior	Operations	can you try telnet to port 21? "telnet localhost 21", and see if anything responds?
+2009-06-26T19:32:00.000Z	sipior	Operations	1) does telnet to port 21 work? 2) how are you attempting to access the ftp server with firefox?
+2009-06-26T19:34:00.000Z	sipior	Operations	have you configured proftpd to permit incoming connections from the address of the remote machine?
+2009-06-26T19:36:00.000Z	sipior	Operations	have a look at the documentation that came with the program.
+2009-06-26T19:40:00.000Z	sipior	Operations	can you telnet to port 21 on your local machine from the remote one?
+2009-06-26T19:42:00.000Z	sipior	Operations	not connection refused? is that the entire error?
+2009-06-26T19:45:00.000Z	sipior	Operations	no, port 21, like so: "telnet <xx.xx.xx.xx> 21"
+2009-06-26T19:46:00.000Z	sipior	Operations	you have no firewalls running, either on the router, the local machine, or the remote machine?
+2009-06-26T19:48:00.000Z	sipior	Operations	you might look to see if anything has been dumped in a log file. try /var/log/auth.log and wherever your ftp daemon put its logs (almost certainly in /var/log as well)
+2009-06-26T19:51:00.000Z	sipior	Operations	/var/log/, and you're looking for warnings by the ftp daemon that a connection has been rejected.
+2009-06-26T19:52:00.000Z	sipior	Operations	at this point, i would urge you again to read the manual for proftpd, as i suspect you need to add the remote machine to an access list to permit the use of the ftp server.
+2009-06-26T19:56:00.000Z	sipior	Operations	yep, good luck.

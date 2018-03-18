@@ -1,0 +1,19 @@
+2011-04-25T04:09:00.000Z	ChronicSyncope		i can't seem to kill a process with sudo killall or sudo kill -9
+2011-04-25T04:09:00.000Z	ChronicSyncope		it's using all of my CPU
+2011-04-25T04:09:00.000Z	ChronicSyncope		it says it's killed but it's still showing up in sysmon, and it's still using all of my cpu
+2011-04-25T04:09:00.000Z	escott	ChronicSyncope	send it kill -HUP
+2011-04-25T04:10:00.000Z	escott	ChronicSyncope	rather kill -s HUP
+2011-04-25T04:10:00.000Z	escott	ChronicSyncope	that will cause data loss for that program
+2011-04-25T04:11:00.000Z	ChronicSyncope	escott	~$ bash: kill: -HUP: invalid signal specification
+2011-04-25T04:12:00.000Z	ChronicSyncope	escott	it didn't stop the process
+2011-04-25T04:13:00.000Z	escott	ChronicSyncope	kill -s HUP shouldn't be trapable, it is zombied?
+2011-04-25T04:13:00.000Z	ChronicSyncope	escott	it's rtorrent
+2011-04-25T04:14:00.000Z	ChronicSyncope	escott	it's opened about 5 times, and one of the processes says uninterruptable. I'm not sure that I know what zombied means
+2011-04-25T04:15:00.000Z	escott	ChronicSyncope	uninterruptable means it is running something in the kernel, perhaps it is waiting on a socket operation that could take a few minutes
+2011-04-25T04:15:00.000Z	ChronicSyncope	escott	there are 4 other processes called rtorrent that dont say that, which i cant stop
+2011-04-25T04:16:00.000Z	ChronicSyncope	escott	collectively they're running my fast cpu up to 100% :p
+2011-04-25T04:17:00.000Z	escott	ChronicSyncope	hmmm googling for what to do
+2011-04-25T04:18:00.000Z	ChronicSyncope	escott	i've been doing some googling too. it looks like it might be a kernel bug?
+2011-04-25T04:19:00.000Z	escott	ChronicSyncope	doubtful people would notice a bug like that :) most likely these rtorrents are doing something like creating a big file or waiting on a socket that is taking the kernel a long time to return
+2011-04-25T04:25:00.000Z	ChronicSyncope	escott	i think it's a kernel bug, i just restarted.
+2011-04-28T21:51:00.000Z	ChronicSyncope	escott	he might not know what a VM is, this is his first time installing an dualboot os

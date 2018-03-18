@@ -1,0 +1,22 @@
+2009-03-26T05:27:00.000Z	PodeCoet		Anyone have a really annoying issue with SAMBA, in which the speed during copies is terribly inaccurate? Ie: Sending a 350mb file over to an SMB share, says 50MB/sec, flies through, then hangs at 99% for about 30 seconds
+2009-03-26T05:28:00.000Z	eqisow2	PodeCoet	No, I haven't seen that
+2009-03-26T05:28:00.000Z	PodeCoet	eqisow2	:(
+2009-03-26T05:29:00.000Z	eqisow2	PodeCoet	are you interacting with a windows machine or another linux machine?
+2009-03-26T05:29:00.000Z	PodeCoet	eqisow2	another Ubuntu box
+2009-03-26T05:29:00.000Z	eqisow2	PodeCoet	then maybe you could try NFS?
+2009-03-26T05:30:00.000Z	PodeCoet	eqisow2	that ubuntu box is accessed by other windows boxes :p
+2009-03-26T05:30:00.000Z	eqisow2	PodeCoet	gotcha, so do you see the same error whether it's windows/ubuntu or ubuntu/ubuntu?
+2009-03-26T05:31:00.000Z	PodeCoet	eqisow2	Strangely enough, I haven't tried that yet! I'll give it a shot right now
+2009-03-26T05:40:00.000Z	PodeCoet	eqisow2	Interesting! It works fine one window UNLESS you mount the shares in FSTAB (like I did with the ubuntu shares)
+2009-03-26T05:41:00.000Z	PodeCoet	eqisow2	caching problem perhaps?
+2009-03-26T05:41:00.000Z	eqisow2	PodeCoet	So it only does it when mounted via fstab, eh? paste your ftsab?
+2009-03-26T05:45:00.000Z	PodeCoet	eqisow2	Correct: http://pastebin.com/m62fb8f99
+2009-03-26T05:45:00.000Z	PodeCoet	eqisow2	loungeroom is the one I just added (windows box)
+2009-03-26T05:46:00.000Z	PodeCoet	eqisow2	and also I just added 'forceddirectio', didnt work
+2009-03-26T05:46:00.000Z	eqisow2	PodeCoet	just tne?o clarify, is it all of them or just the new o
+2009-03-26T05:47:00.000Z	PodeCoet	eqisow2	all mounted samba shares do it (thought I'd just tell you which one is the windows box for clarity)
+2009-03-26T05:51:00.000Z	eqisow2	PodeCoet	well, general advice, I recomend making a credentials file only readable by root. storing passwords in plaintext is bad. that won't help you hear though... maybe try using the IP instead f the wins name? that's a stab in the dark....
+2009-03-26T05:52:00.000Z	PodeCoet	eqisow2	thanks for the suggestion, IP didnt work :(
+2009-03-26T05:52:00.000Z	eqisow2	PodeCoet	didn't work at all, or didn't fix it? o.O
+2009-03-26T05:52:00.000Z	PodeCoet	eqisow2	works exactly the same
+2009-03-26T05:58:00.000Z	eqisow2	PodeCoet	well, everything there looks fine. Check your /var/log/samba logs and see if anything looks suspicious

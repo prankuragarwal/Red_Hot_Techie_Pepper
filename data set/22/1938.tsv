@@ -1,0 +1,22 @@
+2009-11-18T23:13:00.000Z	northmanor		anybody have any experience recovering a lost partition from a drive that is failing?
+2009-11-18T23:13:00.000Z	nemo	northmanor	I recovered mine from totally dead drive
+2009-11-18T23:14:00.000Z	nemo	northmanor	luckily though, that was 'cause I was able to seek/skip past the failing blocks in dd
+2009-11-18T23:14:00.000Z	nemo	northmanor	I understand if the drive isn't even viewable as a device, if you're out of other ideas *sometimes* freezing it can help
+2009-11-18T23:14:00.000Z	nemo	northmanor	but if you're able to do dd - dump an image FIRST
+2009-11-18T23:15:00.000Z	nemo	northmanor	well. maybe you just lost your partition table
+2009-11-18T23:15:00.000Z	nemo	northmanor	you can recover lost partitions w/ gpart (not gparted)
+2009-11-18T23:16:00.000Z	nemo	northmanor	well. maybe gparted too these days, who knows :)
+2009-11-18T23:16:00.000Z	nemo	northmanor	before mucking about w/ the disc really grab an image first - or multiple images if your drive has sporadic failures
+2009-11-18T23:16:00.000Z	nemo	northmanor	attempting fixes on a failing drive is pointless
+2009-11-18T23:18:00.000Z	northmanor	nemo	if i grab the image i imagine i have to put it on a whole other drive or can i use free space on a drive i'm using?
+2009-11-18T23:19:00.000Z	nemo	northmanor	ummm. whatever you do do NOT keep using the failing drive. period. fullstop
+2009-11-18T23:19:00.000Z	nemo	northmanor	get another drive, ideally a much larger drive, do all your work there
+2009-11-18T23:19:00.000Z	northmanor	nemo	the only other free drive i have is much smaller :(
+2009-11-18T23:20:00.000Z	nemo	northmanor	drives are cheap these days
+2009-11-18T23:20:00.000Z	northmanor	nemo	are bad sectors gonna be an issue when trying to get the image?
+2009-11-18T23:21:00.000Z	northmanor	nemo	also what do i use to capture the image.. have any links?
+2009-11-18T23:21:00.000Z	nemo	northmanor	quite possibly. might have to do seek/skip
+2009-11-18T23:21:00.000Z	nemo	northmanor	you could try this ddrescue thing he mentioned, but I have no familiarity
+2009-11-18T23:21:00.000Z	nemo	northmanor	dd if=/dev/sda of=rescueimage bs=16M
+2009-11-18T23:22:00.000Z	nemo	northmanor	if it fails, make a note of where it fails, and seek/skip past it
+2009-11-18T23:22:00.000Z	nemo	northmanor	might have to use bs closer to actual sector size if you get failures

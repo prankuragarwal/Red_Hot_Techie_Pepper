@@ -1,0 +1,19 @@
+2008-08-24T23:20:00.000Z	Doonz		hey guys, im having trouble installing Ubuntu 8.04.1. What is happening is i have a raid card with pm support. I have 5 hard drives connected to one of the 4 esata ports. I have 1 hard drive running of the ide channel on the motherbord wich i want to be the OS drive. Now i can do the install onto the IDE drive. But when i goto reboot it comes up with an error saying to insert bootable media. any ideas?
+2008-08-24T23:22:00.000Z	TwoD	Doonz	have you set your bios to boot from the correct disk? If it doesn't it won't find the Master Boot Record and proceed to loading GRUB.
+2008-08-24T23:22:00.000Z	Doonz	TwoD	yes it is set to the proper IDE hard disk
+2008-08-24T23:23:00.000Z	TwoD	Doonz	do you use the whole IDE disk for Ubuntu? And is it set as the Master?
+2008-08-24T23:23:00.000Z	Doonz	TwoD	AWWWE CRAP
+2008-08-24T23:23:00.000Z	TwoD	Doonz	?
+2008-08-24T23:24:00.000Z	Doonz		i got so used to SATA that i forgot to check to see what the ide drive was set to
+2008-08-24T23:24:00.000Z	Doonz		i beleive its set as slave
+2008-08-24T23:24:00.000Z	Doonz		would that cause it not to boot?
+2008-08-24T23:24:00.000Z	TwoD	Doonz	that might be a problem, if it's on the master position at the end of the cable, but set as slave, but I'm not sure.
+2008-08-24T23:24:00.000Z	Doonz		hmm
+2008-08-24T23:25:00.000Z	Doonz		brb
+2008-08-24T23:27:00.000Z	Doonz		Damn
+2008-08-24T23:27:00.000Z	Doonz	TwoD	it was all set as the master already. and i tried with it being the only device on the ide cable and still same error
+2008-08-24T23:30:00.000Z	TwoD	Doonz	hmm... tried disconnecting the other drives as well and recheck the bios settings, just to be super sure it's the only disk being searched for an MBR?
+2008-08-24T23:30:00.000Z	Doonz		yeah that was one of the first things it trie
+2008-08-24T23:30:00.000Z	Doonz		tried*
+2008-08-24T23:32:00.000Z	TwoD	Doonz	I just remembered I had a problem with an earlier version of Ubuntu which might be related. I have 1 IDE and 4 SATA drives. I installed Ubuntu to the 1st SATA drive, which also had Windows, but the MBR was written to the IDE disk, causing it to not be found at boot. If I set it to boot from the IDE, boot would fail as there wasn't actually any OS on that disk. Had to reinstall GRUB/Ubuntu with only the SATA disk and put the others back in later.
+2008-08-24T23:32:00.000Z	Doonz	TwoD	ok ill give that a go

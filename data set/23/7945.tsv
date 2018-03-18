@@ -1,0 +1,23 @@
+2005-03-18T06:46:00.000Z	thierry		no gtk+ neither!!!!!!!!
+2005-03-18T06:46:00.000Z	crimsun	thierry	um, gtk+ _is_ installed by default, else gnome wouldn't even run.
+2005-03-18T06:47:00.000Z	crimsun	thierry	but the decision to not install the devel portions is based on the sane idea that most desktop users won't need to compile ;-)
+2005-03-18T06:48:00.000Z	thierry	crimsun	ok I understand
+2005-03-18T06:48:00.000Z	crimsun	thierry	that's because it's looking for libgtk2.0-dev
+2005-03-18T06:48:00.000Z	crimsun	thierry	just do: apt-get build-dep mozilla-firefox
+2005-03-18T06:49:00.000Z	thierry	crimsun	thanks! Now I see how yum is nothing comparing to apt-get
+2005-03-18T06:51:00.000Z	thierry	crimsun	I still get this error about GTK :
+2005-03-18T06:51:00.000Z	crimsun	thierry	is there any reason you're using ./configure by hand?
+2005-03-18T06:51:00.000Z	thierry	crimsun	how could I fix that?
+2005-03-18T06:51:00.000Z	crimsun	thierry	(it's looking for libgtk1.2-dev)
+2005-03-18T06:52:00.000Z	thierry	crimsun	I want to test a change I made for an ubuntu bug
+2005-03-18T06:52:00.000Z	crimsun	thierry	best to apt-get source mozilla-firefox and use the ubuntu's build infrastructure
+2005-03-18T06:53:00.000Z	crimsun	thierry	dpkg-dev, etc.
+2005-03-18T06:54:00.000Z	thierry	crimsun	any howto or deeper explanation about that? I don't know what is dpkg-dev so...
+2005-03-18T06:54:00.000Z	crimsun	thierry	the tools used to create a .deb
+2005-03-18T06:55:00.000Z	crimsun	thierry	http://www.debian.org/doc/maint-guide/
+2005-03-18T06:59:00.000Z	crimsun	thierry	use the dpatch infrastructure
+2005-03-18T07:03:00.000Z	crimsun	thierry	I posted above a url to the maint-guide
+2005-03-18T07:03:00.000Z	crimsun	thierry	it's also installable via apt-get
+2005-03-18T07:07:00.000Z	thierry	crimsun	Jdahl: dpkg-buildpackage -rfakeroot is the solution
+2005-03-18T07:07:00.000Z	crimsun	thierry	that's one method, yes.
+2005-03-18T07:16:00.000Z	crimsun	thierry	diff, then use dpatch to create the actual dpatch template

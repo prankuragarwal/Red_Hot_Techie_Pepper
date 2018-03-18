@@ -1,0 +1,21 @@
+2008-06-09T05:17:00.000Z	jonaskoelker		hello all.  How do I set my domain?  That is, my host is called "bianca", and has dns name bianca.example.com;  I want resolving "ariel" to resolve ariel.example.com
+2008-06-09T05:18:00.000Z	jonaskoelker		(addresses are assign via dhcp; I don't control the dhcp server)
+2008-06-09T05:18:00.000Z	nikrud	jonaskoelker	is that resolving done on the net, or is it local?
+2008-06-09T05:18:00.000Z	jonaskoelker	nikrud	non-local
+2008-06-09T05:19:00.000Z	nikrud	jonaskoelker	/etc/hosts work for local resolution, for internet you'd have to set up dns 'out there'
+2008-06-09T05:19:00.000Z	jonaskoelker	nikrud	the dns is set up
+2008-06-09T05:19:00.000Z	jonaskoelker	nikrud	what I want is to type "ariel" instead of "ariel.example.com", when I'm on bianca
+2008-06-09T05:20:00.000Z	nikrud	jonaskoelker	ah, add xx.xx.xx.xx in /etc/hosts on bianca to point at ariel
+2008-06-09T05:20:00.000Z	jonaskoelker	nikrud	no; the IP address might change
+2008-06-09T05:20:00.000Z	jonaskoelker	nikrud	I don't want to update my /etc/hosts file every time I get a new address
+2008-06-09T05:20:00.000Z	nikrud	jonaskoelker	then you can't do it locally, you have to set it up externally.
+2008-06-09T05:21:00.000Z	jonaskoelker	nikrud	adding "domain example.com" to /etc/resolv.conf seems to work, but only temporarily.  I was wondering how resolv.conf is built...
+2008-06-09T05:21:00.000Z	nikrud	jonaskoelker	it's set up by dhcp (I'm assuming you're using dhcp)
+2008-06-09T05:22:00.000Z	jonaskoelker	nikrud	also, it contained (on my ubuntu box) a line "search example.org", which must be a holdover from the installation (my ISP wouldn't hand out that domain)...
+2008-06-09T05:23:00.000Z	nikrud	jonaskoelker	is this for use with ssh?
+2008-06-09T05:23:00.000Z	jonaskoelker	nikrud	this is for use with all dns clients
+2008-06-09T05:24:00.000Z	nikrud	jonaskoelker	is ariel on a local net, and it's local ip doesn't change?
+2008-06-09T05:24:00.000Z	jonaskoelker	nikrud	no, that's not the case
+2008-06-09T05:24:00.000Z	nikrud	jonaskoelker	ah, then that solution won't work
+2008-06-09T05:24:00.000Z	jonaskoelker	nikrud	which solution?
+2008-06-09T05:24:00.000Z	nikrud	jonaskoelker	back to /etc/hosts, but using a static local ip

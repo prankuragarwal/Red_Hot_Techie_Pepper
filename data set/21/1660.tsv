@@ -1,0 +1,21 @@
+2011-07-13T14:11:00.000Z	squaregoldfish	Diverdude	If you have imagemagick installed, you can use the identify command.
+2011-07-13T14:11:00.000Z	squaregoldfish	Diverdude	Or use GIMP as arfbtwn suggests.
+2011-07-13T14:11:00.000Z	Diverdude	squaregoldfish	aha, identify shows this: fish 15 - bac + DMSO 1_ch00.tif TIFF 8192x8192 8192x8192+0+0 8-bit PseudoClass 256c 64.01MiB 0.000u 0:00.010
+2011-07-13T14:12:00.000Z	Diverdude	squaregoldfish	does that say anything about what channels are in the file?
+2011-07-13T14:13:00.000Z	squaregoldfish	Diverdude	....
+2011-07-13T14:13:00.000Z	Diverdude	squaregoldfish	?
+2011-07-13T14:13:00.000Z	squaregoldfish	Diverdude	Is it a greyscale image?
+2011-07-13T14:13:00.000Z	Diverdude	squaregoldfish	thats what i am trying to figure out
+2011-07-13T14:26:00.000Z	Diverdude	squaregoldfish	thx :)
+2011-07-13T14:14:00.000Z	squaregoldfish	Diverdude	I think it might be - it's saying 8-bit image and 256 colours, which implies greyscale. Indexed colour is unlikely in a TIFF, but I could be wrong. I think you'll just have to open it and find out.
+2011-07-13T14:15:00.000Z	Diverdude	squaregoldfish	well, grayscale image can also be 8-bit image just with a single channel instead og 3
+2011-07-13T14:16:00.000Z	Diverdude	squaregoldfish	opening the image also wont tell since the viewer may just apply some colormap...making it impossible to see
+2011-07-13T14:16:00.000Z	squaregoldfish	Diverdude	Try identify -verbose
+2011-07-13T14:17:00.000Z	squaregoldfish	Diverdude	Should be a Colorspace entry.
+2011-07-13T14:18:00.000Z	squaregoldfish	Diverdude	identify -verbose <file>.tiff
+2011-07-13T14:20:00.000Z	Diverdude	squaregoldfish	aha that gave a lot of info, look: http://pastebin.com/SBiqJbSQ
+2011-07-13T14:23:00.000Z	squaregoldfish	Diverdude	So it looks like you've got a greyscale image, but it's encoded as RGB with the image data in the Blue channel. Weird.
+2011-07-13T14:23:00.000Z	Diverdude	squaregoldfish	i think its grayscale
+2011-07-13T14:23:00.000Z	Diverdude	squaregoldfish	that was my thought also
+2011-07-13T14:24:00.000Z	Diverdude	squaregoldfish	ohh well, i will treat it as a colorimage then :) perfect. thx
+2011-07-13T14:25:00.000Z	Diverdude	squaregoldfish	im gonna import in my python script, so ill just deal with it in there

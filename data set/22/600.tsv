@@ -1,0 +1,22 @@
+2011-06-27T19:21:00.000Z	webg33k		I have a turnkey configured VM, and I'm trying to setup postfix to just relay mail...only problem is that I cannot even telnet into port 25 to test it out...I have opened TCP/25 in the firewall, but it's still denying the connection...anyone have recommendations as to how I can further troubleshoot this?
+2011-06-27T19:22:00.000Z	sipior	webg33k	what's the exact error message you receive?
+2011-06-27T19:23:00.000Z	webg33k	sipior	- could not open connection to the host, on port 25:  Connect failed
+2011-06-27T19:23:00.000Z	sipior	webg33k	the target host is on the local network?
+2011-06-27T19:26:00.000Z	webg33k	sipior	- any suggestions?
+2011-06-27T19:26:00.000Z	sipior	webg33k	i asked if the target host was on the local network; you didn't respond.
+2011-06-27T19:27:00.000Z	sipior	webg33k	so, is it?
+2011-06-27T19:32:00.000Z	webg33k	sipior	- I'm sorry, i missed that.  Yes, the test system & linux system are both within the same VLAN
+2011-06-27T19:33:00.000Z	sipior	webg33k	do other connections proceed normally to the test system?
+2011-06-27T19:33:00.000Z	sipior	webg33k	(ssh, http, etc.)
+2011-06-27T19:34:00.000Z	webg33k		http & ssh work
+2011-06-27T19:34:00.000Z	sipior	webg33k	can you connect to postfix from the test system itself?
+2011-06-27T19:37:00.000Z	webg33k	sipior	- how would I attempt that?  I only have SSH access to the box, as well as a web interface care of turnkey
+2011-06-27T19:37:00.000Z	sipior	webg33k	can you install telnet temporarily on the test machine?
+2011-06-27T19:37:00.000Z	sipior	webg33k	or hell, just use netcat
+2011-06-27T19:38:00.000Z	webg33k	sipior	- my bad, I have telnet on there, and have tried to connect via port 25
+2011-06-27T19:38:00.000Z	webg33k		with no luck
+2011-06-27T19:38:00.000Z	sipior	webg33k	same error? the turnkey system came with a firewall up and running?
+2011-06-27T19:38:00.000Z	webg33k	sipior	- yes
+2011-06-27T19:39:00.000Z	sipior	webg33k	time to turn it off, at least for now :-)
+2011-06-27T19:39:00.000Z	sipior	webg33k	or just flush the offending rule
+2011-06-27T19:40:00.000Z	webg33k	sipior	- working on that...figured that's where you were going :)

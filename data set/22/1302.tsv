@@ -1,0 +1,22 @@
+2010-07-25T04:13:00.000Z	Caer		For an unknown reason my network applet doesn't show any Ethernet connection anymore, what should I do?
+2010-07-25T04:13:00.000Z	ActionParsnip	Caer	do you have an entry for it in /etc/network/interfaces ?
+2010-07-25T04:14:00.000Z	Caer	ActionParsnip	no, but neither for eth1 which the applet shows (but I can't see my router there)
+2010-07-25T04:14:00.000Z	ActionParsnip	Caer	if you do, thats why. but you don't so its ok
+2010-07-25T04:14:00.000Z	ActionParsnip	Caer	if you run:  sudo lshw -C network    websearch for the product line of the wired connection for guides
+2010-07-25T04:16:00.000Z	Caer	ActionParsnip	lshw shows only eth1 (without naming it)
+2010-07-25T04:17:00.000Z	ActionParsnip	Caer	you will need a ppa
+2010-07-25T04:17:00.000Z	ActionParsnip	Caer	then reboot and run:  dmesg | less     and read through, see if your ethernet port is detected at boot and if there are any issues with it
+2010-07-25T04:20:00.000Z	Caer	ActionParsnip	what is a ppa? but dmesg after a reboot said something like 'udev: eth0 renamed to eth1' (eth1 is the wireless card after the boot)
+2010-07-25T04:22:00.000Z	ActionParsnip	Caer	sounds like the wifi is being named as et0 but the wired is usually eth0, is the wired connection enabled in bios?
+2010-07-25T04:22:00.000Z	Caer	ActionParsnip	the card worked fine yesterday ; I will check the BIOS
+2010-07-25T04:25:00.000Z	Caer	ActionParsnip	wired not disabled in BIOS ; I just disabled "power saving" to be sure
+2010-07-25T04:25:00.000Z	ActionParsnip	Caer	good move
+2010-07-25T04:25:00.000Z	ActionParsnip	Caer	is the system a laptop or branded pc?
+2010-07-25T04:26:00.000Z	Caer	ActionParsnip	HP dv6 laptop ; has a "disable wifi" button and some quirks
+2010-07-25T04:26:00.000Z	ActionParsnip	Caer	greta, let me search
+2010-07-25T04:30:00.000Z	ActionParsnip	Caer	do you dual boot?
+2010-07-25T04:30:00.000Z	Caer	ActionParsnip	yes
+2010-07-25T04:31:00.000Z	Caer	ActionParsnip	windows 7, ubuntu Lucid ; I have three kernels installed, and tested the last two
+2010-07-25T04:31:00.000Z	ActionParsnip	Caer	ok the windows boot may be tying up the device, head into device manager and disable power saving on the device as well as uncheck the box to allow the device to wake windows up. Windows is screwing te hardware up
+2010-07-25T04:36:00.000Z	Caer	ActionParsnip	octavio-rdz : unchecked, and it worked ; thank you very much for your patience and $&#@ windows !
+2010-07-25T04:37:00.000Z	ActionParsnip	Caer	yep :(

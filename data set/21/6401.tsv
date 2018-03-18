@@ -1,0 +1,21 @@
+2007-04-10T10:00:00.000Z	Rich_li_ny		New Installation Xubuntu 6.10 and can not get Video on monitor unless I go to a command prompt (Ctrl + Alt + F1).  Begins to load I see xubuntu logo then screen goes blank and monitor goes dead.  Please help me with this.  Its been going on for tow weeks and I really want to get this working.  Note monitor works with Puppy linus live Cd.. but not with xbuntu.   Also when I go to a command prompt its says 1024*768 failed , upsplash: 800-60
+2007-04-10T10:00:00.000Z	Rich_li_ny		I cant figure out how to edit xorg and have been at this for 2.5 weeks now :(
+2007-04-10T10:02:00.000Z	reep	Rich_li_ny	what graphics card do you have?
+2007-04-10T10:04:00.000Z	reep	Rich_li_ny	look in /var/log/Xorg.0.log and see if you find any meaningful error messages (lines starting with '(EE)' )
+2007-04-10T10:06:00.000Z	reep	Rich_li_ny	less /var/log/Xorg.0.log, then when the pager comes up, type /\(EE\) to search for (EE)
+2007-04-10T10:06:00.000Z	reep	Rich_li_ny	then hit n for the next hit
+2007-04-10T10:12:00.000Z	reep	Rich_li_ny	I have those messages in mine too (and mines working) so I think can ignore those... nothing else?
+2007-04-10T10:13:00.000Z	reep	Rich_li_ny	then it sounds like it's just the monitor sync rates that need to be set properly
+2007-04-10T10:14:00.000Z	reep	Rich_li_ny	I would try searching for <monitor brand> <monitor model> specs on google
+2007-04-10T10:16:00.000Z	reep	Rich_li_ny	you can edit it manually with sudo nano /etc/X11/xorg.conf, or run sudo dpkg-reconfigure xserver-xorg to get a "Wizard" to do it
+2007-04-10T10:18:00.000Z	reep	Rich_li_ny	yea, it might work to copy the Monitor section
+2007-04-10T10:19:00.000Z	reep	Rich_li_ny	then edit xorg manually with sudo nano /etc/X11/xorg.conf
+2007-04-10T10:20:00.000Z	reep	Rich_li_ny	in nano, hit Ctrl+w to search for Monitor
+2007-04-10T10:22:00.000Z	reep	Rich_li_ny	sudo with o as in sudoku ;)
+2007-04-10T10:26:00.000Z	reep	Rich_li_ny	/etc/X11/xorg.conf
+2007-04-10T10:27:00.000Z	reep	Rich_li_ny	ect?
+2007-04-10T10:31:00.000Z	reep	Rich_li_ny	again, ect should be etc ...
+2007-04-10T10:31:00.000Z	reep	Rich_li_ny	use tab-completion, hit <TAB> while writing
+2007-04-10T10:32:00.000Z	Rich_li_ny	reep	ok
+2007-04-10T10:32:00.000Z	reep	Rich_li_ny	sudo nano /*/*/xorg.conf<TAB> should automagicaly replace the two stars with the correct path
+2007-04-10T10:40:00.000Z	reep	Rich_li_ny	sudo /etc/init.d/?dm restart should tell you if it worked

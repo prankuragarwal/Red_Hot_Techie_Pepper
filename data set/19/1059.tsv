@@ -1,0 +1,19 @@
+2011-07-23T06:49:00.000Z	Semitones_tea		hey everyone, is there a way to bring up GRUB if holding shift isn't working? I'm trying to rescue a computer that won't boot normally.
+2011-07-23T06:50:00.000Z	DasEi	Semitones_tea	you can try to press e on regular kernel and add single to it, that should boot into init 1 , too
+2011-07-23T06:50:00.000Z	Semitones_tea	DasEi	at what point should I press e?
+2011-07-23T06:53:00.000Z	DasEi	Semitones_tea	see w30, edit /etc/default/grub , remove splash and adjust timeout, then you should see bootmenu (and then also recovery-kernel)
+2011-07-23T06:55:00.000Z	Semitones_tea	DasEi	can I do that without a cd rom drive?
+2011-07-23T06:57:00.000Z	DasEi	Semitones_tea	yes
+2011-07-23T07:00:00.000Z	Semitones_tea	DasEi	and without USB too?
+2011-07-23T07:01:00.000Z	DasEi	Semitones_tea	yes, sure : gksu gedit /etc/default/grub
+2011-07-23T07:02:00.000Z	Semitones_tea	DasEi	I can't get to a terminal though :/
+2011-07-23T07:02:00.000Z	DasEi	Semitones_tea	give the timeout say a 10 seconds and leave the line about splash just as =""m safe, sudo update-grub
+2011-07-23T07:03:00.000Z	DasEi	Semitones_tea	ctrl-alt-F1 ?
+2011-07-23T07:03:00.000Z	Semitones_tea	DasEi	when I do that, it says "monitor out of range" and I can't even get back to f7 or f8 so I have to hard shut down
+2011-07-23T07:04:00.000Z	DasEi	Semitones_tea	why can't you call terminal ?
+2011-07-23T07:06:00.000Z	Semitones_tea	DasEi	no idea, it just sends the monitor out of range
+2011-07-23T07:07:00.000Z	DasEi	Semitones_tea	alt+F2 , sudo init 1 ?
+2011-07-23T07:08:00.000Z	Semitones_tea	DasEi	when I boot the computer, I get an xorg error, and then a black screen with a pointer. I never get any further than that I'm afraid...
+2011-07-23T07:09:00.000Z	DasEi	Semitones_tea	ah, so that's the whole story, and you can't get to bootmenu, I assume it's least lucid and not an older distro with grub 1 ?
+2011-07-23T07:09:00.000Z	Semitones_tea	DasEi	I think it is 10.04, I don't remember if that's lucid
+2011-07-23T07:10:00.000Z	DasEi	Semitones_tea	well then you will need a life environment to chroot in and fix that graphic's driver

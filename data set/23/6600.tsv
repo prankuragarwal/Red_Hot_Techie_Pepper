@@ -1,0 +1,23 @@
+2006-04-03T08:13:00.000Z	geniusvicks		How do I change the ownership of /media/hda4
+2006-04-03T08:13:00.000Z	geniusvicks		I keep getting errors
+2006-04-03T08:14:00.000Z	nickrud	geniusvicks	what partition type is geniusvicks
+2006-04-03T08:14:00.000Z	nickrud		gergle, geniusvicks ntfs or what :)
+2006-04-03T08:16:00.000Z	geniusvicks		the partition is vfat
+2006-04-03T08:16:00.000Z	geniusvicks		changing group of `/media/hda5': Operation not permitted
+2006-04-03T08:16:00.000Z	geniusvicks		this is what I get
+2006-04-03T08:16:00.000Z	nickrud	geniusvicks	then you need to edit the /etc/fstab (file system table)
+2006-04-03T08:17:00.000Z	geniusvicks		i c
+2006-04-03T08:17:00.000Z	nickrud	geniusvicks	if you'll put yours on http://paste.ubuntu-nl.org
+2006-04-03T08:19:00.000Z	geniusvicks	nickrud	I pasted it
+2006-04-03T08:22:00.000Z	nickrud	geniusvicks	change that to read  .... defaults,uid=1000   (or replace 1000 with the results of  echo $UID if it's different)
+2006-04-03T08:22:00.000Z	geniusvicks		I want to change the group to 100
+2006-04-03T08:22:00.000Z	geniusvicks	nickrud	I want to change the group to 100
+2006-04-03T08:23:00.000Z	nickrud	geniusvicks	you can give it any uid you want, (100 on my machine is cups)
+2006-04-03T08:24:00.000Z	geniusvicks		I have two users
+2006-04-03T08:24:00.000Z	geniusvicks		They belong to group "users" number is 100 is the the same
+2006-04-03T08:24:00.000Z	geniusvicks		command
+2006-04-03T08:25:00.000Z	nickrud	geniusvicks	then you want something a bit different: rw,auto,fmask=0117,dmask=0007,gid=1002
+2006-04-03T08:25:00.000Z	nickrud	geniusvicks	or a variation on that (replace 1002) with 100
+2006-04-03T08:26:00.000Z	geniusvicks		thanks
+2006-04-03T08:26:00.000Z	geniusvicks	nickrud	should I replace the defaults with what you gave or append it with a comma to defaults
+2006-04-03T08:27:00.000Z	nickrud	geniusvicks	that's one I'm using on a vfat, and i replaced defaults with that

@@ -1,0 +1,23 @@
+2008-02-21T01:17:00.000Z	VSpike		What can I use to do audio transcoding?  I need to convert wma to ogg, but I don't mind going via wav.  And ffmpeg is no good, it won't read the files.
+2008-02-21T01:17:00.000Z	ejer	VSpike	wma is not easy to convert
+2008-02-21T01:17:00.000Z	VSpike	ejer	so I'm finding out :)
+2008-02-21T01:18:00.000Z	ejer	VSpike	ffmpeg will do it, or mplayer, unless it is encoded
+2008-02-21T01:18:00.000Z	VSpike	ejer	my amarok plays them OK.  Not sure if I can use whatever backend it uses for transcoding?
+2008-02-21T01:18:00.000Z	ejer	VSpike	can you play it in mplayer
+2008-02-21T01:18:00.000Z	VSpike	ejer	ffmpeg will not accept the files
+2008-02-21T01:18:00.000Z	VSpike	ejer	someone raised a bug for me on it in fact
+2008-02-21T01:19:00.000Z	VSpike	ejer	yeah mplayer plays it.  Can I use that somehow?
+2008-02-21T01:20:00.000Z	ejer	VSpike	mplayer -dumpaudio i think it is
+2008-02-21T01:21:00.000Z	ejer	VSpike	  Dumps raw compressed audio stream to ./stream.dump (useful with MPEG/AC-3, in most other cases the resulting file will not be playable). If you give more than one of −dumpaudio, −dumpvideo, −dumpstream on the command line only the last one will work.
+2008-02-21T01:21:00.000Z	VSpike	ejer	yeah I just read that, but it does say that the result will not be playable
+2008-02-21T01:22:00.000Z	ejer	VSpike	mencoder -oac
+2008-02-21T01:23:00.000Z	VSpike	ejer	ahhh cool thanks!!
+2008-02-21T01:46:00.000Z	VSpike	ejer	mencoder won't seem to do it without a video stream, so I'm tring Perl Audio Converter :)
+2008-02-21T01:47:00.000Z	ejer	VSpike	mencoder -ovc dummy should workj
+2008-02-21T01:49:00.000Z	VSpike	ejer	Option ovc: Unknown suboption dummy
+2008-02-21T01:50:00.000Z	ejer	VSpike	i don't have any wma files to try, is your public somewhere
+2008-02-21T01:50:00.000Z	VSpike	ejer	yeah its at http://www.carlyleclarke.plus.com/01%20Feeling%20Oblivion.wma
+2008-02-21T01:50:00.000Z	VSpike	ejer	thanks
+2008-02-21T01:53:00.000Z	ejer	VSpike	mplayer -ao pcm:file=test.wav 01\ Feeling\ Oblivion.wma
+2008-02-21T01:53:00.000Z	ejer	VSpike	works fine
+2008-02-21T05:26:00.000Z	VSpike	ejer	thanks for that mplayer fix earlier, it worked perfectly... someone arrived at that moment so didn't have a chance to say thanks

@@ -1,0 +1,22 @@
+2011-07-02T12:38:00.000Z	devral		hi, i want to create a file sharing server by sharing a folder on ubuntu - whats the difference between cifs, nfs and smb? the rest of my network is windows machines
+2011-07-02T12:39:00.000Z	dr_willis	devral	 what os's are you shareing to and from?
+2011-07-02T12:40:00.000Z	devral	dr_willis	i want to share a folder on ubuntu 10.04 to a mixed windows xp & 7 network
+2011-07-02T12:40:00.000Z	dr_willis	devral	 then you want to use samba/smb  - or set up ssh, and use winscp on the windows machines.
+2011-07-02T12:41:00.000Z	dr_willis	devral	 right click on a folder, share.. and  in theory that will set up samba and share that folder for you.
+2011-07-02T12:41:00.000Z	dr_willis	devral	 you may need to set a samba password for the user with 'sudo smbpasswd -a YOURUSERNAME'
+2011-07-02T12:44:00.000Z	devral	dr_willis	the smbpasswd would be the user a client uses to login?
+2011-07-02T12:51:00.000Z	dr_willis	devral	 the smb passwiord can be identical to their normall password. or not..
+2011-07-02T12:57:00.000Z	devral	dr_willis	in smb.conf, how do i specify to use the smbpasswd users? it looks like it let my W7 PC login as a guest
+2011-07-02T12:58:00.000Z	dr_willis	devral	 i use the same user name on linux and windows. It should ask what user to login as i think 'unknown users' get remapped to guest.
+2011-07-02T12:59:00.000Z	devral	dr_willis	so how do i forbid guests from logging in?
+2011-07-02T12:59:00.000Z	dr_willis	devral	 in smb.conf there is a section to share the users 'home' directory - i normally enable that to share their whole home dir. that way i dont mess with specific shares.
+2011-07-02T12:59:00.000Z	dr_willis	devral	 that would be in the smb.fonf somewhere.. map guest to  somthing I think.  but what if you want publuic shares?
+2011-07-02T12:59:00.000Z	dr_willis	devral	 the samba docs (books) in the damba-doc package. have details on all this.
+2011-07-02T13:24:00.000Z	dr_willis	devral	 you can access the /servername/otherusername    share and i think it will ask for the other users password
+2011-07-02T13:25:00.000Z	dr_willis	devral	 by default i think   the home share. tries to access the current users name.
+2011-07-02T13:25:00.000Z	dr_willis	devral	 i always fine it easier to just use identical user names on my linux and windows machines.
+2011-07-02T13:27:00.000Z	devral	dr_willis	right now, windows 7 isn't asking me for any creds, but i can RWX to my own directory (same username on win/ubu)
+2011-07-02T13:27:00.000Z	devral	dr_willis	but i can READ other users directories
+2011-07-02T13:28:00.000Z	dr_willis	devral	 you want to be able to write to theirs as well?
+2011-07-02T13:29:00.000Z	devral	dr_willis	i want their directories to be secured (i.e., when i type /servername/otheruser, windows 7 should ask me for their user/pass - right now it isn't doing that)
+2011-07-02T13:30:00.000Z	dr_willis	devral	 they need to set their permissions on their homes I guess..

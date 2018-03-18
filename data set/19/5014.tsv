@@ -1,0 +1,19 @@
+2008-09-24T11:57:00.000Z	rigel		im having a problem with libcss or libdvdread and i dont know how to debug it
+2008-09-24T11:57:00.000Z	rigel		i try and get vlc, or dvdbackup, to play the dvd, and it hangs forever while pulling the css key, and then says error cracking css key
+2008-09-24T11:57:00.000Z	rigel		and then the drive light goes off
+2008-09-24T11:58:00.000Z	rigel		where do i start with trying to figure out what the problem is
+2008-09-24T11:59:00.000Z	rigel		it will crack other dvds but not these two. it takes forever to find the keys tho
+2008-09-24T12:01:00.000Z	daklan	rigel	a good way to debug your problem is to call vlc/dvdbackup from a terminal, and look closely at the output on your terminal. most programs would output their messages/errors on stdout
+2008-09-24T12:01:00.000Z	rigel	daklan	i did. thats how i know the output from libdvdread
+2008-09-24T12:01:00.000Z	rigel		id like to get more verbosity though
+2008-09-24T12:01:00.000Z	daklan	rigel	-v?
+2008-09-24T12:01:00.000Z	rigel		and i still dont know whether it's the dvdread or the css library thats the problem
+2008-09-24T12:02:00.000Z	rigel		-v will give me vlc verbosity
+2008-09-24T12:02:00.000Z	rigel		but it passes stuff off to libdvdread and libcss
+2008-09-24T12:02:00.000Z	rigel		i get the same output from those no matter what switches i use
+2008-09-24T12:03:00.000Z	rigel		wow thats a lot of buffer
+2008-09-24T12:04:00.000Z	daklan	rigel	dpkg -L libdvdcss2 | cat `grep README`
+2008-09-24T12:05:00.000Z	daklan	rigel	there's an environment variable that you can set to increase the verbosity of libdvdcss output
+2008-09-24T12:05:00.000Z	rigel		how do i set the environment variable
+2008-09-24T12:05:00.000Z	rigel		yo no se
+2008-09-24T12:06:00.000Z	daklan	rigel	export <var>=<value>

@@ -1,0 +1,21 @@
+2011-02-22T02:01:00.000Z	sincir		hey there! i' m trying to get xcompmgr running together with my windowmanager, but whenever i run xcompmgr in a terminal emulator as normal user, it runs, but "locks" the terminal and when i close the terminal emulator, xcompgmr automatically stops, now i don't know how i can get xcompmgr running without sudo...is there any help for me?
+2011-02-22T02:02:00.000Z	ohsix	sincir	xcompmgr was pretty much just a demo, is there any reason you still use it?
+2011-02-22T02:03:00.000Z	sincir	ohsix	1.) openbox needs it to have some eyecandy (that i REALLY need ;)) 2.) i don't know any alternative yet, you have a hint for me?
+2011-02-22T02:04:00.000Z	ohsix	sincir	ah if you're using it with openbox you'll probably need to keep doing it, the alternatives are different window managers
+2011-02-22T02:05:00.000Z	ohsix	sincir	compiz, metacity has compositing built in now (based off xcompmgr) kwin ha some stuff, generally any overlapping window manager that's still maintained does some form of compositing
+2011-02-22T02:05:00.000Z	sincir	ohsix	but i'm sure my problem is just some childish rights problem, right?
+2011-02-22T02:05:00.000Z	ohsix	sincir	compiz is the go-to eyecandy choice tho
+2011-02-22T02:05:00.000Z	sincir	ohsix	no, compiz is too much of a load to just have a transparent terminal...
+2011-02-22T02:06:00.000Z	ohsix	sincir	i dunno, running it as root is never right, you probably have some files in your home dir or /tmp that got their permission changed by using sudo; and as a regular user it can't connect
+2011-02-22T02:06:00.000Z	sincir	ohsix	which config files in ~ does xcompmgr need to read? Xdefaults?
+2011-02-22T02:07:00.000Z	ohsix	sincir	the .ICEauthority and some others that it gets credentials from to connect to the server
+2011-02-22T02:07:00.000Z	ohsix	sincir	just checking that they're owned by you should be sufficient to see whats going on
+2011-02-22T02:08:00.000Z	sincir	ohsix	is it really ok to have .ICEauthority readable for any user?
+2011-02-22T02:09:00.000Z	ohsix	sincir	no, it's supposed to be for you, they're your credentials
+2011-02-22T02:09:00.000Z	ohsix	sincir	looks like this here -rw------- 1 ohsix ohsix 3454 2011-02-17 12:07 /home/ohsix/.ICEauthority
+2011-02-22T02:10:00.000Z	sincir	ohsix	by "any" i mean "me" (atm it's just -rw-------)
+2011-02-22T02:10:00.000Z	ohsix	sincir	as long as it says you own it then it's not a problem
+2011-02-22T02:10:00.000Z	sincir	ohsix	it looks just like yours: -rw------- 1 ohsix ohsix 3454 2011-02-17 12:07 /home/ohsix/.ICEauthority - so i don't have to change anything?
+2011-02-22T02:20:00.000Z	sincir	ohsix	btw, do you know if Awesome WM has already a built in xcompmgr?
+2011-02-22T02:21:00.000Z	ohsix	sincir	nope, no clue; i pretty much mentioned all the ones i knew personally by name already
+2011-02-22T02:22:00.000Z	sincir	ohsix	ok, will test it another time, thx for the help so far

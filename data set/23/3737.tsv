@@ -1,0 +1,23 @@
+2008-02-04T10:25:00.000Z	jtmitchum		I seriously goofed up my system
+2008-02-04T10:27:00.000Z	jtmitchum		after installing gdm and x-window-system-core on a dapper headless, I can't boot in
+2008-02-04T10:27:00.000Z	jtmitchum		I get a (none) login: prompt
+2008-02-04T10:28:00.000Z	jtmitchum		and when I login I get /dev/null Permission denied over and over again
+2008-02-04T10:28:00.000Z	jtmitchum		also, the filesystem keeps setting itself to read only
+2008-02-04T10:28:00.000Z	jtmitchum		I went into a restore kernel and mount /dev/hda -o rw,remount and removed gdm and x-windows, but no good
+2008-02-04T10:29:00.000Z	jtmitchum		any takers?
+2008-02-04T10:30:00.000Z	tcpdumpgod	jtmitchum	is the filesystem dirty?
+2008-02-04T10:31:00.000Z	jtmitchum	tcpdumpgod	best way to tell?
+2008-02-04T10:31:00.000Z	tcpdumpgod	jtmitchum	what you need to do is boot into single user mode in grub, then fsck the slice that its marking as read only.
+2008-02-04T10:31:00.000Z	tcpdumpgod	jtmitchum	you need to do it from grub, because you need to have it unmounted unless it needs to make changes to the filesystem.
+2008-02-04T10:32:00.000Z	jtmitchum	tcpdumpgod	single user mode?
+2008-02-04T10:34:00.000Z	tcpdumpgod	jtmitchum	http://ubuntuforums.org/showthread.php?t=683836&highlight=login+%2Fdev%2Fnull
+2008-02-04T10:36:00.000Z	jtmitchum	tcpdumpgod	 thanks for the forum post... I'll give it a ttry
+2008-02-04T10:38:00.000Z	jtmitchum	tcpdumpgod	would you try rm the /dev/null? does that seem like a reasonable effort?
+2008-02-04T10:46:00.000Z	tcpdumpgod	jtmitchum	| fsck
+2008-02-04T10:46:00.000Z	jtmitchum	tcpdumpgod	yessire
+2008-02-04T10:46:00.000Z	tcpdumpgod	jtmitchum	| fsck!
+2008-02-04T10:48:00.000Z	jtmitchum	tcpdumpgod	would you singlue user in recovery kernel or normal kernel?
+2008-02-04T10:51:00.000Z	jtmitchum	tcpdumpgod	can I run that shutdown command as an alternative to grub -> single user mode?
+2008-02-04T10:51:00.000Z	tcpdumpgod	jtmitchum	no... grub is your boot loader.
+2008-02-04T11:05:00.000Z	tcpdumpgod	jtmitchum	how's that going for you?
+2008-02-04T11:09:00.000Z	jtmitchum	tcpdumpgod	yes

@@ -1,0 +1,24 @@
+2010-07-31T02:10:00.000Z	thinkingabout		Upon execution of command: "sudo dd if=/dev/urandom of=/dev/sda bs=512" Hours go by and it doesn't finish writing. In order to know what was happening I invoked (in another console) dd again, with the skip option, in order to know what % of the disk had been written; it seems that it went almost till the end, but the last bytes remain unwritten (the disk had been previously zeroed)
+2010-07-31T02:11:00.000Z	cast	thinkingabout	life can be hard when you don't read the manual, kill -USR1 will tell you the status of dd, though if you want to try again you might want to use dd_rescue
+2010-07-31T02:13:00.000Z	thinkingabout	cast	coincidentaly, it has just finished as I was writing. It ended prompting the message "No free space in the device". Is that normal when it reaches the end?
+2010-07-31T02:15:00.000Z	cast	thinkingabout	yes.
+2010-07-31T02:16:00.000Z	cast	thinkingabout	you could use openssl -in /dev/zero to create a much faster PRNG than /dev/urandom :)
+2010-07-31T02:18:00.000Z	thinkingabout	cast	another question (sorry for asking too much): given that I didn't specify a "count", is it normal that it gives the message "there's no free space in the device" as it reaches its end?
+2010-07-31T02:19:00.000Z	cast	thinkingabout	yes.
+2010-07-31T02:21:00.000Z	thinkingabout	cast	what portions of a HDD would not be accessible using "dd"? only the g-list and the p-list?
+2010-07-31T02:22:00.000Z	cast	thinkingabout	g/p-list?
+2010-07-31T02:23:00.000Z	thinkingabout	cast	yes, the table where bad sectors are remapped into a different logical sector
+2010-07-31T02:25:00.000Z	thinkingabout	cast	that's what I thought
+2010-07-31T02:26:00.000Z	cast	thinkingabout	use encryption rather than secure deletion,
+2010-07-31T02:26:00.000Z	thinkingabout	cast	why so?
+2010-07-31T02:26:00.000Z	cast	thinkingabout	because you can never be confident of secure deletion
+2010-07-31T02:28:00.000Z	thinkingabout	cast	why not? because some data might happen to be in a sector that's later marked as "bad" and remapped elsewhere, thus making it impossible to rewrite the data at that sector?
+2010-07-31T02:29:00.000Z	cast	thinkingabout	yes.
+2010-07-31T02:31:00.000Z	thinkingabout	cast	good point, if a disk has 100 sectors marked as "bad", would that always imply 51.200 kB of data, or could it happen that sectors are bigger than 512-b?
+2010-07-31T02:31:00.000Z	cast	thinkingabout	i don't know as to the internal workings, nor care to, as they keep changing and you can never be sure
+2010-07-31T02:33:00.000Z	thinkingabout	cast	do you think that it's getting to the point where, eventually, access to the disk could be so obscure as to allow it to keep logs with your data that are transparent to you?
+2010-07-31T02:35:00.000Z	cast	thinkingabout	certainly, take SSD
+2010-07-31T02:35:00.000Z	cast	thinkingabout	that almost does it inadvertantly
+2010-07-31T02:39:00.000Z	thinkingabout	cast	disambiguation: SSD from Eff? or... SSD meaning "Solid State Drive"?
+2010-07-31T02:40:00.000Z	cast	thinkingabout	the latter
+2010-07-31T02:44:00.000Z	cast	thinkingabout	id say if its non-violatile solid-state media one can use as a general purpose block device, then yes

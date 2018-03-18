@@ -1,0 +1,19 @@
+2007-04-25T15:57:00.000Z	Guitrokr		i Installed ubuntu on an external hard drive but it automatically put grub in my internal hard drives boot sector, so now i can't boot my computer without the external plugged in... is there a way to move grub to the external?
+2007-04-25T15:58:00.000Z	Guitrokr		i Installed ubuntu on an external hard drive but it automatically put grub in my internal hard drives boot sector, so now i can't boot my computer without the external plugged in... is there a way to move grub to the external?
+2007-04-25T16:00:00.000Z	soundray	Guitrokr	when the system is booted, you can install grub with 'sudo grub-install install_device', where install_device is something like /dev/sda
+2007-04-25T16:01:00.000Z	soundray	Guitrokr	man grub-install helps.
+2007-04-26T16:01:00.000Z	soundray	Guitrokr	once that's done, you need to fix grub on the internal disk so it doesn't rely on the external one any more. Or replace it with another bootloader.
+2007-04-26T16:02:00.000Z	soundray	Guitrokr	of course it can. But then you won't have a bootloader. And a system that won't boot. Hint: that's not what you want ;)
+2007-04-26T16:03:00.000Z	soundray	Guitrokr	grub is the bootloader
+2007-04-26T16:04:00.000Z	soundray	Guitrokr	yes. It was using the Windows bootloader, which is now overwritten by grub.
+2007-04-26T16:05:00.000Z	soundray	Guitrokr	about 99.8% of people want to boot with grub, that's why it doesn't ask.
+2007-04-26T16:05:00.000Z	soundray	Guitrokr	not really
+2007-04-26T16:07:00.000Z	soundray	Guitrokr	I suggest you find a way to add a boot option for Linux in NTLDR (the Windows bootloader). There are howtos for that on the net.
+2007-04-26T16:08:00.000Z	soundray	Guitrokr	you will have to use a Windows install CD to "repair" NTLDR
+2007-04-26T16:09:00.000Z	soundray	Guitrokr	if that's what you prefer, you can install grub for NT.
+2007-04-26T16:09:00.000Z	soundray	Guitrokr	I don't know much about it, I think it's slightly experimental. Again, search the web if that is the way you want to go
+2007-04-26T16:10:00.000Z	soundray	Guitrokr	NT is the technology base for the current Windows products
+2007-04-26T16:10:00.000Z	soundray	Guitrokr	what horrors? You're being helped by friendly guys ;)
+2007-04-26T16:11:00.000Z	soundray	Guitrokr	the other thing you can do is create a micro boot partition on the internal disk just for the stuff that grub needs
+2007-04-26T16:13:00.000Z	soundray	Guitrokr	it doesn't mean you would lose anything
+2007-04-26T16:13:00.000Z	soundray	Guitrokr	and what do you have a backup for, anyway

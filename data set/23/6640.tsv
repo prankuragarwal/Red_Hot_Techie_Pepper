@@ -1,0 +1,23 @@
+2006-06-03T10:09:00.000Z	rixth_		I am unable to mount my vfat partition at all... fdisk -l tells me it is W95 Ext'd (LBA) but mount says wrong superblock error. What now?
+2006-06-03T10:11:00.000Z	Agent_bob	rixth_	  sudo mount /dev/<devicenode> -t vfat /<mountpoint>
+2006-06-03T10:11:00.000Z	rixth_	Agent_bob	I know that, but it gives a superblock error.
+2006-06-03T10:13:00.000Z	Agent_bob	rixth_	shouldn't be a super block.   check the device node exists and the mount point exists and is a dir.
+2006-06-03T10:14:00.000Z	rixth_	Agent_bob	/dev/sda5 /d vfat rw,user,noexec,noauto,dev,async 0 0 and /d is a directory.
+2006-06-03T10:14:00.000Z	Agent_bob	rixth_	there's your problem.
+2006-06-03T10:15:00.000Z	rixth_	Agent_bob	do tell?
+2006-06-03T10:15:00.000Z	Agent_bob	rixth_	you have fs specific switches that cant be used with vfat.   man mount.
+2006-06-03T10:16:00.000Z	rixth_	Agent_bob	/dev/sda5 /d vfat defaults  0 0 still generates the error
+2006-06-03T10:18:00.000Z	Agent_bob	rixth_	then it's not vfat.   fsck that bad boy.
+2006-06-03T10:20:00.000Z	rixth_	Agent_bob	if I use disks-admin, it temporairly mounts the disks, it reports the filesystem as vfat too and if I run sudo nautilus /tmp/disks-conf-sda5 I can see the contents...
+2006-06-03T10:23:00.000Z	rixth_	Agent_bob	any ideas? So I know the disk is OK
+2006-06-03T10:24:00.000Z	Agent_bob	rixth_	do you ?      run  sudo fsck /dev/sda5      and see what it says.
+2006-06-03T10:25:00.000Z	rixth_	Agent_bob	Yeah, I know the disk is ok, you ,usn't have got this: if I use disks-admin, it temporairly mounts the disks, it reports the filesystem as vfat too and if I run sudo nautilus /tmp/disks-conf-sda5 I can see the contents...
+2006-06-03T10:25:00.000Z	rixth_	Agent_bob	http://pastebin.com/754954
+2006-06-03T10:29:00.000Z	rixth_	Agent_bob	fsck reports it as vfat too/
+2006-06-03T10:29:00.000Z	rixth_	Agent_bob	no it isn't! I /can/ read the contents!
+2006-06-03T10:30:00.000Z	Agent_bob	rixth_	it also reports  "9" file allocation tables found.
+2006-06-03T10:30:00.000Z	rixth_	Agent_bob	that leaves me perplexed as to how I am able to access them when disks-admin mounts them.
+2006-06-03T10:32:00.000Z	Agent_bob	rixth_	can't answer that,  but i can telly you that mount seems to be failing vecause it's not finding an fat on the vfat system.
+2006-06-03T10:33:00.000Z	rixth_	Agent_bob	then what can I do about that?
+2006-06-03T10:33:00.000Z	Agent_bob	rixth_	disk admin maybe mounting as ext....     if you can cp the files out of there  format that dude.
+2006-06-03T10:34:00.000Z	Agent_bob	rixth_	 an fs with errors is a major issue looking for data to eat....

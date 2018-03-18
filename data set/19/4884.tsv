@@ -1,0 +1,19 @@
+2009-12-11T16:15:00.000Z	semslie		hello all - would someone be kind enough to point me in the right direction for asking questions about sshfs and fuse?
+2009-12-11T16:16:00.000Z	airtonix	semslie	simple outline of your questions here first then see where it might lead
+2009-12-11T16:20:00.000Z	airtonix	semslie	one thing comes to mind : the user id number on the remote system and the user id on the local system... are tey the same?
+2009-12-11T16:21:00.000Z	semslie	airtonix	yes - both id and group of the user is 501, which is the same as the remote os user (osx)
+2009-12-11T16:21:00.000Z	airtonix	semslie	the other thing to consider : have  you been able to execute scripts/programs over fuse-ssh before?
+2009-12-11T16:21:00.000Z	semslie	airtonix	 though the group id of the files on osx are 20 (staff). Not sure if this should make a difference though
+2009-12-11T16:22:00.000Z	semslie	airtonix	I've never actually tried before. I was wondering if this was a known limitation of ssh-fs, or even fuse in general?
+2009-12-11T16:23:00.000Z	airtonix	semslie	i think it is a limitation of fuse
+2009-12-11T16:24:00.000Z	semslie	airtonix	if thats the case then I may have to give up this approach and try something else :(
+2009-12-11T16:24:00.000Z	airtonix	semslie	consider maybe using xdmcp
+2009-12-11T16:25:00.000Z	airtonix	semslie	from memory i have been able to run script s from ssh mounts using plain gnome places
+2009-12-11T16:27:00.000Z	semslie	airtonix	hmm. I wonder if I can get anything at all to execute from the sshfs mount?
+2009-12-11T16:27:00.000Z	semslie	airtonix	 This is actually a virtualbox instance so I'm going to see if the 'shared folder' feature gets the job done.
+2009-12-11T16:53:00.000Z	semslie	airtonix	ftr I've managed to get it working with a virtualbox Shared Folder, mounting the vboxsf type in my fstab. Home folder is now on the host machine and files there are executable. Hopefully that'll do the job.
+2009-12-11T16:55:00.000Z	airtonix	semslie	the other thing you can try (when not using a vbox and instead normal live networks) is nfs
+2009-12-11T16:55:00.000Z	airtonix	semslie	since osx supports using nfs
+2009-12-11T16:56:00.000Z	semslie	airtonix	yes that sounds like the most tried and tested solution, though I was a little cautious about whether user id's and all would get horribly in the way. Worth a try though if I run into more trouble.
+2009-12-11T17:13:00.000Z	semslie	airtonix	that didn't take long - turns out vboxsf doesn't support symlinks at all :P
+2009-12-11T17:34:00.000Z	semslie	airtonix	So far mounting over samba is working a lot better than either the sshfs or vboxsf options

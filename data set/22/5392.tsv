@@ -1,0 +1,22 @@
+2010-03-02T08:17:00.000Z	bethany		anyone/.
+2010-03-02T08:18:00.000Z	arand	bethany	In the maintenance shell does it say "run fsck manually"?
+2010-03-02T08:19:00.000Z	bethany	arand	not sure i typed cat /etc/fstab
+2010-03-02T08:21:00.000Z	arand	bethany	yea, at this stage the system has pretty much decided not to tuch the filesystem before it's checked thouroughly, are you still at the maintenance shell now?
+2010-03-02T08:22:00.000Z	bethany	arand	ya i am ive been googling but i just am at a loss of what to do.
+2010-03-02T08:23:00.000Z	bethany	arand	it happened a few days ago too so i reinstaled / ... so maybe its my hdd going bad? win still boots fine. and its always my / partition that does this.
+2010-03-02T08:23:00.000Z	bethany	arand	my baby unplugs my laptop that doesnt charge anymore several times a day.
+2010-03-02T08:24:00.000Z	arand	bethany	reapeated fsck errors could be a sign of hardware failiure, but yes, repoeated power cuts can also do messy things to the filesystem if not shutdown cleanly.
+2010-03-02T08:24:00.000Z	arand	bethany	are there important data on the filesystem in question?
+2010-03-02T08:26:00.000Z	arand	bethany	there is a command available which will either fix it or if unlucky break it even more (I've experienced both)...
+2010-03-02T08:26:00.000Z	bethany	arand	well aslong as it only breaks / and not /home with it
+2010-03-02T08:27:00.000Z	arand	bethany	Do you have them on separate partitions?
+2010-03-02T08:27:00.000Z	bethany	arand	ya i do
+2010-03-02T08:31:00.000Z	arand	bethany	Recommendations: QUOTE: "Try recommending to boot a liveCD first, perform a dd backup, force-mount the filesystem, attempt to extract /etc, and then pull the trigger.  That makes is less likely to be horrible when something goes wrong."
+2010-03-02T08:33:00.000Z	arand	bethany	or you could just "close-eyes-pull-trigger", as someone so nicely put it.
+2010-03-02T08:43:00.000Z	arand	bethany	You still there?
+2010-03-02T08:44:00.000Z	bethany	arand	ya
+2010-03-02T08:46:00.000Z	arand	bethany	hmm, that is normally quite a bad sign. And if that's where the important files are I'd definitely say a partition clone using dd would be a good idea to make sure.
+2010-03-02T08:46:00.000Z	arand	bethany	was this from the maintenance shell?
+2010-03-02T08:47:00.000Z	arand	bethany	How did you run fsck and what kind of errors did it give
+2010-03-02T08:48:00.000Z	bethany	arand	i just typed fsck /dev/sda7 in maint shell
+2010-03-02T09:12:00.000Z	arand	bethany	if /dev/sda7 is your /home and important I would definitley do a dd backup before doing any more fsck.

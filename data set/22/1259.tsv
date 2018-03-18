@@ -1,0 +1,22 @@
+2010-07-26T06:55:00.000Z	zerhash		ya i realize it is grub 2
+2010-07-26T06:56:00.000Z	zerhash		i also realize that the install should work and it isnt
+2010-07-26T06:58:00.000Z	ilovefairuz	zerhash	boot in the livecd, open a terminal, type: sudo fdisk -l
+2010-07-26T06:58:00.000Z	ilovefairuz	zerhash	 and pastebin
+2010-07-26T06:59:00.000Z	zerhash	ilovefairuz	there is nothing to pastebin
+2010-07-26T06:59:00.000Z	ilovefairuz	zerhash	i said boot into the livecd
+2010-07-26T07:00:00.000Z	ilovefairuz	zerhash	type: sudo fdisk -l
+2010-07-26T07:00:00.000Z	ilovefairuz	zerhash	 and pastebin
+2010-07-26T07:03:00.000Z	ilovefairuz	zerhash	there are two disks, which one you installed ubuntu to ?
+2010-07-26T07:04:00.000Z	ilovefairuz	zerhash	which partition ?
+2010-07-26T07:05:00.000Z	ilovefairuz	zerhash	alright, type .. sudo mount /dev/sdb3 /mnt
+2010-07-26T07:06:00.000Z	ilovefairuz	zerhash	which one is your first bootable disk? sda or sdb?
+2010-07-26T07:06:00.000Z	zerhash	ilovefairuz	she is mounted
+2010-07-26T07:07:00.000Z	ilovefairuz	zerhash	i mean the boot order in bios, is sda first or sdb?
+2010-07-26T07:08:00.000Z	ilovefairuz	zerhash	sudo grub-install --root-directory=/mnt/ /dev/sdb
+2010-07-26T07:09:00.000Z	zerhash	ilovefairuz	strange, i got an error
+2010-07-26T07:10:00.000Z	ilovefairuz	zerhash	pastebin everything, command and its output
+2010-07-26T07:10:00.000Z	zerhash	ilovefairuz	http://pastebin.com/iHMuFFr4
+2010-07-26T07:14:00.000Z	ilovefairuz	zerhash	something abnormal about parition spacing on sdb, you could install on sda and make it the first boot disk in bios
+2010-07-26T07:16:00.000Z	ilovefairuz	zerhash	it's only the MBR that will be installed, all files will still remain on sdb
+2010-07-26T07:17:00.000Z	ilovefairuz	zerhash	the MBR is very small and won't touch your files on sda
+2010-07-26T07:17:00.000Z	ilovefairuz	zerhash	change only the second command line and make it sda

@@ -1,0 +1,19 @@
+2012-09-18T07:07:00.000Z	afflicto		I seem to have a apache permission problem. my php script tries to require_once some files and I get "Warning: Unknown: failed to open stream: Permission denied in Unknown on line 0 Fatal error: Unknown: Failed opening required". Thanks in advance
+2012-09-18T07:09:00.000Z	deww	afflicto	does it tell you which file in specific?
+2012-09-18T07:09:00.000Z	afflicto	deww	here is the entire error: "Warning: Unknown: failed to open stream: Permission denied in Unknown on line 0 Fatal error: Unknown: Failed opening required '/var/www/dcms/index.php' (include_path='.:/usr/share/php:/usr/share/pear') in Unknown on line 0".
+2012-09-18T07:10:00.000Z	deww	afflicto	what are the permissions for that file and the dirs before it?
+2012-09-18T07:11:00.000Z	afflicto	deww	I'm not sure :P I'm a ubuntu-noob x)
+2012-09-18T07:11:00.000Z	afflicto	deww	I remember doing some chmod or ... chawn I think It was.
+2012-09-18T07:12:00.000Z	deww	afflicto	does /var/www/dcms/index.php exist?
+2012-09-18T07:12:00.000Z	afflicto	deww	yep.
+2012-09-18T07:13:00.000Z	deww	afflicto	ls -l /var/www/dcms and ls -l /var/www/dcms/index.php, what are the perms?
+2012-09-18T07:13:00.000Z	deww	afflicto	ls -l /var/www
+2012-09-18T07:13:00.000Z	deww	afflicto	don't paste more than one line on irc
+2012-09-18T07:14:00.000Z	afflicto	deww	-rw-------  1 afflicto afflicto 1507 Sep 18 05:03 index.php
+2012-09-18T07:14:00.000Z	deww	afflicto	ok try chmod 744 /var/www/dcms/index.php and reload the page
+2012-09-18T07:15:00.000Z	afflicto	deww	ok I did that and I get a slightly different error now: "Warning: require(dreamcms/sys/func.php): failed to open stream: Permission denied in /var/www/dcms/index.php on line 4 Fatal error: require(): Failed opening required 'dreamcms/sys/func.php' (include_path='.:/usr/share/php:/usr/share/pear') in /var/www/dcms/index.php on line 4".
+2012-09-18T07:16:00.000Z	deww	afflicto	it's something similiar. you need to allow "others" to read the file. but ikonia's suggestions would be the best in terms of the proper permissions.
+2012-09-18T07:16:00.000Z	deww	afflicto	http://www.unixref.com/guides/chmod-guide.php
+2012-09-18T07:17:00.000Z	deww	afflicto	i am scared to use your app or whatever it is :)
+2012-09-18T07:18:00.000Z	deww	afflicto	it's not an apache problem. it's a file permissions problem
+2012-09-18T07:19:00.000Z	deww	afflicto	you need your files to be readable by others.

@@ -1,0 +1,21 @@
+2008-06-05T15:31:00.000Z	me__		hi
+2008-06-05T15:31:00.000Z	me__		i'm on an old laptop with an ubuntu i386 8.01 server based system, running openbox window manager, and it works, but there's an odd problem: instead of a single mouse cursor, there are three
+2008-06-05T15:33:00.000Z	soundray	me__	it may be the result of a failed attempt at displaying a cursor shadow. You can turn off cursor shadows from /etc/X11/xorg.conf
+2008-06-05T15:34:00.000Z	me__	soundray	that sounds about right. when one of the copies goes over an element on the screen it inverts the color
+2008-06-05T15:34:00.000Z	soundray	me__	do you know which video driver X is using?
+2008-06-05T15:35:00.000Z	soundray	me__	which version do you really have (there is no 8.01)?
+2008-06-05T15:38:00.000Z	soundray	me__	no, but you can probably determine it from /var/log/Xorg.0.log
+2008-06-05T15:46:00.000Z	soundray	me__	have you found out what video driver is being used?
+2008-06-05T15:47:00.000Z	soundray	me__	man siliconmotion should tell you about driver options
+2008-06-05T15:48:00.000Z	soundray	me__	no, 1 sec
+2008-06-05T15:49:00.000Z	soundray	me__	here's what I suggest you try: 'sudo nano /etc/X11/xorg.conf', scroll down to Section "Device" and add the following line
+2008-06-05T15:50:00.000Z	soundray	me__	Option "HWCursor" "off"
+2008-06-05T15:51:00.000Z	soundray	me__	insert it under the Driver line.
+2008-06-05T15:51:00.000Z	soundray	me__	don't leave out any of the quote marks please
+2008-06-05T15:51:00.000Z	soundray	me__	I suspected that. Insert it under the identifier line, then.
+2008-06-05T15:52:00.000Z	soundray	me__	save and restart X to test
+2008-06-05T15:52:00.000Z	soundray	me__	or restart X, if you have a display manager installed
+2008-06-05T15:53:00.000Z	soundray	me__	Ctrl-Alt-Backspace is fine
+2008-06-05T15:54:00.000Z	soundray	me__	one way or another, you'll be able to test your xorg.conf modification
+2008-06-05T15:55:00.000Z	soundray	me__	oh... enter startx then blindly. Or login if you haven't already
+2008-06-05T15:56:00.000Z	soundray	me__	cursor fixed?

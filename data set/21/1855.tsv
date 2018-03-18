@@ -1,0 +1,21 @@
+2011-02-07T06:07:00.000Z	user0		if ldd gives me something like libjpeg.so.8 => not found
+2011-02-07T06:07:00.000Z	user0		can i get the binary to look for the lib in a location that i set?
+2011-02-07T06:07:00.000Z	user0		trying to compile it as a static binary didnt work
+2011-02-07T06:07:00.000Z	user0		suggestions ?
+2011-02-07T06:08:00.000Z	cfedde	user0	look into ldconfig
+2011-02-07T06:09:00.000Z	user0	cfedde	: this would work as non root?
+2011-02-07T06:10:00.000Z	cfedde	user0	nonroot might be more interested in LD_LIBRARY_PATH?
+2011-02-07T06:12:00.000Z	user0		<cfedde> : echo $LD_LIBRARY_PATH gives me nothing, normal ?
+2011-02-07T06:13:00.000Z	cfedde	user0	LD_LIBRARY_PATH is normaly empty. But it gives you a way to add directories to look for shared libraries.
+2011-02-07T06:14:00.000Z	user0	cfedde	: how do i add a dir, and could i just copy the ones i have on my system on to another ?
+2011-02-07T06:14:00.000Z	user0	cfedde	: like could i just copy libjpeg.so.8 and put it in /home/user/foo and add that dir to LD_LIBRARY_PATH ?
+2011-02-07T06:15:00.000Z	cfedde	user0	it is a prepend to the default library search list.  it has the same structure as the PATH evironment
+2011-02-07T06:15:00.000Z	cfedde	user0	it seems that something is broken if the proper place where libjpeg.so.8 is installed is not loaded by defualt.
+2011-02-07T06:16:00.000Z	user0		<cfedde> : i dont have root access
+2011-02-07T06:17:00.000Z	cfedde	user0	as a stop gap then put the directory where the library lives into LD_LIBRARY_PATH
+2011-02-07T06:17:00.000Z	cfedde	user0	no need to copy it.
+2011-02-07T06:18:00.000Z	user0		<cfedde> : its not on the same server
+2011-02-07T06:19:00.000Z	user0		<cfedde> : i tried static compiling and some other stuff so far and nothing worked, hope this will work
+2011-02-07T06:19:00.000Z	cfedde	user0	Now I'm confused. you are trying to use a library on a computer you don't have access to?
+2011-02-07T06:19:00.000Z	user0		<cfedde> : i do, just not root access
+2011-02-07T06:20:00.000Z	cfedde	user0	then in the environment on that system before starting the library make sure you set

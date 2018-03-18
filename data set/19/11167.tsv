@@ -1,0 +1,19 @@
+2006-08-27T06:47:00.000Z	dobblego		can anyone tell me what is wrong with this line in /etc/fstab? or where any information about why the mount failed might be logged? //host/music /data/music    smbfs   guest,ro        0       0
+2006-08-27T06:48:00.000Z	silvaran	dobblego	I'm not an fstab/smbfs expert, but "guest" doesn't seem right to me.. maybe "username=guest"
+2006-08-27T06:49:00.000Z	dobblego	silvaran	I can mount manually with -o "guest,ro"
+2006-08-27T06:49:00.000Z	dobblego	silvaran	I got that from man smbmount
+2006-08-27T06:49:00.000Z	silvaran	dobblego	Hence the "I'm not an fstab/smbfs expert" :)
+2006-08-27T06:49:00.000Z	silvaran	dobblego	What kind of error do you get?
+2006-08-27T06:50:00.000Z	silvaran	dobblego	You can also mount on a per-line basis by doing "mount /data/music" or "umount /data/music"
+2006-08-27T06:50:00.000Z	dobblego	silvaran	I don't get an error - it just doesn't mount at boot - I don't know where to look for an error
+2006-08-27T06:50:00.000Z	silvaran	dobblego	MAYBE your network isn't set up when that line is hit at bootup.
+2006-08-27T06:51:00.000Z	silvaran	dobblego	But that's as far as my knowledge goes... there might be a way to mount networked filesystems during boot--anyone?
+2006-08-27T06:51:00.000Z	dobblego	silvaran	any idea where to look in the logs to find out?
+2006-08-27T06:51:00.000Z	silvaran	dobblego	dmesg ?
+2006-08-27T06:51:00.000Z	dobblego	silvaran	I couldn't see anything there
+2006-08-27T06:51:00.000Z	silvaran	dobblego	After bootup try just simply "mount /data/music" so that mount is forced to look at fstab.
+2006-08-27T06:52:00.000Z	dobblego	silvaran	do you mean, doing that will force whatever is in /etc/fstab to have an effect?
+2006-08-27T06:52:00.000Z	silvaran	dobblego	Yeah... if mount is given a path, it needs to look at /etc/fstab for extra information.
+2006-08-27T06:54:00.000Z	silvaran	dobblego	OK, then it's two likely possibilities: 1) During boot, trying to mount it before the network is ready; 2) During boot, trying to mount it before samba name lookup is ready.  Can you try specifying the IP address in /etc/fstab instead of the name? (DNS doesn't count :(...
+2006-08-27T06:58:00.000Z	dobblego	silvaran	using the IP address had no effect - but I could mount after boot with "sudo mount /data/music"
+2006-08-27T07:03:00.000Z	dobblego	silvaran	fwiw, I found similar problems on google, but no solutions

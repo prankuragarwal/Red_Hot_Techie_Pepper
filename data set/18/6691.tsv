@@ -1,0 +1,18 @@
+2008-04-10T06:13:00.000Z	[[bc90021]]		I was experimenting with galeon, tor, and privoxy... set galeon to use localhost:8118 as proxy, now gnome-terminal is using it too... even though I have unset the proxy, uninstalled galeon, and rebooted
+2008-04-10T06:13:00.000Z	[[bc90021]]		anyone know how to get gnome-terminal to stop using the proxy?
+2008-04-10T06:14:00.000Z	soundray	[[bc90021]]	find out where it's set with 'grep http_proxy /etc/*' (probably /etc/environment)
+2008-04-10T06:15:00.000Z	[[bc90021]]	soundray	 it's not set
+2008-04-10T06:15:00.000Z	[[bc90021]]	soundray	 everything returned by that command is either a flag "--http-proxy" or on a line commented out
+2008-04-10T06:15:00.000Z	soundray	[[bc90021]]	then the setting must be in your home directory -- probably $HOME/.bashrc
+2008-04-10T06:16:00.000Z	soundray	[[bc90021]]	make sure you use the understroke (http_proxy)
+2008-04-10T06:16:00.000Z	[[bc90021]]	soundray	'grep http_proxy .bashrc'  returns nothing
+2008-04-10T06:17:00.000Z	soundray	[[bc90021]]	are you in your $HOME ?
+2008-04-10T06:17:00.000Z	[[bc90021]]	soundray	yes
+2008-04-10T06:17:00.000Z	soundray	[[bc90021]]	does 'grep -lr http_proxy /etc/*' return anything?
+2008-04-10T06:17:00.000Z	[[bc90021]]	soundray	 I've been using Linux for years, never come across anything like this before
+2008-04-10T06:18:00.000Z	[[bc90021]]	soundray	 many, many things
+2008-04-10T06:20:00.000Z	soundray	[[bc90021]]	any likely candidates for a proxy variable setting?
+2008-04-10T06:21:00.000Z	[[bc90021]]	soundray	I set the wgetrc to explicitly not use the proxy, and I can install things again
+2008-04-10T06:21:00.000Z	[[bc90021]]	soundray	 but it's still being set somewhere, I will have to do some digging!
+2008-04-10T06:21:00.000Z	soundray	[[bc90021]]	well, grep -rl is your friend :)
+2008-04-10T06:21:00.000Z	[[bc90021]]	soundray	indeed, thanks!  :-)

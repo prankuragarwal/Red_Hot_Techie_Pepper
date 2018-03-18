@@ -1,0 +1,18 @@
+2010-12-24T11:57:00.000Z	reenignEesreveR-		could someone please help me with NetworkManager not setting up correct routes?
+2010-12-24T11:57:00.000Z	shingen	reenignEesreveR-	how many NICs do you have?
+2010-12-24T11:58:00.000Z	reenignEesreveR-	shingen	I have two 3g USB EVDOs which I want to dial in simultaneously ... they get connected but no new gateway is added in my routing talking (not talking about default route)
+2010-12-24T12:00:00.000Z	shingen	reenignEesreveR-	are both IPs on the same subnet?
+2010-12-24T12:00:00.000Z	reenignEesreveR-	shingen	they are different ISPs so i assume they'd be using different subnets
+2010-12-24T12:01:00.000Z	shingen	reenignEesreveR-	have you tried to manually add routes?
+2010-12-24T12:01:00.000Z	reenignEesreveR-	shingen	i expect to have a gateway entry for ppp0 and a gateway entry for ppp1 but all i get is two host entries with subnet makss 255.255.255.255
+2010-12-24T12:01:00.000Z	reenignEesreveR-	shingen	i haven't tried that; probably that'd work but I want the PPP to add the entries itself
+2010-12-24T12:03:00.000Z	shingen	reenignEesreveR-	might need to look into pppd settings for the auto-routes is where I'd start... but manually adding will confirm it works as expected....
+2010-12-24T12:03:00.000Z	reenignEesreveR-	shingen	i can certainly add them manually but how do i figure out what routes the ISP is issuing me?
+2010-12-24T12:04:00.000Z	reenignEesreveR-	shingen	all i get is a new entry like this: Dest: 172.16.22.13  GW: 0.0.0.0 Flags: UH Iface: ppp0
+2010-12-24T12:04:00.000Z	shingen	reenignEesreveR-	ahh, ic... can you get routes with just one interface enabled?  don't forget that you'll need some way to dtermine what interface is used for what IP range....
+2010-12-24T12:05:00.000Z	shingen	reenignEesreveR-	when you have both enabled... e.g., a router to determine which interface to use to send /retrieve traffic...
+2010-12-24T12:06:00.000Z	shingen	reenignEesreveR-	might be better off talking abobut this in #networking... it's not ubuntu specific...
+2010-12-24T12:07:00.000Z	shingen	reenignEesreveR-	because you will need a routing protocol to determine which interface to use for inbound/outbound traffic...  and I'm sure you could use zebra for it, but the guys in #networking would be much more versed in doing so
+2010-12-24T12:07:00.000Z	reenignEesreveR-	shingen	would u mind if i continue here? ... i think im almost there
+2010-12-24T12:07:00.000Z	shingen	reenignEesreveR-	I'm just not sure how much more I can help you :)
+2010-12-24T12:08:00.000Z	reenignEesreveR-	shingen	alright :)

@@ -1,0 +1,24 @@
+2011-04-09T01:09:00.000Z	davers		hello I recently changed my router ip and now my apache vhosts aren't working.. anybody have any ideas?
+2011-04-09T01:10:00.000Z	davers		the webserver still works it's just that my vhosts just take me to default
+2011-04-09T01:10:00.000Z	meganerd	davers	what version of apace?
+2011-04-09T01:12:00.000Z	davers	meganerd	 2.2.16-1ubuntu3.1
+2011-04-09T01:13:00.000Z	davers	meganerd	 2.2.16-1ubuntu3.1
+2011-04-09T01:16:00.000Z	meganerd	davers	do you have the IP defined in /etc/apache2/sites-enabled/*
+2011-04-09T01:17:00.000Z	meganerd	davers	something that looks like NameVirtualHost and/or  VirtualHost?
+2011-04-09T01:22:00.000Z	meganerd	davers	you should probably check out the logs too: /var/log/apache2/error.log
+2011-04-09T01:23:00.000Z	meganerd	davers	by default vhosts are usually in /etc/apache2/sites-available/default
+2011-04-09T01:40:00.000Z	meganerd	davers	if you specified an IP in the config instead of *.80
+2011-04-09T01:40:00.000Z	meganerd	davers	if you specified an IP in the config instead of *:80
+2011-04-09T01:45:00.000Z	davers	meganerd	no i just specified the hostname
+2011-04-09T01:59:00.000Z	meganerd	davers	can you reach it internally?
+2011-04-09T01:59:00.000Z	davers	meganerd	no
+2011-04-09T01:59:00.000Z	davers	meganerd	just takes me to the default
+2011-04-09T02:02:00.000Z	meganerd	davers	where is the vhost defined?
+2011-04-09T02:02:00.000Z	davers	meganerd	in /etc/apache2/sites-available
+2011-04-09T02:03:00.000Z	davers	meganerd	and is enabled using a2ensite sitename
+2011-04-09T02:03:00.000Z	davers	meganerd	i run ubuntu 10.10
+2011-04-09T02:04:00.000Z	meganerd	davers	You have NameVirtualHost *:80 and <VirtualHost *:80> defined?
+2011-04-09T02:05:00.000Z	davers	meganerd	yeah
+2011-04-09T02:06:00.000Z	davers	meganerd	i do now but i had it deleted
+2011-04-09T02:06:00.000Z	davers	meganerd	when i put namevirtual host i get NameVirtualHost *:80 has no VirtualHosts
+2011-04-09T02:11:00.000Z	meganerd	davers	after NameVirtualHost there should be <VirtualHost *:80>,

@@ -1,0 +1,21 @@
+2008-02-07T21:15:00.000Z	Hisotaso		can anyone help me with a mounting overview?
+2008-02-07T21:17:00.000Z	Hisotaso		when i put in a cd it says mount point cdrom0 does not exist
+2008-02-07T21:18:00.000Z	pepperjack	Hisotaso	so ls /media doesnt show cdrom0? you can sudo mkdir /media/cdrom0
+2008-02-07T21:18:00.000Z	pepperjack	Hisotaso	might also sudo ln -s /media/cdrom0 /media/cdrom    <--- after you mkdir
+2008-02-07T21:19:00.000Z	Hisotaso	pepperjack	yes ls /media shows cdrom0
+2008-02-07T21:20:00.000Z	Hisotaso	pepperjack	what does this command do?
+2008-02-07T21:20:00.000Z	pepperjack	Hisotaso	creates a symlink like a shortcut that is /media/cdrom that points back to /media/cdrom0
+2008-02-07T21:22:00.000Z	pepperjack	Hisotaso	try this sudo mount -t iso9660 /dev/cdrom /media/cdrom0
+2008-02-07T21:23:00.000Z	Hisotaso	pepperjack	this is what i get back: mount: special device /dev/cdrom does not exist
+2008-02-07T21:23:00.000Z	pepperjack	Hisotaso	that is not a good sign
+2008-02-07T21:24:00.000Z	pepperjack	Hisotaso	try just the actual node  like sudo mount -t iso9660 /dev/hdc /media/cdrom0
+2008-02-07T21:25:00.000Z	Hisotaso	pepperjack	ok that worked, however am i going to have to do that everytie i put a disc in?
+2008-02-07T21:26:00.000Z	Hisotaso	pepperjack	also is that a sign of a hardware or software issue?
+2008-02-07T21:26:00.000Z	pepperjack	Hisotaso	no do this now: sudo ln -s /dev/hdc /dev/cdrom   <-- after that it should work i think but i really dont know udev hal stuff that well
+2008-02-07T21:26:00.000Z	pepperjack	Hisotaso	software
+2008-02-07T21:27:00.000Z	Hisotaso	pepperjack	it wont let me eject thje disc now lol
+2008-02-07T21:27:00.000Z	pepperjack	Hisotaso	try eject command
+2008-02-07T21:28:00.000Z	pepperjack	Hisotaso	also, haul back and smack your computer
+2008-02-07T21:29:00.000Z	Hisotaso	pepperjack	"/media/cdrom0 is not in the fstab (and you are not root); eject: unmount of `/media/cdrom0' failed, switched to root "eject" works fine, however thats a lot of work to put in  and eject a disc
+2008-02-07T21:31:00.000Z	pepperjack	Hisotaso	try sudo eject otherwise do sudo umount /dev/hdc then hit the eject button on the cdrom
+2008-02-07T21:39:00.000Z	pepperjack	Hisotaso	nice np

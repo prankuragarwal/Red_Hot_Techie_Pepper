@@ -1,0 +1,23 @@
+2009-03-02T10:39:00.000Z	Wildburn		no errors whatsoever
+2009-03-02T10:39:00.000Z	Wildburn		but black screen on boot
+2009-03-02T10:40:00.000Z	Wildburn		yes Barridus
+2009-03-02T10:40:00.000Z	Wildburn		im wondering if its trying to activate the external crt connection
+2009-03-02T10:41:00.000Z	Barridus	Wildburn	it's defaulting to the vga port not the flatpanel
+2009-03-02T10:42:00.000Z	Barridus	Wildburn	http://ubuntuforums.org/showthread.php?t=528207 look at the part about "DFP-0".  it might be relevant to you.
+2009-03-02T10:43:00.000Z	Wildburn	Barridus	thanks ill give it a whack
+2009-03-02T10:49:00.000Z	Barridus	Wildburn	yeah i ran into that too (but i was too newb to remedy that).  i did learn from the experience that xorg settings are best done in nano not by some gtk settings manager :/
+2009-03-02T10:51:00.000Z	Barridus	Wildburn	looks short to me
+2009-03-02T10:51:00.000Z	Barridus	Wildburn	yeah i ran into that too (but i was too newb to remedy that).  i did learn from the experience that xorg settings are best done in nano not by some gtk settings manager :/
+2009-03-02T10:53:00.000Z	Barridus	Wildburn	did you back up xorg.conf before you changed anything?  adding dfp-0 as in the context of that link to the original .conf might fix you right up
+2009-03-02T10:53:00.000Z	Wildburn	Barridus	the backup only has driver "nvidia" under the device. the rest of that conf is from running the dpkg command, so its vanilla
+2009-03-02T10:54:00.000Z	Wildburn	Barridus	going to put the driver nvidia in and try the dfp-1 thing
+2009-03-02T10:59:00.000Z	Barridus	Wildburn	i know your pain.  believe it or not, blackscreen xorg was day 1 in linux for me.  :)  talk about rude awakening
+2009-03-02T11:01:00.000Z	Barridus	Wildburn	shoot.  just curious what laptop/gpu are you working on?
+2009-03-02T11:03:00.000Z	Barridus	Wildburn	well i guess there's two options now if DFP-0 failed.  one is that it's sending video to the VGA port but the syntax is different for your machine and not DFP-0, or you might just be missing critical things in your .conf
+2009-03-02T11:05:00.000Z	Barridus	Wildburn	heh.  it took me hours to figure out what mine was with searching (although you have an advantage i didn't months ago as i had never used linux).  i am surprised your .conf does not contain mouse/touchpad settings.  that's worrisome in and of itself i think, even though it's not the culprit here.
+2009-03-02T11:06:00.000Z	Wildburn	Barridus	actually I know why it doesnt contain that, because the tc1000 is a tablet with a usb key and mouse, so its all handled by USB not ps2 or serial connections
+2009-03-02T11:08:00.000Z	Barridus	Wildburn	ah i see.  i'm not familiar with tablets really, i assumed it was a laptop
+2009-03-02T11:08:00.000Z	Wildburn	Barridus	what concerns me is that complte lack of resolution and other settings for the screen and video, looks like new xserver handles it on the fly so its not hard coded
+2009-03-02T11:08:00.000Z	Wildburn	Barridus	yeah basically a laptop, but bit more complex lol
+2009-03-02T11:15:00.000Z	Barridus	Wildburn	i see a ton of google results for compaq tc1000 and xorg problems.  seems a bit problematic.  some of the results are ubuntu-specific and may contain the syntax you are missing
+2009-03-02T11:18:00.000Z	Wildburn	Barridus	actually found someone's posted xorg.conf from a tc1000 so gonna try some of the settings in it

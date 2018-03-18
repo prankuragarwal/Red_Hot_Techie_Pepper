@@ -1,0 +1,21 @@
+2005-08-29T09:59:00.000Z	wulfy814		is it possible to put everything (boot and / ) on software RAID1 with sata drives?
+2005-08-29T09:59:00.000Z	cafuego	wulfy814	yes
+2005-08-29T10:00:00.000Z	wulfy814	cafuego	I just tried with XFS and it barked at installing LILO
+2005-08-29T10:00:00.000Z	cafuego	wulfy814	works fine, i've been doing it for years
+2005-08-29T10:02:00.000Z	cafuego	wulfy814	I would use 2x .5G swap (for a total of 3GB) and use tmpfs for /tmp
+2005-08-29T10:03:00.000Z	wulfy814	cafuego	RAID the swap?
+2005-08-29T10:03:00.000Z	cafuego	wulfy814	No, 2 x 1.5GB non-raid swap
+2005-08-29T10:04:00.000Z	cafuego	wulfy814	and stuff in /tmp will be swapped out to that anyway; so you can keep the drives INDENTIAL.
+2005-08-29T10:04:00.000Z	wulfy814	cafuego	ok, that's what I thought.
+2005-08-29T10:04:00.000Z	wulfy814	cafuego	it worked fine for ext3
+2005-08-29T10:05:00.000Z	cafuego	wulfy814	don't use xfs
+2005-08-29T10:05:00.000Z	cafuego	wulfy814	raid1 implies data security, xfs does not.
+2005-08-29T10:06:00.000Z	wulfy814	cafuego	I was going to use XFS because of xfsdump
+2005-08-29T10:06:00.000Z	wulfy814	cafuego	this is to be a backuppc box
+2005-08-29T10:06:00.000Z	cafuego	wulfy814	rsync is your friend
+2005-08-29T10:06:00.000Z	wulfy814	cafuego	rsync and large backuppc stores aren't are they?  backuppc relies heavily on hardlinks
+2005-08-29T10:07:00.000Z	wulfy814	cafuego	data store will be approx 120g
+2005-08-29T10:09:00.000Z	wulfy814	cafuego	no comment on the backuppc data?  rsync would prolly take forever on a data store of 100+ gig
+2005-08-29T10:09:00.000Z	wulfy814	cafuego	maybe "dd" instead?
+2005-08-29T10:11:00.000Z	wulfy814	cafuego	you should check out backuppc - great software
+2005-08-29T10:12:00.000Z	cafuego	wulfy814	Nah,. too late, current solution is automated and working fine. No need to break it :-)

@@ -1,0 +1,21 @@
+2011-12-18T22:52:00.000Z	josue	theadmin	yes
+2011-12-18T22:51:00.000Z	theadmin	josue	Are they on a NTFS filesystem?
+2011-12-18T22:52:00.000Z	theadmin	josue	That's the problem, NTFS does not support Unix permissions. Copy them elsewhere, mount the filesystem with uid= flag, or just... well... do something like that
+2011-12-18T22:54:00.000Z	josue	theadmin	Im not able to copy them, how do I do the second choice?
+2011-12-18T22:54:00.000Z	theadmin	josue	You need to modify your fstab accordingly, what is your UID and your device's /dev  node?
+2011-12-18T23:00:00.000Z	josue	theadmin	I lost my connection for one minute here it is http://paste.ubuntu.com/774512/
+2011-12-18T23:01:00.000Z	theadmin	josue	That's not interesting, what is your ntfs partition in /dev/sd notation?
+2011-12-18T23:02:00.000Z	josue	theadmin	/dev/sda3   Mountpoint: /media/archivos
+2011-12-18T23:05:00.000Z	theadmin	josue	Okay, good, then run this: echo "/dev/sda3 /media/archivos ntfs-3g defaults,uid=$(id -u) 0 0" | sudo tee -a /etc/fstab
+2011-12-18T23:05:00.000Z	theadmin	josue	And reboot, now you should be able to work fine
+2011-12-18T23:13:00.000Z	josue	theadmin	I did As you said but after pasting the command, it didn´t return to as it would normaly to the command prompt. I reboothe the pc and its the same
+2011-12-18T23:14:00.000Z	theadmin	josue	Huh... Didn't return? Did you type everything exactly as I gave?
+2011-12-18T23:15:00.000Z	josue	theadmin	this is what I pasted /dev/sda3 /media/archivos ntfs-3g defaults,uid=$(id -u) 0 0" | sudo tee -a /etc/fstab
+2011-12-18T23:15:00.000Z	theadmin	josue	You forgot echo and the initial quote... Here's the command again: echo "/dev/sda3 /media/archivos ntfs-3g defaults,uid=$(id -u) 0 0" | sudo tee -a /etc/fstab
+2011-12-18T23:17:00.000Z	josue	theadmin	thanks it gave me /dev/sda3 /media/archivos ntfs-3g defaults,uid=1000 0 0
+2011-12-18T23:17:00.000Z	theadmin	josue	Sounds right.
+2011-12-18T23:28:00.000Z	josue	theadmin	 now I see that I have read and write for all files in the permision tab, but when I eog on one of the pics it  still tells me permision denied
+2011-12-18T23:28:00.000Z	theadmin	josue	weird...
+2011-12-18T23:28:00.000Z	theadmin	josue	I no longer have any idea, sorry... >.<
+2011-12-18T23:28:00.000Z	josue	theadmin	Thanks for all your help!
+2011-12-18T23:29:00.000Z	theadmin	josue	Except I didn't help >.<

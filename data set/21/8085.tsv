@@ -1,0 +1,21 @@
+2006-07-20T15:42:00.000Z	ironfroggy		im trying to install lilo (grub has never worked on this partiticular box) and i got an error when it tried to write the MBR. is there a known reason for that?
+2006-07-20T15:44:00.000Z	ironfroggy		can i write to the MBA on a mounted drive?
+2006-07-20T15:44:00.000Z	stefg	ironfroggy	the only reason for grub not working properly is if the BIOS is telling nonsense about the C/H/S geometry of the harddisk. Have you updated your BIOS recently?
+2006-07-20T15:45:00.000Z	ironfroggy	stefg	nope
+2006-07-20T15:45:00.000Z	ironfroggy	stefg	but i had lilo installed on here already before i tried to install ubuntu
+2006-07-20T15:46:00.000Z	stefg	ironfroggy	chances are that if the BIOS is buggy, neither lilo nor grub have a chance of finfing a kernel. I'd look for the newest BIOS for the box, flash it, make sure that LBA is set for large disks amd try grub again.
+2006-07-20T15:47:00.000Z	ironfroggy	stefg	any idea if things like random boot ups having all system LEDs solid could be related? im sure its a bios message, but i dont know what it means.
+2006-07-20T15:48:00.000Z	stefg	ironfroggy	at least it's strange enough to indicate that there's something broken on the lowest level.. ACPI7APM-controller getting crazy, odd settings, broken hardware, maybe?
+2007-09-18T16:28:00.000Z	stefg	ironfroggy	http://www.astro.caltech.edu/~mbonati/WIRC/manual/DATARED/setting_up_no-password_ssh.html
+2007-09-18T16:51:00.000Z	stefg	ironfroggy	is there already a 'known_hosts' in your  ~/.ssh ?
+2007-09-18T16:51:00.000Z	ironfroggy	stefg	on which box?
+2007-09-18T16:51:00.000Z	stefg	ironfroggy	client
+2007-09-18T16:52:00.000Z	stefg	ironfroggy	try deleting known_hosts and try again
+2007-09-18T16:52:00.000Z	ironfroggy	stefg	seriously? oh ill loose so many known hosts.. ok. ill backup.
+2007-09-18T16:53:00.000Z	stefg	ironfroggy	oh, i see, there's more than one... yeah backup our gzip it
+2007-09-18T16:56:00.000Z	stefg	ironfroggy	not sure... all i can tell is that ubuntu to ubuntu ssh works pw-less with the guide i gave you. Maybe the ssh host is confiured to require a pass in any case?
+2007-09-18T16:57:00.000Z	ironfroggy	stefg	well i can change that if i knew what configuration to look for. i have full access.
+2007-09-18T16:58:00.000Z	stefg	ironfroggy	/etc/ssh/....
+2007-09-18T16:58:00.000Z	ironfroggy	stefg	im looking for sshd_config for anything relevent
+2007-09-18T05:00:00.000Z	stefg	ironfroggy	yeah /etc/ssh/sshd_config would be my first check. But since i never ran in any trouble yet, my troubleshooting abilities are limited
+2007-09-18T05:00:00.000Z	ironfroggy	stefg	ditto. its always "just worked" before

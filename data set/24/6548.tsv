@@ -1,0 +1,24 @@
+2006-02-20T13:54:00.000Z	psusi	bluefoxicy	what makes you say that?
+2006-02-20T13:54:00.000Z	bluefoxicy	psusi	 well, I mmap()ed continuously until mmap() failed, and when my VM space grew to 1023.9 megs, it failed.
+2006-02-20T13:55:00.000Z	psusi	bluefoxicy	how much ram and swap do you have?
+2006-02-20T13:55:00.000Z	bluefoxicy	psusi	 irrelavent.
+2006-02-20T13:55:00.000Z	bluefoxicy	psusi	 I PROT_NONE protected the pages and didn't touch them.  The zero page was mapped over and over and over again, so no physical ram or swap is used.
+2006-02-20T13:55:00.000Z	psusi	bluefoxicy	no, it is very much relavent... you can't map more memory than is availible
+2006-02-20T13:56:00.000Z	bluefoxicy	psusi	http://rafb.net/paste/results/8BojsK41.html
+2006-02-20T13:56:00.000Z	psusi	bluefoxicy	ahhh
+2006-02-20T13:56:00.000Z	bluefoxicy	psusi	 my test program.
+2006-02-20T13:56:00.000Z	bluefoxicy	psusi	 something is horribly horribly broken.
+2006-02-20T13:58:00.000Z	psusi	bluefoxicy	what is the returned error code?
+2006-02-20T13:58:00.000Z	bluefoxicy	psusi	MAP_FAILED
+2006-02-20T13:58:00.000Z	bluefoxicy	psusi	http://rafb.net/paste/results/8BojsK41.html line 9
+2006-02-20T14:00:00.000Z	psusi	bluefoxicy	try using larger mappings... you probbaly can't have so many seperate mappings is all
+2006-02-20T14:00:00.000Z	bluefoxicy	psusi	 my original mapping size was 4KiB
+2006-02-20T14:01:00.000Z	psusi	bluefoxicy	according to my /proc/sys/vm/max_map_count, you can only have 65536 mappings... maybe yours is lowered?
+2006-02-20T14:01:00.000Z	psusi	bluefoxicy	and got fewer mappings but same total size before fail?
+2006-02-20T14:01:00.000Z	bluefoxicy	psusi	 yes
+2006-02-20T14:02:00.000Z	bluefoxicy	psusi	 now it gave me fewer mappings and less size :)
+2006-02-20T14:02:00.000Z	bluefoxicy	psusi	 for 64K mappings
+2006-02-20T14:04:00.000Z	bluefoxicy	psusi	 I think I know why g imp just crashed now when it reached 1 gig memory usage, heh.
+2007-04-27T14:58:00.000Z	psusi	bluefoxicy	huh?
+2010-10-26T08:21:00.000Z	psusi	bluefoxicy	works for me... at least as well as adobe's horrible products usually do
+2010-10-26T08:22:00.000Z	bluefoxicy	psusi	 everything says I don't have flash, but it works in firefox

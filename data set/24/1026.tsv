@@ -1,0 +1,24 @@
+2010-09-03T01:51:00.000Z	gm1959		I type in service networking start, and it comes back 'stop/waiting'. - wtf does that mean?
+2010-09-03T01:52:00.000Z	gm1959		what's wrong with 'what the foolishness'?
+2010-09-03T01:53:00.000Z	gm1959		I type in service networking start, and it comes back 'stop/waiting'. - what the heck does that mean?
+2010-09-03T01:54:00.000Z	rbellamy	gm1959	did you run it under sudo?
+2010-09-03T01:54:00.000Z	gm1959	rbellamy	- yep
+2010-09-03T01:54:00.000Z	rbellamy	gm1959	and you ran service networking stop first?
+2010-09-03T01:55:00.000Z	gm1959	rbellamy	- 'service networking stop' -> unknown instance
+2010-09-03T01:55:00.000Z	rbellamy	gm1959	well, there you go... now you're getting more detailed errors....
+2010-09-03T01:57:00.000Z	rbellamy	gm1959	yeah... i guess not... so do the command and look for something that looks like an error....
+2010-09-03T01:58:00.000Z	rbellamy	gm1959	lemme guess, you've recently made changes to your network card/settings, and now you're trying to get the machine back on the network?
+2010-09-03T01:58:00.000Z	gm1959	rbellamy	- no, this all came about with me trying to remove X11/gnome
+2010-09-03T01:58:00.000Z	gm1959	rbellamy	- so it's trying to run dhclient
+2010-09-03T01:59:00.000Z	rbellamy	gm1959	omg.... yeah, that's a problem... have you tried booting to runlevel 3?
+2010-09-03T02:01:00.000Z	gm1959	rbellamy	- inittab doesnt exist, where is default runlevel set?
+2010-09-03T02:01:00.000Z	rbellamy	gm1959	that's a good question
+2010-09-03T02:02:00.000Z	rbellamy	gm1959	/etc/init/rc-sysinit.conf
+2010-09-03T02:02:00.000Z	rbellamy	gm1959	aunty google is my friend.
+2010-09-03T02:05:00.000Z	rbellamy	gm1959	dude, man up and read, well, the.... man page on runlevel like hiku suggested
+2010-09-03T02:06:00.000Z	gm1959	rbellamy	- I did.  I was just informing you that there's a env var in sysinit-rc
+2010-09-03T02:06:00.000Z	rbellamy	gm1959	okay.... I thought you were asking about it...
+2010-09-03T02:08:00.000Z	gm1959	rbellamy	- yes, the runlevel fixed it
+2010-09-03T02:08:00.000Z	rbellamy	gm1959	nice...
+2010-09-03T02:12:00.000Z	gm1959	rbellamy	- what config var tells it to run dhcp/client?  I have network/interfaces set, but its not using it
+2010-09-03T02:15:00.000Z	rbellamy	gm1959	you're on your own at this point... I would do some research on "headless" ubuntu

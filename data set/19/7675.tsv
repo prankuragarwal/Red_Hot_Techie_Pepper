@@ -1,0 +1,19 @@
+2009-09-03T23:25:00.000Z	squarebottle		Anybody have any ideas for what to do if the computer can get to the login screen just fine, but when a password is entered, the screen blanks for a second and then just goes back to the login screen?
+2009-09-03T23:26:00.000Z	mgedmin	squarebottle	your login session crashes for some reason
+2009-09-03T23:26:00.000Z	squarebottle	mgedmin	Yes.
+2009-09-03T23:26:00.000Z	mgedmin	squarebottle	you can log in into a text console and read ~/.xsession-errors to get a clue
+2009-09-03T23:26:00.000Z	squarebottle	mgedmin	So what would you do? :)
+2009-09-03T23:26:00.000Z	squarebottle	mgedmin	Alright.
+2009-09-03T23:26:00.000Z	mgedmin	squarebottle	or you could press f10 and choose a different login session from the menu
+2009-09-03T23:27:00.000Z	squarebottle	mgedmin	I've tried KDE and Failsafe already. (It's Kubuntu that I've got.)
+2009-09-03T23:31:00.000Z	squarebottle	mgedmin	~/.xsession-errors is completely blank.
+2009-09-03T23:32:00.000Z	squarebottle	mgedmin	Any ideas for the next step?
+2009-09-03T23:34:00.000Z	mgedmin	squarebottle	/var/log/gdm/* would be where I look next
+2009-09-03T23:34:00.000Z	squarebottle	mgedmin	Alright. One second.
+2009-09-03T23:34:00.000Z	mgedmin	squarebottle	btw since you're using kubuntu, maybe it's /var/log/kdm.*?  I'm not familiar with kdm any more
+2009-09-03T23:35:00.000Z	squarebottle	mgedmin	Wait, gdm is the gnome login manager. kdm is what I'm using (it's Kubuntu). Either way, both that location and the same thing but with kdm instead of gdm don't seem to exist.
+2009-09-03T23:36:00.000Z	mgedmin	squarebottle	there must be log files somewhere!
+2009-09-03T23:36:00.000Z	squarebottle	mgedmin	Heh, yes, there must, but where I wonder? Aroo!
+2009-09-03T23:37:00.000Z	mgedmin	squarebottle	also, login session is a set of shell scripts; under /etc/gdm/, under /etc/X11/Xsession.d, under /etc/kdm (I presume)
+2009-09-03T23:38:00.000Z	mgedmin	squarebottle	you can always sprinkle those with echo 'reached point 47' >> /tmp/debug.log
+2009-09-03T23:38:00.000Z	squarebottle	mgedmin	gdm even for kde?

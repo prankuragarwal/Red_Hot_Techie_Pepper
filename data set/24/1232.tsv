@@ -1,0 +1,24 @@
+2010-06-12T03:23:00.000Z	JimmyNeutron		How come "sudo apt-get upgrade" does not install the linux kernel update?
+2010-06-12T03:24:00.000Z	Appl6	JimmyNeutron	Does it give you any errors or warnings?
+2010-06-12T03:24:00.000Z	JimmyNeutron	Appl6	It just tells me its held back
+2010-06-12T03:25:00.000Z	JimmyNeutron	Appl6	If I use the Update GUI app, than it installs
+2010-06-12T03:25:00.000Z	Appl6	JimmyNeutron	So is it installed or not?
+2010-06-12T03:26:00.000Z	JimmyNeutron	Appl6	Using the CLI commands, it does not work....using the GUI update program, it works
+2010-06-12T03:27:00.000Z	Appl6	JimmyNeutron	Once you upgrade the kernel, you can't upgrade it again to the same version.
+2010-06-12T03:27:00.000Z	Appl6	JimmyNeutron	So if you've already upgraded it with the GUI, then you're not going to be able to upgrade it again.
+2010-06-12T03:28:00.000Z	JimmyNeutron	Appl6	it was the default kernel for 10.04, 2.6.32-21 and sudo apt-get upgrade tells me there is a 2.6.32-22 but the kernel update is being held back
+2010-06-12T03:29:00.000Z	Appl6	JimmyNeutron	Why do you say that the GUI succeeded in upgrading it?  If there's still an upgrade then the GUI didn't do it either.
+2010-06-12T03:30:00.000Z	JimmyNeutron	Appl6	Before the update, I did a "uname -a" and it shows the kernel as 2.6.32-21.  After the GUI update and a reboot, "uname -a" shows the kernel as 2.32-22.  So the GUI update did update the kernel
+2010-06-12T03:30:00.000Z	Appl6	JimmyNeutron	Try "aptitude why-not <pkg>" where <pkg> is the name of the package being held back.
+2010-06-12T03:31:00.000Z	Appl6	JimmyNeutron	OK, so if you've updated the kernel, why are you trying to re-update it from the command line?  It has already been upgraded.
+2010-06-12T03:31:00.000Z	JimmyNeutron	Appl6	Thanks!  Re-install 10.04 from scratch again and will try that CLI command.
+2010-06-12T03:32:00.000Z	JimmyNeutron	Appl6	I'm just trying to understand why the first time I ran "sudo apt-get upgrade", it didn't download and install the new kernel, 2.6.32-22
+2010-06-12T03:32:00.000Z	JimmyNeutron	Appl6	and only after I use the GUI update, did the kernel got upgraded
+2010-06-12T03:33:00.000Z	Appl6	JimmyNeutron	From the error message, it means that someone or something told apt "don't upgrade the kernel!".  You can do that manually, or another program can say "I don't work with newer versions of the kernel, so don't upgrade it."
+2010-06-12T03:33:00.000Z	Appl6	JimmyNeutron	I'm assuming the GUI just didn't tell you that the package was held, and it just upgraded it anyway.
+2010-06-12T03:33:00.000Z	JimmyNeutron	Appl6	That's correct.  The GUI didnt care and went ahead w/ the upgrade.
+2010-06-12T03:33:00.000Z	Appl6	JimmyNeutron	But since you've already upgraded it, the information that would tell you what was really going on isn't there any more.
+2010-06-12T03:34:00.000Z	Appl6	JimmyNeutron	So there probably isn't a good way to figure out now what happened.
+2010-06-12T03:35:00.000Z	JimmyNeutron	Appl6	I'm wiping out my install and starting over w/ a clean fresh install of 10.04.
+2010-06-12T03:36:00.000Z	Appl6	JimmyNeutron	OK.  I'd recommend using "aptitude" instead of "apt-get" for command line package management.
+2010-06-12T03:37:00.000Z	JimmyNeutron	Appl6	Thanks!  I'll look into it and see what are the diff between apt-get and apititude

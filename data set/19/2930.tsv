@@ -1,0 +1,19 @@
+2010-03-03T21:34:00.000Z	dinosaurvskitten		are there special permission things (other than chmod) with ntfs? I have a partition which is mounted with uid=1000,gid=1000 (my current user), yet I can cat the contents of one file whose permissions are -rwxrwx--- but not those of another one, in the same folder, whose permissions are also -rwxrwx---...
+2010-03-03T21:36:00.000Z	dinosaurvskitten		actually, even root gets Permission denied
+2010-03-03T21:36:00.000Z	ohir	dinosaurvskitten	you mount ntfs partition with 'user' option. It means that your user has all rights on that partition regardless of what ntfs's uids/gids are
+2010-03-03T21:37:00.000Z	dinosaurvskitten	ohir	then why am I getting permission denied on a bunch of files?
+2010-03-03T21:37:00.000Z	ohir	dinosaurvskitten	ls -la one_of_that_files please
+2010-03-03T21:38:00.000Z	dinosaurvskitten	ohir	one with permission denied: -rwxrwx--- 2 pf pf 3348 2010-03-02 19:18 02-Registration.pro    and one that works, in the same folder: -rwxrwx--- 1 pf pf   64 2010-03-03 17:30 readme.txt
+2010-03-03T21:40:00.000Z	ohir	dinosaurvskitten	do mount /that/partition and see how its mounted
+2010-03-03T21:41:00.000Z	dinosaurvskitten	ohir	/dev/sda3 on /windows type fuseblk (rw,nosuid,nodev,noatime,allow_other,default_permissions,blksize=4096)
+2010-03-03T21:43:00.000Z	ohir	dinosaurvskitten	does sudo cat opportunist_file work?
+2010-03-03T21:43:00.000Z	dinosaurvskitten	ohir	no
+2010-03-03T21:43:00.000Z	dinosaurvskitten	ohir	(same error message - permission denied)
+2010-03-03T21:45:00.000Z	ohir	dinosaurvskitten	so I don't know. Some time passed since I looked at ntfs-3g internals. My thoughts are that either fs is not clean (then it should not be possible to mount it rw) or somewhat this is orphaned part of file dangling in dir.
+2010-03-03T21:46:00.000Z	dinosaurvskitten	ohir	yeah I also think it's a cleanliness problem, but then why did it even allow me to mount it?
+2010-03-03T21:46:00.000Z	ohir	dinosaurvskitten	it should not allow rw until forced (by by hand rw remount)
+2010-03-03T21:47:00.000Z	dinosaurvskitten	ohir	strange
+2010-03-03T21:47:00.000Z	dinosaurvskitten	ohir	I'll try and remount, maybe some error messages got lost in the bootup noise
+2010-03-03T21:48:00.000Z	dinosaurvskitten	ohir	nothing conspicuous in dmesg anyhow
+2010-03-03T21:49:00.000Z	dinosaurvskitten	ohir	remounting didn't help
+2010-03-03T21:49:00.000Z	ohir	dinosaurvskitten	on ntfs files may have separate data streams (one for p..n, second for writing info from where and when it was downloaded ie). I can recall that sometimes (power off/hibernate awake fail) it went wild. But I honestly don't know if its the case. I'd suggest do windoze chkdsk on that partition.

@@ -1,0 +1,21 @@
+2007-10-27T14:29:00.000Z	MaTrIx-X		Anyone here fairly familiar with compiling source builds willing to give something a try for me?
+2007-10-27T14:30:00.000Z	predaeus	MaTrIx-X	what are you trying to compile? It is usually much easier/safer to use packaged programs from the repositories?
+2007-10-27T14:31:00.000Z	MaTrIx-X	predaeus	it's a package that is broken, and there is no suitable replacement for it
+2007-10-27T14:32:00.000Z	MaTrIx-X	predaeus	would you mind giving it a shot for me?
+2007-10-27T14:32:00.000Z	predaeus	MaTrIx-X	what app is it?
+2007-10-27T14:33:00.000Z	MaTrIx-X	predaeus	the package is called iscsi-target, and there is a -4 version which supposedly is unstable and fixes the problem which is breaking it on 7.10
+2007-10-27T14:34:00.000Z	MaTrIx-X	predaeus	the development version is listed in the hardy repository
+2007-10-27T14:34:00.000Z	MaTrIx-X	predaeus	I would try it myself but I'm new to linux and I don't want to have to reinstall it again this week over not knowing how to clean up the mess I've made
+2007-10-27T14:35:00.000Z	predaeus	MaTrIx-X	yes that's usually the problem with installing from source. Sometimes "make uninstall" is provided for uninstalling but not always.
+2007-10-27T14:37:00.000Z	predaeus	MaTrIx-X	which bug do you get? https://bugs.launchpad.net/ubuntu/+bugs?field.searchtext=iscsi-target&orderby=-importance&search=Search&field.status%3Alist=NEW&field.status%3Alist=INCOMPLETE_WITH_RESPONSE&field.status%3Alist=CONFIRMED&field.status%3Alist=TRIAGED&field.status%3Alist=INPROGRESS&field.status%3Alist=FIXCOMMITTED&field.assignee=&field.bug_reporter=&field.omit_dupes=on&field.has_patch=&field.has_no_package=
+2007-10-27T14:37:00.000Z	MaTrIx-X	predaeus	one second, taking a look
+2007-10-27T14:38:00.000Z	MaTrIx-X	predaeus	bug # 145539
+2007-10-27T14:39:00.000Z	MaTrIx-X	predaeus	the bug in a nutshell is: the package flat out will not install, even on a clean 7.10 setup. it requires a package named iscsitarget-module which is broken, and this was supposedly resolved in the hardy version you see there
+2007-10-27T14:40:00.000Z	predaeus	MaTrIx-X	yes. hm. I fear installing the Hardy version would require to upgrade kernel and bring a whole lot of problems.
+2007-10-27T14:41:00.000Z	predaeus	MaTrIx-X	what about the open-iscsi mentioned in the other bug report, can't you use that one?
+2007-10-27T14:41:00.000Z	MaTrIx-X	predaeus	open-iscsi is an initiator only, it doesn't have a target
+2007-10-27T14:41:00.000Z	MaTrIx-X	predaeus	and I actually don't even need an initiator
+2007-10-27T14:41:00.000Z	predaeus	MaTrIx-X	maybe you could request a backport of the Hardy package to Gutsy. I mean it is useless anyway as it is now.
+2007-10-27T14:42:00.000Z	MaTrIx-X	predaeus	what is a formal means of making such a request?
+2007-10-27T14:45:00.000Z	predaeus	MaTrIx-X	I think you file a request here https://launchpad.net/gutsy-backports/+filebug
+2007-10-27T14:45:00.000Z	MaTrIx-X	predaeus	ok, I'll give that a try

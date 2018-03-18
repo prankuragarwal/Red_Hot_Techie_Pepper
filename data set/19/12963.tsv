@@ -1,0 +1,19 @@
+2005-12-27T08:07:00.000Z	john2k		hi
+2005-12-27T08:08:00.000Z	john2k		hi, I'm trying to apt-get something  but I keep getting the messag: E: Unable to lock the list directory
+2005-12-27T08:08:00.000Z	john2k		did that
+2005-12-27T08:08:00.000Z	john2k		still happening
+2005-12-27T08:08:00.000Z	tiglionabbit	john2k	that means you're trying to run two interfaces to apt at the same time, or are not root
+2005-12-27T08:09:00.000Z	tiglionabbit	john2k	by interfaces to apt I include apt-get, aptitude, "Add Programs", Synaptic, Kynaptic, etc
+2005-12-27T08:09:00.000Z	tiglionabbit	john2k	say "ps aux | grep apt" and see if anything else with apt in its name is running
+2005-12-27T08:10:00.000Z	tiglionabbit	john2k	and to be sure you're root, say "whoami".  It should respond "root"
+2005-12-27T08:11:00.000Z	tiglionabbit	john2k	likk?  You mean kill?
+2005-12-27T08:11:00.000Z	tiglionabbit	john2k	um, first let me be sure you're not killing anything essential.  Paste them here and give me the url: http://pastebin.com
+2005-12-27T08:18:00.000Z	tiglionabbit	john2k	you still there?
+2005-12-27T08:18:00.000Z	tiglionabbit	john2k	paste the url then
+2005-12-27T08:19:00.000Z	tiglionabbit	john2k	I said "ps aux | grep apt"
+2005-12-27T08:19:00.000Z	tiglionabbit	john2k	not just "ps aux"
+2005-12-27T08:20:00.000Z	tiglionabbit	john2k	"ps aux" lists every process that's running.  grep searches that output for a particular word and only prints the lines with that word on it
+2005-12-27T08:20:00.000Z	tiglionabbit	john2k	in linux/unix, | is a pipe.  It means take the output of the first program and use it as the input of the second program
+2005-12-27T08:23:00.000Z	tiglionabbit	john2k	okay, look at that.  See process 9292?  That's apt-get running there.  So, that's why you can't lock the directory
+2005-12-27T08:25:00.000Z	tiglionabbit	john2k	well I'll tell you how to kill it, but first be sure you want to.  To kill it, just say "kill 9292" to kill that process.  But first, why not try and figure out why it's running?  It seems to have started at the same time as /etc/cr.  What's in that file?
+2005-12-27T08:27:00.000Z	tiglionabbit	john2k	uh, sudo kill it?

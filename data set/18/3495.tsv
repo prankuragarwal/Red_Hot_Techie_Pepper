@@ -1,0 +1,18 @@
+2012-08-01T10:37:00.000Z	rfergu		Hi, when I run netstat -an | grep "LISTEN "  I can see LISTEN on the port I want open, but am unable to connect to it.  I'm not running iptables and have idea why I can see port 80, but not 8080 (which I just opened)
+2012-08-01T10:37:00.000Z	rfergu		Any ideas what I could try?
+2012-08-01T10:39:00.000Z	llutz_	rfergu	"sudo lsof -i :8080" to check if there's a service listening on that port
+2012-08-01T10:44:00.000Z	rfergu	llutz	its listening there
+2012-08-01T10:45:00.000Z	llutz_	rfergu	but does not bahve as expected? check logs or status-messages.
+2012-08-01T10:45:00.000Z	llutz_		!permissions | shaq_
+2012-08-01T10:46:00.000Z	rfergu		well, if I log in locally, it behaves properly, but if I try to access it from home I can't
+2012-08-01T10:46:00.000Z	rfergu		(this is a linode)
+2012-08-01T10:47:00.000Z	llutz_	rfergu	what address is it bound to? sounds as localhost 127.0.0.1?
+2012-08-01T10:47:00.000Z	rfergu		I just used telnet internally to check it
+2012-08-01T10:48:00.000Z	rfergu		127.0.0.1
+2012-08-01T10:48:00.000Z	llutz_	rfergu	what address is it bound to? sounds as localhost 127.0.0.1?
+2012-08-01T10:48:00.000Z	llutz_	rfergu	make it listen to all ifaces/addresses to access from outside
+2012-08-01T10:49:00.000Z	rfergu		I'm not totally sure how to do that, but will try :)
+2012-08-01T10:49:00.000Z	rfergu		0.0.0.0 prolly
+2012-08-01T10:50:00.000Z	llutz_	rfergu	whatever service you use, it should come with documentation. read it, configure it
+2012-08-01T10:51:00.000Z	rfergu		I'm using a little python guy called bottle
+2012-08-01T10:52:00.000Z	llutz_	rfergu	python -m bottle (should show you -b ADDRESS --bind= ADDRESS)

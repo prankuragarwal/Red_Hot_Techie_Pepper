@@ -1,0 +1,18 @@
+2006-03-30T16:41:00.000Z	mi6		mount /dev/hdc2 /mnt/<newfolder>
+2006-03-30T16:41:00.000Z	redguy	mi6	no, you don't have to mount it
+2006-03-30T16:33:00.000Z	redguy	mi6	seems like you might have your root fileststem hosed
+2006-03-30T16:37:00.000Z	redguy	mi6	If I were you I would try booting from knoppix or ubuntu live and then fsck the root filesystem
+2006-03-30T16:38:00.000Z	mi6	redguy	I can boot again from Knoppix , how do i fsck the guest file system?
+2006-03-30T16:40:00.000Z	redguy	mi6	do you know where is your root filesystem? /dev/hda1 perhaps? if you dont run mount | grep " / " from the rescue mode
+2006-03-30T16:41:00.000Z	mi6	redguy	mount /dev/hdc2 /mnt/<newfolder>
+2006-03-30T16:42:00.000Z	redguy	mi6	just fsck -vnf /dev/hda2
+2006-03-30T16:42:00.000Z	mi6	redguy	well i boot from Knoppix CD then i mount the hosed root filesystem at /dev/hdc2 right
+2006-03-30T16:42:00.000Z	mi6	redguy	ok i'will try it w/o mounting
+2006-03-30T16:43:00.000Z	redguy	mi6	note that -n sigifies that it won't make any changes to the filesystem. this is in case that you really have a hardware problem and you might break even more when trying to fix stuff with fsck
+2006-03-30T16:43:00.000Z	redguy	mi6	well, fsck will issue a warning message when you try to fsck a mounted filesystem
+2006-03-30T16:44:00.000Z	mi6	redguy	actually i remember now, it booted fine, said filesystem mounted read only, skipping journal replay
+2006-03-30T16:46:00.000Z	mi6	redguy	should i still try to force a filesystem check
+2006-03-30T16:46:00.000Z	redguy	mi6	as I said, running fsck with -n will not modify the filesystem. You will have a chance to see if something is wrong with it.
+2006-03-30T16:47:00.000Z	mi6	redguy	OK, i am rebooting to do it, "I'll B Bak!"
+2006-03-31T17:05:00.000Z	mi6	redguy	 Hey i did "fsck /dev/hdc2", it turned out fine, Wats next
+2006-03-31T17:28:00.000Z	mi6	redguy	still not able to login, but...but now pam.d is completely empty

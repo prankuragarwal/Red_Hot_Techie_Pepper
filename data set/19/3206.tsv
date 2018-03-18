@@ -1,0 +1,19 @@
+2011-04-30T09:39:00.000Z	jla		no x after natty upgrade, nvidia kernel module missing. I need help installing the module or reverting to a free driver that gets gdm giong.
+2011-04-30T09:41:00.000Z	pfifo	jla	try `sudo apt-get install nvidia-current`
+2011-04-30T09:43:00.000Z	jla	pfifo	I have, it says nvidia-173 is auto
+2011-04-30T09:49:00.000Z	jla	pfifo	ah, it's skipping the module build, says no kernel source. looking for build depends command.
+2011-04-30T09:50:00.000Z	pfifo	jla	sudo apt-get install linux-sources
+2011-04-30T09:54:00.000Z	jla	pfifo	know why nvida-173 only depends on the headers then, or why the source is needed? seems buggy.
+2011-04-30T09:56:00.000Z	pfifo	jla	the kernel module is going to need the kernel headers... I dont even think i can explain why... all the functions the nvidia driver is going to use, are defined in the kernel headers, without them it would be like handing a blind guy a gun.
+2011-04-30T09:57:00.000Z	jla	pfifo	i understand needing the headers, it's nvidia-173 needing kernel-source that seems odd and not depending on it that seems buggy
+2011-04-30T09:58:00.000Z	pfifo	jla	maybe its a packaging mismatch, not that big of a bug and its probbally been reported, but if you want you can check launchpad when it cools down
+2011-04-30T10:01:00.000Z	jla	pfifo	installed linux-source, linux-source-2.6.38; same error. I think the message 'kernel source for this kernel doesn not seem to be installed' is misleading :) uname -r 2.6.38-8-generic-pae
+2011-04-30T10:02:00.000Z	jla	pfifo	ahh, was missing -pae headers :S
+2011-04-30T10:03:00.000Z	pfifo	jla	you only need -pae if you have over 4gb of memory, if you dont you should consider generic
+2011-04-30T10:05:00.000Z	jla	pfifo	all my .35's are generic. I think the upgrade picked -pae, maybe because I have exactly 4gb so I don't get the top 1-2GB wasted by bios/device memmap
+2011-04-30T10:06:00.000Z	jla	pfifo	and the header selection stuff didn't use my uname -r to get the -pae headers maybe
+2011-04-30T10:06:00.000Z	pfifo	jla	so -pae got the nvidia installed correctly in the end?
+2011-04-30T10:07:00.000Z	jla	pfifo	it looked like it compiled on install of the -pae headers, but still no modinfo for nvidia. rebooting and then if it still fails trying reinstall nvidia-173
+2011-04-30T10:08:00.000Z	jla	pfifo	yes, it worked on reboot
+2011-04-30T10:08:00.000Z	jla	pfifo	tyvm for help/sounding board
+2011-04-30T10:08:00.000Z	pfifo	jla	np

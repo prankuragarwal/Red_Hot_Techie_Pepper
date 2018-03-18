@@ -1,0 +1,19 @@
+2010-10-31T03:43:00.000Z	pw-toxic		hi, when i run phpmyadmin i get the error "cannot load mysql extension" i have installed apache2  php5 php5-mysql libapache2-mod-php5 .... i cant fix this problem by my self and i dont know what else i could do ;(
+2010-10-31T03:44:00.000Z	pw-toxic		i thought
+2010-10-31T03:46:00.000Z	pw-toxic		php -i mysql prints a lot to the console
+2010-10-31T03:46:00.000Z	mbroeker	pw-toxic	he meant: php -i | grep mysql
+2010-10-31T03:47:00.000Z	pw-toxic	mbroeker	now a lot of "mysql" strings are highlightend in the output
+2010-10-31T03:48:00.000Z	mbroeker	pw-toxic	without mysql, the screen would be empty. you can assume that php5-mysql is installed
+2010-10-31T03:48:00.000Z	pw-toxic	mbroeker	so why is phpmyadmin telling me that the mysql extension is missing?
+2010-10-31T03:51:00.000Z	pw-toxic	mbroeker	where do i find php.ini?
+2010-10-31T03:51:00.000Z	mbroeker	pw-toxic	check /etc/php5/conf.d/,mysql*
+2010-10-31T03:52:00.000Z	pw-toxic	mbroeker	there is a mysql.ini with the content "extension=mysql.so"
+2010-10-31T03:52:00.000Z	mbroeker	pw-toxic	have you restarted your server?
+2010-10-31T03:52:00.000Z	pw-toxic	mbroeker	several times but i do it once again to be sure
+2010-10-31T03:52:00.000Z	mbroeker	pw-toxic	sudo service apache2 restart
+2010-10-31T03:53:00.000Z	pw-toxic		/etc/init.d/apache2 restart i did do
+2010-10-31T03:53:00.000Z	mbroeker		ok
+2010-10-31T03:53:00.000Z	pw-toxic	mbroeker	restarted apache2 with init.d and service and still phpmyadmin doesnt work ;(
+2010-10-31T03:53:00.000Z	mbroeker	pw-toxic	now do: tail -f /var/log/apache2/error.log and re-visit myadmin
+2010-10-31T03:54:00.000Z	mbroeker		of course not: i am a postgresql fanboy
+2010-10-31T03:54:00.000Z	pw-toxic	mbroeker	done

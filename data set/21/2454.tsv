@@ -1,0 +1,21 @@
+2012-02-12T14:26:00.000Z	nightcrow		guys.. can someone please help me
+2012-02-12T14:26:00.000Z	nightcrow		can someone please tell me how i can add a user to use a specific application that can only be run as root
+2012-02-12T14:26:00.000Z	nightcrow		i have added her to /etc/group
+2012-02-12T14:27:00.000Z	nightcrow		like this:apt-mirror:x:133:ayeletw
+2012-02-12T14:27:00.000Z	nightcrow		but i dont think it is enough
+2012-02-12T14:27:00.000Z	nightcrow		can someone please help
+2012-02-12T14:27:00.000Z	ejv	nightcrow	https://help.ubuntu.com/community/FilePermissions
+2012-02-12T14:30:00.000Z	nightcrow	ejv	i want to give a specific user the ability to use apt-mirror
+2012-02-12T14:30:00.000Z	nightcrow	ejv	without giving her sudo
+2012-02-12T14:36:00.000Z	ejv	nightcrow	%mySuperHeroes ALL=(ALL) /usr/bin/apt-mirror * , possibly...
+2012-02-12T14:36:00.000Z	nightcrow	ejv	ill try that
+2012-02-12T14:42:00.000Z	ejv	nightcrow	what worked for you?
+2012-02-12T14:42:00.000Z	nightcrow	ejv	nothing yet
+2012-02-12T14:51:00.000Z	nightcrow	ejv	hehehe true :)
+2012-02-12T14:52:00.000Z	nightcrow	ejv	but if i were to use this: ayeletw ALL=(ALL) ALL i wouldnt need to put her in any group
+2012-02-12T14:53:00.000Z	nightcrow	ejv	yes she is a user
+2012-02-12T14:56:00.000Z	ejv	nightcrow	what ocean posted is basically what i had, but he put your user into a group called %test, so put your user in there
+2012-02-12T14:57:00.000Z	nightcrow	ejv	testing now
+2012-02-12T14:59:00.000Z	ejv	nightcrow	https://help.ubuntu.com/community/Sudoers#Command_Aliases
+2012-02-12T15:00:00.000Z	ejv	nightcrow	APT_CMDS references Cmnd_Alias APT_CMDS, you need both lines
+2012-02-12T15:01:00.000Z	nightcrow	ejv	excellent! I was just wondering if Cmnd_Alias is a specific syntax or whether I could have used any word there

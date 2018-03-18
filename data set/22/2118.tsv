@@ -1,0 +1,22 @@
+2011-02-12T15:19:00.000Z	czardoz		is there any way to start the telnet daemon manually only?
+2011-02-12T15:19:00.000Z	czardoz		i dont want it to start at startup
+2011-02-12T15:20:00.000Z	czardoz		!telnetd
+2011-02-12T15:21:00.000Z	czardoz		!telnet
+2011-02-12T15:21:00.000Z	czardoz		!ssh
+2011-02-12T15:23:00.000Z	czardoz		!sshd
+2011-02-12T15:23:00.000Z	llutz_	czardoz	edit /etc/init/telnet  and modify "start on ... " to "start on never"
+2011-02-12T15:23:00.000Z	llutz_	czardoz	but indeed, ssh is to be preferred
+2011-02-12T15:24:00.000Z	llutz_	czardoz	theres nothing you can't do with telnet which isn't be done with ssh (+ other benefits). check if you could switch to it
+2011-02-12T15:31:00.000Z	llutz_	czardoz	why? :) theres putty for win (ssh-client) too
+2011-02-12T15:31:00.000Z	llutz_	czardoz	true, it doesn't come with it by default :(
+2011-02-12T15:32:00.000Z	llutz_	czardoz	so try to edit /etc/init/telnet  and modify "start on ... " to "start on never"
+2011-02-12T15:35:00.000Z	llutz_	czardoz	ls -l /etc/init.d/telnetd
+2011-02-12T15:37:00.000Z	llutz_	czardoz	inetd... thats why. so you have to check /etc/inetd.conf
+2011-02-12T15:39:00.000Z	llutz_	czardoz	no idea how to disable that via inetd to start in manually. idea: write to inetd.confs and switch them using a short wrapper-script
+2011-02-12T15:39:00.000Z	llutz_	czardoz	it should contain something like: telnet stream tcp nowait ....
+2011-02-12T15:40:00.000Z	llutz_	czardoz	to disable it, yes. then restart inetd
+2011-02-12T15:42:00.000Z	llutz_	czardoz	i'm not sure if telnetd runs in daemon-mode, you'd check google for it
+2011-02-12T15:43:00.000Z	llutz_	czardoz	try "sudo  /usr/sbin/in.telnetd &"  and "lsof -i :23"
+2011-02-12T15:45:00.000Z	llutz_	czardoz	"sudo pkill telnetd" to stop it
+2011-03-22T16:57:00.000Z	llutz_	czardoz	splitted identity ;)
+2011-03-22T17:16:00.000Z	llutz_	czardoz	bad idea, keep the number of programs suid-root as low as possible

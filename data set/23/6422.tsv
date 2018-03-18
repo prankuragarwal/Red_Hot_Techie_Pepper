@@ -1,0 +1,23 @@
+2008-02-28T23:01:00.000Z	garyc		my cgi-bin is located in /usr/lib/cgi-bin
+2008-02-28T23:03:00.000Z	waylandbill	garyc	depends on the webserver and if setuid is set, but execute permissions for that user for sure.
+2008-02-28T23:02:00.000Z	garyc	waylandbill	what should the owner and perms. be???
+2008-02-28T23:05:00.000Z	garyc	waylandbill	 the owner is me (garyc) and 757 on the permissions
+2008-02-28T23:06:00.000Z	garyc	waylandbill	owner was root but I changed it.
+2008-02-28T23:06:00.000Z	waylandbill	garyc	when I say the user, I mean the user the webserver is executing the script as. that's what you need to know first off.
+2008-02-28T23:13:00.000Z	waylandbill	garyc	is that part of a lesson? why not put the html in the php script itself?
+2008-02-28T23:15:00.000Z	garyc	waylandbill	the book shows that example also.  the script runs ok from folders in www.  I just wanted to understand the cgi-bin folder.  In my pearl lessons non of my scripts ran either.
+2008-02-28T23:16:00.000Z	garyc	waylandbill	I thought I have a basic setup or .conf problem with my apache??
+2008-02-28T23:16:00.000Z	waylandbill	garyc	sounds like the cgi-bin is mis-configured in the httpd configuration
+2008-02-28T23:18:00.000Z	garyc	waylandbill	how should it be configured
+2008-02-28T23:18:00.000Z	waylandbill	garyc	to allow executing of scripts. you'll need to look at the apache documentation.
+2008-02-28T23:20:00.000Z	garyc	waylandbill	agreed.  I did and it appear to be right.  I read til my eye's bleed then I try you guys
+2008-02-28T23:21:00.000Z	waylandbill	garyc	you could check the apache logs. Internal errors are normally logged.
+2008-02-28T23:23:00.000Z	garyc	waylandbill	yes the errors are logged.  this is one [Thu Feb 28 10:51:39 2008] [error] [client 192.168.1.1] Premature end of script headers: cars.php
+2008-02-28T23:24:00.000Z	waylandbill	garyc	usually that is because the content-type is undefined.
+2008-02-28T23:25:00.000Z	garyc	waylandbill	does the <?php do it or is somethime else required??
+2008-02-28T23:25:00.000Z	waylandbill	garyc	you could try <?php print "Content-Type: text/html\n\n"; ?>  and see if it helps.
+2008-02-28T23:28:00.000Z	garyc	waylandbill	will do.  stand by one moment
+2008-02-28T23:38:00.000Z	garyc	waylandbill	error is the same.  the line you gave me just prints Content-Type: text/html\n\n to the screen if I run the script in www folder where it works
+2008-02-28T23:39:00.000Z	garyc	waylandbill	that makes sense if the print command prints what ever is in quotes
+2008-02-28T23:40:00.000Z	waylandbill	garyc	the error was still likely from failing to execute. php is probably outputting the necessary content-type.
+2008-02-28T23:42:00.000Z	garyc	waylandbill	I am lost.  Sorry I got to go.

@@ -1,0 +1,18 @@
+2006-05-11T05:42:00.000Z	||arifaX		hi can someone help. after booting /boot is not mounted. no problems with the system but for example a kernel update would not work what do I have to edit to mount /boot at boottime? (ubuntu breezy 2.6.12-9-386)
+2006-05-11T05:42:00.000Z	||arifaX		but I have a folder /boot
+2006-05-11T05:43:00.000Z	ChickenFire	||arifaX	what is inside your /etc/fstab ?
+2006-05-11T05:43:00.000Z	||arifaX	ChickenFire	should I paste here?
+2006-05-11T05:44:00.000Z	||arifaX	ChickenFire	There is none
+2006-05-11T05:45:00.000Z	||arifaX	ChickenFire	but I know it is on /dev/hde1 and i can mount in manually - will paste wait
+2006-05-11T05:46:00.000Z	||arifaX	ChickenFire	pasted it
+2006-05-11T05:47:00.000Z	ChickenFire	||arifaX	what URL please?
+2006-05-11T05:47:00.000Z	||arifaX	ChickenFire	ahh understand: http://paste.ubuntu-nl.org/d13458
+2006-05-11T05:52:00.000Z	ChickenFire	||arifaX	 you have no /boot entry in /etc/fstab.. so mounting manually should look like: "mount /dev/hde1 /boot"
+2006-05-11T05:53:00.000Z	||arifaX	ChickenFire	yes manually works did that already but how to do it automatically?
+2006-05-11T05:57:00.000Z	ChickenFire	||arifaX	ok, ubuntu is using LVM, the new entry line in /etc/fstab should look like "/dev/mapper/Ubuntu-boot     /boot      etc...."
+2006-05-11T05:57:00.000Z	||arifaX	ChickenFire	should I try that - should make no problems if buggy line or?
+2006-05-11T06:03:00.000Z	ChickenFire	||arifaX	no risk, no result ;)
+2006-05-11T06:03:00.000Z	ChickenFire	||arifaX	no seriously, if you do not change the other lines, it should be ok and skip it in case of error.
+2006-05-11T06:07:00.000Z	ChickenFire	||arifaX	so if the boot partition in not in LVM, then enter "/dev/hde1" directly.
+2006-05-11T06:07:00.000Z	||arifaX	ChickenFire	I think that was my fault. will never put boot into lvm again....
+2006-05-11T06:20:00.000Z	||arifaX	ChickenFire	...worked - (a simple line /dev/hde1 /boot did it) - anyhow both 64 and 32 bit versions of ubuntu 5.10 do forget about putting /boot in fstab when using lvm on full drive and create an invalid line in fstab

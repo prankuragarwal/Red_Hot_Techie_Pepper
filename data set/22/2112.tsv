@@ -1,0 +1,22 @@
+2010-03-13T03:30:00.000Z	red		Heya, anyone got tips for this: I made a samba share folder, and added two symlinks there (different folders I want to appear at the share)
+2010-03-13T03:30:00.000Z	red		now i can see the share perfectly from another pc, but the added symlink folders dont appear and if i manually type them into adress row it says access denied
+2010-03-13T03:30:00.000Z	red		so its there but no rights
+2010-03-13T03:31:00.000Z	Sylphid|netbook	red	what are the permissions of the directories you are symlinking to?
+2010-03-13T03:32:00.000Z	Sylphid|netbook	red	just making sure i got this right the originals have rw-r--r-- permissions?
+2010-03-13T03:33:00.000Z	red	Sylphid|netbook	yeah
+2010-03-13T03:34:00.000Z	red	Sylphid|netbook	drwxrwxrwx 1 root root 12288 2010-03-11 13:07 Red
+2010-03-13T03:35:00.000Z	red	Sylphid|netbook	i found something called wide links = no
+2010-03-13T03:43:00.000Z	Sylphid|netbook	red	http://ubuntuforums.org/showpost.php?p=4095531&postcount=10
+2010-03-13T07:24:00.000Z	Sylphid|netbook	red	did you include the username / password options in your mount command
+2010-03-13T07:25:00.000Z	red	Sylphid|netbook	mount -t cifs -o username=user,pass=pass //ip/sambashare /mount/point
+2010-03-13T07:26:00.000Z	Sylphid|netbook	red	are you using a system user or samba user
+2010-03-13T07:26:00.000Z	Sylphid|netbook	red	or guest
+2010-03-13T07:27:00.000Z	red	Sylphid|netbook	i've created username for myself and a friend, im able to login to the samba with both of those logins via nautiluus
+2010-03-13T07:28:00.000Z	Sylphid|netbook	red	well the mount syntax looks fine
+2010-03-13T07:30:00.000Z	Sylphid|netbook	red	just verified that syntax works fine on my samba share
+2010-03-13T07:31:00.000Z	Sylphid|netbook	red	did you reload samba after adding the users or changing the share permissions
+2010-03-13T07:31:00.000Z	Sylphid|netbook	red	what error does it give you
+2010-03-13T07:33:00.000Z	Sylphid|netbook	red	your not trying to mount it inside of the share right? that would be a loop that may cause problems
+2010-03-13T07:35:00.000Z	red	Sylphid|netbook	i got it to work now, oddly i had to use //serverip/firstfolder
+2010-03-13T07:45:00.000Z	red	Sylphid|netbook	http://dl.dropbox.com/u/2188345/samban900.png Behold. I'm sharing samba to my linux mobile phone over 3G (SSH-loopback tunnel) :)
+2010-03-13T07:46:00.000Z	Sylphid|netbook	red	nice!

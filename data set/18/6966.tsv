@@ -1,0 +1,18 @@
+2009-06-20T08:45:00.000Z	randall		why does "sudo chown myusrname:myursname" result with "operation not permitted???
+2009-06-20T08:46:00.000Z	auntieNeo	randall	you might not be in the sudo group or it might not be configured to allow you
+2009-06-20T08:46:00.000Z	auntieNeo	randall	you have to add a file or directory name to the end of your command
+2009-06-20T08:47:00.000Z	randall	auntieNeo	right, but it says operation not permitted
+2009-06-20T08:48:00.000Z	auntieNeo	randall	is this a FAT filesystem per chance?
+2009-06-20T08:48:00.000Z	auntieNeo	randall	use the "mount" command without any arguments to find out
+2009-06-20T08:49:00.000Z	randall	auntieNeo	vfat
+2009-06-20T08:49:00.000Z	auntieNeo	randall	what are you talking about?
+2009-06-20T08:49:00.000Z	auntieNeo	randall	fat filesystems don't support user names
+2009-06-20T08:50:00.000Z	randall	auntieNeo	then how do i gain write access
+2009-06-20T08:50:00.000Z	auntieNeo	randall	man mount
+2009-06-20T08:50:00.000Z	auntieNeo	randall	look under the vfat section
+2009-06-20T08:50:00.000Z	auntieNeo	randall	there are options for mounting vfat partitions under a certain user/group
+2009-06-20T08:51:00.000Z	auntieNeo	randall	alternatively, you could set the "user,noauto" option for your filesystem in /etc/fstab and then mount it as the desired user
+2009-06-20T08:51:00.000Z	randall	auntieNeo	which way should i go if i want to use samba to make it a shared drive?
+2009-06-20T08:58:00.000Z	auntieNeo	randall	when mounting it, use the flag "-o uid=myuser,gid=myuser"
+2009-06-20T08:58:00.000Z	randall	auntieNeo	i dont want to mount it to a specific user if i can avoid it
+2009-06-20T09:04:00.000Z	randall	auntieNeo	it won't mount with those options.. =(

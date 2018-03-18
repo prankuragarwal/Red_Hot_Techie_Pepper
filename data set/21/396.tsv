@@ -1,0 +1,21 @@
+2012-03-02T00:20:00.000Z	codepal		I've just installed libglib2.0-0 2.30.2, but libgimp2.0 : Depends: libglib2.0 (>= 2.30.2)
+2012-03-02T00:20:00.000Z	codepal		and it won't install
+2012-03-02T00:21:00.000Z	codepal		anybody tell me why libglib2.0 is showing the correct version required in apt-cache showpkg - yet apt won't install ?
+2012-03-02T00:21:00.000Z	codepal		can I tell apt to force install ?
+2012-03-02T00:23:00.000Z	northernen	codepal	what does 'ldd  _file_' say?
+2012-03-02T00:25:00.000Z	codepal	northernen	hrmm which _file_ would that be
+2012-03-02T00:28:00.000Z	northernen	codepal	libglib2.0. Guessing that's a shared library? If it is, it's possibly looking for the required library in the wrong path. In that case you'll have to create a symlink to the real file in the location libglib2.0 is looking.
+2012-03-02T00:29:00.000Z	codepal	northernen	I'm trying to use apt-get to install gimp 2.7.5 from matt's repo
+2012-03-02T00:29:00.000Z	codepal		unfortunately his instructions to add ricotz & gnome3 repos are not working
+2012-03-02T00:30:00.000Z	northernen	codepal	do you have a pastebin?
+2012-03-02T00:30:00.000Z	codepal	northernen	https://launchpad.net/~matthaeus123/+archive/mrw-gimp-svn
+2012-03-02T00:30:00.000Z	codepal	northernen	sure I have pastebin
+2012-03-02T00:30:00.000Z	northernen	codepal	of the error message.
+2012-03-02T00:30:00.000Z	codepal		but ldd isn't going to help, cause I haven't installed gimp2.7.5 yet
+2012-03-02T00:31:00.000Z	northernen	codepal	it reports you missing libglib?
+2012-03-02T00:33:00.000Z	codepal	northernen	missing the correct version to continue to install libgimp2.0
+2012-03-02T00:34:00.000Z	codepal		and with apt-cache showpkg libglib2.0-0 I KNOW I have the right version
+2012-03-02T00:34:00.000Z	codepal		need to tell apt it's got it's facts wrong
+2012-03-02T00:35:00.000Z	codepal	northernen	http://pastebin.com/Vf6zYmu7
+2012-03-02T00:42:00.000Z	northernen	codepal	did you check for libglib2.0 having unmet dependencies?
+2012-03-02T00:44:00.000Z	codepal	northernen	http://pastebin.com/PeEjPiAk

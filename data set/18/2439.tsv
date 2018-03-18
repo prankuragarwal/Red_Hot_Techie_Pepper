@@ -1,0 +1,18 @@
+2010-05-14T06:01:00.000Z	asus2		I have an 18 MB Partition -- its Hidden / W95 FAT32 0x1b -- @ /dev/sda4 -- Should I DELETE it?
+2010-05-14T06:02:00.000Z	Jordan_U	asus2	No, grub only uses a dedicated partition if you're using gpt. What does the partition contain?
+2010-05-14T06:05:00.000Z	asus2	Jordan_U	do you concur with Typos_King?
+2010-05-14T06:06:00.000Z	Jordan_U	asus2	I think windows in some cases creates a boot partition. I'd at least look at the contents before deleting it
+2010-05-14T06:06:00.000Z	asus2	Jordan_U	how would I go about looking at the contents?
+2010-05-14T06:07:00.000Z	Jordan_U	asus2	sudo mount /dev/sda4 /mnt && ls /mnt
+2010-05-14T06:08:00.000Z	asus2	Jordan_U	"mount: you must specify the filesystem type"
+2010-05-14T06:12:00.000Z	asus2	Jordan_U	http://codepad.org/dY5YqhKT
+2010-05-14T06:13:00.000Z	Jordan_U	asus2	The syntax is "sudo mount -t vfat /dev/sda4 /mnt" but if it were really a fat filesystem the kernel would have autodetect it. Since there doesn't seem to be a valid filesystem on that partition it's probably safe to remove it
+2010-05-14T06:20:00.000Z	asus2	Jordan_U	http://codepad.org/6siAaTIz the code you gave me doesnt work? Palimpset states it is Hidden W95 FAT32 (0x1b)
+2010-05-14T06:20:00.000Z	Jordan_U	asus2	Yes, because there is no valid filesystem on that partition
+2010-05-14T06:21:00.000Z	asus2	Jordan_U	then how do I view the contents as you suggested?
+2010-05-14T06:21:00.000Z	Jordan_U	asus2	You can't, it looks like there are no valid contents
+2010-05-14T06:21:00.000Z	Jordan_U	asus2	Which is why I think it's safe to delete
+2010-05-14T06:23:00.000Z	asus2	Jordan_U	the partition is empty? no data inside?
+2010-05-14T06:37:00.000Z	Jordan_U	asus2	Change the default to "Windows 7 (loader) (on /dev/sda1)" (with quotes) and it doesn't matter what order / number it is
+2010-05-14T06:40:00.000Z	asus2	Jordan_U	My grub file for your review before I restart my netbook. Also deleted that 18 MB partition. http://codepad.org/UtX8GjvW
+2010-05-14T06:41:00.000Z	Jordan_U	asus2	Looks good to me

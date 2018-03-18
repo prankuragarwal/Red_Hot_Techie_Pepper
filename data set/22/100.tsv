@@ -1,0 +1,22 @@
+2012-10-21T16:09:00.000Z	insomniac_lemon		Has anyone here actually gotten VLC to play Bluray discs in Ubuntu?
+2012-10-21T16:10:00.000Z	TJ-	insomniac_lemon	Yes, I did recently whilst testing a new BD drive. I tested it with the movie "Saving Private Ryan" which I assume was a copy-protected disc.
+2012-10-21T16:11:00.000Z	insomniac_lemon	TJ-	where did you put the Libaacs file? It doesn't go in the same place in Ubuntu as other Linux distros
+2012-10-21T16:11:00.000Z	TJ-	insomniac_lemon	I had to install the known keys to a directory in the user's home, but VLC looked there and used them
+2012-10-21T16:11:00.000Z	TJ-	insomniac_lemon	All the packages used were from the Ubuntu archives.
+2012-10-21T16:12:00.000Z	insomniac_lemon	TJ-	didn't you need to put in a file for the AACS dynamic library, too?
+2012-10-21T16:13:00.000Z	TJ-	insomniac_lemon	No, just the key files. I'm trying to find the document I used ... give me a mo, got to search back a month or more in browser history
+2012-10-21T16:14:00.000Z	TJ-	insomniac_lemon	Here it is! http://vlc-bluray.whoknowsmy.name/
+2012-10-21T16:14:00.000Z	insomniac_lemon	TJ-	actually, you just made me realize, I'll try doing that, too. On my VM which I tested it on, I tried using the file on the site, but didn't think to install the AACS packages.
+2012-10-21T16:15:00.000Z	TJ-	insomniac_lemon	yeah, using 12.04 libaacs was already installed
+2012-10-21T16:15:00.000Z	insomniac_lemon	TJ-	yeah, that's what I was going by. Installed the keys, but the site had the AACS stuff to install, too.
+2012-10-21T16:16:00.000Z	insomniac_lemon	TJ-	wait, what? Then it should've worked for me.
+2012-10-21T16:16:00.000Z	TJ-	insomniac_lemon	Yes, I'd assume so. Mine shows "apt-cache policy libaacs0 ... libaacs0:  Installed: 0.3.0-4"
+2012-10-21T16:17:00.000Z	TJ-	insomniac_lemon	And "ls -l ~/.config/aacs/  ...   -rw-rw-r-- 1 tj tj 3006 Apr 20  2012 KEYDB.cfg"
+2012-10-21T16:24:00.000Z	insomniac_lemon	TJ-	I've got Ubuntu 12.04 LTS, home/.comfig/aacs/KEYDB.cfg, and VLC that supports blu-ray playing, but if I try it tells me "Your system AACS decoding library does not work. Missing keys?" (testing with the movie Wall-E, which is fairly old)
+2012-10-21T16:47:00.000Z	TJ-	insomniac_lemon	Without a specific path they'll be in the directory where vlc starts from; usually $HOME I think
+2012-10-21T16:36:00.000Z	TJ-	insomniac_lemon	If the path you pasted in was correctly pasted - it's wrong. It should be "/home/$USER/.config/aacs/KEYDB.cfg" not "home/.comfig/aacs/KEYDB.cfg"
+2012-10-21T16:37:00.000Z	insomniac_lemon	TJ-	".comfig" and lack of / in front of home were just errors on my part, not the actual path
+2012-10-21T16:37:00.000Z	TJ-	insomniac_lemon	OK. Have you started vlc from a terminal with verbose logging running? That may give a clue
+2012-10-21T16:38:00.000Z	insomniac_lemon	TJ-	where does VLC output its error logs in Ubuntu to?
+2012-10-21T16:42:00.000Z	TJ-	insomniac_lemon	to the launching terminal "vlc -v 10" or something similar, and you can capture to a log-file with "vlc -v 10 2>&1 | tee vlc.log"
+2012-10-21T16:43:00.000Z	insomniac_lemon	TJ-	well VLC has already made error logs, I just don't know where they are.

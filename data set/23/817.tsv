@@ -1,0 +1,23 @@
+2011-10-13T00:31:00.000Z	Malgorath		here is my bug report for nvidia activate but not in use, anyone able to help out? http://pastebin.com/n82pVU1x
+2011-10-13T00:33:00.000Z	Fuchs	Malgorath	invalid EDID
+2011-10-13T00:33:00.000Z	Fuchs	Malgorath	either try to get a valid EDID for your monitor, or specifiy the allowed resolutions manually,
+2011-10-13T00:33:00.000Z	Fuchs	Malgorath	e.g. with X Server modelines.
+2011-10-13T00:35:00.000Z	Malgorath	Fuchs	ugh haven't done those in many a moon. how would i get a valid edid?
+2011-10-13T00:35:00.000Z	Fuchs	Malgorath	do you have by chance windows on that machine?
+2011-10-13T00:36:00.000Z	Fuchs		for some unknwon reasons the driver there is a bit less picky, and you could use it to dump the EDID to a file, which can be fed to the linux driver with the UseCustomEDID Option
+2011-10-13T00:36:00.000Z	Malgorath		fuchs i have the same monitor on another computer with windows 7 if that helps but this box is linux only
+2011-10-13T00:37:00.000Z	Fuchs		oh, Malgorath, wait
+2011-10-13T00:37:00.000Z	Fuchs	Malgorath	you set this resolution by yourself in the xorg.conf
+2011-10-13T00:37:00.000Z	Fuchs	Malgorath	Option         "metamodes" "1360x768 +0+0"  <<
+2011-10-13T00:37:00.000Z	Malgorath		with nvidia settings
+2011-10-13T00:37:00.000Z	Malgorath	Fuchs	i used the nvidia settings but that was the highest it would go
+2011-10-13T00:39:00.000Z	Fuchs	Malgorath	then that might be due to the driver not be able to read the EDID
+2011-10-13T00:41:00.000Z	Malgorath	Fuchs	so should i just edit the xorg and add 1440x900?
+2011-10-13T00:42:00.000Z	Fuchs	Malgorath	you probably have to specify a modeline for that
+2011-10-13T00:42:00.000Z	Fuchs	Malgorath	there are tools that generate them for you
+2011-10-13T00:42:00.000Z	Malgorath		what are they called?\
+2011-10-13T00:43:00.000Z	Fuchs	Malgorath	gtf  is one
+2011-10-13T01:00:00.000Z	Malgorath	Fuchs	gtf short for anything?
+2011-10-13T01:01:00.000Z	Fuchs	Malgorath	it's the name of the tool, I have no idea whether it has a meaning
+2011-10-13T01:02:00.000Z	Malgorath	Fuchs	is it in apt repo or something i'd have to look up?
+2011-10-13T01:02:00.000Z	Fuchs	Malgorath	http://packages.ubuntu.com/search?searchon=contents&keywords=gtf&mode=exactfilename&suite=natty&arch=any

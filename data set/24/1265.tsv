@@ -1,0 +1,24 @@
+2010-11-23T03:51:00.000Z	intrader		:( Hi, a USB Fat volume has a file with shebang to bash. Its context menu properties does not allow me to change file to be executable. I have the date of the last time it worked in Maverick. What is going on?
+2010-11-23T03:52:00.000Z	st__	intrader	you need explicitly mount it with exec option
+2010-11-23T03:52:00.000Z	intrader	st__	this is done recently?
+2010-11-23T03:57:00.000Z	st__	intrader	try sudo udisks
+2010-11-23T03:58:00.000Z	intrader	st__	that is not a gui command :(
+2010-11-23T03:58:00.000Z	st__	intrader	linux has no useful gui
+2010-11-23T04:00:00.000Z	intrader	st__	a couple of weeks ago I could stick the usb in, click on the .sh file, and the dialog would pop to allow me to vet the execution.
+2010-11-23T04:01:00.000Z	st__	intrader	that should be still in
+2010-11-23T04:02:00.000Z	intrader	st__	no longer works, it brings up option to open in text editor, instead of poping up the vetting dialog.
+2010-11-23T04:05:00.000Z	intrader	st__	last time it worked Nov 10. The smalltalk image file was accessed
+2010-11-23T04:21:00.000Z	st__	intrader	because you don;t own the volume
+2010-11-23T04:22:00.000Z	intrader	st__	so how do I become owner of volume?
+2010-11-23T04:22:00.000Z	st__	intrader	you specify it at mount time
+2010-11-23T04:23:00.000Z	intrader	st__	God this is really lame, it should all be possible via the gui. How do I mount with permissions to execute?
+2010-11-23T04:24:00.000Z	intrader	st__	remember that as soon as I stick the USB, it become mounted (I don't even know that the device is!)
+2010-11-23T04:25:00.000Z	st__	intrader	you have to remount it via udisks giving corresponding options
+2010-11-23T04:26:00.000Z	intrader	st__	is it black magic to know the the device, the udisks command and its options. God this is lame.
+2010-11-24T11:55:00.000Z	st__	intrader	with exec option
+2010-11-24T11:56:00.000Z	intrader	st__	tell me more
+2010-11-24T11:57:00.000Z	st__	intrader	use 'mount' command to see what the deviace name for your usb is and then mount it 'udisks --mount DEVICE --mount-option rw,exec'
+2010-11-24T12:00:00.000Z	intrader	st__	I don't recognize any of the `mount` output. I know the volume is named SAVES so it mounts from /media/SAVES
+2010-11-24T12:01:00.000Z	intrader	st__	I found it - the confounded USB is '/dev/sdb1 on /media/SAVES type vfat (rw,nosuid,nodev,uhelper=udisks,uid=1000,gid=1000,shortname=mixed,dmask=0077,utf8=1,showexec,flush)'
+2010-11-24T12:05:00.000Z	intrader	st__	does not accept 'sudo udisks --mount /dev/sdb1 --mount-option rw,exec'
+2010-11-24T12:10:00.000Z	intrader	st__	does not accept 'sudo udisks --mount /dev/sdb1 --mount-option  rw,exec'

@@ -1,0 +1,19 @@
+2012-05-06T07:15:00.000Z	Tropolis		What's the correct way to have new files created by a process with specific permissions/other groups without changing the system default?
+2012-05-06T07:16:00.000Z	jrib	Tropolis	what exactly do you want to do?
+2012-05-06T07:33:00.000Z	Tropolis	jrib	I have a process running that constantly updates a bunch of text files, I want to give some users the ability to edit those files, but whenever the process updates or creates them, their permissions change to default (755)
+2012-05-06T07:33:00.000Z	jrib	Tropolis	do you have control over the process?
+2012-05-06T07:36:00.000Z	Tropolis	jrib	Yeah, I have root/complete control
+2012-05-06T07:37:00.000Z	jrib	Tropolis	well you can modify umask in your program and the group you execute as (sg would do this in bash).  Or you can approach it at the filesystem level and use Access Control Lists but this would be location-specific instead of program-specific
+2012-05-06T07:39:00.000Z	Tropolis	jrib	it's being controlled by supervisord, which I think lets me set the umask. What would the ACL method be?
+2012-05-06T07:40:00.000Z	Tropolis	jrib	As ideally I'd like to give some users access to a specific directory, and others access to a different one, both subdirectories of the main process
+2012-05-06T07:40:00.000Z	jrib	Tropolis	with ACLs you can set default permissions on files created somewhere (see « man setfacl », « man getfacl »)
+2012-05-06T07:41:00.000Z	jrib	Tropolis	why can't you just give the users appropriate permissions at the directory level?
+2012-05-06T07:44:00.000Z	Tropolis	jrib	The directory is owned by the process, and its group is set to the relevant group, with read-write permissions. But when the process creates new files, they're unwriteable to members of the required group, as they're created w/ default 755 with the process as the group
+2012-05-06T07:44:00.000Z	jrib	Tropolis	is there more than one level (i.e. do you need a recursive solution)?
+2012-05-06T07:45:00.000Z	Tropolis	jrib	Nope, just one level for now
+2012-05-06T07:47:00.000Z	jrib	Tropolis	well then another alternative is to setgid the directory, change the group ownership of the directory to the group you want files in to be created with and then just change the umask appropriately
+2012-05-06T07:47:00.000Z	Tropolis	jrib	Hmm, that sounds like it could be what I want
+2012-05-06T07:48:00.000Z	jrib	Tropolis	ACLs are certainly more expressive though (you could do multiple groups for example)
+2012-05-06T07:50:00.000Z	Tropolis	jrib	I'll read the manpage for setgid now, and possibly look into ACL's if it's not quite right. Thank you very much for your help.
+2012-05-06T07:51:00.000Z	jrib	Tropolis	to setgid, do: chmod g+s /path/to/directory
+2012-05-06T07:51:00.000Z	jrib	Tropolis	you'll still need to change umask though (so that group can write)

@@ -1,0 +1,22 @@
+2009-01-15T01:26:00.000Z	oCean_	BOSOCSLIFE	saw post on apache config. Did you modify /etc/apache2/sites-available/default file?
+2009-01-15T01:29:00.000Z	BOSOCSLIFE	oCean_	at one time i think i did
+2009-01-15T01:29:00.000Z	BOSOCSLIFE	oCean_	i did everything everyone here is telling me i just dont know where i messed up or if i missed something
+2009-01-15T01:30:00.000Z	oCean_	BOSOCSLIFE	at this point, browsing still gets you at /var/www/ directory?
+2009-01-15T01:30:00.000Z	BOSOCSLIFE	oCean_	yes www.boscoslife.com still points to /var/www
+2009-01-15T01:31:00.000Z	oCean_	BOSOCSLIFE	ok. "cd" to /etc/apache2/sites-available. And see what the file "default" says.
+2009-01-15T01:33:00.000Z	BOSOCSLIFE	oCean_	http://pastebin.com/m673faf80
+2009-01-15T01:35:00.000Z	oCean_	BOSOCSLIFE	ah well, w/o making it all too complicated, that's the one that had to be edited. (but I see you already have) After this edit, you did "sudo /etc/init.d/apache2 restart" ?
+2009-01-15T01:35:00.000Z	BOSOCSLIFE	oCean_	yes i did
+2009-01-15T01:36:00.000Z	oCean_	BOSOCSLIFE	ok. In /etc/apache2/apache2.conf it says "include /etc/apache2/sites-enabled/" ?
+2009-01-15T01:36:00.000Z	BOSOCSLIFE	oCean_	i have 3 websites i need to do this for 2 of them ned to be done now
+2009-01-15T01:37:00.000Z	BOSOCSLIFE	oCean_	/etc/apache2/sites-available# ls default  default-ssl  default.save  www.boscoslife.com
+2009-01-15T01:37:00.000Z	oCean_	BOSOCSLIFE	ah, ok. Well actually you should be able to "define" those different sites in the sites-available directory.
+2009-01-15T01:38:00.000Z	oCean_	BOSOCSLIFE	also, pls see /var/log/apache2/error_log after restarting the apache server. Helpful information might be there
+2009-01-15T01:40:00.000Z	BOSOCSLIFE	oCean_	so what am i doing wrong
+2009-01-15T01:41:00.000Z	oCean_	BOSOCSLIFE	I don't know yet.. have you checked /var/log/apache2/error_log after restarting apache?
+2009-01-15T01:48:00.000Z	BOSOCSLIFE	oCean_	yes and nothing was there
+2009-01-15T01:48:00.000Z	oCean_	BOSOCSLIFE	nothing? Only the "resuming normal operations" ?
+2009-01-15T01:49:00.000Z	BOSOCSLIFE	oCean_	yes
+2009-01-15T01:49:00.000Z	oCean_	BOSOCSLIFE	that 'proves' that your changes have not had *any* effect...
+2009-01-15T01:51:00.000Z	oCean_	BOSOCSLIFE	so either apache hasn't been restarted, or something else is overriding the DocumentRoot
+2009-01-15T01:54:00.000Z	oCean_	BOSOCSLIFE	allthough I think your config is correct (at least for the default file) i agree w/ deany.. they might be able to help you even better

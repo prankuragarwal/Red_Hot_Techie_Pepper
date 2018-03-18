@@ -1,0 +1,18 @@
+2011-04-10T22:16:00.000Z	rotten777		i'm looking to find a way to remotely (ssh) unlock the encrypted filesystems on a server after a reboot... has anyone done this?
+2011-04-10T22:16:00.000Z	Sonne	rotten777	automatically throw commands on remote machines? that's definitely doable. try searching for ssh key authentication :)
+2011-04-10T22:17:00.000Z	rotten777	Sonne	is openssh-server running when it hasn't unlocked anything but the boot partition?
+2011-04-10T22:17:00.000Z	Sonne	rotten777	what?
+2011-04-10T22:18:00.000Z	rotten777	Sonne	when the system boots, it has a BIOS password which is bypassed because of WOL boot; it loads the boot partition; then has to decrypt the other partitions before it can boot
+2011-04-10T22:18:00.000Z	rotten777	Sonne	as this is a server, I cannot have it automatically unlock the encrypted contents
+2011-04-10T22:18:00.000Z	rotten777	Sonne	I need to enter the key to unlock the encrypted filesystems manually
+2011-04-10T22:19:00.000Z	Sonne	rotten777	what is encrypted? the whole filesystem or just the data?
+2011-04-10T22:19:00.000Z	Sonne	rotten777	then you're screwed, you need a keyboard
+2011-04-10T22:20:00.000Z	rotten777	Sonne	that's what I was afraid of. I think I need a hardware console server to enter it via console
+2011-04-10T22:21:00.000Z	Sonne	rotten777	or you might choose to reinstall the thing "clear text" and only encrypt the sensitive data
+2011-04-10T22:21:00.000Z	Sonne	rotten777	another option could be to use an usb dongle with the key on it, but it's not so intuitive
+2011-04-10T22:22:00.000Z	rotten777	Sonne	that adds physical security to the list of protections ;) right now someone could literally steal the server and get nothing.
+2011-04-10T22:22:00.000Z	Sonne	rotten777	if you only encrypted the data, one could literally steal the server and get a linux installation. whoo, exciting.
+2011-04-10T22:23:00.000Z	rotten777	Sonne	full encryption plus an offsite encrypted tunneled rsync means 100% safe
+2011-04-10T22:23:00.000Z	rotten777	Sonne	and they would see what type of encryption scheme and start working away on  it
+2011-04-10T22:23:00.000Z	Sonne	rotten777	and then get a cluster of space ships from star wars to crack aes512 and get the results in a few thousand years, sure
+2011-04-10T22:32:00.000Z	Sonne	rotten777	and anyway, anybody capable of cracking that kind of encryption (read: aliens) can surely tell whether a filesystem is or isn't encrypted.

@@ -1,0 +1,24 @@
+2006-09-26T06:53:00.000Z	lupine_85		sd* can also be hard discs
+2006-09-26T06:53:00.000Z	lupine_85		oh, not sure then :)
+2006-09-26T06:54:00.000Z	lupine_85		depends on how it presents them I guess
+2006-09-26T06:54:00.000Z	POVaddct	lupine_85	qemu emulates ide harddisks only
+2006-09-26T07:37:00.000Z	lupine_85	POVaddct	for that he'd need a static route, surely?
+2006-09-26T07:38:00.000Z	POVaddct	lupine_85	one of his interfaces should have a fixed ip address for that
+2006-09-26T07:39:00.000Z	POVaddct	lupine_85	otherwise the other computer using his machine as a router always has to guess his ip address
+2006-09-26T07:42:00.000Z	lupine_85	POVaddct	you can do static routes for IP ranges as well
+2006-09-26T07:43:00.000Z	POVaddct	lupine_85	but a route with a gateway needs exactly one gw ip adresse, and that has to be known
+2006-09-26T07:46:00.000Z	lupine_85	POVaddct	of course. gateways should always be static
+2006-09-26T07:48:00.000Z	POVaddct	lupine_85	that's what i am talking about. and i guess Juggernaut1980 wants to use a machine as gateway that gets ip addresses for both interfaces via dhcp, which is no good idea.
+2006-09-26T07:48:00.000Z	POVaddct	lupine_85	yeah
+2006-12-26T08:17:00.000Z	lupine_85	POVaddct	reiki: they're easy enough to change
+2006-12-26T08:18:00.000Z	POVaddct	lupine_85	for ext2/3 i know how to get the uuid (tune2fs -l), but how to get UUID for swap?
+2006-12-26T08:19:00.000Z	lupine_85	POVaddct	they're referenced in /dev/disk/by-uuid/
+2006-12-26T08:19:00.000Z	POVaddct	lupine_85	yes, but how is /dev/disk/by-uuid/ built? on base of which data?
+2006-12-26T08:20:00.000Z	POVaddct	lupine_85	i know that udev creates that symlinks. but i dont know on which basis. for ext2/3 it is clear.
+2006-12-26T08:23:00.000Z	POVaddct	lupine_85	random only once. then they get stored somewhere.
+2006-12-26T08:24:00.000Z	POVaddct	lupine_85	its just long enough to be unique
+2006-12-26T08:25:00.000Z	POVaddct	lupine_85	yeah, i think they actually make things more complicated than with /dev/hd* or /dev/sd*
+2006-12-26T08:25:00.000Z	POVaddct	lupine_85	the only real advantage is using them for removable usb/firewire drives
+2006-12-26T08:25:00.000Z	lupine_85	POVaddct	I could live with /dev/by-id -- but by-uuid
+2006-12-26T08:31:00.000Z	POVaddct	lupine_85	yeah, would be better
+2006-12-26T08:31:00.000Z	POVaddct	lupine_85	uuids only for removable disks

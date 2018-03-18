@@ -1,0 +1,22 @@
+2006-04-16T13:02:00.000Z	intelikey		hmmm just installed "mozilla-thunderbird" but it doesn't do anything.   i tried starting it in a terminal and it says "** regestering clean compreg **"   but no window ever opens or anything, it just sits there.   any ideas ?
+2006-04-16T13:04:00.000Z	intelikey		<tanuki_> can someone tell me how to make sure my ftp server starts when i login? <---  login ?   or boot time ?
+2006-04-16T13:04:00.000Z	tanuki_	intelikey	when i boot up
+2006-04-16T13:06:00.000Z	intelikey	tanuki_	check that the symlink is there in either /etc/rcS.d  or /etc/rc2.d   that says  S#*ftpd    where #* is something like 28 or 34vs   or what ever.  just the symlink that runs the script that starts the ftp server.
+2006-04-16T13:08:00.000Z	tanuki_	intelikey	i do not know what a symlink is, can you help me with that?
+2006-04-16T13:09:00.000Z	intelikey	tanuki_	ls /etc/rc?.d/S*ftp*     in a terminal.
+2006-04-16T13:11:00.000Z	tanuki_	intelikey	http://pastebin.com/654078
+2006-04-16T13:16:00.000Z	intelikey	tanuki_	looks good.  it should start at boot both pure-ftpd and  proftpd    if you are only using one of them you should remove the other.
+2006-04-16T13:17:00.000Z	tanuki_	intelikey	how do i do that? and why can i not connect to my ftp server using gftp?
+2006-04-16T13:18:00.000Z	tanuki_	intelikey	i do not even have proftpd installed, why is it there?
+2006-04-16T13:20:00.000Z	intelikey	tanuki_	it must be installed.    or you have borked init settings.     do a sudo apt-get -P remove froftpd
+2006-04-16T13:21:00.000Z	tanuki_	intelikey	i got this error E: Command line option 'P' [from -P]  is not known.
+2006-04-16T13:22:00.000Z	tanuki_	intelikey	same thing, command line option unknown
+2006-04-16T13:22:00.000Z	intelikey	tanuki_	sudo apt-get --purge remove proftpd   <---- i know it works.
+2006-04-16T13:23:00.000Z	tanuki_	intelikey	it says proftpd is not installed. huh
+2006-04-16T13:24:00.000Z	tanuki_	intelikey	i got pure-ftpd to start using the command pure-ftpd start
+2006-04-16T13:24:00.000Z	intelikey	tanuki_	ok then removing the symlinks
+2006-04-16T13:24:00.000Z	tanuki_	intelikey	but how can i make it so that the server starts when i boot up?
+2006-04-16T13:25:00.000Z	intelikey	tanuki_	it should start when you boot.   that is what the init scripts do.   they start things at boot time.
+2006-04-16T13:27:00.000Z	intelikey	tanuki_	this symlink  "/etc/rc2.d/S20pure-ftpd"  you pastebin'd should point to a script  "/etc/init.d/pure-ftpd"  that starts the ftp server durring the boot process,   you can use  sudo /etc/init.d/pure-ftpd stop &&  sudo /etc/init.d/pure-ftpd start   to test it.
+2006-04-16T13:28:00.000Z	tanuki_	intelikey	thank you very much, it was super helpful;
+2006-04-16T13:29:00.000Z	intelikey	tanuki_	man init    and type this in the man pager  /CONFORMING

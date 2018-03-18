@@ -1,0 +1,24 @@
+2005-10-22T11:11:00.000Z	inittab		just wondering if anybody can help me with a dhcp problem, when booting it sits on configuring network devices for quite awhile, ends up not getting a lease on eth1, but as soon as i type dhclient eth1 at a prompt it gets a lease, any ideas?
+2005-10-22T11:12:00.000Z	inittab		in daemon.log it shows it doing a dhcpdiscover multiple times, but never getting a offer, when i run it manually it gets a offer right away
+2005-10-22T11:13:00.000Z	jmob	inittab	do you run dhclient with any arguments?
+2005-10-22T11:13:00.000Z	inittab	jmob	simply dhclient eth1 at the prompt
+2005-10-22T11:13:00.000Z	jmob	inittab	what's in /etc/network/interfaces ?
+2005-10-22T11:13:00.000Z	inittab		eth0 is my local net, which is setup static
+2005-10-22T11:13:00.000Z	jmob	inittab	there should be something link auto eth1 if you want it to autoconfigured
+2005-10-22T11:14:00.000Z	jmob	inittab	something like "auto eth1" i mean
+2005-10-22T11:14:00.000Z	inittab		http://paste.ubuntulinux.nl/3218
+2005-10-22T11:15:00.000Z	jmob	inittab	first auto statement might be the only one it's seeing. try "auto eth0 eth1"?
+2005-10-22T11:15:00.000Z	inittab	jmob	alright ill try that, but i can see it trying to use dhclient on eth1 in the logs
+2005-10-22T11:15:00.000Z	inittab		not to mention the auto lo above that.
+2005-10-22T11:16:00.000Z	jmob	inittab	nevermind, the man page says there can be multiple auto statements
+2005-10-22T11:17:00.000Z	jmob	inittab	strange
+2005-10-22T11:17:00.000Z	jmob	inittab	what's the dhcp server?
+2005-10-22T11:17:00.000Z	jmob	inittab	does it have any logs?
+2005-10-22T11:18:00.000Z	inittab	jmob	http://paste.ubuntulinux.nl/3219
+2005-10-22T11:19:00.000Z	inittab		the first one is when a /etc/init.d/networking restart is done
+2005-10-22T11:19:00.000Z	inittab		where it actually gets the lease is me doing a dhclient eth1
+2005-10-22T11:22:00.000Z	jmob	inittab	see what happens if you take the auto statement for eth1 out and run it manually at start-up
+2005-10-22T11:24:00.000Z	inittab	jmob	if i run it manually
+2005-10-22T11:24:00.000Z	inittab		it works fine
+2005-10-22T11:25:00.000Z	jmob	inittab	Well, I can't think of anything other than dumping ``route'' and ``ifconfig -a'' output from your networking script
+2005-10-22T11:30:00.000Z	jmob	inittab	maybe the dhcp packets are getting swalled by something

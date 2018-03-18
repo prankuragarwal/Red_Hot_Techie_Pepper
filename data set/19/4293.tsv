@@ -1,0 +1,19 @@
+2009-05-15T07:36:00.000Z	awmcclain		What's with python 2.6 on jaunty using "dist-packages" isntead of site packages?
+2009-05-15T07:36:00.000Z	mzz	awmcclain	don't get me started
+2009-05-15T07:37:00.000Z	awmcclain	mzz	... meaning, you're as puzzled as I or there's an obvious reason why my upgrade broke the server?
+2009-05-15T07:37:00.000Z	mzz	awmcclain	debian/ubuntu has/have disagreed with how python's site-packages stuff is laid out for some time now. python-support was bad enough, apparently they have now decided to break innocent setup.py scripts written by people without debian/ubuntu systems in new and interesting ways.
+2009-05-15T07:38:00.000Z	awmcclain	mzz	Wonderful.
+2009-05-15T07:38:00.000Z	awmcclain	mzz	I join you in your grumble grumble then.
+2009-05-15T07:38:00.000Z	mzz	awmcclain	I'm sorry, I'm not on ubuntu either and don't have the details on this one.
+2009-05-15T07:39:00.000Z	mzz	awmcclain	their intentions are probably good, but so far the most obvious effect is that I frequently run into people on debian/ubuntu with mysterious python problems I can't understand without having access to a system with their python
+2009-05-15T07:40:00.000Z	awmcclain	mzz	Yup. They changed the default sys.path and totally removed site-packages. Silly.
+2009-05-15T07:42:00.000Z	mzz	awmcclain	afaik they did patch distutils, so if you just reinstall your stuff it should end up in the location they want it (reinstall being rerun setup.py)
+2009-05-15T07:42:00.000Z	awmcclain	mzz	ug.
+2009-05-15T07:45:00.000Z	mzz	awmcclain	(other stuff getting the path through distutils.sysconfig will work, things with the path hardcoded won't, but that's not as common as you might think. Specifically most autotools-based stuff will end up in the spot they want it too, afaik)
+2009-05-15T07:52:00.000Z	awmcclain	mzz	Any idea how to diable 2.6 in jaunty?
+2009-05-15T07:52:00.000Z	mzz	awmcclain	sorry, no (I suspect that's not even possible)
+2009-05-15T07:52:00.000Z	awmcclain	mzz	Or at least enable 2.5 again?
+2009-05-15T07:53:00.000Z	mzz	awmcclain	I'd actually expect installing 2.5 in parallel to just work, but I'm not sure if they applied the same patch to that
+2009-05-15T07:53:00.000Z	awmcclain	mzz	I have 25 installed already
+2009-05-15T07:53:00.000Z	mzz	awmcclain	and its sys.path looks healthy?
+2009-05-15T07:54:00.000Z	awmcclain	mzz	Yes.

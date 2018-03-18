@@ -1,0 +1,21 @@
+2011-10-28T03:42:00.000Z	leeping		Hi there, I still can't kill my X server.  Can I boot the computer into recovery node?  I've forgotten how to do that since they updated GRUB
+2011-10-28T03:44:00.000Z	dardevelin	leeping	/etc/init.d/lightdm stop
+2011-10-28T03:45:00.000Z	leeping	dardevelin	I did that.  I still cannot install the NVidia driver.  I am suspecting that it is not detecting whether my X server is running by the processes but instead by a file
+2011-10-28T03:46:00.000Z	dardevelin	leeping	i don't think that x is being your problem
+2011-10-28T03:46:00.000Z	dardevelin	leeping	do you kernel headers + build essentials + nouveau drivers completely blocked ?
+2011-10-28T03:47:00.000Z	dardevelin	leeping	i'm assuming your on tty
+2011-10-28T03:47:00.000Z	leeping	dardevelin	I don't know.  How do I block them?
+2011-10-28T03:47:00.000Z	leeping	dardevelin	I cannot get a terminal on my workstation but I have logged in remotely.
+2011-10-28T03:47:00.000Z	dardevelin	leeping	can you see its grub ?
+2011-10-28T03:48:00.000Z	leeping	dardevelin	I tried both shift keys, it appears to boot into X no matter what
+2011-10-28T03:49:00.000Z	dardevelin	leeping	you would pass after the UUID  rdblacklist=nouveua nouveau.modeset=0
+2011-10-28T03:49:00.000Z	leeping	dardevelin	thanks.  I know this used to be in menu.lst.  But where is it with the new grub?
+2011-10-28T03:49:00.000Z	dardevelin	leeping	that should pass block it... Another way is to use modprobe ( but i don't know how to add ) and nvidia drivers should be able to do so
+2011-10-28T03:53:00.000Z	dardevelin	leeping	i wouldn't recommend you to uninstall them
+2011-10-28T03:54:00.000Z	leeping	dardevelin	I know, if i try to uninstall it, it also uninstalls 100 or so other packages.
+2011-10-28T03:54:00.000Z	dardevelin	leeping	other packages might install it again, and here you uninstall one more time. While if you block them successfully its a better job
+2011-10-28T03:56:00.000Z	leeping	dardevelin	okay, i will try this.  I think I am close. :)
+2011-10-28T03:56:00.000Z	dardevelin	leeping	its just a matter of blocking them b4 kernel starts up ( on the grub )
+2011-10-28T03:59:00.000Z	leeping	dardevelin	okay, I successfully got the root prompt on my workstation :) soon I will block the module.  thank you
+2011-10-28T04:00:00.000Z	dardevelin	leeping	nice :D good luck ( publish the results if you manage to get it done ) :D
+2011-10-28T04:02:00.000Z	leeping	dardevelin	sure.  I think other people might be running into this problem as well.

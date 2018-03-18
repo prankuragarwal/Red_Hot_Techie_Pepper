@@ -1,0 +1,18 @@
+2007-11-16T22:37:00.000Z	ushaba		i've got a problem with swap that is not solved by simple swapon
+2007-11-16T22:37:00.000Z	ushaba		well, top lists swap as being cached
+2007-11-16T22:37:00.000Z	ushaba		but it is not usable
+2007-11-16T22:38:00.000Z	ushaba		(i never use this laptop, so it's full of problems)
+2007-11-16T22:38:00.000Z	ushaba		Mem:    774960k total,   739304k used,    35656k free,    96400k buffers
+2007-11-16T22:38:00.000Z	ushaba		Swap:        0k total,        0k used,        0k free,   432932k cached
+2007-11-16T22:38:00.000Z	ushaba		looks pretty representative to me
+2007-11-16T22:38:00.000Z	ushaba		the swap is there, it's just not able to be activated
+2007-11-16T22:39:00.000Z	ushaba		i'm thinking it is because of how the swap was initially created
+2007-11-16T22:39:00.000Z	ushaba		i'm pretty sure there's a tiny 10 MB partition before the swap within the extended partition
+2007-11-16T22:40:00.000Z	genii	ushaba	The partition type descriptor must be of linux swap type.
+2007-11-16T22:43:00.000Z	genii	ushaba	a bot
+2007-11-16T22:48:00.000Z	genii	ushaba	good. 1/4 the way there. Next is: sudo mkswap /dev/sda5      then: blkid  to find the uuid of it. then make an entry in /etc/fstab with the uuid and specify sawp as fstype. then to do the sudo swapon -a
+2007-11-16T22:49:00.000Z	genii	ushaba	A command to find the uuid of a drive
+2007-11-16T22:51:00.000Z	genii	ushaba	Yes, blkid /dev/devicename
+2007-11-16T22:56:00.000Z	genii	ushaba	a line like: UUID=8534898e-024d-4c49-95c2-aa6280b1e9c5 none            swap    sw              0       0
+2007-11-16T22:56:00.000Z	genii	ushaba	except use your uuid and not mine
+2007-11-16T22:57:00.000Z	genii	ushaba	comment out the old line

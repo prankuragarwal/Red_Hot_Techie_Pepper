@@ -1,0 +1,18 @@
+2007-09-18T16:48:00.000Z	sarthorkhan		I am new to linux, Will it work in the case if ips are dynamic? http://lartc.org/howto/lartc.rpdb.multiple-links.html
+2007-09-18T16:49:00.000Z	macd	sarthorkhan	yes it will, just fine.
+2007-09-18T16:50:00.000Z	sarthorkhan	macd	one of my etheris ppp0 and the others isp is on eth1, while my users are on eth0, So Can i use copy paste , or need to make some changes?
+2007-09-18T16:51:00.000Z	macd	sarthorkhan	sounds like your using that box as a gateway/router/nat device correct?
+2007-09-18T16:51:00.000Z	sarthorkhan	macd	Yes.
+2007-09-18T16:52:00.000Z	macd	sarthorkhan	then you need to have a look @ iptables, for masq and forwarding. look at http://ubuntuforums.org/showthread.php?t=111972 for answers
+2007-09-18T16:53:00.000Z	sarthorkhan	macd	using /sbin/iptables -t nat -A POSTROUTING -p tcp --dport 1:65535   -o ppp0 -j MASQUERADE
+2007-09-18T16:53:00.000Z	sarthorkhan	macd	using /sbin/iptables -t nat -A POSTROUTING -p udp --dport 1:65535   -o ppp0 -j MASQUERADE
+2007-09-18T16:53:00.000Z	macd	sarthorkhan	that should work fine, does 'iptables -l' confirm those are active?
+2007-09-18T16:54:00.000Z	sarthorkhan	macd	yes. active,
+2007-09-18T16:54:00.000Z	sarthorkhan	macd	i am a bit confused, that how my linux box will understand my ether ppp0 ?
+2007-09-18T16:54:00.000Z	macd	sarthorkhan	should work in that case, do you have DHCPD running on eth0 ? those clients need IP's
+2007-09-18T16:55:00.000Z	sarthorkhan	macd	Yes my dhcpd is running, and assigning ips to my clients.
+2007-09-18T16:55:00.000Z	macd	sarthorkhan	but clients get no internet connectivity? and ppp0 is active? can the box running iptables ping internet?
+2007-09-18T16:56:00.000Z	sarthorkhan	macd	Very Very Sorry my brother, i am going to start that setup, not started yet, i will start that process now.
+2007-09-18T16:56:00.000Z	macd	sarthorkhan	god luck.
+2007-09-18T16:57:00.000Z	sarthorkhan	macd	thank you.. i will be back to you for  help if i got stuck.
+2007-09-18T05:30:00.000Z	sarthorkhan	macd	i am back with a question, how my linux box now that what is $P1_NET and $IP1 etc. While i have not run any script that define such meterials .. http://lartc.org/howto/lartc.rpdb.multiple-links.html

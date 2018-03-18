@@ -1,0 +1,23 @@
+2004-11-17T15:05:00.000Z	jriver		i asked about this earlier today, but i still haven't been able to get it working - ubuntu isn't recognizing an IDE hd of mine.  anybody have any clues on where to start?
+2004-11-17T15:06:00.000Z	jriver		i'm not sure
+2004-11-17T15:06:00.000Z	jriver		it's just ubuntu - it works in suse
+2004-11-17T15:06:00.000Z	jriver		i found the drive in /proc, so i guess there is some sort of driver
+2004-11-17T15:06:00.000Z	jriver		yeah, i'm loving ubuntu sooo much more
+2004-11-17T15:07:00.000Z	jriver		but if i do fdisk -l  i only get my sata drive
+2004-11-17T15:08:00.000Z	jriver		no, i know how to mount it, but i can't even find the /dev
+2004-11-17T15:08:00.000Z	jriver		if it's in fstab will ubuntu find the /dev?
+2004-11-17T15:09:00.000Z	jriver		yeah, it's /dev/hda in suse, but i can't even fdisk /dev/hda in ubuntu
+2004-11-17T15:11:00.000Z	JDahl	jriver	yes - that could definitely be it... Many people have problems with SATA in kernel2.6/Debian (especially booting of a SATA)
+2004-11-17T15:12:00.000Z	jriver	JDahl	damn - that's not good news
+2004-11-17T15:14:00.000Z	JDahl	jriver	ide-scsi, scsi-emu is apparently bugged in 2.6, there are many bugreports on it the Debian mailing lists. In particular, the stock mkinitrd is buggy and will in some cases break access to your root partition when you're booting of SATA. However, booting of an IDE and mounting a SATA should be fine
+2004-11-17T15:15:00.000Z	jriver	JDahl	thanks - i guess i could try that.
+2004-11-17T15:16:00.000Z	JDahl	jriver	oh - so you are booting of the SATA? what happens?
+2004-11-17T15:16:00.000Z	jriver	JDahl	but i guess my MBR will still be on the SATA, is there a way to change that?
+2004-11-17T15:17:00.000Z	jriver	JDahl	yeah, i boot off of the SATA, and it boots fine (in Suse or ubuntu) but the /dev/hda doesn't show up in ubuntu
+2004-11-17T15:17:00.000Z	JDahl	jriver	I am not sure... do you get kernel panic during boot because you cannot mount the root partition?
+2004-11-17T15:17:00.000Z	jriver	JDahl	no, ubuntu / (root) is on the SATA. the ide is just a data drive that i dearly need
+2004-11-17T15:18:00.000Z	JDahl	jriver	in that case, it's not the same problem I've in encountered...
+2004-11-17T15:18:00.000Z	jriver	JDahl	i guess that's good news....maybe
+2004-11-17T15:19:00.000Z	JDahl	jriver	one thing I had to do to fix SATA was to boot with apci=off, but I doubt that will help you
+2004-11-17T15:19:00.000Z	jriver	JDahl	thanks, it won't hurt for me to try that
+2004-11-17T15:21:00.000Z	jriver	JDahl	i was thinking of making initrd just to make sure the module is there, but i don't want to go thru that if it's likely that the ide module is already there

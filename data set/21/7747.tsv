@@ -1,0 +1,21 @@
+2006-08-01T08:08:00.000Z	MZM		i have problem getting out my PHILIPS cdrom device from some powersave(?) state (any command connecting device (mount, hdparm etc.) just hang till reboot). Device: "PHILIPS CD-RW/DVD-ROM SCB5265, ATAPI CD/DVD-ROM drive", Kernel: "2.6.15-26-686 #1 SMP PREEMPT"
+2006-08-01T08:09:00.000Z	frogzoo	MZM	did you play with hdparm?
+2006-08-01T08:10:00.000Z	MZM	frogzoo	any command affecting device just hangs (i.e. sudo hdparm -w /dev/hdc)
+2006-08-01T08:10:00.000Z	frogzoo	MZM	sudo hdparm -b /dev/hdc
+2006-08-01T08:11:00.000Z	frogzoo	MZM	then maybe try sudo hdparm -B 255 /dev/hdc
+2006-08-01T08:12:00.000Z	MZM	frogzoo	nothing. Yet another command that do not respondseaven to kill -9
+2006-08-01T08:12:00.000Z	frogzoo	MZM	there's a whole bunch of options: try hdparm -C
+2006-08-01T08:12:00.000Z	MZM	frogzoo	problem is - ANY command accessing device hangs permanently
+2006-08-01T08:16:00.000Z	frogzoo	MZM	have you made changes in /etc/hdparm.conf ?
+2006-08-01T08:16:00.000Z	frogzoo	MZM	I think the thing to do is get /etc/hdparm.conf right, then reboot
+2006-08-01T08:18:00.000Z	MZM	frogzoo	I have -c3 -d1 -u
+2006-08-01T08:20:00.000Z	frogzoo	MZM	add -B 255 which will disable apm
+2006-08-01T08:21:00.000Z	MZM	frogzoo	Its not good sign - I'm on laptop
+2006-08-01T08:37:00.000Z	MZM	frogzoo	I'm back w my CDROM problem. hdparm -B has no effect on device, device works after manualy using hdparm -y or -Y
+2006-08-01T08:50:00.000Z	frogzoo	MZM	that's a bit wierd, but glad it works
+2006-08-01T08:51:00.000Z	MZM	frogzoo	it could be bug in firmware? (there is no update for this drive)
+2006-08-01T08:52:00.000Z	MZM	frogzoo	most wired - it works after standby or suspend IF it was working (active) before that
+2006-08-01T08:52:00.000Z	frogzoo	MZM	what state is the battery in?
+2006-08-01T08:53:00.000Z	MZM	frogzoo	it doesnt matter - it happens hwn on AC or on battery
+2006-08-01T08:54:00.000Z	MZM	frogzoo	I will try to disable any PM ir BIOS
+2006-08-01T08:55:00.000Z	frogzoo	MZM	trouble is, lappies thrive on good power management, really needs to get fixed, maybe file a bug, or search launchpad

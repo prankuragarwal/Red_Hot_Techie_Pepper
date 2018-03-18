@@ -1,0 +1,23 @@
+2010-03-13T07:26:00.000Z	soreau	Ganymede	Ah ok
+2010-03-13T07:23:00.000Z	soreau	Ganymede	You need to install the nvidia alias package so it shows in jockey-gtk (sys>admin>hw drivers)
+2010-03-13T07:23:00.000Z	Ganymede	soreau	oh, so should i install all the nvidia-*-modalias packages?
+2010-03-13T07:24:00.000Z	soreau	Ganymede	I believe by default it installs the versions that would be compatible with your card
+2010-03-13T07:24:00.000Z	Ganymede	soreau	wait. what is the "it" that installs versions that are compatible with my card?
+2010-03-13T07:25:00.000Z	soreau	Ganymede	ubuntu :)
+2010-03-13T07:25:00.000Z	soreau	Ganymede	Which card do you have as reported by lspci|grep VGA?
+2010-03-13T07:25:00.000Z	Ganymede	soreau	like...during the initial installation? it detects what card i have and only installs the correct modalias packages?
+2010-03-13T07:25:00.000Z	soreau	Ganymede	I believe so
+2010-03-13T07:26:00.000Z	Ganymede	soreau	because i changed my card post-install, now i have a nVidia Corporation NV34 [GeForce FX 5200] (rev a1)
+2010-03-13T07:26:00.000Z	soreau	Ganymede	Try installing the latest version of the nvidia alias package
+2010-03-13T07:27:00.000Z	Ganymede	soreau	there's four of them, but nvidia-173-modaliases looks the most correct to me...i wonder if the apt-cache description could have been any less informative
+2010-03-13T07:28:00.000Z	soreau	Ganymede	Not sure, but after installing the alias package it should show up in jockey so you can install the driver
+2010-03-13T07:32:00.000Z	Ganymede	soreau	i installed modalias 173 and "jockey?" did not offer any propriatery drivers so i installed all three non-transitional modalias packages and jockey still did not offer any proprietary drivers
+2010-03-13T07:33:00.000Z	soreau	Ganymede	Hmm.. maybe you will have to install the glx package and manually set Driver "nvidia" in xorg.conf
+2010-03-13T07:33:00.000Z	Ganymede	soreau	did you see https://help.ubuntu.com/community/ConsoleFramebuffer ?
+2010-03-13T07:33:00.000Z	Ganymede	soreau	oh, whoops, sorry
+2010-03-13T07:45:00.000Z	Ganymede	soreau	thanks, i got it to work now and with correct resolution, i guess the solution was to just uninstall everything and clean out the xorg configs and start from scratch
+2010-03-13T07:46:00.000Z	soreau	Ganymede	Oh cool
+2010-05-20T11:15:00.000Z	soreau	Ganymede	If you want to access any file on that partition, you have to mount it
+2010-05-20T11:15:00.000Z	Ganymede	soreau	so basically, there is no way around mounting the whole thing and then only bind mounting /home...?
+2010-05-20T11:16:00.000Z	soreau	Ganymede	The system has no way to even see what is on the partition until its mounted with the file system driver
+2010-05-20T11:16:00.000Z	Ganymede	soreau	okay, thanks

@@ -1,0 +1,24 @@
+2005-10-20T07:38:00.000Z	HappyFool	sn9	this is a bit of a hack, but have you tried removing the entries in sources.list, running apt-get update, then restoring sources.list and rerunning apt-get update ?
+2005-10-20T07:38:00.000Z	sn9	HappyFool	the entries for main?
+2005-10-20T07:39:00.000Z	HappyFool	sn9	that fixed a funny bug i had with apt (it kept reporting archive.ubuntu.com didn't have 'partial support')
+2005-10-20T07:39:00.000Z	HappyFool	sn9	well, try everything except the CD
+2005-10-20T07:41:00.000Z	sn9	HappyFool	and dr_willis: specifically, my problem is that openoffice.org2-base is supposed to depend on java-gcj-compat OR j2re1.4 OR java2-runtime
+2005-10-20T07:46:00.000Z	HappyFool	sn9	does look wrong
+2005-10-20T07:47:00.000Z	HappyFool	sn9	is it not maybe one of the oo.o2 deps that is triggering that?
+2005-10-20T07:47:00.000Z	HappyFool	sn9	are you on amd64 ?
+2005-10-20T07:48:00.000Z	sn9	HappyFool	ppc. it's definitely oo.o2-base triggering
+2005-10-20T07:51:00.000Z	HappyFool	sn9	to (try to) debug this, why not try installing the gcj version, uninstall the sun version and see if it works?
+2005-10-20T08:03:00.000Z	HappyFool	sn9	you'd think the java2 virtual package would be all that would be required
+2005-10-20T07:53:00.000Z	sn9	HappyFool	because i don't want the gcj stuff at all. i want the ibm java i went through many hoops to get ubuntu to use
+2005-10-20T07:54:00.000Z	HappyFool	sn9	yeah, i said 'to debug' ;)
+2005-10-20T07:55:00.000Z	sn9	HappyFool	you mean see if it will try to uninstall oo.o2 if i install then uninstall gcj?
+2005-10-20T07:56:00.000Z	HappyFool	sn9	well, i meant to see if it will insist on need the other javas before nstalling oo.o2-base
+2005-10-20T07:56:00.000Z	HappyFool	sn9	ah, that's from your hoary install
+2005-10-20T07:56:00.000Z	HappyFool	sn9	oops
+2005-10-20T07:57:00.000Z	sn9	HappyFool	i didn't install hoary on this machine
+2005-10-20T07:57:00.000Z	HappyFool	sn9	sorry, was for sunshine
+2005-10-20T07:59:00.000Z	sn9	HappyFool	it's already trying to pull the third (java-gcj-compat) when the other two are listed as provided by my ibm-j2sdk1.4 pkg
+2005-10-20T08:01:00.000Z	HappyFool	sn9	my point is you suspect the OR has somehow become and AND; by removing the other java package, and providing the gcj package, you can test this claim
+2005-10-20T08:02:00.000Z	sn9	HappyFool	that wouldn't really test it because java-gcj-compat also provides the other 2 afaik. besides, they have no installation candidate in any repository
+2005-10-20T08:02:00.000Z	HappyFool	sn9	ah
+2005-10-20T08:03:00.000Z	HappyFool	sn9	anyway, i don't really think i'm helping you, sorry

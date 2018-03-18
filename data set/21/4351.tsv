@@ -1,0 +1,21 @@
+2012-04-02T00:19:00.000Z	shawnb		I've been trying to remove Python3.2 from my 11.10 system (so I can reinstall it) but standard package-removal steps are failing.
+2012-04-02T00:20:00.000Z	shawnb		When I attempt to "apt-get remove Python3.2", I'm told that "subprocess installed post-installation script returned error" and it's still on my system. Any ideas?
+2012-04-02T00:22:00.000Z	yeats	shawnb	can you pastebin the full output?
+2012-04-02T00:27:00.000Z	shawnb	yeats	here's a paste of the output "sudo apt-get remove --purge python3 python 3.2" http://pastebin.com/ZrG425Ar
+2012-04-02T00:27:00.000Z	yeats	shawnb	looking now
+2012-04-02T00:29:00.000Z	yeats	shawnb	have you tried removing one at a time?
+2012-04-02T00:29:00.000Z	shawnb	yeats	yes
+2012-04-02T00:30:00.000Z	yeats	shawnb	did anything else change on your system before this began?  (maybe installing other versions of python from source or something?)
+2012-04-02T00:31:00.000Z	shawnb	yeats	I've been running Python3.2 along-side the system's default Python2.7 for almost a year without problems. I do development and use Python's virtual environments to test under 3.2 and 2.4
+2012-04-02T00:32:00.000Z	yeats	shawnb	have you tried to see what "/usr/lib/python3.2/io.py", line 60 is trying to do?
+2012-04-02T00:34:00.000Z	shawnb	yeats	line 60 simplt reads "import _io" ... _io looks like a C-compiled module since I can't find it among the normal module list
+2012-04-02T00:36:00.000Z	shawnb	yeats	This is the error I get with I try to run anything using Python3 or even start the interactive interpreter ... I was hoping to be able to just remove and re-install then discovered that I couldn't do that simply
+2012-04-02T00:36:00.000Z	yeats	shawnb	http://stackoverflow.com/questions/5003276/python-import-io
+2012-04-02T00:38:00.000Z	yeats	shawnb	also http://stackoverflow.com/questions/7111025/pydev-fatal-error-python32-lib-io-py-line-60-in-module
+2012-04-02T00:40:00.000Z	shawnb	yeats	I dug into those pages (and several others) when this first cropped up ... didn't help.
+2012-04-02T00:40:00.000Z	yeats	shawnb	I see - I was just wondering from the second link whether there is a file naming conflict somewhere that creates the problem
+2012-04-02T00:41:00.000Z	yeats	shawnb	you might also ask in #python
+2012-04-02T00:41:00.000Z	shawnb	yeats	no naming conflict
+2012-04-02T00:41:00.000Z	shawnb	yeats	I was wondering, what if I start removing the Python3 files manually and then
+2012-04-02T00:41:00.000Z	shawnb	yeats	and then repair the package system
+2012-04-02T00:41:00.000Z	yeats	shawnb	yeah - apt/dpkg can be a real pain with errors like that :-/

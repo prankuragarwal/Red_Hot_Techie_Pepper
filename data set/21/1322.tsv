@@ -1,0 +1,21 @@
+2010-10-25T06:31:00.000Z	SpaceBass		hey folks
+2010-10-25T06:31:00.000Z	SpaceBass		since upgrading to 10.10, my box isn't accepting incoming web traffic anymore
+2010-10-25T06:32:00.000Z	gordan_freeman	SpaceBass	apparmor?
+2010-10-25T06:33:00.000Z	gordan_freeman	SpaceBass	oh. i was thinking you were running a web server ;)
+2010-10-25T06:33:00.000Z	SpaceBass	gordan_freeman	I am
+2010-10-25T06:34:00.000Z	gordan_freeman	SpaceBass	perhaps: `sudo /etc/init.d/apparmor stop`
+2010-10-25T06:34:00.000Z	SpaceBass	gordan_freeman	it was running, but stopping it didnt help :(
+2010-10-25T06:36:00.000Z	gordan_freeman	SpaceBass	perhaps temporarily disable iptables.
+2010-10-25T06:37:00.000Z	gordan_freeman	SpaceBass	this will tell you if your web server is listening on port 443:  `netstat -tap | grep https`
+2010-10-25T06:38:00.000Z	gordan_freeman	SpaceBass	this will tell you if your web server is listening on port 80:  `netstat -tap | grep http`
+2010-10-25T06:39:00.000Z	SpaceBass	gordan_freeman	thanks - it is listening, as is the lighthttp on 8080
+2010-10-25T06:40:00.000Z	gordan_freeman	SpaceBass	can you connect to your web server locally?  `lynx http://localhost`
+2010-10-25T06:40:00.000Z	SpaceBass	gordan_freeman	yes - that was one of my first troubleshooting steps...gotta love lynx
+2010-10-25T06:41:00.000Z	gordan_freeman	SpaceBass	:)
+2010-10-25T06:41:00.000Z	gordan_freeman	SpaceBass	well `sudo iptables -L` will list any host based firewalls you may have that may be blocking inbound traffic
+2010-10-25T06:42:00.000Z	SpaceBass	gordan_freeman	thanks - I'm better with ps, don't really know my way around iptables
+2010-10-25T06:43:00.000Z	gordan_freeman	SpaceBass	also check your apache log files as well as /var/log/syslog after restarting the Apache service to see if an error pops up on service start
+2010-10-25T06:43:00.000Z	gordan_freeman	SpaceBass	well `sudo /etc/init.d/iptables stop` will stop any host based firewall rules if you do have any
+2010-10-25T06:45:00.000Z	gordan_freeman	SpaceBass	`sudo apparmor_status` will allow you to view the current status of AppArmor profiles
+2010-10-25T06:49:00.000Z	gordan_freeman	SpaceBass	so netstat tells us that apache is listening on :80. lynx tells us that we can connect to apache locally. so apache is in fact alive and kicking.
+2010-10-25T06:52:00.000Z	gordan_freeman	SpaceBass	you may have to actually do the following  to completely disable apparmor until reboot: `sudo /etc/init.d/apparmor stop; sudo update-rc.d -f apparmor remove`

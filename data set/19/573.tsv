@@ -1,0 +1,19 @@
+2012-02-12T21:17:00.000Z	_Marcus		Hm. Is it possible to run an operating system from a flash drive?
+2012-02-12T21:18:00.000Z	freeroute	_Marcus	just watch out that once installed, the software is configured for your hardware, so if you take it and use it on an AMD CPU while it's configured for an Intel one, it might not work
+2012-02-12T21:18:00.000Z	_Marcus	freeroute	I don't have any AMD CPUs, and it will only run on this computer.
+2012-02-12T21:19:00.000Z	freeroute	_Marcus	also, USB flash drives have lower read/write speeds than traditional HDD's, and in effect, traditional HDD's have far lower read/write speeds than SSD's.
+2012-02-12T21:19:00.000Z	_Marcus	freeroute	How much slower?
+2012-02-12T21:20:00.000Z	freeroute	_Marcus	depends, 7200rpm drives are usually around 50mb/s write
+2012-02-12T21:21:00.000Z	_Marcus	freeroute	How do I see how fast my USB writes? It's 2.0
+2012-02-12T21:22:00.000Z	freeroute	_Marcus	usually the ideal speed of USB 2.0 is 480mbit/s duplex, meaning that you would have around 30mb/s read/write
+2012-02-12T21:23:00.000Z	_Marcus	freeroute	So not much of a difference?
+2012-02-12T21:23:00.000Z	freeroute	_Marcus	you could try dd'ing something to the drive and back, are you familiar with the dd command?
+2012-02-12T21:23:00.000Z	_Marcus	freeroute	Nope
+2012-02-12T21:25:00.000Z	freeroute	_Marcus	it's basically a very early and rudimentary tool to copy files from place to place, see http://www.linuxjournal.com/article/1320 and man dd for example
+2012-02-12T21:26:00.000Z	freeroute	_Marcus	basic usage is like this: dd if=<location of input file> of=<location of output file>
+2012-02-12T21:26:00.000Z	_Marcus	freeroute	OH! I've used it before for making a pad file for something.
+2012-02-12T21:26:00.000Z	freeroute	_Marcus	without the <> of course, but watch out since dd can easily wipe data on the location if done incorrectly
+2012-02-12T21:27:00.000Z	freeroute	_Marcus	for example, dd if=/dev/zero of=/dev/sda wipes your whole drive with zeroes ;)
+2012-02-12T21:28:00.000Z	_Marcus	freeroute	So if I want to fill it with random stuff making it untracable, I just do /dev/urandom?
+2012-02-12T21:28:00.000Z	freeroute	_Marcus	in essence yes, but it's faster to do with /dev/zero and it makes sure data is unrecoverable
+2012-02-12T21:28:00.000Z	_Marcus	freeroute	Ah. Isn't /dev/zero just blank spaces?

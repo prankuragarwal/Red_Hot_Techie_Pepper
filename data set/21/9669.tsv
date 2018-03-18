@@ -1,0 +1,21 @@
+2005-08-06T06:18:00.000Z	persia		Does anyone know how to configure jackd to start with the GNOME session?
+2005-08-06T06:19:00.000Z	lunitik	persia	System > Preferences > Multimedia Selector
+2005-08-06T06:20:00.000Z	persia	lunitik	Isn't that the gstreamer configuration tool?  Does it autostart services?
+2005-08-06T06:21:00.000Z	lunitik	persia	it is... but its how esd is started also...
+2005-08-06T06:21:00.000Z	lunitik	persia	gnome uses gstreamer... when gdm starts, its goes through gstreamer, which calls esd - which then starts, and plays the sound
+2005-08-06T06:22:00.000Z	lunitik	persia	change esd to jackd there, and voila  :)
+2005-08-06T06:22:00.000Z	persia	lunitik	Ah.  I was hoping to use polypaudio-jack for esd stuff, but first I need a session-bound jackd.
+2005-08-06T06:23:00.000Z	lunitik	persia	principle should still be the same... polypaudio calls jackd, which starts on the request?
+2005-08-06T06:24:00.000Z	persia	lunitik	"Failed to construct test pipeline for 'Custom'."  Somehow that doesn't seem right.  Any further suggestions?
+2005-08-06T06:24:00.000Z	lunitik	persia	jackd isn't listed in Multimedia System Selector?
+2005-08-06T06:25:00.000Z	lunitik	persia	its not custom... you're using jackd, or should be
+2005-08-06T06:26:00.000Z	lunitik	persia	bah... polypaudio doesn't even have a -jack  :/
+2005-08-06T06:26:00.000Z	persia	lunitik	OK, I can do the chaining, but I'm not sure how to set jack-start-server early enough.  Also, no jackd doe not appear directly in Multimedia Systems Selector, although I do have gstreamer0.8-jack installed.
+2005-08-06T06:26:00.000Z	lunitik	persia	polypaudio and jackd provide the same functionality (sound server)
+2005-08-06T06:28:00.000Z	lunitik	persia	symlink jack-start-server to /etc/rc2.d with a low enough number...
+2005-08-06T06:29:00.000Z	persia	lunitik	I want jackd so I can try some of the softsynths that require it, but I'm just in it for fun, and so want polypaudio for the esd compatibility.  I thought there was a jackd plugin for polypaudio.
+2005-08-06T06:30:00.000Z	persia	lunitik	jack-start-server isn't a program, it's an environment variable.
+2005-08-06T06:32:00.000Z	lunitik	persia	no, doesn't appear to have a jackd plugin...
+2005-08-06T06:33:00.000Z	lunitik	persia	just esound for compatibility it seems....
+2005-08-06T06:33:00.000Z	persia	lunitik	I was convinced before, but looking again now, after yo mention it, I admit I can't find my reference...  Thanks anyway,
+2005-08-06T06:50:00.000Z	persia	lunitik	Yeah, that's what brought me here :)

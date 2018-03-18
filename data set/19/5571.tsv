@@ -1,0 +1,19 @@
+2008-06-20T20:17:00.000Z	LinuxHelp		I have a computer (A) without a monitor, and behind a NAT. Computer A cannot accept incoming connections, it can only "dial out". Computer A runs Ubuntu. Computer B runs XP. I want to run my GUI programs on Computer A. I have installed XMing on computer B. How do I connect from A to B, so that my desktop is displayed on B, but the programs are run on A? Remember that A cannot accept incoming connections.
+2008-06-20T20:18:00.000Z	ne2k__	LinuxHelp	cannot accept incoming connections of any type?
+2008-06-20T20:18:00.000Z	LinuxHelp	ne2k__	no type at all. not even ping
+2008-06-20T20:18:00.000Z	ne2k__	LinuxHelp	you could have computer A initiate a VPN connection to computer B -- they you would be able to connect to Computer A through the VPN
+2008-06-20T20:19:00.000Z	LinuxHelp	ne2k__	I was thinking more along the lines of reverse XDMCP..
+2008-06-20T20:19:00.000Z	ne2k__	LinuxHelp	beats me ;-)
+2008-06-20T20:24:00.000Z	ne2k__	LinuxHelp	if you have access to the console, just type DISPLAY=computerb:0.0; xterm;
+2008-06-20T20:24:00.000Z	LinuxHelp	ne2k__	THanks I'll try that now
+2008-06-20T20:27:00.000Z	LinuxHelp	ne2k__	xterm says "display is not set"
+2008-06-20T20:28:00.000Z	LinuxHelp	ne2k__	and yet, echo $DISPLAY produces 10.0.0.101:0.0
+2008-06-20T20:28:00.000Z	ne2k__	LinuxHelp	hmmm. that is not the correct behaviour
+2008-06-20T20:29:00.000Z	LinuxHelp	ne2k__	Maybe DISPLAY isn't formatted correctly?
+2008-06-20T20:29:00.000Z	ne2k__	LinuxHelp	looks right to me
+2008-06-20T20:30:00.000Z	ne2k__	LinuxHelp	try some other X client, e.g. xeyes xclock
+2008-06-20T20:36:00.000Z	LinuxHelp	ne2k__	I put echo $DISPLAY into a new bash script then ran the script, and it came out blank
+2008-06-20T20:37:00.000Z	LinuxHelp	ne2k__	and yet, when I type echo $DISPLAY outside the script, it works
+2008-06-20T20:37:00.000Z	LinuxHelp	ne2k__	I assume this means that the DISPLAY variable is not going down into the script
+2008-06-20T20:37:00.000Z	LinuxHelp	ne2k__	and so is not going down into xterm either
+2008-06-20T20:37:00.000Z	LinuxHelp	ne2k__	I'm going to grep my hd for any DISPLAY= now

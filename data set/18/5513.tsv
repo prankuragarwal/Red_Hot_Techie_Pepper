@@ -1,0 +1,18 @@
+2008-10-08T21:04:00.000Z	flourish		hello, i have a question about apache , can i ask here?
+2008-10-08T21:06:00.000Z	flourish		Thanks, I want to log my server's log to a new one every month, that is this month is access.log.Oct and next month is access.log.Nov; as i known i can accomplish this by rotatelogs, but ..
+2008-10-08T21:07:00.000Z	flourish		but the number of certain month is not fixed, so how can i implement it
+2008-10-08T21:07:00.000Z	flourish		?
+2008-10-08T21:08:00.000Z	trilobit`	flourish	you already should have it there access.log and access.log1 right ?
+2008-10-08T21:09:00.000Z	flourish	trilobit`	yes, but i can't find how this happens
+2008-10-08T21:10:00.000Z	flourish		I do not know the way apache does
+2008-10-08T21:11:00.000Z	trilobit`	flourish	I'd have a look at /etc/cron.*/ directories
+2008-10-08T21:11:00.000Z	trilobit`	flourish	I'm no cron expert, but there lie cron jobs for several parts of the system and there are several scripts that take care of different jobs there. One of them is apache related.
+2008-10-08T21:12:00.000Z	flourish	trilobit`	thanks , i will do some search there
+2008-10-08T21:14:00.000Z	trilobit`	flourish	What you need probably lies in  /etc/logrotate.d
+2008-10-08T21:15:00.000Z	flourish	trilobit`	I have seen /etc/logrotate.d/apache2 before , but i can not understand the file
+2008-10-08T21:16:00.000Z	flourish	trilobit`	i do not know the meaning of the items list in brace
+2008-10-08T21:16:00.000Z	trilobit`	flourish	then "man logrotate" will explain you far more than I could.
+2008-10-08T21:18:00.000Z	trilobit`	flourish	Also, it seems the logs are rotated weekly by default. What you could do is change weekly with monthly and then a simple cronjob to rename them with .month extension.
+2008-10-08T21:18:00.000Z	flourish	trilobit`	Oh, yes.^_^ I have read the manual about rotatelogs, it amazeing to have another command --- logrotate^_^
+2008-10-08T21:19:00.000Z	trilobit`	flourish	I'd just replace weekly with monthly and then just rename the files. :)
+2008-10-08T21:21:00.000Z	flourish	trilobit`	Thanks a lot. This is much more better than use the rotatelogs command.

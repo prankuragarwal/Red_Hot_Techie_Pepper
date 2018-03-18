@@ -1,0 +1,22 @@
+2008-06-09T14:57:00.000Z	FrauHansen		having problems with LDAP here. i can getent passwd with correct results but su <user> wont work
+2008-06-09T14:58:00.000Z	ikonia	FrauHansen	is pam authing against ldap
+2008-06-09T14:59:00.000Z	FrauHansen	ikonia	the /var/log/auth.log shows "failed to bind to LDAP server ldap://141.3.78.1: Invalid credentials"
+2008-06-09T14:59:00.000Z	ikonia	FrauHansen	ok, so thats not a user auth issue, thats the "root" ldap account not being able to find to the server
+2008-06-09T15:00:00.000Z	FrauHansen	ikonia	any hint where to start looking for a solution? i have full acces to the machine running the LDAP server
+2008-06-09T15:00:00.000Z	ikonia	FrauHansen	how did you setup pam to use ldap
+2008-06-09T15:01:00.000Z	FrauHansen	ikonia	on the client? well i changed 4 files in /etc/pam.d/
+2008-06-09T15:02:00.000Z	ikonia	FrauHansen	check the ldap to logs to find out why it's failing to bind
+2008-06-09T15:02:00.000Z	FrauHansen	ikonia	i followe this guide: http://wiki.ubuntuusers.de/LDAP_Client_Authentifizierung
+2008-06-09T15:03:00.000Z	FrauHansen	ikonia	on the client or the server?
+2008-06-09T15:03:00.000Z	ikonia	FrauHansen	server
+2008-06-09T15:04:00.000Z	FrauHansen	ikonia	there is only /var/log/ldapscripts.log that seems relevant in /var/log...is that enough?
+2008-06-09T15:04:00.000Z	ikonia	FrauHansen	nothing in messages ?
+2008-06-09T15:05:00.000Z	FrauHansen	ikonia	cat massages | grep ldap is giving no results
+2008-06-09T15:12:00.000Z	FrauHansen	ikonia	i think i found something: rootbinddn=admin BUT getent passwd | grep admin shos onla a stange Gants entry
+2008-06-09T15:13:00.000Z	FrauHansen	ikonia	could it be that the supposed ldap-admin somehow got lost (its an old grown ldap-server)
+2008-06-09T15:14:00.000Z	FrauHansen	ikonia	and now everybody uses rootbinddn: cd=admin  and can't connect?
+2008-06-09T15:15:00.000Z	FrauHansen	ikonia	cd=cn
+2008-11-10T15:59:00.000Z	ikonia	FrauHansen	what are you trying to covnert
+2008-11-10T15:59:00.000Z	FrauHansen	ikonia	its a package for a TSM backup client
+2008-11-10T16:00:00.000Z	ikonia	FrauHansen	and there is no "debian/ubuntu" based alternative, as using alien is a bad call in my view
+2008-11-10T16:01:00.000Z	FrauHansen	ikonia	no debs, since it is IBM and debian is not officially supported

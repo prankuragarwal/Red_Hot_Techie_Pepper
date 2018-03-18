@@ -1,0 +1,19 @@
+2010-06-01T09:26:00.000Z	ne0futur		hi all i have questions concerning the use of UUID in ubuntu for fstab
+2010-06-01T09:27:00.000Z	ne0futur		this UUID is different for any  distro i install on my computer, so I think this UUID have nothing universal
+2010-06-01T09:27:00.000Z	ne0futur		and that /dev/sd* was MUCH more universal than this UUID system
+2010-06-01T09:27:00.000Z	ne0futur		so I wonder why ubuntu use this false universal identifier ?
+2010-06-01T09:28:00.000Z	codebrainz	ne0futur	i think it's unique to the system/bus/disk
+2010-06-01T09:28:00.000Z	ne0futur		so if I have 2 ubuntu on my diskm i cant chroot from 1 ubuntu to the other cause they have different UUID ?
+2010-06-01T09:28:00.000Z	ne0futur		this UUID system in fstab will create much more problems than it is useful
+2010-06-01T09:29:00.000Z	codebrainz	ne0futur	i don't think that would make any difference, /etc/fstab isn't used during a chroot afaik
+2010-06-01T09:30:00.000Z	codebrainz	ne0futur	the whole point is that you can move disks around and such and it'll always use the correct drive for that install, rather than using the /dev/sd* which change depending on where the disk is plugged in/configured
+2010-06-01T09:31:00.000Z	ne0futur	codebrainz	installing 2 ubuntu on the same disk will give 2 different UUID for the SAME partition !
+2010-06-01T09:32:00.000Z	ne0futur		this is mad
+2010-06-01T09:32:00.000Z	ne0futur		and have nothing universal
+2010-06-01T09:32:00.000Z	ne0futur		and breaks many things that were working before, like chrooting fron one ubuntu instance to another
+2010-06-01T09:32:00.000Z	codebrainz	ne0futur	it works pretty well actually.  if you'd rather, you can replace UUID= with LABEL= and use the volume label
+2010-06-01T09:33:00.000Z	codebrainz	ne0futur	i don't think /etc/fstab is parsed during a chroot, unless you mount -a i suppose
+2010-06-01T09:34:00.000Z	ne0futur		there are thousands of people having problems wit this _not_ _universal_ UUID system
+2010-06-01T09:35:00.000Z	ne0futur		I just wanted to say this
+2010-06-01T09:35:00.000Z	ne0futur		I ll fond workarounds , but the best workaround will be to find a distro not using the UUID system in fstab . . .
+2010-06-01T09:36:00.000Z	codebrainz	ne0futur	what exactly is your problem?  it's universally unique on your system, and allows you to shuffle around drives without having to touch /etc/fstab.  it's really a nice feature

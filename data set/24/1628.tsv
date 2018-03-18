@@ -1,0 +1,24 @@
+2009-12-12T04:47:00.000Z	sedd		I'm trying to reinstall grub2 from the livecd (9.10) but it complains that it can't find a GRUB drive for /dev/sda3, which is my 9.10 partition. Command was "grub-install --root-directory=/mnt/ /dev/sda" and /dev/sda3 is mounted on /mnt
+2009-12-12T04:48:00.000Z	zoug	sedd	can you find stage1 on sda3?
+2009-12-12T04:48:00.000Z	sedd	zoug	how do I find it? I can access that drive and see the whole thing yes
+2009-12-12T04:48:00.000Z	sedd		ls
+2009-12-12T04:48:00.000Z	sedd		haha
+2009-12-12T04:49:00.000Z	zoug	sedd	sorry, forget that, its about the older grub
+2009-12-12T04:52:00.000Z	zoug	sedd	sudo grub-install --root-directory=/mnt /dev/sdX should work, IF you had grub previously
+2009-12-12T04:53:00.000Z	sedd	zoug	right but it doesn't. Google brings up a bunch of bug reports on debian lists with that error, so I'll just reinstall 9.10 (hadn't hardly used it anyway.) Unless someone can think of something. The error again is "grub-probe: error: Cannot find a GRUB drive for /dev/sda3. Check your device.map."
+2009-12-12T04:54:00.000Z	zoug	sedd	so,your device.map is messy
+2009-12-12T04:54:00.000Z	zoug	sedd	give it a check
+2009-12-12T04:55:00.000Z	sedd	zoug	where is device.map?
+2009-12-12T04:57:00.000Z	zoug	sedd	dont remember, should be on /boot/grub/
+2009-12-12T04:57:00.000Z	sedd	zoug	it's empty
+2009-12-12T04:57:00.000Z	sedd		its there but its empty
+2009-12-12T05:01:00.000Z	zoug	sedd	update-grub or update-grub2 ?
+2009-12-12T05:04:00.000Z	sedd	zoug	I think you have to chroot into the drive to do those and I tried that and I think that's how I zapped device map. Anyway I wrote it by hand (I've only got two drives) and now grub-install --root-directory=/mnt seems to have worked
+2009-12-12T05:04:00.000Z	zoug		why dont you chroot to that partition
+2009-12-12T05:04:00.000Z	zoug	sedd	oki
+2009-12-12T05:05:00.000Z	sedd	zoug	I found some webpage that had a method involving chrooting and i tried that but it didn't work and I think maybe that's where my device.map went.
+2009-12-12T05:05:00.000Z	zoug	sedd	why dont you install on /dev/sda?
+2009-12-12T05:06:00.000Z	zoug	sedd	that would be easier i guess, only diff grub wont be on your sda3
+2009-12-12T05:07:00.000Z	sedd	zoug	I think I got it. rewriting device.map by hand worked. Got grub back then just had to update-grub (from the on-disk 9.10 installation, not the livecd) and now I've got win7 and 9.10 working
+2009-12-12T05:07:00.000Z	sedd		thanks for your help
+2009-12-12T05:07:00.000Z	zoug	sedd	oh great!

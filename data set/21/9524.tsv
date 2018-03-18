@@ -1,0 +1,21 @@
+2005-09-25T10:00:00.000Z	lakcaj	Bad_Magic	did you see my comment above on x11 forwarding?
+2005-09-25T10:01:00.000Z	Bad_Magic	lakcaj	nope must have missed it
+2005-09-25T10:01:00.000Z	lakcaj	Bad_Magic	Enable X11Forwarding **on the server** (/etc/ssh/sshd_config) and install xauth (in xbase-clients) on both the client and the server. Then you can use ssh -X on the client side. Ssh will run xauth and set the DISPLAY variable automatically. Neither xhost, nor X tcp support are necessary. Hint: ssh -X root@localhost, or http://www.linuks.mine.nu/windows/sshx.html
+2005-09-25T10:01:00.000Z	Bad_Magic		its enabled and i tried that
+2005-09-25T10:01:00.000Z	Bad_Magic		im getting an error about locking the .Xauth file
+2005-09-25T10:01:00.000Z	lakcaj	Bad_Magic	you installed xauth?
+2005-09-25T10:01:00.000Z	Bad_Magic		that could be it ^^
+2005-09-25T10:01:00.000Z	lakcaj	Bad_Magic	you installed xauth << in xbase-clients
+2005-09-25T10:02:00.000Z	Bad_Magic	lakcaj	im running from a standard ubuntu install... im not entirely sure what it installs by default
+2005-09-25T10:03:00.000Z	Bad_Magic	lakcaj	how do i check if xauth is installed?
+2005-09-25T10:04:00.000Z	lakcaj	Bad_Magic	apt-get install xbase-clients
+2005-09-25T10:04:00.000Z	Bad_Magic	lakcaj	yes its installed
+2005-09-25T10:04:00.000Z	lakcaj	Bad_Magic	you need it installed on both the client and server.
+2005-09-25T10:05:00.000Z	Bad_Magic		i would assume its installed on these computers... its a lab at school tho and i dont hav eaccess to apt-get
+2005-09-25T10:06:00.000Z	Bad_Magic	lakcaj	it appears to be installed (x-window-manager is there)
+2005-09-25T10:07:00.000Z	lakcaj	Bad_Magic	"dpkg -l | grep xbase" on the server
+2005-09-25T10:07:00.000Z	Bad_Magic	lakcaj	ii  xbase-clients  6.8.2-10.1     miscellaneous X clients
+2005-09-25T10:08:00.000Z	lakcaj	Bad_Magic	and you were able to edit /etc/ssh/sshd_config on the server?
+2005-09-25T10:08:00.000Z	Bad_Magic	lakcaj	correct
+2005-09-25T10:09:00.000Z	Bad_Magic	lakcaj	any idea what the X11 display offset should be set to?
+2005-09-25T10:10:00.000Z	lakcaj	Bad_Magic	no.  It should just automagically work now.  I've gotten it working in the past, just by following those few steps.

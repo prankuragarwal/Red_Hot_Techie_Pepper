@@ -1,0 +1,21 @@
+2006-01-13T11:37:00.000Z	docsquale		what imap server do people recommend for a simple server with 1-2 users?  I've been trying installation and configuration of cyrus, courier, and it's not been a good experience.
+2006-01-13T11:38:00.000Z	nickrud	docsquale	dovecot is pretty easy
+2006-01-13T11:40:00.000Z	nickrud	docsquale	yes, take a look at /etc/dovecot.conf
+2006-01-13T11:41:00.000Z	nickrud	docsquale	I use dovecot, but I only experimented with dovecot in ssl, I have it listening local only
+2006-01-13T11:44:00.000Z	docsquale	nickrud	what's the easiest way to generate needed SSL files (cert?) for the dovecot server?  I used to do it via a makefile in Mandrake...
+2006-01-13T11:53:00.000Z	nickrud	docsquale	do you have some other imap running
+2006-01-13T11:45:00.000Z	nickrud	docsquale	you got me. I did some wacko fako stuff for my exeriments
+2006-01-13T11:45:00.000Z	docsquale	nickrud	LOL
+2006-01-13T11:46:00.000Z	nickrud	docsquale	if it's only on one computer, just have it listen locally. Then you don't need ssl for the connections.
+2006-01-13T11:49:00.000Z	nickrud	docsquale	I used this: /usr/share/doc/openssl/doc/HOWTO/certificates.txt.gz
+2006-01-13T11:51:00.000Z	docsquale	nickrud	thanks, I'll have to read that when I'm not as sleepy as I am now.  Looks helpful.
+2006-01-13T11:51:00.000Z	nickrud	docsquale	it tells you how to make your own certificate, that you can use with dovecot
+2006-01-13T11:52:00.000Z	docsquale	nickrud	thanks.  dovecot is giving me grief starting, thinking the port is in use... not sure how/where...
+2006-01-13T11:53:00.000Z	nickrud	docsquale	sudo netstat -tlp is useful
+2006-01-13T11:53:00.000Z	docsquale	nickrud	not that I can find.  However, I have gone though 2 installations of various cyrus and one of another flavor (can't recall the name), so there's likely residual cruft around somewhere.   may need to reboot
+2006-01-13T11:54:00.000Z	nickrud	docsquale	try the netstat, then ps -aux ; that should show any running processes that might be on that port
+2006-01-13T11:55:00.000Z	docsquale	nickrud	I can't find anything on 993 (or 143?).
+2006-01-13T11:57:00.000Z	nickrud	docsquale	we're getting into rarified air for me. I'm not much of a network listening type app expert
+2006-01-13T11:58:00.000Z	docsquale	nickrud	 ok, no worries. will shutdown and reboot in the morning and investigate with clearer eyes.  thanks
+2006-01-13T11:59:00.000Z	nickrud	docsquale	np, dovecot works well, and, if I remember my experiments, the ssl is pretty straightforward
+2006-01-13T11:59:00.000Z	docsquale	nickrud	cool. thanks.

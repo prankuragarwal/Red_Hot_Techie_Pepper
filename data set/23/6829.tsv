@@ -1,0 +1,23 @@
+2006-11-10T17:24:00.000Z	nomin		can I use chroot to run a program that is installed on another partition on another distro?
+2006-11-10T09:18:00.000Z	nomin		I am trying to run programs on another partition and distro using chroot.  I'm getting this error message:  " cannot connect to X server :0.0".  What should I type in so the apps work with X?
+2006-11-10T09:19:00.000Z	sethk	nomin	that's usually a privileges issue.
+2006-11-10T09:19:00.000Z	sethk	nomin	try doing, in a window under the user who started X,    xhost +
+2006-11-10T09:19:00.000Z	sethk	nomin	because :0.0 is correct if the process is running on the same box as the X server
+2006-11-10T09:20:00.000Z	nomin	sethk	 I already did that.  It's not working.  I also did "export DISPLAY=localhost:0.0" and after I did that I get, "cannot connect to X server localhost:0.0"
+2006-11-10T09:21:00.000Z	sethk	nomin	of course.  :0.0 is the same as localhost:0.0
+2006-11-10T09:21:00.000Z	sethk	nomin	when you did the xhost +, did it say "accepting connections from all users"?
+2006-11-10T09:21:00.000Z	nomin	sethk	so I should not have typed in "export DISPLAY=localhost:0.0"?
+2006-11-10T09:21:00.000Z	sethk	nomin	it won't hurt anything, but it won't help anything either
+2006-11-10T09:22:00.000Z	sethk	nomin	tgelter not that you'll notice.
+2006-11-10T09:23:00.000Z	nomin	sethk	I already ran chroot from the other distro and now I'm doing the reverse.  I got the same display message before and I solved it by doing "export display... and xhost +.  I don't know why it's not working the same way with this distro.
+2006-11-10T09:23:00.000Z	sethk	nomin	it should be
+2006-11-10T09:24:00.000Z	nomin	sethk	I'll start it over and see what happens.
+2006-11-10T09:24:00.000Z	sethk	nomin	k
+2006-11-10T09:38:00.000Z	nomin	sethk	I'm still getting the same display problem.  I can run BitchX just fine but nothing graphical.
+2006-11-10T09:47:00.000Z	nomin	sethk	it makes no difference if I type "xhost +" or "xhost -".  I still get the same message.  "cannot connect to X server :0.0"
+2006-11-10T09:49:00.000Z	sethk	nomin	thinking about it, it's possible that X is set up to use the .Xauthority form of authorization, and ignoring xhost
+2006-11-10T09:49:00.000Z	sethk	nomin	try using the utility that makes a .Xauthority file from another one (the primary user's).
+2006-11-10T09:50:00.000Z	nomin	sethk	what utility is that?  I'm just a schmuck that uses linux on the desktop.
+2006-11-10T09:50:00.000Z	sethk	nomin	I believe it's xauth
+2006-11-10T09:51:00.000Z	sethk	nomin	yes, xauth.  check the man page.  I haven't done it in a while, so I'll have to figure the syntax out.  If I knew it off the top of my head I'd give it to you.
+2006-11-10T09:51:00.000Z	nomin	sethk	ok.  thanks.  I'll look this stuff up.

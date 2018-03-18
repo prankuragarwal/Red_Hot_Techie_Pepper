@@ -1,0 +1,23 @@
+2007-06-15T07:27:00.000Z	sgrove_		how can I install binary video drivers for nvidia from the command line?
+2007-06-15T07:28:00.000Z	sgrove_		oh, woops....lspci says that the video card is actually an integrated intel
+2007-06-15T07:28:00.000Z	sgrove_		wonder why it's not installing then?
+2007-06-15T07:29:00.000Z	sgrove_		err, not working, rather...it works every now and then, but it's not consistent
+2007-06-15T07:30:00.000Z	sgrove_		whenever I boot, the screen goes black after the grub esc message, stays black for an unusual amount of time, and eventually the screen changes and a "loading" mouse cursor appears, but just for a few seconds. the screen then goes scrambled and it goes black and stays that way.
+2007-06-15T07:31:00.000Z	sgrove_		unable to open display (null)
+2007-06-15T07:32:00.000Z	sgrove_		I can when I'm in the root console, but not once it's booted up into X
+2007-06-15T07:33:00.000Z	sgrove_		should I perhaps reinstall the machine?
+2007-06-15T07:33:00.000Z	sgrove_		but it was a clean install, so it seems strange that I would have the problems
+2007-06-15T07:34:00.000Z	pike_	sgrove_	what problems?
+2007-06-15T07:35:00.000Z	pike_	sgrove_	i had an issue where ttys in /etc/event.d/ where setup wrong on new install
+2007-06-15T07:35:00.000Z	pike_	sgrove_	it froze at initializing local
+2007-06-15T07:36:00.000Z	pike_	sgrove_	edit them. check em out they should look like this: exec /sbin/getty 38400 tty1    then on next line respawn.  they were all screwed up
+2007-06-15T07:37:00.000Z	pike_	sgrove_	basically i had not getty logins but x came up
+2007-06-15T07:39:00.000Z	pike_	sgrove_	that top stuff is right. its just the getty thing and respawn should be after it
+2007-06-15T07:39:00.000Z	pike_	sgrove_	i will pastebin one sec
+2007-06-15T07:40:00.000Z	pike_	sgrove_	drove me crazy :)  http://paste.ubuntu-nl.org/25645/
+2007-06-15T07:42:00.000Z	pike_	sgrove_	just do it for all the ttys
+2007-06-15T07:42:00.000Z	pike_	sgrove_	not just 1
+2007-06-15T07:44:00.000Z	sgrove_	pike_	if I only do it for 1 then it still won't work?
+2007-06-15T07:44:00.000Z	pike_	sgrove_	alt-ctrl-f1 will
+2007-06-15T07:51:00.000Z	pike_	sgrove_	change em all
+2007-06-15T07:51:00.000Z	pike_	sgrove_	they are wrong

@@ -1,0 +1,18 @@
+2011-07-22T13:21:00.000Z	ParkerR		Is there a way to disable my internal webcam? I am trying to use zbarcam with an external manual focus webcam but it keeps activating the built in one.
+2011-07-22T13:21:00.000Z	ParkerR		XD
+2011-07-22T13:22:00.000Z	Slart	ParkerR	you might be able to blacklist the module/driver for the webcam.. and hope the other webcam doesn't use the same module/driver
+2011-07-22T13:25:00.000Z	ParkerR	Slart	ok how would I determine which one it uses and how would I blacklist? grep comes to mind when identifing
+2011-07-22T13:26:00.000Z	Slart	ParkerR	lsmod will give you a list of modules in use.. you could use lsusb to check what the webcam identifies itself as
+2011-07-22T13:26:00.000Z	Slart	ParkerR	but it's probably one of 3 maybe 4 drivers.. there aren't that many
+2011-07-22T13:27:00.000Z	ParkerR	Slart	ok names :)
+2011-07-22T13:28:00.000Z	Slart	ParkerR	uvc something.., gspca, v4l .. those are the ones I can think of off the top of my head
+2011-07-22T13:29:00.000Z	Slart	ParkerR	here's a thread from ubuntuforums discussion turning off webcams http://ubuntuforums.org/showthread.php?t=1291061
+2011-07-22T13:30:00.000Z	Slart	ParkerR	ah.. then it's using uvcvideo .. you can remove that by running    sudo modprobe -r uvcvideo
+2011-07-22T13:31:00.000Z	ParkerR	Slart	do i need to rebbot?
+2011-07-22T13:31:00.000Z	Slart	ParkerR	nope, it should work right away
+2011-07-22T13:33:00.000Z	Slart	ParkerR	and then you'll just have to hope that that other webcam doesn't use the same driver/module =)
+2011-07-22T13:33:00.000Z	ParkerR	Slart	well I mean did it unload it or not?
+2011-07-22T13:34:00.000Z	Slart	ParkerR	no error messages usually means it worked
+2011-07-22T13:34:00.000Z	Slart	ParkerR	you can check again with lsmod and see if it's gone
+2011-07-22T13:35:00.000Z	Slart	ParkerR	ah.. it's in use.. try removing the other modules listed next to uvcvideo in the lsmod output..
+2011-08-09T11:28:00.000Z	Slart	ParkerR	just ask your question.. I think there is a channel for bash as well.. ##bash or #bash perhaps?

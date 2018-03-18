@@ -1,0 +1,23 @@
+2008-12-13T09:21:00.000Z	andresmh		it seems like i need to know what kind of file system my partition is, is there a way to check the type of FS?
+2008-12-13T09:22:00.000Z	gnutron	andresmh	did you format it yet
+2008-12-13T09:23:00.000Z	gnutron	andresmh	whats the /dev/name of the partition?  fdisk -l
+2008-12-13T09:23:00.000Z	andresmh	gnutron	fdisk -l returns Cannot open /dev/sda
+2008-12-13T09:25:00.000Z	gnutron	andresmh	make a mount point in /media then sudo mount -t vfat /dev/sda4 /media/mountpoint
+2008-12-13T09:25:00.000Z	gnutron	andresmh	the mountpoint can be any name
+2008-12-13T09:26:00.000Z	gnutron	andresmh	then put that line in /etc/fstab
+2008-12-13T09:26:00.000Z	andresmh	gnutron	is that instead of adding it to /etc/fstab?
+2008-12-13T09:27:00.000Z	andresmh	gnutron	seems like there is already a /media/disk mountpoint where the partition has been mounted (automatically?)
+2008-12-13T09:29:00.000Z	andresmh	gnutron	when you said "put that line in /etc/fstab", do you mean i should put this line:  vfat /dev/sda4 /media/mountpoint
+2008-12-13T09:29:00.000Z	gnutron	andresmh	that might be something else, i cant see it
+2008-12-13T09:30:00.000Z	andresmh	gnutron	or rather  vfat /dev/sda4 /media/disk
+2008-12-13T09:30:00.000Z	gnutron	andresmh	well it should have parameters. i'll give you an example, one sec
+2008-12-13T09:30:00.000Z	gnutron	andresmh	/dev/sdb1 /media/LOCAL_DISK vfat rw,nosuid,nodev,shortname=mixed,uid=1000,utf8,umask=077 0 0
+2008-12-13T09:31:00.000Z	gnutron	andresmh	replace sdb1 with sda4
+2008-12-13T09:31:00.000Z	andresmh	gnutron	oh wow, i would have never come up with that by just looking at the comments within /etc/fstab
+2008-12-13T09:32:00.000Z	gnutron	andresmh	that will be easy to access
+2008-12-13T09:32:00.000Z	gnutron	andresmh	uid should be your uid
+2008-12-13T09:32:00.000Z	gnutron	andresmh	you should read up abit
+2008-12-13T09:32:00.000Z	andresmh	gnutron	oh uh, how do i know what my uid is?
+2008-12-13T09:33:00.000Z	gnutron	andresmh	its in your /etc/passwd
+2008-12-13T09:33:00.000Z	andresmh	gnutron	so that would be the user id?
+2008-12-13T09:34:00.000Z	gnutron	andresmh	correct

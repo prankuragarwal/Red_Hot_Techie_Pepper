@@ -1,0 +1,19 @@
+2011-10-16T20:29:00.000Z	Florin91		Hi!
+2011-10-16T20:29:00.000Z	Florin91		I have an interesting problem
+2011-10-16T20:31:00.000Z	Florin91		Given 1 openvpn server with only 1 connecting certificate, how can I create another vpn server so the users will connect and thtough that will access first vpn server. The problem is routing of the packets and iptables rules
+2011-10-16T20:33:00.000Z	phlak_user	Florin91	do you mean like a Site-to-Site VPN?
+2011-10-16T20:33:00.000Z	Florin91	phlak_user	I think so
+2011-10-16T20:34:00.000Z	phlak_user	Florin91	see here and check -> http://www.smallnetbuilder.com/security/security-howto/30353-how-to-set-up-a-site-to-site-vpn-with-openvpn
+2011-10-16T20:45:00.000Z	phlak_user	Florin91	did you check the link that i sent for site-to-site vpn?
+2011-10-16T20:45:00.000Z	Florin91	phlak_user	yes, but in that article was about to routers and one vpn
+2011-10-16T20:45:00.000Z	phlak_user	Florin91	isnt that what you want to achieve?
+2011-10-16T20:46:00.000Z	Florin91	phlak_user	I think my problem is just routing traffic from tun0 (server openvpn) to tun1 (client to another openvpn server)
+2011-10-16T20:47:00.000Z	phlak_user	Florin91	on the same machine?
+2011-10-16T20:47:00.000Z	Florin91	phlak_user	yes
+2011-10-16T20:48:00.000Z	phlak_user	Florin91	wouldnt a static route solve that problem? what has openvpn got to do with it?
+2011-10-16T20:48:00.000Z	Florin91	phlak_user	same machine is used as client for that server and as a server to connect to and route the traffic
+2011-10-16T20:49:00.000Z	Florin91	phlak_user	how is that static route? something like route add .. ?
+2011-10-16T20:49:00.000Z	phlak_user	Florin91	yes
+2011-10-16T20:51:00.000Z	Florin91	phlak_user	 It is correct route add -host tun0 tun1 ?
+2011-10-16T20:52:00.000Z	phlak_user	Florin91	nope; youd have to add either a net or host (and the host option needs a hostip); read the route manual (man route)
+2011-10-16T21:00:00.000Z	Florin91	phlak_user	What is wrong in this command: route add -inet 10.172.0.2 netmask 255.255.255.0 gw 10.100.0.2 All ip's are private :)

@@ -1,0 +1,22 @@
+2005-12-23T07:05:00.000Z	nadira		is sudo apt-get remove libc6 dangerous? i need to remove it to install 2.3.2ds1-20
+2005-12-23T07:07:00.000Z	nadira		is sudo apt-get remove libc6 dangerous? i need to remove it to install 2.3.2ds1-20
+2005-12-23T07:07:00.000Z	topyli	nadira	well, absolutely everything depends on libc so i wouldn't recommend removing it
+2005-12-23T07:08:00.000Z	nadira	topyli	how can i then install the correct libc6
+2005-12-23T07:09:00.000Z	topyli	nadira	if your system is working, you have the correct libc. why do you need an old one?
+2005-12-23T07:11:00.000Z	topyli	nadira	what is this program? if it doesn't compile, it's either broken or you're missing some libraries
+2005-12-23T07:13:00.000Z	topyli	nadira	then you should be adding those, not removing libc :)
+2005-12-23T07:14:00.000Z	nadira	topyli	how can i add them?
+2005-12-23T07:14:00.000Z	topyli	nadira	install build-essential for a reasonably sane build environment
+2005-12-23T07:14:00.000Z	nadira	topyli	i tried that
+2005-12-23T07:17:00.000Z	topyli	nadira	your program is not looking for headers from the right place. headers should be somewhere around /usr/include but your program doesn't know that, or your environment is not right
+2005-12-23T07:19:00.000Z	nadira	topyli	i have done locate stdio.h and it cannot be found on the system.
+2005-12-23T07:20:00.000Z	topyli	nadira	just install the build-essential package
+2005-12-23T07:21:00.000Z	nadira	topyli	build-essential:
+2005-12-23T07:22:00.000Z	topyli	nadira	that sounds very fishy. how are you trying to install it?
+2005-12-23T07:23:00.000Z	nadira	topyli	i used both synaptic package manager and apt-get (command line)
+2005-12-23T07:24:00.000Z	topyli	nadira	try "apt-get -f install" with no packages
+2005-12-23T07:25:00.000Z	nadira	topyli	0 upgraded, o newly installed, 0 remove and 0 not upgraded
+2005-12-23T07:25:00.000Z	topyli	nadira	good. now try "apt-get install build-essential"
+2005-12-23T07:27:00.000Z	nadira	topyli	i tried this, but it wont work, depends libc6-dev depends g++ (>= 3:3.3)
+2005-12-23T07:29:00.000Z	topyli	nadira	try installiing those packages first. personally i think either your system is broken or i'm not understanding you correctly
+2005-12-23T07:35:00.000Z	topyli	nadira	try packages.ubuntu.com. but if apt cannot install it, i doubt it will be easier by hand either

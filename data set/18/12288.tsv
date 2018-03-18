@@ -1,0 +1,18 @@
+2006-05-15T16:04:00.000Z	Mortuis		I found via google that I can use "sudo mount -t vfat /dev/sda1 /mnt/usb" to mount my usb flash drive, however this gives me read-only access.  Is there a way I can mount it so that users can modify the content of the flash drive.
+2006-05-15T16:04:00.000Z	Mortuis		?
+2006-05-15T16:06:00.000Z	wendigo	Mortuis	an easy way would be to put an entry in fstab. sudo nano -w /etc/fstab
+2006-05-15T16:06:00.000Z	Mortuis	wendigo	It's one of those key-fob things, it isn't always in.
+2006-05-15T16:06:00.000Z	wendigo	Mortuis	thats fine it still works
+2006-05-15T16:06:00.000Z	wendigo	Mortuis	i use it on mine
+2006-05-15T16:08:00.000Z	wendigo	Mortuis	/dev/sda1 /mnt/usb vfat defaults,user,users 0 0
+2006-05-15T16:08:00.000Z	wendigo	Mortuis	then you can just do mount /mnt/usb as a user
+2006-05-15T16:09:00.000Z	wendigo	Mortuis	just add that line to fstab
+2006-05-15T16:10:00.000Z	wendigo	Mortuis	you might also consider using auto as the file system type, just incase it's not going to be fat
+2006-05-15T16:10:00.000Z	Mortuis	wendigo	Okay, I added that to fstab.  Does that mean it'll magically mount when I plug it in now or I gotta issue a command?
+2006-05-15T16:10:00.000Z	wendigo	Mortuis	usually you have to mount it manually, but try it anyway
+2006-05-15T16:11:00.000Z	wendigo	Mortuis	gnome might automatically mount it for you
+2006-05-15T16:12:00.000Z	wendigo	Mortuis	even if you have to mount it, it's as easy as doing: mount /mnt/usb
+2006-05-15T16:13:00.000Z	Mortuis	wendigo	Awesome, that worked.  Thanks!
+2006-05-15T16:13:00.000Z	wendigo	Mortuis	:)
+2006-05-15T16:14:00.000Z	Mortuis	wendigo	do I need to do unmount /mnt/usb or will it take care of that when I pull it?
+2006-05-15T16:15:00.000Z	wendigo	Mortuis	it should unmount it for you

@@ -1,0 +1,19 @@
+2008-05-25T21:10:00.000Z	delta9thc1	kwan	you should tell me more,like  ... which gpu you have?
+2008-05-25T21:15:00.000Z	kwan	delta9thc1	its not a gpu problem i'm experiencing.  My system was running perfectly until I messed with the refresh rate (from 50Hz->51Hz) in displayconfig-gtk then on the next reboot, the X Server (or X display manager *I know they're different things, I just want to make a loose reference) incorrectly detects my lcd's resolution as 640x480.
+2008-05-25T21:17:00.000Z	delta9thc1	kwan	do you have nvidia or ati?
+2008-05-25T21:17:00.000Z	kwan	delta9thc1	nvidia
+2008-05-25T21:18:00.000Z	delta9thc1	kwan	dpkg --get-selections nvidia*
+2008-05-25T21:18:00.000Z	kwan	delta9thc1	I was running happily at 1920x1200 (50Hz) before.  its when i changed the refresh rate from 50Hz to 51Hz that caused everything to break
+2008-05-25T21:21:00.000Z	delta9thc1	kwan	understood, however type that command
+2008-05-25T21:22:00.000Z	kwan	delta9thc1	How come dpkg-reconfigure xserver-xorg no longer lets me set the resolution modes?  I'm 100% it had it Prior to Hardy
+2008-05-25T21:23:00.000Z	kwan	delta9thc1	nvidia-glx-new & nvidia-kernel-common installed
+2008-05-25T21:24:00.000Z	delta9thc1	kwan	ok    dpkg -l | grep nvidia*
+2008-05-25T21:27:00.000Z	delta9thc1	kwan	reinstall your nvidia drivers and check your xorg configuration,h and v refresh
+2008-05-25T21:31:00.000Z	delta9thc1	kwan	sudo apt-get remove --purge nvidia-glx-new nvidia-settings && sudo apt-get install nvidia-glx-new nvidia-settings
+2008-05-25T21:32:00.000Z	kwan	delta9thc1	its NOT an nvidia drivers issue.   I just fixed it, I used the rollback method.   But u know what's really really really bothering me?  Prior to Hardy, I remember 100% that when I dpkg-reconfigure xserver-xorg, it lets you set the supported screen (MONITOR/LCD) resolution (which involved checking/unchecking "X" beside each mode).  Now it doesn't have it
+2008-05-25T21:35:00.000Z	delta9thc1	kwan	ummhhh,ok    cd /etc/X11/      then    ls-al  and paste,not here ^__^
+2008-05-25T21:36:00.000Z	delta9thc1	kwan	you should find many files like xorg.org_1 xorg.conf_2 etc...
+2008-05-25T21:40:00.000Z	kwan	delta9thc1	I fixed it already.  The rollback method is always handy, I always resort to rollback method when I can't fix an X related issue. :>  Thx for your effort in trying to help tho.  Initially i was hoping that someone could explain why dpkg-reconfigure xserver-xorg no longer lets you set the supported screen resolution modes tho.
+2008-05-25T21:48:00.000Z	delta9thc1	kwan	understood,but you should replaced your xorg  with the old one,imho
+2008-05-25T21:48:00.000Z	kwan	delta9thc1	yep and that's how I fixed it (I call it the rollback method) =)
+2008-05-25T21:54:00.000Z	delta9thc1	kwan	i've nvidia too,and if you've already done it,you can only reinstalling nvidia's driver,remove it with --purge ,otherwise you could using nvidia-xconfig

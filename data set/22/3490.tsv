@@ -1,0 +1,22 @@
+2009-12-16T17:59:00.000Z	roof		i think my MBR is fucked, how do i fix this people?
+2009-12-16T18:00:00.000Z	roof		the thing i dont understand is why deleting my swap partition would effect the boot process?
+2009-12-16T18:01:00.000Z	ActionParsnip1	roof	provided you use UUIDs it should be ok
+2009-12-16T18:01:00.000Z	roof		is the new partition i created now set as bootable, if so, how do i set the other partition as bootable
+2009-12-16T18:01:00.000Z	ActionParsnip1	roof	check the uUISs you are using
+2009-12-16T18:02:00.000Z	roof		i dont even get the grub boot loader coming ip i get "no bootable disk - please insert and reboot"
+2009-12-16T18:02:00.000Z	ActionParsnip1	roof	boot to liveCD and you can diagnose
+2009-12-16T18:02:00.000Z	roof		im in livecd now, but not sure whats happened
+2009-12-16T18:03:00.000Z	roof		is grub installed to MBR or is it chainloaded from primary boot loader?
+2009-12-16T18:04:00.000Z	roof		so what is stored in the MBR?
+2009-12-16T18:04:00.000Z	ActionParsnip1	roof	run: sudo blkid    then read your fstab on your internal partition
+2009-12-16T18:04:00.000Z	roof		a flag that tells it where to find the 2nd bootloader - the foot flag
+2009-12-16T18:05:00.000Z	roof		action, its not the FS thjat is that issue, I have no secondary bootloader at all.
+2009-12-16T18:05:00.000Z	roof		its as if there is no disk, it must be MBR
+2009-12-16T18:05:00.000Z	ActionParsnip1	roof	ten use the liveCD to rewrite grub2
+2009-12-16T18:05:00.000Z	roof	howlingmadhowie	how do i check the flag?
+2009-12-16T18:06:00.000Z	roof		i have ubuntu live running
+2009-12-16T18:07:00.000Z	ActionParsnip1	roof	you can run: sudo fdisk /dev/diskname    e.g.    /dev/sda    and make sure the partition is marked as bootable
+2009-12-16T18:08:00.000Z	ActionParsnip1	roof	then install grub2 to the mbr, then check the UUIDs to make sure stab is mounting the right partition as /
+2009-12-16T18:08:00.000Z	roof		oh yeah i found the option
+2009-12-16T18:08:00.000Z	roof		that should fix is now, it was no longer set
+2009-12-16T18:09:00.000Z	ActionParsnip1	roof	if all that is in place then the system will boot

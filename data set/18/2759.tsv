@@ -1,0 +1,18 @@
+2010-03-01T01:05:00.000Z	jamied66		I have no sound after an upgrade from 9.05 to Koala.  I'm getting this output from my dmesg ... can someone help out? http://paste.ubuntu.com/385888/
+2010-03-01T01:06:00.000Z	MilitantPotato	jamied66	what sound-card do you use?
+2010-03-01T01:08:00.000Z	jamied66	MilitantPotato	 It's an IntelHDA (forget the number) in an HP Pavilion dv7.  I had to tweak a few config files in 9.04 to get rid of the stuttering issue lots of folks had.
+2010-03-01T01:11:00.000Z	jamied66		Potato: 00:1b.0 Audio device: Intel Corporation 82801I (ICH9 Family) HD Audio Controller (rev 03)
+2010-03-01T01:12:00.000Z	MilitantPotato	jamied66	try comment 10 from https://bugzilla.redhat.com/show_bug.cgi?id=487540
+2010-03-01T01:13:00.000Z	MilitantPotato	jamied66	also see https://help.ubuntu.com/community/HdaIntelSoundHowto
+2010-03-01T01:14:00.000Z	MilitantPotato	jamied66	also, check the sliders in alsa-mixer-gui
+2010-03-01T01:14:00.000Z	MilitantPotato	jamied66	sorry, gnome-alsamixer
+2010-03-01T01:23:00.000Z	jamied66	MilitantPotato	 I added the modprobe config and rebooted.  the drivers aren't being loaded.  like the sound card isn't being picked up at all.  http://paste.ubuntu.com/385898/
+2010-03-01T01:26:00.000Z	MilitantPotato	jamied66	/sbin/modprobe -l snd_hda_intel
+2010-03-01T01:27:00.000Z	MilitantPotato	jamied66	should say updates/alsa/snd-hda-intel.ko or similar
+2010-03-01T01:27:00.000Z	MilitantPotato	jamied66	if that all fails, install the backports module in synaptic for alsa, I'll find the package name if you can't
+2010-03-01T01:27:00.000Z	jamied66		output as kernel/sound/pci/hda/snd-hda-intel.ko
+2010-03-01T01:28:00.000Z	MilitantPotato	jamied66	also, cat /etc/modprobe.d/blacklist | grep intel
+2010-03-01T01:28:00.000Z	MilitantPotato	jamied66	if it's blacklisted, remove it from the blacklist file.
+2010-03-01T01:31:00.000Z	MilitantPotato	jamied66	in synaptic, search for linux-backports-modules-alsa
+2010-03-01T01:32:00.000Z	MilitantPotato	jamied66	see if installing that helps.
+2010-03-01T01:33:00.000Z	MilitantPotato	jamied66	 sudo apt-get install linux-backports-modules-alsa-$ (uname -r)

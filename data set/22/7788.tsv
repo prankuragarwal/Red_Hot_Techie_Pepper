@@ -1,0 +1,22 @@
+2005-12-29T17:22:00.000Z	trevorv		trying to burn an audio cd in graveman, im getting "Can't open input file '(null)': No such file or directory". any ideas to solve this?
+2005-12-29T06:03:00.000Z	trevorv		when running "mount /dev/cdrom" im getting mount: block device /dev/hdc is write-protected, mounting read-only
+2005-12-29T06:03:00.000Z	trevorv		mount: wrong fs type, bad option, bad superblock on /dev/hdc,
+2005-12-29T06:04:00.000Z	pvanhoof	trevorv	cat you give me the output of cat /etc/fstab | grep cdrom
+2005-12-29T06:04:00.000Z	trevorv	pvanhoof	/dev/hdc        /media/cdrom0   udf,iso9660 user,noauto     0       0
+2005-12-29T06:05:00.000Z	pvanhoof	trevorv	can you take the cdrom out of your cdrom-drive, put it back in and then give me the output of dmesg | tail -n 5
+2005-12-29T06:06:00.000Z	trevorv	pvanhoof	[4297388.178000]  cdrom: This disc doesn't have any tracks I recognize!
+2005-12-29T06:06:00.000Z	pvanhoof	trevorv	are you sure the cdrom in your drive is a good cd with no errors?
+2005-12-29T06:07:00.000Z	trevorv	pvanhoof	its a blank cd, but give me a sec ill try another
+2005-12-29T06:07:00.000Z	pvanhoof	trevorv	of course you can't mount a blank cd
+2005-12-29T06:08:00.000Z	trevorv	pvanhoof	oh, sorry, i thought you had to mount before you could burn to it, because graveman is giving errors
+2005-12-29T06:08:00.000Z	pvanhoof	trevorv	no you don't need to mount it before burning
+2005-12-29T06:08:00.000Z	pvanhoof	trevorv	for example if you'd like to burn an iso image, you could try this:
+2005-12-29T06:10:00.000Z	pvanhoof	trevorv	well, best thing to do to check whether your drive is working in ubuntu or not, is to use the cdrecord tool. But it's not as easy as using a user interface
+2005-12-29T06:10:00.000Z	trevorv	pvanhoof	i get " Can't open input file '(null)': No such file or directory" from graveman, i know the cd drive works, ive used it before to burn a data cd, athough i might have changed some settings or something since then
+2005-12-29T06:11:00.000Z	pvanhoof	trevorv	sounds like a bug in graveman
+2005-12-29T06:12:00.000Z	trevorv	pvanhoof	:D, i dont suppose you can recommend any other UIs that dont have any gnome/kde dependencies?
+2005-12-29T06:12:00.000Z	pvanhoof	trevorv	in ubuntu, can't you simply use the nautilus trick? bruning cd's is integrated
+2005-12-29T06:12:00.000Z	trevorv	pvanhoof	im using xubuntu, so no nautilus
+2005-12-29T06:13:00.000Z	trevorv	pvanhoof	:O
+2005-12-29T06:14:00.000Z	pvanhoof	trevorv	but it does work ..
+2005-12-29T06:14:00.000Z	pvanhoof	trevorv	man cdrecord :)

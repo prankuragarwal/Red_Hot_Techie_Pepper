@@ -1,0 +1,23 @@
+2009-05-02T22:55:00.000Z	Lothen		Someone took my nickname!
+2009-05-02T22:55:00.000Z	Lothen		grrr
+2009-05-02T22:56:00.000Z	Lothen		Alright! I went in and edited my kernel boot line and set it to vga=773. It made the text smaller in the text console and it looks great! Thanks guys! Now one of you said this is temporary? What can I do to make it more permanent?
+2009-05-02T22:58:00.000Z	Lothen		How do I edit that?
+2009-05-02T22:59:00.000Z	Lothen		I am confused
+2009-05-02T23:01:00.000Z	Lothen		Someone told me to edit /boot/grub/menu.1st and another told me to add that parameter (vga=773?) in /boot/grub.conf  I do not know how to do either. Do I need to do both? First off, how do I get to these spots? heh
+2009-05-02T23:03:00.000Z	Lothen		Someone told me to edit /boot/grub/menu.1st and another told me to add that parameter (vga=773?) in /boot/grub.conf  I do not know how to do either. Do I need to do both? First off, how do I get to these spots? heh
+2009-05-02T23:04:00.000Z	hmw	Lothen	note, that it is menu.lst (like MENU.LST, "list")
+2009-05-02T23:05:00.000Z	hmw	Lothen	the parameter vga=733 (better you use vga=0x305) it to be placed in /boot/grub/menu.lst
+2009-05-02T23:06:00.000Z	hmw	Lothen	in fact, both work. Either decimal: vga=773 or hexadecimal vga=0x305, both do the same
+2009-05-02T23:08:00.000Z	hmw	Lothen	1) open a terminal 2) type: nano /boot/grub/menu.lst 3) find the first line with kernel=...ro splash quiet ... 4) change "splash quiet" to "vga=0x305"
+2009-05-02T23:08:00.000Z	hmw	Lothen	oops
+2009-05-02T23:09:00.000Z	hmw	Lothen	2) type sudo nano ...
+2009-05-02T23:21:00.000Z	hmw	Lothen	does the output of a simple "mount" say RO or is it just, that you cant write with lets say an editor?
+2009-05-02T23:23:00.000Z	hmw	Lothen	you probably started nano without sudo?
+2009-05-02T23:23:00.000Z	hmw	Lothen	you can save it to another file and then sudo cp otherfile realfile
+2009-05-02T23:24:00.000Z	hmw	Lothen	its usually CTRL-X, Y, ENTER
+2009-05-02T23:35:00.000Z	hmw	Lothen	after CTRL-O it asks for the file name, just hit ENTER
+2009-05-02T23:36:00.000Z	hmw	Lothen	full keys to exit+save is CTRL-X, Y, ENTER
+2009-05-02T23:38:00.000Z	hmw	Lothen	it should blink somewhere on the bottom (3rd last line), asking for a file name
+2009-05-02T23:40:00.000Z	hmw	Lothen	you shouldnt scroll, it is the 3rd last line of your screen, not of the file. Try pressing ENTER
+2009-05-02T23:44:00.000Z	hmw	Lothen	then adjust the monitor
+2009-05-02T23:46:00.000Z	hmw	Lothen	technically, it is irrelevant. I recommend to use hex, because when you use vga=ask, you will be presented hex codes only.

@@ -1,0 +1,24 @@
+2008-05-10T02:37:00.000Z	Tobias92		Hey ubuntu people. I have a partition (/dev/sda2) and apparently this is "lvm" which I understand is some kind of logical partition. I cant mount it with mount on commandline, any idea how I can?
+2008-05-10T02:38:00.000Z	ikonia	Tobias92	/dev/sda2 is not lvm
+2008-05-10T02:38:00.000Z	Tobias92	ikonia	well, that's a relief. What is it then?
+2008-05-10T02:39:00.000Z	ikonia	Tobias92	the second partition on your primary disk
+2008-05-10T02:40:00.000Z	Tobias92	ikonia	yeah, but when I try to mount it, mount says: "mount: unknown filesystem type 'LVM2_member'"
+2008-05-10T02:40:00.000Z	ikonia	Tobias92	that means that partition is included in a LVM group
+2008-05-10T02:40:00.000Z	Tobias92	ikonia	okay, and that somehow prevents me from mounting it?
+2008-05-10T02:40:00.000Z	ikonia	Tobias92	yes, as it's does not contains a file system it's self as a device
+2008-05-10T02:41:00.000Z	Tobias92	ikonia	so practically, all data there is lost?
+2008-05-10T02:41:00.000Z	ikonia	Tobias92	not at all no
+2008-05-10T02:41:00.000Z	ikonia	Tobias92	you need to mount the logical volume, from the volume gruop that contains /dev/sda2
+2008-05-10T02:41:00.000Z	Tobias92	ikonia	Huzzah! :). Please tell me, how can I get it back?
+2008-05-10T02:41:00.000Z	Tobias92	ikonia	oh oh... how do I figure that one out?
+2008-05-10T02:42:00.000Z	ikonia	Tobias92	do a "vgdisplay -v" and see which group contains /dev/sda2 - I'd guess vg00
+2008-05-10T02:43:00.000Z	ikonia	Tobias92	that good, although the worry is that there is no volume groups found
+2008-05-10T02:43:00.000Z	ikonia	Tobias92	I assume a vgdisplay VolGroup00 doesn't do anything
+2008-05-10T02:44:00.000Z	Tobias92	ikonia	aye, nothing. I do have to mention though that this is from a linux installation a long time ago
+2008-05-10T02:45:00.000Z	ikonia	Tobias92	well, looks like that volume group may have been removed, you can try a "vgscan" see if it finds anything
+2008-05-10T02:45:00.000Z	Tobias92	ikonia	immidiately: no volume groups found
+2008-05-10T02:45:00.000Z	ikonia	Tobias92	that volume group is gone then I'm afraid
+2008-05-10T02:45:00.000Z	Tobias92	ikonia	and the data is lost anyway?
+2008-05-10T02:46:00.000Z	ikonia	Tobias92	sounds like it now
+2008-05-10T02:46:00.000Z	ikonia	Tobias92	if the volume group is gone, then I'd expect the logical volumes to also be gone
+2008-05-10T02:46:00.000Z	Tobias92	ikonia	okay thanks :). I'll try something else, but then I think ill have to format it

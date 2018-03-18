@@ -1,0 +1,19 @@
+2009-06-10T18:15:00.000Z	pringrim		hey people, how to run a command with low priority possible? I tried nice + perl /home/user/script.pl... but it say "nice: +1: No such file or directory"
+2009-06-10T18:17:00.000Z	sipior	pringrim	nice -n 5 perl ... (or whatever priority change you want instead of 5)
+2009-06-10T18:17:00.000Z	sipior	pringrim	leaving off the -n switch defaults to "10"
+2009-06-10T18:17:00.000Z	pringrim	sipior	hmm I tried -n19 << this is mos low possible? ps: I'm not the router
+2009-06-10T18:18:00.000Z	sipior	pringrim	yes, that's the lowest favourable scheduling
+2009-06-10T18:21:00.000Z	pringrim	sipior	hmm work fine now, but if I request it from a script the proccess still using 90%+ of cpu
+2009-06-10T18:23:00.000Z	sipior	pringrim	niceness is not the same as processor usage. if a low priority task is the only one available to run, it will consume a large fraction of the cpu time (since it's not competing with anything else).
+2009-06-10T18:23:00.000Z	pringrim	sipior	exec script.sh and content is comenthing like it: " nice -n 19 perl $script_DIR/script.pl "
+2009-06-10T18:24:00.000Z	pringrim	sipior	no limit of cpu usage is configured by user I think
+2009-06-10T18:24:00.000Z	sipior	pringrim	not via nice
+2009-06-10T18:25:00.000Z	pringrim	sipior	any solution for my problem? :~~~
+2009-06-10T18:25:00.000Z	sipior	pringrim	well, what's the problem, exactly? it seems to be doing what you told it to do.
+2009-06-10T18:27:00.000Z	sipior	pringrim	i'm clearly not getting what you're trying to do, and what results you expect. is there a reason you're running the script via nice if you're the only one on the system?
+2009-06-10T18:28:00.000Z	pringrim	sipior	ok lets me try explain better my situation..
+2009-06-10T18:28:00.000Z	sipior	pringrim	also, how are you invoking the command in the script?
+2009-06-10T18:31:00.000Z	pringrim	sipior	I have one small shell accont to run my eggdrop. My bot run a tcl that execute this command one time per day: " exec /home/user/script.sh " and the contect of this script is somenthing like it: " nice -n 19 perl $PISG_DIR/pisg.pl ". Right, if I just run the command nice directly in terminal, all run fine with no cpu abuse, but from script still getting 90% or more cpu usage.
+2009-06-10T18:33:00.000Z	pringrim	sipior	what I'm doing wrong?
+2009-06-10T18:37:00.000Z	sipior	pringrim	try running nice at a higher level (nice exec foo.sh...) i imagine nice is setting a value which is lost once the shell spawned by your script vanishes.
+2009-06-10T19:00:00.000Z	pringrim	sipior	work fine now, the correct way is: exec nice -n 19 command, my fault tried nice first. Thank you!

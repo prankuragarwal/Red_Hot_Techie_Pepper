@@ -1,0 +1,24 @@
+2009-12-10T18:06:00.000Z	BlackBishop		my karmic koala ( fresh install ) disconnects me from my ssh server :|
+2009-12-10T18:06:00.000Z	BlackBishop		debug1: SSH2_MSG_KEXINIT sent
+2009-12-10T18:06:00.000Z	BlackBishop		Read from socket failed: Connection reset by peer
+2009-12-10T18:07:00.000Z	BlackBishop		this being the messages I get when using -v
+2009-12-10T18:07:00.000Z	BlackBishop		http://pastebin.com/d6e957d40 ( sshd problem :| )
+2009-12-10T18:09:00.000Z	BlackBishop		grgl .. what the heck is wrong with the sshd :| I just did a openssh-server .. I expected it to just work ..
+2009-12-10T18:09:00.000Z	ikonia	BlackBishop	you don't launch sshd like that
+2009-12-10T18:10:00.000Z	BlackBishop	ikonia	I know.
+2009-12-10T18:10:00.000Z	BlackBishop	ikonia	sshd is started via /etc/init.d/ssh start
+2009-12-10T18:10:00.000Z	ikonia	BlackBishop	sorry, I missunderstood what you where saying, I though you where saying that's how you where trying to start it
+2009-12-10T18:10:00.000Z	ikonia	BlackBishop	I've not seen a log
+2009-12-10T18:16:00.000Z	ikonia	BlackBishop	wat is your problem ?
+2009-12-10T18:16:00.000Z	BlackBishop	ikonia	http://pastebin.com/d6e957d40
+2009-12-10T18:20:00.000Z	ikonia	BlackBishop	can you pastebin your /etc/ssh/sshd_config please
+2009-12-10T18:20:00.000Z	BlackBishop	ikonia	erUSUL, it seems it only does that on a non-default port, works just fine on 22, however, if I modify /etc/ssh/sshd_config Port=5522 .. won't work
+2009-12-10T18:20:00.000Z	ikonia	BlackBishop	it looks like it's trying to connect on ipv6
+2009-12-10T18:21:00.000Z	BlackBishop	ikonia	no problem 'bout that .. it's localhost ..
+2009-12-10T18:21:00.000Z	ikonia	BlackBishop	disable the ubuntu firewall for starters while debugging
+2009-12-10T18:21:00.000Z	BlackBishop	ikonia	no firewall
+2009-12-10T18:21:00.000Z	ikonia	BlackBishop	it's localhost on ipv6 - the firewall rules may not be blocking it
+2009-12-10T18:21:00.000Z	ikonia	BlackBishop	have you disabled the default iptables firewall ?
+2009-12-10T18:21:00.000Z	ikonia	BlackBishop	try ssh 127.0.0.1 -vv -p 5522
+2009-12-10T18:23:00.000Z	BlackBishop	ikonia	erUSUL http://pastebin.com/d9d46d92
+2009-12-10T18:32:00.000Z	BlackBishop	ikonia	however, setting "Port 22" in sshd_config works just great ! :|

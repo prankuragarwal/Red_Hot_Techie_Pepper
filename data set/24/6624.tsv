@@ -1,0 +1,24 @@
+2005-09-07T08:03:00.000Z	zdennis		what vnc client gives you the ability to send ctrl-alt-delete combos?
+2005-09-07T08:04:00.000Z	cafuego	zdennis	all of them
+2005-09-07T08:04:00.000Z	cafuego	zdennis	hit F5 in the normal vnc viewer
+2005-09-07T09:34:00.000Z	cafuego	zdennis	just 'gcc'
+2005-09-10T08:42:00.000Z	cafuego	zdennis	You cannot dual boot nt/linux without either lilo OR grub.
+2005-09-10T08:42:00.000Z	cafuego	zdennis	/sbin/grub-install /dev/hda
+2005-09-10T08:42:00.000Z	zdennis	cafuego	i find that hard to believe... since i have found many web sites and books with references of using the NT Loader
+2005-09-10T08:42:00.000Z	zdennis	cafuego	here is my next question...
+2005-09-10T08:43:00.000Z	cafuego	zdennis	Yes, they use the NT Loader to bootstrap LILO or GRUB.
+2005-09-10T08:43:00.000Z	cafuego	zdennis	You set them up by installing lilo or grub to the *partition*, then extractinng the 512b boot record and adding THAT to boot.ini
+2005-09-10T08:44:00.000Z	zdennis	cafuego	that is what i did
+2005-09-10T08:44:00.000Z	cafuego	zdennis	Then you DO indeed have lilo or grub.
+2005-09-10T08:44:00.000Z	cafuego	zdennis	Did you install lilo or grub to the partition that /boot is on ?
+2005-09-10T08:45:00.000Z	cafuego	zdennis	That's a misconfigured grub OR missing boot record
+2005-09-10T08:46:00.000Z	cafuego	zdennis	What partition is Linux on?
+2005-09-10T08:46:00.000Z	cafuego	zdennis	Okay, /sbin/grub-install --no-floppy /dev/hde1
+2005-09-10T08:47:00.000Z	cafuego	zdennis	That will make it rescan for ALL hdds and number them appropriately.
+2005-09-10T08:47:00.000Z	cafuego	zdennis	it will also plonk a new boot record in /dev/hde1. You should use 'dd' again to copy it out and replace the one on C:
+2005-09-10T08:48:00.000Z	cafuego	zdennis	When done, you /dev/hde will be mapped to a number, check /boot/grub/devices.txt
+2005-09-10T08:48:00.000Z	cafuego	zdennis	.. and adjust menu.lst appropriately.
+2005-09-10T08:49:00.000Z	zdennis	cafuego	 i am in recovery mode at the moment...it only see's itself..so it think sit's hd0
+2005-09-10T08:52:00.000Z	zdennis	cafuego	can i install grub to a floppy
+2005-09-10T08:52:00.000Z	cafuego	zdennis	sure
+2005-09-10T08:53:00.000Z	cafuego	zdennis	Just don't ask me exactly how, i haven't used floppies this millennium

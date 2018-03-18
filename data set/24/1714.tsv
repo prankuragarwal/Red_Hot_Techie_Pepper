@@ -1,0 +1,24 @@
+2012-01-05T21:03:00.000Z	mistawac		http://www.google.com
+2012-01-05T21:04:00.000Z	mistawac		I'm going to punt this server out my window..
+2012-01-05T21:04:00.000Z	mistawac		I can't get this thing to email through my smarthost and I don't know why.
+2012-01-05T21:05:00.000Z	llutz_	mistawac	checked logs?
+2012-01-05T20:37:00.000Z	llutz_	mistawac	msmtp/ssmtp/nullmailer
+2012-01-05T20:38:00.000Z	llutz_	mistawac	sudo dpkg-reconfigure postfix (answer the questions, select site with smarthost)
+2012-01-05T20:52:00.000Z	llutz_	mistawac	better to get nullmailer working, its config consists only of 1 line
+2012-01-05T20:53:00.000Z	llutz_	mistawac	sudo dpkg-reconfigure nullmailer
+2012-01-05T20:53:00.000Z	llutz_	mistawac	obviously you did it wrong
+2012-01-05T20:55:00.000Z	llutz_	mistawac	/etc/nullmailer/remotes should contain something like: yoursmarthost.example.com smtp --user=youruser --pass=yourpass
+2012-01-05T20:56:00.000Z	llutz_	mistawac	spammers welcome
+2012-01-05T21:07:00.000Z	llutz_	mistawac	have you tested smtp manually per telnet?
+2012-01-05T21:07:00.000Z	llutz_	mistawac	telnet yoursmarthost 25
+2012-01-05T21:09:00.000Z	llutz_	mistawac	telnet yoursmarthost 587
+2012-01-05T21:10:00.000Z	llutz_	mistawac	that makes no sense
+2012-01-05T21:10:00.000Z	llutz_	mistawac	lsb_release -sc
+2012-01-05T21:15:00.000Z	llutz_	mistawac	check mailheaders
+2012-01-05T21:18:00.000Z	llutz_	mistawac	check mailheaders and logs to get your answer
+2012-01-05T21:19:00.000Z	mistawac	llutz_	: how do I check headers and what am I looking for in both?
+2012-01-05T21:20:00.000Z	llutz_	mistawac	you should know how to read your mails (check for Received: lines)  and compare the times
+2012-01-05T21:21:00.000Z	mistawac	llutz_	thought you meant something more complicated...looks like it was received on time, maybe it was the delay between gmail and my work email host
+2012-01-05T21:22:00.000Z	llutz_	mistawac	which you could check if you read the mail. every hop should have its own "received:" block
+2012-01-05T21:23:00.000Z	llutz_	mistawac	but sorry if this is too easy for you
+2012-01-05T21:23:00.000Z	mistawac	llutz_	I'm a bit inexperienced with email, gimme a break here.  I'm trying not to be obnoxious and I want this done as much as you don't want to hear stupid questions.

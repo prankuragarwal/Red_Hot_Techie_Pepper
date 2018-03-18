@@ -1,0 +1,22 @@
+2010-11-17T06:41:00.000Z	wasutton3-Kira	maco	i get an error with --field-separator
+2010-11-17T06:36:00.000Z	maco	wasutton3-Kira	pipe it to this...        | awk --field-separator="" '{ print $1 }'
+2010-11-17T06:41:00.000Z	maco	wasutton3-Kira	what error?
+2010-11-17T06:42:00.000Z	wasutton3-Kira	maco	: awk: not an option: --field-seperator=
+2010-11-17T06:42:00.000Z	maco	wasutton3-Kira	separator has 1 e and 2 a's
+2010-11-17T06:42:00.000Z	wasutton3-Kira	maco	i copied that in and got the same error
+2010-11-17T06:43:00.000Z	maco	wasutton3-Kira	this time with separator spelled right it still errored?
+2010-11-17T06:44:00.000Z	wasutton3-Kira	maco	yes
+2010-11-17T06:44:00.000Z	maco	wasutton3-Kira	if you "man awk" it says it's gawk, right?
+2010-11-17T06:44:00.000Z	wasutton3-Kira	maco	no it says mawk
+2010-11-17T06:44:00.000Z	maco	wasutton3-Kira	ahhh
+2010-11-17T06:45:00.000Z	maco	wasutton3-Kira	try -F ""     instead of --field-separator=""
+2010-11-17T06:46:00.000Z	wasutton3-Kira	maco	"tail --lines=1 test | awk -F="" '{ print $1 }'" this command spits out the entire last line, instead of the first letter of the last line, which is what i want
+2010-11-17T06:46:00.000Z	maco	wasutton3-Kira	ok lemme play
+2010-11-17T06:47:00.000Z	wasutton3-Kira	maco	ok thank you
+2010-11-17T06:48:00.000Z	maco	wasutton3-Kira	i wonder if this is a bug. the mawk manpage says if its an empty string itll spit on individual characters
+2010-11-17T06:48:00.000Z	wasutton3-Kira	maco	Hmmm
+2010-11-17T06:49:00.000Z	maco	wasutton3-Kira	try installing gawk and using the gawk command instead of the awk command?  (right now awk is just pointing to /etc/alternatives/awk which points to mawk)
+2010-11-17T06:50:00.000Z	wasutton3-Kira	maco	nope same result with "tail --lines=1 test | gawk -F="" '{ print $1 }'"
+2010-11-17T06:50:00.000Z	maco	wasutton3-Kira	wait remove that =
+2010-11-17T06:51:00.000Z	maco	wasutton3-Kira	its trying to use = as the field separator because you put -F=
+2010-11-17T06:51:00.000Z	wasutton3-Kira	maco	: yep that did it

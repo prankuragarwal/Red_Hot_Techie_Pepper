@@ -1,0 +1,23 @@
+2007-05-16T08:03:00.000Z	rickympl		wy can't i get an identd response? oidentd is installed anr running, port 113 is forwarded and open in firestarter, what  is missing?
+2007-05-16T08:05:00.000Z	idefixx	rickympl	try 'telnet localhost 113' see what happens.
+2007-05-16T08:08:00.000Z	rickympl	idefixx	 it connected
+2007-05-16T08:09:00.000Z	idefixx	rickympl	in that case it must have something to do with your router setup, do you have access to an outside linux box. to try the same thing - just to be sure?
+2007-05-16T08:09:00.000Z	rickympl	idefixx	:- nope, only windows
+2007-05-16T08:10:00.000Z	idefixx	rickympl	well you can try it from a windows machine too.. in any case im pretty sure it has to do with your router setup. you have to restart some router to enable forwarding changes - just a guess.
+2007-05-16T08:11:00.000Z	rickympl	idefixx	:- what i dont get is that it was working fine a couple of days ago
+2007-05-16T08:12:00.000Z	rickympl	idefixx	:- ill check my router, restart a couple of times and c from there, thx
+2007-05-16T08:13:00.000Z	idefixx	rickympl	well there are a few things to know. mostly identd is started over inetd which honors the /etc/hosts.allow and hosts.deny file - if you made any changes there that might be it.
+2007-05-16T08:13:00.000Z	idefixx	rickympl	also you might have gotten a different ip by your dhcp (usually build in your router) so the forwarding donst work anymore. (ifconfig - to check)
+2007-05-16T08:23:00.000Z	rickympl	idefixx	:- i think the problem started since i followed an howto to get virtualbox to get an ip from my router, it told me to setup a br0 and a tap0
+2007-05-16T08:24:00.000Z	idefixx	rickympl	do you still use those network devices?
+2007-05-16T08:25:00.000Z	idefixx	rickympl	so you linuxbox has more than one ip assigned to it?
+2007-05-16T08:27:00.000Z	rickympl	idefixx	:- i dont think so. lets c. br0=192.168.2.100 tap0=192.168.2.5 eth0 has noip, but my router gives my pc .100 and the virtual machine .102
+2007-05-16T08:28:00.000Z	idefixx	rickympl	are you using a windows vb host?
+2007-05-16T08:30:00.000Z	rickympl	idefixx	:- im using a windows server 2003 with virtualbox
+2007-05-16T08:34:00.000Z	rickympl	idefixx	:- yes windows vb
+2007-05-16T08:34:00.000Z	idefixx	rickympl	well if all the other network stuff on ubuntu works im not really sure what else it could be.. i never really used anything windows host based.
+2007-05-16T08:35:00.000Z	rickympl	idefixx	:- could it have to with the ip on br0 and tap0 being dif?
+2007-05-16T08:35:00.000Z	idefixx	rickympl	are you sure its not the windows host system that blocks the incoming connections in the first place?
+2007-05-16T08:36:00.000Z	rickympl	idefixx	:- but im using xchat on ubuntu not windows
+2007-05-16T08:36:00.000Z	rickympl	idefixx	:- sorry
+2007-05-16T08:41:00.000Z	idefixx	rickympl	well im a bit confused here you said your virtual system is supposed to get the ip .102 but you say it has got .100 - what is the ip your windows system has?

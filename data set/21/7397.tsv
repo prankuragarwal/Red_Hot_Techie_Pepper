@@ -1,0 +1,21 @@
+2006-10-07T08:44:00.000Z	Astrophix		While booting the live cd I get messages I/O buffer error on device dm-0. Any idea what this means? Looks like a HD problem (pc reboots while booting windows), but I can't find confirmation...
+2006-10-07T08:45:00.000Z	RobMau	Astrophix	can you read your HD from the livecd?
+2006-10-07T08:45:00.000Z	Astrophix	RobMau	and read, yes
+2006-10-07T08:46:00.000Z	RobMau	Astrophix	check if you get errors in /var/log/messages
+2006-10-07T08:47:00.000Z	Astrophix	RobMau	Just a basic question (I'm pretty new to linux/Ubuntu), device md-0 is always the HD?
+2006-10-07T08:47:00.000Z	RobMau	Astrophix	while reading files from your hd, that is. dm-0 could give errors if you didn't use/install it, it's searching for LVM volumes
+2006-10-07T08:47:00.000Z	Astrophix	RobMau	because HDs were hda, hdb, etc...
+2006-10-07T08:48:00.000Z	RobMau	Astrophix	md0 is a "software raid" like device. dm-0 can be a "Logical Volume manager" device, think windows' Dynamic Disks
+2006-10-07T08:49:00.000Z	RobMau	Astrophix	try to install smartmontools, then use smartctl -a -s on /dev/hda
+2006-10-07T08:49:00.000Z	Astrophix	RobMau	ok, that's some more info I could use. Thanks. Now checking /var/log/messages (on another pc)... bbl...
+2006-10-07T08:59:00.000Z	Astrophix	RobMau	Just checked /var/log/messages and it's a 170 kb file. Don't know where to start looking for usefull info...
+2006-10-07T09:00:00.000Z	RobMau	Astrophix	you should open a terminal in the running Ubuntu, do a "sudo tail -f /var/log/messages" and then try to read files from the disk. In the terminal you could see disk errors, if they're there
+2006-10-07T09:07:00.000Z	Astrophix	RobMau	tail doesn't stop spitting errors... even without starting to read from disk...
+2006-10-07T09:08:00.000Z	RobMau	Astrophix	which kind of errors? Don't paste them here, use the pastebin in the topic, or open a private session with me
+2006-10-07T09:09:00.000Z	RobMau	Astrophix	you should NOT paste logs here, use the pastebin
+2006-10-07T09:10:00.000Z	RobMau	Astrophix	that said, your disk or your motherboard/controller is hosed ^^'
+2006-10-07T09:12:00.000Z	Astrophix	RobMau	Doesn't sound good, motherboard/controler hosed...
+2006-10-07T09:13:00.000Z	RobMau	Astrophix	it is not. I had a similar problem here, and I had to replace the disk
+2006-10-07T09:13:00.000Z	RobMau	Astrophix	try to use the CD to recover as much files you can
+2006-10-07T09:15:00.000Z	RobMau	Astrophix	USB drives/pendrives also could be of some use :-)
+2006-10-07T09:15:00.000Z	Astrophix	RobMau	thanks for all the help, and the hint on the pastebin :-S

@@ -1,0 +1,18 @@
+2007-04-24T13:06:00.000Z	cjsoftuk		Any ideas anyone about configuring Net-SNMP to report network connections?
+2007-04-24T13:06:00.000Z	jeroensum	cjsoftuk	do you mean a Cacti like setup?
+2007-04-24T13:08:00.000Z	cjsoftuk	jeroensum	I'm not sure what you mean. I want to be able to get the traffic values (as in ifconfig) through SNMP, i've done it before, just I dunno HOW!
+2007-04-24T13:09:00.000Z	jeroensum	cjsoftuk	cacti is an snmp-traffic management tool
+2007-04-24T13:11:00.000Z	cjsoftuk	jeroensum	Right, well what i'm trying to do is use Cricket (cricket.sf.net) to display network traffic.  For that I need SNMP, which is supported through the router-interfaces config.  I can do the cricket bit, it's just gettting SNMP to show data to start with!
+2007-04-24T13:11:00.000Z	jeroensum	cjsoftuk	::  give gkrellm a try  (gkrellm-snmp if im correct)
+2007-04-24T13:12:00.000Z	cjsoftuk	jeroensum	right idea, but I'm trying to log it all to RRDTool through Cricket
+2007-04-24T13:14:00.000Z	jeroensum	cjsoftuk	the rrdtool needs to be local and configured, maybe you need some MIB strings if they are nog provided yet. The RRDtool does the local collection through a cronjob (if memeory serves me right) and cricket is a sort of daemon with a web interface where you can view graphs
+2007-04-24T13:15:00.000Z	cjsoftuk	jeroensum	everything is fine EXCEPT SNMP.  It works fine on another box, except when I copy the config, it doesn't work!
+2007-04-24T13:16:00.000Z	jeroensum	cjsoftuk	there isn't anything in the way like a iptables?
+2007-04-24T13:16:00.000Z	jeroensum	cjsoftuk	also check if the local loopback adapter is up en running
+2007-04-24T13:16:00.000Z	cjsoftuk	jeroensum	I can get SNMP responses, just without the netowrk info
+2007-04-24T13:17:00.000Z	jeroensum	cjsoftuk	then I've got no clues left, sorry. It could be that the config is looking at a wrong adapter? (ath0 in stead of eth0 o eth1) ?
+2007-04-24T13:18:00.000Z	cjsoftuk	jeroensum	it's not getting ANY adaptor
+2007-04-24T13:18:00.000Z	jeroensum	cjsoftuk	are you sure then that the config file is looking at the correct adapter?
+2007-04-24T13:19:00.000Z	cjsoftuk	jeroensum	It's not reporting ANY network data, none at all.  I get SNMP responses with snmpwalk, but no iFace stuff
+2007-04-24T13:20:00.000Z	jeroensum	cjsoftuk	check the config file of rrdtool and match that with the adapters listed in ifconfig
+2007-04-24T13:20:00.000Z	cjsoftuk	jeroensum	rrdtool extracts the data via SNMP, therefore SNMP needs to report the data!

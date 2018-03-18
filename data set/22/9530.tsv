@@ -1,0 +1,22 @@
+2004-11-24T17:35:00.000Z	amathis		ok, I hooked up my second HD, how can I configure GRUB to dual boot?
+2004-11-24T17:36:00.000Z	socomm	amathis	add an entry to your /boot/grub/menu.list
+2004-11-24T17:40:00.000Z	socomm	amathis	most likely hdb.
+2004-11-24T17:42:00.000Z	socomm	amathis	linux only, other OSes don't need that.
+2004-11-24T17:42:00.000Z	socomm	amathis	good luck.
+2004-11-24T17:43:00.000Z	socomm	amathis	grub you don't need that.
+2004-11-24T17:51:00.000Z	socomm	amathis	what's the exact error.
+2004-11-24T17:52:00.000Z	socomm	amathis	hdb is probably the wrong device.
+2004-11-24T17:53:00.000Z	socomm	amathis	cd /dev/ && ls hd*
+2004-11-24T17:53:00.000Z	socomm	amathis	should be /dev or /.dev
+2004-11-24T17:54:00.000Z	socomm	amathis	hd1, maybe?
+2004-11-24T17:55:00.000Z	socomm	amathis	yeah, but you'll need something like `root (hd1,0)'
+2004-11-24T17:56:00.000Z	socomm	amathis	wait.
+2004-11-24T17:57:00.000Z	socomm	amathis	http://www.faqs.org/docs/Linux-mini/Multiboot-with-GRUB.html
+2004-11-24T17:58:00.000Z	socomm	amathis	try `root (hd1, 0).
+2004-11-24T06:04:00.000Z	socomm	amathis	no, but there are ways you can pass arguments to it.
+2004-11-24T06:05:00.000Z	socomm	amathis	grub lets you entercommands before you boot, I think it's escape or something to get into it's command line.
+2004-11-24T06:05:00.000Z	socomm	amathis	what is the exact entry you have for your second hard disk
+2004-11-24T06:08:00.000Z	socomm	amathis	xp?
+2004-11-24T06:09:00.000Z	socomm	amathis	http://www.faqs.org/docs/Linux-mini/Multiboot-with-GRUB.html
+2004-11-24T06:09:00.000Z	socomm	amathis	I think you need to add `rootnoverify (hd1,0) before `chainloader +1'
+2004-11-24T06:10:00.000Z	socomm	amathis	and move makeactive to be the last part of your win xp entry.

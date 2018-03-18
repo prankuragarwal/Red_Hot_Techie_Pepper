@@ -1,0 +1,22 @@
+2012-11-29T03:20:00.000Z	Calif		Right, but the webserver or whatnot has to send it's traffic out a given port, so how does it handle literally millions of requests per second, and still keep up if all the ports it's going to use (65k) are in use
+2012-11-29T03:21:00.000Z	crimsonmane	Calif	the server takes a turn on everyone. if there's that many users concurrently connected, then it works by adding servers (redundancy)
+2012-11-29T03:27:00.000Z	crimsonmane	Calif	even a server can really only do one thing at a time. they just do it quickly. even when a million people are browsing a website, it's not constantly sending/receiving from them.
+2012-11-29T03:32:00.000Z	crimsonmane	Calif	have you ever gone to google.com and it didnt appear instantly? that's because it wasnt your turn. it has to handle the other million people. plus they add servers to handle the load when so many are accessing it.
+2012-11-29T03:32:00.000Z	Calif	crimsonmane	makes sense
+2012-11-29T03:33:00.000Z	crimsonmane	Calif	generally speaking, there's not a lot the server sends you in order for a pretty page to appear
+2012-11-29T03:35:00.000Z	Calif	crimsonmane	right, I just figured in the case of someone like google, that there had to be situations where the ports would get used up, but I guess where its not all the same network and there's more than a single server, this would remedy that, as well as simply queueing the people up
+2012-11-29T03:36:00.000Z	crimsonmane	Calif	pretty much yes. but it only uses one port, port 80. every port has a common useage and generally everyone respects the purpose of those ports
+2012-11-29T03:36:00.000Z	Calif	crimsonmane	for the destination (from the client perspective) but when the server replies, it's not using that port anymore, it uses the original port the request was sent From the client on?
+2012-11-29T03:38:00.000Z	crimsonmane	Calif	the server has to be configured to use that port in the first place. that's how you prevent attacks.
+2012-11-29T03:42:00.000Z	crimsonmane	Calif	the server has to be told to use the other port by the system administrator
+2012-11-29T03:45:00.000Z	crimsonmane	Calif	yes you have that part right
+2012-11-29T03:46:00.000Z	crimsonmane	Calif	in a local network you tell both machines what port to use. sorry had to tend to my daughter or would have answered sooner.
+2012-11-29T03:46:00.000Z	Calif	crimsonmane	thats totally ok, i really appreciate your help
+2012-11-29T03:48:00.000Z	crimsonmane	Calif	one example is when i run a Ventrilo server. First i decide what port it's going to use and i set that within the program. Then i set the router to forward that same port to the computer that is hosting Ventrilo. Then i tell people my IP address and which port to connect to. They connect and the router knows which computer to send the traffic to. That computer knows which program to send the traffic to.
+2012-11-29T03:51:00.000Z	crimsonmane	Calif	not likely. different programs use different default ports, and there's SO MANY to pick from.
+2012-11-29T03:52:00.000Z	Calif	crimsonmane	what if Firefox randomly choose your source port, and it happened to be the same?
+2012-11-29T03:52:00.000Z	crimsonmane	Calif	firefox is using port 80. it doesn't pick them at random
+2012-11-29T03:52:00.000Z	crimsonmane	Calif	there's no difference. port 80 is incoming and outgoing internet
+2012-11-29T03:53:00.000Z	crimsonmane	Calif	you'd have to manually tell a program to use a port other than its default. there's no accidents in that respect.
+2012-11-29T03:54:00.000Z	Calif	crimsonmane	I thought that the common ports are only used as destination ports, and that for the source behind a router it will use a port above 1024?
+2012-11-29T03:56:00.000Z	crimsonmane	Calif	i dont know how much experience you or llutz has with networking, but if you want to let someone in from the outside, you specify the port and in the router configure the destination of said port. and it doesn't matter the port number as long as it's "within range"

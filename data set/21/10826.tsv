@@ -1,0 +1,21 @@
+2005-06-10T10:18:00.000Z	tiglionabbit		hey guys, could someone help out a friend of mine with grub?  He's got windows XP on a small master hard disk, and ubuntu at the end of a very large one.  His bios is pretty old.  Grub gives 'stage 1.5 error 17' when he tries to boot it.  What should we do?
+2005-06-10T10:20:00.000Z	tiglionabbit		anybody?
+2005-06-10T10:20:00.000Z	TMM	tiglionabbit	sorry, I don't know... standard answer is : make sure you have a /boot partition of 10-15 megabytes at the very beginning of the disk
+2005-06-10T10:21:00.000Z	TMM	tiglionabbit	but I thought the newer bootloaders (lilo and grub) don't need that anymore... if they do, try using a partion editor such as qparted to resize
+2005-06-10T10:21:00.000Z	TMM	tiglionabbit	if that is the matter, than that's probably exactly what the problem is :)
+2005-06-10T10:22:00.000Z	TMM	tiglionabbit	you probably installed an xfs or something root partition that grub can't read
+2005-06-10T10:23:00.000Z	TMM	tiglionabbit	probably best to reinstall with another root partition filesystem...
+2005-06-10T10:23:00.000Z	TMM	tiglionabbit	then you probably just picked the wrong filesystem to boot from in grub
+2005-06-10T10:24:00.000Z	TMM	tiglionabbit	the hd(number,number) thing
+2005-06-10T10:25:00.000Z	TMM	tiglionabbit	hmmm... then I really wouldn't know... I never encountered that before, perhaps it IS the bios... then you'll need to test my 'theory one' (ie, take a partition editor. make some room at the very start of the disk, and reinstall ubuntu, telling it to use the first small partition as /boot)
+2005-06-10T10:26:00.000Z	TMM	tiglionabbit	you think you can handle that?
+2005-06-10T10:28:00.000Z	TMM	tiglionabbit	that's where the partition editor comes in :) there are tools to resize an existing partion to make room for a new partition... so you can make a small, extra partition at the start
+2005-06-10T10:28:00.000Z	TMM	tiglionabbit	no, it can not perform partition resizing
+2005-06-10T10:28:00.000Z	TMM	tiglionabbit	not on ntfs I think
+2005-06-10T10:29:00.000Z	TMM	tiglionabbit	well then, you answered your own question then, didn't you?
+2005-06-10T10:30:00.000Z	TMM	tiglionabbit	well, partition magic CAN do that
+2005-06-10T10:30:00.000Z	TMM	tiglionabbit	it just takes forever
+2005-06-10T10:30:00.000Z	TMM	tiglionabbit	ESPECIALLY if you don't have much free room on the partition
+2005-06-10T10:30:00.000Z	TMM	tiglionabbit	but, that might not be neccesarry
+2005-06-10T10:31:00.000Z	TMM	tiglionabbit	it might just be enough to put it at the end of the first disk, if that thing is suitably small
+2005-06-10T10:31:00.000Z	TMM	tiglionabbit	you can try that, it's worth it to give it a go

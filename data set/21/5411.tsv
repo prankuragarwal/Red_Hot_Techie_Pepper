@@ -1,0 +1,21 @@
+2008-03-10T16:06:00.000Z	ArthurArchnix		What's the command to see a list of available groups?
+2008-03-10T16:07:00.000Z	pajamian	ArthurArchnix	you mean you want to see all the user groups on your system?
+2008-03-10T16:07:00.000Z	ArthurArchnix	pajamian	Yeah... all possible groups
+2008-03-10T16:08:00.000Z	pajamian	ArthurArchnix	cat /etc/group
+2008-03-10T16:08:00.000Z	ArthurArchnix	pajamian	Perfect. Thanks
+2008-03-11T16:47:00.000Z	pajamian	ArthurArchnix	did you chown the script 4755?
+2008-03-11T16:48:00.000Z	pajamian	ArthurArchnix	chown it to 4755 and try
+2008-03-11T16:50:00.000Z	pajamian	ArthurArchnix	suid can have security risks if you don't know what you're doing with it.  But sometimes you just need to use it to solve problems like these.
+2008-03-11T16:51:00.000Z	pajamian	ArthurArchnix	but as others have pointed out it won't work anyways.
+2008-03-11T17:07:00.000Z	pajamian	ArthurArchnix	have you tried creating a script with the exact command you want and running it under sudo?  then if it works you can add sudo permissions just for that script to the sudoers file?
+2008-03-11T17:09:00.000Z	ArthurArchnix	pajamian	the first thing I tried. If the command contains sudo you can call it from the terminal and not get asked for sudo password. If you call it from gnome, however, you get prompted for password. I think the script has to hook into xinit in some way to check permissions in order to work with sudo and sudoers... I'm afraid that is beyond me. So I thought I'd try this command alias route.
+2008-03-11T17:10:00.000Z	pajamian	ArthurArchnix	what if you do something like: sh -c 'sudo myscript' from gnome?
+2008-03-11T17:12:00.000Z	ArthurArchnix	pajamian	what does sh -c do?
+2008-03-11T17:12:00.000Z	pajamian	ArthurArchnix	launches a shell (bash) and runs the corresponding command in it.
+2008-03-11T17:13:00.000Z	ArthurArchnix	pajamian	I did something similar, i did xterm -e *.sh   then xterm would pop up and prompt for a password
+2008-03-11T17:14:00.000Z	pajamian	ArthurArchnix	xterm is different from sh.
+2008-03-11T17:14:00.000Z	ArthurArchnix	pajamian	and from what I read in order to get around that you have to run the command through the xinit or something which contains the current priveleges for the user... I'm sorry, it was all beyond me. Ok, well, I'm going to give it a try. :)
+2008-03-11T17:24:00.000Z	pajamian	ArthurArchnix	any luck?
+2008-03-11T17:27:00.000Z	pajamian	ArthurArchnix	don't know, but it does look like you're making progress.
+2008-03-11T17:28:00.000Z	ArthurArchnix	pajamian	Yes, you and v3ctor have both been great. Thanks much. I'm gonna change modprobe -r in my /etc/sudoers to rmmod and I think I'll have this problem licked.
+2008-03-11T17:28:00.000Z	pajamian	ArthurArchnix	cool

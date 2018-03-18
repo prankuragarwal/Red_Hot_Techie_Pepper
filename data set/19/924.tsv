@@ -1,0 +1,19 @@
+2011-12-14T03:36:00.000Z	Antonis		I create files and remove them etc. :P
+2011-12-14T03:37:00.000Z	somsip	Antonis	 for wordpress you need to have the root wordpress folder owned by the user that runs the apache server, usualy www-data
+2011-12-14T03:37:00.000Z	somsip	Antonis	so chmod -R www-data:ubuntu wordpress
+2011-12-14T03:37:00.000Z	Antonis	somsip	only for installation or throughout the use of it?
+2011-12-14T03:38:00.000Z	somsip	Antonis	for use - it's a bit weird like that
+2011-12-14T03:38:00.000Z	somsip		An you make it safe by changing all dirs to 770 and all files to 660
+2011-12-14T03:38:00.000Z	Antonis		hod do I add the user antonis to the group www-data as well ?
+2011-12-14T03:38:00.000Z	somsip	Antonis	usermod -a -G www-data antonis
+2011-12-14T03:39:00.000Z	somsip	Antonis	change all subdirs: find . -type d -print0 | xargs -0 sudo chmod 770
+2011-12-14T03:39:00.000Z	Antonis	somsip	and do I have to mode each file/folder I create??
+2011-12-14T03:39:00.000Z	somsip	Antonis	change all sub files: find . -type f -print0 | xargs -0 sudo chmod 660
+2011-12-14T03:39:00.000Z	somsip	Antonis	if you do those, everything shouls work fine including uploads, upgrades, new templates/plugins, etc
+2011-12-14T03:40:00.000Z	Antonis	somsip	that for whole www folder or only for wordpress?
+2011-12-14T03:41:00.000Z	somsip	Antonis	just for wordpress. You can leave /var/www as root:www-data and 770 which is safe enough
+2011-12-14T03:42:00.000Z	Antonis	somsip	now it says forbidden when I try to access it :P
+2011-12-14T03:43:00.000Z	somsip	Antonis	access through web browser? Tell me what perms you have on there now
+2011-12-14T03:44:00.000Z	Antonis	somsip	~/www is 770 , and files and folders according to the two commands you gave me. I also added my user (antonis) to www-data as you told me
+2011-12-14T03:45:00.000Z	somsip	Antonis	I didn't tell you to add your user to www-data - you asked how to do that. But it should make no difference. This is off topic so can we go to private msg?
+2011-12-14T03:45:00.000Z	Antonis	somsip	of course

@@ -1,0 +1,23 @@
+2005-08-04T15:59:00.000Z	Octane		anyone here know have experience make deb packages? i know what i need to do just need a little bit of help
+2005-08-04T15:59:00.000Z	Amaranth	Octane	#ubuntu-motu is the place for packaging
+2005-08-05T16:00:00.000Z	Octane	Amaranth	thank you
+2005-08-05T16:00:00.000Z	Amaranth	Octane	if someone is there they can help you with the package so you can try to get it into universe
+2005-08-05T16:02:00.000Z	Amaranth	Octane	list them in the control file
+2005-08-05T16:02:00.000Z	Octane	Amaranth	but how will dpkg-buildpackage know to divide them b/w -dev and a regular file
+2005-08-05T16:02:00.000Z	Amaranth	Octane	then make <pkgname>.install files in the debian/ dir that have a list of files that should go into that package
+2005-08-05T16:03:00.000Z	Octane	Amaranth	 is really necessary to have a chroot for this like some guides recommend
+2005-08-05T16:03:00.000Z	Amaranth	Octane	Yeah, a badly made package can crap all over your filesystem and not clean up after itself.
+2005-08-05T16:04:00.000Z	Octane	Amaranth	i see so we use the chroot to have a clean environemtn
+2005-08-05T16:04:00.000Z	Amaranth	Octane	exactly
+2005-08-05T16:04:00.000Z	Amaranth	Octane	have you ever used glob?
+2005-08-05T16:04:00.000Z	Octane	Amaranth	never heard of it
+2005-08-05T16:05:00.000Z	Amaranth	Octane	ok, well for example in your foo.install file you can have '*.py' on one line and it'll grab all the files with a .py extension
+2005-08-05T16:05:00.000Z	Amaranth	Octane	look for a source package that has .install files for an example
+2005-08-05T16:06:00.000Z	Amaranth	Octane	mostly any package will have them, try apt-get source bittorrent
+2005-08-05T16:06:00.000Z	Octane	Amaranth	what about when you have a package named, foolib but ubuntu needs it to be libfoo
+2005-08-05T16:06:00.000Z	Amaranth	Octane	name it libfoo
+2005-08-05T16:06:00.000Z	Octane	Amaranth	thats it no other changes other than those in control?
+2005-08-05T16:06:00.000Z	Amaranth	Octane	i've never successfully made a package like this :D
+2005-08-05T16:07:00.000Z	Amaranth	Octane	that's why i sent you to #ubuntu-motu
+2005-08-05T16:07:00.000Z	Octane	Amaranth	 i love the motu name :)
+2005-09-28T10:39:00.000Z	Amaranth	Octane	except that main is frozen

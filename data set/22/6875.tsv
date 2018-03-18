@@ -1,0 +1,22 @@
+2006-07-07T16:43:00.000Z	babis85		does anyone know how could have the printer printing dublex pages?
+2006-07-07T11:37:00.000Z	babis85		hello guys, i have a serious problem, could you help me?
+2006-07-07T11:37:00.000Z	babis85		ok, i enabled the root passwd
+2006-07-07T11:38:00.000Z	babis85		after this i disabled it and now i can't run any command as user with sudo
+2006-07-07T11:38:00.000Z	LjL	babis85	congratulations for doing the number 1 thing that's always been adviced against in Ubuntu ;-)
+2006-07-07T11:38:00.000Z	LjL	babis85	are you in the "admin" group?
+2006-07-07T11:40:00.000Z	LjL	babis85	"cat /etc/group | grep yourusername" (sorry, rough way... i don't remember the "politically correct" command :)
+2006-07-07T11:44:00.000Z	LjL	babis85	then your /etc/sudoers is probably messed up. have you edited it?
+2006-07-07T11:44:00.000Z	LjL	babis85	have you run "visudo" by any chance?
+2006-07-07T11:45:00.000Z	babis85	LjL	no i haven't
+2006-07-07T11:45:00.000Z	LjL	babis85	ok, you need to edit /etc/sudoers and fix it. however, you need to be root to do that... so i guess you'll either have to boot your system to rescue mode (you can do that from the boot menu), or use a live cd
+2006-07-07T11:46:00.000Z	LjL	babis85	a correct /etc/sudoers file looks like      root ALL=(ALL) ALL    and then on the following line   %admin ALL=(ALL) ALL
+2006-07-07T11:47:00.000Z	LjL	babis85	by default ubuntu also has a line at the beginning that says     Default    !lecture,tty-tickets,!fqdn
+2006-07-07T11:47:00.000Z	LjL	babis85	but yeah that should be all (i'm not even sure that last line i mentioned is really needed)
+2006-07-07T11:48:00.000Z	LjL	babis85	hold on a second
+2006-07-07T11:48:00.000Z	LjL	babis85	i can never remember whether you *can* boot to rescue mode, without a working admin password
+2006-07-07T11:48:00.000Z	LjL	babis85	(otherwise, the only option is the live cd)
+2006-07-07T11:49:00.000Z	LjL	babis85	ok, see what gnomefreak said
+2006-07-07T11:49:00.000Z	LjL	babis85	what's working?
+2006-07-07T11:51:00.000Z	babis85	LjL	what i am supposed to do? can i boot?
+2006-07-07T11:51:00.000Z	LjL	babis85	yes, you can boot and then you can edit /etc/sudoers by typing "visudo" (or failing that, "nano /etc/sudoers")
+2006-07-07T11:52:00.000Z	babis85	LjL	ok, i will be back in a while, thanks

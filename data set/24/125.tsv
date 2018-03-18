@@ -1,0 +1,24 @@
+2012-06-04T14:09:00.000Z	tarsis		What could I do when I can't resolve some addresses (e.g. on blogspot) and some pages lack the css and images?
+2012-06-04T14:10:00.000Z	ecolitan	tarsis	what do you mean "can't resolve some addresses"
+2012-06-04T14:13:00.000Z	ecolitan	tarsis	and some things are resolvable and others are not?
+2012-06-04T14:14:00.000Z	tarsis	ecolitan	exactly
+2012-06-04T14:14:00.000Z	ecolitan	tarsis	what are your dns servers set to?
+2012-06-04T14:16:00.000Z	tarsis	ecolitan	I pasted them from another (win) computer where all's fine
+2012-06-04T14:19:00.000Z	ecolitan	tarsis	do you have dnsutils installed ?
+2012-06-04T14:19:00.000Z	tarsis	ecolitan	no I don't
+2012-06-04T14:20:00.000Z	ecolitan	tarsis	install the package, then you can do some tests
+2012-06-04T14:22:00.000Z	tarsis	ecolitan	sorry, if this means nslookup and dig, I have already tried them
+2012-06-04T14:23:00.000Z	ecolitan	tarsis	dig @212.111.0.10 your.unresolvable.domain a
+2012-06-04T14:23:00.000Z	ecolitan	tarsis	dig @8.8.8.8 your.unresolvable.domain a
+2012-06-04T14:26:00.000Z	tarsis	ecolitan	from 8.8.8.8 I have  QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+2012-06-04T14:27:00.000Z	ecolitan	tarsis	what specific domain did you try?
+2012-06-04T14:29:00.000Z	ecolitan	tarsis	dig +short @8.8.8.8 googleblog.blogspot.com a
+2012-06-04T14:33:00.000Z	tarsis	ecolitan	QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+2012-06-04T14:34:00.000Z	ecolitan	tarsis	if you're unable to get a respose from 8.8.8.8, its probably a firewall somewhere
+2012-06-04T14:36:00.000Z	tarsis	ecolitan	where could I find some firewall settings?
+2012-06-04T14:38:00.000Z	ecolitan	tarsis	before going that way, pastebin the output of: dig @8.8.8.8 googleblog.blogspot.com a; dig googleblog.blogspot.com a; cat /etc/resolv.conf
+2012-06-04T14:39:00.000Z	tarsis	ecolitan	http://paste.ubuntu.com/1022866/
+2012-06-04T14:42:00.000Z	ecolitan	tarsis	so, you can resolve the domain using 8.8.8.8 as nameserver, your local resolution was unable to resolve it. Someone here know how best to add a DNS nameserver in Ubuntu?
+2012-06-04T14:47:00.000Z	tarsis	ecolitan	I tried to add a line in the /etc/resolv.conf (just in a text editor) file but it didn't seem to help
+2012-06-04T14:48:00.000Z	ecolitan	tarsis	do not edit /etc/resolv.conf by hand
+2012-06-04T14:49:00.000Z	tarsis	ecolitan	should  I try it another way?

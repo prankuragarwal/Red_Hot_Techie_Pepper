@@ -1,0 +1,22 @@
+2008-01-14T02:12:00.000Z	kevipapo		im running Ubuntu 7.10 on my PowerBook G4
+2008-01-14T02:13:00.000Z	kevipapo		I'm not able to access my Mac OS X partition in Ubuntu
+2008-01-14T02:13:00.000Z	kevipapo		any ideas?
+2008-01-14T02:13:00.000Z	kevipapo		anybody?
+2008-01-14T02:15:00.000Z	erUSUL	kevipapo	any error msg or some clue as why you can not?
+2008-01-14T02:16:00.000Z	kevipapo	erUSUL	hal-storage-fixed-mount-all-options refused uid 1000
+2008-01-14T02:18:00.000Z	kevipapo	erUSUL	did you get my message?
+2008-01-14T02:18:00.000Z	erUSUL	kevipapo	yes; are you a plugdev member (check with id)
+2008-01-14T02:19:00.000Z	kevipapo	erUSUL	I don't think so
+2008-01-14T02:19:00.000Z	erUSUL	kevipapo	run id on terminal and see if appears on the list of groups
+2008-01-14T02:21:00.000Z	kevipapo	erUSUL	46(plugdev)
+2008-01-14T02:21:00.000Z	erUSUL	kevipapo	:S then it is somethin else... check on System>Admin>User and groups the properties of your user
+2008-01-14T02:23:00.000Z	kevipapo	erUSUL	is it because it's an HFS+ partition?
+2008-01-14T02:24:00.000Z	erUSUL	kevipapo	no; for some reason the automatic method is rejecting your uid=1000 is your user
+2008-01-14T02:24:00.000Z	erUSUL	kevipapo	i bet you can mount the partiton manually from command line
+2008-01-14T02:25:00.000Z	erUSUL	kevipapo	sudo mount -t hpfs /dev/hda3 /mount/point
+2008-01-14T02:26:00.000Z	kevipapo	erUSUL	sudo mount -t hpfs /dev/hda3 /mount/point
+2008-01-14T02:27:00.000Z	erUSUL	kevipapo	you have to use an actual dirctory as mount point that's where your files will appear
+2008-01-14T02:28:00.000Z	erUSUL	kevipapo	for example /media/hpfs or /mnt/hfs (you have to create them first; mkdir /media/hfs )
+2008-01-14T02:38:00.000Z	kevipapo	erUSUL	how do I make Linux run a command at startup?
+2008-01-14T02:41:00.000Z	erUSUL	kevipapo	if you want to mount the hfs partition at start up /etc/fstab is the place to do it
+2008-01-14T02:41:00.000Z	erUSUL	kevipapo	man fstab

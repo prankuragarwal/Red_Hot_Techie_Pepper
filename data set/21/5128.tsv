@@ -1,0 +1,21 @@
+2007-12-18T01:16:00.000Z	javatexan		Howdy All!!!
+2007-12-18T01:17:00.000Z	javatexan		any nfs gurus in the house today?
+2007-12-18T01:19:00.000Z	ifireball	javatexan	I'm no guru, but got to play with nfs a lot...
+2007-12-18T01:20:00.000Z	javatexan		I have set up ubuntu desktop. I can get CUPS printing to work find for my other computer...a mac. I am trying to setup nfs for it too, I used google to find a process on the community docs. It looks like everything is set up on ubuntu....On the mac...I can port scan and see the nfs daemon running, but I cant connect to it....any ideas on where to go next?....Where to search next?
+2007-12-18T01:21:00.000Z	javatexan		could it be the firewall....i don't see any rules in it.....then how does the port scanner find the nfsd if the firewall is blocking?  :(
+2007-12-18T01:21:00.000Z	ifireball	javatexan	are you exporting any filesystems on Ubuntu? does showmount -e show you what it should?
+2007-12-18T01:21:00.000Z	javatexan		ill try....hold on
+2007-12-18T01:22:00.000Z	ifireball	javatexan	nfs uses quite a few ports, except nfsd you also got mountd, lockd and portmap to name a few
+2007-12-18T01:23:00.000Z	javatexan		looks good its exporting the two directories and it looks like it is opening it up to my 2 lans  xxx.xxx.7.0/255.255.255.0 and xxx.xxx.8.0/255.255.255.0
+2007-12-18T01:24:00.000Z	javatexan	ifireball	There are several other ports open....my port scanner doesnt give them names though
+2007-12-18T01:25:00.000Z	ifireball	javatexan	is showmount available on the mac? what does shouwmount -e <ubuntu> give you there?
+2007-12-18T01:25:00.000Z	javatexan		ill. try....hold
+2007-12-18T01:27:00.000Z	javatexan	ifireball	 It shows them.....LOL...now Im even more confused......;)
+2007-12-18T01:27:00.000Z	javatexan		on the mac os x, that is
+2007-12-18T01:28:00.000Z	javatexan		does that mean there is a problem with mounting from the mac side of things?
+2007-12-18T01:28:00.000Z	ifireball	javatexan	well, it means we got basic portmap connectivity working and err... I think it was mountd?
+2007-12-18T01:28:00.000Z	ifireball	javatexan	what kind of error does the mac give you anyway?
+2007-12-18T01:28:00.000Z	javatexan		i didnt play with portmap at all...I think allow and deny are both empty
+2007-12-18T01:29:00.000Z	javatexan		hold on...ill try again...don't remember the wording
+2007-12-18T01:29:00.000Z	ifireball	javatexan	you don't need to play with it...
+2007-12-18T01:30:00.000Z	ifireball	javatexan	anyway, as far as I can remember you need portmap and lockd running on the client-side e.g. the mac

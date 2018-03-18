@@ -1,0 +1,18 @@
+2012-09-22T01:56:00.000Z	SumoJim		When I put a USB into the computer, it is auto-mounted to /media/disk. What is the name of the service that does this?
+2012-09-22T01:57:00.000Z	escott	SumoJim	udev and udisks
+2012-09-22T01:58:00.000Z	SumoJim	escott	Ok great! I think udisks might be my starting point. Thanks!
+2012-09-22T02:11:00.000Z	SumoJim	escott	I don't see udisks listed when I type service --status-all, and "service udisks start" outputs "udisks: unrecognized service".
+2012-09-22T02:12:00.000Z	escott	SumoJim	i'm not sure if it is a service, or just an application called by udev rules
+2012-09-22T02:12:00.000Z	escott	SumoJim	i suspect the later
+2012-09-22T02:13:00.000Z	escott	SumoJim	the only reason it would need a daemon would be if it were to listen to a dbus port
+2012-09-22T02:14:00.000Z	SumoJim	escott	Ok, I'm going to poke around a bit more. I'll look around /etc/udev/rules.d a bit.
+2012-09-22T02:15:00.000Z	SumoJim	escott	By the way, are there any cases where some rules not get fired off? My current problem is that there is no automount with the custom .desktop file someone stuck in /usr/share/xsessions.. and I'm suspecting it's the cause since it works when I change it back.
+2012-09-22T02:31:00.000Z	escott	SumoJim	you probably aren't running a dbus session for your user. i suspect the udev rule is firing, but that it doesn't know on whose behalf udisks is supposed to be doing the mounting
+2012-09-22T02:31:00.000Z	escott	SumoJim	same as if you were logged into the console
+2012-09-22T02:37:00.000Z	SumoJim	escott	I'm having to hit ctrl-alt-f2 to drop out to the consle to get access to a terminal to check if it even mounted... will that effect whether it knows it should be availabe for my user?
+2012-09-22T02:39:00.000Z	escott	SumoJim	your desktop runs the xfwm4 windows manager and thats about it. all the "nice" desktop stuff isn't there and wont work. you need to be running some kind of dbus session with a session manager to have that stuff. the udev/udisks doesn't even know that anyone is logged in with that Xsession
+2012-09-22T02:40:00.000Z	SumoJim	escott	I'm hoping to be able to add all that "nice" desktop stuff into the script. I'm just looking for what to add.
+2012-09-22T02:41:00.000Z	escott	SumoJim	you would be better off customizing a gnome-session or ksession? (not sure what kde calls it), rather than writing an Xsession file
+2012-09-22T02:43:00.000Z	SumoJim	escott	Is my launch-hret file is? An Xsession file? (Sorry, kinda jumping in behind someone elses work who is on vacation, I'm still learning.)
+2012-09-22T02:45:00.000Z	SumoJim	escott	Ok... yea... I guess tht makes since with that "Type" field.
+2012-09-22T02:45:00.000Z	escott	SumoJim	Xsession is the old way of doing things. X starts these things and waits for the final one to finish and then closes the server. its not particularly user friendly. hard to make a gui that can edit files in /etc/X11 and having ~/.Xsession is complicated for the display-manager. so the hack-around was to make Xsession just start "gnome-session" and let gnome-session do all the session managing work, and then have gui's into gno

@@ -1,0 +1,22 @@
+2012-06-30T21:43:00.000Z	escott	DaDaDOSPrompt	512KiB blocks would be a little too big
+2012-06-30T21:43:00.000Z	DaDaDOSPrompt		why so?
+2012-06-30T21:43:00.000Z	escott	DaDaDOSPrompt	where by little I mean something like 100x too big
+2012-06-30T21:43:00.000Z	DaDaDOSPrompt		that is, from what I've read, a common erase block size
+2012-06-30T21:44:00.000Z	DaDaDOSPrompt		flash memory, if my own memory serves, tends to favor tremendous erase block sizes in that neighborhood of 1024 * 512 bytes
+2012-06-30T21:44:00.000Z	DaDaDOSPrompt		far bigger than the default that the installer gave me, which was 1 * 512 b
+2012-06-30T21:44:00.000Z	escott	DaDaDOSPrompt	but you don't want your logical blocks to be that big. that would mean an empty file will take 512Kb of disk
+2012-06-30T21:44:00.000Z	DaDaDOSPrompt		in theory, sure
+2012-06-30T21:45:00.000Z	DaDaDOSPrompt		in practice we're talking about flash memory paired to compression and write-amp firmware
+2012-06-30T21:45:00.000Z	DaDaDOSPrompt		not to mention, with judicious TRIMming and attention to keeping spare space at recommended levels
+2012-06-30T21:45:00.000Z	DaDaDOSPrompt		should run pretty decently despite
+2012-06-30T21:46:00.000Z	DaDaDOSPrompt		and I'm not even going to speculate about firmware-internal GC efforts
+2012-06-30T21:46:00.000Z	DaDaDOSPrompt		alas, I've tried quite a few things trying to get my SSDs to behave, but I seem to be missing the secret sauce
+2012-06-30T21:46:00.000Z	DaDaDOSPrompt		and that unit calibration business appears to be about the only thing left, practically
+2012-06-30T21:49:00.000Z	escott	DaDaDOSPrompt	I would just use a standard 4k block size. you have to run through the firmware anyways and trying to set your logical block size to the EBS is just going to mean that the kernel is going to be forced to do all the work that firmware was going to do anyways.
+2012-06-30T21:49:00.000Z	DaDaDOSPrompt		that's an interesting point of view
+2012-06-30T21:50:00.000Z	DaDaDOSPrompt		still, the big problem I have is that something is making my SSD crap out so bad that my kernel write-locks the filesystem
+2012-06-30T21:50:00.000Z	DaDaDOSPrompt		just can't figure out what it would be
+2012-06-30T21:51:00.000Z	escott	DaDaDOSPrompt	in some alternate universe where we don't have to deal with their ridiculous firmware and the linux kernel can do the wear leveling you would tune the fs to match the EBS, but in this universe its probably better to just use the parameters they have tuned for
+2012-06-30T21:52:00.000Z	DaDaDOSPrompt		who is they, and for what are they tuning?
+2012-06-30T21:52:00.000Z	DaDaDOSPrompt	aristidesfl	have you tried chown and chmod commands on the mounted filesystem?
+2012-06-30T21:52:00.000Z	escott	DaDaDOSPrompt	is the the firmware manufacturing. and they are tuning their firmware to optimize performance for an NTFS filesystem

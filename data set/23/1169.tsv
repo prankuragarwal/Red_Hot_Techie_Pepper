@@ -1,0 +1,23 @@
+2011-01-02T02:47:00.000Z	mcc		Basically what is the difference between the php5-cgi and libapache2-mod-php5 ubuntu packages, and how does one configure the php5-cgi package?
+2011-01-02T02:49:00.000Z	ilovefairuz	mcc	mod-php5 is an apache module that adds PHP support, php5-cgi is a "CGI binary" that could be used with any server supporting CGI (apache and others)
+2011-01-02T02:49:00.000Z	ilovefairuz	mcc	check /etc/php5
+2011-01-02T02:50:00.000Z	mcc		ilove: ok, cool. and i found this which is helping: http://www.bobulous.org.uk/coding/apache-php-cgi.html however now I am having a different problem
+2011-01-02T02:50:00.000Z	mcc		This and one other guide i saw said to add AddHandler and Action lines to my httpd conf. I did so, however, then I got the error: "Invalid command 'Action', perhaps misspelled or defined by a module not included in the server configuration"
+2011-01-02T02:51:00.000Z	mcc		I did this inside of a <VirtualHost> directive. any idea what I might have done wrong there?
+2011-01-02T02:51:00.000Z	ilovefairuz	mcc	what are you trying to accomplish? you don't need to configure PHP manually to make it work with apache, the packages do this by default
+2011-01-02T02:52:00.000Z	ilovefairuz	mcc	and use mod-php5 if you're using apache
+2011-01-02T02:52:00.000Z	mcc	ilovefairuz	i need it to work. if the packages are supposed to make it work by default then something went wrong.
+2011-01-02T02:52:00.000Z	ilovefairuz		!lamp | mcc
+2011-01-02T02:52:00.000Z	mcc		when i try to open a PHP script it downloads instead of running. the reason i cannot use the php5 module is that if i try that, it will uninstall mpm-worker and replace it with mpm-prefork
+2011-01-02T02:53:00.000Z	mcc		and i have a need to use mpm-worker due to limited system resources
+2011-01-02T02:53:00.000Z	ilovefairuz	mcc	and how does that impair your application ?
+2011-01-02T02:53:00.000Z	mcc		it's a little bit complicated-- i have a limited amount of RAM (this is a xen instance) and there is a particular script running on this machine which is hit very heavily
+2011-01-02T02:53:00.000Z	mcc		i mean, this is why i need mpm-worker
+2011-01-02T02:54:00.000Z	mcc		because i need to be able to limit the live number of processes
+2011-01-02T02:54:00.000Z	ilovefairuz	mcc	if you're trying to conserve memory, then apache is certainly not for you, use lighttpd for an easy-to-configure lightweight web server that supports PHP too
+2011-01-02T02:55:00.000Z	mcc		To recap: I am trying to use the php5-cgi package instead of the one that installs a module, but am having trouble clarifying to apache that it needs to use the php5-cgi app. ... actually wait i guess i could do that with a hash-bang. one minute
+2011-01-02T02:56:00.000Z	mcc	ilovefairuz	this sounds like an extremely attractive option, however, i'm a little short on time this afternoon and that sounds like it would take awhile to get running
+2011-01-02T02:56:00.000Z	ilovefairuz	mcc	not at all, you would only have to install a couple of packages and uncomment some lines in the config
+2011-01-02T02:57:00.000Z	ilovefairuz	mcc	you would be surprised
+2011-01-02T02:57:00.000Z	mcc	ilovefairuz	well, the problem is I have some somewhat elaborate apache configuration as it stands involving multiple virtual hosts, mod_perl etc. So I'd have to recreate all that in lighty.
+2011-01-02T02:58:00.000Z	ilovefairuz	mcc	i see

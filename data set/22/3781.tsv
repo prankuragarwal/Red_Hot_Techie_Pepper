@@ -1,0 +1,22 @@
+2009-03-29T19:56:00.000Z	bing		help, this fails: apt-get source epiphany-browser && apt-get build-dep epiphany-browser  && ./configure && make && make install && /usr/bin/epiphany-browser
+2009-03-29T19:56:00.000Z	LjL	bing	that's not the proper way to build a package
+2009-03-29T19:56:00.000Z	bing	LjL	i guess i'll just go grab upstream then
+2009-03-29T19:57:00.000Z	LjL	bing	you can build it by doing: sudo apt-get build-dep epiphany-browser ; apt-get --build source epiphany-browser
+2009-03-29T19:57:00.000Z	bing	LjL	that doesn't build my changes
+2009-03-29T19:58:00.000Z	LjL	bing	nope, it doesn't - you never said you made any changes, so i didn't know.
+2009-03-29T19:58:00.000Z	bing	LjL	my mistake!  i'll use upstream
+2009-03-29T19:58:00.000Z	LjL	bing	you don't have to use upstream.-
+2009-03-29T19:59:00.000Z	LjL	bing	you can build the package fine - you're just doing it in the wrong way.
+2009-03-29T19:59:00.000Z	LjL	bing	you can use "debuild", or, wait, i never remember
+2009-03-29T19:59:00.000Z	bing	LjL	i dunno, i follow the instructions in the README, and then I also read the README.Debian...
+2009-03-29T19:59:00.000Z	LjL	bing	README.Debian won't contain package building instructions, because those are the same for every single package
+2009-03-29T20:00:00.000Z	LjL	bing	ok, one way is: "cd" to the package's directory first, then "dpkg-buildpackage -rfakeroot -uc -b"
+2009-03-29T20:01:00.000Z	bing	LjL	one of the debian patches fails to apply, so the dpkg-buildpackage program bails
+2009-03-29T20:02:00.000Z	LjL	bing	are you on what, intrepid?
+2009-03-29T20:03:00.000Z	bing	LjL	yeah, intrepid.  i'll try again without running ./autogen.sh
+2009-03-29T20:03:00.000Z	LjL	bing	the debian patch may fail to apply because of the modifications you made, i can only imagine... it's probably seeing that one of the files it needs modified is not what it's supposed to be
+2009-03-29T20:04:00.000Z	bing	LjL	yeah it failed on an "autoreconf" patch that wanted to be applied, so it make sense that it was ./autogen related
+2009-03-29T20:05:00.000Z	bing	LjL	bah, that didn't work either
+2009-03-29T20:07:00.000Z	LjL	bing	the patches related stuff starts to be a bit outside the boundaries of my knowledge
+2009-03-29T20:07:00.000Z	LjL	bing	have you checked the packaging guide? (although it's long and painful to read)
+2009-03-29T20:13:00.000Z	bing	LjL	i've asked on answers.launchpad.net

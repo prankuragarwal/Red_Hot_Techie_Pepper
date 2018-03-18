@@ -1,0 +1,22 @@
+2009-06-29T21:44:00.000Z	Jutman		the INPUT chains allow 10.0.0.0 (we'll call that the internal ip's and 1.2.3.4 will be external)
+2009-06-29T21:45:00.000Z	Jutman		so 10.0.0.0 needs access to the internet on certain ports
+2009-06-29T21:45:00.000Z	mbeierl1	Jutman	l2tp?
+2009-06-29T21:46:00.000Z	Jutman	mbeierl1	I don't know why I mentioned the VPN, its irrelevant.
+2009-06-29T21:46:00.000Z	mbeierl1	Jutman	ok... so 10.0.0.0 needs to be allowed to access the internet.  What you are looking for is called "masquerading", not port forwarding
+2009-06-29T21:47:00.000Z	Jutman	mbeierl1	right, I have that set up
+2009-06-29T21:47:00.000Z	Jutman		is forwarding required at all?
+2009-06-29T21:48:00.000Z	Jutman	mbeierl1	Ideally, I want the traffic to hit the internet, but also pass through both chains as it goes out and comes back in
+2009-06-29T21:48:00.000Z	mbeierl1	Jutman	no.  only if you have, say, linux gateway on the internet on port 80 and any request coming in to it are to be forwarded to an internal web server's port 80
+2009-06-29T21:48:00.000Z	Jutman	mbeierl1	alright I'll have to try that.
+2009-06-29T21:48:00.000Z	mbeierl1	Jutman	the input and output chains are not really used for masq in that way.  Are you using UFW?
+2009-06-29T21:49:00.000Z	Jutman	mbeierl1	just straight iptables
+2009-06-29T21:49:00.000Z	mbeierl1	Jutman	the only thing that is used for masq is the single "-A POSTROUTING -s 10..0.0/24 -o eth0 -j MASQUERADE "
+2009-06-29T21:50:00.000Z	mbeierl1	Jutman	the return traffic is not "input", it follows the same connection back in to the source
+2009-06-29T21:50:00.000Z	Jutman	mbeierl1	is there any way of firewalling that traffic?
+2009-06-29T21:51:00.000Z	mbeierl1	Jutman	think of it like a telephone switchboard.  the call is going "out" by the client calling someone else.  The other party speaking comes back over the came phone call, they don't call back to give the answer
+2009-06-29T21:51:00.000Z	mbeierl1	Jutman	are you thinking like web filtering?
+2009-06-29T21:52:00.000Z	Jutman	mbeierl1	I've actually got to head out, but thanks for the help. I'll read a little more on the subject
+2009-06-29T21:52:00.000Z	mbeierl1	Jutman	see, if the other party tries to call back, they HAVE to call the linux gateway, as that is the only address they know, and the gateway is already hiding the original clients from the internet at large, so they are by default firewalled.
+2009-06-29T21:52:00.000Z	mbeierl1	Jutman	ok, best of luck :)
+2009-06-29T21:52:00.000Z	Jutman	mbeierl1	thanks. appreciate it
+2009-06-29T21:53:00.000Z	mbeierl1	Jutman	that's why we're all here :)

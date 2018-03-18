@@ -1,0 +1,19 @@
+2009-10-24T10:12:00.000Z	syam1		Hi, I need help in rescuing my HDD
+2009-10-24T10:12:00.000Z	syam1		Can anyone help me out plz?
+2009-10-24T10:13:00.000Z	syam1		I have a huge issue with HDD.
+2009-10-24T10:14:00.000Z	syam1		Yoyoned, Is there a way I can communicate with you separately from this window?
+2009-10-24T10:14:00.000Z	syam1		I'm new,
+2009-10-24T10:15:00.000Z	syam1		The matter is that I have typed a lot of text trying to explian the exact situation with my HDD.
+2009-10-24T10:16:00.000Z	syam1		If I copy and paste it here, I doubt if I get muted automatically.
+2009-10-24T10:16:00.000Z	syam1		Ok. Here is my situation.
+2009-10-24T10:18:00.000Z	syam1		I just pasted my issue in http://paste.ubuntu.com/300259/
+2009-10-24T10:20:00.000Z	pipegeek	syam1	the data's probably still there, you just need to rebuild the partition table.  If you don't have the exact sizes of the former partitions in blocks, that may be difficult.
+2009-10-24T10:21:00.000Z	pipegeek	syam1	deleting partitions doesn't delete their contents; it just removes all record of where they were on the disk (leaving you free to overwrite them at a later date, should you choose to)
+2009-10-24T10:21:00.000Z	syam1	pipegeek	that is exactly my problem is.
+2009-10-24T10:21:00.000Z	pipegeek	syam1	well, you could grep the disk looking for filesystem headers
+2009-10-24T10:24:00.000Z	pipegeek	syam1	your pastebin says you installed gpart.  gpart is the tool you'll need to find the lost filesystems.
+2009-10-24T10:25:00.000Z	pipegeek	syam1	it'll tell you where it thinks the filesystems begin and end.  You can then use fdisk to create new partitions at those locations, and see if they'll mount
+2009-10-24T10:26:00.000Z	pipegeek	syam1	no prob.  So, boot from a livecd (if you don't have an installed system remaining), and sudo apt-get install gpart.  Then do sudo gpart /dev/sda.  This'll tell you what it believes your partition table probably should look like.  It'll take a longish time, as it's searching the whole disk
+2009-10-24T10:29:00.000Z	pipegeek	syam1	you need to add the universe and multiverse repositories, I believe.  This can be done from the "software sources" control panel
+2009-10-24T10:30:00.000Z	pipegeek	syam1	right.  That's because the installer's not actually on the livecd, nor is it (likely) in the "main" repository.  Add universe and multiverse, then try again
+2009-10-24T10:30:00.000Z	pipegeek	syam1	what Polarina said

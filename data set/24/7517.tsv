@@ -1,0 +1,24 @@
+2004-10-31T06:41:00.000Z	jazzka		/dev/hdc        /media/cdrom0   udf,iso9660 ro,user,noauto  0       0
+2004-10-31T06:42:00.000Z	TheMuso	jazzka	Instead of using /mnt, /media is used for removable devices. Debian does it this way as well.
+2004-10-31T06:43:00.000Z	jazzka	TheMuso	I can mount cds but this one I cant!
+2004-10-31T06:50:00.000Z	TheMuso	jazzka	What filesystem is on the CD?
+2004-10-31T06:50:00.000Z	jazzka	TheMuso	I don't know, I suppose iso9660
+2004-10-31T06:51:00.000Z	jazzka	TheMuso	same error :(
+2004-10-31T06:52:00.000Z	TheMuso	jazzka	Ok try this. mount /dev/hdc /media/cdrom0
+2004-10-31T06:58:00.000Z	TheMuso	jazzka	Do you have any Windows installation you could try it on?
+2004-10-31T06:59:00.000Z	jazzka	TheMuso	yes, I have an XP installation
+2004-10-31T07:01:00.000Z	jazzka	TheMuso	yeah with XP there's no problem
+2004-10-31T07:02:00.000Z	TheMuso	jazzka	What filesystem does Windows say the CD has?
+2004-10-31T07:03:00.000Z	TheMuso	jazzka	I don't know. But if Windows recognises it, there is something fishy going on.
+2004-10-31T07:03:00.000Z	TheMuso	jazzka	Do you have the isofs module in your kernel, and is it loaded?
+2004-10-31T07:04:00.000Z	TheMuso	jazzka	Type lsmod | grep isofs and see what you get.
+2004-10-31T07:05:00.000Z	jazzka	TheMuso	isofs                  33976  0
+2004-10-31T07:05:00.000Z	TheMuso	jazzka	So it is loaded. Hmmmm
+2004-10-31T07:07:00.000Z	TheMuso	jazzka	One thing you could try and do if you had the disk space, is to rip the data off the CD onto your computer as an iso, and try mounting that.
+2004-10-31T07:08:00.000Z	jazzka	TheMuso	I dont have the cd content, I've tried 3 times to eject-insert the cd
+2004-10-31T07:09:00.000Z	TheMuso	jazzka	But you can rip the raw filesystem and the data off the CD without actually mounting it.
+2004-10-31T07:11:00.000Z	TheMuso	jazzka	I know this doesn't help getting the data in the short-term, but perhaps mounting the ISO as a loop device may bring more luck.
+2004-10-31T07:11:00.000Z	jazzka	TheMuso	ok, so: mount ...?
+2004-10-31T07:13:00.000Z	TheMuso	jazzka	Then you type dd if=/dev/hdc of=/path/to/where/you/want/the/file.iso
+2004-10-31T07:15:00.000Z	jazzka	TheMuso	I have to go now, thanks anyway
+2004-10-31T07:15:00.000Z	TheMuso	jazzka	Sorry I couldn't help you.

@@ -1,0 +1,21 @@
+2012-02-03T12:02:00.000Z	Flannel	tnm	theadmin: No.  You don't want to do that.
+2012-02-03T12:03:00.000Z	Flannel	tnm	theadmin: use `adduser username group` instead
+2012-02-03T12:03:00.000Z	tnm	Flannel	well i already did and it didn't work :D
+2012-02-03T12:03:00.000Z	Flannel	tnm	The problem with the command you gave above is -G without -a will replace secondary groups and not append.
+2012-02-03T12:03:00.000Z	Flannel	tnm	it does work (you need sudo)
+2012-02-03T12:04:00.000Z	Flannel	tnm	Does that folder give www-data group write permissions?
+2012-02-03T12:06:00.000Z	tnm	Flannel	you rock... and you were right. the command sudo chmod 7-R 77 "folderName" solved the problem :D
+2012-02-03T12:07:00.000Z	Flannel	tnm	777 is generally the wrong way to chmod things.
+2012-02-03T12:07:00.000Z	Flannel	tnm	You just gave everyone execute permissions for all the files.
+2012-02-03T12:09:00.000Z	tnm	Flannel	g+w doesn't give me permission for group
+2012-02-03T12:10:00.000Z	Flannel	tnm	g+w will give group write permissions, if that doesn't give you write permissions, you're not the owner/group.
+2012-02-03T12:12:00.000Z	Flannel	tnm	After adding yourself to the www-data group (I assume the file has been set to have a group of www-data?), did you log in/restart/whatever you want to call it your terminal?
+2012-02-03T12:12:00.000Z	tnm	Flannel	g+q command gives me drw-rw-r-- 16 www-data www-data permissions. I cannot copy files. The command: id kubanc gave me this: uid=1001(kubanc) gid=1001(kubanc) groups=1001(kubanc),33(www-data)
+2012-02-03T12:12:00.000Z	tnm	Flannel	no, i didn't restart
+2012-02-03T12:13:00.000Z	Flannel	tnm	not restart, just log out/back in (from the terminal, so if this is gnome-terminal, close/re-open is fine)
+2012-02-03T12:13:00.000Z	Flannel	tnm	rw-rw-r-- is correct.
+2012-02-03T12:13:00.000Z	Flannel	tnm	Is that a directory or a file?
+2012-02-03T12:14:00.000Z	Flannel	tnm	Directories need +x as well, to cd into them.  I.... guess I don't know if you need +x to write to them.
+2012-02-03T12:14:00.000Z	Flannel	tnm	(this is why setting everything to a particular numeric value is problematic at best)
+2012-02-03T12:15:00.000Z	tnm	Flannel	i still cannot copy files, should i restart the system?
+2012-02-03T12:15:00.000Z	Flannel	tnm	No.  Did you chmod that directory a+x?

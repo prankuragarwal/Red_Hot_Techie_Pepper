@@ -1,0 +1,23 @@
+2008-09-07T22:28:00.000Z	Hattori		hello, how to load all system variables once connected to a ubuntu shell?
+2008-09-07T22:29:00.000Z	Hattori		hello, how to load all system variables once connected to a ubuntu shell? cause now i'm using PLINK (putty link) and once i'm in and execute a command (to start tomcat) it claims JAVA_HOME is not set. If i connect manually, JAVA_HOME is set indeed. How to load the system variables?
+2008-09-07T22:29:00.000Z	qfour20	Hattori	not sure what you're asking, but all system variables should already be there once you log in.  type in:  env  and take a look at what vars are set
+2008-09-07T22:30:00.000Z	Hattori	qfour20	yes, if i connect with plink and then run the command (.startup.sh to start tomcat) it works, but when the command is executed by a script that runs plink and run the script, it doesn't work. it claims JAVA_HOME is not loaded
+2008-09-07T22:31:00.000Z	qfour20	Hattori	AHH
+2008-09-07T22:31:00.000Z	qfour20	Hattori	either you need to explicity set JAVA_HOME in your script
+2008-09-07T22:31:00.000Z	Hattori	qfour20	so at the moment instead of running startup.sh i run a script that set java_home and then run the startup.sh
+2008-09-07T22:31:00.000Z	qfour20	Hattori	or add it to .profile of the user executing the script
+2008-09-07T22:32:00.000Z	Hattori	qfour20	ok, so i'm doing that yet.. but i'm conecting with plink with the same user i connect when i do that manually.. can't understand why it doesn't get the JAVA_HOME var
+2008-09-07T22:33:00.000Z	qfour20	Hattori	is the JAVA_HOME var just set in your .profile, or is it exported?
+2008-09-07T22:33:00.000Z	qfour20	Hattori	if the var is set, then it does not get inherited by other processes you start (scripts).  If it is exported, then all child processes see that var.
+2008-09-07T22:33:00.000Z	Hattori	qfour20	hmm, where should .profile file supposed to be located?
+2008-09-07T22:34:00.000Z	qfour20	Hattori	for me it's /home/qfour20/.profile
+2008-09-07T22:34:00.000Z	Hattori	qfour20	don't have any..
+2008-09-07T22:34:00.000Z	qfour20	Hattori	try putting it in there
+2008-09-07T22:34:00.000Z	qfour20	Hattori	sudo vi $HOME/.profile   then add:  export JAVA_HOME=/blah/blah
+2008-09-07T22:35:00.000Z	qfour20	Hattori	then su to yourself in that same shell and try again.
+2008-09-07T22:35:00.000Z	qfour20	Hattori	use d3d's method.  it's cleaner to source your profile than restarting the shell :-)
+2008-09-07T22:37:00.000Z	Hattori	qfour20	i saved the .profile, so now if the ant script connect to the shell with plink should load .profile file before execute the .startup.sh?
+2008-09-07T22:37:00.000Z	qfour20	Hattori	yes, I think so
+2008-09-07T22:43:00.000Z	Hattori	qfour20	no, same error :(
+2008-09-07T22:43:00.000Z	qfour20	Hattori	hmmmm.  can you get whatever it is that's initiating the plink to your ubuntu box to issue the command "env" and dump it to a file somewhere?
+2008-09-07T22:43:00.000Z	qfour20	Hattori	let's find out what vars are set and what's not

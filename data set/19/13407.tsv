@@ -1,0 +1,19 @@
+2005-05-02T07:11:00.000Z	dockane		how do i shutdown the xserver ?
+2005-05-02T07:12:00.000Z	dockane		nvidia installe wants me to end the xserver for installation
+2005-05-02T07:12:00.000Z	Quinn_Storm	dockane	/etc/init.d/gdm stop and then make sure X is shut down
+2005-05-02T07:13:00.000Z	dockane	Quinn_Storm	thnx
+2005-05-02T07:14:00.000Z	dockane	Quinn_Storm	returns : "gdm is already running. abortion.
+2005-05-02T07:14:00.000Z	Quinn_Storm	dockane	you typed it wrong.  "/etc/init.d/gdm stop" is what you have to run
+2005-05-02T07:15:00.000Z	dockane	Quinn_Storm	why does that make a difference ?
+2005-05-02T07:15:00.000Z	Quinn_Storm	dockane	yes it makes -all- the difference wether you put "stop" after it or not
+2005-05-02T07:17:00.000Z	dockane	Quinn_Storm	i changed to /etc/int.d/ and entered "sudo gdm stop".
+2005-05-02T07:17:00.000Z	Quinn_Storm	dockane	that won't work
+2005-05-02T07:17:00.000Z	Quinn_Storm	dockane	sudo /etc/init.d/gdm stop
+2005-05-02T07:17:00.000Z	Quinn_Storm	dockane	you have to put the whole path
+2005-05-02T07:18:00.000Z	dockane	Quinn_Storm	looks like i terribly misunderstood something in the topic file hirarchy *?*
+2005-05-02T07:19:00.000Z	Quinn_Storm	dockane	you are trying to run a program in /etc/init.d/ and . is not in $PATH and when a shell executes something it looks in $PATH, starting with the first entry, so it finds /usr/bin/gdm instead of /etc/init.d/gdm
+2005-05-02T07:20:00.000Z	dockane	Quinn_Storm	ah perfect awnser. thanks for the explanation
+2005-05-02T07:20:00.000Z	Quinn_Storm	dockane	sure
+2005-05-04T08:15:00.000Z	Quinn_Storm	dockane	it sounds like you have a single-open sound card and you are running esd.  is that right? (do pgrep esd and see if anything comes up)
+2005-05-04T08:15:00.000Z	dockane	Quinn_Storm	yes the pid returns
+2005-05-04T08:16:00.000Z	Quinn_Storm	dockane	then try killall esd before you run vlc

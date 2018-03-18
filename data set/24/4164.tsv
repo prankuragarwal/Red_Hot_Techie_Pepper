@@ -1,0 +1,24 @@
+2007-08-17T08:55:00.000Z	uptownben		Hi All. I just installed UBUNTU server, and I want to set up a simple window manager, I installed fluxbox but I can get it to be the default WM, any know how?
+2007-08-17T08:56:00.000Z	genii	uptownben	Install a simple login manager like xdm then you can choose what session from that
+2007-08-17T08:58:00.000Z	uptownben	genii	where would I see those menu options in XDM?
+2007-08-17T09:00:00.000Z	genii	uptownben	make a file, ~/.startx                 in the file, put the command to load your wm
+2007-08-17T09:03:00.000Z	genii	uptownben	The ~/.startx  and ~/.xinitrc files tell X what wm to use
+2007-08-17T09:04:00.000Z	uptownben	genii	.xinitrc also doesnt exist, I currently have icewm installed and that is what keeps coming up after logging in via XDM
+2007-08-17T09:04:00.000Z	genii	uptownben	instead of putting: fluxbox &&       in startx you could put in xinitrc: exec startfluxbox
+2007-08-17T09:04:00.000Z	genii	uptownben	If they are not existing now you make them :)
+2007-08-17T09:06:00.000Z	uptownben	genii	I will make them, but I'm trying to understand how linux knows to use icewem now, since these files dont exist, it must be specified somewhere else..?
+2007-08-17T09:06:00.000Z	genii	uptownben	It is the default one that xdm will use as fallback in it's own config if it doesn't find one of those 2 files in your ~
+2007-08-17T09:09:00.000Z	uptownben	genii	so cant I just change XDM's default?
+2007-08-17T09:09:00.000Z	genii	uptownben	You can also do: sudo update-alternatives --config x-window-manager
+2007-08-17T09:10:00.000Z	genii	uptownben	That will change the xdm one
+2007-08-17T09:18:00.000Z	genii	uptownben	Changing xdm default wm is sytemwide
+2007-08-17T09:22:00.000Z	uptownben	genii	I want a system wide change, the problem now is that I cant even boot because I get that ubuntu BUG: soft lockup  error and the system wont sytart
+2007-08-17T09:26:00.000Z	uptownben	genii	after I added the exec startfluxbox to ~/.xinitrc it still doesnt start into fluxbox..
+2007-08-17T09:27:00.000Z	genii	uptownben	Perhaps just exec fluxbox instread of exec startfluxbox
+2007-08-17T09:28:00.000Z	genii	uptownben	About the soft lockup error i have no idea
+2007-09-17T10:56:00.000Z	genii	uptownben	The hylafax server taking PS input?
+2007-09-17T11:00:00.000Z	genii	uptownben	At any rate you may need package hylafax-client
+2007-09-17T11:01:00.000Z	uptownben	genii	I believe so, I have a completely seperate machine set up as my HylaFax server, I can send faxes with no problem from my windows clients and I wanted to do the same from my ubuntu workstation.
+2007-09-17T11:02:00.000Z	uptownben	genii	I installed hylafax-client on my ubuntu workstation already.
+2007-09-17T11:08:00.000Z	genii	uptownben	I'm not sure if the client allows prining direct from apps as a print driver.
+2007-09-17T11:09:00.000Z	genii	uptownben	At one time I used hylafax, but have since switched to mgetty-sendfax

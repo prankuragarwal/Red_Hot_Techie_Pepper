@@ -1,0 +1,23 @@
+2008-01-27T08:19:00.000Z	ubuntuo		ok un_op almost done
+2008-01-27T08:21:00.000Z	ubuntuo		hey un_op i still get this error "Extended info will not be used."
+2008-01-27T08:22:00.000Z	ubuntuo		"
+2008-01-27T08:22:00.000Z	ubuntuo		whats wrong?
+2008-01-27T08:22:00.000Z	un0p	ubuntuo	are you sure you completely removed gtkpod/libgpod2 and installed gtkpod again?
+2008-01-27T08:23:00.000Z	un0p	ubuntuo	unmount your ipod and let gnome mount it for you
+2008-01-27T08:24:00.000Z	un0p	ubuntuo	gnome should automount it under /media/<ipod label>
+2008-01-27T08:25:00.000Z	un0p	ubuntuo	it should be ready for use with gtkpod now
+2008-01-27T08:26:00.000Z	ubuntuo	un0p	i just tried again, i get the same thing.... as before
+2008-01-27T08:26:00.000Z	un0p	ubuntuo	i think you can ignore the "extended info" error the first time (it's normal) .. you shouldnt see it again
+2008-01-27T08:28:00.000Z	un0p	ubuntuo	errm, did you say you formatted the ipod on a mac?
+2008-01-27T08:29:00.000Z	un0p	ubuntuo	errm iirc you'll need read/write access to the mac partition -- and i'm a little unsure on that
+2008-01-27T08:30:00.000Z	un0p	ubuntuo	what device is the ipod ? /dev/sdXX ?
+2008-01-27T08:30:00.000Z	un0p	ubuntuo	what does this command output?  file -s /dev/sda3
+2008-01-27T08:30:00.000Z	ubuntuo	un0p	/dev/sda3
+2008-01-27T08:30:00.000Z	un0p	ubuntuo	aye
+2008-01-27T08:33:00.000Z	ubuntuo	un0p	any ideas?
+2008-01-27T08:33:00.000Z	un0p	ubuntuo	gimme a minute
+2008-01-27T08:36:00.000Z	un0p	ubuntuo	ok -- try this command-  sudo sh -c "umount /dev/sda3; mount -t hfs /dev/sda3 /media/ipod -o rw"
+2008-01-27T08:38:00.000Z	ubuntuo	un0p	mount: mount point /media/ipod does not exist
+2008-01-27T08:38:00.000Z	un0p	ubuntuo	sorry -  sudo sh -c "umount /dev/sda3; mkdir /media/ipod; mount -t hfs /dev/sda3 /media/ipod -o rw"
+2008-01-27T08:40:00.000Z	un0p	ubuntuo	what happened?
+2008-01-27T08:41:00.000Z	un0p	ubuntuo	make sure you copied that command down right

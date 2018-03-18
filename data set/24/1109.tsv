@@ -1,0 +1,24 @@
+2011-07-27T06:23:00.000Z	mainrain		my laptop for some reason is no longer connecting to wireless.  I've tried toggling the wireless on/off with the fn-f3(where the wireless logo is) but nothing pops up.  Yesterday there was an applet to choose wireless networks but today its missing, any ideas?
+2011-07-27T06:24:00.000Z	mainrain		thats the fn-f3, doesn't have a physical switch
+2011-07-27T06:24:00.000Z	mainrain		iwconfig shows wlan1 is on
+2011-07-27T06:24:00.000Z	qin	mainrain	rfkill list
+2011-07-27T06:25:00.000Z	mainrain	qin	hmm, soft blocked: no  hard blocked: yes
+2011-07-27T06:25:00.000Z	mainrain	qin	which would imply it does have a physical switch?
+2011-07-27T06:28:00.000Z	mainrain	qin	i cant find a physical swithc anywhere, had this laptop a few months and it has very few switches(acer aspire 7750g)
+2011-07-27T06:29:00.000Z	mainrain	qin	actually, toggling fn-f3 (i guess i hadn't hit it enough times) turns off hard blocked: no
+2011-07-27T06:30:00.000Z	mainrain	qin	but i still dont have an applet or a way to choose a wireless network, can it be run from the command line?
+2011-07-27T06:30:00.000Z	qin	mainrain	What does, sudo iwlist wlan0 scan
+2011-07-27T06:32:00.000Z	mainrain	qin	about 10 pages of Cell 01 - stuff, Cell 02 - stuff, down to cell 29
+2011-07-27T06:33:00.000Z	qin	mainrain	sudo service network-manager restart
+2011-07-27T06:34:00.000Z	mainrain	qin	just says restarting, but no visible changes and iwconfig doesn't show wlan1 connect to anything
+2011-07-27T06:36:00.000Z	qin	mainrain	What about applet
+2011-07-27T06:37:00.000Z	mainrain	qin	no applet, i killed nm-applet and restarted it, it runs but doesn't display anything on the top bar
+2011-07-27T06:37:00.000Z	qin	mainrain	Is it unity?
+2011-07-27T06:37:00.000Z	mainrain	qin	maverick
+2011-07-27T06:37:00.000Z	mainrain	qin	pre-unity
+2011-07-27T06:38:00.000Z	qin	mainrain	Alt-F2 and gnome-panel --replace
+2011-07-27T06:39:00.000Z	mainrain	qin	replaces the top bar, but still no applet :S  very odd
+2011-07-27T06:39:00.000Z	mainrain	qin	other applets are there (dropbox, battery, sound, clock, messaging, power button)
+2011-07-27T06:40:00.000Z	qin	mainrain	Did you try to add it (right click on panel)? Also: nmcli con list)
+2011-07-27T06:42:00.000Z	mainrain	qin	found it, for some reason there was no 'notifation area' applet, got deleted on way or another
+2011-07-27T06:42:00.000Z	mainrain	qin	thanks

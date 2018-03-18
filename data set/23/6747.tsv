@@ -1,0 +1,23 @@
+2006-03-04T17:53:00.000Z	emily		I'm trying to understand how to use samba in ubuntu to mount my university account onto my computer at home. It's very easy in OS-X, but I don't understand how to do it in ubuntu. how do you use samba on the client-end?
+2006-03-04T17:55:00.000Z	emily		or send me somewhere to learn?
+2006-03-04T06:02:00.000Z	cafuego	emily	It's all GUI in Gnome too. You choose 'Places -> Connect to Server...' and then set it up.
+2006-03-04T06:03:00.000Z	emily	cafuego	yeah i tried that, but like i just said to robertj, i don't know all the information I apparently need to make it work... so i need to learn what all those parts mean
+2006-03-04T06:03:00.000Z	cafuego	emily	Ah ok. Is there any chance whatoever thats amba is not yet installed?
+2006-03-04T06:04:00.000Z	emily	cafuego	no samba is installed.
+2006-03-04T06:13:00.000Z	cafuego	emily	'smbclient -U username -L hostname'
+2006-03-04T06:13:00.000Z	cafuego	emily	No slashes needed there
+2006-03-04T06:15:00.000Z	emily	cafuego	i tried that already and it gave me that error i mentioned above. then others have been saying to use slashes... i'm trying their suggestions now
+2006-03-04T06:16:00.000Z	cafuego	emily	Traditionally you need the slashes in smbmount, but not in smbclient.
+2006-03-04T06:16:00.000Z	cafuego	emily	smbmount would need //hostname/sharename
+2006-03-04T06:18:00.000Z	emily	cafuego	i'm trying without slashes again, but capitalizing the -U
+2006-03-04T06:18:00.000Z	cafuego	emily	no, that's the right IP. mine times out too, so probably it's not using samba or is firewalled. (it better be for connections from the net as a whole)
+2006-03-04T06:19:00.000Z	emily	cafuego	i can connect to it from anywhere, even from home when I connect with my ibook... so there must be some kind of authentication
+2006-03-04T06:21:00.000Z	cafuego	emily	In OSX, do you connect to it as smb://hostname/ .. ?
+2006-03-04T06:22:00.000Z	emily	cafuego	no, it just asks for the server name, but then it says "connecting to afp://blah blah"
+2006-03-04T06:23:00.000Z	cafuego	emily	afp is *appleshare*, not samba.
+2006-03-04T06:23:00.000Z	emily	cafuego	ahh. frack me then huh. haha
+2006-03-04T06:24:00.000Z	cafuego	emily	There may or may not be appletalk support in Ubuntu.
+2006-03-04T06:25:00.000Z	cafuego	emily	That box seems to run FTP though, try that.
+2006-03-04T06:26:00.000Z	cafuego	emily	The appletalk software for Linux is 'netatalk', but I'm pretty sure that only runs as server, not as client.
+2006-03-04T06:26:00.000Z	emily	cafuego	i could try ftp from the places menu, but again i don't know what to put in all the fields so it hasn't been able to work yet.
+2006-03-04T06:27:00.000Z	cafuego	emily	You only need FTP (with login), Server (hostname) and User name (login)

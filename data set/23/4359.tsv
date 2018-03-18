@@ -1,0 +1,23 @@
+2007-09-12T11:56:00.000Z	zackattack		how do I figure out how much free space I have on my hard drive, and where any files greater than 10MB are?
+2007-09-12T11:56:00.000Z	zackattack		through the CLI
+2007-09-12T11:56:00.000Z	jrib	zackattack	df -h, and use 'du'.  See 'man du'
+2007-09-12T11:56:00.000Z	jrib	zackattack	oh, actually, 'find' will work for that
+2007-09-12T11:56:00.000Z	zackattack	jrib	 ?
+2007-09-12T11:57:00.000Z	zackattack	jrib	what kind of syntax?
+2007-09-12T11:57:00.000Z	jrib	zackattack	you can use the 'find' command to search for files larger than a certain size.  I don't know the syntax offhand, see 'man find' and ping me if it's still not clear after a while
+2007-09-12T11:58:00.000Z	zackattack	jrib	find -size 10024k
+2007-09-12T11:58:00.000Z	zackattack	jrib	do I need to add anything before the -size? like a . ?
+2007-09-12T11:59:00.000Z	jrib	zackattack	find / -size +10G     it seems
+2007-09-12T12:00:00.000Z	zackattack	jrib	thanks, yeah, it's slowly puttering away
+2007-09-12T12:00:00.000Z	zackattack	jrib	why the + ?
+2007-09-12T12:00:00.000Z	jrib	zackattack	10 or more
+2007-09-12T12:01:00.000Z	zackattack	jrib	damn, it doesn't specify that it in the manpage!
+2007-09-12T12:01:00.000Z	zackattack	jrib	and it doesn't say anything about G!
+2007-09-12T12:01:00.000Z	jrib	zackattack	it does if you scroll down :)  (actually, the examples clued me in)
+2007-09-12T12:03:00.000Z	zackattack	jrib	when I try to pipe the output into ls -sh .. it's not working
+2007-09-12T12:04:00.000Z	jrib	zackattack	do you get an error?
+2007-09-12T12:04:00.000Z	zackattack	jrib	no, but find has a problem, like find: ./proc/28646/task/28646/fd/4: No such file or directory
+2007-09-12T12:04:00.000Z	zackattack	jrib	and when that gets piped into ls, everything gets fscked
+2007-09-12T12:04:00.000Z	jrib	zackattack	that shouldn't be getting piped since it goes to stderr
+2007-09-12T12:05:00.000Z	zackattack	jrib	well i'm telling you, not workin' :)
+2007-09-12T12:06:00.000Z	jrib	zackattack	join me in #ubuntu-classroom

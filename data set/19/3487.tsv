@@ -1,0 +1,19 @@
+2010-11-13T12:05:00.000Z	ndroftheline		ok so i can' t ssh into my box from my external ip, but i CAN ssh into it via its local address. i have the ports forarded and i've even tried to put it in dmz. any suggestions?
+2010-11-13T12:07:00.000Z	rdw200169	ndroftheline	but, if you can access ssh from the local network, 192.168.0.0/24 or whatever, you problem probably lies in the router somewhere... that or your ISP is blocking 22 from somewhere in their systems
+2010-11-13T12:08:00.000Z	ndroftheline	rdw200169	i've talked to my isp, it's not blocked there
+2010-11-13T12:09:00.000Z	rdw200169	ndroftheline	make absolute sure you're using the *right* external IP address, especially if your Internet comes from DSL and PPPoE etc... they use several IP's that seem external, when one of them is the actual 'external' ip
+2010-11-13T12:09:00.000Z	ndroftheline	rdw200169	  and i have the damned ports forwarded. i even put it in the dmz.
+2010-11-13T12:10:00.000Z	rdw200169	ndroftheline	you could even consider putting your modem in a switch mode to bypass the router features, thereby removing that obvious obstacle... i used to do that with Embarq DSL
+2010-11-13T12:10:00.000Z	ndroftheline	rdw200169	i'm not using my modem's router function. it's a satellite connection and it's a very basic modem.
+2010-11-13T12:11:00.000Z	rdw200169	ndroftheline	good luck with satellite.  i've never encountered a satellite ISP that actually provided a useable external IP... especially those ******* over at HughesNet
+2010-11-13T12:12:00.000Z	ndroftheline	rdw200169	how can one or another IP be more or less useable?
+2010-11-13T12:12:00.000Z	rdw200169	ndroftheline	trust me... those satellite people are crazy and downright evil.  i will no longer discuss this matter considering the fact that you are using satellite internet.  this is for my sanity's sake.  trust me.
+2010-11-13T12:13:00.000Z	ndroftheline	rdw200169	lol ok. i can move the server to my dad's house, i guess. thats good advice though, thank you.
+2010-11-13T12:14:00.000Z	rdw200169	ndroftheline	i once spent over 16 hours of time, total, arguing with a satellite provider i was paying over $4500 / mo. about how they were throttling our bandwidth, specifically, so that i could manage our bandwidth usage accordingly.  they preferred me to be confused, so they could throttle me endlessly...
+2010-11-13T12:15:00.000Z	ndroftheline	rdw200169	lol nice
+2010-11-13T12:17:00.000Z	rdw200169	ndroftheline	in the end, thoough, i figured out how to keep tc/ip/iptables/brtables/etc... working such that internet worked reliably over satellite... no thanks to those jerks on the other end though, with their endlessly overfilling bucket of pain and suffering (they scraped off the most needed bits first of course>>>)
+2010-11-13T12:17:00.000Z	ndroftheline	rdw200169	loll well if you had the godly grace to write a howto on all that i'd love to read it someday
+2010-11-13T12:19:00.000Z	rdw200169	ndroftheline	but, you *can* run a SSH reverse tunnel and run a proxy from a location external to the satellite connection thereby reliably offering a connection
+2010-11-13T12:19:00.000Z	ndroftheline	rdw200169	hey! reverse ssh tunnel! i read an article on that earlier today
+2010-11-13T12:20:00.000Z	rdw200169	ndroftheline	then, from the external server, you can run a sort of SSH proxy
+2010-11-13T12:23:00.000Z	rdw200169	ndroftheline	piece of cake.  and, you can even write simple scripts that will attempt to create the tunnel whenever you want, cron fun

@@ -1,0 +1,23 @@
+2007-01-31T07:25:00.000Z	Lord_Drachenblut		i'm trying to get a crontab job going here is what i have the entry 00 4 * * * /home/goldenpod/goldenpod-0.6/goldenpod -s
+2007-01-31T07:25:00.000Z	Lord_Drachenblut		by /var/log/syslog it appears to start the job
+2007-01-31T07:25:00.000Z	Lord_Drachenblut		but it never seems to really execute
+2007-01-31T07:26:00.000Z	Jowi	Lord_Drachenblut	can you execute "/home/goldenpod/goldenpod-0.6/goldenpod -s" manually?
+2007-01-31T07:26:00.000Z	Lord_Drachenblut	Jowi	yea
+2007-01-31T07:26:00.000Z	Jowi	Lord_Drachenblut	try it. make sure.
+2007-01-31T07:27:00.000Z	Lord_Drachenblut	Jowi	yep it still runs
+2007-01-31T07:27:00.000Z	Jowi	Lord_Drachenblut	check with "sudo ps -A" if it is running after the cron job has executed it.
+2007-01-31T07:28:00.000Z	Jowi	Lord_Drachenblut	if it doesn't, check the script. it might be trying commands in the wrong directory.
+2007-01-31T07:37:00.000Z	Lord_Drachenblut	Jowi	here is what i get 25925 pts/0    00:00:01 goldenpod
+2007-01-31T07:38:00.000Z	Jowi	Lord_Drachenblut	ok, it is executed fine.
+2007-01-31T07:39:00.000Z	Jowi	Lord_Drachenblut	what are you expected to see, what is the script supposed to do?
+2007-01-31T07:39:00.000Z	Lord_Drachenblut	Jowi	it's a podcast aggregator
+2007-01-31T07:40:00.000Z	Jowi	Lord_Drachenblut	so it produces a file and you can't find it, that's it?
+2007-01-31T07:41:00.000Z	Jowi	Lord_Drachenblut	check in the /root directory
+2007-01-31T07:41:00.000Z	Lord_Drachenblut	Jowi	the directory is there but there is no files in there
+2007-01-31T07:42:00.000Z	Jowi	Lord_Drachenblut	did you use "crontab -e" or "sudo crontab -e"?
+2007-01-31T07:42:00.000Z	Lord_Drachenblut	Jowi	both
+2007-01-31T07:43:00.000Z	Jowi	Lord_Drachenblut	where does the script say it downloads to then? can you set that option on the command in cron?
+2007-01-31T07:43:00.000Z	Lord_Drachenblut	Jowi	it should download to a directory in /home/shared/torrent/Podcast
+2007-01-31T07:48:00.000Z	Jowi	Lord_Drachenblut	what is -s option for goldenpod ? the manpage for it does not list it
+2007-01-31T07:48:00.000Z	Jowi	Lord_Drachenblut	ah, silent
+2007-01-31T07:49:00.000Z	Jowi	Lord_Drachenblut	so check the log for goldenpod

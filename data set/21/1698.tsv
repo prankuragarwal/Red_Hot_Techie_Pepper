@@ -1,0 +1,21 @@
+2010-05-29T06:24:00.000Z	adamror		grrr... people please help, i've tryed everything but im still having issues with my wireless internet
+2010-05-29T06:24:00.000Z	mdg	adamror	what issues?
+2010-05-29T06:25:00.000Z	mdg	adamror	what kind of card?
+2010-05-29T06:26:00.000Z	mdg	adamror	need to find our what driver that card needs
+2010-05-29T06:27:00.000Z	adamror	mdg	How would I go about doing that? (:
+2010-05-29T06:27:00.000Z	mdg	adamror	is pcmcia or USB?
+2010-05-29T06:28:00.000Z	mdg	adamror	okay then its pci
+2010-05-29T06:28:00.000Z	adamror	mdg	yeah PCI (:
+2010-05-29T06:28:00.000Z	mdg	adamror	in a terminal type "lspci -v" (without quotes)
+2010-05-29T06:29:00.000Z	adamror	mdg	ok done (:
+2010-05-29T06:29:00.000Z	mdg	adamror	what did the entry for your wireless adapter say?
+2010-05-29T06:31:00.000Z	adamror	mdg	should I be looking at 'ethernet controller: marvell techology group ltd 88e8038 PCI-E fast ey hernet controller' or 'ethernet controller: atheros comunications inc AR5001 Wireless network adapter' ?
+2010-05-29T06:31:00.000Z	mdg	adamror	ah atheros!
+2010-05-29T06:32:00.000Z	mdg	adamror	type "lsmod" and  you will get a listing of all the modules loaded - you need to look for atheros and see what adapter it is using now
+2010-05-29T06:33:00.000Z	mdg	adamror	actually "lsmod | less" so you can scroll through
+2010-05-29T06:38:00.000Z	adamror	mdg	-> Ethernet controller: Atheros Communications Inc. AR5001 Wireless network Adapter (rev 01) - Subsystem: AMBIT Microsystem Corp. Device 0428 - Flags: bus master, fast devsel, latency 0 IRQ 17  Memory at 44400000 (64bit, non-prefetchable) [size=64k] - Capabilities: <access denied> - Kernel driver in use: ath5k - Kernel modules: ath5k
+2010-05-29T06:39:00.000Z	mdg	adamror	so its using ath5k now and dropping your connection...
+2010-05-29T06:39:00.000Z	adamror	mdg	yeah its really slow and dropping the connection every 2mins ):
+2010-05-29T06:41:00.000Z	mdg	adamror	install linux-backports-modules-wireless-lucid-generic - some people report this works
+2010-05-29T06:41:00.000Z	adamror	mdg	where can I find that?
+2010-05-29T06:50:00.000Z	mdg	adamror	yes

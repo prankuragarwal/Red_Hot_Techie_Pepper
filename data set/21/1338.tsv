@@ -1,0 +1,21 @@
+2010-10-18T01:22:00.000Z	ehcah		is there a different command for modifying permissions of an NTFS partition then an EXT?
+2010-10-18T01:22:00.000Z	SteelPangolin	ehcah	probably, NTFS "access control lists" (ACLs) are fairly complicated and don't map directly to Linux ACLs
+2010-10-18T01:23:00.000Z	SteelPangolin	ehcah	are you using ntfs-3G?
+2010-10-18T01:24:00.000Z	ehcah	SteelPangolin	I beleive so. I created a 100GB partition with the sole role of hosting Virtual OS's. I can not change the /media/ drive or subfolders?
+2010-10-18T01:25:00.000Z	SteelPangolin	ehcah	could you please pastebin the output of cat /proc/mount for me?
+2010-10-18T01:27:00.000Z	ehcah	SteelPangolin	I went back to /proc/ as root and cat: /proc/mount: No such file or directory
+2010-10-18T01:28:00.000Z	SteelPangolin	ehcah	one sec, i may have the filename wrong, but meanwhile give this a skim: http://www.tuxera.com/community/ntfs-3g-advanced/ownership-and-permissions/
+2010-10-18T01:28:00.000Z	SteelPangolin	ehcah	sorry that's /proc/mounts, forgot the trailing s
+2010-10-18T01:29:00.000Z	SteelPangolin	ehcah	near as i can figure out it's like running the mount command with no args but shows some stuff that mount gets confused about
+2010-10-18T01:30:00.000Z	ehcah	SteelPangolin	http://pastebin.ubuntu.com/515222/
+2010-10-18T01:36:00.000Z	SteelPangolin	ehcah	looking at it now... i can't think of anything immediately obvious, but if it's a single user system you could probably mount the drive with permissions disabled or limited to your user
+2010-10-18T01:37:00.000Z	SteelPangolin	ehcah	safely
+2010-10-18T01:37:00.000Z	SteelPangolin	ehcah	sorry, you might want to ask someone else, or poke around the Tuxera docs for a bit
+2010-10-18T02:02:00.000Z	ehcah	SteelPangolin	Had to step out and picked up one of the kids. Can you think of any reason why I should create that partition in NTFS at all?
+2010-10-18T02:02:00.000Z	ehcah	SteelPangolin	Couldn't virtual OS's sit on any folder type?
+2010-10-18T02:03:00.000Z	SteelPangolin	ehcah	unless you're booting from raw partitions, no. I'd format as extN and use hard drive files.
+2010-10-18T02:04:00.000Z	ehcah	SteelPangolin	I'm not sure why it took a drive to figure that one out. I was thinking of the format Windows OS's require as standalone and not in VOS.
+2010-10-18T02:05:00.000Z	SteelPangolin	ehcah	what virt software are you using?
+2010-10-18T02:06:00.000Z	ehcah	SteelPangolin	Oracle Virtual Box with USB support.
+2010-10-18T02:06:00.000Z	SteelPangolin	ehcah	VirtualBox should support disk images. Everything else does.
+2010-10-18T02:07:00.000Z	ehcah	SteelPangolin	In my past install's, I've never moved the virtual disk out of the the system drive defaults.... Hence why I should have been smarter about this one....

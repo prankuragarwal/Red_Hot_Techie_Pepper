@@ -1,0 +1,19 @@
+2007-02-10T06:12:00.000Z	jrib		www-data shouldn't own web content
+2007-02-10T06:12:00.000Z	jrib		or at least shouldn't have write access to
+2007-02-10T06:13:00.000Z	unop	jrib	 errm, but i think the home directory of www-data is /var/www anyway -- and it should have complete access there
+2007-02-10T06:15:00.000Z	jrib	unop	really only files that *need* to be written to by apache should be the ones that apache has write access.  That's my understanding anyway
+2007-02-10T06:16:00.000Z	unop	jrib	 but apache handles permissions within itself using directory/location/path directives and whatnot -- yea, i know what you mean but its just the way things are
+2007-02-10T06:25:00.000Z	jrib	unop	needs to be recursive right?
+2007-02-10T06:26:00.000Z	unop	jrib	 well, recursive would upset everything in the folder -- if he just wants write access to /var/www .. it doesnt need to be
+2007-02-10T06:26:00.000Z	unop	jrib	 but yea, i think he should be made aware of the implications of these permissions here
+2008-08-29T05:24:00.000Z	jrib	unop	qr: I think your ACL suggestion would work
+2008-08-29T05:24:00.000Z	unop	jrib	it works to emulate the unix permissions .. but doesn't really change the permissions - which is what he is after
+2008-08-29T05:25:00.000Z	jrib	unop	but the user won't be able to access the files anyway.  What's the difference?
+2008-08-29T05:26:00.000Z	unop	jrib	well, for one .. acls only work if the volume is mounted with the acl option .. so he might have some removable media he's worried about .. i dunno
+2008-08-29T05:28:00.000Z	jrib	unop	that's true
+2008-08-30T05:54:00.000Z	unop	jrib	how do you add a factoid for ubottu ?
+2008-09-17T06:14:00.000Z	jrib	unop	his user shouldn't need to use sudo to install to his home directory, right?
+2008-09-17T06:15:00.000Z	unop	jrib	errm, depends if the target requires setting things like setuid, etc - but usually no
+2009-09-04T15:38:00.000Z	unop	jrib	that won't grab dotfiles though.
+2009-09-04T15:38:00.000Z	jrib	unop	unlikely to be any in /home
+2009-09-04T15:38:00.000Z	jrib	unop	but you are right

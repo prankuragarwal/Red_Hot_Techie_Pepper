@@ -1,0 +1,21 @@
+2010-08-04T13:27:00.000Z	Ileden		Hi! Any ideas why has my Ubuntu UI has become laggy after upgrading to 10.04... I initially thought it was about my video card, but I changed that yet the problem still persists. Everything was working ok and very fast on 9.04. Any ideas how to debug this?
+2010-08-04T13:28:00.000Z	YankDownUnder	Ileden	Graphics driver, xorg configuration, stale .debs hanging around....the list goes on...
+2010-08-04T13:38:00.000Z	Ileden	YankDownUnder	oh, and would logging in as a new user give the same result?
+2010-08-04T13:29:00.000Z	Ileden	YankDownUnder	Graphics driver would affect two different video cards? xorg conf I've reseted. How do I detect stale .debs? And how does the list go on? :D
+2010-08-04T13:31:00.000Z	YankDownUnder	Ileden	Firstly, upgrading usually sucks. Secondly, a way of doing the xorg reset is to literally delete (or rename) the /etc/X11/xorg.conf. Thirdly, you may have old crap in your ~/.config and ~/.cache and ~/.local that are dragging Gnome down (assuming you're running Gnome)
+2010-08-04T13:33:00.000Z	Ileden	YankDownUnder	did xorg reset exactly like that. yup running gnome. the old crap sounds like a viable cause... how do I detect it?
+2010-08-04T13:35:00.000Z	YankDownUnder	Ileden	I'd go through the stuff manually - get rid of crap that doesn't jive - gconf, the guts of Gnome, freaks and frogs on some of the outdated stuff - and in that case, you can even literally go so far as to rename the ~/.config and logout, login and just re-customise Gnome (and some other apps) again...have done this with a high level of success...have also gone so far as to create a new user, and just copy stuff over f
+2010-08-04T13:38:00.000Z	Ileden	YankDownUnder	Ah, unfortunately I don't have enough knowledge to go through them manually. :) Recustomization sounds tedious... but I could try if that fixes the problem. It's safe to simply rename .config? Should I do the same for .local and .cache too?
+2010-08-04T13:39:00.000Z	YankDownUnder	Ileden	You can always delete what's in ~/.cache/ => it's just temp stuff...however, if you want to test, just create a new user, login as that user, see what difference there is in performance...then you'll know...
+2010-08-04T13:40:00.000Z	Ileden	YankDownUnder	thanks, I'll try that! Somehow didn't come across me to think it could be user config related.
+2010-08-04T13:41:00.000Z	YankDownUnder	Ileden	I had the issue with a client - it ended up being Compiz, Gnome and Emerald crap that blew out the performance...
+2010-08-04T13:57:00.000Z	Ileden	YankDownUnder	Yup, seems like my performance went up with the new user.
+2010-08-04T13:58:00.000Z	Ileden	YankDownUnder	So I guess that means I need to clean up the gnome configs, and redo all the customizations. :( Well, there aren't _that_ many I guess.
+2010-08-04T13:59:00.000Z	Ileden	YankDownUnder	So the simplest way to clean all gnome config is to remove .config, .local and .cache?
+2010-08-04T14:04:00.000Z	Ileden	YankDownUnder	Oh my, even the very crappy flash video performace has become a lot better! :)
+2010-08-04T14:05:00.000Z	YankDownUnder	Ileden	Ok...so mystery resolved.
+2010-08-04T14:06:00.000Z	Ileden	YankDownUnder	yup, clearly. :) Thanks a lot! This has been bugging me quite a bit. :)
+2010-08-04T14:11:00.000Z	Ileden	YankDownUnder	Just to be clear, there are no other config dirs I should be aware of, just .config .local .cache?
+2010-08-04T14:12:00.000Z	YankDownUnder	Ileden	Right
+2010-08-04T14:22:00.000Z	Ileden	YankDownUnder	this is working very nicely! Not even all that much I have to reconfig. Thanks again!
+2010-08-04T14:26:00.000Z	YankDownUnder	Ileden	Yer welcome mate...enjoy...

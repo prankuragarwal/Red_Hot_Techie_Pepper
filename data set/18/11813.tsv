@@ -1,0 +1,18 @@
+2009-10-06T17:11:00.000Z	MyWay		hi, i'm using yafc to ftp, with this syntax: open ftp://myusername@host:mypass@myhost:21/, the problem is the username@host, is there a way to escape characters?
+2009-10-06T17:13:00.000Z	MyWay		hi, i'm using yafc to ftp, with this syntax: open ftp://myusername@host:mypass@myhost:21/, the problem is the username@host which is bad interpreted, how can i escape characters?
+2009-10-06T17:13:00.000Z	MyWay		ah then sorry monostone, i thought i was a desktop
+2009-10-06T17:13:00.000Z	MyWay		it*
+2009-10-06T17:14:00.000Z	jrib	MyWay	did you try reading the documentation?
+2009-10-06T17:14:00.000Z	jrib	MyWay	http://yafc.sourceforge.net/manual/Invoking-Yafc.php#Invoking%20Yafc
+2009-10-06T17:15:00.000Z	jrib	MyWay	http://yafc.sourceforge.net/manual/open.php#open
+2009-10-06T17:16:00.000Z	jrib	MyWay	why do you use yafc over ftp? (Just curious as I had never heard of yafc)
+2009-10-06T17:16:00.000Z	MyWay	jrib	i've just found it and i was using it
+2009-10-06T17:17:00.000Z	jrib	MyWay	you'r not using the correct syntax, see the links I gave you
+2009-11-30T01:41:00.000Z	jrib	MyWay	what you said is kind of vague.  What are you trying to do?  Show us what commands you used on pastebin if you believe something is not doing what it is supposed to
+2009-11-30T01:43:00.000Z	MyWay	jrib	i did chmod g+srwx /mydir, so every new file i create in /mydir has these access, but if i do cp /newdir/myfile /mydir/myfile it gets only g+r, why?
+2009-11-30T02:03:00.000Z	jrib	MyWay	use ACLs
+2009-11-30T02:03:00.000Z	jrib	MyWay	and "rwx chmod" is ambiguous
+2009-11-30T02:03:00.000Z	MyWay	jrib	doesn't chmod work?
+2009-11-30T02:03:00.000Z	jrib	MyWay	sure, but that means you have to execute chmod...
+2009-11-30T02:04:00.000Z	jrib	MyWay	if you want *every* file you create to have rwx for the group, then you can just change your user's umask.  But if you want it to be specific to a directory you must use ACLs. +s on a directory just means files under it will get the same group, nothing about permissions
+2009-11-30T02:05:00.000Z	jrib	MyWay	you need to add the acl option in your fstab and read « man setfacl » and « man getfacl »

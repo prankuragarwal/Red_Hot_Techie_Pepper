@@ -1,0 +1,22 @@
+2012-01-25T16:43:00.000Z	level09		how to troubleshoot a cronjob?
+2012-01-25T16:43:00.000Z	iceroot	level09	like?
+2012-01-25T16:44:00.000Z	level09		I am executing  a script
+2012-01-25T16:44:00.000Z	iceroot	level09	to see if it runs? to debug the script inside?
+2012-01-25T16:44:00.000Z	level09		and it is supposed to log stuff
+2012-01-25T16:44:00.000Z	level09		no to see if it runs
+2012-01-25T16:44:00.000Z	level09		I added the script to 1 min cron
+2012-01-25T16:44:00.000Z	iceroot	level09	less /var/log/syslog
+2012-01-25T16:44:00.000Z	level09		aha thanks
+2012-01-25T16:44:00.000Z	iceroot	level09	cron logs every start of a task there
+2012-01-25T16:45:00.000Z	level09		yeah I can see that , cool thanks
+2012-01-25T16:46:00.000Z	level09		now it is clear : Error: bad username; while reading /etc/crontab
+2012-01-25T16:50:00.000Z	level09		why is cron unable to find a command while I can execute it when logged as the user ?
+2012-01-25T16:51:00.000Z	iceroot	level09	PATH is the answer
+2012-01-25T16:51:00.000Z	level09		aha
+2012-01-25T16:51:00.000Z	level09		I should specify the full path
+2012-01-25T16:51:00.000Z	iceroot	level09	if you type "ping" the system is looking in thr PATH Variable where that command is
+2012-01-25T16:51:00.000Z	iceroot	level09	normally ubuntu should set PATH by default when using crontab -e
+2012-01-25T16:52:00.000Z	iceroot	level09	but its always a good idea to use full path to commands in cronjobs/scripts
+2012-01-25T16:52:00.000Z	level09	iceroot	great, but how do I find the full path to my command ?
+2012-01-25T16:52:00.000Z	level09		whereis ?
+2012-01-25T16:52:00.000Z	iceroot	level09	"which command"

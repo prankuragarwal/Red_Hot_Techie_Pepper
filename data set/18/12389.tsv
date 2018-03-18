@@ -1,0 +1,18 @@
+2006-12-17T07:41:00.000Z	rm_you		Is anyone here on a MacBook>
+2006-12-17T07:41:00.000Z	rm_you		?
+2006-12-17T07:41:00.000Z	rm_you		ok.... in that case:
+2006-12-17T07:43:00.000Z	rm_you		When compiling a kernel module for the motion sensor built in to MacBooks (module name: ams), it complains that I am missing a bunch of headers that should be present in /usr/src/linux-headers-2.6.17-10/include/asm/, and I can't figure out why they aren't there... Has anyone else experienced this very specific problem? >_>
+2006-12-17T07:44:00.000Z	oskude	rm_you	have you installed the "linux-headers-*" package ? (where * is your kernel)
+2006-12-17T07:44:00.000Z	rm_you	oskude	yes, it is installd
+2006-12-17T07:45:00.000Z	oskude	rm_you	does it say which file is not found ? can _you_ find it on the hd ?
+2006-12-17T07:46:00.000Z	oskude	rm_you	is there souce code you try "tweaked" for intel based macs ?`(is there like an option in configure or so)
+2006-12-17T07:47:00.000Z	rm_you	oskude	no, the makefile and the source file are very simple....
+2006-12-17T07:47:00.000Z	oskude	rm_you	maybe they are "hard coded" for ppc macs only ?
+2006-12-17T07:47:00.000Z	rm_you	oskude	and I'm not even sure if the sensor the module is for even existed on the pre-intel macbooks
+2006-12-17T07:48:00.000Z	rm_you	oskude	that's a good thought though, it is possible I suppose that this module uses things that would only be present on a powerpc system...
+2006-12-17T07:48:00.000Z	oskude	rm_you	hmm, then thats odd... it definetly is looking in the wrong place for the file... now its the question "who" is doing this, the code or "ubuntu"
+2006-12-17T07:49:00.000Z	rm_you	oskude	the code.
+2006-12-17T07:49:00.000Z	rm_you	oskude	It has #includes to <asm/of_device.h>, for example
+2006-12-17T07:50:00.000Z	rm_you	oskude	so I guess your theory that it was written expecting to be compiled on a ppc mac makes the most sense of anything i've found so far...
+2006-12-17T07:50:00.000Z	oskude	rm_you	well, im not familiar with that project, so you maybe have better change to talk with the people who code it...
+2006-12-17T07:51:00.000Z	rm_you	oskude	yeah, I'm emailing him

@@ -1,0 +1,23 @@
+2010-11-24T14:10:00.000Z	tim167		im trying to mount an NTFS partition, but i get 'Failed to mount '/dev/sda1': Operation not supported
+2010-11-24T14:10:00.000Z	tim167		Mount is denied because NTFS is marked to be in use.' what can i do ?
+2010-11-24T14:11:00.000Z	theo	tim167	Shows us the output of the df -T command
+2010-11-24T14:12:00.000Z	tim167	theo	/dev/sdb1     ext3    18516460  14002700   3573156  80% /
+2010-11-24T14:12:00.000Z	tim167		varrun       tmpfs     1015280       120   1015160   1% /var/run
+2010-11-24T14:12:00.000Z	tim167		varlock      tmpfs     1015280         0   1015280   0% /var/lock
+2010-11-24T14:12:00.000Z	tim167		udev         tmpfs     1015280       100   1015180   1% /dev
+2010-11-24T14:12:00.000Z	tim167		devshm       tmpfs     1015280       536   1014744   1% /dev/shm
+2010-11-24T14:12:00.000Z	tim167		lrm          tmpfs     1015280     40300    974980   4% /lib/modules/2.6.24-28-rt/volatile
+2010-11-24T14:12:00.000Z	tim167		/dev/sdb3     vfat   125751616 123869280   1882336  99% /media/disk-3
+2010-11-24T14:13:00.000Z	tim167	theo	there's no entry for sda, which is the one i need to access
+2010-11-24T14:13:00.000Z	theo	tim167	Can you put the output of fdisl -l /dev/sda in the pastebin?
+2010-11-24T14:14:00.000Z	tim167	theo	ok moment...
+2010-11-24T14:15:00.000Z	tim167	theo	the output of fdisk -l  /dev/sda is "Cannot open /dev/sda"
+2010-11-24T14:15:00.000Z	theo	tim167	try sudo  fdisk -l /dev/sda
+2010-11-24T14:15:00.000Z	tim167	theo	ah right...
+2010-11-24T14:16:00.000Z	tim167	theo	http://paste.ubuntu.com/535816/
+2010-11-24T14:18:00.000Z	theo	tim167	try "sudo mount -t ntfs-3g /dev/sda1 /mnt" and paste any output in  the pastebin
+2010-11-24T14:19:00.000Z	tim167	theo	http://paste.ubuntu.com/535817/
+2010-11-24T14:19:00.000Z	tim167	theo	so i guess i have to start and stop the windows partition...
+2010-11-24T14:20:00.000Z	theo	tim167	OK try to repair rhe volume from Windows and try again
+2010-11-24T14:20:00.000Z	tim167	theo	many thanks for the help! i'll try it
+2010-11-24T14:20:00.000Z	theo	tim167	Or if you do not have Windows try Choice 2 but be warned!

@@ -1,0 +1,21 @@
+2011-05-22T06:10:00.000Z	commodore64th		I have a Linux device connected to my Linux PC via USB networking. I have successfully set up an SSH server between them, but the Linux device isn't connecting to the internet.
+2011-05-22T06:10:00.000Z	pmo5	commodore64th	you need default route to internet router, i think
+2011-05-22T06:11:00.000Z	pmo5	commodore64th	sorry maybe far mor then that .. :) .. fill up /etc/resolv.conf too, with dns name aka nameservers .
+2011-05-22T06:12:00.000Z	pmo5	commodore64th	netstat -nr  / better .. ip route ls (i  prefer) and check out if you have a default route
+2011-05-22T06:16:00.000Z	commodore64th	pmo5	how do I know if I have a default route?
+2011-05-22T06:16:00.000Z	pmo5	commodore64th	ip route ls .. should show a line to start with "default"
+2011-05-22T06:18:00.000Z	pmo5	commodore64th	now.. /etc/resolv.conf..
+2011-05-22T06:18:00.000Z	pmo5	commodore64th	if you have nothing there or #lines.. you could add a line like .. nameserver 8.8.8.8
+2011-05-22T06:20:00.000Z	pmo5	commodore64th	if you do "host www.google.com" does that work .. if you "ping 192.168.. and ping 199.. " does it work too (ctrl C to stop them?
+2011-05-22T06:22:00.000Z	commodore64th	pmo5	my device doesn't have the "host" command, but it does have wget. When I run "wget http://www.google.com" I get "Connecting to www.google.com (74.125.127.99:80)"
+2011-05-22T06:23:00.000Z	pmo5	commodore64th	hmmm.. try ping..
+2011-05-22T06:25:00.000Z	commodore64th	pmo5	I can only ping the computer the device is directly connected to, but no other computers on my network.
+2011-05-22T06:27:00.000Z	pmo5	commodore64th	on default line of "ip route ls".. you should have the IP of your router...
+2011-05-22T06:30:00.000Z	pmo5	commodore64th	impossible.. 192.168.1.0 is not an IP address, but a network..
+2011-05-22T06:31:00.000Z	pmo5	commodore64th	could be 192.168.1.1 but not 192.168.1.0 ..
+2011-05-22T06:31:00.000Z	pmo5	commodore64th	ok.. makes more sense
+2011-05-22T06:32:00.000Z	pmo5	commodore64th	hence your router doesn't let you go.. outside.. filtering reason ???
+2011-05-22T06:36:00.000Z	pmo5	commodore64th	echo 1 > /proc/sys/net/ipv4/ip_forward  (on your pc)
+2011-05-22T06:37:00.000Z	pmo5	commodore64th	your PC should let your linux device frame go forward.. when it actually filters those
+2011-05-22T06:37:00.000Z	pmo5	commodore64th	you may need and iptables rules too ..
+2011-05-22T06:50:00.000Z	commodore64th	pmo5	when I run "echo 1 > /proc/sys/net/ipv4/ip_forward" I get "Permission Denied"

@@ -1,0 +1,18 @@
+2011-10-06T02:54:00.000Z	spike		hi, any idea why a usb stick created from mac will show up in the bios of a netbook but then it will never boot from it? it's like the dd'ed ubuntu image is not a valid OS or something
+2011-10-06T02:56:00.000Z	Jordan_U	spike	Ubuntu isos cannot simply be dd'd to a drive for booting on BIOS based systems.
+2011-10-06T02:57:00.000Z	spike	Jordan_U	ok. I've simply followed what it says for 'create a usb key from mac', but then I'm installing on an acer notebook, so guess that's not good enough
+2011-10-06T02:58:00.000Z	spike	Jordan_U	can you recommend some way of getting this done? I've got a mac I'm creating the key on and I'm trying to install on the acer aspire
+2011-10-06T02:58:00.000Z	Jordan_U	spike	Correct. Those instructions should be clarified to state that they will only make a drive which is bootable from a mac.
+2011-10-06T03:00:00.000Z	Jordan_U	spike	It's difficult at the moment. With 11.10 I believe you will be able to simply dd the image and have a bootable drive, and I can create an image for you which is dd-able if you'd like but it would need to be tomorrow.
+2011-10-06T03:00:00.000Z	Jordan_U	spike	Are you using the 64 bit iso?
+2011-10-06T03:03:00.000Z	Jordan_U	spike	Only the 64 bit iso contains an EFI bootloader as the bootloader needs to match the architecture of both the machine and the kernel with EFI and most EFI capable machines are 64 bit.
+2011-10-06T03:07:00.000Z	spike	Jordan_U	ah, I see, that makes a lot of sense, thank you
+2011-10-06T03:08:00.000Z	Jordan_U	spike	You're welcome.
+2011-10-06T03:10:00.000Z	Jordan_U	spike	If you need something today then I would recommend that you copy the iso file (as a file) to the netbook and put it in a directory /boot-isos/ (this will work even with ntfs, but the directory needs to be top level, i.e. in "C:\boot-isos") then dd Super GRUB2 Disk to the flash drive and use Super GRUB2 Disk's iso booting option.
+2011-10-06T03:13:00.000Z	spike	Jordan_U	ftr, the netbook has a *very* old fedora. I take I can put the iso in / and still use super grub2 disk, correct?
+2011-10-06T03:30:00.000Z	Jordan_U	spike	Correct.
+2011-10-06T03:30:00.000Z	Jordan_U	spike	To be clear, it needs to be '/boot-isos/', the directory name is critical.
+2011-10-06T03:32:00.000Z	Jordan_U	spike	Actually, you're going to have to do more to get the Ubuntu installer to be able to install from the partition you booted from. There are many options but none I have time to explain right now :(
+2011-10-06T03:32:00.000Z	spike	Jordan_U	got it, will give it a go. thank you very much for all your help, it's rare to find people combining skill, patience and thoroughness in their answer
+2011-10-06T03:32:00.000Z	spike	Jordan_U	it's ok, I'll figure something out, thank you. gtg, have a good day.
+2011-10-06T03:35:00.000Z	Jordan_U	spike	You're welcome. If you'd like to try to do it on your own some hints are to add the "toram" kernel parameter at the grub menu, unmount /cdrom/ from the live session *and* "losetup -d /dev/loop0". If you have more than 1 GiB of RAM that should allow you to install to the media you booted from. If not, you can use the netboot image but that won't be automatically detected by Super GRUB2 Disk.

@@ -1,0 +1,18 @@
+2010-10-14T17:31:00.000Z	kai696		Check filesystem for errors failed
+2010-10-14T17:32:00.000Z	kai696		aye, will do one sec
+2010-10-14T17:34:00.000Z	kai696		http://pastebin.com/37simSSb
+2010-10-14T17:34:00.000Z	kai696		@ rusty149
+2010-10-14T17:35:00.000Z	kai696		http://pastebin.com/zhYByx43+
+2010-10-14T17:35:00.000Z	kai696		http://pastebin.com/zhYByx43
+2010-10-14T17:35:00.000Z	kai696		*********
+2010-10-14T17:36:00.000Z	kai696		http://pastebin.com/H1cBjL5w
+2010-10-14T17:37:00.000Z	kai696		what if i try to unmount THEN remount ? just incase
+2010-10-14T17:38:00.000Z	kai696		negative, won't let me unmount from gparted
+2010-10-14T17:38:00.000Z	sipior	kai696	try using lsof to see what's holding the partition open.
+2010-10-14T17:39:00.000Z	kai696	sipior	: everything
+2010-10-14T17:40:00.000Z	sipior	kai696	it's obviously not everything. find out which processes, and then kill them.
+2010-10-14T17:42:00.000Z	sipior	kai696	i don't see the problem. you have the process IDs, what's keeping you from killing them?
+2010-10-14T17:43:00.000Z	kai696	sipior	don't know how to on linux, and i don't know how to read that output
+2010-10-14T17:44:00.000Z	sipior	kai696	ah, now we're getting somewhere. the process id is the second column. killing processes is done with "kill <pid>". alternatively, you can use pkill, if you like.
+2010-10-14T17:45:00.000Z	kai696	sipior	but which processes would I kill to make the volume mount ?
+2010-10-14T17:46:00.000Z	sipior	kai696	the ones that were reported by lsof as having open files on the partition you want to unmount.

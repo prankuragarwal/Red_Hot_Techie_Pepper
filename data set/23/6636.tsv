@@ -1,0 +1,23 @@
+2006-02-26T09:55:00.000Z	weareallone	crimsun	no
+2006-02-26T09:56:00.000Z	crimsun		no, Flight 4 is out
+2006-02-26T09:57:00.000Z	crimsun	weareallone	does ``sudo modprobe snd-cs4236 isapnp=0'' work?
+2006-02-26T09:57:00.000Z	weareallone		ami supposed to be includding ''?
+2006-02-26T09:57:00.000Z	crimsun	weareallone	no
+2006-02-26T09:59:00.000Z	weareallone	crimsun	got nuthin
+2006-02-26T09:59:00.000Z	crimsun	weareallone	elaborate. Do you get an error, or do you just get the prompt back immediately?
+2006-02-26T10:00:00.000Z	weareallone		prompt
+2006-02-26T10:00:00.000Z	crimsun	weareallone	cat /proc/asound/cards
+2006-02-26T10:00:00.000Z	weareallone		cat /proc/asound/cards
+2006-02-26T10:00:00.000Z	weareallone		doh
+2006-02-26T10:01:00.000Z	weareallone	crimsun	0 [CS4236B        ] : CS4236B - CS4236B
+2006-02-26T10:01:00.000Z	weareallone		                     CS4236B at 0x534, irq 5, dma 1&3
+2006-02-26T10:01:00.000Z	crimsun	weareallone	now adjust the volumes using alsamixer ('m' to unmute)
+2006-02-26T10:02:00.000Z	weareallone		thank you thank you thank you
+2006-02-26T10:03:00.000Z	crimsun	weareallone	now, to make sure it works on next boot, you need to type the following at the console: echo "options snd-cs4236 isapnp=0" | sudo tee -a /etc/modprobe.d/snd-cs4236
+2006-02-26T10:04:00.000Z	crimsun	weareallone	then: echo "snd-cs4236" | sudo tee -a /etc/modules
+2006-02-26T10:10:00.000Z	weareallone	crimsun	done, do i need to reboot?
+2006-02-26T10:13:00.000Z	weareallone		if i can just find a good media player on here...
+2006-02-26T10:14:00.000Z	crimsun	weareallone	you don't need to reboot. Those two steps were to ensure that audio functions correctly on subsequent boots.
+2006-02-26T10:14:00.000Z	weareallone		not sure if all problems are solved with sound yet
+2006-02-26T10:28:00.000Z	weareallone	crimsun	i get this msg when i try to play something on totem- There were no decoders found to handle the stream, you might need to install the corresponding plugins... so far no other player works either ...rythmbox says mp3 is not streaming music
+2006-02-26T10:28:00.000Z	crimsun	weareallone	install gstreamer0.8-mad

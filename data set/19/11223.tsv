@@ -1,0 +1,19 @@
+2007-03-05T06:53:00.000Z	omeil		can someone help me plz
+2007-03-05T06:53:00.000Z	omeil		!mounting drive
+2007-03-05T06:53:00.000Z	omeil		!mounting
+2007-03-05T06:54:00.000Z	omeil		!fstab
+2007-03-05T06:54:00.000Z	omeil		!partitions
+2007-03-05T06:55:00.000Z	omeil		Can someone help me i need to view the contents of my ntfs drive but i can't seem to mount it
+2007-03-05T06:57:00.000Z	omeil		Can someone help me plz. i mount /dev/sda3 /media/windows but when i click there it just gives me and error.
+2007-03-05T06:58:00.000Z	omeil		it says you do not have the permission necessary to view the files
+2007-03-05T06:58:00.000Z	dang`r`us	omeil	then it's a permissions problem, not a ntfs problem
+2007-03-05T06:59:00.000Z	dang`r`us	omeil	see the manpage for mount ("man mount"), section "options for ntfs"
+2007-03-05T06:59:00.000Z	dang`r`us	omeil	set uid to your user's id or name
+2007-03-05T07:00:00.000Z	dang`r`us	omeil	mount -ouid=omeil (or whatever your username is) /dev/sda3 /media/windows
+2007-03-05T07:00:00.000Z	dang`r`us	omeil	wait
+2007-03-05T07:00:00.000Z	dang`r`us	omeil	better:
+2007-03-05T07:00:00.000Z	dang`r`us	omeil	mount -oro,uid=omeil (or whatever your username is) /dev/sda3 /media/windows
+2007-03-05T07:02:00.000Z	dang`r`us	omeil	not really, it's always worked out of the box for me
+2007-03-05T07:04:00.000Z	dang`r`us	omeil	http://rafb.net/p/59k6HZ49.html  is mine
+2007-03-05T07:04:00.000Z	dang`r`us	omeil	you will need to change hd0,0 probably
+2007-03-05T07:05:00.000Z	dang`r`us	omeil	you need to read up on grub's drive/device numbers

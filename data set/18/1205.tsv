@@ -1,0 +1,18 @@
+2011-04-29T05:53:00.000Z	SinnerNyx		Ok, kinda silly question. Using ubuntu-server. I used to have a custom MOTD, but I don't remember how I did it. I upgraded to 11.04 and whenever I change /etc/motd the changes get wiped when I log in again. I don't want to use a third-party application just to change it once.
+2011-04-29T05:54:00.000Z	ohsix	SinnerNyx	/etc/issue?
+2011-04-29T05:54:00.000Z	ohsix	SinnerNyx	grep /etc for bits that you already see on logon :]
+2011-04-29T05:55:00.000Z	SinnerNyx	ohsix	issue is for what comes up before login right? good idea with the grep though. I'll get back to you in a sec
+2011-04-29T06:06:00.000Z	SinnerNyx	ohsix	I tried sudo find /etc | xargs sudo grep -i 'welcome to ubuntu server'
+2011-04-29T06:06:00.000Z	SinnerNyx	ohsix	it got nothing...
+2011-04-29T06:06:00.000Z	ohsix	SinnerNyx	motd is generated from other files, let me look real quick from where
+2011-04-29T06:07:00.000Z	ohsix	SinnerNyx	dig /etc/update-motd.d/
+2011-04-29T06:08:00.000Z	SinnerNyx	ohsix	:S How did my grep command not find this :(
+2011-04-29T06:08:00.000Z	SinnerNyx	ohsix	sorry for wasting your time
+2011-04-29T06:08:00.000Z	ohsix	SinnerNyx	the release name isn't part of the file
+2011-04-29T06:08:00.000Z	ohsix	SinnerNyx	no waste :]
+2011-04-29T06:26:00.000Z	SinnerNyx	ohsix	just wanted to thank you again, and let you know it worked. have a good night
+2011-04-29T06:26:00.000Z	ohsix	SinnerNyx	great
+2011-04-29T06:26:00.000Z	ohsix	SinnerNyx	props for figuring out the .d thing, most people don't even look around
+2011-04-30T06:14:00.000Z	ohsix	SinnerNyx	if it doesn't depend on anything, rc.local
+2011-04-30T06:14:00.000Z	ohsix	SinnerNyx	if it does you probably want a sysvinit/upstart script to start it after the resources you need are available
+2011-04-30T06:16:00.000Z	SinnerNyx	ohsix	Thx, I'm trying it out now

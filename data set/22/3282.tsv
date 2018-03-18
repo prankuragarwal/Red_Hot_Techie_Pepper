@@ -1,0 +1,22 @@
+2008-10-31T03:07:00.000Z	carpeliam		is there a way to edit the bootloader if grub won't boot into any OS? i'm really in a pickle :(
+2008-10-31T03:07:00.000Z	Gnea	carpeliam	2nd url :)
+2008-10-31T03:09:00.000Z	Gnea	carpeliam	are you getting some sort of error message?
+2008-10-31T03:11:00.000Z	Gnea	carpeliam	one moment
+2008-10-31T03:14:00.000Z	Gnea	carpeliam	http://ubuntuforums.org/showthread.php?t=77042 and http://wiki.linuxquestions.org/wiki/GRUB#Error_18 explain what it means
+2008-10-31T03:14:00.000Z	Gnea	carpeliam	did this error happen the first time you booted up ubuntu or did it work before?
+2008-10-31T03:16:00.000Z	carpeliam	Gnea	i got this after installing
+2008-10-31T03:18:00.000Z	carpeliam	Gnea	the confusing thing about this message is that my machine isn't that old, and it booted off a pretty large windows partition without a problem
+2008-10-31T03:18:00.000Z	Gnea	carpeliam	perhaps it has to do with the way that you partitioned it. is windows on the first primary partition?
+2008-10-31T03:19:00.000Z	carpeliam	Gnea	yep. windows is on disk1, first partition, and this is the boot partition. ubuntu is on disk0, at the end of the physical disk
+2008-10-31T03:21:00.000Z	Gnea	carpeliam	okay, there seems to be some translation error :)  how many *physical* hard drives do you have installed? 1 or 2?
+2008-10-31T03:21:00.000Z	carpeliam	Gnea	i have two
+2008-10-31T03:22:00.000Z	Gnea	carpeliam	aaaah.... so you installed windows on the first one (disk0) and ubuntu on the second one (disk1)?
+2008-10-31T03:24:00.000Z	carpeliam	Gnea	mostly correct- for some reason, windows calls the physical disk with ubuntu on it "disk0", even though "disk1" is the physical disk that has the MBR
+2008-10-31T03:24:00.000Z	Gnea	carpeliam	that's a bit... confusing, indeed. are they IDE or SATA?
+2008-10-31T03:26:00.000Z	carpeliam	Gnea	they are SATA. i have two partitions on each disk, and disk0 was the only one that had enough room for a new linux partition :/ do i need to have ubuntu on the same physical disk as the MBR? or more specifically, does the "/boot" partition need to be on the same physical disk as the MBR?
+2008-10-31T03:28:00.000Z	Gnea	carpeliam	yeah, grub should only be on the ubuntu system, and you should be able to change the boot sequence from the BIOS, and grub should pick up windows and make it a selection
+2008-10-31T03:28:00.000Z	Gnea	carpeliam	er, only on the ubuntu disk
+2008-10-31T03:29:00.000Z	Gnea	carpeliam	i would just boot from the livecd and tell grub to install to the MBR of disk1 (/dev/sdb?), then reboot and tell bios to boot HDD-1 before booting HDD-0
+2008-10-31T03:30:00.000Z	Gnea	carpeliam	theoretically, you should still be able to boot into windows (if it's XP... if it's Vista, not sure..) and fix the MBR of disk0 from there
+2008-10-31T03:31:00.000Z	carpeliam	Gnea	unfortunately my install CD is also botched :| so i'm downloading another one... we'll see how it goes :) but i'll try that
+2008-10-31T03:31:00.000Z	Gnea	carpeliam	okay :)

@@ -1,0 +1,19 @@
+2009-05-31T18:20:00.000Z	thevdi		hi. I am having trouble mounting a cf card in a USB card reader. fdisk reports that it has a Linux (83) FS when it is FAT32. Gparted sees it as FAT32 correctly. I can't automount it but can manually. Any ideas, please
+2009-05-31T18:22:00.000Z	fornix	thevdi	u can change the system id of ur disk using fdisk
+2009-05-31T18:23:00.000Z	thevdi	fornix	yeah, but why would fdisk report differently from gparted?
+2009-05-31T18:23:00.000Z	thevdi		i.e. Is there a bug ?
+2009-05-31T18:23:00.000Z	fornix	thevdi	probably in the partition table its marked as linux
+2009-05-31T18:24:00.000Z	fornix	thevdi	what does blkid report?
+2009-05-31T18:24:00.000Z	thevdi	fornix	does gparted not read the partition id?
+2009-05-31T18:24:00.000Z	thevdi		blkid says UUID=all zero, vfat
+2009-05-31T18:25:00.000Z	fornix	thevdi	probably gparted ignores the partition table and runs its own check for filesystems. pastebin the output of blkid to be certain that the disk is vfat
+2009-05-31T18:25:00.000Z	thevdi		it says type="vfat"
+2009-05-31T18:25:00.000Z	fornix	thevdi	you can fix it in less than 2 minutes using fdisk
+2009-05-31T18:26:00.000Z	thevdi		I just use "t" then 0x0C or whatever it is in fdisk?
+2009-05-31T18:27:00.000Z	fornix	thevdi	exactly
+2009-05-31T18:27:00.000Z	thevdi		I'll repartition it gparted then check it with fdisk
+2009-05-31T18:27:00.000Z	fornix	thevdi	u dont have to repartition
+2009-05-31T18:27:00.000Z	thevdi	fornix	- there is 15MB unallocated that I just want to mop up
+2009-05-31T18:28:00.000Z	fornix	thevdi	go ahead. and check what fdisk reports its system id after gparted works on it
+2009-05-31T18:29:00.000Z	thevdi		that works now. it is reported as fat32 correctly in fdisk. thanks for help
+2009-05-31T18:30:00.000Z	thevdi	fornix	thanks for help

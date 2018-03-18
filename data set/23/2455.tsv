@@ -1,0 +1,23 @@
+2009-05-14T22:35:00.000Z	Sirisian|Work		Wanna help me debug a server problem. Okay two identical servers with separate hostnames. They both show their static IPs but I can only connect to one. If '/etc/init.d/networking restart' on one the other loses connection to the network (My ssh connections to it are disconnected and I can't reconnect and I can no longer wget google.com for instance). But the other one then is connected. If I go to the one that got disconnected it
+2009-05-14T22:35:00.000Z	Sirisian|Work		basically swaps roles. Any diagnoses? Some kind of network issue maybe? DHCP thing? I'm clueless.
+2009-05-14T22:37:00.000Z	flashblind	Sirisian|Work	Sounds like you have a prime example of a ip conflict
+2009-05-14T22:37:00.000Z	Sirisian|Work	flashblind	that's what I thought but I've been told a few times the DNS and macnames are correct.
+2009-05-14T22:38:00.000Z	flashblind	Sirisian|Work	Dns doesn't use maccaddress
+2009-05-14T22:40:00.000Z	flashblind	Sirisian|Work	 It depends on weather or not the machines are exposed to the internet or just you companies rfc1918 Intranet
+2009-05-14T22:40:00.000Z	Sirisian|Work	flashblind	just the intranet
+2009-05-14T22:41:00.000Z	Sirisian|Work	flashblind	well I take that back. They're on an intranet but can access the internet. But I don't use them with the internet. They're 2 cups servers.
+2009-05-14T22:42:00.000Z	flashblind	Sirisian|Work	So i would note the macc addresses of the network cards and log on to your dhcp server and give each machine a unique reserved ipadrress done doing so ifconfig eth0 down && ifconfig eth0 up
+2009-05-14T22:43:00.000Z	Sirisian|Work	flashblind	he said it's unique and reserved.
+2009-05-14T22:44:00.000Z	Sirisian|Work	flashblind	I'm talking to him now. I'm going to make sure the IP is unique also
+2009-05-14T22:44:00.000Z	flashblind	Sirisian|Work	 Could you please do i lspci and pastebin the results so i can reveiw them?
+2009-05-14T22:45:00.000Z	Sirisian|Work	flashblind	will do
+2009-05-14T22:49:00.000Z	flashblind	Sirisian|Work	How are the diagnostics coming along
+2009-05-14T22:50:00.000Z	Sirisian|Work	flashblind	http://pastebin.com/d7bfd1d76
+2009-05-14T22:50:00.000Z	Sirisian|Work	flashblind	The guy said he'd call me back :
+2009-05-14T22:52:00.000Z	flashblind	Sirisian|Work	It might just be a network issue
+2009-05-14T22:52:00.000Z	Sirisian|Work	flashblind	I'd imagine so. My other 7 servers don't have this problem
+2009-05-14T22:53:00.000Z	flashblind	Sirisian|Work	is your network infrastructure of supportin gigbit connections?
+2009-05-14T22:54:00.000Z	flashblind	Sirisian|Work	is your network infrastructure  capible of supporting gigbit connections?
+2009-05-14T22:54:00.000Z	Sirisian|Work	flashblind	Aren't most universities their own ISP? I assume the network is pretty sufficient
+2009-05-14T22:55:00.000Z	flashblind	Sirisian|Work	So  the backbone band width is notman issue, andyou would be correcton the assumtion that most universities are their own isp
+2009-05-14T22:57:00.000Z	flashblind	Sirisian|Work	 Some universities and colleges prevent studen and faculty from running personal servers due to fear of  file sharing lawsuits

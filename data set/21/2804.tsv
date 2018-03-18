@@ -1,0 +1,21 @@
+2010-12-18T13:25:00.000Z	dh003i		hi all, could anyone help me with a recovery of my MBR? I tried to install Windows XP (after Ubuntu 10.10), had a 40 GB partition set aside, deleted that partition with WinXP boot CD, but it wouldn't let me install Windows on it...but then I couldn't boot into Linux
+2010-12-18T13:26:00.000Z	dh003i		I tried to reinstall GRUB2 to my MBR using the guide online https://help.ubuntu.com/community/RecoveringUbuntuAfterInstallingWindows
+2010-12-18T13:27:00.000Z	incognito	dh003i	actually you need to install ubuntu after you install windows
+2010-12-18T13:28:00.000Z	dh003i	incognito	well, I kinda can't, Ubuntu already installed...didn't think I'd need Windows until I needed Spectraview II software
+2010-12-18T13:28:00.000Z	incognito	dh003i	which partition is ubuntu on?
+2010-12-18T13:29:00.000Z	incognito	dh003i	and which partition is windows on?
+2010-12-18T13:30:00.000Z	dh003i	incognito	ok, Windows didn't install
+2010-12-18T13:30:00.000Z	dh003i	incognito	but it would've been like so
+2010-12-18T13:32:00.000Z	incognito	dh003i	did you put your ubuntu home folder on a separate partition?
+2010-12-18T13:33:00.000Z	dh003i	incognito	yes see the partition list above../dev/sda8 is /home
+2010-12-18T13:38:00.000Z	incognito	dh003i	if you install window on any partition other than sda1, sda1 still has to be ntfs because the xp has to have the boot sectors for booting. Afterwards, the ubuntu instal can handle the installation of other OS's and recognize the location of the windows partitions.
+2010-12-18T13:41:00.000Z	dh003i	incognito	ahhh, shoot...I don't think I can resize my partitions (right?)...right now, sda1 is swap...but only 16GB...sda5 was unused, so I figured install Windows on that...so could I install it on sda1, then make sda5 my swap and recover my MBR after?
+2010-12-18T13:44:00.000Z	incognito	dh003i	you don't need to resize anything. you can install windows on sda1 w/16gb. How big is that program you needed to run?
+2010-12-18T13:46:00.000Z	incognito	dh003i	16GB is plenty of room to run windows
+2010-12-18T13:49:00.000Z	incognito	dh003i	of course it would be even better if you run xp in vmware. esx may be the most user friendly
+2010-12-18T13:51:00.000Z	dh003i	incognito	ahhh, well Spectraview II is the software I needed to run. It is to hardware calibrate a NEC LCD monitor. Ran in Wine, it said "no compatible monitor found"...something about no linux implementation of DDC (Data Display Channel). The creator of argyll said that hardware control of the monitor probably wouldn't work well under virtualization
+2010-12-18T13:53:00.000Z	incognito	dh003i	then put windows on sda1 and be done with it. Did you say that ubuntu won't boot?
+2010-12-18T13:53:00.000Z	dh003i	incognito	yes, I can't boot into Ubuntu after the failed WinXP install attempt
+2010-12-18T13:54:00.000Z	dh003i	incognito	I'm trying to get my boot menu back, but no luck
+2010-12-18T13:54:00.000Z	incognito	dh003i	do you calibrate tv'
+2010-12-18T13:57:00.000Z	incognito	dh003i	if you installed ubuntu 10.04 or later, then that would be grub2

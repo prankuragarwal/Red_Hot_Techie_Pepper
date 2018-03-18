@@ -1,0 +1,22 @@
+2011-10-13T13:27:00.000Z	jatt		which file should I modified so the following module is loaded every time I reboot?
+2011-10-13T13:27:00.000Z	jatt		sudo modprobe coretemp
+2011-10-13T13:27:00.000Z	jatt		I mean the coretemp kernel module
+2011-10-13T13:27:00.000Z	llutz_	jatt	add "coretemp" to /etc/modules
+2011-10-13T13:29:00.000Z	jatt	llutz_	thanks
+2012-02-01T14:48:00.000Z	llutz_	jatt	wikipedia tells you
+2012-02-13T14:34:00.000Z	llutz_	jatt	do you have "localhost" in mydestination?
+2012-02-13T14:35:00.000Z	llutz_	jatt	and also, root should get any mails, they should be redirected to a common user account
+2012-02-13T14:35:00.000Z	llutz_	jatt	so check you procmail settings
+2012-02-13T14:36:00.000Z	llutz_	jatt	and also, root should get any mails, they should be redirected to a common user account. check your /etc/aliases
+2012-02-13T14:37:00.000Z	jatt	llutz_	thanks. /etc/aliases says:
+2012-02-13T14:37:00.000Z	llutz_	jatt	look for lines starting with root:
+2012-02-13T14:40:00.000Z	llutz_	jatt	do you have procmail installed?
+2012-02-13T14:41:00.000Z	jatt	llutz_	yes
+2012-02-13T14:42:00.000Z	llutz_	jatt	/etc/procmailrc  is the config
+2012-02-13T14:44:00.000Z	jatt	llutz_	I see, ubuntu doesn't provide a sample file, the syntax seems complicated I will check it maybe I need to configure it so I get mail from root
+2012-02-13T14:45:00.000Z	llutz_	jatt	add "root:  yourusername" to /etc/aliases and run "newaliases" as root then. "postfix reload"
+2012-02-13T14:48:00.000Z	jatt	llutz_	thank will try it now. I checked and mail to my username arrives correctly to localhost
+2012-02-13T14:48:00.000Z	llutz_	jatt	so you are missing the root alias
+2012-02-13T14:51:00.000Z	jatt	llutz_	thanks. it is working perfectly now after adding the alias. So ubuntu/postfix doesn't allow any direct mail to root? as security measure?
+2012-02-13T14:52:00.000Z	llutz_	jatt	yes, in general root should never read mails. they always should be forwarded to a common useraccount. its a security thing
+2012-02-13T14:53:00.000Z	llutz_	jatt	postfix should have asked you at installation about this

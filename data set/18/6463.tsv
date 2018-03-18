@@ -1,0 +1,18 @@
+2008-05-08T18:50:00.000Z	FT-Laptop		I just recently upgraded from gutsy to hardy; now, the "ordinary user" that I routinely used can't seem to do administrative tasks - the popup that used to ask for the admin password no longer pops up, and any application that wants it just sits waiting until I kill it or log out.  Is this a known bug, or is there something I need to do that I don't know about? The Hardy install was via the update notification.
+2008-05-08T18:51:00.000Z	ikonia	FT-Laptop	what happens when you try to use the command line
+2008-05-08T18:51:00.000Z	FT-Laptop	ikonia	Haven't tried it.  This manifests, among other times, when I try to install the updates that the update manager notifies me of.
+2008-05-08T18:52:00.000Z	ikonia	FT-Laptop	try the command line it may give better output/warning
+2008-05-08T18:52:00.000Z	FT-Laptop	ikonia	I've been working around it by logging in as root.
+2008-05-08T18:52:00.000Z	FT-Laptop	ikonia	can you give me a sample command line to test with?  I'm not that familiar with the shell.
+2008-05-08T18:52:00.000Z	ikonia	FT-Laptop	sudo apt-get update
+2008-05-08T18:54:00.000Z	FT-Laptop	ikonia	Interesting response.  The local machine's name is jzeitlin-linux; sudo says "sudo: unable to resolve host jzeitlin-linux"
+2008-05-08T18:54:00.000Z	ikonia	FT-Laptop	as I suspected
+2008-05-08T18:54:00.000Z	ikonia	FT-Laptop	what you need to do is put your hostname in /etc/hosts and map it to a localhost (127.0.0.2) address
+2008-05-08T18:56:00.000Z	FT-Laptop	ikonia	OK.  I have  127.0.0.1 localhost and 127.0.1.1 jzeitlin-linux.mshome in there.  Should I use the 127.0.0.2 you gave, or one of those, or something else entirely?
+2008-05-08T18:57:00.000Z	ikonia	FT-Laptop	what is your laptops name
+2008-05-08T18:58:00.000Z	FT-Laptop	ikonia	jzeitlin-laptop
+2008-05-08T18:58:00.000Z	FT-Laptop	ikonia	jzeitlin-linux, I mean
+2008-05-08T18:58:00.000Z	ikonia	FT-Laptop	so do "127.0.0.2 jzeitlin-laptop"
+2008-05-08T18:58:00.000Z	ikonia	FT-Laptop	so do "127.0.0.2 jzeitlin-linux"
+2008-05-08T18:59:00.000Z	FT-Laptop	ikonia	OK.
+2008-05-08T19:01:00.000Z	FT-Laptop	ikonia	OK, that seems to have done the trick; sudo apt-get update seems to be doing its thing now.  Thank you most kindly!

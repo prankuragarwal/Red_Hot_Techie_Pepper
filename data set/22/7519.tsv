@@ -1,0 +1,22 @@
+2006-03-30T14:44:00.000Z	kditty		could anyone help me out with this: when i go to places and network connections, it prompts me for a password to log onto my network, the password i set isnt right, but i can hit cancel and still access my files, but to play the mp3 files i have to copy them from remote computer then paste them to local disk. smb://familypcu/mymusic is where the file is located according to file info
+2006-03-30T14:45:00.000Z	kditty		places then network servers rather..
+2006-03-30T14:47:00.000Z	vook	kditty	hmm, you'd probably be better off just mounting the samba share.  i.e. mount -t smbfs -o username=windowsuser //familycpu/mymusic /mnt/mymusicfolder
+2006-03-30T14:49:00.000Z	kditty		it says could not resolve mount point
+2006-03-30T14:50:00.000Z	kditty	vook	sorry forgot to mention your name up there
+2006-03-30T14:50:00.000Z	vook	kditty	did you make a directory for it?  mkdir /mnt/mymusicshare
+2006-03-30T14:50:00.000Z	kditty		no
+2006-03-30T14:50:00.000Z	kditty		i will though
+2006-03-30T14:52:00.000Z	kditty	vook	so should i do for example... mount -t smbfs -o username=kditty //familycpu/mymusic /mnt/mymusic after i do; mkdir /mnt/mymusic
+2006-03-30T14:53:00.000Z	vook	kditty	yep
+2006-03-30T14:53:00.000Z	kditty	vook	i get 7396: Connection to familycpu failed
+2006-03-30T14:54:00.000Z	vook	kditty	does user "kditty" exist on familycpu?  can you ping familycpu by name?
+2006-03-30T14:54:00.000Z	kditty		im so confused with the user names etc, i know i have a username on win xp as kditty, i know that familypcu is the name of the network server
+2006-03-30T14:55:00.000Z	kditty	vook	on this computer, for some reason it changed to root@familycomputer:/home/kditty# a few days ago
+2006-03-30T14:55:00.000Z	kditty		familycomputer is the name and familypcu is the workgroup i believe
+2006-03-30T14:57:00.000Z	kditty		hey vook, i can access my files on that network, i just have to copy them from the winxp and paste them to ubuntu
+2006-03-30T14:58:00.000Z	kditty		so that lets me know that i have some sort of connection, right?
+2006-03-30T14:58:00.000Z	vook	kditty	ok, what are you trying to do?
+2006-03-30T15:00:00.000Z	kditty	vook	just play my files from my other computer, without having to copy and paste them. is that possible?
+2006-03-30T15:01:00.000Z	vook	kditty	yeah, type "df" at the command line, it may already be mounted
+2006-03-30T15:01:00.000Z	kditty		if i want to listen to an album, i have to copy it from familypcu and then paste it to this one
+2006-03-30T15:02:00.000Z	kditty	vook	its not mounted, i get a connection error when i try to mount the folder

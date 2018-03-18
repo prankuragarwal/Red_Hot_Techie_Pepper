@@ -1,0 +1,21 @@
+2007-01-14T15:18:00.000Z	craigbass1976		I've got a samba server setupon Ubuntu.  It's wide open.  How do I mount it up?  I keep getting a no such device or address error
+2007-01-14T15:19:00.000Z	adaptr	craigbass1976	"mount it up" from where ?
+2007-01-14T15:19:00.000Z	craigbass1976	adaptr	a linux client.  Here's what I'm trying (in fedora) mount -t cifs //192.168.0.10/shares /home/craig/CANDO-remote/
+2007-01-14T15:20:00.000Z	adaptr	craigbass1976	and it says what, exactly ? is your current user a samba user on the server ? is browsing open for all ?
+2007-01-14T15:22:00.000Z	craigbass1976	adaptr	yes, it's wide open.  No user or pass required.  "retrying with upper case share name  mount error 6 = No such device or address  Refer to the mount.cifs(8) manual page (e.g.man mount.cifs)
+2007-01-14T15:22:00.000Z	adaptr	craigbass1976	no such device usually refers to your local mount point
+2007-01-14T15:23:00.000Z	craigbass1976	adaptr	nope, it's there
+2007-01-14T15:23:00.000Z	craigbass1976	adaptr	I get the same error when I try to mount it in /mnt
+2007-01-14T15:23:00.000Z	adaptr	craigbass1976	anything in the server's logs ? if not, then it *is* an address issue - you're not even getting out of the client
+2007-01-14T15:25:00.000Z	craigbass1976	adaptr	[2007/01/14 16:23:12, 0]  smbd/service.c:make_connection(851)  192.168.0.2 (192.168.0.2) couldn't find service shares
+2007-01-14T15:25:00.000Z	adaptr	craigbass1976	so you have no share called "shares"
+2007-01-14T15:26:00.000Z	craigbass1976	adaptr	I do.  It's /shares on the ubuntu box
+2007-01-14T15:27:00.000Z	adaptr	craigbass1976	yet, the client disagrees...
+2007-01-14T15:27:00.000Z	adaptr	craigbass1976	what does "smbstatus" on the server say ?
+2007-01-14T15:27:00.000Z	craigbass1976	adaptr	I know.  They really don't know each other that well...
+2007-01-14T15:28:00.000Z	craigbass1976	adaptr	nothing is connected
+2007-01-14T15:28:00.000Z	adaptr	craigbass1976	but you do have a singel share called "shares" ?
+2007-01-14T15:29:00.000Z	craigbass1976	adaptr	Yes
+2007-01-14T15:29:00.000Z	adaptr	craigbass1976	and connecting on the server with smbclient works ?
+2007-01-14T15:30:00.000Z	craigbass1976	adaptr	 haven't tried that.  Let me man that command; never used it
+2007-01-14T15:41:00.000Z	craigbass1976	adaptr	Ahhh, a smbclient -L showed that although the folder is called shares, the share is called share1.  All set now.

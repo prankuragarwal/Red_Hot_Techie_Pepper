@@ -1,0 +1,21 @@
+2010-09-27T23:30:00.000Z	unperson		Just tried to apt-get install the flashplugin-installer from the Ubuntu repos.  The .deb downloaded fine, but then during the config stage it gave a 404 error when it tried to download the actual plugin.  Anyone know what's going on?
+2010-09-27T23:31:00.000Z	wac_	unperson	try using the software center and installing the free community flash plug in
+2010-09-27T23:33:00.000Z	unperson	wac_	The thing is that I want the actual Adobe plugin, and clearly something with the ubuntu package is fubar.
+2010-09-27T23:33:00.000Z	unperson	wac_	I can probably download directly from adobe and install, but I'd much prefer to know what's going on with the official package.
+2010-09-27T23:34:00.000Z	unperson	wac_	What's weird is that a quick search didn't turn up any recent references to such a phenomenon.
+2010-09-27T23:44:00.000Z	wac_	unperson	haha
+2010-09-27T23:44:00.000Z	wac_	unperson	did you reproduce it with apt-get autoremove
+2010-09-27T23:50:00.000Z	unperson	wac_	I don't think you can do it on the fly.
+2010-09-27T23:52:00.000Z	unperson	wac_	Regarding the flash thing, oddly if I try their code to reproduce it something else happens.  It then appears to install without errors, though flash doesn't actually work.
+2010-09-28T00:08:00.000Z	unperson	wac_	Trying to figure out how I determine whent he mirror was last updated.  I guess I can probably look at the mod time for the packages file.
+2010-09-27T23:52:00.000Z	unperson	wac_	What's even MORE bizarre about that is that flashplugin-nonfree is a transitional package, and I thought all it really goes is install flashplugin-installer, which is what I'd been doing.
+2010-09-27T23:53:00.000Z	wac_	unperson	you tried the apt-update they told you to I am assuming?
+2010-09-27T23:53:00.000Z	wac_	unperson	did you enable the restricted repo in sources
+2010-09-27T23:56:00.000Z	unperson	wac_	I did update.  But in any case I've updated apt far more recently than those bug posts.  restricted repo must be enabled otherwise it wouldn't find the package at all, right?
+2010-09-28T00:03:00.000Z	wac_	unperson	yea I guess so
+2010-09-28T00:03:00.000Z	unperson	wac_	I think I got to the bottom of the issue.
+2010-09-28T00:04:00.000Z	unperson	wac_	The mirror I was using seems to be out of date.
+2010-09-28T00:04:00.000Z	unperson	wac_	When I set it to use the main US mirror everything works out.
+2010-09-28T00:04:00.000Z	wac_	unperson	you changed the mirriors around? or do you not live in the US
+2010-09-28T00:05:00.000Z	unperson	wac_	I changed mirrors to one that I get much faster speeds to.
+2010-09-28T00:05:00.000Z	unperson	wac_	But it appears that mirror is out of date.

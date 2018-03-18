@@ -1,0 +1,21 @@
+2009-09-16T00:57:00.000Z	MarkG		Can someone take a moment to explain what packages I need to collect POP3 mail from my ISP, store in on my Ubuntu server, and be able to access it by IMAP anywhere on my home LAN?
+2009-09-16T00:59:00.000Z	bodly	MarkG	fetchmail to get the mail, courier-imap to server them up
+2009-09-16T01:00:00.000Z	MarkG		Does Dovecot offer any advantages over courier-imap?
+2009-09-16T01:01:00.000Z	bodly	MarkG	actually, now that you mention it, i'm using dovecot, not courier
+2009-09-16T01:02:00.000Z	MarkG		I want the easiest to setup, I spend an age to get dovecot working (its now sorta working).   How does sending mail fit into the scheme of things?  in a setup like this?
+2009-09-16T01:03:00.000Z	MarkG		I suppose what I am not saying, is I will never be opening or sending emails from the Ubuntu system directly, it will always be an intermediary
+2009-09-16T01:04:00.000Z	bodly	MarkG	if you're not going to send mail from this box then you don't really need to install sendmail, postfix, etc.
+2009-09-16T01:06:00.000Z	MarkG	bodly	However I DO want the mails to live in a IMAP "sent" folder.
+2009-09-16T01:06:00.000Z	MarkG		so I think I do need to send them via the ubuntu system.  I'm not sure how it all connects together tho!
+2009-09-16T01:06:00.000Z	bodly	MarkG	i would be surprised if there are not several how-to's out there with step-by-step instructions.
+2009-09-16T01:07:00.000Z	MarkG		I have looked and not come up with much in the way of howtos, or they are just not the right setup
+2009-09-16T01:07:00.000Z	MarkG		I thought my requirements here would not be too out of the ordinary.
+2009-09-16T01:08:00.000Z	bodly	MarkG	basically i pop mail down from a server and serve it out via imap at home, just like you want to.  but i send my mail through gmail and sent mail doesn't get saved on my local server.
+2009-09-16T01:08:00.000Z	bodly	MarkG	so i'm not really sure how that would hook in there either.  :-)
+2009-09-16T01:09:00.000Z	MarkG	bodly	 I thought it was just me being a thicky!!!
+2009-09-16T01:11:00.000Z	bodly	MarkG	i guess you would just setup postfix and configure it to use the same maildir that dovecot does
+2009-09-16T01:11:00.000Z	bodly		markg: then have postfix forward to the server you pop mail from
+2009-09-16T01:12:00.000Z	MarkG		are postfix and sendmail similar applications?  Do they serve the same general purpose?
+2009-09-16T01:13:00.000Z	bodly	MarkG	yes, there are quite a few mail transfer agents (MTAs)
+2009-09-16T01:15:00.000Z	MarkG		so I need fetchmail to collect POP3 mail from the remote ISP deliver it to my ubuntu mailbox, then dovecot to serve it up, and I need sendmail to send it out again to my ISP's SMTP server.  Is that the nuts of it?
+2009-09-16T01:15:00.000Z	bodly	MarkG	yup, that should do it.

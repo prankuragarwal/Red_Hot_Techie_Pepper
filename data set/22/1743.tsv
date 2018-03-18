@@ -1,0 +1,22 @@
+2010-01-22T20:58:00.000Z	Duder		hi guys, im trying to run install bitlbee, when i run ./configure i get the error "Could not find a suitable SLL library"
+2010-01-22T20:59:00.000Z	Duder		anyone?
+2010-01-22T21:00:00.000Z	llutz	Duder	try libgnutls-dev
+2010-01-22T21:02:00.000Z	llutz	Duder	sudo apt-get build-dep bitlbee
+2010-01-22T21:03:00.000Z	llutz	Duder	then "do something" to fix that error
+2010-01-22T21:06:00.000Z	llutz	Duder	does "/etc/bitlbee/bitlbee.conf" exist?
+2010-01-22T21:07:00.000Z	llutz	Duder	"ls -ld /var/lib/bitlbee/" says what?
+2010-01-22T21:07:00.000Z	Duder	llutz	drwx------ 2 bitlbee bitlbee 4096 2010-01-22 16:24 /var/lib/bitlbee/
+2010-01-22T21:09:00.000Z	llutz	Duder	does "/etc/bitlbee/bitlbee.conf" exist?
+2010-01-22T21:10:00.000Z	llutz	Duder	what user  at "User = "?
+2010-01-22T21:11:00.000Z	llutz	Duder	you don't want to make it writeable to other
+2010-01-22T21:11:00.000Z	llutz	Duder	bitlbee.conf is root:root 640
+2010-01-22T21:12:00.000Z	llutz	Duder	User = bitlbee             it has to be
+2010-01-22T21:12:00.000Z	Duder	llutz	root 640? Im not following you now
+2010-01-22T21:12:00.000Z	Duder	llutz	 yea it is bitlbee
+2010-01-22T21:13:00.000Z	llutz	Duder	sorry, bitlbee.conf has to be:  -rw-r----- 1 root bitlbee
+2010-01-22T21:13:00.000Z	Duder	llutz	so exactly what do i need to type? chmod somethign ?
+2010-01-22T21:13:00.000Z	llutz	Duder	so sudo chown root:bitlbee /etc/bitlbee/bitlbee.conf
+2010-01-22T21:14:00.000Z	Duder	llutz	I still get the same error, what is chown anyways
+2010-01-22T21:15:00.000Z	llutz	Duder	enter "whatis chown"
+2010-01-22T21:15:00.000Z	Duder	llutz	k thx
+2010-01-22T21:17:00.000Z	llutz	Duder	http://admiralchicago.wordpress.com/2007/03/22/bitlbee-and-irssi/

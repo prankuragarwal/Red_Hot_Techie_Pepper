@@ -1,0 +1,23 @@
+2007-07-27T10:53:00.000Z	BrendanM		Does anyone know if there's a way to connect to a machine with SSH, use an X app, and then disconnect and leave it running to reconnect later? I'm looking for something like Screen but for GUI X apps.
+2007-07-27T10:53:00.000Z	BrendanM		!screen
+2007-07-27T10:54:00.000Z	preaction	BrendanM	most GUI apps allow you to specify the --display to use. normally though you have to be root in order to hijack another display like that (if it even works)
+2007-07-27T10:54:00.000Z	preaction	BrendanM	you will, of course, want to run it with nohup
+2007-07-27T10:55:00.000Z	BrendanM	preaction	will that work? launching it with &?
+2007-07-27T10:56:00.000Z	preaction	BrendanM	i said nohup, not &
+2007-07-27T10:57:00.000Z	preaction	BrendanM	it stands for "no hangup", basically if the terminal that started the program gets terminated, the program will still run
+2007-07-27T10:57:00.000Z	BrendanM	preaction	cool, that sounds like exactly what I wanted. How would I reconnect then?
+2007-07-27T10:58:00.000Z	preaction	BrendanM	what do you mean? you wouldn't. you would not get to actually USE that application unless you were at the computer. you just started it.
+2007-07-27T11:00:00.000Z	BrendanM	preaction	well like say if wanted to connect with SSH, start up Azureus, do some stuff, then disconnect and let it run for a few hours, but then reconnect and check on it/start more torrents or something
+2007-07-27T11:00:00.000Z	preaction	BrendanM	i would suggest screen and rtorrent for that
+2007-07-27T11:01:00.000Z	BrendanM	preaction	I actually am using screen and rtorrent right now. But Azureus offers some features rtorrent doesn't that I really like.
+2007-07-27T11:01:00.000Z	BrendanM	preaction	but there are other examples of GUI apps that I'd like to be able to start, leave running, and return to.
+2007-07-27T11:02:00.000Z	preaction	BrendanM	perhaps instead try launching azureus inside a screen session so you can connect to the same terminal and have control of the azereus process?
+2007-07-27T11:02:00.000Z	preaction	BrendanM	how can you even use them though? you're on a text-only terminal with no X forwarding. all you can do is basically start, stop, or send remote commands if the program allows that
+2007-07-27T11:03:00.000Z	preaction	BrendanM	perhaps VNC or RDP would be easier to use? you can use both with an existing X session iirc
+2007-07-27T11:04:00.000Z	BrendanM	preaction	you can forward X through SSH. I do it all the time. It works fantastically.
+2007-07-27T11:04:00.000Z	preaction	BrendanM	yes, but can you connect to an existing X session through SSH?
+2007-07-27T11:05:00.000Z	BrendanM	preaction	I don't know! That's what I'm asking!
+2007-07-27T11:05:00.000Z	preaction	BrendanM	which is why i'm recommending RDP or VNC instead
+2007-07-27T11:06:00.000Z	BrendanM	preaction	yeah, but then I have to run an X server on the box. If I just forward X, the X server is running on the remote machine.
+2007-07-27T11:06:00.000Z	preaction	BrendanM	the client program goes away when the X server goes away. this will not work
+2007-07-27T11:07:00.000Z	BrendanM	preaction	fair enough.

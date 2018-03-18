@@ -1,0 +1,18 @@
+2012-01-27T17:14:00.000Z	Jordan_U	Machtin	What does /proc/mounts say?
+2012-01-27T17:15:00.000Z	Machtin	Jordan_U	/dev/mapper/tmp /tmp tmpfs rw,relatime 0 0
+2012-01-27T17:16:00.000Z	Jordan_U	Machtin	Then that's what's mounted to /tmp/. Have you already mounted this manually?
+2012-01-27T17:16:00.000Z	Machtin	Jordan_U	no.. and it is not.
+2012-01-27T17:19:00.000Z	Jordan_U	Machtin	Can you pastebin the commands and output that make you believe that /proc/mounts is wrong?
+2012-01-27T17:20:00.000Z	Machtin	Jordan_U	after I mount it manually (mount /dev/mapper/tmp /tmp) the directory listing changes.. and the size of the partition changes
+2012-01-27T17:22:00.000Z	Machtin	Jordan_U	http://pastebin.com/fSyXzq1K
+2012-01-27T17:23:00.000Z	Jordan_U	Machtin	May I see the full contents of /proc/mounts before the manual mount?
+2012-01-27T17:24:00.000Z	Machtin	Jordan_U	http://pastebin.com/1t1BaqBn
+2012-01-27T17:27:00.000Z	Jordan_U	Machtin	I see you're problem. You don't understand what "tmpfs" is. A tmpfs has no device associated with it, you could replace /dev/mapper/tmp with anything and it would not thange the mount. If you manually specified "-t tmpfs" in your mount command you'd get the same result.
+2012-01-27T17:28:00.000Z	Machtin	Jordan_U	I don't get it.. sorry :(
+2012-01-27T17:28:00.000Z	Jordan_U	Machtin	Replace "tmpfs" with whatever the filesystem actually is for /dev/mapper/tmp. Probably "ext4".
+2012-01-27T17:29:00.000Z	Jordan_U	Machtin	While this is a gross oversimplification, think of tmpfs as being a RAM filesystem that just grabs a chunk of memory and uses it.
+2012-01-27T17:29:00.000Z	Machtin	Jordan_U	how could I check which fs /dev/mapper/tmp has?
+2012-01-27T17:29:00.000Z	Jordan_U	Machtin	sudo blkid
+2012-01-27T17:30:00.000Z	Machtin	Jordan_U	thanks a lot! :)
+2012-01-27T17:30:00.000Z	Jordan_U	Machtin	You're welcome :)
+2012-01-27T17:34:00.000Z	Machtin	Jordan_U	and it worked! :)

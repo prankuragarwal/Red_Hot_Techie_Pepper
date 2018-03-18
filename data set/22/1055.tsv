@@ -1,0 +1,22 @@
+2010-10-26T04:18:00.000Z	Sean931		i cant kill transmission, what should i do?
+2010-10-26T04:19:00.000Z	ActionParsnip	Sean931	run:  ps -ef | grep trans    you can kill the PID
+2010-10-26T04:21:00.000Z	Sean931	ActionParsnip	still doesnt kill
+2010-10-26T04:21:00.000Z	ActionParsnip	Sean931	then use: kill -9 PID
+2010-10-26T04:21:00.000Z	Sean931	ActionParsnip	i did
+2010-10-26T04:21:00.000Z	ActionParsnip	Sean931	is the process owned by your user?
+2010-10-26T04:22:00.000Z	Sean931	ActionParsnip	how do i check?
+2010-10-26T04:22:00.000Z	ActionParsnip	Sean931	the output of the command will state the user on the left
+2010-10-26T04:23:00.000Z	ActionParsnip	Sean931	then -9 should definately kill it good, -9 is the biggest hammer
+2010-10-26T04:23:00.000Z	Sean931	ActionParsnip	 i've tried it doesn't kill it
+2010-10-26T04:24:00.000Z	ActionParsnip	Sean931	try: sudo kill -9 transmission     ,should do it
+2010-10-26T04:25:00.000Z	ActionParsnip	Sean931	MagusOTB: sudo killall -9 transmission
+2010-10-26T04:27:00.000Z	ActionParsnip	Sean931	can you give the output of: ps -ef | grep -i trans     use http://pastie.org   to give the output
+2010-10-26T04:30:00.000Z	Sean931	ActionParsnip	http://pastie.org/1248774
+2010-10-26T04:31:00.000Z	ActionParsnip	Sean931	so I'm guessing you were running: kill -9 2387
+2010-10-26T04:32:00.000Z	ActionParsnip	Sean931	seems its not killable and you must kill the parent process
+2010-10-26T04:32:00.000Z	ActionParsnip	Sean931	technically its already dead
+2010-10-26T04:33:00.000Z	Sean931	ActionParsnip	what is the parent process?
+2010-10-26T04:33:00.000Z	ActionParsnip	Sean931	ps -ef | grep defunct | awk '{print "kill -9 ",$3}'     try that
+2010-10-26T04:35:00.000Z	ActionParsnip	Sean931	http://www.linuxquestions.org/questions/suse-novell-60/howto-kill-defunct-processes-574612/
+2010-10-26T04:35:00.000Z	ActionParsnip	Sean931	shows how to find the parent, kill the parent and the zombie will die
+2010-10-26T04:36:00.000Z	ActionParsnip	Sean931	if its parent is 1 then you're going to have to reboot

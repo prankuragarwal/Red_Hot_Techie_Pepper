@@ -1,0 +1,18 @@
+2009-05-09T21:29:00.000Z	garym		is there any way to install 8.04 using the existing disk partitions?  I need to retain sda7, but the install wants to start over from the full-disk, wiping out the parition table :(
+2009-05-09T21:30:00.000Z	garym		debacle infinitely :(
+2009-05-09T21:31:00.000Z	garym		I am desperately trying to regress to hardy, the last known stable and working ubuntu for the inspiron 1521
+2009-05-09T21:31:00.000Z	garym		rwolf, but it wont give me that option, it only wants to create a single disk whole partition
+2009-05-09T21:32:00.000Z	garym		I thought normally it would detect the existing paritions and offer those wanting mount points, but I don't get that
+2009-05-09T21:32:00.000Z	garym		I am using the alt cd, maybe that's why?
+2009-05-09T21:32:00.000Z	garym		yes, that's where I went
+2009-05-09T21:33:00.000Z	mzz	garym	I'm pretty sure that should work (I installed into an existing lvm volume using the alt install cd myself)
+2009-05-09T21:35:00.000Z	mzz	garym	what kind of partition table is this?
+2009-05-09T21:36:00.000Z	mzz	garym	this sounds like something's going wrong and the kernel's not reading the partition table successfully
+2009-05-09T21:36:00.000Z	mzz	garym	iirc you can alt+f2 or something over to a shell, can you check dmesg to see if the partition table is actually recognized?
+2009-05-09T21:37:00.000Z	mzz	garym	dmesg|grep sda, is there a line like "sda: sda1 sda2" in there?
+2009-05-09T21:38:00.000Z	mzz	garym	ok, so the kernel sees things and the partitioner is doing something odd then?
+2009-05-09T21:38:00.000Z	mzz	garym	what kind of filesystem is on the partition you want to install into?
+2009-05-09T21:39:00.000Z	mzz	garym	no, I don't mean the type in the partition table, I mean the type actually on the partition. ext4 perhaps?
+2009-05-09T21:39:00.000Z	mzz	garym	I don't think I have enough experience with the installer to debug this tbh.
+2009-05-09T21:39:00.000Z	mzz	garym	no, 8.04 can't handle ext4. If you're downgrading from 9.04 I wonder if the 8.04 installer is balking on any ext4 partitions it can't handle that 9.04 could.
+2009-05-09T21:40:00.000Z	mzz	garym	oh, if there's any lvm involved you might need the alt install cd.

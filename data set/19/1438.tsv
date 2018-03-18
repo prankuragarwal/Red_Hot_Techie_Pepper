@@ -1,0 +1,19 @@
+2011-04-19T20:50:00.000Z	bhavesh		I was reinstalling ubuntu 10.10 side by windows 7 OS, but now I cannot open my C drive.. it says <Error mounting: mount exited with exit code 13: $MFTMirr does not match $MFT (record 1).>
+2011-04-19T20:50:00.000Z	bhavesh		it gives error mouning C drive
+2011-04-19T20:50:00.000Z	bhavesh		mounting**
+2011-04-19T20:50:00.000Z	Jordan_U	bhavesh	Boot Windows 7 and run chkdsk.
+2011-04-19T20:51:00.000Z	bhavesh	Jordan_U	I cannot boot from my windows 7 CD, dunno why but it just says "grub rescue"
+2011-04-19T20:51:00.000Z	Jordan_U	bhavesh	You installed grub to your Windows partition boot sector. You almost never want to install grub to a partition.
+2011-04-19T20:51:00.000Z	bhavesh	Jordan_U	Should I follow this? http://wmarkito.wordpress.com/2010/12/29/how-to-fix-mftmirr-does-not-match-mft-record-0/
+2011-04-19T20:52:00.000Z	bhavesh	Jordan_U	I just wanna keep my files safe.
+2011-04-19T20:53:00.000Z	Jordan_U	bhavesh	No, don't follow that unless you can't run chkdsk from within Windows.
+2011-04-19T20:53:00.000Z	bhavesh	Jordan_U	OK let me try booting from my CD again :)
+2011-04-19T20:53:00.000Z	Jordan_U	bhavesh	Follow this guide to restore your Windows partition boot record: http://sourceforge.net/apps/mediawiki/bootinfoscript/index.php?title=Boot_Problems:Boot_Sector
+2011-04-19T20:54:00.000Z	Jordan_U	bhavesh	And remember, *never* install grub's boot sector to a partition (like /dev/sda1). Always install grub to the mbr (like /dev/sda).
+2011-04-19T20:55:00.000Z	bhavesh	Jordan_U	erm u cannot select where to install gurb isnt it?
+2011-04-19T20:56:00.000Z	Jordan_U	bhavesh	At some point someone installed grub to your Windows partition boot sector. By default grub is installed to the MBR so that must have been done / selected manually.
+2011-04-19T20:57:00.000Z	bhavesh	Jordan_U	k
+2011-10-23T10:32:00.000Z	Jordan_U	bhavesh	I'm pretty sure that the menu sskniranjan is talking about is from ntldr / BCD (wubi) rather than grub.
+2011-10-23T10:33:00.000Z	bhavesh	Jordan_U	: I read his question about 4 times.. again here it is: whenever i start my computer the message come that choose any one among windows 7 or ubuntu other wise the highlightened will be selected automatically.[windows 7]. what to do to change the default os from windows to ubuntu
+2011-10-23T10:35:00.000Z	Jordan_U	bhavesh	Vortex: Wubi is a way of installing Ubuntu within a file in your windows partition and without replacing Windows' bootloader.
+2011-10-23T10:35:00.000Z	Jordan_U	bhavesh	Vortex: So it's not grub that he is seeing (at first at least), it's the Windows bootloader which then loads grub.

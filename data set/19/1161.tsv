@@ -1,0 +1,19 @@
+2011-04-25T05:06:00.000Z	spirals	escott	I want to combine a jpeg and an mp3. I have done a bunch of searching and checked the intimidating help for ffmpeg and still don't have a working 1 liner for that task.
+2011-04-25T05:06:00.000Z	spirals	escott	goal is YT uploads
+2011-04-25T05:06:00.000Z	escott	spirals	ive done the jpeg before do you have a sequence of jpegs or a single one?
+2011-04-25T05:06:00.000Z	spirals	escott	just a single one (cover ;) )
+2011-04-25T05:07:00.000Z	escott	spirals	the first step then is to create an input file for the frames. calculate fps*length and do "for f in `seq 1 prod`; do echo "filename">>frames.txt"; done
+2011-04-25T05:08:00.000Z	spirals	escott	ok I follow you so far, I had a equivalent function worked out
+2011-04-25T05:10:00.000Z	escott	spirals	and then it is something like ffmpeg -i @frames.txt -r fps -i audio.mp3 output.mp4
+2011-04-25T05:11:00.000Z	spirals	escott	thanks, i'll play with that
+2011-04-25T05:11:00.000Z	spirals	escott	appreciate it
+2011-04-25T05:11:00.000Z	escott	spirals	mencoder (apt-get install mplayer) is a bit less finiky than ffmpeg
+2011-04-25T05:12:00.000Z	spirals		I'm not attached to ffmpeg, just need a scriptable solution.
+2011-04-25T05:15:00.000Z	spirals	escott	so your frames.txt is a file with 1 line for each frame where each line is the filename of the frame, correct
+2011-04-25T05:16:00.000Z	escott	spirals	i believe so (never done it that way but I saw someone suggest that)
+2011-04-25T05:17:00.000Z	spirals	escott	ahh, just trying to work out the input file you're using in the ffmpeg command
+2011-04-25T05:17:00.000Z	escott	spirals	unless I am confusing with mencoder (which is entirely possible) you could try just doing ffmpeg -i image.jpeg -i audio.mp3
+2011-04-25T05:17:00.000Z	spirals	escott	when I do that I get a 1 frame video that's very short.
+2011-04-25T05:17:00.000Z	escott	spirals	i know that ffmpeg -i image%04d.jpeg will work
+2011-04-25T05:19:00.000Z	spirals	escott	it defaults to a duration of .04 seconds though. this is where the documentation starts to fail hard. :/
+2011-04-25T05:19:00.000Z	escott	spirals	you could make a bunch of symlinks in a script

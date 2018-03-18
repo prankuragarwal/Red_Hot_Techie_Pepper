@@ -1,0 +1,23 @@
+2006-03-19T09:20:00.000Z	Qix		Im having trouble installing ATI linux drivers under ubuntu 5.10
+2006-03-19T09:21:00.000Z	Qix		i searhed google for the error message, not much turned up
+2006-03-19T09:21:00.000Z	Qix		root@qix:/usr/share/fglrx# aticonfig
+2006-03-19T09:21:00.000Z	Qix		aticonfig: error while loading shared libraries: libfglrx_pp.so.1: cannot open shared object file: No such file or directory
+2006-03-19T09:21:00.000Z	Qix		what can i do about it ?
+2006-03-19T09:21:00.000Z	rasputnik	Qix	you're missing a library
+2006-03-19T09:22:00.000Z	Qix		i kind of guessed that rasput
+2006-03-19T09:22:00.000Z	Qix		problem is, where do i get it from, and why ?
+2006-03-19T09:22:00.000Z	rasputnik	Qix	probably it's in /usr/local/lib? have a look
+2006-03-19T09:22:00.000Z	Qix		i mean, i installed the ati driver set from their site
+2006-03-19T09:22:00.000Z	Qix		ok, its there
+2006-03-19T09:22:00.000Z	Qix		so why isnt it picking it up ?
+2006-03-19T09:22:00.000Z	Qix		/usr/X11R6/lib/libfglrx_pp.so.1.0
+2006-03-19T09:23:00.000Z	Qix		its looking for libfglrx_pp.so
+2006-03-19T09:23:00.000Z	Qix		*.1
+2006-03-19T09:23:00.000Z	rasputnik		Oix: you didn't tell the dynamic linker where it is
+2006-03-19T09:23:00.000Z	Qix		nah, its a slightly different name ?
+2006-03-19T09:23:00.000Z	Qix		is that the problem ?
+2006-03-19T09:23:00.000Z	rasputnik	Qix	yes, that's how shared libs work , the .1 file is a symlink to .1.0
+2006-03-19T09:24:00.000Z	rasputnik		try adding /usr/X11R6/lib to /etc/ld.so.conf and running 'sudo ldconfig'
+2006-03-19T09:26:00.000Z	Qix	rasputnik	tx, it worked
+2006-03-19T09:26:00.000Z	rasputnik	Qix	cool.
+2006-03-19T09:27:00.000Z	rasputnik	Qix	you'll need to do that when you build from source. add the lib/ directory to ld.so.conf and re-run ldconfig

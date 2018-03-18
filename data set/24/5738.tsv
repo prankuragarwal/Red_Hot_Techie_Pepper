@@ -1,0 +1,24 @@
+2007-12-10T15:42:00.000Z	Upayavira		I want to recompile my kernel (gutsy). I did apt-get source linux-image-2.6.22-14-generic. It gives me a diff.gz file. How do I apply those diffs against the kernel source tree?
+2007-12-10T15:42:00.000Z	ikonia	Upayavira	why do you want to build your own kernel
+2007-12-10T15:42:00.000Z	ikonia	Upayavira	if you do so you will lose ubuntu community support
+2007-12-10T15:43:00.000Z	ikonia	Upayavira	no problem then
+2007-12-10T15:43:00.000Z	Upayavira	ikonia	was recompiling kernels back in '94, just not ubuntu ones!
+2007-12-10T15:44:00.000Z	ikonia	Upayavira	Patch is the command
+2007-12-10T15:45:00.000Z	Upayavira	ikonia	yeah, I did patch -p0 -v < linux......diff, but that didn't apply it, it just gave loads of "already applied" warnings
+2007-12-10T15:45:00.000Z	ikonia	Upayavira	is it already applied then ?
+2007-12-10T15:45:00.000Z	Upayavira	ikonia	lol. that's what I was just wondering. Let me check...
+2007-12-10T15:45:00.000Z	ikonia	Upayavira	I think you may find it is
+2007-12-10T15:46:00.000Z	Upayavira	ikonia	lol. It is already applied. And how much time I've wasted on that one! Thx
+2007-12-10T15:46:00.000Z	ikonia	Upayavira	no problem
+2007-12-10T17:44:00.000Z	ikonia	Upayavira	just rename the file
+2007-12-10T17:45:00.000Z	Upayavira	ikonia	that easy? Okay.
+2007-12-10T17:45:00.000Z	ikonia	Upayavira	it may not hurt to use the "append" parameter in the .config to change the running kernel name to differentiate between the ubuntu one
+2007-12-10T17:46:00.000Z	Upayavira	ikonia	so if I just do append=uv1, I'll get uv1 in the filename?
+2007-12-10T17:46:00.000Z	ikonia	Upayavira	no, the append parameter is in the .config at compile time
+2007-12-10T17:47:00.000Z	Upayavira	ikonia	Okay, so I add it to the .config I generate?
+2007-12-10T17:47:00.000Z	ikonia	Upayavira	you don't add it, in the menuconfig or xconfig (whatever you used) there is an append option to append your own name to the kernel title
+2007-12-10T17:48:00.000Z	Upayavira	ikonia	okay. (I just edited debian/config/i386/config and ran debian/misc/oldconfig 386)
+2007-12-10T17:48:00.000Z	ikonia	Upayavira	what did you edit ?
+2007-12-10T17:50:00.000Z	Upayavira	ikonia	linux-source-2.6.22-2.6.22/debian/config/i386/config
+2007-12-10T17:50:00.000Z	ikonia	Upayavira	but what did you do to the file
+2007-12-10T17:51:00.000Z	ikonia	Upayavira	but you didn't use the append option ?

@@ -1,0 +1,19 @@
+2012-06-20T23:39:00.000Z	john84848_		I executed that line and restarted the network. I still got the "RTNETLINK answers file exists" message
+2012-06-20T23:39:00.000Z	john84848_		and it's still not working
+2012-06-20T23:40:00.000Z	john84848_		How do you mean I should not have a subnet to be shared ?
+2012-06-20T23:41:00.000Z	john84848_		when I type ifconfig, I get 192.168.0.x for the two interfaces. eth0 is the one we've been working on, but eth1 has remained with the same IP address throughout (and despite the fact that no wire is connected to eth1). Also, when I ping something, I get an icmp answer from the IP that corresponds to eth1
+2012-06-20T23:42:00.000Z	llutz	john84848_	sudo ifdown eth1
+2012-06-20T23:46:00.000Z	john84848_	llutz	thank you very much !!
+2012-06-20T23:46:00.000Z	llutz	john84848_	remove the "auto eth1" from /e/n/interfaces if its not connected
+2012-06-20T23:47:00.000Z	llutz	john84848_	"auto eth1" tells the system to bring it up
+2012-06-20T23:47:00.000Z	llutz	john84848_	man 5 interfaces, read about allow-hotplug etc.
+2012-06-20T23:49:00.000Z	llutz	john84848_	you can, but not when just setting both to "auto". it needs a bit more fintuning
+2012-06-20T23:50:00.000Z	llutz	john84848_	you should explain what your final goal is
+2012-06-20T23:50:00.000Z	llutz	john84848_	you don't really expect help, don't you?
+2012-06-20T23:51:00.000Z	llutz	john84848_	2 nic, 1 not connected. so what do you want to acheive?
+2012-06-20T23:53:00.000Z	llutz	john84848_	eth1 is connected to a router/modem? where is eth1 connected to (if its connected at all)?
+2012-06-20T23:54:00.000Z	llutz	john84848_	eth0 is connected to a router/modem? where is eth1 connected to (if its connected at all)?
+2012-06-20T23:55:00.000Z	john84848_	llutz	no eth1 is not connected at all at the moment. Only eth0 is.
+2012-06-20T23:56:00.000Z	llutz	john84848_	so just remove all lines with eth1 from /e/n/interfaces and set eth1 up again, when you know what you want it to do
+2012-06-20T23:57:00.000Z	llutz	john84848_	you always can use as many NICs as you want, but it needs some configuration.
+2012-06-21T00:02:00.000Z	llutz	john84848_	man 5 interfaces, read about allow-hotplug etc.

@@ -1,0 +1,22 @@
+2011-01-05T00:12:00.000Z	axisys		i am trying remote mount a fs using sshfs and it is failing.. anyone can suggest what I am doing wrong here? http://pastebin.com/BW86C0Ne
+2011-01-05T00:14:00.000Z	edbian	axisys	Can you log into the remote machine via normal ssh?
+2011-01-05T00:14:00.000Z	axisys	edbian	yes..
+2011-01-05T00:15:00.000Z	edbian	axisys	mmm.  What errors do you get when you try to mount?
+2011-01-05T00:16:00.000Z	axisys	edbian	u mean try fusemount ?
+2011-01-05T00:16:00.000Z	edbian	axisys	It should work without fusemount
+2011-01-05T00:17:00.000Z	axisys	edbian	mount it self gets no error.. it shows nothing mounted on /ftp0
+2011-01-05T00:18:00.000Z	axisys	edbian	http://pastebin.com/c5r5RKsv
+2011-01-05T00:18:00.000Z	axisys	edbian	let me in right away
+2011-01-05T00:18:00.000Z	edbian	axisys	That's odd.  Does df -h show it as mounted?
+2011-01-05T00:19:00.000Z	axisys	edbian	not mounted
+2011-01-05T00:19:00.000Z	edbian	axisys	mmmm
+2011-01-05T00:19:00.000Z	axisys	edbian	sudo sshfs ftp0: /ftp works just fine
+2011-01-05T00:19:00.000Z	edbian	axisys	I thought you just said it wasn't mounting?
+2011-01-05T00:20:00.000Z	axisys	edbian	not if I run as me ..
+2011-01-05T00:20:00.000Z	edbian	axisys	oh sudo.  Well that explains that.  you need to change the permissions on /ftp
+2011-01-05T00:21:00.000Z	axisys	edbian	my original pastebin shows I did the chown first
+2011-01-05T00:21:00.000Z	axisys	edbian	http://pastebin.com/BW86C0Ne
+2011-01-05T00:21:00.000Z	edbian	axisys	Do you have permissison to read the folder you're mounting on the remote machine?
+2011-01-05T00:22:00.000Z	axisys	edbian	yes .. ssh ftp0: and i see my home dir fine.. that is what I am trying to mount
+2011-01-05T00:36:00.000Z	axisys	edbian	maxo: found the problem !
+2011-08-14T20:22:00.000Z	edbian	axisys	All those methods will take the same amount of time

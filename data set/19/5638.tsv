@@ -1,0 +1,19 @@
+2008-10-04T13:32:00.000Z	maco	DaveKong	"uname -a" output says so
+2008-10-04T13:33:00.000Z	DaveKong	maco	 it says 2.6.24-19-generic #1 SMP ... x86_64 GNU/Linux
+2008-10-04T13:33:00.000Z	maco	DaveKong	see the 64?
+2008-10-04T13:34:00.000Z	DaveKong	maco	I see a 64 but not in the kernel name just the part later
+2008-10-04T13:34:00.000Z	maco	DaveKong	yeah, that's the part that tells you. -a is "all" i forget which flag (-r maybe?) tells just the architecture
+2008-10-04T13:35:00.000Z	DaveKong	maco	ok thanks... so now I just need to add the location of the root for the 32 bit install to Grub and I can boot either?
+2008-10-04T13:37:00.000Z	maco	DaveKong	/me looks at you funny.  "grub should have been automatically set up"
+2008-10-04T13:38:00.000Z	DaveKong	maco	well that is why I am confused and why I thought I might not be 64 Grub set up my windows and other installs but does not show the 32 bit ubuntu
+2008-10-04T13:41:00.000Z	DaveKong	maco	I shared /home, swap, /boot, and /usr/local over the two installs because SAG and forum posts suggested this but gave it it's own "/"
+2008-10-04T13:42:00.000Z	maco	DaveKong	/usr/local? well that's a bad idea. if you compile something for 64bit, it won't run on your 32bit system. /boot can also cause a bit of an interesting situation when multibooting...get filled up with all those kernels...and ubuntu expects grub to be installed on the mbr
+2008-10-04T13:43:00.000Z	maco	DaveKong	probably didn't know to add the other install's lines because of your separate /boot
+2008-10-04T13:43:00.000Z	maco	DaveKong	so yeah, add them manually and it should be fine
+2008-10-04T13:48:00.000Z	DaveKong	maco	ok thanks wish I could fine some more comprehensive stuff on this I read everything I could find over the course of some days
+2008-10-04T13:49:00.000Z	maco	DaveKong	look for grub.conf on google. it's called that in lots of distros.
+2008-10-04T13:51:00.000Z	DaveKong	maco	alright and I will just have to keep a careful eye on what I put in usr/local for /home I am following the advice of using different user logins to keep things seperate on the same partition
+2008-10-04T13:52:00.000Z	maco	DaveKong	that's safe for /home for /usr/local ...when you compile, use --prefix=/usr/local/64 or /usr/local/32 (create those directories) to keep things separate
+2008-10-04T13:53:00.000Z	DaveKong	maco	ok thanks a lot for all your help
+2008-10-04T13:53:00.000Z	maco	DaveKong	honestly, desktop system.... / /home & swap are all ya need.  servers separate /var to keep DOS attacks from flooding their entire / and killing it all. unlikely you need that on a desktop system
+2008-10-04T13:54:00.000Z	DaveKong	maco	ok

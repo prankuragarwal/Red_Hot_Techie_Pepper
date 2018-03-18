@@ -1,0 +1,23 @@
+2011-08-10T21:25:00.000Z	blumaa		hello my external speakers and my microphone do not work on this ubuntu laptop.  can anyone help?
+2011-08-10T21:26:00.000Z	blumaa		anyone know how to troubleshoot mic problems?
+2011-08-10T21:26:00.000Z	blumaa		sudo - s
+2011-08-10T21:27:00.000Z	blumaa		hello?
+2011-08-10T21:28:00.000Z	blumaa		I'm trying to skype but the mic isn't working...
+2011-08-10T21:28:00.000Z	blumaa		the mic is not muted
+2011-08-10T21:29:00.000Z	ActionParsnip	blumaa	does it work in other apps?
+2011-08-10T21:29:00.000Z	ActionParsnip	blumaa	sound recorder is in a default ubuntu install
+2011-08-10T21:31:00.000Z	ActionParsnip	blumaa	what is the output of: wget -O alsa-info.sh http://alsa-project.org/alsa-info.sh && bash ./alsa-info.sh
+2011-08-10T21:32:00.000Z	ActionParsnip	blumaa	run it and a URL will be generated, what is the URL?
+2011-08-10T21:36:00.000Z	ActionParsnip	blumaa	give me chance, geez
+2011-08-10T21:36:00.000Z	ActionParsnip	blumaa	is it an EEEPC 1000
+2011-08-10T21:36:00.000Z	ActionParsnip	blumaa	or does it have a letter on the end?
+2011-08-10T21:37:00.000Z	ActionParsnip	blumaa	ok let me search
+2011-08-10T21:40:00.000Z	ActionParsnip	blumaa	add:          options snd-hda-intel model=fujitsu           to            /etc/modprobe.d/alsa-base.conf
+2011-08-10T21:41:00.000Z	ActionParsnip	blumaa	may help
+2011-08-10T21:41:00.000Z	ActionParsnip	blumaa	you currently have it set as generic
+2011-08-10T21:41:00.000Z	ActionParsnip	blumaa	also run:   alsamixer     be sure all levels are umuted and maxed
+2011-08-10T21:42:00.000Z	ActionParsnip	blumaa	http://wiki.debian.org/DebianEeePC/HowTo/Sound#Model_900A.2C_901.2C_1000.2C_1000H.2C_and_1000HE_front_Microphone
+2011-08-13T19:54:00.000Z	ActionParsnip	blumaa	what is the output of: wget -O alsa-info.sh http://alsa-project.org/alsa-info.sh && bash ./alsa-info.sh
+2011-08-13T19:55:00.000Z	ActionParsnip	blumaa	run the command and upload to the server, it will make a URL, what is the URL?
+2011-08-13T20:12:00.000Z	ActionParsnip	blumaa	you don't have an Alsa driver version
+2011-08-13T20:13:00.000Z	ActionParsnip	blumaa	sudo apt-get update && sudo apt-get -y --reinstall install alsa-base alsa-utils; killall pulseaudio; rm -r ~/.pulse*         may help

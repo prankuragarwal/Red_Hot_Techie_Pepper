@@ -1,0 +1,21 @@
+2011-10-31T07:25:00.000Z	Firefishe		Hello.  I'm using 11.10 on an Asus G50V laptop.  I have my BIOS thermal management turned on.  I'm exhibiting temperatures between 54 and 58 celsius.  Although this is a gaming laptop, and I would expect it to run hotter than a smaller unit, these temps seem a tad high.  I've tried fancontrol with no luck.  Is there any other way to increase fan speed?
+2011-10-31T07:26:00.000Z	tonyyarusso	Firefishe	what problems did you have with fancontrol?
+2011-10-31T07:28:00.000Z	Firefishe	tonyyarusso	Here's a paste of when I do:  sudo pwmconfig  -- http://paste.ubuntu.com/723927/
+2011-10-31T07:28:00.000Z	tonyyarusso	Firefishe	You may need to enable a kernel module for the type of sensors you have.  Does sensors-detect come up with anything?
+2011-10-31T07:29:00.000Z	Firefishe	tonyyarusso	I'll do that and paste it
+2011-10-31T07:32:00.000Z	Firefishe	tonyyarusso	Here's my output of:  sudo sensors-detect -- http://paste.ubuntu.com/723929/
+2011-10-31T07:34:00.000Z	tonyyarusso	Firefishe	now either run the service command at the bottom of that or reboot, then run pwmconfig again.
+2011-10-31T07:35:00.000Z	Firefishe	tonyyarusso	which service?  fancontrol?
+2011-10-31T07:36:00.000Z	tonyyarusso	Firefishe	'service module-init-tools start'
+2011-10-31T07:36:00.000Z	tonyyarusso	Firefishe	line 116
+2011-10-31T07:39:00.000Z	Firefishe	tonyyarusso	I get this:  sudo service module-init-tools start -- module-init-tools stop/waiting
+2011-10-31T07:50:00.000Z	Firefishe	tonyyarusso	Any suggestions about my fan issue?
+2011-10-31T07:51:00.000Z	tonyyarusso	Firefishe	What did pwmconfig say after you loaded the modules?  You never posted that I don't think.
+2011-10-31T07:52:00.000Z	Firefishe	tonyyarusso	that was meant for you
+2011-10-31T07:53:00.000Z	Firefishe	tonyyarusso	It says stop/waiting.  Should I do the pwmconfig anyway?  I interpret that at it saying that it's stopped.
+2011-10-31T07:54:00.000Z	tonyyarusso	Firefishe	Yes, do pwmconfig.
+2011-10-31T07:55:00.000Z	Firefishe	tonyyarusso	sudo pwmconfig output:   .../usr/sbin/pwmconfig: There are no pwm-capable sensor modules installed
+2011-10-31T07:55:00.000Z	tonyyarusso	Firefishe	well that's too bad.  It's possible your motherboard just doesn't support fan speed controls.
+2011-10-31T07:56:00.000Z	Firefishe	tonyyarusso	Weird.  My BIOS has digital thermal management capability, and it's enabled.  It wasn't, initially, so I enabled it.  The BIOS may just have it, and the board may not.
+2011-10-31T07:57:00.000Z	Firefishe	tonyyarusso	I'm tired of these asus/best buy hobbled-down puters.  I'm buying the real mccoy next time.
+2011-10-31T07:57:00.000Z	Firefishe	tonyyarusso	well, thank you for your help.  I do appreciate it at any rate. :)

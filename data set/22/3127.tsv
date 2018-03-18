@@ -1,0 +1,22 @@
+2008-11-29T12:58:00.000Z	bitmouse		anybody know why this command "sudo mount -a cifs //mickey/sharename /mnt/mickey/saraswati" would return this error message "TCP name Mickey/sharename not found"
+2008-11-29T12:59:00.000Z	Oneiroii	bitmouse	Also, can you ping that server by name and get a result?
+2008-11-29T13:00:00.000Z	bitmouse	Oneiroii	no, though when I type in smbclient -l mickey, I get all the expected data back
+2008-11-29T13:00:00.000Z	Oneiroii	bitmouse	That's odd - try mount.cifs with the IP instead of the name
+2008-11-29T13:01:00.000Z	bitmouse	Oneiroii	I did and it works, I just wondered what I am doing wrong cause it would be nice to use the TCP name instead of the IP address cause the ip address isn't static
+2008-11-29T13:02:00.000Z	Oneiroii	bitmouse	I had the same problem and just ended up setting a static IP for the server (on a DHCP network)
+2008-11-29T13:03:00.000Z	bitmouse	Oneiroii	lol, yeah looks like the Hostname's aren't working, I just tried to ping my NAS using it's hostname, and no love, but when I ping the computer I am on using the hostname it works
+2008-11-29T13:04:00.000Z	Oneiroii	bitmouse	Theoretically, you set the hostname for the comp you are on in the resolv.conf, so the NAS never gets called
+2008-11-29T13:05:00.000Z	bitmouse	Oneiroii	I don't know what you mean exactly, I meant that I pinged a dlink NAS
+2008-11-29T13:05:00.000Z	bitmouse	Oneiroii	or tried to
+2008-11-29T13:05:00.000Z	Oneiroii	bitmouse	Wait, who did you ping?  127.0.0.1?
+2008-11-29T13:06:00.000Z	bitmouse	Oneiroii	I tried to ping the NAS I have on my network using it's TCP name, but it didn't work, but when I tried to ping the computer that I am on currently using it's TCP name, it worked, so I assume there is something wrong with using the TCP name is certain circumstances
+2008-11-29T13:07:00.000Z	bitmouse	Oneiroii	btw where is resolv.conf?
+2008-11-29T13:07:00.000Z	Oneiroii	bitmouse	So (assuming your current computer is MOUSE) you ran "ping MOUSE" and got a response, ne?
+2008-11-29T13:07:00.000Z	Oneiroii	bitmouse	/etc/resolv.conf
+2008-11-29T13:08:00.000Z	bitmouse	Oneiroii	exactly Oneiroii
+2008-11-29T13:08:00.000Z	Oneiroii	bitmouse	Yeah.  If you try to access a TCP name that's defined in resolv.conf (your local host is auto defined), the nameserver is never called.  It just uses the IP given in resolv.conf
+2008-11-29T13:09:00.000Z	Oneiroii	bitmouse	And more than likely, the definition of your computer in resolv.conf is something like "MOUSE localhost 127.0.0.1"
+2008-11-29T13:10:00.000Z	bitmouse	Oneiroii	for some reason my resolv.conf only has this entry, nameserver 192.168.1.1
+2008-11-29T13:10:00.000Z	bitmouse	Oneiroii	I am using dd-wrt on that server and it will only give me the TCP name for the computer from which I am accessing it, wonder how to change that
+2008-11-29T13:11:00.000Z	Oneiroii	bitmouse	toupeiro was right, it's not resolv.conf, it's /etc/hosts
+2008-11-29T13:12:00.000Z	Oneiroii	bitmouse	The only time it worked for me was to run bind9 on my server, and use static IP for all the local network devices - I'm sure there's an easier way, though

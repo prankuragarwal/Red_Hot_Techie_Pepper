@@ -1,0 +1,18 @@
+2006-06-11T12:11:00.000Z	alth		Ok, I'll ask for the third time in three days, and maybe someone can help me now...I have onboard 5.1 sound, and 5.1 speakers. Ubuntu is only using the front three, not the sub or the rear ones. Can anyone help me fix this?
+2006-06-11T12:12:00.000Z	crimsun_	alth	pastebin your ``amixer'' output
+2006-06-11T12:12:00.000Z	alth	crimsun_	Righto.
+2006-06-11T12:14:00.000Z	alth	crimsun_	http://paste.ubuntu-nl.org/15513
+2006-06-11T12:16:00.000Z	crimsun_	alth	so, amixer set 'Surround' 80%,on && amixer set 'Center' on && amixer set 'LFE' 80%,on
+2006-06-11T12:17:00.000Z	crimsun_	alth	now try totem with a multichannel file or dvd
+2006-06-11T12:18:00.000Z	crimsun_	alth	(or vlc or gxine or your app of choice)
+2006-06-11T12:19:00.000Z	alth	crimsun_	Those new volume switches don't change anything, the only one that changes anything is 'PCM'.
+2006-06-11T12:19:00.000Z	crimsun_	alth	if you don't have a multichannel sound file, try something like ``aplay -Dplug:surround51 /usr/share/sounds/startup.wav''
+2006-06-11T12:20:00.000Z	crimsun_	alth	nothing? You don't hear /anything/ ?
+2006-06-11T12:21:00.000Z	crimsun_	alth	pastebin ``cat /proc/asound/cards /etc/asound.conf ~/.asoundrc*''
+2006-06-11T12:26:00.000Z	crimsun_	alth	ah, surround with an HDA. You're out of luck.
+2006-06-11T12:26:00.000Z	crimsun_	alth	just for curiosity, tail -2 /proc/asound/oss/sndstat
+2006-06-11T12:27:00.000Z	alth	crimsun_	Mixers:0: Realtek ALC880
+2006-06-11T12:27:00.000Z	crimsun_	alth	oh it's /doable/ but not easily. You need to configure custom routes.
+2006-06-11T12:27:00.000Z	crimsun_	alth	if you're lucky someone may have gone through the trouble already.
+2006-06-11T12:28:00.000Z	crimsun_	alth	yeah, try a Web search engine
+2006-06-11T12:32:00.000Z	crimsun_	alth	it should have been working /before/

@@ -1,0 +1,22 @@
+2007-12-18T12:12:00.000Z	WGGMk		When you create a bridge between eth0 (external interface) and eth1 (internal interface) do you have to change your firewall rules (iptables) to accommodate the bridge?
+2007-12-18T12:13:00.000Z	kd7swh	WGGMk	I would assume so
+2007-12-18T12:13:00.000Z	WGGMk	kd7swh	do you know much about bridging? im having difficulties
+2007-12-18T12:14:00.000Z	kd7swh	WGGMk	not a lot, I know it is a pain, and I know iptables tends to be interface specific
+2007-12-18T12:15:00.000Z	WGGMk	kd7swh	would you happen to know, that when creating the bridge how do you specify a 'default gateway' oh a dynamic ip?
+2007-12-18T12:15:00.000Z	WGGMk	kd7swh	that suppose to be "of a dynamic ip"
+2007-12-18T12:16:00.000Z	kd7swh	WGGMk	I am thinking ... the IP choice is stored in a .conf file somewhere ... I can't remember which one give me a sec (doing a search)
+2007-12-18T12:22:00.000Z	kd7swh	WGGMk	look at your /etc/network/interfaces that should show static or dynamic status
+2007-12-18T12:26:00.000Z	WGGMk	kd7swh	i checked /etc/network/interfaces but it doesnt show me what "sudo route" shows.. the default gateway of my external interface
+2007-12-18T12:27:00.000Z	kd7swh	WGGMk	/etc/network/interfaces shows you the settings of the computer itself. I don't know your network layout so I don't know what route shows
+2007-12-18T12:29:00.000Z	WGGMk	kd7swh	hmm lemme try and reword it.. if you have a external interface gettings it IP from the ISP by DHCP. will the default gateway change dynamically like the IP?
+2007-12-18T12:30:00.000Z	kd7swh	WGGMk	no it should not
+2007-12-18T12:31:00.000Z	WGGMk	kd7swh	so figurativly speaking if my IP (from ISP/DHCP) was 172.1.2.3 and my default gw was 172.1.2.5 it would always be the same even when my IP changes?
+2007-12-18T12:32:00.000Z	kd7swh	WGGMk	in theory. the only way I could see it changing is if the ISP used DDNS for their gateway
+2007-12-18T12:32:00.000Z	WGGMk	kd7swh	is that usual? i would hardly think not right
+2007-12-18T12:33:00.000Z	kd7swh	WGGMk	no it would be odd
+2007-12-18T12:33:00.000Z	kd7swh	WGGMk	if the gateway was dynamic then clients couldn't connect to the ISP (I figure)
+2007-12-18T12:34:00.000Z	WGGMk	kd7swh	makes sense. when you create a brdige, add the interfaces, and set the default gw. how to you make it automatically save that config??
+2007-12-18T12:35:00.000Z	kd7swh	WGGMk	you could create a startup script
+2007-12-18T12:35:00.000Z	WGGMk	kd7swh	in rc.local? is that the only way?
+2007-12-18T12:36:00.000Z	kd7swh	WGGMk	no, but its easy
+2007-12-18T12:42:00.000Z	WGGMk	kd7swh	so would my firewall with iptables just not work anymore? because i dot NAT on my internal interface to server DHCP

@@ -1,0 +1,19 @@
+2007-06-08T06:10:00.000Z	Murrlin		evening
+2007-06-08T06:11:00.000Z	Murrlin		I install the nvidia graphics driver from the site, which works nicely. but every time I restart, I have to install it again just to get X to run!
+2007-06-08T06:11:00.000Z	Murrlin		what am I doing wrong??
+2007-06-08T06:11:00.000Z	Murrlin		how to I get it to stick?
+2007-06-08T06:12:00.000Z	sn0	Murrlin	because you used the nvidia.com drivers you dont get the benefit of it autoworking, like with nvidia-glx
+2007-06-08T06:13:00.000Z	sn0		so you most likely need to tell your /etc/modules file to load nvidia on boot up
+2007-06-08T06:14:00.000Z	Murrlin	sn0	indeed.
+2007-06-08T06:14:00.000Z	Murrlin		so do I just reinstall nvidia-glx?
+2007-06-08T06:14:00.000Z	Murrlin		I mean refresh it
+2007-06-08T06:14:00.000Z	sn0		that would complicate things more Murrlin
+2007-06-08T06:14:00.000Z	Murrlin		^^
+2007-06-08T06:14:00.000Z	sn0		nvidia-glx or nvidia-glx-new is ubuntu packaged drivers for nvidia cards
+2007-06-08T06:15:00.000Z	sn0		but you choose to install the ones from nvidia.com , that do not install a deb file, or get used by apt/synaptic
+2007-06-08T06:15:00.000Z	sn0		so you have to manually cater for it
+2007-06-08T06:15:00.000Z	Murrlin		sn): go on
+2007-06-08T06:15:00.000Z	sn0		installing the driver loads the nvidia module at the end, so when you reboot the module isn't loading automatically
+2007-06-08T06:16:00.000Z	sn0		so as per the manual Murrlin , edit /etc/modules , add nvidia to a new line at the end
+2007-06-08T06:16:00.000Z	sn0		so next time you reboot, it will add the driver for you
+2007-06-08T06:17:00.000Z	Murrlin	sn0	bless you

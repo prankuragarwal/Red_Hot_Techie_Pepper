@@ -1,0 +1,18 @@
+2006-12-09T13:06:00.000Z	sorush20		!swiftfox
+2006-12-09T13:06:00.000Z	sorush20		!swiftfox
+2006-12-09T13:07:00.000Z	sorush20		where are the ubuntu swiftfox repository?
+2006-12-09T13:09:00.000Z	sorush20		here is all the swiftfox verison..
+2006-12-09T13:09:00.000Z	sorush20		how do I turn this address into a debian source http://getswiftfox.com/debian.htm
+2006-12-09T13:10:00.000Z	LjL	sorush20	erm, doesn't it say precisely that right on that page? "deb http://getswiftfox.com/builds/debian unstable non-free"
+2006-12-09T13:11:00.000Z	LjL	sorush20	and i don't see anywhere that those packages are Ubuntu compatible...
+2007-04-02T05:51:00.000Z	LjL	sorush20	i guess /boot/grub/device.map
+2007-04-02T05:51:00.000Z	sorush20	LjL	the device map is corret.. I have hdc map to hd0 and hdd hd1
+2007-04-02T05:51:00.000Z	LjL	sorush20	the second number is simply the partition, so if (hd0) is /dev/hda, (hd0,0) will be /dev/hda1
+2007-04-02T05:52:00.000Z	sorush20	LjL	I have managed to install grub again onto the right partition the first haddisk
+2007-04-02T05:52:00.000Z	LjL	sorush20	if those are the only drives you have... you should probably connect them to the primary IDE, though, not secondary
+2007-04-02T05:52:00.000Z	sorush20	LjL	I only have two devices..
+2007-04-02T05:52:00.000Z	LjL	sorush20	having the HDs connected to the secondary IDE controller is, well... i guess there's nothing intrinsically bad, but why not just connect them to the primary?
+2007-04-02T05:53:00.000Z	LjL	sorush20	i'm sure a few installers will get confused by that
+2007-04-02T05:59:00.000Z	LjL	sorush20	should be
+2007-04-02T05:59:00.000Z	sorush20	LjL	this is why I'm asking to see if that 0,0 is stored anywhere else except..
+2007-04-02T06:02:00.000Z	LjL	sorush20	look at your menu.lst, and make sure the UUID that is listed for root (root=UUID=blahblah) matches the actual UUID of your partition. use  blkid  to get a list of your partitions' UUID (if you can access a working system, that is...)

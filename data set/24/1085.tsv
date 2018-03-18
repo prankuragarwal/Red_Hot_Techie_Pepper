@@ -1,0 +1,24 @@
+2010-08-06T04:08:00.000Z	ilovefairuz	makson	chroot it only concerned with file system, not memory or process allocation
+2010-08-06T04:10:00.000Z	makson	ilovefairuz	I see, if the user connecting just has regular rights, and all they have in there chroot environment is irssi + screen, that's deciently secure correct?
+2010-08-06T04:11:00.000Z	ilovefairuz	makson	you probably want sandboxing using apparmor or selinux
+2010-08-06T04:11:00.000Z	makson	ilovefairuz	sheesh, i come from a windows world, and sandboxing & jails sound the same..,,
+2010-08-06T04:17:00.000Z	makson	ilovefairuz	so chroot just locks down the file system, isn't that pretty good teamed with taking away sudo privliages?
+2010-08-06T04:20:00.000Z	ilovefairuz	makson	it depends on what you have on stake, if there are sensitive data on that box, then tighten it as much as you can
+2010-08-06T04:20:00.000Z	makson	ilovefairuz	nothing sensative at all, just irc logs
+2010-08-06T04:20:00.000Z	makson	ilovefairuz	really just wanting to give a few users access to the box to allow them to always be connected thats all buddies of mine.
+2010-08-06T04:22:00.000Z	makson	ilovefairuz	i can spend days locking the thing down, but the question is does it require siuch a lock down. I'm thinking no... I have snapshots on the box, I want to block people from installing shit, and from snooping around other users home folders thats pretty much it.
+2010-08-06T04:23:00.000Z	ilovefairuz	makson	you could lock communications with iptables to a few specific IRC hosts and you'll be one step ahead
+2010-08-06T04:24:00.000Z	ilovefairuz	makson	you could also mount the home partition with noexec
+2010-08-06T04:25:00.000Z	makson	ilovefairuz	noexec, prevent's them from executing stuff ? whitelist?
+2010-08-06T04:26:00.000Z	ilovefairuz	makson	from executing things in their home directory, but they can still execute system binaries
+2010-08-06T04:27:00.000Z	makson	ilovefairuz	i'll look into that, i wan't to prevent them from scping stuff up to the box.
+2010-08-06T04:27:00.000Z	makson	ilovefairuz	scp runs over same port as ssh, so not sure how i can do that...
+2010-08-06T04:27:00.000Z	ilovefairuz	makson	even if they did, with noexec they won't be able to execute it
+2010-08-06T04:29:00.000Z	makson	ilovefairuz	i guess im confused when were talking about mounting the FS? I guess that's what happens with chroot, i mount to a folder which then becomes the chroot env? i can do that with noexec? it will still run things like grep rgiht?
+2010-08-06T04:30:00.000Z	ilovefairuz	makson	if you put their home directories (/home) on a separate partition and add 'noexec' to the mount options in /etc/fstab, they won't be able to execute any binaries located inside their home directory, but they can use system binaries (/bin, /usr/bin, etc)
+2010-08-06T04:31:00.000Z	makson	ilovefairuz	ok a partition, so is there a way to resize my active boxes partition, its one big one now, and then create a new partition for the chroot env with noexec? something like gpart?
+2010-08-06T04:32:00.000Z	ilovefairuz	makson	yes, gparted
+2010-08-06T04:42:00.000Z	makson	ilovefairuz	thanks dude, I appricate it. I think that will work for now.
+2010-08-06T04:43:00.000Z	ilovefairuz	makson	you're welcome
+2010-08-06T04:54:00.000Z	ilovefairuz	makson	'su -' requires knowing the root password, and use: EDITOR=nano visudo
+2010-08-07T04:01:00.000Z	ilovefairuz	makson	check the ChrootDirectory option of openssh

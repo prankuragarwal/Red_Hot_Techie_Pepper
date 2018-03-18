@@ -1,0 +1,21 @@
+2011-10-25T19:54:00.000Z	john_rambo		when I try to mount a nfs share i get "failed: RPC Error: Program not registered"
+2011-10-25T19:55:00.000Z	e20100633	john_rambo	you need to install portmap
+2011-10-25T19:56:00.000Z	john_rambo	e20100633	Installling portmap now
+2011-10-25T19:59:00.000Z	john_rambo	e20100633	portmap is already installled
+2011-10-25T20:00:00.000Z	e20100633	john_rambo	what command are you using to mount your remote nfs ?
+2011-10-25T20:03:00.000Z	john_rambo	e20100633	http://pastebin.com/ztqJwHF2       tux is the username of both the PCs
+2011-10-25T20:04:00.000Z	e20100633	john_rambo	ok, check that: http://tldp.org/HOWTO/NFS-HOWTO/troubleshooting.html (the  b. RPC: Program Not Registered: (or another "RPC" error) part)
+2011-10-25T20:04:00.000Z	e20100633	john_rambo	try to run /usr/sbin/rpc.mountd on the server, maybe the daemon isn't running
+2011-10-25T20:05:00.000Z	e20100633	john_rambo	plus, add -t nfs to your command to specify nfs to mount command
+2011-10-25T20:06:00.000Z	e20100633	john_rambo	like sudo mount -t nfs 192.168.1.3:/home/tux/nfs /home/tux/nfs
+2011-10-25T20:09:00.000Z	john_rambo	e20100633	tried starting the rpc.mountd , tried the - t nfs  but same thing .....Do I neeedto open ports on the server side ?
+2011-10-25T20:09:00.000Z	e20100633	john_rambo	well, yes, if you have a firewall enabled? are you using iptables?
+2011-10-25T20:11:00.000Z	john_rambo	e20100633	gufw enabled & I have allowed nfs as service
+2011-10-25T20:13:00.000Z	e20100633	john_rambo	what is the content of /etc/host.allow on the server side?
+2011-10-25T20:15:00.000Z	e20100633	john_rambo	give me too the content of /etc/exports on the server side
+2011-10-25T20:16:00.000Z	john_rambo	e20100633	there are no entries there
+2011-10-25T20:17:00.000Z	e20100633	john_rambo	the file is empty? do you have something in /etc/host.deny then?
+2011-10-25T20:20:00.000Z	john_rambo	e20100633	same thing with hosts.deny there are no entries there only descriptions with # in the begining
+2011-10-25T20:20:00.000Z	e20100633	john_rambo	well...
+2011-10-25T20:22:00.000Z	e20100633	john_rambo	I'm sorry, I have no idea; but look, try to open a thread on the forum with all your informations (rpcinfo, files' contents, etc), maybe you'll find someone with more skills than me...
+2011-10-25T20:23:00.000Z	john_rambo	e20100633	Okay/Thanks

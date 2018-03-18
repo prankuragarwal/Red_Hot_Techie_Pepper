@@ -1,0 +1,21 @@
+2008-10-26T11:43:00.000Z	CokeFTW		I need help. I am having External Drive mount problems. Every time I try plug in a flash drive, external hard drive, or external cd-rom I get a mount error.
+2008-10-26T11:45:00.000Z	outbackwifi	CokeFTW	sudo apt-get install pmount; edit /etc/pmount.allow
+2008-10-26T11:50:00.000Z	outbackwifi	CokeFTW	did you edit pmount.allow ?
+2008-10-26T11:50:00.000Z	CokeFTW	outbackwifi	I guess I am not sure what that is
+2008-10-26T11:51:00.000Z	outbackwifi	CokeFTW	did you read my response. i asked you to install pmount and then edit /etc/pmount.allow to allow your user to mount. after that your mounting blues would go away
+2008-10-26T11:54:00.000Z	CokeFTW	outbackwifi	I ran the install pmount, and then ran sudo edit /etc/pmount.allow. and I still get mount error
+2008-10-26T11:54:00.000Z	outbackwifi	CokeFTW	did  you actually edit that file or just ran the command??
+2008-10-26T11:56:00.000Z	outbackwifi	CokeFTW	can type sudo gedit /etc/pmount.allow? it should open up the default gnome editor  with the file
+2008-10-26T11:58:00.000Z	outbackwifi	CokeFTW	add your device name there like /dev/sdb1 (whatever applies to the device you are trying to mount)
+2008-10-26T11:59:00.000Z	CokeFTW	outbackwifi	how do I find out the name?
+2008-10-26T12:00:00.000Z	outbackwifi	CokeFTW	as soon as you plugged in the device, the last few lines of dmesg should tell you
+2008-10-26T12:01:00.000Z	CokeFTW	outbackwifi	sorry for my noobness but how do I see the dmesg
+2008-10-26T12:01:00.000Z	outbackwifi	CokeFTW	type dmesg inside a terminal
+2008-10-26T12:05:00.000Z	CokeFTW	outbackwifi	I see a vast amount of lines of text, I don't really know what I am looking for..
+2008-10-26T12:06:00.000Z	outbackwifi	CokeFTW	the last few lines (if you just plugged in your external disk) should say something like USB disk found; partitions sdb1 etc
+2008-10-26T12:07:00.000Z	outbackwifi	CokeFTW	other option is to type sudo fdisk -l after you plug in the device
+2008-10-26T12:08:00.000Z	CokeFTW	outbackwifi	okay so when I add "/dev/sdb1" to the list do I have to add a # before it, or just add it in on the next line
+2008-10-26T12:08:00.000Z	outbackwifi	CokeFTW	the # is a comment; so you dont add it
+2008-10-26T12:12:00.000Z	outbackwifi	CokeFTW	yes
+2008-10-26T12:17:00.000Z	CokeFTW	outbackwifi	I still seem to be getting the same error
+2008-10-26T12:17:00.000Z	CokeFTW	outbackwifi	maybe I am giving it the wrong name from dmesg

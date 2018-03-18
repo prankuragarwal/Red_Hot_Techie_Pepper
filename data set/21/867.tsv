@@ -1,0 +1,21 @@
+2011-05-02T03:43:00.000Z	FanControl		i have a problem with acerhdf. after installation, as i attempt "modprobe acerhdf", i get "fatal: error inserting acerhdf". does anyone here know why such a problem would occur?
+2011-05-02T03:44:00.000Z	acicula	FanControl	you are not root
+2011-05-02T03:44:00.000Z	FanControl	acicula	have attempted "sudo modprobe", as well as "sudo su", then modprobe - no luck!
+2011-05-02T03:46:00.000Z	FanControl	acicula	i still get "FATAL: Error inserting acerhdf (/lib/modules/2.6.35-28-generic/updates/acerhdf.ko): Invalid argument"
+2011-05-02T03:47:00.000Z	acicula	FanControl	maybe modprobe has a verbose flag
+2011-05-02T03:47:00.000Z	FanControl	acicula	will check!
+2011-05-02T03:49:00.000Z	FanControl	acicula	with verbose flag [sudo modprobe acerhdf -v]: "insmod /lib/modules/2.6.35-28-generic/updates/acerhdf.ko
+2011-05-02T03:54:00.000Z	acicula	FanControl	whats your command for loading the module?
+2011-05-02T03:56:00.000Z	FanControl	acicula	i'm not sure. isn't it just: "insmod /lib/modules/2.6.35-28-generic/updates/acerhdf.ko"
+2011-05-02T03:56:00.000Z	FanControl	acicula	have tried that already, unfortunatly!
+2011-05-02T03:57:00.000Z	acicula	FanControl	hmm, well its not being descriptive about why it fails, maybe there is something in dmesg?
+2011-05-02T03:57:00.000Z	acicula	FanControl	are you sure it should be loadable to begin with
+2011-05-02T04:00:00.000Z	FanControl	acicula	acicula: thanks for the percistancy! i suck at all this advanced stuff, but i simply have followed these instructions: "http://crunchbanglinux.org/wiki/howto/aspireone", regarding the section 'fan control'. will check dmesg now!
+2011-05-02T04:00:00.000Z	FanControl	acicula	oh, and that link says it's loadable, yes!
+2011-05-02T04:00:00.000Z	acicula	FanControl	did you custom build the kernel module or?
+2011-05-02T04:03:00.000Z	FanControl	acicula	no, not at all! not on purpose, at least. eventhough i have modified the system some - due to a lot of bugs with ubuntu on acer aspire one! but anyways:
+2011-05-02T04:04:00.000Z	FanControl	acicula	[    0.000000] ACPI: SLIC 7f6bbe8a 00176 (v01 ACRSYS ACRPRDCT 06040000 acer 00000000)
+2011-05-02T04:04:00.000Z	acicula	FanControl	it seems that is the cause for your error
+2011-05-02T04:04:00.000Z	acicula	FanControl	so your specific model is not, yet at least, supported by that driver
+2011-05-02T04:04:00.000Z	FanControl	acicula	it does, yes! thanks for all the help!
+2011-05-02T04:05:00.000Z	FanControl	acicula	and have a nice evening or day! bye!

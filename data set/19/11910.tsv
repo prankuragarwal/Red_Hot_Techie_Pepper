@@ -1,0 +1,19 @@
+2006-01-17T11:19:00.000Z	nemik		where does ubuntu put openssl libraries and such?
+2006-01-17T11:20:00.000Z	czr	nemik	like all other distros, /usr/lib/
+2006-01-17T11:20:00.000Z	czr	nemik	that's the path for non-critical ones (not critical in booting). critical ones go under /lib. man hier for more info
+2006-01-17T11:21:00.000Z	nemik	czr	synaptic says i have it but it is not there, need it for doing a wpa_supplicant make
+2006-01-17T11:22:00.000Z	czr	nemik	hmmh. which ubuntu version?
+2006-01-17T11:22:00.000Z	czr	nemik	dpkg -L libssl0.9.7 | grep .so
+2006-01-17T11:23:00.000Z	czr	nemik	that is a list of all library files that come with package libssl0.9.7 which should contain the stuff
+2006-01-17T11:23:00.000Z	nemik	czr	great! i'll give it a shot, i may need to apt-get the libopenssl then
+2006-01-17T11:24:00.000Z	czr	nemik	good luck :-)
+2006-01-17T11:25:00.000Z	czr	nemik	wait a moment. did you say 'wpa_supplicant make'?
+2006-01-17T11:25:00.000Z	czr	nemik	you're building some software with make, or what are you doing exactly?
+2006-01-17T11:25:00.000Z	nemik	czr	yes, trying to do a make for it for the latest version
+2006-01-17T11:25:00.000Z	czr	nemik	ach. stupid me :-)
+2006-01-17T11:26:00.000Z	czr	nemik	libssl0.9.7 contains the binary library files only. not the ones that you need for 'development' (like when you're building software that will use the library)
+2006-01-17T11:26:00.000Z	czr	nemik	libssl-dev is the package that includes the rest stuff
+2006-01-17T11:26:00.000Z	nemik	czr	excellent, off to synaptic for that!
+2006-01-17T11:27:00.000Z	czr	nemik	or just write 'sudo apt-get install libssl-dev' on the command line
+2006-01-17T11:30:00.000Z	nemik	czr	thanks so much, got it perfectly now!
+2006-01-17T11:30:00.000Z	nemik	czr	my damn university wireless still won't work, but at least i know its not an old version of wpa_config!

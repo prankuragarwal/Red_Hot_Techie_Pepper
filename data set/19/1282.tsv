@@ -1,0 +1,19 @@
+2012-07-13T01:06:00.000Z	repozitor		but i can't, because i have problem with MBR
+2012-07-13T01:06:00.000Z	repozitor		i think if copy sector by sector, it should work fine
+2012-07-13T01:06:00.000Z	repozitor		but i see my pc can't boot from new HDD
+2012-07-13T01:07:00.000Z	gartral	repozitor	DD.
+2012-07-13T01:07:00.000Z	repozitor	gartral	i use already dd
+2012-07-13T01:07:00.000Z	repozitor		but not arrive to my end
+2012-07-13T01:07:00.000Z	gartral	repozitor	did you dd the entire device?
+2012-07-13T01:08:00.000Z	repozitor		i wrote complete problem, read it
+2012-07-13T01:08:00.000Z	repozitor		http://paste.ubuntu.com/1088147/
+2012-07-13T01:10:00.000Z	gartral	repozitor	you were dd'ing partitions, for this too work you must dd the DEVICE too a new DEVICE which would look like "dd if=/dev/sda of=/dev/sdb" note the lack of numbers and the designation of a totally seperate HDD for the target.
+2012-07-13T01:11:00.000Z	repozitor	gartral	i can use your cmd, if i have both HDD in one system
+2012-07-13T01:11:00.000Z	repozitor		but i don't have them in same PC
+2012-07-13T01:12:00.000Z	gartral	repozitor	also, I'm use /dev/sdb as an example here. .you probably won't want too use that as your target, too figure out which drive you want as your target, you probably should use fdisk -l
+2012-07-13T01:14:00.000Z	repozitor	gartral	if i DDing all entire disk, is it possible to think if i restore it to any HDD, i create a complete copy?
+2012-07-13T01:15:00.000Z	gartral	repozitor	again, that doesn't matter, if you dd if=/dev/sda of=/path/too/usb\ drive/you/want/the/image/on it will work on the new machine when you revorse the order of if and of.
+2012-07-13T01:15:00.000Z	gartral	repozitor	That's the idea.
+2012-07-13T01:18:00.000Z	repozitor	gartral	can i copy sector by sector all entire disk, and then restore it on another HDD, using .hdd temporary file?
+2012-07-13T01:18:00.000Z	repozitor		and is the new HDD bootable?
+2012-07-13T01:20:00.000Z	gartral	repozitor	yes, this is called an Imaged Device Transfer.. and, as long as you have a 1|1 image of the original device, when you put it back on a hdd it will be exactly the same as what you took it from, so if the new device is bigger, than remember too boot one too make sure it works, then reboot and resize the image afterward so your drive is used correctly..

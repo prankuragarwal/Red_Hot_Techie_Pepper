@@ -1,0 +1,24 @@
+2011-10-26T03:59:00.000Z	Alperen		my usb drive wont mount here is the dmesg and lsusb output how can i fix it? http://pastebin.com/4jsNTiZP
+2011-10-26T04:00:00.000Z	soreau	Alperen	Have you tried mount /dev/sdb /some/mount/point ?
+2011-10-26T04:01:00.000Z	Alperen	soreau	yes it says device doesnt exists
+2011-10-26T04:01:00.000Z	soreau	Alperen	Does /dev/sdb1 exist?
+2011-10-26T04:02:00.000Z	Alperen	soreau	it mounts in other linux distros and also windows
+2011-10-26T04:03:00.000Z	soreau	Alperen	Does /dev/sdb1 exist?
+2011-10-26T04:03:00.000Z	Alperen	soreau	no as i see. sudo fdisk -l wont give anything
+2011-10-26T04:04:00.000Z	soreau	Alperen	Well if it mounts fine in another linux distro, you should probably file a bug
+2011-10-26T04:05:00.000Z	Alperen	soreau	it suddenly happened i dont know why :S
+2011-10-26T04:05:00.000Z	soreau	Alperen	It used to work?
+2011-10-26T04:06:00.000Z	Alperen	soreau	yes still working in other distros
+2011-10-26T04:06:00.000Z	soreau	Alperen	I mean in ubuntu
+2011-10-26T04:06:00.000Z	Alperen	soreau	yes
+2011-10-26T04:07:00.000Z	soreau	Alperen	Then you should file a bug report with all of this information
+2011-10-26T04:07:00.000Z	Alperen	soreau	ok thank you
+2011-10-26T04:08:00.000Z	soreau	Alperen	I see in dmesg it shows sdb1 and sdb4. Have you tried mounting these? mount /dev/sdb4 /mount/point
+2011-10-26T04:09:00.000Z	Alperen	soreau	it says doesnt exist
+2011-10-26T04:10:00.000Z	soreau	Alperen	Can you pastebin the output of 'ls /dev/sdb*'? (assuming you haven't unplugged it since pasting that dmesg output)
+2011-10-26T04:11:00.000Z	Alperen	soreau	http://pastebin.com/G3ckinqL
+2011-10-26T04:13:00.000Z	soreau	Alperen	That's strange if dmesg shows sdb1 and sdb4, they should exist in /dev/
+2011-10-26T04:14:00.000Z	soreau	Alperen	Make sure the usb is firmly plugged and there's no short. Try a different usb port. Note that unplugging/replugging may cause it to show up on a different node such as sdc or sdd
+2011-10-26T04:15:00.000Z	Alperen	soreau	tried nothing changed. :S also when i cat /proc/scsi/scsi it gives this http://pastebin.com/g1jSbwZJ
+2011-10-26T04:16:00.000Z	soreau	Alperen	Weird. Make sure it works in the other distro or try a live session and file a bug report
+2011-10-26T04:17:00.000Z	Alperen	soreau	ok i will try it thank you

@@ -1,0 +1,24 @@
+2008-11-12T07:27:00.000Z	mroc		having some trouble getting a linksys wusb11 v 2.6 (amtel chipset) to work.  downloaded amtel-firmware...still nothing in network manager.  help...please!
+2008-11-12T07:28:00.000Z	mindrape	mroc	- does it show up in dmesg?  lspci?  lsmod?
+2008-11-12T07:30:00.000Z	mroc	mindrape	it's recognized in lsusb and dmesg,  doesn't seem to show up in lspci or lsmod
+2008-11-12T07:30:00.000Z	mindrape	mroc	- hold... lemme see if I can find the driver it should be using
+2008-11-12T07:31:00.000Z	mindrape	mroc	- did you follow this guide?  https://wiki.ubuntu.com/WifiDocs/Device/LinksysWUSB11
+2008-11-12T07:32:00.000Z	mroc	mindrape	no...somehow i managed to not find that page.
+2008-11-12T07:32:00.000Z	mindrape	mroc	- another one https://help.ubuntu.com/community/WifiDocs/Driver/Ndiswrapper
+2008-11-12T07:33:00.000Z	mroc	mindrape	does that second one mention the amtel chipset or wusb11 v 2.6 adapter?  it doesn't seem to
+2008-11-12T07:35:00.000Z	mindrape	mroc	-  if you sudo modprobe -v amtel what you get?
+2008-11-12T07:36:00.000Z	mroc	mindrape	sorry...i've been spelling it wrong.  it's atmel.  and i get the following: insmod /lib/modules/2.6.27-8-generic/kernel/drivers/net/wireless/atmel.ko
+2008-11-12T07:36:00.000Z	mindrape	mroc	- how about when you sudo iwconfig now?
+2008-11-12T07:37:00.000Z	mroc	mindrape	i have a wlan0 option, but still nothing in network manager
+2008-11-12T07:37:00.000Z	mindrape	mroc	- manually configure it from the commandline....          sudo iwconfig wlan0 essid YOURSSID
+2008-11-12T07:37:00.000Z	mindrape	mroc	- you can also              sudo iwlist wlan0 scan
+2008-11-12T07:37:00.000Z	mindrape	mroc	- does iwlist wlan0 scan show any APs?
+2008-11-12T07:37:00.000Z	mroc	mindrape	ok.  what's the word on it working in network manager?
+2008-11-12T07:38:00.000Z	mindrape	mroc	- dunno... I never use the GUI tools 'cause they are liars... yes, liars!  CLI for life!!@$?#@!
+2008-11-12T07:38:00.000Z	mindrape	mroc	- I've had issues w network manager never doing what I want so I gave up on it... :(
+2008-11-12T07:38:00.000Z	mroc	mindrape	"interface doesn't support scanning : Network is down"
+2008-11-12T07:38:00.000Z	mindrape	mroc	- sudo ifconfig wlan0 up
+2008-11-12T07:38:00.000Z	mroc	mindrape	i've had issues with it too.
+2009-05-19T06:24:00.000Z	mindrape	mroc	- you can manually edit it... apt-get should have run all the automatic scripts for you though.... I'd consult !grub
+2009-05-19T06:26:00.000Z	mroc	mindrape	i knew about the maunal edit option.  i'm not sure why it stopped updating automagically...but i was hoping for a solution that would get it updating properly again.  i'll check out !grub.
+2009-05-19T06:44:00.000Z	mroc	mindrape	 thank you.

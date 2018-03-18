@@ -1,0 +1,22 @@
+2011-10-25T03:00:00.000Z	blip-		How can I install a program when the kernel doesn't boot ?
+2011-10-25T03:00:00.000Z	blip-		I tried recovery kernel, but the whole filesystem is read only
+2011-10-25T03:01:00.000Z	usr13	blip-	You can't
+2011-10-25T03:01:00.000Z	blip-	usr13	oh.  I need just to uninstall the nvidia driver because it's causing the issue since I have Nvidia Optimus on my laptop
+2011-10-25T03:01:00.000Z	usr13	blip-	What happened?
+2011-10-25T03:02:00.000Z	blip-	usr13	Nvidia Optimus doesn't work in Linux and I was trying the relevant bios options to force the discrete nvidia card.  Then I installed the nvidia drivers from repo and rebooted, after that it gets stuck booting the kernel right after "Checking Battery State [OK]"
+2011-10-25T03:03:00.000Z	usr13	blip-	You can just dissable the Nvidia driver if need be.  (sudo mv /etc/X11/xorg.conf /etc/X11/xorg.conf.bak or just sudo rm /etc/X11/xorg.conf).
+2011-10-25T03:03:00.000Z	blip-	usr13	if I boot livecd and edit xorg.conf manually would that help ?
+2011-10-25T03:03:00.000Z	blip-	usr13	yes but i'm confused why the filesystem is read only from recovery kernel.  I'm forced to use livecd right ?
+2011-10-25T03:04:00.000Z	usr13	blip-	No just boot from the hard drive.
+2011-10-25T03:04:00.000Z	usr13	blip-	The latest kernel doesn't boot at all?
+2011-10-25T03:05:00.000Z	usr13	blip-	Or is it just giving you a non-GUI interface?
+2011-10-25T03:05:00.000Z	blip-	usr13	the latest and my 3 older kernels don't boot.  all after installing nvidia stuff
+2011-10-25T03:05:00.000Z	blip-	usr13	i have verbosish boot, no gui.  it just hangs with no message after one point
+2011-10-25T03:05:00.000Z	usr13	blip-	I find that hard to believe.  What happens when you do Ctrl-Alt-F6 ?
+2011-10-25T03:06:00.000Z	blip-	usr13	one sec i will boot and try it
+2011-10-25T03:06:00.000Z	usr13	blip-	I think you mean 11.10, right?
+2011-10-25T03:07:00.000Z	blip-	usr13	oh ctrl-atl
+2011-10-25T03:08:00.000Z	usr13	blip-	Ok now do this:  sudo mv /etc/X11/xorg.conf /etc/X11/xorg.conf.bak
+2011-10-25T03:08:00.000Z	usr13	blip-	Done....?
+2011-10-25T03:08:00.000Z	usr13	blip-	Next do: service gdm restart
+2011-10-25T03:13:00.000Z	blip-	usr13	now it takes me to a black screen never reaches GDM

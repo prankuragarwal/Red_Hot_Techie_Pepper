@@ -1,0 +1,21 @@
+2010-09-05T09:45:00.000Z	Flynsarmy		what's the terminal command to include files & folders starting with a . in the zip? i tried a zip -r zipname * but it didnt include them
+2010-09-05T09:46:00.000Z	usr13	Flynsarmy	Not sure what you're trying to do.
+2010-09-05T09:47:00.000Z	Flynsarmy	usr13	trying to back up my entire home folder
+2010-09-05T09:47:00.000Z	usr13	Flynsarmy	try -S
+2010-09-05T09:48:00.000Z	usr13	Flynsarmy	Why not use tar?
+2010-09-05T09:48:00.000Z	Flynsarmy	usr13	dont know how. zip is easier :)
+2010-09-05T09:50:00.000Z	usr13	Flynsarmy	tar -czf backup.tgz .
+2010-09-05T09:51:00.000Z	Flynsarmy	usr13	what're the advantages of using tar with the more difficult commands over zip? (note: its a backup so i'm wanting it compressed aswell)
+2010-09-05T09:58:00.000Z	usr13	Flynsarmy	tar -czf home-backup.tgz /home
+2010-09-05T09:58:00.000Z	Flynsarmy	usr13	seems alot more complex than simply using zip....are there any advantages at all?
+2010-09-05T09:58:00.000Z	usr13	Flynsarmy	tar -czf home-backup.tgz .
+2010-09-05T09:59:00.000Z	usr13	Flynsarmy	Yes
+2010-09-05T09:59:00.000Z	Flynsarmy	usr13	never had an issue with zip before...anything else?
+2010-09-05T10:00:00.000Z	usr13	Flynsarmy	I don't see that it is any more complicated.   (It does pick up the . [hidden files] as well)
+2010-09-05T10:01:00.000Z	Flynsarmy	usr13	oh well, your nagging has won me over, i'll give it a shot :)
+2010-09-05T10:06:00.000Z	Flynsarmy	usr13	is there a way to skip specific folders? like the .gvfs folder?
+2010-09-05T10:11:00.000Z	usr13	Flynsarmy	 -X, --exclude-from FILE
+2010-09-05T10:12:00.000Z	usr13	Flynsarmy	...will exclude files listed in FILE
+2010-09-05T10:12:00.000Z	usr13	Flynsarmy	See man tar
+2010-09-05T10:13:00.000Z	usr13	Flynsarmy	 -X left-out.txt
+2010-09-05T10:14:00.000Z	Flynsarmy	usr13	that works for files but when i try it on the .gvfs folder it errors '.gvfs/ is a directory'. Command i used: tar -czf home-backup.tgz . -X .gvfs

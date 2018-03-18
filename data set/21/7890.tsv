@@ -1,0 +1,21 @@
+2006-06-23T08:49:00.000Z	crimsun	beerfan_	what's the selected default device in System> Preferences> Sound?
+2006-06-23T08:50:00.000Z	beerfan_	crimsun	there's only one sound device available. Intel 82801CA
+2006-06-23T08:51:00.000Z	crimsun	beerfan_	and if you select it and click Close, is sound audible again?
+2006-06-23T08:51:00.000Z	beerfan_	crimsun	yeah, done that many times. rebooted many times
+2006-06-23T08:51:00.000Z	crimsun	beerfan_	``asoundconf list''
+2006-06-23T08:52:00.000Z	beerfan_	crimsun	asoundconf list shows 1 device
+2006-06-23T08:53:00.000Z	crimsun	beerfan_	the 82801CA, correct?
+2006-06-23T08:53:00.000Z	beerfan_	crimsun	correct
+2006-06-23T08:54:00.000Z	crimsun	beerfan_	what audio apps don't seem to output audible volume?
+2006-06-23T08:55:00.000Z	beerfan_	crimsun	^
+2006-06-23T08:55:00.000Z	crimsun	beerfan_	pastebin ``cat /etc/asound.conf ~/.asoundrc*''
+2006-06-23T08:56:00.000Z	beerfan_	crimsun	I think you might have found it
+2006-06-23T08:57:00.000Z	beerfan_	crimsun	I see a string in there that was in the errors
+2006-06-23T08:58:00.000Z	beerfan_	crimsun	I tried renaming my ~/.asoundrc and will try again
+2006-06-23T09:00:00.000Z	crimsun	beerfan_	the proper way to set it is: ``asoundconf set-default-card $(asoundconf list|grep -v ^Names|head -1)''
+2006-06-23T09:00:00.000Z	beerfan_	crimsun	I removed my ~/.asoundrc and aplay now prints a different briefer error. device is busy.
+2006-06-23T09:00:00.000Z	beerfan_	crimsun	I'll try it your way :-)
+2006-06-23T09:00:00.000Z	crimsun	beerfan_	``lsof /dev/dsp* /dev/snd/*''
+2006-06-23T09:03:00.000Z	beerfan_	crimsun	I seems that removing my .asoundrc did the trick. It must have added the device there and never removed it
+2006-06-23T09:03:00.000Z	beerfan_	crimsun	thanks so much
+2006-06-23T09:04:00.000Z	crimsun	beerfan_	np

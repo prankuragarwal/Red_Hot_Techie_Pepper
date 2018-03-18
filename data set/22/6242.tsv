@@ -1,0 +1,22 @@
+2006-11-28T10:55:00.000Z	hc`		Hey. Anyone here willing to help me with FX5200PCI, Nvidia-drivers and xorg.conf?
+2006-11-28T10:56:00.000Z	soundray	hc`	your best chance is to describe your problem in precise terms.
+2006-11-28T11:00:00.000Z	hc`	soundray	okay. well. i have installed the card, works perfect with windows (dualboot), after i installed nvidia-gxl and another package, and ran nvidia-xconfig in terminal, i get an error saying xorg didn't start properly. so i changed in the xorg-config, so now i use the "nv"-driver, not the "nvidia". but, with the "nv"-driver, i can't higher resolution than 1024x768
+2006-11-28T11:02:00.000Z	soundray	hc`	to use the nvidia driver, you have to have the nvidia module loaded. Check that with 'lsmod | grep nvidia'
+2006-11-28T11:03:00.000Z	hc`	soundray	root@ruben:~# lsmod | grep nvidia
+2006-11-28T11:03:00.000Z	soundray	hc`	use pastebin for pasting please
+2006-11-28T11:04:00.000Z	soundray	hc`	okay, so the module is loaded. When you change back to the nvidia driver and restart X, what errors do you see in /var/log/Xorg.0.log (end of that file)?
+2006-11-28T11:04:00.000Z	hc`	soundray	http://paste.ubuntu-nl.org/34573/
+2006-11-28T11:06:00.000Z	hc`	soundray	http://paste.ubuntu-nl.org/34575/
+2006-11-28T11:09:00.000Z	soundray	hc`	is X running now?
+2006-11-28T11:10:00.000Z	hc`	soundray	not now. i removed the lines with wacom, and i found something weird.
+2006-11-28T11:10:00.000Z	soundray	hc`	what's that?
+2006-11-28T11:10:00.000Z	hc`	soundray	http://paste.ubuntu-nl.org/34577/
+2006-11-28T11:12:00.000Z	soundray	hc`	those are just warnings. The real problem is that it finds no screens. Maybe if you run 'sudo dpkg-reconfigure xserver-xorg', you can set the proper resolutions for your setup. Also, look at the troubleshooting section in the Ubuntu guide on NVidia drivers...
+2006-11-28T11:13:00.000Z	hc`	soundray	been there, done that.
+2006-11-28T11:14:00.000Z	soundray	hc`	is your card definitely supported?
+2006-11-28T11:14:00.000Z	hc`	soundray	yeah, i think so.
+2006-11-28T11:20:00.000Z	soundray	hc`	sorry, I'm out of ideas for your prob
+2006-11-28T11:21:00.000Z	hc`	soundray	i think i found the solution. When i run # dpkg-reconfigure xserver-xorg
+2006-11-28T11:22:00.000Z	hc`	soundray	it worked! ^^,
+2006-11-28T11:23:00.000Z	soundray	hc`	well done
+2006-11-28T11:24:00.000Z	hc`	soundray	heh. creds to SlimG :p

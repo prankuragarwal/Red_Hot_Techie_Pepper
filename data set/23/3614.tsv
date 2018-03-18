@@ -1,0 +1,23 @@
+2009-03-16T15:33:00.000Z	azlon		how can I mount a WebDav folder?
+2009-03-16T15:35:00.000Z	azlon		lol
+2009-03-16T15:35:00.000Z	azlon		its using a folder on your web server as a local folder
+2009-03-16T15:35:00.000Z	azlon		I don't know much about it either, trying to learn because it makes me happy in the pants
+2009-03-16T15:36:00.000Z	macrobad	azlon	In Ubuntu 8.04 you can connect to WebDAV from Places->Connect to Server. Is it what you're looking for?
+2009-03-16T15:37:00.000Z	azlon	macrobad	awesome, thanks
+2009-03-16T15:37:00.000Z	macrobad	azlon	you are welcome! )(
+2009-03-16T16:13:00.000Z	macrobad	azlon	'sudo netstat --inet -anp'
+2009-03-16T16:14:00.000Z	azlon	macrobad	can I ping xxx.xxx.xxx.xxx:port and see if it is open? or will that not work?
+2009-03-16T16:15:00.000Z	macrobad	azlon	let me try it =)
+2009-03-16T16:16:00.000Z	macrobad	azlon	Nope, because ping uses ICMP messages, which are part of IP protocol. ports on the other hand are associated with TCP or UDP.
+2009-03-16T16:17:00.000Z	macrobad	azlon	you probably need tcpdump (CLI) or wireshark (GUI) to view it
+2009-03-16T16:18:00.000Z	macrobad	azlon	you don't need ping for this. 'sudo netstat --inet -anp' should be enough, if you know what you're looking for
+2009-03-16T16:19:00.000Z	macrobad	azlon	more specifically, netstat shows ports open on your machine, and nmap on any other
+2009-03-16T16:20:00.000Z	azlon	macrobad	I think I need nmap because I am using the internet provided by my apartment. I don't have access to the router
+2009-03-16T16:22:00.000Z	macrobad	azlon	routers don't have ports on their own. they can just block communications that occur between applications on different computers over specified protocols at specified ports. Hence, you can't use nmap to scan the router for open ports.
+2009-03-16T16:24:00.000Z	azlon	macrobad	but I can use it to test a specific port... basically try to send information over that port and if it is unsucessful then the port is, in essence, blocked.
+2009-03-16T16:24:00.000Z	macrobad	azlon	... or the port on the remote host is closed
+2009-03-16T16:25:00.000Z	azlon	macrobad	either way, nothing I can actually do about it. I have to email somebody to change some settings... I just want to know if I am doing something wrong with WebDAV or if some ports are blocked
+2009-03-16T16:26:00.000Z	macrobad	azlon	run wireshark, and see if the packets actually leave your computer, if the destination is correct, and if there is any answer
+2009-03-16T16:26:00.000Z	azlon	macrobad	im not trying to run WebDAV on my router, im trying to access WebDAV on my server in the states, where as I am in Kuwait behind stupid routers
+2009-03-16T16:27:00.000Z	macrobad	azlon	you can also try to nmap the WebDAV ports on the remote server, and see if it works. However, if it doesn't it you most likely don't know where is the problem
+2009-03-16T16:29:00.000Z	macrobad	azlon	btw, nmap would only verify if there is connectivity. You'd have to use other means to check that settings are correct

@@ -1,0 +1,22 @@
+2008-06-09T09:02:00.000Z	Get_A_Fix		We get a message "your $HOME/.dmrc file has the wrong permissions..." when trying to boot up. We've attempted to move the /home folder to it's own partition on another drive - that failed - so we renamed the back up home_backup back to /home with the mv command and the system won't boot.  Any help would be apreciated.
+2008-06-09T09:03:00.000Z	nickrud	Get_A_Fix	where <username> is the user's name
+2008-06-09T09:03:00.000Z	nickrud	Get_A_Fix	put the original home back, and run   sudo chown <username>:<username> /home/<username>/.dmrc && chmod 600 /home/<usrname>/.dmrc
+2008-06-09T09:06:00.000Z	Get_A_Fix	nickrud	thanks  - the error message advises owned by owner and permissions 644  -  which is better
+2008-06-09T09:07:00.000Z	nickrud	Get_A_Fix	if the error says that, it's ok. Just has to be readable by your regular user. I use 600 since I use 00 as group and other read/write
+2008-06-09T09:07:00.000Z	Get_A_Fix	nickrud	thanks tons  --
+2008-06-09T09:08:00.000Z	Get_A_Fix	nickrud	would you know also if the entries in fstab need to be in any certain order ?
+2008-06-09T09:09:00.000Z	nickrud	Get_A_Fix	no, order doesn't matter
+2008-06-09T09:09:00.000Z	nickrud	Get_A_Fix	only the /root one really matters, and it get's mounted first thing by the kernel
+2008-06-09T09:12:00.000Z	Get_A_Fix	nickrud	 excellent, thanks again. :)
+2008-06-09T09:14:00.000Z	Get_A_Fix	nickrud	 does one use or not use the <brackets> in that command ?
+2008-06-09T09:15:00.000Z	nickrud	Get_A_Fix	no brackets, that's a convention to indicate you need to fill in the blanks
+2008-06-09T09:16:00.000Z	Get_A_Fix	nickrud	the command returns invalid user
+2008-06-09T09:17:00.000Z	Get_A_Fix	nickrud	is it 'cause we're booted from the live CD
+2008-06-09T09:17:00.000Z	nickrud	Get_A_Fix	, ah
+2008-06-09T09:17:00.000Z	nickrud	Get_A_Fix	you need to do that to the directory on the disk
+2008-06-09T09:18:00.000Z	Get_A_Fix	nickrud	so need to mount it first
+2008-06-09T09:18:00.000Z	nickrud	Get_A_Fix	yes. And probably just setting the   chmod 644 /home/username/.dmrc would be sufficient
+2008-06-09T09:19:00.000Z	nickrud	Get_A_Fix	doing a chown from the live cd won't work, since there is no such user in the live cd environment
+2008-06-09T09:20:00.000Z	Get_A_Fix	nickrud	it's the only way we can find to boot up though  -  are we behind the eight ball
+2008-06-09T09:21:00.000Z	nickrud	Get_A_Fix	hard to do serious troubleshooting 3d hand, it's hard enough second hand. Why not invite him here?
+2008-06-09T09:22:00.000Z	Get_A_Fix	nickrud	absolutely

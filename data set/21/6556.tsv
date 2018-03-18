@@ -1,0 +1,21 @@
+2007-03-10T07:38:00.000Z	Michaeja		hmmm, I am trying to disable the "nv" driver, but when I type "sudo nano /etc/default/linux-restricted-modules-common", it opens up a new, clean file.  How do I access the intended file?
+2007-03-10T07:39:00.000Z	soundray	Michaeja	you are taking the wrong approach. There is no kernel module to go with the nv driver.
+2007-03-10T07:40:00.000Z	soundray	Michaeja	make sure you follow the *right* guide:
+2007-03-10T07:41:00.000Z	soundray	Michaeja	you need to say what doesn't work
+2007-03-10T07:42:00.000Z	Michaeja	soundray	after apt-ing the nvidia-glx and running the config program and then rebooting, nothing changed, and I still got a "no screens error"
+2007-03-10T07:43:00.000Z	soundray	Michaeja	which kernel version do you have? Do you have the corresponding linux-restricted-modules?
+2007-03-10T07:45:00.000Z	soundray	Michaeja	make sure you have 2.6.17-11-generic (check with uname -r)
+2007-03-10T07:48:00.000Z	soundray	Michaeja	'sudo apt-get update ; sudo apt-get dist-upgrade'
+2007-03-10T07:51:00.000Z	Michaeja	soundray	do you know what version driver is in the repos?
+2007-03-10T07:52:00.000Z	soundray	Michaeja	nvidia is 8776 on my machine (amd64 though)
+2007-03-10T07:53:00.000Z	Michaeja	soundray	oh, I need 9774 (or whatever) or higher to run my 8800
+2007-03-10T07:54:00.000Z	soundray	Michaeja	hold on a sec
+2007-03-10T07:57:00.000Z	soundray	Michaeja	the current ubuntu pre-release comes with 9631 -- you might fare better with that. It's still a bit buggy, though.
+2007-03-10T07:59:00.000Z	soundray	Michaeja	which Herd did you try?
+2007-03-10T07:59:00.000Z	Michaeja	soundray	herd 1 and then 5
+2007-03-10T08:00:00.000Z	soundray	Michaeja	Herd 5 didn't even boot? Have you reported this?
+2007-03-10T08:01:00.000Z	Michaeja	soundray	not yet, I havent had much luck in the past reporting bugs
+2007-03-10T08:01:00.000Z	soundray	Michaeja	anyway -- what happens when you use plain old nv?
+2007-03-10T08:03:00.000Z	soundray	Michaeja	look in /var/log/Xorg.0.log and find out why. Lines starting with (EE) tend to be particularly informative.
+2007-03-10T08:05:00.000Z	Michaeja	soundray	one EE line - (EE) No devices found
+2007-03-10T08:06:00.000Z	soundray	Michaeja	that's bad news. I think you're going to have to try and fix your boot problems and run feisty. Boot options may help -- see ubotu's pm:

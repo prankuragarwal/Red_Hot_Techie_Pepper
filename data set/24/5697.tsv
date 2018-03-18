@@ -1,0 +1,24 @@
+2006-05-20T15:29:00.000Z	alexp		I'm running Ubuntu 5.10 64-bit, and I'm having trouble mounting a partition. I type "mount /dev/sdb2 /media/foo" and am told "mount: /dev/sdb2 already mounted or /media/foo/ busy". "mount" doesn't show /dev/sdb2 mounted, and "lsof /media/foo" doesn't show it as being busy. Any ideas?
+2006-05-20T15:30:00.000Z	DBO	alexp	"sudo umount /dev/sdb2"
+2006-05-20T15:32:00.000Z	alexp	DBO	/dev/sdb2 is definitely not mounted
+2006-05-20T15:34:00.000Z	DBO	alexp	try mounting it to a different mountpoint
+2006-05-20T15:34:00.000Z	alexp	DBO	I don't seem to be able to mount any partition on /dev/sdb
+2006-05-20T15:34:00.000Z	alexp	DBO	I've tried different mountpoints, to no avail.
+2006-05-20T15:34:00.000Z	DBO	alexp	what are the perm's on the mountpoints?
+2006-05-20T15:35:00.000Z	alexp	DBO	drwxr-xr-x
+2006-05-20T15:46:00.000Z	DBO	alexp	mount with -fv
+2006-05-20T15:53:00.000Z	DBO	alexp	-fv output?
+2006-05-20T16:29:00.000Z	alexp	DBO	I got one of the sysadmins here to take a look, it turns out that EVMS / device mapper has claimed the partitions on /dev/sdb as its own, no idea why but at least I know where I should be looking now.
+2006-05-20T16:30:00.000Z	DBO	alexp	how did he find that out?
+2006-05-20T16:30:00.000Z	alexp	DBO	He'd run into something similar before, there are nodes for /dev/evms/sdb[123] 
+2006-05-20T16:31:00.000Z	alexp	DBO	Doing "mount /dev/evms/sdb2 /media/foo" works
+2006-05-20T16:31:00.000Z	DBO	alexp	I see, Ill have to add that one to my black book of crazies now
+2006-05-20T16:31:00.000Z	alexp	DBO	Thanks for your help anyway
+2006-05-20T16:32:00.000Z	DBO	alexp	I still wonder what the output of mount -fv /dev/blah /media/foo would be...
+2006-05-20T16:32:00.000Z	alexp	DBO	"/dev/sd2b on /media/foo type unknown (rw)"
+2006-05-20T16:32:00.000Z	alexp	DBO	Then the partition is shown as mounted, but the contents aren't visible in /media/foo
+2006-05-20T16:33:00.000Z	DBO	alexp	yes, because it doesnt actually make the system call...
+2006-05-20T16:34:00.000Z	alexp	DBO	I just did a default install, I didn't turn it on :)
+2006-05-20T16:36:00.000Z	DBO	alexp	you really have no need for EVMS if you arent running software RAID or some crazy disk configs
+2006-05-20T16:40:00.000Z	alexp	DBO	I'd not heard of EVMS before it started stealing my disks. I didn't enable it.
+2006-05-20T16:41:00.000Z	DBO	alexp	I know, I was just saying for your sake =)

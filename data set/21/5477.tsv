@@ -1,0 +1,21 @@
+2009-04-08T13:44:00.000Z	imyousuf		I have ext3 partitions which when moundted are writeable by 'root' only. But I wanted to be writeable by any user belonging to 'plugdev' group. Any idea how I can do that from fstab? I want to avoid the chmod command everytime I start my laptop. (re-run)
+2009-04-08T13:45:00.000Z	raylu	imyousuf	man mount. there's some option for gid, i think
+2009-04-08T13:45:00.000Z	imyousuf	raylu	cldnt find one for ext :(
+2009-04-08T13:46:00.000Z	raylu	imyousuf	i think the 'user' fstab option is what you want. it allows users to mount
+2009-04-08T13:47:00.000Z	imyousuf	raylu	hmm, giving it a try
+2009-04-08T13:48:00.000Z	imyousuf	raylu	no use, same outcome :(
+2009-04-08T13:48:00.000Z	raylu	imyousuf	even when it's mounted by a user?
+2009-04-08T13:49:00.000Z	imyousuf	raylu	a normal user can not execute mount -a :(
+2009-04-08T13:49:00.000Z	imyousuf	raylu	can they?
+2009-04-08T13:49:00.000Z	raylu	imyousuf	m...i thought that's what the 'user' option was for. i'm not entirely clear on it myself
+2009-04-08T13:49:00.000Z	raylu	imyousuf	but maybe an explicit 'mount /dev/asdf' is enough
+2009-04-08T14:02:00.000Z	raylu	imyousuf	i see you went all the way :D
+2009-04-08T14:03:00.000Z	imyousuf	raylu	you bet ya ;) :-D
+2009-04-08T14:05:00.000Z	raylu	imyousuf	so, technically, the 'correct linux kosher way'
+2009-04-08T14:06:00.000Z	imyousuf	raylu	guess so
+2009-04-08T14:06:00.000Z	raylu	imyousuf	is to create a directory inside that partition and give that to the user
+2009-04-08T14:07:00.000Z	imyousuf	raylu	but the dir itself is created by the root and then he has to assign chmod/chown :(
+2009-04-08T14:07:00.000Z	raylu	imyousuf	but you only have to do that once
+2009-04-08T14:12:00.000Z	imyousuf	raylu	ActionParsnip
+2009-04-08T14:13:00.000Z	raylu	imyousuf	^^
+2009-04-08T14:13:00.000Z	raylu	imyousuf	but now you have an extra directory in your path

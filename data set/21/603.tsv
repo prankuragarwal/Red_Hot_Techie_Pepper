@@ -1,0 +1,21 @@
+2011-09-05T11:24:00.000Z	BlackAss		I have no keyboard/mouse to install ubuntu. How can i install it via network (vnc/ssh) or serial cable (rs232)?
+2011-09-05T11:25:00.000Z	Polah	BlackAss	You'd still need a keyboard/mouse to enter things even on a command line install
+2011-09-05T11:27:00.000Z	BlackAss	Polah	my laptop is connected with network cable to that PC. But that PC does not have any keyboard/mouse input. So i have to install using VNC/Serial cable.
+2011-09-05T11:28:00.000Z	Polah	BlackAss	Oh, I see. Well, you could boot a LiveCD/USB but I don't see how you'd be able to enable a remote desktop service without a keyboard or mouse initialliy.
+2011-09-05T11:29:00.000Z	BlackAss	Polah	yes exactly. I cant prepare a USB setup so that i can login from my laptop, VNC. How do i do that?
+2011-09-05T11:30:00.000Z	Polah	BlackAss	Oh yes actually if you customised the Live system then you could have it start up a pre-configured VNC server and connect to it
+2011-09-05T11:32:00.000Z	Polah	BlackAss	I don't see any other way to do it other than remastering the ISO with a suitable remote client to start up. It'd be fairly easy, just follow the preparation instructions and then install it as normal and configure after chrooting
+2011-09-05T11:32:00.000Z	BlackAss	Polah	thank you. Are they using Anaconda kernel argument in isolinux.cfg?
+2011-09-05T11:34:00.000Z	Polah	BlackAss	I don't know what you mean by that. Remaster the CD involves loop mounting it on your current, running system then chrooting to modify it then generating a new iso and creating a LiveCD/USB from that
+2011-09-05T11:35:00.000Z	BlackAss	Polah	Thank you, i am looking those docs, i have tried once like this, is this same with Ubuntu too? http://fedoraproject.org/wiki/Anaconda_Boot_Options
+2011-09-05T11:37:00.000Z	Polah	BlackAss	You shouldn't need to set any boot options to remaster the Ubuntu ISO. Just get the ISO, mount it as per the instructions, chroot and modify as you need i.e. adding a vnc server in your case and setting it to start on boot, then just regenerate the iso which it also tells you to do and create a LiveCD from it as you would do with the unmodified ISO.
+2011-09-05T11:38:00.000Z	BlackAss	Polah	fantastic thank you, much clear now.
+2011-09-05T12:00:00.000Z	Polah	BlackAss	There's 11.04 beta 1 out just now, which you'll have to go to #ubuntu+1 for support with. It should be released as stable in October.
+2011-09-05T12:04:00.000Z	Polah	BlackAss	Probably quite similar. Did you try various drivers for your hardware? i.e. compiled linux drivers, self-compiled from source drivers or windows drivers through ndiswrapper?
+2011-09-05T12:05:00.000Z	BlackAss	Polah	yes i tried from vendor. Blackmagic intensity pro and USB 3.0 intensity shuttle. None works in Fedora.
+2011-09-05T12:05:00.000Z	Polah	BlackAss	Well try ndiswrapper in Ubuntu and it might work
+2011-09-05T12:06:00.000Z	BlackAss	Polah	wow ndiswrapper special on drivers? Thats like life saving to me.
+2011-09-05T12:07:00.000Z	Polah	BlackAss	Well, it'll allow you to use Windows drivers with Linux and the different kernel versions may result in a success
+2011-09-05T12:08:00.000Z	BlackAss	Polah	thats genius wow, thanks a lot.
+2011-09-05T12:08:00.000Z	Polah	BlackAss	Not guaranteed to work though. I think XP drivers typically are more successful though, try drivers for more recent Windows first though
+2011-09-05T12:14:00.000Z	BlackAss	Polah	Do you think Ubuntu 11.10, will be able to recognize USB 3.0 ( http://www.kdenlive.org/sites/default/files/blackmagic.png ) ?

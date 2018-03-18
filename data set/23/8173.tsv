@@ -1,0 +1,23 @@
+2007-01-17T16:29:00.000Z	mpt	crimsun	I've finished attaching all the info to the bug report
+2007-01-17T16:29:00.000Z	crimsun	mpt	ok, looking
+2007-01-17T16:30:00.000Z	crimsun	mpt	is audio audible currently?
+2007-01-17T16:31:00.000Z	mpt	crimsun	no
+2007-01-17T16:31:00.000Z	crimsun	mpt	in a Terminal, please execute: amixer set 'Master Mono' 80%,unmute && amixer set 'External Amplifier' mute
+2007-01-17T16:34:00.000Z	mpt	crimsun	done that, launched Rhythmbox, tried to play a CD, still nothing
+2007-01-17T16:35:00.000Z	crimsun	mpt	ok, and after the following command?  amixer set '3D Control - Switch' unmute
+2007-01-17T16:36:00.000Z	mpt	crimsun	still nothing
+2007-01-17T16:38:00.000Z	crimsun	mpt	ok, and after the following?  amixer set 'Capture' nocap && amixer set 'Aux' 80%,80%,unmute && amixer set 'Phone' 80%,unmute && amixer set 'Video' 80%,80%,unmute && amixer set 'Line' 80%,80%,unmute
+2007-01-17T16:41:00.000Z	crimsun	mpt	if you have some spare moments later, please attempt to reproduce using a Feisty Herd 2 desktop cd
+2007-01-17T16:41:00.000Z	mpt	crimsun	that produced lots of output, but still no sound
+2007-01-17T16:42:00.000Z	crimsun	mpt	ok, one last thing to attach, the output from: cat /proc/asound/card0/codec97#0/*
+2007-01-17T16:43:00.000Z	mpt	crimsun	no such file or directory
+2007-01-17T16:43:00.000Z	mpt	crimsun	oh, wait, my fault
+2007-01-17T16:44:00.000Z	crimsun	mpt	afterward, we'll try the reset approach with the following commands:  kill $(lsof -t /dev/dsp* /dev/snd/*) && sudo modprobe -r $(lsmod |grep ^snd|awk '{print $1}') && sudo rm -f /var/lib/alsa/asound.state && sudo modprobe snd-intel8x0
+2007-01-17T16:45:00.000Z	mpt	crimsun	attached, so shall I try that next pile of sudoage and awkage now?
+2007-01-17T16:45:00.000Z	crimsun	mpt	yessir
+2007-01-17T16:48:00.000Z	crimsun	mpt	yes, obnoxiously, sorry about that
+2007-01-17T16:49:00.000Z	mpt	crimsun	all done, still no sound
+2007-01-17T16:49:00.000Z	crimsun	mpt	ok, thanks. Just to confirm, is this machine running the latest stable bios?
+2007-01-17T16:49:00.000Z	mpt	crimsun	I don't know, how would I tell?
+2007-01-17T16:50:00.000Z	crimsun	mpt	ok, that would require a bit of research on the particular laptop/motherboard you're using
+2007-01-17T16:52:00.000Z	mpt	crimsun	ok, thanks for your help

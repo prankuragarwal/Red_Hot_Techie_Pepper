@@ -1,0 +1,21 @@
+2012-02-11T19:42:00.000Z	dsnyders		!network
+2012-02-11T19:42:00.000Z	dsnyders		!ethernet
+2012-02-11T19:44:00.000Z	dsnyders		Hi all!  Can someone point me to a guide for getting my ethernet card managed?
+2012-02-11T19:46:00.000Z	overclucker	dsnyders	check your /etc/NetworkManager/NetworkManager.conf
+2012-02-11T19:46:00.000Z	overclucker	dsnyders	make sure managed=true
+2012-02-11T19:49:00.000Z	dsnyders	overclucker	I don't have a /etc/NetworkManager/Networkmanager.conf file.  I do have an nm-systems-settings.conf file.  Same thing?
+2012-02-11T19:52:00.000Z	overclucker	dsnyders	is should be the right one for your ubuntu version
+2012-02-11T19:58:00.000Z	dsnyders	overclucker	There's not much in that file.  Under [main] there's a line about plugins, and a line that reads no-auto-default=00:18:fe:6a:3a:a9,. Under [ifupdown] is the line: managed=false and that's it.
+2012-02-11T19:58:00.000Z	overclucker	dsnyders	that's it change managed=false to true
+2012-02-11T19:59:00.000Z	dsnyders	overclucker	Do I have to do a service restart afterwards?
+2012-02-11T19:59:00.000Z	overclucker	dsnyders	then sudo service network-manager restart
+2012-02-11T19:59:00.000Z	overclucker	dsnyders	yeah, it needs to reparse the conf file
+2012-02-11T20:09:00.000Z	dsnyders	overclucker	It worked!  In fact, it worked too good.  I now have two eth0 entries!
+2012-02-11T20:14:00.000Z	overclucker	dsnyders	try removing one with the applet settings
+2012-02-11T20:15:00.000Z	overclucker	dsnyders	i'm guessing you have one interface that you can't remove
+2012-02-11T20:18:00.000Z	dsnyders	overclucker	The aplet has allowed me to delete the superfluous ones.  However, I cannot edit the last remaining one.
+2012-02-11T20:19:00.000Z	overclucker	dsnyders	yup, it does that. not a problem though, since you want it there
+2012-02-11T20:19:00.000Z	dsnyders	overclucker	I'd like to be able to set the network address.
+2012-02-12T05:43:00.000Z	overclucker	dsnyders	you can add a second interface which you can edit, though it doesn't fix the weird behavior of the ifupdown interface
+2012-02-12T05:45:00.000Z	overclucker	dsnyders	on my system i that's what i've done. new static interface, ifupdown disabled
+2012-02-12T05:52:00.000Z	overclucker	dsnyders	ActionParsnip: /etc/NetworkManager/NetworkManager.conf is you;ll want to edit to make the changes stick

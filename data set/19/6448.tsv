@@ -1,0 +1,19 @@
+2009-03-04T01:11:00.000Z	annoia		I'm on 64bit ubuntu, Intrepid. I'm trying to install libc6-dev-i386, but I get: "libc6-dev-i386: Depends: libc6-i386 (= 2.8~20080505-0ubuntu7) but 2.8~20080505-0ubuntu9 is to be installed"... Is there a nice way to resolve this? (I'm trying to install a 32bit mplayer so I can get win32 codecs).
+2009-03-04T01:13:00.000Z	ActionParsnip	annoia	you will need to install libc6-i386
+2009-03-04T01:13:00.000Z	annoia	ActionParsnip	- It's already installed, but it's a different version...
+2009-03-04T01:14:00.000Z	ActionParsnip	annoia	what version do you have installed?
+2009-03-04T01:14:00.000Z	ActionParsnip	annoia	dpkg -l | grep libc6-i386
+2009-03-04T01:14:00.000Z	annoia	ActionParsnip	- 2.8~20080505-0ubuntu9
+2009-03-04T01:15:00.000Z	ActionParsnip	annoia	you could force install it, i'd check they are backward compatible
+2009-03-04T01:15:00.000Z	annoia	ActionParsnip	- They probably are, it's ubuntu build versions that differ...
+2009-03-04T01:15:00.000Z	ActionParsnip	annoia	if you are compiling 32bit stuffs i'd set up a chroot situation so you can flip between the 2 archs
+2009-03-04T01:16:00.000Z	annoia	ActionParsnip	- I'd prefer to just install 32bit mplayer in it's own directory. It's all I need, and fairly clean.
+2009-03-04T01:17:00.000Z	ActionParsnip	annoia	you could download the 32bit debs for mplayer and install but yuo will have to satisfy deps manually
+2009-03-04T01:17:00.000Z	annoia	ActionParsnip	- Wouldn't they complain about it being the wrong arch?
+2009-03-04T01:18:00.000Z	ActionParsnip	annoia	yes butyou can force it to install, you will also need to sudo apt-get install ia32-libs
+2009-03-04T01:19:00.000Z	ActionParsnip	annoia	ia32-libs allows you to run 32bit stuff
+2009-03-04T01:19:00.000Z	annoia	ActionParsnip	- Aah
+2009-03-04T01:19:00.000Z	ActionParsnip	annoia	its gonna be messy for a bit getting the deps sorted
+2009-03-04T01:20:00.000Z	annoia	ActionParsnip	- Yes, I really don't want to mix 64bit and 32bit packages...
+2009-03-04T01:21:00.000Z	annoia	ActionParsnip	- It would be nice, though, if the packages in the repository fit together - then I wouldn't have this problem. Wouldn't I still have the dependency problem in a chroot environment? Or could I make a clean 32bit env. there?
+2009-03-04T01:23:00.000Z	ActionParsnip	annoia	they do, just for the installed arch, you are forcing some package installs so deps arent met well

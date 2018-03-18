@@ -1,0 +1,21 @@
+2009-08-02T01:29:00.000Z	robinro		Hi, I upgraded 8.10 -> 9.04 yesterday and since the third reboot after the upgrade my sound is extremely quiet. I checked all volume controls in alsamixer but can't find the problem; pavumeter shows volume at a normal level; Can somebody please help me to get sound again?
+2009-08-02T01:31:00.000Z	gartral	robinro	erm.. silly Q: did you turn down your speakers physical volume controlls?
+2009-08-02T01:32:00.000Z	robinro	gartral	no, i turned them up to max to just hear a quiet sound; on a normal level i can't hear anything
+2009-08-02T01:32:00.000Z	gartral	robinro	open your volume controlls and make sure you have all your sliders up
+2009-08-02T01:33:00.000Z	robinro	gartral	done, all@max
+2009-08-02T01:34:00.000Z	gartral	robinro	now hit control-P and make sure all you options are enabled, paying atention too make sure External Amplifier is OFF
+2009-08-02T01:36:00.000Z	robinro	gartral	 "cd capture", "mic apture", "IEC958" and "IEC958 Default PCM" are off, Mix is on, is this ok?
+2009-08-02T01:36:00.000Z	gartral	robinro	turn on Default PCM
+2009-08-02T01:37:00.000Z	robinro	gartral	done, but no change
+2009-08-02T01:38:00.000Z	gartral	robinro	do you have pulse installed?
+2009-08-02T01:40:00.000Z	robinro	gartral	yes, it worked before with 8.10 and also after the upgrade. pavumeter shows normal volume level and if a change the volume in pavucontrol it works, but its still quite if everything is at max
+2009-08-02T01:41:00.000Z	gartral	robinro	what applications have you tryed playing from?
+2009-08-02T01:41:00.000Z	robinro	gartral	rhythmbox, vlc, aplay from console
+2009-08-02T01:50:00.000Z	robinro	gartral	thanks for your help so far; any other ideas what i could try to get a normal-volume sound?
+2009-08-02T01:50:00.000Z	gartral	robinro	well.. what card do you have?
+2009-08-02T01:51:00.000Z	robinro	gartral	00:1b.0 Audio device: Intel Corporation 82801G (ICH7 Family) High Definition Audio Controller (rev 02)
+2009-08-02T01:55:00.000Z	gartral	robinro	not *likely* but give this a shot sudo apt-get install linux-sound-base
+2009-08-02T01:56:00.000Z	robinro	gartral	already installed
+2009-08-02T01:59:00.000Z	gartral	robinro	all i found, sorry >.>
+2009-08-02T02:03:00.000Z	robinro	gartral	thanks for your help; maybe its related to https://bugs.launchpad.net/ubuntu/+source/linux/+bug/336125; i'll try an older kernel
+2009-08-02T02:29:00.000Z	robinro	gartral	found the problem: with 8.10 the volume controls on my laptop changed the software-defined volume; with 9.04 they don't, but change the volume without notifying the user...

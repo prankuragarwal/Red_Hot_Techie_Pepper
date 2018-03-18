@@ -1,0 +1,24 @@
+2010-01-25T14:48:00.000Z	newbuntuser		hi
+2010-01-25T14:48:00.000Z	newbuntuser		simple question I'm sure, I've searched all I can but am still having trouble with permissions
+2010-01-25T14:49:00.000Z	newbuntuser		if I sudo chown 777 /Share
+2010-01-25T14:49:00.000Z	newbuntuser		shouldn't that give me full access for all users?
+2010-01-25T14:49:00.000Z	newbuntuser		oh -R
+2010-01-25T14:50:00.000Z	EastDallas	newbuntuser	it should be chmod not chown
+2010-01-25T14:55:00.000Z	EastDallas	newbuntuser	chmod -R 755 mydirectory
+2010-01-25T14:56:00.000Z	EastDallas	newbuntuser	you want to give everyone access to the directory and it's contents, correct?
+2010-01-25T14:58:00.000Z	newbuntuser	EastDallas	yes all so I can change with file manager
+2010-01-25T14:58:00.000Z	newbuntuser	EastDallas	using my user account not rood
+2010-01-25T14:59:00.000Z	newbuntuser	EastDallas	It's a mount point so -R might not be ideal right?
+2010-01-25T14:59:00.000Z	EastDallas	newbuntuser	you should be able to access after modifying the permissions using chmod.
+2010-01-25T14:59:00.000Z	EastDallas	newbuntuser	Do you need to take ownership or change permissions?
+2010-01-25T15:00:00.000Z	EastDallas	newbuntuser	the -R would be appropriate is you want to change all of the contents to777, but that's pretty unlikely.
+2010-01-25T15:01:00.000Z	newbuntuser	EastDallas	I'd like to take ownership, I had to mount with sudo.  So default was root then.  maybe at mount time would be a way to set uid?
+2010-01-25T15:02:00.000Z	EastDallas	newbuntuser	exactly
+2010-01-25T15:04:00.000Z	EastDallas	newbuntuser	you should be able to add uid= to the mount command
+2010-01-25T15:08:00.000Z	EastDallas	newbuntuser	is this an ntfs volume?
+2010-01-25T15:09:00.000Z	newbuntuser	EastDallas	it's through VirtualBox shared folder
+2010-01-25T15:10:00.000Z	EastDallas	newbuntuser	cool
+2010-01-25T15:12:00.000Z	EastDallas	newbuntuser	I had a similar prob before with an ntfs partition, and I had to take ownership, couldn't do anything else.  I used ntfs-config....I had just started using ubuntu.
+2010-01-25T15:14:00.000Z	newbuntuser	EastDallas	it's alla bout permissions eh?  I'd still like to see things more simple with permissions, 1 plus 3 plus 4 equals 7, of course!!
+2010-01-25T15:14:00.000Z	EastDallas	newbuntuser	haha
+2010-01-25T15:16:00.000Z	newbuntuser	EastDallas	now hopefully it will be persistent upon reboot

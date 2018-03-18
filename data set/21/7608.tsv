@@ -1,0 +1,21 @@
+2006-08-25T16:22:00.000Z	dragonfyre13		OK guys, I'm back after nearly a week of my cable internet being down. Unfortunately, I have an issue.
+2006-08-25T16:24:00.000Z	dragonfyre13		I can't use the internet for more than a few minutes before it dies out on me. Pings don't work, sites don't work, nothing. However, I think it is a problem with my DNS, because I have no issue with bittorrent
+2006-08-25T16:24:00.000Z	dragonfyre13		If I restart the network interfaces (/etc/init.d/networking restart) it works again, for a few minutes.
+2006-08-25T16:25:00.000Z	bean-oh	dragonfyre13	after it dies, can you still ping something by IP?
+2006-08-25T16:25:00.000Z	dragonfyre13		Not sure, let me see.
+2006-08-25T16:25:00.000Z	dragonfyre13		well, I have to wait for it to die, but let me at least grab the IP of google.
+2006-08-25T16:27:00.000Z	dragonfyre13		in the mean time, is there a way to hardwire the IP of your DNS server into ubuntu? I used networking in the admin menu, but it didn't work. every time it dies, it just resets it to something else.
+2006-08-25T16:27:00.000Z	bean-oh	dragonfyre13	/etc/resolv.conf
+2006-08-25T16:27:00.000Z	dragonfyre13	bean-oh	ok, i'll try that.
+2006-08-25T16:37:00.000Z	dragonfyre13	bean-oh	OK, it died again. I'm still connected to IRC, and I can ping by ip, but not by host name
+2006-08-25T16:38:00.000Z	bean-oh		is your nameserver correct and up?
+2006-08-25T16:38:00.000Z	dragonfyre13		I'm correcting it now. Lets see if it dies on me again in a few minutes.
+2006-08-25T16:43:00.000Z	dragonfyre13	bean-oh	OK, it happened again. Lets see if it reset my resolv.conf
+2006-08-25T16:43:00.000Z	dragonfyre13		Yup.
+2006-08-25T16:43:00.000Z	bean-oh	dragonfyre13	ok
+2006-08-25T16:44:00.000Z	dragonfyre13	bean-oh	can I write protect that, so that it can't screw with it?
+2006-08-25T16:44:00.000Z	bean-oh	dragonfyre13	shouldn't have to
+2006-08-25T16:44:00.000Z	dragonfyre13		It resets it all the time. When it does, I can't connect any more.
+2006-08-25T16:45:00.000Z	dragonfyre13	bean-oh	Yup, that's the issue. I just restarted my network service, and it stuck the correct IP for the DNS server into the file again.
+2006-08-25T16:46:00.000Z	bean-oh	dragonfyre13	cool
+2006-08-25T16:46:00.000Z	dragonfyre13	bean-oh	problem is, it keeps changing randomly. I need it to stop chainging.

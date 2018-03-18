@@ -1,0 +1,18 @@
+2007-09-26T15:26:00.000Z	Mortice		Hello all. I'm sitting on a feisty box here, and am able to resolve any website I choose, but when I try to browse to certain ones, firefox sits on "waiting for <site>" indefinitely. When I telnet to port 80 and issue a GET command to the server, I get no response whatsoever. Any ideas?
+2007-09-26T15:27:00.000Z	Weiss	Mortice	do you dual boot or have another computer on the same internet connection? does it work there?
+2007-09-26T15:28:00.000Z	Mortice	Weiss	I'm on a LAN, and everything's working fine on the other boxes here
+2007-09-26T15:29:00.000Z	Weiss	Mortice	weird... try using wget -v to get a page and see if there's anything telling in its output?
+2007-09-26T15:30:00.000Z	Mortice		weiss: when I do wget -v on a problematic site, it stops on "awaiting response", and on a site that's working fine, there doesn't seem to be anything out of the ordinary
+2007-09-26T15:31:00.000Z	Weiss	Mortice	does HTTPS work properly?
+2007-09-26T15:32:00.000Z	Mortice	Weiss	yup.
+2007-09-26T15:33:00.000Z	Weiss	Mortice	open a connection with telnet/netcat again, and check netstat -tapn to see that it's connecting to the right place
+2007-09-26T15:34:00.000Z	Mortice	Weiss	yea, seems fine. Telnet says it's resolved the site to an ip address, and a line appears in netstat saying a connection is established to that address on port 80. But still no response from the http server there.
+2007-09-26T15:35:00.000Z	Weiss	Mortice	do you have access to the gateway onto the internet at the other end of your LAN? can you check that it's definitely getting through?
+2007-09-26T15:35:00.000Z	Weiss	Mortice	sounds like some kind of transparent proxy playing up
+2007-09-26T15:35:00.000Z	Mortice	Weiss	I can have a look, but I know that there's no proxy running on the LAN
+2007-09-26T15:36:00.000Z	Weiss	Mortice	i mean just to be sure that a connection exists.  you could also run Ethereal or something to check that your GET command is getting through
+2007-09-26T15:39:00.000Z	Mortice	Weiss	ok, I'll run up ethereal
+2007-09-26T15:44:00.000Z	Mortice	Weiss	hmm, while playing with telnet and running ethereal, I noticed something interesting. While GET results in no response at all, if I type some garbage like HELLO, the server does respond saying "HELLO to /index.html not supported"
+2007-09-26T15:49:00.000Z	Mortice	Weiss	OK, now that's really odd. One of the non-working sites has suddenly started to work for me, while another still won't.
+2007-09-26T15:50:00.000Z	Weiss	Mortice	afaik "GET" on its own isn't a full command, so it might just be waiting for more from you.  for debugging the protocol (rather than the TCP connections) i'd use a proper browser
+2007-09-26T15:52:00.000Z	Mortice	Weiss	well, I'm using firefox too, but "GET http://www.dreamhost.com", for example, works

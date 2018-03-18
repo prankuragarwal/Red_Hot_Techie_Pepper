@@ -1,0 +1,18 @@
+2007-09-28T14:29:00.000Z	hilikus		support*
+2007-09-28T14:29:00.000Z	hilikus		oh cool
+2007-09-28T14:30:00.000Z	hilikus		im mounting a jfs partition but it cant be accessed
+2007-09-28T14:30:00.000Z	hilikus		it mounts but i cant write it in
+2007-09-28T14:30:00.000Z	hilikus		no, i need it to be accesible to a non-root user
+2007-09-28T14:31:00.000Z	hilikus		i can even specify which user, its for one user only
+2007-09-28T14:31:00.000Z	hilikus		UUID=cf5ebd73-feb8-40c3-af97-c649af18c0b5 /pvr            jfs     rw,auto,nouser
+2007-09-28T14:31:00.000Z	hilikus		,noexec,async        0       2
+2007-09-28T14:31:00.000Z	hilikus		thats my mount entry
+2007-09-28T14:31:00.000Z	hilikus		ok
+2007-09-28T14:32:00.000Z	erUSUL	hilikus	the way to do it is to make Folders in the partition and set the permisions of that folders to let user write on them
+2007-09-28T14:33:00.000Z	erUSUL	hilikus	you can not as user write on the root of a linux native filesystem (ntfs and vfat and there gid and uid options are exceptions)
+2007-09-28T14:34:00.000Z	hilikus	erUSUL	its a dir i created JUST to mount it
+2007-09-28T14:34:00.000Z	hilikus	erUSUL	/pvr
+2007-09-28T14:35:00.000Z	erUSUL	hilikus	well you have to make /pvr/whatever and chown and chmod whatever because chmodding or chowning the mount point /pvr won't work
+2007-09-28T14:36:00.000Z	erUSUL	hilikus	i have my home and to other partitions (one of them jfs too) mounted and used this way
+2007-09-28T14:37:00.000Z	erUSUL	hilikus	mount point is /mn/MEDIA and i have /mnt/MEDIA/Music /mnt/MEDIA/Movies etc and that folders (music and movies) are owned by my user so i can do what i please in them
+2007-09-28T14:37:00.000Z	erUSUL	hilikus	i can not make new folders without using sudo

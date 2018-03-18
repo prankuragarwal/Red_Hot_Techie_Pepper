@@ -1,0 +1,24 @@
+2012-10-25T14:57:00.000Z	bennypr0fane		Ubuntu 12.04
+2012-10-25T14:58:00.000Z	bennypr0fane		mount tells me right now the device is ro
+2012-10-25T14:59:00.000Z	bennypr0fane		trying to figure out how to set the mount options - man pages are often not helpful to me
+2012-10-25T14:59:00.000Z	bennypr0fane		there like written in a different language
+2012-10-25T14:59:00.000Z	bennypr0fane		*thy're
+2012-10-25T15:01:00.000Z	bennypr0fane		PartickDickey I'm trying to mount my win partition (ntfs) with rw permissions
+2012-10-25T15:01:00.000Z	bennypr0fane		yes, it's mounted, but read only
+2012-10-25T15:02:00.000Z	bennypr0fane		except I don't know *where exactly* in fstab to put that [rw]
+2012-10-25T15:03:00.000Z	bennypr0fane		here's the current line for my win partition in fstab: UUID=E882B97582B948B8                      /media/Acer            ntfs      uid=1000,umask=0022      0       0
+2012-10-25T15:04:00.000Z	MonkeyDust	bennypr0fane	 replace "uid..." with "defaults"   (without the quotes)
+2012-10-25T15:08:00.000Z	bennypr0fane	MonkeyDust	"defaults" means rwx permissions for the owner?
+2012-10-25T15:11:00.000Z	MonkeyDust	bennypr0fane	 no, remove umask=0022 too
+2012-10-25T15:12:00.000Z	bennypr0fane	MonkeyDust	why?
+2012-10-25T15:12:00.000Z	MonkeyDust	bennypr0fane	 and the comma
+2012-10-25T15:12:00.000Z	bennypr0fane	MonkeyDust	just "defaults" for option, nothing else?
+2012-10-25T15:13:00.000Z	MonkeyDust	bennypr0fane	 correct
+2012-10-25T15:15:00.000Z	MonkeyDust	bennypr0fane	 or sudo mount -a
+2012-10-25T15:40:00.000Z	bennypr0fane	MonkeyDust	you here? my fstab is now this: UUID=E882B97582B948B8                      /media/Acer            ntfs      defaults      0       0
+2012-10-25T15:40:00.000Z	MonkeyDust	bennypr0fane	 looks ok to me
+2012-10-25T15:40:00.000Z	MonkeyDust	bennypr0fane	 did you reboot or type sudo mount -a ?
+2012-10-25T15:41:00.000Z	MonkeyDust	bennypr0fane	 type blkid|pastebinit and paste the url here
+2012-11-23T14:47:00.000Z	MonkeyDust	bennypr0fane	 type ffmpeg -formats | grep mp <-- addressed wrong guy, sorry
+2012-11-23T14:57:00.000Z	MonkeyDust	bennypr0fane	 mp3 is there, it should work, try without all the options, just for a test -- also consider using avconv, same syntax as ffmpeg
+2012-11-23T15:08:00.000Z	MonkeyDust	bennypr0fane	 simply type ffmpeg -i infile.mp4 outfile.mp3 <-- no options added, see if it shows the same error

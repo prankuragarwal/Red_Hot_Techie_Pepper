@@ -1,0 +1,21 @@
+2010-06-09T08:36:00.000Z	flaco		hi all... I download glib from source.. how can upgrade glib without reinstall the program that depends of glib?
+2010-06-09T08:37:00.000Z	aplund	flaco	you can try installing to /usr/local
+2010-06-09T08:37:00.000Z	aplund	flaco	but I'd only suggest trying that if you know what you are doing
+2010-06-09T08:38:00.000Z	flaco	aplund	I installed the new version... but I'm trying to compiling some program but is claiming that there is 2 version of glib... I need to "remove" the old one...
+2010-06-09T08:39:00.000Z	aplund	flaco	strange.  You really won't be able to remove the system glib.
+2010-06-09T08:40:00.000Z	aplund	flaco	installing to /usr/local usually overrides the system packages for all intents and purposes
+2010-06-09T08:42:00.000Z	flaco	aplund	I'm getting this http://dpaste.com/204980/
+2010-06-09T08:43:00.000Z	aplund	flaco	It's not saying remove the old verison... it's saying point to the new package information.
+2010-06-09T08:44:00.000Z	aplund	flaco	Did you install to /usr/local?
+2010-06-09T08:44:00.000Z	aplund	flaco	or did you install to /usr?
+2010-06-09T08:45:00.000Z	flaco	aplund	I'm installing again in /usr/local
+2010-06-09T08:45:00.000Z	aplund	flaco	Setting --prefix=/usr/local in configure or autogen.sh should be enough
+2010-06-09T08:53:00.000Z	flaco	aplund	I'm getting the same result
+2010-06-09T08:53:00.000Z	aplund	flaco	try: "export PKG_CONFIG_PATH=/usr/local"
+2010-06-09T08:53:00.000Z	aplund		then try it
+2010-06-09T08:55:00.000Z	flaco	aplund	the same...
+2010-06-09T08:55:00.000Z	aplund	flaco	hmm... that's very odd.. how about adding: "export LD_LIBRARY_PATH=/usr/local/lib", not that it should already be the case
+2010-06-09T08:56:00.000Z	flaco	aplund	how can I remove a library from pkg?
+2010-06-09T08:57:00.000Z	aplund	flaco	from pkg-config?
+2010-06-09T08:57:00.000Z	flaco	aplund	yes
+2010-06-09T08:58:00.000Z	aplund	flaco	strange question.  But I guess removing the apropriate files from (prefix)/lib/pkgconfig

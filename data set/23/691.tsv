@@ -1,0 +1,23 @@
+2011-04-06T18:58:00.000Z	ubuntu		hey all
+2011-04-06T18:58:00.000Z	ubuntu		i just got ubuntu 10.10 on a flash drive and im trying to update but it keeps taking dpkg errors
+2011-04-06T18:59:00.000Z	ubuntu		it says my initramfs-tools isn't configured
+2011-04-06T18:59:00.000Z	ubuntu		how do i configure it?
+2011-04-06T18:59:00.000Z	ubuntu		actually, alot of things aren't configured
+2011-04-06T19:01:00.000Z	ubuntu		udev, plymouth, alsa-utils, gvfs-fuse, initramfs-tools, gdm, xserver-xorg-core, etc
+2011-04-06T19:02:00.000Z	ubuntu		now i cant apt-get anything because it keeps taking dpkg errors
+2011-04-06T19:03:00.000Z	ferengee	ubuntu	try dpkg --configure -a, and apt-get -f install and see what it says
+2011-04-06T19:03:00.000Z	ubuntu	ferengee	both give me the same errors. and it wont write a report because the maxreports limit has ben reached :: shrugs ::
+2011-04-06T19:04:00.000Z	ferengee	ubuntu	do you have free space left?
+2011-04-06T19:04:00.000Z	ubuntu		there are 17 packages that wont install because other packages aren't configured
+2011-04-06T19:04:00.000Z	ubuntu		yeah, alittle over 1 gig left
+2011-04-06T19:05:00.000Z	ferengee	ubuntu	can you see why the packages won't configure?
+2011-04-06T19:06:00.000Z	ferengee	ubuntu	which dependencies are unmet?
+2011-04-06T19:06:00.000Z	ubuntu		here is the list: fuse-utils, gvfs-fuse, udev, plymouth, asla-utils, gdm, gdm-guest-session, media-player-info, plymouth-label, xserver-xorg-core/input-evdev/video-geode/video-intel, initramfs-tools, linux-image-2.6.35-22-generic
+2011-04-06T19:06:00.000Z	ubuntu	ferengee	the unmet dependancies are just lack of configuration
+2011-04-06T19:07:00.000Z	ferengee	ubuntu	then the only thing i can come up with is: dpkg-reconfigure for each package
+2011-04-06T19:08:00.000Z	ubuntu		example: dpkg: dependency problems prevent configuration of gvfs-fuse: gvfs-fuse depends on fuse-utils; however: package fuse-utils is not configured yet.
+2011-04-06T19:09:00.000Z	ubuntu		and its the same for all the broken packages
+2011-04-06T19:10:00.000Z	ubuntu		when i try to dpkg-reconfigure fuse-utils, it says that fuse-utils is broken or not fully installed and dies
+2011-04-06T19:12:00.000Z	ubuntu		screw it. ill just reinstall
+2011-04-06T19:13:00.000Z	ubuntu		what is the minimalist ubuntu? i want a gui, but i dont want stuff like open office, cd-burner stuff, etc
+2011-04-06T19:13:00.000Z	ferengee	ubuntu	you could use dpkg --force-depends as a last resort

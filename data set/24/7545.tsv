@@ -1,0 +1,24 @@
+2005-01-27T11:57:00.000Z	looksaus		I experience this strange problem with Hoary here:
+2005-01-27T11:57:00.000Z	looksaus		(upgraded from Debian Sarge)
+2005-01-27T11:58:00.000Z	looksaus		gnome system sounds are working, but all other things
+2005-01-27T11:58:00.000Z	looksaus		(rhythmbox, totem, ...) say something about another program using the alsa device already
+2005-01-27T11:59:00.000Z	looksaus		could it be that my gnome sounds are directly accessing the alsa stuff
+2005-01-27T11:59:00.000Z	looksaus		without using esd?
+2005-01-27T11:59:00.000Z	looksaus		if so, does anyone know a way to solve that?
+2005-01-27T11:59:00.000Z	crimsun	looksaus	hoary is set to use esd
+2005-01-27T11:59:00.000Z	looksaus	crimsun	I upgraded from Debian Sarge...
+2005-01-27T12:01:00.000Z	crimsun	looksaus	don't paste the output. Look at what `grep esd /etc/gconf/schemas/gstreamer-0.8.schemas' returns.
+2005-01-27T12:04:00.000Z	looksaus	crimsun	thx, seems like that nailed down the problem
+2006-03-03T17:33:00.000Z	crimsun	looksaus	dpkg -l gstreamer0.10-plugins-good |grep ^ii
+2006-03-03T17:34:00.000Z	looksaus	crimsun	that would only tell me about gstreamer packages right, not really dependencies...
+2006-03-03T17:36:00.000Z	crimsun	looksaus	that's the specific package that contains the flac plugin for gstreamer0.10, which is needed for rhythmbox in Dapper
+2006-03-03T17:51:00.000Z	crimsun	looksaus	what error is rhythmbox throwing when you run it from a terminal?
+2006-03-03T17:51:00.000Z	looksaus	crimsun	it complains a bit about liboil, but something not too serious)
+2006-03-03T17:52:00.000Z	looksaus	crimsun	(and playing the flac through gstreamer works on the command line)
+2006-03-03T17:53:00.000Z	looksaus	crimsun	any other suggestions?
+2006-03-03T17:53:00.000Z	crimsun	looksaus	I need to see the actual debug output
+2006-03-03T17:54:00.000Z	crimsun	looksaus	not unless you make it crash, no
+2006-03-03T17:54:00.000Z	crimsun	looksaus	I need the output in the console
+2006-03-03T17:55:00.000Z	crimsun	looksaus	if rhythmbox won't play it but gst-launch-0.10 does, file a bug on rhythmbox in Malone
+2006-03-03T17:56:00.000Z	looksaus	crimsun	I'm planning to do that, but want to add as much useful info as possible
+2006-03-03T17:57:00.000Z	crimsun	looksaus	you should be able to force rhythmbox to spew some verbose output with a cli parameter

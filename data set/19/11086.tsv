@@ -1,0 +1,19 @@
+2007-07-20T12:49:00.000Z	raf256		how to delete configs of packet foo
+2007-07-20T12:49:00.000Z	raf256		if foo is already removed?
+2007-07-20T12:50:00.000Z	POVaddct	raf256	dpkg --purge packagename
+2007-07-20T12:51:00.000Z	raf256	POVaddct	no
+2007-07-20T12:51:00.000Z	raf256	POVaddct	it also doesnt remove
+2007-07-20T12:51:00.000Z	POVaddct	raf256	it should
+2007-07-20T12:51:00.000Z	raf256	POVaddct	it says that ignoring request to remove foo which isnt installed
+2007-07-20T12:52:00.000Z	POVaddct	raf256	i didnt say remove, i said dpkg --purge pkgname
+2007-07-20T12:53:00.000Z	POVaddct	raf256	are you sure you are giving the correct pkgname?
+2007-07-20T12:53:00.000Z	raf256	POVaddct	yes
+2007-07-20T12:53:00.000Z	POVaddct	raf256	which one is it?
+2007-07-20T12:53:00.000Z	raf256	POVaddct	apache2
+2007-07-20T12:53:00.000Z	POVaddct		!info apache2
+2007-07-20T12:54:00.000Z	POVaddct	raf256	that is just a metapackage
+2007-07-20T12:54:00.000Z	POVaddct	raf256	the config files must belong to one of its dependencies
+2007-07-20T12:55:00.000Z	raf256		how to tell Ubuntu to remove /etc/apache2 config files correctyl
+2007-07-20T12:56:00.000Z	POVaddct	raf256	look in the output of dpkg -l which pkgnames have "rc" at the beginning of the line
+2007-07-20T12:56:00.000Z	POVaddct	raf256	and try to dpkg --purge them
+2007-07-20T12:56:00.000Z	POVaddct	raf256	dpkg -l | grep "^rc"

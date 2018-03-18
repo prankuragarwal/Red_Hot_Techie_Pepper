@@ -1,0 +1,22 @@
+2008-08-01T03:39:00.000Z	kindofabuzz		i'm trying to ssh to my server.  worked fine last night.  I can ping the server and see the NFS share and use webmin, but cannot ssh to it.  i keep getting ssh: connect to host server1 port 22: Connection refused.  any ideas.  yes the port is open
+2008-08-01T03:39:00.000Z	derrich	kindofabuzz	are you sure sshd is still up and running on the machine?
+2008-08-01T03:40:00.000Z	kindofabuzz	derrich	cellofellow yeah that was it. =)
+2008-08-01T03:41:00.000Z	derrich	kindofabuzz	sweet. easy problems are great.
+2008-08-01T03:42:00.000Z	kindofabuzz	derrich	i'm just trying to figure out now how the ssh daemon didn't start, it's listed in boot
+2008-08-01T03:43:00.000Z	derrich	kindofabuzz	can you ssh into it now?
+2008-08-01T03:43:00.000Z	kindofabuzz	derrich	yeah, i started it with webmin
+2008-08-01T03:44:00.000Z	kindofabuzz	derrich	do you know how to auto forward X from ssh?  like when i'm in a session and just type xterm it auto forwards the X to the display i'm on
+2008-08-01T03:45:00.000Z	derrich	kindofabuzz	it's a two-part answer
+2008-08-01T03:45:00.000Z	kindofabuzz	derrich	do you know both? =)
+2008-08-01T03:45:00.000Z	derrich	kindofabuzz	yep, i do it at work a lot :)
+2008-08-01T03:46:00.000Z	kindofabuzz	derrich	yeah it is
+2008-08-01T03:46:00.000Z	derrich	kindofabuzz	confirm that X11Forwarding is set to 'yes' in /etc/ssh/sshd_config
+2008-08-01T03:46:00.000Z	kindofabuzz	derrich	i asume it's got to do with DISPLAY or something
+2008-08-01T03:48:00.000Z	kindofabuzz	derrich	no 'dows on this network
+2008-08-01T03:49:00.000Z	derrich	kindofabuzz	on the machine you want the display to show up on, use "ssh -X -l <username> <address of host that runs sshd>"
+2008-08-01T03:49:00.000Z	kindofabuzz	derrich	yeah i knew that, just wondering if there is a config setting to auto do once already in a ssh session
+2008-08-01T03:50:00.000Z	kindofabuzz	derrich	like i'm already in ssh server1, let's say i want xterm all of the sudden from server1, instead of loffing out and running -X -I i just type xterm and there it pops up
+2008-08-01T03:52:00.000Z	kindofabuzz	derrich	so yeah i guess i can just start it with the -X -I
+2008-08-01T03:54:00.000Z	derrich	kindofabuzz	echo "alias s='ssh -X -l <your username> <ip address>'" >> .bashrc
+2008-08-01T03:57:00.000Z	kindofabuzz	derrich	now that is lazy lol
+2008-08-01T03:59:00.000Z	kindofabuzz	derrich	can i not make an aliases 2 words?

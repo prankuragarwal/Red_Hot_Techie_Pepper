@@ -1,0 +1,19 @@
+2007-01-11T16:31:00.000Z	fabio__|		in which /dev/... can i found partition that are on a RAID 1 / SCSI adapter ??
+2007-01-11T16:33:00.000Z	Jowi	fabio__|	instead of huntin the /dev directory maybe you should check "sudo fdisk -l" or "sudo parted" (and type "print" and "quit" afterwards)
+2007-01-11T16:41:00.000Z	fabio__|	Jowi	i tried with "sudo fdisk -l" but nothing appears, i have also tried with "sudo fdisk /dev/sda" but don't work and also "sudo fdisk /dev/rd/c0d0"
+2007-01-11T16:42:00.000Z	fabio__|	Jowi	this is my "lspci" output, it sees the Raid/Scsi device.. at least i think so.. http://paste.ubuntu-nl.org/1143/
+2007-01-11T16:46:00.000Z	Jowi	fabio__|	 should be /dev/md0 no?
+2007-01-11T16:47:00.000Z	fabio__|	Jowi	it says, unable to read /dev/md0
+2007-01-11T16:47:00.000Z	Jowi	fabio__|	cat /proc/mdstat
+2007-01-11T16:50:00.000Z	fabio__|	Jowi	I did it, there is nothing of useful in that file... FYI, i'm on a Ubuntu Desktop in live mode, i want to install on that old machine with RAID1/SCSI disk Ubuntu, but first i want to check if i will not have hardware problems... so i'm trying to mount that SCSi/Raid 1 disk from the "live mode" of ubuntu desktop
+2007-01-11T16:51:00.000Z	Jowi	fabio__|	ah, so raid isn't actually set up on the machine. you just want to have a peek at the harddisk is that it?
+2007-01-11T16:53:00.000Z	fabio__|	Jowi	i want to install Ubuntu Server on that machine (with just a SCSI / RAID1 disks), so now with the "live mode" of Ubuntu Desktop i'm trying to check if it can work or not. Th only useful thing i have found, is the output of "lspci" command, that you can see here: http://paste.ubuntu-nl.org/1143/
+2007-01-11T16:54:00.000Z	Jowi	fabio__|	in that case the disk is probably called /dev/sd(a,b,c etc etc). yes, I see your lspci output. line 13+14 looks positive
+2007-01-11T16:56:00.000Z	fabio__|	Jowi	i did "sudo fdisk /dev/sd[a,b,c,d] " but no success..
+2007-01-11T16:57:00.000Z	fabio__|	Jowi	i think that that raid1/scsi disks are no mapped to any /dev/..
+2007-06-07T15:22:00.000Z	Jowi	fabio__|	if you use postfix the smtp option is in /etc/postfix/main.cf. option should look like this:  relayhost = smtp.whatever.com
+2007-06-07T15:32:00.000Z	fabio__|	Jowi	i installed postfix choosing to use an external SMTP, how can i test if the emailing really works? on some linux version i had the "mail" command, but i don't find it in the commandline..
+2007-06-07T15:34:00.000Z	Jowi	fabio__|	this link is really good: https://help.ubuntu.com/community/PostfixBasicSetupHowto (preferably test by sending an outbound mail such as to a yahoo account or similar)
+2007-06-07T15:35:00.000Z	Jowi	fabio__|	mail is a part of the mailx package btw
+2007-06-07T15:35:00.000Z	Jowi	fabio__|	see the topic "Test your default setup"
+2007-06-07T15:50:00.000Z	Jowi	fabio__|	that was quick :)

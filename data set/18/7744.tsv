@@ -1,0 +1,18 @@
+2007-11-21T20:40:00.000Z	sadmin1		hi all
+2007-11-21T20:40:00.000Z	sadmin1		i am writing a script to kill 100 ntp process
+2007-11-21T20:41:00.000Z	sadmin1		i print all pids as
+2007-11-21T20:41:00.000Z	sadmin1		ps -ef | awk ' /ntpd/ {print $2}'
+2007-11-21T20:41:00.000Z	sadmin1		it print all pids now i want to run a loop to kill -9 all pids
+2007-11-21T20:41:00.000Z	sadmin1		any idea
+2007-11-21T20:41:00.000Z	sadmin1		?
+2007-11-21T20:41:00.000Z	sadmin1		how i write a loop
+2007-11-21T20:42:00.000Z	erUSUL	sadmin1	sudo killall ntp ??  'ps ax | awk '/ntp/ {print $1}' | xargs sudo kill -9' ?? ...
+2007-11-21T20:43:00.000Z	sadmin1	erUSUL	killall is not there unfortunately
+2007-11-21T20:44:00.000Z	sadmin1	erUSUL	why u r doing killall 2 times
+2007-11-21T20:45:00.000Z	erUSUL	sadmin1	i don't i offered two ways of killing processes given a part of the name
+2007-11-21T20:49:00.000Z	sadmin1	erUSUL	 this is incomplete ps -ef | awk '/squid/ {print $1}' | xargs  kill -9
+2007-11-21T20:49:00.000Z	erUSUL	sadmin1	no problem ;)
+2007-11-21T20:50:00.000Z	erUSUL	sadmin1	i used ps ax not ps -ef the options change the output of ps and my "ad hoc" parsing (with awk) breaks
+2007-11-21T20:52:00.000Z	erUSUL	sadmin1	i have checked and works with both set of options
+2007-11-21T20:54:00.000Z	erUSUL	sadmin1	ps ef | awk '/sleep/ {print $1}' | xargs kill -9    (i'm using sleep as a test victim)
+2007-11-21T20:57:00.000Z	erUSUL	sadmin1	keep in mind that my advice comes with absolutly no warranty... ;)

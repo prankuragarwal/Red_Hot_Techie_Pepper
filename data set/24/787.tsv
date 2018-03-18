@@ -1,0 +1,24 @@
+2011-01-18T22:24:00.000Z	tehbaut		resuming continued running into the same issues
+2011-01-18T22:26:00.000Z	ayecee	tehbaut	is it always on the same sectors?
+2011-01-18T22:15:00.000Z	ayecee	tehbaut	anything related in dmesg output?
+2011-01-18T22:17:00.000Z	tehbaut	ayecee	looks like lots of Buffer I/O errors
+2011-01-18T22:17:00.000Z	tehbaut	ayecee	followed by either an unhandled error code, or unhandled sense code
+2011-01-18T22:17:00.000Z	ayecee	tehbaut	it sounds like the drive is timing out for some reason and getting reset. can you see the first such message?
+2011-01-18T22:22:00.000Z	tehbaut	ayecee	here's the first one of today: http://paste.ubuntu.com/555475/
+2011-01-18T22:23:00.000Z	tehbaut	ayecee	happened when I was copying sdg3 to sda4 with DD
+2011-01-18T22:24:00.000Z	tehbaut	ayecee	sorry... I was using ddrescue not dd
+2011-01-18T22:25:00.000Z	ayecee	tehbaut	using ddrescue for data recovery from a bad drive?
+2011-01-18T22:26:00.000Z	tehbaut	ayecee	eh... it's got some bad sectors, but I didn't think it was dead yet
+2011-01-18T22:27:00.000Z	tehbaut	ayecee	I would venture to say it usually happens around the same spots
+2011-01-18T22:27:00.000Z	ayecee	tehbaut	it seems likely that the drive is taking to long to respond when it's rereading the questionable sectors.
+2011-01-18T22:27:00.000Z	tehbaut	ayecee	is there any way to increase the timeout?
+2011-01-18T22:28:00.000Z	ayecee	tehbaut	not that i'm aware of. It seems like this wouldn't be such a problem except that the drive is getting automounted after reset.
+2011-01-18T22:28:00.000Z	ayecee	tehbaut	I'm not sure how to disable automounting, but it shouldn't be too difficult. That's probably the better approach.
+2011-01-18T22:29:00.000Z	tehbaut	ayecee	well that and having to sit here and continually baby sit the drive until the process is complete... which is terrible slow as it is
+2011-01-18T22:29:00.000Z	ayecee	tehbaut	welcome to data recovery :)
+2011-01-18T22:29:00.000Z	ayecee	tehbaut	does ddrescue abort?
+2011-01-18T22:30:00.000Z	tehbaut	ayecee	yes
+2011-01-18T22:30:00.000Z	ayecee	tehbaut	how is the drive connected? what kind of interface?
+2011-01-18T22:32:00.000Z	ayecee	tehbaut	in this case, it's not the drive, but the USB enclosure that's taking too long to respond. You could put ddrescue in a loop with a sleep, that might work. Connecting directly would be best, though.
+2011-01-18T22:33:00.000Z	tehbaut	ayecee	al_nz1: thanks for your help :)
+2011-01-20T03:58:00.000Z	tehbaut	ayecee	seems that USB enclosure was indeed the problem with my drive remounting when using dd/ddrescue... thanks again for the tips :)

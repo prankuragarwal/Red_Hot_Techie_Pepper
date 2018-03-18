@@ -1,0 +1,19 @@
+2012-09-15T09:50:00.000Z	thufir_		I'm using DAR to create DVD backup slices.  How large should the slices be?   There's a slight problem with large files:  http://askubuntu.com/questions/187954/dar-slice-size-for-dvds  because ISO 9660 doesn't allow for large files.  I'm looking for the most space efficient slice size.
+2012-09-15T09:50:00.000Z	bkc_	thufir_	just use split and cat :/
+2012-09-15T09:52:00.000Z	thufir_	bkc_	 heh.  wow, that sounds quite painful.  it's just that everytime I do the arithmetic to minimize wasted DVD space, it's either too large or too small.
+2012-09-15T09:53:00.000Z	thufir_	bkc_	I'm not sure that you understand my question, thank you, though.
+2012-09-15T09:55:00.000Z	bkc_	thufir_	I think I do... you can't put files bigger than 2GB on an iso9660-fs, so you have to split the files to be less than 2GB but at the same time use al available space on the disk...
+2012-09-15T09:56:00.000Z	bkc_	thufir_	correct?
+2012-09-15T09:56:00.000Z	thufir_	bkc_	yes, that's the problem.  1024MB perhaps?
+2012-09-15T09:57:00.000Z	bkc_	thufir_	how is 1024*4 4.7? that would be 4GB... you have to divide them at a npot value... 1604MB would almost completely fill each DVD...
+2012-09-15T09:58:00.000Z	bkc_	thufir_	actually, just remembered that most DVDs are only 4.5GB, so that would be 1536MB / splice
+2012-09-15T09:58:00.000Z	bkc_	thufir_	I'd go for 1500, to be on the same side :)
+2012-09-15T10:00:00.000Z	thufir_	bkc_	 ok, thanks
+2012-09-15T10:05:00.000Z	bkc_	thufir_	I've never used DAR... I use dd, split and cat
+2012-09-15T10:05:00.000Z	thufir_	bkc_	ok, thaks I'm trying that slice size you suggested.  I think it will be close enough for gov'mt work.
+2012-09-15T10:05:00.000Z	bkc_	thufir_	also, for an automated backup-system, that's a really bad idea...
+2012-09-15T10:06:00.000Z	thufir_	bkc_	why is that a bad idea?
+2012-09-15T10:06:00.000Z	bkc_	thufir_	the pause-and-wait-for-user-input-thingy that is...
+2012-09-15T10:07:00.000Z	bkc_	thufir_	then I'd suggest a removable harddrive instead :)
+2012-09-15T10:08:00.000Z	bkc_	thufir_	have a look att clonezilla, it's a live-distro built for exactly this purpose :)
+2012-09-15T10:09:00.000Z	bkc_	thufir_	http://clonezilla.org/ :)

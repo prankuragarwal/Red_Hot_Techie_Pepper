@@ -1,0 +1,24 @@
+2007-06-26T12:41:00.000Z	persica		Jrattner: this is upgrading from breezy?
+2007-06-26T12:41:00.000Z	jrattner	persica	yep
+2007-06-26T12:41:00.000Z	jrattner	persica	sudo apt-get update fails, so sudo apt-get distupgrade fails
+2007-06-26T12:42:00.000Z	persica	jrattner	What error does apt-get update fail with?  Repo no found?
+2007-06-26T12:42:00.000Z	jrattner	persica	yeh i get 404 Not Found for each of the breezy repos
+2007-06-26T12:42:00.000Z	persica	jrattner	you're going to have to set yourself to point at new repositories.
+2007-06-26T12:43:00.000Z	persica	jrattner	as root, first backup /etc/apt/sources.list, then open it and edit it.
+2007-06-26T12:43:00.000Z	jrattner	persica	the brand new ones?
+2007-06-26T12:44:00.000Z	persica	jrattner	it's a complicated process, and you should be backed up
+2007-06-26T12:44:00.000Z	jrattner	persica	i'm back up would you suggest i not do this at all?
+2007-06-26T12:44:00.000Z	persica	jrattner	you'll just want to go through and replace any instance of "breezy" with "dapper" in /etc/apt/sources.list and then run "apt-get update && apt-get dist-upgrade"
+2007-06-26T12:45:00.000Z	jrattner	persica	can i use grep to do this?
+2007-06-26T12:45:00.000Z	persica	jrattner	It depends on the usage of the system.  if you can't have things break, then don't do it.  If you like hacking your system, then go for it.  Likely all that will happen is an application or two will break and you'll have to hunt down the error.
+2007-06-26T12:45:00.000Z	persica	jrattner	you could theoretically use something like sed.
+2007-06-26T12:45:00.000Z	jrattner	persica	its a server
+2007-06-26T12:46:00.000Z	jrattner	persica	aslong as daemons function correctly and configurations are kept i dont care
+2007-06-26T12:46:00.000Z	persica	jrattner	if it's a server then I wouldn't recommend doing it on the fly.  At least take the system down to do the upgrade, if not do a reinstall over the old system with the latest LTS.
+2007-06-26T12:46:00.000Z	jrattner	persica	what is the latest LTS?
+2007-06-26T12:47:00.000Z	persica	jrattner	Test that everything works with the new versions too.  I've had trouble with things like NFS upgrades breaking old systems.
+2007-06-26T12:47:00.000Z	persica	jrattner	I believe it's dapper (6.06).  7.10 should be the next LTS.
+2007-06-26T12:47:00.000Z	jrattner	persica	hmm that makes me wonder if i should wait until 7.10
+2007-06-26T12:48:00.000Z	persica	jrattner	if it's not urgent then you should be fine.  As long as you do your security updates.
+2007-06-26T12:48:00.000Z	persica	jrattner	7.10 is released in 2007/10
+2007-06-26T12:50:00.000Z	persica	jrattner	I don't know how your partitions are set up, but you might want to install 7.10 fresh on a new partition when you do, just to make sure you get everything working so you can go back if something isn't working right.

@@ -1,0 +1,22 @@
+2010-04-29T10:08:00.000Z	vernr		Hi. I would just like to know how to setup my system so that traffic only goes through my VPN (incoming and outgoing) whether I'm using PPTP or OpenVPN. I'm using a VPN service that charges a subscription fee and I don't want any traffic not going through the VPN for privacy reasons. I also want to be able to remote port forward a few ports. I'm using ubuntu 9.10.
+2010-04-29T10:09:00.000Z	PhilMather	vernr	setup a firewall rule to block all traffic except to the VPN host.
+2010-04-29T10:09:00.000Z	PhilMather	vernr	maybe read up on firewall rules, its pretty easy.
+2010-04-29T10:10:00.000Z	vernr	PhilMather	its a huge complicated mess
+2010-04-29T10:10:00.000Z	PhilMather	vernr	oh?
+2010-04-29T10:11:00.000Z	PhilMather	vernr	ok, listen to me.
+2010-04-29T10:11:00.000Z	PhilMather	vernr	use your VPN service, but set your firewall on your local machine to block all outgoing traffic except to the VPN service.
+2010-04-29T10:11:00.000Z	PhilMather	vernr	https://help.ubuntu.com/9.04/serverguide/C/firewall.html
+2010-04-29T10:12:00.000Z	vernr	PhilMather	ok, did I mention that I need to do remote port forwarding as well?
+2010-04-29T10:13:00.000Z	PhilMather	vernr	were is the remote port forwarding coming from?
+2010-04-29T10:13:00.000Z	vernr	PhilMather	what do you mean?
+2010-04-29T10:14:00.000Z	PhilMather	vernr	I presume the remote port is on far side of the VPN connection, yes?
+2010-04-29T10:14:00.000Z	vernr	PhilMather	correct
+2010-04-29T10:15:00.000Z	PhilMather	vernr	ok, if the VPN service is issuing you a public address, then your machine one connected to the VPN service should be fully routable on the internet, via the VPN service address.
+2010-04-29T10:15:00.000Z	PhilMather	vernr	if they assign you a private address things get a bit more difficult.
+2010-04-29T10:16:00.000Z	vernr	PhilMather	i get a internal ip that they assign that the ports are forwarded on
+2010-04-29T10:16:00.000Z	vernr	PhilMather	can we please take this to PM?
+2010-04-29T10:18:00.000Z	PhilMather	vernr	I would suggest reading up a bit more on the firewall software.  It's better to understand what you are doing for your protection then having somebody guide you through the process.
+2010-04-29T10:23:00.000Z	vernr	PhilMather	could you at least tell me this: what is the process of only allowing VPN traffic to and from your machine called?
+2010-04-29T10:26:00.000Z	PhilMather	vernr	firewalling/blocking local traffic.
+2010-04-29T10:26:00.000Z	PhilMather	vernr	you would in theory block all outbound and inbound traffic from your local machine, except to the address of the VPN server.
+2010-04-29T10:27:00.000Z	PhilMather	vernr	again, this would prevent data from getting on the non vpn local network.

@@ -1,0 +1,19 @@
+2008-12-25T08:20:00.000Z	hlfshell		sooo I think my ubuntu install is dying. I keep getting errors when i try ot run sudo apt-get upgrade or any apt-get, and compiz freezes on boot-up so i have to manually kill it every boot up.... and python programs like the printer setup window fails.
+2008-12-25T08:20:00.000Z	hlfshell		anyone wanna help me figure out why my apt-get says this: (paste binning now)
+2008-12-25T08:20:00.000Z	nickrud	hlfshell	put the errors from sudo apt-get -f install on paste.ubuntu.com
+2008-12-25T08:22:00.000Z	hlfshell	nickrud	- http://pastebin.com/m1624198b
+2008-12-25T08:23:00.000Z	nickrud	hlfshell	looking, brb
+2008-12-25T08:25:00.000Z	nickrud	hlfshell	what does   sudo /etc/init.d/system-backend-tools  do?
+2008-12-25T08:25:00.000Z	hlfshell	nickrud	-  * Usage: /etc/init.d/system-tools-backends {start|stop|restart|force-reload}
+2008-12-25T08:26:00.000Z	nickrud	hlfshell	doh, dummy me. repeat,  with start option :)
+2008-12-25T08:27:00.000Z	nickrud	hlfshell	ok, now   sudo invoke-rc.d dbus force-reload
+2008-12-25T08:27:00.000Z	hlfshell	nickrud	-  * Reloading system message bus config...                                [ OK ]
+2008-12-25T08:28:00.000Z	nickrud	hlfshell	try running   sudo apt-get -f install again. Those are the two commands that would get run during the post installation phase
+2008-12-25T08:28:00.000Z	nickrud	hlfshell	did you get * Starting System Tools Backends system-tools-backends   [OK]   or [FAIL] ?
+2008-12-25T08:30:00.000Z	nickrud	hlfshell	ok, we're gonna do a little surgery.   in a terminal, type   sudo nano /var/lib/dpkg/info/system-tools-backend.postinst
+2008-12-25T08:30:00.000Z	nickrud	hlfshell	yes. But I'd rename that file to get rid of spaces myself
+2008-12-25T08:31:00.000Z	nickrud	hlfshell	sudo nano less /var/lib/dpkg/info/system-tools-backends.postinst  I forgot the s
+2008-12-25T08:32:00.000Z	nickrud	hlfshell	you see the line with set -e ?
+2008-12-25T08:32:00.000Z	nickrud	hlfshell	on the line just below it, add     exit 0
+2008-12-25T08:32:00.000Z	hlfshell	nickrud	- do you mind doing this over private message so i can read things easier?
+2008-12-25T08:32:00.000Z	nickrud	hlfshell	no, pm is fine

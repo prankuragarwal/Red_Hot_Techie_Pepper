@@ -1,0 +1,24 @@
+2010-02-18T14:16:00.000Z	DavidSchles		can someone tell me whats going on here: http://dsfdsf3.pastebin.com/d7e604ae9 i need help
+2010-02-18T14:17:00.000Z	Jordan_U	DavidSchles	Does the file /etc/passwd.lock exist?
+2010-02-18T14:18:00.000Z	DavidSchles	Jordan_U	yes
+2010-02-18T14:18:00.000Z	Jordan_U	DavidSchles	Is there any output from "sudo fuser /etc/passwd.lock" ?
+2010-02-18T14:19:00.000Z	DavidSchles	Jordan_U	no
+2010-02-18T14:19:00.000Z	Jordan_U	DavidSchles	Do you use the guest session feature?
+2010-02-18T14:19:00.000Z	DavidSchles	Jordan_U	rarely
+2010-02-18T14:20:00.000Z	Jordan_U	DavidSchles	You might have hit this bug: https://bugs.launchpad.net/ubuntu/+source/shadow/+bug/432964
+2010-02-18T14:21:00.000Z	DavidSchles	Jordan_U	i don't understand though, this will cause firefox to segfault, and break dpkg?
+2010-02-18T14:21:00.000Z	Jordan_U	DavidSchles	Just to be completely sure nothing legitimately has a lock on /etc/passwd I would reboot, then if they are still there delete /etc/passwd.lock and /etc/shadow.lock
+2010-02-18T14:22:00.000Z	DavidSchles	Jordan_U	yes i rebooted a few times
+2010-02-18T14:22:00.000Z	DavidSchles	Jordan_U	so i should just delete those files?
+2010-02-18T14:22:00.000Z	Jordan_U	DavidSchles	Shouldn't cause firefox to segfault but that is what is causing the problem with dpkg
+2010-02-18T14:22:00.000Z	Jordan_U	DavidSchles	Yes
+2010-02-18T14:22:00.000Z	DavidSchles	Jordan_U	ok i will delete
+2010-02-18T14:22:00.000Z	Jordan_U	DavidSchles	Wait
+2010-02-18T14:22:00.000Z	DavidSchles	Jordan_U	i believe dpkg failed in updating firefox, and that is causing the segfault
+2010-02-18T14:23:00.000Z	Jordan_U	DavidSchles	Just rename them, accidentally mistyping and deleting /etc/passwd would be disasterous
+2010-02-18T14:23:00.000Z	DavidSchles	Jordan_U	ok
+2010-02-18T14:26:00.000Z	DavidSchles	Jordan_U	should i restart?
+2010-02-18T14:26:00.000Z	Jordan_U	DavidSchles	No need ( unless the package manager is asking you to )
+2010-02-18T14:27:00.000Z	DavidSchles	Jordan_U	thanks, that may have worked
+2010-02-18T14:27:00.000Z	Jordan_U	DavidSchles	np
+2010-02-18T14:28:00.000Z	DavidSchles	Jordan_U	i think firefox just is installed incorrectly now

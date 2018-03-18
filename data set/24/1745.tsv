@@ -1,0 +1,24 @@
+2009-09-13T17:20:00.000Z	ropieur		I am new on IRC channel. Would like to get help. May I ask my question directly on this channel ?
+2009-09-13T17:22:00.000Z	ropieur		My jaunty stops during the boot. Have installed hidpoint to control my logitech mouse (g5)
+2009-09-13T17:22:00.000Z	Owner	ropieur	hidpoint is rubbish
+2009-09-13T17:23:00.000Z	Owner	ropieur	how is your system acting now? what system are you using?
+2009-09-13T17:25:00.000Z	Owner	ropieur	can you boot into shell?
+2009-09-13T17:26:00.000Z	Owner	ropieur	what exactly happens when you start up ?
+2009-09-13T17:31:00.000Z	ropieur	Owner	ubuntu boot (splash screen with slide bar) freezes during the boot. In recovery mode it stops on this line "usbhid v2 6 USB HID core driver"
+2009-09-13T17:32:00.000Z	Owner	ropieur	are you using grub? if so, edit the boot sequence and remove the "quiet" and "splash" from it. You will then get more information on what exactly is happening during the boot and you can work from there...
+2009-09-13T17:33:00.000Z	ropieur	Owner	ok I will do. Come back with more info then ;)
+2009-09-13T17:39:00.000Z	ropieur	Owner	have remove "quiet" and "splash". Boot stops with "usbhid: v2 6 USB HID core driver"
+2009-09-13T17:40:00.000Z	Owner	ropieur	looks like the driver didn't install right and is causing your system to hang. boot into a console and remove it. i think it's under /opt/somethingHIDpoint/uninstall.sh. You will need to be sudo for that, of course
+2009-09-13T17:48:00.000Z	ropieur	Owner	what should I do to boot in console ? Do you mean to choose 'c' (command line) in grub ? Or do I have to edit the boot sequence ? Or do I have to boot from my live CD ?
+2009-09-13T17:49:00.000Z	Owner	ropieur	yeah, give that a try. chances are the driver will try to load then, but it's how i would start..
+2009-09-13T17:50:00.000Z	Owner	ropieur	read: choose that from the grub.
+2009-09-13T17:53:00.000Z	ropieur	Owner	My grub list does not contain entry with 'shell' or 'console'
+2009-09-13T17:54:00.000Z	Owner	ropieur	choose the 'c' for command line
+2009-09-13T17:54:00.000Z	ropieur	Owner	'grub>' is displayed
+2009-09-13T18:01:00.000Z	Owner	ropieur	you'll need to read up on how to use grub. some info here: http://www.linuxjournal.com/article/4622.  Basically, you will need to specify your boot partition and then boot from it. Then you should end up with a bash terminal where you can uninstall hidpoint, or at least disable it from loading at boottime.
+2009-09-13T18:02:00.000Z	ropieur	Owner	Thx for the URL.
+2009-09-13T18:23:00.000Z	ropieur	Owner	to avoid the hangup, I physically disconnected my mouse. In that case, the boot continues until the login. I reconnect my mouse and it works. I uninstalled hidpoint and my system is now back to normal. Thank you for your help
+2009-09-13T18:26:00.000Z	Owner	ropieur	good to hear you got it ... i personally dislike hidpoint and use btnx/easystroke instead. the possibilities are much broader...
+2009-09-13T18:28:00.000Z	ropieur	Owner	never heard about btnx/easystroke. Does it allow to manage logitech g5 mouse ? Actually the g5 is well supported by ubuntu by default. I only would like to control the speed and acceleration. I will make some search to btnx/easystroke.
+2009-09-13T18:33:00.000Z	Owner	ropieur	it can work with and mouse/keyboard. that's if you want to automate stuff..
+2009-09-13T18:37:00.000Z	ropieur	Owner	I think that I have to continue to learn deeper linux/ubuntu ... ;) So I could maybe also help people ...  In the meantime, thx for the entry point.

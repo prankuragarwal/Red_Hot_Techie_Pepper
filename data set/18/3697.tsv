@@ -1,0 +1,18 @@
+2009-08-19T12:01:00.000Z	darlek		sudo e2fsck -b 8193 /dev/sdb not working... any ideas on recovering a superblock error for a root drive in ext2?
+2009-08-19T12:01:00.000Z	Ben64	darlek	you might want to try /dev/sdb1
+2009-08-19T12:03:00.000Z	darlek	Ben64	yes tried that too :( ... I'm googling
+2009-08-19T12:03:00.000Z	Ben64	darlek	try sdb2 and sdb3 and so on, parted can show you the partition table of it
+2009-08-19T12:03:00.000Z	darlek	Ben64	thanks I'll give it a try
+2009-08-19T12:07:00.000Z	darlek	Ben64	thanks, used gparted and found out that drive uses ext3
+2009-08-19T12:07:00.000Z	Ben64	darlek	so it works now?
+2009-08-19T12:08:00.000Z	darlek	Ben64	not yet, I'm having gparted check the drive
+2009-08-19T12:09:00.000Z	darlek	Ben64	since the usb drive is'nt mounted that should be okay
+2009-08-19T12:09:00.000Z	Ben64	darlek	hmm, i'd rather use fsck
+2009-08-19T12:13:00.000Z	darlek	Ben64	gave me more data, as the fsck didn't run as noted earlier... here's the result http://pastebin.com/f40a34f7d
+2009-08-19T12:15:00.000Z	Ben64	darlek	try "sudo -p -f fsck.ext3 /dev/sdb1"
+2009-08-19T12:15:00.000Z	Ben64	darlek	nvm
+2009-08-19T12:15:00.000Z	Ben64	darlek	try "sudo fsck.ext3 -p -f /dev/sdb1"
+2009-08-19T12:15:00.000Z	darlek	Ben64	thanks I'll try it
+2009-08-19T12:21:00.000Z	darlek	Ben64	clearing oprphaned inode still running.  hope this works *fingers crossed*
+2009-08-19T12:26:00.000Z	darlek	Ben64	thanks!  the fsck.ext3 command has fixed the problem and allowed me to mount the root on the usb drive.  Thanks so much
+2009-08-19T12:26:00.000Z	Ben64	darlek	np, glad it worked for you

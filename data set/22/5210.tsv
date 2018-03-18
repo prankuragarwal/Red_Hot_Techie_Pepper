@@ -1,0 +1,22 @@
+2007-07-26T06:41:00.000Z	wesolek		hello, does anybody know whether ubuntu supports the WAP protocol for wireless security?
+2007-07-26T06:41:00.000Z	rausb0	wesolek	you mean WPA
+2007-07-26T06:41:00.000Z	wesolek		yeah rausb0
+2007-07-26T06:43:00.000Z	wesolek	rausb0	I've got other problem with it as well... it also won't work with a static IP (only on DHCP)
+2007-07-26T06:43:00.000Z	rausb0	wesolek	is has support for WPA (using wpa_supplicant), but only for those wlan drivers which are usable by wpa_supplicant
+2007-07-26T06:43:00.000Z	wesolek		how can I check it, rausb0?
+2007-07-26T06:44:00.000Z	rausb0	wesolek	which wlan driver do you use?
+2007-07-26T06:44:00.000Z	wesolek		I have no idea, to be honest, rausb0
+2007-07-26T06:44:00.000Z	rausb0	wesolek	then i cannot tell you
+2007-07-26T06:44:00.000Z	wesolek		can I check it somehow? rausb0?
+2007-07-26T06:45:00.000Z	rausb0	wesolek	the output of lsmod would be helpful. but not here, use pastebin for that.
+2007-07-26T06:45:00.000Z	wesolek		ok hold on, rausb0
+2007-07-26T06:50:00.000Z	wesolek		http://pastebin.com/d24a3ce54
+2007-07-26T06:50:00.000Z	wesolek		rausb0
+2007-07-26T06:52:00.000Z	rausb0	wesolek	okay, you have two concurrent drivers loaded for your card: orinoco_cs and hostap_cs. it should be only hostap_cs. and for using wpa with those old cards, the card firmware must be update. not an easy task.
+2007-07-26T06:53:00.000Z	wesolek		can I just unload that other driver first? that may solve some problems :), rausb0
+2007-07-26T06:54:00.000Z	rausb0	wesolek	it would be better to blacklist the orinoco_cs driver, so it doesn't get loaded in the first place
+2007-07-26T06:55:00.000Z	wesolek		that is fine with me, but I am not sure where to find that blacklist file
+2007-07-26T06:55:00.000Z	rausb0	wesolek	i think it is /etc/modprobe.conf  (not sure though)
+2007-07-26T06:56:00.000Z	wesolek		what about just orinoco? should this one stay untouched? rausb0
+2007-07-26T06:57:00.000Z	rausb0		orinoco is just a support module for orinoco_cs. you don't need to blacklist that one.
+2007-07-26T06:57:00.000Z	rausb0	wesolek	sorry, gotta go

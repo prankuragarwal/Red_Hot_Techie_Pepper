@@ -1,0 +1,24 @@
+2008-03-18T21:12:00.000Z	u007-2		i've tried configure iptables with sudo iptables -t nat -i eth1 -A PREROUTING -p tcp -d 192.168.0.100 --dport 88 -j DNAT --to 192.168.0.2:80, but telnet 192.168.0.100 88 failed :(
+2008-03-18T21:12:00.000Z	ikonia	u007-2	192.168 addresses are non-routable
+2008-03-18T21:13:00.000Z	u007-2	ikonia	- i don't get it.. why?
+2008-03-18T21:13:00.000Z	ikonia	u007-2	because it's a private address range.
+2008-03-18T21:13:00.000Z	u007-2	ikonia	- how should i do a vnc port fwd to another pc?
+2008-03-18T21:14:00.000Z	ikonia	u007-2	are you trying to do it over the internet  ?
+2008-03-18T21:14:00.000Z	u007-2	ikonia	- no, only within lan
+2008-03-18T21:14:00.000Z	ikonia	u007-2	is it on the same 192.168 network
+2008-03-18T21:14:00.000Z	u007-2	ikonia	- yes :)
+2008-03-18T21:15:00.000Z	ikonia	u007-2	show me the rule again please.
+2008-03-18T21:15:00.000Z	u007-2	ikonia	- 192.168.0.100:88 to 192.168.0.2:80
+2008-03-18T21:16:00.000Z	u007-2	ikonia	- sudo iptables -t nat -i eth1 -A PREROUTING -p tcp -d 192.168.0.100 --dport 88 -j DNAT --to 192.168.0.2:80
+2008-03-18T21:16:00.000Z	ikonia	u007-2	source port, not desination port
+2008-03-18T21:16:00.000Z	u007-2	ikonia	- oooh.. okay.. let me try..
+2008-03-18T21:16:00.000Z	ikonia	u007-2	88 is yoru source port 80 is your desintation
+2008-03-18T21:17:00.000Z	u007-2	ikonia	- okay.. :)
+2008-03-18T21:18:00.000Z	u007-2	ikonia	- still fail :( sudo iptables -t nat -i eth1 -A PREROUTING -p tcp -d 192.168.0.100 --sport 88 -j DNAT --to 192.168.0.2 --dport 80
+2008-03-18T21:19:00.000Z	ikonia	u007-2	pop into #netfilter and people will help you work it through
+2008-03-18T21:19:00.000Z	u007-2	ikonia	- okay :) thanks :)
+2008-03-18T21:27:00.000Z	u007-2	ikonia	- how do i redo my iptables? i tried flush, but when i run iptables-save, i still see my entry
+2008-03-18T21:28:00.000Z	ikonia	u007-2	iptables -FX
+2008-03-18T21:28:00.000Z	u007-2	ikonia	- thank you :)
+2008-03-18T21:30:00.000Z	u007-2	ikonia	- iptables -FX shows no such chain :(
+2008-03-18T21:30:00.000Z	ikonia	u007-2	iptables -t table -F or -X

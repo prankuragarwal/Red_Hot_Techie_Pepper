@@ -1,0 +1,24 @@
+2005-08-08T07:29:00.000Z	occy		can I have sudo invoke a command as a user without prompting for a password?  I only want it for this one command.
+2005-08-08T07:30:00.000Z	persia	occy	man sudoers
+2005-08-08T07:30:00.000Z	occy	persia	ahhh ok.  I was in sudo
+2005-08-08T07:35:00.000Z	occy	persia	:/  Man... do you know off hand.  That seems fairly complicated.
+2005-08-08T07:36:00.000Z	occy	persia	I simply want to be able to bind a key for   rmmod psmouse
+2005-08-08T07:38:00.000Z	persia	occy	You need to add a line to the file, identifying the user who can give the command, and which command.  An example line is "pete  HPPA = /usr/bin/passwd [A-z] *, !/usr/bin/passwd root", meaning pete can change anyone's password except root's.
+2005-08-08T07:39:00.000Z	occy	persia	hmm ok.
+2005-08-08T07:41:00.000Z	persia	occy	Oops: forgive my cut & paste - in the sample line, replace HPPA with ALL.
+2005-08-08T07:41:00.000Z	occy	persia	hehehe
+2005-08-08T07:44:00.000Z	persia	occy	for a single user, it's better to put all the commands on one llne (/sbin/rmmod, /sbin/insmod), I think.
+2005-08-08T07:44:00.000Z	occy	persia	ahhh okies
+2005-08-08T07:46:00.000Z	occy	persia	it lets me do it, but it's asking for a pass.
+2005-08-08T07:49:00.000Z	persia	occy	Perhaps I don't understand sudo as well as I thought.  The only reference I can find is adding a user to the sudo group, but that doesn't help for only one command...   My apologies.
+2005-08-08T07:50:00.000Z	occy	persia	No worries Mate.  You tried to help and I do thank you.
+2005-08-08T07:51:00.000Z	persia	occy	Take a look at /usr/share/doc/sudo/examples/sudoers.  There's a line in there with NOPASSWD - if you can decode the syntax, you can probably make it work.
+2005-08-08T07:51:00.000Z	occy	persia	ok
+2005-08-08T07:53:00.000Z	occy	persia	I think I got it.
+2005-08-08T07:53:00.000Z	occy	persia	unless I haven't timed out.
+2005-08-08T07:54:00.000Z	persia	occy	does it still ask for a password if you use modprobe?
+2005-08-08T07:54:00.000Z	occy	persia	w00p! it works
+2005-08-08T07:55:00.000Z	persia	occy	Glad to hear it then.  Thanks for posting the line.
+2005-08-08T07:55:00.000Z	occy	persia	hey, thank you.  ;)
+2005-08-08T08:00:00.000Z	occy	persia	http://occy.net/node/135
+2005-08-08T08:02:00.000Z	persia	occy	That's probably worth adding to the wiki: I didn't see anything there.

@@ -1,0 +1,19 @@
+2012-04-27T01:57:00.000Z	saimon777		can someone suggest me a valid guide to configure mpd properly? i already done it, but mpd don't find music in my external drive
+2012-04-27T01:57:00.000Z	InferiorHumanOrg	saimon777	is the user who owns the folder your music is in, the same user you configured mpd to run as? in the /etc/mpd.conf file ?
+2012-04-27T01:58:00.000Z	InferiorHumanOrg	saimon777	probably a permissions issue
+2012-04-27T01:58:00.000Z	InferiorHumanOrg	saimon777	make sure the mpd user owns the folder your music is in, I have mpd run as my user since I own my music folders....
+2012-04-27T01:58:00.000Z	InferiorHumanOrg	saimon777	it's not needed or advised to run mpd as root I believe certainly not needed
+2012-04-27T02:06:00.000Z	saimon777	InferiorHumanOrg	what if i set my music dir readable & writable by others?
+2012-04-27T02:07:00.000Z	InferiorHumanOrg	saimon777	I believe that would work also as long as the mpd user which is "mpd" by default can read the files
+2012-04-27T02:08:00.000Z	saimon777	InferiorHumanOrg	how to do that? from gnome properties won't let me change permissions, even as root
+2012-04-27T02:09:00.000Z	InferiorHumanOrg	saimon777	from command line. sudo chmod 755 /path/folder
+2012-04-27T02:09:00.000Z	InferiorHumanOrg	saimon777	maybe chmod -r it might be -R for recursive
+2012-04-27T02:10:00.000Z	InferiorHumanOrg	saimon777	applying to all subfolders / files of the parent dir = recursive
+2012-04-27T02:16:00.000Z	saimon777	InferiorHumanOrg	tried sudo chmod 777 from terminal, command seem successful, no errors but permissions never changed. it's a ntfs drive does it mean something?
+2012-04-27T02:17:00.000Z	InferiorHumanOrg	saimon777	oh yea, you are going to need to edit /etc/fstab then I think
+2012-04-27T02:18:00.000Z	InferiorHumanOrg	saimon777	/media/sdcard vfat defaults,user something like tha
+2012-04-27T02:18:00.000Z	InferiorHumanOrg	saimon777	adjust for ntfs etc
+2012-04-27T02:19:00.000Z	saimon777	InferiorHumanOrg	this rustle my jimmies, i think that change that user "mpd" to my account name then reboot & see what happen
+2012-04-27T02:19:00.000Z	InferiorHumanOrg	saimon777	idk I think you need to set the user flag in /etc/fstab
+2012-04-27T02:28:00.000Z	saimon777	InferiorHumanOrg	i commented that "user" line in mpd.conf & now seems working fine
+2012-04-27T02:28:00.000Z	InferiorHumanOrg	saimon777	oh ok. thats cool!

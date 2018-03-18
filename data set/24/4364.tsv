@@ -1,0 +1,24 @@
+2008-02-24T08:02:00.000Z	demonspork		whenever I try to launch a second gnome-terminal, it fails to launch. I even try to launch multiple gnome-terminals from xterms, but I can only open one, and the next one just exits without returning any errors, it just fails to launch
+2008-02-24T08:02:00.000Z	demonspork		I would really like to run more than one gnome-terminal
+2008-02-24T08:02:00.000Z	demonspork		I like the transparency
+2008-02-24T08:03:00.000Z	demonspork		upgraded from feisty to gutsy
+2008-02-24T08:03:00.000Z	demonspork		but it did the same thing just before the upgrade
+2008-02-24T08:03:00.000Z	demonspork		...
+2008-02-24T08:03:00.000Z	mage__	demonspork	pastebin strace thecommand
+2008-02-24T08:04:00.000Z	mage__		hmm i dont even have gnome terminal on my box
+2008-02-24T08:05:00.000Z	demonspork	mage__	how do I get the output from running that command to go into a text file?
+2008-02-24T08:06:00.000Z	mage__	demonspork	strace has an -o option
+2008-02-24T08:06:00.000Z	demonspork		the normal < didnt' work
+2008-02-24T08:06:00.000Z	mage__	demonspork	strace -o /tmp/whatever gnome-terminal
+2008-02-24T08:07:00.000Z	mage__	demonspork	strace goes to stderr, which you'd redirect with like 2>/dev/null
+2008-02-24T08:08:00.000Z	demonspork	mage__	http://pastebin.com/m7889a91f
+2008-02-24T08:11:00.000Z	mage__		huh
+2008-02-24T08:12:00.000Z	mage__	demonspork	i'm not seeing anything blatantly obvious
+2008-02-24T08:12:00.000Z	mage__		thats it failing to start right?
+2008-02-24T08:12:00.000Z	demonspork	mage__	it also seems to leave a running bash shell in the process list every time the terminal fails to launch
+2008-02-24T08:12:00.000Z	demonspork		that is it failing to start
+2008-02-24T08:13:00.000Z	mage__	demonspork	ususally i have troubles with the terminal program not being able to make a pty
+2008-02-24T08:14:00.000Z	mage__	demonspork	but I'm not seeing that in there, its a screwy issue i've never come across before, only possible lead might be it not finding locale info
+2008-02-24T08:15:00.000Z	demonspork	mage__	do you know where the gnome-terminal config files are located? I am thinking about just deleting them
+2008-02-24T08:19:00.000Z	mage__	demonspork	either something in /etc or a . file in /home/$you
+2008-02-24T08:23:00.000Z	demonspork	mage__	it was something wrong in the config, I deleted the gnome-terminal foler in .gconf and it works fine now ~~~

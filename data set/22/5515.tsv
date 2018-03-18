@@ -1,0 +1,22 @@
+2010-02-18T13:54:00.000Z	shashank	ionut	I get 'cups-insecure-filter' status message
+2010-02-18T13:55:00.000Z	shashank	ionut	can you help?
+2010-02-18T13:55:00.000Z	ionut	shashank	where u got that message ?
+2010-02-18T13:55:00.000Z	shashank	ionut	Whenever I try to print a file to pdf,
+2010-02-18T13:56:00.000Z	shashank	ionut	I get a message 'Stopping job because scheduler could not execute backend'
+2010-02-18T13:56:00.000Z	ionut	shashank	is ur printer installed well?
+2010-02-18T13:56:00.000Z	shashank	ionut	When I try to check  the status of the printer, (the place where all printers are listed)
+2010-02-18T13:56:00.000Z	shashank	ionut	I see 'cups-insecure-printer'
+2010-02-18T13:57:00.000Z	shashank	ionut	Yeah the printer is installed well.
+2010-02-18T13:57:00.000Z	shashank	ionut	what I did was:
+2010-02-18T13:57:00.000Z	shashank	ionut	After getting the error I removed the printer
+2010-02-18T13:57:00.000Z	shashank	ionut	and reinstalled it.
+2010-02-18T13:57:00.000Z	shashank	ionut	This I did using the terminal.
+2010-02-18T13:57:00.000Z	ionut	shashank	what printer u have ?
+2010-02-18T13:58:00.000Z	shashank	ionut	cups-pdf
+2010-02-18T13:58:00.000Z	shashank	ionut	wait I am on it.
+2010-02-18T13:59:00.000Z	shashank	ionut	I executed the command you typed, but it yields no result in the terminal.
+2010-02-18T13:59:00.000Z	shashank	ionut	What do you think may be the problem?
+2010-02-18T13:59:00.000Z	ionut		i think there are some problems with permissions. u have to find anything in /usr/lib/cups/filter  and /usr/lib/cups/backend which are not owned by the root and chown and chgrp them to root ?
+2010-02-18T14:00:00.000Z	shashank	ionut	roger that.
+2010-02-18T14:01:00.000Z	ionut	shashank	try to run this commands sudo chown -hR /usr/lib/cups/filter , sudo chown -hR /usr/lib/cups/backend , sudo chgrp -hR /usr/lib/cups/filter , sudo chgrp -hR /usr/lib/cups/backend
+2010-02-18T14:02:00.000Z	ionut	shashank	sorry , u must add root between all for eg.   sudo chown -hR root /usr/libs/cups/filter

@@ -1,0 +1,21 @@
+2006-02-20T09:55:00.000Z	Deepz		no
+2006-02-20T09:56:00.000Z	Deepz		it was successful
+2006-02-20T09:56:00.000Z	Deepz		but ndiswrapper stopped functioning, so i figured i needed to reinstall it under the new kernel
+2006-02-20T09:56:00.000Z	Deepz		ok thanks
+2006-02-20T09:57:00.000Z	Deepz		kk
+2006-02-20T09:58:00.000Z	soundray	Deepz	why do you recompile? ndiswrapper should work just like that if you install ndiswrapper-utils.
+2006-02-20T09:59:00.000Z	soundray	Deepz	did you do modprobe ndiswrapper and then do the configuration?
+2006-02-20T10:01:00.000Z	soundray	Deepz	I suggest you do this: 'sudo apt-get install ndiswrapper-utils' (expect this to say "already the newest...". Then just enter 'sudo modprobe ndiswrapper' and see if the interface appears. If not, reinstall your driver.
+2006-02-20T10:02:00.000Z	soundray	Deepz	compiling *should* not be necessary.
+2006-02-20T10:02:00.000Z	soundray	Deepz	view compiling as a last resort.
+2006-02-20T10:15:00.000Z	Deepz	soundray	i tried what you suggested, but when i do sudo modprobe ndiswrapper, it says no ndiswrapper module present
+2006-02-20T10:16:00.000Z	soundray	Deepz	can you paste output of 'uname -a' please
+2006-02-20T10:21:00.000Z	Deepz	soundray	uname -a = 2.6.12-10-386
+2006-02-20T10:25:00.000Z	soundray	Deepz	that's uname -r. Please post uname -a
+2006-02-20T10:26:00.000Z	soundray	Deepz	actually, never mind.
+2006-02-20T10:29:00.000Z	soundray	Deepz	can you run 'locate ndiswrapper.ko' please
+2006-02-20T10:33:00.000Z	soundray	Deepz	do you get a line similar to '/lib/modules/2.6.12-10-386/kernel/drivers/net/ndiswrapper/ndiswrapper.ko'? Sorry misspelt nick.
+2006-02-20T10:37:00.000Z	soundray	Deepz	I think you should run 'apt-get --reinstall install linux-image-2.6.12-10-386' and reboot.
+2006-02-20T10:50:00.000Z	Deepz	soundray	i uninstalled the new kernel and reverted back, now ndiswrapper works and i have net access again, ill try to reinstall the kernel maybe it was faulty
+2006-02-20T10:51:00.000Z	soundray	Deepz	okay. This 'locate' command clearly showed that something hadn't installed properly.
+2006-02-20T10:52:00.000Z	soundray	Deepz	yes.

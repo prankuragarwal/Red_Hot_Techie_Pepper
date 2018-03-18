@@ -1,0 +1,18 @@
+2009-04-28T17:54:00.000Z	bobstro	thomasfedb	 so you want ssh server on the host, right?
+2009-04-28T17:54:00.000Z	thomasfedb	bobstro	yes, for rescuing the vmware server
+2009-04-28T17:55:00.000Z	bobstro	thomasfedb	 i think it will be difficult without the host "in front of" the firewall. otherwise, when vmware crashes, you lose the path.
+2009-04-28T17:56:00.000Z	bobstro	thomasfedb	 one IP address externally, right?
+2009-04-28T17:57:00.000Z	thomasfedb	bobstro	Yes, the host is connected via on nic to the modem and via annother to the hub
+2009-04-28T17:57:00.000Z	bobstro	thomasfedb	 you want the smoothwall firewall to protect the ubuntu box, right?
+2009-04-28T17:57:00.000Z	thomasfedb	bobstro	that was the idea, yes
+2009-04-28T17:58:00.000Z	thomasfedb	bobstro	So basically i want to isonate one nic for vmware only
+2009-04-28T17:58:00.000Z	bobstro	thomasfedb	 well... if the firewall dies, you want the ubuntu box to still be protected. that "one nic" is for the firewall external interface, right?
+2009-04-28T17:59:00.000Z	thomasfedb	bobstro	That one nic is connected to the net. I want ubuntu to ignore it exept for connecting the virtual machine to the net
+2009-04-28T18:00:00.000Z	bobstro	thomasfedb	 except for ssh... which is the tricky part. you can just leave the ubuntu host nic unaddressed and have the smoothwall vm talk to the internet. but that doesn't help with the ssh-to-ubuntu part.
+2009-04-28T18:01:00.000Z	thomasfedb	bobstro	I have worked out how to sort the ssh. I just need to know how to make one nic fore the exclusive use of vmware.
+2009-04-28T18:01:00.000Z	bobstro	thomasfedb	 i used to do a lot of firewall and vmware stuff on my linux box, but took the easy out and put dd-wrt on a linksys router.
+2009-04-28T18:02:00.000Z	bobstro	thomasfedb	 if you leave the ubuntu host nic unaddresses, it should work. it's a bit funky but it should work.
+2009-04-28T18:02:00.000Z	thomasfedb	bobstro	The nic is connected to the modem
+2009-04-28T18:02:00.000Z	thomasfedb	bobstro	But will vmware still be able to use it?
+2009-04-28T18:07:00.000Z	bobstro	thomasfedb	 it *should*, yes. you can run into odd problems with various ISP devices though. by modem, you mean DSL modem?
+2009-04-28T18:20:00.000Z	bobstro	thomasfedb	 i had a cable modem that would lock onto the first MAC address seen, so that might cause a problem.

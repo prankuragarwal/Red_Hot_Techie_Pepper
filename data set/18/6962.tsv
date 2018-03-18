@@ -1,0 +1,18 @@
+2008-12-22T00:48:00.000Z	averno		hello, can anyone help me with ssh? i cant manage to tunnel the ports channel 2: open failed: connect failed: Connection refused
+2008-12-22T00:49:00.000Z	hischild	averno	can you ssh into that remote box?
+2008-12-22T00:49:00.000Z	hischild	averno	check for typo's.
+2008-12-22T00:53:00.000Z	averno	hischild	im using ssh -f user@personal-server.com -L 2000:personal-server.com:25 -N , i found this command over a guide, port, user, and host are written good, so i wonder if im right using this command
+2008-12-22T00:54:00.000Z	hischild	averno	is your server called personal-server.com ?
+2008-12-22T00:55:00.000Z	averno	hischild	nop, thats the example, i have changed that to what i need
+2008-12-22T00:58:00.000Z	hischild	averno	what did you adjust?
+2008-12-22T00:59:00.000Z	averno	hischild	 user, host and port
+2008-12-22T01:02:00.000Z	averno	hischild	it ask me for key auth, and password. so it logs in, but at the time to use the application, vino, localhost:5900 says that error, channel 2: open failed: connect failed: Connection refused
+2008-12-22T01:03:00.000Z	hischild	averno	Try this -> don't use the -N and -f options, only using the -L option. This'll leave you with ssh user@personal-server.com -L 2000:personal-server.com:25
+2008-12-22T01:06:00.000Z	averno	hischild	channel 3: open failed: connect failed: Connection refused, samething but different channel
+2008-12-22T01:08:00.000Z	hischild	averno	what did you adjust the ports to and how are you trying to port forward?
+2008-12-22T01:10:00.000Z	averno	hischild	 ssh user@personal-server.com -L 5900:personal-server.com:5900 then when i use remotedesktop viewer i input localhost:5900
+2008-12-22T01:10:00.000Z	hischild	averno	i do hope you're changin personal-server.com into your host twice?
+2008-12-22T01:11:00.000Z	averno	hischild	 ssh user@host -L 5900:host:5900 like this ? i am
+2008-12-22T01:12:00.000Z	hischild	averno	yes. Are you sure that whichever application you're trying to access is running on the remote host?
+2008-12-22T01:20:00.000Z	averno	hischild	confirmed, app running, and the ssh give me same msg: channel 3: open failed: connect failed: Connection refused
+2008-12-22T01:24:00.000Z	hischild	averno	shouldn't have to. Seems to be a server side issue, not really with SSH. I'm afraid won't be of much help.

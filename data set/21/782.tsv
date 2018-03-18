@@ -1,0 +1,21 @@
+2011-06-17T04:06:00.000Z	hexacode		hey you guys...what exactly is this operator called  ">>"  . this is the cntext which i use it. echo "hello world" >> helloworld.txt
+2011-06-17T04:06:00.000Z	edbian	hexacode	append
+2011-06-17T04:07:00.000Z	hexacode	edbian	is that a bash operator?
+2011-06-17T04:07:00.000Z	edbian	hexacode	It's bash yes.
+2011-06-17T04:07:00.000Z	edbian	hexacode	Do you know what it does?
+2011-06-17T04:09:00.000Z	hexacode	edbian	does bash call an external program in sbin when u use the append operator? im not exacly sure how it works, but would like to know
+2011-06-17T04:09:00.000Z	edbian	hexacode	Well sbin programs are just programs that require root to run.  It probably has some things in bash that do file operations, those make system calls that do reads and write, those make drivers calls that spin the disk and stuff.
+2011-06-17T04:10:00.000Z	edbian	hexacode	What is the bigger picture here?
+2011-06-17T04:10:00.000Z	hexacode	edbian	 this is actually what im trying to do, but it wont work...someone told me to use the tee utility to do this     {  sudo echo "r3d2 \n root" >> /etc/cron.allow
+2011-06-17T04:12:00.000Z	edbian	hexacode	The reason it doesn't work is because sudo applies to echo but it does not apply to >>
+2011-06-17T04:13:00.000Z	edbian	hexacode	I recommend: sudo nano /etc/cron.allow   and just type that stuff at the end
+2011-06-17T04:13:00.000Z	hexacode	edbian	whats the quivalent tee command that im trying to get at?
+2011-06-17T04:13:00.000Z	edbian	hexacode	I'm trying to look it up right now
+2011-06-17T04:14:00.000Z	edbian	hexacode	echo 'whatever' | sudo tee /path/to/file
+2011-06-17T04:14:00.000Z	edbian	hexacode	echo 'whatever' | sudo tee -a /path/to/file
+2011-06-17T04:15:00.000Z	edbian	hexacode	use -a to append instead of overwriting the entire file
+2011-06-17T04:19:00.000Z	edbian	hexacode	dc'ed?
+2011-06-17T04:20:00.000Z	edbian	hexacode	echo 'something' | sudo tee -a /path/to/file
+2011-06-17T04:21:00.000Z	hexacode	edbian	thanks
+2011-06-17T04:21:00.000Z	edbian	hexacode	sure
+2011-08-16T05:27:00.000Z	edbian	hexacode	the theme bugged out

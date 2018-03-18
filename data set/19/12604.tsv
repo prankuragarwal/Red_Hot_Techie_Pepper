@@ -1,0 +1,19 @@
+2005-08-29T06:24:00.000Z	persia		Mounting /boot fails for me about 80% of the time, with the message "/dev/ide/host0/bus1/target0/lib0: p1".  I'm not finding anything useful on google.  Anyone have any ideas?
+2005-08-29T06:25:00.000Z	pao	persia	are U sure that's the complete error message'
+2005-08-29T06:25:00.000Z	pao	persia	?
+2005-08-29T06:26:00.000Z	persia	pao	That's the entry in dmesg and syslog.  Nothing prints to console.  In both cases, the time since boot preceeds the actual error.  Note that within a single boot cycle it may work, as long as I wait enough.
+2005-08-29T06:27:00.000Z	pao	persia	that's not an error message :-(
+2005-08-29T06:28:00.000Z	persia	pao	Add a file to /etc/init.d/ using start-stop-daemon.  Link this to /etc/rc?.d with a name like S99foo (for /etc/init.d/foo), and a sequence number indicating when you want it to start.
+2005-08-29T06:28:00.000Z	persia	pao	Well then, /boot doesn't mount without an error message.  Any ideas?
+2005-08-29T06:28:00.000Z	pao	persia	thanks... I was looking for a shortcut to that solution ;-)
+2005-08-29T06:28:00.000Z	pao	persia	... you said it hangs while trying to mount?
+2005-08-29T06:29:00.000Z	pao	persia	could you show me your fstab?
+2005-08-29T06:30:00.000Z	persia	pao	nothing hangs, just that message shows in dmesg, `ls /boot` returns nothing,  /proc/mounts fails to show an entry, and new files get stored on the / partition.
+2005-08-29T06:30:00.000Z	persia	pao	see #flood
+2005-08-29T06:33:00.000Z	pao	persia	... relevant dmesg...
+2005-08-29T06:35:00.000Z	pao	persia	the message is repeated... right?
+2005-08-29T06:35:00.000Z	persia	pao	yes, it's repeated.  Some of that is me, and some the boot process.
+2005-08-29T06:36:00.000Z	pao	persia	when it does not mount try issueing mount -av
+2005-08-29T06:36:00.000Z	persia	pao	Alas, if it's hardware, I'll have to investigate otherwise.  Just for fun, I'm pasting a shortcut for /etc/init.d/foo to #flood.
+2005-08-29T06:36:00.000Z	pao	persia	does there exist the ugly, old rc.local :-(?
+2005-08-29T06:39:00.000Z	persia	pao	Thanks.  I'll try that.

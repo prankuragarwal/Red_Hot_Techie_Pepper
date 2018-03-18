@@ -1,0 +1,18 @@
+2011-10-18T07:47:00.000Z	gry		Hi. After an upgrade to 11.10, the /etc/init/rc?.conf files have gdm in there, and "/etc/X11/default-display-manager" includes a full path to lightdm - all after I indicated to use gdm during upgrade. Now the system simply doesn't boot (waiting for network confuguration, booting without network confuguration, then freezes) and I'm fine with either gdm or lightdm, whatever boots. I also read that lightdm is supposed to be the default one in future releases. W
+2011-10-18T07:47:00.000Z	gry		hat can you suggest to fix this, please?
+2011-10-18T07:49:00.000Z	qin	gry	You could simply purge gdm after booting to text and reinstall lightdm
+2011-10-18T07:53:00.000Z	gry	qin	Would purging gdm and reinstalling lightdm fix the rc files accordingly?
+2011-10-18T07:54:00.000Z	qin	gry	What is great question. Maybe you right, first reinstall lightdm and update.rc
+2011-10-18T08:00:00.000Z	gry	qin	Is there a way to automate that, eg. something that could update the rc files for me?
+2011-10-18T08:01:00.000Z	qin	gry	My idea was test if it is really rc issue, did you manage to boot with text parameter?
+2011-10-18T08:02:00.000Z	qin	gry	Another thing would be to scan logs for gdm/lightdm, and update.rc
+2011-10-18T08:03:00.000Z	gry	qin	You keep saying "update.rc", what do you mean by that? Is it a file somewhere?
+2011-10-18T08:05:00.000Z	qin	gry	ment: update.rc.d <service> defaults
+2011-10-18T08:11:00.000Z	qin	gry	Acctually changed my mind. sudo stop lightdm; sudo start lightdm (or gdm should be first try)
+2011-10-18T08:12:00.000Z	qin	gry	There is threat, messy, but readable: http://ubuntuforums.org/archive/index.php/t-1846552.html
+2011-10-18T08:13:00.000Z	gry	qin	what I did is start gdm manually, it works. but I don't know how to have a gui start on each boot properly.
+2011-10-18T08:15:00.000Z	qin	gry	they (post) advise to purge lightdm and sudo dpkg-reconfigure gdm, and add start gdm to /etc/rc.local
+2011-10-18T08:16:00.000Z	gry	qin	it looks like a workaround (that file is supposed to be used by a user rather than apps)?
+2011-10-18T08:18:00.000Z	qin	gry	Yes, it is bit odd. Still wondering in upstart cookbook.
+2011-10-18T08:19:00.000Z	gry	qin	I would try update.rc.d line you mentioned earlier - the question is if I should use gdm or lightdm (I personally don't care, I don't know which one would be better and gdm seems to work if started manually while I didn't try lightdm)
+2011-10-18T08:25:00.000Z	qin	gry	Ok, loosing head in it, ok try: sudo dpkg-reconfigure lightdm and choose gdm as default, boot.

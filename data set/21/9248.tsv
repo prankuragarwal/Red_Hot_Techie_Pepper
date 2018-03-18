@@ -1,0 +1,21 @@
+2006-10-16T15:31:00.000Z	talisein		who uses KDE? pfft. only Linus.
+2006-10-16T15:32:00.000Z	talisein		wait what's wrong with rhythmbox?
+2006-10-16T15:32:00.000Z	Jowi	talisein	can't get sound out of it
+2006-10-16T15:33:00.000Z	talisein	Jowi	you get sound out of otherthings? like startup sound?
+2006-10-16T15:33:00.000Z	Jowi	talisein	nope, only on specified apps that is not bound to gnome like xmms and mp3blaster
+2006-10-16T15:34:00.000Z	talisein	Jowi	Are you running Ubuntu or what?
+2006-10-16T15:34:00.000Z	Jowi	talisein	yep
+2006-10-16T15:34:00.000Z	Jowi	talisein	dapper on a intel core duo mac mini no less :)
+2006-10-16T15:36:00.000Z	talisein	Jowi	goto System -> Preferences -> Sound and what do you see?
+2006-10-16T15:37:00.000Z	Jowi	talisein	a dumbed down version of what used to be useful. Enable ESD (not ticked), Play sys sounds (not ticked), Default sound card: HDA Intel (my ALSA soundcard)
+2006-10-16T15:38:00.000Z	talisein	Jowi	yeah it looks different than I remember. My esd box is ticked, so try that.
+2006-10-16T15:38:00.000Z	Jowi	talisein	only to make you happy ;)
+2006-10-16T15:39:00.000Z	talisein	Jowi	lol. then in terminal ps -A|grep esd and see if its running
+2006-10-16T15:40:00.000Z	Jowi	talisein	if I tick it esd is running but not producing sound (that is normal, I never been able to get esd to play nice with any of my hardware). so now it's ticked off again :P
+2006-10-16T15:41:00.000Z	talisein	Jowi	do you have a /dev/dsp?
+2006-10-16T15:42:00.000Z	Jowi	talisein	yeah, /dev/dsp exist. I appreciate your help but I will continue to hunt for a solution tomorrow, need some sleep. At least I know that the kernel modules are ok and that some apps get sound.
+2006-10-16T15:42:00.000Z	talisein	Jowi	np, goodnight
+2006-10-16T15:56:00.000Z	talisein	Jowi	?
+2006-10-16T15:57:00.000Z	Jowi	talisein	kitche, crimsun: /etc/asound.conf was not correct. pointed to use 'pcm "hw:0,1"' instead of the real deal "hw:0,0". now all apps get sound.
+2006-10-16T15:58:00.000Z	Jowi	talisein	that was a looooong troubleshooting for such a small thing that should have been detected during install time.
+2006-10-16T15:59:00.000Z	talisein	Jowi	file a bug if you would. Its probably because mac-minis aren't super-common

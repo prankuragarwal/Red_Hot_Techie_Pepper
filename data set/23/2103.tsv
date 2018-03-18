@@ -1,0 +1,23 @@
+2011-01-18T23:18:00.000Z	fission6		i am sshed into an ubunutu machine and when i connect i am immediatly attached to a screen session, when i do ctrl+a d to detach and get a prompt, my ssh session is closed, how can i ssh in and get a prompt
+2011-01-18T23:20:00.000Z	undecim	fission6	What prompt do you have in the screen session?
+2011-01-18T23:21:00.000Z	undecim	fission6	Usually, screen will start your default shell
+2011-01-18T23:21:00.000Z	undecim	fission6	What do you see in the screen session?
+2011-01-18T23:21:00.000Z	fission6	undecim	^
+2011-01-18T23:21:00.000Z	undecim	fission6	What's wrong with this prompt?
+2011-01-18T23:23:00.000Z	undecim	fission6	You could try killing the screen session with "exit 1", which depending on the script behind the auto-started screen session, may drop you to the bash shell... but that's not a detachment.
+2011-01-18T23:23:00.000Z	undecim	fission6	Pastebin it?
+2011-01-18T23:23:00.000Z	undecim	fission6	And then I can have a look
+2011-01-18T23:24:00.000Z	undecim	fission6	Or /etc/profile, or ~/.bashrc, or /.bash_profile....
+2011-01-18T23:25:00.000Z	undecim	fission6	Just look at each of those for one that starts screen
+2011-01-18T23:26:00.000Z	fission6	undecim	none of them show screen
+2011-01-18T23:27:00.000Z	undecim	fission6	What is the output of "grep /etc/passwd $USER"?
+2011-01-18T23:27:00.000Z	undecim	fission6	Or even "echo $SHELL"
+2011-01-18T23:29:00.000Z	undecim	fission6	see if you can find what is starting screen with "pstree | less"
+2011-01-18T23:31:00.000Z	undecim	fission6	Guess there is no pstree on this system then :/
+2011-01-18T23:32:00.000Z	undecim	fission6	Did you exit the screen with "exit 1" yet?
+2011-01-18T23:33:00.000Z	undecim	fission6	Exits with an error code. If you're lucky, that will drop you to the shell
+2011-01-18T23:33:00.000Z	undecim	fission6	unless the server is configured to go straight to screen
+2011-01-18T23:33:00.000Z	fission6	undecim	nope just dropped the session window
+2011-01-18T23:33:00.000Z	undecim	fission6	It may be an SSH configuration
+2011-01-18T23:34:00.000Z	undecim	fission6	Can you view /etc/ssh/sshd_config?
+2011-01-18T23:38:00.000Z	undecim	fission6	go for it

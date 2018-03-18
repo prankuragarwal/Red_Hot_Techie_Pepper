@@ -1,0 +1,21 @@
+2009-03-15T19:49:00.000Z	Photoguy		Why can't I use "Make usb start up disk" with other .iso files, like other distros?
+2009-03-15T19:49:00.000Z	iCNPunk	Photoguy	edit your fstab file
+2009-03-15T19:50:00.000Z	iCNPunk	Photoguy	make the volume autofs is fine
+2009-03-15T19:51:00.000Z	Photoguy	iCNPunk	Huh, how?
+2009-03-15T19:52:00.000Z	iCNPunk	Photoguy	add a line just like this: /dev/cdrom    /media/CDROM  autofs   default   0 0
+2009-03-15T19:52:00.000Z	Photoguy	iCNPunk	actually I'm using an  .iso file, not a cd
+2009-03-15T19:53:00.000Z	iCNPunk	Photoguy	, that will be :   ****/*.iso    /media/CDROM   loop  default  0 0
+2009-03-15T19:53:00.000Z	Photoguy	iCNPunk	ok
+2009-03-15T19:54:00.000Z	iCNPunk	Photoguy	or you just add a startup script : sudo mount   ****/*.iso    /media/CDROM   -oloop
+2009-03-15T20:00:00.000Z	Photoguy	iCNPunk	after adding the line, I still can't use the utilityit says "This is not a desktop install CD and thus cannot be used by this application."
+2009-03-15T20:01:00.000Z	iCNPunk	Photoguy	try loop==>autofs
+2009-03-15T20:01:00.000Z	Photoguy	iCNPunk	in fstab?
+2009-03-15T20:04:00.000Z	Photoguy	iCNPunk	Still no.
+2009-03-15T20:04:00.000Z	Photoguy	iCNPunk	It looks like this " /media/Daniel's Stuff_/OS ISOs    /media/CDROM   loop==>autofs default  0 0
+2009-03-15T20:05:00.000Z	iCNPunk	Photoguy	...no I mean change the loop to auto
+2009-03-15T20:09:00.000Z	Photoguy	iCNPunk	Didn't work, even after saving
+2009-03-15T20:09:00.000Z	iCNPunk	Photoguy	check http://ubuntuforums.org/showthread.php?t=329215
+2009-03-15T20:09:00.000Z	Photoguy	iCNPunk	ok
+2009-03-15T20:11:00.000Z	iCNPunk	Photoguy	the latest solution is /home/car/r/II.iso /home/car/r/II udf,iso9660 user,loop 0 0
+2009-03-15T20:11:00.000Z	Photoguy	iCNPunk	Thanks
+2009-03-15T20:11:00.000Z	iCNPunk	Photoguy	:D

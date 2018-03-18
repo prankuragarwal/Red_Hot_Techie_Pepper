@@ -1,0 +1,24 @@
+2005-12-12T12:58:00.000Z	exedra		tony: i've read all howtos, man grub, info grub
+2005-12-12T12:58:00.000Z	exedra		tony: problem is this... i can't boot from my HDD, but if use grub floppy it works great
+2005-12-12T12:58:00.000Z	exedra		rambo: it could be simple
+2005-12-12T12:58:00.000Z	exedra		tony: reinstalling grub after i boot from floppy didn't help
+2005-12-12T12:59:00.000Z	exedra		tony: I am using HPT370 and the HDD are in /dev/hde and /dev/hdg... and / (root) is mounted to /dev/hde1
+2005-12-12T13:00:00.000Z	exedra		rambo: it ried grub-install /dev/hde, also grub-install '(hd0)' also run grub and do setup (hd0) from the grub command line, while of them works great i still can't boot from HDD
+2005-12-12T13:02:00.000Z	exedra		web: yes it is for me :) hda is a DVD reader.. hdc is a dvd burner... my hdd is on hde and hdg
+2005-12-12T13:02:00.000Z	exedra		rambo: my menu.lst works great if i boot from floppy
+2005-12-12T13:02:00.000Z	exedra		tony: when i install ubuntu fresh it always failed on stage2
+2005-12-12T13:03:00.000Z	exedra		tony: i just did a fdisk/mbr but now it is looking for CDROM even when my BIOS setting was asking it to boot from my HDD
+2005-12-12T13:03:00.000Z	kyncani	exedra	to know for sure (hd0) is /dev/hde : type sudo grub, then (in grub)  find /one/file/on/the/filesystem. This will tell you the grub name of the disk
+2005-12-12T13:04:00.000Z	kyncani	exedra	at what point do you see what error message ? Do you get the grub menu on boot ?
+2005-12-12T13:10:00.000Z	kyncani	exedra	failed on stage 2 ? I would narrow the search and see at what point it is failing with the error message. When you got that, you can try to fix it or do the boot sequence yourself (not for the faint of heart) giving the linux kernel the argument init=/bin/bash (in grub, with the edit command line feature).
+2005-12-12T13:12:00.000Z	kyncani	exedra	what do you mean ? When you issue the grub commands yourself it works but when grub executes them from the config file, it does not work ??
+2005-12-12T13:14:00.000Z	kyncani	exedra	well, when you boot from hdd, at grub menu, you can check that grub is getting the config file right by editing the grub entry. Must be either a typo in the config file or grub is not getting the correct menu.lst
+2005-12-12T13:16:00.000Z	kyncani	exedra	if it's a typo, chances are you won't see it yourself. So either narrow the problem by getting a more precise error message from the boot sequence, or get someone else to double-check the config file .. sometimes, you can check the same file ten times when someone else will find the error at first glance ...
+2005-12-12T13:17:00.000Z	kyncani	exedra	if it cannot get to the grub menu with hdd boot, i'd say it's a bios problem ..
+2005-12-12T13:17:00.000Z	kyncani	exedra	or a disk jumper
+2005-12-12T13:18:00.000Z	kyncani	exedra	yeah .. don't know exactly in english
+2005-12-12T13:18:00.000Z	kyncani	exedra	the little thingies that connect other thingies on the disk to tell him if he is a ide master or slave .. :)
+2005-12-12T13:19:00.000Z	kyncani	exedra	well, try to move the disk on the first controller ?
+2005-12-12T13:20:00.000Z	kyncani	exedra	here, i have a bios problem : i cannot boot if i have two usb disks connected on my usb hub ... but i can connect them as soon as i get the grub menu ! :)
+2005-12-12T13:21:00.000Z	kyncani	exedra	blooded stupid bioses :)
+2005-12-12T13:22:00.000Z	kyncani	exedra	np :)

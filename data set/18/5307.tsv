@@ -1,0 +1,18 @@
+2008-11-13T19:49:00.000Z	FrancisN		I know this isn't strictly an Ubuntu problem, but does anyone know how to use, say, dd to repair a USB flash drive?  I managed to mess it up so badly it can't read the partition table anymore
+2008-11-13T19:49:00.000Z	Gnea	FrancisN	you might get some good results with sfdisk
+2008-11-13T19:50:00.000Z	FrancisN	Gnea	What exactly would I do?  I just want to erase everything on the drive, hopefully make it usable again
+2008-11-13T19:52:00.000Z	Gnea	FrancisN	oh, you can dd if=/dev/zero of=/dev/device_name_of_your_usb
+2008-11-13T19:52:00.000Z	Gnea	FrancisN	make sure to sudo that
+2008-11-13T19:52:00.000Z	FrancisN	Gnea	I think I've found my problem.  sfdisk just crashes whenever I try to do something, saying that my partitions extend past the physical end of the drive
+2008-11-13T19:57:00.000Z	FrancisN	Gnea	New problem, I can't do anything with the drive, sfdisk crashes saying unrecognized partition table
+2008-11-13T19:58:00.000Z	Gnea	FrancisN	did you do the dd thing?
+2008-11-13T19:58:00.000Z	FrancisN	Gnea	now it's telling me there's no partition table whenever I try to do something with it
+2008-11-13T19:58:00.000Z	Gnea	FrancisN	okay, forget sfdisk then. use fdisk on it and create a partition
+2008-11-13T19:59:00.000Z	FrancisN	Gnea	I've figured out how to make one, but what sort of table should I make? msdos, aix, etc.?
+2008-11-13T19:59:00.000Z	Gnea	FrancisN	right, that's what dd did too - totally zero'd out the drive
+2008-11-13T19:59:00.000Z	Gnea	FrancisN	how big is it?
+2008-11-13T20:00:00.000Z	FrancisN	Gnea	2gb flash
+2008-11-13T20:00:00.000Z	Gnea	FrancisN	i'd stick with a fat32 format then - do you have qparted installed?
+2008-11-13T20:01:00.000Z	FrancisN	Gnea	nevermind, I'll just use msdos partition table type, and see what happens.
+2008-11-13T20:01:00.000Z	Gnea	FrancisN	ah ok - try 6 fat16 for the partition type :)
+2008-11-13T20:02:00.000Z	FrancisN	Gnea	Well, I have to use fat32, I'm trying to make a ubuntu bootable usb

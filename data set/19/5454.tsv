@@ -1,0 +1,19 @@
+2008-07-16T03:19:00.000Z	Soul_Sample		need help regarding twinview on nvidia (monitor and tv) problem: no colour on tv, reason: probably ntsc\pal settings, but i don't know how to set those up
+2008-07-16T03:19:00.000Z	linuxkrn	Soul_Sample	did you try nvidia-settings?
+2008-07-16T03:20:00.000Z	Soul_Sample	linuxkrn	yes, that is how i set up the picture, but it has no ntsc\pal settings, and i know that my tv has to be set to pal-g
+2008-07-16T03:21:00.000Z	linuxkrn	Soul_Sample	some cards don't support pal, might need to confirm it does with the tech specs.
+2008-07-16T03:22:00.000Z	Soul_Sample	linuxkrn	i had the same graphic card set up on windows xp before switching to ubuntu
+2008-07-16T03:24:00.000Z	linuxkrn	Soul_Sample	ok, then try adding to your xorg.conf nvidia driver section: Option      "TVStandard" "PAL-G"
+2008-07-16T03:25:00.000Z	Soul_Sample	linuxkrn	to what section precisely? i tried adding to a couple of them, and all i got is a blank tv and my own monitor switched to 640x480 and the os forgot i was using nvidia and switched to vesa
+2008-07-16T03:26:00.000Z	linuxkrn	Soul_Sample	needs to go in the "Device" for your card.  Also note that max res using tvout will be 720x480.
+2008-07-16T03:26:00.000Z	Soul_Sample	linuxkrn	max res on my monitor or on the tv?
+2008-07-16T03:27:00.000Z	Soul_Sample	linuxkrn	here is my xorg.conf http://paste.ubuntu.com/27583/
+2008-07-16T03:27:00.000Z	linuxkrn	Soul_Sample	on the TV, it's a limitation of the signal type.
+2008-07-16T03:28:00.000Z	Soul_Sample	linuxkrn	i know that, it was the same on the pc. but the last time i was here i got the same advice to add that line to the Device section and everything kind of messed up... maybe it's the wrong section, i have a separate for the tv, as far as i understand xorg.conf
+2008-07-16T03:28:00.000Z	Soul_Sample	linuxkrn	it was the same on Windows, i meant to say
+2008-07-16T03:29:00.000Z	linuxkrn	Soul_Sample	Where is the PAL-G option?
+2008-07-16T03:30:00.000Z	Soul_Sample	linuxkrn	there is no pal-g option. it never appeared, not even the ntsc line, nothing
+2008-07-16T03:30:00.000Z	Soul_Sample	linuxkrn	and wherever i add it, things mess up
+2008-07-16T03:31:00.000Z	linuxkrn	Soul_Sample	back up your file, then try adding it to the Device section (Videocard0), might also try adding Option "ConnectedMonitor" "TV"
+2008-07-16T03:32:00.000Z	linuxkrn	Soul_Sample	check the nvidia readme for complete list of options.
+2008-07-16T03:33:00.000Z	Soul_Sample	linuxkrn	ok, just to be sure, once again - where do i add what?

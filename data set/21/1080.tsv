@@ -1,0 +1,21 @@
+2011-02-10T00:19:00.000Z	ZeroAdam		Anyone have experience adding a second hard drive to Ubuntu?
+2011-02-10T00:20:00.000Z	ZeroAdam		lol NixGeek. I do see it in my places menu but it mounts as if it were external. Is that the only way? I was hoping for something more seamless like the boot drive.
+2011-02-10T00:21:00.000Z	bastidrazor	ZeroAdam	https://help.ubuntu.com/community/Fstab    add it to your fstab to have it mount on boot
+2011-02-10T00:27:00.000Z	bastidrazor	ZeroAdam	you can change its mount point and it will act a bit different. for instance use /mnt/newdrive and it will not show on the desktop, at all.
+2011-02-10T00:29:00.000Z	ZeroAdam	bastidrazor	I did that with my fstab file but it still gave me the desktop icon.
+2011-02-10T00:29:00.000Z	bastidrazor	ZeroAdam	what did you use as its mount point?
+2011-02-10T00:30:00.000Z	ZeroAdam	bastidrazor	/dev/sdb1 /media/storage defaults 0 0
+2011-02-10T00:30:00.000Z	bastidrazor	ZeroAdam	is it ext3 or ext4?
+2011-02-10T00:31:00.000Z	bastidrazor	ZeroAdam	you could change the mount point to /mnt/storage  and it will not show on the desktop, also i would change the last 0 to a 2
+2011-02-10T00:31:00.000Z	ZeroAdam	bastidrazor	Thanks i'll try that!
+2011-02-10T00:32:00.000Z	bastidrazor	ZeroAdam	you would need to create the mount point of course. you can make these changes and have it mount without restarting.
+2011-02-10T00:32:00.000Z	ZeroAdam	bastidrazor	chmod 600 on the mount point right?
+2011-02-10T00:33:00.000Z	bastidrazor	ZeroAdam	no, just sudo mkdir /mnt/storage and the options you use in fstab will determine permissions. in your case, defaults, will be fine.
+2011-02-10T00:33:00.000Z	ZeroAdam	bastidrazor	great, thanks!
+2011-02-10T00:34:00.000Z	bastidrazor	ZeroAdam	i actually have my mount points owned by me. sudo chown $USER /mnt/storage ..you can use that command and it will own it by your user
+2011-02-10T00:34:00.000Z	ZeroAdam	bastidrazor	got it!
+2011-02-10T00:35:00.000Z	bastidrazor	ZeroAdam	once you've made the chagnes in fstab, unmount the drive. then type sudo mount -a  ..this will mount anything in fstab that is not currently mounted.
+2011-02-10T00:36:00.000Z	ZeroAdam	bastidrazor	that was exactly it! thanks for all your help. It even pulled out of my places menu as "250 GB Filesystem"  Perfect!!!!
+2011-02-10T00:37:00.000Z	bastidrazor	ZeroAdam	you're welcome. you can add it back to Places menu if you want.
+2011-02-10T00:38:00.000Z	ZeroAdam	bastidrazor	No, i like it gone from there, it was throwing me off visually. Thanks again!!
+2011-02-10T00:39:00.000Z	bastidrazor	ZeroAdam	good deal. you're welcome.

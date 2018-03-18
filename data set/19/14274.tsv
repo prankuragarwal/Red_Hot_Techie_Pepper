@@ -1,0 +1,19 @@
+2006-10-24T08:41:00.000Z	Vuen		what's up #ubuntu. i was wondering if anyone could help me make a quick script.
+2006-10-24T08:42:00.000Z	Vuen		basically, i want a script to add to my crontab which will tar up a directory, name the tar file based on the current date, and scp that file to an ssh server
+2006-10-24T08:42:00.000Z	Vuen		it's ubuntu related.
+2006-10-24T08:42:00.000Z	Vuen		isn't it?
+2006-10-24T08:42:00.000Z	Vuen		bash
+2006-10-24T08:42:00.000Z	Vuen		it's linux related
+2006-10-24T08:43:00.000Z	Vuen		you can't be serious. i can't get generic linux support for my ubuntu box in #ubuntu?
+2006-10-24T08:43:00.000Z	rapha	Vuen	state your concrete question, please.
+2006-10-24T08:44:00.000Z	rapha	Vuen	btw, people giving support in here do this _voluntarily_. You are _not_ to _expect_ anything from them.
+2006-10-24T08:45:00.000Z	rapha	Vuen	because you appear (I could be wrong) to be showing a demanding attitude. I make the same mistake from time to time...
+2006-10-24T08:46:00.000Z	rapha	Vuen	tar cvzf file.blah dir
+2006-10-24T08:46:00.000Z	rapha	Vuen	you want the file name to be the current date?
+2006-10-24T08:47:00.000Z	rapha	Vuen	mv current.name `date +F%blahblahblah` I believe
+2006-10-24T08:47:00.000Z	rapha	Vuen	I always get confused about how to specify the format for the `date` command. `man date` should have an explanation for it.
+2006-10-24T08:48:00.000Z	rapha	Vuen	alternatively mv old.name $(date +F%blahblah).tar
+2006-10-24T08:48:00.000Z	rapha	Vuen	scp file.name peter@somewhere.tld BUT only if keyless auth is set up
+2006-10-24T08:49:00.000Z	rapha	Vuen	which means, you will have to enter, on your host, the contents of your local ~/.ssh/id_rsa.pub into ~/.ssh/authorized_keys2
+2006-10-24T08:49:00.000Z	rapha	Vuen	where, like compudaze stated, the id_rsa.pub file is created by issuing `ssh-keygen -t rsa`
+2006-10-24T09:08:00.000Z	rapha	Vuen	just what it says. When you unpack the file, it will be relative to your working directory.

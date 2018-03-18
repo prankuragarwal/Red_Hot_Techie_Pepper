@@ -1,0 +1,19 @@
+2009-11-14T14:58:00.000Z	MrPiracy		how can i get grub2 to forward boot to chameleon bootloader on my secondary HD's mbr ?
+2009-11-14T14:59:00.000Z	Jordan_U	MrPiracy	root=(hd2) ; chainloader
+2009-11-14T14:59:00.000Z	MrPiracy	Jordan_U	and where am i supposed to put this?
+2009-11-14T15:00:00.000Z	Jordan_U	MrPiracy	/etc/grub.d/40_custom
+2009-11-14T15:00:00.000Z	Jordan_U	MrPiracy	As a menu entry
+2009-11-14T15:00:00.000Z	MrPiracy	Jordan_U	then i just update-grub after that?
+2009-11-14T15:00:00.000Z	Jordan_U	MrPiracy	Yes
+2009-11-14T15:01:00.000Z	MrPiracy	Jordan_U	ok, thx, gonna give it a try
+2009-11-14T15:01:00.000Z	Jordan_U	MrPiracy	Look at /boot/grub/grub.cfg to see how grub2 menu entries look
+2009-11-14T15:08:00.000Z	MrPiracy	Jordan_U	do you think it's possible to put all the chamaleon files (boot, boot1h, boot0) into a folder and have Grub2 to load it from there? It would be a lot easier for me if i didnt really have to use the secondary HD
+2009-11-14T15:09:00.000Z	Jordan_U	MrPiracy	I'm not sure if it will confuse chameleon if it's loaded from a file instead of the mbr but you can use the chainloader command on files too with "chainloder (hd0,1)/boot/chameleon"
+2009-11-14T15:10:00.000Z	Jordan_U	MrPiracy	s/chainloder/chainloader
+2009-11-14T16:08:00.000Z	MrPiracy	Jordan_U	it worked, thank you ;)
+2009-11-14T16:08:00.000Z	Jordan_U	MrPiracy	np :)
+2009-11-14T16:11:00.000Z	MrPiracy	Jordan_U	now do you happen to know how to mount my hfsplus partition for read/write? I added to fstab, but it will mount read only ... /dev/sda3 /media/Mac\040OS\040X\040Snow\040Leopard hfsplus rw,user,owner,auto 0 0
+2009-11-14T16:11:00.000Z	Jordan_U	MrPiracy	You can only mount hfsplus rw if you disable journaling :(
+2009-11-14T16:12:00.000Z	MrPiracy	Jordan_U	and that has to be done from inside mac, rite?
+2009-11-14T16:12:00.000Z	Jordan_U	MrPiracy	Yes
+2009-11-14T16:13:00.000Z	MrPiracy	Jordan_U	alright, thx

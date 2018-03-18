@@ -1,0 +1,24 @@
+2007-07-04T06:08:00.000Z	KuDeTa		hiya everyone
+2007-07-04T06:09:00.000Z	KuDeTa		i have a proftpd setup
+2007-07-04T06:09:00.000Z	KuDeTa		its configured correctly i thik
+2007-07-04T06:09:00.000Z	KuDeTa		and started
+2007-07-04T06:09:00.000Z	KuDeTa		but when i try to connect i get connection refused
+2007-07-04T06:09:00.000Z	KuDeTa		sry
+2007-07-04T06:10:00.000Z	KuDeTa		ok, i have proftpd setup (im on drapper server) with a guide. its al configured correctly i think, and i started it, but i still can't connect to it
+2007-07-04T06:11:00.000Z	bionoid	KuDeTa	Can't connect to it - using an ftp client or attempting a tcp connection to port 21? ie if you can't get response on telnet, it most likely didn't start for whatever reason
+2007-07-04T06:11:00.000Z	bionoid	KuDeTa	Is it on LAN or is the server connected to the internet?
+2007-07-04T06:12:00.000Z	KuDeTa	bionoid	its a remote server connected to the internet with no firewall
+2007-07-04T06:13:00.000Z	bionoid	KuDeTa	Ok, first things first, ssh to the server and type: telnet localhost 21   - if that gives you "connection refused" immediately, your proftpd is not running. If it connects but no response, you might want to verify that DNS is configured properly
+2007-07-04T06:14:00.000Z	KuDeTa	bionoid	its drops immediately
+2007-07-04T06:14:00.000Z	KuDeTa		no connection
+2007-07-04T06:14:00.000Z	KuDeTa	bionoid	what should i do?
+2007-07-04T06:14:00.000Z	bionoid	KuDeTa	Ok, then type: ps auxww|grep proftp   - see if the process is up and running
+2007-07-04T06:15:00.000Z	KuDeTa		yup
+2007-07-04T06:15:00.000Z	KuDeTa	bionoid	root     18990  0.0  0.1   2876   796 pts/0    S+   14:15   0:00 grep proftp
+2007-07-04T06:15:00.000Z	bionoid	KuDeTa	Exactly, so its not running. (That process is merely the "grep" you just executed, _not_ the actual server)
+2007-07-04T06:16:00.000Z	bionoid	KuDeTa	Try /etc/init.d/proftpd start
+2007-07-04T06:16:00.000Z	KuDeTa		ohh
+2007-07-04T06:16:00.000Z	KuDeTa	bionoid	done
+2007-07-04T06:16:00.000Z	KuDeTa		still no connection
+2007-07-04T06:17:00.000Z	bionoid	KuDeTa	So its a configuration problem, then. I don't have proftpd on my boxes so cant test it - but usually you will find some clues by doing: tail -n 20 /var/log/messages
+2007-07-04T06:17:00.000Z	bionoid	KuDeTa	Also check /var/log/ directory and see if it has some specific proftpd logs (ie a directory or file(s) named proftpd*)

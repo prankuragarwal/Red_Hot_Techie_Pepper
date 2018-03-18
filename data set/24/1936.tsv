@@ -1,0 +1,24 @@
+2009-06-16T14:08:00.000Z	thewrongboy		hi i have a qn about apt-get source packages
+2009-06-16T14:09:00.000Z	thewrongboy		after i apt-get source <package name>
+2009-06-16T14:09:00.000Z	thewrongboy		and run ./configure; make; make install
+2009-06-16T14:09:00.000Z	thewrongboy		are the patches compiled too?
+2009-06-16T14:10:00.000Z	sanxiyn	thewrongboy	No.
+2009-06-16T14:10:00.000Z	sanxiyn	thewrongboy	If you want to apply patches, you need to apply them.
+2009-06-16T14:11:00.000Z	sanxiyn		That is, apt-get source extracts source and applies diff, but does not apply patches included as a file in diff.
+2009-06-16T14:11:00.000Z	thewrongboy		okay..
+2009-06-16T14:11:00.000Z	thewrongboy		then how do i apply them?
+2009-06-16T14:11:00.000Z	sanxiyn		(There is an ongoing discussion on how to automate that, actually. No solution for now.)
+2009-06-16T14:11:00.000Z	sanxiyn	thewrongboy	That's the bad part. There is no standard.
+2009-06-16T14:11:00.000Z	thewrongboy		oh... ouch
+2009-06-16T14:11:00.000Z	thewrongboy		how do i do it manually then?
+2009-06-16T14:12:00.000Z	sanxiyn		Debian folks are working on it :(
+2009-06-16T14:12:00.000Z	sanxiyn	thewrongboy	It differs from packages to packages. Read package documentation if there is one.
+2009-06-16T14:12:00.000Z	thewrongboy		wow... that sucks...
+2009-06-16T14:12:00.000Z	sanxiyn	thewrongboy	If there isn't, you need to figure it out.
+2009-06-16T14:12:00.000Z	thewrongboy		hmm let me poke around the package and see if i can figure it out
+2009-06-16T14:12:00.000Z	thewrongboy	sanxiyn	the package in question is python-gobject btw
+2009-06-16T14:21:00.000Z	sanxiyn	thewrongboy	pygobject uses custom quilt rule. Use $ debian/rules patch to patch.
+2009-06-16T14:21:00.000Z	sanxiyn		(And unpatch to unpatch.)
+2009-06-16T14:21:00.000Z	sanxiyn		Some packages use apply/unapply for that.
+2009-06-16T14:21:00.000Z	sanxiyn		Still some packages differ again...
+2009-06-16T14:22:00.000Z	sanxiyn	thewrongboy	Yes it sucks. People are working on agreeing on solution.

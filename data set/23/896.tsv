@@ -1,0 +1,23 @@
+2011-08-14T17:27:00.000Z	Sebo		I'm trying to set up vbox @ ubuntu serwer with no graphical GUI. And till now I can run the vm and take PNG snapshot of its screen. but I can not connect to it in any way :/
+2011-08-14T17:28:00.000Z	exutux	Sebo	do you have installed extpack ?
+2011-08-14T17:30:00.000Z	exutux	Sebo	I mean from oracle site VirtualBox 4.1 Oracle VM VirtualBox Extension Pack
+2011-08-14T17:33:00.000Z	exutux	Sebo	It isn't vbox guest addition it is an extpack that enable VRDE on server
+2011-08-14T17:34:00.000Z	exutux	Sebo	If you want use ssh only, why you need RDP enabled?
+2011-08-14T17:34:00.000Z	Sebo	exutux	So this might be the case.
+2011-08-14T17:36:00.000Z	exutux	Sebo	well if you want it, install extpack before, and after run you guest machine VBoxHeadless --startvm 'name' then you can connect from another client with rdesktop-vrdp ip_server:3389
+2011-08-14T17:38:00.000Z	Sebo	exutux	what is the package name of this extpack? I can not see anything I would suspect to be this.
+2011-08-14T17:38:00.000Z	exutux	Sebo	http://www.virtualbox.org/wiki/Downloads
+2011-08-14T17:39:00.000Z	exutux	Sebo	wget it in your server and install it by VBoxManage
+2011-08-14T17:40:00.000Z	Sebo	exutux	and that is what I did: sudo apt-get install virtualbox-4.1 dkms
+2011-08-14T17:41:00.000Z	exutux	Sebo	is it installed?
+2011-08-14T17:43:00.000Z	exutux	Sebo	 ok and do you have created guest machine in your server?
+2011-08-14T17:44:00.000Z	exutux	Sebo	via *.ova?? what is that? maybe .vdi??
+2011-08-14T17:46:00.000Z	Sebo	exutux	I use bridged networking so I needed to vboxmanage modifyvm name --bridgeadapter1 eth0 .
+2011-08-14T17:46:00.000Z	exutux	Sebo	It doesn'n matter
+2011-08-14T17:47:00.000Z	exutux	Sebo	you must create a guest machine on the server too, and after attach to it your *.vdi  HD
+2011-08-14T17:47:00.000Z	Sebo	exutux	when I chose file -> export apilance at my desktop vm host I can chose betwean ova and ovf export formats
+2011-08-14T17:48:00.000Z	exutux	Sebo	ok RDP doesn't run in that format at all
+2011-08-14T17:49:00.000Z	Sebo	exutux	Ok so I'll try to make it at the server from strach :] ...anyway I thoght creating this et desktop woyld be more user frendly ;]
+2011-08-14T17:49:00.000Z	exutux	Sebo	clone your .vdi with VBoxManage clonehd /path/*.vdi  /pendrive/*vdi  copy it in the same way into your server, create a new machine, attach .vdi
+2011-08-14T17:50:00.000Z	exutux	Sebo	yeah, isn't more userfriendly use vbox without GUI :)
+2011-08-14T17:51:00.000Z	exutux	Sebo	I'm learning more about it in this period of my worklife!! and it is awesome :p

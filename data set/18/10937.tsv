@@ -1,0 +1,18 @@
+2006-10-08T14:23:00.000Z	adam410		i have a box running ubuntu-server, and I've installed FTP, so i can ftp to the machine, but when I try to edit anything in the apache document root dir, i get a permission denied, how can I change this, so I can edit anywhere?
+2006-10-08T14:23:00.000Z	sethk	adam410	if you truly mean that you are connected via ftp, then you cannot.
+2006-10-08T14:24:00.000Z	adam410	sethk	why is that?
+2006-10-08T14:25:00.000Z	sethk	adam410	because ftp means file transfer protocol, and you don't edit anything with it, you transfer files to or from a server with it.
+2006-10-08T14:25:00.000Z	sethk	adam410	and you certainly don't alter web server source with it.
+2006-10-08T14:25:00.000Z	adam410	sethk	that's really what I meant, I meant I wanted to upload a file, sorry If i was unclear, my bad.
+2006-10-08T14:26:00.000Z	sethk	adam410	if you were to set your permissions so your ftp user could upload web server files, the web server would refuse to run.
+2006-10-08T14:26:00.000Z	sethk	adam410	ftp is an unsafe protocol that uses clear text passwords.
+2006-10-08T14:26:00.000Z	adam410	sethk	then how do you suggest that I upload files to my machine?
+2006-10-08T14:26:00.000Z	sethk	adam410	also apache is rather strict about what is owned by the web server process.
+2006-10-08T14:27:00.000Z	sethk	adam410	upload them any way you wish, but don't expect to upload them into their final destination.  then ssh into the machine, su to whichever user you need to be, and copy the files.
+2006-10-08T14:28:00.000Z	adam410	sethk	I've scped things right into the apache dir, and there is no trouble with permissions.
+2006-10-08T14:28:00.000Z	sethk	adam410	indeed, because you are the user that is permitted to do so.
+2006-10-08T14:28:00.000Z	sethk	adam410	it's a very bad idea, but the machine won't stop you.
+2006-10-08T14:29:00.000Z	adam410	sethk	so why can't my ftp account do that two?
+2006-10-08T14:29:00.000Z	adam410		and what makes it a bad idea?
+2006-10-08T14:29:00.000Z	sethk	adam410	uploading html files to a running http server?  think about what problems that could cause.
+2006-10-08T14:29:00.000Z	sethk	adam410	 if you have scp working, that means you have sftp working.  so why do you want to use ftp when sftp is already working?

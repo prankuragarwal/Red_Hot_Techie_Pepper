@@ -1,0 +1,21 @@
+2011-07-13T11:41:00.000Z	rooted-insideme		anyone know a good free bandwith monitor to watch how much bandwith is being used?
+2011-07-13T11:42:00.000Z	e_t_	rooted-insideme	is gnome-system-monitor not sufficient?
+2011-07-13T11:42:00.000Z	rooted-insideme	e_t_	it's for my esxi server
+2011-07-13T11:45:00.000Z	rooted-insideme	e_t_	I know about iptraf
+2011-07-13T11:48:00.000Z	e_t_	rooted-insideme	for something like that, you might need munin, cacti, nagios, or similar.
+2011-07-13T11:48:00.000Z	rooted-insideme	e_t_	like cpanel type deal?
+2011-07-13T11:53:00.000Z	rooted-insideme	e_t_	what would you recommand out of the muin, cacti, nagios?
+2011-07-13T11:57:00.000Z	e_t_	rooted-insideme	guessing based on (http://en.wikipedia.org/wiki/Comparison_of_network_monitoring_systems), I'd go with cacti.
+2011-07-13T11:57:00.000Z	rooted-insideme	e_t_	ty bud
+2011-07-13T13:34:00.000Z	e_t_	rooted-insideme	don't assign a gateway to eth1. It will screw up your routing big time to have more than one default gateway.
+2011-07-13T13:44:00.000Z	e_t_	rooted-insideme	Are you using 11.04?
+2011-07-13T13:45:00.000Z	e_t_	rooted-insideme	At least for ubuntu, the default DHCP server changed to isc-dhcp-server. The conf for that is /etc/dhcp/dhcpd.conf.
+2011-07-13T13:46:00.000Z	rooted-insideme	e_t_	mines in /etc/default
+2011-07-13T13:46:00.000Z	e_t_	rooted-insideme	That's not the main configuration file. Look in /etc for dhcp anything.
+2011-07-13T13:48:00.000Z	rooted-insideme	e_t_	I found the conf file just have to set it up
+2011-07-13T13:53:00.000Z	rooted-insideme	e_t_	http://paste.ubuntu.com/643138/ that's what my /etc/network/interface looks like and now both eth0 and eth1 start up on boot and eth0 has internet
+2011-07-13T13:58:00.000Z	e_t_	rooted-insideme	If you're running a DHCP server on eth1, you don't want to assign its address by DHCP.
+2011-07-13T14:03:00.000Z	rooted-insideme	e_t_	oh ok
+2011-07-13T14:04:00.000Z	e_t_	rooted-insideme	eth1 should be static, but you should only need address and netmask lines. Definitely don't set a gateway on eth1.
+2011-07-13T14:04:00.000Z	rooted-insideme	e_t_	ok
+2011-07-13T15:18:00.000Z	e_t_	rooted-insideme	sorry, I had to restart.

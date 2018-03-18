@@ -1,0 +1,21 @@
+2012-08-09T17:01:00.000Z	mmr		hello there!
+2012-08-09T17:02:00.000Z	mmr		how can I install jython using apt-get and make it use my manually installed jdk (instead of download/installing openjdk as dep)?
+2012-08-09T17:03:00.000Z	theadmin	mmr	You can't really do that, APT has no idea about your own JDK
+2012-08-09T17:03:00.000Z	theadmin	mmr	You should probably make a Debian package of your own JDK, install that and...
+2012-08-09T17:03:00.000Z	mmr	theadmin	is there anyway i can inform it of my manually installation existence?
+2012-08-09T17:04:00.000Z	mmr	theadmin	hm, ok, i can do that
+2012-08-09T17:05:00.000Z	mmr	theadmin	with the package in hand, what next?
+2012-08-09T17:05:00.000Z	mmr	theadmin	how do i inform apt-get that the jython install should depend on my jdk package?
+2012-08-09T17:06:00.000Z	theadmin	mmr	Well, remove the JDK as it is and install it through the package you made, assuming this package "provides openjdk" you should be good.
+2012-08-09T17:06:00.000Z	mmr	theadmin	hm, isnt that 'cheating' ?
+2012-08-09T17:06:00.000Z	theadmin	mmr	That's the best way I see.
+2012-08-09T17:08:00.000Z	mmr	theadmin	isnt there a more abstract name
+2012-08-09T17:08:00.000Z	mmr	theadmin	like 'provides java-compiler' and both my package and openjdk does provide a 'java-compiler'
+2012-08-09T17:59:00.000Z	mmr	theadmin	:(
+2012-08-09T17:59:00.000Z	mmr	theadmin	Provides: java-compiler, java-sdk, java2-sdk, java5-sdk, java6-sdk, java7-jdk, java-runtime, java2-runtime, java5-runtime, java6-runtime, java7-runtime
+2012-08-09T18:00:00.000Z	mmr	theadmin	thats the line i have in my DEBIAN/control file
+2012-08-09T18:00:00.000Z	theadmin	mmr	Sorry, I have no idea to be honest... The only system I've ever built packages on is ArchLinux
+2012-08-09T18:00:00.000Z	mmr	theadmin	and thats the only file i have in the packages dir. ran dpkg-deb -b javapack
+2012-08-09T18:00:00.000Z	mmr	theadmin	ah, ok
+2012-08-09T18:01:00.000Z	theadmin	mmr	...And Fedora. But that was by blind copy-pasting :P
+2012-08-09T18:01:00.000Z	mmr	theadmin	its ok

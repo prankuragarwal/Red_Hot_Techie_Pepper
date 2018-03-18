@@ -1,0 +1,23 @@
+2006-12-26T11:17:00.000Z	hhhjr		Eve everyone, I just recompiled my ubuntu 2.6.17-10 kernel to 2.6.19.1 and after a sucessful build when rebooting I get this error "ALERT! /dev/sda1 does not exist. Dropping to shell." this was the second time I recompiled it? any ideas?
+2006-12-26T11:19:00.000Z	hhhjr		 any help on this one please? "ALERT! /dev/sda1 does not exist. Dropping to shell."
+2006-12-26T11:20:00.000Z	po0f	hhhjr	Looks like you're missing a hard drive.  ;)
+2006-12-26T11:21:00.000Z	hhhjr	po0f	yes I understand that but I compiled a new kernel and after a successful build I get that error?
+2006-12-26T11:22:00.000Z	po0f	hhhjr	Which kernel version did you compile? 2.6.19?  2.6.20?
+2006-12-26T11:24:00.000Z	po0f	hhhjr	Does your /etc/fstab use device or UUID names?
+2006-12-26T11:24:00.000Z	hhhjr	po0f	sorry kinda a newbie here
+2006-12-26T11:25:00.000Z	po0f	hhhjr	What does `grep sda1 /etc/fstab` spit at you?
+2006-12-26T11:25:00.000Z	po0f	hhhjr	Yes, I thought you already had.  :)
+2006-12-26T11:26:00.000Z	po0f	hhhjr	Are you running right now with the new kernel?
+2006-12-26T11:27:00.000Z	hhhjr	po0f	gonna check
+2006-12-26T11:30:00.000Z	hhhjr	po0f	no such file or directory
+2006-12-26T11:30:00.000Z	po0f	hhhjr	How do you not have an fstab?
+2006-12-26T11:31:00.000Z	hhhjr	po0f	after it tries to boot the kernel, then it fails and says dropping into a shell
+2006-12-26T11:32:00.000Z	po0f	hhhjr	After trying to boot with your old kernel?
+2006-12-26T11:32:00.000Z	po0f	hhhjr	I thought that's what you went off to do.
+2006-12-26T11:33:00.000Z	hhhjr	po0f	sorry I will now brb
+2006-12-26T11:36:00.000Z	hhhjr	po0f	sorry about that it spits out #/dev/sda1
+2006-12-26T11:42:00.000Z	po0f	hhhjr	Is there any special reason you are compiling a newer kernel?
+2006-12-26T11:43:00.000Z	po0f	hhhjr	From what I hear, they're moving a lot of stuff around as far as hard drive stuff goes.
+2006-12-26T11:45:00.000Z	hhhjr	po0f	I am a noob but when you run the menuconfig for the new kernek am I opening the existing config from the old kernel or is it a generic config file?
+2006-12-26T11:48:00.000Z	po0f	hhhjr	It's a generic config.  To get most of the options set up, do `sudo cp /boot/config-version-that-works /path/to/new/kernel/source && cd /path/to/new/kernel/source && make oldconfig`.
+2006-12-26T11:49:00.000Z	hhhjr	po0f	ok I will research it some more gotta get some sleep but thanks for the help

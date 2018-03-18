@@ -1,0 +1,22 @@
+2012-09-15T11:52:00.000Z	buhman	msmith0957	agreed ^
+2012-09-15T11:52:00.000Z	msmith0957		yes, i've heard some very negative things about PA :?
+2012-09-15T11:52:00.000Z	msmith0957		So, what to do ?
+2012-09-15T11:52:00.000Z	buhman	msmith0957	speaking of cruft...
+2012-09-15T11:53:00.000Z	buhman	msmith0957	1) disable it 2) profit
+2012-09-15T11:53:00.000Z	msmith0957	buhman	i believe i've actually killed it once, and made sure auto spawning was disabled. but didnt see any immediate benefit, would a reboot be necessary ?
+2012-09-15T11:54:00.000Z	msmith0957		Im guesing yes.
+2012-09-15T11:54:00.000Z	buhman	msmith0957	you'll essentially want to stop the pulseaudio daemon, remove it from update-rc.d or however ubuntu does things. Then you need to change your asoundrc/asound.conf
+2012-09-15T11:54:00.000Z	buhman	msmith0957	"change" meaning "make your default output device plug:dmix rather than pulse"
+2012-09-15T11:54:00.000Z	buhman	msmith0957	reboot: absolutely not
+2012-09-15T11:55:00.000Z	msmith0957	buhman	i'll give it a go, I think I tried this same thing yesterday, sans the asound.conf change
+2012-09-15T11:55:00.000Z	buhman	msmith0957	modifying asound.conf is the most important part :P
+2012-09-15T11:55:00.000Z	buhman	msmith0957	without it, you'll then be trying to send audio to a daemon that no longer exists.
+2012-09-15T11:57:00.000Z	buhman	msmith0957	pulse will likely have control of hw0.0; but once you stop it, you can even specify dmix/hw0.0 manually.
+2012-09-15T11:58:00.000Z	buhman	msmith0957	if that still doesn't work, likely your mixer is still mis-configured, and pastebinning the output of "amixer" would be beneficial.
+2012-09-15T11:58:00.000Z	msmith0957	buhman	ok, i'll try all that and see what happens
+2012-09-15T11:59:00.000Z	buhman	msmith0957	if it doesn't work you're doing it wrong
+2012-09-15T12:00:00.000Z	buhman	msmith0957	it is unlikely you have hardware that is completely unsupported and/or are encountering a legitimate alsa bug.
+2012-09-15T12:00:00.000Z	buhman		(with the exception of those winmodem sound card pieces of crap from 1997)
+2012-09-15T12:00:00.000Z	buhman		(but nobody has that hardware anymore)
+2012-09-15T12:00:00.000Z	msmith0957	buhman	yes, i completely agree lol
+2012-09-15T12:04:00.000Z	msmith0957	buhman	i can't seem to locate any 'asound.conf' or 'asoundrc' files/folders on my system

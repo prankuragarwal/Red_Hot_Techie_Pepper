@@ -1,0 +1,23 @@
+2005-12-02T12:49:00.000Z	idiot		When I try to connect to a Linux share in Windows it requires a login, anyway to get around this?
+2005-12-02T12:50:00.000Z	LjL	idiot	why do you *want* leave your share login-less?
+2005-12-02T12:51:00.000Z	LjL	idiot	ok, but i don't think anyone here will help you making your system utterly unsecure
+2007-12-11T04:03:00.000Z	LjL	idiot	i think you might be looking for texlive
+2007-12-11T04:05:00.000Z	idiot	LjL	 when trying to 'sudo apt-get install texlive' i get "E: Sub-process /usr/bin/dpkg returned an error code (1)".  any ideas why?
+2007-12-11T04:06:00.000Z	LjL	idiot	full output of that please (use the pastebin, "/msg ubotu pastebin")
+2007-12-11T04:08:00.000Z	idiot	LjL	 http://paste.ubuntu-nl.org/47760/
+2007-12-11T04:13:00.000Z	LjL	idiot	there are several bug reports that look similar to your problem, but none has "texlive-pdfetex" as the package immediately preceeding the problem. see http://tinyurl.com/3b8kr8 - in particular bug #174569 is the only one marked as confirmed
+2007-12-11T04:13:00.000Z	LjL	idiot	you're on gutsy right?
+2007-12-11T04:13:00.000Z	idiot	LjL	feisty
+2007-12-11T04:14:00.000Z	LjL	idiot	ah that changes things a bit, i was looking at the wrong bug reports then
+2007-12-11T04:14:00.000Z	idiot	LjL	sorry, should have mentioned from the get-go
+2007-12-11T04:17:00.000Z	LjL	idiot	still i see no feisty report, and none that exactly matches your problem. please, open a new bug report, attach the full pastebin output that you gave me, *and* the contents of the file /tmp/texlive.fmtutil.uop26813
+2007-12-11T04:17:00.000Z	LjL	idiot	bug reporting interface is at http://bugs.ubuntu.com fyi
+2007-12-11T04:18:00.000Z	idiot	LjL	you don't think its just operator error?  i remember a couple years ago installing tetex-* whatnot.  maybe its just me not removing proper packages or whatnot...
+2007-12-11T04:18:00.000Z	LjL	idiot	no, errors like that should just *never* happen, unless you're using third-party repositories.
+2007-12-11T04:19:00.000Z	LjL	idiot	pastebin your /etc/apt/sources.list then
+2007-12-11T04:20:00.000Z	idiot	LjL	 http://paste.ubuntu-nl.org/47763/
+2007-12-11T04:21:00.000Z	LjL	idiot	ah well, that *is* quite broken. you don't currently have 3rd-party repos enabled (but you had in the past, they're commented out), and even more importantly, you don't have the 'main' repository enabled! please generate a new sources.list
+2007-12-11T04:22:00.000Z	LjL	idiot	after that, see if "sudo apt-get update; sudo apt-get dist-upgrade" helps
+2007-12-11T04:24:00.000Z	idiot	LjL	this is going to upgrade me to gutsy?
+2007-12-11T04:25:00.000Z	LjL	idiot	only if you select Gutsy on that site. but don't, select Feisty instead.
+2007-12-11T04:46:00.000Z	idiot	LjL	thanks, everything working nicely now.  you're a life saver...

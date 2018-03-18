@@ -1,0 +1,22 @@
+2005-03-31T12:16:00.000Z	sal002		Anyone have problems with grub in warty after doing as apt-get upgrade?
+2005-03-31T12:17:00.000Z	sal002		I get a file not found looking for the -5-pkg-tmp kernel.  Only kernel found is -3 which segfaults
+2005-03-31T12:17:00.000Z	DarthFrog	sal002	Nope, its worked every time.
+2005-03-31T12:18:00.000Z	DarthFrog	sal002	look at /boot/grub/menu.lst
+2005-03-31T12:18:00.000Z	sal002	DarthFrog	What kernel are you running?
+2005-03-31T12:18:00.000Z	DarthFrog	sal002	2.6.10-5-k7
+2005-03-31T12:19:00.000Z	DarthFrog	sal002	I'm doing update and dist-upgrade daily.
+2005-03-31T12:20:00.000Z	DarthFrog	sal002	Just did one.
+2005-03-31T12:27:00.000Z	DarthFrog	sal002	It's safe.
+2005-03-31T12:29:00.000Z	DarthFrog	sal002	Why?
+2005-03-31T12:31:00.000Z	sal002	DarthFrog	I can't boot in.  Grub either gives me "File Not Found" or I get some nasty debugging message with -3 kernel
+2005-03-31T12:32:00.000Z	DarthFrog	sal002	 did you bugger up your menu.lst file?
+2005-03-31T12:35:00.000Z	DarthFrog	sal002	You can have command line editing in grub.  You can tell it at boot time, by editing the command line, what kernel to boot, where it is, what your root device is, etc.  The syntax is identical to what you see in /etc/boot/menu.lst.  You must first figure out what is going wrong (sounds like it doesn't know where your kernel is, should be in /boot) then tell it what to do.
+2005-03-31T12:36:00.000Z	sal002	DarthFrog	Yep - but I need to know which kernel to boot - and I don't know what is on the system without booting into Linux - which I cannot do.  Catch-22
+2005-03-31T12:37:00.000Z	DarthFrog	sal002	You can boot the live CD and look at the file system.  You can edit menu.lst so that it's correct and grub should then boot your system properly.  Unlike LILO, grub doesn't need anything more to process changes in its config file.
+2005-03-31T13:41:00.000Z	DarthFrog	sal002	Probably.
+2005-03-31T13:58:00.000Z	DarthFrog	sal002	Yes.  /var/cache/apt/archives.
+2005-03-31T14:19:00.000Z	DarthFrog	sal002	that's your floppy drive.
+2005-03-31T14:20:00.000Z	sal002	DarthFrog	Right.
+2005-03-31T14:21:00.000Z	DarthFrog	sal002	man mkinitrd
+2005-04-03T07:38:00.000Z	DarthFrog	sal002	Happened to me this morning on my laptop.
+2005-04-03T07:39:00.000Z	sal002	DarthFrog	Good!  It happens to someone else.

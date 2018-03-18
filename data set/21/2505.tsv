@@ -1,0 +1,21 @@
+2011-12-05T23:20:00.000Z	Hexxeh		Hi, I've got some technical questions regarding Wubi/Lubi, is there a more appropriate channel I can talk in than here?
+2011-12-05T23:21:00.000Z	Hexxeh		Okay so basically I'd like to use the Wubi bootloader system to boot another OS, but it appears that Wubi uses a loop-mounted ISO image to boot, am I correct? I'd need to boot from a hard disk image, is this possible?
+2011-12-05T23:22:00.000Z	theadmin	Hexxeh	Wubi does boot a raw hard disk image located in C:\ubuntu\disks\root.disk
+2011-12-05T23:23:00.000Z	Hexxeh	theadmin	Ah, I presume that's MBR partitioned disk? Would a GPT image work?
+2011-12-05T23:23:00.000Z	theadmin	Hexxeh	I don't think so...
+2011-12-05T23:23:00.000Z	Hexxeh	theadmin	Is there somewhere with technical documentation on how Wubi works? If it doesn't support booting GPT, I'd like to add that functionality.
+2011-12-05T23:24:00.000Z	theadmin	Hexxeh	wubi-installer.org is the place for everything related to it
+2011-12-05T23:46:00.000Z	Hexxeh	theadmin	Is it definitely a disk image and not just a partition image? I keep seeing reference to an ext2 disk image, which would suggest it's a partition rather than a full disk
+2011-12-05T23:47:00.000Z	theadmin	Hexxeh	It's a disk with one partition, and it's ext3 rather than ext2 from what I'm aware. Not so sure tho, I hate wubi (and neither I use Ubuntu, really)
+2011-12-06T00:06:00.000Z	Hexxeh	theadmin	How exactly is the NTFS partition accessed to use the disk image stored there?
+2011-12-06T00:07:00.000Z	theadmin	Hexxeh	Trough the Windows bootloader (it chainloads GRUB)
+2011-12-06T00:07:00.000Z	Hexxeh	theadmin	No magic going on in the initrd then?
+2011-12-06T00:07:00.000Z	Hexxeh	theadmin	Or special options required in the kernel
+2011-12-06T00:08:00.000Z	theadmin	Hexxeh	Nah
+2011-12-06T00:18:00.000Z	Hexxeh	theadmin	Does the root need to be specified by uuid or is there some way of specifying a partition index?
+2011-12-06T00:18:00.000Z	Hexxeh	theadmin	Usually I'd specify like sdx3 but given it's a loop device loop0 I'm not sure how this works
+2011-12-06T00:18:00.000Z	theadmin	Hexxeh	errrr for the kernel you can use the uuid, the label or plain /dev/sd*, same goes to fstab
+2011-12-06T00:19:00.000Z	theadmin	Hexxeh	Oh loop0? Well I beleive you might be able to use /dev/loop0 but...
+2011-12-06T00:19:00.000Z	Hexxeh	theadmin	Just trying to boot what was USB stick image, root would usually be sdb3
+2011-12-06T01:51:00.000Z	Hexxeh	theadmin	you sure root.disk is a disk image? when booted to ubuntu, / is mounted to /dev/loop0, can't see any way of booting from a specific partition on the disk
+2011-12-06T01:51:00.000Z	theadmin	Hexxeh	I am not, as stated before, I haven't used WUBI or Ubuntu for ages. That's how it used to be at least...

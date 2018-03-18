@@ -1,0 +1,23 @@
+2007-05-31T07:08:00.000Z	joerlend	msdtux	yes, that tells me it's an ntfs partition..
+2007-05-31T07:05:00.000Z	msdtux	joerlend	check hdd by : dmesg | grep hda
+2007-05-31T07:07:00.000Z	joerlend	msdtux	hmm? I know the device names, they're sda1 and sdb1
+2007-05-31T07:08:00.000Z	msdtux	joerlend	ok then check the UUID by : blkid /dev/sda1
+2007-05-31T07:09:00.000Z	msdtux	joerlend	does it tells you the UUID ?
+2007-05-31T07:09:00.000Z	joerlend	msdtux	yes.. ?
+2007-05-31T07:10:00.000Z	msdtux	joerlend	then just write it to fstab
+2007-05-31T07:10:00.000Z	joerlend	msdtux	well, actually, no. :)
+2007-05-31T07:10:00.000Z	joerlend	msdtux	but I don't need to use uuid?
+2007-05-31T07:11:00.000Z	msdtux	joerlend	if you use /dev/sda1 inside fstab, sometime it changes from sda to hda for example
+2007-05-31T07:11:00.000Z	msdtux	joerlend	it happend to me :)
+2007-05-31T07:11:00.000Z	msdtux	joerlend	ubuntu now use UUID in their fstab (cmiiw)
+2007-05-31T07:12:00.000Z	joerlend	msdtux	does this have anything to do with write-support for ntfs?
+2007-05-31T07:12:00.000Z	msdtux	joerlend	I guess not.
+2007-05-31T07:13:00.000Z	msdtux	joerlend	if you still want to use /dev/sda1, then write : /dev/sda1 /media/sda1 ntfs-3g default 0 0
+2007-05-31T07:13:00.000Z	msdtux	joerlend	into the fstab
+2007-05-31T07:13:00.000Z	msdtux	joerlend	then try mount -a
+2007-05-31T07:15:00.000Z	msdtux	joerlend	if you want to use UUID, try : sudo vol_id -i /dev/sda1, get the UUID, and replace /dev/sda1 with UUID=...
+2007-05-31T07:16:00.000Z	joerlend	msdtux	I just need to backup a partition.
+2007-05-31T07:17:00.000Z	msdtux	joerlend	try what Jordan_U suggest, use : ntfs-config to turn NTFS rw on or off
+2007-05-31T07:19:00.000Z	msdtux	joerlend	use : gksu ntfs-config
+2007-05-31T07:22:00.000Z	msdtux	joerlend	sudo aptitude install ntfs-config
+2007-05-31T07:22:00.000Z	msdtux	joerlend	then run : gksu ntfs-config

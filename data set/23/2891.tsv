@@ -1,0 +1,23 @@
+2009-08-06T11:45:00.000Z	losher	psypher246	I don't recognise the .ecryptfs/wrapped-passphrase stuff, which the server is clearly having a problem with. Whose procedure are you following?
+2009-08-06T11:46:00.000Z	psypher246	losher	rsa-keygen on server copy id_rsa.pub to client cat id_rsa.pub >> authorized_keys2 as well as authorized_keys
+2009-08-06T11:47:00.000Z	losher	psypher246	you have client & server backwards above. You keygen on the client & copy its .pub to authorized keys on the server. Was that a typo?
+2009-08-06T11:49:00.000Z	psypher246	losher	no it wasn't, i thought that might be it and i tried both ways, neither server nor client can ssh into each other
+2009-08-06T11:52:00.000Z	losher	psypher246	do you have console access to the server? If so, you can run sshd -d to get additional debugging info from the server...
+2009-08-06T11:52:00.000Z	psypher246	losher	nope just tried again, does ot work
+2009-08-06T11:52:00.000Z	psypher246	losher	ok lemme try
+2009-08-06T11:58:00.000Z	psypher246	losher	 i see an error that says auth refused: bad ownership or modes for directory /home/user
+2009-08-06T11:58:00.000Z	losher	psypher246	that's an important clue. So what *are* the permissions on /home/user for your user?
+2009-08-06T11:59:00.000Z	psypher246	losher	never changed anyhting on home just .ssh. brand new install. according to guys on the site and other sites .ssh moust be 700 and file sinside must be 600
+2009-08-06T12:01:00.000Z	losher	psypher246	apparently your sshd doesn't agree. For what it's worth, my home dir is drwxr-xr-x and my .ssh is drwx------. How's yours?
+2009-08-06T12:01:00.000Z	psypher246	losher	home drwxrwxrwx ssh drwx------
+2009-08-06T12:02:00.000Z	losher	psypher246	anybody can write in your home dir. That will make ssh object. Remove group & other write perms...
+2009-08-06T12:04:00.000Z	psypher246	losher	work, why the hell does ubuntu do that anyway??
+2009-08-06T12:04:00.000Z	losher	psypher246	if I knew the answer to that... So is it working?
+2009-08-06T12:04:00.000Z	psypher246	losher	yup!
+2009-08-06T12:04:00.000Z	losher	psypher246	one down. 10,0000 to go...
+2009-08-06T12:05:00.000Z	psypher246	losher	this is a pretty serious design issue
+2009-08-06T12:05:00.000Z	psypher246	losher	i have seen other sites complain about this too, there is no reason for your home folder to be rw to everyone
+2009-08-06T12:05:00.000Z	losher	psypher246	Since you're the only one with this particular issue, I think there was something odd about your install...
+2009-08-06T12:06:00.000Z	psypher246	losher	so what does it not install yr home with full rw to everyone?
+2009-08-06T12:07:00.000Z	losher	psypher246	I don't think so, but I last installed so long ago & I keep /home across installs, so I can't actually remember. Maybe it's an install bug? Better log messages from sshd would help...
+2009-08-06T12:09:00.000Z	psypher246	losher	cool thanks man. i will check it out

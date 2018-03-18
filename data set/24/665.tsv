@@ -1,0 +1,24 @@
+2011-04-02T14:16:00.000Z	truepurple_	soreau	Thanks as well, I didn't understand any of that, but it might have saved me some trouble
+2011-04-02T14:17:00.000Z	truepurple_	soreau	Is "gconf-editor" that?
+2011-04-02T14:18:00.000Z	soreau	truepurple_	Yes, all settings in gconf-editor are stored in $HOME/.gconf and many gnome apps use these settings
+2011-04-02T14:19:00.000Z	soreau	truepurple_	If they were to become owned by root, other user apps would no longer be able to write and save settings
+2011-04-02T14:19:00.000Z	truepurple_	soreau	Are you telling me not to listen to oCean?
+2011-04-02T14:20:00.000Z	soreau	truepurple_	So far as running gconf-editor as root (with gksudo), yes
+2011-04-02T14:20:00.000Z	truepurple_	soreau	But as just "gconf-editor", it is fine?
+2011-04-02T14:20:00.000Z	soreau	truepurple_	yes
+2011-04-02T14:27:00.000Z	soreau	truepurple_	You can also re-own all files in .gconf by running as your normal user: sudo chown -R $USER $HOME/.gconf
+2011-04-02T14:27:00.000Z	truepurple_	soreau	 I don't know what you mean by "re-own"
+2011-04-02T14:28:00.000Z	soreau	truepurple_	It will only not ask for password if you have entered it recently
+2011-04-02T14:28:00.000Z	truepurple_	soreau	Actually, that whole line seemed like gibberish to me
+2011-04-02T14:29:00.000Z	soreau	truepurple_	ie. in case you ran gconf-editor with escalated permissions (with sudo, gksu or gksudo) and changed any setting (it will write the file as root and subsequently own it to root) then you can recursively (that is what -R means here) re-own the permissions to your normal user with the aforementioned command
+2011-04-02T14:30:00.000Z	truepurple_	soreau	Y
+2011-04-02T14:30:00.000Z	truepurple_	soreau	Sorry, you will have to dumb that down alot if you want me to understand that
+2011-04-02T14:30:00.000Z	soreau	truepurple_	Lets just assume everything is ok :)
+2011-04-02T14:31:00.000Z	truepurple_	soreau	So no changes?
+2011-04-02T14:31:00.000Z	soreau	truepurple_	Should be fine, I was just making a point
+2011-04-02T14:32:00.000Z	truepurple_	soreau	Sorry I couldn't understand it for you, perhaps I will shove it into a tomeboy note and hope to understand it in the future
+2011-04-02T14:32:00.000Z	soreau	truepurple_	The underlying message is, never run anything as root unless you know why you need to
+2011-04-02T14:33:00.000Z	truepurple_	soreau	Even there, I don't know what it means to run things as root (except for real basic principle) or even if I have run X command as root or not
+2011-04-02T14:33:00.000Z	soreau	truepurple_	Running as root means you used gksu, gksudo or sudo, or if you are logged in as root at your terminal, the last character will be a #. For user, the last char for your prompt is $
+2011-04-02T14:34:00.000Z	truepurple_	soreau	Administrator and user are the same to me, being the only person who uses this PC
+2011-04-02T14:35:00.000Z	soreau	truepurple_	That is the mistake most people make. They are entirely not the same thing

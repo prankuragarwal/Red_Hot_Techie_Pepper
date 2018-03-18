@@ -1,0 +1,18 @@
+2011-01-12T03:04:00.000Z	NeedsHelpWithBoo		Hello Everyone, I'm running a Trac Turnkey Appliance which uses Ubuntu as my source control. I've recently migrated from a windows virtualbox host to a ubuntu server virtualbox host for this vm but I'm currently unable to boot normally. It takes a long time to Load then it'll prompt warning: ALERT! /dev/disk/by-uuid/5ab36f0b-58f6-4955-85e4-2b3c96a219 does not exist. The entire warning can be found here http://paste.ubuntu.com
+2011-01-12T03:04:00.000Z	NeedsHelpWithBoo		/552980/ please help...
+2011-01-12T03:04:00.000Z	NeedsHelpWithBoo		http://paste.ubuntu.com/552980/
+2011-01-12T03:06:00.000Z	dajhorn	NeedsHelpWithBoo	To move a vbox machine, you usually need to export and import the vdisk.   Did you do this?
+2011-01-12T03:08:00.000Z	NeedsHelpWithBoo	dajhorn	I did not export the vdisk but my vdisk is kept on my dropbox which backs it up. I was able to run the VM when I first built this ubuntu server. Then now that I have reinstalled ubuntu server and virtualbox it doesn't seem to like that vdisk anymore I mount the vdisk that is kept on my dropbox directory though.
+2011-01-12T03:09:00.000Z	NeedsHelpWithBoo	dajhorn	previously, i was able to boot the vm from either my windows server or my windows 7 machine. Then i moved it to my new ubuntu server it worked until my server overheated then i had to rebuild the server. Now i've rebuilt the server and it doesn't like the vdisk anymore T.T
+2011-01-12T03:10:00.000Z	dajhorn	NeedsHelpWithBoo	Look at the vbox configuration file and notice how it uses uuids.  Everything must match exactly.   Try an export/import.
+2011-01-12T03:11:00.000Z	dajhorn	NeedsHelpWithBoo	This is a primary design mistake in Virtual Box: You can't easily move or restore vbox machines because of the way it registers vdisks.   You'll probably need to do a web search and find a walkthrough on how to fix this.
+2011-01-12T03:13:00.000Z	NeedsHelpWithBoo	dajhorn	okay thanks, I'll try to do the import/export now, the bad this is because I thought it can be done this way and i had previously got it to work on a few machines i didn't do a export/import so now i'm more or less screwed with my svn source stuck in there.
+2011-01-12T03:13:00.000Z	dajhorn	NeedsHelpWithBoo	If you get to the point where the vbox instance attaches the vdisk, then try to boot the virtual machine at the grub prompt by changing the UUID= to /dev/sda1.
+2011-01-12T03:14:00.000Z	NeedsHelpWithBoo	dajhorn	ok i'll try that too thank you.
+2011-01-12T03:14:00.000Z	dajhorn	NeedsHelpWithBoo	Welcome.  BTW,  you're not screwed.  You've just got an incompletely restored vbox configuration.
+2011-01-12T03:16:00.000Z	NeedsHelpWithBoo	dajhorn	I just realised the (initramfs)
+2011-01-12T03:16:00.000Z	NeedsHelpWithBoo		a is shell prompt so i might be able to recover my code even if i can't restore the vm :D
+2011-01-12T03:17:00.000Z	dajhorn	NeedsHelpWithBoo	If you don't care about the VM, I'm pretty sure that Virtual Box has an option to mount the vdisk on loopback.  You could just copy your assets out of the vdisk using the host operating system.
+2011-01-12T03:19:00.000Z	NeedsHelpWithBoo	dajhorn	thanks for that, will try that as a last resort to save my assets. cheers!
+2011-01-12T03:29:00.000Z	NeedsHelpWithBoo	dajhorn	thanks for helping me out, I followed your advise to check the settings and found that my vm's hdd was mounted as a SATA drive instead of it's original's SCSI. All is well now, I can browse my repository. cheers!
+2011-01-12T03:29:00.000Z	dajhorn	NeedsHelpWithBoo	Welcome.

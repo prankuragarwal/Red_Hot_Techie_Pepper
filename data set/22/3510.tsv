@@ -1,0 +1,22 @@
+2008-08-18T18:01:00.000Z	_Garfield_		Hey guys my problem is that my disk is a 2GB CF card and when I compile the custom kernel the folder goes up to 1,3 GB but then my card is full. Is this foldersize normal? and is it possible to compile the kernel on an external drive and then move it back to the /usr/src
+2008-08-18T18:01:00.000Z	ikonia	_Garfield_	custom kernels are not supported.
+2008-08-18T18:02:00.000Z	_Garfield_	ikonia	well could you tell me then how I can get rid of the sata_mv crap driver that messes up my rocketraid array
+2008-08-18T18:03:00.000Z	_Garfield_	ikonia	that's why I'm jumping trough all these hoops anyway
+2008-08-18T18:03:00.000Z	ikonia	_Garfield_	rmmod it, or black list it
+2008-08-18T18:03:00.000Z	ikonia	_Garfield_	if you black list it, does the module still load ?
+2008-08-18T18:03:00.000Z	_Garfield_	ikonia	yes
+2008-08-18T18:04:00.000Z	ikonia	_Garfield_	what about rmmoding it
+2008-08-18T18:04:00.000Z	ikonia	_Garfield_	how did you black list it ?
+2008-08-18T18:05:00.000Z	_Garfield_	ikonia	rmmod works but that's not a solution, I blacklisted it by adding it to /etc/modprobe.d/blacklist
+2008-08-18T18:05:00.000Z	_Garfield_	ikonia	I added sata_mv to the file
+2008-08-18T18:06:00.000Z	_Garfield_	ikonia	but it still loads
+2008-08-18T18:06:00.000Z	ikonia	_Garfield_	ok, just looking at what that module depends on / depends on that module
+2008-08-18T18:07:00.000Z	_Garfield_	ikonia	meaning?
+2008-08-18T18:07:00.000Z	ikonia	_Garfield_	meaning exactly what I've just said
+2008-08-18T19:04:00.000Z	ikonia	_Garfield_	how did you solve it
+2008-08-18T19:05:00.000Z	_Garfield_	ikonia	so first you need to add it to the blacklist with the keyword blacklist in front of it, afterwards you need to run the update-initramfs -u command
+2008-08-18T19:06:00.000Z	ikonia	_Garfield_	ahh so it was loading from initramfs - good catch
+2008-08-18T19:06:00.000Z	_Garfield_	ikonia	what does this initramfs do?
+2008-08-18T19:06:00.000Z	ikonia	_Garfield_	it's basiclly "pre-loading" of modules
+2008-08-18T19:06:00.000Z	ikonia	_Garfield_	as a quick summary
+2008-08-18T19:07:00.000Z	_Garfield_	ikonia	ah some sort of cache, ok got it. I'll update the forum with my findings for other people with rocketraid cards

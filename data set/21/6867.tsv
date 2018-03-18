@@ -1,0 +1,21 @@
+2007-01-22T06:22:00.000Z	babis85		hello, i've just bought an external hard disk drive but i am encountering problems with permissions when i am mounting it. Only root can write. How can i tell the system to automatically mount it with rw permission for all users?
+2007-01-22T06:22:00.000Z	Pobega	babis85	What filesystem is the drive?
+2007-01-22T06:23:00.000Z	babis85	Pobega	ext3
+2007-01-22T06:23:00.000Z	Pobega	babis85	Then just change the ownership using chown
+2007-01-22T06:24:00.000Z	babis85	Pobega	i want to write automatically, not by telling it explicitly, isn't there a way?
+2007-01-22T06:25:00.000Z	Pobega	babis85	What do you mean you want to write automatically? If only root can write that means you have to change the file's protection, chmod and/or chown should do the trick.
+2007-01-22T06:26:00.000Z	babis85	Pobega	i mean that i would like to have the disk mounted automatically with rw permissions for me, isn't there a way to accomplish that?
+2007-01-22T06:27:00.000Z	Pobega	babis85	I'm not sure; It's all in the permissions, you'd have to change them to make it rw
+2007-01-22T06:37:00.000Z	babis85	Pobega	i found another way...I put a line in fstab for that device with options (users,rw,noauto). I mount with "mount /mnt./ext-disk", then changed the ownership of the mount point to me, i unmounted and now every time that i mount it with that command i am able to write
+2007-01-22T06:39:00.000Z	babis85	Pobega	no that is not true
+2007-01-22T06:39:00.000Z	Pobega	babis85	Oh? I thought that's what you said you did.
+2007-01-22T06:40:00.000Z	babis85	Pobega	simply now i can write to the hard disk, meaning that i can create NEW files and remove them or edit, delete old files with permissions that allow me to do so
+2007-01-22T06:40:00.000Z	Pobega	babis85	Yes, I know, but how did you get them to be rw without changing permissions?
+2007-01-22T06:43:00.000Z	babis85	Pobega	notice what am i saying, i have rw perms only to the mount point. That only means i can CREATE NEW files and delete them, but not that i can delete older files which haven't got w permissions
+2007-01-22T06:43:00.000Z	Pobega	babis85	Oh oh oh, so you're still having your problem then?
+2007-01-22T06:44:00.000Z	Pobega	babis85	Well, just as I thought, you'll *probably* have to change the permissions. If there is some other way to do it it's above me.
+2007-01-22T06:44:00.000Z	babis85	Pobega	No, i wanted to be able to create new files
+2007-01-22T06:45:00.000Z	Pobega	babis85	Oh, okay. Sorry about my stupidity, it's early in the morning here.
+2007-01-22T06:45:00.000Z	babis85	Pobega	but, yes, it did need to change only once the permissions of the mount point
+2007-01-22T06:46:00.000Z	babis85	Pobega	ideally i would like to plug my device and not have to give the command "mount /mnt/..", instead have the system automounting it with the appropriate perms
+2007-01-22T06:47:00.000Z	Pobega	babis85	Ah, the only program I can think of that automounts is gnome-volume-manager; And I'm not even sure if it works for external HDDs

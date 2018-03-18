@@ -1,0 +1,24 @@
+2012-05-15T17:49:00.000Z	gucko		hi guys, I'm trying to mount an ext4 hard to Ubuntu but I'm getting: you must specify the filesystem type. This hard had ubuntu installed and I plug it, Ubuntu only mount the GRUP section of the hard. What to do please?
+2012-05-15T17:49:00.000Z	gucko		*when I plug it
+2012-05-15T17:50:00.000Z	Dr_willis	gucko	 whats the exact mount command you are using?
+2012-05-15T17:50:00.000Z	gucko	Dr_willis	sudo mount /dev/sdb2 ~/Desktop/hard
+2012-05-15T17:50:00.000Z	Dr_willis	gucko	 give it the -t ext4 option perhaps.
+2012-05-15T17:51:00.000Z	gucko	Dr_willis	I did, I got another message
+2012-05-15T17:51:00.000Z	gucko	Dr_willis	mount: wrong fs type, bad option, bad superblock on /dev/cciss/c0d1,
+2012-05-15T17:51:00.000Z	Dr_willis	gucko	 you may want to pastebin the output of sudo fdisk -l also
+2012-05-15T17:52:00.000Z	gucko	Dr_willis	sorry forget about that /dev/ I copied it from the net
+2012-05-15T17:52:00.000Z	Dr_willis	gucko	  that directory does exist?
+2012-05-15T17:56:00.000Z	Dr_willis	gucko	 i wouldent use the ~ and that directory 'hard' does exist? with the proper case?
+2012-05-15T17:57:00.000Z	gucko	Dr_willis	yes it does
+2012-05-15T17:58:00.000Z	gucko	Dr_willis	http://pastebin.com/cXDYuLm9
+2012-05-15T17:59:00.000Z	Dr_willis	gucko	 sdb2 is wrong.. use sdb5
+2012-05-15T18:00:00.000Z	gucko	Dr_willis	"uknown filesystem type LVM2_member"
+2012-05-15T18:00:00.000Z	Dr_willis	gucko	 you got it as part of a LVM  according to fdisk.. ive never used lvm   your paste shows ------->   dev/sdb5          501760   976771071   488134656   8e  Linux LVM
+2012-05-15T18:01:00.000Z	gucko	Dr_willis	so?
+2012-05-15T18:01:00.000Z	Dr_willis	gucko	 so how did you partion this disk? whats on it?  it dosent seem to be ext4
+2012-05-15T18:02:00.000Z	Dr_willis	gucko	 just mount /dev/sdb5 /whatever/hard     might work.
+2012-05-15T18:02:00.000Z	gucko	Dr_willis	This was the main hard for a desktop. It have ubuntu installed. i just removed the hard from the desktop and put it in a USB box then connected it to this new machine
+2012-05-15T18:03:00.000Z	gucko	Dr_willis	The new machine only mounts the grup partition. about 256mb
+2012-05-15T18:03:00.000Z	Dr_willis	gucko	 I know very little aboiut LVM. but fdisk says its a LVM partition. not a normal ext3/4 filesystem.
+2012-05-15T18:03:00.000Z	Dr_willis	gucko	 that makes sence if it has no idea what to do with the LVM.
+2012-05-15T18:04:00.000Z	gucko	Dr_willis	oh I forgot to say that it was ubuntu server installed on this hard

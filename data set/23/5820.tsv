@@ -1,0 +1,23 @@
+2006-08-27T15:32:00.000Z	Q-FUNK		hi!  anybody that could help me debug why network-manager fails to connect to a non-encrypted network?
+2006-08-27T15:33:00.000Z	Varean	Q-FUNK	Make sure that the network you want to connect to is supported, as in the correct frequency
+2006-08-27T15:33:00.000Z	Q-FUNK	Varean	come again?
+2006-08-27T15:34:00.000Z	Varean	Q-FUNK	You are using wlan, right?
+2006-08-27T15:34:00.000Z	Q-FUNK	Varean	by default, yes, since that's what n-m loads.
+2006-08-27T15:34:00.000Z	Q-FUNK	Varean	however, it really is atheros
+2006-08-27T15:34:00.000Z	Varean	Q-FUNK	It shows that you are connected to the network, or no
+2006-08-27T15:35:00.000Z	Q-FUNK	Varean	connection works fine if I manually configure everything via terminal, including selecting an AP using iwconfig
+2006-08-27T15:36:00.000Z	Q-FUNK	Varean	it's only n-m that fails. or at least the applet does
+2006-08-27T15:36:00.000Z	Varean	Q-FUNK	I assume you are using the default Ubuntu NM, right? Not NDISwrapper?
+2006-08-27T15:36:00.000Z	Q-FUNK	Varean	not ndiswrapper.  wlan (which in turns gets the atheros driver from madwifi)
+2006-08-27T15:37:00.000Z	Varean	Q-FUNK	Hmmm...I've never seen that problem your having.  You played around with the configs, right?  Also, make sure to disable any other network connections
+2006-08-27T15:39:00.000Z	Q-FUNK	Varean	if I try to connect to an encrypted ap, I _immediaely_ get the dialogue asking me for the WAP or WEP info.
+2006-08-27T15:39:00.000Z	Varean	Q-FUNK	But with Un encrypted, it just hangs?
+2006-08-27T15:40:00.000Z	Q-FUNK	Varean	but if I try to connect to an non-encrypted AP, it hangs forever, then reports failure
+2006-08-27T15:40:00.000Z	Varean	Q-FUNK	Can you connect to the AP on another machine?  Maybe its not allowing you to connect because of securty settings
+2006-08-27T15:41:00.000Z	Q-FUNK	Varean	it gets worse:  the n-m daemon from dapper even failed getting a connection on the fixed interface.  the one from dapper gets AND keeps an IP it gets from a DHCP server.
+2006-08-27T15:42:00.000Z	Q-FUNK	Varean	erm.. te one from edgy at least works with a fixed NIC
+2006-08-27T15:42:00.000Z	Varean	Q-FUNK	Ok, then its the network manager.  Try re-installing it, your problem is kinda new for me.  Sorry. :(
+2006-08-27T15:43:00.000Z	Q-FUNK	Varean	I dubt it's prventing me from connecting per-se, since as I said, it works from commandline
+2006-08-27T15:43:00.000Z	Varean	Q-FUNK	 Perhaps you can create a script that auto-connects for your and just add it to start at boot
+2006-08-27T15:49:00.000Z	Q-FUNK	Varean	not really.  I mostly use wireless to access public netwokrs as a roamer
+2006-08-27T15:50:00.000Z	Varean	Q-FUNK	I see, I guess I cant really help you there.  All I can really suggest then is to try and reinstall the NM

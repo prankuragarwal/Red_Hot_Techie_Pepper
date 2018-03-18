@@ -1,0 +1,23 @@
+2010-09-12T03:33:00.000Z	idletask		Actually...
+2010-09-12T03:33:00.000Z	idletask		I think there's a wat
+2010-09-12T03:34:00.000Z	idletask		way
+2010-09-12T03:36:00.000Z	idletask		Ah, OK
+2010-09-12T03:36:00.000Z	idletask		No, that won't work
+2010-09-12T03:36:00.000Z	glebihan	idletask	just tested it works
+2010-09-12T15:10:00.000Z	idletask	glebihan	what? /var/lib/libvirt?
+2010-09-12T15:09:00.000Z	glebihan	idletask	the folder's name looks like it's ok
+2010-09-12T15:10:00.000Z	glebihan	idletask	yes "libvirt/images" looks like it has been created to put images for libvirt in it...
+2010-09-12T15:11:00.000Z	glebihan	idletask	but I've never used virt-manager, so I wouldn't be able to tell you more
+2010-09-12T15:11:00.000Z	idletask	glebihan	yes, but then here's the thing: configuration for the VM is stored in $HOME/.libvirt, but images are not stored there
+2010-09-12T15:12:00.000Z	glebihan	idletask	maybe virt-manager considers images are to be shared between users, whereas configuration is user-dependant
+2010-09-12T15:17:00.000Z	glebihan	idletask	found that this is SELinux rule, see http://www.redhat.com/docs/en-US/Red_Hat_Enterprise_Linux/5.5/html/Virtualization_Guide/sect-Virtualization-Security_for_virtualization-SELinux_and_virtualization.html
+2010-09-12T15:18:00.000Z	idletask	glebihan	no, this was really a basic permission problem, but reading anyway
+2010-09-12T15:20:00.000Z	glebihan	idletask	no but virt-manager is not an ubuntu application, and it follows SELinux rules
+2010-09-12T15:20:00.000Z	idletask	glebihan	only if you tell it to do so
+2010-09-12T15:20:00.000Z	idletask	glebihan	I use virt-manager/libvirt without SELinux on Gentoo (on two machines)
+2010-09-12T15:23:00.000Z	glebihan	idletask	ok, then maybe it's a bug in ubuntu, you may be interested in reading this : https://bugs.launchpad.net/ubuntu/+source/virt-manager/+bug/405388
+2010-09-12T15:23:00.000Z	glebihan	idletask	apparently, a bug fix has been commited to upstream, so maybe it will be working in maverick
+2010-09-12T15:24:00.000Z	idletask	glebihan	hmm, yeah,  indeed
+2010-09-12T15:25:00.000Z	idletask	glebihan	it'd be nice for it to be backported to 10.04 - which it will since it's an LTS
+2010-09-12T15:26:00.000Z	glebihan	idletask	you may ask for it in that bug report, as it's not closed
+2010-09-12T15:27:00.000Z	idletask	glebihan	I'll comment indeed

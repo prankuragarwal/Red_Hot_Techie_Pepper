@@ -1,0 +1,21 @@
+2006-06-04T16:31:00.000Z	_per_		i installed sendmail and played with it for a while. now, every time ubuntu starts, when doing the "Starting basic networking" step, it says something like it can access /etc/mail/sendmail.cf". i unchecked sendmail to start at boot in the "System>Administration>Services" dialog and i even did "sudo apt-get remove sendmail", but ubuntu still tries to do something to /etc/mail/sendmail.cf at boot! what do i do? please help me!
+2006-06-04T16:32:00.000Z	_per_		nobody knows how my problem can be solved??
+2006-06-04T16:34:00.000Z	Jowi	_per_	I have not used sendmail, i'm using postfix instead (which is excellent btw) but try "sudo update-rc.d -f sendmail remove"
+2006-06-04T16:34:00.000Z	_per_	Jowi	thanks, i'll try
+2006-06-04T16:35:00.000Z	Jowi	_per_	you may need to "cd /etc/init.d" first but not sure
+2006-06-04T16:35:00.000Z	_per_	Jowi	it deleted a list of "startup links"
+2006-06-04T16:36:00.000Z	Jowi	_per_	yes, that is what that command does so that it does not start (or try to start) during boot
+2006-06-04T16:41:00.000Z	_per_	Jowi	it didnt work! still the same at bootup!
+2006-06-04T16:43:00.000Z	Jowi	_per_	ok. i would install sendmail again, then uninstall it with "sudo apt-get remove --purge sendmail"
+2006-06-04T16:44:00.000Z	Jowi	_per_	--purge removes the config files as well
+2006-06-04T16:44:00.000Z	_per_	Jowi	ok, thanks
+2006-06-04T16:49:00.000Z	_per_	Jowi	it still didnt work!
+2006-06-04T16:49:00.000Z	Jowi	_per_	erhm, what? talk about being obnoxious (sendmail that is)
+2006-06-04T16:50:00.000Z	_per_	Jowi	i guess i'll go reinstall ubuntu then...
+2006-06-04T16:51:00.000Z	Jowi	_per_	there must be an easier way than that.
+2006-06-04T16:51:00.000Z	_per_	Jowi	like what? i dont know any :(
+2006-06-04T16:53:00.000Z	Jowi	_per_	you said that it tries to read a config in the /etc/mail/ directory, right? the network script probably detects the file and then applies it. can't you just remove that file manually if it still exist?
+2006-06-04T16:54:00.000Z	_per_	Jowi	i did delete it, but then it tries to recreate the file as /etc/mail/sendmail.cf.new and fails
+2006-06-04T16:56:00.000Z	Jowi	_per_	i wouldn't know which script is responsible for trying to recreate that file so i'm sortof lost there i'm afraid
+2006-06-04T16:57:00.000Z	_per_	Jowi	then i think i will just reinstall ubuntu tomorrow... have you had any issues with postfix, and can it do the same as sendmail(send mail)?
+2006-06-04T16:58:00.000Z	Jowi	_per_	postfix is fantastic. see !postfix for good tutorials on how to set it up

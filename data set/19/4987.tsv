@@ -1,0 +1,19 @@
+2008-09-23T06:27:00.000Z	subdolus		Yo! Say I want to copy an index.php to every sub-dir in my web dir with a simple command, how could I acheive this?
+2008-09-23T06:29:00.000Z	Agent_bob	subdolus	find /your/web/dir -type d -exec cp filename.php '{}' \;
+2008-09-23T06:29:00.000Z	subdolus	Agent_bob	yo da man!
+2008-10-17T10:08:00.000Z	Agent_bob	subdolus	sudo mount /dev/sdg2 /media/something -o dmask=000,fmask=111
+2008-10-17T10:13:00.000Z	subdolus	Agent_bob	Doesn
+2008-10-17T10:13:00.000Z	subdolus	Agent_bob	Doesn't work:
+2008-10-17T10:13:00.000Z	Agent_bob	subdolus	why? is it lazy?
+2008-10-17T10:14:00.000Z	Agent_bob	subdolus	so select the correct device node.  i was playing off of your information.
+2008-10-17T10:14:00.000Z	subdolus	Agent_bob	maybe it should be /dev/sg2 instead of /dev/sdg2 ?
+2008-10-17T10:14:00.000Z	Agent_bob	subdolus	if you can mount sg2 you are miles ahead of me.
+2008-10-17T10:15:00.000Z	Agent_bob	subdolus	you can maybe find the device node with command    sudo fdisk -l
+2008-10-17T10:15:00.000Z	Agent_bob	subdolus	i doubt it will break anything.  but i also doubt it will mount.
+2008-10-17T10:16:00.000Z	Agent_bob	subdolus	what or should i say where is this file system you want to mount ?
+2008-10-17T10:16:00.000Z	subdolus	Agent_bob	it is an SD card... MicroSD
+2008-10-17T10:18:00.000Z	Agent_bob	subdolus	ummm i'm not that familear with sd cards.  should be seen as an scsi device though.    try this   for q in g f e d c b a ;do file -s /dev/sd$q && return 0 ;done 2>/dev/null
+2008-10-17T10:21:00.000Z	Agent_bob	subdolus	then you may need a module inserted,  again you are playing just over the fence from me.   i'm not versed on sd cards.
+2008-10-17T10:25:00.000Z	Agent_bob	subdolus	you reading all this.    see tophyr and bzaks
+2008-10-17T10:27:00.000Z	Agent_bob	subdolus	ok you proved my assumption.  sd cards are seen as scsi devices.
+2008-10-17T10:28:00.000Z	Agent_bob	subdolus	as to why not that one. i have no idea.

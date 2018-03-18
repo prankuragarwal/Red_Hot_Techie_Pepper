@@ -1,0 +1,18 @@
+2008-05-07T16:32:00.000Z	freddy_engels	QuickGold	What kind of filesystem are you trying to mount?
+2008-05-07T16:32:00.000Z	QuickGold	freddy_engels	Windows (smb)
+2008-05-07T16:33:00.000Z	freddy_engels	QuickGold	can you try mounting it as a cifs filesystem instead?
+2008-05-07T16:33:00.000Z	QuickGold	freddy_engels	sure, whats the command to do it? my networking is a little rusty
+2008-05-07T16:34:00.000Z	freddy_engels	QuickGold	I'm no expert, but I'm pretty sure the way you do it is replace "smbfs" with "cifs"
+2008-05-07T16:34:00.000Z	QuickGold	freddy_engels	one sec, let me give it a shot
+2008-05-07T16:35:00.000Z	QuickGold	freddy_engels	I tried this command: sudo mount -t cifs //nas1/Replication/linux/lamp1 /etc/lamp1
+2008-05-07T16:35:00.000Z	freddy_engels		and?
+2008-05-07T16:35:00.000Z	QuickGold		and I get this: mount error: could not find target server. TCP name nas1/Replication/linux/lamp1 not found
+2008-05-07T16:35:00.000Z	QuickGold		No ip address specified and hostname not found
+2008-05-07T16:36:00.000Z	freddy_engels		hm
+2008-05-07T16:36:00.000Z	freddy_engels		what is the entry in /etc/fstab?
+2008-05-07T16:37:00.000Z	QuickGold	freddy_engels	http://ubuntu.pastebin.com/m44c3bce9
+2008-05-07T16:38:00.000Z	freddy_engels	QuickGold	1 sec
+2008-05-07T16:39:00.000Z	QuickGold		kk
+2008-05-07T16:54:00.000Z	freddy_engels	QuickGold	Sorry for the wait. Can you try editing your /etc/fstab file so that /dev/hda1 is of the type "smbfs" instead of "ntfs"?
+2008-05-07T16:54:00.000Z	freddy_engels		and then re-try the command you were using earlier
+2008-05-07T16:55:00.000Z	QuickGold	freddy_engels	I solved it. I used an ip address instead of the name and it worked

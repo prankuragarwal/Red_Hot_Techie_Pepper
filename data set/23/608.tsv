@@ -1,0 +1,23 @@
+2011-05-12T13:02:00.000Z	cache_surplus		i dont want cups and many other init.d services, im trying to tighten up security
+2011-05-12T13:02:00.000Z	cache_surplus		this will be a stand alone webcam server, thats it
+2011-05-12T13:03:00.000Z	cache_surplus		but im using desktop... not really gonna dive into server stuff... id rather use freebsd for servers
+2011-05-12T13:04:00.000Z	cache_surplus		that will remove the scripts... i dont want them removed, just disabled or shutoff, i will want them later if i need them, and the only way would be to reinstall it, which of course, will reinstall ubuntu-desktop, the deps are horrendiously built in
+2011-05-12T13:05:00.000Z	cache_surplus		disable /= remove
+2011-05-12T13:07:00.000Z	cache_surplus		i just dont want another way to start/stop services lol
+2011-05-12T13:08:00.000Z	cache_surplus		its like, make up your minds ubuntu devs,,, lol, make it all one way
+2011-05-12T13:08:00.000Z	cache_surplus		i guess some come from diff camps, shrugs
+2011-05-12T13:09:00.000Z	cache_surplus		ok, enough about that, next question - i just installed openssh-server and i can log in once i have logged in already to that remote box locally at the term, however, i wish to log in remotely, as this will be a headless box, and i dont want a user onsite to have to login locally b4 i can ssh... whats the fix?
+2011-05-12T13:10:00.000Z	cache_surplus		thanks llutz ill check into that
+2011-05-12T13:11:00.000Z	Drake|	cache_surplus	 I don't have any troubble loggin in to my server at home trough ssh
+2011-05-12T13:01:00.000Z	Drake|	cache_surplus	 sudo stop "service name" only  stops it.. Just like in windows.  seems like you need to du a update-rc.d -f to disable it
+2011-05-12T13:01:00.000Z	cache_surplus	Drake|	it appears if i do a disable, its not working, and i get /etc/init.d is not part of that program
+2011-05-12T13:03:00.000Z	Drake|	cache_surplus	"update-rc.d -f cups remove"
+2011-05-12T13:06:00.000Z	Drake|	cache_surplus	 ref: http://www.unixtutorial.org/2009/01/disable-service-startup-in-ubuntu/ --> The procedure for disabling a service in Ubuntu is very simple: all you have to do is remove the symlinks from all the runlevel-specific  directories, /etc/rc*.d, so that no links are pointing to the original  /etc/init.d script for your service. That original script will be kept,  so you can re-enable the startup/shutdown of the service whenever you 
+2011-05-12T13:08:00.000Z	cache_surplus	Drake|	ic, however, what is the simplier syntax for disable under update-rc.d, its not working although clear. it says not an /etc/init.d script in function, something like that,,, meaning it doesnt work for all scripts lol
+2011-05-12T13:09:00.000Z	Drake|	cache_surplus	tph I haven't tested myself. but according to this guy he do the update-rc.d -f proftpd remove to disable his profftpd service
+2011-05-12T13:10:00.000Z	cache_surplus	Drake|	your friend must not have those files anymore, unless it just removed the symlinks, as when i tried it, it actually removed those files,, and the symlinks lol
+2011-05-12T13:11:00.000Z	cache_surplus	Drake|	i just explained what happend...
+2011-05-12T13:12:00.000Z	Drake|	cache_surplus	Removing any system startup links for /etc/init.d/proftpd ... was the command output he got when he "removed" so it seems to just remove the links.. but as I said.. haven't tried it myself =)
+2011-05-12T13:12:00.000Z	cache_surplus	Drake|	i did, and it removed everything, i had to reinstall the prog to get it back
+2011-05-12T13:13:00.000Z	Drake|	cache_surplus	sudo apt-get instal ... eeh the program i disabled last mont
+2011-05-12T13:19:00.000Z	cache_surplus	Drake|	this is just local at the moment, i will install the box later, yah i will port forward on the gw when im on site

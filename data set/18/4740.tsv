@@ -1,0 +1,18 @@
+2009-11-08T20:09:00.000Z	j_j		set default="10" doesn't work
+2009-11-08T20:11:00.000Z	ibuclaw	j_j	what grub2 issue do you have?
+2009-11-08T20:11:00.000Z	j_j	ibuclaw	i cannot make it wait for me to select which one i boot
+2009-11-08T20:12:00.000Z	ibuclaw	j_j	in grub2, the new key to press is Shift
+2009-11-08T20:12:00.000Z	j_j	ibuclaw	yes. shift works. timeout means nothing any more ?
+2009-11-08T20:13:00.000Z	ibuclaw	j_j	iirc, the timeout is either -1 (skip) or 10.
+2009-11-08T20:13:00.000Z	j_j	ibuclaw	i set the timeout to be 10
+2009-11-08T20:13:00.000Z	j_j	ibuclaw	but it doesn't wait
+2009-11-08T20:14:00.000Z	ibuclaw	j_j	 /etc/default/grub
+2009-11-08T20:14:00.000Z	ibuclaw	j_j	see the line: GRUB_HIDDEN_TIMEOUT_QUIET=true
+2009-11-08T20:15:00.000Z	j_j	ibuclaw	ok
+2009-11-08T20:15:00.000Z	ibuclaw	j_j	change that to FALSE, then run: sudo update-grub
+2009-11-08T20:16:00.000Z	ibuclaw	j_j	with grub2, you must never update /boot/xxx, as settings are lost everytime update-grub is triggered in an upgrade.
+2009-11-08T20:16:00.000Z	j_j	ibuclaw	oh ..
+2009-11-08T20:16:00.000Z	ibuclaw	j_j	with grub2, the file locations are /etc/default/grub, and /etc/grub.d/xxx
+2009-11-08T20:16:00.000Z	j_j	ibuclaw	ok. thanks
+2009-11-08T20:16:00.000Z	j_j	ibuclaw	thanks
+2009-11-08T20:18:00.000Z	ibuclaw	j_j	no probs... as the teacher, I find it difficult to keep up with the speed of development also ;~)

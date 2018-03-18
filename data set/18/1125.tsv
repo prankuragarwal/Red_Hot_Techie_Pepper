@@ -1,0 +1,18 @@
+2011-05-25T11:43:00.000Z	robinsch		anyone here knows perl regex?
+2011-05-25T11:44:00.000Z	robinsch		I wanna remove "- Grateful Dead - Fillmore West 1969 - The Complete Recordings - "  from file: "904 - Grateful Dead - Fillmore West 1969 - The Complete Recordings - Disc 09 - Morning Dew.flac"
+2011-05-25T11:44:00.000Z	robinsch		anyone?
+2011-05-25T11:45:00.000Z	robinsch		i tried but this doesn't work: for f in *.flac; do mv "$f" "${f#'- Grateful Dead - Fillmore West 1969 - The Complete Recordings - Disc'}"; done
+2011-05-25T11:45:00.000Z	robinsch		any help?
+2011-05-25T11:45:00.000Z	robinsch		for regex
+2011-05-25T11:45:00.000Z	overclucker	robinsch	install rename
+2011-05-25T11:46:00.000Z	overclucker	robinsch	it uses 's///' like substitutions, and can candle multiple files
+2011-05-25T11:47:00.000Z	robinsch	overclucker	what are you talking about?
+2011-05-25T11:48:00.000Z	overclucker	robinsch	there is a tool called rename that can do what you are asking.
+2011-05-25T11:50:00.000Z	overclucker	robinsch	rename 's/-\ Grateful\ Dead\ -\ Fillmore\ West\ 1969\ -\ The\ Complete\ Recordings\ -\ //' *.flac
+2011-05-25T11:50:00.000Z	robinsch	overclucker	should i do -n just to make sure?
+2011-05-25T11:51:00.000Z	overclucker	robinsch	always a good idea
+2011-05-25T11:52:00.000Z	robinsch	overclucker	can I add a 0 at the beginning of files starting with 3 numbers?
+2011-05-25T11:55:00.000Z	robinsch	overclucker	also can I remove the disk #?
+2011-05-25T11:59:00.000Z	overclucker	robinsch	does disk # have a pattern? maybe 's/disk\ [0-9]//'
+2011-05-25T12:03:00.000Z	robinsch	overclucker	that only clears out upto disk#8
+2011-05-25T12:31:00.000Z	overclucker	robinsch	robinsch i'm not sure if rename has the ability to use a match in a substitution. you might have to use a for loop and sed to add a . after the ## field

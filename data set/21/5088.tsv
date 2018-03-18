@@ -1,0 +1,21 @@
+2007-12-30T10:41:00.000Z	flexgrip		nope. is that because it is trying to ping through wlan0 and the xbox is connected to eth0?
+2007-12-30T10:43:00.000Z	snugg	flexgrip	both sides have to have a route toward each other
+2007-12-30T10:45:00.000Z	snugg	flexgrip	thats correct, how you set that in your xbox, i dont know
+2007-12-30T10:46:00.000Z	flexgrip	snugg	that is the way its set. I have the xbox's gateway set to that of eth0.
+2007-12-30T10:47:00.000Z	snugg	flexgrip	its okay for the xbox to have the eth0 of ubuntu to be its gateway or 0.0.0.0 since there are only two of them on that subnet
+2007-12-30T10:55:00.000Z	snugg	flexgrip	is ubuntu providing the dns  services?
+2007-12-30T10:55:00.000Z	flexgrip	snugg	no my router is
+2007-12-30T10:56:00.000Z	snugg	flexgrip	but your ubuntu is in-between your router and xbox right?
+2007-12-30T11:04:00.000Z	snugg	flexgrip	it will not work because they are in different subnets, the dns server in your router is not getting the correct request from xbox
+2007-12-30T11:07:00.000Z	snugg	flexgrip	what subnet is xbox and what subnet is wlan0 at?
+2007-12-30T11:09:00.000Z	snugg	flexgrip	that will not work unless you have setup the ubuntu to do something special, i forget what it is called,
+2007-12-30T11:09:00.000Z	snugg	flexgrip	i suggest putting the xbox into like 192.168.200.x and leave the wlan0 at that 192.168.1.x
+2007-12-30T11:09:00.000Z	flexgrip	snugg	basically im trying to share my internet connection on wlan0 to my xbox on eth0
+2007-12-30T11:10:00.000Z	flexgrip	snugg	should i set eth0 to that subnet as well?
+2007-12-30T11:10:00.000Z	snugg	flexgrip	i know you want to share, just do it differently thats all
+2007-12-30T11:10:00.000Z	snugg	flexgrip	off course being eth0 is in same subnet as the xbox
+2007-12-30T11:16:00.000Z	flexgrip	snugg	ok i set eth0 and the xbox on a diff subnet. then told the xbox that the dns server was eth0 wlan0 my router and my real dns server ip and none of them worked.
+2007-12-30T11:17:00.000Z	snugg	flexgrip	you still need to run port forwarding in your ubuntu and perhaps even run dhcpd server plus NAT
+2007-12-30T11:17:00.000Z	flexgrip	snugg	anything in synaptic that can handle all of that?
+2007-12-30T11:18:00.000Z	snugg	flexgrip	the dhcp server is perhaps, the other two is handled by iptables thats already in ubuntu
+2007-12-30T11:21:00.000Z	snugg	flexgrip	as root ennable port forwarding by   echo 1> /proc/sys/net/ipv4/ip_forward

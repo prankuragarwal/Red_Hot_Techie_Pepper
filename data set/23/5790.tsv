@@ -1,0 +1,23 @@
+2007-10-04T09:49:00.000Z	schlumpf		hi im trying to umount my cdrom drive but it keeps telling me that it is busy but i dont have the prog loaded which is on the cd
+2007-10-04T09:51:00.000Z	schlumpf		hi im trying to umount my cdrom drive but it keeps telling me that it is busy but i dont have the prog loaded which is on the cd
+2007-10-04T09:52:00.000Z	schlumpf		no
+2007-10-04T09:53:00.000Z	schlumpf		no
+2007-10-04T09:53:00.000Z	schlumpf		hi im trying to umount my cdrom drive but it keeps telling me that it is busy but i dont have the prog loaded which is on the cd
+2007-10-04T09:53:00.000Z	soundray	schlumpf	you've got a process that accesses the CD still. Usually, that's a shell with a path on the CD as its working directory.
+2007-10-04T09:55:00.000Z	schlumpf	soundray	i dont think that can be since i deleated the directory associated to the cd
+2007-10-04T09:56:00.000Z	soundray	schlumpf	you can't delete a directory on CD
+2007-10-04T09:57:00.000Z	schlumpf	soundray	no i meant i deleated the program from the cd which was installed on my harddrive
+2007-10-04T09:58:00.000Z	soundray	schlumpf	that doesn't matter. If you can't unmount the CD, it's because a process is accessing the CD still. It could be a shell, or perhaps a nautilus (file browser) window
+2007-10-04T10:00:00.000Z	schlumpf	soundray	how can i find out which process that is without rebooting?
+2007-10-04T10:00:00.000Z	soundray	schlumpf	do you know the device name of your CD drive?
+2007-10-04T10:01:00.000Z	soundray	schlumpf	no, it starts with /dev/
+2007-10-04T10:01:00.000Z	soundray	schlumpf	type 'mount' to find out what it is
+2007-10-04T10:02:00.000Z	schlumpf	soundray	ah its called /dev/hdc
+2007-10-04T10:03:00.000Z	soundray	schlumpf	okay. 'lsof | grep /dev/hdc' to find out what's blocking it.
+2007-10-04T10:04:00.000Z	schlumpf	soundray	well two things turnd out but what am i looking for exactly?
+2007-10-04T10:05:00.000Z	soundray	schlumpf	is one of them bash?
+2007-10-04T10:05:00.000Z	schlumpf	soundray	yes should i kill the pid?
+2007-10-04T10:05:00.000Z	soundray	schlumpf	you could, or just find the shell and run 'cd' in it.
+2007-10-04T10:06:00.000Z	schlumpf	soundray	dunno how to find a shell sry :)
+2007-10-04T10:07:00.000Z	soundray	schlumpf	it's probably running in a terminal window.
+2007-10-04T10:10:00.000Z	schlumpf	soundray	only have the one open with which im trying to should it down.... but as it seems that was the one so thanks allot

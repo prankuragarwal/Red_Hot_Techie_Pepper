@@ -1,0 +1,19 @@
+2008-05-29T10:44:00.000Z	NukeSkyjumper		is there any reason to have /vmlinuz be a link to your kernel image? update-grub keeps adding duplicates to the grub menu
+2008-05-29T10:44:00.000Z	Flannel	NukeSkyjumper	Are you sure they're duplicates?
+2008-05-29T10:45:00.000Z	NukeSkyjumper	Flannel	yep. it's adding /vmlinuz and the real image in /boot
+2008-05-29T10:46:00.000Z	Flannel	NukeSkyjumper	Pastebin your menu.lst please
+2008-05-29T10:46:00.000Z	NukeSkyjumper	Flannel	http://nuklear.org/menu.lst
+2008-05-29T10:46:00.000Z	Flannel	NukeSkyjumper	oh, you have a plain /boot/vmlinuz? without the version stuffs?
+2008-05-29T10:47:00.000Z	NukeSkyjumper	Flannel	that's what hardy put there, apparently
+2008-05-29T10:47:00.000Z	Flannel	NukeSkyjumper	Interesting.  Let me check my Hardy box.
+2008-05-29T10:49:00.000Z	Flannel	NukeSkyjumper	I don't have that.  Are you sure you didn't make it by accident?  Lets see if it belongs to a package.  `dpkg -S /boot/vmlinuz` get anything?
+2008-05-29T10:49:00.000Z	NukeSkyjumper	Flannel	no packages
+2008-05-29T10:50:00.000Z	Flannel	NukeSkyjumper	Well, it shouldn't hurt to remove it, since it doesn't exist here, and I don't really see a good reason for it to exist anyway
+2008-05-29T10:51:00.000Z	Flannel	NukeSkyjumper	You said it's in /?  or in /boot?
+2008-05-29T10:51:00.000Z	NukeSkyjumper	Flannel	there was one in /, but apparently the duplicate is the link from /boot
+2008-05-29T10:52:00.000Z	Flannel	NukeSkyjumper	Odd.  That shouldn't be in / for any reason.  I say remove them both.
+2008-05-29T10:52:00.000Z	NukeSkyjumper	Flannel	won't the /boot link be recreated by new kernel image packages?
+2008-05-29T10:53:00.000Z	Flannel	NukeSkyjumper	Oh, right.  they are.  And I have those too.  (in /)  but there shouldn't be one in /boot, and no, it won't get recreated, or shouldn't.  If it does, that package ought to lay claim to it within dpkg
+2008-05-29T10:54:00.000Z	Flannel	NukeSkyjumper	What it might be is the one in /boot is misplaced from /
+2008-05-29T10:54:00.000Z	NukeSkyjumper	Flannel	hmm. do you have similar links to config, initrd, and System.map?
+2008-05-29T10:55:00.000Z	Flannel	NukeSkyjumper	If you're worried about it, rename it, and see if something breaks next upgrade.  No, just in /, vmlinuz and initrd.img

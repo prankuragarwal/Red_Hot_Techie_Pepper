@@ -1,0 +1,18 @@
+2009-03-15T03:25:00.000Z	critt		xorg Didnt change my resolution.
+2009-03-15T03:27:00.000Z	IntuitiveNipple	critt	That suggests the values in the xorg.conf weren't good so it defaulted to 'failsafe'
+2009-03-15T03:27:00.000Z	IntuitiveNipple	critt	Can you pastebin the contents of /var/log/xorg.0.log.old if there is one?
+2009-03-15T03:29:00.000Z	IntuitiveNipple	critt	hmmm, then it'll be /var/log/xorg.0.log
+2009-03-15T03:33:00.000Z	IntuitiveNipple	critt	oops... typo.... Xorg.0.log.old and Xorg.0.log :)
+2009-03-15T03:47:00.000Z	IntuitiveNipple	critt	Sorry, I must have missed the pastebin link. Give it me again (I'm got a couple of notebooks turned inside out here so distracted with making sure all the screws go back :)
+2009-03-15T03:53:00.000Z	IntuitiveNipple	critt	Are you on Hardy or Intrepid?
+2009-03-15T03:56:00.000Z	IntuitiveNipple	critt	OK... well the good news is, the monitor *is* providing EDID, but the nvidia driver thinks the monitor can't support higher than 800x600 due to a 400MHz clock (from the log file). Have you tried to use "gksudo nvidia-settings" to alter the resolution/check if it can support higher ?
+2009-03-15T03:57:00.000Z	IntuitiveNipple	critt	I think that is your next step. From searching the 'net it seems the monitor can support 1280x1024
+2009-03-15T03:59:00.000Z	IntuitiveNipple	critt	maybe nvidia-settings needs installing?
+2009-03-15T03:59:00.000Z	IntuitiveNipple	critt	sudo apt-get install nvidia-settings
+2009-03-15T03:59:00.000Z	IntuitiveNipple	critt	Also, see this forum post to see someone with the same monitor (shows the Xorg.0.log) with details of the monitor's reported resolutions: http://ubuntuforums.org/showthread.php?t=574401
+2009-03-15T04:01:00.000Z	IntuitiveNipple	critt	The best modeline from that is "Modeline "1024x768" 94.50 1024 1096 1200 1376 768 771 775 809 -hsync +vsync" which you could add to the Monitor section of xorg.conf (and remove the Horiz... and Vert... settings)
+2009-03-15T04:01:00.000Z	IntuitiveNipple	critt	oops, typo again, that isn't the best modeline! This is "Modeline "1280x1024" 109.00 1280 1368 1496 1712 1024 1027 1034 1063 -hsync +vsync"
+2009-03-15T04:02:00.000Z	IntuitiveNipple	critt	You have it *working* with that resolution?
+2009-03-15T04:02:00.000Z	IntuitiveNipple	critt	Did you manage that using nvidia-settings?
+2009-03-15T04:02:00.000Z	IntuitiveNipple	critt	If nvidia-settings did that use it to increase to 1280x1024!
+2009-03-15T04:07:00.000Z	IntuitiveNipple	critt	Nice one :)

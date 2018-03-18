@@ -1,0 +1,18 @@
+2008-09-13T06:01:00.000Z	kira-fanboy		when in grub, "find /boot/grub/stage1" returns "Error 15: File not found" anyonewho got a remedy for this?
+2008-09-13T06:03:00.000Z	bobertdos	kira-fanboy	Does the /boot/grub directory even exist? If not, your Ubuntu installation failed.
+2008-09-13T06:03:00.000Z	kira-fanboy	bobertdos	well I get a grub 1.5 loading error 17 when booting
+2008-09-13T06:04:00.000Z	kira-fanboy		and this is the 6th or so install I try
+2008-09-13T06:05:00.000Z	bobertdos	kira-fanboy	Can you mount your partitions in a Live session? Pastebin the output of: sudo fdisk -l (from the terminal)
+2008-09-13T06:07:00.000Z	kira-fanboy		!pastebin
+2008-09-13T06:10:00.000Z	kira-fanboy	bobertdos	http://paste.ubuntu.com/46466
+2008-09-13T06:17:00.000Z	bobertdos	kira-fanboy	First, check to make sure, (via a live session), that your Ubuntu partitions DO have /boot/grub directories. You will want the hard drive with Ubuntu on it to have the highest boot priority in the BIOS. If you can then follow the wiki to get grub properly installed onto the partition, you'll be able to add an entry for Windows to menu.lst and hopefully go from there.
+2008-09-13T06:18:00.000Z	kira-fanboy	bobertdos	I dont want an entry for windows
+2008-09-13T06:18:00.000Z	kira-fanboy		I just want ubuntu to boot
+2008-09-13T06:20:00.000Z	bobertdos	kira-fanboy	 In that case, just make sure the Ubuntu drive has priority to boot in the BIOS and then check to make sure /boot/grub exists and try to reinstall Grub again.
+2008-09-13T06:20:00.000Z	kira-fanboy	bobertdos	the small partition (
+2008-09-13T06:20:00.000Z	kira-fanboy	bobertdos	.. the one around 300MB in size has grub on it
+2008-09-13T06:21:00.000Z	kira-fanboy	bobertdos	incidentally its the one set as boot partition
+2008-09-13T06:24:00.000Z	bobertdos	kira-fanboy	Yeah, then that's your problem. Generally speaking, we don't recommend installing Grub directly to the MBR like that, because that's what tends to cause this problem.
+2008-09-13T06:24:00.000Z	kira-fanboy		but ive tried before without stating a  boot partition and I still got the Error 17
+2008-09-13T06:25:00.000Z	bobertdos	kira-fanboy	I have to go, unfortunately, but I would recommend trying a different approach to your installation.
+2008-09-13T06:26:00.000Z	kira-fanboy	bobertdos	well, thanks for your help, Ive already reinstalled ubuntu several times

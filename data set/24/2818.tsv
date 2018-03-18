@@ -1,0 +1,24 @@
+2008-09-07T20:51:00.000Z	Pirate_Hunter		how can i stop other user from using ssh in terminal?
+2008-09-07T20:52:00.000Z	qr	Pirate_Hunter	you could make an ssh group and only allow users in that group to run ssh, or you could use an acl on the ssh binary to forbid a specific user from executing it.
+2008-09-07T20:53:00.000Z	Pirate_Hunter	qr	how do i make the ssh group isit the same way as making a group?
+2008-09-07T20:54:00.000Z	qr	Pirate_Hunter	yes, it would just be a regular group, then you'd make the ssh binary owned by that group.
+2008-09-07T20:55:00.000Z	Pirate_Hunter	qr	how do i make the ssh binary for that group... I really dont know how
+2008-09-07T20:56:00.000Z	qr	Pirate_Hunter	it would be something like chown root:ssh /usr/bin/ssh
+2008-09-07T20:56:00.000Z	qr	Pirate_Hunter	that would make root the owner and put the file in the ssh group.
+2008-09-07T20:56:00.000Z	Pirate_Hunter	qr	could I try that right now?
+2008-09-07T20:56:00.000Z	qr	Pirate_Hunter	as long as you have an ssh group
+2008-09-07T20:57:00.000Z	Pirate_Hunter	qr	going to do it now, wait a sec
+2008-09-07T21:04:00.000Z	Pirate_Hunter	qr	well i think it worked will test it now
+2008-09-07T21:05:00.000Z	Pirate_Hunter	qr	no other users can still ssh and accept keys
+2008-09-07T21:05:00.000Z	Pirate_Hunter	qr	inst there another way
+2008-09-07T21:05:00.000Z	qr	Pirate_Hunter	you need to make the ssh binary not executable by "other" users (ie set the permissions to something like 750)
+2008-09-07T21:06:00.000Z	Pirate_Hunter	qr	so that would be sudo chown 750 root:ssh /usr/bin/ssh?
+2008-09-07T21:07:00.000Z	qr	Pirate_Hunter	no just chmod 750 /usr/bin/ssh , I assume you've already done the chown'ing.
+2008-09-07T21:07:00.000Z	Pirate_Hunter	qr	yah what does 750 mean if you dont mind explaining?
+2008-09-07T21:08:00.000Z	qr	Pirate_Hunter	it's rwxr-x---, so rwx for owner, rw for group and nothing for other.
+2008-09-07T21:08:00.000Z	qr	Pirate_Hunter	r-x for group, sorry
+2008-09-07T21:08:00.000Z	Pirate_Hunter	qr	ill use it and see if it works
+2008-09-07T21:10:00.000Z	Pirate_Hunter	qr	omg so kl works well on my other user :), now let me test it on my main account
+2008-09-07T21:12:00.000Z	Pirate_Hunter	qr	ty for all you help nice now i wont need to worry
+2008-09-07T21:12:00.000Z	qr	Pirate_Hunter	cheers :)
+2008-09-07T21:13:00.000Z	Pirate_Hunter	qr	already saved the instructions for future reference well thanx again now going afk

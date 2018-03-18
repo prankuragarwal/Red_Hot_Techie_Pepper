@@ -1,0 +1,24 @@
+2009-03-21T19:47:00.000Z	oCean_	vallhalla81	see what command "sudo fdisk -l" outputs...
+2009-03-21T19:47:00.000Z	vallhalla81	oCean_	it just shows the partitions for sda not the slave
+2009-03-21T19:48:00.000Z	oCean_	vallhalla81	it only lists /dev/hda? No mention of /dev/hdb?
+2009-03-21T19:48:00.000Z	vallhalla81	oCean_	thats right
+2009-03-21T19:49:00.000Z	oCean_	vallhalla81	hmm.. The drive is connected correctly I assume
+2009-03-21T19:50:00.000Z	vallhalla81	oCean_	yes that was the first thing i checked
+2009-03-21T19:50:00.000Z	vallhalla81	oCean_	its a brand new drive do you think i should use a live cd and reformat it?
+2009-03-21T19:51:00.000Z	oCean_	vallhalla81	well, the formatting can be done in Ubuntu as well
+2009-03-21T19:51:00.000Z	vallhalla81	oCean_	yes but gparted couldent detect it in ubuntu
+2009-03-21T19:51:00.000Z	oCean_	vallhalla81	you just have to find the device. Does /dev/hdb exist?
+2009-03-21T19:51:00.000Z	vallhalla81	oCean_	checking
+2009-03-21T19:52:00.000Z	oCean_	vallhalla81	Indeed. That's the weird part. I think that there is no /dev/hdb, otherwise "fdisk -l" or gparted would have shown it
+2009-03-21T19:53:00.000Z	vallhalla81	oCean_	yes it is not showing one the strang thing is that i had a smaller one in there before and it had no trouble finding it
+2009-03-21T19:54:00.000Z	oCean_	vallhalla81	any helpful information in "dmesg | grep hd" output?
+2009-03-21T19:55:00.000Z	vallhalla81	oCean_	[   24.532686] vboxdrv: Trying to deactivate the NMI watchdog permanently...
+2009-03-21T19:55:00.000Z	oCean_	vallhalla81	ok, that's not relevant
+2009-03-21T19:56:00.000Z	vallhalla81	oCean_	i didnt think so
+2009-03-21T19:56:00.000Z	oCean_	vallhalla81	Also see "sudo lshw -C disk" <-- should give detailed disk info
+2009-03-21T19:57:00.000Z	oCean_	vallhalla81	yes, ok
+2009-03-21T20:27:00.000Z	oCean_	vallhalla81	So the system found the filesystem? And it's not IDE?
+2009-03-21T20:27:00.000Z	oCean_	vallhalla81	because /dev/sd* drives are SCSI drives
+2009-03-21T20:27:00.000Z	vallhalla81	oCean_	i am not sure
+2009-03-21T20:27:00.000Z	oCean_	vallhalla81	Anyway, your system has to recognize the hardware BEFORE you try anything else
+2009-03-21T20:28:00.000Z	oCean_	vallhalla81	so if the new disk still does not show up in lshw, you will not be able to create a partition

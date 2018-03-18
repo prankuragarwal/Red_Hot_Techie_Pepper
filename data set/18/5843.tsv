@@ -1,0 +1,18 @@
+2008-09-09T22:25:00.000Z	mixed1234		how do I find out the path to my USB hard drive?
+2008-09-09T22:25:00.000Z	carandraug	mixed1234	is it mounted? Take a look at "df -h". If not, sudo fdisk -l will do the trick
+2008-09-09T22:27:00.000Z	carandraug	mixed1234	that's the path to the device. /dev/sdc1 You can see where it's mounted with "df -h"
+2008-09-09T22:27:00.000Z	mixed1234	carandraug	ok i guess im half way there, how do i safely unmount "/dev/sdc1" so I can mount force it?
+2008-09-09T22:28:00.000Z	carandraug	mixed1234	with the GUI or through the command line?
+2008-09-09T22:29:00.000Z	carandraug	mixed1234	oh, ok. WHere do you want to mount it?
+2008-09-09T22:29:00.000Z	mixed1234	carandraug	pls let me get a sec, im going to jot down a few things before we attempt to do that
+2008-09-09T22:30:00.000Z	carandraug	mixed1234	ok
+2008-09-09T22:33:00.000Z	mixed1234	carandraug	i want to mount "/dev/sdc1" to a folder in "/media" , should I create the folder in "/media" first?
+2008-09-09T22:33:00.000Z	carandraug	mixed1234	that folder should already exists.
+2008-09-09T22:33:00.000Z	mixed1234	carandraug	that folder already exists, yes I want to mount it on a folder inside "/media", for example "/media/disk"
+2008-09-09T22:35:00.000Z	carandraug	mixed1234	then yes, you need to create the folder first "sudo mkdir /media/disk" mkdir=make directory
+2008-09-09T22:36:00.000Z	mixed1234	carandraug	i tried it, i used "-t ntfs-3g -o force" flags and it mounted, thanks for the help!!!!
+2008-09-09T22:37:00.000Z	carandraug	mixed1234	no problem
+2008-09-09T22:40:00.000Z	carandraug	mixed1234	what you mean test for failure? Check for defects? badblocks then
+2008-09-09T22:41:00.000Z	mixed1234	carandraug	yes, I want to test a hard drive for bad sector or physical damage, is there a utility in linux like a live cd??
+2008-09-09T22:43:00.000Z	carandraug	mixed1234	run "badblocks -v /pathtodevice"
+2008-09-09T22:44:00.000Z	mixed1234	carandraug	I will try that, be back in a few

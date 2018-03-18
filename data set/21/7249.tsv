@@ -1,0 +1,21 @@
+2007-03-25T14:14:00.000Z	cefx		I tried to redetect and reconfigure x.org with the automated tool but that broke my copy of X windows, so can I try simply replacing nv with nvidia in my x.org conf?
+2007-03-25T14:14:00.000Z	cefx		I'm trying to get opengl to work
+2007-03-25T14:14:00.000Z	cefx		and it's not working
+2007-03-25T14:14:00.000Z	cefx		!opengl
+2007-03-25T14:15:00.000Z	cefx		k
+2007-03-25T14:16:00.000Z	rickyfingers	cefx	that should work.  You may want to just move /etc/X11/xorg.conf to somewhere else (so there's nothing in there) maybe then the nvidia tool will generate xorg.conf.
+2007-03-25T14:46:00.000Z	rickyfingers	cefx	I don't know if this is what's causing the problem, but I see you have the same physical device declared twice in xorg.conf
+2007-03-25T14:48:00.000Z	cefx	rickyfingers	thought so.
+2007-03-25T14:48:00.000Z	rickyfingers	cefx	are you trying to get a dual monitor setup working?
+2007-03-25T14:49:00.000Z	cefx	rickyfingers	no, I'm going to delete that second device one
+2007-03-25T14:50:00.000Z	rickyfingers	cefx	you may need to get rid of the second screen definition, and second monitor def. too
+2007-03-25T14:51:00.000Z	rickyfingers	cefx	and then it looks like you need to include glx extension too
+2007-03-25T14:53:00.000Z	cefx	rickyfingers	yah, should I also define things differently under the screen section?
+2007-03-25T14:54:00.000Z	rickyfingers	cefx	well, I'm thinking the first screen definition is the one you want to keep, but get rid of that second EndSection line
+2007-03-25T14:55:00.000Z	cefx	rickyfingers	so should be...
+2007-03-25T14:56:00.000Z	rickyfingers	cefx	no I'm thinking you need to make a new section, Section "Extensions" and then Option "glx" "true" or something like that...google xorg.conf glx extensions
+2007-03-25T14:57:00.000Z	rickyfingers	cefx	scratch that last suggestion.
+2007-03-25T14:58:00.000Z	rickyfingers	cefx	looks like you just need to get the nvidia driver loaded.
+2007-03-25T14:59:00.000Z	cefx	rickyfingers	I'm snagging the driver from nvidia.com now
+2007-03-25T15:02:00.000Z	cefx	rickyfingers	should i use the driver from nvidia.com? I followed the ubuntu instructions before and it didn't work
+2007-03-25T15:05:00.000Z	cefx	rickyfingers	Is there anything wrong with the serverlayout section?

@@ -1,0 +1,21 @@
+2005-09-03T06:53:00.000Z	yaaar		word
+2005-09-03T06:53:00.000Z	yaaar		i'm kind of stumped here. can anybody take a look at this find command and tell me what i'm doing wrong? it looks ok to me (and I've successfully used find for this type of thing before) but it errors out saying "find: missing argument to exec"
+2005-09-03T06:53:00.000Z	yaaar		 find /var/www/www.applicationcentral.net/htdocs/ -type 'd' -exec ls -al {} | egrep "^d"\;
+2005-09-03T06:53:00.000Z	yaaar		i've also tried it without the '' around the d and with escapes in various places
+2005-09-03T06:55:00.000Z	bob2	yaaar	your shell is going to split that command on the |
+2005-09-03T06:55:00.000Z	bob2	yaaar	and find will go "OMG WHERE IS THE FINAL ;"
+2005-09-03T06:56:00.000Z	yaaar	bob2	it still says the same thing if i escape the pipe
+2005-09-03T06:57:00.000Z	bob2	yaaar	quote it or something
+2005-09-03T06:57:00.000Z	bob2	yaaar	or just use find in a for loop
+2005-10-08T09:21:00.000Z	bob2	yaaar	that's pretty clear.../media/storage is mounted read-only
+2005-10-08T09:22:00.000Z	bob2	yaaar	show us the output of "mount | grep storage"
+2005-10-08T09:22:00.000Z	yaaar	bob2	so, if it's mounted read-only, why did it let me delete the files right after i mounted it?
+2005-10-08T09:22:00.000Z	yaaar	bob2	/dev/hdb1 on /media/storage type vfat (rw,noexec,nosuid,nodev,fmask=0111,dmask=0000)
+2005-10-08T09:23:00.000Z	bob2	yaaar	? that seems unrelated.
+2005-10-08T09:23:00.000Z	yaaar	bob2	what seems unrelated? that's the output of the command you asked me to run...
+2005-10-08T09:23:00.000Z	bob2	yaaar	ls -ld /media/storage/.Trash-todd//avg6db_f.dat
+2005-10-08T09:24:00.000Z	yaaar	bob2	-r--r--r--  1 root root 34786 2005-05-09 01:51 /media/storage/.Trash-todd//avg6db_f.dat
+2005-10-08T09:25:00.000Z	bob2	yaaar	ls -ld /media/storage/.Trash-todd/
+2005-10-29T15:23:00.000Z	bob2	yaaar	you can file bugs in the bts
+2005-10-29T15:23:00.000Z	yaaar	bob2	so it's not normally unstable?
+2005-10-29T15:23:00.000Z	bob2	yaaar	no idea

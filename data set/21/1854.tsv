@@ -1,0 +1,21 @@
+2010-06-16T02:43:00.000Z	biston		one more problem i'm having. earlier today, I've uninstalled a font, and then this started happening ( http://ubuntu.pastebin.com/YfHNQv0E ), fontconfig would start, with no output and wouldn't end; i've waited four hours for it to end but it didnt. So now whenever i use apt-get i just open another ssh session and kill the fontconfig process and apt-get would continue normally. is there any bug in the fontconfig script on ubuntu server 10.04? how can i solve
+2010-06-16T02:44:00.000Z	comicinker	biston	reinstall that font
+2010-06-16T02:46:00.000Z	biston	comicinker	i already tried that, but didn't work
+2010-06-16T02:48:00.000Z	comicinker	biston	what is defoma?
+2010-06-16T02:49:00.000Z	comicinker	biston	and what happens if you run defoma-reconfigure -f
+2010-06-16T02:49:00.000Z	biston	comicinker	same thing, dpkg --configure -a eventually runs defoma-reconfigure -f, that's where everything hangs
+2010-06-16T02:51:00.000Z	biston	comicinker	no it's not
+2010-06-16T02:52:00.000Z	comicinker	biston	no idea
+2010-06-16T02:55:00.000Z	biston	comicinker	: http://ubuntuforums.org/showthread.php?t=1149945 ; here's a guy having the same problem I am, still no replies to that post, 1 year old post
+2010-06-16T02:55:00.000Z	comicinker	biston	did you try removing /var/lib/defoma/locked ?
+2010-06-16T02:57:00.000Z	comicinker	biston	cat /var/lib/defoma/status-cache ?
+2010-06-16T03:00:00.000Z	comicinker	biston	hmm...
+2010-06-16T03:05:00.000Z	biston	comicinker	i know, pretty confusing, i spent my entire day trying to figure out the problem. i gave up on it, and now another problem popped up, vncserver starts X, with desktop (i can see the desktop background picture) but no icons on it or taskbar ... i've used apt-get purge on all gnome and vnc packages, even the Xsession conf files, still ain't working
+2010-06-16T03:07:00.000Z	comicinker	biston	before the font problem is not solved, everything on your  machine can be broken. sometimes openoffice won't start when the right fonts are not installed, sometimes even gdm/gnome will have problems. especially vnc wants some fonts. fonts fonts fonts
+2010-06-16T03:08:00.000Z	biston	comicinker	ah, yea, true. maybe that's the problem with VNC. let me look at some logs of X to see what's going on
+2010-06-16T03:09:00.000Z	comicinker	biston	try to copy the files from the font package you remove manually, then reset somehow the defoma status
+2010-06-16T03:09:00.000Z	biston	comicinker	right after i check the logs... vnc logs show nothing, going to X
+2010-06-16T03:12:00.000Z	biston	comicinker	any idea about where I can find X logs? i got nothing in /var/log/gdm/
+2010-06-16T03:13:00.000Z	comicinker	biston	/var/log/Xorg.0.log
+2010-06-16T03:15:00.000Z	comicinker	biston	do it now. and don't touch fonts anymore
+2010-06-16T03:15:00.000Z	biston	comicinker	oh believe me, i learned my lesson lol

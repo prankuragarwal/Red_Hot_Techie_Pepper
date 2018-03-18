@@ -1,0 +1,19 @@
+2006-10-16T14:06:00.000Z	JDStone		how do I change my FQDN in Ubuntu server?
+2006-10-16T14:07:00.000Z	jasper`	JDStone	edit /etc/hosts
+2006-10-16T14:07:00.000Z	jasper`	JDStone	format is: IP   FQDN  ALIASES
+2006-10-16T14:10:00.000Z	JDStone	jasper`	sweet, that worked, thanks
+2006-10-16T14:10:00.000Z	jasper`	JDStone	now, ready for your next lesson?
+2006-10-16T14:11:00.000Z	JDStone	jasper`	shoot!
+2006-10-16T14:12:00.000Z	jasper`	JDStone	you asked "how do I change my FQDN in Ubuntu server?" At www.google.com I entered, "FQDN ubuntu server" and the 2nd webpage was: http://ubuntuforums.org/showthread.php?t=271658
+2006-10-16T14:18:00.000Z	JDStone	jasper`	isn't a DHCP client supposed to get it's dns domain name from the DHCP server?
+2006-10-16T14:19:00.000Z	jasper`	JDStone	/etc/dhcp3/dhcpd.conf should have something like `option domain-name "internal.example.org";`
+2006-10-16T14:20:00.000Z	JDStone	jasper`	it does
+2006-10-16T14:20:00.000Z	JDStone	jasper`	but what about my clients
+2006-10-16T14:21:00.000Z	jasper`	JDStone	try mnepton (sorry mnepton).
+2006-10-16T14:23:00.000Z	jasper`	JDStone	`option domain-name-servers 192.168.1.1;` isn't something you want is it?
+2006-10-16T14:23:00.000Z	JDStone	jasper`	no
+2006-10-16T14:24:00.000Z	JDStone	jasper`	it's ok, I think I figured it out
+2006-10-16T14:24:00.000Z	jasper`	JDStone	?
+2006-10-16T14:25:00.000Z	JDStone	jasper`	request subnet-mask, broadcast-address, time-offset, routers,
+2006-10-16T14:25:00.000Z	JDStone	jasper`	notice domain-name
+2006-10-16T14:25:00.000Z	JDStone	jasper`	so it must be getting the domain name from the dhcp server

@@ -1,0 +1,24 @@
+2007-07-15T11:06:00.000Z	scrubba		i have a x1400 and i can only install the 64 bit version which doesnt support wine
+2007-07-15T11:07:00.000Z	scrubba		i want to install the 32bit version
+2007-07-15T11:07:00.000Z	scrubba		but X fails when i try to run the live disk
+2007-07-15T11:08:00.000Z	scrubba		can anyone help me???
+2007-07-15T11:09:00.000Z	scrubba		is there a wine equivalent program for 64 bit ubuntu?
+2007-07-15T11:09:00.000Z	Jordan_U	scrubba	No, but you can run 32 bit wine in 64 bit Ubuntu
+2007-07-15T11:10:00.000Z	Jordan_U	scrubba	But it is easier just to run 32bit Ubuntu if you are new
+2007-07-15T11:11:00.000Z	scrubba	Jordan_U	do you know why in 64bit i get a graphic error causing X to not load but no problems in 64 bit??
+2007-07-15T11:12:00.000Z	Jordan_U	scrubba	No, but I can try to get X started
+2007-07-15T11:13:00.000Z	Jordan_U	scrubba	press ctrl+alt+F1 to get to a terminal and run "sudo dpkg-reconfigure xserver-xorg -phigh" and for the driver choose "vesa"
+2007-07-15T11:14:00.000Z	Jordan_U	scrubba	Then to start X again run: sudo /etc/init.d/gdm restart
+2007-07-15T11:15:00.000Z	Jordan_U	scrubba	That won't get you full resolution though, so once it is actually installed run System -> Administration -> Restricted Driver Manager to get the drivers for your card
+2007-07-15T11:15:00.000Z	Jordan_U	scrubba	No
+2007-07-15T11:20:00.000Z	scrubba	Jordan_U	GNOME display manager still fails
+2007-07-15T11:21:00.000Z	Jordan_U	scrubba	You can either install fglrx from the liveCD or use the alternate install CD
+2007-07-15T11:22:00.000Z	Jordan_U	scrubba	Try "sudo apt-get install xorg-driver-fglrx" then reconfigure X again but this time choose fglrx
+2007-07-15T11:43:00.000Z	scrubba	Jordan_U	that was me it couldnt retreieve the package
+2007-07-15T11:44:00.000Z	Jordan_U	scrubba	You need to be connected to the internet
+2007-07-15T11:44:00.000Z	scrubba	Jordan_U	I had my internet pluggeg in
+2007-07-15T11:45:00.000Z	Jordan_U	scrubba	Try running "udo ifconfig eth0 && sudo dhclient etho"
+2007-07-15T11:45:00.000Z	Jordan_U	scrubba	That's sudo at the begginging
+2007-07-15T11:46:00.000Z	scrubba	Jordan_U	okay, well i have to logg of the internet on this machine to get on the other one
+2007-07-15T11:46:00.000Z	scrubba	Jordan_U	anythign else i should know?
+2007-07-15T11:47:00.000Z	Jordan_U	scrubba	If it doesn't work the first time try running "sudo depmod -a" and try again

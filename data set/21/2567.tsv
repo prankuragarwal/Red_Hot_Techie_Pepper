@@ -1,0 +1,21 @@
+2009-09-07T22:27:00.000Z	sczgilae		hi to all, im installing an USB DLINK network card in my ubuntu 9.04 and im having some problems. when i type "lsusb" i see that the system knows the device but cant configure it. how can i install correctly the device?
+2009-09-07T22:28:00.000Z	erUSUL	sczgilae	does it show up in « iwconfig » output ?
+2009-09-07T22:28:00.000Z	sczgilae		erusul, yes
+2009-09-07T22:29:00.000Z	erUSUL	sczgilae	so you have a wlan0 ? and network manager does not show any wirelless network ?
+2009-09-07T22:30:00.000Z	sczgilae		erusul, i have eth1 (the laptop network device),  wlan0 (the wireless network device of the laptop), and a new one (eth2, the new dlink)
+2009-09-07T22:31:00.000Z	erUSUL	sczgilae	the dlink is wireless ?
+2009-09-07T22:31:00.000Z	sczgilae		erusul, i put "ifconfig eth1" and im trying "dhclient eth2". it is not wireless
+2009-09-07T22:32:00.000Z	erUSUL		!addingfs | loz_
+2009-09-07T22:32:00.000Z	erUSUL	sczgilae	the "dhclient eth2" fails ?
+2009-09-07T22:33:00.000Z	sczgilae		erusul, yes. and if i put manually too, i dont have network
+2009-09-07T22:34:00.000Z	erUSUL	sczgilae	what error do you get ? when multiple connections are active at the same time the errors come from the routing table
+2009-09-07T22:35:00.000Z	sczgilae	erUSUL	it says "No working leases in persistent database - sleeping". can i "clean" the routing table?
+2009-09-07T22:36:00.000Z	erUSUL	sczgilae	what is the machine connected to? a router?
+2009-09-07T22:37:00.000Z	sczgilae	erUSUL	 im in the work. it connects to the intranet
+2009-09-07T22:39:00.000Z	erUSUL	sczgilae	well seems like the dhcp server does not give an ip to your machine... dunno why
+2009-09-07T22:40:00.000Z	sczgilae	erUSUL	yes, but i think that is not the problem because im configuring manually too the ip address and the netmask
+2009-09-07T22:40:00.000Z	erUSUL	sczgilae	and gateaway ?
+2009-09-07T22:41:00.000Z	sczgilae	erUSUL	sorry i dont try it because im configuring in the konsola writing "ifconfig eth2 x.x.x.x netmask x.x.x.x". how can i add the gateway?
+2009-09-07T22:45:00.000Z	erUSUL	sczgilae	iirc is «sudo route add default gw GW_IP_DIR dev eth2»
+2009-09-07T22:48:00.000Z	sczgilae	erUSUL	perfect! the problem was the dhcp and then when i put the ipaddress i forgot write the gateway. thanks you very much
+2009-09-07T22:48:00.000Z	erUSUL	sczgilae	no problem

@@ -1,0 +1,21 @@
+2011-08-08T07:24:00.000Z	diamonds		what's the default root password? :D
+2011-08-08T07:24:00.000Z	Polah	diamonds	Doesn't exist.
+2011-08-14T03:21:00.000Z	Polah	diamonds	chmod 776 on it, or do you mean shared as in a windows share?
+2011-08-14T03:22:00.000Z	diamonds	Polah	just local linux users
+2011-08-14T03:22:00.000Z	diamonds	Polah	will linux get confused about another /home/ directory?
+2011-08-14T03:23:00.000Z	Polah	diamonds	It shouldn't do. You could create another user named share to correspond to it if you want but I don't think it'd be necessary
+2011-08-14T03:24:00.000Z	Polah	diamonds	standard?
+2011-08-14T03:24:00.000Z	diamonds	Polah	yeah, like it's standard to give each user their own directory in /home/[username]
+2011-08-14T03:25:00.000Z	Polah	diamonds	If it's just a local system then just making a directory and setting it's permissions to 777 should be fine. It is standard for each new user to have a directory made in /home/ by default but their "home" directories can actually be made anywhere. Just do mkdir /home/share && chmod 776 /home/share
+2011-08-14T03:26:00.000Z	diamonds	Polah	why 776?
+2011-08-14T03:26:00.000Z	Polah	diamonds	not really, you could put it wherever you wanted. To not have executable privileges set publically
+2011-08-14T03:26:00.000Z	diamonds	Polah	but which group?
+2011-08-14T03:27:00.000Z	Polah	diamonds	The group by default should be the owner's group I think, but you could use chown to change the group and then add users that you want to be able to access the shared folder to that group
+2011-08-14T03:28:00.000Z	Polah	diamonds	sorry, chgrp there not chown although chown does have an option to change group I think
+2011-08-14T03:30:00.000Z	diamonds	Polah	chown :group file
+2011-08-14T03:31:00.000Z	Polah	diamonds	Yeah I believe so, but chgrp would do the same thing
+2011-08-14T03:31:00.000Z	Polah	diamonds	What default groups?
+2011-08-14T03:34:00.000Z	Polah	diamonds	different groups to give different permissions. For example the admin group allows access to sudo, cdrom I imagine allows CDs to be accessed and suchlike
+2011-08-14T03:35:00.000Z	diamonds	Polah	I'm trying to figure out which group to give ownership to the shared dir...
+2011-08-14T03:35:00.000Z	Polah	diamonds	make a new group called "share" or something and add users you want to access it to that group
+2011-08-14T03:37:00.000Z	Polah	diamonds	I don't know about adding groups to be set as default for users, someone else might.

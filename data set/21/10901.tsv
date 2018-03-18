@@ -1,0 +1,21 @@
+2005-10-28T12:43:00.000Z	erisco		when i try to remove gcc with synaptic it want to remove a bunch of other packages... how can i only remove gcc?
+2005-10-28T12:45:00.000Z	erisco		is there a terminal command for removing packages?
+2005-10-28T12:45:00.000Z	erisco		and it should work without removing everything shouldn't it?
+2005-10-28T12:47:00.000Z	erisco		grrr... apt-get remove <package> wants to remove everything too
+2005-10-28T12:47:00.000Z	erisco		why is this? i only want the one package removed
+2005-10-28T12:48:00.000Z	Agrajag	erisco	wh ydo you want to remove gcc4.0?
+2005-10-28T12:48:00.000Z	erisco		agrajag, gcc 4.0 has a known error with compiling and it is affecting me. i need to downgrade to 3.4
+2005-10-28T12:49:00.000Z	Agrajag	erisco	just install gcc-3.4
+2005-10-28T12:49:00.000Z	Agrajag		and set $CC to /usr/bin/gcc-3.4 when you need to use that
+2005-10-28T12:49:00.000Z	erisco		agrajag, but i need to remove gcc 4.0 otherwise it will conflict?
+2005-10-28T12:49:00.000Z	Agrajag		no you don't
+2005-10-28T12:49:00.000Z	Agrajag		I have both installed.
+2005-10-28T12:49:00.000Z	erisco	canindya	yes it is...
+2005-10-28T12:49:00.000Z	Agrajag		4.0 for userland stuff, 3.4 for things like qemu that won't build with 4.0
+2005-10-28T12:49:00.000Z	erisco		agrajag, will the versions not conflict with each-other?
+2005-10-28T12:49:00.000Z	Agrajag		no
+2005-10-28T12:50:00.000Z	erisco		agrajag, then how do i specify which one i want to use in the "make" command?
+2005-10-28T12:50:00.000Z	Agrajag	erisco	you just have to to export CC=/usr/bin/gcc-3.4 when you want to use 3.4
+2005-10-28T12:50:00.000Z	Agrajag		usually that will do it
+2005-10-28T12:50:00.000Z	erisco		agrajag, you lost me
+2005-10-28T12:51:00.000Z	Agrajag	erisco	CC is an environment variable that points to your C compiler

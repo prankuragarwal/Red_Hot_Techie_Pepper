@@ -1,0 +1,24 @@
+2009-05-26T03:36:00.000Z	d0t		response..
+2009-05-26T03:37:00.000Z	Ampelbein	d0t	looks ok to me with only keyfile-login allowed. I'd disable root-login though. the ssh_conf is for client side configuration only, nothing to do with the server.
+2009-05-26T03:38:00.000Z	d0t	Ampelbein	so why can't i connect to myself without using localhost but using my ip instead ? maybe i need to regenerate keys ?
+2009-05-26T03:40:00.000Z	Ampelbein	d0t	what's the result of 'netstat -l' ? To what address is the sshd bound?
+2009-05-26T03:43:00.000Z	d0t	Ampelbein	i can't really see it using netstat -l
+2009-05-26T03:43:00.000Z	d0t	Ampelbein	i'll paste the results in pastebin
+2009-05-26T03:43:00.000Z	Ampelbein	d0t	ok
+2009-05-26T03:45:00.000Z	d0t	Ampelbein	http://pastebin.com/d22d978c5
+2009-05-26T03:46:00.000Z	Ampelbein	d0t	line 3 it is
+2009-05-26T03:47:00.000Z	Ampelbein	d0t	it's the protocol alias defined in /etc/protocols
+2009-05-26T03:47:00.000Z	Ampelbein	d0t	port 22 in that case. and skyl is right, your netstat shows it's listening on all interfaces so it's a firewall/port forwarding issue
+2009-05-26T03:48:00.000Z	d0t	Ampelbein	ok i'll change it to listen to a port which i know i had no issues with before let's see if it works.
+2009-05-26T04:04:00.000Z	Ampelbein	d0t	then you should tell sshd to listen to port 443, not 22.
+2009-05-26T04:04:00.000Z	d0t	Ampelbein	i just did i edited sshd_config and restarted the service
+2009-05-26T04:05:00.000Z	Ampelbein	d0t	what does netstat -l look like now?
+2009-05-26T04:06:00.000Z	d0t	Ampelbein	 tcp        0      0 *:https                 *:*                     LISTEN
+2009-05-26T04:06:00.000Z	Ampelbein	d0t	that looks ok.
+2009-05-26T04:11:00.000Z	Ampelbein	d0t	can you pastebin iptables -L again?
+2009-05-26T04:11:00.000Z	d0t	Ampelbein	sure one moment..
+2009-05-26T04:12:00.000Z	d0t	Ampelbein	http://pastebin.com/d30e83a7a
+2009-05-26T04:15:00.000Z	Ampelbein	d0t	lines 117 and 118 of your paste should mention the https port, ufw still only accepts ssh-input.
+2009-05-26T04:22:00.000Z	d0t	Ampelbein	http://pastebin.com/m6f5bdf00 is that what supposed look like after you flush the tables ?!
+2009-05-26T04:27:00.000Z	Ampelbein	d0t	the firewall looks ok now, but still no luck connecting to you..
+2009-05-26T04:31:00.000Z	d0t	Ampelbein	yeah i know.. *sigh* nevermind thank you i really appreciate it

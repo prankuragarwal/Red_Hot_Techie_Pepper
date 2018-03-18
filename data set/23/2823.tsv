@@ -1,0 +1,23 @@
+2008-11-03T14:43:00.000Z	FSCK_FSCK_FSCK		how do i install ubuntu within another distro
+2008-11-03T14:44:00.000Z	FSCK_FSCK_FSCK		no i want to install it for real
+2008-11-03T14:45:00.000Z	FSCK_FSCK_FSCK		it should be possible though, all it has to do is copy some files
+2008-11-03T14:47:00.000Z	FSCK_FSCK_FSCK		in this case it is since i won't be needing grub on the mbr since it's already there
+2008-11-03T14:47:00.000Z	FSCK_FSCK_FSCK		what if i install it on vmware then copy the files
+2008-11-03T14:48:00.000Z	FSCK_FSCK_FSCK		"no, you can't do it" isn't really an answer, so my question still stands :)
+2008-11-03T14:48:00.000Z	FSCK_FSCK_FSCK		...
+2008-11-03T14:49:00.000Z	FSCK_FSCK_FSCK		could anyone actually explain why it's not possible
+2008-11-03T14:49:00.000Z	Johnm	FSCK_FSCK_FSCK	I must have missed the question, what did you ask?
+2008-11-03T14:50:00.000Z	Johnm	FSCK_FSCK_FSCK	actually, yes it is possible.
+2008-11-03T14:50:00.000Z	Johnm	FSCK_FSCK_FSCK	but not block for block. you need to firstly, tar up everything on the OS excluding /dev /proc and /sys into a single large tar. This needs to be done through a rescue CD (to remove media)
+2008-11-03T14:51:00.000Z	Johnm	FSCK_FSCK_FSCK	the recovery is somewhat similar. Use a recovery CD and setup the target partitions and filesystems. Ideally to make the guest. Then unrar to /
+2008-11-03T14:51:00.000Z	Johnm	FSCK_FSCK_FSCK	yuou'll be missing a loader in the MBR, you'll need to rectify that.
+2008-11-03T14:51:00.000Z	Johnm	FSCK_FSCK_FSCK	are you talking about having it running along-side another linux distro at the *same time*?
+2008-11-03T14:52:00.000Z	Johnm	FSCK_FSCK_FSCK	if so, you can but its silly. Half of it wont work, and it'll nmeed to be chrooted.
+2008-11-03T14:52:00.000Z	Johnm	FSCK_FSCK_FSCK	for dual-boot?
+2008-11-03T14:53:00.000Z	Johnm	FSCK_FSCK_FSCK	then follow the instruction I gave earlier and change the grub.conf to include both on the /boot your current grub install references
+2008-11-03T14:53:00.000Z	Johnm	FSCK_FSCK_FSCK	rebooting is absolutely inevitable.
+2008-11-03T14:54:00.000Z	FSCK_FSCK_FSCK	Johnm	to use my new ubuntu installation, yes.
+2008-11-03T14:55:00.000Z	FSCK_FSCK_FSCK	Johnm	so cp -r /* from vmware ubuntu to real partition won't work?
+2008-11-03T14:56:00.000Z	Johnm	FSCK_FSCK_FSCK	you need to ensure you keep all permissions and exclude /dev /proc and /sys
+2008-11-03T14:56:00.000Z	Johnm	FSCK_FSCK_FSCK	just tarring it is significantly less hassle :)
+2008-11-03T14:56:00.000Z	Johnm	FSCK_FSCK_FSCK	its also a valid backup

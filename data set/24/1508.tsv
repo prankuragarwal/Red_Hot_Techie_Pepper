@@ -1,0 +1,24 @@
+2011-01-19T23:23:00.000Z	naptastic		So, uh... I've followed this guide to Diskless Ubuntu ( https://help.ubuntu.com/community/DisklessUbuntuHowto ) and it's not working
+2011-01-19T23:23:00.000Z	undecim	naptastic	"it's not working" is a fairly vague statement...
+2011-01-19T23:24:00.000Z	naptastic	undecim	(sorry, not very fast typer today :-)
+2011-01-19T23:25:00.000Z	undecim	naptastic	Not much experience with Diskless boots, but can you see if it tried to access the NFS?
+2011-01-19T23:26:00.000Z	naptastic	undecim	unfortunately I can't see a way to determine that. I've taken a picture of the screen and am about to paste it... (this will take a minute)
+2011-01-19T23:26:00.000Z	undecim	naptastic	Would there be logs on your server?
+2011-01-19T23:27:00.000Z	naptastic	undecim	I suppose so. What log file do I check to see if mounting has been attempted?
+2011-01-19T23:28:00.000Z	undecim	naptastic	Honestly, I'm not sure
+2011-01-19T23:28:00.000Z	naptastic	undecim	http://www.naptastic.com/david/bootfail.jpg <- this is where the machine stops.
+2011-01-19T23:29:00.000Z	naptastic	undecim	I really appreciate you trying to help me with something outside your expertise :-)
+2011-01-19T23:30:00.000Z	undecim	naptastic	It's actually kind of half-inside, half-outside my expertise :)
+2011-01-19T23:31:00.000Z	naptastic	undecim	lol :-)
+2011-01-19T23:34:00.000Z	undecim	naptastic	I would look into seeing if it accessed the NFS...
+2011-01-19T23:34:00.000Z	naptastic	undecim	Alright, thanks
+2011-01-19T23:36:00.000Z	undecim	naptastic	Seems to me that it's waiting on the NFS server...
+2011-01-19T23:36:00.000Z	undecim	naptastic	Which should be 192.168.0.64
+2011-01-19T23:37:00.000Z	naptastic	undecim	yep. The mullet server. (Don't ask. ;-) I'm perusing logs now...
+2011-01-19T23:37:00.000Z	undecim	naptastic	could you pastebin /tftpboot/pxelinux.cfg/default ?
+2011-01-19T23:38:00.000Z	naptastic	undecim	yep, just a sec
+2011-01-19T23:40:00.000Z	naptastic	undecim	here: http://fpaste.org/pxri/
+2011-01-19T23:40:00.000Z	naptastic	undecim	(pastebin.org was slow / down so I used fpaste ;-)
+2011-01-19T23:44:00.000Z	undecim	naptastic	I see nothing wrong here... The best reason I can explain the sudden stop without errors is that it's waiting on the NFS server.
+2011-01-19T23:45:00.000Z	naptastic	undecim	agreed. I'm looking at NFS logs right now...
+2011-01-20T00:27:00.000Z	naptastic	undecim	I'd never used Wireshark before. Holy crap it's cool!!! Anyway, I can see that there is a bunch of NFS traffic going between my client and server, looking things up, accessing things...

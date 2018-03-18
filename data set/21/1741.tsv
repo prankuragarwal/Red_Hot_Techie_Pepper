@@ -1,0 +1,21 @@
+2010-05-18T11:39:00.000Z	padde		is there a way I can skipt the partitioning step in the installer, and do that myself? it just hangs, because parted_server crashes for an unknown reason
+2010-05-18T11:39:00.000Z	jken418	padde	you can with the alternate CD in expert mode
+2010-05-18T11:40:00.000Z	padde	jken418	I'd like to use the Ubuntu Netbook edition, is there a boot option or something?
+2010-05-18T11:40:00.000Z	jken418	padde	ah, in that case, have you got the netbook edition image to install from?
+2010-05-18T11:41:00.000Z	padde	jken418	yes
+2010-05-18T11:42:00.000Z	jken418	padde	if it's crashing, perhaps you have a corrupted download or CD. Running the integrity check it offers at the boot screen should determine this.
+2010-05-18T11:43:00.000Z	padde	jken418	the CD is fine, I checked it already. I get a backtrace in /var/log/messages from libparted... maybe it doesn't like the two SSDs? but in any case, I'd consider that to be a bug in the installer / parted / ...
+2010-05-18T11:44:00.000Z	jken418	padde	What doesn't it like about the drives? Are they showing up in the output of fdisk -l ?
+2010-05-18T11:45:00.000Z	padde	jken418	yes, they show up fine. but if I try to start gparted, it crashes immediately
+2010-05-18T11:45:00.000Z	padde	jken418	"Assertion (head_size <= 63) at ... failed
+2010-05-18T11:46:00.000Z	jken418	padde	right... um, have you tried running parted?
+2010-05-18T11:47:00.000Z	padde	jken418	parted works, at least I can 'select /dev/sda' and 'select /dev/sdb', and 'print' on them, without a crash
+2010-05-18T11:48:00.000Z	jken418	padde	ok, that's good. How about you do your partitioning in parted, and go from there?
+2010-05-18T11:49:00.000Z	padde	jken418	but how do I go on in the installer? it hangs (supposedly because of the parted_server crash).
+2010-05-18T11:50:00.000Z	jken418	padde	ahh, it's the installer step? Sorry, I must've missed that; thougtht you were running gparted alone.  That is weird. You could try reinstalling gparted and/or ubiquity in the live cd environment.
+2010-05-18T11:55:00.000Z	padde	jken418	I'll try that... in any case, I consider that problem in the install process that should be fixed
+2010-05-18T12:40:00.000Z	padde	jken418	I found out the reason for the parted_server crash: gparted crashes when it sees the USB stick from which I was trying to install. trying with an external DVD drive now, and gparted works. I'll make a bug report against gparted later.
+2010-05-18T12:41:00.000Z	jken418	padde	that is strange. I've not seen that before.
+2010-05-18T12:42:00.000Z	padde	jken418	I find it strange, too. but it's perfectly reproducible.
+2010-05-18T12:42:00.000Z	jken418	padde	Well, congratulations then. You've found a bug!
+2010-05-18T12:43:00.000Z	padde	jken418	heh, wish I wouldn't find so many of them all the time ;) but well, that's software

@@ -1,0 +1,24 @@
+2007-04-16T05:32:00.000Z	funnyman3591		I need some help getting a wireless card working with ndiswrapper.  (Broadcom Corporation BCM4306 802.11b/g Wireless LAN Controller (rev 03))
+2007-04-16T05:32:00.000Z	funnyman3591		ndiswrapper looks to be detecting the hardware, but no wireless device has shown up.
+2007-04-16T05:32:00.000Z	kitche	funnyman3591	what does ndiswrapper -l say
+2007-04-16T05:33:00.000Z	funnyman3591	kitche	bcmwl5          driver present, hardware present
+2007-04-16T05:34:00.000Z	kitche	funnyman3591	ok see if you have a eth1
+2007-04-16T05:34:00.000Z	funnyman3591	kitche	Nope.  eth0 (wired), sit0, lo.
+2007-04-16T05:35:00.000Z	kitche	funnyman3591	that's what ifconfig -a tells you
+2007-04-16T05:35:00.000Z	funnyman3591	kitche	Well, I was looking at iwconfig, but same set of three.
+2007-04-16T05:36:00.000Z	kitche	funnyman3591	ok hmm your sure your doing ifconfig -a right? and not just ifconfig just want to make sure
+2007-04-16T05:36:00.000Z	funnyman3591	kitche	Yup.
+2007-04-16T05:36:00.000Z	kitche	funnyman3591	ok try this sudo modprobe ndiswrapper and see what it spits out
+2007-04-16T05:36:00.000Z	funnyman3591	kitche	No output, no change in ifconfig -a.
+2007-04-16T05:38:00.000Z	funnyman3591	kitche	Huh?  I'm wired up via eth0 (and IRCing over that).  The wireless works under Windows.  There's a hardware switch, but it appears to be on, based on the LED.
+2007-04-16T05:39:00.000Z	kitche	funnyman3591	well I was asking that just in case you were on another machine
+2007-04-16T05:39:00.000Z	kitche	funnyman3591	well if modprobe didn't output anything then it should be working but see if dmesg can see ndiswrapper
+2007-04-16T05:39:00.000Z	funnyman3591	kitche	Aha...
+2007-04-16T05:40:00.000Z	funnyman3591	kitche	dmesg gives three error messages from ndiswrapper.
+2007-04-16T05:40:00.000Z	funnyman3591	kitche	Windows driver is not 32-bit; bad magic: 020B
+2007-04-16T05:40:00.000Z	funnyman3591	kitche	couldn't prepare driver 'bcmwl5'
+2007-04-16T05:41:00.000Z	funnyman3591	kitche	and loadndiswrapper failed (65280); check system log for messages from 'loadndisdriver'
+2007-04-16T05:41:00.000Z	kitche	funnyman3591	guess you need to install 32bit driver
+2007-04-16T05:41:00.000Z	kitche	funnyman3591	think ndiswrapper doesn't work on x86_64
+2007-04-16T05:42:00.000Z	funnyman3591	kitche	Should be a 32bit machine.  Can't swear for the driver.
+2007-04-16T05:42:00.000Z	funnyman3591	kitche	Pulled that from http://ubuntuforums.org/showthread.php?t=340689&highlight=bcm4306+ndiswrapper

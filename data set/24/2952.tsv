@@ -1,0 +1,24 @@
+2008-06-12T02:35:00.000Z	NorthiestPole		Mind anyone help me? I have an Abit IP35-E running with a Marvell 88E8056, and Hardy won't recognize ethernet. It shows on lspci. Other than Keyboard/Mouse/Screen, I can't transfer anything. What do I do?
+2008-06-12T02:36:00.000Z	zvacet	NorthiestPole	: did you tried interminal pppoeconf to see if it is recognized
+2008-06-12T02:36:00.000Z	NorthiestPole	zvacet	Hmm.. I'll try.
+2008-06-12T02:38:00.000Z	NorthiestPole	zvacet	Well, it did recognize it there, and apparently ifconfig shows it too, but it just has no IP. I'll check /etc/network/interfaces
+2008-06-12T02:39:00.000Z	zvacet	NorthiestPole	: so you need to configure it
+2008-06-12T02:39:00.000Z	zvacet	NorthiestPole	: wired or wireless
+2008-06-12T02:40:00.000Z	NorthiestPole	zvacet	Right, I configured it now and doing /etc/init.d/networking restart. Apparently it doesn't seem to discover my router while configured via DHCP
+2008-06-12T02:40:00.000Z	NorthiestPole	zvacet	and it complains about /etc/resolv.conf being missing
+2008-06-12T02:42:00.000Z	zvacet	NorthiestPole	: network>DNS tab> put  yur nameservers there>
+2008-06-12T02:42:00.000Z	NorthiestPole	zvacet	Alright.
+2008-06-12T02:43:00.000Z	zvacet	NorthiestPole	: if you use router don´t delete first line jujst add one or two more
+2008-06-12T02:46:00.000Z	NorthiestPole	zvacet	Well, I added the nameservers, but It still isn't able to get an IP via DHCP. I tried doing static too, but then I can't even ping my router.
+2008-06-12T02:47:00.000Z	NorthiestPole	zvacet	On the DHCP process it says DHCPDISCOVER on eth0 to 255.255.255.255 port 67 interval <something>.
+2008-06-12T02:47:00.000Z	NorthiestPole	zvacet	I think it was 255.255.255.0 last time I checked
+2008-06-12T02:47:00.000Z	NorthiestPole	zvacet	Well, Should be.
+2008-06-12T02:49:00.000Z	zvacet	NorthiestPole	: network applet>manual config>select your modem (don´t check it just click on it)>properties>select your type of connection>DNS tab>put nameservers there>connection tab>check your modem now and you should see message changing iterfaces now
+2008-06-12T02:52:00.000Z	NorthiestPole	zvacet	Done, it showed that "Changing Interface Configuration" message, it went away, and it still didn't get an IP.
+2008-06-12T02:53:00.000Z	zvacet	NorthiestPole	: pppoeconf now to get resolve conf  that is all I can think of
+2008-06-12T02:56:00.000Z	NorthiestPole	zvacet	All pppoeconf does is some scanning and tells me that I don't have a "PPPoE consertum" or something like that.
+2008-06-12T02:58:00.000Z	zvacet	NorthiestPole	: gedit /etc/resolv.conf  and see if you have any nameserver there
+2008-06-12T02:59:00.000Z	NorthiestPole	zvacet	Yeah, I have the OpenDNS nameservers I set there and 192.168.1.1 (My router) Which I just added to see if changes anything, and it doesn't.
+2008-06-12T03:01:00.000Z	zvacet	NorthiestPole	: sorry I´m runing out of ideas try with somebody smarter then me
+2008-06-12T03:01:00.000Z	NorthiestPole	zvacet	Aight. Thanks for trying to help :)
+2008-06-12T03:02:00.000Z	zvacet	NorthiestPole	: sorry I didn´n make it work for you

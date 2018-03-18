@@ -1,0 +1,24 @@
+2008-12-22T00:15:00.000Z	usser_	force	i suppose you can setup a bash logon script to query and parse the ip
+2008-12-22T00:17:00.000Z	usser_	force	so what i'd do is create .bash_login in your home directory
+2008-12-22T00:18:00.000Z	usser_	force	that file is run whenever a new user is logged in
+2008-12-22T00:18:00.000Z	usser_	force	and then try to parse the results of who command in .bash_login
+2008-12-22T00:19:00.000Z	force	usser_	actually I set up my ssh-server daemon to use this file as a banner - on the man page was written that there *are* variables like "%t" for current time, but it doesn't seem to work...is there a way to call a bash script before the banner-file is read (or reading the output oft he script)?
+2008-12-22T00:20:00.000Z	usser_	force	did u modify your ssh server because i think by default it reads /etc/banner not /etc/issue.net
+2008-12-22T00:20:00.000Z	force	usser_	no, by default it is /etc/issue.net
+2008-12-22T00:22:00.000Z	usser_	force	yea i think you're right. but it seems issue.net doesnt allow remote ip. so as i said you can do it with the logon script for bash
+2008-12-22T00:23:00.000Z	usser_	force	try this create a file ~/.bash_login and put who in it
+2008-12-22T00:23:00.000Z	usser_	force	next time you login from ssh you should the output of who command which would tell you all users that are currently logged in
+2008-12-22T00:24:00.000Z	force	usser_	uhm, but I guess this will only executed if the login did not fail, won't it?
+2008-12-22T00:24:00.000Z	usser_	force	yes, then i dont understand your question
+2008-12-22T00:24:00.000Z	usser_	force	if login failed u wont see issue.net either
+2008-12-22T00:25:00.000Z	force	usser_	you see the banner before the ssh-login-thing appears
+2008-12-22T00:25:00.000Z	usser_	force	really let me test it
+2008-12-22T00:25:00.000Z	force	usser_	and with this banner I want to tell the scrippt-kiddie that their hacks will be logged
+2008-12-22T00:25:00.000Z	usser_	force	i see
+2008-12-22T00:28:00.000Z	usser_	force	right you are
+2008-12-22T00:36:00.000Z	force	usser_	okay, thank you for your help ;)
+2008-12-22T00:37:00.000Z	usser_	force	found anything? i cant think of anything besides a scripts that sits in the background and checks for incoming ssh connections
+2008-12-22T00:37:00.000Z	usser_	force	and modifies issue.net when a user connects
+2008-12-22T00:38:00.000Z	usser_	force	search the forums your problem sounds like something very commond
+2008-12-22T00:38:00.000Z	usser_	force	*common
+2008-12-22T00:38:00.000Z	force	usser_	no, I havent found something yet...

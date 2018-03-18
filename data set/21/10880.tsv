@@ -1,0 +1,21 @@
+2004-10-29T16:17:00.000Z	fragment		Uncomment 'BrowseAddress @LOCAL', 'BrowsePort 631', add 'Allow From @LOCAL' to the <Location />
+2004-10-29T16:17:00.000Z	fragment		...one more, let me look...
+2004-10-29T16:18:00.000Z	fragment		Oh, yeah, and uncomment 'Port 631' and comment out 'Listen 127.0.0.1:631'
+2004-10-29T16:18:00.000Z	fragment		(if you haven't already, which it sounds like you have)
+2004-10-29T16:18:00.000Z	fragment		Then '/etc/init.d/cupsys restart'
+2004-10-29T16:19:00.000Z	fragment		Oh, and comment 'Browsing Off'
+2004-10-29T16:20:00.000Z	SamBozo	fragment	I can't get to a printer on an xp box .. is that what I need to do ? go in /etc/cups/cupsd.conf  and edit something?
+2004-10-29T16:20:00.000Z	fragment	SamBozo	Yep
+2004-10-29T16:23:00.000Z	fragment	SamBozo	I might try to put up a page on the wiki.
+2004-10-29T16:24:00.000Z	fragment	SamBozo	For you, the big thing will be to add 'Allow From @LOCAL' to the bottom of the <Location /> section of /etc/cups/cupsd.conf
+2004-10-29T16:24:00.000Z	fragment	SamBozo	Then '/etc/init.d/cupsys restart'
+2004-10-29T16:24:00.000Z	fragment	SamBozo	Then you can use http://yourhostname:631/printers/yourprintername from your XP box.
+2004-10-29T16:25:00.000Z	fragment	SamBozo	You'll still need drivers for your printer, or go to cups.org and download the base CUPS driver for Windows.
+2004-10-29T16:26:00.000Z	fragment	SamBozo	Say that again?  Your Windows box has the printer attached?
+2004-10-29T16:27:00.000Z	fragment	SamBozo	You need to go to your Control panel for Windows and add/remove windows components and install print services for UNIX.
+2004-10-29T16:28:00.000Z	fragment	SamBozo	Then you can tell CUPS that you're printing to an LPR printer at the Windows box's IP.
+2004-10-29T16:28:00.000Z	fragment	SamBozo	Then you should be set.
+2004-10-29T16:29:00.000Z	fragment	SamBozo	You may have had it using an SMB share, which I think Mandrake does easily.  Not sure about Ubuntu.
+2004-10-29T16:30:00.000Z	fragment	SamBozo	Computer -> System Configuration -> Printing -> Add Printer.  You'll see the option for a Windows printer right there.
+2004-10-29T16:30:00.000Z	fragment	SamBozo	You should be set.
+2004-10-29T16:30:00.000Z	fragment	SamBozo	Check the event log on your Windows box.

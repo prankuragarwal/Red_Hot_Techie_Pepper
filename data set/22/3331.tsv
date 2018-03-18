@@ -1,0 +1,22 @@
+2008-12-02T10:54:00.000Z	scientes		where do i tell ubuntu what swap device to use
+2008-12-02T10:55:00.000Z	scientes		it broke cause it thinks it knows my computer better than me
+2008-12-02T10:55:00.000Z	scientes		it thinks there are swap partitions that dont exist
+2008-12-02T10:55:00.000Z	slackgen	scientes	it should be in /etc/fstab
+2008-12-02T10:55:00.000Z	slackgen	scientes	there should be a line like UUID=1a7a2174-9915-4af4-a7d7-d83d0ddf9460 none swap sw 0 0
+2008-12-02T10:55:00.000Z	scientes		it is and only that one but when i rebuild the kernel it allways says it found more than 1 possible when there is only 1
+2008-12-02T10:55:00.000Z	scientes	slackgen	yes my fstab is corectly set up
+2008-12-02T10:56:00.000Z	scientes		and i have a resume=/dev/ for my grub, but hibernation just broke because of some stupid upgrade
+2008-12-02T10:56:00.000Z	slackgen		ah
+2008-12-02T10:56:00.000Z	scientes		and hibernation is not smart, it broke alsa so i removeed that and then it complained about not finding the alsa modulee--duh
+2008-12-02T10:57:00.000Z	slackgen	scientes	it may be rejected the swap due to the broken image left still written
+2008-12-02T10:57:00.000Z	scientes		no the swap is mounted
+2008-12-02T10:57:00.000Z	slackgen	scientes	soo.. what's the problem then?
+2008-12-02T10:57:00.000Z	scientes		it wont hibernate
+2008-12-02T10:57:00.000Z	scientes		and it seems to be trying to suspend to a non-existant partition
+2008-12-02T10:58:00.000Z	scientes		I have 25 G of swap
+2008-12-02T10:58:00.000Z	scientes		tritium
+2008-12-02T10:58:00.000Z	slackgen		that's a lot.
+2008-12-02T10:58:00.000Z	scientes		i know the obvious tritium
+2008-12-02T10:58:00.000Z	scientes		i have tmp mounted as tmpfs
+2008-12-02T10:58:00.000Z	scientes		so i want to be safe
+2008-12-02T10:58:00.000Z	slackgen	scientes	it just suspends to whatever swap it can find, not any particular partition

@@ -1,0 +1,24 @@
+2012-07-28T00:21:00.000Z	DMASS		Hey everybody,   I hope someone can help cause Im out of ideas.  Im trying to communicate with an RS-232 device via a KeySpan USB to Serial adapter from a simple bash script to be run by cron.   If i use screen I can communicate with the device with no problems, but if I try to echo"mycmd" > /dev/ttyUSB0, I get nothing.  Ive checked dmesg and lsusb and everything looks fine. Ive also veryified baud stop bits etc, with stty. I have found simular issues online 
+2012-07-28T00:21:00.000Z	DMASS		 nothing actaully solved my problem. Anyone have any suggestions?   Oh ya,  Ubuntu Server 12.04
+2012-07-28T00:22:00.000Z	beandog	DMASS	it's a stab in the dark, but I wonder if there's a missing kernel module
+2012-07-28T00:23:00.000Z	beandog	DMASS	well there's ones for serial devices, plus also usb
+2012-07-28T00:23:00.000Z	beandog	DMASS	anyway, I dunno.  I'm just guessing.
+2012-07-28T00:24:00.000Z	beandog	DMASS	there's some apps to see what's going over the wire on USB though .. also need kernel modules, probably usb monitor at the very least.
+2012-07-28T00:24:00.000Z	DMASS	beandog	 ya, I have verified that the KEYSPAN modual is there and the usbserial as well;  thanks for the suggestion Ill take any thing right now
+2012-07-28T00:25:00.000Z	DMASS	beandog	any suggestions for a USB sniffer?
+2012-07-28T00:27:00.000Z	beandog	DMASS	no, dunno, just know that they're out there
+2012-07-28T00:27:00.000Z	beandog	DMASS	also looking at the kernel config, I'm not sure everything is in there.
+2012-07-28T00:27:00.000Z	beandog	DMASS	lemme check something real fast ... gimme a few
+2012-07-28T00:28:00.000Z	beandog	DMASS	also, http://sewelldirect.com/support/usbtoserialsupportlinux.aspx maybe?
+2012-07-28T00:29:00.000Z	DMASS	beandog	awesome, I have not seen that page yet somehow
+2012-07-28T00:29:00.000Z	beandog	DMASS	I just googled for linux debug usb serial
+2012-07-28T00:30:00.000Z	DMASS	beandog	this has become one of those issues were you get sucked in to thread after thread and Im sure ive lost the forest through the trees
+2012-07-28T00:30:00.000Z	beandog	DMASS	okay, wow, I think I found a major hole here
+2012-07-28T00:30:00.000Z	beandog	DMASS	How do you feel about building your own kernel? :)
+2012-07-28T00:31:00.000Z	beandog	DMASS	need to flip on usb verbose debug messages, usb announce new devices, and a few more
+2012-07-28T00:31:00.000Z	beandog	DMASS	at the very *least* those will give you more system output
+2012-07-28T00:31:00.000Z	DMASS	beandog	ive never done it but everybodys gotta start somewhere
+2012-07-28T00:32:00.000Z	beandog	DMASS	don't let it scare you, it's not bad.
+2012-07-28T00:32:00.000Z	DMASS	beandog	thanks, ill start googling
+2012-07-28T00:32:00.000Z	beandog	DMASS	I don't now how to do it in ubuntu, but I can tell you which options to flip on
+2012-07-28T00:32:00.000Z	beandog	DMASS	I'll PM yah

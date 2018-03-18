@@ -1,0 +1,21 @@
+2008-02-29T12:27:00.000Z	xTheGoat121x		Well... what happens is that when I boot, I get system sounds, and things like pidgin IM sounds, but if I try to play music or games, terminal informs me that the device is unavailable.
+2008-02-29T12:28:00.000Z	xTheGoat121x		I've noticed a call from sh to pulseaudio in my running processes, and if i kill it, I get my sound card back.
+2008-02-29T12:29:00.000Z	Dritzen	xTheGoat121x	 I wonder if you are using OSS drivers instead of ALSA?  The old OSS drivers could only have one audio source at a time, so anything using sound would cause other programs to not be able to access your soundcard
+2008-02-29T12:30:00.000Z	Dritzen	xTheGoat121x	 do you know the name of your soundcard in /etc/ ?  Is it /etc/dsp or what is it referenced as?  You can type fuser /etc/nameofyoursoundcard and it'll show what programs are using it at the time  (same goes for fuser /media/cdrom  to see what is using your cdrom, etc)
+2008-02-29T12:30:00.000Z	xTheGoat121x	Dritzen	nope.  I'm using ALSA, I know this for a fact.  It's that sh call that's killing me, and I don't know how to trace it down.
+2008-02-29T12:33:00.000Z	xTheGoat121x	Dritzen	how would I figure out which one is my sound card?
+2008-02-29T12:36:00.000Z	Dritzen	xTheGoat121x	 If you go to System, Preferences, Hardware information, then find your soundcard and go to Advanced, it will show you the device name.  For example, mine is called /etc/snd/seq
+2008-02-29T12:38:00.000Z	Dritzen	xTheGoat121x	 Actually, I found some other devices in /dev/snd
+2008-02-29T12:39:00.000Z	xTheGoat121x	Dritzen	all right, hold on a second.
+2008-02-29T12:40:00.000Z	xTheGoat121x	Dritzen	only strings I get are /sys/devices/     strings
+2008-02-29T12:40:00.000Z	Dritzen	xTheGoat121x	 I went to /dev/snd and typed:  fuser *   and it showed me that pcmC0D0p:             8495m    I'm running Exaile and playing audio through it, and I did ps aux | grep exaile and 8495 is the process ID, so that's how I can tell that exaile is using my audio
+2008-02-29T12:41:00.000Z	xTheGoat121x	Dritzen	aha, got it.  However, the problem still arises that I
+2008-02-29T12:42:00.000Z	Dritzen	xTheGoat121x	 The people that made fuser were clever.  It shows you what is accessing the device you inquire about.  However, you can use fuser -k devicename   and it'll KILL (stop) the process that is accessing it.   so for my example, if I typed fuser -k /dev/snd/pcmC0D0p   it will kill whatever program is accessing my soundcard
+2008-02-29T12:43:00.000Z	xTheGoat121x	Dritzen	that's pretty cool.  I never knew about that prog.
+2008-02-29T12:43:00.000Z	Dritzen	xTheGoat121x	 To be honest, I just learned about it recently myself :)
+2008-02-29T12:45:00.000Z	Dritzen	xTheGoat121x	 You could always write a simple bash script as well, to do that command before running your game, for example.
+2008-02-29T12:45:00.000Z	xTheGoat121x	Dritzen	that's exactly what I'm doing right now, actually... LMAO!
+2008-02-29T12:45:00.000Z	Dritzen	xTheGoat121x	 Personally, I use a script for all of my games to turn off compiz before I run them, then turn it back on 30 seconds after the game is finished :)
+2008-02-29T12:48:00.000Z	xTheGoat121x	Dritzen	I appreciate all your help.
+2008-02-29T12:48:00.000Z	Dritzen	xTheGoat121x	 no problem, I hope it worked :)
+2008-02-29T12:49:00.000Z	xTheGoat121x	Dritzen	well.. we shall see

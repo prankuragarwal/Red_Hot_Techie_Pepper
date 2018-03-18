@@ -1,0 +1,22 @@
+2008-07-31T14:07:00.000Z	dpic		can somebody help me? i just did a fresh install of ubuntu but i think my software sources list may be broken. i can't check off "Important Security Updates (hardy-security)" in the gui
+2008-07-31T14:08:00.000Z	Flannel	dpic	close the GUI, pastebin your sources.list
+2008-07-31T14:10:00.000Z	dpic	Flannel	http://pastebin.com/m42903fb4 i've done some messing with it sine the problem occurred but this is what it looks like now
+2008-07-31T14:12:00.000Z	Flannel	dpic	you want to disable -proposed.  But you've got security enabled (I'd also disable backports, but thats just me)
+2008-07-31T14:12:00.000Z	Flannel	dpic	Does sudo apt-get update give you errors?
+2008-07-31T14:21:00.000Z	dpic	Flannel	no, apt-get update doesn't return any errors
+2008-07-31T14:21:00.000Z	Flannel	dpic	Well, I'd say you're all fine.  I have no idea what's up with software sources though.
+2008-07-31T14:22:00.000Z	dpic	Flannel	alruight thanks for the help
+2008-07-31T14:24:00.000Z	Flannel	dpic	ACtually, shouldn't that be security.ubuntu.com?  That's probably what the GUI is looking for (and why its not checked when you look)
+2008-07-31T14:27:00.000Z	dpic	Flannel	line 51 was
+2008-07-31T14:28:00.000Z	Flannel	dpic	hmm, try changing that to main restricted unvierse mutliverse (not that that should make a difference)
+2008-07-31T14:28:00.000Z	Flannel	dpic	Just for yucks.  See if software sources likes that (and if it does, file a bug against it, and show how you fixed it, even if it odesn't, probably worthwhile to file a bug)
+2008-07-31T14:29:00.000Z	dpic	Flannel	nope, still can't check it off
+2008-07-31T14:29:00.000Z	Flannel	dpic	Very odd indeed.  Sounds like bugreport time.
+2008-07-31T14:30:00.000Z	dpic	Flannel	but how can anyone reproduce this?
+2008-07-31T14:31:00.000Z	Flannel	dpic	They probably can't, but the bug may still be find-able, and also if in a month someone else has the same issue, they'll find it, etc.
+2008-07-31T14:31:00.000Z	Flannel	dpic	They'll ask for your sources.list, etc.  In theory its duplicatable.
+2008-07-31T14:34:00.000Z	dpic	Flannel	is this my problem? https://bugs.edge.launchpad.net/ubuntu/+source/software-properties/+bug/244093
+2008-07-31T14:35:00.000Z	Flannel	dpic	When you click it, go to Third party software, does security show up there?
+2008-07-31T14:36:00.000Z	dpic	Flannel	yes it does
+2008-07-31T14:37:00.000Z	Flannel	dpic	then yeah, that's your bug.  And legend2440 had already given us the workaround (or you can just wait, since it doesn't cause any problems except not showing the checkbox checked)
+2008-07-31T14:37:00.000Z	dpic	Flannel	guess i'll jsut wait. thanks for the help

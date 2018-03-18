@@ -1,0 +1,24 @@
+2006-03-09T11:05:00.000Z	felipito		I'm trying to install a GeForce FX 5500 and when I do "sudo nvidia-glx-config enable" I get this error: "Error: your X configuration has been altered.
+2006-03-09T11:05:00.000Z	felipito		This script cannot proceed automatically."
+2006-03-09T11:06:00.000Z	felipito		any help?
+2006-03-09T11:07:00.000Z	felipito		please I need to make this thing work.
+2006-03-09T11:07:00.000Z	nickrud	felipito	yeah, I can help (someone!) do this: in a terminal, type gedit /etc/X11/xorg.conf, and paste all of that into paste.ubuntu-nl.org
+2006-03-09T11:09:00.000Z	felipito	nickrud	http://paste.ubuntu-nl.org/9700
+2006-03-09T11:12:00.000Z	nickrud	felipito	I haven't gone away, the job calls for a sec, I'll be back in less than 5
+2006-03-09T11:13:00.000Z	felipito	nickrud	ok, I'll try something, if it didn't work I'll be back.
+2006-03-09T11:51:00.000Z	felipito	nickrud	hi, I'm back with no luck.
+2006-03-09T11:52:00.000Z	nickrud	felipito	sudo aptitude install nvidia-glx nvidia-settings linux-restricted-modules-$(uname -r)
+2006-03-09T11:52:00.000Z	nickrud	felipito	I've been lurking :)
+2006-03-09T11:53:00.000Z	felipito	nickrud	thanks., let me try
+2006-03-09T11:53:00.000Z	nickrud	felipito	after you've done that, come back
+2006-03-09T11:53:00.000Z	felipito	nickrud	ok
+2006-03-09T12:08:00.000Z	felipito	nickrud	http://paste.ubuntu-nl.org/9704
+2006-03-09T12:10:00.000Z	nickrud	felipito	there should have been *some* reference to the packages on the command line; where are they?
+2006-03-09T12:10:00.000Z	felipito	nickrud	nope
+2006-03-09T12:11:00.000Z	felipito	nickrud	I have changed the nv for nvidia in xorg.conf but when it wants to run it tries to start but the logo seems out of reslution and it freezes there.
+2006-03-09T12:12:00.000Z	felipito	nickrud	and when I try glxgears it says "segmentation fault"
+2006-03-09T12:14:00.000Z	nickrud	felipito	hm, what nvidia card do you have?
+2006-03-09T12:14:00.000Z	felipito	nickrud	eVGA GeForce FX 5500
+2006-03-09T12:15:00.000Z	nickrud	felipito	then I cannot understand, why the aptitude install line I gave you, along with changing nv to nvidia in xorg.conf didn't work. It's worked so many times
+2006-03-09T12:17:00.000Z	felipito	nickrud	that's what I don't understand. I had an old legacy one and it worked fine when I changed the nv to nvidia.
+2006-03-09T12:18:00.000Z	nickrud	felipito	try nvidia-glx-legacy, then. Don't make sense to me, though.

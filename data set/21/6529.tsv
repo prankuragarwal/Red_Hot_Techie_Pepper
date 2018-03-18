@@ -1,0 +1,21 @@
+2007-08-03T16:52:00.000Z	kwtm	Dusk_	As long as the second one is not the one you are booting from!  (E.g. if you have sda1 and sda2, and you are booting from sda2, then if you merge the two, then sda1+sda2 becomes sda1, and if grub is trying to boot from sda2, it won't find it.)
+2007-08-03T16:53:00.000Z	Dusk_	kwtm	sda6+sda7..booting with sda7
+2007-08-03T16:53:00.000Z	kwtm	Dusk_	Then you better not merge the partitions.
+2007-08-03T16:53:00.000Z	Dusk_	kwtm	thanks a lot
+2007-08-03T16:54:00.000Z	kwtm	Dusk_	Rather, you can try: copying the contents of sda6 to sda7, then shrinkg sda6 so that it's so small that it doesn't matter (say, 3MB or 0.5MB?), and expanding sda7 to take up the space.
+2007-08-03T16:55:00.000Z	Dusk_	kwtm	i don't want any content on sda6 to sda7..i just want more diskspace on sda7(ubuntu)
+2007-08-03T16:55:00.000Z	kwtm	Dusk_	I don't know what program you plan to use.  If it's PartEd, gPartEd, or QtPartEd, know that I had some trouble moving and resizing partitions --some things it can't do.  I ended up using PartitionExpert, but some people like PartitionMagic, which is more popular.  For both of those, you have to pay. (I paid $45 for PartitionExpert.)
+2007-08-03T16:56:00.000Z	Dusk_	kwtm	i use gparted live cd generally
+2007-08-03T16:56:00.000Z	Dusk_	kwtm	so if i format sda6 and merge sda6+sda7 it's a problem then?
+2007-08-03T16:57:00.000Z	kwtm	Dusk_	See if gparted works.  Hope it does.  For future reference: I try to put all my boot partitions near the beginning of the disk, and then a large data partition would be at the end.  That way I don't cause too much trouble with names of partitions changing when I merge.
+2007-08-03T16:57:00.000Z	kwtm	Dusk_	Well, you would need to tell grub to boot from sda6, not sda7.
+2007-08-03T16:57:00.000Z	kwtm	Dusk_	I think, in grub, sda6 is hd(0,5) or something like that.
+2007-08-03T16:57:00.000Z	Dusk_	kwtm	how will i configure grub?
+2007-08-03T16:58:00.000Z	kwtm		Anyone able to answer my question?  How can I get a log of recently installed packages?
+2007-08-03T16:58:00.000Z	kwtm		!grub
+2007-08-03T16:58:00.000Z	kwtm		!drub| Dusk_
+2007-08-03T16:58:00.000Z	kwtm		!grub| Dusk_
+2007-08-03T16:58:00.000Z	Dusk_		thanks kwtm
+2007-08-03T16:59:00.000Z	kwtm	Dusk_	Sorry, I don't know too much myself, except: you need to find some grub config file, possibly in /boot/grub.conf or something, and then modify it.
+2007-08-03T16:59:00.000Z	kwtm	Dusk_	MAKE A BACKUP!!  Once you change the file, grub will start using your changes at next boot.  You do NOT have to "tell grub about the changes", unlike LILO.
+2007-08-03T05:00:00.000Z	Dusk_	kwtm	ok

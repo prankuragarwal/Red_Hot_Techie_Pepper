@@ -1,0 +1,23 @@
+2008-05-18T11:43:00.000Z	jilalxp2		I'm trying to install Ubuntu, coming over from windows.  I'm having problems during installation where it says "Starting powernowd..." and it freezes. it didn't ask me what disk to install to or anything like that yet.  Any ideas? looked all over forums couldnt find this specific problem.  Using Ubuntu cd to install on a formatted computer (used gparted)
+2008-05-18T11:43:00.000Z	jilalxp2		i tried renaming /etc/init.d/powernowd to /etc/init.d/powernowd-banned (i was advised to try this) but that didnt work
+2008-05-18T11:45:00.000Z	Jordan_U	jilalxp2	At what point in the installation to you get that error?
+2008-05-18T11:45:00.000Z	jilalxp2	Jordan_U	it seems i get that error before it asks me what drive to use, after it loads itself on to the harddrive
+2008-05-18T11:46:00.000Z	jilalxp2		if i type alt + f3 and type startx it brings me to the GUI but its not installed
+2008-05-18T11:47:00.000Z	Jordan_U	jilalxp2	What do you mean "after it loads itself on to the harddrive" how can it load anything to the hard drive before asking you what drive to use?
+2008-05-18T11:47:00.000Z	jilalxp2		er at least i think thats whats going on
+2008-05-18T11:48:00.000Z	jilalxp2	Jordan_U	i'm gonna erase the quiet splash so i can see whats going on during the install and tell you exactly where it stops
+2008-05-18T11:48:00.000Z	Jordan_U	jilalxp2	Note that the entire system can be run from the CD without touching the hard drive, so seeing the desktop does not mean does not mean that anything has been installed
+2008-05-18T11:48:00.000Z	jilalxp2	Jordan_U	i guess when i type startx it loads from the CD
+2008-05-18T11:48:00.000Z	Jordan_U	jilalxp2	Yes
+2008-05-18T11:49:00.000Z	jilalxp2	Jordan_U	when it hangs on that one error is there a way to skip that one step?
+2008-05-18T11:49:00.000Z	jilalxp2	Jordan_U	and continue with the install
+2008-05-18T11:49:00.000Z	Jordan_U	jilalxp2	Which means that any changes you make in /etc/init.d will be gone when you reboot as they are not being saved to the hard drive but exist only in RAM
+2008-05-18T11:50:00.000Z	jilalxp2	Jordan_U	makes sense, but how then do i avoid this error?
+2008-05-18T11:50:00.000Z	Jordan_U	jilalxp2	You could try booting into single user mode ( which will hopefully stop the boot process before that script is run ) , renaming the init script as you did before, then continuing the boot
+2008-05-18T11:51:00.000Z	jilalxp2	Jordan_U	ty for the advice, i'll look up single  user mode and try it and get back to you
+2008-05-18T11:52:00.000Z	Jordan_U	jilalxp2	just add the number '1' to the kernel parameters ( the same way you removed 'splash' )
+2008-05-18T11:53:00.000Z	jilalxp2	Jordan_U	ok ty, btw it starts a bunch of processes (avahi mDNS/DNS-SD Daemon avahi-daemon, Common Unix Printing System:cupsd) and others then gets to powernowd and stops
+2008-05-18T11:56:00.000Z	Jordan_U	jilalxp2	Then the steps would be to start in single user mode, choose to go to a recovery shell, run "mv /etc/init.d/powernowd /etc/init.d/powernowd-banned", then run "sudo init 1" and choose to continue booting
+2008-05-18T12:00:00.000Z	jilalxp2	Jordan_U	it went into the gui install, ty so much for the help
+2008-05-18T12:00:00.000Z	jilalxp2	Jordan_U	 was almost about to give up and back to windows =)
+2008-05-18T12:00:00.000Z	Jordan_U	jilalxp2	np :)

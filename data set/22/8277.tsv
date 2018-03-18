@@ -1,0 +1,22 @@
+2009-08-31T20:30:00.000Z	Q-FUNK		howdy!  I'd like to know, how do we add getty tty* on Ubuntu?  we don't use /etc/inittab because of upstrat, so what would be the correct place to add them?
+2009-08-31T20:31:00.000Z	sipior	Q-FUNK	have a look in /etc/event.d. you can just copy the tty files that already exist.
+2009-08-31T20:32:00.000Z	Q-FUNK	sipior	did that.  still no tty where I expect it :(
+2009-08-31T20:32:00.000Z	sipior	Q-FUNK	you don't have a /etc/event.d/tty1 and friends?
+2009-08-31T20:33:00.000Z	Q-FUNK	sipior	yes, but copying one of those, calling it tty9 and changing the content to tty9 didn't result in one extra tty coming up.
+2009-08-31T20:34:00.000Z	sipior	Q-FUNK	modify ACTIVE_CONSOLES in /etc/default/console-setup
+2009-08-31T20:34:00.000Z	Q-FUNK	sipior	so I'm wondering if new files in /etc/event.d need to be enabled somewhere else.
+2009-08-31T20:35:00.000Z	sipior	Q-FUNK	(else the other files won't be run)
+2009-08-31T20:35:00.000Z	Q-FUNK	sipior	and then relaunch which startup file?
+2009-08-31T20:36:00.000Z	Q-FUNK	sipior	or sorry, which init.d script?
+2009-08-31T20:37:00.000Z	Q-FUNK	sipior	if it's console-setup, that didn't enable the new tty either.
+2009-08-31T20:37:00.000Z	Q-FUNK	sipior	and I already defined tty as 1-9 there
+2009-08-31T20:37:00.000Z	sipior	Q-FUNK	it's not. reboot for a proper test.
+2009-08-31T20:38:00.000Z	Q-FUNK	sipior	can't that be activated live by restarting some script?
+2009-08-31T20:38:00.000Z	sipior	Q-FUNK	probably. i like to make sure my changes survive a reboot, as a sort of useful paranoia.
+2009-08-31T20:39:00.000Z	Q-FUNK	sipior	I'd like to test first, before rebooting.  just reloading all the tabs in Firefox takes about 30 minutes.  if there's any way I can avoid rebooting, I'd rather do that
+2009-08-31T20:39:00.000Z	sipior	Q-FUNK	do what you like :-)
+2009-08-31T20:40:00.000Z	Q-FUNK	sipior	hence why I'm asking how to tell upstrat to reload its event.d scripts
+2009-08-31T20:40:00.000Z	sipior	Q-FUNK	actually, try "initctl reload" see if that works.
+2009-08-31T20:41:00.000Z	sipior	Q-FUNK	also, for future reference: http://upstart.ubuntu.com
+2009-08-31T20:44:00.000Z	Q-FUNK	sipior	ah, good one.  thanks!
+2009-08-31T20:44:00.000Z	sipior	Q-FUNK	yep, no trouble

@@ -1,0 +1,22 @@
+2011-02-25T01:18:00.000Z	brunot		eruUSUL: I did not reimplement :) just called it from my C++ prog
+2011-02-25T01:20:00.000Z	brunot		tournoid@ssh1:~/bruno$ ps -ef
+2011-02-25T01:20:00.000Z	brunot		UID        PID  PPID  C STIME TTY          TIME CMD
+2011-02-25T01:20:00.000Z	brunot		tournoid 18029 17950  0 21:05 ?        00:00:00 sshd: tournoid@pts/1
+2011-02-25T01:20:00.000Z	brunot		tournoid 18030 18029  0 21:05 pts/1    00:00:00 -ovh_ssh
+2011-02-25T01:20:00.000Z	brunot		tournoid 24724 18030  0 21:19 pts/1    00:00:00 ps -ef
+2011-02-25T01:22:00.000Z	maco	brunot	use the pastebin. paste.ubuntu.com
+2011-02-25T01:23:00.000Z	brunot	maco	http://paste.ubuntu.com/571899/ - I think it is the link to the result
+2011-02-25T01:26:00.000Z	brunot	maco	I am renting a shared hosting web server. I can't use a crontab (no permissions), the server only allows some scheduler
+2011-02-25T01:27:00.000Z	brunot	maco	and not at the exact time & frequency I want my "signals", so I wrote a little c++ prog which basically sleeps the right amount of time
+2011-02-25T01:27:00.000Z	maco	brunot	sounds like a kludge on top of a mess
+2011-02-25T01:27:00.000Z	brunot	maco	then wakes up to do its stuff and sleeps again until the next time. It detects if there is a "more recent" instance of itself running and shuts down in that case
+2011-02-25T01:37:00.000Z	brunot	maco	the script is basically going in the right directory and launching "test &"
+2011-02-25T01:37:00.000Z	maco	brunot	try "exec test"
+2011-02-25T01:37:00.000Z	maco	brunot	exec spawns it off as a separate process allowing the shell to close
+2011-02-25T01:38:00.000Z	brunot	maco	just "exec test" or "exec test &"
+2011-02-25T01:39:00.000Z	brunot	maco	I thought the "&" at the end of the command was meant for this
+2011-02-25T01:40:00.000Z	maco	brunot	but the shell still has to stay open. if you background a process and close the shell, the process ends. (unless you use "nohup" which intercepts SIGHUP)
+2011-02-25T01:40:00.000Z	maco	brunot	im just throwing ideas out there for what may make a difference in behaviour
+2011-02-25T01:41:00.000Z	brunot	maco	I searched some stuff on the net today, I kind of found about the same, nohup, screen ..
+2011-02-25T01:41:00.000Z	brunot	maco	did not test yet
+2011-02-25T02:02:00.000Z	brunot	maco	thanks for your help, I will try the different things

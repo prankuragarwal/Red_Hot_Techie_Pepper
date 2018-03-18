@@ -1,0 +1,21 @@
+2010-07-01T13:49:00.000Z	kee		hey, ist there a way to rewrite a partition table, without formatting the disk?
+2010-07-01T13:50:00.000Z	_vadim	kee	you can modify the partition table on a disk you're using, and for instance delete unused partitions and create new ones
+2010-07-01T13:51:00.000Z	_vadim	kee	I'd recommend setting up LVM, it's much nicer if you want to reorganize things
+2010-07-01T13:51:00.000Z	kee	_vadim	i already have all partitions. but the partition table was destoryed.
+2010-07-01T13:51:00.000Z	kee	_vadim	but i remember how i set them up
+2010-07-01T13:52:00.000Z	_vadim	kee	then if you recreate them exactly as they were, that should work
+2010-07-01T13:52:00.000Z	kee		with fdisk
+2010-07-01T13:52:00.000Z	_vadim	kee	there's also gpart, which can look at the disk and try to guess the partition table it should have
+2010-07-01T13:53:00.000Z	kee		yeah, i tried this already
+2010-07-01T13:53:00.000Z	kee		but it only detected 1 of 3 partitions
+2010-07-01T13:53:00.000Z	_vadim	kee	what destroyed your partition table? it may have destroyed a filesystem too
+2010-07-01T13:54:00.000Z	kee	_vadim	i really dont know, i switchted the disk a NAS device to my own system.
+2010-07-01T13:55:00.000Z	kee	_vadim	but i know, that the data is still there, i saw it with strace + gpart
+2010-07-01T13:55:00.000Z	_vadim	kee	anyway, editing the partition table with fdisk doesn't reformat anything, so if you can recreate the exact setup it should work
+2010-07-01T13:55:00.000Z	kee		well i hope :>
+2010-07-01T13:56:00.000Z	_vadim	kee	in any case, I'd recommend backing up the entire disk. You can also backup the partition table by copying the first sector
+2010-07-01T13:57:00.000Z	kee	_vadim	well if I have a backup of the partition table, how can i rewrite it to the disk?
+2010-07-01T13:57:00.000Z	_vadim	kee	backup: dd if=/dev/sda of=/home/kee/mbr_backup bs=512 count=1
+2010-07-01T13:58:00.000Z	_vadim	kee	restore: dd if=//home/kee/mbr_backup of=/dev/sda bs=512 count=1
+2010-07-01T13:58:00.000Z	kee	_vadim	well - thanks :)
+2010-07-01T13:58:00.000Z	_vadim	kee	no problem :-)

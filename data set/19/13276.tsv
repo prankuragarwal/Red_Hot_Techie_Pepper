@@ -1,0 +1,19 @@
+2005-05-05T14:38:00.000Z	tremor_	ulisse	actually, 255.255.255.248 can be a netmask
+2005-05-05T14:38:00.000Z	ulisse	tremor_	really?
+2005-05-05T14:39:00.000Z	ulisse		and what does it means?
+2005-05-05T14:39:00.000Z	tremor_	ulisse	it means you have 3 bits available for the host part, while all the others are network bits
+2005-05-05T14:40:00.000Z	ulisse	tremor_	so I didnt't understand anything about networking... :-((
+2005-05-05T14:41:00.000Z	tremor_		NNNNNNNN NNNNNNNN NNNNNNNN NNNNN HHH, meaning you have a lot of networks with very few PC's
+2005-05-05T14:42:00.000Z	tremor_		but beside that, using a subnet mask like that on a home network is really overkill
+2005-05-05T14:43:00.000Z	ulisse	tremor_	I have a network related problem too
+2005-05-05T14:43:00.000Z	tremor_	ulisse	shoot :-)
+2005-05-05T14:44:00.000Z	ulisse	tremor_	I changed my LAN chip, hoary recognized it but I am unable to connect to my router anymore
+2005-05-05T14:44:00.000Z	ulisse	tremor_	when I set the use of DHCP to get the IP, Hoary says that he can't start the interface
+2005-05-05T14:44:00.000Z	tremor_	ulisse	is your gateway properly configured ?
+2005-05-05T14:45:00.000Z	ulisse	tremor_	with the old config the GW was retrieved automatically from the router
+2005-05-05T14:46:00.000Z	tremor_	ulisse	try using command line commands, like:
+2005-05-05T14:47:00.000Z	tremor_	ulisse	something like --> ifconfig ethX down && ifconfig ethX 192.168.0.X netmask 255.255.255.0 broadcast 192.168.0.255 && route add -net default gw 192.168.0.1 netmask 0.0.0.0 metric 1 ethX
+2005-05-05T14:47:00.000Z	tremor_		&& ifconfig ethX up
+2005-05-05T14:48:00.000Z	ulisse	tremor_	but in that way I use a fixed IP, not DHCP
+2005-05-05T14:48:00.000Z	tremor_		yes, i know, but just check if it works
+2005-05-05T14:49:00.000Z	ulisse	tremor_	ok, I have to disconnect from here, to check. Back soon...

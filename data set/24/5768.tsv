@@ -1,0 +1,24 @@
+2006-05-12T08:48:00.000Z	amiga		what do i need to add to fstab so it will mount my 2nd hdd automatic.
+2006-05-12T08:48:00.000Z	amiga		tha hdd is
+2006-05-12T08:49:00.000Z	amiga		   Device Boot      Start         End      Blocks   Id  System
+2006-05-12T08:49:00.000Z	amiga		/dev/hdf1   *           1       19456   156280288+  83  Linux
+2006-05-12T08:49:00.000Z	bbrazil	amiga	add a line similar to the current ones, except change /dev/hdf1 and the mountpoint
+2006-05-12T08:51:00.000Z	bbrazil	amiga	if you change your file and pastebin it, I can tell you if it's right
+2006-05-12T08:53:00.000Z	amiga	bbrazil	http://pastebin.com/703565
+2006-05-12T08:54:00.000Z	amiga	bbrazil	i dont know if the options are good what about /dev/hda3       /mnt/hard1     ext3    defaults,errors=remount-ro 0       1   ?
+2006-05-12T08:54:00.000Z	bbrazil	amiga	looks fine. The errors= tell the kernel what to do if the disk goes dodgy
+2006-05-12T08:56:00.000Z	amiga	bbrazil	right .. but i should change ro to rw so i have write permission isnt it ?
+2006-05-12T08:56:00.000Z	bbrazil	amiga	no, defaults includes rw
+2006-05-12T08:57:00.000Z	amiga	bbrazil	ohh i see ... but whats that ro there for then ?
+2006-05-12T08:57:00.000Z	bbrazil	amiga	well, if the disk fails or the FS becomes inconsistant you can either remount it read-only or kernel panic
+2006-05-12T08:57:00.000Z	amiga	bbrazil	ohh so its just in case like
+2006-05-12T08:57:00.000Z	bbrazil	amiga	yeah
+2006-05-12T08:58:00.000Z	amiga	bbrazil	ok thanks a lot
+2006-05-12T08:58:00.000Z	amiga	bbrazil	so from now on my 2nd hdd will be mounted automat. on boot and it will be owned by the user or root ?
+2006-05-12T08:59:00.000Z	bbrazil	amiga	it'll apply permissions as per the filesystem as it's ext3
+2006-05-12T08:59:00.000Z	bbrazil	amiga	unless you have od requirements, it's what you want
+2006-05-12T09:00:00.000Z	bbrazil	amiga	then when it's mounted set the permissions to 1777 (same as /tmp)
+2006-05-12T09:00:00.000Z	amiga	bbrazil	i just set sudo chown -R user:user /mount/location   will this stay like this forever ?
+2006-05-12T09:01:00.000Z	bbrazil	amiga	that'll work too
+2006-05-12T09:03:00.000Z	amiga	bbrazil	i will reboot now to see if it works
+2006-05-12T09:03:00.000Z	amiga	bbrazil	thanks for your help

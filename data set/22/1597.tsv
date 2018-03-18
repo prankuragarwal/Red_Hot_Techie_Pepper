@@ -1,0 +1,22 @@
+2010-03-25T22:12:00.000Z	LoganPhyve		anyone have any idea how to force ubuntu server to use an external DNS for resolving a domain name?
+2010-03-25T22:14:00.000Z	LoganPhyve		well my in house DNS has an issue resolving this address interally, djveer , i want to point it to an external
+2010-03-25T22:14:00.000Z	iustinian	LoganPhyve	u should do that in router configuration
+2010-03-25T22:15:00.000Z	iustinian	LoganPhyve	do you have access to externl DNS queries ?
+2010-03-25T22:16:00.000Z	iustinian	LoganPhyve	try to query with dig
+2010-03-25T22:16:00.000Z	iustinian	LoganPhyve	dig@remoteserver yahoo.com
+2010-03-25T22:17:00.000Z	iustinian	LoganPhyve	dig @remote name
+2010-03-25T22:20:00.000Z	LoganPhyve	iustinian	shows as Internet A record on dyndys
+2010-03-25T22:20:00.000Z	iustinian	LoganPhyve	do you see an aswer section there and an IP ?
+2010-03-25T22:21:00.000Z	LoganPhyve	iustinian	i show quesiton section authority section, says got ansswer, no error, recursion requested but not avail
+2010-03-25T22:22:00.000Z	iustinian	LoganPhyve	try to query another server something form opendns eg
+2010-03-25T22:24:00.000Z	LoganPhyve	iustinian	yes, i get positive results from another name server as well
+2010-03-25T22:25:00.000Z	iustinian	LoganPhyve	it is possible in some server configs not to have a name.com answer but only www.name.com
+2010-03-25T22:26:00.000Z	LoganPhyve	iustinian	my house dns is windows serv 2k3, i believe. i show an A record but it only points to my 2 in house dns' for that domain without the www. sub in front. do you know if it's possible to add a third extrenal name server to that without messing up the house dns records?\
+2010-03-25T22:28:00.000Z	iustinian	LoganPhyve	if you are getting a negative response u have nothing to do, if the server times out it will hit your 32rd and 3rd line in toyr resolv.conf
+2010-03-25T22:29:00.000Z	LoganPhyve	iustinian	can i add the external nameserver to either resolv.conf or my in house windows dns?
+2010-03-25T22:29:00.000Z	LoganPhyve	iustinian	when i added the nameserver to my resolv.conf file, it does not stay put, it reverts after reboot
+2010-03-25T22:29:00.000Z	iustinian	LoganPhyve	you can add it in both locations if you want but better add it to your resolv.conf
+2010-03-25T22:31:00.000Z	LoganPhyve	iustinian	i've added to resolv.conf but it does not save changes after reboot
+2010-03-25T22:31:00.000Z	iustinian	LoganPhyve	can u add it to naetwork manager configuration ?
+2010-03-25T22:31:00.000Z	LoganPhyve	iustinian	not sure, running in CLI mode only for server
+2010-03-25T22:32:00.000Z	LoganPhyve	iustinian	i have been putting in on the 5th or 6th line down. does it ned to be on the third?

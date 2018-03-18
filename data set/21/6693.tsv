@@ -1,0 +1,21 @@
+2007-02-19T17:58:00.000Z	kondor21		newbie here so sorry because I know that this question is probably common.  On "system monitor" I can only see one of my hard drives, I mounted the other one before, but is there a way to make it mount so it stays on all the time?
+2007-02-19T17:58:00.000Z	Frogzoo	kondor21	you want to use gparted to create new partitions (ext3 file system format) & add the partitions to /etc/fstab (use blkid to get the UUIDs)
+2007-02-19T06:00:00.000Z	kondor21	Frogzoo	 whooa, thats a bit techy for me.  I mounted the drive a few days ago.  It was formated then.  I just assumed it would stick around but apparently its not.  I guess I did not mount it permenantly and did some tempory thing.
+2007-02-19T06:03:00.000Z	kondor21	Frogzoo	 hold on, I just checked System/ Disk Manager from the pull down menu and I can see it "hdb"  I wonder why I can not see itSystem Monitor ?  any ideas anyone?
+2007-02-19T06:04:00.000Z	Frogzoo	kondor21	you need to add the partitions to /etc/fstab
+2007-02-19T06:04:00.000Z	kondor21	Frogzoo	any clue as to how I do that?
+2007-02-19T06:05:00.000Z	kondor21	Frogzoo	I have opened ect/fstab
+2007-02-19T06:07:00.000Z	Frogzoo	kondor21	you need to add similar lines that will mount the partitions on the new disk
+2007-02-19T06:07:00.000Z	kondor21	Frogzoo	 OK I will copy n paste the hda lines and change them to hdb so I have both, and pray
+2007-02-19T06:08:00.000Z	Frogzoo	kondor21	that won't help much
+2007-02-19T06:08:00.000Z	kondor21	Frogzoo	oh darn it
+2007-02-19T06:08:00.000Z	Frogzoo	kondor21	run 'blkid' - that will show you the UUIDs you need to reference the partitions on the new drive
+2007-02-19T06:10:00.000Z	kondor21	Frogzoo	dude, your being way too techy for me, I am sorry
+2007-02-19T06:12:00.000Z	kondor21	Frogzoo	I figured out this bit so far...  UUID="6de108b5-163c-4153-81e7-540f2913109a" TYPE="ext2"
+2007-02-19T06:15:00.000Z	Frogzoo	kondor21	tbh, you'd be best off to reformat as ext3
+2007-02-22T07:04:00.000Z	kondor21	Frogzoo	did, no one answered :) so thought I would throw my hand up with an "anyone" sure you understand
+2007-02-22T07:06:00.000Z	Frogzoo	kondor21	new mounts overlay the file system at the mount point - you'll need to transfer the users on the root partition over to the new /home
+2007-02-22T07:07:00.000Z	Frogzoo	kondor21	mount the new partition elsewhere, eg. /mnt - & copy over the users from the root partition
+2007-02-22T07:09:00.000Z	kondor21	Frogzoo	So I would still need to copy them even though I am mounting in /mnt ?  copy them to /mnt?  I should explain I got them back as I did not fstab the mount just terminal mount to test
+2007-02-22T07:10:00.000Z	Frogzoo	kondor21	mount the new partition to /mnt - copy over /home/* to /mnt, then unmount /mnt & remout it as /home  - clear as mud?
+2007-02-22T07:11:00.000Z	kondor21	Frogzoo	yes, I think I will make a mental note to backup /home incase I decide to change the hard drive in future

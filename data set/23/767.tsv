@@ -1,0 +1,23 @@
+2011-02-20T01:13:00.000Z	middle		Hello
+2011-02-20T01:13:00.000Z	middle		OK, i have a weird issue, and i think i know a soultion, but i stilll need some help
+2011-02-20T01:14:00.000Z	middle		When i boot Ubuntu 10.10 i get to the loading screen then when it goes to the login prompt, it blackscreens. I had this issue whilst trying to install Arch, i overcame it by adding 'nomodeset' to the end of the grub menu... but i can't seem to do that here. ANy suggestions?
+2011-02-20T01:15:00.000Z	middle		Oh i also had this issue prior to arch, (thats why i tried arch)
+2011-02-20T01:15:00.000Z	Dr_Willis	middle	 you can add nomemtest to the default options, or hit 'e' and edit the grub boot line and add it there.
+2011-02-20T01:15:00.000Z	Dr_Willis	middle	 repkace 'nosplash quiet' with 'nomodeset' in the grub entry
+2011-02-20T01:16:00.000Z	Dr_Willis	middle	 replaceing nosplash quiet - will also disable plymouth that often has issues with the drivers..
+2011-02-20T01:17:00.000Z	Dr_Willis	middle	 so you should have a nice text type boot screen :) no fancy animation
+2011-02-20T01:17:00.000Z	Dr_Willis	middle	 thats is what i do
+2011-02-20T01:19:00.000Z	middle	Dr_Willis	is just editing it and pressing Ctl+x actually saving it or jsu tbooting?
+2011-02-20T01:19:00.000Z	Dr_Willis	middle	  the tips should tell you. i cant rember.
+2011-02-20T01:21:00.000Z	middle	Dr_Willis	hmmmm still nothing... how about radeon.modeset=0? Or is there another solution?
+2011-02-20T01:23:00.000Z	Dr_Willis	middle	 i only have needed nomodeset with muy nvidia cards.
+2011-02-20T01:24:00.000Z	Dr_Willis	middle	 fstab wouldent be affecting the system booting graphics systems..
+2011-02-20T01:28:00.000Z	middle	Dr_Willis	where can i edit the grub menu from a terminal? Like you know how you edit it in the grub menu with e, but i want to edit the file that that is read from. in arch it was /boot/grub/menu.lst any idea what teh arch equivalent is?
+2011-02-20T01:28:00.000Z	Dr_Willis	middle	 /etc/default/grub and /etc/grub.d/ have the configs to edit. then rerun update-grub
+2011-02-20T01:28:00.000Z	Dr_Willis	middle	 read teh grub2 wiki pages.
+2011-02-20T01:32:00.000Z	Dr_Willis	middle	 check the wiki/forums for your exact chipset. I got 1 ati system..
+2011-02-20T01:58:00.000Z	Dr_Willis	middle	 boot live cd, chroot into installed system. use package manager tools as needed.
+2011-02-20T01:58:00.000Z	Dr_Willis	middle	 or edit the installed systems xorg.conf to use 'Driver 'ati'' or 'Driver 'vesa'' instead of 'driver flgrx'
+2011-02-20T02:00:00.000Z	Dr_Willis	middle	 with the 'chroot /path/to/use' command
+2011-02-20T02:01:00.000Z	Dr_Willis	middle	 you could check the xorg.conf first.. see what Driver 'XXXX' its set to be using.
+2011-04-29T22:44:00.000Z	Dr_Willis	middle	 yes it will.

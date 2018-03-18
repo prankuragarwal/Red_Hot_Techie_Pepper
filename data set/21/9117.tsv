@@ -1,0 +1,21 @@
+2006-06-09T15:07:00.000Z	ompaul	lab	I may or may not have answers
+2006-06-09T15:08:00.000Z	lab	ompaul	check that pastebin link
+2006-06-09T15:09:00.000Z	lab	ompaul	check my whole thing here
+2006-06-09T15:09:00.000Z	ompaul	lab	so you can't mount the first partition?
+2006-06-09T15:09:00.000Z	lab	ompaul	yes
+2006-06-09T15:09:00.000Z	ompaul	lab	just a second
+2006-06-09T15:10:00.000Z	ompaul	lab	 in fstab it should look **like** this:: /dev/hda1       /media/windows  ntfs    nls=utf8,ro,user,umask=000 0       0
+2006-06-09T15:11:00.000Z	lab	ompaul	http://pastebin.com/770834
+2006-06-09T15:13:00.000Z	ompaul	lab	I suggested a different ntfs entry: this:: /dev/hda1       /media/windows  ntfs    nls=utf8,ro,user,umask=000 0       0
+2006-06-09T15:13:00.000Z	ompaul	lab	we know it works :-)
+2006-06-09T15:14:00.000Z	lab	ompaul	that is working
+2006-06-09T15:14:00.000Z	lab	ompaul	it is my windows partition
+2006-06-09T15:14:00.000Z	lab	ompaul	why aren't hdb1 abd hdb2 mounting correctly if the ntfs in hda1 is mounted correctly?
+2006-06-09T15:15:00.000Z	lab	ompaul	it's not that the etc/fstab is wrong its that the devices are not even in /dev/hdb1
+2006-06-09T15:16:00.000Z	lab	ompaul	the /etc/fstab won't work unless linux recognizes these /dev/hdb1 and show them there
+2006-06-09T15:18:00.000Z	ompaul	lab	will you do me a favour do this: put a # in front of this ->> dev/hdb1 /media/hdb1 ntfs ro,user,fmask=0133,dmask=0022,uid=1000,gid=1000 0 0then ; sudo mkdir /media/windows then add this to /etc/fstab >>  /dev/hdb1       /media/windows  ntfs    nls=utf8,ro,user,umask=000 0       0 <<
+2006-06-09T15:19:00.000Z	lab	ompaul	mount: special device /dev/hdb1 does not exist
+2006-06-09T15:20:00.000Z	ompaul	lab	after the change?
+2006-06-09T15:20:00.000Z	ompaul	lab	okay, okay let me check something
+2006-06-09T15:20:00.000Z	lab	ompaul	I'll bbl I am gonna check this out in windows
+2006-06-09T15:21:00.000Z	ompaul	lab	then I will leave it I have other things to do

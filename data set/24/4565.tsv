@@ -1,0 +1,24 @@
+2009-01-22T22:50:00.000Z	IkimashoZ		Hi everyone.  I've got a problem with a computer I'm trying to install here at work.  When I did a regular install, the GUI for the installation worked fine, but, after installed, the system would not load the GUI after I logged in at the usplash screen.  Yesterday I corrected the problem (partially) by installing in safe gfx mode.  I can log in now, but the screen is stuck at 640x480.  I definitely need a higher resolution if this machine is going t
+2009-01-22T22:50:00.000Z	aarkerio	IkimashoZ	look with "sudo lspci" your video card
+2009-01-22T22:51:00.000Z	IkimashoZ	aarkerio	 kk hold on, the computer in question is in another room
+2009-01-22T22:56:00.000Z	IkimashoZ	aarkerio	jack_sparrow: intel corporation 82845G
+2009-01-22T22:57:00.000Z	aarkerio	IkimashoZ	   $sudo nano /etc/X11/xorg.conf
+2009-01-22T23:00:00.000Z	IkimashoZ	aarkerio	what am I looking to do to this file?
+2009-01-22T23:01:00.000Z	aarkerio	IkimashoZ	a Device section  with something like   BusID "PCI:0:2:0"
+2009-01-22T23:01:00.000Z	aarkerio	IkimashoZ	this is the X window confg file
+2009-01-22T23:03:00.000Z	IkimashoZ	aarkerio	Okay, I changed the line (It was "vesa" before.  I changed it to "i810" like you said).  Then I saved the file.  Then I exited the terminal.  Then I hit ctrl+alt+bksp to restart X.  Blank screen.
+2009-01-22T23:04:00.000Z	aarkerio	IkimashoZ	  ctrl+alt+f1 to get console
+2009-01-22T23:05:00.000Z	IkimashoZ	aarkerio	kk
+2009-01-22T23:05:00.000Z	aarkerio	IkimashoZ	no, looke, you should have a xorg.conf like this:
+2009-01-22T23:07:00.000Z	aarkerio	IkimashoZ	 backup your xorg.conf and run:  $sudo dpkg-reconfigure -phigh xserver-xorg
+2009-01-22T23:12:00.000Z	IkimashoZ	aarkerio	 kk, so I should change xorg.conf back to the way it was??
+2009-01-22T23:14:00.000Z	aarkerio	IkimashoZ	try setting:  Driver "intel"
+2009-01-22T23:14:00.000Z	aarkerio	IkimashoZ	 and then:  $sudo /etc/init.d/gdm restart
+2009-01-22T23:21:00.000Z	IkimashoZ	aarkerio	yeah, my workmates think it's funny too ;)
+2009-01-22T23:21:00.000Z	aarkerio	IkimashoZ	weird, Intel card are the easiers because the modules are already in kernel
+2009-01-22T23:22:00.000Z	aarkerio	IkimashoZ	don't give up !  :-)   you restart the gdm daemon ?
+2009-01-22T23:23:00.000Z	IkimashoZ	aarkerio	no, I didn't
+2009-01-22T23:27:00.000Z	IkimashoZ	aarkerio	 on a hunch, I restarted the computer with driver "intel"
+2009-01-22T23:28:00.000Z	aarkerio	IkimashoZ	your welcome, but please read Intel page about the driver
+2009-01-22T23:29:00.000Z	aarkerio	IkimashoZ	run   sudo glxinfo
+2009-01-22T23:30:00.000Z	IkimashoZ	aarkerio	okay, can do.  thanks again!

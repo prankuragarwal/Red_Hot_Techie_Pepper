@@ -1,0 +1,18 @@
+2008-01-20T11:38:00.000Z	df20fs		anyone willing to tackle a vmware question?
+2008-01-20T11:38:00.000Z	df20fs		workstation specifically.
+2008-01-20T11:38:00.000Z	df20fs		slapped in a wifi card; ath0 and tried bridging it to vmnet2 and i get....
+2008-01-20T11:39:00.000Z	df20fs		 Bridged networking on /dev/vmnet0 done  Host network detection done   Bridged networking on /dev/vmnet2 failed
+2008-01-20T11:39:00.000Z	df20fs		when running vmware-config
+2008-01-20T11:40:00.000Z	df20fs		futher into it
+2008-01-20T11:40:00.000Z	df20fs		/usr/bin$ sudo ./vmnet-bridge -D /dev/vmnet2 ath0
+2008-01-20T11:40:00.000Z	df20fs		Turning on bridge to ath0...
+2008-01-20T11:40:00.000Z	df20fs		ath0: Not a valid Ethernet interface
+2008-01-20T11:40:00.000Z	df20fs		hm, thx anyways.
+2008-01-20T11:40:00.000Z	tomd	df20fs	uh
+2008-01-20T11:40:00.000Z	tomd	df20fs	it doens't work with the atheros drivers
+2008-01-20T11:40:00.000Z	tomd	df20fs	you can A. edit the source of the athreros drivers (not recommended)
+2008-01-20T11:40:00.000Z	tomd	df20fs	or B. use nat.
+2008-01-20T11:41:00.000Z	tomd	df20fs	why is NAT not an option for you?
+2008-01-20T11:42:00.000Z	tomd	df20fs	well, I think that its common for vmware bridged networking to not work with wifi cards.
+2008-01-20T11:45:00.000Z	tomd	df20fs	all I had to do to get it to work on linux, was change the value of a few constants
+2008-01-20T11:45:00.000Z	tomd	df20fs	I forget where I read how to do it tohugh

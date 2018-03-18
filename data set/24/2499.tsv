@@ -1,0 +1,24 @@
+2009-05-31T15:44:00.000Z	usicow		I've got a laptop with ubuntu on it, if I SSH into it, and put a USB stick into it, how can I browse whats on the stick? I cant see it in /media.
+2009-05-31T15:45:00.000Z	mrwes	usicow	what /dev is the usb drive?
+2009-05-31T15:46:00.000Z	usicow	mrwes	I'm not sure, how can I tell?
+2009-05-31T15:47:00.000Z	mrwes	usicow	from the terminal type sudo fdisk -l (lower case L)
+2009-05-31T15:47:00.000Z	mrwes	usicow	see if the drive is listed /dev/sdb1 or something like that
+2009-05-31T15:48:00.000Z	usicow	mrwes	yep, its there as /dev/sdb1
+2009-05-31T15:48:00.000Z	mrwes	usicow	now type sudo mkdir /media/usb
+2009-05-31T15:49:00.000Z	mrwes	usicow	then sudo mount /dev/sdb1 /mediat/usb
+2009-05-31T15:49:00.000Z	usicow	mrwes	done
+2009-05-31T15:49:00.000Z	usicow	mrwes	fantastic :) thanks!
+2009-05-31T15:49:00.000Z	mrwes	usicow	you want to read and write to it correct?
+2009-05-31T15:50:00.000Z	usicow	mrwes	but the strange thing is, I'm pretty sure that if I did this via gnome, it just works.. would that be right?
+2009-05-31T15:50:00.000Z	mrwes	usicow	uh?
+2009-05-31T15:51:00.000Z	usicow	mrwes	ignore that.. but regarding reading/writing.. yes, what should I do so I can read and write everything on the stick?
+2009-05-31T15:51:00.000Z	mrwes	usicow	first what's the username on the box? Type sudo chown -R yourusername:yourusername /media/usb
+2009-05-31T15:52:00.000Z	mrwes	usicow	and finally sudo chmod -r 755 /media/usb
+2009-05-31T15:53:00.000Z	mrwes		heh
+2009-05-31T15:53:00.000Z	mrwes		 Rigongia use /action instead of /me :)
+2009-05-31T15:54:00.000Z	mrwes		shrug
+2009-05-31T15:55:00.000Z	usicow	mrwes	that sounds like it would work.. but when I issue the chown command I get chown: changing ownership of `/media/usb/dsc_0532.jpg': Operation not permitted.. that happens for all files on the stick..
+2009-05-31T15:55:00.000Z	mrwes	usicow	did you use sudo chown ?
+2009-05-31T15:55:00.000Z	usicow	mrwes	yep
+2009-05-31T15:55:00.000Z	mrwes		hrmm
+2009-05-31T15:55:00.000Z	mrwes	usicow	maybe cuz you ssh'd in

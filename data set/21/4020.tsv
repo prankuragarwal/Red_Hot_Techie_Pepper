@@ -1,0 +1,21 @@
+2009-08-17T19:11:00.000Z	Matr|X		hello
+2009-08-17T19:11:00.000Z	Matr|X		mike
+2009-08-17T19:11:00.000Z	Matr|X		hi
+2009-08-17T19:11:00.000Z	MikeSeth	Matr|X	ello
+2009-08-17T19:11:00.000Z	MikeSeth	Matr|X	define 'problem'
+2009-08-17T19:13:00.000Z	MikeSeth	Matr|X	this is because winxp overwrites the MBR
+2009-08-17T19:14:00.000Z	MikeSeth	Matr|X	force-reinstall grub; after that use grub chainloader to boot xp
+2009-08-17T19:14:00.000Z	MikeSeth	Matr|X	run cfdisk /dev/xxx and see if the partition is still there
+2009-08-17T19:15:00.000Z	MikeSeth	Matr|X	doesnt matter, run cfdisk and look at the partition list
+2009-08-17T19:16:00.000Z	MikeSeth	Matr|X	if your windows partition is there then its a simple adjustment.. if its not then you deleted it from the partition table somehow, which may or may not mean its lost forever
+2009-08-17T19:17:00.000Z	MikeSeth	Matr|X	then you should set up a chainloader instruction in grub configuration
+2009-08-17T19:18:00.000Z	MikeSeth	Matr|X	open /boot/grub/menu.lst
+2009-08-17T19:19:00.000Z	MikeSeth	Matr|X	pastebin the contents
+2009-08-17T19:22:00.000Z	MikeSeth	Matr|X	look at lines 46-53 in your paste
+2009-08-17T19:23:00.000Z	MikeSeth	Matr|X	you already have this in your config so grub should allow you to boot windows
+2009-08-17T19:25:00.000Z	MikeSeth	Matr|X	then chances are Windows' MBR is overwritten, you need to boot into e.g. windows rescue and do fdisk /mbr or equivalent
+2009-08-17T19:26:00.000Z	MikeSeth	Matr|X	hmmm
+2009-08-17T19:26:00.000Z	MikeSeth	Matr|X	you can't mount it as well?
+2009-08-17T19:27:00.000Z	MikeSeth	Matr|X	what happens when you do that?
+2009-08-17T19:27:00.000Z	MikeSeth	Matr|X	no, see above
+2009-08-17T19:28:00.000Z	MikeSeth	Matr|X	 <MikeSeth> mkdir -p /mnt/windows ; mount -t ntfs /dev/sda1 /mnt/windows

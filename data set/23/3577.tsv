@@ -1,0 +1,23 @@
+2008-03-14T16:01:00.000Z	_dee_		i've created a user account on my ubuntu system. I've tried connecting to my ubuntu computer via my windows computer (using PuttY). When i enter the login details. it gives me Access Denied message. And i dont know why?
+2008-03-14T16:03:00.000Z	soundray	_dee_	you need to 'sudo apt-get install ssh' on the ubuntu system
+2008-03-14T16:05:00.000Z	_dee_	soundray	: it says Setting up ssh
+2008-03-14T16:06:00.000Z	soundray	_dee_	when it's done, you'll be able to connect through putty
+2008-03-14T16:06:00.000Z	_dee_	soundray	: how do i know when its done?
+2008-03-14T16:06:00.000Z	soundray	_dee_	the $ prompt comes back
+2008-03-14T16:07:00.000Z	_dee_	soundray	: still doesnt work. When i use Putty. it connects to my computer. But refuses entry. Says access Denied
+2008-03-14T16:08:00.000Z	soundray	_dee_	try if you can ssh from your ubuntu box to itself: 'ssh localhost'
+2008-03-14T16:09:00.000Z	_dee_	soundray	: it says: Linux Home 2.6 blah blah
+2008-03-14T16:09:00.000Z	_dee_	soundray	: it looks like it works thru the shell
+2008-03-14T16:10:00.000Z	soundray	_dee_	can you ping your Ubuntu box from the Windows one?
+2008-03-14T16:10:00.000Z	_dee_	soundray	: yep pings fine. its got to do something with the login . i just dnot understand
+2008-03-14T16:15:00.000Z	soundray	_dee_	your sshd is working. You've proven that.
+2008-03-14T16:15:00.000Z	soundray	_dee_	where did you get the output you pastebinned?
+2008-03-14T16:16:00.000Z	_dee_	soundray	: by typing sudo iptables -L
+2008-03-14T16:17:00.000Z	soundray	_dee_	you did remember that usernames are case-sensitive?
+2008-03-14T16:18:00.000Z	_dee_	soundray	: Yes
+2008-03-14T16:20:00.000Z	soundray	_dee_	does it really say 'access denied' or is it 'connection refused'?
+2008-03-14T16:20:00.000Z	_dee_	soundray	: Access Denied
+2008-03-14T16:21:00.000Z	soundray	_dee_	is that in the putty terminal, or does it come up as a dialog?
+2008-03-14T16:21:00.000Z	_dee_	soundray	: Putty terminal
+2008-03-14T16:22:00.000Z	soundray	_dee_	ah.
+2008-03-14T16:22:00.000Z	soundray	_dee_	I think you've used sudo to change something in your $HOME/.ssh -- do a 'sudo chown -R $USER:$USER $HOME/.ssh' to fix that

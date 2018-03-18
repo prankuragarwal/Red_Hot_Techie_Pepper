@@ -1,0 +1,24 @@
+2012-06-05T17:02:00.000Z	ISOcrates		I'm using Ubuntu 10.10 and my /dev/sda1 keeps filling up completely without me doing anything. Cleared out 20GB yesterday and today it's back to 100% used. Any suggestions as to what could be causing this? I do have an external HD mounted at boot
+2012-06-05T17:03:00.000Z	schnuffle	ISOcrates	 check which program is causing  disk IO
+2012-06-05T17:03:00.000Z	ISOcrates	schnuffle	cool how do i do that?
+2012-06-05T17:04:00.000Z	schnuffle	ISOcrates	 first where is all that data created /tmp /var/log ....?
+2012-06-05T17:05:00.000Z	schnuffle	ISOcrates	 iotop can do that
+2012-06-05T17:05:00.000Z	ISOcrates	schnuffle	ok thanks. i don't even know what kind of data is filling up the drive, that's my problem
+2012-06-05T17:06:00.000Z	schnuffle	ISOcrates	but if you deleted it, at least you should know what has been deleted by you
+2012-06-05T17:06:00.000Z	ISOcrates	schnuffle	i only deleted some .isos that i had downloaded, but even then i had plenty of space left
+2012-06-05T17:07:00.000Z	ISOcrates	schnuffle	last night i had 20GB free, didn't touch anything, now it's full
+2012-06-05T17:07:00.000Z	schnuffle	ISOcrates	 what gives you a sudo du -hs /
+2012-06-05T17:08:00.000Z	ISOcrates	schnuffle	running it now
+2012-06-05T17:12:00.000Z	ISOcrates	schnuffle	http://pastebin.com/cS7fG9Xg
+2012-06-05T17:12:00.000Z	schnuffle	ISOcrates	Ooops it should be sudo du -hs /*
+2012-06-05T17:13:00.000Z	ISOcrates	schnuffle	haha ok
+2012-06-05T17:15:00.000Z	ISOcrates	schnuffle	http://pastebin.com/5Gs8V4U0
+2012-06-05T17:16:00.000Z	schnuffle	ISOcrates	so you have a lot of stuff in /media
+2012-06-05T17:16:00.000Z	ISOcrates	schnuffle	as well as another 3TB internally
+2012-06-05T17:17:00.000Z	schnuffle	ISOcrates	So where is your problem if all the data on your disks are as they should be?
+2012-06-05T17:19:00.000Z	schnuffle	ISOcrates	so you should insert a check if the disk is mounted before backing u
+2012-06-05T17:20:00.000Z	ISOcrates	schnuffle	geirha: i will thanks
+2012-06-05T17:23:00.000Z	schnuffle	ISOcrates	unmount /media and then recheck if /media is empty
+2012-06-05T17:25:00.000Z	ISOcrates	schnuffle	geirha: ok thanks :)
+2012-06-05T17:38:00.000Z	schnuffle	ISOcrates	And you have data in /media/3TB-BACKUP? That means that is the data that stuffs your harddisk
+2012-06-05T17:39:00.000Z	ISOcrates	schnuffle	geirha: i have tons of data in /media/3TB-BACKUP, but it's not plugged in right now. but the cronjob was still running at night

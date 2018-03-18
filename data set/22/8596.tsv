@@ -1,0 +1,22 @@
+2005-07-12T07:07:00.000Z	catfox		i've just noted that kernel panic error, and it's: kernel panic: not syncing unable to mount root on unknown-block (3,3)
+2005-07-12T07:07:00.000Z	catfox		my root in grub.conf points to /dev/hda3 in my new kernel entry, which is the same as the default kernels
+2005-07-12T07:07:00.000Z	catfox		any ideas what i might have left out of the kernel?
+2005-07-12T07:08:00.000Z	nikkia	catfox	IDE support?
+2005-07-12T07:09:00.000Z	nikkia	catfox	its either IDE support, or ext2/3 support that's missing, probably
+2005-07-12T07:10:00.000Z	catfox	nikkia	definately have filesystem stuff. any ideas what ide modules are needed?
+2005-07-12T07:10:00.000Z	nikkia	catfox	ide-disk at least
+2005-07-12T07:11:00.000Z	nikkia	catfox	remember, they need to be built into the kernel, not as modules, unless you're going to try and work out initrd stuff, but i find its generally easier to build the ide/fs stuff into the kernel *anyway* even if using initrd
+2005-07-12T07:11:00.000Z	catfox	nikkia	yeah thats in there too
+2005-07-12T07:11:00.000Z	nikkia	catfox	the other thing that can cause it... is if the kernel is trying to use 'accelerated IDE' drivers, but they're modules
+2005-07-12T07:12:00.000Z	catfox	nikkia	never heard of accelerated ide
+2005-07-12T07:12:00.000Z	nikkia	catfox	its the stuff that enables UDMA, ie the drivers like 'piix'
+2005-07-12T07:13:00.000Z	catfox	nikkia	righto, i'll take a look thanks
+2005-07-12T07:13:00.000Z	nikkia	catfox	those drivers vary based on your chipset, so you have to be careful to enable the right one (or just enable them all, there are only like 10 or so, and they're not huge)
+2005-07-12T07:14:00.000Z	nikkia	catfox	look at lsmod on a working boot :)
+2005-07-12T07:14:00.000Z	nikkia	catfox	the ide driver will be mentioned as a dependancy of ide_core
+2005-07-12T07:15:00.000Z	catfox	nikkia	i get this for usb_core:  usb_storage,ide_cd,ide_generic,ide_disk,piix
+2005-07-12T07:15:00.000Z	nikkia	catfox	then looks like you're using the intel chipset drivers
+2005-07-12T07:16:00.000Z	catfox	nikkia	cool, i'll give it a go. i had via82 drivers in there, do you think including both is causing the error?
+2005-07-12T07:16:00.000Z	nikkia	catfox	unlikely, to be honest
+2005-07-12T07:20:00.000Z	nikkia	catfox	i wouldn't have thought so
+2005-07-12T07:20:00.000Z	catfox	nikkia	ok cool.i'll have another go. thanks for your help, v useful

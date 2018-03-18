@@ -1,0 +1,19 @@
+2012-04-09T18:58:00.000Z	aviraldg		Hey, can someone help me understand the concept of runlevels, especially in the context of upstart?
+2012-04-09T18:58:00.000Z	aviraldg		After doing some research I kind of figured out that a runlevel is like a "mode of operation" of the OS. So there's a runlevel for single-user-operation, shutting down, restarting etc.
+2012-04-09T18:59:00.000Z	aviraldg		But quite a few upstart scripts I've seen look like they're using arbitrary runlevels like "1234"
+2012-04-09T18:59:00.000Z	aviraldg		What's up with that?
+2012-04-09T18:59:00.000Z	aviraldg		:) obvious.
+2012-04-09T19:00:00.000Z	aviraldg		I mean I understood the significance of running at runlevels 0-6. What about ones beyond that?
+2012-04-09T19:01:00.000Z	mneptok	aviraldg	Ubuntu does not use anything past runlevel 6
+2012-04-09T19:01:00.000Z	mneptok	aviraldg	https://en.wikipedia.org/wiki/Runlevel
+2012-04-09T19:02:00.000Z	aviraldg	mneptok	I've seen that too.
+2012-04-09T19:02:00.000Z	mneptok	aviraldg	https://en.wikipedia.org/wiki/Runlevel#Ubuntu
+2012-04-09T19:02:00.000Z	mneptok	aviraldg	seen that? because it explains that Debian and Ubuntu do not use anything past runlevel 6.
+2012-04-09T19:02:00.000Z	aviraldg		For example, here's an upstart script https://gist.github.com/970181 for running gunicorn. 2345 sounds like it's completely random and above 6.
+2012-04-09T19:03:00.000Z	mneptok	aviraldg	2 and 3 and 4 and 5
+2012-04-09T19:03:00.000Z	aviraldg		Ohhhhhhhhhhhhhhhhhhh... O_O
+2012-04-09T19:03:00.000Z	aviraldg		lol.
+2012-04-09T19:03:00.000Z	aviraldg		damn.
+2012-04-09T19:03:00.000Z	aviraldg		Thanks a lot.
+2012-04-09T19:05:00.000Z	aviraldg		So this basically says, "start gunicorn when the system boots up, stop it when it shuts down", right?
+2012-04-09T19:05:00.000Z	mneptok	aviraldg	"start this thing up as long as the system is not in single-user mode or rebooting,:

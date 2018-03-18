@@ -1,0 +1,24 @@
+2011-01-11T01:11:00.000Z	GeekMan		i used wubi
+2011-01-11T01:11:00.000Z	GeekMan		it was ok i can barely remeber but it ran well
+2011-01-11T01:12:00.000Z	GeekMan		i was worried about screwing up my gaming laptop at the time so i ran wubi :)
+2011-01-11T01:13:00.000Z	GeekMan		plus i wanted to try it
+2011-01-11T01:15:00.000Z	GeekMan		i have the worst time with wifi cards and linux on desk tops lol
+2011-01-11T01:15:00.000Z	edbian	GeekMan	Everybody does
+2011-01-11T01:17:00.000Z	edbian	GeekMan	yes
+2011-07-23T18:37:00.000Z	edbian	GeekMan	When you log in or when the system starts?
+2011-07-23T18:37:00.000Z	edbian	GeekMan	Everything in /etc/rc2.d/ get started
+2011-07-23T18:41:00.000Z	edbian	GeekMan	mmm that's odd.  Do you have samba-server installed?
+2011-07-23T18:42:00.000Z	edbian	GeekMan	Is smbd showing up in ps -e  ?
+2011-07-23T18:42:00.000Z	edbian	GeekMan	It's strange that it's not in there.  Perhaps there is another place it might be ....
+2011-07-23T18:44:00.000Z	edbian	GeekMan	I'm fairly sure it will start on reboot.
+2011-07-23T18:45:00.000Z	GeekMan	edbian	if im using ssh and do a system update that requires me to restart can i still shh log on after the reboot (its a stupid question)
+2011-07-23T18:45:00.000Z	edbian	GeekMan	yes.  ssh is another service so it starts before anybody logs in
+2011-07-23T18:47:00.000Z	edbian	GeekMan	Can you pastebin ls /etc/rc2.d/  ?
+2011-07-23T18:47:00.000Z	edbian	GeekMan	thanks
+2011-07-23T18:51:00.000Z	edbian	GeekMan	paste.ubuntu.com  is probably easier
+2011-07-23T18:53:00.000Z	edbian	GeekMan	reading...
+2011-07-23T18:53:00.000Z	edbian	GeekMan	I am very confused.  ssh is not listed here either!
+2011-07-23T18:55:00.000Z	edbian	GeekMan	yeah... all run levels
+2011-07-23T18:57:00.000Z	edbian	GeekMan	Those are run levels.  rc2.d is the one normally used.  0 is for shutdown, 6 is for reboot, 1 is single user mode.  The others aren't really used in debian
+2011-07-23T18:58:00.000Z	GeekMan	edbian	thats nice to know i read about that somewhere but i have since for gotten so what should we do write some scripts i had to do something similar to make my fans work on an ibookg4
+2011-07-23T18:59:00.000Z	edbian	GeekMan	Well when you install ssh it should but a script in /etc/rc2.d/  Reboot the machine and see if sshd starts again.  Then we'll look for it.

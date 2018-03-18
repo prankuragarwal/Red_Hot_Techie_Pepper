@@ -1,0 +1,18 @@
+2011-05-24T00:28:00.000Z	Woozie404		with 4x 2TB drives
+2011-05-24T00:30:00.000Z	Woozie404		yes
+2011-05-24T00:30:00.000Z	Woozie404		well I am using ext4
+2011-05-24T00:30:00.000Z	Woozie404		yea, ubuntu
+2011-05-24T00:31:00.000Z	Woozie404		RAID is created with mdadm
+2011-05-24T00:32:00.000Z	Woozie404		disk array size should be 4GB but when mounted it shows only 2GB
+2011-05-24T00:33:00.000Z	Woozie404		oh sorry. both TB
+2011-05-24T00:35:00.000Z	Woozie404		hmm, dunno what is wrong then. maybe this http://paste.ubuntu.com/612009/
+2011-05-24T00:36:00.000Z	Woozie404		btw, i created the filesystem like this: "sudo mkfs -t ext4 /dev/md2p1"
+2011-05-24T00:36:00.000Z	Woozie404		is it wrong?
+2011-05-24T00:37:00.000Z	llutz	Woozie404	you need to change the partition table, not the filesystem/partition-type
+2011-05-24T00:37:00.000Z	Woozie404	butter_fs	i don't understand what you mean by that
+2011-05-24T00:37:00.000Z	llutz	Woozie404	http://www.cyberciti.biz/tips/fdisk-unable-to-create-partition-greater-2tb.html
+2011-05-24T00:38:00.000Z	Woozie404		llultz: hmm, that should help. thank you :D
+2011-05-24T00:46:00.000Z	Woozie404		ok, how do I check if my ubuntu kernel supports GPT?
+2011-05-24T00:48:00.000Z	llutz	Woozie404	grep "CONFIG_EFI " /boot/config-$(uname -r)
+2011-05-24T00:49:00.000Z	Woozie404		lultz: i guess it doesn't
+2011-05-24T00:49:00.000Z	llutz	Woozie404	grep CONFIG_EFI_PARTITION /boot/config-$(uname -r)

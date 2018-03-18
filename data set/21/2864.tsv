@@ -1,0 +1,21 @@
+2011-05-05T00:47:00.000Z	AMAG		I've been trying to get some help with my graphics driver on Ubuntu 11.04 for several days, but no luck so far.  In the "Additional Drivers" tool, my NVIDIA driver has the green dot, yet the tool says "This driver is activated but not currently in use."  Help please.
+2011-05-05T00:48:00.000Z	l403	AMAG	did you look at your xorg.conf?
+2011-05-05T00:49:00.000Z	AMAG	l403	No, but I just have looked.  I have a Section "Device" which says Driver "nvidia" and no other Device sections
+2011-05-05T00:50:00.000Z	l403	AMAG	also check sudo lsmod that lists the loaded modules aka drivers
+2011-05-05T00:54:00.000Z	AMAG	l403	so it is certainly loaded into the kernel, but it appears X is not using it?
+2011-05-05T00:55:00.000Z	l403	AMAG	can you run sudo nvidia-xconfig ?
+2011-05-05T00:59:00.000Z	AMAG	l403	that has added numerous blocks to my xorg.conf file, but restarting the PC still didn't get it to actually use the driver.  The "Additional Drivers" tool still says the same thing
+2011-05-05T01:01:00.000Z	l403	AMAG	aslo check nvidia-settings
+2011-05-05T01:07:00.000Z	AMAG	l403	nvidia-settings detects the display and graphics card, and I did a "save" from this program which did modify xorg.conf again, and rebooted again, yet the driver is still not being used.
+2011-05-05T01:08:00.000Z	l403	AMAG	I dunno then. reinstall the nvidia package? :-/
+2011-05-05T01:09:00.000Z	AMAG	l403	the nvidia-current one?
+2011-05-05T01:09:00.000Z	l403	AMAG	Id do all of them that you have installed and have the word nvidia in them :)
+2011-05-05T01:17:00.000Z	l403	AMAG	boot insto single user mode, install them via apt or aptitude and then just run /etc/init.d/gdm start
+2011-05-05T01:16:00.000Z	AMAG	l403	Well, removing nvidia-current and rebooting has affected something.  Now the display appears broken and gdm cannot start, but the machine isn't locked up, just the display.  So I guess I'll straighten that out and try installing nvidia-current again.
+2011-05-05T01:18:00.000Z	AMAG	l403	actually the "failsafe graphics mode" choice in the recovery menu worked, so i am re-installing nvidia-current now and will see what happens in a few minutes.
+2011-05-05T01:23:00.000Z	AMAG	l403	Same situation after re-installing nvidia-current.  X works but "Additional Drivers" claims the nvidia driver isn't in use, and 3D acceleration is clearly not working because glxgears like doesn't even budge, the system is almost hung when running it, and it claims it is running at 17,000 frames/second, but obviously that's not true
+2011-05-05T01:24:00.000Z	l403	AMAG	I am trying to kill sound events in fluxbox unsuccessfully.. going for a smoke
+2011-05-05T01:24:00.000Z	AMAG	l403	I'll probably still be here struggling with X when you come back :)
+2011-05-05T01:28:00.000Z	l403	AMAG	I can msg you my xorg.conf
+2011-05-05T01:28:00.000Z	AMAG	l403	sure
+2011-05-05T01:39:00.000Z	l403	AMAG	success. I am done. I have no idea what I did. I just booted into gnome and then back to flux its the sounds are gone.

@@ -1,0 +1,18 @@
+2007-09-17T08:28:00.000Z	someone		what do I need to set UMASK to in order to enable write support for anyone?
+2007-09-17T08:29:00.000Z	bruenig	someone	just write support or read and execute also?
+2007-09-17T08:30:00.000Z	bruenig	someone	ok well the directories have to be set to execute also or they don't work
+2007-09-17T08:30:00.000Z	someone	bruenig	why not everything at once then
+2007-09-17T08:30:00.000Z	bruenig	someone	umask=000
+2007-09-17T08:34:00.000Z	someone	bruenig	I mounted a windows HDD drive (I'm in live Feisty), but I can only rename file, I can't create new ones
+2007-09-17T08:34:00.000Z	bruenig	someone	ntfs cannot be written to by default
+2007-09-17T08:34:00.000Z	someone	bruenig	i got ntfs-config installed
+2007-09-17T08:35:00.000Z	bruenig	someone	what command did you use to mount it?
+2007-09-17T08:36:00.000Z	bruenig	someone	do "sudo touch /media/winhdd/test
+2007-09-17T08:37:00.000Z	someone	bruenig	"touch: cannot touch `/media/winhdd/test': Input/output error"
+2007-09-17T08:37:00.000Z	bruenig	someone	yeah, hmmm
+2007-09-17T08:37:00.000Z	someone	bruenig	yet I have read support working very well
+2007-09-17T08:38:00.000Z	bruenig	someone	unmount it and mount it with sudo mount -t ntfs-3g -o umask=000 /dev/whatever /mount/point
+2007-09-17T08:38:00.000Z	bruenig	someone	if you need force do -o umask=000,force
+2007-09-17T08:40:00.000Z	someone	bruenig	same result - no write support, except in renaming files
+2007-09-17T08:41:00.000Z	bruenig	someone	I don't know, I don't use ntfs
+2007-09-17T08:41:00.000Z	someone	bruenig	thanks anyways

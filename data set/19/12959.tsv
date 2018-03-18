@@ -1,0 +1,19 @@
+2005-06-08T16:14:00.000Z	nern		hey
+2005-06-08T16:14:00.000Z	nern		i need help with my fstab
+2005-06-08T16:15:00.000Z	nern		im trying to get it to mount a fat32 partition, i have my directory made and i can get it set to mount on bootup, but all users do not have read and write priveledges
+2005-06-08T16:15:00.000Z	nern		i would like to be able to have my fstab configured so that the fat32 drive mounts on boot and is accessible and writable by any user
+2005-06-08T16:16:00.000Z	nern		anyone?
+2005-06-08T16:16:00.000Z	nern		anyone that can help me with this fstab thing
+2005-06-08T16:17:00.000Z	dooglus	nern	sure.
+2005-06-08T16:17:00.000Z	dooglus	nern	what's the problem?
+2005-06-08T16:17:00.000Z	nern	dooglus	thanks, i want to be have my fat32 drive mount on boot with full reading and writing priveledges for all users.
+2005-06-08T16:18:00.000Z	dooglus	nern	I got that much.  what's the problem?  did you add a line to /etc/fstab already?
+2005-06-08T16:18:00.000Z	nern	dooglus	yeah the only part i need help with is the options, i have everything else right
+2005-06-08T16:19:00.000Z	dooglus	nern	if you don't put "noauto" as an option, it should be automatically mounted.
+2005-06-08T16:19:00.000Z	dooglus	nern	umount it, then run "mount -a" - does it get mounted?
+2005-06-08T16:20:00.000Z	nern	dooglus	what I really need is to know what options will enable all users to read and write the drive
+2005-06-08T16:21:00.000Z	dooglus	nern	I don't think you need any options for that.  I use these:  /dev/sda5 /mnt/fat   vfat noauto,user,umask=0,iocharset=iso8859-1,uid=1000,codepage=850 0 0     and it's fine for me
+2005-06-08T16:22:00.000Z	nern	dooglus	k thx man ill try that
+2005-06-08T16:22:00.000Z	dooglus	nern	I have 'noauto' mind.
+2005-06-08T16:29:00.000Z	nern	dooglus	worked great thanks alot
+2005-06-08T16:30:00.000Z	dooglus	nern	ok.  I don't know what bit did the trick, but glad it worked :)

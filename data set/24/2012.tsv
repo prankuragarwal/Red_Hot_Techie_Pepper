@@ -1,0 +1,24 @@
+2010-03-13T05:59:00.000Z	archman		ok i got a problem, i've just reformatted some partitions, and added a 2,5GB swap; i have 1.2GB of phy ram, and I cannot hibernate! not enough swap, apparently; any ideas?
+2010-03-13T06:00:00.000Z	LinuxGuy2009	archman	Verify that UUID for swap is correct in /etc/fstab
+2010-03-13T06:03:00.000Z	archman	LinuxGuy2009	there is no UUID entry in fstab; should i add it, and where in that file?
+2010-03-13T06:04:00.000Z	LinuxGuy2009	archman	Yes if you have no swap partition specified in /etc/fstab then you will have no swap available. You should read on google on how to do that there are many articles.
+2010-03-13T06:05:00.000Z	archman	LinuxGuy2009	swap partition is added there, it's just that i got no UUID entries: http://paste.ubuntu.com/394366/
+2010-03-13T06:05:00.000Z	archman	LinuxGuy2009	is the "mount point" a problem, maybe?
+2010-03-13T06:06:00.000Z	LinuxGuy2009	archman	Im not sure if 9.10 dropped UUID usage but 9.04 uses them.
+2010-03-13T06:07:00.000Z	archman	LinuxGuy2009	using Jaunty
+2010-03-13T06:07:00.000Z	archman	LinuxGuy2009	it's not using them :)
+2010-03-13T06:07:00.000Z	archman	LinuxGuy2009	well, i've been upgrading from jaunty
+2010-03-13T06:07:00.000Z	LinuxGuy2009	archman	Then yes your fstab should contain UUIDs if your running jaunty
+2010-03-13T06:08:00.000Z	archman	LinuxGuy2009	well, seems like ubuntu update manager did a bad job :)
+2010-03-13T06:08:00.000Z	archman	LinuxGuy2009	i got no UUIDs... and i'm on jaunty
+2010-03-13T06:08:00.000Z	LinuxGuy2009	archman	Ok so now you know the problem.
+2010-03-13T06:09:00.000Z	archman	LinuxGuy2009	you wanna say, i should reinstall every 6 months? :D
+2010-03-13T06:09:00.000Z	archman	LinuxGuy2009	is there a way to make it work?
+2010-03-13T06:10:00.000Z	LinuxGuy2009	archman	Why would I say to update every 6 months? I dont trust Ubuntu enough to do that myself. 9.10 was a major disapointment for me.
+2010-03-13T06:10:00.000Z	LinuxGuy2009	archman	Im still on 9.04
+2010-03-13T06:12:00.000Z	archman	LinuxGuy2009	so can i add those damn UUIDs?
+2010-03-13T06:12:00.000Z	LinuxGuy2009	archman	Sure can. Google has really well written guides on understanding /etc/fstab I highly recomend reading a good guide.
+2010-03-13T06:12:00.000Z	LinuxGuy2009	archman	Very easy to learn.
+2010-03-13T06:47:00.000Z	archman	LinuxGuy2009	i needed to edit the etc/initramfs-tools/conf.d/resume file, hibernation works!
+2010-03-13T06:48:00.000Z	LinuxGuy2009	archman	good job
+2010-03-13T06:48:00.000Z	archman	LinuxGuy2009	it was Typos_King's work ;)

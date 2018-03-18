@@ -1,0 +1,18 @@
+2010-08-28T11:21:00.000Z	slipperychicken		any idear on how to output file access in a file system ?  ie : gedit is reading this, apache wrote that...
+2010-08-28T11:21:00.000Z	slipperychicken		in a debug sort of way ?
+2010-08-28T11:21:00.000Z	slipperychicken		dump_block didn't seem to give file names.
+2010-08-28T11:21:00.000Z	cccasket	slipperychicken	lsof | grep `pidof gedit`
+2010-08-28T11:22:00.000Z	slipperychicken	cccasket	what if you don't know where it's coming from ?
+2010-08-28T11:22:00.000Z	cccasket	slipperychicken	you can find out by cross referencing the process ids in output of lsof
+2010-08-28T11:28:00.000Z	cccasket	slipperychicken	if you grep for the file name you should be able to grab the pid
+2010-08-28T11:29:00.000Z	slipperychicken	cccasket	but i have no idea where or what this access is coming from.  for all i know it could be a root kit.
+2010-08-28T11:30:00.000Z	cccasket	slipperychicken	what access?
+2010-08-28T11:31:00.000Z	slipperychicken	cccasket	dougb_freebsd , i'm trying to figure out what is writing to these hard drives.
+2010-08-28T11:34:00.000Z	cccasket	slipperychicken	have you tried just watching top and checking to see what spikes cpu?
+2010-08-28T11:35:00.000Z	cccasket	slipperychicken	it sounds like you are talking about a webserver?  have you disconnected it from the network already?
+2010-08-28T11:36:00.000Z	cccasket	slipperychicken	physically disconnected as well?
+2010-08-28T11:36:00.000Z	cccasket	slipperychicken	rootkits will lie to you
+2010-08-28T11:36:00.000Z	slipperychicken	cccasket	yes.
+2010-08-28T11:37:00.000Z	slipperychicken	cccasket	no ethernet cable.
+2010-08-28T11:38:00.000Z	cccasket	slipperychicken	you can't trust the output of any of the utilities we've mentioned if you think you were rooted. and yes, tripwire is great for this kind of thing
+2010-08-28T11:38:00.000Z	cccasket	slipperychicken	md5sum on the utilities/other executables /system files and compare to a known good one - run md5sum from a live cd or another known good system

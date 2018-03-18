@@ -1,0 +1,24 @@
+2011-12-12T17:26:00.000Z	yogg		Have someone an idea how i can get the dns server from dhcp, but not change the configuration of my interfaces?
+2011-12-12T17:28:00.000Z	ikonia	yogg	you tell the dhcp server to offer dns servers, however it is very unnormal to do this without offering an IP
+2011-12-12T17:29:00.000Z	yogg	ikonia	i can't change anything on the dhcp server    i only can ask him for the dns servers ^^
+2011-12-12T17:29:00.000Z	ikonia	yogg	why are you trying to do this /
+2011-12-12T17:30:00.000Z	yogg	ikonia	I would not insert the dns servers not into my resolv,conf but in my "/etc/bind/named.conf.options" as forwarders
+2011-12-12T17:31:00.000Z	ikonia	yogg	that is not a dhcp option
+2011-12-12T17:31:00.000Z	ikonia	yogg	dhcp does not configure names.conf
+2011-12-12T17:31:00.000Z	ikonia	yogg	ok, so what exactly are you trying to do and why ?
+2011-12-12T17:32:00.000Z	yogg	ikonia	i write an script that gets the dns servers from dhcp and write it to the bind conf as forwarders
+2011-12-12T17:32:00.000Z	ikonia	yogg	do the dns servers change from dhcp or are they the same ones you get each time ?
+2011-12-12T17:33:00.000Z	yogg	ikonia	i have something like an router. the router provides an dns server and must provide all dns informations behind him (forwarders). And the router moves from one network to another
+2011-12-12T17:34:00.000Z	ikonia	yogg	this does not sound lke a good solution
+2011-12-12T17:34:00.000Z	yogg	ikonia	what would be a better one?
+2011-12-12T17:34:00.000Z	ikonia	yogg	running a dns server on a changing ip network  is not good
+2011-12-12T17:35:00.000Z	yogg	ikonia	the network on the "lan" side does not change    only on the "wan" side
+2011-12-12T17:35:00.000Z	ikonia	yogg	that is bad then, you should not be running a local dns server on a machine that is changing WAN hosts
+2011-12-12T17:35:00.000Z	ikonia	yogg	use the dns servers provided for you, rather than running a local one
+2011-12-12T17:36:00.000Z	yogg	ikonia	the local one is a must have. else it would not be possible to reach the webinterface of this "router" with "www.example.local"
+2011-12-12T17:37:00.000Z	ikonia	yogg	sorry, I disagree and I disagree with the solution.
+2011-12-12T17:38:00.000Z	yogg	ikonia	i have not found a better solution. but if you have an idea it would be nice :)
+2011-12-12T17:38:00.000Z	ikonia	yogg	just put an entry in your host file
+2011-12-12T17:40:00.000Z	yogg	ikonia	can i change the host file on a other system over dhcp?
+2011-12-12T17:42:00.000Z	ikonia	yogg	no, but then you can't change anything over DHCP as you said you can't change the dhcp server
+2011-12-12T17:53:00.000Z	yogg	ikonia	ActionParsnip: dmorfin: I hope this explains my problem better: http://paste.pocoo.org/show/519673/

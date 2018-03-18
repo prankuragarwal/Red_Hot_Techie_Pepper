@@ -1,0 +1,18 @@
+2008-01-03T18:34:00.000Z	Leechzilla		I put a DVD into my drive and though it says 3.8GB is used on the disc, it's not showing any files.. The same disc shows its contents properly in VMware though.. How do I fix this?
+2008-01-03T18:35:00.000Z	Dr_willis	Leechzilla	 you are seeing it in vmware at the same time you are looking at it with the Linux OS?
+2008-01-03T18:35:00.000Z	Leechzilla	Dr_willis	Well I just booted VMware right now to check if it works in it. Before that too it wasn't showing up in Ubuntu
+2008-01-03T18:37:00.000Z	Dr_willis	Leechzilla	 could be it wasent getting mounted to the right place, or was not automounting.
+2008-01-03T18:37:00.000Z	Leechzilla	Dr_willis	So what do I do to fix it
+2008-01-03T18:38:00.000Z	Dr_willis	Leechzilla	 well check with the 'mount' command to see if its mounted someplace else. if its not mounted at all. You could try mounting it manually.
+2008-01-03T18:38:00.000Z	Leechzilla	Dr_willis	It's already mounted
+2008-01-03T18:38:00.000Z	Dr_willis	Leechzilla	 so wher does the mount command say its mounted to?
+2008-01-03T18:39:00.000Z	Leechzilla	Dr_willis	/media/cdrom0
+2008-01-03T18:39:00.000Z	Dr_willis	Leechzilla	 so you dont see any files in /media/cdrom0 eh?
+2008-01-03T18:39:00.000Z	Leechzilla	Dr_willis	yeah
+2008-01-03T18:41:00.000Z	Dr_willis	Leechzilla	 interesting... try a 'sudo ls -l /media/cdrom0' perhaps? it may be mounted owned by root. Other then that. Id say unmount it.. and try remounting the cd.
+2008-01-03T18:42:00.000Z	Leechzilla	Dr_willis	sudo ls -l /media/cdrom0 says total 0. I tried unmounting but it says the device is busy
+2008-01-03T18:42:00.000Z	Dr_willis	Leechzilla	 well if vmware is stillrunning. it may some how have it locked.
+2008-01-03T18:43:00.000Z	Leechzilla	Dr_willis	No it isn't
+2008-01-03T18:43:00.000Z	Dr_willis	Leechzilla	 be sure ya got no terminals cd'd to it?  I forget the command now to see what may have it being accessed.. lsof /dev/cdrom perhaps.
+2008-01-03T18:44:00.000Z	Leechzilla	Dr_willis	Thanks, that command helped me fix it.
+2008-01-03T18:46:00.000Z	Dr_willis	Leechzilla	 heh - what command? lsof? that sould of just read who is using the device.. it shouldent of fixed anything. :) Or was it magic! :)

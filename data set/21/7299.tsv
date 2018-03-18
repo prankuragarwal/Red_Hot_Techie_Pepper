@@ -1,0 +1,21 @@
+2006-10-28T06:16:00.000Z	oneseventeen		I am trying to install Zend Studio on Edgy, but I keep getting errors because it can't find libm.so.6, libc.so.6, librt.so.1, and a few others...
+2006-10-28T06:16:00.000Z	morphish	oneseventeen	is that a binary app on amd64? (just guessng)
+2006-10-28T06:17:00.000Z	oneseventeen	morphish	I'm not sure, I don't use any special 64-bit software... I'm 32-bit all the way...
+2006-10-28T06:18:00.000Z	morphish	oneseventeen	then nevermind , sure does osund weird in that case, sooy, no help here
+2006-10-28T06:19:00.000Z	morphish	oneseventeen	run 'ldd' on that binary, see what it looks for maybe
+2006-10-28T06:20:00.000Z	oneseventeen	morphish	how do I run ldd on it?  (I've never used ldd before)
+2006-10-28T06:21:00.000Z	oneseventeen	morphish	ldd ZendStudio-5_2_0.bin simply states "not a dynamic executable"
+2006-10-28T06:21:00.000Z	morphish	oneseventeen	ldd `which whateveryoucallittostartit`
+2006-10-28T06:21:00.000Z	morphish	oneseventeen	that is an installer, have you installed it?
+2006-10-28T06:24:00.000Z	oneseventeen	morphish	it is the installer, but I can't install it because of the errors, but I found a knowledge base entry at zend... thanks!
+2006-10-28T06:24:00.000Z	morphish	oneseventeen	ln -sf /bin/bash /bin/sh
+2006-10-28T06:24:00.000Z	morphish	oneseventeen	sh is dash and my matrox installer failed with all sorts of funky fresh errors too, we need bash for those
+2006-10-28T06:28:00.000Z	morphish	oneseventeen	so did that fix your issue?
+2006-10-28T06:31:00.000Z	oneseventeen	morphish	I found out the problem was caused because of an incompatibility of the installer's JRE with "certain system libraries"
+2006-10-28T06:31:00.000Z	oneseventeen	morphish	simply commenting out a couple of lines in the installer fixed the issue
+2006-10-28T06:31:00.000Z	oneseventeen	morphish	I'm not sure if this would help you with other apps, but here is the link: http://www.zend.com/support/knowledgebase.php?kbid=184&view_only=1
+2006-10-28T06:32:00.000Z	morphish	oneseventeen	cool too, but that /bin/sh is link to dash will bite you down the road, uness you did switch it to bash
+2006-10-28T06:32:00.000Z	oneseventeen	morphish	I'm not quite sure how to switch it to bash (still a newbie in areas)
+2006-10-28T06:33:00.000Z	morphish	oneseventeen	i showed you a line with ln -sf in it, that should have done it ;)
+2006-10-28T06:35:00.000Z	oneseventeen	morphish	mcrandello: I did that, but I still get the same errors when trying to launch the installer
+2006-10-28T06:35:00.000Z	oneseventeen	morphish	the installer worked after I commented out the lines, but now I can't launch the application itself

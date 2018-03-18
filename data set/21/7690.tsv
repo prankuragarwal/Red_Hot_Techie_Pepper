@@ -1,0 +1,21 @@
+2006-10-31T10:38:00.000Z	mrJungle		Hey everybody. I'm just installed Edgy for the first time (I used Breezy for a little while), but am having problems getting my wlan interface to work. I have ndiswrapper installed and running, but I'm kind of at a loss. Anybody got any helpful hints?
+2006-10-31T10:38:00.000Z	xipietotec	mrJungle	sudo ifconfig wlan0
+2006-10-31T10:39:00.000Z	mrJungle	xipietotec	wlan0: error fetching interface information: Device not found
+2006-10-31T10:39:00.000Z	mrJungle	xipietotec	I do have eth1 which looks to be the wireless interface
+2006-10-31T10:39:00.000Z	xipietotec	mrJungle	then it automatically changed wlan0 to eth1
+2006-10-31T10:40:00.000Z	xipietotec		work with eth1
+2006-10-31T10:40:00.000Z	xipietotec		my wireless card does the same, I have to (on startup) do sudo ifconfig wlan0, then sudo iwlist eth1 scan, because it reassigns wlan0 to be eth1
+2006-10-31T10:40:00.000Z	mrJungle	xipietotec	I have been, but it still doesn't want to perform a scan
+2006-10-31T10:41:00.000Z	xipietotec	mrJungle	what's it say for eth1?
+2006-10-31T10:41:00.000Z	mrJungle	xipietotec	for iwconfig or iwlist?
+2006-10-31T10:41:00.000Z	xipietotec		iwlist
+2006-10-31T10:42:00.000Z	mrJungle	xipietotec	eth1      Interface doesn't support scanning : No such device
+2006-10-31T10:42:00.000Z	xipietotec	mrJungle	Okay, first did you do all the chmod stuff with ndiswrapper?
+2006-10-31T10:43:00.000Z	mrJungle		No ..
+2006-10-31T10:43:00.000Z	xipietotec	mrJungle	Okay, you'll need to use a guide on ndiswrapper
+2006-10-31T10:45:00.000Z	xipietotec	mrJungle	try following the instructions here: http://ubuntuforums.org/showthread.php?t=185174
+2006-10-31T10:46:00.000Z	xipietotec		also, to note, just installing ndiswrapper does nothing, you also need the base portions of the drivers to wrap around mrJungle
+2006-10-31T10:46:00.000Z	mrJungle	xipietotec	Yeah, I snagged the inf/sys off my system restore cd
+2006-10-31T10:48:00.000Z	xipietotec	mrJungle	are they the bcmlXXX files?
+2006-10-31T10:49:00.000Z	mrJungle	xipietotec	bcml5.*
+2006-10-31T10:49:00.000Z	xipietotec	mrJungle	Okay, cool, there should be 2 files, and then you just follow the instructions on the guide I listed

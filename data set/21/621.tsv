@@ -1,0 +1,21 @@
+2011-08-28T20:23:00.000Z	volga629		 nvidia driver can't install on dell e6400 NVIDIA-Linux-x86-177.80-pkg1.run
+2011-08-28T20:23:00.000Z	volga629		any help welcome and thank you
+2011-08-28T20:23:00.000Z	volga629		I was googling for solution for last few days non of solutions didn't work :-(
+2011-08-28T20:23:00.000Z	volga629		2.6.35-30-generic-pae
+2011-08-28T20:24:00.000Z	volga629		this error http://pastebin.com/THFKzNGt
+2011-08-28T20:25:00.000Z	volga629		that what I have installed http://pastebin.com/RY7JJPJP
+2011-08-28T20:26:00.000Z	volga629		E: Unable to locate package nvidia-graphics-drivers-173
+2011-08-28T20:27:00.000Z	o0splitpaw0o	volga629	looks like was attempting to install a new kernel
+2011-08-28T20:31:00.000Z	volga629	o0splitpaw0o	that was a mistake install new kernel :-(
+2011-08-28T20:33:00.000Z	o0splitpaw0o	volga629	 well possibly no, might of been an update that is all
+2011-08-28T20:34:00.000Z	volga629	o0splitpaw0o	yes the problem my laptop down for 2 second day and I don't see solution
+2011-08-28T20:35:00.000Z	o0splitpaw0o	volga629	I'd run sudo apt-get -f install. anything damaged or misisng will be pulled, but from those massaged, accessing ca.ubuntu.com timing out  I assume a network side issue. not on your side, but to that url whereever it's trying to pull that update from
+2011-08-28T20:37:00.000Z	o0splitpaw0o	volga629	I would connect it via a network cable to the network and run that to repair it. if you have no connection, then check if network is connecting by typing in sudo ifconfig eth0
+2011-08-28T20:38:00.000Z	volga629	o0splitpaw0o	the question right now how to restore the nvidia driver
+2011-08-28T20:38:00.000Z	o0splitpaw0o	volga629	should show you an ip there.
+2011-08-28T20:39:00.000Z	volga629	o0splitpaw0o	is no internet connection problem I am be able go to internet, and network up and running
+2011-08-28T20:40:00.000Z	o0splitpaw0o	volga629	you can do this. reboot it. at the prompt select "ubuntu recovery mode" > Then select load default driver> This will load a basic vga driver for you. at the login prompt> select "ubuntu classic" (or it will just tell you it has to load into classic mode by default)> Then once in goto System>Administration> Additional Drivers> Select the Recommended Nvidia Driver and apply changes> Then reboot
+2011-08-28T20:41:00.000Z	volga629	o0splitpaw0o	that like a solution let me try thank you
+2011-08-28T20:42:00.000Z	o0splitpaw0o	volga629	Then it's just a bad repository it's trying to access right now. run sudo apt-get --autoremove and it will remove conflicting packages and get you stable
+2011-08-28T20:44:00.000Z	volga629	o0splitpaw0o	let me try reocevery mode
+2011-08-28T20:45:00.000Z	volga629	o0splitpaw0o	sudo apt-get -f install nvidia-173-kernel-source  ----> this is solution

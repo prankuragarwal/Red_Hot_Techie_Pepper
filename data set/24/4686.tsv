@@ -1,0 +1,24 @@
+2007-02-22T12:20:00.000Z	bfdhud_		I'm having a weird firefox issue, While i'm browsing the internet the browser will lockup and the browser window goes grey (kind of like when you log out of a vbulleting BB). After a few minutes it will give me the option to force quit
+2007-02-22T12:20:00.000Z	bfdhud_		none of my settings have changed recently, This literally just started today
+2007-02-22T12:21:00.000Z	bfdhud_		when I booted up after school, anyone have any ideas?
+2007-02-22T12:21:00.000Z	karsten	bfdhud_	There's a word for that.
+2007-02-22T12:21:00.000Z	karsten	bfdhud_	It's a bug.
+2007-02-22T12:22:00.000Z	karsten	bfdhud_	What if any extensions do you have in FF?  What specific URLs are showing that behavior?  Try disabling extensions, javascript, java, plugins, see if any of those fix the problem.
+2007-02-22T12:22:00.000Z	karsten	bfdhud_	Note that FF may upgrade extensions with relatively little notice.
+2007-02-22T12:23:00.000Z	karsten	bfdhud_	You might also check your syslogs for any sig11 or Northbridge errors.
+2007-02-22T12:24:00.000Z	karsten	bfdhud_	Try launching under strace then.  You're going to want to log output, and there's going to be absolutely tons of it.
+2007-02-22T12:25:00.000Z	karsten	bfdhud_	You can also attach gdb to the process, but without debugging symbols (eg:  if 'file <path>/firefox-bin' tells you it's a stripped ELF binary there's not much good'.
+2007-02-22T12:25:00.000Z	karsten	bfdhud_	'man strace'.
+2007-02-22T12:25:00.000Z	karsten	bfdhud_	trace system calls made by an executable.
+2007-02-22T12:25:00.000Z	karsten	bfdhud_	Basically tells you what a given process is doing.
+2007-02-22T12:26:00.000Z	karsten	bfdhud_	Alternately, you can launch FF, and attach strace to its PID when it's hung and see what it's doing.  Again, copious output, but less than if you launch FF.
+2007-02-22T12:26:00.000Z	karsten	bfdhud_	Sec.
+2007-02-22T12:26:00.000Z	karsten	bfdhud_	Launch FF normally.
+2007-02-22T12:27:00.000Z	karsten	bfdhud_	ps waux | awk '/[f] iref/ {print $2}'
+2007-02-22T12:27:00.000Z	karsten	bfdhud_	... gives you the PID.  Should be one value.
+2007-02-22T12:28:00.000Z	karsten	bfdhud_	'strace -p <PID>'
+2007-02-22T12:33:00.000Z	karsten	bfdhud_	Can launch that under strace but it's a bit complicated w/ firefox in particular.
+2007-02-22T12:36:00.000Z	karsten	bfdhud_	One other trick is to remove your profile (just renaming it is enough), restart FF, and see if that fixes the problem.
+2007-02-22T12:36:00.000Z	karsten	bfdhud_	Often there's something in your profile that's bugging FF.  Move a few files back at a time to see which causes the problem.
+2007-02-22T12:38:00.000Z	bfdhud_	karsten	thaks, I'll see what I can do. I'm glad to know its FF fault and not ubuntu. I don't think i could afford another re install
+2007-02-22T12:38:00.000Z	karsten	bfdhud_	This is Linux.  Reinstalls aren't required.

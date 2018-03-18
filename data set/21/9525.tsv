@@ -1,0 +1,21 @@
+2005-09-08T16:37:00.000Z	Smegzor		I have installed Windows 2000 Pro on a 2nd partition and Windows insisted on de-activating my primary partition.  How do I go about getting grub back so that I can dual boot to the OS of my choice?
+2005-09-08T16:39:00.000Z	Smegzor		:D  thanks.  thats the info I was hoping you'd give me :)  I could spend all night trying to find that myself :O
+2005-09-08T06:00:00.000Z	Smegzor		i'm running the live cd to recover my grub boot loader after installing a 2nd OS.  following the howto.. how do I tell if I have a /boot/ listing in my fstab?
+2005-09-08T06:00:00.000Z	HappyFool	Smegzor	open the /etc/fstab file (on your drive, so maybe /mnt/hda3/etc/fstab or something) and look for a /boot entry
+2005-09-08T07:00:00.000Z	HappyFool	Smegzor	did you run grub-install?
+2005-09-08T07:07:00.000Z	HappyFool	Smegzor	my guess would be to try 'grub-install --root-directory=/boot /dev/hda', but i'm not sure if that only applies when you have a separate boot partition
+2005-09-08T07:09:00.000Z	HappyFool	Smegzor	hmm, no, scrap that. I think plain 'grub-install /dev/hda' should work,
+2005-09-08T07:10:00.000Z	HappyFool	Smegzor	you don't have /boot on a separate partition
+2005-09-08T07:10:00.000Z	HappyFool	Smegzor	ok, and what's in it?
+2005-09-08T07:11:00.000Z	HappyFool	Smegzor	or rather, is it empty or not?
+2005-09-08T07:12:00.000Z	HappyFool	Smegzor	XFS is a different filesystem -- if you don't know, you probably aren't using it ;)
+2005-09-08T07:13:00.000Z	HappyFool	Smegzor	are you irc'ing from that machine at the moment?
+2005-09-08T07:21:00.000Z	HappyFool	Smegzor	are you still here? plain 'grub-install /dev/hda' worked?
+2005-09-08T07:22:00.000Z	Smegzor	HappyFool	yes to both
+2005-09-08T07:23:00.000Z	HappyFool	Smegzor	if you know the partition which windows is on, you can probably hack something from the grub command-line
+2005-09-08T07:29:00.000Z	HappyFool	Smegzor	yes
+2005-09-08T07:32:00.000Z	HappyFool	Smegzor	it shouldn't
+2005-09-08T07:32:00.000Z	HappyFool	Smegzor	you can put your menu.lst on http://paste.ubuntulinux.nl for us to look at it you want
+2005-09-08T07:41:00.000Z	HappyFool	Smegzor	you can use 'sudo fdisk -l' to list all the partitions ubuntu can find
+2005-09-08T07:41:00.000Z	HappyFool	Smegzor	the ubuntu installer thought that windows was on your second hard-drive, according to the paste
+2005-09-08T07:42:00.000Z	HappyFool	Smegzor	that will be (hd0,2)

@@ -1,0 +1,19 @@
+2010-07-19T00:20:00.000Z	Zolomon		how do I remove everything inside a folder except a specified folder via the terminal in one go?
+2010-07-19T00:20:00.000Z	JessD	Zolomon	: What's the name of the folder you want to preserve?
+2010-07-19T00:22:00.000Z	JessD	Zolomon	if you do 'ls', do you see . and .. along with everything else?
+2010-07-19T00:24:00.000Z	JessD	Zolomon	: ls | egrep -v '(klagainte)'| while read x; do rm -rf $x; done
+2010-07-19T00:24:00.000Z	JessD	Zolomon	: Practice extreme caution!!
+2010-07-19T00:25:00.000Z	JessD	Zolomon	: Make sure you're in the right subdir when you run that!
+2010-07-19T00:25:00.000Z	JessD	Zolomon	: One other, if you wanted to add more stuff to exclude
+2010-07-19T00:26:00.000Z	JessD	Zolomon	pipe seperate the stuff like this : ls | egrep -v '(klagainte|this|that|the other)'| while read x; do rm -rf $x; done
+2010-07-19T00:27:00.000Z	JessD	Zolomon	: Course, you need to escape spaces
+2010-07-19T00:27:00.000Z	JessD	Zolomon	: ls | egrep -v '(klagainte|this|that|the\ other)'| while read x; do rm -rf $x; done
+2010-07-19T00:27:00.000Z	JessD	Zolomon	: Exactly!
+2010-07-19T00:27:00.000Z	JessD	Zolomon	: I asked you about dots because
+2010-07-19T00:28:00.000Z	JessD	Zolomon	If ls returned ".."
+2010-07-19T00:28:00.000Z	JessD	Zolomon	You would have said "rm -rf ../"
+2010-07-19T00:28:00.000Z	JessD	Zolomon	: Which is _not_ good
+2010-07-19T00:30:00.000Z	JessD	Zolomon	: Yep.  You either need to instruct ls not to return them or egrep them out.  Remember that this is regex, and "." is a character meaning "any single character", so dots need escaping as well..
+2010-07-19T00:30:00.000Z	JessD	Zolomon	Easier to dell ls not to do that...
+2010-07-19T00:31:00.000Z	JessD	Zolomon	: Sorry, tell.
+2010-07-19T00:32:00.000Z	JessD	Zolomon	: Quite welcome!

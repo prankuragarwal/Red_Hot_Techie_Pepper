@@ -1,0 +1,21 @@
+2005-09-12T14:26:00.000Z	Frafra		hi all
+2005-09-12T14:26:00.000Z	Frafra		open /dev/sequencer: No such file or directory
+2005-09-12T14:26:00.000Z	Frafra		Fatal signal: Segmentation Fault (SDL Parachute Deployed)
+2005-09-12T14:26:00.000Z	Frafra		what I must do?
+2005-09-12T14:27:00.000Z	Frafra		I must create a link?
+2005-09-12T14:28:00.000Z	dreameen	Frafra	try modprobe snd-seq-oss
+2005-09-12T14:29:00.000Z	Frafra	dreameen	no, it loads but the program doesn't works
+2005-09-12T14:30:00.000Z	dreameen	Frafra	yup thats because ur missing /dev/sequencer
+2005-09-12T14:31:00.000Z	Frafra	dreameen	ln /dev/sequencer /dev/[something]  ?
+2005-09-12T14:31:00.000Z	dreameen	Frafra	modprobe snd-seq-oss
+2005-09-12T14:32:00.000Z	Frafra	dreameen	i've do it, ubuntu loads the modules, but the program give me the some error
+2005-09-12T14:33:00.000Z	dreameen	Frafra	double check if snd_seq_oss is in the output of lsmod
+2005-09-12T14:34:00.000Z	Frafra	dreameen	yes, it's in it
+2005-09-12T14:35:00.000Z	dreameen	Frafra	then look for /dev/snd/seq
+2005-09-12T14:36:00.000Z	dreameen	Frafra	and link it to /dev/sequencer
+2005-09-12T14:36:00.000Z	Frafra	dreameen	ok, thanks
+2005-09-12T14:36:00.000Z	dreameen	Frafra	cheers np mate
+2005-09-12T14:39:00.000Z	Frafra	dreameen	/dev/sequencer exist
+2005-09-12T14:42:00.000Z	dreameen	Frafra	so..is the program still crashing?
+2005-09-12T14:42:00.000Z	Frafra	dreameen	yes, it says: there is no soundcard
+2005-09-12T14:45:00.000Z	dreameen	Frafra	hm......weird

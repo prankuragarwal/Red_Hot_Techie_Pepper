@@ -1,0 +1,21 @@
+2005-04-01T15:28:00.000Z	Redwraith111		hey all, does anyone know how to disable the accupoint 2 on a toshiba tecra s1
+2005-04-01T15:28:00.000Z	Redwraith111		it is broken i guess and it is jumping around
+2005-04-01T15:28:00.000Z	Redwraith111		no
+2005-04-01T15:28:00.000Z	Redwraith111		root isnt activated.. if your talking about ubuntu off the bat
+2005-04-01T15:29:00.000Z	Redwraith111		the accupoint/touchpad just jumps arouind or gets stuck on the bottom (i move it and it jumps back) and even if a mouse is hooked up it wont detect.
+2005-04-01T15:29:00.000Z	nis	Redwraith111	yes but define 'activated'
+2005-04-01T15:31:00.000Z	Redwraith111	nis	sudo passwd root
+2005-04-01T15:33:00.000Z	nis	Redwraith111	yes.  thanks. However, I want to do the opposite: I want to lockdown root as if I'd installed ubuntu native, instead of  transitioning off of Debian as I did.  I have a std root account now (I use it often for system maintenance).  Trying to learn the ubuntu way.
+2005-04-01T15:38:00.000Z	Redwraith111	nis	is it a large deal? because I have a root account I just have a hard password and a stealthing* firewall and router
+2005-04-01T15:41:00.000Z	nis	Redwraith111	cool.
+2005-04-01T15:46:00.000Z	Redwraith111	nis	i dont sudo either
+2005-04-01T15:47:00.000Z	nis	Redwraith111	about the only concession I make is that I never login to the linux virtual console as root; I su.
+2005-04-01T15:47:00.000Z	nis	Redwraith111	of course u can shutdown X.
+2005-04-01T15:49:00.000Z	nis	Redwraith111	edit /etc/inittab to add more getty lines to the virtual console.
+2005-04-01T15:50:00.000Z	nis	Redwraith111	and also 'kill -HUP 1' as root after editing inittab
+2005-04-01T15:57:00.000Z	nis	Redwraith111	I often start a second xserver to hot-key into when 'mom' shows up and there's um questionable graphics on the screen.  I have a wholesome environment at-the-ready with a single keybinding. ;)
+2005-04-01T15:59:00.000Z	Redwraith111	nis	how do i set up another x server? i would imagine is slow
+2005-04-01T16:00:00.000Z	nis	Redwraith111	not slow at all.  I generally copy the exec ${HOME}/startx.d/_startx -- :1 > ~/startx.errorlog 2>&1 &startx script to _startx and then:
+2005-04-01T16:01:00.000Z	nis	Redwraith111	not slow at all.  I generally copy the startx script to ~/startx.d/_startx and then:  exec ${HOME}/startx.d/_startx -- :1 > ~/startx.errorlog 2>&1 &
+2005-04-01T16:01:00.000Z	nis	Redwraith111	so the essential is (at the console) 'startx -- :1'
+2005-04-01T16:05:00.000Z	nis	Redwraith111	title-bar clicking is a function of your chosen window-manager.  Each has it's own idea about this.

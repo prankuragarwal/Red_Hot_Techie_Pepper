@@ -1,0 +1,23 @@
+2011-03-16T10:06:00.000Z	Jordan_U	gusg	sudo service ssh stop
+2011-03-16T10:07:00.000Z	gusg	Jordan_U	thanks!
+2011-03-16T10:07:00.000Z	Jordan_U	gusg	You're welcome.
+2011-05-22T10:19:00.000Z	Jordan_U	gusg	The space available for Ubuntu is determined by how much space you have in /host/ubuntu/disks/root.disk which is a file containing an ext4 filesystem.
+2011-05-22T10:22:00.000Z	gusg	Jordan_U	thanks for pointing that out
+2011-05-22T10:22:00.000Z	Jordan_U	gusg	You're welcome.
+2011-05-22T10:23:00.000Z	Jordan_U	gusg	Unfortunately enlarging the root.disk is no longer supported, and neither is converting to a normal dual boot install using a partition. (though the former I can walk you through doing manually).
+2011-05-22T10:24:00.000Z	Jordan_U	gusg	It's in ubuntu/disks/root.disk
+2011-05-22T10:24:00.000Z	gusg	Jordan_U	I see some scripts and instructions online. Is it no longer supported as of some Ubuntu version?
+2011-05-22T10:27:00.000Z	gusg	Jordan_U	I installed Wubi within windows and I chose some destination to hold the virtual disk file. Ubuntu seemingly mounts that part of the NTFS partition into  /host/ubuntu, but I'm trying to find out where in my native, NTFS, file system it resides -- I forgot. "mount" doesn't seem to indicate anything
+2011-05-22T10:28:00.000Z	gusg	Jordan_U	 There is a loop0 device, but I don't see which file it's using
+2011-05-22T10:29:00.000Z	Jordan_U	gusg	/host shows your Windows partition, so if you need to access a file in Windows you use the same path but put "C:\\" in place of "/host" and use '\' instead of '/' as the directory separator.
+2011-05-22T10:32:00.000Z	gusg	Jordan_U	/host looks bare to me, though. it contains only two other folders besides "ubuntu", namely : "$RECYCLE.BIN"  and "System Volume Information", but my Windows partition is riddled with folders. I must be missing something
+2011-05-22T10:33:00.000Z	Jordan_U	gusg	Can you pastebin the output of "sudo parted -l"?
+2011-05-22T10:35:00.000Z	gusg	Jordan_U	Ahh, thanks. This reminds me. I created a dedicated NTFS partition to contain the Wubi virtual disk (for what reason, I can't remember). The virtual disk image isn't on the same partition as Windows.
+2011-05-22T10:49:00.000Z	Jordan_U	gusg	Did you install Ubuntu 11.04 via wubi or an earlier version?
+2012-02-26T04:03:00.000Z	Jordan_U	gusg	This might do what you want: find | sort > file_list_1 && find | sort > file_list_2 && diff file_list_1 file_list2
+2012-02-26T04:03:00.000Z	gusg	Jordan_U	How should I generate those file lists?
+2012-02-26T04:07:00.000Z	gusg	Jordan_U	 oh I see how you generate the file list
+2012-02-26T04:08:00.000Z	Jordan_U	gusg	The command I gave wasn't really complete. Just a minute and I'll give a better description of what you'd actually need to do.
+2012-02-26T04:11:00.000Z	Jordan_U	gusg	I'm a bit busy at the moment, if you can figure out what I was trying to say on your own please do. If not, I don't mind explaining further :)
+2012-02-26T04:13:00.000Z	gusg	Jordan_U	 thanks. I get the command, but now I'd like to resolve the differences in the directories, but without actually caring about file contents. (I am syncing two music libraries)
+2012-02-26T04:26:00.000Z	Jordan_U	gusg	"find" with no other arguments prints all the files in the current directory (recursively) but the output is not sorted. "find | sort" sorts the output (we need the filenames sorted to compare them with diff). If you enter one of the directories you're comparing and run "find | sort > /tmp/dir_one_file_list.txt" you will get a sorted list of files from dir one (stored in /tmp/). If you then cd into the second directory and run "find | sort > ...

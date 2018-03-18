@@ -1,0 +1,19 @@
+2006-01-28T14:47:00.000Z	johanbr	viper12	If you look at the CD, you can tell if anything's been burned onto it. Is there anything there?
+2006-01-28T14:50:00.000Z	johanbr	viper12	Try "dd if=/dev/dvd of=/tmp/blah bs=1024 count=1000" and then run "file /tmp/blah". That copies the first meg of the dvd to a file and then tries to tell you what type of file it is. What does that print?
+2006-01-28T14:54:00.000Z	viper12	johanbr	 dd: reading `/dev/hdc': Input/output error
+2006-01-28T14:55:00.000Z	johanbr	viper12	Okay, that mean's there's nothing readable on that disk at all. Did you say you can read other cd's/dvd's with that drive?
+2006-01-28T14:58:00.000Z	viper12	johanbr	dd if=/dev/hdc of=/tmp/blah bs=1024 count=1000
+2006-01-28T14:59:00.000Z	johanbr	viper12	Alright, so it definitely recognizes that disc as having a filesystem. Are you saying you can't mount it?
+2006-01-28T15:01:00.000Z	johanbr	viper12	What happens when you do "mount /dev/hdc /mnt" ?
+2006-01-28T15:02:00.000Z	viper12	johanbr	this:  mount: block device /dev/hdc is write-protected, mounting read-only
+2006-01-28T15:03:00.000Z	johanbr	viper12	Looks alright to me. If you do "ls /mnt" you should see your files now.
+2006-01-28T15:04:00.000Z	viper12	johanbr	 a bunch of machine language garbage finishing with input/output error.
+2006-01-28T15:04:00.000Z	johanbr	viper12	Definitely looks like a bad burn then. Is DMA turned on on your burner?
+2006-01-28T15:05:00.000Z	viper12	johanbr	yep its on.
+2006-01-28T15:06:00.000Z	johanbr	viper12	Is your motherboard VIA, by any chance?
+2006-01-28T15:07:00.000Z	johanbr	viper12	Is the burner connected over usb?
+2006-01-28T15:11:00.000Z	johanbr	viper12	I've occasionally had problems on my laptop with DMA turning off mid-burn (stupid kernel). If you're sure that's not happening, my only remaining guess is a hardware problem. Bad IDE cable, maybe.
+2006-01-28T15:17:00.000Z	johanbr	viper12	Have you run cdrecord or growisofs from the command line? That should clearly tell you if anything goes wrong.
+2006-01-28T15:18:00.000Z	viper12	johanbr	that was next step.  I was trying to eliminate the OS as the possible problem.  (This drive burnt a disc in another laptop before being moved to this one.)  I was surprised as hell to produce a coaster as it works in all other ways.
+2006-01-28T15:20:00.000Z	johanbr	viper12	I don't use the command line for burning very often either, I have to admit. I second the suggestion of using k3b. When you burn you can click on something and it gives you all the gory details.
+2006-01-28T15:24:00.000Z	johanbr	viper12	You're welcome. I hope you get it figured out.

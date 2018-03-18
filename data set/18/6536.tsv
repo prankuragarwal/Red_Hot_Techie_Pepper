@@ -1,0 +1,18 @@
+2008-05-01T14:56:00.000Z	sw54_		why can it be that when I add a few commands to /etc/init.d/rc.local they run fine on system boot up, but when I put them in a separate script and update runlevels with sysv-rc.d-thingy, none of these commands from my script work?
+2008-05-01T14:56:00.000Z	ikonia	sw54_	rc.local is basiclly a script, the run level scripts call functions from a sourced file
+2008-05-01T14:56:00.000Z	ikonia	sw54_	some of your scripting may conflict
+2008-05-01T14:57:00.000Z	sw54_	ikonia	so I probably need to look at the log file?
+2008-05-01T14:57:00.000Z	ikonia	sw54_	doubtful, you may want to try exectuing the run scripts manually for debugging
+2008-05-01T14:58:00.000Z	sw54_	ikonia	I did that, they work without a glitch
+2008-05-01T14:58:00.000Z	ikonia	sw54_	now that is very odd
+2008-05-01T14:58:00.000Z	ikonia	sw54_	what sort of thing are you doing ?
+2008-05-01T14:59:00.000Z	ikonia	sw54_	but what happens when you put the changes into say /etc/init.d/mysql-server then run /etc/init.d/mysql-start start manually
+2008-05-01T14:59:00.000Z	sw54_	ikonia	do you mean I add my stuff to some existing init.d script?
+2008-05-01T14:59:00.000Z	ikonia	sw54_	thats what your trying to do isn't it ?
+2008-05-01T15:00:00.000Z	sw54_	ikonia	sort of, I just do it from a new file to avoid mix ups
+2008-05-01T15:00:00.000Z	ikonia	sw54_	apologies I'm not quite getting the problem. rc.local is run at boot - update-rc doesn't update any scripts, just the run levels things are launched
+2008-05-01T15:02:00.000Z	sw54_	ikonia	sorry for not being clear; what I'm trying to do is execute my own commands during system boot; when I add commands to /etc/init.d/rc.local they work fine; but as soon as I make a new script file in /etc/init.d/, put the same commands into this file, then use update-rc this_file defaults, nothing works. Running this_file manually works just fine though
+2008-05-01T15:04:00.000Z	ikonia	sw54_	I think you should actually use rc.local for this, thats it's purpose
+2008-05-01T15:05:00.000Z	sw54_	ikonia	thank you, I'll stick to this then
+2008-05-01T15:06:00.000Z	ikonia	sw54_	I appricaite the problem your having now, however I would stick it in rc.local as that is the perfect use for it
+2008-05-01T15:06:00.000Z	sw54_	ikonia	cool, thank you

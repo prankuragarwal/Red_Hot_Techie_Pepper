@@ -1,0 +1,23 @@
+2008-09-09T20:44:00.000Z	alphabeta		So I created a host aliasing 127.0.0.1 so I could have a seperate domain for each site on my test web server (home.localhost, foo.localhost etc) which I now realize was a mistake
+2008-09-09T20:45:00.000Z	alphabeta		As I deleted the alias, and yet now whenever I go to localhost I get forwarded to home.localhost, which no longer exists.  So I can't view any site at all unless I put the alias back in
+2008-09-09T20:45:00.000Z	alphabeta		Anyone know how I might go about solving this? :/ I'd be grateful
+2008-09-09T20:46:00.000Z	MrKennie	alphabeta	sorry to be such a bore but http://httpd.apache.org/docs/2.0/vhosts/ is worth a read. (assuming this is what you were trying to do)
+2008-09-09T20:48:00.000Z	alphabeta	MrKennie	I'm pretty familiar, had them set up correctly for the seperate hosts. problem now is that even when apache is configured with one master catchall vhost (NameVirtualHost * with no ServerName) localhost still redirects to home.localhost, which doesn't exist :/
+2008-09-09T20:50:00.000Z	MrKennie	alphabeta	how were you setting up the sites? using sites-avaible or..?
+2008-09-09T20:51:00.000Z	alphabeta	MrKennie	yeah. a2ensite and all. But I disabled all the sites, and enabled the default one that comes with install. localhost still redirects to home.localhost, which causes firefox to look for www.home.localhost as it doesn't exist
+2008-09-09T20:52:00.000Z	alphabeta	MrKennie	oddly enough going to my public IP in firefox also redirects to home.localhost, so at first I thought it was some sort of dns cache (and I haven't really ruled that out)
+2008-09-09T20:53:00.000Z	MrKennie	alphabeta	when you relaod apache do you get any warnings or errors?
+2008-09-09T20:54:00.000Z	alphabeta	MrKennie	nope, other than the usual apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1 for ServerName
+2008-09-09T20:54:00.000Z	MrKennie	alphabeta	nothing in /etc/hosts?
+2008-09-09T20:54:00.000Z	MrKennie	alphabeta	well, nothing that shouldn't be there
+2008-09-09T20:54:00.000Z	alphabeta	MrKennie	well I had some aliases to home.localhost etc in there but took them all out, now theres just localhost jason-desktop and the ipv6 stuff
+2008-09-09T20:55:00.000Z	MrKennie	alphabeta	restarted firefox since? firefox has a habit of caching
+2008-09-09T20:55:00.000Z	alphabeta	MrKennie	tried a full reboot, didn't help :(
+2008-09-09T20:55:00.000Z	MrKennie	alphabeta	hm
+2008-09-09T20:56:00.000Z	MrKennie	alphabeta	no .htaccess files flaoting around you're not aware of?
+2008-09-09T20:56:00.000Z	alphabeta	MrKennie	hmm..
+2008-09-09T20:58:00.000Z	MrKennie	alphabeta	I'm not sure why apache would redirect unless there was something liek a redirectmatch  directive or similar somewhere
+2008-09-09T21:00:00.000Z	alphabeta	MrKennie	nope :( I have some rewrite conditions but no redirects, and they're all relative (just rewrite . index.php)
+2008-09-09T21:01:00.000Z	MrKennie	alphabeta	hmm, I'm not really sure what could be causing that. If you've tried to restore it back to default perhaps purge apache2-common and reinstall it to get the ubuntu defaults.
+2008-09-09T21:02:00.000Z	alphabeta	MrKennie	as good an idea as any.  I'll give it a go, thanks
+2008-09-09T22:11:00.000Z	alphabeta	MrKennie	thanks again. a purge of apache fixed it, still not sure what the problem was

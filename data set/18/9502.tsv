@@ -1,0 +1,18 @@
+2007-04-01T16:25:00.000Z	Hypnotic		Hi guys. I'm still having a problem with my fstab. I only have read access to my partition. Here is the line in fstab I added: /dev/sdb6 /media/sdb6 vfat rw,uid=500,gid=500 0 0 is this wrong for read/write access?
+2007-04-01T16:25:00.000Z	jrib	Hypnotic	why 500?
+2007-04-01T16:26:00.000Z	Hypnotic	jrib	not sure, thats what some told me to put in there
+2007-04-01T16:26:00.000Z	jrib	Hypnotic	what does the 'id' command return?
+2007-04-01T16:27:00.000Z	Hypnotic	jrib	Again, I'm not real sure. It mounts and everything, just read only access
+2007-04-01T16:27:00.000Z	jrib	Hypnotic	type 'id' without the quotes in a terminal and press enter
+2007-04-01T16:29:00.000Z	Hypnotic	jrib	What are you looking for? Would you like for me to copy and paste the return?
+2007-04-01T16:29:00.000Z	jrib	Hypnotic	yeah, that will be fine
+2007-04-01T16:30:00.000Z	Hypnotic	jrib	here tis. uid=1000(mike) gid=1000(mike) groups=4(adm),20(dialout),24(cdrom),25(floppy),29(audio),30(dip),44(video),46(plugdev),109(lpadmin),111(scanner),114(admin),115(fuse),1000(mike),1001(avg)
+2007-04-01T16:31:00.000Z	jrib	Hypnotic	ok, now do you have more than one user on your system or is it enough to just give this user access to the vfat partition?
+2007-04-01T16:31:00.000Z	Hypnotic	jrib	only one user
+2007-04-01T16:32:00.000Z	jrib	Hypnotic	ok, at the moment what does  'ls -ld /path/to/mount/point' return?
+2007-04-01T16:33:00.000Z	jrib	Hypnotic	?
+2007-04-01T16:34:00.000Z	Hypnotic	jrib	Sorry working on it now.
+2007-04-01T16:34:00.000Z	jrib	Hypnotic	oh, you were having another conversation and I got confused, never mind :)
+2007-04-01T16:34:00.000Z	Hypnotic	jrib	drwxr-xr-x 4 500 500 8192 1969-12-31 19:00 /media/sdb6
+2007-04-01T16:35:00.000Z	jrib	Hypnotic	ok, just unmount it, and change the 500 to 1000 in your options, then remount
+2007-04-01T16:35:00.000Z	Hypnotic	jrib	ah, thanks for the help

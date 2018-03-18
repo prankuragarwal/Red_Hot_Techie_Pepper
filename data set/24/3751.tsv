@@ -1,0 +1,24 @@
+2007-10-21T19:33:00.000Z	ShapeshifterO		I played around with splashy, it worked, and then I tried to make my own theme. I installed it, rebooted, and now I get: "VFS: cannot open root device. Please append a correct "root=" boot option ...." just after grub. Kernel-Panic. I already tried all the grub related stuff like reinstalling grub or editing the root= part. Nothing helps I think the kernel is broken. No I follow this how to http://ubuntuforums.org/showpost.php?p=2306
+2007-10-21T19:33:00.000Z	ShapeshifterO		but I don't know how to chroot into an existing installation from the live cd, because all google gets me are those environements for an already working installation. How can I chroot from the live cd into my installation?
+2007-10-21T19:34:00.000Z	saloxin	ShapeshifterO	is the installation mounted?
+2007-10-21T19:34:00.000Z	ShapeshifterO	saloxin	yes. the partition itself is mounted
+2007-10-21T19:35:00.000Z	saloxin	ShapeshifterO	open a terminal: cd /path/to/installation and chroot . /bin/bash
+2007-10-21T19:35:00.000Z	ShapeshifterO	saloxin	can't be ^^ http://ubuntuforums.org/showpost.php?p=2306628&postcount=6 this is the link ^^
+2007-10-21T19:36:00.000Z	saloxin	ShapeshifterO	i told you how to chroot only - which is not covered there.
+2007-10-21T19:37:00.000Z	saloxin	ShapeshifterO	and that howto is useless. linux-sources doesn't do shit for you.editing your fstab file might help, but with a sdX value
+2007-10-21T19:43:00.000Z	saloxin	ShapeshifterO	does sudo -i work?
+2007-10-21T19:44:00.000Z	ShapeshifterO	saloxin	sudo -i gives me another error: /usr/sbin/chroot: /usr/sbin/chroot: cannot execute binary file.
+2007-10-21T19:45:00.000Z	saloxin	ShapeshifterO	follow LiMaO - following many at once will confuse i think
+2007-10-21T19:47:00.000Z	saloxin	ShapeshifterO	can you do "sudo -i" in terminal only (wait with chrooting)
+2007-10-21T19:48:00.000Z	saloxin	ShapeshifterO	you know the name of your root device?
+2007-10-21T19:49:00.000Z	ShapeshifterO	saloxin	my root device is /dev/sda5
+2007-10-21T19:49:00.000Z	saloxin	ShapeshifterO	put that in your /boot/grub/menu.lst and fstaf
+2007-10-21T19:49:00.000Z	ShapeshifterO	saloxin	I already tried entering /dev/sda5 instead of the UUID in menu-lst or directly when grub loads at the behinning
+2007-10-21T19:50:00.000Z	saloxin	ShapeshifterO	keep the line with UUID for reference - make a new one
+2007-10-21T19:50:00.000Z	ShapeshifterO	saloxin	ok I'll put it into fstab too. Didn't do that. Now I just sudo update-initramfs -u in the chrooted env. because I think I nuked thatone with splashy
+2007-10-21T19:51:00.000Z	saloxin	ShapeshifterO	yep. i think update-initramfs picks up from fstab. still looking
+2007-10-21T19:52:00.000Z	ShapeshifterO	saloxin	I'll try and reboot now
+2007-10-21T19:53:00.000Z	ShapeshifterO	saloxin	Hehe, yeah recovery mode works :D I guess normal mode will work, too. Thanks a LOT!
+2007-10-21T19:54:00.000Z	saloxin	ShapeshifterO	no prob. blkid probes partitiones and gives UUID's if you need them
+2007-10-21T19:55:00.000Z	ShapeshifterO	saloxin	I don't really get what UUIDs are good for anyway, they seem to make more problems than anything. I also had to put the /dev/ formatted location for swap into fstab, too so that suspend would work...
+2007-10-21T19:56:00.000Z	saloxin	ShapeshifterO	UUID's are ment to help us change from /dev/hda to /dev/sda. didn't work for me, but I think it work for quite a lot of ubuntu users

@@ -1,0 +1,23 @@
+2011-08-30T20:26:00.000Z	AzizLight		Hi everybody
+2011-08-30T20:28:00.000Z	AzizLight		I have an ubuntu server in a virtualbox, I am trying to ssh into it and I am getting a connection refused error...can someone help me please?
+2011-08-30T20:28:00.000Z	jjgalvez__	AzizLight	what type of network are you using for you vbox? NAT?
+2011-08-30T20:30:00.000Z	AzizLight	jjgalvez__	well, I have no clue to be honest, but I don't think it's a NAT. I'm connected to a gateway that's all I know. also I realized I have a bigger problem now...
+2011-08-30T20:33:00.000Z	jjgalvez__	AzizLight	well when you figure out your bigger issues, make sure your network is set either for bridged which will make it look like any other computer on your network, or localhost if your only testing stuff and want to access it only from the host computer. I generally use bridged for stuff like this because its simplier
+2011-08-30T20:34:00.000Z	AzizLight	jjgalvez__	ok thanks, but when I fix the bigger issue the smaller issues might as well be fixed
+2011-08-30T21:28:00.000Z	AzizLight	jjgalvez__	I just realized that my gateway is set to NAT mode, whatever that means...
+2011-08-30T21:29:00.000Z	AzizLight	jjgalvez__	and I am still getting the connection refused error when I try to ssh into the virtual machine
+2011-08-30T21:30:00.000Z	jjgalvez__	AzizLight	your router should be in NAT mode, are you trying to access your vbox from the inside or outside your router
+2011-08-30T21:33:00.000Z	jjgalvez__	AzizLight	make sure you can ssh to the server from the server
+2011-08-30T21:33:00.000Z	AzizLight	jjgalvez__	how can I do that??
+2011-08-30T21:37:00.000Z	AzizLight	jjgalvez__	zykotick9: I can ssh from the server indeed
+2011-08-30T21:38:00.000Z	jjgalvez__	AzizLight	when you crated the vm what netowrk setting did you select?
+2011-08-30T21:39:00.000Z	AzizLight	jjgalvez__	I didn't, all was done automatically, but I did say that I wasn't behind a proxy, which is the case
+2011-08-30T21:39:00.000Z	jjgalvez__	AzizLight	if you didn't make a selection and are using the default, I think it defaults to NAT which will block all incomming traffic. shut the server down and change the network to localhost
+2011-08-30T21:40:00.000Z	jjgalvez__	AzizLight	or use bridged, which simplifies things because then it looks like any ohter machine on your network
+2011-08-30T21:47:00.000Z	AzizLight	jjgalvez__	if I switch to anything other than NAT in the vm config I don't have an inet anymore...weird
+2011-08-30T21:49:00.000Z	jjgalvez__	AzizLight	wow that is odd, with the system running in a window, can you change it on the fly? there is a network icon at the bottom right of the screen that should let you change the setting on the fly
+2011-08-30T21:50:00.000Z	AzizLight	jjgalvez__	yeah I changed it on the fly and I still have the same inet but I can't connect via ssh still
+2011-08-30T21:51:00.000Z	AzizLight	jjgalvez__	I'll be back in 20-ish minutes with a clear head
+2011-08-30T21:52:00.000Z	jjgalvez__	AzizLight	which version of Virtualbox? the OSS one or the one from Oracle? did you install the host drivers?
+2011-08-30T21:53:00.000Z	AzizLight	jjgalvez__	I think I have the free version of the oracle vm which is the first result on google when you search for virtualbox
+2011-08-30T21:55:00.000Z	jjgalvez__	AzizLight	did you install the vbox drivers, not sure if you need them for network stuff but its a good place to start

@@ -1,0 +1,23 @@
+2009-05-31T18:02:00.000Z	helper		hello how i can add using /etc/fstab i want to add mount for /home because i want to use quota option how 's that i try /home /home default 0 0 => didn't work
+2009-05-31T18:02:00.000Z	helper		what file system of home ?
+2009-05-31T18:03:00.000Z	mrwes	helper	ext3 ?
+2009-05-31T18:03:00.000Z	helper	mrwes	i use in /etc/fstab i mean how i can add /home i need to mount it so i can use quota
+2009-05-31T18:04:00.000Z	mrwes	helper	here's my entry  /dev/sda3
+2009-05-31T18:04:00.000Z	mrwes		UUID=c01708ed-83dc-4834-8381-fba15f6547b8 /home           ext3    relatime        0       2
+2009-05-31T18:05:00.000Z	helper	mrwes	i try home /home ext3 defaults 0 0
+2009-05-31T18:05:00.000Z	helper		 didn't work
+2009-05-31T18:06:00.000Z	mrwes	helper	I think you need the relatime and you would also want fsck on that partition, so 0 2 is correct
+2009-05-31T18:07:00.000Z	mrwes	helper	pastebin your /etc/fstab so we can take a look at it
+2009-05-31T18:07:00.000Z	mrwes		!pastebin
+2009-05-31T18:07:00.000Z	helper	mrwes	error come like : mount: special device home does not exist
+2009-05-31T18:07:00.000Z	mrwes	helper	from a terminal type sudo fdisk -l (lower case L), do you see the home partition?
+2009-05-31T18:08:00.000Z	mrwes		helper /dev/sda2 or sda3 maybe?
+2009-05-31T18:08:00.000Z	helper	mrwes	 http://pastebin.com/m3d58c926 the both of fstab and fdisk
+2009-05-31T18:08:00.000Z	mrwes		k...lemme look
+2009-05-31T18:10:00.000Z	mrwes	helper	is this an Wubi install via Windows?
+2009-05-31T18:10:00.000Z	helper	mrwes	 yes
+2009-05-31T18:10:00.000Z	mrwes		Helper: did you actually make a /home partition?
+2009-05-31T18:10:00.000Z	mrwes		I don't see it
+2009-05-31T18:10:00.000Z	helper	mrwes	no i want to do now so i can set up the quota
+2009-05-31T18:11:00.000Z	mrwes	helper	well I've never used quotas, but you can't mount a /home partition if it doesn't exsist
+2009-05-31T18:11:00.000Z	helper	mrwes	there is /home

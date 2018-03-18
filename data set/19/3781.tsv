@@ -1,0 +1,19 @@
+2009-05-29T13:57:00.000Z	an7		Anyone know what cpufreq method is actually being used on Jaunty? It seems to keep my cpu stuck on lowest frequency, even when I select the performance governor in the gnome applet
+2009-05-29T13:59:00.000Z	kenyon	an7	cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+2009-05-29T14:00:00.000Z	an7	kenyon	that shows the governor as set, but the scaling doesnt change (acual mhz/ghz)
+2009-05-29T14:00:00.000Z	kenyon	an7	it's hard to see because it changes so fast
+2009-05-29T14:00:00.000Z	kenyon	an7	did it say ondemand?
+2009-05-29T14:00:00.000Z	an7	kenyon	- my cpu is sitting at 76%
+2009-05-29T14:01:00.000Z	an7	kenyon	it says performance, but the scaling__cur_freq sits at 800mhz (which sucks for a 2ghz laptop plugged into mains)
+2009-05-29T14:03:00.000Z	kenyon	an7	I use ondemand on my core2 quad desktop. I have cpufrequtils installed, which provides a cpufreq-set program.
+2009-05-29T14:04:00.000Z	an7	kenyon	I tried installing that, but then gnome failed to login - some sort of clash with the builtin power tools? It didnt seem to let me change anything either though
+2009-05-29T14:05:00.000Z	an7	kenyon	http://pastebin.com/m11f137f8
+2009-05-29T14:06:00.000Z	kenyon	an7	hmm I don't know, maybe you can just disable scaling?
+2009-05-29T14:06:00.000Z	an7	kenyon	how?
+2009-05-29T14:06:00.000Z	an7	kenyon	google seems to think removing powernowd
+2009-05-29T14:06:00.000Z	an7	kenyon	but its not installed on my box
+2009-05-29T14:09:00.000Z	kenyon	an7	you could try unloading the module listed by cpufreq-info -d
+2009-05-29T14:09:00.000Z	an7	kenyon	I dont see any kernel modules - it must be builtin on jaunty
+2009-05-29T14:09:00.000Z	an7		i dont have cpufreq-utils installed
+2009-05-29T14:12:00.000Z	kenyon	an7	apparently gnome-power-manager might be handling it
+2009-05-29T14:13:00.000Z	an7	kenyon	maybe i should be filing a but against gnome-power-manager then

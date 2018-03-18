@@ -1,0 +1,23 @@
+2011-11-28T08:56:00.000Z	i3luefire		<i3luefire> ok. i am having issues getting the transmission-daemon to keep its edited json settings file after a restart. i followed to seperate guides to set it up(http://1000umbrellas.com/2010/10/04/updated-transmission-installationconfiguration-on-ubuntu-server)and(https://trac.transmissionbt.com/wiki/EditConfigFiles) neither worked
+2011-11-28T08:56:00.000Z	i3luefire		<i3luefire> i am running ubuntu-server 11.10
+2011-11-28T08:58:00.000Z	jordan	i3luefire	one common gotcha is that transmission allows users to change its settings remotely, so its in-memory config gets dumped to disk in settings.json when it exits. If you're editing settings.json by hand and then stopping->restarting transmission, it's probably overwriting your changes
+2011-11-28T08:58:00.000Z	jordan	i3luefire	one way to avoid this problem is to exit transmission-daemon, then edit the file, and then restart transmission daemon. Another way is to force it to reload settings.json after you edit it by sending it a SIGHUP
+2011-11-28T08:59:00.000Z	i3luefire	jordan	each of the guides says that and says to reload the daemon first before restarting
+2011-11-28T09:00:00.000Z	i3luefire	jordan	yes i did the SIGHUP thing
+2011-11-28T09:00:00.000Z	i3luefire		i3luefire@ubuntu-server:/etc/transmission-daemon$ sudo pkill -HUP transmission-da
+2011-11-28T09:07:00.000Z	i3luefire	jordan	http://pastebin.com/SaZvGHYW                                      http://pastebin.com/UafzH6j2
+2011-11-28T09:08:00.000Z	i3luefire		anyone have any ideas
+2011-11-28T09:12:00.000Z	i3luefire		 ok. i am having issues getting the transmission-daemon to keep its edited json settings file after a restart. i followed to seperate guides to set it up(http://1000umbrellas.com/2010/10/04/updated-transmission-installationconfiguration-on-ubuntu-server)and(https://trac.transmissionbt.com/wiki/EditConfigFiles) neither worked
+2011-11-28T09:12:00.000Z	i3luefire		<i3luefire> <i3luefire> i am running ubuntu-server 11.10 i did the SIGHUP thing http://pastebin.com/SaZvGHYW                                      http://pastebin.com/UafzH6j2   anyone have any ideas
+2011-11-28T09:14:00.000Z	i3luefire		that was a consolodation of my previous multi-line question so as to comply with !ask | i3luefire
+2011-11-28T09:14:00.000Z	jordan	i3luefire	could you be more specific about what error you're encountering?
+2011-11-28T09:14:00.000Z	jordan	i3luefire	when you say "neither worked" -- what was the behavior that you saw?
+2011-11-28T09:16:00.000Z	i3luefire	jordan	it kept overwriting the files. but now i have tried your solution of stopping editing then starting the deamon and i posted the pastebin of my terminal window with the commands i entered and the error i got and another pastebin of my config file
+2011-11-28T09:18:00.000Z	jordan	i3luefire	ah ok, I didn't see the second pastbin, only the first one
+2011-11-28T09:18:00.000Z	jordan	i3luefire	the json parser is erroring out because you omitted the comma at the end of line 62, the utp-enabled line
+2011-11-28T09:20:00.000Z	i3luefire	jordan	  "utp-enabled": true             line
+2011-11-28T09:20:00.000Z	jordan	i3luefire	right
+2011-11-28T09:20:00.000Z	jordan		needs a comma at the end, like the other lines have
+2011-11-28T09:20:00.000Z	jordan		in order to be valid json
+2011-11-28T09:21:00.000Z	i3luefire	jordan	thank you
+2011-11-28T09:21:00.000Z	jordan	i3luefire	you're welcome

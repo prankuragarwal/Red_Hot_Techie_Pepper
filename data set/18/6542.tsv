@@ -1,0 +1,18 @@
+2008-09-29T01:08:00.000Z	IntuitiveNipple	TJ13820	If the server's both have static IP configurations then the names would be set in the router's resolver, depending on what it uses possibly /etc/hosts or dnsmasq, etc.
+2008-09-29T01:08:00.000Z	TJ13820	IntuitiveNipple	this is a cisco router. it views the hostmask sent by the machine
+2008-09-29T01:12:00.000Z	IntuitiveNipple	TJ13820	there is no 'sent by the machine' for DNS resolution *unless* using dynamic DNS update. In any event, put Wireshark on the segment and observe the interchange when the server NICs come up, to see what is different between the two.
+2008-09-29T01:15:00.000Z	IntuitiveNipple	TJ13820	eeek... that sounds like a good explanation for a *lot* of things! (could it be a flakey cable?)
+2008-09-29T01:16:00.000Z	IntuitiveNipple	TJ13820	have you rotated the ports used by the PCs to see if the same port affects different devices (or the failure follows the device) ?
+2008-09-29T01:18:00.000Z	IntuitiveNipple	TJ13820	ipconfig?
+2008-09-29T01:20:00.000Z	IntuitiveNipple	TJ13820	I don't see any recent updates issued for iproute, I've just looked at the hardy-changes mailing list.
+2008-09-29T01:21:00.000Z	TJ13820	IntuitiveNipple	it wasn't recent. I just installed server on a new machine
+2008-09-29T01:22:00.000Z	IntuitiveNipple	TJ13820	But your issue sounds like router configuration - a router won't get a name unless it has been statically declared either via a hosts file, or a DHCP reservation, or DNS zone.
+2008-09-29T01:22:00.000Z	IntuitiveNipple	TJ13820	Oh, okay, you made it sound like something that updated in the last couple of weeks :)
+2008-09-29T01:23:00.000Z	IntuitiveNipple	TJ13820	No, the hosts file (or equivilent) in the router - this is a router resolution issue isn't it?
+2008-09-29T01:24:00.000Z	IntuitiveNipple	TJ13820	It doesn't 'send' it, that's what I've been saying (unless using SMB with NetBIOS naming and something like winbind)
+2008-09-29T01:24:00.000Z	TJ13820	IntuitiveNipple	i installed Samba on my new server. I'm not sure about this one
+2008-09-29T01:25:00.000Z	IntuitiveNipple	TJ13820	If the router issues a reserved IP to a server via DHCP lease then the name of the PC will get propagated to the router's name resolution tables, but if the PC has a statically defined IP and doesn't use DHCP then (without dynamic DNS or NetBIOS/winbind stuff) the router won't get the name.
+2008-09-29T01:27:00.000Z	IntuitiveNipple	TJ13820	the solution is to set up a DNS zone file in the router for the local LAN, and create A records for the servers, and create a reverse-lookup subnet zone to resolve IP-to-name requests too
+2008-09-29T01:27:00.000Z	IntuitiveNipple	TJ13820	hah!
+2008-09-29T01:27:00.000Z	IntuitiveNipple	TJ13820	So, it was SMB/NetBIOS
+2008-09-29T01:27:00.000Z	TJ13820	IntuitiveNipple	my samba install was broken! haha

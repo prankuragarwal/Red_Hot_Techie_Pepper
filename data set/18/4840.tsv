@@ -1,0 +1,18 @@
+2009-02-21T21:56:00.000Z	wiijii		Hi guys, does anyone know how I can revert my ath9k wireless driver that Ubuntu seems to have installed? I want the ath5k back but can't find it anywhere
+2009-02-21T21:57:00.000Z	wiijii		For ath5k?
+2009-02-21T21:57:00.000Z	n8tuserf	wiijii	-> remove it from /lib/modules/`uname -r`/kernel/drivers  perhaps? somewhere in that kernel/*  look for it and remove it
+2009-02-21T21:58:00.000Z	wiijii	n8tuserf	Yeah I can remove ath9k but I need the ath5k module
+2009-02-21T22:03:00.000Z	n8tuserf	wiijii	-> look into /etc/modprobe.d/
+2009-02-21T22:15:00.000Z	n8tuserf	wiijii	-> once you loaded the backports, did you find the ath5k  in those subdirs?
+2009-02-21T22:16:00.000Z	n8tuserf	wiijii	-> get the correct path, or I may give you the wrong info
+2009-02-21T22:17:00.000Z	n8tuserf	wiijii	-> moved it to same locations as where you have found the ath9k earlier,  i dont think it loads modules from updates/ subdir
+2009-02-21T22:18:00.000Z	wiijii	n8tuserf	But when I use modprobe it is saying that the module from 'updates' could not be loaded
+2009-02-21T22:19:00.000Z	n8tuserf	wiijii	-> modprobe command looks in a specific dir i believe, lest you provide full path
+2009-02-21T22:22:00.000Z	n8tuserf	wiijii	-> yeah you have to man insmod and modprobe to get the correct syntax and where it looks for these modules
+2009-02-21T22:22:00.000Z	wiijii	n8tuserf	it is finding the modules, just not loading them
+2009-02-21T22:22:00.000Z	n8tuserf	wiijii	-> if i recall, ath9k is the recommended one, but you have to google for the excerpts of these,
+2009-02-21T22:23:00.000Z	wiijii	n8tuserf	I haven't been using ah9k until recently, it just got updated. it does not support packet injection and I need that feature for some work I'm doing
+2009-02-21T22:25:00.000Z	n8tuserf	wiijii	-> not all wifi drivers support all the features, so yeah you have to go hunting for drivers that meets your needs
+2009-02-21T22:26:00.000Z	wiijii	n8tuserf	This is the correct driver, hence me trying to get it to work
+2009-02-21T22:26:00.000Z	n8tuserf	wiijii	-> i forget now, what is your chip? is its same as GratuitousEsq ? you guys have same chip?
+2009-02-21T22:27:00.000Z	wiijii	n8tuserf	I have no idea. The module I need is ath5k, definitely. It worked previously

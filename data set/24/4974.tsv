@@ -1,0 +1,24 @@
+2006-11-25T16:53:00.000Z	profoX`_		I am unable to ping/access a website on my linux box (i can't get its ip address resolved), all other websites work... on my other computer, I can visit the website though.. what could be wrong.. hosts file looks normal..
+2006-11-25T16:54:00.000Z	profoX`_		both pc's have the same ip
+2006-11-25T16:54:00.000Z	profoX`_		(router)
+2006-11-25T16:54:00.000Z	profoX`_		same external ip i mean
+2006-11-25T16:55:00.000Z	sladen	profoX`_	sounds like an DNS issue.  check the contents of  /etc/resolv.conf
+2006-11-25T16:55:00.000Z	sladen	profoX`_	trying deleting the first nameserver mentioned in /etc/resolv.conf so that the second one gets used
+2006-11-25T16:56:00.000Z	profoX`_	sladen	I can't ping the IP like I should
+2006-11-25T16:56:00.000Z	profoX`_	sladen	it does 1 ping, and fails... and then I have 100% packet loss
+2006-11-25T16:57:00.000Z	sladen	profoX`_	lots of firewalls [incorrectly]  drop ICMP ping packets.  Can you successfully ping /any/ sites?
+2006-11-25T16:57:00.000Z	profoX`_	sladen	yes, I can ping all other sites..
+2006-11-25T16:57:00.000Z	sladen	profoX`_	then I wouldn't worry.
+2006-11-25T16:57:00.000Z	profoX`_	sladen	just not this one I am having trouble with (www.beryl-project.org)
+2006-11-25T16:57:00.000Z	profoX`_	sladen	I'm not worrying, but I also can't access the website....
+2006-11-25T16:57:00.000Z	profoX`_	sladen	not with 2 different external IP's on this computer
+2006-11-25T16:58:00.000Z	sladen	profoX`_	www.beryl-project.org resolves to  195.14.0.203  for me, can you ping that IP directly?
+2006-11-25T16:58:00.000Z	profoX`_	sladen	I already tried that, I am talking to the admin of beryl-project.org on IRC.. didnt work, thats the thing that gave me: 55 packets transmitted, 0 received, 100% packet loss, time 54017ms
+2006-11-25T16:59:00.000Z	sladen	profoX`_	I suspect that www.beryl-project.org is served from many different servers, in a "round robin" fashion.  Perhaps the particular one you got given is currently down or doesn't accept ping packets
+2006-11-25T17:00:00.000Z	profoX`_	sladen	well it must be the first problem, because I can't access it either?
+2006-11-26T17:01:00.000Z	profoX`_	sladen	admin says its only 1 server
+2006-11-26T17:02:00.000Z	sladen	profoX`_	so, what happens in you  apt-get install mtr   and then  mtr www.beryl-project.org    how far do the packets get?
+2006-11-26T17:03:00.000Z	profoX`_	sladen	like... nothing...
+2006-11-26T17:04:00.000Z	profoX`_	sladen	actuallythe mtr program kinda stays blank/freezes for some time
+2006-11-26T17:05:00.000Z	profoX`_	sladen	and when i wait long enough: Temporary failure in name resolution: Success
+2006-11-26T17:09:00.000Z	profoX`_	sladen	...more ideas?

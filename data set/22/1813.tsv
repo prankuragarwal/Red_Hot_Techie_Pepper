@@ -1,0 +1,22 @@
+2010-01-21T03:40:00.000Z	jellow		I have a fat 32 partition though i can only mount it as root , How can non-root users access it
+2010-01-21T03:40:00.000Z	DasEi	jellow	own the mountdir to regular user
+2010-01-21T03:41:00.000Z	jellow	DasEi	I tried sudo chown -R user:user still get Operation not permitted
+2010-01-21T03:42:00.000Z	DasEi	jellow	sudo chown  -r >jellow or whatever here< /mountdir
+2010-01-21T03:42:00.000Z	DasEi	jellow	sudo chown  -R >jellow or whatever here< /mountdir
+2010-01-21T03:43:00.000Z	jellow	DasEi	 On all the files i get  Operation not permitted
+2010-01-21T03:44:00.000Z	DasEi	jellow	whats the mountdir ?
+2010-01-21T03:44:00.000Z	jellow	DasEi	I put it in /media
+2010-01-21T03:44:00.000Z	DasEi	jellow	no subdir ?
+2010-01-21T03:45:00.000Z	jellow	DasEi	not sure =/
+2010-01-21T03:45:00.000Z	DasEi	jellow	mount tells you
+2010-01-21T03:46:00.000Z	jellow	DasEi	 /dev/sda1 on /media type vfat (rw)
+2010-01-21T03:46:00.000Z	DasEi	jellow	sudo chown -R jellow /media               will give jellow full access
+2010-01-21T03:48:00.000Z	jellow	DasEi	Nope i get operation not permitted
+2010-01-21T03:49:00.000Z	DasEi	jellow	on the sudo cmd or on later access ?
+2010-01-21T03:54:00.000Z	jellow	DasEi	Ok worked it out bit of fstab black voddo magic
+2010-01-21T03:54:00.000Z	jellow	DasEi	Thanks for your help
+2010-01-21T03:54:00.000Z	DasEi	jellow	even it wasnt mounted for user, chown should have done it
+2010-01-21T03:55:00.000Z	jellow	DasEi	I depends what options it been mounted with
+2010-01-21T03:55:00.000Z	DasEi	jellow	so what was it ?
+2010-01-21T03:56:00.000Z	jellow	DasEi	added this to fstab UUID=12102C02102CEB83  /media/windows  vfat auto,users,uid=1000,gid=100,dmask=027,fmask=137,utf8  0  0
+2010-01-21T03:57:00.000Z	DasEi	jellow	vfat has no group-rights, just auto,user,rw,exec

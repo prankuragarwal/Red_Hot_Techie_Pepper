@@ -1,0 +1,24 @@
+2006-07-23T10:59:00.000Z	user_		basic question (i hope) would help me trmenedously tho: is there any command to set all file/user rights to default values at once?
+2006-07-23T11:00:00.000Z	wayward	user_	chmod 644 file
+2006-07-23T11:01:00.000Z	wayward	user_	you mean the defaults or change permissions on a set of files?
+2006-07-23T11:03:00.000Z	wayward	user_	supposing your default permissions are 644
+2006-07-23T11:03:00.000Z	wayward	user_	and 755 for directories
+2006-07-23T11:04:00.000Z	wayward	user_	find . -type f -exec chmod 644 {} \;  && find . -type d -exec chmod 755 {} \;
+2006-07-23T11:04:00.000Z	wayward	user_	this will reset permissions for files and directories in the current dir. and below
+2006-07-23T11:05:00.000Z	wayward	user_	but please use with care
+2006-07-23T11:05:00.000Z	wayward	user_	each file/dir has its own set of permissions
+2006-07-23T11:05:00.000Z	wayward	user_	 your problem might lie someplace else.  What exactly do you need it for?
+2006-07-23T11:06:00.000Z	wayward	user_	well you can type a command
+2006-07-23T11:06:00.000Z	wayward	user_	but how did you end up with bad permissions in the first place?
+2006-07-23T11:07:00.000Z	wayward	user_	if you want to set 644 on files and 755 on directories, you have that command line above, but make sure that it is what you really want
+2006-07-23T11:08:00.000Z	wayward	user_	also make sure to read man chmod
+2006-07-23T11:09:00.000Z	wayward	user_	755
+2006-07-23T11:09:00.000Z	wayward	user_	same
+2006-07-23T11:09:00.000Z	wayward	user_	you need to be careful with .*/ directories though
+2006-07-23T11:10:00.000Z	wayward	user_	~/.gnupg/ should be 700
+2006-07-23T11:10:00.000Z	wayward	user_	good luck :)
+2006-07-23T11:17:00.000Z	wayward	user_	755 is the usual mode for all the home directories
+2006-07-23T11:17:00.000Z	wayward	user_	yeah
+2006-07-23T11:18:00.000Z	wayward	user_	at least that's the default :)
+2006-07-23T11:20:00.000Z	wayward	user_	do check your startup scripts, /etc/profile, /etc/bash/bashc for commands like 'umask 022'.  It should be 022.
+2006-07-23T11:20:00.000Z	wayward	user_	also your ~/.profile, ~/.bash_profile, ~/.bashrc

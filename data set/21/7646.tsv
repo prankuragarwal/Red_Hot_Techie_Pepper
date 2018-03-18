@@ -1,0 +1,21 @@
+2006-10-12T16:47:00.000Z	clearzen		I have a ssh server set up with two ethernet interfaces active. How would I route all outside traffic through a specific interface?
+2006-10-12T16:49:00.000Z	clearzen		can anyone help?
+2006-10-12T05:08:00.000Z	clearzen		could someone please help me with a networking problem?
+2006-10-12T05:09:00.000Z	clearzen		I have 2 NIC cards on a server and I want one card used for internal traffic and one card used for outside traffic. How can I set this up??
+2006-10-12T05:10:00.000Z	clearzen		no they are static ips
+2006-10-12T05:10:00.000Z	LjL	clearzen	well, the file you need to look at is /etc/network/interfaces
+2006-10-12T05:12:00.000Z	LjL	clearzen	i think it all boils down to giving the internal interface an address and netmask for the internal network, and the external interface the appropriate external address -- and set the external interface as default gateway for anything that's not directed to the internal network
+2006-10-12T05:13:00.000Z	clearzen	LjL	so what you are saying is that I should assign the static ip assgined by my isp to the interface handling the outside traffic>
+2006-10-12T05:13:00.000Z	LjL	clearzen	i'll paste my own server's /etc/network/interfaces -- however, in my case, i've got 4 different cards, each dedicated to connecting to another machine. so it's a bit different
+2006-10-12T05:14:00.000Z	LjL	clearzen	yup
+2006-10-12T05:14:00.000Z	LjL	clearzen	http://paste.ubuntu-nl.org/26374/ <- you can see that my external uses DHCP though
+2006-10-12T05:15:00.000Z	LjL	clearzen	also, i used this trick of doing "route add 192.168.0.2 dev eth1" commands ad-hoc for each interface... which is ok as long as only one other machine is connected to that interface
+2006-10-12T05:16:00.000Z	LjL	clearzen	well, if you also want the other machine to access the internet through yours, you also need to set up NAT or something.
+2006-10-12T05:19:00.000Z	clearzen	LjL	i have one question about your config file. Is the pointtopoint command for ad-hoc?
+2006-10-12T05:19:00.000Z	LjL	clearzen	yes, i don't think you need it.
+2006-10-12T05:21:00.000Z	LjL	clearzen	hm, do "man interfaces", it makes an example that looks close to what you want
+2006-10-12T05:27:00.000Z	LjL	clearzen	well, to be honest i set this up long ago, so i don't quite remember everything there is to it. if i were able to tell you "type this and it'll work", i would. the example on the man page should nearly do though... well, scrap the "work" stuff that you probably don't need, and make the dhcp of eth1 (or what-it-is in your case) a static address instead.
+2006-10-12T05:29:00.000Z	LjL	clearzen	then i still *think* that for everything to work properly, you also need a "route add -net 192.168.0.0 netmark 255.255.255.0 dev eth0" (assuming eth0 is the internal, and 192.168.0.0 is the right network) -- which you can add in /etc/network/interfaces with an "up" command, like i did in my case
+2006-10-12T05:30:00.000Z	LjL	clearzen	then if the internet works, you're set. otherwise you probably also need, for the external interface (assume eth1) "route add default gateway dev eth1"
+2008-03-31T01:43:00.000Z	clearzen	LjL	vim is awesome. if you can find a terminal on almost any system it has vim
+2008-03-31T01:43:00.000Z	LjL	clearzen	i wouldn't advice it to someone who thinks the terminal *is* the editor, or things like that

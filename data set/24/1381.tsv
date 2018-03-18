@@ -1,0 +1,24 @@
+2010-07-28T05:21:00.000Z	Scunizi		WHY .. OH WHY .. is samba acting so different on 10.04.. sudo service smbd restart says "unrecognized service"
+2010-07-28T05:23:00.000Z	KE1HA	Scunizi	what does the results of this say: ps -e | grep smb
+2010-07-28T05:24:00.000Z	Scunizi	KE1HA	nothing.. although smbd and nmbd does show.
+2010-07-28T05:24:00.000Z	Scunizi	KE1HA	however ps aux -e | grep smb does show the service running.
+2010-07-28T05:26:00.000Z	Scunizi	KE1HA	yes.. using /etc/init.d/smbd restart etc... however when I do that it says that method has been converted to an upstart job.. ie... sudo service smbd restart
+2010-07-28T05:27:00.000Z	Scunizi	KE1HA	yet.. the shares are not accessable from the LAN via a mapped drive in windows running on a vm
+2010-07-28T05:28:00.000Z	Scunizi	KE1HA	all this worked prior to reinstalling 10.04 from 9.10
+2010-07-28T05:28:00.000Z	KE1HA	Scunizi	I think the shares are not accessable because it's not runnign properly, why though is a bit baffeling.
+2010-07-28T05:29:00.000Z	Scunizi	KE1HA	yea.. I was over at #samba and although they suggested a few things basically said it's most likely a distro issue..
+2010-07-28T05:29:00.000Z	KE1HA	Scunizi	I would save my .conf files, then uninstall / reinstall samba then edit your new .conf & restart to see where that puts you.
+2010-07-28T05:30:00.000Z	KE1HA	Scunizi	after having many issues early on with Versin Upgrades, I now only do staright installs.
+2010-07-28T05:30:00.000Z	Scunizi	KE1HA	lol.. that's pretty much what I just did.. reinstalled samba4... then purged it.. installed samba.. however I did't "re-install" samba.. I should try that.... Yea.. I *never* version upgrade any more.. always a fresh install keeping the same /home
+2010-07-28T05:31:00.000Z	KE1HA	Scunizi	I'd un-install, purge, then do a fresh install od Samba and deps, then test again.
+2010-07-28T05:32:00.000Z	Scunizi	KE1HA	Wow... purging samba resulted in an error in the process when trying to stop the process... same error I get when trying to reinstall.. now for an install and see what happens.
+2010-07-28T05:33:00.000Z	KE1HA	Scunizi	if it's running, ya need to kill the PIDS
+2010-07-28T05:33:00.000Z	Scunizi	KE1HA	too late.. already reinstalling.. that'll be the next purge step if I need to..
+2010-07-28T05:34:00.000Z	KE1HA	Scunizi	oif there's previous PIDS or lock files you'll get errors.
+2010-07-28T05:35:00.000Z	Scunizi	KE1HA	sudo service smbd restart now works.. *AND* my windows vm can now see the shares.. YEE HA!  It may not seem like you helped but you did.. Thanks (KD6WQK here)
+2010-07-28T05:35:00.000Z	KE1HA	Scunizi	rrr glad it's working, acutlly Im now KI7MT :-)
+2010-07-28T05:36:00.000Z	Scunizi	KE1HA	time for a nick change? :-))
+2010-07-28T05:37:00.000Z	Scunizi	KE1HA	7 land huh?  Is that AZ?
+2010-07-28T05:38:00.000Z	KE1HA	Scunizi	no, Montana.
+2010-07-28T05:39:00.000Z	KE1HA	Scunizi	7-Lannd is a BIG Place :-)
+2010-07-28T05:39:00.000Z	Scunizi	KE1HA	ah.. I'll be up that way next summer.. family reunion.. but I'm off topic for this channel and have to run anyway..  Will touch base later.

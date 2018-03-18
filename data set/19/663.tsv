@@ -1,0 +1,19 @@
+2012-10-26T20:02:00.000Z	hc96		hi guys! I have a problem with virtualbox and 2 virtual network cards. I run ubuntu server 12.04. I can ping from the host to the guest via 192.168.56.{1,200}, the guest can ping to the ip of google.com, but DNS does not work. What should I do? I think it has to do sth. with /etc/resolv.conf
+2012-10-26T20:02:00.000Z	pestilence	hc96	what is the guest OS?
+2012-10-26T20:03:00.000Z	hc96	pestilence	its ubuntu server 12.04, the host is xubuntu 12.10
+2012-10-26T20:03:00.000Z	pestilence	hc96	what is the contents of resolv.conf
+2012-10-26T20:04:00.000Z	hc96	pestilence	nameserver 10.0.2.2 \n search fritz.box
+2012-10-26T20:04:00.000Z	hc96	pestilence	and it states the contents will be overwritten by resolvconf(8)
+2012-10-26T20:05:00.000Z	pestilence	hc96	hrmm. where'd it get that.  ubuntu desktop uses dnsmasq...does ubuntu server not do that?
+2012-10-26T20:05:00.000Z	hc96	pestilence	10.0.2.2 is the host IP of my VirtualBox network
+2012-10-26T20:05:00.000Z	pestilence	hc96	is it running a dns server?
+2012-10-26T20:08:00.000Z	hc96	pestilence	actually it should since other guests OS have DNS
+2012-10-26T20:10:00.000Z	pestilence	hc96	dunno.  no guarantee that the other OS's are using the host for DNS.
+2012-10-26T20:11:00.000Z	pestilence	hc96	for example, I could install a nameserver inside an ubuntu guest and have it provide its own DNS.
+2012-10-26T20:11:00.000Z	pestilence	hc96	can you ping 10.0.2.2 from inside the guest?
+2012-10-26T20:11:00.000Z	hc96	pestilence	yes I can
+2012-10-26T20:12:00.000Z	pestilence	hc96	how about dig @10.0.2.2 www.google.com
+2012-10-26T20:14:00.000Z	hc96	pestilence	connection timed out, no servers could be reached
+2012-10-26T20:15:00.000Z	pestilence	hc96	what other guests do you have?  see if that works in any of those.
+2012-10-26T20:18:00.000Z	hc96	pestilence	I got another linux, there the resol.conf contains nameserver 127.0.0.1 \n search fritz.box
+2012-10-26T20:19:00.000Z	hc96	pestilence	however, dig @127.0.0.1 www.google.com also does not work

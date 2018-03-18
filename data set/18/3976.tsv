@@ -1,0 +1,18 @@
+2009-06-23T19:46:00.000Z	squircle		!hi | HaliFax
+2009-06-23T19:48:00.000Z	squircle		hi #ubuntu, i'm having a problem doing administrative actions through GNOME apps. For instance, whenever I go to add a user, the "Unlock" button is greyed out and the tooltip says "This action is not allowed". however, I can still gksudo <appname> and it'll work. any ideas?
+2009-06-23T19:49:00.000Z	mbeierl	squircle	you (or a group you belong to) are in the sudoers list?
+2009-06-23T19:49:00.000Z	mbeierl	squircle	(just checking the basics... lemme know if you've already covered those)
+2009-06-23T19:50:00.000Z	squircle	mbeierl	yeah, I am, and I can use sudo fine in the terminal, as well as gksudo.
+2009-06-23T19:51:00.000Z	squircle	mbeierl	and mdm: it works when I'm at the machine locally, but if I'm accessing it through VNC or NX, it won't work, but I can still just run gksudo
+2009-06-23T19:52:00.000Z	mbeierl	squircle	oh.  Interesting.  That's something different as if somehow the remote control is not allowing you to do a sudo-like operation...
+2009-06-23T19:55:00.000Z	mbeierl	squircle	yes, I see that, and it appears that there's been some bugs reported on it, for example: https://bugs.launchpad.net/ubuntu/+source/policykit/+bug/238799
+2009-06-23T19:57:00.000Z	mbeierl	squircle	I think comment #10 (https://bugs.launchpad.net/ubuntu/+source/policykit/+bug/238799/comments/10) is pretty telling - it looks like VNC is treated as a remote login and if the remote logins are disallowed, then policykit won't auth you
+2009-06-23T19:59:00.000Z	mbeierl	squircle	probably, but I don't use NX much so I can't confirm.
+2009-06-23T20:00:00.000Z	squircle	mbeierl	i checked and dpkg says policykit is installed, so I'll assume it's this bug. is there any way other than gksudo to launch the users admin panel as root?
+2009-06-23T20:01:00.000Z	squircle	mbeierl	even sudo users-admin from a terminal doesn't work
+2009-06-23T20:01:00.000Z	mbeierl	squircle	you want the GTK graphical panel?
+2009-06-23T20:02:00.000Z	squircle	mbeierl	preferably, if not, i could just use the terminal and adduser blah blah blah
+2009-06-23T20:03:00.000Z	squircle	mbeierl	it says in the comments on this bug that *somehow* the policykit policy can be adjusted
+2009-06-23T20:07:00.000Z	squircle	mbeierl	found it, it's sudo ck-launch-session polkit-gnome-authorization to change the policykit settings, thanks for all your help, i guess i'll stick around and answer some other, less technical questions ;)
+2009-06-23T20:07:00.000Z	mbeierl	squircle	YAY!  sorry - was away from keyboard for a moment there and just catching up
+2009-06-23T20:08:00.000Z	squircle	mbeierl	now i just have to figure out what policykit settings to change, and, for once, google isn't helping

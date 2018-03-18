@@ -1,0 +1,19 @@
+2010-03-03T23:22:00.000Z	Snicks		hi, my computer doesn't wanna start up (i suppose problem with /etc/fstab, however it seems allright); i've had this problem before, then fixed with changing /etc/fstab, but it doesn't work now and /etc/fstab is the same as when it was fixed again; any idea? (ubuntu 9.10; clean upgrade from 9.04)
+2010-03-03T23:23:00.000Z	sernylan	Snicks	big bootable partition?
+2010-03-03T23:23:00.000Z	Snicks	sernylan	well, 150Mb
+2010-03-03T23:24:00.000Z	Snicks	sernylan	i mean /boot = 150Mb; other partitions aren't changed or so i suppose
+2010-03-03T23:25:00.000Z	sernylan	Snicks	no, not what I would consider big.  I had a 750 Gb partition autocheck yesterday, took a while for the mount to come online.
+2010-03-03T23:26:00.000Z	Snicks	sernylan	my biggest partition is /home with 602.1Gb; but that has always worked at ubuntu 9.04so i thought that couldn't be a problem; it looks like to have a problem with all disks; any idea howto fix it or so?
+2010-03-03T23:28:00.000Z	sernylan	Snicks	 What behavior are you getting out of a boot attempt and how long are you giving it before you decide it's not booting?
+2010-03-03T23:29:00.000Z	Snicks	sernylan	last time i gave it quite a few minutes (5 or so?) but now i closed it down immediatly, because it should work (last time it worked at once after my fix, but there's nothing to 'fix' anymore)
+2010-03-03T23:31:00.000Z	sernylan	Snicks	fstab restored from backup or by typing it back to what it was?
+2010-03-03T23:32:00.000Z	Snicks	sernylan	typing back by myself, but the fix i gave fstab worked; i changed uuid's to /etc/sda1 etcetera because i thought that would be the problem and it worked (but now not anymore)
+2010-03-03T23:36:00.000Z	sernylan	Snicks	Did you find necessary to do an improper (power off) shutdown?  Cause that would provoke a filesystem check at boot.
+2010-03-03T23:37:00.000Z	Snicks	sernylan	well, i already did that before it got not-working; my computer didn't react because a silly game was annoying me and didn't want to close down and i didn't have acces to any option to kill it at all (even ctrl-alt-f1 didn't work; out of range at my screen there) so, yes, it was required then -.-
+2010-03-03T23:40:00.000Z	sernylan	Snicks	I'd get in there with a live disk.  You can still mount your drives and (I don't know if it's the problem, but) determine your UUIDs.
+2010-03-03T23:41:00.000Z	Snicks	sernylan	i still have the uuid's backed up (from the /etc/fstab file), but i supposed that was the problem; i'm already in a live cd-session; should i put the uuid's back or first check whether they were right?
+2010-03-03T23:43:00.000Z	sernylan	Snicks	If you've got em in a file backup, I expect they're right.  I doubt you changed anything about filesystem type, but it might hang things up to have declared an ext4 fs to be a ext3 fs.
+2010-03-03T23:44:00.000Z	Snicks	sernylan	i changed nothing it's a ext3 anyway, would that make any difference?
+2010-03-03T23:49:00.000Z	sernylan	Snicks	I'd just restore the UIUDs and give it patience for the 600+GB fsck.
+2010-03-03T23:50:00.000Z	Snicks	sernylan	why it has always worked (i've not changed that partition anyway) and not anymore? ;) could that be just because of ubuntu 9.10 or the unexpected shutdown?
+2010-03-03T23:51:00.000Z	sernylan	Snicks	that's why I suspect it's just going through a long fsck.

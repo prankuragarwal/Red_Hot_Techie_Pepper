@@ -1,0 +1,21 @@
+2009-12-20T01:53:00.000Z	seme		ok so I'm a little confused... if, for instance, I want to stop apache from starting by default in any runlevel I should just do...  service apache2 stop && update-rc.d apache2 disable
+2009-12-20T01:53:00.000Z	seme		is that right?
+2009-12-20T01:54:00.000Z	seme		and if it is, then will it remove the actual /etc/init.d/apache2 script or just the rc?.d K and S scripts
+2009-12-20T01:54:00.000Z	seme		also then what is the point of the /etc/default/apache2 option for it not to start?
+2009-12-20T01:54:00.000Z	seme		sorry if this is confusing but the docs are just not clear
+2009-12-20T01:56:00.000Z	rob_p	seme	It's "sudo update-rc.d -f apache2 remove" if you want to remove it from the startup.  Apache2 and it's startup script are still installed but removed from the runlevels.
+2009-12-20T01:57:00.000Z	seme		is that the right way to manage the services? I mean then what is the point of the /etc/default/jetty having a NO_START option?
+2009-12-20T01:57:00.000Z	seme		or is this just more inconsistency... meaning each package kind of does things differently
+2009-12-20T01:58:00.000Z	rob_p	seme	If you want to add it back to the startup, do the following:  sudo update-rc.d apache2 defaults
+2009-12-20T01:58:00.000Z	seme	rob_p	thanks... any insite on the /etc/default stuff?
+2009-12-20T01:58:00.000Z	seme		I'm just trying to understand
+2009-12-20T01:59:00.000Z	rob_p	seme	/etc/default gives you options for many of the daemons on the system.  Sometimes their entries in /etc/default give you a quick way of disabling the service without removing their startup scripts from the runlevels.
+2009-12-20T02:00:00.000Z	seme	rob_p	argg ok...
+2009-12-20T02:00:00.000Z	seme		thanks
+2009-12-20T02:00:00.000Z	seme		:)
+2009-12-20T02:00:00.000Z	rob_p	seme	...but the general method of controling auto start of services is through the update-rc.d command.
+2009-12-20T02:02:00.000Z	seme	rob_p	one last question... do you know what the ?, +, - mean when you run a service --status-all
+2009-12-20T02:05:00.000Z	rob_p	seme	Perhaps the manpage can shed some light.  I don't use service command often.
+2009-12-20T02:06:00.000Z	seme	rob_p	thanks... yeah I've beengoing through the man pages... haven't figured it out yet but thanks for your help
+2009-12-20T02:06:00.000Z	rob_p	seme	You must be on a RH distro...
+2009-12-20T02:07:00.000Z	rob_p	seme	I use service on CentOS systems I administer.

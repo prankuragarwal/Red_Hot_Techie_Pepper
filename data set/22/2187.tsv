@@ -1,0 +1,22 @@
+2009-08-28T07:03:00.000Z	TH3RDWAR		I have my ip and dns staticly set via /etc/networks/interfaces and resolv.conf respectively. Why does my ip address keep going back to what it was when using dhcp? How do I flush that in ubuntu?
+2009-08-28T07:04:00.000Z	nsp	TH3RDWAR	Prolly network manager ... but not sure.
+2009-08-28T07:05:00.000Z	TH3RDWAR	nsp	using server version
+2009-08-28T07:06:00.000Z	nsp	TH3RDWAR	Are you sure the entries in /etc/network/interfaces are correct?
+2009-08-28T07:07:00.000Z	TH3RDWAR	nsp	yes, when I do /etc/init.d/network restart then ifconfig it shows the new ip address. Then after some time it reverts back to the old one.
+2009-08-28T07:09:00.000Z	nsp	TH3RDWAR	You may have some script someplace telling it to do dhclient eth1 or...?
+2009-08-28T07:10:00.000Z	TH3RDWAR	nsp	this is out of the box, but I'll check. Thanks for the suggestions.
+2009-08-28T07:12:00.000Z	nsp	TH3RDWAR	Are you sure you don't have network-manager installed?
+2009-08-28T07:13:00.000Z	nsp	TH3RDWAR	You could show us your config file.  pastebinit /etc/network/interfaces
+2009-08-28T07:14:00.000Z	TH3RDWAR	nsp	yea, http://pastie.org/597346
+2009-08-28T07:15:00.000Z	nsp	TH3RDWAR	It may be called network-manager-gnome
+2009-08-28T07:16:00.000Z	nsp	TH3RDWAR	apt-cache search network-manager
+2009-08-28T07:17:00.000Z	nsp	TH3RDWAR	or:  apt-cache search network |grep manager
+2009-08-28T07:18:00.000Z	TH3RDWAR	nsp	none of those are installed :P I'll do some more searching around.
+2009-08-28T07:19:00.000Z	nsp	TH3RDWAR	sudo grep -r eth0 /etc/
+2009-08-28T07:19:00.000Z	nsp	TH3RDWAR	or eth1 or eth2  which ever it is..
+2009-08-28T07:22:00.000Z	TH3RDWAR	nsp	looks like it was pointing to /etc/dhcp3/dhclient.conf:#  interface "eth0"; I removed dhcp3-client. Hope that does it
+2009-08-28T07:23:00.000Z	TH3RDWAR	nsp	I appreciate it
+2009-08-28T07:23:00.000Z	nsp	TH3RDWAR	One thing that I think is convenient is to just leave it set to dhcp and configure the router to give that MAC address the IP of your choosing.
+2009-08-28T07:24:00.000Z	nsp	TH3RDWAR	And as I said before, look at the entry in  the config file and make sure it's not still saying auto
+2009-08-28T07:24:00.000Z	nsp	TH3RDWAR	in /etc/network/interfaces
+2009-08-28T07:24:00.000Z	TH3RDWAR	nsp	yea that would work. I'm just runninga little ubuntu server vm so I'm trying to keep it static on the box. I'll double check interfaces.

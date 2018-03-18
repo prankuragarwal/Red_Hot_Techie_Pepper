@@ -1,0 +1,21 @@
+2006-10-18T11:08:00.000Z	stephans		how do you delete lots of files??????????
+2006-10-18T11:08:00.000Z	stephans		i get bash: /bin/rm: Argument list too long
+2006-10-18T11:09:00.000Z	stephans		there are over 10 000 files in a folder... i need to delete most of them
+2006-10-18T11:09:00.000Z	don-o	stephans	how are you specifying which to delete?
+2006-10-18T11:09:00.000Z	stephans		I would have thought that the cli would be the easises...
+2006-10-18T11:10:00.000Z	stephans		rm rec*
+2006-10-18T11:10:00.000Z	stephans	don-o	rm rec*
+2006-10-18T11:10:00.000Z	don-o	stephans	find . -name rec\* -exec rm {} \;
+2006-10-18T11:10:00.000Z	don-o	stephans	thats one way to do it. note it will search into subdirectories.
+2006-10-18T11:10:00.000Z	stephans	don-o	could you pls explain what that means???
+2006-10-18T11:11:00.000Z	don-o	stephans	man find will explain it.
+2006-10-18T11:12:00.000Z	stephans	don-o	could you do it with a for loop?
+2006-10-18T11:13:00.000Z	don-o	stephans	for filename in *; do echo $filename; done
+2006-10-18T11:13:00.000Z	don-o	stephans	replace * with rec* and echo with rm
+2006-10-18T11:14:00.000Z	don-o		william SHATner
+2006-10-18T11:14:00.000Z	stephans	don-o	ok that is the equivalent of 'for /f %i in ('dir /b rec*.*') do del %i'
+2006-10-18T11:14:00.000Z	stephans		in windows?
+2006-10-18T11:15:00.000Z	don-o	stephans	good god i dont know! DOS batch files?! :)
+2006-10-18T11:15:00.000Z	don-o	stephans	i didnt even know DOS was capable of such a construct.
+2006-10-18T11:15:00.000Z	stephans	don-o	NT shell scripting... lots of similarities...
+2006-10-18T11:16:00.000Z	don-o	stephans	i see.

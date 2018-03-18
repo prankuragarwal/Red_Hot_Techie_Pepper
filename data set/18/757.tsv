@@ -1,0 +1,18 @@
+2011-09-24T19:49:00.000Z	Guest78544		getting port 22 connection refused error
+2011-09-24T19:51:00.000Z	Guest78544		i have openssh-server on host and client on client but connection refused
+2011-09-24T19:51:00.000Z	Guest78544		can anyone help with ssh problem?
+2011-09-24T19:53:00.000Z	llutz	Guest78544	its either firewalled or doesn't run at all on default port
+2011-09-24T20:01:00.000Z	llutz	Guest78544	on server: sudo lsof -i :22
+2011-09-24T20:04:00.000Z	llutz	Guest78544	3g connection? does t-mobile use NAT?
+2011-09-24T20:30:00.000Z	llutz	Guest78544	ssh -o CheckHostIP no user@host
+2011-09-24T20:35:00.000Z	llutz	Guest78544	thats why you should use "ssh -o CheckHostIP no user@host"   else it will complain with every ip-change
+2011-09-24T20:35:00.000Z	llutz	Guest78544	no pm please
+2011-09-24T20:36:00.000Z	llutz	Guest78544	on the client
+2011-09-24T20:38:00.000Z	llutz	Guest78544	thats an ooohhh
+2011-09-24T20:38:00.000Z	llutz	Guest78544	ssh -o CheckHostIP no user@host
+2011-09-24T20:39:00.000Z	llutz	Guest78544	just replace "user@host"
+2011-09-24T20:41:00.000Z	Guest78544	llutz	 command-line line 0: Missing yes/no argument. error
+2011-09-24T20:41:00.000Z	llutz	Guest78544	what was your exact command?
+2011-09-24T20:43:00.000Z	llutz	Guest78544	my bad,  "ssh -o CheckHostIP=no user@host"
+2011-09-24T20:45:00.000Z	llutz	Guest78544	use ip-address
+2011-09-24T20:48:00.000Z	llutz	Guest78544	sounds as it doesn't. you had been connected once, all other attempts failed. check /var/log/messages or syslog on server for any sshd-related errors

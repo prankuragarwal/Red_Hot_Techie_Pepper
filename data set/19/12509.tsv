@@ -1,0 +1,19 @@
+2005-08-25T07:42:00.000Z	borfast		hi everyone
+2005-08-25T07:43:00.000Z	borfast		guys, this has nothing to do with Ubuntu (I'll get to that next) but I thought I'd ask, since I've seen the same thing in other IRC channels: what's with the "paste" pages, what are they for...?
+2005-08-25T07:45:00.000Z	borfast		wow, that's a cool bot :)
+2005-08-25T07:45:00.000Z	thoreauputic	borfast	you give us the URL
+2005-08-25T07:58:00.000Z	thoreauputic	borfast	sudo apt-get install linux-headers-$(uname -r)
+2005-08-25T07:59:00.000Z	borfast	thoreauputic	I already did that before starting to install vmware-tools
+2005-08-25T08:00:00.000Z	thoreauputic	borfast	funny, the $(uname -r) should include the -386
+2005-08-25T08:00:00.000Z	thoreauputic	borfast	what you pasted is fine
+2005-08-25T08:01:00.000Z	borfast	thoreauputic	I have both the kernel headers and even the kernel source (which shouldn't be necessary) in /usr/src but the darn thing says the kernel versions (the running kernel and the kernel-headers) don't match. I actually used Synaptic and not the command line apt-get
+2005-08-25T08:02:00.000Z	thoreauputic	borfast	try the command I gave - maybe your kernel has been updated?
+2005-08-25T08:03:00.000Z	borfast	thoreauputic	it was but it was updated right before trying to install vmware-tools. this is a completely fresh instalation of ubuntu, I just did an "apt-get update; apt-get" upgrade after installing
+2005-08-25T08:04:00.000Z	borfast	thoreauputic	oh, and I uncommented the Universe repository in sources.list (not sure if it influences the kernel packages)
+2005-08-25T08:04:00.000Z	thoreauputic	borfast	I was just thinking you might have selected the wrong package in synaptic - the literal command would make sure of it
+2005-08-25T08:05:00.000Z	borfast	thoreauputic	yeah, I'm going to try the shell command
+2005-08-25T08:05:00.000Z	thoreauputic	borfast	BTW I know nothing about vmware ;)
+2005-08-25T08:06:00.000Z	borfast	thoreauputic	lol. no problem, this has nothing to do with VMware itself, I think. it's just about the naming of the kernel and kernel-headers versions
+2005-08-25T08:10:00.000Z	borfast	thoreauputic	I think you hit the nail on the head - I do have a kernel-headers directory in /usr/src but there's no kernel-headers package installed - don't know why, I installed it and the files are there..... :|
+2005-08-25T08:11:00.000Z	thoreauputic	borfast	note that in ubuntu it's "linux-headers-$(uname -r)"
+2005-08-25T08:12:00.000Z	thoreauputic	borfast	 dpkg -L linux-headers-$(uname -r) to see where the files install

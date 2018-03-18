@@ -1,0 +1,23 @@
+2008-12-11T10:37:00.000Z	Formode1		Hello, anyone good with Grub? I'm trying to dual boot, and when I select windows partition I get "Error 13: Invalid or unsupported executable format"
+2008-12-11T10:37:00.000Z	scunizi	Formode1	do you have more than one drive installed in your machine?
+2008-12-11T10:38:00.000Z	Formode1	scunizi	No, just one 500gb one, split into 3, Linux Swap, Ubuntu, and Windows.
+2008-12-11T10:38:00.000Z	scunizi	Formode1	you might need to reinstall grub.. have you tried that already?
+2008-12-11T10:39:00.000Z	Formode1	scunizi	I just did, actually, following the help documentation. I then rebooted and did not find a windows option, so I made one as per the documentation
+2008-12-11T10:40:00.000Z	scunizi	Formode1	was windows the first system installed before ubuntu?
+2008-12-11T10:40:00.000Z	Formode1	scunizi	Ubuntu was on there first, I just installed windows this morning, Ubuntu's been around for about 2 months.
+2008-12-11T10:41:00.000Z	scunizi	Formode1	typically windows likes to be first but there might be hope.. the tutorial you used, was it from the bot in this channel?
+2008-12-11T10:42:00.000Z	scunizi	Formode1	can you pastbin what's in /boot/grub/menu.list ?
+2008-12-11T10:42:00.000Z	Formode1	scunizi	Yes. :)
+2008-12-11T10:46:00.000Z	scunizi	Formode1	ok.. I think I see the problem.. the "root" line in the menu.lst shows windows as (hd0,0).. if it was the second OS installed and the partition used was more toward the end of the drive then the 0,0 reference is incorrect.
+2008-12-11T10:47:00.000Z	Formode1	scunizi	Oh. Ok. how would I find out which is correct?
+2008-12-11T10:48:00.000Z	scunizi	Formode1	as you count the partitions, the first is Ubuntu (maybe), then /swap, then windows.. so the correct reference might be (hd0,2) ... that references the 3rd partition
+2008-12-11T10:49:00.000Z	scunizi	Formode1	0=1st partition
+2008-12-11T10:49:00.000Z	Formode1	scunizi	Hm. Ok. I think it would be 0,1, then.
+2008-12-11T10:50:00.000Z	scunizi	Formode1	0,1 would be the first drive second partition
+2008-12-11T10:50:00.000Z	Formode1	scunizi	Thank you, I will try that now
+2008-12-11T10:50:00.000Z	scunizi	Formode1	why did you install on a seperate partition?  for gaming? if not for gaming vbox might be a solution
+2008-12-11T10:51:00.000Z	Formode1	scunizi	I installed it for UT3 and Photoshop/Lightroom/Illustrator
+2008-12-11T10:52:00.000Z	scunizi	Formode1	ah.. oh.. usually ut has a native installer for linux..
+2008-12-11T10:52:00.000Z	Formode1	scunizi	UT3 has not got one yet and I've had the box over a year, so I gave up on waiting
+2008-12-11T10:52:00.000Z	Formode1	scunizi	Thank you for your help. :) If I do not return it worked! :D
+2008-12-11T10:52:00.000Z	scunizi	Formode1	no problem.. if it doesn't work play with the second number

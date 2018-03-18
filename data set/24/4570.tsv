@@ -1,0 +1,24 @@
+2007-03-09T14:27:00.000Z	Joshooa		If I can find /lib/modules/2.6.17-10-generic/kernel/drivers/net/wireless/rt2x00/rt61pci.ko, with modprobe, and rt61 is my wireless card chipset, does that mean I have a driver for it, and wouldn't need ndiswrapper?
+2007-03-09T14:29:00.000Z	eck	Joshooa	then it is working
+2007-03-09T14:30:00.000Z	Joshooa	eck	But that's not my point, I'm trying to 1 Make sure it will work without ndiswrapper after I reinstall, and also help someone get another wireless card working, and I found his chipset .ko on my computer, but it's not on his
+2007-03-09T14:30:00.000Z	eck	Joshooa	if you have a kernel module, you probably don't need to use ndiswrapper
+2007-03-09T14:35:00.000Z	eck	Joshooa	the .ko files come with the kernel that you have installed, if your friend has the same kernel he/she should have the same kernel modules
+2007-03-09T14:38:00.000Z	Joshooa	eck	Thank you we found it on his, not sure why modprobe didn't find it for him, but his wireless card is listed under eth1, is that right?
+2007-03-09T14:39:00.000Z	Joshooa	eck	And is also unassociated
+2007-03-09T14:40:00.000Z	eck	Joshooa	that seems good. if it doesn't auto-associate you can set the wireless settings with iwconfig, and do dhcp with dhclient
+2007-03-09T14:41:00.000Z	Joshooa	eck	How do you make it associate?
+2007-03-09T14:42:00.000Z	eck	Joshooa	something like this: iwconfig eth1 essid name_of_wireless_network key wep_hex_key_here
+2007-03-09T14:43:00.000Z	Joshooa	eck	Okay, but why is it unassociated, shouldn't it say the wireless card name in that spot?
+2007-03-09T14:43:00.000Z	Joshooa	eck	And why is wireless on eth, I thought eth was wired
+2007-03-09T14:44:00.000Z	eck	Joshooa	somehow udev/iwconfig and the module collude to pick an interface name, i'm not sure how
+2007-03-09T14:44:00.000Z	eck	Joshooa	in the unassociated spot it should say the wireles network you have associated with
+2007-03-09T14:45:00.000Z	Joshooa	eck	I thought that's what ESSID was
+2007-03-09T14:45:00.000Z	eck	Joshooa	yeah it is, i guess i was confused about where it was displaying not associated
+2007-03-09T14:46:00.000Z	Joshooa	eck	Ok, yeah unassociated it after eth1 but before essid
+2007-03-09T14:46:00.000Z	Joshooa	eck	How can i make it recognize that driver file we found earlier?
+2007-03-09T14:47:00.000Z	eck	Joshooa	it is already loaded, if it wasn't the interface wouldn't be in iwconfig at all
+2007-03-09T14:47:00.000Z	eck	Joshooa	i think you need to do dhclient now
+2007-03-09T14:48:00.000Z	Joshooa	eck	Okay, it's otateossian that I am helping with this, but I have a similiar issue with a different card
+2007-03-09T14:49:00.000Z	Joshooa	eck	Mine says my card name though, and it's under ra0 not eth1
+2007-03-09T14:49:00.000Z	Joshooa	eck	Would depmod be of any help?
+2007-03-09T14:51:00.000Z	eck	Joshooa	maybe, i'm not sure

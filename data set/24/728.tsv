@@ -1,0 +1,24 @@
+2011-02-19T15:43:00.000Z	yarekt		Hi everyone. I wonder if you could help me. I need to put a hostname as an environment variable, which has to go to /etc/environment but from what i read that file does not execute any script stuff, is that true?
+2011-02-19T15:44:00.000Z	ikonia	yarekt	just do HOSTNAME=`hostname` in your .bash_profile
+2011-02-19T15:44:00.000Z	yarekt	ikonia	it has to go into /etc/environment because its needed by apache, not only by shell scripts
+2011-02-19T15:45:00.000Z	ikonia	yarekt	sorry, why does it need to go into /etc/environment
+2011-02-19T15:46:00.000Z	yarekt	ikonia	because apache, on startup, reads that file. I'm not comfortable with having it source any other files
+2011-02-19T15:46:00.000Z	ikonia	yarekt	apache won't read that file, why does apache need a hostname variable ?
+2011-02-19T15:48:00.000Z	yarekt	ikonia	ok, ill rephrase, I need it to be in /etc/environment , so all the PHP applications have the envvars set. I cannot modify the PHP applications
+2011-02-19T15:49:00.000Z	ikonia	yarekt	php won't read enviornment variables
+2011-02-19T15:49:00.000Z	ikonia	yarekt	give you give a real life example of your problem please.
+2011-02-19T15:51:00.000Z	yarekt	ikonia	in /etc/environment: SERVER_ENV='test1'; in PHP define('SERVER_ENV', getenv('SERVER_ENV'));
+2011-02-19T15:51:00.000Z	ikonia	yarekt	that should be set in the env of the user executing the script
+2011-02-19T15:52:00.000Z	yarekt	ikonia	the PHP is executed by apache
+2011-02-19T15:53:00.000Z	ikonia	yarekt	setup the apache users env if possible then
+2011-02-19T15:53:00.000Z	yarekt	ikonia	and we also have some PHP cli scripts which are executed by multiple shell users
+2011-02-19T15:53:00.000Z	ikonia	yarekt	then get those users to source the environment file
+2011-02-19T15:53:00.000Z	yarekt	ikonia	the environment file?
+2011-02-19T15:53:00.000Z	ikonia	yarekt	/etc/enviornment
+2011-02-19T15:55:00.000Z	yarekt	ikonia	thats what we have right now. but I have to hardcode the variables for each server, id like them to be picked up from hostname and IP address right in /etc/environment, so that when anything sources it they will be automatically available for all
+2011-02-19T15:56:00.000Z	ikonia	yarekt	you should be able to do HOSTNAME=`hostname` as when the shell sources it it should work
+2011-02-19T15:56:00.000Z	yarekt	ikonia	in /etc/environment ?
+2011-02-19T16:00:00.000Z	yarekt	ikonia	it doesnt execute the $() or ``, it just sets it to `hostname`
+2011-02-19T16:00:00.000Z	yarekt	ikonia	literal
+2011-02-19T16:00:00.000Z	ikonia	yarekt	how dissapointing
+2011-02-19T16:03:00.000Z	yarekt	ikonia	thanks for your help

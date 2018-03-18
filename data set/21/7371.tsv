@@ -1,0 +1,21 @@
+2006-10-13T06:40:00.000Z	TheFriedGeek		Hello all.
+2006-10-13T06:41:00.000Z	TheFriedGeek		How can I get grub working with XP installed on first partition?
+2006-10-13T06:42:00.000Z	TheFriedGeek		AJ I had a similar problem, I had to run the X config tool and include that res in my monitor profile.
+2006-10-13T06:43:00.000Z	TheFriedGeek		AJ: Let me see...
+2006-10-13T06:43:00.000Z	timalot	TheFriedGeek	didnt it pick up the XP partition on installation?
+2006-10-13T06:44:00.000Z	TheFriedGeek		Timalot: I had partitions like this.. [unpart space] [EX3 Ubuntu] [Linux Swap] 
+2006-10-13T06:45:00.000Z	TheFriedGeek		And I installed XP after Linux, I had to get the SATA drivers working first.
+2006-10-13T06:45:00.000Z	TheFriedGeek		Now I'm parted like [XP] [ubuntu] [linux swap] 
+2006-10-13T06:45:00.000Z	timalot	TheFriedGeek	ok ... i see this is my /boot/grub/menu.1st entry for my windows partition which is 1st on the drive
+2006-10-13T06:46:00.000Z	timalot		title Windoze
+2006-10-13T06:46:00.000Z	timalot		        rootnoverify (hd0,0)
+2006-10-13T06:46:00.000Z	timalot		        makeactive
+2006-10-13T06:46:00.000Z	TheFriedGeek		AJ: try sudo dpkg-reconfigure xserver-xorg
+2006-10-13T06:46:00.000Z	timalot		        chainloader +1
+2006-10-13T06:47:00.000Z	TheFriedGeek	timalot	I'm sorry I didn't see anything come over (?)
+2006-10-13T06:48:00.000Z	timalot	TheFriedGeek	u have to add an entry to the /boot/grub/menu.1st ... then run  grub-install
+2006-10-13T06:48:00.000Z	TheFriedGeek		In one of the later steps in that setup there is a place where you set your monitor's profile and you choose the best resolution supported by that montitor. Mine was only set to 1024 by default but you can choose higher ones on the list.
+2006-10-13T06:49:00.000Z	timalot		!pastebin
+2006-10-13T06:49:00.000Z	TheFriedGeek	timalot	hmmm... ok. (poking around)
+2006-10-13T06:51:00.000Z	timalot	TheFriedGeek	the entry in my menu.1st file for windows is pasted at http://paste.ubuntu-nl.org/26593/
+2006-10-13T06:51:00.000Z	TheFriedGeek	timalot	thanks I'll check this out.

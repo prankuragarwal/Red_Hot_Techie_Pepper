@@ -1,0 +1,22 @@
+2011-10-07T17:18:00.000Z	matlock		hey, i'm sorry if this type of thing should just work out of the box
+2011-10-07T17:18:00.000Z	matlock		but it appears ubuntu's motto is broken
+2011-10-07T17:18:00.000Z	matlock		because nothing seems to work anymore.
+2011-10-07T17:18:00.000Z	matlock		ok
+2011-10-07T17:19:00.000Z	matlock		headless box is a bit hard to install windows on
+2011-10-07T17:19:00.000Z	matlock		no the motto used to be 'it just works'
+2011-10-07T17:19:00.000Z	matlock		but it doesn't
+2011-10-07T17:20:00.000Z	matlock		why did he leave
+2011-10-07T17:20:00.000Z	matlock		frak
+2011-10-07T17:21:00.000Z	matlock		minicom is talking to /dev/tty8 is that the port i should put in efax-gtk?
+2011-10-07T17:21:00.000Z	llutz	matlock	what port is your modem connected to?
+2011-10-07T17:22:00.000Z	llutz	matlock	"dmesg | less"   read the output and check what port and stopp to SHOUT
+2011-10-07T17:33:00.000Z	llutz	matlock	"sudo modprobe snd-intel8x0m"   any output? if no output, pastebin "dmesg | tail -10" pls
+2011-10-07T17:35:00.000Z	matlock	llutz	and no output so.. http://paste.ubuntu.com/703962/
+2011-10-07T17:39:00.000Z	llutz	matlock	your problem is, that most modems are so called "winmodems" which use minimum hardware and the rest is done in win-drivers. those might work with linux, but most just fail.
+2011-10-07T17:56:00.000Z	llutz	matlock	try using "/dev/ttySL0" as device in efax-whatever
+2011-10-07T17:59:00.000Z	llutz	matlock	read line 89++ of your paste before, it refers to agere-drivers. maybe you need to get/try them
+2011-10-07T18:01:00.000Z	matlock	llutz	yea i saw from the scanout.00:1b.0 doc that the script output that it mentions the same
+2011-10-07T18:03:00.000Z	llutz	matlock	get the debs from http://linmodems.technion.ac.il/packages/ltmodem/11c11040/
+2011-10-07T18:03:00.000Z	llutz	matlock	but be warned: 3rd party debs might break things
+2011-10-07T18:38:00.000Z	matlock	llutz	thanks for the help though
+2011-10-07T18:38:00.000Z	llutz	matlock	too bad

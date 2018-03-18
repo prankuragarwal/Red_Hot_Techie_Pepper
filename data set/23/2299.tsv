@@ -1,0 +1,23 @@
+2009-04-30T00:56:00.000Z	Chamillionaire2		When i run nautilus i get "nautilus: error while loading shared libraries: libgnome-desktop-2.so.7: cannot open shared object file: No such file or directory"
+2009-04-30T00:57:00.000Z	joaopinto	Chamillionaire2	please pastebin the result from: apt-cache policy nautilus
+2009-04-30T01:01:00.000Z	Chamillionaire2	joaopinto	http://pastebin.com/m5f083327 my results
+2009-04-30T01:02:00.000Z	joaopinto	Chamillionaire2	sudo apt-get install --reinstall nautilus
+2009-04-30T01:03:00.000Z	Chamillionaire2	joaopinto	Done, after trying to open a file broswer window it still doesnt work
+2009-04-30T01:06:00.000Z	Chamillionaire2	joaopinto	i did what you said but still nothing?
+2009-04-30T01:07:00.000Z	joaopinto	Chamillionaire2	did it reinstall and you get the same error ?
+2009-04-30T01:07:00.000Z	Chamillionaire2	joaopinto	Yup
+2009-04-30T01:07:00.000Z	joaopinto	Chamillionaire2	ldd $(which nautilus) | grep -i desktop
+2009-04-30T01:08:00.000Z	joaopinto	Chamillionaire2	on jaunty you should get:  libgnome-desktop-2.so.11 => /usr/lib/libgnome-desktop-2.so.11 (0x00007ff210535000)
+2009-04-30T01:08:00.000Z	Chamillionaire2	joaopinto	libgnome-desktop-2.so.7 => not found   libgnome-desktop-2.so.11 => /usr/lib/libgnome-desktop-2.so.11 (0xb7214000)
+2009-04-30T01:09:00.000Z	joaopinto	Chamillionaire2	that's is very odd, my nautilus does not depend on libgnome-desktop-2.so.7
+2009-04-30T01:10:00.000Z	Chamillionaire2	joaopinto	your the 2nd person today to say that
+2009-04-30T01:11:00.000Z	joaopinto	Chamillionaire2	lsb_release -a
+2009-04-30T01:12:00.000Z	Chamillionaire2	joaopinto	Dam i gtg and restart pc, wont be a mo
+2009-04-30T01:15:00.000Z	Chamillionaire2	joaopinto	Back what did you want me to terminal again?
+2009-04-30T01:15:00.000Z	joaopinto	Chamillionaire2	lsb_release -a
+2009-04-30T01:17:00.000Z	Chamillionaire2	joaopinto	Distributor ID: Ubuntu Description: Ubuntu 9.04 Release: 9.04 Codename: jaunty
+2009-04-30T01:18:00.000Z	joaopinto	Chamillionaire2	I have no more ideas, your nautilus binary seems to be invalid, but since reinstalling didn't fix...
+2009-04-30T01:21:00.000Z	Chamillionaire2	joaopinto	sudo apt-get install libgnome-desktop-2-7? It somes up with an error anyway
+2009-04-30T01:21:00.000Z	joaopinto	Chamillionaire2	the problem is that your nautlis binary is linked againsted a library version which is not available on jaunty
+2009-04-30T01:22:00.000Z	Chamillionaire2	joaopinto	Is there one available for jaunty?
+2009-04-30T01:23:00.000Z	joaopinto	Chamillionaire2	ues, and you have it installed

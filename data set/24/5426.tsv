@@ -1,0 +1,24 @@
+2006-07-24T13:52:00.000Z	_BASO_		please HELP!!!!!!!!!!!!!!!!!!! ubuntu can not see my pCMCIA Cards...
+2006-07-24T13:52:00.000Z	dli	_BASO_	do you have it in " lspci "?
+2006-07-24T13:53:00.000Z	_BASO_	dli	what is lspci?
+2006-07-24T13:53:00.000Z	dli	_BASO_	in a terminal, type: lspci
+2006-07-24T13:54:00.000Z	_BASO_	dli	yes , it is listed there CardBus bridge: Toshiba America Info Systems ToPIC97
+2006-07-24T13:55:00.000Z	dli	_BASO_	then, insert your card, do lspci again
+2006-07-24T13:57:00.000Z	_BASO_	dli	it is a same list
+2006-07-24T13:57:00.000Z	dli	_BASO_	okay, you need the driver for pcmcia, let me find the module name
+2006-07-24T13:58:00.000Z	_BASO_	dli	please check the private chat window...
+2006-07-24T14:01:00.000Z	dli	_BASO_	do: sudo modprobe yenta_socket
+2006-07-24T14:04:00.000Z	_BASO_	dli	I have done, ..
+2006-07-24T14:04:00.000Z	dli	_BASO_	do lspci again
+2006-07-24T14:05:00.000Z	_BASO_	dli	same list again
+2006-07-24T14:06:00.000Z	dli	_BASO_	couldn't see your card in lspci?
+2006-07-24T14:06:00.000Z	dli	_BASO_	sudo modprobe pcmcia
+2006-07-24T14:09:00.000Z	_BASO_	dli	no result ..
+2006-07-24T14:09:00.000Z	_BASO_	dli	kernel: [ 2554.763716]  pccard: PCMCIA card inserted into slot 1
+2006-07-24T14:10:00.000Z	dli	_BASO_	then, lspci should show something
+2006-07-24T14:10:00.000Z	_BASO_	dli	but after that it says kernel: [ 2554.763769]  cs: unable to map card memory!
+2006-07-24T14:10:00.000Z	dli	_BASO_	what's the card?
+2006-07-24T14:11:00.000Z	_BASO_	dli	it is network adapter, but I have another one, also the Modem Pcmica and it is same an all of them..
+2006-07-24T14:11:00.000Z	dli	_BASO_	which model of the NIC card?
+2006-07-24T14:12:00.000Z	_BASO_	dli	it is SMC
+2006-07-24T14:12:00.000Z	dli	_BASO_	try, sudo modprobe smc91c92_cs

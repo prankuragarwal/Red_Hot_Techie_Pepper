@@ -1,0 +1,22 @@
+2007-05-19T07:40:00.000Z	kazol		How do I use hddtemp with sensors-applet?
+2007-05-19T07:40:00.000Z	kazol		Hddtemp is working fine, but I need a plugin for gkrellm or sensors-applet.
+2007-05-19T07:41:00.000Z	asaka	kazol	you have sata hdd and running feisty?
+2007-05-19T07:41:00.000Z	asaka	kazol	cause there seems to be a problem with this combination and hddtemp reading smart values off the hdd
+2007-05-19T07:41:00.000Z	kazol	asaka	I have EIDE on Feisty, I get the temp. running "sudo hddtemp /dev/sda and b"
+2007-05-19T07:42:00.000Z	kazol	asaka	Combination of hddtemp and what other program?
+2007-05-19T07:42:00.000Z	asaka	kazol	then its just configuring problem. gkrellm needs iirc the hddtemp to run in daemon mode and telnets to it to get hdd temp values
+2007-05-19T07:43:00.000Z	asaka	kazol	you might want to try ksensors also. it has a panel in where it shows all temps/voltages/fans etc, much like old motherboard monitor in windows
+2007-05-19T07:43:00.000Z	kazol	asaka	I know there is a plugin for it, but I had to compile it! I'll search on google for howto run the daemon.
+2007-05-19T07:44:00.000Z	asaka	kazol	there's no need for plugin, when you install hddtemp, the package found in repositories, it asks you if you want to run it as daemon
+2007-05-19T07:44:00.000Z	asaka	kazol	try reinstalling
+2007-05-19T07:44:00.000Z	kazol	asaka	ok, I'll try it, thanks.
+2007-05-19T07:45:00.000Z	asaka	kazol	as for hddtemp and sata hdds, there seems to be a problem with current feisty kernel and hddtemp reading temps off sata hdds. i have such a setup, and though i can get temps using smartmontools, hddtemp always report "hdd is sleeping"
+2007-05-19T07:46:00.000Z	kazol	asaka	When I run "sudo hddtemp /dev/sda, b" it displays the correct value.
+2007-05-19T07:46:00.000Z	asaka	kazol	yeah, cause you got ide hdds
+2007-05-19T07:47:00.000Z	asaka	kazol	it works for me also on another pc with ide hdds, but not on the ones with sata
+2007-05-19T07:48:00.000Z	kazol	asaka	Ok, so reinstall hddtemp and run as daemon? I know there is also a plugin in gkrellm.
+2007-05-19T07:48:00.000Z	asaka	kazol	i tried gkrellm after i have hddtemp installed, it just found hdds and their temp.. if hddtemp works correctly, then just installing gkrellm will work
+2007-05-19T07:51:00.000Z	kazol	asaka	Another problem I have is when I installed the lmsensors package, it freezes on a semiconductor. I bypassed it, but now I only have fan speed instead of temp and voltage.
+2007-05-19T08:05:00.000Z	kazol	asaka	Ok, it's running as daemon in 127.0.0.1:7634. How do I enter this into gkrellm? I could only find the option for mbmon.
+2007-05-19T08:11:00.000Z	asaka	kazol	if you right-click on gkrellm, you should have some config options, you should see option to check hdd temps
+2007-05-19T08:17:00.000Z	kazol	asaka	There are no sensors visible, only a textBox where I can enter the MBmon Daemon Port.

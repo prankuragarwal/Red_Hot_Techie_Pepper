@@ -1,0 +1,18 @@
+2008-04-10T13:32:00.000Z	Hattori		how to change target of a link directory?
+2008-04-10T13:32:00.000Z	unop_	Hattori	do you mean a symbolic link (symlink)?
+2008-04-10T13:33:00.000Z	unop_	Hattori	read it with .. readlink /path/to/link
+2008-04-10T13:37:00.000Z	unop_	Hattori	only if you need to .. if you don't have permissions to delete the symlink, then you do need sudo
+2008-04-10T13:39:00.000Z	Hattori	unop_	"ln -svf /home/me/apache-tomcat-5.5.20 /home/me/tomcat" and it replies: "create cymbolic link `/home/me/tomcat/apache-tomcat-5.5.20' to `/home/me/apache-tomcat-5.5.20'".. it's not what i said to it :(
+2008-04-10T13:41:00.000Z	unop_	Hattori	what that means is `/home/me/apache-tomcat-5.5.20' is now a link to `/home/me/tomcat/apache-tomcat-5.5.20' -- is that what you wanted?
+2008-04-10T13:44:00.000Z	unop_	Hattori	you need to delete the link first or use -f
+2008-04-10T13:45:00.000Z	unop_	Hattori	because you asked it to ? :)
+2008-04-10T13:46:00.000Z	unop_	Hattori	what does this return?  ls -l ./apache-tomcat-5.5.20
+2008-04-10T13:47:00.000Z	Hattori	unop_	filelist of apache-tomcat-5.5.20
+2008-04-10T13:47:00.000Z	unop_	Hattori	sorry  ls -ld ./apache-tomcat-5.5.20
+2008-04-10T13:47:00.000Z	Hattori	unop_	./apache-tomcat-5.5.20
+2008-04-10T13:48:00.000Z	unop_	Hattori	 copy and paste the command in .. i think you typed a 1 instead of an l there
+2008-04-10T13:49:00.000Z	unop_	Hattori	dude, just paste what you see in here .. ohh lord
+2008-04-10T13:49:00.000Z	unop_	Hattori	the entire line
+2008-04-10T13:50:00.000Z	unop_	Hattori	sudo rm -rf ./tomcat;  ln -s ./apache-tomcat-5.5.20 ./tomcat
+2008-04-10T13:53:00.000Z	Hattori	unop_	wouldn't that delete all the content?
+2008-04-10T13:54:00.000Z	unop_	Hattori	if ./tomcat is a symlink .. no

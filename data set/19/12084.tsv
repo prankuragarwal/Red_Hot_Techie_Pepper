@@ -1,0 +1,19 @@
+2006-11-26T16:05:00.000Z	knapp		Where's the best place to go for troubleshooting Nvidia driver installation?
+2006-11-26T16:07:00.000Z	gnomefreak	knapp	make sure the linux-restricted-modules package is for the kernel you are booted to
+2006-11-26T16:07:00.000Z	gnomefreak	knapp	if your using the 9xxx series driver make sure you get the l-r-m package for them
+2006-11-26T16:09:00.000Z	knapp	gnomefreak	l-r-m to the latest version
+2006-11-26T16:09:00.000Z	gnomefreak	knapp	make sure it matches the kernel you are booted to
+2006-11-26T16:09:00.000Z	knapp	gnomefreak	it does
+2006-11-26T16:11:00.000Z	gnomefreak	knapp	please paste the output of the following commands in pastebin. apt-cache policy nvidia-glx  uname -r
+2006-11-26T16:15:00.000Z	knapp	gnomefreak	http://paste.ubuntu-nl.org/34212/ and uname -r =2.6.17-10-386
+2006-11-26T16:16:00.000Z	gnomefreak	knapp	did you change the xorg.conf file to use the nvidia drivers?
+2006-11-26T16:17:00.000Z	knapp	gnomefreak	I have
+2006-11-26T16:18:00.000Z	gnomefreak	knapp	did you update to 1.0.8776 from 1.0.8774?
+2006-11-26T16:19:00.000Z	gnomefreak	knapp	7xxx never came with edgy
+2006-11-26T16:20:00.000Z	gnomefreak	knapp	nvidia-glx was always 1.0.877*
+2006-11-26T16:20:00.000Z	knapp	gnomefreak	hmm let me see
+2006-11-26T16:21:00.000Z	gnomefreak	knapp	im betting its looking at the l-r-m package for 2.6.17.5-11
+2006-11-26T16:23:00.000Z	knapp	gnomefreak	but wouldn't that just show the last x start (after I changed nvidia to nv)?
+2006-11-26T16:23:00.000Z	gnomefreak	knapp	there is a /var/log/Xorg.0.log.old also
+2006-11-26T16:29:00.000Z	knapp	gnomefreak	http://paste.ubuntu-nl.org/34214/
+2006-11-27T17:01:00.000Z	gnomefreak	knapp	you need to remove the linux-restricted-modules packages you have and install the one for the kernel. from the errors its not reading the right one.

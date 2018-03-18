@@ -1,0 +1,21 @@
+2009-04-27T09:36:00.000Z	Freeyorp		I'm not sure how to get internet working from recovery mode...? I tried adding the following two lines, auto eth0  and  iface eth0 inet dhcp  to my  /etc/network/interfaces  file, then ifup eth0  and  ifconfig eth0 , but it still hasn't connected properly and I'm at a loss as to what I've done wrong or need to do next... would anyone be able to help me?
+2009-04-27T09:37:00.000Z	Jordan_U	Freeyorp	"dhclient eth0"
+2009-04-27T09:41:00.000Z	Freeyorp	Jordan_U	I get a list of "DHCPDISCOVER:  on eth0  to 255.255.255.255 port 67 interval 7" and "send_packet: Network is down" messages after that
+2009-04-27T09:43:00.000Z	Freeyorp	Jordan_U	Yes, in tightly at both ends
+2009-04-27T09:43:00.000Z	Freeyorp	Jordan_U	I can try connecting through a liveCD if you like...?
+2009-04-27T09:43:00.000Z	Jordan_U	Freeyorp	And you did "ifconfig eth0" before "dhclient eth0" ?
+2009-04-27T09:43:00.000Z	Freeyorp	Jordan_U	Yes
+2009-04-27T09:44:00.000Z	Jordan_U	Freeyorp	Sorry, I meant "ifconfig eth0 up"
+2009-04-27T09:50:00.000Z	Freeyorp	Jordan_U	Ah, ifconfig eth0 up did something. Now dhclient eth0 has rather different output, but there are a few 'permission denied's in there that I'm not so sure about, as I'm both in root and used sudo... still can't ping www.google or www.ubuntu.com
+2009-04-27T09:51:00.000Z	Jordan_U	Freeyorp	Can you ping 208.67.222.222 ?
+2009-04-27T09:52:00.000Z	Freeyorp	Jordan_U	That ping results in "Connect: network is unreachable"
+2009-04-27T09:53:00.000Z	Jordan_U	Freeyorp	What is your ip address?
+2009-04-27T09:56:00.000Z	Freeyorp	Jordan_U	Public IP? Not sure... how do I find that out?
+2009-04-27T09:56:00.000Z	Jordan_U	Freeyorp	No, local ip
+2009-04-27T09:57:00.000Z	Freeyorp	Jordan_U	192.168.0.123
+2009-04-27T09:59:00.000Z	Jordan_U	Freeyorp	My guess is that you don't have a default gateway set for some reason, does "route -n" show a default gateway ( is there a route with 0.0.0.0 in the destination column )?
+2009-04-27T10:01:00.000Z	Freeyorp	Jordan_U	'route -n' shows "192.168.0.0 0.0.0.0 255.255.255.0 U 0 0 0 eth0" beneath "Destination Gateway Genmask Flags Metric Ref Use Iface"
+2009-04-27T10:03:00.000Z	Jordan_U	Freeyorp	That just means that you are directly connected to that network, do you know what the default gateway should be ? ( it's often the first or last usable ip address, so 192.168.0.1 or 192.168.0.254 )
+2009-04-27T10:04:00.000Z	Freeyorp	Jordan_U	I can look that up on this computer, which is on the same network, would that have the same effect?
+2009-04-27T10:05:00.000Z	Jordan_U	Freeyorp	Yes
+2009-04-27T10:12:00.000Z	Freeyorp	Jordan_U	after typing "route add default gw 169.254.0.0" I get "SIOCADDRT: No such process"

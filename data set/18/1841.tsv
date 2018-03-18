@@ -1,0 +1,18 @@
+2010-10-23T21:17:00.000Z	LDC1		guys
+2010-10-23T21:17:00.000Z	LDC1		i am sorry
+2010-10-23T21:17:00.000Z	LDC1		can you type me once again what solution you gave me?
+2010-10-23T21:18:00.000Z	LDC1		something happend to my chat client
+2010-10-23T21:18:00.000Z	tensorpudding	LDC1	first you need to figure out what the device id of the partition is, something like /dev/sda1 for for the first partition on the first hard disk
+2010-10-23T21:19:00.000Z	tensorpudding	LDC1	it should be shown in gparted or the disk utility
+2010-10-23T21:19:00.000Z	LDC1		yup tensorpudding SDB1
+2010-10-23T21:20:00.000Z	tensorpudding	LDC1	okay, now do 'sudo blkid /dev/sdb1', and that will give you the UUID
+2010-10-23T21:21:00.000Z	tensorpudding	LDC1	then you add a line "UUID=<the uuid given before> /home/Downloads ext4 noatime 0 1" to /etc/fstab
+2010-10-23T21:22:00.000Z	tensorpudding	LDC1	you can do that using gksudo gedit /etc/fstab
+2010-10-23T21:23:00.000Z	LDC1		thanks tensorpudding
+2010-10-23T21:23:00.000Z	LDC1		i will return after restarting my system tensorpudding
+2010-10-23T21:24:00.000Z	tensorpudding	LDC1	before you do
+2010-10-23T21:24:00.000Z	tensorpudding	LDC1	make sure that the folder /home/Downloads exists
+2010-10-23T21:24:00.000Z	tensorpudding	LDC1	otherwise there will be an error during boot because that filesystem won't mount
+2010-10-23T21:24:00.000Z	LDC1	tensorpudding	so i need to create a *Downloads* folder in my partition?
+2010-10-23T21:25:00.000Z	tensorpudding	LDC1	no, in /home
+2010-10-23T21:25:00.000Z	tensorpudding	LDC1	the partition that you're mounting will be placed in that folder, so the folder has to exist on whatever partition your /home is in

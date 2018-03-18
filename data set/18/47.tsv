@@ -1,0 +1,18 @@
+2012-11-07T04:38:00.000Z	faxer		Hi, I have a file with a permission ----rwx--- (070), i.e: rwx for group and nothing for others. However, I am unable to read it, despite the file's GID and my GID being  the same. Why is this ? There are no ACLs in action too !
+2012-11-07T04:39:00.000Z	jrib	faxer	paste the output of « ls -ld FILE » and « whoami »
+2012-11-07T04:40:00.000Z	faxer	jrib	ls -ld gives : "----rwx--- 1 faxer faxer 0 Nov  7 03:48 test.txt"
+2012-11-07T04:40:00.000Z	faxer		whoami gives : "faxer"
+2012-11-07T04:40:00.000Z	jrib	faxer	you have explicitly said the faxer user cannot read, therefore he cannot read
+2012-11-07T04:40:00.000Z	faxer	jrib	but - he belongs to the 'faxer' group
+2012-11-07T04:40:00.000Z	jrib	faxer	the user specification takes precedence
+2012-11-07T04:41:00.000Z	faxer		who owns the file. Shouldn't the group permissions be checked if the user permissions fail
+2012-11-07T04:41:00.000Z	jrib	faxer	no, you could for example give everyone read and then use group permissions to take away read permissions from a certain group
+2012-11-07T04:43:00.000Z	faxer	jrib	so what you're saying is that the group flags are not even checked if the user permission check fails ?
+2012-11-07T04:43:00.000Z	jrib	faxer	why would they be
+2012-11-07T04:43:00.000Z	jrib	faxer	basically, you can think of it as the more specific rule applies
+2012-11-07T04:44:00.000Z	faxer	jrib	but say for example a guest user, who also belongs to the faxer group tries to access the file
+2012-11-07T04:44:00.000Z	jrib	faxer	sure, he can access the file
+2012-11-07T04:44:00.000Z	faxer	jrib	in his case, the user flags would still fail, but the group flags would still be checked
+2012-11-07T04:44:00.000Z	jrib	faxer	the user flag applies to the owner of the file; he is not the owner
+2012-11-07T04:45:00.000Z	faxer	jrib	oops
+2012-11-07T04:45:00.000Z	faxer	jrib	thanks got it

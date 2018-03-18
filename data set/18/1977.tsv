@@ -1,0 +1,18 @@
+2011-06-12T04:22:00.000Z	Darkenvy		Cannot display location "sftp://admin@fathership.dynalias.com/" Host key verification failed
+2011-06-12T04:22:00.000Z	Darkenvy		I get that when trying to ssh from the "connect to server" tool
+2011-06-12T04:22:00.000Z	Darkenvy		although filzilla can connect no problem
+2011-06-12T04:23:00.000Z	Darkenvy		how can I purge the key?
+2011-06-12T04:23:00.000Z	Darkenvy		I am connecting this way SO I have a visual
+2011-06-12T04:23:00.000Z	Darkenvy		I am always SSHed form terminal but I want the visualness
+2011-06-12T04:23:00.000Z	SolomonKull	Darkenvy	rm .ssh/somewhereraskeyisnamed/tehfile  look for that
+2011-06-12T04:24:00.000Z	Darkenvy	escott	it does not give me a warning ata ll
+2011-06-12T04:24:00.000Z	Darkenvy		but I find it odd because filezilla can connect, my macbook can connect and on my old VPS I could connect using this method, but not from this computer now
+2011-06-12T04:25:00.000Z	Darkenvy	escott	it says nothing and I can connect no problem while SSH from terminal
+2011-06-12T04:25:00.000Z	SolomonKull	Darkenvy	rm .ssh/known_hosts
+2011-06-12T04:25:00.000Z	SolomonKull		Then try to log back in
+2011-06-12T04:25:00.000Z	SolomonKull		It will generate a new key
+2011-06-12T04:26:00.000Z	Darkenvy		this worked!
+2011-06-12T04:26:00.000Z	Darkenvy		what happened btw?
+2011-06-12T04:26:00.000Z	Darkenvy		I am able to sftp on the gui if I put in the IP but not the dynamic alias
+2011-06-12T04:26:00.000Z	Darkenvy		*was able to only log in using the IP, not the dynamic alias
+2011-06-12T04:27:00.000Z	SolomonKull	Darkenvy	is it a local IP?  I bet DHCP assigned a different IP than last time, which triggered ssh to say "hold the hell on, this might be a different system. Fix it"

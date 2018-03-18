@@ -1,0 +1,22 @@
+2006-04-28T09:33:00.000Z	Fazer		hi, i am trying to ssh to my linux machine inside of the lan, it just stays there and doesn't ask for the password.
+2006-04-28T09:33:00.000Z	Fazer		I am thinking that its either a firewall issue?
+2006-04-28T09:33:00.000Z	Fazer		or port forwarding?
+2006-04-28T09:33:00.000Z	Fazer		I have set the router to forwar the 22 port to the linux machine.
+2006-04-28T09:34:00.000Z	mrkoje_	Fazer	most common problem is a firewall, however I don't think Ubuntu has one on in a default setup. You might look at sshd.conf in /etc/ to see what mode of authentication openssh is using
+2006-04-28T09:35:00.000Z	Fazer	mrkoje_	okay, i will look into it.
+2006-04-28T09:36:00.000Z	mrkoje_	Fazer	I'm not sure what the default sshd.conf looks like in Ubuntu.. but it might set to accept key authentication instead of password
+2006-04-28T09:36:00.000Z	Fazer	mrkoje_	Oh? I was able to log in fine though...so does that mean my key is alright?
+2006-04-28T09:37:00.000Z	mrkoje_	Fazer	I thought you were not able to log in... it just sat twiddling its thumbs when trying to log on
+2006-04-28T09:37:00.000Z	Fazer	mrkoje_	yeah, the connection would time out :(
+2006-04-28T09:38:00.000Z	Fazer	mrkoje_	so at first, i thought it was the router, then i thought it could be just the firewall.
+2006-04-28T09:38:00.000Z	mrkoje_	Fazer	so you were logged into an account and then it would time out?
+2006-04-28T09:38:00.000Z	Fazer	mrkoje_	no, when i type in ssh <ip addr> from my Mac, it would just do nothing.
+2006-04-28T09:39:00.000Z	mrkoje_	Fazer	so then what is your problem now?
+2006-04-28T09:39:00.000Z	Fazer	mrkoje_	nothig, its fixed.  i was just investigating what i had to do with the /etc/ stuff you guys were mentioning earlire.
+2006-04-28T09:41:00.000Z	mrkoje_	Fazer	nothing I guess but I would highly suggest that you change "Allow root login yes" to no
+2006-04-28T09:41:00.000Z	Fazer	mrkoje_	hm, isn't that set no as default though?
+2006-04-28T09:42:00.000Z	mrkoje_	Fazer	I'm not sure with ubuntu.. other distros it isnt
+2006-04-28T09:43:00.000Z	Fazer	mrkoje_	just so i can double check, can you repeat which file i should look under?
+2006-04-28T09:44:00.000Z	mrkoje_	Fazer	it should be "sshd.conf" not ssh.conf and it should be under /etc/
+2006-04-28T09:44:00.000Z	mrkoje_	Fazer	so /etc/sshd.conf
+2006-04-28T09:48:00.000Z	Fazer	mrkoje_	thanks!

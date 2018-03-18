@@ -1,0 +1,19 @@
+2007-06-10T05:31:00.000Z	CJ_		can anyone tell me how to add IPv4 to an network interface?
+2007-06-10T05:31:00.000Z	bulmer	CJ_	what was the problem?
+2007-06-10T05:32:00.000Z	CJ_		its a wireless netwokr card, IPv6 is active but the router doesnt support it, IPv4 isnt running on that network interface
+2007-06-10T05:33:00.000Z	CJ_		it need to run off the DHCP
+2007-06-10T05:34:00.000Z	bulmer	CJ_	how did you verify that ipv4 is not running on that interface?
+2007-06-10T05:34:00.000Z	CJ_		ifconfig ra0
+2007-06-10T05:35:00.000Z	bulmer	CJ_	can you respond with a nick as prefix..its easier to follow
+2007-06-10T05:37:00.000Z	CJ_	bulmer	 Ok
+2007-06-10T05:37:00.000Z	bulmer	CJ_	how did you verify that ipv4 is not running on that interface? what was the result?
+2007-06-10T05:39:00.000Z	CJ_		buler: Im not on it at the moment as the only internet access is wireless. but it responds with ra0 link encap:Ethernet...inet6 addr: fe88::20e:2eff:fe9d:6725/64 scope:Link....UP BROADCASR RUNNING MULTICAST MTI:1500
+2007-06-10T05:40:00.000Z	CJ_	bulmer	inet isnt listed other than on eth0 and lo
+2007-06-10T05:40:00.000Z	CJ_	bulmer	Im not on it at the moment as the only internet access is wireless. but it responds with ra0 link encap:Ethernet...inet6 addr: fe88::20e:2eff:fe9d:6725/64 scope:Link....UP BROADCASR RUNNING MULTICAST MTI:1500
+2007-06-10T05:41:00.000Z	bulmer	CJ_	does your /etc/modprobe.d/aliases file disabled ipv4?
+2007-06-10T05:42:00.000Z	CJ_	bulmer	but its running on eth0 and lo.... give me a mo illl have a look
+2007-06-10T05:45:00.000Z	CJ_	bulmer	there is an entry for ipv4 on line 4
+2007-06-10T05:46:00.000Z	bulmer	CJ_	its is odd that your eth0 have ipv4 but your other nic does not, am not sure if one can independently tell the nic driver to apply only on specific nic card
+2007-06-10T05:50:00.000Z	CJ_	bulmer	I have added the interface to /etc/network/interfaces seeing ra0 isnt a tyical name for an interface....and the others have 'iface {if name} inet dhcp' under 'auto {if name}'
+2007-06-10T06:04:00.000Z	CJ_	bulmer	you still there>
+2007-06-10T06:24:00.000Z	CJ_	bulmer	 I managed to get it working. it was finding the command to restart the network system using the command '/etc/init.d/networking restart'

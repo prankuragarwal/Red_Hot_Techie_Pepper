@@ -1,0 +1,22 @@
+2009-05-08T07:43:00.000Z	hacker_kid		/proc/cpuinfo is showing a 1.0 Ghz processor when im running a 2.4 Ghz processor, how can i resolve this?
+2009-05-08T07:45:00.000Z	mpontillo	hacker_kid	right click your panel, click "add to panel", and add the "cpu frequency scaling monitor" if you want to keep an eye on the scaling
+2009-05-08T07:45:00.000Z	hacker_kid	mpontillo	actually i need to read processor statistics from a script. so no GUI
+2009-05-08T07:52:00.000Z	mpontillo	hacker_kid	the info you are looking for is also in /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq
+2009-05-08T07:52:00.000Z	hacker_kid	mpontillo	thanks :)
+2009-05-08T07:53:00.000Z	hacker_kid	mpontillo	im assuming its cpu1, cpu2, etc for multiple cores?
+2009-05-08T07:53:00.000Z	mpontillo	hacker_kid	correct; I'd just change directory to /sys/devices/system/cpu and start looking around; all the info you ever imagined should be at your fingertips ;)
+2009-05-08T07:54:00.000Z	hacker_kid	mpontillo	thank you :)
+2009-05-08T09:39:00.000Z	mpontillo	hacker_kid	first take a look at /proc/net/dev for basic counters
+2009-05-08T09:39:00.000Z	hacker_kid	mpontillo	thank you
+2009-05-08T09:40:00.000Z	hacker_kid	mpontillo	useful counters but i need to know the current kb/sec (or mb) upload and download in use, not the total
+2009-05-08T09:41:00.000Z	mpontillo	hacker_kid	you can calculate that by diffing the totals over time...
+2009-05-08T09:41:00.000Z	hacker_kid	mpontillo	i could continually read that file, but i was hoping a tool was already made
+2009-05-08T09:41:00.000Z	hacker_kid	mpontillo	i could, what about the connection speed (to the router not to the net)
+2009-05-08T09:42:00.000Z	mpontillo	hacker_kid	for that, you can run "ethtool eth0" (unfortunately requires root, not sure if there is another tool available that doesn't)
+2009-05-08T09:43:00.000Z	hacker_kid	mpontillo	i can subprocess and grant just that command root and leave the application unprivileged :) thanks again
+2009-05-08T09:44:00.000Z	hacker_kid	mpontillo	you assumed correctly, thanks for your help. i never run scripts as root if i can help it :)
+2009-05-08T09:47:00.000Z	mpontillo	hacker_kid	almost forgot; another really useful command is "nm-tool" (but it won't work if network manager is not being used)
+2009-05-08T09:47:00.000Z	hacker_kid	mpontillo	thanks
+2009-05-08T09:48:00.000Z	hacker_kid	mpontillo	network manager is being used in this case, but we will probably move to very very minimal debian installs in the near future
+2009-05-08T12:38:00.000Z	mpontillo	hacker_kid	you might be able to get some of that info by running 'sudo dmidecode'
+2009-05-08T12:39:00.000Z	hacker_kid	mpontillo	you are a command and log file encyclopedia :)

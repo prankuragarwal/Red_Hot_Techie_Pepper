@@ -1,0 +1,24 @@
+2008-10-14T03:50:00.000Z	BlueEagle	skorasaurus	fsck will run fsck.vfat if the provided partition is formatted with the vfat filesystem.
+2008-10-14T03:50:00.000Z	BlueEagle	skorasaurus	You can force the filesystem type by passing -t vfat to fsck iirc
+2008-10-14T03:50:00.000Z	skorasaurus	BlueEagle	thanks.
+2008-10-14T04:00:00.000Z	BlueEagle	skorasaurus	is the filesystem vfat or ntfs?
+2008-10-14T04:00:00.000Z	BlueEagle	skorasaurus	so then you want -t fat
+2008-10-14T04:00:00.000Z	skorasaurus	BlueEagle	same response.
+2008-10-14T04:01:00.000Z	BlueEagle	skorasaurus	sudo fdisk -l |grep /dev/sda1
+2008-10-14T04:03:00.000Z	skorasaurus	BlueEagle	/dev/sdb1               1         979      250574+   6  FAT16
+2008-10-14T04:04:00.000Z	BlueEagle	skorasaurus	The command you're trying to use with fsck is it `sudo fsck /dev/sdb1`
+2008-10-14T04:05:00.000Z	BlueEagle	skorasaurus	The reason I asked is because your error message reffered to /dev/sda1
+2008-10-14T04:06:00.000Z	skorasaurus	BlueEagle	i issued it again with sdb1, and i had the same msg.
+2008-10-14T04:06:00.000Z	BlueEagle	skorasaurus	I'm not sure if it's required but check your /proc/filesystems to see if fat16 is listed there.
+2008-10-14T04:07:00.000Z	skorasaurus	BlueEagle	pardon ? i dont understand that.
+2008-10-14T04:07:00.000Z	BlueEagle	skorasaurus	cat /proc/filesystems |grep fat
+2008-10-14T04:08:00.000Z	BlueEagle	skorasaurus	does that return anything?
+2008-10-14T04:08:00.000Z	skorasaurus	BlueEagle	vfat
+2008-10-14T04:09:00.000Z	skorasaurus	BlueEagle	http://pastebin.ca/1226346
+2008-10-14T04:15:00.000Z	skorasaurus	BlueEagle	any comments after looking at my latest pastebin: http://pastebin.ca/1226346
+2008-10-14T04:16:00.000Z	BlueEagle	skorasaurus	That looks like a successful correction of a filesystem.
+2008-10-14T04:16:00.000Z	skorasaurus	BlueEagle	so, the files should no longer be read only ?
+2008-10-14T04:17:00.000Z	BlueEagle	skorasaurus	That depends on how you mount the filesystem.
+2008-10-14T04:18:00.000Z	BlueEagle	skorasaurus	that first link I believe discusses setting user masks.
+2008-10-14T04:20:00.000Z	BlueEagle	skorasaurus	If you look at the section where <option> is explained you will see there how adding a fmask and dmask will help making the files readable (and writable) by non-root users.
+2008-10-14T04:21:00.000Z	BlueEagle	skorasaurus	You're welcome

@@ -1,0 +1,18 @@
+2009-01-28T01:19:00.000Z	xDCDx		hello, I have a problem with ubuntu 6.06.1 2.6.15-52-amd64-server; I am exporting a folder NFS, mounting it with NFS works fine, but working it with NFS4 gives a "ls: reading directory /home: Input/output error" error when I try ls, but writing and reading actual files on the nfs work fine. I've been googling to no avail. Any clues?
+2009-01-28T01:20:00.000Z	Baughn	xDCDx	It's not really an answer, but I eventually got sufficiently fed up to switch to sshfs. NEver looked back. :P
+2009-01-28T01:21:00.000Z	xDCDx	Baughn	that may be a solution, but I am afraid performance might by a problem with sshfs
+2009-01-28T01:21:00.000Z	Baughn	xDCDx	In my experience, it manages "wire" speeds at least up to 210Mbit/s, eg. the full 802.11n capacity
+2009-01-28T01:21:00.000Z	Baughn	xDCDx	It does increase cpu usage, but..
+2009-01-28T01:22:00.000Z	Baughn	xDCDx	Well, that's the encryption. NFSv4 is also encrypted (if you're doing it right), so there's no real difference.
+2009-01-28T01:22:00.000Z	Baughn	xDCDx	Or you could wait for my thesis product. Should be just a year or so. :P
+2009-01-28T01:22:00.000Z	xDCDx	Baughn	what happens when a sshfs goes down, and then goes up back after a while? Is data lost? I need a behaviour like the 'hard' option in NFS
+2009-01-28T01:23:00.000Z	Baughn	xDCDx	With -o reconnect, you get that
+2009-01-28T01:23:00.000Z	Baughn	xDCDx	Of course, with the caveat that true consistency is impossible when the host (server) doesn't know about sshfs
+2009-01-28T01:24:00.000Z	Baughn	xDCDx	But that's the same as with nfs
+2009-01-28T01:25:00.000Z	Baughn	xDCDx	(Mine is, of course, handling that better. Distributed FSs usually do. ;)
+2009-01-28T01:25:00.000Z	Baughn	xDCDx	...cool. Can I have a copy?
+2009-01-28T01:25:00.000Z	Baughn	xDCDx	Er. I mean, sshfs has never shown any such issues for me.
+2009-01-28T01:26:00.000Z	Baughn	xDCDx	Nah, more like half an hour
+2009-01-28T01:27:00.000Z	Baughn	xDCDx	If performance is critical, NFSv3 /is/ faster (unless you get mysterious slowdowns)
+2009-01-28T01:27:00.000Z	Baughn	xDCDx	Though you might be able to set null encryption on ssh
+2009-01-28T01:28:00.000Z	xDCDx	Baughn	thanks for the info, but the misterious slow downs were really annoying :-)

@@ -1,0 +1,19 @@
+2008-02-05T11:30:00.000Z	musikgoat		hi, any recommendations for troubleshooting an issue with listing a directory.  ran fsck on boot and the disk seems to be fine.  but when I ls a particular directory, this happens to be /var/www/  it takes about 30 seconds to a minute to list
+2008-02-05T11:31:00.000Z	obiwannekody	musikgoat	how big is it?  large directories on large partions take sometimes take a while.  also, what is the file system?
+2008-02-05T11:33:00.000Z	musikgoat	obiwannekody	attempting a du -sch is causing a delay as well,  its larger, but that is in subdirectories, not in the webroot
+2008-02-05T11:34:00.000Z	obiwannekody	musikgoat	and the file system is... ext3?
+2008-02-05T11:34:00.000Z	musikgoat	obiwannekody	checking my logs
+2008-02-05T11:39:00.000Z	musikgoat	obiwannekody	rather, i thought I was,  I will reboot it, cause the logs are littered with iptables stuff.  do you know of another quick way to find out your filesystem type in command line?
+2008-02-05T11:40:00.000Z	obiwannekody	musikgoat	Just check /etc/fstab
+2008-02-05T11:40:00.000Z	obiwannekody	musikgoat	it states what is mounted where
+2008-02-05T11:40:00.000Z	musikgoat		oh yes, its ext3
+2008-02-05T11:41:00.000Z	musikgoat	obiwannekody	and its only 17G atm
+2008-02-05T11:42:00.000Z	obiwannekody	musikgoat	how long does it take to display the directory in the file manager (if you have X)
+2008-02-05T11:43:00.000Z	musikgoat		i don't have x, its headless
+2008-02-05T11:45:00.000Z	musikgoat	obiwannekody	it seems to only be at this level that the delay has,  but seeing that sudo du -sch took just as long, do you think it could be disk issues?
+2008-02-05T11:48:00.000Z	obiwannekody	musikgoat	I don't think so, but it could be possible.  have you done any speed tweaking?
+2008-02-05T11:48:00.000Z	musikgoat		no
+2008-02-05T11:49:00.000Z	obiwannekody	musikgoat	does the disk grind/click while you are using ls?
+2008-02-05T11:52:00.000Z	musikgoat		no, it seems like its not really doing much except its usual minimal hd noise
+2008-02-05T11:53:00.000Z	musikgoat	obiwannekody	^^
+2008-02-05T11:54:00.000Z	obiwannekody	musikgoat	I don't think it is a hardware problem, but if it is a software one it is beyond me.  Is it for every directory or just in /var?

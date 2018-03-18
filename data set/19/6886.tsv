@@ -1,0 +1,19 @@
+2008-05-19T19:34:00.000Z	corrosione		I Just tried this article on applying ownership of a file to a user and it didnt work...could someone give me a link to an easy article so apply ownership of a file so i can do so.
+2008-05-19T19:34:00.000Z	sipior	corrosione	well, what are you trying to change, exactly?
+2008-05-19T19:34:00.000Z	corrosione	sipior	PuTTY X11 proxy: wrong authentication protocol attemptedxterm Xt error: Can't open display: localhost:10.0
+2008-05-19T19:35:00.000Z	sipior	corrosione	is there an X server listening on localhost:10.0?
+2008-05-19T19:36:00.000Z	corrosione	sipior	i dont know =(   this is what i get when i login to my server through putty
+2008-05-19T19:36:00.000Z	corrosione		./usr/bin/X11/xauth:  error in locking authority file /home/corrosione/.Xauthority
+2008-05-19T19:36:00.000Z	sipior	corrosione	okay, but is there an X server running on the machines that you are trying to connect from?
+2008-05-19T19:37:00.000Z	corrosione	sipior	if i plug my monitor and keyboard into my server and locally run 'sudo starx' it works
+2008-05-19T19:37:00.000Z	sipior	corrosione	also, can you do a "ls -l .Xauthority"
+2008-05-19T19:38:00.000Z	sipior	corrosione	why sudo? you shouldn't require that for running X, and now i think i understand why your .Xauthority file has the wrong owner... ;-)
+2008-05-19T19:38:00.000Z	corrosione		corrosione@ubuntu:~$ ls -l .Xauthority
+2008-05-19T19:38:00.000Z	corrosione		-rw------- 1 root root 0 2008-05-19 10:26 .Xauthority
+2008-05-19T19:38:00.000Z	sipior	corrosione	yep :) don't run startx with sudo
+2008-05-19T19:38:00.000Z	corrosione	sipior	it will not let me
+2008-05-19T19:38:00.000Z	sipior	corrosione	sudo chown username:username .Xauthority
+2008-05-19T19:41:00.000Z	corrosione	sipior	after running that and reconnecting via putty, i get this...http://pastebin.com/mf12fde1
+2008-05-19T19:42:00.000Z	sipior	corrosione	and the owner is now set correctly? what is the output of ls -l now?
+2008-05-19T19:44:00.000Z	corrosione		hmm it gives me the same thing, but i ran what you said...sudo chown corrosione:corrosione .Xauthority
+2008-05-19T19:45:00.000Z	sipior	corrosione	try renaming the file, and have another go

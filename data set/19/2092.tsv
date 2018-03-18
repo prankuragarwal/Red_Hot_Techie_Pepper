@@ -1,0 +1,19 @@
+2011-03-27T15:20:00.000Z	broon_sparrow		ty. in gparted it has a mount point of /media/randomstringofletters how do change the mount point to /media/data ?
+2011-03-27T15:20:00.000Z	soreau	broon_sparrow	Edit /etc/fstab
+2011-03-27T15:25:00.000Z	soreau	broon_sparrow	Its called /data but isnt the mount point /media/data ?
+2011-03-27T15:28:00.000Z	soreau	broon_sparrow	Does /data exist? AFAICT, its telling you that it does not (you said yourself it should be /media/data which sounds more like it anyway)
+2011-03-27T15:29:00.000Z	soreau	broon_sparrow	/media/data
+2011-03-27T15:29:00.000Z	soreau	broon_sparrow	gksu gedit /etc/fstab
+2011-03-27T15:42:00.000Z	soreau	broon_sparrow	Is it mounting to /media/disk ok now?
+2011-03-27T15:44:00.000Z	broon_sparrow	soreau	no i don't think so
+2011-03-27T15:44:00.000Z	soreau	broon_sparrow	The output of mount should tell you if its mounted
+2011-03-27T15:45:00.000Z	broon_sparrow	soreau	sorry but what do you mean the output of mount?
+2011-03-27T15:45:00.000Z	soreau	broon_sparrow	In your terminal, type mount and press enter. It is a command
+2011-03-27T15:47:00.000Z	soreau	broon_sparrow	and that is the random string gparted is giving too right?
+2011-03-27T15:47:00.000Z	soreau	broon_sparrow	It sounds to me like you are telling it to mount to a location that doesnt exist
+2011-03-27T15:48:00.000Z	soreau	broon_sparrow	What does ls -l /media/data show?
+2011-03-27T15:49:00.000Z	soreau	broon_sparrow	Right so create the directory first with sudo mkdir /media/data
+2011-03-27T15:49:00.000Z	soreau	broon_sparrow	Then set fstab to point to /media/data to mount sda6
+2011-03-27T15:50:00.000Z	soreau	broon_sparrow	If it cant find the mount point, it just creates a temporary mount point and calls it by UUID since this value is unique
+2011-03-27T15:51:00.000Z	soreau	broon_sparrow	If ls -l /media/data shows it does exists as a directory
+2011-03-27T16:16:00.000Z	soreau	broon_sparrow	Why do you keep looking at gparted? You should be looking at mount and /etc/fstab

@@ -1,0 +1,22 @@
+2008-03-29T03:36:00.000Z	Kuwanger		Woohoo.  I finally figured out a way to get virtualbox to see my gzipped file as if they were not gzipped. :)
+2008-03-29T03:37:00.000Z	ichat	Kuwanger	 -  ??????
+2008-03-29T03:38:00.000Z	ichat		meaning you  have your virtual diks gziped?
+2008-03-29T03:38:00.000Z	Kuwanger	ichat	What?
+2008-03-29T03:38:00.000Z	ichat		meaning you  have your virtual diks gziped? - << Kuwanger  <
+2008-03-29T03:38:00.000Z	Kuwanger	ichat	No, no.  Although I probably could do that.
+2008-03-29T03:38:00.000Z	ichat		than what DID you gzip>
+2008-03-29T03:39:00.000Z	Kuwanger	ichat	I have a directory full of gzipped files, becase zlibc can be used as a library preload under linux to access gzipped as non-gzipped files.
+2008-03-29T03:40:00.000Z	Kuwanger	ichat	With wine, it's as easy as "LD_PRELOAD=uncompress.so wine <some program>".  But, "LD_PRELOAD=uncompress.so virtualbox" won't work.
+2008-03-29T03:40:00.000Z	ichat	Kuwanger	 -  how do they relate to virtuabox ??? than -
+2008-03-29T03:41:00.000Z	Kuwanger	ichat	However, "LD_PRELOAD=uncompress.so rofs dir_full_of_gzips dir_full_of_ungzipped_files" then using the second dir...
+2008-03-29T03:41:00.000Z	ichat		niceeeee
+2008-03-29T03:42:00.000Z	Kuwanger	ichat	Virtualbox is one of the few apps that seems to use system calls instead of library calls that zlibc can override.
+2008-03-29T03:42:00.000Z	Kuwanger	ichat	So, I tricked a fuse filesystem to decompress files for me so even system-call running apps works.
+2008-03-29T03:44:00.000Z	ichat		that can sirriously trim down the size of your virtualbox  v-disks  :P
+2008-03-29T03:44:00.000Z	Kuwanger	ichat	Yea..that could..but that's pretty crazy. :)
+2008-03-29T03:45:00.000Z	ichat		true
+2008-03-29T03:45:00.000Z	Kuwanger	ichat	You'd be better off using one of the fuse filesystem tools that offers a custom compression to allow at least some semblance of random access.
+2008-03-29T03:45:00.000Z	ichat		hahahahha
+2008-03-29T03:45:00.000Z	Kuwanger	ichat	Far as I'm aware, at least a few use a form of block compression.
+2008-03-29T03:47:00.000Z	ichat		maybe beter to minimize disk needance instead of  max the crompression :P
+2008-03-29T03:47:00.000Z	Kuwanger	ichat	Btw, the directory in question has 738MB worth of gzip files.  That's why I didn't just decompress them.

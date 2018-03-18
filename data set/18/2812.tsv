@@ -1,0 +1,18 @@
+2010-05-10T06:44:00.000Z	tomatoes7		i accidentally chmod'd wrong, how do i use chmod to set permissions back to default?
+2010-05-10T06:44:00.000Z	tomatoes7		how do i use chmod to get folders back to "normal"
+2010-05-10T06:45:00.000Z	mikelifeguard	tomatoes7	What does "default" mean? You can just chmod *** file
+2010-05-10T06:46:00.000Z	tomatoes7	mikelifeguard	i typed "chmod -r 755 *" on everything in my /home directory...i regret this
+2010-05-10T06:48:00.000Z	mikelifeguard	tomatoes7	No easy way to undo that, sadly. You could `chmod -R 644 *`, but that doesn't undo it, really.
+2010-05-10T06:49:00.000Z	mikelifeguard	tomatoes7	For example, stuff in ~/.ssh has different permissions than that. You might have chat logs that should be chmod 600... etc
+2010-05-10T06:51:00.000Z	mikelifeguard	tomatoes7	Yeah, the -r/-R options can be really troublesome :\
+2010-05-10T06:51:00.000Z	mikelifeguard	tomatoes7	TBH, I'm surprised nobody has made a script to handle this case, it is areasonably common error
+2010-05-10T07:05:00.000Z	tomatoes7	mikelifeguard	i don't have the proper permissions to download files using firefox
+2010-05-10T07:06:00.000Z	mikelifeguard	tomatoes7	wait, what? chmod 755 shouldn't cause that
+2010-05-10T07:06:00.000Z	tomatoes7	mikelifeguard	what about chmod 644, does that do that?
+2010-05-10T07:07:00.000Z	tomatoes7	mikelifeguard	i ran chmod 644 and it looked like all my files disappeared or when invisible
+2010-05-10T07:09:00.000Z	mikelifeguard	tomatoes7	644 gives you rw, and everyone else read-only access... I guess you should use find to set o+x on directories... Yes, I suppose not being able to chdir into a directory might make firefox unable to save a file (that shouldn't be the case, but I don't know how firefox innards work)
+2010-05-10T07:10:00.000Z	tomatoes7	mikelifeguard	yeah chmod made all my permissions go "-rw-r--r--"....i want everything to go to "-rwxr-xr-x" how do i do that?
+2010-05-10T07:10:00.000Z	mikelifeguard	tomatoes7	chmod 755, which is what you had previously O__o
+2010-05-10T07:12:00.000Z	tomatoes7	mikelifeguard	i ran mkdir Apps, and got a folder with permissions "drwxr-xr-x" so i figured i'd want "-rwxr-xr-x" but perhaps not
+2010-05-10T07:13:00.000Z	mikelifeguard	tomatoes7	no, you don't. x on directories means you can 'cd' into the directory. On files, it makes them executable.
+2010-05-10T07:15:00.000Z	mikelifeguard	tomatoes7	hmw clearly knows what they're doing better than I do

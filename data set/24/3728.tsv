@@ -1,0 +1,24 @@
+2007-12-23T05:24:00.000Z	dan_		I have just mounted /dev/hda1 to /media/hda1 and /dev/hdb1 to /media/hdb1, how can i get them to appear in the Computer Section/On my desktop?
+2007-12-23T05:26:00.000Z	scragar	dan_	you could create a link to the directory for the mount locations, but unmounting won't remove the links..
+2007-12-23T05:27:00.000Z	dan_	scragar	i had mount-on-boot problems, i have now fixed them, but have yet to reboot, would a reboot with a fixed fstab file show them in the computer section?
+2007-12-23T05:27:00.000Z	scragar	dan_	fstab works in real time, so I doubt it
+2007-12-23T05:27:00.000Z	dan_	scragar	if i pastebin-ed my fstab file, could you please check it?
+2007-12-23T05:28:00.000Z	scragar	dan_	if you've edited your fstab just umount then mount them again, that'd proberly fix it
+2007-12-23T05:29:00.000Z	scragar	dan_	oh, and yeah, pastebin it and I'll take a look.
+2007-12-23T05:31:00.000Z	dan_	scragar	i tried that, i got a error on umount: "/dev busy, /var/run busy & / busy" on mount -a i hear the harddrive thinking, but nothing happens, i get a print of the output as such: http://recoding.pastebin.org/12569
+2007-12-23T05:34:00.000Z	scragar	dan_	what I meant by umount was to just umount your two partitions that were causing the trouble: "umount /dev/hda1 /dev/hdb1" -- "umount -a" unmounts everything it can, which is the reason for your error.
+2007-12-23T05:38:00.000Z	dan_	scragar	still no luck :( here is a pastebin of my fstab and the fdisk -l, http://recoding.pastebin.org/12571
+2007-12-23T05:39:00.000Z	scragar	dan_	why don't you have anything set to mount to / ?
+2007-12-23T05:40:00.000Z	dan_	scragar	i had a number of problems with it when i installed ubuntu, this is the best copy of the file i could find, if it is incomplete i am not suprised, could you please help me to fix it?
+2007-12-23T05:41:00.000Z	scragar	dan_	for the moment run "mount" without any arguments to find out what is mounted where, pastebin it if you need help
+2007-12-23T05:43:00.000Z	dan_	scragar	this? /dev/hdb2 on / type ext3 (rw,errors=remount-ro)
+2007-12-23T05:43:00.000Z	dan_		plan b, i'll pastebin
+2007-12-23T05:44:00.000Z	scragar	dan_	right, so you should edit fstab to set /dev/hdb2 to /, boot will fail without that :P
+2007-12-23T05:44:00.000Z	dan_	scragar	thanks for saving my life :P
+2007-12-23T05:45:00.000Z	dan_	scragar	this is a pastebin of the mount output, and the modified fstab, please check, thankyou for your help :) http://recoding.pastebin.org/12573
+2007-12-23T05:47:00.000Z	scragar	dan_	you have /dev/hdb2 mounted twice...
+2007-12-23T05:48:00.000Z	dan_	scragar	my computer is funny like that..or is it the operator.. :( i hate it when i break things
+2007-12-23T05:50:00.000Z	scragar	dan_	first thing I'd do would be to reorder fstab to put /dev/hdb2 at the top, that way your sure it mounts first. then I'd proberly restart to get rid of your double, should also make the disk options appear on your desktop.
+2007-12-23T05:51:00.000Z	dan_	scragar	okay, i can do the first bit, but how do i enable disc options on desktop? [new to this stuff]
+2007-12-23T05:51:00.000Z	scragar	dan_	should work automaticly(did for me)
+2007-12-23T05:51:00.000Z	dan_	scragar	Okay, rebooting, thankyou for your help!

@@ -1,0 +1,22 @@
+2008-07-16T04:26:00.000Z	unop	frieze	so, is ubuntu the router in question now, sounds to me like the linksys thing is the router as it connects those two subnets up ?
+2008-07-16T04:27:00.000Z	frieze	unop	sorta...the ubuntu box has 192.168.2.1 and runs that network. the linksys has 192
+2008-07-16T04:28:00.000Z	unop	frieze	so what connects the ubuntu machine to the linksys router?
+2008-07-16T04:28:00.000Z	unop	frieze	and what network is that connection on? 192.168.2.0/24 ?
+2008-07-16T04:31:00.000Z	unop	frieze	so, can the linksys router ping jake and vice-versa?
+2008-07-16T04:31:00.000Z	unop	frieze	and can hosts on 192.168.4.0 ping the linksys router?
+2008-07-16T04:31:00.000Z	unop	frieze	sounds to me like NAT is not enabled or not working on the linksys router
+2008-07-16T04:32:00.000Z	unop	frieze	have you verified that NAT is in operation?
+2008-07-16T04:33:00.000Z	unop	frieze	some SOHO routers can do without NAT -- if your linksys router can do without it, try that too - make it operate as a simple router
+2008-07-16T04:36:00.000Z	frieze	unop	yeah, btu I need to keep the two subnets segregated. The reason I'm plugging another router into my ubuntu router is so I can give it a different address pool and filter its traffic
+2008-07-16T04:37:00.000Z	unop	frieze	you can do all those without the need for NAT -- a router keeps subnets segregated, that's its job (or rather, it connects segregated subnets up)
+2008-07-16T04:37:00.000Z	unop	frieze	so NAT is in operation?
+2008-07-16T04:38:00.000Z	frieze	unop	yes, but I'd need to add another interface to my router to have it keep the traffic from two subnets apart then right?
+2008-07-16T04:38:00.000Z	frieze	unop	that is kinda my question. Traffic can go form the 4.x network to the 2.x network and beyond okay, the other way, not so much
+2008-07-16T04:39:00.000Z	unop	frieze	 this sounds like a NAT issue - are you saying a host on the 2.x network can browse shares and whatnot on a 4.x network, pings included?
+2008-07-16T04:40:00.000Z	unop	frieze	if linksys's WAN side is on the 2.x network and the LAN side on the 4.x network -- i don't see the need to add another interface
+2008-07-16T04:40:00.000Z	unop	frieze	if you want the 2.x network to access the 4.x network freely, NAT needs to be disabled on the linksys router
+2008-07-16T04:42:00.000Z	unop	frieze	can i ask why you are using the linksys router anyway? can't you just use a switch and have your ubuntu box route between the 2.x and 4.x networks? that'd be much simpler, actually
+2008-07-16T04:46:00.000Z	frieze	unop	sorry, bathroom break
+2008-07-16T04:48:00.000Z	frieze	unop	the devices on the 4.x network are part of my home automation system need to do wifi using only wep. which kinda blows. want to keep them nice and separated even if the host is compromised.
+2008-07-16T04:49:00.000Z	unop	frieze	well, in either case, if you want free access across those two subnets, you'll have to do away with NAT on the linksys box
+2008-07-16T04:50:00.000Z	unop	frieze	my belkin router can operate as an access point only -- my debian box does the routing - which was what i was getting at, using your ubuntu box as the sole router

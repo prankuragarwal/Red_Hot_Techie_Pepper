@@ -1,0 +1,19 @@
+2007-02-24T06:44:00.000Z	_pg		Hi, I've got a scsi mo drive on ubuntu, anybody knows which device this would be in /dev to be used for mounting?
+2007-02-24T06:46:00.000Z	soundray	_pg	it depends on whether you have any other scsi, sata or usb mass storage devices. If not, it will be /dev/sda. Try 'cat /proc/scsi/scsi' to get an idea of what's connected
+2007-02-24T06:47:00.000Z	_pg	soundray	two devices, one cdrom , one mo drive
+2007-02-24T06:48:00.000Z	soundray	_pg	is there a medium in the drive?
+2007-02-24T06:49:00.000Z	_pg	soundray	yes, there is
+2007-02-24T06:51:00.000Z	soundray	_pg	two things: you could do a 'dmesg | less' and search for a substring of the line in /proc/scsi/scsi that corresponds to your drive, and you could run 'tail -f /var/log/syslog' to see if any errors are logged while you insert an MO disk.
+2007-02-24T06:56:00.000Z	_pg	soundray	no errors visible. dmesg shows the MO drive at target 0:0:4, syslog looks fine (some gconfd errors). BTW, this is not the most recent ubuntu, this one has kernel 2.6.12-10-386
+2007-02-24T06:58:00.000Z	soundray	_pg	how are you checking for the device?
+2007-02-24T06:58:00.000Z	soundray	_pg	kernel age shouldn't matter in this case
+2007-02-24T06:59:00.000Z	_pg	soundray	what do you mean with 'checking for the device'? I found the device in /proc/scsi/scsi and the kernel log
+2007-02-24T06:59:00.000Z	soundray	_pg	I mean /dev/sda, /dev/sdb etc.
+2007-02-24T07:00:00.000Z	_pg	soundray	just with 'ls'
+2007-02-24T07:02:00.000Z	soundray	_pg	it's strange, you should have /dev/sd? devices
+2007-02-24T07:03:00.000Z	soundray	_pg	do you have any /dev/sg? ?
+2007-02-24T07:04:00.000Z	_pg	soundray	no, none at all, neither /dev/sd* nor /dev/sg*. The cdrom (in fstab) is listed at /dev/scd0
+2007-02-24T07:06:00.000Z	soundray	_pg	I'm not sure what would be best to do -- you could do some surgery like creating devices with mknod or rerunning MAKEDEV. I'd first boot a live CD though to see if the drive gets a /dev/sd? device there.
+2007-02-24T07:08:00.000Z	_pg	soundray	thanks. I'll go for the makedev first, since my bios doesn't seem to like the mixture of scsi and ide drives for booting from cdrom.
+2007-02-24T07:08:00.000Z	soundray	_pg	I can definitely say that I've used MO media in a SCSI drive that were mounted via the /dev/sda1 special file.
+2007-02-24T07:12:00.000Z	_pg	soundray	thanks! makedev sda worked fine! Just wondering why it wasn't there before

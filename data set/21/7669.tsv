@@ -1,0 +1,21 @@
+2007-07-15T08:30:00.000Z	justin420		hi, can anybody help with my Seagate 500GB external hd not automounting on feisty? I have tried the usb connection and firewire connection, both times syslog shows that the drive is there and everything was "ok" but no little icon popped up? I have another Seagate FreeAgent Pro 500GB that does mount properly using firewire, and that includes the little icon on the desktop.
+2007-07-15T08:31:00.000Z	Anlar	justin420	plug it in, "sudo lsusb" and create a bug report at launchpad.net and include that information
+2007-07-15T08:32:00.000Z	justin420	Anlar	ok ill do that, but nobody knows any temporary work arounds? Im willing to get my hands dirty to make this work
+2007-07-15T08:33:00.000Z	Anlar	justin420	well, just look at dmesg when you plug it in and mount it manually... "sudo mount /dev/sdb1 /media/blabla"
+2007-07-15T08:33:00.000Z	Anlar	justin420	likely the hotplug scripts or seomthing are lacking the usb id of the device so they don't know it is a usb mass device properly
+2007-07-15T08:34:00.000Z	justin420	Anlar	ok thanks allot! what would output should i post for the firewire connection on the drive that doesnt show up on the desktop?
+2007-07-15T09:06:00.000Z	justin420	Anlar	I filed a bug report on launchpad.net, and was just wondering if I included enough information to help get this problem solved? If you wouldnt mind taking a look https://bugs.launchpad.net/ubuntu/+bug/126152
+2007-08-21T14:03:00.000Z	Anlar	justin420	I do.
+2007-08-21T14:03:00.000Z	Anlar	justin420	also figured out how to get it working :)
+2007-08-21T14:04:00.000Z	Anlar	justin420	step 1: get rid of evolution. you need thunderbird. the rest will _not_ cut it. it is the only one with really solid s/mime support AND support for opensc etc (pcksc or whatever for smart cards using s/mime and such). after that it all gets easy :) depending on your specific need although
+2007-08-21T14:25:00.000Z	justin420	Anlar	thanks for your help so much! Greatly appreciate it.  Thought there for a second that I was the only dumb son of a bitch using encrypted s/mime emails on Feisty Fawn.
+2007-08-21T14:25:00.000Z	justin420	Anlar	Hope that Ubuntu fixes this issue for Gutsy.  IT IS VERY FRUSTRATING.
+2007-08-21T14:26:00.000Z	Anlar	justin420	no, they won't. 99% of the developers are just clueless zealots raving all over their completely worthless gpg
+2007-08-21T14:42:00.000Z	Anlar	justin420	will read your bug..
+2007-08-21T14:43:00.000Z	Anlar	justin420	ya, please add into that bug report what "sudo lsusb" sees to show the usb id's - I think I know the problem already
+2007-08-21T14:43:00.000Z	Anlar	justin420	it's hal scripts problem
+2007-08-21T14:43:00.000Z	justin420	Anlar	but this is using a firewire connection, not usb.
+2007-08-21T14:44:00.000Z	Anlar	justin420	it's the same. should show up in the same list afaik. and add "-v" as parameter
+2007-08-21T14:44:00.000Z	Anlar	justin420	in order to add the icon etc automatically they need the ID numbers that the device reports.. and those lists are not perfect.
+2007-08-21T14:45:00.000Z	justin420	Anlar	I would be more than happy to helps those who work on such things figure this out.  I really do like ubuntu.  I dont want to change distro's now! :)
+2007-08-21T14:47:00.000Z	Anlar	justin420	just do like "sudo lsusb -v > blabla.txt" and add it to your bug report. :) I don't know how fast but sooner or later someone will read it all through.. I know how to fix it for real but I don't have the priviledges I am afraid.. besides I am the last person to be given those as I'm drunk :)

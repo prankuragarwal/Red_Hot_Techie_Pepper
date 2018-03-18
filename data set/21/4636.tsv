@@ -1,0 +1,21 @@
+2008-03-15T12:30:00.000Z	Freezeil		Vista first, Ubuntu yesterday... The error shows up after I installed EasyBCD yesterday in order to actually see the dual boot, and once I select the Ubuntu boot it gives me the error
+2008-03-15T12:30:00.000Z	Freezeil		I'm kinda hopeless now... re-installed Ubuntu 3 times already and nothing works :(
+2008-03-15T12:30:00.000Z	sbingner	Freezeil	just install grub to your MBR and it'll be simpler for you
+2008-03-15T12:32:00.000Z	sbingner	Freezeil	that is installed by default at the end of the ubuntu install - you just need to tell it to install to the MBR (/dev/hda or /dev/sda)
+2008-03-15T12:33:00.000Z	sbingner	Freezeil	you chose to install to the partition you installed ubuntu to I expect... that's wrong
+2008-03-15T12:34:00.000Z	Freezeil	sbingner	so where should I install it?
+2008-03-15T12:34:00.000Z	sbingner	Freezeil	accept the default
+2008-03-15T12:35:00.000Z	sbingner	Freezeil	that would work but it'll be hard for you... if you don't know what you're doing I reccomend a fresh install so it can detect things and give you sane defaults... when you get to the bootloader step you could ask q's here ;)
+2008-03-15T12:35:00.000Z	Freezeil	sbingner	I already tried that (in my case it was /dev/sdb)
+2008-03-15T12:37:00.000Z	Freezeil	sbingner	I have an old IDE, and the one BIOS starts with is my SATA. It is still /dev/sdb
+2008-03-15T12:37:00.000Z	sbingner	Freezeil	thats your problem... it'ws confusing grub
+2008-03-15T12:37:00.000Z	sbingner	Freezeil	can you make it have your boot drive as sda?
+2008-03-15T12:38:00.000Z	Freezeil	sbingner	I can try
+2008-03-15T12:38:00.000Z	sbingner	Freezeil	my system is actually that way also... it's possible to make it work but you have to manually fix the grub config... the scripts don't have any way to know that sdb is really the first drive the bios sees
+2008-03-15T12:40:00.000Z	Freezeil	sbingner	so I need to menually change device.map?
+2008-03-15T12:40:00.000Z	sbingner	Freezeil	 if it doesn't get the order of your devices correctly, yes
+2008-03-15T12:42:00.000Z	Freezeil	sbingner	alright, i'll give it a go
+2008-03-15T12:43:00.000Z	sbingner	Freezeil	you should install it to whatever drive your BIOS boots to
+2008-03-15T12:46:00.000Z	sbingner	Freezeil	grub would probably happily clobber it.. but it may have some strange things on your windows partition so thats not a bad idea ;)
+2008-03-15T13:46:00.000Z	Freezeil	sbingner	thank you SO much
+2008-03-15T13:50:00.000Z	sbingner	Freezeil	common mistake

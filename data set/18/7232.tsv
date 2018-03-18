@@ -1,0 +1,18 @@
+2008-03-12T13:04:00.000Z	ArthurArchnix	Relaed	I had the same problem on my HP notebook. I have an intel card and the secret was adding an option for my card in /etc/modprobe.d/alsa-base
+2008-03-12T13:04:00.000Z	ArthurArchnix	Relaed	Take the make and model of your sound card, and use that to search the forums to see what kind of option you need to add to that file.
+2008-03-12T13:05:00.000Z	Relaed	ArthurArchnix	I see, I don't know if the following pages are useful to me or not: https://bugs.launchpad.net/ubuntu/+source/linux-source-2.6.22/+bug/136810
+2008-03-12T13:08:00.000Z	ArthurArchnix	Relaed	 what's your sound card?
+2008-03-12T13:08:00.000Z	Relaed	ArthurArchnix	wait a sec. I am checking.
+2008-03-12T13:13:00.000Z	Relaed	ArthurArchnix	Audio device: Intel Corporation 82801H (ICH8 Family) HD Audio Controller
+2008-03-12T13:13:00.000Z	Relaed	ArthurArchnix	that's my audio device.
+2008-03-12T13:15:00.000Z	ArthurArchnix	Relaed	gksudo gedit /etc/modprobe.d/alsa-base
+2008-03-12T13:15:00.000Z	ArthurArchnix	Relaed	Add this at the bottom:  options snd-hda-intel model=laptop
+2008-03-12T13:15:00.000Z	ArthurArchnix	Relaed	Save, reboot, cross fingers
+2008-03-12T13:16:00.000Z	Relaed	ArthurArchnix	rebooting... thanks
+2008-03-12T13:16:00.000Z	ArthurArchnix	Relaed	It should be possible to restart the sound without rebooting, but I've never shined to it.
+2008-03-12T13:21:00.000Z	Relaed	ArthurArchnix	it didn't work.
+2008-03-12T13:21:00.000Z	ArthurArchnix	Relaed	Bummer. You remember that bug report lnk you pasted
+2008-03-12T13:21:00.000Z	Relaed	ArthurArchnix	yes
+2008-03-12T13:22:00.000Z	ArthurArchnix	Relaed	If you scroll down you'll see what options other people have tried. Try those as well. Even though they didn't work for them, they might work for you. This is where knowing what command restarts alsa is useful, since without that command restarts are required after each change to alsa-base
+2008-03-12T13:23:00.000Z	Relaed	ArthurArchnix	thanks for helping me, and it's time for dinner now. Have a nice day.
+2008-03-12T13:24:00.000Z	Relaed	ArthurArchnix	I'll keep on looking for the solution.

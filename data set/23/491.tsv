@@ -1,0 +1,23 @@
+2011-08-01T22:31:00.000Z	KNUBBIG		It seems that pure-ftp does require a valid shell to allow logins, any idea how to prevent this?
+2011-08-01T22:31:00.000Z	ldr	KNUBBIG	if you find out let me know proftpd shows the same behavior here
+2011-08-01T22:34:00.000Z	KNUBBIG	ldr	for proftpd I could disable it, but I had to switch to pure-ftp
+2011-08-01T22:34:00.000Z	ldr	KNUBBIG	disabling didnt work here
+2011-08-01T22:34:00.000Z	KNUBBIG	ldr	you can just edit /etc/proftpd/proftpd.conf and there set RequireValidShell no
+2011-08-01T22:34:00.000Z	KNUBBIG	ldr	ant then /etc/init.d/proftpd restart
+2011-08-01T22:35:00.000Z	ldr	KNUBBIG	thx tried that didnt work
+2011-08-01T22:35:00.000Z	KNUBBIG	ldr	mh that's unnormal, that worked for me ... but now I'm stuck with that damn pure-ftp
+2011-08-01T22:37:00.000Z	ldr	KNUBBIG	i found it unormal too maybe requiredvalidshell cancels out with chroot option? makes no sense i know but
+2011-08-01T22:37:00.000Z	KNUBBIG	ldr	nope, you can use that with chroot (I did so successfully)
+2011-08-01T22:38:00.000Z	KNUBBIG	ldr	maybe you've got the mysql module enabled, too and there you've got another requirevalidshell?
+2011-08-01T22:39:00.000Z	ldr	KNUBBIG	hmm i will have a look thanks for the hint
+2011-08-01T22:41:00.000Z	ldr	KNUBBIG	you can always Deny Some Group in your ssh conf and put all ftp user in that group
+2011-08-01T22:41:00.000Z	ldr	KNUBBIG	thats not what you wanted but thats what i do
+2011-08-01T22:41:00.000Z	ldr	KNUBBIG	cause its a server and ssh is the only way to access it anyway
+2011-08-01T22:42:00.000Z	KNUBBIG	ldr	thank you, that's a great idea
+2011-08-01T22:43:00.000Z	ldr	KNUBBIG	you can do the same a little bit mor complicated in PAM so it works for local login shells too but as i seed no need here
+2011-08-01T22:43:00.000Z	KNUBBIG	ldr	that's true, no need for that ... oh but maybe a technician tries to login locally ;-) Thanks for your tip
+2011-08-01T22:44:00.000Z	ldr	KNUBBIG	a technician locally has definitly no need for some ftp normal user shell i think ;)
+2011-08-01T22:44:00.000Z	ldr	KNUBBIG	but if you have a ftp server at home and do want your brother to use your computer
+2011-08-01T22:45:00.000Z	KNUBBIG	ldr	that's true :) I will just disable them in sshd_config. Thank you, I'd never have come to that idea :)
+2011-08-01T22:45:00.000Z	KNUBBIG	ldr	easy but very good and efficient, ty
+2011-08-01T22:45:00.000Z	ldr	KNUBBIG	you are welcome glad we could help each other

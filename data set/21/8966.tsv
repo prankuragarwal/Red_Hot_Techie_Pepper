@@ -1,0 +1,21 @@
+2005-12-13T13:51:00.000Z	grshpr		I get this: E: Could not open lock file /var/lib/dpkg/lock - open (13 Permission denied)
+2005-12-13T13:51:00.000Z	grshpr		E: Unable to lock the administration directory (/var/lib/dpkg/), are you root?
+2005-12-13T13:51:00.000Z	BlueDevil	grshpr	are you?
+2005-12-13T13:52:00.000Z	BlueDevil	grshpr	yes
+2005-12-13T13:52:00.000Z	BlueDevil	grshpr	lsof|grep /var/lib/dpkg/lock
+2005-12-13T13:52:00.000Z	grshpr	BlueDevil	Ok. :)
+2005-12-13T13:53:00.000Z	BlueDevil	grshpr	with sudo
+2005-12-13T13:54:00.000Z	grshpr	BlueDevil	Same error.
+2005-12-13T13:54:00.000Z	BlueDevil	grshpr	what same error? it should print the process that has that file open! no error!
+2005-12-13T13:55:00.000Z	grshpr	BlueDevil	E: Unable to lock the administration directory (/var/lib/dpkg/), are you root?
+2005-12-13T13:55:00.000Z	BlueDevil	grshpr	did you run the command I told you to?!
+2005-12-13T13:56:00.000Z	grshpr	BlueDevil	Yes, with sudo..
+2005-12-13T13:56:00.000Z	BlueDevil	grshpr	what was the output?
+2005-12-13T13:56:00.000Z	grshpr	BlueDevil	No output from that, just got to the command line again.
+2005-12-13T13:58:00.000Z	BlueDevil	grshpr	ls -l /var/lib/dpkg/lock
+2005-12-13T13:58:00.000Z	grshpr	BlueDevil	Ok. :)
+2005-12-13T13:59:00.000Z	grshpr	BlueDevil	-rw-r-----  1 root root 0 2005-12-08 13:47 /var/lib/dpkg/lock
+2005-12-13T14:00:00.000Z	BlueDevil	grshpr	and no program has that file open? hmm that's weird :-/
+2005-12-13T14:01:00.000Z	grshpr	BlueDevil	Not what I can think of. I have gAIM, XMMS and Mozilla running except the terminal.
+2005-12-13T14:03:00.000Z	grshpr	BlueDevil	I do have a update-tray (red thing with arrows) that say taht I have some downloads I need. Could that interrupt?
+2005-12-13T14:03:00.000Z	BlueDevil	grshpr	sudo fuser -v /var/lib/dpkg/lock

@@ -1,0 +1,18 @@
+2008-11-09T23:54:00.000Z	calum		Hi folks, can anyone suggest why my flash player (the Adobe one) is extremely buggy?  It stops, starts, hangs and occasionally crashes Firefox.  I'm running an up to date vanilla Ibex install; the only change is that I boot the kernel with noapic as my hardware doesn't play nicely with APIC.
+2008-11-09T23:54:00.000Z	ActionParsnip	calum	are you on 64bit?
+2008-11-09T23:55:00.000Z	ActionParsnip	calum	sudo apt-get --purge remove flashplayer-nonfree (and all other flash players you have installed)
+2008-11-09T23:56:00.000Z	ActionParsnip	calum	then sudo apt-get clean then go to a site with flash, it will be offered to you
+2008-11-09T23:56:00.000Z	ActionParsnip	calum	something like http://www.rathergood.com/blode2
+2008-11-09T23:56:00.000Z	calum	ActionParsnip	I'll give that a try - I had tried the troubleshooting page from the FAQ, but got nowhere
+2008-11-09T23:57:00.000Z	ActionParsnip	calum	having a load of flash stuff installed can confuse stuff
+2008-11-09T23:57:00.000Z	ActionParsnip	calum	you could try nspluginwrapper which can help
+2008-11-10T00:10:00.000Z	calum	ActionParsnip	that's it sorted, thankyou; turns out I was using swfdec instead of the Adobe player.  Duh.
+2010-04-19T03:05:00.000Z	ActionParsnip	calum	add an entry in te startup item to run the script
+2010-04-19T03:06:00.000Z	ActionParsnip	calum	if you copy it to /usr/bin then you don't need to specify the full path
+2010-04-19T03:07:00.000Z	calum	ActionParsnip	So I just copy the executable script to that folder without specifying a path?
+2010-04-19T03:09:00.000Z	ActionParsnip	calum	no, if you put the script in /usr/bin you will be able to call it without having to type ~/Desktop/scriptname when you want it, just like you dont use full path names for the commands you use like apt-get and cp
+2010-04-19T03:10:00.000Z	calum	ActionParsnip	In reply to zaxonspox, yeh it is a terminal startup script. It will ask you for a password it runs at boot
+2010-04-19T03:11:00.000Z	ActionParsnip	calum	so it needs root, and needs to be ran before the gui loads?
+2010-04-19T03:12:00.000Z	calum	ActionParsnip	It shuts down Apache server and MySql when you reach the gnome desktop. It shows up in a normal terminal
+2010-04-19T03:30:00.000Z	calum	ActionParsnip	I am in the rc2.d folder and I see a file called mysql which is a shell script but it is already numbered, it is called "S19mysql". Do I need to change that?
+2010-04-19T03:30:00.000Z	ActionParsnip	calum	i'm not familiar with rc levels

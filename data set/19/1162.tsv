@@ -1,0 +1,19 @@
+2011-08-09T06:59:00.000Z	gaelfx		hey, I used to be able to access my Transmission web client from another machine one the same network by using the [mycomputer'sname].local:9091 address, but recently that stopped working, and I'm wondering if it's a problem with my router or something that changed in my Ubuntu setup? Is it possible that a kernel update reset this accessibility?
+2011-08-09T07:00:00.000Z	escott	gaelfx	did you enable firewall? ufw? otherwise yes it could be your router, but unlikely if you are on the same subnet
+2011-08-09T07:01:00.000Z	gaelfx	escott	wols: ok, hang on, I'll check both of those things
+2011-08-09T07:03:00.000Z	escott	gaelfx	your router may not be providing dns to your local clients, make sure your routers dns server is running and the hostnames are configured
+2012-04-30T05:54:00.000Z	gaelfx	escott	might, not probably
+2012-05-01T07:49:00.000Z	escott	gaelfx	you can disown it
+2012-05-01T07:51:00.000Z	gaelfx	escott	how's that?
+2012-05-01T07:52:00.000Z	gaelfx	escott	I thought there was a character like & after the command that would allow it to stay running after terminal is closed
+2012-05-01T07:53:00.000Z	escott	gaelfx	so there are a couple different ways to get things running in the background. one is the shells job control "program &" or if it is already running "ctrl-z" then "bg". sometimes when you logout of that shell the process will terminate because its parent terminates in which case you can "disown" the process with the disown command. some programs will "disown" their parents and so disown has no effect
+2012-05-01T07:53:00.000Z	gaelfx	escott	thanks :D
+2012-05-01T07:54:00.000Z	escott	gaelfx	there is also nohup which prevents the hangup signal from being sent to the process
+2012-05-01T07:54:00.000Z	gaelfx	escott	disown did it, apparently, so awesome :D
+2012-05-01T07:55:00.000Z	escott	gaelfx	now that you have disowned the process parent is init, so if you logout it should keep running
+2012-05-01T07:56:00.000Z	gaelfx	escott	oh, so maybe not the best solution, strictly speaking?
+2012-05-01T07:57:00.000Z	escott	gaelfx	honestly ive never been that clear on what the difference is between disown/nuhup, and its gets confusing in a gui because many gui apps when started from a x11 terminal will separate themselves from the terminals bash session (which is smart you dont want to start some gui program in a terminal, close the terminal and lose your gui program), but it makes things confusing and hard to figure out what does what
+2012-05-01T07:58:00.000Z	gaelfx	escott	agreed, it is confusing :D
+2012-05-01T08:00:00.000Z	escott	gaelfx	another good alternative is to use screen. screen can start a terminal that will run in the background so you can always control your applications (and migrate them from terminal to terminal)
+2012-05-01T08:03:00.000Z	escott	gaelfx	this seems to describe the differences fairly well http://unix.stackexchange.com/questions/3886/difference-between-nohup-disown-and
+2012-05-01T08:06:00.000Z	escott	gaelfx	and this is a little more friendly of an explanation http://unix.stackexchange.com/questions/32574/when-do-you-need-nohup-if-youre-already-forking-using

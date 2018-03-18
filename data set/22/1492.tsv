@@ -1,0 +1,22 @@
+2010-04-30T05:02:00.000Z	sqr47		Can someone help me fix the low resolution Plymouth boot screen with my ATI Mobility Radeon driver?
+2010-04-30T05:02:00.000Z	FiReSTaRT	sqr47	you'll have to get into the grub settings for that... i'm not sure if you wanna be touching that
+2010-04-30T05:03:00.000Z	sqr47	FiReSTaRT	are there any other ways to fix it? i wouldnt think going grub would do anything
+2010-04-30T05:03:00.000Z	FiReSTaRT	sqr47	you sure? hang on a sec and i'll give you the instructions for the fix
+2010-04-30T05:06:00.000Z	FiReSTaRT	sqr47	1) open terminal and gksudo gedit /etc/default/grub in it you will find a line #GRUB_GFXMODE=640×480.. uncomment it and change it to your native resolution.. save and close
+2010-04-30T05:07:00.000Z	sqr47	FiReSTaRT	will that also fix the part of plymouth only showing up for like two seconds?
+2010-04-30T05:07:00.000Z	FiReSTaRT	sqr47	2) gksudo gedit /etc/grub.d/00_header find the part that says gfxmode=${GRUB_GFXMODE} i think it's line 103 and under that line add a new line that says set gfxpayload=keep   save and close
+2010-04-30T05:07:00.000Z	FiReSTaRT	sqr47	3) in terminal paste sudo update-grub
+2010-04-30T05:08:00.000Z	FiReSTaRT	sqr47	that should fix it.. plymuth isn't working in native resolution when running on nvidia drivers so some crazy serb posted up the instructions... i just followed them and it worked :)
+2010-04-30T05:08:00.000Z	FiReSTaRT	sqr47	didn't really get into the internals to know what does what
+2010-04-30T05:08:00.000Z	sqr47	FiReSTaRT	thanks
+2010-04-30T05:09:00.000Z	FiReSTaRT	sqr47	np and good luck
+2010-04-30T05:10:00.000Z	sqr47	FiReSTaRT	did that make any sense? me: "ill try, though i might be better off just keeping the driver uninstalled, everything works still but for some reason the system says that it's uninstalled, is this a bad thing?"
+2010-04-30T05:11:00.000Z	FiReSTaRT	sqr47	it does make sense.. if you dont need fancy desktop effects or 3d acceleration, you should be perfectly fine using the open driver
+2010-04-30T05:12:00.000Z	sqr47	FiReSTaRT	well NO driver is installed, but EVERYTHING works fine, even 3d and everything, im assuming it's installed but the system just doesn't recognize it, that's why plymouth goes to the nice fancy screen and it tells me that i need to activate the driver when i open up "Device Drivers"
+2010-04-30T05:13:00.000Z	FiReSTaRT	sqr47	hmm you were having plymuth issues without installing the proprietary driver?
+2010-04-30T05:13:00.000Z	FiReSTaRT	sqr47	in that case i hope you didn't follow my instructions (probably nothing bad will happen but still) b/c you have another issue
+2010-04-30T05:14:00.000Z	sqr47	FiReSTaRT	no, i didnt follow them, but i wasnt having any issues besides the graphics driver being confused, i mostly just came in here to find out if that was a bad thing
+2010-04-30T05:14:00.000Z	FiReSTaRT	sqr47	they basically offer you the option of using a proprietary driver.. you don't have to if you dont wanna run compiz or play 3d games or use google earth
+2010-04-30T05:15:00.000Z	FiReSTaRT	sqr47	unfortunately i need all 3 and also wanna see if the nvidia 195 finally got hdmi sound working on 8400
+2010-04-30T05:15:00.000Z	sqr47	FiReSTaRT	i can do all those things, but i need to leave, "A malicious client is monitoring your session"
+2010-04-30T05:16:00.000Z	sqr47	FiReSTaRT	im assuming that's a bad thing, i need to change my password now

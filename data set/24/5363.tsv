@@ -1,0 +1,24 @@
+2006-08-05T12:12:00.000Z	p3980		Hello all... have a question for you
+2006-08-05T12:12:00.000Z	p3980		Mind taking a shot at it?
+2006-08-05T12:12:00.000Z	p3980		Apparentally not
+2006-08-05T12:13:00.000Z	p3980		OK, simply enough, whenever I'm on one of the virtual terminals (accessed by Alt+F[somenumberhere] , the top inch or so of the screen ends up on the bottom
+2006-08-05T12:13:00.000Z	p3980		Yes
+2006-08-05T12:13:00.000Z	p3980		Nvidia, unsure of exact model number as the computer isn't mine and they won't let me take it apart
+2006-08-05T12:14:00.000Z	p3980		Yes, they're installed
+2006-08-05T12:14:00.000Z	p3980		IIRC, I think I may have forgot to run the config command to tell X to use those drivers
+2006-08-05T12:14:00.000Z	p3980		ok
+2006-08-05T12:14:00.000Z	frogzoo	p3980	try passing vga=791 in the #kopt line in /boot/grub/menu.lst & 'sudo update-grub' & reboot
+2006-08-05T12:15:00.000Z	p3980	frogzoo	I'll try it
+2006-08-05T12:16:00.000Z	frogzoo	p3980	try passing vga=791 in the #kopt line in /boot/grub/menu.lst & 'sudo update-grub' & reboot
+2006-08-05T12:19:00.000Z	frogzoo	p3980	nope, leave it commented & 'sudo update-grub'
+2006-08-05T12:24:00.000Z	frogzoo	p3980	&?
+2006-08-05T12:29:00.000Z	frogzoo	p3980	nope - you should be able to find the proper mode if you go back to grub, & enter 'vbeprobe' you should find a workable mode
+2006-08-05T12:29:00.000Z	p3980	frogzoo	I also hit "0" the second time around and it worked
+2006-08-05T12:31:00.000Z	frogzoo	p3980	doesn't sound right - is that the only available?
+2006-08-05T12:32:00.000Z	p3980	frogzoo	Then a hex code
+2006-08-05T12:32:00.000Z	frogzoo	p3980	what are the hex codes?
+2006-08-05T12:33:00.000Z	frogzoo	p3980	cos the vga=### option takes a hex code - you need to get the grub prompt & find a workable mode
+2006-08-05T12:34:00.000Z	p3980	frogzoo	so use the hex of the mode i'm using now
+2006-08-05T12:34:00.000Z	frogzoo	p3980	you can probly test them out from grub with 'testvbe'
+2006-08-05T12:34:00.000Z	p3980	frogzoo	I found one that works -- use that?
+2006-08-05T12:34:00.000Z	frogzoo	p3980	that would work

@@ -1,0 +1,21 @@
+2008-04-16T14:14:00.000Z	bartmon	gurpreet	I don't know directly buy can try "lspci | grep Network controller" and then "dmesg | grep <name of your wifi card>".
+2008-04-16T14:15:00.000Z	gurpreet	bartmon	i tried lsmod, a long list is returned and i don't know which one is wifi's driver, trying dmesg thingy
+2008-04-16T14:16:00.000Z	bartmon	gurpreet	Yeah, lsmod is not very descriptive.
+2008-04-16T14:33:00.000Z	gurpreet	bartmon	dmesg output doesn't contain the name of the wifi driver
+2008-04-16T14:34:00.000Z	bartmon	gurpreet	Then pastebin outputs of dmesg, lsmod and lspci and I'll take a peek
+2008-04-16T14:36:00.000Z	gurpreet	bartmon	should i paste whole output of dmesg in pastebin?
+2008-04-16T14:36:00.000Z	bartmon	gurpreet	If you can, sure!
+2008-04-16T14:41:00.000Z	bartmon	gurpreet	Well it seems lsmod should be the quickest way to see which driver your system uses, pastebin it soon, i have to go.
+2008-04-16T14:42:00.000Z	gurpreet	bartmon	ok, i was installing pastebinit, pasting now
+2008-04-16T14:43:00.000Z	bartmon	gurpreet	No, no. Pastebin is this: http://paste.ubuntu-nl.org
+2008-04-16T14:44:00.000Z	gurpreet	bartmon	http://paste.stgraber.org/2503
+2008-04-16T14:44:00.000Z	gurpreet	bartmon	yes, i did lsmod | pastebinit
+2008-04-16T14:45:00.000Z	gurpreet	bartmon	i am using Atheroes card
+2008-04-16T14:49:00.000Z	gurpreet	bartmon	got the card name?
+2008-04-16T14:49:00.000Z	bartmon	gurpreet	I would say your system uses the wlan kernel module, which is sidekicked by various ath_XYZ modules like ath_pci, ath_hal
+2008-04-16T14:50:00.000Z	gurpreet	bartmon	i didn't get you
+2008-04-16T14:50:00.000Z	gurpreet	bartmon	module should be a single name
+2008-04-16T14:51:00.000Z	gurpreet	bartmon	i think the core module is wlan, is it?
+2008-04-16T14:51:00.000Z	bartmon	gurpreet	Yeah, wlan
+2008-04-16T14:52:00.000Z	bartmon	gurpreet	and in lsmod you can also see wlan is dependent on wlan_scan_sta,ath_rate_sample,ath_pciin your case
+2008-04-16T14:52:00.000Z	gurpreet	bartmon	no, its the usedby column

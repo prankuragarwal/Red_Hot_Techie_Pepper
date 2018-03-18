@@ -1,0 +1,22 @@
+2011-06-15T19:32:00.000Z	Akuma		hello, I'm compiling an application and I had two questions: 1 - what is the default installation directory for apps, 2 - how do I create a .deb file from my compilation (as opposed to doing make install)
+2011-06-15T19:33:00.000Z	ikonia	Akuma	what are you building ?
+2011-06-15T19:33:00.000Z	Akuma		gnucash
+2011-06-15T19:33:00.000Z	ikonia	Akuma	that is already in the repos - you don't need to compile it
+2011-06-15T19:33:00.000Z	Akuma	ikonia	unfortunately the ubuntu packaged version does not provide database support
+2011-06-15T19:33:00.000Z	Akuma		so I need to compile it
+2011-06-15T19:33:00.000Z	ikonia	Akuma	really, are you %100 sure, I thought it did
+2011-06-15T19:34:00.000Z	Akuma		I tried with both the ubuntu repo and the getdeb repo
+2011-06-15T19:34:00.000Z	Akuma		neither had mysql support
+2011-06-15T19:34:00.000Z	Akuma		yea, just wondering what to set for --prefix
+2011-06-15T19:35:00.000Z	ikonia	Akuma	one moment - I'll give you some solid info in 2 minutes
+2011-06-15T19:35:00.000Z	Akuma		thanks
+2011-06-15T19:36:00.000Z	ikonia		!info gnucash
+2011-06-15T19:36:00.000Z	ikonia		ah it's 2.4.6 that contains sql support
+2011-06-15T19:37:00.000Z	ikonia	Akuma	ok here is my suggestion
+2011-06-15T19:37:00.000Z	Akuma		I believe 2.4.2 has it as well, it's just not compiled in the ubuntu versions
+2011-06-15T19:37:00.000Z	Akuma	ikonia	I'm all eyes
+2011-06-15T19:38:00.000Z	ikonia	Akuma	get the ubuntu source package of gnucash (apt-get source gnucash) modify the decription file to include mysql support, and recompile the package using the official ubuntu package/source/description files
+2011-06-15T19:38:00.000Z	ikonia		!packaging | Akuma
+2011-06-15T19:38:00.000Z	ikonia	Akuma	that guide should explain how to re-compile the deb, but as you are using the ubuntu source you can pretty much jump to the last steps
+2011-06-15T19:38:00.000Z	Akuma		cool, I'll take a look at that
+2011-06-15T19:39:00.000Z	ikonia	Akuma	its the best way to confirm compatability and formatting in same way as the existing ubuntu package

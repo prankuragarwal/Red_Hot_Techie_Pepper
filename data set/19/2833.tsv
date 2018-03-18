@@ -1,0 +1,19 @@
+2010-02-23T08:36:00.000Z	Maletor		How do I do ftp through ssh?
+2010-02-23T08:36:00.000Z	Maletor		then transfer back to this domain.
+2010-02-23T08:36:00.000Z	Maletor		no i don't want to authenticate through ssh, i want to tunnel
+2010-02-23T08:37:00.000Z	Maletor		and the server i want is ftp
+2010-02-23T08:37:00.000Z	Maletor		so, like i said, get ftp through ssh
+2010-02-23T08:38:00.000Z	dj_segfault	Maletor	What you want is called port forwarding.  You'll have to forward both FTP ports.  Google ssh port forwarding.
+2010-02-23T08:38:00.000Z	dj_segfault	Maletor	Why are you trying to use ssh then?
+2010-02-23T08:40:00.000Z	dj_segfault	Maletor	If the server only speaks ftp why are you trying to involve ssh?
+2010-02-23T08:43:00.000Z	dj_segfault	Maletor	Then it's easy.  (1) ssh from machineA (your machine) to machineB.  (2) ftp the files from machineC to machineB.  (3) scp the files from machineB to machineA
+2010-02-23T08:44:00.000Z	dj_segfault	Maletor	What kind of files?  ascii or binary?
+2010-02-23T08:46:00.000Z	dj_segfault	Maletor	Actually you can still use port forwarding.  Can you get to machineB via FTP or only ssh?
+2010-02-23T08:47:00.000Z	dj_segfault	Maletor	Can machineB ssh to machineC?
+2010-02-23T08:49:00.000Z	dj_segfault	Maletor	Can machineB ssh to machineC?
+2010-02-23T08:55:00.000Z	Maletor	dj_segfault	no
+2010-02-23T08:56:00.000Z	dj_segfault	Maletor	I think you're FUBAR then.  No direct way. It has to sit on machineB for the transfer then.
+2010-02-23T08:57:00.000Z	Maletor	dj_segfault	no! this can't be!
+2010-02-23T08:58:00.000Z	dj_segfault	Maletor	ssh and ftp aren't just different ports, they're very different protocols!!
+2010-02-23T08:58:00.000Z	Maletor	dj_segfault	shouldn't matter
+2010-02-23T09:03:00.000Z	dj_segfault	Maletor	If you can't ssh from B to C, and you can't store files on B, and you can't ftp to C, and the files aren't ascii you can cat, I can't think of anything else.  Does B have enough space that you can split the files, or do one file at a time?

@@ -1,0 +1,18 @@
+2006-10-27T13:19:00.000Z	rene32		After the update to edgy my wifi does not work anymore. Anyone who can help me?
+2006-10-27T13:19:00.000Z	sorush4_	rene32	what wifi do you have?
+2006-10-27T13:19:00.000Z	rene32	sorush4_	At the moment: none :-) It is a prism2 card which worked fine under 6.06
+2006-10-27T13:21:00.000Z	sorush4_	rene32	make sure you have installed all the right packages for it..
+2006-10-27T13:22:00.000Z	rene32	sorush4_	http://ubuntuforums.org/showthread.php?t=276538&highlight=prism tells me that I am not alone. Exactly the same problem here.
+2006-10-27T13:22:00.000Z	sorush4_	rene32	what do you get when you do iwconfig do you see your device..
+2006-10-27T13:23:00.000Z	rene32	sorush4_	no wireless extension
+2006-10-27T13:23:00.000Z	sorush4_	rene32	find out if the module is loaded for the card.
+2006-10-27T13:23:00.000Z	rene32	sorush4_	I see it, it is wlan0 (used to be eth1) but "no wireless extension"
+2006-10-27T13:23:00.000Z	sorush4_	rene32	then just do sudo dhclient3 wlna0
+2006-10-27T13:23:00.000Z	sorush4_	rene32	then just do sudo dhclient3 wlan0
+2006-10-27T13:24:00.000Z	rene32	sorush4_	Which one? Orinoco, hermes, hostap, prism2?
+2006-10-27T13:24:00.000Z	sorush4_	rene32	prism2 should be the one..
+2006-10-27T13:24:00.000Z	rene32	sorush4_	In 6.06 hostap did the trick (WPA), I had to blacklist orinoco and hermes (loaded by default).
+2006-10-27T13:24:00.000Z	rene32	sorush4_	Can I unload a module?
+2006-10-27T13:25:00.000Z	sorush4_	rene32	rmmod
+2006-10-27T13:27:00.000Z	rene32	sorush4_	All modules --> no wireless extension found
+2006-10-27T13:27:00.000Z	sorush4_	rene32	did you do lsmod

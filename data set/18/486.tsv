@@ -1,0 +1,18 @@
+2012-02-17T00:54:00.000Z	nsd_		Hi, I'm having some networking issues with a machine running 10.04. I have an ASUS-USBN10 that uses the r8192s_usb driver, and I have downloaded the latest rtl8192 binary thing from the Debian SVN repository. I had the device working for a short period of time just fine with Network Manager, but I decided to try to configure the device with /etc/network/interfaces and remove network-manager and network-manager-gnome. After being unsuccessful
+2012-02-17T00:54:00.000Z	nsd_		 in that., I re-installed network-manager and network-manager-gnome At the the moment, network manager says that the device connects successfully, but I am not able to ping anything on the LAN let alone connect to the outside world. I should note that when I initially had it working, I had eth0 configured with /etc/network/interfaces but not hooked up and I was not able to get it to work without disabling eth0. At present my /etc/network/int
+2012-02-17T00:54:00.000Z	nsd_		erfaces is only managing the loopback device.
+2012-02-17T00:54:00.000Z	nsd_		Sorry for such a long message
+2012-02-17T00:55:00.000Z	nsd_		Does anyone have any idea why the device would say that it has connected to the router but yet I am not able to connect to anything?
+2012-02-17T00:55:00.000Z	recon_lap	nsd_	try using pastebin next time
+2012-02-17T00:55:00.000Z	nsd_	recon_lap	Duly noted, sorry lol
+2012-02-17T00:56:00.000Z	recon_lap	nsd_	try ping the router , see what happens
+2012-02-17T00:56:00.000Z	nsd_	recon_lap	As I stated I can't ping anything.
+2012-02-17T00:57:00.000Z	nsd_	recon_lap	DHCP
+2012-02-17T00:58:00.000Z	nsd_	recon_lap	nmap -sP 192.168.0.1-255 yields nothing, so I can't ping anything. The network mask and IP address given by DHCP seem reasonable. I do not have MAC Address filtering on the router
+2012-02-17T00:59:00.000Z	nsd_	recon_lap	Also the wireless connection being managed by NetworkManager appears as it should.
+2012-02-17T01:00:00.000Z	nsd_	recon_lap	And dmesg | grep 819 (for messages related to the device driver) shows nothing.
+2012-02-17T01:00:00.000Z	recon_lap	nsd_	if you cant ping the router you are not connected, go back to ifconfig, do a ifconfig  ethx down, and a ifconfig eth0 up and see if you get any clues
+2012-02-17T01:01:00.000Z	nsd_	recon_lap	It is a wireless device; eth0 is connected to nothing. Would ifconfig work on a wireless device in the same manner?
+2012-02-17T01:02:00.000Z	recon_lap	nsd_	should, but i'm well out of date with my network trouble shooting skills
+2012-02-17T01:02:00.000Z	nsd_	recon_lap	Hmm, when I do that I get "wlan0: link is not ready" in dmesg. I hope google helps me with this...
+2012-02-17T01:03:00.000Z	nsd_	recon_lap	Hmm evidently not. I read some docs and it says that that is a normal message.

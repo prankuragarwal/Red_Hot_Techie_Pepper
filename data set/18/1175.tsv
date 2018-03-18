@@ -1,0 +1,18 @@
+2011-10-27T23:51:00.000Z	datruth		Anyone know if 256mb is enough to run RT?
+2011-10-27T23:51:00.000Z	datruth		RT4
+2011-10-27T23:51:00.000Z	B0g4r7	datruth	what is RT4?
+2011-10-27T23:52:00.000Z	datruth	B0g4r7	a ticketing system
+2011-10-27T23:52:00.000Z	B0g4r7	datruth	yeah, I'd think so.  It's not gonna be much heavy lifting involved.
+2011-10-27T23:53:00.000Z	datruth	B0g4r7	every time I start apache up it says it can't allocate memory when I run top it looks like 3245k is free
+2011-10-27T23:54:00.000Z	B0g4r7	datruth	do you have swap active?
+2011-10-27T23:54:00.000Z	B0g4r7	datruth	if not, do so.  If so, consider that you may need to increase it's size.
+2011-10-27T23:54:00.000Z	datruth	B0g4r7	hrmm
+2011-10-27T23:55:00.000Z	datruth	B0g4r7	how can I check if I am using swap?
+2011-10-27T23:55:00.000Z	B0g4r7	datruth	the 'free' command should tell you.
+2011-10-27T23:56:00.000Z	datruth	B0g4r7	so I need to increase the swap size?
+2011-10-27T23:57:00.000Z	B0g4r7	datruth	it would seem to be using 184MB of swap space, with 53MB remaining free.  I would increase it if I were you.
+2011-10-27T23:58:00.000Z	datruth	B0g4r7	how do I increase the swap size?
+2011-10-27T23:59:00.000Z	B0g4r7	datruth	the easy way will be to create a "swap file" on your fs and use it in addition to the existing swap partition.  The more proper way will be to resize the swap partition or add an additional one.
+2011-10-28T00:01:00.000Z	B0g4r7	datruth	regardless, once you have a place for the additional swap space, you'll want to 'mkswap /path/to/swap/file/or/device', and add it into /etc/fstab following the style used for the existing swap.
+2011-10-28T00:01:00.000Z	datruth	B0g4r7	if I increase the actual ram I have would that be better?
+2011-10-28T00:01:00.000Z	B0g4r7	datruth	better performance-wise for sure.

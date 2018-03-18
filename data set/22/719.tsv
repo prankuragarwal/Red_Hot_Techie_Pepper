@@ -1,0 +1,22 @@
+2011-09-27T06:57:00.000Z	maslen		Hi, my machine first turned off the monitor, and the caps lock, num lock, and scroll lock were all blinking. After restarting, the auto logon appears to function, but it only shows me an empty desktop.
+2011-09-27T06:57:00.000Z	maslen		I then ran tail /var/log/syslog , and it returned "GLib-GObject-CRITICAL: g_value_get_boolean: assertion `G_VALUE_HOLDS_BOOLEAN (value)' failed" . Can someone help please.
+2011-09-27T06:58:00.000Z	escott	maslen	ctrl-alt-f1 to get to a console. then you can try to service gdm restart
+2011-09-27T06:58:00.000Z	maslen	escott	It said "Rejected send message..."
+2011-09-27T06:59:00.000Z	escott	maslen	sudo service gdm restart
+2011-09-27T07:00:00.000Z	maslen	escott	So it appears ot have done the same as before. It plays the sound, displays the background, and the 'waiting' icon for the mouse. Then it displays the mouse icon on top of the background - no more, and no less.
+2011-09-27T07:00:00.000Z	escott	maslen	some core desktop process is failing
+2011-09-27T07:01:00.000Z	maslen	escott	Anything specific you could recommend short of a full reinstall?
+2011-09-27T07:01:00.000Z	maslen	escott	I am using Ubuntu classic instead of unity.
+2011-09-27T07:02:00.000Z	escott	maslen	a reinstall certainly isn't needed you. either update the software, or clear out the existing config for gnome
+2011-09-27T07:02:00.000Z	maslen	escott	I should have the newest version of everything. How can I clear the config?
+2011-09-27T07:02:00.000Z	escott	maslen	mv $HOME/.config $HOME/old_config
+2011-09-27T07:03:00.000Z	maslen	escott	There is no old_config in my $home dir.
+2011-09-27T07:04:00.000Z	maslen	escott	I looked with ls -a
+2011-09-27T07:05:00.000Z	escott	maslen	mv .config old_config
+2011-09-27T07:06:00.000Z	maslen	escott	My bad. I was looking at it like asm. DEST, SRC , not the other way around.
+2011-09-27T07:07:00.000Z	maslen	escott	Same issue though after the rename.
+2011-09-27T07:08:00.000Z	maslen	escott	I ran 'sudo service gdm restart', after renaming the .config file, and still, the same issue
+2011-09-27T07:09:00.000Z	maslen	escott	It seems gnome-panel had been removed. Reinstalling meanwhile
+2011-09-27T07:09:00.000Z	maslen	escott	(So sayeth syslog, anyways)
+2011-09-27T07:10:00.000Z	maslen	escott	Woohoo! replacing config + reinstalling gnome-panel appears to have fixed it.
+2011-09-27T07:13:00.000Z	escott	maslen	no problem

@@ -1,0 +1,21 @@
+2010-06-08T11:51:00.000Z	nsh		is it possible for a non-root user to mount a remote NFS share?
+2010-06-08T11:51:00.000Z	nsh		without suid mount
+2010-06-08T11:52:00.000Z	nsh		hmm
+2010-06-08T11:54:00.000Z	nsh		i can't see what the kernel can request from the remote machine over the network that a regular user couldn't, theoretically
+2010-06-08T11:54:00.000Z	nsh		i should read up the protocol i guses
+2010-06-08T11:55:00.000Z	Kamilion	nsh	here's my nfs client line: 10.10.10.250:/mnt/DumpSpace /media/bbdump nfs rw,soft,user,noauto 0 0
+2010-06-08T11:56:00.000Z	nsh		oh, NFS checks the originating port, perhaps
+2010-06-08T11:56:00.000Z	nsh		for the RPC call
+2010-06-08T11:56:00.000Z	nsh		or requires the mounter to have an open port below 1024 to receive data on
+2010-06-08T11:56:00.000Z	nsh		that would make sense
+2010-06-08T11:57:00.000Z	Kamilion	nsh	I've got nautilus mount/umountable NFS drives on my karmic and lucid workstations right now with the above fstab line.
+2010-06-08T11:57:00.000Z	nsh	Kamilion	right
+2010-06-08T11:59:00.000Z	Kamilion	nsh	10.10.10.250:/mnt/DumpSpace /media/bbdump nfs rw,soft,user,noauto 0 0      --- just make sure it's a directory in /media if you want nautilus to manage it. noauto means it isn't mounted at boot, and karmic and lucid use policykit or it's ilk to trigger the mount via gvfs without a suid mount IIRC.
+2010-06-08T11:59:00.000Z	nsh	Kamilion	thanks, but i'm just pondering the matter without any particular application
+2010-06-08T12:00:00.000Z	Kamilion	nsh	from the commandline, you can use gvfs-mount to use the same framework.
+2010-06-08T12:00:00.000Z	nsh		will do
+2010-06-08T12:01:00.000Z	Kamilion	nsh	try gvfs-mount --list to see what it reports it can deal with.
+2010-06-08T12:01:00.000Z	nsh		noted with thanks
+2010-06-08T12:02:00.000Z	Kamilion	nsh	and I just verified I can mount and unmount via a SSH login even without being logged into gnome on the console.
+2010-06-08T12:02:00.000Z	nsh	Kamilion	that's nice
+2010-06-08T12:03:00.000Z	Kamilion	nsh	so it seems to only rely on the proper libraries and infrastructure to be there -- not a whole running GUI session.

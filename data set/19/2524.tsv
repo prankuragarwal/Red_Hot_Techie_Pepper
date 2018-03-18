@@ -1,0 +1,19 @@
+2010-10-26T16:50:00.000Z	grid_		/dev/sda3 on /media/Data type ext4 (rw,nosuid,nodev,uhelper=udisks) i got, but i can't type cd /dev/sda3, what is wrong?
+2010-10-26T16:50:00.000Z	Dr_Willis	grid_	 you cd to the mountpoint NOT the device...
+2010-10-26T16:50:00.000Z	grid_	Dr_Willis	what would be the correct syntax?
+2010-10-26T16:52:00.000Z	Dr_Willis	grid_	 you cd /media/whatever   not cd /dev/ANYTHING
+2010-10-26T16:52:00.000Z	Dr_Willis	grid_	 you dont cd to '/dev' things...
+2010-10-26T18:08:00.000Z	Dr_Willis	grid_	 you could link /home/Username to /media/data/whatever   perhaps..
+2010-10-26T18:09:00.000Z	grid_	Dr_Willis	how would you do that?
+2010-10-26T18:09:00.000Z	Dr_Willis	grid_	 ive not done 1/5th the things you seem to have done with samba. :)
+2010-10-26T18:09:00.000Z	Dr_Willis	grid_	 ln -s /home/whatever  /media/whatever
+2010-10-26T18:09:00.000Z	Dr_Willis	grid_	 ive done that trick befor to move a single users 'home' to a spare hard drive so thtye had a lot of space.
+2010-10-26T18:11:00.000Z	grid_	Dr_Willis	i think ln -s /home/whatever /media/whatever has nothing with samba to do, but it will redirect the home to the other dir?
+2010-10-26T18:11:00.000Z	Dr_Willis	grid_	 yes it will. and it could be your user not being in the normal /home/ location is confuseing the samba 'homes' special share.
+2010-10-26T18:12:00.000Z	Dr_Willis	grid_	 i normally just use teh homes special share. :) so thats about the e4xtent of my samba-kunf-fu skills.
+2010-10-26T18:15:00.000Z	grid_	Dr_Willis	if you use ln -s /home/whatever /media/whatever ln -s, are the files hard stored at the /media/whatever dir ?
+2010-10-26T18:24:00.000Z	grid_	Dr_Willis	how do you undo this commando ln -s /home/whatever /media/whatever ? and if you undo it, the files are only left at the /media/whatever ?
+2010-10-26T18:25:00.000Z	grid_	Dr_Willis	and if you link them being root, does it take effect for every user?
+2010-10-26T18:51:00.000Z	Dr_Willis	grid_	  a soft link is a special kind of file. remove it like you do any other file.
+2010-10-26T18:52:00.000Z	grid_	Dr_Willis	wouldnt it be a hard link?
+2010-10-26T18:53:00.000Z	grid_	Dr_Willis	what would be the file in this case? ln -s /home/whatever /media/whatever

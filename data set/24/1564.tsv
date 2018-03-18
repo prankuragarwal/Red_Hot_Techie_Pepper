@@ -1,0 +1,24 @@
+2009-11-18T09:28:00.000Z	greezmunkey	mrplow	you dont have both connected now right?
+2009-11-18T09:28:00.000Z	mrplow		right, if I did I'd loose my wan connection
+2009-11-18T09:29:00.000Z	mrplow	greezmunkey	I'm still reading through the man pages but its hard, thanks for the help
+2009-11-18T09:31:00.000Z	greezmunkey	mrplow	to get a better picture, make the connection and run ip route, copy the result into a file for later reference, that way if you can't get it, you'll have the symptom nailed down for someone to suggest a fix!
+2009-11-18T09:33:00.000Z	greezmunkey	mrplow	my guess is that you are ending up with an erroneous default route, and that removing it will fix you problem. You may be able to add some scripting to make the fix permenant.
+2009-11-18T09:36:00.000Z	mrplow	greezmunkey	http://pastebin.com/m553bff7b
+2009-11-18T09:38:00.000Z	greezmunkey	mrplow	so that's what it looks like with both Ethernet cables connected?
+2009-11-18T09:40:00.000Z	mrplow	greezmunkey	yes the wan doesn't work but I can access my private lan
+2009-11-18T09:40:00.000Z	greezmunkey	mrplow	which eth is private 0, or 1 I just want to be sure.
+2009-11-18T09:40:00.000Z	mrplow	greezmunkey	I always have both connected but I usually disable the private wan with karmic's networkmanager applet
+2009-11-18T09:41:00.000Z	mrplow	greezmunkey	eth1 is private eth0 is my wan (router connected to cable modem)
+2009-11-18T09:41:00.000Z	greezmunkey	mrplow	that's what it looked like...brb
+2009-11-18T09:41:00.000Z	mrplow	greezmunkey	thx
+2009-11-18T09:45:00.000Z	greezmunkey	mrplow	you need to tell your box that it's ok to forward packets, that's all. http://paste.ubuntu.com/312698/
+2009-11-18T09:48:00.000Z	greezmunkey	mrplow	you may still have to edit your ip routes though.
+2009-11-18T09:49:00.000Z	mrplow	greezmunkey	I get permission denied with sudo echo 1 > /proc/sys/net/ipv4/ip_forward
+2009-11-18T09:50:00.000Z	mrplow	greezmunkey	this post looks like it might work http://ubuntuforums.org/showthread.php?t=183994 just need to switch eth0 and 1
+2009-11-18T09:53:00.000Z	greezmunkey	mrplow	permission denied? really, I didn't...mrplow that IS ICS internet connection sharing like I mentioned earlier! :)
+2009-11-18T09:54:00.000Z	greezmunkey	mrplow	yes it will work, its a bit tricky though. You better get good at bringing networking services up and down as well as interfaces first!
+2009-11-18T09:54:00.000Z	greezmunkey		Good Luck!
+2009-11-18T09:54:00.000Z	mrplow	greezmunkey	figured out the forwarding, I think I'll get it now
+2009-11-18T09:55:00.000Z	greezmunkey	mrplow	go ahead on WYBS
+2009-11-18T10:00:00.000Z	mrplow	greezmunkey	WYBS?
+2009-11-18T10:04:00.000Z	mrplow	greezmunkey	arg the instructions on that ubuntuforums.org link didn't help

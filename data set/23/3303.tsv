@@ -1,0 +1,23 @@
+2008-05-19T06:33:00.000Z	pgi1		Hey everyone. I don't actually use Ubuntu, but I'm trying to help my brother.  I've searched for upgrades and everything: but in Synaptic the latest version of Qt available is 4.1.2.  Any ideas why 4.3.x is not available? thanks
+2008-05-19T06:34:00.000Z	Flannel	pgi1	4.3 is available in Hardy
+2008-05-19T06:35:00.000Z	pgi1	Flannel	ok
+2008-05-26T04:04:00.000Z	Flannel	pgi1	It should be.  Pastebin your sources.list
+2008-05-26T04:05:00.000Z	pgi1	Flannel	http://rafb.net/p/kuE2w165.html
+2008-05-26T04:06:00.000Z	Flannel	pgi1	that looks normal enough.  do you get errors with 'sudo apt-get update'?
+2008-05-26T04:07:00.000Z	pgi1	Flannel	no errors
+2008-05-26T04:07:00.000Z	Flannel	pgi1	`sudo apt-get install build-essential` won't install it though?
+2008-05-26T04:11:00.000Z	pgi1	Flannel	sorry about that, lost internet
+2008-05-26T04:11:00.000Z	Flannel	pgi1	`sudo apt-get install build-essential` won't install it though?
+2008-05-26T04:29:00.000Z	Flannel	pgi1	dpkg -S g++
+2008-05-26T04:29:00.000Z	Flannel	pgi1	Again, does build-essential install?
+2008-05-26T04:30:00.000Z	Flannel	pgi1	`sudo apt-get install build-essential`  what does it tell you?
+2008-05-26T04:30:00.000Z	pgi1	Flannel	I guess you missed my response - I said it says that build-essential is already installed and up-to-date
+2008-05-26T04:31:00.000Z	Flannel	pgi1	and `apt-cache policy gcc` or `apt-cache policy g++` shows that its installed and all that good stuff, right?
+2008-05-26T04:33:00.000Z	Flannel	pgi1	It should, since you have it installed from b-e, `apt-cache policy g++` shows its installed, yes?
+2008-05-26T04:34:00.000Z	pgi1	Flannel	﻿apt-cache policy g++ shows it installed - yes
+2008-05-26T05:01:00.000Z	pgi1	Flannel	i tried doing as you said - Installed gcc and g++ 4.1, then I did export CXX=/usr/bin/g++-4.1, but now I get this error:﻿ http://rafb.net/p/V5Iv3923.html
+2008-05-26T05:02:00.000Z	Flannel	pgi1	try rmoving the -4.2 ones (with --purge, or "complete removal" in synaptic)
+2008-05-26T05:03:00.000Z	Flannel	pgi1	apt-get remove --purge gcc-4.2 gcc-4.2-base g++-4.2
+2008-05-26T05:06:00.000Z	pgi1	Flannel	can I just ignore this: http://rafb.net/p/TX79kA95.html
+2008-05-26T05:10:00.000Z	pgi1	Flannel	had to remove ﻿﻿gcc-base from the list of removals.  gcc-4.1 and g++-4.1 are deleted - yay. I closed the shell and reopened (to update the environment) but now g++ doesn't exist, do I need to manually create the symlinks?
+2008-05-26T05:13:00.000Z	Flannel	pgi1	reinstall build-essential, remove the -4.1 packages. That's what you should have if you install build-essential, so we'll go with that.  We'll try and figure out the original errors, since we're starting to stray from regular systems.

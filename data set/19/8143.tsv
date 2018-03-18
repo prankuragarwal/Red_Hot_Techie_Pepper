@@ -1,0 +1,19 @@
+2009-05-23T03:32:00.000Z	tbird02		Hi, i need some help with a USB hard drive - it mounts as read only...
+2009-05-23T03:32:00.000Z	Gnea	tbird02	using what fs?
+2009-05-23T03:32:00.000Z	Gnea	tbird02	why not ntfs or ext3?
+2009-05-23T03:33:00.000Z	Gnea	tbird02	df -Th
+2009-05-23T03:34:00.000Z	Gnea	tbird02	it does? where are you typing this?
+2009-05-23T03:34:00.000Z	Gnea	tbird02	and you typed it exactly?  df -Th  it has to be df, followed by a space, then - a capital 'T' and a lowercase 'h'
+2009-05-23T03:36:00.000Z	Gnea	tbird02	please keep the chat here
+2009-05-23T03:37:00.000Z	Gnea	tbird02	hrm, fat32 wouldn't be using the fuse block device... it would be using vfat
+2009-05-23T03:37:00.000Z	Gnea	tbird02	looks more like ntfs to me
+2009-05-23T03:38:00.000Z	Gnea	tbird02	can you pastebin the output of the dmesg command please?
+2009-05-23T03:43:00.000Z	Gnea	tbird02	odd... could I please ask you to pastebin the output of this command as well:  sudo fdisk -l /dev/sdb
+2009-05-23T03:46:00.000Z	Gnea	tbird02	well, that says it's using 7, which is the NTFS disk label, so it must be NTFS.  give this a shot:  sudo umount /media/Backup && sudo ntfsfix /dev/sdb1
+2009-05-23T03:52:00.000Z	Gnea	tbird02	please pastebin that
+2009-05-23T03:53:00.000Z	Gnea	tbird02	looks good, now run it again :)
+2009-05-23T03:53:00.000Z	Gnea	tbird02	sudo ntfsfix /dev/sdb1
+2009-05-23T03:54:00.000Z	Gnea	tbird02	it should say that it mounted correctly and that there are no errors
+2009-05-23T03:54:00.000Z	Gnea	tbird02	I see. see if you can write to it now
+2009-05-23T03:58:00.000Z	Gnea	tbird02	over USB? yeah.
+2009-05-23T03:59:00.000Z	Gnea	tbird02	yes.

@@ -1,0 +1,18 @@
+2010-03-27T19:45:00.000Z	asti		I am having difficulty (speed problems) with both mdadm-raid5 and zfs-fuse/raidz when trying to create an array using a new ubuntu 9.10 install and 5x 1.5TB WD EARS drives. The speed of the mdadm array when building is limited to ~20MB/s and the speed of the zfs array when copying files seems to be 13-15MB/s max.
+2010-03-27T19:47:00.000Z	erUSUL	asti	well for a fuse filesystem that's not surprising. it is all doner in userspace after all
+2010-03-27T19:47:00.000Z	erUSUL	asti	abot the array buiding a really dunno
+2010-03-27T19:48:00.000Z	asti	erUSUL	I thought it'd be slow but not that slow. New machine with amd x4 925
+2010-03-27T19:48:00.000Z	asti	erUSUL	and 4gb ram free
+2010-03-27T19:48:00.000Z	asti	erUSUL	however I had thought that mdadm would be faster. 5 drives in raid 5 should still give more than 20MB/s
+2010-03-27T19:49:00.000Z	erUSUL	asti	that raid assemble speed ? or actual file copying test speed?
+2010-03-27T19:49:00.000Z	asti	erUSUL	Raid assembly I think, initialization
+2010-03-27T19:50:00.000Z	erUSUL	asti	also raid performance is sesible to what they call aligment issues. you have to create the paritions on the disk wll aligned and set stripe size aligned too to get maximun performance. i will see if i can get something out of google
+2010-03-27T19:51:00.000Z	erUSUL	asti	here http://honglus.blogspot.com/2009/08/align-partitions-on-stripe-boundary-for.html
+2010-03-27T19:51:00.000Z	asti	erUSUL	I looked at the 63 sector alignment issue with the new WD EARS drives with 4kb sectors, but i'm not sure how to tackle it in mdadm
+2010-03-27T19:52:00.000Z	asti	erUSUL	However sector alignment should not come into play for ZFS from my understanding
+2010-03-27T19:52:00.000Z	erUSUL	asti	you have to align with fdisk expert mode or something like that. so this WD are that new HD with 4kb sector sizes ?
+2010-03-27T19:52:00.000Z	asti	erUSUL	Could be wrong
+2010-03-27T19:53:00.000Z	erUSUL	asti	if so lookie here https://ata.wiki.kernel.org/index.php/ATA_4_KiB_sector_issues
+2010-03-27T19:54:00.000Z	erUSUL	asti	maybe you need newr fdisk or something like that
+2010-03-27T19:55:00.000Z	asti	erUSUL	I'll look into it, thanks. Might have to redo the mdadm attempt.
+2010-03-27T19:56:00.000Z	erUSUL	asti	good luck also make a trip to #ubuntu-server maybe there is more people familiar with large RAID there

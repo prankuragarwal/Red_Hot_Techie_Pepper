@@ -1,0 +1,21 @@
+2008-01-06T02:13:00.000Z	chuy		So, I have an IDE with ubuntu loaded on it, and a SATA with Windows. I got Ubuntu to mount the Windows drive, and i added it as (hd1,0) in my menu.lst, but I can't get GRUB to load it correctly. Not to mention, I can't get GRUB to interact graphically after loading gfxboot. The hell?
+2008-01-06T02:13:00.000Z	toni_	chuy	 where is grub installed?
+2008-01-06T02:14:00.000Z	chuy	toni_	/boot
+2008-01-06T02:15:00.000Z	toni_	chuy	 i suppose....but i dunno how the sata works...
+2008-01-06T02:15:00.000Z	chuy	toni_	The IDE is the master, and it is installed on the IDE
+2008-01-06T02:15:00.000Z	toni_	chuy	ok so it's really strange
+2008-01-06T02:15:00.000Z	toni_	chuy	 the boot sequence in bios is correct?
+2008-01-06T02:16:00.000Z	chuy	toni_	Yes, the sequence in the bios is correct. Get this, when I start the comp up, instead of running straight to the Grub boot menu, I have to press Esc to view the non graphical menu.
+2008-01-06T02:17:00.000Z	toni_	chuy	ok, now i got it!
+2008-01-06T02:17:00.000Z	toni_	chuy	so with an text editor open the /boot/grub/menu.list
+2008-01-06T02:18:00.000Z	chuy	toni_	HEre: http://pastebin.com/m70d9305a
+2008-01-06T02:19:00.000Z	toni_	chuy	perfect on line 25 there is hiddenmenu..comment it and save the file :)
+2008-01-06T02:20:00.000Z	chuy	toni_	like this: "# hiddenmenu"?
+2008-01-06T02:21:00.000Z	toni_	chuy	yes. it should appear now
+2008-01-06T02:21:00.000Z	chuy	toni_	Why won't the SATA (Windows) drive loead?
+2008-01-06T02:22:00.000Z	toni_	chuy	 you should add it in the menu, but i have no experience with sata at boot...
+2008-01-06T02:23:00.000Z	chuy	toni_	Look at like 118 http://pastebin.com/m70d9305a
+2008-01-06T02:24:00.000Z	toni_	chuy	 is saw..it's correct but i don't know if hd is ok also for sata...
+2008-01-06T02:26:00.000Z	chuy	toni_	I did cat /boot/grub/device.map in terminal, and got this:
+2008-01-06T02:26:00.000Z	toni_	chuy	 so is correct
+2008-01-06T03:34:00.000Z	toni_	chuy	 did you solved?

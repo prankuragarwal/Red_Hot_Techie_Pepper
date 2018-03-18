@@ -1,0 +1,21 @@
+2007-03-06T16:44:00.000Z	Slike		as soon as i install and configure xserver-xorg on a server here and i start it my screen goes blank. accessing other vty's doesn't work either. even rebooting (regardless the runlevel) results in a blank screen when xserver is installed
+2007-03-06T16:44:00.000Z	Slike		any ideas what may be wrong?
+2007-03-06T16:44:00.000Z	gyaresu	Slike	Can you get to one of the other terminals (CTRLALT+F2)?
+2007-03-06T16:45:00.000Z	Slike	gyaresu	no, they're all blank
+2007-03-06T16:46:00.000Z	gyaresu	Slike	Can you start in recovery mode (single user) and check out the /var/log/Xorg.log ?
+2007-03-06T16:47:00.000Z	Slike	gyaresu	i can
+2007-03-06T16:47:00.000Z	Slike	gyaresu	should i paste the contents somewhere? (+suggestions where)
+2007-03-06T16:50:00.000Z	Slike	gyaresu	http://paste.ubuntu-nl.org/8913/ contains a dump of the log
+2007-03-06T16:52:00.000Z	gyaresu	Slike	Checking now...
+2007-03-06T16:53:00.000Z	gyaresu	Slike	What did you follow to get your radeon installed?
+2007-03-06T16:54:00.000Z	Slike	gyaresu	i installed the xserver-xorg package (+xfonts packages and xdm), then i performed a dpkg-reconfigure xserver-xorg
+2007-03-06T16:54:00.000Z	Slike	gyaresu	it automatically discovered and identified the ati card
+2007-03-06T16:57:00.000Z	gyaresu	Slike	Any chance you wanna install the accelerated ati drivers?
+2007-03-06T16:59:00.000Z	Slike	gyaresu	you mean i should install the provided fglrx package?
+2007-03-06T16:59:00.000Z	gyaresu	Slike	Sorry I only buy nvidia.
+2007-03-06T17:00:00.000Z	Slike	gyaresu	i'm quite confident with that, but why is that xserver on all the vty's, and why does it even start when booting runlevel 2?
+2007-03-06T17:01:00.000Z	gyaresu	Slike	runlevel 2 is the default. Apparently that's how it's done around here. Weird I know. Which distro are you from?
+2007-03-06T17:02:00.000Z	Slike	gyaresu	i'm using ubuntu server 6.06 on that machine, i use to work with suse or ubuntu. i thought runlevel 5 is the only runlevel that allows x server
+2007-03-06T17:03:00.000Z	gyaresu	Slike	Depends where one puts one init scripts...
+2007-03-06T17:03:00.000Z	gyaresu	Slike	np.
+2007-03-06T17:17:00.000Z	Slike	gyaresu	i got further now, this time xserver attempts to start but fails, saying "no screens found"

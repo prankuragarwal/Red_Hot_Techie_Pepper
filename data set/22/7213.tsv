@@ -1,0 +1,22 @@
+2006-05-15T14:58:00.000Z	Drake`		I am assuming that /etc/pmount.allow has to have each user who you want to be able to mount cdrom from nautilus? Is pmount only used in nautilus?
+2006-05-15T14:59:00.000Z	pitti	Drake`	no, /etc/pmount.allow contains additional devices normal users shold be allowed to mount
+2006-05-15T14:59:00.000Z	pitti	Drake`	you do not want to change it unless you know very well what you are doing
+2006-05-15T15:00:00.000Z	Drake`	pitti	my problem is that I can mount cdroms from the command line but get an error "Can't execute pmount" when I try to mount the same cdrom from nautilus
+2006-05-15T15:01:00.000Z	pitti	Drake`	you are not in the 'plugdev' group then (the default user is)
+2006-05-15T15:02:00.000Z	pitti	Drake`	this is also on my list of bugs: https://launchpad.net/distros/ubuntu/+source/pmount/+bug/33232
+2006-05-15T15:03:00.000Z	Drake`	pitti	ok that is helpful...why would nothing be in the pmount.allow file?
+2006-05-15T15:05:00.000Z	pitti	Drake`	man pmount :)  pmount already allows users to mount all removable devices
+2006-05-15T15:08:00.000Z	Drake`	pitti	I addes myself to plugdev and still unable to mount and gives the same "Can't execute pmount"
+2006-05-15T15:14:00.000Z	Drake`	pitti	were you able to solve that by just adding the users to plugdev group?
+2006-05-15T15:20:00.000Z	pitti	Drake`	you have to log out and back in to make the group addition become effective
+2006-05-15T15:24:00.000Z	Drake`	pitti	were you able to solve mounting by adding users to plugdev group?
+2006-05-15T15:25:00.000Z	pitti	Drake`	yes, of course
+2006-05-15T15:25:00.000Z	pitti	Drake`	(I'm pmount upstream and Debian/Ubuntu maintainer :) )
+2006-05-15T15:25:00.000Z	Drake`		pittit: I added myself to plugdev and still unable to mount and umount from nautilus
+2006-05-15T15:25:00.000Z	pitti	Drake`	even after logging out and in?
+2006-05-15T15:26:00.000Z	pitti	Drake`	what does 'pmount /cdrom' say?
+2006-05-15T15:26:00.000Z	Drake`	pitti	will try again
+2006-05-15T15:27:00.000Z	Drake`		should all users be added to plugdev by default when adding users?
+2006-05-15T15:31:00.000Z	Drake`	pitti	it worked after logging in and out the second time...should all users be added to plugdev by default of adduser?
+2006-05-15T15:33:00.000Z	pitti	Drake`	no, adduser doesn't do that; the GUI tool does, though (that's what normal users are supposed to find first ;) )
+2006-05-15T15:34:00.000Z	Drake`	pitti	lol well "normal" is a subjective term...thanks a lot for point out the issue though

@@ -1,0 +1,24 @@
+2005-12-17T17:04:00.000Z	mephis1987		i have been loged out for a wile
+2005-12-17T17:05:00.000Z	mephis1987		i have problem with make command
+2005-12-17T17:05:00.000Z	mephis1987		http://paste.ubuntu-nl.org/5634
+2005-12-17T17:06:00.000Z	mephis1987		anyone else?
+2005-12-17T17:06:00.000Z	mephis1987		can help me
+2005-12-17T17:07:00.000Z	mephis1987		http://paste.ubuntu-nl.org/5634
+2005-12-17T17:07:00.000Z	mephis1987		i have problem with make command when installing a software
+2005-12-17T17:07:00.000Z	mephis1987		oh
+2005-12-17T17:08:00.000Z	mephis1987		everything runs fine until make command
+2005-12-17T17:08:00.000Z	mephis1987		and sudo make install
+2005-12-17T17:08:00.000Z	sethk	mephis1987	looks like the X dev files are not installed
+2005-12-17T17:09:00.000Z	sethk	mephis1987	the missing file (X.h) will be there when you install X development
+2005-12-17T17:11:00.000Z	sethk	mephis1987	you can add a link of /usr/include/X11 to /usr/X11/include
+2005-12-17T17:11:00.000Z	sethk	mephis1987	sorry, I was wrong about the file location, I was looking at an older machine.  The ubuntu (xorg) location is indeed /usr/include/X11
+2005-12-17T17:12:00.000Z	sethk	mephis1987	a link is an alias for a file or a directory
+2005-12-17T17:12:00.000Z	sethk	mephis1987	your software is looking for /usr/X11/include/X.h, but your machine has /usr/include/X11/X.h
+2005-12-17T17:12:00.000Z	sethk	mephis1987	so if you do this:  sudo ln -s /usr/include/X11 /usr/X11/include, the file will be found by make
+2005-12-17T17:13:00.000Z	sethk	mephis1987	add, not change
+2005-12-17T17:13:00.000Z	sethk	mephis1987	you leave everything as it is so you don't screw up all the programs that are correctly configured.  :)
+2005-12-17T17:13:00.000Z	sethk	mephis1987	but adding a link is safe
+2005-12-17T17:14:00.000Z	sethk	mephis1987	right, then try it.  You may simply get a different error, but it is definitely worth a try.
+2005-12-17T17:15:00.000Z	sethk	mephis1987	in that case you probably do need to install the X dev files
+2005-12-17T17:16:00.000Z	sethk	mephis1987	if that's the case, the software may well be smart enough to find the file in the correct place
+2005-12-17T17:16:00.000Z	sethk	mephis1987	right.  install X dev support and try your build again.  Then if it is still failing, and /usr/include/X11/X.h exists, we go back to the link

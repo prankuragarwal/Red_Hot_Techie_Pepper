@@ -1,0 +1,24 @@
+2005-06-18T09:38:00.000Z	Ng	anirz_	apt is configured to use the CD by default, you can disable it in synaptic's repositories config, or comment out the first line in /etc/apt/sources.list
+2005-06-18T09:40:00.000Z	Ng	anirz_	put a # in front of the whole line
+2005-06-18T09:41:00.000Z	Ng	anirz_	you'll need to tell synaptic to reload the package lists, or run "sudo apt-get update", then it won't ask for the CD again
+2005-06-18T10:12:00.000Z	Ng	anirz_	do you know which partition it is you want to mount?
+2005-06-18T10:13:00.000Z	Ng	anirz_	ok, have you made a mount point for it?
+2005-06-18T10:14:00.000Z	Ng	anirz_	I'm just trying to find out where abouts it is that its failing, if you ahve any error messages that would be helpful ;)
+2005-06-18T10:15:00.000Z	Ng	anirz_	fd0 is floppy
+2005-06-18T10:15:00.000Z	Ng	anirz_	hd means hard disk (IDE usually)
+2005-06-18T10:16:00.000Z	Ng	anirz_	if you run "sudo fdisk -l" in a terminal it will list all partitions on all hard disks in your system
+2005-06-18T10:16:00.000Z	anirz_	Ng	so 'D" should be hda2 right?
+2005-06-18T10:17:00.000Z	Ng	anirz_	maybe, run the fdisk command I pasted above, it will show you the FAT partition and the start of the line will tell you which /dev/ entry to use
+2005-06-18T10:17:00.000Z	anirz_	Ng	i have 1 NTFS 3 FAT 1 Swap and 1 ext3 partition
+2005-06-18T10:17:00.000Z	Ng	anirz_	ok, D should be the lowest numbered of the FAT partitions I would think
+2005-06-18T10:19:00.000Z	Ng	anirz_	"sudo mkdir /mnt/fatdrive" will make a mount point for it, then try "mount -t vfat /dev/hdNX /mnt/fatdrive" (replace hdNX with hda2 or whatever it was the fdisk output said), if it doesn't work, tell me the error and run "tail /var/log/syslog" and see if there are any errors in there
+2005-06-18T10:19:00.000Z	Ng	anirz_	if it works then you can turn it into a line in /etc/fstab and it will be mounted every time you boot
+2005-06-18T10:25:00.000Z	Ng	anirz_	those look ok, assuming hda5 and 6 are the correct partitions
+2005-06-18T10:26:00.000Z	anirz_	Ng	hda5 is mounting but not hda6..
+2005-06-18T10:27:00.000Z	Ng	anirz_	"sudo tail /var/log/syslog" - any obvious errors in there?
+2005-06-18T10:27:00.000Z	Ng	anirz_	ok :)
+2005-06-18T10:27:00.000Z	Ng	anirz_	np :)
+2005-06-18T10:28:00.000Z	anirz_	Ng	why i am not getting soung in XMMS>
+2005-06-18T10:29:00.000Z	Ng	anirz_	I'm not sure about sound stuff, I have a card that does a lot of stuff for ubuntu, but I think you might want to install/use the esound output plugin for xmms
+2005-06-18T10:30:00.000Z	Ng	anirz_	others may know better though
+2005-06-18T10:30:00.000Z	Ng	anirz_	at least try the oss, alsa and esound/esd output plugins :)

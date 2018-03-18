@@ -1,0 +1,18 @@
+2009-05-26T14:02:00.000Z	mufasis		ty aw
+2009-05-26T14:02:00.000Z	mufasis		to isntall a debian package in ubuntu you do sudo dpkg -i <name of pkg> right?
+2009-05-26T14:04:00.000Z	mufasis		no i was just curious what that ment im not going to do it
+2009-05-26T14:04:00.000Z	mufasis		if i have a package that ends in .deb i install using dpkg -i name.deb right?
+2009-05-26T14:06:00.000Z	mufasis		i ment how do i install debian package from cli
+2009-05-26T14:07:00.000Z	Chousuke	mufasis	dpkg -i foo.deb
+2009-05-26T14:07:00.000Z	Chousuke	mufasis	but usually you should use aptitude instead of installing debs manually
+2009-05-26T14:09:00.000Z	Chousuke	mufasis	no.
+2009-05-26T14:11:00.000Z	Chousuke	mufasis	yeah. providing you have all the dependencies installed
+2009-05-26T14:12:00.000Z	Chousuke	mufasis	on a server install, I don't think it automounts
+2009-05-26T14:14:00.000Z	Chousuke	mufasis	using the "mount" utility
+2009-05-26T14:16:00.000Z	Chousuke	mufasis	when you plug in the key, run "dmesg"; you should see a message about the usb key somewhere
+2009-05-26T14:16:00.000Z	Chousuke	mufasis	(somewhere near the end that is)
+2009-05-26T14:16:00.000Z	Chousuke	mufasis	in that message, there should be "sda" or "sdb" or something like that; it tells you what name the device has been given.
+2009-05-26T14:17:00.000Z	Chousuke	mufasis	then you will need to mount some partition from that device. they're numbered, and usually you want the first one, so it's sda1 or sdb1 or something
+2009-05-26T14:18:00.000Z	Chousuke	mufasis	then: sudo mount /dev/sda1 -t vfat /directory/to/mount/to
+2009-05-26T14:19:00.000Z	Chousuke	mufasis	-t vfat just specifies the filesystem, it can be sometimes autodetected, so your command works too
+2009-05-26T14:19:00.000Z	Chousuke	mufasis	yes

@@ -1,0 +1,18 @@
+2011-09-16T22:55:00.000Z	escott	dob_	moving into lvm could cause more problems than it solves, esp. if your initrd doesnt support lvm
+2011-09-16T22:55:00.000Z	dob_	escott	Can i add support for lvm to my system?
+2011-09-16T22:56:00.000Z	escott	dob_	if you have sda4 as extended containing sda5,6,7,8,9,10,11 just delete 5-10, and grow 11 to fill sda4
+2011-09-16T22:57:00.000Z	escott	dob_	the grow will take a long time, but its the simplest change
+2011-09-16T22:57:00.000Z	dob_	escott	my primary goal was to use lvm :-)
+2011-09-16T22:58:00.000Z	escott	dob_	just be aware that your bootloader must be able to find the initrd (not sure grub can understand lvm) and that your initrd must be able to load the lvm modules or they must be built in. I don't know if that is standard with ubuntu desktop
+2011-09-16T22:59:00.000Z	dob_	escott	thank u, i will try it ...
+2011-09-16T23:00:00.000Z	escott	dob_	generally putting things like a system root or a boot partition on lvm is not the right approach. you want your data that does vary like your music or your /var partitions on lvm
+2011-09-17T00:49:00.000Z	escott	dob_	copying a mounted partition like that is a bit risky, as the underlying contents could be changing. best to copy it from a livecd
+2011-09-17T00:50:00.000Z	escott	dob_	if you can convert to raid mirroring you could add a mirror device
+2011-09-17T00:51:00.000Z	escott	dob_	but i think to go to raid you need to be modify partition types so i think you still need a livecd
+2011-09-17T00:52:00.000Z	escott	dob_	don't follow Polah's instructions. those are not safe for a mounted partition (unless it is mounted ro)
+2011-09-17T00:52:00.000Z	dob_	escott	yes, dd will fail...
+2011-09-17T00:53:00.000Z	escott	dob_	you could try to init down to single user mode or boot to only initrd... and then it would be mounted ro
+2011-09-17T00:53:00.000Z	dob_	escott	think that's a good idea. I will try that
+2011-09-17T00:54:00.000Z	dob_	escott	Can i copy stuff like /dev or should i ignore dev proc etc and then just create empty folders?
+2011-09-17T00:55:00.000Z	escott	dob_	you would ignore stuff like /dev, but the other thing you have to realize is that a dd of the system root is not a working system. its a dd. you have to go in and fix-up stuff in fstab and potentially elsewhere
+2011-09-17T00:56:00.000Z	escott	dob_	if you just dd the partition device you wouldn't get dev anyways

@@ -1,0 +1,24 @@
+2011-06-14T08:41:00.000Z	seraphimblade		Ubuntu is not only for newbies. And I work with several sysadmins and programmers who use Ubuntu, GUI and all.
+2011-06-14T08:43:00.000Z	seraphimblade		So, I'd like to get some opinions on this, if possible.
+2011-06-14T08:45:00.000Z	seraphimblade		Unfortunately I can't get online from the affected machine, since eth0 is not being detected at all after a recent power outage/reboot. It's an onboard Ethernet card on an ASUS M3N78
+2011-06-14T08:46:00.000Z	seraphimblade		I'm at rather a loss here. It was showing up perfectly before the system lost power. Rebooted it, and dead nothing, not in dmesg, no nothing. I only show lo in ipconfig.
+2011-06-14T08:47:00.000Z	rationalOgre	seraphimblade	sudo lshw -C network ?
+2011-06-14T08:50:00.000Z	seraphimblade	rationalOgre	I get no results on stdout, just stderr scrolling by. Trying to pipe stderr to a file stops the flashing text, but results in an empty file. The only thing that stops long enough to read is PCI (sysfs)
+2011-06-14T08:50:00.000Z	rationalOgre	seraphimblade	You have to wait for lshw to finish running to get the output
+2011-06-14T08:51:00.000Z	rationalOgre	seraphimblade	sudo lshw -C network > network.txt
+2011-06-14T08:52:00.000Z	rationalOgre	seraphimblade	Then that means that it's not even seeing a network device on your system.
+2011-06-14T08:52:00.000Z	seraphimblade	rationalOgre	Yes, that is correct. ifconfig shows only lo.
+2011-06-14T08:52:00.000Z	rationalOgre	seraphimblade	Which means the power outage probably killed the card.
+2011-06-14T08:53:00.000Z	rationalOgre	seraphimblade	Try shutting down, reinstalling the card and see if it comes back up.
+2011-06-14T08:53:00.000Z	seraphimblade	rationalOgre	It's onboard on the motherboard, you figure it killed only the NIC?
+2011-06-14T08:53:00.000Z	rationalOgre	seraphimblade	It may have a static charge on it.
+2011-06-14T08:53:00.000Z	rationalOgre	seraphimblade	It can happen, especially if you got a power surge through the ethernet line.
+2011-06-14T08:53:00.000Z	rationalOgre	seraphimblade	Doublecheck the BIOS and make sure it's not disabled there.
+2011-06-14T08:54:00.000Z	seraphimblade	rationalOgre	Well, worth a shot. I'll check in the BIOS, I can also pull a PCI NIC out of another machine to test with.
+2011-06-14T08:54:00.000Z	rationalOgre	seraphimblade	If it's not disabled in the bios then chances are it's dead.
+2011-06-14T08:55:00.000Z	rationalOgre	seraphimblade	The ethernet cable runs through the ups?
+2011-06-14T08:55:00.000Z	seraphimblade	rationalOgre	Yes, it does, the UPS has an in/out Ethernet that runs to the router, and then an Ethernet from the router to my machine. The router's power cord is also plugged into the UPS.
+2011-06-14T08:57:00.000Z	rationalOgre	seraphimblade	Best of luck to you sir. Perhaps it was just it's time to "die".
+2011-06-14T08:59:00.000Z	rationalOgre	seraphimblade	if the battery is dead then it may be running in passthrough mode, meaning it's essentially a surge protector.
+2011-06-14T10:11:00.000Z	seraphimblade	rationalOgre	I think you were right, and it won't recognize anything. Even trying with a PCI card from another machine and a live CD, it won't recognize a thing.
+2011-06-14T10:12:00.000Z	rationalOgre	seraphimblade	Sounds like your mobo got nuked sir, so very sorry.

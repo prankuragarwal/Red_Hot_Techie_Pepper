@@ -1,0 +1,22 @@
+2012-05-28T01:45:00.000Z	jane_wayne78		can someone explain xen + ubuntu to me? xen is a type 1 hypervisor, so it sits on the hardware directly, and acts like an operating system itself, yet, i have to install ubuntu, then install xen, so doesn't this mean xen sits on ubuntu and not directly on the hardware?
+2012-05-28T01:47:00.000Z	escott	jane_wayne78	i think xen has some notion of a priviledged guest. think of it as a admin guest who can "sudo" and make the hypervisor do things (like allocate for a new guest)
+2012-05-28T01:48:00.000Z	jane_wayne78		so is xen a type 1 hypervisor or not?
+2012-05-28T01:49:00.000Z	jane_wayne78		or is it that we are using ubuntu to bootstrap installing xen and then on the next reboot just running xen?
+2012-05-28T01:50:00.000Z	escott	jane_wayne78	In Xen systems the Xen hypervisor is the lowest and most privileged software layer.[2] This layer supports one or more guest operating systems, scheduled on the physical CPUs. The first guest operating system, called in Xen terminology domain 0 (dom0) is executed automatically when the hypervisor boots and receives special management privileges and direct access to all physical hardware by default. The system administrator
+2012-05-28T01:50:00.000Z	escott		can log into dom0 in order to manage any additional guest operating systems, called user domains (domU) in Xen terminology.
+2012-05-28T01:50:00.000Z	jane_wayne78	escott	so dom0 = ubuntu ?
+2012-05-28T01:51:00.000Z	escott	jane_wayne78	presumably
+2012-05-28T01:51:00.000Z	jane_wayne78	escott	because if i installed xen then ubuntu, i can see what you're saying, but i'm installing ubuntu then xen..
+2012-05-28T01:52:00.000Z	escott	jane_wayne78	but you need something to install xen. xen can talk to the hardware, but it doesnt have any userspace tools to allow you to control the hardware. without dom0 it will boot and just sit there
+2012-05-28T01:52:00.000Z	jane_wayne78	escott	when i do a hard reboot on my physical computer, what am i booting back into? xen or ubuntu?
+2012-05-28T01:52:00.000Z	escott	jane_wayne78	technically both
+2012-05-28T01:53:00.000Z	jane_wayne78	escott	so that means i boot back into xen, and somehow, i log into ubuntu = dom0 to do my manipulations?
+2012-05-28T01:53:00.000Z	jane_wayne78		wow, that's confusing, i'm not even sure how i would explain that in writing
+2012-05-28T01:53:00.000Z	jane_wayne78		(i'm making my own wiki for self-cosumption)
+2012-05-28T01:54:00.000Z	escott	jane_wayne78	think of xen like the kernel and dom0 like the initrd+root filesystem . sure you can boot a kernel but thats not very useful. you need that userspace to be able to do anything
+2012-05-28T01:55:00.000Z	jane_wayne78	escott	thanks.. after ubuntu + xen is installed, then it seems easy to explain, but the fact that ubuntu is installed first and xen second, and then reading documents that xen sits on the hardware layer doesn't make sense
+2012-05-28T01:56:00.000Z	escott	jane_wayne78	well xen doesn't have an installer. so you install ubuntu, and then you install xen and use ubuntu to set xen up as the hypervisor and also configure the current ubuntu as dom0, then the next time you reboot xen starts and brings up dom0
+2012-05-28T01:56:00.000Z	jane_wayne78	escott	if u installed ubuntu, then matlab (in this order), you wouldn't say, matlab sits on the hardware, it actually sits on ubuntu which then sits on hardware, i guess i'm trying to make such an analogy and it's confusing me
+2012-05-28T01:56:00.000Z	escott	jane_wayne78	im just guessing since i've never used xen, but that would make sense to me
+2012-05-28T01:56:00.000Z	jane_wayne78	escott	that is super clear now.. so ubuntu is used to bootstrap the installation and then ultimately becomes dom0
+2012-05-28T01:57:00.000Z	jane_wayne78	escott	with kvm, a type 2 hypervisor, the explanation is more intuitive

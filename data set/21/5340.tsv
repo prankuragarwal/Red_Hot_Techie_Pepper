@@ -1,0 +1,21 @@
+2007-11-03T10:12:00.000Z	spitFIRE	guru	lgc is trying to move a windows INSTALLATION!
+2007-11-03T10:12:00.000Z	guru	spitFIRE	i know and gparted is perfectly capable of doing that
+2007-11-03T10:13:00.000Z	spitFIRE	guru	hey is it??? thanks for letting me know that! never knew that
+2007-11-03T10:13:00.000Z	guru	spitFIRE	a windows installation is nothing more than data written to a partition, just like any other os install
+2007-11-03T10:14:00.000Z	spitFIRE	guru	correct me if I'm wrong, then even a basic command like DD should also help one to move the data right? but seems that's what lgc did already!!!
+2007-11-03T10:15:00.000Z	guru	spitFIRE	yes and no. dd will copy the raw sectors but unless you know what you are doing you'll most likely miss the boot sector
+2007-11-03T10:16:00.000Z	spitFIRE	guru	if DD copies the raw sectors then IMHO it should do the job regardless of the partition
+2007-11-03T10:16:00.000Z	spitFIRE	guru	then lgc wouldn't have any trouble at all!!!
+2007-11-03T10:17:00.000Z	spitFIRE	guru	cos' once you have copied then all you had to do was to chainload the windows loader from GRUB
+2007-11-03T10:17:00.000Z	guru	spitFIRE	the partition isn't the problem. what would happen if you copied the entire disk (say it was 20gb) onto a 120gb disk?
+2007-11-03T10:17:00.000Z	spitFIRE	guru	don't know :(
+2007-11-03T10:18:00.000Z	spitFIRE	guru	I guess I see your point!
+2007-11-03T10:18:00.000Z	spitFIRE	guru	thx
+2007-11-03T10:19:00.000Z	spitFIRE	guru	just one more clarification - what would dd actually do when copying from a smaller partition to a larger one?
+2007-11-03T10:20:00.000Z	guru	spitFIRE	exactly that. you wouldn't be able to utilize the remaining space on the new drive because you would overwrite the partition table
+2007-11-03T10:20:00.000Z	spitFIRE	guru	hmmm... the rest of the space along with the drive you wrote to using DD would become unusable I guess, right?
+2007-11-03T10:21:00.000Z	guru	spitFIRE	a drive is structured as [0-512]: boot ; [513-????]: partition table ; [????-end of drive]: partitions
+2007-11-03T10:22:00.000Z	guru	spitFIRE	browse around the intel specs related to hard drives, it's quite informative
+2007-11-03T10:22:00.000Z	spitFIRE	guru	thx
+2007-11-03T10:24:00.000Z	spitFIRE	guru	hey looking at what you have written say if I'm copying a 20G drive to a 120G one I would definitely be writing the first 20G of the 120G PROPERLY; I dont know what happens to the remaining 100G; may be that will remain as unpartitioned space!
+2007-11-03T10:24:00.000Z	guru	spitFIRE	dead space would be a more appropriate term

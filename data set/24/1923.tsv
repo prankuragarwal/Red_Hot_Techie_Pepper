@@ -1,0 +1,24 @@
+2009-11-29T09:54:00.000Z	colloguy		never*
+2009-11-29T09:55:00.000Z	colloguy		scunizzi: Same path, and should be same block address on disk too
+2009-11-29T09:56:00.000Z	colloguy		scunizzi: I got one from the other, by shredding the original /usr/bin/shred
+2009-11-29T09:56:00.000Z	colloguy		scunizzi: no, shred does not unlink the file
+2009-11-29T09:57:00.000Z	colloguy		scunizzi: it just writes over it
+2009-11-29T09:59:00.000Z	colloguy		scimizi: they're the same
+2009-11-29T09:59:00.000Z	scunizi	colloguy	I'd ask in ##linux as well.. this is a really strange one..
+2009-11-29T10:00:00.000Z	colloguy		scimizi: I used ls -i to get the inode, and istat to get the block address. They don't change, before and after the shred
+2009-11-29T10:02:00.000Z	scunizi	colloguy	brb
+2009-11-29T10:13:00.000Z	scunizi	colloguy	sorry.. I was getting pressure to finish dishes.. I was thinking maybe there's something in cache that one of them is reading.
+2009-11-29T10:14:00.000Z	colloguy	scunizi	apologize? I should be thanking you, no one ever responds to my missives : ]
+2009-11-29T10:14:00.000Z	scunizi	colloguy	ah.. but you have such unusual missives :)
+2009-11-29T10:14:00.000Z	colloguy	scunizi	As suggested by someone in ##linux, I ran sudo /bin/sync, no dice
+2009-11-29T10:15:00.000Z	scunizi	colloguy	how 'bout sudo updatedb
+2009-11-29T10:16:00.000Z	colloguy	scunizi	I've never heard of that before ... in what way do you want me to run it?
+2009-11-29T10:16:00.000Z	scunizi	colloguy	sudo updatedb
+2009-11-29T10:17:00.000Z	colloguy	scunizi	done. dd still reads the pre-shredded file
+2009-11-29T10:20:00.000Z	scunizi	colloguy	I'm stuck :(
+2009-11-29T10:20:00.000Z	colloguy	scunizi	Does secure erase work for you?
+2009-11-29T10:21:00.000Z	scunizi	colloguy	never tried it.. did you use it with sudo?
+2009-11-29T10:21:00.000Z	colloguy	scunizi	shouldn't matter, I own the file, and I can see the gibberish that it wrote, so it's working
+2009-11-29T10:22:00.000Z	colloguy	scunizi	so long as I use cat or gedit or anything, except dd
+2009-11-29T10:22:00.000Z	scunizi	colloguy	I'm sorry I don't have an answer (as promised in the beginning) but I like to try to logic these things out..
+2009-11-29T10:23:00.000Z	colloguy	scunizi	thanks for trying. I bet its some buffer that most programs look at, and shred writes to, but dd bypasses, that still needs to be flushed somehow

@@ -1,0 +1,19 @@
+2006-12-15T10:33:00.000Z	pkh		can anyone help me to find out shy some services aren't starting at boot (apache2 and mysql)?
+2006-12-15T10:33:00.000Z	pkh		shy->why...
+2006-12-15T10:34:00.000Z	tonyyarusso	pkh	Are the scripts to start them in the runlevel's directory?  (ie /etc/rc2.d/)
+2006-12-15T10:34:00.000Z	pkh	tonyyarusso	yep, they're there
+2006-12-15T10:35:00.000Z	tonyyarusso	pkh	Is there anything in an error log that might be useful?
+2006-12-15T10:35:00.000Z	pkh	tonyyarusso	not sure which errorlog to look in...  both start correclty when run from the commandline bia /etc/init.d/xxx start
+2006-12-15T10:37:00.000Z	tonyyarusso	pkh	It may be that a dependency isn't being started far enough ahead of them.  I'd pop into /var/log and just grep for apache and msql
+2006-12-15T10:38:00.000Z	pkh	tonyyarusso	nothing obvious -- just the expected stuff -- and all looks like it's normal
+2006-12-15T10:39:00.000Z	tonyyarusso	pkh	Try renaming the init script to start later and see what happens?
+2006-12-15T10:43:00.000Z	pkh	tonyyarusso	no good -- still they both don't start --everythign else starts fine!
+2006-12-15T10:43:00.000Z	tonyyarusso	pkh	And no logging at all?
+2006-12-15T10:45:00.000Z	tonyyarusso	pkh	Try poking around with a tool like sysv-rc-conf, disabling and reenabling them
+2006-12-15T10:54:00.000Z	pkh	tonyyarusso	(or anyone else)  any other ideas where to look for this starting problem -- I've removed all the links, replaced them by hand and through sysv.-rc-conf.  This is unbelievable, it's as if they don't exist!
+2006-12-15T10:54:00.000Z	tonyyarusso	pkh	Are they missing some config files anywhere, or are any of those misconfigured?  (Prolly not since they start manually, but hey)
+2006-12-15T10:55:00.000Z	tonyyarusso	pkh	Do you have an odd disk setup so maybe something isn't mounted in time?
+2006-12-15T10:55:00.000Z	pkh	tonyyarusso	that's possible (it's actually a vpslink server) but I've placed them after _everything else_
+2006-12-15T10:56:00.000Z	pkh	tonyyarusso	is there perhaps somewhere I can put '/etc/init.d/apache2 start' so it gets run on startup -- just to see if that gets things started...
+2006-12-15T10:56:00.000Z	tonyyarusso	pkh	There's bootmisc.sh - you could put a 'sleep' timer in there to put it off further
+2006-12-15T10:58:00.000Z	pkh	tonyyarusso	thanks, will tyr that

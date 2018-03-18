@@ -1,0 +1,24 @@
+2008-03-28T09:15:00.000Z	ghost	encryptz	you run without a swap?
+2008-03-28T09:16:00.000Z	encryptz	ghost	of course you can
+2008-03-28T09:17:00.000Z	ghost	encryptz	I assume it would function like a windows box without swa-er, page file, but do any common apps depend on swapspace or is that all managed by the kernel?
+2008-03-28T09:17:00.000Z	encryptz	ghost	managed by the kernel. don't confuse swap with tmpfs
+2008-03-28T09:18:00.000Z	ghost	encryptz	will you experience the reasonable performance boost of eliminating the diskwrites?
+2008-03-28T09:18:00.000Z	encryptz	ghost	you mean running and installing the whole os in ram?
+2008-03-28T09:19:00.000Z	encryptz	ghost	not really.
+2008-03-28T09:19:00.000Z	ghost	encryptz	no not the whole thing in bubble, just no swapspace
+2008-03-28T09:20:00.000Z	encryptz	ghost	linux uses the disk whenever it needs it. in fact, due to atime, it writes to the disk far more than it should
+2008-03-28T09:21:00.000Z	encryptz	ghost	noatime, but that presents problems. relatime will be a better fix
+2008-03-28T09:23:00.000Z	encryptz	ghost	-offtopic for that
+2008-03-28T09:24:00.000Z	ghost	encryptz	continuing from our conversation, can I expect then a performance boost nixing the swap and using the realtime patch you where talking about on the kernel? and if thats so, how does default debian/ubuntu kernel do it?
+2008-03-28T09:26:00.000Z	encryptz	ghost	you won't see a performance boost if you're not using swap. you will if you use noatime, however
+2008-03-28T09:26:00.000Z	encryptz	ghost	disk performance, that is
+2008-03-28T09:26:00.000Z	encryptz	ghost	not sure if relatime is supported in the kernel yet
+2008-03-28T09:26:00.000Z	encryptz	ghost	no
+2008-03-28T09:27:00.000Z	encryptz	ghost	noatime keeps the kernel from writing to the disk for every read of a file/directory
+2008-03-28T09:27:00.000Z	encryptz	ghost	atime has nothing to do with swap
+2008-03-28T09:28:00.000Z	encryptz	ghost	it writes to the disk to update the timestamp in the inode
+2008-03-28T09:32:00.000Z	ghost	encryptz	ah, so i need a good gig or swap for suspend to work? did not know it used swap for suspend
+2008-03-28T09:33:00.000Z	encryptz	ghost	not necessarily. suspend works fine on my laptop, and i'm not using swap at all
+2008-03-28T09:33:00.000Z	encryptz	ghost	hibernate on the other hand...
+2008-03-28T09:34:00.000Z	encryptz	ghost	never played with session save, so dunno
+2008-03-28T09:35:00.000Z	ghost	encryptz	i don't really use it, i find if i screw something up i want to be able to restart session and unload whatever was wonky

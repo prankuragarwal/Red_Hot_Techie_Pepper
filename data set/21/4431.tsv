@@ -1,0 +1,21 @@
+2008-04-27T10:11:00.000Z	NW2190		Hi, I'm trying to use gtkmm.h in C++, but I keep getting "window.cpp:2:19: error: gtkmm.h: No such file or directory" even though I have gtkmm-2.4-dev installed. How can I fix that?
+2008-04-27T10:12:00.000Z	cky	NW2190	You need to add gtkmm's includes directories to your -I option too.
+2008-04-27T10:12:00.000Z	cky	NW2190	Put $(pkg-config --cflags gtkmm-2.4) to your build line.
+2008-04-27T10:13:00.000Z	cky	NW2190	If you're using a Makefile, just have "CFLAGS += $(shell pkg-config --cflags gtkmm-2.4)"
+2008-04-27T10:13:00.000Z	cky	NW2190	You will then also need "LDFLAGS += $(shell pkg-config --libs gtkmm-2.4)"
+2008-04-27T10:14:00.000Z	NW2190	cky	when I put the (pkg-config --cflags gtkmm-2.4) in I get an "unexpected '(' message.
+2008-04-27T10:14:00.000Z	cky	NW2190	You need a $ sign too. :-)
+2008-04-27T10:16:00.000Z	NW2190	cky	oh ya that worked, sort of.  It looks like it found the file, but it still doesn't compile and since Its an example on the gtkmm website I figure it should...
+2008-04-27T10:17:00.000Z	cky	NW2190	Can you pastebin the error message, and your source file too, please?
+2008-04-27T10:17:00.000Z	NW2190	cky	ya sure, one second
+2008-04-27T10:20:00.000Z	NW2190	cky	http://pastebin.com/m298fd0ce
+2008-04-27T10:20:00.000Z	cky	NW2190	Thanks.
+2008-04-27T10:20:00.000Z	cky	NW2190	Okay, your program compiled fine. It just didn't link fine.
+2008-04-27T10:21:00.000Z	cky	NW2190	What is the command line you're using to build it?
+2008-04-27T10:23:00.000Z	NW2190	cky	oh I see, I mixed up the order.  it should be $g++ window.cpp `pkg-config gtkmm-2.4 --cflags --libs`. Thanks for all the help.
+2008-04-27T10:23:00.000Z	cky	NW2190	Hahaha. Glad to see it works for you then. :-)
+2008-04-27T10:23:00.000Z	NW2190	cky	haha ya.
+2008-04-27T10:24:00.000Z	cky	NW2190	I would write it this way: g++ $(pkg-config gtkmm-2.4 --cflags) window.cpp $(pkg-config gtkmm-2.4 --libs)
+2008-04-27T10:24:00.000Z	cky	NW2190	So, write out the pkg-config twice, with things in correct order. :-P
+2008-04-27T10:25:00.000Z	NW2190	cky	K, i'll try that. Thanks.
+2008-04-27T10:25:00.000Z	cky	NW2190	:-)

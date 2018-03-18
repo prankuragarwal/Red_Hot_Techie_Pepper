@@ -1,0 +1,21 @@
+2007-03-29T13:35:00.000Z	genii	budluva	Right now there is no autodetect method for eSATA . Ubuntu will only see it if the enclosure is powered up and plugged into the computer before the computer boots. Hopefully soon someone will write a udev.rule for it. But until then it will not autodect magically.
+2007-03-29T13:47:00.000Z	genii	budluva	The model you specified should be automatically recognised if you are using the usb cable and not the eSATA cable. So it is likely some cabling or jumper issue of the hd in this case. It should be seen as /dev/sda    . Which means it should be the master drive on the first ribbon in the enclosure.
+2007-03-29T13:48:00.000Z	budluva	genii	it is using usb cable, and its set to master, and its the only cable in the drive
+2007-03-29T13:49:00.000Z	genii	budluva	Yes, they normally get recognised as a SCSI drive
+2007-03-29T13:50:00.000Z	genii	budluva	It only uses a layer of SCSI commands to interface to the usb port. So you want instead commands for the usb port. To see if it is being seen by the hardware you could do:   lsusb    to see if the output sjows the drive
+2007-03-29T13:51:00.000Z	budluva	genii	thats works, nothing shows in fdisk - l though
+2007-03-29T13:51:00.000Z	genii	budluva	Good, it sees the adapter at least.
+2007-03-29T13:52:00.000Z	genii	budluva	My first sense is that inside the box the hard drive is not connected properly.
+2007-03-29T13:52:00.000Z	budluva	genii	im gonna say it is
+2007-03-29T13:53:00.000Z	genii	budluva	Is it on the end of tha cable and not the middle? Is the master/slave/cable select  jumper on the drive set to Master ?
+2007-03-29T13:54:00.000Z	genii	budluva	Also ensure ribbon is seated properly on both ends
+2007-03-29T13:55:00.000Z	genii	budluva	If all connections look proper and secure, then power the enclosure off then back up. Wait about 30 seconds then do:     fdisk -l /dev/sda
+2007-03-29T13:55:00.000Z	budluva	genii	yeah everything is good
+2007-03-29T13:56:00.000Z	budluva	genii	 nothing
+2007-03-29T13:56:00.000Z	genii	budluva	Likely a bum hd then
+2007-03-29T13:58:00.000Z	genii	budluva	Remove entirely the master/slave/cs jumper from the drive then repeat the power of/on fdisk -l /dev/sda   cycle
+2007-03-29T13:59:00.000Z	genii	budluva	Tho you may want to power off THEN remove the jumper :)
+2007-03-29T13:59:00.000Z	genii	budluva	Yes, entirely off
+2007-03-29T14:05:00.000Z	genii	budluva	Did it show up on fdisk after removing jumper(s) ?
+2007-03-29T14:06:00.000Z	genii	budluva	Try some other hard drive you know is good, is my immediate suggestion
+2007-03-29T14:06:00.000Z	genii	budluva	Just in /var/log/messages

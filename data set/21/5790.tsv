@@ -1,0 +1,21 @@
+2009-02-20T05:17:00.000Z	rpgsimmaster		whoops, a bit vigorous with the closing tabs...
+2009-02-20T05:17:00.000Z	rpgsimmaster		1:20 here
+2009-02-20T05:17:00.000Z	rpgsimmaster		well, yea 1:17
+2009-02-20T05:18:00.000Z	rpgsimmaster		Anyway, does anyone know how to get Ubuntu to allow me to use both an eth0 and a PPPoE connection at the same time?
+2009-02-20T05:19:00.000Z	rpgsimmaster		Ones a 'Wired', ones a 'DSL' according to NetworkManager, but when I right click to choose the network, it lists both under 'Wired', and only let me selects one
+2009-02-20T05:20:00.000Z	rpgsimmaster		we have an ADSL connection, and we have a local system which we like to use Direct Connect for
+2009-02-20T05:20:00.000Z	rpgsimmaster		Windows works fine
+2009-02-20T05:21:00.000Z	rpgsimmaster		Mac doesn't without a certain program, and I can't figure out how to do it in Ubuntu
+2009-02-20T05:21:00.000Z	rpgsimmaster		unfortunately, I'm a big filesharer, but I can't use both Internet and DC++ at the same time... Does anyone know of a way I could do it manually?
+2009-02-20T05:21:00.000Z	rpgsimmaster		Just force Ubuntu to use both?
+2009-02-20T05:23:00.000Z	IntuitiveNipple	rpgsimmaster	You could manually configure one interface so NM doesn't try to manage it
+2009-02-20T05:20:00.000Z	IntuitiveNipple	rpgsimmaster	That's an interesting scenario ... I wonder if the NetworkManager developers thought about that ?
+2009-02-20T05:20:00.000Z	rpgsimmaster	IntuitiveNipple	It's very annoying - I live on a network campus, and we have two sets of networks
+2009-02-20T05:23:00.000Z	rpgsimmaster	IntuitiveNipple	- Unfortunately I'm not quite sure how to do that. I could do that to my eth0, but how do I stop NM from managing it, and also set it up to automatically connect?
+2009-02-20T05:24:00.000Z	IntuitiveNipple	rpgsimmaster	If you configure any interface in /etc/network/interfaces that infers it will be manually managed, and NM will leave it alone
+2009-02-20T05:25:00.000Z	rpgsimmaster	IntuitiveNipple	Okay. And if I want it back to being worked with by NM, how would I set it back? Is there an NM conf file for that sort of thing?
+2009-02-20T05:25:00.000Z	IntuitiveNipple	rpgsimmaster	Simply remove the entry for that interface (or comment it out) from /etc/network/interfaces
+2009-02-20T05:25:00.000Z	rpgsimmaster	IntuitiveNipple	Thank you very much - I'll give it a go
+2009-02-20T05:25:00.000Z	IntuitiveNipple	rpgsimmaster	and, of course, restart NM so it discovers it
+2009-02-20T05:25:00.000Z	rpgsimmaster	IntuitiveNipple	Thank you
+2009-02-20T05:26:00.000Z	IntuitiveNipple	rpgsimmaster	to restart NM sudo /etc/init.d/NetworkManager restart

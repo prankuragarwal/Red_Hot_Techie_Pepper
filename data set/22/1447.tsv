@@ -1,0 +1,22 @@
+2010-05-29T00:08:00.000Z	nicolas		hey guys.  I have a website file that has a French characters.  Some of them show up fine but in other instances, the same character shows up as a '?'.  If I open the file in nano, I see '?' but if I open the file in gedit I see the proper character.  Why is that?
+2010-05-29T00:09:00.000Z	blue_anna	nicolas	what's your LANG variable set to?
+2010-05-29T00:09:00.000Z	nicolas	blue_anna	# echo $LANG
+2010-05-29T00:10:00.000Z	blue_anna	nicolas	really utf-8 and you're getting ?'s .. any chance you could post this file online somewhere, or a part of it, where I can see it?
+2010-05-29T00:11:00.000Z	nicolas	blue_anna	sure, standby :)
+2010-05-29T00:14:00.000Z	nicolas	blue_anna	here it is http://pastebin.com/6PU1ZDmM
+2010-05-29T00:15:00.000Z	nicolas	blue_anna	do a search for: 'strat' where it should say 'strategie' with the accent (no accents on this laptop)
+2010-05-29T00:16:00.000Z	blue_anna	nicolas	it's in ISO 8859-1
+2010-05-29T00:17:00.000Z	nicolas	blue_anna	thanks I didnt notice that :S  (company website that someone else maintains)
+2010-05-29T00:17:00.000Z	blue_anna	nicolas	I *think* you could do a: (LANG=en_us:IS08859-1 && gedit) and it would work
+2010-05-29T00:24:00.000Z	nicolas	blue_anna	when I edit the file in gedit it does show up normally, just not in nano (and the webpage is shown as in nano unfortunatly)  I tried editing the charset to UTF-8 on it but that didnt change anything
+2010-05-29T00:25:00.000Z	blue_anna	nicolas	(LANG=en_US:ISO8859-1 && nano filename) doesn't work?
+2010-05-29T00:25:00.000Z	blue_anna	nicolas	with parentheses
+2010-05-29T00:26:00.000Z	nicolas	blue_anna	no
+2010-05-29T00:26:00.000Z	blue_anna	nicolas	what was that link again? :)
+2010-05-29T00:26:00.000Z	nicolas	blue_anna	but as I mentioned, opening the file in gedit displays the characters properly.
+2010-05-29T00:26:00.000Z	blue_anna	nicolas	why do you have to edit this in nano?
+2010-05-29T00:27:00.000Z	nicolas	blue_anna	http://pastebin.com/6PU1ZDmM
+2010-05-29T00:27:00.000Z	nicolas	blue_anna	I dont.  But this is a webpage and when you view the page, the characters arent displayed properly, just like in nano.
+2010-05-29T00:28:00.000Z	blue_anna	nicolas	ooh, that's your webapge then .. put a <meta http-equiv="Content-Type" content="text/html; charset=ISO8859-1" /> in there
+2010-05-29T00:30:00.000Z	nicolas	blue_anna	it was this originally but now it works.  Not sure why, let me check and I'll get back to you
+2010-05-29T00:30:00.000Z	blue_anna	nicolas	I dont know what to tell you, that's a problem with the browser .. and if you're having that problem other people might too ... the browser *should* respect that tag

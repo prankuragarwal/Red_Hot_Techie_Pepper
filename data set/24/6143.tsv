@@ -1,0 +1,24 @@
+2006-03-08T07:49:00.000Z	Belboz99		Hey, what is the directory bit?  And how do I enable it?
+2006-03-08T07:50:00.000Z	dooglus	Belboz99	do you mean the 'sticky bit'?
+2006-03-08T07:51:00.000Z	Belboz99	dooglus	no I mean the directory bit
+2006-03-08T07:51:00.000Z	dooglus	Belboz99	where did you hear of this 'directory bit'?
+2006-03-08T07:51:00.000Z	Belboz99	dooglus	I was changing ownership of a directory and somehow the directory turned into a file
+2006-03-08T07:52:00.000Z	Belboz99		I need it changed back into a directory
+2006-03-08T07:52:00.000Z	dooglus	Belboz99	how were you changing owners?
+2006-03-08T07:53:00.000Z	Belboz99	dooglus	I can't dig up the exact command I used, but I was using chown dan /fold
+2006-03-08T07:53:00.000Z	Belboz99		it's possible I screwed up and used chmod instead
+2006-03-08T07:53:00.000Z	dooglus	Belboz99	chown should never make a directory turn into a file.  it does sound like your filesystem is screwed up like Amaranth said.
+2006-03-08T07:53:00.000Z	Belboz99		but trust me, this file was a directory
+2006-03-08T07:54:00.000Z	dooglus	Belboz99	even if you "chmod" instead of "chown", there's no bit which determines whether it's a file or a directory...
+2006-03-08T07:54:00.000Z	dooglus	Belboz99	I trust you.  But trust me, there's no way to "chmod" a directory to turn it into a file.
+2006-03-08T07:54:00.000Z	Belboz99	dooglus	my Linux professor said there was a bit that set it to directory
+2006-03-08T07:54:00.000Z	Belboz99		he never told us which bit it was though
+2006-03-08T07:55:00.000Z	dooglus	Belboz99	it's not a bit which is accessible with chmod
+2006-03-08T07:55:00.000Z	Belboz99		okay, so if my file system is screwed, how do I fix that?
+2006-03-08T07:55:00.000Z	Belboz99		-rw-r--r--    1 root root     62 2005-12-03 00:42 fold
+2006-03-08T07:55:00.000Z	Belboz99		that file was a directory
+2006-03-08T07:56:00.000Z	Belboz99		I can still see it and browse the files in it over the network
+2006-03-08T07:56:00.000Z	dooglus	Belboz99	there are 12 bits which chmod can affect.  3 reads, 3 writes, 3 executes, setuid, setgid and sticky.
+2006-03-08T07:56:00.000Z	Belboz99		and in fact, some software is running from it right now
+2006-03-08T07:57:00.000Z	dooglus	Belboz99	can I suggest you back it up (into a tar archive or similar) as soon as possible?
+2006-03-08T07:57:00.000Z	dooglus	Belboz99	it's quite possible that as soon as the software which is using it stops using it, the contents will become unavailable.

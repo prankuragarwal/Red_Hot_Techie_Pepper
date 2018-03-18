@@ -1,0 +1,21 @@
+2012-08-01T22:47:00.000Z	akamikeym		hi there! cna anyone tell me what's going on when you see a usb as /dev/sdc rather than /dev/sdc1 or whatever?
+2012-08-01T22:49:00.000Z	akamikeym		I would like to partition such a usb but I'm not sure how
+2012-08-01T22:49:00.000Z	bekks	akamikeym	Thats not possible. What might causes that, is, that a fileesystem was created on the entire device instead on a partition.
+2012-08-01T22:48:00.000Z	bekks	akamikeym	/dev/sdc is the USB device, and /dev/sdc1 is a partition on that device.
+2012-08-01T22:48:00.000Z	akamikeym	bekks	that's what normally happens but sometimes a usb partition appears as /dev/sdc
+2012-08-01T22:50:00.000Z	akamikeym	bekks	would I be safe in repartitioning it then, even though fdisk says it's not a valid partition table?
+2012-08-01T22:50:00.000Z	bekks	akamikeym	Actually, it doesnt matter :)
+2012-08-01T22:51:00.000Z	akamikeym	bekks	at the mo it's exactly as the factory sent ti.
+2012-08-01T22:51:00.000Z	bekks	akamikeym	And whatsthe problem with it? :)
+2012-08-01T22:52:00.000Z	akamikeym	bekks	awesome, I'll give it a shot. I was just worried that there was something deaper going on that I didn't understand.
+2012-08-01T22:52:00.000Z	akamikeym	bekks	like the disk had some kind of hiden partition table
+2012-08-01T22:52:00.000Z	bekks	akamikeym	There is no such hidden thing ;)
+2012-08-01T22:53:00.000Z	akamikeym	bekks	gparted slightly freaked me out by refusing to put more than one partition on it.
+2012-08-01T22:54:00.000Z	bekks	akamikeym	You could use fdisk as well.
+2012-08-01T22:54:00.000Z	akamikeym	bekks	yes I will. I normally od but I want to copy and enlarge partitions from another usb stick that I have ubuntu installed on
+2012-08-01T22:55:00.000Z	akamikeym	bekks	I'll setup the new partitions with fdsik then try gparted again to see if it will play
+2012-08-01T22:56:00.000Z	bekks	akamikeym	Why dont you just create the partitions like you want them, and copy over the content of the other usb stick, instead messing with fdisk AND gparted?
+2012-08-01T22:57:00.000Z	akamikeym	bekks	I'd like uuids to be preserved as well if possible
+2012-08-01T22:57:00.000Z	bekks	akamikeym	You can set the UUIDs afterwards using tune2fs e.g.
+2012-08-01T22:59:00.000Z	akamikeym	bekks	ok might give it a shot, what would th copy command be cp -Rp * ?
+2012-08-01T23:28:00.000Z	akamikeym	bekks	Ok thanks, that appears to have worked, I just partitioned with fdisk after wiping the partition table with dd to be sure and copied the partitions across with gparted. Just off to test it, bye

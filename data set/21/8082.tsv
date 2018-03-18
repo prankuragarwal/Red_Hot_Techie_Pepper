@@ -1,0 +1,21 @@
+2007-09-23T14:43:00.000Z	karel		Can someone please give me a hand getting hibernate to work? Problem is probably related to the swap file.
+2007-09-23T14:44:00.000Z	stefg	karel	do you have a swap *partition* that is bigger than your ram ?
+2007-09-23T14:45:00.000Z	karel	stefg	yes, please take a look at here: http://karel.awardspace.com/FPD/?path=/Rest, although it says swap TOO small, I think it is related to not seeing the swap or so
+2007-09-23T14:47:00.000Z	stefg	karel	i can't fully see what's going on, but my impression is that the kernel looks for the wrong partition to et iss hibernation file
+2007-09-23T14:47:00.000Z	karel	stefg	I believe that's exactly what's going on
+2007-09-23T14:49:00.000Z	stefg	karel	there's some boot parameters to define what partition holds the hibernation file... it's just that i can't remember, because it works too well here
+2007-09-23T14:49:00.000Z	stefg		!suspend | karel
+2007-09-23T14:49:00.000Z	karel	stefg	The UUID reference in /etc/fstab was wrong, fixed it and it seems to be fixed still, but it changed again some time ago
+2007-09-23T14:51:00.000Z	stefg	karel	maybe this helps http://ubuntuforums.org/showthread.php?t=471855&highlight=suspend
+2007-09-23T14:54:00.000Z	karel	stefg	apt-get can't resolve the host to download it, but apart from that, how do I check what my swap partition SHOULD be?
+2007-09-23T14:54:00.000Z	stefg		!uuid | karel
+2007-09-23T14:55:00.000Z	karel	stefg	the uuid there is wrong
+2007-09-23T14:55:00.000Z	karel	stefg	or it doesn't exists..
+2007-09-23T14:56:00.000Z	karel	stefg	I thought /dev/sda5 was my swap partition
+2007-09-23T14:58:00.000Z	karel	stefg	that's what the line of blkid says btw, /dev/sda5
+2007-09-23T14:58:00.000Z	stefg	karel	so your swap doesn't have a UUID ?
+2007-09-23T14:59:00.000Z	karel	stefg	it does, but it's a different one
+2007-09-23T15:03:00.000Z	stefg		!raid
+2007-09-23T15:05:00.000Z	stefg		!info dosbox
+2007-09-23T15:06:00.000Z	karel	stefg	any idea's?
+2007-09-23T15:07:00.000Z	stefg	karel	not really... except being pissed by the supid idea of ubuntu-devs to introduce UUID mounts for swap and hibernate

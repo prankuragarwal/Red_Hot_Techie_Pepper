@@ -1,0 +1,21 @@
+2011-03-03T20:16:00.000Z	ibrahim_		hi, i used to have a sound problem and it was fixed by installing linux-alsa-driver-modules-$(uname -r) then after few weeks by get updates of the update manager the sound vanished "nothing is muted" how can i fix this problem ?
+2011-03-03T20:17:00.000Z	ActionParsnip	ibrahim_	what is the output of: wget -O alsa-info.sh http://alsa-project.org/alsa-info.sh && bash ./alsa-info.sh       thanks
+2011-03-03T20:22:00.000Z	ActionParsnip	ibrahim_	you need that script and run it, you can access it via web browser and copy to a text file to be ran instead
+2011-03-03T20:38:00.000Z	ActionParsnip	ibrahim_	run:  gedit ~/alsa-info; bash ./alsa-info         paste in this text: http://git.alsa-project.org/?p=alsa-driver.git;a=blob_plain;f=utils/alsa-info.sh
+2011-03-03T20:40:00.000Z	ibrahim_	ActionParsnip	then....
+2011-03-03T20:42:00.000Z	ActionParsnip	ibrahim_	save the file and close gedit
+2011-03-03T20:44:00.000Z	ActionParsnip	ibrahim_	then upload to the site and give the red URL generated
+2011-03-03T20:48:00.000Z	ActionParsnip	ibrahim_	the script uploads to the alsa site, it makes the link for you
+2011-03-03T20:49:00.000Z	ibrahim_	ActionParsnip	http://paste.ubuntu.com/575035/
+2011-03-03T20:54:00.000Z	ibrahim_	ActionParsnip	: http://paste.ubuntu.com/575035/
+2011-03-03T20:54:00.000Z	ActionParsnip	ibrahim_	thats the script, run it and you will make a link
+2011-03-03T20:58:00.000Z	ActionParsnip	ibrahim_	the command I gave is all you needed. The one which opened gedit. All you had to do was copy the script and paste to gedit and save then close it. The script will then run
+2011-03-03T21:04:00.000Z	ibrahim_	ActionParsnip	: http://www.alsa-project.org/db/?f=cb9a291899dd79a352c954b812504e4cd2f6fcd7
+2011-03-03T21:04:00.000Z	ibrahim_	ActionParsnip	http://www.alsa-project.org/db/?f=cb9a291899dd79a352c954b812504e4cd2f6fcd7
+2011-03-03T21:04:00.000Z	ActionParsnip	ibrahim_	ok, what is your sound issue?
+2011-03-03T21:05:00.000Z	ActionParsnip	ibrahim_	one post is fine, no need to double post
+2011-03-03T21:07:00.000Z	ibrahim_	ActionParsnip	sorry , for double post .....,the problem is no sound i opened youtube ,player nothing
+2011-03-03T21:08:00.000Z	ActionParsnip	ibrahim_	does the headphone jack give you sound?
+2011-03-03T21:09:00.000Z	ibrahim_	ActionParsnip	ill try it
+2011-03-03T21:10:00.000Z	ActionParsnip	ibrahim_	try adding:     options snd-hda-intel model=hp     to /etc/modprobe.d/alsa-base.conf    and reboot, may help
+2011-03-03T21:10:00.000Z	ActionParsnip	ibrahim_	try upgrading to alsa 1.0.23 too: http://monespaceperso.org/blog-en/2010/05/02/upgrade-alsa-1-0-23-on-ubuntu-lucid-lynx-10-04/

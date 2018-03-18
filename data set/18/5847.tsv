@@ -1,0 +1,18 @@
+2011-06-26T02:44:00.000Z	tamer		Hello. Does the command top show all processes? I am trying to see what's eating my memory. 1.8 GBs is reported to by used by free, but summing the processes top show (sorted by mem usage) gives only 0.84 GBs. How do I need what's consuming the rest of my memory?
+2011-06-26T02:45:00.000Z	tamer		I need to know what's consuming the rest of my memory ? **
+2011-06-26T02:47:00.000Z	guntbert	tamer	please see http://www.linuxatemyram.com/ for an explanation   "free" is not what you expect
+2011-06-26T03:01:00.000Z	tamer	guntbert	thanks for the clarification. I referred to the website. Now I know less of my memory is consumed, but still there is an unreported part I am looking for.
+2011-06-26T03:02:00.000Z	guntbert	tamer	I suggest you let the kernel do it's thing - I never tried to add it all up
+2011-06-26T03:04:00.000Z	guntbert	tamer	although system monitor itself consumes a big chunk of resources
+2011-06-26T03:04:00.000Z	tamer	guntbert	what annoys me is that  I have 4 GBs of RAM, and yet I manage to full the memory and things get slower then.
+2011-06-26T03:06:00.000Z	guntbert	tamer	get used to it: a system has to use a great part of its resources, so you will see most memory put to some "work" - what are you running that "things get slower"?
+2011-06-26T03:11:00.000Z	tamer	guntbert	I was referring to the case of using swap memory to fulfill the applications needs when the RAM is full. Of course I don't want to get to that point, and I resort to closing apps. But still I end up with a good portion of my 4 GB consumed by no "showing" processes. We are talking about 30% of purely used (excluding cached) memory, when in fact the only application I am "using" is Xchat!
+2011-06-26T03:12:00.000Z	tamer	guntbert	something does not feel correct.
+2011-06-26T03:12:00.000Z	guntbert	tamer	did you think of buffers too?
+2011-06-26T03:13:00.000Z	tamer	guntbert	yes. Here's the line from free that I am reading: "-/+ buffers/cache:       1201       2622"
+2011-06-26T03:16:00.000Z	guntbert	tamer	(was that from free -m ?), remember that any memory used for buffers is immediately available if an application should need it (the same goes for cache)
+2011-06-26T03:17:00.000Z	tamer	guntbert	yes, free -m. But that line reports [used - buffered/cache = 1201] Which is too much if there's nothing memory-consuming running.
+2011-06-26T03:21:00.000Z	guntbert	tamer	do you actually experience performance problems?
+2011-06-26T03:23:00.000Z	guntbert	tamer	for further playing: install htop, it has more details, and investigate with that tool
+2011-06-26T03:24:00.000Z	tamer	guntbert	ZykoticK9 and Chipzzz. Ok guys, thanks for your help.
+2011-06-26T03:24:00.000Z	guntbert	tamer	np, have fun :)

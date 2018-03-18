@@ -1,0 +1,22 @@
+2007-05-12T08:52:00.000Z	BigMac		Alright, I need help from somebody that has experience with wifi, because so far 4 different people and 3 guides haven't prevailed in getting wifi working here
+2007-05-12T08:53:00.000Z	BigMac		And I am about ready to throw in the towel again
+2007-05-12T08:55:00.000Z	BigMac		Alright, I need help from somebody that has experience with wifi (specifically broadcom chip set), because so far 4 different people and 3 guides haven't prevailed in getting wifi working here
+2007-05-12T08:57:00.000Z	vox754	BigMac	then I guess your specific chipset is really new. Also, I heard things may start to break if you use ndiswrapper with really new kernels
+2007-05-12T08:58:00.000Z	BigMac	vox754	their is a guide on a site that was written explicitly for my laptop with several people having success, yet I am unable to connect to anything
+2007-05-12T09:44:00.000Z	vox754	BigMac	you can safely remove all trace of ndiswrapper with "locate ndiswrapper", but the other drivers bcm43xx are best left alone
+2007-05-12T09:44:00.000Z	BigMac	vox754	I think bcm43xx is the problem, because that is the only thing that I have installed that is not in the guides
+2007-05-12T09:45:00.000Z	BigMac	vox754	And does the locate command remove all instances?
+2007-05-12T09:47:00.000Z	vox754	BigMac	well, you don't need to install bcm43xx as it is included in the kernel... "locate" just locates things, then you see where they are so you can remove them... very useful for removing small packages
+2007-05-12T09:56:00.000Z	vox754	BigMac	did you provide this link about "Broadcom Corporation Dell Wireless 1390 WLAN Mini-PCI Card is used in "Dell Inspiron 1501"
+2007-05-12T09:57:00.000Z	BigMac	vox754	Um yes, I believe so. I have a dell 501 and that wifi card
+2007-05-12T09:58:00.000Z	vox754	BigMac	I see, that tutorial is actually very good. I can only think you are using wring drivers, maybe trying different drivers with different versions of ndiswrapper.
+2007-05-12T09:59:00.000Z	BigMac	vox754	But according to the link at the bottom of the page, that combination should work flawlessly with each other
+2007-05-12T10:02:00.000Z	vox754	BigMac	use the verbose "sudo lspci -v"
+2007-05-12T10:14:00.000Z	BigMac	vox754	well guess I will be here for a while if you think of something
+2007-05-12T10:18:00.000Z	vox754	BigMac	since you have an unsupported broadcom card, you can only try different versions of ndiswrapper that is 1.22 then 1.32 then 1.37 then 1.41 until you hit the right one, and also making sure which driver are you using. Every time make sure you remove the previous ndiswrapper before reinstalling
+2007-05-12T10:19:00.000Z	BigMac	vox754	I already told you though, this combination has been tested and worked on 40 + of the readers who used the guide
+2007-05-12T10:20:00.000Z	vox754	BigMac	yeah, I know, but you need to try other things so... it is your choice.
+2007-05-12T10:23:00.000Z	BigMac	vox754	I am not against trying things to get this to work, I am against doing something for no reason other then the slim probability that it will work
+2007-05-12T10:24:00.000Z	vox754	BigMac	you would be surprised how many people have said that, and then it just works!
+2007-05-12T10:26:00.000Z	BigMac	vox754	I bet people have had success, but there is proof that these 2 versions work together, and they aren't. THat means there *is* a problem, which will need to be fixed before any version works
+2007-05-12T10:27:00.000Z	vox754	BigMac	not necessarily, suppose there was a bug in a version 1.37 that made it work but now it doesn't in 1.41. So downgrading solves it. Interesting things you find in the programming world

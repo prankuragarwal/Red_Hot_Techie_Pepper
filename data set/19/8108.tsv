@@ -1,0 +1,19 @@
+2007-06-30T11:34:00.000Z	channel200		any X11 or gnome experts available? My system just crashed on power failure and now logs out of X11/gnome sessions immediately after login. Any suggestions on cleanup/diagnosis procedures?
+2007-06-30T11:34:00.000Z	din	channel200	grep "EE" /var/log/Xorg.0.log
+2007-06-30T11:36:00.000Z	channel200	din	I found some results. what next?
+2007-06-30T11:37:00.000Z	channel200	din	some complaints that /dev/input/wacom can't be opened
+2007-06-30T11:39:00.000Z	din	channel200	those are pretty common and most likely not your problem
+2007-06-30T11:39:00.000Z	channel200	din	nothing else appears in the log that looks like a problem
+2007-06-30T11:40:00.000Z	din	channel200	try this, sudo /etc/init.d/gdm stop. then when you get to a login promt, login and issue the command startx. if it crashes, you will see some errors as to why.
+2007-06-30T11:52:00.000Z	channel200	din	It looks as though I'm OK if I create a new session and make it the default.
+2007-06-30T11:53:00.000Z	din	channel200	cool :)
+2007-06-30T11:53:00.000Z	channel200	din	there is an error  unable to open file '/usr/share/apps/kxkb/ubuntu.xmodmap for reading
+2007-06-30T11:53:00.000Z	channel200	din	any idea what that means?
+2007-06-30T11:53:00.000Z	din	channel200	probably the permissions are wrong for it, or it doesn't exist at all
+2007-06-30T11:54:00.000Z	channel200	din	also an error that a dbus socket can't be opened
+2007-06-30T11:55:00.000Z	din	channel200	does X run though?
+2007-06-30T11:56:00.000Z	channel200	din	I spoke too soon
+2007-06-30T11:56:00.000Z	channel200	din	failsafe gnome session is ok
+2007-06-30T11:57:00.000Z	din	channel200	it's a gnome problem then
+2007-06-30T11:57:00.000Z	channel200	din	but I need to fix or create the default gnome session
+2007-06-30T11:57:00.000Z	channel200	din	gnome generates logs, I presume?

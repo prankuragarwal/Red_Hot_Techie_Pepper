@@ -1,0 +1,19 @@
+2009-09-28T04:09:00.000Z	jrebeiro	torn	you beat me to it :)
+2009-09-28T04:33:00.000Z	jrebeiro	torn	is it a CIFS share or are you using CIFS to access an SMB/Windows share
+2009-09-28T04:33:00.000Z	torn	jrebeiro	no.
+2009-09-28T04:33:00.000Z	torn	jrebeiro	the CIFS service is running on a FreeNAS (FreeBSD) box.
+2009-09-28T04:34:00.000Z	torn	jrebeiro	my problem is that if I stop the CIFS service or shutdown the FreeNAS box before unmounting the share on my local machine, all hell breaks lose.
+2009-09-28T04:34:00.000Z	torn	jrebeiro	is there a way around this? (Sometimes it can't be helped for a server to lose power, or to forget to umount before stopping a service.
+2009-09-28T04:36:00.000Z	torn	jrebeiro	if I try to umount AFTER the CIFS service has been stopped (or FreeNAS server is powered down), it just freezes on me until I type CTRL + C. If I try to use Nautilus, no file browser windows display, and it just freezes. Sometimes when I try to umount it will say "busy". If I am lucky and the terminal doesn't freeze, I can use "umount -f /mnt/cifs_share"
+2009-09-28T04:37:00.000Z	torn	jrebeiro	this makes me nervous that I will get corrupted data if I do not umount before stopping the CIFS server?
+2009-09-28T04:40:00.000Z	jrebeiro	torn	it won't work that way.. if the connection is lost the share needs to get remounted
+2009-09-28T04:42:00.000Z	torn	jrebeiro	what do you mean it needs to get remounted after losing connection?
+2009-09-28T04:43:00.000Z	torn	jrebeiro	does the local system continue sending signals to check connection status to the server when a CIFS share is mounted?
+2009-09-28T04:44:00.000Z	jrebeiro	torn	i would think so.. it's a tcp connection
+2009-09-28T04:44:00.000Z	torn	jrebeiro	so what option is there so that it will not freeze up other processes (like Nautilus) when the CIFS share loses connection to the server?
+2009-09-28T04:46:00.000Z	jrebeiro	torn	I just did a quick search.. CIFS does support reconnection
+2009-09-28T04:47:00.000Z	torn	jrebeiro	I tried searching for a solution to the freezup problem, but all I could find were complaints about when a CIFS share loses connection to the server.
+2009-09-28T04:48:00.000Z	torn	jrebeiro	I do use uid and gid parameters in my mount options.
+2009-09-28T04:49:00.000Z	jrebeiro	torn	I don't actually know what those options do :)
+2009-09-28T04:50:00.000Z	torn	jrebeiro	no a problem.
+2009-09-28T04:50:00.000Z	torn	jrebeiro	I'll try to figure this out. I just don't know why losing connection would freeze up a terminal session or Nautilus. I would think it would simply deny me access because of "lost connection."

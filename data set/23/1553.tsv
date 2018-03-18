@@ -1,0 +1,23 @@
+2010-06-14T11:04:00.000Z	paranoidphreak		hi everybody, i have the latest version of 64bit ubuntu installed on my system. i have also installed the latest virtualbox package (3.2.4) but i'm unable to run a 64bit OS inside the virtualbox. any thoughts on this
+2010-06-14T11:05:00.000Z	Jordan_U	paranoidphreak	You probably don't have hardware vitualization support, a quick way to check is by running "kmv-ok"
+2010-06-14T11:05:00.000Z	Jordan_U	paranoidphreak	Sorry, "kvm-ok"
+2010-06-14T11:06:00.000Z	paranoidphreak	Jordan_U	it doesn't support it, f**k
+2010-06-14T11:08:00.000Z	paranoidphreak	Jordan_U	so, there's no way i can do this without getting a new system that supports hardware virtualization?
+2010-06-14T11:10:00.000Z	Jordan_U	paranoidphreak	You can use "qemu-system-x86_64" for a 64 bit virtual machine, but it will be very slow.
+2010-06-14T11:11:00.000Z	paranoidphreak	Jordan_U	binaryme: thanks for the info; hate intel, i've seen alot of amd system's that supoort virtualization
+2010-06-14T11:12:00.000Z	Jordan_U	paranoidphreak	Actually, check your BIOS settings before giving up entirely.
+2010-06-14T11:13:00.000Z	paranoidphreak	Jordan_U	i checked the info about virtualization long time ago regarding my system and it doesn't support it
+2010-06-28T07:45:00.000Z	Jordan_U	paranoidphreak	Did you copy the entire partition rather than individual files? If so then you'll need to modify the UUID since it's no longer Unique :)
+2010-06-28T07:48:00.000Z	paranoidphreak	Jordan_U	i copied the entire partition using gparted. how do i modify the UUID?
+2010-06-28T07:50:00.000Z	Jordan_U	paranoidphreak	"sudo tune2fs -U random /dev/sdXX" but be warned that you will need to update all references to this UUID after you change it.
+2010-06-28T07:51:00.000Z	Jordan_U	paranoidphreak	To update your fstab run "gksudo gedit /etc/fstab" and replace the old UUID with the new one (which you can find with "sudo blkid"
+2010-06-28T07:52:00.000Z	Jordan_U	paranoidphreak	To update grub just run "sudo update-grub"
+2010-06-28T07:52:00.000Z	paranoidphreak	Jordan_U	i run this on the usb version or the laptop's version?
+2010-06-28T07:52:00.000Z	Jordan_U	paranoidphreak	USB
+2010-06-28T07:54:00.000Z	paranoidphreak	Jordan_U	what do u mean by all references? i only have one partition on the usb
+2010-06-28T07:56:00.000Z	Jordan_U	paranoidphreak	I mean configuration files that use that UUID to try to find the proper partition.
+2010-06-28T07:57:00.000Z	Jordan_U	paranoidphreak	You're welcome.
+2010-06-28T09:58:00.000Z	paranoidphreak	Jordan_U	hey, just a quick question, you had instructed me a little while back to change my UUID on the flash drive doing the following: sudo tune2fs -U random /dev/sdXX, updating fstab with the new UUID and running "grub update". is this all i have to do?
+2010-06-28T09:58:00.000Z	Jordan_U	paranoidphreak	Yes.
+2010-06-28T09:59:00.000Z	paranoidphreak	Jordan_U	thanks, i ljust wanted to make sure i wasn't missing anything else
+2010-06-28T09:59:00.000Z	Jordan_U	paranoidphreak	You're welcome.

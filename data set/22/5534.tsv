@@ -1,0 +1,22 @@
+2009-02-01T00:35:00.000Z	baz		whats the command to mount my sftp locally: sftp://baz@172.16.113.134/var/www/roundcube
+2009-02-01T00:36:00.000Z	usser	baz	what do you mean by mount locally?
+2009-02-01T00:37:00.000Z	baz	usser	i want it to show up as a folder thru another program
+2009-02-01T00:37:00.000Z	usser	baz	oh you need sshfs, once u have it sshfs baz@172.16.113.134:/var/www/roundcube /localdirectory
+2009-02-01T00:46:00.000Z	baz	usser	i got sshfs installed - how would i use it? :)
+2009-02-01T00:47:00.000Z	usser	baz	sshfs user@server:/directory /localdirectory
+2009-02-02T00:45:00.000Z	usser	baz	touch filename
+2009-02-02T00:47:00.000Z	baz	usser	nice thanks
+2009-02-05T08:54:00.000Z	usser	baz	how big is the hdd?
+2009-02-05T08:54:00.000Z	usser	baz	is it the same size?
+2009-02-05T08:54:00.000Z	baz	usser	the hard drives will all be big enough (min 180gb) but of differing sizes and one will even have RAID
+2009-02-05T08:55:00.000Z	usser	baz	you can you use dd but it'll take quite a while, partimage is a great choice, not sure how it'll work with raid though
+2009-02-05T08:58:00.000Z	usser	baz	not really size doesnt matter, only that the the partition that you have currently setup on the image has to fit on the smallest hdd on all the clones, ie master hdd should be smaller than that of the clone
+2009-02-05T09:02:00.000Z	baz	usser	thats perfect, will more than comfortably fit on the smallest HD. My aim is to have the "/" partition be 25gb (4-5gb used) and the rest /home. Would the tools Titan8990 mentioned earlier (dd, partimage, clonezilla) be the first place to start?
+2009-02-05T09:04:00.000Z	usser	baz	dd would probably be simplest, it copies byte by byte, but can be a pain to clone, you have to go around with master hdd and hook it up to each of the slaves, or you can make an image and dd it through nfs or samba(you'll have to boot clones into livecds)
+2009-02-05T09:06:00.000Z	usser	baz	partimage has extensive network support, and is faster since it doesnt copy empty space on the hdd, but can be a little tricky to learn/use
+2009-02-05T09:10:00.000Z	baz	usser	clonezilla looks sweet
+2009-02-05T09:10:00.000Z	baz	usser	"can clone up to 40 computers simultaneously"
+2009-02-05T09:12:00.000Z	usser	baz	it all depends on your network connection, sure you can clone 40 comps, but its gonna be mad slow, im judging from my experience with ghost, a 40gb partition clones in about 40 minutes over 100mbps with about 20 computers going, 25 with 2
+2009-02-05T09:13:00.000Z	baz	usser	thats pretty good
+2009-02-05T09:16:00.000Z	usser	baz	i got my numbers wrong 25gb image sorry
+2009-02-13T10:17:00.000Z	usser	baz	oh, careful there, second most useful command is find :)

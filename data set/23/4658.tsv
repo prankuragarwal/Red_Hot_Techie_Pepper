@@ -1,0 +1,23 @@
+2007-06-10T09:01:00.000Z	AS6		i`m using compaq v3200. How to enable wireless adapter on my kubuntu?
+2007-06-10T09:02:00.000Z	logmein	AS6	do lspci which listing is your wireless card please output that line
+2007-06-10T09:03:00.000Z	AS6	logmein	01:00.0 Network controller: Broadcom Corporation Dell Wireless 1390 WLAN Mini-PCI Card (rev 01)
+2007-06-10T09:04:00.000Z	logmein	AS6	have the same in my compaq
+2007-06-10T09:05:00.000Z	logmein	AS6	go here and download ndiswrapper http://ndiswrapper.sourceforge.net/joomla/ you have to extract it then do apt-get install build-essentials gcc gcc-3.4 g++ then cd in and do ./configure make sudo su make install
+2007-06-10T09:07:00.000Z	logmein	AS6	your card is #82 on this list http://ndiswrapper.sourceforge.net/joomla/index.php?/component/option,com_openwiki/Itemid,33/id,list_b/
+2007-06-10T09:08:00.000Z	logmein	AS6	http://wine.budgetdedicated.com/archive/ubuntu/feisty/wine_0.9.38~winehq0~ubuntu~7.04-1_i386.deb install wine so you can run the windows driver install then grab the .inf and .sys
+2007-06-10T09:08:00.000Z	AS6	logmein	man, you are SUPER FAST. I just about to open the url but u already found the driver.
+2007-06-10T09:08:00.000Z	logmein	AS6	I've told 567 users the same instructions this week
+2007-06-10T09:10:00.000Z	logmein	AS6	after you have the .inf and .sys do ndiswrapper -i bcmwl5.inf ndiswrapper -m modprobe ndiswrapper mousepad /etc/modprobe.d/blacklist add blacklist bcm43xx to bottom of list then save and restart computer
+2007-06-10T09:11:00.000Z	logmein	AS6	menu>>system>>network setup your wireless
+2007-06-10T09:13:00.000Z	logmein	AS6	your comp take too long downloading and compiling :P
+2007-06-10T09:14:00.000Z	AS6	logmein	yes
+2007-06-10T09:14:00.000Z	AS6	logmein	its still downloading
+2007-06-10T09:14:00.000Z	logmein	AS6	its so tiny though, are you on dial up?
+2007-06-10T09:14:00.000Z	AS6	logmein	I`m on 1Mbps adsl connection.
+2007-06-10T09:15:00.000Z	logmein	AS6	you also might need to apt-get install linux-headers-$(uname -r)
+2007-06-10T09:19:00.000Z	AS6	logmein	sudo aptitude install bcm43xx-fwcutter
+2007-06-10T09:20:00.000Z	AS6	logmein	Could not open lock file /var/lib/dpkg/lock - open (13 Permission denied
+2007-06-10T09:20:00.000Z	logmein	AS6	never tried that fwcutter thing
+2007-06-10T09:21:00.000Z	logmein	AS6	think the fwcutter method yields slower connection speeds rather than using ndiswrapper
+2007-06-10T09:23:00.000Z	logmein	AS6	just tell me when you give up and want to learn how to compile something
+2007-06-10T09:26:00.000Z	AS6	logmein	the internet connection here in kubuntu, is extremely slow, unlike what it used to be on my winxp a few hours ago. :D

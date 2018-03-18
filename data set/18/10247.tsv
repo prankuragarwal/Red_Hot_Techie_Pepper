@@ -1,0 +1,18 @@
+2009-04-25T05:25:00.000Z	daedra		ah! I deleted my partition table on a harddrive, is it possible to recover the data it was pointing to?
+2009-04-25T05:26:00.000Z	daedra		ah! I deleted my partition table on a harddrive, is it possible to recover the data it was pointing to?
+2009-04-25T05:27:00.000Z	daedra		ah! I deleted my partition table on a harddrive, is it possible to recover the data it was pointing to?
+2009-04-25T05:28:00.000Z	Wyzard	daedra	The data isn't gone; if you recreate the partition table (just create partitions again with the same starting/ending cylinder numbers) you should be able to access it just fine
+2009-04-25T05:28:00.000Z	daedra	Wyzard	ah that's what I thought. What is this process called so I can google it
+2009-04-25T05:28:00.000Z	Wyzard	daedra	fdisk
+2009-04-25T05:38:00.000Z	daedra	Wyzard	so do I just do fdisk from the beginning of the partition to the end with the same filesystem as before?
+2009-04-25T05:39:00.000Z	Wyzard	daedra	use fdisk to create partitions with the same starting and ending cylinders and the same type codes
+2009-04-25T05:39:00.000Z	Wyzard	daedra	(actually, the type code is only a hint to the OS, and doesn't actually have anything to do with the contents of the partition)
+2009-04-25T05:39:00.000Z	daedra	Wyzard	what are type codes?
+2009-04-25T05:40:00.000Z	Wyzard	daedra	the byte in the partition table that indicates what the partition is for, e.g. 0x83 for Linux
+2009-04-25T05:40:00.000Z	daedra	Wyzard	ah I think I know what you mean. 82 for Linux :D
+2009-04-25T05:41:00.000Z	daedra	Wyzard	thanks for that I'll play around on a test drive
+2009-04-25T05:41:00.000Z	Wyzard	daedra	but it has nothing to do with the partition's contents; you could make a partition labeled 0x82 and put NTFS in it
+2009-04-25T05:41:00.000Z	Wyzard	daedra	Windows probably wouldn't "notice" it, but you could still mount it with ntfs-3g or whatever
+2009-04-25T05:41:00.000Z	daedra	Wyzard	oh ok, and would that be able to boot?
+2009-04-25T05:41:00.000Z	daedra	Wyzard	oh I see... probably lazy windows coding
+2009-04-25T05:42:00.000Z	Wyzard	daedra	I don't know what Windows' policy is on detecting filesystems in partitions...  the point is that the type code in the partition table is just a hint to the OS that it *can* use to decide which partitions to look at and which to ignore

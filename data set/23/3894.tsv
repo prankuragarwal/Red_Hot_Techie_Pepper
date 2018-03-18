@@ -1,0 +1,23 @@
+2008-08-09T22:25:00.000Z	LIGHTspeed		Hello. :)
+2008-08-09T22:26:00.000Z	LIGHTspeed		I've got an Ubuntu 8.04 computer here (My grandmother's) which is doing extremely strange things, and I can't figure out what to do. Is this the correct place to ask questions?
+2008-08-09T22:27:00.000Z	Bodsda	LIGHTspeed	yes it is, but we need to know the problems first
+2008-08-09T22:28:00.000Z	Bodsda	LIGHTspeed	make and model of monitor?
+2008-08-09T22:32:00.000Z	Bodsda	LIGHTspeed	did you find the model number?
+2008-08-09T22:34:00.000Z	Bodsda	LIGHTspeed	can you pastebin the   /etc/X11/xorg.conf  file please
+2008-08-09T22:36:00.000Z	Bodsda	LIGHTspeed	use this site   paste.ubuntu.com
+2008-08-09T22:38:00.000Z	Bodsda	LIGHTspeed	you need to give me the url after you have pastebined the file
+2008-08-09T22:40:00.000Z	Bodsda	LIGHTspeed	i can make this easier, can i give you a command, it installs a small program that auto pastebins things?
+2008-08-09T22:43:00.000Z	Bodsda	LIGHTspeed	run this command            gksudo gedit /etc/X11/xorg.conf
+2008-08-09T22:44:00.000Z	Bodsda	LIGHTspeed	ok, thats your xorg file in a text editor yes?
+2008-08-09T22:44:00.000Z	Bodsda	LIGHTspeed	ok cool, go down to the "Monitor" section
+2008-08-09T22:46:00.000Z	Bodsda	LIGHTspeed	add these two on seperate lines between 'section Monitor' and 'End Section                    HorizSync    31-81              VertRefresh    56-75
+2008-08-09T22:48:00.000Z	Bodsda	LIGHTspeed	save and pastebin the file for me first
+2008-08-09T22:50:00.000Z	Bodsda	LIGHTspeed	open up yor xorg file again as root, and line up the numbers underneath 'Configured Monitor'
+2008-08-09T22:51:00.000Z	Bodsda	LIGHTspeed	it should look like this -- http://pastebin.com/f2ad4916f
+2008-08-09T22:52:00.000Z	Bodsda	LIGHTspeed	can you pastebin again plz, i just want to be sure
+2008-08-09T22:54:00.000Z	Bodsda	LIGHTspeed	cool that looks good, save and restart x then come bacj here
+2008-08-09T22:56:00.000Z	Bodsda	LIGHTspeed	ok, what graphics card have u got?
+2008-08-09T22:57:00.000Z	Bodsda	LIGHTspeed	can you pastebin the output of              lspci
+2008-08-09T22:59:00.000Z	Bodsda	LIGHTspeed	open xorg.conf again   and under the section "device" put                 Driver    "vesa"
+2008-08-09T23:03:00.000Z	Bodsda	LIGHTspeed	i can only think of one more thing -- reboot get to the grub prompt    boot to recovery mode then choose the 'xfix' option
+2008-08-09T23:04:00.000Z	Bodsda	LIGHTspeed	ok run this        sudo cp /etc/X11/xorg.conf /etc/X11/xorg.conf.old && sudo rm /etc/X11/xorg.conf         then do 'xfix'

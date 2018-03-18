@@ -1,0 +1,19 @@
+2008-12-28T22:42:00.000Z	Shpook		And with roaming mode enabled, nm-applet shows me connected, but if I ping my router, it says network is unreachable. I'd really like to get this fixed and not have to constantly fight with it.
+2008-12-28T22:43:00.000Z	Shpook		Ok, this time, I just checked the routing table, and there is an entry. The destination is 169.254.0.0. Should it be the 192.168.1.1 address of my router?
+2008-12-28T22:44:00.000Z	unop_	Shpook	that depends on the address given to your interface
+2008-12-28T22:45:00.000Z	Shpook	unop_	I'm a little clueless on how to figure it all out. :D I know just a little to get by, but have no clue once I run into a problem.
+2008-12-28T22:46:00.000Z	unop_	Shpook	at a terminal.  type   ifconfig eth0  # if eth0 is the interface that is connected to the router
+2008-12-28T22:46:00.000Z	unop_	Shpook	at the second or third line in the output - you should see the IP address given to that interface
+2008-12-28T22:48:00.000Z	Shpook	unop_	It's ath0, and there is no IP address anywhere, just the rx/tx packet information, which is all 0
+2008-12-28T22:49:00.000Z	unop_	Shpook	so it seems like your interface hasn't got an IP address - which explains the odd route in the routing table.
+2008-12-28T22:49:00.000Z	unop_	Shpook	try this.   sudo dhclient ath0
+2008-12-28T22:50:00.000Z	Shpook	unop_	I got back "No DHCPOFFERS received" and "No working leases in persistent database"
+2008-12-28T22:51:00.000Z	Shpook	unop_	Could it be the router in that case?
+2008-12-28T22:52:00.000Z	unop_	Shpook	it could be - but it could also be the drivers for your interface (have they ever worked?)
+2008-12-28T22:52:00.000Z	Shpook	unop_	Yeah, it worked perfectly for a week, until I disabled roaming mode.
+2008-12-28T22:53:00.000Z	unop_	Shpook	errm, i think you need to enable roaming mode
+2008-12-28T22:53:00.000Z	unop_	Shpook	i'm not sure - i don't use gnome too much - but i believe roaming mode is what sets the interface in a state to recieve IP addressess automatically
+2008-12-28T22:53:00.000Z	Shpook	unop_	That's where I'm at now, and nm-applet shows it connected. But I still have no internet access and can't ping the router.
+2008-12-28T22:54:00.000Z	Shpook	unop_	Well, when you enter the connection manually, you can set it to dhcp.
+2008-12-28T22:54:00.000Z	unop_	Shpook	ahh
+2008-12-28T23:09:00.000Z	unop_	Shpook	yea, kinda the same problem i had with the atheros chipset on my NC10 - i had to use the madwifi drivers to get wireless to work properly

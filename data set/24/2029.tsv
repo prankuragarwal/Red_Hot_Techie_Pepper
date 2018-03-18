@@ -1,0 +1,24 @@
+2009-05-25T02:47:00.000Z	distatica		hey folks, I recently changed from 8.10 to 8.04 on my laptop, before changing I backed up my ~/ with tar zcvf backup.tar.gz ./ after the change I decompressed this again. Now I get Invalid MIT-MAGIC-COOKIE-1 keyError: cannot open display: :0.0 when I attempt to run a GUI program
+2009-05-25T02:47:00.000Z	distatica		any ideas what might be causing this?
+2009-05-25T02:48:00.000Z	distatica		I attempted to remove .Xauthority, and simply get Error: cannot open display: :0.0 after that.
+2009-05-25T02:48:00.000Z	Kalmi	distatica	messed up permissions... I assume
+2009-05-25T02:49:00.000Z	distatica	Kalmi	I wonder where though, since it's the same user account.
+2009-05-25T02:49:00.000Z	Kalmi	distatica	any program?
+2009-05-25T02:49:00.000Z	distatica	Kalmi	any gui, shell works fine from what I can tell.
+2009-05-25T02:49:00.000Z	Kalmi	distatica	i thought we were talking about X forwarding...
+2009-05-25T02:50:00.000Z	distatica	Kalmi	nope, this is local, after I moved my home back.
+2009-05-25T02:50:00.000Z	distatica	Kalmi	now I just have to find out what file is causing the fight, and fix that, I don't want ot just remove everything
+2009-05-25T02:51:00.000Z	Kalmi	distatica	maybe ~/.Xauthority ?
+2009-05-25T02:51:00.000Z	distatica	Kalmi	I think that's it, becuase when I remove it then I just get a display issue.
+2009-05-25T02:52:00.000Z	Kalmi	distatica	try removing  ~/.Xauthority
+2009-05-25T02:52:00.000Z	distatica	Kalmi	tried that already, but I've got a thought, one sec.
+2009-05-25T03:00:00.000Z	distatica	Kalmi	that was it, I just needed to restart X, now everything seems to be fine... at least for now.
+2009-05-25T03:00:00.000Z	distatica	Kalmi	silly me for not thinking of that earlier.
+2009-05-25T03:00:00.000Z	Kalmi	distatica	was it a downgrade?
+2009-05-25T03:01:00.000Z	distatica	Kalmi	yes and no, technically when you go from 8.10 to 8.04 it's a downgrade, but this was not done through apt, I did a clean reinstall to 8.04
+2009-05-25T03:01:00.000Z	Kalmi	distatica	ok... clean install... got it
+2009-05-25T03:01:00.000Z	distatica	Kalmi	I need 8.04 for it's OpenVZ support unfortunately.
+2009-05-25T03:04:00.000Z	Kalmi	distatica	faster
+2009-05-25T04:00:00.000Z	Kalmi	distatica	just remove windows
+2009-05-25T04:01:00.000Z	Kalmi	distatica	tm1: iptable rules don't survive a reboot
+2009-05-25T04:02:00.000Z	distatica	Kalmi	good point, that too

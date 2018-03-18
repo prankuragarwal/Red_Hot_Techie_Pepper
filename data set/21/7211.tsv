@@ -1,0 +1,21 @@
+2006-11-10T06:35:00.000Z	RP3		I'm having the same problem as mumrah
+2006-11-10T06:36:00.000Z	RP3		can't mount a single CD in EDGY final release
+2006-11-10T06:37:00.000Z	sethk	RP3	what happens when you try?
+2006-11-10T06:37:00.000Z	RP3	sethk	it says "unable to mount"
+2006-11-10T06:38:00.000Z	sethk	RP3	mumrah in your position I would run mount under strace.  that allows me to see the error at the system call level.  However, it's a bit difficult to interpret.  If you like, run mount under strace, put the output onto the paste web site, and people here can look at it and possibly help.
+2006-11-10T06:39:00.000Z	sethk	RP3	mumrah  Of course you may know more than enough to interpret the output yourself; I'm not trying to be insulting.
+2006-11-10T06:40:00.000Z	RP3	sethk	& mumrah, I get the same thing "no media present"
+2006-11-10T06:53:00.000Z	sethk	RP3	you need sudo.
+2006-11-10T06:53:00.000Z	sethk	RP3	you need sudo, also, to run the mount command
+2006-11-10T06:55:00.000Z	RP3	sethk	mumrah:  it says "Message from syslogd@admin-desktop at Thu Nov  9 16:55:01 2006 ...
+2006-11-10T06:58:00.000Z	RP3	sethk	 mount says Mount error:  Unable to mount the selected volume.  No medium found.
+2006-11-10T06:59:00.000Z	sethk	RP3	right.  it's querying the drive, and getting an answer that says there's no cd in it.
+2006-11-10T07:23:00.000Z	RP3	sethk	is there a way to troubleshoot no medium found?
+2006-11-10T07:24:00.000Z	sethk	RP3	can you boot the live cd?  I'm asking because, if you can use the live cd, that proves your cd drive is working and can work with linux.
+2006-11-10T07:25:00.000Z	RP3	sethk	 I loaded edgy with this drive, and it works in Windows on this system
+2006-11-10T07:30:00.000Z	RP3	sethk	I did sudo mkdir /media/cdrom1 and now I get "no medium found" on both DVD drives
+2006-11-10T07:31:00.000Z	sethk	RP3	paste the exact mount command you are using.
+2006-11-10T07:32:00.000Z	RP3	sethk	I tried mount /dev/hda and mount /dev/hdb
+2006-11-10T07:33:00.000Z	sethk	RP3	then you are telling it to use the options in /etc/fstab, which probably aren't what you need.
+2006-11-10T07:33:00.000Z	sethk	RP3	try providing all the options on the command line.
+2006-11-10T07:33:00.000Z	RP3	sethk	that's it

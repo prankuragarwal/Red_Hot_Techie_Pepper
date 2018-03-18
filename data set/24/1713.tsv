@@ -1,0 +1,24 @@
+2011-02-15T16:09:00.000Z	bullgard		'~$ sudo e2fsck /dev/sdb1' reports at the end: "WD1.5_1: 2661/64004096 files." What do these 2 numbers mean?
+2011-02-15T16:11:00.000Z	llutz_	bullgard	used/available inodes              iirc
+2011-02-15T16:13:00.000Z	bullgard	llutz_	But inodes and files are different things. Can you elaborate.
+2011-02-15T16:16:00.000Z	llutz_	bullgard	check with sudo dumpe2fs -h /dev/sdb1 | grep "Inode count"
+2011-02-15T16:24:00.000Z	bullgard	llutz_	'~$ sudo dumpe2fs -h /dev/sdb1 | grep "Inode count" obtains: "Inode count: 64004096." This number is identical to the second "files" output by e2fsck.  --  Thank you very much for your help.
+2011-02-15T16:26:00.000Z	llutz_	bullgard	you can check with "sudo dumpe2fs -h /dev/sdb1" for free Inodes too. the difference should be the first number given by fsck
+2011-02-15T16:33:00.000Z	bullgard	llutz_	The difference is identical to the first e2fsck output number. As you predicted. --   Thank you very much again for your help.
+2011-02-21T13:38:00.000Z	llutz_	bullgard	port 53, dns
+2011-02-21T13:39:00.000Z	bullgard	llutz_	What do you mean by "port" here in relation to DNS. Can you elaborate?
+2011-02-21T13:40:00.000Z	llutz_	bullgard	dns-request are done via port 53udp by default
+2011-02-21T13:41:00.000Z	llutz_	bullgard	like ssh uses port 22 or smtp port 25 by default
+2011-02-21T13:45:00.000Z	llutz_	bullgard	http://de.wikipedia.org/wiki/Port_(Protokoll)  for further info
+2011-02-23T14:57:00.000Z	llutz_	bullgard	you could use nmap -sP <network>
+2011-02-23T15:30:00.000Z	llutz_	bullgard	you still could use nmap -sP <network>
+2011-02-23T16:11:00.000Z	bullgard	llutz_	I have cursorily read 'man nmap'. But I still do not know what to substitute for <network> in my case.
+2011-02-26T11:29:00.000Z	llutz_	bullgard	apt-file search says: seahorse-plugins: /usr/bin/seahorse-agent
+2011-02-26T11:30:00.000Z	llutz_	bullgard	same for the other 2 things (whatever it is)
+2011-02-26T11:33:00.000Z	bullgard	llutz_	Ah! I need installing the DEB program package »seahorse-plugins«.  --  Thank you very much for your help.
+2011-02-26T11:34:00.000Z	llutz_	bullgard	hint: learn to use apt-file, very helpfull
+2011-02-26T11:35:00.000Z	bullgard	llutz_	I prefer Synaptic and packages.ubuntu.com
+2011-02-26T11:37:00.000Z	llutz_	bullgard	then you should learn to use that. packages.u.c needs 2 secs to find the answer
+2011-02-26T11:38:00.000Z	llutz_	bullgard	"search the contents of packages" is what apt-file search does
+2011-02-26T11:44:00.000Z	bullgard	llutz_	My problem was that I had no idea that I might not have installed a certain DEB program package. I thought that there was a reshuffle in the GNOME package seahorse or similar.
+2011-03-11T20:19:00.000Z	llutz_	bullgard	"info locale" "man 7 locale"

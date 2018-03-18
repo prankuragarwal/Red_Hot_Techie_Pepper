@@ -1,0 +1,18 @@
+2012-09-19T04:52:00.000Z	jagginess	chadams42	for apache, it should be www-data:www-data
+2012-09-19T04:53:00.000Z	jagginess	chadams42	dont use ftp, use webdav-- webdav can be added to the apache server
+2012-09-19T04:56:00.000Z	jagginess	chadams42	i use webdav client from osx/linux/windows (however on winbloze, netdrive shouldbe used, and it's free)
+2012-09-19T04:56:00.000Z	jagginess	chadams42	webdav is http, but it's http+write.. it can be mounted like a filesystem from those three Oses i mentioned
+2012-09-19T04:58:00.000Z	jagginess	chadams42	pretty much keep your same www-data:www-data directory, add the webdav to apache, then make an htdigestpassword file -- You'll need to use something like 'Dav on' with the apache config
+2012-09-19T05:00:00.000Z	chadams42	jagginess	ok wait, that was greek, lol
+2012-09-19T05:06:00.000Z	jagginess	chadams42	http://pastebin.ca/2205438
+2012-09-19T05:06:00.000Z	jagginess	chadams42	i'm assuming you already have a basic http access to a folder.. you might simply just have to add Dav On and the other similar lines.. but you'll manually need to make an htdigest file..
+2012-09-19T05:07:00.000Z	chadams42	jagginess	so dav is already installed?
+2012-09-19T05:07:00.000Z	jagginess	chadams42	nope
+2012-09-19T05:07:00.000Z	jagginess	chadams42	webdav is an apache add-on. You need to enable the apache module. 2- Apache's config needs to be updated, 3- you need an htdigest file
+2012-09-19T05:08:00.000Z	jagginess	chadams42	there's alot of bad guides.. but basically, the apache config isnt complex.. you can pm me.. it takes 2 seconds actually
+2012-09-19T05:09:00.000Z	jagginess	chadams42	ftp doesnt work well through firewalls..
+2012-09-19T05:09:00.000Z	jagginess	chadams42	you dont need to change permissions.. because it's always apache www-data doing the writing
+2012-09-19T05:10:00.000Z	chadams42	jagginess	"... because it's always apache www-data doing the writing" as long as I use webDAV?
+2012-09-19T05:10:00.000Z	jagginess	chadams42	the htdigest authentication file allows you to setup users who can connect to that webdav folder
+2012-09-19T05:10:00.000Z	jagginess	chadams42	webdav=="http+write"
+2012-09-19T05:10:00.000Z	jagginess	chadams42	it's a mountable filesystem

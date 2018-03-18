@@ -1,0 +1,19 @@
+2009-08-25T07:27:00.000Z	Chihork		hi.  I have a problem with my loopback device configuration.  my lo is only assigned an ipv6 address, not an ipv4.  '/etc/init.d/networking start' doesn't work, nor does 'ifup lo'.  I have to manually enter the command 'ifconfig -s lo 127.0.0.1' in order to have a proper configuration.
+2009-08-25T07:28:00.000Z	Chihork		is there some other file I should be looking for network configuration?  I'm looking at /etc/network/interfaces
+2009-08-25T07:29:00.000Z	mnaines	Chihork	What exactly do you need help with?
+2009-08-25T07:29:00.000Z	Chihork	mnaines	I would like to try to figure out why my loopback device isn't being configured properly at boot.
+2009-08-25T07:30:00.000Z	mnaines	Chihork	what exactly is the loopback device saying?
+2009-08-25T07:31:00.000Z	Chihork	mnaines	'ifconfig lo' reports an assigned ipv6 address, but not an ipv4 address.  This is causing numerous problems for me.
+2009-08-25T07:31:00.000Z	mnaines	Chihork	pastebin the output of "ping 127.0.0.1"
+2009-08-25T07:31:00.000Z	mnaines		!pastebin
+2009-08-25T07:33:00.000Z	Chihork	mnaines	There's no response.
+2009-08-25T07:33:00.000Z	mnaines	Chihork	ok...Well, do you have an IPv6 server running?
+2009-08-25T07:34:00.000Z	Chihork	mnaines	I'm not sure.  what kind of server do you mean, a dns server?  And how could I tell?
+2009-08-25T07:37:00.000Z	mnaines	Chihork	Nevermind...Just go to a terminal and type in "ifconfig lo down" then type "ifconfig lo add 127.0.0.1/8" and finally "ifconfig lo up"
+2009-08-25T07:37:00.000Z	mnaines	Chihork	before you bring the interface back up, type "ifconfig lo del" and the IPv6 address and prefix
+2009-08-25T07:39:00.000Z	Chihork	mnaines	I get "127.0.0.1/8: Unknown host"
+2009-08-25T07:39:00.000Z	Chihork	mnaines	when I gry 'ifconfig lo add 127.0.0.1/8'
+2009-08-25T07:39:00.000Z	mnaines	Chihork	That's wierd...127.0.0.1/8 is the default address for a loopback adapter
+2009-08-25T07:40:00.000Z	Chihork	mnaines	very weird :)
+2009-08-25T07:40:00.000Z	mnaines	Chihork	Hmm...Very wierd indeed...I've never seen this happen before in my 11 years working on computers
+2009-08-25T07:41:00.000Z	Chihork	mnaines	when I do 'ifconfig -s lo 127.0.0.1' then all works as expected.

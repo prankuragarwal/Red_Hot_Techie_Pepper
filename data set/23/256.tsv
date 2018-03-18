@@ -1,0 +1,23 @@
+2012-02-27T04:46:00.000Z	starn		for some reason ubuntu/xubuntu will not mount primary "C" partition.. it's 500gb with vists 64bit
+2012-02-27T04:47:00.000Z	humungulous	starn	mount <devspec> <mountpoint> -t ntfs
+2012-02-27T04:48:00.000Z	humungulous	starn	what do you get
+2012-02-27T04:49:00.000Z	humungulous	starn	you get what on stderr
+2012-02-27T04:49:00.000Z	starn	humungulous	i don't know?
+2012-02-27T04:49:00.000Z	humungulous	starn	well it must say something otherwise how do you know its failing
+2012-02-27T04:50:00.000Z	starn	humungulous	says fuse: failed to access mountpoint.
+2012-02-27T04:50:00.000Z	humungulous	starn	are you issuing it through sudo
+2012-02-27T04:51:00.000Z	starn	humungulous	yes.
+2012-02-27T04:51:00.000Z	humungulous	starn	you already tried a different mountpoint
+2012-02-27T04:51:00.000Z	starn	humungulous	yes
+2012-02-27T04:52:00.000Z	starn	humungulous	it mounts the second hard drive just fine.. and mounts the external drives just fine. using thos commands. but it appears to refuse to do so for the one with vista installed on.. and all my hard drives except the one ubuntu is installed on are ntfs.
+2012-02-27T04:53:00.000Z	humungulous	starn	syntax as i get it should be sudo mount -t ntfs-3g /dev/sda1 /mnt/wherever
+2012-02-27T04:56:00.000Z	starn	humungulous	it just says "fuse:failed to access mountpoint /mnt/whatever no such file or directory i've tried /media/whatever  and i get that when i type sudo mount -t ntfs-3g /dev/sda1 /mnt/whatever or /media/whatever . normally use "windows" "vista" what ever i can think of. nothing seems to work.
+2012-02-27T04:57:00.000Z	humungulous	starn	you have to mkdir the mountpoint first
+2012-02-27T04:57:00.000Z	starn	humungulous	i have tried that as well.
+2012-02-27T04:57:00.000Z	humungulous	starn	what permissions on the mountpoint you mkdir'd
+2012-02-27T04:59:00.000Z	starn	humungulous	plus considering the fact i'm trying to put it in /mnt/windows  or /media/windows  it's root folder...
+2012-02-27T04:59:00.000Z	humungulous	starn	whats output of ls -l <that dir you mkdird>
+2012-02-27T05:00:00.000Z	starn	humungulous	it shows a few things.. and what it does show is root.
+2012-02-27T05:01:00.000Z	humungulous	starn	well if its not the obvious things then the next thing to investigate could be what supplemental paramters need to be passed to mount
+2012-02-27T05:04:00.000Z	humungulous	starn	but the message youre getting is saying pretty straight up the mount point isnt accessible and wasnt created in a proper way
+2012-02-27T05:05:00.000Z	humungulous	starn	if mount had an issue with the volume it was mounting it would have an error message for that

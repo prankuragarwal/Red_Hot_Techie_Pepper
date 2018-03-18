@@ -1,0 +1,23 @@
+2012-03-22T00:32:00.000Z	dan3son		Here's my script
+2012-03-22T00:32:00.000Z	dan3son		http://pastebin.com/BJz3UQG0
+2012-03-22T00:34:00.000Z	dan3son		So I figured the script would need the saame
+2012-03-22T00:34:00.000Z	dan3son		'mediatomb' I believe, if started at boot
+2012-03-22T00:35:00.000Z	dan3son		If I do it manually after killing it by 'mediatomb -d' (daemon), I believe it runs under my own user
+2012-03-22T00:37:00.000Z	dan3son		Hmm. I turned it into verbose
+2012-03-22T00:38:00.000Z	dan3son		The output is strange
+2012-03-22T00:38:00.000Z	dan3son		http://pastebin.com/HnTm8SC1
+2012-03-22T00:38:00.000Z	dan3son		It reports its killed it, but it doesn't appear to actually do that
+2012-03-22T00:39:00.000Z	ssta	dan3son	you told it to kill it with SIGHUP.  That doesn't kill it, it tells it to reload its configuration
+2012-03-22T00:33:00.000Z	ssta	dan3son	why are you running that as root?
+2012-03-22T00:33:00.000Z	dan3son	ssta	well in the ssh console I cannot kill it without sudoing
+2012-03-22T00:34:00.000Z	ssta	dan3son	who owns the mediatomb processes?
+2012-03-22T00:37:00.000Z	ssta	dan3son	hmm...only thing that should be run sudo then is the killall... and debug by adding -i to killall to be sure that it's doing what you think it is
+2012-03-22T00:39:00.000Z	ssta	dan3son	that's correct
+2012-03-22T00:39:00.000Z	ssta	dan3son	well, what are you trying to do exactly?
+2012-03-22T00:40:00.000Z	ssta	dan3son	then use killall -15
+2012-03-22T00:40:00.000Z	ssta	dan3son	there's nothing in your script to restart it
+2012-03-22T00:41:00.000Z	dan3son	ssta	haven't got there yet :)
+2012-03-22T00:42:00.000Z	ssta	dan3son	okay.  Well, use -15 and it will (probably) die.  (although a process isn't obliged to die on a SIGTERM, most will behave themselves)
+2012-03-22T01:17:00.000Z	ssta	dan3son	what are you trying to do?
+2012-03-22T01:19:00.000Z	ssta	dan3son	NFIL1=$(echo ${FIL1}.backup.${1}) # should be something close to that
+2012-03-22T01:20:00.000Z	ssta	dan3son	there are a few ways to do it

@@ -1,0 +1,23 @@
+2010-03-22T16:42:00.000Z	tobago		how to set the prompt on the remote server when doing in a shell script:  ssh tobago@$server 'cd /var/log; /bin/bash'
+2010-03-22T16:44:00.000Z	Dr_Willis	tobago	 you set the PS1 variable as needed to set the 'prompt'
+2010-03-22T16:44:00.000Z	Dr_Willis	tobago	 thers dozens of guides  and howtos on bash-promots
+2010-03-22T16:44:00.000Z	tobago	Dr_Willis	like: 'cd /var/log; /bin/bash; echo $PS1' ?
+2010-03-22T16:45:00.000Z	Dr_Willis	tobago	 go read up on the 'bash prompt howto'
+2010-03-22T16:46:00.000Z	Dr_Willis	tobago	 but from what you are asking.. its not clear what you want.
+2010-03-22T16:52:00.000Z	tobago	Dr_Willis	mmh. i read: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/   but setting the $PS1="\u@\h" won't show me the expected prompt.
+2010-03-22T16:58:00.000Z	Dr_Willis	tobago	 then change it to what you want. theres 10000's of things you can use in a prompt
+2010-03-22T16:58:00.000Z	tobago	Dr_Willis	i wanto to connect to remote server by a script using ssh and changing the directory for later use. that's why i tried: ssh tobago@$server 'cd /var/log; /bin/bash; $PS1="\u@\h \W> "'
+2010-03-22T16:59:00.000Z	tobago	Dr_Willis	as you can see i set up the prompt, but the prompt is not visible.
+2010-03-22T17:00:00.000Z	Dr_Willis	tobago	  use export perhaps.
+2010-03-22T17:00:00.000Z	Dr_Willis	tobago	 and you dont set $PS1 you set PS1
+2010-03-22T17:00:00.000Z	Dr_Willis	tobago	 and ive no idea why you have that cd /var/log; /bin/bash in there...
+2010-03-22T17:01:00.000Z	tobago	Dr_Willis	it'sin there to change the directory to /va/log and the /bin/bash is for staying on the server. otherwise the connection quits immediately.
+2010-03-22T17:03:00.000Z	tobago	Dr_Willis	the sense behind the script is to a remote server, change the directory to /var/log and keeping the connection for work.
+2010-03-22T17:04:00.000Z	Dr_Willis	tobago	 you are trying to too much at the same time I think.  when you run bash.. it will do its own init stuff. and you can set the prompt in the bashrc
+2010-03-22T17:05:00.000Z	Dr_Willis	tobago	 ssh has a execut command option i recall also.
+2010-03-22T17:06:00.000Z	Dr_Willis	tobago	 you may want to check out 'screen' with ssh - its very very handy
+2010-03-22T17:08:00.000Z	tobago	Dr_Willis	following the manual of ssh i should do as i did.
+2010-03-22T17:09:00.000Z	Dr_Willis	tobago	 no idea then.  you DO set  PS1  NOT '$PS1' variable.
+2010-03-22T17:09:00.000Z	tobago	Dr_Willis	i can't see an screen option of ssh
+2010-03-22T17:09:00.000Z	tobago	Dr_Willis	yep. i removed the "$"
+2010-03-22T17:09:00.000Z	Dr_Willis	tobago	 screen is a tool you run over ssh. to get enhanced features

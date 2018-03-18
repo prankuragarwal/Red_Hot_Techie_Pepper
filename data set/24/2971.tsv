@@ -1,0 +1,24 @@
+2009-04-29T20:55:00.000Z	sugi		I need help editing my fstab.  I need to correct the data for the my new swap partition.  The fstab says the swap partition is on sda3, but that is incorrect. Because the new swap is on sda5 (which is extedned partition).  I need to add the UUID and /dev of the new swap partition. I think the /dev/ would be /dev/sda5.  But I found the UUID by using sudo blkid, the only problem is where do I put it in my fstab?
+2009-04-29T20:56:00.000Z	sugi		maybe ikonia or jtholmes maybe have a  clue on how to complete this new swap partition?
+2009-04-29T20:58:00.000Z	sugi		﻿I need help editing my fstab.  I need to correct the data for the my new swap partition.  The fstab says the swap partition is on sda3, but that is incorrect. Because the new swap is on sda5 (which is extedned partition).  I need to add the UUID and /dev of the new swap partition. I think the /dev/ would be /dev/sda5.  But I found the UUID by using sudo blkid, the only problem is where do I put it in my fstab?
+2009-04-29T21:00:00.000Z	geirha	sugi	replace «/dev/sda3» with «UUID=the-new-uuid» in /etc/fstab
+2009-04-29T21:01:00.000Z	geirha	sugi	To test, run «swapon -s» to see what swap partitions are in use, and «sudo swapon -a» to mount all swap partitions listed in /etc/fstab
+2009-04-29T21:02:00.000Z	sugi	geirha	isn't the new /dev/ important too?  I mean I know what the new /dev/sda5 and shouldn't that replace the old /dev/ in the fstab?
+2009-04-29T21:03:00.000Z	geirha	sugi	you can use /dev/sda5, UUID=the-uuid or LABEL=the-label to identify a device node. UUID is recommended.
+2009-04-29T21:03:00.000Z	geirha	sugi	If you use UUID, it will look it up under /dev/disk/by-uuid/, in there there should be a symbolic link pointing to /dev/sda5
+2009-04-29T21:06:00.000Z	sugi	geirha	ok, let me run this past you my last version of my fstab. the new line for my new swap in my fstab
+2009-04-29T21:07:00.000Z	geirha	sugi	that looks correct. The following should print /dev/sda5: «readlink -f /dev/disk/by-uuid/1a4d9026-2eb704844-295a-04c7bdf00f3e»
+2009-04-29T21:09:00.000Z	sugi	geirha	it did indeed ?f3e, /dev/sda5?  thank you sir for your time.
+2009-04-29T21:09:00.000Z	geirha	sugi	no problem.
+2009-04-29T21:27:00.000Z	sugi	geirha	I am having some issues, I am not sure if my new swap partition is being actived.  If i input swapon -s (it shows me the all the information for my swap partition) and if I input swapon -a. (it returns with no errors) from a LIVECD everything is fine.... but IF i input swapon -s and swapon -a from the actually OS swapon -s returns with no swap partition and swapon -a says somehting about the UUID being incorrect. I am not sure on th
+2009-04-29T21:28:00.000Z	sugi	geirha	btw, int he fstab, the line for my swap aprtition is now set to "/dev/sda5 swap swap defaults 0 0"  thats normal right?
+2009-04-29T21:30:00.000Z	geirha	sugi	Yes, that should work as long as the harddrive is named sda.
+2009-04-29T21:32:00.000Z	geirha	sugi	«swapon -s» to list swaps in use. «sudo swapon -a» to mount all swap partitions listed in /etc/fstab
+2009-04-29T21:32:00.000Z	sugi	geirha	let me give this another try in the actual OS not from a live CD
+2009-04-29T21:38:00.000Z	sugi	geirha	it still gives me an error after swapon -a "swapon: cannot cannoialize /dev/disk/by-uuid/d6b68080-d330-47ef-9ed8-8f9112c9b741: no sush file or directory///swapon: cannot stat /dev/disk/by-uuid/﻿d6b68080-d330-47ef-9ed8-8f9112c9b741: no such file or directory"
+2009-04-29T21:39:00.000Z	geirha	sugi	do you see it in /dev/disk/by-uuid/ ?
+2009-04-29T21:40:00.000Z	sugi	geirha	I re-input the UUID of the new swap partition. I think it is working now. If I have correctly fixed the fstab... to test it, i would input sudo swapon -a right? if it worked it would return with nothing? no errors. Is this correct?
+2009-04-29T21:42:00.000Z	geirha	sugi	Yes, no output means all is good :)
+2009-04-29T21:42:00.000Z	sugi	geirha	ahh thank you sir.  I am trying up a tutorial on this.  Make sure to find it online. Credit will go to you. :D
+2009-04-29T21:43:00.000Z	geirha	sugi	Cool :)
+2009-04-29T21:44:00.000Z	sugi	geirha	btw, i meant writting, not trying XD hahahah. i think you understand me

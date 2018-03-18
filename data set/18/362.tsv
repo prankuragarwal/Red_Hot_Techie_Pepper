@@ -1,0 +1,18 @@
+2012-08-04T05:51:00.000Z	guybrushsantiago		need help running libreoffice command as www-data (within apache2)
+2012-08-04T05:52:00.000Z	escott	guybrushsantiago	what?? why would you need to do that?
+2012-08-04T05:53:00.000Z	guybrushsantiago	escott	I need to generate a pdf file from a dynamically generated docx file within a Django application (talk about tough requirements)
+2012-08-04T05:54:00.000Z	guybrushsantiago	escott	libreoffice --headles more_stuff seems to do the trick, but I can't run it from my python app since it doesn't seem to have permissions
+2012-08-04T05:54:00.000Z	escott	guybrushsantiago	im sure there are other more appropriate (ie command line) applications that can do docx->pdf conversion
+2012-08-04T05:54:00.000Z	guybrushsantiago	escott	libreoffice is the only one that I've found that does good quality conversions
+2012-08-04T05:55:00.000Z	escott	guybrushsantiago	the permissions really shouldn't matter. unless apparmor or selinux are involved any application can run any binary
+2012-08-04T05:56:00.000Z	guybrushsantiago	escott	it works within my django dev server, but when I try to run it in a real deployment environment (aka in apache) it doesn't work
+2012-08-04T05:56:00.000Z	guybrushsantiago	escott	and there seems to be other people with the same problem
+2012-08-04T05:59:00.000Z	escott	guybrushsantiago	can you run other binaries from django?
+2012-08-04T05:59:00.000Z	guybrushsantiago	escott	yes, just not that one
+2012-08-04T06:00:00.000Z	guybrushsantiago	escott	 and it returns ugly exit codes like 19712
+2012-08-04T06:00:00.000Z	escott	guybrushsantiago	does it work if you unset DISPLAY?
+2012-08-04T06:00:00.000Z	escott	guybrushsantiago	in the development environment that is
+2012-08-04T06:00:00.000Z	guybrushsantiago	escott	how do I do that?
+2012-08-04T06:01:00.000Z	guybrushsantiago	escott	just to clarify, both django server and apache are on the same machine (apache is a replica from my actual deployment server)
+2012-08-04T06:01:00.000Z	escott	guybrushsantiago	i dont know enough about your development environment. im just saying the possibilities are (a) environment is wrong for libre (b) apache is configured not to let you run the application. thats really it
+2012-08-04T06:02:00.000Z	escott	guybrushsantiago	one would think that libreoffice --headless would work even if X variables like $XAUTHORITY and $DISPLAY are unset, but perhaps its buggy

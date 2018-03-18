@@ -1,0 +1,18 @@
+2010-03-02T07:18:00.000Z	K-Rich		could someone help me, i need to set a global env variable at x login
+2010-03-02T07:19:00.000Z	Yendor	K-Rich	You mean when you login as your user?
+2010-03-02T07:19:00.000Z	K-Rich	Yendor	yes..... i would prefer for when any user logs in, webcam issue
+2010-03-02T07:20:00.000Z	K-Rich	Yendor	LD_PRELOAD=/usr/lib/libv4l/v4l2convert.so
+2010-03-02T07:20:00.000Z	Yendor	K-Rich	You can edit /etc/profile
+2010-03-02T07:22:00.000Z	Yendor	K-Rich	sudo $EDITOR /etc/profile (replace $EDITOR with your favorite editor)
+2010-03-02T07:22:00.000Z	K-Rich	Yendor	let me try that and i will return
+2010-03-02T07:23:00.000Z	K-Rich	Yendor	was already on it.....     let me restart and brb with results
+2010-03-02T07:23:00.000Z	Yendor	K-Rich	After the line: if [ "$BASH" ]; then (by default, line 14), add your LD_PRELOAD thing
+2010-03-02T07:37:00.000Z	K-Rich	Yendor	no luck on that.....
+2010-03-02T07:38:00.000Z	Yendor	K-Rich	Hmmm
+2010-03-02T07:39:00.000Z	K-Rich	Yendor	i think i may have figured out a way to just make some scripts though, so i think i got it for now....
+2010-03-02T07:39:00.000Z	Yendor	K-Rich	export LD_PRELOAD=/usr/lib/libv4l/v4l2convert.so
+2010-03-02T07:39:00.000Z	K-Rich	Yendor	in same file?
+2010-03-02T07:39:00.000Z	Yendor	K-Rich	Well, that's what you pasted me earlier, except I added the "export"
+2010-03-02T07:40:00.000Z	Yendor	K-Rich	I think you'll have to make sure the "export" is there.
+2010-03-02T07:40:00.000Z	K-Rich	Yendor	of note, at console and another terminal ' echo $LD_PRELOAD ' displays the correct value
+2010-03-02T07:40:00.000Z	Yendor	K-Rich	Actually, hmm.  I think that'll only work if someone opens a bash shell (terminal).  Not sure if it'll run if they just login to X and attempt to use the webcam

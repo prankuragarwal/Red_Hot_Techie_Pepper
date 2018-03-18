@@ -1,0 +1,22 @@
+2011-02-11T03:20:00.000Z	bnovc		every time I upgrade kernel versions (just with standard updates), my nvidia drive stops working. Right now its broken again. What am I supposed to be doing to avoid this?
+2011-02-11T03:20:00.000Z	bnovc		it always starts working again with some combination of deleting the driver, re-installing it, and deleting my x config
+2011-02-11T03:21:00.000Z	bnovc		I installed with the "additional drivers" interface
+2011-02-11T03:21:00.000Z	bnovc		I believe
+2011-02-11T03:21:00.000Z	ikonia	bnovc	did you download anything from nvidia.com ?
+2011-02-11T03:21:00.000Z	ikonia	bnovc	what is the current kernel version ?
+2011-02-11T03:22:00.000Z	ikonia	bnovc	are you %100 certain
+2011-02-11T03:22:00.000Z	bnovc	ikonia	yes
+2011-02-11T03:22:00.000Z	ikonia	bnovc	odd, seems in line with stable release
+2011-02-11T03:22:00.000Z	bnovc	ikonia	yup
+2011-02-11T03:23:00.000Z	ikonia	bnovc	can you do dpkg -l | grep -i nvidia for me and pastebin it
+2011-02-11T03:24:00.000Z	ikonia	bnovc	ok, so lets have a quick look,
+2011-02-11T03:24:00.000Z	bnovc	ikonia	http://pastie.org/1550686
+2011-02-11T03:26:00.000Z	ikonia	bnovc	your nvidia common component is not current, so that's interesting
+2011-02-11T03:26:00.000Z	ikonia	bnovc	but I don't see that as your problem
+2011-02-11T03:26:00.000Z	ikonia	bnovc	what happens if you "sudo modprobe nvidia"
+2011-02-11T03:27:00.000Z	ikonia	bnovc	ok, now do "sudo find /usr -name nvidia.ko -print "
+2011-02-11T03:28:00.000Z	bnovc	ikonia	nothing
+2011-02-11T03:29:00.000Z	ikonia	bnovc	sorry, that should be "sudo find /lib -name nvidia.ko -print"
+2011-02-11T03:29:00.000Z	ikonia	bnovc	sorry
+2011-02-11T03:30:00.000Z	ikonia	bnovc	not in the current kernel, but in the old ones ?
+2011-02-11T03:31:00.000Z	ikonia	bnovc	it's a bug, get it logged, good find

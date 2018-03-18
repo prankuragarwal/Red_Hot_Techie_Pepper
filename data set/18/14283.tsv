@@ -1,0 +1,18 @@
+2005-08-26T06:43:00.000Z	barongas		I'm trying to find tips where to start troubleshooting on why my mp3-player wont pop up as /dev/sda1. Any ideas?
+2005-08-26T06:43:00.000Z	HappyFool	barongas	take a look at the output of dmesg
+2005-08-26T06:43:00.000Z	HappyFool	barongas	maybe do 'dmesg|tail -f' in a console window, and unplug and plug it in
+2005-08-26T06:46:00.000Z	barongas	HappyFool	When I checked the output of dmesg the only thing regarding usb I could find was seomthing with coreusb finding some hub
+2005-08-26T06:47:00.000Z	HappyFool	barongas	if you run 'dmesg|tail -f' you should see things change as they happen
+2005-08-26T06:47:00.000Z	HappyFool	barongas	alternatively, try 'lsusb' when the device is attached
+2005-08-26T06:48:00.000Z	HappyFool	barongas	you can paste the output of that to the pastebin: http://paste.ubuntulinux.nl
+2005-08-26T06:48:00.000Z	HappyFool	barongas	none?
+2005-08-26T06:49:00.000Z	HappyFool	barongas	oops, my mistake
+2005-08-26T06:49:00.000Z	HappyFool	barongas	tail -f /var/log/dmesg
+2005-08-26T06:50:00.000Z	HappyFool	barongas	anyway, lsusb should at least list something, even if nothing is plugged in (as far as i know)
+2005-08-26T06:50:00.000Z	barongas	HappyFool	It didn't even notice the usb, maybe I'll try another usb port or something if the one on my motherboard hasn't been found by ubuntu..
+2005-08-26T06:52:00.000Z	HappyFool	barongas	hmm. sorry, i'm not sure what the problem is, but it does sound like your usb ports aren't being detected
+2005-08-26T06:52:00.000Z	HappyFool	barongas	you can maybe look at System -> Administration -> Device manager and see if anything USB related is listed there
+2005-08-26T06:52:00.000Z	HappyFool	barongas	ok, good luck
+2005-09-01T16:03:00.000Z	HappyFool	barongas	/dev/loop0 etc, i would guess
+2005-09-01T16:03:00.000Z	HappyFool	barongas	if so, this module (on my machine) /lib/modules/2.6.10-5-386/kernel/drivers/block/loop.ko
+2005-09-01T16:12:00.000Z	barongas	HappyFool	thanks, checking it out

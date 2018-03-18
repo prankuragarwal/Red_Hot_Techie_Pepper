@@ -1,0 +1,21 @@
+2007-10-19T02:44:00.000Z	praecox		what command is executed while trying to enable visual effects? something goes wrong and it says:
+2007-10-19T02:44:00.000Z	praecox		Desktop Effects could not be enabled
+2007-10-19T02:44:00.000Z	praecox		I want to track the problem
+2007-10-19T02:45:00.000Z	praecox		what command is executed while trying to enable visual effects? something goes wrong and it says: Desktop effects could not be enabled. I want to trace the problem down.
+2007-10-19T02:46:00.000Z	jcole	praecox	run it frm command prompt
+2007-10-19T02:46:00.000Z	praecox	jcole	yea, but *what* command?
+2007-10-19T02:47:00.000Z	jcole	praecox	gnome-appearance-properties
+2007-10-19T02:49:00.000Z	jcole	praecox	lspci | grep VGA
+2007-10-19T02:50:00.000Z	praecox	jcole	it's Intel Corporation Mobile GM965/GL960 Integrated Graphics Controller
+2007-10-19T02:52:00.000Z	jcole	praecox	glxinfo | grep direct
+2007-10-19T02:53:00.000Z	praecox	jcole	direct rendering: Yes
+2007-10-19T02:54:00.000Z	jcole	praecox	http://wiki.compiz-fusion.org/Hardware/Blacklist
+2007-10-19T02:55:00.000Z	jcole	praecox	SKIP_CHECKS=yes compiz-manager
+2007-10-19T02:55:00.000Z	jcole	praecox	SKIP_CHECKS=yes compiz
+2007-10-19T03:00:00.000Z	praecox	jcole	all right! it did a thing. I understand I can experience some problems though? where are effects configurable? things like cube and so on?
+2007-10-19T03:01:00.000Z	jcole	praecox	ccsm
+2007-10-19T03:01:00.000Z	praecox	jcole	it's not installed by default, right?
+2007-10-19T03:02:00.000Z	jcole	praecox	should be
+2007-10-19T03:03:00.000Z	praecox	jcole	The program 'ccsm' is currently not installed.  You can install it by typing... so it looks like it isn't.
+2007-10-19T03:03:00.000Z	praecox	jcole	anyway, thank you for your help.
+2007-10-19T03:04:00.000Z	jcole	praecox	ah ok, apt-get install compizconfig-settings-manager

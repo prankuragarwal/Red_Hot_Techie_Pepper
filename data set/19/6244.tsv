@@ -1,0 +1,19 @@
+2008-02-19T09:38:00.000Z	tickbee		Anyone have any ideas why one of my hard drives formatted in ext3, would suddenly lose it's partition?  I see the disk as /dev/hdd but there is no /dev/hdd1 anymore.  This drive was part of a software raid 5 using mdadm, somehow ubuntu lost the partition after restarting.  When I do fdisk -l, i can see the /dev/hdd1 though???
+2008-02-19T09:39:00.000Z	EnvoyRising	tickbee	not a hd genius but does manually mounting produce errors?
+2008-02-19T09:41:00.000Z	tickbee	EnvoyRising	trying to mount it manually just gives me an error saying it can't find the device
+2008-02-19T09:41:00.000Z	tickbee	EnvoyRising	in either /etc/fstab or /etc/mtab
+2008-02-19T09:41:00.000Z	EnvoyRising	tickbee	that was going to be my next question :-\
+2008-02-19T10:16:00.000Z	EnvoyRising	tickbee	yeah, sorry man. you lost me at raid :(
+2008-02-19T10:17:00.000Z	tickbee	EnvoyRising	ya, the problem is i don't know if it's the raid that screwed it up, or ubuntu
+2008-02-19T10:17:00.000Z	EnvoyRising	tickbee	you could always try running a livecd and see if its recognized. that would at least let you know that its a config problem and not hardware failure
+2008-02-19T10:19:00.000Z	tickbee	EnvoyRising	it's worth trying, though I'd still be effectively stuck, I have a feeling it's not hardware failure, everything looks fine in fdisk -l, and mdadm is finicky enough that it most likely then not, is part of the problem
+2008-02-19T10:19:00.000Z	EnvoyRising	tickbee	 i know you say mounting fails but have you tried a forced mount?
+2008-02-19T10:20:00.000Z	tickbee	EnvoyRising	even forcing it still gives it an error that it can't find it
+2008-02-19T10:21:00.000Z	tickbee	EnvoyRising	it's all really weird, if the partition didn't show up in fdisk -l, i would think something with the hardware is up, but since it shows up fine, and everything looks right, i just don't see what differentiates it from any of my other hard drives which have no problem showing up
+2008-02-19T10:22:00.000Z	EnvoyRising	tickbee	damn, i'm stumped. **flashes the hd guru man signal and waits for help**
+2008-02-19T10:24:00.000Z	tickbee	EnvoyRising	lol, well thanks for the suggestions anyways, i hate problems like this, i don't even know what to google for, it's such an obscure problem, looking for "detect disk but not partition" and things like it gives me nothing useful
+2008-02-19T10:25:00.000Z	EnvoyRising	tickbee	i hear ya. i just hate when people come here and CAN'T find help. back of my head i'm thinkin "darn, and thats one of the few things we have over microsoft"
+2008-02-19T14:31:00.000Z	tickbee	EnvoyRising	hey, i'm still working on my hard drive, but i think i have a clue, it may be that my raid device /dev/md0 is trying to load before the /dev/hd* devices, in that case, it would kind of make sense why the whole thing would fall apart, i think i need to force them to mount in a consistent order
+2008-02-19T14:32:00.000Z	EnvoyRising	tickbee	doesn't fstab have a mechanism for specifying boot order? or where is that set at?
+2008-02-19T14:34:00.000Z	tickbee	EnvoyRising	i think so, what i was doing though was letting ubuntu automagically detect/mount those hard drives, the only device i was specifically mounting was my /dev/md0
+2008-02-19T14:34:00.000Z	tickbee	EnvoyRising	I would think, it would load the fstab line by line and load them implicity as such, think that's what i'll try

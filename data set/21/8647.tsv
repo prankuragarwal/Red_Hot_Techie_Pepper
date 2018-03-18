@@ -1,0 +1,21 @@
+2006-08-03T06:09:00.000Z	Cainus		hey can anyone tell me how to make a program run at startup?
+2006-08-03T06:11:00.000Z	Cainus		boot
+2006-08-03T06:11:00.000Z	mcphail	Cainus	use cron
+2006-08-03T06:13:00.000Z	Cainus	mcphail	what user does that run it as?
+2006-08-03T06:14:00.000Z	mcphail	Cainus	you own user. Root is easy too if you need that.
+2006-08-03T06:14:00.000Z	Cainus	mcphail	ahh okay... I'll give it a shot
+2006-08-03T06:14:00.000Z	mcphail	Cainus	if you need to run it as root use "sudo crontab -e -u root"
+2006-08-03T06:15:00.000Z	Cainus	mcphail	nope... don't need to... I just wanted to make sure it didn't run as root
+2006-08-03T06:27:00.000Z	Cainus	mcphail	can I do @reboot sshd ?  didn't seem to work...
+2006-08-03T06:28:00.000Z	mcphail	Cainus	if it is sshd you want to run, that _is_ better using the init.d system (which is designed for services). _But_ ubuntu should run it at reboot as default anyway if you used apt-get to install it
+2006-08-03T06:30:00.000Z	Cainus	mcphail	crontab -e starts up my text editor with an empty file.... is that right?  and the single line should be @reboot /what/ever ?
+2006-08-03T06:31:00.000Z	mcphail	Cainus	yes, but don't use this method to run sshd
+2006-08-03T06:31:00.000Z	Cainus	mcphail	: there were a couple of other things I wanted to run too... but it looked like it was saving to a temp file...
+2006-08-03T06:32:00.000Z	mcphail	Cainus	the other things you want to run should follow that protocol
+2006-08-03T06:32:00.000Z	mcphail	Cainus	if your syntax is correct, crontab won't complain when you save the file
+2006-08-03T06:33:00.000Z	Cainus	mcphail	it's not complaining, but the filename looks like a temp file name
+2006-08-03T06:34:00.000Z	mcphail	Cainus	what do you mean?
+2006-08-03T06:34:00.000Z	Cainus	mcphail	just wondering if there's a problem there, because nothing seems to be running
+2006-08-03T06:35:00.000Z	mcphail	Cainus	as long as it says "crontab: installing new crontab" you are fine
+2006-08-03T06:35:00.000Z	Cainus	mcphail	ahh okay
+2006-08-03T06:47:00.000Z	Cainus	mcphail	shouldn't @reboot run stuff when a machine is powered down and back up?  it's just not... and the path and script name are right, because I can sopy/paste the string and it runs...

@@ -1,0 +1,24 @@
+2009-09-08T02:59:00.000Z	basilesque		I updated my video card drivers now when I start ubuntu it is completely black, how do I fix this???
+2009-09-08T02:59:00.000Z	DasEi	basilesque	boot to safemode, then ..
+2009-09-08T03:00:00.000Z	DasEi	basilesque	sudo cp /etc/X11/xorg.conf  /etc/X11/xorg_broken  then sudo dpkg-reconfigure xserver-xorg
+2009-09-08T03:01:00.000Z	DasEi	basilesque	: at grub, press esc, choose recoverymode
+2009-09-08T03:02:00.000Z	DasEi	basilesque	: did you get it ?
+2009-09-08T03:04:00.000Z	DasEi	basilesque	: netroot or root,  scroll down the options
+2009-09-08T03:10:00.000Z	DasEi	basilesque	: after it told you it overwrote xorg,  , sudo /etc/init.d/gdm restart
+2009-09-08T03:13:00.000Z	DasEi	basilesque	: humm, strange , then back in safemode: nano /etc/X11/xorg  , blank all lines, try to start with empty xorg
+2009-09-08T03:14:00.000Z	DasEi	basilesque	: (ctrl-o stores emptyfile, ctrl-x leaves nano
+2009-09-08T03:15:00.000Z	DasEi	basilesque	sure, typo, sorry
+2009-09-08T03:17:00.000Z	DasEi	basilesque	or remove-purge it
+2009-09-08T03:18:00.000Z	DasEi	basilesque	was it a deb ? nvidia-sh ?
+2009-09-08T03:19:00.000Z	DasEi	basilesque	on your own risk, as its broken right now anyway, try envyng
+2009-09-08T04:14:00.000Z	DasEi	basilesque	what kind of screen are you using ?
+2009-09-08T04:15:00.000Z	DasEi	basilesque	try to reconfigure again
+2009-09-08T04:19:00.000Z	DasEi	basilesque	heh... safemode , then sudo dpkg-reconfigure -a
+2009-09-08T04:21:00.000Z	DasEi	basilesque	got it back ?
+2009-09-08T04:22:00.000Z	DasEi	basilesque	this issue occured on using system's hardwaredriver ?
+2009-09-08T04:25:00.000Z	DasEi	basilesque	I would try the nvidia-sh (latest) again, before install build essential, then do : sudo init 1 and install from there
+2009-09-08T04:26:00.000Z	DasEi	basilesque	sudo apt-get install build-essential linux-restricted-modules-`uname -r`
+2009-09-08T04:27:00.000Z	DasEi	basilesque	sudo apt-get update && sudo apt-get uprade, then try nvid-sh from safemode (init 1) again
+2009-09-08T04:29:00.000Z	DasEi	basilesque	sudo apt-get update && sudo apt-get upgrade
+2009-09-08T04:35:00.000Z	DasEi	basilesque	can you find a choice under system > hardwaredrivers ?
+2009-09-08T04:38:00.000Z	DasEi	basilesque	ah, now restart x

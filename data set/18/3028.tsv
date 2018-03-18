@@ -1,0 +1,18 @@
+2010-07-05T05:29:00.000Z	underdev		hi.  I have 300meg of memory listed as used in system monitor, but system monitor also reports that i'm using 1.5 GIG of ram (not including cache).  What's going on?
+2010-07-05T05:30:00.000Z	underdev		the 300 megs of ram is what i calculated by adding all the memory listed for all the processes.
+2010-07-05T05:31:00.000Z	squircle	underdev	what does "free -m" say?
+2010-07-05T05:32:00.000Z	underdev	squircle	-/+ buffers/cache: used 1550
+2010-07-05T05:33:00.000Z	squircle	underdev	it's quite possible that you didn't add the memory of all threads of each process
+2010-07-05T05:34:00.000Z	underdev	squircle	possibly.  but i'm not running much of anything right now, certainly not 1.5g worth
+2010-07-05T05:35:00.000Z	squircle	underdev	linux uses a lot of space for disk caches and stuff; it's using your memory as efficiently as possible
+2010-07-05T05:36:00.000Z	underdev	squircle	doesn't look like it.  Cache is reported seperately.
+2010-07-05T05:36:00.000Z	underdev	squircle	looks like a huge memory leak to me
+2010-07-05T05:36:00.000Z	squircle	underdev	"free -m" will give you the most accurate data. if you pastebin the entire output of the command, I'll be able to tell you the truth. and as far as I know the memory leak was fixed
+2010-07-05T05:37:00.000Z	squircle	underdev	all three are memory hogs. they're browsers after all!
+2010-07-05T05:38:00.000Z	underdev	squircle	but they are closed now.  http://pastebin.com/Hp5yvLS8
+2010-07-05T05:38:00.000Z	squircle	underdev	don't forget that 1329 + 80 of the 2959 used are caches
+2010-07-05T05:38:00.000Z	squircle	underdev	"used" is everything-in (including caches)
+2010-07-05T05:39:00.000Z	underdev	squircle	right. do you see that i'm using 1.5gig not including caches?
+2010-07-05T05:40:00.000Z	underdev	squircle	and again, in system monitor, if i add up the memory listed by the processes listed, it's about 300meg.  which seems about right.
+2010-07-05T05:41:00.000Z	squircle	underdev	you are correct. i'd suggest running "watch free" and seeing how quickly the memory is increasing; report a bug if you think it's a memory leak
+2010-07-05T05:41:00.000Z	squircle	underdev	no worries :)

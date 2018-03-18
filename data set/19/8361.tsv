@@ -1,0 +1,19 @@
+2007-04-07T09:46:00.000Z	jsievert		need some help with sound
+2007-04-07T09:47:00.000Z	jsievert		something changed and now i do not get any sound after I login
+2007-04-07T09:47:00.000Z	jsievert		when the login screen shows up when i boot up i hear the drums though, has anyone seen anything like that
+2007-04-07T09:49:00.000Z	Fuzzywuzzy	jsievert	May also want to run alsamixer
+2007-04-07T09:51:00.000Z	Fuzzywuzzy	jsievert	check /etc/group and make sure your user is in the audio group
+2007-04-07T09:53:00.000Z	Fuzzywuzzy	jsievert	what's the output of ls -ld /dev/snd ?
+2007-04-07T09:55:00.000Z	jsievert	Fuzzywuzzy	well  is root:root my issue?
+2007-04-07T09:55:00.000Z	Fuzzywuzzy	jsievert	hmmm.. d'oh sorry, drop the -d option, should be crw-rw---- 1 root audio 116, 9
+2007-04-07T09:59:00.000Z	Fuzzywuzzy	jsievert	you may also want to check if you have an /etc/asound.conf or ~/.asoundrc file present.  That's where my current problem is
+2007-04-07T10:00:00.000Z	jsievert	Fuzzywuzzy	i have nither
+2007-04-07T10:05:00.000Z	jsievert	Fuzzywuzzy	got id
+2007-04-07T10:06:00.000Z	jsievert	Fuzzywuzzy	got it
+2007-04-07T10:06:00.000Z	Fuzzywuzzy	jsievert	cool - was it the permissions?
+2007-04-07T10:07:00.000Z	Fuzzywuzzy	jsievert	and on that note, how many speaker channels do you have working?
+2007-04-07T10:07:00.000Z	jsievert	Fuzzywuzzy	looks like some where down the line the GID of audio changed from 18 to 29 messing up my ldap
+2007-04-07T10:07:00.000Z	jsievert	Fuzzywuzzy	just 2
+2007-04-07T10:11:00.000Z	Fuzzywuzzy	jsievert	yeah, the installer's weird that way
+2007-04-07T10:12:00.000Z	jsievert	Fuzzywuzzy	sorry i am not going to be much help with weird alsa stuff, when it starts working is where i stop
+2007-04-07T10:13:00.000Z	Fuzzywuzzy	jsievert	Amen.  Whoever wrote the APIs for that crap must have lived in Redmond for a while

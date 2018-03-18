@@ -1,0 +1,21 @@
+2007-05-22T10:14:00.000Z	Crane_	dinochopins	are you behind a router
+2007-05-22T10:14:00.000Z	Crane_	dinochopins	it could be that that range of IP is not available
+2007-05-22T10:14:00.000Z	dinochopins	Crane_	: no.. still a stand alone one
+2007-05-22T10:15:00.000Z	dinochopins	Crane_	: my server is still an isolated one, not connected to any network
+2007-05-22T10:15:00.000Z	dinochopins	Crane_	: I need to migrate some data from PLESK, so I need to set the live IP
+2007-05-22T10:15:00.000Z	Crane_	dinochopins	then you computer connect direct to the modem that is going out to internet?
+2007-05-22T10:16:00.000Z	dinochopins	Crane_	: there is a modem, but also not up :)
+2007-05-22T10:16:00.000Z	dinochopins	Crane_	: it's ok... what should I do ?
+2007-05-22T10:16:00.000Z	dinochopins	Crane_	: the network script seems ok, it looks like the one that I going to replace soon
+2007-05-22T10:16:00.000Z	dinochopins	Crane_	: weird...
+2007-05-22T10:17:00.000Z	Crane_	dinochopins	I'm confused, so you are connected to a modem but it is down. You are not connected to a network or router?
+2007-05-22T10:20:00.000Z	Crane_	dinochopins	look at /etc/network/interfaces
+2007-05-22T10:20:00.000Z	Crane_	dinochopins	That is where you can set up a static IP
+2007-05-22T10:21:00.000Z	dinochopins	Crane_	ok.. will take a look at it
+2007-05-22T10:21:00.000Z	Crane_	dinochopins	your DNS servers should be listed in /etc/resolv.conf  if you are connected to a netwwork
+2007-05-22T10:22:00.000Z	dinochopins	Crane_	hm... seems like it is the problem. Wait, I have broadcast address that is different from my IP's network
+2007-05-22T10:23:00.000Z	Crane_	dinochopins	or xxx.xxx.xxx.255 rather
+2007-05-22T10:23:00.000Z	Crane_	dinochopins	202.57.4.255
+2007-05-22T10:24:00.000Z	dinochopins	Crane_	yes
+2007-05-22T10:25:00.000Z	dinochopins	Crane_	i think I have problem here => iface eth0 inet static and iface eth0:1 inet static
+2007-05-22T10:25:00.000Z	dinochopins	Crane_	2 adressess ? How come it doesn't show up in Gnome networking tool ?

@@ -1,0 +1,19 @@
+2009-07-31T19:55:00.000Z	carldani	tyler_johnston	either the machine is down or the firewalling is screwed or the network interface is screwed
+2009-07-31T19:59:00.000Z	carldani	tyler_johnston	wait a second. http on that machine still works flawlessly, but all other network services are dead?
+2009-07-31T20:00:00.000Z	tyler_johnston	carldani	well nothing can get access to the machine now since the update and unfortunately i just ran it without looking at what packages were being updated and now im trying to find the log file
+2009-07-31T20:00:00.000Z	carldani	tyler_johnston	and console login doesn't work either?
+2009-07-31T20:02:00.000Z	carldani	tyler_johnston	heh. I remember such a problem. Nasty.
+2009-07-31T20:02:00.000Z	tyler_johnston	carldani	what was your resolution?
+2009-07-31T20:03:00.000Z	carldani	tyler_johnston	it was an ip address conflict. pinging out worked because the destination host learned the MAC of the source from the ping, but pinging it from the outside while it was idle didn't work
+2009-07-31T20:04:00.000Z	carldani	tyler_johnston	I also had a MAC address conflict once (yes, MAC addresses are claimed to be globally unique, but in fact they aren't for many vendors)
+2009-07-31T20:06:00.000Z	carldani	tyler_johnston	it's easy to check. are you in the same subnet with the problem machine?
+2009-07-31T20:06:00.000Z	carldani	tyler_johnston	(no routers in between)
+2009-07-31T20:07:00.000Z	carldani	tyler_johnston	which is the network interface of a working machine you can use for diagnosis? eth1? eth0?
+2009-07-31T20:09:00.000Z	carldani	tyler_johnston	on the diagnosis machine, run "arping -b -I eth0 1.2.3.4" where 1.2.3.4 is the IP of the non-responding server. You should get exactly one response with one MAC address for every ARP you send out.
+2009-07-31T20:10:00.000Z	carldani	tyler_johnston	replace eth0 with the correct interface of the diagnosis machine.
+2009-07-31T20:12:00.000Z	tyler_johnston	carldani	only 1 mac address responded
+2009-07-31T20:34:00.000Z	carldani	tyler_johnston	if only one MAC address responded, I'm out of ideas except for a MAC address collision.#
+2009-07-31T20:35:00.000Z	tyler_johnston	carldani	yeah thats what its looking like
+2009-07-31T20:35:00.000Z	carldani	tyler_johnston	it this a nforce chipset?
+2009-07-31T20:39:00.000Z	tyler_johnston	carldani	i figured it out, hah it was an issue with my laptop D:
+2009-07-31T20:41:00.000Z	carldani	tyler_johnston	details please

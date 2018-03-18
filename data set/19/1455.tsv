@@ -1,0 +1,19 @@
+2011-01-19T23:07:00.000Z	julia_23		GAHHHHHHHHHHHH!
+2011-01-19T23:07:00.000Z	julia_23		can someone help me with tar commands?
+2011-01-19T23:07:00.000Z	julia_23		I am trying to tar my home folder
+2011-01-19T23:07:00.000Z	julia_23		if i run tar -cp all I get is a window full of gibberish
+2011-01-19T23:07:00.000Z	llutz	julia_23	tar cf /tmp/backup.tar /home
+2011-01-19T23:08:00.000Z	julia_23	llutz	thanks hun
+2011-01-19T23:08:00.000Z	julia_23	llutz	should i add the P to keep permissions?
+2011-01-19T23:09:00.000Z	llutz	julia_23	-p only works when untaring
+2011-01-19T23:10:00.000Z	llutz	julia_23	use split on the resulting tar-file or pipe tar throught split
+2011-01-19T23:11:00.000Z	julia_23	llutz	split? never heard of it, its a terminal command is it?
+2011-01-19T23:11:00.000Z	llutz	julia_23	it is
+2011-01-19T23:12:00.000Z	llutz	julia_23	tar -cvf /tmp/backup.tar / | pipe -b 4000m           to get 4gb parts
+2011-01-19T23:12:00.000Z	llutz	julia_23	tar -cvf /tmp/backup.tar /home | pipe -b 4000m           to get 4gb parts           sorry
+2011-01-19T23:13:00.000Z	llutz	julia_23	tar -cvf /tmp/backup.tar $HOME | split -b 4000m      3rd time and hopefully correct now, sry again
+2011-01-19T23:14:00.000Z	julia_23	llutz	does | equate "and" ?
+2011-01-19T23:15:00.000Z	llutz	julia_23	no, its a pipe, giving output from the lefthand-command to input of the righthand command
+2011-01-19T23:16:00.000Z	julia_23	llutz	i see; okay thank you
+2011-01-19T23:17:00.000Z	julia_23	llutz	When I extract the tar will it automatically detect the split files? and what would be the command to extract with permissions intact?
+2011-01-19T23:18:00.000Z	llutz	julia_23	unfortunately not, use "cat tar1 tar2 tar3 | tar -xvf -"

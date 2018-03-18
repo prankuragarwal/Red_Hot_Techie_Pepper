@@ -1,0 +1,24 @@
+2012-04-17T21:57:00.000Z	koshy	thunder1212	do you want me to explain the steps ?
+2012-04-17T21:54:00.000Z	koshy	thunder1212	go ahead and explain
+2012-04-17T21:55:00.000Z	thunder1212	koshy	 hi, i have a huawei ec 306 modem and its not being detected by network manager! i am using ubuntu 11.04 .
+2012-04-17T21:56:00.000Z	koshy	thunder1212	please enter "lsusb" in a terminal and copy/paste the line about the huawei modem so that I can investigate
+2012-04-17T21:57:00.000Z	thunder1212	koshy	the id is 12d1:1505
+2012-04-17T21:57:00.000Z	koshy	thunder1212	I found this http://yuriytkach.blogspot.fr/2011/11/cdma-huawei-ubuntu-linux.html
+2012-04-17T21:57:00.000Z	koshy	thunder1212	I don't read russian but I think you can try what it seems to say
+2012-04-17T21:58:00.000Z	koshy	thunder1212	I'm pretty sure it's a udev rule problem, also make sure you have the "option" kernel module installed
+2012-04-17T21:58:00.000Z	thunder1212	koshy	yes pl explain the steps..
+2012-04-17T21:59:00.000Z	thunder1212	koshy	whats option kernel modules
+2012-04-17T22:00:00.000Z	koshy	thunder1212	does your modem appears as a CD drive ?
+2012-04-17T22:00:00.000Z	thunder1212	koshy	no
+2012-04-17T22:01:00.000Z	koshy	thunder1212	please run (as root) the command on the website, starting with "echo" and ending with huawei1550.rules (everything on the same line, it's split in 3 lines on the website)
+2012-04-17T22:04:00.000Z	thunder1212	koshy	the out put ::  http://pastebin.com/MnbTGNuJ
+2012-04-17T22:06:00.000Z	koshy	thunder1212	the idea is to create a file named /etc/udev/rules.d/45-huawei1550.rules that contains SUBSYSTEM=="usb", SYSFS{idProduct}=="1505", SYSFS{idVendor}=="12d1", RUN+="/lib/udev/modem-modeswitch --vendor 0x12d1 --product 0x1505 --type option-zerocd"
+2012-04-17T22:06:00.000Z	thunder1212	koshy	there is no output..
+2012-04-17T22:07:00.000Z	thunder1212	koshy	ok..
+2012-04-17T22:08:00.000Z	thunder1212	koshy	should i create  the file there and the lines
+2012-04-17T22:08:00.000Z	thunder1212	koshy	all in one line
+2012-04-17T22:09:00.000Z	koshy	thunder1212	yes, all in one line in the file
+2012-04-17T22:11:00.000Z	thunder1212	koshy	the file is already there, may be got created when i entered the command..
+2012-04-17T22:12:00.000Z	thunder1212	koshy	what next..
+2012-04-17T22:14:00.000Z	koshy	thunder1212	ok, try removing and reinserting your usb key
+2012-04-17T22:20:00.000Z	thunder1212	koshy	i even restarted the system.. nothing workd

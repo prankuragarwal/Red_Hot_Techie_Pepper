@@ -1,0 +1,24 @@
+2010-03-31T11:00:00.000Z	Rudd-O		quick usre question: I have 9.10 installed and I want to force a SPECIFIC KERNEL to boot with grub2.  how do I do that?
+2010-03-31T11:02:00.000Z	Rudd-O		there are TWO kernels installed
+2010-03-31T11:03:00.000Z	Rudd-O		the one that ships with ubuntu, and an update.  the update HANGS the machine.  but booting with the one tha tships with ubuntu, is FINE
+2010-03-31T11:03:00.000Z	Rudd-O		now, I want to force the specific kernel tha tWORKS, to boot
+2010-03-31T11:03:00.000Z	Rudd-O		but grub2 is dynamic and there seems no way to be do what I want to do
+2010-03-31T11:03:00.000Z	Rudd-O		because it will fail as soon as the kernel is updated if I set a specific kernel to boot, because it is with numbers
+2010-03-31T11:04:00.000Z	Rudd-O		like default=0, that will fail
+2010-03-31T11:05:00.000Z	chelz	Rudd-O	finding out why the newer kernel has issues might help
+2010-03-31T11:05:00.000Z	Rudd-O	chelz	I dont have time for that.  the machine DEADLOCKS and I can't wait until the bug report gets through and it gets fixed.
+2010-03-31T11:06:00.000Z	chelz	Rudd-O	https://help.ubuntu.com/community/StartUpManager
+2010-03-31T11:07:00.000Z	chelz	Rudd-O	of course the caveat of using a gui to mess with system files applies, stuff could break
+2010-03-31T11:08:00.000Z	Rudd-O	chelz	sure, I already backed up the stuff.
+2010-03-31T11:22:00.000Z	chelz	Rudd-O	remove newer kernels and pin the relevant kernel packages in synaptic
+2010-03-31T11:23:00.000Z	Rudd-O	chelz	ok that sounds very workable
+2010-03-31T11:23:00.000Z	Rudd-O	chelz	steps to do that?
+2010-03-31T11:23:00.000Z	chelz	Rudd-O	select packages, go to Package and click on "Lock version"
+2010-03-31T11:24:00.000Z	chelz	Rudd-O	ok one way to fix this is to use a wildcard pinning in apt_preferences for linux kernel stuff
+2010-03-31T11:26:00.000Z	chelz	Rudd-O	in apt_preferences you can set all linux kernel packages other than the one you currently have installed to a priority low enough that they don't get installed
+2010-03-31T11:27:00.000Z	chelz	Rudd-O	you really should solve the bug though
+2010-03-31T11:27:00.000Z	Rudd-O	chelz	sure, but first things first lets get this machine stable
+2010-03-31T11:28:00.000Z	chelz	Rudd-O	well not installing kernel updates is bad for security. what's the issue that happens with the newer kernel anyway?
+2010-03-31T11:28:00.000Z	Rudd-O	chelz	this is a laptop.  security is not a problem here.
+2010-03-31T11:28:00.000Z	Rudd-O	chelz	whenever wireless is used, the machine HANGS HARD
+2010-03-31T11:28:00.000Z	chelz	Rudd-O	what brand and model number?

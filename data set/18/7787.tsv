@@ -1,0 +1,18 @@
+2009-09-20T02:39:00.000Z	adok		guys, for a Pentium M Processor, should i compile the SMP Kernel?
+2009-09-20T02:41:00.000Z	dajhorn	adok	No, probably not.
+2009-09-20T02:41:00.000Z	dajhorn	adok	But you're not going to get much more performance by using a custom kernel.
+2009-09-20T02:42:00.000Z	dajhorn	adok	You'll get a slightly different codepath if you put "nosmp" on the command line for the generic kernel.
+2009-09-20T02:42:00.000Z	adok	dajhorn	the thing is, i need to compile a new kernel, to patch some drivers
+2009-09-20T02:43:00.000Z	dajhorn	adok	Which drivers?
+2009-09-20T02:43:00.000Z	dajhorn	adok	Kernel options go in the /boot/grub/menu.lst file.  Look for the kopt= lines.
+2009-09-20T02:43:00.000Z	adok	dajhorn	i want to patch the broadcom wifi driver, so it allows injection with aircrack-ng
+2009-09-20T02:45:00.000Z	dajhorn	adok	Search for a tutorial at ubuntuforums.org to do this with "DKMS".
+2009-09-20T02:45:00.000Z	dajhorn	adok	You can get the desired driver change without recompiling a custom kernel.  (I think.)
+2009-09-20T02:46:00.000Z	adok	dajhorn	well, thats the main reason, but also, i was rly curious about the performance i would get without smp suport
+2009-09-20T02:52:00.000Z	adok	dajhorn	can i make a new grub option just to test the nosmp option?
+2009-09-20T02:53:00.000Z	dajhorn	adok	To try it, reboot, and push <esc> at the grub prompt.  Then use the 'e'ditor to add it to the kernel line.
+2009-09-20T02:53:00.000Z	dajhorn	adok	Don't actually change menu.lst until you're done testing different options.
+2009-09-20T02:53:00.000Z	adok	dajhorn	kk, ty sir
+2009-09-20T02:54:00.000Z	dajhorn	adok	Np.  Read-up on grub if you do kernel tuning.
+2009-09-20T03:03:00.000Z	adok	dajhorn	well, it boots!! i added the nosmp option in the grub menu, but now... i would like to make somekind of benchmark to see any diference, any idea what can i do to compare the performance with and without smp?
+2009-09-20T03:04:00.000Z	dajhorn	adok	Use your favorite package tool to search for "benchmark".   eg:   apt-cache search benchmark

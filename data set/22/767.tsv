@@ -1,0 +1,22 @@
+2011-03-25T16:53:00.000Z	ZULO		how i can fix that..?
+2011-03-25T16:54:00.000Z	ZULO		pluggin the wire rj45
+2011-03-25T16:55:00.000Z	ZULO		to router with 4 ports
+2011-03-25T16:57:00.000Z	ZULO		yes
+2011-03-25T16:59:00.000Z	ZULO		i tried with other wires, but when connect the wire internet turn off
+2011-03-25T16:59:00.000Z	ZULO		i think ubuntu want connect for internet via eth
+2011-03-25T17:01:00.000Z	ZULO		i can paste resut here?
+2011-03-25T17:01:00.000Z	ZULO		result*?
+2011-03-25T17:02:00.000Z	sacarlson	ZULO	I think you need like https://help.ubuntu.com/community/Internet/ConnectionSharing
+2011-03-25T17:03:00.000Z	ZULO	sacarlson	i saw that guide, but if i can connect both interfaces at the same time
+2011-03-25T17:03:00.000Z	sacarlson	ZULO	and also disable network manager
+2011-03-25T17:04:00.000Z	sacarlson	ZULO	sudo service network-manager stop
+2011-03-25T17:07:00.000Z	sacarlson	ZULO	terry: I assume he wants to share wlan0 with eth0 ?  note eth0 has no ipv4 address
+2011-03-25T17:11:00.000Z	ZULO	sacarlson	if i turn off my networkmanager ill lose mi internet connection?
+2011-03-25T17:12:00.000Z	sacarlson	ZULO	not if it already connected
+2011-03-25T17:13:00.000Z	sacarlson	ZULO	but I'm still not sure what you want to do as terry says you don't want to share wlan0 with eth0 and your switch box
+2011-03-25T17:14:00.000Z	sacarlson	ZULO	ok then just give your eth0 an address sudo ifconfig eth0 192.168.4.2 and share that
+2011-03-25T17:15:00.000Z	sacarlson	ZULO	and again look at what's needed here https://help.ubuntu.com/community/Internet/ConnectionSharing
+2011-03-25T17:16:00.000Z	sacarlson	ZULO	you need to make sure that the address won't conflict
+2011-03-25T17:17:00.000Z	sacarlson	ZULO	since your wlan0 address must come from a dhcp server you must use that and setup an address on eth0 that won't conflict
+2011-03-25T17:18:00.000Z	sacarlson	ZULO	this is your wlan0 address 192.168.1.33  so your eth0 can be 192.168.2.33  or anything other than 192.168.1.x
+2011-03-25T17:21:00.000Z	sacarlson	ZULO	 you CANT use 192.168.1.34 !!!!

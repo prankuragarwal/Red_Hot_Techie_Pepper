@@ -1,0 +1,22 @@
+2010-10-04T17:21:00.000Z	helpmeplease		I have a drive that currently has three partitions on it that i can see using sudo fdisk -l... however when i use sudo cfdisk /dev/sdb1 i don't see the same information... i need to repartion the drive to have only one partition as it is only to be used to backup files
+2010-10-04T17:22:00.000Z	helpmeplease		how can i accomplish this?
+2010-10-04T17:22:00.000Z	ActionParsnip	helpmeplease	you run fdisk on the drive, not the partition
+2010-10-04T17:24:00.000Z	helpmeplease	ActionParsnip	i get the following upon sudo cfdisk /dev/sdb: FATAL ERROR: Bad primary partition 1: Partition ends in the final partial cylind
+2010-10-04T17:24:00.000Z	ActionParsnip	helpmeplease	doesn't sound healthy, can gparted do anything with it?
+2010-10-04T17:25:00.000Z	helpmeplease	ActionParsnip	i can mount /dev/sdb1 and it appears to be fine... so i don't know what youi mean by healthy.. what is gparted? there is no man page for it on my system... unless it needs to be installed... and why would it be a problem with gparted
+2010-10-04T17:26:00.000Z	ActionParsnip	helpmeplease	i suggest you fsck it when it is unmounted, as well as the other partitions
+2010-10-04T17:27:00.000Z	helpmeplease	ActionParsnip	it returns fsck from util-linux-ng 2.17.2
+2010-10-04T17:29:00.000Z	helpmeplease	ActionParsnip	would it be easier somehow to wipe all the partitions on the drive and reparition? i thought that was accomplished with cfdisk... i know that fdisck can use it but isn't cfdisk just a ncurses interface for fdisk?
+2010-10-04T17:30:00.000Z	ActionParsnip	helpmeplease	if its an option, then it could be used as a last effort
+2010-10-04T17:34:00.000Z	helpmeplease	ActionParsnip	i have no need for the data on that drive so i don't really care how it is accomplished just need a mean of wipeing the drive, giving it one partition, and then i can copy the files to it that i need to
+2010-10-04T17:35:00.000Z	ActionParsnip	helpmeplease	sounds like the solution then, if the data is disposable I'd go for it
+2010-10-04T17:36:00.000Z	helpmeplease	ActionParsnip	i will if someone can tell me how to do it... i thought that i should just sudo cfdisk /dev/sdb and then wipe out the exesting partitions then create on new one... however i get that FATAL ERROR when is run it
+2010-10-04T17:36:00.000Z	ActionParsnip	helpmeplease	if you use gparted you can set it up using that
+2010-10-04T17:45:00.000Z	helpmeplease	ActionParsnip	i don't know why gparted worked and cfdisk didn't but thank you
+2010-10-04T17:45:00.000Z	ActionParsnip	helpmeplease	sometimes its the opposite way ;)  glad you got the gold chief
+2010-10-04T17:46:00.000Z	helpmeplease	ActionParsnip	guess you are refering to yourself :)... now if i can just get my ubuntu-server to run on the machine that is to serve as the fileserver here... i have a whole company of employees unable to work atm
+2010-10-04T17:47:00.000Z	ActionParsnip	helpmeplease	nice :(  get samba flyinig and you are away :)
+2010-10-04T17:47:00.000Z	helpmeplease	ActionParsnip	i did until the hard drive crashed... thank god i had the data on other drives
+2010-10-04T17:48:00.000Z	ActionParsnip	helpmeplease	you'd be suprised the amount of folks WITHOUT backup :(
+2010-10-04T17:48:00.000Z	helpmeplease	ActionParsnip	for some reason the installation on the new drive is failing to boot when there are no erros during installation... i'm running a memtest now to determine if that might be the issue
+2010-10-04T17:49:00.000Z	helpmeplease	ActionParsnip	i was supposed to be working on setting up rsync with cron and ssh, had only got to the rsync portion and only 12 hours before the crash!

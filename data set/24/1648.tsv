@@ -1,0 +1,24 @@
+2009-11-07T01:47:00.000Z	FCalderon		Hi all
+2009-11-07T01:48:00.000Z	FCalderon		is it just me or 9.10 KK takes longer to boot even though seems to run faster after it's fully loaded?
+2009-11-07T01:49:00.000Z	Vhozard	FCalderon	Which part takes longer?
+2009-11-07T01:50:00.000Z	FCalderon	Vhozard	the entire loading process, before it asks for the login and password
+2009-11-07T01:51:00.000Z	FCalderon	Vhozard	My laptop used to boot in 30-45 seconds, now it takes over a minute before I get the login prompt (forgot how it's called in gnome)
+2009-11-07T01:51:00.000Z	Vhozard	FCalderon	Boot then without the "splash" and "quiet" option and see what takes so long.
+2009-11-07T01:53:00.000Z	Vhozard	FCalderon	You can do the by pressing "e" when you are at GRUB.
+2009-11-07T01:54:00.000Z	FCalderon	Vhozard	will try it, I was thinking about tuning the kernel to make it slimmer and removing some unused stuff like BT support.
+2009-11-07T01:54:00.000Z	FCalderon	Vhozard	the video made by tuxradar.com shows Kk loading faster than 9.04 so I guess it must be something specific to my laptop
+2009-11-07T01:54:00.000Z	Vhozard	FCalderon	Tuning the kernel will make it faster to boot, but alot more trouble when you are upgrading stuff.
+2009-11-07T01:55:00.000Z	Vhozard	FCalderon	Yes, but do you use EXT4 on Kk?
+2009-11-07T01:55:00.000Z	FCalderon	Vhozard	My best guess would be no, I haven't really checked but it was EXT3 and I didn't see any fs conversion during the upgrade
+2009-11-07T01:56:00.000Z	Vhozard	FCalderon	I really recommend you backing up your files and creating a new EXT4 filesystem. It makes *alot*  of difference.
+2009-11-07T02:13:00.000Z	FCalderon	Vhozard	sorry for my late reply, do I  need to re-create the entire filesystem or is there any ext3-2-ext4 tool?
+2009-11-07T02:13:00.000Z	Vhozard	FCalderon	Well, there is. You can convert an ext3 fs to ext4, but only new files will have the EXT4-extents.
+2009-11-07T02:14:00.000Z	Vhozard	FCalderon	So only newly created files will have the EXT4 advantages.
+2009-11-07T02:15:00.000Z	FCalderon	Vhozard	My PC (which is currently downloading the upgrade files) has over 1 Tb of files, so "backing up" isn't really easy
+2009-11-07T02:15:00.000Z	Vhozard	FCalderon	Do you have a large DATA partition and a small ubuntu/system partition?
+2009-11-07T02:16:00.000Z	FCalderon	Vhozard	No, it's all in the same partition
+2009-11-07T02:16:00.000Z	Vhozard	FCalderon	Thats not very smart of you, lol
+2009-11-07T02:17:00.000Z	FCalderon	Vhozard	I know, what happens is that I used to have a separate data partition, but I had to remove a hard drive so I just upgraded the old one and resized the partition
+2009-11-07T02:19:00.000Z	FCalderon	Vhozard	If I copy files from an EXT3 fs to an EXT4 fs, do they get the EXT4 extensions in the process?
+2009-11-07T02:19:00.000Z	Vhozard	FCalderon	Yes, I think so.
+2009-11-07T02:20:00.000Z	Vhozard	FCalderon	Read this: http://www.cyberciti.biz/tips/linux-convert-ext3-to-ext4-file-system.html

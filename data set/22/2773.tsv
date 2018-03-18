@@ -1,0 +1,22 @@
+2009-03-11T06:11:00.000Z	Nivenaya		Tom: your issue is what, that your system doesn't login automatically?
+2009-03-11T06:12:00.000Z	TomFromWkUp	Nivenaya	It is supposed to login automaticly, but the problem is that it does not boot up... I can'T access it via ssh either..
+2009-03-11T06:13:00.000Z	Nivenaya	TomFromWkUp	you might try a server distro of Ubuntu.  Technically, I don't think Intrepid lets you SSH into the system unless it's logged in - that's how my laptop works.
+2009-03-11T06:13:00.000Z	TomFromWkUp	Nivenaya	but when I boot it up with a monitor it logs automatically and everything is fine. It's only when I unplug the monitor ..
+2009-03-11T06:15:00.000Z	Nivenaya	TomFromWkUp	that IS pretty odd.  if I had to guess X is trying to detect your monitor in a way that doesn't fail gracefully on your video card, check /var/log/Xorg.0.log
+2009-03-11T06:17:00.000Z	Nivenaya	TomFromWkUp	Aah!  My bad.  Try /var/log/Xorg.0.log.old
+2009-03-11T06:20:00.000Z	TomFromWkUp	Nivenaya	the last line is: (II) UnloadModule: "evdev"
+2009-03-11T06:20:00.000Z	TomFromWkUp	Nivenaya	it's screaming about no mouse and keyboard, but nothing about the monitor, I'll pastebin the logs
+2009-03-11T06:21:00.000Z	Nivenaya	TomFromWkUp	that's a good idea and what I was about to suggest.
+2009-03-11T06:21:00.000Z	Nivenaya	TomFromWkUp	out of curiosity what happens when you boot the system and then plug the monitor in?
+2009-03-11T06:22:00.000Z	TomFromWkUp	Nivenaya	everything works fine, flawlessly. ssh, login, gnome, etc.. vnc too
+2009-03-11T06:22:00.000Z	TomFromWkUp	Nivenaya	http://pastebin.com/m342f4d3e
+2009-03-11T06:24:00.000Z	Nivenaya	TomFromWkUp	all that stuff works... even if you boot up without the monitor and add it later but -not- until you add the monitor?
+2009-03-11T06:24:00.000Z	TomFromWkUp	Nivenaya	it seems to freeze or stop somewhere. I then reboot with a monitor plugged in and it works.
+2009-03-11T06:25:00.000Z	Nivenaya	TomFromWkUp	okay.  one moment.
+2009-03-11T06:32:00.000Z	Nivenaya	TomFromWkUp	a couple questions about the log output if I may - first, is that /var/log/Xorg.0.conf or /var/log/Xorg.conf.old?
+2009-03-11T06:33:00.000Z	TomFromWkUp	Nivenaya	it's the .log.old
+2009-03-11T06:35:00.000Z	Nivenaya	TomFromWkUp	okay.  the way it works is that when you boot, the log.old is deleted and Xorg.0.log is renamed to Xorg.0.log.old.  so this log is only from the failed boot if you'd only booted successfully once.
+2009-03-11T06:36:00.000Z	TomFromWkUp	Nivenaya	yep I gave you the defective log
+2009-03-11T06:43:00.000Z	Nivenaya	TomFromWkUp	neat.  It seems like X is starting fine, so I may be out of ideas.  Although - have you tried the closed-source nvidia driver?  it's vaguely possible that the nv driver chokes somewhere after xorg load when no monitor is present.
+2009-03-11T06:56:00.000Z	Nivenaya	TomFromWkUp	you running Intrepid?
+2009-03-11T07:01:00.000Z	TomFromWkUp	Nivenaya	if you wanna see more logs: http://ubuntuforums.org/showthread.php?t=1092912

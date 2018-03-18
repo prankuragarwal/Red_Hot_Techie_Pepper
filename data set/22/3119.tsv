@@ -1,0 +1,22 @@
+2009-03-08T03:04:00.000Z	rconan		I deleted my /etc/samba directory... how can I get the default config files back?
+2009-03-08T03:05:00.000Z	softwarejonas	rconan	sudo dpkg-reconfigure samba
+2009-03-08T03:05:00.000Z	rconan	softwarejonas	/usr/sbin/dpkg-reconfigure: samba is broken or not fully installed.
+2009-03-08T03:06:00.000Z	softwarejonas	rconan	did you build it from source?
+2009-03-08T03:06:00.000Z	rconan	softwarejonas	I tried reinstalling it to get the conf files back but it failed at the configure stage of spkg
+2009-03-08T03:06:00.000Z	rconan		s/spkg/dpkg
+2009-03-08T03:07:00.000Z	softwarejonas	rconan	did you use the package manager or apt-get ? or did you download and build the source?
+2009-03-08T03:08:00.000Z	rconan	softwarejonas	I used apt-get
+2009-03-08T03:08:00.000Z	rconan		it's ubuntu-server...
+2009-03-08T03:09:00.000Z	softwarejonas	rconan	try to "sudo apt-get remove --purge samba" first .... but you will get rid of all samba configuration/etc... files.
+2009-03-08T03:11:00.000Z	rconan	softwarejonas	still failed installing
+2009-03-08T03:11:00.000Z	softwarejonas	rconan	any error messages?
+2009-03-08T03:11:00.000Z	rconan	softwarejonas	http://rafb.net/p/UcpEHM70.html
+2009-03-08T03:11:00.000Z	rconan		the config files still aren't there
+2009-03-08T03:13:00.000Z	softwarejonas	rconan	what does "sudo /etc/init.d/samba status" return?
+2009-03-08T03:14:00.000Z	rconan	softwarejonas	ok... the obvious... /etc/samba/* belong to samba-common not samba
+2009-03-08T03:15:00.000Z	softwarejonas	rconan	i have samba and it returns:
+2009-03-08T03:15:00.000Z	softwarejonas		$ sudo /etc/init.d/samba status
+2009-03-08T03:15:00.000Z	softwarejonas		 * nmbd is running
+2009-03-08T03:15:00.000Z	softwarejonas		 * smbd is running
+2009-03-08T03:15:00.000Z	rconan	softwarejonas	I fixed it... the config files belong to a different package...
+2009-03-08T03:16:00.000Z	softwarejonas	rconan	okay.

@@ -1,0 +1,23 @@
+2010-03-12T02:43:00.000Z	M0E_lnx		hi all, I have a problem trying to get cpu scaling to work
+2010-03-12T02:43:00.000Z	M0E_lnx		seems to be stuck @ 3.6ghz
+2010-03-12T02:43:00.000Z	M0E_lnx		I've been able to scale this cpu down in other distros
+2010-03-12T02:44:00.000Z	erUSUL	M0E_lnx	do you have the cpufreq applet in the panel ?
+2010-03-12T02:44:00.000Z	M0E_lnx	erUSUL	yes I do
+2010-03-12T02:44:00.000Z	erUSUL	M0E_lnx	click on it; which governor are you using ? ondemand?
+2010-03-12T02:46:00.000Z	erUSUL	M0E_lnx	so is ondemand or what?
+2010-03-12T02:46:00.000Z	M0E_lnx	erUSUL	yes
+2010-03-12T02:46:00.000Z	erUSUL	M0E_lnx	:/ what cpu is this? checked bios settings?
+2010-03-12T02:47:00.000Z	erUSUL	M0E_lnx	can you paste the output of « sudo cpufreq-info » ?
+2010-03-12T02:48:00.000Z	erUSUL	M0E_lnx	is the module loaded ?
+2010-03-12T02:48:00.000Z	M0E_lnx	erUSUL	lsmod shows no acpi-cpufreq loaded
+2010-03-12T02:49:00.000Z	erUSUL	M0E_lnx	lsmod | grep p4 ; if not do « sudo modprobe p4-clockmod »
+2010-03-12T02:50:00.000Z	erUSUL	M0E_lnx	« sudo modprobe p4-clockmod »
+2010-03-12T02:51:00.000Z	erUSUL	M0E_lnx	weel we know why it does not go down current policy: frequency should be within 3.60 GHz and 3.60 GHz.
+2010-03-12T02:51:00.000Z	M0E_lnx	erUSUL	so, how do we change that?
+2010-03-12T02:51:00.000Z	erUSUL	M0E_lnx	if you cnage governor to powersave ?
+2010-03-12T02:53:00.000Z	M0E_lnx	erUSUL	http://pastie.org/865669 new cpufreq-info after changing governor to powersave
+2010-03-12T02:54:00.000Z	erUSUL	M0E_lnx	:( can you unload acpi-cpufreq
+2010-03-12T02:54:00.000Z	erUSUL	M0E_lnx	then load  « sudo modprobe p4-clockmod »
+2010-03-12T02:54:00.000Z	M0E_lnx	erUSUL	no...
+2010-03-12T02:55:00.000Z	M0E_lnx	erUSUL	oot@vlhost-desktop:/home/vlhost# modprobe -r acpi-cpufreq
+2010-03-12T02:56:00.000Z	erUSUL	M0E_lnx	i see is compiled in... you are stuck with this situation. you make a bug report in launchpad

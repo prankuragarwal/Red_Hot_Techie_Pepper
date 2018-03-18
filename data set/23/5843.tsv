@@ -1,0 +1,23 @@
+2011-10-18T00:03:00.000Z	Zeike		The permissions on /var/run/mpd reset everytime I reboot, anybody know how to prevent that?
+2011-10-18T00:04:00.000Z	fritsch	Zeike	nope
+2011-10-18T00:04:00.000Z	fritsch	Zeike	this is what i would looking for first
+2011-10-18T00:05:00.000Z	fritsch	Zeike	how do you hange the permissions after you booted?
+2011-10-18T00:06:00.000Z	Zeike	fritsch	what?
+2011-10-18T00:07:00.000Z	fritsch	Zeike	if you boot and see the right wrong - what are you doing then?
+2011-10-18T00:07:00.000Z	Zeike	fritsch	if the see the... right wrong?
+2011-10-18T00:07:00.000Z	fritsch	Zeike	you issue chown -R mpd:mpd /var/run/mpd?
+2011-10-18T00:07:00.000Z	fritsch	Zeike	sorry for my bad english: the rights of the folder
+2011-10-18T00:08:00.000Z	Zeike	fritsch	its ok.  Yeah, well I run mpd as my local user, so I have to chown -R brandon:audio /var/run/mpd
+2011-10-18T00:08:00.000Z	fritsch	Zeike	ah then your problem ist just in mpd conf
+2011-10-18T00:08:00.000Z	fritsch	Zeike	just add hier, that mpd is run with your user
+2011-10-18T00:08:00.000Z	fritsch	Zeike	so the init script will do the right thing
+2011-10-18T00:09:00.000Z	Zeike	fritsch	no, mpd.conf has the correct user set.  But each boot /var/run/mpd is set to mpd:audio
+2011-10-18T00:09:00.000Z	fritsch	Zeike	in /etc/mpd.conf there is user variable
+2011-10-18T00:09:00.000Z	fritsch	Zeike	change it to "your username"
+2011-10-18T00:09:00.000Z	fritsch	Zeike	per default it is owned by mpd user
+2011-10-18T00:10:00.000Z	fritsch	Zeike	btw. why are you running it with your rights?
+2011-10-18T00:10:00.000Z	Zeike	fritsch	the variable in mpd.conf is set to my username.  I'm running it with my rights because that's the only way to get it to play nice with pulseaudio.
+2011-10-18T00:11:00.000Z	fritsch	Zeike	oh i see
+2011-10-18T00:11:00.000Z	fritsch	Zeike	you could use the hack in /etc/rc.local then
+2011-10-18T00:11:00.000Z	Zeike	fritsch	I guess that's what I'll have to do, thanks
+2011-10-18T00:11:00.000Z	fritsch	Zeike	mkdir -p /var/run/mpd ; chown youruser:yourgroup -R /var/run/mpd

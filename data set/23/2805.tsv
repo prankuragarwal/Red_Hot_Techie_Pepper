@@ -1,0 +1,23 @@
+2008-11-30T02:10:00.000Z	makario		Hey. How can I assign an alias to a host? I want to say ssh hostname instead of ssh 192.168.1.14
+2008-11-30T02:10:00.000Z	zsquareplusc	makario	you can manually map names to ips in /etc/hosts
+2008-11-30T02:12:00.000Z	zsquareplusc	makario	then you need 2 names. like host and host-ext
+2008-11-30T02:13:00.000Z	makario	zsquareplusc	All right, that's not too much of a hassle. Thanks!
+2008-11-30T02:48:00.000Z	zsquareplusc	makario	by random people? they need to have an account, no?   you can encrypt your data
+2008-11-30T02:50:00.000Z	makario	zsquareplusc	It's an audio workstation for my church. The random people who use the account that automatically logs in. I could go the route of a separate account, I guess, but I'd still need it secured. How does one encrypt data?
+2008-11-30T02:51:00.000Z	zsquareplusc	makario	there are several ways. you can encrypt single files (nautlis encrypt, gnupg) or partitions or loop mounted disk images (loop-aes)
+2008-11-30T02:52:00.000Z	zsquareplusc	makario	but multiple people that access the data is not so easy.
+2008-11-30T02:53:00.000Z	makario	zsquareplusc	Which encryption way is the best? I'd just put it all in a folder, say "Videos" or "Music" and lock down the folder. rmitchell I'd still be able to stream, though, right? What if I used, say, a mediatomb?
+2008-11-30T02:53:00.000Z	zsquareplusc	makario	if you are the only one with root access, using file permissions can also help, so that others can not look at your files. but someone that can boot a live cd can access them
+2008-11-30T02:55:00.000Z	makario	zsquareplusc	I'm not. The default account (the one that automatically logs in) also has adminstrative privileges.
+2008-11-30T02:55:00.000Z	zsquareplusc	makario	with ecryptfs (creates a Private folder) partitions and loop-aes you need to have the files mounted to access them. the file permissions (should) ensure that no one else on the box sees these files
+2008-11-30T02:56:00.000Z	makario	zsquareplusc	Could I use ecryptfs and have a mediatomb or jinzora user access the files?
+2008-11-30T02:57:00.000Z	zsquareplusc	makario	it's going to be difficult if an oter user has admin rights too..
+2008-11-30T02:59:00.000Z	makario	zsquareplusc	Okay, plan change. What is the best way to hide a folder on the default account, and still allow "system users" to access it? It doesn't have to be ultra-secure, most of the people around here aren't too tech-savvy.
+2008-11-30T03:00:00.000Z	zsquareplusc	makario	you can create a folder somewhere and use the file permissions. you can create a separate group for all non admin users that are allowed to use it. but each users needs his own account
+2008-11-30T03:01:00.000Z	makario	zsquareplusc	All right. I think I'm getting ideas now.
+2008-11-30T03:02:00.000Z	zsquareplusc	makario	default accound for random users with admin rights.. you're sure you want that?
+2008-11-30T03:03:00.000Z	makario	zsquareplusc	I know, right? That's what I said. But sometimes they need to install stuff (like today Sound Converted needed to be installed quickly.)
+2008-11-30T03:04:00.000Z	zsquareplusc	makario	you can restrict sudo to single applications. so you could only allow synaptic, but that also not a perfect solution
+2008-11-30T03:04:00.000Z	makario	zsquareplusc	How does that work?
+2008-11-30T03:05:00.000Z	zsquareplusc	makario	man sudoers
+2008-11-30T03:05:00.000Z	makario	zsquareplusc	Thanks.

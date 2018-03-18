@@ -1,0 +1,23 @@
+2008-05-09T04:35:00.000Z	Mimi		~~~Question~~~  I want to add sudo mount /dev/sdb1  to my sessions    so its mounted when I log in -  but it will ask me for root pasword! how do i do it so it doesnt ask?
+2008-05-09T04:36:00.000Z	Mimi		!init
+2008-05-09T04:37:00.000Z	soundray_	Mimi	make an entry in fstab and use the 'users,noauto' options
+2008-05-09T04:37:00.000Z	Mimi	soundray_	 doesnt work
+2008-05-09T04:37:00.000Z	soundray_	Mimi	can you elaborate
+2008-05-09T04:37:00.000Z	Mimi	soundray_	 doesnt mount at boot whenn i do that
+2008-05-09T04:38:00.000Z	soundray_	Mimi	you still have to run a mount command from your login scripts. It won't need a password, though.
+2008-05-09T04:41:00.000Z	soundray_	Mimi	you need a file with two lines: first    #!/bin/bash    second     mount /your/mountpoint
+2008-05-09T04:41:00.000Z	Mimi	soundray_	 thats it? :D where do I save it? then chmod +x uh?
+2008-05-09T04:41:00.000Z	soundray_	Mimi	save this to /home/mimi/bin  and run chmod +x on it
+2008-05-09T04:42:00.000Z	soundray_	Mimi	then call it from System-Preferences-Session-Startup programs
+2008-05-09T04:45:00.000Z	Mimi	soundray_	 thank you very much for your help, im going to test it now... baaai! :)
+2008-05-09T04:49:00.000Z	soundray_	Mimi	what did you call the mount script, and where did you save it?
+2008-05-09T04:50:00.000Z	Mimi	soundray_	   ~/bin like you said   called it   mount-usb
+2008-05-09T04:51:00.000Z	soundray_	Mimi	and when you run '~/bin/mount-usb' in a terminal, what happens?
+2008-05-09T04:51:00.000Z	Mimi	soundray_	  aaah.... Unprivileged user can not mount NTFS block devices using the external FUSE
+2008-05-09T04:56:00.000Z	Mimi	soundray_	   im trying to fix the problem with http://ntfs-3g.org/support.html#unprivileged   .... do you know what the second box means?  (the chown root.ntfsuser one)
+2008-05-09T04:57:00.000Z	soundray_	Mimi	I wouldn't do that. If you add yourself to the fuse group ('sudo adduser $USER fuse'), that should fix the problem (retry your script afterwards)
+2008-05-09T04:57:00.000Z	Mimi	soundray_	 thanks *gives it a try*
+2008-05-09T04:58:00.000Z	soundray_	Mimi	I mean, log out and log back in, then retry the script
+2008-05-09T04:58:00.000Z	Mimi	soundray_	 The user `luisa' is already a member of `fuse'
+2008-05-09T04:58:00.000Z	soundray_	Mimi	okay, I take it all back
+2008-05-09T04:59:00.000Z	soundray_	Mimi	that guide doesn't seem to be made for ubuntu, though

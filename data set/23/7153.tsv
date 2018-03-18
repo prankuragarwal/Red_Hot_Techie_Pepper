@@ -1,0 +1,23 @@
+2005-10-18T12:46:00.000Z	BOB1234	rob_p	i got another comp
+2005-10-18T12:47:00.000Z	rob_p	BOB1234	 Ok.  So boot up the Linux box and let's check a few things.
+2005-10-18T12:48:00.000Z	BOB1234		k
+2005-10-18T12:50:00.000Z	BOB1234	rob_p	ok im in what should i do first try to open network-admin ?
+2005-10-18T12:52:00.000Z	rob_p	BOB1234	 Let's look at your /etc/network/interfaces file.
+2005-10-18T12:54:00.000Z	rob_p	BOB1234	 How many network interfaces do you have in that box?
+2005-10-18T12:57:00.000Z	BOB1234	rob_p	I have 1 network interface - just the wireless
+2005-10-18T12:58:00.000Z	rob_p	BOB1234	 What chipset?
+2005-10-18T12:58:00.000Z	BOB1234	rob_p	: i think its atheros or however  u  say it
+2005-10-18T13:00:00.000Z	rob_p	BOB1234	 Do a, "lspci -v" and it should show up in the list.  Once you know what card it is, you can then google for the chipset for your card.  We have to know what it is in order to know what driver to pursue installing.
+2005-10-18T13:06:00.000Z	BOB1234	rob_p	It says atheros next to the d-link device
+2005-10-18T13:06:00.000Z	rob_p	BOB1234	 Is it possibly a AR5004 design?  Is AR5004 listed in the output?
+2005-10-18T13:07:00.000Z	BOB1234	rob_p	: AR5212 I see there
+2005-10-18T13:08:00.000Z	rob_p	BOB1234	 Ah, ok.  Let's see if Ubuntu loaded a driver for it.  Does iwconfig recognize your wireless card?
+2005-10-18T13:10:00.000Z	BOB1234	rob_p	iwconfig didnt do anything
+2005-10-18T13:12:00.000Z	rob_p	BOB1234	 Yeah.  I thought that would be the case.  Your card appears to be of the Broadcom family.  Unfortunately that has very limited support on Linux.  I suspect because of the manufacturer being closed with their hardware info.  Makes it tough to write drivers for things without having to reverse engineer them.
+2005-10-18T13:13:00.000Z	BOB1234	rob_p	so am I t3h screwdzores?
+2005-10-18T13:13:00.000Z	rob_p	BOB1234	 Well, I'd do some googling and see if maybe ndiswrapper can be used.
+2005-10-18T13:14:00.000Z	BOB1234		But WTF!!! the network admin detected my wireless only thing is it keeps freaking LOCKING UP when I try to edit the properties
+2005-10-18T13:14:00.000Z	rob_p	BOB1234	 I suspect that it's locking up because it can't load a driver for it.
+2005-10-18T13:15:00.000Z	BOB1234		so I guess im never going to get to use linux
+2005-10-18T13:16:00.000Z	rob_p	BOB1234	 You're better off editing your /etc/network/interfaces file and disabling your wireless configuration until you can figure out the driver issue.  That will probably keep network-admin from locking up.
+2005-10-18T13:23:00.000Z	rob_p	BOB1234	 I'm certainly not suggesting that you give up!  Chances are, you might get at least some basic functionality from your card by looking into alternatives such as ndiswrapper or some other open source driver alternative for it.  Look into ndiswrapper and madwifi http://sourceforge.net/projects/madwifi/ and hopefully your card can be made to work... somewhat.  Good luck!

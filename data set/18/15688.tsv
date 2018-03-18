@@ -1,0 +1,18 @@
+2005-02-17T15:05:00.000Z	CreeVal		Anyone who can help me with automounting an NTFS volume? Ive added the line found on www.ubuntuguide.org , but when booting it says that special device /dev/sda1 does not excist... Wich it does because i can mount it when i enter gnome desktop... Any ideas?
+2005-02-17T15:06:00.000Z	syn-ack	CreeVal	Yeah, like Im sure the manual on line states, do you have a SCSI device installed?
+2005-02-17T15:06:00.000Z	CreeVal		Yeah its a SATA drive...
+2005-02-17T15:06:00.000Z	syn-ack		are the sATA drivers installed, CreeVal
+2005-02-17T15:07:00.000Z	CreeVal		Yes... Because i can mount it in gnome desktop... But not "premount" it...
+2005-02-17T15:07:00.000Z	syn-ack		So you are having issues with /etc/fstab
+2005-02-17T15:08:00.000Z	CreeVal		Yeah...
+2005-02-17T15:08:00.000Z	syn-ack		Whats the line?
+2005-02-17T15:08:00.000Z	CreeVal		2 seck
+2005-02-17T15:08:00.000Z	CreeVal		sec*
+2005-02-17T15:08:00.000Z	CreeVal	syn-ack	this is the line i currently use: /dev/sda1       /media/windows  ntfs    umask=0222      0       0
+2005-02-17T15:11:00.000Z	syn-ack	CreeVal	try this: /dev/sda1                    /mnt/win2k              ntfs            ro,auto,uid=1000,gid=1000 0 0
+2005-02-17T15:12:00.000Z	CreeVal	syn-ack	will do...
+2005-02-17T15:13:00.000Z	CreeVal	syn-ack	rebooting now...
+2005-02-17T15:16:00.000Z	CreeVal	syn-ack	Didn't work, but thx for trying ;)
+2005-02-17T15:16:00.000Z	syn-ack	CreeVal	I took that straight from the docs. theres something else wrong then
+2005-02-17T15:16:00.000Z	CreeVal	syn-ack	most likely yes
+2005-02-17T15:17:00.000Z	syn-ack	CreeVal	as root, fdisk -l

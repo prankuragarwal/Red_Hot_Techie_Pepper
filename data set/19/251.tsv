@@ -1,0 +1,19 @@
+2012-05-22T17:25:00.000Z	pfalcon		Hi! We're having troubles with accessing EC2 S3-based Ubuntu mirror: Failed to fetch http://us-east-1.ec2.archive.ubuntu.com.s3.amazonaws.com/ubuntu/pool/main/g/gcc-defaults/g++_4.5.2-1ubuntu3_amd64.deb 403 Forbidden
+2012-05-22T17:26:00.000Z	pfalcon		anybody might have an idea what can be wrong with it?
+2012-05-22T17:26:00.000Z	tdn	pfalcon	1: check if you can access it from another site, 2: tcptraceroute it.
+2012-05-22T17:27:00.000Z	pfalcon	tdn	essentially, we have it in automated build system in the cloud, and some (and only some) packages started to throw 403 couple of hours ago
+2012-05-22T17:28:00.000Z	tdn	pfalcon	check tcptraceroute?
+2012-05-22T17:28:00.000Z	tdn	pfalcon	and check if you can reach it from elsewhere. Also, do you use any proxy?
+2012-05-22T17:29:00.000Z	pfalcon	tdn	do you have an idea if Ubuntu EC2 S3 mirror is under maintenance now?
+2012-05-22T17:29:00.000Z	tdn	pfalcon	no, did you check the things I suggested?
+2012-05-22T17:31:00.000Z	pfalcon	tdn	tcptraceroute works, its some .deb files referenced in Packages file are gone from their location apparently
+2012-05-22T17:31:00.000Z	tdn	pfalcon	can you get those packages from other networks? (from the same mirror)
+2012-05-22T17:32:00.000Z	tdn	pfalcon	and I am not interested in if tcptraceroute "works", obviously you can reach the server if you get 403. However, maybe the route is different and the enpoint different. Maybe a transparent proxy?
+2012-05-22T17:32:00.000Z	pfalcon	tdn	not really, without lot of manual hacking around. again, it's automated system which "just works". or breaks ;-)
+2012-05-22T17:33:00.000Z	tdn	pfalcon	well, right now it has "broken", so you must do some manual debugging.
+2012-05-22T17:34:00.000Z	tdn	pfalcon	which automation system do you use?
+2012-05-22T17:35:00.000Z	pfalcon	tdn	https://android-build.linaro.org/jenkins/
+2012-05-22T17:36:00.000Z	pfalcon	tdn	and before doing any changes, I'd just like to know what's the status of us-east-1.ec2.archive.ubuntu.com.s3.amazonaws.com
+2012-05-22T17:37:00.000Z	tdn	pfalcon	ok, I do not know Jenkins. I use MetaConfig myself ( http://www.metaconfig.com )
+2012-05-22T17:38:00.000Z	pfalcon	tdn	any hints about Ubuntu EC2 S3 mirror status, like "it is known to work as of now"/"it is known not to work"/"i don't know"? thanks.
+2012-05-22T17:41:00.000Z	tdn	pfalcon	I do not know. I use a different mirror. Try asking your vendor?

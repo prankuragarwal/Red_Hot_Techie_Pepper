@@ -1,0 +1,19 @@
+2007-03-05T06:42:00.000Z	slylyias		Hi, I'm using ubuntu on my new x86-64 computer, and I'm trying to ssh in to a remote unix cluster and run things like emacs and ddd there. However I can't seem to get a graphical interface. What do I need to do?
+2007-03-05T06:42:00.000Z	kelsin	slylyias	you said you're sshing in but want a graphical interface, can you be more specific?
+2007-03-05T06:43:00.000Z	kelsin	slylyias	yes that gives you a text connection, that's all ssh does by default. do you want a remote desktop type of thing, or do you want to be able to run a remote graphical app and have it show up on your desktop?
+2007-03-05T06:45:00.000Z	kelsin	slylyias	as long as the remote server has it enabled, edit your /etc/ssh/ssh_config file (sudo gedit /etc/ssh/ssh_config) and make sure you change the two lines about ForwardX11 to uncommented and "yes"
+2007-03-05T06:45:00.000Z	kelsin	slylyias	(if you have access to the remote server there is an option in their /etc/ssh/sshd_config file to do the same, that has to be enabled)
+2007-03-05T06:46:00.000Z	kelsin	slylyias	it "should" work if both the server and your client have their config files to say it is
+2007-03-05T06:46:00.000Z	kelsin	slylyias	if you don't have root access on the machine you probably can change it's sshd settings
+2007-03-05T06:52:00.000Z	slylyias	kelsin	I don't seem to have gedit on the computer.
+2007-03-05T06:53:00.000Z	slylyias	kelsin	Sudo: gedit: command not found"
+2007-03-05T06:53:00.000Z	kelsin	slylyias	you can install it with "sudo aptitude install gedit" then
+2007-03-05T06:55:00.000Z	kelsin	slylyias	kate
+2007-03-05T06:56:00.000Z	slylyias	kelsin	I got it to open in kate but I got a bunch of errors. Where can I post them because it will scroll off screen here.
+2007-03-05T06:59:00.000Z	slylyias	kelsin	SUCCESS! I have a graphical window! Thank you.
+2007-03-05T06:59:00.000Z	kelsin	slylyias	np
+2007-03-05T07:00:00.000Z	kelsin	slylyias	most distributions have that off by default ont he clients and not the server, ussually have to edit that file, glad it works
+2007-03-06T12:12:00.000Z	kelsin	slylyias	you have to download the code from the cvs server, compile and install it yourself
+2007-03-06T12:12:00.000Z	kelsin	slylyias	probably not something you want to mess with if you didn't know what cvs was to begin with
+2007-03-06T12:13:00.000Z	slylyias	kelsin	I want to compile and install something from source, I keep hitting that wall, no time like the present to learn (especially since I'm on an amd 64 and so often have to compile from source to get something)
+2007-03-06T12:15:00.000Z	kelsin	slylyias	then look up some cvs tutorials online, you use cvs to download the code, then you do the normal compiling stuff, probably reading the README file included with the code is a good start on that

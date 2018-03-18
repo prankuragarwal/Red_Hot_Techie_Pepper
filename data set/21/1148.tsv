@@ -1,0 +1,21 @@
+2011-01-24T19:57:00.000Z	amh345		i've just ran sudo wpa_supplicant -Dwext -iwlan0 -c/etc/wpa_supplicant.conf  i see in termainal it says that it's associated with my mac address, it also says wpa:key negotiation completed with my mac address and it also says CTRL-EVENT-CONNECTED - connection to my mac address completed.   yet, when i open another terminal and ping google.com, it just sits there.
+2011-01-24T19:58:00.000Z	amh345		now it says unknown host google.com.  i cant tell what's gone wrong.
+2011-01-24T19:58:00.000Z	sipior	amh345	did you remember to request an ip licence from the local dhcp server?
+2011-01-24T19:58:00.000Z	amh345	sipior	i just followed directions from a link.  how do i request an ip?
+2011-01-24T19:59:00.000Z	sipior	amh345	see what "sudo dhclient" reports.
+2011-01-24T20:01:00.000Z	amh345	sipior	it's returning a bunch of lines, over and over for wlan0 and eth0,  DHCPDISCOVER in 1lan0 255.255.255.255 port67 interval x. then it said No DHCP offers received.  however, it should be 255.255.255.0
+2011-01-24T20:04:00.000Z	sipior	amh345	you have a dhcp server running on the router/host you're connecting to?
+2011-01-24T20:05:00.000Z	sipior	amh345	nothing magical about dchp, of course. you could always choose a network-appropriate ip address, and set your gateway and dns information by hand.
+2011-01-24T20:08:00.000Z	sipior	amh345	you never mentioned if you had verified that there is a dhcp server listening on the network.
+2011-01-24T20:08:00.000Z	amh345	sipior	when i define that manually, do i just do it in /etc/network/intefaces ?
+2011-01-24T20:09:00.000Z	amh345	sipior	yes, there is a dhcp server listening (router). my other machines are on it.
+2011-01-24T20:09:00.000Z	sipior	amh345	you could do, but best to do it by hand for now and verify that it works.
+2011-01-24T20:09:00.000Z	amh345	sipior	when you say by hand, and are not referring to network/interfaces.. how do i do it?
+2011-01-24T20:10:00.000Z	sipior	amh345	you can set the ip address of an interface with "ifconfig", and add a route with "route". those are both in /sbin, if that's not in your path already.
+2011-01-24T20:11:00.000Z	sipior	amh345	so, "sudo ifconfig wlan0 192.168.0.1 netmask 255.255.255.0" or the like.
+2011-01-24T20:12:00.000Z	sipior	amh345	and then "sudo route add default gw 192.168.0.100" or whatever your gateway address is.
+2011-01-24T20:12:00.000Z	amh345	sipior	im usung wlan0, so ill sub ifconfig for iwconfig
+2011-01-24T20:12:00.000Z	sipior	amh345	those are not the same thing!
+2011-01-24T20:13:00.000Z	sipior	amh345	iwconfig configures the wireless communication of the card. ifconfig addresses the network stack proper.
+2011-01-24T20:14:00.000Z	amh345	sipior	oh, but using wlan0 instead of sudo wpa_supplicant -Bw -Dwext -i eth0 -c/etc/wpa_supplicant.conf  is ok though?
+2011-01-24T20:14:00.000Z	sipior	amh345	sure, if that's the wireless interface.

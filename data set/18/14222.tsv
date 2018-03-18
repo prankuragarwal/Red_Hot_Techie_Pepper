@@ -1,0 +1,18 @@
+2006-02-26T13:50:00.000Z	intelikey		df -h
+2006-02-26T13:50:00.000Z	intelikey		du /
+2006-02-26T13:50:00.000Z	intelikey		du -s /
+2006-02-26T13:51:00.000Z	intelikey		there's no C: in linux  so it's ok to try that...
+2006-02-26T13:52:00.000Z	intelikey		:)
+2006-02-26T13:53:00.000Z	intelikey		[nige]  did you look in /var/log?
+2006-02-26T13:54:00.000Z	intelikey		[nige]  did you  man mailscanner  ?
+2006-02-26T13:55:00.000Z	intelikey		well i've never used mailscanner but that is where i'd start.
+2006-02-26T13:56:00.000Z	intelikey		"free but non-empty" ? ndlovu
+2006-02-26T13:58:00.000Z	ndlovu	intelikey	I have to admit I'm not too clued up on how the filesytstem works, but basically I'm wanting to search through the data that's on one of my partitions, but not associated with existing files
+2006-02-26T13:58:00.000Z	ndlovu	intelikey	somebody on google suggested "grep /dev/hda1", but I don't know if there's a better way
+2006-02-26T13:59:00.000Z	intelikey	ndlovu	what are you looking for ?
+2006-02-26T14:00:00.000Z	ndlovu	intelikey	I should be able to remember enough to get a grep match
+2006-02-26T14:41:00.000Z	ndlovu	intelikey	I've had some success with grep, output to a text file, which I then open with less; but for some reason the character set gets corrupted, and after a while, all text comes out like this:  . actually my whole terminal session gets corrupted. any idea why?
+2006-02-26T14:43:00.000Z	intelikey	ndlovu	a grep -ve <put offending char here>  to cut out the code that breaks your termcap maybe ?
+2006-02-26T14:45:00.000Z	intelikey	ndlovu	like  grep -ve'' file | grep -ve'' | less       Repete the second grep portion as many times as needed....
+2006-02-26T14:47:00.000Z	ndlovu	intelikey	thanks, but there's one file in particular that I've spent a few hours constructing. it's just text; the rest I can construct again
+2006-02-26T15:19:00.000Z	ndlovu	intelikey	thelsdj: thanks for the suggestions earlier, grep and strings worked amazingly well! (grep -B -A --binary-files=text "search expression" /dev/hda9 | strings > lostfiles.txt)

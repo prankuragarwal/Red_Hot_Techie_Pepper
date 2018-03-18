@@ -1,0 +1,21 @@
+2008-02-14T05:16:00.000Z	hfmls		hi
+2008-02-14T05:16:00.000Z	hfmls		i formated a partition with gparted,ext3
+2008-02-14T05:16:00.000Z	hfmls		but i cant write there... what can i do? :S
+2008-02-14T05:17:00.000Z	macogw	hfmls	is the partition mounted?
+2008-02-14T05:17:00.000Z	hfmls	macogw	 yes
+2008-02-14T05:18:00.000Z	macogw	hfmls	can you write to it as root?
+2008-02-14T05:20:00.000Z	macogw	hfmls	is that partition going to be always mounted?
+2008-02-14T05:21:00.000Z	hfmls	macogw	 yes
+2008-02-14T05:22:00.000Z	macogw	hfmls	ok then lets add it to /etc/fstab
+2008-02-14T05:22:00.000Z	macogw	hfmls	open /etc/fstab as root
+2008-02-14T05:22:00.000Z	macogw	hfmls	if you know how to use vim or nano "sudo vim /etc/fstab" or "sudo nano /etc/fstab" otherwise "gksu gedit /etc/fstab"
+2008-02-14T05:24:00.000Z	macogw	hfmls	ok. add a line, probably just above the CD one, I'd say, and we're going to put that disk into the file
+2008-02-14T05:24:00.000Z	macogw	hfmls	you know the device name right? /dev/sdb2 or whatever it is?  that goes first
+2008-02-14T05:25:00.000Z	macogw	hfmls	i know the others are shown as their UUIDs, but either works.  it's disk?  you mean the mount point is /media/disk?  that's now what i'm talking about right now. i mean the actual device/partition number
+2008-02-14T05:26:00.000Z	hfmls	macogw	 yes
+2008-02-14T05:26:00.000Z	macogw	hfmls	do you know what the device label is?  if not, you can type "mount" and itll list what's mounted to tell you
+2008-02-14T05:27:00.000Z	hfmls	macogw	 i want to access this partition from windows too, can u tell mhow to format to ntfs instead? cuz i know how to read write ntfs in ubuntu.
+2008-02-14T05:27:00.000Z	macogw	hfmls	that really doesn't sound right.  the first disk is /dev/sda and the second is /dev/sdb and the third is /dev/sdc and the first partition on the first disk is /dev/sda1 and the second on first disk is /dev/sda2 etc.  can you just paste the output of "mount" on http://pastebin.ca and link me to it?
+2008-02-14T05:28:00.000Z	macogw	hfmls	vista or xp?  there xp drivers for using ext2/3
+2008-02-14T05:29:00.000Z	macogw	hfmls	umm ok can gparted not do ntfs?
+2008-02-14T05:32:00.000Z	macogw	hfmls	either way, if you want it to automount the partition as writable for you, you're going to need to put the partition into /etc/fstab, so i dont see how ntfs would help any (other than making it so that i don't know what the available options are for adding it to fstab)

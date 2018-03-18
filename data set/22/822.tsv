@@ -1,0 +1,22 @@
+2011-03-01T19:12:00.000Z	got_grubed_livec	ruan	/usr/sbin/grub-probe: error: cannot find a device for / (is /dev mounted?).
+2011-03-01T19:31:00.000Z	ruan	got_grubed_livec	i think it still applies
+2011-03-01T20:20:00.000Z	got_grubed_livec	ruan	it gave some weird warnings!
+2011-03-01T20:20:00.000Z	ruan	got_grubed_livec	which warnings?
+2011-03-01T20:21:00.000Z	got_grubed_livec	ruan	http://pastebin.com/raw.php?i=23jUeuaM
+2011-03-01T20:22:00.000Z	ruan	got_grubed_livec	it should be installed to the MBR, hmm..
+2011-03-01T20:23:00.000Z	got_grubed_livec	ruan	im lost
+2011-03-01T20:26:00.000Z	ruan	got_grubed_livec	MBR = master boot record. i dont get why it's trying to install to a partition though
+2011-03-01T20:26:00.000Z	got_grubed_livec	ruan	im chroot
+2011-03-01T20:27:00.000Z	ruan	got_grubed_livec	ok i'll rephrase the command
+2011-03-01T20:27:00.000Z	ruan	got_grubed_livec	sudo grub-install --root-directory=/mnt/boot /dev/sda
+2011-03-01T20:28:00.000Z	got_grubed_livec	ruan	oh so I dont put any number just the sda
+2011-03-01T20:28:00.000Z	ruan	got_grubed_livec	yes, this installs to the MBR instead of the partition sda6
+2011-03-01T20:29:00.000Z	ruan	got_grubed_livec	ok, now you can try a reboot
+2011-03-01T20:29:00.000Z	ruan	got_grubed_livec	sda is the flash drive?
+2011-03-01T20:29:00.000Z	ruan	got_grubed_livec	are you booting off the hdd?
+2011-03-01T20:29:00.000Z	got_grubed_livec	ruan	the bootloader wanted to load the usb
+2011-03-01T20:30:00.000Z	ruan	got_grubed_livec	ah, so you are reinstalling grub to boot off hdd?
+2011-03-01T20:30:00.000Z	got_grubed_livec	ruan	i installed ubuntu to usb but it modified the bootloader now i cant get into hdd installation
+2011-03-01T20:31:00.000Z	ruan	got_grubed_livec	it *should* work 100% now as the bootloader is on the MBR of the hdd now
+2011-03-01T20:31:00.000Z	ruan	got_grubed_livec	just make sure the usb is plugged out
+2011-03-01T20:31:00.000Z	ruan	got_grubed_livec	during boot

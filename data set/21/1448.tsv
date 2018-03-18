@@ -1,0 +1,21 @@
+2010-09-09T23:35:00.000Z	Gui_0		ello
+2010-09-09T23:35:00.000Z	Gui_0		i'm using the latest livecd
+2010-09-09T23:36:00.000Z	Gui_0		i'm trying to resive a ntfs partitions using gparted, but if it's unmounted i get a little triangle, if i mount it i get a little key icon - any way, i can't resize the partitions :(
+2010-09-09T23:37:00.000Z	Gui_0		i also have ntfs installed
+2010-09-09T23:39:00.000Z	Gui_0		i get the key icon in gparted because the partition is "In use by the system" - but i don't know how to tell the system to stop using it or whatever :(
+2010-09-09T23:40:00.000Z	Gui_0		isn't there a way to do it using the ubuntu live cd?
+2010-09-09T23:42:00.000Z	dajhorn	Gui_0	gparted depends on the ntfsprogs package to resize an NTFS filesystem.  This package could be missing from the Live CD.
+2010-09-09T23:43:00.000Z	Gui_0	dajhorn	i've check and it IS installed :/
+2010-09-09T23:44:00.000Z	dajhorn	Gui_0	 Run `mount` at a prompt and check whether it is actually mounted.  Running `umount` could fix your problem.  If it isn't mounted and you're getting the yellow warning triangle, then force a fsck.
+2010-09-09T23:46:00.000Z	Gui_0	dajhorn	i'll try that
+2010-09-09T23:46:00.000Z	Gui_0	dajhorn	can fsck do a ntfs partitions? o.0
+2010-09-09T23:48:00.000Z	dajhorn	Gui_0	No.  Sometimes ntfsfix will do it, but you usually need to fsck NTFS from Windows.
+2010-09-09T23:48:00.000Z	Gui_0	dajhorn	i don't have a bootable windows installation
+2010-09-09T23:49:00.000Z	Gui_0	dajhorn	can't gparted resie an unmounted partitions? o.0
+2010-09-09T23:49:00.000Z	dajhorn	Gui_0	Did you check the `mount` output?
+2010-09-09T23:50:00.000Z	Gui_0	dajhorn	yes i did - the partitions was listed as mounted
+2010-09-09T23:51:00.000Z	dajhorn	Gui_0	The partition must be dismounted to resize it.   # sudo umount -f /My/NTFS/MountPoint
+2010-09-09T23:55:00.000Z	Gui_0	dajhorn	it says: sudo: unmount: command not found
+2010-09-09T23:55:00.000Z	dajhorn	Gui_0	Your spelling is wrong:  umount
+2010-09-09T23:56:00.000Z	Gui_0	dajhorn	the command ran well now. i think i just found out the disk has 2 bad sectors :O
+2010-09-09T23:57:00.000Z	dajhorn	Gui_0	Welcome.  Do a backup Right Now.

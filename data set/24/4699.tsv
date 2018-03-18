@@ -1,0 +1,24 @@
+2009-01-19T02:42:00.000Z	quaal		how do i set default permissions for new created directories
+2009-01-19T02:42:00.000Z	dean	quaal	umask
+2009-01-19T02:42:00.000Z	quaal	dean	that works for files
+2009-01-19T02:42:00.000Z	quaal	dean	and not directories
+2009-01-19T02:42:00.000Z	quaal		i can currently copy files but not directories with proper 002 permissions
+2009-01-19T02:45:00.000Z	dean	quaal	mkdir -m works
+2009-01-19T02:46:00.000Z	quaal	dean	icant do that when i'm dragging and dropping files in nautilus
+2009-01-19T02:46:00.000Z	dean	quaal	or cd to the directory and then do find . -type d -exec chmod 755 {} \;
+2009-01-19T02:46:00.000Z	quaal	dean	i want to make settings so ican actually use the directories i create as soon as I create them. i dont want to have to change permissions every time.
+2009-01-19T02:49:00.000Z	dean	quaal	wait, I tested umask and it worked when making a directory, too
+2009-01-19T02:49:00.000Z	quaal	dean	my umask is 0002
+2009-01-19T02:49:00.000Z	dean	quaal	umask 0002; mkdir test; ls -l | grep test gave this:
+2009-01-19T02:50:00.000Z	dean		drwxrwxr-x  2 dean dean 4096 Jan 18 15:49 test
+2009-01-19T02:52:00.000Z	dean	quaal	it seems to ignore suid, sgid and sticky
+2009-01-19T02:52:00.000Z	quaal	dean	yes it works locally fine but when i make a directory on the server from the samba client, it has a lock on the folder
+2009-01-19T02:53:00.000Z	quaal	dean	i'll show you what i mean in terminal. one moment
+2009-01-19T02:53:00.000Z	quaal	dean	dongery@x61:/media/raid$ cd ihateyoulinux/
+2009-01-19T02:53:00.000Z	quaal		dongery@x61:/media/raid/ihateyoulinux$ touch dielinux
+2009-01-19T02:53:00.000Z	quaal		touch: cannot touch `dielinux': Permission denied
+2009-01-19T02:54:00.000Z	quaal	dean	 ah, crap. i left out the 'mkdir ihateyoulinux'
+2009-01-19T02:54:00.000Z	dean		quaal; try editing smb.conf
+2009-01-19T02:54:00.000Z	quaal	dean	i'm doing this from the samba client on the samba mount
+2009-01-19T02:54:00.000Z	quaal		ok
+2009-01-19T02:59:00.000Z	quaal	dean	i just added create mask and directory mask = 775 to my smb.conf, restarted samba, same problem.

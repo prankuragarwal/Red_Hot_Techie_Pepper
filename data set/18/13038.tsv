@@ -1,0 +1,18 @@
+2006-01-28T11:32:00.000Z	gnudreamer		how do i figure out what kernel version I am using?
+2006-01-28T11:32:00.000Z	tritium	gnudreamer	uname -r
+2006-01-28T11:34:00.000Z	tritium	gnudreamer	which driver?  You might not need to go through the trouble
+2006-01-28T11:35:00.000Z	tritium	gnudreamer	that's already supported
+2006-01-28T11:35:00.000Z	tritium	gnudreamer	modinfo bttv
+2006-01-28T11:36:00.000Z	tritium	gnudreamer	is the bttv module loaded?  Are you sure your card has that chipset?
+2006-01-28T11:38:00.000Z	tritium	gnudreamer	lsmod | grep bttv to find out
+2006-01-28T11:39:00.000Z	tritium	gnudreamer	if it returned nothing, the bttv module is not loaded
+2006-01-28T11:40:00.000Z	tritium	gnudreamer	try loading it, and see how that helps (sudo modprobe bttv)
+2006-01-28T11:44:00.000Z	tritium	gnudreamer	you can configure the module by passing it parameters when it loads.  You can specify these in /etc/modules
+2006-01-28T11:52:00.000Z	tritium	gnudreamer	sorry to hear that
+2006-01-28T11:54:00.000Z	tritium	gnudreamer	modinfo bttv lists all kinds of parameters that can be passed to the module
+2006-01-28T11:55:00.000Z	tritium	gnudreamer	usually you don't need to fuss with any parameters, but if you must, you'd pass them when you modprobe the module, or list them alongside the module name in /etc/modules
+2006-01-28T11:57:00.000Z	tritium	gnudreamer	I used tvtime and xawtv, I believe.  It was quite some time ago
+2006-01-28T12:06:00.000Z	tritium	gnudreamer	I am looking at it now
+2006-01-28T12:06:00.000Z	tritium	gnudreamer	you're sure your card is supported by bttv?
+2006-01-28T12:08:00.000Z	gnudreamer	tritium	when i search my card on google it comes up in lists of bttv supported cards, but it never specifies which card number and tuner number it uses
+2006-01-28T12:09:00.000Z	tritium	gnudreamer	I have to get going now.   Good luck.

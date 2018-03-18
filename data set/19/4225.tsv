@@ -1,0 +1,19 @@
+2012-05-04T03:02:00.000Z	f0urtyfive		hello
+2012-05-04T03:02:00.000Z	f0urtyfive		Does anyone know how I could stripe 5 block devices into a new virtual device without writing to them? :D
+2012-05-04T03:04:00.000Z	phaidros	f0urtyfive	hmmm, mdadm docs might help. read carefully
+2012-05-04T03:05:00.000Z	f0urtyfive	phaidros	I've tried a few times with mdadm, it seems theres no way to create anything w/o writing a superblock
+2012-05-04T03:05:00.000Z	f0urtyfive	phaidros	I think the only think you could do would be write your own block device driver :(
+2012-05-04T03:06:00.000Z	phaidros	f0urtyfive	hm, maybe loop devices might help .. I used to do some crazy things with them, but would have to read all the docs again
+2012-05-04T03:07:00.000Z	f0urtyfive	phaidros	as far as I can tell all you can do with loop dev is offset, which I'm using
+2012-05-04T03:08:00.000Z	f0urtyfive	phaidros	!!!! http://code.google.com/p/pyraid/wiki/HOWTO
+2012-05-04T03:49:00.000Z	f0urtyfive	phaidros	fyi your first instinct was right, i couldnt get it to work with mdadm --create, but mdadm --build creates a raid w/o writing anything :)
+2012-05-04T03:49:00.000Z	phaidros	f0urtyfive	yeah!
+2012-05-04T03:50:00.000Z	f0urtyfive	phaidros	so, setup loop devices with the offset to avoid the metadata, create a raid with the right stripe size with mdadm --build, and I have hardware ARECA raid running in software :D
+2012-05-04T03:50:00.000Z	phaidros	f0urtyfive	*snicker* thats fonny :)
+2012-05-04T03:50:00.000Z	f0urtyfive	phaidros	it probably would be funny if my raid 10 didnt fail :(
+2012-05-04T03:51:00.000Z	phaidros	f0urtyfive	I bear with ya
+2012-05-04T03:51:00.000Z	phaidros	f0urtyfive	now backups, later redo the whole box ... I hate those days :)
+2012-05-04T03:51:00.000Z	f0urtyfive	phaidros	lol
+2012-05-04T03:51:00.000Z	f0urtyfive	phaidros	currently the plan is to squeeze every bit I can off the failed disk :/
+2012-05-04T03:52:00.000Z	f0urtyfive	phaidros	THEN backups
+2012-05-04T03:52:00.000Z	phaidros	f0urtyfive	thats the category "backup"

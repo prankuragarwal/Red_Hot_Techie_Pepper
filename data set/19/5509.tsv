@@ -1,0 +1,19 @@
+2008-06-16T15:28:00.000Z	perplexed		can someone help? my system hangs on running boot scripts 'rc.local'
+2008-06-16T15:28:00.000Z	perplexed		running hardy 8.04
+2008-06-16T15:29:00.000Z	perplexed		iwlist scan
+2008-06-16T15:30:00.000Z	perplexed		can someone help? my system hangs on running boot scripts 'rc.local' running hardy 8.04
+2008-06-16T15:30:00.000Z	perplexed		can someone help? my system hangs on running boot scripts 'rc.local' running hardy 8.04. The script only contains exit 0
+2008-06-16T15:30:00.000Z	dougsko	perplexed	is it set +x?
+2008-06-16T15:31:00.000Z	perplexed	dougsko	yes
+2008-06-16T15:31:00.000Z	dougsko	perplexed	maybe have it echo something to a file so you can see if it's actually getting run
+2008-06-16T15:34:00.000Z	dougsko	perplexed	heh yeah i had to compile my own to get my atheros card working
+2008-06-16T15:34:00.000Z	perplexed	dougsko	well its getting run, my system was working fine
+2008-06-16T15:34:00.000Z	dougsko	perplexed	not bad though since now packet injection works
+2008-06-16T15:34:00.000Z	dougsko	perplexed	wait, so your box isnt hanging anymore?
+2008-06-16T15:36:00.000Z	dougsko	perplexed	what if you just get rid of you rc.local? since there's nothing really in it it shouldnt do anything but eliminate it as the cause
+2008-06-16T15:37:00.000Z	perplexed	dougsko	i was thinking of that, but i didnt want to intefere with the system at all.
+2008-06-16T15:39:00.000Z	dougsko	perplexed	yeah, use update-rc.d
+2008-06-16T15:39:00.000Z	dougsko	perplexed	thats how you enable/disable init.d scripts
+2008-06-16T15:41:00.000Z	dougsko	perplexed	update-rc.d -f rc.local remove
+2008-06-16T15:42:00.000Z	dougsko	perplexed	something like that
+2008-06-16T15:43:00.000Z	dougsko	perplexed	no need, update-rc.d will take care of the details

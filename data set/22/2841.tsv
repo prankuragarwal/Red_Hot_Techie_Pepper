@@ -1,0 +1,22 @@
+2009-02-14T09:33:00.000Z	raz_-		Anyone knows why the nvidia driver install isn't persistant after reboots on usb-flash-disks running the live image? Flash 9 is staying, despite reboots. Nvidia's drivers aren't :/
+2009-02-14T09:33:00.000Z	tritium	raz_-	why do you say that?
+2009-02-14T09:34:00.000Z	raz_-	tritium	because it is what I am currently experiencing?
+2009-02-14T09:34:00.000Z	tritium	raz_-	it's not true in general.  Which driver package did you intsall?
+2009-02-14T09:35:00.000Z	raz_-	tritium	the last one, using the ubuntu hardware driver for proprietary drivers menu.. version 180, if I remember correctly.
+2009-02-14T09:37:00.000Z	tritium	raz_-	probably nvidia-glx-177, in that case.  -180 doesn't show up in the menu.  What does /etc/X11/xorg.conf list as the driver when you believe the driver doesn't persist?
+2009-02-14T09:39:00.000Z	raz_-	tritium	hold on, booting.
+2009-02-14T09:49:00.000Z	raz_-	tritium	I perfermed an update earlier, as such, I have access to versions 173/177/180 in the "hardware drivers" menu.
+2009-02-14T09:50:00.000Z	tritium	raz_-	its inclusion in the menu evidently depends on what hardware is auto-detected.  For many, 180 doesn't show up.
+2009-02-14T09:50:00.000Z	raz_-	tritium	180 is the "recommended" one.. once I click on "activate", it tells me I need to restart the computer to activate the driver. I do so. It doesn't.
+2009-02-14T09:51:00.000Z	tritium	raz_-	what does "apt-cache policy nvidia-glx-180" reveal?  Is it installed?  Does your /etc/X11/xorg.conf list "nvidia" as the driver?
+2009-02-14T09:51:00.000Z	raz_-	tritium	checking..
+2009-02-14T09:53:00.000Z	raz_-	tritium	"...nvidia-glx-180" indicates: installed (same as candidate): 180.11-0ubuntu1-intrepid1 ... opening xorg.conf.
+2009-02-14T09:53:00.000Z	tritium	raz_-	good
+2009-02-14T09:55:00.000Z	raz_-	tritium	yes.. under 'Section "Device"', there is 'Driver "nvidia"'.
+2009-02-14T09:55:00.000Z	tritium	raz_-	Sounds like it's installed and being used.
+2009-02-14T09:55:00.000Z	raz_-	tritium	keep in mind that I just re-did the 'activate' thing.
+2009-02-14T09:56:00.000Z	raz_-	tritium	if I open the nvidia util, it tells me: "You do not appear to be using the NVidia X driver. Please edit your X configuration fiile (just run nvidia-xconfig as root), and restart the X server".
+2009-02-14T09:57:00.000Z	tritium	raz_-	please check your /var/log/Xorg.0.log for some clues
+2009-02-14T09:58:00.000Z	raz_-	tritium	I just did a "sudo nvidia-xconfig" and then ctrl+alt+backspace to restart X.. Seems that it is now working. As a side effect, the mouse pointer disappeared. I'll try restarting the whole thing to see how persistant it is.
+2009-02-14T10:19:00.000Z	raz_-	tritium	it seems that after a reboot, I need to run "nvidia-xconfig" and then restart X.. I think it might have to do something with "configured video device" vs "device" section under xorg.conf -- What do you think?
+2009-02-14T10:20:00.000Z	tritium	raz_-	I've never seen such a thing happen.  No, that shouldn't be the problem.

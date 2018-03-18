@@ -1,0 +1,22 @@
+2011-10-09T09:34:00.000Z	Takyoji		How would I be able to find a RAM-intensive application via CLI? I have almost the entire 2GB of RAM used for just a very small LDAP/NFS server and I can't find what's sucking all the RAM (I try using `top` and having it order it by memory usage, but I can't find anything over 5%)
+2011-10-09T09:34:00.000Z	Ben64	Takyoji	try "htop"
+2011-10-09T09:35:00.000Z	Ben64		thats what the #ubuntu is for
+2011-10-09T09:35:00.000Z	Takyoji	dhasenan_	Yes, that's what I've been doing in top
+2011-10-09T09:35:00.000Z	Ben64		any ubuntu question, sure
+2011-10-09T09:36:00.000Z	Takyoji		there's nothing that exceeds 5%
+2011-10-09T09:36:00.000Z	Ben64	Takyoji	how do you know all the ram is being used
+2011-10-09T09:36:00.000Z	Takyoji		by the memory usage indicated at the top of `top`, or by executing `free -m`
+2011-10-09T09:36:00.000Z	Ben64		pastebin the output of `free -m`
+2011-10-09T09:37:00.000Z	Ben64		try replacing it with flash 11
+2011-10-09T09:37:00.000Z	Takyoji		http://paste.ubuntu.com/704740/
+2011-10-09T09:38:00.000Z	Ben64	Takyoji	thats fine, 795+440 isn't "actually" being used
+2011-10-09T09:38:00.000Z	Ben64		you can't count buffer and cache as usage
+2011-10-09T09:38:00.000Z	Takyoji		So the cache and buffers being for? The filesystem, or?
+2011-10-09T09:38:00.000Z	Ben64		for example - my computer: http://paste.ubuntu.com/704741/
+2011-10-09T09:39:00.000Z	Takyoji		but what does it truly mean? :P
+2011-10-09T09:39:00.000Z	Takyoji		even if there's nothing to worry about. :P
+2011-10-09T09:39:00.000Z	Ben64		it means linux uses ram efficiently
+2011-10-09T09:41:00.000Z	Takyoji		So it's dereferenced and hasn't been reallocated to another process then, correct?
+2011-10-09T09:41:00.000Z	Ben64		sorta
+2011-10-09T09:41:00.000Z	Ben64		it keeps the stuff in memory in case its needed
+2011-10-09T09:41:00.000Z	Ben64	Takyoji	lets say I have a 200MB file, and want to md5sum it

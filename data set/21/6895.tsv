@@ -1,0 +1,21 @@
+2007-04-25T11:02:00.000Z	bef		Does anybody know how to configure a linux torrent client to allow you to start all downloads at a particular time, and pause them again at a particular time?
+2007-04-25T11:03:00.000Z	brainsik	bef	well, you could easily start it with cron or at -- pausing it is a different story -- you'd have to find out if any of the clients take signals
+2007-04-25T11:04:00.000Z	brainsik	bef	might want to try killing the process and see what happens ... maybe kill -1 if straight kill is too brutal...
+2007-04-25T11:04:00.000Z	bef	brainsik	i dont so much as understand your suggestion
+2007-04-25T11:05:00.000Z	brainsik	bef	hmm... do you know what the kill command does?
+2007-04-25T11:07:00.000Z	bef	brainsik	yes, i know how it works, but i do not know how to configure it to do so at a particular time, or how, for that matter, to start or continue a download at a particular time
+2007-04-25T11:09:00.000Z	brainsik	bef	this is just a theory, but it goes like this: BT clients resume your downloads when you start them up. so, to get your torrents to start at a specific time, you can start the torrent client, load it up with the torrents and have it start downloading, and then immediately quit.
+2007-04-25T11:09:00.000Z	brainsik	bef	now you can do something dump on the command line like: sleep $((60 * 60 * 4)) ; bittorent-client
+2007-04-25T11:10:00.000Z	bef	brainsik	but you can configure it to open my client at a particular time? and to kill the process at a particular time?
+2007-04-25T11:10:00.000Z	brainsik	bef	and in 4 hours it'll restart the client
+2007-04-25T11:11:00.000Z	brainsik	bef	or you can use something like at: at -f /usr/bin/bittorrent-client 10 pm
+2007-04-25T11:11:00.000Z	brainsik	bef	anyway, you can see the idea here
+2007-04-25T11:11:00.000Z	bef	brainsik	i see the idea, but i dont know how to code it ;)
+2007-04-25T11:12:00.000Z	brainsik	bef	well starting it up again is easy enough
+2007-04-25T11:14:00.000Z	brainsik	bef	this will start the client in two hours:
+2007-04-25T11:14:00.000Z	brainsik	bef	sleep $((60 * 60 * 2)) ; /patch/to/bittorrent-client
+2007-04-25T11:14:00.000Z	brainsik	bef	grabbing the PID and killing it later, are probably a bit more than i want to explain right now since I was about to make dinner :)
+2007-04-25T11:15:00.000Z	bef	brainsik	ok lol
+2007-04-25T11:15:00.000Z	bef	brainsik	thanks for the help anyway
+2007-04-25T11:15:00.000Z	brainsik	bef	shell scripting is your friend, might want to start to learn about that -- very very very powerful -- lots of control over your machine
+2007-04-25T11:16:00.000Z	brainsik	bef	anyway, good luck, sorry i couldn't help more right now

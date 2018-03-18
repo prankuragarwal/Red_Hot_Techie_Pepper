@@ -1,0 +1,21 @@
+2011-08-22T22:08:00.000Z	zRomayn		team, i'm having an issue where i cannot delete the /etc/group-, /etc/sghost-, /etc/passwd- files in ubuntu natty narwhal
+2011-08-22T22:08:00.000Z	zRomayn		i have tried it with sudo rm -v command and just get permission denied
+2011-08-22T22:08:00.000Z	Pici	zRomayn	Why do you want to delete those files?
+2011-08-22T22:09:00.000Z	zRomayn	Pici	 - that's because i assigned myself to the root group and removed myself from the default groups
+2011-08-22T22:10:00.000Z	Pici	zRomayn	That doesn't explain why you would want to remove those files though.
+2011-08-22T22:11:00.000Z	zRomayn	Pici	- it is because those files are locking the files /etc/group, /etc/sghost, and /etc/passwd
+2011-08-22T22:11:00.000Z	zRomayn		pici - so i cannot assign myself to the default groups
+2011-08-22T22:12:00.000Z	Pici	zRomayn	Are you not using usermod?
+2011-08-22T22:12:00.000Z	zRomayn		pici - yes, i am
+2011-08-22T22:12:00.000Z	Pici	zRomayn	With sudo?
+2011-08-22T22:13:00.000Z	zRomayn	Pici	- if i try sudo usermode i get the following "romayn is not in the sudoers file.  This incident will be reported"
+2011-08-22T22:14:00.000Z	Pici	zRomayn	Is your user not the one that was first created at install time, or has something happened to your group permissions?
+2011-08-22T22:15:00.000Z	zRomayn	Pici	- yeah, i removed myself from the default groups by playing with the usermod command
+2011-08-22T22:15:00.000Z	Pici	zRomayn	If you boot to the recovery console you should be able to use usermod to put yourself back into groups.
+2011-08-22T22:15:00.000Z	zRomayn	Pici	- so here are the groups that i'm now "uid=1000(romayn) gid=1000(romayn) groups=1000(romayn),0(root)
+2011-08-22T22:15:00.000Z	zRomayn		"
+2011-08-22T22:16:00.000Z	zRomayn	Pici	- and how do i boot in recovery console?
+2011-08-22T22:16:00.000Z	Pici	zRomayn	Reboot, and press shift while booting to bring up your GRUB menu, then select it from there.
+2011-08-22T22:17:00.000Z	zRomayn	Pici	- will i log in as root or as the user i created during installation?
+2011-08-22T22:17:00.000Z	Pici	zRomayn	I believe  that should log you in as root.
+2011-08-22T22:18:00.000Z	zRomayn	Pici	- aight, gracias, i'll try that to see if i can put myself in the default groups so my sudo command can work again

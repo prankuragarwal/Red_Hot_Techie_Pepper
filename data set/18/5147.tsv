@@ -1,0 +1,18 @@
+2009-09-21T12:42:00.000Z	ManDay		Why does output such as THIS: http://pastebin.com/d696025c  --- Not go to STDERR but instead to the terminal directly!?! It's hell of annoying if you can't pipe the error to less and stuff? Is that a nasty ubuntu thing??
+2009-09-21T12:44:00.000Z	ManDay		because the error is NOT send to stderr!
+2009-09-21T12:44:00.000Z	ManDay		I tried every possible variation
+2009-09-21T12:44:00.000Z	ManDay		./a.out
+2009-09-21T12:44:00.000Z	geirha	ManDay	The order is important. If 2>&1 is before >file.log, then stderr will be sent to the terminal
+2009-09-21T12:45:00.000Z	geirha	ManDay	./a.out 2>&1 | less
+2009-09-21T12:45:00.000Z	ManDay	geirha	i tried that, it does NOT redirect the error!
+2009-09-21T12:46:00.000Z	geirha	ManDay	Try this then: { ./a.out; } 2>&1 | less
+2009-09-21T12:46:00.000Z	ManDay	geirha	that doesn't work either
+2009-09-21T12:47:00.000Z	geirha	ManDay	Hm. Then glibc is writing directly to the terminal, not via the shell.
+2009-09-21T12:47:00.000Z	ManDay	geirha	I'm telling you, the error is send to the tty directly - there is no way of redirecting it
+2009-09-21T12:49:00.000Z	geirha	ManDay	Well, when you get a message from glibc, your program is doing something terribly wrong. The best would be to fix the program.
+2009-09-21T12:50:00.000Z	ManDay	geirha	that's not my problem.
+2009-09-21T12:54:00.000Z	geirha	ManDay	The only way I know to handle output going directly to terminal, is expect
+2009-09-21T12:54:00.000Z	geirha	ManDay	I'm not proficient enough with expect to help you though, so you'll have to google or try #expect or #tcl (if they exist)
+2009-09-21T12:54:00.000Z	ManDay	geirha	Gnea i included <stdio.h> but still the error is send to the terminal
+2009-09-21T12:55:00.000Z	geirha	ManDay	The easy fix is to set the variable to NULL right after doing a free. free(NULL) is safe.
+2009-09-21T12:55:00.000Z	ManDay	geirha	it's not about my program. I wrote this program to throw the error in order to fix the issue with glibc.

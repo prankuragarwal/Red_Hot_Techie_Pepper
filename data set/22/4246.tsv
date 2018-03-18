@@ -1,0 +1,22 @@
+2008-02-11T03:00:00.000Z	StYX		hi! i've an issue installing server 7.10 on a proliant dl320 g5 w/ embedded sata raid. i've setup a raid 1 but ubuntu still sees 2 physikal hdds and no raid drive. anyone installed on a proliant sata raid?
+2008-02-11T03:00:00.000Z	dep	StYX	what's the raid device model?
+2008-02-11T03:02:00.000Z	StYX	dep	not too sure about the exact type as it only says "hp embedded smart array sata raid ich7". seems to be an adaptec controller telling by the copyright msg
+2008-02-11T03:04:00.000Z	dep	StYX	I'm trying to look up more information on the raid controller at the moment, it might be a bit
+2008-02-11T03:05:00.000Z	dep	StYX	do an 'lsmod | grep adpahci' and tell me if you have the adpahci driver loaded
+2008-02-11T03:05:00.000Z	StYX	dep	thanks. and helpful link would be fine. browsed the forum already but couldn't find anything helpful, only someone with the same prob
+2008-02-11T03:05:00.000Z	StYX	dep	will so, one sec
+2008-02-11T03:08:00.000Z	StYX	dep	not loaded
+2008-02-11T03:09:00.000Z	StYX	dep	i'm checking this from export mode - execute a shell. is that correct?
+2008-02-11T03:11:00.000Z	dep	StYX	The problem is that the driver you need is called 'adpahci', and as far as I can tell it is not open source. HP seems to have released it for RHEL, but I haven't found source anywhere yet, still looking but you might be out of luck for that raid device
+2008-02-11T03:12:00.000Z	StYX	dep	telling from the forum installation seems to work with some v6 release of ubunto. but seems they used a different raid controller then
+2008-02-11T03:16:00.000Z	dep	StYX	still looking through HP's notes, as a side note I dislike HP
+2008-02-11T03:17:00.000Z	StYX	dep	found some notes about that driver as well. looks like closed source and available for suse and redhat only
+2008-02-11T03:18:00.000Z	StYX	dep	i'd do software raid but i already tried to install just on a single disk for a test. creating the root fs always freezes at 33%. so looks like using ahci only without radi is also not working realiable
+2008-02-11T03:20:00.000Z	dep	StYX	hmmm did you set the controller to act as JBOD before you tried to install?
+2008-02-11T03:21:00.000Z	StYX	dep	does jbod means "no raid"? :) if it's "raid disabled" then yes
+2008-02-11T03:22:00.000Z	dep	StYX	sorry, jbod = just a bunch of disks, yeah, raid disabled =) hmmm
+2008-02-11T03:26:00.000Z	dep	StYX	yeah, the driver for that embedded raid device is closed source and I can't find any open source projects working on it. This is likely because the driver just implements most of the raid in software and you wont get much performance gain from a driver that uses the device
+2008-02-11T03:27:00.000Z	StYX	dep	i've used win on this server before. disk i/o is a pain anyway on that box :)
+2008-02-11T03:27:00.000Z	StYX	dep	i'll try to get it to work with a linux software raid then
+2008-02-11T03:27:00.000Z	dep	StYX	sounds good, best of luck
+2008-02-11T03:28:00.000Z	StYX	dep	many thanks for your help

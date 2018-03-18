@@ -1,0 +1,24 @@
+2006-03-20T07:27:00.000Z	raindog		in safe mode, I'm trying to add a new user.  It creates the user and a group and home and then says "operation not permitted".  Then it removes the changes.  Any help?
+2006-03-20T07:27:00.000Z	intelikey	raindog	not mounted / ro is it ?
+2006-03-20T07:28:00.000Z	raindog	intelikey	- I don't understand.
+2006-03-20T07:29:00.000Z	intelikey	raindog	try   sudo mount -o remount,rw / ;sudo adduser <name>
+2006-03-20T07:31:00.000Z	raindog	intelikey	- I get help information about mounting, then the adduser part does the same as before.
+2006-03-20T07:31:00.000Z	intelikey	raindog	what error does adduser give ?
+2006-03-20T07:32:00.000Z	raindog	intelikey	chown 1000:1000 /home/raindog:  Operation not permitted.
+2006-03-20T07:33:00.000Z	intelikey	raindog	yeah you have an vfat partition mounted on /home don't you ?
+2006-03-20T07:34:00.000Z	raindog	intelikey	I just installed and haven't logged into the shell yet.  I resized a ntfs partition and added an ext3, fat32, and swap partitions.
+2006-03-20T07:35:00.000Z	intelikey	raindog	do this for me.     mount | grep /home   and show me what it says
+2006-03-20T07:35:00.000Z	raindog	intelikey	 /dev/hda6/ on /home type vfat (rw)
+2006-03-20T07:37:00.000Z	raindog	intelikey	 is there a fix?
+2006-03-20T07:37:00.000Z	raindog	intelikey	 did I make a mistake while adding the new partitions?
+2006-03-20T07:38:00.000Z	intelikey	raindog	yeah  sudo umount /home && sudo adduser    then edit your fstab to mount that partition some place else.
+2006-03-20T07:39:00.000Z	raindog	intelikey	 that seems to have done the job.  Thank you very much for your help and patience.  As you can tell I have a lot to learn.
+2006-03-20T07:39:00.000Z	intelikey	raindog	example   sudo nano /etc/fstab      change the line that says  /home   to /home/<new users name>/fat32   save and exit nano    then  mkdir /home/<user>/fat32    and reboot.
+2006-03-20T07:40:00.000Z	raindog	intelikey	 didn't do the fstab party yet.
+2006-03-20T07:44:00.000Z	intelikey	raindog	just a thought.   you did set a food passwd for that new user didn't you?   being uid 1000 it will have sudo root access to everything.
+2006-03-20T07:45:00.000Z	raindog	intelikey	a "good"  password?   yes.  ONce I can get into the gui I can change the access level of that user(me) correct?
+2006-03-20T07:46:00.000Z	intelikey	raindog	the first user is added to group admin  which unless you edit sudoers has full root access to the system via sudo
+2006-03-20T07:47:00.000Z	intelikey	raindog	first user account is the admin account.
+2006-03-20T07:48:00.000Z	raindog	intelikey	 I'll make sure to change that as soon can find my extra mouse so that I can manuever around the gui.  Once again, thanks for your patience and excellent help.
+2006-03-20T07:48:00.000Z	intelikey	raindog	you may want to read the wiki on that.
+2006-03-20T07:49:00.000Z	raindog	intelikey	 I most certainly will.  [adding mouse now] 

@@ -1,0 +1,22 @@
+2009-01-13T23:57:00.000Z	TheresaEllis		Is there an IRC channel for gparted?
+2009-01-13T23:57:00.000Z	Jack_Sparrow	TheresaEllis	What is the issue
+2009-01-13T23:59:00.000Z	TheresaEllis	Jack_Sparrow	Hi. Machine locked up while gparted was resizing my ntfs windows partition. Nothing would respond including Ctrl Alt F1 thru F5, Ctrl Alt Backspace and Ctrl Alt Del. Hard disk light had stopped too and even the mouse was not responding. Only thing I could do was hit the power button. Now of course windows wont boot and I am not sure whether to try repairing the file system with a microsoft tool like chkdsk or with an ubuntu tool
+2009-01-14T00:00:00.000Z	Jack_Sparrow	TheresaEllis	Sounds like you may not have defragged windows first or you had minimal free space after the drive resize
+2009-01-14T00:05:00.000Z	TheresaEllis	Jack_Sparrow	You are right I didnt defrag windows first. I had deleted another partition so I was increasing the size of the ntfs partition to fill the remaining unallocated space. After I rebooted into ubuntu gparted showed that the partition had been moved to the left but not expanded and it had a warning triangle by the partition. At that stage it wouldnt boot into windows so I tried booting it from a windows disk and running chkdsk (with no switc
+2009-01-14T00:06:00.000Z	TheresaEllis	Jack_Sparrow	Sorry that should read "Now I have booted back into Ubuntu" - not windows - my mistake
+2009-01-14T00:08:00.000Z	Jack_Sparrow	TheresaEllis	What does gparted currently show for your partitions
+2009-01-14T00:09:00.000Z	Jack_Sparrow	TheresaEllis	If you need I can give you a command or two for cli that will tell us what we need to know
+2009-01-14T00:11:00.000Z	TheresaEllis	Jack_Sparrow	Do you know a site I can upload a screenshot to without setting up an account? A bit like pastebin?
+2009-01-14T00:12:00.000Z	Jack_Sparrow	TheresaEllis	Yes one sec
+2009-01-14T00:12:00.000Z	Jack_Sparrow	TheresaEllis	http://imageshack.us/
+2009-01-14T00:15:00.000Z	TheresaEllis	Jack_Sparrow	http://img65.imageshack.us/my.php?image=screenshotpm3.png
+2009-01-14T00:16:00.000Z	Jack_Sparrow	TheresaEllis	Ok, so you have a windows recovery partition, windows partition and some free space.  an ubuntu boots but windows wont at this point correct so far?
+2009-01-14T00:18:00.000Z	TheresaEllis	Jack_Sparrow	I dont have a windows recovery partition. sda3 is my linux /boot partition
+2009-01-14T00:18:00.000Z	Jack_Sparrow	TheresaEllis	sda1 is hidden
+2009-01-14T00:19:00.000Z	TheresaEllis	Jack_Sparrow	sda1 was the partition I deleted
+2009-01-14T00:19:00.000Z	Jack_Sparrow	TheresaEllis	I need to see your /boot/grub/menu.lst
+2009-01-14T00:20:00.000Z	Jack_Sparrow	TheresaEllis	sudo apt-get install pastebinit  && pastebinit /boot/grub/menu.lst       (Provide Pastebin link in channel)
+2009-01-14T00:21:00.000Z	TheresaEllis	Jack_Sparrow	It looks as if somehow the ntfs partition is not as damaged as I thought as the warning triangle has gone and I can at least get a directory list. menu.lst is at http://pastebin.com/f5f61cc5
+2009-01-14T00:23:00.000Z	TheresaEllis	Jack_Sparrow	Is it worth trying to reboot windows in case it works now? Dont know why it would because when I ran chkdsk from a windows cd I didnt repair anything - just wanted to see if there were errors on the filesystem but maybe it repaired some stuff anyway
+2009-01-14T00:23:00.000Z	Jack_Sparrow	TheresaEllis	grub pointing to sda2 is correct at hd0,1 so try it
+2009-01-14T00:24:00.000Z	TheresaEllis	Jack_Sparrow	OK. Thanks. Will do.

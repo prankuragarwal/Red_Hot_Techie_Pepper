@@ -1,0 +1,21 @@
+2008-06-02T07:32:00.000Z	amrik		i cannot kill the apache2 process, can someone help me?
+2008-06-02T07:33:00.000Z	askreet	amrik	 ps aux|grep apache2 -- what does it show for a status (should be 1 char, like S, S+, D, Z)
+2008-06-02T07:33:00.000Z	amrik	askreet	its not zombie, just S
+2008-06-02T07:33:00.000Z	askreet	amrik	 And kill -9 <pid> does nothing?
+2008-06-02T07:33:00.000Z	amrik	askreet	www-data  7373  0.0  2.1  87968 16752 ?        S    May28   0:09 /usr/sbin/apache2 -k start -DSSL
+2008-06-02T07:33:00.000Z	amrik	askreet	nope
+2008-06-02T07:34:00.000Z	askreet	amrik	 not that it should matter, but have you tried a killall `apache2`
+2008-06-02T07:35:00.000Z	amrik	askreet	yes, also kill -kill etc.etc.
+2008-06-02T07:35:00.000Z	askreet	amrik	 That is so bizarre... >.<
+2008-06-02T07:35:00.000Z	askreet	amrik	 Yes, i'm assuming you're doing this as root...
+2008-06-02T07:38:00.000Z	askreet	amrik	 What is the apache2's process' PPID?
+2008-06-02T07:38:00.000Z	amrik	askreet	the parent id? how do I find that? there is no ptree for some reason
+2008-06-02T07:38:00.000Z	amrik	askreet	perhaps there is another command?
+2008-06-02T07:40:00.000Z	amrik	askreet	ok i did ps -ef
+2008-06-02T07:40:00.000Z	amrik	askreet	looks like init (pid 1) has adopted them
+2008-06-02T07:41:00.000Z	askreet	amrik	 as it should be.
+2008-06-02T07:41:00.000Z	askreet	amrik	 that's very strange :/
+2008-06-02T07:42:00.000Z	amrik	askreet	maybe its an orphan?
+2008-06-02T07:42:00.000Z	askreet	amrik	 I can't say I'm an expert but S means sleep and 1 is init, so it seems "happy"
+2008-06-02T07:43:00.000Z	amrik	askreet	is there any way for init to IGNORE one of its adopted children?
+2008-06-02T08:00:00.000Z	amrik	askreet	is there any way to force the unbind of a socket?

@@ -1,0 +1,24 @@
+2009-03-10T20:58:00.000Z	MeI		Hello, I am getting a pre-depend error, Dependency cycle error
+2009-03-10T20:59:00.000Z	MeI		I have one broken pacakge on my system, with a dependency cycle error
+2009-03-10T21:00:00.000Z	LjL	MeI	pastebin output of apt-get please
+2009-03-10T21:01:00.000Z	MeI	LjL	to paste.ubuntu.com ?
+2009-03-10T21:01:00.000Z	LjL	MeI	yes please
+2009-03-10T21:02:00.000Z	MeI	LjL	http://paste.ubuntu.com/129405/
+2009-03-10T21:09:00.000Z	LjL	MeI	sorry i forgot about you for a moment, let me look now
+2009-03-10T21:09:00.000Z	MeI	LjL	ok thanks,
+2009-03-10T21:10:00.000Z	LjL	MeI	ugh, according to your APT, you don't have... APT installed.
+2009-03-10T21:10:00.000Z	LjL	MeI	that doesn't sound especially good.
+2009-03-10T21:10:00.000Z	LjL	MeI	but then again, you *have* that stuff installed (including apt and libc6), or your system just wouldn't work and you couldn't use apt-get. so it's apt's database that's messed up. still, not good
+2009-03-10T21:11:00.000Z	LjL	MeI	do you have a /var/lib/dpkg/status-old file?
+2009-03-10T21:12:00.000Z	LjL	MeI	yeah, stuff probably got very corrupted then.
+2009-03-10T21:13:00.000Z	LjL	MeI	no, no need. just try using it as a backup. namely, do this:    sudo cp /var/lib/dpkg/status /var/lib/dpkg/status-backup  ;  sudo cp /var/lib/dpkg/status-old /var/lib/dpkg/status
+2009-03-10T21:13:00.000Z	LjL	MeI	then try again using apt-get
+2009-03-10T21:14:00.000Z	LjL	MeI	that's good, though i really recommend you run other stuff now to check that your system is mostly in a consistent state
+2009-03-10T21:15:00.000Z	LjL	MeI	output please
+2009-03-10T21:15:00.000Z	LjL	MeI	"sudo apt-get clean", then try again (but i'm starting to think your filesystem might be very corrupt)
+2009-03-10T21:17:00.000Z	LjL	MeI	do you happen to have "smartmontools" already installed?
+2009-03-10T21:18:00.000Z	LjL	MeI	you can't install it if apt doesn't work ;)
+2009-03-10T21:19:00.000Z	LjL	MeI	the "database" (it's not really a database, just a text file, but) that contains the list of installed packages on the system
+2009-03-10T21:19:00.000Z	LjL	MeI	it got corrupted, so we restored it from a backup (which is done automatically)
+2009-03-10T21:20:00.000Z	LjL	MeI	let's see if apt finishes its job now, first
+2009-03-10T21:21:00.000Z	LjL	MeI	can you pastebin the output it gave so far, so i can start getting an idea?

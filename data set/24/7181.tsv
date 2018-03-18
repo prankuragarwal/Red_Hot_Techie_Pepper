@@ -1,0 +1,24 @@
+2006-02-24T15:17:00.000Z	Corsair		how do i see what drives are available
+2006-02-24T15:17:00.000Z	Corsair		not nessecarily mounted, just are there
+2006-02-24T15:18:00.000Z	Corsair		can anyone help? ;x
+2006-02-24T15:20:00.000Z	fangorious	Corsair	'sudo fdisk -l /dev/hda' will show all the partitions on the first ide/ata hard drive
+2006-02-24T15:20:00.000Z	fangorious	Corsair	i'm not sure how to get a list of attached drives though
+2006-02-24T15:22:00.000Z	fangorious	Corsair	ata?
+2006-02-24T15:22:00.000Z	fangorious	Corsair	same cable as the existing one?
+2006-02-24T15:24:00.000Z	fangorious	Corsair	who was that '?' to?
+2006-02-24T15:26:00.000Z	fangorious	Corsair	if it's going to be accessed over the network I would use ext3
+2006-02-24T15:26:00.000Z	fangorious	Corsair	then just share it with samba for windows machines, and nfs for linux machines
+2006-02-24T15:27:00.000Z	fangorious	Corsair	as long as they understand the protocol you share it with, they don't care what FS type it has
+2006-02-24T15:27:00.000Z	fangorious	Corsair	what OSs are you sharing it to?
+2006-02-24T15:28:00.000Z	fangorious	Corsair	just set it up with ext3 and share it with samba
+2006-02-24T15:29:00.000Z	fangorious	Corsair	you can configure the shares with System->Administration->Shared Folders
+2006-02-24T15:42:00.000Z	fangorious	Corsair	in the Shared Folders app, select a share and click Properties, then uncheck the read-only checkbox
+2006-02-24T15:43:00.000Z	fangorious	Corsair	hm, is the share in the / partition?
+2006-02-24T15:44:00.000Z	fangorious	Corsair	is /nas a separate disk/partition from /? (run 'mount' in a terminal to check)
+2006-02-24T15:45:00.000Z	fangorious	Corsair	mounted to /dev?
+2006-02-24T15:46:00.000Z	fangorious	Corsair	does it say 'ro' or 'rw' in the output from mount on the line with /nas?
+2006-02-24T15:47:00.000Z	fangorious	Corsair	ls -ld /nas
+2006-02-24T15:49:00.000Z	fangorious	Corsair	the quickest way would be 'sudo chmod +w /nas'
+2006-02-24T15:52:00.000Z	fangorious	Corsair	assuming all the users on your linux box are in the 'users' group, you could also make the share writeable to the 'users' group, the 'chgrp users /nas' and 'chmod 775 /nas'
+2006-02-24T15:54:00.000Z	fangorious	Corsair	'sudo invoke-rc.d samba restart' might clear that up
+2006-02-24T15:56:00.000Z	fangorious	Corsair	you can always check /etc/samba/smb.conf (text file) to hand edit the samba settings

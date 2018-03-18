@@ -1,0 +1,19 @@
+2011-01-01T04:12:00.000Z	solo_		Tell me please how I can activate WiFi on laptop HP 4720s if non-free drivers Broadcom B43 and Broadcom STA don't work proper way
+2011-01-01T04:12:00.000Z	soreau	solo_	What isn't working specifically?
+2011-01-01T04:16:00.000Z	soreau	solo_	So you have wlan0. Can you see wifi networks from the output of 'sudo iwlist wlan0 scan|grep -i ssid' ?
+2011-01-01T04:27:00.000Z	soreau	solo_	Ok so you can see an AP which means you just have to connect. What type of encryption do you have?
+2011-01-01T04:29:00.000Z	solo_	soreau	But the B43 works no stability (now I have open net) and now I get IP by wlan0
+2011-01-01T04:34:00.000Z	solo_	soreau	Thanks for the help with the new year. Have you already had a new year?
+2011-01-01T04:38:00.000Z	soreau	solo_	Depending on the encryption type, there are different ways to connect using iwconfig and dhclient
+2011-01-01T04:39:00.000Z	soreau	solo_	It is new years here in a few hours. Have a good time
+2011-01-01T04:45:00.000Z	solo_	soreau	I try to run the WiFi on the HP 4720s. After installing Broadkom 43 network lan0 appears at 2 minutes and lost for ever. How to make a stable connection? WiCD not find the network and does not issue an IP address.
+2011-01-01T04:46:00.000Z	soreau	solo_	The interface disappears?
+2011-01-01T04:47:00.000Z	solo_	soreau	wlan0 exsist but doesn't work
+2011-01-01T04:59:00.000Z	solo_	soreau	I get from wicd "Connection Failed: Unable to Get IP Address". wicd sees the signal and scans the network but can not connect. The network is open. The first time the connection was successful but after 2 minutes gone. When working in opensuse with native drivers such samples do not. Everything is stable and long on the same network and on the same laptop.
+2011-01-01T05:08:00.000Z	soreau	solo_	Soon enough, broadcom will be releasing open drivers so their hardware will justwork
+2011-01-01T05:09:00.000Z	soreau	solo_	But you never said what wasn't working about it. If you can see your AP, you should be able to connect
+2011-01-01T05:12:00.000Z	soreau	solo_	Is dhcp enabled? Is MAC Address Filtering on the AP?
+2011-01-01T05:12:00.000Z	soreau	solo_	The other problem may be having NetworkManager, nm-applet and wicd all running at the same time
+2011-01-01T05:13:00.000Z	soreau	solo_	Instead you could try killing all processes then connecting with 'iwconfig wlan0 essid <essid> && dhclient wlan0'
+2011-01-01T05:17:00.000Z	solo_	soreau	try
+2011-01-01T05:23:00.000Z	solo_	soreau	with 'iwconfig wlan0 essid <essid> && dhclient wlan0' I get new interface -- wlan0:avahi inet addr:169.254.8.46

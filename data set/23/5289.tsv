@@ -1,0 +1,23 @@
+2007-04-21T15:09:00.000Z	exs		hi guys, is there any easy-to-use linux app that allows me to completely clone my laptops hard drive, so that - if it goes wrong, I am able to put it all back, *exactly* how it was before? .. I have a couple of USB hard drive and I'm hoping to be able to do this (I'm going to upgrade to feisty)
+2007-04-21T15:10:00.000Z	ringo	exs	yes its called dd
+2007-04-21T15:10:00.000Z	exs	ringo	 dystopianray and where do I find the homepage for DD?
+2007-04-21T15:10:00.000Z	ringo	exs	 dd if=/dev/sourcedevice of=/dev/destdevice  DO NOT SWITCH THESE. make sure you got input and output setup right
+2007-04-21T15:11:00.000Z	ringo	exs	uh maybe man dd will tell you
+2007-04-21T15:12:00.000Z	ringo	exs	yeah either dd or spend some cash for partition magic
+2007-04-21T15:12:00.000Z	exs	ringo	 I have partition magic, it's not for linux
+2007-04-21T15:12:00.000Z	ringo	exs	wow thats lame.  i dunno then
+2007-04-21T15:14:00.000Z	ringo	exs	with a normal setup your dd command will actually be this    sudo if=/dev/sda of=/dev/sdb       That is if your HDD is SATA and your USB is the only usb device plugged into your computer at the time
+2007-04-21T15:15:00.000Z	ringo	exs	if your HDD is PATA, then replace /dev/sda with /dev/hda
+2007-04-21T15:15:00.000Z	exs	ringo	 I have a normal laptop harddrive, I think it's under HDA1. not sda
+2007-04-21T15:15:00.000Z	ringo	exs	ok well to copy everything including boot sector do hda and not hda1
+2007-04-21T15:15:00.000Z	ringo	exs	if you dont want to mirror then just ignore me
+2007-04-21T15:16:00.000Z	exs	ringo	 ok
+2007-04-21T15:16:00.000Z	exs	ringo	 wait... is this going to put *1* nice file on my USB harddrive?..
+2007-04-21T15:17:00.000Z	ringo	exs	dd will make your USB drive look exactly the same as your internal
+2007-04-21T15:17:00.000Z	exs	ringo	 ok, so I have to have formatted the USB external hd then first
+2007-04-21T15:17:00.000Z	ringo	exs	so you will see the directory structure and what not
+2007-04-21T15:17:00.000Z	ringo	exs	not with dd.  dd will copy the partition structure of your interna drive. its a bit for bit cocpy
+2007-04-21T15:18:00.000Z	ringo	exs	its going to take forever though. so be patient
+2007-04-21T15:19:00.000Z	ringo	exs	 my 80 gig took a couple hours at least
+2007-04-21T15:19:00.000Z	ringo	exs	dd shows no progress output by default, so it may look stalled but your HDD lights will be blinking
+2007-04-21T15:19:00.000Z	exs	ringo	 it's ok, i have about 5 hours to spare

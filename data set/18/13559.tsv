@@ -1,0 +1,18 @@
+2005-11-03T13:44:00.000Z	matthew_w		Hey - I'm having an odd problem, I am installing ubuntu on an older computer that doesn't support cd booting, so I threw the hdd from it into a new computer and installed ubuntu on it with the GRUB loader, however, when I put the hdd back in the old computer and boot, grub returned "Cannot mount selected filesystem" or something similar - why?
+2005-11-03T13:45:00.000Z	joh6nn	matthew_w	grub's working with the partition and drive set up from the other machine
+2005-11-03T13:46:00.000Z	joh6nn	matthew_w	betcha money that it's still looking in the wrong place
+2005-11-03T13:48:00.000Z	joh6nn	matthew_w	when you try to boot right now, what happens?
+2005-11-03T13:50:00.000Z	joh6nn	matthew_w	boot the machine, go to the grub menu, and hit "e"
+2005-11-03T13:50:00.000Z	matthew_w	joh6nn	well I do, but I'll have to do some tinkering with TV out to have both open at once... just a moment.
+2005-11-03T13:56:00.000Z	joh6nn	matthew_w	there should be an entry that says something like (hd0)
+2005-11-03T13:59:00.000Z	joh6nn	matthew_w	that will only make the change for this one time, though; it doesn't save it to the menu file.  once the machine's booting, you'll have to go in and edit the menu file as root again
+2005-11-03T14:06:00.000Z	joh6nn	matthew_w	don't forget to make the (hd0,0) change, too
+2005-11-03T14:09:00.000Z	joh6nn	matthew_w	you're gonna have to figure out what your partition setup is
+2005-11-03T14:14:00.000Z	joh6nn	matthew_w	like Whistler said, it's the sector you'd like to boot.  hd0 is the first hdd on the system, and ,0 is the first partition
+2005-11-03T14:17:00.000Z	joh6nn	matthew_w	like i said, you're gonna have to figure out what your partition layout is
+2005-11-03T14:19:00.000Z	joh6nn	matthew_w	the only thing i can think of is to move the drive into another machine, make it the only connected drive in that machine, boot with a livecd, and use something like parted to look and see what the actual partition layout is
+2005-11-03T14:24:00.000Z	joh6nn	matthew_w	yeah, i was already pretty sure that (hd0,0) was right
+2005-11-03T14:38:00.000Z	joh6nn	matthew_w	what'd you do?
+2005-11-03T14:39:00.000Z	joh6nn	matthew_w	no, /dev/hda2
+2005-11-03T14:41:00.000Z	joh6nn	matthew_w	what have you got it set to right now?
+2005-11-03T14:45:00.000Z	joh6nn	matthew_w	i'm out of ideas, then

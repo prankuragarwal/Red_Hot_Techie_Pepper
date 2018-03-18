@@ -1,0 +1,23 @@
+2006-12-22T15:20:00.000Z	w3ccv	peirce141	make that ssh -l peirce141 191.168.0.100  - the login name must come first
+2006-12-22T15:26:00.000Z	w3ccv	peirce141	do you have itpables - 'iptables -L INPUT'
+2006-12-22T15:44:00.000Z	w3ccv	peirce141	you need to 'iptables -I INPUT 3  -p tcp --dport ssh -j ACCEPT"
+2006-12-22T15:46:00.000Z	peirce141	w3ccv	alright, ill try that
+2006-12-22T15:47:00.000Z	peirce141	w3ccv	still nothing
+2006-12-22T15:47:00.000Z	w3ccv	peirce141	paste the new iptalbes -L
+2006-12-24T07:15:00.000Z	w3ccv	peirce141	that's 'iptables -L'  past that
+2006-12-24T07:17:00.000Z	w3ccv	peirce141	does your router port forward port 22?
+2006-12-24T07:17:00.000Z	peirce141	w3ccv	i don't believe so
+2006-12-24T07:18:00.000Z	w3ccv	peirce141	if you're trying to connect from outside then you need to port forward through it
+2006-12-24T07:18:00.000Z	peirce141	w3ccv	only from local boxes
+2006-12-24T07:19:00.000Z	w3ccv	peirce141	ok
+2006-12-24T07:27:00.000Z	w3ccv	peirce141	 you need to tell iptables what to accept that port  sudo iptables -I INPUT 1 -p tcp --dport 22 -j ACCEPT
+2006-12-24T07:28:00.000Z	peirce141	w3ccv	i'll try, one sec
+2006-12-24T07:29:00.000Z	peirce141	w3ccv	thanks a bunch for that, it's perfect now
+2006-12-24T07:31:00.000Z	w3ccv	peirce141	now you need to find the rule file loaded at boot  - and do a iptables-save (that file name)
+2006-12-24T07:31:00.000Z	peirce141	w3ccv	how would i go about finding the rule file?
+2006-12-24T07:33:00.000Z	w3ccv	peirce141	I'm trying to find it on my system
+2006-12-24T07:34:00.000Z	peirce141	w3ccv	alright, thanks
+2006-12-24T07:35:00.000Z	w3ccv	peirce141	I have it loaded at wlan startup time -  with iptables-restore /home/root/itables.rules
+2006-12-24T07:39:00.000Z	peirce141	w3ccv	is there an easy way to find where my iptables rules are? I dont have any similar file on my system
+2006-12-24T07:41:00.000Z	w3ccv	peirce141	neither do I but the ones I put there.  so  do 'sudo iptabes-save /etc/iptables.up.rules'
+2006-12-24T07:41:00.000Z	w3ccv	peirce141	and when you wanto to invoke the rules when you reboot  'sudo iptables-restore /etc/iptables.up.rules'

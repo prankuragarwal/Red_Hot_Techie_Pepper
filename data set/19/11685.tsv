@@ -1,0 +1,19 @@
+2010-10-30T03:06:00.000Z	Praxi		how do I get my ubuntu server to run this automatically on a reboot "ruby script/server -e production -b 127.0.0.1 -p 2000 -d"
+2010-10-30T03:07:00.000Z	dli	Praxi	easiest: put the line in /etc/rc.local
+2010-10-30T03:07:00.000Z	dli	Praxi	better, write an init script for it in /etc/init.d/
+2010-10-30T03:07:00.000Z	Praxi		I'm pretty noob, what kind of file does that need to be there?
+2010-10-30T03:08:00.000Z	Praxi		like I see I have one for apache2 can I make it similar to that?
+2010-10-30T03:09:00.000Z	Praxi		whats the difference, do both start up with system I assume?
+2010-10-30T03:09:00.000Z	dli	Praxi	the system may not be so straight forward, you'd better read a howto before working on it: https://help.ubuntu.com/community/UbuntuBootupHowto
+2010-10-30T03:09:00.000Z	dli	Praxi	if you only want it to be run at booting, use /etc/rc.local
+2010-10-30T03:10:00.000Z	Praxi		the init.d one makes it similar to a windows service, and restarts it if it fails?
+2010-10-30T03:10:00.000Z	Praxi		is that the difference? and thanks for the link dli
+2010-10-30T03:10:00.000Z	dli	Praxi	sorry, I don't know what's a windows service
+2010-10-30T03:11:00.000Z	Praxi		basically a process, if it fails it restarts :)
+2010-10-30T03:11:00.000Z	Praxi		or can set to be restarted if it fails I should say
+2010-10-30T03:13:00.000Z	dli	Praxi	init processes are started by an init program, which is again started by kernel. Init only starts them at booting, and stops them at shutting down. Processes don't have auto-restart feature by default
+2010-10-30T03:13:00.000Z	Praxi		ahh k.  Thanks for the links guys, reading now
+2010-10-30T03:13:00.000Z	dli	Praxi	to read more: try: man init , or: http://en.wikipedia.org/wiki/Init
+2010-10-30T03:16:00.000Z	Praxi		ok one last question then I will go away for a while, if I put ruby script/server -e production -b 127.0.0.1 -p 2000 -d   in my rc.local how do I run it from a certain directory, just specify that in front of it?
+2010-10-30T03:17:00.000Z	Praxi	acidubthird	is that a screensaver maybe?
+2010-10-30T03:18:00.000Z	dli	Praxi	add 'cd /path' in your script

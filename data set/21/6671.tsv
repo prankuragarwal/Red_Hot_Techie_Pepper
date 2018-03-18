@@ -1,0 +1,21 @@
+2007-02-22T11:13:00.000Z	Cdeszaq		anyone here have experience using LIRC?
+2007-02-22T11:13:00.000Z	soundray	Cdeszaq	is this a survey?
+2007-02-22T11:14:00.000Z	soundray	Cdeszaq	describe the problem then
+2007-02-22T11:15:00.000Z	Cdeszaq	soundray	Well, I installed lirc using apt-get, and it told me to configure my remote using irrecord
+2007-02-22T11:15:00.000Z	Cdeszaq	soundray	I have a Windows MCE Remote
+2007-02-22T11:17:00.000Z	soundray	Cdeszaq	have you found any info on the web that says that your remote is compatible with LIRC?
+2007-02-22T11:17:00.000Z	Cdeszaq	soundray	The problem is that when I try to run irrecord, it says that it "could not init hardware"
+2007-02-22T11:17:00.000Z	Cdeszaq	soundray	Yes, it says it is supposed to be
+2007-02-22T11:18:00.000Z	soundray	Cdeszaq	how is the receiver connected? Serial?
+2007-02-22T11:18:00.000Z	Cdeszaq	soundray	It is connected via usb
+2007-02-22T11:19:00.000Z	soundray	Cdeszaq	run 'tail -f  /var/log/syslog' and check for error messages as you plug the receiver in.
+2007-02-22T11:28:00.000Z	Cdeszaq	soundray	There were no errors as I plugged it in
+2007-02-22T11:28:00.000Z	soundray	Cdeszaq	were there any messages relating to the plug event at all?
+2007-02-22T11:28:00.000Z	soundray	Cdeszaq	(no pasting here please, in case you were tempted)
+2007-02-22T11:28:00.000Z	Cdeszaq	soundray	Yes
+2007-02-22T11:29:00.000Z	soundray	Cdeszaq	so it loaded a driver?
+2007-02-22T11:30:00.000Z	Cdeszaq	soundray	Here is the output from the plugging in: http://pastebin.ca/367868
+2007-02-22T11:32:00.000Z	soundray	Cdeszaq	it sees the device, but it doesn't load a driver for it. You will have to search the web for hints as to where to go from here.
+2007-02-22T11:32:00.000Z	Cdeszaq	soundray	Ok, thanks
+2007-02-22T11:33:00.000Z	soundray	Cdeszaq	a good starting point would be to look at the output of 'lsusb', identify the line that corresponds to the receiver, and search for the name or the USB ID.
+2007-02-22T11:33:00.000Z	soundray	Cdeszaq	I've only ever used a very simple serial receiver with LIRC.

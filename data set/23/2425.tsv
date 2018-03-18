@@ -1,0 +1,23 @@
+2011-03-24T00:58:00.000Z	faceface		hi
+2011-03-24T00:59:00.000Z	faceface		I'm trying to run parted on a flash drive, but I'm getting "Error: Input/output error during write on /dev/sdb"
+2011-03-24T00:59:00.000Z	faceface		how can I 'repair' this drive?
+2011-03-24T00:59:00.000Z	faceface		I ran "dd if=/dev/zero of=/dev/sdb"
+2011-03-24T01:00:00.000Z	s3r3n1t7	faceface	then it makes sense. It tries to write more then the drive can handle. Just partition it.
+2011-03-24T01:01:00.000Z	s3r3n1t7	faceface	you're trying to write an infinite amount of null bytes to a drive which has a limit.
+2011-03-24T01:01:00.000Z	faceface	s3r3n1t7	dd runs fine
+2011-03-24T01:01:00.000Z	s3r3n1t7	faceface	unplug and replug, then partition?
+2011-03-24T01:02:00.000Z	faceface	s3r3n1t7	worth a try...
+2011-03-24T01:04:00.000Z	s3r3n1t7	faceface	looks fine to me
+2011-03-24T01:04:00.000Z	s3r3n1t7	faceface	yes
+2011-03-24T01:06:00.000Z	faceface	s3r3n1t7	yup
+2011-03-24T01:06:00.000Z	s3r3n1t7	faceface	nothing in dmesg for errors?
+2011-03-24T01:07:00.000Z	faceface	s3r3n1t7	^^ dmesg
+2011-03-24T01:07:00.000Z	s3r3n1t7	faceface	does the drive have a write-lock or some other form of physical protection against access/write? Perhaps some sort of switch?
+2011-03-24T01:08:00.000Z	faceface	s3r3n1t7	no
+2011-03-24T01:09:00.000Z	s3r3n1t7	faceface	hmh
+2011-03-24T01:10:00.000Z	s3r3n1t7	faceface	what command(s) do you give parted?
+2011-03-24T01:10:00.000Z	faceface	s3r3n1t7	mkfs 1 fat32
+2011-03-24T01:10:00.000Z	faceface	s3r3n1t7	^^
+2011-03-24T01:12:00.000Z	s3r3n1t7	faceface	you wrote NULL on your entire device, which may have (more then likely) removed your partition table. You should recreate that first
+2011-03-24T01:12:00.000Z	faceface	s3r3n1t7	cool, how?
+2011-03-24T01:15:00.000Z	s3r3n1t7	faceface	pff ... euhm ... i'm sure google can give an answer, but i'm not sure

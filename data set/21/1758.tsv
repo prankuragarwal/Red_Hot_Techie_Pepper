@@ -1,0 +1,21 @@
+2012-07-26T21:27:00.000Z	|Anthony|		is 10.04 still supported here?
+2012-07-26T21:28:00.000Z	|Anthony|		lol thanks JesseC
+2012-07-26T21:28:00.000Z	|Anthony|		er... JessicaW
+2012-07-26T21:29:00.000Z	|Anthony|		well than... I'm trying to install suns jre1.6.0_33 but having a bit of trouble...
+2012-07-26T21:29:00.000Z	|Anthony|		sudo update-alternatives --install "usr/bin/java" "java" "/usr/lib/jvm/jre1.6.0_33/bin/java" 1
+2012-07-26T21:29:00.000Z	|Anthony|		error: alternative link is not absolute as it should be: usr/bin/java
+2012-07-26T21:29:00.000Z	b636bc7ca	|Anthony|	That needs a leading /
+2012-07-26T21:30:00.000Z	|Anthony|	b636bc7ca	/usr/bin/java is a symlink. Is that the issue or just the /
+2012-07-26T21:31:00.000Z	b636bc7ca	|Anthony|	Just the '/' - "alternative link is not absolute"
+2012-07-26T21:31:00.000Z	|Anthony|	b636bc7ca	thank you... i'll report back if it's no good.
+2012-07-26T21:32:00.000Z	|Anthony|	b636bc7ca	well no error so i suppose it worked lol
+2012-07-26T22:40:00.000Z	b636bc7ca	|Anthony|	ulimit -n <new number>
+2012-07-26T22:41:00.000Z	|Anthony|	b636bc7ca	bash: ulimit: open files: cannot modify limit: Operation not permitted
+2012-07-26T22:43:00.000Z	b636bc7ca	|Anthony|	how high did you try to set it?
+2012-07-26T22:44:00.000Z	b636bc7ca	|Anthony|	That's probably higher than your hard limit
+2012-07-26T22:45:00.000Z	|Anthony|	b636bc7ca	doesn't it go in increments of 1024?
+2012-07-26T22:45:00.000Z	b636bc7ca	|Anthony|	It doesn't have to, no
+2012-07-26T22:45:00.000Z	|Anthony|	b636bc7ca	and if that's higher than the hard limit, how do i change that? ulimit -H -n 2048
+2012-07-26T22:46:00.000Z	b636bc7ca	|Anthony|	/etc/security/limits.conf
+2012-07-26T22:48:00.000Z	|Anthony|	b636bc7ca	the contents of that file are all commented out... just an example file. Is there somewhere else that the hard limit would be defined?
+2012-07-26T22:49:00.000Z	b636bc7ca	|Anthony|	Right - put a new line in that file with the value you want.

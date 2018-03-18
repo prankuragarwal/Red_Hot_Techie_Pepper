@@ -1,0 +1,23 @@
+2007-04-20T14:29:00.000Z	Enselic_		Does anyone know if the i386 Ubuntu kernels have SMP (multi processor core) support?
+2007-04-20T12:36:00.000Z	Enselic_		Is it possible to reboot from the commandline withouth superuser previliegs?
+2007-04-20T12:36:00.000Z	Enselic_		!ru | DODrive
+2007-04-20T12:37:00.000Z	eck	Enselic_	no, that would be a major problem
+2007-04-20T12:38:00.000Z	Enselic_	eck	what happens when I shutdown trough the System menu then? Some signal is sent to init or something? I mean, I don'tneed to be su to do that
+2007-04-20T12:39:00.000Z	eck	Enselic_	GDM runs as root, and i think GDM is configured to accept commands like that from users who have logged in though gdm
+2007-04-20T12:39:00.000Z	Enselic_	eck	ah ok
+2007-04-20T12:44:00.000Z	eck	Enselic_	yes, grub runs in stages :-) it is hard-coded in the mbr where to look for the stage 1.5 files, including menu.lst
+2007-04-20T12:44:00.000Z	Enselic_	eck	yeah, but doesn't the root (hd0,1) tell it where to look for menu.lst?
+2007-04-20T12:44:00.000Z	eck	Enselic_	no -- how would it know to read hd0,1 if it can't read the menu.lst?
+2007-04-20T12:45:00.000Z	Enselic_	eck	from what I understand, GRUB is hd aware?
+2007-04-20T12:45:00.000Z	Enselic_	eck	doesn't one have to tell it where to find menu.lst?
+2007-04-20T12:45:00.000Z	eck	Enselic_	yes, you do that when you install grub onto the mbr
+2007-04-20T12:46:00.000Z	Enselic_	eck	ok, so to conquer GRUB from SUSE, I need to overwrite the MBR with my own MBR, I can't set the root partion where GRUB should look for menu.lst afterwards?
+2007-04-20T12:47:00.000Z	eck	Enselic_	when you install grub you specify the partition that the menu.lst is on, so you need to reinstall grub to point to the ubuntu partition (you can do this in ubuntu or suse, it doesn't matter)
+2007-04-20T12:48:00.000Z	eck	Enselic_	actually, you might need to be in ubuntu to do it
+2007-04-20T12:48:00.000Z	eck	Enselic_	if you are in ubuntu (or can chroot into it) you can use grub-install
+2007-04-20T12:48:00.000Z	Enselic_	eck	so the root command (from the GRUB shell) is only local to a particular shell session? I thought that command wrote which partion to look in to the MBR...
+2007-04-20T12:49:00.000Z	Enselic_	eck	nah, how could this be Ubuntu specific?
+2007-04-20T12:50:00.000Z	eck	Enselic_	if there is a way to specify where to look for the 1.5 files you could do that
+2007-04-20T12:50:00.000Z	eck	Enselic_	i think the default behavior is to just look in /boot/grub/
+2007-04-20T12:52:00.000Z	Enselic_	eck	yes, the problem is how to tell GRUB where root is?
+2007-04-20T12:52:00.000Z	eck	Enselic_	usually if I want to change it and I am not in the correct place, I chroot to the install I want to install it from and run grub-install from the chroot

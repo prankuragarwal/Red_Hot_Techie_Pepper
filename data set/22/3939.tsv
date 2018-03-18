@@ -1,0 +1,22 @@
+2008-04-25T21:18:00.000Z	Raits		Could anyone help me troubleshoot booting issues i am having with xp. I reformated my ubuntu feisty install to a hardy one today and on reboot i couldn't boot into either OS because grub had the wrong menu items in it. I finally managed to boot into ubuntu now, but when i try to boot where i think xp is installed it just hangs. Other partitions i've tryed for xp give the "no ntldr" error on grub.
+2008-04-25T21:19:00.000Z	kakado	Raits	do you have more than one harddrive?
+2008-04-25T21:19:00.000Z	Raits	kakado	yes
+2008-04-25T21:20:00.000Z	Raits	kakado	it has the map hd(1) hd(0) and map hd(0) hd(1) done
+2008-04-25T21:24:00.000Z	kakado	Raits	ok, that's what I was thinking of
+2008-04-25T21:25:00.000Z	Raits	kakado	any other thoughts on the situation? It displays the starting up message and then just hangs there
+2008-04-25T21:27:00.000Z	Raits	kakado	would it help if i pasted the grub menu.lst lines for xp?
+2008-04-25T21:27:00.000Z	kakado	Raits	ok
+2008-04-25T21:31:00.000Z	Raits	kakado	root (hd0,1)     savedefault     makeactive     map (hd0) (hd1)    map (hd1) (hd0)     chainloader +1
+2008-04-25T21:31:00.000Z	Raits	kakado	root(hd0,1) is the only one that would even attempt to boot
+2008-04-25T21:33:00.000Z	kakado	Raits	try: rootgrub> root (hd1,0)
+2008-04-25T21:33:00.000Z	kakado		grub> chainloader +1
+2008-04-25T21:33:00.000Z	kakado		grub> map (hd0) (hd1)
+2008-04-25T21:34:00.000Z	kakado	Raits	try:  root (hd1,0)  chainloader +1  map  (hd0) (hd1)    map (hd1) (hd0)
+2008-04-25T21:35:00.000Z	Raits	kakado	you mean insert those lines into the menu.lst?
+2008-04-25T21:36:00.000Z	kakado	Raits	yes, or try it manually in grub, by editing the menu
+2008-04-25T21:37:00.000Z	kakado	Raits	I tried some different combinations and then it worked :)
+2008-04-25T21:38:00.000Z	Raits	kakado	you're a miracle man, windows is booting now. Would you mind telling me what was wrong for future reference?
+2008-04-25T21:39:00.000Z	kakado	Raits	heh, I'm not sure
+2008-04-25T21:39:00.000Z	kakado	Raits	I looked here for reference: http://www.gnu.org/software/grub/grub-legacy-faq.en.html#q10
+2008-04-25T21:40:00.000Z	Raits	kakado	anyway, thank you, it's working great now:)
+2008-04-25T21:40:00.000Z	kakado	Raits	cool

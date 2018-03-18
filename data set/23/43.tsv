@@ -1,0 +1,23 @@
+2012-10-04T22:24:00.000Z	bruce2		I am trying to reset root password but system won't drop to root shell as it's asking password - what should I do to get access?
+2012-10-04T22:26:00.000Z	bruce2		I need to get access to this ubuntu server
+2012-10-04T22:26:00.000Z	bruce2		i don't know the username and password
+2012-10-04T22:26:00.000Z	bruce2		sorry, I don't understand
+2012-10-04T22:26:00.000Z	bruce2		recovery mode is asking me for root password for maintainence or Control-D
+2012-10-04T22:27:00.000Z	bruce2		but single mode gives me another error, "recordfail" page
+2012-10-04T22:28:00.000Z	theadmin	bruce2	Edit the kernel line to say whatever it says now, but add "init=/bin/bash"
+2012-10-04T22:28:00.000Z	theadmin	bruce2	When you get into the shell, run "mount -o remount,rw /" and do whatever it is you need
+2012-10-04T22:29:00.000Z	theadmin	bruce2	It's in GRUB... the kernel line...
+2012-10-04T22:31:00.000Z	theadmin	bruce2	Mine looks like this: linux   /boot/vmlinuz-3.2.0-29-generic root=UUID=95b711a2-ccf3-4799-aaec-b2dfcc03d0c9 ro   quiet splash
+2012-10-04T22:32:00.000Z	theadmin	bruce2	Yes, that looks like the right one, just add "init=/bin/bash" to the end of it
+2012-10-04T22:34:00.000Z	theadmin	bruce2	Doesn't really matter where you add the init thing, long as it's on the linux line, but yes, you should probably add it after "quiet"
+2012-10-04T22:35:00.000Z	theadmin	bruce2	Right, no quotes
+2012-10-04T22:35:00.000Z	bruce2	theadmin	k, so now do I press Ctrl-C?
+2012-10-04T22:35:00.000Z	theadmin	bruce2	Not sure, whatever it asks you to press to boot
+2012-10-04T22:35:00.000Z	theadmin	bruce2	I'm not too familiar with grub2
+2012-10-04T22:36:00.000Z	bruce2	theadmin	^^^^
+2012-10-04T22:36:00.000Z	bruce2	theadmin	k, i dropped to shell
+2012-10-04T22:36:00.000Z	bruce2	theadmin	passwd root?
+2012-10-04T22:36:00.000Z	theadmin	bruce2	Great, now this: mount -o remount,rw /
+2012-10-04T22:36:00.000Z	theadmin	bruce2	After that, "passwd username", and never use the root account directly
+2012-10-04T22:37:00.000Z	bruce2	theadmin	how do I find the username? cat /etc/shadow   ?
+2012-10-04T22:37:00.000Z	theadmin	bruce2	Just add a user lols, "adduser somebody"

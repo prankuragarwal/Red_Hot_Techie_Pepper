@@ -1,0 +1,21 @@
+2010-05-10T15:35:00.000Z	HoldenC		I installed lucid, but my system freezes randomly and my caps/scroll lock light blink repeatedly. Has anyone experienced this?
+2010-05-10T15:36:00.000Z	erUSUL	HoldenC	caps/scroll lock light blink repeatedly <<<< that's a kernel panic. review the logs /var/log/messages
+2010-05-10T15:36:00.000Z	HoldenC	erUSUL	problem is, I got nothing in my logs :( i checked messages, syslog, kernel.log...
+2010-05-10T15:37:00.000Z	erUSUL	HoldenC	well if the kernel panic is severe enough the kernel may be unable to writte anything to disk ...
+2010-05-10T15:37:00.000Z	erUSUL	HoldenC	have you checked hardware ? memtest =?
+2010-05-10T15:38:00.000Z	HoldenC	erUSUL	I could try alt+sysrq+REISUB, but the problem happens randomly. I have done a full test on my hd with the utility provided by samsum and i'm gonna do a memtest
+2010-05-10T15:39:00.000Z	HoldenC	erUSUL	it seems like i'm not alone http://ubuntuforums.org/showthread.php?t=1470452 :(
+2010-05-10T15:41:00.000Z	erUSUL	HoldenC	another thing you can do if you really want to track this dwon is set up netconsole (advanced kernel debugging yay!! ) http://www.mjmwired.net/kernel/Documentation/networking/netconsole.txt
+2010-05-10T15:44:00.000Z	HoldenC	erUSUL	thanks, this seems a bit advanced, i could study the documentation and try.
+2010-05-10T15:45:00.000Z	erUSUL	HoldenC	good luck
+2010-05-10T19:09:00.000Z	HoldenC	erUSUL	thanks for the hint on netconsole, it was easier than i thought. Anyway I reinstalled, disabled the sata controller, and it seems to work fine so far
+2010-05-10T19:09:00.000Z	erUSUL	HoldenC	ok glad it helped
+2010-05-10T19:10:00.000Z	erUSUL	HoldenC	somewhat at least ....
+2010-05-10T19:11:00.000Z	HoldenC	erUSUL	i'm keeping an eye on the output of netconsole on this machine, if it freezes again let's hope i can catch it
+2010-05-10T21:52:00.000Z	HoldenC	erUSUL	I was able to see the error: http://paste.ubuntu.com/431208/ it happens when i copy big files from a sata drive to a pata drive. with the sata controller disabled it seem to work fine ... i checked my hardware, i think it's a kernel problem :(
+2010-05-10T21:53:00.000Z	erUSUL	HoldenC	report the issue either in launchpad against the ubuntu kernel. or directly to the kernel devs in the linux kernelmailing list. include the backtrace you captured. mention that is reproducible
+2010-05-10T21:54:00.000Z	HoldenC	erUSUL	ok
+2010-05-11T16:21:00.000Z	HoldenC	erUSUL	I reported the bug yesterday https://bugs.launchpad.net/ubuntu/+source/linux/+bug/578401 but maybe i've already found a solution. i've compiling mplayer and md5summing 200gb of data at the same time and it's working so far
+2010-05-11T16:21:00.000Z	erUSUL	HoldenC	i'm glasd you "fixed" it (or workaround it anyway)
+2010-05-11T16:21:00.000Z	HoldenC	erUSUL	thanks for your help.
+2010-05-11T16:22:00.000Z	erUSUL	HoldenC	no problem

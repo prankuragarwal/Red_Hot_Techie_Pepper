@@ -1,0 +1,23 @@
+2009-01-21T08:10:00.000Z	emma		Perhaps someone here could tell me, how does one bring up a list of the wifi signals found?
+2009-01-21T08:10:00.000Z	mindrape	emma	- sudo iwlist wlan0 scan
+2009-01-21T08:11:00.000Z	mindrape	emma	- gksudo network-manager    I believe
+2009-01-21T08:11:00.000Z	emma	mindrape	that isn't on the new desktop without starting it from the commandline?
+2009-01-21T08:11:00.000Z	mindrape	emma	- ALT F2
+2009-01-21T08:15:00.000Z	mindrape	emma	- sudo iwconfig... what is the name of your wireless interface?
+2009-01-21T08:16:00.000Z	emma	mindrape	is that 'wifi0' ?
+2009-01-21T08:17:00.000Z	mindrape	emma	- most likely... sudo iwlist wifi0 scan
+2009-01-21T08:17:00.000Z	emma	mindrape	jrib doing sudo iwconfig actually is showing the ESSID I expected to see in a list of potential ESSIDs
+2009-01-21T08:18:00.000Z	emma	mindrape	that did it. You are quite good.
+2009-01-21T08:18:00.000Z	emma	mindrape	:P
+2009-01-21T08:18:00.000Z	emma	mindrape	I'm surprised that there is no gui app by default on the desktop for doing that though.
+2009-01-21T08:19:00.000Z	mindrape	emma	- there should be... network-manager pops up on my laptop install (I turned it off on my desktop though)
+2009-01-21T08:19:00.000Z	emma	mindrape	network-manager does have an icon in my system tray but it seems to have no content in it.
+2009-01-21T08:19:00.000Z	mindrape	emma	- System -> Preferences -> Sessions -> add network-manager to your startup list
+2009-01-21T08:20:00.000Z	emma	mindrape	everything is greyed out except for VPN Connections >
+2009-01-21T08:20:00.000Z	mindrape	emma	- if you right-click on it you may have to choose Enable networking
+2009-01-21T08:23:00.000Z	mindrape	emma	- it shows them for me... if you walk around, based on the beacon timing of each router, it will update.
+2009-01-21T08:23:00.000Z	emma	mindrape	What do you click on to get the list of avaliable networks?
+2009-01-21T08:24:00.000Z	mindrape	emma	- ask jrib... I dont use that except on my laptop which I barely bootup anymore.
+2009-01-21T08:26:00.000Z	mindrape	emma	- I think I might know the problem... if you got your wireless device working via        sudo iwconfig you may need to sudo ifconfig wifi0 down     then re-enable it via nm-applet so it "has control"
+2009-01-21T08:27:00.000Z	emma	mindrape	my guess is that the same reason "sudo iwlist wifi0 scan" works and "sudo iwlist wlan0 scan" does not, is the same reason that there is no list of available networks showing up in the nm-applet. Maybe there is some way to tell nm-applet to scan using wifi0 too.
+2009-01-21T08:27:00.000Z	mindrape	emma	- maybe so... perhaps you can pass it parameters when you launch it?  man nm-applet ?

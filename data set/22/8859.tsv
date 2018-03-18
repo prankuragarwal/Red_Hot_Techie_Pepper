@@ -1,0 +1,22 @@
+2005-05-03T07:35:00.000Z	Sinistrad		so, following the steps in the SetupNdiswrapperHowto, I was able to successfully compile and load the ndiswrapper module (kernel release 2.6.10-5-386) ... but the wlan0 interface still doesn't show up with "iwconfig" ... (card is broadcom BCM4306 chipset -- ndiswrapper -m shows the driver/hardware present).  Any suggestions?
+2005-05-03T07:37:00.000Z	delltony	Sinistrad	did you modprobe ndiswrapper?
+2005-05-03T07:37:00.000Z	Sinistrad	delltony	of course.  loaded successfully according to both lsmod, /var/log/messages
+2005-05-03T07:38:00.000Z	delltony		what does ifconfig say?
+2005-05-03T07:38:00.000Z	Sinistrad		ifconfig lists eth0 and lo as interfaces.  iwconfig lists lo, eth0, sit0 with no wireless extensions
+2005-05-03T07:40:00.000Z	delltony		see what sudo iwlist scan will produce for you just curious if it detects anythign is all
+2005-05-03T07:41:00.000Z	Sinistrad		lists those three interfaces, lo, eth0, sit0, with a note by each saying "interface doesn't support scanning"
+2005-05-03T07:41:00.000Z	delltony		ok
+2005-05-03T07:41:00.000Z	delltony		open up sudo nano /etc/network/interfaces
+2005-05-03T07:41:00.000Z	delltony		do you have a listing in there for wlan0?
+2005-05-03T07:41:00.000Z	Sinistrad		no
+2005-05-03T07:41:00.000Z	delltony		add it
+2005-05-03T07:42:00.000Z	delltony		apend to the bottom of hte list
+2005-05-03T07:42:00.000Z	Sinistrad		"iface wlan0 inet dhcp" ?
+2005-05-03T07:42:00.000Z	delltony		yep
+2005-05-03T07:42:00.000Z	delltony		then auto wlan0
+2005-05-03T07:43:00.000Z	Sinistrad		"ifup wlan0" reports SIOCSIFADDR: No such device
+2005-05-03T07:43:00.000Z	delltony		hmm i wonder
+2005-05-03T07:43:00.000Z	delltony		cause i seen this before
+2005-05-03T07:44:00.000Z	delltony		on my dell there is a function f2 key to turn on the radio transmitter
+2005-05-03T07:44:00.000Z	delltony		not sure abut your laptop or whatever but look and see if the physical switch is on for the wireless
+2005-05-03T07:45:00.000Z	Sinistrad	delltony	there's no function of that sort on this particular laptop.

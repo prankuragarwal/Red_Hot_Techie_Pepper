@@ -1,0 +1,22 @@
+2006-11-21T09:16:00.000Z	Paradox34690		Hey all... I'm using Ubuntu 6.10 (edgy eft) and I have a question about the keyring manager. anyone care to help me out with this?
+2006-11-21T09:16:00.000Z	Kingsqueak	Paradox34690	just ask, please
+2006-11-21T09:16:00.000Z	Paradox34690		k, sorry...
+2006-11-21T09:18:00.000Z	Paradox34690		well, i'm a windows baby first off... totally new to linux, but have been wanting to check it out for the longest time... Anyways, I have a couple of windows shares that whenever I'm connecting to them I'm constantly being asked to provide a password even though I'm checking the little "Store in keyring" box...   Obviously, it's not getting stored... How can I correct this?
+2006-11-21T09:18:00.000Z	Kingsqueak	Paradox34690	o.k. did you set your keyring password to the same as your login password?
+2006-11-21T09:19:00.000Z	Kingsqueak	Paradox34690	there's two ways to fix this, 'sudo apt-get install gnome-keyring-manager'  use that to auth all the apps to always have access to the keyring
+2006-11-21T09:19:00.000Z	Kingsqueak	Paradox34690	the other way is to enable the pam_keyring module for gdm desktop sessions, so that once you log in, your password is carried into the keyring daemon
+2006-11-21T09:19:00.000Z	Paradox34690		um... if you mean the password for the share that I'm connecting to? No.  Trappist, that won't work because I'm not connected to those shares persistantly...
+2006-11-21T09:20:00.000Z	Kingsqueak	Paradox34690	here's the pam module howto, with Edgy you don't have to compile it, just install the pam-keyring package, it works.  The /etc/pam.d/gdm config change has to be done though
+2006-11-21T09:20:00.000Z	Kingsqueak		http://ubuntuforums.org/showthread.php?t=187874
+2006-11-21T09:22:00.000Z	Paradox34690	Kingsqueak	with this 'sudo apt-get install gnome-keyring-manager' method, does this mean that when I connect to a share (or whatever... anything that's asking me to store my password to the keyring) that it will create an entry in my keyring (the one I create through keyring manager) and store the password for whatever I'm working on in it?
+2006-11-21T09:22:00.000Z	Kingsqueak	Paradox34690	that app 'gnome-keyring-manager' authorizes applications to have access to the keyring
+2006-11-21T09:22:00.000Z	Kingsqueak	Paradox34690	the pam module does the initial 'unlocking' of the keyring
+2006-11-21T09:23:00.000Z	Kingsqueak	Paradox34690	the combination of the two makes it all happen in the background after you've logged in once to your desktop session
+2006-11-21T09:23:00.000Z	Kingsqueak	Paradox34690	it will only work if your user login is the same password as the keyring manager though
+2006-11-21T09:24:00.000Z	Paradox34690		Oh, yeah, I set up my keyring to have the same u/n and p/w, so I don't forsee that being an issue... now it's just a matter of getting everything to work together :)
+2006-11-21T09:24:00.000Z	Paradox34690	Kingsqueak	thanks for the forum link though, i'm checking that out now.
+2006-11-21T09:25:00.000Z	Kingsqueak	Paradox34690	basically pam, if you don't know, ties authentication into various things, in this case pam_keyring ties auth for your session into the keyring
+2006-11-21T09:25:00.000Z	Kingsqueak	Paradox34690	there are others like pam_ldap which would check you against an LDAP database etc.
+2006-11-21T09:27:00.000Z	Paradox34690	Kingsqueak	let me put it this way... my knowledge of linux is about nil... I JUST installed it about a week ago and have been baby-stepping it the whole time... Hell, i don't even have it installed fully to a hdd... i'm running it on VMWare on a Windows XP Pro laptop just so I have a little bit of a transistion (granted, i know there's TONS of stuff that I CAN'T do with this current setup, but i'd like to learn the basics first)...
+2006-11-21T09:28:00.000Z	Paradox34690		Hell, it took me almost a half hour just to figure out the mv command
+2006-11-21T09:28:00.000Z	Kingsqueak	Paradox34690	heh no problem, been mucking with it since '95 and I figure out new things all the time

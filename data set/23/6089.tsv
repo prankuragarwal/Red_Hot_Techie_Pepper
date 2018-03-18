@@ -1,0 +1,23 @@
+2012-10-16T18:23:00.000Z	bogdan_		this is what I get: http://paste.ubuntu.com/1283170/
+2012-10-16T18:23:00.000Z	bogdan_		I'm not sure that bigmc is going to be in the repository, though, it's not a widely used piece of software
+2012-10-16T18:23:00.000Z	bogdan_		anyway, the make step fails
+2012-10-16T18:25:00.000Z	bogdan_		and GNU make and GNU readline, as per the instructions on the bigmc page
+2012-10-16T18:26:00.000Z	bogdan_		So here is the error I am getting: http://paste.ubuntu.com/1283170/
+2012-10-16T18:28:00.000Z	bogdan_		not sure if that's relevant, though
+2012-10-16T18:30:00.000Z	bogdan_		Anyway, if anyone could take a look at my failed attempt at running make, I would be grateful: http://paste.ubuntu.com/1283170/
+2012-10-16T18:30:00.000Z	bogdan_		bigmc page: http://bigraph.org/bigmc/manual/Obtaining-BigMC.html
+2012-10-16T18:32:00.000Z	bogdan_		thanks for the checkinstall thing, but I don't think that will solve my issues
+2012-10-16T18:33:00.000Z	bogdan_		you can see the errors here: http://paste.ubuntu.com/1283170/
+2012-10-16T18:33:00.000Z	jrib	bogdan_	what happened before make?
+2012-10-16T18:34:00.000Z	bogdan_	jrib	fresh installation of ubuntu, got build-essential, gnu readline6, googleperf
+2012-10-16T18:35:00.000Z	jrib	bogdan_	what does "got" mean? You need to download the archive, extract it, and run ./configure before running make
+2012-10-16T18:35:00.000Z	bogdan_	jrib	I ran sudo apt-get install build-essential
+2012-10-16T18:36:00.000Z	jrib	bogdan_	pastebin the ./configure output
+2012-10-16T18:36:00.000Z	bogdan_	jrib	was just about to do that,  second
+2012-10-16T18:41:00.000Z	jrib	bogdan_	I got it to build but had to edit graph.cpp and include stdio.h :/  Maybe ask the author about it
+2012-10-16T18:42:00.000Z	bogdan_	jrib	were you getting the same error as me before that?
+2012-10-16T18:42:00.000Z	jrib	bogdan_	yes
+2012-10-16T18:42:00.000Z	jrib	bogdan_	apparently it's a change in recent gcc
+2012-10-16T18:42:00.000Z	bogdan_	jrib	cool, let me see if that works
+2012-10-16T18:45:00.000Z	bogdan_	jrib	yes, that fixed it. Cheers for the help!
+2012-10-16T18:46:00.000Z	jrib	bogdan_	more standard way may be to include cstdio instead of stdio.h by the way.  I guess you have to look more into what changed in gcc(?) and if it's intentional

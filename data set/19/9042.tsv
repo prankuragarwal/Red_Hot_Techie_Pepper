@@ -1,0 +1,19 @@
+2008-09-21T05:07:00.000Z	IntuitiveNipple	Anusien	is the system using pulse-audio? maybe you need to restart the pa session server?
+2008-09-21T05:09:00.000Z	Anusien	IntuitiveNipple	I have no idea, how can I check?
+2008-09-21T05:10:00.000Z	IntuitiveNipple	Anusien	"ps -ef | grep pulse" - you should see two pulse processes
+2008-09-21T05:11:00.000Z	Anusien	IntuitiveNipple	Nope, no processes there
+2008-09-21T05:12:00.000Z	IntuitiveNipple	Anusien	Is it a Hardy system?
+2008-09-21T05:12:00.000Z	Anusien	IntuitiveNipple	I think so.  Ubuntu 8.04 LTS (with the Mythbuntu packages as well)
+2008-09-21T05:14:00.000Z	IntuitiveNipple	Anusien	try restarting it: /usr/bin/pulseaudio --log-target=syslog&
+2008-09-21T05:15:00.000Z	Anusien	IntuitiveNipple	no such file or directory as /usr/bin/pulseaudio.  And I'll point out that sound used to work, so it's not a case of something being terribly screwed up from the start
+2008-09-21T05:16:00.000Z	IntuitiveNipple	Anusien	okay. I thought it might have crashed without you knowing. That would restart it. I thought Hardy had pulseaudio as default though
+2008-09-21T05:22:00.000Z	Anusien	IntuitiveNipple	Anyway, if I suspect one application is hogging ALSA, how do I stop it?
+2008-09-21T05:23:00.000Z	IntuitiveNipple	Anusien	hogging alsa? what do you mean?
+2008-09-21T05:23:00.000Z	Anusien	IntuitiveNipple	I remember an old issue (and saw reference to it on a help page for what I'm looking at) that this issue seems eerily familiar to one where something is hogging alsa
+2008-09-21T05:24:00.000Z	IntuitiveNipple	Anusien	You mean where the dmixer back-end isn't in use and one application has exclusive use of the sound device?
+2008-09-21T05:25:00.000Z	Anusien	IntuitiveNipple	I guess
+2008-09-21T05:26:00.000Z	Anusien	IntuitiveNipple	I remember gaim used to cause a similar issue
+2008-09-21T05:28:00.000Z	Anusien	IntuitiveNipple	Anyway, do you think that could be the problem (seems similar, since non-amarok programs just silently don't play audio) and how would it get fixed?
+2008-09-21T05:34:00.000Z	Anusien	IntuitiveNipple	Anyway, do you think that could be the problem (seems similar, since non-amarok programs just silently don't play audio) and how would it get fixed?
+2008-09-21T05:35:00.000Z	IntuitiveNipple	Anusien	I don't know, sound applications are generally well-behaved around me  :)
+2008-09-21T05:44:00.000Z	Anusien	IntuitiveNipple	alsa reload didn't do it, but alsa force-reload killed the processes holding onto alsa

@@ -1,0 +1,24 @@
+2011-08-17T21:19:00.000Z	oCean		oh
+2011-08-17T21:19:00.000Z	oCean		^^that
+2011-08-17T21:20:00.000Z	sosaited	oCean	Nope
+2011-08-17T21:12:00.000Z	oCean	sosaited	you got the first part correct. Now use ssh-copy-id on that same machine, to copy the id file to your remote server
+2011-08-17T21:12:00.000Z	sosaited	oCean	By "remote" server. You mean the server, or the client, FROM WHICH I will be connecting to my pc?
+2011-08-17T21:13:00.000Z	oCean	sosaited	on your client, from which you will be ssh'ing, run ssh-copy-id user@server
+2011-08-17T21:14:00.000Z	sosaited	oCean	I already did that. It said "No identities found";
+2011-08-17T21:14:00.000Z	oCean	sosaited	ssh-copy-id -i ~/.ssh/id_rsa.pub user@server
+2011-08-17T21:17:00.000Z	sosaited	oCean	It again says no identities found " sudo ssh-copy-id ' -p 1221 -i /home/ub/.ssh/id_rsa.pub us@domain.dyndns-work.com'
+2011-08-17T21:19:00.000Z	oCean	sosaited	check ls -al ~/.ssh/ to see if the id_rsa.pub does exist there
+2011-08-17T21:20:00.000Z	sosaited	oCean	Yes it does exist
+2011-08-17T21:20:00.000Z	oCean	sosaited	you created the rsa using sudo?
+2011-08-17T21:23:00.000Z	oCean	sosaited	your error (no identities found) means that the ~/.ssh/id_rsa.pub does not exist (or is not readable). The other error (permission denied, publickey) probably means that you don't have the correct permissions on either the pubkey or the ~/.ssh directory on the remote server
+2011-08-17T21:24:00.000Z	oCean	sosaited	have you manually created ~/.ssh on the remote server? Or is it existing?
+2011-08-17T21:24:00.000Z	sosaited	oCean	On the REMOTE server? I guess that will be the case. .ssh on the server needs to be?
+2011-08-17T21:24:00.000Z	sosaited	oCean	NO . I just manually created on the client yet
+2011-08-17T21:24:00.000Z	oCean	sosaited	no, ssh-copy-id will create it (if it does not exist)
+2011-08-17T21:25:00.000Z	oCean	sosaited	to be sure, on the remote server, IF ~/.ssh exists it should have 600 permissions (only read for owner)
+2011-08-17T21:25:00.000Z	sosaited	oCean	I am running ssh-copy-id on my client. Not server. Where I ran ssh-keygen already. ON THE SERVER. I didn't create the keys myself
+2011-08-17T21:26:00.000Z	oCean	sosaited	no, the ssh-keygen should be done on the CLIENT and the ssh-copy-id should be done on the CLIENT (copying it TO the SERVER)
+2011-08-17T21:26:00.000Z	sosaited	oCean	Like I mentioned before. Its all because I am confusing the terms on the guide with something else I guess. It said to run that command on the client. By that I understand the computer I will be connecting FROM. So I did run ssh-keygen on client, with folder set at 777 or 755 permission . whatever guide said
+2011-08-17T21:27:00.000Z	sosaited	oCean	Yes. I am doing that then
+2011-08-17T21:28:00.000Z	sosaited	oCean	Oh btw. What does "HostBasedAuthentication yes" does on the server?
+2011-08-17T21:30:00.000Z	sosaited	oCean	http://paste.ubuntu.com/668462/

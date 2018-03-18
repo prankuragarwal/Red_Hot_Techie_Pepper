@@ -1,0 +1,23 @@
+2009-10-16T12:01:00.000Z	tasslehoff		Hi. I have a windows laptop where the entire HD is encrypted with truecrypt. Can I install Ubuntu using the installer in Windows, without having to decrypt/encrypt the drive?
+2009-10-16T12:03:00.000Z	Jordan_U	tasslehoff	I doubt it will work by default but it can be made to work
+2009-10-21T11:53:00.000Z	Jordan_U	tasslehoff	vim todo.txt ;)
+2009-10-21T11:53:00.000Z	tasslehoff	Jordan_U	touchè :)
+2010-08-12T11:20:00.000Z	Jordan_U	tasslehoff	What actually happens when  you try to boot windows from grub?
+2010-08-12T11:21:00.000Z	tasslehoff	Jordan_U	Windows isn't shown in Grub at all. I have to press 'shift' at boot to get the Grub menu.
+2010-08-12T11:22:00.000Z	Jordan_U	tasslehoff	That solution will not help you then as it's for a different problem.
+2010-08-12T11:22:00.000Z	Jordan_U	tasslehoff	Is your windows partition encrypted?
+2010-08-12T11:24:00.000Z	tasslehoff	Jordan_U	no. I have: unencrypted win7, unencrypted /boot, encrypted partition (with /, /home and swap inside).
+2010-08-12T11:25:00.000Z	tasslehoff	Jordan_U	what is different about the problem in the post except that he installed Windows after Ubuntu whereas I did it the other way around?
+2010-08-12T11:26:00.000Z	tasslehoff	Jordan_U	the boot flag isn't set for the ntfs-partition on my system either
+2010-08-12T11:28:00.000Z	Jordan_U	tasslehoff	Does "sudo os-prober" provide any output?
+2010-08-12T11:29:00.000Z	tasslehoff	Jordan_U	nothing
+2010-08-12T11:30:00.000Z	Jordan_U	tasslehoff	Are all of your ntfs partitions mountable?
+2010-08-12T11:34:00.000Z	tasslehoff	Jordan_U	yes.
+2010-08-12T11:35:00.000Z	Jordan_U	tasslehoff	Could you run boot info script as explained here http://ubuntuforums.org/showthread.php?t=1291280 and pastebin the RESULTS.txt?
+2010-08-12T11:41:00.000Z	tasslehoff	Jordan_U	http://ubuntu.pastebin.com/4z2cCy4u
+2010-08-12T11:43:00.000Z	Jordan_U	tasslehoff	You don't have any /bootmgr or /Boot/BCD, which is needed to boot windows.
+2010-08-12T11:45:00.000Z	tasslehoff	Jordan_U	is that something Ubuntu should have put there? (how) can I remedy it?
+2010-08-12T11:45:00.000Z	Jordan_U	tasslehoff	No, it's part of Windows. It appears you either have a very odd windows setup or you're missing a partition.
+2010-08-12T11:48:00.000Z	tasslehoff	Jordan_U	ouch. I had to delete a "system recovery partition" to make room for the other ones I needed. could it be that Dell had put it there?
+2010-08-12T11:55:00.000Z	Jordan_U	tasslehoff	I think you left the one Dell put there and deleted the one needed by windows.
+2010-08-12T11:58:00.000Z	Jordan_U	tasslehoff	You're going to need to recreate that partition somehow, it might require re-installing windows entirely. Anyway, this is now a question for ##windows.

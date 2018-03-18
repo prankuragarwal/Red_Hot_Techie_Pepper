@@ -1,0 +1,23 @@
+2010-08-02T21:24:00.000Z	MrJones		hi
+2010-08-02T21:24:00.000Z	MrJones		I don't know whether this is considered severe enough to fix it, but it caused me days of headache and misunderstandings (also it took very long to find some hacker who was eventually skilled enough to find out what went wrong):
+2010-08-02T21:25:00.000Z	MrJones		if I attempt to load a fedora .so file on ubuntu (compiled on fedora 13) WITHOUT -fno-stack-protector (which means it requires a newer glibc than ubuntu 8.04 lts has)
+2010-08-02T21:25:00.000Z	MrJones		then ubuntu 8.04 lts spits out something about "ELF file OS ABI invalid"
+2010-08-02T21:25:00.000Z	MrJones		(when attempting to dlopen() it)
+2010-08-02T21:25:00.000Z	MrJones		that person who finally found out the cause of this told me this error message was most likely wrong and should be improved
+2010-08-02T21:26:00.000Z	MrJones		also most people I told about it were just helpless and not saying anything more useful than "meh you cannot run fedora-compiled things on ubuntu"
+2010-08-02T21:26:00.000Z	MrJones		(which isn't true if you make sure you don't use newer glibc features)
+2010-08-02T21:26:00.000Z	MrJones		should I file a bug report about this? is it a known issue? is it going to be changed anyway?
+2010-08-02T21:26:00.000Z	MrJones		or is this intended and I just ran into the wrong people of which noone was able to read that error properly
+2010-08-02T21:28:00.000Z	sipior	MrJones	doesn't sounds like an ubuntu-specific problem. have you tried the reverse, linking to an ubuntu-supplied library under fedora?
+2010-08-02T21:28:00.000Z	MrJones	sipior	it IS a glibc problem, since that .so was NOT compiled with -fno-stack-protector and therefore relies on some newer one (you can check that in the symbols) and after adding -fno-stack-protector it works just fine
+2010-08-02T21:29:00.000Z	MrJones	sipior	therefore I'd be pretty surprised if you wanted to tell me it's not simply a glibc versioning issue
+2010-08-02T21:29:00.000Z	sipior	MrJones	odd that you didn't answer my question. i take it the answer is "no"?
+2010-08-02T21:29:00.000Z	MrJones	sipior	wait a second, I'll reread it
+2010-08-02T21:30:00.000Z	MrJones	sipior	I tried running ubuntu applications on fedora which cannot load any of the fedora libs with the same error (most likely due to glibc problems again). I did not try to load an ubuntu .so under fedora though, no
+2010-08-02T21:33:00.000Z	sipior	MrJones	also, have you tried running this on a modern ubuntu?
+2010-08-02T21:35:00.000Z	MrJones	sipior	not yet. I guess if the glibc it uses is new enough it won't be a problem. I'm just wondering whether that "ELF OS ABI invalid" error shouldn't be changed to something more verbose
+2010-08-02T21:37:00.000Z	sipior	MrJones	i'm not sure it's worth the trouble, frankly, but you could certainly take it up with the glibc folks.
+2010-08-02T21:38:00.000Z	sipior	MrJones	the problem, of course, is that to a glibc hacker, that probably is a pretty verbose message :-)
+2010-08-02T21:39:00.000Z	MrJones	sipior	yea, but I ran into pretty unfriendly people
+2010-08-02T21:40:00.000Z	sipior	MrJones	par for the course, i'm afraid.
+2010-08-02T21:40:00.000Z	MrJones	sipior	when I tried to get help in fedora I nearly got kickbanned because it was "not a fedora-related"

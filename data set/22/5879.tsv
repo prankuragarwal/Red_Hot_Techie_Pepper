@@ -1,0 +1,22 @@
+2011-02-21T11:01:00.000Z	sparr		I've got two Ubuntu machines on a LAN. What's the easiest way to share files between them?
+2011-02-21T11:02:00.000Z	earthmeLon	sparr	SAMBA is windows-like/compatible file sharing
+2011-02-21T11:03:00.000Z	earthmeLon	sparr	you can also use scp from the command line if you have openssh server installed on both pcs
+2011-02-21T11:04:00.000Z	sparr	earthmeLon	I'm having trouble using the built-in SMB sharing because the files are on a dmask=077 mount so it can't set the desired permissions
+2011-02-21T11:08:00.000Z	sparr	earthmeLon	so, I'm using SAMBA, configured from the default GUI "Sharing" dialogs. the problem is that it wants to change permissions on the shared files, but my user can't change those permissions
+2011-02-21T11:09:00.000Z	earthmeLon	sparr	Are you able to connect/see files?
+2011-02-21T11:10:00.000Z	sparr	earthmeLon	I can connect and see the names of the shares, but can't mount them, presumably because the permissions on the sharing machine are incorrect
+2011-02-21T11:11:00.000Z	earthmeLon	sparr	did the 'server' set up samba so that your user can access those shares?
+2011-02-21T11:12:00.000Z	sparr	earthmeLon	it's the default ubuntu 10.10 samba configuration. my user has permission to create shares, and can access the files in question
+2011-02-21T11:14:00.000Z	earthmeLon	sparr	have you added users to samba?
+2011-02-21T11:15:00.000Z	sparr	earthmeLon	I am not the admin on that computer, so I am not sure. My user can create shares, and those shares appear on the network to other computers, so I think the answer is yes
+2011-02-21T11:15:00.000Z	earthmeLon	sparr	do you have admin access the the server?
+2011-02-21T11:16:00.000Z	sparr	earthmeLon	no
+2011-02-21T11:16:00.000Z	sparr	earthmeLon	however, the admin has given me (or I always had by default, not sure which) the ability to create shares
+2011-02-21T11:16:00.000Z	earthmeLon	sparr	in order for you to access files on the server, the server needs to be configured non-default
+2011-02-21T11:18:00.000Z	sparr	earthmeLon	I am already able to access files on the server, in directories that my user can change permissions on
+2011-02-21T11:19:00.000Z	sparr	earthmeLon	my problem is remote access to directories my user on the server has access to, but can't change permissions on
+2011-02-21T11:19:00.000Z	earthmeLon	sparr	even though you can view or modify a file in samba, you have to be in the group or owner of the file in order to modify the permissions
+2011-02-21T11:21:00.000Z	earthmeLon	sparr	if you create a file, are you able to modify it's permissions?
+2011-02-21T11:24:00.000Z	sparr	earthmeLon	depends on the mount. if it doesnt have a umask or dmask, yes. if it does, no (not for the masked bits)
+2011-02-21T11:26:00.000Z	earthmeLon	sparr	I dont usually use samba, sorry I can't help.  bastidraZor's suggestion was an easy way to implement sshfs.  It would only require that you had an ssh account on the server
+2011-02-21T11:30:00.000Z	sparr	earthmeLon	ok, thanks

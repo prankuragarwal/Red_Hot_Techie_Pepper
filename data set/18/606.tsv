@@ -1,0 +1,18 @@
+2011-12-03T03:14:00.000Z	escott	chz|bacon	on what kind of raid are you trying to install grub?
+2011-12-03T03:14:00.000Z	chz|bacon	escott	software raid
+2011-12-03T03:15:00.000Z	escott	chz|bacon	which one? mdadm? and what raid level
+2011-12-03T03:16:00.000Z	chz|bacon	escott	11.04, mdadm (assuming thats what it ships with), raid1
+2011-12-03T03:17:00.000Z	chz|bacon	escott	every time i try to install grub2 it says it can't
+2011-12-03T03:17:00.000Z	escott	chz|bacon	that should be fairly easy to setup. what command are you using to install grub?
+2011-12-03T03:18:00.000Z	escott	chz|bacon	/dev/sda or /dev/sdb is where you should be installing it. and you should have /boot mounted at the time. so what error message is it giving you
+2011-12-03T03:22:00.000Z	escott	chz|bacon	can you !paste the entire output
+2011-12-03T03:23:00.000Z	chz|bacon	escott	not sure how i can exactly paste the output it's on a different machine
+2011-12-03T03:24:00.000Z	escott	chz|bacon	if you shell into that server you can copy and paste
+2011-12-03T03:24:00.000Z	chz|bacon	escott	right, but i can't boot the machine
+2011-12-03T03:30:00.000Z	escott	chz|bacon	the other approach would be to try and install grub to /dev/sda but tell it to use /dev/sda1 as the boot partition (ie remount the underyling device) in essence splitting the raid
+2011-12-03T03:31:00.000Z	escott	chz|bacon	there are some advantages to do that, in that you can setup the mbr on disk1 to boot off of sda1, and the mbr on disk 2 to boot off of sdb1, and then mirror the boot partition
+2011-12-03T03:31:00.000Z	escott	chz|bacon	what is the exact comand you are using
+2011-12-03T03:32:00.000Z	chz|bacon	escott	i'm not i'm just walking through the installer
+2011-12-03T03:33:00.000Z	chz|bacon	escott	should i save sanity and just get an inexpensive controller card?
+2011-12-03T03:34:00.000Z	escott	chz|bacon	id like to know exactly what command you are typing. a lot of times people get confused
+2011-12-03T05:54:00.000Z	escott	chz|bacon	ive gotten configurations like yours to work, but i've always started by migrating a working system non-raid system to mdadm. its been a while since ive done it

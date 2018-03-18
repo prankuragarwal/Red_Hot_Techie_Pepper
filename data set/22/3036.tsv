@@ -1,0 +1,22 @@
+2009-01-22T04:01:00.000Z	corinth		I was installing VirtualBox 2.1 when my connection to my wireless network was lost for some reason. After that, and since rebooting, I can't see any wireless networks. Help?
+2009-01-22T04:01:00.000Z	ensay	corinth	-> sudo iwlist wlan0 scan   any output?
+2009-01-22T04:03:00.000Z	corinth	ensay	wlan0       Interface doesn't support scanning: Network is down
+2009-01-22T04:03:00.000Z	ensay	corinth	-> is that your wifi nic name? or is it ath0?   sudo lshw -C network
+2009-01-22T04:05:00.000Z	corinth	ensay	It looks like it might be called wmaster0
+2009-01-22T04:05:00.000Z	ensay	corinth	-> your drive is not loaded, reload it please
+2009-01-22T04:07:00.000Z	corinth	ensay	Trying that.
+2009-01-22T04:12:00.000Z	corinth	ensay	I disabled it, rebooted, then enabled it, then rebooted. Still nothing.
+2009-01-22T04:13:00.000Z	ensay	corinth	-> what did you disable?
+2009-01-22T04:13:00.000Z	ensay	corinth	-> how did you enable it?
+2009-01-22T04:15:00.000Z	ensay	corinth	-> when you do  lsmod |grep thatdrivername   any results ?    use modprobe perhaps?
+2009-01-22T04:17:00.000Z	corinth	ensay	By the way, with the sudo lshw -C network command, next to the wireless section it says *=network DISABLED
+2009-01-22T04:18:00.000Z	ensay	corinth	-> can you post the results in pastebin of sudo lshw -C network
+2009-01-22T04:18:00.000Z	corinth	ensay	Sure, gimmie a minute. Gotta copy/paste it between machines.
+2009-01-22T04:21:00.000Z	corinth	ensay	http://pastebin.ubuntu.com/108047/
+2009-01-22T04:22:00.000Z	ensay	corinth	-> try to enable it? isnt there like a box you click with network manager?
+2009-01-22T04:23:00.000Z	corinth	ensay	nm-applet shows that wireless IS enabled
+2009-01-22T04:24:00.000Z	ensay	corinth	-> not from what you pasted..but try   sudo ifdown ath0  then sudo ifup ath0
+2009-01-22T04:25:00.000Z	corinth	ensay	ifdown: interface ath0 not configured
+2009-01-22T04:26:00.000Z	ensay	corinth	-> use the nic name assigned to it, it could have been wlan0, eth0
+2009-01-22T04:27:00.000Z	corinth	ensay	Nope, didn't work still. :-(
+2009-01-22T04:32:00.000Z	ensay	corinth	-> http://www.ubuntuaone.com/content/intrepid-update-breaks-ath5k

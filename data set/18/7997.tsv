@@ -1,0 +1,18 @@
+2007-10-15T09:01:00.000Z	trackballuser		can anyone tell me how to disable the gnome login screen in command line?
+2007-10-15T09:02:00.000Z	trackballuser		my login screen hangs
+2007-10-15T09:02:00.000Z	trackballuser		always, I checked "enable accessibility options" once and from then on it hangs consistently
+2007-10-15T09:02:00.000Z	Vlet	trackballuser	you just want a terminal? You need to remove the symlinks to gdm from your /etc/rc5.d/ dir
+2007-10-15T09:04:00.000Z	Vlet	trackballuser	also from the /etc/rc4.d/ and any other /etc/rcX.d/ dir's
+2007-10-15T09:07:00.000Z	trackballuser	Vlet	can you walk me through it, my IRC client crashed so I forgot what you said
+2007-10-15T09:08:00.000Z	Vlet	trackballuser	No, but I can tell you again... there are directories /etc/rc0.d/ through /etc/rc6.d/ ... if you remove the symlinks to gdm from those directories, the login manager (gdm) will not be started
+2007-10-15T09:09:00.000Z	trackballuser	Vlet	Ok, so I don't have to edit any files, I just have to remove them? (sorry, I'm a newbie)
+2007-10-15T09:10:00.000Z	Vlet	trackballuser	then maybe you shouldn't be messing with this kinda stuff :)
+2007-10-15T09:10:00.000Z	trackballuser	Vlet	well, I think messing things up is a good way to learn :)
+2007-10-15T09:11:00.000Z	Vlet	trackballuser	runlevels are different stages the system goes through during startup... 0 through 5 (6 = shutting down). Whent he system moves to the next stage, it runs the programs in those directories
+2007-10-15T09:12:00.000Z	Vlet	trackballuser	so, in /etc/rc4.d/ and rc5.d are links to programs to run. You want to remove (for example) 'S13gdm' from /etc/rc5.d/
+2007-10-15T09:13:00.000Z	trackballuser	Vlet	ok, so I am in /etc/rc0.d adn I see "k01gdm" in there, should I remove that?
+2007-10-15T09:14:00.000Z	Vlet	trackballuser	I believe so, but you should keep track of what you do incase you need to restore it
+2007-10-15T09:14:00.000Z	Vlet	trackballuser	mind you, my advise comes with no warranty ;)
+2007-10-15T09:15:00.000Z	trackballuser	Vlet	Ok, thanks
+2007-10-15T09:31:00.000Z	trackballuser	Vlet	I did what you said and when I boot it goes into command line, but what I need is to be able to start GDM without the login screen
+2007-10-15T09:31:00.000Z	trackballuser	Vlet	sorry if I wasn't clear before

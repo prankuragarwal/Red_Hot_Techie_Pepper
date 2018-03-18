@@ -1,0 +1,21 @@
+2008-05-31T10:20:00.000Z	ethan		yo, im tryin to unmount an ISO from my desktop, cant do it with the GUI, cant do it with umount!
+2008-05-31T10:20:00.000Z	ethan		what the
+2008-05-31T10:21:00.000Z	troxor	ethan	sudo umount /mnt/point ?
+2008-05-31T10:21:00.000Z	ethan	troxor	its a rosetta stone ISO
+2008-05-31T10:22:00.000Z	ethan	troxor	sec ill give you the output
+2008-05-31T10:22:00.000Z	troxor	ethan	you can use fuser to find the processes, if any, that are using open files: http://www.tech-recipes.com/solaris_system_administration_tips1106.html
+2008-05-31T10:24:00.000Z	ethan	troxor	: ethan@opimusprime:~$ sudo umount /Desktop/"Rosetta Stone Application v2.0.8.1 [h33t PC CD IMAGE]"
+2008-05-31T10:26:00.000Z	troxor	ethan	/Desktop probably doesn't exist- check `cat /proc/mounts`, then use tab completion instead of the quotes
+2008-05-31T10:26:00.000Z	ethan	troxor	using ls in the terminal shows /Desktop?
+2008-05-31T10:28:00.000Z	troxor	ethan	find the real mountpoint with `cat /proc/mounts`, then do sudo umount the full path you find
+2008-05-31T10:31:00.000Z	ethan	troxor	I just got a giant output here
+2008-05-31T10:31:00.000Z	ethan	troxor	ill try rooting around in the terminal, will report back
+2008-05-31T10:34:00.000Z	ethan	troxor	does this look like it would be a rosetta stone CD? i think it does
+2008-05-31T10:34:00.000Z	ethan	troxor	/dev/loop1 /home/ethan/Desktop/untitled\040folder iso9660 ro,relatime 0 0
+2008-05-31T10:34:00.000Z	troxor	ethan	quite possibly, yes :)
+2008-05-31T10:34:00.000Z	troxor	ethan	sudo umount /home/ethan/Desktop/untitl<tab>
+2008-05-31T10:35:00.000Z	ethan	troxor	youre a dream! worked like a charm
+2008-05-31T10:36:00.000Z	ethan	troxor	guess i just had the filename wrong
+2008-05-31T10:36:00.000Z	troxor	ethan	awesome
+2008-05-31T10:36:00.000Z	troxor	ethan	tab completien will save you from typos
+2008-05-31T10:36:00.000Z	ethan	troxor	thanks !!

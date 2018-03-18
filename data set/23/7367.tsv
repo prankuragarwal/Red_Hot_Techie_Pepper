@@ -1,0 +1,23 @@
+2005-08-23T08:28:00.000Z	gmoore		oops, i think i screwed up a chmod because i'm getting this now. how do i fix it? ;)
+2005-08-23T08:28:00.000Z	gmoore		sudo: /etc/sudoers is mode 0444, should be 0440
+2005-08-23T08:28:00.000Z	gmoore		i typed this by mistake, hehe > sudo chmod -R g+r,o+r ./
+2005-08-23T08:29:00.000Z	gmoore		/mnt/storage/www
+2005-08-23T08:29:00.000Z	gmoore		empty dir except test.php test.rb
+2005-08-23T08:30:00.000Z	gmoore		it changed the chmod of sudo or something, every time i use sudo now i get this error: sudo: /etc/sudoers is mode 0444, should be 0440
+2005-08-23T08:31:00.000Z	gmoore		-rw-r--r--  1 root shadow
+2005-08-23T08:31:00.000Z	gmoore		uh oh :(
+2005-08-23T08:31:00.000Z	displague	gmoore	chmod 0440 /etc/sudoers
+2005-08-23T08:31:00.000Z	displague	gmoore	the rest of your files need to be locked down
+2005-08-23T08:31:00.000Z	gmoore		garrett@opti:/mnt/storage/www$ sudo chmod 0440 /etc/sudoers
+2005-08-23T08:31:00.000Z	gmoore		isnt working
+2005-08-23T08:32:00.000Z	gmoore		nm did su and now it's okay
+2005-08-23T08:32:00.000Z	gmoore		what do you mean the rest of my files need to be locked down? did it mess up the permissions of the entire system or something? D:
+2005-08-23T08:33:00.000Z	displague	gmoore	: aye... your password files can be read by anonmous web crackers now... or any other user on the system...
+2005-08-23T08:33:00.000Z	gmoore	displague	how would i fix that then? as you can see i am very new to linux :(
+2005-08-23T08:36:00.000Z	gmoore	displague	?
+2005-08-23T08:36:00.000Z	displague	gmoore	I can send you a script to set the permissions back based on my system, but since we have different packages installed some file may be left more readable than they used to be - but very few files are locked down so that group and other can not read them
+2005-08-23T08:37:00.000Z	gmoore	displague	thats ok, and i would appreciate it
+2005-08-23T08:37:00.000Z	displague	gmoore	email address
+2005-08-23T08:37:00.000Z	gmoore		garrettmoore@gmail.com
+2005-08-23T08:37:00.000Z	gmoore		thanks a lot
+2005-08-23T08:57:00.000Z	displague	gmoore	you are also using debian/ubuntu - so much of the work is already done for you -- and debian/ubuntu have preferences to where these changes should go -- like in /etc/apache2/conf.d or in the mods-blah dires

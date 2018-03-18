@@ -1,0 +1,18 @@
+2007-11-15T01:47:00.000Z	Andycass1		how do i route eth1:1 ip to be default??
+2007-11-15T01:47:00.000Z	sethk	Andycass1	you use the route command to add a route, beginning with:   route add default ....
+2007-11-15T01:48:00.000Z	sethk	Andycass1	the man page for route has examples
+2007-11-15T01:49:00.000Z	sethk	Andycass1	route add default gw ###.###.###.###     the ### are the IP of eth1:1
+2007-11-15T01:50:00.000Z	sethk	Andycass1	I left out a piece, wait
+2007-11-15T01:50:00.000Z	Andycass1	sethk	Ive tried that command, didnt do the trick. When i ping, it resolves host's name into ip. I can ping LAN ip's though
+2007-11-15T01:51:00.000Z	sethk	Andycass1	route add default gw ###.###.###.###  eth1:1      where ###.###.###.### is the IP of the gateway, not eth1:1 (sorry about the initial incorrect answer)
+2007-11-15T01:52:00.000Z	Andycass1	sethk	yes i got the right gateway and everything, but it still doesnt work
+2007-11-15T01:52:00.000Z	Andycass1	sethk	I think its IP fault, the first one is non standard, they are both on same netmask
+2007-11-15T01:53:00.000Z	sethk	Andycass1	yes, that's not allowed.  If IP sees the packet as belonging to the local network, the routing table is not consulted.
+2007-11-15T01:53:00.000Z	sethk	Andycass1	if it's the local network, why do you care which interface it uses?
+2007-11-15T01:54:00.000Z	sethk	Andycass1	you can reverse the order of defining the interfaces, then the second one will be first and will be used for local packets.
+2007-11-15T01:54:00.000Z	Andycass1	sethk	I need the first one to be the non standard, thanks to this, I can watch IPTV
+2007-11-15T01:55:00.000Z	sethk	Andycass1	I'm confused.  If the both have the same netmask, either interface can talk to the gateway.
+2007-11-15T01:55:00.000Z	sethk	Andycass1	so as long as the default route is to the gateway ...
+2007-11-15T01:56:00.000Z	sethk	Andycass1	eth1:1 is a virtual interface (that is, it isn't a separate card) so, performance-wise, it makes no difference which interface is used to talk to the gateway.
+2007-11-15T01:57:00.000Z	Andycass1	sethk	Oh my god, the weirdest thing happened, it just started working
+2007-11-15T01:58:00.000Z	Andycass1	sethk	I didnt change any settings for the last 2 hours, though i tried pingig it about 10 min ago and it didnt work

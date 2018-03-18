@@ -1,0 +1,23 @@
+2004-11-03T08:37:00.000Z	tiagobugarin		anyone knows how to do a 'dd' with the udev system over ubuntu?
+2004-11-03T08:38:00.000Z	tiagobugarin		anyone knows how to do a 'dd' with the udev system over ubuntu?
+2004-11-03T08:39:00.000Z	ogra_	tiagobugarin	could you explain this a bit more ?
+2004-11-03T08:41:00.000Z	tiagobugarin	ogra_	there is no fd0 at ubuntu. if you put a floppy and double click the floppy icon it uses udev kernel module to identify the floppy and mount at the fstab defined place. at kernel 2.6 there is no floppy block device
+2004-11-03T08:43:00.000Z	ogra_	tiagobugarin	on my ubunt tere is one.....(havent used my floppy yet....)
+2004-11-03T08:44:00.000Z	tiagobugarin	ogra_	there is fd in mine, but not fd0
+2004-11-03T08:45:00.000Z	ogra_	tiagobugarin	grep fd /var/log/dmesg
+2004-11-03T08:45:00.000Z	ogra_	tiagobugarin	should tell: Floppy drive(s): fd0 is 1.44M
+2004-11-03T08:46:00.000Z	tiagobugarin	ogra_	sorry, do not understand your last msg...
+2004-11-03T08:47:00.000Z	ogra_	tiagobugarin	if you run: grep fd /var/log/dmesg in a terminal, you should get the output: Floppy drive(s): fd0 is 1.44M
+2004-11-03T08:48:00.000Z	ogra_	tiagobugarin	hotplug should care for this on boot
+2004-11-03T08:48:00.000Z	tiagobugarin	ogra_	this command results nothing
+2004-11-03T08:49:00.000Z	tiagobugarin	ogra_	i will try hotplug again
+2004-11-03T08:49:00.000Z	ogra_	tiagobugarin	looks like something with hotplug is wrong, is your system up to date ?
+2004-11-03T08:50:00.000Z	tiagobugarin	ogra_	yes, it is...
+2004-11-03T08:50:00.000Z	tiagobugarin	ogra_	i will redo an apt-get update
+2004-11-03T08:51:00.000Z	ogra_	tiagobugarin	and a dist-upgrade ;)
+2004-11-03T08:54:00.000Z	tiagobugarin	ogra_	apt-get update and dist-upgrade just resulted in libpng updates
+2004-11-03T08:55:00.000Z	tiagobugarin	ogra_	and it is not retriving some sources...
+2004-11-03T09:00:00.000Z	ogra_	tiagobugarin	so try running a: sudo modprobe floppy to get the module working at least
+2004-11-03T09:01:00.000Z	tiagobugarin	ogra_	YEAH!!! now i have a floppy drive!! THANKS man!!
+2004-11-03T09:02:00.000Z	ogra_	tiagobugarin	you can make it permanent if you add floppy to /etc/modules
+2004-11-03T09:03:00.000Z	tiagobugarin	ogra_	shure i will!!!

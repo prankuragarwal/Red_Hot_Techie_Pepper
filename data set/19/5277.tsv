@@ -1,0 +1,19 @@
+2009-12-22T08:22:00.000Z	crc32		So I do what I thought was the sensible thing and ran apt-get upgrade and now my machine is unbootable. The last message on the screen is fsck caliming /dev/sda2 is clean. Even when I click the recovery mode option I get the same message. How can I determine what broke?
+2009-12-22T08:24:00.000Z	crc32		9.10
+2009-12-22T08:25:00.000Z	crc32		Other then that I wish I knew. This was a clean install 3 weeks ago. What log file should I be looking in. The fact that even recovery mode hangs leads me to suspect grub is screwed. What could have happened.
+2009-12-22T08:26:00.000Z	crc32		What log file would tell me what happened. Ubuntu Kinda changed everything about the way it bots so I don't know.
+2009-12-22T08:28:00.000Z	crc32		How do I go single user? Is it like "linux 1"?  at boot? The video is really slow.
+2009-12-22T08:30:00.000Z	crc32		So why can't I just hit "C" linux single?
+2009-12-22T08:31:00.000Z	lstarnes	crc32	what happens when you try to do that?
+2009-12-22T08:34:00.000Z	lstarnes	crc32	is there a recovery mode option?
+2009-12-22T13:40:00.000Z	lstarnes	crc32	9.10
+2009-12-22T13:42:00.000Z	lstarnes	crc32	iptables can't be stopped or reset.  It is a kernel feature, not a service
+2009-12-22T13:42:00.000Z	lstarnes	crc32	there are methods to change the rules in iptables or clear them though, but I forget how
+2009-12-22T13:42:00.000Z	crc32	lstarnes	since when? I've always been able to create new rules then restart iptables.
+2009-12-22T13:42:00.000Z	lstarnes	crc32	I mean that it can't be restarted in the same way as regular services
+2009-12-22T13:54:00.000Z	crc32	lstarnes	Whats the real way to configure iptables rules?
+2009-12-22T13:55:00.000Z	lstarnes	crc32	I recall adding some scripts to the directories under /etc/network/ to do save iptables rules when interfaces go down and reload them when they go up
+2009-12-22T13:55:00.000Z	lstarnes	crc32	I think ufw might save rules
+2009-12-22T13:57:00.000Z	lstarnes	crc32	if-up.d is a directory, not a file
+2009-12-22T13:59:00.000Z	lstarnes	crc32	I have if-pre-up.d containing a script to restore iptables, and if-post-down.d containing a script to save the rules
+2009-12-22T13:59:00.000Z	lstarnes	crc32	I do

@@ -1,0 +1,23 @@
+2009-08-28T15:34:00.000Z	keith		why do I get a different behavior when I run a link vs. what the link is pointing to? has anyone had experience with this?
+2009-08-28T15:36:00.000Z	keith		When I run a scr
+2009-08-28T15:37:00.000Z	keith		When I run a script, it works fine... but when I run it via a symbolic link, it crashes. Why would that be?
+2009-08-28T15:38:00.000Z	ActionParsnip	keith	how are you running your script?
+2009-08-28T15:39:00.000Z	keith	ActionParsnip	/usr/local/sbin/GCALDaemon/bin/standalone-start.sh
+2009-08-28T15:39:00.000Z	keith	ActionParsnip	That way works, but using a symbol
+2009-08-28T15:40:00.000Z	ActionParsnip	keith	ok and have you ran: sudo chmod +x /usr/local/sbin/GCALDaemon/bin/standalone-start.sh
+2009-08-28T15:40:00.000Z	keith	ActionParsnip	ic link doesn't. ie. ./standalone-start.sh
+2009-08-28T15:41:00.000Z	keith	ActionParsnip	Sorry, my messages got jumbled. It is executable and runs fine when run directly.
+2009-08-28T15:41:00.000Z	ActionParsnip	keith	if you add some echo lines to your script, you can see exactly what point it crashes
+2009-08-28T15:42:00.000Z	keith	ActionParsnip	It is not myscript, and it works fine when not run via symbolic link.
+2009-08-28T15:42:00.000Z	keith	ActionParsnip	It is a script for GCALDaemon
+2009-08-28T15:43:00.000Z	ActionParsnip	keith	exactly so you need to find out when it crashes, if you add some echo commands you can output to the terminal, if the outouts stop you know roughly where it dies
+2009-08-28T15:44:00.000Z	keith	ActionParsnip	shouldn't running a link be the same thing as running it directly? it is throwing a ClassNotFoundException.
+2009-08-28T15:45:00.000Z	ActionParsnip	keith	is it a symbolic link or a hard link?
+2009-08-28T15:45:00.000Z	keith	ActionParsnip	Symbolic
+2009-08-28T15:46:00.000Z	ActionParsnip	keith	strange
+2009-08-28T15:47:00.000Z	ActionParsnip	keith	edit the script and add some lines that output to stdout so you ca see where it fails
+2009-08-28T15:48:00.000Z	ActionParsnip	keith	something like: echo "start"      at the start, then after a few lines add       echo "step1"  and so on, when the lines stop writing to the screen you will know at what pint it crashed
+2009-08-28T15:49:00.000Z	keith	ActionParsnip	It is 2 lines. lol. I think I might know why though. The first line is GCALDIR=`dirname "$0"`/..
+2009-10-23T11:56:00.000Z	ActionParsnip	keith	you can then use fileroller
+2009-10-23T11:56:00.000Z	ActionParsnip	keith	sudo apt-get install rar unrar
+2009-10-23T11:56:00.000Z	ActionParsnip	keith	to extract at command line its: rar x <rar file>

@@ -1,0 +1,24 @@
+2011-08-07T14:46:00.000Z	fratz		got a ext3 partition, 65GB used space but i only can see a 1,2MB file ...
+2011-08-07T14:47:00.000Z	astraljava	fratz	`du -h --max-depth=1 /path/to/partition` will show you which directories hold the data.
+2011-08-07T14:53:00.000Z	fratz	astraljava	du: Zugriff auf „/media/Ext3/Bilder“ nicht möglich: Eingabe-/Ausgabefehler
+2011-08-07T14:55:00.000Z	astraljava	fratz	Don't do deutsch that well, so could you just pastebin the whole output from that command?
+2011-08-07T14:57:00.000Z	astraljava	fratz	Okay, what if you add sudo in front of the command? And yes, please add what wols and theadmin just suggested.
+2011-08-07T15:14:00.000Z	fratz	astraljava	http://pastebin.de/18126
+2011-08-07T15:15:00.000Z	astraljava	fratz	Okay, as wols and theadmin suggested, you need to pastebin /var/log/syslog (not all of it, just the relevant parts) so that we can see what the kernel says when it mounts the drive and tries to use it.
+2011-08-07T15:16:00.000Z	astraljava	fratz	There is data, but filesystem browser won't show it because of all the errors.
+2011-08-07T15:16:00.000Z	fratz	astraljava	how do i know what relevant parts are?
+2011-08-07T15:17:00.000Z	astraljava	fratz	All that has /media/Ext3 on it. You can do `grep \/media\/Ext3 /var/log/syslog`, but that might leave out something.
+2011-08-07T15:18:00.000Z	fratz	astraljava	do i need to unmount the drive before i pastebin /syslog?
+2011-08-07T15:18:00.000Z	astraljava	fratz	No.
+2011-08-07T15:19:00.000Z	astraljava	fratz	Just add sudo in front.
+2011-08-07T15:22:00.000Z	fratz	astraljava	sudo: /var/log/syslog: command not found
+2011-08-07T15:23:00.000Z	astraljava	fratz	Either open the log file in an editor, like `gksudo gedit /var/log/syslog`, or use the grepping like `sudo grep Ext3 /var/log/syslog`.
+2011-08-07T15:27:00.000Z	fratz	astraljava	http://pastebin.com/TUA7ivbd
+2011-08-07T15:30:00.000Z	fratz	astraljava	reading the log tells ME nothing
+2011-08-07T15:31:00.000Z	astraljava	fratz	It just tells us that the system can't read the medium correctly. Are you sure that the drive is alright, and it works flawlessly in some other machine?
+2011-08-07T15:32:00.000Z	fratz	astraljava	i checked it on my netbook but there it doesnt even show me the small file
+2011-08-07T15:33:00.000Z	fratz	astraljava	few days ago everything worked fine. While i was doing some backups the process crashed and now its like that
+2011-08-07T15:34:00.000Z	astraljava	fratz	Then something went awry, and I don't know how to fix that. I'm sorry. Hope you get someone to help you further.
+2011-08-07T15:34:00.000Z	fratz	astraljava	thanks anyway!
+2011-08-07T15:35:00.000Z	astraljava	fratz	Keep that syslog pastebin entry handy, so that you can present that with the story of 'something went wrong while backuping', it will make a good starting point.
+2011-08-07T15:36:00.000Z	fratz	astraljava	at least i now know what the drive contents

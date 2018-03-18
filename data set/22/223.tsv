@@ -1,0 +1,22 @@
+2012-03-09T20:33:00.000Z	ugoub		hello, anyone knows why: find ../ -regex "*.\(js\|xml\)$" -exec grep -i -o --color=auto sel_role {} \; -print doesn't work?Thanx
+2012-03-09T20:35:00.000Z	Pici	ugoub	Whats happening that you think shouldn't happen?
+2012-03-09T20:35:00.000Z	ugoub	Pici	I didn't get the right result
+2012-03-09T20:35:00.000Z	Pici	ugoub	is it not in color, or is it not even matching the right part?
+2012-03-09T20:35:00.000Z	ugoub	Pici	I want find 'sel_role' both in .js file and .xml file
+2012-03-09T20:36:00.000Z	ugoub	Pici	there's no matching result
+2012-03-09T20:36:00.000Z	Pici	ugoub	try crashanddie's suggestion
+2012-03-09T20:54:00.000Z	Pici	ugoub	Does your find command list any js files if your remove -exec and everything after that?
+2012-03-09T20:54:00.000Z	ugoub	Pici	let me have a try.
+2012-03-09T20:55:00.000Z	ugoub	Pici	list a lot matching files
+2012-03-09T20:56:00.000Z	Pici	ugoub	Are you sure that you have that line in your .js files?
+2012-03-09T20:57:00.000Z	Pici	ugoub	Okay, does find ../ -name \*.js -exec grep -i -o --color=auto sel_role {} \; -print   show anything?
+2012-03-09T20:57:00.000Z	ugoub	Pici	find ../ -name \*.xml -or -name \*.js -exec grep -i -o --color=auto sel_role {} \; -print CAN find sel_role in js file
+2012-03-09T20:57:00.000Z	ugoub	Pici	yes
+2012-03-09T20:58:00.000Z	Pici	ugoub	let me do some tests here, one moment.
+2012-03-09T21:04:00.000Z	Pici	ugoub	I got it.
+2012-03-09T21:05:00.000Z	ugoub	Pici	? any suggestion?
+2012-03-09T21:05:00.000Z	Pici	ugoub	find ../ -name \*.js -or -name \*.xml -print0 |  xargs -0 grep -io --color=auto sel_role
+2012-03-09T21:06:00.000Z	ugoub	Pici	any result from js file?
+2012-03-09T21:06:00.000Z	Pici	ugoub	add -H to your grep command to show what file the matches are coming from.
+2012-03-09T21:07:00.000Z	Pici	ugoub	arg... sorry: find ../ -name \*.js -or -name \*.xml | xargs grep -io --color=auto sel_role
+2012-03-09T21:09:00.000Z	ugoub	Pici	Thanks, I got all the result (and a lot excpetions as no such file or directory)

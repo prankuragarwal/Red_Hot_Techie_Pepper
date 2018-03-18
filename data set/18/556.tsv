@@ -1,0 +1,18 @@
+2012-06-21T20:12:00.000Z	ntenisOT		hello. while I am able to use mount folder  I am unable to mount the folder using fstab
+2012-06-21T20:13:00.000Z	ActionParsnip	ntenisOT	its the same command as mount, just in a different order
+2012-06-21T20:13:00.000Z	ntenisOT	ActionParsnip	I use sshfs#username@remote:/folder/ folder fuse defaults,idmap=user 0 0
+2012-06-21T20:14:00.000Z	ActionParsnip	ntenisOT	so if you run:  sudo mount /folder   does it mount?
+2012-06-21T20:14:00.000Z	ntenisOT	ActionParsnip	I do not even use sudo . Just mount /folder and it mounts
+2012-06-21T20:15:00.000Z	ntenisOT	ActionParsnip	But on startup it does not mount the file. It shows an error connection reset by peer.
+2012-06-21T20:17:00.000Z	ActionParsnip	ntenisOT	you'll need to add a startup command to run that then, the mount fails as the network is not up yet so the server is unreachable
+2012-06-21T20:18:00.000Z	ntenisOT	ActionParsnip	Can I ensure that the command in fstab will run after the network is up? if not. where should I put the command?
+2012-06-21T20:18:00.000Z	ActionParsnip	ntenisOT	is it a desktop OS?
+2012-06-21T20:18:00.000Z	ActionParsnip	ntenisOT	that you connect with..
+2012-06-21T20:18:00.000Z	ntenisOT	ActionParsnip	No mate, Ubuntu server both of the machines
+2012-06-21T20:19:00.000Z	ActionParsnip	ntenisOT	then add it in /etc/rc.local above the exit 0 line
+2012-06-21T20:19:00.000Z	ntenisOT	ActionParsnip	just mount folder ? or does it need something more?
+2012-06-21T20:20:00.000Z	ActionParsnip	ntenisOT	the entry in fstab wil be referenced so that's all it takes
+2012-06-21T20:20:00.000Z	ntenisOT	ActionParsnip	just mount folder ? and put noauto in the fstab entry?
+2012-06-21T20:21:00.000Z	ActionParsnip	ntenisOT	if it boots ok now then no need to edit fstab
+2012-06-21T20:27:00.000Z	ntenisOT	ActionParsnip	Thanks a lot mate. It is working!
+2012-06-21T20:27:00.000Z	ActionParsnip	ntenisOT	yeya

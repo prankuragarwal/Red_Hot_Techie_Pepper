@@ -1,0 +1,23 @@
+2007-03-27T12:55:00.000Z	kandala		Hello guys, I am trying to setup a cron job (for the first time in my life), but nothing seems to happen......This is my crontab entry   21      12      *       *       *       /home/raghavan/ngodost/script/run.sh > /home/raghavan/out. Nothing gets written into the out file....and all I am doing is echoing some text. please help me in debugging things with this
+2007-03-27T12:57:00.000Z	ardchoille	kandala	21 12 * * * sh /home/raghavan/ngodost/script/run.sh > /home/raghavan/out
+2007-03-27T13:02:00.000Z	kandala	ardchoille	No luck :-( ! I tried doing a cd to the directory of the script and then execute the shell file....but nothing got written into the out file.
+2007-03-27T13:04:00.000Z	ardchoille	kandala	Can you apste the command you are using?
+2007-03-27T13:04:00.000Z	kandala	ardchoille	31 12 * * * (cd /home/raghavan/ngodost/script; ./run.sh > /home/raghavan/out)
+2007-03-27T13:05:00.000Z	ardchoille	kandala	Try: 31 12 * * * cd /home/raghavan/ngodost/script && ./run.sh > /home/raghavan/out
+2007-03-27T13:06:00.000Z	kandala	ardchoille	ok
+2007-03-27T13:06:00.000Z	ardchoille	kandala	Are you sure the script itself is written correctly?
+2007-03-27T13:09:00.000Z	kandala	ardchoille	It has nothing but an echo statement and works properly when I run from the shell. After making the changes suggested by you just now, but no luck.....
+2007-03-27T13:10:00.000Z	ardchoille	kandala	Is the script executable?
+2007-03-27T13:11:00.000Z	kandala	ardchoille	-rwxr-xr-x 1 raghavan raghavan 64 2007-03-27 11:05 run.sh (permissions of the script file)
+2007-03-27T13:11:00.000Z	ardchoille	kandala	Ah, ok. Then I have no idea why it isn't working. You are saving the cronjob, right?
+2007-03-27T13:12:00.000Z	kandala	ardchoille	I have added the entry using crontab -e command and when I do crontab -l, the command is in the crontab file. Do you think I am missing anything?
+2007-03-27T13:12:00.000Z	ardchoille	kandala	No, that's correct.
+2007-03-27T13:13:00.000Z	kandala	ardchoille	How do I redirect the errors that cron job spits out into some file?
+2007-03-27T13:14:00.000Z	ardchoille	kandala	Does 'ps aux | grep cron' give you more than one line of return?
+2007-03-27T13:14:00.000Z	kandala	ardchoille	No....
+2007-03-27T13:15:00.000Z	ardchoille	kandala	You only get a line that ends in grep crond ?
+2007-03-27T13:15:00.000Z	kandala	ardchoille	yeah.....only the grep process gets listed
+2007-03-27T13:15:00.000Z	ardchoille	kandala	Sounds like cron isn't even running
+2007-03-27T13:17:00.000Z	kandala	ardchoille	But when I boot my system I can see lot of cron process running......I have no knowledge about the behaviour of cron except that it can execute schedule jobs in background. So, what's my next step then?
+2007-03-27T13:26:00.000Z	kandala	ardchoille	Thanks... I got it working after I started the cron scheduler
+2007-03-27T13:26:00.000Z	ardchoille	kandala	Ah, thought so.

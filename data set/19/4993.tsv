@@ -1,0 +1,19 @@
+2009-09-14T03:15:00.000Z	Daps		I'm trying to share files between 2 Ubuntu machines... Samba doesn't work and NFS doesn't work for me.. anyone know what im doing wrong or how to get this to work ?
+2009-09-14T03:16:00.000Z	altf2o	Daps	- have you followed the instructions in the Ubuntu Documentation? Specifically the server doco, has instructions on quickly getting Samba setup.
+2009-09-14T03:18:00.000Z	Daps	altf2o	yup, i've done it to the point that one machine now shows the machines in the network but i can't mount them and the other machine shows the network, but i can't see the other machines... strange inconsistency... This is for Windows shares though... there's nothing for NFS shares
+2009-09-14T03:20:00.000Z	altf2o	Daps	- so neither Linux computer can connect to the other? But Windows connects to both fine?
+2009-09-14T03:21:00.000Z	Daps	altf2o	Yup... strange eh...
+2009-09-14T03:22:00.000Z	altf2o	Daps	- very. If you run this command on one of those boxes:  sudo pdbedit -L , does it list the user name you're trying to connect to the share with? Also does:  smbclient -L host\ip , list the share at all from on Ubuntu box to the other?
+2009-09-14T03:24:00.000Z	Daps	altf2o	pdbedit brings back some strange stuff... but no it shows me the machine I am on and then "nobody:65534:nobody"
+2009-09-14T03:25:00.000Z	Daps	altf2o	the second one smbclient, says "Connection to host192.168.1.105 failed (Error NT_STATUS_BAD_NETWORK_NAME)"
+2009-09-14T03:27:00.000Z	altf2o	Daps	- is that host currently up and online? *.*.1.105 responds to ping and allows you to login to it? And running: smbclient -L 192.168.1.105 , shows Samba is running and your shares?
+2009-09-14T03:28:00.000Z	Daps	altf2o	yup.. its up and shows the shared folder
+2009-09-14T03:32:00.000Z	altf2o	Daps	- if it doesn't you can try and add that user to Sambas PW db, sudo smbpasswd -a <user> , (i have libpam-smbpass installed which syncs Samba w/ local PWs). Also try making the share complately unrestricted: guest ok = yes, even setting the shared folder permissions to 0777 and see if it helps.
+2009-09-14T03:34:00.000Z	Daps	altf2o	so create mask 0777 instead of 0755 ??
+2009-09-14T03:35:00.000Z	altf2o	Daps	- i'd leave the mask for now, what you're looking at is the actual permissions for your shared folder. If for instance you have it in: /home/Daps/shared , and permissions listed with: ls -lah shared , are equiv. to 0755 , try setting that folder to 0777 and see if it helps.
+2009-09-14T03:37:00.000Z	Daps	altf2o	how do i go about changing that to 0777 ?
+2009-09-14T03:38:00.000Z	altf2o	Daps	- the Linux 'chmod' command: chmod 0777 /path/to/shared , just remember to switch it back if it doesn't work: chmod 0755 /path/to/shared  . Also another note the Ubuntu docs put the ownership of the folder as: nobody:nogroup , that screwed me up big time when it came to shared folders among several PCs and or users.
+2009-09-14T03:43:00.000Z	Daps	altf2o	still nothing... Why can't I see the other ubuntu box here, but on the other box I can see this one..?? (I can see this one but can;t open/mount it.)
+2009-09-14T03:44:00.000Z	altf2o	Daps	- ok so on this box since you can't see the other, no firewall settings on either?
+2009-09-14T03:45:00.000Z	Daps	altf2o	i've tried it withthe firewall and without.. even accepted input, forward and output values on iptables
+2009-09-14T03:47:00.000Z	altf2o	Daps	- hmm... What about in the: /var/log/samba/ try:  sudo ls /var/log/samba , should see something similar to:  log.ip.from.this.host , where the IP is from the host who cannot even see the other one. (This would be on the OTHER server)

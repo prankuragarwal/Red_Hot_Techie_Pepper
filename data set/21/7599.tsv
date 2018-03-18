@@ -1,0 +1,21 @@
+2006-08-24T14:48:00.000Z	BSG75		hi, anyone here got ndiswrapper-utils working with Dapper?
+2006-08-24T14:49:00.000Z	kling0n_	BSG75	yea
+2006-08-24T14:49:00.000Z	kling0n_		du -h is your friend
+2006-08-24T14:50:00.000Z	BSG75	kling0n_	how did you get it to show up as wlan0 .. mine keeps coming up as eth0 as it was with bcm43xx only the bcm driver doesn't have the firmwire file .. and
+2006-08-24T14:50:00.000Z	BSG75		when I use iwconfig to config eth0 I can change everything but essid .. using ndiswrapper
+2006-08-24T14:51:00.000Z	kling0n_	BSG75	you did load a driver into ndiswrapper tight?
+2006-08-24T14:51:00.000Z	kling0n_		right even?
+2006-08-24T14:52:00.000Z	BSG75	kling0n_	yup .. ndiswrapper -l shows it loaded correctly .. so does dmesg
+2006-08-24T14:53:00.000Z	BSG75		WOOT ... fuck me .. I don't know hwat I did .. but now I can change essid with my ndiswrapper
+2006-08-24T14:53:00.000Z	kling0n_	BSG75	iwconfig lists the interface as a wireless interface right?
+2006-08-24T14:53:00.000Z	BSG75		sorry .. for the language .. me got excited
+2006-08-24T14:53:00.000Z	BSG75		been at it since last night
+2006-08-24T14:53:00.000Z	kling0n_	BSG75	I can recommend using the gnome-network-manager applet
+2006-08-24T14:53:00.000Z	kling0n_		works very well on laptops
+2006-08-24T14:53:00.000Z	BSG75		crap .. :(
+2006-08-24T14:54:00.000Z	kling0n_		only you need to comment out the interface in /etc/network/interfaces and restart dbus to make it work
+2006-08-24T14:54:00.000Z	BSG75		it loaded back the back the bcm43xx driver :(
+2006-08-24T14:54:00.000Z	kling0n_	BSG75	theres a way to make the module forbidden
+2006-08-24T14:54:00.000Z	kling0n_		hang on
+2006-08-24T14:55:00.000Z	BSG75		put in blacklist?
+2006-08-24T14:55:00.000Z	kling0n_	BSG75	put a file in /etc/modprobe.d/ which contains 'blacklist <nameofmodule>'

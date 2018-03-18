@@ -1,0 +1,24 @@
+2008-07-03T03:28:00.000Z	sdtr443w		I'm upgrading from 7.10 to 8.04 and I got some scary error messages.
+2008-07-03T03:28:00.000Z	sdtr443w		Particularly, it claims it couldn't install linux-image-2.6.24-19-generic-2.6.24-19.34_amd64.deb
+2008-07-03T03:28:00.000Z	Jack_Sparrow	sdtr443w	sounds like you may have some unofficial sources in your repos.
+2008-07-03T03:29:00.000Z	sdtr443w		Gees why does the help site have "(recommended)" on the live upgrade instructions then?
+2008-07-03T03:29:00.000Z	sdtr443w		So is it likely that my box won't reboot again due to a botched kernel upgrade?
+2008-07-03T03:29:00.000Z	Jack_Sparrow	sdtr443w	sudo apt-get install pastebinit  && cat /etc/apt/sources.list | pastebinit (Provide Pastebin link in channel)
+2008-07-03T03:30:00.000Z	sdtr443w	Jack_Sparrow	Give me about 5 minutes--the box is still churning on this stuff, unless you think it's safe to run as it's chugging along.
+2008-07-03T03:30:00.000Z	Jack_Sparrow	sdtr443w	Do you have a sep /home partition?
+2008-07-03T03:31:00.000Z	Jack_Sparrow	sdtr443w	It wont work if package manager is crunching along somewhere else
+2008-07-03T03:31:00.000Z	sdtr443w		ok I should wait until this thing is done.
+2008-07-03T03:32:00.000Z	sdtr443w		It's rebuilding the package database right now . . .
+2008-07-03T03:32:00.000Z	Jack_Sparrow		k
+2008-07-03T03:44:00.000Z	sdtr443w	Jack_Sparrow	I don't have pastebinit installed, and can't install it due to the screwed up state of my system hehe.  Shall I just paste that output off of paste.ubuntu.com?
+2008-07-03T03:44:00.000Z	Jack_Sparrow	sdtr443w	manual pastebin is fine
+2008-07-03T03:46:00.000Z	sdtr443w	Jack_Sparrow	http://paste.ubuntu.com/24561/
+2008-07-03T03:47:00.000Z	sdtr443w		It looks like ia32-libs, linux-image-2.6.24-19-generic, and linux-ubuntu_modules_2.6.24-19-generic all failed to install.  That and openoffice.org was a complete wash
+2008-07-03T03:49:00.000Z	sdtr443w		Interesting: apt-get -f install looks like it's taking a shot at installing the stuff that got botched in the upgrade.
+2008-07-03T03:49:00.000Z	Jack_Sparrow	sdtr443w	I dont see anything in there that would be a problem.  All I can think is that something you installed manually or from source messed up dependencies
+2008-07-03T03:49:00.000Z	sdtr443w	Jack_Sparrow	I think an apt-get -f install kicked it into submission
+2008-07-03T03:50:00.000Z	sdtr443w		I just installed pastebinit now so that implies it doesn't have unmet kernel issues anymore.
+2008-07-03T03:50:00.000Z	Jack_Sparrow		!aptfix
+2008-07-03T03:50:00.000Z	Jack_Sparrow	sdtr443w	I thought you had already tried that
+2008-07-03T03:51:00.000Z	sdtr443w	Jack_Sparrow	I had tried the -f install command just to install pastebinit; but typing "apt-get -f install" I got the tool to try and install the unmet dependencies first.  I have no idea.
+2008-07-03T03:51:00.000Z	sdtr443w	Jack_Sparrow	n/m I forgot the -f when I did pastebinit

@@ -1,0 +1,19 @@
+2006-10-28T12:56:00.000Z	tritium	mycroes_lappy	do you really need a custom kernel?  If so, why?
+2006-10-28T12:56:00.000Z	mycroes_lappy	tritium	yes I do, I needed to patch the forcedeth driver to support power management
+2006-10-28T12:57:00.000Z	tritium	mycroes_lappy	ah, okay.  Did you install kernel-package so you can use make-kpkg?
+2006-10-28T12:57:00.000Z	mycroes_lappy	tritium	yes, my kernel is done
+2006-10-28T12:57:00.000Z	mycroes_lappy	tritium	my problem now is the nvidia kernel driver
+2006-10-28T12:58:00.000Z	tritium	mycroes_lappy	there is an nvidia-kernel-source package for that purpose
+2006-10-28T12:58:00.000Z	mycroes_lappy	tritium	yes, I installed it, but there's still no nvidia module
+2006-10-28T12:58:00.000Z	tritium	mycroes_lappy	did you compile it?
+2006-10-28T12:58:00.000Z	mycroes_lappy	tritium	no
+2006-10-28T12:58:00.000Z	mycroes_lappy	tritium	I can't find any information on the package
+2006-10-28T12:59:00.000Z	tritium	mycroes_lappy	well, how do you expect a module from a -source package if you don't compile it?
+2006-10-28T12:59:00.000Z	mycroes_lappy	tritium	actually, now I think of it, I found something in /usr/src :P
+2006-10-28T12:59:00.000Z	tritium	mycroes_lappy	dpkg -L <packagename> to list files in a package.  Most documentation is in /usr/share/doc/<packagename>
+2006-10-28T12:59:00.000Z	mycroes_lappy	tritium	the information I did find on the package said it provided the nvidia kernel module
+2006-10-28T13:00:00.000Z	mycroes_lappy	tritium	ty, I think I can get a bit further now
+2006-10-28T13:00:00.000Z	tritium	mycroes_lappy	my guess is that it installs a .tar.gz into /usr/src that you have to unpack, and then built modules with make-kpkg
+2006-10-28T13:50:00.000Z	mycroes_lappy	tritium	my nvidia module is compiled, it's in /lib/modules/2.6...-custom/nvidia, but modinfo can't find it
+2006-10-28T13:51:00.000Z	mycroes_lappy	tritium	any clue on how to let modprobe find it there?
+2006-10-28T13:53:00.000Z	mycroes_lappy	tritium	nm found it :P

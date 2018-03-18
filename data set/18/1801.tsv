@@ -1,0 +1,18 @@
+2010-11-06T03:49:00.000Z	Tylerjd		fireygod: is the DVD getting mounted?
+2010-11-06T03:49:00.000Z	fierygod	Tylerjd	 no it will not mount, either with or without a disk
+2010-11-06T03:50:00.000Z	Tylerjd	fierygod	It may be that /dev/cdrom may not be listed in your fstab file, how comfortable are you in using the terminal?
+2010-11-06T03:51:00.000Z	fierygod		Over the last week and a half since installing 10.04 I have been using the terminal almost nonstop lol
+2010-11-06T03:53:00.000Z	fierygod	Tylerjd	 I have /etc/fstab open right now
+2010-11-06T03:53:00.000Z	Tylerjd		fireygod: ok, then can you tell me if you see a line containing /dev/cdrom (and that may contain a number)
+2010-11-06T03:55:00.000Z	Tylerjd	fierygod	ok, then can you tell me if you see a line containing /dev/cdrom (and that may contain a number) (sorry misspelled your username the first time)
+2010-11-06T03:55:00.000Z	fierygod	Tylerjd	 Negative.  The only things listed in fstab are: dev/sda6 (ext4), dev/sda7 (swap), dev/sda1 (ntfs), and dev/sda5 (ntfs)
+2010-11-06T03:55:00.000Z	Tylerjd		ok, well that is your problem, let me tell you how to fix it
+2010-11-06T03:56:00.000Z	fierygod		lol
+2010-11-06T03:56:00.000Z	fierygod		I have neither of my drives listed in there
+2010-11-06T03:57:00.000Z	fierygod	Tylerjd	 I have a CD-RW, and a DVD-ROM.  I have tried looking up how to gain the UUIDs so I can "try" to add them into fstab, but as I am new to the game, I have not been able to figure this one out.
+2010-11-06T04:00:00.000Z	Tylerjd	fierygod	run "ls /dev" and look for entries like cdrom or cdrom1 and dvd or dvd1 . On my box, i have two dvdrom drives, and they both show up as bot dvd (for the first drive) and dvd1 (for the second drive) and cdrom (for the first drive) and cdrom1 (for the second drive
+2010-11-06T04:03:00.000Z	fierygod	Tylerjd	 I have cdrom, cdrom1, cdrw, dvd1, sr0, and sr1.  I noted the sr's as I caught in other forums that those are possible renames of cd and dvd drives
+2010-11-06T04:05:00.000Z	fierygod	Tylerjd	 is there any significance to the different colors to each of the entries in ls /dev?
+2010-11-06T04:09:00.000Z	Tylerjd	fierygod	yes and no to the colors, they have to do with links and directories. cdrom entries and dvd entries are links to the sr0 entry. those are the light blues, the dark blues are directories. Oh, to edit your fstab, I have "/dev/cdrom  /media/cdrom  auto  ro,noauto,user,exec  0 0" as the first dvdrom, and "/dev/cdrom1  /media/cdrom0  auto  ro,noauto,user,exec  0 0" for the second. It...
+2010-11-06T04:09:00.000Z	Tylerjd		...doesnt matter weather you put cdrom, dvd or sr0 as they point to the same place. Before you restart the machine you will want to make sure you use "sudo mkdir /media/cdrom && sudo mkdir /dev/cdrom0" to add the areas to mount your dvd's
+2010-11-06T04:10:00.000Z	fierygod	Tylerjd	 I will give this a try and see how it turns out.

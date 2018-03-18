@@ -1,0 +1,23 @@
+2011-11-04T21:17:00.000Z	gp5st1		i'm trying to compile stud (https://github.com/bumptech/stud). i have libev4, libev-dev, and libssl-dev installed, but it's acting like it can't find either of these things. http://pastebin.com/drmg81Tv i was wondering if anyone would be able to help. I'm @ ubuntu 11.10
+2011-11-04T21:19:00.000Z	elgaton	gp5st1	have you tried (if possible) passing appropriate ./configure switches?
+2011-11-04T21:19:00.000Z	gp5st1	elgaton	there aren't any. it's just a make file.  it doesn't look like it points the compiler anywhere specific
+2011-11-04T21:20:00.000Z	elgaton	gp5st1	Edit the include and library path in the makefile then
+2011-11-04T21:20:00.000Z	gp5st1	elgaton	there isn't one
+2011-11-04T21:20:00.000Z	elgaton	gp5st1	Could you paste the Makefile in a pastebin, please?
+2011-11-04T21:21:00.000Z	gp5st1	elgaton	it's in the repo i linked to (https://github.com/bumptech/stud/blob/master/Makefile)
+2011-11-04T21:22:00.000Z	gp5st1	elgaton	mine's unmodified from the repo
+2011-11-04T21:24:00.000Z	elgaton	gp5st1	just a minute
+2011-11-04T21:24:00.000Z	gp5st1	elgaton	np:) thanks for your help
+2011-11-04T21:29:00.000Z	elgaton	gp5st1	are you running on a 32 or 64 bit system?
+2011-11-04T21:31:00.000Z	gp5st1	elgaton	64
+2011-11-04T21:33:00.000Z	elgaton	gp5st1	try adding at line 11 (the one starting with LDFLAGS) the following text: -L/usr/lib/x86_64-linux-gnu/
+2011-11-04T21:45:00.000Z	gp5st1	elgaton	sorry for the delay. minor problem here, resolved now. LDFLAGS = -lssl -lcrypto -lev -L/usr/lib/x86_64-linux-gnu/ is my line, same probelm
+2011-11-04T21:50:00.000Z	elgaton	gp5st1	Sorry too, I was called. Could you please move the -L switch so it is before the -l ones?
+2011-11-04T21:50:00.000Z	gp5st1	elgaton	sure.  it's been a while, i forgot order mattered
+2011-11-04T21:51:00.000Z	gp5st1	elgaton	same errors:(
+2011-11-04T21:53:00.000Z	elgaton	gp5st1	could you add the -v flag to CFLAGS and LDFLAGS and paste the log in a pastebin?
+2011-11-04T21:54:00.000Z	gp5st1	elgaton	http://pastebin.com/fWkd6Tad
+2011-11-04T21:58:00.000Z	elgaton	gp5st1	Try doing a "make clean" and rebuild with "make". I have no other idea...
+2011-11-04T22:04:00.000Z	gp5st1	elgaton	i always do a make clean before i make:-\ thanks for your help
+2011-11-04T22:05:00.000Z	elgaton	gp5st1	You're welcome (though I didn't solve your problem)
+2011-11-04T22:05:00.000Z	gp5st1	elgaton	but you tried. all i can ask for:)

@@ -1,0 +1,22 @@
+2007-09-30T14:45:00.000Z	cameran		can anyone help with mounting DVD data discs
+2007-09-30T14:46:00.000Z	nickrud	cameran	it should simply show up on your desktop, and possibly open a window
+2007-09-30T14:46:00.000Z	cameran	nickrud	it does but all my data DVDs (games) appear blank
+2007-09-30T14:47:00.000Z	cameran	nickrud	and if i insert a data CD then eject it and resinsert a DVD it has the data on it
+2007-09-30T14:48:00.000Z	nickrud	cameran	now that is a very strange thing. put in a dvd that shows no data
+2007-09-30T14:48:00.000Z	cameran	nickrud	any game DVDs i insert have the problem
+2007-09-30T14:49:00.000Z	cameran	nickrud	but after a data CD is inserted i can see stuff on the DVD and it automounts
+2007-09-30T14:49:00.000Z	nickrud	cameran	good. Put one in, and we'll check the permissions. Get a little info, make looking for a previous bug report easier
+2007-09-30T14:49:00.000Z	cameran	nickrud	ok i have a data DVD in
+2007-09-30T14:49:00.000Z	cameran	nickrud	it appears blank as usual
+2007-09-30T14:49:00.000Z	nickrud	cameran	ok, open a terminal, and cd /media
+2007-09-30T14:50:00.000Z	cameran	nickrud	ok im there
+2007-09-30T14:51:00.000Z	nickrud	cameran	   ls -l  in the terminal, put  just the one line for the dvd here
+2007-09-30T14:51:00.000Z	cameran	nickrud	i typed it in, and there is at least one thread on this problem at ubuntuforums: http://ubuntuforums.org/showthread.php?t=26283
+2007-09-30T14:52:00.000Z	cameran	nickrud	lrwxrwxrwx 1 root root      6 2007-08-07 11:04 cdrom -> cdrom0
+2007-09-30T14:52:00.000Z	cameran	nickrud	there's another line too: drwxr-xr-x 2 root root   4096 2007-08-07 11:04 cdrom0
+2007-09-30T14:52:00.000Z	cameran	nickrud	everything was working fine until just a few days ago
+2007-09-30T14:52:00.000Z	nickrud	cameran	do that same search on bugs.launchpad.net , see what you find
+2007-09-30T14:53:00.000Z	nickrud	cameran	and the cdrom0 line is the one that's interesting
+2007-09-30T14:54:00.000Z	cameran	nickrud	ok im searching on blank DVD but nothing seems to be there pertaining to my problem so far
+2007-09-30T14:57:00.000Z	cameran	nickrud	nothing so far on searches
+2007-09-30T14:59:00.000Z	nickrud	cameran	eject the disk, and in that terminal type   tail -f /var/log/syslog    then insert the disk again, you'll get some error messages. Use some of those errors in your bug search

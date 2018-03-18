@@ -1,0 +1,19 @@
+2005-03-09T12:31:00.000Z	Nekohayo		Hey all, I kinda have a problem here... can't rm files on a fat drive, even as root.
+2005-03-09T12:31:00.000Z	JDahl	Nekohayo	the partition is probably mounted as read-only
+2005-03-09T12:32:00.000Z	JDahl	Nekohayo	unmount it, insert it into fstab with prober permissions, replug it
+2005-03-09T12:32:00.000Z	Nekohayo	JDahl	besides, I was able to remove ~60% of the folders in there.. but there's ~5 folders left which will give me the read only error
+2005-03-09T12:33:00.000Z	Nekohayo	JDahl	I'll try to edit the fstab .. however, I find it odd that it can delete part of the files. Would be more reassuring if it could not delete any :)
+2005-03-09T12:34:00.000Z	JDahl	Nekohayo	maybe the folder has permissions 444? you could just try chmod
+2005-03-09T12:39:00.000Z	Nekohayo	JDahl	I've tried adding this to my fstab: /dev/sda5 /home/jeff/mount-backupdrive vfat  shortname=mixed,rw,iocharset=utf8,codepage=850,umask=002,uid=1000,gid=1000,noauto,user,noatime,nodiratime 0 0                           and I created the mount point folder, chmodded it to 777 to be sure, then I tried my sudo rm -drvf * inside the mounted drive, still doesn't work
+2005-03-09T12:40:00.000Z	JDahl	Nekohayo	then I'm out of ideas... btw, do you need sudo if you mount it with uid, gid?
+2005-03-09T12:40:00.000Z	Nekohayo	JDahl	I think could mount it as a normal user
+2005-03-09T12:41:00.000Z	JDahl	Nekohayo	yes... so you shouldn't need root permissions to delete files
+2005-03-09T12:42:00.000Z	Nekohayo	JDahl	is there a way to format my drive to a clean fat thingy from linux?
+2005-03-09T12:43:00.000Z	JDahl	Nekohayo	mkfs.vfat
+2005-03-09T12:55:00.000Z	Nekohayo	JDahl	on my mkfs issue, I get this, am I missing something? (The drive is on and mounted)     jeff@khloe:~/mount-backupdrive $ sudo mkfs.vfat -v  /dev/sda5
+2005-03-09T12:56:00.000Z	JDahl	Nekohayo	you have to unmount it first
+2005-03-09T13:01:00.000Z	Nekohayo	JDahl	if the drive is not mounted, it gives me a "no such file/dir" when I try to mkfs.vfat /dev/sda5
+2005-03-09T13:03:00.000Z	JDahl	Nekohayo	that's odd... the drive is still turned on, right?
+2005-03-09T13:03:00.000Z	Nekohayo	JDahl	yes
+2005-03-09T13:04:00.000Z	JDahl	Nekohayo	then I dont know...
+2005-03-09T13:04:00.000Z	Nekohayo	JDahl	heh :P I'm wondering if I should make it reiser instead of fat... faster but I would loose my compatiblity

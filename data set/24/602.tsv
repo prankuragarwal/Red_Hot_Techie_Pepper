@@ -1,0 +1,24 @@
+2011-05-11T11:03:00.000Z	e-frame	vorian_	is it really connected to the network? can you ping your local gateway, and then your wan gateway?
+2011-05-11T11:04:00.000Z	vorian_	e-frame	I auth and associate, get an IP address but then everything fucks up
+2011-05-11T11:04:00.000Z	e-frame	vorian_	now can you ping your local gateway, and then your wan gateway?
+2011-05-11T11:04:00.000Z	vorian_	e-frame	no
+2011-05-11T11:14:00.000Z	e-frame	vorian_	your IP is 192.168.2.9 and your resolv.conf contains 192.168.2.1 that's your default gateway. you should be able to ping your own gateway. Then try to ping your wan IP, and your WAN gateway (usually same segment, but on ISP side)
+2011-05-11T11:15:00.000Z	vorian_	e-frame	yeah, when I attempt to ping any address, or open a browser or whatever, I get no I/O on my interface
+2011-05-11T11:16:00.000Z	e-frame	vorian_	You got your IP from dhcp server, right? post the output of "route" on command line
+2011-05-11T11:17:00.000Z	vorian_	e-frame	yes it's dhcp, which is very strange considering that after the interface comes up nothing works.
+2011-05-11T11:18:00.000Z	e-frame	vorian_	The output of "route" on command line will help you solving this.
+2011-05-11T11:18:00.000Z	vorian_	e-frame	I get three entries: 192.168.2.0 * 255.255.255.0 U 2 0 0 wlan0
+2011-05-11T11:18:00.000Z	vorian_	e-frame	link-local * 255.255.0.0 U 1000 0 0 wlan0
+2011-05-11T11:19:00.000Z	vorian_	e-frame	default 192.168.2.1 0.0.0.0 UG 0 0 0 wlan0
+2011-05-11T11:19:00.000Z	e-frame	vorian_	we have pastebin somewhere
+2011-05-11T11:19:00.000Z	vorian_	e-frame	nothing seems untoward regarding my routes
+2011-05-11T11:19:00.000Z	vorian_	e-frame	those are all of them
+2011-05-11T11:21:00.000Z	vorian_	e-frame	http://pastebin.com/wWPtx7vF
+2011-05-11T11:24:00.000Z	e-frame	vorian_	and the content of /etc/resolv.conf too :)
+2011-05-11T11:25:00.000Z	vorian_	e-frame	everything is OK with it...I just brought the interface up/down and did some other stuff and it didnt work.
+2011-05-11T11:25:00.000Z	vorian_	e-frame	you won't believe this but I ran dhclient and it seems to have fixed it, rebooting now to test
+2011-05-11T11:27:00.000Z	e-frame	vorian_	as i thought. dhcp will give you IP, gateway, and dns.
+2011-05-11T11:27:00.000Z	vorian_	e-frame	nope, didnt work. it seems my connection is intermittent.
+2011-05-11T11:27:00.000Z	vorian_	e-frame	this was caused by a samba package I installed and then removed because it caused this problem. does that help?
+2011-05-11T11:28:00.000Z	e-frame	vorian_	depending on your samba server. samba can also act as dhcp. cmiiw.
+2011-05-11T11:29:00.000Z	e-frame	vorian_	but there should be only one dhcp server on the same network segment

@@ -1,0 +1,22 @@
+2008-07-02T00:36:00.000Z	timandtom		How do I get Ubuntu to try to auto detect what graphics card I'm using? It isn't set up for the right one, and I really have no idea which one I have... Just that it's an old ATI Sapphire.
+2008-07-02T00:36:00.000Z	nixnoob	timandtom	lspci | grep VGA
+2008-07-02T00:38:00.000Z	nixnoob	timandtom	what kind of VGA card does it say u have?
+2008-07-02T00:39:00.000Z	timandtom	nixnoob	00:11.0 VGA compatible controller: ATI Technologies Inc Radeon RV100 QY [Radeon 7000/VE]
+2008-07-02T00:39:00.000Z	nixnoob	timandtom	i would install the ati driver from the repositories.
+2008-07-02T00:40:00.000Z	timandtom	nixnoob	er... How do I do that? :(
+2008-07-02T00:41:00.000Z	nixnoob	timandtom	im not 100% sure but I believe sudo apt-get install xserver-xorg-video-ati
+2008-07-02T00:42:00.000Z	nixnoob	timandtom	you may need to edit your /etc/X11/xorg.conf and replace the driver line that says "vesa" with "ati"
+2008-07-02T00:42:00.000Z	timandtom	nixnoob	Ok, I'll try that. It says I have the latest of that thing you asked me to install.
+2008-07-02T00:43:00.000Z	nixnoob	timandtom	hang on a second
+2008-07-02T00:44:00.000Z	nixnoob	timandtom	do cat /etc/X11/xorg.conf | grep Driver
+2008-07-02T00:44:00.000Z	nixnoob	timandtom	is there a line that reads Driver "vesa"?
+2008-07-02T00:45:00.000Z	timandtom	nixnoob	yeh, under Device, for the Boardname and Driver, both are vesa
+2008-07-02T00:47:00.000Z	nixnoob	timandtom	you need to change the Driver line to "ati" instead of "vesa"
+2008-07-02T00:47:00.000Z	timandtom	nixnoob	ok :D Is that it? And JUST the driver line, or boardname as well?
+2008-07-02T00:48:00.000Z	nixnoob	timandtom	just the driver line, may sure you edit the file using sudo and save it, then restart your X server by ctrl+alt+backspace
+2008-07-02T00:49:00.000Z	timandtom	nixnoob	whoopsies, I forgot key combos like that don't work over VNC :P
+2008-07-02T00:54:00.000Z	timandtom	nixnoob	ok, so now what do I do? I restarted
+2008-07-02T00:55:00.000Z	nixnoob	timandtom	that should be it you should be running the ati driver
+2008-07-02T00:55:00.000Z	nixnoob	timandtom	i dont remember what your video problem was forgive me im really tired
+2008-07-02T00:57:00.000Z	timandtom	nixnoob	haha, it's fine :D I just went and changed the monitor and the resolution, all seems to be well. Thanks a bunch! :)
+2008-07-02T00:58:00.000Z	nixnoob	timandtom	no problem glad to help :)

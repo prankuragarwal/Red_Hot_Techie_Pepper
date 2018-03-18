@@ -1,0 +1,22 @@
+2012-08-26T21:17:00.000Z	|Anthony|		i have a font installed and in use on my system, but i can't for the life of me find where it lives
+2012-08-26T21:17:00.000Z	|Anthony|		been trying to use nautilus search to find it, but i'm coming up empty
+2012-08-26T21:17:00.000Z	|Anthony|		suggestions?
+2012-08-26T21:18:00.000Z	jrib	|Anthony|	how did you install it?
+2012-08-26T21:18:00.000Z	jrib	|Anthony|	did you use the package manager or install it yourself?
+2012-08-26T21:18:00.000Z	|Anthony|	jrib	i installed it myself
+2012-08-26T21:19:00.000Z	jrib	|Anthony|	probably ~/.fonts/
+2012-08-26T21:19:00.000Z	|Anthony|	jrib	gosh darnit
+2012-09-15T02:50:00.000Z	jrib	|Anthony|	define "greeter"
+2012-09-15T02:50:00.000Z	|Anthony|	jrib	the login screen that auths to pam and keyring
+2012-09-15T02:51:00.000Z	jrib	|Anthony|	sudo service lightdm start   will start lightdm if don't have it starting on startup
+2012-09-15T02:52:00.000Z	|Anthony|	jrib	the lightdm service will still start on boot. but i should be able to launch additional login screens as seats become active
+2012-09-15T02:53:00.000Z	jrib	|Anthony|	I assumed there was no context to your question that started with "I just want to know" :)
+2012-09-15T02:54:00.000Z	jrib	|Anthony|	but I guess if I was in your shoes, I'd look at /etc/init/lightdm.conf , /etc/lightdm/* and its documentation
+2012-09-15T02:54:00.000Z	|Anthony|	jrib	simple case analog: launch lightdm on each VT, but manually as requested by a command
+2012-09-15T02:56:00.000Z	|Anthony|	jrib	i didn't know there was documentation for lightdm. All that i've seen have been terse.
+2012-09-15T02:56:00.000Z	jrib	|Anthony|	https://bbs.archlinux.org/viewtopic.php?pid=1041643 looks somewhat relevant
+2012-09-15T02:58:00.000Z	|Anthony|	jrib	that is along the lines, but it is launching ALL seats at startup. I'm looking for something that is on demand
+2012-09-15T02:58:00.000Z	jrib	|Anthony|	docs look pretty sparse yes... but there's a huge conf file with all the options in /usr/share/doc/lightdm/lightdm.conf.gz if you have not seen it
+2012-09-15T02:59:00.000Z	jrib	|Anthony|	is it possible to start multiple instances of lightdm with appropriate config file?
+2012-09-15T02:59:00.000Z	|Anthony|	jrib	that's the thing though, if all seats are enumerated in the config file, they will all attempt to launch on boot
+2012-09-15T03:00:00.000Z	jrib	|Anthony|	but you can setup multiple config files

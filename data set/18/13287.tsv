@@ -1,0 +1,18 @@
+2005-12-15T11:40:00.000Z	exequor		is there something in the rules that forbids asking about ndiswrapper?
+2005-12-15T11:40:00.000Z	exequor		well i've been asking about it forever
+2005-12-15T11:42:00.000Z	exequor		i'm following the tutorial on https://wiki.ubuntu.com/SetupNdiswrapperHowto but i ran into a problem with the .deb files
+2005-12-15T11:42:00.000Z	exequor		only one file is generated
+2005-12-15T11:43:00.000Z	exequor		dpkg -i --force-overwrite ndiswrapper-modules-$(uname -r)_1.1-1_i386.deb this command does not work
+2005-12-15T11:45:00.000Z	frogzoo	exequor	you have dl'd the .deb 1st, right?
+2005-12-15T11:46:00.000Z	exequor	frogzoo	uhh let me back up a second
+2005-12-15T11:47:00.000Z	exequor	frogzoo	i downloaded ndiswrapper then followed the instructions. after i did a dpkg -i --force-overwrite ndiswrapper-utils_1.6-1_i386.deb that worked
+2005-12-15T11:47:00.000Z	frogzoo	exequor	cool
+2005-12-15T11:48:00.000Z	exequor	frogzoo	the error is from "make deb"
+2005-12-15T11:49:00.000Z	exequor	frogzoo	this is the error from make deb "/usr/src/linux-headers-2.6.12-9-386/scripts/gcc-version.sh: line 11: gcc-3.4: command not found
+2005-12-15T11:50:00.000Z	frogzoo	exequor	do you have gcc-3.4 installed? the default (4.0) may not do
+2005-12-15T11:50:00.000Z	frogzoo	exequor	better yet - set export CC=`which gcc`
+2005-12-15T11:52:00.000Z	exequor	frogzoo	is that in Makefile?
+2005-12-15T11:53:00.000Z	frogzoo	exequor	nope, as long is this isn't a kernel compile, just 'export CC=`which gcc`' - and then make .... - give it a go
+2005-12-15T11:53:00.000Z	frogzoo	exequor	I take it 'gcc --version' works ?
+2005-12-15T11:55:00.000Z	exequor	frogzoo	the version of gcc that i have is  4.0.2 20050808
+2005-12-15T11:56:00.000Z	frogzoo	exequor	well try setting CC to your path to gcc, or install gcc3.4 - your call but I have to blow - gl

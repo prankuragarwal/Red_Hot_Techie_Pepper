@@ -1,0 +1,19 @@
+2009-12-06T18:47:00.000Z	oCean_	KEFIR	in /etc/apache2/mods-enabled, you can see the dir.conf enabled? That is where the various index files are mentioned
+2009-12-06T18:47:00.000Z	oCean_	KEFIR	like "DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm"
+2009-12-06T18:48:00.000Z	KEFIR		hm I simply added these strings into httpd.conf and apache2.conf but after restart it had no effect
+2009-12-06T18:48:00.000Z	KEFIR		maybe I shouldn't write <ifModule> tags there
+2009-12-06T18:48:00.000Z	oCean_	KEFIR	there is no need to change httpd.conf.
+2009-12-06T18:49:00.000Z	KEFIR		okay, ill check that file you said
+2009-12-06T18:49:00.000Z	KEFIR		thanks
+2009-12-06T18:49:00.000Z	oCean_	KEFIR	see/use the /etc/apache2/sites-enabled and/or modules-enabled and/or conf.d etc. The httpd.conf is just your basic config
+2009-12-06T18:50:00.000Z	KEFIR		oh okay, thanks a lot, i have some experience under windows, but here it's a bit different I see)
+2009-12-06T18:50:00.000Z	oCean_	KEFIR	by default, the index.php should be used as index, if it exists. Alternatively you could add "DirectoryIndex index.php" to your /etc/apache2/sites-enabled/000-default (if that is the site you are working on)
+2009-12-06T18:52:00.000Z	KEFIR	oCean_	 do I need to use tags like <IfModule dir_module> there?
+2009-12-06T18:53:00.000Z	oCean_	KEFIR	you could, but since that is loaded by default, it is not required
+2009-12-06T18:53:00.000Z	KEFIR		okay, I expected that)
+2009-12-06T19:00:00.000Z	KEFIR	oCean_	how to enable mod_rewrite here?
+2009-12-06T19:00:00.000Z	KEFIR		or it's enabled by default?
+2009-12-06T19:00:00.000Z	oCean_	KEFIR	you can enable/disable modules by using a2enmod / a2dismod
+2009-12-06T19:01:00.000Z	KEFIR		oh okay
+2009-12-06T19:01:00.000Z	KEFIR		thanks
+2009-12-06T19:01:00.000Z	oCean_	KEFIR	your command would be "a2enmod rewrite" (and restart apache)

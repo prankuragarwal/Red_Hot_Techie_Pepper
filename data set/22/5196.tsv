@@ -1,0 +1,22 @@
+2007-07-17T15:05:00.000Z	RoC_MasterMind		My Ubuntu boots too fast and too slick for my liking...I tried removing the "quiet" and "splash" GRUB options, but I want something even more verbose...any ideas.  I want lines and lines of scrolling verbose boot messages.
+2007-07-17T15:06:00.000Z	RoC_MasterMind		haha
+2007-07-17T15:06:00.000Z	RoC_MasterMind		no then it just stops
+2007-07-17T15:06:00.000Z	RoC_MasterMind		I want it to like scroll...like an end credits thing on fast-forward for like five minutes.
+2007-07-17T15:08:00.000Z	RoC_MasterMind		hahaa...that is funn cafe
+2007-07-17T15:09:00.000Z	RoC_MasterMind		Thanks cafuego
+2007-07-17T12:21:00.000Z	RoC_MasterMind		I have a script I need to run before X/GNOME starts.  I put it in /etc/rc1.d/ as S99.sh but I never see it running....GNOME goes ahead and starts....will /etc/rc.local make it start then?  It needs to come before GNOME and is interactive.
+2007-07-17T12:21:00.000Z	Toma-	RoC_MasterMind	is it X based?
+2007-07-17T12:22:00.000Z	Toma-	RoC_MasterMind	never mind that. /etc/rc.local is for what you want
+2007-07-17T12:22:00.000Z	Toma-	RoC_MasterMind	also, /etc/rc.local is basically a shell script too... hint hint :D
+2007-07-17T12:23:00.000Z	Toma-	RoC_MasterMind	I see. I cant remember where it gets run now that GDM has been bought forward in the boot sequence
+2007-07-17T12:24:00.000Z	Toma-	RoC_MasterMind	trial and error?
+2007-07-17T12:25:00.000Z	Toma-	RoC_MasterMind	if that doesnt work, its easy enough to make a rc level specific script
+2007-07-17T12:26:00.000Z	RoC_MasterMind	Toma-	OK, I'll be back.  Thanks.
+2007-07-17T12:26:00.000Z	Toma-	RoC_MasterMind	np. cya soon
+2007-07-17T12:44:00.000Z	RoC_MasterMind	Toma-	script does not run as /etc/rc.local...marked executable. :-(
+2007-07-17T12:44:00.000Z	Toma-	RoC_MasterMind	tried just putting the script in /usr/local/bin then adding its location to rc.local?
+2007-07-17T12:45:00.000Z	RoC_MasterMind	Toma-	like ". /usr/local/bin/myscript.sh" to rc.local?
+2007-07-17T12:45:00.000Z	Toma-	RoC_MasterMind	just 'myscript.sh'
+2007-07-17T12:54:00.000Z	Toma-	RoC_MasterMind	Oh.
+2007-07-17T12:55:00.000Z	Toma-	RoC_MasterMind	this is the easiest thing to do... edit the gdm init file
+2007-07-17T12:56:00.000Z	Toma-	RoC_MasterMind	theres probably a more sane way, but really, if you need to stop X, gdm init is the thing that will do that

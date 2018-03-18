@@ -1,0 +1,24 @@
+2009-03-09T06:14:00.000Z	LjL	maxagaz	does "ps aux | grep firefox" show anything?
+2009-03-09T06:12:00.000Z	LjL	maxagaz	so try killall -9 firefox
+2009-03-09T06:14:00.000Z	maxagaz	LjL	i didn't work, i still have the same message
+2009-03-09T06:15:00.000Z	maxagaz	LjL	it only returned this line: "gilles    6613  0.0  0.0   3004   768 pts/0    S+   10:14   0:00 grep firefox"
+2009-03-09T06:15:00.000Z	LjL	maxagaz	then it's not running, it only thinks it's running...
+2009-03-09T06:15:00.000Z	maxagaz	LjL	skel : ok, it works now
+2009-03-09T06:16:00.000Z	LjL	maxagaz	but you've lost (well, moved) your settings and cache and stuff
+2009-03-09T06:16:00.000Z	maxagaz	LjL	skel : do you know from which file does it come from ?
+2009-03-09T06:16:00.000Z	LjL	maxagaz	no i don't know which file precisely signals that an instance of firefox is running
+2009-03-09T06:17:00.000Z	LjL	maxagaz	ok, it's ~/.mozilla/firefox/<profile directory>/lock
+2009-03-09T06:17:00.000Z	LjL	maxagaz	remove that file, and you'll be fine
+2009-03-09T06:27:00.000Z	maxagaz	LjL	skel : I still don't know where the problem came from, about firefox, but removing ~/.mozilla/firefox/<profile directory>/lock didn't help
+2009-03-09T06:27:00.000Z	LjL	maxagaz	of course you removed it from the old directory - after moving it back to .mozilla?
+2009-03-09T06:29:00.000Z	maxagaz	LjL	i've removed .mozilla, moved .mozilla-bak to .mozilla and then removed the lock file
+2009-03-09T06:29:00.000Z	LjL	maxagaz	yes, that's what i meant
+2009-03-09T06:30:00.000Z	maxagaz	LjL	what did i do that was wrong ?
+2009-03-09T06:30:00.000Z	LjL	maxagaz	nothing i guess. "lock" is the only file i can see that comes and go depending on whether firefox is running.
+2009-03-09T06:30:00.000Z	LjL	maxagaz	perhaps try firefox -safe-mode, i dunno
+2009-03-09T06:31:00.000Z	maxagaz	LjL	doesn't work too
+2009-03-09T06:31:00.000Z	LjL	maxagaz	i don't know really
+2009-03-09T06:33:00.000Z	maxagaz	LjL	i found the problem : .mozilla/firefox/<profile directory>/.parentlock
+2009-03-09T06:33:00.000Z	maxagaz	LjL	thansk a lot for your help
+2009-03-09T06:33:00.000Z	LjL	maxagaz	oh.
+2009-03-09T06:33:00.000Z	LjL	maxagaz	i guess i missed that one

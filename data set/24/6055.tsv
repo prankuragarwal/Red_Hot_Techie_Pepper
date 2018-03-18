@@ -1,0 +1,24 @@
+2006-03-03T12:58:00.000Z	redblade		Hi
+2006-03-03T12:58:00.000Z	redblade		I'm trying to mount a cd
+2006-03-03T12:58:00.000Z	redblade		with this command
+2006-03-03T12:59:00.000Z	redblade		# mount /dev/cdrom /mnt -t iso9660
+2006-03-03T12:59:00.000Z	intelikey	redblade	sudo that
+2006-03-03T12:59:00.000Z	redblade		it deosn't sem to be working
+2006-03-03T12:59:00.000Z	redblade		oh sorry it was sudo'd
+2006-03-03T13:00:00.000Z	intelikey		also if the symlink /dev/cdrom isn't there it won't work.
+2006-03-03T13:00:00.000Z	redblade		symlink?
+2006-03-03T13:00:00.000Z	intelikey		yep.
+2006-03-03T13:00:00.000Z	intelikey		ls /dev/cd*
+2006-03-03T13:02:00.000Z	intelikey	redblade	what id the device address for your cdrom ?
+2006-03-03T13:02:00.000Z	intelikey		any form you know is fine.
+2006-03-03T13:02:00.000Z	redblade	intelikey	sorry what do you mean?
+2006-03-03T13:03:00.000Z	intelikey		is it an ide  scsi  usb ???
+2006-03-03T13:04:00.000Z	intelikey	redblade	like  second ide master   maybe ?
+2006-03-03T13:04:00.000Z	redblade	intelikey	I'm kinda new to linux
+2006-03-03T13:05:00.000Z	redblade		where should I look?
+2006-03-03T13:05:00.000Z	intelikey		that question is not linux specific redblade
+2006-03-03T13:05:00.000Z	redblade		oh
+2006-03-03T13:05:00.000Z	redblade		well I'm still not sure
+2006-03-03T13:05:00.000Z	redblade		okay
+2006-03-03T13:07:00.000Z	redblade	intelikey	I think I may have found a way to sort out the problem but I'll be back if it doesn't work
+2006-03-03T13:08:00.000Z	intelikey	redblade	 do   sudo mount /dev/`dmesg | grep -ie'cd' | cut -d' ' -f1` /mnt

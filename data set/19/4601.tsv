@@ -1,0 +1,19 @@
+2010-06-09T19:56:00.000Z	geirha	Mrokii	solow got kicked.
+2011-12-29T15:08:00.000Z	geirha	Mrokii	grep directory ~/.local/share/applications/*
+2011-12-29T15:11:00.000Z	Mrokii	geirha	http://pastebin.com/m7FLuxfH -> Doesn't look helpful.
+2011-12-29T15:15:00.000Z	geirha	Mrokii	Hm. You have a local nautilus-folder-handler.desktop. What does it Exec?   grep Exec ~/.local/share/applications/nautilus-folder-handler.desktop
+2011-12-29T15:16:00.000Z	Mrokii	geirha	It tries to exec Nautilus
+2011-12-29T15:19:00.000Z	geirha	Mrokii	Ok, any of the other desktop files running gedit? My best guess is that one of the other entries for directories is causing the issue.   grep 'Exec=.*gedit' ~/.local/share/applications/*.desktop
+2011-12-29T15:20:00.000Z	geirha	Mrokii	And I've never seen  text/directory  mime before. Not sure if that could have anything to do with it or not.
+2011-12-29T15:20:00.000Z	Mrokii	geirha	The only entry where gedit is mentioned is in "gedit.desktop"
+2011-12-29T15:21:00.000Z	geirha	Mrokii	Odd that you have a local copy of gedit.desktop at all in there though.
+2011-12-29T15:24:00.000Z	Mrokii	geirha	So you think I could delete that file?
+2011-12-29T15:25:00.000Z	geirha	Mrokii	If you delete it, it will use gedit.desktop from /usr/share/applications/ instead, so yes, it's safe to delete it from your homedir.
+2011-12-29T15:26:00.000Z	Mrokii	geirha	Okay. Do I need to restart Nautilus (or Gnome) to make it notice the change?
+2011-12-29T15:28:00.000Z	geirha	Mrokii	No, it should pick it up automagically
+2011-12-29T15:28:00.000Z	Mrokii	geirha	okay, thanks. Not that it changed anything though.
+2011-12-29T15:30:00.000Z	geirha	Mrokii	Well, I'm pretty sure it's something in ~/.local/share/applications causing this. If you move it away, things should work, but that removes all other customizations you've done too.  mv ~/.local/share/applications{,.backup}
+2011-12-29T15:30:00.000Z	geirha	Mrokii	All other customizations regarding which applications open what type of files, that is.
+2011-12-29T15:31:00.000Z	Mrokii	geirha	Could be worse. Probably worth giving it a try.
+2011-12-29T15:32:00.000Z	geirha	Mrokii	Oh, and all the wine-launchers too. They all start with wine-* though, so you can copy them back after you've tried.
+2011-12-29T15:32:00.000Z	Mrokii	geirha	wow! That actually did it, thanks! Now I only have to find out what association caused the problem.

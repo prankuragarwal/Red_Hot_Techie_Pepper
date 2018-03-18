@@ -1,0 +1,19 @@
+2007-04-15T15:18:00.000Z	linuxx		does anyone know a solution for "(EE) NVIDIA(0): Failed to initialize the NVIDIA kernel module!" ??? I've been searching google for almost 4 hours now
+2007-04-15T15:19:00.000Z	adaptr	linuxx	the problem is simple: you don't have it loaded
+2007-04-15T15:19:00.000Z	adaptr	linuxx	the solution MAY be simple: do a "sudo modprobe nvidia"
+2007-04-15T15:19:00.000Z	linuxx	adaptr	it doesnt even work when I add nvidia to /etc/modules
+2007-04-15T15:20:00.000Z	adaptr	linuxx	that's not what I said
+2007-04-15T15:21:00.000Z	linuxx	adaptr	so adding "modprobe nvidia" to /etc/rc.local should work, shouldnt it?
+2007-04-15T15:21:00.000Z	adaptr	linuxx	no, because you still have not done what I told you to
+2007-04-15T15:22:00.000Z	adaptr	linuxx	run "lsmod | grep nvidia", if that comes up empty, run "sudo modprobe nvidia"
+2007-04-15T15:22:00.000Z	linuxx	adaptr	it doesnt come up empty, because nvidia is loaded
+2007-04-15T15:22:00.000Z	adaptr	linuxx	which one
+2007-04-15T15:22:00.000Z	linuxx	adaptr	the one from nvidia.com
+2007-04-15T15:23:00.000Z	adaptr	linuxx	that's not very smart, nor necessary
+2007-04-15T15:23:00.000Z	adaptr	linuxx	stick with the ubuntu-provided version
+2007-04-15T15:23:00.000Z	linuxx	adaptr	I know, but when I try to install nvidia-glx, apt wants to remove a lot of packages like xserver-xorg, vlc, and a lot of libs
+2007-04-15T15:24:00.000Z	adaptr	linuxx	drop to a console, remove the nvidia driver, and aptitude install linux-restricted-modules && nvidia-glx, that should take care of it
+2007-04-15T15:25:00.000Z	linuxx	adaptr	any hints on removing it? since its not an deb or such
+2007-04-15T15:26:00.000Z	adaptr	linuxx	use the provided uninstall script, or go to nvidia to find out ? I have no idea, I never install their versions
+2007-04-15T15:42:00.000Z	linuxx	adaptr	doesnt even work with nvidia-glx
+2007-04-15T15:43:00.000Z	linuxx	adaptr	or do I have more than just installing it and modifying xorg.conf?

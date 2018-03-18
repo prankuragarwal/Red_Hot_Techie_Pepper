@@ -1,0 +1,19 @@
+2012-08-19T10:42:00.000Z	plague		Hi, anyone please could help me with smb.conf? I just want to share certain folder over LAN, but to enter it id liket hat user need to enter login/passwd?
+2012-08-19T10:42:00.000Z	KM0201	plague	thats pretty easy.
+2012-08-19T10:43:00.000Z	KM0201	plague	first, you'll need to create that user on the host.
+2012-08-19T10:43:00.000Z	KM0201	plague	it's just as easy w/o a GUI
+2012-08-19T10:43:00.000Z	plague	KM0201	ok crating user is pretty easy
+2012-08-19T10:43:00.000Z	KM0201	plague	ok, so first create a user
+2012-08-19T10:44:00.000Z	plague	KM0201	next?
+2012-08-19T10:45:00.000Z	KM0201	plague	sudo smbpasswd -L -a username    (you'll be asked to enter and confirm a password for the user)
+2012-08-19T10:45:00.000Z	KM0201	plague	it doesn't
+2012-08-19T10:47:00.000Z	plague	KM0201	done
+2012-08-19T10:48:00.000Z	KM0201	plague	sudo smbpasswd -L -e username    this will add the user to the samba group
+2012-08-19T10:49:00.000Z	plague	KM0201	ok it says user enabled
+2012-08-19T10:50:00.000Z	KM0201	plague	now.... sudo nano /etc/samba/smb.conf  (that should open up your samba configuration file)
+2012-08-19T10:50:00.000Z	plague	KM0201	opened
+2012-08-19T10:51:00.000Z	KM0201	plague	scroll to the very bottom, and add this (be sure to change the username, and set the description name.. to keep it simple, don't use spaces in the description name)...   http://pastebin.com/txTMNB9H
+2012-08-19T10:55:00.000Z	KM0201	plague	by the way, what are you using Ubuntu server for?
+2012-08-19T10:55:00.000Z	plague	KM0201	well have several purposes
+2012-08-19T10:56:00.000Z	plague	KM0201	more like file server i'd also very mutch would like to set up rsync backup for some folders just not yet have enough brain to do it
+2012-08-19T10:56:00.000Z	KM0201	plague	can i PM you?

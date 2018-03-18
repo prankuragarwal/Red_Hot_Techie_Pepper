@@ -1,0 +1,23 @@
+2012-06-06T02:01:00.000Z	NeedHelpPlz		I need some help with fsck options. I dont know which ones I need to use. I've tried different combos and nothing is happening. http://linux.die.net/man/8/fsck
+2012-06-06T02:01:00.000Z	zhanger	NeedHelpPlz	you're running it with sudo right
+2012-06-06T02:01:00.000Z	NeedHelpPlz	zhanger	im logged in as root
+2012-06-06T02:04:00.000Z	NeedHelpPlz	zhanger	fsck -l did not return anything
+2012-06-06T02:06:00.000Z	zhanger	NeedHelpPlz	you can use e2fsck -c to check for bad blocks on the device
+2012-06-06T02:08:00.000Z	NeedHelpPlz	zhanger	i tried that command, but it seems to be missing another option
+2012-06-06T02:09:00.000Z	NeedHelpPlz	zhanger	thanks
+2012-06-06T02:09:00.000Z	NeedHelpPlz	zhanger	e2fsck: Device or resource busy while trying to open /dev/sda1 Filesystem mounted or opened exclusively by another program?
+2012-06-06T02:09:00.000Z	zhanger	NeedHelpPlz	make sure the device is unmounted
+2012-06-06T02:09:00.000Z	zhanger	NeedHelpPlz	what're you trying to scan, your current root partition?
+2012-06-06T02:10:00.000Z	NeedHelpPlz	zhanger	no, im not using that partition. im on a network boot
+2012-06-06T02:10:00.000Z	NeedHelpPlz	zhanger	so it cant be mounted, right?
+2012-06-06T02:10:00.000Z	zhanger	NeedHelpPlz	run "mount"
+2012-06-06T02:11:00.000Z	NeedHelpPlz	zhanger	http://pastie.org/4034385
+2012-06-06T02:11:00.000Z	NeedHelpPlz	zhanger	*^^
+2012-06-06T02:11:00.000Z	zhanger	NeedHelpPlz	ok
+2012-06-06T02:14:00.000Z	NeedHelpPlz	zhanger	same thing :\
+2012-06-06T02:14:00.000Z	zhanger	NeedHelpPlz	try just running e2fsck -f /dev/sda1
+2012-06-06T02:14:00.000Z	NeedHelpPlz	zhanger	e2fsck: Device or resource busy while trying to open /dev/sda1 Filesystem mounted or opened exclusively by another program?
+2012-06-06T02:15:00.000Z	zhanger	NeedHelpPlz	try running umount /dev/sda1
+2012-06-06T02:15:00.000Z	NeedHelpPlz	zhanger	umount: /dev/sda1: not mounted
+2012-06-06T02:25:00.000Z	zhanger	NeedHelpPlz	max filename size is 255 bytes for ext4
+2012-06-06T02:25:00.000Z	NeedHelpPlz	zhanger	thank you, thats the problem, i think. gonna try it out and see if that fixes it

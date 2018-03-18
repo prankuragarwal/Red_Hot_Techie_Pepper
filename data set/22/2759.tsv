@@ -1,0 +1,22 @@
+2010-06-29T02:25:00.000Z	danlock2	_CommandeR_	you're saying you want to boot into a root shell?
+2010-06-29T02:26:00.000Z	danlock2	_CommandeR_	for recovery purposes, or just to use?
+2010-06-29T02:27:00.000Z	danlock2	_CommandeR_	you're addressing the wrong person, haha/
+2010-06-29T02:27:00.000Z	_CommandeR_	danlock2	haha noticed :P
+2010-06-29T02:27:00.000Z	danlock2	_CommandeR_	why not just write an init script that starts the services for you?
+2010-06-29T02:27:00.000Z	_CommandeR_	danlock2	Dont want to launch GDM with it
+2010-06-29T02:28:00.000Z	_CommandeR_	danlock2	stipped ass possible to save cpu power and memory.
+2010-06-29T02:29:00.000Z	danlock2	_CommandeR_	you could aptitude remove gdm
+2010-06-29T02:30:00.000Z	_CommandeR_	danlock2	yeah but i do not want to make it change for other users. I will use this computer as  a server and a workstation. Thought of having a command in grub2 to launch in eather way if you understand :)
+2010-06-29T02:30:00.000Z	danlock2	_CommandeR_	you could do some sort of hack where you do init=/bin/bash in grub, and then manually update the runlevel.
+2010-06-29T02:32:00.000Z	danlock2	_CommandeR_	so you want it to be gui-less for you, but have a gui for other users?
+2010-06-29T02:32:00.000Z	_CommandeR_	danlock2	hm i did a menuentry in grub to "quet splash mode text" and this made me to boot with text mode but i have to login.
+2010-06-29T02:32:00.000Z	_CommandeR_	danlock2	well same user but different options at boot :)
+2010-06-29T02:34:00.000Z	danlock2	_CommandeR_	I'd just forget it and let it run with a gui, is the machine really low on resources?
+2010-06-29T02:34:00.000Z	_CommandeR_	danlock2	yeah it is a laptop :)
+2010-06-29T02:36:00.000Z	danlock2	_CommandeR_	you could do init=/bin/bash, and then once in a root shell mount -o remount,rw /, and then you're basically in a root shell, with no password.
+2010-06-29T02:37:00.000Z	danlock2	_CommandeR_	http://ubuntuforums.org/archive/index.php/t-3609.html
+2010-06-29T02:44:00.000Z	_CommandeR_	danlock2	hm testing.
+2010-06-29T02:45:00.000Z	_CommandeR_	danlock2	it does not work for some reason i still have the login promt
+2010-06-29T02:46:00.000Z	danlock2	_CommandeR_	then log in?
+2010-06-29T02:48:00.000Z	danlock2	_CommandeR_	Sorry, from my experience there is no real way to get around that.
+2010-06-29T02:48:00.000Z	danlock2	_CommandeR_	grub really is just intended to tell your computer what kernel / device to boot, not create a whole new world for you.

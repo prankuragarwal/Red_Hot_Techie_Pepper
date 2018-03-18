@@ -1,0 +1,22 @@
+2006-03-19T06:16:00.000Z	shukhrat		Hello All ! My Apache not runing when computer restart?
+2006-03-19T06:17:00.000Z	shukhrat		every time i'm type sudo /usr/sbin/apache2ctl start
+2006-03-19T06:17:00.000Z	shukhrat		 then i's work
+2006-03-19T06:18:00.000Z	aliquis	shukhrat	http://ubuntu.wordpress.com/2005/09/07/adding-a-startup-script-to-be-run-at-bootup/
+2006-03-19T06:22:00.000Z	shukhrat	aliquis	do we have easy way ?
+2006-03-19T06:25:00.000Z	aliquis	shukhrat	I don't know much about ubuntu/debian way of doing things but probably something like: 1) look in /etc/init.d after something which looks like a file for apache, 2) type  update-rc.d <name of whatever has to do with apache> default
+2006-03-19T06:29:00.000Z	aliquis	shukhrat	was that enough?
+2006-03-19T06:30:00.000Z	shukhrat	aliquis	i don't understand what to do next i found folder /ets/init.d wgat next ?
+2006-03-19T06:34:00.000Z	shukhrat	aliquis	maybe i should change in /etc/default/apache2 ? directory
+2006-03-19T06:35:00.000Z	aliquis	shukhrat	type ls in /etc/init.d and see if there are some file called apachesomething or httpsomething
+2006-03-19T06:35:00.000Z	aliquis	shukhrat	and then type update-rc.d thenameofthatfile defaults
+2006-03-19T06:41:00.000Z	shukhrat	aliquis	in directory /etc/init.d i have file apache2
+2006-03-19T06:42:00.000Z	aliquis	shukhrat	so type update-rc.d apache2 defaults
+2006-03-19T06:45:00.000Z	aliquis	shukhrat	i think that is all yes
+2006-03-19T06:45:00.000Z	shukhrat	aliquis	It say like this : ( System startup links for /etc/init.d/apache already exist.
+2006-03-19T06:51:00.000Z	shukhrat	aliquis	:(
+2006-03-19T06:52:00.000Z	aliquis	shukhrat	I have no idea why it doesn't work if the scripts already are there (and the command was the right one), you have installed apache as ubuntu packages and not compiled it by yourself or something?
+2006-03-19T06:53:00.000Z	shukhrat	aliquis	I remove Apache and install Apache2 .
+2006-03-19T06:55:00.000Z	shukhrat	aliquis	in directory /etc/defaults/apache2 i have this)     0 = start on boot; #1 = don't start on boot
+2006-03-19T06:56:00.000Z	aliquis	shukhrat	nice that you found it
+2006-03-19T07:12:00.000Z	shukhrat	aliquis	Viola ! it's work Thanks :)
+2006-03-19T07:28:00.000Z	aliquis	shukhrat	if you can connect with the shell client to the database and phpinfo() says php have mysql support it should work

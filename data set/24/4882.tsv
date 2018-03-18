@@ -1,0 +1,24 @@
+2007-01-26T14:04:00.000Z	Jopie		I'm having issues with sharing my internet connection on a windows box to my ubuntu installation. It gets an IP address but fails to ping or do domain name lookups. Any ideas?
+2007-01-26T14:05:00.000Z	Jopie		nmapp
+2007-01-26T14:06:00.000Z	graft	Jopie	what's your setup exactly? not sure i understand
+2007-01-26T14:07:00.000Z	Jopie	graft	I've got a wifi card in a windows PC, and I'm trying to share the connection with a ubuntu box over the wired network. The windows box has internet connection sharing enabled, and there's an IP handed to the ubuntu box but otherwise the link seems dead
+2007-01-26T14:08:00.000Z	graft	Jopie	um... what DNS servers does it assign, if any?
+2007-01-26T14:08:00.000Z	graft	Jopie	and what's the gateway machine?
+2007-01-26T14:08:00.000Z	Jopie	graft	what's the best way to check that?
+2007-01-26T14:09:00.000Z	graft	Jopie	cat /etc/resolv.conf, netstat -r
+2007-01-26T14:10:00.000Z	Jopie	graft	it says: destination - default - gateway - 192.168.0.1 Genmask - 0.0.0.0 Flags UG etc etc...
+2007-01-26T14:12:00.000Z	Jopie	graft	the genmask seems wrong, windows says it's 255.255.255.0
+2007-01-26T14:12:00.000Z	graft	Jopie	um, what's the gateway for the windows machine?
+2007-01-26T14:14:00.000Z	Jopie	graft	it's gateway to the internet, as in for the wifi nic? it's 192.169.2.1
+2007-01-26T14:15:00.000Z	graft	Jopie	hrm, so... your windows machine is the gateway for the ubuntu machine, yes? can you ping the outside world?
+2007-01-26T14:15:00.000Z	Jopie		on the ubuntu machine? No... The windows machine, yes, that's what I'm using right now...
+2007-01-26T14:16:00.000Z	graft	Jopie	but you can ping the windows machine
+2007-01-26T14:17:00.000Z	Jopie	graft	no nothing at all, and I can't ping the ubuntu machine from the windows machine either
+2007-01-26T14:18:00.000Z	graft	Jopie	um, so does it actually get assigned an IP, or does it just time out and default to something?
+2007-01-26T14:18:00.000Z	Jopie	graft	no it actually gets an Ip, 192.168.0.182 (that's not too random is it?)
+2007-01-26T14:18:00.000Z	graft	Jopie	run dhclient by hand and find out
+2007-01-26T14:19:00.000Z	Jopie	graft	It works fine, I get a new IP, .93
+2007-01-26T14:21:00.000Z	graft	Jopie	can you ping 192.168.0.1?
+2007-01-26T14:23:00.000Z	Jopie	graft	no luck there
+2007-01-26T14:24:00.000Z	graft	Jopie	bizarre. i'm unsure how your windows connection sharing dealy works, so i dunno what more to do...
+2007-01-26T14:24:00.000Z	Jopie	graft	yeah, last time ubuntu 'got' it immediately...

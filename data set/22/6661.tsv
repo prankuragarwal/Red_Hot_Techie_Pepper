@@ -1,0 +1,22 @@
+2006-08-28T14:05:00.000Z	Psych0tiC		Is it possible to unmount a cd-drive using sudo umount /dev/cdrom0/ ?
+2006-08-28T14:05:00.000Z	ladydoor	Psych0tiC	you can do it with sudo umount /media/cdrom0, i know
+2006-08-28T14:05:00.000Z	ladydoor	Psych0tiC	or sudo umount /cdrom
+2006-08-28T14:06:00.000Z	ladydoor	Psych0tiC	what do you mean "doesn't scan for it again?"
+2006-08-28T14:07:00.000Z	ladydoor	Psych0tiC	oh. sorry, i don't know :-(
+2006-08-28T14:07:00.000Z	ladydoor	Psych0tiC	in your /etc/fstab, do you have "noauto" in the line for your cd drive?
+2006-08-28T14:08:00.000Z	ladydoor	Psych0tiC	no worries. my bad. do this in a terminal: less /etc/fstab (q will quit less when you're done)
+2006-08-28T14:09:00.000Z	Psych0tiC	ladydoor	ok thanx I'll go and try now
+2006-08-28T14:10:00.000Z	ladydoor	Psych0tiC	cool. just make sure it has noauto in the line
+2006-08-28T14:10:00.000Z	Psych0tiC	ladydoor	and if it doesn't?
+2006-08-28T14:11:00.000Z	ladydoor	Psych0tiC	do this:  sudo cp /etc/fstab /etc/fstab.bak
+2006-08-28T14:11:00.000Z	ladydoor	Psych0tiC	then do gksudo gedit /etc/fstab
+2006-08-28T14:11:00.000Z	ladydoor	Psych0tiC	and i'll show you where to add it...
+2006-08-28T14:12:00.000Z	ladydoor	Psych0tiC	make it look like this:
+2006-08-28T14:12:00.000Z	ladydoor	Psych0tiC	/dev/hdc       /media/cdrom0   udf,iso9660 user,noauto 0       0
+2006-08-28T14:13:00.000Z	ladydoor	Psych0tiC	changing only that thrird part
+2006-08-28T14:13:00.000Z	ladydoor	Psych0tiC	yeah, just add ,noauto at the end
+2006-08-28T14:13:00.000Z	Psych0tiC	ladydoor	thanks a lot :)
+2006-08-28T14:13:00.000Z	ladydoor	Psych0tiC	i don't know if this will fix the problem but you are supposed to have that in there
+2006-08-28T14:14:00.000Z	ladydoor	Psych0tiC	i guess try rebooting? i hope it works
+2006-08-28T14:23:00.000Z	Psych0tiC	ladydoor	I checked and now it says noauto, does that mean it won't automatically search for the HD ?
+2006-08-28T14:23:00.000Z	Psych0tiC	ladydoor	not the HD, but the cd drive...

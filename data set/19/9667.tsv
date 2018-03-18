@@ -1,0 +1,19 @@
+2007-01-08T08:27:00.000Z	das-q		hmm, chaining like that ->      tail -f somelog.txt | grep -v 'I don't wanna see this' | grep -v 'and that as well not'     <- doesn't work, why?
+2007-01-08T08:28:00.000Z	das-q		at least it doesn't seem to work with tail, as I remember that it worked in conjunction with a simple cat
+2007-01-08T08:29:00.000Z	das-q		it works with only one grep
+2007-01-08T08:29:00.000Z	das-q		that's what i mean
+2007-01-08T08:29:00.000Z	das-q		I just want to define some strings to filter out
+2007-01-08T08:30:00.000Z	jrib	das-q	tail -f foo | egrep -v 'foo|bar|cat|dog'    should work.  I'm not sure why yours does not
+2007-01-08T08:30:00.000Z	das-q	jrib	ah, well, that of coure should work too
+2007-01-08T08:31:00.000Z	jrib	das-q	when I pipe twice to grep it fails to display anything for me too
+2007-01-08T08:31:00.000Z	das-q	jrib	ah, good to know
+2007-01-08T08:31:00.000Z	das-q	jrib	but I remember that this worked with cat instead. Anyway, I'll try that egrep-solution now
+2007-01-08T08:31:00.000Z	jrib	das-q	well I'm pretty sure it has to do with the -f
+2007-01-08T08:32:00.000Z	das-q	jrib	but I _want_ to follow the file
+2007-01-08T08:32:00.000Z	das-q	jrib	and it _does_ work with only one grep :)
+2007-01-08T08:32:00.000Z	jrib	das-q	right, I'm just saying that's the reason cat is working
+2007-01-08T08:34:00.000Z	jrib	das-q	maybe surround each expression in (), like  (foo)|(bar), the () are special in egrep I think
+2007-01-08T08:34:00.000Z	das-q	jrib	just doing so :)
+2007-01-08T08:35:00.000Z	das-q	jrib	had to escape the other parenthesis too
+2007-07-03T13:36:00.000Z	jrib	das-q	you can use brightside
+2007-07-03T13:37:00.000Z	das-q	jrib	thank you very much!

@@ -1,0 +1,22 @@
+2007-12-02T19:46:00.000Z	psnel		can someone help me with masquerading, please
+2007-12-02T19:46:00.000Z	chesty	psnel	just ask your question, don't ask to ask
+2007-12-02T19:49:00.000Z	chesty	psnel	pastebin iptables -t nat -nvL
+2007-12-02T19:54:00.000Z	psnel	chesty	http://paste.ubuntu-nl.org/46575/
+2007-12-02T19:57:00.000Z	psnel	chesty	did you get my paste?
+2007-12-02T19:57:00.000Z	chesty	psnel	what's the ip address of one of the hosts that's trying to connect through the fw?
+2007-12-02T19:57:00.000Z	psnel	chesty	10.0.0.x
+2007-12-02T20:00:00.000Z	chesty	psnel	there's a file in /etc that maps mac addresses to ethx names, when you've upgraded the hardware, that file still has the old mac addresses in it
+2007-12-02T20:03:00.000Z	chesty	psnel	/etc/iftab look in that file (if it exists, it may not)
+2007-12-02T20:03:00.000Z	chesty	psnel	compare it to your installed mac addresses
+2007-12-02T20:06:00.000Z	psnel	chesty	/etv/iftab - has comment #...  This file is no longer used ... \n.. #eth0 mac 00:40:f4:6e:29:7a
+2007-12-02T20:09:00.000Z	chesty	psnel	so i noticed from your paste, there are no packets out in the ppp+_masq chains
+2007-12-02T20:11:00.000Z	psnel	chesty	i don't know what that might imply?
+2007-12-02T20:12:00.000Z	chesty	psnel	my guess was the source address filters 10.0.0.0/24 and 169.254.0.0/16 were wrong, but from what you said, they look ok
+2007-12-02T20:17:00.000Z	chesty	psnel	I assumed it was OK because you have some traffic in POSTROUTING, but sudo -i ; echo 1 > /proc/sys/net/ipv4/ip_forward
+2007-12-02T20:18:00.000Z	psnel	chesty	yaaay!
+2007-12-02T20:20:00.000Z	psnel	chesty	about your previous comment... i could never fuogure out why this line was in my ">route" output..
+2007-12-02T20:24:00.000Z	psnel	chesty	169.254.0.0 .. eth3; does that come from the /etc/shorewall/masq file (paste)?
+2007-12-02T20:41:00.000Z	chesty	psnel	I think 169.254.0.0 is for zeroconf like things, I don't think they're meant to be routed, I think they are meant to be local to a link
+2007-12-02T20:43:00.000Z	psnel	chesty	please explain zeroconf, and 'local to a link'. Is it safe to remove that from the shorewall masq file?
+2007-12-02T20:46:00.000Z	chesty	psnel	basically, if dhcp fails to get an address, a 169.254.0.0 address can be assigned. It's not meant to be routed, you can safely remove it from shorewall
+2007-12-02T20:47:00.000Z	psnel	chesty	thanks. thats been irritating me - i just love talking to you people)

@@ -1,0 +1,22 @@
+2006-08-29T09:19:00.000Z	birdfish		Could someone please help me to get my LAN clients to be able to use the internet through my ubuntu server?
+2006-08-29T09:19:00.000Z	birdfish		I have installed dhcp3-server and firestarter
+2006-08-29T09:19:00.000Z	birdfish		But I can't get on the internet from my LAN client still
+2006-08-29T09:19:00.000Z	disasm	birdfish	2 NICS?
+2006-08-29T09:19:00.000Z	birdfish	disasm	Definitely :D
+2006-08-29T09:20:00.000Z	disasm	birdfish	gentux.org/proxy
+2006-08-29T09:21:00.000Z	disasm	birdfish	throw that in your init.d, update-rc.d it, and customize it to fit your network
+2006-08-29T09:21:00.000Z	disasm	birdfish	warning, it's not very secure, i have an additional firewall script ran, that just sets up the NAT
+2006-08-29T09:23:00.000Z	disasm	birdfish	save that script to /etc/init.d/proxy if you run /etc/init.d/proxy start, routing should work
+2006-08-29T09:24:00.000Z	disasm	birdfish	not sure, never used firestarter, i write all my firewalls from scratch with iptables
+2006-08-29T09:38:00.000Z	disasm	birdfish	/etc/init.d/proxy start
+2006-08-29T09:39:00.000Z	disasm	birdfish	to get it to start on boot: update-rc.d proxy defaults
+2006-08-29T09:39:00.000Z	disasm	birdfish	did you save it in /etc/init.d/
+2006-08-29T09:39:00.000Z	disasm	birdfish	mv proxy /etc/init.d/
+2006-08-29T09:41:00.000Z	disasm	birdfish	sudo chmod 7555 /etc/init.d/proxy
+2006-08-29T09:41:00.000Z	disasm	birdfish	sudo /etc/init.d/proxy start
+2006-08-29T09:41:00.000Z	disasm	birdfish	no
+2006-08-29T09:42:00.000Z	disasm	birdfish	#!/bin/sh tells the shell it's a script supposed to be run by /bin/sh
+2006-08-29T09:43:00.000Z	disasm	birdfish	you may also need to uncomment line 27 of sysctl.conf#net/ipv4/ip_forward=1
+2006-08-29T09:43:00.000Z	disasm	birdfish	cool!
+2006-08-29T09:43:00.000Z	birdfish	disasm	you are awesome, thanks so much! :D
+2006-08-29T09:43:00.000Z	disasm	birdfish	no problem ;-)

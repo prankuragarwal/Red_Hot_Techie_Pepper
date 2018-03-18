@@ -1,0 +1,21 @@
+2012-08-30T11:44:00.000Z	vivek-tomar__		ikonia:hi can you please help me out my global path variables in /etc/environment file are not working from terminal
+2012-08-30T11:45:00.000Z	ikonia	vivek-tomar__	no idea.
+2012-08-30T11:45:00.000Z	vivek-tomar__	ikonia	i set path to bash script dir and i can't execute those script from terminal
+2012-08-30T11:46:00.000Z	ikonia	vivek-tomar__	why are you setting it in /etc/variables rather than in the .bashrc ?
+2012-08-30T11:47:00.000Z	vivek-tomar__	ikonia	coz /etc/environment variables are global can be shared bw users
+2012-08-30T11:48:00.000Z	ikonia	vivek-tomar__	it's more likely /etc/environment is getting parsed and then the varibles are overwritten by other config files such as the bashrc
+2012-08-30T11:49:00.000Z	ikonia	vivek-tomar__	https://help.ubuntu.com/community/EnvironmentVariables quite a good explination of it and how to use it
+2012-08-30T11:50:00.000Z	ikonia	vivek-tomar__	can you show me the output of echo $PATH please.
+2012-08-30T11:53:00.000Z	ikonia	vivek-tomar__	right, so $MYHOME is not a valid path
+2012-08-30T11:53:00.000Z	ikonia	vivek-tomar__	I'm assuming the things that are not working is in $MYHOME
+2012-08-30T11:53:00.000Z	ikonia	vivek-tomar__	yes, but %MYHOME is not valid in $PATH
+2012-08-30T11:54:00.000Z	ikonia	vivek-tomar__	no, it's not
+2012-08-30T11:54:00.000Z	ikonia	vivek-tomar__	$PATH cannot contain $MYHOME
+2012-08-30T11:54:00.000Z	ikonia	vivek-tomar__	that is showing you the machine doesn't know what $MYHOME is
+2012-08-30T11:54:00.000Z	vivek-tomar__	ikonia	if i use source /etc/environmet command every thing starts working properly
+2012-08-30T11:55:00.000Z	ikonia	vivek-tomar__	if it new what $MYHOME was it would set the path to usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/your/home/path
+2012-08-30T11:55:00.000Z	ikonia	vivek-tomar__	that has nothing to do with what I've just said
+2012-08-30T11:55:00.000Z	vivek-tomar__	ikonia	so can how to fix it plz
+2012-08-30T11:56:00.000Z	ikonia	vivek-tomar__	1.) I've given you a link showing you how to use /etc/enviornment 2.) I've explained why it's not working from /etc/environment (something overwriting your variables .bashrc) 3.) I've explained why $MYHOME is not valid in your $PATH
+2012-08-30T11:56:00.000Z	ikonia	vivek-tomar__	address those issues and you'll be fine
+2012-08-30T11:57:00.000Z	vivek-tomar__	ikonia	oh man your typing speed is so great my god

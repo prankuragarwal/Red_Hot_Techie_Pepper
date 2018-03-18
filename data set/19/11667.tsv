@@ -1,0 +1,19 @@
+2007-11-27T15:07:00.000Z	CppIsWeird		i plug in an external usb drive into mu ubuntu gutsy
+2007-11-27T15:07:00.000Z	CppIsWeird		oopse
+2007-11-27T15:08:00.000Z	CppIsWeird		i plug in an external usb drive into my ubuntu gutsy computer and i get the following error message: mount_point cannot contain the following characters: newline, G_DIR_SEPARATOR (usually /)  plugging the drive into my feisty computer it works fine.
+2007-11-27T15:09:00.000Z	gordonjcp	CppIsWeird	that's a bit odd
+2007-11-27T15:09:00.000Z	gordonjcp	CppIsWeird	have you looked in /etc/fstab to see if there's anything odd?
+2007-11-27T15:10:00.000Z	gordonjcp	CppIsWeird	the "G_DIR_SEPARATOR" thing is odd, because you *can* mount a filesystem on a subdirectory
+2007-11-27T15:12:00.000Z	gordonjcp	CppIsWeird	that's pretty odd
+2007-11-27T15:13:00.000Z	gordonjcp	CppIsWeird	did you unmount it properly before disconnecting it?
+2007-11-27T15:13:00.000Z	gordonjcp	CppIsWeird	aha
+2007-11-27T15:13:00.000Z	gordonjcp	CppIsWeird	bear in mind that until you unmount, the data might not be written out to disk
+2007-11-27T15:15:00.000Z	gordonjcp	CppIsWeird	see if it thinks it's mounted
+2007-11-27T15:15:00.000Z	gordonjcp	CppIsWeird	yes
+2007-11-27T15:25:00.000Z	CppIsWeird	gordonjcp	i was mistaken on the drive i was thinking it was, it does not appear to have a mount entry, how do i list hard drives on my system?
+2007-11-27T15:27:00.000Z	gordonjcp	CppIsWeird	including unmounted ones?  I don't know, it's not something I've ever really done
+2007-11-27T15:28:00.000Z	gordonjcp	CppIsWeird	dmesg might hold a few clues
+2007-11-27T15:34:00.000Z	CppIsWeird	gordonjcp	ive identified what device it is, and ive tried to mount it, however i get that i dont have permissions to see it, when i chmod 777 it, i get "chmod: changing permissions of `drive location`: read-only file system
+2007-11-27T15:35:00.000Z	gordonjcp	CppIsWeird	if it's ntfs, it might be mounted read-only
+2007-11-27T15:48:00.000Z	gordonjcp	CppIsWeird	have you rebooted?
+2007-11-27T15:54:00.000Z	CppIsWeird	gordonjcp	yes, rebooted, same thing

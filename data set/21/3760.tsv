@@ -1,0 +1,21 @@
+2008-09-28T02:27:00.000Z	uouou		how can I pass different configuration to a .deb ?
+2008-09-28T02:28:00.000Z	uouou		audacity cut out soundtouch in the official deb for some ununderstandable reason :P
+2008-09-28T02:28:00.000Z	IntuitiveNipple	uouou	Your question doesn't make sense, can you explain more?
+2008-09-28T02:31:00.000Z	IntuitiveNipple	uouou	Have you done apt-get install build-essential dpkg-dev
+2008-09-28T02:34:00.000Z	uouou	IntuitiveNipple	I am now
+2008-09-28T02:36:00.000Z	IntuitiveNipple	uouou	not at all; most users don't use them or need the bloat
+2008-09-28T02:41:00.000Z	IntuitiveNipple	uouou	don't use ./configure make
+2008-09-28T02:41:00.000Z	IntuitiveNipple	uouou	Edit the configure flags in debian/rules
+2008-09-28T02:42:00.000Z	uouou	IntuitiveNipple	debian/rules?
+2008-09-28T02:42:00.000Z	IntuitiveNipple	uouou	then do fakeroot debian/rules binary (from the source base directory)
+2008-09-28T02:42:00.000Z	IntuitiveNipple	uouou	If you're building a debian package with alternate configuration
+2008-09-28T02:43:00.000Z	IntuitiveNipple	uouou	debian/rules is a Makefile. Find the build: target and follow through; there will be a line that executes the package's ./configure script with appropriate options
+2008-09-28T02:43:00.000Z	uouou	IntuitiveNipple	ohhh. yeesh.
+2008-09-28T02:44:00.000Z	IntuitiveNipple	uouou	you may need to install the fakeroot package, too
+2008-09-28T02:46:00.000Z	uouou	IntuitiveNipple	ok. thanks for your help btw. I've added --with-soundtouch to the debian/rules file.. now I use fakeroot how again?
+2008-09-28T02:46:00.000Z	uouou	IntuitiveNipple	reading man fakeroot ... could maybe also just use sudo?
+2008-09-28T03:05:00.000Z	uouou	IntuitiveNipple	I got as far as trying a couple things with fakeroot but I can't seem to get it to create a deb
+2008-09-28T03:07:00.000Z	IntuitiveNipple	uouou	what issues are you having?
+2008-09-28T03:08:00.000Z	uouou	IntuitiveNipple	I followed what I think were your isntructions, "fakeroot debian/rules binary" ? and get install: cannot change permissions of `debian/audacity': No such file or directory
+2008-09-28T03:08:00.000Z	IntuitiveNipple	uouou	hang on
+2008-09-28T03:11:00.000Z	IntuitiveNipple	uouou	join #ubuntu-packaging

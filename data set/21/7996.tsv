@@ -1,0 +1,21 @@
+2006-06-10T09:59:00.000Z	BlueEagle		coldtoast: I would really, really recomend you get a fat32 partition if you need to write data that needs to be accessible in windows. Either that or get an ext* driver for windows.
+2006-06-10T10:00:00.000Z	BlueEagle		chihork: initrd will probably not load alsa drivers. The main purpous of the initrd is to load device driver required to mount the real root file system. ie if you've got SCSI drivers that need to be loaded because your / is on a SCSI disk.
+2006-06-10T10:00:00.000Z	BlueEagle		chihork: alsa is loaded very much later than this.
+2006-06-10T10:01:00.000Z	Chihork	BlueEagle	then I can rule this one out.  Thanks again.
+2006-06-10T10:01:00.000Z	BlueEagle		chihork: Now what was the trouble with alsa again? Which sound card and so on?
+2006-06-10T10:03:00.000Z	BlueEagle	intelikey	Thanks. I was not aware of that.
+2006-06-10T10:03:00.000Z	Chihork	BlueEagle	CS4281 : Crystal Sound Fusion.  I'm trying to use the low-latency pre-emptible patch, along with a custom-configuration for my kernel.  My sound card worked fine with the kernel provided, but after installing the new kernel, it doesn't work.  I think I'm messing up the IRQ sharing somewheres.
+2006-06-10T10:04:00.000Z	BlueEagle	intelikey	Well with the wide variety of filesystems that are availible it is a sound way to keep the kernel size down to a minimum.
+2006-06-10T10:05:00.000Z	BlueEagle		chihork: Are you compiling the driver as a module?
+2006-06-10T10:05:00.000Z	Chihork		the preemptible one, or the Alsa one?  ALSA is definitely a module.
+2006-06-10T10:06:00.000Z	BlueEagle		chihork: Is it loaded?
+2006-06-10T10:06:00.000Z	Chihork	BlueEagle	sndcore is listed in lsmod, as well as snd-cs4281, so I think I can safely say, yes.
+2006-06-10T10:07:00.000Z	BlueEagle		chihork: I see. Well then I'm all out of ideas. Perhaps compile support into the kernel instead of putting it in as a module? Might help.
+2006-06-10T10:07:00.000Z	Chihork	BlueEagle	but cat /proc/asound/cards gives "---no soundcards---"
+2006-06-10T10:08:00.000Z	BlueEagle	intelikey	Isn't initrd unloaded from memory after it's done with?
+2006-06-10T10:09:00.000Z	BlueEagle		chihork: and you can mount  your initrd with mount -o loop. You might have to run gunzup on it first if it's packed with gzip.
+2006-06-10T10:09:00.000Z	BlueEagle		chihork: http://en.wikipedia.org/wiki/Initrd
+2006-06-10T10:09:00.000Z	Chihork	BlueEagle	yes, I am experimenting with a few ideas.  I'll add that one to the list :).  Thanks for the help.  Ahh, I think I'll check that out.  Initrd is like a blackbox to me right now.  Thanks again.
+2006-06-10T10:10:00.000Z	BlueEagle	intelikey	Ahh, yes. That's a valid point. I didn't even concider that.
+2006-06-10T10:10:00.000Z	BlueEagle		chihork: initrd is _supposed_ to be a black box. :)
+2006-06-10T10:12:00.000Z	Chihork	BlueEagle	I see :) well, that could be a problem.  As soon as I figure out I don't need it for sure, I'm sure I'll be rid of it.

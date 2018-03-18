@@ -1,0 +1,19 @@
+2011-11-06T06:42:00.000Z	|Anthony|		i have an *apparently* bad usb flash drive. It shows up in win 7 but isn't formated. It doesn't show up in ubuntu 10.04. Is there somewhere else i can look to see it?
+2011-11-06T06:42:00.000Z	|Anthony|		my wife brought it to school
+2011-11-06T06:43:00.000Z	|Anthony|		>.<
+2011-11-06T06:43:00.000Z	|Anthony|		and now it's borked
+2011-11-06T06:43:00.000Z	Jordan_U	|Anthony|	Do you see any new lines in dmesg immediately after plugging it in?
+2011-11-06T06:44:00.000Z	|Anthony|	Jordan_U	dmesg isn't showing any new items since boot
+2011-11-06T06:45:00.000Z	Jordan_U	|Anthony|	Do other USB devices still work?
+2011-11-06T06:45:00.000Z	|Anthony|	Jordan_U	yes
+2011-11-06T06:47:00.000Z	Jordan_U	|Anthony|	Are you sure that it consistently shows up in Windows. This sounds like a hardware problem where the hardware is simply dead, or possibly a wire is loose so that it will sometimes show up and sometimes not.
+2011-11-14T08:23:00.000Z	Jordan_U	|Anthony|	Do you just want to change the grub background or do you want an entire theme?
+2011-11-14T08:25:00.000Z	Jordan_U	|Anthony|	To change the background add "GRUB_BACKGROUND=/path/to/new/background.png" to /etc/default/grub then run "sudo update-grub".
+2011-11-14T08:28:00.000Z	Jordan_U	|Anthony|	An install script should not be needed. I'm looking now to see what the script does.
+2011-11-14T08:31:00.000Z	Jordan_U	|Anthony|	It does not write to the grub.cfg.
+2011-11-14T08:32:00.000Z	Jordan_U	|Anthony|	All the script does is copy the theme files to /boot/grub/themes/Oxygen/, change the GRUB_GFXMODE= option in /etc/default/grub, and add the GRUB_THEME= option in /etc/default/grub.
+2011-11-14T08:34:00.000Z	Jordan_U	|Anthony|	You can do that yourself and document it for future reference so you know how to undo it. Though I agree that almost anything which comes with an install script should have an unstall script as well.
+2011-11-14T08:54:00.000Z	Jordan_U	|Anthony|	It's best if you test code / instructions whenever possible before giving them to users.
+2011-11-14T09:04:00.000Z	|Anthony|	Jordan_U	Thank you for correcting me in a non-dickish way :)
+2011-12-14T02:59:00.000Z	Jordan_U	|Anthony|	I would highly recommend against separating partitions, and don't try to share /boot/.
+2011-12-14T03:02:00.000Z	|Anthony|	Jordan_U	not even for /home or /tmp

@@ -1,0 +1,22 @@
+2008-03-17T17:26:00.000Z	KenSentMe		I have a 2nd hd in my system and i want to have it mounted on startup and be accessible for all users. This is the current line in /etc/fstab: UUID=blabla /media/disk_a ext3 user,exec,auto,rw 0 1. Now the normal user cant mount the volume and also cant write to it. What am i doing wrong?
+2008-03-17T17:27:00.000Z	ActionParsnip	KenSentMe	is it formatted ext3?
+2008-03-17T17:27:00.000Z	KenSentMe	ActionParsnip	i think it is
+2008-03-17T17:28:00.000Z	ActionParsnip	KenSentMe	I'd check with sudo fdisk -l
+2008-03-17T17:28:00.000Z	KenSentMe	ActionParsnip	it is
+2008-03-17T17:30:00.000Z	KenSentMe	ActionParsnip	it is ext3 and root can create folders etc
+2008-03-17T17:30:00.000Z	ActionParsnip	KenSentMe	i'd google fstab to check you have the right stuff. Can you also give a pastebin of your /etc/fstab
+2008-03-17T17:30:00.000Z	KenSentMe	ActionParsnip	i pasted the line in my question already
+2008-03-17T17:31:00.000Z	ActionParsnip	KenSentMe	do the whole thing dude
+2008-03-17T17:32:00.000Z	KenSentMe	ActionParsnip	http://paste.ubuntu-nl.org/59919/
+2008-03-17T17:33:00.000Z	ActionParsnip	KenSentMe	which mount point is the drive using?
+2008-03-17T17:33:00.000Z	KenSentMe	ActionParsnip	/media/disk_a
+2008-03-17T17:34:00.000Z	ActionParsnip	KenSentMe	there is no instance of "_a" in that pastebin
+2008-03-17T17:35:00.000Z	KenSentMe	ActionParsnip	line 13
+2008-03-17T17:35:00.000Z	ActionParsnip	KenSentMe	is it this UUID=47BD-4A90 /media/disk_a_win
+2008-03-17T17:35:00.000Z	KenSentMe	ActionParsnip	no, the other one
+2008-03-17T17:35:00.000Z	ActionParsnip	KenSentMe	yeah, notepad knows nothig :S
+2008-03-17T17:35:00.000Z	ActionParsnip	KenSentMe	got
+2008-03-17T17:36:00.000Z	ActionParsnip	KenSentMe	why are you using UUIDs?
+2008-03-17T17:37:00.000Z	ActionParsnip		use /dev/sdb1 or whatever it is. You could use some spacing in there
+2008-03-17T17:37:00.000Z	KenSentMe	ActionParsnip	because it's a swappable bay, and i want to use a different mountpoint if there is another disk in the bay. And uuid are ubuntu default
+2008-03-17T17:37:00.000Z	ActionParsnip	KenSentMe	back it up and give /dev/<whatever> a go

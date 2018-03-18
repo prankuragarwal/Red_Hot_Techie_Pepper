@@ -1,0 +1,22 @@
+2012-05-04T12:11:00.000Z	resting		i'd configured vsftp to listen on port 2121..but on client side its not able to connect to it..
+2012-05-04T12:11:00.000Z	resting		am i missing some steps?
+2012-05-04T12:12:00.000Z	llutz	resting	sudo lsof -i :2121                does it really listen? what error clientside? what errors in the serverlogs?
+2012-05-04T12:15:00.000Z	resting	llutz	yes..its listening…i'm using filezilla…it just says connection timed out
+2012-05-04T12:17:00.000Z	llutz	resting	any filtering (iptables-)rules active?
+2012-05-04T12:18:00.000Z	resting	llutz	i did sudo iptables -L | grep ftp…it shows  tcp anywhere anywhere…i guess there's no filtering?
+2012-05-04T12:19:00.000Z	llutz	resting	if you use "ftp" it uses port 21
+2012-05-04T12:19:00.000Z	llutz	resting	means 2121 still filtered
+2012-05-04T12:20:00.000Z	resting	llutz	oo…so i have to manually set a rule?
+2012-05-04T12:20:00.000Z	llutz	resting	yes
+2012-05-04T12:20:00.000Z	resting	llutz	ic..ok…will look that up..thanks
+2012-05-04T12:21:00.000Z	llutz	resting	you should check if you can't use sftp instead of ftp, which would be much saver than ftp with obfuscated ports
+2012-05-04T12:22:00.000Z	resting	llutz	yes i can use sftp…oo…so i could change ssh port and its effectively changing both ports?
+2012-05-04T12:23:00.000Z	llutz	resting	^^
+2012-05-04T12:24:00.000Z	resting	llutz	i read that sftp is basically ftp over ssh..
+2012-05-04T12:24:00.000Z	llutz	resting	yes, it uses ssh and also the ssh-port
+2012-09-24T13:14:00.000Z	llutz	resting	^^
+2012-09-24T13:16:00.000Z	resting	llutz	so no way i can run pcretest?
+2012-09-24T13:17:00.000Z	llutz	resting	idk what that is, but its not contained in any package
+2012-09-24T13:17:00.000Z	llutz	resting	http://askubuntu.com/questions/52161/pcretest-seems-to-be-gone-from-libpcre3-package
+2012-09-24T13:18:00.000Z	resting	llutz	ah..ok...
+2012-09-24T13:19:00.000Z	llutz	resting	get the maverick packages, extract the pcretest and put it into ~/bin (just my idea)

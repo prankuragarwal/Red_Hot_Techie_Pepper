@@ -1,0 +1,24 @@
+2011-12-04T08:37:00.000Z	shaunlewis		I have lost my audio after a bios upgrade. I have checked the controller is enabled in the BIOS settings, disable and renabled, but no jou with that, or reverting back to old version. My sound card (internal intel HDA) is shown in the lspci output, and on aplay -l. How should I go about troubleshooting this?
+2011-12-04T08:39:00.000Z	ActionParsnip	shaunlewis	what is the output of: wget -O alsa-info.sh http://www.alsa-project.org/alsa-info.sh; chmod +x ./alsa-info.sh; ./alsa-info.sh
+2011-12-04T08:40:00.000Z	shaunlewis		I hear a crack from the speakers (which I have tested on another box) when the ubuntu start up chime should play, then nothing
+2011-12-04T08:41:00.000Z	shaunlewis		paste from ActionParsnip 's command: http://paste.ubuntu.com/758861/
+2011-12-04T08:44:00.000Z	ActionParsnip	shaunlewis	if you run:  killall pulseaudio; rm -r ~/.pulse*     then wait a few seconds then try some sound apps, does it work ok?
+2011-12-04T08:46:00.000Z	shaunlewis		ActionParsnip; no, still no output
+2011-12-04T08:46:00.000Z	ActionParsnip	shaunlewis	and if you run:  alsamixer    are all levels cranked and unmuted?
+2011-12-04T08:47:00.000Z	shaunlewis	ActionParsnip	All except front mic, yes
+2011-12-04T08:48:00.000Z	ActionParsnip	shaunlewis	what is the output of:  lsb_release -sc
+2011-12-04T08:48:00.000Z	shaunlewis		oneiric
+2011-12-04T08:49:00.000Z	ActionParsnip	shaunlewis	try: http://pastebin.com/Ny8ejyhH
+2011-12-04T08:50:00.000Z	shaunlewis	ActionParsnip	Done. I am told all are newest version, "0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded."
+2011-12-04T08:51:00.000Z	ActionParsnip	shaunlewis	yeah sorry, run: sudo apt-get --reinstall install linux-sound-base alsa-base alsa-utils libasound2
+2011-12-04T08:52:00.000Z	shaunlewis	ActionParsnip	Hmm, last lineof output is "E: Internal Error, No file name for libasound2"
+2011-12-04T08:53:00.000Z	ActionParsnip	shaunlewis	then remove that package...
+2011-12-04T08:53:00.000Z	ActionParsnip		from the command
+2011-12-04T08:55:00.000Z	shaunlewis	ActionParsnip	Ok, done.  Still no sound. Would you expect me to have the libasound2 package installed, normally?
+2011-12-04T08:55:00.000Z	ActionParsnip	shaunlewis	not sure its on the sound troubleshooting page
+2011-12-04T08:56:00.000Z	ActionParsnip	shaunlewis	have you tried setting BIOS to failsafe defaults then reconfiguring from there
+2011-12-04T08:57:00.000Z	shaunlewis		Yes, I have taken the CMOS battery out as well, hopeing It might reset some setting, but no joy.
+2011-12-04T08:58:00.000Z	shaunlewis		The only option I have which is anything to do with the sound is under southbridge configuration, "sound controller" options either "enable" or "disable". nothing else as far as I can see
+2011-12-04T08:59:00.000Z	shaunlewis		i tried disabling, rebooting, renenabling to no effect
+2011-12-04T08:59:00.000Z	ActionParsnip	shaunlewis	no irq conflicts?
+2011-12-04T09:00:00.000Z	ActionParsnip	shaunlewis	could look in: dmesg | less    to see what's going on

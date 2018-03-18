@@ -1,0 +1,18 @@
+2008-07-14T12:14:00.000Z	Flannel	kate_mins	It depends on how the filesystem was set up, it can be anywhere from 16G to 2T
+2008-07-14T12:15:00.000Z	kate_mins	Flannel	what is the filesystem default file size ? (ubuntu 8.04)
+2008-07-14T12:17:00.000Z	Flannel	kate_mins	How big is your partition?
+2008-07-14T12:18:00.000Z	kate_mins	Flannel	500GB
+2008-07-14T12:19:00.000Z	Flannel	kate_mins	Actually, pastebin the output of "sudo fdisk -l" (thats an L)
+2008-07-14T12:20:00.000Z	kate_mins	Flannel	http://pastebin.com/m1defd85d
+2008-07-14T12:21:00.000Z	Flannel	kate_mins	Or, if you know which device it is (/dev/sdXY) you can just give the output of this: sudo /sbin/dumpe2fs /dev/sdXY | grep "Block size"
+2008-07-14T12:21:00.000Z	Flannel	kate_mins	what is the output of: sudo /sbin/dumpe2fs /dev/sda1 | grep "Block size"
+2008-07-14T12:23:00.000Z	Flannel	kate_mins	don't need to pastebin, it should only be one line (and we really just need the number)
+2008-07-14T12:24:00.000Z	kate_mins	Flannel	Block size:               4096
+2008-07-14T12:24:00.000Z	Flannel	kate_mins	Alright, your max file size is 2TB
+2008-07-14T12:24:00.000Z	kate_mins	Flannel	thanks for your help :) can i ask you another question ?
+2008-07-14T12:25:00.000Z	Flannel	kate_mins	Yep
+2008-07-14T12:26:00.000Z	kate_mins	Flannel	what is the best compression tool in ubuntu ?
+2008-07-14T12:27:00.000Z	Flannel	kate_mins	Well, most people either use gzip or bzip2, (.gz and .bz2)  But the compression amount depends on what sort of data youre compressing as much as what compression method you're using.  Either would be a fine choice
+2008-07-14T12:28:00.000Z	kate_mins	Flannel	i never used .gz tool , can you give me an example how i can compress folder with her sub-folders ?
+2008-07-14T12:28:00.000Z	Flannel	kate_mins	https://help.ubuntu.com/community/FileCompression
+2008-07-14T12:30:00.000Z	Flannel	kate_mins	Theres a graphical tool which will make it easy.  You actually do it in two steps.  gz only compresses a single file, so first you have to make all the files into a single file (called a tar).  Its a two step process (except you don't see the steps individually usually).  This is why you sometimes see .tar.gz (which is sometimes shortened to .tgz)

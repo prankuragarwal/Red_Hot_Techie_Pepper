@@ -1,0 +1,19 @@
+2006-11-14T16:30:00.000Z	Julez83		one zec
+2006-11-14T16:30:00.000Z	Julez83		Yup, sudo mkdir worked. Thanks!
+2006-11-14T06:54:00.000Z	Julez83		Has anyone a link to a site describing how to re-install GRUB? I'm stuck at the "STAGE 1.5 LOADING GRUB", and can't run neither Windows or Ubuntu from HDD. Have to run Ubuntu from Live-CD.
+2006-11-14T06:56:00.000Z	Julez83		ta
+2006-11-14T06:56:00.000Z	soundray	Julez83	you can probably follow the Recovering... instructions
+2006-11-14T06:56:00.000Z	soundray	Julez83	ta? You must be British
+2006-11-14T08:11:00.000Z	soundray	Julez83	what you've read is wrong IMO. Where are you running grub-install -- from a live CD?
+2006-11-14T08:14:00.000Z	soundray	Julez83	/dev/hdb?  Is your drive not partitioned?
+2006-11-14T08:17:00.000Z	soundray	Julez83	tell me which partition your /boot directory is in. /dev/hdb1?
+2006-11-14T08:19:00.000Z	Julez83	soundray	/boot is on /dev/hdb1, witch is currently mounted in /mnt/linux/ on the live-cd.
+2006-11-14T08:22:00.000Z	soundray	Julez83	I suggest the following procedure: 'umount /mnt/linux && sudo grub', then type 'root (hd1,0)' and 'setup (hd0)' and 'quit'. If your (/mnt/linux)/boot/grub/menu.lst is okay, it should then boot successfully from the HD.
+2006-11-14T08:22:00.000Z	Julez83	soundray	Ok, I'll try that. Thanks alot!
+2006-11-14T08:54:00.000Z	soundray	Julez83	are the jumpers set correctly (master/slave)?
+2006-11-14T09:04:00.000Z	soundray	Julez83	yes, it does.
+2006-11-14T09:06:00.000Z	soundray	Julez83	one thing you could try is to run the same again, but with 'setup (hd1)'. Maybe for some reason your BIOS still reads the MBR of hdb. It would then find the new grub there.
+2006-11-14T09:06:00.000Z	Julez83	soundray	Hmm... would it be any idea to try to switch them back (set the linux-drive as master and win as secondary), then sudo grub, root (hd0,0) and then setup (hd0)?
+2006-11-14T09:06:00.000Z	soundray	Julez83	so on the live system, 'sudo grub', 'root (hd1,0)' and 'setup (hd0)' then 'quit'
+2006-11-14T09:07:00.000Z	soundray	Julez83	it might be, but Windows might not like that.
+2006-11-14T09:07:00.000Z	Julez83	soundray	Ok, will try that. Thanks for the advice

@@ -1,0 +1,19 @@
+2008-10-08T11:54:00.000Z	DualBootn		I updated my 2.6.20-15 to 2.6.20-17 and now its having x server issue about my Nvidia card, i have tried recover from grub and it says it has reset restricted drivers but how do i load back into ubuntu from the kernal im sorry i dont know im a total noob to linux systems
+2008-10-08T11:56:00.000Z	DualBootn		anyone to guide me to the direction i need to be?
+2008-10-08T11:58:00.000Z	DualBootn		anyone?
+2008-10-08T12:00:00.000Z	DualBootn		grub loads up and i have the choice of Ubuntu 2.6.20-17 and 2.6.20-15 if i load 20-17 (this showed after i downloaded updateds) it says x server problems then if i go to the revoery of that number it says reseting resisted drivers
+2008-10-08T12:01:00.000Z	DualBootn		but after that it takes me to command promt
+2008-10-08T12:01:00.000Z	DualBootn		if i should load system from promt i dont know how ...
+2008-10-08T12:02:00.000Z	WIGGMPk	DualBootn	its getting you to a shell to "recover" the system..
+2008-10-08T11:58:00.000Z	WIGGMPk	DualBootn	when you first turn on the computer.. do you see the Grub menu or does it just count and disappear?
+2008-10-08T12:01:00.000Z	WIGGMPk	DualBootn	I am assuming you are using the 2.6.20-15 kernel now then?
+2008-10-08T12:03:00.000Z	WIGGMPk	DualBootn	what exactly does the x server problem say? does it give you a blue screen?
+2008-10-08T12:04:00.000Z	WIGGMPk	DualBootn	i really cant guide you thru the recovery mode.. but you can prolly load that to the shell then edit /etc/X11/xorg.conf and change the driver to vesa to get into the system
+2008-10-08T12:05:00.000Z	WIGGMPk	DualBootn	sudo nano /etc/X11/xorg.conf
+2008-10-08T12:06:00.000Z	WIGGMPk	DualBootn	you should prolly back it up first... "sudo cp /etc/X11/xorg.conf /etc/X11/xorg.conf.backup"
+2008-10-08T12:07:00.000Z	WIGGMPk	DualBootn	after you back up that file... edit it.. "sudo nano /etc/X11/xorg.conf" and look for a section where it says Driver nvidia and change it to vesa
+2008-10-08T12:08:00.000Z	WIGGMPk	DualBootn	it will just return to the next line.. if you want to check.. change the directory like this: "cd /etc/X11"
+2008-10-08T12:09:00.000Z	WIGGMPk	DualBootn	then use the list command like this : ls
+2008-10-08T12:09:00.000Z	WIGGMPk	DualBootn	it will show you all the files in that directory and you'll see the file you backed up.. BTW.. its a capital X... /etc/X11/
+2008-10-08T12:10:00.000Z	WIGGMPk	DualBootn	hope it helps you get back into the system.. from there you'll have to get another person to help with the nvidia drivers
+2008-10-08T12:11:00.000Z	WIGGMPk	DualBootn	your very welcome

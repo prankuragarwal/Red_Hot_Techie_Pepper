@@ -1,0 +1,21 @@
+2010-05-03T00:46:00.000Z	she2013		Yo! Is the order of partition is important?  Is it important that / is a primary and the first one?
+2010-05-03T00:47:00.000Z	acicula	she2013	nope
+2010-05-03T01:23:00.000Z	acicula	she2013	desktop installer uses ecryptfs, which doesnt encrypt the volume but is an encrypted filesystem. so yes and no depending on what you wanted
+2010-05-03T01:24:00.000Z	she2013	acicula	i intend to encrypt all my system inlcuding /
+2010-05-03T01:24:00.000Z	acicula	she2013	your wired ethernet card is not detected via the alternate installer?
+2010-05-03T01:25:00.000Z	acicula	she2013	whats the ethernet card chip?
+2010-05-03T01:26:00.000Z	acicula	she2013	boot livecd, start a console type lspci | grep Network
+2010-05-03T01:26:00.000Z	acicula	she2013	output will give you the exact type
+2010-05-03T01:27:00.000Z	acicula	she2013	are you sure you need FDE on / ? most people can get away with just encrypting their data in /home which is the default currently
+2010-05-03T01:28:00.000Z	she2013	acicula	yes , I don't like that my /var/log be readebale
+2010-05-03T01:28:00.000Z	acicula	she2013	grep for Ethernet not Network
+2010-05-03T01:30:00.000Z	acicula	she2013	its probably going to be fairly slow on an atom proc though
+2010-05-03T01:32:00.000Z	acicula	she2013	if you boot the alternate installer does it say that it does not detect other network cards?
+2010-05-03T01:34:00.000Z	acicula	she2013	https://bugs.launchpad.net/ubuntu/+source/linux/+bug/557130
+2010-05-03T01:35:00.000Z	acicula	she2013	according to that bug report the kernel module needed for that type of nic is not included in the alternate installer
+2010-05-03T01:37:00.000Z	acicula	she2013	you can unpack the iso, loopback mount the initrd or whatever fs it has and add the kernel module, probably can use the one available from the normal installer
+2010-05-03T01:37:00.000Z	acicula	she2013	actually just grab the mod from the normal installer cd stick it on a usb stick and see if you can load it after booting the alternate installer
+2010-05-03T01:38:00.000Z	acicula	she2013	since you can just switch to a vt and then modprobe it
+2010-05-03T01:38:00.000Z	acicula	she2013	alternatively the alternate comes with packages afaik, so just install a basic system without networking, bootit and then update?
+2010-05-03T01:39:00.000Z	she2013	acicula	i tough about that, but will the card be detected after the install?
+2010-05-03T01:40:00.000Z	acicula	she2013	check the bugreport, your card is supported just fine in ubuntu,it works now right , but the debian-installer, ie the ubuntu alternate installer, does not include the ethernet driver

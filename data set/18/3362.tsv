@@ -1,0 +1,18 @@
+2010-02-20T14:05:00.000Z	axon		hi, in want to adjust the lcd brightness of my monitor with the terminal ... in the internet i found that  echo -n 100 > /proc/acpi/video/VGA/LCD/brightness would work ... but i got as response bash: /proc/acpi/video/VGA/LCD/brightness: No such file or directory
+2010-02-20T14:05:00.000Z	axon		please tell me what to do to fix this?
+2010-02-20T14:06:00.000Z	llutz	axon	ls -l /proc/acpi/video
+2010-02-20T14:07:00.000Z	axon	llutz	dr-xr-xr-x 7 root root 0 2010-02-20 09:57 GFX0
+2010-02-20T14:07:00.000Z	llutz	axon	find  /proc/acpi/video -iname brightness
+2010-02-20T14:07:00.000Z	llutz	axon	try one of the found pathes
+2010-02-20T14:08:00.000Z	axon		:~$  find  /proc/acpi/video -iname brightness
+2010-02-20T14:08:00.000Z	axon		/proc/acpi/video/GFX0/DD05/brightness
+2010-02-20T14:08:00.000Z	axon		/proc/acpi/video/GFX0/DD04/brightness
+2010-02-20T14:08:00.000Z	axon		/proc/acpi/video/GFX0/DD03/brightness
+2010-02-20T14:08:00.000Z	axon		/proc/acpi/video/GFX0/DD02/brightness
+2010-02-20T14:08:00.000Z	axon		/proc/acpi/video/GFX0/DD01/brightness
+2010-02-20T14:13:00.000Z	axon	llutz	i tried with every direction ... with one it worked when i chaged them with gedit (but when i wanted to save the file i got some attentionmessanges --- now i tried to change it with the terminal and it doesn't work ... sudo echo -n 0 > /proc/acpi/video/GFX0/DD02/brightness
+2010-02-20T14:13:00.000Z	axon		bash: /proc/acpi/video/GFX0/DD02/brightness: Permission denied
+2010-02-20T14:14:00.000Z	llutz	axon	use "tee", echo redirection won't work with sudo
+2010-02-20T14:15:00.000Z	axon	llutz	what's the syntax of tee - hoe do i use it
+2010-02-20T14:15:00.000Z	axon		?
+2010-02-20T14:15:00.000Z	llutz	axon	echo value| sudo tee file

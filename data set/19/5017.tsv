@@ -1,0 +1,19 @@
+2011-07-08T12:49:00.000Z	tyreza		hello there
+2011-07-08T12:49:00.000Z	tyreza		how to check the filesystem ?
+2011-07-08T12:49:00.000Z	tyreza		how to check the filesystem on a server ?
+2011-07-08T12:50:00.000Z	tyreza		anyone here ?
+2011-07-08T12:50:00.000Z	DasEi	tyreza	barely 1894
+2011-07-08T12:51:00.000Z	DasEi	tyreza	fsck on the UNmounted filesystem (or e2fsck)
+2011-07-08T13:05:00.000Z	DasEi	tyreza	fine so, just enter : mount                     <<make sure sda3 is not mounted
+2011-07-08T13:06:00.000Z	DasEi	tyreza	ok, so we will fsck make it try to fix it, one word ahead, there is always a small risk that messes up, real important data on it ?
+2011-07-08T13:09:00.000Z	DasEi	tyreza	ok, so we will fsck make it try to fix it, one word ahead, there is always a small risk that messes up, real important data on it ?
+2011-07-08T13:11:00.000Z	DasEi	tyreza	k, idk how important, mostly fsck does the job, if really concerned run an backing up image on an according free space first, your decision
+2011-07-08T13:13:00.000Z	DasEi	tyreza	dd if=/dev/sda3  of=/path/elsewhere/partit.img
+2011-07-08T13:15:00.000Z	DasEi	tyreza	that would create a ssectorwise image on another location, f.e. external harddrive before doing any alterings; it depends what caused your fs-error, just the fs or a hardwarefailure (then an image would be nice)
+2011-07-08T13:17:00.000Z	DasEi	tyreza	see, I would simply try to repair it, but I don't want to be the bad guy not having told before, fsck never failed on me ( as my hd was fine)
+2011-07-08T13:19:00.000Z	DasEi	tyreza	see above
+2011-07-08T13:19:00.000Z	DasEi	tyreza	dd if=/dev/sda3  of=/path/elsewhere/partit.img
+2011-07-08T13:19:00.000Z	DasEi	tyreza	that would create assectorwise image on another location, f.e. external harddrive before doing any alterings; it depends what caused your fs-error, just the fs or a hardwarefailure (then an image would be nice)
+2011-07-08T13:20:00.000Z	DasEi	tyreza	like if you use an external sdb1, then :
+2011-07-08T13:20:00.000Z	DasEi	tyreza	dd if=/dev/sda3  of=/dev/sdb1
+2011-07-08T13:26:00.000Z	DasEi	tyreza	decide if you want to have these extra 10% safety or lets proceed with repair

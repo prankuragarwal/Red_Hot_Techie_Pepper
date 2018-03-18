@@ -1,0 +1,23 @@
+2006-06-15T10:43:00.000Z	gostview		Hi, is there a method for clear desktop from the icons of mounted hard disk partition?
+2006-06-15T10:43:00.000Z	nickrud	gostview	a method is to change /etc/fstab to change the mount points out of /media
+2006-06-15T10:45:00.000Z	nickrud	gostview	sorry, forgot to mention that user or users can't be in the options section in /etc/fstab
+2006-06-15T10:50:00.000Z	nickrud	gostview	now I can't get it back, lemmie check my notes again
+2006-06-15T10:54:00.000Z	nickrud	gostview	yeah, that also removes the cd/dvd from the desktop, not really right
+2006-06-15T10:57:00.000Z	nickrud	gostview	^^
+2006-06-15T10:58:00.000Z	nickrud	gostview	I gotta step out for about an hour, if you're still around I probably can remember the answer
+2006-06-15T10:59:00.000Z	nickrud	gostview	OH, I guarantee I will ;)
+2006-06-15T12:10:00.000Z	nickrud	gostview	as a test.
+2006-06-15T12:11:00.000Z	nickrud	gostview	last one I saw was about getting volumes off of the desktop
+2006-06-15T12:11:00.000Z	nickrud	gostview	a step in the right direction
+2006-06-15T12:13:00.000Z	nickrud	gostview	after you do the rearranging, if you reboot it won't show on the desktop. I'm looking at the scripts in rcS.d at the moment to see what's going on there
+2006-06-15T12:17:00.000Z	nickrud	gostview	simply moved my hda1 from /media/hda1 to /windows. I did the change to /etc/fstab right after intial install. I probably changed my kernel at the same time, and didn't see this issue because I rebooted
+2006-06-15T12:19:00.000Z	nickrud	gostview	you need the reboot. hotplug is gone, plugdev handles this now. I generally understood hotplug, but obviously not plugdev
+2006-06-15T12:25:00.000Z	nickrud	gostview	the problem is that hotplug doesn't work the same way anymore,
+2006-06-15T12:30:00.000Z	nickrud	gostview	what I did, was alter the /etc/fstab and rebooted. As I said, I'm reading over the rcS.d scripts to see if I can discover why the reboot was needed.
+2006-06-15T12:31:00.000Z	nickrud	gostview	or, was successful, since it shouldn't be needed
+2006-06-15T12:53:00.000Z	nickrud	gostview	it's something about pmount
+2006-06-15T12:55:00.000Z	nickrud	gostview	if I boot with a partition in /media , it never leaves the desktop, no matter where I mount it afterwards. If I boot with it mounted outside of /media, mounting it media doesn't put it back on the desktop. That's the behavior I've found so far.
+2006-06-15T12:57:00.000Z	nickrud	gostview	oh, forgot: I removed the gid=46
+2006-06-15T13:05:00.000Z	nickrud	gostview	it also uses the mountpoint here for the label.
+2006-06-15T13:07:00.000Z	nickrud	gostview	I mean it follows the mountpoing for the partition: /windows or /media/hda1
+2006-06-15T13:09:00.000Z	nickrud	gostview	I used to understand mounting, but this desktop fancy desktop stuff has me stumped so far. Enjoy

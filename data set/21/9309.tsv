@@ -1,0 +1,21 @@
+2007-04-07T08:36:00.000Z	john_		hey all - when i log in to my desktop, it thinks about it for a while, starts to load things, but gives up and goes back to the login. tried with different session types. any suggestions?
+2007-04-07T08:37:00.000Z	mister_roboto	john_	can you log into a text console and look to see if you're getting X errors?  (/var/log/Xorg.log.0)
+2007-04-07T08:38:00.000Z	john_	mister_roboto	i'll check. unfortunately i didn't think to run irc inside an emacs shell so i'll have to brb
+2007-04-07T08:43:00.000Z	john_	mister_roboto	there was something about GLX not loading properly. i used envy to reinstall the drivers, but no change
+2007-04-07T08:44:00.000Z	mister_roboto	john_	is that near the end of the log file?
+2007-04-07T08:45:00.000Z	mister_roboto	john_	 what happens when you "startx" from a text console?
+2007-04-07T08:51:00.000Z	john_	mister_roboto	doing startx from my recovery console works fine
+2007-04-07T08:52:00.000Z	mister_roboto	john_	so you can log into a text console session and run startx and it runs fine, but you can't select any kind of a graphical session when you log in?
+2007-04-07T08:54:00.000Z	mister_roboto	john_	and you're just logging in as your own id every time, right?
+2007-04-07T09:00:00.000Z	john_	mister_roboto	yes - i can log in with other users fine >:|
+2007-04-07T09:01:00.000Z	mister_roboto	john_	you mean it's only one particular user who can't log in graphically?
+2007-04-07T09:01:00.000Z	john_	mister_roboto	yes
+2007-04-07T09:02:00.000Z	mister_roboto	john_	ok, that sounds like a corruption in one of the private config directories (~/.*)  unfortunately, I don't know how to identify which one.
+2007-04-07T09:02:00.000Z	john_	mister_roboto	yeah - i looked through them just now, none struck me as being x related...
+2007-04-07T09:03:00.000Z	mister_roboto	john_	many are   (.gnome*, .kde)
+2007-04-07T09:03:00.000Z	mister_roboto	john_	.emerald (if you're using beryl)
+2007-04-07T09:03:00.000Z	john_	mister_roboto	both gnome and beryl didn't work
+2007-04-07T09:04:00.000Z	mister_roboto	john_	I would try renaming the ".gnome" dir and try again. it should get recreated. i never start by removing such dirs, in case i make a mistake :)
+2007-04-07T09:04:00.000Z	john_	mister_roboto	i'll give it a shot
+2007-04-07T09:12:00.000Z	john_	mister_roboto	tried .gnome, .emereld, .beryl, .nautilus, moving them to a _old. no change :\
+2007-04-07T09:15:00.000Z	mister_roboto	john_	.fonts, .fontconfig, .qt?   sorry, you're on your own at this point. if you can't track it down through the use of /var/log/Xorg.log.0, /var/log/messages, and hacking at the config dirs, you might try just creating a new user and migrating the old files to it. that's a last resort though

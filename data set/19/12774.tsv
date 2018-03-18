@@ -1,0 +1,19 @@
+2005-07-08T08:20:00.000Z	mig`		Can anyone help me out with why the system won't boot?
+2005-07-08T08:22:00.000Z	mig`		that it installs with usb2.0 compiled into the kernel?
+2005-07-08T08:22:00.000Z	mig`		or as a module
+2005-07-08T08:22:00.000Z	mig`		but as a module, or in the kernel?
+2005-07-08T08:22:00.000Z	mig`		i think thats my problem then
+2005-07-08T08:22:00.000Z	mig`		you see, ubuntu is installed on a usb hdd
+2005-07-08T08:23:00.000Z	mig`		so grub fails when it tries to load /dev/sda1
+2005-07-08T08:23:00.000Z	mig`		i dont know how to
+2005-07-08T08:23:00.000Z	mig`		could you help (or give me a link?), i'm on the ubuntu livecd right now
+2005-07-08T08:23:00.000Z	mig`		yeah, i am googling, found a few things on ubuntu forums
+2005-07-08T08:24:00.000Z	sfvt	mig`	perhaps your bios doesn't support booting from USB drives?
+2005-07-08T08:24:00.000Z	mig`	sfvt	it does
+2005-07-08T08:24:00.000Z	sfvt	mig`	ahh... then probably your initrd doesn't have the correct modules loaded
+2005-07-08T08:25:00.000Z	sfvt	mig`	if you're using the default kernel, then you probably do
+2005-07-08T08:26:00.000Z	sfvt	mig`	you can list the modules you want loaded in /etc/mkinitrd/modules
+2005-07-08T08:27:00.000Z	sfvt	mig`	of course, you have to rebuild the initrd image after adding them to /etc/mkintrd/modules
+2005-07-08T08:27:00.000Z	mig`	sfvt	can i do all this from the livecd?
+2005-07-08T08:28:00.000Z	sfvt	mig`	don't know... never used the livecd. I suppose you could, as long as you copy the resulting initrd.img to your boot device
+2005-07-08T08:53:00.000Z	sfvt	mig`	no, it will always be a module... unless you build your own kernel

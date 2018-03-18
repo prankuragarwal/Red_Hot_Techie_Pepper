@@ -1,0 +1,23 @@
+2007-09-05T14:04:00.000Z	Jakyle		I810: No matching device section for instance [busID PCI: 0 : 2 : 0]  found
+2007-09-05T14:04:00.000Z	Jakyle		No Device detected
+2007-09-05T14:04:00.000Z	Jakyle		this is for my graphics
+2007-09-05T14:04:00.000Z	Jakyle		I cannot see the graphics interface,a nd it warns me
+2007-09-05T14:05:00.000Z	Jakyle		can anyone help me with my problem maybe...?
+2007-09-05T14:06:00.000Z	Jakyle		so, I have to move my video card.../??? is there no way to bybass this?
+2007-09-05T14:06:00.000Z	Jowi	Jakyle	which video card do you have?
+2007-09-05T14:06:00.000Z	Jowi	Jakyle	so why are you using the i810 driver?
+2007-09-05T14:07:00.000Z	Jowi	Jakyle	do you have more than one video card in that machine?
+2007-09-05T14:08:00.000Z	Jowi	Jakyle	and is that onboard card an intel chip?
+2007-09-05T14:09:00.000Z	Jowi	Jakyle	ok. here's why you get the error. You use an ATI card but you have selected the intel i810 driver. the intel driver can not find an intel video card on that bus. My guess is, if you change the driver from i810 to whichever your video card is supposed to have, the error will dissappear.
+2007-09-05T14:10:00.000Z	Jowi	Jakyle	I don't know ATI cards so I can not recommend a driver for you.
+2007-09-05T14:10:00.000Z	Jowi	Jakyle	try this (and hope it autodetects) "sudo dpkg-reconfigure xserver-xorg" and see which one the setup program recommends.
+2007-09-05T14:11:00.000Z	Jowi	Jakyle	oh. that is the error you get on the live cd?
+2007-09-05T14:12:00.000Z	Jowi	Jakyle	ouch... wait, i will do a search
+2007-09-05T14:14:00.000Z	Jowi	Jakyle	maybe this can help. see if there are any BIOS settings to set to make the default video card PCI instead of AGP; http://forums.kororaa.org/viewtopic.php?p=8452&sid=3377568074a2104d84f9b1a5edb39196
+2007-09-05T14:14:00.000Z	Jowi	Jakyle	the onboard intel card is set to AGP
+2007-09-05T14:15:00.000Z	Jowi	Jakyle	it's an onboard AGP bus :)
+2007-09-05T14:17:00.000Z	Jowi	Jakyle	just because, I just remembered that i have a via motherboard with an onboard CL266 graphics card that is displaying through AGP even though I do not have a physical AGP slot in the machine....
+2007-09-05T14:26:00.000Z	Jakyle	Jowi	do my dismay, the only options I have on my BIOS is to switch from automatic (detects cards and use them, but keeps onboard on) or to just use my onboard
+2007-09-05T14:29:00.000Z	Jowi	Jakyle	on my VIA machine the option is in "Integrated Peripherals" -> "Display Card Priority" [AGP|PCI Slot]    (CMOS on that machine is Phoenix AwardBIOS)
+2007-09-05T14:32:00.000Z	Jowi	Jakyle	that should not be a problem. I suggest you use the alternate install cd to install the OS.
+2007-09-05T14:33:00.000Z	Jowi	Jakyle	I won't be available for some time (wife need PC, typical haha)

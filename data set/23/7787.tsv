@@ -1,0 +1,23 @@
+2005-04-25T09:33:00.000Z	omeg		Hey guys. I was wondering if you could help me with my freshly installed Ubuntu for x86 which I can't use because the X driver can't seem to load.
+2005-04-25T09:35:00.000Z	omeg		Someone told me to edit xorg.conf but when I tried it, apparently the file did not exist.
+2005-04-25T09:36:00.000Z	omeg		Anyway, my X won't load and I _suspect_ that it's because I set the driver to "ati" rather than "vesa". Even though I have an ATi Mobility Radeon 9800... so does anybody know how I manually change this? I don't want to have to fresh install over this. :p
+2005-04-25T09:37:00.000Z	dcraven	omeg	open up /etc/X11/xorg.conf. It is probably in there.
+2005-04-25T09:37:00.000Z	omeg	dcraven	someone told me to do that. I used "nano /etc/X11/xorg.conf" but it was a blank edit screen--and at the bottom of the screen it said "[ new file ] ".
+2005-04-25T09:38:00.000Z	dcraven	omeg	did you upgrade from Warty? Or was it a fresh install?
+2005-04-25T09:39:00.000Z	dcraven	omeg	oh my... I'm sure it's there then. Look at the files listed when you do this "ls /etc/X11". There has to be a xorg.conf file.
+2005-04-25T09:39:00.000Z	dcraven	omeg	you're in for alot of fun if you're up for it :)
+2005-04-25T09:39:00.000Z	omeg	dcraven	I'll try that. Thanks.
+2005-04-25T09:40:00.000Z	dcraven	omeg	it has it's merits ;)
+2005-04-25T09:44:00.000Z	dcraven	omeg	it's "default" not "setdefault".
+2005-04-25T09:44:00.000Z	dcraven	omeg	and it's already set to 0.
+2005-04-25T09:55:00.000Z	dcraven	omeg	be root. Use sudo.
+2005-04-25T09:57:00.000Z	dcraven	omeg	it will if you open it in an editor. Like "sudo nano /etc/X11/XF86Config-4".
+2005-04-25T14:43:00.000Z	dcraven	omeg	what else is there?
+2005-04-25T14:47:00.000Z	dcraven	omeg	to answer your question, it has not changed in Hoary.
+2005-04-25T14:48:00.000Z	dcraven	omeg	patches welcome =P
+2005-04-25T14:48:00.000Z	dcraven	omeg	don't you hate it when people say that? ahah
+2005-04-25T14:51:00.000Z	dcraven	omeg	added what?
+2005-04-25T14:51:00.000Z	omeg	dcraven	support for 1920x1200.
+2005-04-25T14:53:00.000Z	dcraven	omeg	are the VertRefresh and HorizSync settings acurate in your config for your monitor?
+2005-04-25T14:54:00.000Z	dcraven	omeg	in you /etc/X11/XF86Config file, there should be lines for VertRefresh and HorizSync. Do the values in there agree with your monitor specs?
+2005-04-25T14:55:00.000Z	dcraven	omeg	not if Xfree want's to spare your hardware from a small fire.

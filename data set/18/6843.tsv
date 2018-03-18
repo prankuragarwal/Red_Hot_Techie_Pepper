@@ -1,0 +1,18 @@
+2008-06-07T20:29:00.000Z	hxu		Hi! I need to build a kernel module against the Ubuntu 8.04 kernel. In redhat-like distros, you usually have a kernel-devel package which contains enough kernel source for you to do kernel development.  Is there a kernel devel package in Ubuntu?
+2008-06-07T20:30:00.000Z	mDemocritus	hxu	sudo apt-get install linux-kernel-devel fakeroot build-essential
+2008-06-07T20:31:00.000Z	mDemocritus		!kernel | hxu (more info for it)
+2008-06-07T20:31:00.000Z	mDemocritus	hxu	then sudo apt-get build-dep linux-source
+2008-06-07T20:31:00.000Z	mDemocritus	hxu	that will get you the source
+2008-06-07T20:32:00.000Z	mDemocritus	hxu	pardon me... for hardy, it's sudo apt-get build-dep linux-image-$(uname -r)
+2008-06-07T20:32:00.000Z	mDemocritus	hxu	then  apt-get source linux-image-$(uname -r)
+2008-06-07T20:32:00.000Z	hxu	mDemocritus	If I just want to build a kernel module, do I need to install all that?
+2008-06-07T20:32:00.000Z	mDemocritus	hxu	usually...
+2008-06-07T20:33:00.000Z	mDemocritus	hxu	especially if you're compiling it
+2008-06-07T20:33:00.000Z	mDemocritus	hxu	read this page for catch-alls... https://help.ubuntu.com/community/Kernel/Compile
+2008-06-07T20:33:00.000Z	hxu	mDemocritus	Thank you!
+2008-06-07T20:33:00.000Z	mDemocritus	hxu	you don't have to recompile the whole kernel usually
+2008-06-07T20:34:00.000Z	hxu	mDemocritus	I see.
+2008-06-07T20:34:00.000Z	mDemocritus	hxu	just pull the source, then follow the instructions for compuling that module
+2008-06-07T20:35:00.000Z	hxu	mDemocritus	sure. But, I think, maybe, installing the linux-source package is enough?
+2008-06-07T20:35:00.000Z	mDemocritus	hxu	if you're compiling anything, you'll need build-essential
+2008-06-07T20:36:00.000Z	mDemocritus	hxu	the rest of it is probably superfluous... install if you need it

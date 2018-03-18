@@ -1,0 +1,23 @@
+2009-07-26T09:18:00.000Z	nb72		This isn't really an Ubuntu question, but more of a general linux question.  Hope it's all right.  I have a 4GB IBM Microdrive. Just got back from vacation and it looks like my USB reader took out the partition table.  fdisk -l gives:  "Disk /dev/sdb doesn't contain a valid partition table".  I'm sure the pictures are still on the drive, but I don't know how to get it to mount so I can try and recover them.  Anybody have any ideas?  If th
+2009-07-26T09:20:00.000Z	mido1	nb72	Just a moment.
+2009-07-26T09:23:00.000Z	mido1	nb72	Okay. You have good chances to restore your data if they weren't completely overwritten.
+2009-07-26T09:23:00.000Z	mido1	nb72	First, you should make an image, and do the restore with this image instead of the reald rive.
+2009-07-26T09:23:00.000Z	nb72	mido1	 ddrescue?
+2009-07-26T09:23:00.000Z	mido1	nb72	Do you have any command line experience?
+2009-07-26T09:24:00.000Z	nb72	mido1	ya
+2009-07-26T09:24:00.000Z	mido1	nb72	Normal dd should be sufficient, due there seem to be no hardware errors.
+2009-07-26T09:25:00.000Z	mido1	nb72	What do you think has happened to the drive? Only partition table overwritte? Formatted in a different camera? Or what else?
+2009-07-26T09:25:00.000Z	nb72	mido1	 OK.  so I can dd from /dev/sdb to some file?  and then what would I use to recover from there?
+2009-07-26T09:25:00.000Z	mido1	nb72	Yes, first of all do a backup: dd if=/dev/sdb of=/where/to/store/the/backup.img
+2009-07-26T09:25:00.000Z	nb72	mido1	 I think my USB reader damaged the partition table.  It's really flakey, but never damaged anything till now.  Now it's in the trash.  :)
+2009-07-26T09:26:00.000Z	mido1	nb72	You could give gpart a try. This restores partition tables, but has to work on the real drive, not on the image file. Due you have a backup (in a few minutes) I think you can risk this.
+2009-07-26T09:27:00.000Z	mido1	nb72	gpart != gparted
+2009-07-26T09:28:00.000Z	mido1	nb72	In case gpart could not restore your partition table, you could use photorec for recovery,. or foremost.
+2009-07-26T09:28:00.000Z	mido1	nb72	Both detect jpeg files and recover them from any block device or image file, regardless of the filesystem.
+2009-07-26T09:29:00.000Z	mido1	nb72	You don't perhaps understand German?
+2009-07-26T09:29:00.000Z	nb72	mido1	 I've used photorec before (friend deleted all from the camera).
+2009-07-26T09:29:00.000Z	nb72	mido1	no german, but I have a german neighbor (not really a geek though).
+2009-07-26T09:32:00.000Z	mido1	nb72	Photorec should work from any image file or block device, without knowing anything about the filesystem.
+2009-07-26T09:32:00.000Z	nb72	mido1	 Sweet thanks for all the info.  I guess I'll get cracking.
+2009-07-26T09:33:00.000Z	mido1	nb72	So "photorec /dev/sdb" should work.
+2009-07-26T09:33:00.000Z	mido1	nb72	Good luck.

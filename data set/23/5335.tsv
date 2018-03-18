@@ -1,0 +1,23 @@
+2006-12-26T14:27:00.000Z	deebus		can anyone help me understand the /rc* directories?
+2006-12-26T14:28:00.000Z	deebus		anyone able to help me out with the /rc* directories?
+2006-12-26T14:28:00.000Z	deebus		ok.  what are rc.local and rcS.d?
+2006-12-26T14:30:00.000Z	deebus		heh.  thanks.  didn't realize it had a readme
+2006-12-26T14:32:00.000Z	deebus		so if I place a script in an /etc/rc#.d/ directory, and it borks something, will ubuntu just stop booting that runlevel?
+2006-12-26T14:33:00.000Z	deebus		so if I place a script in an /etc/rc#.d/ directory, and it borks something, will ubuntu just stop booting that runlevel?
+2006-12-26T14:33:00.000Z	deebus		sweet!
+2006-12-26T14:33:00.000Z	deebus		thanks gaten!
+2006-12-26T14:34:00.000Z	deebus		I want to put some source address verification in there...which runlevel happens right before network devices are brought up?
+2006-12-26T14:34:00.000Z	enyc	deebus	is this a proc/sys thing?
+2006-12-26T14:34:00.000Z	enyc	deebus	then you can use /etc/sysctl.conf
+2006-12-26T14:35:00.000Z	deebus	enyc	 /etc/sysctl.conf will put it in the appropriate runlevel for me?
+2006-12-26T14:35:00.000Z	enyc	deebus	I think /etc/sysctl.conf is normally alway loaded
+2006-12-26T14:35:00.000Z	enyc	deebus	something runs 'sysctl -p' somewhere
+2006-12-26T14:39:00.000Z	deebus	enyc	 can I put an echo statement in /etc/sysctl.conf so I can see during boot-up when my changes are being applied?
+2006-12-26T14:40:00.000Z	enyc	deebus	no
+2006-12-26T14:41:00.000Z	enyc	deebus	sysctl.conf is a config file read by sysctl / procps init
+2006-12-26T14:41:00.000Z	deebus	enyc	 so I would just have to wait until I log in, then check the value of the file?
+2006-12-26T14:42:00.000Z	enyc	deebus	in edgy, sysctl is called from  /etc/init.d/procps.sh  linked-to from /etc/rcS.d/S17procps.sh
+2006-12-26T14:42:00.000Z	enyc	deebus	however since edgy uses upstart instead of sysvinit  things may not work how I think ;-)
+2006-12-26T14:45:00.000Z	enyc	deebus	you might look for "setting kernel variables" message
+2006-12-26T14:45:00.000Z	enyc	deebus	seemingl edgy should be displaying that message at startup
+2006-12-26T14:46:00.000Z	deebus	enyc	 I'm running dapper on this box (don't want to mess with setting up beryl again) ...it should work fairly similarly, right?

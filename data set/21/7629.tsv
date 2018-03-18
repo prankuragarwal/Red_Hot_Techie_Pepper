@@ -1,0 +1,21 @@
+2007-07-15T08:04:00.000Z	nopcode		hey
+2007-07-15T08:04:00.000Z	nopcode		i'm trying to run enemy territory (a 32 bit executable) on my 64 bit xubuntu
+2007-07-15T08:04:00.000Z	nopcode		it is very sluggish at times and the reason seems to be a wrong /usr/lib32/libGL.so.1.2
+2007-07-15T08:04:00.000Z	nopcode		theres no "nvidia" string in there
+2007-07-15T08:05:00.000Z	kbrooks	nopcode	no, not the reason.
+2007-07-15T08:05:00.000Z	kbrooks	nopcode	it's not libgl
+2007-07-15T08:05:00.000Z	nopcode	kbrooks	oh
+2007-07-15T08:05:00.000Z	nopcode	kbrooks	what then?
+2007-07-15T08:05:00.000Z	kbrooks	nopcode	skip libgl, and look at
+2007-07-15T08:06:00.000Z	nopcode	kbrooks	my drivers are installed
+2007-07-15T08:06:00.000Z	kbrooks	nopcode	100% sure?
+2007-07-15T08:06:00.000Z	nopcode	kbrooks	26000 fps in glxgears, direct rendering, loads of extensions...
+2007-07-15T08:07:00.000Z	nopcode	kbrooks	the 64 bit libGL mentions "nvidia"... the 32 bit libgl the game uses doesnt
+2007-07-15T08:07:00.000Z	kbrooks	nopcode	ah, use preload, and it'll work then, albeit with some more fixes needed (in theory)
+2007-07-15T08:07:00.000Z	nopcode	kbrooks	what should i preload?
+2007-07-15T08:07:00.000Z	nopcode	kbrooks	i dont seem to have the 32 bit nvidia opengl library
+2007-07-15T08:08:00.000Z	kbrooks	nopcode	LD_PRELOAD=/path/to/64bitlibgl.so game
+2007-07-15T08:08:00.000Z	nopcode	kbrooks	the 64 bit version wont work with the game
+2007-07-15T08:08:00.000Z	kbrooks	nopcode	hm, ok. that is all.
+2007-07-15T08:09:00.000Z	nopcode	kbrooks	i suppose envy just forgot to install the 32 drivers
+2007-07-15T08:10:00.000Z	nopcode	kbrooks	the last time i checked the official sources didn't have cutting-edge versions of the driver

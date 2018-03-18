@@ -1,0 +1,21 @@
+2008-01-05T04:09:00.000Z	vidd_		no, i juyst ran apt-get update and get W: GPG error: http://security.ubuntu.com gutsy-security Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 40976EAF437D05B5
+2008-01-05T04:09:00.000Z	gyaresu	vidd_	Sounds like you're missing the public key for just one application. Have you added a line to sources.list for something (maybe wine etc.)?
+2008-01-05T04:10:00.000Z	gyaresu	vidd_	You didn't google the key did you?
+2008-01-05T04:10:00.000Z	gyaresu	vidd_	https://bugs.launchpad.net/ubuntu/+source/update-manager/+bug/24061
+2008-01-05T04:12:00.000Z	vidd_	gyaresu	that is nothing at all like my issue
+2008-01-05T04:14:00.000Z	gyaresu	vidd_	https://help.ubuntu.com/community/SecureApt
+2008-01-05T04:18:00.000Z	vidd_	gyaresu	nice read...but there is NO UBUNTU info....all the keys in the examples are debian...so no dice there either
+2008-01-05T04:19:00.000Z	gyaresu	vidd_	The key is there. It's a generic keyserver.
+2008-01-05T04:20:00.000Z	gyaresu	vidd_	 gpg --keyserver pgpkeys.mit.edu --recv-key 40976EAF437D05B5
+2008-01-05T04:21:00.000Z	gyaresu	vidd_	gpg -a --export 40976EAF437D05B5 | sudo apt-key add -
+2008-01-05T04:22:00.000Z	vidd_	gyaresu	it didnt work...so i ran it again: this is what i got:  key 2D230C5F: "Debian Archive Automatic Signing Key (2006) <ftpmaster@debian.org>" not changed
+2008-01-05T04:23:00.000Z	gyaresu	vidd_	Dude. You've got to use the right key. Not the one in the example.
+2008-01-05T04:24:00.000Z	gyaresu	vidd_	"s what i got:  key 2D230C5F: "Debian Archive"
+2008-01-05T04:24:00.000Z	gyaresu	vidd_	You used the key from the example. Try the exact lines that I posted above.
+2008-01-05T04:26:00.000Z	gyaresu	vidd_	gpg --keyserver pgpkeys.mit.edu --recv-key 40976EAF437D05B5
+2008-01-05T04:26:00.000Z	gyaresu	vidd_	You ran exactly that?
+2008-01-05T04:27:00.000Z	vidd_	gyaresu	i missed the one line....
+2008-01-05T04:27:00.000Z	gyaresu	vidd_	:)
+2008-01-05T04:27:00.000Z	vidd_	gyaresu	sorry i lost my temper....
+2008-01-05T04:27:00.000Z	gyaresu	vidd_	No probs.
+2008-01-05T04:28:00.000Z	gyaresu	vidd_	Very frustrating, I know. Stupid computers :D

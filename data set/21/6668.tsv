@@ -1,0 +1,21 @@
+2010-06-08T16:01:00.000Z	Lazesharp		hi guys, I've just upgraded a 9.10 machine to 10.04 and I need to add a PPA, but the add-apt-repository command appears to be missing?
+2010-06-08T16:01:00.000Z	Lazesharp		as does locate/updatedb :\
+2010-06-08T16:02:00.000Z	jrib	Lazesharp	that is not normal
+2010-06-08T16:02:00.000Z	jrib	Lazesharp	what does « echo $PATH » return?
+2010-06-08T16:03:00.000Z	jrib	Lazesharp	well, what does « apt-cache policy mlocate » return?
+2010-06-08T16:04:00.000Z	Lazesharp	jrib	mlocate wasn't installed :\ odd
+2010-06-08T16:05:00.000Z	jrib	Lazesharp	how did you upgrade exactly?
+2010-06-08T16:05:00.000Z	Lazesharp	jrib	it's Ubuntu server, so using do-release-upgrade as per standard release instructions
+2010-06-08T16:06:00.000Z	jrib	Lazesharp	did the upgrade complete successfully?  Did it ever tell you these packages would be removed?  Did you have mlocate before the upgrade?
+2010-06-08T16:07:00.000Z	Lazesharp	jrib	not sure we had it before the upgrade, so it could be entirely normal
+2010-06-08T16:07:00.000Z	jrib	Lazesharp	do you have ubuntu-standard installed?
+2010-06-08T16:07:00.000Z	jrib	Lazesharp	check :)
+2010-06-08T16:08:00.000Z	jrib	Lazesharp	why remove that?
+2010-06-08T16:08:00.000Z	Lazesharp	jrib	that never got removed
+2010-06-08T16:09:00.000Z	jrib	Lazesharp	presumably, this package is included by default on servers
+2010-06-08T16:09:00.000Z	jrib	Lazesharp	I'm not sure about that though
+2010-06-08T16:10:00.000Z	Lazesharp	jrib	ubuntu-minimal isn't installed either, will I need that?
+2010-06-08T16:11:00.000Z	jrib	Lazesharp	apparently ubuntu-standard isn't installed by default, so maybe locate isn't either.  And I'm willing to bet add-apt-repository definitely isn't.  So everything seems normal.  If you want to check about the status of those packages on a fresh server install, you could verify this.  If those are the only things missing, I would just install them now if you want them.  If you want what
+2010-06-08T16:12:00.000Z	Lazesharp	jrib	ok, cool - don't suppose you know which package provides add-apt-repository?
+2010-06-08T16:12:00.000Z	jrib	Lazesharp	python-software-properties:
+2010-06-08T16:13:00.000Z	Lazesharp	jrib	intuitive ;)

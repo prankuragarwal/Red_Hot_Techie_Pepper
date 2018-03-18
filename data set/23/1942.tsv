@@ -1,0 +1,23 @@
+2009-08-28T11:48:00.000Z	ejv_		!scrollup | MTeck
+2009-08-28T11:49:00.000Z	ejv_		how do I get RV635 hdmi to output sound in Jaunty?
+2009-08-28T11:50:00.000Z	ejv_		i've tried for... 3 hours
+2009-08-28T11:51:00.000Z	ejv_		i've toggled every menu, held every variable in control, like a good lil scientist, i've played with alsa, this whole thing is a huge clusterfail
+2009-08-28T11:51:00.000Z	ejv_		i even compiled, by hand, my own xf86-video-radeonhd driver via freedesktop.org
+2009-08-28T11:52:00.000Z	ejv_		that didn't work, that just creamed X
+2009-08-28T11:52:00.000Z	ejv_		and i was thinking that if i made X use radeonhd, and enabled HDMI in xorg.conf, it would work... but NOPE
+2009-08-28T11:53:00.000Z	ejv_		so im sorta at my wits end here, open to suggestions, it's a hd3200/rv635 architecture, im back to flgrx for the time being
+2009-08-28T11:54:00.000Z	ejv_		again the goal here is audio over hdmi output on a hd3200 / rv635 chipset
+2009-08-28T11:54:00.000Z	ejv_		!mirror | ejv_
+2009-08-28T11:56:00.000Z	joako	ejv_	I had problems too but on another distro. The solution was disable sound in the BIOS and create /etc/asound.conf with these contents: http://pastebin.ca/1545522
+2009-08-28T11:57:00.000Z	ejv_	joako	hw1,3
+2009-08-28T11:57:00.000Z	joako	ejv_	Try speaker-test -c2 -D plughw:1,3 -twav -l1
+2009-08-28T11:58:00.000Z	ejv_	joako	ok i've jot it down, will try tomorrow, thank you sir :)
+2009-08-28T11:59:00.000Z	joako	ejv_	Oh and FWIW I have issues where sound will stop working and restarting alsa is needed.... happens too in windows (solution = reboot computer)
+2009-08-28T11:59:00.000Z	ejv_	joako	:(
+2009-08-28T12:00:00.000Z	ejv_	joako	my dad wants to move the HTPC from ubuntu to windows
+2009-08-28T12:01:00.000Z	joako	ejv_	I think also those settings are for 2-channel audio, not sure about 5.1 audio since I just wanted to connect my monitor with a single cable
+2009-08-28T12:01:00.000Z	ejv_	joako	interesting, thanks for teh pointers
+2009-08-28T12:01:00.000Z	joako	ejv_	Also take a (quick) look at LinuxMCE. It is based on Ubuntu
+2009-08-28T12:03:00.000Z	ejv_	joako	i even told my receiver to scan all HDMI input channels, nothing
+2009-08-28T12:03:00.000Z	joako	ejv_	Right, you need to tell the software to use the hdmi output....
+2009-08-28T12:04:00.000Z	joako	ejv_	FWIW It would be the same hassle with SPDIF....

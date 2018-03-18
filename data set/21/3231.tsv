@@ -1,0 +1,21 @@
+2010-10-25T09:45:00.000Z	Jordan_U	bryhoyt	You said that this system would run entirely in RAM. If you can be sure that there will never be any filesystems mounted you can halt directly, without going through the normal shutdown process.
+2010-10-25T09:46:00.000Z	bryhoyt	Jordan_U	yes, that's exactly what I want to do. But how do I bind that action to the power button???
+2010-10-25T09:48:00.000Z	Jordan_U	bryhoyt	I see two possible goals, 1: Avoid the normal user prompt 2: Avoid the usual shutdown uglyness. Do you care about both or just the latter?
+2010-10-25T09:49:00.000Z	bryhoyt	Jordan_U	2 is the most important. 1 I can solve via the Ubuntu power preferences, so it's not really a problem
+2010-10-25T09:50:00.000Z	bryhoyt	Jordan_U	also, I want to make certain the box is actually shutoff. I don't want to come back after a 3 week holiday and find it's been hanging on something stupid like alsa-mixer-save (which can happen...)
+2010-10-25T10:02:00.000Z	Jordan_U	bryhoyt	I want to say you should put a script in /etc/rc0.d/ but there is probably a better, upstart oriented, way to do it.
+2010-10-25T10:04:00.000Z	bryhoyt	Jordan_U	yeah, and I tried a K00 script in /etc/rc0.d, but still get the messages. Surely there's SOMEONE who actually knows how Ubuntu 10.04 works...? I can't find anything to fix this on the internet. Tried /usr/lib/hal/scripts/*, /etc/acpi/*, /etc/acpi/events/* /etc/rc0.d/* and nothing actually does it
+2010-10-25T10:04:00.000Z	Jordan_U	bryhoyt	What was in the script?
+2010-10-25T10:05:00.000Z	bryhoyt		#!/bin/sh; poweroff -f
+2010-10-25T10:07:00.000Z	Jordan_U	bryhoyt	echo o | /proc/sysrq-trigger
+2010-10-25T10:09:00.000Z	bryhoyt	Jordan_U	just about tried it without thinking, then realized what it was ;-)
+2010-10-25T10:09:00.000Z	bryhoyt		I know that poweroff -f works tho, so the actual command itself isn't an issue
+2010-10-25T10:09:00.000Z	bryhoyt		but I'll try it anyway
+2010-10-25T10:12:00.000Z	Jordan_U	bryhoyt	Ahh, you need update-rc.d.
+2010-10-25T10:13:00.000Z	bryhoyt	Jordan_U	ok, what does that do?
+2010-10-25T10:14:00.000Z	Jordan_U	bryhoyt	I'm still researching. You might want to ask in #upstart
+2010-10-25T10:14:00.000Z	bryhoyt		thanks
+2010-10-25T10:14:00.000Z	Jordan_U	bryhoyt	You're welcome.
+2010-10-25T10:14:00.000Z	bryhoyt	Jordan_U	dinner time for me now, will look into it later. Appreciate your tips
+2010-10-25T10:15:00.000Z	Jordan_U	bryhoyt	Ping me if you get anywhere.
+2010-10-25T10:15:00.000Z	bryhoyt	Jordan_U	ok

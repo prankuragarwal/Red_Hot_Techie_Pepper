@@ -1,0 +1,24 @@
+2006-10-27T07:41:00.000Z	leftjustified		*sigh* something's gone quite wrong with my edgy upgrade -- NV driver didn't upgrade and is compiled for Xorg7.0; I can't apt-get anything because it throws a dependancy issue relating to python-card (which I don't need) and I can't 'apt-get -f install' as suggested as it has a conflict issue on a py-card config file. I backedup/rm'ed the conf file and still no luck... any advice?
+2006-10-27T07:43:00.000Z	erUSUL	leftjustified	try removing --purging python-card
+2006-10-27T07:44:00.000Z	leftjustified		erSUL: thankyou :)
+2006-10-27T07:44:00.000Z	leftjustified		erSUL: is that dpkg --purge <package> ?
+2006-10-27T07:45:00.000Z	erUSUL	leftjustified	first see if it works ;) (sudo apt-get remove --purge <package>)
+2006-10-27T07:45:00.000Z	erUSUL		!anyone | kyaneos_
+2006-10-27T07:46:00.000Z	leftjustified	erUSUL	any call to apt-get * causes the whinge about unmet dependancies (pythoncard) and suggests apt-get -f install
+2006-10-27T07:47:00.000Z	leftjustified		apt-get -f install throws an error on accessing the pythoncard config file; which I renamed (to no effect)
+2006-10-27T07:48:00.000Z	erUSUL	leftjustified	can you post the exact error (use pastebin)
+2006-10-27T07:48:00.000Z	leftjustified	erUSUL	certainly, but it'll take a little bit to retype into this machine...
+2006-10-27T07:49:00.000Z	erUSUL	leftjustified	just copy paste it
+2006-10-27T07:50:00.000Z	leftjustified	erUSUL	different physical machines; b0rked box is command line only
+2006-10-27T07:51:00.000Z	erUSUL	leftjustified	dohh :(
+2006-10-27T07:54:00.000Z	leftjustified	erUSUL	http://paste.ubuntu-nl.org/28661/
+2006-10-27T07:56:00.000Z	erUSUL	leftjustified	i mean the error that emits 'apt-get -f install'
+2006-10-27T07:56:00.000Z	leftjustified	erUSUL	DOH! sorry, will type it up now
+2006-10-27T08:00:00.000Z	leftjustified	erUSUL	http://paste.ubuntu-nl.org/28664/  <-- renaming the config file in question made no difference
+2006-10-27T08:04:00.000Z	leftjustified	erUSUL	did that error msg make any sense?
+2006-10-27T08:06:00.000Z	erUSUL	leftjustified	try removing python2.4-pythoncard
+2006-10-27T08:06:00.000Z	leftjustified	erUSUL	tried it.
+2006-10-27T08:06:00.000Z	leftjustified	erUSUL	that triggers the first error again
+2006-10-27T08:07:00.000Z	leftjustified		it's the eternal loop of broken config damnation
+2006-10-27T08:09:00.000Z	erUSUL	leftjustified	do not what else try rmove the deb from /var/cache/apt/ ?? (just in case it's corrupted)
+2006-10-27T08:11:00.000Z	leftjustified	erUSUL	nope :( thanks for your help though!

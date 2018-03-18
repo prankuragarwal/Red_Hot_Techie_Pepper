@@ -1,0 +1,19 @@
+2012-04-24T05:07:00.000Z	anoninux		how do I install glibc-static libs on ubuntu 10 LTS?
+2012-04-24T05:09:00.000Z	milamber	anoninux	do you have build-essential?
+2012-04-24T05:10:00.000Z	anoninux	milamber	: installing the pkg right now
+2012-04-24T05:12:00.000Z	anoninux	milamber	: I have it installed now (same error when building)
+2012-04-24T05:15:00.000Z	milamber	anoninux	then check for the libc6 package
+2012-04-24T05:18:00.000Z	anoninux	milamber	: I have libc.so in /usr/lib/, but not libc6.so
+2012-04-24T05:18:00.000Z	anoninux		and /usr/lib64 links to /usr/lib
+2012-04-24T05:18:00.000Z	milamber	anoninux	libc6 should be an available package, i believe
+2012-04-24T05:19:00.000Z	anoninux		yes it is ..
+2012-04-24T05:20:00.000Z	anoninux	milamber	: but it says I have already installed
+2012-04-24T05:21:00.000Z	anoninux		wait, of all the libc6, libc6-dev-i386 was not installed ... why
+2012-04-24T05:23:00.000Z	anoninux	milamber	: it compiled!!
+2012-04-24T05:23:00.000Z	anoninux		how did you manage to know libc6 was related with ld missing -lm ??
+2012-04-24T05:25:00.000Z	milamber	anoninux	-lm is a linking issue, it means you are missing a library. if it doesn't explicitly state which one, it's usually one of the standard ones
+2012-04-24T05:25:00.000Z	anoninux	milamber	could lm = libm ?
+2012-04-24T05:31:00.000Z	milamber	anoninux	probably not, but it usually will tell you what library
+2012-04-24T05:32:00.000Z	anoninux	milamber	: thanks a lot really, I'm trying to update this abandoned software http://uazu.net/sbagen/
+2012-04-24T05:34:00.000Z	milamber	anoninux	looks interesting . . . good luck, depending on where you installed it, you may have to run: sudo ldconfig  and update your $PATH
+2012-04-24T05:36:00.000Z	anoninux	milamber	: the apt-get already ran ldconfig for me, and the software it's already working

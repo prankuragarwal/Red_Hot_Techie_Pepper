@@ -1,0 +1,22 @@
+2010-07-02T15:12:00.000Z	bartj		can some one plz help with resizing my root partition
+2010-07-02T15:12:00.000Z	bartj		it is 100% full
+2010-07-02T15:13:00.000Z	bartj		I am trying to use gparted
+2010-07-02T15:13:00.000Z	IConrad01	bartj	You want to do that from LiveCD
+2010-07-02T15:13:00.000Z	IConrad01	bartj	gparted won't work on mounted drives
+2010-07-02T15:17:00.000Z	bartj	IConrad01	I have a root partition followed by another partition, which is followed by unallocated space. Now, given that there is no free space contiguous with the root partition, will gparted work in this case? I tried it from a live cd but it didn't seem to be using the unallocated space.
+2010-07-02T15:28:00.000Z	IConrad01	bartj	You can only expand a partition into unclaimed space on the table.
+2010-07-02T15:28:00.000Z	IConrad01	bartj	So you'll have to shrink another partition in order to expand the /boot
+2010-07-02T15:29:00.000Z	bartj	IConrad01	I have 53 GB unallocated space and the "/" partition is 15GB
+2010-07-02T15:30:00.000Z	IConrad01	bartj	I believe they need to be contiguous space.
+2010-07-02T15:37:00.000Z	bartj	IConrad01	please have a look at my partition table - http://imgur.com/mvvMZ and let me know if it is possible to increase the root partition
+2010-07-02T15:38:00.000Z	IConrad01	bartj	Try moving your partition to the end of the disk.
+2010-07-02T15:39:00.000Z	IConrad01	bartj	Wait, I'm an idiot.
+2010-07-02T15:39:00.000Z	IConrad01	bartj	you only have 3 "primary" partitions, and sda devices can have four.
+2010-07-02T15:40:00.000Z	bartj	IConrad01	why what is wrong ?
+2010-07-02T15:41:00.000Z	bartj	IConrad01	well...how does one go about making a partition as root ?
+2010-07-02T15:41:00.000Z	IConrad01	bartj	... there are a lot of gparted tutorials out there, many of which with visual walkthroughs.
+2010-07-02T15:44:00.000Z	IConrad01	bartj	Can't you relocated it?
+2010-07-02T15:54:00.000Z	IConrad01	bartj	Your easiest bet is to move all other partitions to the right...
+2010-07-02T15:54:00.000Z	IConrad01	bartj	And then expand your /dev/sda1 partition.
+2010-07-02T15:56:00.000Z	bartj	IConrad01	I like the moving /root partition to the unallocated space and making that the root better ?
+2010-07-02T15:56:00.000Z	IConrad01	bartj	Well, yes.  You should be able to just copy /dev/sda1 to the unallocated space... and then expand that.

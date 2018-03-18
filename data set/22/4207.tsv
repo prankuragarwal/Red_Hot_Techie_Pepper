@@ -1,0 +1,22 @@
+2008-12-24T04:26:00.000Z	tonsofpcs		8.10 (II), how do I set a static IP and make it so that NetworkManager doesn't try to disconnect and reconnect on login?  [all wired, no wireless, auto-boots after power outages (often), nothing network needs to be user configured]
+2008-12-24T04:26:00.000Z	n8tuser	tonsofpcs	-> put them in  /etc/network/interfaces    also man interfaces
+2008-12-24T04:27:00.000Z	tonsofpcs	n8tuser	- i did that,  networkmanager still fights and reconnects them as dhcp
+2008-12-24T04:27:00.000Z	n8tuser	tonsofpcs	-> post your /etc/network/interfaces file and lets see
+2008-12-24T04:29:00.000Z	tonsofpcs	n8tuser	- pastebin or #flood?
+2008-12-24T04:35:00.000Z	tonsofpcs	n8tuser	http://paste.ubuntu.com/91885/
+2008-12-24T04:41:00.000Z	tonsofpcs	n8tuser	- see anything wrong?
+2008-12-24T04:43:00.000Z	n8tuser	tonsofpcs	-> sorry, i stepped out, did you paste anything?
+2008-12-24T04:43:00.000Z	tonsofpcs	n8tuser	- yup
+2008-12-24T04:43:00.000Z	tonsofpcs	n8tuser	http://paste.ubuntu.com/91885/
+2008-12-24T04:45:00.000Z	n8tuser	tonsofpcs	-> you wanted it active at boot time?  add  auto eth0  at end of section,  also do not have two interfaces on at same time on same subnet with same ip adress range, your host will get confuse as to which nic to take to the gateway
+2008-12-24T04:45:00.000Z	n8tuser	tonsofpcs	-> decide either eth0 or eth1 you will use - one at a time
+2008-12-24T04:45:00.000Z	tonsofpcs	n8tuser	- i had no problems with that style connection on sarge
+2008-12-24T04:46:00.000Z	n8tuser	tonsofpcs	-> well you will with ubuntu, am surprised your sarge is not confused, with two paths to same gateway
+2008-12-24T04:48:00.000Z	tonsofpcs	n8tuser	- it was fine with it, i think it actually was load balanced and fallover on fail... forget the exact settings, that machine died [and is why i bought the one in question here].  BRB, rebooting
+2008-12-24T05:04:00.000Z	tonsofpcs	n8tuser	- ok, i had to disable NetworkManager as well to get it to work, but it appears to be working now
+2008-12-24T05:04:00.000Z	n8tuser	tonsofpcs	-> am glad it worked for you
+2009-01-19T02:33:00.000Z	n8tuser	tonsofpcs	-> i believe the uri is  ipp://
+2009-01-19T02:33:00.000Z	n8tuser	tonsofpcs	-> i believe the uri is  ipp://ipaddressofyourubuntu
+2009-01-19T02:37:00.000Z	tonsofpcs	n8tuser	there's a resource after that apparently... I found a way to pull it, apparently it is ipp://ip/printer/PrinterNameThatYouNeverSeeEvenInTheConfigPageHere , but that doesn't explain how to find it through proper means
+2009-01-19T02:38:00.000Z	n8tuser	tonsofpcs	-> i dont know if anyone can easily find it lest the adminstrator of that shared printer tells you, its not like broadcasted to everyone so they cna use it
+2009-01-19T02:38:00.000Z	tonsofpcs	n8tuser	i am the administrator of it.

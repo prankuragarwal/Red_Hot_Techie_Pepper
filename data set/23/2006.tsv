@@ -1,0 +1,23 @@
+2009-10-26T00:46:00.000Z	VCoolio		is there a command to run an app with different language settings (like there is to run an app with a different theme) ? Sort of "env LANG=nl_NL.UTF-8" (only that doesn't work)
+2009-10-26T00:47:00.000Z	trism	VCoolio	LANG=nl_NL.UTF-8 command_here
+2009-10-26T00:47:00.000Z	trism	VCoolio	or export LANG=nl_NL.UTF-8, and then the rest of the commands in that shell will execute with the new locale
+2009-10-26T00:49:00.000Z	VCoolio	trism	the first one didn't work; the second one: does that only affect the current shell or does that reset for all new commands during this session?
+2009-10-26T00:50:00.000Z	trism	VCoolio	should just be the current shell, surprised the first one didn't work though (I do it all the time for japanese software, LANG=ja_JP.sjis wine blah.exe)
+2009-10-26T00:51:00.000Z	VCoolio	trism	thanks, I think the problem is with the localization of the app, going to look into that now
+2009-10-30T04:38:00.000Z	trism	VCoolio	that functionality was in screen-profiles which doesn't seem to be install with screen anymore
+2009-10-30T04:38:00.000Z	VCoolio	trism	ah right, will install that, thx
+2009-10-30T04:53:00.000Z	trism	VCoolio	it showed up for me by default on this clean install
+2009-10-30T04:53:00.000Z	VCoolio	trism	do you have dual boot?
+2009-10-30T04:53:00.000Z	trism	VCoolio	yeah
+2009-10-30T04:54:00.000Z	VCoolio	trism	that may be a significant difference: you have something to choose (bad for you ;) )
+2009-11-01T03:35:00.000Z	trism	VCoolio	try DISPLAY=:0.0 notify-send blah
+2009-11-01T03:35:00.000Z	VCoolio	trism	you again? ;)  thx, but doesn't work
+2009-11-01T06:21:00.000Z	trism	VCoolio	don't know if you're still having a problem, but I figured out why DISPLAY=:0.0 notify-send blah wasn't working, they moved the xauthority in karmic. So you either need to set $XAUTHORITY to it's currently location, or extract it to it's default location in .Xauthority, and then it will work again.
+2009-11-01T06:22:00.000Z	VCoolio	trism	it was solved by killing gnome-settings-daemon, which I didn't want running anyway; but thx very much for the headsup, I 'll keep that in mind
+2009-11-01T06:23:00.000Z	VCoolio	trism	but it also wasn't working with screen in jaunty the last few weeks
+2009-12-15T02:19:00.000Z	trism	VCoolio	doesn't look like you need to compile anything, the byobu command just runs screen -c /usr/share/byobu/profiles/byoburc
+2009-12-15T02:20:00.000Z	trism	VCoolio	and the source just seems to have shell scripts
+2009-12-15T02:20:00.000Z	VCoolio	trism	guntbert thanks, so what do I do with the source files I downloaded? I can run it from that folder I think;
+2009-12-18T01:50:00.000Z	trism	VCoolio	it is a summary of the contents of the source code, generated from debian/control in the source directory, and is used when unpacking the package with dpkg-source, from: http://www.debian.org/doc/maint-guide/ch-build.en.html
+2010-01-17T20:48:00.000Z	trism	VCoolio	don't know about supercat, but highlight handles bash files and tons of other types (highlight -A file; need to include -S type if not a known extension)
+2010-01-17T20:50:00.000Z	VCoolio	trism	installing, thanks for the tip

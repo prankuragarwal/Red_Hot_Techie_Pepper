@@ -1,0 +1,22 @@
+2006-09-08T12:16:00.000Z	Adam		 $ route add -net 0.0.0.0 netmask 255.255.255.0 gw 192.168.10.1 dev eth0 gives network is uncreachable as an error
+2006-09-08T12:17:00.000Z	enyc	Adam	that means your machine does not have an implicit route to 192.168.10.1
+2006-09-08T12:17:00.000Z	enyc	Adam	err also that doesnt make sense
+2006-09-08T12:18:00.000Z	enyc	Adam	route to 0.0.0.0/255.255.255.0 is trying to crate a route for 0.0.0.* which doesnt make sense
+2006-09-08T12:18:00.000Z	enyc	Adam	I think you want 'route add default gw (gateway address)'
+2006-09-08T12:18:00.000Z	enyc	Adam	It might be 'route add -net default gw (gateway address)'
+2006-09-08T12:19:00.000Z	enyc	Adam	however.. BEFORe you can add a default route... you need an address on the relevant network ;-)
+2006-09-08T12:20:00.000Z	enyc	Adam	then it will pick up IP adrenss and gateway automatically usually
+2006-09-08T12:20:00.000Z	enyc	Adam	'sudo ifdown eth0'
+2006-09-08T12:20:00.000Z	enyc	Adam	then 'sudo ifup eth0'  to try again ;-)
+2006-09-08T12:21:00.000Z	enyc	Adam	so.. ifup ...
+2006-09-08T12:21:00.000Z	enyc	Adam	what happens then ;-)
+2006-09-08T12:22:00.000Z	enyc	Adam	right.. so there is a problem somewhere
+2006-09-08T12:22:00.000Z	enyc	Adam	what else does it say exactly?
+2006-09-08T12:23:00.000Z	enyc	Adam	hrrm... sounds almost like the  network cable is unplugged or something
+2006-09-08T12:23:00.000Z	enyc	Adam	or the DHCP server is not answering ;-)
+2006-09-08T12:24:00.000Z	enyc	Adam	you can use 'lspci' to (most likely) list your ethernet card
+2006-09-08T12:28:00.000Z	enyc	Adam	looks like the BCM5171 uses a non-free driver firmware
+2006-09-08T12:30:00.000Z	enyc	Adam	http://ubuntuforums.org/showthread.php?t=206106
+2006-09-08T12:33:00.000Z	enyc	Adam	backlit: lol... I had a miniq (similar to shuttle)  onboard ethernet die after lightning.... and had to install a NIC in the single PCI slot.. which meant removing the  protentd-modem-thing and using a real modem on com port... and sehtting all that up....
+2006-09-08T12:35:00.000Z	enyc	Adam	if you know how to make it work againt your kernel source ared rebuild the moidule.. then that is very worth doing ;-)
+2006-09-08T12:36:00.000Z	enyc	Adam	you will need build-essontiall and kernel headers and soforth iirc

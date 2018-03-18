@@ -1,0 +1,24 @@
+2012-10-19T21:55:00.000Z	hipzen		Hey, I was wondering if anybody has experienced that after upgrading from 12.04 to 12.10, then display is fixed to 1024x768?
+2012-10-19T21:55:00.000Z	wols	hipzen	what videocard and how did you install your drivers in 12.04?
+2012-10-19T21:56:00.000Z	hipzen	wols	drivers were automatically installed in 12.04 - videocard is ATI Mobility Radeon HD 4570
+2012-10-19T21:57:00.000Z	wols	hipzen	radeon should work fine. maybe check your Xorg.0.log and xrandr output
+2012-10-19T21:59:00.000Z	hipzen	wols	which directory do they usually end up in?
+2012-10-19T21:59:00.000Z	wols	hipzen	xrandr is a program, logfiles are in /var/log/
+2012-10-19T22:03:00.000Z	hipzen	wols	xrandr output: xrandr: Failed to get size of gamma for output device. Screen 0: Minimum 1024 x 768, current 1024 x 768, maximum 1024 x 768
+2012-10-19T22:04:00.000Z	wols	hipzen	check your log then
+2012-10-19T22:05:00.000Z	hipzen	wols	tbh I don't know where to look ;-)
+2012-10-19T22:06:00.000Z	wols	hipzen	pastebin it
+2012-10-19T22:09:00.000Z	hipzen	wols	http://pastebin.com/NHj6Xhny
+2012-10-19T22:13:00.000Z	wols	hipzen	you don't use the standard driver. you use fglrx. use the ubuntu standard driver "radeon"
+2012-10-19T22:15:00.000Z	hipzen	wols	ok, thank you. I'll try google for an answer how to do that :-)
+2012-10-19T22:21:00.000Z	hipzen	wols	changing from fglrx to radeon would mean editing /etc/X11/xorg.conf from Section "Module" < Load "glx" < Endsection to "radeon", right?
+2012-10-19T22:24:00.000Z	wols	hipzen	no. it would mean to uninstall all fglrx packages and remiving xorg.conf
+2012-10-19T22:24:00.000Z	hipzen	wols	sounds like console work, eh? ;-)
+2012-10-19T22:25:00.000Z	wols	hipzen	see? Sicp has the same problem
+2012-10-19T22:25:00.000Z	hipzen	wols	that would make it a known bug, eh? ;-)
+2012-10-19T22:30:00.000Z	wols	hipzen	depends. what happened is, amd stopped supporting 4000 series GPUs with their driver
+2012-10-19T22:30:00.000Z	hipzen	wols	oh...
+2012-10-19T22:31:00.000Z	wols	hipzen	but since you had the driver installed with 12.04 or whatever, it simply updated the package to the new driver which doesn't support the gpu anymore
+2012-10-19T22:31:00.000Z	hipzen	wols	ok, I've removed everything related to fglrx - I'll try rebooting
+2012-10-19T22:32:00.000Z	hipzen	wols	thanks for the help :-)
+2012-10-19T22:38:00.000Z	hipzen	wols	just a quick thanks - that did the trick :-)

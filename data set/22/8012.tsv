@@ -1,0 +1,22 @@
+2008-01-24T01:30:00.000Z	leila	czr	yes, usb
+2008-01-24T01:28:00.000Z	czr	leila	what kind of external hd is it?
+2008-01-24T01:29:00.000Z	leila	czr	wester digital
+2008-01-24T01:30:00.000Z	czr	leila	I mean what interface does it connect with? USB?
+2008-01-24T01:30:00.000Z	czr	leila	then spindown control is not possible with sdparm
+2008-01-24T01:30:00.000Z	czr	leila	some usb drives expose the functionality using proprietary HID extensions over USB, but I don't know any tools for linux for those.
+2008-01-24T01:31:00.000Z	czr	leila	what if you make a small cronjob that reads the disk once a minute?
+2008-01-24T01:31:00.000Z	czr	leila	it's a hack, but it might be just enough
+2008-01-24T01:32:00.000Z	leila	czr	so it's impossible to disable with hdparm or sdparm
+2008-01-24T01:32:00.000Z	czr	leila	yes
+2008-01-24T01:32:00.000Z	czr	leila	since USB storage devices use only the USB storage profile (kind of "standard") and it doesn't support spindown or anything else but reading and writing blocks.
+2008-01-24T01:33:00.000Z	czr	leila	getting error/diagnostics info is also impossible because of the same reason (with smartctl)
+2008-01-24T01:33:00.000Z	leila	czr	ah ok
+2008-01-24T01:34:00.000Z	leila	czr	the solution is to write a script that try to read the hd every 3 min?
+2008-01-24T01:34:00.000Z	czr	leila	what you want is a small script that guarantees spin-up (easy enough to test)
+2008-01-24T01:34:00.000Z	czr	leila	yeah. you might want to do a small write as well. and a sync after the wrote. or bypass the kernel read cache.
+2008-01-24T01:34:00.000Z	leila	czr	yes
+2008-01-24T01:35:00.000Z	czr	leila	if you know programming, you might want to write a small program instead. since cronjobs are logged to syslog each time they execute
+2008-01-24T01:36:00.000Z	leila	czr	ok, thank you.. i will write this small program
+2008-01-24T01:37:00.000Z	leila	czr	i'm going to write, thanks ... bye
+2008-01-24T01:37:00.000Z	czr	leila	np
+2008-01-24T01:37:00.000Z	czr	leila	I actually consider the spindown on mybooks a nice feature :-). not all usb disks have spindown

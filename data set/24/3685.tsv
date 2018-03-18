@@ -1,0 +1,24 @@
+2008-03-19T05:01:00.000Z	ere4si		thunar is just hanging - it can't open any folder at all
+2008-03-19T05:02:00.000Z	insomninja	ere4si	is it triggered by some special action or on every startup?
+2008-03-19T05:03:00.000Z	ere4si	insomninja	just started playing up now
+2008-03-19T05:03:00.000Z	ere4si	insomninja	tryed from launcher, menu, cli
+2008-03-19T05:04:00.000Z	insomninja	ere4si	do you get any error messages when running in cli?
+2008-03-19T05:04:00.000Z	ere4si	insomninja	nope...
+2008-03-19T05:04:00.000Z	ere4si	insomninja	it doesn't show in top either
+2008-03-19T05:04:00.000Z	insomninja	ere4si	does the last parts of dmesg show something odd?
+2008-03-19T05:04:00.000Z	ere4si	insomninja	I'll look
+2008-03-19T05:07:00.000Z	ere4si	insomninja	it might be this - last line of dmesg -- nfs: server 192.168.0.2 not responding, still trying
+2008-03-19T05:07:00.000Z	insomninja	ere4si	are you trying to access a network share?
+2008-03-19T05:07:00.000Z	ere4si	insomninja	nope - just open my home folder
+2008-03-19T05:11:00.000Z	insomninja	ere4si	what do you get if you run ls /etc/init.d/nfs*
+2008-03-19T05:11:00.000Z	ere4si	insomninja	/etc/init.d/nfs-common
+2008-03-19T05:12:00.000Z	insomninja	ere4si	just for the sake of it, try "sudo /etc/init.d/nfs-common restart" and then run thunar again
+2008-03-19T05:13:00.000Z	ere4si	insomninja	just turned the server on to see if that solves the issue - one min
+2008-03-19T05:14:00.000Z	ere4si	insomninja	thunar needs the server on it seems - nfs mounts are in fstab
+2008-03-19T05:15:00.000Z	insomninja	ere4si	unmount the nfs shares before turning off the server
+2008-03-19T05:16:00.000Z	ere4si	insomninja	I'll remove the entries from fstab and manually mount I think...
+2008-03-19T05:16:00.000Z	insomninja	ere4si	I've had similar problems but where a flaky network connection were the fault
+2008-03-19T05:16:00.000Z	insomninja	ere4si	good idea
+2008-03-19T05:17:00.000Z	ere4si	insomninja	evidently there is a way to set a timeout for nfs
+2008-03-19T05:39:00.000Z	ere4si	insomninja	just needed to add "soft" in the fstab entry :)
+2008-03-19T05:40:00.000Z	insomninja	ere4si	ty

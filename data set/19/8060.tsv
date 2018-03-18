@@ -1,0 +1,19 @@
+2007-05-13T05:55:00.000Z	D1S4ST3R		hello
+2007-05-13T05:56:00.000Z	D1S4ST3R		is there a way to move the /home to the / ?
+2007-05-13T05:56:00.000Z	D1S4ST3R		on hdb7
+2007-05-13T05:57:00.000Z	D1S4ST3R		what?
+2007-05-13T05:57:00.000Z	soundray	D1S4ST3R	what are you trying to do? Sounds like you're setting yourself up for trouble...
+2007-05-13T06:04:00.000Z	soundray	D1S4ST3R	'sudo cp /home /home-tmp', then remove the /home line from fstab. Reboot in recovery mode, mv /home-tmp to /home and reboot in normal mode.
+2007-05-13T06:05:00.000Z	soundray	D1S4ST3R	why not?
+2007-05-13T06:06:00.000Z	soundray	D1S4ST3R	backup your /etc/fstab, so you can turn back if you change your mind
+2007-05-13T06:06:00.000Z	soundray	D1S4ST3R	slight modification:
+2007-05-13T06:06:00.000Z	soundray	D1S4ST3R	'sudo cp -a /home /home-tmp', then remove the /home line from fstab. Reboot in recovery mode, mv /home-tmp to /home and reboot in normal mode.
+2007-05-13T06:07:00.000Z	soundray	D1S4ST3R	actually, barbarella_me's suggestion is good
+2007-05-13T06:07:00.000Z	soundray	D1S4ST3R	but you should do it after logging out of gnome, logging into a console and from a root shell (sudo -i)
+2007-05-13T06:09:00.000Z	D1S4ST3R	soundray	what do i have to do than?
+2007-05-13T06:09:00.000Z	soundray	D1S4ST3R	log out of gnome, log into a console, get a root shell with sudo -i. Once you have that, umount /dev/hda8 ; mkdir /mnt/hda8 ; mount /dev/hda8 /mnt/hda8 ; cd /mnt/hda8 ; cp -a /mnt/hda8/* /home/
+2007-05-13T06:10:00.000Z	soundray	D1S4ST3R	then edit /etc/fstab and put a # in the beginning of the line that contains /home
+2007-05-13T06:32:00.000Z	soundray	D1S4ST3R	yes?
+2007-05-13T06:32:00.000Z	soundray	D1S4ST3R	it worked, then?
+2007-05-13T06:33:00.000Z	soundray	D1S4ST3R	glad to hear. All credits to barbarella_me please.
+2007-05-13T06:34:00.000Z	soundray	D1S4ST3R	just type '/me hugs barbarella_me' ;)

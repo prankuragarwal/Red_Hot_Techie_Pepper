@@ -1,0 +1,24 @@
+2009-02-08T03:17:00.000Z	TelQuel		I have a dual boot system with a windows partition on top of my ubuntu install and I was just wondering what the best way was to go about formatting one of the partitions?
+2009-02-08T03:18:00.000Z	pepperjack	TelQuel	you can do a simple sudo mkfs.ext3 or whatever fstype so mkfs.ext3 /dev/sdc2 or whatever but make really really sure the partition you format
+2009-02-08T03:19:00.000Z	TelQuel	pepperjack	but formatting the windows partition won't break GRUB? I am going to reinstall windows but I want to make sure my nix partition is still intact.
+2009-02-08T03:19:00.000Z	pepperjack	TelQuel	no grub is installed to the hd mbr and it loads /boot/grub on the ubuntu partition you only need to maintain /boot partitition and mbr
+2009-02-08T03:20:00.000Z	pepperjack	TelQuel	now if you format the ubuntu partition this will result in badness
+2009-02-08T03:21:00.000Z	TelQuel	pepperjack	ok, so no matter how I format the windows partition GRUB should remain intact and it should be fine to simply reinstall windows and GRUB should recognize it and run as usual?
+2009-02-08T03:21:00.000Z	pepperjack	TelQuel	yep
+2009-02-08T03:22:00.000Z	pepperjack	TelQuel	so grub exists on mbr which the system loads then grub loads the stuff in /boot as long as the partition number remains the same youre fine
+2009-02-08T03:22:00.000Z	TelQuel	pepperjack	alright, is it possible to format the windows partition from inside ubuntu?
+2009-02-08T03:22:00.000Z	pepperjack	TelQuel	yes very easy
+2009-02-08T03:23:00.000Z	TelQuel	pepperjack	well I am very glad that I went with the dual boot config, alright so what is the command to format C: from inside ubuntu? (windows is C: simply due to convention)
+2009-02-08T03:23:00.000Z	pepperjack	TelQuel	you can do a sudo fdisk -l to list all partitions then a sudo mkfs.ext3 /dev/partitionnumber where partitionnumber might be sda3 or whatever
+2009-02-08T03:24:00.000Z	pepperjack	TelQuel	that is the command line option there are tools in the gui too
+2009-02-08T03:25:00.000Z	TelQuel	pepperjack	 I generally prefer the terminal route as GUI is more buggy. Ok so my NTFS windows partition is the /dev/sda1 ...
+2009-02-08T03:25:00.000Z	TelQuel	pepperjack	but I want to format it for NTFS right?
+2009-02-08T03:25:00.000Z	pepperjack	TelQuel	depends. what do you want to use it for?
+2009-02-08T03:26:00.000Z	TelQuel	pepperjack	this is the windows part... so it needs to be NTFS I am pretty sure ... or technically FAT32. heh.
+2009-02-08T03:27:00.000Z	pepperjack	TelQuel	ah i wouldnt format ntfs for windows with a linux tool if i knew of one.  what i would do is use the windows install cd to do it. sorry didnt know you wanted ntfs
+2009-02-08T03:27:00.000Z	TelQuel	pepperjack	ok so the windows install CD/DVD should be able to format the windows partition on its own anyway if I boot from CD correct?
+2009-02-08T03:28:00.000Z	pepperjack	TelQuel	yeah just dont let it use the whole hd and reformat everything
+2009-02-08T03:28:00.000Z	TelQuel	pepperjack	and that way it will do NTFS. Yeah, I won't. I wish there was a way to get a common partition for storage that would read in both OSes.
+2009-02-08T03:29:00.000Z	pepperjack	TelQuel	you can use fat32 that is fine for a media share
+2009-02-08T03:29:00.000Z	pepperjack	TelQuel	you can format fat32 in ubuntu.
+2009-02-08T03:30:00.000Z	TelQuel	pepperjack	alright, well thanks a lot. I am going to finish backing stuff up on DVD and then attempt the format. Thanks again.

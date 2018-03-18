@@ -1,0 +1,22 @@
+2009-08-18T01:09:00.000Z	Lostin		I attempted to get source code for xorg.  I basically got an "about xorg" file.  The file and the terminal msgs are here, if anyne can take a look.  http://pastebin.com/d1c4dd982
+2009-08-18T01:10:00.000Z	Lostin		I am trying to get the actual code
+2009-08-18T01:11:00.000Z	prince_jammys	Lostin	put the deb-src repos in /etc/apt/sources.list and apt-get source xserver-xorg
+2009-08-18T01:14:00.000Z	prince_jammys	Lostin	well, read 'man apt-get' for exactly what apt-get source does. maybe it's not what you want.
+2009-08-18T01:31:00.000Z	Lostin	prince_jammys	 I did as suggested, but got the same response. http://pastebin.com/d1c4dd982  This is the file that downloaded, and my terminal msgs.
+2009-08-18T01:33:00.000Z	prince_jammys	Lostin	you mean it says the file was already downloaded, but it isn't there?
+2009-08-18T01:37:00.000Z	prince_jammys	Lostin	perhaps because xserver-xorg is a metapackage.
+2009-08-18T01:37:00.000Z	prince_jammys	Lostin	try apt-get source x11-common
+2009-08-18T01:38:00.000Z	Lostin	prince_jammys	hmm good thought I will  try that
+2009-08-18T01:39:00.000Z	prince_jammys	Lostin	if i strace xmodmap, no conf files seem to be opened.
+2009-08-18T01:41:00.000Z	prince_jammys	Lostin	i don't think there's any files involved. shame on them if there are, and not mentioned at the bottom of man xmodmap ;)
+2009-08-18T01:42:00.000Z	Lostin	prince_jammys	All I am trying to do is mod the file that assigns values too XF86 buttons
+2009-08-18T01:46:00.000Z	Lostin	prince_jammys	I tried apt-get for x11-common and still get the same terminal msgs
+2009-08-18T01:47:00.000Z	Lostin	prince_jammys	I am gonna try xorg's web site, and launchpad...brb
+2009-08-18T01:51:00.000Z	prince_jammys	Lostin	maybe xserver-xorg-core  (apt-cache search xserver-xorg and look at its dependencies)
+2009-08-18T01:54:00.000Z	Lostin	prince_jammys	I am looking at it now
+2009-08-18T01:54:00.000Z	prince_jammys	Lostin	that'll get you more code than you want ;)
+2009-08-18T01:55:00.000Z	prince_jammys	Lostin	check out the files in /etc/X11 too, maybe. You can snoop around /etc/X11/xkb/* it seems.
+2009-08-18T01:57:00.000Z	Lostin	prince_jammys	I have looked at some, but they were either programs or .so files..neither of which I can open and read, but I'll look some more
+2009-08-18T01:58:00.000Z	prince_jammys	Lostin	there's plenty of *.c in xserver-xorg-core, though i thinking your goal would be better accomplished scanning Xorg (and related) man pages.
+2009-08-18T02:08:00.000Z	Lostin	prince_jammys	Sorry, went downstairs. I will look into that, thank much.
+2009-08-18T02:09:00.000Z	prince_jammys	Lostin	welcome

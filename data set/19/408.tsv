@@ -1,0 +1,19 @@
+2012-03-28T11:06:00.000Z	ibiwor		Hello! I've separate /, /var and /usr partitions. I'd like to know whether I can merge them all as a single root partition?
+2012-03-28T11:07:00.000Z	konaya	ibiwor	did you set up your partitions with LVM?
+2012-03-28T11:07:00.000Z	ibiwor	konaya	No
+2012-03-28T11:10:00.000Z	konaya	ibiwor	ah. Then the easiest way is simply to move all files over to /, remove the other partitions, and then resize / to fill the remaining space.
+2012-03-28T11:13:00.000Z	ibiwor	konaya	You mean copy all the files/folders from /usr and /var to / an then delete /usr, /var. Later merge / with empty space?
+2012-03-28T11:14:00.000Z	konaya	ibiwor	pretty much.
+2012-03-28T11:15:00.000Z	konaya	ibiwor	you might need to reinstall grub afterwards, depending on how messed up your table was to begin with.
+2012-03-28T11:15:00.000Z	ibiwor	konaya	Okay :S
+2012-03-28T11:16:00.000Z	konaya	ibiwor	http://ubuntuforums.org/showthread.php?t=1893161
+2012-03-28T11:17:00.000Z	ibiwor	konaya	Secondly, I got ~5GB swap partition which I would like to delete. RAM is 6GB. In live mode, can I delete swap partition and create swap file following http://ubuntuforums.org/showpost.php?s=87287a965e21a58edf4bb776a030542c&p=6520424&postcount=8 ?
+2012-03-28T11:19:00.000Z	konaya	ibiwor	holy cow. Why on Earth did you feel the need to have 5GB of swap? :S
+2012-03-28T11:19:00.000Z	ibiwor	konaya	Sorry, 2GB*
+2012-03-28T11:20:00.000Z	konaya	ibiwor	and, to answer your question, yes you should. As long as you do swapoff /dev/<your swap partition> first
+2012-03-28T11:21:00.000Z	ibiwor	konaya	Ok, so the first step before http://ubuntuforums.org/showpost.php?s=87287a965e21a58edf4bb776a030542c&p=6520424&postcount=8 should be to do <swapoff swap-partition> ?
+2012-03-28T11:21:00.000Z	konaya	ibiwor	yup. I suppose it goes without saying that you do this without a lot of processes in the background and so on and so forth.
+2012-03-28T11:23:00.000Z	konaya	ibiwor	also, don't forget to remove the old swap entry in /etc/fstab when you write the new entry. The ability to boot the system is quite handy to keep.
+2012-03-28T11:23:00.000Z	ibiwor	konaya	Yes. So I can first run swapoff command then uncomment the swap parition from fstab before following the above forum post, ok?
+2012-03-28T11:23:00.000Z	konaya	ibiwor	I guess you meant comment. Otherwise, yes
+2012-03-28T11:24:00.000Z	ibiwor	konaya	Yea, comment* :)

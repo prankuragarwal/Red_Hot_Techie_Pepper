@@ -1,0 +1,22 @@
+2012-03-18T07:46:00.000Z	irish		Having  problems opening rar files. Could someone please help? Newbie.
+2012-03-18T07:47:00.000Z	escott	irish	have you installed unrar? its part of ubuntu-restricted-extras
+2012-03-18T07:47:00.000Z	irish	escott	yes but I cant find it in menu
+2012-03-18T07:48:00.000Z	escott	irish	its a cli util
+2012-03-18T07:48:00.000Z	irish	escott	newbie I dont understand
+2012-03-18T07:48:00.000Z	escott	irish	so you might have to open the terminal, you can also try using file-roller
+2012-03-18T07:48:00.000Z	irish	escott	fileroller in synaptic
+2012-03-18T07:49:00.000Z	irish	escott	just do a search?
+2012-03-18T07:50:00.000Z	irish	escott	so I install the package file-roller and it will extract my rar files?
+2012-03-18T07:51:00.000Z	escott	irish	its a gui and it might be able to use unrar to extract. if it doesn't offer that option then you would have to open a terminal and use unrar on the cli
+2012-03-18T07:56:00.000Z	irish	escott	apparently file-roller comes install as default in ubuntu 10.10 but, its not in menu and a file search results in nothing
+2012-03-18T07:57:00.000Z	escott	irish	it would be listed as archive manager in the menu or archive something
+2012-03-18T07:59:00.000Z	irish	escott	I've read everything in the menu and there is nothing that even remotely resembles an Archiver
+2012-03-18T08:01:00.000Z	escott	irish	well you could do it from the terminal. identify what folder the .rar is in open a terminal and then type "cd /path/to/the/rar/file" but without the "filename.rar" at the end (just the directory). then type unrar e filename.rar and it will extract into that directory
+2012-03-18T08:01:00.000Z	irish	escott	ok
+2012-03-18T08:02:00.000Z	irish	escott	I have 700 rar files to extract.
+2012-03-18T08:02:00.000Z	escott	irish	ok. for f in *.rar do; unrar e $f; done;
+2012-03-18T08:02:00.000Z	escott	irish	; before do not after sorry
+2012-03-18T08:04:00.000Z	escott	irish	"for f in *.rar; do unrar e $f; done" will extract all rar files to the current directory (and flatten any directories inside those rar files x instead of e will not flatten the subdirectories)
+2012-03-18T08:04:00.000Z	escott	irish	and if any of those files have spaces in their names then you need to use "$f"
+2012-03-18T08:05:00.000Z	escott	irish	"ls *.rar" does it list the rar files you want to extract
+2012-03-18T08:08:00.000Z	irish	escott	ty for your help its working

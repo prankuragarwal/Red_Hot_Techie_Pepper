@@ -1,0 +1,19 @@
+2011-06-07T21:03:00.000Z	Whitor		hi. I have a drive that isn't mounting... How can I see a list of drives that the OS 'sees" ?
+2011-06-07T21:03:00.000Z	Whitor		from the command line preferably
+2011-06-07T21:04:00.000Z	OctoByte	Whitor	ls /dev/disk/by-label
+2011-06-07T21:04:00.000Z	Whitor	OctoByte	 bash: /dev/disk/by-label: No such file or directory
+2011-06-07T21:05:00.000Z	Whitor		Unless you mean that I should guess at the 'by-label' part ... but doesn't seem like an efficient way of doing things
+2011-06-07T21:05:00.000Z	OctoByte	Whitor	ls /dev | grep sda?
+2011-06-07T21:05:00.000Z	OctoByte	Whitor	ls /dev | grep sd?
+2011-06-07T21:06:00.000Z	Whitor	OctoByte	that asssumes the disk is sda .... what if its hda or hdb or sdb or sdc ?
+2011-06-07T21:06:00.000Z	Whitor		there should be a way to list drives that the OS sees ... without guessing at what type is attached
+2011-06-07T21:07:00.000Z	OctoByte	Whitor	that would be ld /dev/disk/by-label but apparently the os sees no drives
+2011-06-07T21:07:00.000Z	OctoByte	Whitor	what do you get when you ls /dev/disk?
+2011-06-07T21:07:00.000Z	Whitor	OctoByte	thats funny. I tried it on my system I'm on right now... definately has a drive
+2011-06-07T21:08:00.000Z	Whitor	OctoByte	I see by-id  by-path  by-uuid
+2011-06-07T21:08:00.000Z	Whitor	OctoByte	10.04 here
+2011-06-07T21:08:00.000Z	OctoByte	Whitor	Ah, try by-id
+2011-06-07T21:09:00.000Z	Whitor	OctoByte	thatnks ... the command needed was:   ls /dev/disk/by-id/
+2011-06-07T21:09:00.000Z	Whitor		needed that trailing slash too
+2011-06-07T21:09:00.000Z	Whitor	OctoByte	thanks
+2011-06-07T21:10:00.000Z	OctoByte	Whitor	no problem

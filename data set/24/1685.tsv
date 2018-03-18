@@ -1,0 +1,24 @@
+2009-10-05T10:13:00.000Z	mo0nykit		What is the runlevel when I switch to a virtual console (Ctrl-Alt-F1) ?
+2009-10-05T10:14:00.000Z	stebalien	mo0nykit	2 (the same as the gui)
+2009-10-05T10:15:00.000Z	mo0nykit	stebalien	okay thanks
+2009-10-05T10:20:00.000Z	stebalien	mo0nykit	 You may need to tweak your VGA boot settings
+2009-10-05T10:20:00.000Z	mo0nykit	stebalien	okay, where might I find it?
+2009-10-05T10:22:00.000Z	stebalien	mo0nykit	 In your /boot/grub/menu.lst, does your latest boot option have vga=<somthing>?
+2009-10-05T10:22:00.000Z	mo0nykit	stebalien	nope, there is none. What should I add?
+2009-10-05T10:25:00.000Z	stebalien	mo0nykit	 so, this line 'kernel /boot/<bla> root=<stuff> ro quiet splash' has no vga=<somthing>
+2009-10-05T10:26:00.000Z	mo0nykit	stebalien	yep that's right. I have this "kernel          /boot/vmlinuz-2.6.28-15-generic root=UUID=f58a2a33-2a85-4e31-8ea
+2009-10-05T10:26:00.000Z	stebalien	mo0nykit	 try adding vga=795 to that line
+2009-10-05T10:26:00.000Z	stebalien	mo0nykit	 that is, if you have a 1280x1024 monitor
+2009-10-05T10:27:00.000Z	mo0nykit	stebalien	okay thanks.. I have a 1280x800 monitor.. where can I find references for the vga= option?
+2009-10-05T10:29:00.000Z	stebalien	mo0nykit	 I would try vga=792 (the boot splash will look weird but it should work). Refer to http://paste2.org/p/453148
+2009-10-05T10:31:00.000Z	mo0nykit	stebalien	okay... thanks for the link :) much appreciated. so now I know the keywords are vga, framebuffer mode
+2009-10-05T10:32:00.000Z	mo0nykit	stebalien	i'll be right back, try out your solution
+2009-10-05T10:41:00.000Z	stebalien	mo0nykit	 did it work? (my X-server crashed so I missed a few posts)
+2009-10-05T10:42:00.000Z	mo0nykit	stebalien	Thank you so much for the help! The link you gave me, it has framebuffer modes in hexadecimal, did you convert the hex (0x315) to decimal (792) ?
+2009-10-05T10:43:00.000Z	mo0nykit	stebalien	yes it worked :) I haven't tried shutting it down yet, but virtual consoles are now perfectly usable
+2009-10-05T10:44:00.000Z	mo0nykit	stebalien	oops wrong conversion, correct one is 0x318 == 792
+2009-10-05T10:48:00.000Z	stebalien	mo0nykit	 Your bootsplash probably looked a little stretched because I gave you the vga for 1024x768 because 1280x1024 is supported by few BIOSes.  You can try setting vga=864 but this may not work.
+2009-10-05T10:49:00.000Z	mo0nykit	stebalien	I've looked around, there is no support for 16:10 screens?
+2009-10-05T10:51:00.000Z	stebalien	mo0nykit	 there is, it is just rare (google '1280x800 vga nvidia')
+2009-10-05T10:53:00.000Z	mo0nykit	stebalien	i have read something about vbetest on gentoo.. To show my monitor's vga FB modes. What is the equivalent for Ubuntu?
+2009-10-05T11:03:00.000Z	mo0nykit	stebalien	864 doesn't work. It says "undefined mode. Press ENTER to see a list of choices." and 1280x800 framebuffer isn't supported. I reverted to 792. Splash screen is moved a bit to the side. Thanks so much for your help :) I updated my thread here with credits to you http://ubuntuforums.org/showthread.php?t=1282338

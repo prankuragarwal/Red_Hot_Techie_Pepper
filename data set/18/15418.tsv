@@ -1,0 +1,18 @@
+2011-07-22T16:17:00.000Z	dr_willis	mman	what does the script do? pastebin your rc.local
+2011-07-22T16:17:00.000Z	mman	dr_willis	it starts tomcat
+2011-07-22T16:19:00.000Z	dr_willis	mman	 it could be its getting ran befor networking is fully up. try a 'sleep 30' above the command in rc.local - no & at the end. to make it wait 30 sec
+2011-07-22T16:19:00.000Z	mman	dr_willis	http://pastebin.com/Gx8m6VqJ
+2011-07-22T16:20:00.000Z	mman	dr_willis	nop, still doesnt work
+2011-07-22T16:22:00.000Z	dr_willis	mman	  could be it needs to be ran with different enviroment/path settings, or some other quirk.  cd to the dir where the script is at then run it perhaps.
+2011-07-22T16:22:00.000Z	mman	dr_willis	still on the rc.local?
+2011-07-22T16:23:00.000Z	dr_willis	mman	yes.  or make it run some other script that does the cd, then sleep thenruns the command.. perhaps log the errors to a file also
+2011-07-22T16:27:00.000Z	mman	dr_willis	didnt work with cd. mmm let me show you what the script does: http://pastebin.com/MxSrVt4t
+2011-07-22T16:28:00.000Z	dr_willis	mman	 a neat trick i use is to run apps on their own console  so i can see error and logs    see   http://manpages.ubuntu.com/manpages/natty/man1/openvt.1.html
+2011-07-22T16:30:00.000Z	dr_willis	mman	 i wonder if theres not some env variables not.set when ran from rc.local
+2011-07-22T16:30:00.000Z	mman	dr_willis	thats what i also though. Maybe it has to run AFTER boot
+2011-07-22T16:32:00.000Z	dr_willis	mman	 rc.local is the last service to start.  so with the sleep it is the last... but  rynning from rc.local may  have differedt path and other settings then the users bash shell does
+2011-07-22T16:33:00.000Z	mman	dr_willis	yup, as you said!! this is what the log says: Neither the JAVA_HOME nor the JRE_HOME environment variable is defined
+2011-07-22T16:33:00.000Z	mman		At least one of these environment variable is needed to run this program
+2011-07-22T16:34:00.000Z	dr_willis	mman	 export them in rc.local i guess.  or source whatever sets them first
+2011-07-22T16:36:00.000Z	dr_willis		bbl
+2011-07-22T16:54:00.000Z	mman	dr_willis	just added the variable to the rc.local but still doesnt work. Still same problems here is my new rc.locale  http://pastebin.com/76Sxp3H6

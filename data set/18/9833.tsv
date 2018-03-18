@@ -1,0 +1,18 @@
+2008-02-01T06:14:00.000Z	gortba		Does anyone know about dual booting?
+2008-02-01T06:16:00.000Z	gortba		Ok. Currently I have two HDD both with autonomous systems. One of them windows, the second is linux. I can't get grub to boot the windows disk. As of right now the only way for me to boot the windows disk is to change the boot order in BIOS each time.
+2008-02-01T06:16:00.000Z	gortba		How do I get grub to boot the Windows disk? I've altered grub many times and can't figure it out.
+2008-02-01T06:17:00.000Z	Dr_willis	gortba	 where is the windows disk at? theres an example grub entry in menu.lst for  windows on hda1
+2008-02-01T06:18:00.000Z	gortba	Dr_willis	It's hdc right now.
+2008-02-01T06:19:00.000Z	Dr_willis	gortba	 you need to uncomment/edit that example entry  with the proper hd(#.#)  option. and it should boot it.
+2008-02-01T06:19:00.000Z	Dr_willis	gortba	 Grub is one of those tools that its worth while to learn all about.   It has a lot of neat features, and details.
+2008-02-01T06:20:00.000Z	Dr_willis	gortba	 check -->  cat /boot/grub/device.map
+2008-02-01T06:21:00.000Z	Dr_willis	gortba	 grub ignores cdrom/dvd/optical drives in its numbering scheme
+2008-02-01T06:23:00.000Z	gortba	Dr_willis	sdc (window HDD) is not shown when I do cat /boot/grub/device.map
+2008-02-01T06:24:00.000Z	gortba	Dr_willis	I know it's /dev/sdc because that's what fdisk tells me
+2008-02-01T06:27:00.000Z	Dr_willis	gortba	 you may  want to put it in there then. as (hd2) /dev/hdc
+2008-02-01T06:27:00.000Z	Dr_willis	gortba	 do you have an hda and hdb also?
+2008-02-01T06:28:00.000Z	gortba	Dr_willis	yes I do. One is unallocated.
+2008-02-01T06:29:00.000Z	Dr_willis	gortba	 you may want to have entries for all your hds in there. hda = (hd0), hdb = (hd1), hdc=(hd2)
+2008-02-01T06:35:00.000Z	Dr_willis	gortba	 fdisk does not enumerate drives the same way as grub does.  If grub says hdb is hd0, then hdc would be hd1 most likely
+2008-02-01T06:37:00.000Z	gortba	Dr_willis	thanks. I'm going to try to get everything right then.
+2008-02-06T08:01:00.000Z	Dr_willis	gortba	 i second that.. Nope. :)

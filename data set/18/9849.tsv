@@ -1,0 +1,18 @@
+2007-07-28T15:32:00.000Z	sebrock		I have a strange isssue here: I cant access a sertain dir altough I am a member of the group and group have rights
+2007-07-28T15:33:00.000Z	sebrock		where is the group file on ubuntu?
+2007-07-28T15:34:00.000Z	lietu	sebrock	make sure you have permissions to the parent directories as well
+2007-07-28T15:35:00.000Z	sebrock	lietu	I have, I'm standing in the dir below
+2007-07-28T15:37:00.000Z	sebrock	lietu	this is the dir I'm trying to access, and my user is clearly a member of grou '501' : rwxr-x--- 5 www-data  501          74 2007-07-25 22:13 Downloads
+2007-07-28T15:38:00.000Z	sebrock		it works if I set permissions for "others"!
+2007-07-28T15:39:00.000Z	lietu	sebrock	sounds like all the permissions on ., .., ../.. and so on aren't set to allow you in there
+2007-07-28T15:39:00.000Z	sebrock	lietu	is that in this folder you mean?
+2007-07-28T15:40:00.000Z	sebrock	lietu	no I made it recursive and it is all set to group "501"
+2007-07-28T15:40:00.000Z	lietu		well, let's say you're in /home/sebrock/Desktop/Downloads ... you need to make sure that ALL the parent directories allow you there.. /home, /home/sebrock and /home/sebrock/Desktop before you can reach /home/sebrock/Desktop/Downloads
+2007-07-28T15:41:00.000Z	sebrock	lietu	I can reach all other dirs located in this path
+2007-07-28T15:41:00.000Z	sebrock		its just this one
+2007-07-28T15:41:00.000Z	sebrock	lietu	the only thing that differs from the other dirs is that this dir is owned by another user, but it has group rights
+2007-07-28T15:42:00.000Z	lietu		and running 'groups' says 501?
+2007-07-28T15:42:00.000Z	sebrock	lietu	yes
+2007-07-28T15:43:00.000Z	lietu	sebrock	then I'm out of ideas
+2007-07-28T15:50:00.000Z	sebrock	lietu	could it be somehting about the group name 501
+2007-07-28T15:50:00.000Z	lietu	sebrock	doubt it, you could ofcourse try naming a group in /etc/groups for that number

@@ -1,0 +1,21 @@
+2008-06-28T17:09:00.000Z	carlyn_		If you do an ./configure --prefix=whatever are you stuck with it forever?
+2008-06-28T17:10:00.000Z	unop	carlyn_	not really, but it makes uninstallation of that package quite messy - not advisable
+2008-06-28T17:11:00.000Z	carlyn_	unop	I did a sudo make uninstall - but seem to be stuck with it
+2008-06-28T17:11:00.000Z	carlyn_	unop	test -z "/usr/local/classpath/lib/classpath" || mkdir -p -- "/usr/local/classpath/lib/classpath"
+2008-06-28T17:15:00.000Z	unop	carlyn_	you could install the other version of classpath in a chrooted environment
+2008-06-28T17:16:00.000Z	carlyn_	unop	what is a "chrooted environment"?
+2008-06-28T17:17:00.000Z	unop	carlyn_	a chroot is like a contained directory, with it's own root (/) where you can have another installation of linux and a whole different set of packages
+2008-06-28T17:20:00.000Z	carlyn_	unop	I found https://help.ubuntu.com/6.10/ubuntu/packagingguide/C/appendix-chroot.html but that confuses me more
+2008-06-28T17:22:00.000Z	carlyn_	unop	Is ubuntu so different to other Linux versions?  setting prefix and path are not an option with ubuntu?
+2008-06-28T17:22:00.000Z	unop	carlyn_	not at all - it just appears that classpath does not like being installed to a different prefix
+2008-06-28T17:23:00.000Z	carlyn_	unop	Then how do I check what I have set as a prefix? and how can I unset the prefix?
+2008-06-28T17:25:00.000Z	unop	carlyn_	usually, to ./configure, you pass --prefix=/path/to/whatever  -- but you might have to do more, check the options to configure.   ./configure --help
+2008-06-28T17:27:00.000Z	carlyn_	unop	But afterwards ... how can you check what the prefix is actually set to? After make uninstall I don't understand why its wanting an old prefix
+2008-06-28T17:27:00.000Z	unop	carlyn_	you need to specify the prefix to the uninstall target because by default, it assumes, you have installed classpath to the default regular location, but you havent
+2008-06-28T17:31:00.000Z	carlyn_	unop	Thanks - I going to try to uninstall every classpath and start over... but I think I hearing - remember your prefix, there is no variable to check?
+2008-06-28T17:33:00.000Z	unop	carlyn_	that would be correct, there is no way of telling afterwards what the prefix was you used -- which is why i suggest you use a chroot to install the other version of classpath to, that way, you can use the default prefix
+2008-06-28T17:34:00.000Z	unop	carlyn_	think of a chroot as a seperate room in your house - with it's own kitchen, living-room, spare-room, etc -- a house within a house - what you do inside the room makes little impact on the rest of the house
+2008-06-28T17:35:00.000Z	carlyn_	unop	what's the difference between mark for removal and mark for complete removal? (search in help didnt help)
+2008-06-28T17:36:00.000Z	unop	carlyn_	in the former, only the package's contents are deleted, in the latter, the configuration files are also removed
+2008-06-28T17:37:00.000Z	carlyn_	unop	and Nicke thanks - so I want a complete removal at this one
+2008-06-28T18:07:00.000Z	carlyn_	unop	(and others) thanks - off to try the suggestions

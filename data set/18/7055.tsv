@@ -1,0 +1,18 @@
+2010-06-29T03:43:00.000Z	Jordan_U	wng-	No, grub2 uses UUIDs also.
+2010-06-29T03:40:00.000Z	Jordan_U	wng-	What happens when you try to boot exactly?
+2010-06-29T03:41:00.000Z	wng-	Jordan_U	drop to busybox shell
+2010-06-29T03:41:00.000Z	Jordan_U	wng-	That's past grub then.
+2010-06-29T03:41:00.000Z	wng-	Jordan_U	yes, but I assume the reason is the UUID changed or something since it's perfectly fine if i unplug the SATA drive, but it can't find a root device if i leave it plugged in
+2010-06-29T03:42:00.000Z	Jordan_U	wng-	UUIDs don't change when hardware changes, that's why they are used.
+2010-06-29T03:43:00.000Z	wng-	Jordan_U	hrm, okay, so then the only possible thing is grub might see the partition as hd(1,5) now instead of hd(0,5) so I'll change that and check
+2010-06-29T03:43:00.000Z	wng-	Jordan_U	except it still has hd(0,5) in the grub menu, im looking at the menu entry now
+2010-06-29T03:44:00.000Z	Jordan_U	wng-	The search --set --fs-uuid line overrides that.
+2010-06-29T03:45:00.000Z	wng-	Jordan_U	well, changing that line fixed my issue, so apparently it wasn't overriding that or the search function was failing..
+2010-06-29T03:47:00.000Z	Jordan_U	wng-	Can you try changing that line back to confirm that is what fixed it? If grub chose the wrong drive then you wouldn't get a kernel loaded at all.
+2010-06-29T03:48:00.000Z	wng-	Jordan_U	that's the only thing that I changed, it is what fixed it
+2010-06-29T03:48:00.000Z	Jordan_U	wng-	Can you try changing that line back to confirm that is what fixed it?
+2010-06-29T03:49:00.000Z	wng-	Jordan_U	no, that was the issue, im not mucking around any more than i have to
+2010-06-29T03:49:00.000Z	Jordan_U	wng-	Post hoc ergo propter hoc is a logical fallacy http://en.wikipedia.org/wiki/Post_hoc_ergo_propter_hoc
+2010-06-29T03:50:00.000Z	wng-	Jordan_U	in arguments yes, but not with technical issues
+2010-06-29T03:50:00.000Z	wng-	Jordan_U	I changed absolutely nothing except for that line, therefore it must be what fixed it
+2010-06-29T03:51:00.000Z	Jordan_U	wng-	With technical issues it's often very difficult to know for sure that only one variable has changed. And there is good reason to doubt that you change could have fixed anything given the symptoms.

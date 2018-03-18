@@ -1,0 +1,21 @@
+2006-09-18T09:29:00.000Z	THX-1138		If files are copied to /var/cache/apt/archives will they be used before more files are downloaded?
+2006-09-18T09:29:00.000Z	bruenig	THX-1138	what do you mean used?
+2006-09-18T09:31:00.000Z	bruenig	THX-1138	shouldn't be too hard. dpkg -i /var/cache/apt/archives/*.deb
+2006-09-18T09:32:00.000Z	THX-1138	bruenig	- really that easy? - whoa! nice
+2006-09-18T09:32:00.000Z	bruenig	THX-1138	I assume that would work. That is only in concept though
+2006-09-18T09:33:00.000Z	THX-1138	bruenig	- np - worth a try. - only takes a couple of minutes to boot the cd again.
+2006-09-18T09:34:00.000Z	THX-1138	bruenig	- GA-a-k lol! - unresolved dependencies. - it dpkgs alphbetically i guess.
+2006-09-29T08:10:00.000Z	bruenig	THX-1138	remove the ones you don't want
+2006-09-29T08:11:00.000Z	THX-1138	bruenig	- How do i use the filter option in synaptic to find them? What happens if Synaptic thinks they are installed and they AREN'T...
+2006-09-29T08:12:00.000Z	bruenig	THX-1138	not familiar with synaptic, if you want to remove some of the debs, a quick sudo rm whatever.deb will do it via command line
+2006-09-29T08:12:00.000Z	bruenig	THX-1138	if it thinks it is installed, you can do a sudo apt-get remove whatever to uninstall it
+2006-09-29T08:13:00.000Z	THX-1138	bruenig	- There are near one HUNDRED packages. - Eep!
+2006-09-29T08:14:00.000Z	bruenig	THX-1138	if you can find similarities you can use the wildcard, but that is the only way to do it I am pretty sure. If you installed tem all, you are going to have to uninstall and remove them all.
+2006-09-29T08:15:00.000Z	THX-1138	bruenig	- thats just it. Synaptic shows amny as installed that aren't. - How do i find them?
+2006-09-29T08:20:00.000Z	THX-1138	bruenig	- isn't Synaptic a facade for apt? Same options, switches, etc, - bruenig - How would the cammand line read to remove those "ghostly" not installed packages?
+2006-09-29T08:20:00.000Z	bruenig	THX-1138	sudo apt-get remove whatever
+2006-09-29T08:21:00.000Z	THX-1138	bruenig	- How would i add a wild card to automate test for installation and the removal of nearly one hundred packages?
+2006-09-29T08:22:00.000Z	bruenig	THX-1138	it is unlikely, but if you know all of the apps that start with a certain thing you want to remove, you could use it to help you out a little bit
+2006-09-29T08:24:00.000Z	THX-1138	bruenig	- That will thin things down a bit. - still a puzzle isn't it? - Ach! - recycling your saved /var/cache/apt/archive introduces errors and is a bad idea and sadly costly for a great organization like canonical.
+2006-09-29T08:25:00.000Z	bruenig	THX-1138	if you wanted to keep some of your old debs from /var/cache/apt, why didn't you get those debs and sudo dpkg -i them instead of just copying them into that directory?
+2006-09-29T08:27:00.000Z	bruenig	THX-1138	right, you should have just sudo dpkg -i them in order to install the ones you wanted. Kind of stupid to just copy them in to the new /var/cache/apt

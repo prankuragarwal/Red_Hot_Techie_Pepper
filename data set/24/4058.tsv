@@ -1,0 +1,24 @@
+2007-07-21T09:32:00.000Z	ArielMT		E: Couldn't find package sarcasm
+2007-07-21T09:33:00.000Z	ArielMT		no hits :/
+2007-07-21T09:33:00.000Z	ArielMT		how ironic.  um, oops.
+2007-07-21T09:34:00.000Z	ArielMT		still no hits
+2007-07-21T09:35:00.000Z	ArielMT		ok, ok :)  i'm here because i need help.  i'm just waiting for someone to have a free moment to read my problem, is all
+2007-07-21T09:35:00.000Z	Flannel	ArielMT	have you asked in #winehq?
+2007-07-21T09:36:00.000Z	ArielMT	Flannel	i just had an oh-duh moment.  no, i didn't
+2007-07-21T09:36:00.000Z	Flannel	ArielMT	if they have no idea, you might check launchpad for a bug
+2007-07-21T09:44:00.000Z	Flannel	ArielMT	you could always switch to using wine's official repos instead of the ubuntu ones
+2008-03-03T07:27:00.000Z	Flannel	ArielMT	You're on LVM, right?
+2008-03-03T07:27:00.000Z	ArielMT	Flannel	yes
+2008-03-03T07:27:00.000Z	Flannel	ArielMT	and what are your volume group and logical volume names for your swap partition?
+2008-03-03T07:28:00.000Z	Flannel	ArielMT	Or more importantly, whats listed in /dev/mapper for it?
+2008-03-03T07:28:00.000Z	ArielMT	Flannel	iirc, vg and swap respectively.  it's mapped to /dev/mapper/vg-swap
+2008-03-03T07:30:00.000Z	Flannel	ArielMT	Odd.  It shouldn't give you an error.  What does `sudo swapon /dev/mapper/vg-swap` do?
+2008-03-03T07:34:00.000Z	Flannel	ArielMT	And that partition is correctly created as a swap partition?
+2008-03-03T07:34:00.000Z	ArielMT	Flannel	was when i set it up, aye
+2008-03-03T07:35:00.000Z	Flannel	ArielMT	Double check, sudo lvdisplay | less
+2008-03-03T07:35:00.000Z	Flannel	ArielMT	er, I suppose that actually doesn't give you the partition type
+2008-03-03T07:36:00.000Z	Flannel	ArielMT	sudo mkswap /dev/mapper/vg-swap
+2008-03-03T07:36:00.000Z	ArielMT	Flannel	nope, but it showed that everything's right, except of course that # open is 0
+2008-03-03T07:38:00.000Z	ArielMT	Flannel	yup, since it's out-of-commission swap, no harm formatting it even on a live system.  afk, reading manpage and doing that
+2008-03-03T07:44:00.000Z	ArielMT	Flannel	puh.  that did the trick, but i've no idea what corrupted it in the first place.
+2008-03-03T07:44:00.000Z	ArielMT	Flannel	thanks :)

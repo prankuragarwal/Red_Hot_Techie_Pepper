@@ -1,0 +1,19 @@
+2012-05-10T09:12:00.000Z	peepsalot		hi, i have a digital camera that mounts sdcard as gphoto2.  i'm wondering if i can use the sdcard directly as a block device.  i want to dd to the card, i don't have  a regular card reader
+2012-05-10T09:13:00.000Z	DarwinSurvivor	peepsalot	why do you need to dd the card?
+2012-05-10T09:13:00.000Z	peepsalot	DarwinSurvivor	to put an bootable image on it for raspberry pi
+2012-05-10T09:14:00.000Z	DarwinSurvivor	peepsalot	oh, ok. if you have it mounted run "mount" to find out where the block device is
+2012-05-10T09:14:00.000Z	DarwinSurvivor	peepsalot	no guarantees however on how the camera's interface works.
+2012-05-10T09:15:00.000Z	peepsalot		i don't see it in mount.  nautilus shows the location asgphoto2://[usb:003,005]/
+2012-05-10T09:16:00.000Z	peepsalot		i guess i probably need a real card reader
+2012-05-10T09:16:00.000Z	DarwinSurvivor	peepsalot	try "df -h" as well
+2012-05-10T09:16:00.000Z	DarwinSurvivor	peepsalot	if that doesn't work, I have one more little trick you can try
+2012-05-10T09:16:00.000Z	peepsalot		sucks cause i have one in my laptop but it doesn't seem to recognize.  possibly because i dropped the laptop and it's cracked right there at the sd slot
+2012-05-10T09:17:00.000Z	peepsalot	DarwinSurvivor	df -h doesn't show it either
+2012-05-10T09:17:00.000Z	DarwinSurvivor	peepsalot	run "ls /dev/ > 1" then unplug it and count to 10. then run "ls /dev/ > 2" and then "diff 1 2"
+2012-05-10T09:18:00.000Z	peepsalot		nothin :-(
+2012-05-10T09:20:00.000Z	DarwinSurvivor	peepsalot	try "ls -R" instead of "ls" in both instances
+2012-05-10T09:20:00.000Z	DarwinSurvivor	peepsalot	if that doesn't show anything, then it's probably a weird protocol
+2012-05-10T09:21:00.000Z	DarwinSurvivor	peepsalot	your camera may have an "act as removeable storage" mode or something you can turn on (my gps has the same thing)
+2012-05-10T09:22:00.000Z	peepsalot	DarwinSurvivor	if i do ls -R then i can see, there is /dev/bus/usb/003/006  and /dev/char/189:261
+2012-05-10T09:23:00.000Z	DarwinSurvivor	peepsalot	yeah, then it's definitely a special protocol. if you can find a setting in the camera to change the usb mode, then that might work. otherwise you're SOL as far as using the camera for a block device interface
+2012-05-10T09:23:00.000Z	peepsalot	DarwinSurvivor	ok, kinda what i figured, thanks anyways

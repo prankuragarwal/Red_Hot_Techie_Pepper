@@ -1,0 +1,19 @@
+2008-03-23T06:19:00.000Z	mophead		My computer just shut down, randomly. Any reason why it might do that? When I turn it back on and boot, it gives me a few lines about WARNING something something (I can't copy the text).
+2008-03-23T06:19:00.000Z	mophead		I'm in 7.10 by the way.
+2008-03-23T06:20:00.000Z	robdig	mophead	you can try looking at the logs in /var/log/syslog or /var/log/kernlog to see what they say...
+2008-03-23T06:22:00.000Z	mophead	robdig	syslog shows me the errors: http://pastebin.ca/953457
+2008-03-23T06:25:00.000Z	mophead	robdig	so any idea what those mean or how I can fix them?
+2008-03-23T06:27:00.000Z	robdig	mophead	the modprobe ones are where it's trying to load alsa (sound drivers) into the kernel, it doesn't like something on line 40 of /etc/modprobe.d/alsa-base
+2008-03-23T06:28:00.000Z	mophead	robdig	it says something about line 41, too
+2008-03-23T06:28:00.000Z	robdig	mophead	yup, something on those two lines
+2008-03-23T06:28:00.000Z	mophead	robdig	ok, at least I know where to start now
+2008-03-23T06:29:00.000Z	robdig	mophead	good luck...
+2008-03-23T06:29:00.000Z	mophead	robdig	I will ask my pet linux nerd. :)
+2008-03-23T06:29:00.000Z	robdig	mophead	always good to have one around :)
+2008-03-23T06:32:00.000Z	mophead	robdig	I don't have permissions to safe alsa-base
+2008-03-23T06:33:00.000Z	mophead	robdig	I wanted to just erase those two lines and see what happens
+2008-03-23T06:33:00.000Z	robdig	mophead	if you want to edit it, you will need to have root privileges...what editor are you using?
+2008-03-23T06:33:00.000Z	mophead	robdig	gedit
+2008-03-23T06:34:00.000Z	robdig	mophead	ok, open a terminal, and type gksudo gedit /etc/modprobe.d/alsa-base             and then you'll be able to save it
+2008-03-23T06:36:00.000Z	mophead	robdig	Sweet, I took out line 40 and 41 that it didn't like.  Maybe it will help.
+2008-03-23T06:36:00.000Z	robdig	mophead	hope so

@@ -1,0 +1,21 @@
+2007-01-18T06:23:00.000Z	soundray	Rosh_Keifer	when you run 'tail -f /var/log/syslog' while the module loads, do you see any errors getting logged?
+2007-01-18T06:26:00.000Z	Rosh_Keifer	soundray	No. It doesn't show anything remotely related to modprobe.
+2007-01-18T06:27:00.000Z	soundray	Rosh_Keifer	that's strange. It should at least log the fact that it's loading.
+2007-01-18T06:27:00.000Z	soundray	Rosh_Keifer	any 3945-related stuff in dmesg output?
+2007-01-18T06:28:00.000Z	Rosh_Keifer	soundray	Nothing.
+2007-01-18T06:28:00.000Z	soundray	Rosh_Keifer	but you are sure that the module is loaded, yes?
+2007-01-18T06:29:00.000Z	Rosh_Keifer	soundray	Yes, the module is loaded. Early on dmesg mentions the card but doesn't associate it with anything beyond its label.
+2007-01-18T06:30:00.000Z	soundray	Rosh_Keifer	have you checked with lsmod?
+2007-01-18T06:31:00.000Z	Rosh_Keifer	soundray	I just unloaded and reloaded the module. dmesg: [17186438.128000]  ipw3945: Detected Intel PRO/Wireless 3945ABG Network Connection
+2007-01-18T06:31:00.000Z	Rosh_Keifer	soundray	That doesn't seem to bring me any closer, though.
+2007-01-18T06:32:00.000Z	soundray	Rosh_Keifer	no new interfaces visible with ifconfig -a ?
+2007-01-18T06:32:00.000Z	Rosh_Keifer	soundray	nyet.
+2007-01-18T06:34:00.000Z	soundray	Rosh_Keifer	do you have a wired nic?
+2007-01-18T06:35:00.000Z	Rosh_Keifer	soundray	Looking at the NetworkTroubleshooting section of the wiki, I'm tempted to try to manually configure the card to the extent of forcibly adding it to /etc/pcmcia/config.opts. However, the guide doesn't show what command to use for the hardware ID format needed in that file. It's driving me crazy.
+2007-01-18T06:35:00.000Z	Rosh_Keifer	soundray	Yes. I'm talking to you through it right now.
+2007-01-18T06:35:00.000Z	Rosh_Keifer	soundray	Oh, and if you can pass the word, this card is not automatically utilized in the installer. Currently the database lists that factor as "untested"
+2007-01-18T06:36:00.000Z	Rosh_Keifer	soundray	Of course, I used the alternate install.. Just thought of that.
+2007-01-18T06:36:00.000Z	soundray	Rosh_Keifer	that shouldn't be necessary. If it loads a module on insertion of the card, that indicates that config.opts is fine.
+2007-01-18T06:38:00.000Z	Rosh_Keifer	soundray	Alright. Well the problem exists somewhere within the network device recognition, then. The system sees the card and knows what it is, but whatever looks for network devices is playing dumb.
+2007-01-18T06:38:00.000Z	soundray	Rosh_Keifer	I had a similar problem once with a card that was expecting a firmware upload.
+2007-01-18T06:39:00.000Z	Rosh_Keifer	soundray	Hmm. I don't think that's the case here, though.l

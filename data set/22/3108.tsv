@@ -1,0 +1,22 @@
+2010-05-28T19:23:00.000Z	rethus		before i send my pc to standby my network works. And i installed kttsd (text2speech). Now after startup, i see my networkcard anymore if i type ifconfig i only get localhost
+2010-05-28T19:23:00.000Z	rethus		any idea, what i could do?
+2010-05-28T19:23:00.000Z	Cryp71c	rethus	sudo ifconfig -a
+2010-05-28T19:24:00.000Z	Cryp71c	rethus	does your network device show up then?
+2010-05-28T19:24:00.000Z	Cryp71c	rethus	sudo ifconfig eth0 up
+2010-05-28T19:25:00.000Z	Cryp71c	rethus	when a specific network device is "down" it doesn't show up on the normal ifconfig list, nor will it be regarded as actually being "On"
+2010-05-28T19:25:00.000Z	Cryp71c	rethus	obviously something is putting your network device down, though I can't say what.
+2010-05-28T19:25:00.000Z	rethus	Cryp71c	k, i see it now if i enter ifconfig, but have still no connection
+2010-05-28T19:25:00.000Z	Cryp71c	rethus	sudo dhclient eth0
+2010-05-28T19:27:00.000Z	rethus	Cryp71c	k. thanks a lot, now eth0 has an ip
+2010-05-28T19:27:00.000Z	rethus	Cryp71c	but what could be the basic-problem why the network not start
+2010-05-28T19:27:00.000Z	Cryp71c	rethus	k, that's only a temp solution, you'll have to continue to do that (ifconfig eth0 up ; dhclient eth0) so you need to identify what's causing your network device to go down
+2010-05-28T19:28:00.000Z	rethus	Cryp71c	how can i do this?
+2010-05-28T19:29:00.000Z	Cryp71c	rethus	try dmesg in console and look for something network-card related.
+2010-05-28T19:29:00.000Z	Cryp71c	rethus	but you said before its only after the system sleeps?
+2010-05-28T19:30:00.000Z	rethus	Cryp71c	its still i send the system to sleep, but all the time for now
+2010-05-28T19:30:00.000Z	Cryp71c	rethus	sorry, I didn't understand that. Could you rephrase?
+2010-05-28T19:32:00.000Z	rethus	Cryp71c	i've upgradedfrom 9.10 to 10.04 works good. Today i installed some packages (like kttsd... and send the pc to sleep-mode (suspend). After rebooting i got no networkconnections... even if i reboot the pc
+2010-05-28T19:33:00.000Z	Cryp71c	rethus	so even when you start up the computer, eth0 is down?
+2010-05-28T19:37:00.000Z	rethus	Cryp71c	jes.
+2010-05-28T19:45:00.000Z	rethus	Cryp71c	any idea?
+2010-05-28T19:46:00.000Z	rethus	Cryp71c	only thing i found in dmesg is: eth0:: no IPV6 router present

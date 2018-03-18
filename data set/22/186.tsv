@@ -1,0 +1,22 @@
+2012-04-29T13:19:00.000Z	shredding		http://www.mypcsupport.de/net/linux/ubuntu-lamp-installation/
+2012-04-29T13:21:00.000Z	shredding		is the  ^ requiered?
+2012-04-29T13:23:00.000Z	shredding		Ah wait!
+2012-04-29T13:23:00.000Z	shredding		Something has changed.
+2012-04-29T13:23:00.000Z	shredding		I can now access index.php like this:
+2012-04-29T13:23:00.000Z	shredding		http://localhost/flow3/Web/index.php
+2012-04-29T13:23:00.000Z	shredding		However: http://localhost/flow3/Web/ does not work
+2012-04-29T13:24:00.000Z	shredding		You mean httpd.conf?
+2012-04-29T13:25:00.000Z	shredding		Okay.
+2012-04-29T13:26:00.000Z	shredding		Okay.
+2012-04-29T13:27:00.000Z	oCean	shredding	add index.php to /etc/apache2/mods-enabled/dir.conf
+2012-04-29T13:33:00.000Z	oCean	shredding	no, if dir.conf was in your mods-enabled directory, then there is no need to enable it again
+2012-04-29T13:35:00.000Z	oCean	shredding	are you sure the /etc/apache2/apache2.conf file is the default config? Does it include directives as "Include mods-enabled/*.load"
+2012-04-29T13:35:00.000Z	oCean	shredding	really, in a default installation this all should work. I'm not sure what happened to your installation/config
+2012-04-29T13:37:00.000Z	shredding	oCean	It does include the line "Include mods-enabled/*.load
+2012-04-29T13:39:00.000Z	shredding	oCean	I'm using this httpd.conf on top http://pastebin.com/3gcE59Lh
+2012-05-06T15:08:00.000Z	oCean	shredding	jrib is correct
+2012-05-06T15:09:00.000Z	oCean	shredding	in the /etc/apache2/mods-enabled/php.conf is a description on how to re-enable it, but be aware that the default disabled option is there for a (security) reason
+2012-05-06T15:12:00.000Z	oCean	shredding	what do you mean when you say "that" did not help
+2012-05-06T15:12:00.000Z	shredding	oCean	I mean that the files are getting still downloaded
+2012-05-06T15:13:00.000Z	shredding	oCean	Tzunamii: jrib: tsimpson: You're brilliant.
+2012-05-06T15:14:00.000Z	oCean	shredding	usually www files (both html and scripts etc) are offered from a (separate) webroot/webdirectory. In that way they are not able to do any harm to the rest of the system

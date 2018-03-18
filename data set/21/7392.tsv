@@ -1,0 +1,21 @@
+2008-04-27T02:57:00.000Z	rubikcube		hi, after upgrading to 8.04, the kernel doesn't recognize one of my hard disks (the one with the root partition on it) any more (a seagate ide disk).  Booting with the old (2.6.22) kernel works fine. It's not recognized by the live CD either :-( Any idea?
+2008-04-27T02:58:00.000Z	arbrandes	rubikcube	what kinds of harddisks? PATA or SATA?
+2008-04-27T02:59:00.000Z	rubikcube	arbrandes	both IDE, the second disc is displayed correctly with its entries in /dev/disk/*
+2008-04-27T02:59:00.000Z	arbrandes	rubikcube	they would be under /dev/sd* now.
+2008-04-27T02:59:00.000Z	rubikcube	arbrandes	exactly
+2008-04-27T03:00:00.000Z	rubikcube	arbrandes	still, only one of them is displayed there as sd...
+2008-04-27T03:00:00.000Z	arbrandes	rubikcube	try looking in /var/log/messages for something out of place; or is this in the live cd?
+2008-04-27T03:07:00.000Z	rubikcube	arbrandes	http://rafb.net/p/ycjBTg92.html ~ line 245
+2008-04-27T03:16:00.000Z	arbrandes	rubikcube	I see some weird IO errors.  You say one of the drives is detected, while the other one is not?
+2008-04-27T03:18:00.000Z	rubikcube	arbrandes	yes, and I even found a bug report on this, seems to be a kernel problem: https://bugs.launchpad.net/ubuntu/+bug/221677
+2008-04-27T03:19:00.000Z	arbrandes	rubikcube	yes, that looks about *exactly* like your problem.
+2008-04-27T03:21:00.000Z	arbrandes	rubikcube	this bug was probably exposed because they chose to move all PATA stuff into the scsci driver.
+2008-04-27T03:21:00.000Z	rubikcube	arbrandes	yes, the drive itself is visible in /dev/ as sdc, but no partitions are there, just as described there.  What would be the correct package to set that bug to?
+2008-04-27T03:21:00.000Z	rubikcube	arbrandes	or should I go over to #ubuntu-devel with that?
+2008-04-27T03:22:00.000Z	arbrandes	rubikcube	not sure about the package, but I'd bet it is a kernel problem.  And if it IS really a kernel problem, it might take a while to get solved, especially if the Ubuntu guys have to wait for upstream.
+2008-04-27T03:23:00.000Z	arbrandes	rubikcube	if I were you, I'd search the linux kernel mailing list.
+2008-04-27T03:24:00.000Z	arbrandes	rubikcube	if the problem is already solved in the newer kernels, than it is a matter of getting the Ubuntu devs to include the patch.  OR, you could do it yourself.
+2008-04-27T03:24:00.000Z	rubikcube	arbrandes	the LKML seems to have one entry at least on this, without an answer
+2008-04-27T03:24:00.000Z	arbrandes	rubikcube	ugh, no answer? bad news
+2008-04-27T03:25:00.000Z	rubikcube	arbrandes	my personal interest in this is just as far as my gf in concerned (her PC), I don't have those issues here on my gentoo machine :-)
+2008-04-27T03:27:00.000Z	arbrandes	rubikcube	hehehe, I see.  Well, my relatively uninformed opinion is that it is probably a kernel issue, related to the move to the SCSI subsystem for PATA drives.  And if I were you, in this case I'd try to either use an older kernel, or try to recompile the current one turning off this PATA/SATA thing.

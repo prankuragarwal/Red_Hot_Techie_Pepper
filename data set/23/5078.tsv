@@ -1,0 +1,23 @@
+2007-02-26T11:21:00.000Z	Mach4		can anyone help me with a busted windows install?  I installed linux with my windows drives (raid 0) plugged in, and because of GRUB error 21, cant boot into windows.
+2007-02-26T11:22:00.000Z	eck	Mach4	what is grub error 21?
+2007-02-26T11:22:00.000Z	Mach4	eck	you guys are supposed to tell me! :S
+2007-02-26T11:23:00.000Z	eck	Mach4	pastebin your grub.conf
+2007-02-26T11:30:00.000Z	Mach4	eck	1) where can i find grub.cfg?  i looked in the boot folder and see lots of grub-related files, but not that one      2) could you elaborate on "pastebin"?
+2007-02-26T11:30:00.000Z	eck	Mach4	pastebin the file /boot/grub/grub.conf
+2007-02-26T11:33:00.000Z	Mach4	eck	or anyone else willing to help with broken windows: http://paste.ubuntu-nl.org/7609/
+2007-02-26T11:34:00.000Z	eck	Mach4	you didn't include an entry for windows?
+2007-02-26T11:35:00.000Z	Mach4	eck	i dont know, i just clicked the install shortcut from the livecd.. it didnt ask me to edit any boot file
+2007-02-26T11:36:00.000Z	eck	Mach4	well you need to edit that file to include an entry for booting windows
+2007-02-26T11:36:00.000Z	eck	Mach4	there is an example on lines 39-42
+2007-02-26T11:37:00.000Z	eck	Mach4	the important thing to get correct is the correct drive and partition
+2007-02-26T11:41:00.000Z	eck	Mach4	i am curious, what exactly were you getting error 21 from?
+2007-02-26T11:42:00.000Z	Mach4	eck	sorry, but that example is rather cryptic to me.  could you elaborate on what i might need to put in menu.lst to make the boot menu work?  as of now, if my windows disks AND linux disk are both plugged in, my pc posts, and then just sits there and doesnt do anything, no messages.   If the linux drive is unpluged and just the windows disks are plugged in, i get an "error 21" saying that grub messed up in stage 1.5
+2007-02-26T11:43:00.000Z	eck	Mach4	ok, so I think that you need to reinstall grub first of all
+2007-02-26T11:43:00.000Z	Mach4	eck	i wanted to do that, but how do i reinstall just grub?
+2007-02-26T11:44:00.000Z	eck	Mach4	you need to boot into the linux environment, e.g. by doing the rescue option on the boot cd, and then follow the instructions to run grub-install
+2007-02-26T11:45:00.000Z	eck	Mach4	yeah, so what happened is you used to have the windows bootloader on your master boot record (MBR)
+2007-02-26T11:46:00.000Z	Mach4	eck	so i have to manually make an entry to menu.lst? or just try reinstalling grub from the provided links?
+2007-02-26T11:46:00.000Z	eck	Mach4	you need to reinstall grub so you can see the menu, and after that you can edit menu.lst and put the correct entry
+2007-02-26T11:47:00.000Z	Mach4	eck	ok, and finnally, what would a correct entry look like?
+2007-02-26T11:48:00.000Z	eck	Mach4	http://paste.ubuntu-nl.org/7611/
+2007-02-26T11:49:00.000Z	eck	Mach4	you will see that I added text at the bottom

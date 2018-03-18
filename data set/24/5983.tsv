@@ -1,0 +1,24 @@
+2006-07-19T15:25:00.000Z	mwe		isn't this odd, I can only ping with sudo.
+2006-07-19T15:25:00.000Z	mwe		as normal user it says "ping: icmp open socket: Operation not permitted"
+2006-07-19T15:25:00.000Z	mwe		really odd
+2006-07-19T15:26:00.000Z	mwe		I don't know when this happened
+2006-07-19T15:26:00.000Z	gr33npho3nix	mwe	does it work as sudo?
+2006-07-19T15:26:00.000Z	mwe	gr33npho3nix	yes
+2006-07-19T15:26:00.000Z	mwe	gr33npho3nix	it's weird
+2006-07-19T15:26:00.000Z	gr33npho3nix	mwe	ping has lost setuid
+2006-07-19T15:26:00.000Z	gr33npho3nix	mwe	installing bastille can do that
+2006-07-19T15:26:00.000Z	mwe	gr33npho3nix	I used to be able to ping as user
+2006-07-19T15:27:00.000Z	mwe	gr33npho3nix	should it be suid root?
+2006-07-19T15:27:00.000Z	gr33npho3nix	mwe	sudo chmor u+s `which ping`
+2006-07-19T15:27:00.000Z	mwe	gr33npho3nix	is yours suid root?
+2006-07-19T15:27:00.000Z	gr33npho3nix		i guess so, i just no that happened to my machine when basitle removed setuid
+2006-07-19T15:27:00.000Z	gr33npho3nix	mwe	or when iptables blocked absolutely everything
+2006-07-19T15:28:00.000Z	gr33npho3nix		but then root couldn't do it
+2006-07-19T15:28:00.000Z	gr33npho3nix		thanks trappist
+2006-07-19T15:28:00.000Z	mwe	gr33npho3nix	I wonder how that happened though
+2006-07-19T15:28:00.000Z	gr33npho3nix	mwe	mine is setuid root
+2006-07-19T15:28:00.000Z	mwe	gr33npho3nix	can you ls -l $(which ping) to confirm it's suid root?
+2006-07-19T15:28:00.000Z	mwe	gr33npho3nix	ok
+2006-07-19T15:28:00.000Z	gr33npho3nix		i just did
+2006-07-19T15:29:00.000Z	mwe	gr33npho3nix	I'm not fond of making things setuid root. but I guess ping should be then. I still wonder how it happened
+2006-07-19T15:29:00.000Z	gr33npho3nix	mwe	no clue, but you don't have to

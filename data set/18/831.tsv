@@ -1,0 +1,18 @@
+2011-12-20T16:21:00.000Z	charliehorse55		is anyone here familiar with cron?
+2011-12-20T16:21:00.000Z	ServerSage	charliehorse55	One or two of us.
+2011-12-20T16:23:00.000Z	ServerSage	charliehorse55	That should run the apod-downloader at 6:20am as the user evan every day.
+2011-12-20T16:23:00.000Z	ServerSage	charliehorse55	Have you tried, as the user evan, to run that command?
+2011-12-20T16:24:00.000Z	charliehorse55	ServerSage	that's what I suspected it would do. I can just type apod-downloader as the user evan and it will execute perfectly
+2011-12-20T16:24:00.000Z	ServerSage	charliehorse55	Check your logs, what do they say about it?
+2011-12-20T16:24:00.000Z	charliehorse55	ServerSage	which logs?
+2011-12-20T16:26:00.000Z	ServerSage	charliehorse55	/var/log/syslog would be a start.
+2011-12-20T16:27:00.000Z	charliehorse55	ServerSage	it has a bunch of lines like this in it:     Dec 20 06:27:05 evan-Ubuntu /usr/bin/crontab[2077]: (evan) LIST (evan)
+2011-12-20T16:28:00.000Z	ServerSage	charliehorse55	Nothing with your command?
+2011-12-20T16:29:00.000Z	charliehorse55	ServerSage	I found it,   Dec 20 06:20:01 evan-Ubuntu CRON[1750]: (evan) CMD (/usr/bin/apod-downloader)
+2011-12-20T16:29:00.000Z	charliehorse55	ServerSage	does this mean my script just doesn't execute properly with the modified cron environment?
+2011-12-20T16:30:00.000Z	ServerSage	charliehorse55	Chances are it's failing.  CRON should be sending an email out about, though you probably don't have an alias set.  As root, if you have mailutils installed, you can type frm on the command line to see if root has mail.
+2011-12-20T16:30:00.000Z	ServerSage	charliehorse55	If you don't want to install anything, you can just look at /var/spool/mail/ and see if root has a file.
+2011-12-20T16:31:00.000Z	charliehorse55	ServerSage	/var/spool/mail is empty
+2011-12-20T16:33:00.000Z	charliehorse55	ServerSage	cron jobs are run in the users home directory correct?
+2011-12-20T16:36:00.000Z	ServerSage	charliehorse55	Sorry, I'm working.  Tend to get slow.  insectatorious gave a great link though.
+2011-12-20T16:50:00.000Z	charliehorse55	ServerSage	Got it working... the script was running the entire time but the part to change the background used gconftool-2 and it requires some special environment variables that weren't getting properly initialized in cron

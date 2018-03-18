@@ -1,0 +1,18 @@
+2010-03-16T00:26:00.000Z	jim---		Some employees are visiting sites they shouldn't.  I don't much feel like installing squid.  What's a quick 'n easy way to blacklist a few domains?
+2010-03-16T00:26:00.000Z	acicula	jim---	drop the ip's on the gateway
+2010-03-16T00:27:00.000Z	acicula	jim---	tcp/ip is what you need to block
+2010-03-16T00:27:00.000Z	acicula	jim---	otherwise you have to move up to the app level(http ie squid)
+2010-03-16T00:27:00.000Z	jim---	acicula	how do I set up a rule to block domains?
+2010-03-16T00:28:00.000Z	jim---	acicula	in particular I need to block wildcard subdomains, so I have no idea how many IP addresses the subs may map to.
+2010-03-16T00:28:00.000Z	acicula	jim---	you cant block domains, domains are names, that resolve to tcp/ips, you block ips
+2010-03-16T00:29:00.000Z	jim---	acicula	but I can't know all the ips.  I understand your suggestion now but it won't work out.
+2010-03-16T00:29:00.000Z	acicula	jim---	well you can block the dns requests, but then people can just use the ip adresses directly to access the sites
+2010-03-16T00:30:00.000Z	jim---	acicula	iff the webserver's set up without name-based vhosting, yeah.  not a good bet.
+2010-03-16T00:30:00.000Z	acicula	jim---	dont forget the firewall rules after installing squid ;)
+2010-03-16T00:31:00.000Z	acicula	jim---	no i mean you dont need to get to a site via its dns name, just the ip. so if you filter dns requests people can still reach the site
+2010-03-16T00:32:00.000Z	jim---	acicula	right but a lot of sites only work right if the correct HTTP Host header is included in the request.
+2010-03-16T00:32:00.000Z	jim---	acicula	"a lot" is not "all" though, so your point is taken,.
+2010-03-16T00:34:00.000Z	acicula	jim---	also then people could just put the ip in the host file and work as normal
+2010-03-16T00:35:00.000Z	jim---	acicula	/etc/hosts is only editable by root :)
+2010-03-16T00:37:00.000Z	acicula	jim---	thats true, but its easy enough to fix in usermode, since its just a basic http header change. anyway just think a sec on how agressive you need to filter and if just talking to people visiting unsuitable sites is more practical?
+2010-03-16T00:39:00.000Z	jim---	acicula	I would just talk to them, yeah.  Management wants to do the p-a thing, so *shrug*

@@ -1,0 +1,21 @@
+2008-10-17T17:05:00.000Z	Akhanu`	jokeusa	have you tried replacing " --to-port 3128" with  "--to ip.of.host:3128" ?
+2008-10-17T17:06:00.000Z	jokeusa		Akhanu - ip of host?
+2008-10-17T17:06:00.000Z	Akhanu`	jokeusa	as in   "--to  192.168.1.54:3128"
+2008-10-17T17:06:00.000Z	jokeusa	Akhanu`	- ip:port as in 'ip' being the ip of this machine?
+2008-10-17T17:07:00.000Z	Akhanu`	jokeusa	yes
+2008-10-17T17:08:00.000Z	jokeusa	Akhanu`	: iptables v1.3.8: IP address not permitted
+2008-10-17T17:09:00.000Z	Akhanu`	jokeusa	"iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j DNAT --to ip.of.host:3128
+2008-10-17T17:09:00.000Z	Akhanu`	jokeusa	omit the quote (")
+2008-10-17T17:10:00.000Z	jokeusa	Akhanu`	- you mean '--to-destination ip.of.host:3128'?
+2008-10-17T17:12:00.000Z	Akhanu`	jokeusa	no. just try with "--to"
+2008-10-17T17:14:00.000Z	Akhanu`	jokeusa	actually, it's the same  "--to" or "--to-destination" now I checked.
+2008-10-17T17:15:00.000Z	jokeusa	Akhanu`	- didnt work....got FF set to run w/o setting any proxy(transparent), Squid3 is set on 'http_access deny localhost', and i still got net access
+2008-10-17T17:16:00.000Z	Akhanu`	jokeusa	what happens when you stop the proxy service altogether? Can you still browse ?
+2008-10-17T17:17:00.000Z	Akhanu`	jokeusa	while having that rule still in place of course
+2008-10-17T17:18:00.000Z	jokeusa	Akhanu`	- just did /etc/init.d/squid3 stop, still can browse net
+2008-10-17T17:19:00.000Z	Akhanu`	jokeusa	I'll check something too. seems odd
+2008-10-17T17:19:00.000Z	jokeusa	Akhanu`	- just to check, after stopping Squid i've set FF to run through it, nope, no net access
+2008-10-17T17:19:00.000Z	jokeusa	Akhanu`	- it all seems that port forwarding isnt working at all...
+2008-10-17T17:20:00.000Z	jokeusa	Akhanu`	-btw, i do need 'echo 1 > /proc/sys/net/ipv4/ip_forward' in order for forwarding to work, right? (because i do have it set on 1)
+2008-10-17T17:21:00.000Z	Akhanu`	jokeusa	your machine is acting as a gateway for others? If yes, you need that.
+2008-10-17T17:22:00.000Z	jokeusa	Akhanu`	- nope, its a stand-alone machine that needs Squid to filter pornography and other weird stuff because children are accessing it (and yes, i plan on installing Dansguardian, and maybe clamav later after i figure out how to set port forwarding)

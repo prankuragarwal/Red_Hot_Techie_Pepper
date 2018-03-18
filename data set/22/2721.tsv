@@ -1,0 +1,22 @@
+2012-08-06T16:07:00.000Z	jahid		when i do "ls -l" what are the 3rd and 4th column means? normally they show user name
+2012-08-06T16:07:00.000Z	iceroot	jahid	username and group
+2012-08-06T16:08:00.000Z	iceroot	jahid	and if you for example deleted that user, the uid and gui is shown
+2012-08-06T16:10:00.000Z	jahid	iceroot	drwxr-xr-x  2 ec-developer root         4096 2012-08-06 13:55 projects      <---- so on this the ec-developer is the creator? and root is the owner?
+2012-08-06T16:11:00.000Z	iceroot	jahid	ec-developer is the owner, root is the group
+2012-08-06T16:11:00.000Z	iceroot	jahid	owner group other  is the order
+2012-08-06T16:11:00.000Z	jahid	iceroot	isnt it other way around?
+2012-08-06T16:11:00.000Z	iceroot	jahid	no
+2012-08-06T16:12:00.000Z	iceroot	jahid	man chown
+2012-08-06T16:13:00.000Z	iceroot	jahid	and you have a user named ec-developer and a group named root
+2012-08-06T16:13:00.000Z	iceroot	jahid	if you dont have them ls would show the uid and gui instead of the real names
+2012-08-06T16:13:00.000Z	iceroot	jahid	getent passwd | grep ec-developer
+2012-08-06T16:13:00.000Z	iceroot	jahid	getent group | grep root
+2012-08-06T16:14:00.000Z	jahid	iceroot	when i do "cat /etc/group" i do not see any group named root.
+2012-08-06T16:14:00.000Z	iceroot	jahid	always use getent
+2012-08-06T16:14:00.000Z	iceroot	jahid	because its also reading ldap and other sources for users and groups
+2012-08-06T16:16:00.000Z	jahid	iceroot	i do not have any user named "ec-developer", but I do have a group.
+2012-08-06T16:16:00.000Z	iceroot	jahid	impossible
+2012-08-06T16:16:00.000Z	iceroot	jahid	outout of "id ec-developer"
+2012-08-06T16:17:00.000Z	iceroot	jahid	if that is not finding anything, ls would show for example 1000 instead of ec-developer
+2012-08-06T16:17:00.000Z	iceroot	jahid	as i sais, you have a user called ec-developer
+2012-08-06T16:17:00.000Z	iceroot	jahid	with the uid 1010

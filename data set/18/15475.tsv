@@ -1,0 +1,18 @@
+2005-03-18T13:44:00.000Z	maney_		hello
+2005-03-18T13:44:00.000Z	maney_		I want to report about conflict at package system.
+2005-03-18T13:45:00.000Z	maney_		if I try to install k3b, and then apt system try to install kcontrol.
+2005-03-18T13:45:00.000Z	maney_		and kcontrol try to overwrite at /usr/bin/kcmshell.
+2005-03-18T13:45:00.000Z	maney_		so it is killed by broken pipe.
+2005-03-18T13:45:00.000Z	maney_		anyone in here try to install k3b?
+2005-03-18T13:46:00.000Z	crimsun	maney_	what package/version is conflicting with that file?
+2005-03-18T13:47:00.000Z	maney_	crimsun	kcontrol_4%3a3.3.2-1ubuntu7_i386.deb
+2005-03-18T13:48:00.000Z	crimsun	maney_	hmm, it's installed fine here.
+2005-03-18T13:49:00.000Z	crimsun	maney_	dpkg -S /usr/bin/kcmshell
+2005-03-18T13:50:00.000Z	crimsun	maney_	dpkg -l kdelibs-bin|grep ^ii
+2005-03-18T13:51:00.000Z	crimsun	maney_	paste the output of the following in #flood: apt-cache policy kdelibs-bin
+2005-03-18T13:54:00.000Z	crimsun	maney_	hmm. Must have been updated within the past 6 hours.
+2005-03-18T13:55:00.000Z	crimsun	maney_	sec, running dist-upgrade
+2005-03-18T13:56:00.000Z	crimsun	maney_	did you use apt-get, aptitude, synaptic, or dselect?
+2005-03-18T14:04:00.000Z	crimsun	maney_	try running sudo aptitude dist-upgrade
+2005-03-18T14:04:00.000Z	crimsun	maney_	using aptitude, I was able to install that package just fine
+2005-03-18T14:05:00.000Z	maney_	crimsun	yes I'll

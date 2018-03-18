@@ -1,0 +1,22 @@
+2004-12-17T12:13:00.000Z	rattboi		I downloaded a vanilla 2.6.9 kernel
+2004-12-17T12:13:00.000Z	rattboi		how do I get my current kernel config in there?
+2004-12-17T12:14:00.000Z	crimsun	rattboi	cp /boot/config-`uname -r` /usr/src/linux-2.6.9/.config
+2004-12-17T12:14:00.000Z	crimsun	rattboi	cd /usr/src/linux-2.6.9 && make oldconfig
+2004-12-17T12:14:00.000Z	crimsun	rattboi	make sure you read up (search google) on the initrd procedure
+2004-12-17T13:34:00.000Z	crimsun	rattboi	if you're not sure, select the default
+2005-04-27T16:25:00.000Z	crimsun	rattboi	no. Hardware mixing requires _hardware_ support.
+2005-04-27T16:25:00.000Z	crimsun	rattboi	at best if your hardware doesn't support that, you'll have to use software.
+2005-04-27T16:25:00.000Z	rattboi	crimsun	I have hardware support, I believe. It's just hard to set up
+2005-04-27T16:26:00.000Z	crimsun	rattboi	what sound chipset?
+2005-04-27T16:27:00.000Z	crimsun	rattboi	yes, yours does, but Nvidia cannot release the specs for that hardware, hence you're stuck with the standard ac97 support.
+2005-04-27T16:27:00.000Z	crimsun	rattboi	blame them, not ALSA.
+2005-04-27T16:28:00.000Z	crimsun	rattboi	you can always use dmix with alsa
+2005-04-27T16:29:00.000Z	crimsun	rattboi	yes, at the alsa-lib level
+2005-04-27T16:31:00.000Z	crimsun	rattboi	you don't need one. Use plug:dmix
+2005-04-27T16:31:00.000Z	crimsun	rattboi	it's the device you use.
+2005-04-27T16:31:00.000Z	crimsun	rattboi	for instance, tell aplay -Dplug:dmix foo.wav
+2005-04-27T16:31:00.000Z	crimsun	rattboi	or you'd tell xmms (or b-m-p) to use plug:dmix
+2005-04-27T16:32:00.000Z	rattboi	crimsun	how do I make that system-wide?
+2005-04-27T16:32:00.000Z	crimsun	rattboi	redefine pcm.!default to use the dmix plugin
+2005-04-27T16:33:00.000Z	crimsun	rattboi	there is, it's called ALSA.
+2005-04-27T16:34:00.000Z	crimsun	rattboi	unfortunately it was designed for developers, not end users

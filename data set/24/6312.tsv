@@ -1,0 +1,24 @@
+2005-11-20T13:58:00.000Z	jacobkm		Hey, folks - do I have to do something "special" to make Ubuntu recognize a very large (hardware) RAID5? I've got a 3.4T array that's only showing up as 1.3 TB.
+2005-11-20T14:00:00.000Z	maswan	jacobkm	there is a problem with >2TB for scsi, you need to make sure that all the equipment supports it
+2005-11-20T14:01:00.000Z	jacobkm	maswan	ok, how would I check that
+2005-11-20T14:01:00.000Z	maswan	jacobkm	most raid controllers only support <=2TB volumes
+2005-11-20T14:01:00.000Z	jacobkm	maswan	the controller seems to have no problem with it
+2005-11-20T14:01:00.000Z	jacobkm	maswan	at least, I can manage it in the raid card's bios
+2005-11-20T14:01:00.000Z	maswan	jacobkm	and I think the same applies to the scsi card and drives, you also need large block devices
+2005-11-20T14:02:00.000Z	maswan	jacobkm	the limit might be in in the raid card's scsi-talk, not in it's management-talk
+2005-11-20T14:03:00.000Z	maswan	jacobkm	you can make sure that large block devices is enabled in the kernel
+2005-11-20T14:03:00.000Z	jacobkm	maswan	where would I check for that? modprobe?
+2005-11-20T14:03:00.000Z	maswan	jacobkm	it is a kernel option, so, hmm, /proc/config.gz?
+2005-11-20T14:04:00.000Z	jacobkm	maswan	there's some lines in dmesg about loading large scsi device drivers, so it looks like it is.
+2005-11-20T14:04:00.000Z	jacobkm	maswan	the partition tool in the installer recognizes the size just fine and lets me partition it
+2005-11-20T14:05:00.000Z	maswan	jacobkm	oh, interesting. but it does not come up after the first reboot+
+2005-11-20T14:05:00.000Z	jacobkm	maswan	yes, that's correct
+2005-11-20T14:06:00.000Z	jacobkm	maswan	rather, it came up with an error about superblock sizes which fsck fixed, but now the device is 1/3 of it's actual size.
+2005-11-20T14:06:00.000Z	maswan	jacobkm	CONFIG_LBD is the relevant option
+2005-11-20T14:07:00.000Z	jacobkm	maswan	zcat /proc/config.gz | grep LBD shows "CONFIG_LBD=1"
+2005-11-20T14:08:00.000Z	maswan	jacobkm	=1, interesting, do you know if that is the same thing as =y? :)
+2005-11-20T14:09:00.000Z	maswan	jacobkm	ok, so not that. what filesystem did you put on the filesystem?
+2005-11-20T14:10:00.000Z	jacobkm	maswan	ext3, noatime
+2005-11-20T14:10:00.000Z	maswan	jacobkm	Ok. I have no further experience to help you, I think.
+2005-11-20T14:10:00.000Z	maswan	jacobkm	other than perhaps try xfs and see if that works?
+2005-11-20T14:13:00.000Z	maswan	jacobkm	please tell me how it turns out, if you try it. I'm curious. All our hw raid controllers are limtied to 2TB right now though, I think.

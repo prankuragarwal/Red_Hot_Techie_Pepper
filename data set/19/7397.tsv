@@ -1,0 +1,19 @@
+2011-07-12T12:31:00.000Z	ikonia	eddiemonge	no
+2011-07-12T12:32:00.000Z	eddiemonge	ikonia	what is it supposed to be? i see /etc/shells but it says its not a folder. do i just use that as the shell prompt?
+2011-07-12T12:32:00.000Z	ikonia	eddiemonge	open it and view the contents of the file
+2011-07-12T12:34:00.000Z	eddiemonge	ikonia	/usr/bin/git-shell is not in there. how do i enable it? adding it doesnt seem to change anyting
+2011-07-12T12:35:00.000Z	ikonia	eddiemonge	for a shell to be classed as a "login" shell, it needs to be in that file
+2011-07-12T12:36:00.000Z	eddiemonge	ikonia	hmm then how do i set git-shell? all the tutorials seem to imply that it just works
+2011-07-12T12:37:00.000Z	ikonia	eddiemonge	ls -la /usr/bin/git-shell
+2011-07-12T12:38:00.000Z	eddiemonge	ikonia	-rwxr-xr-x 1 root root 426224 2011-03-11 02:15 /usr/bin/git-shell
+2011-07-12T12:38:00.000Z	ikonia	eddiemonge	where did you get git-shell from ?
+2011-07-12T12:39:00.000Z	eddiemonge	ikonia	it was just there. maybe from doing aptitude install git git-core
+2011-07-12T12:40:00.000Z	ikonia	eddiemonge	can you run git-shell now ?
+2011-07-12T12:41:00.000Z	eddiemonge	ikonia	no, i get fatal: Interactive git shell is not enabled. hint: ~/git-shell-commands should exist and have read and execute access.  that folder doesnt exist in the home directory and creating it doesnt change anything. i feel like im supposed to copy stuff into there but that doesnt seem right
+2011-07-12T12:42:00.000Z	ikonia	eddiemonge	ok - so the good news is, you know it's a limitation of the shell in it's current state, not a problem with it not being a login shell
+2011-07-12T12:42:00.000Z	eddiemonge	ikonia	thats good news?
+2011-07-12T12:43:00.000Z	ikonia	eddiemonge	ok, google shows a few patch submits on git-help - the problem appears to be that the "COMMAND" directory needs to be present and have write permissions on it
+2011-07-12T12:44:00.000Z	ikonia	eddiemonge	where the command directory is on your system I don't know, but the code suggests it's in your home dir
+2011-07-12T12:44:00.000Z	ikonia	eddiemonge	http://git.661346.n2.nabble.com/PATCH-shell-Rewrite-documentation-and-improve-error-message-td5445842.html
+2011-07-12T12:47:00.000Z	eddiemonge	ikonia	hmm i guess the folder just needed to be created with the proper permissions. thanks for the help
+2011-07-12T12:48:00.000Z	ikonia	eddiemonge	no problem

@@ -1,0 +1,24 @@
+2012-05-01T03:59:00.000Z	devinus		is noexec on a /var partition a good idea?
+2012-05-01T03:59:00.000Z	Menno	devinus	not for /var/tmp
+2012-05-01T04:00:00.000Z	devinus	Menno	why would noexec be bad for /var/tmp?
+2012-05-01T04:00:00.000Z	Menno		"On GNOME, you can also directly open the virtual folder fonts:/ (within a Nautilus window, choose Go -> Location or press Ctrl+L) and drag and drop fonts into this folder"
+2012-05-01T04:00:00.000Z	Menno	devinus	I can think of a few examples of programs that generate temp files they expect to execute
+2012-05-01T04:00:00.000Z	devinus		hrm
+2012-05-01T04:00:00.000Z	Menno		Oracle installer maybe.
+2012-05-01T04:00:00.000Z	Menno		Dunno, give it a try and see what happens.
+2012-05-01T04:00:00.000Z	Menno		nosuid seems safe.
+2012-05-01T04:00:00.000Z	devinus	Menno	another question, where is nosuid actually useful for?
+2012-05-01T04:01:00.000Z	Menno		when inserting untrusted media
+2012-05-01T04:01:00.000Z	devinus		what does suid do?
+2012-05-01T04:01:00.000Z	Menno		if a non-root user can insert media which is exec and not nosuid, they can gain root.
+2012-05-01T04:01:00.000Z	Menno		setuid programs run as the user (and group, if setgid) that owns the file.
+2012-05-01T04:01:00.000Z	Menno		The most obvious example of such a program is /usr/bin/sudo
+2012-05-01T04:02:00.000Z	devinus	Menno	okay, so i want suid on e.g. /home if i have stuff in my ~/bin right?
+2012-05-01T04:04:00.000Z	devinus		ah
+2012-05-01T04:05:00.000Z	devinus		one very last question
+2012-05-01T04:05:00.000Z	devinus		noexec on /boot
+2012-05-01T04:05:00.000Z	devinus		does that make sense?
+2012-05-01T04:05:00.000Z	devinus		i mean, isn't the kernel being "executed" ?
+2012-05-01T04:07:00.000Z	devinus		ah okay
+2012-05-01T04:07:00.000Z	devinus		great thanks
+2012-05-01T04:07:00.000Z	Menno	devinus	setuid on a directory has no meaning, and setgid means folders created in it will inherit the parent folder's group instead of the user's group by default.

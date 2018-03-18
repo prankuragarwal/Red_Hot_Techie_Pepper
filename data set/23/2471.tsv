@@ -1,0 +1,23 @@
+2009-03-19T08:16:00.000Z	Ish		what irc program would run in the other screens?
+2009-03-19T08:17:00.000Z	Ish		is there a place where boot errors would be logged?
+2009-03-19T08:19:00.000Z	Ish		anyone? boot error logs? where would those be located ?
+2009-03-19T08:19:00.000Z	bernz	Ish	probably /var/log/messages
+2009-03-19T08:19:00.000Z	bernz	Ish	e.g. 'cat /var/log/messages | less'
+2009-03-19T08:25:00.000Z	Ish	bernz	naw, that didn't have it.  It's a problem that's been happening every reboot, it says something about "Had to boot into a shell"
+2009-03-19T08:26:00.000Z	bernz	Ish	hmm, sorry, haven't heard of that  :-/
+2009-03-19T08:27:00.000Z	Ish	bernz	how would i screencap something like that? since i don't know where it's being logged (if at all)  cameraphone work?
+2009-03-19T08:28:00.000Z	bernz	Ish	hard to say; i've tried camphones before, but the quality is usually too low to make out text clearly... can you tell what the failure involves, in terms of hardware or software?
+2009-03-19T08:29:00.000Z	Ish	bernz	apci? maybe?
+2009-03-19T08:30:00.000Z	bernz	Ish	well, i recognize "APIC" (advanced PIC) and "ACPI" (power mgmt); maybe you mean one of those?
+2009-03-19T08:30:00.000Z	Ish	bernz	acpi looks closer
+2009-03-19T08:31:00.000Z	bernz	Ish	maybe in that case, try resetting and going into your BIOS settings, and disabling all power management-related stuff, and reboot
+2009-03-19T08:31:00.000Z	Ish	bernz	kk, will try that in a bit
+2009-03-19T08:33:00.000Z	bernz	Ish	in the meantime, maybe do a bit of reading on ACPI to learn of its typical quirks and whether or not you are experiencing those sorts of problems (suggesting that it's a likely cause)
+2009-03-19T08:50:00.000Z	Ish	bernz	i will have some cameraphone pics for you
+2009-03-19T09:00:00.000Z	Ish	bernz	http://i42.tinypic.com/20aq4jt.jpg
+2009-03-19T09:02:00.000Z	bernz	Ish	oh yeah, so it's suggesting that you disable the ACPI with a kernel option: 'pci=noacpi'... you can read a little about how to specify kernel options
+2009-03-19T09:02:00.000Z	bernz	Ish	[repost due to flood] oh yeah, so it's suggesting that you disable the ACPI with a kernel option: 'pci=noacpi'... you can read a little about how to specify kernel options
+2009-03-19T09:04:00.000Z	bernz	Ish	you might need to adjust your bootloader (GRUB?) to give you a chance to specify kernel options
+2009-03-19T09:04:00.000Z	Ish	bernz	i do use grub, would i add the pci=noacpi?
+2009-03-19T09:06:00.000Z	bernz	Ish	get GRUB to "wait" for you (showing a menu or something), then you can add boot options (a single key command)
+2009-03-19T09:07:00.000Z	Ish	bernz	wait? it waits for a short bit already

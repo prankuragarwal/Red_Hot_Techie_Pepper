@@ -1,0 +1,19 @@
+2007-09-29T11:32:00.000Z	Ashfire908		is there a way to immediaty stop an uninterruptableprocess?
+2007-09-29T11:33:00.000Z	Thirsteh	Ashfire908	kill -9 <pid> will absolutely, positively, kill anything but a zombie process
+2007-09-29T11:33:00.000Z	Thirsteh	Ashfire908	think of it as pulling the power plug for that particular application :)
+2007-09-29T11:36:00.000Z	Thirsteh	Ashfire908	what argument are you specifying? You need the Process ID of the application you wish to kill before you can
+2007-09-29T11:38:00.000Z	Thirsteh	Ashfire908	if you can't kill it it's probably a zombie process. Those shouldn't consume any CPU time
+2007-09-29T11:38:00.000Z	Ashfire908	Thirsteh	it's not a zombie
+2007-09-29T11:39:00.000Z	Thirsteh	Ashfire908	kill -9 <PID> will kill -anything- that's not a zombie. There's no way an app can catch that signal and/or ignore it
+2007-09-29T11:39:00.000Z	Ashfire908	Thirsteh	what if the app is so lost it can't do anything at all
+2007-09-29T11:41:00.000Z	Thirsteh	Ashfire908	try whipping up a terminal, type: top    - the process consuming CPU should be at the top of the list, along with its PID. kill -9 that PID
+2007-09-29T11:42:00.000Z	Thirsteh	Ashfire908	iirc you said xchat did this? Try killing the xchat process and not aplay
+2007-09-29T11:43:00.000Z	Thirsteh	Ashfire908	with a '-9' switch?
+2007-09-29T11:43:00.000Z	Thirsteh	Ashfire908	can you paste the output of 'ps ax' to http://paste.ubuntu-nl.org
+2007-09-29T11:49:00.000Z	Thirsteh	Ashfire908	kill -9 9651
+2007-09-29T11:55:00.000Z	Thirsteh	Ashfire908	the "D" in the stat column indicates a zombie process. xchat was the parent process spawning all of the aplay's
+2007-09-29T11:55:00.000Z	Thirsteh	Ashfire908	all of the processes are likely still there, but are resources still being used?
+2007-09-29T11:55:00.000Z	Thirsteh	Ashfire908	and sorry for killing your xchat while we were talking, I realize that was a bit counterproductive :)
+2007-09-29T11:56:00.000Z	Thirsteh	Ashfire908	you can ignore the zombies, they'll go away whenever you reboot
+2007-09-29T11:58:00.000Z	Thirsteh	Ashfire908	the only other process seeming to consume resources on your system is Firefox, and it's not a lot. You can try 'killall aplay' to kill any of the aplay's that may still be running but aren't zombies
+2007-09-29T11:58:00.000Z	Thirsteh	Ashfire908	sound configuration for what, xchat?

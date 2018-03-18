@@ -1,0 +1,18 @@
+2006-01-08T08:08:00.000Z	rottenapl		strange and serious problem: i just got done doing some work to my xbox HDD, which required me to boot from a linux cd and do some stuff with my main 2 drives disconnected. well, when i plugged my drives back in when i was done, grub no longer works -- when i try to load linux, it says Filesystem type unknown, partition type 0x7, and Error 17: cannot mount selected partition. When i try to load the windows partition, it says someth
+2006-01-08T08:08:00.000Z	rottenapl		any ideas?!
+2006-01-08T08:08:00.000Z	rottenapl		the bios detects my drives as usual
+2006-01-08T08:08:00.000Z	rottenapl		something similar about the filesystem type not being recognized
+2006-01-08T08:09:00.000Z	psusi	rottenapl	did you reconnect the drives in the same order they were before?
+2006-01-08T08:09:00.000Z	rottenapl	psusi	one is SATA and one is IDE
+2006-01-08T08:09:00.000Z	rottenapl	psusi	it's the exact same configuration as before i unplugged them... there is NO way that anything i did on the livecd could have affected them, since they were unplugged
+2006-01-08T08:10:00.000Z	rottenapl	psusi	when i was in here the other day i got some help fixing grub from its command line following an HDD switch in here... i can't remember what i did to reinstall it
+2006-01-08T08:12:00.000Z	psusi	rottenapl	well, partition type 7 is NTFS, so it sounds like grub is trying to boot an NTFS partition
+2006-01-08T08:12:00.000Z	psusi	rottenapl	which it can't do
+2006-01-08T08:12:00.000Z	psusi	rottenapl	did you change the boot order in your bios?
+2006-01-08T08:13:00.000Z	psusi	rottenapl	my guess is that you have managed to get the bios to swap the order of the two drives
+2006-01-08T08:14:00.000Z	psusi	rottenapl	so grub is trying to access the wrong drive since they are backwards
+2006-01-08T08:16:00.000Z	rottenapl	psusi	weren't you in here when i was getting grub set up the other day?
+2006-01-08T08:17:00.000Z	psusi	rottenapl	try swapping it
+2006-01-08T08:17:00.000Z	psusi	rottenapl	possibly... a lot goes on around here ;)
+2006-01-08T08:18:00.000Z	psusi	rottenapl	yea... and you have the stage 1 grub loader installed on both disks... so when they got swapped, that part worked, but it couldn't load the OS because it was looking on the wrong drive
+2006-01-08T08:19:00.000Z	psusi	rottenapl	just try to boot normally

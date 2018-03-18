@@ -1,0 +1,24 @@
+2010-02-16T08:46:00.000Z	zeleftikam		hi all :) brand new ubuntu user here, installed 9.10 Server on brand new hardware, can't get networking going. it is physically linked by ethernet to my router, the light on the mobo is green, the cable check in the BIOS runs successfully. any idea where to start?
+2010-02-16T08:47:00.000Z	Shirakawasuna	zeleftikam	open up a terminal, type 'ifconfig' and tell us what's there (if necessary, copy it to pastebin.ca manually)
+2010-02-16T08:48:00.000Z	zeleftikam	Shirakawasuna	ipconfig: command not found
+2010-02-16T08:48:00.000Z	Shirakawasuna	zeleftikam	ipconfig is for dos.  try ifconfig :)
+2010-02-16T08:48:00.000Z	Shirakawasuna	zeleftikam	at least, tell me if it lists eth0 (or something similar)
+2010-02-16T08:48:00.000Z	Shirakawasuna	zeleftikam	aha
+2010-02-16T08:49:00.000Z	Shirakawasuna	zeleftikam	that's the problem :)
+2010-02-16T08:49:00.000Z	Shirakawasuna	zeleftikam	see what 'ifconfig eth0 up' does
+2010-02-16T08:49:00.000Z	Shirakawasuna	zeleftikam	if you type ifconfig afterwards, does eth0 appear?
+2010-02-16T08:49:00.000Z	Shirakawasuna	zeleftikam	oh, sorry, you might need to do sudo.  'sudo ifconfig eth0 up'
+2010-02-16T08:50:00.000Z	Shirakawasuna	zeleftikam	see what knoppies said
+2010-02-16T08:51:00.000Z	Shirakawasuna	zeleftikam	try 'sudo ifconfig eth1 up'.
+2010-02-16T08:51:00.000Z	zeleftikam	Shirakawasuna	okay, that ran without complaints
+2010-02-16T08:52:00.000Z	Shirakawasuna	zeleftikam	type 'ifconfig' again.  Is eth1 there?
+2010-02-16T08:52:00.000Z	zeleftikam	Shirakawasuna	yes.
+2010-02-16T08:52:00.000Z	Shirakawasuna	zeleftikam	type 'iwconfig'.  What does it say for eth1?
+2010-02-16T08:53:00.000Z	zeleftikam	Shirakawasuna	^
+2010-02-16T08:53:00.000Z	Shirakawasuna	zeleftikam	sweet
+2010-02-16T08:53:00.000Z	Shirakawasuna	zeleftikam	I'm not sure if ubuntu has dhcpcd... try running 'dhcpcd eth1'
+2010-02-16T08:54:00.000Z	Shirakawasuna	zeleftikam	try unplugging and replugging the ethernet cable
+2010-02-16T08:54:00.000Z	zeleftikam	Shirakawasuna	good thought. one moment
+2010-02-16T08:55:00.000Z	zeleftikam	Shirakawasuna	no magic
+2010-02-16T08:58:00.000Z	Shirakawasuna	zeleftikam	maybe
+2010-02-16T08:58:00.000Z	Shirakawasuna	zeleftikam	cross your fingers ;)

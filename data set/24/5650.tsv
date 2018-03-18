@@ -1,0 +1,24 @@
+2006-05-31T07:24:00.000Z	Bimmerman1911		now i tried both umask=777 and umask=666 and both give me no rights att all!?
+2006-05-31T07:26:00.000Z	Bimmerman1911		So it should be umask=000??
+2006-05-31T07:28:00.000Z	Bimmerman1911		the funny thing with linux is that to do the most common and loical thing that most people would want to do is the hardest to do and nobody knows how to do it
+2006-05-31T07:28:00.000Z	Bimmerman1911		i just want to be able to use my vfat partition
+2006-05-31T07:29:00.000Z	Bimmerman1911		umask=000 works but some folders on the vfat partition it has now write rights... how can this be?
+2006-05-31T07:30:00.000Z	Bimmerman1911		shouldnt umask controll everything on the partition alike?
+2006-05-31T07:32:00.000Z	pectissimo	Bimmerman1911	 umask is what specifies the default permissions of newly created files.  Files with attributes already set remain with those attributes until changed.
+2006-05-31T07:33:00.000Z	Bimmerman1911	pectissimo	so if i want all files to be full acess what do i put in fstab?
+2006-05-31T07:33:00.000Z	pectissimo	Bimmerman1911	 Well, I'd make sure you have, "rw" in the options field.
+2006-05-31T07:34:00.000Z	Bimmerman1911	pectissimo	i have, in fstab is says vfat    rw,users,iocharset=utf8,umask=000
+2006-05-31T07:35:00.000Z	pectissimo	Bimmerman1911	 Oh, I see, you already do.  So test it out.  Mount it and create a file and check the perms.  Just make sure you are writing to a directory that has permissions which allow it.
+2006-05-31T07:40:00.000Z	pectissimo	Bimmerman1911	 umask=000 is equivalent to having the default attributes on newly created files set to mode 777.  You want, "umask=000" in your fstab, not chmod.
+2006-05-31T07:40:00.000Z	Bimmerman1911	pectissimo	i have umask=000 but it doesent giv me full rights to some directorys
+2006-05-31T07:42:00.000Z	pectissimo	Bimmerman1911	 umask sets the default permissions for --->  NEWLY CREATED <-- files, not existing ones!  So, to answer you question, some directories apparently have permissions that disallow you to create files in them.
+2006-05-31T07:43:00.000Z	Bimmerman1911	pectissimo	and if i use chmod does that effekt old and new files?
+2006-05-31T07:43:00.000Z	pectissimo	Bimmerman1911	 Yes.
+2006-05-31T07:44:00.000Z	Bimmerman1911	pectissimo	so chmod=777 it is then
+2006-05-31T07:45:00.000Z	pectissimo	Bimmerman1911	 Sorry about my flaky satellite connection!  It's a struggle to even stay connected is seems!
+2006-05-31T07:46:00.000Z	pectissimo	Bimmerman1911	 Nope!
+2006-05-31T07:47:00.000Z	Bimmerman1911	pectissimo	why?
+2006-05-31T07:48:00.000Z	pectissimo	Bimmerman1911	 chmod is not a legal option for fstab.  Use umask.
+2006-05-31T07:48:00.000Z	Bimmerman1911	pectissimo	haha, and that takes me back to step 1
+2006-05-31T07:49:00.000Z	Bimmerman1911	pectissimo	if i put owner=xxxx and dont put any umask att all would that give any rights to xxxx?
+2006-05-31T07:50:00.000Z	pectissimo	Bimmerman1911	 Set up your fstab file with umask.  Then, mount it and manually change the permissions of the dir(s)/files that you need access to.

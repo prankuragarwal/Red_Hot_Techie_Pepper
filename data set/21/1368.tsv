@@ -1,0 +1,21 @@
+2011-03-13T14:07:00.000Z	scarleo		Hi, NFS entries in /etc/fstab are only mounted automatically on first login. How can I automount them also when switching user?
+2011-03-13T14:07:00.000Z	Dr_Willis	scarleo	 i would think if the fstab entry was correct. it wouldmount at Boot time. Not login.
+2011-03-13T14:08:00.000Z	scarleo	Dr_Willis	Yes, you are right. But that makes the entries only work on first login, not when I switch user
+2011-03-13T14:08:00.000Z	Dr_Willis	scarleo	 mine work at boot time.. befor anyone even logs in..
+2011-03-13T14:09:00.000Z	Dr_Willis	scarleo	 double check your fstab entries perhaps for starters
+2011-03-13T14:11:00.000Z	scarleo	Dr_Willis	Ok, this is my fstab: http://pastebin.com/QYAbkW2T Do you see anything wrong with it?
+2011-03-13T14:12:00.000Z	Dr_Willis	scarleo	 well the only option you have is auto,users... so Im guessign the 'users' option is what you are not needing..
+2011-03-13T14:13:00.000Z	scarleo	Dr_Willis	This setup does no mount when switching user, if I do sudo mount -a it mounts just fine but won't automount
+2011-03-13T14:13:00.000Z	Dr_Willis	scarleo	 that would seem to be allowing users to mount/unmount the nfs share.. is that even needed?
+2011-03-13T14:13:00.000Z	scarleo	Dr_Willis	I thought so but I'll try without
+2011-03-13T14:13:00.000Z	Dr_Willis	scarleo	 EXACTLY what the users option is supposed to do...
+2011-03-13T14:13:00.000Z	scarleo	Dr_Willis	Let users mount the nfs share, otherwise root is needed
+2011-03-13T14:14:00.000Z	Dr_Willis	scarleo	 at boot time . it would be mounted anyway
+2011-03-13T14:14:00.000Z	scarleo	Dr_Willis	Ok, might be dependant on how the NFS is shared, but I'll try without 'users'
+2011-03-13T14:16:00.000Z	Dr_Willis	scarleo	 read up at -> https://help.ubuntu.com/community/SettingUpNFSHowTo
+2011-03-13T14:24:00.000Z	scarleo	Dr_Willis	Thanks, I've read that page. Tried now with no 'users' option but still same problem. First time I login Fileserver is mounted but if I log out and then back in it's not mounted anymore
+2011-03-13T14:25:00.000Z	Dr_Willis	scarleo	  that autofs tool mounts them on first access. perhaps that would suite your needs.
+2011-03-13T14:26:00.000Z	Dr_Willis	scarleo	 i just set mine up in fstab and have a /media/NFS/othermachines   mountpoint i used to use.
+2011-03-13T14:28:00.000Z	scarleo	Dr_Willis	Well that is yet another daemon running but sure, I'll give it a try.
+2011-03-13T14:29:00.000Z	Dr_Willis	scarleo	 i have never had users unmonting nfs shares. so you may want to double check that guide.
+2011-03-13T14:29:00.000Z	Dr_Willis	scarleo	 you can even set up /home/ to be a nfs share.  so users having controll is defainatly not needed :)

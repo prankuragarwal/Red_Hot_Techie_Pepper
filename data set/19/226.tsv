@@ -1,0 +1,19 @@
+2012-06-12T13:35:00.000Z	glitsj16	fishbait	trying to follow your thread ... you mentioned getting it to work but not reviving a reboot, editing /etc/dhcp/dhclient.conf is known to fix that part of the puzzle... have you tried that already?
+2012-06-20T08:42:00.000Z	glitsj16	fishbait	you can add a kernel param to set your resume device via /etc/default/grub, add ' resume=UUID=...' to the GRUB_CMDLINE_LINUX_DEFAULT variable (you can get that UUID by running 'sudo blkid') .. a 'sudo update-grub' is needed at the end of all this
+2012-06-20T08:45:00.000Z	glitsj16	fishbait	no problem, you'll need to edit /etc/default/grub as superuser, can you do that?
+2012-06-20T08:48:00.000Z	glitsj16	fishbait	that'll do just fine, so 'sudo nano /etc/default/grub', make the above changes and update grub yes
+2012-06-20T08:57:00.000Z	glitsj16	fishbait	did you set it to the UUID outputted by 'sudo blkid' for your swap?
+2012-06-20T08:57:00.000Z	glitsj16	fishbait	yes
+2012-06-20T08:59:00.000Z	glitsj16	fishbait	http://www.webupd8.org/2012/04/things-to-tweak-after-installing-ubuntu.html has instructions on what to do next that might otherwise interfer, check if you've done this (under the 'Get hubernate back' heading
+2012-06-20T09:03:00.000Z	glitsj16	fishbait	did you reboot before trying ? i mean, you did go straight from running 'sudo update-grub' to 'sudo pm-hibernate'?
+2012-06-20T09:12:00.000Z	glitsj16	fishbait	any errors in /var/log/syslog and/or /var/log/pm-hibernate.log ?
+2012-06-20T09:15:00.000Z	fishbait	glitsj16	huh ext4-fs sdb5 remounted opts: errorss=remount-ro
+2012-06-20T09:15:00.000Z	fishbait	glitsj16	huh i can't find pm-hibernate log
+2012-06-20T09:18:00.000Z	glitsj16	fishbait	can't see what exactly is happening from that message i'm afraid
+2012-06-20T09:21:00.000Z	glitsj16	fishbait	that always helps, alas i'm 10 minutes away from taking my daughter to school, so if i may suggest you put up your pastebins here and anyone can chime in .. if you post a link to a question on the ubuntu forums i'll catch-up later okay
+2012-06-20T09:22:00.000Z	glitsj16	fishbait	did your system hibernated in earlier ubuntu versions?
+2012-06-20T09:23:00.000Z	glitsj16	fishbait	well, i would look into the correct working of your swap first, and work up the chain from there
+2012-06-20T09:25:00.000Z	glitsj16	fishbait	goodluck (also with the sleeping)
+2012-06-21T02:22:00.000Z	fishbait	glitsj16	got hibernate working it turns out that the uuid listed in /etc/initramfs-tools/conf.d/resume was still set to the old swap partition
+2012-06-21T02:25:00.000Z	glitsj16	fishbait	happy to hear that you got that working
+2012-06-21T02:27:00.000Z	glitsj16	fishbait	did you already pastebin that (section) of your log?

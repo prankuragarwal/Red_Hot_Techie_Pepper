@@ -1,0 +1,18 @@
+2011-01-14T23:06:00.000Z	uchighlander		I am trying to get this tool compiled from source on ubuntu http://www.slac.stanford.edu/~abh/bbcp/ any help would be appreciated. I have installed the build essentials package and it appears the problem may be with the makefile.  Source here : http://www.slac.stanford.edu/~abh/bbcp/bbcp.tgz Thanks!
+2011-01-14T23:08:00.000Z	uchighlander		I've tried converting the rpms available on that site using alien to avoid building from source but still a no go
+2011-01-14T23:08:00.000Z	undecim	uchighlander	Don't use alien.
+2011-01-14T23:09:00.000Z	undecim	uchighlander	Can you give me a pastebin of you output you get when you try to compile?
+2011-01-14T23:09:00.000Z	uchighlander	undecim	why not?
+2011-01-14T23:09:00.000Z	undecim	uchighlander	Because it causes problems with dependencies, package name conflicts.... all kinds of stuff like that
+2011-01-14T23:10:00.000Z	undecim	uchighlander	You're probably just missing a -dev package or something.
+2011-01-14T23:10:00.000Z	uchighlander	undecim	  make: *** No rule to make target `Linuxunknown'.  Stop.
+2011-01-14T23:11:00.000Z	undecim	uchighlander	What command are you using to make?
+2011-01-14T23:12:00.000Z	undecim	uchighlander	 Are you on 64 or 32 bit?
+2011-01-14T23:14:00.000Z	undecim	uchighlander	Then try making with "make makeLinuxi386"
+2011-01-14T23:17:00.000Z	uchighlander	undecim	just sent you some output
+2011-01-14T23:18:00.000Z	undecim	uchighlander	Okay, I looked at the makefile again, and  I see that the default make calls another makefile, so it got called differently than I thought....
+2011-01-14T23:19:00.000Z	undecim	uchighlander	Open the make file and find "Linux:"
+2011-01-14T23:19:00.000Z	undecim	uchighlander	Then replace @make makeLinux`/bin/uname -i` with @make makeLinuxi386
+2011-01-14T23:20:00.000Z	undecim	uchighlander	Or alternatively, copy the makeLinuxi386 section to another labeled makeLinuxunknown
+2011-01-14T23:21:00.000Z	uchighlander	undecim	I went with @make makeLinuxi386
+2011-01-14T23:21:00.000Z	uchighlander	undecim	Ill run the make command you gave me again

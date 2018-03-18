@@ -1,0 +1,24 @@
+2010-09-02T18:06:00.000Z	jrib	minh	why not just use the local firefox and have your ssh connection setup a socks proxy?
+2010-09-02T18:07:00.000Z	minh	jrib	sound really interesting...how can you do that?
+2010-09-02T18:07:00.000Z	jrib	minh	when you ssh, run "ssh -D 1080 hostname", then in your local firefox preferences setup the socks proxy as localhost:1080
+2010-09-02T18:09:00.000Z	jrib	minh	you mean the remote firefox I guess?
+2010-09-02T18:09:00.000Z	minh	jrib	oh, yeah, sorry
+2010-09-02T18:09:00.000Z	jrib	minh	well does "xclock" work when you use ssh -X?
+2010-09-02T18:10:00.000Z	minh	jrib	yes, it does.
+2010-09-02T18:10:00.000Z	jrib	minh	what exactly do you run when you try to start firefox?
+2010-09-02T18:10:00.000Z	minh	jrib	it also works if there is NO firefox running on the local machine
+2010-09-02T18:12:00.000Z	minh	jrib	On the remote-machine I run: 'firefox &' or 'firefox -no-remote &' - neither of those work :-(
+2010-09-02T18:12:00.000Z	minh	jrib	but when I close all firefox sessions on the local machine...it suddenly works just fine
+2010-09-02T18:13:00.000Z	jrib	minh	and firefox -no-remote -P   ?
+2010-09-02T18:15:00.000Z	minh	jrib	it DOES start the profile-picker...but when I select 'default profile' (which is the one I use) it states: 'firefox cannot use the profile...already in use...'
+2010-09-02T18:16:00.000Z	jrib	minh	http://kb.mozillazine.org/Firefox_:_FAQs_:_Run_more_than_one_instance_in_Linux helpful?  I can find no documentation for "-a"...
+2010-09-02T18:16:00.000Z	jrib	minh	heh just noticed that page is dated 2006
+2010-09-02T18:18:00.000Z	minh	jrib	kbrosnan: hm...what to do now? don't you guys have the same problem?
+2010-09-02T18:18:00.000Z	jrib	minh	http://support.mozilla.com/tiki-view_forum_thread.php?locale=it&comments_parentId=419932&forumId=1
+2010-09-02T18:19:00.000Z	jrib	minh	just close the remote instance I guess
+2010-09-02T18:20:00.000Z	minh	jrib	yeah..that's exaclty my problem described in this thread
+2010-10-31T15:37:00.000Z	jrib	minh	ps | grep $$   is probably a decent way
+2010-10-31T15:39:00.000Z	minh	jrib	that's actually works quite well...thank you very much! But what does $$ stand for?
+2010-10-31T15:40:00.000Z	jrib	minh	$$ returns the pid of the current process.  By the way « ps -p $$ » is nicer because you won't have the problem of grepping 1234 if the pid is 123
+2010-10-31T15:41:00.000Z	minh	jrib	oh damn...sure $$ stands for the current pid...sorry, I actually do know that...thanks for that reminder!
+2010-10-31T15:41:00.000Z	minh	jrib	very kind

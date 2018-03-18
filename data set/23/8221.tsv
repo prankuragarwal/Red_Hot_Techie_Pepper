@@ -1,0 +1,23 @@
+2004-12-04T10:47:00.000Z	jjh	jmhodges	man grub-install
+2004-12-04T10:48:00.000Z	jmhodges	jjh	i've..
+2004-12-04T10:48:00.000Z	jmhodges		argh..
+2004-12-04T10:50:00.000Z	jmhodges	jjh	that doesn't work at all, it gives me issues about missing /lib files
+2004-12-04T10:50:00.000Z	jmhodges		grub-install --root-directory=/mnt/hda1/boot/grub/ /dev/hda
+2004-12-04T10:50:00.000Z	jmhodges		cp: listing attributes of `//lib/grub/i386-pc/stage1': Unknown error 524
+2004-12-04T10:51:00.000Z	jjh	jmhodges	did you mount your ubuntu partition?
+2004-12-04T10:51:00.000Z	jmhodges	jjh	well yes
+2004-12-04T10:51:00.000Z	jmhodges	jjh	and i also try /mnt/hda1
+2004-12-04T10:52:00.000Z	jjh	jmhodges	chroot into it and try running grub-install
+2004-12-04T10:53:00.000Z	jmhodges	jjh	that doesn't work since chroot does not create the proper /devs
+2004-12-04T10:53:00.000Z	jmhodges		er.. /dev's
+2004-12-04T10:53:00.000Z	jmhodges		i've been down this road before..
+2004-12-04T10:53:00.000Z	jjh		ok
+2004-12-04T10:54:00.000Z	jmhodges	jjh	/sbin/grub-install: line 479: /dev/null: Permission denied
+2004-12-04T10:54:00.000Z	jmhodges		The file /boot/grub/stage1 not read correctly.
+2004-12-04T10:54:00.000Z	jmhodges		the first of those two is repeated ~10 times
+2004-12-04T10:54:00.000Z	jjh		you're root too?
+2004-12-04T10:54:00.000Z	jjh		oh, I see what you mean
+2004-12-04T10:55:00.000Z	jmhodges	jjh	yes, i am :)
+2004-12-04T10:56:00.000Z	jmhodges	jjh	its a root terminal, and then i tossed sudo on top of that just to be sure
+2004-12-04T10:57:00.000Z	jjh	jmhodges	so there are no dev's under the chrooted directory?
+2004-12-04T10:59:00.000Z	jmhodges	jjh	no, chroot just doesn't make the proper devs.. even though im root, it claims that /dev/null cannot be touched by grub-install

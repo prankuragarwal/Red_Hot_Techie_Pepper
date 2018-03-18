@@ -1,0 +1,24 @@
+2010-07-19T00:03:00.000Z	magnetron	cablop	https://help.ubuntu.com/10.04/installation-guide/amd64/minimum-hardware-reqts.html
+2010-07-19T00:04:00.000Z	magnetron	cablop	if you don't want to waste any space i can recommend you set up LVM. you can easily expand the size of a file system using that system. you can also shrink partitions, but almost as simple as growing them
+2010-07-19T00:05:00.000Z	cablop	magnetron	i never used LVM... i'm afraid of messing things with it.... can i recover lost partitions from it, for example?
+2010-07-19T00:06:00.000Z	magnetron	cablop	i'm not sure what you mean with "recover lost partitions". you can make backups and you can make snapshots of the filesystem at a given moment.
+2010-07-19T00:11:00.000Z	cablop	magnetron	i want to do in the future a RAID 1 array so i think the simplier way is using real paretitions, i wonder if i can do that in the future with LVM
+2010-07-19T00:13:00.000Z	magnetron	cablop	do you have a physical RAID card? most software RAIDs (the one you enable in BIOS) are not supported in Linux
+2010-07-19T00:13:00.000Z	cablop	magnetron	i want to go with software raid in linux
+2010-07-19T00:14:00.000Z	magnetron	cablop	yes you can combine LVM and RAID. it suits alot of use cases
+2010-07-19T00:22:00.000Z	cablop	magnetron	i never uses LVM before.... mmmm welll i'll read those guides and came with an idea
+2010-07-19T00:25:00.000Z	magnetron	cablop	LVM is very flexible. i use LVM and created my file systems with "just enough" free space. if i need more i just grow them
+2010-07-19T00:27:00.000Z	magnetron	cablop	i don't even need to reboot or unmount to grow them! you can also move the file system from one physical place to another, transparently
+2010-07-19T00:27:00.000Z	cablop	magnetron	to move to another place? hot?
+2010-07-19T00:27:00.000Z	magnetron	cablop	yeah
+2010-07-19T00:33:00.000Z	cablop	magnetron	wow... well i don't know how to combine the LVM and a raid 1 thing... it sounds good enough, but... mmmm
+2010-07-19T00:33:00.000Z	cablop	magnetron	cause what i want is a raid 1, meaning mirroring disks
+2010-07-19T00:42:00.000Z	magnetron	cablop	i would use a more advanced backup system than RAID1. i'd use rdiff-backup. focus on backing up the file system, not the physical discs
+2010-07-19T00:45:00.000Z	cablop	magnetron	rdiff? well, what i want to backup are simple files like img and mp3, and wanted to use raid1 just to make them easier to manage, and easier to replace the fil;es, i'm just uusing and old machine and willing to make it the file repository, and put a few other things on it
+2010-07-19T00:46:00.000Z	cablop	magnetron	i also want to be able to access my linux files from windows or a live CD with not much effort... but indeed this LVM thing catched my attention
+2010-07-19T00:47:00.000Z	cablop	magnetron	and i don't want to exactly backup the file system... it's not a big deal for me, the data is more important and i think to dettach the disk and put in another disk is good enough... well, but i'm curios about the rdiff thing and the snapshots
+2010-07-19T00:51:00.000Z	cablop	magnetron	well, sorry to ask too much, but cause i got interested but i don't know this system and i have to create a system NOW, i want to make the best decision
+2010-07-19T00:52:00.000Z	cablop	magnetron	,  i have a single disk, i want to setup i with LVM and then when i got a second disk convert the system into raid1, can i? another question, can i mount a lvm into a new system and see this lvm or do i have to convfigure too many things?
+2010-07-19T00:55:00.000Z	magnetron	cablop	you can see this disk and all its LVM filesystems in any OS that supports LVM. it's a little more complicated compared to an ordinary partition but that is the price you pay for having partitions that are EXACT the size you need. if you later install an extra HDD you can move, copy or grow the file system onto the new drive
+2010-07-19T00:57:00.000Z	cablop	magnetron	and what happens to a disk with LVM if  it's extended to two hard disks and one just fail, hardware failure, do i lose the LVM volumes?
+2010-07-19T00:57:00.000Z	magnetron	cablop	yes. i recommend backups.

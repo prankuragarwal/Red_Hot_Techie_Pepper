@@ -1,0 +1,19 @@
+2012-11-01T13:27:00.000Z	Kartagis		!xen | ikonia This is the only thing I've followed
+2012-11-01T13:29:00.000Z	_cronus_	Kartagis	it is also provided by libc-xen, which is a dependency of xen-hypervisor. maybe it has something to do with library load path
+2012-11-01T13:31:00.000Z	Kartagis	_cronus_	libc6-xen is also installed
+2012-11-01T13:33:00.000Z	_cronus_	Kartagis	yes, that's what i mean. there are 2 libc.so.6 files in your system. maybe it tries to load the wrong one. ldd /bin/bash may give you a hint which one it tries to load.
+2012-11-01T13:35:00.000Z	Kartagis	_cronus_	it tries to load /lib/i386-linux-gnu/tls/i686/nosegneg/libc.so.6, which I also have
+2012-11-01T13:36:00.000Z	_cronus_	Kartagis	you are running the xen-enabled kernel when you run this command right?
+2012-11-01T13:36:00.000Z	Kartagis	_cronus_	I've just thought that
+2012-11-01T13:37:00.000Z	_cronus_	Kartagis	try sudo ldconfig
+2012-11-01T13:39:00.000Z	Kartagis	_cronus_	do I do anything else afterwards?
+2012-11-01T13:41:00.000Z	_cronus_	Kartagis	reboot to your previous kernel.
+2012-11-01T13:49:00.000Z	Kartagis	_cronus_	^
+2012-11-01T13:53:00.000Z	_cronus_	Kartagis	could you check that you have /etc/ld.so.conf.d/i686-linux-gnu.conf and that it contains /lib/i386-linux-gnu ?
+2012-11-01T13:54:00.000Z	Kartagis	_cronus_	yes and yes
+2012-11-01T13:56:00.000Z	_cronus_	Kartagis	sorry, i can't think of anything else. :(
+2012-11-01T13:56:00.000Z	Kartagis	_cronus_	what causes a kernel panic?
+2012-11-01T13:58:00.000Z	_cronus_	Kartagis	an invalid kernel state usually
+2012-11-01T13:58:00.000Z	_cronus_	Kartagis	which means... anything out of the ordinary
+2012-11-01T14:22:00.000Z	_cronus_	Kartagis	i thought of something else. there is a link in /lib/ld-linux.so.2 that points to the library loader.
+2012-11-01T14:25:00.000Z	Kartagis	_cronus_	/lib/ld-linux.so.2 -> i386-linux-gnu/ld-2.15.so

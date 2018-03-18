@@ -1,0 +1,18 @@
+2008-06-21T10:34:00.000Z	HybridZero		Does anyone here happen to have a guide on setting up an FTP server which I can use as a PHP testing server?
+2008-06-21T10:35:00.000Z	HybridZero		I assume I'd need to map the ftp server to /var/www and somehow allow write access to that directory, but I'm not sure how to go about it, or even if there's a different preferred method rather than mapping to /var/www and messing with permissions
+2008-06-21T10:35:00.000Z	aixenv	HybridZero	: why not just use a webserver?
+2008-06-21T10:35:00.000Z	aixenv	HybridZero	: and ftp sends over plaintext use sftp,scp etc secure protocols
+2008-06-21T10:35:00.000Z	HybridZero	aixenv	That's what I'm going for, I'm just trying to set up FTP access to simplify transferring my files into /var/www
+2008-06-21T10:36:00.000Z	aixenv	HybridZero	: use rsync
+2008-06-21T10:37:00.000Z	aixenv	HybridZero	: cd to/path/you/wanna/transfer ; rsync -av . $user@$server-you-want-files-transferred-to:/path/to/store/files/on/server/ (if within your local network, if outside use -e ssh)
+2008-06-21T10:39:00.000Z	aixenv	HybridZero	: use winscp
+2008-06-21T10:39:00.000Z	HybridZero	aixenv	scp uses ssh to transfer right?
+2008-06-21T10:39:00.000Z	aixenv	HybridZero	: yes sir :)
+2008-06-21T10:40:00.000Z	aixenv	HybridZero	: winscp is a winblows app /gui to utilize scp worksnice i use it a ton at work when dealing with windows servers@work
+2008-06-21T10:40:00.000Z	HybridZero	aixenv	Yep, I've used winscp in the past actually in other situations
+2008-06-21T10:41:00.000Z	aixenv	HybridZero	: if you're doing transfer from doze to linux ; options are winscp or install cygwin and then use rsync like i stated :)
+2008-06-21T10:41:00.000Z	aixenv	HybridZero	: if that were my project.. i'd install cygwin, install rsync, and use rsync, i love rsync i use it on a daily basis multiple times a day
+2008-06-21T10:43:00.000Z	aixenv	HybridZero	: no sir it'd be fine
+2008-06-21T10:44:00.000Z	HybridZero	aixenv	Okay, I'll grab cygwin and give it a shot. Thanks for all your help, you are awesome :)
+2008-06-21T11:56:00.000Z	aixenv	HybridZero	: if you wanna do root those you'd have to have PermitRootLogin yes in /etc/ssh/sshd_config
+2008-06-21T12:01:00.000Z	aixenv	HybridZero	: :) rsync is your friend man i use that 100 times a day lol

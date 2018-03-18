@@ -1,0 +1,21 @@
+2009-08-06T00:37:00.000Z	jerkman		hey all, just compiled a kernel for the first time, and upon sorting a couple of errors it is done and packaged! However... the package wont install
+2009-08-06T00:38:00.000Z	jerkman		http://pastebin.com/m561ac074 is the dpkg install stage
+2009-08-06T00:40:00.000Z	jerkman		anyone able to help?
+2009-08-06T00:41:00.000Z	jerkman		hey all, just compiled a kernel for the first time, and upon sorting a couple of errors it is done and packaged! However... the package wont install please help!
+2009-08-06T00:41:00.000Z	jerkman		http://pastebin.com/m561ac074 is the dpkg install stage
+2009-08-06T00:43:00.000Z	stefg	jerkman	you need nvidia-source and (possibly) module-assistant
+2009-08-06T00:43:00.000Z	jerkman	stefg	do i have to recompile? with those sources
+2009-08-06T00:44:00.000Z	jerkman		and where do i put them?>
+2009-08-06T00:45:00.000Z	stefg	jerkman	i think so... the problem is the nvidia-driver. the kernel expects it, but it's not guaranteed that it will build against 2.6.30....
+2009-08-06T00:46:00.000Z	jerkman	stefg	ah, ok, but where do i get those sources from?
+2009-08-06T00:47:00.000Z	stefg	jerkman	nvidia-driver == closed source ... only the 'adapter' is build from source
+2009-08-06T00:47:00.000Z	jerkman	stefg	yes, unless i choose open source driver :(. where do i get the 'adaptor' from?
+2009-08-06T00:47:00.000Z	stefg	jerkman	i have not fully investigated the problem, but your kernel build was succesful in general, you only have to deal with the nvidia specialities
+2009-08-06T00:49:00.000Z	jerkman	stefg	so where do i get it from...
+2009-08-06T00:49:00.000Z	stefg	jerkman	the 'adapter' is the nvidia.ko which adapts the nvidia driver blob (binary large object) to the kernel. When you build the 'driver' you actually only build the adapter
+2009-08-06T00:51:00.000Z	jerkman	stefg	ok, thanks - but please tell me HOW to get the source.
+2009-08-06T00:51:00.000Z	stefg	jerkman	package  nvidia-source
+2009-08-06T00:51:00.000Z	stefg		!info nvidia-source
+2009-08-06T00:52:00.000Z	stefg		!info nvidia-180-kernel-source | jerkman
+2009-08-06T00:53:00.000Z	jerkman	stefg	so where do i get it from...
+2009-08-06T00:53:00.000Z	stefg	jerkman	apt-get

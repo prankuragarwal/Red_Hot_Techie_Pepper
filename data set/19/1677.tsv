@@ -1,0 +1,19 @@
+2012-10-28T04:19:00.000Z	nrdb		I have a virbr0 setup, with a br_tap (192.168.122.254) interface attached.... I have some VirtualBox guests using bridge networking to virbr0... wireshark says that virbr0 is getting ARP packet looking for 192.168.122.254 , but not getting a response :-( ... when I ping from the host to 192.168.122.254 everything works fine... can anyone give me any pointers on what is wrong?
+2012-10-28T04:20:00.000Z	anadon	nrdb	context?  That might be more a dev channel question.  Anyways, routing on the host OS or phisical bridge?
+2012-10-28T04:22:00.000Z	nrdb	anadon	its is a virtual bridge .... the ping from the host (where the virtual bring and the tap inteface) is OK ... but I can't seem to ping from the VM ... even with the ARP requests appearing in the bridge interface.
+2012-10-28T04:23:00.000Z	anadon	nrdb	are there any firewalls?  Is the VM set up to return pings?  Many OS's ignore rouge traffic.
+2012-10-28T04:23:00.000Z	nrdb	anadon	you might need to install some -dev packages to get header files.
+2012-10-28T04:24:00.000Z	anadon	nrdb	I'm installing from arch -- I did that and nux still doesn't compile.  I've resorted to pulling from the git repo's and they still haven't worked.
+2012-10-28T04:24:00.000Z	nrdb	anadon	the VM is sending the pings not receiving them
+2012-10-28T04:25:00.000Z	nrdb	anadon	the VM is a fresh 12.04.1 install
+2012-10-28T04:25:00.000Z	anadon	nrdb	the VM part of the VM might be doing something.
+2012-10-28T04:27:00.000Z	nrdb	anadon	I am using VirtualBox for the VM there is an ARP request but no response from the tap interface.
+2012-10-28T04:29:00.000Z	anadon	nrdb	The packet is either being lost in the host OS or the VM part of the VM.  Check VM settings for networking and you host OS's networking and security settings.  In there has to be the answers.  Else its with virtual drivers at which point I'm out.
+2012-10-28T04:30:00.000Z	nrdb	anadon	I can see (via wireshark) that there is a ARP request... brctl says the tap interface is connected... but I dont get a response fro the ARP request from the tap interface
+2012-10-28T04:31:00.000Z	anadon	nrdb	tap?  What is the exact network setup?  This is in the details.
+2012-10-28T04:31:00.000Z	anadon	nrdb	brctl?
+2012-10-28T04:31:00.000Z	nrdb	anadon	a virtual bridge acts like a network hub doesn't it?
+2012-10-28T04:33:00.000Z	anadon	nrdb	No.  A bridge is directed somewhat.  Physical bridges actually are no longer fanufactured, rather switches are used which do have fairly precise redirection and can have security.
+2012-10-28T04:34:00.000Z	anadon	nrdb	Wikipedia networking bridge, networking hub, and networking switch--they'll give some preliminary groundwork for your setup.
+2012-10-28T04:36:00.000Z	nrdb	anadon	ok .. thanks
+2012-10-28T04:37:00.000Z	anadon	nrdb	sorry, the problem is in the fine details of your setup.  It's really hard to give a simple answer.

@@ -1,0 +1,23 @@
+2006-06-29T10:38:00.000Z	kvasov		hi. does anyone have any idea why my default ubuntu user is unable to browser /media/sd* folders? it used to work before i updated some packages for 6.06
+2006-06-29T10:38:00.000Z	kvasov		dr-xr-x--- 1 root plugdev 16384 2003-01-01 01:12 sdb1
+2006-06-29T10:39:00.000Z	kvasov		/dev/sda1       /media/sda1     ntfs    defaults,nls=utf8,umask=007,gid=46 0       1
+2006-06-29T10:39:00.000Z	kvasov		it's not  flash drive
+2006-06-29T10:40:00.000Z	kvasov		are my settings any different from the default 6.06 installation?
+2006-06-29T10:42:00.000Z	kvasov		and vmware is no longer starting in non root users
+2006-06-29T10:42:00.000Z	hyphenated	kvasov	the problem is your user isn't in the 'plugdev' group
+2006-06-29T10:42:00.000Z	kvasov	hyphenated	is that the default?
+2006-06-29T10:43:00.000Z	kvasov		usermod -G plugdev -a $user ?
+2006-06-29T10:44:00.000Z	kvasov	hyphenated	i used the usermod command to add myself to plugdev and still not result
+2006-06-29T10:44:00.000Z	hyphenated	kvasov	well, I didn't explicitly add myself to that group.
+2006-06-29T10:44:00.000Z	kvasov		so how does that work
+2006-06-29T10:44:00.000Z	hyphenated	kvasov	group changes take effect at login time
+2006-06-29T10:44:00.000Z	hyphenated	kvasov	run 'bash --login' inside your current terminal and see if it helps
+2006-06-29T10:45:00.000Z	kvasov	hyphenated	that works. but other things are still not working. how is it that you are able to have plugdev membership without being listed in the groups file?
+2006-06-29T10:46:00.000Z	hyphenated	kvasov	grep plugdev /etc/group and look for your user
+2006-06-29T10:47:00.000Z	kvasov	hyphenated	i added myself manually. yet, i am not in the audio group and audio is not working. i dont think the default installation had me in all these groups
+2006-06-29T10:47:00.000Z	kvasov		i am pretty sure i was in only one group
+2006-06-29T10:47:00.000Z	hyphenated	kvasov	the first user created via the installer should have been put in a bunch of groups
+2006-06-29T10:48:00.000Z	kvasov		what are those groups
+2006-06-29T10:49:00.000Z	kvasov	hyphenated	can you paste what groups i am supposed to be a part of?
+2006-06-29T10:49:00.000Z	hyphenated	kvasov	my user is in the following groups (first group is the same name as username): username adm disk dialout cdrom floppy audio dip video plugdev staff lpadmin scanner admin
+2006-06-29T10:49:00.000Z	kvasov	hyphenated	thanks.

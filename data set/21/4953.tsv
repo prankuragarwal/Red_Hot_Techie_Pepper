@@ -1,0 +1,21 @@
+2011-05-29T02:44:00.000Z	Usuario		ICEauthority help please
+2011-05-29T02:44:00.000Z	Usuario		actionparsnip http://ubuntuforums.org/showthread.php?p=10874214#post10874214
+2011-05-29T02:46:00.000Z	Usuario		actionparsnip, would you mind to explain how to use those commands, and what full lines do I have to write?
+2011-05-29T02:47:00.000Z	Usuario		actionparsnip, a, well I think I have used sudo gedit, but I dont recall what for
+2011-05-29T02:48:00.000Z	Usuario		actionparsnip, any suggestions to fix it?
+2011-05-29T02:49:00.000Z	ActionParsnip	Usuario	you will probably find the file is currently owned by root due to you using sudo with gui apps
+2011-05-29T02:44:00.000Z	ActionParsnip	Usuario	details please
+2011-05-29T02:45:00.000Z	ActionParsnip	Usuario	do commands like: sudo gedit    look familiar?
+2011-05-29T02:45:00.000Z	ActionParsnip	Usuario	or do you use: gksudo gedit     ?
+2011-05-29T02:47:00.000Z	ActionParsnip	Usuario	i'm not instructing as yet. they are questions
+2011-05-29T02:47:00.000Z	ActionParsnip	Usuario	do you use command like: sudo gedit
+2011-05-29T02:48:00.000Z	ActionParsnip	Usuario	thats why you have this issue. sudo is NOT suitable for gui apps like gedit
+2011-05-29T02:48:00.000Z	ActionParsnip	Usuario	if you boot to root recovery console and run: chown hihihi100:hihihi100 /home/hihihi100/.ICEauthority    then reboot, it will be fine
+2011-05-29T02:50:00.000Z	ActionParsnip	Usuario	did you chenge the hihihi100 user's home folder to the new name?
+2011-05-29T23:00:00.000Z	ActionParsnip	Usuario	set a password, makes things work
+2011-05-29T23:01:00.000Z	ActionParsnip	Usuario	yes, use root recovery mode and set a password
+2011-05-29T23:03:00.000Z	ActionParsnip	Usuario	hold shift at boot, select recovery mode, select root then you can run:  passwd foo    there (change foo for your username)
+2011-05-29T23:11:00.000Z	ActionParsnip	Usuario	add your user to the admin group in root recovery mode with: usermod -a -G admin dexter
+2011-05-29T23:12:00.000Z	ActionParsnip	Usuario	then dexter can use sudo, the users in the admin group can use sudo (and gksudo / kdesu)
+2011-05-29T23:16:00.000Z	ActionParsnip	Usuario	if you screw that file, you will cause all manner of issues, you can just add the user to the group and make life a LOT easier. Your choice
+2011-05-30T01:06:00.000Z	ActionParsnip	Usuario	different user, the name is just an abstraction

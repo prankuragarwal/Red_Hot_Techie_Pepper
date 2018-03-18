@@ -1,0 +1,19 @@
+2009-08-30T19:57:00.000Z	Mr_Kaizer		Greetings peeps. I'm having some trouble installing the ra2860 driver on my MSI Wind U-100. I've compiled it, but when i try the command: cp RT2860STA.dat /etc/Wireless/RT2860STA/RT2860STA.dat , I get the reply: cp: cannot create regular file `/etc/Wireless/RT2860STA/RT2860STA.dat': No such file or directory
+2009-08-30T19:57:00.000Z	Mr_Kaizer		Can anyone help?
+2009-08-30T19:59:00.000Z	arand	Mr_Kaizer	most likely because the /etc/Wireless/RT2860STA/ does not exist.
+2009-08-30T19:59:00.000Z	arand	Mr_Kaizer	make the folder first.
+2009-08-30T20:00:00.000Z	Mr_Kaizer	arand	It won't let me make the folder
+2009-08-30T20:02:00.000Z	arand	Mr_Kaizer	you'll need to borrow root permissions (since /etc/ is a "global system affecting" folder) use terminal and do "sudo mkdir /etc/Wireless/RT2860STA/"
+2009-08-30T20:03:00.000Z	Mr_Kaizer	arand	kk, thanks, will try now
+2009-08-30T20:03:00.000Z	arand	Mr_Kaizer	you'll also have to use sudo when copying the .dat file into there.
+2009-08-30T20:04:00.000Z	Mr_Kaizer	arand	mkdir: cannot create directory `/etc/Wireless/RT2860STA/': No such file or directory
+2009-08-30T20:05:00.000Z	arand	Mr_Kaizer	^ what legend2440 said, seems like the /etc/Wireless folder doesn't exist either, so you'll have to create it as well.
+2009-08-30T20:13:00.000Z	arand	Mr_Kaizer	are you sure the source from where you are copying the RT2860STA.dat file were correct?
+2009-08-30T20:14:00.000Z	Mr_Kaizer	arand	I wasn't in the right directory :P Dog
+2009-08-30T20:17:00.000Z	Mr_Kaizer	arand	and/or legend2440: insmod: error inserting 'rt2860sta.ko': -1 File exists
+2009-08-30T20:20:00.000Z	arand	Mr_Kaizer	then use rmmod to remove the old module first
+2009-08-30T20:23:00.000Z	Mr_Kaizer	arand	It says module is in use
+2009-08-30T20:28:00.000Z	arand	Mr_Kaizer	Try modprobe -r instead...
+2009-08-30T20:29:00.000Z	Mr_Kaizer	arand	ok
+2009-08-30T20:36:00.000Z	Mr_Kaizer	arand	and/or legend2440: FATAL: Module rt2860sta.ko not found.
+2009-08-30T20:38:00.000Z	arand	Mr_Kaizer	use lsmod to find the module name. It will not have a .ko ending.

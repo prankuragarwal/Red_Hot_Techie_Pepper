@@ -1,0 +1,19 @@
+2010-03-02T19:47:00.000Z	skabasje		hey. I want to install ubuntu from my flash drive, when i use unetboot and then try to boot from the flash drive, it says some file is missing. nltdr or something.... why?
+2010-03-02T19:49:00.000Z	rifter	skabasje	the nt boot loader is still on the boot sector, that's why you're getting ntldr errors
+2010-03-02T19:49:00.000Z	rifter	skabasje	windows boot loader
+2010-03-02T19:50:00.000Z	rifter	skabasje	well the error is coming from the windows boot loader being on whatever drive your bios is first booting.  if that is ndesirable you need to install a linux one like lilo or grub
+2010-03-02T19:55:00.000Z	rifter	skabasje	the windows being corrupt does not matter
+2010-03-02T19:55:00.000Z	rifter	skabasje	what you need to do if the drive that is booting with the windows boot loader is not something you need in your boot chain right now is change the boot order in your bios
+2010-03-02T19:57:00.000Z	rifter	skabasje	well, either the flash disk is not being booted or there is something wrong with what you've done there.. you say you installed ubuntu to the flash disk?
+2010-03-02T19:57:00.000Z	rifter	skabasje	you should boot to a livecd and see if you can see the partitions there
+2010-03-02T19:58:00.000Z	rifter	skabasje	ah
+2010-03-02T20:01:00.000Z	rifter	skabasje	well there's only two possibilities here.  either you have a windows boot loader on that flash drive or it's being passed over for a drive that does
+2010-03-02T20:02:00.000Z	rifter	skabasje	and unfortunately the best way to find out is to be able to boot into some environment where you can check the partitions and boot loader of that flash drive and make sure you have a bootable primary partitionon it and that the right bootloader is installed in the boot block
+2010-03-02T20:03:00.000Z	rifter	skabasje	right so that's my point
+2010-03-02T20:03:00.000Z	rifter	skabasje	you should be able to figure this out on your desktop
+2010-03-02T20:04:00.000Z	rifter	skabasje	does your desktop have a cd drive or is it an eeepc too?
+2010-03-02T20:04:00.000Z	rifter	skabasje	what os is the desktop running
+2010-03-02T20:05:00.000Z	rifter	skabasje	ok .. I haven't tried windows 7 but I wonder if it still has fdisk on the command line
+2010-03-02T20:05:00.000Z	rifter	skabasje	if it does you can at least see the partitions even though you can't mount them
+2010-03-02T20:07:00.000Z	rifter	skabasje	yes
+2010-03-02T20:07:00.000Z	rifter	skabasje	I don't think you can boot linux from an ntfs partition

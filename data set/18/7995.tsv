@@ -1,0 +1,18 @@
+2008-02-13T05:19:00.000Z	greencookie		Hm.. back to ubuntu after a four month Vista vacation.
+2008-02-13T05:20:00.000Z	greencookie		no bruenig?
+2008-02-13T05:20:00.000Z	Pelo	greencookie	 you think of vista as a vacation ????
+2008-02-13T05:22:00.000Z	Pelo	greencookie	 when you have a problem with your bank , do you releave the stress by banging on your fingers with a hammer ???
+2008-02-13T05:24:00.000Z	Pelo	greencookie	 I recommend researching the problem in the forum www.ubuntuforums.org
+2008-02-13T05:52:00.000Z	Pelo	greencookie	mount it
+2008-02-13T05:54:00.000Z	greencookie	Pelo	sorry am new to this how do I mount my external drive?
+2008-02-13T05:55:00.000Z	Pelo	greencookie	usb ?
+2008-02-13T05:56:00.000Z	greencookie	Pelo	yes USB
+2008-02-13T05:57:00.000Z	Pelo	greencookie	usb hdd should have mounted automaticlay, are you running native ubuntu or in a virtual machine ?
+2008-02-13T05:58:00.000Z	greencookie	Pelo	maybe its not mounting cuz its in NTFS format? could that be?
+2008-02-13T05:59:00.000Z	Pelo	greencookie	should mount as read only , try this , type blkid in the terminal see if you see the drive listed,   if it is ,  find the /dev/... for it ,  , make a mount point     sudo mkdir /media/ntfs-usb   then mount it  sudo mount -t ntfs /dev/.... /media/ntfs-usb
+2008-02-13T06:03:00.000Z	greencookie	Pelo	: here's my external drive as listed by blkid /dev/sdb1: UUID="6B6C8A2B6C89419" LABEL="External Drive" TYPE="ntfs"
+2008-02-13T06:03:00.000Z	greencookie	Pelo	so I should now create a mount directory and continue mounting it?
+2008-02-13T06:04:00.000Z	Pelo	greencookie	 sudo mkdir /media/ntfs-usb   then  sudo mount -t ntfs /dev/sdb1 /media/ntfs-usb
+2008-02-13T06:05:00.000Z	greencookie	Pelo	Failed due to " Mount is denied because NTFS is marked to be in use."
+2008-02-13T06:06:00.000Z	Pelo	greencookie	it would appear that the usb drive is already mounted,  check on your desktop for an icon for it
+2008-02-13T06:06:00.000Z	greencookie	Pelo	It worked! woot. I had to force it with " mount -t ntfs-3g /dev/sdb1 /media/ntfs-usb -o force"

@@ -1,0 +1,24 @@
+2010-09-23T15:51:00.000Z	purple101		st_: How do I remove 'quiet nosplash' from the command line?
+2010-09-23T15:51:00.000Z	erUSUL	purple101	edit /etc/default/grub and then run « sudo update-grub »
+2010-09-23T15:56:00.000Z	purple101	erUSUL	/etc/default/grub doens't exist. Also, how is removing 'quiet nosplash' going to stop it from crashing on boot?
+2010-09-23T15:56:00.000Z	erUSUL	purple101	what version of ubuntu?
+2010-09-23T15:57:00.000Z	purple101	erUSUL	10.04
+2010-09-23T15:57:00.000Z	erUSUL	purple101	fresh install or actualized from a old version?
+2010-09-23T15:57:00.000Z	purple101	erUSUL	Upgraded from older versions.
+2010-09-23T15:58:00.000Z	erUSUL	purple101	then maybe you still use grub1 in which case you have to edit /boot/grub/menu.lst
+2010-09-23T15:59:00.000Z	purple101	erUSUL	Yep, that looks right. Any idea why removing 'quiet nosplash' is going to make a difference?
+2010-09-23T16:00:00.000Z	erUSUL	purple101	dunno what the original problem was. removeing that lets you see all the debug/informative messages from the system during boot so you maybe can see wht the problem is
+2010-09-23T16:01:00.000Z	purple101	erUSUL	In my grub setup, it has 'quiet splash' instead of nosplash. Does this make a difference?
+2010-09-23T16:01:00.000Z	erUSUL	purple101	quiet splash is the default
+2010-09-23T16:01:00.000Z	purple101	erUSUL	But to see the debug messages, I should remove quiet splash?
+2010-09-23T16:01:00.000Z	erUSUL	purple101	yes
+2010-09-23T16:02:00.000Z	erUSUL	purple101	the line in menu.lst is this « # defoptions=quiet splash »
+2010-09-23T16:03:00.000Z	purple101	erUSUL	But I'm not inside that same installation of Ubuntu to which I am editing grub? I'm on a Live CD at the moment. Presumably sudo update-grup won't work then?
+2010-09-23T16:04:00.000Z	erUSUL	purple101	you would have to 1) chroot to the install to run the update-grub or 2) edit the kernel line of the entry you are insterested in 3) edit the entry during b oot in the grub menu
+2010-09-23T16:05:00.000Z	purple101	erUSUL	So I could alternatively just edit the command line at boot time when Grub shows?
+2010-09-23T16:05:00.000Z	erUSUL	purple101	yes
+2010-09-23T16:06:00.000Z	purple101	erUSUL	Ok, I'll do that now, and see what error it says. I'll have to quit IRC though in the meantime.
+2010-09-23T16:06:00.000Z	erUSUL	purple101	in grub1 you hit "e" when in the grub menu then edit the kernel line to remove the quiet splash words then press "b" to boot the modified entry iirc
+2010-09-23T16:07:00.000Z	purple101	erUSUL	Thanks.
+2010-09-23T16:23:00.000Z	purple101	erUSUL	Ok, by removing 'quiet splash', I see the loading commands & info, and then just get a black screen.
+2010-09-23T16:24:00.000Z	purple101	erUSUL	Just before the black screen, I hear the Ubuntu startup sound.

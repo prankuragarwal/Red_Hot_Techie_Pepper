@@ -1,0 +1,24 @@
+2012-08-04T18:17:00.000Z	Munz		hi! the update have broken my system , it missed up my vedio card driver or something that i can only start my laptop when i remove the driver more over it made my laptop slower .... o! the processor fan is noisy without a driver!!!!! so please help!
+2012-08-04T18:18:00.000Z	L3top	Munz	lspci -nn | grep VGA   in a terminal please
+2012-08-04T18:18:00.000Z	Munz	L3top	: ok ... 01:00.0 VGA compatible controller [0300]: Advanced Micro Devices [AMD] nee ATI RV620 [Mobility Radeon HD 3400 Series] [1002:95c4]
+2012-08-04T18:19:00.000Z	L3top	Munz	lspci -nnk | grep VGA -A2 | grep -i kernel
+2012-08-04T18:21:00.000Z	Munz	L3top	: i get this ....Kernel driver in use: radeon
+2012-08-04T18:21:00.000Z	L3top	Munz	apt-cache policy fglrx | grep -i installed
+2012-08-04T18:22:00.000Z	Munz	L3top	: Installed: (none)
+2012-08-04T18:25:00.000Z	Munz	L3top	: the screen did not start!!!!
+2012-08-04T18:26:00.000Z	Munz	L3top	: it works once every 10 or some tries so i removed it when it started
+2012-08-04T18:26:00.000Z	L3top	Munz	I am asking what DID you see, did bios post? Did it get past grub? Did you see a splash screen?
+2012-08-04T18:26:00.000Z	Munz	L3top	: nothing ... empty black , blank screen!!!
+2012-08-04T18:28:00.000Z	Munz	L3top	: sorry if i am not helping but it was like its still switched off ... nothing works despite some light indicators on the laptop
+2012-08-04T18:28:00.000Z	L3top	Munz	you are telling me your bios didn't post. That I have difficulty believing. You need to be accurate with me. Did you TRY getting into grub (pressing shift repeatedly during boot)?
+2012-08-04T18:35:00.000Z	L3top	Munz	what I am going to suggest you do is sudo apt-get install fglrx    and then gksudo gedit /etc/default/grub   and add add radeon.modeset=0  to the line GRUB_CMDLINE_LINUX_DEFAULT=         then save the file, and run sudo update-grub   and reboot.
+2012-08-04T19:03:00.000Z	L3top	Munz	You now have a resolution issue. "Did not work" is inaccurate. When you tried to boot previously, it crashed. Now you have a desktop with the wrong resolution. Open the catalyst control center and fix it.
+2012-08-04T19:39:00.000Z	Munz	L3top	: sorry but i adjusted the resolution but it still the same and the fan noise is still ... can i download the latest driver from ati website?
+2012-08-04T19:41:00.000Z	L3top	Munz	AMD/ATI has dropped support for your card in the new versions, so no. It will not work at all.
+2012-08-04T19:41:00.000Z	Munz	L3top	: does that mean i am stuck!!!!!
+2012-08-04T19:42:00.000Z	Munz	L3top	: how can i get back to the before the update files!!
+2012-08-04T19:43:00.000Z	Munz	L3top	: sorry for my bad english
+2012-08-04T19:44:00.000Z	L3top	Munz	I dont know what you updated, or how.
+2012-08-04T19:44:00.000Z	Munz	L3top	: i am not the guy for such things ... regarding the update , i am using the normal "update manager"
+2012-08-04T19:45:00.000Z	L3top	Munz	lsb_release -sc
+2012-08-04T19:49:00.000Z	L3top	Munz	was this a 12.04 install prior to your update? I am trying to figure out if you upgraded to a new distribution version.

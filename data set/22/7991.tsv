@@ -1,0 +1,22 @@
+2005-12-21T14:43:00.000Z	bondsgame101		arghhh, ati is soooo very annoying
+2005-12-21T14:44:00.000Z	bondsgame101		the pci-e in combination with the amd64 seems to be a common problem
+2005-12-21T14:45:00.000Z	bondsgame101		and i cant figure out how to get xorg to run in anything other than vesa
+2005-12-21T14:46:00.000Z	frogzoo	bondsgame101	^^
+2005-12-21T14:47:00.000Z	frogzoo	bondsgame101	gfx card is?
+2005-12-21T14:47:00.000Z	frogzoo	bondsgame101	u r on breezy, right?
+2005-12-21T14:48:00.000Z	frogzoo	bondsgame101	and you did add fglrx to /etc/modules ? (does insmod fglrx work)?
+2005-12-21T14:49:00.000Z	frogzoo	bondsgame101	you do the fglrx install per ^^
+2005-12-21T14:51:00.000Z	frogzoo	bondsgame101	hmm... does your mobo have onboard video? & this is PCI-e x850, not AGP?
+2005-12-21T14:52:00.000Z	frogzoo	bondsgame101	'sudo modprobe fglrx' & check /var/log/messages
+2005-12-21T14:55:00.000Z	frogzoo	bondsgame101	pastebin your /var/log/messages
+2005-12-21T14:58:00.000Z	frogzoo	bondsgame101	cat /var/log/messages - while you're at it, what do you get for 'sudo lsmod |grep -i fglrx'
+2005-12-21T15:02:00.000Z	frogzoo	bondsgame101	what do you get for 'sudo lsmod |grep -i fglrx'
+2005-12-21T15:03:00.000Z	frogzoo	bondsgame101	and how about 'sudo lspci |grep -i ati'
+2005-12-21T15:04:00.000Z	frogzoo	bondsgame101	do 'sudo insmod agpgart'
+2005-12-21T15:06:00.000Z	frogzoo	bondsgame101	pls pay attention, what do you get for 'sudo insmod agpgart'
+2005-12-21T15:07:00.000Z	frogzoo	bondsgame101	gotcha - think there's your problem - now need to figure out why
+2005-12-21T15:08:00.000Z	frogzoo	bondsgame101	'uname -a'
+2005-12-21T15:09:00.000Z	frogzoo	bondsgame101	not sure the fglrx drivers work on 64bit - pretty sure they don't - checking now
+2005-12-21T15:13:00.000Z	frogzoo	bondsgame101	"Note: Currently, ATI Drivers for AMD64 are not available in Breezy (Ubuntu 5.10)" - from https://wiki.ubuntu.com/BinaryDriverHowto/ATI - you'll need to run 32 bit
+2005-12-21T15:14:00.000Z	frogzoo	bondsgame101	or hang out in channel - maybe someone else has done this before
+2005-12-21T15:16:00.000Z	frogzoo	bondsgame101	there are ATI driver - https://support.ati.com/ics/support/default.asp?deptID=894&task=knowledge&folderID=27 - just a matter of getting them installed - but it might be messy - you might need to rebuild a kernel - anyway, good luck with it

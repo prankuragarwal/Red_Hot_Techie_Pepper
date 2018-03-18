@@ -1,0 +1,18 @@
+2007-05-04T11:20:00.000Z	Tenshi		has anyone here been successful getting postfix working with sasl authentication?
+2007-05-04T11:20:00.000Z	eck	Tenshi	yes, with dovecot sasl
+2007-05-04T11:22:00.000Z	Tenshi	eck	I can't seem to send email.  The logs always simply say that sasl authentication has failed.  I've tried a billion things, but can't figure out how to diagnose further
+2007-05-04T11:23:00.000Z	eck	Tenshi	you ought to first check the permissions on the sasl socket and make sure that postfix can see it if it's in a chroot
+2007-05-04T11:23:00.000Z	Tenshi	eck	postfix is chrooted into "/var/spool/postfix" by default, is it not?
+2007-05-04T11:23:00.000Z	eck	Tenshi	i believe so
+2007-05-04T11:24:00.000Z	Tenshi	eck	what authentication backend are you using?  (i.e. sasldb, pam, etc...)
+2007-05-04T11:24:00.000Z	eck	Tenshi	dovecot is using pam
+2007-05-04T11:25:00.000Z	Tenshi	eck	you keep mentioning dovecot.  I'm using the "sasl2-bin" package.  What does dovecot have to do with it?
+2007-05-04T11:26:00.000Z	eck	Tenshi	dovecot is another sasl implementation (you are using the cyrus implementation)
+2007-05-04T11:26:00.000Z	Tenshi	eck	which package provides that?
+2007-05-04T11:27:00.000Z	eck	Tenshi	what imap daemon are you using? i'm only using it because i'm using dovecot imap as well, which makes things simpler for me
+2007-05-04T11:27:00.000Z	Tenshi	eck	yeah, I'm using dovecot imaps atm
+2007-05-04T11:28:00.000Z	eck	Tenshi	there are docs on the dovecot wiki on doing postfix + sasl
+2007-05-04T11:29:00.000Z	eck	Tenshi	here are some notes I made when setting it up http://wiki.eklitzke.org/doku.php?id=tech:dovecot
+2007-05-04T11:30:00.000Z	Tenshi	eck	yeah, I've followed a bijillion different pages of docs.  Going back to the socket, is a file created when you start the saslauthd that points to the socket?
+2007-05-04T11:32:00.000Z	eck	Tenshi	i believe that the socket is created by the sasl daemon
+2007-05-04T12:09:00.000Z	Tenshi	eck	I got it.  It turns out that the sasl_domain =  was set to something other than blank

@@ -1,0 +1,22 @@
+2007-07-23T16:23:00.000Z	recon		My X refuses to start. I get a "no screens found" fatal error, even after doing a "sudo dpkg-reconfigure xserver-xorg".
+2007-07-23T16:23:00.000Z	ShackJack	recon	Can you pastebin your xorg.conf?
+2007-07-23T16:23:00.000Z	recon	ShackJack	i could try, but i'm stuck in a console-only.
+2007-07-23T16:24:00.000Z	ShackJack	recon	Erp... Oh, yeah... what driver you using?
+2007-07-23T16:24:00.000Z	recon	ShackJack	fglrx.
+2007-07-23T16:25:00.000Z	ShackJack	recon	Sure driver is installed ?
+2007-07-23T16:26:00.000Z	recon	ShackJack	on my integrated (this happened when I switched video cards) I went to restricted drivers and hit "Install FGLRX".
+2007-07-23T16:26:00.000Z	ShackJack	recon	So can you verify it's installed?
+2007-07-23T16:26:00.000Z	recon	ShackJack	by doing...?
+2007-07-23T16:27:00.000Z	ShackJack	recon	aptitude search xorg-driver-fglrx   there should be an "I" next to it...
+2007-07-23T16:28:00.000Z	recon	ShackJack	yeah, it's installed.
+2007-07-23T16:28:00.000Z	ShackJack	recon	Maybe remove - do update and reinstall ;)
+2007-07-23T16:29:00.000Z	recon	ShackJack	I also have a integrated, besides my dedicated, and I just thought that in dpkg-reconfigure, the default "Bus Identifier" might not be correct (pointing to the other card).
+2007-07-23T16:30:00.000Z	ShackJack	recon	Oh, sorry didn't catch that - what's the bus id now?
+2007-07-23T16:31:00.000Z	recon	ShackJack	PCI:1:5:0.
+2007-07-23T16:31:00.000Z	ShackJack	recon	My guess is PCI:1:0:0 :)
+2007-07-23T16:32:00.000Z	ShackJack	recon	You can lspci | grep -i blah   if you're looking for something specific...
+2007-07-23T16:32:00.000Z	recon	ShackJack	according to my LSPCI listing, i'm gonna try a different one, then try yours in case of failure.
+2007-07-23T16:35:00.000Z	recon	ShackJack	"(WW) fglrx: No matching Device section for instance (BusID PCI:1:5:0) found."
+2007-07-23T16:36:00.000Z	ShackJack	recon	That's from xorg not lspci (?)
+2007-07-23T16:37:00.000Z	ShackJack	recon	What about lspci | grep -i vga
+2007-07-23T16:41:00.000Z	ShackJack	recon	You still there?

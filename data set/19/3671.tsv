@@ -1,0 +1,19 @@
+2009-06-17T01:10:00.000Z	dlynes		In Debian, I configure the network in /etc/network/interfaces.  Where do I do the same thing in Ubuntu Jaunty?
+2009-06-17T01:11:00.000Z	dakarn	dlynes	nm-applet has a GUI
+2009-06-17T01:11:00.000Z	dlynes	dakarn	any text files, or console apps?
+2009-06-17T01:12:00.000Z	dlynes	dakarn	You mean /etc/NetworkManager/system-connections/*?
+2009-06-17T01:17:00.000Z	dlynes	dakarn	So what you're telling me is there's no way to get ubuntu to use /etc/network/interfaces?
+2009-06-17T01:18:00.000Z	dlynes	dakarn	Or to use the command line, instead of forcing me to use the gui for everything?
+2009-06-17T01:18:00.000Z	dakarn	dlynes	you can manually set everything with /etc/network/interfaces
+2009-06-17T01:18:00.000Z	dlynes	dakarn	but Jaunty didn't read it on boot up
+2009-06-17T01:19:00.000Z	dlynes	dakarn	I'm tried to set network aliases.... i.e. eth0:0, eth0:1, eth0:2, eth0:3, ...
+2009-06-17T01:20:00.000Z	dlynes	dakarn	s/tried/trying/
+2009-06-17T01:21:00.000Z	dakarn	dlynes	sudo /etc/init.d/networking restart
+2009-06-17T01:22:00.000Z	dakarn	dlynes	did that work?
+2009-06-17T01:23:00.000Z	dlynes	dakarn	No
+2009-06-17T01:25:00.000Z	dakarn	dlynes	can you ifdown eth1         then ifup eth1
+2009-06-17T01:26:00.000Z	dlynes	dakarn	It's working, as long as I don't put eth0 in /etc/network/interfaces
+2009-06-17T01:26:00.000Z	dlynes	dakarn	as soon as I put eth0's definition in there, and then reboot, it all goes to hell in a handbasket
+2009-06-17T01:27:00.000Z	dlynes	dakarn	/etc/network/interfaces doesn't get initialized during bootup, and I'm guessing that's because whenever interfaces gets loaded, it's before network-manager gets run, and so eth0 doesn't exist yet, and consequently I cannot assign virtual interfaces to it
+2009-06-17T01:28:00.000Z	dakarn	dlynes	one sec
+2009-06-17T01:37:00.000Z	dakarn	dlynes	are you getting eth0 no such device error?

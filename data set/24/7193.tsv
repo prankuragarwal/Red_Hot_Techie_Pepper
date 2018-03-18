@@ -1,0 +1,24 @@
+2005-07-18T12:51:00.000Z	khermans		can someone help me fix a GPG error after adding the Ubuntuguide.org extra repos?
+2005-07-18T12:52:00.000Z	khermans		W: GPG error: http://security.ubuntu.com hoary-security Release: The following signatures were invalid: BADSIG 40976EAF437D05B5 Ubuntu Archive Automatic Signing Key <ftpmaster@ubuntu.com>W: You may want to run apt-get update to correct these problems
+2005-07-18T12:54:00.000Z	khermans		Anyone know how to fix the BADSIG repository errors?
+2005-07-18T12:55:00.000Z	khermans		Anyone ssen this before --> W: GPG error: http://security.ubuntu.com hoary-security Release: The following signatures were invalid: BADSIG 40976EAF437D05B5 Ubuntu Archive Automatic Signing Key <ftpmaster@ubuntu.com>W: You may want to run apt-get update to correct these problems
+2005-07-18T12:57:00.000Z	bob2	khermans	gpg --keyserver subkeys.pgp.net --recv-key 40976EAF437D05B5 ; gpg --export 40976EAF437D05B5 | sudo apt-key add -
+2005-07-18T12:57:00.000Z	khermans	bob2	but why does this always happen?  shouldn't it be added automatically because the key is on the CD-ROM install?
+2005-07-18T12:58:00.000Z	bob2	khermans	presumably
+2005-09-21T11:11:00.000Z	bob2	khermans	yes
+2005-09-21T11:14:00.000Z	khermans	bob2	weird -- i dont see linux-k7 in Breezy
+2005-09-21T11:14:00.000Z	bob2	khermans	it's there, in the restricted section
+2005-09-21T11:16:00.000Z	bob2	khermans	well, paste your /etc/apt/sources.list to #flood
+2005-09-21T11:19:00.000Z	bob2	khermans	/etc/apt/sources.list, #flood
+2005-09-21T11:19:00.000Z	khermans	bob2	this is in breezy
+2005-10-01T12:56:00.000Z	khermans	bob2	you know anything about the resize partition option in the new Breezy install being broken?
+2005-10-01T12:57:00.000Z	bob2	khermans	no
+2005-10-01T12:57:00.000Z	bob2	khermans	if it's not working for you, please do file a bug
+2005-10-01T12:57:00.000Z	khermans	bob2	i have seen it on two machines now -- but never seen it work so dont know if it is a bug
+2005-10-01T12:58:00.000Z	bob2	khermans	sounds like a bug then
+2005-10-01T12:58:00.000Z	khermans	bob2	hrmm guess ill file it
+2005-10-01T12:58:00.000Z	khermans	bob2	have you seen it work?
+2005-10-01T12:59:00.000Z	bob2	khermans	no, but I know it does for other people
+2005-10-01T13:03:00.000Z	khermans	bob2	seems to be an issue
+2005-10-01T13:03:00.000Z	khermans	bob2	https://bugzilla.ubuntu.com/show_bug.cgi?id=16354
+2005-10-01T13:05:00.000Z	khermans	bob2	the bug says the installer failed on both amd64 and i386 install ISOs for Breezy ... the partitioner was causing the hang -- but I ran into both times on my own laptops.  Neither one worked ... very strange -- wonder if this is a laptop-only issue

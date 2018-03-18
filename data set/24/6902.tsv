@@ -1,0 +1,24 @@
+2005-06-18T14:09:00.000Z	xolotl_		Does anyone have any experience with Audigy cards?
+2005-06-18T14:10:00.000Z	crimsun	xolotl_	sure, what's up?
+2005-06-18T14:13:00.000Z	xolotl_	crimsun	I was just in winblows about 1 hour ago - decided to try Ubuntu on a Dell Dimension 8300.  so, I start up, most things seem OK, but I get /no/ sound what so ever - not even if I do a # cat /dev/urandom > /dev/dsp (etc.)
+2005-06-18T14:14:00.000Z	xolotl_	crimsun	yes, everything works properly under winblows.
+2005-06-18T14:14:00.000Z	crimsun	xolotl_	that's expected. Paste the output of amixer onto pastebin.com
+2005-06-18T14:15:00.000Z	xolotl_	crimsun	? pastebin.com?
+2005-06-18T14:15:00.000Z	crimsun	xolotl_	http://pastebin.com
+2005-06-18T14:16:00.000Z	xolotl_	crimsun	will try seth_k's suggestion first - if not...  brb
+2005-06-18T14:16:00.000Z	crimsun	xolotl_	that's the precise resolution
+2005-06-18T14:21:00.000Z	crimsun	xolotl_	then paste your amixer output onto pastebin.com
+2005-06-18T14:25:00.000Z	xolotl_	crimsun	http://pastebin.com/299056
+2005-06-18T14:27:00.000Z	crimsun	xolotl_	quite a few of your mixer elements are unmuted, which presents a problem
+2005-06-18T14:27:00.000Z	crimsun	xolotl_	it will take me a couple minutes to compile a list of changes you need to make; hang on.
+2005-06-18T14:27:00.000Z	xolotl_	crimsun	most of them were muted to start - still no sound
+2005-06-18T14:41:00.000Z	crimsun	xolotl_	sorry, getting around to your paste
+2005-06-18T14:42:00.000Z	xolotl_	crimsun	no worries - I've been searching elsewhere too.
+2005-06-18T14:51:00.000Z	xolotl_	crimsun	I have been checking a few things and it looks like the onboard intel8x0 soundcard is somehow being detected and used even though it's disabled in the bios
+2005-06-18T14:51:00.000Z	crimsun	xolotl_	cat /proc/asound/cards
+2005-06-18T14:51:00.000Z	crimsun	xolotl_	(in #flood)
+2005-06-18T14:53:00.000Z	xolotl_	crimsun	done
+2005-06-18T14:57:00.000Z	crimsun	xolotl_	ah.
+2005-06-18T14:57:00.000Z	crimsun	xolotl_	would you like to use your audigy by default?
+2005-06-18T15:00:00.000Z	crimsun	xolotl_	if you want to use the audigy by default, do: echo "options snd-intel8x0 index=-2" | sudo tee -a /etc/modprobe.d/alsa-base
+2005-06-18T15:00:00.000Z	xolotl_	crimsun	thanks for the help

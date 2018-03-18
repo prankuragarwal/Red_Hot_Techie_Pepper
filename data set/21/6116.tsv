@@ -1,0 +1,21 @@
+2008-12-12T09:59:00.000Z	fryguy		does hibernate (either swusp or an actual acpi hibernate) function correctly with an encrypted hard drive? (specifically, will the hard drive be encrypted after a hibernate, and will the machine hibernate and unhibernate correctly)
+2008-12-12T10:01:00.000Z	Wyzard	fryguy	suspend-to-RAM works fine with disk encryption
+2008-12-12T10:01:00.000Z	fryguy	Wyzard	i'm asking about hibernate, not suspend-to-ram
+2008-12-12T10:01:00.000Z	Wyzard	fryguy	suspend-to-disk won't because the decryption key, normally stored in RAM, gets written to dis, encrypted with itself
+2008-12-12T10:01:00.000Z	Wyzard	fryguy	well, depending on your setup it may be written to swapspace, but I use random encryption for swap
+2008-12-12T10:02:00.000Z	fryguy	Wyzard	so when i boot the system again, it won't ask me like it would during a normal boot?  What part of the boot process gets skipped to cause that to happen?
+2008-12-12T10:02:00.000Z	Wyzard		dunno, becuase I haven't used hibernate due to the aforementioned random-encrypted swap
+2008-12-12T10:02:00.000Z	fryguy	Wyzard	so, you aren't sure?
+2008-12-12T10:03:00.000Z	Wyzard		If you have it save your RAM to a file in the filesystem, in principle it should be possible to prompt you for the passphrase during startup, but I don't know whether that's actually supported
+2008-12-12T10:04:00.000Z	Wyzard		Saving to swap when the swap is random-encrypted is definitely impossible; the key in that case is not known to you, and stored only in RAM, so writing it to swapspace encrypted with that key (and erasing it from RAM) makes it unrecoverable
+2008-12-12T10:14:00.000Z	fryguy		does hibernate (either swusp or an actual acpi hibernate) function correctly with an encrypted hard drive? (specifically, will the hard drive be encrypted after a hibernate, and will the machine hibernate and unhibernate correctly)
+2008-12-12T10:15:00.000Z	Wyzard	fryguy	hibernating certainly won't decrypt the drive
+2008-12-12T10:15:00.000Z	Wyzard	fryguy	but you have to make sure you don't save the RAM somewhere unprotected (such as an unencrypted swap partition) since it contains the key
+2008-12-12T10:15:00.000Z	fryguy	Wyzard	? that doesn't make sense
+2008-12-12T10:15:00.000Z	Wyzard	fryguy	you'd asked whether the drive will be encrypted after a hibernate
+2008-12-12T10:16:00.000Z	Wyzard	fryguy	If it was encrypted before the hibernate, it'll still be encrypted afterward
+2008-12-12T10:16:00.000Z	Wyzard	fryguy	but if you're not careful you might expose the key
+2008-12-12T10:16:00.000Z	fryguy	Wyzard	does the hard drive get encrypted before the hibernate?
+2008-12-12T10:16:00.000Z	fryguy	Wyzard	i
+2008-12-12T10:16:00.000Z	fryguy	Wyzard	i'm not concerned at this point with exposing the key. I'm concerned with the 2 things I asked a question about
+2008-12-12T10:16:00.000Z	Wyzard	fryguy	Disk encryption means the hard drive is always encrypted, starting with when you install the system

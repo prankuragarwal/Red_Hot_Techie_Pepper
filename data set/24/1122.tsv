@@ -1,0 +1,24 @@
+2010-07-04T16:39:00.000Z	Dr_Willis	disharmony	 using 10.04 or what version?
+2010-07-04T16:39:00.000Z	Dr_Willis	disharmony	 i got some notes on removeing Plymouth so you get text mode :) no splasy gfx. no framebuffer
+2010-07-04T16:39:00.000Z	Dr_Willis	disharmony	 let me pastebin it
+2010-07-04T16:40:00.000Z	disharmony	Dr_Willis	that would be great, thanks.
+2010-07-04T16:40:00.000Z	Dr_Willis	disharmony	http://pastebin.com/7f1p9K0a
+2010-07-04T16:40:00.000Z	Dr_Willis	disharmony	 i blacklisted the fbmodule, and disabled teh plymouth and console service. that was doing some tweaking to the console also.
+2010-07-04T16:41:00.000Z	Dr_Willis	disharmony	 its worked on 2 of my machines just fine so far. I dont know what will happen if i have to fsck at boot.. not seen  any messages about that yet. :0
+2010-07-04T16:41:00.000Z	disharmony	Dr_Willis	ok this is nice, but this requieres a working installation in the first place, right ?
+2010-07-04T16:42:00.000Z	Dr_Willis	disharmony	 you cant even get to the console?  theres the 'text' option you can use to force it to a text mode. that wont even start GDM
+2010-07-04T16:42:00.000Z	Dr_Willis	disharmony	 you can edit the grub line at the grub menu  ---> linux /boot/vmlinuz-2.6.32-22-generic root=UUID=83bc3df7-b039-445c-82c9-e0c5ff235044 ro nofb
+2010-07-04T16:42:00.000Z	disharmony	Dr_Willis	I tried the text option as a kernel cmdline option, ran in to the same problem
+2010-07-04T16:42:00.000Z	Dr_Willis	disharmony	 to become -> linux /boot/vmlinuz-2.6.32-22-generic root=UUID=83bc3df7-b039-445c-82c9-e0c5ff235044 ro nofb
+2010-07-04T16:42:00.000Z	Dr_Willis	disharmony	 to become -> linux /boot/vmlinuz-2.6.32-22-generic root=UUID=83bc3df7-b039-445c-82c9-e0c5ff235044 text
+2010-07-04T16:43:00.000Z	disharmony	Dr_Willis	I did that, but lemme try it again to be really sure
+2010-07-04T16:43:00.000Z	Dr_Willis	disharmony	 whats not working then? :) i missed somthing.
+2010-07-04T16:44:00.000Z	disharmony	Dr_Willis	yep, even with text it seems to be swithcing to "some" graphics mode, or perhaps it's loading the nvidia driver which might screw things up
+2010-07-04T17:04:00.000Z	disharmony	Dr_Willis	well I have a usable screen now with another vga card...
+2010-07-04T17:08:00.000Z	Dr_Willis	disharmony	 Hmm.. /dev/ is supposed to autopopulate as needed when the various modules for devices load. Ive not needed to mknod stuff in years.
+2010-07-04T17:08:00.000Z	disharmony	Dr_Willis	well the kernel detects sda and sdb, but they are not in /dev ;)
+2010-07-04T17:09:00.000Z	Dr_Willis	disharmony	 so 'sudo fdisk -l /dev/sda' dosent show anything eh?
+2010-07-04T17:09:00.000Z	Dr_Willis	disharmony	 theres been some odd controller/drives missing issues ive heard of in 10.04 -
+2010-07-04T17:09:00.000Z	disharmony	Dr_Willis	unable to open sda; Dr_Willis I don't have any controllers, using iscsi
+2010-07-04T17:10:00.000Z	Dr_Willis	disharmony	 I kniow nothing about iScsi. so you are on your own.
+2010-07-04T17:10:00.000Z	Dr_Willis	disharmony	 you sure you got the proper modules loaded? somthing seems odd. :) perhaps file a bug report

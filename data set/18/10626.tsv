@@ -1,0 +1,18 @@
+2006-11-07T09:05:00.000Z	linux01		does anyone know how to get a sd media card reader on toshiba laptop to work with edgy?
+2006-11-07T09:06:00.000Z	Kingsqueak	linux01	should 'just work' on boot
+2006-11-07T09:06:00.000Z	Kingsqueak	linux01	look at 'dmesg | less' and see if you see it identified as an 'sd' device somewhere
+2006-11-07T09:11:00.000Z	linux01	Kingsqueak	dmesg | less doesn't show anything about sd device
+2006-11-07T09:11:00.000Z	Kingsqueak	linux01	hmm
+2006-11-07T09:13:00.000Z	Kingsqueak	linux01	you see any 'usb-storage' devices listed?
+2006-11-07T09:14:00.000Z	Kingsqueak	linux01	I have things like -> "Vendor: Generic   Model: USB SD Reader" in my logs
+2006-11-07T09:24:00.000Z	Kingsqueak	linux01	I'm not sure, unless you need to load kernel mods for usb devices etc.
+2006-11-07T09:25:00.000Z	Kingsqueak	linux01	try this   'sudo modprobe usb_storage'
+2006-11-07T09:25:00.000Z	Kingsqueak	linux01	give your password when it prompts you
+2006-11-07T09:26:00.000Z	Kingsqueak	linux01	then  'tail /var/log/messages'  see if it babbles about a storage device
+2006-11-07T09:26:00.000Z	Kingsqueak	linux01	or type 'dmesg' again , see what it says at the end
+2006-11-07T09:28:00.000Z	Kingsqueak	linux01	yeah it will still ID as usb
+2006-11-07T09:35:00.000Z	Kingsqueak	linux01	there you go, bam! it sees it now
+2006-11-07T09:35:00.000Z	Kingsqueak	linux01	what's the 'sd' device it shows shortly after that
+2006-11-07T09:37:00.000Z	Kingsqueak	linux01	right around that mass-storage device message a sg or sd device should have been assigned
+2006-11-07T09:37:00.000Z	Kingsqueak	linux01	dmesg | less     then shift-g to go to the bottom and 'k' will scroll up
+2006-11-07T09:39:00.000Z	Kingsqueak	linux01	try   dmesg | grep removable

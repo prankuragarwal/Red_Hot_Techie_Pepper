@@ -1,0 +1,21 @@
+2006-03-06T13:23:00.000Z	nicholaspaul		Q: I have a script i want to run at startup... where do i call it from?
+2006-03-06T13:24:00.000Z	fangorious	nicholaspaul	/etc/init.d/rcS would work. Or you could put it in /etc/init.d and symlink to it from /etc/rc?.d to mix it in with the rest of the services
+2006-03-06T13:25:00.000Z	nicholaspaul	fangorious	you mean just put the script in the direcotry /etc/init.d ?
+2006-03-06T13:27:00.000Z	fangorious	nicholaspaul	^^ is easiest
+2006-03-06T13:33:00.000Z	fangorious	nicholaspaul	to set order, you put the script in /etc/init.d, then create a symlink in the runlevel you want it to run it
+2006-03-06T13:33:00.000Z	nicholaspaul	fangorious	 is tha tthe same as nickrud's answer?
+2006-03-06T13:33:00.000Z	fangorious	nicholaspaul	for example, ln -s /etc/init.d/myscript /etc/rc2.d/S99myscript
+2006-03-06T13:33:00.000Z	fangorious	nicholaspaul	that will have myscript run at '99' in runlevel two
+2006-03-06T13:34:00.000Z	fangorious	nicholaspaul	using K99myscript instead of S99myscript will have myscript stopped at 99 instead of started
+2006-03-06T13:35:00.000Z	fangorious	nicholaspaul	to go that route, though. I think you're script needs to support being called with 'start' or 'stop' as a command line parameter
+2006-03-06T13:36:00.000Z	fangorious	nicholaspaul	that will run it when you log in, rather than when the system boots
+2006-03-06T13:36:00.000Z	fangorious	nicholaspaul	and only when you log into gnome, at that
+2006-03-06T13:36:00.000Z	nicholaspaul	fangorious	 the script just sets up network interface settings...
+2006-03-06T13:37:00.000Z	nicholaspaul	fangorious	oooohhhh so no good when logging into kde / fluxbox? hmmm
+2006-03-06T13:37:00.000Z	fangorious	nicholaspaul	is it something that the existing networking support can't handle?
+2006-03-06T13:38:00.000Z	nicholaspaul	fangorious	 not really, but i've been having problems with Networking. My interface seems alot happier if I use the command line. (airport + Dapper..)
+2006-03-06T13:40:00.000Z	fangorious	nicholaspaul	just so I know I'm not giving you bad info, what were you referring to by 'Sessions'. I took it to mean the app that loads from going to System->Preferences->Sessions in Gnome
+2006-03-06T13:41:00.000Z	nicholaspaul	fangorious	 yea, thats exactly what I meant. I"m finding tho that I'm learning way more about how to configure my system by using command lines and scripts - besides, its geekily-good fun!!
+2006-03-06T13:42:00.000Z	fangorious	nicholaspaul	setting something there will only affect logging into gnome
+2006-03-06T13:42:00.000Z	nicholaspaul	fangorious	 ahh gotcha. (nickrud)
+2006-03-06T13:50:00.000Z	fangorious	nicholaspaul	glad to help

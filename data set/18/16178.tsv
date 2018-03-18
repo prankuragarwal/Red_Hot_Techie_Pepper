@@ -1,0 +1,18 @@
+2005-03-26T11:20:00.000Z	gobeavs		anyone know of a good way to convert a lot of files from mp3 to wav?
+2005-03-26T11:21:00.000Z	WW	gobeavs	Maybe sox?
+2005-03-26T11:22:00.000Z	gobeavs	WW	thx, I'll look into it
+2005-03-26T12:41:00.000Z	WW	gobeavs	help %
+2005-03-26T12:42:00.000Z	gobeavs	WW	hmmm....didn't help for me :-D
+2005-03-26T12:42:00.000Z	gobeavs	WW	someone above provided: "ls *.mp3 | xargs -i sh -c "echo {} | sed s/.mp3//g | xargs -i% sox %.mp3 %.wav"" to convert mp3 to wav, so I was wondering what the %'s do
+2005-03-26T12:44:00.000Z	WW	gobeavs	Oh. That's different. :)
+2005-03-26T12:46:00.000Z	gobeavs	WW	Ya...it didn't make sense :-d
+2005-03-26T12:52:00.000Z	WW	gobeavs	As someone else pointed out, the "-i" option is used to create a string substitution.  Each input line will be called %, and the subsequent references to % will be replaced with each input line and executed.
+2005-03-26T12:52:00.000Z	WW	gobeavs	I think this might also work, and it's a bit simpler:
+2005-03-26T12:54:00.000Z	gobeavs	WW	ok, thanks. I'll try it out
+2005-03-26T12:54:00.000Z	WW	gobeavs	I tried it with a directory of .ogg files (replace .mp3 with .ogg in the command) and it worked.
+2005-03-26T12:54:00.000Z	WW	gobeavs	You might have to install a library for sox to read mp3 files.
+2005-03-26T12:56:00.000Z	WW	gobeavs	Maybe libmad0?
+2005-03-26T12:57:00.000Z	gobeavs	WW	I'm just going to try to use lame
+2005-03-26T13:00:00.000Z	WW	gobeavs	I just tried the command with the one mp3 file that I could find on my computer and even though sox gave me an error message about "Do not support MPEG...", it still converted the mp3 to wav.
+2005-03-26T13:04:00.000Z	gobeavs	WW	working great now, thank you very much
+2005-03-26T13:06:00.000Z	WW	gobeavs	Great.

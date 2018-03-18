@@ -1,0 +1,24 @@
+2010-03-05T12:48:00.000Z	Kutakizukari		Installed Ubuntu 9.10 on a Dell Latitude D600, cannot get connected to the interent wirelessly. I tried sudo lshw -C network and it is disabled. Does anyone know how to enable it or something else I should try?
+2010-03-05T12:48:00.000Z	psycho_oreos	Kutakizukari	pastebin your lspci -nnk output
+2010-03-05T12:49:00.000Z	Kutakizukari	psycho_oreos	do that in the termerinal?
+2010-03-05T12:49:00.000Z	psycho_oreos	Kutakizukari	yes
+2010-03-05T12:58:00.000Z	psycho_oreos	Kutakizukari	you're not typing it right, a correct output would show you all the devices connected via PCI or related methods
+2010-03-05T13:01:00.000Z	Kutakizukari	psycho_oreos	I did it with sudo it now says PCI access options
+2010-03-05T13:02:00.000Z	psycho_oreos	Kutakizukari	that isn't right either
+2010-03-05T13:03:00.000Z	Kutakizukari	psycho_oreos	ok tried this sudo lshw -C network and it show that it is disabled
+2010-03-05T13:04:00.000Z	psycho_oreos	Kutakizukari	I don't need lshw, I need "lspci -nnk"
+2010-03-05T13:04:00.000Z	psycho_oreos	Kutakizukari	here: http://mike.passwall.com/nblug/kernel-talk/lspci.html
+2010-03-05T13:05:00.000Z	Kutakizukari	psycho_oreos	got it to work was typing output with it
+2010-03-05T13:05:00.000Z	Kutakizukari	psycho_oreos	what do you need now
+2010-03-05T13:05:00.000Z	psycho_oreos	Kutakizukari	need you to copy the contents of that output and paste it into pastebin, then send me the link
+2010-03-05T13:24:00.000Z	Kutakizukari	psycho_oreos	I have no way to copy anything over right now does this help? 02:00.0 Ethernet controller [0200]: Broadcom Corporation NetXtreme BCM5705M Gigabit Ethernet [14e4:165d](rev 01 Kernel driver in use:tg3 Kernel modules:tg3
+2010-03-05T13:27:00.000Z	psycho_oreos	Kutakizukari	wrong line, that's not a wireless chipset, google it and you'll see what I mean or paste the whole thing
+2010-03-05T13:36:00.000Z	psycho_oreos	Kutakizukari	no, not one bit
+2010-03-05T13:36:00.000Z	psycho_oreos	Kutakizukari	in fact that's worse than your previous guess
+2010-03-05T13:37:00.000Z	psycho_oreos	Kutakizukari	there's like 7 different wireless manufacturers out there
+2010-03-05T13:37:00.000Z	psycho_oreos	Kutakizukari	and I can't see how you can't copy the entire lspci -nnk output
+2010-03-05T13:38:00.000Z	psycho_oreos	Kutakizukari	you mean its on another computer?
+2010-03-05T13:38:00.000Z	psycho_oreos	Kutakizukari	do you not have a spare network cable that you can plug it into?
+2010-03-05T13:39:00.000Z	psycho_oreos	Kutakizukari	lspci -nn| grep 14e4:43
+2010-03-05T13:57:00.000Z	Kutakizukari	psycho_oreos	02:03.0 Network controller [0280]: Broadcom Corporation BCM4309 802.11a/b/g [14e4:4324] (rev 03)
+2010-03-05T14:05:00.000Z	psycho_oreos	Kutakizukari	read the part on "Installing b43/STA hybrib drivers"

@@ -1,0 +1,18 @@
+2007-01-05T17:54:00.000Z	Toran		is there a way to disable a program's audio output via alsa or something outside of that program?
+2007-01-05T17:54:00.000Z	Slart	Toran	you can do a echo "myprogramname 0 0 disable" > /proc/asound/card0/pcm0p/oss
+2007-01-05T17:54:00.000Z	Toran		sweet
+2007-01-05T17:55:00.000Z	Slart	Toran	if you're using the first alsa card for output
+2007-01-05T17:55:00.000Z	Toran		I only have one
+2007-01-05T17:55:00.000Z	Toran		bash: /proc/asound/card0/pcm0p/oss: Permission denied
+2007-01-05T17:55:00.000Z	Toran		Even with sudo
+2007-01-05T17:56:00.000Z	Toran		Nevermind, I got it
+2007-01-05T17:56:00.000Z	Toran		do I have to restart alsa?
+2007-01-05T17:56:00.000Z	Slart		cafuego: indeed.. forgot about that
+2007-01-05T17:58:00.000Z	Slart	Toran	permissions might give you some trouble.. you can do this first sudo su, chmod a+rw -R /proc/asound/card0    it will give you permission to write to the file mentioned
+2007-01-05T17:58:00.000Z	Toran	Slart	I got it in there, but the program is still making noise when I started it
+2007-01-05T17:58:00.000Z	Slart	Toran	there probably is a better way to do that last thing... but that works for me.
+2007-01-05T17:59:00.000Z	Slart	Toran	still making sound?.. hmm.. you sure you could do the echo thing? is the process name correct? check with ps -A
+2007-01-05T17:59:00.000Z	Toran		Yeah, I checked the process name
+2007-01-05T17:59:00.000Z	Toran		and i know it is in there, I cat'd the file
+2007-01-05T06:00:00.000Z	Slart	Toran	hmm.. odd.. perhaps you're using some other sound output thingy.. there are many of them.. pcm0p, pcm1p etc...
+2007-01-05T06:00:00.000Z	Slart	Toran	I've never seen my box use anything other than the first though

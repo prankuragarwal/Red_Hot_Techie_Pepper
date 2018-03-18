@@ -1,0 +1,22 @@
+2010-06-30T11:34:00.000Z	IConrad01		Okay -- nobody took that question.  I'll try this one instead -- I'm trying to get my Samba shares to actually work.  I can, from any machine, see the directories on my machine.  However, **EVEN FROM THE SAME MACHINE** -- they will not open.  And the error is a generic "Failed to open Windows share"
+2010-06-30T11:34:00.000Z	IConrad01		Anyone?
+2010-06-30T11:35:00.000Z	IConrad01		Anyone?
+2010-06-30T11:37:00.000Z	IConrad01		I'm trying to get my Samba shares to actually work.  I can, from any machine, see the directories on my machine.  However, **EVEN FROM THE SAME MACHINE** -- they will not open.  And the error is a generic "Failed to open Windows share".  This is after a full apt-get purge of all samba-related packages.
+2010-06-30T11:39:00.000Z	IConrad01		Anyone?  Anyone at all?
+2010-06-30T11:41:00.000Z	IConrad01		Aside from yourself, that is.
+2010-06-30T11:43:00.000Z	IConrad01		Really?  Not one single person is willing to try?
+2010-06-30T11:44:00.000Z	IConrad01		And I've been using Ubuntu for a little over three years now.
+2010-06-30T11:45:00.000Z	IConrad01		I just did a total apt-get purge of all files related to samba, reinstalled them, and I'm still getting the exact same error.
+2010-06-30T11:45:00.000Z	IConrad01		I can see the directories from any machine... but not even from the machine itself, can I actualy *enter* the directories.
+2010-06-30T11:45:00.000Z	sweetpi	IConrad01	check the permissions of the directories
+2010-06-30T11:45:00.000Z	IConrad01	sweetpi	They're set to anonymous access.
+2010-06-30T11:46:00.000Z	sweetpi	IConrad01	i mean the filesystem permissions
+2010-06-30T11:46:00.000Z	IConrad01	sweetpi	777 across the board.
+2010-06-30T11:47:00.000Z	sweetpi	IConrad01	pastebin the errors from sambas logs
+2010-06-30T11:47:00.000Z	sweetpi	IConrad01	see /var/log/samba/
+2010-06-30T11:51:00.000Z	sweetpi	IConrad01	chec the permissions for /home and /home/ian
+2010-06-30T11:52:00.000Z	sweetpi	IConrad01	you need executable permissions all the way down the chain
+2010-06-30T11:53:00.000Z	IConrad01	sweetpi	Even if those aren't mounted shares ?
+2010-06-30T11:54:00.000Z	sweetpi	IConrad01	if i remember right, you need it all the way up to and including Downloads
+2010-06-30T11:54:00.000Z	IConrad01	sweetpi	Even from directories *beneath* it?  That's a rather... insecure... ...
+2010-06-30T11:55:00.000Z	IConrad01	sweetpi	Thank you.  I'd never have found that on my own.

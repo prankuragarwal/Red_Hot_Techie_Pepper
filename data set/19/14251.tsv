@@ -1,0 +1,19 @@
+2007-04-21T16:12:00.000Z	Afief		While installing ubuntu I forgot to partition a swap drive, is there a way to fix this without reformating the drive?
+2007-04-21T16:12:00.000Z	Agrajag	Afief	you can add a swap file
+2007-04-21T16:13:00.000Z	Agrajag	Afief	you'll need to create an empty file, the size you want for your swap, then format that file for swap, put an entry in fstab for it, and then run swapon on that file
+2007-04-21T16:13:00.000Z	Agrajag	Afief	I can walk you through it
+2007-04-21T16:13:00.000Z	Agrajag	Afief	how much swap space do you want?
+2007-04-21T16:14:00.000Z	Agrajag	Afief	OK, first off: create the file. run "sudo dd if=/dev/zero of=/swapfile bs=1M count=512"
+2007-04-21T16:15:00.000Z	Agrajag	Afief	that will create an empty file 512 megs in size
+2007-04-21T16:15:00.000Z	Agrajag	Afief	just let me know when you're done with that step.
+2007-04-21T16:18:00.000Z	Agrajag	Afief	it's ok. Now, you need to format it. "sudo mkswap /swapfile"
+2007-04-21T16:19:00.000Z	Agrajag	Afief	"sudo swapon /swapfile"
+2007-04-21T16:20:00.000Z	Agrajag	Afief	Congratulations, you now have 512 megs of swap. Now, we need to make it permanent.
+2007-04-21T16:20:00.000Z	Agrajag	Afief	"sudo nano /etc/fstab"
+2007-04-21T16:20:00.000Z	Agrajag	Afief	once that's open you should see a bunch of lines describing your filesystems.
+2007-04-21T16:21:00.000Z	Agrajag	Afief	add a NEW LINE at the end of the file, as follows: "/swapfile none swap sw 0 1" (without the quotes of course)
+2007-04-21T16:22:00.000Z	Agrajag	Afief	then hit ctrl-x to quit, and when prompted, save the file
+2007-04-21T16:23:00.000Z	Agrajag	Afief	OK. If you want to check that it works, you can reboot, and once rebooted, running the command "free" should show you 512 megs of swap space.
+2007-04-21T16:23:00.000Z	Agrajag	Afief	if it doesn't show up, your fstab line may be wrong
+2007-04-21T16:24:00.000Z	Agrajag	Afief	Let me know how that goes.
+2007-04-21T16:27:00.000Z	Agrajag	Afief	excellent.

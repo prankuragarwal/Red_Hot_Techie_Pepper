@@ -1,0 +1,21 @@
+2009-10-18T04:38:00.000Z	gnoshi		well, I used right of/left of, then switched back to 'absolute' and used the values it put in theer.
+2009-10-18T04:39:00.000Z	gnoshi		But, I need to use the MacPro cos I need to 8GB of ram it has... so right now I'm trying to get at nVidia card going in it at the same time. That is the pits.
+2009-10-18T04:40:00.000Z	gnoshi		I'm running Ubuntu x64 on both.
+2009-10-18T04:41:00.000Z	gnoshi		the software I'm using (http://www.slicer.org) doesn't come in 64 bit for windows.
+2009-10-18T04:42:00.000Z	CavalierPrime	gnoshi	 you have the best proprietary drivers for the ati?
+2009-10-18T04:43:00.000Z	gnoshi	CavalierPrime	yup. Grabbed them and installed them. To be fair, it may be the software itself that I'm using... the issue is a weird refreshing problem, but it only shows up under the ATI, not nvidia
+2009-10-18T04:44:00.000Z	gnoshi	CavalierPrime	yeah, it is. But I have to submit my research thesis in 4.5 weeks so I'm less about the caring why, and more about the getting it working :P
+2009-10-18T04:44:00.000Z	CavalierPrime	gnoshi	g/l man  :P
+2009-10-18T05:03:00.000Z	CavalierPrime	gnoshi	incorrect driver
+2009-10-18T05:04:00.000Z	CavalierPrime	gnoshi	there should be a backup to your xorg.conf
+2009-10-18T05:05:00.000Z	gnoshi	CavalierPrime	I rebuilt the xorg.conf using the recovery tool (which was working ok before, but not now it appears). Still happening after I pulled out the nvidia card, too.
+2009-10-18T05:10:00.000Z	CavalierPrime	gnoshi	you need to copy you xorg.conf.whatever to xorg.conf and that will get you back to what you had b4
+2009-10-18T05:10:00.000Z	CavalierPrime	gnoshi	it's in /etc/X11
+2009-10-18T05:11:00.000Z	gnoshi	CavalierPrime	Tried that and it didn't seem to work - I'll give it another shot (I have several backups).
+2009-10-18T05:11:00.000Z	CavalierPrime	gnoshi	if you did a lot of messing around with drivers it may take a while to find the right one
+2009-10-18T05:12:00.000Z	gnoshi	CavalierPrime	it is possible to revert to a 'default' xorg file though, right? the one that Ubuntu would have installed with?
+2009-10-18T05:13:00.000Z	gnoshi	CavalierPrime	ah, here we go. I reinstalled the ATI binary driver from shell and it booted again.
+2009-10-18T05:13:00.000Z	CavalierPrime	gnoshi	good good
+2009-10-18T05:14:00.000Z	gnoshi	CavalierPrime	and now I'm taking a backup of the xorg.conf before I go trying to readd the nvidia card again :P
+2009-10-18T05:45:00.000Z	gnoshi	CavalierPrime	I may have found one of my problems... When I used the 'hardware drivers' ubuntu thing to install the nvidia drivers after installing the ATI drivers, in the xorg.conf file it put in the PCI address of the card already in there (the ATI) with the nvidia driver...
+2009-10-18T05:45:00.000Z	gnoshi	CavalierPrime	just fixing that now and see how it goes.

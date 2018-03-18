@@ -1,0 +1,19 @@
+2006-06-28T15:45:00.000Z	orbin		anyone heard of the problem of garbled display when logging out (white lines, "static", shifting text)?  forum search didn't give much, and i did not have this problem w/ previous versions of ubuntu.  i have an ati xpress 200m.  tested w/ vesa, ati and fglrx
+2006-06-28T07:16:00.000Z	Otacon22	orbin	/media/usbdisk/ don't appear in fstab!
+2006-06-28T07:15:00.000Z	orbin	Otacon22	gksudo 'gedit /etc/fstab'
+2006-06-28T07:16:00.000Z	orbin	Otacon22	what format is the drive in?
+2006-06-28T07:17:00.000Z	orbin	Otacon22	actually, jsut pastebin the whole file contents: http://paste.ubuntu-nl.org/
+2006-06-28T07:18:00.000Z	Otacon22	orbin	is a fat32, now I copy in noaste and I show you
+2006-06-28T07:20:00.000Z	Otacon22	orbin	http://paste.ubuntu-nl.org/16692
+2006-06-28T07:20:00.000Z	orbin	Otacon22	can you paste the output of the mount command too pls
+2006-06-28T07:21:00.000Z	orbin	Otacon22	just type mount in a terminal
+2006-06-28T07:21:00.000Z	orbin	Otacon22	i know. i'm just working out what's the device name for your usb drive
+2006-06-28T07:22:00.000Z	Otacon22	orbin	the drive is in /dev/sdc5
+2006-06-28T07:23:00.000Z	orbin	Otacon22	that's the one mounted as /media/usbdisk/?
+2006-06-28T07:24:00.000Z	orbin	Otacon22	ok.  type sudo mkdir /media/Lacie
+2006-06-28T07:25:00.000Z	Otacon22	orbin	and now? I have to modify fstab?
+2006-06-28T07:27:00.000Z	orbin	Otacon22	yep.  add this line like: /dev/sdc5   /media/Lacie   vfat   user,fmask=0111,dmask=0000   0   0
+2006-06-28T07:27:00.000Z	Otacon22	orbin	but I want that all users can read and write
+2006-06-28T07:29:00.000Z	orbin	Otacon22	yes, that should give you rw.  see the fstab section here if you want: https://help.ubuntu.com/community/AutomaticallyMountPartitions
+2006-06-28T07:31:00.000Z	Otacon22	orbin	biscon, cwillu : all work but already I have to be root for see and write files also if I have put user,fmask=777,dmask=777
+2006-06-28T07:34:00.000Z	orbin	Otacon22	did you unmount it and then remounted?

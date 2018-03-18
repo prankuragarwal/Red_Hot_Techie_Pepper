@@ -1,0 +1,22 @@
+2009-09-29T11:22:00.000Z	d1gital		if i install xfce or something to that effect (to appease newb sysadmin =P), can i do so without installing gdm/kdm so it doesnt run all the time?
+2009-09-29T11:23:00.000Z	d1gital		i just want to use startx when its needed
+2009-09-29T11:23:00.000Z	d1gital		docteh: i guess that would work.
+2009-09-29T11:23:00.000Z	ActionParsnip	d1gital	you can just apt-get install xfce4
+2009-09-29T11:23:00.000Z	ActionParsnip	d1gital	you will then only get the DE
+2009-09-29T11:28:00.000Z	ActionParsnip	d1gital	removing ubuntu-desktop does nothing, its a hollow meta-package
+2009-09-29T11:29:00.000Z	ActionParsnip	d1gital	it will be needed to change release though
+2009-09-29T11:29:00.000Z	ActionParsnip	d1gital	sure it does, it uninstalls the package
+2011-03-16T17:43:00.000Z	ActionParsnip	d1gital	use:   sudo -i   instead
+2011-03-16T17:43:00.000Z	d1gital	ActionParsnip	 That worked, thanks.  Why does this happen?
+2011-03-16T17:44:00.000Z	ActionParsnip	d1gital	one is righ, sudo su is wrong
+2011-03-16T17:44:00.000Z	ActionParsnip	d1gital	sudo -i   gives an (i)nteractive sudo
+2012-07-31T23:03:00.000Z	ActionParsnip	d1gital	if you run more cpu intensive tasks, does it increase?
+2012-07-31T23:04:00.000Z	ActionParsnip	d1gital	try: sudo cpufreq-selector -c 0 -f 800000
+2012-07-31T23:05:00.000Z	ActionParsnip	d1gital	also try:  echo "1200000" | sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed; echo "800000" | sudo tee /sys/devices/system/cpu/cpu1/cpufreq/scaling_setspeed
+2012-07-31T23:05:00.000Z	ActionParsnip	d1gital	https://bugs.launchpad.net/ubuntu/+source/linux/+bug/519142 is the source
+2012-07-31T23:39:00.000Z	d1gital	ActionParsnip	Thanks, but no joy.  I don't even have a cpufreq subdirectory under /sys/devices/system/cpu/cpu0
+2012-07-31T23:50:00.000Z	ActionParsnip	d1gital	try:  modprobe -vv acpi_cpufreq
+2012-08-01T00:00:00.000Z	d1gital	ActionParsnip	even with -vv, modprobe shows no output, and again nothing is written to dmesg.. that seems really strange to me.  Isn't there generally _something_ written to dmesg when a module is loaded?
+2012-08-01T00:00:00.000Z	ActionParsnip	d1gital	usually
+2012-11-01T04:48:00.000Z	ActionParsnip	d1gital	sudo apt-get update; sudo apt-get upgrade
+2012-11-01T04:48:00.000Z	ActionParsnip	d1gital	or you may find a PPA

@@ -1,0 +1,22 @@
+2008-08-23T19:43:00.000Z	Crshman		hi all, I have a drive that seems to "lose" it's partition after a reboot
+2008-08-23T19:43:00.000Z	Crshman		it is part of a software array and if I stop the array I lose access to /dev/sdb1 until i run fdisk and write to the drive again
+2008-08-23T19:44:00.000Z	Crshman		any ideas as to what might be causing the issue? i don't *think* its a bad drive
+2008-08-23T19:45:00.000Z	ActionParsnip	Crshman	whats the issue
+2008-08-23T19:45:00.000Z	Crshman	ActionParsnip	i lose access to one of my drives after a reboot or if i shutdown the software raid array
+2008-08-23T19:46:00.000Z	ActionParsnip	Crshman	is the drive in the raid?
+2008-08-23T19:46:00.000Z	Crshman	ActionParsnip	yes
+2008-08-23T19:46:00.000Z	ActionParsnip	Crshman	ive not set it up in linux
+2008-08-23T19:46:00.000Z	Crshman	ActionParsnip	/dev/sdb shows up but not /dev/sdb1 (which is in the array)
+2008-08-23T19:47:00.000Z	Crshman	ActionParsnip	/dev/sdb1 shows up ONLY after i run fdisk and write the partition table
+2008-08-23T19:48:00.000Z	ActionParsnip	Crshman	im unknowledgable of software raid
+2008-08-23T19:48:00.000Z	Crshman	ActionParsnip	i'm not sure if it's the raid though....because the device doesn't show up in /dev
+2008-08-23T19:48:00.000Z	ActionParsnip	Crshman	maybe the drive is failing
+2008-08-23T20:04:00.000Z	ActionParsnip	Crshman	try sudo fdisk -l
+2008-08-23T20:05:00.000Z	ActionParsnip	Crshman	no its not, try it with just that. not with /dev/sdb
+2008-08-23T20:07:00.000Z	Crshman	ActionParsnip	http://pastebin.ca/1182472
+2008-08-23T20:07:00.000Z	ActionParsnip	Crshman	thats what i wanted.....have you formatted the artition?
+2008-08-23T20:08:00.000Z	Crshman	ActionParsnip	yes it's partitioned it was working fine....but if i reboot/disconnect the drive the partition doesn't come back to me in /dev
+2008-08-23T20:09:00.000Z	ActionParsnip	Crshman	is it in /etc/fstab
+2008-08-23T20:10:00.000Z	Crshman	ActionParsnip	no it's not....when using a software raid you don't mount the individual drives in fstab only the entire array
+2008-08-23T20:11:00.000Z	ActionParsnip	Crshman	ive never set up software raid dude, sorry
+2008-08-23T20:13:00.000Z	Crshman	ActionParsnip	thanks for trying anyways

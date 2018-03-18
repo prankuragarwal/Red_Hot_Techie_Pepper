@@ -1,0 +1,21 @@
+2011-10-02T09:08:00.000Z	soreau	jakemp-home	What are you trying to do exactly?
+2011-10-02T09:09:00.000Z	soreau	jakemp-home	Do you know if ubuntu server runs NetworkMananger?
+2011-10-02T09:10:00.000Z	soreau	jakemp-home	Have you tried setting it up in /etc/network/interfaces ?
+2011-10-02T09:12:00.000Z	soreau	jakemp-home	Maybe try adding auto lo and iface lo inet loopback to the top of that file and possibly up /sbin/ifconfig eth0 192.168.1.10 to your auto eth0 lines
+2011-10-02T09:13:00.000Z	jakemp-home	soreau	it's in there I just didn't type it out
+2011-10-02T09:13:00.000Z	soreau	jakemp-home	The up line?
+2011-10-02T09:14:00.000Z	jakemp-home	soreau	up is not installed.
+2011-10-02T09:15:00.000Z	soreau	jakemp-home	put it right after the gateway line
+2011-10-02T09:17:00.000Z	soreau	jakemp-home	Well the way I do it is nonstandard but it works..
+2011-10-02T09:18:00.000Z	soreau	jakemp-home	Pastebin the complete file this time please
+2011-10-02T09:18:00.000Z	soreau	jakemp-home	If you're hard wired, there's no reason you shouldn't be able to establish a connection
+2011-10-02T09:19:00.000Z	soreau	jakemp-home	Can you ping 192.168.1.1?
+2011-10-02T09:19:00.000Z	soreau	jakemp-home	Try sudo ifconfig eth0 up
+2011-10-02T09:19:00.000Z	jakemp-home	soreau	bingo!
+2011-10-02T09:19:00.000Z	soreau	jakemp-home	ifup has never worked properly for me
+2011-10-02T09:21:00.000Z	soreau	jakemp-home	Yea, need to make sure you have 'sudo route' showing default gateway to your router and /etc/resolv.conf has nameserver 192.168.1.1
+2011-10-21T02:43:00.000Z	soreau	jakemp-home	Tried specifying the full path?
+2011-10-21T02:45:00.000Z	jakemp-home	soreau	I just want to be able to hit the win key and stype shellscript (or shellscript.sh) and have it run. It sees the shellscript, but it just opens it in gedit. If I just type shellscript in a terminal, It works.
+2011-10-21T02:45:00.000Z	soreau	jakemp-home	Try running it with bash -c script
+2011-10-21T02:46:00.000Z	soreau	jakemp-home	Which makes me wonder if you have #!/bin/bash at the top of the file and it does in fact have the executable bit set
+2011-10-21T02:46:00.000Z	jakemp-home	soreau	it is, it's matlab

@@ -1,0 +1,19 @@
+2009-01-25T22:45:00.000Z	sebsebseb		is madwifi on the live cd or not? do I really have to boot it to find out
+2009-01-25T22:45:00.000Z	sebsebseb		I am trying to get a guys lap top  working on his wireless
+2009-01-25T22:46:00.000Z	sebsebseb		maybe he can configure it guiwise with his ssid and it takes care of the rest hummmmmmm
+2009-01-25T22:46:00.000Z	evad_	sebsebseb	you can mount the CD, then mount the casper/filesystem.squashfs image, chroot into it and find out :)
+2009-01-25T22:47:00.000Z	evad_	sebsebseb	you running windows or linux?
+2009-01-25T22:48:00.000Z	sebsebseb	evad_	 what do you think?  what am I running?  what do you think?
+2009-01-25T22:48:00.000Z	sebsebseb	evad_	 mount a file that is on the CD not done that
+2009-01-25T22:49:00.000Z	sebsebseb	evad_	 just right click and mount when I find it or something?
+2009-01-25T22:49:00.000Z	evad_	sebsebseb	one second
+2009-01-25T22:54:00.000Z	evad_	sebsebseb	open a terminal, 'mkdir -p cdimage/mnt; cd cdimage; sudo mount -o loop whatever.iso mnt; mkdir squashfs; sudo modprobe -a squashfs; sudo mount -t squashfs -o loop mnt/casper/filesystem.squashfs squashfs; sudo chroot squashfs`. once you're inside do "export LC_ALL=C; export HOME=/root" and check for your mad-wifi
+2009-01-25T22:55:00.000Z	sebsebseb	evad_	well never done that before, but  worth a try
+2009-01-25T22:56:00.000Z	evad_	sebsebseb	you're basically just mounting the squashfs image off the install CD -- which should contain everything you see in the liveCD environment once you boot it
+2009-01-25T22:57:00.000Z	sebsebseb	evad_	 maybe the guy just needs to  install madwifi and then the commands for it work
+2009-01-25T23:01:00.000Z	sebsebseb	evad_	ISO oh, but I got it on CD
+2009-01-25T23:02:00.000Z	sebsebseb	evad_	not sure if I have the ISO here for it
+2009-01-25T23:02:00.000Z	evad_	sebsebseb	 "dd if=/dev/cdrom of=whatever.iso" :)
+2009-01-25T23:02:00.000Z	sebsebseb	evad_	 am I meant to put something in for whatever.iso?????/
+2009-01-25T23:05:00.000Z	sebsebseb	evad_	 can you give it again without the   undeeded  "  and  '     the first lot of commands
+2009-01-25T23:05:00.000Z	evad_	sebsebseb	mkdir -p cdimage/mnt; cd cdimage; sudo mount -o loop whatever.iso mnt; mkdir squashfs; sudo modprobe -a squashfs; sudo mount -t squashfs -o loop mnt/casper/filesystem.squashfs squashfs; sudo chroot squashfs

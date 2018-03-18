@@ -1,0 +1,19 @@
+2008-05-08T01:22:00.000Z	sri		greetings.
+2008-05-08T01:23:00.000Z	sri		out of curiosity, I recently updated my kernel and rebooted but I found my nvidia drivers gone.
+2008-05-08T01:23:00.000Z	sri		in fact there is no nvidia.ko driver anywhere in my system even though the restricted driver package is installed.
+2008-05-08T01:23:00.000Z	crdlb	sri	linux-restricted-modules links it at boot
+2008-05-08T01:24:00.000Z	sri		dpkg -L on crdlb linux-restricted-modules doesn't have any .ko files either.
+2008-05-08T01:24:00.000Z	sri		er..
+2008-05-08T01:24:00.000Z	sri	crdlb	ah, okay.. why si that?
+2008-05-08T01:24:00.000Z	sri	crdlb	in any case no linkage is going on at boot :/
+2008-05-08T01:24:00.000Z	crdlb	sri	the unlinked version lives in /lib/linux-restricted-modules, and gets set up by the linux-restricted-modules-common init script
+2008-05-08T01:25:00.000Z	sri	crdlb	okay, that would explain why there are only .o files in the package.
+2008-05-08T01:25:00.000Z	crdlb	sri	I have no idea why ubuntu does things this way, just that they do :)
+2008-05-08T01:25:00.000Z	sri	crdlb	yeah, it doesn't make any sense and makes it hard to debug.
+2008-05-08T01:26:00.000Z	sri	crdlb	where does it put the .ko file?  do you know?
+2008-05-08T01:27:00.000Z	crdlb	sri	/lib/modules/version/volatile/ I think
+2008-05-08T01:27:00.000Z	sri	crdlb	thanks to my own ignorance, I used the downloaded nvidia driver from nvidia.com to install the driver.
+2008-05-08T01:27:00.000Z	sri	crdlb	hrm.  didn't create anything there. oaky, i'll check it out.
+2008-05-08T01:29:00.000Z	sri	crdlb	never mind it did create it.. blind! :)
+2008-05-08T01:30:00.000Z	sri	crdlb	thanks for the info!
+2008-05-08T01:30:00.000Z	crdlb	sri	no problem :)

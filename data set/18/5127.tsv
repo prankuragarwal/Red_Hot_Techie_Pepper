@@ -1,0 +1,18 @@
+2009-06-09T22:49:00.000Z	avegas		hey, I just set up Jaunty on my new Dell Vostro, a few days ago
+2009-06-09T22:49:00.000Z	avegas		last night, I had my file-system go read only on me
+2009-06-09T22:50:00.000Z	avegas		I ran fsck on the disk , and it seemed like many things were wrong
+2009-06-09T22:50:00.000Z	avegas		I foolishly just pressed yes to everything fsck wanted to do
+2009-06-09T22:51:00.000Z	avegas		when I attempted to reinstall, I got a failure
+2009-06-09T22:52:00.000Z	avegas		on the second try, jaunty went back on
+2009-06-09T22:53:00.000Z	avegas		so anyways, now I'm running the bios diagnostics on the machine
+2009-06-09T22:54:00.000Z	avegas		anyone have any suggestions on using debian to track down hardware problems/how to talk to dell about getting stuff fixed?
+2009-06-09T22:54:00.000Z	frostburn	avegas	are you talking about hardware fixes for dell, or software fixes for ubuntu and upstream debian?
+2009-06-09T22:56:00.000Z	avegas	frostburn	I'm wondering what sorts of utilities I can run to try and get a better picture of what is actually wrong with the machine, and also if anyone has any idea if Dell will give me a hard time about replacing things
+2009-06-09T22:57:00.000Z	frostburn	avegas	what sort of symptoms are you seeing?  i'd recommend getting another hdd/partition for windows and calling dell tech support on any symptoms as well
+2009-06-09T22:58:00.000Z	avegas	frostburn	my filesystem went read-only on me then I ran fsck and many strange things seemed to be wrong
+2009-06-09T22:59:00.000Z	frostburn	avegas	yeah, same thing happened to me, you'll need to run fsck --force, your disk is also probably dying, i'd start backing up everything
+2009-06-09T23:00:00.000Z	avegas	frostburn	then I tried to reinstall Jaunty, and it didn't want to go
+2009-06-09T23:00:00.000Z	avegas	frostburn	the laptop is brand new though
+2009-06-09T23:00:00.000Z	frostburn	avegas	hard drives are very fragile beasts in laptops, one wrong jostle and the head hits the platter
+2009-06-09T23:22:00.000Z	frostburn	avegas	you'll want to follow the same suggestion i had for another gentlemen, run a fsck --force /dev/sda1  (or whatever your partition is)  using a live cd, ubuntu, knoppix
+2009-06-10T00:46:00.000Z	frostburn	avegas	sudo apt-get install smartmontools

@@ -1,0 +1,22 @@
+2011-12-31T04:47:00.000Z	Jay_Levitt		So just when I think I have a handle on .bashrc vs .bash_profile and login vs interactive shells, Ubuntu has some trickiness where it always runs .bashrc as long as .bash_profile isn't set - but NOT /etc/profile... can anyone point me at an accurate, up-to-date doc on what runs when?
+2011-12-31T04:47:00.000Z	iceroot	Jay_Levitt	#basj
+2011-12-31T04:48:00.000Z	Jay_Levitt	iceroot	no, Ubuntu is going beyond what vanilla bash loads
+2011-12-31T04:49:00.000Z	iceroot	Jay_Levitt	i dont think ubuntu patched the bash about that feature but ok
+2011-12-31T04:49:00.000Z	Jay_Levitt	iceroot	I'm sure they didn't patch it, they just have some, er, patchwork of scripts that ends up running .bashrc even for interactive shells
+2011-12-31T04:49:00.000Z	iceroot	Jay_Levitt	bashrc is always executed for interactive shells
+2011-12-31T04:50:00.000Z	iceroot	Jay_Levitt	that is not ubuntu-specific
+2011-12-31T04:52:00.000Z	Jay_Levitt	iceroot	Ubuntu's own man page says "When an interactive shell that is not a login shell  is  started,  bash reads  and  executes  commands  from /etc/bash.bashrc and ~/.bashrc, if these files exist."
+2011-12-31T04:52:00.000Z	iceroot	Jay_Levitt	yes, and?
+2011-12-31T04:52:00.000Z	iceroot	Jay_Levitt	that is the bash-default
+2011-12-31T04:53:00.000Z	iceroot	Jay_Levitt	and not ubuntu-specific
+2011-12-31T04:53:00.000Z	Jay_Levitt	iceroot	yes, and.. that is not what actually happens.
+2011-12-31T04:53:00.000Z	Jay_Levitt	iceroot	on Ubuntu, if .bash_profile is not present, an interactive login shell will run .bashrc as well.
+2011-12-31T04:53:00.000Z	iceroot	Jay_Levitt	any errors on "source ~/.bashrc"?
+2011-12-31T04:54:00.000Z	Jay_Levitt	iceroot	no, it runs fine. even when the docs say it doesn't run... again, the man page says .bashrc is for interactive NON-login shells, but it runs for interactive YES-login shells as well
+2011-12-31T04:55:00.000Z	iceroot	Jay_Levitt	hm, imo running bashrc on the logonshell (tty1) is the default on every GNU/Linux
+2011-12-31T04:56:00.000Z	Jay_Levitt	iceroot	maybe that's true for modern bash, and it's just the man page that's wrong
+2011-12-31T04:57:00.000Z	Jay_Levitt	iceroot	I know at one point a few years ago I was shocked that there was NO single file that was guaranteed to get loaded in all four combinations (interactive vs non, login vs non)
+2011-12-31T04:57:00.000Z	iceroot	Jay_Levitt	yes maybe, i am not using bash here and my shell is acting a little different
+2011-12-31T04:59:00.000Z	iceroot	Jay_Levitt	maye have a look at #bash if they have another idea for that case
+2011-12-31T05:06:00.000Z	Jay_Levitt	iceroot	Can I blame you for my favorite HP-UX bug?
+2011-12-31T05:07:00.000Z	iceroot	Jay_Levitt	its sad but we are using AIX instead of HP-UX.......

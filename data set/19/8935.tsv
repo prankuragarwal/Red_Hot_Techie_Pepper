@@ -1,0 +1,19 @@
+2007-01-15T11:52:00.000Z	Linky|Lap		Is there a boot option similar to window's Safe Mode so that I can boot into an unbootable ubuntu and uninstall the problem application?
+2007-01-15T11:53:00.000Z	arrenlex	Linky|Lap	You can try single user mode (aka recovery mode) for a command line, or boot from the liveCD.
+2007-01-15T11:55:00.000Z	arrenlex	Linky|Lap	Synaptic might be a problem. Do you know how to use apt? You could mount it from the liveCD and chroot into it, but you would have problems running GUI applications from inside a chroot (not impossible, but definitely difficult)
+2007-01-15T12:13:00.000Z	arrenlex	Linky|Lap	and try starting X with the startx command.
+2007-01-15T11:56:00.000Z	Linky|Lap	arrenlex	basically, I had a bad install of beryl. I jsut want to uninstall it so that x-window will work properly. what method do you think would be the best?
+2007-01-15T11:56:00.000Z	arrenlex	Linky|Lap	Doesn't it give you a command line when you start ubuntu?
+2007-01-15T11:57:00.000Z	arrenlex	Linky|Lap	Then use apt to remove the problem package. apt-get remove <package>
+2007-01-15T11:57:00.000Z	arrenlex	Linky|Lap	uh, with sudo.
+2007-01-15T12:05:00.000Z	Linky|Lap	arrenlex	apt-get remove worked. its gone, but xwindow still wont let me boot into a gui. the error I get is that there are "No Devices detected" in the xorg.conf file.
+2007-01-15T12:06:00.000Z	arrenlex	Linky|Lap	Do you have any backups in /etc/X11/?
+2007-01-15T12:07:00.000Z	Linky|Lap	arrenlex	not sure. I never made any. This is my first time using ubuntu, so i still dont know all of the good habits yet
+2007-01-15T12:07:00.000Z	arrenlex	Linky|Lap	It may have been made for you.
+2007-01-15T12:11:00.000Z	Linky|Lap	arrenlex	/etc doesn't have an x11 folder\
+2007-01-15T12:13:00.000Z	arrenlex	Linky|Lap	Move your current xorg.conf to something like xorg.conf.broken just in case, and them move your backup to xorg.conf
+2007-01-15T12:13:00.000Z	arrenlex	Linky|Lap	In case you don't know, the mv command cam be used to move or rename files. You'd want "sudo mv xorg.conf xorg.conf.broken" and then "sudo mv xorg.conf.bak xorg.conf"
+2007-01-15T12:13:00.000Z	arrenlex	Linky|Lap	cp instead of mv will copy.
+2007-01-15T12:17:00.000Z	arrenlex	Linky|Lap	Don't reboot. Run startx as regular user.
+2007-01-15T12:18:00.000Z	Linky|Lap	arrenlex	thanks so much for your help. It looks like I'm back in business :P
+2007-01-15T12:19:00.000Z	arrenlex	Linky|Lap	You're welcome.

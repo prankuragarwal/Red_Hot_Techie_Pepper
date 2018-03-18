@@ -1,0 +1,18 @@
+2008-10-27T16:50:00.000Z	JohnFlux2		I can't run any program in my nfs mounted folder
+2008-10-27T16:50:00.000Z	JohnFlux2		any ideas why?
+2008-10-27T16:50:00.000Z	ActionParsnip	JohnFlux2	permissions
+2008-10-27T16:50:00.000Z	JohnFlux2	ActionParsnip	ls -la   shows that they have  x permission
+2008-10-27T16:50:00.000Z	ActionParsnip	JohnFlux2	make sure you have execute permissions at mount
+2008-10-27T16:51:00.000Z	JohnFlux2	ActionParsnip	what do you mean?
+2008-10-27T16:51:00.000Z	ActionParsnip	JohnFlux2	when you mount make sure the uid alllows execute
+2008-10-27T16:52:00.000Z	JohnFlux2	ActionParsnip	thanks :)
+2008-10-27T16:52:00.000Z	ActionParsnip	JohnFlux2	its all permissions
+2008-10-27T16:57:00.000Z	ActionParsnip	JohnFlux2	try -o iocharset=utf8,umask=000 on the end of the mount command
+2008-10-27T16:57:00.000Z	JohnFlux2	ActionParsnip	thanks :)
+2008-10-27T18:29:00.000Z	ActionParsnip	JohnFlux2	you dont, use sudo <command> or gksudo <command>
+2008-10-27T18:30:00.000Z	ActionParsnip	JohnFlux2	you dont need root
+2008-10-27T18:34:00.000Z	ActionParsnip	JohnFlux2	check pm
+2008-10-27T18:39:00.000Z	JohnFlux2	ActionParsnip	ah it turned out to be a permissions problem
+2008-10-27T18:39:00.000Z	JohnFlux2	ActionParsnip	because /etc/securetty  was set to o+w    it didn't read it
+2008-10-27T18:40:00.000Z	JohnFlux2	ActionParsnip	going chmod o-w /etc/securetty    allowed to be login as root
+2008-10-27T18:40:00.000Z	ActionParsnip	JohnFlux2	sweet, so long as you get a goal thats awesome :D

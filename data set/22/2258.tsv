@@ -1,0 +1,22 @@
+2009-08-04T01:49:00.000Z	JadenKorn	Slart	it says "Cannot mount volume." then below "The volume uses the reiser4 file system which is not supported by your system."
+2009-08-04T01:50:00.000Z	JadenKorn	Slart	I installed reiser4progs and made the partition with Gparted.
+2009-08-04T01:50:00.000Z	Slart	JadenKorn	have you searched in synaptic for reiser? perhaps it's a package you have to install? or support for it might have been dropped.. the company behind it has had some problems
+2009-08-04T01:50:00.000Z	JadenKorn	Slart	reiserfs works, but not reiser4..
+2009-08-04T01:51:00.000Z	Slart	JadenKorn	oh.. I don't really know why... I used reiserfs before but I went back to ext3..
+2009-08-04T01:52:00.000Z	JadenKorn	Slart	I could use ext4 but it uses almost 2% from my 56GB partition... that is 1GB..
+2009-08-04T01:52:00.000Z	JadenKorn	Slart	is there anyway to reduce it somehow?
+2009-08-04T01:52:00.000Z	Slart	JadenKorn	yup.. I know the feeling.. I use xfs on my big drives
+2009-08-04T01:53:00.000Z	Slart	JadenKorn	not sure.. there are some settings you can change but you'll probably affect performance too..
+2009-08-04T01:55:00.000Z	JadenKorn	Slart	I formatted my 56GB partition to ext4 and it uses 3.1GB now
+2009-08-04T01:56:00.000Z	JadenKorn	Slart	should I use xfs instead?
+2009-08-04T01:57:00.000Z	Slart	JadenKorn	I can't really tell you what will suit you.. I use xfs since it was recommended to me.. it's been working nicely for me so far but I haven't really had any problems with any of the major file systems so far
+2009-08-04T01:57:00.000Z	JadenKorn	Slart	I need mostly for larger files.. mostly 1GB+
+2009-08-04T01:57:00.000Z	Slart	JadenKorn	then I think xfs might do nicely... give it a try
+2009-08-04T02:01:00.000Z	JadenKorn	Slart	I installed xfsprogs and formatted my partition to xfs and it used only 32MB of my 56GB.. so its quite good
+2009-08-04T02:05:00.000Z	JadenKorn	Slart	It seems I can't add files to it.. says I'm not the owner
+2009-08-04T02:07:00.000Z	Slart	JadenKorn	try doing a "sudo chown" on the mount point
+2009-08-04T02:07:00.000Z	Slart	JadenKorn	add -R for recursion
+2009-08-04T02:09:00.000Z	JadenKorn	Slart	"sudo chown -R jadenkorn:jadenkorn /media/MyData/" seemed to work.. thanks
+2009-08-04T02:10:00.000Z	Slart	JadenKorn	you're welcome
+2009-08-04T02:11:00.000Z	JadenKorn	Slart	is this "/dev/sda2       /mnt/MyData     xfs     rw,user,auto 0 0" good for autobooting the xfs partition?
+2009-08-04T02:11:00.000Z	Slart	JadenKorn	looks good to me.. I think you'll find it easier to put it in /media instead of /mnt ... for some reason gnome likes to have the mount points in /media

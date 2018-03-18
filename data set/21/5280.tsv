@@ -1,0 +1,21 @@
+2007-11-19T16:01:00.000Z	sledge8593		guys, can someone tell me how i can make a script suitable for init.d to run a program which doesnt have an option to stop but with CTRL-Z?
+2007-11-19T16:03:00.000Z	sledge8593		i mean i run this program in terminal then when i want to stop it, i press CTRL-C
+2007-11-19T16:03:00.000Z	sledge8593		now i want to make a scipt to start this program on start-up
+2007-11-19T16:03:00.000Z	QuelTos	sledge8593	wouldn't it a bit weird to write a init.d script for a not demonizeable program?
+2007-11-19T16:04:00.000Z	QuelTos	sledge8593	i would suggest to use screen or something
+2007-11-19T16:04:00.000Z	sledge8593	QuelTos	what do you mean with screen?
+2007-11-19T16:05:00.000Z	QuelTos	sledge8593	screen is a nice program which enables you to: manage multiple consoles inside one terminal
+2007-11-19T16:05:00.000Z	sledge8593	QuelTos	the program i want to run on start-up is vlc to stream media
+2007-11-19T16:05:00.000Z	QuelTos	sledge8593	as a server?
+2007-11-19T16:06:00.000Z	sledge8593		yap..sort of like a stream server. streaming over multicast
+2007-11-19T16:06:00.000Z	QuelTos	sledge8593	and screen enables you to start something in a console, logout (program keeps running), login and reattach to the console session again
+2007-11-19T16:07:00.000Z	QuelTos	sledge8593	i would suggest you try something like this:
+2007-11-19T16:07:00.000Z	sledge8593	QuelTos	will that work even without logging in?
+2007-11-19T16:07:00.000Z	QuelTos	sledge8593	screen -d -m vlc-something
+2007-11-19T16:08:00.000Z	QuelTos	sledge8593	your init-scripts are run by root
+2007-11-19T16:08:00.000Z	QuelTos	sledge8593	so you can reattach to the session as root (or as whatever user you run screen/vlc)
+2007-11-19T16:08:00.000Z	sledge8593	QuelTos	i can just use the screen command in my script to run the program?
+2007-11-19T16:09:00.000Z	QuelTos	sledge8593	yep
+2007-11-19T16:09:00.000Z	sledge8593	QuelTos	ok thanks..ill have a look at that
+2007-11-19T16:09:00.000Z	QuelTos	sledge8593	np.. hope that helps
+2007-11-19T16:13:00.000Z	sledge8593	QuelTos	one more thing..how do i stop the program then? i mean the there should be a "Stop" part in my script, how do i stop the program runned by screen?

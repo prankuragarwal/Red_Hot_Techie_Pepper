@@ -1,0 +1,21 @@
+2012-10-30T03:29:00.000Z	Red_M		hey guys i got a sick server here that cant resolve DNS
+2012-10-30T03:31:00.000Z	Red_M		i try to use a DNS name when ssh'ing and it gives me "ssh: Could not resolve hostname <removed>: Temporary failure in name resolution"
+2012-10-30T03:31:00.000Z	Red_M		any ideas?
+2012-10-30T03:31:00.000Z	Red_M		it can wait but its annoying me
+2012-10-30T03:32:00.000Z	Red_M		sigh
+2012-10-30T03:32:00.000Z	almigi	Red_M	so, basically ssh works with the ip address but not the DNS address?
+2012-10-30T03:32:00.000Z	almigi	Red_M	and I'm guessing regular address work everywhere else?
+2012-10-30T03:33:00.000Z	Red_M	almigi	im using an ssh tunnel on it and hostnames resolve fine
+2012-10-30T03:33:00.000Z	almigi	Red_M	is it possible the problem is with the host itself? have you tried pinging it just to see if it's up?
+2012-10-30T03:33:00.000Z	Red_M	almigi	im connected to it right now
+2012-10-30T03:36:00.000Z	Red_M	almigi	i tried nslookup on the faulty DNS box and i get ";; connection timed out; no servers could be reached"
+2012-10-30T03:37:00.000Z	almigi	Red_M	I wish I could find an answer for you... I found some similar reports of things like this in launchpad, but I can't find a good workaround... is this a host on a local network that's not resolving?
+2012-10-30T03:37:00.000Z	Red_M	almigi	no the internet
+2012-10-30T03:38:00.000Z	almigi	Red_M	but things resolve if you were to use "ping" or "finger" , right?
+2012-10-30T03:38:00.000Z	almigi	Red_M	but Firefox (or whatever browser) works, right?
+2012-10-30T03:39:00.000Z	Red_M	almigi	my broswer via the ssh tunnel works fine
+2012-10-30T03:41:00.000Z	almigi	Red_M	so the browser is being ran on the remote machine then... the problem is nothing on the local machine resolves (I hope I'm understanding this correctly)?
+2012-10-30T03:42:00.000Z	Red_M	almigi	^
+2012-10-30T03:44:00.000Z	almigi	Red_M	I never had that issue myself, but I found this... I suppose it's worth a shot (unless you already tried it): http://askubuntu.com/questions/142327/can-not-access-internet-dns-names-do-not-resolve-after-update-today
+2012-10-30T03:50:00.000Z	Red_M	almigi	fixed it
+2012-10-30T04:03:00.000Z	almigi	Red_M	glad you "resolved" the problem. (ok, I know, bad pun)

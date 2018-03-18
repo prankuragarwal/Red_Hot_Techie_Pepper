@@ -1,0 +1,19 @@
+2012-10-07T16:58:00.000Z	NewWorld	Xinfe	 you can mount ISOs and run the installer from there. Really not sure whether this would install fine
+2012-10-07T16:59:00.000Z	Xinfe	NewWorld	No, it don't works neither :
+2012-10-07T16:59:00.000Z	Xinfe	NewWorld	"The installer needs to commit changes to the partition table, but cannot do so because partitions on the following mount point could not be unmounted: /cdrom"
+2012-10-07T16:59:00.000Z	NewWorld	Xinfe	 so unmount it manually
+2012-10-07T17:00:00.000Z	Xinfe	NewWorld	$ sudo umount /cdrom umount: /cdrom: device is busy.         (In some cases useful info about processes that use          the device is found by lsof(8) or fuser(1))
+2012-10-07T17:00:00.000Z	NewWorld	Xinfe	 you tried lsof/fuser to check if something is using /cdrom ?
+2012-10-07T17:00:00.000Z	Xinfe	NewWorld	I have also tried to boot the live using the "toram" parameter to free the /cdrom
+2012-10-07T17:01:00.000Z	Xinfe	NewWorld	Yeah, but I mean just "lsof | grep cdrom" should do the trick ?
+2012-10-07T17:02:00.000Z	NewWorld	Xinfe	 I suppose; i didn't use lsof in a while
+2012-10-07T17:02:00.000Z	NewWorld	Xinfe	 can you remove /cdrom mount line in /etc/fstab ? Maybe then it won't automount it
+2012-10-07T17:03:00.000Z	Xinfe	NewWorld	There is no /cdrom in the fstab
+2012-10-07T17:04:00.000Z	NewWorld	Xinfe	 Not sure how to help you then. Mayb udev is automounting cdrom
+2012-10-07T17:04:00.000Z	NewWorld	Xinfe	 maybe you have a CD in? haha
+2012-10-07T17:04:00.000Z	Xinfe	NewWorld	udev is not installed
+2012-10-07T17:05:00.000Z	Xinfe	NewWorld	No, no CD, I think the system is tricked, because it's booted from an ISO on my HDD (and the iso SHOULD be a CD)
+2012-10-07T17:26:00.000Z	Xinfe	NewWorld	silverarrow : I finally found a USB drive (my old iPod I almost never use), but I can't mount it ("The daemon is inhibited" from the GUI, and from the CLI: "mount: can't find /dev/disk/by-label/XINPOD in /etc/fstab or /etc/mtab"
+2012-10-07T17:27:00.000Z	NewWorld	Xinfe	 what's your mount cmd?
+2012-10-07T17:27:00.000Z	Xinfe	NewWorld	sudo mount /dev/disk/by-label/XINPOD
+2012-10-07T17:28:00.000Z	NewWorld	Xinfe	 you specified so few parameters that it has to look in fstab. Add mount options and mountpoint. check man mount

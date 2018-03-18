@@ -1,0 +1,22 @@
+2009-12-14T02:10:00.000Z	z3rongod_		Can someone please help me find a way to use a CD/DVD to boot from USB external HDD? I've got ubuntu on my external HDD and i can't see it in windows
+2009-12-14T02:10:00.000Z	z3rongod_		in BIOS*
+2009-12-14T02:10:00.000Z	z3rongod_		Asusteck does not have any drivers to update bios so i can boot from USB
+2009-12-14T02:11:00.000Z	ActionParsnip	z3rongod_	windows can't read ext2 or ext3 without help from: www.fs-driver.org
+2009-12-14T02:12:00.000Z	z3rongod_	ActionParsnip	I'm on windows right now because i can't acces ubuntu that's installed on the USB HDD. I will only be able to have connected to the machine the USB external HDD and a CD/DVDrom
+2009-12-14T02:14:00.000Z	ActionParsnip	z3rongod_	if you bot to liveCD, The live session will be able to read and write both ntfs and ext3/2/4 (more flexible than stagnant windows) so you can copy any data you like
+2009-12-14T02:15:00.000Z	z3rongod_	ActionParsnip	i don't understand what data copy has to do with booting into ubuntu ?
+2009-12-14T02:15:00.000Z	ActionParsnip	z3rongod_	I assumed as you are trying to access the data in windows, that you were trying to get at the data
+2009-12-14T02:15:00.000Z	z3rongod_	ActionParsnip	i'm trying to boot into ubuntu to use the installed dd_rescue on a broken HDD
+2009-12-14T02:16:00.000Z	ActionParsnip	z3rongod_	can do that in liveCD too ;)
+2009-12-14T02:17:00.000Z	z3rongod_	ActionParsnip	How ?
+2009-12-14T02:17:00.000Z	ActionParsnip	z3rongod_	same as if you'd booted to the USB, just runs a little slower
+2009-12-14T02:18:00.000Z	z3rongod_	ActionParsnip	isn't it possible to boot into the USB using the livecd?
+2009-12-14T02:18:00.000Z	ActionParsnip	z3rongod_	you can chroot to the installed system
+2009-12-14T02:20:00.000Z	ActionParsnip	z3rongod_	it will mean the terminal will use the files and settings in the system installed usb system
+2009-12-14T02:20:00.000Z	z3rongod_	ActionParsnip	can you tell me a brief example of how can i use the dd_rescue installed on the USB hdd ?
+2009-12-14T02:22:00.000Z	ActionParsnip	z3rongod_	dd_resue takes a block device and makes an image, dd will stop if it gets an issue, dd_rescue doesnt care. You can dd_rescure the USB device and make the detination be the NTFS partition (assuming there is enough space). You can then fsck the image and mount it to read its data
+2009-12-14T02:27:00.000Z	z3rongod_	ActionParsnip	This is how i planned it out: 1 Broken 80GB HDD with 2 partitions NTFS (C:\ and D:\) in the freezer; 1 external HDD with ubuntu and dd_rescue on it. Use command "sudo fdisk -l" to see what parittions i have. Then use this: dd_rescue -n /dev/hdb1 /dev/hda
+2009-12-14T02:29:00.000Z	ActionParsnip	z3rongod_	check     man dd_rescue    but yeah you can spit the resulting file to the ntfs, you could even use foremost to just search for file types on the USB and extract them to the ntfs
+2009-12-14T02:31:00.000Z	z3rongod_	ActionParsnip	The problematic HDD is not the USB external one
+2009-12-14T02:32:00.000Z	ActionParsnip	z3rongod_	whichever you'll still need the right command synatax ;)
+2009-12-14T02:33:00.000Z	z3rongod_	ActionParsnip	can you tell me exactly how i can run the dd_rescue software that's saved on the USB hdd using the livecd ?

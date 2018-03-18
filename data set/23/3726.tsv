@@ -1,0 +1,23 @@
+2008-02-24T04:49:00.000Z	joecurlee		hi, i'm running ubuntu 7.10. i have an external firewire hd and when I plug it in it isn't recognized by the system at all... it does power up, but does not auto mount
+2008-02-24T04:49:00.000Z	joecurlee		the system may be recognizing it, but i'm not sure how to check for this sort of thing... have been doing research but nothing is helping out too much
+2008-02-24T04:49:00.000Z	usser	joecurlee	see if anything new appears in /dev
+2008-02-24T04:50:00.000Z	usser	joecurlee	unplug it and do ls /dev/*d*
+2008-02-24T04:50:00.000Z	usser	joecurlee	then plug it back in and do ls /dev/*d* again
+2008-02-24T04:50:00.000Z	usser	joecurlee	see if anynithing new appeared
+2008-02-24T04:51:00.000Z	joecurlee	usser	yes list changed after plugging it in
+2008-02-24T04:51:00.000Z	usser	joecurlee	u are looking for something like sda or sdb or something like that
+2008-02-24T04:51:00.000Z	joecurlee	usser	any idea why it won't auto mount?
+2008-02-24T04:52:00.000Z	usser	joecurlee	dunno because it doesnt know where to mount
+2008-02-24T04:52:00.000Z	joecurlee	usser	found  sdb
+2008-02-24T04:52:00.000Z	usser	joecurlee	whats its name in /dev?
+2008-02-24T04:52:00.000Z	usser	joecurlee	any partitions on it ie sdb1 sdb2 or such?
+2008-02-24T04:52:00.000Z	joecurlee	usser	/dev/sdb... before and after plugging in there were sda1, sda2 and sda5
+2008-02-24T04:53:00.000Z	usser	joecurlee	looks like its unformatted is it a new drive?
+2008-02-24T04:53:00.000Z	joecurlee	usser	can linux not read a mac formatted drive?
+2008-02-24T04:54:00.000Z	usser	joecurlee	nope should recognize it
+2008-02-24T04:54:00.000Z	usser	joecurlee	in any case try sudo /dev/sdb /mnt
+2008-02-24T04:54:00.000Z	usser	joecurlee	err sudo mount /dev/sdb /mnt
+2008-02-24T04:54:00.000Z	joecurlee	usser	will do
+2008-02-24T04:54:00.000Z	usser	joecurlee	and see if it mounts
+2008-02-24T04:58:00.000Z	joecurlee	usser	just mounted :)
+2008-02-24T04:58:00.000Z	joecurlee	usser	(had to answer phone)... so i'm assuming i'll have to do this every time I want to use it?

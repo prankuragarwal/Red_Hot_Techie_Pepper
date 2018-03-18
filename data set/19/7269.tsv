@@ -1,0 +1,19 @@
+2007-10-26T21:52:00.000Z	jamiejackson		in different howtos i see some recommend (f/d)masks of either 775 or 777. which is right (or how do i choose)?
+2007-10-26T21:52:00.000Z	jamiejackson		whoops, context
+2007-10-26T21:53:00.000Z	shearn89	jamiejackson	its a code system: 1=read 3=write 5=execute, and the numbers add. the 3 digits are for sudo, you, and some other group.
+2007-10-26T21:54:00.000Z	shearn89	jamiejackson	for samba, you probs want 644 (i think), unless its read-only.
+2007-10-26T21:56:00.000Z	jamiejackson	shearn89	so i can rw-, some other user in the group can r--, and anyone can r-- the external filesytem. correct?
+2007-10-26T21:56:00.000Z	shearn89	jamiejackson	i think that might be 611. You can also use "read-only = yes" in the smb.conf.
+2007-10-26T22:24:00.000Z	shearn89	jamiejackson	nice one... I set up a samba server at home, so i may be able to help... Is it about the permissions?
+2007-10-26T22:25:00.000Z	jamiejackson	shearn89	it's about the credentials file
+2007-10-26T22:25:00.000Z	shearn89	jamiejackson	ooh. sounds a bit out of my knowledge range i'm afraid....
+2007-10-26T22:26:00.000Z	shearn89	jamiejackson	my know-how extends to a server that the family can write to to backup!
+2007-10-26T22:26:00.000Z	shearn89	jamiejackson	isn't smbmount deprecated?
+2007-10-26T22:27:00.000Z	shearn89	jamiejackson	hell yeah.... this channel is damn hard to follow sometimes...
+2007-10-26T22:28:00.000Z	shearn89	jamiejackson	ahh - mount -t smbfs -o username=tridge,password=foobar //fjall/test /data/tes
+2007-10-26T22:48:00.000Z	shearn89	jamiejackson	ls s*
+2007-10-26T22:48:00.000Z	jamiejackson	shearn89	that seems to work recursively
+2007-10-26T22:49:00.000Z	shearn89	jamiejackson	really? oh yeah... try the man pages.
+2007-10-26T22:50:00.000Z	jamiejackson	shearn89	i have been, haven't spotted the solution yet...
+2007-10-26T22:51:00.000Z	jamiejackson	shearn89	same deal
+2007-10-26T22:52:00.000Z	jamiejackson	shearn89	got it! ls -d s*

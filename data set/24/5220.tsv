@@ -1,0 +1,24 @@
+2007-07-15T13:21:00.000Z	local		running autofs ... it fails to mount or even hit the nfs fileserver....
+2007-07-15T13:21:00.000Z	local		how can i configure it to hit hte filesever?
+2007-07-15T13:22:00.000Z	HOT	local	little more info? have you checked all the services are running?
+2007-07-15T13:22:00.000Z	HOT	local	you exported your auto.foo's ?
+2007-07-15T13:24:00.000Z	HOT	local	i cant remember the command off the top of my head, but you have tried something like "service restart autofs" ?
+2007-07-15T13:26:00.000Z	HOT	local	check your hosts file, make sure the NIS master is specified , it might be that simple
+2007-07-15T13:27:00.000Z	HOT	local	sorry , im thinking of the someone else, do check your host file anyway, i have seen weirder things
+2007-07-15T13:28:00.000Z	HOT	local	for starters stick fileserver-01 into hosts
+2007-07-15T13:29:00.000Z	HOT	local	obvious question, you can ping it?
+2007-07-15T13:31:00.000Z	HOT	local	i hear you, i just like to work from the physical layer upwards, anyway....when you did a make on auto.master did it throw up any messages?
+2007-07-15T13:35:00.000Z	local	HOT	???
+2007-07-15T13:36:00.000Z	HOT	local	just for kicks try to go into the directory that should be mounted#
+2007-07-15T13:38:00.000Z	HOT	local	the target , you have the correct permissions?
+2007-07-15T13:41:00.000Z	HOT	local	can you try two things for me , " tail -100 /var/log/messages" on the the fileserver and look for anything odd, an also "cat /etc/mtab" and look for anything weird
+2007-07-15T13:44:00.000Z	HOT	local	you mentioned this is a new machine i think? has auto.net changed?
+2007-07-15T13:46:00.000Z	HOT	local	can you just paste the mount line one more time, i lost it
+2007-07-15T13:47:00.000Z	HOT	local	is -soft telling you anything at boot?
+2007-07-15T13:48:00.000Z	HOT	local	cant we strip it back a bit ? just get the basics and test with them maybe just "nfs,rw" for now?
+2007-07-15T13:50:00.000Z	HOT	local	just a quick sanity check thats actually "-fstype=nfs,rw,tcp,soft,intr,rsize=8192,wsize=8192,nfsvers=3 fileserver-01:/storage/data-01/iso/&"
+2007-07-15T13:50:00.000Z	HOT	local	notice the -
+2007-07-15T13:51:00.000Z	HOT	local	just for kicks try using a static ip rather than hostname ie "127.0.0.1/storage/blah"
+2007-07-15T13:52:00.000Z	HOT	local	static?
+2007-07-15T13:53:00.000Z	HOT	local	well bugger me, can you do "df" just to make sure the mount point isnt in use from prior experimentaton
+2007-07-15T13:56:00.000Z	HOT	local	im running out of ideas here, the mount point exists on the local device?

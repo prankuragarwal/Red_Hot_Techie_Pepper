@@ -1,0 +1,18 @@
+2012-03-04T03:13:00.000Z	berevgia		I can't mount my usb flash pen drive on ubuntu 10.04, tried to do it manually but it doesn't even appear when i type: "sudo fdisk -l".
+2012-03-04T03:14:00.000Z	escott	berevgia	plug/unplug the usb and then run dmesg | tail -n 20
+2012-03-04T03:16:00.000Z	berevgia	escott	can't do copy paste, but it doesn't say anything like "sdb1". I'm chatting with my mac.
+2012-03-04T03:17:00.000Z	escott	berevgia	does it say anything about the usb bus? does it identify that the device was plugged in?
+2012-03-04T03:18:00.000Z	berevgia	escott	yes, it says: new high speed USB device using ehci_hcd and address 20, configuration #1 chosen from 1 choice
+2012-03-04T03:20:00.000Z	escott	berevgia	the next couple of lines should indicate what kernel driver attached to the device, and it should also give the device id
+2012-03-04T03:21:00.000Z	berevgia	escott	it stops after the two lines i told you, i even made tail -f, and nothing else pops up
+2012-03-04T03:22:00.000Z	escott	berevgia	odd. the kernel is not recognizing it. one would expect the usb mass storage driver to attach to the device. if that doesn't happen you can't do anything with it
+2012-03-04T03:23:00.000Z	escott	berevgia	where did you get the usb stick
+2012-03-04T03:25:00.000Z	berevgia	escott	I have 3 usb sticks that I'm trying to make work: they are kingston, one i bought it, 2 from work, i've been using them before successfully.
+2012-03-04T03:25:00.000Z	berevgia	escott	i can try to reformat them? i'll google how to do it.
+2012-03-04T03:26:00.000Z	escott	berevgia	check "lsmod | grep usb_storage" i dont think you can even reformat unless they are recognized as mass storage
+2012-03-04T03:26:00.000Z	berevgia	escott	i can read them fin with my mac, only ubuntu don't recognize them.
+2012-03-04T03:29:00.000Z	escott	berevgia	modprobe usb_storage. is udevd running? it should be handling this for you
+2012-03-04T03:31:00.000Z	berevgia	escott	modprobe usb_storage returned 3 WARNING: All config files need .conf: /etc/modprobe.d/ndiswrapper, it will be ignored in a future release. blacklist too.
+2012-03-04T03:32:00.000Z	berevgia	escott	i see the usb flash pen drive!!!! whas it the last command i guess.....
+2012-03-04T03:33:00.000Z	escott	berevgia	usb_storage is the driver that attaches to the device. i would have expected udevd to modprobe it on your behalf. not sure why it isn't
+2012-03-04T03:36:00.000Z	berevgia	escott	thanks a lot!!!

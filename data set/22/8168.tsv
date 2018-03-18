@@ -1,0 +1,22 @@
+2006-07-16T07:38:00.000Z	carthik		After adding a user to a group, how do I make the change effective without logging out and logging in again?
+2006-07-16T07:40:00.000Z	carthik		sprongie, exec bash doesnt help neither
+2006-07-16T07:42:00.000Z	mister_roboto	carthik	 you need to log in again. it's inheriting the environment from your first shell process when you logged in
+2006-07-16T07:43:00.000Z	carthik	mister_roboto	but there was a command that would allow me to "refresh" without logging out... like the bash "source" command, you know.
+2006-07-16T07:43:00.000Z	mister_roboto	carthik	you might be thinking of "newgrp"
+2006-07-16T07:43:00.000Z	carthik	mister_roboto	not so sure I am
+2006-07-16T07:43:00.000Z	mister_roboto	carthik	to set your group?
+2006-07-16T07:44:00.000Z	mister_roboto	carthik	what you trying to do again?
+2006-07-16T07:44:00.000Z	mister_roboto	carthik	refresh what?
+2006-07-16T07:44:00.000Z	carthik	mister_roboto	to add  myself to a group (adduser)
+2006-07-16T07:44:00.000Z	carthik	mister_roboto	the groups I belong to
+2006-07-16T07:44:00.000Z	mister_roboto	carthik	'id' will tell you that
+2006-07-16T07:44:00.000Z	mister_roboto	carthik	or you can just go look in /etc/group
+2006-07-16T07:45:00.000Z	mister_roboto	carthik	i mean 'id' will show you which groups you currently belong to
+2006-07-16T07:46:00.000Z	carthik	mister_roboto	try "groups"
+2006-07-16T07:47:00.000Z	mister_roboto	carthik	same as "id" but with a little less info :)
+2006-07-16T07:47:00.000Z	carthik	mister_roboto	I know how to check if I am in the group - what I dont know and would like help with, is with how to make bash realize that after adduser, I am now a member of fuse.
+2006-07-16T07:48:00.000Z	mister_roboto	carthik	have you tried the newgrp command?
+2006-07-16T07:49:00.000Z	carthik	mister_roboto	that doesnt help - I just need to be able to mount dirs using fuse
+2006-07-16T07:49:00.000Z	carthik	mister_roboto	without "sudo"ing
+2006-07-16T07:49:00.000Z	mister_roboto	carthik	wtf do you mean it doesn't help? if you are listed in the group file, it WILL switch you to that group
+2006-07-16T07:50:00.000Z	mister_roboto	carthik	obviously that's not what you wanted then

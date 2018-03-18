@@ -1,0 +1,23 @@
+2008-06-10T17:46:00.000Z	Blue112		Hello again, how could I install two Apache-php-mysql version into the same pc ?
+2008-06-10T17:48:00.000Z	Blue112		How could I install two Apache-php-mysql version into the same pc ?
+2008-06-10T17:48:00.000Z	jeed	Blue112	just put them in different places
+2008-06-10T17:49:00.000Z	Blue112	jeed	How do I do that ?
+2008-06-10T17:49:00.000Z	jeed	Blue112	with package managers you usually cant, but most hosting enviroments like to source compile all their stuff and then you get to choose where it goes
+2008-06-10T17:50:00.000Z	Blue112	jeed	Source compiling is long and makes problem (depencies)
+2008-06-10T17:51:00.000Z	jeed	Blue112	not long if your a hosting server, and its pretty trivial to install a few dependancies and in turn get better security and control over your business :)
+2008-06-10T17:52:00.000Z	Blue112	jeed	And what about if I need very accurate apache version ?
+2008-06-10T17:52:00.000Z	jeed	Blue112	then download and compile the source for it, wheres the problem?
+2008-06-10T17:54:00.000Z	jeed	Blue112	why?
+2008-06-10T17:55:00.000Z	Blue112	jeed	Cause it's the "stable" version that I currently use.
+2008-06-10T17:55:00.000Z	jeed	Blue112	then wheres your problem? :S
+2008-06-10T17:58:00.000Z	jeed	Blue112	youll have to src compile one way or the other, use a package manager and itll screw it up
+2008-06-10T17:58:00.000Z	Blue112	jeed	Where do I find the 2.0.55 apache src ?
+2008-06-10T17:59:00.000Z	jeed	Blue112	the apache site? itll surely have archives
+2008-06-10T17:59:00.000Z	jeed	Blue112	seems they have 2.0.63, isnt that close enough?
+2008-06-10T18:00:00.000Z	jeed	Blue112	http://archive.apache.org/dist/httpd/httpd-2.0.55.tar.bz2
+2008-06-10T18:04:00.000Z	Blue112	jeed	Ok, the two version are compiling... I have to do the same with php I guess ? But the, how can I say to apache to use a php version or an other ?
+2008-06-10T18:05:00.000Z	jeed	Blue112	use --prefix= in the configure line and do something like, put apache in /usr/local/apache with its php in /usr/local/apache/php and put the others in /usr/local/apache2 and /usr/local/apache2/php, then they dont go near eachother
+2008-06-10T18:07:00.000Z	Blue112	jeed	Ok, for the prefix, it's what I've done. I'll try that with php.
+2008-06-10T18:07:00.000Z	jeed	Blue112	aslong as you dont mix their configs and libs, youll be fine, tested method
+2008-06-10T18:09:00.000Z	Blue112	jeed	I don't have a php directory on the apache directory... Should I create it ?
+2008-06-10T18:09:00.000Z	jeed	Blue112	php will create it if its not there when you specify --prefix= for it

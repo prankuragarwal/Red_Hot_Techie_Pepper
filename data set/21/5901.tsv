@@ -1,0 +1,21 @@
+2010-01-28T17:25:00.000Z	ne0futur		hi all I uninstalled many games like torcs, flightgear and others, to free space on my disk
+2010-01-28T17:25:00.000Z	ne0futur		but :
+2010-01-28T17:26:00.000Z	ne0futur		http://dpaste.com/151564/
+2010-01-28T17:26:00.000Z	ne0futur		apt-get remove dont remove /usr/share/games data ????????
+2010-01-28T17:27:00.000Z	ne0futur		can I safely rm -rf /usr/share/games torcs and others ?
+2010-01-28T17:27:00.000Z	ne0futur		isnt this a apt bug ?
+2010-01-28T17:27:00.000Z	arand	ne0futur	Remove the data packages etc. either through synaptic, or apt-get autoremove
+2010-01-28T17:28:00.000Z	arand	ne0futur	"remove" with apt-get will only remove the named packages, but not "torcs-data" for example.
+2010-01-28T17:28:00.000Z	arand	ne0futur	but "apt-get autoremove" should do that
+2010-01-28T17:30:00.000Z	arand	ne0futur	try checking with "dpkg -S /usr/share/games/torcs" to see which package those files belong to.
+2010-01-28T17:34:00.000Z	arand	ne0futur	did you only install the "torcs" package when you installed it, normally "torcs-data" is pulled along, but marked as auto-installed and hence can be autoremoved when "torcs" is removed.
+2010-01-28T17:34:00.000Z	arand	ne0futur	if you installed those packages specifically they wont be able to autoremove.
+2010-01-28T17:42:00.000Z	ne0futur	arand	many thanks for the dpkg -S command, seems to be the only working tool to find and kick game dependencies filling my disk
+2010-01-28T17:44:00.000Z	arand	ne0futur	if you did not specifically install the fgfs-base package it *should* be automatically removable via autoremove, hmm... Also I know that aptitude tends to autoremove things automatically where apt-get doesn't, might be worth using instead in future..
+2010-01-28T17:45:00.000Z	arand	ne0futur	but as of now sometihng might have marked the '
+2010-01-28T17:45:00.000Z	ne0futur	arand	i just installed torcs and flightgear ( anongst others ) using dselect
+2010-01-28T17:46:00.000Z	ne0futur	arand	iirc dselect automaticaly selected the data packages needed for the games to work
+2010-01-28T17:46:00.000Z	arand	ne0futur	...marked the *-data packages as manually installed..
+2010-01-28T17:50:00.000Z	arand	ne0futur	yea, you could check if they are in fact set to manually installed by using "aptitude show packagename" (There is an automatically installed=yes/no item there)
+2010-01-28T17:57:00.000Z	ne0futur	arand	yes theyre not automatically installed . . . i thought apt was managing dependencies . . . i m really disappointed with this
+2010-01-28T18:10:00.000Z	ne0futur	arand	yes i ll try to use aptitude and not apt-get or dselect, thanks for the advice

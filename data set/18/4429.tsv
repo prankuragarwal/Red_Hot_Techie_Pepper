@@ -1,0 +1,18 @@
+2010-08-21T00:50:00.000Z	jramsey		if it doesnt show up in dmesg, how do i know what /dev device is assigned to a usb device?
+2010-08-21T00:50:00.000Z	mek||malloc	jramsey	If you want the device name in /dev, you can always: sudo fdisk -l to list available devices
+2010-08-21T00:51:00.000Z	jramsey	mek||malloc	no the garmin usb gps doesn't show up in an fdisk partition list
+2010-08-21T00:51:00.000Z	mek||malloc	jramsey	Ah, misunderstood.
+2010-08-21T00:54:00.000Z	mek||malloc	jramsey	There's a program called GpsDrive which may be able to identify the device.
+2010-08-21T00:58:00.000Z	mek||malloc	jramsey	I have an idea... Check your /etc/modprobe.d/blacklist file
+2010-08-21T00:59:00.000Z	mek||malloc	jramsey	I'd consider guntbert's comment, also make sure the device isn't blacklisted under /etc/modprob.d/blacklist (#comment out blacklist garmin_gps -- if it exists)
+2010-08-21T01:00:00.000Z	jramsey	mek||malloc	yeah i think i saw garmin in there but not sure why usb wouldn't recognize it unless the blacklist thing prevents it
+2010-08-21T01:00:00.000Z	jramsey	mek||malloc	if i comment out the black list line, do i have to restart anything?
+2010-08-21T01:02:00.000Z	mek||malloc	jramsey	Good question. One second
+2010-08-21T01:02:00.000Z	jramsey	mek||malloc	that was it
+2010-08-21T01:02:00.000Z	mek||malloc	jramsey	I'm glad.
+2010-08-21T01:03:00.000Z	mek||malloc	jramsey	Did you have to restart?
+2010-08-21T01:03:00.000Z	jramsey	mek||malloc	no, just pulled the gps out and back in and it now assigns a tty dev; thanks a lot for your help
+2010-08-21T01:04:00.000Z	mek||malloc	jramsey	My pleasure. Happy gps hacking
+2010-08-21T01:04:00.000Z	jramsey	mek||malloc	if you ever have the need to mess with gps beware ... they all have proprietary extensions and gpsd is a huge pain with certain devices
+2010-08-21T01:04:00.000Z	mek||malloc	jramsey	I'll keep that in mind. Sounds like hell.
+2010-08-21T01:12:00.000Z	jramsey	mek||malloc	my test python script works ... thanks again

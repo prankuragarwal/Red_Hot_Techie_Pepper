@@ -1,0 +1,24 @@
+2006-09-08T15:17:00.000Z	tRSS		can some one tell me where I can get some `bind` help?!
+2006-09-08T15:18:00.000Z	tRSS		#bind are also ideling their arse's off.
+2006-09-08T15:18:00.000Z	tRSS		alright, here we go lupine.
+2006-09-08T15:19:00.000Z	tRSS		i have been asked to fix a wierd problem in one our dns servers. It seems to be working fine, its just that when I do a dig, i get this: connection timed out; no servers could be reached. what is causing this problem, i am not sure. in fact, i am lost.
+2006-09-08T15:20:00.000Z	tRSS		nope. just a plain dig. e.g. dig www.google.com
+2006-09-08T15:20:00.000Z	rob_p	tRSS	Your /etc/resolv.conf file has valid nameserver(s)?
+2006-09-08T15:22:00.000Z	tRSS	rob_p	my resolv.conf is pointing to itself, which I think should be the case.
+2006-09-08T15:22:00.000Z	rob_p	tRSS	as in 127.0.0.1 or your interface's IP address?
+2006-09-08T15:50:00.000Z	rob_p	tRSS	For troubleshooting, you can temporarily put, "nameserver 4.2.2.1" into your /etc/resolv.conf file and see if you can reach a public DNS...
+2006-09-08T15:51:00.000Z	rob_p	tRSS	Once you put that into your /etc/resolv.conf file, you should be able to do, "dig google.com" and get a resolution.
+2006-09-08T15:53:00.000Z	tRSS	rob_p	surprisingly, after editing the resolv.conf for the above changes, I am still getting a connection timed out; no servers could be reached
+2006-09-08T15:53:00.000Z	rob_p	tRSS	Then outbound dns is blocked...
+2006-09-08T15:54:00.000Z	tRSS	rob_p	you mean by the service provider?
+2006-09-08T15:54:00.000Z	rob_p	tRSS	yes
+2006-09-08T15:54:00.000Z	tRSS	rob_p	now that is something that should be explored, I guess
+2006-09-08T15:54:00.000Z	rob_p	tRSS	either that or your network admin folks have it blocked...
+2006-09-08T15:55:00.000Z	tRSS	rob_p	is there a way to confirm this, may be by crawling from outside (using dnsstuff.com, etc.)
+2006-09-08T15:55:00.000Z	rob_p	tRSS	The thing is, your provider shouldn't be blocking it, otherwise you have no way to resolve anything!
+2006-09-08T15:56:00.000Z	rob_p	tRSS	...unless they are trying to, "force" you to use their nameservers or something along those lines...
+2006-09-08T15:57:00.000Z	tRSS	rob_p	i guess you are right. Here goes my weekend for bind!!
+2006-09-08T15:57:00.000Z	rob_p	tRSS	Try this, as a last troubleshooting step.  Use the nameserver of your provider in your /etc/resolv.conf file and see if that works.
+2006-09-08T15:57:00.000Z	rob_p	tRSS	If that does, then you've nailed it!
+2006-09-08T15:58:00.000Z	rob_p	tRSS	You aren't running a local firewall or anything, right?
+2006-09-08T15:59:00.000Z	rob_p	tRSS	Ok then... good luck with it.

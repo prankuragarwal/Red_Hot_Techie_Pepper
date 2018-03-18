@@ -1,0 +1,24 @@
+2008-06-23T20:27:00.000Z	coldboot|home		When I type: 'ls "~/' without the single-quotes, and I press tab, bash no longer completes ~/ to /home/user, because it's in double quotes. Also, if I type 'ls "~/"' without double-quotes, ls and other programs don't understand what ~/ is because it's not getting expanded in double quotes. I think this has to do with /etc/bash_completion, any idea how to fix it?
+2008-06-23T20:28:00.000Z	sipior	coldboot|home	i think that's actually the correct behaviour.
+2008-06-23T20:29:00.000Z	coldboot|home	sipior	It's actually not.
+2008-06-23T20:29:00.000Z	coldboot|home	sipior	The shell should be expanding ~ wherever it is.
+2008-06-23T20:29:00.000Z	sipior	coldboot|home	i don't think so. surely you'd need a way to quote the thing?
+2008-06-23T20:29:00.000Z	coldboot|home	sipior	It was like this in previous versions of ubuntu.
+2008-06-23T20:29:00.000Z	coldboot|home	sipior	You do it with single-quotes '~'
+2008-06-23T20:29:00.000Z	coldboot|home	sipior	Single-quotes imply literal, double quotes allow you to have expandable variables.
+2008-06-23T20:30:00.000Z	coldboot|home	sipior	It's definitely the wrong behaviour.
+2008-06-23T20:30:00.000Z	sipior	coldboot|home	we'll have to agree to disagree on that point.
+2008-06-23T20:30:00.000Z	coldboot|home	sipior	All previous versions of Ubuntu, and Redhat both expand the way I'm talking about.
+2008-06-23T20:30:00.000Z	sipior	coldboot|home	then run one of them
+2008-06-23T20:31:00.000Z	coldboot|home	sipior	Try it in your shell right now and see what happens.
+2008-06-23T20:31:00.000Z	coldboot|home	sipior	I bet it works on yours, mine is broken.
+2008-06-23T20:31:00.000Z	coldboot|home	sipior	Either that or Ubuntu 7.04 is broken.
+2008-06-23T20:31:00.000Z	sipior	coldboot|home	then  how did you break yours?
+2008-06-23T20:31:00.000Z	coldboot|home	sipior	I mean 8.04
+2008-06-23T20:31:00.000Z	coldboot|home	sipior	If I knew that, I would have fixed it.
+2008-06-23T20:32:00.000Z	sipior	coldboot|home	well, good luck with that :)
+2008-06-23T20:37:00.000Z	sipior	coldboot|home	well, in fact i just verified the behaviour you describe, and i stand corrected. the simplest solution is probably to get a diff with the previous version's /etc/bash_completion
+2008-06-23T20:38:00.000Z	coldboot|home	sipior	I just rsynced the old version from my other machines.
+2008-06-23T20:39:00.000Z	sipior	coldboot|home	the diff will be useful when you submit your bug-report
+2008-06-23T20:39:00.000Z	coldboot|home	sipior	Yeah
+2011-08-17T20:20:00.000Z	sipior	coldboot|home	suck it up.

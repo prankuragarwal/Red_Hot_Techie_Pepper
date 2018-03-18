@@ -1,0 +1,18 @@
+2006-10-26T09:07:00.000Z	lupine_85		do you want/need it?
+2006-10-26T09:07:00.000Z	lupine_85		simple ip forwarding is trivial to set up
+2006-10-26T09:07:00.000Z	dvheumen	lupine_85	I thought so too :P
+2006-10-26T09:08:00.000Z	lupine_85	dvheumen	you don't need NAT for that
+2006-10-26T09:08:00.000Z	dvheumen	lupine_85	that what I thought..
+2006-10-26T09:09:00.000Z	dvheumen	lupine_85	I only want to forward the packets from my gigabit crosslink connection to my internet connection
+2006-10-26T09:09:00.000Z	lupine_85	dvheumen	that's not internal-only..
+2006-10-26T09:09:00.000Z	dvheumen	lupine_85	It is when eth0 is still internal
+2006-10-26T09:10:00.000Z	dvheumen	lupine_85	it's this way: My PC <--Gbit --> Ubuntu server <--100 Mbit --> ADSL Modem
+2006-10-26T09:11:00.000Z	dvheumen	lupine_85	yes they are, 10.0.0/24 and 10.0.1/24
+2006-10-26T09:11:00.000Z	dvheumen	lupine_85	k, the routes: 10.0.0.0 gw 0.0.0.0, 10.0.1.0 gw 0.0.0.0, 0.0.0.0 gw 10.0.0.2
+2006-10-26T09:12:00.000Z	dvheumen	lupine_85	yep, and it's the only active interface on that PC
+2006-10-26T09:14:00.000Z	dvheumen	lupine_85	I'll play with tcpdump for a bit, because I haven't  used it yet
+2006-10-26T09:15:00.000Z	dvheumen	lupine_85	crap... I think I've got it... the ADSL modem doesn't have a static route back to 10.0.1.0 yet :-s
+2006-10-26T09:46:00.000Z	dvheumen	lupine_85	I've got the route to the ADSL modem covered (pinging/web interface access) but for some reason tcpdump doesn't show ICMP reply packets if I ping to my DNS server (it does reply pings if I try my linux server) ... but my ADSL modems applies NAT translation so the internet subnets shouldn't  matter to the outside world, should they?
+2006-10-26T09:47:00.000Z	dvheumen	lupine_85	 *internet subnets --> internal subnets
+2006-10-26T10:22:00.000Z	dvheumen	lupine_85	are you still available for a question about the route and NAT?
+2007-01-11T08:27:00.000Z	lupine_85	dvheumen	if modinfo <module> doesn't tell you, then no

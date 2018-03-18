@@ -1,0 +1,21 @@
+2008-01-23T21:37:00.000Z	Sandra24		Probably this is stupidly simple, but how can I uninstall apache2 ?
+2008-01-23T21:37:00.000Z	genii	Sandra24	sudo apt-get remove apache2
+2008-01-23T21:38:00.000Z	Sandra24	genii	Package apache2 is not installed, so not removed. Maybe I installed it from source, not using apt-get?
+2008-01-23T21:38:00.000Z	genii	Sandra24	This is possible. Or you may have installed apache1 mistakenly
+2008-01-23T21:39:00.000Z	genii	Sandra24	sudo apt-get remove apache
+2008-01-23T21:39:00.000Z	Sandra24	genii	according to top, I'm running apache2 (6 processes at 111m a shot) I don't remember how I installed it now though
+2008-01-23T21:40:00.000Z	genii	Sandra24	Hmm. Did you have to do something like download, then ./configure then make or make install?
+2008-01-23T21:41:00.000Z	Sandra24	genii	If I downloaded it, I probably have it saved on here still, let me look
+2008-01-23T21:41:00.000Z	genii	Sandra24	If so, need to find the directory you did that in and do:  make uninstall           or: make clean
+2008-01-23T21:41:00.000Z	Sandra24	genii	I wouldn't have guessed that, thanks, I'm grateful for the help
+2008-01-23T21:42:00.000Z	genii	Sandra24	np.. it is not an obvious thing
+2008-01-23T21:42:00.000Z	genii	Sandra24	It is best when possible to install a package instead of from source
+2008-01-23T21:43:00.000Z	Sandra24	genii	strange, I don't have it in my user directory, it must have been installed another way, I wouldn't have deleted that
+2008-01-23T21:44:00.000Z	Sandra24		I tried sudo aptitude remove apache2 as well, no luck
+2008-01-23T21:44:00.000Z	Sandra24		does it come standard with ubuntu gutsy?
+2008-01-23T21:44:00.000Z	Sandra24		(server version)
+2008-01-23T21:44:00.000Z	genii	Sandra24	Well, a down-and-dirty way is to:    sudo apt-get install --reinstall apache2; sudo apt-get remove apache2      (with --purge optionally)
+2008-01-23T21:45:00.000Z	genii	Sandra24	It will force an install from package over the compiled version, then remove it
+2008-01-23T21:45:00.000Z	Sandra24	genii	I'm willing to try that at this point
+2008-01-23T21:46:00.000Z	genii		Work needs me, expect lag for next bit
+2008-01-23T21:53:00.000Z	genii	Sandra24	Did that last try take?

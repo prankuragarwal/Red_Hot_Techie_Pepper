@@ -1,0 +1,23 @@
+2009-03-04T06:43:00.000Z	g0tcha		hey guys, anyone here by any chance installed ubuntu 8.10 on VMWARE workstation?
+2009-03-04T06:43:00.000Z	g0tcha		the desktop doesnt start up and it gives me permission denied when i try to "startx"
+2009-03-04T06:44:00.000Z	rdw200169	g0tcha	'sudo /etc/init.d/gdm start' if you're running gnome (regular ubuntu)
+2009-03-04T06:44:00.000Z	g0tcha	rdw200169	it is, ill test that out
+2009-03-04T06:45:00.000Z	rdw200169	g0tcha	you have to make sure, though, that there isn't already an X server running, or gdm.
+2009-03-04T06:45:00.000Z	g0tcha	rdw200169	how can i make sure of that?
+2009-03-04T06:45:00.000Z	rdw200169	g0tcha	also, sometimes a restart works, or a stop/start
+2009-03-04T06:45:00.000Z	g0tcha	rdw200169	restart didnt work
+2009-03-04T06:46:00.000Z	rdw200169	g0tcha	ah, use the command 'ps -AF | grep X'
+2009-03-04T06:46:00.000Z	rdw200169	g0tcha	it will return 'grep X', you can ignore that, you're looking for something like '/usr/bin/X'
+2009-03-04T06:46:00.000Z	rdw200169	g0tcha	then, do the same thing w/gdm, i.e. 'ps -AF | grep gdm'
+2009-03-04T06:46:00.000Z	g0tcha	rdw200169	ok
+2009-03-04T06:47:00.000Z	rdw200169	g0tcha	if either show up, make sure to kill them using the process number in the first column from the ps command output
+2009-03-04T06:47:00.000Z	rdw200169	g0tcha	i.e. 'kill <process #>
+2009-03-04T06:47:00.000Z	g0tcha	rdw200169	thanks will do
+2009-03-04T06:47:00.000Z	rdw200169	g0tcha	and if that won't kill it: 'kill -9 <process #>'
+2009-03-04T06:48:00.000Z	rdw200169	g0tcha	have you *ever* gotten X to start correctly?
+2009-03-04T06:48:00.000Z	g0tcha	rdw200169	no, its still the first install in vmware and it didnt X didnt work at all
+2009-03-04T06:48:00.000Z	rdw200169	g0tcha	ah, you may need to check your x log, /var/log/Xorg.0.log
+2009-03-04T07:28:00.000Z	g0tcha	rdw200169	it says /etc/X11/Xsession: 75: cannot create /dev/null: permission denied .. then it shots down
+2009-03-04T07:30:00.000Z	rdw200169	g0tcha	you got that when you ran 'sudo /etc/init.d/gdm start'?
+2009-03-04T07:31:00.000Z	g0tcha	rdw200169	no i get GNOME has started when i run that command, then i get what i showed you when i try to startx
+2009-03-04T07:32:00.000Z	rdw200169	g0tcha	i've never had luck w/startx, i've *always* used /etc/init.d/gdm

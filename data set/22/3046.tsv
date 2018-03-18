@@ -1,0 +1,22 @@
+2008-12-22T16:58:00.000Z	FearMoth		I just installed Ubuntu Server 8.10. Port forwarding is set up correctly on my router, but I can't connect to my computer at that port over the internet. I've installed moblock but even with moblock disabled, nothing can see my forwarded port. Is there anything else that could be blocking connections to that porT?
+2008-12-22T17:00:00.000Z	abraxxa	FearMoth	check if the forwarded packets arrive at your ubuntu pc with tcpdump
+2008-12-22T17:25:00.000Z	FearMoth	abraxxa	I tried tcpdump port xxxx and it shows that the connection is getting through. any idea why it's still getting blocked?
+2008-12-22T17:28:00.000Z	FearMoth	abraxxa	when I test other ports from utorrent.com/testport.php?port=xxxx they show up as open, just not ports that i've recently opened it seems, although they are allowed through by my router. do I need to configure this manually or something?
+2008-12-22T17:30:00.000Z	abraxxa	FearMoth	are you sure the port forwarding on your router works? do you use upnp?
+2008-12-22T17:31:00.000Z	FearMoth	abraxxa	I don't use upnp. the port forwarding on my router seems to work fine, I test other ports and they show up as ok. but I just added a couple new rules to test it, and they get through to my linux box but the port checker still says that it's closed
+2008-12-22T17:32:00.000Z	abraxxa	FearMoth	is that port listening on your linux box?
+2008-12-22T17:32:00.000Z	abraxxa	FearMoth	check with netstat -plutn
+2008-12-22T17:33:00.000Z	FearMoth	abraxxa	yes it is listening
+2008-12-22T17:34:00.000Z	abraxxa	FearMoth	is your routing ok?
+2008-12-22T17:36:00.000Z	FearMoth	abraxxa	how can I be sure my routing is ok?
+2008-12-22T17:36:00.000Z	abraxxa	FearMoth	does your box have multiple ips? is the default route set?
+2008-12-22T17:37:00.000Z	FearMoth	abraxxa	my box only has one ip, how do I check if the default route is set?
+2008-12-22T17:39:00.000Z	abraxxa	FearMoth	route -n
+2008-12-22T17:39:00.000Z	abraxxa	FearMoth	look for an entry with destination 0.0.0.0 and genmask 0.0.0.0
+2008-12-22T17:40:00.000Z	FearMoth	abraxxa	0.0.0.0         192.168.1.254   0.0.0.0         UG    100    0        0 eth0 ... is that right?
+2008-12-22T17:40:00.000Z	abraxxa	FearMoth	looks ok
+2008-12-22T17:41:00.000Z	FearMoth	abraxxa	yes
+2008-12-22T17:43:00.000Z	abraxxa	FearMoth	then the app listening on that port doesn't responde
+2008-12-22T17:43:00.000Z	abraxxa	FearMoth	if its tcp you can check with telnet ip port
+2008-12-22T17:44:00.000Z	FearMoth	abraxxa	ok I'll try that out, thanks for all your help
+2008-12-22T17:45:00.000Z	abraxxa	FearMoth	np

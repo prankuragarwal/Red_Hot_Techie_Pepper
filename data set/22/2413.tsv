@@ -1,0 +1,22 @@
+2010-06-18T01:13:00.000Z	Heebie	owen1	You need to add them to the group 'root'  (or edit the sudoers file using visudo.. but that's getting complicated.)
+2010-06-18T01:14:00.000Z	owen1	Heebie	 sudo adduser <username> admin     is this what i need?
+2010-06-18T01:14:00.000Z	Heebie	owen1	That could do it
+2010-06-18T01:14:00.000Z	owen1	Heebie	great!
+2010-06-18T01:26:00.000Z	owen1	Heebie	sudo adduser <username> admin  gave me output about adding the user to the group root. i still get: sudo: must be setuid root   when trying to run stuff with sudo.
+2010-06-18T01:26:00.000Z	Heebie	owen1	Did you look at the ownership and permissions on the sudo executable?
+2010-06-18T01:30:00.000Z	Heebie	owen1	It shows that someone did at some point screw up the permissions on your sudo file.  It should be -rwsr-xr-x 2 root root 145K 2010-04-13 18:37 /usr/bin/sudo
+2010-06-18T01:30:00.000Z	Heebie	owen1	run this: sudo chmod u+s /usr/bin/sudo
+2010-06-18T01:30:00.000Z	owen1	Heebie	mgolisch it's a new EC2 instance
+2010-06-18T01:30:00.000Z	owen1	Heebie	let me try
+2010-06-18T01:31:00.000Z	owen1	Heebie	so sudo chmod u+s /usr/bin/sudo  will not helpL
+2010-06-18T01:32:00.000Z	Heebie	owen1	It will be helpful, but it might not be able to run without booting off of a CD image.. because you can't seem to execute sudo commands.
+2010-06-18T01:33:00.000Z	owen1	Heebie	your command helped! so what is the s i see here: -rwsr-xr-x
+2010-06-18T01:34:00.000Z	owen1	Heebie	it changed from x to s
+2010-06-18T01:34:00.000Z	Heebie	owen1	If it changed from x to s.. that's probably fixed it.
+2010-06-18T01:35:00.000Z	owen1	Heebie	yes, but what does it mean?
+2010-06-18T01:35:00.000Z	Heebie	owen1	That command set the SUID bit. (Well. the "user sticky" bit really.. but in that instance..that's what it does.)  Can you run sudo without the error now?
+2010-06-18T01:36:00.000Z	owen1	Heebie	yes
+2010-06-18T01:36:00.000Z	Heebie	owen1	Well, that seems to solve that. :)  Whee!
+2010-06-18T01:36:00.000Z	owen1	Heebie	it's a production machine so i want to make sure it's secure and i know what i did.
+2010-06-18T01:37:00.000Z	Heebie	owen1	Well, if you want to make sure you know what you did, you want to make sure you turn on a lot of logging for sudo.. and you should avoid doing a sudo su - to get to a root shell. ;)
+2010-06-18T01:39:00.000Z	owen1	Heebie	ok. thanks a lot!

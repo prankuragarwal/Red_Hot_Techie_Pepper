@@ -1,0 +1,22 @@
+2008-05-14T09:09:00.000Z	hiro1000		i try to mount it via
+2008-05-14T09:09:00.000Z	hiro1000		"mount /dev/sda
+2008-05-14T09:10:00.000Z	hiro1000		but it gives me "mount: can't find /dev/sda in /etc/fstab or /etc/mtab
+2008-05-14T09:10:00.000Z	hiro1000		"
+2008-05-14T09:10:00.000Z	hiro1000		"*-disk:0
+2008-05-14T09:10:00.000Z	hiro1000		       description: ATA Disk
+2008-05-14T09:10:00.000Z	hiro1000		       product: DIAMOND  080G 2F
+2008-05-14T09:10:00.000Z	hiro1000		       physical id: 0
+2008-05-14T09:10:00.000Z	hiro1000		       bus info: scsi@4:0.0.0
+2008-05-14T09:10:00.000Z	hiro1000		       logical name: /dev/sda
+2008-05-14T09:11:00.000Z	genii	hiro1000	you would try to mount a partition of device sda like sda1 for instance. But likely that drive is already mounted as your root filesystem. To see whats mounted under what directories do: mount
+2008-05-14T09:13:00.000Z	genii	hiro1000	Firstly, just:  mount/dev/sda1 will do nothing. You need to tell it a place to make it available (a directory)   so something like: mount /dev/sda1 /mnt/sda1     (if you have made the directory of sda1 inside the directory of /mnt)
+2008-05-14T09:16:00.000Z	genii	hiro1000	Also if the drive is not native linux filesystem you will need to tell mount command what to try like ntfsor such with -t filesystemnamehere
+2008-05-14T09:16:00.000Z	genii	hiro1000	Use sudo in front of mount command then and put your usual pasword when asked
+2008-05-14T09:17:00.000Z	hiro1000	genii	how do i specify a filesystem
+2008-05-14T09:19:00.000Z	genii	hiro1000	eg:   sudo mount -t somefilesystemname /dev/sda1 /mnt/sda1                for instance and put for "somefilesystemname" something like ntfs or what it should be
+2008-05-14T09:19:00.000Z	genii	hiro1000	In that example the directory sda1 must exist as I said earlier elsewhere
+2008-05-14T09:20:00.000Z	genii	hiro1000	What is the result of the command:   sudo fdisk -l /dev/sda1
+2008-05-14T09:22:00.000Z	genii	hiro1000	Apologies, should be:   sudo fdisk -l /dev/sda               only and not sda1
+2008-05-14T09:22:00.000Z	genii	hiro1000	But report the sda1 line it gives
+2008-05-14T09:23:00.000Z	genii	hiro1000	Reading
+2008-05-14T09:25:00.000Z	genii	hiro1000	The encryption would have been done in Windows and not in Ubuntu

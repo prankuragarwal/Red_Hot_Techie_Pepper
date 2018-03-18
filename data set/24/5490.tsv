@@ -1,0 +1,24 @@
+2006-11-02T07:59:00.000Z	thinkl		I'm switching from Windows and am trying to edit webpages. On our windows machines, I can open files on our webserver directly from explorer through some kind of magic. Does anyone know what that magic is and how I reproduce it in linux? I can't ftp into our server or ssh in so this must be something else...
+2006-11-02T08:00:00.000Z	sethk	thinkl	sounds like you are remotely mounting the drives.  windows calls it "mapping a share" so you won't know you are mounting a file system and can do it anywhere, not just in windows.  :)
+2006-11-02T08:01:00.000Z	sethk	thinkl	seriously, you can do exactly the same thing in linux, in several ways.
+2006-11-02T08:01:00.000Z	sethk	thinkl	or, you can ssh into the linux box itself, and edit them there.  lots of options
+2006-11-02T08:01:00.000Z	thinkl	sethk	-- It doesn't look like a drive being mounted.
+2006-11-02T08:01:00.000Z	sethk	thinkl	you don't bring up a file explorer and click on the html files?
+2006-11-02T08:02:00.000Z	sethk	thinkl	I'm not a windows expert, there are other ways to do it in windows.
+2006-11-02T08:02:00.000Z	sethk	thinkl	what you described sounds to me as if you had the files mounted, but as I said, I'm not a windows expert
+2006-11-02T08:02:00.000Z	thinkl	sethk	There's a little arrow-y button thing in windows that opens it up. I then have to enter a name and password and I can save directly to the webserver from Word or Frontpage or whatever.
+2006-11-02T08:02:00.000Z	sethk	thinkl	it isn't going to be as seemless in linux as that.
+2006-11-02T08:03:00.000Z	thinkl	sethk	I'm not a windows expert either ;) I'm just trying to figure how this stuff works -- it's not ftp or ssh or ntp...
+2006-11-02T08:03:00.000Z	sethk	thinkl	you can use open office to edit the files, similarly to the way you do it with word, but you'll have to move the files from and to the web server, or remotely mount them
+2006-11-02T08:03:00.000Z	thinkl	sethk	Right -- I actually have a pretty good understanding of linux. What I don't know is what protocol one uses to access this webserver.
+2006-11-02T08:03:00.000Z	sethk	thinkl	once you mount them so they look local, you can edit them with open office.  but we are just talking about straight html here
+2006-11-02T08:04:00.000Z	sethk	thinkl	you can use nfs, you can use samba to mount
+2006-11-02T08:04:00.000Z	sethk	thinkl	or you can edit them on the server and point the display back at your workstation.
+2006-11-02T08:05:00.000Z	thinkl	sethk	but I'm pretty sure this is different from a samba mount (I use that to mount our windows drives on our fileserver).
+2006-11-02T08:06:00.000Z	sethk	thinkl	yes, it is, I'm thinking of ways you could handle it that would have a similar feel
+2006-11-02T08:06:00.000Z	thinkl	sethk	Ah -- key point -- I don't control the server.
+2006-11-02T08:07:00.000Z	sethk	thinkl	although I'd be surprised if, under the covers, it isn't just a samba mount in windows, even if it doesn't look that way.
+2006-11-02T08:07:00.000Z	thinkl	sethk	I've just been banging my head against a wall trying to figure out what the server is using to communicate with windows.
+2006-11-02T08:07:00.000Z	sethk	thinkl	run a packet sniffer when you are editing, you'll find out quickly enough
+2006-11-02T08:24:00.000Z	thinkl	sethk	Well, the more I research, the more it looks bad for me. It looks like frontpage uses some kind of special proprietary extensions of its own which are different from the standard ftp/sftp/webdav toolkit...
+2006-11-02T08:24:00.000Z	sethk	thinkl	indeed.  that's not a surprise from M$.  although, sniff the packets, you might find it's just grafted onto a simpler protocol underneath.  then again, you might not.  :)

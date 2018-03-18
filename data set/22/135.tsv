@@ -1,0 +1,22 @@
+2012-06-05T13:32:00.000Z	deanzod		After a clean install of Ubuntu, my input mic works, my spdif headphone socket works, but my speakers don't.  On Acer 9810 lappy btw. Anyone got any ideas?!?
+2012-06-05T13:33:00.000Z	deanzod		I've done all of the obvious things such ash mute, faders, choosing the right device etc....
+2012-06-05T13:33:00.000Z	ActionParsnip	deanzod	can you give the output of:wget -O alsa-info.sh http://www.alsa-project.org/alsa-info.sh && chmod +x ./alsa-info.sh && ./alsa-info.sh
+2012-06-05T13:34:00.000Z	deanzod	ActionParsnip	http://www.alsa-project.org/db/?f=e9a11dbe4b2b5aa7b497aec44f221769fb066a3b
+2012-06-05T13:36:00.000Z	ActionParsnip	deanzod	have you tried changing the model to laptop in alsa-base.conf ?
+2012-06-05T13:36:00.000Z	deanzod	ActionParsnip	How would I do that?
+2012-06-05T13:37:00.000Z	ActionParsnip	deanzod	gksudo gedit /etc/modprobe.d/alsa-base.conf     change the line and reboot
+2012-06-05T13:39:00.000Z	deanzod	ActionParsnip	I have the file open but can't see a line that pertains to the model
+2012-06-05T13:39:00.000Z	ActionParsnip	deanzod	ok, if you close gedit then run:  grep -R model /etc/modprobe.d/*     what is output?
+2012-06-05T13:40:00.000Z	ActionParsnip	deanzod	if it gives multiple lines, use a pastebin
+2012-06-05T13:50:00.000Z	ActionParsnip	deanzod	can you pastebin the output of the command I gave please
+2012-06-05T13:51:00.000Z	deanzod	ActionParsnip	http://paste.ubuntu.com/1024746/
+2012-06-05T13:54:00.000Z	ActionParsnip	deanzod	the 3 files listed do nothing as they don't have a .conf extension, I suggest you delete them
+2012-06-05T13:55:00.000Z	deanzod	ActionParsnip	Is that just general housekeeping or could that fix my sound problem too?
+2012-06-05T13:56:00.000Z	ActionParsnip	deanzod	good house keeping, you can then add the line:  options snd-hda-intel model=laptop    in /etc/modprobe.d/alsa-base.conf
+2012-06-05T13:59:00.000Z	deanzod	ActionParsnip	Just to be clear, the files I should be deleting are:  etc/modprobe.d/alsa-base:options  AND etc/modprobe.d/alsa-base~:options AND /etc/modprobe.d/options:options  ??
+2012-06-05T14:02:00.000Z	ActionParsnip	deanzod	sudo rm /etc/modprobe.d/alsa-base~; sudo rm /etc/modprobe.d/options; sudo rm /etc/modprobe.d/alsa-base
+2012-06-05T14:02:00.000Z	ActionParsnip	deanzod	the colon stuff is  the result of grep
+2012-06-05T14:03:00.000Z	deanzod	ActionParsnip	Ok thanks. Going to reboot now and see if it worked
+2012-06-05T14:08:00.000Z	deanzod	ActionParsnip	I have deleted the files, added the line and rebooted but still no sound :(
+2012-06-05T14:09:00.000Z	ActionParsnip	deanzod	try the original model line, but set it in alsa-base.conf. Change the line you added
+2012-06-05T15:00:00.000Z	deanzod	ActionParsnip	Thanks for all the help.

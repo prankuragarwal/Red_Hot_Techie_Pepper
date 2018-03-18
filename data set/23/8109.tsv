@@ -1,0 +1,23 @@
+2005-05-22T07:28:00.000Z	HappyFool	teroedni	hrm, have you tried just editing /etc/fstab ?
+2005-05-22T07:29:00.000Z	HappyFool	teroedni	well, i don't know how to reconfigure /etc/fstab; that will work
+2005-05-22T07:29:00.000Z	HappyFool	teroedni	what happens when you put a cd in the drive? it doesn't get automounted?
+2005-05-22T07:31:00.000Z	HappyFool	teroedni	does sudo mount /dev/hdc /media/cdrom0 work ?
+2005-05-22T07:39:00.000Z	HappyFool	teroedni	is there a CD in the drive?
+2005-05-22T07:40:00.000Z	HappyFool	teroedni	just a moment, let me try it here
+2005-05-22T07:40:00.000Z	HappyFool	teroedni	try 'sudo mount -t auto /dev/hdc /media/cdrom0'
+2005-05-22T07:44:00.000Z	HappyFool	teroedni	are you getting anywhere?
+2005-05-22T07:58:00.000Z	HappyFool	teroedni	try this. 'cd /proc/ide' , then 'ls'
+2005-05-22T07:47:00.000Z	HappyFool	teroedni	do you get this error: "mount: No medium found" ?
+2005-05-22T07:49:00.000Z	HappyFool	teroedni	try 'ls -d /media/cdrom0'
+2005-05-22T07:53:00.000Z	HappyFool	teroedni	  try sudo mount -t iso9660 /dev/hdd /media/cdrom0
+2005-05-22T07:56:00.000Z	HappyFool	teroedni	hmm
+2005-05-22T08:00:00.000Z	HappyFool	teroedni	ok, try 'cat hdc/driver'
+2005-05-22T08:01:00.000Z	HappyFool	teroedni	ok, so that confirms your cdrom is connected to hdd. What sort of disc is in the CD-rom drive? a dvd?
+2005-05-22T08:02:00.000Z	HappyFool	teroedni	ah
+2005-05-22T08:03:00.000Z	HappyFool	teroedni	what happens when you goto Applications -> Sound and video -> CD player ?
+2005-05-22T08:05:00.000Z	HappyFool	teroedni	type cat /etc/fstab|grep cdrom
+2005-05-22T08:07:00.000Z	HappyFool	teroedni	hrm, that looks wrong
+2005-05-22T08:07:00.000Z	HappyFool	teroedni	that's cut-and-pasted exactly?
+2005-05-22T08:08:00.000Z	HappyFool	teroedni	did you edit this file previously ?
+2005-05-22T08:08:00.000Z	HappyFool	teroedni	anyway, you want the line to look like this:
+2005-05-22T08:09:00.000Z	HappyFool	teroedni	note the '/' in front of media -- it's important!

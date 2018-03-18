@@ -1,0 +1,19 @@
+2009-02-18T16:21:00.000Z	wallunit		When I start my system alsa does not work untill i have started alsamixer the first time. How can that be?
+2009-02-18T16:22:00.000Z	ActionParsnip1	wallunit	read through: dmesg | less
+2009-02-18T16:22:00.000Z	wallunit	ActionParsnip1	After boot or after starting alsamixer?
+2009-02-18T16:23:00.000Z	ActionParsnip1	wallunit	whenever, just read through, its gonna be a long read but should tell you whats going on
+2009-02-18T16:32:00.000Z	wallunit	ActionParsnip1	There is nothing related to alsa or my soundcard in dmesg
+2009-02-18T16:32:00.000Z	ActionParsnip1	wallunit	o but does the soundcard come up ok?
+2009-02-18T16:33:00.000Z	ActionParsnip1	wallunit	no, in the dmesg, does the card get an irq and get setup correctly?
+2009-02-18T16:34:00.000Z	wallunit	ActionParsnip1	I don't think so, what should i grep for?
+2009-02-18T16:34:00.000Z	ActionParsnip1	wallunit	nothing, just read it down
+2009-02-18T16:34:00.000Z	ActionParsnip1	wallunit	dmesg | less
+2009-02-18T16:38:00.000Z	wallunit	ActionParsnip1	I have read it, but i wasn't able to find something related to the soundcard. But there is a lot of cryptic pci stuff, maybe there it is.
+2009-02-18T16:38:00.000Z	ActionParsnip1	wallunit	maybe alsa isnt loading right
+2009-02-18T16:40:00.000Z	wallunit	ActionParsnip1	However after running alsamixer, it works, even though there are no new entries in dmesg.
+2009-02-18T16:40:00.000Z	ActionParsnip1	wallunit	weird, bit of a hack but you could autorun alsa mixer to get you sorted
+2009-02-18T16:41:00.000Z	ActionParsnip1	wallunit	try uid=1000
+2009-02-18T16:41:00.000Z	wallunit	ActionParsnip1	I now, that i could do it. but this is ugly.
+2009-02-18T16:41:00.000Z	ActionParsnip1	wallunit	i'd use it for now until you can work it out
+2009-02-18T16:41:00.000Z	ActionParsnip1	wallunit	you could try reinstalling alsa, or compile it
+2009-02-18T16:43:00.000Z	wallunit	ActionParsnip1	I have already done apt-get --reinstall install alsa-base alsa-utils; dpkg-reconfigure alsa-base alsa-utils

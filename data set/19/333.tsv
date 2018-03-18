@@ -1,0 +1,19 @@
+2012-04-11T23:20:00.000Z	DerMat		badblocks probably takes a while, right?
+2012-04-11T23:21:00.000Z	DerMat		oh
+2012-04-11T23:21:00.000Z	DasEi	DerMat	badblocks is a time-eater, yes
+2012-04-11T23:22:00.000Z	DasEi	DerMat	see above
+2012-04-11T23:23:00.000Z	DasEi	DerMat	usb-stick handy ?
+2012-04-11T23:23:00.000Z	DasEi	DerMat	or live cd ?
+2012-04-11T23:24:00.000Z	DasEi	DerMat	yes, but you are in need of booting from another medium so you can check the UNmounted hd
+2012-04-11T23:25:00.000Z	DasEi	DerMat	so a second hard drive ? well, unmount it before fsck'ing it
+2012-04-11T23:26:00.000Z	DasEi	DerMat	sudo fdisk -l , which FS-type ?
+2012-04-11T23:26:00.000Z	DasEi	DerMat	/dev/sdb ?
+2012-04-11T23:27:00.000Z	DasEi	DerMat	sudo fsck /dev/sdb1  -y (see output from fdisk to be sure)
+2012-04-11T23:31:00.000Z	DasEi	DerMat	does it check or not ?
+2012-04-11T23:32:00.000Z	DasEi	DerMat	good sign, again , look at fdisk -l, which fs is /dev/sdb1, extended lvm ??
+2012-04-11T23:34:00.000Z	DasEi	DerMat	so gpt-table, so all fine, check the linux/extended ones
+2012-04-11T23:35:00.000Z	DasEi	DerMat	there you go
+2012-04-11T23:36:00.000Z	DasEi	DerMat	fsck finished, repairs confirmed ?
+2012-04-11T23:37:00.000Z	DerMat	DasEi	it said: recovering journal, and then: clean
+2012-04-11T23:37:00.000Z	DasEi	DerMat	so finished back to command prompt ?
+2012-04-11T23:38:00.000Z	DasEi	DerMat	fine, so use it again and check syslog, case problems proceed, badblocks is your friend

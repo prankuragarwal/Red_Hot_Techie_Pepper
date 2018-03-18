@@ -1,0 +1,21 @@
+2006-11-16T15:41:00.000Z	jryer		Can someone help me get PHP installed and working? I have tried re-installing via Synaptic many times with no luck. Whenever I try to open a PHP page, the browser tries to open it as a file. Why? It was working until I tried installing Drupal. Help!
+2006-11-16T15:42:00.000Z	froshie	jryer	do you have your PHP module loaded in apache configuration file?
+2006-11-16T15:48:00.000Z	jryer	froshie	How do I change the configuration file? I have only installed php5 and all other necessary files via synaptic
+2006-11-16T15:48:00.000Z	froshie	jryer	what ubuntu version are you using? edgy? dapper?
+2006-11-16T15:49:00.000Z	froshie	jryer	or better, what PHP version?
+2006-11-16T15:49:00.000Z	jryer	froshie	I am using dapper
+2006-11-16T15:49:00.000Z	jryer	froshie	PHP version 5
+2006-11-16T15:50:00.000Z	froshie	jryer	"sudo sh" and inspect your /etc/apache2/mods-available/php5.conf
+2006-11-16T15:51:00.000Z	froshie	jryer	and also /etc/apache2/mods-available/php5.load
+2006-11-16T15:51:00.000Z	froshie	jryer	the latter file should have a line like: LoadModule php5_module /usr/lib/apache2/modules/libphp5.so
+2006-11-16T15:53:00.000Z	jryer	froshie	"LoadModule php5_module /usr/lib/apache2/modules/libphp5.so" is in the latter, like it should
+2006-11-16T15:54:00.000Z	froshie	jryer	and the former?
+2006-11-16T15:55:00.000Z	jryer	froshie	<IfModule mod_php5.c>   AddType application/x-httpd-php .php .phtml .php3   AddType application/x-httpd-php-source .phps </IfModule>
+2006-11-16T15:56:00.000Z	froshie	jryer	like it should, hmm...
+2006-11-16T15:57:00.000Z	jryer	froshie	Any ideas?
+2006-11-16T15:59:00.000Z	froshie	jryer	isn't there something in you apache's log file?
+2006-11-16T15:59:00.000Z	froshie	jryer	in /var/log/apache2
+2006-11-16T16:02:00.000Z	jryer	froshie	127.0.0.1 - - [16/Nov/2006:18:01:31 -0400]  "GET / HTTP/1.1" 200 2248 "-" "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.0.7) Gecko/20060921 Ubuntu/dapper-security Firefox/1.5.0.7"
+2006-11-16T16:03:00.000Z	jryer	froshie	That is the access.log
+2006-11-16T16:03:00.000Z	froshie	jryer	hmm nothing unusual :-(
+2006-11-16T16:06:00.000Z	jryer	froshie	thanks for trying to help... I'll go back to Windows for now

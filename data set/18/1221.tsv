@@ -1,0 +1,18 @@
+2012-07-03T06:04:00.000Z	jhesketh		Howdy. If I have an upstart process (running as root) start at boot time, is there any way a user might be able to stop that process from ever starting? (eg could they add book parameter or enter an interactive boot mode etc where they could choose for that daemon not to start)
+2012-07-03T06:06:00.000Z	escott	jhesketh	you could define a special boot mode with a special boot argument and then test that argument by checking /proc/cmdline in your script....
+2012-07-03T06:06:00.000Z	escott	jhesketh	which is what lightdm.conf does
+2012-07-03T06:09:00.000Z	escott	jhesketh	im confused then. how would they stop the script?
+2012-07-03T06:10:00.000Z	escott	jhesketh	don't give them root and don't give them physical access and they can't do anything you dont want
+2012-07-03T06:47:00.000Z	jhesketh	escott	sorry, I've returned now... Basically I have to give them physical access. I'm trying to make a locked down live distro (off ubuntu clearly) which they boot into. They won't be given root etc. I'm just wondering if they can stop the starting of root processes or escalate themselves to root before TTY/ldm etc are started
+2012-07-03T06:48:00.000Z	escott	jhesketh	stopped reading at "i have to give them physical access"... unless you plan to enable a cryptographically signed bootloader (do you have an efi system?) then they have root
+2012-07-03T06:50:00.000Z	jhesketh	escott	yeah I realise they can boot other systems etc, a signed bootloader is not viable. We have to assume they will boot the live USB - quite a large assumption but we are aware of the consequences of it. Other than that assumption though, is it safe to say they can't get root without rebooting?
+2012-07-03T06:52:00.000Z	escott	jhesketh	sure. the fewer permissions you give them in the logged in system the better because it reduces the number of privilege escalation attacks they can make
+2012-07-03T06:53:00.000Z	jhesketh	escott	Yep, hoping to give them very few permissions. But we also want a logging program to run as root, and I'm just wondering - as it's an upstart daemon - if there is a way a user might stop this. (for example, by interactively booting and choosing not to start that daemon)
+2012-07-03T06:54:00.000Z	escott	jhesketh	they could reboot to init=/bin/bash, remove the logging program and reboot again
+2012-07-03T07:02:00.000Z	jhesketh	escott	ok, so if they went into /bin/bash for their init they could remove it. However it's a non-persistent live usb so when rebooting their changes should be lost. That said, would setting the init parameter allow them to start other serivces themselves from /bin/bash etc. eg use init=/bin/bash and then start ldm.
+2012-07-03T07:03:00.000Z	escott	jhesketh	they could init=/bin/bash and then modify the system, and then resume the boot
+2012-07-03T07:03:00.000Z	jhesketh	escott	ah I see
+2012-07-03T07:03:00.000Z	escott	jhesketh	they could change root= argument, let it fail to busybox, then find root, make changes...
+2012-07-03T07:04:00.000Z	jhesketh	escott	hmm, ok then.. thanks for that. I don't suppose there is a way to limit the boot loader so they can't modify any of these parameters?
+2012-07-03T07:04:00.000Z	escott	jhesketh	for a usb system there probably is, but i dont know what it would be
+2012-07-03T07:04:00.000Z	jhesketh	escott	ok, no worries. Thanks very much for all your help :-)

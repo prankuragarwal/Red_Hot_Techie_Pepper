@@ -1,0 +1,18 @@
+2011-12-26T14:55:00.000Z	ribot		it wouldbe nice to know why webmin isn't supported, as nobody seems to think zentyal is better
+2011-12-26T14:57:00.000Z	llutz	ribot	".. webmin is no longer supported in Debian and Ubuntu. It is not compatible with the way that Ubuntu packages handle configuration files.."
+2011-12-26T14:59:00.000Z	llutz	ribot	hehe - basically its a bad idea, to give any web-application full (root-)access to config-files.
+2011-12-27T17:15:00.000Z	llutz	ribot	root
+2011-12-27T17:16:00.000Z	ribot	llutz	thanks
+2011-12-30T17:01:00.000Z	llutz	ribot	what's the scripts name?
+2011-12-30T17:02:00.000Z	ribot	llutz	it's the same name as was working with cron.hourly, no dots: mysql_backup
+2011-12-30T17:03:00.000Z	llutz	ribot	" grep daily /etc/crontab"   do other daily-jobs work?
+2011-12-30T17:04:00.000Z	ribot	llutz	i'm not sure, how do i see if they work?
+2011-12-30T17:04:00.000Z	llutz	ribot	just create a new job, writing date every 2 mins into a /tmp/-file  to check
+2011-12-30T17:07:00.000Z	llutz	ribot	do you have anacron installed? if so, daily/weekly/monthly won't be executed by cron anymore. check anacrontab in that case
+2011-12-30T17:08:00.000Z	ribot	llutz	i didn't install it, as hourly was working already
+2011-12-30T17:08:00.000Z	llutz	ribot	hourly is always run by cron
+2011-12-30T17:09:00.000Z	ribot	llutz	anacrontab is there, but i didn't install it, so maybe i have to?
+2011-12-30T17:09:00.000Z	llutz	ribot	apt-cache policy anacron |grep -i insta
+2011-12-30T17:10:00.000Z	ribot	llutz	it's installed, the latest version
+2011-12-30T17:10:00.000Z	llutz	ribot	so check anacron, anacrontab, see logs.
+2011-12-30T17:12:00.000Z	ribot	llutz	seems to be no logs of it

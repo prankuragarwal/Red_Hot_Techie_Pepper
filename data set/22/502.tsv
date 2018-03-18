@@ -1,0 +1,22 @@
+2011-10-28T13:10:00.000Z	pyarun		hey guys... we have a log folder where log files will be generated using rotatingfilehandler.. these files should be writeable by 2 users, so i have created a group and added those users to it and assigned g+rw permissions to dir.. however if user a creates a file user b is not able to write to it.. any suggesstion on how to achive this
+2011-10-28T13:12:00.000Z	llutz	pyarun	set sgid on that folder
+2011-10-28T13:12:00.000Z	pyarun	llutz	you mean like q+s
+2011-10-28T13:13:00.000Z	llutz	pyarun	g+s
+2011-10-28T13:13:00.000Z	pyarun	llutz	yes.i will try that too
+2011-10-28T13:13:00.000Z	llutz	pyarun	chgrp it to the group, both users are in
+2011-10-28T13:18:00.000Z	pyarun	llutz	it doesnt help..when a file is created by user A permissions for file are -rw-r--r--, it is not inheriting the permissions of the dir
+2011-10-28T13:19:00.000Z	llutz	pyarun	you's have to change umask to 0002 too
+2011-10-28T13:19:00.000Z	pyarun	llutz	umask for dir??
+2011-10-28T13:21:00.000Z	llutz	pyarun	would be nice, unfortunately there is afaik no way to do that dir-wise. you'd have to change it systemwide
+2011-10-28T13:22:00.000Z	pyarun	llutz	i am not sure abt the consequense of doing that.. i am afraid
+2011-10-28T13:22:00.000Z	llutz	pyarun	maybe it can be done  using ACLs
+2011-10-28T13:25:00.000Z	llutz	pyarun	something like: "setfacl -m d:g:yourusersgroup:rwx directory"
+2011-10-28T13:26:00.000Z	pyarun	llutz	i will try
+2011-10-28T13:26:00.000Z	llutz	pyarun	fs has to be mounted with acl active
+2011-10-28T13:27:00.000Z	pyarun	llutz	fs means file system??
+2011-10-28T13:27:00.000Z	llutz	pyarun	yes
+2011-10-28T13:28:00.000Z	llutz	pyarun	add "acl" to the mount-options
+2011-10-28T13:29:00.000Z	pyarun	llutz	i am really new to linux nd not everything you are saying, i am reading abt setfacl.. dont know hwat is mount options
+2011-10-28T13:30:00.000Z	llutz	pyarun	sorry. look at your /etc/fstab to check what options are used to mount the filesystem holding your folder (/ most likely)
+2011-10-28T13:30:00.000Z	llutz	pyarun	then add "acl" to the mount-options (the part before "0 1")
+2011-10-28T13:31:00.000Z	llutz	pyarun	for a test you could just do: sudo mount --remount -o acl /

@@ -1,0 +1,23 @@
+2008-08-08T02:50:00.000Z	nickrud	verynew	put a launcher on the desktop. Think launcher not icon shortcut (which can be a link as well)
+2008-08-08T02:46:00.000Z	nickrud	verynew	you mean like in a menu, or launcher?
+2008-08-08T02:46:00.000Z	verynew	nickrud	i mean, i got an icon on a desktop and i would like to launch program with extra commands by clicking on it
+2008-08-08T02:47:00.000Z	nickrud	verynew	that's not enough info to go on; but a generic solution is to write a bash script doing what you want and linking the launcher on the desktop to that
+2008-08-08T02:49:00.000Z	verynew	nickrud	example: i can run terminal and type :LANG=C app_name. i wonder is there a simple way to do the same with icon shortcut on a desktop
+2008-08-08T02:52:00.000Z	nickrud	verynew	but remember, you will need to use a script if you plan on setting environment variables
+2008-08-08T02:52:00.000Z	verynew	nickrud	ok, i put a launcher on a desktop, and... ?
+2008-08-08T02:52:00.000Z	verynew	nickrud	no other way?
+2008-08-08T02:54:00.000Z	nickrud	verynew	for example:    #!/bin/bash <newline> LANGUAGE="C" xterm" in ~/bin/xtermscript then right click desktop and add a launcher with xtermscript as the command
+2008-08-08T02:56:00.000Z	nickrud	verynew	the key thing you need to remember is the launcher is not executing in a shell environment, that's why LANGUAGE="C" doesn't work
+2008-08-08T02:57:00.000Z	verynew	nickrud	ok! i just started learning linux
+2008-08-08T02:58:00.000Z	nickrud	verynew	enjoy :) The curve starts steep, but there's a real view from the top :)
+2008-08-08T03:26:00.000Z	nickrud	verynew	did you make the script executable?   chmod u+x ~/bin/scriptname
+2008-08-08T03:26:00.000Z	verynew	nickrud	no
+2008-08-08T03:31:00.000Z	verynew	nickrud	i typed ' chmod u+x ~bin/xtermscript' and received 'cannot change priviliges to `bin/xtermscript': operation not permitted'
+2008-08-09T19:55:00.000Z	nickrud	verynew	that's where you would put a preferred resolution, if you're not happy with the default gdm res
+2008-08-09T19:56:00.000Z	verynew	nickrud	like SubSection "Display" / Modes "xxx" / EndSubSection ?
+2008-08-09T19:57:00.000Z	nickrud	verynew	yes
+2008-08-09T19:58:00.000Z	nickrud	verynew	like http://www.aleph0.com/computing/openbsd/inspiron-1000/xorg.conf-OpenBSD-3.9 at the very end, ignore the rest of the file
+2008-08-09T19:59:00.000Z	verynew	nickrud	all the lines or only screen section?
+2008-08-09T19:59:00.000Z	nickrud	verynew	the screen section. The key is after you create the display subsection, you need to add the defaultdepth so it knows what to use
+2008-08-09T20:02:00.000Z	nickrud	verynew	but I have to admit, my learning was done in the XFree86 days, and it's time to brush up. I've found a nice, expensive book on X that's recent, and has decent reviews
+2008-08-09T20:02:00.000Z	verynew	nickrud	ok ill try your solution and see if works

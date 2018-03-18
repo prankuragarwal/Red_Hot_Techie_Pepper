@@ -1,0 +1,23 @@
+2008-02-23T01:01:00.000Z	Squawk		Hey fellas, is it possible to install ubuntu while booted into gentoo. Id like to the the install while still using the pc, and wondered if there is a "howto" on how to install ubuntu from another linux distro? Setting it up to get my family onto linux
+2008-02-23T01:02:00.000Z	ejer	Squawk	google for debootstrap
+2008-02-23T01:03:00.000Z	Squawk	ejer	thanks having a looksee now
+2008-02-25T22:26:00.000Z	ejer	Squawk	have you tried setting right one in ubuntu keyboard settings?
+2008-02-25T22:26:00.000Z	Squawk	ejer	its a kernel module not loading issue, not gnome related
+2008-02-25T22:27:00.000Z	ejer	Squawk	there is no specific kernel module for that one keyboard I am pretty sure
+2008-02-25T22:27:00.000Z	Squawk	ejer	I was hoping getting the right driver rather than relying on a generic one might solve the problem, but itsn ot there
+2008-02-25T22:28:00.000Z	ejer	Squawk	in fact, that would be an xorg module
+2008-02-25T22:28:00.000Z	ejer	Squawk	cat /usr/share/X11/xkb/rules/xorg.lst
+2008-02-25T22:28:00.000Z	Squawk	ejer	true enough, but the problem isnt x related, the problem is kernel related
+2008-02-25T22:29:00.000Z	ejer	Squawk	can you tell me why you think this?
+2008-02-25T22:30:00.000Z	Squawk	ejer	because after I manage to get into the system and look at dmesg, I can see that the kernel module for my keyboard is only loaded after I unplug the mouse and then plug it back in
+2008-02-25T22:31:00.000Z	ejer	Squawk	what module does it say is loading?
+2008-02-25T22:31:00.000Z	Squawk	ejer	and unplug/replug the keyboard. My alternative is not to plug in the mouse until boot is finished
+2008-02-25T22:31:00.000Z	Squawk	ejer	it doesnt, which is most of the problem. If I could figure that out I would just autoload it. All it says is "[   39.671075] input: Microsoft Natural� Ergonomic Keyboard 4000 as /class/input/input3"
+2008-02-25T22:32:00.000Z	Squawk	ejer	MasterShrak, erUSUL I cant find the name of the module, or I would already have done so
+2008-02-25T22:32:00.000Z	ejer	Squawk	because as I said, it is an xorg module, you need to look it up in the list I pasted
+2008-02-25T22:33:00.000Z	ejer	Squawk	your xorg module is called 'microsoft', and that should be in your xorg config
+2008-02-25T22:34:00.000Z	ejer	Squawk	you can try the other ones listed as well if that does not work :cat /usr/share/X11/xkb/rules/xorg.lst | grep micro
+2008-02-25T22:34:00.000Z	Squawk	ejer	il look into xorg, but since the keyboard doesnt get identified at all, how would it get loaded if I didnt load x at all but rather booted to console?
+2008-02-25T22:37:00.000Z	Squawk	ejer	plus, the module does get loaded if I don't plugin my mouse, or if i unplug the mouse and then replugin the keyboard, so whatever needs setting is working, just not being detected during the boot
+2008-02-25T22:37:00.000Z	ejer	Squawk	you can force modules to be loaded by adding them to /etc/modules
+2008-02-25T22:38:00.000Z	Squawk	ejer	I know that. Im still not 100% certain thats the problem since dmesg doesnt show a module loading

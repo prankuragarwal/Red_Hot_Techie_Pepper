@@ -1,0 +1,23 @@
+2007-11-26T09:32:00.000Z	amicrawler		is there a way to disable wireless card so doesn not start up first thing
+2007-11-26T09:33:00.000Z	amicrawler		i have to do this command all the time to get my nic to work
+2007-11-26T09:33:00.000Z	amicrawler		ifconfig ath0 down
+2007-11-26T09:34:00.000Z	amicrawler		i have to do this command all the time to get my nic to work
+2007-11-26T09:34:00.000Z	amicrawler		is there a way to disable wireless card so doesn not start up first thing
+2007-11-26T09:34:00.000Z	amicrawler		what drive ?
+2007-11-26T09:34:00.000Z	amicrawler		usb firewire?
+2007-11-26T09:34:00.000Z	amicrawler		what format?
+2007-11-26T09:35:00.000Z	rbil	amicrawler	do u want to have it setup so that nic is never used?
+2007-11-26T09:35:00.000Z	rbil	amicrawler	then u should be able to blacklist it
+2007-11-26T09:43:00.000Z	amicrawler	rbil	 do you have a sulution for the wif card
+2007-11-26T09:43:00.000Z	rbil	amicrawler	blacklist it
+2007-11-26T09:43:00.000Z	rbil	amicrawler	prevents loading of driver by kernel and that essentially makes it invisible to the system
+2007-11-26T09:44:00.000Z	rbil	amicrawler	google for blacklist
+2007-11-26T09:45:00.000Z	rbil	amicrawler	u essentially edit this file ... /etc/modprobe.d/blacklist and add a line like blacklist <device driver>
+2007-11-26T09:46:00.000Z	rbil	amicrawler	maybe it's i815 or somesuch? what does lspci tell you?
+2007-11-26T09:50:00.000Z	rbil	amicrawler	hold on I'm looking
+2007-11-26T09:51:00.000Z	rbil	amicrawler	this might do it for you ...      blacklist ath_pci
+2007-11-26T09:52:00.000Z	rbil	amicrawler	after adding it to blacklist file, reboot computer
+2007-11-26T09:57:00.000Z	amicrawler	rbil	your my hero
+2007-11-26T09:57:00.000Z	rbil	amicrawler	amazing as I was taking a wild guess :-)
+2007-11-26T09:58:00.000Z	rbil	amicrawler	remember, if u need that nic in future, you'll need to remove that ine
+2007-11-26T09:59:00.000Z	amicrawler	rbil	i hate wifi

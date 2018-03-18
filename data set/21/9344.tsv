@@ -1,0 +1,21 @@
+2006-07-04T08:57:00.000Z	Lunar_Lamp		ok, really silly question here.  on a pc i don't know, and want to install 3d graphcs drivers - how do i find out what gfx card is installed?
+2006-07-04T08:58:00.000Z	soundray	Lunar_Lamp	try 'lspci'
+2006-07-04T08:58:00.000Z	Lunar_Lamp	soundray	thats the one!
+2007-02-07T08:23:00.000Z	Lunar_Lamp	soundray	could you tell me please then? I don't know of the security implications.
+2007-02-07T08:24:00.000Z	soundray	Lunar_Lamp	$PWD in the path can be used by an attacker to trick you into running an executable you didn't intend to run.
+2007-02-07T08:24:00.000Z	soundray	Lunar_Lamp	they could plant a malicious program by the name of 'ls' in /tmp for example.
+2007-02-07T08:25:00.000Z	soundray	Lunar_Lamp	if you happen to do a 'cd /tmp ; ls' you will run a program that you didn't intend to.
+2007-02-08T08:32:00.000Z	soundray	Lunar_Lamp	'sudo update-grub'
+2007-02-08T12:49:00.000Z	soundray	Lunar_Lamp	why update twice? And last time I checked, dist-upgrade implied upgrade
+2007-02-08T12:50:00.000Z	Lunar_Lamp	soundray	update twice was a typo due to not paying attention. I also think that dist-upgrade implies upgrade, but I know that it's safe to do it in two steps and haven't tried doing it in one.  Didn't want to risk someone elses machine.
+2007-04-29T12:27:00.000Z	soundray	Lunar_Lamp	it won't be. It's possible that it will be backported from gutsy, though
+2007-04-29T12:28:00.000Z	Lunar_Lamp	soundray	hmm, ok, thanks. Is there a way to tell if/when it will be ready though?
+2007-04-29T12:29:00.000Z	soundray	Lunar_Lamp	other than by checking dpkg -l mozilla-thunderbird* regularly? I don't think so.
+2007-09-29T16:31:00.000Z	soundray	Lunar_Lamp	you want /var/lib on a USB drive?
+2007-09-29T16:31:00.000Z	Lunar_Lamp	soundray	kinda yes
+2007-09-29T16:32:00.000Z	soundray	Lunar_Lamp	okay, your call. fstab is the way to go. You don't need the UUID, you can use /dev/sdXx in its place to address the partition.
+2007-09-29T16:32:00.000Z	Lunar_Lamp	soundray	yes, /dev/sdXx would work - but wouldn't that be affected by me sometimes having other drives plugged in etc?
+2007-09-29T16:33:00.000Z	soundray	Lunar_Lamp	you mean you would sometimes boot with /var/lib/ on the external drive and other times without?
+2008-07-21T04:05:00.000Z	soundray	Lunar_Lamp	security-relevant fixes go into the regular repositories. Feature updates may be available through backports and proposed
+2008-07-21T04:06:00.000Z	Lunar_Lamp	soundray	yes, but for example, there is an apache 2.2.9 which includes security fixes etc, and ubuntu only has 2.2.8 at the moment in hardy (including backports) so how can I tell if the security fixes therein have been included?
+2008-07-21T04:08:00.000Z	soundray	Lunar_Lamp	there are changelogs in /usr/share/doc/packagename/

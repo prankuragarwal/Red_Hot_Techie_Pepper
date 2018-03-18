@@ -1,0 +1,19 @@
+2011-01-05T15:25:00.000Z	quodt		hi, i have a question about apt: i like to install ec2-api-tools. unfortunatelly apt gives me an old version. if i check the my mirror i can see a newer version with ~lucid1 in the package name. how can i force apt to install that version? (mirror: http://at.archive.ubuntu.com/ubuntu/pool/multiverse/e/ec2-api-tools/)
+2011-01-05T15:25:00.000Z	iceroot	quodt	you are using lucid?
+2011-01-05T15:26:00.000Z	iceroot	quodt	apt-get update && apt-get install ec2-api-tools
+2011-01-05T15:26:00.000Z	iceroot	quodt	that will give you the current version from the repos of your ubuntu-version
+2011-01-05T15:26:00.000Z	quodt	iceroot	this is what i did
+2011-01-05T15:27:00.000Z	iceroot	quodt	then there is no newer version in the repo
+2011-01-05T15:27:00.000Z	iceroot	quodt	cat /etc/issue  is showing you what ubuntu-version?
+2011-01-05T15:29:00.000Z	iceroot	quodt	its in the normal lucid-repos, check your /etc/apt/sources.list
+2011-01-05T15:30:00.000Z	iceroot	quodt	can you paste your /etc/apt/sources.list and the output of "cat /etc/issue" please to pastebin
+2011-01-05T15:31:00.000Z	quodt	iceroot	yes, one sec
+2011-01-05T15:36:00.000Z	quodt	iceroot	http://pastebin.com/tK3kChmB
+2011-01-05T15:38:00.000Z	iceroot	quodt	hm, seems everything ok
+2011-01-05T15:40:00.000Z	quodt	iceroot	do you know what the ~lucid1 in the package name means?
+2011-01-05T15:40:00.000Z	iceroot	quodt	backport for lucid maybe
+2011-01-05T15:41:00.000Z	iceroot	quodt	but i dont know exactly
+2011-01-05T15:42:00.000Z	iceroot	quodt	uncomment it and try apt-get update && apt-get install packagename -s  just to see if it would install it (-s = simulate)
+2011-01-05T15:43:00.000Z	quodt	iceroot	you'r the man :)
+2011-01-05T15:44:00.000Z	quodt	iceroot	thankyou very much
+2011-01-05T15:44:00.000Z	iceroot	quodt	ok that i was right :)

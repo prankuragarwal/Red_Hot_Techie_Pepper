@@ -1,0 +1,24 @@
+2011-08-30T04:52:00.000Z	gregday		I have a 2TB drive I've been using for awhile, but I'm wiping it to use with mdadm and I'm having the weirdest error. I can fdisk just fine and create partitons, but no matter what I do, I cannot read or write sdb1. I can read/write the whole disk, and if I make two partitions, I can do whatever to sdb2, but not sdb1.
+2011-08-30T04:53:00.000Z	gregday		If I try to mkfs on /dev/sdb1 I get "Error getting MD array info from /dev/sdb1"  Been using Linux for 12 years and never seen this.
+2011-08-30T04:53:00.000Z	gregday		Could by disk be failing?
+2011-08-30T04:53:00.000Z	Jordan_U	gregday	What is the exact command you are running? Can you pastebin the exact command and the entire output?
+2011-08-30T04:55:00.000Z	gregday	Jordan_U	 http://pastebin.com/DDrTMjhV
+2011-08-30T04:55:00.000Z	gregday	Jordan_U	 mdadm --create  fails on this disk too.
+2011-08-30T04:55:00.000Z	gregday	Jordan_U	But no error using fdisk to *create* sdb1. Just when I try to actually do anything with it.
+2011-08-30T04:57:00.000Z	Jordan_U	gregday	The pastebin you just created is already the 7'th result in google for "Error getting MD array info from".
+2011-08-30T04:57:00.000Z	gregday	Jordan_U	I know, I've been searching too!
+2011-08-30T04:57:00.000Z	gregday	Jordan_U	 I find it odd that I can write (dd if=/dev/zero of=/dev/sdb) just fine, but writing to sdb1 fails.
+2011-08-30T04:58:00.000Z	gregday	Jordan_U	And running badblocks on the disk returns no errors.
+2011-08-30T04:58:00.000Z	Jordan_U	gregday	I assume that dd of=/dev/sdb1 works also?
+2011-08-30T04:58:00.000Z	gregday	Jordan_U	Nope, it fails. But if I make an sdb2 I can write to that
+2011-08-30T04:59:00.000Z	Jordan_U	gregday	What error message does dd give?
+2011-08-30T04:59:00.000Z	gregday	Jordan_U	"No space left on device"
+2011-08-30T04:59:00.000Z	Jordan_U	gregday	Can you pastebin the output of "sudo parted -l"?
+2011-08-30T05:00:00.000Z	gregday	Jordan_U	It's hanging on that...
+2011-08-30T05:00:00.000Z	Jordan_U	gregday	Can you pastebin the output of "dmesg"?
+2011-08-30T05:01:00.000Z	gregday	Jordan_U	 Nothing relevant in dmesg except for I/O errors on...   fd0.  I have no floppy drive.
+2011-08-30T05:03:00.000Z	gregday	Jordan_U	parted finally returned. It lists the partition I created in fdisk, and it matches another identical disk I have (sdc). No errors or anything weird looking. I can pastebin it if you want
+2011-08-30T05:04:00.000Z	Jordan_U	gregday	Please do.
+2011-08-30T05:04:00.000Z	Jordan_U	gregday	sudo rmmod floppy
+2011-08-30T05:04:00.000Z	gregday	Jordan_U	http://pastebin.com/pQiD4a9x
+2011-08-30T05:06:00.000Z	Jordan_U	gregday	No idea, please file a bug report.

@@ -1,0 +1,18 @@
+2007-07-04T10:22:00.000Z	Nutubuntu		!enter
+2007-07-04T10:23:00.000Z	Nutubuntu		Can anyone give me a hand compiling a pkg from source? I've done this a couple of times, but this time I'm seeing an error I don't understand. How do I resolve a dpkg broken-pipe error during checkinstall? I think I'm misunderstanding it, because it seems to say a required lib is trying to overwrite itself? http://paste.ubuntu-nl.org/28501/
+2007-07-04T10:24:00.000Z	Toma-	Nutubuntu	use a safer prefix=
+2007-07-04T10:25:00.000Z	Nutubuntu	Toma-	 thanks - can you explain (or help me learn for myself) what is "a safer prefix"? The README said ./configure --prefix=/usr, so I did that
+2007-07-04T10:26:00.000Z	Toma-	Nutubuntu	nonono.... use --prefix=/usr/local
+2007-07-04T10:57:00.000Z	Toma-	Nutubuntu	what happens when you use /usr/local?
+2007-07-04T10:57:00.000Z	Nutubuntu	Toma-	the same error
+2007-07-04T10:58:00.000Z	Toma-	Nutubuntu	well did you run 'make clean' before running configure again?
+2007-07-04T10:59:00.000Z	Toma-	Nutubuntu	ok give it a shot. might work.  make sure you go 'make clean && ./configure --prefix=/usr/local && make'
+2007-07-04T11:02:00.000Z	Nutubuntu	Toma-	... same problem: Installing Debian package ... FAILED. Same error in the logfile too (trying to overwrite `/usr/lib/libgconf2-4/2/libgconfbackend-xml.so', which is also in package libgconf2-4)
+2007-07-04T11:02:00.000Z	Toma-	Nutubuntu	thats bizarre. seems like a cruddy makefile if its not obeying the prefix variable
+2007-07-04T11:03:00.000Z	Nutubuntu	Toma-	 it's not a very mature package - a new editor I want to try ... maybe I should file a bugrep with them and wait for a new build ?
+2007-07-04T11:04:00.000Z	Toma-	Nutubuntu	if you really think its going to be ok, you can use 'dpkg --force-all builtpackagename.deb'
+2007-07-04T11:04:00.000Z	Toma-	Nutubuntu	you could always try!
+2007-07-04T11:05:00.000Z	Nutubuntu	Toma-	 if dpkg --force-all could break something that currently works ... I don't want to take the chance. Too much trouble for too little gain
+2007-07-04T11:05:00.000Z	Toma-	Nutubuntu	good call
+2007-07-04T11:05:00.000Z	Nutubuntu	Toma-	 t/y again for your help :)
+2007-07-04T11:05:00.000Z	Toma-	Nutubuntu	no problem!

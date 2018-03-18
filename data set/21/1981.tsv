@@ -1,0 +1,21 @@
+2011-07-22T05:26:00.000Z	daniel__		hello would anyone know how to activate a wireless driver that stoped working after i updated from 10.10 to 11.04 my card is a Broadcom Corporation BCM4311 802.11b/g WLAN and my computer is a vostro 1000
+2011-07-22T05:28:00.000Z	YankDownUnder	daniel__	Have you tried to find out if the right device driver for the wireless is working and activated? (run "sudo jockey-gtk")
+2011-07-22T05:31:00.000Z	daniel__	YankDownUnder	all that did was open additional drivers ive tried that and i marked the bcmwl-kernel-source for reisntalation like the website https://help.ubuntu.com/community/WifiDocs/Driver/bcm43xx told me to and nothing has worked what else do u think i should try ?
+2011-07-22T05:32:00.000Z	YankDownUnder	daniel__	Edit the /etc/modprobe.d/blacklist.conf and comment out the bcm43xx driver, reboot.
+2011-07-22T05:33:00.000Z	daniel__	YankDownUnder	how do i do that
+2011-07-22T05:34:00.000Z	YankDownUnder	daniel__	Um, sudo nano /etc/modprobe.d/blacklist.conf => comment in front of bcm43xx, save the file, restart the machine
+2011-07-22T05:37:00.000Z	daniel__	YankDownUnder	sry im a realy big noob here what do u mean comment in front of bcm43xx
+2011-07-22T05:38:00.000Z	YankDownUnder	daniel__	Put a "#" in front of it like all the other comments in the file.
+2011-07-22T05:40:00.000Z	daniel__	YankDownUnder	.# replaced by b43 and ssb.
+2011-07-22T05:42:00.000Z	YankDownUnder	daniel__	Yeah mate. Das it
+2011-07-22T05:44:00.000Z	daniel__	YankDownUnder	ok should i earase the blacklist before it and also how do i save it
+2011-07-22T05:45:00.000Z	YankDownUnder	daniel__	Mate, I never said to erase the blacklist - only to comment out the bcm43xx module and save the file and reboot the machine.
+2011-07-22T05:46:00.000Z	daniel__	YankDownUnder	ok i didnt jsut making sure but how do i save the file
+2011-07-22T05:46:00.000Z	YankDownUnder	daniel__	"CTRL+X" saves the file
+2011-07-22T05:53:00.000Z	daniel__	YankDownUnder	still no luck
+2011-07-22T05:54:00.000Z	YankDownUnder	daniel__	Now that you've done that, run "sudo jockey-gtk" again - see what shows up mate.
+2011-07-22T05:55:00.000Z	daniel__	YankDownUnder	/usr/lib/python2.7/dist-packages/gi/types.py:44: Warning: g_object_set_qdata: assertion `G_IS_OBJECT (object)' failed
+2011-07-22T05:56:00.000Z	YankDownUnder	daniel__	Are you typing this in a term: sudo jockey-gtk ??
+2011-07-22T05:58:00.000Z	daniel__	YankDownUnder	yeh it opens up additional drivers and shoots that out in additional drivers it says the broadcom STA wireless driver is working but on my computer the wifi led isnt lit and as far as the networking tool it wont detect it and it worked fine in 10.10
+2011-07-22T05:59:00.000Z	YankDownUnder	daniel__	Close all that crap up, and open up the Package Manager, search on "backports" => install the backports, reboot, see what goes on after that.
+2011-07-22T06:04:00.000Z	daniel__	YankDownUnder	ok wicth one there seems to be many different ones linux-backports-modules-net-(then random numbers follows by generic and some are then follow by -pare or they are followed by nattey then generic

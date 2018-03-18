@@ -1,0 +1,21 @@
+2011-03-27T21:44:00.000Z	LinkRage		will `sudo apt-get remove -y grub-pc` prevent ubuntu server 10.04 LTS from booting ?
+2011-03-27T21:45:00.000Z	erUSUL	LinkRage	probably. why do you want to remove it?
+2011-03-27T21:46:00.000Z	LinkRage	erUSUL	I'm not saying I want but since I typed on fresh ubuntu server 10.04 install: apt-get update and the aptitude safe-upgrade, now I keep seeing errors like: Setting up grub-pc (1.98-1ubuntu10) ... /proc/misc: No entry for device-mapper found Is device-mapper driver missing from kernel?
+2011-03-27T21:47:00.000Z	erUSUL	LinkRage	do you use device mapper? aka lvm
+2011-03-27T21:49:00.000Z	LinkRage	erUSUL	as far as I'm aware I'm not supposed to have lvm setup mhm, how do I check that? I don't see any volume groups
+2011-03-27T21:49:00.000Z	erUSUL	LinkRage	then do not bother about the messages. if you do not use DM aka LVM then it is normal that none is found in /proc/misc
+2011-03-27T21:50:00.000Z	LinkRage	erUSUL	 I see, but I just want the hide them on rinning apt-get install *something* each time :)
+2011-03-27T21:51:00.000Z	erUSUL	LinkRage	can you post the exact and complete error message you get?
+2011-03-27T21:52:00.000Z	LinkRage	erUSUL	here it is: http://pastebin.com/SZeALEK4
+2011-03-27T21:53:00.000Z	erUSUL	LinkRage	sudo dpkg --configure -a
+2011-03-27T21:55:00.000Z	LinkRage	erUSUL	http://pastebin.com/aVZaC0Yp -almost the same thing
+2011-03-27T21:57:00.000Z	erUSUL	LinkRage	find /lib/modules/ -name '*dm-*'
+2011-03-27T21:57:00.000Z	LinkRage	erUSUL	nothing - blank line -> no results
+2011-03-27T21:58:00.000Z	erUSUL	LinkRage	!!??
+2011-03-27T21:59:00.000Z	LinkRage	erUSUL	there are no such files
+2011-03-27T21:59:00.000Z	erUSUL	LinkRage	custom kernel ?
+2011-03-27T22:00:00.000Z	LinkRage	erUSUL	it's xen VPS, so I guess so, unfortunatelly It was no built by myself - it's the default my VPS provider 'puts'
+2011-03-27T22:00:00.000Z	erUSUL	LinkRage	ok; not familiar with that envoirment. what prompt you to install/uninstall grub-pc/grub2?
+2011-03-27T22:03:00.000Z	LinkRage	erUSUL	once I did apt-get update && aptitude safe-upgrade - it started with those messages, hm I think it make sence to not upgrade the custom xen kernel with a regular one
+2011-03-27T22:03:00.000Z	erUSUL	LinkRage	maybe they are using grub1 because xen does not support grub2 ? ask them
+2011-03-27T22:05:00.000Z	LinkRage	erUSUL	grub1 is currently not installed so I don't know, ok nevemind I'll most probably start from scratch - rebuild the VPS because now I'm not sure which kernel I had etc. thank you for all the help btw ;)

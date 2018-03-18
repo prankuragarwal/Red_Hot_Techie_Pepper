@@ -1,0 +1,22 @@
+2007-11-29T07:38:00.000Z	ICM		The wireless card in my laptop isn't turning on, or at least hte blue LED isn't lighting up indicating that it is on. I have installed ndiswrapper and the winxp drivers for it. I also set a manual configuration for it putting in the SSID and the network key and such. The problem is that the card isn't on, the card just isn't on... when I hit the wifi button, nothing happens. Any suggestions?
+2007-11-29T07:39:00.000Z	MasterShrek	ICM	what kinda card is it?
+2007-11-29T07:40:00.000Z	ICM	MasterShrek	it is: Network controller: Broadcom Corporation BCM4318 [AirForce One 54g] 802.11g wireless LAN Controller (rev 02)
+2007-11-29T07:40:00.000Z	MasterShrek	ICM	that card is supported in-kernel, you just need firmware for it
+2007-11-29T07:40:00.000Z	ICM	MasterShrek	I'm not really good with Linux.. if it requires recompiling the kernel.. I'd rather try something different..
+2007-11-29T07:40:00.000Z	MasterShrek	ICM	http://www.mediafire.com/?bqn8x4eancv download that file and extract it to /lib/firmware
+2007-11-29T07:41:00.000Z	MasterShrek	ICM	no recompiling, and ill help you extract it when u get to that point
+2007-11-29T07:41:00.000Z	MasterShrek	ICM	also remove ndiswrapper
+2007-11-29T07:41:00.000Z	MasterShrek	ICM	how did you install it?
+2007-11-29T07:42:00.000Z	MasterShrek	ICM	sudo apt-get remove ndiswrapper
+2007-11-29T07:43:00.000Z	ICM	MasterShrek	couldn't find the package ndiswrapper.. I think it was something to the effect of ndis-utils
+2007-11-29T07:44:00.000Z	MasterShrek	ICM	whatever it was you have to remove it because it will conflict with the in-kernel driver
+2007-11-29T07:44:00.000Z	ICM	MasterShrek	is there just any way I can get the ndiswrapper to work?
+2007-11-29T07:45:00.000Z	ICM	MasterShrek	partially why I went for ndis was somebody had extremely bad luck with the in-kernel driver
+2007-11-29T07:45:00.000Z	MasterShrek	ICM	the in-kernel driver works quite well as of the 7.10 kernel
+2007-11-29T07:46:00.000Z	ICM	MasterShrek	E: could not get lock /var/lib/dpkg/lock - open (11 Resource temporily unavailable).... E: Unable to lock the administration directory (/var/lib/dpkg), is another process using it?
+2007-11-29T07:46:00.000Z	MasterShrek	ICM	do you ahve synaptic open?
+2007-11-29T07:50:00.000Z	ICM	MasterShrek	sorry, its rebooting..
+2007-11-29T07:51:00.000Z	ICM	MasterShrek	I think I missed a command in setting up the ndis wrapper, which involved disabling the kernel ones.. I think. I just did that and rebooted to see (it was a blacklist of some sort)
+2007-11-29T07:51:00.000Z	MasterShrek	ICM	well youll have to undo that if you are going to use the kernel version
+2007-11-29T07:52:00.000Z	ICM	MasterShrek	I don't care to use the kernel version if I can help it
+2007-11-29T07:52:00.000Z	MasterShrek	ICM	why, ndiswrapper is a crude hack, if you can avoid it why not?

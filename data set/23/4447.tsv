@@ -1,0 +1,23 @@
+2011-11-19T21:26:00.000Z	jazwec		hey. i have a problem which seems to be pretty common..my system cant detect my cdrom
+2011-11-19T21:27:00.000Z	gmachine_24	jazwec	and you're sure this drive works and that the jumper settings etc. are correct?
+2011-11-19T21:28:00.000Z	gmachine_24	jazwec	and what kind of drive is it? make, model, internal, external?
+2011-11-19T21:28:00.000Z	gmachine_24	jazwec	and what, if anything, have you done so far to try to make it work?
+2011-11-19T21:28:00.000Z	jazwec	gmachine_24	it does, it reads CDs normally..the thing is i need to mount ISO the way it mounts cdrom to make wine recognize it
+2011-11-19T21:29:00.000Z	jazwec	gmachine_24	ive added /dev/sr0 to my fstab, mount point set to /media/cdrom0 which ive created
+2011-11-19T21:31:00.000Z	gmachine_24	jazwec	have you run dmesg | grep -i cd | grep -i rom in a terminal?
+2011-11-19T21:34:00.000Z	jazwec	gmachine_24	it founds it
+2011-11-19T21:36:00.000Z	gmachine_24	jazwec	so check that info against what is in you fstab file by: sudo nano /etc/fstab
+2011-11-19T21:37:00.000Z	gmachine_24	jazwec	something like dev/hdc /media/cdrom0 udf,iso9960 user,noauto 0 0
+2011-11-19T21:38:00.000Z	gmachine_24	jazwec	it should match the output from the dmesg check
+2011-11-19T21:38:00.000Z	jazwec	gmachine_24	 this is what i added today /dev/sr0       /media/cdrom0   udf,iso9660 user,noauto,exec,utf8 0       0
+2011-11-19T21:39:00.000Z	jazwec	gmachine_24	i dont know what should match..the only similarity i see is the /dev/sr0
+2011-11-19T21:39:00.000Z	gmachine_24	jazwec	is this an internal or external drive
+2011-11-19T21:40:00.000Z	jazwec	gmachine_24	internal..."eject sr0" works
+2011-11-19T21:41:00.000Z	gmachine_24	jazwec	so after /dev/sr0 there's no /media/cdrom0 or something like that
+2011-11-19T21:41:00.000Z	gmachine_24	jazwec	forget that, I just reread your post
+2011-11-19T21:45:00.000Z	gmachine_24	jazwec	ok I'm at a loss. I don't know what the utf8 refers to but maybe there is someone here to knows more about this
+2011-11-19T21:46:00.000Z	jazwec	gmachine_24	can you please tell me how is your cdrom identified in fstab?
+2011-11-19T21:47:00.000Z	gmachine_24	jazwec	well, see, that's the thing... I just checked... and it's not
+2011-11-19T21:48:00.000Z	gmachine_24	jazwec	and my cdrom is listed in /dev not /media
+2011-11-19T21:50:00.000Z	gmachine_24	jazwec	if you go to the /media folder is there a cdrom drive listed there?
+2011-11-19T21:51:00.000Z	jazwec	gmachine_24	no it isnt..

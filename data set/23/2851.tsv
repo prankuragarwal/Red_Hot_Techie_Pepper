@@ -1,0 +1,23 @@
+2008-10-27T15:11:00.000Z	samurdha		could sum1 help me with my wifi problem?
+2008-10-27T15:13:00.000Z	samurdha		i have a desktop and a laptop both having ubuntu, laptop connects fine to the network and has internet but desktop detects the wifi network but unable to connect to it
+2008-10-27T15:15:00.000Z	samurdha		my pc detects my wifi network but cant connect to it.. what do i do?
+2008-10-27T15:15:00.000Z	bazhang_	samurdha	open a terminal and type ifconfig
+2008-10-27T15:16:00.000Z	bazhang_	samurdha	what is the name of the wlan? wlan0?
+2008-10-27T15:17:00.000Z	bazhang_	samurdha	better to do it in channel
+2008-10-27T15:19:00.000Z	samurdha	bazhang_	ifconfig shows ath0, lo and wlan0
+2008-10-27T15:20:00.000Z	bazhang_	samurdha	what does sudo dhclient wlan0 return
+2008-10-27T15:24:00.000Z	samurdha	bazhang_	is it ok if i post the entire result here?
+2008-10-27T15:24:00.000Z	bazhang_	samurdha	paste.ubuntu.com please
+2008-10-27T15:26:00.000Z	samurdha	bazhang_	http://paste.ubuntu.com/63197/
+2008-10-27T15:27:00.000Z	bazhang_	samurdha	is the wifi hotspot open or encrypted
+2008-10-27T15:28:00.000Z	bazhang_	samurdha	interface replace with wifi0
+2008-10-27T15:38:00.000Z	samurdha	bazhang_	it says SET failed on device wifi0 ; invalid argument
+2008-10-27T15:41:00.000Z	bazhang_	samurdha	then what does ifconfig show after that
+2008-10-27T15:41:00.000Z	bazhang_	samurdha	does it show the wifi being associated?
+2008-10-27T15:41:00.000Z	bazhang_	samurdha	is the essid hidden?
+2008-10-27T15:42:00.000Z	samurdha	bazhang_	: no it isnt hidden
+2008-10-27T15:44:00.000Z	samurdha	bazhang_	http://paste.ubuntu.com/63202/  heres the ifconfig result
+2008-10-27T15:45:00.000Z	bazhang_	samurdha	try sudo dhclient ath0
+2008-10-27T15:49:00.000Z	samurdha	bazhang_	http://paste.ubuntu.com/63206/
+2008-10-27T15:50:00.000Z	bazhang_	samurdha	you did associate the ath0 or wifi0 with this command: sudo iwconfig <interface> essid "ESSID_IN_QUOTES"
+2008-10-27T15:52:00.000Z	bazhang_	samurdha	that was before I knew you had ath0

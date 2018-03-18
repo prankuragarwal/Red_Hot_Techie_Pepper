@@ -1,0 +1,21 @@
+2006-12-23T17:32:00.000Z	midgetg0at		Anyone notice a problem in Edgy - Gnome where if you add a launcher to a panel, and then try to move it, it looses 100% of the launcher information?
+2006-12-23T17:32:00.000Z	midgetg0at		i'ts done it to me EVERY TIME i try to position it after i add it to panel
+2006-12-23T06:30:00.000Z	midgetg0at		heya, #samba is dead, anyone familiar with it? i installed samba, created a user, gave it a pass, created a share....and from windows \\192.168.0.3\folder i cant log into it...any ideas?
+2006-12-23T06:31:00.000Z	midgetg0at		oh, and my windows user also has a password...
+2006-12-23T06:31:00.000Z	un_operateur	midgetg0at	 smb://192.168.0.3/folder
+2006-12-23T07:45:00.000Z	un_operateur	midgetg0at	on your ubuntu machine -- can you log on to the samba share using nautilus smb://machine/share
+2006-12-23T07:49:00.000Z	un_operateur	midgetg0at	can you access your samba shares locally ?
+2006-12-23T07:51:00.000Z	un_operateur	midgetg0at	by locally i mean smb://machinename/share -- smb://ipaddress/share etc
+2006-12-23T07:52:00.000Z	un_operateur	midgetg0at	i hope you know localhost is different to <machinename> :)
+2006-12-23T07:52:00.000Z	un_operateur	midgetg0at	and that you've tried both
+2006-12-23T07:53:00.000Z	un_operateur	midgetg0at	I'm asking if both smb://localhost and smb://$HOSTNAME  work the same
+2006-12-23T07:53:00.000Z	un_operateur	midgetg0at	i wasnt following all along -- but how was XP failing to connect?
+2006-12-23T07:54:00.000Z	un_operateur	midgetg0at	if you tail /var/log/samba/log.smbd -- you'll find out why it was failing
+2006-12-23T07:56:00.000Z	un_operateur	midgetg0at	  at a terminal -- tail -f /var/log...
+2006-12-23T07:57:00.000Z	un_operateur	midgetg0at	the log.smbd will log why the login attempts from windows XP were failing
+2006-12-23T07:57:00.000Z	un_operateur	midgetg0at	check to see if that file actually exists there
+2006-12-23T07:58:00.000Z	un_operateur	midgetg0at	 ls -l ,,,
+2006-12-23T07:58:00.000Z	un_operateur	midgetg0at	xp is failing because something's amis -- if the server was never hit -- the xp will complain about the share not existing
+2006-12-23T08:00:00.000Z	un_operateur	midgetg0at	ahh vmware -- have you made sure that the vmware host OS name is different to ubuntu's machine name?
+2006-12-23T08:00:00.000Z	un_operateur	midgetg0at	rather than try using the same username and password -- try something different -- create a new user on samba and try again
+2006-12-23T08:02:00.000Z	un_operateur	midgetg0at	no different username and password -- completely different to your windows one

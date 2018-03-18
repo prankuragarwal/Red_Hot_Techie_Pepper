@@ -1,0 +1,22 @@
+2006-01-26T14:17:00.000Z	unl3ss		hey guys, quick question... how do I locate my dvd-rom drive so I can turn it's DMA on?
+2006-01-26T14:17:00.000Z	unl3ss		'cause, quite simply, I can't find it
+2006-01-26T14:18:00.000Z	plett	unl3ss	dmesg|grep hd
+2006-01-26T14:18:00.000Z	plett	unl3ss	assuming it's an ide drive
+2006-01-26T14:20:00.000Z	unl3ss	plett	SCSI, okay
+2006-01-26T14:20:00.000Z	unl3ss	plett	Well, it's an IBM
+2006-01-26T14:22:00.000Z	plett	unl3ss	if it really is scsi, it probably doesn't need dma turning on
+2006-01-26T14:23:00.000Z	unl3ss	plett	The problem is really with my DVD play back... it sucks. Heaps of artifacts, it's really slow... and that's the only solution I'm reading on the boards.
+2006-01-26T14:24:00.000Z	plett	unl3ss	that sounds more like a cpu power or video drivers thing
+2006-01-26T14:25:00.000Z	unl3ss	plett	Do the fglrx drivers mess up DVD playback?
+2006-01-26T14:28:00.000Z	plett	unl3ss	i've not heard of any problems, but i don't use them myself
+2006-01-26T14:29:00.000Z	unl3ss	plett	Well, alright... but how do I find where my dvd drive is located on my system?
+2006-01-26T14:30:00.000Z	plett	unl3ss	if scd0 is correct, /dev/scd0 will be the device file for it
+2006-01-26T14:30:00.000Z	unl3ss	plett	Alright, and I should not be able to access it like it was a directory, right? I have to mount it first, right?
+2006-01-26T14:31:00.000Z	plett	unl3ss	you can already read files from the drive?
+2006-01-26T14:33:00.000Z	unl3ss	plett	and when the dvd is "playing" I keep getting errors that "main decoder error: decoder is leaking pictures, resetting the heap"
+2006-01-26T14:34:00.000Z	plett	unl3ss	i've not seen that message before, but i don't use vlc or those glx drivers
+2006-01-26T14:34:00.000Z	plett	unl3ss	but it does sound like it's whatever is doing the mpeg decoding
+2006-01-26T14:35:00.000Z	unl3ss	plett	Alright, just as long as it's not the drive I can work on it. Thanks for the help!
+2006-01-26T14:38:00.000Z	unl3ss	plett	Got it, just downgraded my libdvdcss
+2006-01-26T14:38:00.000Z	plett	unl3ss	ahh. glad it's fixed. odd that downgrading made it work better though
+2006-01-26T14:38:00.000Z	unl3ss	plett	Yeah, to most of my problems lately downgrading has worked. Particularly with wine, of all things.

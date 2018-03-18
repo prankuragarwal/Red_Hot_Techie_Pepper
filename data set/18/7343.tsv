@@ -1,0 +1,18 @@
+2008-12-01T16:40:00.000Z	KriS|work		p/2fGBsn33.html
+2008-12-01T16:41:00.000Z	ActionParsnip	KriS|work	i see no code
+2008-12-01T16:35:00.000Z	ActionParsnip	KriS|work	try sudp apt-get install ./somefile.deb
+2008-12-01T16:36:00.000Z	ActionParsnip	KriS|work	if you copy the deb into your apt-cache you may be able to
+2008-12-01T16:40:00.000Z	KriS|work	ActionParsnip	I have a strange problem when wanting to install via apt-get. I call apt-get from within a function. Script A calls Script B and within Script B this function is called. However once apt-get is called for installing, it just skips the rest of the script due to some wrong return code from apt-get. It comes to "preconfiguring Packages" and then just echo' all the other functions. See line 45 and following of http://rafb.net/
+2008-12-01T16:42:00.000Z	KriS|work	ActionParsnip	jsut a sec I'll prepare some for you :)
+2008-12-01T16:48:00.000Z	KriS|work	ActionParsnip	http://rafb.net/p/QESL4c80.html
+2008-12-01T16:50:00.000Z	KriS|work	ActionParsnip	there you will find 2 scripts, one calling the other. In the output you will see that the function name "afterAPT" is in the middle of installing via apt-get (http://rafb.net/p/QESL4c80.html)
+2008-12-01T16:51:00.000Z	KriS|work	ActionParsnip	and this only happens with Ubuntu. On a Debian etch, these scripts work fine
+2008-12-01T16:52:00.000Z	ActionParsnip	KriS|work	i see your point
+2008-12-01T16:53:00.000Z	KriS|work	ActionParsnip	good. Any ideas how to work around? :)
+2008-12-01T16:54:00.000Z	ActionParsnip	KriS|work	try beforeAPT && runningAPT && afterAPT on the same line rather than seperate lines
+2008-12-01T16:54:00.000Z	KriS|work	ActionParsnip	 k, just a sec
+2008-12-01T16:56:00.000Z	KriS|work	ActionParsnip	hmm.. works... at least in these testscripts :) I'll try in the original Scripts.
+2008-12-01T16:56:00.000Z	KriS|work	ActionParsnip	thanks alot
+2008-12-01T16:56:00.000Z	ActionParsnip	KriS|work	np man, && means 'run next step if previos step passes'
+2008-12-01T17:19:00.000Z	KriS|work	ActionParsnip	thanks again. Works perfectly ;) Just as I want it to now.
+2008-12-01T17:20:00.000Z	ActionParsnip	KriS|work	awesome man :)

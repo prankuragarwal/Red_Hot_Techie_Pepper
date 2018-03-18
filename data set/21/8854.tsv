@@ -1,0 +1,21 @@
+2006-10-27T07:41:00.000Z	Polygon89		hey, im currently updating using the dist upgrade thing, and its taking literally forever (14 k/s!!) so im downloading the iso... question is, is it safe to kill this dist upgrade thing using system monitor and how do i upgrade using the livecd?
+2006-10-27T07:43:00.000Z	Polygon89		hey, im currently updating using the dist upgrade thing, and its taking literally forever (14 k/s!!) so im downloading the iso... question is, is it safe to kill this dist upgrade thing using system monitor and how do i upgrade using the livecd?
+2006-10-27T07:43:00.000Z	Polygon89		i dont really want to reformat, is that the only way?
+2006-10-27T07:44:00.000Z	dooglus	Polygon89	you're using apt-get?
+2006-10-27T07:44:00.000Z	Polygon89		im using the update manager -c
+2006-10-27T07:44:00.000Z	Polygon89		and its downloading at 14 k/s
+2006-10-27T07:44:00.000Z	Polygon89		which will finish in like a day
+2006-10-27T07:44:00.000Z	dooglus	Polygon89	if so, it's quite safe to control-c it, edit your /etc/apt/sources.list to use a faster mirror and restart the command.  it'll continue where it left off.
+2006-10-27T07:45:00.000Z	Polygon89		where do i get a list of mirrors
+2006-10-27T07:45:00.000Z	dooglus	Polygon89	I don't know what update-manager -c does, so I can't advise on that, sorry.  I would guess it's OK to do the same as I suggested, but I don't know.
+2006-10-27T07:46:00.000Z	Polygon89		basically it just launches the update manager to download/upgrade... and ill try that ljl
+2006-10-27T07:47:00.000Z	Polygon89		can i paste that into the sources.list and it shall upgrade faster?
+2006-10-27T07:47:00.000Z	dooglus	Polygon89	I put a list of mirrors which seem to be working and up-to-date here: http://s89213869.onlinehome.us/mirrors.txt
+2006-10-27T07:48:00.000Z	Polygon89	dooglus	so i pick one of those mirrors and replace it wherever i see like "deb http://archive.ubuntu.com/ubuntu edgy-security main"
+2006-10-27T07:50:00.000Z	dooglus	Polygon89	leave the security lines alone.  but you can change the rest.  the lines in that file are complete sources.list lines, they're just base URLs
+2006-10-27T07:50:00.000Z	Polygon89		so basically just replace archive.ubuntu.com with whatever
+2006-10-27T07:50:00.000Z	dooglus	Polygon89	for example, I'm using this line now, and getting good speed (but then, I'm close to germany): deb http://de.archive.ubuntu.com/ubuntu edgy           main restricted universe multiverse
+2006-10-27T07:51:00.000Z	Polygon89		ok ill try adding a us. to the archive and see if that changes anything
+2006-10-27T07:51:00.000Z	Polygon89		so i can just kill the update manager and run it again and it should just start up where it took off?
+2006-10-27T07:51:00.000Z	Polygon89		ok i shall do that
+2006-10-27T07:51:00.000Z	dooglus	Polygon89	and if it complains about "bad signatures", beware.  it might mean that the mirror can't be trusted.

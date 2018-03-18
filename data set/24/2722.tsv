@@ -1,0 +1,24 @@
+2011-12-04T04:20:00.000Z	benbloom		yes. i'm running kde
+2011-12-04T04:20:00.000Z	benbloom		but like i said my main prob is with flash/firefox bazhang
+2011-12-04T04:21:00.000Z	benbloom		k. good to know. and what about flash on firefox? it's attrocious
+2011-12-04T04:22:00.000Z	ActionParsnip	benbloom	are you using 32bit Ubuntu or 64bit?
+2011-12-04T04:23:00.000Z	ActionParsnip	benbloom	and what is the output of: lsb_release -sc    please
+2011-12-04T04:24:00.000Z	ActionParsnip	benbloom	and did you install adobe-installer from the partner repo to get flash?
+2011-12-04T04:25:00.000Z	benbloom	ActionParsnip	I used restricted extras at install
+2011-12-04T04:25:00.000Z	ActionParsnip	benbloom	uninstall the flashplugin-installer etc stuff and use that instead, you will get 64bit flash to match your 64bit OS
+2011-12-04T04:27:00.000Z	ActionParsnip	benbloom	adobe-installer which is in the partner repo, which needs enabling. Uninstall the flash packages you have installed already
+2011-12-04T04:28:00.000Z	ActionParsnip	benbloom	if you give the output of:  dpkg -l | egrep 'flash|gnash|swf|spark'   I can advise better
+2011-12-04T04:30:00.000Z	benbloom	ActionParsnip	ii flashplugin-downloader:i386 11.1.102.55ubuntu0.11.10.1 Adobe Flash Player plugin downloader
+2011-12-04T04:31:00.000Z	ActionParsnip	benbloom	sudo apt-get --purge remove flashplugin-downloader:i386 flashplugin-installer
+2011-12-04T04:31:00.000Z	ActionParsnip	benbloom	then enable the partner repo and install adobe-installer
+2011-12-04T04:37:00.000Z	benbloom	ActionParsnip	is it adobe-flashplugin? i'm not seeing a 'adobe-installer'
+2011-12-04T04:37:00.000Z	ActionParsnip	benbloom	adobe-installer is fine, it will give you 64bit flash, you were previously using 32bit flash on 64bit OS which isn't great
+2011-12-04T04:39:00.000Z	benbloom	ActionParsnip	with partners enabled i'm not seeing adobe-installer just adobe-flashplugin and adobe-flash-properties-gtk/kde
+2011-12-04T04:43:00.000Z	ActionParsnip	benbloom	install adobe-flashplugin
+2011-12-04T04:43:00.000Z	ActionParsnip	benbloom	the properties will also install as required
+2011-12-04T04:49:00.000Z	ActionParsnip	benbloom	:)
+2011-12-15T00:08:00.000Z	ActionParsnip	benbloom	can you give a pastebin of the output of:  lsb_release -a; uname -a; dpkg -l | egrep 'flash|gnash|swf|spark'
+2011-12-15T00:11:00.000Z	benbloom	ActionParsnip	http://pastebin.com/Ra08sMeG
+2011-12-15T00:14:00.000Z	ActionParsnip	benbloom	32bit flash on 64bit OS
+2011-12-15T00:14:00.000Z	ActionParsnip	benbloom	sudo apt-get --purge remove flashplugin-downloader:i386 flashplugin-installer
+2011-12-15T00:15:00.000Z	ActionParsnip	benbloom	then enable the partner repo and install the adobe-installer package, you will then get 64bit flash

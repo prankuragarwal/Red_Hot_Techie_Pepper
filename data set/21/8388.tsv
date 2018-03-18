@@ -1,0 +1,21 @@
+2008-03-21T21:12:00.000Z	peace		how to copy file to windows from ubuntu? i cannot find the windows partition..via linux
+2008-03-21T21:14:00.000Z	peace		anyone can help me? :)
+2008-03-21T21:15:00.000Z	peace		i cant find my windows partition when im on ubuntu.. i want to copy some files in windows partition :)
+2008-03-21T21:15:00.000Z	waylandbill	peace	if it is not at /windows or another mount point, you'll need to mount it manually.
+2008-03-21T21:17:00.000Z	waylandbill	peace	this may be of use:  https://help.ubuntu.com/community/MountingWindowsPartitions
+2008-03-21T22:06:00.000Z	waylandbill	peace	add an entry to menu.lst for windows using the chainloader command
+2008-03-21T22:08:00.000Z	peace	waylandbill	what to do ??? can you explain step by step? :)
+2008-03-21T22:10:00.000Z	waylandbill	peace	could you pastebin the output of 'sfdisk -l' ?
+2008-03-21T22:14:00.000Z	waylandbill	peace	from a terminal 'sfdisk -l'
+2008-03-21T22:17:00.000Z	waylandbill	peace	usually if it shows the usage options, something wasn't right. Maybe because it needs sudo.. Try 'sudo sfdisk -l'  That's an L, not a number 1
+2008-03-21T22:21:00.000Z	waylandbill	peace	make a new entry in /boot/grub/menu.lst with a root of hd(0,1) and chainloader +1
+2008-03-21T22:21:00.000Z	waylandbill	peace	if you pastebin that file, I can show you how it would look
+2008-03-21T22:24:00.000Z	waylandbill	peace	please post the entire file contents. thanks
+2008-03-21T22:26:00.000Z	waylandbill	peace	http://paste.ubuntu-nl.org/60432/
+2008-03-21T22:32:00.000Z	waylandbill	peace	flag the windows partition?
+2008-03-21T22:34:00.000Z	waylandbill	peace	did it give a menu of choices, did it show Windows, did it give an error? Please explain 'not working'
+2008-03-21T22:37:00.000Z	waylandbill	peace	no. there's some other issue that I don't know about. not familiar with your error.
+2008-03-21T22:44:00.000Z	peace	waylandbill	:)
+2008-03-21T22:46:00.000Z	waylandbill	peace	yes. you should be able to get a menu by hitting ESC... You could up the timeout value in menu.lst to say 10 or even 60 seconds to make it easier.
+2008-03-21T22:46:00.000Z	waylandbill	peace	also, try commenting out 'hiddenmenu'
+2008-03-21T22:46:00.000Z	waylandbill	peace	that way you don't have to hit ESC

@@ -1,0 +1,24 @@
+2010-09-13T08:31:00.000Z	wasnik		hi
+2010-09-13T08:31:00.000Z	wasnik		i just installed ubuntu and no sound
+2010-09-13T08:33:00.000Z	wasnik		i just installed ubuntu and am havin no sound
+2010-09-13T08:33:00.000Z	wasnik		could someone help
+2010-09-13T08:34:00.000Z	wasnik		i tried lspci -v | less  but didnt see mention of audio as talked in the troubleshooting
+2010-09-13T08:35:00.000Z	wasnik		actionparsnip: I tried lspci -v | less but couldnt see no audio option
+2010-09-13T08:35:00.000Z	ActionParsnip	wasnik	make sure levels are high and unmuted in gnomes volume app as well as run alsamixer in terminal and do the same
+2010-09-13T08:39:00.000Z	ActionParsnip	wasnik	if the soundcard is on the motherboard make sure it is enabled in bios
+2010-09-13T08:40:00.000Z	ActionParsnip	wasnik	it varys wildly from bios to bios. i'd imagine you havent tweaked your bios so its safe to assume its enabled
+2010-09-20T10:54:00.000Z	ActionParsnip	wasnik	was simply triggering ubottu. She has some cool links to fix sound
+2010-09-20T10:54:00.000Z	wasnik	ActionParsnip	went through those links before, nothiing helped. My soundcard is not gettin deteced
+2010-09-20T10:56:00.000Z	ActionParsnip	wasnik	use alsamixer to ensure all channels are unmuted and cranked
+2010-09-20T10:57:00.000Z	ActionParsnip	wasnik	is you sound chip onboard or a proper sound card?
+2010-09-20T10:58:00.000Z	ActionParsnip	wasnik	is your system a branded system or homebrew?
+2010-09-20T10:58:00.000Z	ActionParsnip	wasnik	is it a laptop?
+2010-09-20T10:59:00.000Z	ActionParsnip	wasnik	you may need to add an option in /etc/modprobe.d in one of the alsa file to add the module option: option=compaq ,or similar
+2010-09-20T11:01:00.000Z	ActionParsnip	wasnik	any will do. You system need to tell the sound system stuff. You add it in those files
+2010-09-20T11:03:00.000Z	ActionParsnip	wasnik	read the other lines, you'll see the syntax. I suggest you websearch for guides for your particular model to see if there is a guide for it and what exactly needs to be used
+2010-09-20T11:04:00.000Z	wasnik	ActionParsnip	I did search online for compaq laptops, i didnt find anything linux related
+2010-09-20T11:05:00.000Z	ActionParsnip	wasnik	not just compaq, the exact model you have
+2010-09-20T11:05:00.000Z	wasnik	ActionParsnip	 I didnt get any linux documentation on that
+2010-09-20T11:08:00.000Z	ActionParsnip	wasnik	the you would have seen the line: options snd-hda-intel model=laptop
+2010-09-20T11:09:00.000Z	ActionParsnip	wasnik	this page has a few options for compaq systems you could try: http://ubuntuforums.org/showthread.php?t=1043568
+2010-09-20T11:11:00.000Z	ActionParsnip	wasnik	after you change the line you will need to save the file and reboot. If there's no sound, re-edit and try the next one

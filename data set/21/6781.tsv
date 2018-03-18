@@ -1,0 +1,21 @@
+2007-02-05T06:47:00.000Z	suzumiya		i have a question, for a server system i changed the server to have a static ip address, rather than grabbing one off of my router. however, by doing so i can't seem to use apt-get for any programs.
+2007-02-05T06:48:00.000Z	suzumiya		but doesn;t it need to be static in order to access it through any other program
+2007-02-05T06:49:00.000Z	unop	suzumiya	 well, why are you supposing it's due to IP addressing that apt-get doesnt work? do other network applications work ok? does apt-get give you any errors?
+2007-02-05T06:52:00.000Z	unop	suzumiya	well, either works -- if it's a server that you need to access by an dedicated IP address over time, then you should use a ststic IP address or get the DHCP server to issue the same IP address to that device all the time
+2007-02-05T06:53:00.000Z	suzumiya	unop	it it supposed to be a mail server, and i would assume that it needs to be static
+2007-02-05T06:53:00.000Z	unop	suzumiya	 but you didnt answer the question of whether other network applications work alright?
+2007-02-05T06:54:00.000Z	unop	suzumiya	 well, that depends on the other networking infrastructure .. firewalls, route filters, port forwarding etc .. but yea, quite simply, it's easier to keep it static
+2007-02-05T06:54:00.000Z	suzumiya	unop	it's at static still, but maybe i should change some of hte ip settings away from such a standard address
+2007-02-05T06:55:00.000Z	unop	suzumiya	can you ping and browse a webpage say www.google.com?
+2007-02-05T06:59:00.000Z	unop	suzumiya	 ping google.com
+2007-02-05T07:05:00.000Z	unop	suzumiya	 well, there's your problem -- verify that you have a default gateway set and that you can ping it (the router) .. then check if you can do DNS lookups using nslookup
+2007-02-05T07:06:00.000Z	unop	suzumiya	 so can you ping 192.168.0.255 ?
+2007-02-05T07:09:00.000Z	unop	suzumiya	 well, check another computer to see what the default gateway is and then change this accordingly .. some routers have an ip address set as 192.168.1.254 or so
+2007-02-05T07:21:00.000Z	suzumiya	unop	did you hear? i changed my gateway to match the same as my router and it did nothing, since i couldnt ping hte router gateway from my ip address
+2007-02-05T07:22:00.000Z	unop	suzumiya	 errm, your workstation/server's default gateway must the IP address of the LAN side of the router (not the same as the default gateway of the router)
+2007-02-05T07:23:00.000Z	unop	suzumiya	 heh don't, everyone's unclear about these issues when they start out
+2007-02-05T07:23:00.000Z	unop	suzumiya	 so, if your routers IP address is say 192.168.1.254 .. then your server's default gateway must be that
+2007-02-05T07:29:00.000Z	unop	suzumiya	 did you use sudo in relation to restarting networking? because you would expect these slightly misleading errors otherwise?
+2007-02-05T07:30:00.000Z	unop	suzumiya	 ok, can you !pastebin your /etc/network/interfaces contents please?
+2007-02-05T07:36:00.000Z	suzumiya	unop	is there anything odd about the pastbin? http://paste.ubuntu-nl.org/4186/
+2007-02-05T07:38:00.000Z	suzumiya	unop	im going to reset then see if htat helps

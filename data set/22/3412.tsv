@@ -1,0 +1,22 @@
+2009-01-30T19:23:00.000Z	geirha	vock	could you pastebin the current menu.lst?
+2009-01-30T19:25:00.000Z	vock	geirha	http://pastebin.com/m2439a455
+2009-01-30T19:26:00.000Z	geirha	vock	Ok, the magic comments seems to be intact, so it must be that the kernel packages haven't been installed
+2009-01-30T19:27:00.000Z	vock	geirha	just did the synaptics update... not sure why it wouldn't have installed, but it's not even showing up anymore on the update list :(
+2009-01-30T19:28:00.000Z	geirha	vock	aptitude search '~i linux-image'
+2009-01-30T19:29:00.000Z	geirha	vock	Have you tried reinstalling the kernel-package? sudo aptitude reinstall linux-image-2.6.27-11-generic
+2009-01-30T19:29:00.000Z	vock	geirha	http://pastebin.com/m73c1a472
+2009-01-30T19:32:00.000Z	vock	geirha	i'll try reinstalling now
+2009-01-30T19:37:00.000Z	vock	geirha	jonaskoelker, no luck, uname -r still gives 2.6.24-19-generic
+2009-01-30T19:37:00.000Z	vock	geirha	jonaskoelker, after the reinstall and reboot
+2009-01-30T19:37:00.000Z	geirha	vock	menu.lst remains unchanged then I assume?
+2009-01-30T19:39:00.000Z	geirha	vock	One thing I would try is to rename /boot/grub/menu.lst and then run "sudo update-grub". That should create a brand new menu.lst. See if the newer kernels get added to that one.
+2009-01-30T19:40:00.000Z	vock	geirha	jonaskoelker: update-grub said it found the new kernel, but menu.lst stays the same
+2009-01-30T19:41:00.000Z	geirha	vock	even when you moved/renamed away menu.lst?
+2009-01-30T19:42:00.000Z	vock	geirha	that would have been smarter on my part, i'll try that
+2009-01-30T19:44:00.000Z	vock	geirha	thanks, that fixed it
+2009-01-30T19:45:00.000Z	geirha	vock	Yes. Make sure it's after the ### END AUTOMAGIC KERNELS LIST ...
+2009-01-30T19:45:00.000Z	vock	geirha	perfect, thanks
+2009-01-30T19:46:00.000Z	vock	geirha	rebooting hopefully it all works, thanks a lot for your help, learned some too
+2009-01-30T19:46:00.000Z	geirha	vock	must be a small typo somewhere in the old menu.lst that caused the problems then ...
+2009-01-30T19:46:00.000Z	geirha	vock	crossing fingers :)
+2009-01-30T19:49:00.000Z	vock	geirha	Thanks a lot, fixed the kernel, and also fixed the nvidia/xorg problem i was having when i upgraded to 8.10

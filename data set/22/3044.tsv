@@ -1,0 +1,22 @@
+2008-12-26T04:46:00.000Z	wp_		anyone got experiance with changing permitions for a vfat file system on a portable device??... it is for my new Sony NWZ-A815, but I am not able to load music unto it else that I am in root mode,... I were adwiced to use Amarok, and are trying that (but got myself into some configuration problems that I am trying to solve)... but I am still curius to find out how to change to permitions
+2008-12-26T04:47:00.000Z	Slart	wp_	usually you add something to the mount command (in /etc/fstab)
+2008-12-26T04:47:00.000Z	Slart	wp_	I'm not sure of the syntax.. man mount or man fstab might have more
+2008-12-26T04:47:00.000Z	wp_	Slart	will try that ;)
+2008-12-26T04:52:00.000Z	wp_	Slart	there is a -t flag for mount that enable me to specify the filesystem type, did that and it showed no errors... but it did not enable me to change the permitions... the one that adviced me to use Anarok said that vfat does not suport the change permition command
+2008-12-26T04:53:00.000Z	Slart	wp_	sure there isn't another parameter for setting the default user for all files?
+2008-12-26T05:00:00.000Z	wp_	Slart	thx... I found something that I maybe can use ;9
+2008-12-26T05:00:00.000Z	Slart	wp_	alright.. what was it?
+2008-12-26T05:01:00.000Z	Slart	wp_	that sounds familiar
+2008-12-26T05:10:00.000Z	wp_	Slart	I dound a command under the vfat sying "       uid=value and gid=value" but how do I use that to make gid 46? I tried gid=46, gid 46 and 46 without results
+2008-12-26T05:11:00.000Z	Slart	wp_	I'm not sure.. have you tried googling for it? there must be some kind of tutorial out there
+2008-12-26T05:12:00.000Z	wp_	Slart	I have seen this kind of documentation before in the man pages, but never had to use it... but I google it then
+2008-12-26T05:16:00.000Z	Slart	wp_	here's an example.. /dev/sda3       /mnt/fat32       vfat       users,gid=users,umask=0002,utf8=true 0 0
+2008-12-26T05:17:00.000Z	Slart	wp_	that's for fstab
+2008-12-26T05:17:00.000Z	Slart	wp_	also this page has some info.. and more links http://en.wikipedia.org/wiki/Fstab
+2008-12-26T05:18:00.000Z	wp_	Slart	hmmmm... so i have to write "sudo mount /dev/sdb1 /media/Sony gid=46" to get it working?
+2008-12-26T05:18:00.000Z	Slart	wp_	those commands were for fstab.. I think it's different when using the mount command.. hang on
+2008-12-26T05:19:00.000Z	wp_	Slart	I am reading your wiki now... and If I change the fstab then I don't need to write a specifik mount command every time, but maybe I am so lucky that it will auto mount my device?
+2008-12-26T05:20:00.000Z	Slart	wp_	I think it will be "sudo mount /dev/sdb1 /media/Sony -o uid=XXX,gid=XXX" or something like that
+2008-12-26T05:21:00.000Z	Slart	wp_	I don't think you can just set the gid.. but I'm not sure.. as I said.. I've never played around with fat32 enough
+2008-12-26T05:28:00.000Z	Slart	wp_	here's a thread that looks promising.. http://ubuntuforums.org/archive/index.php/t-333357.html
+2008-12-26T05:33:00.000Z	Slart	wp_	you're welcome

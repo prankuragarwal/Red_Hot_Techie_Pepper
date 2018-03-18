@@ -1,0 +1,22 @@
+2010-09-20T03:39:00.000Z	synackfin		how do I tell if I'm running ubuntu 10.04 Desktop or 10.04 Server?
+2010-09-20T03:40:00.000Z	Flannel	synackfin	Depends on what features of each you're looking for.  (There's no significant difference between the two, just different packages installed)
+2010-09-20T03:40:00.000Z	Flannel	synackfin	uname -a, are you running the server kernel, or the generic kernel?
+2010-09-20T03:41:00.000Z	synackfin		edbian/Flannel: I just ran `debootstrap --variant=buildd --arch amd64 lucid /mnt/ubuntu http://archive.ubuntu.com/ubuntu/` and chroot'd into /mnt/ubuntu
+2010-09-20T03:42:00.000Z	Flannel	synackfin	Why do you want to know, ultimately?  Are you following a guide that only claims to work on server or desktop? or what?
+2010-09-20T03:42:00.000Z	synackfin	Flannel	the 10.04 server has 5 years LTS, the 10.04 desktop has 3 years LTS
+2010-09-20T03:43:00.000Z	Flannel	synackfin	That's correct.  But it's a bit more complicated than that.  It's just that "server" packages are supported for five years, and ones that haven't been designated as "server" are only supported for three.
+2010-09-20T03:44:00.000Z	Flannel	synackfin	So, in four years, you might find that some packages you use (even on a "server" install) aren't being updated anymore
+2010-09-20T03:44:00.000Z	synackfin	Flannel	I see, so there's just one "lucid" install, and only packages are either "server" or "desktop" ?
+2010-09-20T03:45:00.000Z	Flannel	synackfin	Not even "either" but yeah.  Some packages have a longer support (5 years) than others.
+2010-09-20T03:46:00.000Z	synackfin	Flannel	by the way, how do I install dialog? I tried apt-get install dialog, and it errors "Package dialog is not available, but is referred to by another package"
+2010-09-20T03:47:00.000Z	Flannel	synackfin	'dialog' is in universe, you likely don't have all of the official repositories (if any) configured right now.
+2010-09-20T03:48:00.000Z	synackfin	Flannel	where do I get the list?
+2010-09-20T03:50:00.000Z	Flannel	synackfin	http://repogen.simplylinux.ch/  You want all four of the "branches" (don't need the source versions) and "updates" and "security" for updates (again, not the sources).
+2010-09-20T03:51:00.000Z	Flannel	synackfin	Mmm, hold on.  That seems to be giving me issues.
+2010-09-20T03:52:00.000Z	Flannel	synackfin	http://paste.ubuntu.com/496729/  that goes into your /etc/apt/sources.list
+2010-09-20T03:55:00.000Z	synackfin	Flannel	I copied your sources, but it still gives me an error when trying to apt-get install dialog
+2010-09-20T03:57:00.000Z	Flannel	synackfin	after you did that, do `sudo apt-get update`, then try and install
+2010-09-20T03:57:00.000Z	synackfin	Flannel	ah, now it works
+2010-09-20T03:57:00.000Z	synackfin	Flannel	what package do I need that "hints" what package I should install whenever I type a command that's not in my path?
+2010-09-20T03:58:00.000Z	Flannel	synackfin	command-not-found
+2010-09-20T04:00:00.000Z	synackfin	Flannel	thanks, and what apt-cache command do I use to find a package that provides a certain file? i.e. if I want file "foo.so"

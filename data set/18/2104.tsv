@@ -1,0 +1,18 @@
+2010-08-17T19:55:00.000Z	shayaknyc		hey all, i'm hoping someone could point me in the right direction. I've followed the instruction on various websites on how to set up a vpn server on my ubuntu 10.04. It appears to be set up correctly, but for some reason, I cannot connect with my windows 7 machine....any ideas?
+2010-08-17T19:56:00.000Z	Frater	shayaknyc	What are you trying to connect? FTP? HTTP?
+2010-08-17T19:56:00.000Z	shayaknyc	Frater	no, i'd like to be able to VPN tunnel in to my ubuntu machine at home. I can ssh just fine, but am interested in making the VPN work
+2010-08-17T19:56:00.000Z	shayaknyc	Frater	I've followed the instructions here: http://www.ubuntugeek.com/howto-pptp-vpn-server-with-ubuntu-10-04-lucid-lynx.html
+2010-08-17T19:56:00.000Z	Frater		Btw, hi all :) Question: Is anyone aware of the issues with IPSEC/PLUTO when running 2.6.30+ kernels with the KLIPS module compiled? It keeps crashing on me with a [3496905.773643] BUG: unable to handle kernel NULL pointer dereference at (null)
+2010-08-17T19:58:00.000Z	Frater	shayaknyc	So any error messages or the likes? Whats the tunnel name, whats the output of 'pon tunnelname'
+2010-08-17T19:59:00.000Z	shayaknyc	Frater	I'm not sure I understand what you're asking
+2010-08-17T19:59:00.000Z	shayaknyc		I'm currently in Windows 7, and am trying to VPN into my ubuntu machine (which I am SSH'd into)
+2010-08-17T20:01:00.000Z	Frater	shayaknyc	Well, you have the server and the client side. What is the error message on the client when you try to connect. What does the logfiles say on the server after you tried to connect.
+2010-08-17T20:02:00.000Z	shayaknyc	Frater	checking now
+2010-08-17T20:04:00.000Z	shayaknyc	Frater	Error 800: The remote connection was not made because the attempted VPN tunnerls failed. The VPN serber might be unreachable. If this connection is attemtpting to use L2TP/IPsec tunner, the security parameters required for IPsec negotion might not be properly configured
+2010-08-17T20:04:00.000Z	shayaknyc	Frater	but I'm not trying to use LT2Sec
+2010-08-17T20:04:00.000Z	shayaknyc	Frater	L2TP*
+2010-08-17T20:05:00.000Z	Frater	shayaknyc	And you did of course check the configuration is the same for the security things, and you also made sure the pptpd is running and listening for incoming calls, right?
+2010-08-17T20:06:00.000Z	shayaknyc	Frater	as far as I know, the server is running fine, how do I go about checking to make sure it works? is there a way to log in locally from commandline?
+2010-08-17T20:07:00.000Z	Frater		 shayaknyc: NNNNNGH. I hate PPTP and i have to get an IPSEC Tunnel working myself, iam afraid i can not give you enough attention to fix this (even tho i had exactly that recently).
+2010-08-17T20:07:00.000Z	shayaknyc	Frater	no worries...thanks for your help...if you could even point me in the right direction, I'd be MUCH obliged
+2010-08-17T20:09:00.000Z	Frater	shayaknyc	 Hm, i ran into the following problems.... IPTABLES blocked GRE ports (needed for PPTP). PPTP server was not started (ps aux | grep pptpd). Masquerading in IPTABLES; if you use it, has to be configured correctly...

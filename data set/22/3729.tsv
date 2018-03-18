@@ -1,0 +1,22 @@
+2009-01-10T19:32:00.000Z	_Ben		if i want to install a new kernel, i in theory can do it via aptitude privided their exists a compatible one available right? what about actually making that kernel boot: i need to muck about with grub for that don't i?
+2009-01-10T19:32:00.000Z	jrib	_Ben	you should be getting kernel upgrades from APT automatically with update-manager and they will automatically be setup for you
+2009-01-10T19:33:00.000Z	_Ben	jrib	i need to downgrade kernel as it currently refuses to boot on i686 (amd geode cpu)
+2009-01-10T19:33:00.000Z	jrib	_Ben	have you found the relevant bug report?
+2009-01-10T19:34:00.000Z	_Ben	jrib	uhm no....
+2009-01-10T19:34:00.000Z	jrib	_Ben	you need to provide more details.  Did ubuntu boot with an older kernel and then update-manager gave a new one and this one now fails?
+2009-01-10T19:35:00.000Z	jrib	_Ben	summarize it
+2009-01-10T19:38:00.000Z	_Ben	jrib	I have a thin client running on an AMD GX1 cpu with a 4.6gb laptop harddisk in it. it has no cd drive or spare id controller and cannot boot off of usb. the only option was for me to put the laptop disk into a laptop (the one im using now) and install ubuntu server edition from there. unfortunately the laptop has a modern pentium m cpu which works an i686 kernel. so after installing and putting the harddisk back into the thin client, the thin client refu
+2009-01-10T19:38:00.000Z	jrib	_Ben	uname -r
+2009-01-10T19:39:00.000Z	_Ben	jrib	???
+2009-01-10T19:39:00.000Z	jrib	_Ben	what does 'uname -r' return?
+2009-01-10T19:40:00.000Z	jrib	_Ben	boot it on the laptop and come back here
+2009-01-10T19:40:00.000Z	_Ben	jrib	oh the kernel version is 2.6.26 i think
+2009-01-10T19:41:00.000Z	jrib	_Ben	my guess is it's using -generic.  That works on most cpu
+2009-01-10T19:42:00.000Z	_Ben	jrib	if it is on generic is there any way i can change it to a i586,486 or 386??
+2009-01-10T19:43:00.000Z	jrib	_Ben	/msg ubottu info linux-image-i386
+2009-01-10T19:43:00.000Z	jrib	_Ben	erm, ignore that
+2009-01-10T19:44:00.000Z	jrib	_Ben	there are -386 kernels in APT.  Let me check what the documentation says about your processor though
+2009-01-10T19:50:00.000Z	jrib	_Ben	hmm, I can't find the documentation that would tell me what the right kernel for your processor is.  I guess you can just try the -386 one and see what happens
+2009-01-10T19:50:00.000Z	_Ben	jrib	do u know what apt-get install * i need?
+2009-01-10T19:51:00.000Z	jrib	_Ben	the metapackage is linux-386.  You probably still need to choose the -386 kernel from the grub boot menu when you boot
+2009-01-10T21:11:00.000Z	_Ben	jrib	your earlier help with the kernel stuff worked... thanks :)

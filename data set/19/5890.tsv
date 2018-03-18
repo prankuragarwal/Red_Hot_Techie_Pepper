@@ -1,0 +1,19 @@
+2008-09-29T04:38:00.000Z	amrik		Hi I need help locating which package has the gdk/gdkkeysyms.h header
+2008-09-29T04:40:00.000Z	unop	amrik	http://packages.ubuntu.com/search?searchon=contents&keywords=gdkkeysyms.h&mode=exactfilename&suite=hardy
+2008-09-29T04:41:00.000Z	amrik	unop	this is very useful feature. thanks!
+2008-09-29T04:41:00.000Z	unop	amrik	if you install the apt-file package, you can search offline using this command.  apt file gdkkeysyms.h
+2008-09-29T04:41:00.000Z	unop	amrik	sorry, apt-file search gdkkeysyms.h
+2008-09-29T04:45:00.000Z	amrik	unop	alright well this doesnt fix my problem for some reason. I am trying to compile bochs and it cannto find gdk/gdkkeysyms.h even after installing those packages
+2008-09-29T04:46:00.000Z	unop	amrik	why not use bochs available from the repos?
+2008-09-29T04:46:00.000Z	unop	amrik	but to address your problem.  sudo apt-get build-dep bochs  #installs the necessary libraries to build bochs
+2008-09-29T04:47:00.000Z	amrik	unop	alright well i need to compile some special modifications to bochs which si why i cant use the one in the repository
+2008-09-29T04:48:00.000Z	unop	amrik	right, well - sudo apt-get build-dep bochs
+2008-09-29T04:50:00.000Z	amrik	unop	it still cant find the header file, but its certainly in the file system under /usr/include/gtk-2.0
+2008-09-29T04:50:00.000Z	amrik	unop	i think bochs might have some issues compiling...
+2008-09-29T04:50:00.000Z	unop	amrik	you've run build-dep ?
+2008-09-29T04:51:00.000Z	unop	amrik	are you modifying configure options at all?
+2008-09-29T04:51:00.000Z	amrik	unop	certainly
+2008-09-29T04:51:00.000Z	unop	amrik	you might need to 'make clean'  and try again
+2008-09-29T04:52:00.000Z	amrik	unop	i modified the source to use <gtk-2.0/gdk/gdkkeysyms.h> instead but this doesnt have some of the keybindings its looking for
+2008-09-29T04:56:00.000Z	unop	amrik	well it's hard to say what's gone wrong there - if you're modifying source, you have to know what you are doing and how to get yourself out of tricky situations if you run into them.
+2008-09-29T05:01:00.000Z	amrik	unop	true. bochs is also known to not be the easiest program to compile in the world.

@@ -1,0 +1,18 @@
+2010-05-24T10:49:00.000Z	sweb		see the result
+2010-05-24T10:50:00.000Z	sunson	sweb	make a tar
+2010-05-24T10:51:00.000Z	sweb	sunson	can i tar just folders ?
+2010-05-24T10:52:00.000Z	sunson	sweb	cp -dpR source_folder /tmp/src_folder && find /tmp/src_folder -type f -exec rm -f '{}' \; && tar -czf mybackup.tar /tmp/src_folder
+2010-05-24T10:53:00.000Z	sunson	sweb	after the above, mybackup.tar should contain only the dirs - untar and place your new files inside it.
+2010-05-24T10:53:00.000Z	sweb	sunson	owww so long command, thank i test it now
+2010-05-24T11:12:00.000Z	sunson	sweb	you mean access full path to your script from inside the script?
+2010-05-24T11:13:00.000Z	sweb	sunson	yes
+2010-05-24T11:13:00.000Z	sunson	sweb	path=`which $0`
+2010-05-24T11:13:00.000Z	sweb	sunson	always sweet answer, thank
+2010-05-24T11:18:00.000Z	sweb	sunson	how can i get basename for `which $0` result
+2010-05-24T11:18:00.000Z	sunson	sweb	? pls rephrase
+2010-05-24T11:38:00.000Z	sunson	sweb	stty -echo
+2010-05-24T11:39:00.000Z	sunson	sweb	that "offs" what you type. to "off" the output, you could just append >/dev/null to the command line
+2010-05-24T11:42:00.000Z	sunson	sweb	thats stderr
+2010-05-24T11:43:00.000Z	sunson	sweb	so append  2>/dev/null to the end of the command
+2010-05-24T11:43:00.000Z	sunson	sweb	in the above "rm" context, though, you're better off doing rm -f /this/is/my/path/*
+2010-05-24T11:44:00.000Z	sunson	sweb	but beware of the side-effects of using -f!

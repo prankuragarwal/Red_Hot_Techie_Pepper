@@ -1,0 +1,18 @@
+2007-05-05T08:07:00.000Z	Shoeb		Hi, I typed sudo usermod -G ftpuser mark (mark is my username, and I was trying to put myself in the ftpuser group) Now it seems that I can't sudo anymore because it says I'm not in the sudoers file. But it let me do that before.. what went wrong? I can't even su - anymore!
+2007-05-05T08:07:00.000Z	Shoeb		Feisty
+2007-05-05T08:08:00.000Z	Shoeb		Hello?
+2007-05-05T08:10:00.000Z	Shoeb		Hi, I typed sudo usermod -G ftpuser mark (mark is my username, and I was trying to put myself in the ftpuser group) Now it seems that I can't sudo anymore because it says I'm not in the sudoers file. But it let me do that before.. what went wrong? I can't even su - anymore!
+2007-05-05T08:11:00.000Z	Flannel	Shoeb	-G doesn't append by default.  It resets.  You wanted to add -a, which will append
+2007-05-05T08:11:00.000Z	Flannel	Shoeb	you'll need to reboot, at GRUB, go to the "recovery console", then add yourself back to the normal supplimental groups: (specifically, admin): adm dialout cdrom floppy audio dip video plugdev lpadmin scanner admin
+2007-05-05T08:11:00.000Z	Flannel	Shoeb	correct.
+2007-05-05T08:12:00.000Z	Shoeb	Flannel	Can you give me the correct command please? So I don't mess up????
+2007-05-05T08:13:00.000Z	Flannel	Shoeb	once youre at the recovery console (which will be a root terminal), `usermod -G adm dialout cdrom floppy audio dip video plugdev lpadmin scanner admin ftpuser -a username`
+2007-05-05T08:13:00.000Z	Flannel	Shoeb	where username is your username
+2007-05-05T08:16:00.000Z	Shoeb	Flannel	It gives me the whole page where it explains me the differnet options..
+2007-05-05T08:16:00.000Z	Flannel	Shoeb	eh?  looks like you typed something wrong.
+2007-05-05T08:16:00.000Z	Shoeb	Flannel	Let me recheck.
+2007-05-05T08:17:00.000Z	Flannel	Shoeb	Oh.  No.  Sorry.  My fault.  Groups should be comma separated
+2007-05-05T08:17:00.000Z	Flannel	Shoeb	no whitespace, just commas
+2007-05-05T08:20:00.000Z	Shoeb	Flannel	For next time, I shouldn't be using the command "usermod -F ftpuser username" ?
+2007-05-05T08:21:00.000Z	Flannel	Shoeb	usermod -G group -a username, or use the graphical version (users and groups)
+2007-05-05T08:33:00.000Z	Shoeb	Flannel	How can I download VMware from http://www.vmware.com/download/server/ on Feisty server commandline?

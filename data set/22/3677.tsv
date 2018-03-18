@@ -1,0 +1,22 @@
+2008-07-03T08:37:00.000Z	rand0m-		quick question... how do I mount my master drive from my slave drive?
+2008-07-03T08:37:00.000Z	Fryguy--	rand0m-	the mount command is your friend
+2008-07-03T08:51:00.000Z	Fryguy--	rand0m-	mount /dev/sda1 /name/of/the/directory/you/want/to/mount/it/to
+2008-07-03T08:55:00.000Z	Fryguy--	rand0m-	edit /etc/fstab
+2008-07-03T08:56:00.000Z	Fryguy--	rand0m-	cliff notes: the drive you want is probably labeled "noauto" just get rid of that and you are done :)
+2008-07-03T08:57:00.000Z	Fryguy--	rand0m-	sudo
+2008-07-03T08:57:00.000Z	Fryguy--	rand0m-	sudo gedit /etc/fstab
+2008-07-03T08:58:00.000Z	Fryguy--	rand0m-	paste your /etc/fstab
+2008-07-03T08:58:00.000Z	Fryguy--	rand0m-	pastebin
+2008-07-03T09:00:00.000Z	rand0m-	Fryguy--	: http://paste.ubuntu.com/24616/ <-- that it?
+2008-07-03T09:01:00.000Z	Fryguy--	rand0m-	also pastebin a list of partitions on /dev/sda (use fdisk to do it)
+2008-07-03T09:03:00.000Z	rand0m-	Fryguy--	http://paste.ubuntu.com/24617/  <-- that's my fdisk
+2008-07-03T09:03:00.000Z	Fryguy--	rand0m-	blah :)  fdisk /dev/sda, and then use p
+2008-07-03T09:04:00.000Z	Fryguy--	rand0m-	what hydrogen said
+2008-07-03T09:04:00.000Z	Fryguy--	rand0m-	sudo
+2008-07-03T09:05:00.000Z	rand0m-	Fryguy--	when I do when hydrogen said - i get this
+2008-07-03T09:06:00.000Z	Fryguy--	rand0m-	so just sudo fdisk /dev/sda, and then hit p
+2008-07-03T09:08:00.000Z	rand0m-	Fryguy--	http://paste.ubuntu.com/24619/
+2008-07-03T09:09:00.000Z	Fryguy--	rand0m-	and you want /dev/sda1?  Where on your filesystem do you want to put it?
+2008-07-03T09:10:00.000Z	rand0m-	Fryguy--	: I dont even know what you're asking me... basically.. i want it so my master drive is automatically moutned so that when I hit "places" it's one of the options like "computer" or "documents"
+2008-07-03T09:11:00.000Z	Fryguy--	rand0m-	ok, type mkdir /media/master (or whatever you want to call it, this name will be visible), and then add this line to the end of your /etc/fstab:  /dev/sda1 /media/master auto defaults 0 0
+2008-07-03T09:15:00.000Z	Fryguy--	rand0m-	sudo gedit /etc/fstab

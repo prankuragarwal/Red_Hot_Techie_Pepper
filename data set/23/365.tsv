@@ -1,0 +1,23 @@
+2011-11-05T21:37:00.000Z	lalakis_		can someone help me about how to open ports in ubuntu ??
+2011-11-05T21:37:00.000Z	llutz	lalakis_	start a listening service
+2011-11-05T21:38:00.000Z	lalakis_	llutz	what do you mean start listening service?
+2011-11-05T21:38:00.000Z	llutz	lalakis_	theres no "firewall" by default filtering. so if you need to access any port, you have to start a service listening on it
+2011-11-05T21:40:00.000Z	llutz	lalakis_	maybe you should explain what you really want to do
+2011-11-05T21:41:00.000Z	llutz	lalakis_	"open port" for what?
+2011-11-05T21:42:00.000Z	llutz	lalakis_	theres nothing to open unless you did install any filtering rules (iptables)
+2011-11-05T21:43:00.000Z	llutz	lalakis_	without filter-rules
+2011-11-05T21:45:00.000Z	llutz	lalakis_	you don't understand what "open Ports" are, how it works
+2011-11-05T21:45:00.000Z	llutz	lalakis_	WoL only works if your machine is down, so there are not filters active in that state
+2011-11-05T21:46:00.000Z	llutz	lalakis_	WoL is a special case
+2011-11-05T21:49:00.000Z	llutz	lalakis_	make sure you enabled "wol g" using ethtool on your machine and that your iface is brought down correctly before shutting down
+2011-11-05T21:50:00.000Z	llutz	lalakis_	your networkinterface/-card
+2011-11-05T21:50:00.000Z	llutz	lalakis_	add a short script to /etc/network/if-down.d/wol: containing "/sbin/ethtool -s eth0 wol g"
+2011-11-05T21:51:00.000Z	llutz	lalakis_	it has to be active when shutting DOWN not starting up
+2011-11-05T21:52:00.000Z	llutz	lalakis_	sudo nano /etc/network/if-down.d/wol    add 2 lines: "#!/bin/sh"  and "/sbin/ethtool -s eth0 wol g"
+2011-11-05T21:53:00.000Z	llutz	lalakis_	ctrl-x to save/exit, then " sudo chmod +x etc/network/if-down.d/wol  "
+2011-11-05T21:56:00.000Z	lalakis_	llutz	i did what you said.. and now ?
+2011-11-05T21:56:00.000Z	llutz	lalakis_	shut down and test WoL
+2011-11-05T21:57:00.000Z	lalakis_	llutz	shut down or put is sleep mode?
+2011-11-05T21:57:00.000Z	llutz	lalakis_	whatever, i always shut my machines down and WoL works with all 7 since years here
+2011-11-05T21:58:00.000Z	llutz	lalakis_	if machine is down, the LED on networkcard has to be ON
+2011-11-05T22:22:00.000Z	llutz	lalakis_	sudo rm /etc/network/if-down.d/wol  "       but that definetly won't break your internet-connection

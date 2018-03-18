@@ -1,0 +1,23 @@
+2011-03-11T17:18:00.000Z	DenisMcMahon		I just switched my 10 Mbit NIC out of the other machine and installed a 100 Mbit NIC. Link lights indicate hardware is working. lspci shows the hardware is present. However, it's not appearing as eth0. possibly I need to load a module? or need to configure something? but I don't know what. Any suggestions please.
+2011-03-11T17:18:00.000Z	DasEi	DenisMcMahon	prbly eth1 now, ; connected by dhcp ?
+2011-03-11T17:19:00.000Z	DasEi	DenisMcMahon	ifconfig says ?
+2011-03-11T17:21:00.000Z	DasEi	DenisMcMahon	then manually go by ifup, if eth0 doesn't work (old mac) then try eth1(and please put nick, or I loose messages)
+2011-03-11T17:24:00.000Z	DasEi	DenisMcMahon	gksudo gedit  /etc/network/interfaces
+2011-03-11T17:25:00.000Z	DasEi	DenisMcMahon	match to your desired ip : http://pastebin.com/afDdbcbz
+2011-03-11T17:27:00.000Z	DasEi	DenisMcMahon	configure Interfaces properly, if lspci see's card, unlikely a module problem
+2011-03-11T17:28:00.000Z	DasEi	DenisMcMahon	also lo is mentioned there, I hope
+2011-03-11T17:28:00.000Z	DasEi	DenisMcMahon	when done, sudo ifup -a  should do it
+2011-03-11T17:29:00.000Z	DasEi	DenisMcMahon	with an lo section above, fine : sudo service networking restart
+2011-03-11T17:30:00.000Z	DasEi	DenisMcMahon	sounds plausible
+2011-03-11T17:30:00.000Z	DasEi	DenisMcMahon	 sudo service networking start
+2011-03-11T17:32:00.000Z	DasEi	DenisMcMahon	tried connecting in running service ?
+2011-03-11T17:33:00.000Z	DasEi	DenisMcMahon	start service as above, try to connect
+2011-03-11T17:34:00.000Z	DasEi	DenisMcMahon	ping router, f.e.  or use browser
+2011-03-11T17:37:00.000Z	DasEi	DenisMcMahon	can you ping your router ?
+2011-03-11T17:38:00.000Z	DasEi	DenisMcMahon	ah
+2011-03-11T17:38:00.000Z	DasEi	DenisMcMahon	hehe
+2011-03-11T17:45:00.000Z	DasEi	DenisMcMahon	so use it in interfaces and be done
+2011-03-11T17:47:00.000Z	DasEi	DenisMcMahon	arpwatcch ? idk, something around mac-ethX I assume
+2011-03-11T17:54:00.000Z	DasEi	DenisMcMahon	old mac i guess
+2011-03-11T17:55:00.000Z	DasEi	DenisMcMahon	yes, unless other setttings needed wouldn't suffer
+2011-03-11T18:03:00.000Z	DasEi	DenisMcMahon	good netting then :)

@@ -1,0 +1,19 @@
+2007-01-25T08:33:00.000Z	mike_la		does anybody how can i do a recursive chmod of 777 to dirs only but do only a chmod of 666 to files?
+2007-01-25T08:34:00.000Z	eternalswd	mike_la	maybe write a script?
+2007-01-25T08:34:00.000Z	eternalswd	mike_la	I can help you write one if you're not sure how
+2007-01-25T08:35:00.000Z	mike_la	eternalswd	ok, got an idea?
+2007-01-25T08:36:00.000Z	eternalswd	mike_la	we can take advantage of "find -type f" for files in a subtree and "find -type d" for dirs in a subtree.  get the list of both and apply the chmod per type
+2007-01-25T08:38:00.000Z	mike_la	eternalswd	how do you express this in the if, then, else structure?
+2007-01-25T08:38:00.000Z	eternalswd		is there a site where we can look up the default configure lines for ubuntu packages?
+2007-01-25T08:42:00.000Z	eternalswd	mike_la	there would be no need for conditionals.  just two arrays, one containing the file list, the other the dir list.  then there would be one loop for each to do the chmod
+2007-01-25T08:43:00.000Z	mike_la	eternalswd	how do i automate this? \
+2007-01-25T08:43:00.000Z	eternalswd	mike_la	you'd need to input the root of the subtree so that the script can cd to it.  the script will take care of the subtree and then either at the beginning or the end, chmod the root of the subtree
+2007-01-25T08:44:00.000Z	eternalswd	mike_la	give me a minute and I can write up a quick script to do it and put it up on pastebin.
+2007-01-25T08:50:00.000Z	mike_la	eternalswd	any luck?
+2007-01-25T08:51:00.000Z	eternalswd	mike_la	i'm just trying to remember how to pipe standard out into a command like chmod.  it's been a while since i've needed to do that :(
+2007-01-25T09:04:00.000Z	mike_la	eternalswd	any luck?
+2007-01-25T09:06:00.000Z	eternalswd	mike_la	I finished it.  used an array instead of trying to figure out the pipes. http://pastebin.ca/327626
+2007-01-25T09:08:00.000Z	eternalswd	mike_la	example usage would be "this /path/to/subroot" where "this" is whatever you decide to call the script and the argument is the subtree you want to chmod
+2007-01-25T09:08:00.000Z	mike_la	eternalswd	lemme try
+2007-01-25T09:10:00.000Z	eternalswd	mike_la	you could make the script more complex by reading in the desired chmod properties instead of hardcoding them.
+2007-01-25T09:40:00.000Z	eternalswd	mike_la	were you satisfied with that script?

@@ -1,0 +1,19 @@
+2012-06-22T20:11:00.000Z	samster34		heya, I'm trying to wipe a disk form a live ubuntu...but using dd from /dev/zero and/or dev/urandom is just soooo slooowwwwww. Is there any way to monitor th eprogress of a ATA secure erase? or estimate beforehand how long it will take?
+2012-06-22T20:12:00.000Z	lapion	samster34	just use badblocks -vvwt 0x00 /dev/sd???
+2012-06-22T20:13:00.000Z	samster34	lapion	? I want to wipe the disk,not find bad sectors
+2012-06-22T20:14:00.000Z	lapion	samster34	overwrites the drive with 0x00 and verifies if the write was correct
+2012-06-22T20:15:00.000Z	samster34	lapion	so, wouldn't that be even slower? I have several disks to wipe, and waiting days to wipe just the smallest one seems kinda lengthy
+2012-06-22T20:16:00.000Z	samster34	lapion	still, I'm looking at weeks of wipe time here
+2012-06-22T20:16:00.000Z	lapion	samster34	you can also use different block sized for dd..
+2012-06-22T20:18:00.000Z	lapion	samster34	as writing 512byte sectors it usually requires 15 reads and 16 writes to overwrite a 4k block hdd
+2012-06-22T20:23:00.000Z	lapion	samster34	you need to specify to dd what size blocks to write
+2012-06-22T20:24:00.000Z	lapion	samster34	dd if=/dev/null of=/dev/sd? bs=4k
+2012-06-22T20:24:00.000Z	lapion	samster34	or check what the optimal block size is
+2012-06-22T20:24:00.000Z	samster34	lapion	yeah I tried a few and 4K seesm to be faster
+2012-06-22T20:25:00.000Z	samster34	lapion	although there isnt much fo a difference between 4K and 32M...
+2012-06-22T20:33:00.000Z	lapion	samster34	/dev/null works a LOT faster
+2012-06-22T20:34:00.000Z	samster34	lapion	yeah, /dev/null finishes in less than a second ;)
+2012-06-22T20:35:00.000Z	lapion	samster34	there a no mythical methods for extracting data from hdd once everything has been overwritten..
+2012-06-22T20:36:00.000Z	lapion	samster34	unless of course during the lifespan of the hdd it has had many sector reallocations..
+2012-06-22T20:36:00.000Z	samster34	lapion	lapion: it has 1 reallocated sector
+2012-06-22T20:37:00.000Z	lapion	samster34	well I gather that those 4k could not statistacally contain such important data that you would like to destroy the whole hdd

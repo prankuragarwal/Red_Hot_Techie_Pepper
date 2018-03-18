@@ -1,0 +1,18 @@
+2010-09-27T14:51:00.000Z	kneaux		on the server?
+2010-09-27T14:51:00.000Z	blakkheim	kneaux	yeah
+2010-09-27T14:21:00.000Z	blakkheim	kneaux	how so?
+2010-09-27T14:22:00.000Z	blakkheim	kneaux	can you pastebin your /etc/ssh/sshd_config from the server?
+2010-09-27T14:29:00.000Z	blakkheim	kneaux	copy it from the terminal window
+2010-09-27T14:36:00.000Z	kneaux	blakkheim	- i'd like to be able to do it in one swath, how do you select all of the contents in, say, vim
+2010-09-27T14:37:00.000Z	blakkheim	kneaux	ssh user@server cat /etc/ssh/sshd_config > /tmp/asdf.txt
+2010-09-27T14:38:00.000Z	blakkheim	kneaux	or omit the > part and it will just print it to your terminal
+2010-09-27T14:39:00.000Z	kneaux	blakkheim	yeah i just cat'd it to terminal and then it let me scroll with mouse click and drag...then the dragons came... http://ubuntu.pastebin.com/EmNbffNh
+2010-09-27T14:40:00.000Z	blakkheim	kneaux	add the line "PasswordAuthentication no" or uncomment the one you have set to yes
+2010-09-27T14:42:00.000Z	kneaux	blakkheim	- done, reboot?
+2010-09-27T14:43:00.000Z	blakkheim	kneaux	just /etc/init.d/ssh restart
+2010-09-27T14:44:00.000Z	blakkheim	kneaux	if you have "PasswordAuthentication no" in the server's sshd_config and aren't explicitly using passwords in the client's config, i don't see how it could be asking for a pw
+2010-09-27T14:45:00.000Z	blakkheim	kneaux	you should also change your PermitRootLogin to no
+2010-09-27T14:46:00.000Z	kneaux	blakkheim	how did you know that's exactly the thing i didn't do
+2010-09-27T14:51:00.000Z	kneaux	blakkheim	why would i be getting permission denied from my server? should i try regenerating the keys?
+2010-09-27T14:51:00.000Z	blakkheim	kneaux	tail /var/log/auth.log
+2010-09-27T14:51:00.000Z	blakkheim	kneaux	should give a bit of helpful info

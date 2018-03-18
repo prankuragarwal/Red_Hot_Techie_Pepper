@@ -1,0 +1,23 @@
+2005-01-18T17:53:00.000Z	karim		I have put linux-image-386 and linux-386 on HOLD, but apt-get dist-upgrade still want to upgrade the kernels
+2005-01-18T17:53:00.000Z	karim		how to prevent this ?
+2005-01-18T17:53:00.000Z	jdub	karim	put the kernel version package on hold
+2005-01-18T17:53:00.000Z	karim	jdub	yes of course it will work
+2005-01-18T17:54:00.000Z	karim	jdub	but that's not generic
+2005-01-18T17:54:00.000Z	karim	jdub	no ?
+2005-01-18T17:54:00.000Z	jdub	karim	no, which is why it'll work :-)
+2005-01-18T17:54:00.000Z	karim	jdub	I mean if I hold this version, and then later upgrade it manually, I will need to hold again the newly installed kernel isn't it ?
+2005-01-18T17:55:00.000Z	jdub	karim	no
+2005-01-18T17:55:00.000Z	karim	jdub	ok
+2005-01-18T17:55:00.000Z	jdub	karim	it depends on what you want to do - what are you trying to achieve?
+2005-01-18T17:55:00.000Z	karim	jdub	I don't want dist-upgrade to update the kernel
+2005-01-18T17:55:00.000Z	karim	jdub	ever
+2005-01-18T17:56:00.000Z	karim	jdub	that's what I tried
+2005-01-18T17:56:00.000Z	karim	jdub	I have put linux-386 linux-image-386
+2005-01-18T17:56:00.000Z	karim	jdub	maybe there is other packages
+2005-01-18T17:57:00.000Z	karim	jdub	oh it's proably linux-meta
+2005-01-18T17:57:00.000Z	karim	jdub	herm no it isn't :)
+2005-01-18T17:58:00.000Z	jdub	karim	look at the binary packages provided by linux-meta
+2005-01-18T17:59:00.000Z	karim	jdub	there is no package called linnux-meta
+2005-01-18T06:00:00.000Z	jdub	karim	there is a source package called linux-meta -> apt-cache showsrc linux-meta
+2005-01-18T06:00:00.000Z	jdub	karim	if you *remove* all the meta packages, new kernel versions won't be installed either
+2005-01-18T06:01:00.000Z	jdub	karim	but it's possibly saner to put them on hold

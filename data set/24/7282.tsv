@@ -1,0 +1,24 @@
+2010-07-04T11:56:00.000Z	quentin		hi. I need help with xorg.conf. I chose to enable the nvidia driver and now it's not recognizing my monitor. Before I have been told to delete xorg.conf when this happens and it worked. This time I deleted it and now things are worse. Nothing loads.
+2010-07-04T11:56:00.000Z	`Gumby	quentin	do you have console access?
+2010-07-04T11:57:00.000Z	quentin	`Gumby	I had a blinking cursor, but I couldn't type anything. Right now I'm using the install disk live to talk in here.
+2010-07-04T11:58:00.000Z	`Gumby	quentin	ah, your best bet is to chroot then and run nvidia-xconfig
+2010-07-04T11:59:00.000Z	`Gumby	quentin	actually... you probably dont even need to chroot.. install the nvidia drivers via the livecd, run nvidia-xconfig and then copy the xorg.conf it creates to your root partition after mounting it
+2010-07-04T12:00:00.000Z	quentin	`Gumby	Ok. I'm gonna try it.
+2010-07-04T12:00:00.000Z	`Gumby	quentin	you know how to do all that?
+2010-07-04T12:02:00.000Z	quentin	`Gumby	I'm not so good with the command line. I might be able to just use synaptic to get the driver installed.
+2010-07-04T12:02:00.000Z	`Gumby	quentin	yeah, thats the easy part ;)
+2010-07-04T12:03:00.000Z	quentin	`Gumby	which version of nvidia should I install. when things got messed up earlier I had installed nvidia-current.
+2010-07-04T12:05:00.000Z	`Gumby	quentin	can you mount your root partition?
+2010-07-04T12:07:00.000Z	quentin	`Gumby	I ran nautilus in root to get to the xorg.conf. that's how I deleted it.
+2010-07-04T12:08:00.000Z	`Gumby	quentin	if you have an xorg.conf in /etc/X11 on your root partition you can change Driver "nvidia" to Driver "nv" and X will probably work
+2010-07-04T12:14:00.000Z	quentin	`Gumby	and codebrainz: I did the reconfigure in the terminal. I now have a new xorg.conf and the driver says "vesa"
+2010-07-04T12:15:00.000Z	`Gumby	quentin	so you know how to mount your root partition?
+2010-07-04T12:15:00.000Z	quentin	`Gumby	I guess. I just used sudo nautilus and went from there.
+2010-07-04T12:16:00.000Z	`Gumby	quentin	ok, so you have no problem taking the xorg.conf from the livecd and putting it in your root etc/X11/ then?
+2010-07-04T12:16:00.000Z	`Gumby	quentin	edit the file and change vesa to nv
+2010-07-04T12:17:00.000Z	quentin	`Gumby	I will try nv instead of vesa
+2010-07-04T12:18:00.000Z	`Gumby	quentin	good luck!!  should work no problem
+2010-07-04T12:19:00.000Z	quentin	`Gumby	thanks
+2010-07-04T12:34:00.000Z	`Gumby	quentin	you are using the nv driver which is the open source driver, not the nvidia binary driver
+2010-07-04T12:35:00.000Z	`Gumby	quentin	I am willing to guess that the nvidia driver isnt recognizing the EDID of your monitor and X isnt starting properly
+2010-07-04T12:36:00.000Z	quentin	`Gumby	yes. it has recognized it before, but I have installed lucid lynx  and now it doesn't

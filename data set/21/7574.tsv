@@ -1,0 +1,21 @@
+2006-08-31T09:30:00.000Z	earthian		could someone help me configure grub boot loader?
+2006-08-31T09:30:00.000Z	earthian		on a raid
+2006-08-31T09:30:00.000Z	earthian		got a link and a howto but seems that stuff does not work for me :S
+2006-08-31T09:30:00.000Z	reptyle	earthian	software raid? or hardware raid?
+2006-08-31T09:31:00.000Z	earthian	reptyle	can you help me?
+2006-08-31T09:32:00.000Z	reptyle	earthian	are you using md devices and mdadm to setup the raid?
+2006-08-31T09:34:00.000Z	reptyle	earthian	hrmm.... I've never used that specifically... either real HW raid, or linux software raid.  If the devices are discreet devices to linux IE, linux doesn't see... a single device from the bios as the actual raid, or are doing linux software raid on top of hw raid, IE /dev/mdX devices with mdadm, you need to use LILO instead of grup.
+2006-08-31T09:38:00.000Z	reptyle	earthian	where in the process does it stop working in the HOWTO?
+2006-08-31T09:39:00.000Z	earthian	reptyle	from line "Configuring the Bootloader" and down
+2006-08-31T09:39:00.000Z	reptyle	earthian	ok.. one second.
+2006-08-31T09:39:00.000Z	earthian	reptyle	when i run the update-grub it default to /dev/hda1 there
+2006-08-31T09:46:00.000Z	reptyle	earthian	looking at it now...
+2006-08-31T09:53:00.000Z	reptyle	earthian	the menu.lst you paste bin looks correct as far as the HOWTO goes, when you run update-grub are you saying it changes everything back to /dev/hda1?
+2006-08-31T09:55:00.000Z	earthian	reptyle	look at pm
+2006-08-31T09:56:00.000Z	reptyle	earthian	>> -- This error is probably caused by an invalid /etc/fstab
+2006-08-31T09:57:00.000Z	reptyle	earthian	you need to edit your /etc/fstab before you run update-grub.
+2006-08-31T09:59:00.000Z	earthian	reptyle	fstab is empty
+2006-08-31T10:00:00.000Z	reptyle	earthian	skip the update-grub part until you finish editing etc/fstab on the target partition ;)
+2006-08-31T10:00:00.000Z	reptyle	earthian	they show you how to create it later in the HOWTO.
+2006-08-31T10:09:00.000Z	earthian	reptyle	it works now after i updated the fstab file. thanks a lot!!!
+2006-08-31T10:11:00.000Z	reptyle	earthian	no problem... grub does lots of checking, if your fstab doesn't match what is in menu.lst it'll tell you about it.

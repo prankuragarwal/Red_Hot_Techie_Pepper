@@ -1,0 +1,18 @@
+2011-10-27T20:22:00.000Z	SubNormal		yeah, I've allready edited the dhcpd.conf to eth2 but it still wants to use eth0
+2011-10-27T20:23:00.000Z	CarlFK	SubNormal	you are restarting the server, right ?
+2011-10-27T20:23:00.000Z	SubNormal	CarlFK	yeah ofcourse :)
+2011-10-27T20:27:00.000Z	CarlFK	SubNormal	whats the line in dhcpd.conf?
+2011-10-27T20:28:00.000Z	SubNormal	CarlFK	you mean INTERFACES="eth2"; ?
+2011-10-27T20:29:00.000Z	CarlFK	SubNormal	caps?  try it lower case.  and check syslog - but I am surprised it is starting
+2011-10-27T20:31:00.000Z	SubNormal	CarlFK	thats what I saw in the walktrough, so i just used it :-/
+2011-10-27T20:34:00.000Z	SubNormal	CarlFK	still no luck, still get "no subnet declarition for eth0 0.0.0.0"
+2011-10-27T20:39:00.000Z	CarlFK	SubNormal	start-stop-daemon --start --quiet --pidfile $DHCPDPID  --exec /usr/sbin/dhcpd -- -q -pf $DHCPDPID -cf $CONFIG_FILE $INTERFACES
+2011-10-27T20:39:00.000Z	CarlFK	SubNormal	thats from /etc/init.d/isc-dhcp-server - I can't figure out where $INTERFACES gets set, but that seems like what you need to set.
+2011-10-27T20:42:00.000Z	SubNormal	CarlFK	ok thanks for that, but I tried to change the eth2 back to eth0 and got the dhcp to work, but it's giving me 10mb/s connection why's that? and I cant access any websites :-/
+2011-10-27T20:43:00.000Z	CarlFK	SubNormal	um.. 10mb has nothing to do with dhcp... "can't" sounds like your gateway isn't set right
+2011-10-27T20:46:00.000Z	SubNormal	CarlFK	ok sorry for that, but the network card should be 10/100/1000 (well atleast 10/100) but how can I configure it to get access to the net?
+2011-10-27T20:50:00.000Z	CarlFK	SubNormal	is this your dhcp server?  if so, you need to config it with a static ip, it can't config itself (last I checked...)
+2011-10-27T20:53:00.000Z	SubNormal	CarlFK	yes this is my dhcp server, I thought that I had configured it's static ip, what should I do to do that? sorry i'm pretty new to this :-/
+2011-10-27T20:54:00.000Z	CarlFK	SubNormal	um... with the right settings :)
+2011-10-27T20:54:00.000Z	CarlFK	SubNormal	IP, netmask, gateway, dns servers.
+2011-10-27T20:55:00.000Z	SubNormal	CarlFK	lol that's what I thought I had done

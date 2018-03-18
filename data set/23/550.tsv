@@ -1,0 +1,23 @@
+2012-03-11T00:04:00.000Z	renemoraes		please i need some help with my grub
+2012-03-11T00:04:00.000Z	renemoraes		my pc is overheating after install kernel 3.0.0.16
+2012-03-11T00:05:00.000Z	escott	renemoraes	how are those too related?
+2012-03-11T00:05:00.000Z	renemoraes	escott	i used to turn off my radeon ati graphics card on my grub using the pcie_aspm command
+2012-03-11T00:05:00.000Z	escott	renemoraes	did you run grub-update after modifying /etc/default/grub
+2012-03-11T00:06:00.000Z	renemoraes	escott	yes! i dont know the reason but the line isnt being reading
+2012-03-11T00:06:00.000Z	escott	renemoraes	the !paste your default/grub
+2012-03-11T00:07:00.000Z	renemoraes	escott	what u mean?
+2012-03-11T00:07:00.000Z	escott	renemoraes	sorry dropped a "please !paste the"
+2012-03-11T00:09:00.000Z	renemoraes	escott	http://paste.ubuntu.com/877917/
+2012-03-11T00:10:00.000Z	escott	renemoraes	ok. that looks ok, can you rerun sudo update-grub and then !paste the /boot/grub/grub.cfg
+2012-03-11T00:10:00.000Z	renemoraes	escott	sure
+2012-03-11T00:12:00.000Z	renemoraes	escott	thanks in advance escott! http://paste.ubuntu.com/877921/
+2012-03-11T00:14:00.000Z	escott	renemoraes	if you reboot now "cat /proc/cmdline" should list the kernel pcie aspm arg among others. the only reason it would not is if your boot partition is not actually controlling the boot (ie you have another linux install with its own grub in the mbr)
+2012-03-11T00:16:00.000Z	renemoraes	escott	nope. i dont have another linux install.. i have a partition with windows 7.. but i used to have it before updating my kernel
+2012-03-11T00:17:00.000Z	renemoraes	escott	when i use cat /proc/cmdline  it shows that the args are being reading
+2012-03-11T00:18:00.000Z	escott	renemoraes	then the args are being passed to the kernel
+2012-03-11T00:18:00.000Z	renemoraes	escott	yeah.. thats the problem... anyway.. thanks!
+2012-03-11T05:17:00.000Z	escott	renemoraes	look at the files in there for examples
+2012-03-11T05:17:00.000Z	renemoraes	escott	i just have to put my script there?
+2012-03-11T05:17:00.000Z	renemoraes	escott	great! thanks escott!
+2012-03-11T05:17:00.000Z	escott	renemoraes	have you looked at /etc/pm/sleep?
+2012-03-11T05:18:00.000Z	renemoraes	escott	by the way... i solved my last problem about the kernel arguments... it was the rc.local :) that was nothing to do with the kernel... thank u again

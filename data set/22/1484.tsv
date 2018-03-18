@@ -1,0 +1,22 @@
+2010-06-27T17:47:00.000Z	JNGodbout		hello i have a Pesky Package which cannot be removed, and I can't install anything else while it exists. The package is bnetd
+2010-06-27T17:47:00.000Z	JNGodbout		And I get this error: grep: /etc/bnetd/bnetd.conf: No such file or directory
+2010-06-27T17:47:00.000Z	JNGodbout		Please help 감사해
+2010-06-27T17:48:00.000Z	Muelli	JNGodbout	what are you trying to do? Can you paste full shell output?
+2010-06-27T17:48:00.000Z	JNGodbout	Muelli	Sure
+2010-06-27T17:48:00.000Z	Muelli	JNGodbout	using dpaste.com or so
+2010-06-27T17:49:00.000Z	JNGodbout	Muelli	http://dpaste.com/211970/
+2010-06-27T17:49:00.000Z	JNGodbout	Muelli	I have tried removing it several ways, until, in my anger, I deleted /etc/bnetd
+2010-06-27T17:49:00.000Z	JNGodbout	Muelli	So the error is slightly different to what it was before
+2010-06-27T17:49:00.000Z	Muelli	JNGodbout	looks like a bug to me :-) I'd file it... Will you? Try apt-get install --reinstall bnetd; apt-get purge bnetd.
+2010-06-27T17:50:00.000Z	JNGodbout	Muelli	It does look that indeed. Someone else on the internet had an identical problem with bnetd, and they solved it by getting the latest bnetd .deb and installing that. However, that did not work for me
+2010-06-27T17:51:00.000Z	Muelli	JNGodbout	Try apt-get install --reinstall bnetd; apt-get purge bnetd.
+2010-06-27T17:51:00.000Z	JNGodbout	Muelli	Same errors
+2010-06-27T17:52:00.000Z	JNGodbout	Muelli	Where can I file this to? And is there some crazy, dangerous, risky way that I can kill this package?
+2010-06-27T17:52:00.000Z	Muelli	JNGodbout	hm. weird. Then I'd just do mkdir /etc/bnetd; touch /etc/bnetd.conf; apt-get purge bnetd :-)
+2010-06-27T17:52:00.000Z	Muelli	JNGodbout	let's try a sane way first ;-) To file a bug, do "ubuntu-bug bnetd".
+2010-06-27T17:52:00.000Z	JNGodbout	Muelli	The problems were around before I deleted /etc/bnetd though
+2010-06-27T17:54:00.000Z	JNGodbout	Muelli	Is it still worth filing a bug now that the error code is different because I got rid of /etc/bnetd?
+2010-06-27T17:54:00.000Z	Muelli	JNGodbout	I'd say so.
+2010-06-27T17:58:00.000Z	JNGodbout	Muelli	So I guess the next step is to reinstall?
+2010-06-27T17:59:00.000Z	Muelli	JNGodbout	have you tried mkdir /etc/bnetd; touch /etc/bnetd.conf; apt-get purge bnetd ?
+2010-06-27T17:59:00.000Z	Muelli	JNGodbout	and? what's the output? success?

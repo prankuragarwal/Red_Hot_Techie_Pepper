@@ -1,0 +1,24 @@
+2012-03-05T07:12:00.000Z	vn		hi, im installing ubuntu server 10.04.4 LTS x64 atm and it's whining it doesn't detect any NIC in my computer but it has 2...how can I get it to detect them?
+2012-03-05T07:14:00.000Z	escott	vn	nothing is listed in ifconfig other than the loopback interface lo
+2012-03-05T08:08:00.000Z	escott	vn	raid and LVM are orthogonal features to each other
+2012-03-05T08:11:00.000Z	vn	escott	what do you mean?  if I enable hardware RAID, I have no choice to use LVM?
+2012-03-05T08:12:00.000Z	escott	vn	orthogonal means that the features provided by one are complementary to those provided by the other but neither requires the other
+2012-03-05T08:12:00.000Z	escott	vn	so to say you don't need it is correct, but you might want it
+2012-03-05T08:13:00.000Z	vn	escott	ok, hence why I don't want LVM, but now it doesn't allow me to destroy the LVM partition, how can I do that?
+2012-03-05T08:13:00.000Z	vn	escott	yes I know, for flexible disks and such
+2012-03-05T08:13:00.000Z	escott	vn	you would have to boot a livecd and create a new partition table without the lvm
+2012-03-05T08:14:00.000Z	escott	vn	you would tell it to destroy the existing data on the disks and reinstall
+2012-03-05T08:15:00.000Z	vn	escott	I have no data, its a fresh system
+2012-03-05T08:15:00.000Z	escott	vn	also it is doubtful you have real hardware raid. you probably have bios raid AKA fake raid which is discouraged. a better solution is mdadm
+2012-03-05T08:15:00.000Z	vn	escott	um yes, BIOS RAID probably because its embedded to the motherboard
+2012-03-05T08:17:00.000Z	escott	vn	among the issues with bios raid are: (a) poor support (b) higher cpu usage (c) slower (d) non-portable (e) less configurable (f) no added failure resistance
+2012-03-05T08:17:00.000Z	vn	escott	are you saying fake RAID = soft raid?
+2012-03-05T08:18:00.000Z	escott	vn	bios raid is called fake raid because there is not a coprocessor doing the raid related stuff. there is no *real* raid controller. soft raid usually refers to mdadm which is the kernel provided raid
+2012-03-05T08:19:00.000Z	escott	vn	in other words the "rankings" from best to worst are real raid with an external battery supplied raid controller, then pure software raid (mdadm) and the worst is generally considered to be bios raid
+2012-03-05T08:26:00.000Z	vn	escott	thanks for the precision, now looking for a tutorial on how to setup a madm
+2012-06-04T02:49:00.000Z	escott	vn	if you dumped md devices you have full filesystem images? did you mean to say that you dumped components of an md device?
+2012-06-04T02:50:00.000Z	vn	escott	escott exact
+2012-06-04T02:54:00.000Z	escott	vn	which was it?
+2012-06-04T02:55:00.000Z	vn	escott	what do you mean?  I got /dev/md0 md1 and md2
+2012-06-04T02:56:00.000Z	escott	vn	if you dd'ed off /dev/md# then you have the full contents you can mount -o loop yourimagefile /media/md0
+2012-06-04T03:01:00.000Z	vn	escott	ok so I'm doing it right must be an issue with zfs

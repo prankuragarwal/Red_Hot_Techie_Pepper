@@ -1,0 +1,21 @@
+2009-06-28T16:54:00.000Z	rayno_b		Hey there, I cannot telnet out of my ubuntu box to any smtp server (say telnet gmail.com 25).  Can anyone help me to resolve this please?
+2009-06-28T16:56:00.000Z	_xray	rayno_b	: how about  "telnet gmail-smtp-in.l.google.com 25"
+2009-06-28T16:57:00.000Z	rayno_b	_xray	thank you for that - I can telnet to that specific address without a problem on my gateway server, but not from my mail server.
+2009-06-28T16:58:00.000Z	_xray		so your gatteway is preventig your mailserver from connecting ?`
+2009-06-28T16:58:00.000Z	rayno_b	_xray	- yeah, that's what it seems like.  my gateway, is an ubuntu server.  how can I allow this for my mail server?
+2009-06-28T16:59:00.000Z	_xray	rayno_b	: does the command "iptables-save" on the gateway gives you any output ?
+2009-06-28T17:00:00.000Z	rayno_b	_xray	- yes it gives me quite a bit of output.
+2009-06-28T17:01:00.000Z	_xray	rayno_b	: ok, are there any other connections allowed from your mailserver to the outside ? like http or ssh ?
+2009-06-28T17:02:00.000Z	rayno_b	_xray	- give me one second, let me just confirm please.
+2009-06-28T17:06:00.000Z	rayno_b		xray - yes I can for example do a apt-get update and it connects to the internet fine.
+2009-06-28T17:06:00.000Z	_xray	rayno_b	: ok, maybe you could paste the output from iptables-save to pastebin
+2009-06-28T17:07:00.000Z	rayno_b	_xray	- okay - help me quickly to acces pastebin please?  (sorry for my stupidity)
+2009-06-28T17:10:00.000Z	_xray		raygn : pastebin.com
+2009-06-28T17:10:00.000Z	_xray	rayno_b	: pastebin.com
+2009-06-28T17:11:00.000Z	rayno_b	_xray	- okay, let me just figure out how to get that info into a text file.
+2009-06-28T17:12:00.000Z	_xray	rayno_b	: who has setup the gateway ? maybe you should ask the person who configured iptables on the gateway^^
+2009-06-28T17:14:00.000Z	rayno_b	_xray	got it.  see: http://pastebin.com/m6cd1a79e please (I have set up the gateway, but I am really new to this so not 100% clued up on everything yet)
+2009-06-28T17:14:00.000Z	_xray	rayno_b	ok
+2009-06-28T17:15:00.000Z	_xray	rayno_b	i see, you have configured inbound smtp port forwarding to your mailserver...
+2009-06-28T17:17:00.000Z	rayno_b	_xray	- yes 100% correct - and that works very well, but the problem that I have, is that my mail server can't send mail out (only receive).
+2009-06-28T17:29:00.000Z	rayno_b	_xray	Do you see anything there that can help me sort this out?

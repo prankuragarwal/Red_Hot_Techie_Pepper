@@ -1,0 +1,23 @@
+2012-05-22T18:15:00.000Z	nemo		Ok. I'm only mildly annoyed that 12.04 installed dnsmasq w/o telling me, and broke my pdns setup and took me a while to figure out why one machine was working but the others weren't
+2012-05-22T18:15:00.000Z	nemo		My actual question though is.  dnsmasq has --listen-address=127.0.0.1
+2012-05-22T18:15:00.000Z	nemo		where is that set so I can change it
+2012-05-22T18:15:00.000Z	actionParsnip	nemo	yeah it can help but can cause isues
+2012-05-22T18:15:00.000Z	nemo	actionParsnip	I had pdnsd set, and it could not longer start since dnsmasq had swiped the port
+2012-05-22T18:16:00.000Z	nemo		I don't mind trying dnsmasq, I just want to know where it is configured so I can rebind it to the external interface
+2012-05-22T18:16:00.000Z	nemo	actionParsnip	there is no dnsmasq.conf anywhere.
+2012-05-22T18:16:00.000Z	nemo	actionParsnip	and a grep in init.d does not reveal any mention of dnsmasq
+2012-05-22T18:16:00.000Z	actionParsnip	nemo	/etc/dnsmasq.conf
+2012-05-22T18:16:00.000Z	nemo	actionParsnip	yeah. no
+2012-05-22T18:16:00.000Z	nemo	actionParsnip	although I see /var/run/nm-dns-dnsmasq.conf in the startup line
+2012-05-22T18:17:00.000Z	nemo	actionParsnip	I doubt that'll let me override the commandline param though. I'd like to know how the service is being started
+2012-05-22T18:19:00.000Z	nemo	actionParsnip	doesn't look like /etc/NetworkManager/NetworkManager.conf lets one configure it either. only disable it
+2012-05-22T18:19:00.000Z	nemo		why do they do this sort of stuff and not tell people.
+2012-05-22T18:22:00.000Z	nemo	actionParsnip	hm. looks like it creates that config on the fly. grrr.
+2012-05-22T18:23:00.000Z	actionParsnip	nemo	there is a how to in order to disable it
+2012-05-22T18:23:00.000Z	nemo		ok. does *anyone* know how to change this dnsmasq in 12.04 from using 127.0.0.1 to eth0
+2012-05-22T18:23:00.000Z	nemo	actionParsnip	I know how to do *that*
+2012-05-22T18:23:00.000Z	actionParsnip	nemo	http://www.ubuntugeek.com/how-to-disable-dnsmasq-in-ubuntu-12-04precise.html
+2012-05-22T18:23:00.000Z	nemo	actionParsnip	the thing is I was already using a dns cacher.
+2012-05-22T18:23:00.000Z	nemo	actionParsnip	I don't mind using theirs - I just want to know how to configure the dang thing
+2012-05-22T18:24:00.000Z	nemo	actionParsnip	something they apparently are making not at all obvious or documented or maybe possible
+2012-05-22T18:25:00.000Z	actionParsnip	nemo	could remove that config then use normal dnsmasq

@@ -1,0 +1,21 @@
+2005-11-17T09:40:00.000Z	vvarsendagger		hey i can't login on my ubuntu server machien, waht can i do?
+2005-11-17T09:41:00.000Z	vvarsendagger		any ideas?
+2005-11-17T09:42:00.000Z	NigelS	vvarsendagger	kinda need more info; how are you logging in/connecting, what error etc
+2005-11-17T09:45:00.000Z	vvarsendagger	NigelS	i installed ubuntu -server, and i have x-org problems -- i need to install x.org-session-core but i cant' get a login to work
+2005-11-17T09:46:00.000Z	NigelS	vvarsendagger	this is a physical login, e.g. at the machine, or remotely with ssh?
+2005-11-17T09:48:00.000Z	NigelS	vvarsendagger	seems a little odd then;  you're logging in at virtual terminal 1, CTRL-ALT-F1 with the same login/pw combo? it's saying incorrect pw or?
+2005-11-17T09:48:00.000Z	vvarsendagger	NigelS	yes that is correct
+2005-11-17T09:50:00.000Z	NigelS	vvarsendagger	that is strange then - trying first of all potentially insulting things (sorry) caps lock isn't on? there's space on the harddisk last you knew? no one else has physical access to the machine?
+2005-11-17T09:56:00.000Z	vvarsendagger	NigelS	yes i am sure caps lock and there hasn't been anyaccess to my account
+2005-11-17T09:56:00.000Z	NigelS	vvarsendagger	how are you viewing that?
+2005-11-17T09:57:00.000Z	NigelS	vvarsendagger	ah good, what's the disk usage?
+2005-11-17T09:57:00.000Z	NigelS	vvarsendagger	/etc/shadow is the file to check for pw hashes :)
+2005-11-17T09:58:00.000Z	NigelS	vvarsendagger	if your pw is diff, I am bothered by why it is now diff, almost more than changing it back :)
+2005-11-17T10:01:00.000Z	NigelS	vvarsendagger	btw, if you do lock yourself out of a box like this, unless someone has passworded the kernel boot options you can always do the linux init=/bin/sh trick to deliver yourself to a root prompt
+2005-11-17T10:07:00.000Z	NigelS	vvarsendagger	if your bootloader isn't passworded you could get into a system with <image> rw init=/bin/sh
+2005-11-17T10:07:00.000Z	NigelS	vvarsendagger	but maybe the reason you can't log in would cause problems then too.
+2005-11-17T10:08:00.000Z	NigelS	vvarsendagger	see what Agrajag said you shouldn't need to do that now apparently
+2005-11-17T10:08:00.000Z	NigelS	vvarsendagger	passwd
+2005-11-17T10:08:00.000Z	vvarsendagger	NigelS	good to know
+2005-11-17T10:09:00.000Z	vvarsendagger	NigelS	how would i enter that <imiage> rw init =/bin/sh
+2005-11-17T10:10:00.000Z	NigelS	vvarsendagger	not at the linux shell prompt, at the bootloader, so you know you can give options at grub/lilo, you do it there and it boots the kernel image with those options

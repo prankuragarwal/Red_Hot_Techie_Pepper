@@ -1,0 +1,24 @@
+2007-02-15T13:45:00.000Z	nusa42		Hmm .. Anyone have any advice of setting 1360x768 resolution?
+2007-02-15T13:46:00.000Z	soundray	nusa42	have you tried 'sudo dpkg-reconfigure xserver-xorg'?
+2007-02-15T13:46:00.000Z	nusa42	soundray	yeah - doesn't add this ood resolution
+2007-02-15T13:48:00.000Z	nusa42	soundray	ive configured xorg.conf with modelines, but the "screen resolution" utility does not reassemble the newly configured xorg when restarted.
+2007-02-15T13:51:00.000Z	soundray	nusa42	have you seen this http://help.ubuntu.com/community/FixVideoResolutionHowto
+2007-02-15T13:54:00.000Z	nusa42	soundray	yeah - used 915resolution instead - no dice. The resolutions I put in xorg.conf isn't added when i restart the system. However if I just do the 915resolution hack and restart X, then I get the 1360x768 fine - when I restart, it's back to default resolutions again (/etc/default/915resolution startup script is configured and an additional script in init.d with the actual hack is also present)
+2007-02-15T13:56:00.000Z	soundray	nusa42	is that init.d script linked from the /etc/rc?.d directories?
+2007-02-15T13:56:00.000Z	soundray	nusa42	alternatively, call the init.d script from /etc/rc.local
+2007-02-15T14:31:00.000Z	nusa42	soundray	Ok - looks like my init.d/widescreen script is executed too late. How would I change the boot priority?
+2007-02-15T14:32:00.000Z	soundray	nusa42	check the links to widescreen in '/etc/rc?.d' and rename them with lower leading numbers
+2007-02-15T14:33:00.000Z	nusa42	soundray	allright...
+2007-02-15T14:36:00.000Z	nusa42	soundray	it's in the rc5.d directory.
+2007-02-15T14:41:00.000Z	soundray	nusa42	do you know what to do?
+2007-02-15T14:43:00.000Z	soundray	nusa42	no, probably not
+2007-02-15T14:43:00.000Z	nusa42	soundray	it's being loaded after gdm... is that a problem?
+2007-02-15T14:44:00.000Z	soundray	nusa42	yes! :)
+2007-02-15T14:50:00.000Z	nusa42	soundray	should I alter all linked rcx.d scripts? (rc2, 3 and 5)
+2007-02-15T14:50:00.000Z	soundray	nusa42	I
+2007-02-15T14:50:00.000Z	soundray	nusa42	I'm not sure, this is dirty-hack territory
+2007-02-15T14:53:00.000Z	nusa42	soundray	heh - well altering the rc5.d only, didn't quite do it - the BIOS hack is applied, but X server hasn't not recognized it - If I shutdown X and start it again - then it works... so the script must be executed too late.
+2007-02-15T14:57:00.000Z	nusa42	soundray	Hmm .. altering all entries didn't work either... any other ideas?
+2007-02-15T14:57:00.000Z	soundray	nusa42	perhaps there is a way to call the script from /etc/init.d/gdm (dirty, dirty hack!)
+2007-02-15T14:58:00.000Z	soundray	nusa42	I'm off now, hope you find a way...
+2007-02-15T14:59:00.000Z	nusa42	soundray	Thank you soo much for the help!!

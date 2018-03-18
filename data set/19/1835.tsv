@@ -1,0 +1,19 @@
+2012-09-01T23:07:00.000Z	someprimetime		i just created a user, added them to `admin and now when i login with that user, it seems that the termincal colors are turned off... is there a way to grant that to the user or group of `admin`?
+2012-09-01T23:08:00.000Z	histo	someprimetime	how did you create the user perhaps they didn't get skeleton files for .bashrc etc... from /etc/skel
+2012-09-01T23:09:00.000Z	someprimetime	histo	useradd someprimetime
+2012-09-01T23:09:00.000Z	histo	someprimetime	should have copied but take a look in your /home/someprimetime and ls -lah
+2012-09-01T23:11:00.000Z	someprimetime	histo	did that.. drwxr-xr-x 7 root root 4.0K Aug 31 08:24 public_html
+2012-09-01T23:13:00.000Z	histo	someprimetime	yeah you are missing the default files.. copy them out of /etc/skel/  to your users home
+2012-09-01T23:13:00.000Z	someprimetime	histo	thx
+2012-09-01T23:16:00.000Z	histo	someprimetime	you could do something like cp -r /etc/skel/. /home/someprimetime/   should copy the hidden files over
+2012-09-01T23:18:00.000Z	histo	someprimetime	or i guess a more proper solution would be cp -a /etc/skel/* /home/someprimetime  but either way
+2012-09-01T23:19:00.000Z	histo	someprimetime	ignore that last response that won't work
+2012-09-01T23:24:00.000Z	histo	someprimetime	what are the permissions of their home directory and the .viminfo file?
+2012-09-01T23:24:00.000Z	histo	someprimetime	ls -l /home
+2012-09-01T23:25:00.000Z	histo	someprimetime	sudo chown -R someprimetime:someprimetime /home/someprimetime
+2012-09-01T23:26:00.000Z	histo	someprimetime	what did you do create a new user with a home on a mounted partition?
+2012-09-01T23:27:00.000Z	someprimetime	histo	i was on root and created a new user with useradd added them to the admin group then opened `visudo` and added them specifically to the bottom with someprimetime ALL=(ALL) ALL
+2012-09-01T23:29:00.000Z	histo	someprimetime	you could have just added them to the sudo group on ubuntu and they would have sudo access
+2012-09-01T23:29:00.000Z	someprimetime	histo	ah should i change what i did and do that instead ?
+2012-09-01T23:30:00.000Z	histo	someprimetime	doesn't matter either way it's just a default group and sudo setup in ubuntu. just add someprimetime to the sudo group and sudo visudo and remove the line you put in there.
+2012-09-01T23:34:00.000Z	someprimetime	histo	done thanks again

@@ -1,0 +1,23 @@
+2007-10-22T12:27:00.000Z	josh_marshall		Kay guys -- a failed gutsy update broke the boot process on a Compaq F500. Anyone have a moment to help me troubleshoot, or have any experience with Gutsy on a similar laptop? Any help is very appreciated.
+2007-10-22T12:29:00.000Z	aftertaf	josh_marshall	whats the symptoms?
+2007-10-22T12:32:00.000Z	josh_marshall	aftertaf	Well, depends on the kernel flags I add. The Compaq F500 needed things like noacpi, irqpoll, and pnpbios=off to boot properly in Feisty...
+2007-10-22T12:33:00.000Z	aftertaf	josh_marshall	ok. sounds like my problem..... i had to blacklist some modules and remake initramfs
+2007-10-22T12:33:00.000Z	josh_marshall	aftertaf	So when I add all of those, it will get all the way through the boot process, and then freeze on a black screen --
+2007-10-22T12:33:00.000Z	aftertaf	josh_marshall	and you cant switch with alt+F, etc?
+2007-10-22T12:37:00.000Z	josh_marshall	aftertaf	No, I can't switch to any of the other terminals... (sorry, lots of chat messages to filter through!)
+2007-10-22T12:37:00.000Z	aftertaf	josh_marshall	no old kernel to boot to?
+2007-10-22T12:37:00.000Z	josh_marshall	aftertaf	here's the thing, I can boot into the recovery mode fine...
+2007-10-22T12:38:00.000Z	aftertaf	josh_marshall	in that case, live cd + chroot.... and change your /etc/initramfs-tools/modules . . .
+2007-10-22T12:38:00.000Z	josh_marshall	aftertaf	...but if I try to start gdm, it dies.
+2007-10-22T12:38:00.000Z	aftertaf	josh_marshall	ahh... and if you startx?
+2007-10-22T12:38:00.000Z	josh_marshall	aftertaf	Want me to su to a user, or try to startx as root?
+2007-10-22T12:39:00.000Z	aftertaf	josh_marshall	try root.... (see if it works...)
+2007-10-22T12:39:00.000Z	josh_marshall	aftertaf	Just black.
+2007-10-22T12:39:00.000Z	josh_marshall	aftertaf	Now, to add another level, I think that some of the packages broke when I was updating.
+2007-10-22T12:40:00.000Z	josh_marshall	aftertaf	So, things like ubuntu-minimal may be missing.
+2007-10-22T12:40:00.000Z	aftertaf	josh_marshall	tried sudo aptitude -f install or /dist-upgrade ?
+2007-10-22T12:40:00.000Z	josh_marshall	aftertaf	I'd like to fix those first, however, I can't get my laptop in recovery mode to see the internet.
+2007-10-22T12:40:00.000Z	josh_marshall	aftertaf	I can get it to connect to my router, get an ip, etc, just not ping out.
+2007-10-22T12:41:00.000Z	aftertaf	josh_marshall	in recovery mode, edit your modules file in /etc/initramfs-tools...
+2007-10-22T12:41:00.000Z	josh_marshall	aftertaf	Okay, it's booting into recovery, what do I need to edit?
+2007-10-22T12:41:00.000Z	josh_marshall	aftertaf	*what do I need to add?

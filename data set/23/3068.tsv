@@ -1,0 +1,23 @@
+2008-08-08T11:22:00.000Z	bullgard4		[IBM laptop T42] /proc/acpi/processor/CPU/power shows "state C1 usage: 082, state C2 usage 080592, state C3 usage 0141842." Room temperature is 27.5°C. Still the fan does not extinguish. Is this normal?
+2008-08-08T11:23:00.000Z	joejoecircusboy	bullgard4	what's the CPU temp?
+2008-08-08T11:24:00.000Z	bullgard4	joejoecircusboy	Hardware Sensors Monitor lists 8 different temperatures. Which one should I pick?
+2008-08-08T11:24:00.000Z	joejoecircusboy	bullgard4	Is one labelled CPU, or core, or processor or something? (if not, just give me the highest)
+2008-08-08T11:25:00.000Z	bullgard4	joejoecircusboy	They are not labelled. The highest is 54°C.
+2008-08-08T11:25:00.000Z	joejoecircusboy	bullgard4	seems reasonable (that's not too hot)
+2008-08-08T11:27:00.000Z	bullgard4	joejoecircusboy	I am curious if it is normal that the fan does not extinguish even though I do not touch the keyboard for a long time and web browser is not receiving animated Java scripts.
+2008-08-08T11:27:00.000Z	joejoecircusboy	bullgard4	by extinguish, you mean turn off?
+2008-08-08T11:30:00.000Z	bullgard4	joejoecircusboy	Yes, automatically turn off at low load.
+2008-08-08T11:31:00.000Z	joejoecircusboy	bullgard4	try running 'top', is anything using the CPU?
+2008-08-08T11:35:00.000Z	bullgard4	joejoecircusboy	%CPU gconf, Xorg, sensors-applet: all 0.7%. No more.
+2008-08-08T11:35:00.000Z	joejoecircusboy	bullgard4	hmm
+2008-08-08T11:35:00.000Z	joejoecircusboy	bullgard4	what CPU?
+2008-08-08T11:38:00.000Z	bullgard4	joejoecircusboy	Intel pentium M processor at 1.7 GHz.
+2008-08-08T11:40:00.000Z	joejoecircusboy	bullgard4	can you do a 'cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor' ?
+2008-08-08T11:43:00.000Z	bullgard4	joejoecircusboy	scaling governor is 'ondemand'.
+2008-08-08T11:44:00.000Z	joejoecircusboy	bullgard4	can you cat the scaling_available_frequencies in the same directories?
+2008-08-08T11:48:00.000Z	bullgard4	joejoecircusboy	scaling_available_frequencies: 1,7 1.4 1.2 1.0 0.8 0.6 GHz.
+2008-08-08T11:49:00.000Z	joejoecircusboy	bullgard4	try forcing your CPU to run at it's minimum speed, see if it cools down and the fans turn off
+2008-08-08T11:50:00.000Z	joejoecircusboy	bullgard4	take the lowest available frequency value, and write it to scaling_max_freq. e.g. "echo 600000 > scaling_max_freq"
+2008-08-08T11:51:00.000Z	bullgard4	joejoecircusboy	My time is running out. I will try to follow your recipe " take the lowest available frequency value, and write it to scaling_max_freq. e.g. "echo 600000 > scaling_max_freq"" later. --  Thank you very much for your help.
+2008-08-09T11:40:00.000Z	joejoecircusboy	bullgard4	a problem that feeds you text a page at a time (pager) i.e. more/less
+2008-08-09T11:41:00.000Z	bullgard4	joejoecircusboy	a file pager is no problem.

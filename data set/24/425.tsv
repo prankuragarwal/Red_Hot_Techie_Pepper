@@ -1,0 +1,24 @@
+2012-07-01T23:52:00.000Z	amccloud		can upstart be anymore cryptic ?
+2012-07-01T23:52:00.000Z	amccloud		Failed to spawn myscript main process: unable to execute: No such file or directory
+2012-07-01T23:52:00.000Z	amccloud		would be nice to know what file or directory it's talking about
+2012-07-01T23:53:00.000Z	escott	amccloud	where is the script? are you giving a full path?
+2012-07-01T23:54:00.000Z	amccloud	escott	https://gist.github.com/2f5736f6e5b5bc8cdab7
+2012-07-01T23:55:00.000Z	amccloud		it's in /etc/init/myscript.conf
+2012-07-01T23:55:00.000Z	escott	amccloud	are you sure you want a chroot?
+2012-07-01T23:55:00.000Z	amccloud		I tried chdir and cd too
+2012-07-01T23:57:00.000Z	escott	amccloud	you probably dont. does it work outside the service declaration?
+2012-07-01T23:57:00.000Z	amccloud	escott	yes
+2012-07-01T23:59:00.000Z	amccloud	escott	I have initctl log level set to debug and it's still not outputting anything close to useful :|
+2012-07-02T00:00:00.000Z	escott	amccloud	the chroot in what you posted is wrong, the path should be absolute
+2012-07-02T00:00:00.000Z	amccloud	escott	It's not?
+2012-07-02T00:01:00.000Z	escott	amccloud	you should have a single exec line with a full path to the executable
+2012-07-02T00:01:00.000Z	amccloud	escott	as I mentioned in the note in the script I pasted I've tried that also
+2012-07-02T00:02:00.000Z	amccloud		exec /srv/myscript/env/bin/gunicorn app.wsgi:application -b 0.0.0.0:8000 -w 4
+2012-07-02T00:02:00.000Z	escott	amccloud	and what error messages do you get when starting it that way?
+2012-07-02T00:02:00.000Z	amccloud	escott	Failed to spawn myscript main process: unable to execute: No such file or directory
+2012-07-02T00:03:00.000Z	escott	amccloud	and what happens when you try to run the exec line on the cli
+2012-07-02T00:06:00.000Z	escott		!ops | Anastasius
+2012-07-02T00:06:00.000Z	amccloud	escott	it works
+2012-07-02T00:07:00.000Z	amccloud	escott	when I run the exec by itself
+2012-07-02T00:07:00.000Z	escott	amccloud	not sure then
+2012-07-02T00:08:00.000Z	amccloud	escott	okay thanks

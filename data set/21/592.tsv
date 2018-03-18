@@ -1,0 +1,21 @@
+2011-09-18T05:35:00.000Z	vercingetorix		actually forget my previous question
+2011-09-18T05:35:00.000Z	vercingetorix		see, what i'm trying to do is change my login shell
+2011-09-18T05:35:00.000Z	vercingetorix		from bash to zsh
+2011-09-18T05:36:00.000Z	escott_	vercingetorix	usermod
+2011-09-18T05:40:00.000Z	escott_	vercingetorix	it would be usermod -s `which zsh` username
+2011-09-18T05:48:00.000Z	escott_	vercingetorix	as long as that is the correct path to zsh its the same
+2011-09-18T05:49:00.000Z	escott_	vercingetorix	well ssh auth_keys is a different method of login that password login. so it wouldn't work locally. you can check if your shell was changed by grepping your username from /etc/passwd
+2011-09-18T05:53:00.000Z	vercingetorix	escott_	yeah, the thing is i can't login at all this box now
+2011-09-18T05:54:00.000Z	escott_	vercingetorix	try ssh user@machine /bin/bash
+2011-09-18T05:54:00.000Z	escott_	vercingetorix	try ssh user@machine /bin/bash --login
+2011-09-18T05:58:00.000Z	escott_	vercingetorix	you are getting authkey errors? and not shell doesn't exist errors? check with ssh -v. if you had a bad login shell specified your session might immediately close, if it is authkey you are locked out
+2011-09-18T05:59:00.000Z	escott_	vercingetorix	sounds like your key is not valid. ie you are locked out
+2011-09-18T06:00:00.000Z	escott_	vercingetorix	shouldn't have. changing your home directory would mess things up, or changing permissions on .ssh would mess things up
+2011-09-18T06:01:00.000Z	escott_	vercingetorix	try to ssh in with verbosity ssh -v username@host
+2011-09-18T06:03:00.000Z	vercingetorix	escott_	output: http://pastebin.com/CR7D5nfm
+2011-09-18T06:06:00.000Z	escott_	vercingetorix	no thats checking that the server is recognized as the same server in known_hosts. it appears to try your private key id_rsa-gnycl-keypair and fail
+2011-09-18T06:08:00.000Z	escott_	vercingetorix	thats the last three/four lines of the ssh output
+2011-09-18T06:09:00.000Z	vercingetorix	escott_	i tried changing the HostName in the ~/.ssh/config file to trackingedu.com instead of the ec2-supplied url that it was set to
+2011-09-18T06:11:00.000Z	escott_	vercingetorix	im not sure what you had in your ~/.ssh/config so I can't comment on what that might or might not have done, but the key you are sending is evidently invalid
+2011-09-18T06:12:00.000Z	vercingetorix	escott_	my config file, with the change: http://pastebin.com/7bfn2zGu
+2011-09-18T06:16:00.000Z	escott_	vercingetorix	i dont think the change you made to your .config is the cause of your problems

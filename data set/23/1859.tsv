@@ -1,0 +1,23 @@
+2009-10-19T23:41:00.000Z	Schmitty		I have a newb question because I don't install much fro command line and when I do it usual works. I am trying to ./configure and it fails sayign it could not find libpcap. In a usual install process where would one go to manually put the path to the binaries for missing dependencies because it is installed.
+2009-10-19T23:42:00.000Z	zaoul	Schmitty	usually the ./configure would have a --with-libpcap=/path/to option
+2009-10-19T23:43:00.000Z	zaoul	Schmitty	check somewhere like.. /usr/share/lib/pcap .. ? or do a find .. its somewhere in /usr though
+2009-10-19T23:43:00.000Z	Schmitty	zaoul	it's in usr
+2009-10-19T23:44:00.000Z	Schmitty	zaoul	where can i get a list of configure options?
+2009-10-19T23:44:00.000Z	zaoul	Schmitty	./configure --help
+2009-10-19T23:45:00.000Z	Schmitty	zaoul	ok cool
+2009-10-19T23:54:00.000Z	Schmitty	zaoul	i used ./configure --with-libpcap=/usr/lib/ and got this error "configure: error: pcap.h not found in /usr/lib/" I have libpcap install and I reinstalled it just to make sure, the locate pcap.h command brings up nothing.. shouldn't have pcap.h have come with libpcap package?
+2009-10-19T23:54:00.000Z	zaoul	Schmitty	locate is based upon the whereis db... do a find /usr -name pcap.h
+2009-10-19T23:56:00.000Z	zaoul	Schmitty	/usr/share/pcap/include ?
+2009-10-19T23:56:00.000Z	Schmitty	zaoul	it came up with nothing
+2009-10-19T23:56:00.000Z	Schmitty	zaoul	no pcap folder within share
+2009-10-19T23:57:00.000Z	zaoul	Schmitty	find / -name pcap.h ? :-D
+2009-10-19T23:57:00.000Z	zaoul	Schmitty	you might need to be root also
+2009-10-19T23:57:00.000Z	Schmitty	zaoul	k
+2009-10-20T00:02:00.000Z	Schmitty	zaoul	nothing found for pcap.h, very wierd huh?
+2009-10-20T00:03:00.000Z	zaoul	Schmitty	indeed... what is the source app again?
+2009-10-20T00:03:00.000Z	Schmitty	zaoul	ettercap
+2009-10-20T00:04:00.000Z	Schmitty	zaoul	pcap.h should have come in libpcap i would have thought
+2009-10-20T00:04:00.000Z	zaoul	Schmitty	ettercap is in apt-get...?
+2009-10-20T00:04:00.000Z	zaoul	Schmitty	ok..
+2009-10-20T00:06:00.000Z	zaoul	Schmitty	 dpkg -l | grep libpcap ?
+2009-10-20T00:07:00.000Z	Schmitty	zaoul	one moment

@@ -1,0 +1,22 @@
+2010-11-02T17:20:00.000Z	minh		I'm trying to ssh into a local virtual machine (both host and guest running ubuntu) - however I want to be able to do this even when not having internet acesss
+2010-11-02T17:20:00.000Z	minh		I tried to give the host and guest machines static ip-addresses for eth0...
+2010-11-02T17:21:00.000Z	minh		So i'm able to log in via ssh...but after the first command the connection freezes
+2010-11-02T17:22:00.000Z	dli	minh	what's the guest os?
+2010-11-02T17:23:00.000Z	minh	dli	both ubuntu
+2010-11-02T17:24:00.000Z	dli	minh	what's the host NIC interface to be paired with guest?
+2010-11-02T17:24:00.000Z	minh	dli	what's NIC?
+2010-11-02T17:25:00.000Z	dli	minh	network interface
+2010-11-02T17:25:00.000Z	minh	dli	I do set static IPs for eth0 on both sides
+2010-11-02T17:25:00.000Z	minh	dli	e.g. ifconfig eth0 10.1.1.1/16 on host...and ifconfig 10.1.1.2/16 on guest
+2010-11-02T17:25:00.000Z	dli	minh	I suppose the host side eth0 is a hardware device
+2010-11-02T17:33:00.000Z	dli	minh	I'm quite confused, because the default virtualbox setting doesn't require you to set host side eth0, can you disable it, and clean up all 10.* network in "route"
+2010-11-02T17:35:00.000Z	minh	dli	thank you...give me a second
+2010-11-02T17:35:00.000Z	dli	minh	but it doesn't explain why you could still login and run one command at all
+2010-11-02T17:48:00.000Z	dli	minh	now, do you have access to the guest from other boxes within the LAN?
+2010-11-02T17:48:00.000Z	minh	dli	I have no resources to test that at the moment, sorry
+2010-11-02T17:49:00.000Z	minh	dli	the connection is SOOOOOO slow even though it's "local".
+2010-11-02T17:50:00.000Z	dli	minh	I run qemu-kvm in gentoo, the host to guest scp gives me about 100KB/s, and ping time is about 9ms
+2010-11-02T17:51:00.000Z	minh	dli	pingtime 0.600ms
+2010-11-02T17:52:00.000Z	dli	minh	let me try another guest, the 9ms is from HURD
+2010-11-02T17:54:00.000Z	minh	dli	so the speed is ok for commandline stuff....but X-forwarding is unbearable
+2010-11-02T17:57:00.000Z	minh	dli	airtonix: anyway...thank you both very much for yor help!

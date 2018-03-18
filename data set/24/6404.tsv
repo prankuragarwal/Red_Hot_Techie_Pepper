@@ -1,0 +1,24 @@
+2005-10-25T11:35:00.000Z	AzMoo		Does anybody know why after an uptime of about 2-3 days my system really starts to chug? Like, it took me 25 seconds to open a terminal to type in uptime.
+2005-10-25T11:36:00.000Z	AzMoo		Celeron 2.0Ghz, 256MB RAM, Toshiba Notebook.
+2005-10-25T11:37:00.000Z	AzMoo		No, I know :p
+2005-10-25T11:37:00.000Z	AzMoo		This is why I'm curious.
+2005-10-25T11:39:00.000Z	AzMoo		But if I start closing things it doesn't speed anything up.
+2005-10-25T11:39:00.000Z	mrx___	AzMoo	  what are the load averages like in top?
+2005-10-25T11:41:00.000Z	AzMoo	mrx___	load average: 0.20, 0.40, 0.42
+2005-10-25T11:42:00.000Z	mrx___	AzMoo	  i take it there's no big cpu hogs showing upin top?
+2005-10-25T11:43:00.000Z	AzMoo	mrx___	nope. But I just sorted by memory, and apparently firefox-bin is still running, after I closed it :\
+2005-10-25T11:43:00.000Z	mrx___	AzMoo	  ps auxw |grep firefox,  get the PID numbers,  then kill -9 PIDnumber
+2005-10-25T11:44:00.000Z	mrx___	AzMoo	  my debian etch firefox has started to do that recently :(
+2005-10-25T11:44:00.000Z	AzMoo	mrx___	yeah, I've killed it already. I didn't need to use signal 9, 15 was fine. It's helped, but still taking longer than it should :\
+2005-10-25T11:46:00.000Z	mrx___	AzMoo	  how much ram, how much swap in use?
+2005-10-25T11:47:00.000Z	AzMoo	mrx___	everytime I try to do something it just hammers the hdd.
+2005-10-25T11:48:00.000Z	mrx___	AzMoo	  i wouldn't think of running x on 256megs now a days.  i think you need more ram
+2005-10-25T11:49:00.000Z	AzMoo	mrx___	ugh. But why does it take 3 days to start to chug?
+2005-10-25T11:49:00.000Z	AzMoo	mrx___	and why does it fix it when I restart?
+2005-10-25T11:50:00.000Z	mrx___	AzMoo	  it's not releasing memory thinking it will need it again soon
+2005-10-25T11:51:00.000Z	AzMoo	mrx___	Ah, ok. So it's just reserving it and it's adding up over time.
+2005-10-25T11:52:00.000Z	mrx___	AzMoo	  yes, because it's already done some work on it and doesn't want to throw that effort away.  IIRC you can probably tune the kernel somewhere in /proc but that's beyond me
+2005-10-25T11:52:00.000Z	AzMoo	mrx___	OK, thanks for your help :)
+2005-10-25T12:00:00.000Z	AzMoo	mrx___	I fixed it. It appears that wesnothd was running. Wasn't using much, but there was obviously a problem. Killed that and everything works fine again.
+2005-10-25T12:01:00.000Z	mrx___	AzMoo	 what is wesnothd?
+2005-10-25T12:01:00.000Z	AzMoo	mrx___	Battle For Wesnoth game server.

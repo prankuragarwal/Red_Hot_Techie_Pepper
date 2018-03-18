@@ -1,0 +1,22 @@
+2010-05-16T18:35:00.000Z	disappearedng		can someone help me out? I plugged in my usb and it's not showing up I want to format the usb stick completely
+2010-05-16T18:35:00.000Z	actionParsnip	disappearedng	does the partition show in the output of: sudo fdisk -l
+2010-05-16T18:36:00.000Z	disappearedng	actionParsnip	no but then in ubuntu it just says GENERIC STORAGE DEVICE
+2010-05-16T18:36:00.000Z	actionParsnip	disappearedng	can yuo access and format it if you run: gksudo gparted
+2010-05-16T18:37:00.000Z	disappearedng	actionParsnip	I tried it but it doesn't show up in gparted
+2010-05-16T18:37:00.000Z	actionParsnip	disappearedng	does: dmesg | tail -n 15    show the kernel detecting the insertion?
+2010-05-16T18:38:00.000Z	disappearedng	actionParsnip	it does show up
+2010-05-16T18:39:00.000Z	actionParsnip	disappearedng	does it mention any drive references or partitions?
+2010-05-16T18:40:00.000Z	disappearedng	actionParsnip	let me try reinserting it
+2010-05-16T18:45:00.000Z	disappearedng	actionParsnip	all it does is mention sdb
+2010-05-16T18:45:00.000Z	actionParsnip	disappearedng	ok then if you run: sudo fdisk /dev/sdb
+2010-05-16T18:46:00.000Z	actionParsnip	disappearedng	has the stick ben in a windows system?
+2010-05-16T18:46:00.000Z	disappearedng	actionParsnip	no
+2010-05-16T18:46:00.000Z	actionParsnip	disappearedng	good
+2010-05-16T18:47:00.000Z	disappearedng	actionParsnip	unable to open /dev/sdb
+2010-05-16T18:47:00.000Z	actionParsnip	disappearedng	ok can you fsck the drive ?
+2010-05-16T18:48:00.000Z	disappearedng	actionParsnip	No medium found while trying to open /dev/sdb
+2010-05-16T18:49:00.000Z	disappearedng	actionParsnip	ok what else can I do?
+2010-05-16T18:51:00.000Z	disappearedng	actionParsnip	I actually feel like doing a dd if=/dev/zero to /dev/sdb
+2010-05-16T18:52:00.000Z	actionParsnip	disappearedng	verify the name is the right on (so you dont screw your own data then go for it ;)
+2010-05-16T18:53:00.000Z	disappearedng	actionParsnip	weird dd said "No medium found"
+2010-05-16T18:56:00.000Z	disappearedng	actionParsnip	I can't even dd, my sdcard is 4G, but then this operation stops at 1.6GB

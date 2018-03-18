@@ -1,0 +1,23 @@
+2008-08-11T20:09:00.000Z	taak		where can i ask a question about gnu screen?
+2008-08-11T20:09:00.000Z	taak		ok, i think screen is messing up my TERM a little bit
+2008-08-11T20:09:00.000Z	taak		the color on the shell prompt is lost
+2008-08-11T20:09:00.000Z	taak		works ok elsewhere, in editors
+2008-08-11T20:10:00.000Z	geirha	taak	you have colored prompt, but not in screen?
+2008-08-11T20:10:00.000Z	taak	geirha	right
+2008-08-11T20:11:00.000Z	geirha	taak	~/.bashrc is the file you want to edit then. Not sure what the best way is, but setting force_color_prompt=yes should work
+2008-08-11T20:13:00.000Z	geirha	taak	A safer way is probably to add a "screen) color_prompt=yes;;" in the case "$TERM" part ...
+2008-08-11T20:13:00.000Z	taak	geirha	the default .bashrc has case "$TERM" in xterm-color) color_prompt=yes;; does that have something to do with it?
+2008-08-11T20:14:00.000Z	geirha	taak	yes, if you double that line and change xterm-color to screen, it should give you color in screen.
+2008-08-11T20:16:00.000Z	taak	geirha	wait, how do i want to set it exactly?
+2008-08-11T20:17:00.000Z	geirha	taak	http://paste.ubuntu.com/36552/
+2008-08-11T20:17:00.000Z	taak	geirha	sweet, thanks!
+2008-08-11T20:22:00.000Z	geirha	taak	screen -t
+2008-08-11T20:25:00.000Z	geirha	taak	http://web.mit.edu/gnu/doc/html/screen_9.html#SEC34
+2008-08-11T20:29:00.000Z	taak	geirha	setting PROMPT_COMMAND to 'echo -n -e "\033k\033\134"' as it recommends just seems to prepend '134' to my shell prompt and not affect screen in any other way
+2008-08-11T20:29:00.000Z	geirha	taak	The easiest is to use Ctrl+a Shift+a I guess
+2008-08-11T20:30:00.000Z	taak	geirha	i'd prefer to have it dynamically set to the current process, which it's supposed to be able to do...
+2008-08-11T20:38:00.000Z	geirha	taak	if you prepend the command with screen, inside a screen, it should set the title to the program name automagically.
+2008-08-11T20:44:00.000Z	taak	geirha	prepend the command with screen, inside a screen?
+2008-08-11T20:44:00.000Z	geirha	taak	yes. Start a new screen with screen. Then in the shell inside the screen, type for instance "screen irssi"
+2008-08-11T20:45:00.000Z	geirha	taak	that will create a new window with the title "irssi"
+2008-08-11T21:03:00.000Z	taak	geirha	i found this did what i wanted: http://gentoo-wiki.com/TIP_Using_screen#auto_renaming_the_.22tabs.22

@@ -1,0 +1,18 @@
+2010-03-18T04:45:00.000Z	danl		how do you tell apt to ignore a dependency?
+2010-03-18T04:46:00.000Z	Typos_King	danl	  usually you don't want to
+2010-03-18T04:46:00.000Z	danl	Typos_King	in this case I know for a fact it is not a required dependency
+2010-03-18T04:47:00.000Z	Typos_King	danl	  I think you can use --ignore-missing
+2010-03-18T04:47:00.000Z	danl	Typos_King	but that will ignore all of them won't it, not just the one I want
+2010-03-18T04:48:00.000Z	Typos_King	danl	   I see.... yes it will... sooo... use it as such, and install the others you want separately :|
+2010-03-18T04:48:00.000Z	danl	Typos_King	true
+2010-03-18T04:52:00.000Z	danl	Typos_King	actually I think I would have to tell it to download only, remove the mysql packages from the dl directory, do another run with -no-download and -mf
+2010-03-18T04:54:00.000Z	Typos_King	danl	 .... that may do
+2010-03-18T04:58:00.000Z	Typos_King	danl	   apt uses /var/cache/apt/archives   for ALL .debs
+2010-03-18T04:58:00.000Z	danl	Typos_King	just found it, thanks
+2010-03-18T04:59:00.000Z	Typos_King	danl	   I usually install and back them up hehehe, then do a 'clean'
+2010-03-18T04:59:00.000Z	danl	Typos_King	to what end?
+2010-03-18T05:01:00.000Z	Typos_King	danl	   apt-get install, checks the cache whenever it tries to install anything, BUT if it finds it already there, it doesn't download it, sooooo, I can... say have the Gimp .debs, I dump them in the cache folder, tell apt-get to install gimp, it finds all files, it says, need to fetch 0kb of 5mbs or so :), there's an app also to back them all up too, AptOnCD
+2010-03-18T05:01:00.000Z	danl	Typos_King	nice
+2010-03-18T05:03:00.000Z	danl	Typos_King	worked like a charm... -d, them delete, then, -m --no-download
+2010-03-18T05:03:00.000Z	danl	Typos_King	thanks
+2010-03-18T05:04:00.000Z	danl	Typos_King	let me see if I get this right, I can delete everything /var/cache/apt/archives ?

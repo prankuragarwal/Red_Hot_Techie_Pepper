@@ -1,0 +1,23 @@
+2009-10-13T01:51:00.000Z	wamty		I googled this and can't getr a straight answer. anyone else running ubuntu 9.04 server with wifi? The adapter is listed, I can ifconfig it and it's tx/rx packets, but I have no outside network access.. I explored all avenues at the command line. The *only* thing I noticed is that the listed supported encryption modes do NOT include WEP, which is what i'm using (crucify me for this later please). The onyl ubuntu network manager handled this
+2009-10-13T01:53:00.000Z	wamty		I googled this and can't getr a straight answer. anyone else running ubuntu 9.04 server with wifi? The adapter is listed, I can ifconfig it and it's tx/rx packets, but I have no outside network access.. I explored all avenues at the command line. The *only* thing I noticed is that the listed supported encryption modes do NOT include WEP, which is what i'm using (crucify me for this later please). The onyl ubuntu network manager handled this
+2009-10-13T01:53:00.000Z	wamty		FWIW, my old version was 6.06 and it worked fine.. also on the post 6.06 releases RADI croaks one of my drives.. but it works fine and is physically configured fine. Hit a brick wall there as well.
+2009-10-13T01:53:00.000Z	wamty		what i don't understand is that i've come this far, and the adapter is there.. and I made it work. Its even listed on my router and the dmesg log shows it authenticated. But I can't ping shit.. it's making me tear my hair out
+2009-10-13T01:54:00.000Z	wamty		ideas?
+2009-10-13T01:54:00.000Z	wamty		jrib?
+2009-10-13T01:54:00.000Z	Jordan_U	wamty	Are you using DHCP?
+2009-10-13T02:27:00.000Z	Jordan_U	wamty	Why didn't you install wicd with apt-get?
+2012-04-10T22:35:00.000Z	Jordan_U	wamty	Please pastebin the ouptut of "sudo fdisk -lu" and "sudo parted -l".
+2012-04-10T22:37:00.000Z	wamty	Jordan_U	splitting a cylinder is well supported, right?
+2012-04-10T22:38:00.000Z	Jordan_U	wamty	With modern drives "cylinders" are a myth.
+2012-04-10T22:39:00.000Z	Jordan_U	wamty	For performance reasons, you should be aligning on at least MiB boundaries, but any alignment is supported. I recommend using parted or GParted for partitioning as they are aware of filesystems and follow best practices for alignment among other things.
+2012-04-10T22:40:00.000Z	wamty	Jordan_U	in theory it should be different, but if the disk was partitioned by MB instead of cylinders then its possible to split a cylinder?
+2012-04-10T22:44:00.000Z	Jordan_U	wamty	I have no idea what you mean by "partitioned by MB instead of cylinders". Like I said, cylinders are a myth at this point and anything even vaguely modern tool uses LBA.
+2012-04-10T22:46:00.000Z	wamty	Jordan_U	sorry for the delay, the outputs of fdisk and parted are here: http://pastebin.com/TnJAU3YB
+2012-04-10T22:47:00.000Z	wamty	Jordan_U	i always thought partitioning was based on cylinders, so seeing the partitions overlap is a bit scary
+2012-04-10T22:47:00.000Z	wamty	Jordan_U	anyway, the outputs of fdisk and parted are here: http://pastebin.com/TnJAU3YB
+2012-04-10T22:51:00.000Z	Jordan_U	wamty	Indeed, the start and end blocks are the same which could be a problem. I would recommend repartitioning with [G]Parted and while you're at it make sure that your partitions are all aligned on MiB boundaries (which [G]Parted does by default).
+2012-04-10T22:51:00.000Z	wamty	Jordan_U	those were lined up by bytes: 146485247 - 146485248 ?
+2012-04-10T22:53:00.000Z	Jordan_U	wamty	Sorry, I was confused by the fact that you also ran "sudo fdisk -l" which I did not ask you to run. Your partitions do not overlap, as can be seen in the -lu output.
+2012-04-10T22:53:00.000Z	wamty	Jordan_U	So what do you recommend? what happened here?
+2012-04-10T23:01:00.000Z	wamty	Jordan_U	So what do you recommend? what happened here?
+2012-04-10T23:04:00.000Z	wamty	Jordan_U	So what do you recommend? what happened here?

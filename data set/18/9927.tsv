@@ -1,0 +1,18 @@
+2007-02-02T08:05:00.000Z	aeromix2		hi all.. how can I remove some text from a file which spreads on more than one line?
+2007-02-02T08:06:00.000Z	jrib	aeromix2	example?
+2007-02-02T08:06:00.000Z	aeromix2	jrib	I want to remove the text between <script>and </script> in a html file
+2007-02-02T08:07:00.000Z	jrib	aeromix2	I'd end up using python since it can make . match newlines.  i'm sure perl would work as well.  I don't know how to do taht in sed
+2007-02-02T08:08:00.000Z	aeromix2	jrib	the only solution I was able to think out was to grep the line containg <script> and the one with </script> but I have no idea how to delete lines 12-25 for example
+2007-02-02T08:09:00.000Z	jrib	aeromix2	hmm is <script> and </script> the only thing on the line?  something like sed '/<script>/,/<\/script>d'  *might* work
+2007-02-02T08:10:00.000Z	aeromix2	jrib	nop.
+2007-02-02T08:11:00.000Z	jrib	aeromix2	works here, let me pastebin the example
+2007-02-02T08:11:00.000Z	aeromix2	jrib	ok, mmt
+2007-02-02T08:11:00.000Z	jrib	aeromix2	http://paste.ubuntu-nl.org/3822/
+2007-02-02T08:13:00.000Z	aeromix2	jrib	well, tnx, I'll take a look at it
+2007-02-02T08:14:00.000Z	jrib	aeromix2	I'd still just use a python script using re.DOTALL.  Then you could just do <script>.*</script> as the match
+2007-02-02T08:14:00.000Z	jrib	aeromix2	or look into the multiline pattern space Seveas mentioned
+2007-02-02T08:14:00.000Z	aeromix2	jrib	I don't know python at all:)
+2007-02-02T08:15:00.000Z	jrib	aeromix2	perl?
+2007-02-02T08:15:00.000Z	aeromix2	jrib	just a bit of C:)
+2007-02-02T08:17:00.000Z	jrib	aeromix2	meh, the example on the pastebin does what you need I think.  If "<script>" doesn't start a line, then just change the pattern to \s*<script> to take care of leading space.  Otherwise, learning a good scripting language will be helpful anyway and it won't be hard if you know C already
+2007-02-02T08:17:00.000Z	aeromix2	jrib	I know.. I've already bought a book on python, but didn't have time for it..

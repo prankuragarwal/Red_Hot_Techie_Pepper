@@ -1,0 +1,21 @@
+2010-09-23T18:57:00.000Z	Silox`		Which filesystem and what mount point should my boot partition have when configuring the partitions manually?
+2010-09-23T18:58:00.000Z	undecim	Silox`	If you need a separate boot partition, ext2 is good, since you won't be writing to it much, and 64 MB is plenty
+2010-09-23T18:58:00.000Z	Silox`	undecim	I don't know if I need it, I just followed some people their instruction, is it better to have a seperate boot partition?
+2010-09-23T18:58:00.000Z	undecim	Silox`	Thought unless you have a specific need for a separate boot partition (BIOS issues, multiple Linuxs, etc), don't worry with it.
+2010-09-23T18:59:00.000Z	Silox`	undecim	so I can leave that behind and just get a swap, root and home?
+2010-09-23T18:59:00.000Z	undecim	Silox`	I don't see why not.
+2010-09-23T18:59:00.000Z	undecim	Silox`	Like I said, unless you have a specific need for it, I wouldn't worry with it.
+2010-09-23T19:00:00.000Z	Silox`	undecim	ok, thanks, last question: what mount point should I set for my windows partition?
+2010-09-23T19:00:00.000Z	undecim	Silox`	Are you setting up Ubuntu with the normal desktop graphical installer or something like the alternate install?
+2010-09-23T19:00:00.000Z	Silox`	undecim	ubuntu 10.04 live Cd, installing from the GUI
+2010-09-23T19:01:00.000Z	undecim	Silox`	I wouldn't worry with specifying your windows mount point either. udev will detect it and automatically mount it based on label or UUID to a folder in /media
+2010-09-23T19:01:00.000Z	undecim	Silox`	Or even if it doesn't mount it automatically, it will mount it when you click on it
+2010-09-23T19:02:00.000Z	undecim	Silox`	Are you just trying to set up a separate home partition?
+2010-09-23T19:02:00.000Z	Silox`	undecim	yes, I am
+2010-09-23T19:03:00.000Z	undecim	Silox`	Then you just need to worry about root, swap and home. Make root 5-10gb, depending on how many apps you like to install, put at least as much as your ram for swap (assuming you want to have hibernate), and share the rest as you wish between /home and Windows.
+2010-09-23T19:03:00.000Z	Silox`	undecim	taht was my plan ^^
+2010-09-23T19:04:00.000Z	undecim	Silox`	If you have enough ram, and don't care about hibernate, you could even leave swap out completely or make it smaller so you have more storage space. It all depends on how you use your computer.
+2010-09-23T19:05:00.000Z	Silox`	undecim	ok, thanks, I'll let you know if I managed or not :)
+2010-09-23T19:07:00.000Z	Silox`	undecim	so my NTFS (windows partition) its mount point is freely to choose?
+2010-09-23T19:07:00.000Z	undecim	Silox`	For Windows, just specifiy "don't use this partition" (or whatever the text for that option is... I forget the specifics)
+2010-09-23T19:08:00.000Z	undecim	Silox`	udev will automatically handle it in /media

@@ -1,0 +1,19 @@
+2012-04-24T00:03:00.000Z	_DDG_		my computer that is wired to my network will not connect to the internet
+2012-04-24T00:03:00.000Z	_DDG_		any ideas?
+2012-04-24T00:04:00.000Z	_DDG_		how do i check that
+2012-04-24T00:05:00.000Z	el_seano	_DDG_	by running `ip route show` in a terminal
+2012-04-24T00:12:00.000Z	el_seano	_DDG_	try running `ip addr` in a terminal
+2012-04-24T00:15:00.000Z	el_seano	_DDG_	be easiest if you pastied the output.
+2012-04-24T00:17:00.000Z	el_seano	_DDG_	so, rather than that, try looking for the device name
+2012-04-24T00:19:00.000Z	_DDG_	el_seano	rtnetlink answers: flie sxists
+2012-04-24T00:20:00.000Z	el_seano	_DDG_	intersting, okay.
+2012-04-24T00:20:00.000Z	el_seano	_DDG_	let's try running `ip addr | grep inet`
+2012-04-24T00:21:00.000Z	el_seano	_DDG_	is that the only line you see?
+2012-04-24T00:22:00.000Z	el_seano	_DDG_	any of them look like '192.168.something.something'?
+2012-04-24T00:23:00.000Z	_DDG_	el_seano	so where should i start looking for the problem now?
+2012-04-24T00:24:00.000Z	el_seano	_DDG_	probably on the router.
+2012-04-24T00:25:00.000Z	el_seano	_DDG_	what does your /etc/resolv.conf look like?
+2012-04-24T00:26:00.000Z	el_seano	_DDG_	also, what did `ip route show` give you again?  Not seeing it in scrollback.
+2012-04-24T00:31:00.000Z	el_seano	_DDG_	your ip address has you on the 192.168.1.0 network, so unless you have a route to the 192.168.0.0 network, you won't be able to reach it.
+2012-04-24T00:31:00.000Z	el_seano	_DDG_	try `ping -c3 192.168.1.1`
+2012-04-24T00:33:00.000Z	_DDG_	el_seano	3 packets transmitted 0 receiver +3 errors, 100% packet loss

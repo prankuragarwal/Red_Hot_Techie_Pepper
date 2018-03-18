@@ -1,0 +1,24 @@
+2007-12-03T08:06:00.000Z	justin_		hi, i am able to access the internet, but i am unable to access anything on my local network (such as my router) any suggestions?
+2007-12-03T08:06:00.000Z	kelsin	justin_	when you say "access" anything, what do you mean, can't ping your other computers?
+2007-12-03T08:07:00.000Z	kelsin	justin_	I assume you're pinging your router with it's ip address?
+2007-12-03T08:07:00.000Z	justin_	kelsin	ya
+2007-12-03T08:08:00.000Z	kelsin	justin_	does "route -n" list your router's up as the dateway for the destination "0.0.0.0"
+2007-12-03T08:09:00.000Z	justin_	kelsin	yes
+2007-12-03T08:09:00.000Z	kelsin	justin_	If your router is configurable could it just be not responding to pings, what else doesn't work in the local network?
+2007-12-03T08:11:00.000Z	kelsin	justin_	is the laptop running ubuntu as well?
+2007-12-03T08:12:00.000Z	justin_	kelsin	yes
+2007-12-03T08:12:00.000Z	justin_	kelsin	dhcp though
+2007-12-03T08:18:00.000Z	kelsin	justin_	yep or /etc/init.d/networking restart
+2007-12-03T08:12:00.000Z	kelsin	justin_	do the "route -n" outputs on both machines differ alot or at all?
+2007-12-03T08:12:00.000Z	kelsin	justin_	ahhh so the desktop is using a static config in /etc/network/interfaces?
+2007-12-03T08:13:00.000Z	justin_	kelsin	yes
+2007-12-03T08:13:00.000Z	kelsin	justin_	do you mind pasteing your /etc/network/interfaces file in pastebin?
+2007-12-03T08:15:00.000Z	justin_	kelsin	http://pastebin.org/10259
+2007-12-03T08:15:00.000Z	kelsin	justin_	can you humor me and try restarting networking with the auto line before the iface line for eth0?
+2007-12-03T08:16:00.000Z	justin_	kelsin	not sure i quite follow
+2007-12-03T08:17:00.000Z	kelsin	justin_	in your /etc/network/interfaces you have the auto eth1 line at the end, can you move it to line 4?
+2007-12-03T08:17:00.000Z	kelsin	justin_	then restart your networking
+2007-12-03T08:18:00.000Z	kelsin	justin_	"sudo /etc/init.d/networking restart"
+2007-12-03T08:19:00.000Z	justin_	kelsin	that did that trick
+2007-12-03T08:19:00.000Z	kelsin	justin_	beautiful :), so something about the order of those commands had it bring up the interface correctly but not with the right info somehow :) make sure to keep the auto lines above the corresponding iface lines from now on
+2007-12-03T08:20:00.000Z	justin_	kelsin	i greatly appreciate your time, thank you :)

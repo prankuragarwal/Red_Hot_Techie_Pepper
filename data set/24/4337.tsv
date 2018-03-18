@@ -1,0 +1,24 @@
+2008-01-23T11:07:00.000Z	paulo		has anyone here gotten a mdadm RAID-0 as their root partition or know where there's a guide to setting it up?
+2008-01-23T11:08:00.000Z	jshewey	paulo	ive got one running now.
+2008-01-23T11:08:00.000Z	jshewey	paulo	you will need to use the alt install cd, this can not be done using standard CD setup cd.
+2008-01-23T11:08:00.000Z	jshewey	paulo	unless of course, you are using hardware RAID
+2008-01-23T11:09:00.000Z	paulo	jshewey	i used the alt cd to install to a single drive, now i've gotten 3 more drives and i'm trying to make them into a raid-0 & move my system over
+2008-01-23T11:09:00.000Z	paulo	jshewey	eventually expanding back onto the initial drive
+2008-01-23T11:10:00.000Z	jshewey	paulo	So, you want to add the origional drive into the raid array, making for a total of four?
+2008-01-23T11:10:00.000Z	paulo	jshewey	i am gonna keep a regular non-raid boot partition on each drive for the system to boot off (i don't think you can have /boot on a raid-0 or 5 md device, correct?)
+2008-01-23T11:11:00.000Z	paulo	jshewey	well, eventually, my problem right now is i have the 3 drives in a raid-0, my fstab and grub config all set up, but when i try to boot with md0 as my root partition the system stops for a few minutes, then drops to BusyBox
+2008-01-23T11:12:00.000Z	paulo	jshewey	if i cat /proc/mdstat it hasn't created any devices yet
+2008-01-23T11:13:00.000Z	paulo	jshewey	so i assume it means mdadm hasn't created /dev/md0 by the time the kernel is trying to mount the root partition.. that's just my guess tho', it's my first time setting this up
+2008-01-23T11:14:00.000Z	jshewey	paulo	some things to try: mount your md device from a boot disk and chroot into it to see if you get a working system. If this works, then try manually assembling your md array from busybox and then chrooting into it and see if you can pull up a working system. If this works, everthing is probably in order, you just need to rebuild your initrd file
+2008-01-23T11:14:00.000Z	jshewey	paulo	I'm guessing it's your initrd file that needs to be rebuilt.
+2008-01-23T11:15:00.000Z	jshewey	paulo	it probably does not have the modifed mdadm.conf and fstab files.
+2008-01-23T11:15:00.000Z	jshewey	paulo	you can double check by cating these files from busybox
+2008-01-23T11:16:00.000Z	paulo	jshewey	okay, before i reboot to try that let me be sure..  i tried to do mdadm --auto-detect from BusyBox and it said "CREATE user root not found"..  do you mean to mount md from a LiveCD or from BusyBox..  also as far as rebuilding initrd, does update-initramfs do that or do i need to do something else too?
+2008-01-23T11:18:00.000Z	jshewey	paulo	update-initramfs will update this.
+2008-01-23T11:19:00.000Z	jshewey	paulo	you need to try assembling your RAID array from a live CD. then you need to mount proc and tempfs. then chroot to the mounted array.
+2008-01-23T11:19:00.000Z	jshewey	paulo	if this works, you have manually booted your system. if this does not you have problems with your drives.
+2008-01-23T11:20:00.000Z	jshewey	paulo	if you can do this, then repeat the process from busybox. If it works with busybox, you know that it is simply a file configuration problem. If it does not (perhaps you recieve a segfault or something) then you know it is a problem with the busybox environment.
+2008-01-23T11:21:00.000Z	paulo	jshewey	okay cool..  so i'll boot off a liveCD, partition my drives up, create the RAID-0 array, copy my current system to this array, then mount proc and tempfs and chroot to the raid-0
+2008-01-23T11:21:00.000Z	paulo	jshewey	how do i know if there's a problem at that point?  i'll get errors from chroot?
+2008-01-23T11:22:00.000Z	paulo	jshewey	sorry to be so out of the loop.. just switched back to Linux after a 13 year hiatus
+2008-01-23T11:49:00.000Z	jshewey	paulo	you still there, sorry had to take care of some stuff. The errors should occur with mdadm. if you can assemble the array, there should be no reason why chroot won't work

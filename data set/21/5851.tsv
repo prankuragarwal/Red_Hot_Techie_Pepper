@@ -1,0 +1,21 @@
+2007-07-22T13:32:00.000Z	seo1		i need to install ubuntu server to manage apache, tomcat and postresql server do i need to have more than /, /home , swap ?
+2007-07-22T13:33:00.000Z	seo1		PriceChild> but i will install ubuntu server and ubuntu desktop and share /home
+2007-07-22T13:34:00.000Z	seo1		PriceChild> because i think ubuntu desktop is not a good idea to a server?
+2007-07-22T13:34:00.000Z	seo1		ikonia> no to have LTS to 2011
+2007-07-22T13:35:00.000Z	seo1		ikonia> stopping in 2009
+2007-07-22T13:35:00.000Z	seo1		ikonia> do you prefer to have a server with desktop edition?
+2007-07-22T13:36:00.000Z	seo1		ikonia> a last question , i have 80 gb
+2007-07-22T13:37:00.000Z	seo1		ikonia> i will install a database server with 20 gb
+2007-07-22T13:39:00.000Z	aelliott	seo1	i would personally either just have a single root partition scheme or use LVM - creating pre-sized partitions for your mount points can be really annoying further down the line
+2007-07-22T13:40:00.000Z	aelliott	seo1	its logical volume manager.  It allows you to divide a disk up into partitions virtually so that the partitions can be resized on demand
+2007-07-22T13:41:00.000Z	aelliott	seo1	http://tldp.org/HOWTO/LVM-HOWTO/benefitsoflvmsmall.html
+2007-07-22T13:41:00.000Z	aelliott	seo1	 LVM is difficult to implement, but if you really want to seperate your mount points it is the best way
+2007-07-22T13:42:00.000Z	aelliott	seo1	 i would personally just have a default ubuntu install with a single / and the file system as simple directories though
+2007-07-22T13:45:00.000Z	aelliott	seo1	not very easily, the LVM system has to all be mounted together
+2007-07-22T13:46:00.000Z	aelliott	seo1	its certainly not good for sharing partitions between distros
+2007-07-22T13:46:00.000Z	aelliott	seo1	in fact most distros wont be able to read the LVM drives at all unless they have the driver module loaded
+2007-07-22T13:48:00.000Z	aelliott	seo1	yes, thats what its there for - its ideal if you know you will be buying more hard disks in the future
+2007-07-22T13:49:00.000Z	aelliott	seo1	 for example i have a 250gb disk now.  If I bought two more 250gb disks and added them to LVM, it would see one single 750gb disk - I could partition it into chunks as I wanted
+2007-07-22T13:49:00.000Z	aelliott	seo1	the only downside is that it is more complicated than a standard filesystem, theres a bit of a learning curve
+2007-07-22T13:50:00.000Z	aelliott	seo1	redhat and Fedora Core come with LVM set up as standard, ubuntu can be installed with it using the "alternative install disk"
+2007-07-22T13:51:00.000Z	aelliott	seo1	no ext3 is formatted on top of the LVM logical drives

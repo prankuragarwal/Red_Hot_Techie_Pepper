@@ -1,0 +1,19 @@
+2010-11-06T21:00:00.000Z	jovaro		Can someone help me with my Xserver? It crashes right after starting it. The log is here: http://pastebin.com/s6QyX8pj
+2010-11-06T21:02:00.000Z	dli	jovaro	is 1360x768 your monitor resolution?
+2010-11-06T21:02:00.000Z	jovaro	dli	no I use a TV which is PAL
+2010-11-06T21:03:00.000Z	dli	jovaro	can you do "X -configure" to see whether it crashes as well
+2010-11-06T21:05:00.000Z	jovaro	dli	it says FATAL, nvidia not found
+2010-11-06T21:05:00.000Z	dli	jovaro	sounds stupid, since you don't really have nvidia card, right?
+2010-11-06T21:06:00.000Z	jovaro	dli	no it is a VIA thingy
+2010-11-06T21:06:00.000Z	jovaro	dli	but it did give a new xorg.conf, maybe it didn't crash after all?
+2010-11-06T21:07:00.000Z	dli	jovaro	test with the new xorg.conf
+2010-11-06T21:08:00.000Z	jovaro	dli	it crashes with the new xorg.conf as well
+2010-11-06T21:10:00.000Z	dli	jovaro	now, can you modify the new xorg.conf to specify modelines
+2010-11-06T21:11:00.000Z	jovaro	dli	do you have an example so I know where and how to write the modelines?
+2010-11-06T21:11:00.000Z	dli	jovaro	try: https://wiki.archlinux.org/index.php/Xorg
+2010-11-06T21:12:00.000Z	dli	jovaro	basically, you need to add sections Monitor Screen, and in Screen, you specify modes lines: Modes "1024x768" "1280x1024"
+2010-11-06T21:13:00.000Z	jovaro	dli	thanks I'll do that!
+2010-11-06T21:25:00.000Z	jovaro	dli	I added some modelines, depth 24 "1024x768" "1280x1024" and now instead of X crashing, everything crashes...
+2010-11-06T21:27:00.000Z	dli	jovaro	"everything crashes"? I don't understand
+2010-11-06T21:28:00.000Z	jovaro	dli	had to restart the pc for anything to happen
+2010-11-06T21:30:00.000Z	dli	jovaro	sounds like video card driver bug though :( bad luck for openchrome users :(

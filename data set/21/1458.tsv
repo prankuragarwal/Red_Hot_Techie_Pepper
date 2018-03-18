@@ -1,0 +1,21 @@
+2010-09-04T12:44:00.000Z	surgy		hello
+2010-09-04T12:45:00.000Z	surgy		i have a  removable sata harddrive bay and i just slid a sata hdd into it. why isnt it mounting properly and how do i make it automount?
+2010-09-04T12:47:00.000Z	surgy		can someone help me mount my removable sata hdd please?
+2010-09-04T12:48:00.000Z	jjk9	surgy	 you may be able to see it by ls /dev   probably as something like sdc1 . once you know its name you can use a mount command to mount it to a mount pojt
+2010-09-04T12:49:00.000Z	surgy	jjk9	its sdb
+2010-09-04T12:49:00.000Z	surgy	jjk9	so "sudo mount sdb /mnt
+2010-09-04T12:49:00.000Z	surgy	jjk9	?
+2010-09-04T12:50:00.000Z	jjk9	surgy	 not quite... u also need a partition and filesystem on it using something like parted
+2010-09-04T12:51:00.000Z	surgy	jjk9	it is partitioned allready.
+2010-09-04T12:51:00.000Z	jjk9	surgy	then its should show more like sdb1
+2010-09-04T12:52:00.000Z	surgy	jjk9	yes i have sdb and sdb1 and  sdb5 and sdc
+2010-09-04T12:53:00.000Z	surgy	jjk9	"mount: special device sdb1 does not exist"
+2010-09-04T12:53:00.000Z	jjk9	surgy	 then something like  mkdir /mnt/sdb1 then mount /dev/sdb1 /mnt/sdb1  but may need a few more parms with mount so it knows ow to mount
+2010-09-04T12:54:00.000Z	surgy	jjk9	there isnt a command to mount everything plugged into the computer to default mount points?
+2010-09-04T12:55:00.000Z	jjk9	surgy	 onc mounted and put in fstab it can be automounted at boot or easily after
+2010-09-04T12:55:00.000Z	surgy	jjk9	it used to automount when i was using gnome
+2010-09-04T12:57:00.000Z	jjk9	surgy	 AFAIK it can only automount once fstab knows about it but don't quote me I'm a server command line kinda guy
+2010-09-04T12:58:00.000Z	surgy	jjk9	so if it automounted in gnome, and this is the same install i just added xfce, then why wont it automount in xfce?
+2010-09-04T12:59:00.000Z	jjk9	surgy	 you should be able to see the os find it i syslog or messages I don't recall which, as you plug it in. I am not familiar with xfce
+2010-09-04T13:03:00.000Z	jjk9	surgy	ext3 or
+2010-09-04T13:07:00.000Z	jjk9	surgy	 parted perhaps

@@ -1,0 +1,18 @@
+2007-02-28T17:14:00.000Z	atomiku		okay, so im having a little trouble setting up iptables/internet sharing. So far I have done: "ifconfig eth0 192.168.0.1" and "iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE". No luck so far. eth1 = internet, eth0 = internal network. Any ideas?
+2007-02-28T17:14:00.000Z	atomiku		I remember last time I tried this it didnt work because the iptables masquerading entry wasnt in the right place in the "chain".
+2007-02-28T17:15:00.000Z	atomiku		cafuego: one second#
+2007-02-28T17:15:00.000Z	_snajper_	atomiku	i use those two lines - iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -d 0/0 -j MASQUERADE
+2007-02-28T17:16:00.000Z	_snajper_	atomiku	echo "1" > /proc/sys/net/ipv4/ip_forward
+2007-02-28T17:16:00.000Z	atomiku	_snajper_	done. lemme check if the other computer has net yet.
+2007-02-28T17:23:00.000Z	_snajper_	atomiku	it works now?
+2007-02-28T17:23:00.000Z	atomiku	_snajper_	Yup :) That echo ipv4 thing finished the whole process off :D
+2007-02-28T17:23:00.000Z	atomiku	_snajper_	thanks dude
+2007-02-28T17:23:00.000Z	_snajper_	atomiku	great! :-)
+2007-02-28T17:34:00.000Z	_snajper_	atomiku	bittornado
+2007-02-28T17:34:00.000Z	atomiku	_snajper_	k ill check it out
+2007-02-28T17:53:00.000Z	_snajper_	atomiku	now just use lynx to open a .torrent file
+2007-02-28T17:53:00.000Z	_snajper_	atomiku	like "lynx http://www.mininova.org/get/598250"
+2007-02-28T17:53:00.000Z	atomiku	_snajper_	oh
+2007-02-28T17:53:00.000Z	_snajper_	atomiku	bittornado-gui
+2007-02-28T17:54:00.000Z	atomiku	_snajper_	i tried apt-getting bottornado-gui but it told me something about it not being a candidate or something
+2007-02-28T17:59:00.000Z	atomiku	_snajper_	I dont think bittornado has installed correctly.

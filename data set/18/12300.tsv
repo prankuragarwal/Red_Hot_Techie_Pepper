@@ -1,0 +1,18 @@
+2006-05-27T09:34:00.000Z	abarbaccia		if i have the linux 2.6.15 source and want to compile one module to use in my 2.6.12 kernel - how would i do it?
+2006-05-27T09:35:00.000Z	sparkleytone	abarbaccia	you would download the 2.6.12 source, make menuconfig...import the config from your current kernel...and then enable said module
+2006-05-27T09:38:00.000Z	abarbaccia	sparkleytone	the module i need is only in the 2.6.15 kernel...
+2006-05-27T09:38:00.000Z	sparkleytone	abarbaccia	then you'll need to upgrade your kernel
+2006-05-27T09:38:00.000Z	abarbaccia	sparkleytone	there is no way to use that module with the older kernel?
+2006-05-27T09:39:00.000Z	sparkleytone	abarbaccia	you'll need to go to the new source, make menuconfig, then import the old config and enable the new module
+2006-05-27T09:39:00.000Z	sparkleytone	abarbaccia	there are ways, but they are unreliable at best
+2006-05-27T09:39:00.000Z	sparkleytone	abarbaccia	also...if its a distro-supplied kernel...cross-versioning modules is probably not enabled
+2006-05-27T09:39:00.000Z	abarbaccia	sparkleytone	they are the breezy and dapper kernels
+2006-05-27T09:40:00.000Z	sparkleytone	abarbaccia	ya...shouldn't cause problems...just make sure that if you currently boot to an initrd image to build a new initrd too
+2006-05-27T09:40:00.000Z	sparkleytone	abarbaccia	which means yeah they are initrd images...you'll want to install kernel-package
+2006-05-27T09:41:00.000Z	abarbaccia	sparkleytone	see, i can't just upgrade to dapper because the fglrx module won't load DRM (i think its a bug) but breezy has no problems
+2006-05-27T09:41:00.000Z	sparkleytone	abarbaccia	and once you configure the kernel, you'll make-kpkg --initrd binary
+2006-05-27T09:41:00.000Z	sparkleytone	abarbaccia	follow?
+2006-05-27T09:41:00.000Z	abarbaccia	sparkleytone	yes, thank you!
+2006-05-27T09:42:00.000Z	sparkleytone	abarbaccia	np...good luck
+2006-05-27T09:42:00.000Z	sparkleytone	abarbaccia	if you've never used make-kpkg before, it will create debs in the parent dir
+2006-05-27T09:43:00.000Z	abarbaccia	sparkleytone	i have used that before -- i'm gonna see if i can just upgrade to dapper and use that kernel, if not i'll restore my backup and try building the kernel

@@ -1,0 +1,24 @@
+2012-03-22T14:18:00.000Z	livtyler		"ssh user@work.example.org -L 10000:172.16.10.10:22 -g" keeps me just listening in 127.0.0.1 and not globally like it should
+2012-03-22T14:18:00.000Z	livtyler		any hints on this?
+2012-03-22T14:20:00.000Z	livtyler		!blacklist
+2012-03-22T14:22:00.000Z	[Si]	livtyler	try ssh user@work.example.org -L *:10000:172.16.10.22
+2012-03-22T14:22:00.000Z	[Si]	livtyler	:22 at the end
+2012-03-22T15:18:00.000Z	[Si]	livtyler	take a look at /var/log/syslog after the login attempt, it may point at a permissions issue with the .authorized_keys file.
+2012-03-22T15:19:00.000Z	livtyler	[Si]	will look into that right now
+2012-03-22T15:20:00.000Z	livtyler	[Si]	I just have pam session messages, no authorized_keys concerned lines
+2012-03-22T15:21:00.000Z	[Si]	livtyler	just to cover the basics, you created the .ssh/authorized_keys file is on the server and it has your id_pub key in it?
+2012-03-22T15:23:00.000Z	[Si]	livtyler	can you try ssh -v servername pastebin that :)
+2012-03-22T15:27:00.000Z	livtyler	[Si]	http://pastebin.com/7KcqQzX5
+2012-03-22T15:28:00.000Z	[Si]	livtyler	can you also give a pastbin of tail -100 /var/log/auth.log
+2012-03-22T15:29:00.000Z	livtyler	[Si]	http://pastebin.com/AydezCB8
+2012-03-22T15:31:00.000Z	[Si]	livtyler	one last one pastebin of ls -la ~/.ssh on the server
+2012-03-22T15:33:00.000Z	livtyler	[Si]	http://pastebin.com/mMRQJwPz
+2012-03-22T15:33:00.000Z	[Si]	livtyler	chmod 600 ~/.ssh/authorized_keys
+2012-03-22T15:36:00.000Z	livtyler	[Si]	http://pastebin.com/A87F5Umb
+2012-03-22T15:46:00.000Z	[Si]	livtyler	does this return anything: cd ~/.ssh l grep `cat id_rsa.pub | cut -f2 -d" "` authorized_keys
+2012-03-22T15:47:00.000Z	[Si]	livtyler	sorry that should be : cd ~/.ssh ; grep `cat id_rsa.pub | cut -f2 -d" "` authorized_keys
+2012-03-22T15:48:00.000Z	livtyler	[Si]	blank, nothing
+2012-03-22T15:48:00.000Z	[Si]	livtyler	in ~/.ssh run cat id_rsa.pub >> authorized_keys
+2012-03-22T15:50:00.000Z	livtyler	[Si]	OMFG, you ARE a genius! , thank you
+2012-03-22T15:51:00.000Z	[Si]	livtyler	sorry should have checked the basics first :) that command added your public key to the authorized file.
+2012-03-22T15:55:00.000Z	livtyler	[Si]	Ben64: thank you very much guys, good bye

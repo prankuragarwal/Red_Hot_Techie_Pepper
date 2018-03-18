@@ -1,0 +1,19 @@
+2008-04-04T15:02:00.000Z	_julian__		hi all
+2008-04-04T15:03:00.000Z	_julian__		I just try to configure a ubuntu 6.06lts running in a vmware in a dedicated root server. it is connected through host-only networking. it has the local up 192.168.2.128 and the vmnet1 interface has 192.168.2.1 - both can ping eachother, but the vm can't get access to the net
+2008-04-04T15:04:00.000Z	_julian__		in /etc/network/interfaces I set gateway 192.168.2.1
+2008-04-04T15:04:00.000Z	_julian__		but route only shows: 192.168.2.0 * 255.255.255.0 U 0 0 0 eth1
+2008-04-04T15:04:00.000Z	erUSUL	_julian__	and the gateaway is configured to act as such??
+2008-04-04T15:05:00.000Z	_julian__	erUSUL	I think it should be. I followed some instructions on the hosters wiki (it's german...)
+2008-04-04T15:05:00.000Z	erUSUL	_julian__	ok
+2008-04-04T15:06:00.000Z	erUSUL	_julian__	yep "ip route" --> "default via 10.0.0.1 dev wlan0" in my machine
+2008-04-04T15:09:00.000Z	erUSUL	_julian__	i'm afraid i'm not really familiar with manually configuring nat rules via iptables...
+2008-04-04T19:46:00.000Z	erUSUL	_julian__	maybe you can use udevmonitor to find out the problem
+2008-04-04T19:47:00.000Z	_julian__	erUSUL	I can't plug/unplug the touchscreen as it is wired internally
+2008-04-04T19:49:00.000Z	erUSUL	_julian__	:|
+2008-04-04T19:54:00.000Z	_julian__	erUSUL	it just came to my mind that reloading the module would have the same effect as replugging. here is the udevmonitor output:http://paste.biz/paste-3058.html
+2008-04-04T19:59:00.000Z	erUSUL	_julian__	see "less /etc/udev/rules.d/README" your rule should be 60-whatever not 10-whatever can this be the problem ??
+2008-04-04T19:59:00.000Z	erUSUL	_julian__	i do not see anything on the udevmonitor output...
+2008-04-04T19:59:00.000Z	_julian__	erUSUL	just read that too, changed it, let's see....
+2008-04-04T20:05:00.000Z	_julian__	erUSUL	did not help,...
+2008-04-04T20:08:00.000Z	erUSUL	_julian__	:(
+2008-04-04T20:08:00.000Z	_julian__	erUSUL	ah got it - removing BUS=="USB" did the trick

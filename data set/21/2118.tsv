@@ -1,0 +1,21 @@
+2012-07-14T06:53:00.000Z	usr13__	coreyo	hd0 0  is sda1  hd0 1 is sda2  etc...
+2012-07-14T06:53:00.000Z	usr13__	coreyo	sd1,0  is sdb1   etc..
+2012-07-14T06:53:00.000Z	usr13__	coreyo	hd1,0  is sdb1   etc..
+2012-07-14T06:53:00.000Z	usr13__		typo
+2012-07-14T06:54:00.000Z	coreyo	usr13__	I need to reference them by UUID, not by  number.  On the newer machines, when you insert a USB stick before boot, the usb drive becomes hd0, shifting the previous hd0 to hd1, and so on, then shifting back when you remove the usb drive
+2012-07-14T06:55:00.000Z	coreyo	usr13__	this breaks your grub .efi file
+2012-07-14T06:55:00.000Z	usr13__	coreyo	I've never done it that way.
+2012-07-14T06:55:00.000Z	coreyo	usr13__	you are probably on a bios-based system
+2012-07-14T06:55:00.000Z	usr13__		yea
+2012-07-14T06:57:00.000Z	coreyo	usr13__	got a new laptop today, literally spent 14 hours just trying to get linux to boot.  Never even know what a uefi system was or a gpt partition label was until today ... after a lot of googling and tearing my hair out
+2012-07-14T06:57:00.000Z	coreyo	usr13__	bios will be dead by the end of the year, with the advent of windows 8, so everyone will have to deal with it very soon
+2012-07-14T06:57:00.000Z	usr13__	coreyo	sudo blkid  #Tells you about the drives, so...
+2012-07-14T06:57:00.000Z	usr13__	coreyo	Bios won't be dead.
+2012-07-14T06:58:00.000Z	usr13__	coreyo	Legacy computers are abundant.
+2012-07-14T06:58:00.000Z	coreyo	usr13__	yes, I know the uuid of my device, I just don't know how to tell grub to look by UUID rather than number
+2012-07-14T06:59:00.000Z	usr13__	coreyo	I dono either... let me look...
+2012-07-14T07:00:00.000Z	usr13__	coreyo	https://wiki.archlinux.org/index.php/GRUB2
+2012-07-14T07:00:00.000Z	usr13__	coreyo	Even better: https://help.ubuntu.com/community/UsingUUID
+2012-07-14T07:03:00.000Z	usr13__		well, I dono if it's better, but...
+2012-07-14T07:07:00.000Z	coreyo	usr13__	I've been to all of those pages, but unfortunately I do not see what I need.  When you create a portable .efi file with grub-mkimage -p, you have to specify the root "i.e. point to /boot/grub" using an absolute path that can be established at boot.
+2012-07-14T07:07:00.000Z	coreyo	usr13__	I can use (hd0,gptX)/boot/grub   , but that breaks if I plug in a removable disk before I turn the computer on because of the numbering shift

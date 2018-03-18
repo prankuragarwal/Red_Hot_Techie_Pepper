@@ -1,0 +1,23 @@
+2007-05-27T05:23:00.000Z	jscinoz		Hey everyone, whenever i start up ubunut X crashes with "Caught signal 11, exiting" i've tried running dpkg-reconfigure to no effect, what should i try now?
+2007-05-27T05:24:00.000Z	Lilacor	jscinoz	check your xorg.conf file for errors
+2007-05-27T05:24:00.000Z	Lilacor	jscinoz	also check your Xorg.log
+2007-05-27T05:24:00.000Z	jscinoz	Lilacor	i have checked the config for errors and even gone as far as recreating it via dpkg-reconfigure
+2007-05-27T05:25:00.000Z	Lilacor	jscinoz	what does your log file say?
+2007-05-27T05:27:00.000Z	jscinoz	Lilacor	it ends with a number of backtrace messages and a "caught signal 11, server aborting"
+2007-05-27T05:28:00.000Z	Lilacor	jscinoz	how about if you uninstall xserver and ubuntu-desktop
+2007-05-27T05:29:00.000Z	Lilacor	jscinoz	no, you're just going to reinstall them
+2007-05-27T05:29:00.000Z	Lilacor	jscinoz	save your xorg.conf file somewhere
+2007-05-27T05:29:00.000Z	Lilacor	jscinoz	and reinstall ubuntu-desktop
+2007-05-27T05:30:00.000Z	Lilacor	jscinoz	it is my personal opinion that you should be okay...linux is a lot more robust than win32 platforms for many things
+2007-05-27T05:48:00.000Z	Lilacor	jscinoz	apt-get install nvidia-glx
+2007-05-27T05:48:00.000Z	Lilacor	jscinoz	I"m not sure.
+2007-05-27T05:49:00.000Z	jscinoz	Lilacor	nvidia-glx-new is now installed, and i've run nvidia-glx-config enable but still the same error
+2007-05-27T05:50:00.000Z	Lilacor	jscinoz	can you lsmod | grep nvidia
+2007-05-27T05:50:00.000Z	Lilacor	jscinoz	and does it come up with anything?
+2007-05-27T05:58:00.000Z	Lilacor	jscinoz	hmmmmmmm
+2007-05-27T05:59:00.000Z	Lilacor	jscinoz	does it tell you what program is receiving the SIG11?
+2007-05-27T05:59:00.000Z	Lilacor	jscinoz	libraries... anything??
+2007-05-27T05:59:00.000Z	Lilacor	jscinoz	that's very unusual IMHO
+2007-05-27T06:00:00.000Z	Lilacor	jscinoz	what does your dmesg and /var/log/messages say?
+2007-05-27T06:00:00.000Z	Lilacor	jscinoz	it will say the program above the backtrace
+2007-05-27T06:00:00.000Z	Lilacor	jscinoz	or at least the libraries

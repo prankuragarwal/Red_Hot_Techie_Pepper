@@ -1,0 +1,18 @@
+2011-08-19T13:01:00.000Z	bullgard4_		How can I determine what section a certain package belongs to? For example, what section belongs the package »sudoku« to?
+2011-08-19T13:03:00.000Z	oCean	bullgard4_	dpkg -S /path/to/program
+2011-08-19T13:13:00.000Z	bullgard4_	oCean	'~$ dpkg -S /usr/games/sudoku; sudoku: /usr/games/sudoku.' I infer that you did not give me a proper answer.
+2011-08-19T13:14:00.000Z	oCean	bullgard4_	no, it means that that file /usr/games/sudoku comes from the package "sudoku"  (the first word in the output)
+2011-08-19T13:16:00.000Z	bullgard4_	oCean	But I did not aks for a package but for a section.
+2011-08-19T13:17:00.000Z	oCean	bullgard4_	right, I'm sorry I misread your question. What kind of "section" are you referring to?
+2011-08-19T13:17:00.000Z	oCean	bullgard4_	you mean 'main', 'universe' etc?
+2011-08-19T13:19:00.000Z	bullgard4_	oCean	Ubuntu divides all packages that it odffers in "sections". You can find a button "Section" on the left-hand pane in Synaptic. For example a valid section is "Amateur Radio (universe)".
+2011-08-19T13:19:00.000Z	oCean	bullgard4_	oh right. I'm not sure how to do that in terminal. But you can ask ubottu (here in irc) bye typing /msg ubottu !info sudoku
+2011-08-19T13:21:00.000Z	bullgard4_	oCean	This command provides the 'component' but not the 'section'.
+2011-08-19T13:22:00.000Z	oCean	bullgard4_	ok, sorry. Than I don't know how to list what you need..
+2011-08-19T13:23:00.000Z	bullgard4_	oCean	Ok. Thank you.
+2011-08-19T13:33:00.000Z	oCean	bullgard4_	I think I found what you're after. It's through the dpkg-query command:   dpkg-query -W -f='${PackageSpec} ${Version}\t${Section}\n' sudoku
+2011-08-19T13:35:00.000Z	bullgard4_	oCean	'~$ dpkg-query -W -f='${PackageSpec} ${Version}\t${Section}\n' sudoku; No packages found matching sudoku.' What should I substitute for '{PackageSpec}'?
+2011-08-19T13:36:00.000Z	oCean	bullgard4_	I tried this, and this should be the actual command (no substitutions required). No packages found , normally means that the package 'sudoku' is not installed. Is it currently?
+2011-08-19T13:38:00.000Z	oCean	bullgard4_	you could try this with an other package you have installed? (pick any package from the output of dpkg -l)
+2011-08-19T13:47:00.000Z	bullgard4_	oCean	I made a mistake. I entered this command in a computer where the package sudoku was not installed. --  My apologies. --  Thank you very much for your help.
+2011-08-19T13:48:00.000Z	oCean	bullgard4_	np, and welcome.

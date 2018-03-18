@@ -1,0 +1,18 @@
+2007-07-15T15:32:00.000Z	sniper89		guys, just one more question regarding my startup script
+2007-07-15T15:33:00.000Z	sniper89		does su - cs -c "./hlds_run -game cstrike +maxplayers 10 +map de_rats_2001 +rcon_password \"onodadoeo\"" & actually execute the & as a command for user "cs" or as a command for the root user
+2007-07-15T15:34:00.000Z	Theory	sniper89	it will apply to the 'su' command
+2007-07-15T15:34:00.000Z	sniper89	Theory	so not to what user 'cs' runs but to what the script runs, right? it's an init.d script, astro76
+2007-07-15T15:35:00.000Z	Theory	sniper89	I think you want start-stop-daemon
+2007-07-15T15:35:00.000Z	sniper89	Theory	nah, nvm that
+2007-07-15T15:36:00.000Z	sniper89	Theory	I'm just curious whether it's putting the & in the command executed by user root as user CS or root himself
+2007-07-15T15:36:00.000Z	Theory	sniper89	the & is interpreted by the shell, which treats su just as any other command
+2007-07-15T15:37:00.000Z	sniper89	Theory	oh, lawl, I put " there anyway
+2007-07-15T15:38:00.000Z	sniper89	Theory	to close the command sent to the cs user shell... but what if the "s weren't put there to indicate which part is the actual command, would that & be sent as the CS user's command part or as a part of the SU command
+2007-07-15T15:40:00.000Z	Theory	sniper89	su will continue to be running as long as the command you pass to it does
+2007-07-15T15:41:00.000Z	sniper89	Theory	I know, I know, my point is whether that & will be a part of the command assigned to the -c parameter or an argument sent to the su command
+2007-07-15T15:41:00.000Z	sniper89	Theory	like eg. - is
+2007-07-15T15:42:00.000Z	Theory	sniper89	& is purely a shell feature, it is never sent to a command
+2007-07-15T15:43:00.000Z	sniper89	Theory	hmm hmm hmm I can't really present this to be clear enough :D
+2007-07-15T15:48:00.000Z	sniper89	Theory	allright, my point is... imagine I remove the quote signs from the command
+2007-07-15T15:48:00.000Z	sniper89	Theory	not all of them, just the ones between -c and &
+2007-07-15T15:49:00.000Z	sniper89	Theory	would & act as a part of the command that's currently in the quotation marks or still will the command line that's in the quotation marks end where it ends ATM and would the & be parsed as a separate part

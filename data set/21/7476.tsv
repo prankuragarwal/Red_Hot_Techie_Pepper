@@ -1,0 +1,21 @@
+2006-11-28T13:12:00.000Z	Jinkguns		How can I automatically run sudo mount -t cifs -o domain=egr,username=bfortino,password=[censored] ,ro //samba.egr.msu.edu/web /media/web during bootup?
+2006-11-28T13:13:00.000Z	ArrenLex	Jinkguns	arrange it into filesystem directory type options 0 0 format and put it into /etc/fstab
+2006-11-28T13:14:00.000Z	ArrenLex	Jinkguns	//samba.egr.msu.edu/web /media/web cifs domain=egr,username=bfortino,password=[censored] ,ro 0 0
+2006-11-28T13:15:00.000Z	Jinkguns	ArrenLex	How do I add rw pe... nevermind. :/
+2006-11-28T13:44:00.000Z	ArrenLex	Jinkguns	first, paste the output of "ls -dl /media/web"
+2006-11-28T13:44:00.000Z	ArrenLex	Jinkguns	also, advise you to change that password now :)
+2006-11-28T13:45:00.000Z	ArrenLex	Jinkguns	what's your username on that system?
+2006-11-28T13:45:00.000Z	ArrenLex	Jinkguns	on your home system?
+2006-11-28T13:46:00.000Z	ArrenLex	Jinkguns	anyway, if you don't want to answer that, mentally replace <u> with your username: "sudo chown <u>:<u> /media/web"
+2006-11-28T13:46:00.000Z	ArrenLex	Jinkguns	secondly, add ,umask=000 to the options in that fstab
+2006-11-28T13:50:00.000Z	ArrenLex	Jinkguns	Forget that. Just do the fstab line.
+2006-11-28T13:52:00.000Z	ArrenLex	Jinkguns	//samba.egr.msu.edu/web /media/web cifs domain=egr,username=bfortino,password=dtzo7kalai,rw,umask=000 0 0
+2006-11-28T13:54:00.000Z	ArrenLex	Jinkguns	my line should work.
+2006-11-28T13:56:00.000Z	ArrenLex	Jinkguns	did you unmount it first?
+2006-11-28T13:57:00.000Z	ArrenLex	Jinkguns	then it's mounted more than once. Run "sudo umount /media/web" repeatedly until it tells you it's not mounted. Then mount -a.
+2006-11-28T13:58:00.000Z	Jinkguns	ArrenLex	you sure that wasn't supposed to be umask=777?
+2006-11-28T13:58:00.000Z	ArrenLex	Jinkguns	positive.
+2006-11-28T14:02:00.000Z	Jinkguns	ArrenLex	I've followed your instructions, but /media/web is still read only to normal users. GRRRR.
+2006-11-28T14:03:00.000Z	ArrenLex	Jinkguns	how about "sudo chown -R 777 /media/web"?
+2006-11-28T14:03:00.000Z	ArrenLex	Jinkguns	my last suggestion is to add ,defaults to that options line.
+2006-11-28T14:07:00.000Z	Jinkguns	ArrenLex	this is what my current fstab line looks like, //samba.egr.msu.edu/web /media/web cifs defaults,uid=1000,gid=1000,domain=egr,username=bfortino,password=dtzo7kalai,rw,umask=000 0 0

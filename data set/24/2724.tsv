@@ -1,0 +1,24 @@
+2010-09-20T11:32:00.000Z	Gambit-		how do you determine what user groups a process is running under?
+2010-09-20T11:32:00.000Z	Gambit-		*takes a look*
+2010-09-20T11:33:00.000Z	Gambit-		er, id
+2010-09-20T11:34:00.000Z	icarus-c	Gambit-	ps --group blah
+2010-09-20T11:35:00.000Z	Gambit-	icarus-c	no, I want to find the list of all the groups a process is running within.  For example, when I run 'id' as a user, I get a list of groups that I am a member of.  I would like to see that list for a given process.
+2010-09-20T11:41:00.000Z	icarus-c	Gambit-	ps -eo %G%c   # %c shows command,  %G show group name
+2010-09-20T11:42:00.000Z	icarus-c	Gambit-	so  ps -eo %G%c|grep "command_name"  show get what you want
+2010-09-20T11:42:00.000Z	icarus-c	Gambit-	for details, see  "man  ps"
+2010-09-20T11:44:00.000Z	Gambit-	icarus-c	There should be a long list of groups, though, not a single group.
+2010-09-20T11:44:00.000Z	icarus-c	Gambit-	what do you mean... each process can only run by a SINGLE user & his primary group
+2010-09-20T11:45:00.000Z	Gambit-	icarus-c	Oh interesting; what if there's a permission from a secondary group that the process needs?
+2010-09-20T11:46:00.000Z	icarus-c	Gambit-	why would it need that.  is it file permisison that you are asking
+2010-09-20T11:46:00.000Z	Gambit-	icarus-c	yup
+2010-09-20T11:47:00.000Z	icarus-c	Gambit-	file permission depends on the file it is accessing.  as far as i know, the process can access whatever the user has permission to
+2010-09-20T11:48:00.000Z	icarus-c	Gambit-	that includes all the groups the user belong to
+2010-09-20T11:48:00.000Z	Gambit-	icarus-c	so the process has access to all the groups the user belongs to - at the point in time that the process is created, correct?  So how would I get that list?
+2010-09-20T11:49:00.000Z	icarus-c	Gambit-	run command "groups" as the user who run that process
+2010-09-20T11:49:00.000Z	Gambit-	icarus-c	that only tells me what groups the user has from the point in time that that shell was started - not the same thing.
+2010-09-20T11:50:00.000Z	icarus-c	Gambit-	what you want to do actually
+2010-09-20T11:50:00.000Z	Gambit-	icarus-c	at this point it's actually somewhat academic :) but there's a gap in time that a process can have group memberships that aren't reflected in the memberships the user may have at some point in the future.  I'm curious if it's possible to determine what those memberships are for the process, rather than looking at what is /now/ the memberships.
+2010-09-20T11:52:00.000Z	icarus-c	Gambit-	no idea about that. i don't know the technical detail of how process works in Linux
+2010-09-20T11:52:00.000Z	Gambit-	icarus-c	no worries :)
+2010-09-20T11:52:00.000Z	Gambit-	icarus-c	thanks for the well meaning suggestions, though!
+2010-09-20T11:52:00.000Z	icarus-c	Gambit-	you're welcome

@@ -1,0 +1,23 @@
+2006-11-11T15:13:00.000Z	izm99		can I change root password via liveCD?
+2006-11-11T15:13:00.000Z	jrib	izm99	there is no root password, the root account is locked
+2006-11-11T15:14:00.000Z	izm99	jrib	ok.. can i change my default user/password from livecd?
+2006-11-11T15:15:00.000Z	jrib	izm99	instead of using the livecd, just choose "recovery mode" from the grub menu
+2006-11-11T15:15:00.000Z	izm99	jrib	from recovery mode, I'm asked for Root password
+2006-11-11T15:15:00.000Z	izm99	jrib	and it seems to be corrupt....
+2006-11-11T15:42:00.000Z	jrib	izm99	you don't need that line
+2006-11-11T15:43:00.000Z	izm99	jrib	yeah, just wanted to make the typo known.  and I'm curious about how to get it working, as well. :)
+2006-11-11T15:45:00.000Z	jrib	izm99	it's probably supposed to be --bind instead of -o bind, but I don't know what that program is supposed to do
+2006-11-11T15:46:00.000Z	izm99	jrib	I think it's supposed to be "mount -o bind -t proc /proc mnttmp/proc"  <-- that worked for me
+2006-11-11T15:46:00.000Z	izm99	jrib	but I don't have an account to login and fix
+2006-11-11T15:47:00.000Z	jrib	izm99	yeah I guess that does make sense
+2006-11-11T15:48:00.000Z	izm99	jrib	as for what it's doing, it's just binding the proc-filesystem of the livecd to another directory, which should be your main system you've mounted and are trying to recover.  :)
+2006-11-11T16:04:00.000Z	jrib	izm99	you could just make the root password  *  in /etc/shadow.  That should stop "recovery mode" from asking you for a password
+2006-11-11T16:07:00.000Z	izm99	jrib	useradd script worked to add a new users and set password...
+2006-11-11T16:07:00.000Z	izm99	jrib	sorry, passwd worked on a newly added user, i should say..
+2006-11-11T16:09:00.000Z	izm99	jrib	ah.. the shadow file was .. empty
+2006-11-11T16:10:00.000Z	jrib	izm99	interesting...
+2006-11-11T16:30:00.000Z	izm99	jrib	so if i only have one user in shadow file, that user will be the "initial" user whose password is used for sudo?
+2006-11-11T16:30:00.000Z	jrib	izm99	no, any user in the admin group will be able to sudo
+2006-11-11T16:30:00.000Z	izm99	jrib	Kingsqueak ok, thx
+2006-11-11T16:34:00.000Z	izm99	jrib	Kingsqueak... sorry, so what will the root password be if... say.. I'm deleting all users, and adding one.  ^.^
+2006-11-11T16:44:00.000Z	izm99	jrib	Flannel, Kingsqueak : THANK YOU.  I can now login.  I have various other serious issues, but perhaps I can continue working on my school projects now.  :)

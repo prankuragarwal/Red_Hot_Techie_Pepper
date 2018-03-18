@@ -1,0 +1,18 @@
+2006-11-26T09:29:00.000Z	Nilisco		Hey, I'm trying to install ubuntu on my pc (amd 3200 64, i386 version) with a x800xl ati video card.  When the installer starts, the colors are all wrong and then the installer freezes when the bar finishes loading, graphical corruption occurs.
+2006-11-26T09:29:00.000Z	H3g3m0n	Nilisco	Tried the safe graphical mode, or specifying the resolution with the f4 key?
+2006-11-26T09:30:00.000Z	Nilisco	H3g3m0n	correct, same things basically, but when I change the resolution I usually get correct colors but a x crash after the loading bar.
+2006-11-26T09:31:00.000Z	H3g3m0n	Nilisco	Might be worth trying ctrl+alt+f1 and seeing if it gives you a text console
+2006-11-26T09:31:00.000Z	Nilisco	H3g3m0n	okay, trying.
+2006-11-26T09:31:00.000Z	H3g3m0n	Nilisco	There also ALT+SYSREQ(printscr) and typing RSEIUB slowly and seeing if it recovers
+2006-11-26T09:35:00.000Z	Nilisco	H3g3m0n	no luck with either of those.  Is there any way to boot to the old text mode installer?
+2006-11-26T09:36:00.000Z	H3g3m0n	Nilisco	Possibly the expert mode
+2006-11-26T09:37:00.000Z	H3g3m0n	Nilisco	Otherwise you could try the server version, and install ubuntu-desktop
+2006-11-26T09:39:00.000Z	Nilisco	H3g3m0n	actually, when I changed my resolution to 640x480, it still crashed but I can get into the console now.  X is reporting an error
+2006-11-26T09:42:00.000Z	H3g3m0n	Nilisco	What error?
+2006-11-26T09:42:00.000Z	Nilisco	H3g3m0n	x window system couldn't be started, it now disabled itself
+2006-11-26T09:44:00.000Z	H3g3m0n	Nilisco	'sudo dpkg-reconfigure xserver-xorg' and try pluging around with the modes
+2006-11-26T09:44:00.000Z	H3g3m0n	Nilisco	Then 'sudo /etc/init.d/gdm restart'
+2006-11-26T09:53:00.000Z	Nilisco	H3g3m0n	no luck messing with the values, I appreciate the help though!
+2006-11-26T09:54:00.000Z	H3g3m0n	Nilisco	You could try using the official binary drivers for your card, should be possible to install them on the livecd
+2006-11-26T10:29:00.000Z	Nilisco	H3g3m0n	finally got it working, it apparently is a pretty big bug that is unresolved.  I had to remove gli and dri from xorg.conf, and the live cd is now booting in some sort of vesa mode and installing.  Apparently fglrx would have fixed it as you suggested.  Thanks!
+2006-11-26T10:30:00.000Z	H3g3m0n	Nilisco	nps

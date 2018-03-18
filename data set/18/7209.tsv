@@ -1,0 +1,18 @@
+2008-12-27T14:31:00.000Z	MetaMorfoziS		Hi all
+2008-12-27T14:31:00.000Z	MetaMorfoziS		How can i prevent syslog to write the disk in every x seconds?
+2008-12-27T14:31:00.000Z	MetaMorfoziS		I have added "-" before every related line
+2008-12-27T14:31:00.000Z	MetaMorfoziS		but the problem is still exists...
+2008-12-27T14:32:00.000Z	histo	MetaMorfoziS	are you sure nothing else is being logged.
+2008-12-27T14:33:00.000Z	MetaMorfoziS	histo	> i've used btrace to check it, and i have stopped x during the tests. kjournald, swapper and pdflush was the names of the processes that started the write, and i found out that if i stop sysklogd then my disk can sleep for minutes...
+2008-12-27T14:34:00.000Z	histo	MetaMorfoziS	well what exactly do you want ot accomplish have syslog running but not write to disk?
+2008-12-27T14:34:00.000Z	MetaMorfoziS	histo	> not write in every few seconds...
+2008-12-27T14:34:00.000Z	histo	MetaMorfoziS	Well you may want to find otu what its writing.
+2008-12-27T14:35:00.000Z	histo	MetaMorfoziS	cat /var/log/syslog is anything being timestamped in there ever few seconds?
+2008-12-27T14:36:00.000Z	MetaMorfoziS	histo	> i don't know, i have on cron script that runs in every minutes (fan speed controller, did not writes anything)
+2008-12-27T14:37:00.000Z	histo	MetaMorfoziS	try checking "cat /proc/sys/vm/block_dump"
+2008-12-27T14:38:00.000Z	MetaMorfoziS	histo	> it's 0, what does it mean?
+2008-12-27T14:39:00.000Z	histo	MetaMorfoziS	check this thread http://ubuntuforums.org/showthread.php?t=833301
+2008-12-27T14:40:00.000Z	histo	MetaMorfoziS	near the end of that thread he found the problem to be with a dvdrw drive he recently installed.
+2008-12-27T14:41:00.000Z	MetaMorfoziS	histo	> it's an eeepc (without any optical rom) :-) But i will check that
+2008-12-27T14:42:00.000Z	histo	MetaMorfoziS	well the person helping him also offers other suggestions. But you may want to try searching the forums for your problem. I'm not currently experiencing it.
+2008-12-27T14:44:00.000Z	MetaMorfoziS	histo	> okay. I have checked smatctl -a, and i have found that my load_cycles is pretty high. My hdd is lived down it's life's 30% under 64 days. (it's load cycle is at 162000 and the manual says the max is about 600k)

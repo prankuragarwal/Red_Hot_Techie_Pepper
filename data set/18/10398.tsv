@@ -1,0 +1,18 @@
+2006-12-19T10:28:00.000Z	Parabola		I'm having an issue with chown, as root im getting "operation not permitted" on a mounted samba share
+2006-12-19T10:28:00.000Z	arrenlex	Parabola	You don't chown shares. You have to pass them permissions at mount time.
+2006-12-19T10:29:00.000Z	Parabola	arrenlex	okay can you help with that
+2006-12-19T10:29:00.000Z	arrenlex	Parabola	Mount it with umask=000
+2006-12-19T10:29:00.000Z	arrenlex	Parabola	as an option.
+2006-12-19T10:30:00.000Z	Parabola	arrenlex	what options do i need to look into?
+2006-12-19T10:31:00.000Z	arrenlex	Parabola	Mount it with umask=000 as an option
+2006-12-19T10:34:00.000Z	Parabola	arrenlex	saying line is bad, i have //server/share /local path smbfs username=adsf,password=adsf umask=000
+2006-12-19T10:34:00.000Z	Parabola	arrenlex	i also tried putting umask on the inside of user/pass section
+2006-12-19T10:34:00.000Z	arrenlex	Parabola	//server/share /local path smbfs username=adsf,password=adsf,umask=000
+2006-12-19T10:35:00.000Z	arrenlex	Parabola	Oh, I should warn you that umask=000 gives 777 permissions. You might want to tone that down if that's too loose for you.
+2006-12-19T10:36:00.000Z	arrenlex	Parabola	nothlit is ( I BELIEVE >=| ) talking to you.
+2006-12-19T10:39:00.000Z	Parabola	arrenlex	is umask=000 the most unrestrive as far as permissions go?
+2006-12-19T10:39:00.000Z	arrenlex	Parabola	Yes. As I said, 777. Anyone can do anything. It is the wikipedia of permissions.
+2006-12-19T10:44:00.000Z	Parabola	arrenlex	lol still getting owned
+2006-12-19T10:44:00.000Z	arrenlex	Parabola	?
+2006-12-19T10:45:00.000Z	Parabola	arrenlex	cant delete files
+2006-12-19T10:46:00.000Z	arrenlex	Parabola	a) what does your fstab line look like, b) have you remounted? c) Could you give me an ls -ld of the directory please?

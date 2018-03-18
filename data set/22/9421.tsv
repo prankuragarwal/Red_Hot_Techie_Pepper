@@ -1,0 +1,22 @@
+2004-11-09T13:48:00.000Z	rcaskey_		any advice on how I can do an operation on the first 100 files in a directory with bash?
+2004-11-09T13:48:00.000Z	rcaskey_		i've got too many to files to use with foreach in my bash script
+2004-11-09T13:48:00.000Z	rcaskey_		using `ls |tail -n 100` didn't help either
+2004-11-09T13:48:00.000Z	vinsci	rcaskey_	ls|head -100
+2004-11-09T13:49:00.000Z	rcaskey_	vinsci	err same effect
+2004-11-09T13:49:00.000Z	rcaskey_		its a looping cron job
+2004-11-09T13:49:00.000Z	rcaskey_		the idea is to get to processing all the files eventually
+2004-11-09T13:51:00.000Z	rcaskey_		for filename in `ls /var/www/html/tools/syllabus/holding/*.tex|tail -n 100`;
+2004-11-09T13:51:00.000Z	vinsci	rcaskey_	the command line gets too long that way
+2004-11-09T13:51:00.000Z	vinsci	rcaskey_	first cd to that dir
+2004-11-09T13:52:00.000Z	rcaskey_		I could use find dirname/ | xargs latex
+2004-11-09T13:52:00.000Z	rcaskey_		but I need to both latex and rm
+2004-11-09T13:52:00.000Z	vinsci		alternatively, use smaller batches
+2004-11-09T13:52:00.000Z	vinsci	rcaskey_	find -exec is also handy
+2004-11-09T13:53:00.000Z	rcaskey_		how can I latex and rm from one pipe?
+2004-11-09T13:54:00.000Z	rcaskey_		echo foo|{xargs latex}{xargs rm}
+2004-11-09T13:54:00.000Z	rcaskey_		any way to do anything like such?
+2004-11-09T13:55:00.000Z	rcaskey_		Tree: too many entries
+2004-11-09T13:55:00.000Z	rcaskey_		Got 4000 files in the directory
+2004-11-09T13:55:00.000Z	rcaskey_		for filename in `ls /var/www/html/tools/syllabus/holding/*.tex|tail -n 100`; didn't work either
+2004-11-09T13:55:00.000Z	vinsci	rcaskey_	something like find path... -exec latex {}; rm {} \;
+2004-11-09T13:58:00.000Z	rcaskey_	vinsci	close but still not yet

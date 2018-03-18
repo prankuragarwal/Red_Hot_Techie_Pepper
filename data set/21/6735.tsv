@@ -1,0 +1,21 @@
+2010-10-11T05:14:00.000Z	jdsbluedevl		hi, I'm having issues booting into my hard drive since upgrading to the RC.  I want to update the packages on my hard drive from the Live CD.  How do I do that?
+2010-10-11T05:15:00.000Z	jdsbluedevl		I have already mounted my hard drive, so that's not the issue
+2010-10-11T05:17:00.000Z	jdsbluedevl		come on, doesn't anyone know how to upgrade packages on a mounted HD through a Live CD boot?
+2010-10-11T05:19:00.000Z	jdsbluedevl		or, if that's too much of a headache, can someone tell me how to mount my HD on the Live CD so that I can get full permissions to copy everything and not just the limited stuff I'm allowed right now?
+2010-10-11T05:19:00.000Z	BluesKaj	jdsbluedevl	yes, comment all other deb urls in /etc/apt/sources.list except the cdrom , then update
+2010-10-11T05:20:00.000Z	jdsbluedevl	BluesKaj	does that update the hard drive?
+2010-10-11T05:20:00.000Z	jdsbluedevl	BluesKaj	because I'm booted to the Live CD
+2010-10-11T05:20:00.000Z	jdsbluedevl	BluesKaj	not booted to the hard drive
+2010-10-11T05:22:00.000Z	BluesKaj	jdsbluedevl	then mount dev/sda whatever your linux partition is and cd to it then run sudo apt-get update , but I recommend booting into the installation rather trying from t eh live cd
+2010-10-11T05:23:00.000Z	jdsbluedevl	BluesKaj	well, that doesn't work.  Apparently, I don't have permissions for that either
+2010-10-11T05:24:00.000Z	jdsbluedevl	BluesKaj	just like I don't have permissions to move my /home directory to an external HD
+2010-10-11T05:24:00.000Z	jdsbluedevl	BluesKaj	so then I have this question: how do I mount my HD so that I get full permissions?
+2010-10-11T05:25:00.000Z	BluesKaj	jdsbluedevl	why aren't you booting into your installation ?
+2010-10-11T05:25:00.000Z	jdsbluedevl	BluesKaj	because I can't.  It freezes at the splash screen
+2010-10-11T05:28:00.000Z	jdsbluedevl	BluesKaj	u there?
+2010-10-11T05:29:00.000Z	BluesKaj	jdsbluedevl	https://help.ubuntu.com/community/FilePermissions
+2010-10-11T05:31:00.000Z	jdsbluedevl	BluesKaj	ok, I did chmod 777 /dev/sda1, but that still doesn't give me read access to my files
+2010-10-11T05:36:00.000Z	BluesKaj	jdsbluedevl	you need to do it in a tty , can you get to a tty prompt while booting into your install , at the login page do : ctrl+alt +f1 , then chmod your /home , then sudo apt-get update. maybe you can get your prob fixed that way
+2010-10-11T05:37:00.000Z	jdsbluedevl	BluesKaj	actually, nvm, I just checked my forum support thread.  Apparently I need to reset my xorg.conf file in order to fix my boot problem.  Thx anyways
+2010-10-11T05:37:00.000Z	BluesKaj	jdsbluedevl	maybe xorg.conf will help , but there no guarantees that's just the problem
+2010-10-11T05:38:00.000Z	jdsbluedevl	BluesKaj	maybe.  The thread says that it's a known bug with my graphics card that was fixed two days after the RC went public

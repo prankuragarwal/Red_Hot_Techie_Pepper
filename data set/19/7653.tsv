@@ -1,0 +1,19 @@
+2008-01-01T17:29:00.000Z	toplok		when I call cc is routed to gcc. How may I route it to a different compiler ?
+2008-01-01T17:30:00.000Z	toplok		could it be a symlink ?
+2008-01-01T17:31:00.000Z	toplok		try this in ubuntu: cc
+2008-01-01T17:32:00.000Z	thoreauputic	toplok	sudo update-alternatives --config cc
+2008-01-01T17:35:00.000Z	thoreauputic	toplok	did you happen to read what I said above?
+2008-01-01T17:36:00.000Z	toplok	thoreauputic	I get this: There is only 1 program which provides cc
+2008-01-01T17:36:00.000Z	thoreauputic	toplok	OK, so is your other compiler from the packaging system?
+2008-01-01T17:37:00.000Z	toplok	thoreauputic	I need cc to call a different compiler
+2008-01-01T17:37:00.000Z	thoreauputic	toplok	dirty workaround - symlink cc to your compiler
+2008-01-01T17:38:00.000Z	toplok	thoreauputic	ok, how to do that ? I am a newbie, thx :)
+2008-01-01T17:39:00.000Z	thoreauputic	toplok	 sudo ln -sf /usr/bin/cc /path/to/compiler  <-- that's a forced symlink, you'll need to reverse it later
+2008-01-01T17:39:00.000Z	toplok	thoreauputic	thanks!
+2008-01-01T17:43:00.000Z	toplok	thoreauputic	the symlink does not work :(
+2008-01-01T17:44:00.000Z	thoreauputic	toplok	what's the path to your compiler?
+2008-01-01T17:45:00.000Z	thoreauputic	toplok	try this :  ln -s /usr/local/bin/test /usr/local/bin/cc
+2008-01-01T17:45:00.000Z	thoreauputic	toplok	/usr/local/bin comes nefore /usr/bin in the PATH, so that should work
+2008-01-01T17:46:00.000Z	toplok	thoreauputic	nope :(
+2008-01-01T17:46:00.000Z	thoreauputic	toplok	as hwilde says, probably means it is hard-coded
+2008-01-01T17:49:00.000Z	thoreauputic	toplok	have a look at update-alternatives --help : I think you can do  sudo update-alternatives --set cc /usr/local/bin/test ( check it out)

@@ -1,0 +1,22 @@
+2012-09-27T20:47:00.000Z	chris92		hey there... finally got ubuntu on my notebook and now I have a problem with the b43 wireless driver. I can connect to my WLAN network but cant get any internet connection established. any ideas?
+2012-09-27T20:48:00.000Z	ActionParsnip	chris92	can you ping the router's internal IP?
+2012-09-27T20:48:00.000Z	chris92	ActionParsnip	nope
+2012-09-27T20:48:00.000Z	ActionParsnip	chris92	does the interface have an IP address?
+2012-09-27T20:49:00.000Z	chris92	ActionParsnip	yes
+2012-09-27T20:49:00.000Z	ActionParsnip	chris92	ok, did you set it as static IP yourself?
+2012-09-27T20:50:00.000Z	chris92	ActionParsnip	what do you mean? The interface was always reachable thru the router's ip adress
+2012-09-27T20:50:00.000Z	ActionParsnip	chris92	did yu manually set teh IP address on the wireless interface on the client system instead of using DHCP?
+2012-09-27T20:50:00.000Z	chris92	ActionParsnip	no I let it assign an IP adress via DHCP
+2012-09-27T20:52:00.000Z	chris92	ActionParsnip	also the connection details says "Connection speed: 5Mb/s - i think thats a bit low, although I'm literally 1.5m away from my router
+2012-09-27T20:53:00.000Z	ActionParsnip	chris92	cool, what is the output of:  ip route show default | grep default | awk {'print $3'}
+2012-09-27T20:54:00.000Z	chris92	ActionParsnip	http://paste.ubuntu.com/1230737/
+2012-09-27T20:55:00.000Z	ActionParsnip	chris92	so you have 2 connections to the same subnet?
+2012-09-27T20:56:00.000Z	chris92	ActionParsnip	it only should be one connection, as I dont have any LAN cable attached atm
+2012-09-27T20:57:00.000Z	ActionParsnip	chris92	ok run:  ip addr     what is output please?
+2012-09-27T20:58:00.000Z	chris92	ActionParsnip	http://paste.ubuntu.com/1230744
+2012-09-27T20:59:00.000Z	ActionParsnip	chris92	yes, you have a wired connection with the same IP range as the wireless. This causes routing issues
+2012-09-27T21:00:00.000Z	chris92	ActionParsnip	okay, and how do I solve that?
+2012-09-27T21:00:00.000Z	ActionParsnip	chris92	you can run:  sudo ifdown eth0    and it should stop
+2012-09-27T21:02:00.000Z	ActionParsnip	chris92	seems to be a Quanta Computer Inc ethernet chip
+2012-09-27T21:02:00.000Z	ActionParsnip	chris92	the routing had 2 paths to the same subnet so it causes routing to fail, one of the oldest bugs going
+2012-09-27T21:03:00.000Z	ActionParsnip	chris92	if you only use the wifi, you can disable the ethernet in bios :)

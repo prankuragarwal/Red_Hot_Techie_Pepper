@@ -1,0 +1,18 @@
+2009-09-15T14:02:00.000Z	achilles		hello, I added a new SATA disk 1TB to my ubuntu, I'm trying to create a format using parted and fdisk, I create the start cyl 1 but what is the last cyl to occupy 1TB ?
+2009-09-15T14:03:00.000Z	hatake_kakashi	achilles	+ITB ?
+2009-09-15T14:06:00.000Z	hatake_kakashi	achilles	you've made it incorrectly, its supposed to be /dev/sda not /dev/sda3
+2009-09-15T14:07:00.000Z	achilles	hatake_kakashi	why ? the new disk is sda3
+2009-09-15T14:07:00.000Z	hatake_kakashi	achilles	are there any other scsi/sata/usb storage devices plugged in on the same computer?
+2009-09-15T14:07:00.000Z	achilles	hatake_kakashi	I'm afraid to format the currently installed one
+2009-09-15T14:08:00.000Z	achilles	hatake_kakashi	yes there is
+2009-09-15T14:08:00.000Z	hatake_kakashi	achilles	the reason is this:　Disk /dev/sda3: 5033 MB, 5033871360 bytes
+2009-09-15T14:08:00.000Z	achilles	hatake_kakashi	http://pastebin.org/18026
+2009-09-15T14:09:00.000Z	achilles	hatake_kakashi	oh maybe its the swap!
+2009-09-15T14:09:00.000Z	achilles	hatake_kakashi	yes it's the swap sorry!
+2009-09-15T14:09:00.000Z	hatake_kakashi	achilles	would've been better if you did fdisk -l instead
+2009-09-15T14:10:00.000Z	achilles	hatake_kakashi	http://pastebin.org/18028
+2009-09-15T14:11:00.000Z	hatake_kakashi	achilles	that's the wrong disk, note the size of the disk, 160GB not 1TB and so you've created a virtual partition or whatever it is inside /dev/sda3 which is swap
+2009-09-15T14:12:00.000Z	achilles	hatake_kakashi	how can I know what dev name the new disk took ?
+2009-09-15T14:12:00.000Z	hatake_kakashi	achilles	like I said before `fdisk -l'
+2009-09-15T14:12:00.000Z	achilles	hatake_kakashi	yes I got it /dev/sdb
+2009-09-15T14:12:00.000Z	hatake_kakashi	achilles	nw

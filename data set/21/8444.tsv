@@ -1,0 +1,21 @@
+2006-07-19T12:36:00.000Z	ic56	ernz	when you boot from the Ubuntu liveCD, what does fdisk report about your partitions?  More importantly, did you undertake resizing?  If so, what type of filesystem was the original hdb?  NTFS or FAT?
+2006-07-19T12:37:00.000Z	ernz	ic56	I did resize, yes, and the original FS on hdb was NTFS
+2006-07-19T12:37:00.000Z	ic56	ernz	did the resizing complete successfully?
+2006-07-19T12:39:00.000Z	ic56	ernz	the resizing process ended with an error message or the partitioning?  Or did the app you were using have you supply both simultaneously, leaving you unsure as to which parts got completed and which didn't?
+2006-07-19T12:42:00.000Z	ic56	ernz	ok. I've never done resizing, but I'll hazard a guess that the resizing was successful but the partition conked out.  Boot from the liveCD, get yourself a command line, then use "sudo fdisk /dev/hdb" to see the partition table on that disk.  the NTFS partition should have code 7.  If it doesn't, change it to 7, and see if the filesystem is clean
+2006-07-19T12:44:00.000Z	ic56	ernz	if the filesystem isn't corrupt, then you're good to go -- just change the codes of the other two partitions and restart teh install.  If teh NTFS partition is corrupt, then resizing failed and you're SOL.  If you need that data, you're looking at going sector by sector, in a scrambled disk, trying to re-assemble your files
+2006-07-19T12:45:00.000Z	ic56	ernz	there is one last possibility.
+2006-07-19T12:46:00.000Z	ic56	ernz	like I said, I don't know how these repartitioning tools work but, assuming it saved teh new partition table before resizing (which would make no sense but perhaps you encountered a bug) then it's possible that
+2006-07-19T12:48:00.000Z	ic56	ernz	the partition has *not* been resized.  In that case, to recover, you'd change the partition table to reflect a reality of a single NTFS partition (type 7 -- but you can display all the codes from the fdisk menu) spanning the whole disk.  Try that before going in with that sector editor, maybe you'll get luck and all will be miraculously restored!
+2006-07-19T12:49:00.000Z	ic56	ernz	and before you change anything, remember to record the existing partition table so you can go back to it if you screw up!
+2006-07-19T12:49:00.000Z	ic56	ernz	questions?
+2006-07-19T12:50:00.000Z	ernz	ic56	- Excellent help. I will try it all later today when I go to fix it. You reckon Fdisk will to the lot, or should I need additional tools?
+2006-07-19T12:52:00.000Z	ic56	ernz	fdisk (lower case) is used to manipulate partition tables.  At this stage, that's all you want to do.  cfdisk is a variant of fdisk that is useful for saving/restoring partition information in bulk (rather than with pen and paper :-) ).  Read the manpages for both tools if you've never used them
+2006-07-19T12:53:00.000Z	ic56	ernz	What is winOS?  Is that a Linux distro?
+2006-07-19T12:56:00.000Z	ic56	ernz	ah, I've never before seen it called that.  I've seen it abbreviated MS-Win or MS-Windows but never with the words "Operating System".
+2006-07-19T12:58:00.000Z	ic56	ernz	fdisk under linux is somewhat different from windows.  For one thing, it's command line driven rather than menu driven.  when you start it, it will say "m for help".  Press m to see a list of commands
+2006-07-19T12:59:00.000Z	ic56	ernz	l = list known partition types will display a table of partition codes you can use.  Use t (change partition's system id) to change a partition's code.
+2006-07-19T13:00:00.000Z	ic56	ernz	use p to see the list of partitions.  "q" will quit without saving your changes
+2006-07-19T13:00:00.000Z	ic56	ernz	"w" will write the modified partition table and exit. Read up for more.  Good luck!
+2006-07-19T13:01:00.000Z	ernz	ic56	- I see it now, that seems straight forward enough :S - Thanks for your help on that one.
+2006-07-19T13:01:00.000Z	ic56	ernz	yw!

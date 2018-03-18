@@ -1,0 +1,24 @@
+2008-08-29T09:50:00.000Z	cheesemold		I'm requesting help for a RAID 1 array, any takers?
+2008-08-29T09:51:00.000Z	daedric	cheesemold	i'll take it. Send it to me... :D
+2008-08-29T09:52:00.000Z	cheesemold	daedric	I need to make a RAID 1 array where one of the drives i wish to use already has the partition i want mirrored
+2008-08-29T09:53:00.000Z	daedric	cheesemold	that should not be a issue. you would just have to reactivate the array with both the new old drive (with data) and with the new drive.
+2008-08-29T09:54:00.000Z	cheesemold	daedric	what do you mean how i'm trying to solve it?  I'm thinking of using 'mdadm'
+2008-08-29T09:55:00.000Z	cheesemold	daedric	I don't think so, and it doesn't need to boot off it.  I have a computer with 3 drives, two are the identical data drives, the third is what i boot off of
+2008-08-29T09:55:00.000Z	cheesemold	daedric	my problem is that every guide i've looked up has a step that instructs you to reformat the raid 1 after you make it to "make it usable"
+2008-08-29T09:55:00.000Z	daedric	cheesemold	question... are you restoring a array... or creating one ?
+2008-08-29T09:56:00.000Z	cheesemold	daedric	creating an array where i have manually made both drives contain the data i want saved (sort of a manual raid1..)
+2008-08-29T09:57:00.000Z	daedric	cheesemold	to create a array in linux... a software controled array... you must have 2 or more partitions of a SPECIAL type... type fd in fdisk.
+2008-08-29T09:57:00.000Z	cheesemold	daedric	i even have my data saved to a THIRD drive just in case.. but resorting to that would be slow over USB
+2008-08-29T09:57:00.000Z	daedric	cheesemold	you can't just use softraid directly with ext3 or xfs or ntfs...
+2008-08-29T09:58:00.000Z	cheesemold	daedric	oh no..
+2008-08-29T09:58:00.000Z	daedric	cheesemold	oh no ? :D
+2008-08-29T09:58:00.000Z	cheesemold	daedric	both drives that are set up with my manual redundency are of ext3..
+2008-08-29T09:59:00.000Z	daedric	cheesemold	then... you must delete the linuxtype partition... create a partition of the format fd in both drives... create the array with mdadm, and copy all the data thru usb from that 3rd drive of your.
+2008-08-29T10:00:00.000Z	cheesemold	daedric	there's no simpler way? even making a raid 1 out of a single drive, putting the data onto it from my other drive, and then expanding it?
+2008-08-29T10:01:00.000Z	daedric	cheesemold	to make it technical... you can only add to a array made with mdadm partitions of the type fd
+2008-08-29T10:01:00.000Z	daedric	cheesemold	alas... you COULD do that.
+2008-08-29T10:01:00.000Z	cheesemold	daedric	I feel like that would be faster, considering the slowness of usb
+2008-08-29T10:02:00.000Z	cheesemold	daedric	and safer
+2008-08-29T10:03:00.000Z	cheesemold	daedric	this is kind of like using stepping stones while crossing a river, when you need to keep moving the stones yourself, isn't it?
+2008-08-29T10:19:00.000Z	cheesemold	daedric	HEY! I think i was able to create a raid 1 with 1 drive and it kept the original data on that drive!
+2008-08-29T10:19:00.000Z	cheesemold	daedric	how do I double check things to make sure the raid 1 is in proper working order?

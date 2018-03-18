@@ -1,0 +1,19 @@
+2011-06-06T16:59:00.000Z	c4pt		can anyone help me with nfs mounting between a fedora box and an debian box?
+2011-06-06T17:01:00.000Z	usr13	c4pt	What do you need to know?
+2011-06-06T17:02:00.000Z	usr13	c4pt	pastebinit /etc/exports ; pastebinit /etc/fstab  #And let's have a look.
+2011-06-06T17:03:00.000Z	usr13	c4pt	Let me ask you first, is it a wired or wireless network?
+2011-06-06T17:04:00.000Z	c4pt	usr13	wird
+2011-06-06T17:04:00.000Z	c4pt		*wired
+2011-06-06T17:04:00.000Z	c4pt	usr13	i ran through exportfs -a
+2011-06-06T17:04:00.000Z	c4pt	usr13	one sec
+2011-06-06T17:05:00.000Z	c4pt	usr13	this is the exports file on debian /mnt/nfs   192.168.0.1/24(rw,nohide,insecure,no_subtree_check,async)
+2011-06-06T17:05:00.000Z	c4pt	usr13	this is the exports file from fedora /mnt/nfs   192.168.0.1/24(rw,sync,no_root_squash,no_all_squash)
+2011-06-06T17:06:00.000Z	usr13		Ok, also need to see fstab entries
+2011-06-06T17:06:00.000Z	usr13	c4pt	Or are you just mounting it manually?
+2011-06-06T17:07:00.000Z	c4pt	usr13	trying to mount it manually at the moment
+2011-06-06T17:08:00.000Z	c4pt	usr13	i just realized on debian/ubuntu there was no nfs entry in gufw so i allowed nfs in gufw
+2011-06-06T17:08:00.000Z	c4pt	usr13	still isnt monting from fedora though (feodra is 192.168.0.104 and debian is 0.108)
+2011-06-06T17:08:00.000Z	c4pt	usr13	i am in a ssh shell on fedora and when i type mount -t nfs 192.168.0.108:/mnt/nfs /mnt/nfs is just idles there
+2011-06-06T17:11:00.000Z	usr13		One problem I see is that the mount points are the same.
+2011-06-06T17:11:00.000Z	usr13	c4pt	I think they need to be different if you are going to mount from both.
+2011-06-06T17:12:00.000Z	usr13	c4pt	You'll need to change one of the mount points and re-do it if you intend to mount from both ends.

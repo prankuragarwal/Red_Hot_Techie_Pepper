@@ -1,0 +1,24 @@
+2011-01-24T19:05:00.000Z	jody		hi i am trying to mount a windows share with the following command, "sudo smbmount //192.168.1.3/Storage/ /home/jody/Downloads/smb/ -o username=joe,password=password,rw". it mounts perfectly, but i can not write to it. any ideas? thanks
+2011-01-24T19:06:00.000Z	rusty149	jody	check the windows permissions
+2011-01-24T19:07:00.000Z	jody	rusty149	it works fine if I log in as root on the ubuntu machine
+2011-01-24T19:08:00.000Z	rusty149		ls -la /home/jody/Downloads/smb
+2011-01-24T19:09:00.000Z	rusty149	jody	ls -la /home/jody/Downloads/smb
+2011-01-24T19:10:00.000Z	jody	rusty149	do u want to see the output?
+2011-01-24T19:10:00.000Z	rusty149	jody	yeah > paste.ubuntu.com
+2011-01-24T19:11:00.000Z	jody	rusty149	http://paste.ubuntu.com/557674/
+2011-01-24T19:12:00.000Z	rusty149	jody	It is because you mounted as root. unmount it and remount without sudo
+2011-01-24T19:14:00.000Z	jody	rusty149	http://paste.ubuntu.com/557679/
+2011-01-24T19:15:00.000Z	rusty149	jody	what command did you run?
+2011-01-24T19:15:00.000Z	jody		smbmount //192.168.1.3/Storage/ /mnt/ -o username=joe,password=password,rw
+2011-01-24T19:16:00.000Z	rusty149	jody	Thats different do, smbmount //192.168.1.3/Storage/ /home/jody/Downloads/smb -o username=joe,password=password,rw
+2011-01-24T19:17:00.000Z	jody	rusty149	I tried to that directory also but with no luck
+2011-01-24T19:18:00.000Z	rusty149	jody	is downoads/smb properly unmounted. I need to see the exact command and output pastes
+2011-01-24T19:19:00.000Z	jody	rusty149	yes it is unmounted. http://paste.ubuntu.com/557680/
+2011-01-24T19:20:00.000Z	rusty149	jody	Can you paste the exact command aswell please
+2011-01-24T19:20:00.000Z	rusty149	jody	Just here is fine for one line
+2011-01-24T19:21:00.000Z	jody	rusty149	 Sorry lol. http://paste.ubuntu.com/557681/
+2011-01-24T19:24:00.000Z	rusty149	jody	sudo smbmount //192.168.1.3/Storage/ /home/jody/Downloads/smb/ -o username=joe,password=password,rw,uid=jody
+2011-01-24T19:26:00.000Z	jody	rusty149	thanks a million it works perfectly
+2011-01-24T19:27:00.000Z	rusty149	jody	If it is a regular mount. It would be better to add to fstab with same options
+2011-01-24T19:28:00.000Z	jody	rusty149	will do. again, thank you very much
+2011-01-24T19:28:00.000Z	rusty149	jody	//192.168.1.3/Storage/   /home/jody/Downloads/smb/ cifs  username=joe,password=password,rw,uid=jody  0  0

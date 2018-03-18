@@ -1,0 +1,18 @@
+2007-02-16T09:52:00.000Z	pilgrim		Hey all. I decided to check out the service running on my machine and decided that I didn't need "apmd" running. I uncheck the box and then figured that my battery status wasn't displaying right. I enabled the service but it still doesn't work. It says "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI subsystem is working and the acpid daemon is running. Any ideas on what to do?
+2007-02-16T09:53:00.000Z	sethk	pilgrim	start the acpid daemon, if it isn't running
+2007-02-16T09:54:00.000Z	pilgrim	sethk	acpid: can't open /proc/acpi/event: Device or resource busy
+2007-02-16T09:54:00.000Z	sethk	pilgrim	did you use sudo?
+2007-02-16T09:54:00.000Z	pilgrim	sethk	course.
+2007-02-16T09:55:00.000Z	sethk	pilgrim	something is running that has the pipe tried up.  lsof may tell you what
+2007-02-16T09:56:00.000Z	pilgrim	sethk	lsof | grep /proc/acpi/event  <<<<<<<<<<<<<<<<<that returns nothing.
+2007-02-16T09:56:00.000Z	sethk	pilgrim	try strace of the process that produces that error
+2007-02-16T09:57:00.000Z	pilgrim	sethk	like this:  strace sudo /etc/init.d/acpid start   ?
+2007-02-16T09:58:00.000Z	sethk	pilgrim	yes.  use -o to save the results, which will be verbose.  then search the result for the /proc/whatever that it's complaining about
+2007-02-16T10:02:00.000Z	pilgrim	sethk	I ran ""strace sudo /etc/init.d/acpid start > somefile 2>&1""  (without the quotes) however there is nothing that has "proc" in that file "somefile"
+2007-02-16T10:06:00.000Z	pilgrim	sethk	any other suggestions ?
+2007-02-16T10:07:00.000Z	sethk	pilgrim	I'm thinking
+2007-02-16T10:07:00.000Z	pilgrim	sethk	where's the hour glass damn it?
+2007-02-16T10:13:00.000Z	pilgrim	sethk	I also disabled my database service....there wouldn't be a sick connection between databases and apm would there?
+2007-02-16T10:13:00.000Z	sethk	pilgrim	I've never seen that.  I have boxes without database servers running apm
+2007-02-16T10:14:00.000Z	pilgrim	sethk	makes sense.
+2007-02-16T10:29:00.000Z	pilgrim	sethk	I think

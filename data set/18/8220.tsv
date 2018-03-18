@@ -1,0 +1,18 @@
+2007-09-27T11:42:00.000Z	nrdb		Hi can I use the php Mcrypt Encryption Functions in the php installed with ubuntu version 6.06 ? it says I need the libmcrypt library (I can install that) and that the php is compiled with the --with-mcrypt[=DIR]  parameter.
+2007-09-27T11:44:00.000Z	heguru	nrdb	if you install libmcrypt then you can use the mcrypt function in PHP
+2007-09-27T11:47:00.000Z	nrdb	heguru	thanks,
+2007-09-27T11:52:00.000Z	nrdb	heguru	I installed the package libmcrypt4 !  restarted apache, and still it isn't working.
+2007-09-27T11:53:00.000Z	heguru	nrdb	is it your custom developed php?
+2007-09-27T11:53:00.000Z	nrdb	heguru	No.
+2007-09-27T11:55:00.000Z	heguru	nrdb	then what software is it?
+2007-09-27T11:56:00.000Z	nrdb	heguru	ahh .... looks like I need to install the php5-mcrypt package,  didn't know it was seperate.   I let you know how it goes.
+2007-09-27T11:56:00.000Z	heguru	nrdb	ok, besides libmcrypt you would also need php5-mcrypt
+2007-09-27T11:56:00.000Z	heguru	nrdb	yes :)
+2007-09-27T12:09:00.000Z	nrdb	heguru	its going now. thanks.  The only problem is when I descrypt the text doesn't seem to be terminated.  I am getting a number of wierd characters after my text.  the code is here http://paste.ubuntu-nl.org/38780/ any ideas ?
+2007-09-27T12:11:00.000Z	heguru	nrdb	don't know. code seems fine though
+2007-09-27T12:11:00.000Z	heguru	nrdb	let me run it on my server wait
+2007-09-27T12:23:00.000Z	nrdb	heguru	did you reproduce the problem ?
+2007-09-27T12:24:00.000Z	heguru	nrdb	yes i did, don't know why, maybe try adding a newline in your string? i don't think its php5-mcrypt though, i am using an inhouse php that works on it
+2007-09-27T12:25:00.000Z	nrdb	heguru	I will experiment, thanks
+2007-09-27T12:56:00.000Z	nrdb	heguru	I found the answer, you need to use --- rtrim($decrypted,"\0");
+2007-09-27T12:56:00.000Z	heguru	nrdb	good :)

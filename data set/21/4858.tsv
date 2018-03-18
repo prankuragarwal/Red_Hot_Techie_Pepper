@@ -1,0 +1,21 @@
+2008-02-08T20:43:00.000Z	geoaxis		where are default shell variables set in ubuntu
+2008-02-08T20:43:00.000Z	geoaxis		like my variables MAIL EDITOR etc
+2008-02-08T20:44:00.000Z	shr1k3	geoaxis	/etc/profile, $HOME/.bashrc, $HOME/.bash_profile
+2008-02-08T20:45:00.000Z	geoaxis	shr1k3	 i looked up all these, and cant find where MAIL is set
+2008-02-08T20:46:00.000Z	shr1k3	geoaxis	you can add "unset MAIL" to .bashrc
+2008-02-08T20:47:00.000Z	shr1k3	geoaxis	from terminal if you type "echo $MAIL" you get what?
+2008-02-08T20:48:00.000Z	geoaxis	shr1k3	 /var/mail/hatim
+2008-02-08T20:49:00.000Z	shr1k3	geoaxis	does your .bashrc or .bash_profile call other scripts? they may be setting the env variable
+2008-02-08T20:49:00.000Z	shr1k3	geoaxis	have you checked "grep MAIL /etc"?
+2008-02-08T20:50:00.000Z	geoaxis	shr1k3	 you mean grep MAIL /etc -r
+2008-02-08T20:51:00.000Z	shr1k3	geoaxis	try renaming(mv) .bashrc and .bash_profile to other names, then start new terminal, see if MAIL is still set
+2008-02-08T20:53:00.000Z	geoaxis	shr1k3	 nopes still set
+2008-02-08T20:53:00.000Z	shr1k3	geoaxis	hmmm
+2008-02-08T20:55:00.000Z	geoaxis	shr1k3	i know its easier to unset from .bashrc
+2008-02-08T20:57:00.000Z	shr1k3	geoaxis	it has to be set from init scripts under etc I think, but you say grep -r did not find so I'm at a loss at the moment
+2008-02-08T20:58:00.000Z	geoaxis	shr1k3	 grep spiited out other stuff , let me look at it again
+2008-02-08T20:59:00.000Z	shr1k3	geoaxis	you are mainly looking for "export MAIL" or "MAIL="
+2008-02-08T20:59:00.000Z	geoaxis	shr1k3	 oh well i found it , silly me , i had seen this before , login.defs
+2008-02-08T21:00:00.000Z	shr1k3	geoaxis	thats great
+2008-02-08T21:03:00.000Z	geoaxis	shr1k3	http://www.kernel.org/pub/linux/libs/pam/Linux-PAM-html/sag-pam_mail.html
+2008-02-08T21:04:00.000Z	shr1k3	geoaxis	o i c

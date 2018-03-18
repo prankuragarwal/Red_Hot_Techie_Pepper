@@ -1,0 +1,23 @@
+2008-08-13T01:00:00.000Z	digitalvaldosta_	_2	where do I get that
+2008-08-13T00:50:00.000Z	_2	digitalvaldosta_	testdisk ?
+2008-08-13T00:51:00.000Z	digitalvaldosta_	_2	tried it and it only gave me my temp from firefox and a bunch of c files and text files
+2008-08-13T00:52:00.000Z	_2	digitalvaldosta_	the partition table is not where the files are stored.    what are you trying to do ?
+2008-08-13T00:53:00.000Z	digitalvaldosta_	_2	I am trying to mount it to get the files back
+2008-08-13T00:53:00.000Z	_2	digitalvaldosta_	and what did you do that hosed it ?
+2008-08-13T00:54:00.000Z	digitalvaldosta_	_2	turned it off via holding the power button for thirty seconds. (vmware froze the system)
+2008-08-13T00:54:00.000Z	_2	digitalvaldosta_	and after that why are you tryig to rebuild a partition table ?   that should not have affected the partition table
+2008-08-13T00:59:00.000Z	digitalvaldosta_	_2	﻿when I try to boot with the hdd it says there is an I/O error and I tried booting into the live CD and mounting it and that's how I found out that the superblock/ partition table is messed up
+2008-08-13T01:00:00.000Z	_2	digitalvaldosta_	superblock != partition table.
+2008-08-13T01:00:00.000Z	_2	digitalvaldosta_	mount with a backup superblock
+2008-08-13T01:01:00.000Z	_2	digitalvaldosta_	man mount   for the details   and backup superblocks are stored every 64k starting at 32k
+2008-08-13T01:03:00.000Z	digitalvaldosta_	_2	what am I looking for?
+2008-08-13T01:04:00.000Z	_2	digitalvaldosta_	hopefully the switch needed to specify a backup super block
+2008-08-13T01:07:00.000Z	digitalvaldosta_	_2	nope
+2008-08-13T01:08:00.000Z	digitalvaldosta_	_2	but.... earlier I did dmesg | tail and it mentions blocks
+2008-08-13T01:09:00.000Z	digitalvaldosta_	_2	http://paste.ubuntu.com/36951/
+2008-08-13T01:12:00.000Z	_2	digitalvaldosta_	yeah why the pastebin?    mount -o sb=96???  what ever 96k is    Instead of block 1, use block n as  superblock.
+2008-08-13T01:13:00.000Z	digitalvaldosta_	_2	could it be along number
+2008-08-13T01:14:00.000Z	_2	digitalvaldosta_	and if you have been playing with the partition table (which you shoudn't have been)  you may have it so screwed up the block acn't be addressed correctly...       if so testdisk    and let it scan.
+2008-08-13T01:14:00.000Z	digitalvaldosta_	_2	block 4294967295
+2008-08-13T01:19:00.000Z	digitalvaldosta_	_2	scanning
+2008-08-13T01:20:00.000Z	_2	digitalvaldosta_	i'll be in #kubuntu

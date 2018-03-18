@@ -1,0 +1,22 @@
+2012-11-05T05:54:00.000Z	Chotaz		How can I make sure that upon restart, my second HDD(NTFS) is mounted before a daemon (deluged) is ran?
+2012-11-05T05:56:00.000Z	almoxarife	Chotaz	insure the partion is added/shown in the file 'fstab' , /etc/fstab
+2012-11-05T05:57:00.000Z	Chotaz	almoxarife	my problem is when I restart my computer and deluged starts scanning /media/user/MyBook for my torrents it wont find it and I have to manually recheck my torrents when this happens
+2012-11-05T06:00:00.000Z	almoxarife	Chotaz	is /media/user shown in the file /etc/fstab ?
+2012-11-05T06:04:00.000Z	Chotaz	almoxarife	apparently not, only my system's and it's swap partition are there
+2012-11-05T06:04:00.000Z	almoxarife	Chotaz	is /media/user shown in the file /etc/mtab ? that's mtab
+2012-11-05T06:05:00.000Z	Chotaz	almoxarife	it is
+2012-11-05T06:06:00.000Z	almoxarife	Chotaz	using gedit in gksu mode, edit fstab to include the line you see in mtab showing '/media/user'
+2012-11-05T06:07:00.000Z	Chotaz	almoxarife	do you mind telling me, that besides probably fixing my problem what are we achieving with this?
+2012-11-05T06:07:00.000Z	almoxarife	Chotaz	sure, you are making that partion 'live' from boot time
+2012-11-05T06:11:00.000Z	Chotaz	almoxarife	just restarted the machine in question, everything is working now, thanks!
+2012-11-05T06:11:00.000Z	almoxarife	Chotaz	good :)
+2012-11-05T06:15:00.000Z	Chotaz	almoxarife	ActionParsnip and escott, thanks for the help, I've learned now not to mess with the purge command ^^
+2012-11-07T00:25:00.000Z	almoxarife	Chotaz	bekks: almoxarife: top -n 1 | pastebinit <-- do that, like the man said :)
+2012-11-07T00:25:00.000Z	Chotaz	almoxarife	pastebin the output of top?
+2012-11-07T00:25:00.000Z	almoxarife	Chotaz	yeap
+2012-11-07T00:26:00.000Z	almoxarife	Chotaz	you said you are at 100% cpu, lets see what is eating up cycles
+2012-11-07T00:27:00.000Z	Chotaz	almoxarife	btw, remember helping me with making sure a secondary hdd was mounted before launching my torrent's dawmon? that's did not work :-
+2012-11-07T00:28:00.000Z	Chotaz	almoxarife	 http://paste.ubuntu.com/1338103/
+2012-11-07T00:30:00.000Z	almoxarife	Chotaz	oh by the way did you forget to mention that deluge was running?
+2012-11-07T00:31:00.000Z	Chotaz	almoxarife	I wouldnt say deluge is keeping my computer from booting up, but at least now you know ^^
+2012-11-07T00:32:00.000Z	almoxarife	Chotaz	your puter is booting, and python/deluge i assume is eating up 25% of the cpu

@@ -1,0 +1,21 @@
+2008-12-27T05:15:00.000Z	srbaker		heya folks
+2008-12-27T05:15:00.000Z	srbaker		i have two 500G disks
+2008-12-27T05:15:00.000Z	srbaker		i want them to appear as one (fresh install)
+2008-12-27T05:15:00.000Z	srbaker		how do i manage that?
+2008-12-27T05:17:00.000Z	allquixotic	srbaker	You can't make them appear as a single disk at _all_ levels of the OS, but if you have hardware RAID support on your motherboard or with a PCI card, that's about as good as you can get.
+2008-12-27T05:17:00.000Z	allquixotic	srbaker	Setting up hardware RAID depends entirely on what your hardware is. If you don't want to use hardware RAID, you can use LVM2, which has a similar effect in software.
+2008-12-27T05:18:00.000Z	srbaker	allquixotic	naw, i want software raid.  or disk pooling
+2008-12-27T05:18:00.000Z	srbaker		is there disk pooling support in any of the FSes in 8.10?
+2008-12-27T05:18:00.000Z	allquixotic		!lvm
+2008-12-27T05:18:00.000Z	srbaker		and is LVM2 what i'd use for that?
+2008-12-27T05:18:00.000Z	srbaker		thank you
+2008-12-27T05:18:00.000Z	allquixotic		!lvm | srbaker
+2008-12-27T05:19:00.000Z	allquixotic	srbaker	I personally have two 500GB disks in an LVM2 configuration that has a *single* physical partition striped across both of them. Software thinks I have a terabyte hard drive. :)
+2008-12-27T05:19:00.000Z	srbaker	allquixotic	right,a ths' what i want
+2008-12-27T05:20:00.000Z	srbaker	allquixotic	where can i find specific instructions for that?
+2008-12-27T05:21:00.000Z	allquixotic	srbaker	It's been a while since I've installed Ubuntu, but if you get the option in the partitioner (during install) to select an LVM2 configuration, you basically have to follow the prompts. There may be a nice tutorial out there. I haven't ever used LVM2 with Ubuntu, only other Linuces. May want to ask around for input from others.
+2008-12-27T05:21:00.000Z	srbaker	allquixotic	hrm, thanks
+2008-12-27T05:21:00.000Z	allquixotic	srbaker	Ubuntu 8.10's partitioner is really nice looking though, it could have what you need :)
+2008-12-27T05:21:00.000Z	srbaker	allquixotic	i don't know.  i didn't see any lvm options, but i'm looking now
+2008-12-27T05:21:00.000Z	srbaker		thanks
+2008-12-27T05:23:00.000Z	allquixotic	srbaker	It's interesting because LVM2 user programs and kernel modules are available for Ubuntu, and I have accessed an LVM2 volume that was created with another Linux while booting an Ubuntu 8.10 live CD.. just haven't tried it in the installer.

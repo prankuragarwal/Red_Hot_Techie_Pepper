@@ -1,0 +1,21 @@
+2007-03-09T08:01:00.000Z	gnube		I am not getting the mod_rewrite voodoo to work, any Apache2 witch doctors in the house?
+2007-03-09T08:02:00.000Z	gnube		Yeah, apache2ctl is not complaining but nothing is working. *sigh*
+2007-03-09T08:02:00.000Z	ekimus	gnube	what does the error log say (and more importantly pls define _what_ you want to achieve with mod_rewrite....)
+2007-03-09T08:02:00.000Z	gnube	ekimus	Error log says nothing, access log says '200'
+2007-03-09T08:03:00.000Z	gnube	ekimus	I want mod_rewrite to move useragents that begin with the string 'Java' to someplace off my server
+2007-03-09T08:03:00.000Z	ekimus	gnube	then enable the rewrite log (RewriteLog /path/to/file - RewriteLoglevel 9 - apache2ctl -t && apache2ctl restart)
+2007-03-09T08:04:00.000Z	gnube	ekimus	The rewrite log is already enabled as far as I can tell, I put that in /etc/apach2/apache.conf
+2007-03-09T08:04:00.000Z	ekimus	gnube	can you paste that? along with your rewriterule?
+2007-03-09T08:05:00.000Z	gnube	ekimus	Here is the condition: RewriteCond %{HTTP_USER_AGENT} ^Java
+2007-03-09T08:05:00.000Z	gnube	ekimus	And here is the rule: RewriteRule  ^/$ /glossary.html  [L] 
+2007-03-09T08:06:00.000Z	ekimus	gnube	try  RewriteRule  ^/$ /glossary.html  [R,L]  (you are aware that ^/$ only matches if you request http://yourserver/ - and nothing else?)
+2007-03-09T08:07:00.000Z	gnube	ekimus	Yeah, that is what I wanted, any user agent with ^Java should get redirected.
+2007-03-09T08:08:00.000Z	ekimus	gnube	you will only redirect any user agent with ^Java that requests ^/$
+2007-03-09T08:08:00.000Z	gnube	ekimus	Hmm. So if one requests ^/foo$ it does not get redirected.
+2007-03-09T08:08:00.000Z	gnube		 I see.
+2007-03-09T08:08:00.000Z	gnube		I was not clear on that.
+2007-03-09T08:08:00.000Z	gnube	ekimus	Thanks for the clarification.
+2007-03-09T08:09:00.000Z	ekimus	gnube	no $ says end here so you to redirect everything you would do ^(.*) /glossary.html
+2007-03-09T08:10:00.000Z	gnube	ekimus	Okay, I will edit my requesting script and watch the logs again . . .
+2007-03-09T08:12:00.000Z	gnube		Hmm. No go. I must have put the directives in the wrong place.
+2007-03-09T08:16:00.000Z	gnube	ekimus	No go. I think the syntax is alright, I just feel I have the rewrite rule in the wrong place.

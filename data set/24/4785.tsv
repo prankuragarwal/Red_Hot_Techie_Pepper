@@ -1,0 +1,24 @@
+2007-01-12T08:28:00.000Z	JayPro		i am logged onto unbuntu edgy eft via cygwin & putty on windows xp, and i cant seem to get the complete desktop environment running.  how do i  do it?
+2007-01-12T08:30:00.000Z	JayPro		oh okay
+2007-01-12T08:30:00.000Z	JayPro		before i logged in using putty, i checked a box for x forwarding
+2007-01-12T08:32:00.000Z	un_operateur	JayPro	why not just use VNC?
+2007-01-12T08:33:00.000Z	JayPro	un_operateur	isnt when you use vnc, you have to be logged ON the remote box? i needed a different way of connecting because it's not just me that would be using the remote system
+2007-01-12T08:35:00.000Z	un_operateur	JayPro	errm, i think that is true -- you mean that the VNC server requires a user to be logged on and have started a VNC session before a remote user can connect to it, right?
+2007-01-12T08:37:00.000Z	JayPro	un_operateur	as i understand it, the user needs to be logged onto ubuntu, where remote desktop is enabled...... not too sure about having to start a vnc session before someone can log in to the system
+2007-01-12T08:39:00.000Z	un_operateur	JayPro	I don't mean the default VNC "server" that comes on ubuntu -- I was talking about configuring and installing tightVNC or realVC
+2007-01-12T08:40:00.000Z	JayPro	un_operateur	ohhh ...yeah. i think thats all you would need
+2007-01-12T08:54:00.000Z	un_operateur	JayPro	when using sudo and wanting to detach from the terminal -- use sudo -b .. sudo -b gdm
+2007-01-12T08:58:00.000Z	un_operateur	JayPro	in my experience .. VNC can be used by multiple people -- it most definitely does that .. and is well suited for it
+2007-01-12T09:05:00.000Z	un_operateur	JayPro	does your cygwin setup have X setup too?
+2007-01-12T09:06:00.000Z	JayPro	un_operateur	yes, it does
+2007-01-12T09:06:00.000Z	JayPro	un_operateur	"X" and "startx" was executable
+2007-01-12T09:07:00.000Z	un_operateur	JayPro	errm, what happens when you try and launch a gtk application like nautilus in the session?
+2007-01-12T09:07:00.000Z	JayPro	un_operateur	im grabbing some of my info on this site http://en.wikipedia.org/wiki/Cygwin/X which apparently, seems like there is a better way
+2007-01-12T09:07:00.000Z	JayPro	un_operateur	umm....not familiar with it
+2007-01-12T09:08:00.000Z	un_operateur	JayPro	try it out .. at your putty session -- type -  nautilus &
+2007-01-12T09:09:00.000Z	JayPro	un_operateur	ohhhh....THAT.. ehhe... yeah, my file browser opened.....
+2007-01-12T09:09:00.000Z	un_operateur	JayPro	eeehah :) nice
+2007-01-12T09:10:00.000Z	JayPro	un_operateur	theres something else thats not quite correct as well.... everytime i open something, errors appear in my terminal
+2007-01-12T09:11:00.000Z	un_operateur	JayPro	well, with my limited understanding of how this works -- seems X is forwarding right but since you haven't really connected upto the desktop, it's a little shaky
+2007-01-12T09:16:00.000Z	un_operateur	JayPro	ok, seems like everthing you need is here http://www.faqs.org/docs/Linux-HOWTO/XDMCP-HOWTO.html .. what you are missing is probably that gdm isnt set to listen for XDMCP requests
+2007-01-12T09:17:00.000Z	un_operateur	JayPro	ikonia also .. probably to enable XDCMP support in /etc/X11/gdm/gdm.conf

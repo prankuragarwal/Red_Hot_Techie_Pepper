@@ -1,0 +1,24 @@
+2008-10-18T14:55:00.000Z	bEe_		hi
+2008-10-18T14:56:00.000Z	bEe_		please help me with router: i have 2 network cards. eth1 has internet via dhcp and eth0 is my local network. I can't enable internet for local network. I've made this on gentoo with iptables, but it does not work on ubuntu
+2008-10-18T14:57:00.000Z	crazyb0y	bEe_	check your ip_forward
+2008-10-18T14:57:00.000Z	bEe_	crazyb0y	i've check it
+2008-10-18T14:57:00.000Z	crazyb0y		is it 0 or 1 ?
+2008-10-18T14:57:00.000Z	bEe_		echo 1 >/proc/sys/net/ipv4/ip_forward
+2008-10-18T14:57:00.000Z	bEe_		it is 1
+2008-10-18T14:58:00.000Z	crazyb0y	bEe_	what iptables syntax you use for masquerade ?
+2008-10-18T14:58:00.000Z	bEe_		iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+2008-10-18T14:59:00.000Z	crazyb0y	bEe_	what is your external ethernet card? eth0 or eth1 ?
+2008-10-18T14:59:00.000Z	bEe_		eth0 is local network interface
+2008-10-18T14:59:00.000Z	bEe_		external is eth1
+2008-10-18T14:59:00.000Z	crazyb0y	bEe_	flush this rule
+2008-10-18T14:59:00.000Z	crazyb0y		what is the range of ip's in your local net ?
+2008-10-18T14:59:00.000Z	bEe_	crazyb0y	10.0.0.0/24. what is "flush"?
+2008-10-18T15:00:00.000Z	crazyb0y	bEe_	iptables -t nat -F ; iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -j MASQUERADE
+2008-10-18T15:00:00.000Z	crazyb0y		and try then the connection
+2008-10-18T15:00:00.000Z	bEe_	crazyb0y	thanks a lot! it helps!
+2008-10-18T15:01:00.000Z	bEe_	crazyb0y	how to save this rule?
+2008-10-18T15:01:00.000Z	crazyb0y	bEe_	i use my way to do these settings
+2008-10-18T15:01:00.000Z	crazyb0y		just edit /etc/init.d/iptables and put this line into
+2008-10-18T15:01:00.000Z	bEe_		ok thank you very much
+2008-10-18T15:01:00.000Z	crazyb0y		after that update-rc.d iptables defaults
+2008-10-18T15:02:00.000Z	crazyb0y	bEe_	and that's all =)

@@ -1,0 +1,18 @@
+2010-03-18T02:12:00.000Z	squelos		authorized_keys2 ?
+2010-03-18T02:13:00.000Z	squelos		i did, but to the authorized_keys, not authorized_keys2. It might be because its a debian serv, but i tried  SSH a few weeks ago on a karmic, and i didnt see authorized_keys2
+2010-03-18T02:14:00.000Z	jrib	squelos	mgolisch: do you guys mean ~/.ssh/authorized_keys, not ~/.ssh/authorized_keys2?
+2010-03-18T02:15:00.000Z	squelos	jrib	: i never heard of the authorized_keys2. I added to the authorized_keys. So i dunno know :/ What if i delete the /etc/ssh/sshd_config. will it restablish it to default ?
+2010-03-18T02:16:00.000Z	jrib	squelos	I just kept seeing authorized_keys2 and wanted to point out the file does not have a '2'.  Where exactly did you add your key?
+2010-03-18T02:17:00.000Z	squelos	jrib	: ~/.ssh/authorized_keys for both regular user and root. mgolisch : hum, i dont remember changer permissions.
+2010-03-18T02:17:00.000Z	jrib	squelos	right, you need to make sure you have the right permissions
+2010-03-18T02:18:00.000Z	squelos	jrib	=> yeah, well i tried them, but i never really used permissions before, so i dont know which ones to apply. btw, its a debian server so its in CLI.
+2010-03-18T02:18:00.000Z	jrib	squelos	well just give ~/.ssh/ 700 and ~/.ssh/authorized_keys 600
+2010-03-18T02:21:00.000Z	jrib	squelos	can you use password logins?
+2010-03-18T02:21:00.000Z	squelos	jrib	: yeah, but i put them to no to try the key auth
+2010-03-18T02:22:00.000Z	jrib	squelos	ok, well the easy way to setup keys is to allow passwords and just use ssh-copy-id command
+2010-03-18T02:22:00.000Z	squelos	jrib	: that is what i used at first :D
+2010-03-18T02:22:00.000Z	squelos	jrib	: can i just delete the ssh config files, and retry ?
+2010-03-18T02:23:00.000Z	jrib	squelos	umm, you can delete ~/.ssh/authorized_keys on the server, sure
+2010-03-18T02:24:00.000Z	jrib	squelos	you should probably add some verbose flags when you ssh and read the server's sshd log I guess if you are still stuck
+2010-03-18T02:25:00.000Z	squelos	jrib	: and, any idea of how i could socksify a whole application thru my SSH tunnel ?
+2010-03-18T02:27:00.000Z	jrib	squelos	well -D lets you create a port that you can point apps to, but maybe you are asking about tsocks?

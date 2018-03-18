@@ -1,0 +1,19 @@
+2008-07-11T19:14:00.000Z	syscode		hiyas, am back again after a short adventure with the router on 8.0.4...
+2008-07-11T19:15:00.000Z	syscode		thanks nixnoob and djhash for the advice.. not sirted yet, but feel it might be on the way..
+2008-07-11T19:16:00.000Z	syscode		pinging 192.168.1.1 gets nothing - and so is an attempt to point browser there
+2008-07-11T19:18:00.000Z	syscode		however, pinging 192.168.1.254 seems to work - but browsing there, get the browser to show the title of the router box on the window, nothing else
+2008-07-11T19:18:00.000Z	syscode		will need to try, nixnoob
+2008-07-11T19:19:00.000Z	syscode		no - i didn't touch the settings at all
+2008-07-11T19:19:00.000Z	unop	syscode	you trying to find the IP address of your router?
+2008-07-11T19:21:00.000Z	unop	syscode	your IP can be anything but 192.168.1.254
+2008-07-11T19:21:00.000Z	unop	syscode	that is, if you use a subnet mask of 255.255.255.0
+2008-07-11T19:22:00.000Z	syscode	unop	- but 192.168.1.254 takes me to the router on xp
+2008-07-11T19:22:00.000Z	unop	syscode	right, that has to be your default gateway then .. your IP address must be something different
+2008-07-11T19:23:00.000Z	unop	syscode	so if i were you, i'd pick an IP address of 192.168.1.1, subnet mask 255.255.255.0 and default gateway 192.168.1.254
+2008-07-11T19:27:00.000Z	unop	syscode	ok, run dhclient on that interface again .. then pastebin the output of this command.   ifconfig; route -n
+2008-07-11T19:28:00.000Z	unop	syscode	you might need sudo where appropriate
+2008-07-11T19:28:00.000Z	unop	syscode	not necessary
+2008-07-11T19:30:00.000Z	unop	syscode	ohh ok, you need to reboot into linux and try this then. , assuming eth0 is what you are configuring.  sudo dhclient eth0; ifconfig eth0; route -n
+2008-07-11T19:53:00.000Z	syscode	unop	just did as you suggested.. how can i paste here large chunks of text without being punished..?
+2008-07-11T20:00:00.000Z	unop	syscode	i don't see why you can't connect to the internet, everything here is perfect
+2008-07-11T20:00:00.000Z	unop	syscode	what happens when you try and ping a host .. like google.com   ?

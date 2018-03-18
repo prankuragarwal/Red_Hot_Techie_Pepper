@@ -1,0 +1,21 @@
+2012-03-13T16:05:00.000Z	broglin		my computer had a usb key plugged in and was rebooted. now it's not mounted. i only have CLI access. How can I remount it?
+2012-03-13T16:05:00.000Z	broglin		(CLI access over ssh)
+2012-03-13T16:06:00.000Z	gvo	broglin	can you remove and reinstall it?
+2012-03-13T16:06:00.000Z	broglin	gvo	no, the machine is 5km away
+2012-03-13T16:07:00.000Z	gvo	broglin	OK then dmesg | more and find what device the usb drive has become.
+2012-03-13T16:07:00.000Z	gvo	broglin	then mount manually
+2012-03-13T16:07:00.000Z	gvo	broglin	are you sure it's not mounted?
+2012-03-13T16:07:00.000Z	broglin	gvo	yeah
+2012-03-13T16:08:00.000Z	gvo		ok do the dmesg|more
+2012-03-13T16:08:00.000Z	broglin	gvo	what do i look for there?
+2012-03-13T16:09:00.000Z	broglin	gvo	oh, i think i have it
+2012-03-13T16:09:00.000Z	broglin		[    5.567495] sd 6:0:0:0: [sdc] 7831552 512-byte logical blocks: (4.00 GB/3.73 GiB)
+2012-03-13T16:09:00.000Z	gvo		Right the next line might be more useful.
+2012-03-13T16:10:00.000Z	gvo		[1400130.487607]  sdd: sdd1
+2012-03-13T16:10:00.000Z	gvo		Something like that one.
+2012-03-13T16:10:00.000Z	broglin	gvo	[    5.568257] sd 6:0:0:0: [sdc] Write Protect is off
+2012-03-13T16:10:00.000Z	broglin		?
+2012-03-13T16:10:00.000Z	gvo		It's a few more lines down.
+2012-03-13T16:11:00.000Z	gvo		see if there is a sdc: sdc1 or something similar.
+2012-03-13T16:11:00.000Z	broglin	gvo	sudo fdisk -l /dev/sdc did the job :-)
+2012-03-13T16:11:00.000Z	broglin	gvo	yay, it works now. thanks for the help!

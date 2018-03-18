@@ -1,0 +1,21 @@
+2011-03-25T05:43:00.000Z	amh345		i'm trying to setup ssl on apache. i keep getting this error "[warn] RSA server certificate CommonName (CN) `www.blahblah.com'  does NOT match server name!?"  is this specific to the apache config or is it an issue with a cert?
+2011-03-25T05:43:00.000Z	critical_max	amh345	that's because your server name doesn't match, it's in the apache config
+2011-03-25T05:44:00.000Z	critical_max	amh345	make it match the cert on the server side
+2011-03-25T05:46:00.000Z	amh345	critical_max	oh. ok. i added ServerName www.blah.com and it got rid of the error.  now it appears to just be hanging on connecting to www.blah.com
+2011-03-25T05:47:00.000Z	critical_max	amh345	Excellent, now you can start watching "tail -f /var/log/apache2/error.log" and access.log on the server.
+2011-03-25T05:47:00.000Z	critical_max	amh345	yeah check that dns is resolving at all
+2011-03-25T05:47:00.000Z	amh345	critical_max	dns is definitely resolving. it's working on port 80
+2011-03-25T05:48:00.000Z	critical_max	amh345	to the error logs then
+2011-03-25T05:49:00.000Z	critical_max	amh345	just to make sure you can also ping your.site.com to make sure it's resolving. maybe restart browser. you know. :P
+2011-03-25T05:49:00.000Z	amh345	critical_max	error.log and access.log is giving me nothing.  oh boy
+2011-03-25T05:51:00.000Z	critical_max	amh345	sudo apachectl configtest?
+2011-03-25T05:51:00.000Z	amh345	critical_max	that returns Syntax OK
+2011-03-25T05:52:00.000Z	critical_max	amh345	are any other certs working on the server or is this your prototype ssl setup
+2011-03-25T05:56:00.000Z	critical_max	amh345	reason i ask is the next step i'd take is comparing it to a working config side by side. there can be a lot of idiosyncracies with different people's apache configs. So if you have another on that server, it could be instructive to compare them...
+2011-03-25T05:56:00.000Z	amh345	critical_max	this is my first ssl on this server.  i found that my firewall wasnt open to 443. now it is and it's hitting the site. of course im getting another error.
+2011-03-25T05:57:00.000Z	critical_max	amh345	good, that one should be in error.log :)
+2011-03-25T05:57:00.000Z	amh345	critical_max	yup! woohoo. error log got it.   Invalid method in request \x16\x03\x01
+2011-03-25T05:57:00.000Z	critical_max	amh345	this point is where it's nice to have a "screen" session or at least a couple of terminal windows, with tail -f running on those logs
+2011-03-25T05:58:00.000Z	critical_max	amh345	sounds like fun.
+2011-03-25T05:58:00.000Z	amh345	critical_max	yeah, thanks for that tail -f tip. i've got them all open in terminal.  muuuch faster
+2011-03-25T05:58:00.000Z	critical_max	amh345	you can get the same behavior with "less", hit shift+F with less opoen

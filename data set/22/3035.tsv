@@ -1,0 +1,22 @@
+2009-12-31T01:47:00.000Z	animuson		i cannot resolv anything from my server, how do i fix this???
+2009-12-31T01:48:00.000Z	guntbert	animuson	are talking about name resolution?
+2009-12-31T01:49:00.000Z	animuson		i cant use apt-get at all, everything returns could not resolve
+2009-12-31T01:49:00.000Z	guntbert	animuson	!pastebin the output of such a command please
+2009-12-31T01:50:00.000Z	animuson		http://pastebin.com/m26989781
+2009-12-31T01:51:00.000Z	guntbert		!who | animuson
+2009-12-31T01:52:00.000Z	guntbert	animuson	ok its a network problem - check your ip address - what gives ip ad?
+2009-12-31T01:53:00.000Z	animuson	guntbert	u mean what are my ip addresses?
+2009-12-31T01:54:00.000Z	guntbert	animuson	yes
+2009-12-31T01:54:00.000Z	animuson	guntbert	69.162.117.102 & 69.162.117.103
+2009-12-31T01:55:00.000Z	guntbert	animuson	now ping -c1 8.8.8.8
+2009-12-31T01:55:00.000Z	guntbert		!google | navidhg
+2009-12-31T01:56:00.000Z	animuson	guntbert	http://pastebin.com/m62c38ad5
+2009-12-31T01:57:00.000Z	guntbert	animuson	so your network is configured ok - it seems to be a problem of name resolution only - please pastebin /etc/resolv.cfg
+2009-12-31T01:57:00.000Z	animuson	guntbert	there is no resolv.cfg, theres a resolv.conf and a resolvconf folder
+2009-12-31T01:59:00.000Z	guntbert	animuson	sorry - I always use <tab> completion so I never remember the correct names - please /etc/resolv.conf
+2009-12-31T02:00:00.000Z	animuson	guntbert	http://pastebin.com/m1172bb4c
+2009-12-31T02:02:00.000Z	guntbert	animuson	do you run your own name server
+2009-12-31T02:02:00.000Z	animuson	guntbert	yea ns1.animuson.com and ns2.animuson.com go to those 2 ips
+2009-12-31T02:04:00.000Z	guntbert	animuson	then you somehow misconfigured your name server - because the addresses in resolv.conf are the same you gave me as IP addresses of your machine
+2009-12-31T02:05:00.000Z	animuson	guntbert	should they be pointing to the ip addresses for my domain provider?
+2009-12-31T02:07:00.000Z	guntbert	animuson	not necessarily - but if they point to your local name server that server must be configured correctly - you could point them to your ISP's NS (or use opendns.org) just to test if everything else is ok

@@ -1,0 +1,21 @@
+2010-05-21T22:57:00.000Z	Axan		If we block a package to a version, and then proceed major version upgrade (ex: 9.04 -> 9.10), does it keep the blocked version of the package or does it update it anyway ?
+2010-05-21T22:59:00.000Z	onetinsoldier	Axan	hello
+2010-05-21T23:03:00.000Z	onetinsoldier	Axan	if you put  package on 'keep', i don't think it'll get updated, but not positive. in the old days, you would upgrade to new version of debian/ubuntu distro by changing you're /etc/apt/sources.list file and the running apt-get update && apt-get dist-upgrade. and, you could do --> apt-get -s dist-upgrade to see what all it was going to do first, without actually doing it. not sure of way to do that now, but there is prob
+2010-05-21T23:05:00.000Z	Axan	onetinsoldier	actually, I'm trying to keep the default GPU drivers installed with 9.04 but which I cannot find in 10.04.. But maybe those drivers are not compliant with recent versions of xserver/kernel ?
+2010-05-21T23:06:00.000Z	onetinsoldier	Axan	correct. they will not work on new version of Xorg that's in Lucid... i can't be 100% certain of that, but i am pretty sure you will find that to be the case
+2010-05-21T23:07:00.000Z	Axan	onetinsoldier	So, what's the best thing to do ? To be "up to date", but with working openGl drivers ?
+2010-05-21T23:07:00.000Z	onetinsoldier	Axan	well, what make/model is your video card?
+2010-05-21T23:07:00.000Z	Axan	onetinsoldier	ATI Radeon X600  (RV380)
+2010-05-21T23:08:00.000Z	onetinsoldier	Axan	not sure. it's no longer supported by ATI? no longer a driver for it in ati's fglrx driver?
+2010-05-21T23:10:00.000Z	onetinsoldier	Axan	have you tried... System --> Administration --> Hardware Drivers    ...?
+2010-05-21T23:10:00.000Z	Axan	onetinsoldier	I tried to install drivers downloaded from ATI website (9.3..) but got my monito shut down on startup ^^
+2010-05-21T23:11:00.000Z	onetinsoldier	Axan	i doubt it.. don't know though
+2010-05-21T23:11:00.000Z	Axan	onetinsoldier	Hardware Drivers gives none, except when I manually build the ATI downloaded ones, but then it only show it "unactivated" and does nothing when I try to activate it.
+2010-05-21T23:13:00.000Z	onetinsoldier	Axan	i don't know. that card is probably no longer supported by the ati linux driver team would be my guess. that card is pretty old. i could be wrong! keep asking. someone else might know for certain. or search on the internet
+2010-05-21T23:14:00.000Z	Axan	onetinsoldier	the point seems to be that default drivers are ok but not working with openGL, the openGl working drivers are ok up to 9.04; but are not compliant with recent xserver..
+2010-05-21T23:27:00.000Z	onetinsoldier	Axan	perhaps you need to rename your /etc/X11/xorg.conf file, or remove it. see if you have that file
+2010-05-21T23:28:00.000Z	onetinsoldier	Axan	if you rename/remove that file, you would need to restart x-windows for the change to take effect
+2010-05-21T23:28:00.000Z	Axan	onetinsoldier	I tried severals tutorials from ubuntu.org actually (to install catalyst drivers, or open-source one, ... but none worked.. maybe I did something wrong.. maybe Its just doomed)
+2010-05-21T23:29:00.000Z	onetinsoldier	Axan	maybe.. maybe not. anyway, i don't usually do 'upgrades' for a new version of linux. i almost always do a fresh clean install
+2010-05-21T23:29:00.000Z	Axan	onetinsoldier	why ?
+2010-05-21T23:31:00.000Z	onetinsoldier	Axan	just so many different issues you can have with all kinds of things on an upgrade it seems like to me... fresh install, always works beautifully. if you are a very experienced user, then you can usually fix most issues yourself on an upgrade. otherwise, you're could be asking for trouble

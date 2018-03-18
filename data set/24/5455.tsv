@@ -1,0 +1,24 @@
+2007-06-27T16:33:00.000Z	jareth_		guys, i need help. after installing feisty, there is no entry for xp on one of me four sata disks...
+2007-06-27T16:35:00.000Z	jareth_		xp is installed on sda1
+2007-06-27T16:35:00.000Z	jareth_		how do i create grub entry for that
+2007-06-27T16:35:00.000Z	jareth_		?
+2007-06-27T16:36:00.000Z	clem	jareth_	edit /boot/grub/menu.lst .. there's a windows example commented out in there.
+2007-06-27T16:37:00.000Z	jareth_	clem	what will my root for xp be? /dev/sda1
+2007-06-27T16:37:00.000Z	clem	jareth_	should be /dev/sda1
+2007-06-27T16:38:00.000Z	clem	jareth_	hold on..
+2007-06-27T16:38:00.000Z	clem	jareth_	sorry ... root should be (hd0,0)
+2007-06-27T16:39:00.000Z	jareth_	clem	sure?
+2007-06-27T16:39:00.000Z	clem	jareth_	/dev/sda1 might also work... it's basically the same, hd0,0 is grub syntax.. /dev/sda1 is the way linux sees it.
+2007-06-27T16:40:00.000Z	jareth_	clem	thanks, i get back on you... !
+2007-06-27T16:40:00.000Z	clem	jareth_	ok
+2007-06-27T16:46:00.000Z	jareth_	clem	didn't work... :(
+2007-06-27T16:47:00.000Z	clem	jareth_	what did it say?
+2007-06-27T16:48:00.000Z	jareth_	clem	not valid .. bla bla
+2007-06-27T16:48:00.000Z	jareth_	clem	i got 4 sata disks
+2007-06-27T16:49:00.000Z	clem	jareth_	try with root /dev/sda1 so
+2007-06-27T16:49:00.000Z	jareth_	clem	ok
+2007-06-27T16:51:00.000Z	jareth_	clem	and chainloader option?
+2007-06-27T16:51:00.000Z	clem	jareth_	yep
+2007-06-27T16:52:00.000Z	jareth_	clem	+1 or sthg else?
+2007-06-27T05:02:00.000Z	clem	jareth_	error 11 or error 15?
+2007-06-27T05:03:00.000Z	clem	jareth_	try to replace " root            root /dev/sda1 so" with " root            /dev/sda1"

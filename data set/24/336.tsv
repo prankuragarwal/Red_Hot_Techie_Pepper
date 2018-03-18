@@ -1,0 +1,24 @@
+2011-11-12T20:53:00.000Z	pfifo	cYmen_	what command are you using to setup the mapper?
+2011-11-12T20:54:00.000Z	cYmen_	pfifo	was setup by ubuntu on boot
+2011-11-12T20:54:00.000Z	pfifo	cYmen_	can you paste your /etc/crypttab
+2011-11-12T20:55:00.000Z	cYmen_	pfifo	It's dead boring: home /dev/sda3 none none
+2011-11-12T20:55:00.000Z	pfifo	cYmen_	thats in your /etc/crypttab?
+2011-11-12T20:57:00.000Z	pfifo	cYmen_	run this `sudo cryptsetup luksOpen /dev/sda3 test` and then `mount /dev/mapper/test /mnt`
+2011-11-12T20:57:00.000Z	pfifo	cYmen_	sudo on both thos actually
+2011-11-12T21:01:00.000Z	cYmen_	pfifo	I have no idea what's going on cryptsetup isLuks returns 0 for sda3...
+2011-11-12T21:02:00.000Z	pfifo	cYmen_	are you sure /dev/sda3 is the correct partition?
+2011-11-12T21:03:00.000Z	cYmen_	pfifo	No, is there any way to check except isLuks?
+2011-11-12T21:03:00.000Z	pfifo	cYmen_	do a `sudo fdisk -l` you should be able to tell by the size of the partition
+2011-11-12T21:04:00.000Z	cYmen_	pfifo	By the size of the partition?
+2011-11-12T21:04:00.000Z	pfifo	cYmen_	I mean, you know your /home is so many gi9gabytes
+2011-11-12T21:05:00.000Z	cYmen_	pfifo	Yeah, it's definitely right.
+2011-11-12T21:07:00.000Z	pfifo	cYmen_	try mounting /dev/sda3 directly `sudo mount /dev/sda3 /mnt`
+2011-11-12T21:10:00.000Z	cYmen_	pfifo	Says it needs the fs type...
+2011-11-12T21:12:00.000Z	pfifo	cYmen_	well it appears it uses dm-crypt without LUKS, Im not as well practiced with this mode of operation, I suggest looking up a cryptsetup tutorial and trying different options in hops you can find one that works
+2011-11-12T21:13:00.000Z	cYmen_	pfifo	dm-crypt without luks? who's ever heard of something like that. :D
+2011-11-12T21:15:00.000Z	pfifo	cYmen_	if you happen to have your old /etc/crypttab from an older install, you can use the info in it
+2011-11-12T21:35:00.000Z	pfifo	cYmen_	I think aes has been the standard for quite some time now. Per haps you should get an old install CD and install an older version, and see whats in /etc/crypttab
+2011-11-12T21:42:00.000Z	cYmen_	pfifo	Okay, found it..
+2011-11-12T21:42:00.000Z	cYmen_	pfifo	Cryptsetup is not by default compatible with the version in 10.04LTS. An encrypted disk set up under 10.04LTS will fail to properly mount under maverick. This is because, as documented in the /usr/share/doc/cryptsetup/NEWS.Debian.gz, defaults have changed. So to mount a disk which was created in 10.04LTS with cryptsetup, in 10.10 you must specify the cipher as such: cryptsetup -c aes-cbc-plain create h /dev/sdb1 (622762)
+2011-11-12T21:44:00.000Z	pfifo	cYmen_	I recommend, once you get it open, making a backup and converting to LUKS
+2011-11-12T21:46:00.000Z	cYmen_	pfifo	Yeah, makes sense, and changing the cipher as well...

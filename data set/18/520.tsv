@@ -1,0 +1,18 @@
+2012-01-24T08:33:00.000Z	flowerpot		While installing Chef, I had to modify my path to include a certain directory.  Since Chef relies on commands in this directory to do its business, and it looks like it assumes the path is set correctly, I want to make sure that this directory is always contained in the path whenever a command is run from any shell.  How can I do that?
+2012-01-24T08:34:00.000Z	zykotick9	flowerpot	see .profile
+2012-01-24T08:35:00.000Z	flowerpot	zykotick9	isn't that only for login shells?
+2012-01-24T08:36:00.000Z	flowerpot	zykotick9	my goal is to ensure that the directory is included in the path for every possible shell
+2012-01-24T08:37:00.000Z	zykotick9	flowerpot	and i think you'll find .profile will do that for you.  but i'm no 100%
+2012-01-24T08:37:00.000Z	flowerpot	zykotick9	unfortunately bash only reads ~/.profile when it is invoked as a login shell
+2012-01-24T08:38:00.000Z	zykotick9	flowerpot	use .bashrc then?
+2012-01-24T08:38:00.000Z	zykotick9	flowerpot	i still believe it's .profile you want though...
+2012-01-24T08:39:00.000Z	zykotick9	flowerpot	the ~/bin PATH is established in .profile - that certainly applies to all terminals (login or not)
+2012-01-24T08:39:00.000Z	flowerpot	zykotick9	it seems ~/.bashrc is only invoked if the shell is interactive but not a login shell
+2012-01-24T08:42:00.000Z	flowerpot	zykotick9	the trick, i guess, is that I don't really know where PATH is originally defined.  it doesn't seem like /etc/profile and /etc/bash.bashrc cover all possible cases, but i could be wrong
+2012-01-24T08:43:00.000Z	zykotick9	flowerpot	where $PATH origionates is a bit of a mystery to me (and i've looked into it a couple of times).  I'd just try ~/.profile and test.
+2012-01-31T16:08:00.000Z	zykotick9	flowerpot	don't count tmpfs proc sysfs udev stuff, they aren't drives
+2012-01-31T16:14:00.000Z	zykotick9	flowerpot	fuse related mounts?
+2012-02-02T05:41:00.000Z	flowerpot	zykotick9	that's all well and good, but it's like saying 'it is impossible to have sex; we do not speak of it' in a sex ed class
+2012-02-04T10:44:00.000Z	zykotick9	flowerpot	yes, they are just hidden
+2012-02-04T10:45:00.000Z	zykotick9	flowerpot	#ubuntu-ops i believe is a channel you could contact them in
+2012-02-04T10:48:00.000Z	flowerpot	zykotick9	urlin2u: thanks

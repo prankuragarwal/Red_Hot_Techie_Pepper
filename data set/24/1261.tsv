@@ -1,0 +1,24 @@
+2010-08-05T17:18:00.000Z	imanc		does anyone know why I can't ssh into my server with thsi new user (is it to do with the shell or group?)  externalaccess:x:1005:1006::/home/externalaccess:/bin/sh
+2010-08-05T17:20:00.000Z	Pici	imanc	Whats happening when you try?
+2010-08-05T17:21:00.000Z	imanc	Pici	I'm getting permission denied.  I have set the pwd twice with usermod -p pass externaluser
+2010-08-05T17:23:00.000Z	Pici	imanc	Does that user's home directory exist?
+2010-08-05T17:23:00.000Z	imanc		pico - probably not
+2010-08-05T17:23:00.000Z	imanc		adding now
+2010-08-05T17:25:00.000Z	imanc	Pici	 still no dice, odd.
+2010-08-05T17:26:00.000Z	Pici	imanc	Can you add the -v argument to ssh and see if the error is coming out of ssh or that user's shell?
+2010-08-05T17:26:00.000Z	imanc	Pici	OK
+2010-08-05T17:27:00.000Z	imanc	Pici	it is saying: debug1: Authentications that can continue: publickey,password
+2010-08-05T17:27:00.000Z	imanc		Permission denied, please try again.
+2010-08-05T17:27:00.000Z	imanc		what is freaking me out
+2010-08-05T17:27:00.000Z	imanc		is i have created loads of accounts nad had no issues before
+2010-08-05T17:28:00.000Z	imanc		doing to try a basic pwd now
+2010-08-05T17:28:00.000Z	imanc	Pici	I just changed the pwd with: usermod -p testing externalaccess
+2010-08-05T17:29:00.000Z	Pici	imanc	Can you check /var/log/auth.log , perhaps theres something relevant logged there.
+2010-08-05T17:29:00.000Z	imanc	Pici	OK
+2010-08-05T17:30:00.000Z	imanc	Pici	Aug  5 13:29:29 localhost sshd[2557]: Failed password for externalaccess from 81    <- mostly that. So wtf
+2010-08-05T17:34:00.000Z	imanc	Pici	it was usermod -p that didnt' work. passwd externalaccess worked fine. Hmm.]
+2010-08-05T17:34:00.000Z	Pici	imanc	Can you change that user's password with passwd instead of usermod?  I'm looking through the usermod manpage and it looks like it expects an encrypted password there.
+2010-08-05T17:34:00.000Z	Pici	imanc	Yes, that :)
+2010-08-05T17:34:00.000Z	imanc	Pici	yeh, figured it'd want the pwd pre-encrypted
+2010-08-05T17:34:00.000Z	imanc	Pici	I'm sure I have been here before. Doh! Thanks for your help!
+2010-08-05T17:35:00.000Z	Pici	imanc	Sure.

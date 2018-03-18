@@ -1,0 +1,19 @@
+2008-08-02T18:57:00.000Z	jedimind		when i try to execute 'sudo gedit ...' it just sits there after password entry and doesnt load gedit ... this used to work just fine and it works when i do straight 'gedit' just not when i sudo; i havent touched sudoers or anything so im not sure where its going wrong .... any help would be appreciated
+2008-08-02T18:58:00.000Z	jedimind		okay ... though it used to work like this before
+2008-08-02T18:58:00.000Z	jedimind		i'll give that a shot
+2008-08-02T18:58:00.000Z	legend2440	jedimind	you really should use gksudo with gui apps like gedit
+2008-08-02T18:59:00.000Z	jedimind	legend2440	hows that relevant? lol
+2008-08-02T19:04:00.000Z	legend2440	jedimind	do admin apps like Login Window open?
+2008-08-02T19:05:00.000Z	jedimind	legend2440	yes - everything through the GUI seems to be working okay .... except that sometimes GNOME Desktop manager takes about 5 minutes to kick in after initial boot (but its sperradic i cant recreate it, just happens randomly)
+2008-08-02T19:05:00.000Z	jedimind	legend2440	dont think its related though
+2008-08-02T19:13:00.000Z	legend2440	jedimind	is it only gksudo gedit that  hangs?   does sudo nano work?
+2008-08-02T19:14:00.000Z	jedimind	legend2440	yes it does sudo vi, nano, pico all work just fine
+2008-08-02T19:16:00.000Z	legend2440	jedimind	ok humor me   open /etc/hostname  and /etc/hosts   files  iguess you'll have to use nano.  anyway check to see that  the second line in /etc/hosts    says                   127.0.1.1 <same as it says in /etc/hostname>
+2008-08-02T19:18:00.000Z	jedimind	legend2440	hostname just contains the name of the host, not the ip - and yes /etc/hosts is pointing that name to 127.0.1.1
+2008-08-02T19:20:00.000Z	jedimind	legend2440	there WAS another declaration for the same host pointing it to 127.0.0.1; i removed it from /etc/hosts but still hasnt fixed the issue (unless i have to log out or something, but normally you dont have to when editing /etc/hosts)
+2008-08-02T19:21:00.000Z	legend2440	jedimind	no shouldn't need to logout. ok well worth a shot. a lot of times if those two files don't match it causes   sudo problems
+2008-08-02T19:22:00.000Z	legend2440	jedimind	/etc/hosts  should be     127.0.0.1 localhost
+2008-08-02T19:23:00.000Z	legend2440	jedimind	ok
+2008-08-02T19:23:00.000Z	jedimind	legend2440	its cool its not really that big a deal, im going to be moving to a new laptop (fresh install) in a few days anyway was just curious
+2008-08-02T19:24:00.000Z	jedimind	legend2440	thx for the help
+2008-08-02T19:24:00.000Z	legend2440	jedimind	your welcome

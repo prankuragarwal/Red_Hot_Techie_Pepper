@@ -1,0 +1,24 @@
+2008-05-05T03:17:00.000Z	tubatedd		Hey
+2008-05-05T03:17:00.000Z	tubatedd		I got a Asus P5E-VM HDMI  mainboard with intel integrated G35 graphics. Cant get it to work with ubuntu. Cant find anything on forums. help?
+2008-05-05T03:18:00.000Z	usser	tubatedd	cant get what to work? video?
+2008-05-05T03:18:00.000Z	tubatedd		THe problem is that it works in VESA mode but not when i choose normal video
+2008-05-05T03:18:00.000Z	tubatedd	usser	yeah video
+2008-05-05T03:19:00.000Z	tubatedd		Anyone here that know if graphics (other than VESA) is possible , and how, on Asus P5E-VM HDMI  ?
+2008-05-05T03:19:00.000Z	usser	tubatedd	hm intel is usually pretty good with their graphics drivers
+2008-05-05T03:20:00.000Z	tubatedd	usser	 it boots normal. boot when the login screen is about to pop up, i get a blank black screen
+2008-05-05T03:20:00.000Z	usser	tubatedd	and what driver did it try to use by default in xorg?
+2008-05-05T03:21:00.000Z	tubatedd	usser	i dont know
+2008-05-05T03:21:00.000Z	tubatedd		uss the screen was blank
+2008-05-05T03:22:00.000Z	usser	tubatedd	open /etc/X11/xorg.conf and look for "Device" section
+2008-05-05T03:23:00.000Z	tubatedd	usser	right now it says VESA
+2008-05-05T03:23:00.000Z	usser	tubatedd	aha
+2008-05-05T03:23:00.000Z	usser	tubatedd	try putting intel there and restart X server
+2008-05-05T03:24:00.000Z	tubatedd	usser	it says i cant write in that file
+2008-05-05T03:24:00.000Z	tubatedd	usser	and how do i restart X server?
+2008-05-05T03:24:00.000Z	usser	tubatedd	sudo gedit /etc/X11/xorg.conf
+2008-05-05T03:25:00.000Z	usser	tubatedd	this will bring up editor
+2008-05-05T03:25:00.000Z	usser	tubatedd	CTRL+ALT+BACKSPACE restarts X
+2008-05-05T03:25:00.000Z	tubatedd	usser	OK i get it
+2008-05-05T03:25:00.000Z	tubatedd	usser	What if i get blank screen...?
+2008-05-05T03:26:00.000Z	usser	tubatedd	its most likely going to give u safe mode, but if no output do CTRL+ALT+F2 login, and sudo /etc/init.d/gdm stop
+2008-05-05T03:26:00.000Z	usser	tubatedd	sudo nano /etc/X11/xorg.conf change intel back to vesa and sudo /etc/init.d/gdm start

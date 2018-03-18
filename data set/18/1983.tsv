@@ -1,0 +1,18 @@
+2010-09-22T23:06:00.000Z	is-mw		Hi, have a strange problem, I cannot understand: I downloaded eclipse 3.3, unzipped it, but when try to start ./eclipse it tells me "no such file or directory" but the file is there and I have the priviliges to execute it.. what goes wrong (ubuntu 10)
+2010-09-22T23:07:00.000Z	kdford	is-mw	is it possible that eclipse program ran (when you executed it) but that it is reporting back that some other file ismissing?
+2010-09-22T23:09:00.000Z	is-mw	kdford	how do I now.. the eclipse file is a binary executable and the error only says: bash: ./eclipse: no such file or directory
+2010-09-22T23:09:00.000Z	kdford		because eclipse file is a script that does a lot of things, and it refers to several other files.  maybe you can echo its output
+2010-09-22T23:09:00.000Z	kdford	is-mw	this is the 10th line of my xxx/eclipse file
+2010-09-22T23:10:00.000Z	kdford	is-mw	... oops, forgot to paste... ECLIPSE=/usr/lib/eclipse/eclipse
+2010-09-22T23:10:00.000Z	kdford	is-mw	are you specifying ./eclipse, not just eclipse?
+2010-09-22T23:12:00.000Z	kdford	is-mw	I guess there is a specific reason you need such an old version of Eclipse?  Otherwise you can install Eclipse 3.5 from the Ubuntu repository
+2010-09-22T23:12:00.000Z	is-mw	kdford	yeah, I use ./eclipse and yeah I need eclipse 3.3 because I'm not sure if the new version supports a plugin, I want to use
+2010-09-22T23:15:00.000Z	kdford	is-mw	have you tried to trace the script, using
+2010-09-22T23:15:00.000Z	kdford		bash -x ./eclipse
+2010-09-22T23:15:00.000Z	kdford	is-mw	that will show you the commands that are being executed.
+2010-09-22T23:15:00.000Z	is-mw		i'll try
+2010-09-22T23:16:00.000Z	is-mw		it tells: ./eclipse: ./eclipse: cannot execute binary file
+2010-09-22T23:16:00.000Z	kdford	is-mw	it should let you know if the problem is RUNNING the eclipse file, or if the problem is a line inside the eclipse script, that refers to another file that is the probelm.
+2010-09-22T23:16:00.000Z	kdford		Did you unpack the windows version?
+2010-09-22T23:16:00.000Z	is-mw		no, linux-version
+2010-09-22T23:16:00.000Z	kdford	is-mw	can you cat the eclipse file?

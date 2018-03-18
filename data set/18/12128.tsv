@@ -1,0 +1,18 @@
+2010-04-10T02:20:00.000Z	elknof1		hi everyone, Im trying to set up a double boot system on a aspire one zg5 (aoa150), ive already installed windows xp sp3 and ubuntu 9.10, since i want to share files between partitions i used ext2ifs but when i tryed to acces the partition it showed me an error something that the partition has no format and asks me if i want to format it, of course i dont. Then idownloaded the utility from the page and it told me thet the partition was made with and inod
+2010-04-10T02:21:00.000Z	sp	elknof1	IIRC ext2ifs is lacking ext4 support... now if you formatted an Ubuntu partition as ext4 that won't work out
+2010-04-10T02:22:00.000Z	elknof1	sp	no i didnt formatted as ext4, i did as ext3
+2010-04-10T02:23:00.000Z	sp	elknof1	and you used the tool coming with ext2ifs to mount the ext partition?
+2010-04-10T02:24:00.000Z	elknof1		brb out to eat...
+2010-04-10T02:24:00.000Z	elknof1	sp	yes
+2010-04-10T02:24:00.000Z	sp	elknof1	sounds weird... is ubuntu in hibernate by any chance?
+2010-04-10T02:25:00.000Z	elknof1	sp	never
+2010-04-10T02:25:00.000Z	elknof1	sp	the solution is to format my ext3 partition with and inode size of 128 instead of 256...
+2010-04-10T02:25:00.000Z	elknof1		but dont know how..
+2010-04-10T02:25:00.000Z	sp	elknof1	sounds weird... but to be honest I haven't played with ext2ifs in a while... could be a lot of things causing those problems for you
+2010-04-10T02:26:00.000Z	elknof1	sp	ive done some research and is something with mkfs -I 128  but just dont know how to finish the line since my /dev/sda7 is the partition in question....
+2010-04-10T02:27:00.000Z	sp	elknof1	elknof1 you are aware of the fact that using that command will delete everything off that partition, right?
+2010-04-10T02:27:00.000Z	sp	elknof1	however, if you do not need any other options mke2fs -I xxx /dev/sdXY should do the trick
+2010-04-10T02:28:00.000Z	sp	elknof1	if you are unsure about the options have a look at man mke2fs
+2010-04-10T02:28:00.000Z	sp	elknof1	oh, and using mkfs.ext3 might be a better idea :)
+2010-04-10T02:52:00.000Z	elknof1	sp	sorry, went to eat, yeah Ive read something about mkfs.ext3, but i dont know how to finish the line with the -I 128 parameter, yes I know everything in the partition will be deleted, i just read it a cvouple of hour ago, so i did my bckup...
+2010-04-10T02:52:00.000Z	elknof1	sp	could you help me to do the whole line?

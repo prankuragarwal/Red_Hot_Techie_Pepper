@@ -1,0 +1,19 @@
+2007-03-07T08:15:00.000Z	sdrev		i guess i'll have to look in the kernel and see if there is something in there
+2007-03-07T08:17:00.000Z	sdrev		if i hit Alt+F2, what should i type to bring up the Terminal?
+2007-03-07T08:17:00.000Z	bruenig	sdrev	gnome-terminal
+2007-03-07T08:18:00.000Z	sdrev	bruenig	thanks!
+2007-03-07T08:28:00.000Z	bruenig	sdrev	it is your users password
+2007-03-16T07:21:00.000Z	bruenig	sdrev	it is in universe, do you have the universe repo enabled
+2007-03-16T07:22:00.000Z	sdrev	bruenig	yes, i have that enabled
+2007-03-16T07:22:00.000Z	bruenig	sdrev	do apt-cache search deluge
+2007-03-16T07:23:00.000Z	sdrev	bruenig	it doesn't return anything, just goes back to the prompt
+2007-03-16T07:23:00.000Z	bruenig	sdrev	pastebin your /etc/apt/sources.list
+2007-03-16T07:25:00.000Z	sdrev	bruenig	http://paste.ubuntu-nl.org/10561/
+2007-03-16T07:26:00.000Z	bruenig	sdrev	run this, sudo sed 's/# deb/deb/g' -i.backup /etc/apt/sources.list && sudo apt-get update && sudo apt-get install deluge-torrent
+2007-03-16T07:30:00.000Z	sdrev	bruenig	thanks, that worked, but do you happen to know why the universe repository didn't actually load when i enabled it through the Synaptic Package manager?
+2007-03-16T07:31:00.000Z	bruenig	sdrev	because it was commented out, look back at your paste, line 16 and 17, anything that has a # in front of it is commented out and won't be read
+2007-03-16T07:32:00.000Z	sdrev	bruenig	yeah, i noticed that it was commented out in the sources.list; does that mean the synaptic package manager doesn't have permission or the capabilities to uncomment that file?
+2007-03-16T07:33:00.000Z	bruenig	sdrev	you have to set it to do it in preferences or something. I am not sure exactly where you do that, But you have to configure synaptic to uncomment it.
+2007-03-16T07:33:00.000Z	sdrev	bruenig	ok, thanks
+2007-03-16T07:42:00.000Z	sdrev	bruenig	if you don't mind me asking is the synaptic package manager just a gui for apt-get? if so, how - or is it - related to aptitude?
+2007-03-16T07:42:00.000Z	bruenig	sdrev	I don't know if synaptic uses apt-get or aptitude, it is a frontend for one of them

@@ -1,0 +1,23 @@
+2008-08-07T05:26:00.000Z	darthanubis		Adding a new service
+2008-08-07T05:26:00.000Z	darthanubis		update-rc.d foo default
+2008-08-07T05:26:00.000Z	darthanubis		thats not working
+2008-08-07T05:28:00.000Z	darthanubis		I need to add a new service via the command line please?
+2008-08-07T05:30:00.000Z	darthanubis		The Debian way, which should be the ubuntu way, is not working, when it used to. So I'm wonder, what changed if anything?
+2008-08-07T05:30:00.000Z	nickrud	darthanubis	when you install it with ubuntu, it automatically installs itself in run levels
+2008-08-07T05:31:00.000Z	nickrud	darthanubis	stepping back a little, that sounds more like a server issue than a runlevel issue
+2008-08-07T05:31:00.000Z	darthanubis	nickrud	could you tell me how to inssert the service into the correct runlevel should the automagical way FAILS
+2008-08-07T05:32:00.000Z	darthanubis	nickrud	I'm just trying to get proper syntax for the task which I'm asking atm?
+2008-08-07T05:33:00.000Z	nickrud	darthanubis	update-rc.d start <sequence> 2 3 4 5 stop 0 1 6
+2008-08-07T05:33:00.000Z	nickrud	darthanubis	update-rc.d start <order> 2 3 4 5 stop <order> 0 1 6 may be clearer
+2008-08-07T05:34:00.000Z	nickrud	darthanubis	then you have problems other than setting up runlevels. Maybe you should simply say what the real problem is
+2008-08-07T05:35:00.000Z	darthanubis	nickrud	I can't say it any clearer
+2008-08-07T05:35:00.000Z	nickrud	darthanubis	you finally did. what's the service you're trying to start? Is it in /etc/init.d
+2008-08-07T05:36:00.000Z	darthanubis	nickrud	its absolutely in the correct dir
+2008-08-07T05:37:00.000Z	nickrud	darthanubis	and   sudo update-rc.d  <exactservicenameaswrittenininit.d> defaults
+2008-08-07T05:37:00.000Z	nickrud	darthanubis	fails?
+2008-08-07T05:38:00.000Z	darthanubis	nickrud	yes sir
+2008-08-07T05:39:00.000Z	nickrud	darthanubis	that is very strange, since all update-rc.d is look at the service name you give and create links based on it. There's got to be something you're missing. Try putting darthtest in /etc/init.d , and running  sudo update-rc.d darthtest defaults
+2008-08-07T05:40:00.000Z	nickrud	darthanubis	does /etc/rc2.d have SNN<yourinitscript> ?
+2008-08-07T05:41:00.000Z	darthanubis	nickrud	yes
+2008-08-07T05:42:00.000Z	nickrud	darthanubis	then you have correctly used update-rc2.d . The problem is in the server startstop script.
+2008-08-07T05:45:00.000Z	nickrud	darthanubis	sudo invoke-rc.d <service> start will start service

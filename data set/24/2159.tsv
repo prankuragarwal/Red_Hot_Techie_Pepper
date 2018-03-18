@@ -1,0 +1,24 @@
+2010-03-18T01:11:00.000Z	ikonia	meganerd	AbortD maybe take this to #ubuntu-offtopic ?
+2012-04-25T19:40:00.000Z	ikonia	meganerd	what ?
+2012-04-25T19:40:00.000Z	ikonia	meganerd	that won't do anything
+2012-10-10T23:11:00.000Z	ikonia	meganerd	I've used it as a router many times
+2012-10-10T23:11:00.000Z	meganerd	ikonia	OK, to be clear, we are talking about vanilla IP routing, not NATR
+2012-10-10T23:11:00.000Z	meganerd	ikonia	erm not NAT that should say
+2012-10-10T23:12:00.000Z	ikonia	meganerd	yes
+2012-10-10T23:12:00.000Z	meganerd	ikonia	just checking, even google does not seem to accept that
+2012-10-10T23:13:00.000Z	ikonia	meganerd	it's just iptables, nothing more
+2012-10-10T23:13:00.000Z	meganerd	ikonia	no iptables should be required
+2012-10-10T23:13:00.000Z	ikonia	meganerd	yes, it should,
+2012-10-10T23:13:00.000Z	meganerd	ikonia	beyond adding 1 to /proc/sys/net/ipv4/ip_forward, I just need routes back to my network, correct?
+2012-10-10T23:14:00.000Z	ikonia	meganerd	you need to use iptables
+2012-10-10T23:14:00.000Z	meganerd	ikonia	I am connecting two lan segments, I do not see why iptables is needed (it will be used to lock down the link, but I do not see how it is required for basic routing)
+2012-10-10T23:15:00.000Z	ikonia	meganerd	no problem then
+2012-10-10T23:15:00.000Z	ikonia	meganerd	you can create a bridge interface for just bridging the two lans
+2012-10-10T23:15:00.000Z	meganerd	ikonia	I am not bridging
+2012-10-10T23:16:00.000Z	ikonia	meganerd	so what are you doing, you're not routing, your not bridging ?
+2012-10-10T23:16:00.000Z	meganerd	ikonia	I am routing
+2012-10-10T23:17:00.000Z	meganerd	ikonia	I figured it out, I forgot to add a route back to LAN B.
+2012-10-10T23:17:00.000Z	meganerd	ikonia	basically I have two networks, lets say 10.0.0.0/24 and 10.0.1.0/24, I want to route between them but not bridge them
+2012-10-10T23:18:00.000Z	meganerd	ikonia	I forgot to add a route on network A back to Network B.  No iptables required, I just forgot the second half.  Thanks for the assist.
+2012-10-10T23:19:00.000Z	meganerd	ikonia	your questions helped me spot the error
+2012-10-10T23:20:00.000Z	meganerd	ikonia	questions are usually more useful than answers :)

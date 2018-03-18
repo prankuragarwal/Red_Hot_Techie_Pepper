@@ -1,0 +1,18 @@
+2009-04-26T19:22:00.000Z	evantandersen		in a shell script how do i turn a string that is "63" into a number?
+2009-04-26T19:22:00.000Z	evantandersen		like a string that is just a number, so i can feed it to expr
+2009-04-26T19:22:00.000Z	unop	evantandersen	in shell scripts, everything is a string
+2009-04-26T19:23:00.000Z	evantandersen	unop	when i pass it to expr, i get a non numeric entry error
+2009-04-26T19:23:00.000Z	unop	evantandersen	ok, how are you passing it to expr ?
+2009-04-26T19:23:00.000Z	evantandersen	unop	oh yeah. oops.
+2009-04-26T19:24:00.000Z	unop	evantandersen	 yea??
+2009-04-26T19:25:00.000Z	evantandersen	unop	this is the line that prints a number:  do for a in `sensors |grep Core | grep -o +.....C`; do echo -n $a | sed 's/+\(..\)\...C/\1/g';
+2009-04-26T19:25:00.000Z	evantandersen	unop	when I called $a, it was still +61.0*C instead of just 61.
+2009-04-26T19:26:00.000Z	evantandersen	unop	but how do i capture the text that i printed and put it into a var?
+2009-04-26T19:26:00.000Z	unop	evantandersen	var=$(some_command);
+2009-04-26T19:28:00.000Z	evantandersen	unop	my command has multiplie steps, with do commands. The way you said doesn't work
+2009-04-26T19:29:00.000Z	unop	evantandersen	  var="+61.59C"; echo $var; var=${var#[^0-9]*}; echo $var;  var=${var%%[^0-9]*};  echo $var;
+2009-04-26T19:32:00.000Z	evantandersen	unop	thanks
+2009-04-26T19:32:00.000Z	evantandersen	unop	do you know how to trap control-c, so that when it is pressed i can execute code before exiting?
+2009-04-26T19:34:00.000Z	unop	evantandersen	 see  'help trap'
+2009-04-26T19:35:00.000Z	unop	evantandersen	 something like.   trap command INT
+2009-04-26T19:36:00.000Z	unop	evantandersen	 or.   function cleanup() { commands; };  trap cleanup 1 2 3 6

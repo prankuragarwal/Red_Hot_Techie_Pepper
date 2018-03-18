@@ -1,0 +1,18 @@
+2009-11-12T13:43:00.000Z	bastl		hello i'm making a GTK application that embeds a xulrunner-based HTML component. After upgrading to 9.10, I get this error when linking: /usr/bin/ld: warning: libmozjs.so, needed by /usr/lib/xulrunner-devel-1.9.1.4/lib/libxul.so, not found (try using -rpath or -rpath-link)
+2009-11-12T13:43:00.000Z	bastl		but libmozjs.so is available as locate tells me
+2009-11-12T13:44:00.000Z	ActionParsnip	bastl	you will need to find where xulrunner expects the file to be then symlink it
+2009-11-12T13:45:00.000Z	ActionParsnip	bastl	or check the location of the file is part of PATH
+2009-11-12T13:45:00.000Z	bastl	ActionParsnip	ah, /usr/lib/xulrunner/libmozjs.so is dead. But why do I have to set it manually?
+2009-11-12T13:46:00.000Z	ActionParsnip	bastl	not sure, its not something i use
+2009-11-12T13:46:00.000Z	ActionParsnip	bastl	but you obviously do in your situation
+2009-11-12T13:46:00.000Z	ActionParsnip	bastl	maybe its a bug
+2009-11-12T13:47:00.000Z	ActionParsnip	bastl	the files in the packages will go right where they are now so i doubt it will remedy stuff, worth a try now. It is free
+2009-11-12T14:17:00.000Z	bastl	ActionParsnip	I managed to set the link to the missing libmozjs.so manually. Now the linker succeeds. But the built binary complains: libxul.so: cannot open shared object file: No such file or directory. This seems related to https://bugs.launchpad.net/ubuntu/+source/xulrunner-1.9/+bug/286906
+2009-11-12T14:18:00.000Z	ActionParsnip	bastl	i guess you'll have to work around the bug or fix the bug yourself
+2009-11-12T14:19:00.000Z	ActionParsnip	bastl	its still essentially linux which has lots of weird quirks
+2009-11-12T14:20:00.000Z	ActionParsnip	bastl	well, any political policy isnt the best but the best we have ;)
+2011-01-09T02:05:00.000Z	ActionParsnip	bastl	if you can mount it then it is partitioned
+2011-01-09T02:05:00.000Z	bastl	ActionParsnip	I want to repartition it.
+2011-01-09T02:07:00.000Z	ActionParsnip	bastl	if you use sudo fdisk diskname     (not the partition), e.g.   sudo fdisk /dev/sdb     then you can delete the partition there (make sure the partition is unmounted before you run the command)
+2011-01-09T02:09:00.000Z	bastl	ActionParsnip	My question is: Why do the partitions not appear in GParted? (Another Disk (sda) is shown correctly. fdisk -l shows the partitions of sdb correctly. But not GParted ..
+2011-01-09T02:11:00.000Z	ActionParsnip	bastl	not sure man, as rusty says, make sure you change the disk in gparted

@@ -1,0 +1,23 @@
+2011-10-05T09:04:00.000Z	Northwoods		when i try to save a file in my  /var/www/test.php , it doesn't let me save it says permission denied , i have only one login i.e Northwoods , which is probably should have admin rights
+2011-10-05T09:04:00.000Z	Northwoods		what should i check or do ?
+2011-10-05T09:04:00.000Z	FoolsRun	Northwoods	you may have to use sudo
+2011-10-05T09:05:00.000Z	Northwoods	FoolsRun	^
+2011-10-05T09:05:00.000Z	FoolsRun	Northwoods	or gksudo in X
+2011-10-05T09:05:00.000Z	Northwoods	FoolsRun	let me try
+2011-10-05T09:07:00.000Z	Northwoods	FoolsRun	i did gksudo , it brings up a window to do a TASK as root , but i want to login into my desktop enviorment as ROOT ?
+2011-10-05T09:08:00.000Z	FoolsRun	Northwoods	you want to save your file as root. Well, sorta. The problem is that your user doesn't have rights to /var/www. That's normal.
+2011-10-05T09:08:00.000Z	Northwoods	FoolsRun	yes , but how do i login as ROOt?
+2011-10-05T09:09:00.000Z	FoolsRun	Northwoods	you could just sudo mkdir /var/www/Northwoods    and then    chown it to your name, then save stuff there
+2011-10-05T09:10:00.000Z	FoolsRun	Northwoods	you can't, or shouldn't. You should run as a limited user unless you actually need to do something as root. Then you can sudo
+2011-10-05T09:11:00.000Z	Northwoods	FoolsRun	sudo mkfile /var/www/ this means that i will have to use X everytime i have to make a new file for my project
+2011-10-05T09:12:00.000Z	FoolsRun	Northwoods	sudo mkdir /var/www/your_folder_name
+2011-10-05T09:12:00.000Z	Northwoods	FoolsRun	did that , but it wont  let me paste any files into this folder even
+2011-10-05T09:12:00.000Z	FoolsRun	Northwoods	did you chown it to your user?
+2011-10-05T09:13:00.000Z	FoolsRun	Northwoods	 sudo chown northwoods /var/www/foldername
+2011-10-05T09:15:00.000Z	FoolsRun	Northwoods	here's an even better option,  http://heriman.wordpress.com/2008/08/05/enabling-apache-user-home-public_html-directory-in-ubuntu/
+2011-10-05T09:16:00.000Z	Northwoods	FoolsRun	yes it worked ,
+2011-10-05T09:16:00.000Z	FoolsRun	Northwoods	the userdir mod for Apache, which should ship disabled with Ubuntu, will let you work in /home/Northwoods/public_html
+2011-10-05T09:17:00.000Z	FoolsRun	Northwoods	which would be available at http://hostname/~yourname
+2011-10-05T09:17:00.000Z	Northwoods	FoolsRun	yes link you sent , seems to be solution to my problem
+2011-10-05T09:17:00.000Z	FoolsRun	Northwoods	not sure if you have to make the public_html folder yourself or not
+2011-10-05T09:19:00.000Z	FoolsRun	Northwoods	good luck! I'm out for the night.

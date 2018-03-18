@@ -1,0 +1,19 @@
+2009-08-09T17:15:00.000Z	troythetechguy		If I want to run a mixed environment (Windows & Linux), and want to be able to access my files (pictures, music, etc) regardless of which system I boot into, what is the best way to do this?
+2009-08-09T17:15:00.000Z	skapism	troythetechguy	make an ntfs data partition
+2009-08-09T17:15:00.000Z	skapism	troythetechguy	unfortunately, windows has near to nonexistant ext3 support
+2009-08-09T17:16:00.000Z	troythetechguy	skapism	If I understand right, both Windows & Ubuntu can read & write to the NFTS "data" partition I create?
+2009-08-09T17:16:00.000Z	skapism	troythetechguy	yes, the ntfs-3g fuse driver is stable since some two years ago
+2009-08-09T17:17:00.000Z	skapism	troythetechguy	and is delivered out of the box in all the latest versions of most distributrions, afaik
+2009-08-09T17:17:00.000Z	troythetechguy	skapism	Files system wise, any concern running NTFS for my data vs. ext-3?
+2009-08-09T17:17:00.000Z	skapism	troythetechguy	I believe since 7.04 in ubuntu
+2009-08-09T17:18:00.000Z	skapism	troythetechguy	well, how do you mean? I have seen much more problems with ntfs, I don't really consider it stable. and you can't run and fsck on it from linux, you can only label it as for check and have windows repair it
+2009-08-09T17:18:00.000Z	skapism	troythetechguy	which makes it impossible for you to some day get rid of windows completely. but no idea what your plans are. ntfs binds you to windows, that's the downside
+2009-08-09T17:18:00.000Z	troythetechguy	skapism	That is the info I was seeking.
+2009-08-09T17:20:00.000Z	skapism	troythetechguy	but you can pretty much forget about using ext2-3 on windows. i've never got windows to even read it properly, never mind write. although people say it works, I have tried installing it on several computers and it's horrible
+2009-08-09T17:20:00.000Z	skapism	troythetechguy	which is kind of amazing given it's an _open_ filesystem, shouldn'T be that difficult to write a decent implementation of it
+2009-08-09T17:21:00.000Z	skapism	troythetechguy	yes, exactly, you can do it like that
+2009-08-09T17:22:00.000Z	troythetechguy	skapism	Thanks for your help.
+2009-08-09T17:22:00.000Z	skapism	troythetechguy	np
+2009-08-09T17:25:00.000Z	troythetechguy	skapism	One last question: what's the difference between what we discussed and using a Samba server?
+2009-08-09T17:26:00.000Z	skapism	troythetechguy	Samba is used for accessing files on Windows from a Linux machine, or for starting a Samba server on Linux to allow Windows to access the Linux computer.
+2009-08-09T17:26:00.000Z	skapism	troythetechguy	The first case is where you need the samba client, the second a samba server.

@@ -1,0 +1,21 @@
+2011-06-14T19:58:00.000Z	Jimmy89		hey guys, anyone know much about mdamdm and faulty spares?
+2011-06-14T19:58:00.000Z	escott	Jimmy89	what is the question
+2011-06-14T20:00:00.000Z	escott	Jimmy89	well you can't rebuild the raid5 from only 2 disks so you may need to rebuild it from the 4 you knocked out. and mark the other two as the faulty spares
+2011-06-14T20:04:00.000Z	escott	Jimmy89	I would pull your two devices and try to rebuild the array from the 4 spares. hopefully they got dumped out in sync and you can restore from that point
+2011-06-14T20:08:00.000Z	escott	Jimmy89	I wouldn't destroy the array config
+2011-06-14T20:09:00.000Z	escott	Jimmy89	how many parity disks did you have? just 1/6 or 2/6?
+2011-06-14T20:10:00.000Z	escott	Jimmy89	then add each disk in turn with assume clean and when you add the final 6th disk you will need to verify the entire array
+2011-06-14T20:11:00.000Z	escott	Jimmy89	definitely unmount/remount ro while you do this
+2011-06-14T20:11:00.000Z	escott	Jimmy89	well each disk in the array has some kind of timestamp. when you knocked the 4 out their timestamps are different from the other two. it sees they are old and refuses to accept them. assume clean just ignores that timestamp
+2011-06-14T20:12:00.000Z	escott	Jimmy89	of course if there was data flushed to the two disks that weren't knocked out, then they truely are out of sync and you will have a corrupt FS when you put it all back together
+2011-06-14T20:13:00.000Z	escott	Jimmy89	you should be able to use assume-clean to reassemble the array
+2011-06-14T20:15:00.000Z	escott	Jimmy89	cat /proc/mdstat
+2011-06-14T20:17:00.000Z	escott	Jimmy89	I would just mdadm --assemble /dev/md* --assume-clean /dev/sda /dev/sdb etc
+2011-06-14T20:18:00.000Z	escott	Jimmy89	you could also try --force that may be safer than --assume-clean
+2011-06-14T20:18:00.000Z	escott	Jimmy89	see http://www.mail-archive.com/linux-raid@vger.kernel.org/msg07815.html
+2011-06-14T20:25:00.000Z	escott	Jimmy89	just be sure to fsck verify the raid checksums and fsck the partition
+2011-06-14T20:28:00.000Z	escott	Jimmy89	echo check > /sys/block/md0/sync_action
+2011-06-14T20:28:00.000Z	escott	Jimmy89	and mdstat should show it checking the array
+2011-06-14T20:33:00.000Z	escott	Jimmy89	if the md checks clean the fsck is probably unnecessary but I would still do it
+2011-06-14T20:34:00.000Z	escott	Jimmy89	if the md check fails then the array may get stopped again. in which case force it and run the fsck
+2011-06-14T20:39:00.000Z	escott	Jimmy89	goodluck

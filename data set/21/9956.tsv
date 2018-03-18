@@ -1,0 +1,21 @@
+2005-06-30T14:25:00.000Z	berkes		its called "base"
+2005-06-30T14:26:00.000Z	berkes		for approx ?20/month you have your own server
+2005-06-30T14:26:00.000Z	berkes		with root access and all
+2005-06-30T14:26:00.000Z	berkes		you cannot beat that with your own server :)
+2005-06-30T05:10:00.000Z	berkes		any apache server gurus in here, maybe? I am trying to get mod_pam working, but I am stuck. Have been hopping various channeels already, without luck
+2005-06-30T05:12:00.000Z	berkes		the text-file aauthentication works as expected but mod pam does not authenticate as it should
+2005-06-30T05:14:00.000Z	berkes		even google has no anwsers it seems :(
+2005-06-30T05:14:00.000Z	shawarma	berkes	I've seen that problem.
+2005-06-30T05:14:00.000Z	shawarma	berkes	You're probably using a shadow password database, right?
+2005-06-30T05:15:00.000Z	berkes	shawarma	could be, how do I know?
+2005-06-30T05:15:00.000Z	shawarma	berkes	If you don't know, then you're using a shadow database. :-)
+2005-06-30T05:15:00.000Z	berkes		hehe
+2005-06-30T05:15:00.000Z	shawarma	berkes	The trick is that only root can authenticate users in that case.
+2005-06-30T05:16:00.000Z	berkes	shawarma	off course. And apache cannot
+2005-06-30T05:16:00.000Z	shawarma	berkes	The workaround I usually use is setup an LDAP database with all the users and their (encrypted) passwords in it.
+2005-06-30T05:16:00.000Z	shawarma	berkes	And then I authenticate against the LDAP server instead.
+2005-06-30T05:16:00.000Z	berkes	shawarma	hmm, yea.
+2005-06-30T05:16:00.000Z	berkes		LDAP is for the next stage in our project, though :(
+2005-06-30T05:17:00.000Z	berkes		so I thnik Ill just leave it to authenticate agains the plaintext default apache authentication
+2005-06-30T05:17:00.000Z	berkes		thanks a lot for your time shawarma and Seveas
+2005-06-30T05:18:00.000Z	shawarma	berkes	Oh, yeah, what Seveas says might be a good idea. If this is a public system, it's not a very good idea, though.

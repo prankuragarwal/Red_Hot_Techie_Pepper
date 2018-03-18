@@ -1,0 +1,24 @@
+2012-02-29T00:10:00.000Z	Cognitive		Hi everyone. Trying to get compiz up and running on Xubuntu. I installed nvidia-current and it works fine (I get full resolution and everything) but whenever I run nvidia-xconfig and generate a xorg.conf the system crashes.
+2012-02-29T00:11:00.000Z	Cognitive		does compiz force using xorg.conf?
+2012-02-29T00:13:00.000Z	zykotick9	Cognitive	are you sure your nvidia card is supported by nvidia-current vs. the old drivers?
+2012-02-29T00:14:00.000Z	Cognitive	zykotick9	I searched a LOT but it's a new card. Nothing shows up on google
+2012-02-29T00:17:00.000Z	zykotick9	Cognitive	you weren't kidding about results be thin for that card ;)  good luck man.
+2012-02-29T00:19:00.000Z	zykotick9	Cognitive	when you don't have xorg.conf in place, try "lspci -vnvn" find the VGA section, and the kernel driver in use line, i imagine it's gonna say nouveau instead of nvidia
+2012-02-29T00:21:00.000Z	Cognitive	zykotick9	output is : "Kernel driver in use: nvidia" followed by "Kernel modules: nvidia_current, nouveau, nvidiafb"
+2012-02-29T00:21:00.000Z	Cognitive	zykotick9	do you think I should just rename the driver to nouveau in xorg.conf?
+2012-02-29T00:21:00.000Z	zykotick9	Cognitive	well, that's the nvidia driver then!  so i was wrong.  not sure how that's possible without xorg.conf
+2012-02-29T00:21:00.000Z	zykotick9	Cognitive	NO, you probably want nvidia over nouveau
+2012-02-29T00:22:00.000Z	Cognitive	zykotick9	I'm chatting with you right now on full resolution on my computer booting without xorg.conf
+2012-02-29T00:22:00.000Z	zykotick9	Cognitive	that's a mystery to me.  Good luck.
+2012-02-29T00:25:00.000Z	Cognitive	zykotick9	by the way, search the hardware it seems I have to VGA controllers: 00:02.0 VGA compatible controller: Intel Corporation 2nd Generation Core Processor Family Integrated Graphics Controller (rev 09) AND 01:00.0 VGA compatible controller: nVidia Corporation Device 124d (rev a1)
+2012-02-29T00:25:00.000Z	zykotick9	Cognitive	AHHH you have one of those hybrid cards
+2012-02-29T00:25:00.000Z	Cognitive	zykotick9	what's a hybrid card?
+2012-02-29T00:26:00.000Z	zykotick9	Cognitive	intel/nvidia thing... you need some special software to use that properly i believe
+2012-02-29T00:27:00.000Z	Cognitive	zykotick9	oh boy, definitely not available on linux right?
+2012-02-29T00:27:00.000Z	zykotick9	Cognitive	it is actually - there are 2 options i believe, it's not hardware i have
+2012-02-29T00:28:00.000Z	Cognitive	zykotick9	do I have to remove nvidia-current before trying bumblebee
+2012-02-29T00:28:00.000Z	zykotick9	Cognitive	i'm not sure, sorry.
+2012-02-29T00:29:00.000Z	Cognitive	zykotick9	don't be, you've been very helpful. Thank you so much.
+2012-02-29T00:41:00.000Z	Cognitive	zykotick9	Dude, you are awesome. It's definitely a hybrid card and definitely a bumblebee solution.
+2012-02-29T00:42:00.000Z	zykotick9	Cognitive	awesome!
+2012-02-29T00:43:00.000Z	Cognitive	zykotick9	weird card for sure! From what I read, they just created it to reduce energy consumption by going through the intel interface

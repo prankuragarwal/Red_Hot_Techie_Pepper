@@ -1,0 +1,21 @@
+2010-03-16T19:13:00.000Z	nilsma		Anyone have any pointers on how to get microphone working on 8.10?
+2010-03-16T19:15:00.000Z	puser	nilsma	are you trying to use it in Skype or it doesn't work anywhere?
+2010-03-16T19:20:00.000Z	puser	nilsma	because, I've had a problem with a mic in skype, while I saw that it was getting feedback from microphone monitoring soft. I had to uncheck "allow skype to automatically adjust my mixer levels", because it was always lowering the mic level too low automatically. When I unchecked it and moved the mic in mic properties up, it started working.
+2010-03-16T19:22:00.000Z	nilsma	puser	ill try that and see if it changes anything
+2010-03-16T19:25:00.000Z	nilsma	puser	switching off the automatically adjust my mixer levels did nothing im afraid :/
+2010-03-16T19:26:00.000Z	puser	nilsma	you also have to move the mic all the way up
+2010-03-16T19:27:00.000Z	puser	nilsma	pavumeter --record
+2010-03-16T19:27:00.000Z	puser	nilsma	alsamixer -c 0
+2010-03-16T19:28:00.000Z	puser	nilsma	are you using internal or external mic?
+2010-03-16T19:28:00.000Z	nilsma	puser	i assume you mean in volume control panel? i have adjusted it there, however there is a small icon on the "50s-style microhpone" below it that has a small x over it - tho removing it and closing does nothing (wont save)
+2010-03-16T19:29:00.000Z	puser	nilsma	try doing it with the command I gave you.
+2010-03-16T19:31:00.000Z	puser	nilsma	if you have an internal mic, you have to press spacebar on intmic section, so that you get: L CAPTUR R switched on on both int mic places. If you have external mic, you will have to do it on ext mic instead and move the level all the way up.
+2010-03-16T19:34:00.000Z	puser	nilsma	did you try the pavumeter --record
+2010-03-16T19:34:00.000Z	nilsma	puser	i will have to install it first, trying the line in idea, and youre alsamixer instructions atm
+2010-03-16T19:38:00.000Z	nilsma	puser	alsamixer: master capture is 100%, "Line" 100% L capt R, "Mic" L capt R, and "Mic Sele" with mic1/mic2, "Amic" 100% ... nothing seems to be off, though i am no pro at this
+2010-03-16T19:39:00.000Z	puser	nilsma	did you press F4 in there?
+2010-03-16T19:40:00.000Z	nilsma	puser	yes, i went thru first "capture"-tab, then the "all"-tab
+2010-03-16T19:43:00.000Z	nilsma	puser	pavumeter --record, gives an error message: connection failed: connection refused
+2010-03-16T19:44:00.000Z	puser	nilsma	in view you should have [Capture] selected. You should have only capture devices there, i.e. mic, line-in, no speakers. You need to select the right input. Like, for example, I have two mics in there. One Ext mic, and one int mic. Each have 2 sections. One - selection section, the other level. The level should be up and selection should say L CAPTUR R.
+2010-03-16T19:45:00.000Z	puser	nilsma	maybe you don't have pulseaudio installed? Skype requires PulseAudio
+2010-03-16T19:45:00.000Z	nilsma	puser	how do i check for pulseaudio?

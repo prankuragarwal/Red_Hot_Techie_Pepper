@@ -1,0 +1,18 @@
+2004-09-28T15:11:00.000Z	elmaya		is apt-get ready to use in default instalation... i did apt-get install samba and is stucked
+2004-09-28T15:12:00.000Z	mdz	elmaya	the servers are a bit loaded right now; give it a minute
+2004-09-29T05:43:00.000Z	mdz	elmaya	apt-get install linux-headers-`uname -r`
+2004-09-29T07:10:00.000Z	mdz	elmaya	it should be automatically loaded by hotplug. what kind of sound card?
+2004-09-29T07:12:00.000Z	mdz	elmaya	lsmod | grep snd shows no sound drivers loaded?
+2004-09-29T07:14:00.000Z	mdz	elmaya	another possibility is that your system has a second sound device, and the wrong one is found first
+2004-09-29T07:18:00.000Z	elmaya	mdz	when i open totem says: Device /dev/dsp does not exist
+2004-09-29T07:21:00.000Z	mdz	elmaya	aha
+2004-09-29T07:21:00.000Z	mdz	elmaya	so snd-pcm-oss isn't getting loaded
+2004-09-29T07:22:00.000Z	mdz	elmaya	a long shot, but could you check for /etc/modprobe.conf?
+2004-09-29T07:23:00.000Z	elmaya	mdz	i don't have modprobe.conf
+2004-09-29T07:24:00.000Z	mdz	elmaya	ok, good
+2004-09-29T07:24:00.000Z	mdz	elmaya	and you installed from the preview CD?
+2004-09-29T07:24:00.000Z	mdz	elmaya	try this:
+2004-09-29T07:25:00.000Z	mdz	elmaya	log out of gnome, and on the text console, modprobe -r snd-intel8x0 snd-intel8x0m snd-pcm
+2004-09-29T07:25:00.000Z	mdz	elmaya	then modprobe -v snd-intel8x0m
+2004-09-29T07:26:00.000Z	elmaya	mdz	 ok lemmie check
+2004-09-29T09:14:00.000Z	elmaya	mdz	u there

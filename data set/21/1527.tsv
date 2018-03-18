@@ -1,0 +1,21 @@
+2011-01-31T19:35:00.000Z	waza-ari		Hey all, my laptop doesnt boot anymore (ubuntu 10.04) since it had an instant poweroff due to empty battery... i alwas get the following error when trying to start: "status: {DRDY ERR} ... failed command: READ DMA EXT ... end_request: i/O error, dev sda, sector 299777953" and lots of other stuff... my windows 7 on the other partiotions starts and from there i can also access my ext3 filesystem. any idea where this comes from?
+2011-01-31T19:36:00.000Z	ActionParsnip	waza-ari	boot to liveCD and test your RAM and test your partition health
+2011-01-31T19:37:00.000Z	waza-ari	ActionParsnip	Ram i dont think since windows on the same machine is workling perfectly... but i'll test the partition... which tool? fschk?
+2011-01-31T19:37:00.000Z	ActionParsnip	waza-ari	it's still wise to test the RAM as RAM i very sensitive to sudden voltage changes
+2011-01-31T19:38:00.000Z	ActionParsnip	waza-ari	yes use fsck, look at the man page when you get to the live desktop
+2011-01-31T20:32:00.000Z	waza-ari	ActionParsnip	i made fsck now, and there where no errors. i could also mount my filesystem from livesystem. Anyway i cant boot..
+2011-01-31T20:33:00.000Z	ActionParsnip	waza-ari	then reinstall grub2 to the drive and you should be ok
+2011-01-31T20:34:00.000Z	waza-ari	ActionParsnip	i just did fsck /dev/sda5. or are there any more parameters i should have specified? Why should it be grub? but ill try as soon memtest finished its work...
+2011-01-31T20:34:00.000Z	ActionParsnip	waza-ari	read the man page, like I said
+2011-01-31T20:46:00.000Z	waza-ari	ActionParsnip	okay, i ran fsck -n /dev/sda5 in order to check and there was "Error reading block 819532 (attempt to read block from filesystem resulted in short read) while getting niext inote from scan". how do you recommand to go on?
+2011-01-31T20:47:00.000Z	ActionParsnip	waza-ari	gran the ultimate boot cd and use the manufacturers tool to test the drive
+2011-01-31T20:48:00.000Z	ActionParsnip	waza-ari	I think the power cut may have dmaged your drive in some way
+2011-01-31T20:48:00.000Z	waza-ari	ActionParsnip	okay, then i first will try to safe as much data as possible on my external device
+2011-01-31T20:48:00.000Z	ActionParsnip	waza-ari	wy do you not have a backup?
+2011-01-31T20:49:00.000Z	waza-ari	ActionParsnip	no, not of all files..
+2011-01-31T20:49:00.000Z	ActionParsnip	waza-ari	the power outage could have fried the IDE, then where is your data?
+2011-01-31T20:50:00.000Z	waza-ari	ActionParsnip	i can mount it in rescuesystem...
+2011-01-31T20:52:00.000Z	ActionParsnip	waza-ari	then you may need to use foremost to attempt to rescue the data from an unmounted partition. you will need a suitably sized partition mounted writable to spit the found data onto.I suggest you review your backup regime
+2011-01-31T20:53:00.000Z	waza-ari	ActionParsnip	im currently simply using rsync to copy the data from internal harddisk to external usb disk. i hope to get the important data..
+2011-02-27T00:39:00.000Z	ActionParsnip	waza-ari	cheese maybe
+2011-02-27T00:43:00.000Z	waza-ari	ActionParsnip	cheese does not support audio at all... im looking for somethink like cinerella for example, but that lacks pulse or jack audio support. since im mixing sound via jack, i need a program able to record audio directly from jack or pulseaudio...

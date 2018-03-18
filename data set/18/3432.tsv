@@ -1,0 +1,18 @@
+2009-11-21T02:33:00.000Z	benc2		I'm trying to run an erlang app with init.d script and someone told me I need to set the HOME enviorement varaible to make it work
+2009-11-21T02:33:00.000Z	benc2		what does it means?
+2009-11-21T02:34:00.000Z	iceroot_	benc2	what is output of echo $HOME
+2009-11-21T02:35:00.000Z	benc2	iceroot_	iniside or outside of the init.d script?
+2009-11-21T02:35:00.000Z	benc2	iceroot_	because my script runs fine in the shell but not in the init.d script
+2009-11-21T02:35:00.000Z	iceroot_	benc2	and what is the error of the script?
+2009-11-21T02:36:00.000Z	benc2	iceroot_	I see examples like 'export HOME=/root' in other scripts and I don't understand what that means
+2009-11-21T02:36:00.000Z	benc2	iceroot_	I've tried using upstart job and I don't get any error
+2009-11-21T02:36:00.000Z	benc2	iceroot_	when I check the status I get working/stopped
+2009-11-21T02:36:00.000Z	iceroot_	benc2	export HOME=~/
+2009-11-21T02:37:00.000Z	benc2	iceroot_	can you explaine what it does?
+2009-11-21T02:37:00.000Z	iceroot_	benc2	its exporting the var HOME with the path of the current home
+2009-11-21T02:37:00.000Z	iceroot_	benc2	~/ is the command /alias for the home-directory of the current user
+2009-11-21T02:38:00.000Z	iceroot_	benc2	if you type cd ~/ in the shell you will go into your home-directory
+2009-11-21T02:38:00.000Z	benc2	iceroot_	aren't the init.d/upstart scripts run as root or sometime a user without home?
+2009-11-21T02:39:00.000Z	iceroot_	benc2	hm, normally as root
+2009-11-21T02:46:00.000Z	benc2	iceroot_	I think your suggestion works. When I type 'env - erl' gives an error but 'env - HOME="/home/user" erl' works
+2009-11-21T02:47:00.000Z	iceroot_	benc2	man env

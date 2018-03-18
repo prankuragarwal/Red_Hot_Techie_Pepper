@@ -1,0 +1,19 @@
+2007-03-31T08:47:00.000Z	phixnay		I can't mount my cd drive, anybody know why? http://paste.ubuntu-nl.org/13133/
+2007-03-31T08:49:00.000Z	phixnay		I can't mount my cd drive, anybody know why? http://paste.ubuntu-nl.org/13133/
+2007-03-31T08:51:00.000Z	minimec	phixnay	I guess there should be '/dev/hdb' instead of /dev/sdb' in the fstab
+2007-03-31T08:55:00.000Z	minimec	phixnay	gepatino is right. Try to mount /media/cdrom. This would be the simplest solution.
+2007-03-31T08:57:00.000Z	phixnay	minimec	gepatino : ok I did that, but I got the same message as before. maybe I have to "use ide-scsi" "sr0" or "so" like it says, but I don't know what those are
+2007-03-31T08:58:00.000Z	minimec	phixnay	Looks that your /etc/fstab has an error.
+2007-03-31T08:59:00.000Z	phixnay	minimec	gepatino: http://paste.ubuntu-nl.org/13136/ fstab
+2007-03-31T09:00:00.000Z	minimec	phixnay	I guess it's hdb instead of sdb
+2007-03-31T09:01:00.000Z	phixnay	minimec	but there's no hdb on the computer any more it seems
+2007-03-31T09:01:00.000Z	minimec	phixnay	Well you seem to have a harddisk on hda wich is a ide harddisk. I giess that the cdrom is also on ide, wich means hdb.
+2007-03-31T09:02:00.000Z	phixnay	minimec	all of my partitions are called sdax
+2007-03-31T09:03:00.000Z	minimec	phixnay	Look at line 7-10 of the fstab.
+2007-03-31T09:03:00.000Z	minimec	phixnay	and then .... look at line 11 ;)
+2007-03-31T09:03:00.000Z	phixnay	minimec	I think those are left over from dapper
+2007-03-31T09:04:00.000Z	phixnay	minimec	I commented out that line as it didn't work
+2007-03-31T09:05:00.000Z	minimec	phixnay	You have a ide cdrom drive. So with some 'sdX' your drive will not work, because it is a ide drive...
+2007-03-31T09:06:00.000Z	phixnay	minimec	if I have an ide cdrom drive, which I probably do, why does the computer think it's scsi
+2007-03-31T09:06:00.000Z	minimec	phixnay	Take line 12 of fstab and try to use '/dev/hdb' or '/dev/hdc' and try to mount /media/cdrom
+2007-03-31T09:06:00.000Z	minimec	phixnay	I cannot tell you ;)

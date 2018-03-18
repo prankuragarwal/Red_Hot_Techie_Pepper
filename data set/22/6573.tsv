@@ -1,0 +1,22 @@
+2006-10-19T05:07:00.000Z	ChickenTalons	talisein	please elaborate
+2006-10-19T05:07:00.000Z	talisein	ChickenTalons	eh?
+2006-10-19T05:07:00.000Z	ChickenTalons	talisein	talisein Isaacariah: I think you just need to put "supercede domain-name-servers" in dhclient.conf
+2006-10-19T05:08:00.000Z	talisein	ChickenTalons	you have the same problem?
+2006-10-19T05:08:00.000Z	ChickenTalons	talisein	i have ALWAYS had problems with ubuntu and DNS
+2006-10-19T05:08:00.000Z	ChickenTalons	talisein	since 5.04
+2006-10-19T05:08:00.000Z	ChickenTalons	talisein	it gets better when I disable ipv6, but it still tends to work like crap.
+2006-10-19T05:09:00.000Z	talisein	ChickenTalons	Okay, so normally when you use DHCP to get an IP from your router, the router will send info on not only what the IP is, but also who the name server (DNS) server is.
+2006-10-19T05:09:00.000Z	ChickenTalons	talisein	yes - the problem is that ubuntu looks for a "search" lind
+2006-10-19T05:10:00.000Z	talisein	ChickenTalons	read man dhclient.conf, and it'll tell you how to make the local values take precedence with the "supercede" flag. So supercede domain-name-servers should tell dhclient not to overwrite what the computer thinks is the DNS server (which is stored in resolv.conf)
+2006-10-19T05:11:00.000Z	ChickenTalons	talisein	i'd preder it simply skip the "search fww.wan" line
+2006-10-19T05:12:00.000Z	ChickenTalons	talisein	is there any way to stop the box from putting the "search" line in there? I just want the nameserver line
+2006-10-19T05:12:00.000Z	talisein	ChickenTalons	what complains if there is no search line?
+2006-10-19T05:12:00.000Z	ChickenTalons	talisein	EVERYTHING takes forever to resolv
+2006-10-19T05:13:00.000Z	talisein	ChickenTalons	hmm. just put in localdomain? It seems that it needs that.
+2006-10-19T05:14:00.000Z	ChickenTalons	talisein	- if its looking for it from the DHCP server itll just get overwritten when I reboot
+2006-10-19T05:15:00.000Z	talisein	ChickenTalons	put supercede domain-name in dhclient.conf'
+2006-10-19T05:15:00.000Z	ChickenTalons	talisein	ok.
+2006-10-19T05:15:00.000Z	talisein	ChickenTalons	read dhclient.conf manpage though, just that 1 line alone won't work I don't think
+2006-10-19T05:15:00.000Z	ChickenTalons	talisein	no, it wont.
+2006-10-19T05:16:00.000Z	ChickenTalons	talisein	just FYI I read the man - the problem appears to be a disagreement between how the Ubuntu folks think a dhcp server should act and the linksys folk
+2006-10-19T06:24:00.000Z	ChickenTalons	talisein	the plugins are supposed to be in the same format as the browser

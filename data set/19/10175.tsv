@@ -1,0 +1,19 @@
+2006-07-19T10:06:00.000Z	Ballsy		The i386.iso Live CD works on an old Compaq Deskpro 650Mhz/128MB RAM desktop at work, but dumps me to a blank screen with blinking cursor (after sitting at 'configuring some drivers....ok') when I try it on my AMD Athlon 64 at home.
+2006-07-19T10:07:00.000Z	Ballsy		Advice ?
+2006-07-19T10:07:00.000Z	Ballsy		(sorry if someone's already answered....I have scrollback buffer access now  <g>)
+2006-07-19T10:07:00.000Z	stefg	Ballsy	the CD needs at least 256 MB RAM... HW-req's not met... X won't start
+2006-07-19T10:08:00.000Z	Ballsy	stefg	the thing is, it DID work on the OLD pc, but won't work on the NEW PC (Athlong 64 w/512MB ram)
+2006-07-19T10:08:00.000Z	stefg	Ballsy	ah ok, now i understand
+2006-07-19T10:09:00.000Z	Ballsy	stefg	at least one of us does.  I'm baffled.  :)   Even tried the amd64.iso on the home box, to no avail.
+2006-07-19T10:09:00.000Z	stefg	Ballsy	ATI vga?... :-)
+2006-07-19T10:12:00.000Z	Ballsy	stefg	not on the new computer...SiS 760 display adapter
+2006-07-19T10:14:00.000Z	stefg	Ballsy	so the Live-CD hardware detection doesn't recognize it, it seems. you could try to switch to the console [alt-ctrl-f1]  and do a manual 'sudo dpkg-reconfigure xserver-xorg' there to get X running. sudo /etc/init.d/gdm restart afterwards to restart X with the new conf
+2006-07-19T10:15:00.000Z	Ballsy	stefg	at what point would I issue the ctrl-alt-f1 ?
+2006-07-19T10:16:00.000Z	stefg		when you looking at the blinking cursor instaed of a desktop
+2006-07-19T10:17:00.000Z	Ballsy	stefg	cuz I tried that last night but got no results.  Will have to retry tonight I guess.  Will sift through wiki etc. as well, as I'm SURE I saw someone else report this problem....just can't FIND the damned post... <g>
+2006-07-19T10:17:00.000Z	stefg	Ballsy	i guess there must be even a special boot parameter to use only vesa-VGA
+2006-07-19T10:18:00.000Z	Ballsy	stefg	if there is, how would I interrupt the Live CD startup process to pass an arg to the kernel?
+2006-07-19T10:19:00.000Z	stefg	Ballsy	correct
+2006-07-19T10:19:00.000Z	stefg	Ballsy	right at the beginning, in the boot menu press ESC
+2006-07-19T10:20:00.000Z	Ballsy	stefg	ahhh....thanks.  I'll see if I can find a proper parm.  I see alot of   acpi=off  recommendations, but I"m not sure that'd cure what ails me....
+2006-07-19T10:31:00.000Z	stefg	Ballsy	https://help.ubuntu.com/community/BootOptions could be intresting

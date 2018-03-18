@@ -1,0 +1,19 @@
+2006-11-16T17:55:00.000Z	FantasticFoo		what do you do if you get a kernel panic at bootup, and an error saying "unable to mount root fs on unknown block (8,3)" after upgrading to edgy?
+2006-11-16T17:55:00.000Z	FantasticFoo		it'd be kind of nice if i could boot up.
+2006-11-16T17:56:00.000Z	Lars_G	FantasticFoo	You should, you can hit esc at boot to show the menu
+2006-11-16T17:57:00.000Z	Lars_G	FantasticFoo	Basically it seems you are not using a initrd image, or your kernel has no access during boot time to the module required to read the FS your root is in, pretty common for self compiled kernels, odd for upgrade-kernels but you might be using JFS or XFS for your main system, idk
+2006-11-16T17:58:00.000Z	FantasticFoo	Lars_G	no, i'm using ext3
+2006-11-16T17:58:00.000Z	Lars_G	FantasticFoo	It's an odd situation then, unless you did setup your own lilo and forgot to include the initrd on the load process
+2006-11-16T17:58:00.000Z	FantasticFoo	Lars_G	nope, i included initrd
+2006-11-16T17:59:00.000Z	FantasticFoo	Lars_G	maybe somehow lilo.conf got overridden before?
+2006-11-16T17:59:00.000Z	Lars_G	FantasticFoo	It's odd. I'd boot with a live cd, check the partitions, run a fsck on the root system and then fix lilo
+2006-11-16T06:00:00.000Z	FantasticFoo	Lars_G	ok
+2006-11-16T06:00:00.000Z	Lars_G	FantasticFoo	Do you know how to reinstall lilo using the live cd?
+2006-11-16T06:01:00.000Z	FantasticFoo	Lars_G	no?
+2006-11-16T06:01:00.000Z	FantasticFoo	Lars_G	how do i run a fsck on the root system again?
+2006-11-16T06:01:00.000Z	FantasticFoo	Lars_G	i'm sort of a linux noob here
+2006-11-16T06:02:00.000Z	Lars_G	FantasticFoo	Mount the hdd somewhere, like /mnt or /media, then bind your dev directory there: "mount -o bind /dev /mnt/dev", finally change root to it: "chroot /mnt" and run "lilo" to reinstall
+2006-11-16T06:02:00.000Z	FantasticFoo	Lars_G	oh ok
+2006-11-16T06:02:00.000Z	FantasticFoo	Lars_G	thanks
+2006-11-16T06:02:00.000Z	Lars_G	FantasticFoo	do to proc the same you do to dev: "mount -o bind /proc /mnt/proc"
+2006-11-16T06:02:00.000Z	FantasticFoo	Lars_G	ok

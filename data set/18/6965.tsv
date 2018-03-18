@@ -1,0 +1,18 @@
+2008-07-29T13:43:00.000Z	axel_s		hi all, is there a way to become root when sudo is broken?
+2008-07-29T13:44:00.000Z	hischild	axel_s	reboot into rescue/single user mode.
+2008-07-29T13:44:00.000Z	hischild	axel_s	there is none unless you've set one
+2008-07-29T13:46:00.000Z	axel_s	hischild	so in case I've set a root pwd and don't remember I'm screwed
+2008-07-29T13:46:00.000Z	hischild	axel_s	no. YOu can reboot into single user mode which will get you root automatically. Then you can run passwd to reset it.
+2008-07-29T13:46:00.000Z	axel_s	hischild	thanks, I'lll try
+2008-07-29T13:48:00.000Z	axel_s	hischild	the problem is that my gf turned off my computer during dist upgrade and now most programs don't work because it cant resolve my local hostname anymore
+2008-07-29T13:50:00.000Z	hischild	axel_s	you can reboot into single user mode, which gives you root. Then you can use vim, vi or any other text editor to edit /etc/hosts to add your hostname to that list.
+2008-07-29T13:54:00.000Z	hischild	axel_s	having physical access to your computer is always a security problem.
+2008-07-29T13:56:00.000Z	hischild	axel_s	what's your hostname?
+2008-07-29T13:56:00.000Z	hischild	axel_s	then one line should look like this --> neon     127.0.0.1
+2008-07-29T13:57:00.000Z	axel_s	hischild	it looks like it should be vice versa from the entries I can see in hosts
+2008-07-29T13:57:00.000Z	hischild	axel_s	my bad --> reverse that --> 127.0.0.1 neon
+2008-07-29T13:57:00.000Z	axel_s	hischild	wow now I've found the problem of all evil.. it said "127.0.1.1     neon" in the files
+2008-07-29T13:58:00.000Z	hischild	axel_s	that doesn't matter .... the entire range of 127.0.*.* is good.
+2008-07-29T13:59:00.000Z	axel_s	hischild	thanks for everything! bye!
+2008-07-29T14:00:00.000Z	axel_s	hischild	one more question: what the command to upgrade/distupgrade on command line?
+2008-07-29T14:01:00.000Z	hischild	axel_s	sudo aptitude dist-upgrade  <---- iirc

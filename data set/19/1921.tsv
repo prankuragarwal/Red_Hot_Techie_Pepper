@@ -1,0 +1,19 @@
+2010-08-30T00:10:00.000Z	mnord		Hi, I have a problem with Firefox. When I start it from the menu it appears in the panel for a second, then goes away. I see it in system monitor but that's all. I've tried reinstalling it with "aptitude install firefox" but no luck. Could someone please help me find out what the problem is?
+2010-08-30T00:10:00.000Z	Muelli	mnord	start it from a terminal
+2010-08-30T00:12:00.000Z	Muelli	mnord	there you go. it is already running.
+2010-08-30T00:12:00.000Z	Muelli	mnord	you might want to kill it, i.e. pkill -HUP firefox. But you might lose data.
+2010-08-30T00:12:00.000Z	mnord	Muelli	no ït's not. When I kill it and try to start it same thing happens
+2010-08-30T00:12:00.000Z	Muelli	mnord	it probably is. you haven't killed it thoroughly.
+2010-08-30T00:13:00.000Z	Muelli	mnord	check with ps aux | grep firefox
+2010-08-30T00:13:00.000Z	mnord	Muelli	same thing happens after reboot.
+2010-08-30T00:13:00.000Z	Muelli	mnord	it might be autostarted.
+2010-08-30T00:13:00.000Z	mnord	Muelli	user   2544  0.0  0.0   3340   804 pts/0    S+   21:13   0:00 grep --color=auto firefox
+2010-08-30T00:14:00.000Z	Muelli	mnord	looks good. then "firefox; echo $?"
+2010-08-30T00:15:00.000Z	mnord	Muelli	same thing happens with the echo command
+2010-08-30T00:15:00.000Z	Muelli	mnord	what is that "same thing"? What does it print on the terminal?
+2010-08-30T00:15:00.000Z	mnord	Muelli	that is, firefox appears in the system monitor, but doesn't print anything on terminal or appears as a usable program
+2010-08-30T00:16:00.000Z	Muelli	mnord	hm. not very nice. try to run the profile manager to create a new profile. Check firefox --help.
+2010-08-30T00:16:00.000Z	mnord	Muelli	I tried the pkill -HUP firefox command right before doing the echo one so that might be a reason?
+2010-08-30T00:18:00.000Z	mnord	Muelli	I created a new profile and with that I could open Firefox, not with the old one though. Thanks for the help!
+2010-08-30T00:19:00.000Z	Muelli	mnord	well. at least you know what to look for now. There might be stale lock files in your old profile, so you can go off and search there now.
+2010-08-30T00:20:00.000Z	Muelli	mnord	a very geeky thing to do would be running strace -f and then digging through that pile of output. Maybe it yields results quickly, like a stale read() on a filedescriptor

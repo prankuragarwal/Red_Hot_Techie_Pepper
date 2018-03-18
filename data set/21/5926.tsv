@@ -1,0 +1,21 @@
+2007-07-07T09:20:00.000Z	firelord902		Can someone help me get my audio working?
+2007-07-07T09:20:00.000Z	eternalswd	firelord902	I'll see if I can help, what seems to be the problem?
+2007-07-07T09:21:00.000Z	firelord902	eternalswd	I reinstalled alsa with the latest version to get the intel hda working. In edgy it worked fine out of the box. Once I rebooted I heard the shutdown sound, once I restart there is no audio.
+2007-07-07T09:22:00.000Z	eternalswd	firelord902	did you install from source or from the repositories?
+2007-07-07T09:23:00.000Z	firelord902	eternalswd	I downloaded it off of the website and followed a tutorial.
+2007-07-07T09:24:00.000Z	firelord902	eternalswd	I use the tutorial here https://help.ubuntu.com/community/HdaIntelSoundHowto
+2007-07-07T09:25:00.000Z	eternalswd	firelord902	okay, open up alsamixer in the terminal and make sure nothing is muted or turned down.  right, left arrows change which of the options you are controlling.  pressing F5 will give you all of the options both input and output.  Pressing m will toggle mute
+2007-07-07T09:26:00.000Z	eternalswd	firelord902	and up, down arrows control the volume
+2007-07-07T09:27:00.000Z	firelord902	eternalswd	still nothing
+2007-07-07T09:28:00.000Z	firelord902	eternalswd	I tested it with headphones and it works
+2007-07-07T09:28:00.000Z	eternalswd	firelord902	give output of the following here, it should be one line: cat /etc/modprobe.d/alsa-base | grep snd-hda-intel
+2007-07-07T09:28:00.000Z	firelord902		I got it working
+2007-07-07T09:29:00.000Z	firelord902		just plugged in my headphones and unplugged em
+2007-07-07T09:29:00.000Z	firelord902		Thanks!
+2007-07-07T09:29:00.000Z	eternalswd		weird, but glad it works now
+2007-07-07T09:29:00.000Z	firelord902		Yep lol
+2007-07-07T09:30:00.000Z	eternalswd	firelord902	still interested in what you get for the command:  cat /etc/modprobe.d/alsa-base | grep snd-hda-intel
+2007-07-07T09:30:00.000Z	firelord902	eternalswd	i'll try it
+2007-07-07T09:30:00.000Z	firelord902	eternalswd	nothing came up
+2007-07-07T09:32:00.000Z	eternalswd	firelord902	maybe add the following to /etc/modproge.d/alsa-base: options snd-hda-intel model=auto
+2007-07-07T09:32:00.000Z	eternalswd	firelord902	if it messes anything up, just remove it, but I would think it would help

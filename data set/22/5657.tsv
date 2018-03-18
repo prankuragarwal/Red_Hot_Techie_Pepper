@@ -1,0 +1,22 @@
+2007-03-24T11:35:00.000Z	lockdown		When booting from install CDs my screen just goes black,  I tried 6.06.1 and 7.04-beta,  ive tried safe graphics mode, 640 x 480 x16, and in boot options settings vga=771 and nothing works,   any ideas?
+2007-03-24T11:35:00.000Z	dkbg	lockdown	what kidn of video card do you have?
+2007-03-24T11:36:00.000Z	dkbg	lockdown	you could try setting your video driver to vesa in xorg.conf
+2007-03-24T11:38:00.000Z	dkbg	lockdown	do you ever see any GUI at all? a cursor, a background, anything?
+2007-03-24T11:38:00.000Z	dkbg	lockdown	I'd suggest you try vesa
+2007-03-24T11:39:00.000Z	dkbg	lockdown	?
+2007-03-24T11:42:00.000Z	lockdown	dkbg	in xorg.conf under section device and identifier videocard0  i have driver "i810"  change that to vesa?
+2007-03-24T11:42:00.000Z	dkbg	lockdown	yeah
+2007-03-24T11:42:00.000Z	dkbg	lockdown	under "Screen" change DefaultDepth to 16 too
+2007-03-24T11:43:00.000Z	dkbg	lockdown	no remove /tmp/.X0-lock and startx
+2007-03-24T11:44:00.000Z	lockdown	dkbg	i did /etc/init.d/gdm stop and then start and it took me to a screen with a blue background that says Failed to start the X server...
+2007-03-24T11:44:00.000Z	dkbg	lockdown	hmm
+2007-03-24T11:45:00.000Z	dkbg	lockdown	just try starting x with startx
+2007-03-24T11:45:00.000Z	lockdown	dkbg	ah,  "Failed to load module "Vesa" (module does not exist, 0)
+2007-03-24T11:45:00.000Z	dkbg	lockdown	I see
+2007-03-24T11:45:00.000Z	dkbg	lockdown	hmm, I'm no expert
+2007-03-24T11:46:00.000Z	dkbg	lockdown	I just used info that helped me get into x, but I have an ati card
+2007-03-24T11:46:00.000Z	dkbg	lockdown	it seems to me that vesa should be included by default
+2007-03-24T11:47:00.000Z	lockdown	dkbg	ah, case sensitive,  that worked, i got a login screen
+2007-03-24T11:47:00.000Z	lockdown	dkbg	thanks
+2007-03-24T11:49:00.000Z	dkbg	lockdown	oh super!
+2007-03-24T11:49:00.000Z	dkbg	lockdown	glad I could help :)

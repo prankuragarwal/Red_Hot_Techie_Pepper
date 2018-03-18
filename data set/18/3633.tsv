@@ -1,0 +1,18 @@
+2009-09-25T16:14:00.000Z	TNk		Greetings.
+2009-09-25T16:15:00.000Z	TNk		I'm getting a weird error when running "Firefox" that renders it virtually useless. (http://pastebin.com/m3bae3a0a) The only way to get past it is to run it with "sudo".
+2009-09-25T16:16:00.000Z	TNk		I've tried uninstalling and reinstalling, even purging and installing, but that hasn't worked.
+2009-09-25T16:16:00.000Z	jrib	TNk	create a new profile
+2009-09-25T16:17:00.000Z	jrib	TNk	or (as I suspect) change ownership of your .mozilla back to your user instead of root
+2009-09-25T16:18:00.000Z	TNk	jrib	I'll try the 2nd option 1st. That's done with... chroot?
+2009-09-25T16:18:00.000Z	TNk	jrib	Thanks for your help, I'll try that and let you know.
+2009-09-25T16:19:00.000Z	jrib	TNk	you need to apply the change recursively as well
+2009-09-25T16:24:00.000Z	TNk	jrib	Sorry to ask, but I don't know how to apply the chmod for Firefox, there are too many "firefox" around, many folders and such. Should I apply it to every folder?
+2009-09-25T16:25:00.000Z	jrib	TNk	you need to apply the ownership change to ~/.mozilla/ recursively, that's it
+2009-09-25T16:26:00.000Z	TNk	jrib	THanks. :-)
+2009-09-25T16:26:00.000Z	jrib	TNk	has been running firefox with sudo
+2009-09-25T16:27:00.000Z	TNk	jrib	sudo chmod -R / home/francisco/.mozilla that looks good?
+2009-09-25T16:28:00.000Z	jrib	TNk	no, you want to change ownership, not permissions.   chmod is for permissions
+2009-09-25T16:28:00.000Z	TNk	jrib	sudo chown -R / home/francisco/.mozilla then
+2009-09-25T16:28:00.000Z	jrib	TNk	close, now you need to specify what owner you want to change it to...
+2009-09-25T16:29:00.000Z	jrib	TNk	scroll down
+2009-09-25T16:30:00.000Z	jrib	TNk	you should probably close firefox by the way before doing this

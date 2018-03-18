@@ -1,0 +1,22 @@
+2006-08-14T10:07:00.000Z	UncleD		What is the recommended way of backing up my ubuntu system? Is there software that works great for backups?
+2006-08-14T10:08:00.000Z	MZM	UncleD	SBackup
+2006-08-14T10:09:00.000Z	MZM	UncleD	S stands for Simple ;)
+2006-08-14T10:11:00.000Z	UncleD	MZM	If I know I just want a complete backup of my entire hd, you recommend anything?
+2006-08-14T10:12:00.000Z	MZM	UncleD	dd or tar? I suggest to take look at sbackup
+2006-08-14T10:12:00.000Z	UncleD	MZM	Let's say I have one HD, and I want to add another and make a RAID 1. Can that be done, even though one HD is currently empty ?
+2006-08-14T10:12:00.000Z	MZM	UncleD	it's different case -> wait 5 min...
+2006-08-14T10:18:00.000Z	MZM	UncleD	You can google yourself, but basicly it goes like this:
+2006-08-14T10:19:00.000Z	MZM	UncleD	1) create partition with raid autodetect type; 2) create raid1 with one missing partition; 3) create FS on raid; 4) mount && copy data from existing partition to raid; 5) change original partition to raid and add it to raid.
+2006-08-14T10:23:00.000Z	UncleD	MZM	Thank you for that. Back to the backups, if I just want a complete backup of my system, will sbackup achieve that if I copy / and all sub-dir? Won't that miss the filesystem tables?
+2006-08-14T10:24:00.000Z	MZM	UncleD	sbackup is for backuping data files. trageted for endusers and not whole system backup. try simple tar
+2006-08-14T10:24:00.000Z	UncleD	MZM	So, for my entire system backup, use tar?
+2006-08-14T10:25:00.000Z	MZM	UncleD	yap. use tar. but i moved two systems to Raid1 w/o problems (and backups) ;)
+2006-08-14T10:26:00.000Z	UncleD	MZM	I'm going to try and move my system to raid 1 but i want a backup too ;)
+2006-08-14T10:49:00.000Z	UncleD	MZM	I just done this: tar cvpzf backup.tgz --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys /
+2006-08-14T10:51:00.000Z	MZM	UncleD	actualy it's waste of time and disk space to backup programm files as you always can reinstall them ;)
+2006-08-14T10:53:00.000Z	UncleD	MZM	Which files do you mean?
+2006-08-14T10:53:00.000Z	UncleD	MZM	Why is it a waste of time. If I need to completely restore my system, it'll have everything I want.
+2006-08-14T10:53:00.000Z	MZM	UncleD	I backup only /etc /home and /var/www.
+2006-08-14T10:54:00.000Z	UncleD	MZM	I see. but I want my system the way it is now, without the need to re-install everything by apt :)
+2006-08-14T11:01:00.000Z	UncleD	MZM	-rw-r--r-- 1 root root 1193562138 2006-08-14 08:55 backup.tgz
+2006-08-14T11:55:00.000Z	MZM	UncleD	finished move to raid1?

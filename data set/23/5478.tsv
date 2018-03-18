@@ -1,0 +1,23 @@
+2006-11-20T07:03:00.000Z	Tripped		Every time I try to use symantic or Add/Remove programs, I get the error:
+2006-11-20T07:03:00.000Z	Tripped		E: flumotion: subprocess post-installation script returned error exit status 1
+2006-11-20T07:03:00.000Z	Tripped		anyone know what this is?
+2006-11-20T07:05:00.000Z	Tripped		Anyone?
+2006-11-20T07:05:00.000Z	jrib	Tripped	pastebin /var/lib/dpkg/info/flumotion.postinst
+2006-11-20T07:06:00.000Z	jrib	Tripped	pastebin 'apt-cache policy flumotion' as well please
+2006-11-20T07:06:00.000Z	jrib	Tripped	what do you mean?
+2006-11-20T07:07:00.000Z	jrib	Tripped	it's a website where you copy and paste stuff.  Sorry, I tend to use it as a verb
+2006-11-20T07:10:00.000Z	jrib	Tripped	url to the post?
+2006-11-20T07:11:00.000Z	jrib	Tripped	you misunderstood, it's ok.  You have to open /var/lib/dpkg/info/flumotion.postinst in a text editor, then copy and apste the contents for me to see.  The second command, you have to run it in your terminal, then copy and paste the output for me to see
+2006-11-20T07:15:00.000Z	Tripped	jrib	postinst file http://paste.ubuntu-nl.org/32865/
+2006-11-20T07:20:00.000Z	jrib	Tripped	did you get a chance to post the second command?
+2006-11-20T07:22:00.000Z	Tripped	jrib	http://paste.ubuntu-nl.org/32868/
+2006-11-20T07:23:00.000Z	jrib	Tripped	k,  'sudo dpkg --configure -a'
+2006-11-20T07:24:00.000Z	Tripped	jrib	http://paste.ubuntu-nl.org/32869/
+2006-11-20T07:26:00.000Z	jrib	Tripped	'getent passwd flumotion', no need to pastebin, just say the result here
+2006-11-20T07:27:00.000Z	Tripped	jrib	flumotion:x:109:115:Flumotion Streaming Server,,,:/var/run/flumotion:/usr/sbin/nologin
+2006-11-20T07:30:00.000Z	jrib	Tripped	sudo mkdir /var/run/flumotion
+2006-11-20T07:33:00.000Z	jrib	Tripped	did that work ok?
+2006-11-20T07:37:00.000Z	Tripped	jrib	Yes, thank you.
+2006-11-20T07:37:00.000Z	jrib	Tripped	your error went away with just that?  I wasn't sure if you needed to dpkg --configure -a again
+2006-11-20T07:38:00.000Z	jrib	Tripped	ok, you should confirm it has proper ownership now, what does  'ls -ld /var/run/flumotion' say?
+2006-11-20T07:39:00.000Z	jrib	Tripped	great, you are good to go afaict.  I encourage you to file a bug at bugs.ubuntu.com since that seems like a problem in the postinst script

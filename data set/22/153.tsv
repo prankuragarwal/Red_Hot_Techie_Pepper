@@ -1,0 +1,22 @@
+2012-05-16T05:41:00.000Z	ResolutionHD		I need help setting configuring my external HDD a perminant mouting point
+2012-05-16T05:41:00.000Z	escott	ResolutionHD	what location do you want? what kind of filesystem is it?
+2012-05-16T05:43:00.000Z	escott	ResolutionHD	you mean you want it inside you $HOME? thats moderately unusual, but possible
+2012-05-16T05:44:00.000Z	escott	ResolutionHD	basically all you need to do is the following: 1) run sudo blkid and identify the UUID that is associated with the device (you cannot trust /dev/sdb to always be sdb sometimes it might be sdc or other device labels so use the UUID)
+2012-05-16T05:45:00.000Z	escott	ResolutionHD	then run "gksudo gedit /etc/fstab" and add a line that says "UUID=????? /whatever/mountpoint/you/want ext4 defaults 0 2" (the last column could be 0 if you dont want it fscked, but 2 will check it for errors periodically
+2012-05-16T05:47:00.000Z	ResolutionHD	escott	Could you give me an example? I dont wanna get the syntax wrong
+2012-05-16T05:48:00.000Z	escott	ResolutionHD	the existing fstab should have entries for the / filesystem. yours should be similar to that but with a "2" instead of a "1" in the last column, and a different UUID and the mountpoint is /whatever instead of /
+2012-05-16T05:48:00.000Z	escott	ResolutionHD	given that this is a removable I would put it under either /media or /mnt
+2012-05-16T05:49:00.000Z	escott	ResolutionHD	If you want to have something like "files in $HOME/Music" are actually on the removable drive you can symlink Music to /media/removable/Music
+2012-05-16T05:50:00.000Z	escott	ResolutionHD	well first get the removable drive mounted in a good location. /mnt/something or /media/something so that you can identify it
+2012-05-16T05:50:00.000Z	escott	ResolutionHD	so create the fstab entry and then paste that line in here
+2012-05-16T05:51:00.000Z	ResolutionHD	escott	UUID=d3b5b6f4-7ae3-4667-8199-33347aa919d6 /mnt/HDD ext4 defaults 0 2
+2012-05-16T05:51:00.000Z	escott	ResolutionHD	ok. then you would "sudo mkdir /mnt/HDD; sudo chmod 777 /mnt/HDD; sudo mount /mnt/HDD;"
+2012-05-16T05:53:00.000Z	ResolutionHD	escott	okay now what
+2012-05-16T05:53:00.000Z	escott	ResolutionHD	type "mount" to verify that the /mnt/HDD is listed as one of the mounted filesystems, and "ls /mnt/HDD" to see what is currently in the folder
+2012-05-16T05:56:00.000Z	escott	ResolutionHD	assuming those two give the results you want. and suppose you wanted the "~/Music" folder to actually be /mnt/HDD/Music then you would issue the following commands (note that sudo is NOT used) "rmdir ~/Music; mkdir /mnt/HDD/Music; ln -s /mnt/HDD/Music ~/Music"
+2012-05-16T05:57:00.000Z	escott	ResolutionHD	rmdir only removes empty directories so if you have files in ~/Music you need to move those first
+2012-05-16T05:59:00.000Z	ResolutionHD	escott	Thanks just what I wanted
+2012-05-16T05:59:00.000Z	escott	ResolutionHD	then if you "touch ~/Music/testfile" you should see it if you "ls /mnt/HDD/Music"
+2012-05-16T06:01:00.000Z	escott	ResolutionHD	you might give it a reboot to make sure it gets mounted properly on boot. there is a risk that a USB device might cause the boot to fail (if usb enumeration occurs after mount all)
+2012-05-16T06:09:00.000Z	escott	ResolutionHD	you mean add a program to you path?
+2012-05-16T06:09:00.000Z	escott	ResolutionHD	if you have a custom program just for yourself, the best place to put it is in ~/bin, on your next login ~/bin will be added to your path

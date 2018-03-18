@@ -1,0 +1,23 @@
+2007-12-29T05:46:00.000Z	NMajik		I have a number of computers on my network running ubuntu, I did a port scan of my network and found a number of ports I don't remember being open before. The ports aren't consistent between computers and none of them have a common application with any of these ports as default. Should I be concerned that my networked has been hacked?
+2007-12-29T05:46:00.000Z	hwilde	NMajik	what ports and what programs
+2007-12-29T05:48:00.000Z	NMajik	hwilde	http://paste.ubuntu-nl.org/49918/ is my condensed version of the nmap scan where I only show affected computers and ports that I know I didn't open myself
+2007-12-29T05:50:00.000Z	hwilde	NMajik	paste the output of this command please    "netstat -apt"
+2007-12-29T05:51:00.000Z	NMajik	hwilde	Do you want that from every one of the affected computers?
+2007-12-29T05:53:00.000Z	hwilde	NMajik	umm just one with the ports open
+2007-12-29T05:53:00.000Z	NMajik	hwilde	Ok, http://paste.ubuntu-nl.org/49919/ Let me know if you want more
+2007-12-29T05:54:00.000Z	hwilde	NMajik	ok you see where it says local address  616 that is port 616.  it is process PID 4677 and the program name is "rpc.mountd"
+2007-12-29T05:56:00.000Z	NMajik	hwilde	OK, should I be concerned? This computer has been up for 42 days; is there a way to tell when that process started?
+2007-12-29T05:56:00.000Z	hwilde	NMajik	ps -ef
+2007-12-29T05:56:00.000Z	hwilde	NMajik	or to just see that one  ps -ef | grep 4677
+2007-12-29T05:58:00.000Z	NMajik	hwilde	Apparently started on Nov 15. Any cause for concern?
+2007-12-29T05:58:00.000Z	hwilde	NMajik	it is NFS support listening for NFS connections.  did you install this, do you want it running?   http://linux.die.net/man/8/rpc.mountd
+2007-12-29T05:59:00.000Z	NMajik	hwilde	Must have. Thanks for your help. I'm going to go through the other computers to ease my mind.
+2007-12-29T06:00:00.000Z	hwilde	NMajik	run netstat to find out what program is using each port then just google it
+2007-12-29T06:00:00.000Z	NMajik	hwilde	I assume they're all the same thing; they all are running NFS. Thanks again
+2007-12-29T06:03:00.000Z	NMajik	hwilde	I might have spoken too soon. Here is the line from another computer from netstat -apt: tcp        0      0 *:1016                  *:*                     LISTEN     -
+2007-12-29T06:03:00.000Z	NMajik	hwilde	No PID listed
+2007-12-29T06:05:00.000Z	hwilde	NMajik	sudo netstat -evap | grep 1016
+2007-12-29T06:05:00.000Z	NMajik	hwilde	Scratch that *cue me feeling dumb*, I forgot to run it as root
+2007-12-29T06:05:00.000Z	NMajik	hwilde	It is, as expected, 4229/rpc.mountd
+2007-12-29T06:06:00.000Z	hwilde	NMajik	netstat is your friend
+2007-12-29T06:06:00.000Z	NMajik	hwilde	I really should get to know it better

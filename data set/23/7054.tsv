@@ -1,0 +1,23 @@
+2005-10-30T09:43:00.000Z	gimmulf		How do i find out which PostgreSQL version i shall install for my ubuntu systen?
+2005-10-30T09:43:00.000Z	gimmulf		or can i take anyone
+2005-10-30T09:45:00.000Z	pitti	gimmulf	take postgresql-8.0 for breezy
+2005-10-30T09:45:00.000Z	gimmulf		oki pitti thanks
+2005-10-30T10:03:00.000Z	gimmulf		!postgresql
+2005-10-30T10:04:00.000Z	pitti	gimmulf	"!postgresql" ?
+2005-10-30T10:05:00.000Z	gimmulf		Whats the defaultpassword for the postgres user?
+2005-10-30T10:05:00.000Z	pitti	gimmulf	there is none
+2005-10-30T10:05:00.000Z	gimmulf	pitti	 it asks for it
+2005-10-30T10:06:00.000Z	pitti	gimmulf	"sudo -u postgres <command>"
+2005-10-30T10:06:00.000Z	pitti	gimmulf	"it"?
+2005-10-30T10:06:00.000Z	gimmulf		ahha
+2005-10-30T10:13:00.000Z	gimmulf	pitti	 hmmm shouldnt there be some type of password for postgres?
+2005-10-30T10:13:00.000Z	pitti	gimmulf	why? no password is more secure than one :-)
+2005-10-30T10:14:00.000Z	pitti	gimmulf	and usually you should not do things as postgres, apart from adding new users
+2005-10-30T10:14:00.000Z	pitti	gimmulf	but if you want a password, feel free to set one with "sudo passwd postgres"
+2005-10-30T10:14:00.000Z	pitti	gimmulf	however, "sudo -u postgres createuser foo" (or whatever command) is really prefered
+2005-10-30T10:15:00.000Z	gimmulf	pitti	 im installing gphotocoll, a software that handles pictures from my camera and it uses postgresql so when i start the software it asks for postgresqldatabase name / username / password ... i have created an database though
+2005-10-30T10:16:00.000Z	pitti	gimmulf	then you should create an user for you, and then create a db that is owned by you, not postgres
+2005-10-30T10:16:00.000Z	pitti	gimmulf	see /usr/share/doc/postgresql-common/README.Debian
+2005-10-30T10:16:00.000Z	gimmulf		oki thanks
+2005-10-30T10:16:00.000Z	pitti	gimmulf	this explains the steps to get you going
+2005-10-30T10:26:00.000Z	gimmulf	pitti	 when i try to create the user using:  sudo createuser -A -D gimmulf it says createuser: could not connect to database template1: FATAL:  user "root" does not exist

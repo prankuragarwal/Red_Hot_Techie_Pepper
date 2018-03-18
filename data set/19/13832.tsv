@@ -1,0 +1,19 @@
+2005-01-09T14:57:00.000Z	amphigory		I'm having issues getting Warty to recognize a Linksys wusb11, with the atmel chipset.  lsusb sees the card, but I can't get the kernel to recognize it no matter what I do.  The device is known to be good (tested on my wife's windows box.)  Anybody have a suggestion?
+2005-01-09T14:58:00.000Z	amphigory		Or, for that matter, is anyone aware of a howto for configuring these @*(*(@!$!@ linksys usb wireless adapters?  I've googled for the past several hours with no success
+2005-01-09T14:59:00.000Z	ogra	amphigory	isnt that the prism2_usb usb one ?
+2005-01-09T15:00:00.000Z	ogra	amphigory	try sudo mopdprobe prism2_usb
+2005-01-09T15:03:00.000Z	amphigory	ogra	- no, this is the atmel one
+2005-01-09T15:04:00.000Z	ogra	amphigory	so: sudo modprobe atmel ?
+2005-01-09T15:06:00.000Z	amphigory	ogra	tried it, no luck
+2005-01-09T15:07:00.000Z	ogra	amphigory	do you see it in the device manager ?
+2005-01-09T15:08:00.000Z	amphigory	ogra	no, but I do see it if I do "lsusb"
+2005-01-09T15:08:00.000Z	ogra	amphigory	ahh, wait
+2005-01-09T15:08:00.000Z	ogra	amphigory	sudo modprobe pegasus :))
+2005-01-09T15:09:00.000Z	ogra	amphigory	thats the right module....
+2005-01-09T15:09:00.000Z	amphigory	ogra	nothing thus far.  Let me try unloading the atmel and prism mods and try that
+2005-01-09T15:10:00.000Z	amphigory	ogra	sadly, nope.
+2005-01-09T15:11:00.000Z	ogra	amphigory	yep. its for sure the right module, there is a lengthy therad in ubuntu-suers from oct....you probably need to add it to /etc/modules and reboot to get it recognized
+2005-01-09T15:12:00.000Z	amphigory	ogra	rebooting now
+2005-01-09T15:13:00.000Z	ogra	amphigory	http://lists.ubuntu.com/archives/ubuntu-users/2004-October/005018.html
+2005-01-09T15:16:00.000Z	amphigory	ogra	still no luck
+2005-01-09T15:17:00.000Z	ogra	amphigory	seen the thread ?

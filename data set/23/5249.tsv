@@ -1,0 +1,23 @@
+2007-08-14T08:57:00.000Z	FactTech		Question: Anybody have any recommendations on which channel is best for asking about really old network cards (ISA interface)?
+2007-08-14T08:57:00.000Z	ProN00b	FactTech	wtf oO
+2007-08-14T08:58:00.000Z	ProN00b	FactTech	i don't think ubuntu would run on pc's that still got an isa interface...
+2007-08-14T08:59:00.000Z	FactTech	ProN00b	Well, Xubuntu 6.10 runs, just slowly.
+2007-08-14T09:01:00.000Z	ProN00b	FactTech	well, if its recognized, where is the problem ?
+2007-08-14T09:02:00.000Z	FactTech	ProN00b	I think there is more configuration to do, I just don't know what. The card gets an IRQ assigned after modprobe, so I assume it can work. But it doesn't come up with an IP address assignment or anything.
+2007-08-14T09:03:00.000Z	ProN00b	FactTech	anything on ifconfig ?
+2007-08-14T09:04:00.000Z	FactTech	ProN00b	I don't know. I will go find out.
+2007-08-14T09:09:00.000Z	FactTech	ProN00b	Nope, ifconfig shows only a local loopback at 127.0.0.1
+2007-08-14T09:10:00.000Z	ProN00b	FactTech	and ifconfig -a ?
+2007-08-14T09:11:00.000Z	FactTech	ProN00b	ifconfig -a shows an eth0 device at IRQ10 with a real-looking HW Addr, but no IP address shown.
+2007-08-14T09:12:00.000Z	ProN00b	FactTech	try ifup'ing it
+2007-08-14T09:13:00.000Z	FactTech	ProN00b	OK... I'll go read the man page on that and give it a shot. I appreciate the pointers -- I rarely know how to start with these things, and #ubuntu always comes through with at least an orientation.
+2007-08-14T09:17:00.000Z	FactTech	ProN00b	ifup seems straightforward enough, but running "ifup eth0" gives an error: "failed to open statefile /var/run/network/ifstate: Permission denied." Trying "sudo ifup -v eth0" returns "Ignoring unknown interface eth0=eth0".
+2007-08-14T09:18:00.000Z	FactTech	ProN00b	Am I correct in thinking that the card was detected by modprobe? It wouldn't have an IRQ assignment if nothing was found, right?
+2007-08-14T09:19:00.000Z	ProN00b	FactTech	well, it showing up in ifconfig at all is a good sign
+2007-08-14T09:21:00.000Z	ProN00b	FactTech	well, try asigning an ip and netmask manually with "ifconfig eth0 address 1.1.1.1 netmask 1.1.1.1" and then "ifconfig eth0 up" (replace 1.1.1.1 with apropriate values)
+2007-08-14T09:21:00.000Z	FactTech	ProN00b	OK, I'll give it a shot.
+2007-08-14T09:21:00.000Z	ProN00b	FactTech	or ask someone else how to get the modprobe to work automatically on boot so ubuntu configures it for you
+2007-08-14T09:22:00.000Z	FactTech	ProN00b	Is it possible to execute a modprobe in the middle of an install? It's a fresh install and I don't mind redoing it.
+2007-08-14T09:22:00.000Z	ProN00b	FactTech	install of what ?
+2007-08-14T09:22:00.000Z	FactTech	ProN00b	Install of Xubuntu 6.10.
+2007-08-14T09:23:00.000Z	ProN00b	FactTech	it shouldn't matter

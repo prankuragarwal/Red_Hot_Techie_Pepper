@@ -1,0 +1,23 @@
+2005-12-24T16:29:00.000Z	tonyyarusso	Alex_BO	My suspend worked out of the box with the bios key combo.
+2005-12-24T16:53:00.000Z	tonyyarusso	Alex_BO	It's going to depend on your hardware.  Are you already running Ubuntu, or doing preliminary research?
+2005-12-24T16:54:00.000Z	Alex_BO	tonyyarusso	well...i have ubuntu breezy now. i haven't ever do prelimiary research
+2005-12-24T16:55:00.000Z	tonyyarusso	Alex_BO	Does the computer have some sort of key combo for the BIOS that is supposed to make it suspend?  (Mine for instance is Fn-F4, and worked out of the box.)
+2005-12-24T16:56:00.000Z	Alex_BO	tonyyarusso	i have Fn-F4 too, but it doesn't work (it does only a BIP)
+2005-12-24T16:56:00.000Z	Alex_BO	tonyyarusso	however, in Windows  it worked
+2005-12-24T16:56:00.000Z	tonyyarusso	Alex_BO	You may have to uncomment a line that says something like sleep = yes in an acpi configuration file, but I don't remember where off the top of my head.
+2005-12-24T16:57:00.000Z	tonyyarusso	Alex_BO	And maybe change which level that calls (3 or 1, I believe).
+2005-12-24T16:59:00.000Z	Alex_BO	tonyyarusso	more /proc/acpi/sleep      S0 S3 S4 S5
+2005-12-24T16:59:00.000Z	Alex_BO	tonyyarusso	what does it means?
+2005-12-24T17:00:00.000Z	Alex_BO	tonyyarusso	look at this: http://acpi.sourceforge.net/documentation/sleep.html
+2005-12-24T17:01:00.000Z	tonyyarusso	Alex_BO	Not sure.  Possibly the different levels available to you?
+2005-12-24T17:01:00.000Z	tonyyarusso	Alex_BO	What is this computer?
+2005-12-24T17:02:00.000Z	Alex_BO	tonyyarusso	Acer Aspire 1524 WLMi
+2005-12-24T17:03:00.000Z	tonyyarusso	Alex_BO	Open up /etc/default/acpi-support in a text editor.
+2005-12-24T17:04:00.000Z	tonyyarusso	Alex_BO	Uncomment the line: ACPI_SLEEP=true.
+2005-12-24T17:05:00.000Z	tonyyarusso	Alex_BO	I'm not sure if you then have to reload something, or if so how to do so.  For sure it will take effect after a reboot, but of course that can be annoying, so maybe just write this down now for later trail.
+2005-12-24T17:06:00.000Z	tonyyarusso	Alex_BO	After your next boot, try the key sequence to suspend, or call /etc/acpi/sleep.sh
+2005-12-24T17:07:00.000Z	tonyyarusso	Alex_BO	If that doesn't work, try editing /boot/grub/menu.lst
+2005-12-24T17:07:00.000Z	tonyyarusso	Alex_BO	Find the kernel entry, and add pci=noacpi acpi_sleep=s3_bios to it.
+2005-12-24T17:08:00.000Z	tonyyarusso	Alex_BO	Test that out.  If still no luck, s1 instead of s3 might work, but use more power.
+2005-12-24T17:08:00.000Z	tonyyarusso	Alex_BO	Okay, now that's all I have.  Have you tried any of that already?
+2005-12-24T17:11:00.000Z	tonyyarusso	Alex_BO	See http://acpi.sourceforge.net/documentation/sleep.html for an explanation of the S-states you saw before in /proc/acpi/sleep

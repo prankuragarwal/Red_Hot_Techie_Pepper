@@ -1,0 +1,18 @@
+2010-03-16T20:31:00.000Z	bernz	arathald	it sounds like the problem is pretty deep; fdisk can't get at the partition table
+2010-03-16T20:31:00.000Z	bernz	arathald	that is, robert has tried 'sudo fdisk /dev/sdb' just to look at it more closely, and it failed attempting to 'hook' the drive
+2010-03-16T20:32:00.000Z	arathald	bernz	if the partition table is corrupted, it might do that, but you should still be able to pull an image
+2010-03-16T20:32:00.000Z	arathald	bernz	at very least with dd_rescue or dc3dd if there's corruption or certain kinds of physical damage
+2010-03-16T20:33:00.000Z	bernz	arathald	yes, cloning the drive with 'dd' is worth a try, i agree
+2010-03-16T20:33:00.000Z	bernz	arathald	what about just ripping sector 0 (partition table); are there any tools that can examine partition tables as bin files?
+2010-03-16T20:34:00.000Z	arathald	bernz	im not sure, im not a data recovery expert, i suppose if you know enough about partition tables, you can look at the hex
+2010-03-16T20:35:00.000Z	bernz	arathald	eh... i like assembly programming; that's as deep as i go in terms of "looking at hex" ;-)
+2010-03-16T20:36:00.000Z	arathald	bernz	ive had to do machine code programming before (for class, we didn't have an assembler because we were using a custom architecture), slogging through hex doesn't intimidate me anymore :P
+2010-03-16T20:36:00.000Z	bernz	arathald	it's not intimidation, it's tedium ;-)
+2010-03-16T20:37:00.000Z	bernz	arathald	i'm not as young as i used to be, and now getting *too* nitty-gritty isn't as spellbinding as it once was :-D
+2010-03-16T20:57:00.000Z	arathald	bernz	i was going to suggest a bash script... i assume you mean that you won't know exactly what they are, which would preclude adding them to fstab?
+2010-03-16T21:01:00.000Z	arathald	bernz	yeah, if they're consistent, fstab is by far the most correct tool
+2010-03-16T22:48:00.000Z	arathald	bernz	and sucks for just about everything else
+2010-03-16T22:49:00.000Z	bernz	arathald	right you are! :-D
+2010-03-16T22:49:00.000Z	bernz	arathald	getting the samba shares into my fstab was easier than i thought; i just had to find the syntax for samba-style (smbfs) file systems
+2010-03-16T22:49:00.000Z	arathald	bernz	the way linux handles file systems, it's not very hard to do
+2010-03-16T22:51:00.000Z	bernz	arathald	agreed, though it's a steep learning curve for the details (like fstab syntax, and so on)... well... IMO, anyway

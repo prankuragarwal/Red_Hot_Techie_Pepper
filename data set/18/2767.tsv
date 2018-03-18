@@ -1,0 +1,18 @@
+2010-02-26T18:25:00.000Z	dlynes	clopxy	because it's a windows share...".exe", ".com" and ".dll" files still show up with executable privilege, regardless
+2010-02-26T18:25:00.000Z	dlynes	clopxy	it's not specific to ubuntu
+2010-02-26T18:26:00.000Z	clopxy	dlynes	isn't it a little dangerous to have /all/ files come up 777? what if a user double click on it?
+2010-02-26T18:26:00.000Z	dlynes	clopxy	you didn't say all files were showing up 777...you were non-specific
+2010-02-26T18:27:00.000Z	dlynes	clopxy	you also haven't specified what type of filesystem you're mounting
+2010-02-26T18:27:00.000Z	clopxy	dlynes	sorry, yes. All directoriesand files from the client seem to have 777
+2010-02-26T18:27:00.000Z	clopxy		cifs
+2010-02-26T18:27:00.000Z	clopxy		NTFS on the server
+2010-02-26T18:27:00.000Z	dlynes	clopxy	under Windows, it could be NTFS, HPFS, or FAT
+2010-02-26T18:27:00.000Z	dlynes	clopxy	so it's a cifs file system, then
+2010-02-26T18:28:00.000Z	dlynes	clopxy	you definitely shouldn't be getting executable permissions, then
+2010-02-26T18:28:00.000Z	dlynes	clopxy	have you tried mounting without specifying mounting permissions?
+2010-02-26T18:29:00.000Z	clopxy	dlynes	yes. same thing...
+2010-02-26T18:29:00.000Z	dlynes	clopxy	How are you mounting it?
+2010-02-26T18:31:00.000Z	clopxy	dlynes	//server/share /mnt/share cifs credentials=/root/creds,uid=1234,gid=1234
+2010-02-26T18:31:00.000Z	dlynes	clopxy	try the command line:  mount //server/share /mnt/share -t cifs -o "uid,1234,gid=1234"
+2010-02-26T18:32:00.000Z	dlynes	clopxy	and using the contents of your /root/creds file as additional options
+2010-02-26T18:32:00.000Z	dlynes	clopxy	or actually, skip the creds file, and see if you still have the problem

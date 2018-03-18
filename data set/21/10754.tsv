@@ -1,0 +1,21 @@
+2010-11-02T12:49:00.000Z	sugoruyo		hi all, i have a network consisting entirely of ubuntu server machines and would like to be able to talk to them on the lan using hostnames instead of IPs could anybody point me to some docs or howtos on that?
+2010-11-02T12:50:00.000Z	Dr_Willis	sugoruyo	 if they are all static ip's you could edit the hosts file on each one. thats teh simpilist way.
+2010-11-02T12:51:00.000Z	sugoruyo	Dr_Willis	that's exactly the approach i wanted to avoid
+2010-11-02T12:51:00.000Z	Dr_Willis	sugoruyo	 then you need to look into setting up a dns/bind server.. id rather edit hosts file.
+2010-11-02T12:51:00.000Z	Dr_Willis	sugoruyo	 how big a network anyway?
+2010-11-02T12:51:00.000Z	sugoruyo	Dr_Willis	4 machines
+2010-11-02T12:52:00.000Z	sugoruyo	Dr_Willis	hosts file is probably easiest, but it's a testbed and configuration is still quite fluid
+2010-11-02T12:53:00.000Z	sugoruyo	Dr_Willis	they all have static IPs but i'd rather have one place to change name resolution rather than have to go through 4 hosts files
+2010-11-02T12:53:00.000Z	Dr_Willis	sugoruyo	 you can sync the hosts file  with scp and a script.
+2010-11-02T12:53:00.000Z	Dr_Willis	sugoruyo	 or other ways...
+2010-11-02T12:57:00.000Z	Dr_Willis	sugoruyo	 how often are these things going to be changeing? You could always make up a script that scans the network and gets the hostnames :)
+2010-11-02T12:57:00.000Z	sugoruyo	Dr_Willis	maybe on a weekly basis for now
+2010-11-02T12:58:00.000Z	sugoruyo	Dr_Willis	how would i go about scanning the network and getting hostnames?
+2010-11-02T12:58:00.000Z	Dr_Willis	sugoruyo	 i basically can use 'findsmb' and get a hosts file (with a little editing) but all my machines have samba going.
+2010-11-02T12:58:00.000Z	sugoruyo	Dr_Willis	smb is a no-go here
+2010-11-02T12:59:00.000Z	sugoruyo	Dr_Willis	no use for it in my case, i'm setting up a linux only thing, not even GUIs
+2010-11-02T12:59:00.000Z	Dr_Willis	sugoruyo	 sounds like you need to learn some more advanced topics then. :)
+2010-11-02T13:00:00.000Z	sugoruyo	Dr_Willis	problem is a dns would be total overkill for 4 machines
+2010-11-02T13:01:00.000Z	sugoruyo	Dr_Willis	if testing goes well i might deploy on hundred of VMs and dozens of physical hosts where a dns server would be reasonable
+2010-11-02T13:55:00.000Z	sugoruyo	Dr_Willis	llutz-n: thanks for the info on dnsmasq, just got a chance to set it up and it works like a charm
+2011-01-17T15:56:00.000Z	sugoruyo	Dr_Willis	is right, python is a language that will return your investment in time and effort tenfold, it's just not a language to do kernel stuff in

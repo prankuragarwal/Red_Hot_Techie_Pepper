@@ -1,0 +1,23 @@
+2010-10-08T00:32:00.000Z	glaucous		If you update to 10.10 RC, is it easy to update to release version of 10.10 later on?
+2010-10-08T00:32:00.000Z	Pici	glaucous	Further 10.10 questions should be asked in #ubuntu+1
+2010-10-08T00:32:00.000Z	glaucous	Pici	acicula, thank you.
+2010-10-22T17:03:00.000Z	Pici	glaucous	It doesn't.
+2010-10-22T17:03:00.000Z	glaucous	Pici	well I don't have permissions to change my own, for some reason
+2010-10-22T17:03:00.000Z	Pici	glaucous	How are you trying?
+2010-10-22T17:03:00.000Z	glaucous	Pici	crontab -e. and crontab -u glaucous -e
+2010-10-22T17:04:00.000Z	Pici	glaucous	crontab -e should JustWork™
+2010-10-22T17:04:00.000Z	glaucous	Pici	"crontabs/glaucous/: fdopen: Permission denied"
+2010-10-22T17:04:00.000Z	Pici	glaucous	Have you done any permissions changing in /var/ ?
+2010-10-22T17:05:00.000Z	glaucous	Pici	yes I actually had a few problems there before - so it is very possible
+2010-10-22T17:06:00.000Z	glaucous	Pici	where in /var does crontab need permissions would you think?
+2010-10-22T17:06:00.000Z	Pici	glaucous	Well user crontabs are stored in /var/spool/cron/ , so I'd check, using (sudo -i) whether everything looks good.  Let me see if I can get a listing of the permissions from my server here.
+2010-10-22T17:08:00.000Z	Pici	glaucous	http://pastebin.com/a0MW19Hy is ls -lR /var/spool/cron/ from here.
+2010-10-22T17:08:00.000Z	glaucous	Pici	thanks a lot, will use it
+2010-10-22T17:15:00.000Z	glaucous	Pici	great it worked. Apparently all permissions and owners were wrong. This occured when I wanted to change /var to another harddrive, later on I noticed that it was a dumb idea (to do it after install). Do you know if there's a way to reset all permissions on /var?
+2010-10-22T17:16:00.000Z	Pici	glaucous	I don't know any way of doing that beyond a reinstall. :/
+2010-10-22T17:17:00.000Z	glaucous	Pici	damn, oh well
+2010-10-22T17:20:00.000Z	glaucous	Pici	by the way, do I need to reload/relog for crontab changes to take effect?
+2010-10-22T17:20:00.000Z	Pici	glaucous	Using crontab -e should do that automatically.
+2010-10-22T17:20:00.000Z	glaucous	Pici	okay, good
+2010-10-22T17:21:00.000Z	Pici	glaucous	After you exit crontab -e it should say something like 'installing new crontab' or something similar.
+2010-10-22T17:21:00.000Z	glaucous	Pici	yup, its working

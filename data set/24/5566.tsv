@@ -1,0 +1,24 @@
+2010-08-28T21:01:00.000Z	flixil		to restart X you can do Control + alt + backspace or /etc/init.d/gdm or kdm or xdm restart
+2010-08-28T21:03:00.000Z	flixil		Hello. I got two different X window using nvidia on two different monitors with different resolutions. Opening a window from one monitor opens it in the current monitor, but dialogs and for instance the gsudo dialog go always to the first monitor. How can this behaviour be changed? Thanks
+2010-08-28T21:04:00.000Z	jrib	flixil	the DISPLAY variable should influence where an app starts, but what do you want the behavior to change to?
+2010-08-28T21:05:00.000Z	flixil	jrib	the thing is dialogs created from applications as when you try to get superuser permisions get always to the first screen. I would like all the sons of applications to be created in the same screen as the father
+2010-08-28T21:11:00.000Z	jrib	flixil	how does it behave if you set DISPLAY?  Like:  DISPLAY=:0.0 gedit
+2010-08-28T21:11:00.000Z	flixil	jrib	correctly, it creates the application in the first monitor, I can change display to create it on the second monitor. That's not the problem
+2010-08-28T21:12:00.000Z	jrib	flixil	so it's NOT specific to administration applications?
+2010-08-28T21:13:00.000Z	flixil	jrib	now that you say it... It may be... I just realised the problem with the input password application. I think you are right with that guess
+2010-08-28T21:14:00.000Z	jrib	flixil	because I'm pretty sure that by default, a command you run through sudo will not inherit DISPLAY
+2010-08-28T21:15:00.000Z	flixil	jrib	how can I change this behaviour? I don't know very well the details of getting superuser powers
+2010-08-28T21:16:00.000Z	jrib	flixil	I just tested, seems sudo preserves DISPLAY actually
+2010-08-28T21:18:00.000Z	jrib	flixil	ok well, let's try a different approach.  Do you know why the administration apps open up on the other monitor?
+2010-08-28T21:19:00.000Z	flixil	jrib	mmm... I don't know why. Because it's the primary monitor I guess, but I don't wanna be changing which monitor is the primary as that involves changing xorg.conf every time
+2010-08-28T21:19:00.000Z	jrib	flixil	ok, so why do the regular apps not start there?
+2010-08-28T21:20:00.000Z	flixil	jrib	it's another Xserver if I understood correctly the concept of "different X screens", so this means that they inherit a different DISPLAY value when created
+2010-08-28T21:21:00.000Z	jrib	flixil	so they start there because you start them from the menu there?
+2010-08-28T21:21:00.000Z	flixil	jrib	yes, or from a console form here, or so on
+2010-08-28T21:21:00.000Z	jrib	flixil	I see now, though I'm not sure why dialogs would ignore DISPLAY
+2010-08-28T21:23:00.000Z	flixil	jrib	do you think that gdevilspie can help here?
+2010-08-28T21:24:00.000Z	jrib	flixil	I didn't know devilspie could send things to other X servers, but even if it can, it would be hard to write a rule that says: open dialogs where the parent window is
+2010-08-28T21:27:00.000Z	flixil	jrib	yes, It cannot send things to other Xservers, checked :(
+2010-08-28T21:29:00.000Z	flixil	jrib	any idea about where to ask, what can make the problem or even how to make a google search, because I've not been able to find anything interesting
+2010-08-28T21:31:00.000Z	jrib	flixil	your best bet is to find someone that also has your setup :P  I would try here later, some other linux channels (##linux maybe), forums too.  My google searches have also been less than fruitful
+2010-08-28T21:33:00.000Z	jrib	flixil	well gl, I'm off for a bit

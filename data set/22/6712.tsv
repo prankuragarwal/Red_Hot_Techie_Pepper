@@ -1,0 +1,22 @@
+2007-12-24T01:03:00.000Z	Shimfs		weird. I cant get my laptop to make the | symbol
+2007-12-24T01:03:00.000Z	Shimfs		quite annoying :S
+2007-12-24T01:04:00.000Z	Shimfs		can anyone tell me how i get my WIRED internet connection to work :S i cant access the internet with the lan cable in :S
+2007-12-24T01:06:00.000Z	ubuntux	Shimfs	do /sbin/ifconfig
+2007-12-24T01:06:00.000Z	ubuntux	Shimfs	and do /sbin/route -n
+2007-12-24T01:07:00.000Z	Shimfs	ubuntux	/sbin/ipconfig says the destination was not found
+2007-12-24T01:07:00.000Z	ubuntux	Shimfs	its /sbin/ifconfig not ipconfig read
+2007-12-24T01:07:00.000Z	Shimfs	ubuntux	and the route -n gets me a list like this: Destination, gateway, genmask, flags metric ref and use iface
+2007-12-24T01:08:00.000Z	ubuntux	Shimfs	what gateway do you see for route 0.0.0.0
+2007-12-24T01:08:00.000Z	Shimfs	ubuntux	none, the list is empty
+2007-12-24T01:08:00.000Z	ubuntux	Shimfs	so your eth isnt configured
+2007-12-24T01:09:00.000Z	ubuntux	Shimfs	do you know what DHCP is, or some basic about network config?
+2007-12-24T01:09:00.000Z	Shimfs	ubuntux	i know that it is the one that sets the ip up automaticly
+2007-12-24T01:10:00.000Z	ubuntux	Shimfs	yes, does your router or other network device supports that?
+2007-12-24T01:10:00.000Z	ubuntux	Shimfs	sudo dhclient eth0
+2007-12-24T01:11:00.000Z	Shimfs	ubuntux	it says no DHCPOFFERS recieved
+2007-12-24T01:11:00.000Z	ubuntux	Shimfs	so or you dont patched eth0 to your network device, or your router doesnt support it (read has it enabled)
+2007-12-24T01:12:00.000Z	Shimfs	ubuntux	hmm, im not sure, but i think its connected with the fact that not even WIRED internet works for me :S
+2007-12-24T01:13:00.000Z	ubuntux	Shimfs	because you dont have an ipadress and a route to a gateway, so of course your internet doesnt work
+2007-12-24T01:13:00.000Z	Shimfs	ubuntux	eht0has no IP assigned. it only shows me the mac address. and then some packet and error stuff
+2007-12-24T01:14:00.000Z	ubuntux	Shimfs	and if you put your cable in eth1 and do sudo dhclient eth1 ?
+2007-12-24T01:14:00.000Z	Shimfs	ubuntux	i will try that, brb in a minute (only got one cable -.-

@@ -1,0 +1,18 @@
+2007-10-22T18:12:00.000Z	feklee		How do I tell Ubuntu *not* to empty /tmp/ with each restart?
+2007-10-22T18:12:00.000Z	Arafangion	feklee	Sounds like you need to revise what the term "temporary" means.
+2007-10-22T18:13:00.000Z	Arafangion	feklee	It might not ever be written to disk at all.
+2007-10-22T18:13:00.000Z	feklee	Arafangion	AFAICS - according to FHS - /tmp doesn't need to be deleted each restart.
+2007-10-22T18:13:00.000Z	Arafangion	feklee	Perhaps not, but what if it never even exists on the disk?
+2007-10-22T18:14:00.000Z	feklee	Arafangion	Well, how do I turn off that "feature"?
+2007-10-22T18:14:00.000Z	Arafangion	feklee	Hmm, I'm not running ubuntu, but depends on how ubuntu does things, you could remove the line in /etc/fstab that mounts /tmp.
+2007-10-22T18:15:00.000Z	Arafangion	feklee	And it'll use space in the / partition instead, however, since that isn't the default in Ubuntu, it might not automatically empty /tmp, so you should add a cleanup script, or just watch the space.  Might even have to change the permissions as well.
+2007-10-22T18:15:00.000Z	feklee	Arafangion	Well no: I want that line to be there.  /tmp/ is on sda5, and that's how I want it.
+2007-10-22T18:16:00.000Z	Arafangion	feklee	Hmm, so it isn't using a ramdisk, I see.
+2007-10-22T18:16:00.000Z	Arafangion	feklee	Sorry, I assumed it was. :)  I'd go through the /etc/init.d scripts, and find out where it does the removal/cleanup, possibly by grepping for 'rm'.
+2007-10-22T18:17:00.000Z	Arafangion	feklee	It might do it at boot, or it might do it at shutdown
+2007-10-22T18:17:00.000Z	feklee	Arafangion	there's bootclean - actually that could be it.  Thanks for the suggestions.  I'll continue investigating ...
+2007-10-22T18:17:00.000Z	Arafangion	feklee	Quite likely. :)
+2007-10-22T18:17:00.000Z	Arafangion	feklee	Comment out the relevant line. ;0
+2007-10-22T18:18:00.000Z	Arafangion	feklee	;)
+2007-10-22T18:22:00.000Z	feklee	Arafangion	Actually, it's very simple: I found out that setting /etc/default/rcS/TMPTIME to -1 does the trick. :-)
+2007-10-22T18:22:00.000Z	Arafangion	feklee	That should do it too. ;)

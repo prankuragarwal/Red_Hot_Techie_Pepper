@@ -1,0 +1,19 @@
+2004-12-17T17:50:00.000Z	billytwowilly		I'm having nfs difficulties. Mounting is slow or returns this error: RPC timeout. ssh is also really slow to the server. Any ideas what could be wrong with the server and/or the network?
+2004-12-17T17:51:00.000Z	thoreauputic	billytwowilly	you have portmap installed and running?
+2004-12-17T17:51:00.000Z	billytwowilly	thoreauputic	I believe so. I'll ssh into the server and find out
+2004-12-17T17:53:00.000Z	billytwowilly	thoreauputic	 2836 ?        00:00:00 portmap
+2004-12-17T17:55:00.000Z	thoreauputic	billytwowilly	looks like it's there then
+2004-12-17T17:57:00.000Z	billytwowilly	thoreauputic	any other ideas?
+2004-12-17T17:58:00.000Z	billytwowilly	thoreauputic	It's not just nfs, ssh is also slow. I'm on a home network being routed through a wrt54G linksys router with the latest sveasoft firmware.
+2004-12-17T17:58:00.000Z	billytwowilly	thoreauputic	Worked great with suse..
+2004-12-17T17:58:00.000Z	thoreauputic	billytwowilly	umm.. run rpcinfo -p on that server and you should get a whole bunch of stuff
+2004-12-17T17:59:00.000Z	billytwowilly	thoreauputic	yah, lots of stuff. Whole bunch of mountd, nlockmgn, nfs, status, sgi_fam and portmapper
+2004-12-17T17:59:00.000Z	thoreauputic	billytwowilly	yup that sounds right :/
+2004-12-17T06:00:00.000Z	thoreauputic	billytwowilly	your host.allow and hosts.deny are configured?
+2004-12-17T06:01:00.000Z	billytwowilly	thoreauputic	hosts.allow doesn't have anytyhing  in it that isn't commented out.
+2004-12-17T06:02:00.000Z	thoreauputic	billytwowilly	that could be the problem
+2004-12-17T06:02:00.000Z	billytwowilly	thoreauputic	how would I allow everyone on the local network?
+2004-12-17T06:02:00.000Z	thoreauputic	billytwowilly	hang on I'll find you a link for nfs setup
+2004-12-17T06:03:00.000Z	thoreauputic	billytwowilly	http://www.linux.org/docs/ldp/howto/NFS-HOWTO/server.html
+2004-12-17T06:04:00.000Z	thoreauputic	billytwowilly	that's what I used
+2004-12-17T06:06:00.000Z	thoreauputic	billytwowilly	your host.allow should have portmap, lockd, rquotad, mountd, statd  ... and you shoould configure hosts.deny as well

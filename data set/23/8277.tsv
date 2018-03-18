@@ -1,0 +1,23 @@
+2004-11-03T10:25:00.000Z	_req_		anyone? tool for examining/mounting partitions on my harddisk?
+2004-11-03T10:25:00.000Z	_req_		sorry for the real basic question :)
+2004-11-03T10:25:00.000Z	_req_		ntfs
+2004-11-03T10:26:00.000Z	_req_		nope, well I know one is hda1 but the other i dont, hence the question to be able to look
+2004-11-03T10:27:00.000Z	stvn	_req_	cfdisk will sho the configureation of your harddisc
+2004-11-03T10:29:00.000Z	stvn	_req_	anyway, sudo cfdisk /dev/hda should give more insight
+2004-11-03T10:29:00.000Z	stvn	_req_	sudo mount -t ntfs /device /destination
+2004-11-03T10:29:00.000Z	stvn	_req_	you can not mount as normal user
+2004-11-03T10:30:00.000Z	stvn	_req_	ah ok, unmount it and add -o umask=000
+2004-11-03T10:32:00.000Z	stvn	_req_	nope, sudo mount -t ntfs -o umask=000 (oh and please put stvn in front of line if you talk to me, otherwise I might not notice you talking)
+2004-11-03T10:38:00.000Z	_req_	stvn	cheers
+2004-11-03T10:38:00.000Z	stvn	_req_	np
+2004-11-03T10:39:00.000Z	_req_	stvn	but how do i make it auto mount at boot, i put somthing in my fstab right?
+2004-11-03T10:39:00.000Z	stvn	_req_	yes
+2004-11-03T10:40:00.000Z	_req_	stvn	sorry really new to linux so bear with me, what do i put?
+2004-11-03T10:40:00.000Z	stvn	_req_	/dev/device /destination vfat dafaults 0 0
+2004-11-03T10:40:00.000Z	_req_	stvn	and best way to edit fstab?
+2004-11-03T10:40:00.000Z	stvn	_req_	sudo gedit /etc/fstab
+2004-11-03T10:40:00.000Z	_req_	stvn	again cheers
+2004-11-03T10:41:00.000Z	stvn	_req_	this mounts tham at boot time, you can also chose that you mount it later
+2004-11-03T10:41:00.000Z	_req_	stvn	looking a my fstab what are the options I have here?
+2004-11-03T10:42:00.000Z	stvn	_req_	many, man fstab gives you an overview
+2004-11-03T10:42:00.000Z	stvn	_req_	but the important ones are ro/rw noauto user

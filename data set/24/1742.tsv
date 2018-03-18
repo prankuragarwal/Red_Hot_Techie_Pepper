@@ -1,0 +1,24 @@
+2011-06-12T20:17:00.000Z	abys		How can I add my windows 7 partition in  the grub list? It's missing since I install natty :)
+2011-06-12T20:18:00.000Z	dr_willis	abys	  dirty way is to add it to your /etc/grub.d/40_custome file. but  just running sudo update-grub SHOULD find and add it automatically
+2011-06-12T20:18:00.000Z	abys	dr_willis	 the update does not :/
+2011-06-12T20:18:00.000Z	dr_willis	abys	 you may want to check the forums or the askubuntu.com site. they may have some tricks for making grub2 see the windows install. Its supposed to be seeing it.. but ive seen cases where it ignroes it for some reasion
+2011-06-12T20:19:00.000Z	dr_willis		some sort of bug in the os-prober tool. :(
+2011-06-12T20:19:00.000Z	abys	dr_willis	 I was hoping not to get my hands dirty :p
+2011-06-12T20:20:00.000Z	dr_willis	abys	 edit that file. add a entry that will load windows. :) but figureing out what to add can be the issue.
+2011-06-12T20:21:00.000Z	abys	dr_willis	 yep, that's kind of what I'm looking for ^_^
+2011-06-12T20:21:00.000Z	dr_willis	abys	 check someone elses grub.cfg to see what the tools normally ad. and cut/paste it
+2011-06-12T20:22:00.000Z	dr_willis		and change it as needed
+2011-06-12T20:22:00.000Z	abys	dr_willis	 menuentry "Windows 7 (loader) (on /dev/sda3)" {
+2011-06-12T20:22:00.000Z	abys		 insmod ntfs
+2011-06-12T20:22:00.000Z	abys		 set root=(hd0,2)
+2011-06-12T20:22:00.000Z	abys		 search --no-floppy --fs-uuid --set 861EF8FB1EF8E559
+2011-06-12T20:22:00.000Z	abys		 chainloader +1
+2011-06-12T20:22:00.000Z	abys		}
+2011-06-12T20:22:00.000Z	abys	dr_willis	 what I've got for know,  but not sure avout search and root
+2011-06-12T20:23:00.000Z	dr_willis		!uuid
+2011-06-12T20:23:00.000Z	dr_willis		change the uuid@ to match your uuid
+2011-06-12T20:23:00.000Z	dr_willis		and  hd0,2 = the first hd. 2nd partition
+2011-06-12T20:24:00.000Z	abys	dr_willis	 good stuff, that's help a lot ;)
+2011-06-12T20:24:00.000Z	abys	dr_willis	 do I have to do an update to add the entry?
+2011-06-12T20:27:00.000Z	dr_willis	abys	 to generate a new grub.cfg you always have to run update-grub
+2011-06-12T20:28:00.000Z	abys	dr_willis	is it supposed to show up when I do the update? or I'll see it after reboot?

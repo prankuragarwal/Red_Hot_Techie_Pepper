@@ -1,0 +1,24 @@
+2010-08-23T14:35:00.000Z	jimcooncat		how to reconfigure X from command line?
+2010-08-23T14:35:00.000Z	sacarlson	jimcooncat	the display?   keyboard?  mouse?  look in System>preferences
+2010-08-23T14:36:00.000Z	sacarlson	jimcooncat	oh command line I forget but there is a way
+2010-08-28T00:11:00.000Z	sacarlson	jimcooncat	 well modprobe -l gives you all the drivers
+2010-08-28T00:19:00.000Z	sacarlson	jimcooncat	simple like vesa graphic safe?  I'm looking for a solution for that.
+2010-08-28T00:20:00.000Z	jimcooncat	sacarlson	yes, I can only get good video if I use the failsafe graphics mode
+2010-08-28T00:21:00.000Z	sacarlson	jimcooncat	failsafe?  how do you get into failsafe graphic mode.  I"m told that xforcevesa in grub2 boot will do that but I havn't tried it yet.
+2010-08-28T00:22:00.000Z	jimcooncat	sacarlson	It's an option after you choose the recovery kernel from grub
+2010-08-28T00:22:00.000Z	sacarlson	jimcooncat	and this option is........?
+2010-08-28T00:23:00.000Z	sacarlson	jimcooncat	 so just recovery asks you this or if forces vesa?
+2010-08-28T00:23:00.000Z	jimcooncat	sacarlson	yes, recovery prompts for several options, one of which is failsafeX
+2010-08-28T00:24:00.000Z	sacarlson	jimcooncat	I thought recover didn't go to graphic mode at all
+2010-08-28T00:25:00.000Z	sacarlson	jimcooncat	ok I think that requires more investigation by my studens
+2010-08-28T00:27:00.000Z	jimcooncat	sacarlson	I rebooted to see. It boots into a text-mode "dialog" menu, and failsafeX is there. After that, it will load X and then start asking troubleshooting questions, none of which helped on my box.
+2010-08-28T00:28:00.000Z	sacarlson	jimcooncat	ok thanks I will try this if not my students
+2010-08-30T18:40:00.000Z	sacarlson	jimcooncat	it must be setup on the server side also
+2010-08-30T18:42:00.000Z	jimcooncat	sacarlson	I must not be specifying the ssh host correctly, I'm using myhost,com:4422 (my alternate ssh port)
+2010-08-30T18:43:00.000Z	sacarlson	jimcooncat	is the server listening on that port?
+2010-08-30T18:44:00.000Z	jimcooncat	sacarlson	yes, no problem logging in with ssh user@myhost.com -p 4422
+2010-08-30T18:44:00.000Z	sacarlson	jimcooncat	 and ssh -P 4422 sacarlson@thisip  is the method I know
+2010-08-30T18:46:00.000Z	sacarlson	jimcooncat	that might work but is the server side listening?   what does the /etc/ssh/sshd_config  have it?
+2010-08-30T18:46:00.000Z	sacarlson	jimcooncat	on the server side?
+2010-08-30T18:48:00.000Z	jimcooncat	sacarlson	on the server side the config hosts port 22 and port 4422; where the gateway box NAT's 4422. Works fine when I do command-line port forwarding from home
+2010-08-30T18:49:00.000Z	jimcooncat	sacarlson	I just can't seem to use vinagre's built-in tunnelling. I'm scripting a local forward now, so no big deal.

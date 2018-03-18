@@ -1,0 +1,18 @@
+2008-07-31T18:32:00.000Z	ryanakca		Why is it that when I log out of a vt, it doesn't go back to a login prompt? How can I make the 4 that are blank screens go back to one?
+2008-07-31T18:34:00.000Z	geirha	ryanakca	I don't understand your question
+2008-07-31T18:35:00.000Z	geirha	ryanakca	you want the screen to be cleared when you log out?
+2008-07-31T18:36:00.000Z	ryanakca	geirha	it's cleared, but I don't get a login prompt... it just stays blank
+2008-07-31T18:37:00.000Z	ryanakca	geirha	what I'm asking is how do I get my login prompts back :)
+2008-07-31T18:38:00.000Z	geirha	ryanakca	They should return back each time ... not sure why they won't at your system
+2008-07-31T18:40:00.000Z	ryanakca	geirha	ok,thanks anyways
+2008-07-31T18:42:00.000Z	geirha	ryanakca	it should be controlled by /etc/event.d/tty*, or /etc/inittab if you have one. Have you edited any of those?
+2008-07-31T18:43:00.000Z	ryanakca	geirha	nope
+2008-07-31T18:43:00.000Z	geirha	ryanakca	pastebin the output of: cat /etc/inittab /etc/event.d/tty1
+2008-07-31T18:55:00.000Z	ryanakca	geirha	http://paste.ubuntu.com/32608/
+2008-07-31T18:56:00.000Z	ryanakca	geirha	it runs getty at the end... dunno what's going on :/
+2008-07-31T18:56:00.000Z	geirha	ryanakca	that's identical to mine, so I don't see anything wrong :/
+2008-07-31T18:57:00.000Z	geirha	ryanakca	getty is the login-prompt btw
+2008-07-31T18:59:00.000Z	ryanakca	geirha	I know :)
+2008-07-31T19:00:00.000Z	geirha	ryanakca	maybe have a look at /var/log/syslog, and see if there are any related error messages
+2008-07-31T19:03:00.000Z	ryanakca	geirha	hmm... only cron, postfix and dhcp running, from what I can see once I grep them out.
+2008-07-31T19:05:00.000Z	geirha	ryanakca	try starting getty manually (not sure if it works though): "sudo /sbin/getty 38400 tty1"

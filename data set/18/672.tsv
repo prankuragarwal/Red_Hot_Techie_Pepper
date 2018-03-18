@@ -1,0 +1,18 @@
+2011-10-29T19:38:00.000Z	randomusr		!compiz | randomusr
+2011-10-29T19:39:00.000Z	elgaton	randomusr	have you already installed the proprietary drivers, if applicable?
+2011-10-29T19:40:00.000Z	randomusr	elgaton	yes from the Nvidia website a few months back and they've been working great. It still shows up in lspci -vv
+2011-10-29T19:42:00.000Z	elgaton	randomusr	open a terminal and type "sudo glxinfo | grep rendering", then post the output here
+2011-10-29T19:44:00.000Z	randomusr	elgaton	X Error of failed request:  BadWindow (invalid Window parameter)
+2011-10-29T19:44:00.000Z	randomusr		  Major opcode of failed request:  138 (NV-GLX)
+2011-10-29T19:44:00.000Z	randomusr		  Minor opcode of failed request:  4 ()
+2011-10-29T19:44:00.000Z	randomusr		  Resource id in failed request:  0x4200003
+2011-10-29T19:44:00.000Z	randomusr		  Serial number of failed request:  31
+2011-10-29T19:44:00.000Z	randomusr		  Current serial number in output stream:  31
+2011-10-29T19:45:00.000Z	elgaton	randomusr	sorry - I thought the output would consist only of one row. If there is more than one, use paste.ubuntu.com to avoid flooding the channel.
+2011-10-29T19:45:00.000Z	elgaton		Very strange...
+2011-10-29T19:46:00.000Z	randomusr	elgaton	no worries, I'll use pastebin next time
+2011-10-29T19:49:00.000Z	elgaton	randomusr	I think the X server is acting a bit strange. Normally, that error message ("BadWindow") should be displayed only when X is trying to act on a closed window (for example, when you are shutting down the system and processes are being killed).
+2011-10-29T19:49:00.000Z	elgaton	randomusr	Anyway, let me do a quick search
+2011-10-29T19:55:00.000Z	elgaton	randomusr	try running the compiz-check script (have a look at <http://forlong.blogage.de/entries/pages/Compiz-Check>), then post the output in a pastebin and give me the link, please
+2011-10-29T20:00:00.000Z	randomusr	elgaton	http://pastebin.com/KSDphr5L
+2011-10-29T20:02:00.000Z	elgaton	randomusr	well, seems your graphics card is missing one of the OpenGL extensions that are required for Compiz to work properly - try reinstalling the nVidia drivers (uninstall the old ones and use the latest version from the nVidia site).

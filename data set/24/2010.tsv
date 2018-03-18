@@ -1,0 +1,24 @@
+2009-11-23T23:27:00.000Z	dajhorn	blendmaster1024	First, you need to make the repo available internally, like at MyServer.local, on an HTTP server.  Second, you need to put a deb line for MyServer.local in the sources.list file of the client computers.
+2009-11-23T23:28:00.000Z	dajhorn	blendmaster1024	If you are doing new intallations, then you need to specify MyServer.local at the choose a mirror dialog.
+2009-11-23T23:29:00.000Z	blendmaster1024	dajhorn	all i care about is will dist-upgrade work. i already have the jaunty repo and it works jsut fine.
+2009-11-23T23:30:00.000Z	dajhorn	blendmaster1024	It will work the same from a local mirror as a regular *.ubuntu.com mirror.
+2010-09-01T20:13:00.000Z	dajhorn	blendmaster1024	Console VTs are different than ptys inside an X11 environment.  What are you trying to do?
+2010-09-01T20:13:00.000Z	blendmaster1024	dajhorn	trying to detect what vt is active. you know - ctrl+alt+F[0-12]?
+2010-09-01T20:14:00.000Z	dajhorn	blendmaster1024	Why?  Describe what you're trying to accomplish.
+2010-09-01T20:14:00.000Z	blendmaster1024	dajhorn	chvt to a specific VT when the VT is changed off
+2010-09-01T20:14:00.000Z	blendmaster1024	dajhorn	I'm working on a kiosk system
+2010-09-01T20:16:00.000Z	dajhorn	blendmaster1024	Console VTs stay 'active' in the background.  From userland, they behave no differently in the foreground or background.  You probably need to peek a kernel value from /proc or /sys, which means that you need to read the kernel Documentation/.
+2010-09-01T20:17:00.000Z	blendmaster1024	dajhorn	well I know they're still ... eh ... 'live'. but only one can be shown on the display at the time. I want to lock it to a specific one.
+2010-09-01T20:18:00.000Z	dajhorn	blendmaster1024	Consider using one VT and using `screen` to front your kiosk.  `screen` is easier to script, and is more likely to be portable.
+2010-09-01T20:19:00.000Z	blendmaster1024	dajhorn	the problem is that when they switch away from the main kiosk VT, they can log in to the shells in the other VTs
+2010-09-01T20:20:00.000Z	dajhorn	blendmaster1024	 Your security model is broken.  Disable the unused VTs and/or jail the untrusted users and/or chroot your users.
+2010-09-01T20:21:00.000Z	dajhorn	blendmaster1024	There are a variety of ways to handle untrusted users.  You may want to look at things like the LTSP.
+2010-09-01T20:22:00.000Z	blendmaster1024	dajhorn	chroot can't do X last I checked, but also I want to be able to lock someone out of their X session. my idea is to switch them to another VT and then stop them from changing back, then once I'm done locking them out change back.
+2010-09-01T20:23:00.000Z	dajhorn	blendmaster1024	You're doing something for which several solutions are available.  Don't reinvent the wheel -- go do some reading on system hardening and handling untrusted sessions.
+2010-09-01T20:24:00.000Z	blendmaster1024	dajhorn	ok, what would you recommend I google to start this?
+2010-09-01T20:24:00.000Z	dajhorn	blendmaster1024	LTSP,  maybe SELinux.  Also check some userland solutions like the kiosk plugins for Firefox.
+2010-09-01T20:55:00.000Z	dajhorn	blendmaster1024	It is not possible to get a 1-to-1 replacement for console behavior in Linux vice your existing Windows environment.  The unix-style way to kick a user is to `kill` their login process.
+2010-09-01T21:03:00.000Z	dajhorn	blendmaster1024	LTSP was build specifically for classroom environments.  Go there.  You are certainly duplicating work that is already done and available.
+2010-09-01T21:04:00.000Z	blendmaster1024	dajhorn	this is not a thin client situation >>>
+2010-09-01T21:04:00.000Z	dajhorn	blendmaster1024	X11 doesn't work that way.  It doesn't matter.  The X head can be local or remote, and you'll get the same result.
+2010-09-01T21:05:00.000Z	dajhorn	blendmaster1024	Linux is not Windows.

@@ -1,0 +1,21 @@
+2012-07-29T19:13:00.000Z	phillyj		if after kernel update, my driver doesn't seem to be there, should i just reinstall it?
+2012-07-29T19:14:00.000Z	BluesKaj	phillyj	 doubt the driver is gone , did you run ifconfig ?
+2012-07-29T19:14:00.000Z	phillyj	BluesKaj	yes, ifconfig doesn't show eth0, just "lo"
+2012-07-29T19:17:00.000Z	BluesKaj	phillyj	 check the /etc/network./interfaces file , see if auto eth0 is listed there
+2012-07-29T19:19:00.000Z	phillyj	BluesKaj	nope, just loopback
+2012-07-29T19:20:00.000Z	phillyj	BluesKaj	i had this problem when i updated 10.04 kernel on my laptop and some1 told my all drivers i installed have to be reinstalled
+2012-07-29T19:22:00.000Z	BluesKaj	phillyj	 add the auto eth0 line under auto lo , you'll need root permissions to do so , then save the file , the run sudo dhclient eth0 ...the kernel source driver should be installed , it just might need enabling / loading
+2012-07-29T19:23:00.000Z	BluesKaj	phillyj	 add the auto eth0 line under auto lo , in /etc/network/interfaces
+2012-07-29T19:27:00.000Z	phillyj	BluesKaj	i get error that device "eth0" not found
+2012-07-29T19:28:00.000Z	phillyj	BluesKaj	i think i got it, maybe
+2012-07-29T19:29:00.000Z	phillyj	BluesKaj	i had my stock driver blacklisted and installed another driver because of issues
+2012-07-29T19:29:00.000Z	phillyj	BluesKaj	maybe the new driver was removed; i will remove the original from blacklist and check again
+2012-07-29T19:30:00.000Z	BluesKaj	phillyj	 lspci | grep -i net
+2012-07-29T19:31:00.000Z	phillyj	BluesKaj	ok, not in blacklist but what do you need to know in lspci?
+2012-07-29T19:33:00.000Z	BluesKaj	phillyj	 something ike this: 00:07.0 Bridge: NVIDIA Corporation MCP61 Ethernet (rev a2)
+2012-07-29T19:35:00.000Z	phillyj	BluesKaj	03:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8111/8168B PCI Express Gigabit Ethernet controller (rev 06)
+2012-07-29T19:39:00.000Z	phillyj	BluesKaj	umm, this driver is not stock and so i made some changes to make it work
+2012-07-29T19:39:00.000Z	phillyj	BluesKaj	maybe the settings were erased during the update
+2012-07-29T19:40:00.000Z	BluesKaj	phillyj	 sudo modprobe r8169
+2012-07-29T19:40:00.000Z	phillyj	BluesKaj	YES, thank you so much
+2012-07-29T19:41:00.000Z	BluesKaj	phillyj	 working ok ?

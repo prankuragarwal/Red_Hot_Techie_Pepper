@@ -1,0 +1,22 @@
+2006-11-04T15:40:00.000Z	Artemis3		any idea what can be wrong with burning speed?
+2006-11-04T15:41:00.000Z	georgeb	Artemis3	maybe the dvd burner doesn't have DMA enabled
+2006-11-04T15:42:00.000Z	Artemis3	georgeb	how do i check that? hdparm?
+2006-11-04T15:42:00.000Z	georgeb	Artemis3	run sudo hdparm /dev/hda (or the burner's dev) and see if using_dma=1
+2006-11-04T15:43:00.000Z	Artemis3	georgeb	using_dma    =  0 (off) :(
+2006-11-04T15:44:00.000Z	georgeb	Artemis3	then run sudo hdparm -d1 /dev/hda to enable dma
+2006-11-04T15:44:00.000Z	Artemis3	georgeb	you think is it a good idea to do that in the middle of burning?
+2006-11-04T15:45:00.000Z	georgeb	Artemis3	I don't know how to permanently enable it; the setting might be persistent
+2006-11-04T15:45:00.000Z	georgeb	Artemis3	i enabled it once in the middle of burning and everything went ok; but you might wait to finish burning; there might be different problems, from writer, etc
+2006-11-04T15:46:00.000Z	Artemis3	georgeb	 nautilus is taking 60mins to burn what usually takes 8mins
+2006-11-04T15:47:00.000Z	Artemis3	georgeb	not just nautilus, also tried graveman and brasero
+2006-11-04T15:47:00.000Z	Artemis3	georgeb	i will enable it, i hope to not make a coaster ;)
+2006-11-04T15:48:00.000Z	georgeb	Artemis3	yes, it's about data transfer, without DMA everything is managed by the CPU, I bet you also have some high cpu usage :) DMA=direct memory transfer; the CPU won't be used very much in case of data transfer;
+2006-11-04T15:48:00.000Z	Artemis3	georgeb	i just enabled it
+2006-11-04T15:48:00.000Z	georgeb	Artemis3	on the system I had this problem, without DMA, burning speed was about 1 MB/s; with DMA enabled 10-15 MB/s
+2006-11-04T15:49:00.000Z	Artemis3	georgeb	it seems to be going a little faster already
+2006-11-04T15:50:00.000Z	Artemis3	georgeb	i noticed the hard disks have dma enabled, how come the dvdr does not? where does the system configure that?
+2006-11-04T15:50:00.000Z	georgeb	Artemis3	the writer on which I tried enablein DMA on the fly was a Asus P2S, and it worked; but during enabling DMA I saw that the burning speed went to 0 for half a minute or so
+2006-11-04T15:50:00.000Z	georgeb	Artemis3	[23:50]  <crazy_penguin> Artemis: to enable it permantly look in the /etc/hdparm.conf file and read man hdparm to know what to do
+2006-11-04T15:51:00.000Z	Artemis3	georgeb	i just enabled it and the burn speed is faster already, no stalling
+2006-11-04T15:51:00.000Z	Artemis3	georgeb	ok i will edit /etc/hdparm.conf
+2006-11-04T15:51:00.000Z	Artemis3	georgeb	my burner is benq 1621

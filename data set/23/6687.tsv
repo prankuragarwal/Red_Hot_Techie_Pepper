@@ -1,0 +1,23 @@
+2006-05-12T08:19:00.000Z	fredrich		anyone know why a wlan nic cant be seen in the network settings even if ndiswrapper loaded it up just fine?
+2006-05-12T08:20:00.000Z	soundray	fredrich	perhaps you still have to sudo modprobe ndiswrapper
+2006-05-12T08:21:00.000Z	soundray	fredrich	if that solves it, add a single line 'ndiswrapper' to your /etc/modules
+2006-05-12T08:21:00.000Z	fredrich	soundray	just tried that....didnt work....a iwconfig shows both my wlan nics being there...but only one of em can be accessed in the network settings and gtkwifi
+2006-05-12T08:22:00.000Z	soundray	fredrich	are both nics ndiswrapped?
+2006-05-12T08:22:00.000Z	fredrich	soundray	yep..
+2006-05-12T08:22:00.000Z	soundray	fredrich	not sure if ndiswrapper handles that.
+2006-05-12T08:23:00.000Z	soundray	fredrich	I take it you see "hardware present, driver present" for both cards on 'ndiswrapper -i'?
+2006-05-12T08:23:00.000Z	fredrich	soundray	yep....theyre both there
+2006-05-12T08:23:00.000Z	soundray	fredrich	have you stfw for running two wlan cards with ndiswrapper?
+2006-05-12T08:24:00.000Z	soundray	fredrich	sorry. "Search The Fine Web"
+2006-05-12T08:25:00.000Z	fredrich	soundray	according to the ndiswrapper page and wiki, it should work...it even has a parameter of sorts to allow for the naming of multiple wifi nics
+2006-05-12T08:27:00.000Z	soundray	fredrich	yes, my own web search here confirms that too. Sorry, no further ideas here.
+2006-05-12T08:28:00.000Z	fredrich	soundray	thanks anywaymate :)
+2006-05-12T08:28:00.000Z	soundray	fredrich	oh, there's one more idea: does the nonworking one start working when you remove the other?
+2006-05-12T08:29:00.000Z	fredrich	soundray	...lemme check....i will fall off the net though...(im connected using the working card right now)...but ill be back in a sec
+2006-05-12T08:32:00.000Z	soundray	fredrich	did you physically remove the working interface, rmmod ndiswrapper, and start afresh?
+2006-05-12T08:33:00.000Z	fredrich	soundray	i just removed the nic and did a sudo ndiswrapper -e
+2006-05-12T08:35:00.000Z	soundray	fredrich	Well, if you assume that there is an adverse interaction between the drivers or the cards themselves, you would have to go as far back as possible to disprove it.
+2006-05-12T08:35:00.000Z	fredrich	soundray	ok...ill try that....be back in a sec
+2006-05-12T08:35:00.000Z	soundray	fredrich	in fact, I would reboot without the working nic.
+2006-05-12T08:35:00.000Z	fredrich	soundray	will do....brb
+2006-05-12T08:49:00.000Z	fredrich	soundray	back ....what happened was that it didnt work...but as soon as i plugged in the working nic, i got connected

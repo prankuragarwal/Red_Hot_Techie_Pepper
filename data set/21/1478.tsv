@@ -1,0 +1,21 @@
+2010-11-14T12:03:00.000Z	pksadiq		how to extract .img files in ubuntu?
+2010-11-14T12:05:00.000Z	Jordan_U	pksadiq	sudo mount -o loop /path/to/file.img /mnt/
+2010-11-14T12:06:00.000Z	pksadiq	Jordan_U	 => mount: you must specify the filesystem type
+2010-11-14T12:07:00.000Z	Jordan_U	pksadiq	What type of floppy image is it?
+2010-11-14T12:09:00.000Z	Jordan_U	pksadiq	Floppy images are usually just bit for bit dumps of the floppy contents. Those contents can contain any number of filesystems or partition tables (though you usually don't have a partition table on a floppy).
+2010-11-14T12:09:00.000Z	Jordan_U	pksadiq	Can you pastebin the output of "file -k /path/to/file.img" ?
+2010-11-14T12:09:00.000Z	pksadiq	Jordan_U	let me try
+2010-11-14T12:12:00.000Z	pksadiq	Jordan_U	http://paste.ubuntu.com/531588/
+2010-11-14T12:13:00.000Z	Jordan_U	pksadiq	Ahh, there is no filesystem, at least not how you'd normally think of one.
+2010-11-14T12:14:00.000Z	pksadiq	Jordan_U	, Dr_Willis :, I just need to extract the file to my pendrive and make it bootable using syslinux,
+2010-11-14T12:15:00.000Z	Jordan_U	pksadiq	It's just a kernel images, with an embedded initrd.
+2010-11-14T12:15:00.000Z	Jordan_U	pksadiq	Just load it as one.
+2010-11-14T12:15:00.000Z	pksadiq	Jordan_U	k, let me try any other way to make it bootable, do you know about syslinux?
+2010-11-14T12:16:00.000Z	Jordan_U	pksadiq	Yes.
+2010-11-14T12:16:00.000Z	Jordan_U	pksadiq	I prefer grub2 though.
+2010-11-14T12:16:00.000Z	pksadiq	Jordan_U	and so how can I configure syslinux to boot an img file?
+2010-11-14T12:17:00.000Z	Jordan_U	pksadiq	You don't per-se. You configure it to load a linux kernel.
+2010-11-14T12:17:00.000Z	Jordan_U	pksadiq	Rename "file.img" "vmlinuz" and use it as you would any kernel :)
+2010-11-14T12:18:00.000Z	pksadiq	Jordan_U	I'm having a FAT32 Pendrive, so I can't install grub to it, and the contents of vmlinuz could be extracted in Archive manager, bot .img could not be
+2010-11-14T12:19:00.000Z	Jordan_U	pksadiq	You can use grub2 with fat32, or pretty much any other filesystem, without any problem.
+2010-11-14T12:19:00.000Z	Jordan_U	pksadiq	You don't want to extract anything.

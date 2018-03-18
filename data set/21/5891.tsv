@@ -1,0 +1,21 @@
+2007-07-15T09:57:00.000Z	Sasha_		Hi, all. I'm having trouble getting my Feisty server working on my wired network. Checked the cables, etc. If I use DHCP, then the MAC address of the NIC shows up on my router's configuration page, but the hostname doesn't.
+2007-07-15T09:58:00.000Z	Sasha_		It can ping localhost, 127.0.0.1, or its own statically-assigned 192.168.2.x IP.
+2007-07-15T09:58:00.000Z	Sasha_		Can't ping the gateway, or ping the server from anywhere else.
+2007-07-15T10:00:00.000Z	Sasha_		Can anyone give me any advice?
+2007-07-15T10:02:00.000Z	Sasha_		Server. No UI.
+2007-07-15T10:04:00.000Z	NigelS	Sasha_	starting from 1st principles here; can you ping the gateway when you have an IP assigned statically?
+2007-07-15T10:04:00.000Z	NigelS	Sasha_	there's one NIC in this box?
+2007-07-15T10:05:00.000Z	Sasha_	NigelS	there's a wireless NIC, which is unconfigured in /etc/network/interfaces, and down, and there's the wired one, which is configured and up.
+2007-07-15T10:06:00.000Z	NigelS	Sasha_	can you show us the result of ifconfig eth0?
+2007-07-15T10:06:00.000Z	Sasha_	NigelS	The wired one is eth1, so you want that, right? Just to check I'm not being stupid and making assumptions.
+2007-07-15T10:07:00.000Z	NigelS	Sasha_	well actually just the result of ifconfig in this case
+2007-07-15T10:07:00.000Z	Sasha_	NigelS	of course. One sec...
+2007-07-15T10:07:00.000Z	Sasha_	NigelS	Want anything else while I'm chucking stuff across with the USB drive?
+2007-07-15T10:09:00.000Z	NigelS	Sasha_	yeah maybe the output of route
+2007-07-15T10:09:00.000Z	Sasha_	NigelS	right. Ta.
+2007-07-15T10:19:00.000Z	Sasha_	NigelS	http://paste.ubuntu-nl.org/30017/plain/ , and thanks again.
+2007-07-15T10:26:00.000Z	Sasha_	NigelS	I've got that networking stuff for you, if you want?
+2007-07-15T10:34:00.000Z	NigelS	Sasha_	I don't think there's an error there - what happens when you try to ping 192.168.2.1, what's the error?
+2007-07-15T10:36:00.000Z	Sasha_	NigelS	"From 192.168.2.100 imcp_seq=xx Destination Host Unreachable".
+2007-07-15T10:47:00.000Z	NigelS	Sasha_	can you ping yourself on 127etc etc and also on your static ip 192.168.2.100? also what is the network card?
+2007-07-15T10:48:00.000Z	Sasha_	NigelS	both, yes. It's a... Realtek Semiconductor Co., Lt. RTL-8139/8139C/8139C+ (r10).

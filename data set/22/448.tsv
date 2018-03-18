@@ -1,0 +1,22 @@
+2011-09-25T21:01:00.000Z	c-beams		I'm trying to create an image of a 1TB hard drive. using both dd (with various bs settings) and partclone, they start fast and get continuously slower. why is this? how can i fix it?
+2011-09-25T21:01:00.000Z	dr_willis	c-beams	 monitor dmesg output as they work.. there could be some bad parts of the hd they are having to re-read
+2011-09-25T21:02:00.000Z	c-beams	dr_willis	could you give me more detailed instructions please?
+2011-09-25T21:04:00.000Z	dr_willis	c-beams	 see what 'dmesg' says in the terminal when it slows down.
+2011-09-25T21:05:00.000Z	c-beams	dr_willis	it is getting slower all the time
+2011-09-25T21:18:00.000Z	dr_willis	c-beams	 you saw no error messages in the dmesg logs?
+2011-09-25T21:18:00.000Z	dr_willis	c-beams	 whats the exact dd line you are using?
+2011-09-25T21:19:00.000Z	dr_willis	c-beams	 if you use the ddrescue command (or was it dd_rescue) with the logging option. it can start from whhere it left off also. :)
+2011-09-25T21:21:00.000Z	dr_willis	c-beams	 how big is that hd you are imageing anyway?
+2011-09-29T05:35:00.000Z	dr_willis	c-beams	 you are ysing a bs option also?
+2011-09-29T05:36:00.000Z	c-beams	dr_willis	yes, here is the command "sudo dd bs=32M if=/dev/sdb of=./Windows_Backup.img"
+2011-09-29T05:38:00.000Z	dr_willis	c-beams	 i think 32 mb may be overkill i alwasy use like 1 mb. and check dmesg for errors as it runs. you may want to try ddrescue with a logfile also
+2011-09-29T05:38:00.000Z	c-beams	dr_willis	what should i look for in dmesg
+2011-09-29T05:40:00.000Z	dr_willis	c-beams	 any mention of the hd you are imaging from.
+2011-09-29T05:45:00.000Z	c-beams	dr_willis	here is the output of dmesg | grep sdb. http://pastebin.com/EBemj0tK
+2011-09-29T05:47:00.000Z	dr_willis	c-beams	 this is a external usb?
+2011-09-29T05:48:00.000Z	c-beams	dr_willis	no sdb (the source) is an internal sata drive, sdc (destination drive) is the external usb
+2011-09-29T05:49:00.000Z	dr_willis	c-beams	 theres some reported bugs about very.slow.usb speeds. ive had similer.issues
+2011-09-29T05:50:00.000Z	c-beams	dr_willis	is there a better program for imaging to a usb drive?
+2011-09-29T05:51:00.000Z	dr_willis	c-beams	that wont help if its a kernel bug causeing it to be slow. try  ddrescue perhaps
+2011-09-29T05:52:00.000Z	c-beams	dr_willis	what is the advantage of dd_rescue?
+2011-09-29T05:55:00.000Z	dr_willis	c-beams	 ddrescue us different from dd_rescue

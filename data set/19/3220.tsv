@@ -1,0 +1,19 @@
+2009-10-14T02:06:00.000Z	joeyeye_		can anyone help me with name resolution issues ?
+2009-10-14T02:08:00.000Z	mikinanuq	joeyeye_	what is the problem?
+2009-10-14T02:09:00.000Z	joeyeye_	mikinanuq	it seems that I get different answers with nslookup for a hostname in different cases ("soso" vs. "SOSO")
+2009-10-14T02:10:00.000Z	mikinanuq	joeyeye_	depends on which dns server you get
+2009-10-14T02:10:00.000Z	joeyeye_	mikinanuq	I have a windows host "SOSO" which resolves properly to 192.168.0.2, but if I use "soso" it resolves to an IP outside my network.
+2009-10-14T02:11:00.000Z	joeyeye_	mikinanuq	ok - I'm using the default I get with my ISP, which I believe are the OpenDNS servers
+2009-10-14T02:11:00.000Z	joeyeye_	mikinanuq	and my ubuntu desktop is using the router as the dns point
+2009-10-14T02:11:00.000Z	mikinanuq	joeyeye_	hold a sec
+2009-10-14T02:20:00.000Z	mikinanuq	joeyeye_	anyway, k I'm back.. anything in your hosts file?
+2009-10-14T02:29:00.000Z	joeyeye_	mikinanuq	sorry ... no nothing in hosts, except usual localhost stuff
+2009-10-14T02:32:00.000Z	joeyeye_	mikinanuq	sorry ... no nothing in hosts, except usual localhost stuff
+2009-10-14T02:32:00.000Z	mikinanuq	joeyeye_	I'm not aware of DNS being case sensitive...  try dig instead of nslookup, see if the same results
+2009-10-14T02:33:00.000Z	joeyeye_	mikinanuq	still get what I think is a bogus response using dig
+2009-10-14T02:35:00.000Z	mikinanuq	joeyeye_	hmm..
+2009-10-14T02:38:00.000Z	mikinanuq	joeyeye_	I guess the only other reason could be if you setup your domain name to something that is on the internet then it might pick up a host at SOSO.domain.com  and  soso.local  something like that ... do you remember setting up a domain that can be resolved on the internet?
+2009-10-14T02:40:00.000Z	joeyeye_	mikinanuq	no, but I think I'd like to try out other DNS servers on the internet. Perhaps my ISP's DNS servers are deliberately "trying to help me" by pointing me to one of their servers.
+2009-10-14T02:41:00.000Z	mikinanuq	joeyeye_	yeah the way I did it was to setup OpenDNS on my router manually, if you have OpenDNS locally on your computer and the ISP DNS servers on your Router they may be looking at different things
+2009-10-14T02:43:00.000Z	joeyeye_	mikinanuq	hmmm... I am already using the OpenDNS servers it would appear
+2009-10-14T02:45:00.000Z	mikinanuq	joeyeye_	arg, you may need to put a sniffer or sometihng to analyze the packets and figure it out. It's strange, the way around it is to put soso and SOSO in your hosts file and bypass the DNS but it would be nice to know why it's doing it.

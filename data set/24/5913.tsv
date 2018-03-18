@@ -1,0 +1,24 @@
+2006-05-03T12:05:00.000Z	Agent_bob		if you go root'n around / you'll make a mire of your fs....
+2006-05-03T12:06:00.000Z	Agent_bob		hmmmm i wonder if there is a command that one could issue that would show a list of installed window managers ?
+2006-05-03T12:08:00.000Z	Agent_bob		is it the P ?
+2006-05-03T12:08:00.000Z	Agent_bob		yay    *claps*
+2006-05-03T12:10:00.000Z	Agent_bob		does the big P still work ?
+2006-05-03T12:10:00.000Z	ic56	Agent_bob	for a list of installed window mgrs, you might try searching for packages that "Provide" window-manager or some virtual package name like that.
+2006-05-03T12:11:00.000Z	Agent_bob	ic56	hmmmmm  what about parsing the menu file  ?
+2006-05-03T12:13:00.000Z	Agent_bob	ic56	mmm give me a second.  i'm still working on that.
+2006-05-03T12:14:00.000Z	Agent_bob	ic56	hmmmm /etc/menu-methods/   may hold the answer
+2006-05-03T12:24:00.000Z	Agent_bob	ic56	thanks for the confirmation on that.    i'm working out the code now.
+2006-05-03T12:31:00.000Z	Agent_bob	ic56	 i think this will work....
+2006-05-03T12:32:00.000Z	ic56	Agent_bob	why all this complexity?
+2006-05-03T12:35:00.000Z	ic56	Agent_bob	how about this: find /etc/menu-methods -type f -perm +111 -print |sed 's#.*/##'
+2006-05-03T12:37:00.000Z	Agent_bob	ic56	what if one or more was not +111   maybe +1  ?
+2006-05-03T12:42:00.000Z	Agent_bob	ic56	 hehhe man find says   +mode  Deprecated,  old way of searching for files with any of the  permission bits in mode set.  You should use -perm  /mode  instead.
+2006-05-03T12:56:00.000Z	Agent_bob	ic56	 yes.
+2006-05-03T12:58:00.000Z	Agent_bob	ic56	i think that all window managers seem to put a file in /etc/X11/<wm>/ called <wm>-menu   i'm working on that angel atm.
+2006-05-03T13:23:00.000Z	Agent_bob	ic56	did you see my pm eariler ?
+2006-05-03T13:25:00.000Z	Agent_bob	ic56	 hmmm ok
+2006-05-03T13:27:00.000Z	Agent_bob	ic56	shoot
+2006-05-03T13:28:00.000Z	Agent_bob	ic56	yeah i know the difficulties.
+2006-05-03T13:29:00.000Z	Agent_bob	ic56	no matter.  everyone in there knows i blab a lot  :)
+2006-05-03T14:40:00.000Z	ic56	Agent_bob	ssh provides no facility for non-interactive password but there are other options: 1) use a public key setup to authenticate instead of using a password.  2) fool ssh into querying a pty (pseudo-tty) and echo the password into that pty.  I'm not sure how to do the latter. There's a program (pty?) written specifically for hacks like that.  You could also use expect(1) for that.
+2006-05-03T14:41:00.000Z	Agent_bob	ic56	mmmk  thanks.

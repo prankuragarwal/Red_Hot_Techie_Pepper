@@ -1,0 +1,18 @@
+2007-02-07T07:25:00.000Z	pmr_		Hello Y'all, Can someone help me connect to my windows computer?
+2007-02-07T07:27:00.000Z	rbil	pmr_	all u need is smbclient installed on Linux box to connect to Windows shares
+2007-02-07T07:27:00.000Z	pmr_		I think samba is installed by default on ubuntu 6.10 edgy. Am I wrong?
+2007-02-07T07:28:00.000Z	rbil	pmr_	don't know? check if it's running .... ps ax|grep samba
+2007-02-07T07:30:00.000Z	rbil	pmr_	sorry that should be:   ps ax|grep smbd
+2007-02-07T07:32:00.000Z	pmr_	rbil	I got -  6259 pts/0    R+     0:00 grep smbd
+2007-02-07T07:32:00.000Z	rbil	pmr_	then samba isn't running and probably not installed
+2007-02-07T07:33:00.000Z	rbil	pmr_	you only need samba if you're going to setup windoze shares on a Linux box. If you want to access existing shares on Windows boxes, smbclient is all u need on Linux end
+2007-02-07T07:34:00.000Z	pmr_	rbil	Yes, I only want to access the windows share. It is my media server and I need the video off of it.
+2007-02-07T07:34:00.000Z	rbil	pmr_	sudo apt-get install smbclient
+2007-02-07T07:35:00.000Z	rbil	pmr_	then sniff the Windows shares out from Places ... Connect to Server
+2007-02-07T07:36:00.000Z	pmr_	rbil	I try that and it rejects my credentials. If I go to places>Network Server, I see the computer But will not take my credentials. Any ideas?
+2007-02-07T07:37:00.000Z	rbil	pmr_	u need to login to Windows share using an existing username/password on the Windows box
+2007-02-07T07:38:00.000Z	pmr_	rbil	yes that is what I enter when asked.
+2007-02-07T07:38:00.000Z	rbil	pmr_	do you have simple file sharing setup on Windows box?
+2007-02-07T07:39:00.000Z	pmr_		No, I unchecked that so i could set specific permissions. Is that necessary for linux to access the files?
+2007-02-07T07:40:00.000Z	rbil	pmr_	I believe so. I use samba here, so it controls authentication on the workgroup.
+2007-02-07T07:40:00.000Z	pmr_	rbil	Will try that. thanx for the help.

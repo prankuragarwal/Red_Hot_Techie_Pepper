@@ -1,0 +1,21 @@
+2010-08-13T02:54:00.000Z	piercedwater		When I try to mount my hfs+ partition in ubuntu, I get this message: https://gist.github.com/387db3f005f5a636efd0
+2010-08-13T02:54:00.000Z	piercedwater		Can anyone help?
+2010-08-13T02:55:00.000Z	piercedwater		I have also installed hfsutils and tried "hmount" but that gives me errors as well
+2010-08-13T02:55:00.000Z	ikonia	piercedwater	I suspect you don't have the hfs kernel module loaded
+2010-08-13T02:55:00.000Z	piercedwater	ikonia	do you have a tutoril handy on how to do that?
+2010-08-13T02:56:00.000Z	ikonia	piercedwater	not to hand, but there are plenty on the net, it's just a simple modprobe
+2010-08-13T03:12:00.000Z	ikonia	piercedwater	please don't use the language you used last time
+2010-08-13T03:13:00.000Z	ikonia	piercedwater	have you checked if the hfs kernel module is loaded as I suggested ?
+2010-08-13T03:13:00.000Z	ikonia	piercedwater	no
+2010-08-13T03:15:00.000Z	ikonia	piercedwater	what is the mount command your using ?
+2010-08-13T03:16:00.000Z	piercedwater	ikonia	"sudo mount hfsplus /dev/sdd1 /mount/point"
+2010-08-13T03:16:00.000Z	ikonia	piercedwater	sudo mount -t hfsplus -o rw /dev/sdd1 /mount/point
+2010-08-13T03:19:00.000Z	ikonia	piercedwater	can you pastebin the output of "sudo fdisk -l /dev/sdd" please
+2010-08-13T03:21:00.000Z	ikonia	piercedwater	I wonder if GPT partition format isn't enabled in the kernel
+2010-08-13T03:23:00.000Z	piercedwater	ikonia	let me see if i can check...
+2010-08-13T03:23:00.000Z	ikonia	piercedwater	just checked, it's supported
+2010-08-13T03:23:00.000Z	ikonia	piercedwater	(well it's in my 10.04 kernel)
+2010-08-13T03:25:00.000Z	ikonia	piercedwater	hfsplus support seems enabled by default too
+2010-08-13T03:25:00.000Z	piercedwater	ikonia	that is what I have read, which is why this baffles me so badlt
+2010-08-13T03:26:00.000Z	ikonia	piercedwater	agreed
+2010-08-13T04:07:00.000Z	piercedwater	ikonia	that link only made my hdd read-only for ubuntu :(

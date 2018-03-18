@@ -1,0 +1,23 @@
+2005-08-08T11:59:00.000Z	TheSham		could anyone in here help me with ndiswrapper? everyone in it's channel has been idle for atleast 8 hours. I've installed it but can't get the drivers installed
+2005-08-08T12:00:00.000Z	concept10	TheSham	what card do you have
+2005-08-08T12:02:00.000Z	TheSham	concept10	I downloaded the reccomended driver, but my problem is this, When I try to open ndiswrapper under util, nothing happens and when I run it in a terminal it immediately dissapears. I'm not sure how it works, i'm assuming since there is no actual app open that it is a service, so i tried ndiswrapper -i <filename> and I get ndiswrapper not a command
+2005-08-08T12:02:00.000Z	concept10	TheSham	ndiswrapper is a driver wrapper
+2005-08-08T12:04:00.000Z	TheSham	concept10	I've been following the wiki and all is good up to this point, except the next step says  use ndiswrapper tool to install the driver with "ndiswrapper -i filename.inf", i tried that in a terminal and i get "ndiswrapper is not a command", or something to that affect
+2005-08-08T12:05:00.000Z	concept10	TheSham	did you install or compile _ndiswrapper_ ?
+2005-08-08T12:06:00.000Z	TheSham	concept10	yes, I did, I followed the install wiki and compiled it into the kernel source. although on the make I got a couple errors saying gcc command not found, or whatever the error is
+2005-08-08T12:07:00.000Z	concept10	TheSham	that means you didnt compile it
+2005-08-08T12:07:00.000Z	concept10	TheSham	you need build-essential
+2005-08-08T12:08:00.000Z	concept10	TheSham	this is a better wiki https://wiki.ubuntu.com/SetupNdiswrapperHowto
+2005-08-08T12:08:00.000Z	TheSham	concept10	what is build-essential? the wiki said make distclean, make, make install should compile and install both the kernel module and userspcae utilities
+2005-08-08T12:08:00.000Z	concept10	TheSham	review that... You must have development tools to be able to compile it
+2005-08-08T12:32:00.000Z	TheSham	concept10	i ran into a little trouble with that wiki at this command: sed -e "s/misc/kernel\/drivers\/net\/ndiswrapper/g" debian/rules > debian/temp. I dont understand that at all.
+2005-08-08T12:32:00.000Z	concept10	TheSham	where did you see that command.. What page are you using?
+2005-08-08T12:33:00.000Z	concept10	TheSham	the format is wrong
+2005-08-08T12:34:00.000Z	TheSham	concept10	what is the proper command?
+2005-08-08T12:34:00.000Z	concept10	TheSham	could you give me a link to the page you are using?
+2005-08-08T12:34:00.000Z	TheSham	concept10	https://wiki.ubuntu.com/SetupNdiswrapperHowto
+2005-08-08T12:35:00.000Z	TheSham	concept10	it's step 5
+2005-08-08T12:37:00.000Z	concept10	TheSham	try this instead        sed -e "s/misc/kernel/drivers/net/ndiswrapper/g" debian/rules > debian/temp
+2005-08-08T12:37:00.000Z	TheSham	concept10	there was a specific error with that other command when it got to the "s part, it wasn't a recognized flag or something
+2005-08-08T12:39:00.000Z	concept10	TheSham	remove the s  and see what it does
+2005-08-08T12:40:00.000Z	concept10	TheSham	does it work>

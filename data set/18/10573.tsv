@@ -1,0 +1,18 @@
+2006-11-26T09:09:00.000Z	Zaehlas		Hello.  I have a disk space problem, if someone can help.  using baobab, disk space usage, my file system reports 42.3 GB of space allocated, however, when I do the filesystem scan, to show me what is allocated where, my entire root partition is only using 3.6 GB.  I have no other mounted volumes (except swap, which is 2 GB).  How do I fix it so it's showing the correct amount?  I have deleted that many gigs worth of files, but it's not "
+2006-11-26T09:10:00.000Z	LjL	Zaehlas	what does df show?
+2006-11-26T09:10:00.000Z	Zaehlas	LjL	df command from terminal?  one moment, let me check.
+2006-11-26T09:10:00.000Z	LjL	Zaehlas	yes
+2006-11-26T09:12:00.000Z	Zaehlas	LjL	It shows 44388996 used blocks, 25967916 free blocks, 64% usage on /dev/sda1, my only hard drive.  all the rest appear to be device symbolic links of some sort.
+2006-11-26T09:13:00.000Z	Zaehlas	LjL	But I know I shouldn't have that many gigs in use.
+2006-11-26T09:13:00.000Z	LjL	Zaehlas	look, i haven't used baobab (i'm on KDE), but isn't it supposed to let you know graphically where the space is being taken up?
+2006-11-26T09:14:00.000Z	Zaehlas	LjL	yes, it shows graphiocally, that only 4 gigs of space on my HD used up.   shooters: baobab is not showing that much used up.  can I have blocks in use, without them being truly allocated to files?   if so, how do I fix that?
+2006-11-26T09:16:00.000Z	LjL	Zaehlas	i think that with journaling filesystems, you *can* have space that shows up as allocated, while it's really been freed, but the garbage collector hasn't kicked in yet. did you remove many very large files just recently?
+2006-11-26T09:17:00.000Z	Zaehlas	LjL	yes, I was doing some restores between several other systems, I finished those, and do not have any more network mounts, but I deleted close to the amount that shows, but isn't free.  about 36 gigs or so.  but it's been over a week.   how do I manually kick in the garbage collector?
+2006-11-26T09:18:00.000Z	LjL	Zaehlas	try running an fsck
+2006-11-26T09:18:00.000Z	Zaehlas	LjL	is that safe any time, or is it best to dump system down to terminal, and run it through the bootstrap?
+2006-11-26T09:19:00.000Z	LjL	Zaehlas	you shouldn't fsck a mounted filesystem (at least, you should only ever do that with fsck in check-only mode, no writes)
+2006-11-26T09:19:00.000Z	LjL	Zaehlas	best would be instructing Ubuntu to run an fsck at next boot. let me find out how ;)
+2006-11-26T09:19:00.000Z	Zaehlas	LjL	OK, how do I  reboot, and get to fsck without mounting the filesystem?
+2006-11-26T09:20:00.000Z	Zaehlas	LjL	LOL!  I guess that would be a good utilitu
+2006-11-26T09:22:00.000Z	Zaehlas	LjL	Thanks much as well, gonna reboot, so I'm outta here
+2006-11-26T09:43:00.000Z	Zaehlas	LjL	Well, I'm back, I ran it (fsck) twice at boot, both time no errors, seems to be successful, and it doesn't seem to free up that space.  I've got 30 gigs of used space on my filesystem, and no idea what is using it.  I've checked every directory I know how to check, and looked for hiiden files, etc.   You or anyone else have a suggestion?

@@ -1,0 +1,23 @@
+2006-10-29T12:46:00.000Z	AdamKili		is it just me, or does ubuntu seem to take up more, and more, and more hard drive space? It used to take up 10 GB, but now it takes up 12. how can i find out which packages I don't need anymore and uninstall them?
+2006-10-29T12:47:00.000Z	LjL	AdamKili	are you on edgy?
+2006-10-29T12:48:00.000Z	LjL	AdamKili	on edgy, you can do "sudo apt-get autoremove" to remove packages that are not needed anymore. debfoster and orphaner are also possibilities, though you have to take time and care
+2006-10-29T12:49:00.000Z	LjL	AdamKili	however, if you have upgraded from an older version, "apt-get autoremove" won't recognize the unneeded packages that were installed on the older version, because there was no such feature then
+2006-10-29T12:59:00.000Z	AdamKili	LjL	how do i know what to say yes and no to with debfoster?
+2006-10-29T13:00:00.000Z	LjL	AdamKili	you should say "yes" to the packages you explicitely want to keep. i would be careful personally, though
+2006-10-29T13:01:00.000Z	LjL	AdamKili	also, personally i'd try orphaner first. it's a bit easier on you, and by default it only looks at *libraries*, not everything... which imho would make it much more error-proof
+2006-10-29T13:02:00.000Z	LjL	AdamKili	the other side of the coin obviously being that it'll remove less cruft
+2006-10-29T13:03:00.000Z	AdamKili	LjL	orphaner isn't in Synaptic
+2006-10-29T13:04:00.000Z	LjL	AdamKili	right, the package name is "deborphan". orphaner is the command for getting a text interface to it
+2006-10-29T13:05:00.000Z	AdamKili	LjL	thank
+2006-10-29T13:05:00.000Z	AdamKili	LjL	thank you
+2006-10-29T13:08:00.000Z	AdamKili	LjL	orphaner is only freeing 144 MB of space, how did ubuntu get so inflated? it used to be 10 GB (which is already a lot) and now it's 12!
+2006-10-29T13:08:00.000Z	LjL	AdamKili	i'm sure that a fresh Ubuntu is *way* less than 10gb
+2006-10-29T13:10:00.000Z	LjL	AdamKili	my (kubuntu) edgy right now is taking about 4gb... and i have a lot of non-default stuff installed (-dev packages, etc)
+2006-10-29T13:11:00.000Z	LjL	AdamKili	did you compile stuff, as well? if so you'd have some/many -dev packages installed. those can take up space
+2006-10-29T13:11:00.000Z	AdamKili	LjL	ya i've had to compile a few things
+2006-10-29T13:13:00.000Z	LjL	AdamKili	you could try "orphaner --guess-dev" (if that's even the right syntax), that will check for -dev packages as well as libraries
+2006-10-29T13:13:00.000Z	AdamKili	LjL	ya that was the right syntax
+2006-11-12T08:51:00.000Z	LjL	AdamKili	xserver-xorg-dev might do it
+2006-11-12T08:53:00.000Z	AdamKili	LjL	it didn't work
+2006-11-12T08:55:00.000Z	LjL	AdamKili	try xlibs-dev then
+2006-11-12T09:14:00.000Z	LjL	AdamKili	i'd make it just kdelibs4-dev for starters

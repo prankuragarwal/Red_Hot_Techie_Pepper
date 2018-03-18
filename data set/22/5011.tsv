@@ -1,0 +1,22 @@
+2008-01-04T05:40:00.000Z	iCEifer		anyone know why my resolution is set correctly but the display is not taking up the whole LCD? if I change the refresh rate to 75 HZ it takes up the whole LCD but my LCD says out of range?
+2008-01-04T05:41:00.000Z	KlrSpz	iCEifer	look up your native resolution and frequencies
+2008-01-04T05:41:00.000Z	iCEifer	KlrSpz	1440x900 at 60Hz
+2008-01-04T05:41:00.000Z	KlrSpz	iCEifer	should be a native modeline in xorg
+2008-01-04T05:43:00.000Z	iCEifer	KlrSpz	hmmm...what would it say? I don't think I have one
+2008-01-04T05:45:00.000Z	KlrSpz	iCEifer	can u post your xorg.conf?
+2008-01-04T05:45:00.000Z	KlrSpz	iCEifer	and your xorg.log
+2008-01-04T05:46:00.000Z	iCEifer	KlrSpz	sure.... http://pastebin.com/d43f4a852   and where would the log be?
+2008-01-04T05:46:00.000Z	KlrSpz	iCEifer	/var/log/Xorg.0.log usually
+2008-01-04T05:47:00.000Z	iCEifer	KlrSpz	log is at http://pastebin.com/d12c5a1a5
+2008-01-04T05:49:00.000Z	KlrSpz	iCEifer	also, i'm finding different frequency ranges.. you're just a tad -- over could be the issue
+2008-01-04T05:49:00.000Z	iCEifer	KlrSpz	in xorg.conf?
+2008-01-04T05:50:00.000Z	KlrSpz	iCEifer	yes
+2008-01-04T05:50:00.000Z	KlrSpz	iCEifer	take a look at this, and try adjusting your xorg.conf to this...http://www.geeks.com/details.asp?InvtId=G19LWK&cpc=RECOM  i'd still like to see your log though
+2008-01-04T05:50:00.000Z	iCEifer	KlrSpz	log is at http://pastebin.com/d12c5a1a5
+2008-01-04T05:52:00.000Z	KlrSpz	iCEifer	yeah sorry didn't see it pasted earlier... also.. look at that log on line 279... it seems maybe you have the wrong BusID set? it's on line 66 of your conf file
+2008-01-04T05:52:00.000Z	KlrSpz	iCEifer	a lspci | grep -i vga should show you the right pci port
+2008-01-04T05:52:00.000Z	iCEifer	KlrSpz	checking.
+2008-01-04T05:53:00.000Z	iCEifer	KlrSpz	I got 00:02.0
+2008-01-04T05:53:00.000Z	iCEifer	KlrSpz	and mine is set to "PCI:0:2:0"
+2008-01-04T05:53:00.000Z	iCEifer	KlrSpz	same thing?
+2008-01-04T05:56:00.000Z	iCEifer	KlrSpz	I have "PCI:0:2:0" and the grep gave me 00:02.0  do I need to change it?

@@ -1,0 +1,23 @@
+2007-01-02T15:58:00.000Z	TWD		Is there a utility in ubuntu that will set up my networking for DHCP or whatever?
+2007-01-02T15:58:00.000Z	TWD		a way to set up my networking other than editing /etc/networking/interfaces
+2007-01-02T15:58:00.000Z	TWD		cuz that's not working :(
+2007-01-02T15:59:00.000Z	TWD		Erm I don't have the gui installed?
+2007-01-02T16:00:00.000Z	TWD		hrm :(
+2007-01-02T16:00:00.000Z	mneptok	TWD	pastebin the /etc/network/interfaces you tried?
+2007-01-02T16:00:00.000Z	TWD		Like the server works I can see out and other people can SSH into it and all, but the DNS isn't working so if I want to like ping google.com or something it doesn't work.
+2007-01-02T16:01:00.000Z	TWD		Ok let me pastebin it.
+2007-01-02T16:01:00.000Z	mneptok	TWD	what DNS server(s) are being assigned via DHCP?
+2007-01-02T16:02:00.000Z	TWD		Well I looked on the router settings and it had 205.171.3.65 in there.
+2007-01-02T16:02:00.000Z	TWD		What I'm trying to do is set up unbuntu so that it will get the DNS from DHCP and the IP will be static.
+2007-01-02T16:03:00.000Z	mneptok	TWD	on the Ubuntu machine try "nslookup cnn.com 205.171.3.65" (no quotes)
+2007-01-02T16:04:00.000Z	TWD	mneptok	that returns a bunch of stuff but it seems to me that it did what it should.
+2007-01-02T16:04:00.000Z	TWD		gave me a bunch of IP adresses for cnn
+2007-01-02T16:04:00.000Z	mneptok	TWD	the best way to do that is to set a static IP associated with the MAC address of the card in the machine
+2007-01-02T16:05:00.000Z	TWD		Here is the file contents http://paste.ubuntu-nl.org/289/
+2007-01-02T16:05:00.000Z	TWD		So why doesn't DNS work.  Did I not set up something right?
+2007-01-02T16:06:00.000Z	mneptok	TWD	if nslookup works when being given the nameserver's IP, then the problem is with DHCP not setting it correctly
+2007-01-02T16:06:00.000Z	TWD		Yeah but I don't think the box is set up to use DHCP at all yet.
+2007-01-02T16:06:00.000Z	mneptok	TWD	check the router's config
+2007-01-02T16:07:00.000Z	TWD		I mean the DHCP works for every other machine on the network, but I don't think the server is looking for DHCP at all or anything.
+2007-01-02T16:07:00.000Z	mneptok	TWD	Ubuntu uses DHCP by default
+2007-01-02T16:07:00.000Z	TWD	mneptok	When I was doing the install and it started to look for DHCP I hit cancel and entered all the info in manually.

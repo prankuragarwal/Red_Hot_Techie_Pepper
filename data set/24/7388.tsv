@@ -1,0 +1,24 @@
+2005-01-02T16:36:00.000Z	rob66221		unable to get cd drive to mount: "mount: special device /dev/scd0 does not exist" ... it is a fresh install from this cd drive ... can anyone help?
+2005-01-02T16:37:00.000Z	scizzo	rob66221	what are you trying to do actually?
+2005-01-02T16:38:00.000Z	rob66221	scizzo	just checking out and learning linux; want to view contents of cd
+2005-01-02T16:38:00.000Z	scizzo	rob66221	so mount /cdrom gives you that error?
+2005-01-02T16:40:00.000Z	rob66221	scizzo	doing Computer > Disks > (double-click) CD-ROM 1 gives me that error; I will try mount /cdrom now  ... standby
+2005-01-02T16:42:00.000Z	rob66221	scizzo	yes from terminal, "mount /cdrom" gives error "mount: special device /dev/scd0 does not exist"
+2005-01-02T16:43:00.000Z	scizzo	rob66221	ummm....you shouldn't use scd0
+2005-01-02T16:43:00.000Z	rob66221	scizzo	this was the default install setting; what should I do to correct?
+2005-01-02T16:44:00.000Z	scizzo	rob66221	is this the standard install of warty?
+2005-01-02T16:45:00.000Z	rob66221	scizzo	yes, it's the standard warty install
+2005-01-02T16:45:00.000Z	scizzo	rob66221	dmesg |grep hd
+2005-01-02T16:45:00.000Z	scizzo	rob66221	try to find which one is your CD drive
+2005-01-02T16:49:00.000Z	rob66221	scizzo	"dmesg | grep cd" reveals "sr0: scsi3-mmc drive: 24x24x writer cd/rw xa/form2 cdda tray"
+2005-01-02T16:50:00.000Z	scizzo	rob66221	mount /dev/sr0 /cdrom
+2005-01-02T16:50:00.000Z	scizzo	rob66221	try that
+2005-01-02T16:50:00.000Z	scizzo	rob66221	that is: sudo mount /dev/sr0 /cdrom
+2005-01-02T16:52:00.000Z	rob66221	scizzo	"mount /dev/sr0 /cdrom" gives "mount: only root can do that"; so I am doing "su" and can't remember setting a root password during install, ug; is there a default?
+2005-01-02T16:53:00.000Z	scizzo	rob66221	sudo please
+2005-01-02T16:53:00.000Z	scizzo	rob66221	sudo mount /dev/sr0 /cdrom
+2005-01-02T16:56:00.000Z	rob66221	scizzo	that did it :) what do I need to do to make the desktop icon (Computer > Disks > CD-ROM 1) run the proper command now?
+2005-01-02T16:59:00.000Z	scizzo	rob66221	hmmm...change the options in /etc/fstab
+2005-01-03T17:05:00.000Z	rob66221	scizzo	i'm clicking on /etc/fstab and it opens in gedit as readonly; i see the line i need to modify, but it's readonly
+2005-01-03T17:05:00.000Z	scizzo	rob66221	sudo gedit /etc/fstab
+2005-01-03T17:07:00.000Z	rob66221	scizzo	T H A N K Y O U so much!  :)  bye.  rob

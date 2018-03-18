@@ -1,0 +1,24 @@
+2006-08-29T10:49:00.000Z	NickRivers		what would I use to change the fs on my backup hdd?
+2006-08-29T10:49:00.000Z	archaios	NickRivers	ext3 or reiser3 with data journalling enabled
+2006-08-29T10:49:00.000Z	NickRivers	archaios	not which fs... which program do i use to change the fs?
+2006-08-29T10:50:00.000Z	archaios	NickRivers	you can't change fs without backing it up and performing an mk*fs
+2006-08-29T10:51:00.000Z	archaios	NickRivers	if you're currently using ext2, it's a simple matter to change to ext3
+2006-08-29T10:51:00.000Z	NickRivers	archaios	ok... lemme be more specific... I don't care if I wipe out the data on my backup hdd - there's nothing on there that isn't on my system hdd... what prgram do i use to repartition it with a different fs?
+2006-08-29T10:51:00.000Z	archaios	NickRivers	well, you don't need to repartition
+2006-08-29T10:51:00.000Z	archaios	NickRivers	if you want to change to ext3: mke2fs -j
+2006-08-29T10:51:00.000Z	archaios	NickRivers	if you want to change to reiserfs: mkreiserfs
+2006-08-29T10:52:00.000Z	NickRivers	archaios	it's reiserfs atm... I want to change it to ext3
+2006-08-29T10:52:00.000Z	archaios	NickRivers	I recommend you stay with reiserfs
+2006-08-29T10:52:00.000Z	NickRivers	archaios	ok - how do I enable data journaling?
+2006-08-29T10:52:00.000Z	archaios	NickRivers	one moment
+2006-08-29T10:53:00.000Z	archaios	NickRivers	do you have the device name for your backup drive?
+2006-08-29T10:53:00.000Z	NickRivers	archaios	yes
+2006-08-29T10:53:00.000Z	archaios	NickRivers	ok, edit /etc/fstab
+2006-08-29T10:53:00.000Z	archaios	NickRivers	find the relevant line
+2006-08-29T10:54:00.000Z	NickRivers	archaios	/dev/sda1       /backups        reiserfs        defaults,notail 0       0
+2006-08-29T10:54:00.000Z	archaios	NickRivers	ok
+2006-08-29T10:54:00.000Z	archaios	NickRivers	so, add ",data=journal" after notail
+2006-08-29T10:54:00.000Z	NickRivers	archaios	can i do that for my system hdd as well?
+2006-08-29T10:55:00.000Z	archaios	NickRivers	sure
+2006-08-29T10:55:00.000Z	archaios	NickRivers	all you need to do is add ,data=journal to the fourth field (the one that contains 'defaults')
+2006-08-29T10:55:00.000Z	archaios	NickRivers	then reboot

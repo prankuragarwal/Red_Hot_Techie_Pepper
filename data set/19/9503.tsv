@@ -1,0 +1,19 @@
+2006-10-29T17:58:00.000Z	rage-		hrm I dunno
+2006-10-29T17:58:00.000Z	rage-		did you install any pacuages manually?
+2006-10-29T17:58:00.000Z	rage-		packages*
+2006-10-29T06:11:00.000Z	rage-		does anyone know what package will yield the ld.conf folders/files?
+2006-10-29T06:12:00.000Z	cafuego	rage-	libc6
+2006-10-29T06:14:00.000Z	rage-	cafuego	is there any reason why I wouldn't have /etc/ld.so.conf* files/folders? that package is being reported as being installed and I surely haven't deleted those files
+2006-10-29T06:14:00.000Z	cafuego	rage-	They're not really essential; the default library paths are hardcoded into the linker.
+2006-10-29T06:15:00.000Z	cafuego	rage-	You cna get 'em abck though; sudo dpkg -i --force-confmiss <libc6 deb file>
+2006-10-29T06:15:00.000Z	cafuego	rage-	do NOT UNDER ANY CIRCUMSTANCE install the wrong libc6 package.
+2006-10-29T06:15:00.000Z	rage-	cafuego	well the root of my problem is that I have a program that I've compiled manually that installed some libs to /usr/share/lib/ and they're not being found by the program at run time
+2006-10-29T06:16:00.000Z	rage-		like a path problem or something
+2006-10-29T06:17:00.000Z	cafuego	rage-	Just add '/usr/share/lib' to /etc/ld.so.conf and run 'sudo ldconfig'
+2006-10-29T06:18:00.000Z	cafuego	rage-	Incidentally, if you're going to manually install stuff, have a look at 'checkinstall'.
+2006-10-29T06:18:00.000Z	rage-	cafuego	I have no /etc/ld.so.conf
+2006-10-29T06:18:00.000Z	rage-		is this normal?
+2006-10-29T06:19:00.000Z	cafuego	rage-	Just create it, it's a text file.
+2006-10-29T06:19:00.000Z	rage-		I'll just create it if so, but I find it odd
+2006-10-29T06:21:00.000Z	rage-	cafuego	thanks for the help, that looks to be all for now
+2006-10-29T06:22:00.000Z	rage-	cafuego	also, thanks for the checkinstall tip

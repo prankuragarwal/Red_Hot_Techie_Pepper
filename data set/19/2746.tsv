@@ -1,0 +1,19 @@
+2011-10-04T10:37:00.000Z	Shirakawasuna	nixjr	back up everything in /etc
+2011-10-04T10:37:00.000Z	Shirakawasuna	nixjr	my /etc is only 16 megabytes
+2011-10-04T10:38:00.000Z	Shirakawasuna	nixjr	actually you should really be backing up everything in /etc and /home on a regular basis, to save yourself frustrations later
+2011-10-04T10:39:00.000Z	Shirakawasuna	nixjr	/home contains per-user settings, /etc contains systemwide settings (in general).
+2011-10-04T10:40:00.000Z	Shirakawasuna	nixjr	so if you set up a samba share (file sharing with windows/other types of computers), the settings would go in /etc/samba
+2011-10-04T10:41:00.000Z	Shirakawasuna	nixjr	you can't go wrong backing up /etc, it's very tiny. Here's my backup list: /home, /etc, /usr/local/bin, /usr/local/sbin (the latter two are for scripts, you can skip them if you didn't write any)
+2011-10-04T10:41:00.000Z	nixjr	Shirakawasuna	ah ok, well my /etc is only 13mb so thats not a problem to backup
+2011-10-04T10:43:00.000Z	nixjr	Shirakawasuna	is there a simple way to output the contents of the "applications" menu in gnome? theres a bunch of applications ive added over time that wernt in there to begin with
+2011-10-04T10:43:00.000Z	Shirakawasuna	nixjr	/var/log might also be useful if you ever want old logs. I don't know if you do.
+2011-10-04T10:44:00.000Z	Shirakawasuna	nixjr	that should be in your user's home directory. I don't remember exactly where they're kept by gnome, but probably somewhere in .config or .local. I would check ~/.local/share/applications
+2011-10-04T10:49:00.000Z	Shirakawasuna	nixjr	don't use cp for backups, there's better options
+2011-10-04T10:49:00.000Z	Shirakawasuna	nixjr	rsync is the best, in my opinion.
+2011-10-04T10:50:00.000Z	nixjr	Shirakawasuna	im just doing this once manually before I format, but ill keep that in mind for later
+2011-10-04T10:50:00.000Z	Shirakawasuna	nixjr	This is the type of command I use: rsync -avz --progress --delete --numeric-ids /etc /backup/ . Notice that /etc has no trailing slash and /backup/ does. This is important.
+2011-10-04T10:51:00.000Z	Shirakawasuna	nixjr	with cp you could lose (overwrite) timestamps, which can be useful for tracking things down later.
+2011-10-04T10:51:00.000Z	Shirakawasuna	nixjr	for example, if I used cp to back up my music and had a crash, I'd never know which ones were the latest ones added.
+2011-10-04T10:53:00.000Z	nixjr	Shirakawasuna	interesting, ive migrated data onto newer hdds many times over there years and just took it as a given that id reset all timestamps in the process
+2011-10-04T10:54:00.000Z	Shirakawasuna	nixjr	rsync is magic :)
+2011-10-04T10:54:00.000Z	Shirakawasuna	nixjr	it can also work over the network

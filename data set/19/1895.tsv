@@ -1,0 +1,19 @@
+2010-09-06T04:14:00.000Z	BlaDe^		can I reinstall ssh without being kicked off?
+2010-09-06T04:14:00.000Z	BlaDe^		if my friend can get on, he's better with linux than me
+2010-09-06T04:15:00.000Z	cagordon	BlaDe^	Looks like you are trying to use credential "Blade" accourding to postie, is that the right user per sshd on xxxx?
+2010-09-06T04:15:00.000Z	BlaDe^	cagordon	 definitely
+2010-09-06T04:36:00.000Z	BlaDe^	cagordon	 yeah /etc/postfix/sasl exists but there's no smtpd.conf there
+2010-09-06T04:19:00.000Z	BlaDe^	cagordon	 http://pastie.org/1140470
+2010-09-06T04:21:00.000Z	cagordon	BlaDe^	note syslog and daemon.log ore top two. What's in say daemon.log (of the two)?
+2010-09-06T04:22:00.000Z	BlaDe^	cagordon	 the entire file (if I cat it ) is about Sep  5 19:22:49 spooshi dhclient: No DHCPOFFERS received. --- and DHCPDISCOVER
+2010-09-06T04:24:00.000Z	cagordon	BlaDe^	is your box trying to fetch a dhcp address? Could it be that the machine no longer knows who it is? If so, that might explain why your inbound connect requests aren't actually going to spooni (xxxx?)
+2010-09-06T04:25:00.000Z	BlaDe^	cagordon	 i think that's correct yes
+2010-09-06T04:29:00.000Z	cagordon	BlaDe^	usually you have to have a static (or at least, not changing, ip address to be able to ssh into and for mail to be able to figure out "who I am". You need to sort out why all of the dhcp requests. Why did dhcp lease expire? Why aren't you getting a renewal? That sort of thing...
+2010-09-06T04:30:00.000Z	BlaDe^	cagordon	Sep  5 17:24:45 spooshi postfix/smtpd[30611]: fatal: no SASL authentication mechanisms  -- for mail
+2010-09-06T04:33:00.000Z	cagordon	BlaDe^	SASL authentication is a different problem. Has to do with In postfix, this might be the mech-list in /etc/postfix/sasl/smtpd.conf
+2010-09-06T04:35:00.000Z	BlaDe^	cagordon	 the sasl folder is empty
+2010-09-06T04:35:00.000Z	cagordon	BlaDe^	postfix? if not, I run out ofexperience quick... sri
+2010-09-06T04:40:00.000Z	cagordon	BlaDe^	following the johnny.chadda.se article on mail-server-howto-? Good level of detail, helped me...
+2010-09-06T04:41:00.000Z	BlaDe^	cagordon	nope, but a lot of services are playing up I don't think it's specifically a mail issue
+2010-09-06T04:42:00.000Z	cagordon	BlaDe^	got to get the ip-address thing settled down. Can't be trashing about looking for a dhcp lease...
+2010-09-06T04:44:00.000Z	cagordon	BlaDe^	np & lots of luck |patience :)

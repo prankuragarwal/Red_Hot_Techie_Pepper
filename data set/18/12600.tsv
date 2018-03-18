@@ -1,0 +1,18 @@
+2006-08-14T14:18:00.000Z	fblade		hey guys i need help accessing my windows partition through dapper! can any1 help? i try and click on it through places>computer>97.7gb volume, but i get an error "mount: only root can mount /dev/hda1 on /media/hda1"
+2006-08-14T14:19:00.000Z	fblade		hey guys i need help accessing my windows partition through dapper! can any1 help? i try and click on it through places>computer>97.7gb volume, but i get an error "mount: only root can mount /dev/hda1 on /media/hda1"
+2006-08-14T14:20:00.000Z	fk6	fblade	sudo nano /etc/fstab
+2006-08-14T14:21:00.000Z	fblade	fk6	yeah then what?
+2006-08-14T14:21:00.000Z	fk6	fblade	then edit the line for /dev/hda1 and make out of the defaults a defaults,users
+2006-08-14T14:21:00.000Z	fk6	fblade	that should fix it, i think, i still mount manually....
+2006-08-14T14:26:00.000Z	fblade	fk6	i know get couldn't mount device '/dev/hda1': permission denied mount failed
+2006-08-14T14:30:00.000Z	fk6	fblade	can you mount it manually?
+2006-08-14T14:30:00.000Z	fk6	fblade	it is  fat partition?
+2006-08-14T14:31:00.000Z	fk6	fblade	where do you want to mount it to?
+2006-08-14T14:32:00.000Z	fk6	fblade	try sudo mount -t ntfs /dev/(the device name) /media/hda1
+2006-08-14T14:33:00.000Z	fk6	fblade	but can you mount it?
+2006-08-14T14:34:00.000Z	fk6	fblade	sudo ls /media/hda1
+2006-08-14T14:35:00.000Z	fk6	fblade	ok so you can mount it
+2006-08-14T14:36:00.000Z	fblade	fk6	what shall i do now
+2006-08-14T14:37:00.000Z	fk6	fblade	change the user to a users in your fstab, does the line there say ntfs?
+2006-08-14T14:39:00.000Z	fblade	fk6	sorry do you just mean change "user" to "users" sorry bit of a noob
+2006-08-14T14:41:00.000Z	fk6	fblade	i gotta leave, have a look here: http://ubuntuforums.org/showthread.php?s=f8b0daeea93a83cb965e9ca126881d10&t=223310&highlight=user+mount+hard+disk

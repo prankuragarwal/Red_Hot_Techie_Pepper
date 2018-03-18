@@ -1,0 +1,22 @@
+2012-06-17T22:34:00.000Z	sleax		 hi to all, i have encrypted a password for grub2 with a PBKDF2 function , now i would to say: if encryption the passwd it takes about 1/4 second, why for the decryption it takes more time (more 3 sec)?
+2012-06-17T22:36:00.000Z	escott	sleax	its normal to insert delays when there is a failure
+2012-06-17T22:37:00.000Z	sleax	escott	i know it, but the delay is given by the parameters of function, right?
+2012-06-17T22:38:00.000Z	escott	sleax	im not sure what the point of an encrypted grub is
+2012-06-17T22:39:00.000Z	escott	sleax	why are you doing that?
+2012-06-17T22:39:00.000Z	sleax		it uses PBKDF(password/passphrase,salt,length of hash,number of iterations)
+2012-06-17T22:40:00.000Z	sleax		the uses for example 1000 iteration it takes 0.5 sec
+2012-06-17T22:40:00.000Z	sleax		using 2000 it will takes 1 sec
+2012-06-17T22:40:00.000Z	sleax		but both in crypting such as decrypting..or not?
+2012-06-17T22:41:00.000Z	sleax		yes, but i would to know why..
+2012-06-17T22:41:00.000Z	escott	sleax	they should be the exact same. there is no "decryption" that goes on
+2012-06-17T22:42:00.000Z	sleax		it uses the same function..but why different times?
+2012-06-17T22:43:00.000Z	sleax		i.e. why decryption needs more time than encryption?
+2012-06-17T22:43:00.000Z	escott	sleax	more iterations takes longer. thats the point of iterations. but passwords are never "decrypted"
+2012-06-17T22:43:00.000Z	escott	sleax	they are hashed. and the hashes are then compared
+2012-06-17T22:43:00.000Z	sleax		but why more time?
+2012-06-17T22:43:00.000Z	sleax		if it should hash the same string
+2012-06-17T22:44:00.000Z	escott	sleax	someone has clearly inserted a delay into the process of the authentication to prevent brute force attempts. i would expect it to be put at the end after the test fails
+2012-06-17T22:44:00.000Z	escott	sleax	but they must have decided to do it every time
+2012-06-17T22:46:00.000Z	escott	sleax	why are you password protecting grub? whats the point of that?
+2012-06-17T22:47:00.000Z	sleax		nothing of particular, just more security
+2012-06-17T22:48:00.000Z	escott	sleax	putting a password on grub does nothing for security. unless you mean you have an encrypted root fileysystem

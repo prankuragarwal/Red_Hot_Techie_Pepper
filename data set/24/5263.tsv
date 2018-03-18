@@ -1,0 +1,24 @@
+2006-09-13T07:45:00.000Z	BeShaMo		I'm having problems with the Nvidia drivers that come with ubuntu so I want to install the ones from the nvidia website, however that too is problematic since it claims that I don't seem to have the right kernel source, though I'm pretty sure I do
+2006-09-13T07:46:00.000Z	lupine_85	BeShaMo	you need linux-headers installed
+2006-09-13T07:47:00.000Z	BeShaMo		geforce4 440 go
+2006-09-13T07:47:00.000Z	BeShaMo		(laptop)
+2006-09-13T07:47:00.000Z	BeShaMo		well, from the logfile the installer spit out
+2006-09-13T07:48:00.000Z	BeShaMo		both, but tv out doesn't work
+2006-09-13T07:48:00.000Z	BeShaMo		(legacy work but not with tv-out, glx doesn't work at all)
+2006-09-13T07:49:00.000Z	BeShaMo		I already did
+2006-09-13T07:50:00.000Z	BeShaMo		I uninstalled both since I wanted to try the nvidia ones
+2006-09-13T07:51:00.000Z	lupine_85	BeShaMo	you need to "sudo apt-get install linux-header-`uname -r`" to get the stuff that the nVidia kernel module builds against
+2006-09-13T07:51:00.000Z	lupine_85		erm, linux-headers- rather
+2006-09-13T07:52:00.000Z	BeShaMo	lupine_85	I've already got the headers
+2006-09-13T07:52:00.000Z	lupine_85		in that case it ought to compile fine
+2006-09-13T07:53:00.000Z	BeShaMo	lupine_85	rambo3:they compile, but don't want to install
+2006-09-13T07:53:00.000Z	lupine_85		I've used the nVidia package with linux-headers over pretty much every kernel Ubuntu have released since breezy :)
+2006-09-13T07:53:00.000Z	BeShaMo		ERROR: Unable to load the kernel module 'nvidia.ko'.  This is most likely
+2006-09-13T07:53:00.000Z	BeShaMo		       because the kernel module was built using the wrong kernel source files.
+2006-09-13T07:54:00.000Z	lupine_85		can you manually specify the path to the kernel sources?
+2006-09-13T07:54:00.000Z	lupine_85		s/sources/headers/
+2006-09-13T07:54:00.000Z	lupine_85		I suppose its also possible that /usr/src/linux is symlinked to the wrong directory (it shouldn't exist at all)
+2006-09-13T07:55:00.000Z	BeShaMo		I specified the path with the installer (only way it would allow me to compile the module) afterwards it tell me it can't load the module
+2006-09-13T07:55:00.000Z	BeShaMo		can my gcc be the wrong version?
+2006-09-13T07:55:00.000Z	lupine_85		linux-src-`anything` doesn't exist :)
+2006-09-13T07:55:00.000Z	lupine_85	BeShaMo	no. the clue is in the error message

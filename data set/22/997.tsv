@@ -1,0 +1,22 @@
+2010-11-26T01:11:00.000Z	quiescens	fnmueller	i'm not sure how your script solution would work
+2010-11-26T01:11:00.000Z	fnmueller	quiescens	http://arstechnica.com/civis/viewtopic.php?f=16&t=632874&p=11952528
+2010-11-26T01:11:00.000Z	fnmueller	quiescens	btw: tested on my machine --Y it really does work,
+2010-11-26T01:12:00.000Z	quiescens	fnmueller	if you're doing that then what you've done is sudoers stuff
+2010-11-26T01:13:00.000Z	fnmueller	quiescens	correct, that is what I said
+2010-11-26T01:16:00.000Z	quiescens	fnmueller	if what you did was add a line to sudoers, to allow a specific script to be run with sudo
+2010-11-26T01:16:00.000Z	quiescens	fnmueller	then your alias should be pcupdate='sudo (your script)'
+2010-11-26T01:16:00.000Z	fnmueller	quiescens	it is
+2010-11-26T01:16:00.000Z	fnmueller	quiescens	alias pcupdate='/home/fnmueller/bin/scripts/system_update.sh' to be exact
+2010-11-26T01:17:00.000Z	quiescens	fnmueller	so where does it sudo? inside the script?
+2010-11-26T01:18:00.000Z	fnmueller	quiescens	yes --> #!/bin/bash sudo apt-get update && sudo apt-get -y dist-upgrade exit
+2010-11-26T01:18:00.000Z	quiescens	fnmueller	and your sudoers is set to allow your user to run apt-get without password?
+2010-11-26T01:19:00.000Z	fnmueller	quiescens	no, that is exactly what I don't want to do, I only let it execute the exect command with options
+2010-11-26T01:20:00.000Z	quiescens	fnmueller	what did you add, if anything, to sudoers?
+2010-11-26T01:21:00.000Z	quiescens	fnmueller	you can technically tell it to allow "apt-get update" and "apt-get -y dist-upgrade" if that's what you want
+2010-11-26T01:22:00.000Z	fnmueller	quiescens	yes please, how?
+2010-11-26T01:23:00.000Z	fnmueller	quiescens	got it
+2010-11-26T01:23:00.000Z	fnmueller	quiescens	fnmueller ALL=(root) NOPASSWD: /home/fnmueller/bin/scripts/system_update.sh fnmueller ALL=(root) NOPASSWD: /usr/bin/apt-get update fnmueller ALL=(root) NOPASSWD: /usr/bin/apt.get dist-upgrade
+2010-11-26T01:23:00.000Z	fnmueller	quiescens	it worked, thank you for giving me the correct idea
+2010-11-26T01:25:00.000Z	fnmueller	quiescens	well, that is what exactly does not work
+2010-11-26T01:25:00.000Z	fnmueller	quiescens	that is what I first thought too
+2010-11-26T01:27:00.000Z	fnmueller	quiescens	arrr, you are in deed right
