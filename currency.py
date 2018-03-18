@@ -7,8 +7,8 @@ class curr(object):
 		self.url = 'https://currency-api.appspot.com/api/'
 
 	def curfun(self, content):
-		fr = content[2]
-		to = content[4]
+		fr = content[3]
+		to = content[5]
 		#self.url = self.url + fr + '/' + to + '.json'
 		self.r = requests.get(self.url+ fr + '/' + to + '.json')
-		return float(self.r.json()['rate'])
+		return float(self.r.json()["rate"])

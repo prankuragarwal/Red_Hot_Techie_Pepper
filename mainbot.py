@@ -90,8 +90,9 @@ class ZulipBot(object):
 
 		print(content)
 		l = len(content)
-		content[1] = spell(content[1])
-		print(content[1])
+#		temstr = spell(content[1].lower())
+#		content[1] = temstr
+#		print(content[1])
 		if sender_email == BOT_MAIL:
 			return 
 
