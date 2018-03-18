@@ -1,6 +1,6 @@
 
 # Welcome to I-BOT
-## IAn intelligent chatbot build with python on ZulipChat
+## An intelligent chatbot build with python on ZulipChat
  
 ## Team: Red Hot Techie Pepper - Hack in the North 2018
 
