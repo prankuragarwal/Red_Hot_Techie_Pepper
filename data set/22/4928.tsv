@@ -1,22 +1,0 @@
-2008-04-15T18:23:00.000Z	talcite		hey guys, what was the name of that mouse util used to capture mouse movement and button clicks within a little square?
-2008-04-15T18:23:00.000Z	talcite		it was packaged with Xorg I think
-2008-04-15T18:23:00.000Z	sipior	talcite	xev?
-2008-04-15T18:24:00.000Z	talcite	sipior	ahhh thank you
-2010-07-13T20:50:00.000Z	sipior	talcite	is this a shell script?
-2010-07-13T20:50:00.000Z	talcite	sipior	no, it's a binary
-2010-07-13T20:50:00.000Z	sipior	talcite	what does "file <filename>" report?
-2010-07-13T20:51:00.000Z	talcite	sipior	http://pastebin.com/gSBTEQfe
-2010-07-13T20:52:00.000Z	sipior	talcite	gnu/linux 2.2.5? which version of the c library was this linked against?
-2010-07-13T20:52:00.000Z	sipior	talcite	also, just for fun, try "ldd pclient"
-2010-07-13T20:53:00.000Z	talcite	sipior	argh I have no idea =/. ldd says it's not dynamically linked though
-2010-07-13T20:53:00.000Z	sipior	talcite	file claims it is :-)
-2010-07-13T20:54:00.000Z	talcite	sipior	yes, strange eh? http://pastebin.com/by4WP0f1
-2010-07-13T20:54:00.000Z	sipior	talcite	my guess? the binary is linked against glibc 5. don't suppose you have access to source code?
-2010-07-13T20:55:00.000Z	talcite	sipior	unfortunately not. It's a ridiculous binary package from Sun which was built for RHEL/SUSE but I'm trying to get working on 10.04 so our hardware will work.
-2010-07-13T20:55:00.000Z	sipior	talcite	well, at least you know who to call :-)
-2010-07-13T20:56:00.000Z	sipior	talcite	which versions of RHEL/SuSE do they claim are compatible?
-2010-07-13T20:58:00.000Z	talcite	sipior	RHEL 5u1. Actually I found a list of required packages in a manual. Page 9: http://dlc.sun.com/pdf/820-5749-12/820-5749-12.pdf
-2010-07-13T21:03:00.000Z	sipior	talcite	out of curiosity, are you running this on a 64-bit ubuntu? do you have a libc in your /lib32 directory?
-2010-07-13T21:04:00.000Z	talcite	sipior	arrrgh I think that may have been it
-2010-07-13T21:04:00.000Z	talcite	sipior	yes, it works now. Oh man that was epic fail. I'm sorry for wasting your time =/
-2010-07-13T21:05:00.000Z	sipior	talcite	no trouble, it's a subtle error to catch

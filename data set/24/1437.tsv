@@ -1,24 +1,0 @@
-2010-10-20T22:34:00.000Z	rweng		hi guys. I am getting the error: user is not allowed to execute '/usr/bin/env ...', although the script is in visudo. Does anyone has a clue why?
-2010-10-20T22:36:00.000Z	rweng		anyone? never tried to get a script executed as root that started with /usr/bin/env?
-2010-10-20T22:37:00.000Z	gp5st	rweng	it's a way to make sure you're execuing the proper executable. like if i put my ruby in a nonstandard place env will know, but if you hardocde the path it won't work
-2010-10-20T22:39:00.000Z	gp5st	rweng	did you see my post to you earlier?
-2010-10-20T22:39:00.000Z	rweng	gp5st	no, sec
-2010-10-20T22:39:00.000Z	rweng	gp5st	which one?
-2010-10-20T22:40:00.000Z	gp5st	rweng	it's a way to make sure you're execuing the proper executable. like if i put my ruby in a nonstandard place env will know, but if you hardocde the path it won't work
-2010-10-20T22:41:00.000Z	rweng	gp5st	the thing is, i want the path to be dynamic
-2010-10-20T22:41:00.000Z	gp5st	rweng	what do you mean?
-2010-10-20T22:42:00.000Z	rweng	gp5st	so on my old server i had a script that started with #!/usr/local/bin/ruby and in visudo i got /scripts/mysript.rb - that worked fine
-2010-10-20T22:43:00.000Z	rweng	gp5st	but now i installed rvm, so that i can easily install different ruby versions at the same time. And, the script is a link to a file in a github repository that gets regularly updated, so i dont want to change the first line of this script
-2010-10-20T22:45:00.000Z	rweng	gp5st	yes, but i cant execute the script with sudo since env is not accepted
-2010-10-20T22:46:00.000Z	gp5st	rweng	what do yo mean not accpeted
-2010-10-20T22:46:00.000Z	rweng	gp5st	that is throws the error: user is not allowed to execute '/usr/bin/env
-2010-10-20T22:47:00.000Z	gp5st	rweng	when you sudo it gives that error? do you admin this box or does someone else
-2010-10-20T22:47:00.000Z	rweng	gp5st	i do and for me it works fine since i got all cmds allowed. but i wrote a script that non-admins should use and for then it does not work
-2010-10-20T22:48:00.000Z	gp5st	rweng	env should work w/o sudo, i do it all the time
-2010-10-20T22:50:00.000Z	rweng	gp5st	yes, it does. but starting my script using sudo script.rb, which is in the visudo and starts with /usr/bin/env throws this error
-2010-10-20T22:51:00.000Z	rweng	gp5st	sec, i pastie it
-2010-10-20T22:51:00.000Z	gp5st	rweng	why are you editing the sudoers file
-2010-10-20T22:52:00.000Z	rweng	gp5st	because i want users to be allowed only one sudo cmd: my script
-2010-10-20T22:52:00.000Z	gp5st	rweng	oh, i think i understand. well you'll have to let them use env but that's prob not good, so just hardcode the ruby path, that's best in this case
-2010-10-20T22:53:00.000Z	rweng	gp5st	hm, ok, thanks for you patience
-2010-10-20T22:54:00.000Z	gp5st	rweng	np
