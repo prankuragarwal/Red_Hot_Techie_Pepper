@@ -1,9 +1,11 @@
-#Welcome to I-BOT
-##An Intelligent Bot built with Python on ZulipChat
+#Welcome to I-BOT 
+##An Intelligent Bot built with Python on ZulipChat 
+ 
 
-##Team: Red Hot Techie Pepper - Hack in the North 2018
+##Team: Red Hot Techie Pepper - Hack in the North 2018 
+
                               
-##Intriduction
+##Introduction
 
 This Bot deals with with various features required by a personal relocation assistant that brings superior service and unpralleled delight to the user.
 While you relocate,I(BOT) give you advice on where to go,which direction to take,what to do etc.
@@ -38,7 +40,6 @@ While you relocate,I(BOT) give you advice on where to go,which direction to take
 * [Naguboyina Sravya](https://github.com/sravya31)  
 * [Prankur Agarwal](https://github.com/prankuragarwal)  
 * [Vrinda Agarwal](https://github.com/avrinda97)    
-
 
 ##Contribute
 
