@@ -25,7 +25,7 @@ class Direct(object):
         i = 3
         l = len(content)
         while (i < l):
-            if content[i].lower() == "to":
+            if content[i].lower() == "to" or content[i] == "from":
                 i = i + 1
                 break
             start += content[i] + " "
@@ -35,10 +35,14 @@ class Direct(object):
             finish += content[i] + " "
             i = i + 1
         finish = finish.strip()
+        if content[2] == "to" :
+            temp = finish
+            finish = start
+            start = temp
         #p.pprint(start)
         #p.pprint(finish)
         newurl = 'https://maps.googleapis.com/maps/api/directions/json?%s&key=AIzaSyC33RfzIlcWI_Mq7YMNZFYJVhsrqKu1cPs' % urlencode((('origin', start), ('destination', finish)))
-        #p.pprint(newurl)
+        p.pprint(newurl)
         ur = urllib.request.urlopen(newurl)
         #p.pprint(ur)
         tem = ur.read()
