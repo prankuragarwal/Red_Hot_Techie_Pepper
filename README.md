@@ -31,42 +31,42 @@ I-BOT is an intelligent chatbot build using python on ZulipChat that helps you d
 ## How to use?
 
 ### Nearby ATMs
-To get addresses of nearby ATM(s)
+To get addresses of nearby ATM(s)  
 `ibot atm "nearby location"`
 ![](./images/atm.png)
 
 ### Nearby Restaurants
-To get addresses of nearby Restaurant(s)
+To get addresses of nearby Restaurant(s)  
 `ibot restaurant "nearby location"`
 ![](./images/restaurant.png)
 
 ### Nearby Bus Stands
-To get addresses of nearby bus stand(s)
+To get addresses of nearby bus stand(s)  
 `ibot bus "nearby location"`
 ![](./images/bus.png)
 
 ### Nearby Tourist Places
-To get addresses of nearby tourist place(s)
+To get addresses of nearby tourist place(s)  
 `ibot tourist "nearby location"`
 ![](./images/tourist.png)
 
 ### Language Translation
-To translate your English sentences to other languages.
+To translate your English sentences to other languages.  
 `ibot language to "language name"`
 ![](./images/language.png)
 
 ### Jobs Nearby
-To get a list of jobs available nearby.
+To get a list of jobs available nearby.  
 `ibot job "nearby location"`
 ![](./images/job.png)
 
 ### Directions
-To get directions from one place to another.
+To get directions from one place to another.  
 `ibot direction from "source" to "destination"`
 ![](./images/direction.png)
 
 ### Currency Convertor
-To get currency conversion rate.
+To get currency conversion rate.  
 `ibot currency from "currency code - 1" to "currency code - 2"`
 ![](./images/currency.png)
 
@@ -85,9 +85,9 @@ To get currency conversion rate.
 
 ## Contribute
 
-Feel free to report issues and bugs.It will be helpful for future launches of application 
-All suggestions are welcome. 
-Fork repository and contribute.
+Feel free to report issues and bugs.It will be helpful for future launches of application.   
+All suggestions are welcome.   
+Fork repository and contribute.  
 
 ## Acknowledgements
-Thanks to Zulip for providing Zulip Api and Platform.
+Thanks to Zulip for providing Zulip API and Platform.
