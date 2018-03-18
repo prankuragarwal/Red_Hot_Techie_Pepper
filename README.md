@@ -70,12 +70,8 @@ To get currency conversion rate.
 `ibot currency from "currency code - 1" to "currency code - 2"`
 ![](./images/currency.png)
 
-
-
-
-
-
-
+## Demo Video
+* [IBOT Demo: Hack in the North 2018](https://www.youtube.com/watch?v=sWdwXzIOplA)  
 
 ## Contributors
 * [Gunjan Singh](https://github.com/gunjansingh97)  
