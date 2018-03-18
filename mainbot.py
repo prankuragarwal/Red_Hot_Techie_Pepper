@@ -19,16 +19,30 @@ from atm import Atm
 from autocorrect import spell
 #from trainers import UbuntuCorpusTrainer
 p = pprint.PrettyPrinter()
-BOT_MAIL = "test-bot@prankuragarwal.zulipchat.com"
+BOT_MAIL = "i-bot@rhtp.zulipchat.com"
+
+def dhelp():
+	message = "**Welcome to I-BOT**\nIBOT has various subfields\nType `ibot help <subfield>` to get help for specific subfield.\n"
+	message += "\n**Subfields**\n"
+	message += "`currency` - Get currency conversion rate\n"
+	message += "`atm` - Get addresses of nearby ATM(s)\n"
+	message += "`restaurant` - Get addresses of nearby restaurant(s)\n"
+	message += "`bus` - Get addresses of nearest bus stand(s)\n"
+	message += "`tourist` - Get addresses of nearby tourist place(s)\n"
+	message += "`job` - Get a list of jobs available nearby\n"
+	message += "`direction` - Get directions from one place to other\n"
+	message += "`language` - Translate your English sentences to other languages\n"
+	message += "\nIf you're bored Talk to IBOT, it will supercharge you"
+	return message
 
 class ZulipBot(object):
 	def __init__(self):
-		self.client = zulip.Client(site="https://prankuragarwal.zulipchat.com/api/")
+		self.client = zulip.Client(site="https://rhtp.zulipchat.com/api/")
 		self.subscribe_all()
 		self.chatbot = ChatBot("Test", trainer='chatterbot.trainers.ChatterBotCorpusTrainer')
-		#self.chatbot.train("chatterbot.corpus.english")
-		#self.chatbot.train("chatterbot.corpus.english.greetings")
-		#self.chatbot.train("chatterbot.corpus.english.conversations")
+		self.chatbot.train("chatterbot.corpus.english")
+		self.chatbot.train("chatterbot.corpus.english.greetings")
+		self.chatbot.train("chatterbot.corpus.english.conversations")
 		self.currency = curr()
 		#self.lat_lon = latlon()
 		self.language = Lang()
@@ -40,6 +54,11 @@ class ZulipBot(object):
 		self.directions = Direct()
 		self.atm = Atm()
 		self.subkeys = ["currency", "language", "restaurant", "bus", "tourist", "job", "direction","atm"]
+		#mesg = dhelp()
+		#self.client.send_message({
+		#	"type": "stream",
+		#	"content" : self.mesg
+		#	})
 
 	def urls(self, link):
 		urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', link)
@@ -51,7 +70,7 @@ class ZulipBot(object):
 		self.client.add_subscriptions(streams)
 
 	def help(self):
-		message = "**Welcome to I-BOT**\nTest Bot has various subfields\nType `test help <subfield>` to get help for specific subfield.\n"
+		message = "**Welcome to I-BOT**\nIBOT has various subfields\nType `ibot help <subfield>` to get help for specific subfield.\n"
 		message += "\n**Subfields**\n"
 		message += "`currency` - Get currency conversion rate\n"
 		message += "`atm` - Get addresses of nearby ATM(s)\n"
@@ -61,7 +80,7 @@ class ZulipBot(object):
 		message += "`job` - Get a list of jobs available nearby\n"
 		message += "`direction` - Get directions from one place to other\n"
 		message += "`language` - Translate your English sentences to other languages\n"
-		message += "\nIf you're bored Talk to Omega Bot, it will supercharge you"
+		message += "\nIf you're bored Talk to IBOT, it will supercharge you"
 		return message
 	def help_sub(self, key):
 		key = key.lower()
@@ -104,7 +123,7 @@ class ZulipBot(object):
 
 		print("doing")
 
-		if content[0].lower() == "testbot" or content[0] == "@**testbot**":
+		if content[0].lower() == "ibot" or content[0] == "@**IBOT**":
 			if content[1].lower() == "currency":
 				message = self.currency.curfun(content)
 				#print(message)
@@ -224,7 +243,7 @@ class ZulipBot(object):
 					"to": msg["display_recipient"],
 					"content": summary
 					})
-		elif "omega" in content and content[0] != "omega":
+		elif "ibot" in content and content[0] != "ibot":
 			self.client.send_message({
 				"type": "stream",
 				"subject": msg["subject"],
@@ -242,6 +261,6 @@ if __name__ == "__main__":
 	try:
 		main()
 	except KeyboardInterrupt:
-		print("Thanks for using Test Bot. Bye!")
+		print("Thanks for using IBOT. Bye!")
 		sys.exit(0)
 

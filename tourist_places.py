@@ -35,8 +35,8 @@ class Tour(object):
             except:
                 pass
             ans += address + "\n\n"
-	if ans == "":
-		ans = "No results"
+#		if ans == "" :
+#			ans = "No results"
         #print(ans)
         return ans
 
