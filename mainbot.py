@@ -7,7 +7,7 @@ import httplib2
 import os
 from chatterbot import ChatBot
 from currency import curr
-from lat_lon import latlon
+#from lat_lon import latlon
 from language import Lang
 from restaurants import Rest
 from bus_stations import Bus
@@ -30,7 +30,7 @@ class ZulipBot(object):
 		#self.chatbot.train("chatterbot.corpus.english.greetings")
 		#self.chatbot.train("chatterbot.corpus.english.conversations")
 		self.currency = curr()
-		self.lat_lon = latlon()
+		#self.lat_lon = latlon()
 		self.language = Lang()
 		self.restaurants = Rest()
 		self.bus_stations = Bus()
@@ -39,7 +39,7 @@ class ZulipBot(object):
 
 		self.directions = Direct()
 		self.atm = Atm()
-		self.subkeys = ["currency", "latilongi", "language", "restaurant", "bus", "tourist", "job", "direction","atm"]
+		self.subkeys = ["currency", "language", "restaurant", "bus", "tourist", "job", "direction","atm"]
 
 	def urls(self, link):
 		urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', link)
@@ -51,35 +51,37 @@ class ZulipBot(object):
 		self.client.add_subscriptions(streams)
 
 	def help(self):
-		message = "**Welcome to Test Bot**\nTest Bot has various subfields\nType `test help <subfield>` to get help for specific subfield.\n"
+		message = "**Welcome to I-BOT**\nTest Bot has various subfields\nType `test help <subfield>` to get help for specific subfield.\n"
 		message += "\n**Subfields**\n"
-		message += "`currency` - Get Currency\n"
-		message += "`latilongi` - Get Latitude Longitude\n"
-		message += "`restaurant` - Get Restaurant\n"
-		message += "`bus` - Get Bus Stands\n"
-		message += "`tourist` - Get Tourist Places\n"
-		message += "`job` - Get Available Jobs nearby\n"
-		message += "`direction` - Get Directions\n"
+		message += "`currency` - Get currency conversion rate\n"
+		message += "`atm` - Get addresses of nearby ATM(s)\n"
+		message += "`restaurant` - Get addresses of nearby restaurant(s)\n"
+		message += "`bus` - Get addresses of nearest bus stand(s)\n"
+		message += "`tourist` - Get addresses of nearby tourist place(s)\n"
+		message += "`job` - Get a list of jobs available nearby\n"
+		message += "`direction` - Get directions from one place to other\n"
+		message += "`language` - Translate your English sentences to other languages\n"
 		message += "\nIf you're bored Talk to Omega Bot, it will supercharge you"
 		return message
 	def help_sub(self, key):
 		key = key.lower()
 		message = "**Usage**\n"
 		if key == "currency":
-			message += "`omega crypto <crypto-currency-code>` - To Get Price in USD\n"
-			message += "`omage crypto <crypto-currency-code> in <currency>` - To Get Price in Specified Currency\n"
-		elif key == "latilongi":
-			message += "`omega translate <phrase to be translated>` - To Get Translate from Foreign Language to English\n"
+			message += "`ibot currency from <currency code - 1> to <currency code - 2>` - To get currency conversion rate.\n"
+		elif key == "atm":
+			message += "`ibot atm <nearby location>` - To get addresses of nearby ATM(s).\n"
 		elif key == "restaurant":
-			message += "`omega translate <phrase to be translated>` - To Get Translate from Foreign Language to English\n"
+			message += "`ibot restaurant <nearby location>` - To get addresses of nearby restaurant(s).\n"
 		elif key == "bus":
-			message += "`omega translate <phrase to be translated>` - To Get Translate from Foreign Language to English\n"
+			message += "`ibot bus <nearby location>` - To get addresses of nearby bus stand(s).\n"
 		elif key == "tourist":
-			message += "`omega translate <phrase to be translated>` - To Get Translate from Foreign Language to English\n"
+			message += "`ibot tourist <nearby location>` - To get addresses of nearby tourist place(s).\n"
 		elif key == "job":
-			message += "`omega translate <phrase to be translated>` - To Get Translate from Foreign Language to English\n"
+			message += "`ibot job <nearby location>` - To get a list of jobs available nearby.\n"
 		elif key == "direction":
-			message += "`omega translate <phrase to be translated>` - To Get Translate from Foreign Language to English\n"
+			message += "`ibot direction from <source> to <destination>` - To get directions from one place to another.\n"
+		elif key == "language":
+			message += "`ibot language to <language name>` - To translate your English sentences to other languages.\n"
 		else:
 			message = self.help()
 			message += "\n{} is not a valid subfield\n".format(key)
@@ -100,7 +102,7 @@ class ZulipBot(object):
 		if sender_email == BOT_MAIL:
 			return 
 
-		print("yeah")
+		print("doing")
 
 		if content[0].lower() == "testbot" or content[0] == "@**testbot**":
 			if content[1].lower() == "currency":
