@@ -6,15 +6,15 @@ I-BOT is an intelligent chatbot build using python on ZulipChat that helps you d
 
 ## Features
 
-1. Currency Convertor 
-2. Near by ATM's locator 
-3. Language Translator 
-4. Nearby Restaurants locator 
-5. Gides you direction to different places 
+1. Currency conversion 
+2. Nearby ATM(s) locator 
+3. Language translation 
+4. Nearby restaurants locator 
+5. Gives direction to go to different places 
 6. Gives nearest bus transportation service 
 7. Helps you in finding your desired job in a particular location 
-8. Tourist Spots in the city 
-9. NLP Based instant response
+8. Tourist spots in the city 
+9. NLP based instant response
 
 
 
